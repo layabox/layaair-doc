@@ -6,17 +6,29 @@ LayaDcc会遍历所有的项目文件，生成一个包含项目所有文件签�
 ## 安装和使用
 LayaDcc是一个基于Node.js的命令行程序，所以需要Node.js的环境。
 1. 安装Node.js。 如果没有安装的话，到nodejs[官网](https://nodejs.org/en/)下载。
+node.js必须是新版的，不支持 0.xx的版本，可以用命令查看node版本
+```bash
+node -v
+```
+例如:  
+```bash
+node -v
+v4.2.0
+```
 2. 安装 LayaDcc
 ```bash
 npm install -g layadcc
 ```
 3. 使用方法
 ```
-   layadcc 输入目录，[options]
-   options:
-       -cache 生成cache.
-       -lwr 文件路径全部转为小写。
-       -url url 生成cache的话，对应的url.
+layadcc 输入目录，[options]
+options:
+    -cache 生成cache.
+    -lwr 文件路径全部转为小写。
+    -url url 生成cache的话，对应的url.
+    -cout outpath cache的输出目录，如果不设置的话，就是在资源目录下。
+例如:
+   layadcc d:/game/wow -cache -url www.game.com
  ```
 4. 示例
    1. 打包一个带资源的app  
@@ -26,7 +38,7 @@ npm install -g layadcc
             ```bash
             layadcc e:/game/bestgame -cache -url http://www.layabox.com/bestgame/index.html
             ```
-            这样，就会在当前目录下生成一个 layadccout 目录，把这个目录下面的cache目录拷贝到项目的资源目录下.
+            这样，就会在e:/game/bestgame下生成一个 layadccout 目录，把这个目录下面的cache目录拷贝到项目的资源目录下.
             对于android，资源目录是项目下的assets目录，对于ios是resource目录。考完的结构如下图:
             Android：  
             ![](img_layadcc/android_proj.png)
@@ -56,3 +68,8 @@ npm install -g layadcc
 例如svn,git,和部分上传软件都会做这种转换，解决方法是通过设置去掉这种转换，或者以zip的方式上传文件，在服务器解开。
 
 ## 更新
+* 20160713 version: 1.7.0    
+加了一个 -cout 参数直接控制输出路径。
+如果不用 -cout 缺省输出改成了资源目录下。
+加了个输出打印。
+-url 后面的参数可以不完整，例如 http://www.layabox.com 不必有index.html了。
