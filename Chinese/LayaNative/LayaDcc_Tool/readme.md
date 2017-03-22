@@ -34,7 +34,7 @@ options:
 ```
 ### 4. 示例：打包一个带资源的app 
 
-　　 假设有一个游戏项目，放在e:/game/bestgame/目录下(就是首页在这个目录下)，希望把这个目录的资源打包到app中，这个项目的在线地址假设是 http://www.layabox.com/bestgame/index.html（开发者操作时需要修改为自己的真实在线地址）。
+　　 假设有一个游戏项目，放在e:/game/bestgame/目录下(就是首页在这个目录下)，希望把这个目录的资源打包到app中，这个项目的在线地址假设是 [http://www.layabox.com/bestgame/index.html](http://www.layabox.com)（开发者操作时需要修改为自己的真实在线地址）。
 
 
 #### 4.1  生成cache 
