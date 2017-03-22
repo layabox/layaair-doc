@@ -197,9 +197,9 @@ path:"src/component"      //设置需要分包的组件所在目录路径
 
 ​	![8](8.jpg)
 
-​	（图8）IDE的组件名对应组件xml的标记名<ScaleButton></<ScaleButton>
+​	（图8）IDE的组件名对应组件xml的标记名
 
-​	Tips: 额外提醒的是，组件的icon图标并非是"LayaAirIDE根目录\resources\app\out\vs\layaEditor\laya\basics\Custom"目录中的sButton.png。icon图标位于LayaAirIDE根目录下的"resources\app\out\vs\layaEditor\laya\icons\components"目录内，对应xml中icon属性的值，上文中的xml说明已进行介绍。如果创建自己的icon图标，参照components目录内的icon尺寸标识制作，放到components目录内，然后在xml中设置对应的文件名即可。
+​	**Tips:** 额外提醒的是，组件的icon图标并非是"LayaAirIDE根目录\resources\app\out\vs\layaEditor\laya\basics\Custom"目录中的sButton.png。icon图标位于LayaAirIDE根目录下的"resources\app\out\vs\layaEditor\laya\icons\components"目录内，对应xml中icon属性的值，上文中的xml说明已进行介绍。如果创建自己的icon图标，参照components目录内的icon尺寸标识制作，放到components目录内，然后在xml中设置对应的文件名即可。
 
 #### 4.3 在IDE资源面板中显示
 
@@ -328,3 +328,6 @@ View.regComponent("Button",ScaleButton);//注册组件
 ​	![17](17.jpg)
 
 ​	（图17）
+
+本篇至此结束，如有疑问请到社区提出：http://ask.layabox.com
+
