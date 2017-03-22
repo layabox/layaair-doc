@@ -7,25 +7,25 @@
 
 ### AS3语言教程
 
-####​ 　　LayaAir引擎2D
+#### 　　**LayaAir引擎2D**
 
-####​ 　　LayaAir引擎3D
+#### 　　**LayaAir引擎3D**
 
-#### 　　LayaAirIDE
+#### 　　**LayaAirIDE**
 
 ### TS语言教程
 
-####​ 　　LayaAir引擎2D
+#### 　　LayaAir引擎2D
 
-#### ​ 　　LayaAir引擎3D
+####  　　LayaAir引擎3D
 
-#### ​ 　　LayaAirIDE
+####  　　LayaAirIDE
 
 ### JS语言教程
 
-####​ 　　LayaAir引擎2D教程
+#### 　　LayaAir引擎2D教程
 
-####​ 　　LayaAir引擎3D教程
+#### 　　LayaAir引擎3D教程
 
 #### 　　LayaAirIDE教程
 
