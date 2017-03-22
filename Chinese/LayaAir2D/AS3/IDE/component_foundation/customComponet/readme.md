@@ -7,8 +7,7 @@
 
 ​	组件目录位于LayaAirIDE根目录下的“\resources\app\out\vs\layaEditor\renders”目录内。如图1所示：
 ​	![1](1.jpg)
-
-（图1）
+​	（图1）
 
 ​	**组件目录结构介绍：**
 
