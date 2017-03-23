@@ -16,27 +16,27 @@
 
 ## 使用方法：
 单击菜单的 工具/打包app(测试版)，如下图:  
-![](img_pack/open.gif)  
+![图片](1.gif)  
 填好参数后，点 打包 即可。 **打包时间较长**，因此会有一个进度提示，如果没有任何错误，进度到达100%
 以后就输出目录就会生成最后的打包结果。
 
 具体参数的含义见下面的说明。 
 ## Android Apk 打包
 ### 主界面:  
-* ![](img_pack/fullpanel.png)
+* ![图片](2.png)
 
 ### 界面参数的意义：  
 * 单机版app  
   如果选中，就是要打包单机版，否则就是打包在线版。  
   单机版通常不需要联网，没有对应的url。单机版不用提供url，但是必须提供游戏
   资源。  在线版必须有url才行，是否打包资源可以自行决定（见下面的 "资源路径" 部分）。   
-  ![](img_pack/standalone.gif)    
+  ![图片](3.gif)    
   注意即使在单机版里面依然可以通过XMLHttpRequest或者websocket进行网络操作，只是不支持动态更新资源。
 
 * 名称  
   就是app的名称，安装以后显示在app图标下面的名称。  
   例如：  
-  ![](img_pack/app.png)    
+  ![图片](4.png)    
    猎刃2 就是这里要填的名称。  
   注意:
   * 目前只能修改中文系统下的名称。 
@@ -86,7 +86,7 @@
   注意：  
   * 打包资源的缺点是会增加包的大小。  
     * 打包资源的在线游戏，必须在server端打dcc了，否则就会使其打包的优势，依然会下载所有的资源。
-      如何打dcc，参考<[LayaDcc工具](LayaDcc工具.md)>
+      如何打dcc，参考[LayaDcc打包工具](https://github.com/layabox/layaair-doc/tree/master/Chinese/LayaNative/LayaDcc_Tool)
 
 
 ## iOS IPA 打包
