@@ -29,7 +29,7 @@
 
 #### 　　[LayaAirIDE教程](https://github.com/layabox/layaair-doc/tree/master/Chinese/LayaAir_JS/IDE/)
 
-### [LayaNative打包相关教程](https://github.com/layabox/layaair-doc/tree/master/Chinese/LayaNative/LayaDcc_Tool)
+### [LayaNative打包相关教程](https://github.com/layabox/layaair-doc/tree/master/Chinese/LayaNative/)
 
 ### LayaAir引擎更新日志
 
