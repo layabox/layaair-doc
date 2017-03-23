@@ -6,9 +6,9 @@
 
 ### 1、JDK下载
 
-打开网站[http://java.sun.com](http://java.sun.com/)，点击右侧的“Java SE”，出现图1-1，点击“[JDK Download](https://cds.sun.com/is-bin/INTERSHOP.enfinity/WFS/CDS-CDS_Developer-Site/en_US/-/USD/ViewFilteredProducts-SingleVariationTypeFilter)”即下载jdk-6u23-windows-i586.exe。
+打开网站[http://www.oracle.com/technetwork/java/javase/downloads/jdk8-downloads-2133151.html](http://www.oracle.com/technetwork/java/javase/downloads/jdk8-downloads-2133151.html)，会看到“Java SE”的下载页面，如图1-1，点击windows x86版本下载即可。
 
-![img](img/1.png)
+![图1-1](img/1.jpg)
 
 **图1-1 Java SE下载页面**
 
@@ -16,7 +16,7 @@
 
 ### 2、安装JDK
 
-双击jdk-6u21-windows-i586.exe，得到如图1-2界面。
+双击jdk-8u121-windows-i586.exe，得到如图1-2界面。
 
 ![img](img/2.png)
 
