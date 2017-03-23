@@ -96,7 +96,7 @@
 
 **参考资源：**
 
-- [Eclipse搭建Android环境](http://ldc.layabox.com/index.php?m=content&c=index&a=show&catid=42&id=194)
+- [Eclipse搭建Android环境](https://github.com/layabox/layaair-doc/tree/master/Chinese/LayaNative/setUpAndroidEnvironment_Eclipse)
 
 - [Android Studio的使用和配置](http://ldc.layabox.com/index.php?m=content&c=index&a=show&catid=42&id=193)
 
