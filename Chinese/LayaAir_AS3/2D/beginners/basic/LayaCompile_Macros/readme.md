@@ -1,10 +1,10 @@
-# LayaCompile宏编译
+# LayaCompiler宏编译
 
 
 
 ### **1、什么是宏编译？**
 
-　　LayaCompile支持将AS3编译成JS，并定义了一个代表特定内容的标识符，它们包括`“//[IF-SCRIPT] ”、//[IF- SCRIPT-BEGIN]”、“//[IF-SCRIPT-END] ”、“/*[IF-FLASH]*/ ”、“/*[IF-FLASH-BEGIN]*/”、“/*[IF-FLASH-END]*/”`。LayaCompiler编译器在编译时会把源代码中出现的宏标识符替换成编译器定义的代码。
+　　LayaCompiler支持将AS3编译成JS，并定义了一个代表特定内容的标识符，它们包括`“//[IF-SCRIPT] ”、//[IF- SCRIPT-BEGIN]”、“//[IF-SCRIPT-END] ”、“/*[IF-FLASH]*/ ”、“/*[IF-FLASH-BEGIN]*/”、“/*[IF-FLASH-END]*/”`。LayaCompiler编译器在编译时会把源代码中出现的宏标识符替换成编译器定义的代码。
 
 
 
