@@ -98,9 +98,9 @@
 
 - [Eclipse搭建Android环境](https://github.com/layabox/layaair-doc/tree/master/Chinese/LayaNative/setUpAndroidEnvironment_Eclipse)
 
-- [Android Studio的使用和配置](http://ldc.layabox.com/index.php?m=content&c=index&a=show&catid=42&id=193)
+- [Android Studio的使用和配置](https://github.com/layabox/layaair-doc/tree/master/Chinese/LayaNative/AndroidStudio_ConfigurationAndApplication)
 
-- [IOS打包发布App详细流程](http://ldc.layabox.com/index.php?m=content&c=index&a=show&catid=42&id=192)
+- [IOS打包发布App详细流程](https://github.com/layabox/layaair-doc/tree/master/Chinese/LayaNative/packagingReleases_IOS)
 
   ​
 
