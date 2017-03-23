@@ -6,7 +6,7 @@
 
 ### 1、JDK下载
 
-打开网站[http://java.sun.com](http://java.sun.com/)，点击右侧的“Java SE”，出现图1-1，点击“JDK Download”即（https://cds.sun.com/is-bin/INTERSHOP.enfinity/WFS/CDS-CDS_Developer-Site/en_US/-/USD/ViewFilteredProducts-SingleVariationTypeFilter）下载jdk-6u23-windows-i586.exe。
+打开网站[http://java.sun.com](http://java.sun.com/)，点击右侧的“Java SE”，出现图1-1，点击“[JDK Download](https://cds.sun.com/is-bin/INTERSHOP.enfinity/WFS/CDS-CDS_Developer-Site/en_US/-/USD/ViewFilteredProducts-SingleVariationTypeFilter)”即下载jdk-6u23-windows-i586.exe。
 
 ![img](img/1.png)
 
@@ -102,7 +102,7 @@ JDK各文件夹的作用：[http://blog.csdn.net/qcontriver/archive/2010/03/09/5
 
 ### 1、下载SDK
 
-打开网站http://www.onlinedown.net/softdown/32289_2.htm下载android-sdk_r08-windows.zip，并解压到D:\Android。
+打开网站[http://www.onlinedown.net/softdown/32289_2.htm](http://www.onlinedown.net/softdown/32289_2.htm)下载android-sdk_r08-windows.zip，并解压到D:\Android。
 
 ### 2、SDK安装
 
