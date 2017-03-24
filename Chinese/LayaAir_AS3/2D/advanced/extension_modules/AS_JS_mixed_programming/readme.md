@@ -150,7 +150,7 @@ package {
 
 　　有时候我们开发项目要和web开发者交叉调用，通过上面的方法我们可以调用web开发者的js方法，那么web开发者怎么调用我们写的逻辑呢？其实开发者可以进一步思考下：我们用as3开发H5，其实是通过编译器直接编译生成了js，因此，只需要把接口暴露出来，让web开发者直接调用我们的js代码就可以了。下面用一个简单的示例代码来说明一下用法。
 
-**代码如下:**
+**JSDemo.as 代码如下:**
 
 ```java
 package {
@@ -180,7 +180,9 @@ package {
 
 
 
-​	上面的示例只是定义了一个静态的方法，我们甚至可以开放内部的所有方法和属性，代码修改如下：
+​	上面的示例只是定义了一个静态的方法，我们甚至可以开放内部的所有方法和属性，
+
+JSDemo.as代码修改如下：
 
 ```java
 package {
@@ -220,7 +222,9 @@ package {
 
 ​	在上面的示例里，我们调用JS原生方法很简单，但是原生的JS方法，在AS3项目中并没有代码提示。因此，我们结合宏编译方法进行手动添加函数声明，从而获得代码提示。
 
-比如window这个类。我们可以把浏览器常用的函数封装起来便于调用。代码如下：
+比如我们创建一个window类（*`window.as`*），把浏览器常用的函数封装起来。
+
+window.as代码如下：
 
 ```java
 /*[IF-FLASH]*/package
@@ -237,28 +241,97 @@ package {
 }
 ```
 
-`/*[IF-FLASH]*/`代表这是flash模式的类，js不会翻译这个类。我们看下调用方式：
+`/*[IF-FLASH]*/`是LayaCompiler的编译宏，其后的类不会被编译为JS，对此不了解的，请先去了解[宏编译教程文档](https://github.com/layabox/layaair-doc/blob/master/Chinese/LayaAir_AS3/LayaCompile_Macros.md)。
+
+
+
+有了这个类，我们就可以直接写window的方法，并且有提示了（*前提是要用到的函数，都要提前封装好*）
+
+下面我们就直接用js方法写一个`alert()`，
+
+JSDemo.as代码如下。
 
 ```java
 package {
-	import laya.webgl.WebGL;
-
-	public class Game {
-		
-		private var name:String = "Game";
-		public function Game() {
+	public class JSDemo {
+		public function JSDemo() {
 			//初始化引擎
-			Laya.init(600, 400,WebGL);//
+			Laya.init(0, 0);
 			window.alert("我是alert");
-			
 		}
 	}
 }
 ```
 
-编译运行可以看到弹窗出现。所以其他常用的Window的方法开发者也可以封装起来。这样代码的智能提示就会有了。
+编译运行效果如图5所示，alert被成功执行了。所以，我们可以把常用的Window的方法开发者都封装起来。这样以后与JS混合编码时，代码的智能提示就会有了。
+
+![图5](5.jpg) <br />
+
+（图5）
 
 
 
 
 
+### 6. AS写Nodejs
+
+​	首先新建一个AS的工程，这个工程就是AS的原生的工程即可，LayaAir的类库暂时可以忽略，项目的启动类这里设置为Main.as ;然后新建一个`require.as`。
+
+require.as 代码如下：
+
+```java
+package
+{
+	/*[IF-FLASH-BEGIN]*/
+	public class require
+	{
+		
+		public function require(path:String)
+		{
+		}
+		
+	}
+	/*[IF-FLASH-END]*/
+}
+```
+
+​	
+
+项目的启动类Main.as代码如下：
+
+```java
+package
+{
+	public class Main
+	{
+		public var http:Object = require('http');
+		public var net:Object = require('net');
+		public var url:Object = require('url');
+		public function Main()
+		{
+			var server:Object = this.http.createServer(clientHandler);
+			server.listen(8989);
+		}
+		private function clientHandler(req:Object,respose:Object):void
+		{
+			trace("收到消息");
+			respose.writeHead(200, {'Content-Type': 'text/plain'});
+			respose.end('Hello Laya');
+		}
+	}
+}
+```
+
+​	*Tips: 创建node的服务器的api可以移步到[https://nodejs.org/](https://nodejs.org/)*
+
+
+
+　　`Main.as` 创建了一个动态服务器，端口为8989，服务器收到客户端的请求，返回一个Hell Laya。
+
+　　`require.as`这个类用到了LayaCompiler编译器的宏编译,/\*[IF-FLASH-BEGIN]*/*和*/\*[IF-FLASH-END]*/*这两个标签之间代码提示用 不参加编译（对此不了解的，请先去了解[宏编译教程文档](https://github.com/layabox/layaair-doc/blob/master/Chinese/LayaAir_AS3/LayaCompile_Macros.md)）。
+
+​	**编译这个项目：**
+
+​	用node启动该项目编译后的js文件。在当前目录下打开命令行输入node Main.max.js。然后在浏览器输入[http://localhost:8989/](http://localhost:8989/)可以看到页面上显示：Hello Laya。
+
+​	至此，表明我们用AS代码成功的写了一个动态服务器。
