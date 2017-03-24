@@ -2,13 +2,13 @@
 
 
 
-  IOS 应用内购买 即In App Purchase, 以下简称IAP.
+　　IOS 应用内购买 即In App Purchase, 以下简称IAP.
 
-  由于App Store不支持类似支付宝和微信支付等第三方支付方式, 所以无论使用什么引擎或工具开发, 最终都需要通过Apple提供的IAP方式完成交易.
+　　由于App Store不支持类似支付宝和微信支付等第三方支付方式, 所以无论使用什么引擎或工具开发, 最终都需要通过Apple提供的IAP方式完成交易.
 
-Layabox为了帮助开发者节省IAP相关接口的调试时间, 封装了这部分的相关接口, 并通过JavaScript语言提供给开发者直接调用或者进行扩展.
+　　Layabox为了帮助开发者节省IAP相关接口的调试时间, 封装了这部分的相关接口, 并通过JavaScript语言提供给开发者直接调用或者进行扩展.
 
-  IAP的流程非常简单, 客户端直接和App Store通讯来完成交易, 如下图:
+　　IAP的流程非常简单, 客户端直接和App Store通讯来完成交易, 如下图:
 
 ​	![blob.png](1.png) <br/>
 ​	图（1）
@@ -62,7 +62,9 @@ conchMarket.recharge(json,function(jsonString) {
 
 ### 3.  充值接口及参数说明:   
 
-  conchMarket.recharge(jsonParam,callBack);jsonParam参数是输入参数,为json字符串, json对象必须提供以下属性
+  `conchMarket.recharge(jsonParam,callBack);`
+
+`jsonParam`参数是输入参数,为json字符串, json对象必须提供以下属性
 
 | 名称           | 类型     | 描述                          |
 | ------------ | ------ | --------------------------- |
@@ -71,7 +73,9 @@ conchMarket.recharge(json,function(jsonString) {
 | order_id     | string | 订单ID (单机版设置空字符串)            |
 | callback_uri | string | 服务器验证地址 (单机版设置空字符串)         |
 
-callBack参数是购买回调函数，回传一个json字符串参数，json对象属性有
+
+
+`callBack`参数是购买回调函数，回传一个json字符串参数，json属性有以下：
 
 | 名称         | 类型     | 描述                          |
 | ---------- | ------ | --------------------------- |
