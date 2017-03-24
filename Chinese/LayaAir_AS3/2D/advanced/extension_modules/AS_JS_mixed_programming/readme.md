@@ -105,6 +105,7 @@ package
 ```
 
 　　以上两种方式从运行的结果上看，是完全一致的，如图2所示。
+
 ![2](2.jpg) <br />
 （图2）
 
@@ -116,7 +117,7 @@ package
 
 　　在项目中我们难免会用到第三方的js类库来辅助开发。那么在AS项目中我们怎么处理呢？下面我们就拿最常用的jquery.js来进行讲解。
 
-​	首先在jquery的[官网下载](http://jquery.com/download/)jquery.js版本，示例中我们用`jquery-3.2.0.min.js`。在index.html页面添加`<script type="text/javascript" src="jquery-3.1.1.js"></script>`。
+​	首先在jquery的[官网下载](http://jquery.com/download/)jquery.js版本，示例中我们用`jquery-3.2.0.min.js`。在index.html页面添加`<script type="text/javascript" src="jquery-3.2.0.min.js"></script>`。
 
 ​	*Tips: 第三方库必须添加在LayaAir引擎库之前。*
 
@@ -328,10 +329,10 @@ package
 
 　　`Main.as` 创建了一个动态服务器，端口为8989，服务器收到客户端的请求，返回一个Hell Laya。
 
-　　`require.as`这个类用到了LayaCompiler编译器的宏编译,/\*[IF-FLASH-BEGIN]*/*和*/\*[IF-FLASH-END]*/*这两个标签之间代码提示用 不参加编译（对此不了解的，请先去了解[宏编译教程文档](https://github.com/layabox/layaair-doc/blob/master/Chinese/LayaAir_AS3/LayaCompile_Macros.md)）。
+　　`require.as`这个类用到了LayaCompiler编译器的宏编译，`/*[IF-FLASH-BEGIN]*/`和`/*[IF-FLASH-END]*/`这两个标签之间代码用于语法提示，并不参加编译（对此不了解的，请先去了解[宏编译教程文档](https://github.com/layabox/layaair-doc/blob/master/Chinese/LayaAir_AS3/LayaCompile_Macros.md)）。
 
 ​	**编译这个项目：**
 
-​	用node启动该项目编译后的js文件。在当前目录下打开命令行输入node Main.max.js。然后在浏览器输入[http://localhost:8989/](http://localhost:8989/)可以看到页面上显示：Hello Laya。
+​	用node启动该项目编译后的js文件。在当前目录下打开命令行输入`node Main.max.js`。然后在浏览器输入[http://localhost:8989/](http://localhost:8989/)可以看到页面上显示：Hello Laya。
 
 ​	至此，表明我们用AS代码成功的写了一个动态服务器。
