@@ -37,6 +37,6 @@
 
 
 
-### 其它设置
+### [打包相关的其它设置综述](https://github.com/layabox/layaair-doc/tree/master/Chinese/LayaNative/Other_settings)
 
 
