@@ -51,9 +51,9 @@
 
 　　`configurations`： 这个属性下有`layaAir`和`chrome`两种调试的配置可用。
 
-　　`"type": "layaAir"` ： 表示用LayaAirIDE内置的调试方式。
+　　`"name": "layaAir"` ： 表示用LayaAirIDE内置的调试方式。
 
-　　`"type": "chrome"`   ： 表示用本地chrome浏览器调试。
+　　`"name": "chrome调试"`   ： 表示用本地chrome浏览器调试。
 
 　　`"file": "${workspaceRoot}\\bin\\h5\\index.html"` ： 代表项目运行启动的入口文件，注意路径符号不要写成`/`，如果写成`"file": "${workspaceRoot}/bin/h5/index.html"`，会出现图5与图6的错误提示。<br />
 
