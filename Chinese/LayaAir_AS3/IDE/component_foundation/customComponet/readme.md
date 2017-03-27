@@ -6,7 +6,7 @@
 #### 					**1.1 组件目录结构**
 
 ​	组件目录位于LayaAirIDE根目录下的“\resources\app\out\vs\layaEditor\renders”目录内。如图1所示：
-​	![1](1.jpg) <br />
+​	![1](img/1.jpg) <br />
 ​	（图1）
 
 ​	**组件目录结构介绍：**
@@ -69,13 +69,13 @@
 ### **2、导入LayaAirIDE组件库**   
 #### 			2.1  下载LayaAirIDE组件库（本篇为AS版）
 
-​	下载地址：   [http://ldc.layabox.com/uploadfile/file/20160528/1464408796653558.zip](http://ldc.layabox.com/uploadfile/file/20160528/1464408796653558.zip)
+​	下载地址：   [http://ldc.layabox.com/uploadfile/file/20160528/1464408796653558.zip](img/http://ldc.layabox.com/uploadfile/file/20160528/1464408796653558.zip)
 
 #### 2.2  创建项目并导入到项目的目录内
 
 ​	先采用LayaAirIDE创建一个AS3项目（创建项目请查看相关教程，本篇不再详解）。然后将下载的zip包解压，把editorUI和ide目录放在项目根目录下的"libs/laya/src/laya"目录下。如图2所示：
 
-​	![](2.jpg)
+​	![](img/2.jpg)
 
 ​	(图2)
 
@@ -84,7 +84,7 @@
 
 ​	   先创建一个组件目录(包)"component"，方便未来其它组件的分类，然后在component目录下创建一个缩放按钮类ScaleButton.as，如图3所示：
 
-​	![3](3.jpg)
+​	![3](img/3.jpg)
 
 ​	（图3）
 
@@ -152,7 +152,7 @@ path:"src/component"      //设置需要分包的组件所在目录路径
 
 ​	分包规则编写完成并保存后，我们编译刚刚编写的ScaleButton.as（在本篇为了方便演示，我们直接将ScaleButton.as文件设置为文档类），可以看到js目录下有一个ScaleButton.js，如图4所示，打开这个js我们可以看到，对应了我们刚编写的ScaleButton.as代码，这个js就是我们自定义组件的JS功能实现部分，而没有包含引擎库等其它代码。
 
-​	![4](4.jpg)
+​	![4](img/4.jpg)
 
 ​	（图4）
 
@@ -177,7 +177,7 @@ path:"src/component"      //设置需要分包的组件所在目录路径
 
 ​	xml配置文件编写完成后，直接保存在自定义组件的目录（LayaAirIDE根目录下的“resources\app\out\vs\layaEditor\renders\custom”内），组件xml的命名需要与组件js保持一致，这里我们命名为ScaleButton.xml。然后我们将分包编译生成的ScaleButton.js（"项目根目录/bin/h5/js"目录下，参照图4）复制到自定义组件的目录。如图5所示：
 
-​	![5](5.jpg)
+​	![5](img/5.jpg)
 
 ​	（图5）
 
@@ -185,17 +185,17 @@ path:"src/component"      //设置需要分包的组件所在目录路径
 
 ​	打开IDE组件目录（LayaAirIDE根目录\resources\app\out\vs\layaEditor\laya\basics）新建一个自定义组件存放目录Custom，用于存放自义定的组件，如图6所示。
 
-​	![6](6.jpg)
+​	![6](img/6.jpg)
 
 ​	（图6）
 
 ​	然后在Custom目录内放一个以sButton命名的png 图标（建议尺寸为16*16），如图7所示，完成该步骤即可在IDE的组件面板中找到我们自己创建的缩放按钮组件，如图8所示。
 
-​	![7](7.jpg)
+​	![7](img/7.jpg)
 
 ​	（图7）图标命名对应组件xml中resName属性的值
 
-​	![8](8.jpg)
+​	![8](img/8.jpg)
 
 ​	（图8）IDE的组件名对应组件xml的标记名
 
@@ -206,13 +206,13 @@ path:"src/component"      //设置需要分包的组件所在目录路径
 ​	资源面板中，默认在comp文件中放置了常用UI组件的skin资源，通过组件命名规则方便的将skin资源识别为组件使用（资源必须存放于"项目根目录\laya\assets"下才会被识别为组件）。与组件面板的组件属性skin值为空不同，资源面板中的组件属性skin默认值是"\laya\assets"目录下的相对路径。
 ​	为了方便项目使用带skin资源的组件，我们继续介绍如何在资源面板中显示组件。首先我们先准备一张skin资源，由于上文示例的自定义组件是缩放按钮，我们直接复制任意一张图片即可体验缩放按钮组件的缩放效果。图片资源复制到"项目根目录\laya\assets"目录下即可，图片资源命名为xml中resName的属性值sButton或以sButton为前缀，如图9所示。
 
-​	![9](9.jpg)
+​	![9](img/9.jpg)
 
 ​	（图9）
 
 ​	资源复制完成后，我们再次打开LayaAirIDE的资源管理面板，点击刷新资源树按钮即可看到刚刚复制的sButton_1.png，点击该图片，我们可以看到图片的预览。说明我们带skin默认值的自定义组件成功的添加到项目的资源管理面板中，如图10所示。
 
-​	![10](10.jpg)
+​	![10](img/10.jpg)
 
 ​	（图10）
 
@@ -227,7 +227,7 @@ path:"src/component"      //设置需要分包的组件所在目录路径
 
 ​	在资源管理面板中找到sButton为前缀的组件，直接拖拽到页面，点击可看到缩放效果，如图11。
 
-​	![11](11.gif)
+​	![11](img/11.gif)
 
 ​	（图11）
 
@@ -235,7 +235,7 @@ path:"src/component"      //设置需要分包的组件所在目录路径
 
 ​	在组件面板中找到ScaleButton组件，直接拖拽到页面，点击可看到缩放效果，如图12
 
-​	![12](12.gif)
+​	![12](img/12.gif)
 
 ​	（图12）组件面板中不含图片资源，需要通过属性skin设置
 
@@ -249,7 +249,7 @@ path:"src/component"      //设置需要分包的组件所在目录路径
 
 ​	复制一张图片到项目的资源路径"项目根目录/h5/res/img"目录下，如图13。
 
-​	![13](13.jpg)
+​	![13](img/13.jpg)
 
 ​	（图13）
 
@@ -257,7 +257,7 @@ path:"src/component"      //设置需要分包的组件所在目录路径
 
 ​	打开上文编写的缩放按钮代码ScaleButton.as，将原来的组件库引入“import laya.editorUI.Button;”改为引擎的UI库引入“import laya.ui.Button;”，其它保持不变。因为 laya.editorUI是用于LayaAirIDE的，而项目运行必须引用引擎库laya.ui。如图14所示：
 
-​	![14](14.jpg)
+​	![14](img/14.jpg)
 
 ​	（图14）
 
@@ -297,7 +297,7 @@ package
 
 ​	将入口类设置为文档类后编译运行，在浏览器中点击能够实现缩放效果时，如图15所示。说明这是有效的自定义组件，可以放心的添加到IDE中使用了。（注意：正常的步骤是调试在分包之前，而本篇先介绍的分包操作，如果直接调试会出现报错，所以在编译运行之前，需要先将分包配置文件module.def改名或删除）
 
-​	![15](15.gif)
+​	![15](img/15.gif)
 
 ​	（图15）
 
@@ -319,13 +319,13 @@ View.regComponent("Button",ScaleButton);//注册组件
 
 ​	如果自定义的组件是容器类组件，如果需要在项目中使用，则需要在LayaAir IDE 项目的编辑器模式下，按F9打开项目设置面板，在“容器列表”中添加自定义的容器组件类名（以逗号间隔），如图16所示。
 
-​	![16](16.jpg)
+​	![16](img/16.jpg)
 
 ​	（图16）
 
 ​	如果自定义的组件是页面类组件，如果需要在项目中使用，则需要在此LayaAir IDE 项目的编辑器模式下，打开项目设置面板，在“页面列表”中添加自定义的页面组件类名（以逗号间隔），如图17所示。
 
-​	![17](17.jpg)
+​	![17](img/17.jpg)
 
 ​	（图17）
 
