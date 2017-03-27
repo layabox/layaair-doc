@@ -55,17 +55,11 @@
 
 　　`"name": "chrome调试"`   ： 表示用本地chrome浏览器调试。
 
-　　`"file": "${workspaceRoot}\\bin\\h5\\index.html"` ： 代表项目运行启动的入口文件，注意路径符号不要写成`/`，如果写成`"file": "${workspaceRoot}/bin/h5/index.html"`，会出现图5与图6的错误提示。<br />
+　　`"file": "${workspaceRoot}/bin/h5/index.html"` ： 表示项目运行启动的入口文件路径。
 
-![图片](img/5.png) <br />（图5）
+　　`"runtimeExecutable": "C:/Program Files (x86)/Google/Chrome/Application/chrome.exe"`： 为本地chrome浏览器的路径，开发者根据自己的需要来设置这个路径。
 
-![图片](img/6.png) <br />（图6）
-
-*Tips: 如果碰到上图的提示时，需要检查一下file的配置。*
-
-`"runtimeExecutable": "C:/Program Files (x86)/Google/Chrome/Application/chrome.exe"`： 为本地chrome浏览器的路径，开发者根据自己的需要来设置这个路径。
-
-`"userDataDir": "${tmpdir}"` 代表chrome调试缓存的临时目录，默认为用户的临时目录，开发者可以更改设置，例如将缓存设置为当前项目根目录下的cache目录： `"userDataDir": "${workspaceRoot}/cache"`。
+　　`"userDataDir": "${tmpdir}"` 代表chrome调试缓存的临时目录，默认为用户的临时目录，开发者可以更改设置，例如将缓存设置为当前项目根目录下的cache目录： `"userDataDir": "${workspaceRoot}/cache"`。
 
 ​	
 
