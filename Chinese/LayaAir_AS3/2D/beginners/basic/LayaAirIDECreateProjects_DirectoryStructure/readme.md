@@ -6,19 +6,19 @@
 
 ## **一、用LayaAirIDE创建AS3项目**
 
-**步骤一：**打开LayaAirIDE，点击新建项目，如图1
+步骤一：打开LayaAirIDE，点击新建项目，如图1
 
 ![图片](img/1.jpg)   <br />（图1）
 
 
 
-**步骤二：**选择“LayaAir空项目”在设置项目名称、路径、类型，以及选择完引擎版本后，点击“创建”建立一个新的空项目。如图2。
+步骤二：选择“LayaAir空项目”在设置项目名称、路径、类型，以及选择完引擎版本后，点击“创建”建立一个新的空项目。如图2。
 
 ![图片](img/2.jpg) <br /> （图2）
 
 
 
-**步骤三：**在点击“创建”后，可以看到项目的结构，项目文件夹结构如图3所示：
+步骤三：在点击“创建”后，可以看到项目的结构，项目文件夹结构如图3所示：
 
 ![图片](img/3.png)  <br />（图3）
 
@@ -50,8 +50,11 @@
  `.laya/launch.json` 文件保存了项目调试的一些配置信息,分别是LayaAirIDE的调试配置和chrome浏览器调试配置。不要轻易去改动，改错后会影响项目的调试。
 
 　　`configurations`： 这个属性下有`layaAir`和`chrome`两种调试的配置可用。
+
 　　`"type": "layaAir"` ： 表示用LayaAirIDE内置的调试方式。
+
 　　`"type": "chrome"`   ： 表示用本地chrome浏览器调试。
+
 　　`"file": "${workspaceRoot}\\bin\\h5\\index.html"` ： 代表项目运行启动的入口文件，注意路径符号不要写成`/`，如果写成`"file": "${workspaceRoot}/bin/h5/index.html"`，会出现下图的错误提示。<br />
 
 ![图片](img/5.png) <br />
@@ -61,6 +64,7 @@
 *Tips: 如果碰到上图的提示时，需要检查一下file的配置。*
 
 `"runtimeExecutable": "C:/Program Files (x86)/Google/Chrome/Application/chrome.exe"`： 为本地chrome浏览器的路径，开发者根据自己的需要来设置这个路径。
+
 `"userDataDir": "${tmpdir}"` 代表chrome调试缓存的临时目录，默认为用户的临时目录，开发者可以更改设置，例如将缓存设置为当前项目根目录下的cache目录： `"userDataDir": "${workspaceRoot}/cache"`。
 
 ​	
@@ -83,32 +87,37 @@
 "args": ["${workspaceRoot}/LayaUISample.as3proj;iflash=false;windowshow=false;chromerun=false"];
 ```
 
-#### 2.1.3  astool目录
+#### 2.1.3  `astool`目录
 
-​	`astool`是LayaCompiler编译器目录，`lsyajs`是MAC系统下的AS3编译器，`layajs.exe`是windows系统下的AS3编译器。
+​	`astool`是LayaCompiler编译器存放目录，`layajs`是MAC系统下的AS3编译器，`layajs.exe`是windows系统下的AS3编译器。
 
 
 
 ### 2.2 项目的输出目录（bin/h5）
 
-​    `bin/h5`目录存放的是当前项目的输出文件。用于存放项目中的ActionScript3.0 文件编译生成的js 文件和HTML5页面。如果开发者需要新建资源等运行目录或文件，需要放置于`bin/h5`的同级或子级目录中。
+​    `bin/h5`目录存放的是当前项目的输出文件。用于存放项目中的ActionScript3.0 文件编译生成的js 文件和HTML5页面。
+
+​    *Tips: 如果开发者需要新建资源等运行目录或文件，需要放置于`bin/h5`的同级或子级目录中。*
 
  
 
 ### 2.3 UI项目目录（laya）
 
 ​    “`laya`”目录用于存放LayaAirIDE当前的UI项目。
+
 ​    “`laya/assets`” 目录用来存放UI页面、粒子等组件所需的图片资源。
+
 ​    “`laya/pages`”目录用来存放LayaAirIDE创建页面布局生成的文件。
+
 ​    “`laya/.laya`”文件是LayaAirIDE的UI项目配置文件。
 
  
 
 ### 2.4 项目库目录（libs）
 
-​    “libs”目录内为项目的库目录，用于存放项目使用的库文件。
+​    “`libs`”目录内为项目的库目录，用于存放项目使用的库文件。
 
-   “libs/laya/src”目录内存放LayaAir引擎库文件。
+​    “`libs/laya/src`”目录内存放LayaAir引擎库文件。
 
 
 
@@ -129,6 +138,10 @@
 ​    `项目名.laya` 是LayaAirIDE项目的配置文件，文件内记录了当前项目的项目名称、使用的类库版本号和项目类型。
 
 ​    例如：
+
+```json
+{"proName":"myLaya","version":"1.5.4","proType":0}
+```
 
 
 
