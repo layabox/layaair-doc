@@ -55,11 +55,11 @@
 
 　　`"type": "chrome"`   ： 表示用本地chrome浏览器调试。
 
-　　`"file": "${workspaceRoot}\\bin\\h5\\index.html"` ： 代表项目运行启动的入口文件，注意路径符号不要写成`/`，如果写成`"file": "${workspaceRoot}/bin/h5/index.html"`，会出现下图的错误提示。<br />
+　　`"file": "${workspaceRoot}\\bin\\h5\\index.html"` ： 代表项目运行启动的入口文件，注意路径符号不要写成`/`，如果写成`"file": "${workspaceRoot}/bin/h5/index.html"`，会出现图5与图6的错误提示。<br />
 
-![图片](img/5.png) <br />
+![图片](img/5.png) <br />（图5）
 
-![图片](img/6.png) <br />
+![图片](img/6.png) <br />（图6）
 
 *Tips: 如果碰到上图的提示时，需要检查一下file的配置。*
 
@@ -73,7 +73,7 @@
 
 `tasks.json` 是任务配置文件，打开后内容如下图所示：
 
-![图片](img/8.jpg)<br />
+![图片](img/7.jpg)<br />（图7）
 
 **args参数说明：**
 
@@ -149,11 +149,11 @@
 
 ​    `项目名.as3proj`文件是FlashDevelop项目的配置文件。使用 FlashDevelop 编辑器开发AS3项目时，可以通过打开资源管理器，然后在目录中双击此文件用FlashDevelop 打开此项目。
 
-![图片](img/9.png)
+![图片](img/8.png) <br /> （图8）
 
 或者先打开FlashDevelop工具，然后在菜单栏通过“文件”->“打开”找到项目名.as3proj所在的目录打开此项目。
 
-![图片](img/10.png)
+![图片](img/9.png)<br />（图9）
 
 
 
@@ -161,6 +161,6 @@
 
 ​    `.settings`文件夹、`.actionScriptProperties`文件和`.project`文件是Flash Builder 项目的配置文件。使用 Flash Builder时，可以通过菜单栏“文件”->“导入Flash Builder项目”来导入LayaAirIDE创建的AS3项目。导入Flash Builder项目如下图所示：
 
- ![图片](img/11.png)
+ ![图片](img/10.png)<br /> （图10）
 
  
