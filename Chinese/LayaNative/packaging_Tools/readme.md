@@ -120,7 +120,8 @@ android应用的包名，这个正常情况下是不可见的。一般采用反�
 #### **4.2.10 启动LOGO：**
 
 　　启动页面中的logo可以替换成自己的设计的图片。
-*Tips: 使用LayaNative打包服务。启动页面中必须保留包含Layabox的LOGO图，此处仅为启动LOGO的设计样式改变，也就是说可以采用Layabox的LOGO图与产品LOGO结合等方式。*
+
+　　*Tips: 使用LayaNative打包服务。启动页面中必须保留包含Layabox的LOGO图，此处仅为启动LOGO的设计样式改变，也就是说可以采用Layabox的LOGO图与产品LOGO结合等方式。*
 
 
 
