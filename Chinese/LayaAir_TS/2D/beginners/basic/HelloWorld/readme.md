@@ -4,11 +4,7 @@
 
 
 
-<<<<<<< HEAD
-​       **步骤一**：选中src右键单击，然后左键点击“新建文件”，在src目录下建立一个HelloLayabox.ts的文件。（Tips：HelloLayabox.ts必须创建在src目录下，才会被编译）
-=======
-​       **步骤一：**选中src右键单击，然后左键点击“新建文件”，在src目录下建立一个HelloLayabox.ts的文件。（Tips：HelloLayabox.ts必须创建在src目录下，才会被编译）
->>>>>>> bda0fa84e4f92a1ec6c410bba7bc7a2bcf083ef8
+​    **步骤一：**选中src右键单击，然后左键点击“新建文件”，在src目录下建立一个HelloLayabox.ts的文件。（Tips：HelloLayabox.ts必须创建在src目录下，才会被编译）
 
 ​	![图片](img/1.png)<br/>
 ​	图（1）
