@@ -4,9 +4,9 @@
 
 
 
-​       步骤一：选中src右键单击，然后左键点击“新建文件”，在src目录下建立一个HelloLayabox.ts的文件。（Tips：HelloLayabox.ts必须创建在src目录下，才会被编译）
+​       **步骤一**：选中src右键单击，然后左键点击“新建文件”，在src目录下建立一个HelloLayabox.ts的文件。（Tips：HelloLayabox.ts必须创建在src目录下，才会被编译）
 
-​	![图片.png](img/1.png)<br/>
+​	![图片](img/1.png)<br/>
 ​	图（1）
 
 
@@ -29,7 +29,7 @@ Laya.stage.addChild(txt);
 
 ​     **步骤三**：编码完成后，按F5编译，在弹出的页面里，我们可以看到代码的运行结果，如下图所示：
 
-​	![图片.png](img/2.png)<br/>
+​	![图片](img/2.png)<br/>
 ​	图（2）
 
 
@@ -62,7 +62,7 @@ Laya.stage.addChild(txt);
 
 
 步骤五： **编写完成后，再次按F5编译，美化后的运行结果如下图所示：
-​	![图片.png](img/3.png)<br/>
+​	![图片](img/3.png)<br/>
 ​	图（3）
 
 **至此，如果您能跟随本篇入门教程，完成上图的显示，恭喜您入门成功，我们已经完成了第一个采用TypeScript语言开发的LayaAir引擎HTML5程序。更多LayaAir引擎开发的API使用方法，请前往官网Layabox开发者中心查看在线API与引擎示例。**
