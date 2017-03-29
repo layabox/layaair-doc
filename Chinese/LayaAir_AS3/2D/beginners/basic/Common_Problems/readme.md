@@ -1,6 +1,6 @@
 # 新手常见问题：配置环境之后点击运行报错、黑屏
 
-发布时间：2017-03-15
+
 
 ### 一、由于引用AS3原生导致的报错
 
@@ -33,6 +33,10 @@
 ​        ![blob.png](img/5.png)<br/>
 ​        （图5）引入引擎库，图中路径仅作参考
 
+
+
+
+
 ### 二、文档类（默认程序）未设置导致的编译报错
 
 **现象：**
@@ -55,6 +59,10 @@
 ​            ![blob.png](img/9.png)<br/>
 ​            （图9）在LayaAirIDE里，在.as3proj为后缀的工程文件内修改
 
+
+
+
+
 ### 三、多余字符导致的编译报错
 
 **现象：**
@@ -75,6 +83,10 @@
 
 ​        推荐使用FlashBuilder开发AS3语言版本的LayaAir引擎项目，FlashBuilder中自动语法检查功能比较成熟，会避免因一些不留意的小失误导致报错。
 
+
+
+
+
 ### 四、未选中程序文件导致的编译报错
 
 **现象：**
@@ -91,6 +103,8 @@
 **解决方案：**
 
 ​            选中有效的程序文件或文件夹，重新编译即可。
+
+
 
 
 
@@ -118,24 +132,29 @@
 
 ​                   需要修改webServer(一般webserver大多数都是 apache、nginx、tomcat等)，在请求特定的域名下加上跨域标识，这里以nginx为例：
 
-`http {`
+```nginx
+http {
 
-  `......`
+  ......
 
-  `add_header Access-Control-Allow-Origin *;`
+  add_header Access-Control-Allow-Origin *;
 
-  `add_header Access-Control-Allow-Headers X-Requested-With;`
+  add_header Access-Control-Allow-Headers X-Requested-With;
 
-  `add_header Access-Control-Allow-Methods GET,POST,OPTIONS;`
+  add_header Access-Control-Allow-Methods GET,POST,OPTIONS;
 
-  `......`
+  ......
 
-`}`
+}
+
+```
+
+
 
 这样就可以实现GET,POST,OPTIONS的跨域请求的支持
 
-也可以 `add_header Access-Control-Allow-Origin` http://www.layabox.com; --指定允许的url;
+也可以 `add_header Access-Control-Allow-Origin http://www.layabox.com;` -- 指定允许的url;
 
 ​                    3、如果是数据请求跨域，需要后端语言配合修改，在请求里加上header标识，这里以php语言为例：
 
-`header("Access-Control-Allow-Origin: *");`不一定用*，*是允许所有的主机跨域访问，你也可以写指定域名下的主机可以访问；
+`header("Access-Control-Allow-Origin: *");`不一定用`*`，`*`是允许所有的主机跨域访问，你也可以写指定域名下的主机可以访问；
