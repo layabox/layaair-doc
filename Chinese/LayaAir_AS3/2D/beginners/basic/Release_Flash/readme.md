@@ -60,13 +60,11 @@ FlashBuilder设置，如图2所示：
 
 
 
-
-
 ### 三、发布Flash版本
 
  
 
-1.将LayaAir提供的 samples 例子复制到新建立的项目里，然后新建立一个文档启动类，我们这里以Main.as为例。
+将LayaAir提供的 samples 例子复制到新建立的项目里，然后新建立一个文档启动类，我们这里以Main.as为例。
 
 Main.as示例源码：
 
@@ -110,11 +108,11 @@ package
 
 ### 四、注意事项与常见错误：
 
-1.如果项目内引入了JS库，则无法输出当前的项目到 Flash 版本。
+4.1 如果项目内引入了JS库，则无法输出当前的项目到 Flash 版本。
 
-2.因为用到了部分 Flash 的高版本API，Flash 的输出版本要求最低是11.9。
+4.2 发布的Flash 版本必须是11.9或更高版本。否则可能会出现`Error: Definition flash.display3D:Context3D could not be found.`等报错
 
-3.运行项目过程中偶尔会出现项目内函数调用参数数目与实际参数数目不一致的以情形。如：
+4.3 运行项目过程中偶尔会出现项目内函数调用参数数目与实际参数数目不一致的以情形。如：
 
 ```javascript
 [Fault] exception, information=ArgumentError: Error #1063: Animation_Altas/createAnimation() 的参数数量不匹配。应该有 0 个，当前为 1 个。
@@ -124,12 +122,7 @@ package
 
 在调用函数比函数原型参数少的地方，修改函数的原型参数为默认参数，比如p=null。
 
-4.Error: Definition flash.display3D:Context3D could not be found.
-
-输出目标平台的版本过低，Flash编译器找不到 Stage3D 相关的引入类。确保最低的输出平台为 Flash 11.9。
-
-5. (高级功能) 项目内如果有自定义的 LayaAir GLSL Shader，需要把自定的 GSLS文件 Embed 到 FlashMain 文件内，并在 Window.start 之前初始化这些 Shader，类似于如下的代码：
-
+4.4  (高级功能) 项目内如果有自定义的 LayaAir GLSL Shader，需要把自定的 GSLS文件 Embed 到 FlashMain 文件内，并在 Window.start 之前初始化这些 Shader，类似于如下的代码：
 
 
 ```javascript
@@ -150,7 +143,7 @@ public class FlashMain extends Sprite {
 }
 ```
 
-6.使用LayaAir的laya.net.Socket类来使用WebSocket时，相应消息处理回调函数内的参数类型必须设置为 * 号类型，如:
+4.5 使用LayaAir的laya.net.Socket类来使用WebSocket时，相应消息处理回调函数内的参数类型必须设置为 * 号类型，如:
 
 ```javascript
 private function onMessage(e:Event=null):void {}
