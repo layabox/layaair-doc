@@ -94,9 +94,44 @@
             "name_2_name": "快速上手",
             "name_2_data": [
               {
-                "name_3_name": "什么是HTML5？",
-                "name_3_url": "Chinese/Layabox_Intro/",
-                "name_3_file": "what_is_HTML5.md"
+                "name_3_name": "用LayaAirIDE创建AS3项目并详解目录结构",
+                "name_3_url": "Chinese/LayaAir_AS3/2D/beginners/basic/LayaAirIDECreateProjects_DirectoryStructure/",
+                "name_3_file": "readme.md"
+              },
+              {
+                "name_3_name": "Flash Builder开发环境配置",
+                "name_3_url": "Chinese/LayaAir_AS3/2D/beginners/basic/FlashBuilder_HelloWorld/",
+                "name_3_file": "readme.md"
+              },
+              {
+                "name_3_name": "FlashDevelop开发环境配置",
+                "name_3_url": "Chinese/LayaAir_AS3/2D/beginners/basic/FlashDevelop_DevelopmentEnvironment/",
+                "name_3_file": "readme.md"
+              },
+              {
+                "name_3_name": "LayaAirIDE中第一个程序“Hello Layabox”",
+                "name_3_url": "Chinese/LayaAir_AS3/2D/beginners/basic/LayaAirIDE_HelloWorld/",
+                "name_3_file": "readme.md"
+              },
+              {
+                "name_3_name": "FlashBuilder中第一个程序“Hello Layabox”",
+                "name_3_url": "Chinese/LayaAir_AS3/2D/beginners/basic/FlashBuilder_HelloWorld/",
+                "name_3_file": "readme.md"
+              },
+              {
+                "name_3_name": "FlashDevelop中第一个程序“Hello Layabox”",
+                "name_3_url": "Chinese/LayaAir_AS3/2D/beginners/basic/FlashDevelop_DevelopmentEnvironment/",
+                "name_3_file": "readme.md"
+              },
+              {
+                "name_3_name": "新手常见问题：配置环境之后点击运行报错、黑屏",
+                "name_3_url": "Chinese/LayaAir_AS3/2D/beginners/basic/Common_Problems/",
+                "name_3_file": "readme.md"
+              },
+              {
+                "name_3_name": "LayaAir项目发布Flash版本",
+                "name_3_url": "Chinese/LayaAir_AS3/2D/beginners/basic/Release_Flash/",
+                "name_3_file": "readme.md"
               }
             ]
           },
