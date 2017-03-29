@@ -111,13 +111,13 @@ android应用的包名，这个正常情况下是不可见的。一般采用反�
 
 
 
-#### **4.2.9 配置脚本：**
+#### 4.2.9 配置脚本：
 
 　　配置脚本相关请参考：[打包相关的其它设置综述](https://github.com/layabox/layaair-doc/tree/master/Chinese/LayaNative/Other_settings)
 
 
 
-#### **4.2.10 启动LOGO：**
+#### 4.2.10 启动LOGO：
 
 　　启动页面中的logo可以替换成自己的设计的图片。
 

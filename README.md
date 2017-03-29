@@ -7,11 +7,11 @@
 
 ### [AS3语言教程](https://github.com/layabox/layaair-doc/tree/master/Chinese/LayaAir_AS3)
 
-#### 　　**[LayaAir引擎2D](https://github.com/layabox/layaair-doc/tree/master/Chinese/LayaAir_AS3/2D)**
+#### 　　[LayaAir引擎2D](https://github.com/layabox/layaair-doc/tree/master/Chinese/LayaAir_AS3/2D)
 
-#### 　　**LayaAir引擎3D**
+#### 　　LayaAir引擎3D
 
-#### 　　**[LayaAirIDE](https://github.com/layabox/layaair-doc/tree/master/Chinese/LayaAir_AS3/IDE)**
+#### 　　[LayaAirIDE](https://github.com/layabox/layaair-doc/tree/master/Chinese/LayaAir_AS3/IDE)
 
 ### [TS语言教程](https://github.com/layabox/layaair-doc/tree/master/Chinese/LayaAir_TS)
 

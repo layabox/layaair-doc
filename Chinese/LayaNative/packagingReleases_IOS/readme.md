@@ -200,9 +200,9 @@ PS：代表人，及legal entity字段，必须与申请邓白氏码时填写的
 
 
 
-## **三、上传应用**
+## 三、上传应用
 
-### **1 创建CSR文件**
+### 1 创建CSR文件
 
 1.1   打开电脑中的钥匙串，在应用程序中找到
 
@@ -256,7 +256,7 @@ PS：代表人，及legal entity字段，必须与申请邓白氏码时填写的
 
 
 
-### **3 创建ProvisioningProfiles**
+### 3 创建ProvisioningProfiles
 
 ####  3.1 选择APP Store                              
 

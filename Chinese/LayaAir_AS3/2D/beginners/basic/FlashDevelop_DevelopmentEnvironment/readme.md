@@ -1,6 +1,6 @@
 # FlashDevelop开发环境配置
 
-### **第一步： LayaAir Engine下载**
+### 第一步： LayaAir Engine下载
 
 #### 1.1 引擎下载
 
@@ -27,7 +27,7 @@
 
 
 
-### **第二步 安装Google Chrome浏览器**
+### 第二步 安装Google Chrome浏览器
 
 ​    当执行AS3代码编译后，默认调用Chrome浏览器打开运行项目，需要安装此浏览器进行项目调试。已安装的可跳过本步骤。
 
@@ -35,7 +35,7 @@
 
 
 
-### **第三步 配置FlashDevelop中的AS3编译环境**
+### 第三步 配置FlashDevelop中的AS3编译环境
 
 ​    **步骤一**：打开FlashDevelop，在菜单栏里找到“宏”并打开“编辑宏”面板。
 

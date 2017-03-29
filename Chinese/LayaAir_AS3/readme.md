@@ -214,7 +214,7 @@ addEventListener(type,listener,useCapture,priority,useWeakReference));
 
 
 
-## **五、LayaAir与AS3的差异**
+## 五、LayaAir与AS3的差异
 
 在Flash AS3的原生API写法中可以直接继承Sprite，但是LayaAir引擎里主文档类入口（初始化引擎前）不能直接继承Sprite，按照AS3传统的习惯继承Sprite会导致报错。
 

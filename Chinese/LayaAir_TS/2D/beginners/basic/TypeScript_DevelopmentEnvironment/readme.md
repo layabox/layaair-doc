@@ -2,7 +2,7 @@
 
 
 
-### **1.1 Node.js下载**
+### 1.1 Node.js下载
 
 ​        TypeScript开发HTML5需要Node.js环境，如果没有安装过的，请前往官方下载(建议LTS版本)，如图1，URL地址为：[https://nodejs.org/en/](https://nodejs.org/en/)
 
