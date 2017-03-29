@@ -1,6 +1,6 @@
 # Flash Builder开发环境配置
 
-### **第一步： LayaAir Engine下载**
+### 第一步： LayaAir Engine下载
 
 #### 1.1 引擎下载
 
@@ -19,13 +19,13 @@
 - “playerglobal.swc”用于替换AS3原生编译器SDK，去除原生API语法提示，增加引擎API提示。 
 - ​
 
-### **第二步 安装Google Chrome浏览器**
+### 第二步 安装Google Chrome浏览器
 
 ​    当执行AS3代码编译后，默认调用Chrome浏览器打开运行项目，需要安装此浏览器进行项目调试。已安装的可跳过本步骤。
 
 
 
-### **第三步 配置Flash Builder中的AS3编译环境**
+### 第三步 配置Flash Builder中的AS3编译环境
 
 ​    步骤一：打开Flash Builder，找到“外部工具 配置”并打开该配置窗口。
 

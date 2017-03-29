@@ -4,7 +4,7 @@
 
 
 
-## **一、用LayaAirIDE创建AS3项目**
+## 一、用LayaAirIDE创建AS3项目
 
 步骤一：打开LayaAirIDE，点击新建项目，如图1
 
@@ -30,7 +30,7 @@
 
 
 
-## **二、介绍AS3项目结构**
+## 二、介绍AS3项目结构
 
 **接下来，将会结合上一节中创建的项目结构来介绍每个目录的作用。**
 
@@ -139,7 +139,7 @@
 
 
 
-### **3.2 FlashDevelop项目配置文件（项目名.as3proj）**
+### 3.2 FlashDevelop项目配置文件（项目名.as3proj）
 
 ​    `项目名.as3proj`文件是FlashDevelop项目的配置文件。使用 FlashDevelop 编辑器开发AS3项目时，可以通过打开资源管理器，然后在目录中双击此文件用FlashDevelop 打开此项目。
 
@@ -151,7 +151,7 @@
 
 
 
-### **3.3 Flash Builder 项目配置文件**
+### 3.3 Flash Builder 项目配置文件
 
 ​    `.settings`文件夹、`.actionScriptProperties`文件和`.project`文件是Flash Builder 项目的配置文件。使用 Flash Builder时，可以通过菜单栏“文件”->“导入Flash Builder项目”来导入LayaAirIDE创建的AS3项目。导入Flash Builder项目如下图所示：
 

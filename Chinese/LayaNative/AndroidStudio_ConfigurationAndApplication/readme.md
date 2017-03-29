@@ -4,11 +4,11 @@
 
 ## 1、 安装Android Studio的准备工作
 
-### **1. 1下载java JDK**
+### 1. 1下载java JDK
 
 　　去官网下载java JDK。具体教程可以参考：[http://jingyan.baidu.com/article/9989c746064d46f648ecfe9a.html](http://jingyan.baidu.com/article/9989c746064d46f648ecfe9a.html)
 
-### **1.2 安装JDK.并配置环境变量.**
+### 1.2 安装JDK.并配置环境变量.
 
 　　在Java或android的学习过程中，搭建JDK环境是必须的。本篇以jdk-8u45-windows-x64为例，在windows8.1的64位系统上进行配置环境。
 
@@ -100,7 +100,7 @@
 
 
 
-### **1.3 安装Android Studio**
+### 1.3 安装Android Studio
 
 自从Google宣布Android Studio将取代Eclipse，正式成为官方集成开发软件，中止对后者支持。本文将介绍Android Studio的安装（以Android Studio 1.4为例，文中简写AS） 
 
@@ -142,7 +142,7 @@
 
 
 
-# **2、 如何使用Android Studio创建新项目**
+# 2、 如何使用Android Studio创建新项目
 
 1）安装好之后,我们要新建我们的项目。重点从这里开始
 
@@ -180,7 +180,7 @@
 
 
 
-# **3 、AndroidStudio如何导入项目：**
+# 3 、AndroidStudio如何导入项目：
 
 **3.1开发环境：**
 

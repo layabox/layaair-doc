@@ -144,7 +144,7 @@ Android中有一个AndroidManifest.xml文件，在activity标签内有一个scre
 
 <br/>
 
-## **3、AssistiveTouch**
+## 3、AssistiveTouch
 
 默认AssistiveTouch是显示的
 
@@ -177,7 +177,7 @@ if(Browser.window['conch'])
 
 
 
-## **4、IPV6**
+## 4、IPV6
 
 苹果公司在2016年6月1日起，强制执行ipv6标准，所以开发者发布项目的时候，http请求和socket都必须使用域名的方式，不能使用ip地址。
 
@@ -190,7 +190,7 @@ if(Browser.window['conch'])
 
 
 
-## **5、声音**
+## 5、声音
 
    背景音乐：支持MP3格式 ，一次性只支持播放一个MP3，如果同时播放声音A和声音B，B会把A顶替调。
 

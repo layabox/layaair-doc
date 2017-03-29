@@ -4,7 +4,7 @@
 
 
 
-## **一、LayaAir引擎不支持int();**
+## 一、LayaAir引擎不支持int();
 
 ​        开发者在使用LayaAir引擎的时候，请注意不要再使用int()，该方法在LayaAir引擎中不被支持，如有相关功能的开发需要时，可以采用parseInt()替代。
 
@@ -24,7 +24,7 @@ var a:int = parseInt(1.5)//对浮点数取整，LayaAir引擎中需要采用pars
 
 
 
-## **二、mask遮罩的使用差异**
+## 二、mask遮罩的使用差异
 
 ​       在LayaAir引擎里，使用Mask有两点需要注意。
 
@@ -36,7 +36,7 @@ var a:int = parseInt(1.5)//对浮点数取整，LayaAir引擎中需要采用pars
 
 
 
-### **2.1 静态遮罩**
+### 2.1 静态遮罩
 
 **原生as3支持，但是不被LayaAir引擎支持的示例：**
 
@@ -121,7 +121,7 @@ Laya.timer.frameLoop(1,this,function():void
 
 
 
-## **三、Sprite自身绘制的graphics矢量图形注册事件点击区域差异;**
+## 三、Sprite自身绘制的graphics矢量图形注册事件点击区域差异;
 
 ​        在原生Flash AS3中，Sprite精灵创建完成后会自动计算宽高。但是在layaAir引擎中，为了节约性能，默认Sprite精灵是没有宽高的，需要为Sprite设置一个碰撞区域，也就是hitArea 或 size。
 
@@ -176,7 +176,7 @@ function onClick(evt:Event):void
 
 
 
-## **四、事件对象派发差异**
+## 四、事件对象派发差异
 
 ​        关于事件对象的派发方面，主要是语法差异。LayaAir引擎针对该方法的关键字以及参数做了精简和丰富。LayaAir在派发和监听事件的同时可以携带数据，譬如派发对象.event('自定义事件类型',['数据源'])，监听对象.on('事件类型','事件侦听函数的执行域','事件侦听函数','回调参数')。
 

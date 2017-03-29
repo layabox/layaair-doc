@@ -66,7 +66,7 @@
 
 ​		"group": 该属性所在的分组；对应groups中的分组，不存在的归属于“其他”分组；
 
-### **2、导入LayaAirIDE组件库**   
+### 2、导入LayaAirIDE组件库   
 #### 			2.1  下载LayaAirIDE组件库（本篇为AS版）
 
 ​	下载地址：   [http://ldc.layabox.com/uploadfile/file/20160528/1464408796653558.zip](img/http://ldc.layabox.com/uploadfile/file/20160528/1464408796653558.zip)
@@ -79,7 +79,7 @@
 
 ​	(图2)
 
-### **3、制作一个自定义组件**   
+### 3、制作一个自定义组件   
 #### 			3.1  创建一个组件类
 
 ​	   先创建一个组件目录(包)"component"，方便未来其它组件的分类，然后在component目录下创建一个缩放按钮类ScaleButton.as，如图3所示：

@@ -8,7 +8,7 @@ Layabox旗下第二代引擎LayaAir是全球首款基于HTML5协议的全能型�
 
 
 
-## **一、LayaAir IDE**
+## 一、LayaAir IDE
 
 LayaAir IDE是由LayaAir引擎开发，基于LayaAir UI系统，实现可视化编辑功能和自适应效果，看起来和原生桌面软件没有差别！
 ​	![blob.png](img/1.png)<br/>
@@ -16,7 +16,7 @@ LayaAir IDE是由LayaAir引擎开发，基于LayaAir UI系统，实现可视化�
 
 
 
-## **二、Burberry 微信H5广告**
+## 二、Burberry 微信H5广告
 
 上海彼邑采用LayaAir引擎开发的奢侈品牌Burberry新年广告出现在微信朋友圈，一时成为热点。整个H5融合了私人订制、产品展示、吴亦凡拜年等元素，将精美的画质、流畅的体验、出色的视频播放性能融为一体，展现出了Burberry的英式优雅。
 
@@ -30,7 +30,7 @@ LayaAir IDE是由LayaAir引擎开发，基于LayaAir UI系统，实现可视化�
 
 
 
-## **三、深圳地铁线路图**
+## 三、深圳地铁线路图
 
 2016年，深圳地铁为了方便市民出行，使用LayaAir引擎制作了在线地铁运营网络路线图，方便市民实时查询各站之间的来往及换乘，让市民能够清晰的规划出行线路。
 

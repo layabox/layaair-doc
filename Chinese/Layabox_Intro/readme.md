@@ -22,7 +22,7 @@
 
 
 
-# **Layabox的今生**
+# Layabox的今生
 
 ​        2014年底，Layabox品牌建立，天使轮获千万级投资，成立搜游网络科技（北京）有限公司（海外Layabox Inc.）。2015年推出第一代开源引擎LayaFlash，成为行业唯一支持Flash AS3语言的引擎。2016年推出第二代开源引擎LayaAir，支持AS3、TS、JS三种语言开发，且浏览器裸跑（不依赖Runtime）性能媲美APP。全面支持2D、3D、AR、VR的产品研发。
 
