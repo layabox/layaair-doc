@@ -219,9 +219,29 @@
             "name_2_name": "屏幕适配",
             "name_2_data": [
               {
-                "name_3_name": "什么是HTML5？",
-                "name_3_url": "Chinese/Layabox_Intro/",
-                "name_3_file": "what_is_HTML5.md"
+                "name_3_name": "屏幕适配API概述",
+                "name_3_url": "Chinese/LayaAir_AS3/2D/beginners/Screen_Fit/API_Overview/",
+                "name_3_file": "readme.md"
+              },
+              {
+                "name_3_name": "对齐模式：水平对齐与垂直对齐",
+                "name_3_url": "Chinese/LayaAir_AS3/2D/beginners/Screen_Fit/Alignment/",
+                "name_3_file": "readme.md"
+              },
+              {
+                "name_3_name": "自动横屏与横屏游戏",
+                "name_3_url": "Chinese/LayaAir_AS3/2D/beginners/Screen_Fit/Landscape_Mode/",
+                "name_3_file": "readme.md"
+              },
+              {
+                "name_3_name": "游戏自动竖屏设置",
+                "name_3_url": "Chinese/LayaAir_AS3/2D/beginners/Screen_Fit/VerticalScreen_mode/",
+                "name_3_file": "readme.md"
+              },
+              {
+                "name_3_name": "屏幕适配的缩放模式详解",
+                "name_3_url": "Chinese/LayaAir_AS3/2D/beginners/Screen_Fit/Scale_Mode/",
+                "name_3_file": "readme.md"
               }
             ]
           }
@@ -662,11 +682,31 @@
           },
           {
             "name_2_name": "屏幕适配",
-            "name_2_data": [
+            "name_2_data": [              
               {
-                "name_3_name": "什么是HTML5？",
-                "name_3_url": "Chinese/Layabox_Intro/",
-                "name_3_file": "what_is_HTML5.md"
+                "name_3_name": "屏幕适配API概述",
+                "name_3_url": "Chinese/LayaAir_TS/2D/beginners/Screen_Fit/API_Overview/",
+                "name_3_file": "readme.md"
+              },
+              {
+                "name_3_name": "对齐模式：水平对齐与垂直对齐",
+                "name_3_url": "Chinese/LayaAir_TS/2D/beginners/Screen_Fit/Alignment/",
+                "name_3_file": "readme.md"
+              },
+              {
+                "name_3_name": "自动横屏与横屏游戏",
+                "name_3_url": "Chinese/LayaAir_TS/2D/beginners/Screen_Fit/Landscape_Mode/",
+                "name_3_file": "readme.md"
+              },
+              {
+                "name_3_name": "游戏自动竖屏设置",
+                "name_3_url": "Chinese/LayaAir_TS/2D/beginners/Screen_Fit/VerticalScreen_mode/",
+                "name_3_file": "readme.md"
+              },
+              {
+                "name_3_name": "屏幕适配的缩放模式详解",
+                "name_3_url": "Chinese/LayaAir_TS/2D/beginners/Screen_Fit/Scale_Mode/",
+                "name_3_file": "readme.md"
               }
             ]
           }
@@ -1104,9 +1144,29 @@
             "name_2_name": "屏幕适配",
             "name_2_data": [
               {
-                "name_3_name": "什么是HTML5？",
-                "name_3_url": "Chinese/Layabox_Intro/",
-                "name_3_file": "what_is_HTML5.md"
+                "name_3_name": "屏幕适配API概述",
+                "name_3_url": "Chinese/LayaAir_JS/2D/beginners/Screen_Fit/API_Overview/",
+                "name_3_file": "readme.md"
+              },
+              {
+                "name_3_name": "对齐模式：水平对齐与垂直对齐",
+                "name_3_url": "Chinese/LayaAir_JS/2D/beginners/Screen_Fit/Alignment/",
+                "name_3_file": "readme.md"
+              },
+              {
+                "name_3_name": "自动横屏与横屏游戏",
+                "name_3_url": "Chinese/LayaAir_JS/2D/beginners/Screen_Fit/Landscape_Mode/",
+                "name_3_file": "readme.md"
+              },
+              {
+                "name_3_name": "游戏自动竖屏设置",
+                "name_3_url": "Chinese/LayaAir_JS/2D/beginners/Screen_Fit/VerticalScreen_mode/",
+                "name_3_file": "readme.md"
+              },
+              {
+                "name_3_name": "屏幕适配的缩放模式详解",
+                "name_3_url": "Chinese/LayaAir_JS/2D/beginners/Screen_Fit/Scale_Mode/",
+                "name_3_file": "readme.md"
               }
             ]
           }
