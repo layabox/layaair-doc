@@ -18,7 +18,7 @@
 
  
 
-​        步骤二：安装完Node.js后，接着就可以使用NPM来安装TypeScript Compiler，之后就能通过这个Compiler来将TypeScript编译成为JavaScript。在这个步骤里，开发者需要打开cmd命令行工具，输入指令“npm install -g typescript”，按回车键后，即可开始进行TypeScript Compiler的安装。
+​        步骤二：安装完Node.js后，接着就可以使用NPM来安装TypeScript Compiler，之后就能通过这个Compiler来将TypeScript编译成为JavaScript。在这个步骤里，开发者需要打开cmd命令行工具，输入指令“`npm install -g typescript`”，按回车键后，即可开始进行TypeScript Compiler的安装。
 
 ```typescript
 npm install -g typescript
