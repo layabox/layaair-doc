@@ -264,8 +264,23 @@
             "name_2_name": "代码模式基础",
             "name_2_data": [
               {
-                "name_3_name": "什么是HTML5？",
-                "name_3_url": "",
+                "name_3_name": "代码模式布局概述",
+                "name_3_url": "Chinese/LayaAir_AS3/IDE/Code_Mode/GUI_Layout/",
+                "name_3_file": "readme.md"
+              },
+              {
+                "name_3_name": "菜单栏详解",
+                "name_3_url": "Chinese/LayaAir_AS3/IDE/Code_Mode/MenuBar/",
+                "name_3_file": "readme.md"
+              },
+              {
+                "name_3_name": "工具栏布局介绍",
+                "name_3_url": "Chinese/LayaAir_AS3/IDE/Code_Mode/ToolBar/",
+                "name_3_file": "readme.md"
+              },
+              {
+                "name_3_name": "代码模式的快捷键设置",
+                "name_3_url": "Chinese/LayaAir_AS3/IDE/Code_Mode/shortcut_key/",
                 "name_3_file": "readme.md"
               }
             ]
@@ -739,8 +754,23 @@
             "name_2_name": "代码模式基础",
             "name_2_data": [
               {
-                "name_3_name": "什么是HTML5？",
-                "name_3_url": "",
+                "name_3_name": "代码模式布局概述",
+                "name_3_url": "Chinese/LayaAir_TS/IDE/Code_Mode/GUI_Layout/",
+                "name_3_file": "readme.md"
+              },
+              {
+                "name_3_name": "菜单栏详解",
+                "name_3_url": "Chinese/LayaAir_TS/IDE/Code_Mode/MenuBar/",
+                "name_3_file": "readme.md"
+              },
+              {
+                "name_3_name": "工具栏布局介绍",
+                "name_3_url": "Chinese/LayaAir_TS/IDE/Code_Mode/ToolBar/",
+                "name_3_file": "readme.md"
+              },
+              {
+                "name_3_name": "代码模式的快捷键设置",
+                "name_3_url": "Chinese/LayaAir_TS/IDE/Code_Mode/shortcut_key/",
                 "name_3_file": "readme.md"
               }
             ]
@@ -1209,8 +1239,23 @@
             "name_2_name": "代码模式基础",
             "name_2_data": [
               {
-                "name_3_name": "什么是HTML5？",
-                "name_3_url": "",
+                "name_3_name": "代码模式布局概述",
+                "name_3_url": "Chinese/LayaAir_JS/IDE/Code_Mode/GUI_Layout/",
+                "name_3_file": "readme.md"
+              },
+              {
+                "name_3_name": "菜单栏详解",
+                "name_3_url": "Chinese/LayaAir_JS/IDE/Code_Mode/MenuBar/",
+                "name_3_file": "readme.md"
+              },
+              {
+                "name_3_name": "工具栏布局介绍",
+                "name_3_url": "Chinese/LayaAir_JS/IDE/Code_Mode/ToolBar/",
+                "name_3_file": "readme.md"
+              },
+              {
+                "name_3_name": "代码模式的快捷键设置",
+                "name_3_url": "Chinese/LayaAir_JS/IDE/Code_Mode/shortcut_key/",
                 "name_3_file": "readme.md"
               }
             ]
