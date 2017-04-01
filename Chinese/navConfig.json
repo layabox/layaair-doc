@@ -140,7 +140,7 @@
             "name_2_data": [
               {
                 "name_3_name": "显示对象及相关概念",
-                "name_3_url": "Chinese/LayaAir_TS/2D/beginners/basic/",
+                "name_3_url": "Chinese/LayaAir_AS3/2D/beginners/basic/",
                 "name_3_file": "readme.md"
               }
             ]
@@ -149,9 +149,9 @@
             "name_2_name": "位图",
             "name_2_data": [
               {
-                "name_3_name": "什么是HTML5？",
-                "name_3_url": "Chinese/Layabox_Intro/",
-                "name_3_file": "what_is_HTML5.md"
+                "name_3_name": "设置遮罩",
+                "name_3_url": "Chinese/LayaAir_AS3/2D/beginners/Bitmap/Mask/",
+                "name_3_file": "readme.md"
               }
             ]
           },
@@ -639,9 +639,9 @@
             "name_2_name": "位图",
             "name_2_data": [
               {
-                "name_3_name": "什么是HTML5？",
-                "name_3_url": "Chinese/Layabox_Intro/",
-                "name_3_file": "what_is_HTML5.md"
+                "name_3_name": "设置遮罩",
+                "name_3_url": "Chinese/LayaAir_TS/2D/beginners/Bitmap/Mask/",
+                "name_3_file": "readme.md"
               }
             ]
           },
@@ -1115,7 +1115,7 @@
             "name_2_data": [
               {
                 "name_3_name": "显示对象及相关概念",
-                "name_3_url": "Chinese/LayaAir_TS/2D/beginners/basic/",
+                "name_3_url": "Chinese/LayaAir_JS/2D/beginners/basic/",
                 "name_3_file": "readme.md"
               }
             ]
@@ -1124,9 +1124,9 @@
             "name_2_name": "位图",
             "name_2_data": [
               {
-                "name_3_name": "什么是HTML5？",
-                "name_3_url": "Chinese/Layabox_Intro/",
-                "name_3_file": "what_is_HTML5.md"
+                "name_3_name": "设置遮罩",
+                "name_3_url": "Chinese/LayaAir_JS/2D/beginners/Bitmap/Mask/",
+                "name_3_file": "readme.md"
               }
             ]
           },
