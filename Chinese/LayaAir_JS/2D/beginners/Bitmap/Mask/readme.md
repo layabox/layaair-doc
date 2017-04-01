@@ -17,41 +17,35 @@
 
 2.1 我们先用LayaAir引擎显示一张位图，代码如下：
 
-```java
-package
+```javascript
+(function()
 {
-	import laya.display.Sprite;
-	import laya.resource.Texture;
-	import laya.utils.Handler;
-	
-	public class MaskDemo
+  	var Sprite = Laya.Sprite;
+	var Texture = Laya.Texture;
+  	var Handler = Laya.Handler;
+
+  	var Res;
+	var img;
+	(function()
 	{
-		private var Res:String;
-		private var img:Sprite;
-      
-		public function MaskDemo()
-		{
 			Laya.init(1136,640);
 			//设置舞台背景色
-			Laya.stage.bgColor = "#ffffff"        
-			//资源路径              
-			Res = "res/img/monkey1.png";
-			
+			Laya.stage.bgColor = "#ffffff"      
+			//资源路径
+			Res = "./res/img/monkey1.png";		
 			//先加载图片资源，在图片资源加载成功后，通过回调方法绘制图片并添加到舞台
-			Laya.loader.load(Res,Handler.create(this,graphicsImg));          
-		}
-			
-		private function graphicsImg():void
+			Laya.loader.load(Res,Handler.create(this,graphicsImg));   
+		})();
+		
+		function graphicsImg()
 		{
 			img = new Sprite();
 			//获取图片资源，绘制到画布
 			img.graphics.drawTexture(Laya.loader.getRes(Res),150,50);
-			
 			//添加到舞台
 			Laya.stage.addChild(img);
-		}	
-	}
-}
+		}
+})();
 ```
 
 运行效果如图2所示：
@@ -61,53 +55,46 @@ package
 
 2.2 创建一个圆形的遮罩区域，通过mask属性，即可实现遮罩效果。继续看代码和注释，我们将2.1示例代码修改为如下代码：
 
-```java
-package
+```javascript
+(function()
 {
-	import laya.display.Sprite;
-	import laya.resource.Texture;
-	import laya.utils.Handler;
-	
-	public class MaskDemo
+  	var Sprite = Laya.Sprite;
+	var Texture = Laya.Texture;
+  	var Handler = Laya.Handler;
+
+  	var Res;
+	var img;
+	(function()
 	{
-		private var Res:String;
-		private var img:Sprite;
-		
-		public function MaskDemo()
-		{
 			Laya.init(1136,640);
 			//设置舞台背景色
 			Laya.stage.bgColor = "#ffffff"      
 			//资源路径
-			Res = "res/img/monkey1.png";		
-			
+			Res = "./res/img/monkey1.png";		
 			//先加载图片资源，在图片资源加载成功后，通过回调方法绘制图片并添加到舞台
 			Laya.loader.load(Res,Handler.create(this,graphicsImg));   
-		}
+		})();
 		
-		private function graphicsImg():void
+		function graphicsImg()
 		{
 			img = new Sprite();
 			//获取图片资源，绘制到画布
 			img.graphics.drawTexture(Laya.loader.getRes(Res),150,50);
-			
 			//添加到舞台
 			Laya.stage.addChild(img);
 			
-			
 			//创建遮罩对象
-			var cMask:Sprite = new Sprite();
+			var cMask = new Sprite();
 			//画一个圆形的遮罩区域
 			cMask.graphics.drawCircle(80,80,50,"#ff0000");
           	//圆形所在的位置坐标
 			cMask.pos(120,50);
-          
+         
          	//实现img显示对象的遮罩效果
 			img.mask = cMask;
 			
 		}
-	}
-}
+})();
 ```
 
 运行效果如图3所示：
@@ -174,36 +161,32 @@ package
 
 ### 4.2 使用IDE生成的类与图集，实现遮罩效果
 
-　　创建一个入口类`Main.as`，编码如下：
+　　创建一个入口类`MaskDemo.js`，编码如下：
 
-```java
-package
+```javascript
+(function()
 {
-	import laya.net.Loader;
-	import laya.utils.Handler;	
-	import ui.maskDemoUI;
+  	var Loader = Laya.Loader;
+  	var Handler = Laya.Handler;
 	
-	public class Main
+(function()
 	{
-		public function Main()
-		{
 			//初始化舞台
 			Laya.init(1136,640);
 			//设置舞台背景色
 			Laya.stage.bgColor = "#ffffff"    
 				
 			//加载图集资源，加载成功后添加到舞台
-			Laya.loader.load([{url:"res/atlas/ui.json",type:Loader.ATLAS}],Handler.create(this,onLoaded));
+			Laya.loader.load([{url:"./res/atlas/ui.json",type:Loader.ATLAS}],Handler.create(this,onLoaded));
 			
-		}
+		}})();
 		
-		private function onLoaded():void
+		function onLoaded()
 		{
-			var cMask:maskDemoUI = new maskDemoUI();
+			var cMask = new maskDemoUI();
 			Laya.stage.addChild(cMask);
 		}
-	}
-}
+}})();
 ```
 
 运行效果如图10所示，我们很快捷的实现了遮罩的效果。
