@@ -13,33 +13,29 @@
 
 下面我们用LayaAir引擎先绘制一个三角形，示例代码如下：
 
-```java
-package
+```javascript
+(function()
 {
-    import laya.display.Sprite;
-    import laya.display.Stage;
-    import laya.webgl.WebGL;
-      
-    public class Sprite_DrawShapes
-    {
-        private var sp:Sprite;
-          
-        public function Sprite_DrawShapes()
-        {
-            Laya.init(500, 300, WebGL);
-            drawSomething();
-        }
+    var Sprite = Laya.Sprite;
+    var Stage  = Laya.Stage;
+    var WebGL  = Laya.WebGL;
+    var sp;
   
-        private function drawSomething():void
-        {
-            sp = new Sprite();
-            Laya.stage.addChild(sp);
-            //画三角形
-            sp.graphics.drawPoly(30, 28, [0, 100, 50, 0, 100, 100], "#ffff00");
-              
-        }
+    (function()
+    {
+        //初始化舞台，不支持WebGL时自动切换至Canvas
+        Laya.init(500, 300, WebGL);
+        drawSomething();
+    })();
+  
+    function drawSomething()
+    {
+        sp = new Sprite();
+        Laya.stage.addChild(sp);
+        //画三角形
+        sp.graphics.drawPoly(30, 28, [0, 100, 50, 0, 100, 100], "#ffff00");
     }
-}
+})();
 ```
 
 代码运行效果如下图所示：
@@ -57,7 +53,7 @@ package
 
 ​        我们继续用上面的代码示例，通过增加drawPoly第三位参数的坐标，来实现多边形的绘制，修改的代码如下：
 
-```java
+```javascript
 //画多边形
 sp.graphics.drawPoly(30, 28, [0, 100, 50, 0, 100, 100, 75, 150, 25, 150], "#ffff00");
 ```
@@ -75,43 +71,44 @@ sp.graphics.drawPoly(30, 28, [0, 100, 50, 0, 100, 100, 75, 150, 25, 1
 
 ​        通过上面的三角形和多边形，我们已经掌握了drawPoly的绘图用法，下面再通过示例深入介绍一下，如何指定路径绘制一个五角星。示例代码如下：
 
-```java
-package
+```javascript
+(function()
 {
-    import laya.display.Sprite;
-    import laya.display.Stage;
-      
-    public class Sprite_DrawShapes
+    var Sprite = Laya.Sprite;
+    var Stage  = Laya.Stage;
+    var WebGL   = Laya.WebGL;
+    var sp;
+     
+    (function()
     {
-        private var sp:Sprite;
-          
-        public function Sprite_DrawShapes()
-        {
-            Laya.init(500, 300);
-            drawSomething();
-        }
+        //消除矢量绘制的锯齿，但会增加性能消耗
+        Laya.Config.isAntialias=true;
+         
+        //初始化舞台
+        Laya.init(500, 300, WebGL);
+        drawSomething();
+    })();
   
-        private function drawSomething():void
-        {
-             var canvas:Sprite = new Sprite();
-         Laya.stage.addChild(canvas);
-          
-         var path:Array = []; 
-         path.push(0, -130);//五角星A点坐标
-         path.push(33, -33);//五角星B点坐标
-         path.push(137, -30);//五角星C点坐标
-         path.push(55, 32);//五角星D点坐标
-         path.push(85, 130);//五角星E点坐标
-         path.push(0, 73);//五角星F点坐标
-         path.push(-85, 130);//五角星G点坐标
-         path.push(-55, 32);//五角星H点坐标
-         path.push(-137, -30);//五角星I点坐标
-         path.push(-33, -33);//五角星J点坐标
-          
-         canvas.graphics.drawPoly(Laya.stage.width / 2, Laya.stage.height / 2, path, "#FF7F50");       
-     }
+    function drawSomething()
+    {
+       var canvas = new Sprite();
+        Laya.stage.addChild(canvas);
+ 
+        var path = [];
+        path.push(0, -130);//五角星A点
+        path.push(33, -33);//五角星B点
+        path.push(137, -30);//五角星C点
+        path.push(55, 32);//五角星D点
+        path.push(85, 130);//五角星E点
+        path.push(0, 73);//五角星F点
+        path.push(-85, 130);//五角星G点
+        path.push(-55, 32);//五角星H点
+        path.push(-137, -30);//五角星I点
+        path.push(-33, -33);//五角星J点
+ 
+        canvas.graphics.drawPoly(Laya.stage.width / 2, Laya.stage.height / 2, path, "#FF7F50");   
     }
-}
+})();
 ```
 
 代码运行效果如下图所示：
@@ -123,23 +120,21 @@ package
 
 
 
-
-
 ### 四、用LayaAirIDE通过控件绘制不规则图形（包括三角形，多边形）
 
 
 
-**步骤一**：打开我们的LayaAirIDE，点击设计模式，新建一个View页面
+**步骤一：**打开我们的LayaAirIDE，点击设计模式，新建一个View页面
 
 ​	![6](img/5.png)<br/>
 ​   	（图5）  
 
-**步骤二**：将组件中的曲线组件拖动到View页面上，就会自动生成默认的多边形
+**步骤二：**将组件中的曲线组件拖动到View页面上，就会自动生成默认的多边形
 
 ​	![7](img/6.png)<br/>
 ​   	（图6）  
 
-**步骤三**：修改（添加/减少）Poly组件属性中的数值，改变多边形的大小、颜色等等。
+**步骤三：**修改（添加/减少）Poly组件属性中的数值，改变多边形的大小、颜色等等。
 
 ​   	![8](img/7.png)<br/>
 ​   	（图7）  
@@ -152,4 +147,4 @@ package
 
 
 
-到此我们通过LayaAirIDE组件绘制多边形就完成了。
+到此我们通过LayaAirIDE的组件绘制多边形就完成了。
