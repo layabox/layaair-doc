@@ -159,9 +159,39 @@
             "name_2_name": "矢量图",
             "name_2_data": [
               {
-                "name_3_name": "什么是HTML5？",
-                "name_3_url": "Chinese/Layabox_Intro/",
-                "name_3_file": "what_is_HTML5.md"
+                "name_3_name": "矢量绘图API概述",
+                "name_3_url": "Chinese/LayaAir_AS3/2D/beginners/Graphics/API_Overview/",
+                "name_3_file": "readme.md"
+              },
+              {
+                "name_3_name": "绘制直线与折线",
+                "name_3_url": "Chinese/LayaAir_AS3/2D/beginners/Graphics/line/",
+                "name_3_file": "readme.md"
+              },
+              {
+                "name_3_name": "绘制曲线",
+                "name_3_url": "Chinese/LayaAir_AS3/2D/beginners/Graphics/Curve/",
+                "name_3_file": "readme.md"
+              },
+              {
+                "name_3_name": "绘制三角形、多边形及根据数据绘制图案",
+                "name_3_url": "Chinese/LayaAir_AS3/2D/beginners/Graphics/poly/",
+                "name_3_file": "readme.md"
+              },
+              {
+                "name_3_name": "绘制圆形与扇形",
+                "name_3_url": "Chinese/LayaAir_AS3/2D/beginners/Graphics/Circle_pie/",
+                "name_3_file": "readme.md"
+              },
+              {
+                "name_3_name": "绘制矩形与圆角矩形",
+                "name_3_url": "Chinese/LayaAir_AS3/2D/beginners/Graphics/Rect/",
+                "name_3_file": "readme.md"
+              },
+              {
+                "name_3_name": "消除矢量图绘制锯齿",
+                "name_3_url": "Chinese/LayaAir_AS3/2D/beginners/Graphics/",
+                "name_3_file": "readme.md"
               }
             ]
           },
@@ -649,9 +679,39 @@
             "name_2_name": "矢量图",
             "name_2_data": [
               {
-                "name_3_name": "什么是HTML5？",
-                "name_3_url": "Chinese/Layabox_Intro/",
-                "name_3_file": "what_is_HTML5.md"
+                "name_3_name": "矢量绘图API概述",
+                "name_3_url": "Chinese/LayaAir_TS/2D/beginners/Graphics/API_Overview/",
+                "name_3_file": "readme.md"
+              },
+              {
+                "name_3_name": "绘制直线与折线",
+                "name_3_url": "Chinese/LayaAir_TS/2D/beginners/Graphics/line/",
+                "name_3_file": "readme.md"
+              },
+              {
+                "name_3_name": "绘制曲线",
+                "name_3_url": "Chinese/LayaAir_TS/2D/beginners/Graphics/Curve/",
+                "name_3_file": "readme.md"
+              },
+              {
+                "name_3_name": "绘制三角形、多边形及根据数据绘制图案",
+                "name_3_url": "Chinese/LayaAir_TS/2D/beginners/Graphics/poly/",
+                "name_3_file": "readme.md"
+              },
+              {
+                "name_3_name": "绘制圆形与扇形",
+                "name_3_url": "Chinese/LayaAir_TS/2D/beginners/Graphics/Circle_pie/",
+                "name_3_file": "readme.md"
+              },
+              {
+                "name_3_name": "绘制矩形与圆角矩形",
+                "name_3_url": "Chinese/LayaAir_TS/2D/beginners/Graphics/Rect/",
+                "name_3_file": "readme.md"
+              },
+              {
+                "name_3_name": "消除矢量图绘制锯齿",
+                "name_3_url": "Chinese/LayaAir_TS/2D/beginners/Graphics/",
+                "name_3_file": "readme.md"
               }
             ]
           },
@@ -1134,9 +1194,39 @@
             "name_2_name": "矢量图",
             "name_2_data": [
               {
-                "name_3_name": "什么是HTML5？",
-                "name_3_url": "Chinese/Layabox_Intro/",
-                "name_3_file": "what_is_HTML5.md"
+                "name_3_name": "矢量绘图API概述",
+                "name_3_url": "Chinese/LayaAir_JS/2D/beginners/Graphics/API_Overview/",
+                "name_3_file": "readme.md"
+              },
+              {
+                "name_3_name": "绘制直线与折线",
+                "name_3_url": "Chinese/LayaAir_JS/2D/beginners/Graphics/line/",
+                "name_3_file": "readme.md"
+              },
+              {
+                "name_3_name": "绘制曲线",
+                "name_3_url": "Chinese/LayaAir_JS/2D/beginners/Graphics/Curve/",
+                "name_3_file": "readme.md"
+              },
+              {
+                "name_3_name": "绘制三角形、多边形及根据数据绘制图案",
+                "name_3_url": "Chinese/LayaAir_JS/2D/beginners/Graphics/poly/",
+                "name_3_file": "readme.md"
+              },
+              {
+                "name_3_name": "绘制圆形与扇形",
+                "name_3_url": "Chinese/LayaAir_JS/2D/beginners/Graphics/Circle_pie/",
+                "name_3_file": "readme.md"
+              },
+              {
+                "name_3_name": "绘制矩形与圆角矩形",
+                "name_3_url": "Chinese/LayaAir_JS/2D/beginners/Graphics/Rect/",
+                "name_3_file": "readme.md"
+              },
+              {
+                "name_3_name": "消除矢量图绘制锯齿",
+                "name_3_url": "Chinese/LayaAir_JS/2D/beginners/Graphics/",
+                "name_3_file": "readme.md"
               }
             ]
           },
