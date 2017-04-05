@@ -180,7 +180,7 @@ new laya.Sprite_DrawShapes();
 
 ```java
 //绘制圆角矩形
-sp.graphics.drawPath(100, 100, path, {fillStyle: "#ff0000"},{"strokeStyle":"#ffffff","lineWidth":"10"});
+this.sp.graphics.drawPath(100, 100, path, {fillStyle: "#ff0000"},{"strokeStyle":"#ffffff","lineWidth":"10"});
 ```
 
 修改后运行效果如图5-3所示，由于画线的时候，从画笔的起始点`0,0`开始的，所以并不是我们想要的结果。
@@ -234,17 +234,17 @@ new laya.Sprite_DrawShapes();
 
 ### 四、用LayaAirIDE拖动控件绘制矩形
 
-​	**步骤一：**打开我们的LayaAirIDE，点击设计模式，新建一个View页面
+​	**步骤一**：打开我们的LayaAirIDE，点击设计模式，新建一个View页面
 
 ​	![6](img/6.png)<br/>
 ​   	（图6）  
 
-**步骤二：**将组件中的曲线组件拖动到View页面上，就会自动生成默认的曲线
+**步骤二**：将组件中的曲线组件拖动到View页面上，就会自动生成默认的曲线
 
 ​	![7](img/7.png)<br/>
 ​   	（图7）  
 
-**步骤三：**修改（添加/减少）Rect组件属性中的数值，改变矩形的大小、颜色、旋转角度等等。
+**步骤三**：修改（添加/减少）Rect组件属性中的数值，改变矩形的大小、颜色、旋转角度等等。
 
 ​   	![8](img/8.png)<br/>
 ​   	（图13）  

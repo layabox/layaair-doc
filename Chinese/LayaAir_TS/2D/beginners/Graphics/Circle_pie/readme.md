@@ -12,30 +12,26 @@
 下面我们用LayaAir引擎绘制一个圆形，示例代码如下：
 
 ```javascript
-module laya {
-    import Sprite = Laya.Sprite;
-    import Stage = Laya.Stage;
-    import WebGL = Laya.WebGL;
+(function()
+{
+    var Sprite = Laya.Sprite;
+    var Stage  = Laya.Stage;
   
-    export class Sprite_DrawShapes {
-        private sp: Sprite;
+    (function()
+    {
+        //初始化舞台
+        Laya.init(500, 300);
+        drawSomething();
+    })();
   
-        constructor()
-        {
-            Laya.init(500, 300, WebGL);
-            this.drawSomething();
-        }
-  
-        private drawSomething(): void {
-            this.sp = new Sprite();
-            Laya.stage.addChild(this.sp);
-            //画圆
-            this.sp.graphics.drawCircle(80,80,50,"#ff0000");
-  
-        }
-    }
-}
-new laya.Sprite_DrawShapes();
+    function drawSomething()
+    {
+        var sp = new Sprite();
+        Laya.stage.addChild(sp);
+        //画圆
+        sp.graphics.drawCircle(80,80,50,"#ff0000");
+     }
+})();
 ```
 
 代码运行效果如下图所示：
@@ -56,31 +52,27 @@ new laya.Sprite_DrawShapes();
 
 下面我们用LayaAir引擎绘制一个扇形，示例代码如下：
 
-```typescript
-module laya {
-    import Sprite = Laya.Sprite;
-    import Stage = Laya.Stage;
-    import WebGL = Laya.WebGL;
+```javascript
+(function()
+{
+    var Sprite = Laya.Sprite;
+    var Stage  = Laya.Stage;
   
-    export class Sprite_DrawShapes {
-        private sp: Sprite;
+    (function()
+    {
+        //初始化舞台
+        Laya.init(500, 300);
+        drawSomething();
+    })();
   
-        constructor()
-        {
-            Laya.init(500, 300, WebGL);
-            this.drawSomething();
-        }
-  
-        private drawSomething(): void {
-            this.sp = new Sprite();
-            Laya.stage.addChild(this.sp);
-            //画圆
-            this.sp.graphics.drawPie(80,80,50,90,180,"#ff0000");
-  
-        }
-    }
-}
-new laya.Sprite_DrawShapes();
+    function drawSomething()
+    {
+        var sp = new Sprite();
+        Laya.stage.addChild(sp);
+        //画圆
+        sp.graphics.drawPie(80,80,50,90,180,"#ff0000");
+     }
+})();
 ```
 
 代码运行效果如下图所示：
@@ -93,17 +85,17 @@ new laya.Sprite_DrawShapes();
 
 ### 三、通过LayaAirIDE拖动控件绘制圆形
 
-**步骤一：**打开我们的LayaAirIDE，点击设计模式，新建一个View页面
+**步骤一**：打开我们的LayaAirIDE，点击设计模式，新建一个View页面
 
 ​	![6](img/5.png)<br/>
 ​   	（图5）  
 
-**步骤二：**将组件中的曲线组件拖动到View页面上，就会自动生成默认的圆形
+**步骤二**：将组件中的曲线组件拖动到View页面上，就会自动生成默认的圆形
 
 ​	![7](img/6.png)<br/>
 ​   	（图6）  
 
-**步骤三：**修改（添加/减少）Circle组件属性中的数值，改变圆形的大小、颜色、外框等等。
+**步骤三**：修改（添加/减少）Circle组件属性中的数值，改变圆形的大小、颜色、外框等等。
 
 ​   	![8](img/7.png)<br/>
 ​   	（图7）  
@@ -115,17 +107,17 @@ new laya.Sprite_DrawShapes();
 
 ### 四、通过LayaAirIDE拖动控件绘制扇形
 
-**步骤一：**打开我们的LayaAirIDE，点击设计模式，新建一个View页面
+**步骤一**：打开我们的LayaAirIDE，点击设计模式，新建一个View页面
 
 ​	![6](img/5.png)<br/>
 ​   	（图9）  
 
-**步骤二：**将组件中的曲线组件拖动到View页面上，就会自动生成默认的扇形
+**步骤二**：将组件中的曲线组件拖动到View页面上，就会自动生成默认的扇形
 
 ​	![7](img/9.png)<br/>
 ​   	（图10）  
 
-**步骤三：**修改（添加/减少）Pie组件属性中的数值，改变扇形的角度、大小、颜色等等。
+**步骤三**：修改（添加/减少）Pie组件属性中的数值，改变扇形的角度、大小、颜色等等。
 
 ​   	![8](img/10.png)<br/>
 ​   	（图11）  
@@ -133,4 +125,4 @@ new laya.Sprite_DrawShapes();
 ​   	![9](img/11.png)<br/>
 ​   	（图12）  
 
-到此我们通过LayaAirIDE中组件绘制圆形和扇形就完成了。
+到此我们通过LayaAirIDE的组件绘制圆形和扇形就完成了。

@@ -12,30 +12,28 @@
 下面我们用LayaAir引擎画一条直线，示例代码如下：
 
 ```javascript
-module laya {
-    import Sprite = Laya.Sprite;
-    import Stage = Laya.Stage;
-    import WebGL = Laya.WebGL;
+(function()
+{
+    var Sprite = Laya.Sprite;
+    var Stage  = Laya.Stage;
+    var WebGL  = Laya.WebGL;
+    var sp;
  
-    export class Sprite_DrawShapes {
-        private sp: Sprite;
+    (function()
+    {
+        //初始化舞台
+        Laya.init(500, 300, WebGL);
+        drawSomething();
+    })();
  
-        constructor()
-        {
-            Laya.init(500, 300, WebGL);
-            this.drawSomething();
-        }
- 
-        private drawSomething(): void {
-            this.sp = new Sprite();
-            Laya.stage.addChild(this.sp);
-            //画直线
-            this.sp.graphics.drawLine(10, 58, 146, 58, "#ff0000", 3);
- 
-        }
+    function drawSomething()
+    {
+        sp = new Sprite();
+        Laya.stage.addChild(sp);
+        //画直线
+        sp.graphics.drawLine(10, 58, 167, 58, "#ff0000", 5);
     }
-}
-new laya.Sprite_DrawShapes();
+})();
 ```
 
 发布后如下图所示，我们画了一条红色的直线。
@@ -58,30 +56,29 @@ new laya.Sprite_DrawShapes();
 
 代码运行
 
-```typescript
-module laya {
-    import Sprite = Laya.Sprite;
-    import Stage = Laya.Stage;
-    import WebGL = Laya.WebGL;
+```javascript
+(function()
+{
+    var Sprite = Laya.Sprite;
+    var Stage  = Laya.Stage;
+    var WebGL  = Laya.WebGL;
+    var sp;
  
-    export class Sprite_DrawShapes {
-        private sp: Sprite;
+    (function()
+    {
+        //初始化舞台
+        Laya.init(500, 300, WebGL);
+        drawSomething();
+    })();
  
-        constructor()
-        {
-            Laya.init(500, 300, WebGL);
-            this.drawSomething();
-        }
- 
-        private drawSomething(): void {
-            this.sp = new Sprite();
-            Laya.stage.addChild(this.sp);
-            //画折线
-            this.sp.graphics.drawLines(20, 88, [0, 0, 39, -50, 78, 0, 120, -50], "#ff0000", 3);
-      }
+    function drawSomething()
+    {
+        sp = new Sprite();
+        Laya.stage.addChild(sp);
+        //画折线
+        sp.graphics.drawLines(20, 88, [0, 0, 39, -50, 78, 0, 120, -50],  "#ff0000", 5);
     }
-}
-new laya.Sprite_DrawShapes();
+})();
 ```
 
 效果：
@@ -97,17 +94,17 @@ new laya.Sprite_DrawShapes();
 
 ### 三、用LayaAirIDE拖动控件绘制直线
 
-**步骤一：**打开我们的LayaAirIDE，点击设计模式，新建一个View页面
+**步骤一**：打开我们的LayaAirIDE，点击设计模式，新建一个View页面
 
 ​	![6](img/5.png)<br/>
 ​   	（图5）  
 
-**步骤二：**将组件中的曲线组件拖动到View页面上，就会自动生成默认的直线
+**步骤二**：将组件中的曲线组件拖动到View页面上，就会自动生成默认的直线
 
 ​	![7](img/6.png)<br/>
 ​   	（图6）  
 
-**步骤三：**修改（添加/减少）Line组件属性中的数值，改变直线的长度、宽度、颜色等等。
+**步骤三**：修改（添加/减少）Line组件属性中的数值，改变直线的长度、宽度、颜色等等。
 
 ​   	![8](img/7.png)<br/>
 ​   	（图7）  
@@ -119,17 +116,17 @@ new laya.Sprite_DrawShapes();
 
 ### 四、用LayaAirIDE拖动控件绘制折线
 
-**步骤一：**打开我们的LayaAirIDE，点击设计模式，新建一个View页面
+**步骤一**：打开我们的LayaAirIDE，点击设计模式，新建一个View页面
 
 ​	![6](img/5.png)<br/>
 ​   	（图9）  
 
-**步骤二：**将组件中的曲线组件拖动到View页面上，就会自动生成默认的折线
+**步骤二**：将组件中的曲线组件拖动到View页面上，就会自动生成默认的折线
 
 ​	![7](img/9.png)<br/>
 ​   	（图10）  
 
-**步骤三：**修改（添加/减少）Lines组件属性中的数值，改变折线的角度、颜色、宽度，或者添加新的折现。
+**步骤三**：修改（添加/减少）Lines组件属性中的数值，改变折线的角度、颜色、宽度，或者添加新的折现。
 
 ​   	![8](img/10.png)<br/>
 ​   	（图11）  
@@ -137,4 +134,4 @@ new laya.Sprite_DrawShapes();
 ​   	![9](img/11.png)<br/>
 ​   	（图12）  
 
-到此我们通过LayaAirIDE的组件绘制直线和折线就完成了。
+到此我们通过LayaAirIDE中的组件绘制直线和折线就完成了。
