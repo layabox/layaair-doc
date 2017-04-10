@@ -7,10 +7,10 @@
 
 组件目录位于LayaAirIDE根目录下的“\resources\app\out\vs\layaEditor\renders”目录内。如图1所示：
 
-![1](1.jpg) <br />
+![1](img/1.jpg) <br />
 （图1）
 
-**组件目录结构介绍：**
+**组件目录结构介绍**：
 
 　　“custom”：该目录用于存放自定义组件的js与xml文件；
 
@@ -30,7 +30,7 @@
 	<prop name="hScrollBarSkin" tips="水平滚动条皮肤" type="string" default="" accept="res" group="常用" />
 </TextArea>
 ```
-**组件XML说明：**
+**组件XML说明**：
 
 "TextArea": TextArea标记作为组件的开始和结束。TextArea的命名可以与类别不同，但是要易于理解记忆，用于IDE中的组件名显示；
 
@@ -70,13 +70,13 @@
 
 #### 2.1下载LayaAirIDE组件库（本篇为TS版）
 
-　　TS版下载地址：[http://ldc.layabox.com/uploadfile/file/20161019/1476844969179157.zip](http://ldc.layabox.com/uploadfile/file/20161019/1476844969179157.zip)
+　　TS版下载地址：[http://ldc.layabox.com/uploadfile/file/20161019/1476844969179157.zip](img/http://ldc.layabox.com/uploadfile/file/20161019/1476844969179157.zip)
 
 #### 2.2创建项目并导入到项目的目录内
 
 　　先用LayaAirIDE创建一个TS项目（创建项目请查看相关教程，本篇不再详解）。然后将下载的zip包解压，把layaeditor.d.ts文件放在libs目录下。如图2所示：
 
-![2](2.jpg) <br />
+![2](img/2.jpg) <br />
 （图2）
 
 
@@ -87,7 +87,7 @@
 
 　　 先创建一个组件目录(包)"component"，方便未来其它组件的分类，然后在component目录下创建一个缩放按钮类ScaleButton.ts，如图3所示：
 
-![3](3.jpg)<br />
+![3](img/3.jpg)<br />
 （图3）
 
 创建完成后，我们开始编写缩放组件的代码如下：
@@ -140,7 +140,7 @@ path:"src/component"      //设置需要分包的组件所在目录路径
 
 　　分包规则编写完成并保存后，我们编译刚刚编写的ScaleButton.ts，可以看到js目录下有一个ScaleButton.js，如图4所示，打开这个js我们可以看到，对应了我们刚编写的ScaleButton.ts代码，这个js就是我们自定义组件的JS功能实现部分，而没有包含引擎库等其它代码。
 
-![4](4.jpg)<br />
+![4](img/4.jpg)<br />
 (图4)
 
 #### 3.3编写组件的xml配置文件
@@ -167,14 +167,14 @@ Tips：xml的配置信息内容解释参照上文的组件xml说明。
 
 　　xml配置文件编写完成后，直接保存在自定义组件的目录（LayaAirIDE根目录下的“resources\app\out\vs\layaEditor\renders\custom”内），组件xml的命名需要与组件js保持一致，这里我们命名为ScaleButton.xml。然后我们将分包编译生成的ScaleButton.js（"项目根目录/bin/js"目录下，参照图4）复制到自定义组件的目录。如图5所示：
 
-![5](5.jpg)<br />
+![5](img/5.jpg)<br />
 （图5）
 
 #### 4.2在IDE组件面板中显示
 
 　　打开IDE组件目录（LayaAirIDE根目录\resources\app\out\vs\layaEditor\laya\basics）新建一个自定义组件存放目录Custom，用于存放自义定的组件，如图6所示。
 
-![6](6.jpg)<br />
+![6](img/6.jpg)<br />
 (图6)
 
 
@@ -183,12 +183,12 @@ Tips：xml的配置信息内容解释参照上文的组件xml说明。
 
 
 
-![7](7.jpg)<br />
+![7](img/7.jpg)<br />
 （图7）图标命名对应组件xml中resName属性的值
 
 
 
-![8](8.jpg)<br />
+![8](img/8.jpg)<br />
 （图8）IDE的组件名对应组件xml的标记名
 
 **Tips:** 额外提醒的是，组件的icon图标并非是"LayaAirIDE根目录\resources\app\out\vs\layaEditor\laya\basics\Custom"目录中的sButton.png。icon图标位于LayaAirIDE根目录下的"resources\app\out\vs\layaEditor\laya\icons\components"目录内，对应xml中icon属性的值，上文中的xml说明已进行介绍。如果创建自己的icon图标，参照components目录内的icon尺寸标识制作，放到components目录内，然后在xml中设置对应的文件名即可。
@@ -201,7 +201,7 @@ Tips：xml的配置信息内容解释参照上文的组件xml说明。
 
 　　为了方便项目使用带skin资源的组件，我们继续介绍如何在资源面板中显示组件。首先我们先准备一张skin资源，由于上文示例的自定义组件是缩放按钮，我们直接复制任意一张图片即可体验缩放按钮组件的缩放效果。图片资源复制到"项目根目录\laya\assets"目录下即可，图片资源命名为xml中resName的属性值sButton或以sButton为前缀，如图9所示。
 
-![9](9.jpg)<br />
+![9](img/9.jpg)<br />
 (图9)
 
 
@@ -210,7 +210,7 @@ Tips：xml的配置信息内容解释参照上文的组件xml说明。
 
 
 
-![10](10.jpg)<br />
+![10](img/10.jpg)<br />
 (图10)
 
 　　Tips：资源面板中显示的组件仅用于当前项目，添加到组件面板中才是所有项目的通用组件。
@@ -225,14 +225,14 @@ Tips：xml的配置信息内容解释参照上文的组件xml说明。
 
 　　在资源管理面板中找到sButton为前缀的组件，直接拖拽到页面，点击可看到缩放效果，如图11。
 
-![11](11.gif)<br />
+![11](img/11.gif)<br />
 （图11）
 
 ##### 4.4.2从组件面板中使用
 
 　　在组件面板中找到ScaleButton组件，直接拖拽到页面，点击可看到缩放效果，如图12。
 
-![12](12.gif)<br />
+![12](img/12.gif)<br />
 (图12)组件面板中不含图片资源，需要通过属性skin设置
 
 
@@ -247,14 +247,14 @@ Tips：xml的配置信息内容解释参照上文的组件xml说明。
 
 　　复制一张图片到项目的资源路径"项目根目录/res/img"目录下，如图13所示。
 
-![13](13.jpg)<br />
+![13](img/13.jpg)<br />
 (图13)
 
 #### 5.2修改组件的类引用
 
 　　打开上文编写的缩放按钮代码ScaleButton.ts，将原来的组件库引入“import Button = laya.editorUI.Button;”改为引擎的UI库引入“import Button = laya.ui.Button;”，其它保持不变。因为 laya.editorUI是用于LayaAirIDE的，而项目运行必须引用引擎库laya.ui。如图14所示：
 
-![14](14.jpg)<br />
+![14](img/14.jpg)<br />
 (图14)
 
 #### 5.3创建一个入口类
@@ -282,10 +282,10 @@ new Main();
 
 　　将Main在index.html文件中设置为启动类，如图15所示。然后在浏览器中点击能够实现缩放效果时，如图16所示。说明这是有效的自定义组件，可以放心的添加到IDE中使用了。（注意：正常的步骤是调试在分包之前，而本篇先介绍的分包操作，如果直接调试会出现报错，所以在编译运行之前，需要先将分包配置文件module.def改名或删除）
 
-![15](15.jpg)<br />
+![15](img/15.jpg)<br />
 (图15)
 
-![16](16.gif)<br />
+![16](img/16.gif)<br />
 （图16）Tips：调试成功，准备发布组件时，不要忘记把分包配置文件module.def恢复。另外，发布分包的JS代码时，调试时import的laya.ui也要恢复为 laya.editor。
 
 
@@ -308,12 +308,12 @@ View.regComponent("Button",ScaleButton);//注册组件
 
 如果自定义的组件是容器类组件，如果需要在项目中使用，则需要在LayaAir IDE 项目的编辑器模式下，按F9打开项目设置面板，在“容器列表”中添加自定义的容器组件类名（以逗号间隔），如图17所示。
 
-![17](17.jpg)<br />
+![17](img/17.jpg)<br />
 (图17)
 
 如果自定义的组件是页面类组件，如果需要在项目中使用，则需要在此LayaAir IDE 项目的编辑器模式下，打开项目设置面板，在“页面列表”中添加自定义的页面组件类名（以逗号间隔），如图18所示。
 
-![18](18.jpg)<br />
+![18](img/18.jpg)<br />
 （图18）
 
 本篇至此结束，如有疑问请到社区提出：http://ask.layabox.com
