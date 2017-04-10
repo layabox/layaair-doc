@@ -439,6 +439,16 @@
                 "name_3_file": "what_is_HTML5.md"
               }
             ]
+          },
+          {
+            "name_2_name": "扩展模块",
+            "name_2_data": [
+              {
+                "name_3_name": "AS3与JS混合编码",
+                "name_3_url": "Chinese/LayaAir_AS3/2D/advanced/extension_modules/AS_JS_mixed_programming/",
+                "name_3_file": "readme.md"
+              }
+            ]
           }
         ]
       },
