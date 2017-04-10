@@ -69,7 +69,7 @@
 ### 2、导入LayaAirIDE组件库   
 #### 			2.1  下载LayaAirIDE组件库（本篇为AS版）
 
-​	下载地址：   [http://ldc.layabox.com/uploadfile/file/20160528/1464408796653558.zip](img/http://ldc.layabox.com/uploadfile/file/20160528/1464408796653558.zip)
+​	下载地址： [https://github.com/layabox/layaair-ide-ui]( https://github.com/layabox/layaair-ide-ui)
 
 #### 2.2  创建项目并导入到项目的目录内
 
