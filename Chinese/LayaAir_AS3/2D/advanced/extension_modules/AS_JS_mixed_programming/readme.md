@@ -1,4 +1,4 @@
-# **AS3与JS混合编码**
+# AS3与JS混合编码
 
 　　AS3与JS交互是一种常见的需求，flash插件提供了一个简单的接口函数`ExternalInterface.call`和`ExternalInterface.addCallback`与JS交互。但是发布HTML5，这个flash的接口就不能用了。
 
@@ -117,9 +117,9 @@ package
 
 　　在项目中我们难免会用到第三方的js类库来辅助开发。那么在AS项目中我们怎么处理呢？下面我们就拿最常用的jquery.js来进行讲解。
 
-​	首先在jquery的[官网下载](http://jquery.com/download/)jquery.js版本，示例中我们用`jquery-3.2.0.min.js`。在index.html页面添加`<script type="text/javascript" src="jquery-3.2.0.min.js"></script>`。
+​	首先在jquery的[官网下载](http://jquery.com/download/)jquery.js版本，示例中我们用`jquery-3.2.0.min.js`。在项目入口的index.html页面（通常位于“`bin\h5\`”目录下）添加`<script type="text/javascript" src="jquery-3.2.0.min.js"></script>`。
 
-​	*Tips: 第三方库必须添加在LayaAir引擎库之前。*
+​	*Tips: 第三方库引入必须添加在LayaAir引擎库引入之前。*
 
 ​	在入口页面添加完库的引用后，我们在AS3入口库中编写如下代码：
 
