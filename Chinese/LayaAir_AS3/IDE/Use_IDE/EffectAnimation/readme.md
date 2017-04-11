@@ -106,7 +106,7 @@ package
 			Laya.stage.bgColor = "#ffffff"    
 			
 			//加载图集资源，加载成功后添加到舞台
-			Laya.loader.load([{url:"./res/atlas/ui.atlas",type:Loader.ATLAS}],Handler.create(this,onLoaded));
+			Laya.loader.load("./res/atlas/ui.atlas",Handler.create(this,onLoaded));
 			
 		}
 		
