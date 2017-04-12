@@ -63,7 +63,7 @@
 
  
 
-**Tips：“D:\LayaBox\LayaAirAs3_1.7.3_beta\as\laya.js.exe”应为laya.js.exe的实际所在路径。MAC系统下为“D:\LayaBox\LayaAirAs3_1.5.5\as\LayaJSMac”**
+**Tips：“D:\LayaBox\LayaAirAs3_1.7.3_beta\as\laya.js.exe”应为laya.js.exe的实际所在路径。MAC系统下为“D:\LayaBox\LayaAirAs3_1.7.3_beta\as\LayaJSMac”**
 
 
 
