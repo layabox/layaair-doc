@@ -1,4 +1,4 @@
-# 动画模板(EffectAnimation)
+# 创建动画模板(EffectAnimation)
 
 ### 1、什么是动画模板
 
