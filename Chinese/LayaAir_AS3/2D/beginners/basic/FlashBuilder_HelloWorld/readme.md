@@ -29,21 +29,37 @@
 
 **步骤三：**
 
-在构建的路径配置“库路径”窗口中先删除系统自带的编译SDK（目的是为了避免导错包），然后点击“添加SWC”，将引擎包里的“playerglobal.swc”添加进来。如果项目有发布Flash版本的需求就把LayaAirFlash中的“LayaAirFlash.swc”添加进来（注意：LayaAirFlash/flash文件夹中还有个glsl2agal.swc文件。LayaAirFlash.swc和glsl2agal.swc文件只需引入一个）。如图3所示
+在构建的路径配置“库路径”窗口中先删除系统自带的编译SDK（目的是为了避免导错包），
 
-![3](img/3.jpg)<br />
-(图3)在此引入LayaAirFlash/flash文件夹中的glsl2agal.swc文件
+然后点击“添加SWC”，将引擎包里的“playerglobal.swc”添加进来。
+
+如果项目有发布Flash版本的需求就把LayaAirFlash中的“LayaAirFlash.swc”添加进来。如动图3所示
+
+![动图3](img/3.gif) <br /> (动图3)
+
+
+
+***Tips**：引擎包目录下`LayaAirFlash/flash`文件夹中的`glsl2agal.swc`也是用于Flash版本的发布，但是，引用`glsl2agal.swc`之后需要在项目的源路径处引用发布Flash的库。而LayaAirFlash.swc集成了库，所以无需重复引用。需要注意的是`LayaAirFlash.swc`和`glsl2agal.swc`文件只能引入其中一个。
 
 
 
 **步骤四：**
 
-在构建路径配置的“源路径”窗口里点击“添加文件夹”，输入“引擎库所在目录”或点击“浏览”选择“引擎库所在目录”（注意：引擎库所在的目录是libs文件夹下的src文件），然后点击确定，即完成了引擎库的导入。如图4所示
+在引入swc之后，建议将输出文件夹由默认的`bin-debug`设置为`bin`，如图4所示。因为LayaAirIDE创建项目后默认的发布目录是采用的bin目录，由于通常UI、动画等游戏设计需要用到LayaAirIDE，所以建议在创建项目的时候统一设置为`bin`。
 
-![4](img/4.jpg)
-(图4)
+![图4](img/4.png) <br /> (图4)
 
-Tips: 由于图3种引入的是glsl2agal.swc文件，所以在此引入下LayaAirFlash/flash文件目录下的src文件，如果图3中引入的是LayaAirFlash.swc的话就不需要引入LayaAirFlash/flash文件目录下的src文件。
+
+
+**步骤五**：
+
+在构建路径配置的“`源路径`”窗口里点击“`添加文件夹`”，输入“引擎库所在目录”或点击“浏览”选择“引擎库所在目录”（注意：引擎库所在的目录是libs文件夹下的src文件），然后点击确定，即完成了引擎库的导入。如图4所示
+
+![动图5](img/5.gif) <br /> (动图5)
+
+如果我们需要发布Flash版本，并且之前引擎的库路径为glsl2agal.swc，那么在源路径引用的时候，还需要添加发布flash所需的源库，flash源库位于“`引擎库目录\as\LayaAirFlash\flash\src`”目录内，如图5-2所示。
+
+![图5-2](img/5-2.png) <br /> （图5-2）
 
 
 
@@ -57,10 +73,11 @@ Tips: 由于图3种引入的是glsl2agal.swc文件，所以在此引入下LayaAi
 
 **步骤一：**
 
-菜单栏“文件”中选中“新建”，单击“ActionScript类”，打开新建类文件的窗口。如图5所示
+菜单栏“文件”中选中“新建”，单击“ActionScript类”，打开新建类文件的窗口。如图6所示
 
-![5](img/5.jpg)<br />
-(图5)
+![5](img/5.jpg)<br /> (图6)
+
+
 
 *Tips：新建的ActionScript项目中会自带一个跟项目名称同名的ActionScript类，如果需要用到这个类的话需要把里边的Sprite包删除掉，因为是Flash原生的包，不删除的话会报错。*
 
@@ -68,10 +85,10 @@ Tips: 由于图3种引入的是glsl2agal.swc文件，所以在此引入下LayaAi
 
 **步骤二：**
 
-在名称栏输入HelloLayabox，点击“完成”新建一个ActionScript类。如图6所示
+在名称栏输入HelloLayabox，点击“完成”新建一个ActionScript类。如图6-1所示
 
 ![6](img/6.jpg)<br />
-(图6)
+(图6-1)
 
 
 
