@@ -20,7 +20,7 @@
 
 ##### 1.3 用九宫格制作List背景
 
-**	 1.3.1 拖拽List背景到舞台**
+**1.3.1 拖拽List背景到舞台**
 
 ​      ![3](img/3.png)
 ​      （图3）将图片背景bg_list.png拖拽到舞台
@@ -38,12 +38,12 @@
 
  ##### 1.4 制作List容器
 
-**	1.4.1 拖拽checkbox.png到舞台，并设置属性name为check。**
+**1.4.1 拖拽checkbox.png到舞台，并设置属性name为check。**
 
 ​    ![6](img/6.png)
 ​        （图6）
 
-​**    1.4.2 拖拽一个label.png到舞台，设置属性name为listNumber，其它属性参照图7。**
+​**1.4.2 拖拽一个label.png到舞台，设置属性name为listNumber，其它属性参照图7。**
 
 ​      ![7](img/7.png)
 ​      （图7）用于序号的label组件
@@ -147,7 +147,7 @@
 
 #####     2.2 编写代码逻辑
 
-​**        2.2.1 实现List序号逻辑**
+​**2.2.1 实现List序号逻辑**
 
 ​      要实现List序号的数据添加，需要用到“laya.ui.List” API中的list数据源赋值array，单元格渲染处理器renderHandler，以及“laya.display.Node ”API下通过子节点名字获取子节点对象的方法getChildByName。我们先看下API说明：如图19、图20、图21。
 
