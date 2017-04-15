@@ -95,12 +95,14 @@
 
 #####         2.1 显示制作的UI页面
 
-​      2.1.1 创建一个ListDemo.ts程序文件，并把对应的js在index.html入口设置为启动类。
+​      2.1.1 创建一个ListDemo.as程序文件，并设置为启动类。
 
 ​      ![17](img/17.png)
 ​     （图17）
 
-​      2.1.2  编辑代码，显示UI，主要三个环节，引入加载以及UI类，加载显示UI用到的图集资源，实例UI界面并添加到舞台。
+​      2.1.2  编辑代码，显示UI。
+
+我们先引入加载以及UI类，然后加载显示UI用到的图集资源，最后实例UI界面并添加到舞台。下面通过编码实现这三个环节：
 
 ```java
   package 
@@ -120,11 +122,8 @@
           Laya.stage.bgColor = "#ffffff";
            
           Laya.stage.scaleMode = Stage.SCALE_SHOWALL;
-          //UI页面中涉及的图集路径
-                          var atlas1:Object = {url: "res/atlas/ListPage.json", type: Loader.ATLAS};
-                          var atlas2:Object = {url: "res/atlas/template/ButtonTab.json", type: Loader.ATLAS}; 
-                          //预加载资源文件后执行回调
-                          Laya.loader.load([atlas1,atlas2], Handler.create(this, this.onLoaded));
+          //预加载资源文件后执行回调
+          Laya.loader.load(["res/atlas/ListPage.atlas","res/atlas/template/ButtonTab.atlas"], Handler.create(this, this.onLoaded));
                    }       
            
            private function onLoaded():void
@@ -184,12 +183,7 @@
           Laya.stage.bgColor = "#ffffff";
            
           Laya.stage.scaleMode = Stage.SCALE_SHOWALL;
-           //UI页面中涉及的图集路径
-                          var atlas1:Object = {url: "res/atlas/ListPage.json", type: Loader.ATLAS};
-                          var atlas2:Object = {url: "res/atlas/template/ButtonTab.json", type: Loader.ATLAS}; 
-   
-                          //预加载资源文件后执行回调
-                          Laya.loader.load([atlas1,atlas2], Handler.create(this, this.onLoaded));
+        Laya.loader.load(["res/atlas/ListPage.atlas","res/atlas/template/ButtonTab.atlas"], Handler.create(this, this.onLoaded));
           }
            
            private function onLoaded():void
@@ -288,12 +282,7 @@ listView._list.vScrollBarSkin='';
           Laya.stage.bgColor = "#ffffff";
            
           Laya.stage.scaleMode = Stage.SCALE_SHOWALL;
-          //UI页面中涉及的图集路径      		              
-            var atlas1:Object = {url: "res/atlas/ListPage.json", type: Loader.ATLAS};	         
-            var atlas2:Object = {url: "res/atlas/template/ButtonTab.json", type: Loader.ATLAS}; 
-   
-              //预加载资源文件后执行回调
-             Laya.loader.load([atlas1,atlas2], Handler.create(this, this.onLoaded));
+        Laya.loader.load(["res/atlas/ListPage.atlas","res/atlas/template/ButtonTab.atlas"], Handler.create(this, this.onLoaded));
           }
            
            private function onLoaded():void
@@ -327,17 +316,17 @@ listView._list.vScrollBarSkin='';
     	}
             
                
-  private function onRender(cell:Box,index:int):void 
-    {
-      //如果索引不再可索引范围，则终止该函数
-                      if(index > arr.length)return;
-                      //获取当前渲染条目的数据
-                      var data:Object=this.arr[index];
-                      //根据子节点的名字listNumber，获取子节点对象。         
-                      var listNumber:Label=cell.getChildByName("listNumber") as Label;
-                      //label渲染列表文本（序号）
-                      listNumber.text=data.listNumber.text;
-	}
+    	private function onRender(cell:Box,index:int):void 
+    	{
+    		//如果索引不再可索引范围，则终止该函数
+    		if(index > arr.length)return;
+    		//获取当前渲染条目的数据
+    		var data:Object=this.arr[index];
+    		//根据子节点的名字listNumber，获取子节点对象。         
+    		var listNumber:Label=cell.getChildByName("listNumber") as Label;
+    		//label渲染列表文本（序号）
+    		listNumber.text=data.listNumber.text;
+    	}
 }
    
  ```
@@ -377,12 +366,7 @@ listView._list.vScrollBarSkin='';
     Laya.stage.bgColor = "#ffffff";
      
     Laya.stage.scaleMode = Stage.SCALE_SHOWALL;
-    //UI页面中涉及的图集路径
-              var atlas1:Object = {url: "res/atlas/ListPage.json", type: Loader.ATLAS};
-              var atlas2:Object = {url: "res/atlas/template/ButtonTab.json", type: Loader.ATLAS}; 
-   
-              //预加载资源文件后执行回调
-              Laya.loader.load([atlas1,atlas2], Handler.create(this, this.onLoaded));
+        Laya.loader.load(["res/atlas/ListPage.atlas","res/atlas/template/ButtonTab.atlas"], Handler.create(this, this.onLoaded));
     }
      
      private function onLoaded():void
