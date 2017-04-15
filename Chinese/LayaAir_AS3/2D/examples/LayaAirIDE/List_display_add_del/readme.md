@@ -6,7 +6,7 @@
 
 #####  1.1 创建一个View类型的UI页面 
 
-​        ![1](1.png)
+​        ![1](img/1.png)
 ​        （图1）创建一个名为ListPage的View类型UI页面
 
 ​        首先，我们在LayaAirIDE的项目管理器内，创建一个View类型的UI页面，宽高为640*1136。页面命名为ListPage。
@@ -15,24 +15,24 @@
 
 ​      将美术制作好的UI页面资源导入到资源管理器中。（具体导入方式参考LayaAirIDE资源导入的文档。）
 
-​        ![2](2.png)
+​        ![2](img/2.png)
 ​        （图2）
 
 ##### 1.3 用九宫格制作List背景
 
 **	 1.3.1 拖拽List背景到舞台**
 
-​      ![3](3.png)
+​      ![3](img/3.png)
 ​      （图3）将图片背景bg_list.png拖拽到舞台
 
 ​	 **1.3.2  Image属性中通过sizeGrid属性设置九宫格。**
 
-​      ![4](4.png)
+​      ![4](img/4.png)
 ​      （图4）点击sizeGrid属性右侧按钮打开九宫格设置面板
 
 ​	    **1.3.3 在属性里设置width为640（全屏宽度）**
 
-​      ![5](5.png)
+​      ![5](img/5.png)
 ​      （图5）
 
 
@@ -40,55 +40,55 @@
 
 **	1.4.1 拖拽checkbox.png到舞台，并设置属性name为check。**
 
-​    ![6](6.png)
+​    ![6](img/6.png)
 ​        （图6）
 
 ​**    1.4.2 拖拽一个label.png到舞台，设置属性name为listNumber，其它属性参照图7。**
 
-​      ![7](7.png)
+​      ![7](img/7.png)
 ​      （图7）用于序号的label组件
 
 ​	**1.4.3 再拖拽一个label.png到舞台，修改文本内容为“List示例文本”，属性设置参照图8所示：**
 
-​      ![8](8.png)
+​      ![8](img/8.png)
 ​   （图8）用于List文本的label组件
 
 ​	**1.4.4 选中list背景图、序号label、文本label、checkbox，用Ctrl+B快捷键创建一个Box容器。然后选中Box容器，设置Box属性renderType为render。如图9，图10。**
 
-​      ![9](9.png)
+​      ![9](img/9.png)
 ​     （图9）
 
-​     ![10](10.png)
+​     ![10](img/10.png)
 ​      （图10）
 
 ​	**1.4.5 点击box容器再次通过Ctrl+B创建一个List容器，如图11。注意，所有的List容器，必须是基于Box容器的，我们看一下图12的层级关系，会更加清晰一些，list基于box循环产生。**
 
-​      ![11](11.png)
+​      ![11](img/11.png)
 ​      （图11）
 
-​      ![12](12.png)
+​      ![12](img/12.png)
 ​      （图12）
 
 #####  1.5 设置List属性
 
 ​	选取List容器，设置Lis属性 var为_list（通过此变量可以调用该组件下的所有属性），然后根据实际需要设置其它属性，repeatX是X轴的列表数量，repeatY是Y轴的列表数量，spaceX是X轴列表间距，spaceY是Y轴列表间距。如图13所示：
 
-​        ![13](13.png)
+​        ![13](img/13.png)
 ​      （图13）
 
 ##### 1.6 添加操作按钮
 
 ​        这里，我们直接使用了模板的ButtonTab，拖拽到舞台中，然后点击进入子节点，设置var、label属性以及九宫格等。如图14，图15：
 
-​        ![14](14.png)
+​        ![14](img/14.png)
 ​      （图14）
 
-​        ![15](15.png)
+​        ![15](img/15.png)
 ​      （图15）
 
 ​      调整好UI位置细节后，如图16。F12发布UI，就可以进入代码阶段
 
-​       ![16](16.png)
+​       ![16](img/16.png)
 ​      （图16）
 
 ### 二、用ActionScript语言实现List代码逻辑
@@ -97,12 +97,12 @@
 
 ​      2.1.1 创建一个ListDemo.ts程序文件，并把对应的js在index.html入口设置为启动类。
 
-​      ![17](17.png)
+​      ![17](img/17.png)
 ​     （图17）
 
 ​      2.1.2  编辑代码，显示UI，主要三个环节，引入加载以及UI类，加载显示UI用到的图集资源，实例UI界面并添加到舞台。
 
-```javascript
+```java
   package 
   {
       import laya.display.Stage;
@@ -142,7 +142,7 @@
 
 ​        2.1.3 编码完成后，按F5运行，如图18所示，页面显示和IDE制作的效果一致后，开始编辑逻辑代码。
 
-​        ![18](18.png)
+​        ![18](img/18.png)
 ​        （图18）
 
 #####     2.2 编写代码逻辑
@@ -151,18 +151,18 @@
 
 ​      要实现List序号的数据添加，需要用到“laya.ui.List” API中的list数据源赋值array，单元格渲染处理器renderHandler，以及“laya.display.Node ”API下通过子节点名字获取子节点对象的方法getChildByName。我们先看下API说明：如图19、图20、图21。
 
-​        ![19](19.png)
+​        ![19](img/19.png)
 ​      （图19）
 
-​      ![20](20.png)
+​      ![20](img/20.png)
 ​      （图20）
 
-​      ![21](21.png)
+​      ![21](img/21.png)
 ​        （图21）
 
  **List序号添加代码如下：**
 
-```javascript
+```java
   package 
   {
       import laya.display.Stage;
@@ -235,13 +235,13 @@
 
 ​        代码运行结果如图22所示，成功实现了序号数据的带入。具体实现逻辑与代码说明直接查看代码和注释。
 
-​        ![22](22.png)
+​        ![22](img/22.png)
 ​      （图22）
 
 2.2.2 实现List序滚动
 ​      30条模拟数据在上面的示例运行后，只能看到16条。所以我们需要增加一个滚动效果。laya.ui.List的API中vScrollBarSkin可以满足我们的需求，API说明如图23：
 
-​        ![23](23.png)
+​        ![23](img/23.png)
 ​        （图23）
 该功能增加只需一行代码，就不粘全部代码了，将下面代码放到赋值列表数据源之前。
 
@@ -252,20 +252,20 @@ listView._list.vScrollBarSkin='';
 
 ​       再次运行效果如图24所示：
 
-​        ![24](24.png)
+​        ![24](img/24.png)
 ​        （图24）
 
 2.2.3 实现List增加功能
 
 ​       实现List增加，需要用到LayaAir引擎laya.display.Sprite中的事件侦听on()方法对鼠标点击事件CLICK进行侦听，以及laya.ui.List API中添加单元格数据源的方法addItem()；
 
-​    ![25](25.png)
+​    ![25](img/25.png)
 ​       （图25）
 
-​       ![26](26.png)
+​       ![26](img/26.png)
 ​       （图26）
 
- ```javascript
+ ```java
   package 
   {
       import laya.display.Stage;
@@ -347,14 +347,14 @@ listView._list.vScrollBarSkin='';
 
 ​       代码运行效果如图27所示：
 
-​       ![27](27.png)
+​       ![27](img/27.png)
 ​       （图27）实现列表增加效果
 
 2.2.3 实现List增加功能删除功能
 
 ​       实现List删除功能需要实现多选框checkbox功能、删除按钮的鼠标侦听，删除操作后的数据重新渲染。详情直接查看代码与注释：
 
- ```javascript
+ ```java
   package 
   {
    import laya.display.Stage;
@@ -491,7 +491,7 @@ listView._list.vScrollBarSkin='';
 
 
 ​       运行效果如图28所示：
-​       ![28](28.png)
+​       ![28](img/28.png)
 ​       （图28）删除2、3、4条后的效果
 ​
 
