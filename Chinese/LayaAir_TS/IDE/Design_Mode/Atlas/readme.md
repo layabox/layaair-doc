@@ -1,4 +1,4 @@
-# 使用LayaAir制作图集并加载显示
+# 图集制作与使用详解
 
 *【注意】本篇教程采用LayaAitIDE1.7.3beta版本，文中如有不同请以最新LayaAirIDE版本为准。*
 
