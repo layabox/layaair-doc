@@ -196,66 +196,6 @@
             ]
           },
           {
-            "name_2_name": "文本",
-            "name_2_data": [
-              {
-                "name_3_name": "什么是HTML5？",
-                "name_3_url": "Chinese/Layabox_Intro/",
-                "name_3_file": "what_is_HTML5.md"
-              }
-            ]
-          },
-          {
-            "name_2_name": "事件与交互",
-            "name_2_data": [
-              {
-                "name_3_name": "什么是HTML5？",
-                "name_3_url": "Chinese/Layabox_Intro/",
-                "name_3_file": "what_is_HTML5.md"
-              }
-            ]
-          },
-          {
-            "name_2_name": "动画",
-            "name_2_data": [
-              {
-                "name_3_name": "什么是HTML5？",
-                "name_3_url": "Chinese/Layabox_Intro/",
-                "name_3_file": "what_is_HTML5.md"
-              }
-            ]
-          },
-          {
-            "name_2_name": "音频与视频",
-            "name_2_data": [
-              {
-                "name_3_name": "什么是HTML5？",
-                "name_3_url": "Chinese/Layabox_Intro/",
-                "name_3_file": "what_is_HTML5.md"
-              }
-            ]
-          },
-          {
-            "name_2_name": "数据、通信、资源加载",
-            "name_2_data": [
-              {
-                "name_3_name": "什么是HTML5？",
-                "name_3_url": "Chinese/Layabox_Intro/",
-                "name_3_file": "what_is_HTML5.md"
-              }
-            ]
-          },
-          {
-            "name_2_name": "时间管理",
-            "name_2_data": [
-              {
-                "name_3_name": "什么是HTML5？",
-                "name_3_url": "Chinese/Layabox_Intro/",
-                "name_3_file": "what_is_HTML5.md"
-              }
-            ]
-          },
-          {
             "name_2_name": "屏幕适配",
             "name_2_data": [
               {
@@ -330,41 +270,11 @@
             ]
           },
           {
-            "name_2_name": "IDE组件基础",
-            "name_2_data": [
-              {
-                "name_3_name": "什么是HTML5？",
-                "name_3_url": "",
-                "name_3_file": "readme.md"
-              }
-            ]
-          },
-          {
-            "name_2_name": "IDE组件详解",
-            "name_2_data": [
-              {
-                "name_3_name": "什么是HTML5？",
-                "name_3_url": "",
-                "name_3_file": "readme.md"
-              }
-            ]
-          },
-          {
             "name_2_name": "使用IDE创作",
             "name_2_data": [
               {
                 "name_3_name": "创建动画模板(EffectAnimation)",
                 "name_3_url": "Chinese/LayaAir_AS3/IDE/Use_IDE/EffectAnimation/",
-                "name_3_file": "readme.md"
-              }
-            ]
-          },
-          {
-            "name_2_name": "IDE扩展工具",
-            "name_2_data": [
-              {
-                "name_3_name": "什么是HTML5？",
-                "name_3_url": "",
                 "name_3_file": "readme.md"
               }
             ]
@@ -374,76 +284,6 @@
       {
         "nav_1_name": "2D进阶篇（AS3）",
         "nav_1_data": [
-          {
-            "name_2_name": "缓动",
-            "name_2_data": [
-              {
-                "name_3_name": "什么是HTML5？",
-                "name_3_url": "Chinese/Layabox_Intro/",
-                "name_3_file": "what_is_HTML5.md"
-              }
-            ]
-          },
-          {
-            "name_2_name": "设备支持",
-            "name_2_data": [
-              {
-                "name_3_name": "什么是HTML5？",
-                "name_3_url": "Chinese/Layabox_Intro/",
-                "name_3_file": "what_is_HTML5.md"
-              }
-            ]
-          },
-          {
-            "name_2_name": "区块地图",
-            "name_2_data": [
-              {
-                "name_3_name": "什么是HTML5？",
-                "name_3_url": "Chinese/Layabox_Intro/",
-                "name_3_file": "what_is_HTML5.md"
-              }
-            ]
-          },
-          {
-            "name_2_name": "骨骼动画",
-            "name_2_data": [
-              {
-                "name_3_name": "什么是HTML5？",
-                "name_3_url": "Chinese/Layabox_Intro/",
-                "name_3_file": "what_is_HTML5.md"
-              }
-            ]
-          },
-          {
-            "name_2_name": "调试相关",
-            "name_2_data": [
-              {
-                "name_3_name": "什么是HTML5？",
-                "name_3_url": "Chinese/Layabox_Intro/",
-                "name_3_file": "what_is_HTML5.md"
-              }
-            ]
-          },
-          {
-            "name_2_name": "游戏加载策略",
-            "name_2_data": [
-              {
-                "name_3_name": "什么是HTML5？",
-                "name_3_url": "Chinese/Layabox_Intro/",
-                "name_3_file": "what_is_HTML5.md"
-              }
-            ]
-          },
-          {
-            "name_2_name": "性能优化策略",
-            "name_2_data": [
-              {
-                "name_3_name": "什么是HTML5？",
-                "name_3_url": "Chinese/Layabox_Intro/",
-                "name_3_file": "what_is_HTML5.md"
-              }
-            ]
-          },
           {
             "name_2_name": "扩展模块",
             "name_2_data": [
@@ -466,26 +306,6 @@
                 "name_3_name": "List示例：显示、增加、删除",
                 "name_3_url": "Chinese/LayaAir_AS3/2D/examples/LayaAirIDE/List_display_add_del/",
                 "name_3_file": "readme.md"
-              }
-            ]
-          },
-          {
-            "name_2_name": "图文混排的聊天室",
-            "name_2_data": [
-              {
-                "name_3_name": "什么是HTML5？",
-                "name_3_url": "Chinese/Layabox_Intro/",
-                "name_3_file": "what_is_HTML5.md"
-              }
-            ]
-          },
-          {
-            "name_2_name": "微信飞机大战实战开发",
-            "name_2_data": [
-              {
-                "name_3_name": "什么是HTML5？",
-                "name_3_url": "Chinese/Layabox_Intro/",
-                "name_3_file": "what_is_HTML5.md"
               }
             ]
           }
@@ -740,66 +560,6 @@
             ]
           },
           {
-            "name_2_name": "文本",
-            "name_2_data": [
-              {
-                "name_3_name": "什么是HTML5？",
-                "name_3_url": "Chinese/Layabox_Intro/",
-                "name_3_file": "what_is_HTML5.md"
-              }
-            ]
-          },
-          {
-            "name_2_name": "事件与交互",
-            "name_2_data": [
-              {
-                "name_3_name": "什么是HTML5？",
-                "name_3_url": "Chinese/Layabox_Intro/",
-                "name_3_file": "what_is_HTML5.md"
-              }
-            ]
-          },
-          {
-            "name_2_name": "动画",
-            "name_2_data": [
-              {
-                "name_3_name": "什么是HTML5？",
-                "name_3_url": "Chinese/Layabox_Intro/",
-                "name_3_file": "what_is_HTML5.md"
-              }
-            ]
-          },
-          {
-            "name_2_name": "音频与视频",
-            "name_2_data": [
-              {
-                "name_3_name": "什么是HTML5？",
-                "name_3_url": "Chinese/Layabox_Intro/",
-                "name_3_file": "what_is_HTML5.md"
-              }
-            ]
-          },
-          {
-            "name_2_name": "数据、通信、资源加载",
-            "name_2_data": [
-              {
-                "name_3_name": "什么是HTML5？",
-                "name_3_url": "Chinese/Layabox_Intro/",
-                "name_3_file": "what_is_HTML5.md"
-              }
-            ]
-          },
-          {
-            "name_2_name": "时间管理",
-            "name_2_data": [
-              {
-                "name_3_name": "什么是HTML5？",
-                "name_3_url": "Chinese/Layabox_Intro/",
-                "name_3_file": "what_is_HTML5.md"
-              }
-            ]
-          },
-          {
             "name_2_name": "屏幕适配",
             "name_2_data": [              
               {
@@ -874,117 +634,12 @@
             ]
           },
           {
-            "name_2_name": "IDE组件基础",
-            "name_2_data": [
-              {
-                "name_3_name": "什么是HTML5？",
-                "name_3_url": "",
-                "name_3_file": "readme.md"
-              }
-            ]
-          },
-          {
-            "name_2_name": "IDE组件详解",
-            "name_2_data": [
-              {
-                "name_3_name": "什么是HTML5？",
-                "name_3_url": "",
-                "name_3_file": "readme.md"
-              }
-            ]
-          },
-          {
             "name_2_name": "使用IDE创作",
             "name_2_data": [
               {
                 "name_3_name": "创建动画模板(EffectAnimation)",
                 "name_3_url": "Chinese/LayaAir_TS/IDE/Use_IDE/EffectAnimation/",
                 "name_3_file": "readme.md"
-              }
-            ]
-          },
-          {
-            "name_2_name": "IDE扩展工具",
-            "name_2_data": [
-              {
-                "name_3_name": "什么是HTML5？",
-                "name_3_url": "",
-                "name_3_file": "readme.md"
-              }
-            ]
-          }
-        ]
-      },
-      {
-        "nav_1_name": "2D进阶篇（TS）",
-        "nav_1_data": [
-          {
-            "name_2_name": "缓动",
-            "name_2_data": [
-              {
-                "name_3_name": "什么是HTML5？",
-                "name_3_url": "Chinese/Layabox_Intro/",
-                "name_3_file": "what_is_HTML5.md"
-              }
-            ]
-          },
-          {
-            "name_2_name": "设备支持",
-            "name_2_data": [
-              {
-                "name_3_name": "什么是HTML5？",
-                "name_3_url": "Chinese/Layabox_Intro/",
-                "name_3_file": "what_is_HTML5.md"
-              }
-            ]
-          },
-          {
-            "name_2_name": "区块地图",
-            "name_2_data": [
-              {
-                "name_3_name": "什么是HTML5？",
-                "name_3_url": "Chinese/Layabox_Intro/",
-                "name_3_file": "what_is_HTML5.md"
-              }
-            ]
-          },
-          {
-            "name_2_name": "骨骼动画",
-            "name_2_data": [
-              {
-                "name_3_name": "什么是HTML5？",
-                "name_3_url": "Chinese/Layabox_Intro/",
-                "name_3_file": "what_is_HTML5.md"
-              }
-            ]
-          },
-          {
-            "name_2_name": "调试相关",
-            "name_2_data": [
-              {
-                "name_3_name": "什么是HTML5？",
-                "name_3_url": "Chinese/Layabox_Intro/",
-                "name_3_file": "what_is_HTML5.md"
-              }
-            ]
-          },
-          {
-            "name_2_name": "游戏加载策略",
-            "name_2_data": [
-              {
-                "name_3_name": "什么是HTML5？",
-                "name_3_url": "Chinese/Layabox_Intro/",
-                "name_3_file": "what_is_HTML5.md"
-              }
-            ]
-          },
-          {
-            "name_2_name": "性能优化策略",
-            "name_2_data": [
-              {
-                "name_3_name": "什么是HTML5？",
-                "name_3_url": "Chinese/Layabox_Intro/",
-                "name_3_file": "what_is_HTML5.md"
               }
             ]
           }
@@ -1000,26 +655,6 @@
                 "name_3_name": "List示例：显示、增加、删除",
                 "name_3_url": "Chinese/LayaAir_TS/2D/examples/LayaAirIDE/List_display_add_del/",
                 "name_3_file": "readme.md"
-              }
-            ]
-          },
-          {
-            "name_2_name": "图文混排的聊天室",
-            "name_2_data": [
-              {
-                "name_3_name": "什么是HTML5？",
-                "name_3_url": "Chinese/Layabox_Intro/",
-                "name_3_file": "what_is_HTML5.md"
-              }
-            ]
-          },
-          {
-            "name_2_name": "微信飞机大战实战开发",
-            "name_2_data": [
-              {
-                "name_3_name": "什么是HTML5？",
-                "name_3_url": "Chinese/Layabox_Intro/",
-                "name_3_file": "what_is_HTML5.md"
               }
             ]
           }
@@ -1269,66 +904,6 @@
             ]
           },
           {
-            "name_2_name": "文本",
-            "name_2_data": [
-              {
-                "name_3_name": "什么是HTML5？",
-                "name_3_url": "Chinese/Layabox_Intro/",
-                "name_3_file": "what_is_HTML5.md"
-              }
-            ]
-          },
-          {
-            "name_2_name": "事件与交互",
-            "name_2_data": [
-              {
-                "name_3_name": "什么是HTML5？",
-                "name_3_url": "Chinese/Layabox_Intro/",
-                "name_3_file": "what_is_HTML5.md"
-              }
-            ]
-          },
-          {
-            "name_2_name": "动画",
-            "name_2_data": [
-              {
-                "name_3_name": "什么是HTML5？",
-                "name_3_url": "Chinese/Layabox_Intro/",
-                "name_3_file": "what_is_HTML5.md"
-              }
-            ]
-          },
-          {
-            "name_2_name": "音频与视频",
-            "name_2_data": [
-              {
-                "name_3_name": "什么是HTML5？",
-                "name_3_url": "Chinese/Layabox_Intro/",
-                "name_3_file": "what_is_HTML5.md"
-              }
-            ]
-          },
-          {
-            "name_2_name": "数据、通信、资源加载",
-            "name_2_data": [
-              {
-                "name_3_name": "什么是HTML5？",
-                "name_3_url": "Chinese/Layabox_Intro/",
-                "name_3_file": "what_is_HTML5.md"
-              }
-            ]
-          },
-          {
-            "name_2_name": "时间管理",
-            "name_2_data": [
-              {
-                "name_3_name": "什么是HTML5？",
-                "name_3_url": "Chinese/Layabox_Intro/",
-                "name_3_file": "what_is_HTML5.md"
-              }
-            ]
-          },
-          {
             "name_2_name": "屏幕适配",
             "name_2_data": [
               {
@@ -1403,117 +978,12 @@
             ]
           },
           {
-            "name_2_name": "IDE组件基础",
-            "name_2_data": [
-              {
-                "name_3_name": "什么是HTML5？",
-                "name_3_url": "",
-                "name_3_file": "readme.md"
-              }
-            ]
-          },
-          {
-            "name_2_name": "IDE组件详解",
-            "name_2_data": [
-              {
-                "name_3_name": "什么是HTML5？",
-                "name_3_url": "",
-                "name_3_file": "readme.md"
-              }
-            ]
-          },
-          {
             "name_2_name": "使用IDE创作",
             "name_2_data": [
               {
                 "name_3_name": "创建动画模板(EffectAnimation)",
                 "name_3_url": "Chinese/LayaAir_JS/IDE/Use_IDE/EffectAnimation/",
                 "name_3_file": "readme.md"
-              }
-            ]
-          },
-          {
-            "name_2_name": "IDE扩展工具",
-            "name_2_data": [
-              {
-                "name_3_name": "什么是HTML5？",
-                "name_3_url": "",
-                "name_3_file": "readme.md"
-              }
-            ]
-          }
-        ]
-      },
-      {
-        "nav_1_name": "2D进阶篇（JS）",
-        "nav_1_data": [
-          {
-            "name_2_name": "缓动",
-            "name_2_data": [
-              {
-                "name_3_name": "什么是HTML5？",
-                "name_3_url": "Chinese/Layabox_Intro/",
-                "name_3_file": "what_is_HTML5.md"
-              }
-            ]
-          },
-          {
-            "name_2_name": "设备支持",
-            "name_2_data": [
-              {
-                "name_3_name": "什么是HTML5？",
-                "name_3_url": "Chinese/Layabox_Intro/",
-                "name_3_file": "what_is_HTML5.md"
-              }
-            ]
-          },
-          {
-            "name_2_name": "区块地图",
-            "name_2_data": [
-              {
-                "name_3_name": "什么是HTML5？",
-                "name_3_url": "Chinese/Layabox_Intro/",
-                "name_3_file": "what_is_HTML5.md"
-              }
-            ]
-          },
-          {
-            "name_2_name": "骨骼动画",
-            "name_2_data": [
-              {
-                "name_3_name": "什么是HTML5？",
-                "name_3_url": "Chinese/Layabox_Intro/",
-                "name_3_file": "what_is_HTML5.md"
-              }
-            ]
-          },
-          {
-            "name_2_name": "调试相关",
-            "name_2_data": [
-              {
-                "name_3_name": "什么是HTML5？",
-                "name_3_url": "Chinese/Layabox_Intro/",
-                "name_3_file": "what_is_HTML5.md"
-              }
-            ]
-          },
-          {
-            "name_2_name": "游戏加载策略",
-            "name_2_data": [
-              {
-                "name_3_name": "什么是HTML5？",
-                "name_3_url": "Chinese/Layabox_Intro/",
-                "name_3_file": "what_is_HTML5.md"
-              }
-            ]
-          },
-          {
-            "name_2_name": "性能优化策略",
-            "name_2_data": [
-              {
-                "name_3_name": "什么是HTML5？",
-                "name_3_url": "Chinese/Layabox_Intro/",
-                "name_3_file": "what_is_HTML5.md"
               }
             ]
           }
@@ -1529,26 +999,6 @@
                 "name_3_name": "List示例：显示、增加、删除",
                 "name_3_url": "Chinese/LayaAir_JS/2D/examples/LayaAirIDE/List_display_add_del/",
                 "name_3_file": "readme.md"
-              }
-            ]
-          },
-          {
-            "name_2_name": "图文混排的聊天室",
-            "name_2_data": [
-              {
-                "name_3_name": "什么是HTML5？",
-                "name_3_url": "Chinese/Layabox_Intro/",
-                "name_3_file": "what_is_HTML5.md"
-              }
-            ]
-          },
-          {
-            "name_2_name": "微信飞机大战实战开发",
-            "name_2_data": [
-              {
-                "name_3_name": "什么是HTML5？",
-                "name_3_url": "Chinese/Layabox_Intro/",
-                "name_3_file": "what_is_HTML5.md"
               }
             ]
           }
