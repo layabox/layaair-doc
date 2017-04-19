@@ -123,7 +123,7 @@
            
           Laya.stage.scaleMode = Stage.SCALE_SHOWALL;
           //预加载资源文件后执行回调
-          Laya.loader.load(["res/atlas/ListPage.atlas","res/atlas/template/ButtonTab.atlas"], Handler.create(this, this.onLoaded));
+          Laya.loader.load(["res/atlas/ListPage.atlas","res/atlas/template/ButtonTab.atlas"], Handler.create(this, onLoaded));
                    }       
            
            private function onLoaded():void
@@ -183,7 +183,7 @@
           Laya.stage.bgColor = "#ffffff";
            
           Laya.stage.scaleMode = Stage.SCALE_SHOWALL;
-        Laya.loader.load(["res/atlas/ListPage.atlas","res/atlas/template/ButtonTab.atlas"], Handler.create(this, this.onLoaded));
+        Laya.loader.load(["res/atlas/ListPage.atlas","res/atlas/template/ButtonTab.atlas"], Handler.create(this, onLoaded));
           }
            
            private function onLoaded():void
@@ -216,7 +216,7 @@
       //如果索引不再可索引范围，则终止该函数
                       if(index  arr.length)return;
                       //获取当前渲染条目的数据
-                      var data:Object=this.arr[index];
+                      var data:Object=arr[index];
                       //根据子节点的名字listNumber，获取子节点对象。         
                       var listNumber:Label=cell.getChildByName("listNumber") as Label;
                       //label渲染列表文本（序号）
@@ -282,7 +282,7 @@ listView._list.vScrollBarSkin='';
           Laya.stage.bgColor = "#ffffff";
            
           Laya.stage.scaleMode = Stage.SCALE_SHOWALL;
-        Laya.loader.load(["res/atlas/ListPage.atlas","res/atlas/template/ButtonTab.atlas"], Handler.create(this, this.onLoaded));
+        Laya.loader.load(["res/atlas/ListPage.atlas","res/atlas/template/ButtonTab.atlas"], Handler.create(this, onLoaded));
           }
            
            private function onLoaded():void
@@ -293,7 +293,7 @@ listView._list.vScrollBarSkin='';
           //获得List模拟数据，并渲染
           getListData(); 
           //侦听增加按钮点击事件
-          listView.add.on(Event.CLICK,this,this.onAddClick);
+          listView.add.on(Event.CLICK,this, onAddClick);
           }
            
           private function onAddClick():void 
@@ -321,7 +321,7 @@ listView._list.vScrollBarSkin='';
     		//如果索引不再可索引范围，则终止该函数
     		if(index > arr.length)return;
     		//获取当前渲染条目的数据
-    		var data:Object=this.arr[index];
+    		var data:Object= arr[index];
     		//根据子节点的名字listNumber，获取子节点对象。         
     		var listNumber:Label=cell.getChildByName("listNumber") as Label;
     		//label渲染列表文本（序号）
@@ -366,7 +366,7 @@ listView._list.vScrollBarSkin='';
     Laya.stage.bgColor = "#ffffff";
      
     Laya.stage.scaleMode = Stage.SCALE_SHOWALL;
-        Laya.loader.load(["res/atlas/ListPage.atlas","res/atlas/template/ButtonTab.atlas"], Handler.create(this, this.onLoaded));
+        Laya.loader.load(["res/atlas/ListPage.atlas","res/atlas/template/ButtonTab.atlas"], Handler.create(this, onLoaded));
     }
      
      private function onLoaded():void
@@ -377,9 +377,9 @@ listView._list.vScrollBarSkin='';
     //获得List模拟数据，并渲染
           getListData(); 
     //侦听增加按钮点击事件
-          listView.add.on(Event.CLICK, this, this.onAddClick);
+          listView.add.on(Event.CLICK, this, onAddClick);
     //侦听删除按钮点击事件
-    listView.del.on(Event.CLICK,this,this.onRemoveClick);
+    listView.del.on(Event.CLICK,this,onRemoveClick);
           }
      
     private function onRemoveClick():void 
@@ -389,12 +389,12 @@ listView._list.vScrollBarSkin='';
      for(var i:Number=0;i<arr.length;i++)
      {
       //将非选中状态的条目数据存储起来
-      if(!this.arr[i].isCheck)
+      if(!arr[i].isCheck)
       {
        temp.push(arr[i]);
       }
      }
-     // this.arr = null;
+ 
      arr = temp;
      //将新的数组赋值给list
      listView._list.array = arr;
@@ -452,7 +452,7 @@ listView._list.vScrollBarSkin='';
         //如果索引不再可索引范围，则终止该函数
          if(index > arr.length)return;
          //获取当前渲染条目的数据
-        var data:Object=this.arr[index];
+        var data:Object= arr[index];
         //根据子节点的名字listNumber，获取子节点对象。         
         var listNumber:Label=cell.getChildByName("listNumber") as Label;
         //label渲染列表文本（序号）
