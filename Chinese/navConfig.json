@@ -242,9 +242,8 @@
                 "name_3_name": "菜单栏详解",
                 "name_3_url": "Chinese/LayaAir_AS3/IDE/Code_Mode/MenuBar/",
                 "name_3_file": "readme.md"
-              },
-              {
-                "name_3_name": "工具栏布局介绍",
+              },{
+                "name_3_name": "工具栏介绍",
                 "name_3_url": "Chinese/LayaAir_AS3/IDE/Code_Mode/ToolBar/",
                 "name_3_file": "readme.md"
               },
@@ -274,13 +273,43 @@
                 "name_3_file": "readme.md"
               },
               {
-                "name_3_name": "UI页面、粒子、动画、脚本新建面板详解",
-                "name_3_url": "Chinese/LayaAir_AS3/IDE/Design_Mode/NewPanel/",
+                "name_3_name": "工具栏介绍",
+                "name_3_url": "Chinese/LayaAir_AS3/IDE/Design_Mode/ToolBar/",
                 "name_3_file": "readme.md"
               },
               {
-                "name_3_name": "图集制作与使用详解",
-                "name_3_url": "Chinese/LayaAir_AS3/IDE/Design_Mode/Atlas/",
+                "name_3_name": "项目管理器",
+                "name_3_url": "Chinese/LayaAir_AS3/IDE/Design_Mode/ProjectManager/",
+                "name_3_file": "readme.md"
+              },
+              {
+                "name_3_name": "资源管理器",
+                "name_3_url": "Chinese/LayaAir_AS3/IDE/Design_Mode/ResourceManager/",
+                "name_3_file": "readme.md"
+              },
+              {
+                "name_3_name": "组件库",
+                "name_3_url": "Chinese/LayaAir_AS3/IDE/Design_Mode/Component/",
+                "name_3_file": "readme.md"
+              },
+              {
+                "name_3_name": "模板库",
+                "name_3_url": "Chinese/LayaAir_AS3/IDE/Design_Mode/Template/",
+                "name_3_file": "readme.md"
+              },
+              {
+                "name_3_name": "场景编辑器",
+                "name_3_url": "Chinese/LayaAir_AS3/IDE/Design_Mode/Scene/",
+                "name_3_file": "readme.md"
+              },
+              {
+                "name_3_name": "属性设置器",
+                "name_3_url": "Chinese/LayaAir_AS3/IDE/Design_Mode/Attribute_Set/",
+                "name_3_file": "readme.md"
+              },
+              {
+                "name_3_name": "UI页面、粒子、动画、脚本新建面板详解",
+                "name_3_url": "Chinese/LayaAir_AS3/IDE/Design_Mode/NewPanel/",
                 "name_3_file": "readme.md"
               }
             ]
@@ -288,6 +317,11 @@
           {
             "name_2_name": "使用IDE创作",
             "name_2_data": [
+              {
+                "name_3_name": "图集制作与使用详解",
+                "name_3_url": "Chinese/LayaAir_AS3/IDE/Use_IDE/Atlas/",
+                "name_3_file": "readme.md"
+              },
               {
                 "name_3_name": "创建动画模板(EffectAnimation)",
                 "name_3_url": "Chinese/LayaAir_AS3/IDE/Use_IDE/EffectAnimation/",
@@ -628,7 +662,7 @@
                 "name_3_file": "readme.md"
               },
               {
-                "name_3_name": "工具栏布局介绍",
+                "name_3_name": "工具栏介绍",
                 "name_3_url": "Chinese/LayaAir_TS/IDE/Code_Mode/ToolBar/",
                 "name_3_file": "readme.md"
               },
@@ -658,13 +692,43 @@
                 "name_3_file": "readme.md"
               },
               {
-                "name_3_name": "UI页面、粒子、动画、脚本新建面板详解",
-                "name_3_url": "Chinese/LayaAir_TS/IDE/Design_Mode/NewPanel/",
+                "name_3_name": "工具栏介绍",
+                "name_3_url": "Chinese/LayaAir_TS/IDE/Design_Mode/ToolBar/",
                 "name_3_file": "readme.md"
               },
               {
-                "name_3_name": "图集制作与使用详解",
-                "name_3_url": "Chinese/LayaAir_TS/IDE/Design_Mode/Atlas/",
+                "name_3_name": "项目管理器",
+                "name_3_url": "Chinese/LayaAir_TS/IDE/Design_Mode/ProjectManager/",
+                "name_3_file": "readme.md"
+              },
+              {
+                "name_3_name": "资源管理器",
+                "name_3_url": "Chinese/LayaAir_TS/IDE/Design_Mode/ResourceManager/",
+                "name_3_file": "readme.md"
+              },
+              {
+                "name_3_name": "组件库",
+                "name_3_url": "Chinese/LayaAir_TS/IDE/Design_Mode/Component/",
+                "name_3_file": "readme.md"
+              },
+              {
+                "name_3_name": "模板库",
+                "name_3_url": "Chinese/LayaAir_TS/IDE/Design_Mode/Template/",
+                "name_3_file": "readme.md"
+              },
+              {
+                "name_3_name": "场景编辑器",
+                "name_3_url": "Chinese/LayaAir_TS/IDE/Design_Mode/Scene/",
+                "name_3_file": "readme.md"
+              },
+              {
+                "name_3_name": "属性设置器",
+                "name_3_url": "Chinese/LayaAir_TS/IDE/Design_Mode/Attribute_Set/",
+                "name_3_file": "readme.md"
+              },
+              {
+                "name_3_name": "UI页面、粒子、动画、脚本新建面板详解",
+                "name_3_url": "Chinese/LayaAir_TS/IDE/Design_Mode/NewPanel/",
                 "name_3_file": "readme.md"
               }
             ]
@@ -672,6 +736,11 @@
           {
             "name_2_name": "使用IDE创作",
             "name_2_data": [
+              {
+                "name_3_name": "图集制作与使用详解",
+                "name_3_url": "Chinese/LayaAir_TS/IDE/Use_IDE/Atlas/",
+                "name_3_file": "readme.md"
+              },
               {
                 "name_3_name": "创建动画模板(EffectAnimation)",
                 "name_3_url": "Chinese/LayaAir_TS/IDE/Use_IDE/EffectAnimation/",
@@ -992,7 +1061,7 @@
                 "name_3_file": "readme.md"
               },
               {
-                "name_3_name": "工具栏布局介绍",
+                "name_3_name": "工具栏介绍",
                 "name_3_url": "Chinese/LayaAir_JS/IDE/Code_Mode/ToolBar/",
                 "name_3_file": "readme.md"
               },
@@ -1022,13 +1091,43 @@
                 "name_3_file": "readme.md"
               },
               {
-                "name_3_name": "UI页面、粒子、动画、脚本新建面板详解",
-                "name_3_url": "Chinese/LayaAir_JS/IDE/Design_Mode/NewPanel/",
+                "name_3_name": "工具栏介绍",
+                "name_3_url": "Chinese/LayaAir_JS/IDE/Design_Mode/ToolBar/",
                 "name_3_file": "readme.md"
               },
               {
-                "name_3_name": "图集制作与使用详解",
-                "name_3_url": "Chinese/LayaAir_JS/IDE/Design_Mode/Atlas/",
+                "name_3_name": "项目管理器",
+                "name_3_url": "Chinese/LayaAir_JS/IDE/Design_Mode/ProjectManager/",
+                "name_3_file": "readme.md"
+              },
+              {
+                "name_3_name": "资源管理器",
+                "name_3_url": "Chinese/LayaAir_JS/IDE/Design_Mode/ResourceManager/",
+                "name_3_file": "readme.md"
+              },
+              {
+                "name_3_name": "组件库",
+                "name_3_url": "Chinese/LayaAir_JS/IDE/Design_Mode/Component/",
+                "name_3_file": "readme.md"
+              },
+              {
+                "name_3_name": "模板库",
+                "name_3_url": "Chinese/LayaAir_JS/IDE/Design_Mode/Template/",
+                "name_3_file": "readme.md"
+              },
+              {
+                "name_3_name": "场景编辑器",
+                "name_3_url": "Chinese/LayaAir_JS/IDE/Design_Mode/Scene/",
+                "name_3_file": "readme.md"
+              },
+              {
+                "name_3_name": "属性设置器",
+                "name_3_url": "Chinese/LayaAir_JS/IDE/Design_Mode/Attribute_Set/",
+                "name_3_file": "readme.md"
+              },
+              {
+                "name_3_name": "UI页面、粒子、动画、脚本新建面板详解",
+                "name_3_url": "Chinese/LayaAir_JS/IDE/Design_Mode/NewPanel/",
                 "name_3_file": "readme.md"
               }
             ]
@@ -1036,6 +1135,11 @@
           {
             "name_2_name": "使用IDE创作",
             "name_2_data": [
+              {
+                "name_3_name": "图集制作与使用详解",
+                "name_3_url": "Chinese/LayaAir_JS/IDE/Use_IDE/Atlas/",
+                "name_3_file": "readme.md"
+              },
               {
                 "name_3_name": "创建动画模板(EffectAnimation)",
                 "name_3_url": "Chinese/LayaAir_JS/IDE/Use_IDE/EffectAnimation/",
