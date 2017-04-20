@@ -149,16 +149,16 @@ LayaAirIDE中打包图集的方式一共有两种。
 
 　　`.atlas`是LayaAirIDE特有的图集配置信息，仅用于图集，所以在加载`.atlas`时不需要填写类型，和加载普通的单图方式一样，更加方便，是推荐的图集加载方式。atlas方式加载图集的示例代码为：
 
-```java
+```typescript
 //atlas方式图集使用示例
-Laya.loader.load("./res/atlas/ui.atlas", Handler.create(this, onLoaded));
+Laya.loader.load("./res/atlas/ui.atlas", Handler.create(this, this.onLoaded));
 ```
 
 　　`.json`是一种兼容第三方的图集配置方式，由于`.json`文件应用广泛，不仅仅用于图集，所以为了识别是否为图集配置信息，在加载`.json`文件的图集时，需要填写类型进行区分。json方式加载图集的示例代码为：
 
-```java
+```typescript
 //json方式图集使用示例
-Laya.loader.load([{url: "res/atlas/ui.json", type: Loader.ATLAS}], Handler.create(this, onLoaded));
+Laya.loader.load([{url: "res/atlas/ui.json", type: Loader.ATLAS}], Handler.create(this, this.onLoaded));
 ```
 
 
@@ -197,29 +197,21 @@ Laya.loader.load([{url: "res/atlas/ui.json", type: Loader.ATLAS}], Handler.creat
 
 **Main.as入口类：**
 
-```java
-package {
-	import laya.net.Loader;
-	import laya.utils.Handler;
-	import laya.ui.Image;
-	public class Main {
-		public function Main() {
-			
-			//初始化引擎
-			Laya.init(1334, 750);
-			
-			//预加载图集资源ui.atlas，然后执行回调方法onLoaded
-			Laya.loader.load("./res/atlas/ui.atlas", Handler.create(this, onLoaded));
-		}
-		private function onLoaded():void {
-			//实例Image
-			var img:Image = new Image();
-			//设置皮肤(取图集中小图的方式就是 原小图目录名/原小图资源名.png)
-			img.skin = "ui/monkey1.png";
-			//添加到舞台上显示
-			Laya.stage.addChild(img);
-		}
-	}
+```typescript
+Laya.init(1334, 750);
+
+//预加载图集资源ui.atlas，然后执行回调方法onLoaded
+Laya.loader.load("res/atlas/ui.atlas", Laya.Handler.create(this, this.onLoaded));
+
+function onLoaded(): void {
+    //创建Image实例
+    var img:Laya.Image = new Laya.Image();
+  
+    //设置皮肤（取图集中小图的方式就是 原小图目录名/原小图资源名.png）
+    img.skin = "ui/monkey1.png";
+  
+    //添加到舞台上显示
+    Laya.stage.addChild(img);
 }
 ```
 
