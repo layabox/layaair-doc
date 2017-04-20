@@ -465,7 +465,7 @@ package
 			//加载动画文件
 			tl.loadAnimation("TimeLine.ani");
 			//添加到舞台
-			tl.stage.addChild(tl);
+			Laya.stage.addChild(tl);
 			//播放Animation动画
 			tl.play();
 			
@@ -515,7 +515,7 @@ package
 			//加载动画文件
 			tl.loadAnimation("TimeLine.ani");
 			//添加到舞台
-			tl.stage.addChild(tl);
+			Laya.stage.addChild(tl);
 			//播放Animation动画
 			tl.play();
 			
@@ -524,7 +524,7 @@ package
 			//加载动画文件
 			tl2.loadAnimation("TimeLine.ani");
 			//添加到舞台
-			tl2.stage.addChild(tl2);
+			Laya.stage.addChild(tl2);
 			//播放Animation动画的pivot动画
 			tl2.play(0, true, "pivot");
 			//动画的显示位置
@@ -592,7 +592,7 @@ package
 			//加载动画文件
 			tl.loadAnimation("TimeLine.ani");
 			//添加到舞台
-			tl.stage.addChild(tl);
+			Laya.stage.addChild(tl);
 			//播放Animation动画
 			tl.play();
 			
@@ -601,7 +601,7 @@ package
 			//加载动画文件
 			tl2.loadAnimation("TimeLine.ani");
 			//添加到舞台
-			tl2.stage.addChild(tl2);
+			Laya.stage.addChild(tl2);
 			//播放Animation动画的pivot动画
 			tl2.play(0, true, "pivot");
 			//动画的显示位置
@@ -611,7 +611,7 @@ package
 			//创建一个UI实例
 			var plan:TimeLineUI = new TimeLineUI();
 			//添加到舞台
-			plan.stage.addChild(plan);
+			Laya.stage.addChild(plan);
 			//播放UI场景中的动画
 			plan.crashed.play();
 			
