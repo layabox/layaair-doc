@@ -269,6 +269,11 @@
                 "name_3_file": "readme.md"
               },
               {
+                "name_3_name": "菜单栏介绍",
+                "name_3_url": "Chinese/LayaAir_AS3/IDE/Design_Mode/MenuBar/",
+                "name_3_file": "readme.md"
+              },
+              {
                 "name_3_name": "UI页面、粒子、动画、脚本新建面板详解",
                 "name_3_url": "Chinese/LayaAir_AS3/IDE/Design_Mode/NewPanel/",
                 "name_3_file": "readme.md"
@@ -648,6 +653,11 @@
                 "name_3_file": "readme.md"
               },
               {
+                "name_3_name": "菜单栏介绍",
+                "name_3_url": "Chinese/LayaAir_TS/IDE/Design_Mode/MenuBar/",
+                "name_3_file": "readme.md"
+              },
+              {
                 "name_3_name": "UI页面、粒子、动画、脚本新建面板详解",
                 "name_3_url": "Chinese/LayaAir_TS/IDE/Design_Mode/NewPanel/",
                 "name_3_file": "readme.md"
@@ -1004,6 +1014,11 @@
               {
                 "name_3_name": "自定义界面布局与恢复",
                 "name_3_url": "Chinese/LayaAir_JS/IDE/Design_Mode/Custom_GUI/",
+                "name_3_file": "readme.md"
+              },
+              {
+                "name_3_name": "菜单栏介绍",
+                "name_3_url": "Chinese/LayaAir_JS/IDE/Design_Mode/MenuBar/",
                 "name_3_file": "readme.md"
               },
               {
