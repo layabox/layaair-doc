@@ -1,0 +1,22 @@
+[
+  {
+    "mark": "LayaAir 1.7.3 beta",
+    "name": "LayaAir 1.7.3 beta",
+    "url": "1.7.3beta.md",
+    "download": {
+      "js": "http://ldc.layabox.com/download/LayaAirJS_1.7.3_beta.zip",
+      "ts": "http://ldc.layabox.com/download/LayaAirTS_1.7.3_beta.zip",
+      "as": "http://ldc.layabox.com/download/LayaAirAs3_1.7.3_beta.zip"
+    }
+  },
+  {
+    "mark": "LayaAir 1.7.2",
+    "name": "LayaAir 1.7.2",
+    "url": "1.7.2.md",
+    "download": {
+      "js": "http://ldc.layabox.com/download/LayaAirJS_1.7.2.zip",
+      "ts": "http://ldc.layabox.com/download/LayaAirTS_1.7.2.zip",
+      "as": "http://ldc.layabox.com/download/LayaAirAs3_1.7.2.zip"
+    }
+  }
+]
