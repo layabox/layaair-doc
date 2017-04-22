@@ -1,5 +1,13 @@
 [
   {
+    "name": "LayaAir IDE 1.7.4beta",
+    "url": "1.7.4beta.md",
+    "download": {
+      "apple": "http://ldc.layabox.com/download/LayaAirIDEMac_1.7.4beta.zip",
+      "windows": "http://ldc.layabox.com/download/LayaAirIDE_1.7.4beta.zip"
+    }
+  },
+  {
     "mark": "LayaAir IDE 1.7.3",
     "name": "LayaAir IDE 1.7.3",
     "url": "1.7.3.md",

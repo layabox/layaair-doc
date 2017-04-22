@@ -1,16 +1,23 @@
 [
   {
-    "mark": "LayaAir 1.7.3 beta",
-    "name": "LayaAir 1.7.3 beta",
-    "url": "1.7.3beta.md",
+    "name": "LayaAir 1.7.4 beta",
+    "url": "1.7.4beta.md",
     "download": {
-      "js": "http://ldc.layabox.com/download/LayaAirJS_1.7.3_beta.zip",
-      "ts": "http://ldc.layabox.com/download/LayaAirTS_1.7.3_beta.zip",
-      "as": "http://ldc.layabox.com/download/LayaAirAs3_1.7.3_beta.zip"
+      "js": "http://ldc.layabox.com/download/LayaAirJS_1.7.4_beta.zip",
+      "ts": "http://ldc.layabox.com/download/LayaAirTS_1.7.4_beta.zip",
+      "as": "http://ldc.layabox.com/download/LayaAirAs3_1.7.4_beta.zip"
     }
   },
   {
-    "mark": "LayaAir 1.7.2",
+    "name": "LayaAir 1.7.3",
+    "url": "1.7.3beta.md",
+    "download": {
+      "js": "http://ldc.layabox.com/download/LayaAirJS_1.7.3.zip",
+      "ts": "http://ldc.layabox.com/download/LayaAirTS_1.7.3.zip",
+      "as": "http://ldc.layabox.com/download/LayaAirAs3_1.7.3.zip"
+    }
+  },
+  {
     "name": "LayaAir 1.7.2",
     "url": "1.7.2.md",
     "download": {
@@ -19,7 +26,6 @@
       "as": "http://ldc.layabox.com/download/LayaAirAs3_1.7.2.zip"
     },
   {
-    "mark": "LayaAir 1.7.1",
     "name": "LayaAir 1.7.1",
     "url": "1.7.1.md",
     "download": {
@@ -28,7 +34,6 @@
       "as": "http://ldc.layabox.com/download/LayaAirAs3_1.7.1.zip"
     },
   {
-    "mark": "LayaAir 1.7.0",
     "name": "LayaAir 1.7.0",
     "url": "1.7.0.md",
     "download": {
@@ -37,8 +42,6 @@
       "as": "http://ldc.layabox.com/download/LayaAirAs3_1.7.0.zip"
     },
   {
-    "mark": "LayaAir 1.6.2",
-    "name": "LayaAir 1.6.2",
     "url": "1.6.2.md",
     "download": {
       "js": "http://ldc.layabox.com/download/LayaAirJS_1.6.2.zip",
@@ -46,7 +49,6 @@
       "as": "http://ldc.layabox.com/download/LayaAirAs3_1.6.2.zip"
     },
   {
-    "mark": "LayaAir 1.6.1",
     "name": "LayaAir 1.6.1",
     "url": "1.6.1.md",
     "download": {
@@ -55,7 +57,6 @@
       "as": "http://ldc.layabox.com/download/LayaAirAs3_1.6.1.zip"
     },
   {
-    "mark": "LayaAir 1.6.0",
     "name": "LayaAir 1.6.0",
     "url": "1.6.0.md",
     "download": {
@@ -64,7 +65,6 @@
       "as": "http://ldc.layabox.com/download/LayaAirAs3_1.6.0.zip"
     },
   {
-    "mark": "LayaAir 1.5.5",
     "name": "LayaAir 1.5.5",
     "url": "1.5.5.md",
     "download": {
@@ -73,7 +73,6 @@
       "as": "http://ldc.layabox.com/download/LayaAirAs3_1.5.5.zip"
     },
   {
-    "mark": "LayaAir 1.5.4",
     "name": "LayaAir 1.5.4",
     "url": "1.5.4.md",
     "download": {
@@ -82,7 +81,6 @@
       "as": "http://ldc.layabox.com/download/LayaAirAs3_1.5.4.zip"
     },
   {
-    "mark": "LayaAir 1.5.3",
     "name": "LayaAir 1.5.3",
     "url": "1.5.3.md",
     "download": {
@@ -91,7 +89,6 @@
       "as": "http://ldc.layabox.com/download/LayaAirAs3_1.5.3.zip"
     },
   {
-    "mark": "LayaAir 1.5.2",
     "name": "LayaAir 1.5.2",
     "url": "1.5.2.md",
     "download": {
@@ -100,7 +97,6 @@
       "as": "http://ldc.layabox.com/download/LayaAirAs3_1.5.2.zip"
     },
   {
-    "mark": "LayaAir 1.5.0",
     "name": "LayaAir 1.5.0",
     "url": "1.5.0.md",
     "download": {
@@ -109,7 +105,6 @@
       "as": "http://ldc.layabox.com/download/LayaAirAs3_1.5.0.zip"
     },
   {
-    "mark": "LayaAir 1.4.0",
     "name": "LayaAir 1.4.0",
     "url": "1.4.0.md",
     "download": {
