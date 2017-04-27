@@ -137,7 +137,7 @@
 | TextArea    | 带滚动条的文本域 | textarea_           | area_          |
 | Button      | 按钮       | button_             | btn_           |
 | CheckBox    | 多选框      | checkbox_           | check_         |
-| Radio       | 单选框      | radio_              | radio_         |
+| Radio       | 单选框      | radio_              | --             |
 | Tab         | 标签       | tab_                | --             |
 | RadioGroup  | 单选框按钮组   | radiogroup_         | --             |
 | VSlider     | 垂直滑动条    | vslider_            | --             |
@@ -161,13 +161,13 @@ IDE自带的特殊组件一共有五个，分别是垂直滑动条组件VSlider�
 
 特殊组件并不是单张图片，而是由多张图片组成。主资源图片的命名规则遵守基础组件的命名规则，附加资源由两部分构成，这两部分用`$`符号相连，`$`之前是主资源的名称，`$`之后是关联状态的名称。
 
-`bar`指的是`滑动\移动`状态。比如`ProgressBa$bar.png`，从命名上可以看出，他从属于默认状态为ProgressBar组件，当产生进度条（`bar`）时使用`ProgressBa$bar.png`资源。
+`bar`指的是`滑动\移动`状态。比如`ProgressBa$bar.png`，从命名上可以看出，他从属于ProgressBar组件，当产生进度条（`bar`）时使用`ProgressBa$bar.png`资源。
 
-`down`指的是`向下`状态。如果是横向滚动条，dow通常是向右的默认状态或点击时的状态。
+`down`指的是`向下`状态。如果是横向滚动条，`down`通常是`向右`的默认状态或点击时的状态。
 
-`up`指的是`向上`状态。如果是横向滚动条，up通常是向左的默认状态或点击时的状态。
+`up`指的是`向上`状态。如果是横向滚动条，`up`通常是`向左`的默认状态或点击时的状态。
 
-特殊组件的命名与构成，如想更直观的了解，可以详细对比图12中的资源命名。
+特殊组件的命名与构成，如想更直观的了解，可以对比图12中的资源命名。
 
 ![图12](img/12.png) <br />(图12)
 
@@ -189,11 +189,11 @@ IDE自带的特殊组件一共有五个，分别是垂直滑动条组件VSlider�
 
 `laya.editorUI.xml`位于`LayaAirIDE根目录\resources\app\out\vs\layaEditor\renders\`目录下。
 
-resName中即是组件的前缀缩写名称（组件的前缀全称不可修改），修改resName的值即可。比如我们将Button组件的识别前缀由`resName="btn"`改为resName="bt"。保存好，我们刷新IDE编辑器，发现原来以btn前缀命名的Button资源被识别为Image资源，而以bt前缀命名的资源则被识别为Button组件。如图14所示。
+`resName`中的值即是组件的前缀缩写名称（组件的前缀全称不可修改），修改`resName`的值即可。比如我们将`Button`组件的识别前缀由`resName="btn"`改为resName="bt"。保存好再去刷新IDE编辑器，发现原来以btn前缀命名的Button资源被识别为Image资源，而以bt前缀命名的资源则被识别为Button组件。如图14所示。
 
 ![图14](img/14.png) <br /> (图14)
 
-*Tips：在没有特殊需求的情况下，不建议修改默认前缀。*
+*Tips：在没有特殊需求的情况下，建议不修改默认前缀。*
 
 
 
