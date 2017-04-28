@@ -6,7 +6,7 @@
     "download": {
       "js": "http://ldc.layabox.com/download/LayaAirJS_1.7.4_beta.zip",
       "ts": "http://ldc.layabox.com/download/LayaAirTS_1.7.4_beta.zip",
-      "as": "http://ldc.layabox.com/download/LayaAirAs3_1.7.4_beta.zip"
+      "as": "http://ldc.layabox.com/download/LayaAirAS3_1.7.4_beta.zip"
     }  
   },
   {
@@ -16,7 +16,7 @@
     "download": {
       "js": "http://ldc.layabox.com/download/LayaAirJS_1.7.3.zip",
       "ts": "http://ldc.layabox.com/download/LayaAirTS_1.7.3.zip",
-      "as": "http://ldc.layabox.com/download/LayaAirAs3_1.7.3.zip"
+      "as": "http://ldc.layabox.com/download/LayaAirAS3_1.7.3.zip"
     }  
   },
   {
