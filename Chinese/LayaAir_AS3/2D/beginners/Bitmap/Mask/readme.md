@@ -37,7 +37,7 @@ package
 			//设置舞台背景色
 			Laya.stage.bgColor = "#ffffff"        
 			//资源路径              
-			Res = "./res/img/monkey1.png";
+			Res = "res/img/monkey1.png";
 			
 			//先加载图片资源，在图片资源加载成功后，通过回调方法绘制图片并添加到舞台
 			Laya.loader.load(Res,Handler.create(this,graphicsImg));          
@@ -82,7 +82,7 @@ package
 			//设置舞台背景色
 			Laya.stage.bgColor = "#ffffff"      
 			//资源路径
-			Res = "./res/img/monkey1.png";		
+			Res = "res/img/monkey1.png";		
 			
 			//先加载图片资源，在图片资源加载成功后，通过回调方法绘制图片并添加到舞台
 			Laya.loader.load(Res,Handler.create(this,graphicsImg));   
@@ -196,7 +196,7 @@ package
 			Laya.stage.bgColor = "#ffffff"    
 				
 			//加载图集资源，加载成功后添加到舞台
-			Laya.loader.load([{url:"./res/atlas/ui.atlas",type:Loader.ATLAS}],Handler.create(this,onLoaded));
+			Laya.loader.load("res/atlas/ui.atlas",Handler.create(this,onLoaded));
 			
 		}
 		
