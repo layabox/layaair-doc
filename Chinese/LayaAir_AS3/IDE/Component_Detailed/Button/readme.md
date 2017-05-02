@@ -1,141 +1,114 @@
-# Button 组件参考
+# Button 组件详解
 
+## 1、创建Button组件
 
+　　按钮（Button）组件是最常用的组件之一，可以显示文本标签、图标或者两者同时显示。在LayaAirIDE里的按钮图片资源（按钮皮肤）命名通常是以btn为前缀，如图1所示。
 
-## 一、通过LayaAirIDE创建Button组件
+![图1](img/1-1.png) （图1-1）
 
-###        	1.1 创建Button
+### 1.1用引擎直接创建Button组件
 
- 	Button 组件可以用来表示常用的多态按钮，当用户点击时，Button 会有状态变化。另外，设置 Button 的属性 toggle 的值为 true 时，可以用来表示状态切换按钮。Button 组件的图像资源的 skin 属性值为按钮的图像资源。
-​        点击资源面板里的 Button组件，拖放到页面编辑区，即可添加 Button组件到页面上。
-​        Button 组件的脚本接口请参考 [Button API](http://layaair.ldc.layabox.com/api/index.html?category=Core&class=laya.ui.Button)。
+使用LayaAir引擎创建一个Button组件比较简单，通常只需要几个步骤，引擎入`laya.ui.Button`库，加载资源，创建一个Button实例，将Button添加到舞台，设置Button组件的属性。具体实现参考下面的代码与注释。
 
-​        Button 组件的资源示例：
+**创建一个入口类ComponentDemo.as，编写如下代码：**
 
-​        ![图片0.png](img/1.png)<br/>
-​    （图1）
-
-​        设置 Button 的stateNum 属性的值为3后，显示效果如下：
-
-​        ![图片0.png](img/2.png)<br/>
-​    （图2）
-
-
-### 1.2 Button 组件的常用属性
-
-​        ![图片0.png](img/3.png)<br/>
-​    （图3）
-
-| **属性**   | **功能说明**                                 |
-| -------- | ---------------------------------------- |
-| label    | 按钮的标签文本内容字符串。                            |
-| selected | 按钮的选中状态。                                 |
-| toggle   | 表示按钮是否为切换按钮。                             |
-| sizeGrid | 按钮图像资源的有效缩放网格数据。                         |
-| skin     | 按钮的皮肤资源。                                 |
-| stageNum | 按钮的状态值，以数字表示。 默认值为3。此值决定皮肤资源图片的切割方式。 取值： 1：单态。图片不做切割，按钮的皮肤状态只有一种。 2：两态。图片将以竖直方向被等比切割为2部分，从上向下，依次为 弹起状态皮肤、 按下和经过及选中状态皮肤。 3：三态。图片将以竖直方向被等比切割为2部分，从上向下，依次为 弹起状态皮肤、 经过状态皮肤、 按下和选中状态皮肤。 |
-
- 
-
- 
-
-### 1.3 Button 标签文本相关属性
-
-​        可以通过设置 Button 标签文本的的相关属性，实现按钮各状态的标签文本的不同显示效果。
-
-​        ![图片0.png](img/4.png)<br/>
-​    （图4）
-
-| **属性**           | **功能说明**       |
-| ---------------- | -------------- |
-| labelAlign       | 按钮标签文本的对齐方式。   |
-| labelBold        | 按钮标签文本是否加粗显示。  |
-| labelColors      | 按钮各状态下的标签文本颜色。 |
-| labelFont        | 按钮标签文本的字体名称。   |
-| labelPadding     | 按钮标签文本的边距。     |
-| labelSize        | 按钮标签文本的字体大小。   |
-| labelStroke      | 按钮标签文本的描边宽度。   |
-| labelStrokeColor | 按钮标签文本的描边颜色。   |
-
- 
-
-
-
-##  二、通过代码创建Button组件
-
-​	在我们进行书写代码的时候，免不了通过代码控制UI，在代码中导入`laya.ui.Button`的包，创建UI Button,并通过代码设定Button相关的属性。
-
-**示例代码：**
-
-```javascript
-package 
+```java
+package
 {
-	import laya.display.Stage;
 	import laya.ui.Button;
 	import laya.utils.Handler;
 	import laya.webgl.WebGL;
 	
-	public class UI_Button
+	public class ComponentDemo
 	{
-		private const COLUMNS:int = 2;
-		private const BUTTON_WIDTH:int = 147;
-		private const BUTTON_HEIGHT:int = 165 / 3;
-		private const HORIZONTAL_SPACING:int = 200;
-		private const VERTICAL_SPACING:int = 100;
-
-		private var xOffset:int;
-		private var yOffset:int;
-
-		private var skins:Array;
-
-		public function UI_Button()
+		private var skin:String = "./res/img/btn_test.png";
+		
+		public function ComponentDemo()
 		{
-			// 不支持WebGL时自动切换至Canvas
-			Laya.init(800, 600, WebGL);
-
-			Laya.stage.alignV = Stage.ALIGN_MIDDLE;
-			Laya.stage.alignH = Stage.ALIGN_CENTER;
-
-			Laya.stage.scaleMode = Stage.SCALE_SHOWALL;
-			Laya.stage.bgColor = "#232628";
-
-			skins = [
-				"res/ui/button-1.png", "res/ui/button-2.png", "res/ui/button-3.png", 
-				"res/ui/button-4.png", "res/ui/button-5.png", "res/ui/button-6.png"
-				];
-
-			// 计算将Button至于舞台中心的偏移量
-			xOffset = (Laya.stage.width - HORIZONTAL_SPACING * (COLUMNS - 1) - BUTTON_WIDTH) / 2;
-			yOffset = (Laya.stage.height - VERTICAL_SPACING * (skins.length / COLUMNS - 1) - BUTTON_HEIGHT) / 2;
-
-			Laya.loader.load(skins, Handler.create(this, onUIAssetsLoaded));
+			Laya.init(1334,750, WebGL);
+			Laya.stage.bgColor = "#ffffff";
+			//加载资源成功后，执行onLoad回调方法			
+			Laya.loader.load(skin, Handler.create(this, onLoaded));
 		}
 		
-		private function onUIAssetsLoaded(e:*=null):void
-		{
-			for(var i:int = 0, len : int = skins.length; i < len; ++i)
-			{
-				var btn:Button = createButton(skins[i]);
-				var x:Number = i % COLUMNS * HORIZONTAL_SPACING + xOffset;
-				var y:Number = (i / COLUMNS | 0) * VERTICAL_SPACING + yOffset;
-				btn.pos(x, y);
-			}
-		}
-
-		private function createButton(skin:String):Button
-		{
+		private function onLoaded():void {
+			
+			//创建一个Button实例
 			var btn:Button = new Button(skin);
+			//将Button添加到舞台
 			Laya.stage.addChild(btn);
-			return btn;
+			//设置Button相关的属性
+			btn.width = 100;
+			btn.height = 50; 
+			btn.pos(100,100);
+			btn.label = "按钮";
+			
 		}
 	}
 }
 ```
 
-**运行结果:**
-​	![5](img/5.png)<br/>
-​	(图5)通过代码创建Button
+上述代码运行效果如动图1所示：
 
-​	Button的其他属性也可以通过代码来设置，上述示例演示了如何通过代码创建不同皮肤（样式）的Button，
+![动图1](img/1.gif) <br/> (动图1)
 
-有兴趣的读者可以自己通过代码设置button，创建出符合自己需要的按钮。
+**Tips:** Button 组件的属性接口介绍请参考 [Button API](http://layaair.ldc.layabox.com/api/index.html?category=Core&class=laya.ui.Button)。
+
+
+
+### 1.2.使用LayaAirIDE创建Button
+
+使用LayaAirIDE创建Button更加简单，通过IDE的可视化操作，完全不需要程序基础，即可实现组件的创建与布局，也是推荐使用的组件创建方式。下面我们用LayaAirIDE创建一个动图1实现的效果。
+
+第一步：创建一个ui的DEMO页，在资源管理器中拖入一个按钮组件资源到场景编辑器，如图2所示。
+
+![100图2](img/2.png) <br />(图2)
+
+第二步：设置组件属性，如图3所示
+
+![图3](img/3.png) <br />(图3)
+
+设置完上面的两步后，直接就可以在IDE中看到如动图1的效果。在这个过程不需要任何程序编码，完全可以交给美术或策划实现。从而减少了与程序员的沟通成本，加快了游戏的开发效率。
+
+
+
+## 2、Button组件的属性介绍
+
+下面的文档，将围绕Button组件的基础常用属性以及通过文字难以理解的属性给予重点介绍。而对比较容易理解的属性，本文将不会提及，开发者可以将鼠标放到IDE属性管理器的属性名上停留，将会出现属性的Tips中文说明。
+
+### 2.1 按钮皮肤（skin）
+
+　　按钮的皮肤因切割方式不同，分成三态，两态、单态。这里的态指的是按钮皮肤（skin）的状态。
+
+　　三态是将皮肤图片按竖直方向以等比分割的形式分为3部分，如图1所示，**从上至下**依次为`弹起或离开状态`皮肤、 `经过状态`皮肤、 `按下和选中`（*保持按下*）状态皮肤，三态常用于PC浏览器中。
+
+　　在移动设备上，通常只采用两态，图片以竖直方向被等比切割为两部分，上面的部分为`弹起或离开状态状态`皮肤，下面的部分为 `经过和按下以及选中状态`（*保持按下*）皮肤。
+
+　　单态按钮不切割图片，无论什么状态，按钮的皮肤只有一种，保持不变。
+
+### 2.2 指定按钮皮肤的切割状态（stateNum）
+
+　　stateNum的属性值决定皮肤资源图片的切割方式。默认值为3，也就是说默认按3态按钮进行切割，等比分割为3部分。如果是两态按钮，需要将stateNum的属性值设为2，等比切割为2部分。单态按钮设置为1，不进行切割。
+
+　　这里需要注意的是，指定按钮状态，需要与按钮皮肤对应好。如果是三态的按钮皮肤，stateNum设置为2，切割后如图1-2所示，是错误的。
+
+![图1-2](img/1-2.png) <br />(图1-2)
+
+
+
+### 2.3 指定按钮选中状态(selected)
+
+　　selected属性默认为未选中的flase状态。一旦我们将selected属性设置为true。那按钮将会一直保持选中（持续按下）的状态，而不会再对其它状态产生变化（除非代码中进行状态改变）。
+
+### 2.4 是否切换按钮的显示状态（toggle）
+
+　　toggle属性默认为未选中的flase状态。一旦我们将toggle属性设置为true。当点击按钮组件后，按钮会保持在选中（持续按下）状态。再次点击可以还原。
+
+### 2.5 根据状态设置Button的描边文本颜色（StrokeColor）
+
+　　labelStrokeColor可以为Button的文本描边设置一个统一的颜色（不同状态颜色统一）。而StrokeColor属性可以根据不同的状态设置Button的描边文本颜色。而StrokeColor颜色的先后设置顺序为格式: "upColor,overColor,downColor,disableColor"。
+
+
+
+
+
