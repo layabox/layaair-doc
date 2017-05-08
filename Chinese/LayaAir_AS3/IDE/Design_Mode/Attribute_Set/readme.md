@@ -238,5 +238,90 @@ scaleX、scaleY是以轴心点为中心进行水平、垂直大小缩放。
 
 
 
+## 5、其他通用属性介绍
+
+LayaAirIDE提供了大量的组件，它们都有一些相同的通用属性，因为它们大都继承于Component组件基类。在这里我们主要介绍一下其他属性中的通用部分，组件本身的特殊属性，我们将在每个单独组件介绍时讲解。
+
+通用属性包括以下几类
+
+显示相关属性：alpha、visible
+
+缓存相关属性：cacheAs、cacheAsBitmap、staticCache
+
+鼠标操作相关属性：disabled、gray、htTestPrior、mouseEnabled、mouseThrough
+
+label相关属性：labelAlign、labelColors、labelBold、labelFont、labelPadding、labelSize、labelStroke、labelStrokeColor、strokeColor
+
+### 5.1 显示相关属性
+
+显示相关属性相对比较容易理解，显示对象都具有alpha和visible属性。
+
+`alpha`调整显示对象透明度，数值在0-1之间，0为全部透明，1为不透明，区间内属于不同程度半透明。注：显示对象alpha数值无论为多少，如果加了鼠标监听，那么它都支持鼠标事件，哪怕alpha为0的情况下，鼠标事件也会发生。
+
+`visible`调整显示对象的显示与否，布尔值，为false时，对象不显示出来，为true时显示。注：显示对象visible为false时，鼠标事件失去效果。
 
 
+
+### 5.2 缓存相关属性
+
+关于缓存优化方面的属性，cacheAs、cacheAsBitmap、staticCache建议单个组件不要使用，复杂页面时再使用。
+
+在游戏中有大量的UI，当一个UI有多个节点且变化较小时，我们推荐使用cacheAs或cahceAsBitmap。比如我们正在使用的LayaAirIDE软件中的所有面板，属性设置器、资源管理器、项目管理器等，在开发时我们都使用了cacheAs进行缓存，提高了渲染效率。
+
+对于经常变化的复杂UI，比如有“倒计时”显示的UI，我们也可以把它分成两部分，倒计时对象部分和相对变化少的UI部分，只对变化少的UI部分进行cacheAs。
+
+开发时使用cacheAs需认真学习理解，错误的理解和使用缓存机制反而会降低性能。
+
+下列为三个属性的详细说明：
+
+**cacheAs：**
+
+缓存组件，是否缓存为静态图像，合理作用能提高性能 。
+
+它有"none"，"normal"和"bitmap"三个值可选，cacheAs为非"none"时，子对象发生变化，会自动重新缓存，同时也可以手动调用reCache方法更新缓存。
+
+ 默认为"none"，不做任何缓存。当值为"normal"时，canvas模式下进行画布缓存，webgl模式下进行命令缓存。 当值为"bitmap"时，canvas模式下进行依然是画布缓存，webgl模式下使用renderTarget缓存。
+
+  webgl下renderTarget缓存模式有最大2048大小限制，会额外增加内存开销，不断重绘时开销比较大，但是会减少drawcall，渲染性能最高。 webgl下命令缓存模式只会减少节点遍历及命令组织，不会减少drawcall，性能中等。
+
+**cacheAsBitmap：**
+
+组件是否缓存为静态图像。功能同cacheAs的normal模式。
+
+**staticCache：**
+
+设置cacheAs为非空时此值才有效，staticCache=true时，子对象变化时不会自动更新缓存，只能通过调用reCache方法手动刷新。
+
+
+
+### 5.3 鼠标操作相关属性
+
+鼠标操作相关属性说明及演示效果如下
+
+| **其他属性**     | **功能说明**                                 |
+| ------------ | ---------------------------------------- |
+| disabled     | 是否禁用，禁用后变灰，且不接收鼠标事件。                     |
+| gray         | 是否变灰，变灰后仍能接受鼠标事件。                        |
+| htTestPrior  | 否优先检测自己。默认为false 鼠标碰撞检测是优先检测子对象，然后冒泡到父对象，如果hitTestPrior=true 鼠标碰撞优先检测本对象，本对象被击中后，才进一步检测子对象。 对于已知大小的容器（特别是根容器），设置此值为true，能减少节点碰撞，提高性能。默认为false。UI的View组件默认为true。 |
+| mouseEnabled | 是否接受鼠标事件。 默认为false，如果监听鼠标事件，则会自动设置本对象及父节点的属性 mouseEnable 的值都为 true（如果父节点手动设置为false，则不会更改）。 |
+| mouseThrough | 指定当mouseEnabled=true时，是否可穿透。默认值为false，如果设置为true，则点击空白区域可以穿透过去，只针对自身有效。 |
+
+![动图10](img/10.gif)<br />（动图10） 
+
+
+
+### 5.4 label相关属性
+
+很多组件的内部包含了label标签，比如Button、CheckBox、Tab等。它们的其他属性中也有相同的label属性设置，如下表
+
+| **label相关的其他属性** | **功能说明**                                 |
+| ---------------- | ---------------------------------------- |
+| labelAlign       | 标签对齐模式，默认为居中对齐。注：在CheckBox中无效            |
+| labelColors      | 表示标签各个状态下的文本颜色。 格式: "upColor,overColor,downColor,disableColor"。默认为“蓝色，绿色”。 |
+| labelBold        | 表示标签文本标签是否为粗体字。                          |
+| labelFont        | 表示文本标签的字体名称，以字符串形式表示。IDE中可选择。            |
+| labelPadding     | 表示文本标签的边距。 格式："上边距,右边距,下边距,左边距"。         |
+| labelSize        | 表示文本标签的字体大小。                             |
+| labelStroke      | 文字描边宽度（以像素为单位）。 默认值0，表示不描边。              |
+| labelStrokeColor | 文字描边颜色，以字符串表示。 默认值为 "#000000"（黑色）;       |
+| strokeColor      | 表示各个状态下的描边颜色。 格式: "upColor,overColor,downColor,disableColor"。 |
