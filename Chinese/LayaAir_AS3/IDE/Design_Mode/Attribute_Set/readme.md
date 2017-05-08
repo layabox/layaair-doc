@@ -252,13 +252,19 @@ LayaAirIDE提供了大量的组件，它们都有一些相同的通用属性，�
 
 label相关属性：labelAlign、labelColors、labelBold、labelFont、labelPadding、labelSize、labelStroke、labelStrokeColor、strokeColor
 
+
+
 ### 5.1 显示相关属性
 
 显示相关属性相对比较容易理解，显示对象都具有alpha和visible属性。
 
-`alpha`调整显示对象透明度，数值在0-1之间，0为全部透明，1为不透明，区间内属于不同程度半透明。注：显示对象alpha数值无论为多少，如果加了鼠标监听，那么它都支持鼠标事件，哪怕alpha为0的情况下，鼠标事件也会发生。
+`alpha`调整显示对象透明度，数值在0-1之间，0为全部透明，1为不透明，区间内属于不同程度半透明。
 
-`visible`调整显示对象的显示与否，布尔值，为false时，对象不显示出来，为true时显示。注：显示对象visible为false时，鼠标事件失去效果。
+**Tips**：显示对象alpha数值无论为多少，如果加了鼠标监听，那么它都支持鼠标事件，哪怕alpha为0的情况下，鼠标事件也会发生。
+
+`visible`控制组件的是否显示，该属性为布尔值，默认值为true，正常显示。当值为false时，组件不显示出来，并且鼠标事件无效果。
+
+*Tips：visible为false时不显示是指在浏览器中运行时不显示，在IDE中设置为false不会即时产生隐藏变化。*
 
 
 
