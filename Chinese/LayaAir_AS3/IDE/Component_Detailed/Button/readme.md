@@ -8,7 +8,7 @@
 
 ### 1.1用引擎直接创建Button组件
 
-使用LayaAir引擎创建一个Button组件比较简单，通常只需要几个步骤，引入`laya.ui.Button`库，加载资源，创建一个Button实例，将Button添加到舞台，设置Button组件的属性。具体实现参考下面的代码与注释。
+使用LayaAir引擎创建一个Button组件比较简单，通常只需要几个步骤，引入`laya.ui.Button`包路径，加载资源，创建一个Button实例，将Button添加到舞台，设置Button组件的属性。具体实现参考下面的代码与注释。
 
 **创建一个入口类ComponentDemo.as，编写如下代码：**
 
@@ -21,13 +21,16 @@ package
 	
 	public class ComponentDemo
 	{
+      	//按钮资源路径
 		private var skin:String = "./res/img/btn_test.png";
 		
 		public function ComponentDemo()
 		{
+          	//初始化引擎，设置宽高并开启WebGL渲染模式
 			Laya.init(1334,750, WebGL);
+			//设置舞台背景颜色
 			Laya.stage.bgColor = "#ffffff";
-			//加载资源成功后，执行onLoad回调方法			
+			//加载资源成功后，执行onLoaded回调方法			
 			Laya.loader.load(skin, Handler.create(this, onLoaded));
 		}
 		
