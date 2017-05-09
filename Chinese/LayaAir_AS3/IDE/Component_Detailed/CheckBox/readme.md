@@ -18,7 +18,7 @@ CheckBox组件的选择框图片是CheckBox组件的皮肤（skin），图片资
 
 
 
-使用LayaAir引擎创建一个CheckBox组件比较简单，通常只需要几个步骤，引入`laya.ui.Button`库，加载资源，创建一个Button实例，将Button添加到舞台，设置Button组件的属性。具体实现参考下面的代码与注释。
+使用LayaAir引擎创建一个CheckBox组件比较简单，通常只需要几个步骤，引入`laya.ui.CheckBox`包路径，加载资源，创建一个CheckBox实例，将CheckBox添加到舞台，设置CheckBox组件的属性。具体实现参考下面的代码与注释。
 
 **创建一个入口类ComponentDemo.as，编写如下代码：**
 
@@ -32,11 +32,13 @@ package
 
 	public class ComponentDemo
 	{
+      	//资源路径
 		private var skin1:String="res/component/check.png";
 		private var skin2:String ="res/component/check_2.png";
 		
 		public function ComponentDemo()
 		{
+          	//初始化引擎，设置宽高并开启WebGL渲染模式
 			Laya.init(1334,750, WebGL);
 			
 			//设置舞台背景色
@@ -91,20 +93,20 @@ package
 
 ## 二、通过LayaAirIDE创建CheckBox组件
 
-###2.1 创建CheckBox 
+### 2.1 创建CheckBox
+
  创建一个ui的DEMO页，点击选择`资源管理器`里的 CheckBox 组件资源，拖到场景编辑器，即成功添加 CheckBox 组件到页面上，如图3-1所示。   
 
 ![图3-1](img/3-1.png)<br/>     （图3-1）
 
 
 
-###  2.2 设置CheckBox常用属性
+### 2.2 设置CheckBox常用属性
 
 创建完组件，可以通过属性设置器，为组件设置属性。例如，CheckBox组件的默认文本为“label”，我们将默认文本修改为“我的多选框”，并设置label标签的颜色、状态、字体、大小等。如图3-2、3-3所示。
 
 ![图3-2](img/3-2.png)<br/>  （图3-2）
 ![图3-1](img/3-3.png)<br/>（图3-3）
-
 
 
 
