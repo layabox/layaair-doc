@@ -10,7 +10,7 @@
 
 使用LayaAir引擎创建一个Button组件比较简单，通常只需要几个步骤，加载资源，创建一个Button实例，将Button添加到舞台，设置Button组件的属性。具体实现参考下面的代码与注释。
 
-**创建一个入口类ComponentDemo.js，编写如下代码：**
+**创建一个入口类GameMain.js，编写如下代码：**
 
 ```javascript
 //初始化引擎，设置宽高并开启WebGL渲染模式
