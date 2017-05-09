@@ -10,28 +10,35 @@
 
 使用LayaAir引擎创建一个Button组件比较简单，通常只需要几个步骤，加载资源，创建一个Button实例，将Button添加到舞台，设置Button组件的属性。具体实现参考下面的代码与注释。
 
-**创建一个入口类GameMain.js，编写如下代码：**
+**创建一个入口类GameMain.ts，编写如下代码：**
 
-```javascript
-//初始化引擎，设置宽高并开启WebGL渲染模式
-Laya.init(600, 400,Laya.WebGL);
-//设置舞台背景颜色
-Laya.stage.bgColor = "#ffffff";
-//按钮资源路径
-var skin = "./res/img/btn_test.png";
-//加载资源成功后，执行onLoaded回调方法
-Laya.loader.load(skin,Laya.Handler.create(this,onLoaded));
-function onLoaded(){
-    //创建一个Button实例
-    var btn = new Laya.Button(skin);
-    //将Button添加到舞台上
-    Laya.stage.addChild(btn);
-    //设置Button相关属性
-    btn.width = 100;
-    btn.height = 50;
-    btn.pos(100,100);
-    btn.label = "按钮";
+```typescript
+// 程序入口
+class GameMain{
+    //按钮资源路径
+    private skin:string = "button.png";
+    constructor()
+    {
+        //初始化引擎，设置宽高并开启WebGL渲染模式
+        Laya.init(600,400,Laya.WebGL);
+        //设置舞台背景颜色
+        Laya.stage.bgColor = "#ffffff";
+        //加载资源成功后，执行onLoaded回调方法
+        Laya.loader.load(this.skin,Laya.Handler.create(this,this.onLoaded));
+    }
+    private onLoaded():void{
+        //创建一个Button实例
+        var btn:Laya.Button = new Laya.Button(this.skin);
+        //将Button添加到舞台上
+        Laya.stage.addChild(btn);
+        //设置Button相关属性
+        btn.width = 100;
+        btn.height = 50;
+        btn.pos(100,100);
+        btn.label = "按钮";
+    }
 }
+new GameMain();
 ```
 
 上述代码运行效果如动图2所示：
