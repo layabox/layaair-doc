@@ -8,7 +8,7 @@
 
 ### 1.1用引擎直接创建Button组件
 
-使用LayaAir引擎创建一个Button组件比较简单，通常只需要几个步骤，引擎入`laya.ui.Button`库，加载资源，创建一个Button实例，将Button添加到舞台，设置Button组件的属性。具体实现参考下面的代码与注释。
+使用LayaAir引擎创建一个Button组件比较简单，通常只需要几个步骤，引入`laya.ui.Button`库，加载资源，创建一个Button实例，将Button添加到舞台，设置Button组件的属性。具体实现参考下面的代码与注释。
 
 **创建一个入口类ComponentDemo.as，编写如下代码：**
 
