@@ -1,124 +1,107 @@
 # RadioGroup 组件参考
 
+> 由于很多组件属性是通用的，常用及通用的组件属性在`属性设置器`文档中已进行介绍。阅读本篇内容前请先阅读《属性设置器》文档。
 
+## 1、了解RadioGroup组件
 
-## 一、通过LayaAirIDE创建RadioGroup组件
+### 1.1 RadioGroup组件的作用
 
-### 	1.1 创建RadioGroup
+RadioGroup是单选框按钮组，按钮组之内的组件选项互相排斥，用户每次只能选择一个单选框（Radio）组件。如动图1所示。
+![图片4.png](img/1.gif)<br/> 	（动图1）
 
-​        RadioGroup  是单选框组，通常被用于显示游戏中需要进行同类单项选择的一些功能设置显示。可以通过设置RadioGroup 的属性labels 来定义单选框组各项的文本描述。
-​        点击选择资源面板里的 RadioGroup 组件，拖放到页面编辑区，即可添加 RadioGroup  组件到页面上。
-​        RadioGroup 的脚本接口请参考 [RadioGroup API](http://layaair.ldc.layabox.com/api/index.html?category=Core&class=laya.ui.RadioGroup)。
+### 1.2 RadioGroup组件的皮肤（skin）规范
 
-​        RadioGroup 组件的图像资源示例：
+RadioGroup组件的皮肤是以`RadioGroup`或以`RadioGroup_`为前缀进行命名，在皮肤设计规范方面，是竖向等分的两态图或三态图，如图2所示。
 
-​        ![图片0.png](img/1.png)<br/>
-​    （图1）
+![图2](img/2.png) <br />(图2)三态RadioGroup皮肤
 
-​        设置 RadioGroup 的属性 labels 的值为 “radio1,radio2,radio3”，和属性 space 的值为 10 后，显示效果如下：
+*Tips：RadioGroup组件的皮肤无法使用九宫格属性，所以要在资源设计的时候就确定好实际应用时的大小。*
 
-​        ![图片0.png](img/2.png)<br/>
-​    （图2）
+### 1.3 RadioGroup组件的API介绍
 
- 
-
-### 1.2 RadioGroup  组件的常用属性
-
-​        ![图片0.png](img/3.png)<br/>
-​    （图3）
-
- 
-
-| **属性**        | **功能说明**                                 |
-| ------------- | ---------------------------------------- |
-| skin          | 单选框图像资源。                                 |
-| labels        | 单选框组的标签文本内容集合字符串，以逗号分隔。                  |
-| space         | 单选框组的每个选项之间的间隔。                          |
-| direction     | 单选框组的排列方向。取值：“horizontal”表示水平布局，“vertical”表示垂直布局。 |
-| selectedIndex | 表示当前选择的单选框的索引。                           |
+  RadioGroup 的API介绍请参考 [ http://layaair.ldc.layabox.com/api/index.html?category=Core&class=laya.ui.RadioGroup](http://layaair.ldc.layabox.com/api/index.html?category=Core&class=laya.ui.RadioGroup)。
 
 
 
-## 二、通过代码创建RadioGrounp组件
 
-​	在我们进行书写代码的时候，免不了通过代码控制UI，在代码中导入`laya.ui.RadioGrounp`的包，创建UI RadioGrounp,并通过代码设定RadioGrounp相关的属性。
+## 2、通过LayaAirIDE创建RadioGroup组件
 
-**示例代码：**
+### 	2.1 创建RadioGroup
 
-```javascript
-package
-{
-	import laya.display.Stage;
-	import laya.ui.RadioGroup;
-	import laya.utils.Handler;
-	import laya.webgl.WebGL;
-	
-	public class UI_RadioGroup
-	{
-		private const SPACING:int = 150;
-		private const X_OFFSET:int = 200;
-		private const Y_OFFSET:int = 200;
-		
-		private var skins:Array;
-		
-		public function UI_RadioGroup()
-		{
-			// 不支持WebGL时自动切换至Canvas
-			Laya.init(800, 600, WebGL);
+​        点击选择资源管理器里的 RadioGroup 组件资源，拖拽到场景编辑器，即在页面中成功的创建了一个 RadioGroup  组件。如动图3所示。
+​      ![动图3](img/3.gif) <br /> （动图3）
 
-			Laya.stage.alignV = Stage.ALIGN_MIDDLE;
-			Laya.stage.alignH = Stage.ALIGN_CENTER;
 
-			Laya.stage.scaleMode = Stage.SCALE_SHOWALL;
-			Laya.stage.bgColor = "#232628";
-			
-			skins = ["res/ui/radioButton (1).png", "res/ui/radioButton (2).png", "res/ui/radioButton (3).png"];
-			Laya.loader.load(skins, Handler.create(this, initRadioGroups));
-		}
 
-		private function initRadioGroups(e:*=null):void
-		{
-			for (var i:int = 0; i < skins.length;++i)
-			{
-				var rg:RadioGroup = createRadioGroup(skins[i]);
-				rg.selectedIndex = i;
-				rg.x = i * SPACING + X_OFFSET;
-				rg.y = Y_OFFSET;
-			}
-		}
-		
-		private function createRadioGroup(skin:String):RadioGroup
-		{
-			var rg:RadioGroup = new RadioGroup();
-			rg.skin = skin;
-			
-			rg.space = 70;
-			rg.direction = "v";
-				
-			rg.labels = "Item1, Item2, Item3";
-			rg.labelColors = "#787878,#d3d3d3,#FFFFFF";
-			rg.labelSize = 20;
-			rg.labelBold = true;
-			rg.labelPadding = "5,0,0,5";
-			
-			rg.selectHandler = new Handler(this, onSelectChange);
-			Laya.stage.addChild(rg);
+### 2.2 通过labels增加单选框 
 
-			return rg;
-		}
+​       如动图3中所示，默认的单选框组中只有两个单选框。如想增加单选框，只需在labels属性中增加新的标签即可，修改标签内容也在该属性中设置，操作如动图4-1所示。
 
-		private function onSelectChange(index:int):void
-		{
-			trace("你选择了第 " + (index + 1) + " 项");
-		}
-	}
-}
-```
+​       ![动图4-1](img/4-1.gif) <br /> （动图4-1）
 
-**运行结果:**
-​	![5](gif/1.gif)<br/>
-​	(图5)通过代码创建RadioGrounp
 
-​	Image的其他属性也可以通过代码来设置，上述示例演示了如何通过代码创建不同皮肤（样式）的RadioGrounp，
 
-有兴趣的读者可以自己通过代码设置RadioGrounp，创建出符合自己需要的图片。
+### 2.3  改变单选框组RadioGroup的布局方向与间距 
+
+ RadioGroup 默认是水平布局（*horizontal*），通过更改direction属性，实现垂直布局（*vertical*）。设置间距可以通过space属性实现。如动图4-2所示。
+![动图4-2](img/4-2.gif) <br /> （动图4-2）
+
+
+
+### 2.4 设置单选框组RadioGroup的默认选项
+
+selectedIndex属性是用于改变单选框组的索引值，默认不设置时，不勾选任何选项，如果要设置RadioGroup的默认勾选，可以设置selectedIndex的属性值，0为第1个单选框，1为第2个单选框……以此类推。
+
+假设我们将属性值设置为0时，运行效果如动图4-3所示。
+![动图4-3](img/4-3.gif) <br /> （动图4-3）
+
+### 
+
+
+
+## 3、创建自定义的RadioGroup组件
+
+​	在上例中，我们使用了同一种单选框资源通过设置labels生成了三个子项目的单选框组。然而在实际的游戏中，在同一个RadioGroup组件中对单选框样式有不同的需求，那么通过labels设置的方式是无法达到效果的，这个时候就需要使用自定义RadioGroup组件的方式。
+
+
+
+
+### 3.1 准备美术资源
+
+​	我们用两张不同的`radio单选框`美术资源来组成`自定义RadioGroup组件`，资源如 图5 所示。
+
+​        ![图片5.png](img/5.png)<br/>    （图5 ）
+
+**Tips**：
+
+这里要特别注意一下皮肤图片的命名规则，在自定义的RadioGroup组件中，我们不能使用`RadioGroup`或`RadioGroup_`为前缀命名。因为要使用Radio单选框组件来作为它的子项组件，所以本例中的图片资源命名使用`radio_`为前缀。
+
+
+
+### 3.2 在IDE中创建Radio组件
+
+将资源拷贝到项目的资源管理器文件夹，然后在IDE中，将制作的radio组件从资源管理器中逐个拖拽到场景编辑器，从左到右（或从上到下）将每个Radio组件的name属性，按先后顺序依次修改成“item0、item1、item2.....”，（不按此规则增加名字属性，生成的RadioGroup组件为无效组件，不能正常运行。）
+
+当设置完label属性的文本、label标签的字体颜色、大小、位置关系等，以及调整好位置后，效果如 图6、图7 所示。
+
+​        ![图片6.png](img/6.png)<br/>    （图6）
+
+​        ![图片7.png](img/7.png)<br/>    （图7）
+
+​	**Tips：自定义的RadioGroup组件的name属性中，命名规则为英文字符+数字，英文字符后不能加下划线，数字要按先后顺序从0开始。**。
+
+
+
+### 3.3 转换成RadioGroup容器
+
+​	当修改好子项属性后，全选组件按快捷键Ctrl+B转换成容器，选择转换成RadioGroup容器类型并确定，如图8所示。
+
+​        ![图片8.png](img/8.png)<br/>    （图8）
+
+
+
+​	转换成功后，调整默认选择的索引selectedIndex为0（第一个Radio），如图9所示，单选框间距space、方向direction可以不调节，在场景编辑器中通过鼠标调整也可以。
+
+​        ![图片9.png](img/9.png)<br/>    （图9）
+
+​	通过以上几个步骤可以看到自定义RadioGroup组件制作成功。默认选择了第一个选框并切换到它的第三帧选择状态，其他选框则是第一帧未选择状态。
