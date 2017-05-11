@@ -1,0 +1,142 @@
+[
+  {
+    "name": "LayaAir 1.7.4 beta",
+    "url": "1.7.4beta.md",
+    "date":"2017-04-22",
+    "download": {
+      "js": "http://ldc.layabox.com/download/LayaAirJS_1.7.4_beta.zip",
+      "ts": "http://ldc.layabox.com/download/LayaAirTS_1.7.4_beta.zip",
+      "as": "http://ldc.layabox.com/download/LayaAirAS3_1.7.4_beta.zip"
+    }  
+  },
+  {
+    "name": "LayaAir 1.7.3",
+    "url": "1.7.3.md",
+    "date":"2017-04-06",
+    "download": {
+      "js": "http://ldc.layabox.com/download/LayaAirJS_1.7.3.zip",
+      "ts": "http://ldc.layabox.com/download/LayaAirTS_1.7.3.zip",
+      "as": "http://ldc.layabox.com/download/LayaAirAS3_1.7.3.zip"
+    }  
+  },
+  {
+    "name": "LayaAir 1.7.2",
+    "url": "1.7.2.md",
+    "date":"2017-03-18",
+    "download": {
+      "js": "http://ldc.layabox.com/download/LayaAirJS_1.7.2.zip",
+      "ts": "http://ldc.layabox.com/download/LayaAirTS_1.7.2.zip",
+      "as": "http://ldc.layabox.com/download/LayaAirAs3_1.7.2.zip"
+    }  
+  },
+  {
+    "name": "LayaAir 1.7.1",
+    "url": "1.7.1.md",
+    "date":"2017-03-04",
+    "download": {
+      "js": "http://ldc.layabox.com/download/LayaAirJS_1.7.1.zip",
+      "ts": "http://ldc.layabox.com/download/LayaAirTS_1.7.1.zip",
+      "as": "http://ldc.layabox.com/download/LayaAirAs3_1.7.1.zip"
+    }   
+  },
+  {
+    "name": "LayaAir 1.7.0",
+    "url": "1.7.0.md",
+    "date":"2017-02-21",
+    "download": {
+      "js": "http://ldc.layabox.com/download/LayaAirJS_1.7.0.zip",
+      "ts": "http://ldc.layabox.com/download/LayaAirTS_1.7.0.zip",
+      "as": "http://ldc.layabox.com/download/LayaAirAs3_1.7.0.zip"
+    }   
+  },
+  {
+    "name": "LayaAir 1.6.2",
+    "url": "1.6.2.md",
+    "date":"2017-02-18",
+    "download": {
+      "js": "http://ldc.layabox.com/download/LayaAirJS_1.6.2.zip",
+      "ts": "http://ldc.layabox.com/download/LayaAirTS_1.6.2.zip",
+      "as": "http://ldc.layabox.com/download/LayaAirAs3_1.6.2.zip"
+    }   
+  },
+  {
+    "name": "LayaAir 1.6.1",
+    "url": "1.6.1.md",
+    "date":"2017-01-20",
+    "download": {
+      "js": "http://ldc.layabox.com/download/LayaAirJS_1.6.1.zip",
+      "ts": "http://ldc.layabox.com/download/LayaAirTS_1.6.1.zip",
+      "as": "http://ldc.layabox.com/download/LayaAirAs3_1.6.1.zip"
+    }   
+  },
+  {
+    "name": "LayaAir 1.6.0",
+    "url": "1.6.0.md",
+    "date":"2016-12-23",
+    "download": {
+      "js": "http://ldc.layabox.com/download/LayaAirJS_1.6.0.zip",
+      "ts": "http://ldc.layabox.com/download/LayaAirTS_1.6.0.zip",
+      "as": "http://ldc.layabox.com/download/LayaAirAs3_1.6.0.zip"
+    }   
+  },
+  {
+    "name": "LayaAir 1.5.5",
+    "url": "1.5.5.md",
+    "date":"2016-12-09",
+    "download": {
+      "js": "http://ldc.layabox.com/download/LayaAirJS_1.5.5.zip",
+      "ts": "http://ldc.layabox.com/download/LayaAirTS_1.5.5.zip",
+      "as": "http://ldc.layabox.com/download/LayaAirAs3_1.5.5.zip"
+    }   
+  },
+  {
+    "name": "LayaAir 1.5.4",
+    "url": "1.5.4.md",
+    "date":"2016-11-26",
+    "download": {
+      "js": "http://ldc.layabox.com/download/LayaAirJS_1.5.4.zip",
+      "ts": "http://ldc.layabox.com/download/LayaAirTS_1.5.4.zip",
+      "as": "http://ldc.layabox.com/download/LayaAirAs3_1.5.4.zip"
+    }   
+  },
+  {
+    "name": "LayaAir 1.5.3",
+    "url": "1.5.3.md",
+    "date":"2016-11-12",
+    "download": {
+      "js": "http://ldc.layabox.com/download/LayaAirJS_1.5.3.zip",
+      "ts": "http://ldc.layabox.com/download/LayaAirTS_1.5.3.zip",
+      "as": "http://ldc.layabox.com/download/LayaAirAs3_1.5.3.zip"
+    }   
+  },
+  {
+    "name": "LayaAir 1.5.2",
+    "url": "1.5.2.md",
+    "date":"2016-10-29",
+    "download": {
+      "js": "http://ldc.layabox.com/download/LayaAirJS_1.5.2.zip",
+      "ts": "http://ldc.layabox.com/download/LayaAirTS_1.5.2.zip",
+      "as": "http://ldc.layabox.com/download/LayaAirAs3_1.5.2.zip"
+    }   
+  },
+  {
+    "name": "LayaAir 1.5.0",
+    "url": "1.5.0.md",
+    "date":"2016-10-15",
+    "download": {
+      "js": "http://ldc.layabox.com/download/LayaAirJS_1.5.0.zip",
+      "ts": "http://ldc.layabox.com/download/LayaAirTS_1.5.0.zip",
+      "as": "http://ldc.layabox.com/download/LayaAirAs3_1.5.0.zip"
+    }  
+  },
+  {
+    "name": "LayaAir 1.4.0",
+    "url": "1.4.0.md",
+    "date":"2016-09-28",
+    "download": {
+      "js": "http://ldc.layabox.com/download/LayaAirJS_1.4.0.zip",
+      "ts": "http://ldc.layabox.com/download/LayaAirTS_1.4.0.zip",
+      "as": "http://ldc.layabox.com/download/LayaAirAs3_1.4.0.zip"
+    }
+  }
+]
