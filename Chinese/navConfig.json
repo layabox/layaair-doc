@@ -463,76 +463,141 @@
         "nav_1_name": "LayaNative原生服务(AS3)",
         "nav_1_data": [
           {
+            "name_2_name": "LayaNative手把手",
+            "name_2_data": [
+              {
+                "name_3_name": "测试App安装",
+                "name_3_url": "Chinese/LayaNative/How_To_Use_Runtime/",
+                "name_3_file": "readme.md"
+              },              
+              {
+                "name_3_name": "运行Hello LayaBox项目",
+                "name_3_url": "Chinese/LayaNative/run_HelloLayaBox/",
+                "name_3_file": "README.md"
+              }
+            ]
+          },
+          {
             "name_2_name": "LayaNative基础文档",
             "name_2_data": [
               {
                 "name_3_name": "LayaNative综述",
                 "name_3_url": "Chinese/LayaNative/LayaNative_Introduction/",
                 "name_3_file": "readme.md"
-              },
+              },              
               {
-                "name_3_name": "Eclipse搭建Android环境",
-                "name_3_url": "Chinese/LayaNative/setUpAndroidEnvironment_Eclipse/",
-                "name_3_file": "readme.md"
-              },
+                "name_3_name": "LayaPlayer不是浏览器",
+                "name_3_url": "Chinese/LayaNative/native_index/",
+                "name_3_file": "README.md"
+              },              
               {
-                "name_3_name": "Android Studio的使用和配置",
-                "name_3_url": "Chinese/LayaNative/AndroidStudio_ConfigurationAndApplication/",
-                "name_3_file": "readme.md"
-              },
+                "name_3_name": "横竖屏设置",
+                "name_3_url": "Chinese/LayaNative/screen_orientation/",
+                "name_3_file": "README.md"
+              },              
               {
-                "name_3_name": "IOS打包发布App详细流程",
-                "name_3_url": "Chinese/LayaNative/packagingReleases_IOS/",
-                "name_3_file": "readme.md"
-              },
+                "name_3_name": "关于声音",
+                "name_3_url": "Chinese/LayaNative/sound/",
+                "name_3_file": "README.md"
+              },              
               {
-                "name_3_name": "IOS应用内购买",
-                "name_3_url": "Chinese/LayaNative/In_APP_Purchase_IOS/",
-                "name_3_file": "readme.md"
+                "name_3_name": "启动画面",
+                "name_3_url": "Chinese/LayaNative/loading_view/",
+                "name_3_file": "README.md"
+              },              
+              {
+                "name_3_name": "关于webSocket",
+                "name_3_url": "Chinese/LayaNative/",
+                "name_3_file": "websocket.md"
+              },              
+              {
+                "name_3_name": "其他",
+                "name_3_url": "Chinese/LayaNative/Other_settings/",
+                "name_3_file": "README.md"
               }
             ]
           },
           {
-            "name_2_name": "Runtime(运行器)",
+            "name_2_name": "LayaNative进阶",
             "name_2_data": [
               {
-                "name_3_name": "如何用Runtime测试游戏",
-                "name_3_url": "Chinese/LayaNative/How_To_Use_Runtime/",
-                "name_3_file": "readme.md"
-              }
-            ]
-          },
-          {
-            "name_2_name": "原生APP打包相关",
-            "name_2_data": [
-              {
-                "name_3_name": "构建工具",
-                "name_3_url": "Chinese/LayaNative/build_Tool/",
-                "name_3_file": "readme.md"
-              },              
-              {
-                "name_3_name": "打包工具",
-                "name_3_url": "Chinese/LayaNative/packaging_Tools/",
-                "name_3_file": "readme.md"
-              },              
-              {
-                "name_3_name": "LayaDCC工具",
+                "name_3_name": "缓存工具-layadcc",
                 "name_3_url": "Chinese/LayaNative/LayaDcc_Tool/",
                 "name_3_file": "readme.md"
               },              
               {
-                "name_3_name": "用反射机制实现二次开发",
+                "name_3_name": "显存管理",
+                "name_3_url": "Chinese/LayaNative/memory_manager/",
+                "name_3_file": "README.md"
+              },              
+              {
+                "name_3_name": "二次开发",
                 "name_3_url": "Chinese/LayaNative/Secondary_Development/",
                 "name_3_file": "readme.md"
               },              
               {
-                "name_3_name": "用反射机制对接Native APP渠道",
+                "name_3_name": "渠道对接",
                 "name_3_url": "Chinese/LayaNative/Platform_Interface/",
                 "name_3_file": "readme.md"
               },              
               {
-                "name_3_name": "打包相关的其它设置综述",
-                "name_3_url": "Chinese/LayaNative/Other_settings/",
+                "name_3_name": "iOS-App内购",
+                "name_3_url": "Chinese/LayaNative/In_APP_Purchase_IOS/",
+                "name_3_file": "readme.md"
+              },              
+              {
+                "name_3_name": "webview",
+                "name_3_url": "Chinese/LayaNative/webview/",
+                "name_3_file": "README.md"
+              },              
+              {
+                "name_3_name": "处理http劫持",
+                "name_3_url": "Chinese/LayaNative/",
+                "name_3_file": "anti-hijack.md"
+              },              
+              {
+                "name_3_name": "截屏",
+                "name_3_url": "Chinese/LayaNative/",
+                "name_3_file": "captureScreen.md"
+              },              
+              {
+                "name_3_name": "android嵌入字体",
+                "name_3_url": "Chinese/LayaNative/built_in_font/",
+                "name_3_file": "README.md"
+              }
+            ]
+          },
+          {
+            "name_2_name": "LayaNative工具使用",
+            "name_2_data": [
+              {
+                "name_3_name": "使用IDE构建工程",
+                "name_3_url": "Chinese/LayaNative/build_Tool/",
+                "name_3_file": "readme.md"
+              },
+              {
+                "name_3_name": "打包工具使用",
+                "name_3_url": "Chinese/LayaNative/packaging_Tools/",
+                "name_3_file": "readme.md"
+              }
+            ]
+          },
+          {
+            "name_2_name": "Andoird、iOS开发基本知识",
+            "name_2_data": [
+              {
+                "name_3_name": "android开发环境搭建-Eclipse",
+                "name_3_url": "Chinese/LayaNative/setUpAndroidEnvironment_Eclipse/",
+                "name_3_file": "readme.md"
+              },
+              {
+                "name_3_name": "android开发环境搭建-AndroidStudio",
+                "name_3_url": "Chinese/LayaNative/AndroidStudio_ConfigurationAndApplication/",
+                "name_3_file": "readme.md"
+              },
+              {
+                "name_3_name": "iOS真机调试",
+                "name_3_url": "Chinese/LayaNative/packagingReleases_IOS/",
                 "name_3_file": "readme.md"
               }
             ]
@@ -961,76 +1026,141 @@
         "nav_1_name": "LayaNative原生服务(TS)",
         "nav_1_data": [
           {
+            "name_2_name": "LayaNative手把手",
+            "name_2_data": [
+              {
+                "name_3_name": "测试App安装",
+                "name_3_url": "Chinese/LayaNative/How_To_Use_Runtime/",
+                "name_3_file": "readme.md"
+              },              
+              {
+                "name_3_name": "运行Hello LayaBox项目",
+                "name_3_url": "Chinese/LayaNative/run_HelloLayaBox/",
+                "name_3_file": "README.md"
+              }
+            ]
+          },
+          {
             "name_2_name": "LayaNative基础文档",
             "name_2_data": [
               {
                 "name_3_name": "LayaNative综述",
                 "name_3_url": "Chinese/LayaNative/LayaNative_Introduction/",
                 "name_3_file": "readme.md"
-              },
+              },              
               {
-                "name_3_name": "Eclipse搭建Android环境",
-                "name_3_url": "Chinese/LayaNative/setUpAndroidEnvironment_Eclipse/",
-                "name_3_file": "readme.md"
-              },
+                "name_3_name": "LayaPlayer不是浏览器",
+                "name_3_url": "Chinese/LayaNative/native_index/",
+                "name_3_file": "README.md"
+              },              
               {
-                "name_3_name": "Android Studio的使用和配置",
-                "name_3_url": "Chinese/LayaNative/AndroidStudio_ConfigurationAndApplication/",
-                "name_3_file": "readme.md"
-              },
+                "name_3_name": "横竖屏设置",
+                "name_3_url": "Chinese/LayaNative/screen_orientation/",
+                "name_3_file": "README.md"
+              },              
               {
-                "name_3_name": "IOS打包发布App详细流程",
-                "name_3_url": "Chinese/LayaNative/packagingReleases_IOS/",
-                "name_3_file": "readme.md"
-              },
+                "name_3_name": "关于声音",
+                "name_3_url": "Chinese/LayaNative/sound/",
+                "name_3_file": "README.md"
+              },              
               {
-                "name_3_name": "IOS应用内购买",
-                "name_3_url": "Chinese/LayaNative/In_APP_Purchase_IOS/",
-                "name_3_file": "readme.md"
+                "name_3_name": "启动画面",
+                "name_3_url": "Chinese/LayaNative/loading_view/",
+                "name_3_file": "README.md"
+              },              
+              {
+                "name_3_name": "关于webSocket",
+                "name_3_url": "Chinese/LayaNative/",
+                "name_3_file": "websocket.md"
+              },              
+              {
+                "name_3_name": "其他",
+                "name_3_url": "Chinese/LayaNative/Other_settings/",
+                "name_3_file": "README.md"
               }
             ]
           },
           {
-            "name_2_name": "Runtime(运行器)",
+            "name_2_name": "LayaNative进阶",
             "name_2_data": [
               {
-                "name_3_name": "如何用Runtime测试游戏",
-                "name_3_url": "Chinese/LayaNative/How_To_Use_Runtime/",
-                "name_3_file": "readme.md"
-              }
-            ]
-          },
-          {
-            "name_2_name": "原生APP打包相关",
-            "name_2_data": [
-              {
-                "name_3_name": "构建工具",
-                "name_3_url": "Chinese/LayaNative/build_Tool/",
-                "name_3_file": "readme.md"
-              },              
-              {
-                "name_3_name": "打包工具",
-                "name_3_url": "Chinese/LayaNative/packaging_Tools/",
-                "name_3_file": "readme.md"
-              },              
-              {
-                "name_3_name": "LayaDCC工具",
+                "name_3_name": "缓存工具-layadcc",
                 "name_3_url": "Chinese/LayaNative/LayaDcc_Tool/",
                 "name_3_file": "readme.md"
               },              
               {
-                "name_3_name": "用反射机制实现二次开发",
+                "name_3_name": "显存管理",
+                "name_3_url": "Chinese/LayaNative/memory_manager/",
+                "name_3_file": "README.md"
+              },              
+              {
+                "name_3_name": "二次开发",
                 "name_3_url": "Chinese/LayaNative/Secondary_Development/",
                 "name_3_file": "readme.md"
               },              
               {
-                "name_3_name": "用反射机制对接Native APP渠道",
+                "name_3_name": "渠道对接",
                 "name_3_url": "Chinese/LayaNative/Platform_Interface/",
                 "name_3_file": "readme.md"
               },              
               {
-                "name_3_name": "打包相关的其它设置综述",
-                "name_3_url": "Chinese/LayaNative/Other_settings/",
+                "name_3_name": "iOS-App内购",
+                "name_3_url": "Chinese/LayaNative/In_APP_Purchase_IOS/",
+                "name_3_file": "readme.md"
+              },              
+              {
+                "name_3_name": "webview",
+                "name_3_url": "Chinese/LayaNative/webview/",
+                "name_3_file": "README.md"
+              },              
+              {
+                "name_3_name": "处理http劫持",
+                "name_3_url": "Chinese/LayaNative/",
+                "name_3_file": "anti-hijack.md"
+              },              
+              {
+                "name_3_name": "截屏",
+                "name_3_url": "Chinese/LayaNative/",
+                "name_3_file": "captureScreen.md"
+              },              
+              {
+                "name_3_name": "android嵌入字体",
+                "name_3_url": "Chinese/LayaNative/built_in_font/",
+                "name_3_file": "README.md"
+              }
+            ]
+          },
+          {
+            "name_2_name": "LayaNative工具使用",
+            "name_2_data": [
+              {
+                "name_3_name": "使用IDE构建工程",
+                "name_3_url": "Chinese/LayaNative/build_Tool/",
+                "name_3_file": "readme.md"
+              },
+              {
+                "name_3_name": "打包工具使用",
+                "name_3_url": "Chinese/LayaNative/packaging_Tools/",
+                "name_3_file": "readme.md"
+              }
+            ]
+          },
+          {
+            "name_2_name": "Andoird、iOS开发基本知识",
+            "name_2_data": [
+              {
+                "name_3_name": "android开发环境搭建-Eclipse",
+                "name_3_url": "Chinese/LayaNative/setUpAndroidEnvironment_Eclipse/",
+                "name_3_file": "readme.md"
+              },
+              {
+                "name_3_name": "android开发环境搭建-AndroidStudio",
+                "name_3_url": "Chinese/LayaNative/AndroidStudio_ConfigurationAndApplication/",
+                "name_3_file": "readme.md"
+              },
+              {
+                "name_3_name": "iOS真机调试",
+                "name_3_url": "Chinese/LayaNative/packagingReleases_IOS/",
                 "name_3_file": "readme.md"
               }
             ]
@@ -1454,76 +1584,141 @@
         "nav_1_name": "LayaNative原生服务(JS)",
         "nav_1_data": [
           {
+            "name_2_name": "LayaNative手把手",
+            "name_2_data": [
+              {
+                "name_3_name": "测试App安装",
+                "name_3_url": "Chinese/LayaNative/How_To_Use_Runtime/",
+                "name_3_file": "readme.md"
+              },              
+              {
+                "name_3_name": "运行Hello LayaBox项目",
+                "name_3_url": "Chinese/LayaNative/run_HelloLayaBox/",
+                "name_3_file": "README.md"
+              }
+            ]
+          },
+          {
             "name_2_name": "LayaNative基础文档",
             "name_2_data": [
               {
                 "name_3_name": "LayaNative综述",
                 "name_3_url": "Chinese/LayaNative/LayaNative_Introduction/",
                 "name_3_file": "readme.md"
-              },
+              },              
               {
-                "name_3_name": "Eclipse搭建Android环境",
-                "name_3_url": "Chinese/LayaNative/setUpAndroidEnvironment_Eclipse/",
-                "name_3_file": "readme.md"
-              },
+                "name_3_name": "LayaPlayer不是浏览器",
+                "name_3_url": "Chinese/LayaNative/native_index/",
+                "name_3_file": "README.md"
+              },              
               {
-                "name_3_name": "Android Studio的使用和配置",
-                "name_3_url": "Chinese/LayaNative/AndroidStudio_ConfigurationAndApplication/",
-                "name_3_file": "readme.md"
-              },
+                "name_3_name": "横竖屏设置",
+                "name_3_url": "Chinese/LayaNative/screen_orientation/",
+                "name_3_file": "README.md"
+              },              
               {
-                "name_3_name": "IOS打包发布App详细流程",
-                "name_3_url": "Chinese/LayaNative/packagingReleases_IOS/",
-                "name_3_file": "readme.md"
-              },
+                "name_3_name": "关于声音",
+                "name_3_url": "Chinese/LayaNative/sound/",
+                "name_3_file": "README.md"
+              },              
               {
-                "name_3_name": "IOS应用内购买",
-                "name_3_url": "Chinese/LayaNative/In_APP_Purchase_IOS/",
-                "name_3_file": "readme.md"
+                "name_3_name": "启动画面",
+                "name_3_url": "Chinese/LayaNative/loading_view/",
+                "name_3_file": "README.md"
+              },              
+              {
+                "name_3_name": "关于webSocket",
+                "name_3_url": "Chinese/LayaNative/",
+                "name_3_file": "websocket.md"
+              },              
+              {
+                "name_3_name": "其他",
+                "name_3_url": "Chinese/LayaNative/Other_settings/",
+                "name_3_file": "README.md"
               }
             ]
           },
           {
-            "name_2_name": "Runtime(运行器)",
+            "name_2_name": "LayaNative进阶",
             "name_2_data": [
               {
-                "name_3_name": "如何用Runtime测试游戏",
-                "name_3_url": "Chinese/LayaNative/How_To_Use_Runtime/",
-                "name_3_file": "readme.md"
-              }
-            ]
-          },
-          {
-            "name_2_name": "原生APP打包相关",
-            "name_2_data": [
-              {
-                "name_3_name": "构建工具",
-                "name_3_url": "Chinese/LayaNative/build_Tool/",
-                "name_3_file": "readme.md"
-              },              
-              {
-                "name_3_name": "打包工具",
-                "name_3_url": "Chinese/LayaNative/packaging_Tools/",
-                "name_3_file": "readme.md"
-              },              
-              {
-                "name_3_name": "LayaDCC工具",
+                "name_3_name": "缓存工具-layadcc",
                 "name_3_url": "Chinese/LayaNative/LayaDcc_Tool/",
                 "name_3_file": "readme.md"
               },              
               {
-                "name_3_name": "用反射机制实现二次开发",
+                "name_3_name": "显存管理",
+                "name_3_url": "Chinese/LayaNative/memory_manager/",
+                "name_3_file": "README.md"
+              },              
+              {
+                "name_3_name": "二次开发",
                 "name_3_url": "Chinese/LayaNative/Secondary_Development/",
                 "name_3_file": "readme.md"
               },              
               {
-                "name_3_name": "用反射机制对接Native APP渠道",
+                "name_3_name": "渠道对接",
                 "name_3_url": "Chinese/LayaNative/Platform_Interface/",
                 "name_3_file": "readme.md"
               },              
               {
-                "name_3_name": "打包相关的其它设置综述",
-                "name_3_url": "Chinese/LayaNative/Other_settings/",
+                "name_3_name": "iOS-App内购",
+                "name_3_url": "Chinese/LayaNative/In_APP_Purchase_IOS/",
+                "name_3_file": "readme.md"
+              },              
+              {
+                "name_3_name": "webview",
+                "name_3_url": "Chinese/LayaNative/webview/",
+                "name_3_file": "README.md"
+              },              
+              {
+                "name_3_name": "处理http劫持",
+                "name_3_url": "Chinese/LayaNative/",
+                "name_3_file": "anti-hijack.md"
+              },              
+              {
+                "name_3_name": "截屏",
+                "name_3_url": "Chinese/LayaNative/",
+                "name_3_file": "captureScreen.md"
+              },              
+              {
+                "name_3_name": "android嵌入字体",
+                "name_3_url": "Chinese/LayaNative/built_in_font/",
+                "name_3_file": "README.md"
+              }
+            ]
+          },
+          {
+            "name_2_name": "LayaNative工具使用",
+            "name_2_data": [
+              {
+                "name_3_name": "使用IDE构建工程",
+                "name_3_url": "Chinese/LayaNative/build_Tool/",
+                "name_3_file": "readme.md"
+              },
+              {
+                "name_3_name": "打包工具使用",
+                "name_3_url": "Chinese/LayaNative/packaging_Tools/",
+                "name_3_file": "readme.md"
+              }
+            ]
+          },
+          {
+            "name_2_name": "Andoird、iOS开发基本知识",
+            "name_2_data": [
+              {
+                "name_3_name": "android开发环境搭建-Eclipse",
+                "name_3_url": "Chinese/LayaNative/setUpAndroidEnvironment_Eclipse/",
+                "name_3_file": "readme.md"
+              },
+              {
+                "name_3_name": "android开发环境搭建-AndroidStudio",
+                "name_3_url": "Chinese/LayaNative/AndroidStudio_ConfigurationAndApplication/",
+                "name_3_file": "readme.md"
+              },
+              {
+                "name_3_name": "iOS真机调试",
+                "name_3_url": "Chinese/LayaNative/packagingReleases_IOS/",
                 "name_3_file": "readme.md"
               }
             ]
