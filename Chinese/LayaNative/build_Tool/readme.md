@@ -82,7 +82,7 @@
 
 ​	**注意 **
 
-​	LayaPlayer对html的支持非常有限，参考[这里](http://);
+​	LayaPlayer对html的支持非常有限，参考[这里](https://github.com/layabox/layaair-doc/tree/master/Chinese/LayaNative/native_index);
 
 * 输出路径：
 
