@@ -2,7 +2,7 @@
 
 
 
-　　LayaNative是LayaAir引擎针对移动端的一套完整的开发解决方案，包括Runtime、测试工具、打包工具、构建工具（安卓与IOS）、反射机制、渠道对接工具（conchMarket）；
+　　LayaNative是LayaAir引擎针对移动端的一套完整的开发解决方案，包括LayaPlayer、测试工具、打包工具、构建工具（安卓与IOS）、反射机制、渠道对接工具（conchMarket）；
 
 
 
@@ -47,12 +47,29 @@
 
 
 
-### 6. Runtime：
+### 6. LayaPlayer：
 
 
 
-Runtime是LayaAir引擎运行器，通过极致优化、保障LayaAir引擎2D与3D产品在打包APP后达到原生APP性能；
+LayaPlayer是LayaNative最核心的部分，它是一个基于JavaScript脚本引擎 + openGLES硬件加速渲染的跨平台引擎，通过对内存与渲染流程进行极致优化，为基于HTML5、WEBGL的多媒体应用、游戏等产品加速，使其性能媲美原生Native-APP。LayaPlayer采用C++语言编写,可嵌入浏览器或操作系统运行，也可以独立运行。  
 
 
-​	![blob.png](1.png)<br/>
+
+### 7.LayaNative的原理和开发流程
+
+
+
+
+（1）、使用LayaAir开发的项目，准备在发布成app版本（ios或android）。  
+（2）、LayaNative会使用核心引擎LayaPlayer进行加速。  
+（3）、开发者可以使用测试工具或者打包工具，快速安装到移动设备上进行简单的测试。  
+（4）、最终通过命令行或者IDE，构建ios或android的工程，进行编译、执行。  
+（5）、如果需要发布到各大渠道（例如：百度、360、AppStroe、google等），需要通过反射机制进行二次开发（即：对接渠道的SDK，登录、充值、分享等）。  
+（6）、最后构建成app进行安装、测试、发布。  
+
+流程如图1所示：
+
+​	![blob.png](img/1.png)
 ​	图（1）
+
+

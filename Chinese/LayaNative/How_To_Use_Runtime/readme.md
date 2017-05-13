@@ -1,4 +1,4 @@
-# 如何用Runtime测试游戏
+# 如何用LayaNative测试App运行项目
 
 ### 一、下载与安装
 
