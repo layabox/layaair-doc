@@ -70,7 +70,11 @@ android版本：在工程目录下的assets\scripts\config.js
 ### 2.出现严重卡顿、屏幕闪烁现象
 
 在LayaPlayer下运行项目，如果出现了严重卡顿、或者屏幕闪烁的现象。这个时候可以把设备连接到电脑上查看log，如果log中一直频繁打印如下内容：  
-`freeRes(0):Total:8,left:5,clearedMem:115620`  
+
+```verilog
+freeRes(0):Total:8,left:5,clearedMem:115620
+```
+
 如下图2所示：
 ![图1](img/2.jpg)  
 
