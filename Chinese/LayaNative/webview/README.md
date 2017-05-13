@@ -12,8 +12,7 @@
      * @param height {number} webview的高度
      * @param canclose {boolean} webview是否可以被关掉。
      */ 
-    setExternalLinkEx(url:string,posx:number, posy:number,width:number,height:number,canclose:boolean):void;
-canclose:boolean):void;
+    setExternalLinkEx(url:string,posx:number,posy:number,width:number,height:number,canclose:boolean):void;
 ```
 
 这个函数会在画布的最上层显示一个新的view，在其中显示url的内容。  
