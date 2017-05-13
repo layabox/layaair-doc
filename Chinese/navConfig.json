@@ -460,7 +460,7 @@
         ]
       },
       {
-        "nav_1_name": "LayaNative原生服务(JS)",
+        "nav_1_name": "LayaNative原生服务(AS3)",
         "nav_1_data": [
           {
             "name_2_name": "LayaNative手把手",
@@ -512,8 +512,8 @@
               },              
               {
                 "name_3_name": "其他",
-                "name_3_url": "Chinese/LayaNative/other_setting/",
-                "name_3_file": "readme.md"
+                "name_3_url": "Chinese/LayaNative/Other_settings/",
+                "name_3_file": "README.md"
               }
             ]
           },
@@ -1023,7 +1023,7 @@
         ]
       },
       {
-        "nav_1_name": "LayaNative原生服务(JS)",
+        "nav_1_name": "LayaNative原生服务(TS)",
         "nav_1_data": [
           {
             "name_2_name": "LayaNative手把手",
@@ -1075,8 +1075,8 @@
               },              
               {
                 "name_3_name": "其他",
-                "name_3_url": "Chinese/LayaNative/other_setting/",
-                "name_3_file": "readme.md"
+                "name_3_url": "Chinese/LayaNative/Other_settings/",
+                "name_3_file": "README.md"
               }
             ]
           },
@@ -1633,8 +1633,8 @@
               },              
               {
                 "name_3_name": "其他",
-                "name_3_url": "Chinese/LayaNative/other_setting/",
-                "name_3_file": "readme.md"
+                "name_3_url": "Chinese/LayaNative/Other_settings/",
+                "name_3_file": "README.md"
               }
             ]
           },
