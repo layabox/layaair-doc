@@ -1,7 +1,9 @@
 
 # LayaBox打包工具
 
-使用 LayaAir IDE 创建的项目，不仅可以生成 h5 页面在网站上运行，也可以打包成 app 在移动端安装运行。不过，目前只支持打包Andorid版本的app，因为IOS系统只能够通过Apple的XCode来打包，无法使用其他第三方的工具进行打包。关于构建IOS的XCode项目工程，可以参考 “构建项目” 的文档。
+使用 LayaAir IDE 创建的项目，不仅可以生成 h5 页面在网站上运行，也可以打包成App 在移动端安装运行。不过，目前只支持打包Andorid版本的app，因为IOS系统只能够通过Apple的XCode来打包，无法使用其他第三方的工具进行打包。关于构建IOS的XCode项目工程，可以参考 “构建项目” 的文档。
+
+打包功能仅用于快速测试和演示，真正要发布的话，建议用构建项目的方法。
 
 
 
@@ -12,13 +14,8 @@
 ## 2、运行需求：
 1. 需要已经安装了1.7（含）以上的jdk，如果没有安装，可以到
    [这里](http://www.oracle.com/technetwork/java/javase/downloads/jdk8-downloads-2133151.html)下载。
-2. IDE本身只是提供的打包工具的入口，真正的功能由于需要的文件较大，需要单独下载，下载地址为  
-   [http://ldc.layabox.com/download/LayaAir/runtime/download.zip](http://ldc.layabox.com/download/LayaAir/runtime/download.zip)  
-   下载完成以后，解压到ide目录的 resources\app\out\vs\layaEditor\libs\RuntimePackTools 子目录下，覆盖原来的文件或者目录，就能使用了。
 
-*Tips: LayaAirIDE内提供下载引导功能，所以也可以在IDE中直接操作，跟随引导即可。*
-
-
+   (现在有个问题：在mac系统下，如果已经安装了1.8，可能会导致打包错误)
 
 ## 3、使用方法：
 单击菜单的 工具/打包app(测试版)，如下图:  
@@ -41,7 +38,7 @@
 #### 4.2.1单机版app  
 
 　　如果选中，就是要打包单机版，否则就是打包在线版。  
-　　单机版通常不需要联网，没有对应的url。单机版不用提供url，但是必须提供游戏资源，启动页面固定为资源路径中的 index.html。  
+　　单机版不需要联网，没有对应的url。所以不用提供url，但是必须提供游戏资源，启动页面固定为资源路径中的 index.html。如果项目的启动页面不是index.html，会在app启动的时候报网络错误。  
 　　在线版必须有url才行，是否打包资源可以自行决定（见下面的 "资源路径" 部分）。   
 　　![图片](3.gif)  <br />
 　　**Tips:  即使在单机版里面依然可以通过XMLHttpRequest或者websocket进行网络操作，只是不支持动态更新资源。**
@@ -76,7 +73,7 @@ android应用的包名，这个正常情况下是不可见的。一般采用反�
 ```
 *实际地址:*  
 ```
-    http://layaair.ldc.layabox.com/layaplayer/index.html?mid=1000
+    http://layaair.ldc.layabox.com/layaplayer/index.html
 ```
 
 
