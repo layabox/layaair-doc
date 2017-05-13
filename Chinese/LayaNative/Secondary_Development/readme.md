@@ -89,7 +89,7 @@ document.addEventListener("touchstart",function(e){
   a=!a;// 实现奇数次打开 偶数次关闭
 // b、调用静态函数openlight 参数为a
   Test.call("openlight",a);
- // (注:Test.callWithBack(function(n){}," openlight:",a); iOS 只能用异步方式，注意函数签名为 "openlight:")
+ // (注:Test.callWithBack(function(n){},"openlight:",a); iOS 只能用异步方式，注意函数签名为 "openlight:")
 });
 ```
 
@@ -137,6 +137,11 @@ public class Test {
 ####     2.1.4 iOS/OC层声明上面需要创建的类Test:
 
 ```javascript
+#import <AVFoundation/AVCaptureSession.h>
+#import <Foundation/Foundation.h>
+@interface Test : NSObject 
++(void) openlight:(NSNumber*)open; // 只支持对象类型bool类型用NSNumber
+@end
 @implementation Test
 static AVCaptureSession * session = nil;
 +(void) openlight:(NSNumber*)open; // 只支持对象类型bool类型用NSNumber
@@ -167,9 +172,13 @@ static AVCaptureSession * session = nil;
     }
     // 静态函数回调通知JS层
     [[conchRuntime GetIOSConchRuntime] callbackToJSWithClass:self.class methodName:@"openlight:" ret:nil];
+    //[[conchRuntime GetIOSConchRuntime] callbackToJSWithClassName:NSStringFromClass(self.class) methodName:@"openlight:" ret:nil];
 }
 @end
 ```
+如果运行崩溃在Info.plist中加入Privacy - Camera Usage Description  
+![www](img/1.png)  
+注意：源文件后缀要改成.mm 。调用静态函数注意脚本的调用写法。OC的方法是静态的类方法要用+。回调要用 callbackToJSWithClass或者callbackToJSWithClassName。
 
 ####      通过上述步骤就实现了 奇数下点击一下打开闪光灯, 偶数下点击关闭闪光灯 的功能.
 
@@ -262,11 +271,10 @@ public class Test {
 }
 @end
 ```
-
+注意：源文件后缀要改成.mm 。调用实例方法注意脚本的调用写法。OC的方法是实例方法要用-。回调要用  callbackToJSWithObject。
 ​    通过上述步骤就完成了简单的加法减法。
 
   通过上述方法可以很方便的进行原生代码相关的二次开发, 此外, LayaNative为了帮助开发者节省更多的时间, 封装了conchMarket全局类, 让开发者可以更方便的对接渠道。
-
 
 
 ##  3.平台代码（android/ios）主动执行js脚本
