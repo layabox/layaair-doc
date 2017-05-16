@@ -1,137 +1,106 @@
 # Tab 组件参考
 
+> 由于很多组件属性是通用的，常用及通用的组件属性在`属性设置器`文档中已进行介绍。阅读本篇内容前请先阅读《属性设置器》文档。
+
+## 1、了解Tab组件
+
+### 1.1 Tab组件的作用
+
+​        Tab 组件用于定义选项卡按钮组，例如多页面切换显示。如动图1所示。
+
+![动图1](img/1.gif)<br/>（动图1）
+
+### 1.2 Tab组件的皮肤（skin）规范
+
+Tab组件的皮肤是以`tab`或以`tab_`为前缀进行命名，在皮肤设计规范方面，是竖向等分的两态图或三态图，如图2所示。
+
+![图2](img/2.png) <br /> (图2)三态Tab皮肤
+
+*Tips：Tab组件的皮肤无法使用九宫格属性，所以要在资源设计的时候就确定好实际应用时的大小。*
+
+### 1.3 Tab 组件的API介绍
+
+Tab 组件的API介绍请参考  [http://layaair.ldc.layabox.com/api/index.html?category=Core&class=laya.ui.Tab](http://layaair.ldc.layabox.com/api/index.html?category=Core&class=laya.ui.Tab)
 
 
-## 一、通过LayaAirIDE创建Tab组件
 
-### 1.1 创建Tab        
+## 2、通过LayaAirIDE创建Tab组件
 
-​        Tab 组件用于显示多页面切换显示的选项卡按钮组。
-​        点击选择资源面板里的 Tab 组件，拖放到页面编辑区，即可添加 Tab 组件到页面上。
-​        Tab 组件的脚本接口参考 [Tab API](http://layaair.ldc.layabox.com/api/index.html?category=Core&class=laya.ui.Tab)。
+### 2.1 创建Tab        
 
-​        Tab 组件的图像资源示例：
 
-​        ![图片0.png](img/1.png)<br/>
-​    （图1）
+​        点击选择`资源管理器`里的 Tab 组件资源，拖拽到场景编辑器，即在页面中成功的创建了一个 Tab组件。如动图3所示。
 
-​        Tab 组件拖放到编辑器后，设置属性 selectedIndex 的值为0后，显示效果如下：
+​        ![动图3](img/3.gif)<br/>（动图3）
 
-​        ![图片0.png](img/2.png)<br/>
-​    （图2）
 
- 
 
- 
+### 2.2 通过labels增加标签
 
-### 1.2 Tab 属性
+ 如动图3中所示，默认的Tab组件中只有两个标签。如想增加标签，只需在labels属性中增加新的标签即可，修改标签中的文本内容也在该属性中设置，操作如动图4-1所示。
 
- 
+![动图4-1](img/4-1.gif) <br />(动图4-1)
 
-​        ![图片0.png](img/3.png)<br/>
-​    （图3）
 
-​        ![图片0.png](img/4.png)<br/>
-​    （图4）
 
- 
+### 2.3 改变Tab组件的布局方向与间距
 
-| **属性**           | **功能说明**                                 |
-| ---------------- | ---------------------------------------- |
-| skin             | 选项卡按钮图像资源。                               |
-| labels           | 选项卡的标签文本内容集合字符串，以逗号分隔。                   |
-| space            | 选项卡的每个项之间的间隔。                            |
-| direction        | 选项卡的排列方向。取值：“horizontal”表示水平布局，“vertical”表示垂直布局。 |
-| selectedIndex    | 表示当前选择的项的索引。                             |
-| labelAlign       | 选项卡按钮标签文本的对齐方式。                          |
-| labelBold        | 选项卡按钮标签文本是否加粗显示。                         |
-| labelColors      | 选项卡按钮各状态下的标签文本颜色。                        |
-| labelFont        | 选项卡按钮标签文本的字体名称。                          |
-| labelPadding     | 选项卡按钮标签文本的边距。                            |
-| labelSize        | 选项卡按钮标签文本的字体大小。                          |
-| labelStroke      | 选项卡按钮标签文本的描边宽度。                          |
-| labelStrokeColor | 选项卡按钮标签文本的描边颜色。                          |
+Tab组件 默认是水平布局（*horizontal*），通过更改direction属性，实现垂直布局（*vertical*）。**设置间距**可以通过space属性实现。如动图4-2所示。
+![动图4-2](img/4-2.gif) 
+（动图4-2）
 
- 
+### 2.4 设置单选框组Tab的默认选项
 
-## 二、通过代码创建Tab组件
+selectedIndex属性是用于改变Tab组件的索引值，默认不设置时，不选择任何选项，如果要设置Tab组件的默认标签选项，可以设置selectedIndex的属性值，0为第1个标签，1为第2个标签……以此类推。运行效果如动图4-3所示。
 
-​	在我们进行书写代码的时候，免不了通过代码控制UI，在代码中导入`laya.ui.Tab`的包，创建UI Tab,并通过代码设定Tab相关的属性。
+![动图4-3](img/4-3.gif) 
+（动图4-3）
 
-**示例代码：**
 
-```javascript
-package 
-{
-	import laya.display.Stage;
-	import laya.ui.Tab;
-	import laya.utils.Handler;
-	import laya.webgl.WebGL;
-	
-	public class UI_Tab
-	{
-		private var skins:Array = ["res/ui/tab1.png", "res/ui/tab2.png"];
-		
-		public function UI_Tab()
-		{
-			// 不支持WebGL时自动切换至Canvas
-			Laya.init(550, 400, WebGL);
 
-			Laya.stage.alignV = Stage.ALIGN_MIDDLE;
-			Laya.stage.alignH = Stage.ALIGN_CENTER;
+## 3、自定义Tab组件
 
-			Laya.stage.scaleMode = Stage.SCALE_SHOWALL;
-			Laya.stage.bgColor = "#232628";
-			
-			Laya.stage.bgColor = "#3d3d3d";
-			Laya.loader.load(skins, Handler.create(this, onSkinLoaded));
-		}
-		
-		private function onSkinLoaded(e:*=null):void
-		{
-			var tabA:Tab = createTab(skins[0]);
-			tabA.pos(40, 120);
-			tabA.labelColors = "#000000,#d3d3d3,#333333";
-			
-			var tabB:Tab = createTab(skins[1]);
-			tabB.pos(40, 220);
-			tabB.labelColors = "#FFFFFF,#8FB299,#FFFFFF";
-		}
-		
-		private function createTab(skin:String):Tab
-		{
-			var tab:Tab = new Tab();
-			tab.skin = skin;
-			
-			tab.labelBold = true;
-			tab.labelSize = 20;
-			tab.labelStrokeColor = "#000000";
-			
-			tab.labels = "Tab Control 1,Tab Control 2,Tab Control 3";
-			tab.labelPadding = "0,0,0,0";
-			
-			tab.selectedIndex = 1;
-			
-			onSelect(tab.selectedIndex);
-			tab.selectHandler = new Handler(this, onSelect);
-			
-			Laya.stage.addChild(tab);
-			
-			return tab;
-		}
-		
-		private function onSelect(index:int):void
-		{
-			trace("当前选择的标签页索引为 " + index);
-		}
-	}
-}
-```
+​	在上例中，我们使用了同一种Tab资源通过设置labels生成了三个标签的Tab组件。然而在实际的游戏中，在同一个Tab组件中对标签样式有不同的需求，那么通过labels设置的方式是无法达到效果的，这个时候就需要使用自定义Tab组件的方式。例如动图5所示的效果。
 
-**运行结果:**
-​	![5](gif/1.gif)<br/>
-​	(图5)通过代码创建Tab
+​	![图片5.gif](img/5.gif)<br/> （图5）
 
-​	Tab的其他属性也可以通过代码来设置，上述示例演示了如何通过代码创建不同皮肤（样式）的Tab，
 
-有兴趣的读者可以自己通过代码设置Tab，创建出符合自己需要的单选框。
+
+### 3.1  准备美术资源
+
+​	下面我们就用三张不同的两态美术资源来自定义Tab组件，图片资源如图6所示。
+
+ ![图片5.png](img/6.png)<br/>  （图6）
+
+**Tips**：
+
+　　特别要注意图片的命名规则，在自定义Tab组件中，我们使用的是多个按钮组件组合，不能直接使用`Tab`组件的命名规则。可以使用`Button`组件、`CheckBox`组件、`Radio`组件的命名规则。图6中使用的btn前缀就是Button组件的命名规则。
+
+​	
+
+### 3.2 在IDE中制作按钮
+
+将资源拷贝到项目的资源管理器文件夹，然后在IDE中，将制作的Button组件从资源管理器中逐个拖拽到场景编辑器，从左到右将每个Radio组件的name属性，按先后顺序依次修改成“item0、item1、item2.....”，（不按此规则增加名字属性，生成的Tab组件为无效组件，不能正常运行）。另外，由于资源是两态的，所以需要将satNum属性值设置为2。当设置完label属性的文本等，效果如 图7 所示。
+
+![图片6.png](img/7.png)<br/>  （图7）
+
+
+
+### 3.3 转换成Tab容器组件
+
+​	调整好属性后全选三个按钮组件，按快捷键`Ctrl+B`选择`Tab`容器组件，点击`确定`完成转换（图8）。
+
+​	![图片7.png](img/8.png)<br/>  （图8）
+
+
+
+​	转换成功后，调整默认选择的索引selectedIndex为0（第一个Tab标签），单选框间距space为4，方向direction可以不设置或设置为横向（horizontal），如图9所示。
+
+​	![图片8.png](img/9.png)<br/>  （图9）
+
+​	通过以上几个步骤可以看到自定义RadioGroup组件制作成功。默认选择了第一个选框并切换到它的第三帧选择状态，其他选框则是第一帧未选择状态。
+
+
+
+
+
