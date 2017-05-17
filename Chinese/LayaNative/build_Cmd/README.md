@@ -1,5 +1,6 @@
 # LayaNative命令行工具
-
+layanative命令行工具用来生成Android和iOS原生项目，以及项目的资源刷新功能， 方便项目迭代过程中的资源更新。
+生成项目的功能对应IDE中的 `工具/app构建` 。
 ## 1.命令详解
 ### 1.安装layanative
 windows
