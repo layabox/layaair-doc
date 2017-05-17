@@ -59,7 +59,7 @@ refreshres命令用于刷新native项目的资源包
 
 如果创建的项目是单机版，refreshres时不需要输入url。如果输入网络版url，打的是网络版的资源包，那么还需要更改项目代码，才能变成网络版的项目。  
 如果创建的项目是网络版，refreshres时必须输入url。如果输入新的地址，那么还要更改项目中设置url的代码，才能完成URL的替换。如果输入单机版地址，打的是单机版的资源包，那么还需要更改项目代码，才能变成单机版的项目。    
-手动切换单机版和网络版相关，参考 [LayaBox 构建工具](https://github.com/layabox/layaair-doc/tree/master/Chinese/LayaNative/LayaDcc_Tool)。
+手动切换单机版和网络版相关，参考 [LayaBox 构建工具](https://github.com/layabox/layaair-doc/tree/master/Chinese/LayaNative/build_Tool)。
 ### 4.删除native项目资源包
 removeres命令用于删除native项目的资源包  
 #### 用法:
