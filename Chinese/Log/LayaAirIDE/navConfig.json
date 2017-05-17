@@ -1,11 +1,19 @@
 [
   {
-    "name": "LayaAir IDE 1.7.4 beta",
-    "url": "1.7.4beta.md",
-    "date":"2017-04-22",
+    "name": "LayaAir IDE 1.7.5 beta",
+    "url": "1.7.5beta.md",
+    "date":"2017-05-13",
     "download": {
-      "apple": "http://ldc.layabox.com/download/LayaAirIDEMac_1.7.4_beta.zip",
-      "windows": "http://ldc.layabox.com/download/LayaAirIDE_1.7.4_beta.zip"
+      "apple": "http://ldc.layabox.com/download/LayaAirIDEMac_1.7.5_beta.zip",
+      "windows": "http://ldc.layabox.com/download/LayaAirIDE_1.7.5_beta.zip"
+    }
+  },{
+    "name": "LayaAir IDE 1.7.4",
+    "url": "1.7.4.md",
+    "date":"2017-05-13",
+    "download": {
+      "apple": "http://ldc.layabox.com/download/LayaAirIDEMac_1.7.4.zip",
+      "windows": "http://ldc.layabox.com/download/LayaAirIDE_1.7.4.zip"
     }
   },
   {
