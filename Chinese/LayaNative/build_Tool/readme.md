@@ -20,7 +20,7 @@
 在[Layabox官网](Layabox.com)下载layaAirIDE，打开LayaAirIDE-->工具-->app构建，如图1所示：
 
 
-​                                  ![图1](1.jpg)  <br /> 
+![图1](1.jpg)  <br /> 
 
 (图1)
 
@@ -127,7 +127,7 @@
 
 构建完成之后，可以通过直接在项目中修改代码来切换单机版和网络版。
 
-1.   Android 项目
+1. Android 项目
 
      在构建的项目中打开MainActivity.java，搜索 `mPlugin.game_plugin_set_option("localize","false");`
 
@@ -137,27 +137,20 @@
 
      `mPlugin.game_plugin_set_option("gameUrl", "http://你的地址/index.html");`
 
-     ​
 
-	2. iOS 项目
+2. iOS 项目
 
-    iOS项目构建完成后，项目目录下的 resource/scripts/index.js 脚本的最后有个执行loadUrl的函数，这里会加载首页地址，修改这里的地址就能切换单机版和网络版，单机版的地址固定为 `http://stand.alone.version/index.html`。
+   iOS项目构建完成后，项目目录下的 resource/scripts/index.js 脚本的最后有个执行loadUrl的函数，这里会加载首页地址，修改这里的地址就能切换单机版和网络版，单机版的地址固定为 `http://stand.alone.version/index.html`。
 
-    例如一开始是网络版，地址为：
+   例如一开始是网络版，地址为：
 
     `loadUrl(conch.presetUrl||"http://10.10.20.19:7788/index.html");`
-
-    要改成单机版的话，修改这句话：
-
+   要改成单机版的话，修改这句话：
     `loadUrl(conch.presetUrl||"http://stand.alone.version/index.html");`
+   反之亦然。
+   **注意 **
 
-    反之亦然。
-
-    ​
-
-    **注意 **
-
-    一旦修改了url地址，原来打包的资源就都失效了。这时候，需要手动删除 cache目录下内容，重新用layadcc来生成打包资源，参见[《LayaDCC工具》](https://github.com/layabox/layaair-doc/tree/master/Chinese/LayaNative/LayaDcc_Tool)。
+   一旦修改了url地址，原来打包的资源就都失效了。这时候，需要手动删除 cache目录下内容，重新用layadcc来生成打包资源，参见[《LayaDCC工具》](https://github.com/layabox/layaair-doc/tree/master/Chinese/LayaNative/LayaDcc_Tool)。
 
 ## 7. 其他注意问题
 　　android studio构建完成后，需要根据自己的环境修改android sdk的版本号，现在设置的是23，需要修改的
