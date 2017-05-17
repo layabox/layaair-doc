@@ -127,14 +127,11 @@
 
 构建完成之后，可以通过直接在项目中修改代码来切换单机版和网络版。
 
-1. Android 项目
+1. Android 项目  
 
-     在构建的项目中打开MainActivity.java，搜索 `mPlugin.game_plugin_set_option("localize","false");`
-
-     单机版需要设置为"true"，如`mPlugin.game_plugin_set_option("localize","true");`
-
-     如果要设置为网络版，就要`mPlugin.game_plugin_set_option("localize","false");`并且设置正确的地址
-
+     在构建的项目中打开MainActivity.java，搜索 `mPlugin.game_plugin_set_option("localize","false");`  
+     单机版需要设置为"true"，如`mPlugin.game_plugin_set_option("localize","true");`  
+     如果要设置为网络版，就要修改为：`mPlugin.game_plugin_set_option("localize","false");`， 并且设置正确的地址：  
      `mPlugin.game_plugin_set_option("gameUrl", "http://你的地址/index.html");`
 
 
@@ -148,8 +145,8 @@
    要改成单机版的话，修改这句话：  
     `loadUrl(conch.presetUrl||"http://stand.alone.version/index.html");`  
    反之亦然。  
-   **注意 **  
-
+   
+   **注意**   
    一旦修改了url地址，原来打包的资源就都失效了。这时候，需要手动删除 cache目录下内容，重新用layadcc来生成打包资源，参见[《LayaDCC工具》](https://github.com/layabox/layaair-doc/tree/master/Chinese/LayaNative/LayaDcc_Tool)。
 
 ## 7. 其他注意问题
