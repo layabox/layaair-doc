@@ -142,13 +142,13 @@
 
    iOS项目构建完成后，项目目录下的 resource/scripts/index.js 脚本的最后有个执行loadUrl的函数，这里会加载首页地址，修改这里的地址就能切换单机版和网络版，单机版的地址固定为 `http://stand.alone.version/index.html`。
 
-   例如一开始是网络版，地址为：
+   例如一开始是网络版，地址为：  
 
-    `loadUrl(conch.presetUrl||"http://10.10.20.19:7788/index.html");`
-   要改成单机版的话，修改这句话：
-    `loadUrl(conch.presetUrl||"http://stand.alone.version/index.html");`
-   反之亦然。
-   **注意 **
+    `loadUrl(conch.presetUrl||"http://10.10.20.19:7788/index.html");`   
+   要改成单机版的话，修改这句话：  
+    `loadUrl(conch.presetUrl||"http://stand.alone.version/index.html");`  
+   反之亦然。  
+   **注意 **  
 
    一旦修改了url地址，原来打包的资源就都失效了。这时候，需要手动删除 cache目录下内容，重新用layadcc来生成打包资源，参见[《LayaDCC工具》](https://github.com/layabox/layaair-doc/tree/master/Chinese/LayaNative/LayaDcc_Tool)。
 
