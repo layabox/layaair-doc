@@ -133,7 +133,7 @@ class ComponentDemo{
 		this.comp.viewStack.selectedIndex=index;
     }
 }
-new GameMain();
+new ComponentDemo();
 ```
 
 运行示例代码，效果如动图10所示。
