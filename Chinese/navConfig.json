@@ -424,6 +424,11 @@
                 "name_3_name": "Tree属性详解",
                 "name_3_url": "Chinese/LayaAir_AS3/IDE/Component_Detailed/Tree/",
                 "name_3_file": "readme.md"
+              },
+              {
+                "name_3_name": "ViewStack属性详解",
+                "name_3_url": "Chinese/LayaAir_AS3/IDE/Component_Detailed/ViewStack/",
+                "name_3_file": "readme.md"
               }
             ]
           }
@@ -1047,6 +1052,11 @@
                 "name_3_name": "Tree属性详解",
                 "name_3_url": "Chinese/LayaAir_TS/IDE/Component_Detailed/Tree/",
                 "name_3_file": "readme.md"
+              },
+              {
+                "name_3_name": "ViewStack属性详解",
+                "name_3_url": "Chinese/LayaAir_TS/IDE/Component_Detailed/ViewStack/",
+                "name_3_file": "readme.md"
               }
             ]
           }
@@ -1654,6 +1664,11 @@
               {
                 "name_3_name": "Tree属性详解",
                 "name_3_url": "Chinese/LayaAir_JS/IDE/Component_Detailed/Tree/",
+                "name_3_file": "readme.md"
+              },
+              {
+                "name_3_name": "ViewStack属性详解",
+                "name_3_url": "Chinese/LayaAir_JS/IDE/Component_Detailed/ViewStack/",
                 "name_3_file": "readme.md"
               }
             ]
