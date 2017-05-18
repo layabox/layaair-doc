@@ -433,6 +433,46 @@
         "nav_1_name": "2D进阶篇（AS3）",
         "nav_1_data": [
           {
+            "name_2_name": "性能优化",
+            "name_2_data": [
+              {
+                "name_3_name": "性能统计面板介绍",
+                "name_3_url": "Chinese/LayaAir_AS3/2D/advanced/PerformanceOptimization/Stat_Panel/",
+                "name_3_file": "readme.md"
+              },
+              {
+                "name_3_name": "内存优化方式",
+                "name_3_url": "Chinese/LayaAir_AS3/2D/advanced/PerformanceOptimization/memory/",
+                "name_3_file": "readme.md"
+              },
+              {
+                "name_3_name": "渲染优化原则",
+                "name_3_url": "Chinese/LayaAir_AS3/2D/advanced/PerformanceOptimization/rendering/",
+                "name_3_file": "readme.md"
+              },
+              {
+                "name_3_name": "CacheAs静态缓存优化",
+                "name_3_url": "Chinese/LayaAir_AS3/2D/advanced/PerformanceOptimization/cacheAs/",
+                "name_3_file": "readme.md"
+              },
+              {
+                "name_3_name": "CPU优化方式",
+                "name_3_url": "Chinese/LayaAir_AS3/2D/advanced/PerformanceOptimization/CPU/",
+                "name_3_file": "readme.md"
+              },
+              {
+                "name_3_name": "其它优化策略",
+                "name_3_url": "Chinese/LayaAir_AS3/2D/advanced/PerformanceOptimization/other/",
+                "name_3_file": "readme.md"
+              },
+              {
+                "name_3_name": "使用chrome的性能分析器",
+                "name_3_url": "Chinese/LayaAir_AS3/2D/advanced/PerformanceOptimization/Chrome_Profiles/",
+                "name_3_file": "readme.md"
+              }
+            ]
+          },
+          {
             "name_2_name": "扩展模块",
             "name_2_data": [
               {
@@ -1013,6 +1053,51 @@
         ]
       },
       {
+        "nav_1_name": "2D进阶篇（TS）",
+        "nav_1_data": [
+          {
+            "name_2_name": "性能优化",
+            "name_2_data": [
+              {
+                "name_3_name": "性能统计面板介绍",
+                "name_3_url": "Chinese/LayaAir_TS/2D/advanced/PerformanceOptimization/Stat_Panel/",
+                "name_3_file": "readme.md"
+              },
+              {
+                "name_3_name": "内存优化方式",
+                "name_3_url": "Chinese/LayaAir_TS/2D/advanced/PerformanceOptimization/memory/",
+                "name_3_file": "readme.md"
+              },
+              {
+                "name_3_name": "渲染优化原则",
+                "name_3_url": "Chinese/LayaAir_TS/2D/advanced/PerformanceOptimization/rendering/",
+                "name_3_file": "readme.md"
+              },
+              {
+                "name_3_name": "CacheAs静态缓存优化",
+                "name_3_url": "Chinese/LayaAir_TS/2D/advanced/PerformanceOptimization/cacheAs/",
+                "name_3_file": "readme.md"
+              },
+              {
+                "name_3_name": "CPU优化方式",
+                "name_3_url": "Chinese/LayaAir_TS/2D/advanced/PerformanceOptimization/CPU/",
+                "name_3_file": "readme.md"
+              },
+              {
+                "name_3_name": "其它优化策略",
+                "name_3_url": "Chinese/LayaAir_TS/2D/advanced/PerformanceOptimization/other/",
+                "name_3_file": "readme.md"
+              },
+              {
+                "name_3_name": "使用chrome的性能分析器",
+                "name_3_url": "Chinese/LayaAir_TS/2D/advanced/PerformanceOptimization/Chrome_Profiles/",
+                "name_3_file": "readme.md"
+              }
+            ]
+          }
+        ]
+      },
+      {
         "nav_1_name": "实例开发篇（TS）",
         "nav_1_data": [
           {
@@ -1569,6 +1654,51 @@
               {
                 "name_3_name": "Tree属性详解",
                 "name_3_url": "Chinese/LayaAir_JS/IDE/Component_Detailed/Tree/",
+                "name_3_file": "readme.md"
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "nav_1_name": "2D进阶篇（JS）",
+        "nav_1_data": [
+          {
+            "name_2_name": "性能优化",
+            "name_2_data": [
+              {
+                "name_3_name": "性能统计面板介绍",
+                "name_3_url": "Chinese/LayaAir_JS/2D/advanced/PerformanceOptimization/Stat_Panel/",
+                "name_3_file": "readme.md"
+              },
+              {
+                "name_3_name": "内存优化方式",
+                "name_3_url": "Chinese/LayaAir_JS/2D/advanced/PerformanceOptimization/memory/",
+                "name_3_file": "readme.md"
+              },
+              {
+                "name_3_name": "渲染优化原则",
+                "name_3_url": "Chinese/LayaAir_JS/2D/advanced/PerformanceOptimization/rendering/",
+                "name_3_file": "readme.md"
+              },
+              {
+                "name_3_name": "CacheAs静态缓存优化",
+                "name_3_url": "Chinese/LayaAir_JS/2D/advanced/PerformanceOptimization/cacheAs/",
+                "name_3_file": "readme.md"
+              },
+              {
+                "name_3_name": "CPU优化方式",
+                "name_3_url": "Chinese/LayaAir_JS/2D/advanced/PerformanceOptimization/CPU/",
+                "name_3_file": "readme.md"
+              },
+              {
+                "name_3_name": "其它优化策略",
+                "name_3_url": "Chinese/LayaAir_JS/2D/advanced/PerformanceOptimization/other/",
+                "name_3_file": "readme.md"
+              },
+              {
+                "name_3_name": "使用chrome的性能分析器",
+                "name_3_url": "Chinese/LayaAir_JS/2D/advanced/PerformanceOptimization/Chrome_Profiles/",
                 "name_3_file": "readme.md"
               }
             ]
