@@ -124,7 +124,7 @@ package
 			
 			Laya.stage.scaleMode = "full";
 			Laya.stage.bgColor = "#ffffff";
-			//加载图集成功后，执行onLoad回调方法
+			//加载图集成功后，执行onLoaded回调方法
 			Laya.loader.load("./res/atlas/ui.atlas", Handler.create(this, onLoaded));
 
 		}
