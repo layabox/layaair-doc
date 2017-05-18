@@ -109,7 +109,7 @@
 
 - Android-eclipe（android）项目可以使用 eclipse软件进行导入和开发。
 - Android-studio（android）项目可以使用 android-studio软件进行导入和开发。
-- XCode（ios）项目可以使用 xcode 软件进行导入和开发。打开XCode(ios)项目后需要选择真正的ios设备进行build。（注意：真正的设备是 armv7、armv7s、arm64 架构。而如果使用ios Simulator 则是 X86 架构，目前 LayaNative 在 ios 设备上尚未支持 X86 架构，如果使用模拟器编译是无法通过的。
+- XCode（ios）项目可以使用 xcode 软件进行导入和开发。打开XCode(ios)项目后需要选择真正的ios设备进行build。（注意：真正的设备是 armv7、armv7s、arm64 架构。而如果使用ios Simulator 则是 X86 架构，目前 LayaNative 在 ios 设备上尚未支持 X86 架构，如果使用模拟器编译是无法通过的。（0.9.5版开始支持模拟器）
 
 
 
@@ -123,11 +123,32 @@
 
   ​
 
-## 6. 怎样构建Android单机版
-　　在构建的项目中打开MainActivity.java，搜索 `mPlugin.game_plugin_set_option("localize","false");`单机版需要设置为"true"，如`mPlugin.game_plugin_set_option("localize","true");`
+## 6. 手动切换单机版和网络版
+
+构建完成之后，可以通过直接在项目中修改代码来切换单机版和网络版。
+
+1. Android 项目  
+
+     在构建的项目中打开MainActivity.java，搜索 `mPlugin.game_plugin_set_option("localize","false");`  
+     单机版需要设置为"true"，如`mPlugin.game_plugin_set_option("localize","true");`  
+     如果要设置为网络版，就要修改为：`mPlugin.game_plugin_set_option("localize","false");`， 并且设置正确的地址：  
+     `mPlugin.game_plugin_set_option("gameUrl", "http://你的地址/index.html");`
 
 
+2. iOS 项目
 
-## 7. 注意问题
+   iOS项目构建完成后，项目目录下的 resource/scripts/index.js 脚本的最后有个执行loadUrl的函数，这里会加载首页地址，修改这里的地址就能切换单机版和网络版，单机版的地址固定为 `http://stand.alone.version/index.html`。
+
+   例如一开始是网络版，地址为：  
+
+    `loadUrl(conch.presetUrl||"http://10.10.20.19:7788/index.html");`   
+   要改成单机版的话，修改这句话：  
+    `loadUrl(conch.presetUrl||"http://stand.alone.version/index.html");`  
+   反之亦然。  
+   
+   **注意**   
+   一旦修改了url地址，原来打包的资源就都失效了。这时候，需要手动删除 cache目录下内容，重新用layadcc来生成打包资源，参见[《LayaDCC工具》](https://github.com/layabox/layaair-doc/tree/master/Chinese/LayaNative/LayaDcc_Tool)。
+
+## 7. 其他注意问题
 　　android studio构建完成后，需要根据自己的环境修改android sdk的版本号，现在设置的是23，需要修改的
 文件是 app/build.gradle。

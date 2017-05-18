@@ -460,7 +460,7 @@
         ]
       },
       {
-        "nav_1_name": "LayaNative原生服务(AS3)",
+        "nav_1_name": "LayaNative原生服务",
         "nav_1_data": [
           {
             "name_2_name": "LayaNative手把手",
@@ -570,6 +570,11 @@
           {
             "name_2_name": "LayaNative工具使用",
             "name_2_data": [
+              {
+                "name_3_name": "layanative 命令行工具使用",
+                "name_3_url": "Chinese/LayaNative/build_Cmd/",
+                "name_3_file": "README.md"
+              },
               {
                 "name_3_name": "使用IDE构建工程",
                 "name_3_url": "Chinese/LayaNative/build_Tool/",
@@ -1023,7 +1028,7 @@
         ]
       },
       {
-        "nav_1_name": "LayaNative原生服务(TS)",
+        "nav_1_name": "LayaNative原生服务",
         "nav_1_data": [
           {
             "name_2_name": "LayaNative手把手",
@@ -1133,6 +1138,11 @@
           {
             "name_2_name": "LayaNative工具使用",
             "name_2_data": [
+              {
+                "name_3_name": "layanative 命令行工具使用",
+                "name_3_url": "Chinese/LayaNative/build_Cmd/",
+                "name_3_file": "README.md"
+              },
               {
                 "name_3_name": "使用IDE构建工程",
                 "name_3_url": "Chinese/LayaNative/build_Tool/",
@@ -1581,7 +1591,7 @@
         ]
       },
       {
-        "nav_1_name": "LayaNative原生服务(JS)",
+        "nav_1_name": "LayaNative原生服务",
         "nav_1_data": [
           {
             "name_2_name": "LayaNative手把手",
@@ -1691,6 +1701,11 @@
           {
             "name_2_name": "LayaNative工具使用",
             "name_2_data": [
+              {
+                "name_3_name": "layanative 命令行工具使用",
+                "name_3_url": "Chinese/LayaNative/build_Cmd/",
+                "name_3_file": "README.md"
+              },
               {
                 "name_3_name": "使用IDE构建工程",
                 "name_3_url": "Chinese/LayaNative/build_Tool/",
