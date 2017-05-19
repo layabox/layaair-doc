@@ -70,7 +70,7 @@
 
 #### 2.1下载LayaAirIDE组件库（本篇为TS版）
 
-　　TS版下载地址：[http://ldc.layabox.com/uploadfile/file/20161019/1476844969179157.zip](img/http://ldc.layabox.com/uploadfile/file/20161019/1476844969179157.zip)
+　　TS版下载地址：[http://ldc.layabox.com/uploadfile/file/20161019/1476844969179157.zip](http://ldc.layabox.com/uploadfile/file/20161019/1476844969179157.zip)
 
 #### 2.2创建项目并导入到项目的目录内
 
