@@ -298,10 +298,10 @@ function onLoaded(){
 **例如:**
 
 ```javascript
-View.regComponent("Button",ScaleButton);//注册组件
+View.regComponent("ScaleButton",laya.customUI.ScaleButton);//注册组件
 ```
 
-上面这段注册组件的代码，是将自义定组件ScaleButton关联替换Button组件，原有的Button组件才会拥有缩放按钮效果。
+
 
 
 
