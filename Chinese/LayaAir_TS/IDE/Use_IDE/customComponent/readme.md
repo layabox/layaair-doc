@@ -270,7 +270,7 @@ class Main {
         Laya.loader.load("res/img/monkey1.png",Laya.Handler.create(this,this.onLoaded),null,Laya.Loader.IMAGE)
     }
     private onLoaded():void{
-        var scaleButton:component.ScaleButton = new  component.ScaleButton();
+        var scaleButton:component.ScaleButton = new component.ScaleButton();
         //组件skin的资源路径
         scaleButton.skin = "res/img/monkey1.png";
         //添加到舞台上
@@ -292,15 +292,15 @@ new Main();
 
 ### 6、组件的注册
 
-组件注册是把自定义的组件和某个类名关联起来，显示的时候按照注册映射进行实例。
+组件注册是把自定义的组件和某个类名关联起来，显示的时候按照注册映射进行实例。新增的自定义组件需要注册才能使用。
 
-​	例如：
+组件ScaleButton注册示例：
 
 ```typescript
-View.regComponent("Button",ScaleButton);//注册组件
+View.regComponent("ScaleButton",component.ScaleButton);//注册组件
 ```
 
-上面这段注册组件的代码，是将自义定组件ScaleButton关联替换Button组件，原有的Button组件才会拥有缩放按钮效果。
+
 
 
 
