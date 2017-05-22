@@ -149,8 +149,18 @@
             "name_2_name": "位图",
             "name_2_data": [
               {
+                "name_3_name": "显示与切换图片",
+                "name_3_url": "Chinese/LayaAir_AS3/2D/beginners/Bitmap/loadImage_drawTexture/",
+                "name_3_file": "readme.md"
+              },
+              {
                 "name_3_name": "设置遮罩",
                 "name_3_url": "Chinese/LayaAir_AS3/2D/beginners/Bitmap/Mask/",
+                "name_3_file": "readme.md"
+              },
+              {
+                "name_3_name": "设置滤镜",
+                "name_3_url": "Chinese/LayaAir_AS3/2D/beginners/Bitmap/filter/",
                 "name_3_file": "readme.md"
               }
             ]
@@ -556,6 +566,11 @@
                 "name_3_file": "websocket.md"
               },              
               {
+                "name_3_name": "关于网络状态监听",
+                "name_3_url": "Chinese/LayaNative/network/",
+                "name_3_file": "README.md"
+              },              
+              {
                 "name_3_name": "其他",
                 "name_3_url": "Chinese/LayaNative/Other_settings/",
                 "name_3_file": "README.md"
@@ -776,8 +791,18 @@
             "name_2_name": "位图",
             "name_2_data": [
               {
+                "name_3_name": "显示与切换图片",
+                "name_3_url": "Chinese/LayaAir_TS/2D/beginners/Bitmap/loadImage_drawTexture/",
+                "name_3_file": "readme.md"
+              },
+              {
                 "name_3_name": "设置遮罩",
                 "name_3_url": "Chinese/LayaAir_TS/2D/beginners/Bitmap/Mask/",
+                "name_3_file": "readme.md"
+              },
+              {
+                "name_3_name": "设置滤镜",
+                "name_3_url": "Chinese/LayaAir_TS/2D/beginners/Bitmap/filter/",
                 "name_3_file": "readme.md"
               }
             ]
@@ -1174,6 +1199,11 @@
                 "name_3_file": "websocket.md"
               },              
               {
+                "name_3_name": "关于网络状态监听",
+                "name_3_url": "Chinese/LayaNative/network/",
+                "name_3_file": "README.md"
+              },              
+              {
                 "name_3_name": "其他",
                 "name_3_url": "Chinese/LayaNative/Other_settings/",
                 "name_3_file": "README.md"
@@ -1389,8 +1419,18 @@
             "name_2_name": "位图",
             "name_2_data": [
               {
+                "name_3_name": "显示与切换图片",
+                "name_3_url": "Chinese/LayaAir_JS/2D/beginners/Bitmap/loadImage_drawTexture/",
+                "name_3_file": "readme.md"
+              },
+              {
                 "name_3_name": "设置遮罩",
                 "name_3_url": "Chinese/LayaAir_JS/2D/beginners/Bitmap/Mask/",
+                "name_3_file": "readme.md"
+              },
+              {
+                "name_3_name": "设置滤镜",
+                "name_3_url": "Chinese/LayaAir_JS/2D/beginners/Bitmap/filter/",
                 "name_3_file": "readme.md"
               }
             ]
@@ -1785,6 +1825,11 @@
                 "name_3_name": "关于webSocket",
                 "name_3_url": "Chinese/LayaNative/",
                 "name_3_file": "websocket.md"
+              },              
+              {
+                "name_3_name": "关于网络状态监听",
+                "name_3_url": "Chinese/LayaNative/network/",
+                "name_3_file": "README.md"
               },              
               {
                 "name_3_name": "其他",
