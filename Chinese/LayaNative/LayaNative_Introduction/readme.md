@@ -2,7 +2,7 @@
 
 
 
-　　LayaNative是LayaAir引擎针对移动端的一套完整的开发解决方案，包括LayaPlayer、测试工具、打包工具、构建工具（安卓与IOS）、反射机制、渠道对接工具（conchMarket）；
+LayaNative是LayaAir引擎针对移动端原生App的开发、测试、发布的一套完整的开发解决方案，但不局限于LayaAir引擎。LayaNative以LayaPlayer为核心运行时的基础上，利用反射机制、渠道对接方案提供开发者在原生App上进行二次开放和渠道对接，并提供测试工具、打包工具、构建工具等，为开发者将html5项目打包、发布成原生App提供便利。
 
 
 
