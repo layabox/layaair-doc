@@ -20,8 +20,8 @@
 
 ```java
 //颜色矩阵，红色
-var colorMatrix = 
-  [
+var colorMatrix:Array = 
+[
   1, 0, 0, 0, 0, //R
   0, 0, 0, 0, 0, //G
   0, 0, 0, 0, 0, //B
