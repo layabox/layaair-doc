@@ -57,9 +57,6 @@ package  {
       
     public class SmartScale_T {
           
-        //适配模式
-        private var modes:string = "exactfit";
-          
         //全局文本信息
         private var txt:Text;
           
@@ -68,8 +65,8 @@ package  {
         //初始化舞台大小
         Laya.init(1136, 640);
           
-        //设置适配模式
-        Laya.stage.scaleMode = modes;
+        //设置适配模式为"exactfit"
+        Laya.stage.scaleMode = Stage.SCALE_EXACTFIT;
         //设置舞台背景色
         Laya.stage.bgColor  = "#ffff99";
   
@@ -81,7 +78,7 @@ package  {
   
         //实例一个文本
         txt = new Text();
-        txt.text = "适配模式("+modes+") ";
+        txt.text = "适配模式("+Stage.SCALE_EXACTFIT+") ";
         txt.bold = true;
         txt.pos(10, 350);
         txt.fontSize = 60;
@@ -117,9 +114,7 @@ package  {
       
     public class SmartScale_T {
           
-        //适配模式
-        private var modes:string = "fixedheight";
-          
+           
         //全局文本信息
         private var txt:Text;
           
@@ -128,8 +123,8 @@ package  {
         //初始化舞台大小
         Laya.init(0, 640);
           
-        //设置适配模式
-        Laya.stage.scaleMode = modes;
+        //设置适配模式为"fixedheight"
+        Laya.stage.scaleMode = Stage.SCALE_FIXED_HEIGHT;
         //设置舞台背景色
         Laya.stage.bgColor  = "#ffff99";
   
@@ -141,7 +136,7 @@ package  {
   
         //实例一个文本
         txt = new Text();
-        txt.text = "适配模式("+modes+") ";
+        txt.text = "适配模式("+Stage.SCALE_FIXED_HEIGHT+") ";
         txt.bold = true;
         txt.pos(10, 350);
         txt.fontSize = 60;
@@ -167,7 +162,7 @@ package  {
 ​        同理，iPhone6竖屏时适配高度=(667/375)*1136，适配高度计算结果取整后的2021即为画布的高度。如果我们是按横屏设计的，那需要在使用该模式的时候，设置为自动横屏，否则适配宽高超出屏幕宽高，再等比缩放至屏幕宽高进行全屏显示时，通常不是我们想要的效果。fixedwidth模式示例拉伸适配全屏效果如图6所示：
 
 ​        ![blob.png](img/7.png)<br/>
-​        （图6）画布宽高为`1136*2021`，物理宽高为`1334*750`的fixedwidth模式运行效果
+​        （图7）画布宽高为`1136*2021`，物理宽高为`1334*750`的fixedwidth模式运行效果
 
 
 
@@ -181,10 +176,7 @@ package  {
       
     public class SmartScale_T {
           
-        //适配模式
-        private var modes:string = "fixedwidth";
-          
-        //全局文本信息
+        //全局文本信息
         private var txt:Text;
           
         public function SmartScale_T() 
@@ -192,8 +184,8 @@ package  {
         //初始化舞台大小
         Laya.init(1136, 0);
           
-        //设置适配模式
-        Laya.stage.scaleMode = modes;
+        //设置适配模式为"fixedwidth"
+        Laya.stage.scaleMode = Stage.SCALE_FIXED_WIDTH;
         //设置舞台背景色
         Laya.stage.bgColor  = "#ffff99";
   
@@ -205,7 +197,7 @@ package  {
   
         //实例一个文本
         txt = new Text();
-        txt.text = "适配模式("+modes+") ";
+        txt.text = "适配模式("+Stage.SCALE_FIXED_WIDTH+") ";
         txt.bold = true;
         txt.pos(10, 350);
         txt.fontSize = 60;
@@ -217,14 +209,81 @@ package  {
 }
 ```
 
-### 四、full模式
 
-​        full模式下，stage与画布的宽高会无视设计宽高，直接等于物理宽高，因此这也是游戏画质精度最高的主流缩放模式。在该模式下，设计内容不会被缩放，保持1：1原始比例的基础上，将舞台与浏览器屏幕左上角对齐，原设计内容超出屏幕的部分会被裁切。示例效果如图7、图8所示。
-​        ![blob.png](img/8.png)
-​        （图8）设计宽高与物理宽高同为`1136*640`的full模式横屏运行效果
 
-​        ![blob.png](img/9.png)
-​        （图9）设计宽高为`1136*640`，物理宽高为`960*640`的full模式横屏运行效果
+### 四、fixedauto模式
+
+​        fixedauto模式下，stage与画布的宽高等于缩放后的适配宽高，而等比缩放按照全屏显示全部内容(类似showall，但showall非全屏，会有黑边)，根据屏幕长宽比，自动计算SCALE_FIXED_WIDTH和SCALE_FIXED_HEIGHT两种模式，选择屏幕宽高比更接近设计宽高比的模式。
+
+​        例如：iPhone6横屏时，屏幕宽高为`667*375`，设计宽度为1136，那么采用fixedauto模式后，根据宽高比会自动选择SCALE_FIXED_WIDTH方式进行拉伸适配。`适配高度=(375/667)*1136`，适配高度计算结果取整后的639即为画布的高度。示例拉伸适配全屏效果如图6所示：
+
+​        ![8.png](img/8.png)<br/>
+​        （图8）画布宽高为`1136*639`，物理宽高为`1334*750`的fixedauto模式运行效果
+
+​        同理，iPhone6竖屏时适配高度=(667/375)*1136，配高度计算结果取整后的2021即为画布的高度。根据宽高比，自动选择了更接近屏幕宽高比的SCALE_FIXED_HEIGHT适配模式。
+
+​	如果我们是按横屏设计的，那需要在使用该模式的时候，设置为自动横屏，否则适配宽高超出屏幕宽高，再以设计的高度为准，对横向进行裁剪，这通常不是我们想要的效果。fixedauto模式示例拉伸适配全屏效果如图9所示：
+
+​        ![9.png](img/9.png)<br/>
+​        （图9）画布宽高为`1136*2021`，物理宽高为`1334*750`的fixedauto模式运行效果
+
+
+
+
+
+**fixedauto模式示例代码如下：**
+
+```javascript
+package  {
+    import laya.display.Stage;
+    import laya.display.Text;
+    import laya.ui.Image;
+      
+    public class SmartScale_T {
+
+        //全局文本信息
+        private var txt:Text;
+          
+        public function SmartScale_T() 
+        {
+        //初始化舞台大小
+        Laya.init(1136, 640);
+          
+        //设置适配模式为"fixedauto"
+        Laya.stage.scaleMode = Stage.SCALE_FIXED_AUTO;
+        //设置舞台背景色
+        Laya.stage.bgColor  = "#ffff99";
+  
+  
+        //实例一个背景
+        var bg:Image = new Image();
+        bg.skin = "res/img/loadingBg.jpg";
+        Laya.stage.addChild(bg);
+  
+        //实例一个文本
+        txt = new Text();
+        txt.text = "适配模式("+Stage.SCALE_FIXED_AUTO+") ";
+        txt.bold = true;
+        txt.pos(10, 350);
+        txt.fontSize = 60;
+        txt.color   = "#fff000";
+        Laya.stage.addChild(txt);
+        }
+      
+    }
+}
+```
+
+
+
+### 五、full模式
+
+​        full模式下，stage与画布的宽高会无视设计宽高，直接等于物理宽高，因此这也是游戏画质精度最高的主流缩放模式。在该模式下，设计内容不会被缩放，保持1：1原始比例的基础上，将舞台与浏览器屏幕左上角对齐，原设计内容超出屏幕的部分会被裁切。示例效果如图10、图11所示。
+​        ![10.png](img/10.png)
+​        （图10）设计宽高与物理宽高同为`1136*640`的full模式横屏运行效果
+
+​        ![11.png](img/11.png)
+​        （图11）设计宽高为`1136*640`，物理宽高为`960*640`的full模式横屏运行效果
 
 
 
@@ -237,10 +296,7 @@ package  {
     import laya.ui.Image;
       
     public class SmartScale_T {
-          
-        //适配模式
-        private var modes:string = "full";
-          
+
         //全局文本信息
         private var txt:Text;
           
@@ -249,8 +305,8 @@ package  {
         //初始化舞台大小
         Laya.init(0, 0);
           
-        //设置适配模式
-        Laya.stage.scaleMode = modes;
+        //设置适配模式为"full"
+        Laya.stage.scaleMode = Stage.SCALE_FULL;
         //设置舞台背景色
         Laya.stage.bgColor  = "#ffff99";
   
@@ -262,7 +318,7 @@ package  {
   
         //实例一个文本
         txt = new Text();
-        txt.text = "适配模式("+modes+") ";
+        txt.text = "适配模式("+Stage.SCALE_FULL+") ";
         txt.bold = true;
         txt.pos(10, 350);
         txt.fontSize = 60;
@@ -280,15 +336,17 @@ package  {
 
 ​        2、由于画布和stage的宽高是直接取自于屏幕的物理宽高，Laya.init()时的宽高值可以直接设为0。
 
-### 五、noscale模式
 
-​        noscale模式是不缩放模式，画布与stage的宽高等于设计宽高。保持1：1原始设计比例的基础上，将舞台与浏览器屏幕左上角对齐。当屏幕宽高小于内容时将进行裁切，当屏幕宽高大于内容时会出现黑边。该模式运行效果如图9、图10所示。
 
-​        ![blob.png](img/10.png)<br/>
-​        （图10）屏幕宽高都大于设计宽高时效果
+### 六、noscale模式
 
-​        ![blob.png](img/11.png)<br/>
-​        （图11）设计内容超出屏幕宽度，屏幕高度大于设计高度的效果
+​        noscale模式是不缩放模式，画布与stage的宽高等于设计宽高。保持1：1原始设计比例的基础上，将舞台与浏览器屏幕左上角对齐。当屏幕宽高小于内容时将进行裁切，当屏幕宽高大于内容时会出现黑边。该模式运行效果如图12、图13所示。
+
+​        ![12.png](img/12.png)<br/>
+​        （图12）屏幕宽高都大于设计宽高时效果
+
+​        ![13.png](img/13.png)<br/>
+​        （图13）设计内容超出屏幕宽度，屏幕高度大于设计高度的效果
 
 
 
@@ -301,10 +359,7 @@ package  {
     import laya.ui.Image;
       
     public class SmartScale_T {
-          
-        //适配模式
-        private var modes:string = "noscale";
-          
+
         //全局文本信息
         private var txt:Text;
           
@@ -313,8 +368,8 @@ package  {
         //初始化舞台大小
         Laya.init(1136, 640);
           
-        //设置适配模式
-        Laya.stage.scaleMode = modes;
+        //设置适配模式为"noscale"
+        Laya.stage.scaleMode = Stage.SCALE_NOSCALE;
         //设置舞台背景色
         Laya.stage.bgColor  = "#ffff99";
   
@@ -326,7 +381,7 @@ package  {
   
         //实例一个文本
         txt = new Text();
-        txt.text = "适配模式("+modes+") ";
+        txt.text = "适配模式("+Stage.SCALE_NOSCALE+") ";
         txt.bold = true;
         txt.pos(10, 350);
         txt.fontSize = 60;
@@ -336,16 +391,15 @@ package  {
       
     }
 }
-
 ```
 
 
 
-### 六、noborder模式
+### 七、noborder模式
 
-​         noborder模式下，画布宽高等于设计宽高。缩放时，按照屏幕宽高与设计宽高最大比率的一方进行缩放，比如设计尺寸为`1136*640`，屏幕的物理宽高为`750*1334`。计算得到宽的比率`（750/1136）`为0.66，高的比率`（1334/640）`为2.08。那么采用noborder模式缩放时，按最大的比率一方（高），将适配高度拉伸至物理高度的1334，适配宽度等比拉伸（`1334/640*1136`）为2368。当然，超过屏幕宽度的部分会被裁切掉。效果如图11所示。
+​         noborder模式下，画布宽高等于设计宽高。缩放时，按照屏幕宽高与设计宽高最大比率的一方进行缩放，比如设计尺寸为`1136*640`，屏幕的物理宽高为`750*1334`。计算得到宽的比率`（750/1136）`为0.66，高的比率`（1334/640）`为2.08。那么采用noborder模式缩放时，按最大的比率一方（高），将适配高度拉伸至物理高度的1334，适配宽度等比拉伸（`1334/640*1136`）为2368。当然，超过屏幕宽度的部分会被裁切掉。效果如图14所示。
 
-​        ![blob.png](img/12.png)<br/>
+​        ![14.png](img/14.png)<br/>
 ​        （图12）画布宽高保持设计尺寸`1136*640`时，适配宽高以最大比率一方拉伸至全屏
 
 
@@ -359,10 +413,7 @@ package  {
     import laya.ui.Image;
       
     public class SmartScale_T {
-          
-        //适配模式
-        private var modes:string = "noborder";
-          
+
         //全局文本信息
         private var txt:Text;
           
@@ -371,8 +422,8 @@ package  {
         //初始化舞台大小
         Laya.init(1136, 640);
           
-        //设置适配模式
-        Laya.stage.scaleMode = modes;
+        //设置适配模式为"noborder"
+        Laya.stage.scaleMode = Stage.SCALE_NOBORDER;
         //设置舞台背景色
         Laya.stage.bgColor  = "#ffff99";
   
@@ -384,7 +435,7 @@ package  {
   
         //实例一个文本
         txt = new Text();
-        txt.text = "适配模式("+modes+") ";
+        txt.text = "适配模式("+Stage.SCALE_NOBORDER+") ";
         txt.bold = true;
         txt.pos(10, 350);
         txt.fontSize = 60;
@@ -398,14 +449,14 @@ package  {
 
 
 
-### 七、showall模式
+### 八、showall模式
 
 ​        showall模式下，stage与画布的宽高等于缩放后的适配宽高，而缩放按照屏幕宽高与设计宽高最小比率的一方进行等比缩放。
 
-​         比如设计尺寸为`1136*640`，屏幕的物理宽高为`750*1334`。计算得到宽的比率（`750/1136`）为0.66，高的比率（`1334/640`）为2.08。那么采用showall模式缩放时，按最小的比率一方（宽），画布宽度会被缩放为屏幕的物理宽度750，适配高度等比缩放（`750/1136*640`）为423。此时由于423远小于屏幕物理高度1334，因此会出现大量留黑的空屏。效果如图12所示。
+​         比如设计尺寸为`1136*640`，屏幕的物理宽高为`750*1334`。计算得到宽的比率（`750/1136`）为0.66，高的比率（`1334/640`）为2.08。那么采用showall模式缩放时，按最小的比率一方（宽），画布宽度会被缩放为屏幕的物理宽度750，适配高度等比缩放（`750/1136*640`）为423。此时由于423远小于屏幕物理高度1334，因此会出现大量留黑的空屏。效果如图15所示。
 
-​        ![blob.png](img/13.png)<br/>
-​        （图13）画布宽高被缩放至`750*423`，在物理宽高为`750*423`的屏幕上出现大量留黑空屏
+​        ![blob.png](img/15.png)<br/>
+​        （图15）画布宽高被缩放至`750*423`，在物理宽高为`750*423`的屏幕上出现大量留黑空屏
 
 
 
@@ -418,10 +469,7 @@ package  {
     import laya.ui.Image;
       
     public class SmartScale_T {
-          
-        //适配模式
-        private var modes:string = "showall";
-          
+
         //全局文本信息
         private var txt:Text;
           
@@ -430,8 +478,8 @@ package  {
         //初始化舞台大小
         Laya.init(1136, 640);
           
-        //设置适配模式
-        Laya.stage.scaleMode = modes;
+        //设置适配模式为"showall"
+        Laya.stage.scaleMode = Stage.SCALE_SHOWALL;
         //设置舞台背景色
         Laya.stage.bgColor  = "#ffff99";
   
@@ -443,7 +491,7 @@ package  {
   
         //实例一个文本
         txt = new Text();
-        txt.text = "适配模式("+modes+") ";
+        txt.text = "适配模式("+Stage.SCALE_SHOWALL+") ";
         txt.bold = true;
         txt.pos(10, 350);
         txt.fontSize = 60;
@@ -457,6 +505,8 @@ package  {
 
 
 
+
+
 **结束总结：**
 
 ​        full模式完全按物理像素渲染，屏幕有多大，适配的画面就有多大，是高画质常用的适配模式，但是在不同尺寸的屏幕里，显示内容的大小会有所不同，同时对于HTML5游戏的性能压力要高于其它适配模式。
@@ -464,6 +514,8 @@ package  {
 ​        showall和noborder是等比缩放模式，会保持画面不变形。showall按照屏幕与设计宽高最小比率缩放，保证画面能完全显示出来，但会导致有空屏黑边。noborder刚好相反，按照屏幕与设计宽高最大比率缩放，不会出现空屏黑边，但会导致宽或高的部分内容无法显示出来。
 
 ​        fixedwidth与fixedheight更像showall和noborder的变种，同样也是等比缩放模式，但是指定了一边不动，另外一边进行缩放，是当前HTML5游戏中比较常用的主流适配模式。
+
+​        fixedauto能根据屏幕比自动选择适配性更好的fixedwidth或fixedheight模式，更好的为我们解决了HTML5游戏对于机型不同导致屏幕适配难以决择的问题。
 
 ​        本篇中为了重点介绍缩放模式的不同参数区别。并未结合屏幕自动旋转等其它屏幕适配设置，开发者可以查看相关的其它技术文档。
 
