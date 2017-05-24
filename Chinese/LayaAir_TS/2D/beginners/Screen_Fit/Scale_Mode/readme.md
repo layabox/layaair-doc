@@ -35,7 +35,9 @@
 
 ​        关于设备屏幕的物理宽高，我们需要先了解像素密度的概念。在PC电脑上，通常一个像素位置上就是一个物理像素。在移动设备高速发展的今天，手机的屏幕上通常是一个像素位置上拥有2个或3个像素。例iphone6竖屏时的物理宽高为`750*1334`。LayaAir引擎可以通过laya.utils.Browser.width和laya.utils.Browser.height来获取设备屏幕屏幕的物理宽高。
 
+### 示例代码中所用的背景图片：
 
+[loadingBg.jpg](http://ldc.layabox.com/uploadfile/file/20170223/1487816895380055.jpg)(点击打开或另存`1136×640`像素背景原图)
 
 ### 一、exactfit模式
 
@@ -552,6 +554,3 @@ new laya.SmartScale_T();
 
 ​        本篇中为了重点介绍缩放模式的不同参数区别。并未结合屏幕自动旋转等其它屏幕适配设置，开发者可以查看相关的其它技术文档。
 
-示例代码中所用的背景图片：
-
-[loadingBg.jpg](http://ldc.layabox.com/uploadfile/file/20170223/1487816895380055.jpg)(点击打开或另存`1136×640`像素背景原图)
