@@ -206,6 +206,86 @@
             ]
           },
           {
+            "name_2_name": "动画基础",
+            "name_2_data": [
+              {
+                "name_3_name": "图集动画",
+                "name_3_url": "Chinese/LayaAir_AS3/2D/beginners/animation/atlas/",
+                "name_3_file": "readme.md"
+              },
+              {
+                "name_3_name": "缓动动画",
+                "name_3_url": "Chinese/LayaAir_AS3/2D/beginners/animation/Easing/",
+                "name_3_file": "readme.md"
+              },
+              {
+                "name_3_name": "时间轴动画",
+                "name_3_url": "Chinese/LayaAir_AS3/IDE/Use_IDE/TimelineAnimation/",
+                "name_3_file": "readme.md"
+              },
+              {
+                "name_3_name": "动效模板",
+                "name_3_url": "Chinese/LayaAir_AS3/IDE/Use_IDE/EffectAnimation/",
+                "name_3_file": "readme.md"
+              },
+              {
+                "name_3_name": "粒子动画",
+                "name_3_url": "Chinese/LayaAir_AS3/2D/beginners/animation/particle/",
+                "name_3_file": "readme.md"
+              },
+              {
+                "name_3_name": "SWF动画使用",
+                "name_3_url": "Chinese/LayaAir_AS3/2D/beginners/animation/swf/",
+                "name_3_file": "readme.md"
+              },
+              {
+                "name_3_name": "Spine动画使用",
+                "name_3_url": "Chinese/LayaAir_AS3/2D/beginners/animation/spine/",
+                "name_3_file": "readme.md"
+              },
+              {
+                "name_3_name": "DragonBone动画使用",
+                "name_3_url": "Chinese/LayaAir_AS3/2D/beginners/animation/dragonBone/",
+                "name_3_file": "readme.md"
+              }
+            ]
+          },
+          {
+            "name_2_name": "硬件设备相关",
+            "name_2_data": [
+              {
+                "name_3_name": "音乐与音效播放",
+                "name_3_url": "Chinese/LayaAir_AS3/2D/beginners/devices/SoundManager/",
+                "name_3_file": "readme.md"
+              },
+              {
+                "name_3_name": "视频播放与与捕捉摄像头麦克风",
+                "name_3_url": "Chinese/LayaAir_AS3/2D/beginners/devices/video/",
+                "name_3_file": "readme.md"
+              },
+              {
+                "name_3_name": "陀螺仪与加速计",
+                "name_3_url": "Chinese/LayaAir_AS3/2D/beginners/devices/motion/",
+                "name_3_file": "readme.md"
+              },
+              {
+                "name_3_name": "摇一摇",
+                "name_3_url": "Chinese/LayaAir_AS3/2D/beginners/devices/SoundManager/",
+                "name_3_file": "readme.md"
+              },
+              {
+                "name_3_name": "用Geolocation获取地理位置信息",
+                "name_3_url": "Chinese/LayaAir_AS3/2D/beginners/devices/geolocation/",
+                "name_3_file": "readme.md"
+              },
+              {
+                "name_3_name": "使用百度地图显示当前位置",
+                "name_3_url": "Chinese/LayaAir_AS3/2D/beginners/devices/baiduMap/",
+                "name_3_file": "readme.md"
+              }
+            ]
+          },
+          {
             "name_2_name": "屏幕适配",
             "name_2_data": [
               {
@@ -448,6 +528,21 @@
         "nav_1_name": "2D进阶篇（AS3）",
         "nav_1_data": [
           {
+            "name_2_name": "调试相关",
+            "name_2_data": [
+              {
+                "name_3_name": "DebugPanel",
+                "name_3_url": "Chinese/LayaAir_AS3/2D/advanced/debug/DebugPanel/",
+                "name_3_file": "readme.md"
+              },
+              {
+                "name_3_name": "LayaAir Debug调试工具",
+                "name_3_url": "Chinese/LayaAir_AS3/2D/advanced/debug/DebugTool/",
+                "name_3_file": "readme.md"
+              }
+            ]
+          },
+          {
             "name_2_name": "性能优化",
             "name_2_data": [
               {
@@ -483,6 +578,16 @@
               {
                 "name_3_name": "使用chrome的性能分析器",
                 "name_3_url": "Chinese/LayaAir_AS3/2D/advanced/PerformanceOptimization/Chrome_Profiles/",
+                "name_3_file": "readme.md"
+              }
+            ]
+          },
+          {
+            "name_2_name": "动画进阶",
+            "name_2_data": [
+              {
+                "name_3_name": "骨骼动画进阶",
+                "name_3_url": "Chinese/LayaAir_AS3/2D/advanced/animation/bone/",
                 "name_3_file": "readme.md"
               }
             ]
@@ -848,6 +953,86 @@
             ]
           },
           {
+            "name_2_name": "动画基础",
+            "name_2_data": [
+              {
+                "name_3_name": "图集动画",
+                "name_3_url": "Chinese/LayaAir_TS/2D/beginners/animation/atlas/",
+                "name_3_file": "readme.md"
+              },
+              {
+                "name_3_name": "缓动动画",
+                "name_3_url": "Chinese/LayaAir_TS/2D/beginners/animation/Easing/",
+                "name_3_file": "readme.md"
+              },
+              {
+                "name_3_name": "时间轴动画",
+                "name_3_url": "Chinese/LayaAir_TS/IDE/Use_IDE/TimelineAnimation/",
+                "name_3_file": "readme.md"
+              },
+              {
+                "name_3_name": "动效模板",
+                "name_3_url": "Chinese/LayaAir_TS/IDE/Use_IDE/EffectAnimation/",
+                "name_3_file": "readme.md"
+              },
+              {
+                "name_3_name": "粒子动画",
+                "name_3_url": "Chinese/LayaAir_TS/2D/beginners/animation/particle/",
+                "name_3_file": "readme.md"
+              },
+              {
+                "name_3_name": "SWF动画使用",
+                "name_3_url": "Chinese/LayaAir_TS/2D/beginners/animation/swf/",
+                "name_3_file": "readme.md"
+              },
+              {
+                "name_3_name": "Spine动画使用",
+                "name_3_url": "Chinese/LayaAir_TS/2D/beginners/animation/spine/",
+                "name_3_file": "readme.md"
+              },
+              {
+                "name_3_name": "DragonBone动画使用",
+                "name_3_url": "Chinese/LayaAir_TS/2D/beginners/animation/dragonBone/",
+                "name_3_file": "readme.md"
+              }
+            ]
+          },
+          {
+            "name_2_name": "硬件设备相关",
+            "name_2_data": [
+              {
+                "name_3_name": "音乐与音效播放",
+                "name_3_url": "Chinese/LayaAir_TS/2D/beginners/devices/SoundManager/",
+                "name_3_file": "readme.md"
+              },
+              {
+                "name_3_name": "视频播放与与捕捉摄像头麦克风",
+                "name_3_url": "Chinese/LayaAir_TS/2D/beginners/devices/video/",
+                "name_3_file": "readme.md"
+              },
+              {
+                "name_3_name": "陀螺仪与加速计",
+                "name_3_url": "Chinese/LayaAir_TS/2D/beginners/devices/motion/",
+                "name_3_file": "readme.md"
+              },
+              {
+                "name_3_name": "摇一摇",
+                "name_3_url": "Chinese/LayaAir_TS/2D/beginners/devices/SoundManager/",
+                "name_3_file": "readme.md"
+              },
+              {
+                "name_3_name": "用Geolocation获取地理位置信息",
+                "name_3_url": "Chinese/LayaAir_TS/2D/beginners/devices/geolocation/",
+                "name_3_file": "readme.md"
+              },
+              {
+                "name_3_name": "使用百度地图显示当前位置",
+                "name_3_url": "Chinese/LayaAir_TS/2D/beginners/devices/baiduMap/",
+                "name_3_file": "readme.md"
+              }
+            ]
+          },
+          {
             "name_2_name": "屏幕适配",
             "name_2_data": [              
               {
@@ -1091,6 +1276,21 @@
         "nav_1_name": "2D进阶篇（TS）",
         "nav_1_data": [
           {
+            "name_2_name": "调试相关",
+            "name_2_data": [
+              {
+                "name_3_name": "DebugPanel",
+                "name_3_url": "Chinese/LayaAir_TS/2D/advanced/debug/DebugPanel/",
+                "name_3_file": "readme.md"
+              },
+              {
+                "name_3_name": "LayaAir Debug调试工具",
+                "name_3_url": "Chinese/LayaAir_TS/2D/advanced/debug/DebugTool/",
+                "name_3_file": "readme.md"
+              }
+            ]
+          },
+          {
             "name_2_name": "性能优化",
             "name_2_data": [
               {
@@ -1126,6 +1326,16 @@
               {
                 "name_3_name": "使用chrome的性能分析器",
                 "name_3_url": "Chinese/LayaAir_TS/2D/advanced/PerformanceOptimization/Chrome_Profiles/",
+                "name_3_file": "readme.md"
+              }
+            ]
+          },
+          {
+            "name_2_name": "动画进阶",
+            "name_2_data": [
+              {
+                "name_3_name": "骨骼动画进阶",
+                "name_3_url": "Chinese/LayaAir_TS/2D/advanced/animation/bone/",
                 "name_3_file": "readme.md"
               }
             ]
@@ -1476,6 +1686,86 @@
             ]
           },
           {
+            "name_2_name": "动画基础",
+            "name_2_data": [
+              {
+                "name_3_name": "图集动画",
+                "name_3_url": "Chinese/LayaAir_JS/2D/beginners/animation/atlas/",
+                "name_3_file": "readme.md"
+              },
+              {
+                "name_3_name": "缓动动画",
+                "name_3_url": "Chinese/LayaAir_JS/2D/beginners/animation/Easing/",
+                "name_3_file": "readme.md"
+              },
+              {
+                "name_3_name": "时间轴动画",
+                "name_3_url": "Chinese/LayaAir_JS/IDE/Use_IDE/TimelineAnimation/",
+                "name_3_file": "readme.md"
+              },
+              {
+                "name_3_name": "动效模板",
+                "name_3_url": "Chinese/LayaAir_JS/IDE/Use_IDE/EffectAnimation/",
+                "name_3_file": "readme.md"
+              },
+              {
+                "name_3_name": "粒子动画",
+                "name_3_url": "Chinese/LayaAir_JS/2D/beginners/animation/particle/",
+                "name_3_file": "readme.md"
+              },
+              {
+                "name_3_name": "SWF动画使用",
+                "name_3_url": "Chinese/LayaAir_JS/2D/beginners/animation/swf/",
+                "name_3_file": "readme.md"
+              },
+              {
+                "name_3_name": "Spine动画使用",
+                "name_3_url": "Chinese/LayaAir_JS/2D/beginners/animation/spine/",
+                "name_3_file": "readme.md"
+              },
+              {
+                "name_3_name": "DragonBone动画使用",
+                "name_3_url": "Chinese/LayaAir_JS/2D/beginners/animation/dragonBone/",
+                "name_3_file": "readme.md"
+              }
+            ]
+          },
+          {
+            "name_2_name": "硬件设备相关",
+            "name_2_data": [
+              {
+                "name_3_name": "音乐与音效播放",
+                "name_3_url": "Chinese/LayaAir_JS/2D/beginners/devices/SoundManager/",
+                "name_3_file": "readme.md"
+              },
+              {
+                "name_3_name": "视频播放与与捕捉摄像头麦克风",
+                "name_3_url": "Chinese/LayaAir_JS/2D/beginners/devices/video/",
+                "name_3_file": "readme.md"
+              },
+              {
+                "name_3_name": "陀螺仪与加速计",
+                "name_3_url": "Chinese/LayaAir_JS/2D/beginners/devices/motion/",
+                "name_3_file": "readme.md"
+              },
+              {
+                "name_3_name": "摇一摇",
+                "name_3_url": "Chinese/LayaAir_JS/2D/beginners/devices/SoundManager/",
+                "name_3_file": "readme.md"
+              },
+              {
+                "name_3_name": "用Geolocation获取地理位置信息",
+                "name_3_url": "Chinese/LayaAir_JS/2D/beginners/devices/geolocation/",
+                "name_3_file": "readme.md"
+              },
+              {
+                "name_3_name": "使用百度地图显示当前位置",
+                "name_3_url": "Chinese/LayaAir_JS/2D/beginners/devices/baiduMap/",
+                "name_3_file": "readme.md"
+              }
+            ]
+          },
+          {
             "name_2_name": "屏幕适配",
             "name_2_data": [
               {
@@ -1719,6 +2009,21 @@
         "nav_1_name": "2D进阶篇（JS）",
         "nav_1_data": [
           {
+            "name_2_name": "调试相关",
+            "name_2_data": [
+              {
+                "name_3_name": "DebugPanel",
+                "name_3_url": "Chinese/LayaAir_JS/2D/advanced/debug/DebugPanel/",
+                "name_3_file": "readme.md"
+              },
+              {
+                "name_3_name": "LayaAir Debug调试工具",
+                "name_3_url": "Chinese/LayaAir_JS/2D/advanced/debug/DebugTool/",
+                "name_3_file": "readme.md"
+              }
+            ]
+          },
+          {
             "name_2_name": "性能优化",
             "name_2_data": [
               {
@@ -1754,6 +2059,16 @@
               {
                 "name_3_name": "使用chrome的性能分析器",
                 "name_3_url": "Chinese/LayaAir_JS/2D/advanced/PerformanceOptimization/Chrome_Profiles/",
+                "name_3_file": "readme.md"
+              }
+            ]
+          },
+          {
+            "name_2_name": "动画进阶",
+            "name_2_data": [
+              {
+                "name_3_name": "骨骼动画进阶",
+                "name_3_url": "Chinese/LayaAir_JS/2D/advanced/animation/bone/",
                 "name_3_file": "readme.md"
               }
             ]
