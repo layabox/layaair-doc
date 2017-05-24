@@ -472,6 +472,76 @@ new laya.SmartScale_T();
 
 
 
+### 八、fixedauto模式
+
+​        fixedauto模式下，stage与画布的宽高等于缩放后的适配宽高，而等比缩放按照全屏显示全部内容，根据屏幕长宽比，自动计算SCALE_FIXED_WIDTH和SCALE_FIXED_HEIGHT两种模式，选择屏幕宽高比更接近设计宽高比的模式。
+
+​        例如：iPhone6横屏时，屏幕宽高为`667*375`，设计宽度为1136，那么采用fixedauto模式后，根据宽高比会自动选择SCALE_FIXED_WIDTH方式进行拉伸适配。`适配高度=(375/667)*1136`，适配高度计算结果取整后的639即为画布的高度。示例拉伸适配全屏效果如图6所示：
+
+​        ![14](img/14.png)<br/>
+​        （图14）画布宽高为`1136*639`，物理宽高为`1334*750`的fixedauto模式运行效果
+
+​        同理，iPhone6竖屏时适配高度=(667/375)*1136，配高度计算结果取整后的2021即为画布的高度。根据宽高比，自动选择了更接近屏幕宽高比的SCALE_FIXED_HEIGHT适配模式。
+
+​	如果我们是按横屏设计的，那需要在使用该模式的时候，设置为自动横屏，否则适配宽高超出屏幕宽高，再以设计的高度为准，对横向进行裁剪，这通常不是我们想要的效果。fixedauto模式示例拉伸适配全屏效果如图15所示：
+
+​        ![15](img/15.png)<br/>
+​        （图15）画布宽高为`1136*2021`，物理宽高为`1334*750`的fixedauto模式运行效果
+
+
+
+**fixedauto模式示例代码如下：**
+
+```javascript
+module laya {
+    import Text = Laya.Text;
+    import Image = Laya.Image;
+    import Sprite = Laya.Sprite;
+ 
+    export class SmartScale_T {
+ 
+        //适配模式
+        private modes:string = "fixedauto";
+        //全局文本信息
+        private txt: Text;
+ 
+        constructor() {
+        //初始化舞台大小
+        Laya.init(1136, 640);
+ 
+        //设置适配模式
+        Laya.stage.scaleMode = this.modes;
+        //设置舞台背景色
+        Laya.stage.bgColor  = "#ffff99";
+ 
+ 
+        //实例一个背景
+        var bg = new Image();
+        bg.skin = "res/img/loadingBg.jpg";
+        Laya.stage.addChild(bg);
+ 
+ 
+        //实例一个文本
+        this.txt = new Text();
+        this.txt.text = "适配模式("+this.modes+") ";
+        this.txt.bold = true;
+        this.txt.pos(10, 350);
+        this.txt.fontSize = 60;
+        this.txt.color   = "#fff000";
+        Laya.stage.addChild(this.txt);
+        }
+ 
+    }
+}
+new laya.SmartScale_T();
+```
+
+
+
+
+
+
+
 **结束总结：**
 
 ​        full模式完全按物理像素渲染，屏幕有多大，适配的画面就有多大，是高画质常用的适配模式，但是在不同尺寸的屏幕里，显示内容的大小会有所不同，同时对于HTML5游戏的性能压力要高于其它适配模式。
