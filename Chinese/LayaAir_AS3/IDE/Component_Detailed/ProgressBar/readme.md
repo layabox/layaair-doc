@@ -42,7 +42,13 @@
 
 ##  二、通过代码创建ProgressBar
 
-​	在我们进行书写代码的时候，免不了通过代码控制UI，在代码中导入`laya.ui.ProgressBar`的包，创建UI ProgressBar,并通过代码设定ProgressBar相关的属性。
+​	在我们进行书写代码的时候，免不了通过代码控制UI，创建UI_ProgressBar类，在代码中导入`laya.ui.ProgressBar`的包，并通过代码设定ProgressBar相关的属性。
+
+**运行示例效果:**
+​	![5](gif/1.gif)<br/>
+​	(图5)通过代码创建ProgressBar
+
+​	ProgressBar的其他属性也可以通过代码来设置，上述示例演示了如何通过代码创建不同皮肤（样式）的ProgressBar，有兴趣的读者可以自己通过代码设置ProgressBar，创建出符合自己需要的进度条。
 
 **示例代码：**
 
@@ -61,42 +67,52 @@ package
 		public function UI_ProgressBar()
 		{
 			// 不支持WebGL时自动切换至Canvas
-			//Laya.init(800, 600, WebGL);
-			Laya.init(800, 600);
-
+			Laya.init(800, 600, WebGL);
+			//画布垂直居中对齐
 			Laya.stage.alignV = Stage.ALIGN_MIDDLE;
+			//画布水平居中对齐
 			Laya.stage.alignH = Stage.ALIGN_CENTER;
-
+			//等比缩放
 			Laya.stage.scaleMode = Stage.SCALE_SHOWALL;
+			//背景颜色
 			Laya.stage.bgColor = "#232628";
 			
-			Laya.loader.load(["res/ui/progressBar.png", "res/ui/progressBar$bar.png"], Handler.create(this, onLoadComplete));
+			//加载资源
+			Laya.loader.load(["../../../../res/ui/progressBar.png", "../../../../res/ui/progressBar$bar.png"], Handler.create(this, onLoadComplete));
 		}
 		
-		private function onLoadComplete(e:*=null):void
+		/***加载资源完成***/
+		private function onLoadComplete():void
 		{
-			progressBar = new ProgressBar("res/ui/progressBar.png");
-			
+			//实例化进度条
+			progressBar = new ProgressBar("../../../../res/ui/progressBar.png");
+			//设置宽度
 			progressBar.width = 400;
-
+			//设置显示位置，在舞台居中
 			progressBar.x = (Laya.stage.width - progressBar.width ) / 2;
 			progressBar.y = Laya.stage.height / 2;
 			
+			//设置九宫格边距，以防变形
 			progressBar.sizeGrid = "5,5,5,5";
+			//数据改变时回调方法
 			progressBar.changeHandler = new Handler(this, onChange);
+			//加载到舞台
 			Laya.stage.addChild(progressBar);
 			
+			//时间间隔循环，每100毫秒改变一次数据
 			Laya.timer.loop(100, this, changeValue);
 		}
 		
+		/***时间间隔循环回调，更新进度条***/
 		private function changeValue():void
 		{
-			
+			//最大为1，每次间隔更新5%
 			if (progressBar.value >= 1)
 				progressBar.value = 0;
 			progressBar.value += 0.05;
 		}
 		
+		/***进度条数据改变回调***/
 		private function onChange(value:Number):void
 		{
 			trace("进度：" + Math.floor(value * 100) + "%");
@@ -105,8 +121,3 @@ package
 }
 ```
 
-**运行结果:**
-​	![5](gif/1.gif)<br/>
-​	(图5)通过代码创建ProgressBar
-
-​	ProgressBar的其他属性也可以通过代码来设置，上述示例演示了如何通过代码创建不同皮肤（样式）的ProgressBar，有兴趣的读者可以自己通过代码设置ProgressBar，创建出符合自己需要的进度条。

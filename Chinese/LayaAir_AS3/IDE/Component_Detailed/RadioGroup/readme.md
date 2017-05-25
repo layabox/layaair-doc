@@ -7,7 +7,7 @@
 ### 1.1 RadioGroup组件的作用
 
 RadioGroup是单选框按钮组，按钮组之内的组件选项互相排斥，用户每次只能选择一个单选框（Radio）组件。如动图1所示。
-![图片4.png](img/1.gif)<br/> 	（动图1）
+![图片4.png](img/1.gif)<br/>（动图1）
 
 ### 1.2 RadioGroup组件的皮肤（skin）规范
 

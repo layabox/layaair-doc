@@ -89,63 +89,98 @@
 
 ## 二、通过代码创建ComboBox组件 
 
- 	在我们进行书写代码的时候，免不了通过代码控制UI，在代码中导入`laya.ui.ComboBox`的包，创建UI ComboBox,并通过代码设定ComboBox相关的属性。
+ 	在我们进行书写代码的时候，免不了通过代码控制UI，创建`UI_ComboBox`类，在代码中导入`laya.ui.ComboBox`的包，并通过代码设定ComboBox相关的属性。
+
+**运行示例效果：**
+​	![1](gif/1.gif)<br/>
+​	（图10）
+
+​	ComboBox的其他属性也可以通过代码来设置，下述示例演示了如何通过代码创建选中框中的下拉选项，并通过点击获取到自己的点击是哪一条选项。有兴趣的读者可以自己通过代码设置ComboBox，创建出符合自己需要的下拉框。
 
 ```javascript
 package
 {
 	import laya.display.Stage;
+	import laya.display.Text;
 	import laya.ui.ComboBox;
 	import laya.utils.Handler;
 	import laya.webgl.WebGL;
 	
 	public class UI_ComboBox	
 	{
+		/***下边列表美术资源**/
 		private var skin:String = "../../../../res/ui/combobox.png";
+		/***下拉列表**/
+		private var comboBox:ComboBox 
+		/***提示信息文本框**/
+		private var promptText:Text;
 		
 		public function UI_ComboBox() 
 		{
 			// 不支持WebGL时自动切换至Canvas
 			Laya.init(800, 600, WebGL);
-
+			//画布垂直居中对齐
 			Laya.stage.alignV = Stage.ALIGN_MIDDLE;
+			//画布水平居中对齐
 			Laya.stage.alignH = Stage.ALIGN_CENTER;
-
+			//等比缩放
 			Laya.stage.scaleMode = Stage.SCALE_SHOWALL;
+			//背景颜色
 			Laya.stage.bgColor = "#232628";
-
+			
+			//加载资源
 			Laya.loader.load(skin, Handler.create(this, onLoadComplete));
 		}
 		
+		/***加载资源完成***/
 		private function onLoadComplete(e:*=null):void
 		{
-			var cb:ComboBox = createComboBox(skin);
-			cb.autoSize = true;
-			cb.pos((Laya.stage.width - cb.width) / 2, 100);
-			cb.autoSize = false;
-		}
-		
-		private function createComboBox(skin:String):ComboBox
-		{
-			var comboBox:ComboBox = new ComboBox(skin, "item0,item1,item2,item3,item4,item5");
+			//实例化下拉列表
+			comboBox= new ComboBox(skin, "item0,item1,item2,item3,item4,item5");
+			//按钮标签字体大小
 			comboBox.labelSize = 30;
+			//列表项标签字体大小
 			comboBox.itemSize = 25;
+			//下拉列表选择触发处理回调
 			comboBox.selectHandler = new Handler(this, onSelect, [comboBox]);
+			//加载到舞台
 			Laya.stage.addChild(comboBox);
+			//自动计算宽高
+			comboBox.autoSize = true;
+			//设置位置
+			comboBox.pos((Laya.stage.width - comboBox.width) / 2, 150);
+			//自动计算宽高关闭（在设置位置时，需获取列表宽度，获取后关闭）
+			comboBox.autoSize = false;
 			
-			return comboBox;
+			//创建选择提示信息框
+			createPromptText()
 		}
 		
-		private function onSelect(cb:ComboBox,e:*=null):void
+		/***创建提示信息***/
+		private function createPromptText():void
 		{
-			trace("选中了： " + cb.selectedLabel);
+			//实例化提示信息
+			promptText=new Text();
+			//提示框字体
+			promptText.font="黑体";
+			//提示框字体大小
+			promptText.fontSize=26;
+			//提示框字体颜色
+			promptText.color="#FFFFFF";
+			//提示框初始文本
+			promptText.text="您的选择是： ";
+			//加载到舞台
+			Laya.stage.addChild(promptText);
+			//设置提示框位置
+			promptText.pos(comboBox.x,comboBox.y-40);
+		}
+		
+		/***下拉列表选择事件回调***/
+		private function onSelect(comboBox:ComboBox):void
+		{
+			promptText.text="您的选择是： " + comboBox.selectedLabel;
 		}
 	}
 }
 ```
 
-**运行结果：**
-​	![1](gif/1.gif)<br/>
-​	（图10）ComboBox选中框
-
-​	ComboBox的其他属性也可以通过代码来设置，上述示例演示了如何通过代码创建选中框中的下拉选项，并通过点击获取到自己的点击是哪一条选项。有兴趣的读者可以自己通过代码设置ComboBox，创建出符合自己需要的下拉框。

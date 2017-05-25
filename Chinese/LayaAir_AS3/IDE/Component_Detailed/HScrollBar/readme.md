@@ -76,7 +76,13 @@
 
 ## 二、通过代码创建HScrollBar组件
 
-​	在我们进行书写代码的时候，免不了通过代码控制UI，在代码中导入`laya.ui.HScrollBar`的包，创建UI HScrollBar,并通过代码设定HScrollBar相关的属性。
+​	在我们进行书写代码的时候，免不了通过代码控制UI，创建`UI_ScrollBar`类，在代码中导入`laya.ui.HScrollBar`的包，并通过代码设定HScrollBar相关的属性。
+
+**运行示例效果:**
+​	![5](gif/4.gif)<br/>
+​	(图11)通过代码创建HScrollBar
+
+​	HScrollBar的其他属性也可以通过代码来设置，下述示例演示了如何通过代码创建的HScrollBar，有兴趣的读者可以自己通过代码设置HScrollBar，创建出符合自己需要的HScrollBar。
 
 **示例代码：**
 
@@ -84,53 +90,99 @@
 package
 {
 	import laya.display.Stage;
+	import laya.display.Text;
 	import laya.ui.HScrollBar;
+	import laya.ui.ScrollBar;
+	import laya.ui.VScrollBar;
 	import laya.utils.Handler;
 	import laya.webgl.WebGL;
 
 	public class UI_ScrollBar
 	{
+		/***水平滚动条资源**/
+		private var skins:Array=["../../../../res/ui/hscroll.png", 
+							 	 "../../../../res/ui/hscroll$bar.png", 
+								 "../../../../res/ui/hscroll$down.png",
+								 "../../../../res/ui/hscroll$up.png"];
+
+		/***提示信息文本框**/
+		private var promptText:Text;		
+		/****水平滚动条****/
+		private var hScrollBar:HScrollBar;		
+		
 		public function UI_ScrollBar()
 		{
 			// 不支持WebGL时自动切换至Canvas
-			Laya.init(550, 400, WebGL);
-
+			Laya.init(800, 600, WebGL);
+			//画布垂直居中对齐
 			Laya.stage.alignV = Stage.ALIGN_MIDDLE;
+			//画布水平居中对齐
 			Laya.stage.alignH = Stage.ALIGN_CENTER;
-
+			//等比缩放
 			Laya.stage.scaleMode = Stage.SCALE_SHOWALL;
+			//背景颜色
 			Laya.stage.bgColor = "#232628";
 			
-			var skins:Array = [];
-			skins.push("../../../../res/ui/hscroll.png", "../../../../res/ui/hscroll$bar.png", "../../../../res/ui/hscroll$down.png", "../../../../res/ui/hscroll$up.png");
-			Laya.loader.load(skins, Handler.create(this, placeHScroller));
+			//加载资源
+			Laya.loader.load(skins, Handler.create(this, onSkinLoadComplete));
+		}
+
+		/***加载资源完成***/
+		private function onSkinLoadComplete(e:*=null):void
+		{
+			//创建水平滚动条
+			createHScroller();
 		}
 		
-		private function placeHScroller():void 
+		/***创建水平滚动条***/
+		private function createHScroller():void 
 		{
-			var hs:HScrollBar = new HScrollBar();
-			hs.skin = "../../../../res/ui/hscroll.png";
-			hs.width = 300;
-			hs.pos(50, 170);
+			//实例化垂直滚动条
+			hScrollBar= new HScrollBar();
+			//加载皮肤资源（其他资源根据规范命名后，会自动加载）
+			hScrollBar.skin = "../../../../res/ui/hscroll.png";
+			//设置宽度
+			hScrollBar.width = 400;
+			//设置位置
+			hScrollBar.pos(150, 170);
+			//最低滚动位置数字
+			hScrollBar.min = 0;
+			//最高滚动位置数字
+			hScrollBar.max = 100;
+			//滚动变化事件回调
+			hScrollBar.changeHandler = new Handler(this, onChange);
+			//加载到舞台
+			Laya.stage.addChild(hScrollBar);
 			
-			hs.min = 0;
-			hs.max = 100;
-			
-			hs.changeHandler = new Handler(this, onChange);
-			Laya.stage.addChild(hs);
+			//创建提示信息
+			createPromptText(hScrollBar)
+		}		
+		
+		/***创建提示信息***/
+		private function createPromptText(scrollBar:ScrollBar):void
+		{
+			//实例化提示信息
+			promptText=new Text();
+			//提示框字体
+			promptText.font="黑体";
+			//提示框字体大小
+			promptText.fontSize=26;
+			//提示框字体颜色
+			promptText.color="#FFFFFF";
+			//提示框初始文本
+			promptText.text="您的选择是： ";
+			//加载到舞台
+			Laya.stage.addChild(promptText);
+			//设置提示框位置
+			promptText.pos(scrollBar.x,scrollBar.y-50);
 		}
+		
+		/***滚动条位置变化回调***/
 		private function onChange(value:Number):void 
 		{
-			trace("滚动条的位置： value=" + value);
+			promptText.text= "滚动条的位置： value=" + value;
 		}
 	}
 }
 ```
 
-**运行结果:**
-​	![5](gif/3.gif)<br/>
-​	(图11)通过代码创建HScrollBar
-
-​	HScrollBar的其他属性也可以通过代码来设置，上述示例演示了如何通过代码创建的HScrollBar，
-
-有兴趣的读者可以自己通过代码设置HScrollBar，创建出符合自己需要的HScrollBar。

@@ -79,7 +79,13 @@
 
 ##  二、通过代码创建VScrollBar组件 
 
-​	在我们进行书写代码的时候，免不了通过代码控制UI，在代码中导入`laya.ui.VScrollBar `的包，创建UI VScrollBar ,并通过代码设定VScrollBar 相关的属性。
+​	在我们进行书写代码的时候，免不了通过代码控制UI，创建`UI_ScrollBar` 类，在代码中导入`laya.ui.VScrollBar `的包，并通过代码设定VScrollBar 相关的属性。
+
+**运行示例效果:**
+​	![5](gif/3.gif)<br/>
+​	(图11)通过代码创建VScrollBar 
+
+​	VScrollBar 的其他属性也可以通过代码来设置，下述示例代码演示了如何通过代码创建的VScrollBar ，有兴趣的读者可以自己通过代码设置VScrollBar ，创建出符合自己需要的滚动条。
 
 **示例代码：**
 
@@ -87,54 +93,100 @@
 package
 {
 	import laya.display.Stage;
+	import laya.display.Text;
+	import laya.ui.HScrollBar;
+	import laya.ui.ScrollBar;
 	import laya.ui.VScrollBar;
 	import laya.utils.Handler;
 	import laya.webgl.WebGL;
 
 	public class UI_ScrollBar
 	{
+		/***垂直滚动条资源**/
+		private var skins:Array=["../../../../res/ui/vscroll.png", 
+								"../../../../res/ui/vscroll$bar.png", 
+								"../../../../res/ui/vscroll$down.png",
+								"../../../../res/ui/vscroll$up.png"];
+		/***提示信息文本框**/
+		private var promptText:Text;		
+		/****垂直滚动条****/
+		private var vScrollBar:VScrollBar;
+		
+		
 		public function UI_ScrollBar()
 		{
 			// 不支持WebGL时自动切换至Canvas
-			Laya.init(550, 400, WebGL);
-
+			Laya.init(800, 600, WebGL);
+			//画布垂直居中对齐
 			Laya.stage.alignV = Stage.ALIGN_MIDDLE;
+			//画布水平居中对齐
 			Laya.stage.alignH = Stage.ALIGN_CENTER;
-
+			//等比缩放
 			Laya.stage.scaleMode = Stage.SCALE_SHOWALL;
+			//背景颜色
 			Laya.stage.bgColor = "#232628";
 			
-			var skins:Array = [];
-			skins.push("res/ui/vscroll.png", "res/ui/vscroll$bar.png", "res/ui/vscroll$down.png", "res/ui/vscroll$up.png");
-			Laya.loader.load(skins, Handler.create(this, placeVScroller));
-		}
-		
-		private function placeVScroller():void 
-		{
-			var vs:VScrollBar = new VScrollBar();
-			vs.skin = "res/ui/vscroll.png";
-			vs.height = 300;
-			vs.pos(400, 50);
-			
-			vs.min = 0;
-			vs.max = 100;
-			
-			vs.changeHandler = new Handler(this, onChange);
-			Laya.stage.addChild(vs);
+			//加载资源
+			Laya.loader.load(skins, Handler.create(this, onSkinLoadComplete));
 		}
 
+		/***加载资源完成***/
+		private function onSkinLoadComplete(e:*=null):void
+		{
+			//创建垂直滚动条
+			createVScroller();
+		}
+		
+		/***创建垂直滚动条***/
+		private function createVScroller():void 
+		{
+			//实例化水平滚动条
+			vScrollBar= new VScrollBar();
+			//加载皮肤资源（其他资源根据规范命名后，会自动加载）
+			vScrollBar.skin = "../../../../res/ui/vscroll.png";
+			//设置高度
+			vScrollBar.height = 200;
+			//设置位置
+			vScrollBar.pos(400, 200);
+			//最低滚动位置数字
+			vScrollBar.min = 0;
+			//最高滚动位置数字
+			vScrollBar.max = 100;
+			//滚动变化事件回调
+			vScrollBar.changeHandler = new Handler(this, onChange);
+			//加载到舞台
+			Laya.stage.addChild(vScrollBar);
+			
+			//创建提示信息
+			createPromptText(vScrollBar)
+		}
+
+		/***创建提示信息***/
+		private function createPromptText(scrollBar:ScrollBar):void
+		{
+			//实例化提示信息
+			promptText=new Text();
+			//提示框字体
+			promptText.font="黑体";
+			//提示框字体大小
+			promptText.fontSize=26;
+			//提示框字体颜色
+			promptText.color="#FFFFFF";
+			//提示框初始文本
+			promptText.text="您的选择是： ";
+			//加载到舞台
+			Laya.stage.addChild(promptText);
+			//设置提示框位置
+			promptText.pos(scrollBar.x-130,scrollBar.y-60);
+			
+		}
+		
+		/***滚动条位置变化回调***/
 		private function onChange(value:Number):void 
 		{
-			trace("滚动条的位置： value=" + value);
+			promptText.text= "滚动条的位置： value=" + value;
 		}
 	}
 }
 ```
 
-**运行结果:**
-​	![5](gif/3.gif)<br/>
-​	(图11)通过代码创建VScrollBar 
-
-​	VScrollBar 的其他属性也可以通过代码来设置，上述示例演示了如何通过代码创建的VScrollBar ，
-
-有兴趣的读者可以自己通过代码设置VScrollBar ，创建出符合自己需要的滚动条。

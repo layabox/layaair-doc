@@ -54,7 +54,15 @@
 
 ## 二、通过代码创建Label组件
 
- 	在我们进行书写代码的时候，免不了通过代码控制UI，在代码中导入`laya.ui.Label`的包，创建UI Label,并通过代码设定Label相关的属性。
+ 	在我们进行书写代码的时候，免不了通过代码控制UI，创建`UI_Label`类，在代码中导入`laya.ui.Label`的包，并通过代码设定Label相关的属性。
+
+**运行示例效果:**
+​	![5](img/4.png)<br/>
+​	(图5)通过代码创建Label
+
+​	Label的其他属性也可以通过代码来设置，下述示例代码演示了如何通过代码创建不同皮肤（样式）的Label，有兴趣的读者可以自己通过代码设置Label，创建出符合自己需要的文字效果。
+
+​	更多的文字效果可以去查看2D基础篇中的文本部分。
 
 **示例代码：**
 
@@ -71,18 +79,23 @@ package
 		{
 			// 不支持WebGL时自动切换至Canvas
 			Laya.init(800, 600, WebGL);
-
+			//画布垂直居中对齐
 			Laya.stage.alignV = Stage.ALIGN_MIDDLE;
+			//画布水平居中对齐
 			Laya.stage.alignH = Stage.ALIGN_CENTER;
-
+			//等比缩放
 			Laya.stage.scaleMode = Stage.SCALE_SHOWALL;
+			//背景颜色
 			Laya.stage.bgColor = "#232628";
 
-			setup();			
+			//创建多个label文本
+			createMoreLabel();			
 		}
 
-		private function setup():void
+		/***创建多个label文本***/
+		private function createMoreLabel():void
 		{
+			//创建各种文本效果并设置位置
 			createLabel("#FFFFFF", null).pos(30, 50);
 			createLabel("#00FFFF", null).pos(290, 50);
 			createLabel("#FFFF00", "#FFFFFF").pos(30, 100);
@@ -91,22 +104,33 @@ package
 			createLabel("#0080FF", "#00FFFF").pos(290, 150);
 		}
 		
+		/**
+		 * 创建Label文本
+		 * @param color 	         文字颜色
+		 * @param strokeColor  文字描边颜色
+		 */		
 		private function createLabel(color:String, strokeColor:String):Label
 		{
-			const STROKE_WIDTH:int = 4;
-			
+			//实例化label文本
 			var label:Label = new Label();
+			//设置文本字体
 			label.font = "Microsoft YaHei";
+			//设置文本内容
 			label.text = "SAMPLE DEMO";
+			//设置文本字体大小
 			label.fontSize = 30;
+			//设置文本字体颜色
 			label.color = color;
 			
+			//如果有描颜色参数
 			if (strokeColor)
 			{
-				label.stroke = STROKE_WIDTH;
+				//文本描边宽度为4
+				label.stroke = 4;
+				//设置文本描边颜色
 				label.strokeColor = strokeColor;
 			}
-			
+			//加载到舞台
 			Laya.stage.addChild(label);
 			
 			return label;
@@ -115,14 +139,6 @@ package
 }
 ```
 
-**运行结果:**
-​	![5](img/4.png)<br/>
-​	(图5)通过代码创建Label
 
-​	Label的其他属性也可以通过代码来设置，上述示例演示了如何通过代码创建不同皮肤（样式）的Label，
-
-有兴趣的读者可以自己通过代码设置Label，创建出符合自己需要的文字效果。
-
-​	更多的文字效果可以去查看2D基础篇中的文本部分。
 
  	
