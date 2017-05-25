@@ -652,17 +652,17 @@
             "name_2_data": [
               {
                 "name_3_name": "图文混排聊天室之WebSocket服务器",
-                "name_3_url": "Chinese/LayaAir_AS3/2D/examples/LayaAirIDE/List_display_add_del/",
+                "name_3_url": "Chinese/LayaAir_AS3/2D/examples/chat/1/",
                 "name_3_file": "readme.md"
               },
               {
                 "name_3_name": "图文混排聊天室之客户端（上）",
-                "name_3_url": "Chinese/LayaAir_AS3/2D/examples/LayaAirIDE/List_display_add_del/",
+                "name_3_url": "Chinese/LayaAir_AS3/2D/examples/chat/2/",
                 "name_3_file": "readme.md"
               },
               {
                 "name_3_name": "图文混排聊天室之客户端（下）",
-                "name_3_url": "Chinese/LayaAir_AS3/2D/examples/LayaAirIDE/List_display_add_del/",
+                "name_3_url": "Chinese/LayaAir_AS3/2D/examples/chat/3/",
                 "name_3_file": "readme.md"
               }
             ]
