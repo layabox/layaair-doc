@@ -215,7 +215,7 @@
               },
               {
                 "name_3_name": "缓动动画",
-                "name_3_url": "Chinese/LayaAir_AS3/2D/beginners/animation/Easing/",
+                "name_3_url": "Chinese/LayaAir_AS3/2D/beginners/animation/Tween/",
                 "name_3_file": "readme.md"
               },
               {
@@ -962,7 +962,7 @@
               },
               {
                 "name_3_name": "缓动动画",
-                "name_3_url": "Chinese/LayaAir_TS/2D/beginners/animation/Easing/",
+                "name_3_url": "Chinese/LayaAir_TS/2D/beginners/animation/Tween/",
                 "name_3_file": "readme.md"
               },
               {
@@ -1695,7 +1695,7 @@
               },
               {
                 "name_3_name": "缓动动画",
-                "name_3_url": "Chinese/LayaAir_JS/2D/beginners/animation/Easing/",
+                "name_3_url": "Chinese/LayaAir_JS/2D/beginners/animation/Tween/",
                 "name_3_file": "readme.md"
               },
               {
