@@ -251,6 +251,21 @@
             ]
           },
           {
+            "name_2_name": "数据与通信",
+            "name_2_data": [
+              {
+                "name_3_name": "HttpRequest详解",
+                "name_3_url": "Chinese/LayaAir_AS3/2D/beginners/Data_Communication/HttpRequest/",
+                "name_3_file": "readme.md"
+              },
+              {
+                "name_3_name": "WebSocket发送与接收数据",
+                "name_3_url": "Chinese/LayaAir_AS3/2D/beginners/Data_Communication/WebSocket/",
+                "name_3_file": "readme.md"
+              }
+            ]
+          },
+          {
             "name_2_name": "硬件设备相关",
             "name_2_data": [
               {
@@ -538,6 +553,21 @@
               {
                 "name_3_name": "LayaAir Debug调试工具",
                 "name_3_url": "Chinese/LayaAir_AS3/2D/advanced/debug/DebugTool/",
+                "name_3_file": "readme.md"
+              }
+            ]
+          },
+          {
+            "name_2_name": "游戏加载策略",
+            "name_2_data": [
+              {
+                "name_3_name": "二进制图片",
+                "name_3_url": "Chinese/LayaAir_AS3/2D/advanced/loadStrategy/binary_Image/",
+                "name_3_file": "readme.md"
+              },
+              {
+                "name_3_name": "多线程worker",
+                "name_3_url": "Chinese/LayaAir_AS3/2D/advanced/loadStrategy/worker/",
                 "name_3_file": "readme.md"
               }
             ]
