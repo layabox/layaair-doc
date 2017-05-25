@@ -262,6 +262,11 @@
                 "name_3_name": "WebSocket发送与接收数据",
                 "name_3_url": "Chinese/LayaAir_AS3/2D/beginners/Data_Communication/WebSocket/",
                 "name_3_file": "readme.md"
+              },
+              {
+                "name_3_name": "Byte二进制读写",
+                "name_3_url": "Chinese/LayaAir_AS3/2D/beginners/Data_Communication/Byte/",
+                "name_3_file": "readme.md"
               }
             ]
           },
@@ -569,6 +574,11 @@
                 "name_3_name": "多线程worker",
                 "name_3_url": "Chinese/LayaAir_AS3/2D/advanced/loadStrategy/worker/",
                 "name_3_file": "readme.md"
+              },
+              {
+                "name_3_name": "资源版本管理",
+                "name_3_url": "Chinese/LayaAir_AS3/2D/advanced/loadStrategy/worker/",
+                "name_3_file": "readme.md"
               }
             ]
           },
@@ -626,6 +636,16 @@
             "name_2_name": "扩展模块",
             "name_2_data": [
               {
+                "name_3_name": "LayaAir和原生DOM交互",
+                "name_3_url": "Chinese/LayaAir_AS3/2D/advanced/extension_modules/DOM/",
+                "name_3_file": "readme.md"
+              },
+              {
+                "name_3_name": "使用LayaCMD",
+                "name_3_url": "Chinese/LayaAir_AS3/2D/advanced/extension_modules/LayaCMD/",
+                "name_3_file": "readme.md"
+              },
+              {
                 "name_3_name": "AS3与JS混合编码",
                 "name_3_url": "Chinese/LayaAir_AS3/2D/advanced/extension_modules/AS_JS_mixed_programming/",
                 "name_3_file": "readme.md"
@@ -634,7 +654,7 @@
           }
         ]
       },
-      {
+      { 
         "nav_1_name": "实例开发篇（AS3）",
         "nav_1_data": [
           {
