@@ -36,7 +36,7 @@
 
 　　支持2D\3D\VR产品开发；
 
-　　支持使用Action3\Type\Java三种语言开发；
+　　支持使用ActionScript3\TypeScript\JavaScript三种语言开发；
 
 　　一次开发可同时发布：手游APP、HTML5、Flash页游多端版本。
 
