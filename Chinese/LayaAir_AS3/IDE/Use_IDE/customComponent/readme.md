@@ -121,7 +121,7 @@ package component
 			//添加鼠标抬起事件侦听。抬起时还原按钮。
 			this.on(Event.MOUSE_UP,this, scaleBig);
 			//添加鼠标离开事件侦听。离开时还原按钮。
-			this.on(Event.MOUSE_UP,this, scaleBig);
+			this.on(Event.MOUSE_OUT,this, scaleBig);
 			
 		}
 		
