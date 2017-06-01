@@ -1,36 +1,38 @@
-# LayaAir DebugPanel工具
+# DebugPanel工具
 
 ### 1、启用DebugPanel调试面板
 
-DebugPanel调试面板是基于Div的调试窗口，启动调试面板的`DebugPanel.init()`方法位于`laya.debug.DebugPanel`类中，可以在初始化舞台方法`Laya.init()`后的任意代码中增加使用，例如下面代码所示：
+DebugPanel调试面板是基于Div的调试窗口，启动调试面板的`DebugPanel.init()`方法位于`laya.debugtool.js`文件中，在index.html中引入该js文件后可以在初始化舞台方法`Laya.init()`后的任意代码中增加使用，index.html引入js文件代码如下所示：
 
-入口类Main.as
-
-```java
-package
-{
-	import laya.debug.DebugPanel;
-	import laya.display.Sprite;
-	
-	public class Main
-	{
-		public function Main()
-		{
-			//初始化舞台
-			Laya.init(1334,750);    
-			//调用DebugPanel调试面板
-			DebugPanel.init();
-			//设置舞台背景色
-			Laya.stage.bgColor  = "#ffffff";
-			
-			var Img:Sprite = new Sprite(); 			 
-			//添加到舞台
-			Laya.stage.addChild(Img);   
-			Img.loadImage("res/img/monkey1.png",200); 	
-		}
-	}
-}
+```javascript
+<script type="text/javascript" src="libs/laya.debugtool.js"></script>
 ```
+
+使用方式例如下面代码所示：
+
+（注意：在调用Laya.DebugPanel.init()时DebugPanel下会出现红色的波浪线，这个提示可以忽略。是可以正常运行的）
+
+```typescript
+// 程序入口
+class GameMain{
+    constructor()
+    {
+        //初始化舞台
+        Laya.init(1334,750);
+        //调用DebugPanel调试面板
+        Laya.DebugPanel.init();
+        //设置舞台背景色
+        Laya.stage.bgColor = "#ffffff";
+        var Img:Laya.Sprite = new Laya.Sprite();
+        //添加到舞台
+        Laya.stage.addChild(Img);
+        Img.loadImage("res/img/monkey1.png",200);
+    }
+}
+new GameMain();
+```
+
+
 
 运行效果如图1所示
 
