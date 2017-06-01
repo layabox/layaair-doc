@@ -15,7 +15,7 @@ LayaAir DebugTool调试面板是基于Div的调试窗口，无需下载安装任
 ```java
 //初始化舞台
 Laya.init(1334, 750);
-//调用DebugPanel调试面板
+//调用DebugTool调试面板
 Laya.DebugTool.init();
 //设置舞台背景色
 Laya.stage.bgColor = "#ffffff";

@@ -19,7 +19,7 @@ class GameMain{
     {
         //初始化舞台
         Laya.init(1334,750);
-        //调用DebugPanel调试面板
+        //调用DebugTool调试面板
         Laya.DebugTool.init();
         //设置舞台背景色
         Laya.stage.bgColor = "#ffffff";
