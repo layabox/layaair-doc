@@ -1,8 +1,10 @@
-# DebugPanel工具
+# LayaAir DebugPanel工具
 
 ### 1、启用DebugPanel调试面板
 
 DebugPanel调试面板是基于Div的调试窗口，启动调试面板的`DebugPanel.init()`方法位于`laya.debug.DebugPanel`类中，可以在初始化舞台方法`Laya.init()`后的任意代码中增加使用，例如下面代码所示：
+
+入口类Main.as
 
 ```java
 package
