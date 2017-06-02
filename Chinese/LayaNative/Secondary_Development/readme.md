@@ -79,17 +79,29 @@ class PlatformObj
 
 ####     2.1.1 JavaScript层:
 
+对Android平台的调用方式: 
 ```javascript
 // a、创建Test类
-var Test=Laya.PlatformClass.createClass("com.layabox.test.Test"); // 这个名字要与下面声明的Java/OC的类名匹配.
-// (注: var Test=Laya.PlatformClass.createClass("Test"); // iOS 不用包名)
+var Test=Laya.PlatformClass.createClass("com.layabox.test.Test"); // 这个名字要与下面声明的Java的类名匹配.
 var a=false;
 // 注册手指按下事件
 document.addEventListener("touchstart",function(e){
   a=!a;// 实现奇数次打开 偶数次关闭
 // b、调用静态函数openlight 参数为a
   Test.call("openlight",a);
- // (注:Test.callWithBack(function(n){},"openlight:",a); iOS 只能用异步方式，注意函数签名为 "openlight:")
+});
+```
+
+对iOS平台的调用方式:
+```javascript
+// a、创建Test类
+var Test=Laya.PlatformClass.createClass("Test"); // 这个名字要与下面声明的OC的类名匹配 iOS 不用包名)
+var a=false;
+// 注册手指按下事件
+document.addEventListener("touchstart",function(e){
+  a=!a;// 实现奇数次打开 偶数次关闭
+// b、调用静态函数openlight 参数为a
+Test.callWithBack(function(n){},"openlight:",a); iOS 只能用异步方式，注意函数签名为 "openlight:")
 });
 ```
 
