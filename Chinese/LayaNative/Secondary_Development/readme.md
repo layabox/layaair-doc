@@ -95,13 +95,13 @@ document.addEventListener("touchstart",function(e){
 对iOS平台的调用方式:
 ```javascript
 // a、创建Test类
-var Test=Laya.PlatformClass.createClass("Test"); // 这个名字要与下面声明的OC的类名匹配 iOS 不用包名)
+var Test=Laya.PlatformClass.createClass("Test"); // 这个名字要与下面声明的OC的类名匹配 iOS不用包名
 var a=false;
 // 注册手指按下事件
 document.addEventListener("touchstart",function(e){
   a=!a;// 实现奇数次打开 偶数次关闭
 // b、调用静态函数openlight 参数为a
-Test.callWithBack(function(n){},"openlight:",a); iOS 只能用异步方式，注意函数签名为 "openlight:")
+Test.call("openlight:",a); // iOS注意函数签名为 "openlight:"
 });
 ```
 
@@ -183,14 +183,16 @@ static AVCaptureSession * session = nil;
         [session stopRunning];
     }
     // 静态函数回调通知JS层
-    [[conchRuntime GetIOSConchRuntime] callbackToJSWithClass:self.class methodName:@"openlight:" ret:nil];
-    //[[conchRuntime GetIOSConchRuntime] callbackToJSWithClassName:NSStringFromClass(self.class) methodName:@"openlight:" ret:nil];
+    //[[conchRuntime GetIOSConchRuntime] callbackToJSWithClass:self.class methodName:@"openlight:" ret:@"test"];
+    //[[conchRuntime GetIOSConchRuntime] callbackToJSWithClassName:NSStringFromClass(self.class) methodName:@"openlight:" ret:@"test"];
 }
 @end
 ```
 如果运行崩溃在Info.plist中加入Privacy - Camera Usage Description  
 ![www](img/1.png)  
-注意：源文件后缀要改成.mm 。调用静态函数注意脚本的调用写法。OC的方法是静态的类方法要用+。回调要用 callbackToJSWithClass或者callbackToJSWithClassName。
+注意：源文件后缀要改成.mm 。调用静态函数注意脚本的调用写法。OC的方法是静态的类方法要用+。
+如果OC需要返回参数给脚本或者通知脚本，需要调用用 callbackToJSWithClass或者callbackToJSWithClassName
+脚本要改为 Test.callWithBack(function(msg){alert(msg);},"openlight:",a);
 
 ####      通过上述步骤就实现了 奇数下点击一下打开闪光灯, 偶数下点击关闭闪光灯 的功能.
 
