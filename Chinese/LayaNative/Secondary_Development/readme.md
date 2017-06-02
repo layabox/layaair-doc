@@ -191,8 +191,8 @@ static AVCaptureSession * session = nil;
 如果运行崩溃在Info.plist中加入Privacy - Camera Usage Description  
 ![www](img/1.png)  
 注意：源文件后缀要改成.mm 。调用静态函数注意脚本的调用写法。OC的方法是静态的类方法要用+。
-如果OC需要返回参数给脚本或者通知脚本，需要调用用 callbackToJSWithClass或者callbackToJSWithClassName
-脚本要改为 Test.callWithBack(function(msg){alert(msg);},"openlight:",a);
+如果OC需要返回参数给脚本或者通知脚本，需要调用callbackToJSWithClass或者callbackToJSWithClassName
+脚本要改为Test.callWithBack(function(msg){alert(msg);},"openlight:",a);
 
 ####      通过上述步骤就实现了 奇数下点击一下打开闪光灯, 偶数下点击关闭闪光灯 的功能.
 
