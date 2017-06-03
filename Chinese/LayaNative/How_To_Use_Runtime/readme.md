@@ -4,15 +4,25 @@
 
 打开LayaAirIDE，在“工具”菜单里点击"运行器下载"，会弹出二维码下载地址。
 
-​	![图片](img/1.png)<br/>
+​	![图片](img/1.png)
 ​	图(1)
 
-​	![图片](img/2.png)<br/>
+​	![图片](img/2.png)
 ​	图(2)
+**Tips：LayaPlayer不是浏览器，输入地址的请输入全路径，即使默认启动的是index.html，也要输入/index.html。**
+* http://testgame.layabox.com/index.html      正确  
+* http://192.168.0.100:8899/index.html        正确  
+* http://testgame.layabox.com/                错误    
+* http://testgame.layabox.com                 错误  
+* http://192.168.0.100:8899/                  错误  
+* http://192.168.0.100:8899                   错误  
+
 
 #### 1.Android下载和安装
 
-　　直接用android手机进行扫码，点击apk进行安装即可。
+直接用android手机进行扫码，点击apk进行安装即可。
+
+**Tips：如果使用微信扫码，由于微信的安全设置，扫码后需要复制链接地址到手机浏览器中进行下载。**    
 
 #### 2.iOS下载和安装
 

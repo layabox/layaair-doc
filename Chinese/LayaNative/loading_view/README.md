@@ -82,15 +82,22 @@ IOS:resource/logo/logo.png
 *2、替换成开发者自己的logo.png，不支持动画播放*  
 *3、替换掉开发者自己的logo.png，依然可以通过loadingView.loading设置加载进度*
 
-## 3.制作酷炫进度条
+## 4.去掉所有文字显示
+
+LayaPlayer-0.9.6以后的版本，可以去掉所有文字的显示，包括tips和加载百分比，修改config.js，把showTextInfo设置为false即可。
+```javascript
+loadingView.showTextInfo=true;//改成false
+```
+
+## 5.制作酷炫进度条
 
 在实际项目中，如果开发者想要做出自己喜欢的酷炫的进度条，LayaPlayer现有的方案是不够满足的，建议开发者快速加载LayaAir-JS引擎和必备的图片，通过LayaAir自己实现酷炫的进度条。
 
-## 4.白名单功能
+## 6.白名单功能
 
 后续LayaBox会有白名单机制，如果开发者购买了授权或者和LayaBox联合运营产品，便可以去掉LayaBox的logo，如果没有则需要强制增加LayaBox的logo。引擎内部会有检测机制，随机检测，如果检测不通过则无法进入游戏。
 
-## 5.打包app（测试版）
+## 7.打包app（测试版）
 
 目前在LayaAir-IDE支持打包APP-测试版的功能（**注意：建议开发者还是使用构建工程的方式，学习一些IOS和android的基本知识**），如果想要替换config.js或者替换logo，如下图2、图3所示：  
 
