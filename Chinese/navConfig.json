@@ -789,6 +789,11 @@
                 "name_3_name": "关于网络状态监听",
                 "name_3_url": "Chinese/LayaNative/network/",
                 "name_3_file": "README.md"
+              },
+			  {
+                "name_3_name": "关于iOS-IPV6",
+                "name_3_url": "Chinese/LayaNative/ipv6/",
+                "name_3_file": "README.md"
               },              
               {
                 "name_3_name": "其他",
@@ -1527,7 +1532,12 @@
                 "name_3_name": "关于网络状态监听",
                 "name_3_url": "Chinese/LayaNative/network/",
                 "name_3_file": "README.md"
-              },              
+              },
+			  {
+                "name_3_name": "关于iOS-IPV6",
+                "name_3_url": "Chinese/LayaNative/ipv6/",
+                "name_3_file": "README.md"
+              },               
               {
                 "name_3_name": "其他",
                 "name_3_url": "Chinese/LayaNative/Other_settings/",
@@ -2261,6 +2271,11 @@
                 "name_3_url": "Chinese/LayaNative/network/",
                 "name_3_file": "README.md"
               },              
+			  {
+                "name_3_name": "关于iOS-IPV6",
+                "name_3_url": "Chinese/LayaNative/ipv6/",
+                "name_3_file": "README.md"
+              }, 
               {
                 "name_3_name": "其他",
                 "name_3_url": "Chinese/LayaNative/Other_settings/",
