@@ -229,11 +229,6 @@
                 "name_3_file": "readme.md"
               },
               {
-                "name_3_name": "粒子动画",
-                "name_3_url": "Chinese/LayaAir_AS3/2D/beginners/animation/particle/",
-                "name_3_file": "readme.md"
-              },
-              {
                 "name_3_name": "SWF动画使用",
                 "name_3_url": "Chinese/LayaAir_AS3/2D/beginners/animation/swf/",
                 "name_3_file": "readme.md"
@@ -245,7 +240,7 @@
               },
               {
                 "name_3_name": "DragonBone动画使用",
-                "name_3_url": "Chinese/LayaAir_AS3/2D/beginners/animation/dragonBone/",
+                "name_3_url": "Chinese/LayaAir_AS3/2D/beginners/animation/DragonBone/",
                 "name_3_file": "readme.md"
               }
             ]
@@ -1086,11 +1081,6 @@
                 "name_3_file": "readme.md"
               },
               {
-                "name_3_name": "粒子动画",
-                "name_3_url": "Chinese/LayaAir_TS/2D/beginners/animation/particle/",
-                "name_3_file": "readme.md"
-              },
-              {
                 "name_3_name": "SWF动画使用",
                 "name_3_url": "Chinese/LayaAir_TS/2D/beginners/animation/swf/",
                 "name_3_file": "readme.md"
@@ -1102,7 +1092,7 @@
               },
               {
                 "name_3_name": "DragonBone动画使用",
-                "name_3_url": "Chinese/LayaAir_TS/2D/beginners/animation/dragonBone/",
+                "name_3_url": "Chinese/LayaAir_TS/2D/beginners/animation/DragonBone/",
                 "name_3_file": "readme.md"
               }
             ]
@@ -1814,11 +1804,6 @@
                 "name_3_file": "readme.md"
               },
               {
-                "name_3_name": "粒子动画",
-                "name_3_url": "Chinese/LayaAir_JS/2D/beginners/animation/particle/",
-                "name_3_file": "readme.md"
-              },
-              {
                 "name_3_name": "SWF动画使用",
                 "name_3_url": "Chinese/LayaAir_JS/2D/beginners/animation/swf/",
                 "name_3_file": "readme.md"
@@ -1830,7 +1815,7 @@
               },
               {
                 "name_3_name": "DragonBone动画使用",
-                "name_3_url": "Chinese/LayaAir_JS/2D/beginners/animation/dragonBone/",
+                "name_3_url": "Chinese/LayaAir_JS/2D/beginners/animation/DragonBone/",
                 "name_3_file": "readme.md"
               }
             ]
