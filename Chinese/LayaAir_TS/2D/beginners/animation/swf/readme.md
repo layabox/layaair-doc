@@ -94,7 +94,7 @@ module LayaDEMO {
 			//创建一个 MovieClip 实例
 			var mc:MovieClip = new MovieClip();
 			
-			//加载swf资源
+			//加载swf资源,load方法的第二个参数不设置为散图模式加载，设置为true是采用图集方式加载。
 			mc.load("res/swf/monkey.swf",true);
 			
 			//添加到舞台
