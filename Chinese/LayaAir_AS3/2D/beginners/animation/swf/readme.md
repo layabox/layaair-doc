@@ -27,15 +27,17 @@
 
 （动图2）
 
-点击`开始转换`， 如动图3所示。默认会在swf的同级目录生成一个`output`目录，转换成功后会在output目录内生成一个新的swf和一个图片文件夹。
+点击`开始转换`， 如动图3所示。默认会在swf的同级目录生成一个`output`目录，转换成功后会在output目录内生成一个新的swf和图集文件，以及一个图片文件夹（*勾选打包图集的选项后，图片文件夹不用管，非图集模式才会用*）。
 
-![动图2](img/3.gif)  
+![动图2](img/3.gif)   
+
+
 
 （动图3）
 
 **Tips**：
 
-- 如果是复杂的swf文件会生成多张位图，因此建议在`开始转换`前勾选 `是否打包为图集` 。
+- 如果是复杂的swf文件会生成多张位图，因此建议在`开始转换`前确认勾选 `是否打包为图集` 。
 
 - 默认生成在output目录，开发者可以在输入路径栏，点击`更改`改变输出目录。
 
@@ -47,13 +49,32 @@
 
 ### 3、使用转换后的swf动画
 
-在使用swf动画之前，我们先将转换后的`.swf`格式文件与生成的`文件同名目录`复制到项目的资源目录（*本例为项目根目录下的res/swf/目录*），如图4所示。
+#### 3.1 复制转换后的swf资源到项目
 
-![图4](img/4.png)
+在使用swf动画之前，我们先将转换工具生成的`.swf`格式文件和`图集文件`复制到项目的资源目录（*本例为项目根目录下的res/swf/目录*），如动图4所示。
 
-(图4)
+![图4](img/4.gif)  
 
-LayaAir引擎中使用转换后的swf动画，需要使用**MovieClip类**，如下面代码所示：
+(动图4)
+
+**Tips**：
+
+- 动图4中的文件夹，按本例中的操作则不用复制，如果没有采用图集方式，会只生成一个swf和一个图片资源文件夹，这时才需要将文件夹复制过去。
+- 需要注意的是，LayaAirIDE里不支持文件夹拖动复制，如果复制文件夹，需要打开系统的资源管理器，在系统内复制粘贴。
+
+
+
+#### 3.2 了解播放swf动画的API： MovieClip
+
+LayaAir引擎中使用转换后的swf动画，需要使用**MovieClip类**，API说明如图5所示，API链接：[https://layaair.ldc.layabox.com/api/index.html?category=Core&class=laya.ani.swf.MovieClip](https://layaair.ldc.layabox.com/api/index.html?category=Core&class=laya.ani.swf.MovieClip)
+
+![图5](img/5.png) 
+
+（图5）
+
+#### 3.3 用代码实现swf动画的播放
+
+播放swf动画的示例，如下面代码所示：
 
 入口类MovieClipSample.as
 
@@ -67,12 +88,18 @@ package
 		
 		public function MovieClipSample() 
 		{
+			//初始化舞台
 			Laya.init(1334, 750);
-			var movieClip:MovieClip;
-			movieClip = new MovieClip();
-			Laya.stage.addChild(movieClip);
-			movieClip.url = "res/swf/monkey.swf";
-			movieClip.pos(100, 100);
+			
+			//创建一个 MovieClip 实例
+			var mc:MovieClip = new MovieClip();
+			
+			//添加到舞台
+			Laya.stage.addChild(mc);
+			
+			//加载swf资源,load方法的第二个参数不设置为散图模式加载，设置为true是采用图集方式加载。
+			mc.load("res/swf/monkey.swf",true);
+
 		}
 	}
 }
