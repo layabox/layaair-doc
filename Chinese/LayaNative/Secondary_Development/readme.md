@@ -243,7 +243,7 @@ testMinus.callWithBack(function(n){alert("2-3="+n);},"operatorWith:and:",2,3);
 
 ```javascript
 package com.layabox.test;
-import laya.game.browser.ExportJavaFunction;
+import layaair.game.browser.ExportJavaFunction;
 public class Test {
     public String op;
     public Test(String op) {
