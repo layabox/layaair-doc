@@ -92,7 +92,7 @@ package
 			//"LayaBox"字符串总宽度
 			var w:int = 800;
 			
-			//文本创建时的起始x位置
+			//文本创建时的起始x位置(>>在此使用右移运算符，相当于/2 用>>效率更高)
 			var offsetX:int = Laya.stage.width - w >> 1;
 
 			//显示的字符串
@@ -261,7 +261,7 @@ package
 			//"LayaBox"字符串总宽度
 			var w:int = 800;
 			
-			//文本创建时的起始x位置
+			//文本创建时的起始x位置(>>在此使用右移运算符，相当于/2 用>>效率更高)
 			var offsetX:int = Laya.stage.width - w >> 1;
 
 			//显示的字符串
@@ -379,7 +379,7 @@ package
 			//"LayaBox"字符串总宽度
 			var w:int = 800;
 			
-			//文本创建时的起始x位置
+			//文本创建时的起始x位置(>>在此使用右移运算符，相当于/2 用>>效率更高)
 			var offsetX:int = Laya.stage.width - w >> 1;
 
 			//显示的字符串
