@@ -46,7 +46,9 @@ LayaAirIDE并非所有Spine版本都支持转换。支持的版本号在Spine转
 
 ### 2、将Spine动画转换为LayaAir引擎识别的格式
 
-第一步：在LayaAirIDE的`设计模式`中，依次点击菜单栏的 `工具` --> `Spine动画转换` ，如图4所示，即可打开`Spine格式转换`工具。
+#### 2.1 打开转换工具面板
+
+在LayaAirIDE的`设计模式`中，依次点击菜单栏的 `工具` --> `Spine动画转换` ，如图4所示，即可打开`Spine格式转换`工具。
 
 ![图4](img/4.png) 
 
@@ -60,53 +62,62 @@ LayaAirIDE并非所有Spine版本都支持转换。支持的版本号在Spine转
 (图5)
 
 
-Tips:
+
+
+#### 2.2 生成.sk后缀的骨骼动画文件
+
+打开`Spine格式转换`工具面板后，将spine导出的资源目录拖入到转换面板，或者点击浏览按钮选择spine导出的资源目录。然后点击`确定` ，即可在原资源目录下生成一个新的.sk后缀的骨骼动画文件。
+
+![图6](img/6.png) 
+
+(图6)
 
 
 
-第二步：在`Spine格式转换`工具面板中，将要转换的文件夹拖动到输入框中
+### 3、Spine动画的加载显示
 
-![blob.png](http://old.ldc.layabox.com/uploadfile/image/20170120/1484914674863783.png)
+#### 3.1 将转换后的spine动画资源复制到项目对应的目录。
 
-第三步：点击确定进行转换
+除了转换生成的.sk格式文件，.png后缀的图集资源也需要复制到项目的目录中，如图7所示。（*其它导出的文件则不用管，仅供转换工具使用。*）
 
-![blob.png](http://old.ldc.layabox.com/uploadfile/image/20170120/1484914709706312.png)
+![图7](img/7.png) 
 
-第四步：转换后生成的问题，播放时只需要.png .sk的文件就可以了
+(图7)
 
-![blob.png](http://old.ldc.layabox.com/uploadfile/image/20170120/1484914733930079.png)
+#### 3.2 spine动画播放示例
 
-### 二、Spine动画的应用
+下面的示例将用到`laya.ani.bone.Skeleton` 类，具体API说明可直接打开链接查看：[https://layaair.ldc.layabox.com/api/?category=Bone&class=laya.ani.bone.Skeleton](https://layaair.ldc.layabox.com/api/?category=Bone&class=laya.ani.bone.Skeleton)
 
-使用Skeleton类进行Spine动画文件的播放
-
-代码示例：
+创建文档类SpineDemo.as，代码编写如下：
 
 ```java
-package  
+package
 {
-    import laya.ani.bone.Skeleton;
-    import laya.webgl.WebGL;
+	import laya.ani.bone.Skeleton;
 
-    public class SpineSample 
-    {
-         
-        public function SpineSample() 
-        {
-            WebGL.enable();
-            Laya.init(1000, 900);
-            test();
-        }
-        private function test():void
-        {
-            var skeleton:Skeleton;
-            skeleton = new Skeleton();
-            skeleton.url = "res/spine/vine/vine.sk";
-            skeleton.pos(300, 300);
-            Laya.stage.addChild(skeleton);
-        }
-         
-    }
- 
+	public class SpineDemo
+	{
+		public function SpineDemo()
+		{
+			//初始化舞台
+			Laya.init(1334, 750);
+			
+			//创建一个Skeleton对象
+			var skeleton:Skeleton = new Skeleton();
+			//添加到舞台
+			Laya.stage.addChild(skeleton);
+			
+			skeleton.pos(600,700);
+			
+			//通过加载直接创建动画
+			skeleton.load("res/spine/spineboy/spineboy.sk");
+		}
+	}
 }
 ```
+运行效果如动图8所示
+
+![动图8](img/8.gif) 
+
+(动图8)
+
