@@ -11,9 +11,9 @@ laya.device.motion中共有四个类供开发者使用，分别为加速信息Ac
 - `absolute` —— 如果设备提供的方位是基于设备坐标系统和地球坐标系统间的差距，则是`true`；如果设备无法检测到地球坐标系统，`absolute`为`false`。
 - `rotationInfo` —— RotationInfo类型，包含`alpha`、`beta`、`gamma`三个值，将在下面详细讨论。
 
-​	`alpha`、`beta`和`gamma`属性必须指示设备的方向，其表现形式为从固定在地球上的坐标系到固定在设备上的坐标系的转换。坐标系必须按照下面的描述调整。
+ ​`alpha`、`beta`和`gamma`属性必须指示设备的方向，其表现形式为从固定在地球上的坐标系到固定在设备上的坐标系的转换。坐标系必须按照下面的描述调整。
 
-​	地球坐标系是一个位于用户位置的“东、北、上”系。其拥有3个轴，地面相切与1984世界测地系统的spheriod的用户所在位置。
+ ​地球坐标系是一个位于用户位置的“东、北、上”系。其拥有3个轴，地面相切与1984世界测地系统的spheriod的用户所在位置。
 
 - 东（X）在地面上，垂直于北轴，向东为正。
 
@@ -80,10 +80,10 @@ private function onDeviceorientation(absolute:Boolean, rotationInfo:RotationI
 
 ​	`change`事件的回调函数拥有一个以下参数：
 
-- `acceleration` —— `AccelerationInfo`类型。提供宿主设备相对于地球坐标系的加速信息，其表现形式为定义于19.2章的主坐标系，单位是$m/s^2$。
-- `accelerationIncludingGravity` —— `AccelerationInfo` 类型。对于不能提供排除重力影响的加速数据的实现（例如缺少陀螺仪），作为替代，可以提供受重力影响的加速数据。这对于许多应用来说并不好用，但提供这些信息意味着提供了最大力度的支持。在此情况下，`accelerationIncludingGravity`属性提供宿主设备的加速信息，并加上一个加速度相等方向相反的反重力加速度。其表现形式为定义于19.2章的主坐标系。加速信息的单位是$m/s^2$。
-- `rotationRate` —— `RotationInfo`类型。属性提供宿主设备在空间中旋转的速率，其表现形式为定义于19.2章的角度的变化速率，单位必须是$deg/s$。
-- `interval` —— 从硬件获得数据的间隔，单位是毫秒
+- `acceleration` —— `AccelerationInfo`类型。提供宿主设备相对于地球坐标系的加速信息，其表现形式为定义于陀螺仪章节的主坐标系，单位是`m/s^2`。
+- `accelerationIncludingGravity` —— `AccelerationInfo` 类型。对于不能提供排除重力影响的加速数据的实现（例如缺少陀螺仪），作为替代，可以提供受重力影响的加速数据。这对于许多应用来说并不好用，但提供这些信息意味着提供了最大力度的支持。在此情况下，`accelerationIncludingGravity`属性提供宿主设备的加速信息，并加上一个加速度相等方向相反的反重力加速度。其表现形式为定义于陀螺仪章节的主坐标系。加速信息的单位是`m/s^2`。
+- `rotationRate` —— `RotationInfo`类型。属性提供宿主设备在空间中旋转的速率，其表现形式为定义于陀螺仪章节的的角度变化速率，单位必须是`deg/s`。
+- `interval` —— 从硬件获得数据的间隔，单位是毫秒。
 
 ### 2.1 获取设备物理方向运动信息
 
