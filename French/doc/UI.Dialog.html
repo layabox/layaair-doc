@@ -1,0 +1,6292 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1">
+    <title>Dialog - Documentation</title>
+
+    <script src="scripts/prettify/prettify.js"></script>
+    <script src="scripts/prettify/lang-css.js"></script>
+    <!--[if lt IE 9]>
+      <script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script>
+    <![endif]-->
+    <link type="text/css" rel="stylesheet" href="https://code.ionicframework.com/ionicons/2.0.1/css/ionicons.min.css">
+    <link type="text/css" rel="stylesheet" href="styles/prettify-tomorrow.css">
+    <link type="text/css" rel="stylesheet" href="styles/jsdoc-default.css">
+</head>
+<body>
+
+
+
+
+
+<div>
+
+
+<!--     
+    <h1 class="page-title">Dialog</h1>
+     -->
+
+    
+
+
+
+
+<section>
+
+<header>
+    
+        <h2>
+            <span class="ancestors"><a href="UI.html">UI</a>.</span>
+        
+        Dialog
+        </h2>
+        
+            <div class="class-description"><code>Dialog</code> Le composant est une boîte de dialogue, faites glisser la boîte de dialogue contextuelle, le modèle de la fonction de fenêtre. 
+Par UIConfig disposé contextuelle de fond de la transparence, des modèles de bord de fenêtre, cliquez sur fermer, etc. 
+Par réglage de la zOrder attribut hiérarchique, peut changer d'éjection 
+Par réglage de la manager.popupEffect et manager.closeEffect peut être disposé et la fermeture de l'effet d'éjection</div>
+        
+    
+</header>
+
+<article>
+    <div class="container-overview">
+    
+        
+<div class="section-method">
+
+    
+    <h2>Constructor</h2>
+    
+
+    <h4 class="name" id="Dialog"><span class="type-signature"></span>new Dialog<span class="signature">()</span><span class="type-signature"></span></h4>
+
+    
+
+
+
+
+
+
+
+<dl class="details">
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    <!-- 
+    <dt class="tag-source">Source:</dt>
+    <dd class="tag-source"><ul class="dummy"><li>
+        js, line 138
+    </li></ul></dd>
+     -->
+
+    
+
+    
+
+    
+</dl>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div class="section-examples">
+<h5>示例</h5>
+<div class="languageButtonGroup">
+    <button>ActionScript</button>
+    <button>JavaScript</button>
+    <button>TypeScript</button>
+</div>
+
+    <pre class="prettyprint"><code>Le code suivant, crée un &lt;code>Dialog&lt;/code> Des exemples. 
+&lt;listing version="3.0">
+package
+	*{
+	*import laya.ui.Dialog;
+	*import laya.utils.Handler;
+	*public class Dialog_Example
+	*{
+	*private var dialog:Dialog_Instance;
+	*public function Dialog_Example()
+	*{
+	*Laya.init(640, 800);// Le mode de réglage de largeur élevé, jeu de rendre la toile. 
+	*Laya.stage.bgColor = "#efefef";// Couleur de fond de la toile. 
+	*Laya.loader.load("resource/ui/btn_close.png", Handler.create(this, onLoadComplete));// La charge de ressources. 
+	*}
+	*private function onLoadComplete():void
+	*{
+	*dialog = new Dialog_Instance();// Créer un objet d'instance de la classe de Dialog_Instance. 
+	*dialog.dragArea = "0,0,150,50";// Ensemble  Dialog  Zone de glisser. 
+	*dialog.show();// Affiche la boîte de dialogue. 
+	*dialog.closeHandler = new Handler(this, onClose);// Ensemble  Dialog  Un processeur de fonction de fermeture. 
+	*}
+	*private function onClose(name:String):void
+	*{
+	*if (name == Dialog.CLOSE)
+	*{
+	*trace("通过点击 name 为" + name +"的组件，关闭了dialog。");
+	*}
+	*}
+	*}
+	*}
+	*import laya.ui.Button;
+	*import laya.ui.Dialog;
+	*import laya.ui.Image;
+	*class Dialog_Instance extends Dialog
+	*{
+	*function Dialog_Instance():void
+	*{
+	*var bg:Image = new Image("resource/ui/bg.png");
+	*bg.sizeGrid = "40,10,5,10";
+	*bg.width = 150;
+	*bg.height = 250;
+	*addChild(bg);
+	*var image:Image = new Image("resource/ui/image.png");
+	*addChild(image);
+	*var button:Button = new Button("resource/ui/btn_close.png");
+	*button.name = Dialog.CLOSE;// La valeur d'attribut button name ensemble. 
+	*button.x = 0;
+	*button.y = 0;
+	*addChild(button);
+	*}
+	*}
+	*&lt;/listing>
+&lt;listing version="3.0">
+Laya.init(640, 800);// Ensemble de jeu de la toile de largeur élevé, le mode de rendu 
+Laya.stage.bgColor = "#efefef";// Couleur de fond de la toile 
+var dialog;
+Laya.loader.load("resource/ui/btn_close.png", laya.utils.Handler.create(this, loadComplete));// La charge de ressources 
+(function (_super) {// Une nouvelle classe de Dialog_Instance héritée de la laya.ui.Dialog. 
+    function Dialog_Instance() {
+        Dialog_Instance.__super.call(this);// L'initialisation de la classe parent 
+        var bg = new laya.ui.Image("resource/ui/bg.png");// Créer une nouvelle instance de l'image de la classe BG. 
+        bg.sizeGrid = "10,40,10,5";// Les informations des paramètres de grille BG. 
+        bg.width = 150;// Ensemble BG de largeur. 
+        bg.height = 250;// Ensemble BG de hauteur. 
+        this.addChild(bg);// Le BG ajoutés à la liste d'affichage. 
+        var image = new laya.ui.Image("resource/ui/image.png");// Créer une image, par exemple, l'image de la classe. 
+        this.addChild(image);// L'image sera ajoutée à la liste d'affichage. 
+        var button = new laya.ui.Button("resource/ui/btn_close.png");// Une nouvelle classe de bouton BG, par exemple. 
+        button.name = laya.ui.Dialog.CLOSE;// La valeur d'attribut button name ensemble. 
+        button.x = 0;// La valeur de X pour définir les propriétés du bouton d'objet permettant de commander le bouton en position d'affichage de l'objet. 
+        button.y = 0;// La valeur de y définit un attribut button objet permettant de commander le bouton en position d'affichage de l'objet. 
+        this.addChild(button);// Le bouton Ajouter à la liste d'affichage. 
+    };
+    Laya.class(Dialog_Instance,"mypackage.dialogExample.Dialog_Instance",_super);// Enregistrement de la classe de Dialog_Instance. 
+})(laya.ui.Dialog);
+function loadComplete() {
+    console.log("资源加载完成！");
+    dialog = new mypackage.dialogExample.Dialog_Instance();// Créer un objet d'instance de la classe de Dialog_Instance. 
+    dialog.dragArea = "0,0,150,50";// Ensemble  Dialog  Zone de glisser. 
+    dialog.show();// Affiche la boîte de dialogue. 
+    dialog.closeHandler = new laya.utils.Handler(this, onClose);// Ensemble  Dialog  Un processeur de fonction de fermeture. 
+}
+function onClose(name) {
+    if (name == laya.ui.Dialog.CLOSE) {
+        console.log("通过点击 name 为" + name + "的组件，关闭了dialog。");
+    }
+}
+	*&lt;/listing>
+&lt;listing version="3.0">
+import Dialog = laya.ui.Dialog;
+import Handler = laya.utils.Handler;
+class Dialog_Example {
+    private dialog: Dialog_Instance;
+    constructor() {
+        Laya.init(640, 800);// Ensemble de jeu de la toile de large. 
+        Laya.stage.bgColor = "#efefef";// Couleur de fond de la toile. 
+        Laya.loader.load("resource/ui/btn_close.png", Handler.create(this, this.onLoadComplete));// La charge de ressources. 
+    }
+    private onLoadComplete(): void {
+        this.dialog = new Dialog_Instance();// Créer un objet d'instance de la classe de Dialog_Instance. 
+        this.dialog.dragArea = "0,0,150,50";// Ensemble  Dialog  Zone de glisser. 
+        this.dialog.show();// Affiche la boîte de dialogue. 
+        this.dialog.closeHandler = new Handler(this, this.onClose);// Ensemble  Dialog  Un processeur de fonction de fermeture. 
+    }
+    private onClose(name: string): void {
+        if (name == Dialog.CLOSE) {
+            console.log("通过点击 name 为" + name + "的组件，关闭了dialog。");
+        }
+    }
+}
+import Button = laya.ui.Button;
+class Dialog_Instance extends Dialog {
+    Dialog_Instance(): void {
+        var bg: laya.ui.Image = new laya.ui.Image("resource/ui/bg.png");
+        bg.sizeGrid = "40,10,5,10";
+        bg.width = 150;
+        bg.height = 250;
+        this.addChild(bg);
+        var image: laya.ui.Image = new laya.ui.Image("resource/ui/image.png");
+        this.addChild(image);
+        var button: Button = new Button("resource/ui/btn_close.png");
+        button.name = Dialog.CLOSE;// La valeur d'attribut button name ensemble. 
+        button.x = 0;
+        button.y = 0;
+        this.addChild(button);
+    }
+}
+	*&lt;/listing></code></pre>
+
+</div>
+
+</div>
+    
+    </div>
+
+    
+        <h3 class="subsection-title">Extends</h3>
+
+        
+
+
+    <ul>
+        <li><a href="UI.View.html">View</a></li>
+    </ul>
+
+
+    
+
+    
+
+    
+
+     
+
+    
+
+    
+        <h3 class="subsection-title">Member</h3>
+
+        
+            
+<div class="section-members">
+<h4 class="name" id=".CANCEL"><span class="type-signature">(static) </span>CANCEL<span class="type-signature"> :String</span></h4>
+
+
+
+
+
+
+
+
+<dl class="details">
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+    <dt class="tag-default">Default Value:</dt>
+    <dd class="tag-default"><ul class="dummy">
+            <li>"cancel"</li>
+        </ul></dd>
+    
+
+    <!-- 
+    <dt class="tag-source">Source:</dt>
+    <dd class="tag-source"><ul class="dummy"><li>
+        js, line 150
+    </li></ul></dd>
+     -->
+
+    
+
+    
+
+    
+</dl>
+
+
+<!-- 
+    <h5>Type:</h5>
+    <ul>
+        <li>
+            
+<span class="param-type"><code>String</code></span>
+
+
+        </li>
+    </ul>
+ -->
+
+
+
+
+</div>
+
+        
+            
+<div class="section-members">
+<h4 class="name" id=".CLOSE"><span class="type-signature">(static) </span>CLOSE<span class="type-signature"> :String</span></h4>
+
+
+
+
+
+
+
+
+<dl class="details">
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+    <dt class="tag-default">Default Value:</dt>
+    <dd class="tag-default"><ul class="dummy">
+            <li>"close"</li>
+        </ul></dd>
+    
+
+    <!-- 
+    <dt class="tag-source">Source:</dt>
+    <dd class="tag-source"><ul class="dummy"><li>
+        js, line 144
+    </li></ul></dd>
+     -->
+
+    
+
+    
+
+    
+</dl>
+
+
+<!-- 
+    <h5>Type:</h5>
+    <ul>
+        <li>
+            
+<span class="param-type"><code>String</code></span>
+
+
+        </li>
+    </ul>
+ -->
+
+
+
+
+</div>
+
+        
+            
+<div class="section-members">
+<h4 class="name" id=".manager"><span class="type-signature">(static) </span>manager<span class="type-signature"> :<a href="UI.DialogManager.html">DialogManager</a></span></h4>
+
+
+
+
+<div class="description">
+    Récipient de gestion de dialogue, toutes les boîtes de dialogue sont à l'intérieur de la cuve, et un dispositif de gestion de dispositif par le tube, peut être personnalisé de gestion pour modifier le processus de gestion de fenêtre. 
+任意对话框打开和关闭，都会触发管理类的open和close事件 * arbitraire de la boîte de dialogue d'ouverture et de fermeture, un événement de déclenchement et de gestion de classe de près.
+</div>
+
+
+
+
+
+<dl class="details">
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    <!-- 
+    <dt class="tag-source">Source:</dt>
+    <dd class="tag-source"><ul class="dummy"><li>
+        js, line 181
+    </li></ul></dd>
+     -->
+
+    
+
+    
+
+    
+</dl>
+
+
+<!-- 
+    <h5>Type:</h5>
+    <ul>
+        <li>
+            
+<span class="param-type"><code><a href="UI.DialogManager.html">DialogManager</a></code></span>
+
+
+        </li>
+    </ul>
+ -->
+
+
+
+
+</div>
+
+        
+            
+<div class="section-members">
+<h4 class="name" id=".NO"><span class="type-signature">(static) </span>NO<span class="type-signature"> :String</span></h4>
+
+
+
+
+
+
+
+
+<dl class="details">
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+    <dt class="tag-default">Default Value:</dt>
+    <dd class="tag-default"><ul class="dummy">
+            <li>"no"</li>
+        </ul></dd>
+    
+
+    <!-- 
+    <dt class="tag-source">Source:</dt>
+    <dd class="tag-source"><ul class="dummy"><li>
+        js, line 162
+    </li></ul></dd>
+     -->
+
+    
+
+    
+
+    
+</dl>
+
+
+<!-- 
+    <h5>Type:</h5>
+    <ul>
+        <li>
+            
+<span class="param-type"><code>String</code></span>
+
+
+        </li>
+    </ul>
+ -->
+
+
+
+
+</div>
+
+        
+            
+<div class="section-members">
+<h4 class="name" id=".OK"><span class="type-signature">(static) </span>OK<span class="type-signature"> :String</span></h4>
+
+
+
+
+
+
+
+
+<dl class="details">
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+    <dt class="tag-default">Default Value:</dt>
+    <dd class="tag-default"><ul class="dummy">
+            <li>"ok"</li>
+        </ul></dd>
+    
+
+    <!-- 
+    <dt class="tag-source">Source:</dt>
+    <dd class="tag-source"><ul class="dummy"><li>
+        js, line 168
+    </li></ul></dd>
+     -->
+
+    
+
+    
+
+    
+</dl>
+
+
+<!-- 
+    <h5>Type:</h5>
+    <ul>
+        <li>
+            
+<span class="param-type"><code>String</code></span>
+
+
+        </li>
+    </ul>
+ -->
+
+
+
+
+</div>
+
+        
+            
+<div class="section-members">
+<h4 class="name" id=".SURE"><span class="type-signature">(static) </span>SURE<span class="type-signature"> :String</span></h4>
+
+
+
+
+
+
+
+
+<dl class="details">
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+    <dt class="tag-default">Default Value:</dt>
+    <dd class="tag-default"><ul class="dummy">
+            <li>"sure"</li>
+        </ul></dd>
+    
+
+    <!-- 
+    <dt class="tag-source">Source:</dt>
+    <dd class="tag-source"><ul class="dummy"><li>
+        js, line 156
+    </li></ul></dd>
+     -->
+
+    
+
+    
+
+    
+</dl>
+
+
+<!-- 
+    <h5>Type:</h5>
+    <ul>
+        <li>
+            
+<span class="param-type"><code>String</code></span>
+
+
+        </li>
+    </ul>
+ -->
+
+
+
+
+</div>
+
+        
+            
+<div class="section-members">
+<h4 class="name" id=".YES"><span class="type-signature">(static) </span>YES<span class="type-signature"> :String</span></h4>
+
+
+
+
+
+
+
+
+<dl class="details">
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+    <dt class="tag-default">Default Value:</dt>
+    <dd class="tag-default"><ul class="dummy">
+            <li>"yes"</li>
+        </ul></dd>
+    
+
+    <!-- 
+    <dt class="tag-source">Source:</dt>
+    <dd class="tag-source"><ul class="dummy"><li>
+        js, line 174
+    </li></ul></dd>
+     -->
+
+    
+
+    
+
+    
+</dl>
+
+
+<!-- 
+    <h5>Type:</h5>
+    <ul>
+        <li>
+            
+<span class="param-type"><code>String</code></span>
+
+
+        </li>
+    </ul>
+ -->
+
+
+
+
+</div>
+
+        
+            
+<div class="section-members">
+<h4 class="name" id="anchorX"><span class="type-signature"></span>anchorX<span class="type-signature"> :Number</span></h4>
+
+
+
+
+<div class="description">
+    L'axe x valeur de point d'ancrage, de 0 à 1
+</div>
+
+
+
+
+
+<dl class="details">
+
+    
+
+    
+
+    
+    <dt class="inherited-from">Inherited From:</dt>
+    <dd class="inherited-from"><ul class="dummy"><li>
+        <a href="UI.Component.html#anchorX">Component#anchorX</a>
+    </li></ul></dd>
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    <!-- 
+    <dt class="tag-source">Source:</dt>
+    <dd class="tag-source"><ul class="dummy"><li>
+        js, line 111
+    </li></ul></dd>
+     -->
+
+    
+
+    
+
+    
+</dl>
+
+
+<!-- 
+    <h5>Type:</h5>
+    <ul>
+        <li>
+            
+<span class="param-type"><code>Number</code></span>
+
+
+        </li>
+    </ul>
+ -->
+
+
+
+
+</div>
+
+        
+            
+<div class="section-members">
+<h4 class="name" id="anchorY"><span class="type-signature"></span>anchorY<span class="type-signature"> :Number</span></h4>
+
+
+
+
+<div class="description">
+    L'axe y la valeur de point d'ancrage, de 0 à 1
+</div>
+
+
+
+
+
+<dl class="details">
+
+    
+
+    
+
+    
+    <dt class="inherited-from">Inherited From:</dt>
+    <dd class="inherited-from"><ul class="dummy"><li>
+        <a href="UI.Component.html#anchorY">Component#anchorY</a>
+    </li></ul></dd>
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    <!-- 
+    <dt class="tag-source">Source:</dt>
+    <dd class="tag-source"><ul class="dummy"><li>
+        js, line 117
+    </li></ul></dd>
+     -->
+
+    
+
+    
+
+    
+</dl>
+
+
+<!-- 
+    <h5>Type:</h5>
+    <ul>
+        <li>
+            
+<span class="param-type"><code>Number</code></span>
+
+
+        </li>
+    </ul>
+ -->
+
+
+
+
+</div>
+
+        
+            
+<div class="section-members">
+<h4 class="name" id="bottom"><span class="type-signature"></span>bottom<span class="type-signature"> :Number</span></h4>
+
+
+
+
+<div class="description">
+    <p> à partir de l'ensemble inférieur à la distance verticale entre le bord inférieur de la zone de contenu (en pixels). </p>
+</div>
+
+
+
+
+
+<dl class="details">
+
+    
+
+    
+
+    
+    <dt class="inherited-from">Inherited From:</dt>
+    <dd class="inherited-from"><ul class="dummy"><li>
+        <a href="UI.Component.html#bottom">Component#bottom</a>
+    </li></ul></dd>
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    <!-- 
+    <dt class="tag-source">Source:</dt>
+    <dd class="tag-source"><ul class="dummy"><li>
+        js, line 81
+    </li></ul></dd>
+     -->
+
+    
+
+    
+
+    
+</dl>
+
+
+<!-- 
+    <h5>Type:</h5>
+    <ul>
+        <li>
+            
+<span class="param-type"><code>Number</code></span>
+
+
+        </li>
+    </ul>
+ -->
+
+
+
+
+</div>
+
+        
+            
+<div class="section-members">
+<h4 class="name" id="centerX"><span class="type-signature"></span>centerX<span class="type-signature"> :Number</span></h4>
+
+
+
+
+<div class="description">
+    <p> Dans le récipient, à une distance de la ligne centrale dans la direction horizontale dans la direction horizontale de l'axe de cet objet et le vaisseau parent (en pixels). </p>
+</div>
+
+
+
+
+
+<dl class="details">
+
+    
+
+    
+
+    
+    <dt class="inherited-from">Inherited From:</dt>
+    <dd class="inherited-from"><ul class="dummy"><li>
+        <a href="UI.Component.html#centerX">Component#centerX</a>
+    </li></ul></dd>
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    <!-- 
+    <dt class="tag-source">Source:</dt>
+    <dd class="tag-source"><ul class="dummy"><li>
+        js, line 99
+    </li></ul></dd>
+     -->
+
+    
+
+    
+
+    
+</dl>
+
+
+<!-- 
+    <h5>Type:</h5>
+    <ul>
+        <li>
+            
+<span class="param-type"><code>Number</code></span>
+
+
+        </li>
+    </ul>
+ -->
+
+
+
+
+</div>
+
+        
+            
+<div class="section-members">
+<h4 class="name" id="centerY"><span class="type-signature"></span>centerY<span class="type-signature"> :Number</span></h4>
+
+
+
+
+<div class="description">
+    <p> Dans le récipient, à une distance de la ligne centrale dans la direction verticale perpendiculaire à la direction de l'axe de cet objet et le vaisseau parent (en pixels). </p>
+</div>
+
+
+
+
+
+<dl class="details">
+
+    
+
+    
+
+    
+    <dt class="inherited-from">Inherited From:</dt>
+    <dd class="inherited-from"><ul class="dummy"><li>
+        <a href="UI.Component.html#centerY">Component#centerY</a>
+    </li></ul></dd>
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    <!-- 
+    <dt class="tag-source">Source:</dt>
+    <dd class="tag-source"><ul class="dummy"><li>
+        js, line 105
+    </li></ul></dd>
+     -->
+
+    
+
+    
+
+    
+</dl>
+
+
+<!-- 
+    <h5>Type:</h5>
+    <ul>
+        <li>
+            
+<span class="param-type"><code>Number</code></span>
+
+
+        </li>
+    </ul>
+ -->
+
+
+
+
+</div>
+
+        
+            
+<div class="section-members">
+<h4 class="name" id="closeHandler"><span class="type-signature"></span>closeHandler<span class="type-signature"> :<a href="Core.Handler.html">Handler</a></span></h4>
+
+
+
+
+<div class="description">
+    Un processeur de fonction de rappel de la boîte de dialogue est fermé lorsque le déclencher. 
+<p> Des paramètres de fonction de rappel pour un utilisateur clique sur le bouton name nom: String. </p>
+</div>
+
+
+
+
+
+<dl class="details">
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    <!-- 
+    <dt class="tag-source">Source:</dt>
+    <dd class="tag-source"><ul class="dummy"><li>
+        js, line 195
+    </li></ul></dd>
+     -->
+
+    
+
+    
+
+    
+</dl>
+
+
+<!-- 
+    <h5>Type:</h5>
+    <ul>
+        <li>
+            
+<span class="param-type"><code><a href="Core.Handler.html">Handler</a></code></span>
+
+
+        </li>
+    </ul>
+ -->
+
+
+
+
+</div>
+
+        
+            
+<div class="section-members">
+<h4 class="name" id="comXml"><span class="type-signature"></span>comXml<span class="type-signature"> :Object</span></h4>
+
+
+
+
+<div class="description">
+    Les données XML.
+</div>
+
+
+
+
+
+<dl class="details">
+
+    
+
+    
+
+    
+    <dt class="inherited-from">Inherited From:</dt>
+    <dd class="inherited-from"><ul class="dummy"><li>
+        <a href="UI.Component.html#comXml">Component#comXml</a>
+    </li></ul></dd>
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    <!-- 
+    <dt class="tag-source">Source:</dt>
+    <dd class="tag-source"><ul class="dummy"><li>
+        js, line 157
+    </li></ul></dd>
+     -->
+
+    
+
+    
+
+    
+</dl>
+
+
+<!-- 
+    <h5>Type:</h5>
+    <ul>
+        <li>
+            
+<span class="param-type"><code>Object</code></span>
+
+
+        </li>
+    </ul>
+ -->
+
+
+
+
+</div>
+
+        
+            
+<div class="section-members">
+<h4 class="name" id="dataSource"><span class="type-signature"></span>dataSource<span class="type-signature"> :Object</span></h4>
+
+
+
+
+
+
+
+
+<dl class="details">
+
+    
+
+    
+
+    
+    <dt class="inherited-from">Inherited From:</dt>
+    <dd class="inherited-from"><ul class="dummy"><li>
+        <a href="UI.Box.html#dataSource">Box#dataSource</a>
+    </li></ul></dd>
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    <!-- 
+    <dt class="tag-source">Source:</dt>
+    <dd class="tag-source"><ul class="dummy"><li>
+        js, line 11
+    </li></ul></dd>
+     -->
+
+    
+
+    
+
+    
+</dl>
+
+
+<!-- 
+    <h5>Type:</h5>
+    <ul>
+        <li>
+            
+<span class="param-type"><code>Object</code></span>
+
+
+        </li>
+    </ul>
+ -->
+
+
+
+
+</div>
+
+        
+            
+<div class="section-members">
+<h4 class="name" id="disabled"><span class="type-signature"></span>disabled<span class="type-signature"> :Boolean</span></h4>
+
+
+
+
+<div class="description">
+    Vous voulez désactiver la page, est vrai, gris et de désactiver le bouton de la souris.
+</div>
+
+
+
+
+
+<dl class="details">
+
+    
+
+    
+
+    
+    <dt class="inherited-from">Inherited From:</dt>
+    <dd class="inherited-from"><ul class="dummy"><li>
+        <a href="UI.Component.html#disabled">Component#disabled</a>
+    </li></ul></dd>
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    <!-- 
+    <dt class="tag-source">Source:</dt>
+    <dd class="tag-source"><ul class="dummy"><li>
+        js, line 169
+    </li></ul></dd>
+     -->
+
+    
+
+    
+
+    
+</dl>
+
+
+<!-- 
+    <h5>Type:</h5>
+    <ul>
+        <li>
+            
+<span class="param-type"><code>Boolean</code></span>
+
+
+        </li>
+    </ul>
+ -->
+
+
+
+
+</div>
+
+        
+            
+<div class="section-members">
+<h4 class="name" id="displayHeight"><span class="type-signature"></span>displayHeight<span class="type-signature"> :Number</span></h4>
+
+
+
+
+<div class="description">
+    <p> L'affichage de l'objet de la hauteur (en pixels). </p>
+</div>
+
+
+
+
+
+<dl class="details">
+
+    
+
+    
+
+    
+    <dt class="inherited-from">Inherited From:</dt>
+    <dd class="inherited-from"><ul class="dummy"><li>
+        <a href="UI.Component.html#displayHeight">Component#displayHeight</a>
+    </li></ul></dd>
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    <!-- 
+    <dt class="tag-source">Source:</dt>
+    <dd class="tag-source"><ul class="dummy"><li>
+        js, line 42
+    </li></ul></dd>
+     -->
+
+    
+
+    
+
+    
+</dl>
+
+
+<!-- 
+    <h5>Type:</h5>
+    <ul>
+        <li>
+            
+<span class="param-type"><code>Number</code></span>
+
+
+        </li>
+    </ul>
+ -->
+
+
+
+
+</div>
+
+        
+            
+<div class="section-members">
+<h4 class="name" id="displayWidth"><span class="type-signature"></span>displayWidth<span class="type-signature"> :Number</span></h4>
+
+
+
+
+<div class="description">
+    <p> La largeur de l'objet d'affichage (en pixels). </p>
+</div>
+
+
+
+
+
+<dl class="details">
+
+    
+
+    
+
+    
+    <dt class="inherited-from">Inherited From:</dt>
+    <dd class="inherited-from"><ul class="dummy"><li>
+        <a href="UI.Component.html#displayWidth">Component#displayWidth</a>
+    </li></ul></dd>
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    <!-- 
+    <dt class="tag-source">Source:</dt>
+    <dd class="tag-source"><ul class="dummy"><li>
+        js, line 24
+    </li></ul></dd>
+     -->
+
+    
+
+    
+
+    
+</dl>
+
+
+<!-- 
+    <h5>Type:</h5>
+    <ul>
+        <li>
+            
+<span class="param-type"><code>Number</code></span>
+
+
+        </li>
+    </ul>
+ -->
+
+
+
+
+</div>
+
+        
+            
+<div class="section-members">
+<h4 class="name" id="dragArea"><span class="type-signature"></span>dragArea<span class="type-signature"> :String</span></h4>
+
+
+
+
+<div class="description">
+    La région spécifiée pour glisser dans la boîte de dialogue.La valeur par défaut est 0, 0, 0, 0 ". 
+<p><b> Format: </b>  
+Par exemple: "0, 0100200". 
+		 *</p>
+</div>
+
+
+
+
+
+<dl class="details">
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    <!-- 
+    <dt class="tag-source">Source:</dt>
+    <dd class="tag-source"><ul class="dummy"><li>
+        js, line 218
+    </li></ul></dd>
+     -->
+
+    
+
+    
+    <dt class="tag-see">See:</dt>
+    <dd class="tag-see">
+        <ul>
+            <li>Dialog.html#includeExamplesSummary 请参考示例">#includeExamplesSummary 请参考示例</a></li>
+        </ul>
+    </dd>
+    
+
+    
+</dl>
+
+
+<!-- 
+    <h5>Type:</h5>
+    <ul>
+        <li>
+            
+<span class="param-type"><code>String</code></span>
+
+
+        </li>
+    </ul>
+ -->
+
+
+
+
+</div>
+
+        
+            
+<div class="section-members">
+<h4 class="name" id="gray"><span class="type-signature"></span>gray<span class="type-signature"> :Boolean</span></h4>
+
+
+
+
+<div class="description">
+    Si un changement de cendres.
+</div>
+
+
+
+
+
+<dl class="details">
+
+    
+
+    
+
+    
+    <dt class="inherited-from">Inherited From:</dt>
+    <dd class="inherited-from"><ul class="dummy"><li>
+        <a href="UI.Component.html#gray">Component#gray</a>
+    </li></ul></dd>
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    <!-- 
+    <dt class="tag-source">Source:</dt>
+    <dd class="tag-source"><ul class="dummy"><li>
+        js, line 163
+    </li></ul></dd>
+     -->
+
+    
+
+    
+
+    
+</dl>
+
+
+<!-- 
+    <h5>Type:</h5>
+    <ul>
+        <li>
+            
+<span class="param-type"><code>Boolean</code></span>
+
+
+        </li>
+    </ul>
+ -->
+
+
+
+
+</div>
+
+        
+            
+<div class="section-members">
+<h4 class="name" id="group"><span class="type-signature"></span>group<span class="type-signature"> :String</span></h4>
+
+
+
+
+<div class="description">
+    Nom de groupe
+</div>
+
+
+
+
+
+<dl class="details">
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    <!-- 
+    <dt class="tag-source">Source:</dt>
+    <dd class="tag-source"><ul class="dummy"><li>
+        js, line 201
+    </li></ul></dd>
+     -->
+
+    
+
+    
+
+    
+</dl>
+
+
+<!-- 
+    <h5>Type:</h5>
+    <ul>
+        <li>
+            
+<span class="param-type"><code>String</code></span>
+
+
+        </li>
+    </ul>
+ -->
+
+
+
+
+</div>
+
+        
+            
+<div class="section-members">
+<h4 class="name" id="height"><span class="type-signature"></span>height<span class="type-signature"> :Number</span></h4>
+
+
+
+
+<div class="description">
+    <p> Représente la hauteur de l'objet, en pixels. </p>
+<p><b> Note: </b> Où une valeur de 0, à hauteur de taille adaptative. </p>
+</div>
+
+
+
+
+
+<dl class="details">
+
+    
+
+    
+
+    
+    <dt class="inherited-from">Inherited From:</dt>
+    <dd class="inherited-from"><ul class="dummy"><li>
+        <a href="UI.Component.html#height">Component#height</a>
+    </li></ul></dd>
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    <!-- 
+    <dt class="tag-source">Source:</dt>
+    <dd class="tag-source"><ul class="dummy"><li>
+        js, line 36
+    </li></ul></dd>
+     -->
+
+    
+
+    
+
+    
+</dl>
+
+
+<!-- 
+    <h5>Type:</h5>
+    <ul>
+        <li>
+            
+<span class="param-type"><code>Number</code></span>
+
+
+        </li>
+    </ul>
+ -->
+
+
+
+
+</div>
+
+        
+            
+<div class="section-members">
+<h4 class="name" id="isModal"><span class="type-signature"></span>isModal<span class="type-signature"> :Boolean</span></h4>
+
+
+
+
+<div class="description">
+    Si c'est le mode fenêtre
+</div>
+
+
+
+
+
+<dl class="details">
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    <!-- 
+    <dt class="tag-source">Source:</dt>
+    <dd class="tag-source"><ul class="dummy"><li>
+        js, line 207
+    </li></ul></dd>
+     -->
+
+    
+
+    
+
+    
+</dl>
+
+
+<!-- 
+    <h5>Type:</h5>
+    <ul>
+        <li>
+            
+<span class="param-type"><code>Boolean</code></span>
+
+
+        </li>
+    </ul>
+ -->
+
+
+
+
+</div>
+
+        
+            
+<div class="section-members">
+<h4 class="name" id="isPopup"><span class="type-signature"></span>isPopup<span class="type-signature"> :Boolean</span></h4>
+
+
+
+
+<div class="description">
+    La boîte d'éjection de l'état d'affichage; si la boîte élastique dans l'affichage, il est vrai, ou faux;
+</div>
+
+
+
+
+
+<dl class="details">
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    <!-- 
+    <dt class="tag-source">Source:</dt>
+    <dd class="tag-source"><ul class="dummy"><li>
+        js, line 224
+    </li></ul></dd>
+     -->
+
+    
+
+    
+
+    
+</dl>
+
+
+<!-- 
+    <h5>Type:</h5>
+    <ul>
+        <li>
+            
+<span class="param-type"><code>Boolean</code></span>
+
+
+        </li>
+    </ul>
+ -->
+
+
+
+
+</div>
+
+        
+            
+<div class="section-members">
+<h4 class="name" id="left"><span class="type-signature"></span>left<span class="type-signature"> :Number</span></h4>
+
+
+
+
+<div class="description">
+    <p> à partir de l'ensemble de la gauche à la distance horizontale entre le contenu de la zone de la gauche (en pixels). </p>
+</div>
+
+
+
+
+
+<dl class="details">
+
+    
+
+    
+
+    
+    <dt class="inherited-from">Inherited From:</dt>
+    <dd class="inherited-from"><ul class="dummy"><li>
+        <a href="UI.Component.html#left">Component#left</a>
+    </li></ul></dd>
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    <!-- 
+    <dt class="tag-source">Source:</dt>
+    <dd class="tag-source"><ul class="dummy"><li>
+        js, line 87
+    </li></ul></dd>
+     -->
+
+    
+
+    
+
+    
+</dl>
+
+
+<!-- 
+    <h5>Type:</h5>
+    <ul>
+        <li>
+            
+<span class="param-type"><code>Number</code></span>
+
+
+        </li>
+    </ul>
+ -->
+
+
+
+
+</div>
+
+        
+            
+<div class="section-members">
+<h4 class="name" id="measureHeight"><span class="type-signature"></span>measureHeight<span class="type-signature"> :Number</span></h4>
+
+
+
+
+<div class="description">
+    <p> Des objets d'affichage de zone d'affichage effective de la hauteur (en pixels). </p>
+</div>
+
+
+
+
+
+<dl class="details">
+
+    
+
+    
+
+    
+    <dt class="inherited-from">Inherited From:</dt>
+    <dd class="inherited-from"><ul class="dummy"><li>
+        <a href="UI.Component.html#measureHeight">Component#measureHeight</a>
+    </li></ul></dd>
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    <!-- 
+    <dt class="tag-source">Source:</dt>
+    <dd class="tag-source"><ul class="dummy"><li>
+        js, line 47
+    </li></ul></dd>
+     -->
+
+    
+
+    
+
+    
+</dl>
+
+
+<!-- 
+    <h5>Type:</h5>
+    <ul>
+        <li>
+            
+<span class="param-type"><code>Number</code></span>
+
+
+        </li>
+    </ul>
+ -->
+
+
+
+
+</div>
+
+        
+            
+<div class="section-members">
+<h4 class="name" id="measureWidth"><span class="type-signature"></span>measureWidth<span class="type-signature"> :Number</span></h4>
+
+
+
+
+<div class="description">
+    <p> Des objets d'affichage de zone d'affichage effective de la largeur (en pixels). </p>
+</div>
+
+
+
+
+
+<dl class="details">
+
+    
+
+    
+
+    
+    <dt class="inherited-from">Inherited From:</dt>
+    <dd class="inherited-from"><ul class="dummy"><li>
+        <a href="UI.Component.html#measureWidth">Component#measureWidth</a>
+    </li></ul></dd>
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    <!-- 
+    <dt class="tag-source">Source:</dt>
+    <dd class="tag-source"><ul class="dummy"><li>
+        js, line 29
+    </li></ul></dd>
+     -->
+
+    
+
+    
+
+    
+</dl>
+
+
+<!-- 
+    <h5>Type:</h5>
+    <ul>
+        <li>
+            
+<span class="param-type"><code>Number</code></span>
+
+
+        </li>
+    </ul>
+ -->
+
+
+
+
+</div>
+
+        
+            
+<div class="section-members">
+<h4 class="name" id="popupCenter"><span class="type-signature"></span>popupCenter<span class="type-signature"> :Boolean</span></h4>
+
+
+
+
+<div class="description">
+    Une valeur booléenne, spécifier si la boîte de dialogue de centrage élastique. 
+<p> Si la valeur de vrai, le Centre d'éjection, sinon, en fonction de l'objet de coordonnées d'affichage par défaut pour vrai. </p>
+</div>
+
+
+
+
+
+<dl class="details">
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    <!-- 
+    <dt class="tag-source">Source:</dt>
+    <dd class="tag-source"><ul class="dummy"><li>
+        js, line 188
+    </li></ul></dd>
+     -->
+
+    
+
+    
+
+    
+</dl>
+
+
+<!-- 
+    <h5>Type:</h5>
+    <ul>
+        <li>
+            
+<span class="param-type"><code>Boolean</code></span>
+
+
+        </li>
+    </ul>
+ -->
+
+
+
+
+</div>
+
+        
+            
+<div class="section-members">
+<h4 class="name" id="right"><span class="type-signature"></span>right<span class="type-signature"> :Number</span></h4>
+
+
+
+
+<div class="description">
+    <p> à partir de l'ensemble de la droite à la distance horizontale entre le contenu de région de droite (en pixels). </p>
+</div>
+
+
+
+
+
+<dl class="details">
+
+    
+
+    
+
+    
+    <dt class="inherited-from">Inherited From:</dt>
+    <dd class="inherited-from"><ul class="dummy"><li>
+        <a href="UI.Component.html#right">Component#right</a>
+    </li></ul></dd>
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    <!-- 
+    <dt class="tag-source">Source:</dt>
+    <dd class="tag-source"><ul class="dummy"><li>
+        js, line 93
+    </li></ul></dd>
+     -->
+
+    
+
+    
+
+    
+</dl>
+
+
+<!-- 
+    <h5>Type:</h5>
+    <ul>
+        <li>
+            
+<span class="param-type"><code>Number</code></span>
+
+
+        </li>
+    </ul>
+ -->
+
+
+
+
+</div>
+
+        
+            
+<div class="section-members">
+<h4 class="name" id="scaleX"><span class="type-signature"></span>scaleX<span class="type-signature"> :Number</span></h4>
+
+
+
+
+
+
+
+
+<dl class="details">
+
+    
+
+    
+
+    
+    <dt class="inherited-from">Inherited From:</dt>
+    <dd class="inherited-from"><ul class="dummy"><li>
+        <a href="UI.Component.html#scaleX">Component#scaleX</a>
+    </li></ul></dd>
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    <!-- 
+    <dt class="tag-source">Source:</dt>
+    <dd class="tag-source"><ul class="dummy"><li>
+        js, line 51
+    </li></ul></dd>
+     -->
+
+    
+
+    
+
+    
+</dl>
+
+
+<!-- 
+    <h5>Type:</h5>
+    <ul>
+        <li>
+            
+<span class="param-type"><code>Number</code></span>
+
+
+        </li>
+    </ul>
+ -->
+
+
+
+
+</div>
+
+        
+            
+<div class="section-members">
+<h4 class="name" id="scaleY"><span class="type-signature"></span>scaleY<span class="type-signature"> :Number</span></h4>
+
+
+
+
+
+
+
+
+<dl class="details">
+
+    
+
+    
+
+    
+    <dt class="inherited-from">Inherited From:</dt>
+    <dd class="inherited-from"><ul class="dummy"><li>
+        <a href="UI.Component.html#scaleY">Component#scaleY</a>
+    </li></ul></dd>
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    <!-- 
+    <dt class="tag-source">Source:</dt>
+    <dd class="tag-source"><ul class="dummy"><li>
+        js, line 55
+    </li></ul></dd>
+     -->
+
+    
+
+    
+
+    
+</dl>
+
+
+<!-- 
+    <h5>Type:</h5>
+    <ul>
+        <li>
+            
+<span class="param-type"><code>Number</code></span>
+
+
+        </li>
+    </ul>
+ -->
+
+
+
+
+</div>
+
+        
+            
+<div class="section-members">
+<h4 class="name" id="tag"><span class="type-signature"></span>tag<span class="type-signature"> :Object</span></h4>
+
+
+
+
+<div class="description">
+    <p> L'étiquette de l'objet. </p>
+</div>
+
+
+
+
+
+<dl class="details">
+
+    
+
+    
+
+    
+    <dt class="inherited-from">Inherited From:</dt>
+    <dd class="inherited-from"><ul class="dummy"><li>
+        <a href="UI.Component.html#tag">Component#tag</a>
+    </li></ul></dd>
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    <!-- 
+    <dt class="tag-source">Source:</dt>
+    <dd class="tag-source"><ul class="dummy"><li>
+        js, line 124
+    </li></ul></dd>
+     -->
+
+    
+
+    
+
+    
+</dl>
+
+
+<!-- 
+    <h5>Type:</h5>
+    <ul>
+        <li>
+            
+<span class="param-type"><code>Object</code></span>
+
+
+        </li>
+    </ul>
+ -->
+
+
+
+
+</div>
+
+        
+            
+<div class="section-members">
+<h4 class="name" id="toolTip"><span class="type-signature"></span>toolTip<span class="type-signature"> :Object</span></h4>
+
+
+
+
+<div class="description">
+    <p> Le pointeur de la souris de pourboires. </p>
+<p> Peut être associé à un texte <code>String</code> Ou la fonction <code>Handler</code> , pour la mise en oeuvre de pointe et de paramètres de style personnalisé de la souris à transporter, et ainsi de suite. </p>
+</div>
+
+
+
+
+
+<dl class="details">
+
+    
+
+    
+
+    
+    <dt class="inherited-from">Inherited From:</dt>
+    <dd class="inherited-from"><ul class="dummy"><li>
+        <a href="UI.Component.html#toolTip">Component#toolTip</a>
+    </li></ul></dd>
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    <!-- 
+    <dt class="tag-source">Source:</dt>
+    <dd class="tag-source"><ul class="dummy"><li>
+        js, line 151
+    </li></ul></dd>
+     -->
+
+    
+
+    
+
+    
+</dl>
+
+
+<!-- 
+    <h5>Type:</h5>
+    <ul>
+        <li>
+            
+<span class="param-type"><code>Object</code></span>
+
+
+        </li>
+    </ul>
+ -->
+
+
+
+
+    <h5>示例</h5>
+    
+    <pre class="prettyprint"><code>Les exemples montrent que trois souris: 
+		   &lt;listing version="3.0">
+		   private var _testTips:TestTipsUI = new TestTipsUI();
+		   private function testTips():void {
+		   // Simple des pointes de souris 
+		Btn2.toolTip = "C'est des pointes de souris &amp; lt; b&amp;gt; gras &amp; lt; / b&amp;gt; &amp; lt; br &amp; gt; retours à la ligne"; 
+		   // Personnalisation des pointes de la souris 
+		Btn1.toolTip = showTips1; 
+		   // Les paramètres personnalisés de pointes de souris 
+		Clip.toolTip = new manipulateur (this, showTips2, ["clip"] ); 
+		} 
+		Private Function showTips1 (): vide { 
+		_ testTips.label.text = "C'est le bouton [" + btn1.label + "] "; 
+		Tip.addChild (_ testTips); 
+		} 
+		Private Function showTips2 (name: String): vide { 
+		_ testTips.label.text = "C'est" + name; 
+		Tip.addChild (_ testTips); 
+		} 
+		&lt;/listing></code></pre>
+
+
+</div>
+
+        
+            
+<div class="section-members">
+<h4 class="name" id="top"><span class="type-signature"></span>top<span class="type-signature"> :Number</span></h4>
+
+
+
+
+<div class="description">
+    <p> à partir de l'ensemble bord supérieur à la zone de contenu de la distance verticale entre la limite supérieure (en pixels). </p>
+</div>
+
+
+
+
+
+<dl class="details">
+
+    
+
+    
+
+    
+    <dt class="inherited-from">Inherited From:</dt>
+    <dd class="inherited-from"><ul class="dummy"><li>
+        <a href="UI.Component.html#top">Component#top</a>
+    </li></ul></dd>
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    <!-- 
+    <dt class="tag-source">Source:</dt>
+    <dd class="tag-source"><ul class="dummy"><li>
+        js, line 75
+    </li></ul></dd>
+     -->
+
+    
+
+    
+
+    
+</dl>
+
+
+<!-- 
+    <h5>Type:</h5>
+    <ul>
+        <li>
+            
+<span class="param-type"><code>Number</code></span>
+
+
+        </li>
+    </ul>
+ -->
+
+
+
+
+</div>
+
+        
+            
+<div class="section-members">
+<h4 class="name" id="width"><span class="type-signature"></span>width<span class="type-signature"> :Number</span></h4>
+
+
+
+
+<div class="description">
+    <p> Représentant la largeur de l'objet, en pixels. </p>
+<p><b> Note: </b> Où une valeur de 0, la largeur est adaptative de la taille. </p>
+</div>
+
+
+
+
+
+<dl class="details">
+
+    
+
+    
+
+    
+    <dt class="inherited-from">Inherited From:</dt>
+    <dd class="inherited-from"><ul class="dummy"><li>
+        <a href="UI.Component.html#width">Component#width</a>
+    </li></ul></dd>
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    <!-- 
+    <dt class="tag-source">Source:</dt>
+    <dd class="tag-source"><ul class="dummy"><li>
+        js, line 18
+    </li></ul></dd>
+     -->
+
+    
+
+    
+
+    
+</dl>
+
+
+<!-- 
+    <h5>Type:</h5>
+    <ul>
+        <li>
+            
+<span class="param-type"><code>Number</code></span>
+
+
+        </li>
+    </ul>
+ -->
+
+
+
+
+</div>
+
+        
+            
+<div class="section-members">
+<h4 class="name" id="zOrder"><span class="type-signature"></span>zOrder<span class="type-signature"> :Number</span></h4>
+
+
+
+
+
+
+
+
+<dl class="details">
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    <!-- 
+    <dt class="tag-source">Source:</dt>
+    <dd class="tag-source"><ul class="dummy"><li>
+        js, line 228
+    </li></ul></dd>
+     -->
+
+    
+
+    
+
+    
+</dl>
+
+
+<!-- 
+    <h5>Type:</h5>
+    <ul>
+        <li>
+            
+<span class="param-type"><code>Number</code></span>
+
+
+        </li>
+    </ul>
+ -->
+
+
+
+
+</div>
+
+        
+    
+
+    
+        <h3 class="subsection-title">Methods</h3>
+
+        
+            
+<div class="section-method">
+
+    
+
+    <h4 class="name" id="callLater"><span class="type-signature"></span>callLater<span class="signature">(method, args<span class="signature-attributes">opt</span>)</span><span class="type-signature"></span></h4>
+
+    
+
+
+
+<div class="description">
+    <p> Fonction de retard de fonctionnement spécifiée. </p>
+<p> Dans la commande est affichée sur l'écran avant l'appel, généralement utilisés pour le calcul des données de retard. </p>
+</div>
+
+
+
+
+
+<dl class="details">
+
+    
+
+    
+
+    
+    <dt class="inherited-from">Inherited From:</dt>
+    <dd class="inherited-from"><ul class="dummy"><li>
+        <a href="UI.Component.html#callLater">Component#callLater</a>
+    </li></ul></dd>
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    <!-- 
+    <dt class="tag-source">Source:</dt>
+    <dd class="tag-source"><ul class="dummy"><li>
+        js, line 197
+    </li></ul></dd>
+     -->
+
+    
+
+    
+    <dt class="tag-see">See:</dt>
+    <dd class="tag-see">
+        <ul>
+            <li>Dialog.html#runCallLater()">#runCallLater()</a></li>
+        </ul>
+    </dd>
+    
+
+    
+</dl>
+
+
+
+
+
+
+
+
+
+    <h5>Parameters:</h5>
+    
+
+<table class="params">
+    <thead>
+    <tr>
+        
+        <th>Name</th>
+        
+
+        <th>Type</th>
+
+        
+        <th>Attributes</th>
+        
+
+        
+        <th>Default</th>
+        
+
+        <th class="last">Description</th>
+    </tr>
+    </thead>
+
+    <tbody>
+    
+
+        <tr>
+            
+                <td class="name"><code>method</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type"><code>function</code></span>
+
+
+            
+            </td>
+
+            
+                <td class="attributes">
+                
+
+                
+
+                
+                </td>
+            
+
+            
+                <td class="default">
+                
+                </td>
+            
+
+            <td class="description last">
+                Le nom de l'exécution de la fonction.Par exemple, functionName.
+                
+            </td>
+        </tr>
+
+    
+
+        <tr>
+            
+                <td class="name"><code>args</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type"><code>Array</code></span>
+
+
+            
+            </td>
+
+            
+                <td class="attributes">
+                
+                    &lt;optional><br>
+                
+
+                
+
+                
+                </td>
+            
+
+            
+                <td class="default">
+                
+                    null
+                
+                </td>
+            
+
+            <td class="description last">
+                args  Transmis <code>method</code> La liste de paramètres facultatifs de fonction.
+                
+            </td>
+        </tr>
+
+    
+    </tbody>
+</table>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+</div>
+        
+            
+<div class="section-method">
+
+    
+
+    <h4 class="name" id="changeSize"><span class="type-signature"></span>changeSize<span class="signature">()</span><span class="type-signature"></span></h4>
+
+    
+
+
+
+<div class="description">
+    <p> Ajuster la taille de l'objet. </p>
+</div>
+
+
+
+
+
+<dl class="details">
+
+    
+
+    
+
+    
+    <dt class="inherited-from">Inherited From:</dt>
+    <dd class="inherited-from"><ul class="dummy"><li>
+        <a href="UI.Component.html#changeSize">Component#changeSize</a>
+    </li></ul></dd>
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    <!-- 
+    <dt class="tag-source">Source:</dt>
+    <dd class="tag-source"><ul class="dummy"><li>
+        js, line 214
+    </li></ul></dd>
+     -->
+
+    
+
+    
+
+    
+</dl>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+</div>
+        
+            
+<div class="section-method">
+
+    
+
+    <h4 class="name" id="close"><span class="type-signature"></span>close<span class="signature">(type<span class="signature-attributes">opt</span>)</span><span class="type-signature"></span></h4>
+
+    
+
+
+
+<div class="description">
+    Pour fermer la boîte de dialogue.
+</div>
+
+
+
+
+
+<dl class="details">
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    <!-- 
+    <dt class="tag-source">Source:</dt>
+    <dd class="tag-source"><ul class="dummy"><li>
+        js, line 251
+    </li></ul></dd>
+     -->
+
+    
+
+    
+
+    
+</dl>
+
+
+
+
+
+
+
+
+
+    <h5>Parameters:</h5>
+    
+
+<table class="params">
+    <thead>
+    <tr>
+        
+        <th>Name</th>
+        
+
+        <th>Type</th>
+
+        
+        <th>Attributes</th>
+        
+
+        
+        <th>Default</th>
+        
+
+        <th class="last">Description</th>
+    </tr>
+    </thead>
+
+    <tbody>
+    
+
+        <tr>
+            
+                <td class="name"><code>type</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type"><code>String</code></span>
+
+
+            
+            </td>
+
+            
+                <td class="attributes">
+                
+                    &lt;optional><br>
+                
+
+                
+
+                
+                </td>
+            
+
+            
+                <td class="default">
+                
+                    null
+                
+                </td>
+            
+
+            <td class="description last">
+                type  Cliquez sur le bouton de déclenchement par défaut si c'est fermé, c'est le nom du bouton de fermeture entrant (name) ou nul.
+                
+            </td>
+        </tr>
+
+    
+    </tbody>
+</table>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+</div>
+        
+            
+<div class="section-method">
+
+    
+
+    <h4 class="name" id="closeAll"><span class="type-signature"></span>closeAll<span class="signature">()</span><span class="type-signature"></span></h4>
+
+    
+
+
+
+<div class="description">
+    La fermeture de toutes les boîtes de dialogue.
+</div>
+
+
+
+
+
+<dl class="details">
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    <!-- 
+    <dt class="tag-source">Source:</dt>
+    <dd class="tag-source"><ul class="dummy"><li>
+        js, line 269
+    </li></ul></dd>
+     -->
+
+    
+
+    
+
+    
+</dl>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+</div>
+        
+            
+<div class="section-method">
+
+    
+
+    <h4 class="name" id="closeByGround"><span class="type-signature"></span>closeByGround<span class="signature">(group)</span><span class="type-signature"></span></h4>
+
+    
+
+
+
+<div class="description">
+    Selon le Groupe de fermer tous les POP - ups
+</div>
+
+
+
+
+
+<dl class="details">
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    <!-- 
+    <dt class="tag-source">Source:</dt>
+    <dd class="tag-source"><ul class="dummy"><li>
+        js, line 280
+    </li></ul></dd>
+     -->
+
+    
+
+    
+
+    
+</dl>
+
+
+
+
+
+
+
+
+
+    <h5>Parameters:</h5>
+    
+
+<table class="params">
+    <thead>
+    <tr>
+        
+        <th>Name</th>
+        
+
+        <th>Type</th>
+
+        
+
+        
+
+        <th class="last">Description</th>
+    </tr>
+    </thead>
+
+    <tbody>
+    
+
+        <tr>
+            
+                <td class="name"><code>group</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type"><code>String</code></span>
+
+
+            
+            </td>
+
+            
+
+            
+
+            <td class="description last">
+                Il faut fermer le nom de groupe
+                
+            </td>
+        </tr>
+
+    
+    </tbody>
+</table>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+</div>
+        
+            
+<div class="section-method">
+
+    
+
+    <h4 class="name" id="commitMeasure"><span class="type-signature"></span>commitMeasure<span class="signature">()</span><span class="type-signature"></span></h4>
+
+    
+
+
+
+<div class="description">
+    <p> L'application immédiate de l'influence de la hauteur d'une quantité de retard de la largeur de l'appel de fonction. </p>
+</div>
+
+
+
+
+
+<dl class="details">
+
+    
+
+    
+
+    
+    <dt class="inherited-from">Inherited From:</dt>
+    <dd class="inherited-from"><ul class="dummy"><li>
+        <a href="UI.Component.html#commitMeasure">Component#commitMeasure</a>
+    </li></ul></dd>
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    <!-- 
+    <dt class="tag-source">Source:</dt>
+    <dd class="tag-source"><ul class="dummy"><li>
+        js, line 210
+    </li></ul></dd>
+     -->
+
+    
+
+    
+    <dt class="tag-see">See:</dt>
+    <dd class="tag-see">
+        <ul>
+            <li>Dialog.html#callLater()">#callLater()</a></li>
+        
+            <li>Dialog.html#runCallLater()">#runCallLater()</a></li>
+        </ul>
+    </dd>
+    
+
+    
+</dl>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+</div>
+        
+            
+<div class="section-method">
+
+    
+
+    <h4 class="name" id="createChildren"><span class="type-signature"></span>createChildren<span class="signature">()</span><span class="type-signature"></span></h4>
+
+    
+
+
+
+<div class="description">
+    <p> De créer et d'ajouter des commandes de sous - noeuds. </p>
+</div>
+
+
+
+
+
+<dl class="details">
+
+    
+
+    
+
+    
+    <dt class="inherited-from">Inherited From:</dt>
+    <dd class="inherited-from"><ul class="dummy"><li>
+        <a href="UI.Component.html#createChildren">Component#createChildren</a>
+    </li></ul></dd>
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    <!-- 
+    <dt class="tag-source">Source:</dt>
+    <dd class="tag-source"><ul class="dummy"><li>
+        js, line 184
+    </li></ul></dd>
+     -->
+
+    
+
+    
+
+    
+</dl>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+</div>
+        
+            
+<div class="section-method">
+
+    
+
+    <h4 class="name" id="createComp"><span class="type-signature"></span>createComp<span class="signature">(uiView, comp<span class="signature-attributes">opt</span>, view<span class="signature-attributes">opt</span>)</span><span class="type-signature"> &rarr; {Object}</span></h4>
+
+    
+
+
+
+<div class="description">
+    Selon des données ui d'Instanciation de l'ensemble.
+</div>
+
+
+
+
+
+<dl class="details">
+
+    
+
+    
+
+    
+    <dt class="inherited-from">Inherited From:</dt>
+    <dd class="inherited-from"><ul class="dummy"><li>
+        <a href="UI.View.html#createComp">View#createComp</a>
+    </li></ul></dd>
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    <!-- 
+    <dt class="tag-source">Source:</dt>
+    <dd class="tag-source"><ul class="dummy"><li>
+        js, line 28
+    </li></ul></dd>
+     -->
+
+    
+
+    
+
+    
+</dl>
+
+
+
+
+
+
+
+
+
+    <h5>Parameters:</h5>
+    
+
+<table class="params">
+    <thead>
+    <tr>
+        
+        <th>Name</th>
+        
+
+        <th>Type</th>
+
+        
+        <th>Attributes</th>
+        
+
+        
+        <th>Default</th>
+        
+
+        <th class="last">Description</th>
+    </tr>
+    </thead>
+
+    <tbody>
+    
+
+        <tr>
+            
+                <td class="name"><code>uiView</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type"><code>Object</code></span>
+
+
+            
+            </td>
+
+            
+                <td class="attributes">
+                
+
+                
+
+                
+                </td>
+            
+
+            
+                <td class="default">
+                
+                </td>
+            
+
+            <td class="description last">
+                Les données ui.
+                
+            </td>
+        </tr>
+
+    
+
+        <tr>
+            
+                <td class="name"><code>comp</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type"><code>Object</code></span>
+
+
+            
+            </td>
+
+            
+                <td class="attributes">
+                
+                    &lt;optional><br>
+                
+
+                
+
+                
+                </td>
+            
+
+            
+                <td class="default">
+                
+                    null
+                
+                </td>
+            
+
+            <td class="description last">
+                comp  L'ensemble de corps principal, s'il est vide, peut créer une nouvelle.
+                
+            </td>
+        </tr>
+
+    
+
+        <tr>
+            
+                <td class="name"><code>view</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type"><code><a href="UI.View.html">View</a></code></span>
+
+
+            
+            </td>
+
+            
+                <td class="attributes">
+                
+                    &lt;optional><br>
+                
+
+                
+
+                
+                </td>
+            
+
+            
+                <td class="default">
+                
+                    null
+                
+                </td>
+            
+
+            <td class="description last">
+                view  Des exemples de composants de visualisation est variable, pour enregistrement var globale, si la valeur de vide ne sont pas enregistrés.
+                
+            </td>
+        </tr>
+
+    
+    </tbody>
+</table>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div class="section-returns">
+<h5>Returns:</h5>
+
+        
+
+<dl class="param-type">
+    <dt>
+        Type:
+    </dt>
+    <dd>
+        
+<span class="param-type"><code>Object</code></span>
+
+
+    </dd>
+</dl>
+
+
+<div class="param-desc">
+    Un composant de l'objet.
+</div>
+
+    
+</div>
+
+
+
+</div>
+        
+            
+<div class="section-method">
+
+    
+
+    <h4 class="name" id="destroy"><span class="type-signature"></span>destroy<span class="signature">(destroyChild)</span><span class="type-signature"></span></h4>
+
+    
+
+
+
+<div class="description">
+    <p> La destruction de cet objet. </p>
+</div>
+
+
+
+
+
+<dl class="details">
+
+    
+
+    
+
+    
+    <dt class="inherited-from">Inherited From:</dt>
+    <dd class="inherited-from"><ul class="dummy"><li>
+        <a href="UI.View.html#destroy">View#destroy</a>
+    </li></ul></dd>
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    <!-- 
+    <dt class="tag-source">Source:</dt>
+    <dd class="tag-source"><ul class="dummy"><li>
+        js, line 47
+    </li></ul></dd>
+     -->
+
+    
+
+    
+
+    
+</dl>
+
+
+
+
+
+
+
+
+
+    <h5>Parameters:</h5>
+    
+
+<table class="params">
+    <thead>
+    <tr>
+        
+        <th>Name</th>
+        
+
+        <th>Type</th>
+
+        
+
+        
+
+        <th class="last">Description</th>
+    </tr>
+    </thead>
+
+    <tbody>
+    
+
+        <tr>
+            
+                <td class="name"><code>destroyChild</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type"><code>Boolean</code></span>
+
+
+            
+            </td>
+
+            
+
+            
+
+            <td class="description last">
+                Même si la destruction de sous - noeuds, si la valeur de vrai, la destruction de sous - noeuds, sinon pas la destruction de sous - noeuds.
+                
+            </td>
+        </tr>
+
+    
+    </tbody>
+</table>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+</div>
+        
+            
+<div class="section-method">
+
+    
+
+    <h4 class="name" id="getDialogsByGroup"><span class="type-signature"></span>getDialogsByGroup<span class="signature">(group)</span><span class="type-signature"> &rarr; {Array}</span></h4>
+
+    
+
+
+
+<div class="description">
+    Selon le Groupe d'ensembles de boîtes de dialogue
+</div>
+
+
+
+
+
+<dl class="details">
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    <!-- 
+    <dt class="tag-source">Source:</dt>
+    <dd class="tag-source"><ul class="dummy"><li>
+        js, line 275
+    </li></ul></dd>
+     -->
+
+    
+
+    
+
+    
+</dl>
+
+
+
+
+
+
+
+
+
+    <h5>Parameters:</h5>
+    
+
+<table class="params">
+    <thead>
+    <tr>
+        
+        <th>Name</th>
+        
+
+        <th>Type</th>
+
+        
+
+        
+
+        <th class="last">Description</th>
+    </tr>
+    </thead>
+
+    <tbody>
+    
+
+        <tr>
+            
+                <td class="name"><code>group</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type"><code>String</code></span>
+
+
+            
+            </td>
+
+            
+
+            
+
+            <td class="description last">
+                Nom de groupe
+                
+            </td>
+        </tr>
+
+    
+    </tbody>
+</table>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div class="section-returns">
+<h5>Returns:</h5>
+
+        
+
+<dl class="param-type">
+    <dt>
+        Type:
+    </dt>
+    <dd>
+        
+<span class="param-type"><code>Array</code></span>
+
+
+    </dd>
+</dl>
+
+
+<div class="param-desc">
+    La boîte de dialogue de réseau
+</div>
+
+    
+</div>
+
+
+
+</div>
+        
+            
+<div class="section-method">
+
+    
+
+    <h4 class="name" id="initialize"><span class="type-signature"></span>initialize<span class="signature">()</span><span class="type-signature"></span></h4>
+
+    
+
+
+
+<div class="description">
+    <p> Une commande d'initialisation. </p>
+</div>
+
+
+
+
+
+<dl class="details">
+
+    
+
+    
+
+    
+
+    
+    <dt class="tag-overrides">Overrides:</dt>
+    <dd class="tag-overrides"><ul class="dummy"><li>
+        <a href="UI.View.html#initialize">View#initialize</a>
+    </li></ul></dd>
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    <!-- 
+    <dt class="tag-source">Source:</dt>
+    <dd class="tag-source"><ul class="dummy"><li>
+        js, line 189
+    </li></ul></dd>
+     -->
+
+    
+
+    
+
+    
+</dl>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+</div>
+        
+            
+<div class="section-method">
+
+    
+
+    <h4 class="name" id="lock"><span class="type-signature"></span>lock<span class="signature">()</span><span class="type-signature"></span></h4>
+
+    
+
+
+
+<div class="description">
+    Verrouiller tous les couches d'informations, de chargement, de prévenir le contenu suivant est sélectionné
+</div>
+
+
+
+
+
+<dl class="details">
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    <!-- 
+    <dt class="tag-source">Source:</dt>
+    <dd class="tag-source"><ul class="dummy"><li>
+        js, line 265
+    </li></ul></dd>
+     -->
+
+    
+
+    
+
+    
+</dl>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+</div>
+        
+            
+<div class="section-method">
+
+    
+
+    <h4 class="name" id="onClosed"><span class="type-signature"></span>onClosed<span class="signature">(type<span class="signature-attributes">opt</span>)</span><span class="type-signature"></span></h4>
+
+    
+
+
+
+<div class="description">
+    Après l'achèvement de la fermeture, appelle ce procédé (s'il y a une ferme à l'animation d'animation, après achèvement de l'exécution)
+</div>
+
+
+
+
+
+<dl class="details">
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    <!-- 
+    <dt class="tag-source">Source:</dt>
+    <dd class="tag-source"><ul class="dummy"><li>
+        js, line 256
+    </li></ul></dd>
+     -->
+
+    
+
+    
+
+    
+</dl>
+
+
+
+
+
+
+
+
+
+    <h5>Parameters:</h5>
+    
+
+<table class="params">
+    <thead>
+    <tr>
+        
+        <th>Name</th>
+        
+
+        <th>Type</th>
+
+        
+        <th>Attributes</th>
+        
+
+        
+        <th>Default</th>
+        
+
+        <th class="last">Description</th>
+    </tr>
+    </thead>
+
+    <tbody>
+    
+
+        <tr>
+            
+                <td class="name"><code>type</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type"><code>String</code></span>
+
+
+            
+            </td>
+
+            
+                <td class="attributes">
+                
+                    &lt;optional><br>
+                
+
+                
+
+                
+                </td>
+            
+
+            
+                <td class="default">
+                
+                    null
+                
+                </td>
+            
+
+            <td class="description last">
+                type  Cliquez sur le bouton de déclenchement par défaut si c'est fermé, c'est le nom du bouton de fermeture entrant (name) ou nul.
+                
+            </td>
+        </tr>
+
+    
+    </tbody>
+</table>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+</div>
+        
+            
+<div class="section-method">
+
+    
+
+    <h4 class="name" id="onCompResize"><span class="type-signature"></span>onCompResize<span class="signature">()</span><span class="type-signature"></span></h4>
+
+    
+
+
+
+<div class="description">
+    Le père de récipients <code>Event.RESIZE</code> La fonction de traitement d'événement de l'auditeur.
+</div>
+
+
+
+
+
+<dl class="details">
+
+    
+
+    
+
+    
+    <dt class="inherited-from">Inherited From:</dt>
+    <dd class="inherited-from"><ul class="dummy"><li>
+        <a href="UI.Component.html#onCompResize">Component#onCompResize</a>
+    </li></ul></dd>
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    <!-- 
+    <dt class="tag-source">Source:</dt>
+    <dd class="tag-source"><ul class="dummy"><li>
+        js, line 218
+    </li></ul></dd>
+     -->
+
+    
+
+    
+
+    
+</dl>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+</div>
+        
+            
+<div class="section-method">
+
+    
+
+    <h4 class="name" id="onOpened"><span class="type-signature"></span>onOpened<span class="signature">()</span><span class="type-signature"></span></h4>
+
+    
+
+
+
+<div class="description">
+    Après l'achèvement de l'ouvrir, appelle ce procédé (s'il y a lieu d'éjection à l'animation d'animation, après achèvement de l'exécution)
+</div>
+
+
+
+
+
+<dl class="details">
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    <!-- 
+    <dt class="tag-source">Source:</dt>
+    <dd class="tag-source"><ul class="dummy"><li>
+        js, line 246
+    </li></ul></dd>
+     -->
+
+    
+
+    
+
+    
+</dl>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+</div>
+        
+            
+<div class="section-method">
+
+    
+
+    <h4 class="name" id="popup"><span class="type-signature"></span>popup<span class="signature">(closeOther)</span><span class="type-signature"></span></h4>
+
+    
+
+
+
+<div class="description">
+    Afficher la boîte de dialogue (en mode fenêtre d'affichage).
+</div>
+
+
+
+
+
+<dl class="details">
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    <!-- 
+    <dt class="tag-source">Source:</dt>
+    <dd class="tag-source"><ul class="dummy"><li>
+        js, line 242
+    </li></ul></dd>
+     -->
+
+    
+
+    
+
+    
+</dl>
+
+
+
+
+
+
+
+
+
+    <h5>Parameters:</h5>
+    
+
+<table class="params">
+    <thead>
+    <tr>
+        
+        <th>Name</th>
+        
+
+        <th>Type</th>
+
+        
+
+        
+
+        <th class="last">Description</th>
+    </tr>
+    </thead>
+
+    <tbody>
+    
+
+        <tr>
+            
+                <td class="name"><code>closeOther</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type"><code>Boolean</code></span>
+
+
+            
+            </td>
+
+            
+
+            
+
+            <td class="description last">
+                Si près d'autres boîtes de dialogue.Si la valeur vrai pour la fermeture de la boîte de dialogue.
+                
+            </td>
+        </tr>
+
+    
+    </tbody>
+</table>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+</div>
+        
+            
+<div class="section-method">
+
+    
+
+    <h4 class="name" id="preinitialize"><span class="type-signature"></span>preinitialize<span class="signature">()</span><span class="type-signature"></span></h4>
+
+    
+
+
+
+<div class="description">
+    <p> De pré - initialisation. </p>
+</div>
+
+
+
+
+
+<dl class="details">
+
+    
+
+    
+
+    
+    <dt class="inherited-from">Inherited From:</dt>
+    <dd class="inherited-from"><ul class="dummy"><li>
+        <a href="UI.Component.html#preinitialize">Component#preinitialize</a>
+    </li></ul></dd>
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    <!-- 
+    <dt class="tag-source">Source:</dt>
+    <dd class="tag-source"><ul class="dummy"><li>
+        js, line 179
+    </li></ul></dd>
+     -->
+
+    
+
+    
+
+    
+</dl>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+</div>
+        
+            
+<div class="section-method">
+
+    
+
+    <h4 class="name" id="regComponent"><span class="type-signature"></span>regComponent<span class="signature">(key, compClass)</span><span class="type-signature"></span></h4>
+
+    
+
+
+
+<div class="description">
+    Un composant d'enregistrement de type carte. 
+<p> Pour modifier la relation de correspondance entre l'ensemble d'extension et un ensemble. </p>
+</div>
+
+
+
+
+
+<dl class="details">
+
+    
+
+    
+
+    
+    <dt class="inherited-from">Inherited From:</dt>
+    <dd class="inherited-from"><ul class="dummy"><li>
+        <a href="UI.View.html#regComponent">View#regComponent</a>
+    </li></ul></dd>
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    <!-- 
+    <dt class="tag-source">Source:</dt>
+    <dd class="tag-source"><ul class="dummy"><li>
+        js, line 35
+    </li></ul></dd>
+     -->
+
+    
+
+    
+
+    
+</dl>
+
+
+
+
+
+
+
+
+
+    <h5>Parameters:</h5>
+    
+
+<table class="params">
+    <thead>
+    <tr>
+        
+        <th>Name</th>
+        
+
+        <th>Type</th>
+
+        
+
+        
+
+        <th class="last">Description</th>
+    </tr>
+    </thead>
+
+    <tbody>
+    
+
+        <tr>
+            
+                <td class="name"><code>key</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type"><code>String</code></span>
+
+
+            
+            </td>
+
+            
+
+            
+
+            <td class="description last">
+                Un ensemble de mots - clés.
+                
+            </td>
+        </tr>
+
+    
+
+        <tr>
+            
+                <td class="name"><code>compClass</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type"><code>Class</code></span>
+
+
+            
+            </td>
+
+            
+
+            
+
+            <td class="description last">
+                Les composants de la catégorie de l'objet.
+                
+            </td>
+        </tr>
+
+    
+    </tbody>
+</table>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+</div>
+        
+            
+<div class="section-method">
+
+    
+
+    <h4 class="name" id="regViewRuntime"><span class="type-signature"></span>regViewRuntime<span class="signature">(key, compClass)</span><span class="type-signature"></span></h4>
+
+    
+
+
+
+<div class="description">
+    Enregistrement logique de type de traitement des iu.
+</div>
+
+
+
+
+
+<dl class="details">
+
+    
+
+    
+
+    
+    <dt class="inherited-from">Inherited From:</dt>
+    <dd class="inherited-from"><ul class="dummy"><li>
+        <a href="UI.View.html#regViewRuntime">View#regViewRuntime</a>
+    </li></ul></dd>
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    <!-- 
+    <dt class="tag-source">Source:</dt>
+    <dd class="tag-source"><ul class="dummy"><li>
+        js, line 42
+    </li></ul></dd>
+     -->
+
+    
+
+    
+
+    
+</dl>
+
+
+
+
+
+
+
+
+
+    <h5>Parameters:</h5>
+    
+
+<table class="params">
+    <thead>
+    <tr>
+        
+        <th>Name</th>
+        
+
+        <th>Type</th>
+
+        
+
+        
+
+        <th class="last">Description</th>
+    </tr>
+    </thead>
+
+    <tbody>
+    
+
+        <tr>
+            
+                <td class="name"><code>key</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type"><code>String</code></span>
+
+
+            
+            </td>
+
+            
+
+            
+
+            <td class="description last">
+                Des mots - clés d'interface utilisateur en vue de classe.
+                
+            </td>
+        </tr>
+
+    
+
+        <tr>
+            
+                <td class="name"><code>compClass</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type"><code>Class</code></span>
+
+
+            
+            </td>
+
+            
+
+            
+
+            <td class="description last">
+                Ui en vue de classe correspondant à la logique de traitement de classe.
+                
+            </td>
+        </tr>
+
+    
+    </tbody>
+</table>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+</div>
+        
+            
+<div class="section-method">
+
+    
+
+    <h4 class="name" id="resetLayoutX"><span class="type-signature"></span>resetLayoutX<span class="signature">()</span><span class="type-signature"></span></h4>
+
+    
+
+
+
+<div class="description">
+    <p> Remise d'objets <code> X </p>
+</div>
+
+
+
+
+
+<dl class="details">
+
+    
+
+    
+
+    
+    <dt class="inherited-from">Inherited From:</dt>
+    <dd class="inherited-from"><ul class="dummy"><li>
+        <a href="UI.Component.html#resetLayoutX">Component#resetLayoutX</a>
+    </li></ul></dd>
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    <!-- 
+    <dt class="tag-source">Source:</dt>
+    <dd class="tag-source"><ul class="dummy"><li>
+        js, line 222
+    </li></ul></dd>
+     -->
+
+    
+
+    
+
+    
+</dl>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+</div>
+        
+            
+<div class="section-method">
+
+    
+
+    <h4 class="name" id="resetLayoutY"><span class="type-signature"></span>resetLayoutY<span class="signature">()</span><span class="type-signature"></span></h4>
+
+    
+
+
+
+<div class="description">
+    <p> Remise d'objets <code> Y </p>
+</div>
+
+
+
+
+
+<dl class="details">
+
+    
+
+    
+
+    
+    <dt class="inherited-from">Inherited From:</dt>
+    <dd class="inherited-from"><ul class="dummy"><li>
+        <a href="UI.Component.html#resetLayoutY">Component#resetLayoutY</a>
+    </li></ul></dd>
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    <!-- 
+    <dt class="tag-source">Source:</dt>
+    <dd class="tag-source"><ul class="dummy"><li>
+        js, line 226
+    </li></ul></dd>
+     -->
+
+    
+
+    
+
+    
+</dl>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+</div>
+        
+            
+<div class="section-method">
+
+    
+
+    <h4 class="name" id="runCallLater"><span class="type-signature"></span>runCallLater<span class="signature">(method)</span><span class="type-signature"></span></h4>
+
+    
+
+
+
+<div class="description">
+    <p> Si la fonction a besoin d'appel (par l'intermédiaire de retard <code>callLater</code> De réglage de fonction), il est immédiatement pour retarder l'exécution de l'appel de fonction. </p>
+</div>
+
+
+
+
+
+<dl class="details">
+
+    
+
+    
+
+    
+    <dt class="inherited-from">Inherited From:</dt>
+    <dd class="inherited-from"><ul class="dummy"><li>
+        <a href="UI.Component.html#runCallLater">Component#runCallLater</a>
+    </li></ul></dd>
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    <!-- 
+    <dt class="tag-source">Source:</dt>
+    <dd class="tag-source"><ul class="dummy"><li>
+        js, line 203
+    </li></ul></dd>
+     -->
+
+    
+
+    
+    <dt class="tag-see">See:</dt>
+    <dd class="tag-see">
+        <ul>
+            <li>Dialog.html#callLater()">#callLater()</a></li>
+        </ul>
+    </dd>
+    
+
+    
+</dl>
+
+
+
+
+
+
+
+
+
+    <h5>Parameters:</h5>
+    
+
+<table class="params">
+    <thead>
+    <tr>
+        
+        <th>Name</th>
+        
+
+        <th>Type</th>
+
+        
+
+        
+
+        <th class="last">Description</th>
+    </tr>
+    </thead>
+
+    <tbody>
+    
+
+        <tr>
+            
+                <td class="name"><code>method</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type"><code>function</code></span>
+
+
+            
+            </td>
+
+            
+
+            
+
+            <td class="description last">
+                Le nom de la fonction à exécuter.Par exemple, functionName.
+                
+            </td>
+        </tr>
+
+    
+    </tbody>
+</table>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+</div>
+        
+            
+<div class="section-method">
+
+    
+
+    <h4 class="name" id="setLockView"><span class="type-signature"></span>setLockView<span class="signature">(view)</span><span class="type-signature"></span></h4>
+
+    
+
+
+
+<div class="description">
+    Ensemble de verrouillage de l'interface, l'interface n'est pas prêt avant l'affichage d'interface de verrouillage, prêt est retiré de la couche de blocage, si vide est de ne rien afficher
+</div>
+
+
+
+
+
+<dl class="details">
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    <!-- 
+    <dt class="tag-source">Source:</dt>
+    <dd class="tag-source"><ul class="dummy"><li>
+        js, line 261
+    </li></ul></dd>
+     -->
+
+    
+
+    
+
+    
+</dl>
+
+
+
+
+
+
+
+
+
+    <h5>Parameters:</h5>
+    
+
+<table class="params">
+    <thead>
+    <tr>
+        
+        <th>Name</th>
+        
+
+        <th>Type</th>
+
+        
+
+        
+
+        <th class="last">Description</th>
+    </tr>
+    </thead>
+
+    <tbody>
+    
+
+        <tr>
+            
+                <td class="name"><code>view</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type"><code><a href="UI.Component.html">Component</a></code></span>
+
+
+            
+            </td>
+
+            
+
+            
+
+            <td class="description last">
+                Interface de verrouillage de contenu
+                
+            </td>
+        </tr>
+
+    
+    </tbody>
+</table>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+</div>
+        
+            
+<div class="section-method">
+
+    
+
+    <h4 class="name" id="show"><span class="type-signature"></span>show<span class="signature">(closeOther)</span><span class="type-signature"></span></h4>
+
+    
+
+
+
+<div class="description">
+    Afficher la boîte de dialogue (de façon non - fenêtre de mode d'affichage).
+</div>
+
+
+
+
+
+<dl class="details">
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    <!-- 
+    <dt class="tag-source">Source:</dt>
+    <dd class="tag-source"><ul class="dummy"><li>
+        js, line 237
+    </li></ul></dd>
+     -->
+
+    
+
+    
+
+    
+</dl>
+
+
+
+
+
+
+
+
+
+    <h5>Parameters:</h5>
+    
+
+<table class="params">
+    <thead>
+    <tr>
+        
+        <th>Name</th>
+        
+
+        <th>Type</th>
+
+        
+
+        
+
+        <th class="last">Description</th>
+    </tr>
+    </thead>
+
+    <tbody>
+    
+
+        <tr>
+            
+                <td class="name"><code>closeOther</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type"><code>Boolean</code></span>
+
+
+            
+            </td>
+
+            
+
+            
+
+            <td class="description last">
+                Si près d'autres boîtes de dialogue.Si la valeur vrai pour la fermeture de la boîte de dialogue.
+                
+            </td>
+        </tr>
+
+    
+    </tbody>
+</table>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+</div>
+        
+    
+
+    
+
+    
+        <h3 class="subsection-title">Event</h3>
+
+        
+            
+<div class="section-method">
+
+    
+
+    <h4 class="name" id="event:resize">resize</h4>
+
+    
+
+
+
+
+
+
+
+<dl class="details">
+
+    
+
+    
+
+    
+    <dt class="inherited-from">Inherited From:</dt>
+    <dd class="inherited-from"><ul class="dummy"><li>
+        <a href="UI.Component.html#event:resize">Component#event:resize</a>
+    </li></ul></dd>
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    <!-- 
+    <dt class="tag-source">Source:</dt>
+    <dd class="tag-source"><ul class="dummy"><li>
+        js, line 227
+    </li></ul></dd>
+     -->
+
+    
+
+    
+    <dt class="tag-see">See:</dt>
+    <dd class="tag-see">
+        <ul>
+            <li>events.Event</li>
+        </ul>
+    </dd>
+    
+
+    
+</dl>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+</div>
+        
+    
+</article>
+
+</section>
+
+
+
+
+</div>
+<br class="clear">
+
+
+
+<script src="scripts/linenumber.js"></script>
+
+</body>
+</html>

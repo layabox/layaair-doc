@@ -1,0 +1,4661 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1">
+    <title>Stage - Documentation</title>
+
+    <script src="scripts/prettify/prettify.js"></script>
+    <script src="scripts/prettify/lang-css.js"></script>
+    <!--[if lt IE 9]>
+      <script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script>
+    <![endif]-->
+    <link type="text/css" rel="stylesheet" href="https://code.ionicframework.com/ionicons/2.0.1/css/ionicons.min.css">
+    <link type="text/css" rel="stylesheet" href="styles/prettify-tomorrow.css">
+    <link type="text/css" rel="stylesheet" href="styles/jsdoc-default.css">
+</head>
+<body>
+
+
+
+
+
+<div>
+
+
+<!--     
+    <h1 class="page-title">Stage</h1>
+     -->
+
+    
+
+
+
+
+<section>
+
+<header>
+    
+        <h2>
+            <span class="ancestors"><a href="Core.html">Core</a>.</span>
+        
+        Stage
+        </h2>
+        
+            <div class="class-description"><p> <code>Stage</code> 是舞台类，显示列表的根节点，所有显示对象都在舞台上显示。通过 Laya.stage 单例访问。</p>
+Stage提供几种适配模式，不同的适配模式会产生不同的画布大小，画布越大，渲染压力越大，所以要选择合适的适配方案。
+Stage提供不同的帧率模式，帧率越高，渲染压力越大，越费电，合理使用帧率甚至动态更改帧率有利于改进手机耗电。</div>
+        
+    
+</header>
+
+<article>
+    <div class="container-overview">
+    
+        
+<div class="section-method">
+
+    
+    <h2>构造函数</h2>
+    
+
+    <h4 class="name" id="Stage"><span class="type-signature"></span>new Stage<span class="signature">()</span><span class="type-signature"></span></h4>
+
+    
+
+
+
+<div class="description">
+    场景类，引擎中只有一个stage实例，此实例可以通过Laya.stage访问。
+</div>
+
+
+
+
+
+<dl class="details">
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    <!-- 
+    <dt class="tag-source">Source:</dt>
+    <dd class="tag-source"><ul class="dummy"><li>
+        js, line 8
+    </li></ul></dd>
+     -->
+
+    
+
+    
+
+    
+</dl>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+</div>
+    
+    </div>
+
+    
+        <h3 class="subsection-title">继承</h3>
+
+        
+
+
+    <ul>
+        <li>Sprite</li>
+    </ul>
+
+
+    
+
+    
+
+    
+
+     
+
+    
+
+    
+        <h3 class="subsection-title">成员</h3>
+
+        
+            
+<div class="section-members">
+<h4 class="name" id=".ALIGN_BOTTOM"><span class="type-signature">(static) </span>ALIGN_BOTTOM<span class="type-signature"> :String</span></h4>
+
+
+
+
+
+
+
+
+<dl class="details">
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+    <dt class="tag-default">Default Value:</dt>
+    <dd class="tag-default"><ul class="dummy">
+            <li>"bottom"</li>
+        </ul></dd>
+    
+
+    <!-- 
+    <dt class="tag-source">Source:</dt>
+    <dd class="tag-source"><ul class="dummy"><li>
+        js, line 90
+    </li></ul></dd>
+     -->
+
+    
+
+    
+
+    
+</dl>
+
+
+<!-- 
+    <h5>Type:</h5>
+    <ul>
+        <li>
+            
+<span class="param-type"><code>String</code></span>
+
+
+        </li>
+    </ul>
+ -->
+
+
+
+
+</div>
+
+        
+            
+<div class="section-members">
+<h4 class="name" id=".ALIGN_CENTER"><span class="type-signature">(static) </span>ALIGN_CENTER<span class="type-signature"> :String</span></h4>
+
+
+
+
+
+
+
+
+<dl class="details">
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+    <dt class="tag-default">Default Value:</dt>
+    <dd class="tag-default"><ul class="dummy">
+            <li>"center"</li>
+        </ul></dd>
+    
+
+    <!-- 
+    <dt class="tag-source">Source:</dt>
+    <dd class="tag-source"><ul class="dummy"><li>
+        js, line 72
+    </li></ul></dd>
+     -->
+
+    
+
+    
+
+    
+</dl>
+
+
+<!-- 
+    <h5>Type:</h5>
+    <ul>
+        <li>
+            
+<span class="param-type"><code>String</code></span>
+
+
+        </li>
+    </ul>
+ -->
+
+
+
+
+</div>
+
+        
+            
+<div class="section-members">
+<h4 class="name" id=".ALIGN_LEFT"><span class="type-signature">(static) </span>ALIGN_LEFT<span class="type-signature"> :String</span></h4>
+
+
+
+
+
+
+
+
+<dl class="details">
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+    <dt class="tag-default">Default Value:</dt>
+    <dd class="tag-default"><ul class="dummy">
+            <li>"left"</li>
+        </ul></dd>
+    
+
+    <!-- 
+    <dt class="tag-source">Source:</dt>
+    <dd class="tag-source"><ul class="dummy"><li>
+        js, line 60
+    </li></ul></dd>
+     -->
+
+    
+
+    
+
+    
+</dl>
+
+
+<!-- 
+    <h5>Type:</h5>
+    <ul>
+        <li>
+            
+<span class="param-type"><code>String</code></span>
+
+
+        </li>
+    </ul>
+ -->
+
+
+
+
+</div>
+
+        
+            
+<div class="section-members">
+<h4 class="name" id=".ALIGN_MIDDLE"><span class="type-signature">(static) </span>ALIGN_MIDDLE<span class="type-signature"> :String</span></h4>
+
+
+
+
+
+
+
+
+<dl class="details">
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+    <dt class="tag-default">Default Value:</dt>
+    <dd class="tag-default"><ul class="dummy">
+            <li>"middle"</li>
+        </ul></dd>
+    
+
+    <!-- 
+    <dt class="tag-source">Source:</dt>
+    <dd class="tag-source"><ul class="dummy"><li>
+        js, line 84
+    </li></ul></dd>
+     -->
+
+    
+
+    
+
+    
+</dl>
+
+
+<!-- 
+    <h5>Type:</h5>
+    <ul>
+        <li>
+            
+<span class="param-type"><code>String</code></span>
+
+
+        </li>
+    </ul>
+ -->
+
+
+
+
+</div>
+
+        
+            
+<div class="section-members">
+<h4 class="name" id=".ALIGN_RIGHT"><span class="type-signature">(static) </span>ALIGN_RIGHT<span class="type-signature"> :String</span></h4>
+
+
+
+
+
+
+
+
+<dl class="details">
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+    <dt class="tag-default">Default Value:</dt>
+    <dd class="tag-default"><ul class="dummy">
+            <li>"right"</li>
+        </ul></dd>
+    
+
+    <!-- 
+    <dt class="tag-source">Source:</dt>
+    <dd class="tag-source"><ul class="dummy"><li>
+        js, line 66
+    </li></ul></dd>
+     -->
+
+    
+
+    
+
+    
+</dl>
+
+
+<!-- 
+    <h5>Type:</h5>
+    <ul>
+        <li>
+            
+<span class="param-type"><code>String</code></span>
+
+
+        </li>
+    </ul>
+ -->
+
+
+
+
+</div>
+
+        
+            
+<div class="section-members">
+<h4 class="name" id=".ALIGN_TOP"><span class="type-signature">(static) </span>ALIGN_TOP<span class="type-signature"> :String</span></h4>
+
+
+
+
+
+
+
+
+<dl class="details">
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+    <dt class="tag-default">Default Value:</dt>
+    <dd class="tag-default"><ul class="dummy">
+            <li>"top"</li>
+        </ul></dd>
+    
+
+    <!-- 
+    <dt class="tag-source">Source:</dt>
+    <dd class="tag-source"><ul class="dummy"><li>
+        js, line 78
+    </li></ul></dd>
+     -->
+
+    
+
+    
+
+    
+</dl>
+
+
+<!-- 
+    <h5>Type:</h5>
+    <ul>
+        <li>
+            
+<span class="param-type"><code>String</code></span>
+
+
+        </li>
+    </ul>
+ -->
+
+
+
+
+</div>
+
+        
+            
+<div class="section-members">
+<h4 class="name" id=".FRAME_FAST"><span class="type-signature">(static) </span>FRAME_FAST<span class="type-signature"> :String</span></h4>
+
+
+
+
+
+
+
+
+<dl class="details">
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+    <dt class="tag-default">Default Value:</dt>
+    <dd class="tag-default"><ul class="dummy">
+            <li>"fast"</li>
+        </ul></dd>
+    
+
+    <!-- 
+    <dt class="tag-source">Source:</dt>
+    <dd class="tag-source"><ul class="dummy"><li>
+        js, line 114
+    </li></ul></dd>
+     -->
+
+    
+
+    
+
+    
+</dl>
+
+
+<!-- 
+    <h5>Type:</h5>
+    <ul>
+        <li>
+            
+<span class="param-type"><code>String</code></span>
+
+
+        </li>
+    </ul>
+ -->
+
+
+
+
+</div>
+
+        
+            
+<div class="section-members">
+<h4 class="name" id=".FRAME_MOUSE"><span class="type-signature">(static) </span>FRAME_MOUSE<span class="type-signature"> :String</span></h4>
+
+
+
+
+
+
+
+
+<dl class="details">
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+    <dt class="tag-default">Default Value:</dt>
+    <dd class="tag-default"><ul class="dummy">
+            <li>"mouse"</li>
+        </ul></dd>
+    
+
+    <!-- 
+    <dt class="tag-source">Source:</dt>
+    <dd class="tag-source"><ul class="dummy"><li>
+        js, line 126
+    </li></ul></dd>
+     -->
+
+    
+
+    
+
+    
+</dl>
+
+
+<!-- 
+    <h5>Type:</h5>
+    <ul>
+        <li>
+            
+<span class="param-type"><code>String</code></span>
+
+
+        </li>
+    </ul>
+ -->
+
+
+
+
+</div>
+
+        
+            
+<div class="section-members">
+<h4 class="name" id=".FRAME_SLEEP"><span class="type-signature">(static) </span>FRAME_SLEEP<span class="type-signature"> :String</span></h4>
+
+
+
+
+
+
+
+
+<dl class="details">
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+    <dt class="tag-default">Default Value:</dt>
+    <dd class="tag-default"><ul class="dummy">
+            <li>"sleep"</li>
+        </ul></dd>
+    
+
+    <!-- 
+    <dt class="tag-source">Source:</dt>
+    <dd class="tag-source"><ul class="dummy"><li>
+        js, line 132
+    </li></ul></dd>
+     -->
+
+    
+
+    
+
+    
+</dl>
+
+
+<!-- 
+    <h5>Type:</h5>
+    <ul>
+        <li>
+            
+<span class="param-type"><code>String</code></span>
+
+
+        </li>
+    </ul>
+ -->
+
+
+
+
+</div>
+
+        
+            
+<div class="section-members">
+<h4 class="name" id=".FRAME_SLOW"><span class="type-signature">(static) </span>FRAME_SLOW<span class="type-signature"> :String</span></h4>
+
+
+
+
+
+
+
+
+<dl class="details">
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+    <dt class="tag-default">Default Value:</dt>
+    <dd class="tag-default"><ul class="dummy">
+            <li>"slow"</li>
+        </ul></dd>
+    
+
+    <!-- 
+    <dt class="tag-source">Source:</dt>
+    <dd class="tag-source"><ul class="dummy"><li>
+        js, line 120
+    </li></ul></dd>
+     -->
+
+    
+
+    
+
+    
+</dl>
+
+
+<!-- 
+    <h5>Type:</h5>
+    <ul>
+        <li>
+            
+<span class="param-type"><code>String</code></span>
+
+
+        </li>
+    </ul>
+ -->
+
+
+
+
+</div>
+
+        
+            
+<div class="section-members">
+<h4 class="name" id=".SCALE_EXACTFIT"><span class="type-signature">(static) </span>SCALE_EXACTFIT<span class="type-signature"> :String</span></h4>
+
+
+
+
+
+
+
+
+<dl class="details">
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+    <dt class="tag-default">Default Value:</dt>
+    <dd class="tag-default"><ul class="dummy">
+            <li>"exactfit"</li>
+        </ul></dd>
+    
+
+    <!-- 
+    <dt class="tag-source">Source:</dt>
+    <dd class="tag-source"><ul class="dummy"><li>
+        js, line 24
+    </li></ul></dd>
+     -->
+
+    
+
+    
+
+    
+</dl>
+
+
+<!-- 
+    <h5>Type:</h5>
+    <ul>
+        <li>
+            
+<span class="param-type"><code>String</code></span>
+
+
+        </li>
+    </ul>
+ -->
+
+
+
+
+</div>
+
+        
+            
+<div class="section-members">
+<h4 class="name" id=".SCALE_FIXED_HEIGHT"><span class="type-signature">(static) </span>SCALE_FIXED_HEIGHT<span class="type-signature"> :String</span></h4>
+
+
+
+
+
+
+
+
+<dl class="details">
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+    <dt class="tag-default">Default Value:</dt>
+    <dd class="tag-default"><ul class="dummy">
+            <li>"fixedheight"</li>
+        </ul></dd>
+    
+
+    <!-- 
+    <dt class="tag-source">Source:</dt>
+    <dd class="tag-source"><ul class="dummy"><li>
+        js, line 54
+    </li></ul></dd>
+     -->
+
+    
+
+    
+
+    
+</dl>
+
+
+<!-- 
+    <h5>Type:</h5>
+    <ul>
+        <li>
+            
+<span class="param-type"><code>String</code></span>
+
+
+        </li>
+    </ul>
+ -->
+
+
+
+
+</div>
+
+        
+            
+<div class="section-members">
+<h4 class="name" id=".SCALE_FIXED_WIDTH"><span class="type-signature">(static) </span>SCALE_FIXED_WIDTH<span class="type-signature"> :String</span></h4>
+
+
+
+
+
+
+
+
+<dl class="details">
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+    <dt class="tag-default">Default Value:</dt>
+    <dd class="tag-default"><ul class="dummy">
+            <li>"fixedwidth"</li>
+        </ul></dd>
+    
+
+    <!-- 
+    <dt class="tag-source">Source:</dt>
+    <dd class="tag-source"><ul class="dummy"><li>
+        js, line 48
+    </li></ul></dd>
+     -->
+
+    
+
+    
+
+    
+</dl>
+
+
+<!-- 
+    <h5>Type:</h5>
+    <ul>
+        <li>
+            
+<span class="param-type"><code>String</code></span>
+
+
+        </li>
+    </ul>
+ -->
+
+
+
+
+</div>
+
+        
+            
+<div class="section-members">
+<h4 class="name" id=".SCALE_FULL"><span class="type-signature">(static) </span>SCALE_FULL<span class="type-signature"> :String</span></h4>
+
+
+
+
+
+
+
+
+<dl class="details">
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+    <dt class="tag-default">Default Value:</dt>
+    <dd class="tag-default"><ul class="dummy">
+            <li>"full"</li>
+        </ul></dd>
+    
+
+    <!-- 
+    <dt class="tag-source">Source:</dt>
+    <dd class="tag-source"><ul class="dummy"><li>
+        js, line 42
+    </li></ul></dd>
+     -->
+
+    
+
+    
+
+    
+</dl>
+
+
+<!-- 
+    <h5>Type:</h5>
+    <ul>
+        <li>
+            
+<span class="param-type"><code>String</code></span>
+
+
+        </li>
+    </ul>
+ -->
+
+
+
+
+</div>
+
+        
+            
+<div class="section-members">
+<h4 class="name" id=".SCALE_NOBORDER"><span class="type-signature">(static) </span>SCALE_NOBORDER<span class="type-signature"> :String</span></h4>
+
+
+
+
+
+
+
+
+<dl class="details">
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+    <dt class="tag-default">Default Value:</dt>
+    <dd class="tag-default"><ul class="dummy">
+            <li>"noborder"</li>
+        </ul></dd>
+    
+
+    <!-- 
+    <dt class="tag-source">Source:</dt>
+    <dd class="tag-source"><ul class="dummy"><li>
+        js, line 36
+    </li></ul></dd>
+     -->
+
+    
+
+    
+
+    
+</dl>
+
+
+<!-- 
+    <h5>Type:</h5>
+    <ul>
+        <li>
+            
+<span class="param-type"><code>String</code></span>
+
+
+        </li>
+    </ul>
+ -->
+
+
+
+
+</div>
+
+        
+            
+<div class="section-members">
+<h4 class="name" id=".SCALE_NOSCALE"><span class="type-signature">(static) </span>SCALE_NOSCALE<span class="type-signature"> :String</span></h4>
+
+
+
+
+
+
+
+
+<dl class="details">
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+    <dt class="tag-default">Default Value:</dt>
+    <dd class="tag-default"><ul class="dummy">
+            <li>"noscale"</li>
+        </ul></dd>
+    
+
+    <!-- 
+    <dt class="tag-source">Source:</dt>
+    <dd class="tag-source"><ul class="dummy"><li>
+        js, line 18
+    </li></ul></dd>
+     -->
+
+    
+
+    
+
+    
+</dl>
+
+
+<!-- 
+    <h5>Type:</h5>
+    <ul>
+        <li>
+            
+<span class="param-type"><code>String</code></span>
+
+
+        </li>
+    </ul>
+ -->
+
+
+
+
+</div>
+
+        
+            
+<div class="section-members">
+<h4 class="name" id=".SCALE_SHOWALL"><span class="type-signature">(static) </span>SCALE_SHOWALL<span class="type-signature"> :String</span></h4>
+
+
+
+
+
+
+
+
+<dl class="details">
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+    <dt class="tag-default">Default Value:</dt>
+    <dd class="tag-default"><ul class="dummy">
+            <li>"showall"</li>
+        </ul></dd>
+    
+
+    <!-- 
+    <dt class="tag-source">Source:</dt>
+    <dd class="tag-source"><ul class="dummy"><li>
+        js, line 30
+    </li></ul></dd>
+     -->
+
+    
+
+    
+
+    
+</dl>
+
+
+<!-- 
+    <h5>Type:</h5>
+    <ul>
+        <li>
+            
+<span class="param-type"><code>String</code></span>
+
+
+        </li>
+    </ul>
+ -->
+
+
+
+
+</div>
+
+        
+            
+<div class="section-members">
+<h4 class="name" id=".SCREEN_HORIZONTAL"><span class="type-signature">(static) </span>SCREEN_HORIZONTAL<span class="type-signature"> :String</span></h4>
+
+
+
+
+
+
+
+
+<dl class="details">
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+    <dt class="tag-default">Default Value:</dt>
+    <dd class="tag-default"><ul class="dummy">
+            <li>"horizontal"</li>
+        </ul></dd>
+    
+
+    <!-- 
+    <dt class="tag-source">Source:</dt>
+    <dd class="tag-source"><ul class="dummy"><li>
+        js, line 102
+    </li></ul></dd>
+     -->
+
+    
+
+    
+
+    
+</dl>
+
+
+<!-- 
+    <h5>Type:</h5>
+    <ul>
+        <li>
+            
+<span class="param-type"><code>String</code></span>
+
+
+        </li>
+    </ul>
+ -->
+
+
+
+
+</div>
+
+        
+            
+<div class="section-members">
+<h4 class="name" id=".SCREEN_NONE"><span class="type-signature">(static) </span>SCREEN_NONE<span class="type-signature"> :String</span></h4>
+
+
+
+
+
+
+
+
+<dl class="details">
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+    <dt class="tag-default">Default Value:</dt>
+    <dd class="tag-default"><ul class="dummy">
+            <li>"none"</li>
+        </ul></dd>
+    
+
+    <!-- 
+    <dt class="tag-source">Source:</dt>
+    <dd class="tag-source"><ul class="dummy"><li>
+        js, line 96
+    </li></ul></dd>
+     -->
+
+    
+
+    
+
+    
+</dl>
+
+
+<!-- 
+    <h5>Type:</h5>
+    <ul>
+        <li>
+            
+<span class="param-type"><code>String</code></span>
+
+
+        </li>
+    </ul>
+ -->
+
+
+
+
+</div>
+
+        
+            
+<div class="section-members">
+<h4 class="name" id=".SCREEN_VERTICAL"><span class="type-signature">(static) </span>SCREEN_VERTICAL<span class="type-signature"> :String</span></h4>
+
+
+
+
+
+
+
+
+<dl class="details">
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+    <dt class="tag-default">Default Value:</dt>
+    <dd class="tag-default"><ul class="dummy">
+            <li>"vertical"</li>
+        </ul></dd>
+    
+
+    <!-- 
+    <dt class="tag-source">Source:</dt>
+    <dd class="tag-source"><ul class="dummy"><li>
+        js, line 108
+    </li></ul></dd>
+     -->
+
+    
+
+    
+
+    
+</dl>
+
+
+<!-- 
+    <h5>Type:</h5>
+    <ul>
+        <li>
+            
+<span class="param-type"><code>String</code></span>
+
+
+        </li>
+    </ul>
+ -->
+
+
+
+
+</div>
+
+        
+            
+<div class="section-members">
+<h4 class="name" id="alignH"><span class="type-signature"></span>alignH<span class="type-signature"> :String</span></h4>
+
+
+
+
+<div class="description">
+    水平对齐方式。
+<p>
+<li>"left" ：居左对齐；</li>
+<li>"center" ：居中对齐；</li>
+<li>"right" ：居右对齐；</li>
+		 *</p>
+默认值为"left"。
+</div>
+
+
+
+
+
+<dl class="details">
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    <!-- 
+    <dt class="tag-source">Source:</dt>
+    <dd class="tag-source"><ul class="dummy"><li>
+        js, line 235
+    </li></ul></dd>
+     -->
+
+    
+
+    
+
+    
+</dl>
+
+
+<!-- 
+    <h5>Type:</h5>
+    <ul>
+        <li>
+            
+<span class="param-type"><code>String</code></span>
+
+
+        </li>
+    </ul>
+ -->
+
+
+
+
+</div>
+
+        
+            
+<div class="section-members">
+<h4 class="name" id="alignV"><span class="type-signature"></span>alignV<span class="type-signature"> :String</span></h4>
+
+
+
+
+<div class="description">
+    垂直对齐方式。
+<p>
+<li>"top" ：居顶部对齐；</li>
+<li>"middle" ：居中对齐；</li>
+<li>"bottom" ：居底部对齐；</li>
+		 *</p>
+默认值为"top"。
+</div>
+
+
+
+
+
+<dl class="details">
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    <!-- 
+    <dt class="tag-source">Source:</dt>
+    <dd class="tag-source"><ul class="dummy"><li>
+        js, line 247
+    </li></ul></dd>
+     -->
+
+    
+
+    
+
+    
+</dl>
+
+
+<!-- 
+    <h5>Type:</h5>
+    <ul>
+        <li>
+            
+<span class="param-type"><code>String</code></span>
+
+
+        </li>
+    </ul>
+ -->
+
+
+
+
+</div>
+
+        
+            
+<div class="section-members">
+<h4 class="name" id="bgColor"><span class="type-signature"></span>bgColor<span class="type-signature"> :String</span></h4>
+
+
+
+
+<div class="description">
+    舞台的背景颜色，默认为黑色，null为透明。
+</div>
+
+
+
+
+
+<dl class="details">
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    <!-- 
+    <dt class="tag-source">Source:</dt>
+    <dd class="tag-source"><ul class="dummy"><li>
+        js, line 253
+    </li></ul></dd>
+     -->
+
+    
+
+    
+
+    
+</dl>
+
+
+<!-- 
+    <h5>Type:</h5>
+    <ul>
+        <li>
+            
+<span class="param-type"><code>String</code></span>
+
+
+        </li>
+    </ul>
+ -->
+
+
+
+
+</div>
+
+        
+            
+<div class="section-members">
+<h4 class="name" id="canvasDegree"><span class="type-signature"></span>canvasDegree<span class="type-signature"> :int</span></h4>
+
+
+
+
+<div class="description">
+    画布的旋转角度。
+</div>
+
+
+
+
+
+<dl class="details">
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+    <dt class="tag-default">Default Value:</dt>
+    <dd class="tag-default"><ul class="dummy">
+            <li>0</li>
+        </ul></dd>
+    
+
+    <!-- 
+    <dt class="tag-source">Source:</dt>
+    <dd class="tag-source"><ul class="dummy"><li>
+        js, line 172
+    </li></ul></dd>
+     -->
+
+    
+
+    
+
+    
+</dl>
+
+
+<!-- 
+    <h5>Type:</h5>
+    <ul>
+        <li>
+            
+<span class="param-type"><code>int</code></span>
+
+
+        </li>
+    </ul>
+ -->
+
+
+
+
+</div>
+
+        
+            
+<div class="section-members">
+<h4 class="name" id="canvasRotation"><span class="type-signature"></span>canvasRotation<span class="type-signature"> :Boolean</span></h4>
+
+
+
+
+<div class="description">
+    画布是否发生翻转。
+</div>
+
+
+
+
+
+<dl class="details">
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    <!-- 
+    <dt class="tag-source">Source:</dt>
+    <dd class="tag-source"><ul class="dummy"><li>
+        js, line 165
+    </li></ul></dd>
+     -->
+
+    
+
+    
+
+    
+</dl>
+
+
+<!-- 
+    <h5>Type:</h5>
+    <ul>
+        <li>
+            
+<span class="param-type"><code>Boolean</code></span>
+
+
+        </li>
+    </ul>
+ -->
+
+
+
+
+</div>
+
+        
+            
+<div class="section-members">
+<h4 class="name" id="clientScaleX"><span class="type-signature"></span>clientScaleX<span class="type-signature"> :Number</span></h4>
+
+
+
+
+<div class="description">
+    当前视窗由缩放模式导致的 X 轴缩放系数。
+</div>
+
+
+
+
+
+<dl class="details">
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    <!-- 
+    <dt class="tag-source">Source:</dt>
+    <dd class="tag-source"><ul class="dummy"><li>
+        js, line 269
+    </li></ul></dd>
+     -->
+
+    
+
+    
+
+    
+</dl>
+
+
+<!-- 
+    <h5>Type:</h5>
+    <ul>
+        <li>
+            
+<span class="param-type"><code>Number</code></span>
+
+
+        </li>
+    </ul>
+ -->
+
+
+
+
+</div>
+
+        
+            
+<div class="section-members">
+<h4 class="name" id="clientScaleY"><span class="type-signature"></span>clientScaleY<span class="type-signature"> :Number</span></h4>
+
+
+
+
+<div class="description">
+    当前视窗由缩放模式导致的 Y 轴缩放系数。
+</div>
+
+
+
+
+
+<dl class="details">
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    <!-- 
+    <dt class="tag-source">Source:</dt>
+    <dd class="tag-source"><ul class="dummy"><li>
+        js, line 274
+    </li></ul></dd>
+     -->
+
+    
+
+    
+
+    
+</dl>
+
+
+<!-- 
+    <h5>Type:</h5>
+    <ul>
+        <li>
+            
+<span class="param-type"><code>Number</code></span>
+
+
+        </li>
+    </ul>
+ -->
+
+
+
+
+</div>
+
+        
+            
+<div class="section-members">
+<h4 class="name" id="designHeight"><span class="type-signature"></span>designHeight<span class="type-signature"> :Number</span></h4>
+
+
+
+
+<div class="description">
+    设计高度（初始化时设置的高度Laya.init(width,height)）
+</div>
+
+
+
+
+
+<dl class="details">
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+    <dt class="tag-default">Default Value:</dt>
+    <dd class="tag-default"><ul class="dummy">
+            <li>0</li>
+        </ul></dd>
+    
+
+    <!-- 
+    <dt class="tag-source">Source:</dt>
+    <dd class="tag-source"><ul class="dummy"><li>
+        js, line 159
+    </li></ul></dd>
+     -->
+
+    
+
+    
+
+    
+</dl>
+
+
+<!-- 
+    <h5>Type:</h5>
+    <ul>
+        <li>
+            
+<span class="param-type"><code>Number</code></span>
+
+
+        </li>
+    </ul>
+ -->
+
+
+
+
+</div>
+
+        
+            
+<div class="section-members">
+<h4 class="name" id="designWidth"><span class="type-signature"></span>designWidth<span class="type-signature"> :Number</span></h4>
+
+
+
+
+<div class="description">
+    设计宽度（初始化时设置的宽度Laya.init(width,height)）
+</div>
+
+
+
+
+
+<dl class="details">
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+    <dt class="tag-default">Default Value:</dt>
+    <dd class="tag-default"><ul class="dummy">
+            <li>0</li>
+        </ul></dd>
+    
+
+    <!-- 
+    <dt class="tag-source">Source:</dt>
+    <dd class="tag-source"><ul class="dummy"><li>
+        js, line 152
+    </li></ul></dd>
+     -->
+
+    
+
+    
+
+    
+</dl>
+
+
+<!-- 
+    <h5>Type:</h5>
+    <ul>
+        <li>
+            
+<span class="param-type"><code>Number</code></span>
+
+
+        </li>
+    </ul>
+ -->
+
+
+
+
+</div>
+
+        
+            
+<div class="section-members">
+<h4 class="name" id="focus"><span class="type-signature"></span>focus<span class="type-signature"> :<a href="Core.Node.html">Node</a></span></h4>
+
+
+
+
+<div class="description">
+    当前焦点对象，此对象会影响当前键盘事件的派发主体。
+</div>
+
+
+
+
+
+<dl class="details">
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    <!-- 
+    <dt class="tag-source">Source:</dt>
+    <dd class="tag-source"><ul class="dummy"><li>
+        js, line 138
+    </li></ul></dd>
+     -->
+
+    
+
+    
+
+    
+</dl>
+
+
+<!-- 
+    <h5>Type:</h5>
+    <ul>
+        <li>
+            
+<span class="param-type"><code><a href="Core.Node.html">Node</a></code></span>
+
+
+        </li>
+    </ul>
+ -->
+
+
+
+
+</div>
+
+        
+            
+<div class="section-members">
+<h4 class="name" id="frameRate"><span class="type-signature"></span>frameRate<span class="type-signature"> :String</span></h4>
+
+
+
+
+<div class="description">
+    帧率类型，支持三种模式：fast-60帧(默认)，slow-30帧，mouse-30帧（鼠标活动后会自动加速到60，鼠标不动2秒后降低为30帧，以节省消耗），sleep-1帧。
+</div>
+
+
+
+
+
+<dl class="details">
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+    <dt class="tag-default">Default Value:</dt>
+    <dd class="tag-default"><ul class="dummy">
+            <li>"fast"</li>
+        </ul></dd>
+    
+
+    <!-- 
+    <dt class="tag-source">Source:</dt>
+    <dd class="tag-source"><ul class="dummy"><li>
+        js, line 145
+    </li></ul></dd>
+     -->
+
+    
+
+    
+
+    
+</dl>
+
+
+<!-- 
+    <h5>Type:</h5>
+    <ul>
+        <li>
+            
+<span class="param-type"><code>String</code></span>
+
+
+        </li>
+    </ul>
+ -->
+
+
+
+
+</div>
+
+        
+            
+<div class="section-members">
+<h4 class="name" id="fullScreenEnabled"><span class="type-signature"></span>fullScreenEnabled<span class="type-signature"> :Boolean</span></h4>
+
+
+
+
+
+
+
+
+<dl class="details">
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    <!-- 
+    <dt class="tag-source">Source:</dt>
+    <dd class="tag-source"><ul class="dummy"><li>
+        js, line 293
+    </li></ul></dd>
+     -->
+
+    
+
+    
+
+    
+</dl>
+
+
+<!-- 
+    <h5>Type:</h5>
+    <ul>
+        <li>
+            
+<span class="param-type"><code>Boolean</code></span>
+
+
+        </li>
+    </ul>
+ -->
+
+
+
+
+</div>
+
+        
+            
+<div class="section-members">
+<h4 class="name" id="height"><span class="type-signature"></span>height<span class="type-signature"> :Number</span></h4>
+
+
+
+
+
+
+
+
+<dl class="details">
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    <!-- 
+    <dt class="tag-source">Source:</dt>
+    <dd class="tag-source"><ul class="dummy"><li>
+        js, line 194
+    </li></ul></dd>
+     -->
+
+    
+
+    
+
+    
+</dl>
+
+
+<!-- 
+    <h5>Type:</h5>
+    <ul>
+        <li>
+            
+<span class="param-type"><code>Number</code></span>
+
+
+        </li>
+    </ul>
+ -->
+
+
+
+
+</div>
+
+        
+            
+<div class="section-members">
+<h4 class="name" id="isFocused"><span class="type-signature"></span>isFocused<span class="type-signature"> :Boolean</span></h4>
+
+
+
+
+<div class="description">
+    舞台是否获得焦点。
+</div>
+
+
+
+
+
+<dl class="details">
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    <!-- 
+    <dt class="tag-source">Source:</dt>
+    <dd class="tag-source"><ul class="dummy"><li>
+        js, line 203
+    </li></ul></dd>
+     -->
+
+    
+
+    
+
+    
+</dl>
+
+
+<!-- 
+    <h5>Type:</h5>
+    <ul>
+        <li>
+            
+<span class="param-type"><code>Boolean</code></span>
+
+
+        </li>
+    </ul>
+ -->
+
+
+
+
+</div>
+
+        
+            
+<div class="section-members">
+<h4 class="name" id="isVisibility"><span class="type-signature"></span>isVisibility<span class="type-signature"> :Boolean</span></h4>
+
+
+
+
+<div class="description">
+    舞台是否处于可见状态(是否进入后台)。
+</div>
+
+
+
+
+
+<dl class="details">
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    <!-- 
+    <dt class="tag-source">Source:</dt>
+    <dd class="tag-source"><ul class="dummy"><li>
+        js, line 208
+    </li></ul></dd>
+     -->
+
+    
+
+    
+
+    
+</dl>
+
+
+<!-- 
+    <h5>Type:</h5>
+    <ul>
+        <li>
+            
+<span class="param-type"><code>Boolean</code></span>
+
+
+        </li>
+    </ul>
+ -->
+
+
+
+
+</div>
+
+        
+            
+<div class="section-members">
+<h4 class="name" id="mouseX"><span class="type-signature"></span>mouseX<span class="type-signature"> :Number</span></h4>
+
+
+
+
+<div class="description">
+    鼠标在 Stage 上的 X 轴坐标。
+</div>
+
+
+
+
+
+<dl class="details">
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    <!-- 
+    <dt class="tag-source">Source:</dt>
+    <dd class="tag-source"><ul class="dummy"><li>
+        js, line 259
+    </li></ul></dd>
+     -->
+
+    
+
+    
+
+    
+</dl>
+
+
+<!-- 
+    <h5>Type:</h5>
+    <ul>
+        <li>
+            
+<span class="param-type"><code>Number</code></span>
+
+
+        </li>
+    </ul>
+ -->
+
+
+
+
+</div>
+
+        
+            
+<div class="section-members">
+<h4 class="name" id="mouseY"><span class="type-signature"></span>mouseY<span class="type-signature"> :Number</span></h4>
+
+
+
+
+<div class="description">
+    鼠标在 Stage 上的 Y 轴坐标。
+</div>
+
+
+
+
+
+<dl class="details">
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    <!-- 
+    <dt class="tag-source">Source:</dt>
+    <dd class="tag-source"><ul class="dummy"><li>
+        js, line 264
+    </li></ul></dd>
+     -->
+
+    
+
+    
+
+    
+</dl>
+
+
+<!-- 
+    <h5>Type:</h5>
+    <ul>
+        <li>
+            
+<span class="param-type"><code>Number</code></span>
+
+
+        </li>
+    </ul>
+ -->
+
+
+
+
+</div>
+
+        
+            
+<div class="section-members">
+<h4 class="name" id="renderingEnabled"><span class="type-signature"></span>renderingEnabled<span class="type-signature"> :Boolean</span></h4>
+
+
+
+
+<div class="description">
+    设置是否渲染，设置为false，可以停止渲染，画面会停留到最后一次渲染上，减少cpu消耗，此设置不影响时钟
+比如非激活状态，可以设置renderingEnabled=true以节省消耗。* 比如非激活状态，可以设置renderingEnabled=true以节省消耗。
+</div>
+
+
+
+
+
+<dl class="details">
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    <!-- 
+    <dt class="tag-source">Source:</dt>
+    <dd class="tag-source"><ul class="dummy"><li>
+        js, line 179
+    </li></ul></dd>
+     -->
+
+    
+
+    
+
+    
+</dl>
+
+
+<!-- 
+    <h5>Type:</h5>
+    <ul>
+        <li>
+            
+<span class="param-type"><code>Boolean</code></span>
+
+
+        </li>
+    </ul>
+ -->
+
+
+
+
+</div>
+
+        
+            
+<div class="section-members">
+<h4 class="name" id="scaleMode"><span class="type-signature"></span>scaleMode<span class="type-signature"> :String</span></h4>
+
+
+
+
+<div class="description">
+    <p>缩放模式。</p>
+<p>
+<li>"noscale" ：不缩放；</li>
+<li>"exactfit" ：全屏不等比缩放；</li>
+<li>"showall" ：最小比例缩放；</li>
+<li>"noborder" ：最大比例缩放；</li>
+<li>"full" ：不缩放，stage的宽高等于屏幕宽高；</li>
+<li>"fixedwidth" ：宽度不变，高度根据屏幕比缩放；</li>
+<li>"fixedheight" ：高度不变，宽度根据屏幕比缩放；</li>
+		 *</p>
+默认值为 "noscale"。
+</div>
+
+
+
+
+
+<dl class="details">
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    <!-- 
+    <dt class="tag-source">Source:</dt>
+    <dd class="tag-source"><ul class="dummy"><li>
+        js, line 223
+    </li></ul></dd>
+     -->
+
+    
+
+    
+
+    
+</dl>
+
+
+<!-- 
+    <h5>Type:</h5>
+    <ul>
+        <li>
+            
+<span class="param-type"><code>String</code></span>
+
+
+        </li>
+    </ul>
+ -->
+
+
+
+
+</div>
+
+        
+            
+<div class="section-members">
+<h4 class="name" id="screenAdaptationEnabled"><span class="type-signature"></span>screenAdaptationEnabled<span class="type-signature"> :Boolean</span></h4>
+
+
+
+
+<div class="description">
+    是否启用屏幕适配，可以适配后，在某个时候关闭屏幕适配，防止某些操作导致的屏幕以外改变
+</div>
+
+
+
+
+
+<dl class="details">
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    <!-- 
+    <dt class="tag-source">Source:</dt>
+    <dd class="tag-source"><ul class="dummy"><li>
+        js, line 185
+    </li></ul></dd>
+     -->
+
+    
+
+    
+
+    
+</dl>
+
+
+<!-- 
+    <h5>Type:</h5>
+    <ul>
+        <li>
+            
+<span class="param-type"><code>Boolean</code></span>
+
+
+        </li>
+    </ul>
+ -->
+
+
+
+
+</div>
+
+        
+            
+<div class="section-members">
+<h4 class="name" id="screenMode"><span class="type-signature"></span>screenMode<span class="type-signature"> :String</span></h4>
+
+
+
+
+<div class="description">
+    场景布局类型。
+<p>
+<li>"none" ：不更改屏幕</li>
+<li>"horizontal" ：自动横屏</li>
+<li>"vertical" ：自动竖屏</li>
+		 *</p>
+</div>
+
+
+
+
+
+<dl class="details">
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    <!-- 
+    <dt class="tag-source">Source:</dt>
+    <dd class="tag-source"><ul class="dummy"><li>
+        js, line 284
+    </li></ul></dd>
+     -->
+
+    
+
+    
+
+    
+</dl>
+
+
+<!-- 
+    <h5>Type:</h5>
+    <ul>
+        <li>
+            
+<span class="param-type"><code>String</code></span>
+
+
+        </li>
+    </ul>
+ -->
+
+
+
+
+</div>
+
+        
+            
+<div class="section-members">
+<h4 class="name" id="transform"><span class="type-signature"></span>transform<span class="type-signature"> :<a href="Core.Matrix.html">Matrix</a></span></h4>
+
+
+
+
+
+
+
+
+<dl class="details">
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    <!-- 
+    <dt class="tag-source">Source:</dt>
+    <dd class="tag-source"><ul class="dummy"><li>
+        js, line 198
+    </li></ul></dd>
+     -->
+
+    
+
+    
+
+    
+</dl>
+
+
+<!-- 
+    <h5>Type:</h5>
+    <ul>
+        <li>
+            
+<span class="param-type"><code><a href="Core.Matrix.html">Matrix</a></code></span>
+
+
+        </li>
+    </ul>
+ -->
+
+
+
+
+</div>
+
+        
+            
+<div class="section-members">
+<h4 class="name" id="visible"><span class="type-signature"></span>visible<span class="type-signature"> :Boolean</span></h4>
+
+
+
+
+
+
+
+
+<dl class="details">
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    <!-- 
+    <dt class="tag-source">Source:</dt>
+    <dd class="tag-source"><ul class="dummy"><li>
+        js, line 289
+    </li></ul></dd>
+     -->
+
+    
+
+    
+
+    
+</dl>
+
+
+<!-- 
+    <h5>Type:</h5>
+    <ul>
+        <li>
+            
+<span class="param-type"><code>Boolean</code></span>
+
+
+        </li>
+    </ul>
+ -->
+
+
+
+
+</div>
+
+        
+            
+<div class="section-members">
+<h4 class="name" id="width"><span class="type-signature"></span>width<span class="type-signature"> :Number</span></h4>
+
+
+
+
+
+
+
+
+<dl class="details">
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    <!-- 
+    <dt class="tag-source">Source:</dt>
+    <dd class="tag-source"><ul class="dummy"><li>
+        js, line 190
+    </li></ul></dd>
+     -->
+
+    
+
+    
+
+    
+</dl>
+
+
+<!-- 
+    <h5>Type:</h5>
+    <ul>
+        <li>
+            
+<span class="param-type"><code>Number</code></span>
+
+
+        </li>
+    </ul>
+ -->
+
+
+
+
+</div>
+
+        
+    
+
+    
+        <h3 class="subsection-title">方法</h3>
+
+        
+            
+<div class="section-method">
+
+    
+
+    <h4 class="name" id="exitFullscreen"><span class="type-signature"></span>exitFullscreen<span class="signature">()</span><span class="type-signature"></span></h4>
+
+    
+
+
+
+<div class="description">
+    退出全屏模式
+</div>
+
+
+
+
+
+<dl class="details">
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    <!-- 
+    <dt class="tag-source">Source:</dt>
+    <dd class="tag-source"><ul class="dummy"><li>
+        js, line 324
+    </li></ul></dd>
+     -->
+
+    
+
+    
+
+    
+</dl>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+</div>
+        
+            
+<div class="section-method">
+
+    
+
+    <h4 class="name" id="getMousePoint"><span class="type-signature"></span>getMousePoint<span class="signature">()</span><span class="type-signature"></span></h4>
+
+    
+
+
+
+
+
+
+
+<dl class="details">
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    <!-- 
+    <dt class="tag-source">Source:</dt>
+    <dd class="tag-source"><ul class="dummy"><li>
+        js, line 303
+    </li></ul></dd>
+     -->
+
+    
+
+    
+
+    
+</dl>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+</div>
+        
+            
+<div class="section-method">
+
+    
+
+    <h4 class="name" id="getTimeFromFrameStart"><span class="type-signature"></span>getTimeFromFrameStart<span class="signature">()</span><span class="type-signature"></span></h4>
+
+    
+
+
+
+<div class="description">
+    获得距当前帧开始后，过了多少时间，单位为毫秒
+可以用来判断函数内时间消耗，通过合理控制每帧函数处理消耗时长，避免一帧做事情太多，对复杂计算分帧处理，能有效降低帧率波动。* 可以用来判断函数内时间消耗，通过合理控制每帧函数处理消耗时长，避免一帧做事情太多，对复杂计算分帧处理，能有效降低帧率波动。
+</div>
+
+
+
+
+
+<dl class="details">
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    <!-- 
+    <dt class="tag-source">Source:</dt>
+    <dd class="tag-source"><ul class="dummy"><li>
+        js, line 316
+    </li></ul></dd>
+     -->
+
+    
+
+    
+
+    
+</dl>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+</div>
+        
+            
+<div class="section-method">
+
+    
+
+    <h4 class="name" id="parentRepaint"><span class="type-signature"></span>parentRepaint<span class="signature">()</span><span class="type-signature"></span></h4>
+
+    
+
+
+
+
+
+
+
+<dl class="details">
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    <!-- 
+    <dt class="tag-source">Source:</dt>
+    <dd class="tag-source"><ul class="dummy"><li>
+        js, line 311
+    </li></ul></dd>
+     -->
+
+    
+
+    
+
+    
+</dl>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+</div>
+        
+            
+<div class="section-method">
+
+    
+
+    <h4 class="name" id="render"><span class="type-signature"></span>render<span class="signature">()</span><span class="type-signature"></span></h4>
+
+    
+
+
+
+
+
+
+
+<dl class="details">
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    <!-- 
+    <dt class="tag-source">Source:</dt>
+    <dd class="tag-source"><ul class="dummy"><li>
+        js, line 320
+    </li></ul></dd>
+     -->
+
+    
+
+    
+
+    
+</dl>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+</div>
+        
+            
+<div class="section-method">
+
+    
+
+    <h4 class="name" id="repaint"><span class="type-signature"></span>repaint<span class="signature">()</span><span class="type-signature"></span></h4>
+
+    
+
+
+
+
+
+
+
+<dl class="details">
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    <!-- 
+    <dt class="tag-source">Source:</dt>
+    <dd class="tag-source"><ul class="dummy"><li>
+        js, line 307
+    </li></ul></dd>
+     -->
+
+    
+
+    
+
+    
+</dl>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+</div>
+        
+            
+<div class="section-method">
+
+    
+
+    <h4 class="name" id="setScreenSize"><span class="type-signature"></span>setScreenSize<span class="signature">(screenWidth, screenHeight)</span><span class="type-signature"></span></h4>
+
+    
+
+
+
+<div class="description">
+    设置屏幕大小，场景会根据屏幕大小进行适配。可以动态调用此方法，来更改游戏显示的大小。
+</div>
+
+
+
+
+
+<dl class="details">
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    <!-- 
+    <dt class="tag-source">Source:</dt>
+    <dd class="tag-source"><ul class="dummy"><li>
+        js, line 299
+    </li></ul></dd>
+     -->
+
+    
+
+    
+
+    
+</dl>
+
+
+
+
+
+
+
+
+
+    <h5>Parameters:</h5>
+    
+
+<table class="params">
+    <thead>
+    <tr>
+        
+        <th>Name</th>
+        
+
+        <th>Type</th>
+
+        
+
+        
+
+        <th class="last">Description</th>
+    </tr>
+    </thead>
+
+    <tbody>
+    
+
+        <tr>
+            
+                <td class="name"><code>screenWidth</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type"><code>Number</code></span>
+
+
+            
+            </td>
+
+            
+
+            
+
+            <td class="description last">
+                屏幕宽度。
+                
+            </td>
+        </tr>
+
+    
+
+        <tr>
+            
+                <td class="name"><code>screenHeight</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type"><code>Number</code></span>
+
+
+            
+            </td>
+
+            
+
+            
+
+            <td class="description last">
+                屏幕高度。
+                
+            </td>
+        </tr>
+
+    
+    </tbody>
+</table>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+</div>
+        
+    
+
+    
+
+    
+        <h3 class="subsection-title">事件</h3>
+
+        
+            
+<div class="section-method">
+
+    
+
+    <h4 class="name" id="event:blur">blur</h4>
+
+    
+
+
+
+
+
+
+
+<dl class="details">
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    <!-- 
+    <dt class="tag-source">Source:</dt>
+    <dd class="tag-source"><ul class="dummy"><li>
+        js, line 337
+    </li></ul></dd>
+     -->
+
+    
+
+    
+    <dt class="tag-see">See:</dt>
+    <dd class="tag-see">
+        <ul>
+            <li>events.Event</li>
+        </ul>
+    </dd>
+    
+
+    
+</dl>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+</div>
+        
+            
+<div class="section-method">
+
+    
+
+    <h4 class="name" id="event:focus">focus</h4>
+
+    
+
+
+
+
+
+
+
+<dl class="details">
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    <!-- 
+    <dt class="tag-source">Source:</dt>
+    <dd class="tag-source"><ul class="dummy"><li>
+        js, line 331
+    </li></ul></dd>
+     -->
+
+    
+
+    
+    <dt class="tag-see">See:</dt>
+    <dd class="tag-see">
+        <ul>
+            <li>events.Event</li>
+        </ul>
+    </dd>
+    
+
+    
+</dl>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+</div>
+        
+            
+<div class="section-method">
+
+    
+
+    <h4 class="name" id="event:focuschange">focuschange</h4>
+
+    
+
+
+
+
+
+
+
+<dl class="details">
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    <!-- 
+    <dt class="tag-source">Source:</dt>
+    <dd class="tag-source"><ul class="dummy"><li>
+        js, line 343
+    </li></ul></dd>
+     -->
+
+    
+
+    
+    <dt class="tag-see">See:</dt>
+    <dd class="tag-see">
+        <ul>
+            <li>events.Event</li>
+        </ul>
+    </dd>
+    
+
+    
+</dl>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+</div>
+        
+            
+<div class="section-method">
+
+    
+
+    <h4 class="name" id="event:fullscreenchange">fullscreenchange</h4>
+
+    
+
+
+
+
+
+
+
+<dl class="details">
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    <!-- 
+    <dt class="tag-source">Source:</dt>
+    <dd class="tag-source"><ul class="dummy"><li>
+        js, line 355
+    </li></ul></dd>
+     -->
+
+    
+
+    
+    <dt class="tag-see">See:</dt>
+    <dd class="tag-see">
+        <ul>
+            <li>events.Event</li>
+        </ul>
+    </dd>
+    
+
+    
+</dl>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+</div>
+        
+            
+<div class="section-method">
+
+    
+
+    <h4 class="name" id="event:resize">resize</h4>
+
+    
+
+
+
+
+
+
+
+<dl class="details">
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    <!-- 
+    <dt class="tag-source">Source:</dt>
+    <dd class="tag-source"><ul class="dummy"><li>
+        js, line 325
+    </li></ul></dd>
+     -->
+
+    
+
+    
+    <dt class="tag-see">See:</dt>
+    <dd class="tag-see">
+        <ul>
+            <li>events.Event</li>
+        </ul>
+    </dd>
+    
+
+    
+</dl>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+</div>
+        
+            
+<div class="section-method">
+
+    
+
+    <h4 class="name" id="event:visibilitychange">visibilitychange</h4>
+
+    
+
+
+
+
+
+
+
+<dl class="details">
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    <!-- 
+    <dt class="tag-source">Source:</dt>
+    <dd class="tag-source"><ul class="dummy"><li>
+        js, line 349
+    </li></ul></dd>
+     -->
+
+    
+
+    
+    <dt class="tag-see">See:</dt>
+    <dd class="tag-see">
+        <ul>
+            <li>events.Event</li>
+        </ul>
+    </dd>
+    
+
+    
+</dl>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+</div>
+        
+    
+</article>
+
+</section>
+
+
+
+
+</div>
+<br class="clear">
+
+
+
+<script src="scripts/linenumber.js"></script>
+
+</body>
+</html>

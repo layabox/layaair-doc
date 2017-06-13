@@ -1,0 +1,5258 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1">
+    <title>CheckBox - Documentation</title>
+
+    <script src="scripts/prettify/prettify.js"></script>
+    <script src="scripts/prettify/lang-css.js"></script>
+    <!--[if lt IE 9]>
+      <script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script>
+    <![endif]-->
+    <link type="text/css" rel="stylesheet" href="https://code.ionicframework.com/ionicons/2.0.1/css/ionicons.min.css">
+    <link type="text/css" rel="stylesheet" href="styles/prettify-tomorrow.css">
+    <link type="text/css" rel="stylesheet" href="styles/jsdoc-default.css">
+</head>
+<body>
+
+
+
+
+
+<div>
+
+
+<!--     
+    <h1 class="page-title">CheckBox</h1>
+     -->
+
+    
+
+
+
+
+<section>
+
+<header>
+    
+        <h2>
+            <span class="ancestors"><a href="UI.html">UI</a>.</span>
+        
+        CheckBox
+        </h2>
+        
+            <div class="class-description"><code>CheckBox</code> Le composant présente une petite boîte à l'intérieur de la boîte peut avoir le coche. 
+<code>CheckBox</code> Ensemble peut également afficher les étiquettes de texte optionnel, situé par défaut de l'étiquette  CheckBox  Sur la droite. 
+<p><code>CheckBox</code> Utilisation <code>dataSource</code> Lors de l'attribution d'un attribut par défaut: <code>selected</code> . </p></div>
+        
+    
+</header>
+
+<article>
+    <div class="container-overview">
+    
+        
+<div class="section-method">
+
+    
+    <h2>Constructor</h2>
+    
+
+    <h4 class="name" id="CheckBox"><span class="type-signature"></span>new CheckBox<span class="signature">(skin<span class="signature-attributes">opt</span>, label<span class="signature-attributes">opt</span>)</span><span class="type-signature"></span></h4>
+
+    
+
+
+
+<div class="description">
+    Créer un nouveau <code>CheckBox</code> Ensemble, par exemple.
+</div>
+
+
+
+
+
+<dl class="details">
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    <!-- 
+    <dt class="tag-source">Source:</dt>
+    <dd class="tag-source"><ul class="dummy"><li>
+        js, line 80
+    </li></ul></dd>
+     -->
+
+    
+
+    
+
+    
+</dl>
+
+
+
+
+
+
+
+
+
+    <h5>Parameters:</h5>
+    
+
+<table class="params">
+    <thead>
+    <tr>
+        
+        <th>Name</th>
+        
+
+        <th>Type</th>
+
+        
+        <th>Attributes</th>
+        
+
+        
+        <th>Default</th>
+        
+
+        <th class="last">Description</th>
+    </tr>
+    </thead>
+
+    <tbody>
+    
+
+        <tr>
+            
+                <td class="name"><code>skin</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type"><code>String</code></span>
+
+
+            
+            </td>
+
+            
+                <td class="attributes">
+                
+                    &lt;optional><br>
+                
+
+                
+
+                
+                </td>
+            
+
+            
+                <td class="default">
+                
+                    null
+                
+                </td>
+            
+
+            <td class="description last">
+                skin  Adresses de ressources de la peau.
+                
+            </td>
+        </tr>
+
+    
+
+        <tr>
+            
+                <td class="name"><code>label</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type"><code>String</code></span>
+
+
+            
+            </td>
+
+            
+                <td class="attributes">
+                
+                    &lt;optional><br>
+                
+
+                
+
+                
+                </td>
+            
+
+            
+                <td class="default">
+                
+                    ""
+                
+                </td>
+            
+
+            <td class="description last">
+                label  Le contenu du texte de l'étiquette.
+                
+            </td>
+        </tr>
+
+    
+    </tbody>
+</table>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div class="section-examples">
+<h5>示例</h5>
+<div class="languageButtonGroup">
+    <button>ActionScript</button>
+    <button>JavaScript</button>
+    <button>TypeScript</button>
+</div>
+
+    <pre class="prettyprint"><code>Le code suivant, crée un &lt;code>CheckBox&lt;/code> Des exemples. 
+&lt;listing version="3.0">
+package
+	*{
+	*import laya.ui.CheckBox;
+	*import laya.utils.Handler;
+	*public class CheckBox_Example
+	*{
+	*public function CheckBox_Example()
+	*{
+	*Laya.init(640, 800);// Ensemble de jeu de la toile de large. 
+Laya.stage.bgColor = "#efefef";// Couleur de fond de la toile. 
+	*Laya.loader.load("resource/ui/check.png", Handler.create(this,onLoadComplete));// La charge de ressources. 
+	*}
+	*private function onLoadComplete():void
+	*{
+	*trace("资源加载完成！");
+	*var checkBox:CheckBox = new CheckBox("resource/ui/check.png", "这个是一个CheckBox组件。");// Créer un  CheckBox  Un objet d'instance de la classe  CheckBox  , l'étiquette de la peau de la peau et des étiquettes entrantes. 
+	*checkBox.x = 100;// Ensemble  CheckBox  La valeur X de propriété d'objet, des moyens de commande  CheckBox  La position d'affichage de l'objet. 
+	*checkBox.y = 100;// Ensemble  CheckBox  Les valeurs y des attributs d'objet, des moyens de commande  CheckBox  La position d'affichage de l'objet. 
+	*checkBox.clickHandler = new Handler(this, onClick, [checkBox]);// Ensemble  CheckBox  Processeur d'événement de clic. 
+	*Laya.stage.addChild(checkBox);// Ce  CheckBox  L'objet est ajouté à la liste d'affichage. 
+	*}
+	*private function onClick(checkBox:CheckBox):void
+	*{
+	*trace("输出选中状态: checkBox.selected = " + checkBox.selected);
+	*}
+	*}
+	*}
+	*&lt;/listing>
+&lt;listing version="3.0">
+Laya.init(640, 800);// Jeu de largeur et de la hauteur de la toile 
+Laya.stage.bgColor = "#efefef";// Couleur de fond de la toile 
+Laya.loader.load("resource/ui/check.png",laya.utils.Handler.create(this,loadComplete));// La charge de ressources 
+function loadComplete()
+{
+    console.log("资源加载完成！");
+    var checkBox:laya.ui.CheckBox= new laya.ui.CheckBox("resource/ui/check.png", "这个是一个CheckBox组件。");// Créer un  CheckBox  Un objet d'instance de la classe  CheckBox  , l'étiquette de la peau de la peau et des étiquettes entrantes. 
+    checkBox.x =100;// Ensemble  CheckBox  La valeur X de propriété d'objet, des moyens de commande  CheckBox  La position d'affichage de l'objet. 
+    checkBox.y =100;// Ensemble  CheckBox  Les valeurs y des attributs d'objet, des moyens de commande  CheckBox  La position d'affichage de l'objet. 
+    checkBox.clickHandler = new laya.utils.Handler(this,this.onClick,[checkBox],false);// Ensemble  CheckBox  Processeur d'événement de clic. 
+    Laya.stage.addChild(checkBox);// Ce  CheckBox  L'objet est ajouté à la liste d'affichage. 
+}
+function onClick(checkBox)
+{
+    console.log("checkBox.selected = ",checkBox.selected);
+}
+	*&lt;/listing>
+&lt;listing version="3.0">
+import CheckBox= laya.ui.CheckBox;
+import Handler=laya.utils.Handler;
+class CheckBox_Example{
+    constructor()
+    {
+        Laya.init(640, 800);
+        Laya.stage.bgColor = "#efefef";// Couleur de fond de la toile. 
+        Laya.loader.load("resource/ui/check.png", Handler.create(this,this.onLoadComplete));// La charge de ressources. 
+    }
+    private onLoadComplete()
+    {
+        var checkBox:CheckBox = new CheckBox("resource/ui/check.png", "这个是一个CheckBox组件。");// Créer un  CheckBox  Un objet d'instance de la classe  CheckBox  , l'étiquette de la peau de la peau et des étiquettes entrantes. 
+        checkBox.x = 100;// Ensemble  CheckBox  La valeur X de propriété d'objet, des moyens de commande  CheckBox  La position d'affichage de l'objet. 
+        checkBox.y = 100;// Ensemble  CheckBox  Les valeurs y des attributs d'objet, des moyens de commande  CheckBox  La position d'affichage de l'objet. 
+        checkBox.clickHandler = new Handler(this, this.onClick,[checkBox]);// Ensemble  CheckBox  Processeur d'événement de clic. 
+        Laya.stage.addChild(checkBox);// Ce  CheckBox  L'objet est ajouté à la liste d'affichage. 
+    }
+    private onClick(checkBox:CheckBox):void
+    {
+        console.log("输出选中状态: checkBox.selected = " + checkBox.selected);
+    }
+}
+	*&lt;/listing></code></pre>
+
+</div>
+
+</div>
+    
+    </div>
+
+    
+        <h3 class="subsection-title">Extends</h3>
+
+        
+
+
+    <ul>
+        <li><a href="UI.Button.html">Button</a></li>
+    </ul>
+
+
+    
+
+    
+
+    
+
+     
+
+    
+
+    
+        <h3 class="subsection-title">Member</h3>
+
+        
+            
+<div class="section-members">
+<h4 class="name" id="anchorX"><span class="type-signature"></span>anchorX<span class="type-signature"> :Number</span></h4>
+
+
+
+
+<div class="description">
+    L'axe x valeur de point d'ancrage, de 0 à 1
+</div>
+
+
+
+
+
+<dl class="details">
+
+    
+
+    
+
+    
+    <dt class="inherited-from">Inherited From:</dt>
+    <dd class="inherited-from"><ul class="dummy"><li>
+        <a href="UI.Component.html#anchorX">Component#anchorX</a>
+    </li></ul></dd>
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    <!-- 
+    <dt class="tag-source">Source:</dt>
+    <dd class="tag-source"><ul class="dummy"><li>
+        js, line 111
+    </li></ul></dd>
+     -->
+
+    
+
+    
+
+    
+</dl>
+
+
+<!-- 
+    <h5>Type:</h5>
+    <ul>
+        <li>
+            
+<span class="param-type"><code>Number</code></span>
+
+
+        </li>
+    </ul>
+ -->
+
+
+
+
+</div>
+
+        
+            
+<div class="section-members">
+<h4 class="name" id="anchorY"><span class="type-signature"></span>anchorY<span class="type-signature"> :Number</span></h4>
+
+
+
+
+<div class="description">
+    L'axe y la valeur de point d'ancrage, de 0 à 1
+</div>
+
+
+
+
+
+<dl class="details">
+
+    
+
+    
+
+    
+    <dt class="inherited-from">Inherited From:</dt>
+    <dd class="inherited-from"><ul class="dummy"><li>
+        <a href="UI.Component.html#anchorY">Component#anchorY</a>
+    </li></ul></dd>
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    <!-- 
+    <dt class="tag-source">Source:</dt>
+    <dd class="tag-source"><ul class="dummy"><li>
+        js, line 117
+    </li></ul></dd>
+     -->
+
+    
+
+    
+
+    
+</dl>
+
+
+<!-- 
+    <h5>Type:</h5>
+    <ul>
+        <li>
+            
+<span class="param-type"><code>Number</code></span>
+
+
+        </li>
+    </ul>
+ -->
+
+
+
+
+</div>
+
+        
+            
+<div class="section-members">
+<h4 class="name" id="bottom"><span class="type-signature"></span>bottom<span class="type-signature"> :Number</span></h4>
+
+
+
+
+<div class="description">
+    <p> à partir de l'ensemble inférieur à la distance verticale entre le bord inférieur de la zone de contenu (en pixels). </p>
+</div>
+
+
+
+
+
+<dl class="details">
+
+    
+
+    
+
+    
+    <dt class="inherited-from">Inherited From:</dt>
+    <dd class="inherited-from"><ul class="dummy"><li>
+        <a href="UI.Component.html#bottom">Component#bottom</a>
+    </li></ul></dd>
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    <!-- 
+    <dt class="tag-source">Source:</dt>
+    <dd class="tag-source"><ul class="dummy"><li>
+        js, line 81
+    </li></ul></dd>
+     -->
+
+    
+
+    
+
+    
+</dl>
+
+
+<!-- 
+    <h5>Type:</h5>
+    <ul>
+        <li>
+            
+<span class="param-type"><code>Number</code></span>
+
+
+        </li>
+    </ul>
+ -->
+
+
+
+
+</div>
+
+        
+            
+<div class="section-members">
+<h4 class="name" id="centerX"><span class="type-signature"></span>centerX<span class="type-signature"> :Number</span></h4>
+
+
+
+
+<div class="description">
+    <p> Dans le récipient, à une distance de la ligne centrale dans la direction horizontale dans la direction horizontale de l'axe de cet objet et le vaisseau parent (en pixels). </p>
+</div>
+
+
+
+
+
+<dl class="details">
+
+    
+
+    
+
+    
+    <dt class="inherited-from">Inherited From:</dt>
+    <dd class="inherited-from"><ul class="dummy"><li>
+        <a href="UI.Component.html#centerX">Component#centerX</a>
+    </li></ul></dd>
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    <!-- 
+    <dt class="tag-source">Source:</dt>
+    <dd class="tag-source"><ul class="dummy"><li>
+        js, line 99
+    </li></ul></dd>
+     -->
+
+    
+
+    
+
+    
+</dl>
+
+
+<!-- 
+    <h5>Type:</h5>
+    <ul>
+        <li>
+            
+<span class="param-type"><code>Number</code></span>
+
+
+        </li>
+    </ul>
+ -->
+
+
+
+
+</div>
+
+        
+            
+<div class="section-members">
+<h4 class="name" id="centerY"><span class="type-signature"></span>centerY<span class="type-signature"> :Number</span></h4>
+
+
+
+
+<div class="description">
+    <p> Dans le récipient, à une distance de la ligne centrale dans la direction verticale perpendiculaire à la direction de l'axe de cet objet et le vaisseau parent (en pixels). </p>
+</div>
+
+
+
+
+
+<dl class="details">
+
+    
+
+    
+
+    
+    <dt class="inherited-from">Inherited From:</dt>
+    <dd class="inherited-from"><ul class="dummy"><li>
+        <a href="UI.Component.html#centerY">Component#centerY</a>
+    </li></ul></dd>
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    <!-- 
+    <dt class="tag-source">Source:</dt>
+    <dd class="tag-source"><ul class="dummy"><li>
+        js, line 105
+    </li></ul></dd>
+     -->
+
+    
+
+    
+
+    
+</dl>
+
+
+<!-- 
+    <h5>Type:</h5>
+    <ul>
+        <li>
+            
+<span class="param-type"><code>Number</code></span>
+
+
+        </li>
+    </ul>
+ -->
+
+
+
+
+</div>
+
+        
+            
+<div class="section-members">
+<h4 class="name" id="clickHandler"><span class="type-signature"></span>clickHandler<span class="type-signature"> :<a href="Core.Handler.html">Handler</a></span></h4>
+
+
+
+
+<div class="description">
+    Un processeur de fonction de l'événement de clic de l'objet (pas de paramètres par défaut).
+</div>
+
+
+
+
+
+<dl class="details">
+
+    
+
+    
+
+    
+    <dt class="inherited-from">Inherited From:</dt>
+    <dd class="inherited-from"><ul class="dummy"><li>
+        <a href="UI.Button.html#clickHandler">Button#clickHandler</a>
+    </li></ul></dd>
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    <!-- 
+    <dt class="tag-source">Source:</dt>
+    <dd class="tag-source"><ul class="dummy"><li>
+        js, line 290
+    </li></ul></dd>
+     -->
+
+    
+
+    
+
+    
+</dl>
+
+
+<!-- 
+    <h5>Type:</h5>
+    <ul>
+        <li>
+            
+<span class="param-type"><code><a href="Core.Handler.html">Handler</a></code></span>
+
+
+        </li>
+    </ul>
+ -->
+
+
+
+
+</div>
+
+        
+            
+<div class="section-members">
+<h4 class="name" id="comXml"><span class="type-signature"></span>comXml<span class="type-signature"> :Object</span></h4>
+
+
+
+
+<div class="description">
+    Les données XML.
+</div>
+
+
+
+
+
+<dl class="details">
+
+    
+
+    
+
+    
+    <dt class="inherited-from">Inherited From:</dt>
+    <dd class="inherited-from"><ul class="dummy"><li>
+        <a href="UI.Component.html#comXml">Component#comXml</a>
+    </li></ul></dd>
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    <!-- 
+    <dt class="tag-source">Source:</dt>
+    <dd class="tag-source"><ul class="dummy"><li>
+        js, line 157
+    </li></ul></dd>
+     -->
+
+    
+
+    
+
+    
+</dl>
+
+
+<!-- 
+    <h5>Type:</h5>
+    <ul>
+        <li>
+            
+<span class="param-type"><code>Object</code></span>
+
+
+        </li>
+    </ul>
+ -->
+
+
+
+
+</div>
+
+        
+            
+<div class="section-members">
+<h4 class="name" id="dataSource"><span class="type-signature"></span>dataSource<span class="type-signature"> :Object</span></h4>
+
+
+
+
+
+
+
+
+<dl class="details">
+
+    
+
+    
+
+    
+
+    
+    <dt class="tag-overrides">Overrides:</dt>
+    <dd class="tag-overrides"><ul class="dummy"><li>
+        <a href="UI.Button.html#dataSource">Button#dataSource</a>
+    </li></ul></dd>
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    <!-- 
+    <dt class="tag-source">Source:</dt>
+    <dd class="tag-source"><ul class="dummy"><li>
+        js, line 91
+    </li></ul></dd>
+     -->
+
+    
+
+    
+
+    
+</dl>
+
+
+<!-- 
+    <h5>Type:</h5>
+    <ul>
+        <li>
+            
+<span class="param-type"><code>Object</code></span>
+
+
+        </li>
+    </ul>
+ -->
+
+
+
+
+</div>
+
+        
+            
+<div class="section-members">
+<h4 class="name" id="disabled"><span class="type-signature"></span>disabled<span class="type-signature"> :Boolean</span></h4>
+
+
+
+
+<div class="description">
+    Vous voulez désactiver la page, est vrai, gris et de désactiver le bouton de la souris.
+</div>
+
+
+
+
+
+<dl class="details">
+
+    
+
+    
+
+    
+    <dt class="inherited-from">Inherited From:</dt>
+    <dd class="inherited-from"><ul class="dummy"><li>
+        <a href="UI.Component.html#disabled">Component#disabled</a>
+    </li></ul></dd>
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    <!-- 
+    <dt class="tag-source">Source:</dt>
+    <dd class="tag-source"><ul class="dummy"><li>
+        js, line 169
+    </li></ul></dd>
+     -->
+
+    
+
+    
+
+    
+</dl>
+
+
+<!-- 
+    <h5>Type:</h5>
+    <ul>
+        <li>
+            
+<span class="param-type"><code>Boolean</code></span>
+
+
+        </li>
+    </ul>
+ -->
+
+
+
+
+</div>
+
+        
+            
+<div class="section-members">
+<h4 class="name" id="displayHeight"><span class="type-signature"></span>displayHeight<span class="type-signature"> :Number</span></h4>
+
+
+
+
+<div class="description">
+    <p> L'affichage de l'objet de la hauteur (en pixels). </p>
+</div>
+
+
+
+
+
+<dl class="details">
+
+    
+
+    
+
+    
+    <dt class="inherited-from">Inherited From:</dt>
+    <dd class="inherited-from"><ul class="dummy"><li>
+        <a href="UI.Component.html#displayHeight">Component#displayHeight</a>
+    </li></ul></dd>
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    <!-- 
+    <dt class="tag-source">Source:</dt>
+    <dd class="tag-source"><ul class="dummy"><li>
+        js, line 42
+    </li></ul></dd>
+     -->
+
+    
+
+    
+
+    
+</dl>
+
+
+<!-- 
+    <h5>Type:</h5>
+    <ul>
+        <li>
+            
+<span class="param-type"><code>Number</code></span>
+
+
+        </li>
+    </ul>
+ -->
+
+
+
+
+</div>
+
+        
+            
+<div class="section-members">
+<h4 class="name" id="displayWidth"><span class="type-signature"></span>displayWidth<span class="type-signature"> :Number</span></h4>
+
+
+
+
+<div class="description">
+    <p> La largeur de l'objet d'affichage (en pixels). </p>
+</div>
+
+
+
+
+
+<dl class="details">
+
+    
+
+    
+
+    
+    <dt class="inherited-from">Inherited From:</dt>
+    <dd class="inherited-from"><ul class="dummy"><li>
+        <a href="UI.Component.html#displayWidth">Component#displayWidth</a>
+    </li></ul></dd>
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    <!-- 
+    <dt class="tag-source">Source:</dt>
+    <dd class="tag-source"><ul class="dummy"><li>
+        js, line 24
+    </li></ul></dd>
+     -->
+
+    
+
+    
+
+    
+</dl>
+
+
+<!-- 
+    <h5>Type:</h5>
+    <ul>
+        <li>
+            
+<span class="param-type"><code>Number</code></span>
+
+
+        </li>
+    </ul>
+ -->
+
+
+
+
+</div>
+
+        
+            
+<div class="section-members">
+<h4 class="name" id="gray"><span class="type-signature"></span>gray<span class="type-signature"> :Boolean</span></h4>
+
+
+
+
+<div class="description">
+    Si un changement de cendres.
+</div>
+
+
+
+
+
+<dl class="details">
+
+    
+
+    
+
+    
+    <dt class="inherited-from">Inherited From:</dt>
+    <dd class="inherited-from"><ul class="dummy"><li>
+        <a href="UI.Component.html#gray">Component#gray</a>
+    </li></ul></dd>
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    <!-- 
+    <dt class="tag-source">Source:</dt>
+    <dd class="tag-source"><ul class="dummy"><li>
+        js, line 163
+    </li></ul></dd>
+     -->
+
+    
+
+    
+
+    
+</dl>
+
+
+<!-- 
+    <h5>Type:</h5>
+    <ul>
+        <li>
+            
+<span class="param-type"><code>Boolean</code></span>
+
+
+        </li>
+    </ul>
+ -->
+
+
+
+
+</div>
+
+        
+            
+<div class="section-members">
+<h4 class="name" id="height"><span class="type-signature"></span>height<span class="type-signature"> :Number</span></h4>
+
+
+
+
+
+
+
+
+<dl class="details">
+
+    
+
+    
+
+    
+    <dt class="inherited-from">Inherited From:</dt>
+    <dd class="inherited-from"><ul class="dummy"><li>
+        <a href="UI.Button.html#height">Button#height</a>
+    </li></ul></dd>
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    <!-- 
+    <dt class="tag-source">Source:</dt>
+    <dd class="tag-source"><ul class="dummy"><li>
+        js, line 313
+    </li></ul></dd>
+     -->
+
+    
+
+    
+
+    
+</dl>
+
+
+<!-- 
+    <h5>Type:</h5>
+    <ul>
+        <li>
+            
+<span class="param-type"><code>Number</code></span>
+
+
+        </li>
+    </ul>
+ -->
+
+
+
+
+</div>
+
+        
+            
+<div class="section-members">
+<h4 class="name" id="iconOffset"><span class="type-signature"></span>iconOffset<span class="type-signature"> :String</span></h4>
+
+
+
+
+<div class="description">
+    Icône X, y de décalage, format: 100, 100
+</div>
+
+
+
+
+
+<dl class="details">
+
+    
+
+    
+
+    
+    <dt class="inherited-from">Inherited From:</dt>
+    <dd class="inherited-from"><ul class="dummy"><li>
+        <a href="UI.Button.html#iconOffset">Button#iconOffset</a>
+    </li></ul></dd>
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    <!-- 
+    <dt class="tag-source">Source:</dt>
+    <dd class="tag-source"><ul class="dummy"><li>
+        js, line 322
+    </li></ul></dd>
+     -->
+
+    
+
+    
+
+    
+</dl>
+
+
+<!-- 
+    <h5>Type:</h5>
+    <ul>
+        <li>
+            
+<span class="param-type"><code>String</code></span>
+
+
+        </li>
+    </ul>
+ -->
+
+
+
+
+</div>
+
+        
+            
+<div class="section-members">
+<h4 class="name" id="label"><span class="type-signature"></span>label<span class="type-signature"> :String</span></h4>
+
+
+
+
+<div class="description">
+    Le contenu du texte du bouton.
+</div>
+
+
+
+
+
+<dl class="details">
+
+    
+
+    
+
+    
+    <dt class="inherited-from">Inherited From:</dt>
+    <dd class="inherited-from"><ul class="dummy"><li>
+        <a href="UI.Button.html#label">Button#label</a>
+    </li></ul></dd>
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    <!-- 
+    <dt class="tag-source">Source:</dt>
+    <dd class="tag-source"><ul class="dummy"><li>
+        js, line 206
+    </li></ul></dd>
+     -->
+
+    
+
+    
+
+    
+</dl>
+
+
+<!-- 
+    <h5>Type:</h5>
+    <ul>
+        <li>
+            
+<span class="param-type"><code>String</code></span>
+
+
+        </li>
+    </ul>
+ -->
+
+
+
+
+</div>
+
+        
+            
+<div class="section-members">
+<h4 class="name" id="labelAlign"><span class="type-signature"></span>labelAlign<span class="type-signature"> :String</span></h4>
+
+
+
+
+<div class="description">
+    Mode d'alignement de l'étiquette, la valeur par défaut est aligné sur le Centre.
+</div>
+
+
+
+
+
+<dl class="details">
+
+    
+
+    
+
+    
+    <dt class="inherited-from">Inherited From:</dt>
+    <dd class="inherited-from"><ul class="dummy"><li>
+        <a href="UI.Button.html#labelAlign">Button#labelAlign</a>
+    </li></ul></dd>
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    <!-- 
+    <dt class="tag-source">Source:</dt>
+    <dd class="tag-source"><ul class="dummy"><li>
+        js, line 284
+    </li></ul></dd>
+     -->
+
+    
+
+    
+
+    
+</dl>
+
+
+<!-- 
+    <h5>Type:</h5>
+    <ul>
+        <li>
+            
+<span class="param-type"><code>String</code></span>
+
+
+        </li>
+    </ul>
+ -->
+
+
+
+
+</div>
+
+        
+            
+<div class="section-members">
+<h4 class="name" id="labelBold"><span class="type-signature"></span>labelBold<span class="type-signature"> :Boolean</span></h4>
+
+
+
+
+<div class="description">
+    Bouton de représentation du texte de l'étiquette est en caractères gras.
+</div>
+
+
+
+
+
+<dl class="details">
+
+    
+
+    
+
+    
+    <dt class="inherited-from">Inherited From:</dt>
+    <dd class="inherited-from"><ul class="dummy"><li>
+        <a href="UI.Button.html#labelBold">Button#labelBold</a>
+    </li></ul></dd>
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    <!-- 
+    <dt class="tag-source">Source:</dt>
+    <dd class="tag-source"><ul class="dummy"><li>
+        js, line 271
+    </li></ul></dd>
+     -->
+
+    
+
+    
+    <dt class="tag-see">See:</dt>
+    <dd class="tag-see">
+        <ul>
+            <li>display.Text.bold()</li>
+        </ul>
+    </dd>
+    
+
+    
+</dl>
+
+
+<!-- 
+    <h5>Type:</h5>
+    <ul>
+        <li>
+            
+<span class="param-type"><code>Boolean</code></span>
+
+
+        </li>
+    </ul>
+ -->
+
+
+
+
+</div>
+
+        
+            
+<div class="section-members">
+<h4 class="name" id="labelColors"><span class="type-signature"></span>labelColors<span class="type-signature"> :String</span></h4>
+
+
+
+
+<div class="description">
+    Bouton de représentation de la couleur du texte dans chaque État. 
+<p><b> Format: </b> "UpColor, overColor, downColor, disableColor". </p>
+</div>
+
+
+
+
+
+<dl class="details">
+
+    
+
+    
+
+    
+    <dt class="inherited-from">Inherited From:</dt>
+    <dd class="inherited-from"><ul class="dummy"><li>
+        <a href="UI.Button.html#labelColors">Button#labelColors</a>
+    </li></ul></dd>
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    <!-- 
+    <dt class="tag-source">Source:</dt>
+    <dd class="tag-source"><ul class="dummy"><li>
+        js, line 227
+    </li></ul></dd>
+     -->
+
+    
+
+    
+
+    
+</dl>
+
+
+<!-- 
+    <h5>Type:</h5>
+    <ul>
+        <li>
+            
+<span class="param-type"><code>String</code></span>
+
+
+        </li>
+    </ul>
+ -->
+
+
+
+
+</div>
+
+        
+            
+<div class="section-members">
+<h4 class="name" id="labelFont"><span class="type-signature"></span>labelFont<span class="type-signature"> :String</span></h4>
+
+
+
+
+<div class="description">
+    Le nom de bouton de polices de caractères de texte d'étiquette, sous forme de chaîne de caractères.
+</div>
+
+
+
+
+
+<dl class="details">
+
+    
+
+    
+
+    
+    <dt class="inherited-from">Inherited From:</dt>
+    <dd class="inherited-from"><ul class="dummy"><li>
+        <a href="UI.Button.html#labelFont">Button#labelFont</a>
+    </li></ul></dd>
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    <!-- 
+    <dt class="tag-source">Source:</dt>
+    <dd class="tag-source"><ul class="dummy"><li>
+        js, line 278
+    </li></ul></dd>
+     -->
+
+    
+
+    
+    <dt class="tag-see">See:</dt>
+    <dd class="tag-see">
+        <ul>
+            <li>display.Text.font()</li>
+        </ul>
+    </dd>
+    
+
+    
+</dl>
+
+
+<!-- 
+    <h5>Type:</h5>
+    <ul>
+        <li>
+            
+<span class="param-type"><code>String</code></span>
+
+
+        </li>
+    </ul>
+ -->
+
+
+
+
+</div>
+
+        
+            
+<div class="section-members">
+<h4 class="name" id="labelPadding"><span class="type-signature"></span>labelPadding<span class="type-signature"> :String</span></h4>
+
+
+
+
+<div class="description">
+    Bouton de représentation de marge des étiquettes de texte. 
+<p><b> Format: </b> "De la marge supérieure, la marge droite, la marge inférieure, la marge gauche". </p>
+</div>
+
+
+
+
+
+<dl class="details">
+
+    
+
+    
+
+    
+    <dt class="inherited-from">Inherited From:</dt>
+    <dd class="inherited-from"><ul class="dummy"><li>
+        <a href="UI.Button.html#labelPadding">Button#labelPadding</a>
+    </li></ul></dd>
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    <!-- 
+    <dt class="tag-source">Source:</dt>
+    <dd class="tag-source"><ul class="dummy"><li>
+        js, line 241
+    </li></ul></dd>
+     -->
+
+    
+
+    
+
+    
+</dl>
+
+
+<!-- 
+    <h5>Type:</h5>
+    <ul>
+        <li>
+            
+<span class="param-type"><code>String</code></span>
+
+
+        </li>
+    </ul>
+ -->
+
+
+
+
+</div>
+
+        
+            
+<div class="section-members">
+<h4 class="name" id="labelSize"><span class="type-signature"></span>labelSize<span class="type-signature"> :int</span></h4>
+
+
+
+
+<div class="description">
+    Représente la taille de la police de bouton de texte de l'étiquette.
+</div>
+
+
+
+
+
+<dl class="details">
+
+    
+
+    
+
+    
+    <dt class="inherited-from">Inherited From:</dt>
+    <dd class="inherited-from"><ul class="dummy"><li>
+        <a href="UI.Button.html#labelSize">Button#labelSize</a>
+    </li></ul></dd>
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    <!-- 
+    <dt class="tag-source">Source:</dt>
+    <dd class="tag-source"><ul class="dummy"><li>
+        js, line 248
+    </li></ul></dd>
+     -->
+
+    
+
+    
+    <dt class="tag-see">See:</dt>
+    <dd class="tag-see">
+        <ul>
+            <li>display.Text.fontSize()</li>
+        </ul>
+    </dd>
+    
+
+    
+</dl>
+
+
+<!-- 
+    <h5>Type:</h5>
+    <ul>
+        <li>
+            
+<span class="param-type"><code>int</code></span>
+
+
+        </li>
+    </ul>
+ -->
+
+
+
+
+</div>
+
+        
+            
+<div class="section-members">
+<h4 class="name" id="labelStroke"><span class="type-signature"></span>labelStroke<span class="type-signature"> :Number</span></h4>
+
+
+
+
+<div class="description">
+    <p> La course de la largeur (en pixels). </p>
+La valeur par défaut est 0, dit de ne pas la course.
+</div>
+
+
+
+
+
+<dl class="details">
+
+    
+
+    
+
+    
+    <dt class="inherited-from">Inherited From:</dt>
+    <dd class="inherited-from"><ul class="dummy"><li>
+        <a href="UI.Button.html#labelStroke">Button#labelStroke</a>
+    </li></ul></dd>
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    <!-- 
+    <dt class="tag-source">Source:</dt>
+    <dd class="tag-source"><ul class="dummy"><li>
+        js, line 256
+    </li></ul></dd>
+     -->
+
+    
+
+    
+    <dt class="tag-see">See:</dt>
+    <dd class="tag-see">
+        <ul>
+            <li>display.Text.stroke()</li>
+        </ul>
+    </dd>
+    
+
+    
+</dl>
+
+
+<!-- 
+    <h5>Type:</h5>
+    <ul>
+        <li>
+            
+<span class="param-type"><code>Number</code></span>
+
+
+        </li>
+    </ul>
+ -->
+
+
+
+
+</div>
+
+        
+            
+<div class="section-members">
+<h4 class="name" id="labelStrokeColor"><span class="type-signature"></span>labelStrokeColor<span class="type-signature"> :String</span></h4>
+
+
+
+
+<div class="description">
+    <p> La course de couleur, représenté par une chaîne. </p>
+La valeur par défaut est "# 000000" (noir);
+</div>
+
+
+
+
+
+<dl class="details">
+
+    
+
+    
+
+    
+    <dt class="inherited-from">Inherited From:</dt>
+    <dd class="inherited-from"><ul class="dummy"><li>
+        <a href="UI.Button.html#labelStrokeColor">Button#labelStrokeColor</a>
+    </li></ul></dd>
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    <!-- 
+    <dt class="tag-source">Source:</dt>
+    <dd class="tag-source"><ul class="dummy"><li>
+        js, line 264
+    </li></ul></dd>
+     -->
+
+    
+
+    
+    <dt class="tag-see">See:</dt>
+    <dd class="tag-see">
+        <ul>
+            <li>display.Text.strokeColor()</li>
+        </ul>
+    </dd>
+    
+
+    
+</dl>
+
+
+<!-- 
+    <h5>Type:</h5>
+    <ul>
+        <li>
+            
+<span class="param-type"><code>String</code></span>
+
+
+        </li>
+    </ul>
+ -->
+
+
+
+
+</div>
+
+        
+            
+<div class="section-members">
+<h4 class="name" id="left"><span class="type-signature"></span>left<span class="type-signature"> :Number</span></h4>
+
+
+
+
+<div class="description">
+    <p> à partir de l'ensemble de la gauche à la distance horizontale entre le contenu de la zone de la gauche (en pixels). </p>
+</div>
+
+
+
+
+
+<dl class="details">
+
+    
+
+    
+
+    
+    <dt class="inherited-from">Inherited From:</dt>
+    <dd class="inherited-from"><ul class="dummy"><li>
+        <a href="UI.Component.html#left">Component#left</a>
+    </li></ul></dd>
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    <!-- 
+    <dt class="tag-source">Source:</dt>
+    <dd class="tag-source"><ul class="dummy"><li>
+        js, line 87
+    </li></ul></dd>
+     -->
+
+    
+
+    
+
+    
+</dl>
+
+
+<!-- 
+    <h5>Type:</h5>
+    <ul>
+        <li>
+            
+<span class="param-type"><code>Number</code></span>
+
+
+        </li>
+    </ul>
+ -->
+
+
+
+
+</div>
+
+        
+            
+<div class="section-members">
+<h4 class="name" id="measureHeight"><span class="type-signature"></span>measureHeight<span class="type-signature"> :Number</span></h4>
+
+
+
+
+<div class="description">
+    <p> Des objets d'affichage de zone d'affichage effective de la hauteur (en pixels). </p>
+</div>
+
+
+
+
+
+<dl class="details">
+
+    
+
+    
+
+    
+    <dt class="inherited-from">Inherited From:</dt>
+    <dd class="inherited-from"><ul class="dummy"><li>
+        <a href="UI.Component.html#measureHeight">Component#measureHeight</a>
+    </li></ul></dd>
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    <!-- 
+    <dt class="tag-source">Source:</dt>
+    <dd class="tag-source"><ul class="dummy"><li>
+        js, line 47
+    </li></ul></dd>
+     -->
+
+    
+
+    
+
+    
+</dl>
+
+
+<!-- 
+    <h5>Type:</h5>
+    <ul>
+        <li>
+            
+<span class="param-type"><code>Number</code></span>
+
+
+        </li>
+    </ul>
+ -->
+
+
+
+
+</div>
+
+        
+            
+<div class="section-members">
+<h4 class="name" id="measureWidth"><span class="type-signature"></span>measureWidth<span class="type-signature"> :Number</span></h4>
+
+
+
+
+<div class="description">
+    <p> Des objets d'affichage de zone d'affichage effective de la largeur (en pixels). </p>
+</div>
+
+
+
+
+
+<dl class="details">
+
+    
+
+    
+
+    
+    <dt class="inherited-from">Inherited From:</dt>
+    <dd class="inherited-from"><ul class="dummy"><li>
+        <a href="UI.Component.html#measureWidth">Component#measureWidth</a>
+    </li></ul></dd>
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    <!-- 
+    <dt class="tag-source">Source:</dt>
+    <dd class="tag-source"><ul class="dummy"><li>
+        js, line 29
+    </li></ul></dd>
+     -->
+
+    
+
+    
+
+    
+</dl>
+
+
+<!-- 
+    <h5>Type:</h5>
+    <ul>
+        <li>
+            
+<span class="param-type"><code>Number</code></span>
+
+
+        </li>
+    </ul>
+ -->
+
+
+
+
+</div>
+
+        
+            
+<div class="section-members">
+<h4 class="name" id="right"><span class="type-signature"></span>right<span class="type-signature"> :Number</span></h4>
+
+
+
+
+<div class="description">
+    <p> à partir de l'ensemble de la droite à la distance horizontale entre le contenu de région de droite (en pixels). </p>
+</div>
+
+
+
+
+
+<dl class="details">
+
+    
+
+    
+
+    
+    <dt class="inherited-from">Inherited From:</dt>
+    <dd class="inherited-from"><ul class="dummy"><li>
+        <a href="UI.Component.html#right">Component#right</a>
+    </li></ul></dd>
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    <!-- 
+    <dt class="tag-source">Source:</dt>
+    <dd class="tag-source"><ul class="dummy"><li>
+        js, line 93
+    </li></ul></dd>
+     -->
+
+    
+
+    
+
+    
+</dl>
+
+
+<!-- 
+    <h5>Type:</h5>
+    <ul>
+        <li>
+            
+<span class="param-type"><code>Number</code></span>
+
+
+        </li>
+    </ul>
+ -->
+
+
+
+
+</div>
+
+        
+            
+<div class="section-members">
+<h4 class="name" id="scaleX"><span class="type-signature"></span>scaleX<span class="type-signature"> :Number</span></h4>
+
+
+
+
+
+
+
+
+<dl class="details">
+
+    
+
+    
+
+    
+    <dt class="inherited-from">Inherited From:</dt>
+    <dd class="inherited-from"><ul class="dummy"><li>
+        <a href="UI.Component.html#scaleX">Component#scaleX</a>
+    </li></ul></dd>
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    <!-- 
+    <dt class="tag-source">Source:</dt>
+    <dd class="tag-source"><ul class="dummy"><li>
+        js, line 51
+    </li></ul></dd>
+     -->
+
+    
+
+    
+
+    
+</dl>
+
+
+<!-- 
+    <h5>Type:</h5>
+    <ul>
+        <li>
+            
+<span class="param-type"><code>Number</code></span>
+
+
+        </li>
+    </ul>
+ -->
+
+
+
+
+</div>
+
+        
+            
+<div class="section-members">
+<h4 class="name" id="scaleY"><span class="type-signature"></span>scaleY<span class="type-signature"> :Number</span></h4>
+
+
+
+
+
+
+
+
+<dl class="details">
+
+    
+
+    
+
+    
+    <dt class="inherited-from">Inherited From:</dt>
+    <dd class="inherited-from"><ul class="dummy"><li>
+        <a href="UI.Component.html#scaleY">Component#scaleY</a>
+    </li></ul></dd>
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    <!-- 
+    <dt class="tag-source">Source:</dt>
+    <dd class="tag-source"><ul class="dummy"><li>
+        js, line 55
+    </li></ul></dd>
+     -->
+
+    
+
+    
+
+    
+</dl>
+
+
+<!-- 
+    <h5>Type:</h5>
+    <ul>
+        <li>
+            
+<span class="param-type"><code>Number</code></span>
+
+
+        </li>
+    </ul>
+ -->
+
+
+
+
+</div>
+
+        
+            
+<div class="section-members">
+<h4 class="name" id="selected"><span class="type-signature"></span>selected<span class="type-signature"> :Boolean</span></h4>
+
+
+
+
+<div class="description">
+    A l'état sélectionné de bouton. 
+<p> Si la valeur est vrai, que l'objet est sélectionné.Sinon, l'objet est dans un état non sélectionné. </p>
+</div>
+
+
+
+
+
+<dl class="details">
+
+    
+
+    
+
+    
+    <dt class="inherited-from">Inherited From:</dt>
+    <dd class="inherited-from"><ul class="dummy"><li>
+        <a href="UI.Button.html#selected">Button#selected</a>
+    </li></ul></dd>
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    <!-- 
+    <dt class="tag-source">Source:</dt>
+    <dd class="tag-source"><ul class="dummy"><li>
+        js, line 213
+    </li></ul></dd>
+     -->
+
+    
+
+    
+
+    
+</dl>
+
+
+<!-- 
+    <h5>Type:</h5>
+    <ul>
+        <li>
+            
+<span class="param-type"><code>Boolean</code></span>
+
+
+        </li>
+    </ul>
+ -->
+
+
+
+
+</div>
+
+        
+            
+<div class="section-members">
+<h4 class="name" id="sizeGrid"><span class="type-signature"></span>sizeGrid<span class="type-signature"> :String</span></h4>
+
+
+
+
+<div class="description">
+    <p> Table exemple actuel <code>AutoImage</code> Grille de mise à l'échelle efficace de données, par exemple. </p>
+<p> Le format des données: "de la marge supérieure, la marge droite, la marge inférieure, la marge gauche, si le remplissage répété (la valeur 0: le remplissage répété, 1: le remplissage répété)", séparés par des virgules. 
+<ul><li> Par exemple: "4, 4, 4, 4, 1" </li></ul></p>
+</div>
+
+
+
+
+
+<dl class="details">
+
+    
+
+    
+
+    
+    <dt class="inherited-from">Inherited From:</dt>
+    <dd class="inherited-from"><ul class="dummy"><li>
+        <a href="UI.Button.html#sizeGrid">Button#sizeGrid</a>
+    </li></ul></dd>
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    <!-- 
+    <dt class="tag-source">Source:</dt>
+    <dd class="tag-source"><ul class="dummy"><li>
+        js, line 304
+    </li></ul></dd>
+     -->
+
+    
+
+    
+    <dt class="tag-see">See:</dt>
+    <dd class="tag-see">
+        <ul>
+            <li>ui.AutoBitmap.sizeGrid</li>
+        </ul>
+    </dd>
+    
+
+    
+</dl>
+
+
+<!-- 
+    <h5>Type:</h5>
+    <ul>
+        <li>
+            
+<span class="param-type"><code>String</code></span>
+
+
+        </li>
+    </ul>
+ -->
+
+
+
+
+</div>
+
+        
+            
+<div class="section-members">
+<h4 class="name" id="skin"><span class="type-signature"></span>skin<span class="type-signature"> :String</span></h4>
+
+
+
+
+<div class="description">
+    <p> Une ressource objet de la peau. </p>
+Le soutien de l'état singulet, deux et trois états, <code>stateNum</code> Attribut 
+<p> Adresse de la peau de l'objet représenté par une chaîne. </p>
+</div>
+
+
+
+
+
+<dl class="details">
+
+    
+
+    
+
+    
+    <dt class="inherited-from">Inherited From:</dt>
+    <dd class="inherited-from"><ul class="dummy"><li>
+        <a href="UI.Button.html#skin">Button#skin</a>
+    </li></ul></dd>
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    <!-- 
+    <dt class="tag-source">Source:</dt>
+    <dd class="tag-source"><ul class="dummy"><li>
+        js, line 173
+    </li></ul></dd>
+     -->
+
+    
+
+    
+    <dt class="tag-see">See:</dt>
+    <dd class="tag-see">
+        <ul>
+            <li>CheckBox.html#stateNum">#stateNum</a></li>
+        </ul>
+    </dd>
+    
+
+    
+</dl>
+
+
+<!-- 
+    <h5>Type:</h5>
+    <ul>
+        <li>
+            
+<span class="param-type"><code>String</code></span>
+
+
+        </li>
+    </ul>
+ -->
+
+
+
+
+</div>
+
+        
+            
+<div class="section-members">
+<h4 class="name" id="state"><span class="type-signature"></span>state<span class="type-signature"> :int</span></h4>
+
+
+
+
+<div class="description">
+    La valeur de l'état de l'objet.
+</div>
+
+
+
+
+
+<dl class="details">
+
+    
+
+    
+
+    
+    <dt class="inherited-from">Inherited From:</dt>
+    <dd class="inherited-from"><ul class="dummy"><li>
+        <a href="UI.Button.html#state">Button#state</a>
+    </li></ul></dd>
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    <!-- 
+    <dt class="tag-source">Source:</dt>
+    <dd class="tag-source"><ul class="dummy"><li>
+        js, line 220
+    </li></ul></dd>
+     -->
+
+    
+
+    
+    <dt class="tag-see">See:</dt>
+    <dd class="tag-see">
+        <ul>
+            <li>CheckBox.html#stateMap">#stateMap</a></li>
+        </ul>
+    </dd>
+    
+
+    
+</dl>
+
+
+<!-- 
+    <h5>Type:</h5>
+    <ul>
+        <li>
+            
+<span class="param-type"><code>int</code></span>
+
+
+        </li>
+    </ul>
+ -->
+
+
+
+
+</div>
+
+        
+            
+<div class="section-members">
+<h4 class="name" id="stateNum"><span class="type-signature"></span>stateNum<span class="type-signature"> :int</span></h4>
+
+
+
+
+<div class="description">
+    <p> La valeur d'état de l'objet spécifié, de manière à représentation numérique. </p>
+<p> La valeur par défaut est de 3.Cette valeur détermine la peau des ressources de l'image de coupe. </p>
+<p><b> Valeur: 
+<li> 1: état unique.La photo n'est pas fait, la découpe, le bouton de l'état de la peau d'un seul. </li>
+<li> 2: deux membres.L'image en coupe dans la direction verticale est égale pour la partie 2, du haut vers le bas, respectivement 
+L'état de la peau et de rebond 
+		 *</li>
+<li> 3: trois états.L'image en coupe dans la direction verticale est égale pour la partie 2, du haut vers le bas, respectivement 
+L'état de la peau et de rebond 
+Passe de l'état de la peau, 
+		 *</li>
+		 *</p>
+</div>
+
+
+
+
+
+<dl class="details">
+
+    
+
+    
+
+    
+    <dt class="inherited-from">Inherited From:</dt>
+    <dd class="inherited-from"><ul class="dummy"><li>
+        <a href="UI.Button.html#stateNum">Button#stateNum</a>
+    </li></ul></dd>
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    <!-- 
+    <dt class="tag-source">Source:</dt>
+    <dd class="tag-source"><ul class="dummy"><li>
+        js, line 190
+    </li></ul></dd>
+     -->
+
+    
+
+    
+
+    
+</dl>
+
+
+<!-- 
+    <h5>Type:</h5>
+    <ul>
+        <li>
+            
+<span class="param-type"><code>int</code></span>
+
+
+        </li>
+    </ul>
+ -->
+
+
+
+
+</div>
+
+        
+            
+<div class="section-members">
+<h4 class="name" id="strokeColors"><span class="type-signature"></span>strokeColors<span class="type-signature"> :String</span></h4>
+
+
+
+
+<div class="description">
+    Bouton de représentation de couleurs de course dans chaque État. 
+<p><b> Format: </b> "UpColor, overColor, downColor, disableColor". </p>
+</div>
+
+
+
+
+
+<dl class="details">
+
+    
+
+    
+
+    
+    <dt class="inherited-from">Inherited From:</dt>
+    <dd class="inherited-from"><ul class="dummy"><li>
+        <a href="UI.Button.html#strokeColors">Button#strokeColors</a>
+    </li></ul></dd>
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    <!-- 
+    <dt class="tag-source">Source:</dt>
+    <dd class="tag-source"><ul class="dummy"><li>
+        js, line 234
+    </li></ul></dd>
+     -->
+
+    
+
+    
+
+    
+</dl>
+
+
+<!-- 
+    <h5>Type:</h5>
+    <ul>
+        <li>
+            
+<span class="param-type"><code>String</code></span>
+
+
+        </li>
+    </ul>
+ -->
+
+
+
+
+</div>
+
+        
+            
+<div class="section-members">
+<h4 class="name" id="tag"><span class="type-signature"></span>tag<span class="type-signature"> :Object</span></h4>
+
+
+
+
+<div class="description">
+    <p> L'étiquette de l'objet. </p>
+</div>
+
+
+
+
+
+<dl class="details">
+
+    
+
+    
+
+    
+    <dt class="inherited-from">Inherited From:</dt>
+    <dd class="inherited-from"><ul class="dummy"><li>
+        <a href="UI.Component.html#tag">Component#tag</a>
+    </li></ul></dd>
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    <!-- 
+    <dt class="tag-source">Source:</dt>
+    <dd class="tag-source"><ul class="dummy"><li>
+        js, line 124
+    </li></ul></dd>
+     -->
+
+    
+
+    
+
+    
+</dl>
+
+
+<!-- 
+    <h5>Type:</h5>
+    <ul>
+        <li>
+            
+<span class="param-type"><code>Object</code></span>
+
+
+        </li>
+    </ul>
+ -->
+
+
+
+
+</div>
+
+        
+            
+<div class="section-members">
+<h4 class="name" id="text"><span class="type-signature"></span>text<span class="type-signature"> :<a href="Core.Text.html">Text</a></span></h4>
+
+
+
+
+<div class="description">
+    Le bouton Étiquette <code>Text</code> La commande.
+</div>
+
+
+
+
+
+<dl class="details">
+
+    
+
+    
+
+    
+    <dt class="inherited-from">Inherited From:</dt>
+    <dd class="inherited-from"><ul class="dummy"><li>
+        <a href="UI.Button.html#text">Button#text</a>
+    </li></ul></dd>
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    <!-- 
+    <dt class="tag-source">Source:</dt>
+    <dd class="tag-source"><ul class="dummy"><li>
+        js, line 296
+    </li></ul></dd>
+     -->
+
+    
+
+    
+
+    
+</dl>
+
+
+<!-- 
+    <h5>Type:</h5>
+    <ul>
+        <li>
+            
+<span class="param-type"><code><a href="Core.Text.html">Text</a></code></span>
+
+
+        </li>
+    </ul>
+ -->
+
+
+
+
+</div>
+
+        
+            
+<div class="section-members">
+<h4 class="name" id="toggle"><span class="type-signature"></span>toggle<span class="type-signature"> :Boolean</span></h4>
+
+
+
+
+<div class="description">
+    Appuie sur le bouton de commutation est spécifié si le bouton de l'état d'affichage.
+</div>
+
+
+
+
+
+<dl class="details">
+
+    
+
+    
+
+    
+    <dt class="inherited-from">Inherited From:</dt>
+    <dd class="inherited-from"><ul class="dummy"><li>
+        <a href="UI.Button.html#toggle">Button#toggle</a>
+    </li></ul></dd>
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    <!-- 
+    <dt class="tag-source">Source:</dt>
+    <dd class="tag-source"><ul class="dummy"><li>
+        js, line 164
+    </li></ul></dd>
+     -->
+
+    
+
+    
+
+    
+</dl>
+
+
+<!-- 
+    <h5>Type:</h5>
+    <ul>
+        <li>
+            
+<span class="param-type"><code>Boolean</code></span>
+
+
+        </li>
+    </ul>
+ -->
+
+
+
+
+    <h5>示例</h5>
+    
+    <pre class="prettyprint"><code>Le code suivant, crée un &lt;code>Button&lt;/code> Des exemples, et ensemble de bouton à bascule. 
+&lt;listing version="3.0">
+package
+		 *{
+		 *import laya.ui.Button;
+		 *import laya.utils.Handler;
+		 *public class Button_toggle
+		 *{
+		 *public function Button_toggle()
+		 *{
+		 *Laya.init(640, 800);// Le mode de réglage de largeur élevé, jeu de rendre la toile. 
+		 *Laya.stage.bgColor = "#efefef";// Couleur de fond de la toile. 
+		 *Laya.loader.load("resource/ui/button.png", Handler.create(this,onLoadComplete));
+		 *}
+		 *private function onLoadComplete():void
+		 *{
+		 *trace("资源加载完成！");
+		 *var button:Button = new Button("resource/ui/button.png","label");// Créer un  Button  L'instance d'objet  Button  , l'étiquette de la peau de la peau et des étiquettes entrantes. 
+		 *button.x = 100;// Ensemble  Button  La valeur X de propriété d'objet, des moyens de commande  Button  La position d'affichage de l'objet. 
+		 *button.y = 100;// Ensemble  Button  Les valeurs y des attributs d'objet, des moyens de commande  Button  La position d'affichage de l'objet. 
+		 *button.toggle = true;// Ensemble  Button  Objet de bouton à bascule. 
+		 *button.clickHandler = new Handler(this, onClickButton,[button]);// Ensemble  Button  Processeur d'événement de clic. 
+		 *Laya.stage.addChild(button);// Ce  Button  L'objet est ajouté à la liste d'affichage. 
+		 *}
+		 *private function onClickButton(button:Button):void
+		 *{
+		 *trace("button.selected = "+ button.selected);
+		 *}
+		 *}
+		 *}
+		 *&lt;/listing>
+&lt;listing version="3.0">
+Laya.init(640, 800);// Le mode de réglage de largeur élevé, jeu de rendre la toile. 
+Laya.stage.bgColor = "#efefef";// Couleur de fond de la toile. 
+Laya.loader.load("resource/ui/button.png",laya.utils.Handler.create(this,loadComplete));// La charge de ressources 
+function loadComplete()
+{
+    console.log("资源加载完成！");
+    var button = new laya.ui.Button("resource/ui/button.png","label");// Créer un  Button  Un objet d'instance de la classe  Button  , l'étiquette de la peau de la peau et des étiquettes entrantes. 
+    button.x =100;// Ensemble  Button  La valeur X de propriété d'objet, des moyens de commande  Button  La position d'affichage de l'objet. 
+    button.y =100;// Ensemble  Button  Les valeurs y des attributs d'objet, des moyens de commande  Button  La position d'affichage de l'objet. 
+    button.toggle = true;// Ensemble  Button  Objet de bouton à bascule. 
+    button.clickHandler = laya.utils.Handler.create(this,onClickButton,[button],false);// Ensemble  Button  Processeur d'événement de clic. 
+    Laya.stage.addChild(button);// Ce  Button  L'objet est ajouté à la liste d'affichage. 
+}
+function onClickButton(button)
+{
+    console.log("button.selected = ",button.selected);
+}
+		 *&lt;/listing>
+&lt;listing version="3.0">
+Laya.init(640, 800);// Le mode de réglage de largeur élevé, jeu de rendre la toile. 
+Laya.stage.bgColor = "#efefef";// Couleur de fond de la toile. 
+Laya.loader.load("button.png", null,null, null, null, null);// La charge de ressources 
+function loadComplete() {
+    console.log("资源加载完成！");
+    var button:laya.ui.Button = new laya.ui.Button("button.png", "label");// Créer un  Button  Un objet d'instance de la classe  Button  , l'étiquette de la peau de la peau et des étiquettes entrantes. 
+    button.x = 100;// Ensemble  Button  La valeur X de propriété d'objet, des moyens de commande  Button  La position d'affichage de l'objet. 
+    button.y = 100;// Ensemble  Button  Les valeurs y des attributs d'objet, des moyens de commande  Button  La position d'affichage de l'objet. 
+    button.toggle = true;// Ensemble  Button  Objet de bouton à bascule. 
+    button.clickHandler = laya.utils.Handler.create(this, onClickButton, [button], false);// Ensemble  Button  Processeur d'événement de clic. 
+    Laya.stage.addChild(button);// Ce  Button  L'objet est ajouté à la liste d'affichage. 
+}
+function onClickButton(button) {
+    console.log("button.selected = ", button.selected);
+}
+		 *&lt;/listing></code></pre>
+
+
+</div>
+
+        
+            
+<div class="section-members">
+<h4 class="name" id="toolTip"><span class="type-signature"></span>toolTip<span class="type-signature"> :Object</span></h4>
+
+
+
+
+<div class="description">
+    <p> Le pointeur de la souris de pourboires. </p>
+<p> Peut être associé à un texte <code>String</code> Ou la fonction <code>Handler</code> , pour la mise en oeuvre de pointe et de paramètres de style personnalisé de la souris à transporter, et ainsi de suite. </p>
+</div>
+
+
+
+
+
+<dl class="details">
+
+    
+
+    
+
+    
+    <dt class="inherited-from">Inherited From:</dt>
+    <dd class="inherited-from"><ul class="dummy"><li>
+        <a href="UI.Component.html#toolTip">Component#toolTip</a>
+    </li></ul></dd>
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    <!-- 
+    <dt class="tag-source">Source:</dt>
+    <dd class="tag-source"><ul class="dummy"><li>
+        js, line 151
+    </li></ul></dd>
+     -->
+
+    
+
+    
+
+    
+</dl>
+
+
+<!-- 
+    <h5>Type:</h5>
+    <ul>
+        <li>
+            
+<span class="param-type"><code>Object</code></span>
+
+
+        </li>
+    </ul>
+ -->
+
+
+
+
+    <h5>示例</h5>
+    
+    <pre class="prettyprint"><code>Les exemples montrent que trois souris: 
+		   &lt;listing version="3.0">
+		   private var _testTips:TestTipsUI = new TestTipsUI();
+		   private function testTips():void {
+		   // Simple des pointes de souris 
+		Btn2.toolTip = "C'est des pointes de souris &amp; lt; b&amp;gt; gras &amp; lt; / b&amp;gt; &amp; lt; br &amp; gt; retours à la ligne"; 
+		   // Personnalisation des pointes de la souris 
+		Btn1.toolTip = showTips1; 
+		   // Les paramètres personnalisés de pointes de souris 
+		Clip.toolTip = new manipulateur (this, showTips2, ["clip"] ); 
+		} 
+		Private Function showTips1 (): vide { 
+		_ testTips.label.text = "C'est le bouton [" + btn1.label + "] "; 
+		Tip.addChild (_ testTips); 
+		} 
+		Private Function showTips2 (name: String): vide { 
+		_ testTips.label.text = "C'est" + name; 
+		Tip.addChild (_ testTips); 
+		} 
+		&lt;/listing></code></pre>
+
+
+</div>
+
+        
+            
+<div class="section-members">
+<h4 class="name" id="top"><span class="type-signature"></span>top<span class="type-signature"> :Number</span></h4>
+
+
+
+
+<div class="description">
+    <p> à partir de l'ensemble bord supérieur à la zone de contenu de la distance verticale entre la limite supérieure (en pixels). </p>
+</div>
+
+
+
+
+
+<dl class="details">
+
+    
+
+    
+
+    
+    <dt class="inherited-from">Inherited From:</dt>
+    <dd class="inherited-from"><ul class="dummy"><li>
+        <a href="UI.Component.html#top">Component#top</a>
+    </li></ul></dd>
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    <!-- 
+    <dt class="tag-source">Source:</dt>
+    <dd class="tag-source"><ul class="dummy"><li>
+        js, line 75
+    </li></ul></dd>
+     -->
+
+    
+
+    
+
+    
+</dl>
+
+
+<!-- 
+    <h5>Type:</h5>
+    <ul>
+        <li>
+            
+<span class="param-type"><code>Number</code></span>
+
+
+        </li>
+    </ul>
+ -->
+
+
+
+
+</div>
+
+        
+            
+<div class="section-members">
+<h4 class="name" id="width"><span class="type-signature"></span>width<span class="type-signature"> :Number</span></h4>
+
+
+
+
+
+
+
+
+<dl class="details">
+
+    
+
+    
+
+    
+    <dt class="inherited-from">Inherited From:</dt>
+    <dd class="inherited-from"><ul class="dummy"><li>
+        <a href="UI.Button.html#width">Button#width</a>
+    </li></ul></dd>
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    <!-- 
+    <dt class="tag-source">Source:</dt>
+    <dd class="tag-source"><ul class="dummy"><li>
+        js, line 309
+    </li></ul></dd>
+     -->
+
+    
+
+    
+
+    
+</dl>
+
+
+<!-- 
+    <h5>Type:</h5>
+    <ul>
+        <li>
+            
+<span class="param-type"><code>Number</code></span>
+
+
+        </li>
+    </ul>
+ -->
+
+
+
+
+</div>
+
+        
+    
+
+    
+        <h3 class="subsection-title">Methods</h3>
+
+        
+            
+<div class="section-method">
+
+    
+
+    <h4 class="name" id="callLater"><span class="type-signature"></span>callLater<span class="signature">(method, args<span class="signature-attributes">opt</span>)</span><span class="type-signature"></span></h4>
+
+    
+
+
+
+<div class="description">
+    <p> Fonction de retard de fonctionnement spécifiée. </p>
+<p> Dans la commande est affichée sur l'écran avant l'appel, généralement utilisés pour le calcul des données de retard. </p>
+</div>
+
+
+
+
+
+<dl class="details">
+
+    
+
+    
+
+    
+    <dt class="inherited-from">Inherited From:</dt>
+    <dd class="inherited-from"><ul class="dummy"><li>
+        <a href="UI.Component.html#callLater">Component#callLater</a>
+    </li></ul></dd>
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    <!-- 
+    <dt class="tag-source">Source:</dt>
+    <dd class="tag-source"><ul class="dummy"><li>
+        js, line 197
+    </li></ul></dd>
+     -->
+
+    
+
+    
+    <dt class="tag-see">See:</dt>
+    <dd class="tag-see">
+        <ul>
+            <li>CheckBox.html#runCallLater()">#runCallLater()</a></li>
+        </ul>
+    </dd>
+    
+
+    
+</dl>
+
+
+
+
+
+
+
+
+
+    <h5>Parameters:</h5>
+    
+
+<table class="params">
+    <thead>
+    <tr>
+        
+        <th>Name</th>
+        
+
+        <th>Type</th>
+
+        
+        <th>Attributes</th>
+        
+
+        
+        <th>Default</th>
+        
+
+        <th class="last">Description</th>
+    </tr>
+    </thead>
+
+    <tbody>
+    
+
+        <tr>
+            
+                <td class="name"><code>method</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type"><code>function</code></span>
+
+
+            
+            </td>
+
+            
+                <td class="attributes">
+                
+
+                
+
+                
+                </td>
+            
+
+            
+                <td class="default">
+                
+                </td>
+            
+
+            <td class="description last">
+                Le nom de l'exécution de la fonction.Par exemple, functionName.
+                
+            </td>
+        </tr>
+
+    
+
+        <tr>
+            
+                <td class="name"><code>args</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type"><code>Array</code></span>
+
+
+            
+            </td>
+
+            
+                <td class="attributes">
+                
+                    &lt;optional><br>
+                
+
+                
+
+                
+                </td>
+            
+
+            
+                <td class="default">
+                
+                    null
+                
+                </td>
+            
+
+            <td class="description last">
+                args  Transmis <code>method</code> La liste de paramètres facultatifs de fonction.
+                
+            </td>
+        </tr>
+
+    
+    </tbody>
+</table>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+</div>
+        
+            
+<div class="section-method">
+
+    
+
+    <h4 class="name" id="changeSize"><span class="type-signature"></span>changeSize<span class="signature">()</span><span class="type-signature"></span></h4>
+
+    
+
+
+
+<div class="description">
+    <p> Ajuster la taille de l'objet. </p>
+</div>
+
+
+
+
+
+<dl class="details">
+
+    
+
+    
+
+    
+    <dt class="inherited-from">Inherited From:</dt>
+    <dd class="inherited-from"><ul class="dummy"><li>
+        <a href="UI.Component.html#changeSize">Component#changeSize</a>
+    </li></ul></dd>
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    <!-- 
+    <dt class="tag-source">Source:</dt>
+    <dd class="tag-source"><ul class="dummy"><li>
+        js, line 214
+    </li></ul></dd>
+     -->
+
+    
+
+    
+
+    
+</dl>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+</div>
+        
+            
+<div class="section-method">
+
+    
+
+    <h4 class="name" id="commitMeasure"><span class="type-signature"></span>commitMeasure<span class="signature">()</span><span class="type-signature"></span></h4>
+
+    
+
+
+
+<div class="description">
+    <p> L'application immédiate de l'influence de la hauteur d'une quantité de retard de la largeur de l'appel de fonction. </p>
+</div>
+
+
+
+
+
+<dl class="details">
+
+    
+
+    
+
+    
+    <dt class="inherited-from">Inherited From:</dt>
+    <dd class="inherited-from"><ul class="dummy"><li>
+        <a href="UI.Component.html#commitMeasure">Component#commitMeasure</a>
+    </li></ul></dd>
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    <!-- 
+    <dt class="tag-source">Source:</dt>
+    <dd class="tag-source"><ul class="dummy"><li>
+        js, line 210
+    </li></ul></dd>
+     -->
+
+    
+
+    
+    <dt class="tag-see">See:</dt>
+    <dd class="tag-see">
+        <ul>
+            <li>CheckBox.html#callLater()">#callLater()</a></li>
+        
+            <li>CheckBox.html#runCallLater()">#runCallLater()</a></li>
+        </ul>
+    </dd>
+    
+
+    
+</dl>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+</div>
+        
+            
+<div class="section-method">
+
+    
+
+    <h4 class="name" id="createChildren"><span class="type-signature"></span>createChildren<span class="signature">()</span><span class="type-signature"></span></h4>
+
+    
+
+
+
+<div class="description">
+    <p> De créer et d'ajouter des commandes de sous - noeuds. </p>
+</div>
+
+
+
+
+
+<dl class="details">
+
+    
+
+    
+
+    
+    <dt class="inherited-from">Inherited From:</dt>
+    <dd class="inherited-from"><ul class="dummy"><li>
+        <a href="UI.Component.html#createChildren">Component#createChildren</a>
+    </li></ul></dd>
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    <!-- 
+    <dt class="tag-source">Source:</dt>
+    <dd class="tag-source"><ul class="dummy"><li>
+        js, line 184
+    </li></ul></dd>
+     -->
+
+    
+
+    
+
+    
+</dl>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+</div>
+        
+            
+<div class="section-method">
+
+    
+
+    <h4 class="name" id="destroy"><span class="type-signature"></span>destroy<span class="signature">()</span><span class="type-signature"></span></h4>
+
+    
+
+
+
+
+
+
+
+<dl class="details">
+
+    
+
+    
+
+    
+    <dt class="inherited-from">Inherited From:</dt>
+    <dd class="inherited-from"><ul class="dummy"><li>
+        <a href="UI.Component.html#destroy">Component#destroy</a>
+    </li></ul></dd>
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    <!-- 
+    <dt class="tag-source">Source:</dt>
+    <dd class="tag-source"><ul class="dummy"><li>
+        js, line 174
+    </li></ul></dd>
+     -->
+
+    
+
+    
+
+    
+</dl>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+</div>
+        
+            
+<div class="section-method">
+
+    
+
+    <h4 class="name" id="initialize"><span class="type-signature"></span>initialize<span class="signature">()</span><span class="type-signature"></span></h4>
+
+    
+
+
+
+<div class="description">
+    <p> Une commande d'initialisation. </p>
+</div>
+
+
+
+
+
+<dl class="details">
+
+    
+
+    
+
+    
+
+    
+    <dt class="tag-overrides">Overrides:</dt>
+    <dd class="tag-overrides"><ul class="dummy"><li>
+        <a href="UI.Button.html#initialize">Button#initialize</a>
+    </li></ul></dd>
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    <!-- 
+    <dt class="tag-source">Source:</dt>
+    <dd class="tag-source"><ul class="dummy"><li>
+        js, line 189
+    </li></ul></dd>
+     -->
+
+    
+
+    
+
+    
+</dl>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+</div>
+        
+            
+<div class="section-method">
+
+    
+
+    <h4 class="name" id="onCompResize"><span class="type-signature"></span>onCompResize<span class="signature">()</span><span class="type-signature"></span></h4>
+
+    
+
+
+
+<div class="description">
+    Le père de récipients <code>Event.RESIZE</code> La fonction de traitement d'événement de l'auditeur.
+</div>
+
+
+
+
+
+<dl class="details">
+
+    
+
+    
+
+    
+    <dt class="inherited-from">Inherited From:</dt>
+    <dd class="inherited-from"><ul class="dummy"><li>
+        <a href="UI.Component.html#onCompResize">Component#onCompResize</a>
+    </li></ul></dd>
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    <!-- 
+    <dt class="tag-source">Source:</dt>
+    <dd class="tag-source"><ul class="dummy"><li>
+        js, line 218
+    </li></ul></dd>
+     -->
+
+    
+
+    
+
+    
+</dl>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+</div>
+        
+            
+<div class="section-method">
+
+    
+
+    <h4 class="name" id="onMouse"><span class="type-signature"></span>onMouse<span class="signature">(e)</span><span class="type-signature"></span></h4>
+
+    
+
+
+
+<div class="description">
+    Objet <code>Event.MOUSE_OVER、Event.MOUSE_OUT、Event.MOUSE_DOWN、Event.MOUSE_UP、Event.CLICK</code> La fonction de traitement d'événement de l'auditeur.
+</div>
+
+
+
+
+
+<dl class="details">
+
+    
+
+    
+
+    
+    <dt class="inherited-from">Inherited From:</dt>
+    <dd class="inherited-from"><ul class="dummy"><li>
+        <a href="UI.Button.html#onMouse">Button#onMouse</a>
+    </li></ul></dd>
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    <!-- 
+    <dt class="tag-source">Source:</dt>
+    <dd class="tag-source"><ul class="dummy"><li>
+        js, line 340
+    </li></ul></dd>
+     -->
+
+    
+
+    
+
+    
+</dl>
+
+
+
+
+
+
+
+
+
+    <h5>Parameters:</h5>
+    
+
+<table class="params">
+    <thead>
+    <tr>
+        
+        <th>Name</th>
+        
+
+        <th>Type</th>
+
+        
+
+        
+
+        <th class="last">Description</th>
+    </tr>
+    </thead>
+
+    <tbody>
+    
+
+        <tr>
+            
+                <td class="name"><code>e</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type"><code><a href="Core.Event.html">Event</a></code></span>
+
+
+            
+            </td>
+
+            
+
+            
+
+            <td class="description last">
+                L'événement de l'objet.
+                
+            </td>
+        </tr>
+
+    
+    </tbody>
+</table>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+</div>
+        
+            
+<div class="section-method">
+
+    
+
+    <h4 class="name" id="preinitialize"><span class="type-signature"></span>preinitialize<span class="signature">()</span><span class="type-signature"></span></h4>
+
+    
+
+
+
+<div class="description">
+    <p> De pré - initialisation. </p>
+</div>
+
+
+
+
+
+<dl class="details">
+
+    
+
+    
+
+    
+
+    
+    <dt class="tag-overrides">Overrides:</dt>
+    <dd class="tag-overrides"><ul class="dummy"><li>
+        <a href="UI.Button.html#preinitialize">Button#preinitialize</a>
+    </li></ul></dd>
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    <!-- 
+    <dt class="tag-source">Source:</dt>
+    <dd class="tag-source"><ul class="dummy"><li>
+        js, line 179
+    </li></ul></dd>
+     -->
+
+    
+
+    
+
+    
+</dl>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+</div>
+        
+            
+<div class="section-method">
+
+    
+
+    <h4 class="name" id="resetLayoutX"><span class="type-signature"></span>resetLayoutX<span class="signature">()</span><span class="type-signature"></span></h4>
+
+    
+
+
+
+<div class="description">
+    <p> Remise d'objets <code> X </p>
+</div>
+
+
+
+
+
+<dl class="details">
+
+    
+
+    
+
+    
+    <dt class="inherited-from">Inherited From:</dt>
+    <dd class="inherited-from"><ul class="dummy"><li>
+        <a href="UI.Component.html#resetLayoutX">Component#resetLayoutX</a>
+    </li></ul></dd>
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    <!-- 
+    <dt class="tag-source">Source:</dt>
+    <dd class="tag-source"><ul class="dummy"><li>
+        js, line 222
+    </li></ul></dd>
+     -->
+
+    
+
+    
+
+    
+</dl>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+</div>
+        
+            
+<div class="section-method">
+
+    
+
+    <h4 class="name" id="resetLayoutY"><span class="type-signature"></span>resetLayoutY<span class="signature">()</span><span class="type-signature"></span></h4>
+
+    
+
+
+
+<div class="description">
+    <p> Remise d'objets <code> Y </p>
+</div>
+
+
+
+
+
+<dl class="details">
+
+    
+
+    
+
+    
+    <dt class="inherited-from">Inherited From:</dt>
+    <dd class="inherited-from"><ul class="dummy"><li>
+        <a href="UI.Component.html#resetLayoutY">Component#resetLayoutY</a>
+    </li></ul></dd>
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    <!-- 
+    <dt class="tag-source">Source:</dt>
+    <dd class="tag-source"><ul class="dummy"><li>
+        js, line 226
+    </li></ul></dd>
+     -->
+
+    
+
+    
+
+    
+</dl>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+</div>
+        
+            
+<div class="section-method">
+
+    
+
+    <h4 class="name" id="runCallLater"><span class="type-signature"></span>runCallLater<span class="signature">(method)</span><span class="type-signature"></span></h4>
+
+    
+
+
+
+<div class="description">
+    <p> Si la fonction a besoin d'appel (par l'intermédiaire de retard <code>callLater</code> De réglage de fonction), il est immédiatement pour retarder l'exécution de l'appel de fonction. </p>
+</div>
+
+
+
+
+
+<dl class="details">
+
+    
+
+    
+
+    
+    <dt class="inherited-from">Inherited From:</dt>
+    <dd class="inherited-from"><ul class="dummy"><li>
+        <a href="UI.Component.html#runCallLater">Component#runCallLater</a>
+    </li></ul></dd>
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    <!-- 
+    <dt class="tag-source">Source:</dt>
+    <dd class="tag-source"><ul class="dummy"><li>
+        js, line 203
+    </li></ul></dd>
+     -->
+
+    
+
+    
+    <dt class="tag-see">See:</dt>
+    <dd class="tag-see">
+        <ul>
+            <li>CheckBox.html#callLater()">#callLater()</a></li>
+        </ul>
+    </dd>
+    
+
+    
+</dl>
+
+
+
+
+
+
+
+
+
+    <h5>Parameters:</h5>
+    
+
+<table class="params">
+    <thead>
+    <tr>
+        
+        <th>Name</th>
+        
+
+        <th>Type</th>
+
+        
+
+        
+
+        <th class="last">Description</th>
+    </tr>
+    </thead>
+
+    <tbody>
+    
+
+        <tr>
+            
+                <td class="name"><code>method</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type"><code>function</code></span>
+
+
+            
+            </td>
+
+            
+
+            
+
+            <td class="description last">
+                Le nom de la fonction à exécuter.Par exemple, functionName.
+                
+            </td>
+        </tr>
+
+    
+    </tbody>
+</table>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+</div>
+        
+    
+
+    
+
+    
+        <h3 class="subsection-title">Event</h3>
+
+        
+            
+<div class="section-method">
+
+    
+
+    <h4 class="name" id="event:change">change</h4>
+
+    
+
+
+
+
+
+
+
+<dl class="details">
+
+    
+
+    
+
+    
+    <dt class="inherited-from">Inherited From:</dt>
+    <dd class="inherited-from"><ul class="dummy"><li>
+        <a href="UI.Button.html#event:change">Button#event:change</a>
+    </li></ul></dd>
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    <!-- 
+    <dt class="tag-source">Source:</dt>
+    <dd class="tag-source"><ul class="dummy"><li>
+        js, line 341
+    </li></ul></dd>
+     -->
+
+    
+
+    
+    <dt class="tag-see">See:</dt>
+    <dd class="tag-see">
+        <ul>
+            <li>events.Event</li>
+        </ul>
+    </dd>
+    
+
+    
+</dl>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+</div>
+        
+            
+<div class="section-method">
+
+    
+
+    <h4 class="name" id="event:resize">resize</h4>
+
+    
+
+
+
+
+
+
+
+<dl class="details">
+
+    
+
+    
+
+    
+    <dt class="inherited-from">Inherited From:</dt>
+    <dd class="inherited-from"><ul class="dummy"><li>
+        <a href="UI.Component.html#event:resize">Component#event:resize</a>
+    </li></ul></dd>
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    <!-- 
+    <dt class="tag-source">Source:</dt>
+    <dd class="tag-source"><ul class="dummy"><li>
+        js, line 227
+    </li></ul></dd>
+     -->
+
+    
+
+    
+    <dt class="tag-see">See:</dt>
+    <dd class="tag-see">
+        <ul>
+            <li>events.Event</li>
+        </ul>
+    </dd>
+    
+
+    
+</dl>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+</div>
+        
+    
+</article>
+
+</section>
+
+
+
+
+</div>
+<br class="clear">
+
+
+
+<script src="scripts/linenumber.js"></script>
+
+</body>
+</html>
