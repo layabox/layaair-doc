@@ -100,8 +100,9 @@ by.endian = Byte.LITTLE_ENDIAN;//设置endian；
 by.writeInt32(5000);//写入一个int32数据
 by.writeUint16(16);//写入一个uint16 数据
 byte.writeArrayBuffer(by.buffer);//把临时字节数据的数据写入byte中，这里注意写入的是by.buffer;
-byte.clear();//清除掉数据;方便下次读写；
+
 this.socket.send(this.byte.buffer);//这里是把字节数组的数据通过socket发送给服务器。
+byte.clear();//清除掉数据;方便下次读写；
 ```
 
 ​	上面我们看到，我们通过一个字节数组把我们需要的数据读入一个Byte数组，最后发送给服务器的是`byte.buffer`,这是一个ArrayBuffer的数据类型。这里一定要注意send的参数是ArrayBuffer，很多开发者可能不注意，直接传递成了Byte，导致发送数据不正确。假如写成`this.socket.send(this.byte);`这是错误的，这点一定要注意。
