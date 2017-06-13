@@ -117,7 +117,7 @@ autoPlay属性可以设置是否自动播放，默认为false，不自动播放�
 
 
 
-#### 1.6 按动效名称自动播放（autoAnimation）
+#### 2.6 按动效名称自动播放（autoAnimation）
 
 在LayaAir IDE中创建的时间轴动画文件（.ani后缀）内可能会有多个动画组成的动画集合，通过autoAnimation属性，可以选择其中一个动画名称进行播放。
 
