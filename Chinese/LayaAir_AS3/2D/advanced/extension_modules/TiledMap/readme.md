@@ -94,10 +94,10 @@ package
 		{
 			//初始化舞台
 			Laya.init(Browser.width, Browser.height, WebGL);
-          	//创建TiledMap实例
+			//创建TiledMap实例
 			tMap = new TiledMap();
-          	//创建Rectangle实例，视口区域
-          	var viewRect:Rectangle = new Rectangle(0, 0, Browser.width, Browser.height);
+			//创建Rectangle实例，视口区域
+			var viewRect:Rectangle = new Rectangle(0, 0, Browser.width, Browser.height);
 			//创建TiledMap地图
 			tMap.createMap("res/TiledMap/orthogonal.json",viewRect);
 		}
@@ -137,17 +137,19 @@ package
 		{
 			//初始化舞台
 			Laya.init(Browser.width, Browser.height, WebGL);
+			
 			//创建TiledMap实例
 			tMap = new TiledMap();
 			//创建Rectangle实例，视口区域
 			var viewRect:Rectangle = new Rectangle(0, 0, Browser.width, Browser.height);
+			
 			//创建TiledMap地图，加载orthogonal.json后，执行回调方法onMapLoaded()
 			tMap.createMap("res/TiledMap/orthogonal.json",viewRect, Handler.create(this,onMapLoaded));
 		}
   
 		private function onMapLoaded():void
 		{
-          //将原地图放大2倍
+			//将原地图放大2倍
 			tMap.scale = 2;
 		}
 	}
@@ -395,6 +397,8 @@ tMap.destroy();
 
 ### 3.2 缓存相关
 
+#### 3.2.1 开启和关闭自动缓存
+
 LayaAir引擎使用TiledMap时，默认会将没有动画的地块自动缓存起来，并且缓存类型默认为normal。
 
 ```java
@@ -411,6 +415,33 @@ tMap.antiCrack = true;
 那么为什么要再介绍一遍呢？
 
 因为有的时候，缓存后的Tiled地图会出现黑边（缝隙）。尽管在1.7.7版本新增了antiCrack属性，可以消除绝大多数因normal缓存导致的黑边。但如果偶现的黑边问题仍未得到解决时。可以通过关闭自动缓存来解决黑边（缝隙）问题。
+
+#### 3.2.2 设置缓存区块大小
+
+#### 缓存区块的设置推荐
+
+TiledMap地图都是由一个个单元区块拼接组成。如果缓存时保持原大小，当小图区块很多时会对性能产生影响。因此建议开启缓存区块设置，并将缓存区块的大小设置为512像素左右，必须保持原小图区块的整数倍。
+
+例如，本文示例中的单图区块大小为`16*16`，那么缓存区块可以设置 16的32倍，即为`512*512`。
+
+如果单图是`15*15`，缓存可区块可以设置为`510*510`（34倍），以此类推，尽量在原区块整数倍的前提下，设置在512左右。推荐`为512*512`。
+
+#### 缓存区块的具体设置方法
+
+缓存区块的设置需要在createMap（创建地图）的时候设置。设置第四个参数gridSize，示例如下：
+
+```javascript
+//为第二个参数创建Rectangle实例，视口区域
+var viewRect:Rectangle = new Rectangle(0, 0, Browser.width, Browser.height);
+
+//为第四个参数gridSize创建一个512*512大小的Point对象实例
+var gridSize:Point = new Point(512, 512);
+
+//创建TiledMap地图
+tMap.createMap("res/TiledMap/orthogonal.json",viewRect, Handler.create(this,onMapLoaded), null, gridSize)
+```
+
+
 
 
 
@@ -492,3 +523,5 @@ tMap.removeCoveredTile = true;
 ![图15-3](img/15-3.png) 
 
 (图15-3)
+
+只要是自定义属性type设置为1的地形，当removeCoveredTile开启后。被遮挡不可见时都可以被移除，以提高性能。
