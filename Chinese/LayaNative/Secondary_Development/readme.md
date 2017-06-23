@@ -154,6 +154,14 @@ public class Test {
 @interface Test : NSObject 
 +(void) openlight:(NSNumber*)open; // 只支持对象类型bool类型用NSNumber
 @end
+```
+```javascript
+#import "test.h"
+#import <AVFoundation/AVCaptureDevice.h>
+#import <AVFoundation/AVMediaFormat.h>
+#import <AVFoundation/AVCaptureInput.h>
+#import <AVFoundation/AVCaptureVideoDataOutput.h>
+#import <conchRuntime.h>
 @implementation Test
 static AVCaptureSession * session = nil;
 +(void) openlight:(NSNumber*)open; // 只支持对象类型bool类型用NSNumber
@@ -267,10 +275,16 @@ public class Test {
 ####     2.2.3 iOS/OC层声明需要创建的类Test:
 
 ```javascript
+#import <Foundation/NSObject.h>
 @interface Test: NSObject
 @property (nonatomic) NSString* op;
 -(void) operatorWith:(NSNumber*)x and:(NSNumber*)y;
 @end
+```
+```javascript
+#import "Test.h"
+#import <conchRuntime.h>
+#import <Foundation/NSString.h>
 @implementation Test
 -(void) operatorWith:(NSNumber*)x and:(NSNumber*)y
 {

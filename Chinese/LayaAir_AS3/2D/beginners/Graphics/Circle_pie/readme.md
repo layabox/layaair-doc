@@ -78,7 +78,7 @@ package
             sp = new Sprite();
             Laya.stage.addChild(sp);
             //画扇形
-            sp.graphics.drawCircle(80,80,50,90,180,"#ff0000");
+            sp.graphics.drawPie(80,80,50,90,180,"#ff0000");
               
         }
     }

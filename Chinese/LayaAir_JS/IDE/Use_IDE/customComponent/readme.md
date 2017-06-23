@@ -76,7 +76,7 @@
 
 ### 2.1下载LayaAirIDE组件库（本篇为JS版）
 
-**下载地址**：[http://ldc.layabox.com/uploadfile/file/20161019/1476844969179157.zip](http://ldc.layabox.com/uploadfile/file/20161019/1476844969179157.zip)
+**下载地址**：[https://layabox.github.io/layaair-doc/resources/2D/Component/layaeditor.d.zip](https://layabox.github.io/layaair-doc/resources/2D/Component/layaeditor.d.zip)
 
 *Tips: TS与JS版本可以使用相同的组件库*
 
