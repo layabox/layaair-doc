@@ -3,7 +3,7 @@
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width,initial-scale=1">
-    <title>Scene2D - Documentation</title>
+    <title>Sprite - Documentation</title>
 
     <script src="scripts/prettify/prettify.js"></script>
     <script src="scripts/prettify/lang-css.js"></script>
@@ -24,7 +24,7 @@
 
 
 <!--     
-    <h1 class="page-title">Scene2D</h1>
+    <h1 class="page-title">Sprite</h1>
      -->
 
     
@@ -39,8 +39,13 @@
         <h2>
             <span class="ancestors"><a href="Core.html">Core</a>.</span>
         
-        Scene2D
+        Sprite
         </h2>
+        
+            <div class="class-description"><p> <code>Sprite</code> La classe est l'objet d'affichage de noeud de base, par l'intermédiaire de graphique peut dessiner des images ou de vecteur de support rotatif, de zoom, de déplacement et d'autres opérations.Sprite et des récipients, pour ajouter plusieurs sous - noeuds. </p>
+Moteur de LayaAir API simplifie la conception ingénieuse.Le noyau de classe d'affichage seulement un Sprite.Sprite pour différents cas fait d'optimiser le rendu, donc de garantir la réalisation d'une classe en fonction de riche, et d'obtenir de hautes performances. 
+Sprite par défaut n'est pas large, on peut régler manuellement la largeur élevé, ou par l'intermédiaire de la fonction de getbounds acquiert, peut également être disposé autoSize = True, puis à obtenir une large.Lutin de grande largeur est utilisée pour faire de la collision, n'affecte pas la taille de l'écran, si la modification de la taille de l'affichage, scaleY nécessite l'utilisation de scaleX. 
+Sprite par défaut de ne pas accepter des événements de souris, c'est - à - dire mouseEnabled = False, mais tant que les événements de souris arbitraire de surveillance, s'ouvre automatiquement lui - même ainsi que de tous les objets parents mouseEnabled = true.De manière générale, sans régler manuellement mouseEnabled.</div>
         
     
 </header>
@@ -52,8 +57,10 @@
 <div class="section-method">
 
     
+    <h2>Constructor</h2>
+    
 
-    <h4 class="name" id="Scene2D"><span class="type-signature"></span>new Scene2D<span class="signature">()</span><span class="type-signature"></span></h4>
+    <h4 class="name" id="Sprite"><span class="type-signature"></span>new Sprite<span class="signature">()</span><span class="type-signature"></span></h4>
 
     
 
@@ -92,7 +99,7 @@
     <!-- 
     <dt class="tag-source">Source:</dt>
     <dd class="tag-source"><ul class="dummy"><li>
-        js, line 5
+        js, line 141
     </li></ul></dd>
      -->
 
@@ -125,18 +132,161 @@
 
 
 
+<div class="section-examples">
+<h5>示例</h5>
+<div class="languageButtonGroup">
+    <button>ActionScript</button>
+    <button>JavaScript</button>
+    <button>TypeScript</button>
+</div>
+
+    <pre class="prettyprint"><code>Le code suivant, crée un &lt;code>Sprite&lt;/code> Des exemples. 
+&lt;listing version="3.0">
+package
+{
+	import laya.display.Sprite;
+	import laya.events.Event;
+	public class Sprite_Example
+	{
+		private var sprite:Sprite;
+		private var shape:Sprite
+		public function Sprite_Example()
+		{
+			Laya.init(640, 800);// Le mode de réglage de largeur élevé, jeu de rendre la toile. 
+			Laya.stage.bgColor = "#efefef";// Couleur de fond de la toile. 
+			onInit();
+		}
+		private function onInit():void
+		{
+			sprite = new Sprite();// Créer un  Sprite  Un objet d'instance de la classe  Sprite  . 
+			sprite.loadImage("resource/ui/bg.png");// Le chargement et l'affichage d'images. 
+			sprite.x = 200;// Ensemble  Sprite  Par rapport à la valeur de coordonnées de l'objet dans la direction horizontale le vaisseau parent. 
+			sprite.y = 200;// Ensemble  Sprite  Par rapport à la valeur de coordonnées de l'objet dans le sens vertical le vaisseau parent. 
+			sprite.pivotX = 0;// Ensemble  Sprite  L'axe de coordonnées de points d'objets de niveau. 
+			sprite.pivotY = 0;// Ensemble  Sprite  Le point de coordonnées perpendiculaires à l'axe de l'objet. 
+			Laya.stage.addChild(sprite);// Ce  Sprite  L'objet est ajouté à la liste d'affichage. 
+			sprite.on(Event.CLICK, this, onClickSprite);// Donner  Sprite  Ajouter des objets sur des événements d'interception. 
+			shape = new Sprite();// Créer un  Sprite  Un objet d'instance de la classe  Sprite  . 
+			shape.graphics.drawRect(0, 0, 100, 100, "#ccff00", "#ff0000", 2);// Dessine un cadre rectangulaire de remplissage. 
+			shape.x = 400;// La forme de l'objet est disposé par rapport à la valeur de coordonnées de la direction horizontale le vaisseau parent. 
+			shape.y = 200;// La forme de l'objet est disposé par rapport à la valeur de coordonnées de la direction verticale du récipient principal. 
+			shape.width = 100;// Le réglage de la largeur de la forme de l'objet. 
+			shape.height = 100;// Le réglage de la hauteur de la forme de l'objet. 
+			shape.pivotX = 50;// L'axe de coordonnées de points de réglage de niveau de la forme de l'objet. 
+			shape.pivotY = 50;// Procédé de réglage de point de coordonnées perpendiculaires à l'axe de la forme de l'objet. 
+			Laya.stage.addChild(shape);// Cette forme d'objet est ajouté à la liste d'affichage. 
+			shape.on(Event.CLICK, this, onClickShape);// Ajouter des objets à forme de clic d'interception. 
+		}
+		private function onClickSprite():void
+		{
+			trace("点击 sprite 对象。");
+			sprite.rotation += 5;// Rotation  Sprite  De l'objet. 
+		}
+		private function onClickShape():void
+		{
+			trace("点击 shape 对象。");
+			shape.rotation += 5;// La rotation de la forme de l'objet. 
+		}
+	}
+}
+	 *&lt;/listing>
+&lt;listing version="3.0">
+var sprite;
+var shape;
+Sprite_Example();
+function Sprite_Example()
+{
+    Laya.init(640, 800);// Le mode de réglage de largeur élevé, jeu de rendre la toile. 
+    Laya.stage.bgColor = "#efefef";// Couleur de fond de la toile. 
+    onInit();
+}
+function onInit()
+{
+    sprite = new laya.display.Sprite();// Créer un  Sprite  Un objet d'instance de la classe  Sprite  . 
+    sprite.loadImage("resource/ui/bg.png");// Le chargement et l'affichage d'images. 
+    sprite.x = 200;// Ensemble  Sprite  Par rapport à la valeur de coordonnées de l'objet dans la direction horizontale le vaisseau parent. 
+    sprite.y = 200;// Ensemble  Sprite  Par rapport à la valeur de coordonnées de l'objet dans le sens vertical le vaisseau parent. 
+    sprite.pivotX = 0;// Ensemble  Sprite  L'axe de coordonnées de points d'objets de niveau. 
+    sprite.pivotY = 0;// Ensemble  Sprite  Le point de coordonnées perpendiculaires à l'axe de l'objet. 
+    Laya.stage.addChild(sprite);// Ce  Sprite  L'objet est ajouté à la liste d'affichage. 
+    sprite.on(Event.CLICK, this, onClickSprite);// Donner  Sprite  Ajouter des objets sur des événements d'interception. 
+    shape = new laya.display.Sprite();// Créer un  Sprite  Un objet d'instance de la classe  Sprite  . 
+    shape.graphics.drawRect(0, 0, 100, 100, "#ccff00", "#ff0000", 2);// Dessine un cadre rectangulaire de remplissage. 
+    shape.x = 400;// La forme de l'objet est disposé par rapport à la valeur de coordonnées de la direction horizontale le vaisseau parent. 
+    shape.y = 200;// La forme de l'objet est disposé par rapport à la valeur de coordonnées de la direction verticale du récipient principal. 
+    shape.width = 100;// Le réglage de la largeur de la forme de l'objet. 
+    shape.height = 100;// Le réglage de la hauteur de la forme de l'objet. 
+    shape.pivotX = 50;// L'axe de coordonnées de points de réglage de niveau de la forme de l'objet. 
+    shape.pivotY = 50;// Procédé de réglage de point de coordonnées perpendiculaires à l'axe de la forme de l'objet. 
+    Laya.stage.addChild(shape);// Cette forme d'objet est ajouté à la liste d'affichage. 
+    shape.on(laya.events.Event.CLICK, this, onClickShape);// Ajouter des objets à forme de clic d'interception. 
+}
+function onClickSprite()
+{
+    console.log("点击 sprite 对象。");
+    sprite.rotation += 5;// Rotation  Sprite  De l'objet. 
+}
+function onClickShape()
+{
+    console.log("点击 shape 对象。");
+    shape.rotation += 5;// La rotation de la forme de l'objet. 
+}
+	 *&lt;/listing>
+&lt;listing version="3.0">
+import Sprite = laya.display.Sprite;
+class Sprite_Example {
+    private sprite: Sprite;
+    private shape: Sprite
+    public Sprite_Example() {
+        Laya.init(640, 800);// Le mode de réglage de largeur élevé, jeu de rendre la toile. 
+        Laya.stage.bgColor = "#efefef";// Couleur de fond de la toile. 
+        this.onInit();
+    }
+    private onInit(): void {
+        this.sprite = new Sprite();// Créer un  Sprite  Un objet d'instance de la classe  Sprite  . 
+        this.sprite.loadImage("resource/ui/bg.png");// Le chargement et l'affichage d'images. 
+        this.sprite.x = 200;// Ensemble  Sprite  Par rapport à la valeur de coordonnées de l'objet dans la direction horizontale le vaisseau parent. 
+        this.sprite.y = 200;// Ensemble  Sprite  Par rapport à la valeur de coordonnées de l'objet dans le sens vertical le vaisseau parent. 
+        this.sprite.pivotX = 0;// Ensemble  Sprite  L'axe de coordonnées de points d'objets de niveau. 
+        this.sprite.pivotY = 0;// Ensemble  Sprite  Le point de coordonnées perpendiculaires à l'axe de l'objet. 
+        Laya.stage.addChild(this.sprite);// Ce  Sprite  L'objet est ajouté à la liste d'affichage. 
+        this.sprite.on(laya.events.Event.CLICK, this, this.onClickSprite);// Donner  Sprite  Ajouter des objets sur des événements d'interception. 
+        this.shape = new Sprite();// Créer un  Sprite  Un objet d'instance de la classe  Sprite  . 
+        this.shape.graphics.drawRect(0, 0, 100, 100, "#ccff00", "#ff0000", 2);// Dessine un cadre rectangulaire de remplissage. 
+        this.shape.x = 400;// La forme de l'objet est disposé par rapport à la valeur de coordonnées de la direction horizontale le vaisseau parent. 
+        this.shape.y = 200;// La forme de l'objet est disposé par rapport à la valeur de coordonnées de la direction verticale du récipient principal. 
+        this.shape.width = 100;// Le réglage de la largeur de la forme de l'objet. 
+        this.shape.height = 100;// Le réglage de la hauteur de la forme de l'objet. 
+        this.shape.pivotX = 50;// L'axe de coordonnées de points de réglage de niveau de la forme de l'objet. 
+        this.shape.pivotY = 50;// Procédé de réglage de point de coordonnées perpendiculaires à l'axe de la forme de l'objet. 
+        Laya.stage.addChild(this.shape);// Cette forme d'objet est ajouté à la liste d'affichage. 
+        this.shape.on(laya.events.Event.CLICK, this, this.onClickShape);// Ajouter des objets à forme de clic d'interception. 
+    }
+    private onClickSprite(): void {
+        console.log("点击 sprite 对象。");
+        this.sprite.rotation += 5;// Rotation  Sprite  De l'objet. 
+    }
+    private onClickShape(): void {
+        console.log("点击 shape 对象。");
+        this.shape.rotation += 5;// La rotation de la forme de l'objet. 
+    }
+}
+	 *&lt;/listing></code></pre>
+
+</div>
+
 </div>
     
     </div>
 
     
-        <h3 class="subsection-title">继承</h3>
+        <h3 class="subsection-title">Extends</h3>
 
         
 
 
     <ul>
-        <li><a href="Core.Sprite.html">Sprite</a></li>
+        <li><a href="Core.Node.html">Node</a></li>
     </ul>
 
 
@@ -151,7 +301,7 @@
     
 
     
-        <h3 class="subsection-title">成员</h3>
+        <h3 class="subsection-title">Member</h3>
 
         
             
@@ -162,7 +312,7 @@
 
 
 <div class="description">
-    透明度，值为0-1，默认值为1，表示不透明。更改alpha值会影响drawcall。
+    La transparence, la valeur de 0 ou 1, la valeur par défaut est de 1, opaque.Changer la valeur Alpha affecte drawcall.
 </div>
 
 
@@ -175,11 +325,6 @@
 
     
 
-    
-    <dt class="inherited-from">Inherited From:</dt>
-    <dd class="inherited-from"><ul class="dummy"><li>
-        <a href="Core.Sprite.html#alpha">Sprite#alpha</a>
-    </li></ul></dd>
     
 
     
@@ -241,8 +386,8 @@
 
 
 <div class="description">
-    指定是否自动计算宽高数据。默认值为 false 。
-Sprite宽高默认为0，并且不会随着绘制内容的变化而变化，如果想根据绘制内容获取宽高，可以设置本属性为true，或者通过getBounds方法获取。设置为true，对性能有一定影响。
+    Spécifie si le calcul automatique des données de largeur - hauteur.La valeur par défaut est faux. 
+Sprite large 高默 que 0, et pas avec le changement de rendu de contenu qui change, si tu veux en fonction de rendu de contenu acquiert une large, on peut régler l'attribut est vrai, ou par un procédé d'obtention d'getBounds.Est vrai, il y a une certaine influence sur la performance.
 </div>
 
 
@@ -255,11 +400,6 @@ Sprite宽高默认为0，并且不会随着绘制内容的变化而变化，如�
 
     
 
-    
-    <dt class="inherited-from">Inherited From:</dt>
-    <dd class="inherited-from"><ul class="dummy"><li>
-        <a href="Core.Sprite.html#autoSize">Sprite#autoSize</a>
-    </li></ul></dd>
     
 
     
@@ -321,7 +461,7 @@ Sprite宽高默认为0，并且不会随着绘制内容的变化而变化，如�
 
 
 <div class="description">
-    指定要使用的混合模式。目前只支持"lighter"。
+    Préciser le mode de mélange à utiliser.Actuellement, seulement soutenir "ensemble".
 </div>
 
 
@@ -334,11 +474,6 @@ Sprite宽高默认为0，并且不会随着绘制内容的变化而变化，如�
 
     
 
-    
-    <dt class="inherited-from">Inherited From:</dt>
-    <dd class="inherited-from"><ul class="dummy"><li>
-        <a href="Core.Sprite.html#blendMode">Sprite#blendMode</a>
-    </li></ul></dd>
     
 
     
@@ -400,13 +535,13 @@ Sprite宽高默认为0，并且不会随着绘制内容的变化而变化，如�
 
 
 <div class="description">
-    <p>指定显示对象是否缓存为静态图像，cacheAs时，子对象发生变化，会自动重新缓存，同时也可以手动调用reCache方法更新缓存。</p>
-建议把不经常变化的“复杂内容”缓存为静态图像，能极大提高渲染性能。cacheAs有"none"，"normal"和"bitmap"三个值可选。
-<li>默认为"none"，不做任何缓存。</li>
-<li>当值为"normal"时，canvas模式下进行画布缓存，webgl模式下进行命令缓存。</li>
-<li>当值为"bitmap"时，canvas模式下进行依然是画布缓存，webgl模式下使用renderTarget缓存。</li>
-webgl下renderTarget缓存模式有最大2048大小限制，会额外增加内存开销，不断重绘时开销比较大，但是会减少drawcall，渲染性能最高。
-webgl下命令缓存模式只会减少节点遍历及命令组织，不会减少drawcall，性能中等。
+    <p> Mise en antémémoire d'objets d'affichage spécifié pour une image statique, si cacheAs en cas de changement de sous - objets de cache, automatiquement, mais peut également être un appel de procédé reCache manuel de mise à jour de la mémoire cache. </p>
+Recommande le changement n'est pas souvent complexes "contenu" de cache pour des images statiques, peut considérablement améliorer la performance de rendu.CacheAs "rien", "normal" et "des" trois valeurs optionnelles. 
+<li> La valeur par défaut est "rien", ne fait pas de cache. </li>
+<li> Une valeur de "normal", la toile de la toile dans le mode de mise en antémémoire, webgl en mode d'antémémoire de commande. </li>
+<li> Une valeur de "groupés", la toile de la toile dans le mode est toujours de mise en mémoire cache de l'antémémoire, renderTarget webgl mode. </li>
+RenderTarget mode antémémoire webgl plus de 2048 sous la limite de taille, une augmentation supplémentaire de la mémoire de surcharge, continue de repeindre les coûts relativement grand, mais drawcall réduite, une performance de rendu suprême. 
+Webgl commande mode antémémoire serait de réduire la traversée de noeud et le commandement de l'Organisation, de ne pas réduire drawcall, la performance moyenne.
 </div>
 
 
@@ -419,11 +554,6 @@ webgl下命令缓存模式只会减少节点遍历及命令组织，不会减少
 
     
 
-    
-    <dt class="inherited-from">Inherited From:</dt>
-    <dd class="inherited-from"><ul class="dummy"><li>
-        <a href="Core.Sprite.html#cacheAs">Sprite#cacheAs</a>
-    </li></ul></dd>
     
 
     
@@ -485,7 +615,7 @@ webgl下命令缓存模式只会减少节点遍历及命令组织，不会减少
 
 
 <div class="description">
-    指定显示对象是否缓存为静态图像。功能同cacheAs的normal模式。
+    Mise en antémémoire d'objets d'affichage spécifié pour une image statique ou pas.La fonction de mode normal avec cacheAs.
 </div>
 
 
@@ -498,11 +628,6 @@ webgl下命令缓存模式只会减少节点遍历及命令组织，不会减少
 
     
 
-    
-    <dt class="inherited-from">Inherited From:</dt>
-    <dd class="inherited-from"><ul class="dummy"><li>
-        <a href="Core.Sprite.html#cacheAsBitmap">Sprite#cacheAsBitmap</a>
-    </li></ul></dd>
     
 
     
@@ -574,11 +699,6 @@ webgl下命令缓存模式只会减少节点遍历及命令组织，不会减少
     
 
     
-    <dt class="inherited-from">Inherited From:</dt>
-    <dd class="inherited-from"><ul class="dummy"><li>
-        <a href="Core.Sprite.html#customRenderEnable">Sprite#customRenderEnable</a>
-    </li></ul></dd>
-    
 
     
 
@@ -639,7 +759,7 @@ webgl下命令缓存模式只会减少节点遍历及命令组织，不会减少
 
 
 <div class="description">
-    是否已经销毁。对象销毁后不能再使用。
+    S'il a été détruit.La destruction d'objets ne peuvent pas être réutilisé.
 </div>
 
 
@@ -718,7 +838,7 @@ webgl下命令缓存模式只会减少节点遍历及命令组织，不会减少
 
 
 <div class="description">
-    表示是否在显示列表中显示。
+    Si dans la liste d'affichage de l'affichage.
 </div>
 
 
@@ -797,7 +917,7 @@ webgl下命令缓存模式只会减少节点遍历及命令组织，不会减少
 
 
 <div class="description">
-    滤镜集合。可以设置多个滤镜组合。
+    Filtre de collecte.Peut être disposée une pluralité de combinaison de filtres.
 </div>
 
 
@@ -810,11 +930,6 @@ webgl下命令缓存模式只会减少节点遍历及命令组织，不会减少
 
     
 
-    
-    <dt class="inherited-from">Inherited From:</dt>
-    <dd class="inherited-from"><ul class="dummy"><li>
-        <a href="Core.Sprite.html#filters">Sprite#filters</a>
-    </li></ul></dd>
     
 
     
@@ -876,7 +991,7 @@ webgl下命令缓存模式只会减少节点遍历及命令组织，不会减少
 
 
 <div class="description">
-    获得相对于stage的全局X轴缩放值（会叠加父亲节点的缩放值）。
+    Pour l'axe X par rapport à la valeur globale de zoom (valeur de zoom de la superposition de noeud père).
 </div>
 
 
@@ -889,11 +1004,6 @@ webgl下命令缓存模式只会减少节点遍历及命令组织，不会减少
 
     
 
-    
-    <dt class="inherited-from">Inherited From:</dt>
-    <dd class="inherited-from"><ul class="dummy"><li>
-        <a href="Core.Sprite.html#globalScaleX">Sprite#globalScaleX</a>
-    </li></ul></dd>
     
 
     
@@ -955,7 +1065,7 @@ webgl下命令缓存模式只会减少节点遍历及命令组织，不会减少
 
 
 <div class="description">
-    获得相对于stage的全局Y轴缩放值（会叠加父亲节点的缩放值）。
+    Pour l'axe y par rapport à la valeur globale de zoom (valeur de zoom de la superposition de noeud père).
 </div>
 
 
@@ -968,11 +1078,6 @@ webgl下命令缓存模式只会减少节点遍历及命令组织，不会减少
 
     
 
-    
-    <dt class="inherited-from">Inherited From:</dt>
-    <dd class="inherited-from"><ul class="dummy"><li>
-        <a href="Core.Sprite.html#globalScaleY">Sprite#globalScaleY</a>
-    </li></ul></dd>
     
 
     
@@ -1034,7 +1139,7 @@ webgl下命令缓存模式只会减少节点遍历及命令组织，不会减少
 
 
 <div class="description">
-    绘图对象。封装了绘制位图和矢量图的接口，Sprite所有的绘图操作都通过Graphics来实现的。
+    Objets de dessin.Encapsule le vecteur de bits et une interface de dessin, une opération de dessin Sprite par graphique à réaliser.
 </div>
 
 
@@ -1047,11 +1152,6 @@ webgl下命令缓存模式只会减少节点遍历及命令组织，不会减少
 
     
 
-    
-    <dt class="inherited-from">Inherited From:</dt>
-    <dd class="inherited-from"><ul class="dummy"><li>
-        <a href="Core.Sprite.html#graphics">Sprite#graphics</a>
-    </li></ul></dd>
     
 
     
@@ -1113,8 +1213,8 @@ webgl下命令缓存模式只会减少节点遍历及命令组织，不会减少
 
 
 <div class="description">
-    表示显示对象的高度，以像素为单位。
-高度默认为0，可以手动设置，或者通过getbounds获取实际宽度。设置此高度只用来做鼠标碰撞使用，改变后并不影响显示对象大小。
+    Représente la hauteur de l'objet, en pixels. 
+Hauteur par défaut est 0, peut être réglée manuellement, ou par getbounds pour obtenir la largeur réelle.Le réglage de cette hauteur est utilisée uniquement pour l'utilisation de la souris de collision, après le changement de l'objet d'affichage n'a pas d'incidence sur la taille.
 </div>
 
 
@@ -1127,11 +1227,6 @@ webgl下命令缓存模式只会减少节点遍历及命令组织，不会减少
 
     
 
-    
-    <dt class="inherited-from">Inherited From:</dt>
-    <dd class="inherited-from"><ul class="dummy"><li>
-        <a href="Core.Sprite.html#height">Sprite#height</a>
-    </li></ul></dd>
     
 
     
@@ -1193,8 +1288,8 @@ webgl下命令缓存模式只会减少节点遍历及命令组织，不会减少
 
 
 <div class="description">
-    可以设置一个Rectangle区域作为点击区域，或者设置一个<code>HitArea</code>实例作为点击区域，HitArea内可以设置可点击和不可点击区域。
-如果不设置hitArea，则根据宽高形成的区域进行碰撞。
+    Peut être disposé un rectangle régionale comme région de clic, ou est disposé un <code>HitArea</code> Des exemples comme zone cliquable, HitArea cliquable et ne peut être disposé à l'intérieur de la zone cliquable. 
+Si elle n'est pas disposée hitArea, selon une large zone élevée formé par collision.
 </div>
 
 
@@ -1207,11 +1302,6 @@ webgl下命令缓存模式只会减少节点遍历及命令组织，不会减少
 
     
 
-    
-    <dt class="inherited-from">Inherited From:</dt>
-    <dd class="inherited-from"><ul class="dummy"><li>
-        <a href="Core.Sprite.html#hitArea">Sprite#hitArea</a>
-    </li></ul></dd>
     
 
     
@@ -1273,10 +1363,10 @@ webgl下命令缓存模式只会减少节点遍历及命令组织，不会减少
 
 
 <div class="description">
-    指定鼠标碰撞检测是否优先检测自己。默认为false
-鼠标碰撞检测是优先检测子对象，然后冒泡到父对象，如果hitTestPrior=true
-鼠标碰撞优先检测本对象，本对象被击中后，才进一步检测子对象。
-对于已知大小的容器（特别是根容器），设置此值为true，能减少节点碰撞，提高性能。默认为false。UI的View组建默认为true。
+    Spécifie si la souris de détection de collision de détection de priorité.La valeur par défaut est faux 
+Détection de collision de la souris est, de préférence, de détection de sous - objets, puis à bulles à un objet parent, si hitTestPrior = True 
+Détection de collision de l'objet prioritaire de la souris, l'objet touché qu'après plus de détection de sous - objets. 
+Pour des récipients de taille connue (en particulier de la racine de récipients), cette valeur est pour vrai, on peut réduire la collision de noeuds, d'améliorer la performance.La valeur par défaut est faux.Une ui de vue par défaut pour de vrai.
 </div>
 
 
@@ -1289,11 +1379,6 @@ webgl下命令缓存模式只会减少节点遍历及命令组织，不会减少
 
     
 
-    
-    <dt class="inherited-from">Inherited From:</dt>
-    <dd class="inherited-from"><ul class="dummy"><li>
-        <a href="Core.Sprite.html#hitTestPrior">Sprite#hitTestPrior</a>
-    </li></ul></dd>
     
 
     
@@ -1355,8 +1440,8 @@ webgl下命令缓存模式只会减少节点遍历及命令组织，不会减少
 
 
 <div class="description">
-    遮罩，可以设置一个对象(支持位图和矢量图)，根据对象形状进行遮罩显示。
-		 *【注意】遮罩对象坐标系是相对遮罩对象本身的，和Flash机制不同*【注意】遮罩对象坐标系是相对遮罩对象本身的，和Flash机制不同
+    Le masque peut être placé sur un objet (support de table de bits et un vecteur), en fonction de la forme de masque d'objet d'affichage. 
+		 *【注意】遮罩对象坐标系是相对遮罩对象本身的，和Flash机制不同 * [acte] Objet de masque est un masque de coordonnées par rapport à l'objet lui - même, et de différents mécanismes de flash
 </div>
 
 
@@ -1369,11 +1454,6 @@ webgl下命令缓存模式只会减少节点遍历及命令组织，不会减少
 
     
 
-    
-    <dt class="inherited-from">Inherited From:</dt>
-    <dd class="inherited-from"><ul class="dummy"><li>
-        <a href="Core.Sprite.html#mask">Sprite#mask</a>
-    </li></ul></dd>
     
 
     
@@ -1435,9 +1515,9 @@ webgl下命令缓存模式只会减少节点遍历及命令组织，不会减少
 
 
 <div class="description">
-    是否接受鼠标事件。
-默认为false，如果监听鼠标事件，则会自动设置本对象及父节点的属性 mouseEnable 的值都为 true（如果父节点手动设置为false，则不会更改）。
-*
+    S'il accepte les événements de souris. 
+La valeur par défaut est faux, si la surveillance des événements de souris, l'objet et la valeur de réglage automatique d'un noeud parent mouseEnable attribut sont vrai (si le noeud parent de réglage manuel pour de faux, n'est pas modifiée). 
+ *
 </div>
 
 
@@ -1450,11 +1530,6 @@ webgl下命令缓存模式只会减少节点遍历及命令组织，不会减少
 
     
 
-    
-    <dt class="inherited-from">Inherited From:</dt>
-    <dd class="inherited-from"><ul class="dummy"><li>
-        <a href="Core.Sprite.html#mouseEnabled">Sprite#mouseEnabled</a>
-    </li></ul></dd>
     
 
     
@@ -1516,7 +1591,7 @@ webgl下命令缓存模式只会减少节点遍历及命令组织，不会减少
 
 
 <div class="description">
-    指定当mouseEnabled=true时，是否可穿透。默认值为false，如果设置为true，则点击空白区域可以穿透过去，只针对自身有效。
+    Spécifie si mouseEnabled = True, il peut pénétrer.La valeur par défaut est faux, si c'est vrai, l'ébauche de la zone de frappe peut traverser, uniquement pour leur propre et efficace.
 </div>
 
 
@@ -1529,11 +1604,6 @@ webgl下命令缓存模式只会减少节点遍历及命令组织，不会减少
 
     
 
-    
-    <dt class="inherited-from">Inherited From:</dt>
-    <dd class="inherited-from"><ul class="dummy"><li>
-        <a href="Core.Sprite.html#mouseThrough">Sprite#mouseThrough</a>
-    </li></ul></dd>
     
 
     
@@ -1595,7 +1665,7 @@ webgl下命令缓存模式只会减少节点遍历及命令组织，不会减少
 
 
 <div class="description">
-    返回鼠标在此对象坐标系上的 X 轴坐标信息。
+    De retour sur le système de coordonnées de la souris sur l'axe X de l'objet d'information.
 </div>
 
 
@@ -1608,11 +1678,6 @@ webgl下命令缓存模式只会减少节点遍历及命令组织，不会减少
 
     
 
-    
-    <dt class="inherited-from">Inherited From:</dt>
-    <dd class="inherited-from"><ul class="dummy"><li>
-        <a href="Core.Sprite.html#mouseX">Sprite#mouseX</a>
-    </li></ul></dd>
     
 
     
@@ -1674,7 +1739,7 @@ webgl下命令缓存模式只会减少节点遍历及命令组织，不会减少
 
 
 <div class="description">
-    返回鼠标在此对象坐标系上的 Y 轴坐标信息。
+    De retour sur le système de coordonnées de la souris sur l'axe y de l'objet d'informations de coordonnées.
 </div>
 
 
@@ -1687,11 +1752,6 @@ webgl下命令缓存模式只会减少节点遍历及命令组织，不会减少
 
     
 
-    
-    <dt class="inherited-from">Inherited From:</dt>
-    <dd class="inherited-from"><ul class="dummy"><li>
-        <a href="Core.Sprite.html#mouseY">Sprite#mouseY</a>
-    </li></ul></dd>
     
 
     
@@ -1753,7 +1813,7 @@ webgl下命令缓存模式只会减少节点遍历及命令组织，不会减少
 
 
 <div class="description">
-    节点名称。
+    Le nom de noeud.
 </div>
 
 
@@ -1837,7 +1897,7 @@ webgl下命令缓存模式只会减少节点遍历及命令组织，不会减少
 
 
 <div class="description">
-    子对象数量。
+    Le nombre de sous - objets.
 </div>
 
 
@@ -1916,8 +1976,8 @@ webgl下命令缓存模式只会减少节点遍历及命令组织，不会减少
 
 
 <div class="description">
-    <p>指定是否对使用了 scrollRect 的显示对象进行优化处理。默认为false(不优化)。</p>
-<p>当值为ture时：将对此对象使用了scrollRect 设定的显示区域以外的显示内容不进行渲染，以提高性能(如果子对象有旋转缩放或者中心点偏移，则显示筛选会不精确)。</p>
+    <p> Spécifie si l'utilisation de l'objet d'affichage sur scrollRect optimisée.La valeur par défaut est faux (n'est pas optimale). </p>
+<p> Où une valeur de température: l'utilisation de scrollRect cet objet d'affichage réglée en dehors de la zone d'affichage de rendu de contenu n'est pas effectuée, afin d'améliorer la performance (si le Sous - objet de zoom ou décalage de centre de rotation, un filtre d'affichage ne sera pas précis). </p>
 </div>
 
 
@@ -1930,11 +1990,6 @@ webgl下命令缓存模式只会减少节点遍历及命令组织，不会减少
 
     
 
-    
-    <dt class="inherited-from">Inherited From:</dt>
-    <dd class="inherited-from"><ul class="dummy"><li>
-        <a href="Core.Sprite.html#optimizeScrollRect">Sprite#optimizeScrollRect</a>
-    </li></ul></dd>
     
 
     
@@ -2006,12 +2061,12 @@ webgl下命令缓存模式只会减少节点遍历及命令组织，不会减少
     
 
     
-    <dt class="inherited-from">Inherited From:</dt>
-    <dd class="inherited-from"><ul class="dummy"><li>
-        <a href="Core.Sprite.html#parent">Sprite#parent</a>
-    </li></ul></dd>
-    
 
+    
+    <dt class="tag-overrides">Overrides:</dt>
+    <dd class="tag-overrides"><ul class="dummy"><li>
+        <a href="Core.Node.html#parent">Node#parent</a>
+    </li></ul></dd>
     
 
     
@@ -2071,7 +2126,7 @@ webgl下命令缓存模式只会减少节点遍历及命令组织，不会减少
 
 
 <div class="description">
-    X轴 轴心点的位置，单位为像素，默认为0。轴心点会影响对象位置，缩放中心，旋转中心。
+    La position du point X de l'axe de l'arbre de l'unité de pixel, la valeur par défaut est 0.Un point de pivotement sur la position de l'objet de zoom du Centre, le Centre de rotation.
 </div>
 
 
@@ -2084,11 +2139,6 @@ webgl下命令缓存模式只会减少节点遍历及命令组织，不会减少
 
     
 
-    
-    <dt class="inherited-from">Inherited From:</dt>
-    <dd class="inherited-from"><ul class="dummy"><li>
-        <a href="Core.Sprite.html#pivotX">Sprite#pivotX</a>
-    </li></ul></dd>
     
 
     
@@ -2150,7 +2200,7 @@ webgl下命令缓存模式只会减少节点遍历及命令组织，不会减少
 
 
 <div class="description">
-    Y轴 轴心点的位置，单位为像素，默认为0。轴心点会影响对象位置，缩放中心，旋转中心。
+    La position de l'axe de l'arbre de y, unité de pixel, la valeur par défaut est 0.Un point de pivotement sur la position de l'objet de zoom du Centre, le Centre de rotation.
 </div>
 
 
@@ -2163,11 +2213,6 @@ webgl下命令缓存模式只会减少节点遍历及命令组织，不会减少
 
     
 
-    
-    <dt class="inherited-from">Inherited From:</dt>
-    <dd class="inherited-from"><ul class="dummy"><li>
-        <a href="Core.Sprite.html#pivotY">Sprite#pivotY</a>
-    </li></ul></dd>
     
 
     
@@ -2229,7 +2274,7 @@ webgl下命令缓存模式只会减少节点遍历及命令组织，不会减少
 
 
 <div class="description">
-    旋转角度，默认值为0。以角度为单位。
+    L'angle de rotation, la valeur par défaut est 0.à un angle de l'unité.
 </div>
 
 
@@ -2242,11 +2287,6 @@ webgl下命令缓存模式只会减少节点遍历及命令组织，不会减少
 
     
 
-    
-    <dt class="inherited-from">Inherited From:</dt>
-    <dd class="inherited-from"><ul class="dummy"><li>
-        <a href="Core.Sprite.html#rotation">Sprite#rotation</a>
-    </li></ul></dd>
     
 
     
@@ -2308,7 +2348,7 @@ webgl下命令缓存模式只会减少节点遍历及命令组织，不会减少
 
 
 <div class="description">
-    X轴缩放值，默认值为1。设置为负数，可以实现水平反转效果，比如scaleX=-1。
+    La valeur de l'axe X, la valeur par défaut est 1.Est négative, peut atteindre le niveau de l'effet d'inversion, par exemple scaleX = - 1.
 </div>
 
 
@@ -2321,11 +2361,6 @@ webgl下命令缓存模式只会减少节点遍历及命令组织，不会减少
 
     
 
-    
-    <dt class="inherited-from">Inherited From:</dt>
-    <dd class="inherited-from"><ul class="dummy"><li>
-        <a href="Core.Sprite.html#scaleX">Sprite#scaleX</a>
-    </li></ul></dd>
     
 
     
@@ -2387,7 +2422,7 @@ webgl下命令缓存模式只会减少节点遍历及命令组织，不会减少
 
 
 <div class="description">
-    Y轴缩放值，默认值为1。设置为负数，可以实现垂直反转效果，比如scaleX=-1。
+    La valeur d'échelle de l'axe Y, la valeur par défaut est 1.Est négative, on peut réaliser l'effet d'inversion verticale, par exemple scaleX = - 1.
 </div>
 
 
@@ -2400,11 +2435,6 @@ webgl下命令缓存模式只会减少节点遍历及命令组织，不会减少
 
     
 
-    
-    <dt class="inherited-from">Inherited From:</dt>
-    <dd class="inherited-from"><ul class="dummy"><li>
-        <a href="Core.Sprite.html#scaleY">Sprite#scaleY</a>
-    </li></ul></dd>
     
 
     
@@ -2466,11 +2496,11 @@ webgl下命令缓存模式只会减少节点遍历及命令组织，不会减少
 
 
 <div class="description">
-    显示对象的滚动矩形范围，具有裁剪效果(如果只想限制子对象渲染区域，请使用viewport)，设置optimizeScrollRect=true，可以优化裁剪区域外的内容不进行渲染。
-srollRect和viewport的区别：
-1.srollRect自带裁剪效果，viewport只影响子对象渲染是否渲染，不具有裁剪效果（性能更高）。
-2.设置rect的x,y属性均能实现区域滚动效果，但scrollRect会保持0,0点位置不变。
-*
+    L'objet d'affichage rectangulaire ayant une portée de roulement, l'effet de coupe (si tu veux la limite de la zone de rendu de sous - objets, veuillez utiliser la fenêtre d'affichage), est disposé optimizeScrollRect = True, on peut optimiser le contenu de la zone de découpe externe ne sont pas rendus. 
+La différence entre srollRect et de clôture: 
+1.srollRect avec l'effet de coupe, la clôture n'affecte que les sous - objets de rendu est rendu, ne présentant pas de l'effet de coupe (la plus haute performance). 
+2. Le réglage de l'attribut Rect X, y sont capables de réaliser une zone de défilement de l'effet, mais scrollRect reste 0,0 position inchangée. 
+ *
 </div>
 
 
@@ -2483,11 +2513,6 @@ srollRect和viewport的区别：
 
     
 
-    
-    <dt class="inherited-from">Inherited From:</dt>
-    <dd class="inherited-from"><ul class="dummy"><li>
-        <a href="Core.Sprite.html#scrollRect">Sprite#scrollRect</a>
-    </li></ul></dd>
     
 
     
@@ -2549,7 +2574,7 @@ srollRect和viewport的区别：
 
 
 <div class="description">
-    水平倾斜角度，默认值为0。以角度为单位。
+    Le niveau de l'angle d'inclinaison, la valeur par défaut est 0.à un angle de l'unité.
 </div>
 
 
@@ -2562,11 +2587,6 @@ srollRect和viewport的区别：
 
     
 
-    
-    <dt class="inherited-from">Inherited From:</dt>
-    <dd class="inherited-from"><ul class="dummy"><li>
-        <a href="Core.Sprite.html#skewX">Sprite#skewX</a>
-    </li></ul></dd>
     
 
     
@@ -2628,7 +2648,7 @@ srollRect和viewport的区别：
 
 
 <div class="description">
-    垂直倾斜角度，默认值为0。以角度为单位。
+    Angle d'inclinaison, la valeur par défaut est 0.à un angle de l'unité.
 </div>
 
 
@@ -2641,11 +2661,6 @@ srollRect和viewport的区别：
 
     
 
-    
-    <dt class="inherited-from">Inherited From:</dt>
-    <dd class="inherited-from"><ul class="dummy"><li>
-        <a href="Core.Sprite.html#skewY">Sprite#skewY</a>
-    </li></ul></dd>
     
 
     
@@ -2707,7 +2722,7 @@ srollRect和viewport的区别：
 
 
 <div class="description">
-    对舞台 <code>stage</code> 的引用。
+    Sur scène <code>stage</code> De référence.
 </div>
 
 
@@ -2720,11 +2735,6 @@ srollRect和viewport的区别：
 
     
 
-    
-    <dt class="inherited-from">Inherited From:</dt>
-    <dd class="inherited-from"><ul class="dummy"><li>
-        <a href="Core.Sprite.html#stage">Sprite#stage</a>
-    </li></ul></dd>
     
 
     
@@ -2786,7 +2796,7 @@ srollRect和viewport的区别：
 
 
 <div class="description">
-    设置cacheAs为非空时此值才有效，staticCache=true时，子对象变化时不会自动更新缓存，只能通过调用reCache方法手动刷新。
+    Disposé cacheAs non vide lorsque cette valeur est efficace, staticCache = True, lorsque les sous - objets ne change pas de mise à jour automatique de mise en antémémoire, procédé d'appel uniquement par reCache rafraîchissement manuel.
 </div>
 
 
@@ -2799,11 +2809,6 @@ srollRect和viewport的区别：
 
     
 
-    
-    <dt class="inherited-from">Inherited From:</dt>
-    <dd class="inherited-from"><ul class="dummy"><li>
-        <a href="Core.Sprite.html#staticCache">Sprite#staticCache</a>
-    </li></ul></dd>
     
 
     
@@ -2865,7 +2870,7 @@ srollRect和viewport的区别：
 
 
 <div class="description">
-    设置一个Texture实例，并显示此图片（如果之前有其他绘制，则会被清除掉）。等同于graphics.clear();graphics.drawTexture()
+    Un exemple est la texture, et affiche cette image (si avant que d'autres de dessin, peut être éliminée.équivalent à graphics.clear (); graphics.drawTexture ()
 </div>
 
 
@@ -2878,11 +2883,6 @@ srollRect和viewport的区别：
 
     
 
-    
-    <dt class="inherited-from">Inherited From:</dt>
-    <dd class="inherited-from"><ul class="dummy"><li>
-        <a href="Core.Sprite.html#texture">Sprite#texture</a>
-    </li></ul></dd>
     
 
     
@@ -2944,7 +2944,7 @@ srollRect和viewport的区别：
 
 
 <div class="description">
-    时间控制器，默认为Laya.timer。
+    Le Contrôleur, la valeur par défaut est de Laya.timer.
 </div>
 
 
@@ -3023,8 +3023,8 @@ srollRect和viewport的区别：
 
 
 <div class="description">
-    对象的矩阵信息。通过设置矩阵可以实现节点旋转，缩放，位移效果。
-矩阵更多信息请参考 <code>Matrix</code>
+    La matrice d'informations d'objets.La matrice peut être réalisée par réglage de noeud de rotation, à l'échelle de déplacement de l'effet. 
+Pour de plus amples informations, veuillez vous référer à la matrice <code>Matrix</code>
 </div>
 
 
@@ -3037,11 +3037,6 @@ srollRect和viewport的区别：
 
     
 
-    
-    <dt class="inherited-from">Inherited From:</dt>
-    <dd class="inherited-from"><ul class="dummy"><li>
-        <a href="Core.Sprite.html#transform">Sprite#transform</a>
-    </li></ul></dd>
     
 
     
@@ -3103,10 +3098,10 @@ srollRect和viewport的区别：
 
 
 <div class="description">
-    视口大小，视口外的子对象，将不被渲染(如果想实现裁剪效果，请使用srollRect)，合理使用能提高渲染性能。比如由一个个小图片拼成的地图块，viewport外面的小图片将不渲染
-srollRect和viewport的区别：
-1.srollRect自带裁剪效果，viewport只影响子对象渲染是否渲染，不具有裁剪效果（性能更高）。
-2.设置rect的x,y属性均能实现区域滚动效果，但scrollRect会保持0,0点位置不变。
+    La fenêtre d'affichage de la taille de l'objet considéré, sous - - et ne sera pas rendu (si l'on veut réaliser l'effet de coupe, l'utilisation de srollRect), de l'utilisation rationnelle de l'énergie afin d'améliorer une performance de rendu.Par exemple une petite image bloc par carte, petite image ne sera pas rendu à l'extérieur de la fenêtre d'affichage 
+La différence entre srollRect et de clôture: 
+1.srollRect avec l'effet de coupe, la clôture n'affecte que les sous - objets de rendu est rendu, ne présentant pas de l'effet de coupe (la plus haute performance). 
+2. Le réglage de l'attribut Rect X, y sont capables de réaliser une zone de défilement de l'effet, mais scrollRect reste 0,0 position inchangée.
 </div>
 
 
@@ -3119,11 +3114,6 @@ srollRect和viewport的区别：
 
     
 
-    
-    <dt class="inherited-from">Inherited From:</dt>
-    <dd class="inherited-from"><ul class="dummy"><li>
-        <a href="Core.Sprite.html#viewport">Sprite#viewport</a>
-    </li></ul></dd>
     
 
     
@@ -3190,7 +3180,7 @@ srollRect和viewport的区别：
 
 
 <div class="description">
-    表示是否可见，默认为true。如果设置不可见，节点将不被渲染。
+    Indique si visible par défaut pour de vrai.Si le réglage n'est pas visible, le noeud ne sera pas rendu.
 </div>
 
 
@@ -3203,11 +3193,6 @@ srollRect和viewport的区别：
 
     
 
-    
-    <dt class="inherited-from">Inherited From:</dt>
-    <dd class="inherited-from"><ul class="dummy"><li>
-        <a href="Core.Sprite.html#visible">Sprite#visible</a>
-    </li></ul></dd>
     
 
     
@@ -3269,8 +3254,8 @@ srollRect和viewport的区别：
 
 
 <div class="description">
-    表示显示对象的宽度，以像素为单位。
-宽度默认为0，可以手动设置，或者通过getbounds获取实际宽度。设置此宽度只用来做鼠标碰撞使用，改变后并不影响显示对象大小。
+    Représentant la largeur de l'objet, en pixels. 
+La largeur par défaut est 0, peut être réglée manuellement, ou par getbounds pour obtenir la largeur réelle.Le réglage de cette largeur est utilisée uniquement pour l'utilisation de la souris de collision, après le changement de l'objet d'affichage n'a pas d'incidence sur la taille.
 </div>
 
 
@@ -3283,11 +3268,6 @@ srollRect和viewport的区别：
 
     
 
-    
-    <dt class="inherited-from">Inherited From:</dt>
-    <dd class="inherited-from"><ul class="dummy"><li>
-        <a href="Core.Sprite.html#width">Sprite#width</a>
-    </li></ul></dd>
     
 
     
@@ -3349,7 +3329,7 @@ srollRect和viewport的区别：
 
 
 <div class="description">
-    表示显示对象相对于父容器的水平方向坐标值。
+    Représentation d'objets d'affichage dans la direction horizontale par rapport à la valeur de coordonnées de vaisseau parent.
 </div>
 
 
@@ -3362,11 +3342,6 @@ srollRect和viewport的区别：
 
     
 
-    
-    <dt class="inherited-from">Inherited From:</dt>
-    <dd class="inherited-from"><ul class="dummy"><li>
-        <a href="Core.Sprite.html#x">Sprite#x</a>
-    </li></ul></dd>
     
 
     
@@ -3428,7 +3403,7 @@ srollRect和viewport的区别：
 
 
 <div class="description">
-    表示显示对象相对于父容器的垂直方向坐标值。
+    Représentation d'objets d'affichage dans la direction verticale par rapport à la valeur de coordonnées d'un vaisseau parent.
 </div>
 
 
@@ -3441,11 +3416,6 @@ srollRect和viewport的区别：
 
     
 
-    
-    <dt class="inherited-from">Inherited From:</dt>
-    <dd class="inherited-from"><ul class="dummy"><li>
-        <a href="Core.Sprite.html#y">Sprite#y</a>
-    </li></ul></dd>
     
 
     
@@ -3507,7 +3477,7 @@ srollRect和viewport的区别：
 
 
 <div class="description">
-    z排序，更改此值，则会按照值的大小对同一容器的所有对象重新排序。值越大，越靠上。默认为0，则根据添加顺序排序。
+    Z de tri, de modifier cette valeur, conformément à la grandeur de la valeur de tous les objets du même récipient de réordonnancement.Le plus grand, plus près.La valeur par défaut est 0, selon l'ordre de tri est ajouté.
 </div>
 
 
@@ -3520,11 +3490,6 @@ srollRect和viewport的区别：
 
     
 
-    
-    <dt class="inherited-from">Inherited From:</dt>
-    <dd class="inherited-from"><ul class="dummy"><li>
-        <a href="Core.Sprite.html#zOrder">Sprite#zOrder</a>
-    </li></ul></dd>
     
 
     
@@ -3581,7 +3546,7 @@ srollRect和viewport的区别：
     
 
     
-        <h3 class="subsection-title">方法</h3>
+        <h3 class="subsection-title">Methods</h3>
 
         
             
@@ -3596,7 +3561,7 @@ srollRect和viewport的区别：
 
 
 <div class="description">
-    添加子节点。
+    Ajouter un sous - noeud.
 </div>
 
 
@@ -3698,7 +3663,7 @@ srollRect和viewport的区别：
             
 
             <td class="description last">
-                节点对象
+                Le noeud objet
                 
             </td>
         </tr>
@@ -3739,7 +3704,7 @@ srollRect和viewport的区别：
 
 
 <div class="param-desc">
-    返回添加的节点
+    Renvoie l'ajout de noeuds
 </div>
 
     
@@ -3761,7 +3726,7 @@ srollRect和viewport的区别：
 
 
 <div class="description">
-    添加子节点到指定的索引位置。
+    Ajouter un sous - noeud à indice de position spécifiée.
 </div>
 
 
@@ -3863,7 +3828,7 @@ srollRect和viewport的区别：
             
 
             <td class="description last">
-                节点对象。
+                Le noeud objet.
                 
             </td>
         </tr>
@@ -3889,7 +3854,7 @@ srollRect和viewport的区别：
             
 
             <td class="description last">
-                索引位置。
+                Index de position.
                 
             </td>
         </tr>
@@ -3930,7 +3895,7 @@ srollRect和viewport的区别：
 
 
 <div class="param-desc">
-    返回添加的节点。
+    Renvoie l'ajout de noeuds.
 </div>
 
     
@@ -3952,7 +3917,7 @@ srollRect和viewport的区别：
 
 
 <div class="description">
-    批量增加子节点
+    L'augmentation de masse sous - noeud
 </div>
 
 
@@ -4066,7 +4031,7 @@ srollRect和viewport的区别：
             
 
             <td class="description last">
-                无数子节点。
+                De nombreuses sous - noeuds.
                 
             </td>
         </tr>
@@ -4104,7 +4069,7 @@ srollRect和viewport的区别：
 
 
 <div class="description">
-    清理定时器。功能同Laya.timer.clearTimer()。
+    Le nettoyage de la minuterie.La même fonction Laya.timer.clearTimer ().
 </div>
 
 
@@ -4206,7 +4171,7 @@ srollRect和viewport的区别：
             
 
             <td class="description last">
-                执行域(this)。
+                Domaine d'exécution (CE).
                 
             </td>
         </tr>
@@ -4232,7 +4197,7 @@ srollRect和viewport的区别：
             
 
             <td class="description last">
-                结束时的回调方法。
+                Procédé de rappel à la fin.
                 
             </td>
         </tr>
@@ -4270,7 +4235,7 @@ srollRect和viewport的区别：
 
 
 <div class="description">
-    当前容器是否包含 <code>node</code> 节点。
+    Le récipient contient ou non <code>node</code> Le noeud.
 </div>
 
 
@@ -4372,7 +4337,7 @@ srollRect和viewport的区别：
             
 
             <td class="description last">
-                某一个节点 <code>Node</code>。
+                D'un noeud <code>Node</code> .
                 
             </td>
         </tr>
@@ -4413,173 +4378,11 @@ srollRect和viewport的区别：
 
 
 <div class="param-desc">
-    一个布尔值表示是否包含<code>node</code>节点。
+    Une valeur booléenne indiquant si le Code > contient < node < / code > de noeud.
 </div>
 
     
 </div>
-
-
-
-</div>
-        
-            
-<div class="section-method">
-
-    
-
-    <h4 class="name" id="createChildren"><span class="type-signature"></span>createChildren<span class="signature">()</span><span class="type-signature"></span></h4>
-
-    
-
-
-
-<div class="description">
-    <p>创建并添加控件子节点。</p>
-</div>
-
-
-
-
-
-<dl class="details">
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    <!-- 
-    <dt class="tag-source">Source:</dt>
-    <dd class="tag-source"><ul class="dummy"><li>
-        js, line 14
-    </li></ul></dd>
-     -->
-
-    
-
-    
-
-    
-</dl>
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-</div>
-        
-            
-<div class="section-method">
-
-    
-
-    <h4 class="name" id="createView"><span class="type-signature"></span>createView<span class="signature">()</span><span class="type-signature"></span></h4>
-
-    
-
-
-
-
-
-
-
-<dl class="details">
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    <!-- 
-    <dt class="tag-source">Source:</dt>
-    <dd class="tag-source"><ul class="dummy"><li>
-        js, line 17
-    </li></ul></dd>
-     -->
-
-    
-
-    
-
-    
-</dl>
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 
 
@@ -4597,8 +4400,8 @@ srollRect和viewport的区别：
 
 
 <div class="description">
-    自定义更新、呈现显示对象。一般用来扩展渲染模式，请合理使用，可能会导致在加速器上无法渲染。
-<p><b>注意</b>不要在此函数内增加或删除树节点，否则会对树节点遍历造成影响。</p>
+    Des mises à jour, la présentation de l'objet d'affichage.Généralement utilisé pour étendre le mode de rendu, veuillez l'utilisation rationnelle, peut entraîner pas rendu sur l'accélérateur. 
+<p><b> Note </b> Cette fonction de ne pas ajouter ou supprimer le noeud de l'arbre, ou peuvent avoir un impact sur le noeud de l'arbre de traversée. </p>
 </div>
 
 
@@ -4611,11 +4414,6 @@ srollRect和viewport的区别：
 
     
 
-    
-    <dt class="inherited-from">Inherited From:</dt>
-    <dd class="inherited-from"><ul class="dummy"><li>
-        <a href="Core.Sprite.html#customRender">Sprite#customRender</a>
-    </li></ul></dd>
     
 
     
@@ -4700,7 +4498,7 @@ srollRect和viewport的区别：
             
 
             <td class="description last">
-                渲染的上下文引用。
+                Le contexte de rendu de référence.
                 
             </td>
         </tr>
@@ -4726,7 +4524,7 @@ srollRect和viewport的区别：
             
 
             <td class="description last">
-                X轴坐标。
+                L'axe X des coordonnées.
                 
             </td>
         </tr>
@@ -4752,7 +4550,7 @@ srollRect和viewport的区别：
             
 
             <td class="description last">
-                Y轴坐标。
+                L'axe y de coordonnées.
                 
             </td>
         </tr>
@@ -4790,8 +4588,8 @@ srollRect和viewport的区别：
 
 
 <div class="description">
-    <p>销毁此对象。destroy对象默认会把自己从父节点移除，并且清理自身引用关系，等待js自动垃圾回收机制回收。destroy后不能再使用。</p>
-destroy时会移除自身的事情监听，自身的timer监听，移除子对象及从父节点移除自己。
+    <p> La destruction de cet objet.Détruire l'objet par défaut va se retirer d'un noeud parent, et nettoyer leur relation de référence, en attendant la récupération automatique de mécanismes de récupération.Détruire après ne peuvent pas utiliser. </p>
+Lors de l'écoute de détruire quelque chose de retirer leur écoute le son, l'élimination de sous - objets et de retirer son noeud parent.
 </div>
 
 
@@ -4805,12 +4603,12 @@ destroy时会移除自身的事情监听，自身的timer监听，移除子对�
     
 
     
-    <dt class="inherited-from">Inherited From:</dt>
-    <dd class="inherited-from"><ul class="dummy"><li>
+
+    
+    <dt class="tag-overrides">Overrides:</dt>
+    <dd class="tag-overrides"><ul class="dummy"><li>
         <a href="Core.Node.html#destroy">Node#destroy</a>
     </li></ul></dd>
-    
-
     
 
     
@@ -4893,7 +4691,7 @@ destroy时会移除自身的事情监听，自身的timer监听，移除子对�
             
 
             <td class="description last">
-                是否同时销毁子节点，若值为true,则销毁子节点，否则不销毁子节点。
+                Même si la destruction de sous - noeuds, si la valeur de vrai, la destruction de sous - noeuds, sinon pas la destruction de sous - noeuds.
                 
             </td>
         </tr>
@@ -4931,7 +4729,7 @@ destroy时会移除自身的事情监听，自身的timer监听，移除子对�
 
 
 <div class="description">
-    销毁所有子对象，不销毁自己本身。
+    La destruction de tous les sous - objets, de ne pas détruire lui - même.
 </div>
 
 
@@ -5019,17 +4817,17 @@ destroy时会移除自身的事情监听，自身的timer监听，移除子对�
 
 
 <div class="description">
-    绘制 当前<code>Sprite</code> 到 <code>Canvas</code> 上，并返回一个HtmlCanvas
-绘制的结果可以当作图片源，再次绘制到其他Sprite里面，示例：
-var htmlCanvas:HTMLCanvas = sprite.drawToCanvas(100, 100, 0, 0);//把精灵绘制到canvas上面
-var texture:Texture = new Texture(htmlCanvas);//使用htmlCanvas创建Texture
-var sp:Sprite = new Sprite().pos(0, 200);//创建精灵并把它放倒200位置
-sp.graphics.drawTexture(texture);//把截图绘制到精灵上
-Laya.stage.addChild(sp);//把精灵显示到舞台
-也可以获取原始图片数据，分享到网上，从而实现截图效果，示例：
-var htmlCanvas:HTMLCanvas = sprite.drawToCanvas(100, 100, 0, 0);//把精灵绘制到canvas上面
-var canvas:* = htmlCanvas.getCanvas();//获取原生的canvas对象
-trace(canvas.toDataURL("image/png"));//打印图片base64信息，可以发给服务器或者保存为图片
+    Dessiner le courant <code>Sprite</code> à <code>Canvas</code> , et renvoie un HtmlCanvas 
+Le résultat d'un tirage peut être utilisé comme source d'image de dessin, une fois de plus à d'autres Sprite, par exemple: 
+var htmlCanvas:HTMLCanvas = sprite.drawToCanvas(100, 100, 0, 0);// Les Elfes de la toile au - dessus de dessin 
+var texture:Texture = new Texture(htmlCanvas);// L'utilisation de htmlCanvas crée la texture 
+var sp:Sprite = new Sprite().pos(0, 200);// Créer des Elfes et 200 en position renversée 
+sp.graphics.drawTexture(texture);// Le dessin à l'esprit. 
+Laya.stage.addChild(sp);// Les elfes à la scène d'affichage 
+Ne peut accéder à des données de l'image originale, de partage en ligne, ce qui permet de réaliser des captures d'écran de l'échantillon: 
+var htmlCanvas:HTMLCanvas = sprite.drawToCanvas(100, 100, 0, 0);// Les Elfes de la toile au - dessus de dessin 
+var canvas:* = htmlCanvas.getCanvas();// La toile d'objet natif 
+trace(canvas.toDataURL("image/png"));// L'image d'impression d'informations base64 peut être délivré à un serveur ou de conserver des images
 </div>
 
 
@@ -5042,11 +4840,6 @@ trace(canvas.toDataURL("image/png"));//打印图片base64信息，可以发给�
 
     
 
-    
-    <dt class="inherited-from">Inherited From:</dt>
-    <dd class="inherited-from"><ul class="dummy"><li>
-        <a href="Core.Sprite.html#drawToCanvas">Sprite#drawToCanvas</a>
-    </li></ul></dd>
     
 
     
@@ -5131,7 +4924,7 @@ trace(canvas.toDataURL("image/png"));//打印图片base64信息，可以发给�
             
 
             <td class="description last">
-                画布宽度。
+                La largeur de la toile.
                 
             </td>
         </tr>
@@ -5157,7 +4950,7 @@ trace(canvas.toDataURL("image/png"));//打印图片base64信息，可以发给�
             
 
             <td class="description last">
-                画布高度。
+                La hauteur de la toile.
                 
             </td>
         </tr>
@@ -5183,7 +4976,7 @@ trace(canvas.toDataURL("image/png"));//打印图片base64信息，可以发给�
             
 
             <td class="description last">
-                绘制的 X 轴偏移量。
+                La quantité de décalage de l'axe X de rendu.
                 
             </td>
         </tr>
@@ -5209,7 +5002,7 @@ trace(canvas.toDataURL("image/png"));//打印图片base64信息，可以发给�
             
 
             <td class="description last">
-                绘制的 Y 轴偏移量。
+                La quantité de décalage de l'axe y attirer.
                 
             </td>
         </tr>
@@ -5250,7 +5043,7 @@ trace(canvas.toDataURL("image/png"));//打印图片base64信息，可以发给�
 
 
 <div class="param-desc">
-    HTMLCanvas 对象。
+    HTMLCanvas objet.
 </div>
 
     
@@ -5272,7 +5065,7 @@ trace(canvas.toDataURL("image/png"));//打印图片base64信息，可以发给�
 
 
 <div class="description">
-    派发事件。
+    Un événement.
 </div>
 
 
@@ -5390,7 +5183,7 @@ trace(canvas.toDataURL("image/png"));//打印图片base64信息，可以发给�
             
 
             <td class="description last">
-                事件类型。
+                Le type d'événement.
                 
             </td>
         </tr>
@@ -5432,8 +5225,8 @@ trace(canvas.toDataURL("image/png"));//打印图片base64信息，可以发给�
             
 
             <td class="description last">
-                data 回调数据。
-<b>注意：</b>如果是需要传递多个参数 p1,p2,p3,...可以使用数组结构如：[p1,p2,p3,...] ；如果需要回调单个参数 p 是一个数组，则需要使用结构如：[p]，其他的单个参数 p ，可以直接传入参数 p。
+                data  Des données de rappel. 
+<b> Note: </b> S'il est nécessaire de transférer une pluralité de paramètres P1, P2, P3, peuvent utiliser la structure de réseau tels que: [p1,p2,p3,...] ; si nécessaire, des paramètres individuels de rappel P est un réseau, l'utilisation de structures telles que: [p] Un seul paramètre P, d'autres, peuvent être directement les paramètres p.
                 
             </td>
         </tr>
@@ -5474,7 +5267,7 @@ trace(canvas.toDataURL("image/png"));//打印图片base64信息，可以发给�
 
 
 <div class="param-desc">
-    此事件类型是否有侦听者，如果有侦听者则值为 true，否则值为 false。
+    Si les écouter ce type d'événement, si la valeur de l'auditeur est vrai ou faux.
 </div>
 
     
@@ -5496,7 +5289,7 @@ trace(canvas.toDataURL("image/png"));//打印图片base64信息，可以发给�
 
 
 <div class="description">
-    定时重复执行某函数(基于帧率)。功能同Laya.timer.frameLoop()。
+    La synchronisation de l'exécution répétée d'une fonction (sur la base de la fréquence de trame).La même fonction Laya.timer.frameLoop ().
 </div>
 
 
@@ -5614,7 +5407,7 @@ trace(canvas.toDataURL("image/png"));//打印图片base64信息，可以发给�
             
 
             <td class="description last">
-                间隔几帧(单位为帧)。
+                L'intervalle de trame (trame plusieurs unités).
                 
             </td>
         </tr>
@@ -5652,7 +5445,7 @@ trace(canvas.toDataURL("image/png"));//打印图片base64信息，可以发给�
             
 
             <td class="description last">
-                执行域(this)。
+                Domaine d'exécution (CE).
                 
             </td>
         </tr>
@@ -5690,7 +5483,7 @@ trace(canvas.toDataURL("image/png"));//打印图片base64信息，可以发给�
             
 
             <td class="description last">
-                结束时的回调方法。
+                Procédé de rappel à la fin.
                 
             </td>
         </tr>
@@ -5732,7 +5525,7 @@ trace(canvas.toDataURL("image/png"));//打印图片base64信息，可以发给�
             
 
             <td class="description last">
-                args 回调参数。
+                args  Paramètres de rappel.
                 
             </td>
         </tr>
@@ -5770,7 +5563,7 @@ trace(canvas.toDataURL("image/png"));//打印图片base64信息，可以发给�
             
 
             <td class="description last">
-                是否覆盖之前的延迟执行，默认为true。
+                Si la couverture avant de retard d'exécution, la valeur par défaut pour vrai.
                 
             </td>
         </tr>
@@ -5808,7 +5601,7 @@ trace(canvas.toDataURL("image/png"));//打印图片base64信息，可以发给�
 
 
 <div class="description">
-    定时执行一次某函数(基于帧率)。功能同Laya.timer.frameOnce()。
+    Une fois la fonction de synchronisation d'exécution (sur la base d'un taux de trame).La même fonction Laya.timer.frameOnce ().
 </div>
 
 
@@ -5926,7 +5719,7 @@ trace(canvas.toDataURL("image/png"));//打印图片base64信息，可以发给�
             
 
             <td class="description last">
-                延迟几帧(单位为帧)。
+                Un retard de plusieurs trames (unités de trame).
                 
             </td>
         </tr>
@@ -5964,7 +5757,7 @@ trace(canvas.toDataURL("image/png"));//打印图片base64信息，可以发给�
             
 
             <td class="description last">
-                执行域(this)
+                Domaine d'exécution (CE)
                 
             </td>
         </tr>
@@ -6002,7 +5795,7 @@ trace(canvas.toDataURL("image/png"));//打印图片base64信息，可以发给�
             
 
             <td class="description last">
-                结束时的回调方法
+                Procédé de rappel à la fin
                 
             </td>
         </tr>
@@ -6044,7 +5837,7 @@ trace(canvas.toDataURL("image/png"));//打印图片base64信息，可以发给�
             
 
             <td class="description last">
-                args 回调参数
+                args  Paramètres de rappel
                 
             </td>
         </tr>
@@ -6082,7 +5875,7 @@ trace(canvas.toDataURL("image/png"));//打印图片base64信息，可以发给�
             
 
             <td class="description last">
-                是否覆盖之前的延迟执行，默认为true
+                Si la couverture avant de retard d'exécution, la valeur par défaut est vrai
                 
             </td>
         </tr>
@@ -6120,7 +5913,7 @@ trace(canvas.toDataURL("image/png"));//打印图片base64信息，可以发给�
 
 
 <div class="description">
-    根据图片地址创建一个新的 <code>Sprite</code> 对象用于加载并显示此图片。
+    Selon l'adresse d'image de créer un nouveau <code>Sprite</code> Objet permettant de charger et d'afficher cette image.
 </div>
 
 
@@ -6133,11 +5926,6 @@ trace(canvas.toDataURL("image/png"));//打印图片base64信息，可以发给�
 
     
 
-    
-    <dt class="inherited-from">Inherited From:</dt>
-    <dd class="inherited-from"><ul class="dummy"><li>
-        <a href="Core.Sprite.html#fromImage">Sprite#fromImage</a>
-    </li></ul></dd>
     
 
     
@@ -6222,7 +6010,7 @@ trace(canvas.toDataURL("image/png"));//打印图片base64信息，可以发给�
             
 
             <td class="description last">
-                图片地址。
+                Des photos d'adresse.
                 
             </td>
         </tr>
@@ -6263,7 +6051,7 @@ trace(canvas.toDataURL("image/png"));//打印图片base64信息，可以发给�
 
 
 <div class="param-desc">
-    返回新的 <code>Sprite</code> 对象。
+    Renvoie < / > Sprite < Code nouveau Code > de l'objet.
 </div>
 
     
@@ -6285,7 +6073,7 @@ trace(canvas.toDataURL("image/png"));//打印图片base64信息，可以发给�
 
 
 <div class="description">
-    将父容器坐标系坐标转换到本地坐标系。
+    Le père de récipient de transformation de coordonnées du système de coordonnées du système de coordonnées local.
 </div>
 
 
@@ -6298,11 +6086,6 @@ trace(canvas.toDataURL("image/png"));//打印图片base64信息，可以发给�
 
     
 
-    
-    <dt class="inherited-from">Inherited From:</dt>
-    <dd class="inherited-from"><ul class="dummy"><li>
-        <a href="Core.Sprite.html#fromParentPoint">Sprite#fromParentPoint</a>
-    </li></ul></dd>
     
 
     
@@ -6387,7 +6170,7 @@ trace(canvas.toDataURL("image/png"));//打印图片base64信息，可以发给�
             
 
             <td class="description last">
-                父容器坐标点。
+                Le récipient principal point de coordonnées.
                 
             </td>
         </tr>
@@ -6428,7 +6211,7 @@ trace(canvas.toDataURL("image/png"));//打印图片base64信息，可以发给�
 
 
 <div class="param-desc">
-    转换后的点。
+    Peu après la conversion.
 </div>
 
     
@@ -6450,8 +6233,8 @@ trace(canvas.toDataURL("image/png"));//打印图片base64信息，可以发给�
 
 
 <div class="description">
-    获取本对象在父容器坐标系的矩形显示区域。
-<p><b>注意：</b>计算量较大，尽量少用。</p>
+    L'acquisition de l'objet dans le système de récipient rectangulaire de la zone d'affichage de coordonnées de père. 
+<p><b> Note: </b> Une grande quantité de calcul, le moins possible. </p>
 </div>
 
 
@@ -6464,11 +6247,6 @@ trace(canvas.toDataURL("image/png"));//打印图片base64信息，可以发给�
 
     
 
-    
-    <dt class="inherited-from">Inherited From:</dt>
-    <dd class="inherited-from"><ul class="dummy"><li>
-        <a href="Core.Sprite.html#getBounds">Sprite#getBounds</a>
-    </li></ul></dd>
     
 
     
@@ -6542,7 +6320,7 @@ trace(canvas.toDataURL("image/png"));//打印图片base64信息，可以发给�
 
 
 <div class="param-desc">
-    矩形区域。
+    Zone rectangulaire.
 </div>
 
     
@@ -6564,7 +6342,7 @@ trace(canvas.toDataURL("image/png"));//打印图片base64信息，可以发给�
 
 
 <div class="description">
-    根据子节点的索引位置，获取子节点对象。
+    En fonction de la position d'index de sous - noeuds, d'obtenir un sous - noeud objet.
 </div>
 
 
@@ -6666,7 +6444,7 @@ trace(canvas.toDataURL("image/png"));//打印图片base64信息，可以发给�
             
 
             <td class="description last">
-                索引位置
+                La position d'index
                 
             </td>
         </tr>
@@ -6707,7 +6485,7 @@ trace(canvas.toDataURL("image/png"));//打印图片base64信息，可以发给�
 
 
 <div class="param-desc">
-    子节点
+    Le Sous - noeud
 </div>
 
     
@@ -6729,7 +6507,7 @@ trace(canvas.toDataURL("image/png"));//打印图片base64信息，可以发给�
 
 
 <div class="description">
-    根据子节点的名字，获取子节点对象。
+    Selon le nom de sous - noeuds, à obtenir un sous - noeud objet.
 </div>
 
 
@@ -6831,7 +6609,7 @@ trace(canvas.toDataURL("image/png"));//打印图片base64信息，可以发给�
             
 
             <td class="description last">
-                子节点的名字。
+                Nom du noeud enfant.
                 
             </td>
         </tr>
@@ -6872,7 +6650,7 @@ trace(canvas.toDataURL("image/png"));//打印图片base64信息，可以发给�
 
 
 <div class="param-desc">
-    节点对象。
+    Le noeud objet.
 </div>
 
     
@@ -6894,7 +6672,7 @@ trace(canvas.toDataURL("image/png"));//打印图片base64信息，可以发给�
 
 
 <div class="description">
-    根据子节点对象，获取子节点的索引位置。
+    Selon le Sous - noeud objet, la position d'index de sous - noeuds d'acquisition.
 </div>
 
 
@@ -6996,7 +6774,7 @@ trace(canvas.toDataURL("image/png"));//打印图片base64信息，可以发给�
             
 
             <td class="description last">
-                子节点。
+                De sous - noeuds.
                 
             </td>
         </tr>
@@ -7037,7 +6815,7 @@ trace(canvas.toDataURL("image/png"));//打印图片base64信息，可以发给�
 
 
 <div class="param-desc">
-    子节点所在的索引位置。
+    La position d'index de sous - noeuds.
 </div>
 
     
@@ -7059,7 +6837,7 @@ trace(canvas.toDataURL("image/png"));//打印图片base64信息，可以发给�
 
 
 <div class="description">
-    返回此实例中的绘图对象（ <code>Graphics</code> ）的显示区域，不包括子对象。
+    Renvoie un objet de dessin (dans ce cas <code>Graphics</code> ) de la zone d'affichage, comprenant des sous - objets.
 </div>
 
 
@@ -7072,11 +6850,6 @@ trace(canvas.toDataURL("image/png"));//打印图片base64信息，可以发给�
 
     
 
-    
-    <dt class="inherited-from">Inherited From:</dt>
-    <dd class="inherited-from"><ul class="dummy"><li>
-        <a href="Core.Sprite.html#getGraphicBounds">Sprite#getGraphicBounds</a>
-    </li></ul></dd>
     
 
     
@@ -7161,7 +6934,7 @@ trace(canvas.toDataURL("image/png"));//打印图片base64信息，可以发给�
             
 
             <td class="description last">
-                使用图片的真实大小，默认为false
+                La taille de l'image réelle, la valeur par défaut pour de faux
                 
             </td>
         </tr>
@@ -7202,7 +6975,7 @@ trace(canvas.toDataURL("image/png"));//打印图片base64信息，可以发给�
 
 
 <div class="param-desc">
-    一个 Rectangle 对象，表示获取到的显示区域。
+    Un rectangle objet représentant l'accès à la zone d'affichage.
 </div>
 
     
@@ -7224,7 +6997,7 @@ trace(canvas.toDataURL("image/png"));//打印图片base64信息，可以发给�
 
 
 <div class="description">
-    获得相对于本对象上的鼠标坐标信息。
+    Obtenir des informations de coordonnées de l'objet par rapport à la souris.
 </div>
 
 
@@ -7237,11 +7010,6 @@ trace(canvas.toDataURL("image/png"));//打印图片base64信息，可以发给�
 
     
 
-    
-    <dt class="inherited-from">Inherited From:</dt>
-    <dd class="inherited-from"><ul class="dummy"><li>
-        <a href="Core.Sprite.html#getMousePoint">Sprite#getMousePoint</a>
-    </li></ul></dd>
     
 
     
@@ -7312,8 +7080,8 @@ trace(canvas.toDataURL("image/png"));//打印图片base64信息，可以发给�
 
 
 <div class="description">
-    获取本对象在自己坐标系的矩形显示区域。
-<p><b>注意：</b>计算量较大，尽量少用。</p>
+    Pour obtenir l'objet rectangulaire dans sa zone d'affichage d'un système de coordonnées. 
+<p><b> Note: </b> Une grande quantité de calcul, le moins possible. </p>
 </div>
 
 
@@ -7326,11 +7094,6 @@ trace(canvas.toDataURL("image/png"));//打印图片base64信息，可以发给�
 
     
 
-    
-    <dt class="inherited-from">Inherited From:</dt>
-    <dd class="inherited-from"><ul class="dummy"><li>
-        <a href="Core.Sprite.html#getSelfBounds">Sprite#getSelfBounds</a>
-    </li></ul></dd>
     
 
     
@@ -7404,7 +7167,7 @@ trace(canvas.toDataURL("image/png"));//打印图片base64信息，可以发给�
 
 
 <div class="param-desc">
-    矩形区域。
+    Zone rectangulaire.
 </div>
 
     
@@ -7426,7 +7189,7 @@ trace(canvas.toDataURL("image/png"));//打印图片base64信息，可以发给�
 
 
 <div class="description">
-    把stage的全局坐标转换为本地坐标。
+    Les coordonnées de l'étape de conversion de coordonnées global local.
 </div>
 
 
@@ -7439,11 +7202,6 @@ trace(canvas.toDataURL("image/png"));//打印图片base64信息，可以发给�
 
     
 
-    
-    <dt class="inherited-from">Inherited From:</dt>
-    <dd class="inherited-from"><ul class="dummy"><li>
-        <a href="Core.Sprite.html#globalToLocal">Sprite#globalToLocal</a>
-    </li></ul></dd>
     
 
     
@@ -7528,7 +7286,7 @@ trace(canvas.toDataURL("image/png"));//打印图片base64信息，可以发给�
             
 
             <td class="description last">
-                全局坐标点。
+                Le point de coordonnées global.
                 
             </td>
         </tr>
@@ -7554,7 +7312,7 @@ trace(canvas.toDataURL("image/png"));//打印图片base64信息，可以发给�
             
 
             <td class="description last">
-                是否创建一个新的Point对象作为返回值，默认为false，使用输入的point对象返回，减少对象创建开销。
+                Si la création d'un point objet comme valeur de retour, la valeur par défaut est fausse, à l'aide d'un objet de point d'entrée de retour, de réduire la création d'objets de dépenses.
                 
             </td>
         </tr>
@@ -7595,7 +7353,7 @@ trace(canvas.toDataURL("image/png"));//打印图片base64信息，可以发给�
 
 
 <div class="param-desc">
-    转换后的坐标的点。
+    Les coordonnées de points après conversion.
 </div>
 
     
@@ -7617,7 +7375,7 @@ trace(canvas.toDataURL("image/png"));//打印图片base64信息，可以发给�
 
 
 <div class="description">
-    检查 EventDispatcher 对象是否为特定事件类型注册了任何侦听器。
+    Vérifier  EventDispatcher  Si un objet spécifique de type d'événement enregistré tout auditeur.
 </div>
 
 
@@ -7719,7 +7477,7 @@ trace(canvas.toDataURL("image/png"));//打印图片base64信息，可以发给�
             
 
             <td class="description last">
-                事件的类型。
+                Le type d'événement.
                 
             </td>
         </tr>
@@ -7760,7 +7518,7 @@ trace(canvas.toDataURL("image/png"));//打印图片base64信息，可以发给�
 
 
 <div class="param-desc">
-    如果指定类型的侦听器已注册，则值为 true；否则，值为 false。
+    Si vous spécifiez un auditeur de ce type a été enregistrée, la valeur est vrai; sinon, la valeur est fausse.
 </div>
 
     
@@ -7782,7 +7540,7 @@ trace(canvas.toDataURL("image/png"));//打印图片base64信息，可以发给�
 
 
 <div class="description">
-    检测某个点是否在此对象内。
+    à détecter si un point est ici à l'intérieur de l'objet.
 </div>
 
 
@@ -7795,11 +7553,6 @@ trace(canvas.toDataURL("image/png"));//打印图片base64信息，可以发给�
 
     
 
-    
-    <dt class="inherited-from">Inherited From:</dt>
-    <dd class="inherited-from"><ul class="dummy"><li>
-        <a href="Core.Sprite.html#hitTestPoint">Sprite#hitTestPoint</a>
-    </li></ul></dd>
     
 
     
@@ -7884,7 +7637,7 @@ trace(canvas.toDataURL("image/png"));//打印图片base64信息，可以发给�
             
 
             <td class="description last">
-                全局x坐标。
+                Coordonnée x global.
                 
             </td>
         </tr>
@@ -7910,7 +7663,7 @@ trace(canvas.toDataURL("image/png"));//打印图片base64信息，可以发给�
             
 
             <td class="description last">
-                全局y坐标。
+                La coordonnée y globale.
                 
             </td>
         </tr>
@@ -7951,7 +7704,7 @@ trace(canvas.toDataURL("image/png"));//打印图片base64信息，可以发给�
 
 
 <div class="param-desc">
-    表示是否在对象内。
+    Indique si l'objet à l'intérieur.
 </div>
 
     
@@ -7973,7 +7726,7 @@ trace(canvas.toDataURL("image/png"));//打印图片base64信息，可以发给�
 
 
 <div class="description">
-    检测指定事件类型是否是鼠标事件。
+    Si le type d'événement spécifié est de détecter des événements de souris.
 </div>
 
 
@@ -8075,7 +7828,7 @@ trace(canvas.toDataURL("image/png"));//打印图片base64信息，可以发给�
             
 
             <td class="description last">
-                事件的类型。
+                Le type d'événement.
                 
             </td>
         </tr>
@@ -8116,7 +7869,7 @@ trace(canvas.toDataURL("image/png"));//打印图片base64信息，可以发给�
 
 
 <div class="param-desc">
-    如果是鼠标事件，则值为 true;否则，值为 false。
+    Si des événements de souris, alors la valeur vrai; sinon, la valeur est fausse.
 </div>
 
     
@@ -8138,8 +7891,8 @@ trace(canvas.toDataURL("image/png"));//打印图片base64信息，可以发给�
 
 
 <div class="description">
-    加载并显示一个图片。功能等同于graphics.loadImage方法。支持异步加载。
-注意：多次调用loadImage绘制不同的图片，会同时显示。
+    Le chargement et l'affichage d'une image.Procédé de graphics.loadImage équivalent fonctionnel.Support de charge asynchrone. 
+Note: de multiples appels loadImage dessine différentes images, peut afficher simultanément.
 </div>
 
 
@@ -8152,11 +7905,6 @@ trace(canvas.toDataURL("image/png"));//打印图片base64信息，可以发给�
 
     
 
-    
-    <dt class="inherited-from">Inherited From:</dt>
-    <dd class="inherited-from"><ul class="dummy"><li>
-        <a href="Core.Sprite.html#loadImage">Sprite#loadImage</a>
-    </li></ul></dd>
     
 
     
@@ -8257,7 +8005,7 @@ trace(canvas.toDataURL("image/png"));//打印图片base64信息，可以发给�
             
 
             <td class="description last">
-                图片地址。
+                Des photos d'adresse.
                 
             </td>
         </tr>
@@ -8299,7 +8047,7 @@ trace(canvas.toDataURL("image/png"));//打印图片base64信息，可以发给�
             
 
             <td class="description last">
-                x 显示图片的x位置
+                x  La position d'affichage de l'image X
                 
             </td>
         </tr>
@@ -8341,7 +8089,7 @@ trace(canvas.toDataURL("image/png"));//打印图片base64信息，可以发给�
             
 
             <td class="description last">
-                y 显示图片的y位置
+                y  La position d'affichage de l'image Y
                 
             </td>
         </tr>
@@ -8383,7 +8131,7 @@ trace(canvas.toDataURL("image/png"));//打印图片base64信息，可以发给�
             
 
             <td class="description last">
-                width 显示图片的宽度，设置为0表示使用图片默认宽度
+                width  Affichage d'images de largeur, est fixé à 0 indiquant l'utilisation de la largeur de l'image par défaut
                 
             </td>
         </tr>
@@ -8425,7 +8173,7 @@ trace(canvas.toDataURL("image/png"));//打印图片base64信息，可以发给�
             
 
             <td class="description last">
-                height 显示图片的高度，设置为0表示使用图片默认高度
+                height  Affichage d'images de hauteur, est fixé à 0 indiquant l'utilisation de hauteur de l'image par défaut
                 
             </td>
         </tr>
@@ -8467,7 +8215,7 @@ trace(canvas.toDataURL("image/png"));//打印图片base64信息，可以发给�
             
 
             <td class="description last">
-                complete 加载完成回调
+                complete  L'achèvement du chargement de rappel
                 
             </td>
         </tr>
@@ -8508,7 +8256,7 @@ trace(canvas.toDataURL("image/png"));//打印图片base64信息，可以发给�
 
 
 <div class="param-desc">
-    返回精灵对象本身
+    Renvoie des Elfes de l'objet lui - même
 </div>
 
     
@@ -8530,7 +8278,7 @@ trace(canvas.toDataURL("image/png"));//打印图片base64信息，可以发给�
 
 
 <div class="description">
-    把本地坐标转换为相对stage的全局坐标。
+    Le local de transformation de coordonnées de coordonnées global par rapport à l'étape.
 </div>
 
 
@@ -8543,11 +8291,6 @@ trace(canvas.toDataURL("image/png"));//打印图片base64信息，可以发给�
 
     
 
-    
-    <dt class="inherited-from">Inherited From:</dt>
-    <dd class="inherited-from"><ul class="dummy"><li>
-        <a href="Core.Sprite.html#localToGlobal">Sprite#localToGlobal</a>
-    </li></ul></dd>
     
 
     
@@ -8632,7 +8375,7 @@ trace(canvas.toDataURL("image/png"));//打印图片base64信息，可以发给�
             
 
             <td class="description last">
-                本地坐标点。
+                Point de coordonnées local.
                 
             </td>
         </tr>
@@ -8658,7 +8401,7 @@ trace(canvas.toDataURL("image/png"));//打印图片base64信息，可以发给�
             
 
             <td class="description last">
-                是否创建一个新的Point对象作为返回值，默认为false，使用输入的point对象返回，减少对象创建开销。
+                Si la création d'un point objet comme valeur de retour, la valeur par défaut est fausse, à l'aide d'un objet de point d'entrée de retour, de réduire la création d'objets de dépenses.
                 
             </td>
         </tr>
@@ -8699,7 +8442,7 @@ trace(canvas.toDataURL("image/png"));//打印图片base64信息，可以发给�
 
 
 <div class="param-desc">
-    转换后的坐标的点。
+    Les coordonnées de points après conversion.
 </div>
 
     
@@ -8721,7 +8464,7 @@ trace(canvas.toDataURL("image/png"));//打印图片base64信息，可以发给�
 
 
 <div class="description">
-    从 EventDispatcher 对象中删除侦听器。
+    à partir de  EventDispatcher  Objet retiré de l'auditeur.
 </div>
 
 
@@ -8823,7 +8566,7 @@ trace(canvas.toDataURL("image/png"));//打印图片base64信息，可以发给�
             
 
             <td class="description last">
-                事件的类型。
+                Le type d'événement.
                 
             </td>
         </tr>
@@ -8849,7 +8592,7 @@ trace(canvas.toDataURL("image/png"));//打印图片base64信息，可以发给�
             
 
             <td class="description last">
-                事件侦听函数的执行域。
+                Domaine d'exécution de fonction d'écoute des événements.
                 
             </td>
         </tr>
@@ -8875,7 +8618,7 @@ trace(canvas.toDataURL("image/png"));//打印图片base64信息，可以发给�
             
 
             <td class="description last">
-                事件侦听函数。
+                Les événements de la fonction d'interception.
                 
             </td>
         </tr>
@@ -8901,7 +8644,7 @@ trace(canvas.toDataURL("image/png"));//打印图片base64信息，可以发给�
             
 
             <td class="description last">
-                如果值为 true ,则只移除通过 once 方法添加的侦听器。
+                Si la valeur vrai ne retire de l'auditeur par une procédé d'addition.
                 
             </td>
         </tr>
@@ -8942,7 +8685,7 @@ trace(canvas.toDataURL("image/png"));//打印图片base64信息，可以发给�
 
 
 <div class="param-desc">
-    此 EventDispatcher 对象。
+    Ce  EventDispatcher  De l'objet.
 </div>
 
     
@@ -8964,7 +8707,7 @@ trace(canvas.toDataURL("image/png"));//打印图片base64信息，可以发给�
 
 
 <div class="description">
-    从 EventDispatcher 对象中删除指定事件类型的所有侦听器。
+    à partir de  EventDispatcher  Supprimer tous les objets de l'auditeur spécifie le type d'événement.
 </div>
 
 
@@ -9086,7 +8829,7 @@ trace(canvas.toDataURL("image/png"));//打印图片base64信息，可以发给�
             
 
             <td class="description last">
-                type 事件类型，如果值为 null，则移除本对象所有类型的侦听器。
+                type  Le type d'événement, si la valeur est nulle, l'auditeur de tous les types de l'objet est retiré.
                 
             </td>
         </tr>
@@ -9127,7 +8870,7 @@ trace(canvas.toDataURL("image/png"));//打印图片base64信息，可以发给�
 
 
 <div class="param-desc">
-    此 EventDispatcher 对象。
+    Ce  EventDispatcher  De l'objet.
 </div>
 
     
@@ -9149,8 +8892,8 @@ trace(canvas.toDataURL("image/png"));//打印图片base64信息，可以发给�
 
 
 <div class="description">
-    增加事件侦听器，以使侦听器能够接收事件通知。
-如果侦听鼠标事件，则会自动设置自己和父亲节点的属性 mouseEnabled 的值为 true(如果父节点mouseEnabled=false，则停止设置父节点mouseEnabled属性)。
+    L'augmentation de l'auditeur d'événement, de sorte que l'auditeur peut recevoir une notification d'événement. 
+Si l'interception d'un événement de souris, la valeur de l'attribut est mouseEnabled réglage automatique lui - même et le noeud père pour vrai (si le noeud parent mouseEnabled = False, arrête le noeud parent est réglée mouseEnabled attribut).
 </div>
 
 
@@ -9164,12 +8907,12 @@ trace(canvas.toDataURL("image/png"));//打印图片base64信息，可以发给�
     
 
     
-    <dt class="inherited-from">Inherited From:</dt>
-    <dd class="inherited-from"><ul class="dummy"><li>
-        <a href="Core.Sprite.html#on">Sprite#on</a>
-    </li></ul></dd>
-    
 
+    
+    <dt class="tag-overrides">Overrides:</dt>
+    <dd class="tag-overrides"><ul class="dummy"><li>
+        <a href="Core.Node.html#on">Node#on</a>
+    </li></ul></dd>
     
 
     
@@ -9268,7 +9011,7 @@ trace(canvas.toDataURL("image/png"));//打印图片base64信息，可以发给�
             
 
             <td class="description last">
-                事件的类型。
+                Le type d'événement.
                 
             </td>
         </tr>
@@ -9306,7 +9049,7 @@ trace(canvas.toDataURL("image/png"));//打印图片base64信息，可以发给�
             
 
             <td class="description last">
-                事件侦听函数的执行域。
+                Domaine d'exécution de fonction d'écoute des événements.
                 
             </td>
         </tr>
@@ -9344,7 +9087,7 @@ trace(canvas.toDataURL("image/png"));//打印图片base64信息，可以发给�
             
 
             <td class="description last">
-                事件侦听函数。
+                Les événements de la fonction d'interception.
                 
             </td>
         </tr>
@@ -9386,7 +9129,7 @@ trace(canvas.toDataURL("image/png"));//打印图片base64信息，可以发给�
             
 
             <td class="description last">
-                args 事件侦听函数的回调参数。
+                args  Des paramètres de fonction de rappel d'événement de l'auditeur.
                 
             </td>
         </tr>
@@ -9427,7 +9170,7 @@ trace(canvas.toDataURL("image/png"));//打印图片base64信息，可以发给�
 
 
 <div class="param-desc">
-    此 EventDispatcher 对象。
+    Cette EventDispatcher objet.
 </div>
 
     
@@ -9449,8 +9192,8 @@ trace(canvas.toDataURL("image/png"));//打印图片base64信息，可以发给�
 
 
 <div class="description">
-    增加事件侦听器，以使侦听器能够接收事件通知，此侦听事件响应一次后则自动移除侦听。
-如果侦听鼠标事件，则会自动设置自己和父亲节点的属性 mouseEnabled 的值为 true(如果父节点mouseEnabled=false，则停止设置父节点mouseEnabled属性)。
+    L'augmentation de l'auditeur d'événement, de sorte que l'auditeur peut recevoir une notification d'événement, l'auditeur d'événement en réponse à une seule est automatiquement retiré après l'interception. 
+Si l'interception d'un événement de souris, la valeur de l'attribut est mouseEnabled réglage automatique lui - même et le noeud père pour vrai (si le noeud parent mouseEnabled = False, arrête le noeud parent est réglée mouseEnabled attribut).
 </div>
 
 
@@ -9464,12 +9207,12 @@ trace(canvas.toDataURL("image/png"));//打印图片base64信息，可以发给�
     
 
     
-    <dt class="inherited-from">Inherited From:</dt>
-    <dd class="inherited-from"><ul class="dummy"><li>
-        <a href="Core.Sprite.html#once">Sprite#once</a>
-    </li></ul></dd>
-    
 
+    
+    <dt class="tag-overrides">Overrides:</dt>
+    <dd class="tag-overrides"><ul class="dummy"><li>
+        <a href="Core.Node.html#once">Node#once</a>
+    </li></ul></dd>
     
 
     
@@ -9568,7 +9311,7 @@ trace(canvas.toDataURL("image/png"));//打印图片base64信息，可以发给�
             
 
             <td class="description last">
-                事件的类型。
+                Le type d'événement.
                 
             </td>
         </tr>
@@ -9606,7 +9349,7 @@ trace(canvas.toDataURL("image/png"));//打印图片base64信息，可以发给�
             
 
             <td class="description last">
-                事件侦听函数的执行域。
+                Domaine d'exécution de fonction d'écoute des événements.
                 
             </td>
         </tr>
@@ -9644,7 +9387,7 @@ trace(canvas.toDataURL("image/png"));//打印图片base64信息，可以发给�
             
 
             <td class="description last">
-                事件侦听函数。
+                Les événements de la fonction d'interception.
                 
             </td>
         </tr>
@@ -9686,7 +9429,7 @@ trace(canvas.toDataURL("image/png"));//打印图片base64信息，可以发给�
             
 
             <td class="description last">
-                args 事件侦听函数的回调参数。
+                args  Des paramètres de fonction de rappel d'événement de l'auditeur.
                 
             </td>
         </tr>
@@ -9727,7 +9470,7 @@ trace(canvas.toDataURL("image/png"));//打印图片base64信息，可以发给�
 
 
 <div class="param-desc">
-    此 EventDispatcher 对象。
+    Cette EventDispatcher objet.
 </div>
 
     
@@ -9749,7 +9492,7 @@ trace(canvas.toDataURL("image/png"));//打印图片base64信息，可以发给�
 
 
 <div class="description">
-    cacheAs时，设置所有父对象缓存失效。
+    CacheAs, tous les paramètres de l'objet parent d'invalidation de mémoire cache.
 </div>
 
 
@@ -9762,11 +9505,6 @@ trace(canvas.toDataURL("image/png"));//打印图片base64信息，可以发给�
 
     
 
-    
-    <dt class="inherited-from">Inherited From:</dt>
-    <dd class="inherited-from"><ul class="dummy"><li>
-        <a href="Core.Sprite.html#parentRepaint">Sprite#parentRepaint</a>
-    </li></ul></dd>
     
 
     
@@ -9837,7 +9575,7 @@ trace(canvas.toDataURL("image/png"));//打印图片base64信息，可以发给�
 
 
 <div class="description">
-    设置轴心点。相当于分别设置pivotX和pivotY属性。
+    Disposée autour de l'axe de l'arbre.L'équivalent de propriété et disposées respectivement pivotX pivotY.
 </div>
 
 
@@ -9850,11 +9588,6 @@ trace(canvas.toDataURL("image/png"));//打印图片base64信息，可以发给�
 
     
 
-    
-    <dt class="inherited-from">Inherited From:</dt>
-    <dd class="inherited-from"><ul class="dummy"><li>
-        <a href="Core.Sprite.html#pivot">Sprite#pivot</a>
-    </li></ul></dd>
     
 
     
@@ -9939,7 +9672,7 @@ trace(canvas.toDataURL("image/png"));//打印图片base64信息，可以发给�
             
 
             <td class="description last">
-                X轴心点。
+                Point X de l'axe.
                 
             </td>
         </tr>
@@ -9965,7 +9698,7 @@ trace(canvas.toDataURL("image/png"));//打印图片base64信息，可以发给�
             
 
             <td class="description last">
-                Y轴心点。
+                Autour de l'axe central.
                 
             </td>
         </tr>
@@ -10006,7 +9739,7 @@ trace(canvas.toDataURL("image/png"));//打印图片base64信息，可以发给�
 
 
 <div class="param-desc">
-    返回对象本身。
+    Renvoie l'objet lui - même.
 </div>
 
     
@@ -10028,7 +9761,7 @@ trace(canvas.toDataURL("image/png"));//打印图片base64信息，可以发给�
 
 
 <div class="description">
-    设置坐标位置。相当于分别设置x和y属性。
+    Ensemble de coordonnées de position.Correspond à un ensemble de propriétés de X et y, respectivement.
 </div>
 
 
@@ -10041,11 +9774,6 @@ trace(canvas.toDataURL("image/png"));//打印图片base64信息，可以发给�
 
     
 
-    
-    <dt class="inherited-from">Inherited From:</dt>
-    <dd class="inherited-from"><ul class="dummy"><li>
-        <a href="Core.Sprite.html#pos">Sprite#pos</a>
-    </li></ul></dd>
     
 
     
@@ -10130,7 +9858,7 @@ trace(canvas.toDataURL("image/png"));//打印图片base64信息，可以发给�
             
 
             <td class="description last">
-                X 轴坐标。
+                L'axe X des coordonnées.
                 
             </td>
         </tr>
@@ -10156,7 +9884,7 @@ trace(canvas.toDataURL("image/png"));//打印图片base64信息，可以发给�
             
 
             <td class="description last">
-                Y 轴坐标。
+                L'axe y de coordonnées.
                 
             </td>
         </tr>
@@ -10182,7 +9910,7 @@ trace(canvas.toDataURL("image/png"));//打印图片base64信息，可以发给�
             
 
             <td class="description last">
-                是否极速模式，正常是调用this.x=value进行赋值，极速模式直接调用内部函数处理，如果未重写x,y属性，建议设置为急速模式性能更高。
+                Si le mode de vitesse normale, est appelé this.x = valeur de l'attribution, l'appel de fonction de traitement en mode direct interne, si aucun attribut de réécriture de X, y, il est recommandé pour le mode de performance plus rapidement.
                 
             </td>
         </tr>
@@ -10223,7 +9951,7 @@ trace(canvas.toDataURL("image/png"));//打印图片base64信息，可以发给�
 
 
 <div class="param-desc">
-    返回对象本身。
+    Renvoie l'objet lui - même.
 </div>
 
     
@@ -10245,7 +9973,7 @@ trace(canvas.toDataURL("image/png"));//打印图片base64信息，可以发给�
 
 
 <div class="description">
-    在设置cacheAs的情况下，调用此方法会重新刷新缓存。
+    Dans le cas de disposé cacheAs, appelle ce procédé va de rafraîchissement de la mémoire cache.
 </div>
 
 
@@ -10258,11 +9986,6 @@ trace(canvas.toDataURL("image/png"));//打印图片base64信息，可以发给�
 
     
 
-    
-    <dt class="inherited-from">Inherited From:</dt>
-    <dd class="inherited-from"><ul class="dummy"><li>
-        <a href="Core.Sprite.html#reCache">Sprite#reCache</a>
-    </li></ul></dd>
     
 
     
@@ -10333,7 +10056,7 @@ trace(canvas.toDataURL("image/png"));//打印图片base64信息，可以发给�
 
 
 <div class="description">
-    删除子节点。
+    Supprimer le Sous - noeud.
 </div>
 
 
@@ -10435,7 +10158,7 @@ trace(canvas.toDataURL("image/png"));//打印图片base64信息，可以发给�
             
 
             <td class="description last">
-                子节点
+                Le Sous - noeud
                 
             </td>
         </tr>
@@ -10476,7 +10199,7 @@ trace(canvas.toDataURL("image/png"));//打印图片base64信息，可以发给�
 
 
 <div class="param-desc">
-    被删除的节点
+    Le noeud est supprimé
 </div>
 
     
@@ -10498,7 +10221,7 @@ trace(canvas.toDataURL("image/png"));//打印图片base64信息，可以发给�
 
 
 <div class="description">
-    根据子节点索引位置，删除对应的子节点对象。
+    En fonction de la position de sous - noeuds d'index, de supprimer l'objet de sous - noeuds correspondants.
 </div>
 
 
@@ -10600,7 +10323,7 @@ trace(canvas.toDataURL("image/png"));//打印图片base64信息，可以发给�
             
 
             <td class="description last">
-                节点索引位置。
+                Le noeud d'index de position.
                 
             </td>
         </tr>
@@ -10641,7 +10364,7 @@ trace(canvas.toDataURL("image/png"));//打印图片base64信息，可以发给�
 
 
 <div class="param-desc">
-    被删除的节点。
+    Les noeuds sont supprimés.
 </div>
 
     
@@ -10663,7 +10386,7 @@ trace(canvas.toDataURL("image/png"));//打印图片base64信息，可以发给�
 
 
 <div class="description">
-    根据子节点名字删除对应的子节点对象，如果找不到不会抛出异常。
+    Selon le Sous - noeud effacer le nom de noeud d'objet correspondant aux sous -, si on ne trouve pas une exception.
 </div>
 
 
@@ -10765,7 +10488,7 @@ trace(canvas.toDataURL("image/png"));//打印图片base64信息，可以发给�
             
 
             <td class="description last">
-                对象名字。
+                Nom de l'objet.
                 
             </td>
         </tr>
@@ -10806,7 +10529,7 @@ trace(canvas.toDataURL("image/png"));//打印图片base64信息，可以发给�
 
 
 <div class="param-desc">
-    查找到的节点（ Node ）对象。
+    Pour trouver le noeud (  Node  ) de l'objet.
 </div>
 
     
@@ -10828,7 +10551,7 @@ trace(canvas.toDataURL("image/png"));//打印图片base64信息，可以发给�
 
 
 <div class="description">
-    删除指定索引区间的所有子对象。
+    Supprimer tous les sous - objets de l'index spécifié de l'intervalle.
 </div>
 
 
@@ -10950,7 +10673,7 @@ trace(canvas.toDataURL("image/png"));//打印图片base64信息，可以发给�
             
 
             <td class="description last">
-                beginIndex 开始索引。
+                beginIndex  Indice de départ.
                 
             </td>
         </tr>
@@ -10992,7 +10715,7 @@ trace(canvas.toDataURL("image/png"));//打印图片base64信息，可以发给�
             
 
             <td class="description last">
-                endIndex 结束索引。
+                endIndex  La fin de l'indice.
                 
             </td>
         </tr>
@@ -11033,7 +10756,7 @@ trace(canvas.toDataURL("image/png"));//打印图片base64信息，可以发给�
 
 
 <div class="param-desc">
-    当前节点对象。
+    Le noeud objet actuel.
 </div>
 
     
@@ -11055,7 +10778,7 @@ trace(canvas.toDataURL("image/png"));//打印图片base64信息，可以发给�
 
 
 <div class="description">
-    从父容器删除自己，如已经被删除不会抛出异常。
+    Le père de son récipient de supprimer, par exemple, a été supprimé sans exception.
 </div>
 
 
@@ -11146,7 +10869,7 @@ trace(canvas.toDataURL("image/png"));//打印图片base64信息，可以发给�
 
 
 <div class="param-desc">
-    当前节点（ Node ）对象。
+    Le noeud actuel (  Node  ) de l'objet.
 </div>
 
     
@@ -11168,7 +10891,7 @@ trace(canvas.toDataURL("image/png"));//打印图片base64信息，可以发给�
 
 
 <div class="description">
-    更新、呈现显示对象。由系统调用。
+    La mise à jour, la présentation de l'objet d'affichage.Par le système d'appel.
 </div>
 
 
@@ -11181,11 +10904,6 @@ trace(canvas.toDataURL("image/png"));//打印图片base64信息，可以发给�
 
     
 
-    
-    <dt class="inherited-from">Inherited From:</dt>
-    <dd class="inherited-from"><ul class="dummy"><li>
-        <a href="Core.Sprite.html#render">Sprite#render</a>
-    </li></ul></dd>
     
 
     
@@ -11270,7 +10988,7 @@ trace(canvas.toDataURL("image/png"));//打印图片base64信息，可以发给�
             
 
             <td class="description last">
-                渲染的上下文引用。
+                Le contexte de rendu de référence.
                 
             </td>
         </tr>
@@ -11296,7 +11014,7 @@ trace(canvas.toDataURL("image/png"));//打印图片base64信息，可以发给�
             
 
             <td class="description last">
-                X轴坐标。
+                L'axe X des coordonnées.
                 
             </td>
         </tr>
@@ -11322,7 +11040,7 @@ trace(canvas.toDataURL("image/png"));//打印图片base64信息，可以发给�
             
 
             <td class="description last">
-                Y轴坐标。
+                L'axe y de coordonnées.
                 
             </td>
         </tr>
@@ -11360,7 +11078,7 @@ trace(canvas.toDataURL("image/png"));//打印图片base64信息，可以发给�
 
 
 <div class="description">
-    cacheAs后，设置自己和父对象缓存失效。
+    CacheAs, placé lui - même et l'objet parent d'invalidation de mémoire cache.
 </div>
 
 
@@ -11373,11 +11091,6 @@ trace(canvas.toDataURL("image/png"));//打印图片base64信息，可以发给�
 
     
 
-    
-    <dt class="inherited-from">Inherited From:</dt>
-    <dd class="inherited-from"><ul class="dummy"><li>
-        <a href="Core.Sprite.html#repaint">Sprite#repaint</a>
-    </li></ul></dd>
     
 
     
@@ -11448,7 +11161,7 @@ trace(canvas.toDataURL("image/png"));//打印图片base64信息，可以发给�
 
 
 <div class="description">
-    替换子节点。
+    Remplacement de sous - noeuds.
 </div>
 
 
@@ -11550,7 +11263,7 @@ trace(canvas.toDataURL("image/png"));//打印图片base64信息，可以发给�
             
 
             <td class="description last">
-                新节点。
+                Le nouveau noeud.
                 
             </td>
         </tr>
@@ -11576,7 +11289,7 @@ trace(canvas.toDataURL("image/png"));//打印图片base64信息，可以发给�
             
 
             <td class="description last">
-                老节点。
+                Le noeud.
                 
             </td>
         </tr>
@@ -11617,7 +11330,7 @@ trace(canvas.toDataURL("image/png"));//打印图片base64信息，可以发给�
 
 
 <div class="param-desc">
-    返回新节点。
+    Renvoie le nouveau noeud.
 </div>
 
     
@@ -11639,7 +11352,7 @@ trace(canvas.toDataURL("image/png"));//打印图片base64信息，可以发给�
 
 
 <div class="description">
-    设置缩放。相当于分别设置scaleX和scaleY属性。
+    Ensemble de zoom.L'équivalent de propriété et disposées respectivement scaleX scaleY.
 </div>
 
 
@@ -11652,11 +11365,6 @@ trace(canvas.toDataURL("image/png"));//打印图片base64信息，可以发给�
 
     
 
-    
-    <dt class="inherited-from">Inherited From:</dt>
-    <dd class="inherited-from"><ul class="dummy"><li>
-        <a href="Core.Sprite.html#scale">Sprite#scale</a>
-    </li></ul></dd>
     
 
     
@@ -11741,7 +11449,7 @@ trace(canvas.toDataURL("image/png"));//打印图片base64信息，可以发给�
             
 
             <td class="description last">
-                X轴缩放比例。
+                L'axe X de l'échelle.
                 
             </td>
         </tr>
@@ -11767,7 +11475,7 @@ trace(canvas.toDataURL("image/png"));//打印图片base64信息，可以发给�
             
 
             <td class="description last">
-                Y轴缩放比例。
+                La proportion de mise à l'échelle de l'axe Y.
                 
             </td>
         </tr>
@@ -11793,7 +11501,7 @@ trace(canvas.toDataURL("image/png"));//打印图片base64信息，可以发给�
             
 
             <td class="description last">
-                是否极速模式，正常是调用this.scaleX=value进行赋值，极速模式直接调用内部函数处理，如果未重写scaleX,scaleY属性，建议设置为急速模式性能更高。
+                Si le mode de vitesse normale, est appelé this.scaleX = valeur de l'attribution, l'appel de fonction de traitement en mode direct interne, si ce n'est pas scaleX de réécriture, scaleY attributs, recommande la création rapide pour mode de performance plus élevée.
                 
             </td>
         </tr>
@@ -11834,7 +11542,7 @@ trace(canvas.toDataURL("image/png"));//打印图片base64信息，可以发给�
 
 
 <div class="param-desc">
-    返回对象本身。
+    Renvoie l'objet lui - même.
 </div>
 
     
@@ -11856,7 +11564,7 @@ trace(canvas.toDataURL("image/png"));//打印图片base64信息，可以发给�
 
 
 <div class="description">
-    设置bounds大小，如果有设置，则不再通过getBounds计算，合理使用能提高性能。
+    Ensemble les limites de taille, s'il n'est pas disposé, par calcul de l'utilisation rationnelle de l'getBounds, peut améliorer les performances.
 </div>
 
 
@@ -11869,11 +11577,6 @@ trace(canvas.toDataURL("image/png"));//打印图片base64信息，可以发给�
 
     
 
-    
-    <dt class="inherited-from">Inherited From:</dt>
-    <dd class="inherited-from"><ul class="dummy"><li>
-        <a href="Core.Sprite.html#setBounds">Sprite#setBounds</a>
-    </li></ul></dd>
     
 
     
@@ -11958,7 +11661,7 @@ trace(canvas.toDataURL("image/png"));//打印图片base64信息，可以发给�
             
 
             <td class="description last">
-                bounds矩形区域
+                Les limites de la zone rectangulaire
                 
             </td>
         </tr>
@@ -11996,7 +11699,7 @@ trace(canvas.toDataURL("image/png"));//打印图片base64信息，可以发给�
 
 
 <div class="description">
-    设置子节点的索引位置。
+    La position d'index de sous - ensemble de noeuds.
 </div>
 
 
@@ -12098,7 +11801,7 @@ trace(canvas.toDataURL("image/png"));//打印图片base64信息，可以发给�
             
 
             <td class="description last">
-                子节点。
+                De sous - noeuds.
                 
             </td>
         </tr>
@@ -12124,7 +11827,7 @@ trace(canvas.toDataURL("image/png"));//打印图片base64信息，可以发给�
             
 
             <td class="description last">
-                新的索引。
+                Nouvel index.
                 
             </td>
         </tr>
@@ -12165,7 +11868,7 @@ trace(canvas.toDataURL("image/png"));//打印图片base64信息，可以发给�
 
 
 <div class="param-desc">
-    返回子节点本身。
+    Renvoie le Sous - noeud lui - même.
 </div>
 
     
@@ -12187,7 +11890,7 @@ trace(canvas.toDataURL("image/png"));//打印图片base64信息，可以发给�
 
 
 <div class="description">
-    设置宽高。相当于分别设置width和height属性。
+    Large haut placé.L'équivalent de disposés respectivement un attribut de la largeur et de la hauteur.
 </div>
 
 
@@ -12200,11 +11903,6 @@ trace(canvas.toDataURL("image/png"));//打印图片base64信息，可以发给�
 
     
 
-    
-    <dt class="inherited-from">Inherited From:</dt>
-    <dd class="inherited-from"><ul class="dummy"><li>
-        <a href="Core.Sprite.html#size">Sprite#size</a>
-    </li></ul></dd>
     
 
     
@@ -12289,7 +11987,7 @@ trace(canvas.toDataURL("image/png"));//打印图片base64信息，可以发给�
             
 
             <td class="description last">
-                宽度值。
+                La valeur de largeur.
                 
             </td>
         </tr>
@@ -12315,7 +12013,7 @@ trace(canvas.toDataURL("image/png"));//打印图片base64信息，可以发给�
             
 
             <td class="description last">
-                高度值。
+                La valeur d'altitude.
                 
             </td>
         </tr>
@@ -12356,7 +12054,7 @@ trace(canvas.toDataURL("image/png"));//打印图片base64信息，可以发给�
 
 
 <div class="param-desc">
-    返回对象本身。
+    Renvoie l'objet lui - même.
 </div>
 
     
@@ -12378,7 +12076,7 @@ trace(canvas.toDataURL("image/png"));//打印图片base64信息，可以发给�
 
 
 <div class="description">
-    设置倾斜角度。相当于分别设置skewX和skewY属性。
+    Est l'angle d'inclinaison.L'équivalent de propriété et disposées respectivement skewX skewY.
 </div>
 
 
@@ -12391,11 +12089,6 @@ trace(canvas.toDataURL("image/png"));//打印图片base64信息，可以发给�
 
     
 
-    
-    <dt class="inherited-from">Inherited From:</dt>
-    <dd class="inherited-from"><ul class="dummy"><li>
-        <a href="Core.Sprite.html#skew">Sprite#skew</a>
-    </li></ul></dd>
     
 
     
@@ -12480,7 +12173,7 @@ trace(canvas.toDataURL("image/png"));//打印图片base64信息，可以发给�
             
 
             <td class="description last">
-                水平倾斜角度。
+                Le niveau de l'angle d'inclinaison.
                 
             </td>
         </tr>
@@ -12506,7 +12199,7 @@ trace(canvas.toDataURL("image/png"));//打印图片base64信息，可以发给�
             
 
             <td class="description last">
-                垂直倾斜角度。
+                L'angle d'inclinaison verticale.
                 
             </td>
         </tr>
@@ -12547,7 +12240,7 @@ trace(canvas.toDataURL("image/png"));//打印图片base64信息，可以发给�
 
 
 <div class="param-desc">
-    返回对象本身
+    Renvoie l'objet lui - même
 </div>
 
     
@@ -12569,7 +12262,7 @@ trace(canvas.toDataURL("image/png"));//打印图片base64信息，可以发给�
 
 
 <div class="description">
-    开始拖动此对象。
+    Commence à glisser cet objet.
 </div>
 
 
@@ -12582,11 +12275,6 @@ trace(canvas.toDataURL("image/png"));//打印图片base64信息，可以发给�
 
     
 
-    
-    <dt class="inherited-from">Inherited From:</dt>
-    <dd class="inherited-from"><ul class="dummy"><li>
-        <a href="Core.Sprite.html#startDrag">Sprite#startDrag</a>
-    </li></ul></dd>
     
 
     
@@ -12691,7 +12379,7 @@ trace(canvas.toDataURL("image/png"));//打印图片base64信息，可以发给�
             
 
             <td class="description last">
-                area 拖动区域，此区域为当前对象注册点活动区域（不包括对象宽高），可选。
+                area  La traînée de la région pour les activités régionales de l'objet l'enregistrement actuel (à l'exclusion de l'objet large élevé), éventuellement.
                 
             </td>
         </tr>
@@ -12729,7 +12417,7 @@ trace(canvas.toDataURL("image/png"));//打印图片base64信息，可以发给�
             
 
             <td class="description last">
-                鼠标松开后，是否还惯性滑动，默认为false，可选。
+                Relâchez la souris, si l'inertie de glissement, par défaut pour de faux, éventuellement.
                 
             </td>
         </tr>
@@ -12771,7 +12459,7 @@ trace(canvas.toDataURL("image/png"));//打印图片base64信息，可以发给�
             
 
             <td class="description last">
-                elasticDistance 橡皮筋效果的距离值，0为无橡皮筋效果，默认为0，可选。
+                elasticDistance  Une valeur de distance de la bande de caoutchouc, 0 est sans effet de bande de caoutchouc, éventuellement de la valeur par défaut est 0.
                 
             </td>
         </tr>
@@ -12813,7 +12501,7 @@ trace(canvas.toDataURL("image/png"));//打印图片base64信息，可以发给�
             
 
             <td class="description last">
-                elasticBackTime 橡皮筋回弹时间，单位为毫秒，默认为300毫秒，可选。
+                elasticBackTime  La bande de caoutchouc de rebond le temps en millisecondes, éventuellement de la valeur par défaut est de 300 msec.
                 
             </td>
         </tr>
@@ -12855,7 +12543,7 @@ trace(canvas.toDataURL("image/png"));//打印图片base64信息，可以发给�
             
 
             <td class="description last">
-                data 拖动事件携带的数据，可选。
+                data  Des données facultatives, faites glisser l'événement à transporter.
                 
             </td>
         </tr>
@@ -12893,7 +12581,7 @@ trace(canvas.toDataURL("image/png"));//打印图片base64信息，可以发给�
             
 
             <td class="description last">
-                禁用其他对象的鼠标检测，默认为false，设置为true能提高性能。
+                Détection de souris de désactiver d'autres objets, par défaut pour de faux, le vrai peut améliorer la performance.
                 
             </td>
         </tr>
@@ -12935,7 +12623,7 @@ trace(canvas.toDataURL("image/png"));//打印图片base64信息，可以发给�
             
 
             <td class="description last">
-                ratio 惯性阻尼系数，影响惯性力度和时长。
+                ratio  L'inertie du coefficient d'amortissement, les effets d'inertie de l'intensité et de la durée.
                 
             </td>
         </tr>
@@ -12973,7 +12661,7 @@ trace(canvas.toDataURL("image/png"));//打印图片base64信息，可以发给�
 
 
 <div class="description">
-    停止拖动此对象。
+    Arrête de la traînée de cet objet.
 </div>
 
 
@@ -12986,11 +12674,6 @@ trace(canvas.toDataURL("image/png"));//打印图片base64信息，可以发给�
 
     
 
-    
-    <dt class="inherited-from">Inherited From:</dt>
-    <dd class="inherited-from"><ul class="dummy"><li>
-        <a href="Core.Sprite.html#stopDrag">Sprite#stopDrag</a>
-    </li></ul></dd>
     
 
     
@@ -13061,7 +12744,7 @@ trace(canvas.toDataURL("image/png"));//打印图片base64信息，可以发给�
 
 
 <div class="description">
-    定时重复执行某函数。功能同Laya.timer.timerLoop()。
+    La synchronisation de l'exécution répétée d'une fonction.La même fonction Laya.timer.timerLoop ().
 </div>
 
 
@@ -13179,7 +12862,7 @@ trace(canvas.toDataURL("image/png"));//打印图片base64信息，可以发给�
             
 
             <td class="description last">
-                间隔时间(单位毫秒)。
+                L'intervalle de temps (en millisecondes).
                 
             </td>
         </tr>
@@ -13217,7 +12900,7 @@ trace(canvas.toDataURL("image/png"));//打印图片base64信息，可以发给�
             
 
             <td class="description last">
-                执行域(this)。
+                Domaine d'exécution (CE).
                 
             </td>
         </tr>
@@ -13255,7 +12938,7 @@ trace(canvas.toDataURL("image/png"));//打印图片base64信息，可以发给�
             
 
             <td class="description last">
-                结束时的回调方法。
+                Procédé de rappel à la fin.
                 
             </td>
         </tr>
@@ -13297,7 +12980,7 @@ trace(canvas.toDataURL("image/png"));//打印图片base64信息，可以发给�
             
 
             <td class="description last">
-                args 回调参数。
+                args  Paramètres de rappel.
                 
             </td>
         </tr>
@@ -13335,7 +13018,7 @@ trace(canvas.toDataURL("image/png"));//打印图片base64信息，可以发给�
             
 
             <td class="description last">
-                是否覆盖之前的延迟执行，默认为true。
+                Si la couverture avant de retard d'exécution, la valeur par défaut pour vrai.
                 
             </td>
         </tr>
@@ -13373,7 +13056,7 @@ trace(canvas.toDataURL("image/png"));//打印图片base64信息，可以发给�
 
 
 <div class="description">
-    定时执行某函数一次。功能同Laya.timer.timerOnce()。
+    La synchronisation de l'exécution d'une fonction une fois.La même fonction Laya.timer.timerOnce ().
 </div>
 
 
@@ -13491,7 +13174,7 @@ trace(canvas.toDataURL("image/png"));//打印图片base64信息，可以发给�
             
 
             <td class="description last">
-                延迟时间(单位毫秒)。
+                Le temps de retard (en millisecondes).
                 
             </td>
         </tr>
@@ -13529,7 +13212,7 @@ trace(canvas.toDataURL("image/png"));//打印图片base64信息，可以发给�
             
 
             <td class="description last">
-                执行域(this)。
+                Domaine d'exécution (CE).
                 
             </td>
         </tr>
@@ -13567,7 +13250,7 @@ trace(canvas.toDataURL("image/png"));//打印图片base64信息，可以发给�
             
 
             <td class="description last">
-                结束时的回调方法。
+                Procédé de rappel à la fin.
                 
             </td>
         </tr>
@@ -13609,7 +13292,7 @@ trace(canvas.toDataURL("image/png"));//打印图片base64信息，可以发给�
             
 
             <td class="description last">
-                args 回调参数。
+                args  Paramètres de rappel.
                 
             </td>
         </tr>
@@ -13647,7 +13330,7 @@ trace(canvas.toDataURL("image/png"));//打印图片base64信息，可以发给�
             
 
             <td class="description last">
-                是否覆盖之前的延迟执行，默认为true。
+                Si la couverture avant de retard d'exécution, la valeur par défaut pour vrai.
                 
             </td>
         </tr>
@@ -13685,7 +13368,7 @@ trace(canvas.toDataURL("image/png"));//打印图片base64信息，可以发给�
 
 
 <div class="description">
-    将本地坐标系坐标转转换到父容器坐标系。
+    Le système de coordonnées local dans le système de coordonnées de la conversion de la cuve le père.
 </div>
 
 
@@ -13698,11 +13381,6 @@ trace(canvas.toDataURL("image/png"));//打印图片base64信息，可以发给�
 
     
 
-    
-    <dt class="inherited-from">Inherited From:</dt>
-    <dd class="inherited-from"><ul class="dummy"><li>
-        <a href="Core.Sprite.html#toParentPoint">Sprite#toParentPoint</a>
-    </li></ul></dd>
     
 
     
@@ -13787,7 +13465,7 @@ trace(canvas.toDataURL("image/png"));//打印图片base64信息，可以发给�
             
 
             <td class="description last">
-                本地坐标点。
+                Point de coordonnées local.
                 
             </td>
         </tr>
@@ -13828,7 +13506,7 @@ trace(canvas.toDataURL("image/png"));//打印图片base64信息，可以发给�
 
 
 <div class="param-desc">
-    转换后的点。
+    Peu après la conversion.
 </div>
 
     
@@ -13850,7 +13528,7 @@ trace(canvas.toDataURL("image/png"));//打印图片base64信息，可以发给�
 
 
 <div class="description">
-    根据zOrder进行重新排序。
+    Selon zOrder sont réordonnées.
 </div>
 
 
@@ -13863,11 +13541,6 @@ trace(canvas.toDataURL("image/png"));//打印图片base64信息，可以发给�
 
     
 
-    
-    <dt class="inherited-from">Inherited From:</dt>
-    <dd class="inherited-from"><ul class="dummy"><li>
-        <a href="Core.Sprite.html#updateZOrder">Sprite#updateZOrder</a>
-    </li></ul></dd>
     
 
     
@@ -13931,7 +13604,7 @@ trace(canvas.toDataURL("image/png"));//打印图片base64信息，可以发给�
     
 
     
-        <h3 class="subsection-title">事件</h3>
+        <h3 class="subsection-title">Event</h3>
 
         
             
@@ -14046,11 +13719,6 @@ trace(canvas.toDataURL("image/png"));//打印图片base64信息，可以发给�
 
     
 
-    
-    <dt class="inherited-from">Inherited From:</dt>
-    <dd class="inherited-from"><ul class="dummy"><li>
-        <a href="Core.Sprite.html#event:click">Sprite#event:click</a>
-    </li></ul></dd>
     
 
     
@@ -14229,11 +13897,6 @@ trace(canvas.toDataURL("image/png"));//打印图片base64信息，可以发给�
     
 
     
-    <dt class="inherited-from">Inherited From:</dt>
-    <dd class="inherited-from"><ul class="dummy"><li>
-        <a href="Core.Sprite.html#event:dragend">Sprite#event:dragend</a>
-    </li></ul></dd>
-    
 
     
 
@@ -14319,11 +13982,6 @@ trace(canvas.toDataURL("image/png"));//打印图片base64信息，可以发给�
 
     
 
-    
-    <dt class="inherited-from">Inherited From:</dt>
-    <dd class="inherited-from"><ul class="dummy"><li>
-        <a href="Core.Sprite.html#event:dragmove">Sprite#event:dragmove</a>
-    </li></ul></dd>
     
 
     
@@ -14411,11 +14069,6 @@ trace(canvas.toDataURL("image/png"));//打印图片base64信息，可以发给�
     
 
     
-    <dt class="inherited-from">Inherited From:</dt>
-    <dd class="inherited-from"><ul class="dummy"><li>
-        <a href="Core.Sprite.html#event:dragstart">Sprite#event:dragstart</a>
-    </li></ul></dd>
-    
 
     
 
@@ -14501,11 +14154,6 @@ trace(canvas.toDataURL("image/png"));//打印图片base64信息，可以发给�
 
     
 
-    
-    <dt class="inherited-from">Inherited From:</dt>
-    <dd class="inherited-from"><ul class="dummy"><li>
-        <a href="Core.Sprite.html#event:mousedown">Sprite#event:mousedown</a>
-    </li></ul></dd>
     
 
     
@@ -14593,11 +14241,6 @@ trace(canvas.toDataURL("image/png"));//打印图片base64信息，可以发给�
     
 
     
-    <dt class="inherited-from">Inherited From:</dt>
-    <dd class="inherited-from"><ul class="dummy"><li>
-        <a href="Core.Sprite.html#event:mousemove">Sprite#event:mousemove</a>
-    </li></ul></dd>
-    
 
     
 
@@ -14683,11 +14326,6 @@ trace(canvas.toDataURL("image/png"));//打印图片base64信息，可以发给�
 
     
 
-    
-    <dt class="inherited-from">Inherited From:</dt>
-    <dd class="inherited-from"><ul class="dummy"><li>
-        <a href="Core.Sprite.html#event:mouseout">Sprite#event:mouseout</a>
-    </li></ul></dd>
     
 
     
@@ -14775,11 +14413,6 @@ trace(canvas.toDataURL("image/png"));//打印图片base64信息，可以发给�
     
 
     
-    <dt class="inherited-from">Inherited From:</dt>
-    <dd class="inherited-from"><ul class="dummy"><li>
-        <a href="Core.Sprite.html#event:mouseover">Sprite#event:mouseover</a>
-    </li></ul></dd>
-    
 
     
 
@@ -14865,11 +14498,6 @@ trace(canvas.toDataURL("image/png"));//打印图片base64信息，可以发给�
 
     
 
-    
-    <dt class="inherited-from">Inherited From:</dt>
-    <dd class="inherited-from"><ul class="dummy"><li>
-        <a href="Core.Sprite.html#event:mouseup">Sprite#event:mouseup</a>
-    </li></ul></dd>
     
 
     

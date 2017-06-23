@@ -3,7 +3,7 @@
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width,initial-scale=1">
-    <title>Scene2D - Documentation</title>
+    <title>Sprite - Documentation</title>
 
     <script src="scripts/prettify/prettify.js"></script>
     <script src="scripts/prettify/lang-css.js"></script>
@@ -24,7 +24,7 @@
 
 
 <!--     
-    <h1 class="page-title">Scene2D</h1>
+    <h1 class="page-title">Sprite</h1>
      -->
 
     
@@ -39,8 +39,13 @@
         <h2>
             <span class="ancestors"><a href="Core.html">Core</a>.</span>
         
-        Scene2D
+        Sprite
         </h2>
+        
+            <div class="class-description"><p> <code>Sprite</code> 类是基本显示对象节点，通过graphics可以绘制图片或者矢量图，支持旋转，缩放，位移等操作。Sprite同时也是容器类，用来添加多个子节点。</p>
+LayaAir引擎API设计精简巧妙。核心显示类只有一个Sprite。Sprite针对不同的情况做了渲染优化，所以保证一个类实现丰富功能的同时，又达到高性能。
+Sprite默认没有宽高，可以手动设置宽高，或者通过getbounds函数获取，还可以设置autoSize=true，然后再获取宽高。Sprite的宽高只是用来做碰撞使用，并不影响显示大小，如果更改显示大小，需要使用scaleX，scaleY。
+Sprite默认不接受鼠标事件，即mouseEnabled=false，但是只要对其监听任意鼠标事件，会自动打开自己以及所有父对象的mouseEnabled=true。所以一般也无需手动设置mouseEnabled。</div>
         
     
 </header>
@@ -52,8 +57,10 @@
 <div class="section-method">
 
     
+    <h2>构造函数</h2>
+    
 
-    <h4 class="name" id="Scene2D"><span class="type-signature"></span>new Scene2D<span class="signature">()</span><span class="type-signature"></span></h4>
+    <h4 class="name" id="Sprite"><span class="type-signature"></span>new Sprite<span class="signature">()</span><span class="type-signature"></span></h4>
 
     
 
@@ -92,7 +99,7 @@
     <!-- 
     <dt class="tag-source">Source:</dt>
     <dd class="tag-source"><ul class="dummy"><li>
-        js, line 5
+        js, line 141
     </li></ul></dd>
      -->
 
@@ -125,6 +132,149 @@
 
 
 
+<div class="section-examples">
+<h5>示例</h5>
+<div class="languageButtonGroup">
+    <button>ActionScript</button>
+    <button>JavaScript</button>
+    <button>TypeScript</button>
+</div>
+
+    <pre class="prettyprint"><code>以下示例代码，创建了一个 &lt;code>Sprite&lt;/code> 实例。
+&lt;listing version="3.0">
+package
+{
+import laya.display.Sprite;
+import laya.events.Event;
+public class Sprite_Example
+{
+private var sprite:Sprite;
+private var shape:Sprite
+public function Sprite_Example()
+{
+Laya.init(640, 800);//设置游戏画布宽高、渲染模式。
+Laya.stage.bgColor = "#efefef";//设置画布的背景颜色。
+onInit();
+}
+private function onInit():void
+{
+sprite = new Sprite();//创建一个 Sprite 类的实例对象 Sprite 。
+sprite.loadImage("resource/ui/bg.png");//加载并显示图片。
+sprite.x = 200;//设置 Sprite 对象相对于父容器的水平方向坐标值。
+sprite.y = 200;//设置 Sprite 对象相对于父容器的垂直方向坐标值。
+sprite.pivotX = 0;//设置 Sprite 对象的水平方法轴心点坐标。
+sprite.pivotY = 0;//设置 Sprite 对象的垂直方法轴心点坐标。
+Laya.stage.addChild(sprite);//将此 Sprite 对象添加到显示列表。
+sprite.on(Event.CLICK, this, onClickSprite);//给 Sprite 对象添加点击事件侦听。
+shape = new Sprite();//创建一个 Sprite 类的实例对象 Sprite 。
+shape.graphics.drawRect(0, 0, 100, 100, "#ccff00", "#ff0000", 2);//绘制一个有边框的填充矩形。
+shape.x = 400;//设置 shape 对象相对于父容器的水平方向坐标值。
+shape.y = 200;//设置 shape 对象相对于父容器的垂直方向坐标值。
+shape.width = 100;//设置 shape 对象的宽度。
+shape.height = 100;//设置 shape 对象的高度。
+shape.pivotX = 50;//设置 shape 对象的水平方法轴心点坐标。
+shape.pivotY = 50;//设置 shape 对象的垂直方法轴心点坐标。
+Laya.stage.addChild(shape);//将此 shape 对象添加到显示列表。
+shape.on(Event.CLICK, this, onClickShape);//给 shape 对象添加点击事件侦听。
+}
+private function onClickSprite():void
+{
+trace("点击 sprite 对象。");
+sprite.rotation += 5;//旋转 Sprite 对象。
+}
+private function onClickShape():void
+{
+trace("点击 shape 对象。");
+shape.rotation += 5;//旋转 shape 对象。
+}
+}
+}
+	*&lt;/listing>
+&lt;listing version="3.0">
+var sprite;
+var shape;
+Sprite_Example();
+function Sprite_Example()
+{
+    Laya.init(640, 800);//设置游戏画布宽高、渲染模式。
+    Laya.stage.bgColor = "#efefef";//设置画布的背景颜色。
+    onInit();
+}
+function onInit()
+{
+    sprite = new laya.display.Sprite();//创建一个 Sprite 类的实例对象 Sprite 。
+    sprite.loadImage("resource/ui/bg.png");//加载并显示图片。
+    sprite.x = 200;//设置 Sprite 对象相对于父容器的水平方向坐标值。
+    sprite.y = 200;//设置 Sprite 对象相对于父容器的垂直方向坐标值。
+    sprite.pivotX = 0;//设置 Sprite 对象的水平方法轴心点坐标。
+    sprite.pivotY = 0;//设置 Sprite 对象的垂直方法轴心点坐标。
+    Laya.stage.addChild(sprite);//将此 Sprite 对象添加到显示列表。
+    sprite.on(Event.CLICK, this, onClickSprite);//给 Sprite 对象添加点击事件侦听。
+    shape = new laya.display.Sprite();//创建一个 Sprite 类的实例对象 Sprite 。
+    shape.graphics.drawRect(0, 0, 100, 100, "#ccff00", "#ff0000", 2);//绘制一个有边框的填充矩形。
+    shape.x = 400;//设置 shape 对象相对于父容器的水平方向坐标值。
+    shape.y = 200;//设置 shape 对象相对于父容器的垂直方向坐标值。
+    shape.width = 100;//设置 shape 对象的宽度。
+    shape.height = 100;//设置 shape 对象的高度。
+    shape.pivotX = 50;//设置 shape 对象的水平方法轴心点坐标。
+    shape.pivotY = 50;//设置 shape 对象的垂直方法轴心点坐标。
+    Laya.stage.addChild(shape);//将此 shape 对象添加到显示列表。
+    shape.on(laya.events.Event.CLICK, this, onClickShape);//给 shape 对象添加点击事件侦听。
+}
+function onClickSprite()
+{
+    console.log("点击 sprite 对象。");
+    sprite.rotation += 5;//旋转 Sprite 对象。
+}
+function onClickShape()
+{
+    console.log("点击 shape 对象。");
+    shape.rotation += 5;//旋转 shape 对象。
+}
+	*&lt;/listing>
+&lt;listing version="3.0">
+import Sprite = laya.display.Sprite;
+class Sprite_Example {
+    private sprite: Sprite;
+    private shape: Sprite
+    public Sprite_Example() {
+        Laya.init(640, 800);//设置游戏画布宽高、渲染模式。
+        Laya.stage.bgColor = "#efefef";//设置画布的背景颜色。
+        this.onInit();
+    }
+    private onInit(): void {
+        this.sprite = new Sprite();//创建一个 Sprite 类的实例对象 Sprite 。
+        this.sprite.loadImage("resource/ui/bg.png");//加载并显示图片。
+        this.sprite.x = 200;//设置 Sprite 对象相对于父容器的水平方向坐标值。
+        this.sprite.y = 200;//设置 Sprite 对象相对于父容器的垂直方向坐标值。
+        this.sprite.pivotX = 0;//设置 Sprite 对象的水平方法轴心点坐标。
+        this.sprite.pivotY = 0;//设置 Sprite 对象的垂直方法轴心点坐标。
+        Laya.stage.addChild(this.sprite);//将此 Sprite 对象添加到显示列表。
+        this.sprite.on(laya.events.Event.CLICK, this, this.onClickSprite);//给 Sprite 对象添加点击事件侦听。
+        this.shape = new Sprite();//创建一个 Sprite 类的实例对象 Sprite 。
+        this.shape.graphics.drawRect(0, 0, 100, 100, "#ccff00", "#ff0000", 2);//绘制一个有边框的填充矩形。
+        this.shape.x = 400;//设置 shape 对象相对于父容器的水平方向坐标值。
+        this.shape.y = 200;//设置 shape 对象相对于父容器的垂直方向坐标值。
+        this.shape.width = 100;//设置 shape 对象的宽度。
+        this.shape.height = 100;//设置 shape 对象的高度。
+        this.shape.pivotX = 50;//设置 shape 对象的水平方法轴心点坐标。
+        this.shape.pivotY = 50;//设置 shape 对象的垂直方法轴心点坐标。
+        Laya.stage.addChild(this.shape);//将此 shape 对象添加到显示列表。
+        this.shape.on(laya.events.Event.CLICK, this, this.onClickShape);//给 shape 对象添加点击事件侦听。
+    }
+    private onClickSprite(): void {
+        console.log("点击 sprite 对象。");
+        this.sprite.rotation += 5;//旋转 Sprite 对象。
+    }
+    private onClickShape(): void {
+        console.log("点击 shape 对象。");
+        this.shape.rotation += 5;//旋转 shape 对象。
+    }
+}
+	*&lt;/listing></code></pre>
+
+</div>
+
 </div>
     
     </div>
@@ -136,7 +286,7 @@
 
 
     <ul>
-        <li><a href="Core.Sprite.html">Sprite</a></li>
+        <li><a href="Core.Node.html">Node</a></li>
     </ul>
 
 
@@ -175,11 +325,6 @@
 
     
 
-    
-    <dt class="inherited-from">Inherited From:</dt>
-    <dd class="inherited-from"><ul class="dummy"><li>
-        <a href="Core.Sprite.html#alpha">Sprite#alpha</a>
-    </li></ul></dd>
     
 
     
@@ -256,11 +401,6 @@ Sprite宽高默认为0，并且不会随着绘制内容的变化而变化，如�
     
 
     
-    <dt class="inherited-from">Inherited From:</dt>
-    <dd class="inherited-from"><ul class="dummy"><li>
-        <a href="Core.Sprite.html#autoSize">Sprite#autoSize</a>
-    </li></ul></dd>
-    
 
     
 
@@ -334,11 +474,6 @@ Sprite宽高默认为0，并且不会随着绘制内容的变化而变化，如�
 
     
 
-    
-    <dt class="inherited-from">Inherited From:</dt>
-    <dd class="inherited-from"><ul class="dummy"><li>
-        <a href="Core.Sprite.html#blendMode">Sprite#blendMode</a>
-    </li></ul></dd>
     
 
     
@@ -420,11 +555,6 @@ webgl下命令缓存模式只会减少节点遍历及命令组织，不会减少
     
 
     
-    <dt class="inherited-from">Inherited From:</dt>
-    <dd class="inherited-from"><ul class="dummy"><li>
-        <a href="Core.Sprite.html#cacheAs">Sprite#cacheAs</a>
-    </li></ul></dd>
-    
 
     
 
@@ -499,11 +629,6 @@ webgl下命令缓存模式只会减少节点遍历及命令组织，不会减少
     
 
     
-    <dt class="inherited-from">Inherited From:</dt>
-    <dd class="inherited-from"><ul class="dummy"><li>
-        <a href="Core.Sprite.html#cacheAsBitmap">Sprite#cacheAsBitmap</a>
-    </li></ul></dd>
-    
 
     
 
@@ -573,11 +698,6 @@ webgl下命令缓存模式只会减少节点遍历及命令组织，不会减少
 
     
 
-    
-    <dt class="inherited-from">Inherited From:</dt>
-    <dd class="inherited-from"><ul class="dummy"><li>
-        <a href="Core.Sprite.html#customRenderEnable">Sprite#customRenderEnable</a>
-    </li></ul></dd>
     
 
     
@@ -811,11 +931,6 @@ webgl下命令缓存模式只会减少节点遍历及命令组织，不会减少
     
 
     
-    <dt class="inherited-from">Inherited From:</dt>
-    <dd class="inherited-from"><ul class="dummy"><li>
-        <a href="Core.Sprite.html#filters">Sprite#filters</a>
-    </li></ul></dd>
-    
 
     
 
@@ -889,11 +1004,6 @@ webgl下命令缓存模式只会减少节点遍历及命令组织，不会减少
 
     
 
-    
-    <dt class="inherited-from">Inherited From:</dt>
-    <dd class="inherited-from"><ul class="dummy"><li>
-        <a href="Core.Sprite.html#globalScaleX">Sprite#globalScaleX</a>
-    </li></ul></dd>
     
 
     
@@ -969,11 +1079,6 @@ webgl下命令缓存模式只会减少节点遍历及命令组织，不会减少
     
 
     
-    <dt class="inherited-from">Inherited From:</dt>
-    <dd class="inherited-from"><ul class="dummy"><li>
-        <a href="Core.Sprite.html#globalScaleY">Sprite#globalScaleY</a>
-    </li></ul></dd>
-    
 
     
 
@@ -1047,11 +1152,6 @@ webgl下命令缓存模式只会减少节点遍历及命令组织，不会减少
 
     
 
-    
-    <dt class="inherited-from">Inherited From:</dt>
-    <dd class="inherited-from"><ul class="dummy"><li>
-        <a href="Core.Sprite.html#graphics">Sprite#graphics</a>
-    </li></ul></dd>
     
 
     
@@ -1128,11 +1228,6 @@ webgl下命令缓存模式只会减少节点遍历及命令组织，不会减少
     
 
     
-    <dt class="inherited-from">Inherited From:</dt>
-    <dd class="inherited-from"><ul class="dummy"><li>
-        <a href="Core.Sprite.html#height">Sprite#height</a>
-    </li></ul></dd>
-    
 
     
 
@@ -1207,11 +1302,6 @@ webgl下命令缓存模式只会减少节点遍历及命令组织，不会减少
 
     
 
-    
-    <dt class="inherited-from">Inherited From:</dt>
-    <dd class="inherited-from"><ul class="dummy"><li>
-        <a href="Core.Sprite.html#hitArea">Sprite#hitArea</a>
-    </li></ul></dd>
     
 
     
@@ -1290,11 +1380,6 @@ webgl下命令缓存模式只会减少节点遍历及命令组织，不会减少
     
 
     
-    <dt class="inherited-from">Inherited From:</dt>
-    <dd class="inherited-from"><ul class="dummy"><li>
-        <a href="Core.Sprite.html#hitTestPrior">Sprite#hitTestPrior</a>
-    </li></ul></dd>
-    
 
     
 
@@ -1369,11 +1454,6 @@ webgl下命令缓存模式只会减少节点遍历及命令组织，不会减少
 
     
 
-    
-    <dt class="inherited-from">Inherited From:</dt>
-    <dd class="inherited-from"><ul class="dummy"><li>
-        <a href="Core.Sprite.html#mask">Sprite#mask</a>
-    </li></ul></dd>
     
 
     
@@ -1451,11 +1531,6 @@ webgl下命令缓存模式只会减少节点遍历及命令组织，不会减少
     
 
     
-    <dt class="inherited-from">Inherited From:</dt>
-    <dd class="inherited-from"><ul class="dummy"><li>
-        <a href="Core.Sprite.html#mouseEnabled">Sprite#mouseEnabled</a>
-    </li></ul></dd>
-    
 
     
 
@@ -1529,11 +1604,6 @@ webgl下命令缓存模式只会减少节点遍历及命令组织，不会减少
 
     
 
-    
-    <dt class="inherited-from">Inherited From:</dt>
-    <dd class="inherited-from"><ul class="dummy"><li>
-        <a href="Core.Sprite.html#mouseThrough">Sprite#mouseThrough</a>
-    </li></ul></dd>
     
 
     
@@ -1609,11 +1679,6 @@ webgl下命令缓存模式只会减少节点遍历及命令组织，不会减少
     
 
     
-    <dt class="inherited-from">Inherited From:</dt>
-    <dd class="inherited-from"><ul class="dummy"><li>
-        <a href="Core.Sprite.html#mouseX">Sprite#mouseX</a>
-    </li></ul></dd>
-    
 
     
 
@@ -1687,11 +1752,6 @@ webgl下命令缓存模式只会减少节点遍历及命令组织，不会减少
 
     
 
-    
-    <dt class="inherited-from">Inherited From:</dt>
-    <dd class="inherited-from"><ul class="dummy"><li>
-        <a href="Core.Sprite.html#mouseY">Sprite#mouseY</a>
-    </li></ul></dd>
     
 
     
@@ -1931,11 +1991,6 @@ webgl下命令缓存模式只会减少节点遍历及命令组织，不会减少
     
 
     
-    <dt class="inherited-from">Inherited From:</dt>
-    <dd class="inherited-from"><ul class="dummy"><li>
-        <a href="Core.Sprite.html#optimizeScrollRect">Sprite#optimizeScrollRect</a>
-    </li></ul></dd>
-    
 
     
 
@@ -2006,12 +2061,12 @@ webgl下命令缓存模式只会减少节点遍历及命令组织，不会减少
     
 
     
-    <dt class="inherited-from">Inherited From:</dt>
-    <dd class="inherited-from"><ul class="dummy"><li>
-        <a href="Core.Sprite.html#parent">Sprite#parent</a>
-    </li></ul></dd>
-    
 
+    
+    <dt class="tag-overrides">Overrides:</dt>
+    <dd class="tag-overrides"><ul class="dummy"><li>
+        <a href="Core.Node.html#parent">Node#parent</a>
+    </li></ul></dd>
     
 
     
@@ -2084,11 +2139,6 @@ webgl下命令缓存模式只会减少节点遍历及命令组织，不会减少
 
     
 
-    
-    <dt class="inherited-from">Inherited From:</dt>
-    <dd class="inherited-from"><ul class="dummy"><li>
-        <a href="Core.Sprite.html#pivotX">Sprite#pivotX</a>
-    </li></ul></dd>
     
 
     
@@ -2164,11 +2214,6 @@ webgl下命令缓存模式只会减少节点遍历及命令组织，不会减少
     
 
     
-    <dt class="inherited-from">Inherited From:</dt>
-    <dd class="inherited-from"><ul class="dummy"><li>
-        <a href="Core.Sprite.html#pivotY">Sprite#pivotY</a>
-    </li></ul></dd>
-    
 
     
 
@@ -2242,11 +2287,6 @@ webgl下命令缓存模式只会减少节点遍历及命令组织，不会减少
 
     
 
-    
-    <dt class="inherited-from">Inherited From:</dt>
-    <dd class="inherited-from"><ul class="dummy"><li>
-        <a href="Core.Sprite.html#rotation">Sprite#rotation</a>
-    </li></ul></dd>
     
 
     
@@ -2322,11 +2362,6 @@ webgl下命令缓存模式只会减少节点遍历及命令组织，不会减少
     
 
     
-    <dt class="inherited-from">Inherited From:</dt>
-    <dd class="inherited-from"><ul class="dummy"><li>
-        <a href="Core.Sprite.html#scaleX">Sprite#scaleX</a>
-    </li></ul></dd>
-    
 
     
 
@@ -2400,11 +2435,6 @@ webgl下命令缓存模式只会减少节点遍历及命令组织，不会减少
 
     
 
-    
-    <dt class="inherited-from">Inherited From:</dt>
-    <dd class="inherited-from"><ul class="dummy"><li>
-        <a href="Core.Sprite.html#scaleY">Sprite#scaleY</a>
-    </li></ul></dd>
     
 
     
@@ -2484,11 +2514,6 @@ srollRect和viewport的区别：
     
 
     
-    <dt class="inherited-from">Inherited From:</dt>
-    <dd class="inherited-from"><ul class="dummy"><li>
-        <a href="Core.Sprite.html#scrollRect">Sprite#scrollRect</a>
-    </li></ul></dd>
-    
 
     
 
@@ -2562,11 +2587,6 @@ srollRect和viewport的区别：
 
     
 
-    
-    <dt class="inherited-from">Inherited From:</dt>
-    <dd class="inherited-from"><ul class="dummy"><li>
-        <a href="Core.Sprite.html#skewX">Sprite#skewX</a>
-    </li></ul></dd>
     
 
     
@@ -2642,11 +2662,6 @@ srollRect和viewport的区别：
     
 
     
-    <dt class="inherited-from">Inherited From:</dt>
-    <dd class="inherited-from"><ul class="dummy"><li>
-        <a href="Core.Sprite.html#skewY">Sprite#skewY</a>
-    </li></ul></dd>
-    
 
     
 
@@ -2720,11 +2735,6 @@ srollRect和viewport的区别：
 
     
 
-    
-    <dt class="inherited-from">Inherited From:</dt>
-    <dd class="inherited-from"><ul class="dummy"><li>
-        <a href="Core.Sprite.html#stage">Sprite#stage</a>
-    </li></ul></dd>
     
 
     
@@ -2800,11 +2810,6 @@ srollRect和viewport的区别：
     
 
     
-    <dt class="inherited-from">Inherited From:</dt>
-    <dd class="inherited-from"><ul class="dummy"><li>
-        <a href="Core.Sprite.html#staticCache">Sprite#staticCache</a>
-    </li></ul></dd>
-    
 
     
 
@@ -2878,11 +2883,6 @@ srollRect和viewport的区别：
 
     
 
-    
-    <dt class="inherited-from">Inherited From:</dt>
-    <dd class="inherited-from"><ul class="dummy"><li>
-        <a href="Core.Sprite.html#texture">Sprite#texture</a>
-    </li></ul></dd>
     
 
     
@@ -3038,11 +3038,6 @@ srollRect和viewport的区别：
     
 
     
-    <dt class="inherited-from">Inherited From:</dt>
-    <dd class="inherited-from"><ul class="dummy"><li>
-        <a href="Core.Sprite.html#transform">Sprite#transform</a>
-    </li></ul></dd>
-    
 
     
 
@@ -3119,11 +3114,6 @@ srollRect和viewport的区别：
 
     
 
-    
-    <dt class="inherited-from">Inherited From:</dt>
-    <dd class="inherited-from"><ul class="dummy"><li>
-        <a href="Core.Sprite.html#viewport">Sprite#viewport</a>
-    </li></ul></dd>
     
 
     
@@ -3204,11 +3194,6 @@ srollRect和viewport的区别：
     
 
     
-    <dt class="inherited-from">Inherited From:</dt>
-    <dd class="inherited-from"><ul class="dummy"><li>
-        <a href="Core.Sprite.html#visible">Sprite#visible</a>
-    </li></ul></dd>
-    
 
     
 
@@ -3284,11 +3269,6 @@ srollRect和viewport的区别：
     
 
     
-    <dt class="inherited-from">Inherited From:</dt>
-    <dd class="inherited-from"><ul class="dummy"><li>
-        <a href="Core.Sprite.html#width">Sprite#width</a>
-    </li></ul></dd>
-    
 
     
 
@@ -3362,11 +3342,6 @@ srollRect和viewport的区别：
 
     
 
-    
-    <dt class="inherited-from">Inherited From:</dt>
-    <dd class="inherited-from"><ul class="dummy"><li>
-        <a href="Core.Sprite.html#x">Sprite#x</a>
-    </li></ul></dd>
     
 
     
@@ -3442,11 +3417,6 @@ srollRect和viewport的区别：
     
 
     
-    <dt class="inherited-from">Inherited From:</dt>
-    <dd class="inherited-from"><ul class="dummy"><li>
-        <a href="Core.Sprite.html#y">Sprite#y</a>
-    </li></ul></dd>
-    
 
     
 
@@ -3520,11 +3490,6 @@ srollRect和viewport的区别：
 
     
 
-    
-    <dt class="inherited-from">Inherited From:</dt>
-    <dd class="inherited-from"><ul class="dummy"><li>
-        <a href="Core.Sprite.html#zOrder">Sprite#zOrder</a>
-    </li></ul></dd>
     
 
     
@@ -4428,168 +4393,6 @@ srollRect和viewport的区别：
 
     
 
-    <h4 class="name" id="createChildren"><span class="type-signature"></span>createChildren<span class="signature">()</span><span class="type-signature"></span></h4>
-
-    
-
-
-
-<div class="description">
-    <p>创建并添加控件子节点。</p>
-</div>
-
-
-
-
-
-<dl class="details">
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    <!-- 
-    <dt class="tag-source">Source:</dt>
-    <dd class="tag-source"><ul class="dummy"><li>
-        js, line 14
-    </li></ul></dd>
-     -->
-
-    
-
-    
-
-    
-</dl>
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-</div>
-        
-            
-<div class="section-method">
-
-    
-
-    <h4 class="name" id="createView"><span class="type-signature"></span>createView<span class="signature">()</span><span class="type-signature"></span></h4>
-
-    
-
-
-
-
-
-
-
-<dl class="details">
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    <!-- 
-    <dt class="tag-source">Source:</dt>
-    <dd class="tag-source"><ul class="dummy"><li>
-        js, line 17
-    </li></ul></dd>
-     -->
-
-    
-
-    
-
-    
-</dl>
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-</div>
-        
-            
-<div class="section-method">
-
-    
-
     <h4 class="name" id="customRender"><span class="type-signature"></span>customRender<span class="signature">(context, x, y)</span><span class="type-signature"></span></h4>
 
     
@@ -4611,11 +4414,6 @@ srollRect和viewport的区别：
 
     
 
-    
-    <dt class="inherited-from">Inherited From:</dt>
-    <dd class="inherited-from"><ul class="dummy"><li>
-        <a href="Core.Sprite.html#customRender">Sprite#customRender</a>
-    </li></ul></dd>
     
 
     
@@ -4805,12 +4603,12 @@ destroy时会移除自身的事情监听，自身的timer监听，移除子对�
     
 
     
-    <dt class="inherited-from">Inherited From:</dt>
-    <dd class="inherited-from"><ul class="dummy"><li>
+
+    
+    <dt class="tag-overrides">Overrides:</dt>
+    <dd class="tag-overrides"><ul class="dummy"><li>
         <a href="Core.Node.html#destroy">Node#destroy</a>
     </li></ul></dd>
-    
-
     
 
     
@@ -5042,11 +4840,6 @@ trace(canvas.toDataURL("image/png"));//打印图片base64信息，可以发给�
 
     
 
-    
-    <dt class="inherited-from">Inherited From:</dt>
-    <dd class="inherited-from"><ul class="dummy"><li>
-        <a href="Core.Sprite.html#drawToCanvas">Sprite#drawToCanvas</a>
-    </li></ul></dd>
     
 
     
@@ -6134,11 +5927,6 @@ trace(canvas.toDataURL("image/png"));//打印图片base64信息，可以发给�
     
 
     
-    <dt class="inherited-from">Inherited From:</dt>
-    <dd class="inherited-from"><ul class="dummy"><li>
-        <a href="Core.Sprite.html#fromImage">Sprite#fromImage</a>
-    </li></ul></dd>
-    
 
     
 
@@ -6298,11 +6086,6 @@ trace(canvas.toDataURL("image/png"));//打印图片base64信息，可以发给�
 
     
 
-    
-    <dt class="inherited-from">Inherited From:</dt>
-    <dd class="inherited-from"><ul class="dummy"><li>
-        <a href="Core.Sprite.html#fromParentPoint">Sprite#fromParentPoint</a>
-    </li></ul></dd>
     
 
     
@@ -6464,11 +6247,6 @@ trace(canvas.toDataURL("image/png"));//打印图片base64信息，可以发给�
 
     
 
-    
-    <dt class="inherited-from">Inherited From:</dt>
-    <dd class="inherited-from"><ul class="dummy"><li>
-        <a href="Core.Sprite.html#getBounds">Sprite#getBounds</a>
-    </li></ul></dd>
     
 
     
@@ -7073,11 +6851,6 @@ trace(canvas.toDataURL("image/png"));//打印图片base64信息，可以发给�
     
 
     
-    <dt class="inherited-from">Inherited From:</dt>
-    <dd class="inherited-from"><ul class="dummy"><li>
-        <a href="Core.Sprite.html#getGraphicBounds">Sprite#getGraphicBounds</a>
-    </li></ul></dd>
-    
 
     
 
@@ -7238,11 +7011,6 @@ trace(canvas.toDataURL("image/png"));//打印图片base64信息，可以发给�
     
 
     
-    <dt class="inherited-from">Inherited From:</dt>
-    <dd class="inherited-from"><ul class="dummy"><li>
-        <a href="Core.Sprite.html#getMousePoint">Sprite#getMousePoint</a>
-    </li></ul></dd>
-    
 
     
 
@@ -7326,11 +7094,6 @@ trace(canvas.toDataURL("image/png"));//打印图片base64信息，可以发给�
 
     
 
-    
-    <dt class="inherited-from">Inherited From:</dt>
-    <dd class="inherited-from"><ul class="dummy"><li>
-        <a href="Core.Sprite.html#getSelfBounds">Sprite#getSelfBounds</a>
-    </li></ul></dd>
     
 
     
@@ -7439,11 +7202,6 @@ trace(canvas.toDataURL("image/png"));//打印图片base64信息，可以发给�
 
     
 
-    
-    <dt class="inherited-from">Inherited From:</dt>
-    <dd class="inherited-from"><ul class="dummy"><li>
-        <a href="Core.Sprite.html#globalToLocal">Sprite#globalToLocal</a>
-    </li></ul></dd>
     
 
     
@@ -7796,11 +7554,6 @@ trace(canvas.toDataURL("image/png"));//打印图片base64信息，可以发给�
     
 
     
-    <dt class="inherited-from">Inherited From:</dt>
-    <dd class="inherited-from"><ul class="dummy"><li>
-        <a href="Core.Sprite.html#hitTestPoint">Sprite#hitTestPoint</a>
-    </li></ul></dd>
-    
 
     
 
@@ -8152,11 +7905,6 @@ trace(canvas.toDataURL("image/png"));//打印图片base64信息，可以发给�
 
     
 
-    
-    <dt class="inherited-from">Inherited From:</dt>
-    <dd class="inherited-from"><ul class="dummy"><li>
-        <a href="Core.Sprite.html#loadImage">Sprite#loadImage</a>
-    </li></ul></dd>
     
 
     
@@ -8543,11 +8291,6 @@ trace(canvas.toDataURL("image/png"));//打印图片base64信息，可以发给�
 
     
 
-    
-    <dt class="inherited-from">Inherited From:</dt>
-    <dd class="inherited-from"><ul class="dummy"><li>
-        <a href="Core.Sprite.html#localToGlobal">Sprite#localToGlobal</a>
-    </li></ul></dd>
     
 
     
@@ -9164,12 +8907,12 @@ trace(canvas.toDataURL("image/png"));//打印图片base64信息，可以发给�
     
 
     
-    <dt class="inherited-from">Inherited From:</dt>
-    <dd class="inherited-from"><ul class="dummy"><li>
-        <a href="Core.Sprite.html#on">Sprite#on</a>
-    </li></ul></dd>
-    
 
+    
+    <dt class="tag-overrides">Overrides:</dt>
+    <dd class="tag-overrides"><ul class="dummy"><li>
+        <a href="Core.Node.html#on">Node#on</a>
+    </li></ul></dd>
     
 
     
@@ -9464,12 +9207,12 @@ trace(canvas.toDataURL("image/png"));//打印图片base64信息，可以发给�
     
 
     
-    <dt class="inherited-from">Inherited From:</dt>
-    <dd class="inherited-from"><ul class="dummy"><li>
-        <a href="Core.Sprite.html#once">Sprite#once</a>
-    </li></ul></dd>
-    
 
+    
+    <dt class="tag-overrides">Overrides:</dt>
+    <dd class="tag-overrides"><ul class="dummy"><li>
+        <a href="Core.Node.html#once">Node#once</a>
+    </li></ul></dd>
     
 
     
@@ -9763,11 +9506,6 @@ trace(canvas.toDataURL("image/png"));//打印图片base64信息，可以发给�
     
 
     
-    <dt class="inherited-from">Inherited From:</dt>
-    <dd class="inherited-from"><ul class="dummy"><li>
-        <a href="Core.Sprite.html#parentRepaint">Sprite#parentRepaint</a>
-    </li></ul></dd>
-    
 
     
 
@@ -9850,11 +9588,6 @@ trace(canvas.toDataURL("image/png"));//打印图片base64信息，可以发给�
 
     
 
-    
-    <dt class="inherited-from">Inherited From:</dt>
-    <dd class="inherited-from"><ul class="dummy"><li>
-        <a href="Core.Sprite.html#pivot">Sprite#pivot</a>
-    </li></ul></dd>
     
 
     
@@ -10041,11 +9774,6 @@ trace(canvas.toDataURL("image/png"));//打印图片base64信息，可以发给�
 
     
 
-    
-    <dt class="inherited-from">Inherited From:</dt>
-    <dd class="inherited-from"><ul class="dummy"><li>
-        <a href="Core.Sprite.html#pos">Sprite#pos</a>
-    </li></ul></dd>
     
 
     
@@ -10258,11 +9986,6 @@ trace(canvas.toDataURL("image/png"));//打印图片base64信息，可以发给�
 
     
 
-    
-    <dt class="inherited-from">Inherited From:</dt>
-    <dd class="inherited-from"><ul class="dummy"><li>
-        <a href="Core.Sprite.html#reCache">Sprite#reCache</a>
-    </li></ul></dd>
     
 
     
@@ -11182,11 +10905,6 @@ trace(canvas.toDataURL("image/png"));//打印图片base64信息，可以发给�
     
 
     
-    <dt class="inherited-from">Inherited From:</dt>
-    <dd class="inherited-from"><ul class="dummy"><li>
-        <a href="Core.Sprite.html#render">Sprite#render</a>
-    </li></ul></dd>
-    
 
     
 
@@ -11373,11 +11091,6 @@ trace(canvas.toDataURL("image/png"));//打印图片base64信息，可以发给�
 
     
 
-    
-    <dt class="inherited-from">Inherited From:</dt>
-    <dd class="inherited-from"><ul class="dummy"><li>
-        <a href="Core.Sprite.html#repaint">Sprite#repaint</a>
-    </li></ul></dd>
     
 
     
@@ -11653,11 +11366,6 @@ trace(canvas.toDataURL("image/png"));//打印图片base64信息，可以发给�
     
 
     
-    <dt class="inherited-from">Inherited From:</dt>
-    <dd class="inherited-from"><ul class="dummy"><li>
-        <a href="Core.Sprite.html#scale">Sprite#scale</a>
-    </li></ul></dd>
-    
 
     
 
@@ -11869,11 +11577,6 @@ trace(canvas.toDataURL("image/png"));//打印图片base64信息，可以发给�
 
     
 
-    
-    <dt class="inherited-from">Inherited From:</dt>
-    <dd class="inherited-from"><ul class="dummy"><li>
-        <a href="Core.Sprite.html#setBounds">Sprite#setBounds</a>
-    </li></ul></dd>
     
 
     
@@ -12201,11 +11904,6 @@ trace(canvas.toDataURL("image/png"));//打印图片base64信息，可以发给�
     
 
     
-    <dt class="inherited-from">Inherited From:</dt>
-    <dd class="inherited-from"><ul class="dummy"><li>
-        <a href="Core.Sprite.html#size">Sprite#size</a>
-    </li></ul></dd>
-    
 
     
 
@@ -12392,11 +12090,6 @@ trace(canvas.toDataURL("image/png"));//打印图片base64信息，可以发给�
     
 
     
-    <dt class="inherited-from">Inherited From:</dt>
-    <dd class="inherited-from"><ul class="dummy"><li>
-        <a href="Core.Sprite.html#skew">Sprite#skew</a>
-    </li></ul></dd>
-    
 
     
 
@@ -12582,11 +12275,6 @@ trace(canvas.toDataURL("image/png"));//打印图片base64信息，可以发给�
 
     
 
-    
-    <dt class="inherited-from">Inherited From:</dt>
-    <dd class="inherited-from"><ul class="dummy"><li>
-        <a href="Core.Sprite.html#startDrag">Sprite#startDrag</a>
-    </li></ul></dd>
     
 
     
@@ -12986,11 +12674,6 @@ trace(canvas.toDataURL("image/png"));//打印图片base64信息，可以发给�
 
     
 
-    
-    <dt class="inherited-from">Inherited From:</dt>
-    <dd class="inherited-from"><ul class="dummy"><li>
-        <a href="Core.Sprite.html#stopDrag">Sprite#stopDrag</a>
-    </li></ul></dd>
     
 
     
@@ -13699,11 +13382,6 @@ trace(canvas.toDataURL("image/png"));//打印图片base64信息，可以发给�
     
 
     
-    <dt class="inherited-from">Inherited From:</dt>
-    <dd class="inherited-from"><ul class="dummy"><li>
-        <a href="Core.Sprite.html#toParentPoint">Sprite#toParentPoint</a>
-    </li></ul></dd>
-    
 
     
 
@@ -13863,11 +13541,6 @@ trace(canvas.toDataURL("image/png"));//打印图片base64信息，可以发给�
 
     
 
-    
-    <dt class="inherited-from">Inherited From:</dt>
-    <dd class="inherited-from"><ul class="dummy"><li>
-        <a href="Core.Sprite.html#updateZOrder">Sprite#updateZOrder</a>
-    </li></ul></dd>
     
 
     
@@ -14047,11 +13720,6 @@ trace(canvas.toDataURL("image/png"));//打印图片base64信息，可以发给�
     
 
     
-    <dt class="inherited-from">Inherited From:</dt>
-    <dd class="inherited-from"><ul class="dummy"><li>
-        <a href="Core.Sprite.html#event:click">Sprite#event:click</a>
-    </li></ul></dd>
-    
 
     
 
@@ -14229,11 +13897,6 @@ trace(canvas.toDataURL("image/png"));//打印图片base64信息，可以发给�
     
 
     
-    <dt class="inherited-from">Inherited From:</dt>
-    <dd class="inherited-from"><ul class="dummy"><li>
-        <a href="Core.Sprite.html#event:dragend">Sprite#event:dragend</a>
-    </li></ul></dd>
-    
 
     
 
@@ -14319,11 +13982,6 @@ trace(canvas.toDataURL("image/png"));//打印图片base64信息，可以发给�
 
     
 
-    
-    <dt class="inherited-from">Inherited From:</dt>
-    <dd class="inherited-from"><ul class="dummy"><li>
-        <a href="Core.Sprite.html#event:dragmove">Sprite#event:dragmove</a>
-    </li></ul></dd>
     
 
     
@@ -14411,11 +14069,6 @@ trace(canvas.toDataURL("image/png"));//打印图片base64信息，可以发给�
     
 
     
-    <dt class="inherited-from">Inherited From:</dt>
-    <dd class="inherited-from"><ul class="dummy"><li>
-        <a href="Core.Sprite.html#event:dragstart">Sprite#event:dragstart</a>
-    </li></ul></dd>
-    
 
     
 
@@ -14501,11 +14154,6 @@ trace(canvas.toDataURL("image/png"));//打印图片base64信息，可以发给�
 
     
 
-    
-    <dt class="inherited-from">Inherited From:</dt>
-    <dd class="inherited-from"><ul class="dummy"><li>
-        <a href="Core.Sprite.html#event:mousedown">Sprite#event:mousedown</a>
-    </li></ul></dd>
     
 
     
@@ -14593,11 +14241,6 @@ trace(canvas.toDataURL("image/png"));//打印图片base64信息，可以发给�
     
 
     
-    <dt class="inherited-from">Inherited From:</dt>
-    <dd class="inherited-from"><ul class="dummy"><li>
-        <a href="Core.Sprite.html#event:mousemove">Sprite#event:mousemove</a>
-    </li></ul></dd>
-    
 
     
 
@@ -14683,11 +14326,6 @@ trace(canvas.toDataURL("image/png"));//打印图片base64信息，可以发给�
 
     
 
-    
-    <dt class="inherited-from">Inherited From:</dt>
-    <dd class="inherited-from"><ul class="dummy"><li>
-        <a href="Core.Sprite.html#event:mouseout">Sprite#event:mouseout</a>
-    </li></ul></dd>
     
 
     
@@ -14775,11 +14413,6 @@ trace(canvas.toDataURL("image/png"));//打印图片base64信息，可以发给�
     
 
     
-    <dt class="inherited-from">Inherited From:</dt>
-    <dd class="inherited-from"><ul class="dummy"><li>
-        <a href="Core.Sprite.html#event:mouseover">Sprite#event:mouseover</a>
-    </li></ul></dd>
-    
 
     
 
@@ -14865,11 +14498,6 @@ trace(canvas.toDataURL("image/png"));//打印图片base64信息，可以发给�
 
     
 
-    
-    <dt class="inherited-from">Inherited From:</dt>
-    <dd class="inherited-from"><ul class="dummy"><li>
-        <a href="Core.Sprite.html#event:mouseup">Sprite#event:mouseup</a>
-    </li></ul></dd>
     
 
     
