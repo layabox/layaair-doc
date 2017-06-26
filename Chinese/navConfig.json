@@ -229,11 +229,6 @@
                 "name_3_file": "readme.md"
               },
               {
-                "name_3_name": "粒子动画",
-                "name_3_url": "Chinese/LayaAir_AS3/2D/beginners/animation/particle/",
-                "name_3_file": "readme.md"
-              },
-              {
                 "name_3_name": "SWF动画使用",
                 "name_3_url": "Chinese/LayaAir_AS3/2D/beginners/animation/swf/",
                 "name_3_file": "readme.md"
@@ -245,7 +240,7 @@
               },
               {
                 "name_3_name": "DragonBone动画使用",
-                "name_3_url": "Chinese/LayaAir_AS3/2D/beginners/animation/dragonBone/",
+                "name_3_url": "Chinese/LayaAir_AS3/2D/beginners/animation/DragonBone/",
                 "name_3_file": "readme.md"
               }
             ]
@@ -279,18 +274,8 @@
                 "name_3_file": "readme.md"
               },
               {
-                "name_3_name": "视频播放与与捕捉摄像头麦克风",
-                "name_3_url": "Chinese/LayaAir_AS3/2D/beginners/devices/video/",
-                "name_3_file": "readme.md"
-              },
-              {
                 "name_3_name": "陀螺仪与加速计",
                 "name_3_url": "Chinese/LayaAir_AS3/2D/beginners/devices/motion/",
-                "name_3_file": "readme.md"
-              },
-              {
-                "name_3_name": "摇一摇",
-                "name_3_url": "Chinese/LayaAir_AS3/2D/beginners/devices/SoundManager/",
                 "name_3_file": "readme.md"
               },
               {
@@ -539,6 +524,11 @@
                 "name_3_name": "ViewStack属性详解",
                 "name_3_url": "Chinese/LayaAir_AS3/IDE/Component_Detailed/ViewStack/",
                 "name_3_file": "readme.md"
+              },
+              {
+                "name_3_name": "Animation属性详解",
+                "name_3_url": "Chinese/LayaAir_AS3/IDE/Component_Detailed/Animation/",
+                "name_3_file": "readme.md"
               }
             ]
           }
@@ -635,6 +625,11 @@
           {
             "name_2_name": "扩展模块",
             "name_2_data": [
+              {
+                "name_3_name": "用LayaAir引擎解析Tiled Map地图",
+                "name_3_url": "Chinese/LayaAir_AS3/2D/advanced/extension_modules/TiledMap/",
+                "name_3_file": "readme.md"
+              },
               {
                 "name_3_name": "LayaAir和原生DOM交互",
                 "name_3_url": "Chinese/LayaAir_AS3/2D/advanced/extension_modules/DOM/",
@@ -788,6 +783,11 @@
               {
                 "name_3_name": "关于网络状态监听",
                 "name_3_url": "Chinese/LayaNative/network/",
+                "name_3_file": "README.md"
+              },
+			  {
+                "name_3_name": "关于iOS-IPV6",
+                "name_3_url": "Chinese/LayaNative/ipv6/",
                 "name_3_file": "README.md"
               },              
               {
@@ -1091,11 +1091,6 @@
                 "name_3_file": "readme.md"
               },
               {
-                "name_3_name": "粒子动画",
-                "name_3_url": "Chinese/LayaAir_TS/2D/beginners/animation/particle/",
-                "name_3_file": "readme.md"
-              },
-              {
                 "name_3_name": "SWF动画使用",
                 "name_3_url": "Chinese/LayaAir_TS/2D/beginners/animation/swf/",
                 "name_3_file": "readme.md"
@@ -1107,7 +1102,7 @@
               },
               {
                 "name_3_name": "DragonBone动画使用",
-                "name_3_url": "Chinese/LayaAir_TS/2D/beginners/animation/dragonBone/",
+                "name_3_url": "Chinese/LayaAir_TS/2D/beginners/animation/DragonBone/",
                 "name_3_file": "readme.md"
               }
             ]
@@ -1121,18 +1116,8 @@
                 "name_3_file": "readme.md"
               },
               {
-                "name_3_name": "视频播放与与捕捉摄像头麦克风",
-                "name_3_url": "Chinese/LayaAir_TS/2D/beginners/devices/video/",
-                "name_3_file": "readme.md"
-              },
-              {
                 "name_3_name": "陀螺仪与加速计",
                 "name_3_url": "Chinese/LayaAir_TS/2D/beginners/devices/motion/",
-                "name_3_file": "readme.md"
-              },
-              {
-                "name_3_name": "摇一摇",
-                "name_3_url": "Chinese/LayaAir_TS/2D/beginners/devices/SoundManager/",
                 "name_3_file": "readme.md"
               },
               {
@@ -1382,6 +1367,11 @@
                 "name_3_name": "ViewStack属性详解",
                 "name_3_url": "Chinese/LayaAir_TS/IDE/Component_Detailed/ViewStack/",
                 "name_3_file": "readme.md"
+              },
+              {
+                "name_3_name": "Animation属性详解",
+                "name_3_url": "Chinese/LayaAir_TS/IDE/Component_Detailed/Animation/",
+                "name_3_file": "readme.md"
               }
             ]
           }
@@ -1451,6 +1441,16 @@
               {
                 "name_3_name": "骨骼动画进阶",
                 "name_3_url": "Chinese/LayaAir_TS/2D/advanced/animation/bone/",
+                "name_3_file": "readme.md"
+              }
+            ]
+          },
+          {
+            "name_2_name": "扩展模块",
+            "name_2_data": [
+              {
+                "name_3_name": "用LayaAir引擎解析Tiled Map地图",
+                "name_3_url": "Chinese/LayaAir_TS/2D/advanced/extension_modules/TiledMap/",
                 "name_3_file": "readme.md"
               }
             ]
@@ -1527,7 +1527,12 @@
                 "name_3_name": "关于网络状态监听",
                 "name_3_url": "Chinese/LayaNative/network/",
                 "name_3_file": "README.md"
-              },              
+              },
+			  {
+                "name_3_name": "关于iOS-IPV6",
+                "name_3_url": "Chinese/LayaNative/ipv6/",
+                "name_3_file": "README.md"
+              },               
               {
                 "name_3_name": "其他",
                 "name_3_url": "Chinese/LayaNative/Other_settings/",
@@ -1824,11 +1829,6 @@
                 "name_3_file": "readme.md"
               },
               {
-                "name_3_name": "粒子动画",
-                "name_3_url": "Chinese/LayaAir_JS/2D/beginners/animation/particle/",
-                "name_3_file": "readme.md"
-              },
-              {
                 "name_3_name": "SWF动画使用",
                 "name_3_url": "Chinese/LayaAir_JS/2D/beginners/animation/swf/",
                 "name_3_file": "readme.md"
@@ -1840,7 +1840,7 @@
               },
               {
                 "name_3_name": "DragonBone动画使用",
-                "name_3_url": "Chinese/LayaAir_JS/2D/beginners/animation/dragonBone/",
+                "name_3_url": "Chinese/LayaAir_JS/2D/beginners/animation/DragonBone/",
                 "name_3_file": "readme.md"
               }
             ]
@@ -1854,18 +1854,8 @@
                 "name_3_file": "readme.md"
               },
               {
-                "name_3_name": "视频播放与与捕捉摄像头麦克风",
-                "name_3_url": "Chinese/LayaAir_JS/2D/beginners/devices/video/",
-                "name_3_file": "readme.md"
-              },
-              {
                 "name_3_name": "陀螺仪与加速计",
                 "name_3_url": "Chinese/LayaAir_JS/2D/beginners/devices/motion/",
-                "name_3_file": "readme.md"
-              },
-              {
-                "name_3_name": "摇一摇",
-                "name_3_url": "Chinese/LayaAir_JS/2D/beginners/devices/SoundManager/",
                 "name_3_file": "readme.md"
               },
               {
@@ -2115,6 +2105,11 @@
                 "name_3_name": "ViewStack属性详解",
                 "name_3_url": "Chinese/LayaAir_JS/IDE/Component_Detailed/ViewStack/",
                 "name_3_file": "readme.md"
+              },
+              {
+                "name_3_name": "Animation属性详解",
+                "name_3_url": "Chinese/LayaAir_JS/IDE/Component_Detailed/Animation/",
+                "name_3_file": "readme.md"
               }
             ]
           }
@@ -2184,6 +2179,16 @@
               {
                 "name_3_name": "骨骼动画进阶",
                 "name_3_url": "Chinese/LayaAir_JS/2D/advanced/animation/bone/",
+                "name_3_file": "readme.md"
+              }
+            ]
+          },
+          {
+            "name_2_name": "扩展模块",
+            "name_2_data": [
+              {
+                "name_3_name": "用LayaAir引擎解析Tiled Map地图",
+                "name_3_url": "Chinese/LayaAir_JS/2D/advanced/extension_modules/TiledMap/",
                 "name_3_file": "readme.md"
               }
             ]
@@ -2261,6 +2266,11 @@
                 "name_3_url": "Chinese/LayaNative/network/",
                 "name_3_file": "README.md"
               },              
+			  {
+                "name_3_name": "关于iOS-IPV6",
+                "name_3_url": "Chinese/LayaNative/ipv6/",
+                "name_3_file": "README.md"
+              }, 
               {
                 "name_3_name": "其他",
                 "name_3_url": "Chinese/LayaNative/Other_settings/",

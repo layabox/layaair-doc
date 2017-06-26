@@ -4,11 +4,7 @@
 ## 1. 运行需求
 #### 1.1 基础开发环境
 
-​	构建项目必须要准备好开发环境。比如：构建iOS项目需要准备好Mac电脑和XCode。另外，构建项目需要安装1.7（含）以上的jdk，如果没有，请先安装。
-
-​	**下载地 址：**
-
-​	[http://www.oracle.com/technetwork/java/javase/downloads/jdk8-downloads-2133151.html](http://www.oracle.com/technetwork/java/javase/downloads/jdk8-downloads-2133151.html)
+​	构建项目必须要准备好开发环境。比如：构建iOS项目需要准备好Mac电脑和XCode，android需要准备好Eclipse或Android studio。
 
 ## 2. 面向用户
 　　无论是构建Android还是iOS项目，则必须要有相应的Android或iOS的App开发基础。  如果不具备，请先去学习了解相关的基础知识。
@@ -20,7 +16,7 @@
 在[Layabox官网](Layabox.com)下载layaAirIDE，打开LayaAirIDE-->工具-->app构建，如图1所示：
 
 
-![图1](1.jpg)  <br /> 
+![图1](1.jpg)
 
 (图1)
 
@@ -41,7 +37,7 @@
 
 在LayaAirIDE中打开项目构建的界面，如图3所示：
 
-![2](2.jpg) <br /> 
+![2](2.jpg)
 (图3)
 
 * 平台
@@ -145,10 +141,28 @@
    要改成单机版的话，修改这句话：  
     `loadUrl(conch.presetUrl||"http://stand.alone.version/index.html");`  
    反之亦然。  
-   
+
    **注意**   
    一旦修改了url地址，原来打包的资源就都失效了。这时候，需要手动删除 cache目录下内容，重新用layadcc来生成打包资源，参见[《LayaDCC工具》](https://github.com/layabox/layaair-doc/tree/master/Chinese/LayaNative/LayaDcc_Tool)。
 
-## 7. 其他注意问题
+## 7. 资源刷新
+
+通过IDE构建好工程，如果选择的是单机版和打包资源版本。会在resource/cache目录下，把所有h5项目的资源（包括：脚本、图片、html、声音等）全部打包到了这个目录下。  
+``android的目录： assets/cache/  ``  
+``iOS的目录：  resource/cache/  ``  
+
+但是在开发过程中，h5的项目一直在变化，为了避免每次都重新构建工程，在IDE-1.7.6-Beta版本之后，可以通过命令行进行刷新。
+
+资源包版本调用命令：``layanative refreshres -u http://testgame.layabox.com/index.html``    
+单机版本调用命令：``layanative refreshres`` 
+
+***Tips***  
+**1、必须在构建的app工程目录下，执行命令。最明显的标志就是要在navtie.json的目录下，如下图所示：**
+![](3.jpg)    
+
+关于layanative命令行如何安装使用，请参考[layanative命令行工具使用](https://ldc.layabox.com/doc/?nav=ch-as-5-3-0)
+
+
+## 8. 其他注意问题
 　　android studio构建完成后，需要根据自己的环境修改android sdk的版本号，现在设置的是23，需要修改的
 文件是 app/build.gradle。

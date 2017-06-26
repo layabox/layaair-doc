@@ -60,7 +60,7 @@ RunProcessCaptured|D:\LayaBox\LayaAirAs3_1.5.5\as\laya.js.exe;"$(ProjectPath)";i
 ​    ![blob.png](img/5.png)<br/>
 ​  图(5)
 
-**Tips：“D:\LayaBox\LayaAirAs3_1.5.5\as\laya.js.exe”应为laya.js.exe的实际所在路径。MAC系统下为“D:\LayaBox\LayaAirAs3_1.5.5\as\LayaJSMac”**
+**Tips：“D:\LayaBox\LayaAirAs3_1.5.5\as\laya.js.exe”应为laya.js.exe的实际所在路径。**
 
 
 
