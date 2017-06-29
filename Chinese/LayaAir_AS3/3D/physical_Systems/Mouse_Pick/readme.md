@@ -66,4 +66,4 @@ Physics.rayCastAll(ray:Ray, outHitAllInfo:Vector.<RaycastHit>, distance:Number =
   [![5.png](http://img.layabox.com/questions/20170324/5eee60584820907180f358275a11d226.png)](http://img.layabox.com/questions/20170324/5eee60584820907180f358275a11d226.png)
 
 
-最后附上以上3个示例的 资源和源码！还有官网上的示例，[http://layaair.ldc.layabox.com/demo/?D3Advance_MousePickingSample](http://layaair.ldc.layabox.com/demo/?D3Advance_MousePickingSample)。
+最后附上以上3个示例的 资源和源码！还有官网上的示例，[https://layaair.ldc.layabox.com/demo/?D3Advance_MousePickingSample](https://layaair.ldc.layabox.com/demo/?D3Advance_MousePickingSample)。
