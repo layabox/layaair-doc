@@ -150,32 +150,32 @@
             "name_2_data": [
               {
                 "name_3_name": "文本类API概述",
-                "name_3_url": "Chinese/LayaAir_AS3/2D/beginners/Text/API_List",
+                "name_3_url": "Chinese/LayaAir_AS3/2D/beginners/Text/API_List/",
                 "name_3_file": "readme.md"
               },
               {
                 "name_3_name": "文本基础样式",
-                "name_3_url": "Chinese/LayaAir_AS3/2D/beginners/Text/TextStyle",
+                "name_3_url": "Chinese/LayaAir_AS3/2D/beginners/Text/TextStyle/",
                 "name_3_file": "readme.md"
               },
               {
                 "name_3_name": "文本对齐与自动换行",
-                "name_3_url": "Chinese/LayaAir_AS3/2D/beginners/Text/TextAlign",
+                "name_3_url": "Chinese/LayaAir_AS3/2D/beginners/Text/TextAlign/",
                 "name_3_file": "readme.md"
               },
               {
                 "name_3_name": "超出文本区域的处理&滚动文本",
-                "name_3_url": "Chinese/LayaAir_AS3/2D/beginners/Text/overflow",
+                "name_3_url": "Chinese/LayaAir_AS3/2D/beginners/Text/overflow/",
                 "name_3_file": "readme.md"
               },
               {
                 "name_3_name": "textInput的单行输入&多行输入",
-                "name_3_url": "Chinese/LayaAir_AS3/2D/beginners/Text/textInput",
+                "name_3_url": "Chinese/LayaAir_AS3/2D/beginners/Text/textInput/",
                 "name_3_file": "readme.md"
               },
               {
                 "name_3_name": "位图字体的制作与使用",
-                "name_3_url": "Chinese/LayaAir_AS3/2D/beginners/Text/BitmapFont",
+                "name_3_url": "Chinese/LayaAir_AS3/2D/beginners/Text/BitmapFont/",
                 "name_3_file": "readme.md"
               }
             ]
