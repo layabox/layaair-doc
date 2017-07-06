@@ -292,6 +292,21 @@
                 "name_3_name": "Byte二进制读写",
                 "name_3_url": "Chinese/LayaAir_AS3/2D/beginners/Data_Communication/Byte/",
                 "name_3_file": "readme.md"
+              },
+              {
+                "name_3_name": "JSONP跨域读取数据",
+                "name_3_url": "Chinese/LayaAir_AS3/2D/beginners/Data_Communication/json/",
+                "name_3_file": "readme.md"
+              },
+              {
+                "name_3_name": "JSONP跨域读取数据",
+                "name_3_url": "Chinese/LayaAir_AS3/2D/beginners/Data_Communication/jsonp/",
+                "name_3_file": "readme.md"
+              },
+              {
+                "name_3_name": "Web Storage数据存储",
+                "name_3_url": "Chinese/LayaAir_AS3/2D/beginners/Data_Communication/webStorage/",
+                "name_3_file": "readme.md"
               }
             ]
           },
@@ -1188,6 +1203,26 @@
             ]
           },
           {
+            "name_2_name": "数据与通信",
+            "name_2_data": [
+              {
+                "name_3_name": "JSONP跨域读取数据",
+                "name_3_url": "Chinese/LayaAir_TS/2D/beginners/Data_Communication/json/",
+                "name_3_file": "readme.md"
+              },
+              {
+                "name_3_name": "JSONP跨域读取数据",
+                "name_3_url": "Chinese/LayaAir_TS/2D/beginners/Data_Communication/jsonp/",
+                "name_3_file": "readme.md"
+              },
+              {
+                "name_3_name": "Web Storage数据存储",
+                "name_3_url": "Chinese/LayaAir_TS/2D/beginners/Data_Communication/webStorage/",
+                "name_3_file": "readme.md"
+              }
+            ]
+          },
+          {
             "name_2_name": "硬件设备相关",
             "name_2_data": [
               {
@@ -1921,6 +1956,26 @@
               {
                 "name_3_name": "DragonBone动画使用",
                 "name_3_url": "Chinese/LayaAir_JS/2D/beginners/animation/DragonBone/",
+                "name_3_file": "readme.md"
+              }
+            ]
+          },
+          {
+            "name_2_name": "数据与通信",
+            "name_2_data": [
+              {
+                "name_3_name": "JSONP跨域读取数据",
+                "name_3_url": "Chinese/LayaAir_JS/2D/beginners/Data_Communication/json/",
+                "name_3_file": "readme.md"
+              },
+              {
+                "name_3_name": "JSONP跨域读取数据",
+                "name_3_url": "Chinese/LayaAir_JS/2D/beginners/Data_Communication/jsonp/",
+                "name_3_file": "readme.md"
+              },
+              {
+                "name_3_name": "Web Storage数据存储",
+                "name_3_url": "Chinese/LayaAir_JS/2D/beginners/Data_Communication/webStorage/",
                 "name_3_file": "readme.md"
               }
             ]
