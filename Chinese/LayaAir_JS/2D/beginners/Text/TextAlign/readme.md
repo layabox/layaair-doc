@@ -12,34 +12,23 @@
 
 给我们设置字体样式的代码中，先给这个文本设置一个文本区域，然后设置文本在文本区域水平居中和垂直居中。不设置文本区域的直接设置文本的水平对齐和垂直对齐将不会有效果。
 
-```java
-package
-{
-	import laya.display.Text;
+```javascript
+//初始化引擎
+Laya.init(1136,640);
 
-	public class LayaSample
-	{
-		public function LayaSample()
-		{
-			//初始化引擎
-			Laya.init(1136,640);
-			
-			var txt:Text = new Text();
-			//设置文本内容
-			txt.text = "hello_world";
-			//设置文本区背景
-			txt.bgColor = "#c30c30";
-			//设置文本的宽高
-			txt.width = 400;
-			txt.height = 400;
-			//设置文本水平居中
-			txt.align = "center";
-			//设置文本垂直居中
-			txt.valign = "middle";
-			Laya.stage.addChild(txt);
-		}
-	}
-}
+var txt = new Laya.Text();
+//设置文本内容
+txt.text = "hello_world";
+//设置文本区背景
+txt.bgColor = "#c30c30";
+//设置文本的宽高
+txt.width = 400;
+txt.height = 400;
+//设置文本水平居中
+txt.align = "center";
+//设置文本垂直居中
+txt.valign = "middle";
+Laya.stage.addChild(txt);
 ```
 
 ![5](img/5.png)</br>
@@ -56,36 +45,25 @@ API参数：
 
 要设置好文本区域的宽和高，要不然文字会按照默认的text宽进行自动换行。代码如下所示：
 
-```java
-package
-{
-	import laya.display.Text;
+```javascript
+//初始化引擎
+Laya.init(1136,640);
 
-	public class LayaSample
-	{
-		public function LayaSample()
-		{
-			//初始化引擎
-			Laya.init(1136,640);
-			
-			var txt:Text = new Text();
-			//设置文本内容
-			txt.text = "Layabox是HTML5引擎技术提供商与优秀的游戏发行商，面向AS/JS/TS开发者提供HTML5开发技术方案！";
-			//设置文本区背景
-			txt.bgColor = "#c30c30";
-			//设置文本的宽高
-			txt.width = 400;
-			txt.height = 400;
-			//设置文本水平居中
-			txt.align = "center";
-			//设置文本垂直居中
-			txt.valign = "middle";
-			//设置自动换行
-			txt.wordWrap = true;
-			Laya.stage.addChild(txt);
-		}
-	}
-}
+var txt = new Laya.Text();
+//设置文本内容
+txt.text = "Layabox是HTML5引擎技术提供商与优秀的游戏发行商，面向AS/JS/TS开发者提供HTML5开发技术方案！";
+//设置文本区背景
+txt.bgColor = "#c30c30";
+//设置文本的宽高
+txt.width = 400;
+txt.height = 400;
+//设置文本水平居中
+txt.align = "center";
+//设置文本垂直居中
+txt.valign = "middle";
+//设置自动换行
+txt.wordWrap = true;
+Laya.stage.addChild(txt);
 ```
 
 ![7](img/7.png)</br>
