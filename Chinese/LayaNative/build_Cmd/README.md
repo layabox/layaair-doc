@@ -38,7 +38,7 @@ $ layanative createapp --help
 | `--name, -n` |       项目名称 说明：native项目的名称 [默认值: LayaBox]
 | `--app_name, -a` |      应用名称 说明：app安装到手机后显示的名称 [默认值: LayaBox]
 | `--package_name` |       包名 [默认值: com.layabox.game]
-| `--sdk,-s` |       SDK本地目录 说明：自定义的SDK目录，可选参数。一般情况下建议使用参数--version。
+| `--sdk,-s` |       SDK本地目录 说明：自定义的SDK目录，可选参数。断网情况下使用，一般情况下建议使用参数--version。
 当type为1或2时会打资源包到native项目，为0时不打。打包资源底层实际是调用dcc的方法。打包资源dcc相关，参考 [LayaDcc工具](https://github.com/layabox/layaair-doc/tree/master/Chinese/LayaNative/LayaDcc_Tool)。  
 可以用--path参数指定项目的输出路径，默认输出到当前路径下。
 
@@ -50,6 +50,10 @@ $ layanative createapp -f SnowBallH5 -t -1 -n SnowBallNative -u http://10.10.20.
 既没指定-v也没指定-s，使用最新版本的SDK
 ```
 $ layanative createapp -f SnowBallH5 -t -1 -n SnowBallNative -u http://10.10.20.102:8899/index.html
+```
+用--version或者-v指定版本需要联网环境，断网情况下可以用--sdk或者-s指定SDK目录。[SDK下载地址](https://ldc.layabox.com/layadownload/?type=layaairnative-LayaAir%20Native%20SDK%200.9.6)
+```
+$ layanative createapp -f SnowBallH5 -t -1 -n SnowBallNative -u http://10.10.20.102:8899/index.html -s D:/v0.9.6
 ```
 ### 3.刷新native项目资源包
 refreshres命令用于刷新native项目的资源包  
