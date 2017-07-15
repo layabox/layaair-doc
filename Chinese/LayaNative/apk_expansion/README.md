@@ -1,17 +1,17 @@
-# APK扩展文件机制
-一般情况下，我们把资源打包放在assets目录下。LayaPlayer-0.9.7以后版本的APK扩展文件机制允许把资源打包放在zip文件中，文件系统会先在asset目录下寻找指定文件。如果没找到，而且提供了扩展文件。那么会继续在扩展文件中寻找文件。
+# android文件扩展机制
+在LayaPlayer-0.9.7版本以前，引擎只能把资源打包在assets目录下。LayaPlayer-0.9.7以后版本，支持把资源打包成zip文件，放到任意文件路径下。LayaPlayer文件系统会先在assets目录下查找文件是否存在，如果没有找到，再去指定的zip路径下查找。通过这种zip机制便可以解决googlePlayer规定APK的size超过100MB，要求增加扩展包的问题。  
+
 ## 1.机制详解
-### 1.
+### 1.生成DCC
 test工程用DCC工具打包资源  
 ![图1](img/1.png)    
-### 2.  
-现在我们把资源包放到扩展文件中。压缩cache文件，展文件要求zip格式。文件结构必须保持DCC工具生成的结构，如下图
+### 2.压缩文件
+把资源包放到扩展文件中，压缩cache文件，文件要求zip格式，文件结构必须保持DCC工具生成的结构相同，如下图：
 ![图1](img/2.png)  
-### 3. 
+### 3.将zip文件拷贝到设备目录
 在Android手机上建立目录/storage/emulated/0/Android/test/com.layabox.conch5，上传test.zip到这个目录下
-### 4. 
-提供扩展文件路径，修改RuntimeProxy.java的方法
-RuntimeProxy.java
+### 4.修改代码中的扩展路径
+修改RuntimeProxy.java中的`getExpansionMainPath`函数，设置正确的zip路径。
 ```   
 public String getExpansionMainPath()
 {
@@ -22,7 +22,9 @@ public String getExpansionPatchPath()
     return "";
 } 
 ```
-### 5. 
+**TIPS:LayaPlayer中最多支持两个zip文件，第二个zip修改·getExpansionPatchPath·这个函数**
+
+### 5.运行测试
 运行APP，看见下面的日志说明从主扩展包读取资源文件成功
 ![图1](img/3.png)  
 ## 2. Google Play APK扩展文件机制

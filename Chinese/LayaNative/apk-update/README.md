@@ -1,5 +1,5 @@
 
-# android-APk更新
+# android-APK更新
 
 LayaPlayer-0.9.7以后版本，android模板工程中开放了apk自动更新的代码，开发者可以根据项目需求自行修改代码，也可以关闭或删除该代码。
 
