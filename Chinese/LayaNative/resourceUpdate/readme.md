@@ -10,12 +10,10 @@ https://github.com/layabox/layaair-doc/tree/master/Chinese/LayaNative/LayaDcc_To
 
 ### 2. 用户可见的，进入游戏前的集中更新。  
 
-*需要版本:>=0.9.7*  
+*需要版本LayaNative:>=0.9.7*  
 大部分传统的app的更新方式，一上来就检查是否需要更新，如果需要更新就下载一个大的zip文件进行整体更新。这种更新的维护成本较高，用户需要较长时间的等待才能进入游戏，而且还明显违反Apple的禁止热更的政策。他的好处是用户可以在有wifi的地方更新，在没有wifi的地方玩，避免在没有wifi的时候浪费数据流量。
 我们虽然没有直接支持这种更新，但是通过下面的几个接口（注意这些接口属于内部接口，以后有改变的可能性）也能实现这个功能：  
-
-1. 支持断点续传的大文件下载函数downloadBigFile。（注意不要用XMLHttpRequest下载大文件，因为我们会把结果先保存在内存中，所以大文件可能会导致内存爆掉，而这个函数是随时存盘的。）
-
+1. 支持断点续传的大文件下载函数downloadBigFile。(注意不要用XMLHttpRequest下载大文件，因为我们会把结果先保存在内存中，所以大文件可能会导致内存爆掉，而这个函数是随时存盘的。)  
 ```javascript
     /**
     * @param url 远程地址
@@ -33,6 +31,7 @@ https://github.com/layabox/layaair-doc/tree/master/Chinese/LayaNative/LayaDcc_To
     
 ```
 2. 处理zip文件的ZipFile类
+
 ```javascript
     interface ZipFile{
         setSrc(src:string):boolean;
@@ -55,8 +54,8 @@ https://github.com/layabox/layaair-doc/tree/master/Chinese/LayaNative/LayaDcc_To
     
     declare var ZipFile:ZipFile;    
 ```
-3. 手动更新dcc缓存的功能。
-    
+3. 手动更新dcc缓存的功能。  
+
 ```javascript
     interface AppCache{
         ...
@@ -74,6 +73,7 @@ https://github.com/layabox/layaair-doc/tree/master/Chinese/LayaNative/LayaDcc_To
         ...
     }
 ```
+
 通过这几个函数，就可以在layaDCC之上实现一个集中更新的功能。例如我们提供的一个封装好了的更新函数updateByZip：
     
 ```javascript
