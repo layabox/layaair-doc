@@ -12,7 +12,7 @@ https://github.com/layabox/layaair-doc/tree/master/Chinese/LayaNative/LayaDcc_To
 我们虽然没有直接支持这种更新，但是通过下面的几个接口（注意这些接口属于内部接口，以后有改变的可能性）也能实现这个功能：  
     1. 支持断点续传的大文件下载函数。（注意不要用XMLHttpRequest下载大文件，因为我们会把结果先保存在内存中，所以大文件可能会导致内存爆掉，而这个函数是随时存盘的。）
 
-    ```javascript
+```javascript
     /**
     * @param url 远程地址
     * @param local 存到本地文件
@@ -27,7 +27,7 @@ https://github.com/layabox/layaair-doc/tree/master/Chinese/LayaNative/LayaDcc_To
         trynum:number,
         opttimeout:number)=>void;
     
-    ```
+```
     2. 处理zip文件的ZipFile类
 
     ```javascript
