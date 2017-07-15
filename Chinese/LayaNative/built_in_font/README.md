@@ -19,7 +19,12 @@ LayaPlayer-0.9.5以后版本，开发者可以在打包app的时候，默认将�
 
 3、LayaPlayer-0.9.5以后的版本，模板工程默认是内嵌了ttf字体，这样会导致apk体积增加，如果你比较在乎apk大小，可以删除assets/font/layabox.ttf这个字体文件。
 
+## 3.iOS嵌入字体
 
+1、LayaPlayer-0.9.7以后的版本支持iOS嵌入默认字体，具体做法同android，在resource下创建font目录，把要嵌入的字体改名为layabox.ttf即可，如下图2所示：   
+
+
+![图2](img/2.png)
 
 
 
