@@ -939,6 +939,26 @@
                 "name_3_name": "android嵌入字体",
                 "name_3_url": "Chinese/LayaNative/built_in_font/",
                 "name_3_file": "README.md"
+              },
+			  {
+                "name_3_name": "扩展字体",
+                "name_3_url": "Chinese/LayaNative/extend-font/",
+                "name_3_file": "README.md"
+              },
+			  {
+                "name_3_name": "zip更新",
+                "name_3_url": "Chinese/LayaNative/resourceUpdate/",
+                "name_3_file": "readme.md"
+              },
+			  {
+                "name_3_name": "APK扩展机制",
+                "name_3_url": "Chinese/LayaNative/apk_expansion/",
+                "name_3_file": "README.md"
+              },
+			  {
+                "name_3_name": "APK-update",
+                "name_3_url": "Chinese/LayaNative/apk-update/",
+                "name_3_file": "README.md"
               }
             ]
           },
@@ -1737,6 +1757,26 @@
                 "name_3_name": "android嵌入字体",
                 "name_3_url": "Chinese/LayaNative/built_in_font/",
                 "name_3_file": "README.md"
+              },
+			  {
+                "name_3_name": "扩展字体",
+                "name_3_url": "Chinese/LayaNative/extend-font/",
+                "name_3_file": "README.md"
+              },
+			  {
+                "name_3_name": "zip更新",
+                "name_3_url": "Chinese/LayaNative/resourceUpdate/",
+                "name_3_file": "readme.md"
+              },
+			  {
+                "name_3_name": "APK扩展机制",
+                "name_3_url": "Chinese/LayaNative/apk_expansion/",
+                "name_3_file": "README.md"
+              },
+			  {
+                "name_3_name": "APK-update",
+                "name_3_url": "Chinese/LayaNative/apk-update/",
+                "name_3_file": "README.md"
               }
             ]
           },
@@ -2529,6 +2569,26 @@
               {
                 "name_3_name": "android嵌入字体",
                 "name_3_url": "Chinese/LayaNative/built_in_font/",
+                "name_3_file": "README.md"
+              },
+			  {
+                "name_3_name": "扩展字体",
+                "name_3_url": "Chinese/LayaNative/extend-font/",
+                "name_3_file": "README.md"
+              },
+			  {
+                "name_3_name": "zip更新",
+                "name_3_url": "Chinese/LayaNative/resourceUpdate/",
+                "name_3_file": "readme.md"
+              },
+			  {
+                "name_3_name": "APK扩展机制",
+                "name_3_url": "Chinese/LayaNative/apk_expansion/",
+                "name_3_file": "README.md"
+              },
+			  {
+                "name_3_name": "APK-update",
+                "name_3_url": "Chinese/LayaNative/apk-update/",
                 "name_3_file": "README.md"
               }
             ]
