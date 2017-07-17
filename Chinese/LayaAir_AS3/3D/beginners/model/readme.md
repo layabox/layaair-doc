@@ -1,6 +1,8 @@
 ## LayaAir3D之模型
 
-3D模型是指通过三维软件按照物体的结构建模形成的3D立体对象。目前LayaAir 3D引擎中包括了两种模型显示类型，一为普通模型MeshSprite3D，二为蒙皮动画模型SkinnedMeshSprite3D。
+### 模型概述
+
+3D模型是指通过三维软件按照物体的结构建模形成的3D立体对象。目前LayaAir 3D引擎中包括了两种模型显示类型，一为普通模型**MeshSprite3D**，二为蒙皮动画模型**SkinnedMeshSprite3D**。
 
 区别是蒙皮动画模型是指在制作时加入了蒙皮与骨骼动画的模型，常用于有动画的角色。而普通模型是指未有动画的场景景观模型等。
 
@@ -181,7 +183,7 @@ Laya.loader.create("res/room.lh",Handler.create(this,function():void{
 
 ![图片3](img/3.png)<br>（图3）
 
-"*.lm"文件是模型数据文件，可以生成MeshSprite3D或SkinnedMeshSprite3D类型显示对象的网格数据Mesh，包含了模型网格的顶点位置、法线、顶点色、顶点UV、模型使用的材质等信息。
+"*.lm"文件是模型数据文件，可以生成MeshSprite3D或SkinnedMeshSprite3D类型显示对象的网格数据Mesh，包含了模型网格的顶点位置、法线、顶点色、顶点UV等信息。
 
 通过异步加载MeshSprite.load()或预加载Laya.loader.create()方法加载，参考代码如下：
 
@@ -191,16 +193,88 @@ var scene:Scene = new Scene();
 Laya.stage.addChild(scene);
 
 //方法一：直接异步加载
-var meshSprite3D:MeshSprite3D = MeshSprite.load("LayaScene_01/Assets/model/loveScene_jianzhu.lm");
+var mesh:Mesh=Mesh.load("LayaScene_01/Assets/model/loveScene_jianzhu.lm");
+var meshSprite3D:MeshSprite3D = new MeshSprite(mesh);
 
 //方法二：预加载，创建为MeshSprite3D类型
-Laya.loader.create("LayaScene_01/Assets/model/loveScene_jianzhu.lm",
-                   Handler.create(this,function():void{ 
-				  var meshSprite3D:MeshSprite3D=
-                  Laya.loader.getRes("LayaScene_01/Assets/model/loveScene_jianzhu.lm");
-        		  scene.addChild(meshSprite3D);
-				   }),null,MeshSprite3D);
+Laya.loader.create("LayaScene_01/Assets/model/loveScene_jianzhu.lm",                   
+                   Handler.create(this,function():void{
+                  //创建预加载的模型网格 
+                  var mesh:Mesh=Laya.loader.getRes("LayaScene_01/Assets/model/loveScene_jianzhu.lm");
+                  //创建3D模型
+                  var meshSprite3D:MeshSprite3D=new MeshSprite3D(mesh);
+                  scene.addChild(meshSprite3D);
+                     
+				   }),null,Mesh);
 ```
 
 用上述的三种方法都可以在游戏画面中显示出模型，材质贴图引擎也会自动加载到模型上。在项目中我们可以根据情况使用上述三种方法，固定场景我们可以使用.ls格式加载，而活动的物品可以使用.ls或.lm方式加载。 
 
+
+
+### 获取子对象模型及网格
+
+3D模型在有时候会由多个子模型对象构成，例如场景模型.ls，基本都是由多个物体模型与材质构成，外层是Sprite3D容器，内部才是真正的模型MeshSprite3D或SkinnedMeshSprite3D。并且还可能会有多个层次嵌套。
+
+#### 获取子对象模型
+
+在编写游戏逻辑时，有的模型需要被修改，或者是切换与删除模型、或者是给模型加组件、或者是获取模型上的动画组件及修改模型的材质等。这都需要从加载的模型中去获取子对象，我们可以通过**getChildAt()、getChildByName()**方法去获取子对象，这与2D引擎获取子对象方法一样。
+
+下面我们来加载一个卡车模型的.lh文件，然后获取它的子对象。在获取子对象之前，建议打开.lh文件查看模型的父子层级关系，因为在制作模型时，我们也不能确定模型是由多少个子对象模型构成，及它们的命名规则。
+
+tips：在3ds max中建模时，建议对模型的子对象取名，并且制定项目的资源命名规则，不要用默认的模型名称。
+
+下例加载从unity导出的卡车truck.lh，打开后通过JSON结构可以看到，外层是一个Sprite3D容器（相当于unity的场景），内部又是一个Sprtie3D容器（相当于unity场景中的卡车），卡车容器中是两个子对象模型MeshSprite3D（车头与车身模型）。因此我们需要两次getChildAt()方式才能获取到模型MeshSprite3D。
+
+```java
+			//加载导出的卡车模型
+			var truck3D:Sprite3D=Sprite3D.load("LayaScene_truck/truck.lh");
+			//模型与材质加载完成后回调
+			truck3D.on(Event.HIERARCHY_LOADED,null,function():void
+			{
+				//获取模型（查看.lh文件，有两个子对象模型，一为车头“head”，一为车身"body",暂取其中一个模型）
+				var meshSprite3D:MeshSprite3D=role3D.getChildAt(0).getChildAt(0) as MeshSprite3D;
+                //输出模型的名字
+                trace(meshSprite3D.name); //输出“body”
+		});
+			scene.addChild(truck3D);
+```
+
+编译上例代码，我们可以看到模型显示了（图4），在浏览器下按F12打开控制台，我们可以看到输出了模型的名字为“body”，说明模型获取成功。
+
+![图片4](img/4.png)<br>（图4） 
+
+
+
+#### 获取模型网格Mesh
+
+在游戏中，我们经常打造角色换装系统，有时是换模型，有时是换贴图，有时候两者都换。因为材质贴图部分在后续章节中才讲解，因此本章节中我们只介绍更换模型网格的方法。
+
+模型MeshSprite3D或SkinnedMeshSprite3D中有**meshFilter**属性，它是一个网格过滤器类实例，这个属性中的**sharedMesh**就是模型的网格，可以对它进行重新创建更换及销毁。
+
+查看以下示例，当加载完卡车模型2秒后，我们创建新的汽车头网格对象更换原有的车身网格，效果如（图4）。
+
+```java
+			//加载导出的卡车模型
+			var truck3D:Sprite3D=Sprite3D.load("LayaScene_truck/truck.lh");
+			//模型与材质加载完成后回调
+			truck3D.on(Event.HIERARCHY_LOADED,null,function():void
+			{
+				//获取模型（查看.lh文件，有两个子对象模型，一为车头“head”，一为车身"body"）
+				var meshSprite3D:MeshSprite3D=truck3D.getChildAt(0).getChildAt(0) as MeshSprite3D;
+				//输出模型的名字
+                trace(meshSprite3D.name); //输出“body”
+				
+				//2秒后更换模型网格
+				Laya.timer.once(2000,null,function():void{
+					
+					//创建模型网格并更换原始网格
+					meshSprite3D.meshFilter.sharedMesh = Mesh.load("LayaScene_truck/Assets/truck-head.lm");
+					//因使用了卡车头网格，位置会重合，因此进行位置移动
+					meshSprite3D.transform.translate(new Vector3(0,0,-8));
+				});
+			});
+			scene.addChild(truck3D);
+```
+
+![图片5](img/5.gif)<br>（图5） 

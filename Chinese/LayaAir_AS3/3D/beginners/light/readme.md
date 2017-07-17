@@ -218,8 +218,12 @@ package {
 		    light.shadow=true;
 			//产生投影的范围（如过小将不会产生投影）
 		    light.shadowDistance=45;
+          	//生成阴影贴图数量
+			light.shadowPSSMCount = 1;
+			//模糊等级,越大越高,效果更好，更耗性能
+          	light.shadowPCFType=1;
 			//投影质量
-		    light.shadowResolution=4096;
+		    light.shadowResolution=2048;
 
 			 
 			//创建盒子模型
