@@ -23,13 +23,13 @@ createapp命令用于创建native项目
 $ layanative createapp --help
 ```
 #### 用法:
-    layanative createapp -f h5_or_res_path [-s sdk_path | -v version] [-p all|ios|android_eclipse|android_studio] [-t 0|1|2] [-u url] [-n project_name] [-a app_name] [--package_name package_name]
+    layanative createapp -f res_path [-s sdk_path | -v version] [-p all|ios|android_eclipse|android_studio] [-t 0|1|2] [-u url] [-n project_name] [-a app_name] [--package_name package_name]
 
 #### 参数说明:
 
 | 关键字 | 描述
 | ------------ | ------------ 
-| `--folder,-f` |    html5项目目录或资源路径 说明：把游戏资源打包进客户端以减少网络下载,选择本地的游戏目录，例如启动index在d:/game/index.html下,那资源路径就是d:/game
+| `--folder,-f` |    资源路径 说明：把游戏资源打包进客户端以减少网络下载,选择本地的游戏目录，例如启动index在d:/game/index.html下,那资源路径就是d:/game
 | `--path` |       native项目输出目录 [默认值: "."]
 | `--version，-v` |       SDK版本 说明：自动使用特定版本的SDK，系统会从服务器下载SDK并存放在特定位置。--version和--sdk互相矛盾不能同时指定，都不指定时默认使用最新版本的SDK
 | `--platform, -p` |    项目平台 [可选值: all, ios, android_eclipse, android_studio][默认值: all]
@@ -84,7 +84,7 @@ removeres命令用于删除native项目的资源包
 | `--path` |       native项目路径 [默认值: "."]
 
 ## 3.应用实例
-1.首先建立下图所示的目录结构。SnowBallH5是html5项目目录或资源目录
+1.首先建立下图所示的目录结构。SnowBallH5是html5项目资源目录
 
 ![图1](img/1.png)  
 2.查看SDK版本信息  
