@@ -13,14 +13,29 @@ test工程用DCC工具打包资源
 ### 4.修改代码中的扩展路径
 修改RuntimeProxy.java中的`getExpansionMainPath`函数，设置正确的zip路径。
 ```   
-public String getExpansionMainPath()
-{
-        return "/storage/emulated/0/Android/test/com.layabox.conch5/test.zip";
-}
-public String getExpansionPatchPath()
-{
-    return "";
-} 
+    public String getExpansionMainPath()
+    {
+            return "/storage/emulated/0/Android/test/com.layabox.conch5/test.zip";
+    }
+    public String getExpansionPatchPath()
+    {
+        return "";
+    } 
+```
+### 5.开启外部存储权限
+安卓6.0以上的机器可能不能读取外部存储，需要主动请求权限。请加上如下代码或者Google相关解决方案。
+```
+    public static boolean isGrantExternalRW(Activity activity) {
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.M && activity.checkSelfPermission(
+                Manifest.permission.WRITE_EXTERNAL_STORAGE) != PackageManager.PERMISSION_GRANTED) {
+            activity.requestPermissions(new String[]{
+                    Manifest.permission.READ_EXTERNAL_STORAGE,
+                    Manifest.permission.WRITE_EXTERNAL_STORAGE
+            }, 1);
+            return false;
+        }
+        return true;
+    }
 ```
 **TIPS:LayaPlayer中最多支持两个zip文件，第二个zip修改·getExpansionPatchPath·这个函数**
 
