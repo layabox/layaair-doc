@@ -15,7 +15,7 @@ test工程用DCC工具打包资源
 ```   
     public String getExpansionMainPath()
     {
-            return "/storage/emulated/0/Android/test/com.layabox.conch5/test.zip";
+        return "/storage/emulated/0/Android/test/com.layabox.conch5/test.zip";
     }
     public String getExpansionPatchPath()
     {
