@@ -756,16 +756,6 @@
                 "name_3_file": "readme.md"
               }
             ]
-          },
-          {
-            "name_2_name": "物理系统",
-            "name_2_data": [
-              {
-                "name_3_name": "LayaAir3D 物理系统之鼠标拾取（射线拾取）",
-                "name_3_url": "Chinese/LayaAir_AS3/3D/physical_Systems/Mouse_Pick/",
-                "name_3_file": "readme.md"
-              }
-            ]
           }
         ]
       },
