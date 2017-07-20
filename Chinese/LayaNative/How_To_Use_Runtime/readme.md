@@ -17,6 +17,7 @@
 * http://192.168.0.100:8899/                  错误  
 * http://192.168.0.100:8899                   错误  
 
+**Tips：输入地址后，如果发现屏幕上没有显示任何画面，有可能是因为项目没有正确设置横竖屏，请参考文档：https://github.com/layabox/layaair-doc/tree/master/Chinese/LayaNative/screen_orientation **
 
 #### 1.Android下载和安装
 
@@ -124,7 +125,6 @@
 
 　　文本格式的文件（例如:ini、xml、html、json、js等）都必须是utf8编码格式，因为IOS设备现在尚不支持非utf8格式编码的文件。
 
- 
 
 #### 5.建议
 
