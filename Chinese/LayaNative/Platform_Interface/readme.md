@@ -44,7 +44,7 @@ console.log(data);
 
 ##### Part.1 - 类名反射:
 
- 通过LayaNative构建出的Android项目工程中我们会看到layaair.game.Market包中有自动创建的MarketMango类, 这个类继承自LayaPlatformInterface类, 我们以login方法为例, 只需要在MarketMango.java中重写LP_Login方法, 就完成了对login方法的二次开发.
+ 通过LayaNative构建出的Android项目工程中我们会看到layaair.game.Market包中有自动创建的MarketTest类, 这个类继承自LayaPlatformInterface类, 我们以login方法为例, 只需要在MarketTest.java中重写LP_Login方法, 就完成了对login方法的二次开发.
 
 ##### Part.2 - JavaScript调用Java:
 
@@ -66,7 +66,7 @@ console.log(data);
 ```
 
 ```javascript
-// MarketMango.java文件中根据自己需求添加相关代码到LP_Login方法中, JavaScript中调用conchMarket.login就会执行LP_Login方法.
+// MarketTest.java文件中根据自己需求添加相关代码到LP_Login方法中, JavaScript中调用conchMarket.login就会执行LP_Login方法.
 public void LP_Login(final String jsonParam)
 {
 // 调用第三方平台的登陆的登陆接口
