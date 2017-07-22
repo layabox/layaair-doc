@@ -1,5 +1,7 @@
 ## 多线程worker
 
+> 本文档中的worker仅限于浏览器模式中的HTML5模式运行支持，LayaNative打包APP方案中暂不支持worker
+
 ​	从传统意义上来说，浏览器是单线程的，它们会强制应用程序中的所有脚本一起在单个 UI 线程中运行。虽然你可以通过使用文档对象模型 (DOM) 事件和 setTimeout等API 造成一种多个任务同时在运行的假象，但只需一个计算密集型任务就会使用户体验急转直下。在html5引入了worker的功能，通过使用Web Worker， 我们可以在浏览器后台运行JavaScript， 而不占用浏览器自身线程。Web Worker可以提高应用的总体性能，并且提升用户体验。线程可以执行任务而不干扰用户界面。
 
 ### 原生worker
@@ -166,4 +168,4 @@ self.addEventListener('message', function (e) {
 
 - 详细的`Web Workers`，请看 [W3C的xhr 标准](https://www.w3.org/TR/workers/);
 - 详细的api和介绍参考[这里](https://developer.mozilla.org/en-US/docs/Web/API/Worker/)
--  [workder 支持的函数](https://developer.mozilla.org/En/DOM/Worker/Functions_available_to_workers) 页面提供了一个 worker 支持的全局函数列表。
+- [workder 支持的函数](https://developer.mozilla.org/En/DOM/Worker/Functions_available_to_workers) 页面提供了一个 worker 支持的全局函数列表。
