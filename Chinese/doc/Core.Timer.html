@@ -42,7 +42,7 @@
         Timer
         </h2>
         
-            <div class="class-description"><code>Timer</code> 是时钟管理类。它是一个单例，可以通过 Laya.timer 访问。</div>
+            <div class="class-description"><code>Timer</code> 是时钟管理类。它是一个单例，不要手动实例化此类，应该通过 Laya.timer 访问。</div>
         
     
 </header>
@@ -238,7 +238,7 @@
 
 
 <div class="description">
-    当前时间。
+    当前帧开始的时间。
 </div>
 
 
@@ -516,7 +516,7 @@
     <!-- 
     <dt class="tag-source">Source:</dt>
     <dd class="tag-source"><ul class="dummy"><li>
-        js, line 94
+        js, line 95
     </li></ul></dd>
      -->
 
@@ -747,7 +747,7 @@
     <!-- 
     <dt class="tag-source">Source:</dt>
     <dd class="tag-source"><ul class="dummy"><li>
-        js, line 82
+        js, line 83
     </li></ul></dd>
      -->
 
@@ -908,7 +908,7 @@
     <!-- 
     <dt class="tag-source">Source:</dt>
     <dd class="tag-source"><ul class="dummy"><li>
-        js, line 87
+        js, line 88
     </li></ul></dd>
      -->
 
@@ -1043,7 +1043,7 @@
     <!-- 
     <dt class="tag-source">Source:</dt>
     <dd class="tag-source"><ul class="dummy"><li>
-        js, line 72
+        js, line 73
     </li></ul></dd>
      -->
 
@@ -1350,7 +1350,7 @@
     <!-- 
     <dt class="tag-source">Source:</dt>
     <dd class="tag-source"><ul class="dummy"><li>
-        js, line 63
+        js, line 64
     </li></ul></dd>
      -->
 
@@ -1614,7 +1614,7 @@
 
     
 
-    <h4 class="name" id="loop"><span class="type-signature"></span>loop<span class="signature">(delay, caller, method, args<span class="signature-attributes">opt</span>, coverBefore)</span><span class="type-signature"></span></h4>
+    <h4 class="name" id="loop"><span class="type-signature"></span>loop<span class="signature">(delay, caller, method, args<span class="signature-attributes">opt</span>, coverBefore, jumpFrame)</span><span class="type-signature"></span></h4>
 
     
 
@@ -1657,7 +1657,7 @@
     <!-- 
     <dt class="tag-source">Source:</dt>
     <dd class="tag-source"><ul class="dummy"><li>
-        js, line 54
+        js, line 55
     </li></ul></dd>
      -->
 
@@ -1891,6 +1891,44 @@
 
             <td class="description last">
                 是否覆盖之前的延迟执行，默认为 true 。
+                
+            </td>
+        </tr>
+
+    
+
+        <tr>
+            
+                <td class="name"><code>jumpFrame</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type"><code>Boolean</code></span>
+
+
+            
+            </td>
+
+            
+                <td class="attributes">
+                
+
+                
+
+                
+                </td>
+            
+
+            
+                <td class="default">
+                
+                </td>
+            
+
+            <td class="description last">
+                时钟是否跳帧。基于时间的循环回调，单位时间间隔内，如能执行多次回调，出于性能考虑，引擎默认只执行一次，设置jumpFrame=true后，则回调会连续执行多次
                 
             </td>
         </tr>
@@ -2271,7 +2309,7 @@
     <!-- 
     <dt class="tag-source">Source:</dt>
     <dd class="tag-source"><ul class="dummy"><li>
-        js, line 100
+        js, line 101
     </li></ul></dd>
      -->
 
@@ -2432,7 +2470,7 @@
     <!-- 
     <dt class="tag-source">Source:</dt>
     <dd class="tag-source"><ul class="dummy"><li>
-        js, line 106
+        js, line 107
     </li></ul></dd>
      -->
 
@@ -2593,7 +2631,7 @@
     <!-- 
     <dt class="tag-source">Source:</dt>
     <dd class="tag-source"><ul class="dummy"><li>
-        js, line 76
+        js, line 77
     </li></ul></dd>
      -->
 

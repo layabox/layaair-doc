@@ -42,7 +42,8 @@
         Socket
         </h2>
         
-            <div class="class-description"><code>Socket</code> Is a two-way communication protocol, after the establishment of the connection, the server and Browser/Client Agent can actively send or receive data to each other.</div>
+            <div class="class-description"><p> <code>Socket</code> Encapsulating HTML5 WebSocket allows full duplex (full-duplex) real-time communication between the server and the client, and allows cross domain communication. After the connection is established, the server and Browser/Client Agent can actively send or receive text and binary data to each other. </p>
+<p> To use <code>Socket</code> Class method, first use the constructor <code>new Socket</code> Create a <code>Socket</code> Object. <code>Socket</code> Transmit and receive data asynchronously. </p></div>
         
     
 </header>
@@ -64,8 +65,8 @@
 
 
 <div class="description">
-    <p> Create a new one <code>Socket</code> Example。 </p>
-Create websocket if the host port is valid and directly connected. *
+    <p> Create new  Socket  Object. The default byte order is Socket.BIG_ENDIAN. If no arguments are specified, a socket that is initially broken is created. If a valid parameter is specified, try connecting to the specified host and port. </p>
+<p><b> Be careful： </b> It is strongly recommended to use <b> Without parameters </b> The constructor's form, and adds any event listeners and settings such as protocols properties, and then calls the connect method using the host and port arguments. This sequence ensures that all event listeners and other related processes work properly. </p>
 </div>
 
 
@@ -101,7 +102,7 @@ Create websocket if the host port is valid and directly connected. *
     <!-- 
     <dt class="tag-source">Source:</dt>
     <dd class="tag-source"><ul class="dummy"><li>
-        js, line 6
+        js, line 7
     </li></ul></dd>
      -->
 
@@ -266,7 +267,7 @@ Create websocket if the host port is valid and directly connected. *
             
 
             <td class="description last">
-                byteClass  The Byte class used to receive and send data by default using the Byte class, and also into subclasses of the Byte class.
+                byteClass  The Byte class used to receive and send data. If NULL, the Byte class is used, and the subclass of the Byte class can also be passed in.
                 
             </td>
         </tr>
@@ -364,7 +365,7 @@ Create websocket if the host port is valid and directly connected. *
     <!-- 
     <dt class="tag-source">Source:</dt>
     <dd class="tag-source"><ul class="dummy"><li>
-        js, line 26
+        js, line 28
     </li></ul></dd>
      -->
 
@@ -439,7 +440,7 @@ Create websocket if the host port is valid and directly connected. *
     <!-- 
     <dt class="tag-source">Source:</dt>
     <dd class="tag-source"><ul class="dummy"><li>
-        js, line 20
+        js, line 22
     </li></ul></dd>
      -->
 
@@ -513,7 +514,7 @@ Create websocket if the host port is valid and directly connected. *
     <!-- 
     <dt class="tag-source">Source:</dt>
     <dd class="tag-source"><ul class="dummy"><li>
-        js, line 66
+        js, line 58
     </li></ul></dd>
      -->
 
@@ -551,7 +552,7 @@ Create websocket if the host port is valid and directly connected. *
 
 
 <div class="description">
-    Not using the input package provided by socket
+    No longer cache data from the server.
 </div>
 
 
@@ -587,7 +588,7 @@ Create websocket if the host port is valid and directly connected. *
     <!-- 
     <dt class="tag-source">Source:</dt>
     <dd class="tag-source"><ul class="dummy"><li>
-        js, line 44
+        js, line 34
     </li></ul></dd>
      -->
 
@@ -625,7 +626,9 @@ Create websocket if the host port is valid and directly connected. *
 
 
 <div class="description">
-    Represents the order of bytes of data.
+    <p> The host byte order, are two different sequence of CPU stored data, including little endian and big endian. </p>
+<p> LITTLE_ENDIAN: small endian, low address, low address, high address, high storage value. </p>
+<p> BIG_ENDIAN: big endian addresses low storage value high, high value and low storage. </p>
 </div>
 
 
@@ -661,7 +664,7 @@ Create websocket if the host port is valid and directly connected. *
     <!-- 
     <dt class="tag-source">Source:</dt>
     <dd class="tag-source"><ul class="dummy"><li>
-        js, line 71
+        js, line 65
     </li></ul></dd>
      -->
 
@@ -699,7 +702,7 @@ Create websocket if the host port is valid and directly connected. *
 
 
 <div class="description">
-    Represents the data sent by the server.
+    Cached data from the server.
 </div>
 
 
@@ -735,7 +738,7 @@ Create websocket if the host port is valid and directly connected. *
     <!-- 
     <dt class="tag-source">Source:</dt>
     <dd class="tag-source"><ul class="dummy"><li>
-        js, line 56
+        js, line 48
     </li></ul></dd>
      -->
 
@@ -753,80 +756,6 @@ Create websocket if the host port is valid and directly connected. *
         <li>
             
 <span class="param-type"><code>Object</code></span>
-
-
-        </li>
-    </ul>
- -->
-
-
-
-
-</div>
-
-        
-            
-<div class="section-members">
-<h4 class="name" id="objectEncoding"><span class="type-signature"></span>objectEncoding<span class="type-signature"> :int</span></h4>
-
-
-
-
-<div class="description">
-    When writing or reading objects, control the version of the AMF used.
-</div>
-
-
-
-
-
-<dl class="details">
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    <!-- 
-    <dt class="tag-source">Source:</dt>
-    <dd class="tag-source"><ul class="dummy"><li>
-        js, line 38
-    </li></ul></dd>
-     -->
-
-    
-
-    
-
-    
-</dl>
-
-
-<!-- 
-    <h5>Type:</h5>
-    <ul>
-        <li>
-            
-<span class="param-type"><code>int</code></span>
 
 
         </li>
@@ -883,7 +812,7 @@ Create websocket if the host port is valid and directly connected. *
     <!-- 
     <dt class="tag-source">Source:</dt>
     <dd class="tag-source"><ul class="dummy"><li>
-        js, line 61
+        js, line 53
     </li></ul></dd>
      -->
 
@@ -921,7 +850,8 @@ Create websocket if the host port is valid and directly connected. *
 
 
 <div class="description">
-    A child protocol, string, or array used
+    <p> Sub protocol name. An array of protocol names, strings, or strings consisting of multiple sub protocol name strings. Assignment must be made before calling connect or connectByUrl, otherwise invalid. </p>
+<p> Once specified, the connection can be established only if the server selects one of the sub protocols, otherwise failure to establish and distribute Event.ERROR events. </p>
 </div>
 
 
@@ -957,12 +887,19 @@ Create websocket if the host port is valid and directly connected. *
     <!-- 
     <dt class="tag-source">Source:</dt>
     <dd class="tag-source"><ul class="dummy"><li>
-        js, line 50
+        js, line 42
     </li></ul></dd>
      -->
 
     
 
+    
+    <dt class="tag-see">See:</dt>
+    <dd class="tag-see">
+        <ul>
+            <li><a href="https://%20Html.spec.whatwg.org/multipage/comms.html#dom-websocket">spec.whatwg.org/multipage/comms.html#dom-websocket</a></li>
+        </ul>
+    </dd>
     
 
     
@@ -987,15 +924,25 @@ Create websocket if the host port is valid and directly connected. *
 </div>
 
         
-            
-<div class="section-members">
-<h4 class="name" id="timeout"><span class="type-signature"></span>timeout<span class="type-signature"> :int</span></h4>
+    
 
+    
+        <h3 class="subsection-title">Methods</h3>
+
+        
+            
+<div class="section-method">
+
+    
+
+    <h4 class="name" id="cleanSocket"><span class="type-signature"></span>cleanSocket<span class="signature">()</span><span class="type-signature"></span></h4>
+
+    
 
 
 
 <div class="description">
-    Indicates the number of milliseconds to wait for a connection to be established.
+    Clean up socket.
 </div>
 
 
@@ -1031,7 +978,7 @@ Create websocket if the host port is valid and directly connected. *
     <!-- 
     <dt class="tag-source">Source:</dt>
     <dd class="tag-source"><ul class="dummy"><li>
-        js, line 32
+        js, line 83
     </li></ul></dd>
      -->
 
@@ -1043,29 +990,28 @@ Create websocket if the host port is valid and directly connected. *
 </dl>
 
 
-<!-- 
-    <h5>Type:</h5>
-    <ul>
-        <li>
-            
-<span class="param-type"><code>int</code></span>
 
 
-        </li>
-    </ul>
- -->
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
 
 </div>
-
-        
-    
-
-    
-        <h3 class="subsection-title">Methods</h3>
-
         
             
 <div class="section-method">
@@ -1162,7 +1108,8 @@ Create websocket if the host port is valid and directly connected. *
 
 
 <div class="description">
-    Connect to the specified host and port.
+    <p> Connect to the specified host and port. </p>
+<p> A successful connection dispatches the Event.OPEN event; the connection failure dispatches the Event.ERROR event; the connection is closed to distribute the Event.CLOSE event; data received dispatches the Event.MESSAGE event; in addition to the Event.MESSAGE parameters for the event data, other event parameters are native HTML DOM Event object. </p>
 </div>
 
 
@@ -1198,7 +1145,7 @@ Create websocket if the host port is valid and directly connected. *
     <!-- 
     <dt class="tag-source">Source:</dt>
     <dd class="tag-source"><ul class="dummy"><li>
-        js, line 78
+        js, line 73
     </li></ul></dd>
      -->
 
@@ -1316,14 +1263,15 @@ Create websocket if the host port is valid and directly connected. *
 
     
 
-    <h4 class="name" id="connectByUrl"><span class="type-signature"></span>connectByUrl<span class="signature">(url)</span><span class="type-signature"></span></h4>
+    <h4 class="name" id="connectByUrl"><span class="type-signature"></span>connectByUrl<span class="signature">(url要连接的服务端)</span><span class="type-signature"></span></h4>
 
     
 
 
 
 <div class="description">
-    Connect to the specified URL
+    <p>连接到指定的服务端 WebSocket URL。 URL 类似 ws://</p>
+<p> A successful connection dispatches the Event.OPEN event; the connection failure dispatches the Event.ERROR event; the connection is closed to distribute the Event.CLOSE event; data received dispatches the Event.MESSAGE event; in addition to the Event.MESSAGE parameters for the event data, other event parameters are native HTML DOM Event object. </p>
 </div>
 
 
@@ -1359,7 +1307,7 @@ Create websocket if the host port is valid and directly connected. *
     <!-- 
     <dt class="tag-source">Source:</dt>
     <dd class="tag-source"><ul class="dummy"><li>
-        js, line 83
+        js, line 79
     </li></ul></dd>
      -->
 
@@ -1403,7 +1351,7 @@ Create websocket if the host port is valid and directly connected. *
 
         <tr>
             
-                <td class="name"><code>url</code></td>
+                <td class="name"><code>url要连接的服务端</code></td>
             
 
             <td class="type">
@@ -1420,7 +1368,7 @@ Create websocket if the host port is valid and directly connected. *
             
 
             <td class="description last">
-                Connection target
+                WebSocket URL。 URL 类似 ws:// Yourdomain:port.
                 
             </td>
         </tr>
@@ -1499,7 +1447,7 @@ Create websocket if the host port is valid and directly connected. *
     <!-- 
     <dt class="tag-source">Source:</dt>
     <dd class="tag-source"><ul class="dummy"><li>
-        js, line 25
+        js, line 24
     </li></ul></dd>
      -->
 
@@ -1618,8 +1566,7 @@ Create websocket if the host port is valid and directly connected. *
             
 
             <td class="description last">
-                data  Callback data. 
-<b> Be careful： </b> If you need to pass multiple parameters, P1, P2, P3, you can use the array structure, such as: [p1,p2,p3,...] If you need a callback, a single parameter p is an array, so you need to use a structure such as: [p] Other single parameters, P, can be passed directly to the parameter P.
+                data  (optional) callback data. <b> Be careful： </b> If you need to pass multiple parameters, P1, P2, P3, you can use the array structure, such as: [p1,p2,p3,...] If you need to call a single parameter P, and P is an array, you need to use a structure such as: [p] Other single parameters, P, can be passed directly to the parameter P.
                 
             </td>
         </tr>
@@ -1971,7 +1918,7 @@ Create websocket if the host port is valid and directly connected. *
     <!-- 
     <dt class="tag-source">Source:</dt>
     <dd class="tag-source"><ul class="dummy"><li>
-        js, line 64
+        js, line 63
     </li></ul></dd>
      -->
 
@@ -2136,7 +2083,7 @@ Create websocket if the host port is valid and directly connected. *
     <!-- 
     <dt class="tag-source">Source:</dt>
     <dd class="tag-source"><ul class="dummy"><li>
-        js, line 52
+        js, line 51
     </li></ul></dd>
      -->
 
@@ -2275,7 +2222,7 @@ Create websocket if the host port is valid and directly connected. *
             
 
             <td class="description last">
-                If the value is true, only the listeners added by the once method are removed.
+                (optional) if the value is true, only the listeners added by the once method are removed.
                 
             </td>
         </tr>
@@ -2379,7 +2326,7 @@ Create websocket if the host port is valid and directly connected. *
     <!-- 
     <dt class="tag-source">Source:</dt>
     <dd class="tag-source"><ul class="dummy"><li>
-        js, line 58
+        js, line 57
     </li></ul></dd>
      -->
 
@@ -2460,7 +2407,7 @@ Create websocket if the host port is valid and directly connected. *
             
 
             <td class="description last">
-                type  Event type, if the value is null, removes all types of listeners for this object.
+                type  (optional) event type. If the value is null, all types of listeners for this object are removed.
                 
             </td>
         </tr>
@@ -2564,7 +2511,7 @@ Create websocket if the host port is valid and directly connected. *
     <!-- 
     <dt class="tag-source">Source:</dt>
     <dd class="tag-source"><ul class="dummy"><li>
-        js, line 34
+        js, line 33
     </li></ul></dd>
      -->
 
@@ -2759,7 +2706,7 @@ Create websocket if the host port is valid and directly connected. *
             
 
             <td class="description last">
-                args  The callback parameter of the event listener function.
+                args  Optional callback parameters for the event listener function.
                 
             </td>
         </tr>
@@ -2863,7 +2810,7 @@ Create websocket if the host port is valid and directly connected. *
     <!-- 
     <dt class="tag-source">Source:</dt>
     <dd class="tag-source"><ul class="dummy"><li>
-        js, line 43
+        js, line 42
     </li></ul></dd>
      -->
 
@@ -3058,7 +3005,7 @@ Create websocket if the host port is valid and directly connected. *
             
 
             <td class="description last">
-                args  The callback parameter of the event listener function.
+                args  Optional callback parameters for the event listener function.
                 
             </td>
         </tr>

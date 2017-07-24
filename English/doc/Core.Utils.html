@@ -418,6 +418,271 @@
 
     
 
+    <h4 class="name" id="fitDOMElementInArea"><span class="type-signature"></span>fitDOMElementInArea<span class="signature">(dom, coordinateSpace, x, y, width, height)</span><span class="type-signature"></span></h4>
+
+    
+
+
+
+<div class="description">
+    DOM elements are used within a region of the stage.
+</div>
+
+
+
+
+
+<dl class="details">
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    <!-- 
+    <dt class="tag-source">Source:</dt>
+    <dd class="tag-source"><ul class="dummy"><li>
+        js, line 78
+    </li></ul></dd>
+     -->
+
+    
+
+    
+
+    
+</dl>
+
+
+
+
+
+
+
+
+
+    <h5>Parameters:</h5>
+    
+
+<table class="params">
+    <thead>
+    <tr>
+        
+        <th>Name</th>
+        
+
+        <th>Type</th>
+
+        
+
+        
+
+        <th class="last">Description</th>
+    </tr>
+    </thead>
+
+    <tbody>
+    
+
+        <tr>
+            
+                <td class="name"><code>dom</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type"><code>Object</code></span>
+
+
+            
+            </td>
+
+            
+
+            
+
+            <td class="description last">
+                DOM element reference
+                
+            </td>
+        </tr>
+
+    
+
+        <tr>
+            
+                <td class="name"><code>coordinateSpace</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type"><code><a href="Core.Sprite.html">Sprite</a></code></span>
+
+
+            
+            </td>
+
+            
+
+            
+
+            <td class="description last">
+                Coordinate space cannot be a Stage reference
+                
+            </td>
+        </tr>
+
+    
+
+        <tr>
+            
+                <td class="name"><code>x</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type"><code>Number</code></span>
+
+
+            
+            </td>
+
+            
+
+            
+
+            <td class="description last">
+                Relative to the X coordinates of coordinateSpace
+                
+            </td>
+        </tr>
+
+    
+
+        <tr>
+            
+                <td class="name"><code>y</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type"><code>Number</code></span>
+
+
+            
+            </td>
+
+            
+
+            
+
+            <td class="description last">
+                Relative to the Y coordinates of coordinateSpace
+                
+            </td>
+        </tr>
+
+    
+
+        <tr>
+            
+                <td class="name"><code>width</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type"><code>Number</code></span>
+
+
+            
+            </td>
+
+            
+
+            
+
+            <td class="description last">
+                width
+                
+            </td>
+        </tr>
+
+    
+
+        <tr>
+            
+                <td class="name"><code>height</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type"><code>Number</code></span>
+
+
+            
+            </td>
+
+            
+
+            
+
+            <td class="description last">
+                height
+                
+            </td>
+        </tr>
+
+    
+    </tbody>
+</table>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+</div>
+        
+            
+<div class="section-method">
+
+    
+
     <h4 class="name" id="getGID"><span class="type-signature"></span>getGID<span class="signature">()</span><span class="type-signature"></span></h4>
 
     
@@ -661,6 +926,214 @@
 
     
 
+    <h4 class="name" id="getTransformRelativeToWindow"><span class="type-signature"></span>getTransformRelativeToWindow<span class="signature">(coordinateSpace, x, y)</span><span class="type-signature"> &rarr; {Object}</span></h4>
+
+    
+
+
+
+<div class="description">
+    Gets the transform in the specified area relative to the upper left corner of the window.
+</div>
+
+
+
+
+
+<dl class="details">
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    <!-- 
+    <dt class="tag-source">Source:</dt>
+    <dd class="tag-source"><ul class="dummy"><li>
+        js, line 68
+    </li></ul></dd>
+     -->
+
+    
+
+    
+
+    
+</dl>
+
+
+
+
+
+
+
+
+
+    <h5>Parameters:</h5>
+    
+
+<table class="params">
+    <thead>
+    <tr>
+        
+        <th>Name</th>
+        
+
+        <th>Type</th>
+
+        
+
+        
+
+        <th class="last">Description</th>
+    </tr>
+    </thead>
+
+    <tbody>
+    
+
+        <tr>
+            
+                <td class="name"><code>coordinateSpace</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type"><code><a href="Core.Sprite.html">Sprite</a></code></span>
+
+
+            
+            </td>
+
+            
+
+            
+
+            <td class="description last">
+                Coordinate space cannot be a Stage reference
+                
+            </td>
+        </tr>
+
+    
+
+        <tr>
+            
+                <td class="name"><code>x</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type"><code>Number</code></span>
+
+
+            
+            </td>
+
+            
+
+            
+
+            <td class="description last">
+                Relative to the X coordinates of coordinateSpace
+                
+            </td>
+        </tr>
+
+    
+
+        <tr>
+            
+                <td class="name"><code>y</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type"><code>Number</code></span>
+
+
+            
+            </td>
+
+            
+
+            
+
+            <td class="description last">
+                Relative to the Y coordinates of coordinateSpace
+                
+            </td>
+        </tr>
+
+    
+    </tbody>
+</table>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div class="section-returns">
+<h5>Returns:</h5>
+
+        
+
+<dl class="param-type">
+    <dt>
+        Type:
+    </dt>
+    <dd>
+        
+<span class="param-type"><code>Object</code></span>
+
+
+    </dd>
+</dl>
+
+
+    
+</div>
+
+
+
+</div>
+        
+            
+<div class="section-method">
+
+    
+
     <h4 class="name" id="measureText"><span class="type-signature"></span>measureText<span class="signature">(txt, font)</span><span class="type-signature"> &rarr; {Object}</span></h4>
 
     
@@ -854,7 +1327,7 @@
 
 
 <div class="description">
-    Parse a string and return an integer. Unlike JS native parseInt: if STR is empty or non numeric, the native returns NaN, where 0 is returned
+    Parse a string and return an integer. Unlike JS native parseInt: if STR is empty or non numeric, the native returns NaN, where 0 is returned.
 </div>
 
 
@@ -967,7 +1440,7 @@
             
 
             <td class="description last">
-                A string to be parsed
+                A string to be parsed.
                 
             </td>
         </tr>
@@ -1009,7 +1482,7 @@
             
 
             <td class="description last">
-                radix  The cardinality of the digits to be parsed. The value is somewhere between 2 and 36. If it starts with "0x" or "0X", it will be based on 16. If the parameter is less than 2 or greater than 36, then parseInt () returns NaN.
+                radix  The cardinality of the digits to be parsed. The default value is 0, indicating 10 hexadecimal, and the other values range from 2 to 36. If it starts with "0x" or "0X", it will be based on 16. If the parameter is not within the range above, this method returns 0.
                 
             </td>
         </tr>
@@ -1050,7 +1523,7 @@
 
 
 <div class="param-desc">
-    Returns the parsed number
+    Returns the parsed number.
 </div>
 
     

@@ -42,7 +42,7 @@
         SoundManager
         </h2>
         
-            <div class="class-description"><code>SoundManager</code> Is a sound management class.</div>
+            <div class="class-description"><code>SoundManager</code> Is a sound management class. A playback control method for background music and sound effects is provided.</div>
         
     
 </header>
@@ -155,7 +155,7 @@
 
 
 <div class="description">
-    Automatically stops the background music when it indicates whether to lose focus.
+    Do you stop the background music automatically after losing focus?.
 </div>
 
 
@@ -191,7 +191,7 @@
     <!-- 
     <dt class="tag-source">Source:</dt>
     <dd class="tag-source"><ul class="dummy"><li>
-        js, line 33
+        js, line 35
     </li></ul></dd>
      -->
 
@@ -228,10 +228,6 @@
 
 
 
-<div class="description">
-    Indicates whether to mute the background music.
-</div>
-
 
 
 
@@ -265,7 +261,7 @@
     <!-- 
     <dt class="tag-source">Source:</dt>
     <dd class="tag-source"><ul class="dummy"><li>
-        js, line 51
+        js, line 50
     </li></ul></dd>
      -->
 
@@ -344,7 +340,7 @@
     <!-- 
     <dt class="tag-source">Source:</dt>
     <dd class="tag-source"><ul class="dummy"><li>
-        js, line 12
+        js, line 13
     </li></ul></dd>
      -->
 
@@ -381,10 +377,6 @@
 
 
 
-<div class="description">
-    Indicates silence.
-</div>
-
 
 
 
@@ -418,7 +410,7 @@
     <!-- 
     <dt class="tag-source">Source:</dt>
     <dd class="tag-source"><ul class="dummy"><li>
-        js, line 39
+        js, line 40
     </li></ul></dd>
      -->
 
@@ -497,7 +489,7 @@
     <!-- 
     <dt class="tag-source">Source:</dt>
     <dd class="tag-source"><ul class="dummy"><li>
-        js, line 26
+        js, line 29
     </li></ul></dd>
      -->
 
@@ -533,10 +525,6 @@
 
 
 
-
-<div class="description">
-    Indicates whether the sound is muted.
-</div>
 
 
 
@@ -650,7 +638,7 @@
     <!-- 
     <dt class="tag-source">Source:</dt>
     <dd class="tag-source"><ul class="dummy"><li>
-        js, line 19
+        js, line 21
     </li></ul></dd>
      -->
 
@@ -734,7 +722,7 @@
     <!-- 
     <dt class="tag-source">Source:</dt>
     <dd class="tag-source"><ul class="dummy"><li>
-        js, line 57
+        js, line 56
     </li></ul></dd>
      -->
 
@@ -869,7 +857,7 @@
     <!-- 
     <dt class="tag-source">Source:</dt>
     <dd class="tag-source"><ul class="dummy"><li>
-        js, line 77
+        js, line 76
     </li></ul></dd>
      -->
 
@@ -930,7 +918,7 @@
             
 
             <td class="description last">
-                Sound file address.
+                Sound playback address.
                 
             </td>
         </tr>
@@ -968,7 +956,7 @@
 
 
 <div class="description">
-    Play background music.
+    Play background music. Background music can only play one at the same time. If you call this method again when playing background music, you will stop the previous background music and then broadcast the current background music.
 </div>
 
 
@@ -1004,7 +992,7 @@
     <!-- 
     <dt class="tag-source">Source:</dt>
     <dd class="tag-source"><ul class="dummy"><li>
-        js, line 86
+        js, line 85
     </li></ul></dd>
      -->
 
@@ -1248,7 +1236,7 @@
 
 
 <div class="param-desc">
-    Audio object.
+    SoundChannel object, through which the object can control the sound and obtain the sound information.
 </div>
 
     
@@ -1270,7 +1258,7 @@
 
 
 <div class="description">
-    Play sound.
+    Play sound. The sound effects can be played simultaneously.
 </div>
 
 
@@ -1306,7 +1294,7 @@
     <!-- 
     <dt class="tag-source">Source:</dt>
     <dd class="tag-source"><ul class="dummy"><li>
-        js, line 72
+        js, line 71
     </li></ul></dd>
      -->
 
@@ -1592,7 +1580,7 @@
 
 
 <div class="param-desc">
-    SoundChannel object.
+    SoundChannel object, through which the object can control the sound and obtain the sound information.
 </div>
 
     
@@ -1650,7 +1638,7 @@
     <!-- 
     <dt class="tag-source">Source:</dt>
     <dd class="tag-source"><ul class="dummy"><li>
-        js, line 62
+        js, line 61
     </li></ul></dd>
      -->
 
@@ -1749,7 +1737,7 @@
 
 
 <div class="description">
-    Set background music volume.
+    Set background music volume. Volume range from 0 (mute) to 1 (maximum volume).
 </div>
 
 
@@ -1785,7 +1773,7 @@
     <!-- 
     <dt class="tag-source">Source:</dt>
     <dd class="tag-source"><ul class="dummy"><li>
-        js, line 115
+        js, line 114
     </li></ul></dd>
      -->
 
@@ -1846,7 +1834,7 @@
             
 
             <td class="description last">
-                Volume, the standard value is 1.
+                Volume. The initial value is 1. Volume range from 0 (mute) to 1 (maximum volume).
                 
             </td>
         </tr>
@@ -1884,7 +1872,7 @@
 
 
 <div class="description">
-    Set sound volume
+    Set sound volume. Depending on the parameters, you can set the volume of the specified sound (background music or sound effects), volume, or all sound effects (not including background music).
 </div>
 
 
@@ -1920,7 +1908,7 @@
     <!-- 
     <dt class="tag-source">Source:</dt>
     <dd class="tag-source"><ul class="dummy"><li>
-        js, line 110
+        js, line 109
     </li></ul></dd>
      -->
 
@@ -1997,7 +1985,7 @@
             
 
             <td class="description last">
-                The volume standard value is 1
+                Volume. The initial value is 1. Volume range from 0 (mute) to 1 (maximum volume).
                 
             </td>
         </tr>
@@ -2039,7 +2027,7 @@
             
 
             <td class="description last">
-                url  Sound file address. For null (default), it works for all sound effects, not for empty, only for sound effects
+                url  (default = null) sound playback address. The default is null. Represents the volume of all sound effects (not including background music) for empty, and does not indicate the setting of the volume of the specified sound (background music or sound effects).
                 
             </td>
         </tr>
@@ -2077,7 +2065,7 @@
 
 
 <div class="description">
-    Stop all sound playback.
+    Stop playing all sounds (including background music and sound effects).
 </div>
 
 
@@ -2113,7 +2101,7 @@
     <!-- 
     <dt class="tag-source">Source:</dt>
     <dd class="tag-source"><ul class="dummy"><li>
-        js, line 95
+        js, line 94
     </li></ul></dd>
      -->
 
@@ -2160,7 +2148,7 @@
 
 
 <div class="description">
-    Stop all sound effects, not background music.
+    Stop playing all sound effects (not including background music).
 </div>
 
 
@@ -2196,7 +2184,7 @@
     <!-- 
     <dt class="tag-source">Source:</dt>
     <dd class="tag-source"><ul class="dummy"><li>
-        js, line 99
+        js, line 98
     </li></ul></dd>
      -->
 
@@ -2243,7 +2231,7 @@
 
 
 <div class="description">
-    Stop playing background music.
+    Stop playing background music (not including sound effects).
 </div>
 
 
@@ -2279,7 +2267,7 @@
     <!-- 
     <dt class="tag-source">Source:</dt>
     <dd class="tag-source"><ul class="dummy"><li>
-        js, line 104
+        js, line 103
     </li></ul></dd>
      -->
 
@@ -2373,7 +2361,7 @@
 
 
 <div class="description">
-    Stop playing sound.
+    Stop playing sound. This method can stop any sound playback (including background music and sound effects), only by entering the corresponding sound playback address.
 </div>
 
 
@@ -2409,7 +2397,7 @@
     <!-- 
     <dt class="tag-source">Source:</dt>
     <dd class="tag-source"><ul class="dummy"><li>
-        js, line 91
+        js, line 90
     </li></ul></dd>
      -->
 

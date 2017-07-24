@@ -42,7 +42,7 @@
         Node
         </h2>
         
-            <div class="class-description"><code>Node</code> Class is used to create node objects, and nodes are the most basic elements.</div>
+            <div class="class-description"><code>Node</code> Class is the base class of all objects that can be placed in the display list. The display list manages all objects displayed in the Laya runtime. Use  Node  Class displays the display objects in the list. Node objects can have child display objects.</div>
         
     
 </header>
@@ -62,10 +62,6 @@
     
 
 
-
-<div class="description">
-    <code>Node</code> Class is used to create node objects, and nodes are the most basic elements.
-</div>
 
 
 
@@ -202,7 +198,7 @@
     <!-- 
     <dt class="tag-source">Source:</dt>
     <dd class="tag-source"><ul class="dummy"><li>
-        js, line 15
+        js, line 11
     </li></ul></dd>
      -->
 
@@ -234,163 +230,13 @@
         
             
 <div class="section-members">
-<h4 class="name" id=".MOUSEENABLE"><span class="type-signature">(static) </span>MOUSEENABLE<span class="type-signature"> :int</span></h4>
-
-
-
-
-
-
-
-
-<dl class="details">
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-    <dt class="tag-default">Default Value:</dt>
-    <dd class="tag-default"><ul class="dummy">
-            <li>0x2</li>
-        </ul></dd>
-    
-
-    <!-- 
-    <dt class="tag-source">Source:</dt>
-    <dd class="tag-source"><ul class="dummy"><li>
-        js, line 27
-    </li></ul></dd>
-     -->
-
-    
-
-    
-
-    
-</dl>
-
-
-<!-- 
-    <h5>Type:</h5>
-    <ul>
-        <li>
-            
-<span class="param-type"><code>int</code></span>
-
-
-        </li>
-    </ul>
- -->
-
-
-
-
-</div>
-
-        
-            
-<div class="section-members">
-<h4 class="name" id=".NOTICE_DISPLAY"><span class="type-signature">(static) </span>NOTICE_DISPLAY<span class="type-signature"> :int</span></h4>
-
-
-
-
-
-
-
-
-<dl class="details">
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-    <dt class="tag-default">Default Value:</dt>
-    <dd class="tag-default"><ul class="dummy">
-            <li>0x1</li>
-        </ul></dd>
-    
-
-    <!-- 
-    <dt class="tag-source">Source:</dt>
-    <dd class="tag-source"><ul class="dummy"><li>
-        js, line 21
-    </li></ul></dd>
-     -->
-
-    
-
-    
-
-    
-</dl>
-
-
-<!-- 
-    <h5>Type:</h5>
-    <ul>
-        <li>
-            
-<span class="param-type"><code>int</code></span>
-
-
-        </li>
-    </ul>
- -->
-
-
-
-
-</div>
-
-        
-            
-<div class="section-members">
 <h4 class="name" id="destroyed"><span class="type-signature"></span>destroyed<span class="type-signature"> :Boolean</span></h4>
 
 
 
 
 <div class="description">
-    Has it been destroyed?. Object cannot be used after destruction.
+    [只读] Has it been destroyed?. Object cannot be used after destruction.
 </div>
 
 
@@ -426,7 +272,7 @@
     <!-- 
     <dt class="tag-source">Source:</dt>
     <dd class="tag-source"><ul class="dummy"><li>
-        js, line 40
+        js, line 24
     </li></ul></dd>
      -->
 
@@ -500,7 +346,7 @@
     <!-- 
     <dt class="tag-source">Source:</dt>
     <dd class="tag-source"><ul class="dummy"><li>
-        js, line 63
+        js, line 46
     </li></ul></dd>
      -->
 
@@ -579,7 +425,7 @@
     <!-- 
     <dt class="tag-source">Source:</dt>
     <dd class="tag-source"><ul class="dummy"><li>
-        js, line 34
+        js, line 18
     </li></ul></dd>
      -->
 
@@ -653,7 +499,7 @@
     <!-- 
     <dt class="tag-source">Source:</dt>
     <dd class="tag-source"><ul class="dummy"><li>
-        js, line 52
+        js, line 36
     </li></ul></dd>
      -->
 
@@ -727,7 +573,7 @@
     <!-- 
     <dt class="tag-source">Source:</dt>
     <dd class="tag-source"><ul class="dummy"><li>
-        js, line 57
+        js, line 41
     </li></ul></dd>
      -->
 
@@ -765,7 +611,7 @@
 
 
 <div class="description">
-    The time controller defaults to Laya.timer.
+    The time controller defaults to global Laya.timer. You can also separate instances of a Timer to control time scaling
 </div>
 
 
@@ -801,7 +647,7 @@
     <!-- 
     <dt class="tag-source">Source:</dt>
     <dd class="tag-source"><ul class="dummy"><li>
-        js, line 46
+        js, line 30
     </li></ul></dd>
      -->
 
@@ -836,6 +682,85 @@
     
         <h3 class="subsection-title">Methods</h3>
 
+        
+            
+<div class="section-method">
+
+    
+
+    <h4 class="name" id="_setParent"><span class="type-signature"></span>_setParent<span class="signature">()</span><span class="type-signature"></span></h4>
+
+    
+
+
+
+
+
+
+
+<dl class="details">
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    <!-- 
+    <dt class="tag-source">Source:</dt>
+    <dd class="tag-source"><ul class="dummy"><li>
+        js, line 160
+    </li></ul></dd>
+     -->
+
+    
+
+    
+
+    
+</dl>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+</div>
         
             
 <div class="section-method">
@@ -885,7 +810,7 @@
     <!-- 
     <dt class="tag-source">Source:</dt>
     <dd class="tag-source"><ul class="dummy"><li>
-        js, line 99
+        js, line 82
     </li></ul></dd>
      -->
 
@@ -1045,7 +970,7 @@
     <!-- 
     <dt class="tag-source">Source:</dt>
     <dd class="tag-source"><ul class="dummy"><li>
-        js, line 111
+        js, line 94
     </li></ul></dd>
      -->
 
@@ -1231,7 +1156,7 @@
     <!-- 
     <dt class="tag-source">Source:</dt>
     <dd class="tag-source"><ul class="dummy"><li>
-        js, line 104
+        js, line 87
     </li></ul></dd>
      -->
 
@@ -1378,7 +1303,7 @@
     <!-- 
     <dt class="tag-source">Source:</dt>
     <dd class="tag-source"><ul class="dummy"><li>
-        js, line 222
+        js, line 209
     </li></ul></dd>
      -->
 
@@ -1503,7 +1428,7 @@
 
 
 <div class="description">
-    Does the current container contain? <code>node</code> Node.
+    Does the current container contain the specified? <code>Node</code> Node object.
 </div>
 
 
@@ -1539,7 +1464,7 @@
     <!-- 
     <dt class="tag-source">Source:</dt>
     <dd class="tag-source"><ul class="dummy"><li>
-        js, line 180
+        js, line 166
     </li></ul></dd>
      -->
 
@@ -1600,7 +1525,7 @@
             
 
             <td class="description last">
-                One node <code>Node</code> .
+                Designated <code>Node</code> Node object.
                 
             </td>
         </tr>
@@ -1641,7 +1566,7 @@
 
 
 <div class="param-desc">
-    A Boolean value indicating whether the <code>node</code> node is included.
+    A Boolean value indicating whether the specified <code>Node</code> node object is included.
 </div>
 
     
@@ -1664,7 +1589,7 @@
 
 <div class="description">
     <p> Destroy this object. The destroy object defaults to removing itself from the parent node and cleaning its reference relationship and waiting for the JS automatic garbage recovery mechanism to be recycled. No more can be used after destroy. </p>
-Destroy removes its own event listening, its own timer listening, removing the child object and removing itself from the parent node.
+<p> Destroy removes its own event listening, its own timer listening, removing the child object and removing itself from the parent node. </p>
 </div>
 
 
@@ -1700,7 +1625,7 @@ Destroy removes its own event listening, its own timer listening, removing the c
     <!-- 
     <dt class="tag-source">Source:</dt>
     <dd class="tag-source"><ul class="dummy"><li>
-        js, line 89
+        js, line 72
     </li></ul></dd>
      -->
 
@@ -1761,7 +1686,7 @@ Destroy removes its own event listening, its own timer listening, removing the c
             
 
             <td class="description last">
-                Do you want to destroy the child node at the same time? If the value is true, destroy the child node, otherwise don't destroy the child node.
+                (optional) destroy the child node at the same time. If the value is true, the child node is destroyed, otherwise the child node is not destroyed.
                 
             </td>
         </tr>
@@ -1835,7 +1760,7 @@ Destroy removes its own event listening, its own timer listening, removing the c
     <!-- 
     <dt class="tag-source">Source:</dt>
     <dd class="tag-source"><ul class="dummy"><li>
-        js, line 93
+        js, line 76
     </li></ul></dd>
      -->
 
@@ -1923,7 +1848,7 @@ Destroy removes its own event listening, its own timer listening, removing the c
     <!-- 
     <dt class="tag-source">Source:</dt>
     <dd class="tag-source"><ul class="dummy"><li>
-        js, line 25
+        js, line 24
     </li></ul></dd>
      -->
 
@@ -2042,8 +1967,7 @@ Destroy removes its own event listening, its own timer listening, removing the c
             
 
             <td class="description last">
-                data  Callback data. 
-<b> Be careful： </b> If you need to pass multiple parameters, P1, P2, P3, you can use the array structure, such as: [p1,p2,p3,...] If you need a callback, a single parameter p is an array, so you need to use a structure such as: [p] Other single parameters, P, can be passed directly to the parameter P.
+                data  (optional) callback data. <b> Be careful： </b> If you need to pass multiple parameters, P1, P2, P3, you can use the array structure, such as: [p1,p2,p3,...] If you need to call a single parameter P, and P is an array, you need to use a structure such as: [p] Other single parameters, P, can be passed directly to the parameter P.
                 
             </td>
         </tr>
@@ -2142,7 +2066,7 @@ Destroy removes its own event listening, its own timer listening, removing the c
     <!-- 
     <dt class="tag-source">Source:</dt>
     <dd class="tag-source"><ul class="dummy"><li>
-        js, line 207
+        js, line 194
     </li></ul></dd>
      -->
 
@@ -2337,7 +2261,7 @@ Destroy removes its own event listening, its own timer listening, removing the c
             
 
             <td class="description last">
-                args  Callback parameter.
+                args  Optional callback parameters.
                 
             </td>
         </tr>
@@ -2375,7 +2299,7 @@ Destroy removes its own event listening, its own timer listening, removing the c
             
 
             <td class="description last">
-                Whether or not the previous delay execution is covered, defaults to true.
+                (optional) whether the delay is covered before default is true.
                 
             </td>
         </tr>
@@ -2449,7 +2373,7 @@ Destroy removes its own event listening, its own timer listening, removing the c
     <!-- 
     <dt class="tag-source">Source:</dt>
     <dd class="tag-source"><ul class="dummy"><li>
-        js, line 216
+        js, line 203
     </li></ul></dd>
      -->
 
@@ -2644,7 +2568,7 @@ Destroy removes its own event listening, its own timer listening, removing the c
             
 
             <td class="description last">
-                args  Callback Arguments
+                args  Optional callback parameters
                 
             </td>
         </tr>
@@ -2682,7 +2606,7 @@ Destroy removes its own event listening, its own timer listening, removing the c
             
 
             <td class="description last">
-                Whether or not the previous delay execution is covered, defaults to true
+                (optional) whether the delay is covered before default is true
                 
             </td>
         </tr>
@@ -2756,7 +2680,7 @@ Destroy removes its own event listening, its own timer listening, removing the c
     <!-- 
     <dt class="tag-source">Source:</dt>
     <dd class="tag-source"><ul class="dummy"><li>
-        js, line 129
+        js, line 112
     </li></ul></dd>
      -->
 
@@ -2916,7 +2840,7 @@ Destroy removes its own event listening, its own timer listening, removing the c
     <!-- 
     <dt class="tag-source">Source:</dt>
     <dd class="tag-source"><ul class="dummy"><li>
-        js, line 123
+        js, line 106
     </li></ul></dd>
      -->
 
@@ -3076,7 +3000,7 @@ Destroy removes its own event listening, its own timer listening, removing the c
     <!-- 
     <dt class="tag-source">Source:</dt>
     <dd class="tag-source"><ul class="dummy"><li>
-        js, line 117
+        js, line 100
     </li></ul></dd>
      -->
 
@@ -3406,7 +3330,7 @@ Destroy removes its own event listening, its own timer listening, removing the c
     <!-- 
     <dt class="tag-source">Source:</dt>
     <dd class="tag-source"><ul class="dummy"><li>
-        js, line 64
+        js, line 63
     </li></ul></dd>
      -->
 
@@ -3571,7 +3495,7 @@ Destroy removes its own event listening, its own timer listening, removing the c
     <!-- 
     <dt class="tag-source">Source:</dt>
     <dd class="tag-source"><ul class="dummy"><li>
-        js, line 52
+        js, line 51
     </li></ul></dd>
      -->
 
@@ -3710,7 +3634,7 @@ Destroy removes its own event listening, its own timer listening, removing the c
             
 
             <td class="description last">
-                If the value is true, only the listeners added by the once method are removed.
+                (optional) if the value is true, only the listeners added by the once method are removed.
                 
             </td>
         </tr>
@@ -3814,7 +3738,7 @@ Destroy removes its own event listening, its own timer listening, removing the c
     <!-- 
     <dt class="tag-source">Source:</dt>
     <dd class="tag-source"><ul class="dummy"><li>
-        js, line 58
+        js, line 57
     </li></ul></dd>
      -->
 
@@ -3895,7 +3819,7 @@ Destroy removes its own event listening, its own timer listening, removing the c
             
 
             <td class="description last">
-                type  Event type, if the value is null, removes all types of listeners for this object.
+                type  (optional) event type. If the value is null, all types of listeners for this object are removed.
                 
             </td>
         </tr>
@@ -3958,8 +3882,8 @@ Destroy removes its own event listening, its own timer listening, removing the c
 
 
 <div class="description">
-    Adds an event listener to enable listeners to receive event notifications. 
-If you listen to mouse events, you automatically set the property of your own and father nodes. The value of mouseEnabled is true (if the parent node is mouseEnabled=false, then stop setting the parent node mouseEnabled attribute).
+    <p> Adds an event listener to enable listeners to receive event notifications. </p>
+<p> If you listen to mouse events, you automatically set the property of your own and father nodes. The value of mouseEnabled is true (if the parent node is mouseEnabled=false, then stop setting the parent node mouseEnabled attribute). </p>
 </div>
 
 
@@ -4000,7 +3924,7 @@ If you listen to mouse events, you automatically set the property of your own an
     <!-- 
     <dt class="tag-source">Source:</dt>
     <dd class="tag-source"><ul class="dummy"><li>
-        js, line 73
+        js, line 56
     </li></ul></dd>
      -->
 
@@ -4195,7 +4119,7 @@ If you listen to mouse events, you automatically set the property of your own an
             
 
             <td class="description last">
-                args  The callback parameter of the event listener function.
+                args  Optional callback parameters for the event listener function.
                 
             </td>
         </tr>
@@ -4258,8 +4182,8 @@ If you listen to mouse events, you automatically set the property of your own an
 
 
 <div class="description">
-    Adds an event listener to enable listeners to receive event notifications that automatically remove listeners after the listener event responds. 
-If you listen to mouse events, you automatically set the property of your own and father nodes. The value of mouseEnabled is true (if the parent node is mouseEnabled=false, then stop setting the parent node mouseEnabled attribute).
+    <p> Adds an event listener to enable listeners to receive event notifications that automatically remove listeners after the listener event responds. </p>
+<p> If you listen to mouse events, you automatically set the property of your own and father nodes. The value of mouseEnabled is true (if the parent node is mouseEnabled=false, then stop setting the parent node mouseEnabled attribute). </p>
 </div>
 
 
@@ -4300,7 +4224,7 @@ If you listen to mouse events, you automatically set the property of your own an
     <!-- 
     <dt class="tag-source">Source:</dt>
     <dd class="tag-source"><ul class="dummy"><li>
-        js, line 83
+        js, line 66
     </li></ul></dd>
      -->
 
@@ -4495,7 +4419,7 @@ If you listen to mouse events, you automatically set the property of your own an
             
 
             <td class="description last">
-                args  The callback parameter of the event listener function.
+                args  Optional callback parameters for the event listener function.
                 
             </td>
         </tr>
@@ -4594,7 +4518,7 @@ If you listen to mouse events, you automatically set the property of your own an
     <!-- 
     <dt class="tag-source">Source:</dt>
     <dd class="tag-source"><ul class="dummy"><li>
-        js, line 142
+        js, line 125
     </li></ul></dd>
      -->
 
@@ -4754,7 +4678,7 @@ If you listen to mouse events, you automatically set the property of your own an
     <!-- 
     <dt class="tag-source">Source:</dt>
     <dd class="tag-source"><ul class="dummy"><li>
-        js, line 159
+        js, line 142
     </li></ul></dd>
      -->
 
@@ -4914,7 +4838,7 @@ If you listen to mouse events, you automatically set the property of your own an
     <!-- 
     <dt class="tag-source">Source:</dt>
     <dd class="tag-source"><ul class="dummy"><li>
-        js, line 153
+        js, line 136
     </li></ul></dd>
      -->
 
@@ -5074,7 +4998,7 @@ If you listen to mouse events, you automatically set the property of your own an
     <!-- 
     <dt class="tag-source">Source:</dt>
     <dd class="tag-source"><ul class="dummy"><li>
-        js, line 166
+        js, line 149
     </li></ul></dd>
      -->
 
@@ -5296,7 +5220,7 @@ If you listen to mouse events, you automatically set the property of your own an
     <!-- 
     <dt class="tag-source">Source:</dt>
     <dd class="tag-source"><ul class="dummy"><li>
-        js, line 147
+        js, line 130
     </li></ul></dd>
      -->
 
@@ -5404,7 +5328,7 @@ If you listen to mouse events, you automatically set the property of your own an
     <!-- 
     <dt class="tag-source">Source:</dt>
     <dd class="tag-source"><ul class="dummy"><li>
-        js, line 174
+        js, line 157
     </li></ul></dd>
      -->
 
@@ -5590,7 +5514,7 @@ If you listen to mouse events, you automatically set the property of your own an
     <!-- 
     <dt class="tag-source">Source:</dt>
     <dd class="tag-source"><ul class="dummy"><li>
-        js, line 136
+        js, line 119
     </li></ul></dd>
      -->
 
@@ -5733,7 +5657,7 @@ If you listen to mouse events, you automatically set the property of your own an
 
     
 
-    <h4 class="name" id="timerLoop"><span class="type-signature"></span>timerLoop<span class="signature">(delay, caller, method, args<span class="signature-attributes">opt</span>, coverBefore)</span><span class="type-signature"></span></h4>
+    <h4 class="name" id="timerLoop"><span class="type-signature"></span>timerLoop<span class="signature">(delay, caller, method, args<span class="signature-attributes">opt</span>, coverBefore, jumpFrame)</span><span class="type-signature"></span></h4>
 
     
 
@@ -5776,7 +5700,7 @@ If you listen to mouse events, you automatically set the property of your own an
     <!-- 
     <dt class="tag-source">Source:</dt>
     <dd class="tag-source"><ul class="dummy"><li>
-        js, line 189
+        js, line 176
     </li></ul></dd>
      -->
 
@@ -5971,7 +5895,7 @@ If you listen to mouse events, you automatically set the property of your own an
             
 
             <td class="description last">
-                args  Callback parameter.
+                args  Optional callback parameters.
                 
             </td>
         </tr>
@@ -6009,7 +5933,45 @@ If you listen to mouse events, you automatically set the property of your own an
             
 
             <td class="description last">
-                Whether or not the previous delay execution is covered, defaults to true.
+                (optional) whether the delay is covered before default is true.
+                
+            </td>
+        </tr>
+
+    
+
+        <tr>
+            
+                <td class="name"><code>jumpFrame</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type"><code>Boolean</code></span>
+
+
+            
+            </td>
+
+            
+                <td class="attributes">
+                
+
+                
+
+                
+                </td>
+            
+
+            
+                <td class="default">
+                
+                </td>
+            
+
+            <td class="description last">
+                The clock is skipping. Time based callback, in the unit time interval, if you can perform multiple callbacks, for performance reasons, the engine defaults to only once. After setting the jumpFrame=true, the callback is executed several times in succession
                 
             </td>
         </tr>
@@ -6083,7 +6045,7 @@ If you listen to mouse events, you automatically set the property of your own an
     <!-- 
     <dt class="tag-source">Source:</dt>
     <dd class="tag-source"><ul class="dummy"><li>
-        js, line 198
+        js, line 185
     </li></ul></dd>
      -->
 
@@ -6278,7 +6240,7 @@ If you listen to mouse events, you automatically set the property of your own an
             
 
             <td class="description last">
-                args  Callback parameter.
+                args  Optional callback parameters.
                 
             </td>
         </tr>
@@ -6316,7 +6278,7 @@ If you listen to mouse events, you automatically set the property of your own an
             
 
             <td class="description last">
-                Whether or not the previous delay execution is covered, defaults to true.
+                (optional) whether the delay is covered before default is true.
                 
             </td>
         </tr>
@@ -6394,7 +6356,7 @@ If you listen to mouse events, you automatically set the property of your own an
     <!-- 
     <dt class="tag-source">Source:</dt>
     <dd class="tag-source"><ul class="dummy"><li>
-        js, line 223
+        js, line 210
     </li></ul></dd>
      -->
 
@@ -6480,7 +6442,7 @@ If you listen to mouse events, you automatically set the property of your own an
     <!-- 
     <dt class="tag-source">Source:</dt>
     <dd class="tag-source"><ul class="dummy"><li>
-        js, line 235
+        js, line 222
     </li></ul></dd>
      -->
 
@@ -6566,7 +6528,7 @@ If you listen to mouse events, you automatically set the property of your own an
     <!-- 
     <dt class="tag-source">Source:</dt>
     <dd class="tag-source"><ul class="dummy"><li>
-        js, line 229
+        js, line 216
     </li></ul></dd>
      -->
 
@@ -6652,7 +6614,7 @@ If you listen to mouse events, you automatically set the property of your own an
     <!-- 
     <dt class="tag-source">Source:</dt>
     <dd class="tag-source"><ul class="dummy"><li>
-        js, line 241
+        js, line 228
     </li></ul></dd>
      -->
 

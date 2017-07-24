@@ -42,7 +42,8 @@
         SoundChannel
         </h2>
         
-            <div class="class-description"><code>SoundChannel</code> Used to control sounds in programs.</div>
+            <div class="class-description"><p> <code>SoundChannel</code> Used to control sounds in programs. Each sound is assigned to one channel, and the application may have multiple channels that are mixed together. </p>
+<p> <code>SoundChannel</code> Class includes the method of controlling the sound's play, pause, stop, volume, and the method of getting the audio playing state, the total time, the current playing time, the total cycle number, the broadcast address and so on. </p></div>
         
     
 </header>
@@ -96,7 +97,7 @@
     <!-- 
     <dt class="tag-source">Source:</dt>
     <dd class="tag-source"><ul class="dummy"><li>
-        js, line 6
+        js, line 7
     </li></ul></dd>
      -->
 
@@ -202,7 +203,7 @@
     <!-- 
     <dt class="tag-source">Source:</dt>
     <dd class="tag-source"><ul class="dummy"><li>
-        js, line 36
+        js, line 37
     </li></ul></dd>
      -->
 
@@ -350,7 +351,7 @@
     <!-- 
     <dt class="tag-source">Source:</dt>
     <dd class="tag-source"><ul class="dummy"><li>
-        js, line 30
+        js, line 31
     </li></ul></dd>
      -->
 
@@ -424,7 +425,7 @@
     <!-- 
     <dt class="tag-source">Source:</dt>
     <dd class="tag-source"><ul class="dummy"><li>
-        js, line 18
+        js, line 19
     </li></ul></dd>
      -->
 
@@ -572,7 +573,7 @@
     <!-- 
     <dt class="tag-source">Source:</dt>
     <dd class="tag-source"><ul class="dummy"><li>
-        js, line 24
+        js, line 25
     </li></ul></dd>
      -->
 
@@ -646,7 +647,7 @@
     <!-- 
     <dt class="tag-source">Source:</dt>
     <dd class="tag-source"><ul class="dummy"><li>
-        js, line 12
+        js, line 13
     </li></ul></dd>
      -->
 
@@ -682,10 +683,6 @@
 
 
 
-
-<div class="description">
-    Volume.
-</div>
 
 
 
@@ -804,7 +801,7 @@
     <!-- 
     <dt class="tag-source">Source:</dt>
     <dd class="tag-source"><ul class="dummy"><li>
-        js, line 65
+        js, line 73
     </li></ul></dd>
      -->
 
@@ -892,7 +889,7 @@
     <!-- 
     <dt class="tag-source">Source:</dt>
     <dd class="tag-source"><ul class="dummy"><li>
-        js, line 25
+        js, line 24
     </li></ul></dd>
      -->
 
@@ -1011,8 +1008,7 @@
             
 
             <td class="description last">
-                data  Callback data. 
-<b> Be careful： </b> If you need to pass multiple parameters, P1, P2, P3, you can use the array structure, such as: [p1,p2,p3,...] If you need a callback, a single parameter p is an array, so you need to use a structure such as: [p] Other single parameters, P, can be passed directly to the parameter P.
+                data  (optional) callback data. <b> Be careful： </b> If you need to pass multiple parameters, P1, P2, P3, you can use the array structure, such as: [p1,p2,p3,...] If you need to call a single parameter P, and P is an array, you need to use a structure such as: [p] Other single parameters, P, can be passed directly to the parameter P.
                 
             </td>
         </tr>
@@ -1281,7 +1277,7 @@
     <!-- 
     <dt class="tag-source">Source:</dt>
     <dd class="tag-source"><ul class="dummy"><li>
-        js, line 64
+        js, line 63
     </li></ul></dd>
      -->
 
@@ -1446,7 +1442,7 @@
     <!-- 
     <dt class="tag-source">Source:</dt>
     <dd class="tag-source"><ul class="dummy"><li>
-        js, line 52
+        js, line 51
     </li></ul></dd>
      -->
 
@@ -1585,7 +1581,7 @@
             
 
             <td class="description last">
-                If the value is true, only the listeners added by the once method are removed.
+                (optional) if the value is true, only the listeners added by the once method are removed.
                 
             </td>
         </tr>
@@ -1689,7 +1685,7 @@
     <!-- 
     <dt class="tag-source">Source:</dt>
     <dd class="tag-source"><ul class="dummy"><li>
-        js, line 58
+        js, line 57
     </li></ul></dd>
      -->
 
@@ -1770,7 +1766,7 @@
             
 
             <td class="description last">
-                type  Event type, if the value is null, removes all types of listeners for this object.
+                type  (optional) event type. If the value is null, all types of listeners for this object are removed.
                 
             </td>
         </tr>
@@ -1874,7 +1870,7 @@
     <!-- 
     <dt class="tag-source">Source:</dt>
     <dd class="tag-source"><ul class="dummy"><li>
-        js, line 34
+        js, line 33
     </li></ul></dd>
      -->
 
@@ -2069,7 +2065,7 @@
             
 
             <td class="description last">
-                args  The callback parameter of the event listener function.
+                args  Optional callback parameters for the event listener function.
                 
             </td>
         </tr>
@@ -2173,7 +2169,7 @@
     <!-- 
     <dt class="tag-source">Source:</dt>
     <dd class="tag-source"><ul class="dummy"><li>
-        js, line 43
+        js, line 42
     </li></ul></dd>
      -->
 
@@ -2368,7 +2364,7 @@
             
 
             <td class="description last">
-                args  The callback parameter of the event listener function.
+                args  Optional callback parameters for the event listener function.
                 
             </td>
         </tr>
@@ -2424,6 +2420,89 @@
 
     
 
+    <h4 class="name" id="pause"><span class="type-signature"></span>pause<span class="signature">()</span><span class="type-signature"></span></h4>
+
+    
+
+
+
+<div class="description">
+    Pause.
+</div>
+
+
+
+
+
+<dl class="details">
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    <!-- 
+    <dt class="tag-source">Source:</dt>
+    <dd class="tag-source"><ul class="dummy"><li>
+        js, line 65
+    </li></ul></dd>
+     -->
+
+    
+
+    
+
+    
+</dl>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+</div>
+        
+            
+<div class="section-method">
+
+    
+
     <h4 class="name" id="play"><span class="type-signature"></span>play<span class="signature">()</span><span class="type-signature"></span></h4>
 
     
@@ -2468,6 +2547,89 @@
     <dt class="tag-source">Source:</dt>
     <dd class="tag-source"><ul class="dummy"><li>
         js, line 57
+    </li></ul></dd>
+     -->
+
+    
+
+    
+
+    
+</dl>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+</div>
+        
+            
+<div class="section-method">
+
+    
+
+    <h4 class="name" id="resume"><span class="type-signature"></span>resume<span class="signature">()</span><span class="type-signature"></span></h4>
+
+    
+
+
+
+<div class="description">
+    Continue play.
+</div>
+
+
+
+
+
+<dl class="details">
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    <!-- 
+    <dt class="tag-source">Source:</dt>
+    <dd class="tag-source"><ul class="dummy"><li>
+        js, line 69
     </li></ul></dd>
      -->
 

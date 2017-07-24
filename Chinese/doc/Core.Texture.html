@@ -426,7 +426,7 @@
         
             
 <div class="section-members">
-<h4 class="name" id="bitmap"><span class="type-signature"></span>bitmap<span class="type-signature"> :Object</span></h4>
+<h4 class="name" id="bitmap"><span class="type-signature"></span>bitmap<span class="type-signature"> :Bitmap</span></h4>
 
 
 
@@ -485,7 +485,7 @@
     <ul>
         <li>
             
-<span class="param-type"><code>Object</code></span>
+<span class="param-type"><code>Bitmap</code></span>
 
 
         </li>
@@ -580,7 +580,7 @@
 
 
 <div class="description">
-    获取当前纹理是否启用了线性采样
+    获取当前纹理是否启用了线性采样。
 </div>
 
 
@@ -1994,7 +1994,7 @@
 
 
 <div class="description">
-    截取Texture的一部分区域，生成新的Texture，如果两个区域没有相交，则返回null
+    截取Texture的一部分区域，生成新的Texture，如果两个区域没有相交，则返回null。
 </div>
 
 
@@ -2091,7 +2091,7 @@
             
 
             <td class="description last">
-                目标Texture
+                目标Texture。
                 
             </td>
         </tr>
@@ -2117,7 +2117,7 @@
             
 
             <td class="description last">
-                相对于目标Texture的x位置
+                相对于目标Texture的x位置。
                 
             </td>
         </tr>
@@ -2143,7 +2143,7 @@
             
 
             <td class="description last">
-                相对于目标Texture的y位置
+                相对于目标Texture的y位置。
                 
             </td>
         </tr>
@@ -2169,7 +2169,7 @@
             
 
             <td class="description last">
-                截取的宽度
+                截取的宽度。
                 
             </td>
         </tr>
@@ -2195,7 +2195,7 @@
             
 
             <td class="description last">
-                截取的高度
+                截取的高度。
                 
             </td>
         </tr>
@@ -2236,7 +2236,7 @@
 
 
 <div class="param-desc">
-    返回一个新的Texture
+    返回一个新的Texture。
 </div>
 
     
@@ -2258,7 +2258,7 @@
 
 
 <div class="description">
-    销毁纹理（分直接销毁，跟计数销毁两种）
+    销毁纹理（分直接销毁，跟计数销毁两种）。
 </div>
 
 
@@ -2294,7 +2294,7 @@
     <!-- 
     <dt class="tag-source">Source:</dt>
     <dd class="tag-source"><ul class="dummy"><li>
-        js, line 153
+        js, line 156
     </li></ul></dd>
      -->
 
@@ -2355,7 +2355,7 @@
             
 
             <td class="description last">
-                true为强制销毁主纹理，false是通过计数销毁纹理
+                (default = false)true为强制销毁主纹理，false是通过计数销毁纹理。
                 
             </td>
         </tr>
@@ -2434,7 +2434,7 @@
     <!-- 
     <dt class="tag-source">Source:</dt>
     <dd class="tag-source"><ul class="dummy"><li>
-        js, line 25
+        js, line 24
     </li></ul></dd>
      -->
 
@@ -2553,8 +2553,7 @@
             
 
             <td class="description last">
-                data 回调数据。
-<b>注意：</b>如果是需要传递多个参数 p1,p2,p3,...可以使用数组结构如：[p1,p2,p3,...] ；如果需要回调单个参数 p 是一个数组，则需要使用结构如：[p]，其他的单个参数 p ，可以直接传入参数 p。
+                data （可选）回调数据。<b>注意：</b>如果是需要传递多个参数 p1,p2,p3,...可以使用数组结构如：[p1,p2,p3,...] ；如果需要回调单个参数 p ，且 p 是一个数组，则需要使用结构如：[p]，其他的单个参数 p ，可以直接传入参数 p。
                 
             </td>
         </tr>
@@ -2610,6 +2609,85 @@
 
     
 
+    <h4 class="name" id="getEnabled"><span class="type-signature"></span>getEnabled<span class="signature">()</span><span class="type-signature"></span></h4>
+
+    
+
+
+
+
+
+
+
+<dl class="details">
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    <!-- 
+    <dt class="tag-source">Source:</dt>
+    <dd class="tag-source"><ul class="dummy"><li>
+        js, line 151
+    </li></ul></dd>
+     -->
+
+    
+
+    
+
+    
+</dl>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+</div>
+        
+            
+<div class="section-method">
+
+    
+
     <h4 class="name" id="getPixels"><span class="type-signature"></span>getPixels<span class="signature">(x, y, width, height)</span><span class="type-signature"> &rarr; {Array}</span></h4>
 
     
@@ -2653,7 +2731,7 @@
     <!-- 
     <dt class="tag-source">Source:</dt>
     <dd class="tag-source"><ul class="dummy"><li>
-        js, line 167
+        js, line 170
     </li></ul></dd>
      -->
 
@@ -3061,7 +3139,7 @@
     <!-- 
     <dt class="tag-source">Source:</dt>
     <dd class="tag-source"><ul class="dummy"><li>
-        js, line 64
+        js, line 63
     </li></ul></dd>
      -->
 
@@ -3221,7 +3299,7 @@
     <!-- 
     <dt class="tag-source">Source:</dt>
     <dd class="tag-source"><ul class="dummy"><li>
-        js, line 158
+        js, line 161
     </li></ul></dd>
      -->
 
@@ -3573,7 +3651,7 @@
     <!-- 
     <dt class="tag-source">Source:</dt>
     <dd class="tag-source"><ul class="dummy"><li>
-        js, line 52
+        js, line 51
     </li></ul></dd>
      -->
 
@@ -3712,7 +3790,7 @@
             
 
             <td class="description last">
-                如果值为 true ,则只移除通过 once 方法添加的侦听器。
+                （可选）如果值为 true ,则只移除通过 once 方法添加的侦听器。
                 
             </td>
         </tr>
@@ -3816,7 +3894,7 @@
     <!-- 
     <dt class="tag-source">Source:</dt>
     <dd class="tag-source"><ul class="dummy"><li>
-        js, line 58
+        js, line 57
     </li></ul></dd>
      -->
 
@@ -3897,7 +3975,7 @@
             
 
             <td class="description last">
-                type 事件类型，如果值为 null，则移除本对象所有类型的侦听器。
+                type （可选）事件类型，如果值为 null，则移除本对象所有类型的侦听器。
                 
             </td>
         </tr>
@@ -4001,7 +4079,7 @@
     <!-- 
     <dt class="tag-source">Source:</dt>
     <dd class="tag-source"><ul class="dummy"><li>
-        js, line 34
+        js, line 33
     </li></ul></dd>
      -->
 
@@ -4196,7 +4274,7 @@
             
 
             <td class="description last">
-                args 事件侦听函数的回调参数。
+                args （可选）事件侦听函数的回调参数。
                 
             </td>
         </tr>
@@ -4300,7 +4378,7 @@
     <!-- 
     <dt class="tag-source">Source:</dt>
     <dd class="tag-source"><ul class="dummy"><li>
-        js, line 43
+        js, line 42
     </li></ul></dd>
      -->
 
@@ -4495,7 +4573,7 @@
             
 
             <td class="description last">
-                args 事件侦听函数的回调参数。
+                args （可选）事件侦听函数的回调参数。
                 
             </td>
         </tr>
@@ -4795,7 +4873,7 @@
     <!-- 
     <dt class="tag-source">Source:</dt>
     <dd class="tag-source"><ul class="dummy"><li>
-        js, line 168
+        js, line 171
     </li></ul></dd>
      -->
 

@@ -42,7 +42,8 @@
         SoundChannel
         </h2>
         
-            <div class="class-description"><code>SoundChannel</code> 用来控制程序中的声音。</div>
+            <div class="class-description"><p> <code>SoundChannel</code> 用来控制程序中的声音。每个声音均分配给一个声道，而且应用程序可以具有混合在一起的多个声道。</p>
+<p> <code>SoundChannel</code> 类包含控制声音的播放、暂停、停止、音量的方法，以及获取声音的播放状态、总时间、当前播放时间、总循环次数、播放地址等信息的方法。</p></div>
         
     
 </header>
@@ -96,7 +97,7 @@
     <!-- 
     <dt class="tag-source">Source:</dt>
     <dd class="tag-source"><ul class="dummy"><li>
-        js, line 6
+        js, line 7
     </li></ul></dd>
      -->
 
@@ -202,7 +203,7 @@
     <!-- 
     <dt class="tag-source">Source:</dt>
     <dd class="tag-source"><ul class="dummy"><li>
-        js, line 36
+        js, line 37
     </li></ul></dd>
      -->
 
@@ -350,7 +351,7 @@
     <!-- 
     <dt class="tag-source">Source:</dt>
     <dd class="tag-source"><ul class="dummy"><li>
-        js, line 30
+        js, line 31
     </li></ul></dd>
      -->
 
@@ -424,7 +425,7 @@
     <!-- 
     <dt class="tag-source">Source:</dt>
     <dd class="tag-source"><ul class="dummy"><li>
-        js, line 18
+        js, line 19
     </li></ul></dd>
      -->
 
@@ -572,7 +573,7 @@
     <!-- 
     <dt class="tag-source">Source:</dt>
     <dd class="tag-source"><ul class="dummy"><li>
-        js, line 24
+        js, line 25
     </li></ul></dd>
      -->
 
@@ -646,7 +647,7 @@
     <!-- 
     <dt class="tag-source">Source:</dt>
     <dd class="tag-source"><ul class="dummy"><li>
-        js, line 12
+        js, line 13
     </li></ul></dd>
      -->
 
@@ -682,10 +683,6 @@
 
 
 
-
-<div class="description">
-    音量。
-</div>
 
 
 
@@ -804,7 +801,7 @@
     <!-- 
     <dt class="tag-source">Source:</dt>
     <dd class="tag-source"><ul class="dummy"><li>
-        js, line 65
+        js, line 73
     </li></ul></dd>
      -->
 
@@ -892,7 +889,7 @@
     <!-- 
     <dt class="tag-source">Source:</dt>
     <dd class="tag-source"><ul class="dummy"><li>
-        js, line 25
+        js, line 24
     </li></ul></dd>
      -->
 
@@ -1011,8 +1008,7 @@
             
 
             <td class="description last">
-                data 回调数据。
-<b>注意：</b>如果是需要传递多个参数 p1,p2,p3,...可以使用数组结构如：[p1,p2,p3,...] ；如果需要回调单个参数 p 是一个数组，则需要使用结构如：[p]，其他的单个参数 p ，可以直接传入参数 p。
+                data （可选）回调数据。<b>注意：</b>如果是需要传递多个参数 p1,p2,p3,...可以使用数组结构如：[p1,p2,p3,...] ；如果需要回调单个参数 p ，且 p 是一个数组，则需要使用结构如：[p]，其他的单个参数 p ，可以直接传入参数 p。
                 
             </td>
         </tr>
@@ -1281,7 +1277,7 @@
     <!-- 
     <dt class="tag-source">Source:</dt>
     <dd class="tag-source"><ul class="dummy"><li>
-        js, line 64
+        js, line 63
     </li></ul></dd>
      -->
 
@@ -1446,7 +1442,7 @@
     <!-- 
     <dt class="tag-source">Source:</dt>
     <dd class="tag-source"><ul class="dummy"><li>
-        js, line 52
+        js, line 51
     </li></ul></dd>
      -->
 
@@ -1585,7 +1581,7 @@
             
 
             <td class="description last">
-                如果值为 true ,则只移除通过 once 方法添加的侦听器。
+                （可选）如果值为 true ,则只移除通过 once 方法添加的侦听器。
                 
             </td>
         </tr>
@@ -1689,7 +1685,7 @@
     <!-- 
     <dt class="tag-source">Source:</dt>
     <dd class="tag-source"><ul class="dummy"><li>
-        js, line 58
+        js, line 57
     </li></ul></dd>
      -->
 
@@ -1770,7 +1766,7 @@
             
 
             <td class="description last">
-                type 事件类型，如果值为 null，则移除本对象所有类型的侦听器。
+                type （可选）事件类型，如果值为 null，则移除本对象所有类型的侦听器。
                 
             </td>
         </tr>
@@ -1874,7 +1870,7 @@
     <!-- 
     <dt class="tag-source">Source:</dt>
     <dd class="tag-source"><ul class="dummy"><li>
-        js, line 34
+        js, line 33
     </li></ul></dd>
      -->
 
@@ -2069,7 +2065,7 @@
             
 
             <td class="description last">
-                args 事件侦听函数的回调参数。
+                args （可选）事件侦听函数的回调参数。
                 
             </td>
         </tr>
@@ -2173,7 +2169,7 @@
     <!-- 
     <dt class="tag-source">Source:</dt>
     <dd class="tag-source"><ul class="dummy"><li>
-        js, line 43
+        js, line 42
     </li></ul></dd>
      -->
 
@@ -2368,7 +2364,7 @@
             
 
             <td class="description last">
-                args 事件侦听函数的回调参数。
+                args （可选）事件侦听函数的回调参数。
                 
             </td>
         </tr>
@@ -2424,6 +2420,89 @@
 
     
 
+    <h4 class="name" id="pause"><span class="type-signature"></span>pause<span class="signature">()</span><span class="type-signature"></span></h4>
+
+    
+
+
+
+<div class="description">
+    暂停。
+</div>
+
+
+
+
+
+<dl class="details">
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    <!-- 
+    <dt class="tag-source">Source:</dt>
+    <dd class="tag-source"><ul class="dummy"><li>
+        js, line 65
+    </li></ul></dd>
+     -->
+
+    
+
+    
+
+    
+</dl>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+</div>
+        
+            
+<div class="section-method">
+
+    
+
     <h4 class="name" id="play"><span class="type-signature"></span>play<span class="signature">()</span><span class="type-signature"></span></h4>
 
     
@@ -2468,6 +2547,89 @@
     <dt class="tag-source">Source:</dt>
     <dd class="tag-source"><ul class="dummy"><li>
         js, line 57
+    </li></ul></dd>
+     -->
+
+    
+
+    
+
+    
+</dl>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+</div>
+        
+            
+<div class="section-method">
+
+    
+
+    <h4 class="name" id="resume"><span class="type-signature"></span>resume<span class="signature">()</span><span class="type-signature"></span></h4>
+
+    
+
+
+
+<div class="description">
+    继续播放。
+</div>
+
+
+
+
+
+<dl class="details">
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    <!-- 
+    <dt class="tag-source">Source:</dt>
+    <dd class="tag-source"><ul class="dummy"><li>
+        js, line 69
     </li></ul></dd>
      -->
 

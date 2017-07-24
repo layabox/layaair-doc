@@ -42,7 +42,14 @@
         Stat
         </h2>
         
-            <div class="class-description"><code>Stat</code> Used to display frame rate statistics.</div>
+            <div class="class-description"><p> <code>Stat</code> Is a performance statistics panel that updates relevant performance parameters in real time. </p>
+<p> The performance parameters involved in the statistics are as follows (all parameters are updated every approximately 1 second): 
+FPS (Canvas) /FPS (WebGL):Canvas or WebGL mode under the frame, or frames per second display, the higher the value, the more stable, more smooth feeling; <br/>
+Sprite: count the number of all rendering nodes (including containers) that affect the efficiency of engine traversal, data organization, and rendering. The smaller the value, the higher the efficiency of the game; <br/>
+DrawCall: this value is an important indicator of performance, and the smaller the value, the higher the efficiency of the game. Canvas mode image each about a second drawing number; WebGL mode per second said about the rendering of each batch, ready to process data and notify the GPU rendering called DrawCall 1 times, each time in the DrawCall in addition to time-consuming in the notice of the GPU render, switching the shader material and is also very time-consuming operation; <br/>
+CurMem:Canvas mode, said memory size, the smaller the better, too high will cause the game to flash back; WebGL mode, said memory and memory value, the smaller the better; <br/>
+Shader: the unique performance index of the WebGL model, which means the number of Shader submission every two seconds or so, the smaller the better; <br/>
+	*</p></div>
         
     
 </header>
@@ -96,7 +103,7 @@
     <!-- 
     <dt class="tag-source">Source:</dt>
     <dd class="tag-source"><ul class="dummy"><li>
-        js, line 5
+        js, line 12
     </li></ul></dd>
      -->
 
@@ -196,7 +203,7 @@
     <!-- 
     <dt class="tag-source">Source:</dt>
     <dd class="tag-source"><ul class="dummy"><li>
-        js, line 75
+        js, line 82
     </li></ul></dd>
      -->
 
@@ -275,7 +282,7 @@
     <!-- 
     <dt class="tag-source">Source:</dt>
     <dd class="tag-source"><ul class="dummy"><li>
-        js, line 68
+        js, line 75
     </li></ul></dd>
      -->
 
@@ -354,7 +361,7 @@
     <!-- 
     <dt class="tag-source">Source:</dt>
     <dd class="tag-source"><ul class="dummy"><li>
-        js, line 82
+        js, line 89
     </li></ul></dd>
      -->
 
@@ -428,7 +435,7 @@
     <!-- 
     <dt class="tag-source">Source:</dt>
     <dd class="tag-source"><ul class="dummy"><li>
-        js, line 94
+        js, line 101
     </li></ul></dd>
      -->
 
@@ -507,7 +514,7 @@
     <!-- 
     <dt class="tag-source">Source:</dt>
     <dd class="tag-source"><ul class="dummy"><li>
-        js, line 33
+        js, line 40
     </li></ul></dd>
      -->
 
@@ -586,7 +593,7 @@
     <!-- 
     <dt class="tag-source">Source:</dt>
     <dd class="tag-source"><ul class="dummy"><li>
-        js, line 12
+        js, line 19
     </li></ul></dd>
      -->
 
@@ -665,7 +672,7 @@
     <!-- 
     <dt class="tag-source">Source:</dt>
     <dd class="tag-source"><ul class="dummy"><li>
-        js, line 19
+        js, line 26
     </li></ul></dd>
      -->
 
@@ -735,7 +742,7 @@
     <!-- 
     <dt class="tag-source">Source:</dt>
     <dd class="tag-source"><ul class="dummy"><li>
-        js, line 99
+        js, line 106
     </li></ul></dd>
      -->
 
@@ -809,7 +816,7 @@
     <!-- 
     <dt class="tag-source">Source:</dt>
     <dd class="tag-source"><ul class="dummy"><li>
-        js, line 88
+        js, line 95
     </li></ul></dd>
      -->
 
@@ -888,7 +895,7 @@
     <!-- 
     <dt class="tag-source">Source:</dt>
     <dd class="tag-source"><ul class="dummy"><li>
-        js, line 26
+        js, line 33
     </li></ul></dd>
      -->
 
@@ -967,7 +974,7 @@
     <!-- 
     <dt class="tag-source">Source:</dt>
     <dd class="tag-source"><ul class="dummy"><li>
-        js, line 47
+        js, line 54
     </li></ul></dd>
      -->
 
@@ -1046,7 +1053,7 @@
     <!-- 
     <dt class="tag-source">Source:</dt>
     <dd class="tag-source"><ul class="dummy"><li>
-        js, line 54
+        js, line 61
     </li></ul></dd>
      -->
 
@@ -1125,7 +1132,7 @@
     <!-- 
     <dt class="tag-source">Source:</dt>
     <dd class="tag-source"><ul class="dummy"><li>
-        js, line 61
+        js, line 68
     </li></ul></dd>
      -->
 
@@ -1204,7 +1211,7 @@
     <!-- 
     <dt class="tag-source">Source:</dt>
     <dd class="tag-source"><ul class="dummy"><li>
-        js, line 40
+        js, line 47
     </li></ul></dd>
      -->
 
@@ -1252,7 +1259,7 @@
 
 
 <div class="description">
-    Activate frame rate statistics
+    Activation performance statistics
 </div>
 
 
@@ -1288,7 +1295,7 @@
     <!-- 
     <dt class="tag-source">Source:</dt>
     <dd class="tag-source"><ul class="dummy"><li>
-        js, line 109
+        js, line 116
     </li></ul></dd>
      -->
 
@@ -1335,7 +1342,7 @@
 
 
 <div class="description">
-    Hide frame rate information.
+    Hide performance statistics.
 </div>
 
 
@@ -1371,7 +1378,7 @@
     <!-- 
     <dt class="tag-source">Source:</dt>
     <dd class="tag-source"><ul class="dummy"><li>
-        js, line 113
+        js, line 120
     </li></ul></dd>
      -->
 
@@ -1418,7 +1425,7 @@
 
 
 <div class="description">
-    Display frame rate information.
+    Display performance statistics.
 </div>
 
 
@@ -1454,7 +1461,7 @@
     <!-- 
     <dt class="tag-source">Source:</dt>
     <dd class="tag-source"><ul class="dummy"><li>
-        js, line 105
+        js, line 112
     </li></ul></dd>
      -->
 

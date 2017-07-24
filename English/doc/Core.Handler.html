@@ -43,7 +43,7 @@
         </h2>
         
             <div class="class-description"><p><code>Handler</code> Event handler class. </p>
-<p> It is recommended to use the Handler.create () method to create objects from the object pool, reducing object creation consumption. </p>
+<p> It is recommended to use the Handler.create () method to create objects from the object pool, reducing object creation consumption. Created  Handler  After the object is no longer used, you can use Handler.recover () to recycle it into the object pool. Do not reuse this object after recovery, or it will lead to unpredictable errors. </p>
 <p><b> Be careful： </b> Because the mouse event is also using this object pool, incorrect recovery and invocation can affect the execution of the mouse event. </p></div>
         
     

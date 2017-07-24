@@ -42,7 +42,8 @@
         Byte
         </h2>
         
-            <div class="class-description"><code>Byte</code> Class provides methods and properties for optimizing reads, writes, and processing binary data.</div>
+            <div class="class-description"><p> <code>Byte</code> Class provides methods and properties for optimizing reads, writes, and processing binary data. </p>
+<p><b> Be careful： </b> <code>Byte</code> Classes apply to high-level developers who need access to data at the byte level. </p></div>
         
     
 </header>
@@ -100,7 +101,7 @@
     <!-- 
     <dt class="tag-source">Source:</dt>
     <dd class="tag-source"><ul class="dummy"><li>
-        js, line 5
+        js, line 6
     </li></ul></dd>
      -->
 
@@ -181,7 +182,7 @@
             
 
             <td class="description last">
-                data  Used to specify the number of elements, typed arrays, and ArrayBuffer.
+                data  Specifies the number of elements to initialize, or the TypedArray object, ArrayBuffer object, used for initialization. If NULL, a certain amount of memory space is pre allocated, and when the available space is insufficient, this part of memory is used preferentially, and if not enough, the memory needed is redistributed.
                 
             </td>
         </tr>
@@ -268,7 +269,7 @@
     <!-- 
     <dt class="tag-source">Source:</dt>
     <dd class="tag-source"><ul class="dummy"><li>
-        js, line 16
+        js, line 17
     </li></ul></dd>
      -->
 
@@ -343,7 +344,7 @@
     <!-- 
     <dt class="tag-source">Source:</dt>
     <dd class="tag-source"><ul class="dummy"><li>
-        js, line 22
+        js, line 23
     </li></ul></dd>
      -->
 
@@ -417,7 +418,7 @@
     <!-- 
     <dt class="tag-source">Source:</dt>
     <dd class="tag-source"><ul class="dummy"><li>
-        js, line 28
+        js, line 29
     </li></ul></dd>
      -->
 
@@ -491,7 +492,7 @@
     <!-- 
     <dt class="tag-source">Source:</dt>
     <dd class="tag-source"><ul class="dummy"><li>
-        js, line 51
+        js, line 54
     </li></ul></dd>
      -->
 
@@ -529,7 +530,10 @@
 
 
 <div class="description">
-    Byte order.
+    <p> <code>Byte</code> Byte order of an instance. Value as: <code>BIG_ENDIAN</code> or <code>BIG_ENDIAN</code> . </p>
+<p> The host byte order, are two different sequence of CPU stored data, including little endian and big endian. adopt <code>getSystemEndian</code> You can get the byte order of the current system. </p>
+<p> <code>BIG_ENDIAN</code> Address: big endian, low storage value high, high value and low storage. Sometimes called a network byte order. < 
+ <code>LITTLE_ENDIAN</code></p>
 </div>
 
 
@@ -565,7 +569,7 @@
     <!-- 
     <dt class="tag-source">Source:</dt>
     <dd class="tag-source"><ul class="dummy"><li>
-        js, line 33
+        js, line 37
     </li></ul></dd>
      -->
 
@@ -602,10 +606,6 @@
 
 
 
-<div class="description">
-    Byte length.
-</div>
-
 
 
 
@@ -639,7 +639,7 @@
     <!-- 
     <dt class="tag-source">Source:</dt>
     <dd class="tag-source"><ul class="dummy"><li>
-        js, line 39
+        js, line 42
     </li></ul></dd>
      -->
 
@@ -677,7 +677,7 @@
 
 
 <div class="description">
-    Current read to location.
+    Move or return  Byte  The current position (in bytes) of the read and write pointer of an object. The next call to read the method will start reading at this location, or when the next call is written to the method, it will start writing at this location.
 </div>
 
 
@@ -713,7 +713,7 @@
     <!-- 
     <dt class="tag-source">Source:</dt>
     <dd class="tag-source"><ul class="dummy"><li>
-        js, line 45
+        js, line 48
     </li></ul></dd>
      -->
 
@@ -761,7 +761,7 @@
 
 
 <div class="description">
-    Clear data.
+    Clears the contents of the byte array and resets the length and POS attributes to 0. Call this method will release  Byte  Memory occupied by an instance.
 </div>
 
 
@@ -797,7 +797,7 @@
     <!-- 
     <dt class="tag-source">Source:</dt>
     <dd class="tag-source"><ul class="dummy"><li>
-        js, line 158
+        js, line 163
     </li></ul></dd>
      -->
 
@@ -844,7 +844,7 @@
 
 
 <div class="description">
-    Specifies the length of this byte stream.
+    <p> Ensure that the length of the byte stream is not less than the available length <code>lengthToEnsure</code> Parameter specified value. </p>
 </div>
 
 
@@ -880,7 +880,7 @@
     <!-- 
     <dt class="tag-source">Source:</dt>
     <dd class="tag-source"><ul class="dummy"><li>
-        js, line 193
+        js, line 205
     </li></ul></dd>
      -->
 
@@ -972,14 +972,15 @@
 
     
 
-    <h4 class="name" id="getByte"><span class="type-signature"></span>getByte<span class="signature">()</span><span class="type-signature"></span></h4>
+    <h4 class="name" id="getByte"><span class="type-signature"></span>getByte<span class="signature">()</span><span class="type-signature"> &rarr; {int}</span></h4>
 
     
 
 
 
 <div class="description">
-    Reads a byte in the byte stream.
+    <p> Reads signed bytes from a byte stream. </p>
+<p> The range of return values is from -128 to 127. </p>
 </div>
 
 
@@ -1015,7 +1016,7 @@
     <!-- 
     <dt class="tag-source">Source:</dt>
     <dd class="tag-source"><ul class="dummy"><li>
-        js, line 188
+        js, line 200
     </li></ul></dd>
      -->
 
@@ -1032,141 +1033,6 @@
 
 
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-</div>
-        
-            
-<div class="section-method">
-
-    
-
-    <h4 class="name" id="getCustomString"><span class="type-signature"></span>getCustomString<span class="signature">(len)</span><span class="type-signature"> &rarr; {String}</span></h4>
-
-    
-
-
-
-<div class="description">
-    String read.
-</div>
-
-
-
-
-
-<dl class="details">
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    <!-- 
-    <dt class="tag-source">Source:</dt>
-    <dd class="tag-source"><ul class="dummy"><li>
-        js, line 154
-    </li></ul></dd>
-     -->
-
-    
-
-    
-
-    
-</dl>
-
-
-
-
-
-
-
-
-
-    <h5>Parameters:</h5>
-    
-
-<table class="params">
-    <thead>
-    <tr>
-        
-        <th>Name</th>
-        
-
-        <th>Type</th>
-
-        
-
-        
-
-        <th class="last">Description</th>
-    </tr>
-    </thead>
-
-    <tbody>
-    
-
-        <tr>
-            
-                <td class="name"><code>len</code></td>
-            
-
-            <td class="type">
-            
-                
-<span class="param-type"><code>int</code></span>
-
-
-            
-            </td>
-
-            
-
-            
-
-            <td class="description last">
-                
-                
-            </td>
-        </tr>
-
-    
-    </tbody>
-</table>
 
 
 
@@ -1192,12 +1058,16 @@
     </dt>
     <dd>
         
-<span class="param-type"><code>String</code></span>
+<span class="param-type"><code>int</code></span>
 
 
     </dd>
 </dl>
 
+
+<div class="param-desc">
+    An integer between -128 and 127.
+</div>
 
     
 </div>
@@ -1218,7 +1088,7 @@
 
 
 <div class="description">
-    Reads the Float32 value at the specified byte offset position.
+    Reads a IEEE 754 single precision (32 bit) floating-point from the current byte offset of the byte stream.
 </div>
 
 
@@ -1254,7 +1124,7 @@
     <!-- 
     <dt class="tag-source">Source:</dt>
     <dd class="tag-source"><ul class="dummy"><li>
-        js, line 87
+        js, line 94
     </li></ul></dd>
      -->
 
@@ -1304,7 +1174,7 @@
 
 
 <div class="param-desc">
-    Float32 value.
+    Single precision (32 bit) floating point numbers.
 </div>
 
     
@@ -1326,994 +1196,7 @@
 
 
 <div class="description">
-    Reads the specified length of data from the specified location, creates a Float32Array object, and returns the object.
-</div>
-
-
-
-
-
-<dl class="details">
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    <!-- 
-    <dt class="tag-source">Source:</dt>
-    <dd class="tag-source"><ul class="dummy"><li>
-        js, line 68
-    </li></ul></dd>
-     -->
-
-    
-
-    
-
-    
-</dl>
-
-
-
-
-
-
-
-
-
-    <h5>Parameters:</h5>
-    
-
-<table class="params">
-    <thead>
-    <tr>
-        
-        <th>Name</th>
-        
-
-        <th>Type</th>
-
-        
-
-        
-
-        <th class="last">Description</th>
-    </tr>
-    </thead>
-
-    <tbody>
-    
-
-        <tr>
-            
-                <td class="name"><code>start</code></td>
-            
-
-            <td class="type">
-            
-                
-<span class="param-type"><code>int</code></span>
-
-
-            
-            </td>
-
-            
-
-            
-
-            <td class="description last">
-                Starting position.
-                
-            </td>
-        </tr>
-
-    
-
-        <tr>
-            
-                <td class="name"><code>len</code></td>
-            
-
-            <td class="type">
-            
-                
-<span class="param-type"><code>int</code></span>
-
-
-            
-            </td>
-
-            
-
-            
-
-            <td class="description last">
-                The length of bytes to read.
-                
-            </td>
-        </tr>
-
-    
-    </tbody>
-</table>
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-<div class="section-returns">
-<h5>Returns:</h5>
-
-        
-
-<dl class="param-type">
-    <dt>
-        Type:
-    </dt>
-    <dd>
-        
-<span class="param-type"><code>Object</code></span>
-
-
-    </dd>
-</dl>
-
-
-<div class="param-desc">
-    The read Float32Array object.
-</div>
-
-    
-</div>
-
-
-
-</div>
-        
-            
-<div class="section-method">
-
-    
-
-    <h4 class="name" id="getFloat64"><span class="type-signature"></span>getFloat64<span class="signature">()</span><span class="type-signature"></span></h4>
-
-    
-
-
-
-
-
-
-
-<dl class="details">
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    <!-- 
-    <dt class="tag-source">Source:</dt>
-    <dd class="tag-source"><ul class="dummy"><li>
-        js, line 90
-    </li></ul></dd>
-     -->
-
-    
-
-    
-
-    
-</dl>
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-</div>
-        
-            
-<div class="section-method">
-
-    
-
-    <h4 class="name" id="getInt16"><span class="type-signature"></span>getInt16<span class="signature">()</span><span class="type-signature"> &rarr; {int}</span></h4>
-
-    
-
-
-
-<div class="description">
-    Reads the Int16 value at the current byte offset position.
-</div>
-
-
-
-
-
-<dl class="details">
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    <!-- 
-    <dt class="tag-source">Source:</dt>
-    <dd class="tag-source"><ul class="dummy"><li>
-        js, line 123
-    </li></ul></dd>
-     -->
-
-    
-
-    
-
-    
-</dl>
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-<div class="section-returns">
-<h5>Returns:</h5>
-
-        
-
-<dl class="param-type">
-    <dt>
-        Type:
-    </dt>
-    <dd>
-        
-<span class="param-type"><code>int</code></span>
-
-
-    </dd>
-</dl>
-
-
-<div class="param-desc">
-    Int16 value.
-</div>
-
-    
-</div>
-
-
-
-</div>
-        
-            
-<div class="section-method">
-
-    
-
-    <h4 class="name" id="getInt16Array"><span class="type-signature"></span>getInt16Array<span class="signature">(start, len)</span><span class="type-signature"> &rarr; {Object}</span></h4>
-
-    
-
-
-
-<div class="description">
-    Reads the specified length of data from the specified location, creates a Int16Array object, and returns the object.
-</div>
-
-
-
-
-
-<dl class="details">
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    <!-- 
-    <dt class="tag-source">Source:</dt>
-    <dd class="tag-source"><ul class="dummy"><li>
-        js, line 82
-    </li></ul></dd>
-     -->
-
-    
-
-    
-
-    
-</dl>
-
-
-
-
-
-
-
-
-
-    <h5>Parameters:</h5>
-    
-
-<table class="params">
-    <thead>
-    <tr>
-        
-        <th>Name</th>
-        
-
-        <th>Type</th>
-
-        
-
-        
-
-        <th class="last">Description</th>
-    </tr>
-    </thead>
-
-    <tbody>
-    
-
-        <tr>
-            
-                <td class="name"><code>start</code></td>
-            
-
-            <td class="type">
-            
-                
-<span class="param-type"><code>int</code></span>
-
-
-            
-            </td>
-
-            
-
-            
-
-            <td class="description last">
-                Starting position.
-                
-            </td>
-        </tr>
-
-    
-
-        <tr>
-            
-                <td class="name"><code>len</code></td>
-            
-
-            <td class="type">
-            
-                
-<span class="param-type"><code>int</code></span>
-
-
-            
-            </td>
-
-            
-
-            
-
-            <td class="description last">
-                The length of bytes to read.
-                
-            </td>
-        </tr>
-
-    
-    </tbody>
-</table>
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-<div class="section-returns">
-<h5>Returns:</h5>
-
-        
-
-<dl class="param-type">
-    <dt>
-        Type:
-    </dt>
-    <dd>
-        
-<span class="param-type"><code>Object</code></span>
-
-
-    </dd>
-</dl>
-
-
-<div class="param-desc">
-    The read Uint8Array object.
-</div>
-
-    
-</div>
-
-
-
-</div>
-        
-            
-<div class="section-method">
-
-    
-
-    <h4 class="name" id="getInt32"><span class="type-signature"></span>getInt32<span class="signature">()</span><span class="type-signature"> &rarr; {int}</span></h4>
-
-    
-
-
-
-<div class="description">
-    Reads the Int32 value at the current byte offset position.
-</div>
-
-
-
-
-
-<dl class="details">
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    <!-- 
-    <dt class="tag-source">Source:</dt>
-    <dd class="tag-source"><ul class="dummy"><li>
-        js, line 103
-    </li></ul></dd>
-     -->
-
-    
-
-    
-
-    
-</dl>
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-<div class="section-returns">
-<h5>Returns:</h5>
-
-        
-
-<dl class="param-type">
-    <dt>
-        Type:
-    </dt>
-    <dd>
-        
-<span class="param-type"><code>int</code></span>
-
-
-    </dd>
-</dl>
-
-
-<div class="param-desc">
-    Int32 value.
-</div>
-
-    
-</div>
-
-
-
-</div>
-        
-            
-<div class="section-method">
-
-    
-
-    <h4 class="name" id="getString"><span class="type-signature"></span>getString<span class="signature">()</span><span class="type-signature"> &rarr; {String}</span></h4>
-
-    
-
-
-
-<div class="description">
-    Read character value.
-</div>
-
-
-
-
-
-<dl class="details">
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    <!-- 
-    <dt class="tag-source">Source:</dt>
-    <dd class="tag-source"><ul class="dummy"><li>
-        js, line 61
-    </li></ul></dd>
-     -->
-
-    
-
-    
-
-    
-</dl>
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-<div class="section-returns">
-<h5>Returns:</h5>
-
-        
-
-<dl class="param-type">
-    <dt>
-        Type:
-    </dt>
-    <dd>
-        
-<span class="param-type"><code>String</code></span>
-
-
-    </dd>
-</dl>
-
-
-    
-</div>
-
-
-
-</div>
-        
-            
-<div class="section-method">
-
-    
-
-    <h4 class="name" id="getSystemEndian"><span class="type-signature"></span>getSystemEndian<span class="signature">()</span><span class="type-signature"> &rarr; {String}</span></h4>
-
-    
-
-
-
-<div class="description">
-    Gets the byte storage order of the system.
-</div>
-
-
-
-
-
-<dl class="details">
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    <!-- 
-    <dt class="tag-source">Source:</dt>
-    <dd class="tag-source"><ul class="dummy"><li>
-        js, line 56
-    </li></ul></dd>
-     -->
-
-    
-
-    
-
-    
-</dl>
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-<div class="section-returns">
-<h5>Returns:</h5>
-
-        
-
-<dl class="param-type">
-    <dt>
-        Type:
-    </dt>
-    <dd>
-        
-<span class="param-type"><code>String</code></span>
-
-
-    </dd>
-</dl>
-
-
-<div class="param-desc">
-    Byte storage order.
-</div>
-
-    
-</div>
-
-
-
-</div>
-        
-            
-<div class="section-method">
-
-    
-
-    <h4 class="name" id="getUint8"><span class="type-signature"></span>getUint8<span class="signature">()</span><span class="type-signature"> &rarr; {uint}</span></h4>
-
-    
-
-
-
-<div class="description">
-    Reads the Uint8 value at the current byte offset position.
-</div>
-
-
-
-
-
-<dl class="details">
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    <!-- 
-    <dt class="tag-source">Source:</dt>
-    <dd class="tag-source"><ul class="dummy"><li>
-        js, line 143
-    </li></ul></dd>
-     -->
-
-    
-
-    
-
-    
-</dl>
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-<div class="section-returns">
-<h5>Returns:</h5>
-
-        
-
-<dl class="param-type">
-    <dt>
-        Type:
-    </dt>
-    <dd>
-        
-<span class="param-type"><code>uint</code></span>
-
-
-    </dd>
-</dl>
-
-
-<div class="param-desc">
-    Uint8 value.
-</div>
-
-    
-</div>
-
-
-
-</div>
-        
-            
-<div class="section-method">
-
-    
-
-    <h4 class="name" id="getUint8Array"><span class="type-signature"></span>getUint8Array<span class="signature">(start, len)</span><span class="type-signature"> &rarr; {Uint8Array}</span></h4>
-
-    
-
-
-
-<div class="description">
-    Reads the specified length of data from the specified location, creates a Uint8Array object, and returns the object.
+    From byte stream <code>start</code> Parameter specifies the location to start and read <code>len</code> The number of bytes specified by the parameter, used to create one <code>Float32Array</code> Object and return this object.
 </div>
 
 
@@ -2436,7 +1319,1031 @@
             
 
             <td class="description last">
-                The length of bytes to read.
+                The length of bytes to read. If the length of the read exceeds the readable range, only the value in the readable range is returned.
+                
+            </td>
+        </tr>
+
+    
+    </tbody>
+</table>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div class="section-returns">
+<h5>Returns:</h5>
+
+        
+
+<dl class="param-type">
+    <dt>
+        Type:
+    </dt>
+    <dd>
+        
+<span class="param-type"><code>Object</code></span>
+
+
+    </dd>
+</dl>
+
+
+<div class="param-desc">
+    The Float32Array object to read.
+</div>
+
+    
+</div>
+
+
+
+</div>
+        
+            
+<div class="section-method">
+
+    
+
+    <h4 class="name" id="getFloat64"><span class="type-signature"></span>getFloat64<span class="signature">()</span><span class="type-signature"> &rarr; {Number}</span></h4>
+
+    
+
+
+
+<div class="description">
+    Reads a IEEE 754 double precision (64 bit) float from the current byte offset of the byte stream.
+</div>
+
+
+
+
+
+<dl class="details">
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    <!-- 
+    <dt class="tag-source">Source:</dt>
+    <dd class="tag-source"><ul class="dummy"><li>
+        js, line 99
+    </li></ul></dd>
+     -->
+
+    
+
+    
+
+    
+</dl>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div class="section-returns">
+<h5>Returns:</h5>
+
+        
+
+<dl class="param-type">
+    <dt>
+        Type:
+    </dt>
+    <dd>
+        
+<span class="param-type"><code>Number</code></span>
+
+
+    </dd>
+</dl>
+
+
+<div class="param-desc">
+    Double precision (64 bit) floating point number.
+</div>
+
+    
+</div>
+
+
+
+</div>
+        
+            
+<div class="section-method">
+
+    
+
+    <h4 class="name" id="getInt16"><span class="type-signature"></span>getInt16<span class="signature">()</span><span class="type-signature"> &rarr; {int}</span></h4>
+
+    
+
+
+
+<div class="description">
+    Reads a Int16 value from the current byte offset position of the byte stream.
+</div>
+
+
+
+
+
+<dl class="details">
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    <!-- 
+    <dt class="tag-source">Source:</dt>
+    <dd class="tag-source"><ul class="dummy"><li>
+        js, line 134
+    </li></ul></dd>
+     -->
+
+    
+
+    
+
+    
+</dl>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div class="section-returns">
+<h5>Returns:</h5>
+
+        
+
+<dl class="param-type">
+    <dt>
+        Type:
+    </dt>
+    <dd>
+        
+<span class="param-type"><code>int</code></span>
+
+
+    </dd>
+</dl>
+
+
+<div class="param-desc">
+    Int16 value.
+</div>
+
+    
+</div>
+
+
+
+</div>
+        
+            
+<div class="section-method">
+
+    
+
+    <h4 class="name" id="getInt16Array"><span class="type-signature"></span>getInt16Array<span class="signature">(start, len)</span><span class="type-signature"> &rarr; {Object}</span></h4>
+
+    
+
+
+
+<div class="description">
+    From byte stream <code>start</code> Parameter specifies the location to start and read <code>len</code> The number of bytes specified by the parameter, used to create one <code>Int16Array</code> Object and return this object.
+</div>
+
+
+
+
+
+<dl class="details">
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    <!-- 
+    <dt class="tag-source">Source:</dt>
+    <dd class="tag-source"><ul class="dummy"><li>
+        js, line 89
+    </li></ul></dd>
+     -->
+
+    
+
+    
+
+    
+</dl>
+
+
+
+
+
+
+
+
+
+    <h5>Parameters:</h5>
+    
+
+<table class="params">
+    <thead>
+    <tr>
+        
+        <th>Name</th>
+        
+
+        <th>Type</th>
+
+        
+
+        
+
+        <th class="last">Description</th>
+    </tr>
+    </thead>
+
+    <tbody>
+    
+
+        <tr>
+            
+                <td class="name"><code>start</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type"><code>int</code></span>
+
+
+            
+            </td>
+
+            
+
+            
+
+            <td class="description last">
+                The byte offset position to start reading.
+                
+            </td>
+        </tr>
+
+    
+
+        <tr>
+            
+                <td class="name"><code>len</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type"><code>int</code></span>
+
+
+            
+            </td>
+
+            
+
+            
+
+            <td class="description last">
+                The length of bytes to read. If the length of the read exceeds the readable range, only the value in the readable range is returned.
+                
+            </td>
+        </tr>
+
+    
+    </tbody>
+</table>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div class="section-returns">
+<h5>Returns:</h5>
+
+        
+
+<dl class="param-type">
+    <dt>
+        Type:
+    </dt>
+    <dd>
+        
+<span class="param-type"><code>Object</code></span>
+
+
+    </dd>
+</dl>
+
+
+<div class="param-desc">
+    The Uint8Array object to read.
+</div>
+
+    
+</div>
+
+
+
+</div>
+        
+            
+<div class="section-method">
+
+    
+
+    <h4 class="name" id="getInt32"><span class="type-signature"></span>getInt32<span class="signature">()</span><span class="type-signature"> &rarr; {int}</span></h4>
+
+    
+
+
+
+<div class="description">
+    Reads a Int32 value from the current byte offset position of the byte stream.
+</div>
+
+
+
+
+
+<dl class="details">
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    <!-- 
+    <dt class="tag-source">Source:</dt>
+    <dd class="tag-source"><ul class="dummy"><li>
+        js, line 114
+    </li></ul></dd>
+     -->
+
+    
+
+    
+
+    
+</dl>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div class="section-returns">
+<h5>Returns:</h5>
+
+        
+
+<dl class="param-type">
+    <dt>
+        Type:
+    </dt>
+    <dd>
+        
+<span class="param-type"><code>int</code></span>
+
+
+    </dd>
+</dl>
+
+
+<div class="param-desc">
+    Int32 value.
+</div>
+
+    
+</div>
+
+
+
+</div>
+        
+            
+<div class="section-method">
+
+    
+
+    <h4 class="name" id="getString"><span class="type-signature"></span>getString<span class="signature">()</span><span class="type-signature"> &rarr; {String}</span></h4>
+
+    
+
+
+
+<div class="description">
+    <p> A stream of bytes commonly used to parse fixed formats. </p>
+<p> First read a byte from the current byte offset of the byte stream <code>Uint16</code> Value, and then read the string of this length as the length of this value. </p>
+</div>
+
+
+
+
+
+<dl class="details">
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    <!-- 
+    <dt class="tag-source">Source:</dt>
+    <dd class="tag-source"><ul class="dummy"><li>
+        js, line 68
+    </li></ul></dd>
+     -->
+
+    
+
+    
+
+    
+</dl>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div class="section-returns">
+<h5>Returns:</h5>
+
+        
+
+<dl class="param-type">
+    <dt>
+        Type:
+    </dt>
+    <dd>
+        
+<span class="param-type"><code>String</code></span>
+
+
+    </dd>
+</dl>
+
+
+<div class="param-desc">
+    String to read.
+</div>
+
+    
+</div>
+
+
+
+</div>
+        
+            
+<div class="section-method">
+
+    
+
+    <h4 class="name" id="getSystemEndian"><span class="type-signature"></span>getSystemEndian<span class="signature">()</span><span class="type-signature"> &rarr; {String}</span></h4>
+
+    
+
+
+
+<div class="description">
+    <p> Gets the order of bytes for the current host. </p>
+<p> The host byte order, are two different sequence of CPU stored data, including little endian and big endian. </p>
+<p> <code>BIG_ENDIAN</code> Address: big endian, low storage value high, high value and low storage. Sometimes called a network byte order. < 
+ <code>LITTLE_ENDIAN</code></p>
+</div>
+
+
+
+
+
+<dl class="details">
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    <!-- 
+    <dt class="tag-source">Source:</dt>
+    <dd class="tag-source"><ul class="dummy"><li>
+        js, line 62
+    </li></ul></dd>
+     -->
+
+    
+
+    
+
+    
+</dl>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div class="section-returns">
+<h5>Returns:</h5>
+
+        
+
+<dl class="param-type">
+    <dt>
+        Type:
+    </dt>
+    <dd>
+        
+<span class="param-type"><code>String</code></span>
+
+
+    </dd>
+</dl>
+
+
+<div class="param-desc">
+    The current system byte order.
+</div>
+
+    
+</div>
+
+
+
+</div>
+        
+            
+<div class="section-method">
+
+    
+
+    <h4 class="name" id="getUint8"><span class="type-signature"></span>getUint8<span class="signature">()</span><span class="type-signature"> &rarr; {uint}</span></h4>
+
+    
+
+
+
+<div class="description">
+    Reads a Uint8 value from the current byte offset position of the byte stream.
+</div>
+
+
+
+
+
+<dl class="details">
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    <!-- 
+    <dt class="tag-source">Source:</dt>
+    <dd class="tag-source"><ul class="dummy"><li>
+        js, line 154
+    </li></ul></dd>
+     -->
+
+    
+
+    
+
+    
+</dl>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div class="section-returns">
+<h5>Returns:</h5>
+
+        
+
+<dl class="param-type">
+    <dt>
+        Type:
+    </dt>
+    <dd>
+        
+<span class="param-type"><code>uint</code></span>
+
+
+    </dd>
+</dl>
+
+
+<div class="param-desc">
+    Uint8 value.
+</div>
+
+    
+</div>
+
+
+
+</div>
+        
+            
+<div class="section-method">
+
+    
+
+    <h4 class="name" id="getUint8Array"><span class="type-signature"></span>getUint8Array<span class="signature">(start, len)</span><span class="type-signature"> &rarr; {Uint8Array}</span></h4>
+
+    
+
+
+
+<div class="description">
+    From byte stream <code>start</code> Parameter specifies the location to start and read <code>len</code> The number of bytes specified by the parameter, used to create one <code>Uint8Array</code> Object and return this object.
+</div>
+
+
+
+
+
+<dl class="details">
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    <!-- 
+    <dt class="tag-source">Source:</dt>
+    <dd class="tag-source"><ul class="dummy"><li>
+        js, line 82
+    </li></ul></dd>
+     -->
+
+    
+
+    
+
+    
+</dl>
+
+
+
+
+
+
+
+
+
+    <h5>Parameters:</h5>
+    
+
+<table class="params">
+    <thead>
+    <tr>
+        
+        <th>Name</th>
+        
+
+        <th>Type</th>
+
+        
+
+        
+
+        <th class="last">Description</th>
+    </tr>
+    </thead>
+
+    <tbody>
+    
+
+        <tr>
+            
+                <td class="name"><code>start</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type"><code>int</code></span>
+
+
+            
+            </td>
+
+            
+
+            
+
+            <td class="description last">
+                Starting position.
+                
+            </td>
+        </tr>
+
+    
+
+        <tr>
+            
+                <td class="name"><code>len</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type"><code>int</code></span>
+
+
+            
+            </td>
+
+            
+
+            
+
+            <td class="description last">
+                The length of bytes to read. If the length of the read exceeds the readable range, only the value in the readable range is returned.
                 
             </td>
         </tr>
@@ -2477,7 +2384,7 @@
 
 
 <div class="param-desc">
-    The read Uint8Array object.
+    The Uint8Array object to read.
 </div>
 
     
@@ -2499,7 +2406,7 @@
 
 
 <div class="description">
-    Reads the Uint16 value at the current byte offset position.
+    Reads a Uint16 value from the current byte offset position of the byte stream.
 </div>
 
 
@@ -2535,7 +2442,7 @@
     <!-- 
     <dt class="tag-source">Source:</dt>
     <dd class="tag-source"><ul class="dummy"><li>
-        js, line 128
+        js, line 139
     </li></ul></dd>
      -->
 
@@ -2607,7 +2514,7 @@
 
 
 <div class="description">
-    Reads the Uint32 value at the current byte offset position.
+    Reads a Uint32 value from the current byte offset position of the byte stream.
 </div>
 
 
@@ -2643,7 +2550,7 @@
     <!-- 
     <dt class="tag-source">Source:</dt>
     <dd class="tag-source"><ul class="dummy"><li>
-        js, line 108
+        js, line 119
     </li></ul></dd>
      -->
 
@@ -2715,7 +2622,8 @@
 
 
 <div class="description">
-    Read string must be a string written by the writeUTFBytes method.
+    <p> Reads a UTF-8 byte sequence specified by the length parameter from the byte stream and returns a string. </p>
+<p> Normally read is a string written by the writeUTFBytes method. </p>
 </div>
 
 
@@ -2751,7 +2659,7 @@
     <!-- 
     <dt class="tag-source">Source:</dt>
     <dd class="tag-source"><ul class="dummy"><li>
-        js, line 179
+        js, line 188
     </li></ul></dd>
      -->
 
@@ -2875,7 +2783,8 @@
 
 
 <div class="description">
-    Read the UTF-8 string.
+    <p> Reads a UTF-8 string from the byte stream. Suppose the prefix of a string is a unsigned short integer (in bytes indicating the length to read). </p>
+<p> The corresponding write method is: writeUTFString. </p>
 </div>
 
 
@@ -2911,7 +2820,7 @@
     <!-- 
     <dt class="tag-source">Source:</dt>
     <dd class="tag-source"><ul class="dummy"><li>
-        js, line 173
+        js, line 181
     </li></ul></dd>
      -->
 
@@ -2961,7 +2870,7 @@
 
 
 <div class="param-desc">
-    Read string.
+    String to read.
 </div>
 
     
@@ -2983,7 +2892,10 @@
 
 
 <div class="description">
-    Writes the specified Arraybuffer object.
+    <p> Writes a byte sequence in the specified arraybuffer object with offset as the start offset and length as the length. </p>
+<p> If the length parameter is omitted, the default length 0 is used, and the method starts writing the entire buffer from the offset; if the offset parameter is omitted, the entire buffer is written. </p>
+<p> If offset or length is less than 0, this function throws an exception. </p>
+$NEXTBIG because of legitimacy without judgment, length and arraybuffer, when developers fill in the wrong length value, will cause a write blank data redundant and even memory overflow, in order to avoid the influence of developers are using this method, the next major version will fix these problems.
 </div>
 
 
@@ -3019,7 +2931,7 @@
     <!-- 
     <dt class="tag-source">Source:</dt>
     <dd class="tag-source"><ul class="dummy"><li>
-        js, line 200
+        js, line 215
     </li></ul></dd>
      -->
 
@@ -3138,7 +3050,7 @@
             
 
             <td class="description last">
-                offset  Offset (in bytes)
+                offset  Offset (in bytes) of the index of the Arraybuffer object
                 
             </td>
         </tr>
@@ -3180,7 +3092,7 @@
             
 
             <td class="description last">
-                length  Length (in bytes)
+                length  Writes from the Arraybuffer object to  Byte  Object length (in bytes)
                 
             </td>
         </tr>
@@ -3218,7 +3130,8 @@
 
 
 <div class="description">
-    Writes a byte in a byte stream.
+    <p> Writes a byte in a byte stream. </p>
+<p> Use the low 8 bits of the parameter. Ignore the high 24 bit. </p>
 </div>
 
 
@@ -3254,7 +3167,7 @@
     <!-- 
     <dt class="tag-source">Source:</dt>
     <dd class="tag-source"><ul class="dummy"><li>
-        js, line 184
+        js, line 194
     </li></ul></dd>
      -->
 
@@ -3353,7 +3266,7 @@
 
 
 <div class="description">
-    Writes the Float32 value at the current byte offset position.
+    Writes a IEEE 754 single precision (32 bit) floating-point number at the current byte offset position of the byte stream.
 </div>
 
 
@@ -3389,7 +3302,7 @@
     <!-- 
     <dt class="tag-source">Source:</dt>
     <dd class="tag-source"><ul class="dummy"><li>
-        js, line 95
+        js, line 104
     </li></ul></dd>
      -->
 
@@ -3450,7 +3363,7 @@
             
 
             <td class="description last">
-                The Float32 value to write to.
+                Single precision (32 bit) floating point numbers.
                 
             </td>
         </tr>
@@ -3481,11 +3394,15 @@
 
     
 
-    <h4 class="name" id="writeFloat64"><span class="type-signature"></span>writeFloat64<span class="signature">()</span><span class="type-signature"></span></h4>
+    <h4 class="name" id="writeFloat64"><span class="type-signature"></span>writeFloat64<span class="signature">(value)</span><span class="type-signature"></span></h4>
 
     
 
 
+
+<div class="description">
+    A IEEE 754 double precision (64 bit) floating-point number is written at the current byte offset position of the byte stream.
+</div>
 
 
 
@@ -3520,7 +3437,7 @@
     <!-- 
     <dt class="tag-source">Source:</dt>
     <dd class="tag-source"><ul class="dummy"><li>
-        js, line 98
+        js, line 109
     </li></ul></dd>
      -->
 
@@ -3537,6 +3454,58 @@
 
 
 
+
+
+    <h5>Parameters:</h5>
+    
+
+<table class="params">
+    <thead>
+    <tr>
+        
+        <th>Name</th>
+        
+
+        <th>Type</th>
+
+        
+
+        
+
+        <th class="last">Description</th>
+    </tr>
+    </thead>
+
+    <tbody>
+    
+
+        <tr>
+            
+                <td class="name"><code>value</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type"><code>Number</code></span>
+
+
+            
+            </td>
+
+            
+
+            
+
+            <td class="description last">
+                Double precision (64 bit) floating point number.
+                
+            </td>
+        </tr>
+
+    
+    </tbody>
+</table>
 
 
 
@@ -3567,7 +3536,7 @@
 
 
 <div class="description">
-    Writes the Int16 value at the current byte offset position.
+    Writes the specified Int16 value at the current byte offset position of the byte stream.
 </div>
 
 
@@ -3603,7 +3572,7 @@
     <!-- 
     <dt class="tag-source">Source:</dt>
     <dd class="tag-source"><ul class="dummy"><li>
-        js, line 138
+        js, line 149
     </li></ul></dd>
      -->
 
@@ -3702,7 +3671,7 @@
 
 
 <div class="description">
-    Writes the Int32 value at the current byte offset position.
+    Writes the specified Int32 value at the current byte offset position of the byte stream.
 </div>
 
 
@@ -3738,7 +3707,7 @@
     <!-- 
     <dt class="tag-source">Source:</dt>
     <dd class="tag-source"><ul class="dummy"><li>
-        js, line 113
+        js, line 124
     </li></ul></dd>
      -->
 
@@ -3837,7 +3806,7 @@
 
 
 <div class="description">
-    Writes the Uint8 value at the current byte offset position.
+    Writes the specified Uint8 value at the current byte offset position of the byte stream.
 </div>
 
 
@@ -3873,7 +3842,7 @@
     <!-- 
     <dt class="tag-source">Source:</dt>
     <dd class="tag-source"><ul class="dummy"><li>
-        js, line 148
+        js, line 159
     </li></ul></dd>
      -->
 
@@ -3972,7 +3941,7 @@
 
 
 <div class="description">
-    Writes the Uint16 value at the current byte offset position.
+    Writes the specified Uint16 value at the current byte offset position of the byte stream.
 </div>
 
 
@@ -4008,7 +3977,7 @@
     <!-- 
     <dt class="tag-source">Source:</dt>
     <dd class="tag-source"><ul class="dummy"><li>
-        js, line 133
+        js, line 144
     </li></ul></dd>
      -->
 
@@ -4107,7 +4076,7 @@
 
 
 <div class="description">
-    Writes the Uint32 value at the current byte offset position.
+    Writes the Uint32 value at the current byte offset position of the byte stream.
 </div>
 
 
@@ -4143,7 +4112,7 @@
     <!-- 
     <dt class="tag-source">Source:</dt>
     <dd class="tag-source"><ul class="dummy"><li>
-        js, line 118
+        js, line 129
     </li></ul></dd>
      -->
 
@@ -4242,7 +4211,8 @@
 
 
 <div class="description">
-    Writes a string that is written by the method that is read using the readUTFBytes method.
+    <p> Writes a UTF-8 string to a byte stream. Similar to the writeUTF () method, but writeUTFBytes () does not use 16 bit length words to prefix the strings. </p>
+<p> The corresponding read method is: getUTFBytes. </p>
 </div>
 
 
@@ -4278,7 +4248,7 @@
     <!-- 
     <dt class="tag-source">Source:</dt>
     <dd class="tag-source"><ul class="dummy"><li>
-        js, line 163
+        js, line 169
     </li></ul></dd>
      -->
 
@@ -4377,7 +4347,8 @@
 
 
 <div class="description">
-    Writes a UTF-8 string to a byte stream.
+    <p> Writes a UTF-8 string to a byte stream. First write the length of the UTF-8 string represented by bytes (as the 16 bit integer), and then write the bytes that represent string characters. </p>
+<p> The corresponding read method is: getUTFString. </p>
 </div>
 
 
@@ -4413,7 +4384,7 @@
     <!-- 
     <dt class="tag-source">Source:</dt>
     <dd class="tag-source"><ul class="dummy"><li>
-        js, line 168
+        js, line 175
     </li></ul></dd>
      -->
 

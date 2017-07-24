@@ -426,7 +426,7 @@
         
             
 <div class="section-members">
-<h4 class="name" id="bitmap"><span class="type-signature"></span>bitmap<span class="type-signature"> :Object</span></h4>
+<h4 class="name" id="bitmap"><span class="type-signature"></span>bitmap<span class="type-signature"> :Bitmap</span></h4>
 
 
 
@@ -485,7 +485,7 @@
     <ul>
         <li>
             
-<span class="param-type"><code>Object</code></span>
+<span class="param-type"><code>Bitmap</code></span>
 
 
         </li>
@@ -580,7 +580,7 @@
 
 
 <div class="description">
-    Gets the linear sampling of the current texture
+    Gets the linear sampling of the current texture.
 </div>
 
 
@@ -1994,7 +1994,7 @@
 
 
 <div class="description">
-    A part of the Texture is intercepted to generate a new Texture, and null is returned if two regions do not intersect
+    A part of the Texture is intercepted to generate a new Texture, and null is returned if two regions do not intersect.
 </div>
 
 
@@ -2091,7 +2091,7 @@
             
 
             <td class="description last">
-                Target Texture
+                Target Texture.
                 
             </td>
         </tr>
@@ -2117,7 +2117,7 @@
             
 
             <td class="description last">
-                The x position relative to the target Texture
+                The x position relative to the target Texture.
                 
             </td>
         </tr>
@@ -2143,7 +2143,7 @@
             
 
             <td class="description last">
-                The Y position relative to the target Texture
+                The Y position relative to the target Texture.
                 
             </td>
         </tr>
@@ -2169,7 +2169,7 @@
             
 
             <td class="description last">
-                Width of intercept
+                Width of intercept.
                 
             </td>
         </tr>
@@ -2195,7 +2195,7 @@
             
 
             <td class="description last">
-                Interception height
+                Interception height.
                 
             </td>
         </tr>
@@ -2236,7 +2236,7 @@
 
 
 <div class="param-desc">
-    Returns a new Texture
+    Returns a new Texture.
 </div>
 
     
@@ -2258,7 +2258,7 @@
 
 
 <div class="description">
-    Destroy textures (divided into two parts: direct destruction, followed by counting, and destroyed)
+    Destroy textures (divided into two parts: direct destruction, followed by counting, and destroyed).
 </div>
 
 
@@ -2294,7 +2294,7 @@
     <!-- 
     <dt class="tag-source">Source:</dt>
     <dd class="tag-source"><ul class="dummy"><li>
-        js, line 153
+        js, line 156
     </li></ul></dd>
      -->
 
@@ -2355,7 +2355,7 @@
             
 
             <td class="description last">
-                True forces the main texture to be destroyed, and false destroys the texture by counting
+                (default = false) true forces the main texture to be destroyed, and false destroys the texture by counting.
                 
             </td>
         </tr>
@@ -2434,7 +2434,7 @@
     <!-- 
     <dt class="tag-source">Source:</dt>
     <dd class="tag-source"><ul class="dummy"><li>
-        js, line 25
+        js, line 24
     </li></ul></dd>
      -->
 
@@ -2553,8 +2553,7 @@
             
 
             <td class="description last">
-                data  Callback data. 
-<b> Be careful： </b> If you need to pass multiple parameters, P1, P2, P3, you can use the array structure, such as: [p1,p2,p3,...] If you need a callback, a single parameter p is an array, so you need to use a structure such as: [p] Other single parameters, P, can be passed directly to the parameter P.
+                data  (optional) callback data. <b> Be careful： </b> If you need to pass multiple parameters, P1, P2, P3, you can use the array structure, such as: [p1,p2,p3,...] If you need to call a single parameter P, and P is an array, you need to use a structure such as: [p] Other single parameters, P, can be passed directly to the parameter P.
                 
             </td>
         </tr>
@@ -2610,6 +2609,85 @@
 
     
 
+    <h4 class="name" id="getEnabled"><span class="type-signature"></span>getEnabled<span class="signature">()</span><span class="type-signature"></span></h4>
+
+    
+
+
+
+
+
+
+
+<dl class="details">
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    <!-- 
+    <dt class="tag-source">Source:</dt>
+    <dd class="tag-source"><ul class="dummy"><li>
+        js, line 151
+    </li></ul></dd>
+     -->
+
+    
+
+    
+
+    
+</dl>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+</div>
+        
+            
+<div class="section-method">
+
+    
+
     <h4 class="name" id="getPixels"><span class="type-signature"></span>getPixels<span class="signature">(x, y, width, height)</span><span class="type-signature"> &rarr; {Array}</span></h4>
 
     
@@ -2653,7 +2731,7 @@
     <!-- 
     <dt class="tag-source">Source:</dt>
     <dd class="tag-source"><ul class="dummy"><li>
-        js, line 167
+        js, line 170
     </li></ul></dd>
      -->
 
@@ -3061,7 +3139,7 @@
     <!-- 
     <dt class="tag-source">Source:</dt>
     <dd class="tag-source"><ul class="dummy"><li>
-        js, line 64
+        js, line 63
     </li></ul></dd>
      -->
 
@@ -3221,7 +3299,7 @@
     <!-- 
     <dt class="tag-source">Source:</dt>
     <dd class="tag-source"><ul class="dummy"><li>
-        js, line 158
+        js, line 161
     </li></ul></dd>
      -->
 
@@ -3573,7 +3651,7 @@
     <!-- 
     <dt class="tag-source">Source:</dt>
     <dd class="tag-source"><ul class="dummy"><li>
-        js, line 52
+        js, line 51
     </li></ul></dd>
      -->
 
@@ -3712,7 +3790,7 @@
             
 
             <td class="description last">
-                If the value is true, only the listeners added by the once method are removed.
+                (optional) if the value is true, only the listeners added by the once method are removed.
                 
             </td>
         </tr>
@@ -3816,7 +3894,7 @@
     <!-- 
     <dt class="tag-source">Source:</dt>
     <dd class="tag-source"><ul class="dummy"><li>
-        js, line 58
+        js, line 57
     </li></ul></dd>
      -->
 
@@ -3897,7 +3975,7 @@
             
 
             <td class="description last">
-                type  Event type, if the value is null, removes all types of listeners for this object.
+                type  (optional) event type. If the value is null, all types of listeners for this object are removed.
                 
             </td>
         </tr>
@@ -4001,7 +4079,7 @@
     <!-- 
     <dt class="tag-source">Source:</dt>
     <dd class="tag-source"><ul class="dummy"><li>
-        js, line 34
+        js, line 33
     </li></ul></dd>
      -->
 
@@ -4196,7 +4274,7 @@
             
 
             <td class="description last">
-                args  The callback parameter of the event listener function.
+                args  Optional callback parameters for the event listener function.
                 
             </td>
         </tr>
@@ -4300,7 +4378,7 @@
     <!-- 
     <dt class="tag-source">Source:</dt>
     <dd class="tag-source"><ul class="dummy"><li>
-        js, line 43
+        js, line 42
     </li></ul></dd>
      -->
 
@@ -4495,7 +4573,7 @@
             
 
             <td class="description last">
-                args  The callback parameter of the event listener function.
+                args  Optional callback parameters for the event listener function.
                 
             </td>
         </tr>
@@ -4795,7 +4873,7 @@
     <!-- 
     <dt class="tag-source">Source:</dt>
     <dd class="tag-source"><ul class="dummy"><li>
-        js, line 168
+        js, line 171
     </li></ul></dd>
      -->
 

@@ -45,7 +45,7 @@
             <div class="class-description"><code>Dialog</code> Component is a pop-up dialog box, the realization of the dialog box pop-up, drag, mode window function. 
 You can set the pop-up box background transparency by UIConfig, and the mode window hits whether the edge is closed or not 
 You can change the pop-up hierarchy by setting the zOrder property 
-By setting manager.popupEffect and manager.closeEffect, you can set the pop-up effect and turn off the effect</div>
+By setting popupEffect and closeEffect, you can set the pop-up effect and the closing effect. If you don't want any pop up effect, you can set the aforementioned property to be empty</div>
         
     
 </header>
@@ -99,7 +99,7 @@ By setting manager.popupEffect and manager.closeEffect, you can set the pop-up e
     <!-- 
     <dt class="tag-source">Source:</dt>
     <dd class="tag-source"><ul class="dummy"><li>
-        js, line 138
+        js, line 134
     </li></ul></dd>
      -->
 
@@ -140,66 +140,64 @@ By setting manager.popupEffect and manager.closeEffect, you can set the pop-up e
     <button>TypeScript</button>
 </div>
 
-    <pre class="prettyprint"><code>The following sample code creates a &lt;code>Dialog&lt;/code> Example。 
-&lt;listing version="3.0">
-package
-	*{
-	*import laya.ui.Dialog;
-	*import laya.utils.Handler;
-	*public class Dialog_Example
-	*{
-	*private var dialog:Dialog_Instance;
-	*public function Dialog_Example()
-	*{
+    <pre class="prettyprint"><code>The following example code for &lt;caption> creates a &lt;code>Dialog&lt;/code> Example。 &lt;/caption> 
+Package 
+{ 
+Import laya.ui.Dialog; 
+Import laya.utils.Handler; 
+Public class Dialog_Example 
+{ 
+Private var dialog:Dialog_Instance; 
+Public, function, Dialog_Example () 
+{ 
 	*Laya.init(640, 800);// Set the game canvas wide and render mode. 
 	*Laya.stage.bgColor = "#efefef";// Sets the background color of the canvas. 
 	*Laya.loader.load("resource/ui/btn_close.png", Handler.create(this, onLoadComplete));// Load resources. 
-	*}
-	*private function onLoadComplete():void
-	*{
+} 
+Private, function, onLoadComplete (): void 
+{ 
 	*dialog = new Dialog_Instance();// Create an instance object Dialog_Instance of the dialog class. 
 	*dialog.dragArea = "0,0,150,50";// Set up  Dialog  Drag and drop area. 
 	*dialog.show();// Display dialog. 
 	*dialog.closeHandler = new Handler(this, onClose);// Set up  Dialog  Closed function processor. 
-	*}
-	*private function onClose(name:String):void
-	*{
-	*if (name == Dialog.CLOSE)
-	*{
-	*trace("通过点击 name 为" + name +"的组件，关闭了dialog。");
-	*}
-	*}
-	*}
-	*}
-	*import laya.ui.Button;
-	*import laya.ui.Dialog;
-	*import laya.ui.Image;
-	*class Dialog_Instance extends Dialog
-	*{
-	*function Dialog_Instance():void
-	*{
-	*var bg:Image = new Image("resource/ui/bg.png");
-	*bg.sizeGrid = "40,10,5,10";
-	*bg.width = 150;
-	*bg.height = 250;
-	*addChild(bg);
-	*var image:Image = new Image("resource/ui/image.png");
-	*addChild(image);
-	*var button:Button = new Button("resource/ui/btn_close.png");
+} 
+Private function onClose (name:String): void 
+{ 
+If (name = Dialog.CLOSE) 
+{ 
+Trace closes the dialog by clicking on the component "name + name +". "); 
+} 
+} 
+} 
+} 
+Import laya.ui.Button; 
+Import laya.ui.Dialog; 
+Import laya.ui.Image; 
+Class Dialog_Instance extends  Dialog 
+{ 
+Function, Dialog_Instance (): void 
+{ 
+Var bg:Image = new Image ("resource/ui/bg.png"); 
+Bg.sizeGrid = "40,10,5,10""; 
+Bg.width = 150; 
+Bg.height = 250; 
+AddChild (BG); 
+Var image:Image = new Image ("resource/ui/image.png"); 
+AddChild (image); 
+Var button:Button = new Button ("resource/ui/btn_close.png"); 
 	*button.name = Dialog.CLOSE;// Sets the name property value of the button. 
-	*button.x = 0;
-	*button.y = 0;
-	*addChild(button);
-	*}
-	*}
-	*&lt;/listing>
-&lt;listing version="3.0">
-Laya.init(640, 800);// Set the game canvas wide and render mode 
+Button.x = 0; 
+Button.y = 0; 
+AddChild (button); 
+} 
+} </code></pre>
+
+    <pre class="prettyprint"><code>Laya.init(640, 800);// Set the game canvas wide and render mode 
 Laya.stage.bgColor = "#efefef";// Sets the background color of the canvas 
-var dialog;
+Var dialog; 
 Laya.loader.load("resource/ui/btn_close.png", laya.utils.Handler.create(this, loadComplete));// load resources 
 (function (_super) {// A new class, Dialog_Instance, inherits from laya.ui.Dialog. 
-    function Dialog_Instance() {
+Function, Dialog_Instance () { 
         Dialog_Instance.__super.call(this);// Initializing the parent class 
         var bg = new laya.ui.Image("resource/ui/bg.png");// Create a new instance of the Image class, bg. 
         bg.sizeGrid = "10,40,10,5";// Set up the grid information for bg. 
@@ -213,62 +211,60 @@ Laya.loader.load("resource/ui/btn_close.png", laya.utils.Handler.create(this, lo
         button.x = 0;// Sets the value of the property X of the button object to control the display position of the button object. 
         button.y = 0;// Sets the value of the property y of the button object to control the display position of the button object. 
         this.addChild(button);// Add button to display list. 
-    };
+}; 
     Laya.class(Dialog_Instance,"mypackage.dialogExample.Dialog_Instance",_super);// Registration class Dialog_Instance. 
-})(laya.ui.Dialog);
-function loadComplete() {
-    console.log("资源加载完成！");
+(}) (laya.ui.Dialog); 
+Function, loadComplete () { 
+Console.log (resource loading complete! "); 
     dialog = new mypackage.dialogExample.Dialog_Instance();// Create an instance object Dialog_Instance of the dialog class. 
     dialog.dragArea = "0,0,150,50";// Set up  Dialog  Drag and drop area. 
     dialog.show();// Display dialog. 
     dialog.closeHandler = new laya.utils.Handler(this, onClose);// Set up  Dialog  Closed function processor. 
-}
-function onClose(name) {
-    if (name == laya.ui.Dialog.CLOSE) {
-        console.log("通过点击 name 为" + name + "的组件，关闭了dialog。");
-    }
-}
-	*&lt;/listing>
-&lt;listing version="3.0">
-import Dialog = laya.ui.Dialog;
-import Handler = laya.utils.Handler;
-class Dialog_Example {
-    private dialog: Dialog_Instance;
-    constructor() {
+} 
+Function onClose (name) { 
+If (name = = laya.ui.Dialog.CLOSE) { 
+Console.log closes the dialog by clicking on the component "name + name +". "); 
+} 
+} </code></pre>
+
+    <pre class="prettyprint"><code>Import  Dialog  = laya.ui.Dialog; 
+Import Handler = laya.utils.Handler; 
+Class Dialog_Example { 
+Private dialog: Dialog_Instance; 
+Constructor () { 
         Laya.init(640, 800);// Set the game canvas width high. 
         Laya.stage.bgColor = "#efefef";// Sets the background color of the canvas. 
         Laya.loader.load("resource/ui/btn_close.png", Handler.create(this, this.onLoadComplete));// Load resources. 
-    }
-    private onLoadComplete(): void {
+} 
+Private onLoadComplete (): void { 
         this.dialog = new Dialog_Instance();// Create an instance object Dialog_Instance of the dialog class. 
         this.dialog.dragArea = "0,0,150,50";// Set up  Dialog  Drag and drop area. 
         this.dialog.show();// Display dialog. 
         this.dialog.closeHandler = new Handler(this, this.onClose);// Set up  Dialog  Closed function processor. 
-    }
-    private onClose(name: string): void {
-        if (name == Dialog.CLOSE) {
-            console.log("通过点击 name 为" + name + "的组件，关闭了dialog。");
-        }
-    }
-}
-import Button = laya.ui.Button;
-class Dialog_Instance extends Dialog {
-    Dialog_Instance(): void {
-        var bg: laya.ui.Image = new laya.ui.Image("resource/ui/bg.png");
-        bg.sizeGrid = "40,10,5,10";
-        bg.width = 150;
-        bg.height = 250;
-        this.addChild(bg);
-        var image: laya.ui.Image = new laya.ui.Image("resource/ui/image.png");
-        this.addChild(image);
-        var button: Button = new Button("resource/ui/btn_close.png");
+} 
+Private onClose (name: string): void { 
+If (name = = Dialog.CLOSE) { 
+Console.log closes the dialog by clicking on the component "name + name +". "); 
+} 
+} 
+} 
+Import Button = laya.ui.Button; 
+Class Dialog_Instance extends  Dialog  { 
+Dialog_Instance (): void { 
+VaR, bg:, laya.ui.Image = new, laya.ui.Image ("resource/ui/bg.png"); 
+Bg.sizeGrid = "40,10,5,10""; 
+Bg.width = 150; 
+Bg.height = 250; 
+This.addChild (BG); 
+VaR, image:, laya.ui.Image = new, laya.ui.Image ("resource/ui/image.png"); 
+This.addChild (image); 
+VaR, button:, Button = new, Button ("resource/ui/btn_close.png"); 
         button.name = Dialog.CLOSE;// Sets the name property value of the button. 
-        button.x = 0;
-        button.y = 0;
-        this.addChild(button);
-    }
-}
-	*&lt;/listing></code></pre>
+Button.x = 0; 
+Button.y = 0; 
+This.addChild (button); 
+} 
+} </code></pre>
 
 </div>
 
@@ -346,7 +342,7 @@ class Dialog_Instance extends Dialog {
     <!-- 
     <dt class="tag-source">Source:</dt>
     <dd class="tag-source"><ul class="dummy"><li>
-        js, line 150
+        js, line 146
     </li></ul></dd>
      -->
 
@@ -421,7 +417,7 @@ class Dialog_Instance extends Dialog {
     <!-- 
     <dt class="tag-source">Source:</dt>
     <dd class="tag-source"><ul class="dummy"><li>
-        js, line 144
+        js, line 140
     </li></ul></dd>
      -->
 
@@ -496,7 +492,7 @@ class Dialog_Instance extends Dialog {
     <!-- 
     <dt class="tag-source">Source:</dt>
     <dd class="tag-source"><ul class="dummy"><li>
-        js, line 181
+        js, line 177
     </li></ul></dd>
      -->
 
@@ -571,7 +567,7 @@ class Dialog_Instance extends Dialog {
     <!-- 
     <dt class="tag-source">Source:</dt>
     <dd class="tag-source"><ul class="dummy"><li>
-        js, line 162
+        js, line 158
     </li></ul></dd>
      -->
 
@@ -646,7 +642,7 @@ class Dialog_Instance extends Dialog {
     <!-- 
     <dt class="tag-source">Source:</dt>
     <dd class="tag-source"><ul class="dummy"><li>
-        js, line 168
+        js, line 164
     </li></ul></dd>
      -->
 
@@ -721,7 +717,7 @@ class Dialog_Instance extends Dialog {
     <!-- 
     <dt class="tag-source">Source:</dt>
     <dd class="tag-source"><ul class="dummy"><li>
-        js, line 156
+        js, line 152
     </li></ul></dd>
      -->
 
@@ -796,7 +792,7 @@ class Dialog_Instance extends Dialog {
     <!-- 
     <dt class="tag-source">Source:</dt>
     <dd class="tag-source"><ul class="dummy"><li>
-        js, line 174
+        js, line 170
     </li></ul></dd>
      -->
 
@@ -875,7 +871,7 @@ class Dialog_Instance extends Dialog {
     <!-- 
     <dt class="tag-source">Source:</dt>
     <dd class="tag-source"><ul class="dummy"><li>
-        js, line 289
+        js, line 274
     </li></ul></dd>
      -->
 
@@ -954,7 +950,7 @@ class Dialog_Instance extends Dialog {
     <!-- 
     <dt class="tag-source">Source:</dt>
     <dd class="tag-source"><ul class="dummy"><li>
-        js, line 111
+        js, line 113
     </li></ul></dd>
      -->
 
@@ -1033,7 +1029,7 @@ class Dialog_Instance extends Dialog {
     <!-- 
     <dt class="tag-source">Source:</dt>
     <dd class="tag-source"><ul class="dummy"><li>
-        js, line 117
+        js, line 119
     </li></ul></dd>
      -->
 
@@ -1071,8 +1067,8 @@ class Dialog_Instance extends Dialog {
 
 
 <div class="description">
-    Specifies whether to compute wide and high data automatically. The default value is false. 
-Sprite is wide and high, defaults to 0, and does not change with the rendering content. If you want to get the width of the drawing content, you can set the property as true or get it by the getBounds method. Set to true, has some impact on performance.
+    <p> Specifies whether to compute wide and high data automatically. The default value is false. </p>
+<p> Sprite is wide and high, defaults to 0, and does not change with the rendering content. If you want to get the width of the drawing content, you can set the property as true or get it by the getBounds method. Set to true, has some impact on performance. </p>
 </div>
 
 
@@ -1113,7 +1109,7 @@ Sprite is wide and high, defaults to 0, and does not change with the rendering c
     <!-- 
     <dt class="tag-source">Source:</dt>
     <dd class="tag-source"><ul class="dummy"><li>
-        js, line 154
+        js, line 153
     </li></ul></dd>
      -->
 
@@ -1192,7 +1188,7 @@ Sprite is wide and high, defaults to 0, and does not change with the rendering c
     <!-- 
     <dt class="tag-source">Source:</dt>
     <dd class="tag-source"><ul class="dummy"><li>
-        js, line 301
+        js, line 286
     </li></ul></dd>
      -->
 
@@ -1271,7 +1267,7 @@ Sprite is wide and high, defaults to 0, and does not change with the rendering c
     <!-- 
     <dt class="tag-source">Source:</dt>
     <dd class="tag-source"><ul class="dummy"><li>
-        js, line 81
+        js, line 83
     </li></ul></dd>
      -->
 
@@ -1310,12 +1306,12 @@ Sprite is wide and high, defaults to 0, and does not change with the rendering c
 
 <div class="description">
     <p> Specifies whether the display object is cached as a static image. When cacheAs is changed, the child object is automatically cached, and the reCache method is invoked manually to update the cache. </p>
-It is proposed to cache complex content that is not constantly changing into a static image, which can greatly improve rendering performance. CacheAs has "None", "normal" and "bitmap". The three values are optional. 
+<p> It is proposed to cache complex content that is not constantly changing into a static image, which can greatly improve rendering performance. CacheAs has "None", "normal" and "bitmap". The three values are optional. 
 <li> The default is "None" and does not do any caching. </li>
 <li> When the value is "normal", the canvas cache is carried out in canvas mode, and the command cache is in webgl mode. </li>
-<li> When bitmap is used, canvas mode is still the canvas cache, and the renderTarget buffer is used in webgl mode. </li>
-Under webgl, the renderTarget cache model has a maximum 2048 size limit, with additional memory overhead and constant overhead when it's redrawn, but it reduces drawcall and renders the highest performance. 
-Under webgl, the command cache mode reduces node traversal and command organization without reducing drawcall performance.
+<li> When bitmap is used, canvas mode is still the canvas cache, and the renderTarget buffer is used in webgl mode. </li></p>
+<p> Webgl renderTarget cache model disadvantages: additional renderTarget objects will be created to increase memory overhead, cache area has a maximum 2048 restrictions, continuous redraw will increase CPU overhead. Advantages: drastically reduce drawcall, rendering the highest performance. 
+		 *</p>
 </div>
 
 
@@ -1356,7 +1352,7 @@ Under webgl, the command cache mode reduces node traversal and command organizat
     <!-- 
     <dt class="tag-source">Source:</dt>
     <dd class="tag-source"><ul class="dummy"><li>
-        js, line 202
+        js, line 185
     </li></ul></dd>
      -->
 
@@ -1394,7 +1390,7 @@ Under webgl, the command cache mode reduces node traversal and command organizat
 
 
 <div class="description">
-    Specifies whether the display object is cached as a static image. Functions with cacheAs's normal mode.
+    Specifies whether the display object is cached as a static image. Functions with cacheAs's normal mode. It is recommended to use cacheAs instead.
 </div>
 
 
@@ -1435,7 +1431,7 @@ Under webgl, the command cache mode reduces node traversal and command organizat
     <!-- 
     <dt class="tag-source">Source:</dt>
     <dd class="tag-source"><ul class="dummy"><li>
-        js, line 186
+        js, line 169
     </li></ul></dd>
      -->
 
@@ -1514,7 +1510,7 @@ Under webgl, the command cache mode reduces node traversal and command organizat
     <!-- 
     <dt class="tag-source">Source:</dt>
     <dd class="tag-source"><ul class="dummy"><li>
-        js, line 99
+        js, line 101
     </li></ul></dd>
      -->
 
@@ -1593,7 +1589,7 @@ Under webgl, the command cache mode reduces node traversal and command organizat
     <!-- 
     <dt class="tag-source">Source:</dt>
     <dd class="tag-source"><ul class="dummy"><li>
-        js, line 105
+        js, line 107
     </li></ul></dd>
      -->
 
@@ -1611,6 +1607,81 @@ Under webgl, the command cache mode reduces node traversal and command organizat
         <li>
             
 <span class="param-type"><code>Number</code></span>
+
+
+        </li>
+    </ul>
+ -->
+
+
+
+
+</div>
+
+        
+            
+<div class="section-members">
+<h4 class="name" id="closeEffect"><span class="type-signature"></span>closeEffect<span class="type-signature"> :<a href="Core.Handler.html">Handler</a></span></h4>
+
+
+
+
+<div class="description">
+    Close the dialog box effect, you can set an effect instead of the default closing effect, if you do not want to have any effect, you can assign to null 
+The global default closing effect can be modified by manager.closeEffect
+</div>
+
+
+
+
+
+<dl class="details">
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    <!-- 
+    <dt class="tag-source">Source:</dt>
+    <dd class="tag-source"><ul class="dummy"><li>
+        js, line 205
+    </li></ul></dd>
+     -->
+
+    
+
+    
+
+    
+</dl>
+
+
+<!-- 
+    <h5>Type:</h5>
+    <ul>
+        <li>
+            
+<span class="param-type"><code><a href="Core.Handler.html">Handler</a></code></span>
 
 
         </li>
@@ -1668,7 +1739,7 @@ Under webgl, the command cache mode reduces node traversal and command organizat
     <!-- 
     <dt class="tag-source">Source:</dt>
     <dd class="tag-source"><ul class="dummy"><li>
-        js, line 195
+        js, line 191
     </li></ul></dd>
      -->
 
@@ -1822,7 +1893,7 @@ Under webgl, the command cache mode reduces node traversal and command organizat
     <!-- 
     <dt class="tag-source">Source:</dt>
     <dd class="tag-source"><ul class="dummy"><li>
-        js, line 191
+        js, line 174
     </li></ul></dd>
      -->
 
@@ -1935,7 +2006,7 @@ Under webgl, the command cache mode reduces node traversal and command organizat
 
 
 <div class="description">
-    Has it been destroyed?. Object cannot be used after destruction.
+    [只读] Has it been destroyed?. Object cannot be used after destruction.
 </div>
 
 
@@ -1976,7 +2047,7 @@ Under webgl, the command cache mode reduces node traversal and command organizat
     <!-- 
     <dt class="tag-source">Source:</dt>
     <dd class="tag-source"><ul class="dummy"><li>
-        js, line 40
+        js, line 24
     </li></ul></dd>
      -->
 
@@ -2134,7 +2205,7 @@ Under webgl, the command cache mode reduces node traversal and command organizat
     <!-- 
     <dt class="tag-source">Source:</dt>
     <dd class="tag-source"><ul class="dummy"><li>
-        js, line 63
+        js, line 46
     </li></ul></dd>
      -->
 
@@ -2213,7 +2284,7 @@ Under webgl, the command cache mode reduces node traversal and command organizat
     <!-- 
     <dt class="tag-source">Source:</dt>
     <dd class="tag-source"><ul class="dummy"><li>
-        js, line 42
+        js, line 47
     </li></ul></dd>
      -->
 
@@ -2292,7 +2363,7 @@ Under webgl, the command cache mode reduces node traversal and command organizat
     <!-- 
     <dt class="tag-source">Source:</dt>
     <dd class="tag-source"><ul class="dummy"><li>
-        js, line 24
+        js, line 30
     </li></ul></dd>
      -->
 
@@ -2369,7 +2440,7 @@ For example: "0,0100200."".
     <!-- 
     <dt class="tag-source">Source:</dt>
     <dd class="tag-source"><ul class="dummy"><li>
-        js, line 218
+        js, line 227
     </li></ul></dd>
      -->
 
@@ -2455,7 +2526,7 @@ For example: "0,0100200."".
     <!-- 
     <dt class="tag-source">Source:</dt>
     <dd class="tag-source"><ul class="dummy"><li>
-        js, line 323
+        js, line 307
     </li></ul></dd>
      -->
 
@@ -2534,7 +2605,7 @@ For example: "0,0100200."".
     <!-- 
     <dt class="tag-source">Source:</dt>
     <dd class="tag-source"><ul class="dummy"><li>
-        js, line 360
+        js, line 340
     </li></ul></dd>
      -->
 
@@ -2613,7 +2684,7 @@ For example: "0,0100200."".
     <!-- 
     <dt class="tag-source">Source:</dt>
     <dd class="tag-source"><ul class="dummy"><li>
-        js, line 365
+        js, line 345
     </li></ul></dd>
      -->
 
@@ -2692,7 +2763,7 @@ For example: "0,0100200."".
     <!-- 
     <dt class="tag-source">Source:</dt>
     <dd class="tag-source"><ul class="dummy"><li>
-        js, line 307
+        js, line 292
     </li></ul></dd>
      -->
 
@@ -2845,7 +2916,7 @@ For example: "0,0100200."".
     <!-- 
     <dt class="tag-source">Source:</dt>
     <dd class="tag-source"><ul class="dummy"><li>
-        js, line 201
+        js, line 211
     </li></ul></dd>
      -->
 
@@ -2925,7 +2996,7 @@ For example: "0,0100200."".
     <!-- 
     <dt class="tag-source">Source:</dt>
     <dd class="tag-source"><ul class="dummy"><li>
-        js, line 36
+        js, line 41
     </li></ul></dd>
      -->
 
@@ -2963,8 +3034,8 @@ For example: "0,0100200."".
 
 
 <div class="description">
-    You can set a Rectangle area as the click area, or set one <code>HitArea</code> As a click area, you can set clickable and clickable areas within HitArea. 
-If hitArea is not set, collisions are made according to the region formed by the width and height.
+    <p> You can set a Rectangle area as the click area, or set one <code>HitArea</code> As a click area, you can set clickable and clickable areas within HitArea. </p>
+<p> If hitArea is not set, collisions are made according to the region formed by the width and height. </p>
 </div>
 
 
@@ -3005,7 +3076,7 @@ If hitArea is not set, collisions are made according to the region formed by the
     <!-- 
     <dt class="tag-source">Source:</dt>
     <dd class="tag-source"><ul class="dummy"><li>
-        js, line 339
+        js, line 319
     </li></ul></dd>
      -->
 
@@ -3043,10 +3114,10 @@ If hitArea is not set, collisions are made according to the region formed by the
 
 
 <div class="description">
-    Specifies whether mouse collision detection preferentially detects itself. The default is false 
-Mouse collision detection is the first detection of child objects, and then bubbles to the parent object, if hitTestPrior=true 
-Mouse collision priority detection of this object, the object was hit after further detection of sub objects. 
-For containers of known size (especially root containers), setting this value to true can reduce node collisions and improve performance. The default is false. UI's View build defaults to true.
+    <p> Specifies whether mouse event detection preferentially detects itself or preferentially detects its child object. The mouse event detection occurs at the capture phase of the mouse event. At this stage, the engine will begin to recursively check stage and its child objects from stage until the target object is hit or missed. </p>
+<p> If false, the child object is preferentially detected, and when a child object is hit, interrupt detection is done to hit the target. If you do not hit any sub object, then the object detection; if true, then the priority detection object, if the object is not directly hit, interrupt detection, said did not hit the target; if the object is hit, further iterative detection of its children, in order to confirm the final target. </p>
+<p> Reasonable use of this property, can reduce the mouse event detection nodes, improve performance. Can be set to true: the developer does not care about the mouse event detection result of the child node of the node, which is the mouse event detection point of the node as its child node. </p>
+<p> The View component of the Stage object and UI defaults to true. </p>
 </div>
 
 
@@ -3082,6 +3153,11 @@ For containers of known size (especially root containers), setting this value to
 
     
 
+    
+    <dt class="tag-default">Default Value:</dt>
+    <dd class="tag-default"><ul class="dummy">
+            <li>false优先检测此对象的子对象，当递归检测完所有子对象后，仍然没有找到目标对象，最后再检测此对象。</li>
+        </ul></dd>
     
 
     <!-- 
@@ -3161,7 +3237,7 @@ For containers of known size (especially root containers), setting this value to
     <!-- 
     <dt class="tag-source">Source:</dt>
     <dd class="tag-source"><ul class="dummy"><li>
-        js, line 207
+        js, line 217
     </li></ul></dd>
      -->
 
@@ -3235,7 +3311,86 @@ For containers of known size (especially root containers), setting this value to
     <!-- 
     <dt class="tag-source">Source:</dt>
     <dd class="tag-source"><ul class="dummy"><li>
-        js, line 224
+        js, line 233
+    </li></ul></dd>
+     -->
+
+    
+
+    
+
+    
+</dl>
+
+
+<!-- 
+    <h5>Type:</h5>
+    <ul>
+        <li>
+            
+<span class="param-type"><code>Boolean</code></span>
+
+
+        </li>
+    </ul>
+ -->
+
+
+
+
+</div>
+
+        
+            
+<div class="section-members">
+<h4 class="name" id="layoutEnabled"><span class="type-signature"></span>layoutEnabled<span class="type-signature"> :Boolean</span></h4>
+
+
+
+
+<div class="description">
+    Do you want to enable relative layout?
+</div>
+
+
+
+
+
+<dl class="details">
+
+    
+
+    
+
+    
+    <dt class="inherited-from">Inherited From:</dt>
+    <dd class="inherited-from"><ul class="dummy"><li>
+        <a href="UI.Component.html#layoutEnabled">Component#layoutEnabled</a>
+    </li></ul></dd>
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    <!-- 
+    <dt class="tag-source">Source:</dt>
+    <dd class="tag-source"><ul class="dummy"><li>
+        js, line 17
     </li></ul></dd>
      -->
 
@@ -3314,7 +3469,7 @@ For containers of known size (especially root containers), setting this value to
     <!-- 
     <dt class="tag-source">Source:</dt>
     <dd class="tag-source"><ul class="dummy"><li>
-        js, line 87
+        js, line 89
     </li></ul></dd>
      -->
 
@@ -3352,8 +3507,8 @@ For containers of known size (especially root containers), setting this value to
 
 
 <div class="description">
-    Mask, you can set an object (support bitmap and vector diagram), according to the object shape for mask display. 
-		 *【注意】遮罩对象坐标系是相对遮罩对象本身的，和Flash机制不同 [note] the mask object coordinate system is relative to the mask object itself, and is different from the Flash mechanism
+    <p> Mask, you can set an object (support bitmap and vector diagram), according to the object shape for mask display. </p>
+<p> [note] the mask object coordinate system is relative to the mask object itself, and is different from the Flash mechanism </p>
 </div>
 
 
@@ -3394,7 +3549,7 @@ For containers of known size (especially root containers), setting this value to
     <!-- 
     <dt class="tag-source">Source:</dt>
     <dd class="tag-source"><ul class="dummy"><li>
-        js, line 346
+        js, line 326
     </li></ul></dd>
      -->
 
@@ -3473,7 +3628,7 @@ For containers of known size (especially root containers), setting this value to
     <!-- 
     <dt class="tag-source">Source:</dt>
     <dd class="tag-source"><ul class="dummy"><li>
-        js, line 47
+        js, line 52
     </li></ul></dd>
      -->
 
@@ -3552,7 +3707,7 @@ For containers of known size (especially root containers), setting this value to
     <!-- 
     <dt class="tag-source">Source:</dt>
     <dd class="tag-source"><ul class="dummy"><li>
-        js, line 29
+        js, line 35
     </li></ul></dd>
      -->
 
@@ -3633,7 +3788,7 @@ The default is false. If you listen to the mouse event, you will automatically s
     <!-- 
     <dt class="tag-source">Source:</dt>
     <dd class="tag-source"><ul class="dummy"><li>
-        js, line 354
+        js, line 334
     </li></ul></dd>
      -->
 
@@ -3671,7 +3826,9 @@ The default is false. If you listen to the mouse event, you will automatically s
 
 
 <div class="description">
-    Specifies whether or not it is penetrable when mouseEnabled=true is used. The default value is false, and if it is set to true, click the blank space to go through the past and be valid only for yourself.
+    <p> Is the mouse event collision detected with this object?. Collision detection occurs at the capture phase of the mouse event. At this stage, the engine will start testing stage and its child objects recursively from stage until it finds the hit target object or misses any object. </p>
+<p> The penetration indicates that the location of the mouse event is hit when it is in the drawing area of the object, and is independent of the object's width, height, and the hitArea attribute of the Rectangle object. If the sprite.hitArea value is a HitArea object, the mouse event response area of the object is declared explicitly, and the width, height, and mouseThrough attributes of the object are ignored. </p>
+<p> The properties that affect the target mouse event response area are: width, height, hitArea, and the priority sequence is: hitArea (type:HitArea), >hitArea (type:Rectangle), >width/height. </p>
 </div>
 
 
@@ -3708,11 +3865,16 @@ The default is false. If you listen to the mouse event, you will automatically s
     
 
     
+    <dt class="tag-default">Default Value:</dt>
+    <dd class="tag-default"><ul class="dummy">
+            <li>false不可穿透，此对象的鼠标响应区域由width、height、hitArea属性决定。</p></li>
+        </ul></dd>
+    
 
     <!-- 
     <dt class="tag-source">Source:</dt>
     <dd class="tag-source"><ul class="dummy"><li>
-        js, line 147
+        js, line 146
     </li></ul></dd>
      -->
 
@@ -3791,7 +3953,7 @@ The default is false. If you listen to the mouse event, you will automatically s
     <!-- 
     <dt class="tag-source">Source:</dt>
     <dd class="tag-source"><ul class="dummy"><li>
-        js, line 370
+        js, line 350
     </li></ul></dd>
      -->
 
@@ -3870,7 +4032,7 @@ The default is false. If you listen to the mouse event, you will automatically s
     <!-- 
     <dt class="tag-source">Source:</dt>
     <dd class="tag-source"><ul class="dummy"><li>
-        js, line 375
+        js, line 355
     </li></ul></dd>
      -->
 
@@ -3954,7 +4116,7 @@ The default is false. If you listen to the mouse event, you will automatically s
     <!-- 
     <dt class="tag-source">Source:</dt>
     <dd class="tag-source"><ul class="dummy"><li>
-        js, line 34
+        js, line 18
     </li></ul></dd>
      -->
 
@@ -4033,7 +4195,7 @@ The default is false. If you listen to the mouse event, you will automatically s
     <!-- 
     <dt class="tag-source">Source:</dt>
     <dd class="tag-source"><ul class="dummy"><li>
-        js, line 52
+        js, line 36
     </li></ul></dd>
      -->
 
@@ -4113,7 +4275,7 @@ The default is false. If you listen to the mouse event, you will automatically s
     <!-- 
     <dt class="tag-source">Source:</dt>
     <dd class="tag-source"><ul class="dummy"><li>
-        js, line 180
+        js, line 383
     </li></ul></dd>
      -->
 
@@ -4150,6 +4312,10 @@ The default is false. If you listen to the mouse event, you will automatically s
 
 
 
+<div class="description">
+    Parent node.
+</div>
+
 
 
 
@@ -4163,7 +4329,7 @@ The default is false. If you listen to the mouse event, you will automatically s
     
     <dt class="inherited-from">Inherited From:</dt>
     <dd class="inherited-from"><ul class="dummy"><li>
-        <a href="Core.Sprite.html#parent">Sprite#parent</a>
+        <a href="Core.Node.html#parent">Node#parent</a>
     </li></ul></dd>
     
 
@@ -4188,7 +4354,7 @@ The default is false. If you listen to the mouse event, you will automatically s
     <!-- 
     <dt class="tag-source">Source:</dt>
     <dd class="tag-source"><ul class="dummy"><li>
-        js, line 328
+        js, line 41
     </li></ul></dd>
      -->
 
@@ -4267,7 +4433,7 @@ The default is false. If you listen to the mouse event, you will automatically s
     <!-- 
     <dt class="tag-source">Source:</dt>
     <dd class="tag-source"><ul class="dummy"><li>
-        js, line 277
+        js, line 262
     </li></ul></dd>
      -->
 
@@ -4346,7 +4512,7 @@ The default is false. If you listen to the mouse event, you will automatically s
     <!-- 
     <dt class="tag-source">Source:</dt>
     <dd class="tag-source"><ul class="dummy"><li>
-        js, line 283
+        js, line 268
     </li></ul></dd>
      -->
 
@@ -4421,7 +4587,7 @@ The default is false. If you listen to the mouse event, you will automatically s
     <!-- 
     <dt class="tag-source">Source:</dt>
     <dd class="tag-source"><ul class="dummy"><li>
-        js, line 188
+        js, line 184
     </li></ul></dd>
      -->
 
@@ -4439,6 +4605,81 @@ The default is false. If you listen to the mouse event, you will automatically s
         <li>
             
 <span class="param-type"><code>Boolean</code></span>
+
+
+        </li>
+    </ul>
+ -->
+
+
+
+
+</div>
+
+        
+            
+<div class="section-members">
+<h4 class="name" id="popupEffect"><span class="type-signature"></span>popupEffect<span class="type-signature"> :<a href="Core.Handler.html">Handler</a></span></h4>
+
+
+
+
+<div class="description">
+    Pop-up dialog box effect, you can set an effect instead of the default pop-up effect, if you do not want to have any effect, you can assign to null 
+The global default pop-up effect can be modified by manager.popupEffect
+</div>
+
+
+
+
+
+<dl class="details">
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    <!-- 
+    <dt class="tag-source">Source:</dt>
+    <dd class="tag-source"><ul class="dummy"><li>
+        js, line 198
+    </li></ul></dd>
+     -->
+
+    
+
+    
+
+    
+</dl>
+
+
+<!-- 
+    <h5>Type:</h5>
+    <ul>
+        <li>
+            
+<span class="param-type"><code><a href="Core.Handler.html">Handler</a></code></span>
 
 
         </li>
@@ -4500,7 +4741,7 @@ The default is false. If you listen to the mouse event, you will automatically s
     <!-- 
     <dt class="tag-source">Source:</dt>
     <dd class="tag-source"><ul class="dummy"><li>
-        js, line 93
+        js, line 95
     </li></ul></dd>
      -->
 
@@ -4579,7 +4820,7 @@ The default is false. If you listen to the mouse event, you will automatically s
     <!-- 
     <dt class="tag-source">Source:</dt>
     <dd class="tag-source"><ul class="dummy"><li>
-        js, line 252
+        js, line 237
     </li></ul></dd>
      -->
 
@@ -4654,7 +4895,7 @@ The default is false. If you listen to the mouse event, you will automatically s
     <!-- 
     <dt class="tag-source">Source:</dt>
     <dd class="tag-source"><ul class="dummy"><li>
-        js, line 51
+        js, line 56
     </li></ul></dd>
      -->
 
@@ -4729,7 +4970,7 @@ The default is false. If you listen to the mouse event, you will automatically s
     <!-- 
     <dt class="tag-source">Source:</dt>
     <dd class="tag-source"><ul class="dummy"><li>
-        js, line 55
+        js, line 60
     </li></ul></dd>
      -->
 
@@ -4767,11 +5008,10 @@ The default is false. If you listen to the mouse event, you will automatically s
 
 
 <div class="description">
-    Display a rectangular rolling range object, has the effect of cutting (if you only want to limit the object rendering area, please use viewport), set optimizeScrollRect=true, can optimize the trimmed area content rendering. 
-The difference between srollRect and viewport: 
-1.srollRect comes with clipping effects, viewport only affects whether child objects render, and does not have clipping effects (higher performance). 
-2. set rect x, y properties can achieve regional scrolling effect, but scrollRect will maintain the 0,0 point position unchanged. 
- *
+    <p> Display a rectangular rolling range object, has the effect of cutting (if you only want to limit the object rendering area, please use viewport), set optimizeScrollRect=true, can optimize the trimmed area content rendering. </p>
+<p> The difference between srollRect and viewport: 
+1.srollRect comes with clipping effects, viewport only affects whether child objects render, and does not have clipping effects (higher performance). <br/>
+		 *</p>
 </div>
 
 
@@ -4812,7 +5052,7 @@ The difference between srollRect and viewport:
     <!-- 
     <dt class="tag-source">Source:</dt>
     <dd class="tag-source"><ul class="dummy"><li>
-        js, line 317
+        js, line 301
     </li></ul></dd>
      -->
 
@@ -4891,7 +5131,7 @@ The difference between srollRect and viewport:
     <!-- 
     <dt class="tag-source">Source:</dt>
     <dd class="tag-source"><ul class="dummy"><li>
-        js, line 258
+        js, line 243
     </li></ul></dd>
      -->
 
@@ -4970,7 +5210,7 @@ The difference between srollRect and viewport:
     <!-- 
     <dt class="tag-source">Source:</dt>
     <dd class="tag-source"><ul class="dummy"><li>
-        js, line 264
+        js, line 249
     </li></ul></dd>
      -->
 
@@ -5049,7 +5289,7 @@ The difference between srollRect and viewport:
     <!-- 
     <dt class="tag-source">Source:</dt>
     <dd class="tag-source"><ul class="dummy"><li>
-        js, line 333
+        js, line 313
     </li></ul></dd>
      -->
 
@@ -5128,7 +5368,7 @@ The difference between srollRect and viewport:
     <!-- 
     <dt class="tag-source">Source:</dt>
     <dd class="tag-source"><ul class="dummy"><li>
-        js, line 208
+        js, line 191
     </li></ul></dd>
      -->
 
@@ -5207,7 +5447,7 @@ The difference between srollRect and viewport:
     <!-- 
     <dt class="tag-source">Source:</dt>
     <dd class="tag-source"><ul class="dummy"><li>
-        js, line 124
+        js, line 126
     </li></ul></dd>
      -->
 
@@ -5245,7 +5485,7 @@ The difference between srollRect and viewport:
 
 
 <div class="description">
-    Set a Texture instance and display this image (if it has been previously drawn, it will be removed). Equivalent to graphics.clear (); graphics.drawTexture ()
+    Set a Texture instance and display this image (if it has been previously drawn, it will be removed). Equivalent to graphics.clear (); graphics.drawImage ()
 </div>
 
 
@@ -5286,7 +5526,7 @@ The difference between srollRect and viewport:
     <!-- 
     <dt class="tag-source">Source:</dt>
     <dd class="tag-source"><ul class="dummy"><li>
-        js, line 386
+        js, line 366
     </li></ul></dd>
      -->
 
@@ -5324,7 +5564,7 @@ The difference between srollRect and viewport:
 
 
 <div class="description">
-    The time controller defaults to Laya.timer.
+    The time controller defaults to global Laya.timer. You can also separate instances of a Timer to control time scaling
 </div>
 
 
@@ -5365,7 +5605,7 @@ The difference between srollRect and viewport:
     <!-- 
     <dt class="tag-source">Source:</dt>
     <dd class="tag-source"><ul class="dummy"><li>
-        js, line 46
+        js, line 30
     </li></ul></dd>
      -->
 
@@ -5474,26 +5714,23 @@ The difference between srollRect and viewport:
 
     <h5>示例</h5>
     
-    <pre class="prettyprint"><code>The following example shows three mouse tips: 
-		   &lt;listing version="3.0">
-		   private var _testTips:TestTipsUI = new TestTipsUI();
-		   private function testTips():void {
-		   // Simple mouse prompt 
-		Btn2.toolTip = "here is the mouse prompt &amp;lt; b&amp;gt; bold &amp;lt; /b&amp;gt; &amp;lt; br&amp;gt; line feed.""; 
-		   // Custom mouse prompt 
-		Btn1.toolTip = showTips1; 
-		   // Custom mouse prompt with parameters 
-		Clip.toolTip = new, Handler (this, showTips2), ["clip"] ); 
-		} 
-		Private, function, showTips1 (): void { 
-		_testTips.label.text = "here is the button." [" + btn1.label + "] "; 
-		Tip.addChild (_testTips); 
-		} 
-		Private function showTips2 (name:String): void { 
-		_testTips.label.text = "here is + name"; 
-		Tip.addChild (_testTips); 
-		} 
-		&lt;/listing></code></pre>
+    <pre class="prettyprint"><code>Private, VaR, _testTips:TestTipsUI = new, TestTipsUI (); 
+Private, function, testTips (): void { 
+		  // Simple mouse prompt 
+Btn2.toolTip = "here is the mouse prompt &amp;lt; b&amp;gt; bold &amp;lt; /b&amp;gt; &amp;lt; br&amp;gt; line feed.""; 
+		  // Custom mouse prompt 
+Btn1.toolTip = showTips1; 
+		  // Custom mouse prompt with parameters 
+Clip.toolTip = new, Handler (this, showTips2), ["clip"] ); 
+} 
+Private, function, showTips1 (): void { 
+_testTips.label.text = "here is the button." [" + btn1.label + "] "; 
+Tip.addChild (_testTips); 
+} 
+Private function showTips2 (name:String): void { 
+_testTips.label.text = "here is + name"; 
+Tip.addChild (_testTips); 
+} </code></pre>
 
 
 </div>
@@ -5548,7 +5785,7 @@ The difference between srollRect and viewport:
     <!-- 
     <dt class="tag-source">Source:</dt>
     <dd class="tag-source"><ul class="dummy"><li>
-        js, line 75
+        js, line 77
     </li></ul></dd>
      -->
 
@@ -5586,8 +5823,8 @@ The difference between srollRect and viewport:
 
 
 <div class="description">
-    Object matrix information. By setting the matrix, you can achieve node rotation, zoom, displacement effect. 
-Matrix for more information, please refer to <code>Matrix</code>
+    <p> Object matrix information. By setting the matrix, you can achieve node rotation, zoom, displacement effect. </p>
+<p> Matrix for more information, please refer to <code>Matrix</code></p>
 </div>
 
 
@@ -5628,7 +5865,7 @@ Matrix for more information, please refer to <code>Matrix</code>
     <!-- 
     <dt class="tag-source">Source:</dt>
     <dd class="tag-source"><ul class="dummy"><li>
-        js, line 271
+        js, line 256
     </li></ul></dd>
      -->
 
@@ -5666,10 +5903,10 @@ Matrix for more information, please refer to <code>Matrix</code>
 
 
 <div class="description">
-    Outside the viewport viewport size, sub objects will not be rendered (if you want to achieve the effect of cutting, please use srollRect), reasonable use can improve the rendering performance. For example, a map block made up of small pictures will not render the small picture outside viewport 
-The difference between srollRect and viewport: 
-1.srollRect comes with clipping effects, viewport only affects whether child objects render, and does not have clipping effects (higher performance). 
-2. set rect x, y properties can achieve regional scrolling effect, but scrollRect will maintain the 0,0 point position unchanged.
+    <p> Outside the viewport viewport size, sub objects will not be rendered (if you want to achieve the effect of cutting, please use srollRect), reasonable use can improve the rendering performance. For example, a map block made up of small pictures will not render the small picture outside viewport </p>
+<p> The difference between srollRect and viewport: 
+1. srollRect comes with clipping effects, and viewport only affects render of child objects, rendering without clipping (higher performance). <br/>
+		 *</p>
 </div>
 
 
@@ -5715,7 +5952,7 @@ The difference between srollRect and viewport:
     <!-- 
     <dt class="tag-source">Source:</dt>
     <dd class="tag-source"><ul class="dummy"><li>
-        js, line 173
+        js, line 376
     </li></ul></dd>
      -->
 
@@ -5794,7 +6031,7 @@ The difference between srollRect and viewport:
     <!-- 
     <dt class="tag-source">Source:</dt>
     <dd class="tag-source"><ul class="dummy"><li>
-        js, line 295
+        js, line 280
     </li></ul></dd>
      -->
 
@@ -5874,7 +6111,7 @@ The difference between srollRect and viewport:
     <!-- 
     <dt class="tag-source">Source:</dt>
     <dd class="tag-source"><ul class="dummy"><li>
-        js, line 18
+        js, line 24
     </li></ul></dd>
      -->
 
@@ -5953,7 +6190,7 @@ The difference between srollRect and viewport:
     <!-- 
     <dt class="tag-source">Source:</dt>
     <dd class="tag-source"><ul class="dummy"><li>
-        js, line 214
+        js, line 197
     </li></ul></dd>
      -->
 
@@ -6032,7 +6269,7 @@ The difference between srollRect and viewport:
     <!-- 
     <dt class="tag-source">Source:</dt>
     <dd class="tag-source"><ul class="dummy"><li>
-        js, line 220
+        js, line 203
     </li></ul></dd>
      -->
 
@@ -6107,7 +6344,7 @@ The difference between srollRect and viewport:
     <!-- 
     <dt class="tag-source">Source:</dt>
     <dd class="tag-source"><ul class="dummy"><li>
-        js, line 228
+        js, line 237
     </li></ul></dd>
      -->
 
@@ -6142,6 +6379,90 @@ The difference between srollRect and viewport:
     
         <h3 class="subsection-title">Methods</h3>
 
+        
+            
+<div class="section-method">
+
+    
+
+    <h4 class="name" id="_setParent"><span class="type-signature"></span>_setParent<span class="signature">()</span><span class="type-signature"></span></h4>
+
+    
+
+
+
+
+
+
+
+<dl class="details">
+
+    
+
+    
+
+    
+    <dt class="inherited-from">Inherited From:</dt>
+    <dd class="inherited-from"><ul class="dummy"><li>
+        <a href="Core.Sprite.html#_setParent">Sprite#_setParent</a>
+    </li></ul></dd>
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    <!-- 
+    <dt class="tag-source">Source:</dt>
+    <dd class="tag-source"><ul class="dummy"><li>
+        js, line 544
+    </li></ul></dd>
+     -->
+
+    
+
+    
+
+    
+</dl>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+</div>
         
             
 <div class="section-method">
@@ -6196,7 +6517,7 @@ The difference between srollRect and viewport:
     <!-- 
     <dt class="tag-source">Source:</dt>
     <dd class="tag-source"><ul class="dummy"><li>
-        js, line 99
+        js, line 82
     </li></ul></dd>
      -->
 
@@ -6361,7 +6682,7 @@ The difference between srollRect and viewport:
     <!-- 
     <dt class="tag-source">Source:</dt>
     <dd class="tag-source"><ul class="dummy"><li>
-        js, line 111
+        js, line 94
     </li></ul></dd>
      -->
 
@@ -6552,7 +6873,7 @@ The difference between srollRect and viewport:
     <!-- 
     <dt class="tag-source">Source:</dt>
     <dd class="tag-source"><ul class="dummy"><li>
-        js, line 104
+        js, line 87
     </li></ul></dd>
      -->
 
@@ -6998,7 +7319,7 @@ The difference between srollRect and viewport:
     <!-- 
     <dt class="tag-source">Source:</dt>
     <dd class="tag-source"><ul class="dummy"><li>
-        js, line 222
+        js, line 209
     </li></ul></dd>
      -->
 
@@ -7159,7 +7480,7 @@ The difference between srollRect and viewport:
     <!-- 
     <dt class="tag-source">Source:</dt>
     <dd class="tag-source"><ul class="dummy"><li>
-        js, line 251
+        js, line 260
     </li></ul></dd>
      -->
 
@@ -7314,7 +7635,7 @@ The difference between srollRect and viewport:
     <!-- 
     <dt class="tag-source">Source:</dt>
     <dd class="tag-source"><ul class="dummy"><li>
-        js, line 269
+        js, line 278
     </li></ul></dd>
      -->
 
@@ -7354,7 +7675,7 @@ The difference between srollRect and viewport:
 
     
 
-    <h4 class="name" id="closeByGround"><span class="type-signature"></span>closeByGround<span class="signature">(group)</span><span class="type-signature"></span></h4>
+    <h4 class="name" id="closeByGroup"><span class="type-signature"></span>closeByGroup<span class="signature">(group)</span><span class="type-signature"></span></h4>
 
     
 
@@ -7397,7 +7718,7 @@ The difference between srollRect and viewport:
     <!-- 
     <dt class="tag-source">Source:</dt>
     <dd class="tag-source"><ul class="dummy"><li>
-        js, line 280
+        js, line 289
     </li></ul></dd>
      -->
 
@@ -7593,7 +7914,7 @@ The difference between srollRect and viewport:
 
 
 <div class="description">
-    Does the current container contain? <code>node</code> Node.
+    Does the current container contain the specified? <code>Node</code> Node object.
 </div>
 
 
@@ -7634,7 +7955,7 @@ The difference between srollRect and viewport:
     <!-- 
     <dt class="tag-source">Source:</dt>
     <dd class="tag-source"><ul class="dummy"><li>
-        js, line 180
+        js, line 166
     </li></ul></dd>
      -->
 
@@ -7695,7 +8016,7 @@ The difference between srollRect and viewport:
             
 
             <td class="description last">
-                One node <code>Node</code> .
+                Designated <code>Node</code> Node object.
                 
             </td>
         </tr>
@@ -7736,7 +8057,7 @@ The difference between srollRect and viewport:
 
 
 <div class="param-desc">
-    A Boolean value indicating whether the <code>node</code> node is included.
+    A Boolean value indicating whether the specified <code>Node</code> node object is included.
 </div>
 
     
@@ -8111,7 +8432,7 @@ The difference between srollRect and viewport:
 
 
 <div class="description">
-    Custom update, render display objects. It is generally used to extend the rendering mode. Please use it properly. This may cause rendering on the accelerator. 
+    <p> Custom update, render display objects. It is generally used to extend the rendering mode. Please use it properly. This may cause rendering on the accelerator. </p>
 <p><b> Be careful </b> Do not add or delete tree nodes in this function, otherwise it will affect the traversal of tree nodes. </p>
 </div>
 
@@ -8153,7 +8474,7 @@ The difference between srollRect and viewport:
     <!-- 
     <dt class="tag-source">Source:</dt>
     <dd class="tag-source"><ul class="dummy"><li>
-        js, line 493
+        js, line 495
     </li></ul></dd>
      -->
 
@@ -8485,7 +8806,7 @@ The difference between srollRect and viewport:
     <!-- 
     <dt class="tag-source">Source:</dt>
     <dd class="tag-source"><ul class="dummy"><li>
-        js, line 93
+        js, line 76
     </li></ul></dd>
      -->
 
@@ -8532,14 +8853,14 @@ The difference between srollRect and viewport:
 
 
 <div class="description">
-    Draw current <code>Sprite</code> reach <code>Canvas</code> Go ahead and return a HtmlCanvas 
-The result of the drawing can be used as a picture source to be drawn into another Sprite: 
+    <p> Draw current <code>Sprite</code> reach <code>Canvas</code> Go ahead and return a HtmlCanvas. </p>
+<p> The result of the drawing can be used as a picture source to be drawn into another Sprite: </p>
 var htmlCanvas:HTMLCanvas = sprite.drawToCanvas(100, 100, 0, 0);// Draw sprites to canvas 
 var texture:Texture = new Texture(htmlCanvas);// Using htmlCanvas to create Texture 
 var sp:Sprite = new Sprite().pos(0, 200);// Create sprite and bring it down to the 200 position 
-sp.graphics.drawTexture(texture);// Draw screenshots to sprites 
+sp.graphics.drawImage(texture);// Draw screenshots to sprites 
 Laya.stage.addChild(sp);// Show the sprite to the stage 
-You can also get the original picture data and share it on the Internet, so as to achieve the screenshot effect: 
+<p> You can also get the original picture data and share it on the Internet, so as to achieve the screenshot effect: </p>
 var htmlCanvas:HTMLCanvas = sprite.drawToCanvas(100, 100, 0, 0);// Draw sprites to canvas 
 var canvas:* = htmlCanvas.getCanvas();// Gets the native canvas object 
 trace(canvas.toDataURL("image/png"));// Print picture Base64 information, which can be sent to the server or saved as pictures
@@ -8583,7 +8904,7 @@ trace(canvas.toDataURL("image/png"));// Print picture Base64 information, which 
     <!-- 
     <dt class="tag-source">Source:</dt>
     <dd class="tag-source"><ul class="dummy"><li>
-        js, line 485
+        js, line 487
     </li></ul></dd>
      -->
 
@@ -8826,7 +9147,7 @@ trace(canvas.toDataURL("image/png"));// Print picture Base64 information, which 
     <!-- 
     <dt class="tag-source">Source:</dt>
     <dd class="tag-source"><ul class="dummy"><li>
-        js, line 25
+        js, line 24
     </li></ul></dd>
      -->
 
@@ -8945,8 +9266,7 @@ trace(canvas.toDataURL("image/png"));// Print picture Base64 information, which 
             
 
             <td class="description last">
-                data  Callback data. 
-<b> Be careful： </b> If you need to pass multiple parameters, P1, P2, P3, you can use the array structure, such as: [p1,p2,p3,...] If you need a callback, a single parameter p is an array, so you need to use a structure such as: [p] Other single parameters, P, can be passed directly to the parameter P.
+                data  (optional) callback data. <b> Be careful： </b> If you need to pass multiple parameters, P1, P2, P3, you can use the array structure, such as: [p1,p2,p3,...] If you need to call a single parameter P, and P is an array, you need to use a structure such as: [p] Other single parameters, P, can be passed directly to the parameter P.
                 
             </td>
         </tr>
@@ -9050,7 +9370,7 @@ trace(canvas.toDataURL("image/png"));// Print picture Base64 information, which 
     <!-- 
     <dt class="tag-source">Source:</dt>
     <dd class="tag-source"><ul class="dummy"><li>
-        js, line 207
+        js, line 194
     </li></ul></dd>
      -->
 
@@ -9245,7 +9565,7 @@ trace(canvas.toDataURL("image/png"));// Print picture Base64 information, which 
             
 
             <td class="description last">
-                args  Callback parameter.
+                args  Optional callback parameters.
                 
             </td>
         </tr>
@@ -9283,7 +9603,7 @@ trace(canvas.toDataURL("image/png"));// Print picture Base64 information, which 
             
 
             <td class="description last">
-                Whether or not the previous delay execution is covered, defaults to true.
+                (optional) whether the delay is covered before default is true.
                 
             </td>
         </tr>
@@ -9362,7 +9682,7 @@ trace(canvas.toDataURL("image/png"));// Print picture Base64 information, which 
     <!-- 
     <dt class="tag-source">Source:</dt>
     <dd class="tag-source"><ul class="dummy"><li>
-        js, line 216
+        js, line 203
     </li></ul></dd>
      -->
 
@@ -9557,7 +9877,7 @@ trace(canvas.toDataURL("image/png"));// Print picture Base64 information, which 
             
 
             <td class="description last">
-                args  Callback Arguments
+                args  Optional callback parameters
                 
             </td>
         </tr>
@@ -9595,7 +9915,7 @@ trace(canvas.toDataURL("image/png"));// Print picture Base64 information, which 
             
 
             <td class="description last">
-                Whether or not the previous delay execution is covered, defaults to true
+                (optional) whether the delay is covered before default is true
                 
             </td>
         </tr>
@@ -9674,7 +9994,7 @@ trace(canvas.toDataURL("image/png"));// Print picture Base64 information, which 
     <!-- 
     <dt class="tag-source">Source:</dt>
     <dd class="tag-source"><ul class="dummy"><li>
-        js, line 557
+        js, line 562
     </li></ul></dd>
      -->
 
@@ -9839,7 +10159,7 @@ trace(canvas.toDataURL("image/png"));// Print picture Base64 information, which 
     <!-- 
     <dt class="tag-source">Source:</dt>
     <dd class="tag-source"><ul class="dummy"><li>
-        js, line 519
+        js, line 521
     </li></ul></dd>
      -->
 
@@ -9963,7 +10283,7 @@ trace(canvas.toDataURL("image/png"));// Print picture Base64 information, which 
 
 
 <div class="description">
-    Gets the rectangular display area of the object in the parent container coordinate system. 
+    <p> Gets the rectangular display area of the object in the parent container coordinate system. </p>
 <p><b> Be careful： </b> The amount of calculation is large, as little as possible. </p>
 </div>
 
@@ -10005,7 +10325,7 @@ trace(canvas.toDataURL("image/png"));// Print picture Base64 information, which 
     <!-- 
     <dt class="tag-source">Source:</dt>
     <dd class="tag-source"><ul class="dummy"><li>
-        js, line 410
+        js, line 407
     </li></ul></dd>
      -->
 
@@ -10118,7 +10438,7 @@ trace(canvas.toDataURL("image/png"));// Print picture Base64 information, which 
     <!-- 
     <dt class="tag-source">Source:</dt>
     <dd class="tag-source"><ul class="dummy"><li>
-        js, line 129
+        js, line 112
     </li></ul></dd>
      -->
 
@@ -10283,7 +10603,7 @@ trace(canvas.toDataURL("image/png"));// Print picture Base64 information, which 
     <!-- 
     <dt class="tag-source">Source:</dt>
     <dd class="tag-source"><ul class="dummy"><li>
-        js, line 123
+        js, line 106
     </li></ul></dd>
      -->
 
@@ -10448,7 +10768,7 @@ trace(canvas.toDataURL("image/png"));// Print picture Base64 information, which 
     <!-- 
     <dt class="tag-source">Source:</dt>
     <dd class="tag-source"><ul class="dummy"><li>
-        js, line 117
+        js, line 100
     </li></ul></dd>
      -->
 
@@ -10608,7 +10928,7 @@ trace(canvas.toDataURL("image/png"));// Print picture Base64 information, which 
     <!-- 
     <dt class="tag-source">Source:</dt>
     <dd class="tag-source"><ul class="dummy"><li>
-        js, line 275
+        js, line 284
     </li></ul></dd>
      -->
 
@@ -10773,7 +11093,7 @@ trace(canvas.toDataURL("image/png"));// Print picture Base64 information, which 
     <!-- 
     <dt class="tag-source">Source:</dt>
     <dd class="tag-source"><ul class="dummy"><li>
-        js, line 422
+        js, line 419
     </li></ul></dd>
      -->
 
@@ -10834,7 +11154,7 @@ trace(canvas.toDataURL("image/png"));// Print picture Base64 information, which 
             
 
             <td class="description last">
-                Using the true size of the picture, defaults to false
+                (optional) use the true size of the picture, and defaults to false
                 
             </td>
         </tr>
@@ -10938,7 +11258,7 @@ trace(canvas.toDataURL("image/png"));// Print picture Base64 information, which 
     <!-- 
     <dt class="tag-source">Source:</dt>
     <dd class="tag-source"><ul class="dummy"><li>
-        js, line 591
+        js, line 596
     </li></ul></dd>
      -->
 
@@ -11027,7 +11347,7 @@ trace(canvas.toDataURL("image/png"));// Print picture Base64 information, which 
     <!-- 
     <dt class="tag-source">Source:</dt>
     <dd class="tag-source"><ul class="dummy"><li>
-        js, line 416
+        js, line 413
     </li></ul></dd>
      -->
 
@@ -11140,7 +11460,7 @@ trace(canvas.toDataURL("image/png"));// Print picture Base64 information, which 
     <!-- 
     <dt class="tag-source">Source:</dt>
     <dd class="tag-source"><ul class="dummy"><li>
-        js, line 507
+        js, line 509
     </li></ul></dd>
      -->
 
@@ -11227,7 +11547,7 @@ trace(canvas.toDataURL("image/png"));// Print picture Base64 information, which 
             
 
             <td class="description last">
-                Whether to create a new Point object as the return value, defaults to false, returns the object creation cost using the input point object.
+                (optional) whether to create a new Point object as the return value, defaults to false, returns the object creation cost using the input point object.
                 
             </td>
         </tr>
@@ -11496,7 +11816,7 @@ trace(canvas.toDataURL("image/png"));// Print picture Base64 information, which 
     <!-- 
     <dt class="tag-source">Source:</dt>
     <dd class="tag-source"><ul class="dummy"><li>
-        js, line 587
+        js, line 592
     </li></ul></dd>
      -->
 
@@ -11775,7 +12095,7 @@ trace(canvas.toDataURL("image/png"));// Print picture Base64 information, which 
     <!-- 
     <dt class="tag-source">Source:</dt>
     <dd class="tag-source"><ul class="dummy"><li>
-        js, line 64
+        js, line 63
     </li></ul></dd>
      -->
 
@@ -11899,8 +12219,8 @@ trace(canvas.toDataURL("image/png"));// Print picture Base64 information, which 
 
 
 <div class="description">
-    Load and display a picture. The function is equivalent to the graphics.loadImage method. Support asynchronous loading. 
-Note: many calls to loadImage draw different pictures, which will be displayed simultaneously.
+    <p> Load and display a picture. The function is equivalent to the graphics.loadImage method. Support asynchronous loading. </p>
+<p> Note: many calls to loadImage draw different pictures, which will be displayed simultaneously. </p>
 </div>
 
 
@@ -11941,7 +12261,7 @@ Note: many calls to loadImage draw different pictures, which will be displayed s
     <!-- 
     <dt class="tag-source">Source:</dt>
     <dd class="tag-source"><ul class="dummy"><li>
-        js, line 551
+        js, line 556
     </li></ul></dd>
      -->
 
@@ -12060,7 +12380,7 @@ Note: many calls to loadImage draw different pictures, which will be displayed s
             
 
             <td class="description last">
-                x  Display the x position of the picture
+                x  (optional) displays the x position of the picture.
                 
             </td>
         </tr>
@@ -12102,7 +12422,7 @@ Note: many calls to loadImage draw different pictures, which will be displayed s
             
 
             <td class="description last">
-                y  Display the Y position of the picture
+                y  (optional) displays the Y position of the picture.
                 
             </td>
         </tr>
@@ -12144,7 +12464,7 @@ Note: many calls to loadImage draw different pictures, which will be displayed s
             
 
             <td class="description last">
-                width  Displays the width of the picture, set to 0, indicating the default width of the picture
+                width  (optional) display the width of the picture, set to 0, which indicates the default width of the picture.
                 
             </td>
         </tr>
@@ -12186,7 +12506,7 @@ Note: many calls to loadImage draw different pictures, which will be displayed s
             
 
             <td class="description last">
-                height  Show the height of the picture, set to 0, which indicates the default height to use the picture
+                height  (optional) display the height of the picture, set to 0, which indicates the default height to use the picture.
                 
             </td>
         </tr>
@@ -12228,7 +12548,7 @@ Note: many calls to loadImage draw different pictures, which will be displayed s
             
 
             <td class="description last">
-                complete  Load completed callback
+                complete  (optional) the load completes the callback.
                 
             </td>
         </tr>
@@ -12269,7 +12589,7 @@ Note: many calls to loadImage draw different pictures, which will be displayed s
 
 
 <div class="param-desc">
-    Returns the sprite object itself
+    Returns the sprite object itself.
 </div>
 
     
@@ -12332,7 +12652,7 @@ Note: many calls to loadImage draw different pictures, which will be displayed s
     <!-- 
     <dt class="tag-source">Source:</dt>
     <dd class="tag-source"><ul class="dummy"><li>
-        js, line 500
+        js, line 502
     </li></ul></dd>
      -->
 
@@ -12419,7 +12739,7 @@ Note: many calls to loadImage draw different pictures, which will be displayed s
             
 
             <td class="description last">
-                Whether to create a new Point object as the return value, defaults to false, returns the object creation cost using the input point object.
+                (optional) whether to create a new Point object as the return value, defaults to false, returns the object creation cost using the input point object.
                 
             </td>
         </tr>
@@ -12518,7 +12838,7 @@ Note: many calls to loadImage draw different pictures, which will be displayed s
     <!-- 
     <dt class="tag-source">Source:</dt>
     <dd class="tag-source"><ul class="dummy"><li>
-        js, line 265
+        js, line 274
     </li></ul></dd>
      -->
 
@@ -12606,7 +12926,7 @@ Note: many calls to loadImage draw different pictures, which will be displayed s
     <!-- 
     <dt class="tag-source">Source:</dt>
     <dd class="tag-source"><ul class="dummy"><li>
-        js, line 52
+        js, line 51
     </li></ul></dd>
      -->
 
@@ -12745,7 +13065,7 @@ Note: many calls to loadImage draw different pictures, which will be displayed s
             
 
             <td class="description last">
-                If the value is true, only the listeners added by the once method are removed.
+                (optional) if the value is true, only the listeners added by the once method are removed.
                 
             </td>
         </tr>
@@ -12849,7 +13169,7 @@ Note: many calls to loadImage draw different pictures, which will be displayed s
     <!-- 
     <dt class="tag-source">Source:</dt>
     <dd class="tag-source"><ul class="dummy"><li>
-        js, line 58
+        js, line 57
     </li></ul></dd>
      -->
 
@@ -12930,7 +13250,7 @@ Note: many calls to loadImage draw different pictures, which will be displayed s
             
 
             <td class="description last">
-                type  Event type, if the value is null, removes all types of listeners for this object.
+                type  (optional) event type. If the value is null, all types of listeners for this object are removed.
                 
             </td>
         </tr>
@@ -12993,8 +13313,8 @@ Note: many calls to loadImage draw different pictures, which will be displayed s
 
 
 <div class="description">
-    Adds an event listener to enable listeners to receive event notifications. 
-If you listen to mouse events, you automatically set the property of your own and father nodes. The value of mouseEnabled is true (if the parent node is mouseEnabled=false, then stop setting the parent node mouseEnabled attribute).
+    <p> Adds an event listener to enable listeners to receive event notifications. </p>
+<p> If you listen to mouse events, you automatically set the property of your own and father nodes. The value of mouseEnabled is true (if the parent node is mouseEnabled=false, then stop setting the parent node mouseEnabled attribute). </p>
 </div>
 
 
@@ -13035,7 +13355,7 @@ If you listen to mouse events, you automatically set the property of your own an
     <!-- 
     <dt class="tag-source">Source:</dt>
     <dd class="tag-source"><ul class="dummy"><li>
-        js, line 529
+        js, line 531
     </li></ul></dd>
      -->
 
@@ -13230,7 +13550,7 @@ If you listen to mouse events, you automatically set the property of your own an
             
 
             <td class="description last">
-                args  The callback parameter of the event listener function.
+                args  Optional callback parameters for the event listener function.
                 
             </td>
         </tr>
@@ -13293,8 +13613,8 @@ If you listen to mouse events, you automatically set the property of your own an
 
 
 <div class="description">
-    Adds an event listener to enable listeners to receive event notifications that automatically remove listeners after the listener event responds. 
-If you listen to mouse events, you automatically set the property of your own and father nodes. The value of mouseEnabled is true (if the parent node is mouseEnabled=false, then stop setting the parent node mouseEnabled attribute).
+    <p> Adds an event listener to enable listeners to receive event notifications that automatically remove listeners after the listener event responds. </p>
+<p> If you listen to mouse events, you automatically set the property of your own and father nodes. The value of mouseEnabled is true (if the parent node is mouseEnabled=false, then stop setting the parent node mouseEnabled attribute). </p>
 </div>
 
 
@@ -13335,7 +13655,7 @@ If you listen to mouse events, you automatically set the property of your own an
     <!-- 
     <dt class="tag-source">Source:</dt>
     <dd class="tag-source"><ul class="dummy"><li>
-        js, line 539
+        js, line 541
     </li></ul></dd>
      -->
 
@@ -13530,7 +13850,7 @@ If you listen to mouse events, you automatically set the property of your own an
             
 
             <td class="description last">
-                args  The callback parameter of the event listener function.
+                args  Optional callback parameters for the event listener function.
                 
             </td>
         </tr>
@@ -13629,7 +13949,7 @@ If you listen to mouse events, you automatically set the property of your own an
     <!-- 
     <dt class="tag-source">Source:</dt>
     <dd class="tag-source"><ul class="dummy"><li>
-        js, line 256
+        js, line 265
     </li></ul></dd>
      -->
 
@@ -13872,7 +14192,7 @@ If you listen to mouse events, you automatically set the property of your own an
     <!-- 
     <dt class="tag-source">Source:</dt>
     <dd class="tag-source"><ul class="dummy"><li>
-        js, line 246
+        js, line 255
     </li></ul></dd>
      -->
 
@@ -13960,7 +14280,7 @@ If you listen to mouse events, you automatically set the property of your own an
     <!-- 
     <dt class="tag-source">Source:</dt>
     <dd class="tag-source"><ul class="dummy"><li>
-        js, line 565
+        js, line 570
     </li></ul></dd>
      -->
 
@@ -14007,7 +14327,8 @@ If you listen to mouse events, you automatically set the property of your own an
 
 
 <div class="description">
-    Set pivot point. Equivalent to setting the pivotX and pivotY attributes, respectively.
+    <p> Set pivot point. Equivalent to setting the pivotX and pivotY attributes, respectively. </p>
+<p> Because the return value is the Sprite object itself, you can use the following syntax: spr.pivot (...).Pos (50, 100); </p>
 </div>
 
 
@@ -14048,7 +14369,7 @@ If you listen to mouse events, you automatically set the property of your own an
     <!-- 
     <dt class="tag-source">Source:</dt>
     <dd class="tag-source"><ul class="dummy"><li>
-        js, line 437
+        js, line 436
     </li></ul></dd>
      -->
 
@@ -14234,7 +14555,7 @@ If you listen to mouse events, you automatically set the property of your own an
     <!-- 
     <dt class="tag-source">Source:</dt>
     <dd class="tag-source"><ul class="dummy"><li>
-        js, line 242
+        js, line 251
     </li></ul></dd>
      -->
 
@@ -14333,7 +14654,8 @@ If you listen to mouse events, you automatically set the property of your own an
 
 
 <div class="description">
-    Set coordinate position. Equivalent to setting the X and Y attributes, respectively.
+    <p> Set coordinate position. Equivalent to setting the X and Y attributes, respectively. </p>
+<p> Because the return value is the Sprite object itself, you can use the following syntax: spr.pos (...).Scale (...); </p>
 </div>
 
 
@@ -14374,7 +14696,7 @@ If you listen to mouse events, you automatically set the property of your own an
     <!-- 
     <dt class="tag-source">Source:</dt>
     <dd class="tag-source"><ul class="dummy"><li>
-        js, line 430
+        js, line 428
     </li></ul></dd>
      -->
 
@@ -14487,7 +14809,7 @@ If you listen to mouse events, you automatically set the property of your own an
             
 
             <td class="description last">
-                Is the speed model, the normal call this.x=value assignment, speed mode calls directly internal function processing, if not rewritten x, y property, the proposed set to fast mode, higher performance.
+                (optional) is the speed model, the normal call this.x=value assignment, speed mode calls the internal function directly, if not rewritten x, y property, the proposed set to fast mode, higher performance.
                 
             </td>
         </tr>
@@ -14679,7 +15001,7 @@ If you listen to mouse events, you automatically set the property of your own an
     <!-- 
     <dt class="tag-source">Source:</dt>
     <dd class="tag-source"><ul class="dummy"><li>
-        js, line 399
+        js, line 396
     </li></ul></dd>
      -->
 
@@ -15100,7 +15422,7 @@ If you listen to mouse events, you automatically set the property of your own an
     <!-- 
     <dt class="tag-source">Source:</dt>
     <dd class="tag-source"><ul class="dummy"><li>
-        js, line 142
+        js, line 125
     </li></ul></dd>
      -->
 
@@ -15265,7 +15587,7 @@ If you listen to mouse events, you automatically set the property of your own an
     <!-- 
     <dt class="tag-source">Source:</dt>
     <dd class="tag-source"><ul class="dummy"><li>
-        js, line 159
+        js, line 142
     </li></ul></dd>
      -->
 
@@ -15430,7 +15752,7 @@ If you listen to mouse events, you automatically set the property of your own an
     <!-- 
     <dt class="tag-source">Source:</dt>
     <dd class="tag-source"><ul class="dummy"><li>
-        js, line 153
+        js, line 136
     </li></ul></dd>
      -->
 
@@ -15595,7 +15917,7 @@ If you listen to mouse events, you automatically set the property of your own an
     <!-- 
     <dt class="tag-source">Source:</dt>
     <dd class="tag-source"><ul class="dummy"><li>
-        js, line 166
+        js, line 149
     </li></ul></dd>
      -->
 
@@ -15822,7 +16144,7 @@ If you listen to mouse events, you automatically set the property of your own an
     <!-- 
     <dt class="tag-source">Source:</dt>
     <dd class="tag-source"><ul class="dummy"><li>
-        js, line 147
+        js, line 130
     </li></ul></dd>
      -->
 
@@ -15935,7 +16257,7 @@ If you listen to mouse events, you automatically set the property of your own an
     <!-- 
     <dt class="tag-source">Source:</dt>
     <dd class="tag-source"><ul class="dummy"><li>
-        js, line 466
+        js, line 468
     </li></ul></dd>
      -->
 
@@ -16127,7 +16449,7 @@ If you listen to mouse events, you automatically set the property of your own an
     <!-- 
     <dt class="tag-source">Source:</dt>
     <dd class="tag-source"><ul class="dummy"><li>
-        js, line 561
+        js, line 566
     </li></ul></dd>
      -->
 
@@ -16215,7 +16537,7 @@ If you listen to mouse events, you automatically set the property of your own an
     <!-- 
     <dt class="tag-source">Source:</dt>
     <dd class="tag-source"><ul class="dummy"><li>
-        js, line 174
+        js, line 157
     </li></ul></dd>
      -->
 
@@ -16688,7 +17010,8 @@ If you listen to mouse events, you automatically set the property of your own an
 
 
 <div class="description">
-    Set zoom. Equivalent to setting the scaleX and scaleY attributes, respectively.
+    <p> Set zoom. Equivalent to setting the scaleX and scaleY attributes, respectively. </p>
+<p> Because the return value is the Sprite object itself, you can use the following syntax: spr.scale (...).Pos (50, 100); </p>
 </div>
 
 
@@ -16729,7 +17052,7 @@ If you listen to mouse events, you automatically set the property of your own an
     <!-- 
     <dt class="tag-source">Source:</dt>
     <dd class="tag-source"><ul class="dummy"><li>
-        js, line 452
+        js, line 453
     </li></ul></dd>
      -->
 
@@ -16842,7 +17165,7 @@ If you listen to mouse events, you automatically set the property of your own an
             
 
             <td class="description last">
-                Is the speed model, the normal call this.scaleX=value assignment, speed mode calls directly internal function processing, if not rewritten scaleX, scaleY property, the proposed set to fast mode, higher performance.
+                (optional) whether the speed mode is called this.scaleX=value, normal assignment, speed mode directly call internal function, if not override the scaleX property of the scaleY, suggests setting for the rapid mode of higher performance.
                 
             </td>
         </tr>
@@ -16888,146 +17211,6 @@ If you listen to mouse events, you automatically set the property of your own an
 
     
 </div>
-
-
-
-</div>
-        
-            
-<div class="section-method">
-
-    
-
-    <h4 class="name" id="setBounds"><span class="type-signature"></span>setBounds<span class="signature">(bound)</span><span class="type-signature"></span></h4>
-
-    
-
-
-
-<div class="description">
-    Set bounds size, if there is set, then no longer through the getBounds calculation, reasonable use can improve performance.
-</div>
-
-
-
-
-
-<dl class="details">
-
-    
-
-    
-
-    
-    <dt class="inherited-from">Inherited From:</dt>
-    <dd class="inherited-from"><ul class="dummy"><li>
-        <a href="Core.Sprite.html#setBounds">Sprite#setBounds</a>
-    </li></ul></dd>
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    <!-- 
-    <dt class="tag-source">Source:</dt>
-    <dd class="tag-source"><ul class="dummy"><li>
-        js, line 404
-    </li></ul></dd>
-     -->
-
-    
-
-    
-
-    
-</dl>
-
-
-
-
-
-
-
-
-
-    <h5>Parameters:</h5>
-    
-
-<table class="params">
-    <thead>
-    <tr>
-        
-        <th>Name</th>
-        
-
-        <th>Type</th>
-
-        
-
-        
-
-        <th class="last">Description</th>
-    </tr>
-    </thead>
-
-    <tbody>
-    
-
-        <tr>
-            
-                <td class="name"><code>bound</code></td>
-            
-
-            <td class="type">
-            
-                
-<span class="param-type"><code><a href="Core.Rectangle.html">Rectangle</a></code></span>
-
-
-            
-            </td>
-
-            
-
-            
-
-            <td class="description last">
-                Bounds rectangular region
-                
-            </td>
-        </tr>
-
-    
-    </tbody>
-</table>
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 
 
@@ -17086,7 +17269,7 @@ If you listen to mouse events, you automatically set the property of your own an
     <!-- 
     <dt class="tag-source">Source:</dt>
     <dd class="tag-source"><ul class="dummy"><li>
-        js, line 136
+        js, line 119
     </li></ul></dd>
      -->
 
@@ -17272,7 +17455,7 @@ If you listen to mouse events, you automatically set the property of your own an
     <!-- 
     <dt class="tag-source">Source:</dt>
     <dd class="tag-source"><ul class="dummy"><li>
-        js, line 261
+        js, line 270
     </li></ul></dd>
      -->
 
@@ -17364,6 +17547,146 @@ If you listen to mouse events, you automatically set the property of your own an
 
     
 
+    <h4 class="name" id="setSelfBounds"><span class="type-signature"></span>setSelfBounds<span class="signature">(bound)</span><span class="type-signature"></span></h4>
+
+    
+
+
+
+<div class="description">
+    Set object bounds size, if you have settings, then no longer through the getBounds calculation, reasonable use can improve performance.
+</div>
+
+
+
+
+
+<dl class="details">
+
+    
+
+    
+
+    
+    <dt class="inherited-from">Inherited From:</dt>
+    <dd class="inherited-from"><ul class="dummy"><li>
+        <a href="Core.Sprite.html#setSelfBounds">Sprite#setSelfBounds</a>
+    </li></ul></dd>
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    <!-- 
+    <dt class="tag-source">Source:</dt>
+    <dd class="tag-source"><ul class="dummy"><li>
+        js, line 401
+    </li></ul></dd>
+     -->
+
+    
+
+    
+
+    
+</dl>
+
+
+
+
+
+
+
+
+
+    <h5>Parameters:</h5>
+    
+
+<table class="params">
+    <thead>
+    <tr>
+        
+        <th>Name</th>
+        
+
+        <th>Type</th>
+
+        
+
+        
+
+        <th class="last">Description</th>
+    </tr>
+    </thead>
+
+    <tbody>
+    
+
+        <tr>
+            
+                <td class="name"><code>bound</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type"><code><a href="Core.Rectangle.html">Rectangle</a></code></span>
+
+
+            
+            </td>
+
+            
+
+            
+
+            <td class="description last">
+                Bounds rectangular region
+                
+            </td>
+        </tr>
+
+    
+    </tbody>
+</table>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+</div>
+        
+            
+<div class="section-method">
+
+    
+
     <h4 class="name" id="show"><span class="type-signature"></span>show<span class="signature">(closeOther)</span><span class="type-signature"></span></h4>
 
     
@@ -17407,7 +17730,7 @@ If you listen to mouse events, you automatically set the property of your own an
     <!-- 
     <dt class="tag-source">Source:</dt>
     <dd class="tag-source"><ul class="dummy"><li>
-        js, line 237
+        js, line 246
     </li></ul></dd>
      -->
 
@@ -17506,7 +17829,8 @@ If you listen to mouse events, you automatically set the property of your own an
 
 
 <div class="description">
-    Set width height. Equivalent to setting the width and height attributes, respectively.
+    <p> Set width height. Equivalent to setting the width and height attributes, respectively. </p>
+<p> Because the return value is the Sprite object itself, you can use the following syntax: spr.size (...).Pos (50, 100); </p>
 </div>
 
 
@@ -17697,7 +18021,8 @@ If you listen to mouse events, you automatically set the property of your own an
 
 
 <div class="description">
-    Set tilt angle. Equivalent to setting the skewX and skewY attributes, respectively.
+    <p> Set tilt angle. Equivalent to setting the skewX and skewY attributes, respectively. </p>
+<p> Because the return value is the Sprite object itself, you can use the following syntax: spr.skew (...).Pos (50, 100); </p>
 </div>
 
 
@@ -17738,7 +18063,7 @@ If you listen to mouse events, you automatically set the property of your own an
     <!-- 
     <dt class="tag-source">Source:</dt>
     <dd class="tag-source"><ul class="dummy"><li>
-        js, line 459
+        js, line 461
     </li></ul></dd>
      -->
 
@@ -17929,7 +18254,7 @@ If you listen to mouse events, you automatically set the property of your own an
     <!-- 
     <dt class="tag-source">Source:</dt>
     <dd class="tag-source"><ul class="dummy"><li>
-        js, line 576
+        js, line 581
     </li></ul></dd>
      -->
 
@@ -18010,7 +18335,7 @@ If you listen to mouse events, you automatically set the property of your own an
             
 
             <td class="description last">
-                area  Drag region. This region registers the active area of the current object (excluding the object width and height).
+                area  (optional) drag area, this area is the current object, registration point, active area (excluding the object width, height), optional.
                 
             </td>
         </tr>
@@ -18048,7 +18373,7 @@ If you listen to mouse events, you automatically set the property of your own an
             
 
             <td class="description last">
-                After the mouse is released, is it still inertia sliding, the default is false, optional.
+                (optional) after the mouse is released, is it still inertial sliding, default is false, optional.
                 
             </td>
         </tr>
@@ -18090,7 +18415,7 @@ If you listen to mouse events, you automatically set the property of your own an
             
 
             <td class="description last">
-                elasticDistance  Rubber band effect distance value, 0 for the absence of rubber band effect, the default is 0, optional.
+                elasticDistance  (optional) the distance of the rubber band effect, 0 is the effect without rubber band, and the default is 0.
                 
             </td>
         </tr>
@@ -18132,7 +18457,7 @@ If you listen to mouse events, you automatically set the property of your own an
             
 
             <td class="description last">
-                elasticBackTime  The rebound time of the rubber band is in milliseconds, and the default is 300 milliseconds, optional.
+                elasticBackTime  (optional) the rebound time of the rubber band is in milliseconds, and the default is 300 ms, optional.
                 
             </td>
         </tr>
@@ -18174,7 +18499,7 @@ If you listen to mouse events, you automatically set the property of your own an
             
 
             <td class="description last">
-                data  Dragging events carries data that is optional.
+                data  (optional) dragging events with optional data.
                 
             </td>
         </tr>
@@ -18212,7 +18537,7 @@ If you listen to mouse events, you automatically set the property of your own an
             
 
             <td class="description last">
-                Disable mouse detection of other objects, default to false, set to true, can improve performance.
+                (optional) disables mouse detection of other objects, defaults to false, and sets to true to improve performance.
                 
             </td>
         </tr>
@@ -18254,7 +18579,7 @@ If you listen to mouse events, you automatically set the property of your own an
             
 
             <td class="description last">
-                ratio  The inertia damping coefficient influences inertia strength and duration.
+                ratio  (optional) inertial damping coefficient, which affects inertia strength and duration.
                 
             </td>
         </tr>
@@ -18333,7 +18658,7 @@ If you listen to mouse events, you automatically set the property of your own an
     <!-- 
     <dt class="tag-source">Source:</dt>
     <dd class="tag-source"><ul class="dummy"><li>
-        js, line 580
+        js, line 585
     </li></ul></dd>
      -->
 
@@ -18373,7 +18698,7 @@ If you listen to mouse events, you automatically set the property of your own an
 
     
 
-    <h4 class="name" id="timerLoop"><span class="type-signature"></span>timerLoop<span class="signature">(delay, caller, method, args<span class="signature-attributes">opt</span>, coverBefore)</span><span class="type-signature"></span></h4>
+    <h4 class="name" id="timerLoop"><span class="type-signature"></span>timerLoop<span class="signature">(delay, caller, method, args<span class="signature-attributes">opt</span>, coverBefore, jumpFrame)</span><span class="type-signature"></span></h4>
 
     
 
@@ -18421,7 +18746,7 @@ If you listen to mouse events, you automatically set the property of your own an
     <!-- 
     <dt class="tag-source">Source:</dt>
     <dd class="tag-source"><ul class="dummy"><li>
-        js, line 189
+        js, line 176
     </li></ul></dd>
      -->
 
@@ -18616,7 +18941,7 @@ If you listen to mouse events, you automatically set the property of your own an
             
 
             <td class="description last">
-                args  Callback parameter.
+                args  Optional callback parameters.
                 
             </td>
         </tr>
@@ -18654,7 +18979,45 @@ If you listen to mouse events, you automatically set the property of your own an
             
 
             <td class="description last">
-                Whether or not the previous delay execution is covered, defaults to true.
+                (optional) whether the delay is covered before default is true.
+                
+            </td>
+        </tr>
+
+    
+
+        <tr>
+            
+                <td class="name"><code>jumpFrame</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type"><code>Boolean</code></span>
+
+
+            
+            </td>
+
+            
+                <td class="attributes">
+                
+
+                
+
+                
+                </td>
+            
+
+            
+                <td class="default">
+                
+                </td>
+            
+
+            <td class="description last">
+                The clock is skipping. Time based callback, in the unit time interval, if you can perform multiple callbacks, for performance reasons, the engine defaults to only once. After setting the jumpFrame=true, the callback is executed several times in succession
                 
             </td>
         </tr>
@@ -18733,7 +19096,7 @@ If you listen to mouse events, you automatically set the property of your own an
     <!-- 
     <dt class="tag-source">Source:</dt>
     <dd class="tag-source"><ul class="dummy"><li>
-        js, line 198
+        js, line 185
     </li></ul></dd>
      -->
 
@@ -18928,7 +19291,7 @@ If you listen to mouse events, you automatically set the property of your own an
             
 
             <td class="description last">
-                args  Callback parameter.
+                args  Optional callback parameters.
                 
             </td>
         </tr>
@@ -18966,7 +19329,7 @@ If you listen to mouse events, you automatically set the property of your own an
             
 
             <td class="description last">
-                Whether or not the previous delay execution is covered, defaults to true.
+                (optional) whether the delay is covered before default is true.
                 
             </td>
         </tr>
@@ -19045,7 +19408,7 @@ If you listen to mouse events, you automatically set the property of your own an
     <!-- 
     <dt class="tag-source">Source:</dt>
     <dd class="tag-source"><ul class="dummy"><li>
-        js, line 513
+        js, line 515
     </li></ul></dd>
      -->
 
@@ -19210,7 +19573,7 @@ If you listen to mouse events, you automatically set the property of your own an
     <!-- 
     <dt class="tag-source">Source:</dt>
     <dd class="tag-source"><ul class="dummy"><li>
-        js, line 395
+        js, line 392
     </li></ul></dd>
      -->
 
@@ -19302,7 +19665,7 @@ If you listen to mouse events, you automatically set the property of your own an
     <!-- 
     <dt class="tag-source">Source:</dt>
     <dd class="tag-source"><ul class="dummy"><li>
-        js, line 223
+        js, line 210
     </li></ul></dd>
      -->
 
@@ -19393,7 +19756,7 @@ If you listen to mouse events, you automatically set the property of your own an
     <!-- 
     <dt class="tag-source">Source:</dt>
     <dd class="tag-source"><ul class="dummy"><li>
-        js, line 622
+        js, line 627
     </li></ul></dd>
      -->
 
@@ -19484,7 +19847,7 @@ If you listen to mouse events, you automatically set the property of your own an
     <!-- 
     <dt class="tag-source">Source:</dt>
     <dd class="tag-source"><ul class="dummy"><li>
-        js, line 235
+        js, line 222
     </li></ul></dd>
      -->
 
@@ -19575,7 +19938,7 @@ If you listen to mouse events, you automatically set the property of your own an
     <!-- 
     <dt class="tag-source">Source:</dt>
     <dd class="tag-source"><ul class="dummy"><li>
-        js, line 640
+        js, line 645
     </li></ul></dd>
      -->
 
@@ -19666,7 +20029,7 @@ If you listen to mouse events, you automatically set the property of your own an
     <!-- 
     <dt class="tag-source">Source:</dt>
     <dd class="tag-source"><ul class="dummy"><li>
-        js, line 634
+        js, line 639
     </li></ul></dd>
      -->
 
@@ -19757,7 +20120,7 @@ If you listen to mouse events, you automatically set the property of your own an
     <!-- 
     <dt class="tag-source">Source:</dt>
     <dd class="tag-source"><ul class="dummy"><li>
-        js, line 628
+        js, line 633
     </li></ul></dd>
      -->
 
@@ -19848,7 +20211,7 @@ If you listen to mouse events, you automatically set the property of your own an
     <!-- 
     <dt class="tag-source">Source:</dt>
     <dd class="tag-source"><ul class="dummy"><li>
-        js, line 592
+        js, line 597
     </li></ul></dd>
      -->
 
@@ -19939,7 +20302,7 @@ If you listen to mouse events, you automatically set the property of your own an
     <!-- 
     <dt class="tag-source">Source:</dt>
     <dd class="tag-source"><ul class="dummy"><li>
-        js, line 604
+        js, line 609
     </li></ul></dd>
      -->
 
@@ -20030,7 +20393,7 @@ If you listen to mouse events, you automatically set the property of your own an
     <!-- 
     <dt class="tag-source">Source:</dt>
     <dd class="tag-source"><ul class="dummy"><li>
-        js, line 616
+        js, line 621
     </li></ul></dd>
      -->
 
@@ -20121,7 +20484,7 @@ If you listen to mouse events, you automatically set the property of your own an
     <!-- 
     <dt class="tag-source">Source:</dt>
     <dd class="tag-source"><ul class="dummy"><li>
-        js, line 610
+        js, line 615
     </li></ul></dd>
      -->
 
@@ -20212,7 +20575,7 @@ If you listen to mouse events, you automatically set the property of your own an
     <!-- 
     <dt class="tag-source">Source:</dt>
     <dd class="tag-source"><ul class="dummy"><li>
-        js, line 598
+        js, line 603
     </li></ul></dd>
      -->
 
@@ -20303,7 +20666,7 @@ If you listen to mouse events, you automatically set the property of your own an
     <!-- 
     <dt class="tag-source">Source:</dt>
     <dd class="tag-source"><ul class="dummy"><li>
-        js, line 229
+        js, line 216
     </li></ul></dd>
      -->
 
@@ -20485,7 +20848,7 @@ If you listen to mouse events, you automatically set the property of your own an
     <!-- 
     <dt class="tag-source">Source:</dt>
     <dd class="tag-source"><ul class="dummy"><li>
-        js, line 241
+        js, line 228
     </li></ul></dd>
      -->
 

@@ -42,10 +42,8 @@
         KeyBoardManager
         </h2>
         
-            <div class="class-description"><p><code>KeyBoardManager</code> Keyboard event management class. </p>
-<p> This class receives the keyboard event from the browser and distributes the event. 
-When an event is dispatched, if the Stage.focus is empty, the event is distributed only from the Stage, otherwise the event will begin to be bubbling from the Stage.focus object. 
-	*</p>
+            <div class="class-description"><p><code>KeyBoardManager</code> Keyboard event management class. This class receives the keyboard event from the browser and distributes the event. </p>
+<p> When an event is dispatched, if the Stage.focus is empty, the event is distributed only from the Stage, otherwise the event will begin to be bubbling from the Stage.focus object. Therefore, listening to keyboard events on the Laya.stage can be received. If you listen elsewhere, you must be on the Stage.focus bubble chain to receive the event. </p>
 <p> The user can set the focus object in the way of code Laya.stage.focus=someNode. </p>
 <p> The user can uniformly determine the key type based on the e.keyCode in the event object, which is compatible with the implementation of different browsers. </p></div>
         
@@ -101,7 +99,7 @@ When an event is dispatched, if the Stage.focus is empty, the event is distribut
     <!-- 
     <dt class="tag-source">Source:</dt>
     <dd class="tag-source"><ul class="dummy"><li>
-        js, line 10
+        js, line 8
     </li></ul></dd>
      -->
 
@@ -196,7 +194,7 @@ When an event is dispatched, if the Stage.focus is empty, the event is distribut
     <!-- 
     <dt class="tag-source">Source:</dt>
     <dd class="tag-source"><ul class="dummy"><li>
-        js, line 16
+        js, line 14
     </li></ul></dd>
      -->
 
@@ -280,7 +278,7 @@ When an event is dispatched, if the Stage.focus is empty, the event is distribut
     <!-- 
     <dt class="tag-source">Source:</dt>
     <dd class="tag-source"><ul class="dummy"><li>
-        js, line 23
+        js, line 21
     </li></ul></dd>
      -->
 

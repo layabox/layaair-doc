@@ -42,7 +42,7 @@
         SoundManager
         </h2>
         
-            <div class="class-description"><code>SoundManager</code> 是一个声音管理类。</div>
+            <div class="class-description"><code>SoundManager</code> 是一个声音管理类。提供了对背景音乐、音效的播放控制方法。</div>
         
     
 </header>
@@ -155,7 +155,7 @@
 
 
 <div class="description">
-    表示是否失去焦点后自动停止背景音乐。
+    失去焦点后是否自动停止背景音乐。
 </div>
 
 
@@ -191,7 +191,7 @@
     <!-- 
     <dt class="tag-source">Source:</dt>
     <dd class="tag-source"><ul class="dummy"><li>
-        js, line 33
+        js, line 35
     </li></ul></dd>
      -->
 
@@ -228,10 +228,6 @@
 
 
 
-<div class="description">
-    表示是否使背景音乐静音。
-</div>
-
 
 
 
@@ -265,7 +261,7 @@
     <!-- 
     <dt class="tag-source">Source:</dt>
     <dd class="tag-source"><ul class="dummy"><li>
-        js, line 51
+        js, line 50
     </li></ul></dd>
      -->
 
@@ -344,7 +340,7 @@
     <!-- 
     <dt class="tag-source">Source:</dt>
     <dd class="tag-source"><ul class="dummy"><li>
-        js, line 12
+        js, line 13
     </li></ul></dd>
      -->
 
@@ -381,10 +377,6 @@
 
 
 
-<div class="description">
-    表示是否静音。
-</div>
-
 
 
 
@@ -418,7 +410,7 @@
     <!-- 
     <dt class="tag-source">Source:</dt>
     <dd class="tag-source"><ul class="dummy"><li>
-        js, line 39
+        js, line 40
     </li></ul></dd>
      -->
 
@@ -497,7 +489,7 @@
     <!-- 
     <dt class="tag-source">Source:</dt>
     <dd class="tag-source"><ul class="dummy"><li>
-        js, line 26
+        js, line 29
     </li></ul></dd>
      -->
 
@@ -533,10 +525,6 @@
 
 
 
-
-<div class="description">
-    表示是否使音效静音。
-</div>
 
 
 
@@ -650,7 +638,7 @@
     <!-- 
     <dt class="tag-source">Source:</dt>
     <dd class="tag-source"><ul class="dummy"><li>
-        js, line 19
+        js, line 21
     </li></ul></dd>
      -->
 
@@ -734,7 +722,7 @@
     <!-- 
     <dt class="tag-source">Source:</dt>
     <dd class="tag-source"><ul class="dummy"><li>
-        js, line 57
+        js, line 56
     </li></ul></dd>
      -->
 
@@ -869,7 +857,7 @@
     <!-- 
     <dt class="tag-source">Source:</dt>
     <dd class="tag-source"><ul class="dummy"><li>
-        js, line 77
+        js, line 76
     </li></ul></dd>
      -->
 
@@ -930,7 +918,7 @@
             
 
             <td class="description last">
-                声音文件地址。
+                声音播放地址。
                 
             </td>
         </tr>
@@ -968,7 +956,7 @@
 
 
 <div class="description">
-    播放背景音乐。
+    播放背景音乐。背景音乐同时只能播放一个，如果在播放背景音乐时再次调用本方法，会先停止之前的背景音乐，再播发当前的背景音乐。
 </div>
 
 
@@ -1004,7 +992,7 @@
     <!-- 
     <dt class="tag-source">Source:</dt>
     <dd class="tag-source"><ul class="dummy"><li>
-        js, line 86
+        js, line 85
     </li></ul></dd>
      -->
 
@@ -1248,7 +1236,7 @@
 
 
 <div class="param-desc">
-    audio对象。
+    SoundChannel对象，通过此对象可以对声音进行控制，以及获取声音信息。
 </div>
 
     
@@ -1270,7 +1258,7 @@
 
 
 <div class="description">
-    播放音效。
+    播放音效。音效可以同时播放多个。
 </div>
 
 
@@ -1306,7 +1294,7 @@
     <!-- 
     <dt class="tag-source">Source:</dt>
     <dd class="tag-source"><ul class="dummy"><li>
-        js, line 72
+        js, line 71
     </li></ul></dd>
      -->
 
@@ -1592,7 +1580,7 @@
 
 
 <div class="param-desc">
-    SoundChannel对象。
+    SoundChannel对象，通过此对象可以对声音进行控制，以及获取声音信息。
 </div>
 
     
@@ -1650,7 +1638,7 @@
     <!-- 
     <dt class="tag-source">Source:</dt>
     <dd class="tag-source"><ul class="dummy"><li>
-        js, line 62
+        js, line 61
     </li></ul></dd>
      -->
 
@@ -1749,7 +1737,7 @@
 
 
 <div class="description">
-    设置背景音乐音量。
+    设置背景音乐音量。音量范围从 0（静音）至 1（最大音量）。
 </div>
 
 
@@ -1785,7 +1773,7 @@
     <!-- 
     <dt class="tag-source">Source:</dt>
     <dd class="tag-source"><ul class="dummy"><li>
-        js, line 115
+        js, line 114
     </li></ul></dd>
      -->
 
@@ -1846,7 +1834,7 @@
             
 
             <td class="description last">
-                音量，标准值为1。
+                音量。初始值为1。音量范围从 0（静音）至 1（最大音量）。
                 
             </td>
         </tr>
@@ -1884,7 +1872,7 @@
 
 
 <div class="description">
-    设置声音音量
+    设置声音音量。根据参数不同，可以分别设置指定声音（背景音乐或音效）音量或者所有音效（不包括背景音乐）音量。
 </div>
 
 
@@ -1920,7 +1908,7 @@
     <!-- 
     <dt class="tag-source">Source:</dt>
     <dd class="tag-source"><ul class="dummy"><li>
-        js, line 110
+        js, line 109
     </li></ul></dd>
      -->
 
@@ -1997,7 +1985,7 @@
             
 
             <td class="description last">
-                音量 标准值为1
+                音量。初始值为1。音量范围从 0（静音）至 1（最大音量）。
                 
             </td>
         </tr>
@@ -2039,7 +2027,7 @@
             
 
             <td class="description last">
-                url 声音文件地址。为null(默认值)时对所有音效起作用，不为空时仅对对于声音生效
+                url (default = null)声音播放地址。默认为null。为空表示设置所有音效（不包括背景音乐）的音量，不为空表示设置指定声音（背景音乐或音效）的音量。
                 
             </td>
         </tr>
@@ -2077,7 +2065,7 @@
 
 
 <div class="description">
-    停止所有声音播放。
+    停止播放所有声音（包括背景音乐和音效）。
 </div>
 
 
@@ -2113,7 +2101,7 @@
     <!-- 
     <dt class="tag-source">Source:</dt>
     <dd class="tag-source"><ul class="dummy"><li>
-        js, line 95
+        js, line 94
     </li></ul></dd>
      -->
 
@@ -2160,7 +2148,7 @@
 
 
 <div class="description">
-    停止所有音效,不包括背景音乐。
+    停止播放所有音效（不包括背景音乐）。
 </div>
 
 
@@ -2196,7 +2184,7 @@
     <!-- 
     <dt class="tag-source">Source:</dt>
     <dd class="tag-source"><ul class="dummy"><li>
-        js, line 99
+        js, line 98
     </li></ul></dd>
      -->
 
@@ -2243,7 +2231,7 @@
 
 
 <div class="description">
-    停止背景音乐播放。
+    停止播放背景音乐（不包括音效）。
 </div>
 
 
@@ -2279,7 +2267,7 @@
     <!-- 
     <dt class="tag-source">Source:</dt>
     <dd class="tag-source"><ul class="dummy"><li>
-        js, line 104
+        js, line 103
     </li></ul></dd>
      -->
 
@@ -2373,7 +2361,7 @@
 
 
 <div class="description">
-    停止声音播放。
+    停止声音播放。此方法能够停止任意声音的播放（包括背景音乐和音效），只需传入对应的声音播放地址。
 </div>
 
 
@@ -2409,7 +2397,7 @@
     <!-- 
     <dt class="tag-source">Source:</dt>
     <dd class="tag-source"><ul class="dummy"><li>
-        js, line 91
+        js, line 90
     </li></ul></dd>
      -->
 

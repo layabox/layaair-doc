@@ -42,10 +42,13 @@
         LoaderManager
         </h2>
         
-            <div class="class-description"><p> <code>LoaderManager</code> Class is used to load resources and data in batches. </p>
-<p> Batch loader, single case, can be accessed by Laya.loader. </p>
-Multi threading (default 5 threads), 5 priority (0 fastest, 4 slowest, default 1) 
-When a resource fails, the load is retried at the lowest priority (property retryNum decides to retry several times). If the attempt fails, the call to the complete function is called and returns null</div>
+            <div class="class-description"><p> <code>LoaderManager</code> Class is used to load resources in batches. This class is a singleton. Do not manually instantiate this class. Please visit via Laya.loader. </p>
+<p> When all the queue loads are completed, the Event.COMPLETE event is distributed. If any of the queues fails, the Event.ERROR event is issued, and the event callback parameter is the address of the loaded error resource. </p>
+<p> <code>LoaderManager</code> Class provides the following functions: < 
+Multi threading: the default 5 load thread, you can modify the number of threads through the maxLoader property; <br/>
+Multiple priority: there are 0-4 priority in 5, priority priority load. 0 highest and 4 lowest; <br/>
+Repeat filtering: automatically filtering, repeated loading (not loading multiple simultaneous addresses at the same time), and reusing cache resources to prevent repeated loading; <br/>
+	*</p></div>
         
     
 </header>
@@ -67,7 +70,8 @@ When a resource fails, the load is retried at the lowest priority (property retr
 
 
 <div class="description">
-    Create a new one <code>LoaderManager</code> Example。
+    <p> Create a new one <code>LoaderManager</code> Example。 </p>
+<p><b> Be careful： </b> Please use Laya.loader to load resources. This is a singleton. Do not instantiate this class manually, otherwise it will lead to unpredictable problems. </p>
 </div>
 
 
@@ -103,12 +107,19 @@ When a resource fails, the load is retried at the lowest priority (property retr
     <!-- 
     <dt class="tag-source">Source:</dt>
     <dd class="tag-source"><ul class="dummy"><li>
-        js, line 9
+        js, line 13
     </li></ul></dd>
      -->
 
     
 
+    
+    <dt class="tag-see">See:</dt>
+    <dd class="tag-see">
+        <ul>
+            <li>net.Loader</li>
+        </ul>
+    </dd>
     
 
     
@@ -214,7 +225,7 @@ When a resource fails, the load is retried at the lowest priority (property retr
     <!-- 
     <dt class="tag-source">Source:</dt>
     <dd class="tag-source"><ul class="dummy"><li>
-        js, line 34
+        js, line 39
     </li></ul></dd>
      -->
 
@@ -293,7 +304,7 @@ When a resource fails, the load is retried at the lowest priority (property retr
     <!-- 
     <dt class="tag-source">Source:</dt>
     <dd class="tag-source"><ul class="dummy"><li>
-        js, line 27
+        js, line 32
     </li></ul></dd>
      -->
 
@@ -372,7 +383,7 @@ When a resource fails, the load is retried at the lowest priority (property retr
     <!-- 
     <dt class="tag-source">Source:</dt>
     <dd class="tag-source"><ul class="dummy"><li>
-        js, line 20
+        js, line 25
     </li></ul></dd>
      -->
 
@@ -456,7 +467,7 @@ When a resource fails, the load is retried at the lowest priority (property retr
     <!-- 
     <dt class="tag-source">Source:</dt>
     <dd class="tag-source"><ul class="dummy"><li>
-        js, line 77
+        js, line 86
     </li></ul></dd>
      -->
 
@@ -617,7 +628,7 @@ When a resource fails, the load is retried at the lowest priority (property retr
     <!-- 
     <dt class="tag-source">Source:</dt>
     <dd class="tag-source"><ul class="dummy"><li>
-        js, line 91
+        js, line 111
     </li></ul></dd>
      -->
 
@@ -752,7 +763,7 @@ When a resource fails, the load is retried at the lowest priority (property retr
     <!-- 
     <dt class="tag-source">Source:</dt>
     <dd class="tag-source"><ul class="dummy"><li>
-        js, line 86
+        js, line 106
     </li></ul></dd>
      -->
 
@@ -887,7 +898,7 @@ When a resource fails, the load is retried at the lowest priority (property retr
     <!-- 
     <dt class="tag-source">Source:</dt>
     <dd class="tag-source"><ul class="dummy"><li>
-        js, line 65
+        js, line 74
     </li></ul></dd>
      -->
 
@@ -1005,6 +1016,141 @@ When a resource fails, the load is retried at the lowest priority (property retr
 
     
 
+    <h4 class="name" id="clearResByGroup"><span class="type-signature"></span>clearResByGroup<span class="signature">(group)</span><span class="type-signature"></span></h4>
+
+    
+
+
+
+<div class="description">
+    Clear resources according to groups.
+</div>
+
+
+
+
+
+<dl class="details">
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    <!-- 
+    <dt class="tag-source">Source:</dt>
+    <dd class="tag-source"><ul class="dummy"><li>
+        js, line 97
+    </li></ul></dd>
+     -->
+
+    
+
+    
+
+    
+</dl>
+
+
+
+
+
+
+
+
+
+    <h5>Parameters:</h5>
+    
+
+<table class="params">
+    <thead>
+    <tr>
+        
+        <th>Name</th>
+        
+
+        <th>Type</th>
+
+        
+
+        
+
+        <th class="last">Description</th>
+    </tr>
+    </thead>
+
+    <tbody>
+    
+
+        <tr>
+            
+                <td class="name"><code>group</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type"><code>String</code></span>
+
+
+            
+            </td>
+
+            
+
+            
+
+            <td class="description last">
+                Grouping name
+                
+            </td>
+        </tr>
+
+    
+    </tbody>
+</table>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+</div>
+        
+            
+<div class="section-method">
+
+    
+
     <h4 class="name" id="clearUnLoaded"><span class="type-signature"></span>clearUnLoaded<span class="signature">()</span><span class="type-signature"></span></h4>
 
     
@@ -1048,7 +1194,7 @@ When a resource fails, the load is retried at the lowest priority (property retr
     <!-- 
     <dt class="tag-source">Source:</dt>
     <dd class="tag-source"><ul class="dummy"><li>
-        js, line 81
+        js, line 101
     </li></ul></dd>
      -->
 
@@ -1095,7 +1241,9 @@ When a resource fails, the load is retried at the lowest priority (property retr
 
 
 <div class="description">
-    Clas creates an empty resource according to, followed by asynchronous loading, resource loading is completed, will call the onAsynLoaded method of resource class callback real data resources nested resources reserved resource path "?" part
+    <p> According to the object to create an uninitialized resource type clas, followed by asynchronous loading resources after loading, initialization of objects resources, and through this object dispatches the Event.LOADED event, event callback parameter values for the object itself. Nested child resources retain the part of the resource path "after". </p>
+<p> If the URL is an array, returns true; otherwise, the specified resource class object is returned, and the resource is evaluated by listening to the Event.LOADED event of the object. </p>
+<p><b> Be careful： </b> The cache parameter can only cache control of the resource whose file suffix is atlas, and other resources ignore the cache and force it to reload. </p>
 </div>
 
 
@@ -1131,7 +1279,7 @@ When a resource fails, the load is retried at the lowest priority (property retr
     <!-- 
     <dt class="tag-source">Source:</dt>
     <dd class="tag-source"><ul class="dummy"><li>
-        js, line 46
+        js, line 53
     </li></ul></dd>
      -->
 
@@ -1208,7 +1356,7 @@ When a resource fails, the load is retried at the lowest priority (property retr
             
 
             <td class="description last">
-                A resource, address, or array, such as [{url:xx,clas:xx,priority:xx,params:xx},{url:xx,clas:xx,priority:xx,params:xx}]
+                Resource address or array. If both URL and clas specify the resource type at the same time, the resource type specified by URL is used preferentially. Parameter shape: [{url:xx,clas:xx,priority:xx,params:xx},{url:xx,clas:xx,priority:xx,params:xx}] .
                 
             </td>
         </tr>
@@ -1250,7 +1398,7 @@ When a resource fails, the load is retried at the lowest priority (property retr
             
 
             <td class="description last">
-                progress  Progress callback, the callback parameter for progress information loaded by the current file (0-1).
+                progress  The resource load progress callback, the callback parameter value, is the progress information loaded by the current resource (0-1).
                 
             </td>
         </tr>
@@ -1292,7 +1440,7 @@ When a resource fails, the load is retried at the lowest priority (property retr
             
 
             <td class="description last">
-                clas  Resource class names, such as Texture
+                clas  Resource class name. If both URL and clas specify the resource type at the same time, the resource type specified by URL is used preferentially. Parameter shape such as: Texture.
                 
             </td>
         </tr>
@@ -1334,7 +1482,7 @@ When a resource fails, the load is retried at the lowest priority (property retr
             
 
             <td class="description last">
-                type  Resource type
+                type  Resource type. Parameter shape such as: Loader.IMAGE.
                 
             </td>
         </tr>
@@ -1376,7 +1524,7 @@ When a resource fails, the load is retried at the lowest priority (property retr
             
 
             <td class="description last">
-                priority  priority
+                priority  (default = 1) loaded priority, priority high priority loading. There are 0-4 total 5 priority, 0 highest and 4 lowest.
                 
             </td>
         </tr>
@@ -1418,7 +1566,7 @@ When a resource fails, the load is retried at the lowest priority (property retr
             
 
             <td class="description last">
-                cache  Cache?
+                cache  Do you cache the loaded resources?.
                 
             </td>
         </tr>
@@ -1459,11 +1607,146 @@ When a resource fails, the load is retried at the lowest priority (property retr
 
 
 <div class="param-desc">
-    Return resource object
+    If URL is an array, returns true; otherwise, the specified resource class object is returned.
 </div>
 
     
 </div>
+
+
+
+</div>
+        
+            
+<div class="section-method">
+
+    
+
+    <h4 class="name" id="decodeBitmaps"><span class="type-signature"></span>decodeBitmaps<span class="signature">(urls)</span><span class="type-signature"></span></h4>
+
+    
+
+
+
+<div class="description">
+    Decode Texture or atlas
+</div>
+
+
+
+
+
+<dl class="details">
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    <!-- 
+    <dt class="tag-source">Source:</dt>
+    <dd class="tag-source"><ul class="dummy"><li>
+        js, line 116
+    </li></ul></dd>
+     -->
+
+    
+
+    
+
+    
+</dl>
+
+
+
+
+
+
+
+
+
+    <h5>Parameters:</h5>
+    
+
+<table class="params">
+    <thead>
+    <tr>
+        
+        <th>Name</th>
+        
+
+        <th>Type</th>
+
+        
+
+        
+
+        <th class="last">Description</th>
+    </tr>
+    </thead>
+
+    <tbody>
+    
+
+        <tr>
+            
+                <td class="name"><code>urls</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type"><code>Array</code></span>
+
+
+            
+            </td>
+
+            
+
+            
+
+            <td class="description last">
+                Texture address or atlas address set
+                
+            </td>
+        </tr>
+
+    
+    </tbody>
+</table>
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
@@ -1522,7 +1805,7 @@ When a resource fails, the load is retried at the lowest priority (property retr
     <!-- 
     <dt class="tag-source">Source:</dt>
     <dd class="tag-source"><ul class="dummy"><li>
-        js, line 25
+        js, line 24
     </li></ul></dd>
      -->
 
@@ -1641,8 +1924,7 @@ When a resource fails, the load is retried at the lowest priority (property retr
             
 
             <td class="description last">
-                data  Callback data. 
-<b> Be careful： </b> If you need to pass multiple parameters, P1, P2, P3, you can use the array structure, such as: [p1,p2,p3,...] If you need a callback, a single parameter p is an array, so you need to use a structure such as: [p] Other single parameters, P, can be passed directly to the parameter P.
+                data  (optional) callback data. <b> Be careful： </b> If you need to pass multiple parameters, P1, P2, P3, you can use the array structure, such as: [p1,p2,p3,...] If you need to call a single parameter P, and P is an array, you need to use a structure such as: [p] Other single parameters, P, can be passed directly to the parameter P.
                 
             </td>
         </tr>
@@ -1741,7 +2023,7 @@ When a resource fails, the load is retried at the lowest priority (property retr
     <!-- 
     <dt class="tag-source">Source:</dt>
     <dd class="tag-source"><ul class="dummy"><li>
-        js, line 71
+        js, line 80
     </li></ul></dd>
      -->
 
@@ -2071,7 +2353,7 @@ When a resource fails, the load is retried at the lowest priority (property retr
     <!-- 
     <dt class="tag-source">Source:</dt>
     <dd class="tag-source"><ul class="dummy"><li>
-        js, line 64
+        js, line 63
     </li></ul></dd>
      -->
 
@@ -2188,14 +2470,15 @@ When a resource fails, the load is retried at the lowest priority (property retr
 
     
 
-    <h4 class="name" id="load"><span class="type-signature"></span>load<span class="signature">(url, complete<span class="signature-attributes">opt</span>, progress<span class="signature-attributes">opt</span>, type<span class="signature-attributes">opt</span>, priority<span class="signature-attributes">opt</span>, cache, group<span class="signature-attributes">opt</span>, ignoreCache)</span><span class="type-signature"> &rarr; {<a href="Core.LoaderManager.html">LoaderManager</a>}</span></h4>
+    <h4 class="name" id="load"><span class="type-signature"></span>load<span class="signature">(url, complete<span class="signature-attributes">opt</span>, progress<span class="signature-attributes">opt</span>, type<span class="signature-attributes">opt</span>, priority<span class="signature-attributes">opt</span>, cache, group<span class="signature-attributes">opt</span>, ignoreCache, useWorkerLoader(default)</span><span class="type-signature"> &rarr; {<a href="Core.LoaderManager.html">LoaderManager</a>}</span></h4>
 
     
 
 
 
 <div class="description">
-    Load resources.
+    <p> Load resources. When the resource loads an error, the object dispatches the Event.ERROR event, which is the value of the resource address that has been loaded. </p>
+<p> Because the return value is  LoaderManager  Object itself, so you can use the following syntax: loaderManager.load (...).Load (...); </p>
 </div>
 
 
@@ -2231,7 +2514,7 @@ When a resource fails, the load is retried at the lowest priority (property retr
     <!-- 
     <dt class="tag-source">Source:</dt>
     <dd class="tag-source"><ul class="dummy"><li>
-        js, line 59
+        js, line 68
     </li></ul></dd>
      -->
 
@@ -2308,7 +2591,7 @@ When a resource fails, the load is retried at the lowest priority (property retr
             
 
             <td class="description last">
-                Address or resource object array (simple array): ["a.png","b.png"] Complex array [{url:"a.png",type:Loader.IMAGE,size:100,priority:1},{url:"b.json",type:Loader.JSON,size:50,priority:1}] ).
+                A single resource, address, or resource information array to load. For example: simple array: ["a.png","b.png"] Complex array [{url:"a.png",type:Loader.IMAGE,size:100,priority:1},{url:"b.json",type:Loader.JSON,size:50,priority:1}] .
                 
             </td>
         </tr>
@@ -2350,7 +2633,7 @@ When a resource fails, the load is retried at the lowest priority (property retr
             
 
             <td class="description last">
-                complete  End the callback and returns NULL if the load fails.
+                complete  Load end callback. According to URL of different types are divided into 2 types: 1. URL type String, is a single source address, if the loading is successful, the callback parameter values for the completion of the loading of resources, otherwise null; 2. URL is an array type, a group to load the resource specified, if all loaded successfully, then the callback parameter value true, or false.
                 
             </td>
         </tr>
@@ -2392,7 +2675,7 @@ When a resource fails, the load is retried at the lowest priority (property retr
             
 
             <td class="description last">
-                progress  Progress callback, the callback parameter for progress information loaded by the current file (0-1).
+                progress  Load progress callback. The callback parameter value is the loading progress information for the current resource (0-1).
                 
             </td>
         </tr>
@@ -2434,7 +2717,7 @@ When a resource fails, the load is retried at the lowest priority (property retr
             
 
             <td class="description last">
-                type  Resource type.
+                type  Resource type. For example: Loader.IMAGE.
                 
             </td>
         </tr>
@@ -2476,7 +2759,7 @@ When a resource fails, the load is retried at the lowest priority (property retr
             
 
             <td class="description last">
-                priority  Priority, 0-4, five priority, 0 highest priority, default 1.
+                priority  (default = 1) loaded priority, priority high priority loading. There are 0-4 total 5 priority, 0 highest and 4 lowest.
                 
             </td>
         </tr>
@@ -2556,7 +2839,7 @@ When a resource fails, the load is retried at the lowest priority (property retr
             
 
             <td class="description last">
-                group  Grouping。
+                group  Grouping makes it easy to manage resources.
                 
             </td>
         </tr>
@@ -2594,7 +2877,45 @@ When a resource fails, the load is retried at the lowest priority (property retr
             
 
             <td class="description last">
-                Do you want to ignore the cache and force it to reload?
+                Do you want to ignore the cache and force it to reload?.
+                
+            </td>
+        </tr>
+
+    
+
+        <tr>
+            
+                <td class="name"><code>useWorkerLoader(default</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type"><code>Boolean</code></span>
+
+
+            
+            </td>
+
+            
+                <td class="attributes">
+                
+
+                
+
+                
+                </td>
+            
+
+            
+                <td class="default">
+                
+                </td>
+            
+
+            <td class="description last">
+                = false) do you use worker to load (for IMAGE types and ATLAS types only and browser support)?
                 
             </td>
         </tr>
@@ -2635,7 +2956,7 @@ When a resource fails, the load is retried at the lowest priority (property retr
 
 
 <div class="param-desc">
-    this  LoaderManager  Object.
+    this  LoaderManager  Object itself.
 </div>
 
     
@@ -2698,7 +3019,7 @@ When a resource fails, the load is retried at the lowest priority (property retr
     <!-- 
     <dt class="tag-source">Source:</dt>
     <dd class="tag-source"><ul class="dummy"><li>
-        js, line 52
+        js, line 51
     </li></ul></dd>
      -->
 
@@ -2837,7 +3158,7 @@ When a resource fails, the load is retried at the lowest priority (property retr
             
 
             <td class="description last">
-                If the value is true, only the listeners added by the once method are removed.
+                (optional) if the value is true, only the listeners added by the once method are removed.
                 
             </td>
         </tr>
@@ -2941,7 +3262,7 @@ When a resource fails, the load is retried at the lowest priority (property retr
     <!-- 
     <dt class="tag-source">Source:</dt>
     <dd class="tag-source"><ul class="dummy"><li>
-        js, line 58
+        js, line 57
     </li></ul></dd>
      -->
 
@@ -3022,7 +3343,7 @@ When a resource fails, the load is retried at the lowest priority (property retr
             
 
             <td class="description last">
-                type  Event type, if the value is null, removes all types of listeners for this object.
+                type  (optional) event type. If the value is null, all types of listeners for this object are removed.
                 
             </td>
         </tr>
@@ -3126,7 +3447,7 @@ When a resource fails, the load is retried at the lowest priority (property retr
     <!-- 
     <dt class="tag-source">Source:</dt>
     <dd class="tag-source"><ul class="dummy"><li>
-        js, line 34
+        js, line 33
     </li></ul></dd>
      -->
 
@@ -3321,7 +3642,7 @@ When a resource fails, the load is retried at the lowest priority (property retr
             
 
             <td class="description last">
-                args  The callback parameter of the event listener function.
+                args  Optional callback parameters for the event listener function.
                 
             </td>
         </tr>
@@ -3425,7 +3746,7 @@ When a resource fails, the load is retried at the lowest priority (property retr
     <!-- 
     <dt class="tag-source">Source:</dt>
     <dd class="tag-source"><ul class="dummy"><li>
-        js, line 43
+        js, line 42
     </li></ul></dd>
      -->
 
@@ -3620,7 +3941,7 @@ When a resource fails, the load is retried at the lowest priority (property retr
             
 
             <td class="description last">
-                args  The callback parameter of the event listener function.
+                args  Optional callback parameters for the event listener function.
                 
             </td>
         </tr>
@@ -3666,6 +3987,167 @@ When a resource fails, the load is retried at the lowest priority (property retr
 
     
 </div>
+
+
+
+</div>
+        
+            
+<div class="section-method">
+
+    
+
+    <h4 class="name" id="setGroup"><span class="type-signature"></span>setGroup<span class="signature">(url, group)</span><span class="type-signature"></span></h4>
+
+    
+
+
+
+<div class="description">
+    Set resource groups.
+</div>
+
+
+
+
+
+<dl class="details">
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    <!-- 
+    <dt class="tag-source">Source:</dt>
+    <dd class="tag-source"><ul class="dummy"><li>
+        js, line 92
+    </li></ul></dd>
+     -->
+
+    
+
+    
+
+    
+</dl>
+
+
+
+
+
+
+
+
+
+    <h5>Parameters:</h5>
+    
+
+<table class="params">
+    <thead>
+    <tr>
+        
+        <th>Name</th>
+        
+
+        <th>Type</th>
+
+        
+
+        
+
+        <th class="last">Description</th>
+    </tr>
+    </thead>
+
+    <tbody>
+    
+
+        <tr>
+            
+                <td class="name"><code>url</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type"><code>String</code></span>
+
+
+            
+            </td>
+
+            
+
+            
+
+            <td class="description last">
+                Resource address.
+                
+            </td>
+        </tr>
+
+    
+
+        <tr>
+            
+                <td class="name"><code>group</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type"><code>String</code></span>
+
+
+            
+            </td>
+
+            
+
+            
+
+            <td class="description last">
+                Grouping name
+                
+            </td>
+        </tr>
+
+    
+    </tbody>
+</table>
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
@@ -3723,7 +4205,7 @@ When a resource fails, the load is retried at the lowest priority (property retr
     <!-- 
     <dt class="tag-source">Source:</dt>
     <dd class="tag-source"><ul class="dummy"><li>
-        js, line 92
+        js, line 117
     </li></ul></dd>
      -->
 
@@ -3809,7 +4291,7 @@ When a resource fails, the load is retried at the lowest priority (property retr
     <!-- 
     <dt class="tag-source">Source:</dt>
     <dd class="tag-source"><ul class="dummy"><li>
-        js, line 98
+        js, line 123
     </li></ul></dd>
      -->
 

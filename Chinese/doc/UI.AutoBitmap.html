@@ -545,7 +545,7 @@
     <!-- 
     <dt class="tag-source">Source:</dt>
     <dd class="tag-source"><ul class="dummy"><li>
-        js, line 99
+        js, line 116
     </li></ul></dd>
      -->
 
@@ -643,10 +643,6 @@
 
 
 
-<div class="description">
-    <p>清空绘制命令。</p>
-</div>
-
 
 
 
@@ -658,12 +654,12 @@
     
 
     
-    <dt class="inherited-from">Inherited From:</dt>
-    <dd class="inherited-from"><ul class="dummy"><li>
+
+    
+    <dt class="tag-overrides">Overrides:</dt>
+    <dd class="tag-overrides"><ul class="dummy"><li>
         <a href="Core.Graphics.html#clear">Graphics#clear</a>
     </li></ul></dd>
-    
-
     
 
     
@@ -685,7 +681,7 @@
     <!-- 
     <dt class="tag-source">Source:</dt>
     <dd class="tag-source"><ul class="dummy"><li>
-        js, line 20
+        js, line 68
     </li></ul></dd>
      -->
 
@@ -856,7 +852,7 @@
     <!-- 
     <dt class="tag-source">Source:</dt>
     <dd class="tag-source"><ul class="dummy"><li>
-        js, line 61
+        js, line 78
     </li></ul></dd>
      -->
 
@@ -1074,7 +1070,7 @@
     <!-- 
     <dt class="tag-source">Source:</dt>
     <dd class="tag-source"><ul class="dummy"><li>
-        js, line 16
+        js, line 12
     </li></ul></dd>
      -->
 
@@ -1162,7 +1158,7 @@
     <!-- 
     <dt class="tag-source">Source:</dt>
     <dd class="tag-source"><ul class="dummy"><li>
-        js, line 194
+        js, line 211
     </li></ul></dd>
      -->
 
@@ -1395,7 +1391,7 @@
             
 
             <td class="description last">
-                lineColor 边框颜色，或者填充绘图的渐变对象。
+                lineColor （可选）边框颜色，或者填充绘图的渐变对象。
                 
             </td>
         </tr>
@@ -1437,7 +1433,7 @@
             
 
             <td class="description last">
-                lineWidth 边框宽度。
+                lineWidth （可选）边框宽度。
                 
             </td>
         </tr>
@@ -1516,7 +1512,7 @@
     <!-- 
     <dt class="tag-source">Source:</dt>
     <dd class="tag-source"><ul class="dummy"><li>
-        js, line 173
+        js, line 190
     </li></ul></dd>
      -->
 
@@ -1669,7 +1665,7 @@
             
 
             <td class="description last">
-                线段的点集合，格式[startx,starty,ctrx,ctry,startx,starty...]。
+                线段的点集合，格式[controlX, controlY, anchorX, anchorY...]。
                 
             </td>
         </tr>
@@ -1749,7 +1745,327 @@
             
 
             <td class="description last">
-                lineWidth 线段宽度。
+                lineWidth （可选）线段宽度。
+                
+            </td>
+        </tr>
+
+    
+    </tbody>
+</table>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+</div>
+        
+            
+<div class="section-method">
+
+    
+
+    <h4 class="name" id="drawImage"><span class="type-signature"></span>drawImage<span class="signature">(tex, x<span class="signature-attributes">opt</span>, y<span class="signature-attributes">opt</span>, width<span class="signature-attributes">opt</span>, height<span class="signature-attributes">opt</span>)</span><span class="type-signature"></span></h4>
+
+    
+
+
+
+
+
+
+
+<dl class="details">
+
+    
+
+    
+
+    
+    <dt class="inherited-from">Inherited From:</dt>
+    <dd class="inherited-from"><ul class="dummy"><li>
+        <a href="Core.Graphics.html#drawImage">Graphics#drawImage</a>
+    </li></ul></dd>
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    <!-- 
+    <dt class="tag-source">Source:</dt>
+    <dd class="tag-source"><ul class="dummy"><li>
+        js, line 31
+    </li></ul></dd>
+     -->
+
+    
+
+    
+
+    
+</dl>
+
+
+
+
+
+
+
+
+
+    <h5>Parameters:</h5>
+    
+
+<table class="params">
+    <thead>
+    <tr>
+        
+        <th>Name</th>
+        
+
+        <th>Type</th>
+
+        
+        <th>Attributes</th>
+        
+
+        
+        <th>Default</th>
+        
+
+        <th class="last">Description</th>
+    </tr>
+    </thead>
+
+    <tbody>
+    
+
+        <tr>
+            
+                <td class="name"><code>tex</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type"><code><a href="Core.Texture.html">Texture</a></code></span>
+
+
+            
+            </td>
+
+            
+                <td class="attributes">
+                
+
+                
+
+                
+                </td>
+            
+
+            
+                <td class="default">
+                
+                </td>
+            
+
+            <td class="description last">
+                
+                
+            </td>
+        </tr>
+
+    
+
+        <tr>
+            
+                <td class="name"><code>x</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type"><code>Number</code></span>
+
+
+            
+            </td>
+
+            
+                <td class="attributes">
+                
+                    &lt;optional><br>
+                
+
+                
+
+                
+                </td>
+            
+
+            
+                <td class="default">
+                
+                    0
+                
+                </td>
+            
+
+            <td class="description last">
+                x
+                
+            </td>
+        </tr>
+
+    
+
+        <tr>
+            
+                <td class="name"><code>y</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type"><code>Number</code></span>
+
+
+            
+            </td>
+
+            
+                <td class="attributes">
+                
+                    &lt;optional><br>
+                
+
+                
+
+                
+                </td>
+            
+
+            
+                <td class="default">
+                
+                    0
+                
+                </td>
+            
+
+            <td class="description last">
+                y
+                
+            </td>
+        </tr>
+
+    
+
+        <tr>
+            
+                <td class="name"><code>width</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type"><code>Number</code></span>
+
+
+            
+            </td>
+
+            
+                <td class="attributes">
+                
+                    &lt;optional><br>
+                
+
+                
+
+                
+                </td>
+            
+
+            
+                <td class="default">
+                
+                    0
+                
+                </td>
+            
+
+            <td class="description last">
+                width
+                
+            </td>
+        </tr>
+
+    
+
+        <tr>
+            
+                <td class="name"><code>height</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type"><code>Number</code></span>
+
+
+            
+            </td>
+
+            
+                <td class="attributes">
+                
+                    &lt;optional><br>
+                
+
+                
+
+                
+                </td>
+            
+
+            
+                <td class="default">
+                
+                    0
+                
+                </td>
+            
+
+            <td class="description last">
+                height
                 
             </td>
         </tr>
@@ -1828,7 +2144,7 @@
     <!-- 
     <dt class="tag-source">Source:</dt>
     <dd class="tag-source"><ul class="dummy"><li>
-        js, line 155
+        js, line 172
     </li></ul></dd>
      -->
 
@@ -1905,7 +2221,7 @@
             
 
             <td class="description last">
-                X 轴开始位置。
+                X轴开始位置。
                 
             </td>
         </tr>
@@ -1943,7 +2259,7 @@
             
 
             <td class="description last">
-                Y 轴开始位置。
+                Y轴开始位置。
                 
             </td>
         </tr>
@@ -1981,7 +2297,7 @@
             
 
             <td class="description last">
-                X 轴结束位置。
+                X轴结束位置。
                 
             </td>
         </tr>
@@ -2019,7 +2335,7 @@
             
 
             <td class="description last">
-                Y 轴结束位置。
+                Y轴结束位置。
                 
             </td>
         </tr>
@@ -2099,7 +2415,7 @@
             
 
             <td class="description last">
-                lineWidth 线条宽度。
+                lineWidth （可选）线条宽度。
                 
             </td>
         </tr>
@@ -2178,7 +2494,7 @@
     <!-- 
     <dt class="tag-source">Source:</dt>
     <dd class="tag-source"><ul class="dummy"><li>
-        js, line 164
+        js, line 181
     </li></ul></dd>
      -->
 
@@ -2255,7 +2571,7 @@
             
 
             <td class="description last">
-                开始绘制的 X 轴位置。
+                开始绘制的X轴位置。
                 
             </td>
         </tr>
@@ -2293,7 +2609,7 @@
             
 
             <td class="description last">
-                开始绘制的 Y 轴位置。
+                开始绘制的Y轴位置。
                 
             </td>
         </tr>
@@ -2411,7 +2727,7 @@
             
 
             <td class="description last">
-                lineWidth 线段宽度。
+                lineWidth （可选）线段宽度。
                 
             </td>
         </tr>
@@ -2490,7 +2806,7 @@
     <!-- 
     <dt class="tag-source">Source:</dt>
     <dd class="tag-source"><ul class="dummy"><li>
-        js, line 225
+        js, line 242
     </li></ul></dd>
      -->
 
@@ -2643,7 +2959,7 @@
             
 
             <td class="description last">
-                路径集合，路径支持以下格式：[["moveTo",x,y],["lineTo",x,y,x,y,x,y],["arcTo",x1,y1,x2,y2,r],["closePath"]]。
+                路径集合，路径支持以下格式：[["moveTo",x,y],["lineTo",x,y],["arcTo",x1,y1,x2,y2,r],["closePath"]]。
                 
             </td>
         </tr>
@@ -2685,7 +3001,7 @@
             
 
             <td class="description last">
-                brush 刷子定义，支持以下设置{fillStyle}。
+                brush （可选）刷子定义，支持以下设置{fillStyle}。
                 
             </td>
         </tr>
@@ -2727,7 +3043,7 @@
             
 
             <td class="description last">
-                pen 画笔定义，支持以下设置{strokeStyle,lineWidth,lineJoin,lineCap,miterLimit}。
+                pen （可选）画笔定义，支持以下设置{strokeStyle,lineWidth,lineJoin,lineCap,miterLimit}。
                 
             </td>
         </tr>
@@ -2806,7 +3122,7 @@
     <!-- 
     <dt class="tag-source">Source:</dt>
     <dd class="tag-source"><ul class="dummy"><li>
-        js, line 206
+        js, line 223
     </li></ul></dd>
      -->
 
@@ -3115,7 +3431,7 @@
             
 
             <td class="description last">
-                lineColor 边框颜色，或者填充绘图的渐变对象。
+                lineColor （可选）边框颜色，或者填充绘图的渐变对象。
                 
             </td>
         </tr>
@@ -3157,7 +3473,7 @@
             
 
             <td class="description last">
-                lineWidth 边框宽度。
+                lineWidth （可选）边框宽度。
                 
             </td>
         </tr>
@@ -3236,7 +3552,7 @@
     <!-- 
     <dt class="tag-source">Source:</dt>
     <dd class="tag-source"><ul class="dummy"><li>
-        js, line 216
+        js, line 233
     </li></ul></dd>
      -->
 
@@ -3469,7 +3785,7 @@
             
 
             <td class="description last">
-                lineColor 边框颜色，或者填充绘图的渐变对象。
+                lineColor （可选）边框颜色，或者填充绘图的渐变对象。
                 
             </td>
         </tr>
@@ -3511,7 +3827,7 @@
             
 
             <td class="description last">
-                lineWidth 边框宽度。
+                lineWidth （可选）边框宽度。
                 
             </td>
         </tr>
@@ -3590,7 +3906,7 @@
     <!-- 
     <dt class="tag-source">Source:</dt>
     <dd class="tag-source"><ul class="dummy"><li>
-        js, line 184
+        js, line 201
     </li></ul></dd>
      -->
 
@@ -3861,7 +4177,7 @@
             
 
             <td class="description last">
-                lineColor 边框颜色，或者填充绘图的渐变对象。
+                lineColor （可选）边框颜色，或者填充绘图的渐变对象。
                 
             </td>
         </tr>
@@ -3903,7 +4219,7 @@
             
 
             <td class="description last">
-                lineWidth 边框宽度。
+                lineWidth （可选）边框宽度。
                 
             </td>
         </tr>
@@ -3934,7 +4250,7 @@
 
     
 
-    <h4 class="name" id="drawTexture"><span class="type-signature"></span>drawTexture<span class="signature">(tex, x<span class="signature-attributes">opt</span>, y<span class="signature-attributes">opt</span>, width<span class="signature-attributes">opt</span>, height<span class="signature-attributes">opt</span>, m<span class="signature-attributes">opt</span>)</span><span class="type-signature"></span></h4>
+    <h4 class="name" id="drawTexture"><span class="type-signature"></span>drawTexture<span class="signature">(tex, x<span class="signature-attributes">opt</span>, y<span class="signature-attributes">opt</span>, width<span class="signature-attributes">opt</span>, height<span class="signature-attributes">opt</span>, m<span class="signature-attributes">opt</span>, alpha<span class="signature-attributes">opt</span>)</span><span class="type-signature"></span></h4>
 
     
 
@@ -3982,7 +4298,7 @@
     <!-- 
     <dt class="tag-source">Source:</dt>
     <dd class="tag-source"><ul class="dummy"><li>
-        js, line 36
+        js, line 42
     </li></ul></dd>
      -->
 
@@ -4101,7 +4417,7 @@
             
 
             <td class="description last">
-                x X 轴偏移量。
+                x （可选）X轴偏移量。
                 
             </td>
         </tr>
@@ -4143,7 +4459,7 @@
             
 
             <td class="description last">
-                y Y 轴偏移量。
+                y （可选）Y轴偏移量。
                 
             </td>
         </tr>
@@ -4185,7 +4501,7 @@
             
 
             <td class="description last">
-                width 宽度。
+                width （可选）宽度。
                 
             </td>
         </tr>
@@ -4227,7 +4543,7 @@
             
 
             <td class="description last">
-                height 高度。
+                height （可选）高度。
                 
             </td>
         </tr>
@@ -4269,7 +4585,49 @@
             
 
             <td class="description last">
-                m 矩阵信息。
+                m （可选）矩阵信息。
+                
+            </td>
+        </tr>
+
+    
+
+        <tr>
+            
+                <td class="name"><code>alpha</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type"><code>Number</code></span>
+
+
+            
+            </td>
+
+            
+                <td class="attributes">
+                
+                    &lt;optional><br>
+                
+
+                
+
+                
+                </td>
+            
+
+            
+                <td class="default">
+                
+                    1
+                
+                </td>
+            
+
+            <td class="description last">
+                alpha （可选）透明度。
                 
             </td>
         </tr>
@@ -4348,7 +4706,7 @@
     <!-- 
     <dt class="tag-source">Source:</dt>
     <dd class="tag-source"><ul class="dummy"><li>
-        js, line 42
+        js, line 48
     </li></ul></dd>
      -->
 
@@ -4466,6 +4824,394 @@
 
     
 
+    <h4 class="name" id="drawTriangles"><span class="type-signature"></span>drawTriangles<span class="signature">(tex, x, y, vertices, indices, uvData, matrix<span class="signature-attributes">opt</span>)</span><span class="type-signature"></span></h4>
+
+    
+
+
+
+<div class="description">
+    绘制一组三角形
+</div>
+
+
+
+
+
+<dl class="details">
+
+    
+
+    
+
+    
+    <dt class="inherited-from">Inherited From:</dt>
+    <dd class="inherited-from"><ul class="dummy"><li>
+        <a href="Core.Graphics.html#drawTriangles">Graphics#drawTriangles</a>
+    </li></ul></dd>
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    <!-- 
+    <dt class="tag-source">Source:</dt>
+    <dd class="tag-source"><ul class="dummy"><li>
+        js, line 59
+    </li></ul></dd>
+     -->
+
+    
+
+    
+
+    
+</dl>
+
+
+
+
+
+
+
+
+
+    <h5>Parameters:</h5>
+    
+
+<table class="params">
+    <thead>
+    <tr>
+        
+        <th>Name</th>
+        
+
+        <th>Type</th>
+
+        
+        <th>Attributes</th>
+        
+
+        
+        <th>Default</th>
+        
+
+        <th class="last">Description</th>
+    </tr>
+    </thead>
+
+    <tbody>
+    
+
+        <tr>
+            
+                <td class="name"><code>tex</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type"><code><a href="Core.Texture.html">Texture</a></code></span>
+
+
+            
+            </td>
+
+            
+                <td class="attributes">
+                
+
+                
+
+                
+                </td>
+            
+
+            
+                <td class="default">
+                
+                </td>
+            
+
+            <td class="description last">
+                纹理。
+                
+            </td>
+        </tr>
+
+    
+
+        <tr>
+            
+                <td class="name"><code>x</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type"><code>Number</code></span>
+
+
+            
+            </td>
+
+            
+                <td class="attributes">
+                
+
+                
+
+                
+                </td>
+            
+
+            
+                <td class="default">
+                
+                </td>
+            
+
+            <td class="description last">
+                X轴偏移量。
+                
+            </td>
+        </tr>
+
+    
+
+        <tr>
+            
+                <td class="name"><code>y</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type"><code>Number</code></span>
+
+
+            
+            </td>
+
+            
+                <td class="attributes">
+                
+
+                
+
+                
+                </td>
+            
+
+            
+                <td class="default">
+                
+                </td>
+            
+
+            <td class="description last">
+                Y轴偏移量。
+                
+            </td>
+        </tr>
+
+    
+
+        <tr>
+            
+                <td class="name"><code>vertices</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type"><code>Float32Array</code></span>
+
+
+            
+            </td>
+
+            
+                <td class="attributes">
+                
+
+                
+
+                
+                </td>
+            
+
+            
+                <td class="default">
+                
+                </td>
+            
+
+            <td class="description last">
+                顶点数组。
+                
+            </td>
+        </tr>
+
+    
+
+        <tr>
+            
+                <td class="name"><code>indices</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type"><code>Float32Array</code></span>
+
+
+            
+            </td>
+
+            
+                <td class="attributes">
+                
+
+                
+
+                
+                </td>
+            
+
+            
+                <td class="default">
+                
+                </td>
+            
+
+            <td class="description last">
+                顶点索引。
+                
+            </td>
+        </tr>
+
+    
+
+        <tr>
+            
+                <td class="name"><code>uvData</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type"><code>Uint16Array</code></span>
+
+
+            
+            </td>
+
+            
+                <td class="attributes">
+                
+
+                
+
+                
+                </td>
+            
+
+            
+                <td class="default">
+                
+                </td>
+            
+
+            <td class="description last">
+                UV数据
+                
+            </td>
+        </tr>
+
+    
+
+        <tr>
+            
+                <td class="name"><code>matrix</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type"><code><a href="Core.Matrix.html">Matrix</a></code></span>
+
+
+            
+            </td>
+
+            
+                <td class="attributes">
+                
+                    &lt;optional><br>
+                
+
+                
+
+                
+                </td>
+            
+
+            
+                <td class="default">
+                
+                    null
+                
+                </td>
+            
+
+            <td class="description last">
+                matrix 缩放矩阵。
+                
+            </td>
+        </tr>
+
+    
+    </tbody>
+</table>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+</div>
+        
+            
+<div class="section-method">
+
+    
+
     <h4 class="name" id="fillBorderText"><span class="type-signature"></span>fillBorderText<span class="signature">(text, x, y, font, fillColor, borderColor, lineWidth, textAlign)</span><span class="type-signature"></span></h4>
 
     
@@ -4514,7 +5260,7 @@
     <!-- 
     <dt class="tag-source">Source:</dt>
     <dd class="tag-source"><ul class="dummy"><li>
-        js, line 83
+        js, line 100
     </li></ul></dd>
      -->
 
@@ -4836,7 +5582,7 @@
     <!-- 
     <dt class="tag-source">Source:</dt>
     <dd class="tag-source"><ul class="dummy"><li>
-        js, line 71
+        js, line 88
     </li></ul></dd>
      -->
 
@@ -5065,7 +5811,7 @@
 
 
 <div class="description">
-    用texture填充
+    用texture填充。
 </div>
 
 
@@ -5106,7 +5852,7 @@
     <!-- 
     <dt class="tag-source">Source:</dt>
     <dd class="tag-source"><ul class="dummy"><li>
-        js, line 53
+        js, line 70
     </li></ul></dd>
      -->
 
@@ -5221,7 +5967,7 @@
             
 
             <td class="description last">
-                X 轴偏移量。
+                X轴偏移量。
                 
             </td>
         </tr>
@@ -5259,7 +6005,7 @@
             
 
             <td class="description last">
-                Y 轴偏移量。
+                Y轴偏移量。
                 
             </td>
         </tr>
@@ -5301,7 +6047,7 @@
             
 
             <td class="description last">
-                width 宽度。
+                width （可选）宽度。
                 
             </td>
         </tr>
@@ -5343,7 +6089,7 @@
             
 
             <td class="description last">
-                height 高度。
+                height （可选）高度。
                 
             </td>
         </tr>
@@ -5385,7 +6131,7 @@
             
 
             <td class="description last">
-                type 填充类型 repeat|repeat-x|repeat-y|no-repeat
+                type （可选）填充类型 repeat|repeat-x|repeat-y|no-repeat
                 
             </td>
         </tr>
@@ -5427,7 +6173,7 @@
             
 
             <td class="description last">
-                offset 贴图纹理偏移
+                offset （可选）贴图纹理偏移
                 
             </td>
         </tr>
@@ -5465,7 +6211,7 @@
 
 
 <div class="description">
-    获取位置及宽高信息矩阵(比较耗，尽量少用)。
+    获取位置及宽高信息矩阵(比较耗CPU，频繁使用会造成卡顿，尽量少用)。
 </div>
 
 
@@ -5506,7 +6252,7 @@
     <!-- 
     <dt class="tag-source">Source:</dt>
     <dd class="tag-source"><ul class="dummy"><li>
-        js, line 26
+        js, line 23
     </li></ul></dd>
      -->
 
@@ -5567,7 +6313,7 @@
             
 
             <td class="description last">
-                使用图片的真实大小，默认为false
+                （可选）使用图片的真实大小，默认为false
                 
             </td>
         </tr>
@@ -5671,7 +6417,7 @@
     <!-- 
     <dt class="tag-source">Source:</dt>
     <dd class="tag-source"><ul class="dummy"><li>
-        js, line 145
+        js, line 162
     </li></ul></dd>
      -->
 
@@ -5790,7 +6536,7 @@
             
 
             <td class="description last">
-                x 显示图片的x位置。
+                x （可选）显示图片的x位置。
                 
             </td>
         </tr>
@@ -5832,7 +6578,7 @@
             
 
             <td class="description last">
-                y 显示图片的y位置。
+                y （可选）显示图片的y位置。
                 
             </td>
         </tr>
@@ -5874,7 +6620,7 @@
             
 
             <td class="description last">
-                width 显示图片的宽度，设置为0表示使用图片默认宽度。
+                width （可选）显示图片的宽度，设置为0表示使用图片默认宽度。
                 
             </td>
         </tr>
@@ -5916,7 +6662,7 @@
             
 
             <td class="description last">
-                height 显示图片的高度，设置为0表示使用图片默认高度。
+                height （可选）显示图片的高度，设置为0表示使用图片默认高度。
                 
             </td>
         </tr>
@@ -5958,7 +6704,7 @@
             
 
             <td class="description last">
-                complete 加载完成回调。
+                complete （可选）加载完成回调。
                 
             </td>
         </tr>
@@ -6037,7 +6783,7 @@
     <!-- 
     <dt class="tag-source">Source:</dt>
     <dd class="tag-source"><ul class="dummy"><li>
-        js, line 135
+        js, line 152
     </li></ul></dd>
      -->
 
@@ -6125,7 +6871,7 @@
     <!-- 
     <dt class="tag-source">Source:</dt>
     <dd class="tag-source"><ul class="dummy"><li>
-        js, line 113
+        js, line 130
     </li></ul></dd>
      -->
 
@@ -6244,7 +6990,7 @@
             
 
             <td class="description last">
-                pivotX 水平方向轴心点坐标。
+                pivotX （可选）水平方向轴心点坐标。
                 
             </td>
         </tr>
@@ -6286,7 +7032,7 @@
             
 
             <td class="description last">
-                pivotY 垂直方向轴心点坐标。
+                pivotY （可选）垂直方向轴心点坐标。
                 
             </td>
         </tr>
@@ -6365,7 +7111,7 @@
     <!-- 
     <dt class="tag-source">Source:</dt>
     <dd class="tag-source"><ul class="dummy"><li>
-        js, line 131
+        js, line 148
     </li></ul></dd>
      -->
 
@@ -6453,7 +7199,7 @@
     <!-- 
     <dt class="tag-source">Source:</dt>
     <dd class="tag-source"><ul class="dummy"><li>
-        js, line 121
+        js, line 138
     </li></ul></dd>
      -->
 
@@ -6610,7 +7356,7 @@
             
 
             <td class="description last">
-                pivotX 水平方向轴心点坐标。
+                pivotX （可选）水平方向轴心点坐标。
                 
             </td>
         </tr>
@@ -6652,7 +7398,7 @@
             
 
             <td class="description last">
-                pivotY 垂直方向轴心点坐标。
+                pivotY （可选）垂直方向轴心点坐标。
                 
             </td>
         </tr>
@@ -6731,7 +7477,7 @@
     <!-- 
     <dt class="tag-source">Source:</dt>
     <dd class="tag-source"><ul class="dummy"><li>
-        js, line 94
+        js, line 111
     </li></ul></dd>
      -->
 
@@ -7027,7 +7773,7 @@
     <!-- 
     <dt class="tag-source">Source:</dt>
     <dd class="tag-source"><ul class="dummy"><li>
-        js, line 106
+        js, line 123
     </li></ul></dd>
      -->
 
@@ -7146,7 +7892,7 @@
             
 
             <td class="description last">
-                pivotX 水平方向轴心点坐标。
+                pivotX （可选）水平方向轴心点坐标。
                 
             </td>
         </tr>
@@ -7188,7 +7934,7 @@
             
 
             <td class="description last">
-                pivotY 垂直方向轴心点坐标。
+                pivotY （可选）垂直方向轴心点坐标。
                 
             </td>
         </tr>
@@ -7267,7 +8013,7 @@
     <!-- 
     <dt class="tag-source">Source:</dt>
     <dd class="tag-source"><ul class="dummy"><li>
-        js, line 127
+        js, line 144
     </li></ul></dd>
      -->
 

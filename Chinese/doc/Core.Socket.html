@@ -42,7 +42,8 @@
         Socket
         </h2>
         
-            <div class="class-description"><code>Socket</code> 是一种双向通信协议，在建立连接后，服务器和 Browser/Client Agent 都能主动的向对方发送或接收数据。</div>
+            <div class="class-description"><p> <code>Socket</code> 封装了 HTML5 WebSocket ，允许服务器端与客户端进行全双工（full-duplex）的实时通信，并且允许跨域通信。在建立连接后，服务器和 Browser/Client Agent 都能主动的向对方发送或接收文本和二进制数据。</p>
+<p>要使用 <code>Socket</code> 类的方法，请先使用构造函数 <code>new Socket</code> 创建一个 <code>Socket</code> 对象。 <code>Socket</code> 以异步方式传输和接收数据。</p></div>
         
     
 </header>
@@ -64,8 +65,8 @@
 
 
 <div class="description">
-    <p>创建一个新的 <code>Socket</code> 实例。</p>
-创建 websocket ,如果host port有效直接连接。 *
+    <p>创建新的 Socket 对象。默认字节序为 Socket.BIG_ENDIAN 。若未指定参数，将创建一个最初处于断开状态的套接字。若指定了有效参数，则尝试连接到指定的主机和端口。</p>
+<p><b>注意：</b>强烈建议使用<b>不带参数</b>的构造函数形式，并添加任意事件侦听器和设置 protocols 等属性，然后使用 host 和 port 参数调用 connect 方法。此顺序将确保所有事件侦听器和其他相关流程工作正常。</p>
 </div>
 
 
@@ -101,7 +102,7 @@
     <!-- 
     <dt class="tag-source">Source:</dt>
     <dd class="tag-source"><ul class="dummy"><li>
-        js, line 6
+        js, line 7
     </li></ul></dd>
      -->
 
@@ -266,7 +267,7 @@
             
 
             <td class="description last">
-                byteClass 用来接收和发送数据的Byte类，默认使用Byte类，也可传入Byte类的子类。
+                byteClass 用于接收和发送数据的 Byte 类。如果为 null ，则使用 Byte 类，也可传入 Byte 类的子类。
                 
             </td>
         </tr>
@@ -364,7 +365,7 @@
     <!-- 
     <dt class="tag-source">Source:</dt>
     <dd class="tag-source"><ul class="dummy"><li>
-        js, line 26
+        js, line 28
     </li></ul></dd>
      -->
 
@@ -439,7 +440,7 @@
     <!-- 
     <dt class="tag-source">Source:</dt>
     <dd class="tag-source"><ul class="dummy"><li>
-        js, line 20
+        js, line 22
     </li></ul></dd>
      -->
 
@@ -513,7 +514,7 @@
     <!-- 
     <dt class="tag-source">Source:</dt>
     <dd class="tag-source"><ul class="dummy"><li>
-        js, line 66
+        js, line 58
     </li></ul></dd>
      -->
 
@@ -551,7 +552,7 @@
 
 
 <div class="description">
-    不使用socket提供的 input封装
+    不再缓存服务端发来的数据。
 </div>
 
 
@@ -587,7 +588,7 @@
     <!-- 
     <dt class="tag-source">Source:</dt>
     <dd class="tag-source"><ul class="dummy"><li>
-        js, line 44
+        js, line 34
     </li></ul></dd>
      -->
 
@@ -625,7 +626,9 @@
 
 
 <div class="description">
-    表示数据的字节顺序。
+    <p>主机字节序，是 CPU 存放数据的两种不同顺序，包括小端字节序和大端字节序。</p>
+<p> LITTLE_ENDIAN ：小端字节序，地址低位存储值的低位，地址高位存储值的高位。</p>
+<p> BIG_ENDIAN ：大端字节序，地址低位存储值的高位，地址高位存储值的低位。</p>
 </div>
 
 
@@ -661,7 +664,7 @@
     <!-- 
     <dt class="tag-source">Source:</dt>
     <dd class="tag-source"><ul class="dummy"><li>
-        js, line 71
+        js, line 65
     </li></ul></dd>
      -->
 
@@ -699,7 +702,7 @@
 
 
 <div class="description">
-    表示服务端发来的数据。
+    缓存的服务端发来的数据。
 </div>
 
 
@@ -735,7 +738,7 @@
     <!-- 
     <dt class="tag-source">Source:</dt>
     <dd class="tag-source"><ul class="dummy"><li>
-        js, line 56
+        js, line 48
     </li></ul></dd>
      -->
 
@@ -753,80 +756,6 @@
         <li>
             
 <span class="param-type"><code>Object</code></span>
-
-
-        </li>
-    </ul>
- -->
-
-
-
-
-</div>
-
-        
-            
-<div class="section-members">
-<h4 class="name" id="objectEncoding"><span class="type-signature"></span>objectEncoding<span class="type-signature"> :int</span></h4>
-
-
-
-
-<div class="description">
-    在写入或读取对象时，控制所使用的 AMF 的版本。
-</div>
-
-
-
-
-
-<dl class="details">
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    <!-- 
-    <dt class="tag-source">Source:</dt>
-    <dd class="tag-source"><ul class="dummy"><li>
-        js, line 38
-    </li></ul></dd>
-     -->
-
-    
-
-    
-
-    
-</dl>
-
-
-<!-- 
-    <h5>Type:</h5>
-    <ul>
-        <li>
-            
-<span class="param-type"><code>int</code></span>
 
 
         </li>
@@ -883,7 +812,7 @@
     <!-- 
     <dt class="tag-source">Source:</dt>
     <dd class="tag-source"><ul class="dummy"><li>
-        js, line 61
+        js, line 53
     </li></ul></dd>
      -->
 
@@ -921,7 +850,8 @@
 
 
 <div class="description">
-    用的子协议，字符串或数组
+    <p>子协议名称。子协议名称字符串，或由多个子协议名称字符串构成的数组。必须在调用 connect 或者 connectByUrl 之前进行赋值，否则无效。</p>
+<p>指定后，只有当服务器选择了其中的某个子协议，连接才能建立成功，否则建立失败，派发 Event.ERROR 事件。</p>
 </div>
 
 
@@ -957,12 +887,19 @@
     <!-- 
     <dt class="tag-source">Source:</dt>
     <dd class="tag-source"><ul class="dummy"><li>
-        js, line 50
+        js, line 42
     </li></ul></dd>
      -->
 
     
 
+    
+    <dt class="tag-see">See:</dt>
+    <dd class="tag-see">
+        <ul>
+            <li><a href="https://html.spec.whatwg.org/multipage/comms.html#dom-websocket">spec.whatwg.org/multipage/comms.html#dom-websocket</a></li>
+        </ul>
+    </dd>
     
 
     
@@ -987,15 +924,25 @@
 </div>
 
         
-            
-<div class="section-members">
-<h4 class="name" id="timeout"><span class="type-signature"></span>timeout<span class="type-signature"> :int</span></h4>
+    
 
+    
+        <h3 class="subsection-title">方法</h3>
+
+        
+            
+<div class="section-method">
+
+    
+
+    <h4 class="name" id="cleanSocket"><span class="type-signature"></span>cleanSocket<span class="signature">()</span><span class="type-signature"></span></h4>
+
+    
 
 
 
 <div class="description">
-    表示建立连接时需等待的毫秒数。
+    清理socket。
 </div>
 
 
@@ -1031,7 +978,7 @@
     <!-- 
     <dt class="tag-source">Source:</dt>
     <dd class="tag-source"><ul class="dummy"><li>
-        js, line 32
+        js, line 83
     </li></ul></dd>
      -->
 
@@ -1043,29 +990,28 @@
 </dl>
 
 
-<!-- 
-    <h5>Type:</h5>
-    <ul>
-        <li>
-            
-<span class="param-type"><code>int</code></span>
 
 
-        </li>
-    </ul>
- -->
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
 
 </div>
-
-        
-    
-
-    
-        <h3 class="subsection-title">方法</h3>
-
         
             
 <div class="section-method">
@@ -1162,7 +1108,8 @@
 
 
 <div class="description">
-    连接到指定的主机和端口。
+    <p>连接到指定的主机和端口。</p>
+<p>连接成功派发 Event.OPEN 事件；连接失败派发 Event.ERROR 事件；连接被关闭派发 Event.CLOSE 事件；接收到数据派发 Event.MESSAGE 事件； 除了 Event.MESSAGE 事件参数为数据内容，其他事件参数都是原生的 HTML DOM Event 对象。</p>
 </div>
 
 
@@ -1198,7 +1145,7 @@
     <!-- 
     <dt class="tag-source">Source:</dt>
     <dd class="tag-source"><ul class="dummy"><li>
-        js, line 78
+        js, line 73
     </li></ul></dd>
      -->
 
@@ -1316,14 +1263,15 @@
 
     
 
-    <h4 class="name" id="connectByUrl"><span class="type-signature"></span>connectByUrl<span class="signature">(url)</span><span class="type-signature"></span></h4>
+    <h4 class="name" id="connectByUrl"><span class="type-signature"></span>connectByUrl<span class="signature">(url要连接的服务端)</span><span class="type-signature"></span></h4>
 
     
 
 
 
 <div class="description">
-    连接到指定的url
+    <p>连接到指定的服务端 WebSocket URL。 URL 类似 ws://</p>
+<p>连接成功派发 Event.OPEN 事件；连接失败派发 Event.ERROR 事件；连接被关闭派发 Event.CLOSE 事件；接收到数据派发 Event.MESSAGE 事件； 除了 Event.MESSAGE 事件参数为数据内容，其他事件参数都是原生的 HTML DOM Event 对象。</p>
 </div>
 
 
@@ -1359,7 +1307,7 @@
     <!-- 
     <dt class="tag-source">Source:</dt>
     <dd class="tag-source"><ul class="dummy"><li>
-        js, line 83
+        js, line 79
     </li></ul></dd>
      -->
 
@@ -1403,7 +1351,7 @@
 
         <tr>
             
-                <td class="name"><code>url</code></td>
+                <td class="name"><code>url要连接的服务端</code></td>
             
 
             <td class="type">
@@ -1420,7 +1368,7 @@
             
 
             <td class="description last">
-                连接目标
+                WebSocket URL。 URL 类似 ws://yourdomain:port。
                 
             </td>
         </tr>
@@ -1499,7 +1447,7 @@
     <!-- 
     <dt class="tag-source">Source:</dt>
     <dd class="tag-source"><ul class="dummy"><li>
-        js, line 25
+        js, line 24
     </li></ul></dd>
      -->
 
@@ -1618,8 +1566,7 @@
             
 
             <td class="description last">
-                data 回调数据。
-<b>注意：</b>如果是需要传递多个参数 p1,p2,p3,...可以使用数组结构如：[p1,p2,p3,...] ；如果需要回调单个参数 p 是一个数组，则需要使用结构如：[p]，其他的单个参数 p ，可以直接传入参数 p。
+                data （可选）回调数据。<b>注意：</b>如果是需要传递多个参数 p1,p2,p3,...可以使用数组结构如：[p1,p2,p3,...] ；如果需要回调单个参数 p ，且 p 是一个数组，则需要使用结构如：[p]，其他的单个参数 p ，可以直接传入参数 p。
                 
             </td>
         </tr>
@@ -1971,7 +1918,7 @@
     <!-- 
     <dt class="tag-source">Source:</dt>
     <dd class="tag-source"><ul class="dummy"><li>
-        js, line 64
+        js, line 63
     </li></ul></dd>
      -->
 
@@ -2136,7 +2083,7 @@
     <!-- 
     <dt class="tag-source">Source:</dt>
     <dd class="tag-source"><ul class="dummy"><li>
-        js, line 52
+        js, line 51
     </li></ul></dd>
      -->
 
@@ -2275,7 +2222,7 @@
             
 
             <td class="description last">
-                如果值为 true ,则只移除通过 once 方法添加的侦听器。
+                （可选）如果值为 true ,则只移除通过 once 方法添加的侦听器。
                 
             </td>
         </tr>
@@ -2379,7 +2326,7 @@
     <!-- 
     <dt class="tag-source">Source:</dt>
     <dd class="tag-source"><ul class="dummy"><li>
-        js, line 58
+        js, line 57
     </li></ul></dd>
      -->
 
@@ -2460,7 +2407,7 @@
             
 
             <td class="description last">
-                type 事件类型，如果值为 null，则移除本对象所有类型的侦听器。
+                type （可选）事件类型，如果值为 null，则移除本对象所有类型的侦听器。
                 
             </td>
         </tr>
@@ -2564,7 +2511,7 @@
     <!-- 
     <dt class="tag-source">Source:</dt>
     <dd class="tag-source"><ul class="dummy"><li>
-        js, line 34
+        js, line 33
     </li></ul></dd>
      -->
 
@@ -2759,7 +2706,7 @@
             
 
             <td class="description last">
-                args 事件侦听函数的回调参数。
+                args （可选）事件侦听函数的回调参数。
                 
             </td>
         </tr>
@@ -2863,7 +2810,7 @@
     <!-- 
     <dt class="tag-source">Source:</dt>
     <dd class="tag-source"><ul class="dummy"><li>
-        js, line 43
+        js, line 42
     </li></ul></dd>
      -->
 
@@ -3058,7 +3005,7 @@
             
 
             <td class="description last">
-                args 事件侦听函数的回调参数。
+                args （可选）事件侦听函数的回调参数。
                 
             </td>
         </tr>
