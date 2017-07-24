@@ -1,93 +1,79 @@
 # 用反射机制对接Native APP渠道
 
-
-
-  LayaNative通过反射机制为开发者提供了对接渠道的接口, 下面的内容通过实现对接渠道商城(conchMarket)详细的介绍了如何利用反射机制完成对接渠道的工作.
-
-
+LayaNative通过反射机制为开发者提供了对接渠道的接口, 下面的内容通过实现对接渠道商城(conchMarket)详细的介绍了如何利用反射机制完成对接渠道的工作.
 
 ### 1.对接渠道商城
 
-  LayaNative已经通过反射机制实现JavaScript与原生开发语言(Android下Java, iOS下Objective-C)的互相调用, 开发者只需要完成剩下的关于原生开发语言(Android下Java, iOS下Objective-C)部分的开发工作.
+LayaNative已经通过反射机制实现JavaScript与原生开发语言(Android下Java, iOS下Objective-C)的互相调用, 开发者只需要完成剩下的关于原生开发语言(Android下Java, iOS下Objective-C)部分的开发工作.
 
+#### 1.1 iOS系统下的对接渠道商城实现:
 
+##### Part.1 - 类名反射:
 
-####   1.1 iOS系统下的对接渠道商城实现:
+ 通过LayaNative构建出的iOS项目工程中我们会看到PlatformInterface目录下有自动创建的MarketAppStore类, 这个类继承自LayaPlatformInterface类, 并且在resource/config.ini中设置了platformClassName=MarketAppStore, 这样, 我们以login方法为例, 只需要在MarketAppStore.mm中重写LP_Login方法, 就完成了对login方法的二次开发.
 
-#####     Part.1 - 类名反射:
+##### Part.2 - JavaScript调用OC:
 
-​      通过LayaNative构建出的iOS项目工程中我们会看到PlatformInterface目录下有自动创建的MarketAppStore类, 这个类继承自LayaPlatformInterface类, 并且在resource/config.ini中设置了platformClassName=MarketAppStore, 这样, 我们以login方法为例, 只需要在MarketAppStore.mm中重写LP_Login方法, 就完成了对login方法的二次开发.
+ 还是以上述的login方法为例, 在JavaScript中, 通过conchMarket类调用的login方法实际上就是在调用LayaPlatformInterface中的LP_Login方法, 而这个过程其实就是JavaScript调用OC的过程.
 
-#####     Part.2 - JavaScript调用OC:
+##### Part.3 - OC调用JavaScript:
 
-​      还是以上述的login方法为例, 在JavaScript中, 通过conchMarket类调用的login方法实际上就是在调用LayaPlatformInterface中的LP_Login方法, 而这个过程其实就是JavaScript调用OC的过程.
+ 继续以上述的login方法为例, 在JavaScript中, 通过conchMarket类调用的login方法执行完成后会执行回调方法, 这个回调方法在LayaPlatformCallback中声明, 然后在LayaPlatformInterface的LP_Login中调用LayaPlatformCallback的LP_LoginCallback方法来实现OC调用JavaScript.
 
-#####     Part.3 - OC调用JavaScript:
-
-​      继续以上述的login方法为例, 在JavaScript中, 通过conchMarket类调用的login方法执行完成后会执行回调方法, 这个回调方法在LayaPlatformCallback中声明, 然后在LayaPlatformInterface的LP_Login中调用LayaPlatformCallback的LP_LoginCallback方法来实现OC调用JavaScript.
-
-#####     Part.4 - 代码片段:
+##### Part.4 - 代码片段:
 
 ```javascript
-       // JavaScript中调用方式: conchMarket.login([参数], [回调函数]) ;
-        var sData={type:"test"};
-        conchMarket.login(JSON.stringify(sData),function(data){
-          console.log(data);
-          // TODO 数据处理.
-        });
+// JavaScript中调用方式: conchMarket.login([参数], [回调函数]) ;
+var sData={type:"test"};
+window.conchMarket.login(JSON.stringify(sData),function(data){
+console.log(data);
+// TODO 数据处理.
+});
 ```
 
 ```javascript
-    // MarketAppStore.mm文件中根据自己需求添加相关代码到LP_Login方法中, JavaScript中调用conchMarket.login就会执行LP_Login方法.
-      -(void)LP_Login:(NSString*)jsonParam{
-          // TODO 调用第三方平台的登陆的登陆接口
-          // OC层调用登录结束回调.
-          [[LayaPlatformCallback GetInstance] LP_LoginCallback:pJsonString];
-      }
+// MarketAppStore.mm文件中根据自己需求添加相关代码到LP_Login方法中, JavaScript中调用conchMarket.login就会执行LP_Login方法.
+-(void)LP_Login:(NSString*)jsonParam{
+// TODO 调用第三方平台的登陆的登陆接口
+// OC层调用登录结束回调.
+[[LayaPlatformCallback GetInstance] LP_LoginCallback:pJsonString];
+}
 ```
 
+#### 1.2 Android系统下的对接渠道商城实现:
 
+##### Part.1 - 类名反射:
 
+ 通过LayaNative构建出的Android项目工程中我们会看到layaair.game.Market包中有自动创建的MarketTest类, 这个类继承自LayaPlatformInterface类, 我们以login方法为例, 只需要在MarketTest.java中重写LP_Login方法, 就完成了对login方法的二次开发.
 
+##### Part.2 - JavaScript调用Java:
 
-####   1.2 Android系统下的对接渠道商城实现:
+ 还是以上述的login方法为例, 在JavaScript中, 通过conchMarket类调用的login方法实际上就是在调用LayaPlatformInterface中的LP_Login方法, 而这个过程其实就是JavaScript调用Java的过程. 即: conchMarket.login => LayaPlatformInterface的LP_Login方法.
 
-#####     Part.1 - 类名反射:
+##### Part.3 - Java调用JavaScript:
 
-​      通过LayaNative构建出的Android项目工程中我们会看到layaair.game.Market包中有自动创建的MarketMango类, 这个类继承自LayaPlatformInterface类, 我们以login方法为例, 只需要在MarketMango.java中重写LP_Login方法, 就完成了对login方法的二次开发.
+ 继续以上述的login方法为例, 在JavaScript中, 通过conchMarket类调用的login方法执行完成后会执行回调方法, 这个回调方法在LayaPlatformCallback中声明, 然后在LayaPlatformInterface的LP_Login中调用LayaPlatformCallback的LP_LoginCallback方法来实现Java调用JavaScript. 即: LayaPlatformInterface的LP_Login => LayaPlatformCallback的LP_LoginCallback.
 
-#####     Part.2 - JavaScript调用Java:
-
-​      还是以上述的login方法为例, 在JavaScript中, 通过conchMarket类调用的login方法实际上就是在调用LayaPlatformInterface中的LP_Login方法, 而这个过程其实就是JavaScript调用Java的过程. 即: conchMarket.login => LayaPlatformInterface的LP_Login方法.
-
-#####     Part.3 - Java调用JavaScript:
-
-​      继续以上述的login方法为例, 在JavaScript中, 通过conchMarket类调用的login方法执行完成后会执行回调方法, 这个回调方法在LayaPlatformCallback中声明, 然后在LayaPlatformInterface的LP_Login中调用LayaPlatformCallback的LP_LoginCallback方法来实现Java调用JavaScript. 即: LayaPlatformInterface的LP_Login => LayaPlatformCallback的LP_LoginCallback.
-
-#####     Part.4 - 代码片段:
+##### Part.4 - 代码片段:
 
 ```javascript
-      // JavaScript中调用方式: conchMarket.login([参数], [回调函数]) ;
-        var sData={type:"test"};
-        conchMarket.login(JSON.stringify(sData),function(data){
-            console.log(data);
-            // 数据处理.
-        });
+// JavaScript中调用方式: conchMarket.login([参数], [回调函数]) ;
+var sData={type:"test"};
+window.conchMarket.login(JSON.stringify(sData),function(data){
+console.log(data);
+// 数据处理.
+});
 ```
 
 ```javascript
-     // MarketMango.java文件中根据自己需求添加相关代码到LP_Login方法中, JavaScript中调用conchMarket.login就会执行LP_Login方法.
-        public void LP_Login(final String jsonParam)
-        {
-                // 调用第三方平台的登陆的登陆接口
-            // Java层调用登录结束回调.
-            LayaPlatformCallback.GetInstance().LP_LoginCallback(objCallBack.toString());
-        }
+// MarketTest.java文件中根据自己需求添加相关代码到LP_Login方法中, JavaScript中调用conchMarket.login就会执行LP_Login方法.
+public void LP_Login(final String jsonParam)
+{
+// 调用第三方平台的登陆的登陆接口
+// Java层调用登录结束回调.
+LayaPlatformCallback.GetInstance().LP_LoginCallback(objCallBack.toString());
+}
 ```
-
-
-
-
 
 ### 2.对接渠道的API整合
 

@@ -2,7 +2,7 @@
 
 
 
-​        LayaAir是Layabox旗下的第二代HTML5开源引擎。是全球唯一支持ActionScript3、JavaScript、TypeScript三种开发语言，并且一次开发同时发布APP、HTML5、Flash三个版本的游戏引擎，也是全球首款基于HTML5协议的全能型开源引擎。除支持2D\3D\VR\AR的游戏开发外，引擎还可以用于应用软件、广告、营销、教育等众多领域。
+​        LayaAir是Layabox旗下的第二代HTML5开源引擎。是全球唯一支持ActionScript3、JavaScript、TypeScript三种开发语言，并且一次开发同时发布Native APP与HTML5的游戏引擎，也是全球首款基于HTML5协议的全能型开源引擎。除支持2D\3D\VR\AR的游戏开发外，引擎还可以用于应用软件、广告、营销、教育等众多领域。
 
 ​        LayaAir引擎是一套全新设计的精简API的游戏引擎，具有极致的性能、轻量易用、支持多语言开发、API功能齐全、工具链完善高效、开源免费、支持多版本发布等特点。
 

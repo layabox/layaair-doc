@@ -127,11 +127,6 @@
                 "name_3_name": "新手常见问题：配置环境之后点击运行报错、黑屏",
                 "name_3_url": "Chinese/LayaAir_AS3/2D/beginners/basic/Common_Problems/",
                 "name_3_file": "readme.md"
-              },
-              {
-                "name_3_name": "LayaAir项目发布Flash版本",
-                "name_3_url": "Chinese/LayaAir_AS3/2D/beginners/basic/Release_Flash/",
-                "name_3_file": "readme.md"
               }
             ]
           },
@@ -141,6 +136,41 @@
               {
                 "name_3_name": "显示对象及相关概念",
                 "name_3_url": "Chinese/LayaAir_AS3/2D/beginners/basic/",
+                "name_3_file": "readme.md"
+              }
+            ]
+          },
+          {
+            "name_2_name": "文本",
+            "name_2_data": [
+              {
+                "name_3_name": "文本类API概述",
+                "name_3_url": "Chinese/LayaAir_AS3/2D/beginners/Text/API_List/",
+                "name_3_file": "readme.md"
+              },
+              {
+                "name_3_name": "文本基础样式",
+                "name_3_url": "Chinese/LayaAir_AS3/2D/beginners/Text/TextStyle/",
+                "name_3_file": "readme.md"
+              },
+              {
+                "name_3_name": "文本对齐与自动换行",
+                "name_3_url": "Chinese/LayaAir_AS3/2D/beginners/Text/TextAlign/",
+                "name_3_file": "readme.md"
+              },
+              {
+                "name_3_name": "超出文本区域的处理&滚动文本",
+                "name_3_url": "Chinese/LayaAir_AS3/2D/beginners/Text/overflow/",
+                "name_3_file": "readme.md"
+              },
+              {
+                "name_3_name": "textInput的单行输入&多行输入",
+                "name_3_url": "Chinese/LayaAir_AS3/2D/beginners/Text/textInput/",
+                "name_3_file": "readme.md"
+              },
+              {
+                "name_3_name": "位图字体的制作与使用",
+                "name_3_url": "Chinese/LayaAir_AS3/2D/beginners/Text/BitmapFont/",
                 "name_3_file": "readme.md"
               }
             ]
@@ -261,6 +291,21 @@
               {
                 "name_3_name": "Byte二进制读写",
                 "name_3_url": "Chinese/LayaAir_AS3/2D/beginners/Data_Communication/Byte/",
+                "name_3_file": "readme.md"
+              },
+              {
+                "name_3_name": "JSON数据详解",
+                "name_3_url": "Chinese/LayaAir_AS3/2D/beginners/Data_Communication/json/",
+                "name_3_file": "readme.md"
+              },
+              {
+                "name_3_name": "JSONP跨域读取数据",
+                "name_3_url": "Chinese/LayaAir_AS3/2D/beginners/Data_Communication/jsonp/",
+                "name_3_file": "readme.md"
+              },
+              {
+                "name_3_name": "Web Storage数据存储",
+                "name_3_url": "Chinese/LayaAir_AS3/2D/beginners/Data_Communication/webStorage/",
                 "name_3_file": "readme.md"
               }
             ]
@@ -648,6 +693,71 @@
             ]
           }
         ]
+      },      
+      { 
+        "nav_1_name": "LayaAir 3D引擎（AS3）",
+        "nav_1_data": [
+          {
+            "name_2_name": "3D引擎基础",
+            "name_2_data": [
+              {
+                "name_3_name": "快速开启3D之旅",
+                "name_3_url": "Chinese/LayaAir_AS3/3D/beginners/quickStart/",
+                "name_3_file": "readme.md"
+              },
+              {
+                "name_3_name": "unity插件工具使用",
+                "name_3_url": "Chinese/LayaAir_AS3/3D/beginners/unity_plugin/",
+                "name_3_file": "readme.md"
+              },
+              {
+                "name_3_name": "LayaAir3D之场景Scene",
+                "name_3_url": "Chinese/LayaAir_AS3/3D/beginners/scene/",
+                "name_3_file": "readme.md"
+              },
+              {
+                "name_3_name": "LayaAir3D之摄像机Camera",
+                "name_3_url": "Chinese/LayaAir_AS3/3D/beginners/camera/",
+                "name_3_file": "readme.md"
+              },
+              {
+                "name_3_name": "LayaAir之灯光",
+                "name_3_url": "Chinese/LayaAir_AS3/3D/beginners/light/",
+                "name_3_file": "readme.md"
+              },
+              {
+                "name_3_name": "LayaAir3D之模型",
+                "name_3_url": "Chinese/LayaAir_AS3/3D/beginners/model/",
+                "name_3_file": "readme.md"
+              },
+              {
+                "name_3_name": "LayaAir3D之材质概述",
+                "name_3_url": "Chinese/LayaAir_AS3/3D/beginners/materials_overview/",
+                "name_3_file": "readme.md"
+              },
+              {
+                "name_3_name": "LayaAir3D之材质光色与贴图",
+                "name_3_url": "Chinese/LayaAir_AS3/3D/beginners/textures/",
+                "name_3_file": "readme.md"
+              },
+              {
+                "name_3_name": "LayaAir3D之动画一",
+                "name_3_url": "Chinese/LayaAir_AS3/3D/beginners/animation1/",
+                "name_3_file": "readme.md"
+              },
+              {
+                "name_3_name": "LayaAir3D之动画二",
+                "name_3_url": "Chinese/LayaAir_AS3/3D/beginners/animation2/",
+                "name_3_file": "readme.md"
+              },
+              {
+                "name_3_name": "LayaAir3D之鼠标交互",
+                "name_3_url": "Chinese/LayaAir_AS3/3D/beginners/mouse/",
+                "name_3_file": "readme.md"
+              }
+            ]
+          }
+        ]
       },
       { 
         "nav_1_name": "实例开发篇（AS3）",
@@ -844,6 +954,26 @@
                 "name_3_name": "android嵌入字体",
                 "name_3_url": "Chinese/LayaNative/built_in_font/",
                 "name_3_file": "README.md"
+              },
+			  {
+                "name_3_name": "扩展字体",
+                "name_3_url": "Chinese/LayaNative/extend-font/",
+                "name_3_file": "README.md"
+              },
+			  {
+                "name_3_name": "zip更新",
+                "name_3_url": "Chinese/LayaNative/resourceUpdate/",
+                "name_3_file": "readme.md"
+              },
+			  {
+                "name_3_name": "APK扩展机制",
+                "name_3_url": "Chinese/LayaNative/apk_expansion/",
+                "name_3_file": "README.md"
+              },
+			  {
+                "name_3_name": "APK-update",
+                "name_3_url": "Chinese/LayaNative/apk-update/",
+                "name_3_file": "README.md"
               }
             ]
           },
@@ -1008,6 +1138,41 @@
             ]
           },
           {
+            "name_2_name": "文本",
+            "name_2_data": [
+              {
+                "name_3_name": "文本类API概述",
+                "name_3_url": "Chinese/LayaAir_TS/2D/beginners/Text/API_List/",
+                "name_3_file": "readme.md"
+              },
+              {
+                "name_3_name": "文本基础样式",
+                "name_3_url": "Chinese/LayaAir_TS/2D/beginners/Text/TextStyle/",
+                "name_3_file": "readme.md"
+              },
+              {
+                "name_3_name": "文本对齐与自动换行",
+                "name_3_url": "Chinese/LayaAir_TS/2D/beginners/Text/TextAlign/",
+                "name_3_file": "readme.md"
+              },
+              {
+                "name_3_name": "超出文本区域的处理&滚动文本",
+                "name_3_url": "Chinese/LayaAir_TS/2D/beginners/Text/overflow/",
+                "name_3_file": "readme.md"
+              },
+              {
+                "name_3_name": "textInput的单行输入&多行输入",
+                "name_3_url": "Chinese/LayaAir_TS/2D/beginners/Text/textInput/",
+                "name_3_file": "readme.md"
+              },
+              {
+                "name_3_name": "位图字体的制作与使用",
+                "name_3_url": "Chinese/LayaAir_TS/2D/beginners/Text/BitmapFont/",
+                "name_3_file": "readme.md"
+              }
+            ]
+          },
+          {
             "name_2_name": "位图",
             "name_2_data": [
               {
@@ -1103,6 +1268,41 @@
               {
                 "name_3_name": "DragonBone动画使用",
                 "name_3_url": "Chinese/LayaAir_TS/2D/beginners/animation/DragonBone/",
+                "name_3_file": "readme.md"
+              }
+            ]
+          },
+          {
+            "name_2_name": "数据与通信",
+            "name_2_data": [
+              {
+                "name_3_name": "HttpRequest详解",
+                "name_3_url": "Chinese/LayaAir_TS/2D/beginners/Data_Communication/HttpRequest/",
+                "name_3_file": "readme.md"
+              },
+              {
+                "name_3_name": "WebSocket发送与接收数据",
+                "name_3_url": "Chinese/LayaAir_TS/2D/beginners/Data_Communication/WebSocket/",
+                "name_3_file": "readme.md"
+              },
+              {
+                "name_3_name": "Byte二进制读写",
+                "name_3_url": "Chinese/LayaAir_TS/2D/beginners/Data_Communication/Byte/",
+                "name_3_file": "readme.md"
+              },
+              {
+                "name_3_name": "JSON数据详解",
+                "name_3_url": "Chinese/LayaAir_TS/2D/beginners/Data_Communication/json/",
+                "name_3_file": "readme.md"
+              },
+              {
+                "name_3_name": "JSONP跨域读取数据",
+                "name_3_url": "Chinese/LayaAir_TS/2D/beginners/Data_Communication/jsonp/",
+                "name_3_file": "readme.md"
+              },
+              {
+                "name_3_name": "Web Storage数据存储",
+                "name_3_url": "Chinese/LayaAir_TS/2D/beginners/Data_Communication/webStorage/",
                 "name_3_file": "readme.md"
               }
             ]
@@ -1587,6 +1787,26 @@
                 "name_3_name": "android嵌入字体",
                 "name_3_url": "Chinese/LayaNative/built_in_font/",
                 "name_3_file": "README.md"
+              },
+			  {
+                "name_3_name": "扩展字体",
+                "name_3_url": "Chinese/LayaNative/extend-font/",
+                "name_3_file": "README.md"
+              },
+			  {
+                "name_3_name": "zip更新",
+                "name_3_url": "Chinese/LayaNative/resourceUpdate/",
+                "name_3_file": "readme.md"
+              },
+			  {
+                "name_3_name": "APK扩展机制",
+                "name_3_url": "Chinese/LayaNative/apk_expansion/",
+                "name_3_file": "README.md"
+              },
+			  {
+                "name_3_name": "APK-update",
+                "name_3_url": "Chinese/LayaNative/apk-update/",
+                "name_3_file": "README.md"
               }
             ]
           },
@@ -1746,6 +1966,41 @@
             ]
           },
           {
+            "name_2_name": "文本",
+            "name_2_data": [
+              {
+                "name_3_name": "文本类API概述",
+                "name_3_url": "Chinese/LayaAir_JS/2D/beginners/Text/API_List/",
+                "name_3_file": "readme.md"
+              },
+              {
+                "name_3_name": "文本基础样式",
+                "name_3_url": "Chinese/LayaAir_JS/2D/beginners/Text/TextStyle/",
+                "name_3_file": "readme.md"
+              },
+              {
+                "name_3_name": "文本对齐与自动换行",
+                "name_3_url": "Chinese/LayaAir_JS/2D/beginners/Text/TextAlign/",
+                "name_3_file": "readme.md"
+              },
+              {
+                "name_3_name": "超出文本区域的处理&滚动文本",
+                "name_3_url": "Chinese/LayaAir_JS/2D/beginners/Text/overflow/",
+                "name_3_file": "readme.md"
+              },
+              {
+                "name_3_name": "textInput的单行输入&多行输入",
+                "name_3_url": "Chinese/LayaAir_JS/2D/beginners/Text/textInput/",
+                "name_3_file": "readme.md"
+              },
+              {
+                "name_3_name": "位图字体的制作与使用",
+                "name_3_url": "Chinese/LayaAir_JS/2D/beginners/Text/BitmapFont/",
+                "name_3_file": "readme.md"
+              }
+            ]
+          },
+          {
             "name_2_name": "位图",
             "name_2_data": [
               {
@@ -1841,6 +2096,41 @@
               {
                 "name_3_name": "DragonBone动画使用",
                 "name_3_url": "Chinese/LayaAir_JS/2D/beginners/animation/DragonBone/",
+                "name_3_file": "readme.md"
+              }
+            ]
+          },
+          {
+            "name_2_name": "数据与通信",
+            "name_2_data": [
+              {
+                "name_3_name": "HttpRequest详解",
+                "name_3_url": "Chinese/LayaAir_JS/2D/beginners/Data_Communication/HttpRequest/",
+                "name_3_file": "readme.md"
+              },
+              {
+                "name_3_name": "WebSocket发送与接收数据",
+                "name_3_url": "Chinese/LayaAir_JS/2D/beginners/Data_Communication/WebSocket/",
+                "name_3_file": "readme.md"
+              },
+              {
+                "name_3_name": "Byte二进制读写",
+                "name_3_url": "Chinese/LayaAir_JS/2D/beginners/Data_Communication/Byte/",
+                "name_3_file": "readme.md"
+              },
+              {
+                "name_3_name": "JSON数据详解",
+                "name_3_url": "Chinese/LayaAir_JS/2D/beginners/Data_Communication/json/",
+                "name_3_file": "readme.md"
+              },
+              {
+                "name_3_name": "JSONP跨域读取数据",
+                "name_3_url": "Chinese/LayaAir_JS/2D/beginners/Data_Communication/jsonp/",
+                "name_3_file": "readme.md"
+              },
+              {
+                "name_3_name": "Web Storage数据存储",
+                "name_3_url": "Chinese/LayaAir_JS/2D/beginners/Data_Communication/webStorage/",
                 "name_3_file": "readme.md"
               }
             ]
@@ -2324,6 +2614,26 @@
               {
                 "name_3_name": "android嵌入字体",
                 "name_3_url": "Chinese/LayaNative/built_in_font/",
+                "name_3_file": "README.md"
+              },
+			  {
+                "name_3_name": "扩展字体",
+                "name_3_url": "Chinese/LayaNative/extend-font/",
+                "name_3_file": "README.md"
+              },
+			  {
+                "name_3_name": "zip更新",
+                "name_3_url": "Chinese/LayaNative/resourceUpdate/",
+                "name_3_file": "readme.md"
+              },
+			  {
+                "name_3_name": "APK扩展机制",
+                "name_3_url": "Chinese/LayaNative/apk_expansion/",
+                "name_3_file": "README.md"
+              },
+			  {
+                "name_3_name": "APK-update",
+                "name_3_url": "Chinese/LayaNative/apk-update/",
                 "name_3_file": "README.md"
               }
             ]

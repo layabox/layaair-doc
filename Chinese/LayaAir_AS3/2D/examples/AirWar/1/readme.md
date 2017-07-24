@@ -12,6 +12,8 @@
 
 **游戏试玩地址**: [http://layabox.github.io/layaair-examples/](http://layabox.github.io/layaair-examples/)
 
+游戏项目源码：[https://github.com/layabox/layaair-doc/tree/master/project/AS3/AirWar](https://github.com/layabox/layaair-doc/tree/master/project/AS3/AirWar)
+
 ![试玩.png](img/1.png)<br />（图1） 
 
 ![试玩.png](img/2.png)<br />（图2）

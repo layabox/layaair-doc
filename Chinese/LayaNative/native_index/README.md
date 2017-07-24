@@ -11,6 +11,18 @@ LayaPlayer不是浏览器！
 2. script标签最好是src='xxx'的形式，因为内联形式的脚本比较复杂，无法用正则表达式解析，很可能会导致解析出错。
 3. 其他的一切都不支持。所以依赖于DOM的jquery也不被支持。
 4. 同理由于LayaPlayer也不是基于Node的，所以基于node的所有脚本也都不支持。
+5. 其他的目前还没有实现，预计在后续版本中实现的功能：  
+
+    |功能 | 优先级 |  
+    |:--|:---|  
+    |wss协议| 高 |
+    |Orientation| 高|
+    |WebAssembly|高|
+    |XMLHttpRequest同步获取|低|
+    |WebVideo|低|
+    |WebWorker|低|
+    |WebVR|低|
+    
 
 **提示:**  
 LayaPlayer在运行的时候，如果遇到不支持的标签，会直接弹框报错。如图1  
