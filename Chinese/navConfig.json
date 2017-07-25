@@ -1657,6 +1657,41 @@
           }
         ]
       },
+      { 
+        "nav_1_name": "LayaAir 3D引擎（TS）",
+        "nav_1_data": [
+          {
+            "name_2_name": "3D引擎基础",
+            "name_2_data": [
+              {
+                "name_3_name": "快速开启3D之旅",
+                "name_3_url": "Chinese/LayaAir_TS/3D/beginners/quickStart/",
+                "name_3_file": "readme.md"
+              },
+              {
+                "name_3_name": "unity插件工具使用",
+                "name_3_url": "Chinese/LayaAir_TS/3D/beginners/unity_plugin/",
+                "name_3_file": "readme.md"
+              },
+              {
+                "name_3_name": "LayaAir3D之场景Scene",
+                "name_3_url": "Chinese/LayaAir_TS/3D/beginners/scene/",
+                "name_3_file": "readme.md"
+              },
+              {
+                "name_3_name": "LayaAir3D之摄像机Camera",
+                "name_3_url": "Chinese/LayaAir_TS/3D/beginners/camera/",
+                "name_3_file": "readme.md"
+              },
+              {
+                "name_3_name": "LayaAir之灯光",
+                "name_3_url": "Chinese/LayaAir_TS/3D/beginners/light/",
+                "name_3_file": "readme.md"
+              }
+            ]
+          }
+        ]
+      },
       {
         "nav_1_name": "实例开发篇（TS）",
         "nav_1_data": [
@@ -2479,6 +2514,41 @@
               {
                 "name_3_name": "用LayaAir引擎解析Tiled Map地图",
                 "name_3_url": "Chinese/LayaAir_JS/2D/advanced/extension_modules/TiledMap/",
+                "name_3_file": "readme.md"
+              }
+            ]
+          }
+        ]
+      },
+      { 
+        "nav_1_name": "LayaAir 3D引擎（JS）",
+        "nav_1_data": [
+          {
+            "name_2_name": "3D引擎基础",
+            "name_2_data": [
+              {
+                "name_3_name": "快速开启3D之旅",
+                "name_3_url": "Chinese/LayaAir_JS/3D/beginners/quickStart/",
+                "name_3_file": "readme.md"
+              },
+              {
+                "name_3_name": "unity插件工具使用",
+                "name_3_url": "Chinese/LayaAir_JS/3D/beginners/unity_plugin/",
+                "name_3_file": "readme.md"
+              },
+              {
+                "name_3_name": "LayaAir3D之场景Scene",
+                "name_3_url": "Chinese/LayaAir_JS/3D/beginners/scene/",
+                "name_3_file": "readme.md"
+              },
+              {
+                "name_3_name": "LayaAir3D之摄像机Camera",
+                "name_3_url": "Chinese/LayaAir_JS/3D/beginners/camera/",
+                "name_3_file": "readme.md"
+              },
+              {
+                "name_3_name": "LayaAir之灯光",
+                "name_3_url": "Chinese/LayaAir_JS/3D/beginners/light/",
                 "name_3_file": "readme.md"
               }
             ]
