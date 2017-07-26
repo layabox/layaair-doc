@@ -1,8 +1,8 @@
 ## LayaAir3D之动画一
 
-目前LayaAir3D引擎针对动画部分作了大量的调整，虽对老版本动画进行了保留，但建议开发者们使用新的动画组件方式。新版动画Animator组件整合了老版动画的几种类型，不用分类去创建，节省了开发时间，它包括了骨骼动画、材质动画、钢体动画、摄像机动画等。
+目前LayaAir3D引擎针对动画部分作了大量的调整，虽对老版本动画进行了保留，但建议开发者们使用新的动画组件方式。新版动画Animator组件整合了老版动画的几种类型，不用分类去创建，节省了开发时间，它包括了骨骼动画、材质动画、刚体动画、摄像机动画等。
 
-Animator动画组件支持unity导出的动画，骨骼动画模型在导入unity后可以进行整合编辑，材质动画、钢体动画可直接在unity中编辑，然后导出使用。
+Animator动画组件支持unity导出的动画，骨骼动画模型在导入unity后可以进行整合编辑，材质动画、刚体动画可直接在unity中编辑，然后导出使用。
 
 
 
@@ -171,6 +171,8 @@ unity中动画片段分段方法如下：
 
 1)、在“资源管理器”中选择模型文件，在右侧inspector界面中选择Animations，出现了默认的动画Take 001，可点击编辑自定义名称，点击加号增加动画片段，及修改片段的起始与结束帧（图5）。
 
+Tips：如需在游戏中动画循环播放，请勾选下图中“Loop Time"选项。
+
 ![图5](img/5.png)<br>（图5）
 
 在本示例中一共4个动作，根据美术提供的动画帧数，修改增加成4个动画片段（图6）。
@@ -193,16 +195,18 @@ unity中动画片段分段方法如下：
           	//加载到场景
 			scene.addChild(role3D);
 			//获取角色动画组件
-			var ani:Animator=role3D.getChildAt(0).getComponentByType(Animator) as Animator;
-			
+			var ani:Animator=role3D.getChildAt(0).getComponentByType(Animator) as Animator;			
 			//监听默认动画完成后播放站立动画
-			ani.on(Event.COMPLETE,null,function():void{
-						//切换站立动画
-						ani.play("stand");
-					});
+			ani.on(Event.COMPLETE,this,onAniComplete,[ani]);
 			//播放攻击动画
 			ani.play("attack");
 		}
+		/***当前动画播放完成后回调***/
+		private function onAniComplete(ani:Animator):void
+        {
+            //切换站立动画
+			ani.play("stand");
+        }
 	}
 }
 ```

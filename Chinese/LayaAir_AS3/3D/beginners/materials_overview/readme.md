@@ -63,19 +63,24 @@ Tips：MeshSprite3D模型中为MeshRender，SkinnedMeshSprite3D模型中为Skinn
 #### 获取并修改自身材质
 
 ```java
+			......
 			//加载导出的卡车模型
 			var role3D:Sprite3D=Sprite3D.load("LayaScene_truck/truck.lh");
 			//模型与材质加载完成监听与回调
-			role3D.on(Event.HIERARCHY_LOADED,null,function():void
-			{
-				//获取车身模型（查看.lh文件，模型中两个对象，车头“head”与车身"body",它们都用同一个材质）
-				var meshSprite3D:MeshSprite3D=role3D.getChildAt(0).getChildAt(0) as MeshSprite3D;
-				//从模型上获取自身材质
-				var material:StandardMaterial=meshSprite3D.meshRender.material;
-				//修改材质的反射颜色，让模型偏红
-				material.albedo=new Vector4(1,0,0,1);				
-			});
+			role3D.on(Event.HIERARCHY_LOADED,this,onLoadComplete,[role3D]);
 			scene.addChild(role3D);
+		}
+
+		/** 模型与材质加载完成后回调***/		
+		private function onLoadComplete(role3D:Sprite3D):void
+		{
+            //获取车身模型（查看.lh文件，模型中两个对象，车头“head”与车身"body",它们都用同一个材质）
+            var meshSprite3D:MeshSprite3D=role3D.getChildAt(0).getChildAt(0) as MeshSprite3D;
+            //从模型上获取自身材质
+            var material:StandardMaterial=meshSprite3D.meshRender.material;
+            //修改材质的反射颜色，让模型偏红
+            material.albedo=new Vector4(1,0,0,1);	
+		}
 ```
 
 编译运行后如下，虽然车身与车头模型都用了同一材质，但只修改了车身的自身材质为红色，不影响车头（图1）。
@@ -87,19 +92,24 @@ Tips：MeshSprite3D模型中为MeshRender，SkinnedMeshSprite3D模型中为Skinn
 #### 获取并修改共享材质
 
 ```java
+			......
 			//加载导出的卡车模型
 			var role3D:Sprite3D=Sprite3D.load("LayaScene_truck/truck.lh");
 			//模型与材质加载完成监听与回调
-			role3D.on(Event.HIERARCHY_LOADED,null,function():void
-			{
-				//获取模型（查看.lh文件，模型中两个对象，车头“head”与车身"body",它们都用同一个材质）
-				var meshSprite3D:MeshSprite3D=role3D.getChildAt(0).getChildAt(0) as MeshSprite3D;
-				//从模型上获取共享材质
-				var sharedMaterial:StandardMaterial=meshSprite3D.meshRender.sharedMaterial;
-				//修改材质的反射颜色，让模型偏红
-				sharedMaterial.albedo=new Vector4(1,0,0,1);
-			});
+			role3D.on(Event.HIERARCHY_LOADED,this,onLoadComplete,[role3D]);
 			scene.addChild(role3D);
+		}
+
+		/** 模型与材质加载完成后回调***/		
+		private function onLoadComplete(role3D:Sprite3D):void
+		{
+			//获取模型（查看.lh文件，模型中两个对象，车头“head”与车身"body",它们都用同一个材质）
+			var meshSprite3D:MeshSprite3D=role3D.getChildAt(0).getChildAt(0) as MeshSprite3D;
+			//从模型上获取共享材质
+			var sharedMaterial:StandardMaterial=meshSprite3D.meshRender.sharedMaterial;
+			//修改材质的反射颜色，让模型偏红
+			sharedMaterial.albedo=new Vector4(1,0,0,1);	
+		}
 ```
 编译运行效果如下，修改了共享材质后，因为车头与车身模型都使用了该材质，它们的材质都被改变了（图2）。
 
@@ -134,11 +144,13 @@ private function setModelMaterial(model:*):void
   {
     //获取模型网格对象
     var meshSprite3D:MeshSprite3D = model as MeshSprite3D;
+    //获取材质列表数组
+    var materials:Array=meshSprite3D.meshRender.materials;
     //对模型网格中的所有材质进行修改
-    for (var m:int = 0; m < meshSprite3D.meshRender.materials.length; m++)
+    for (var m:int = 0; m < materials.length; m++)
     {
       //获取共享材质
-      var mat:StandardMaterial = meshSprite3D.meshRender.materials[m] as StandardMaterial;
+      var mat:StandardMaterial = materials[m] as StandardMaterial;
       //修改材质反射颜色
       mat.albedo=new Vector4(0.5,0.5,1,1);
     }
@@ -148,11 +160,13 @@ private function setModelMaterial(model:*):void
   {
     //获取蒙皮模型网格显示对象
     var skinnedMeshSprite3D:SkinnedMeshSprite3D = model as SkinnedMeshSprite3D;
+    //获取材质列表数组
+    var materials1:Array=skinnedMeshSprite3D.skinnedMeshRender.materials;
     //对蒙皮模型网格中的所有材质进行修改
-    for (var n:int = 0; n < skinnedMeshSprite3D.skinnedMeshRender.materials.length; n++)
+    for (var n:int = 0; n < materials1.length; n++)
     {
       //获取共享材质
-      var mat1:StandardMaterial = skinnedMeshSprite3D.skinnedMeshRender.materials[n] as 				  	StandardMaterial;
+      var mat1:StandardMaterial = materials1[n] as StandardMaterial;
       //修改材质反射颜色
       mat1.albedo=new Vector4(0.5,0.5,1,1);
     }

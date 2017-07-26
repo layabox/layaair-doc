@@ -90,9 +90,14 @@
 			
 	//加载导出的卡车模型
 	var role3D:Sprite3D=Sprite3D.load("LayaScene_truck/truck.lh");
-	//模型与材质加载完成后回调
-	role3D.on(Event.HIERARCHY_LOADED,null,function():void
-	{
+    //模型与材质加载完成事件监听
+    role3D.on(Event.HIERARCHY_LOADED,this,onLoadComplete,[role3D]);
+	scene.addChild(role3D);
+}
+
+    /** 模型与材质加载完成后回调***/		
+    private function onLoadComplete(role3D:Sprite3D):void
+    {
 		//获取模型
 		var meshSprite3D:MeshSprite3D=role3D.getChildAt(0).getChildAt(0) as MeshSprite3D;
 		//从模型上获取共享材质
@@ -102,8 +107,7 @@
 		//加载高光贴图（与漫反射一致，也可单独制作高光贴图）
         sharedMaterial.specularTexture=sharedMaterial.diffuseTexture;
       	//sharedMaterial.specularTexture=Texture2D.load("LayaScene_truck/Assets/texture/t0200.png");
-	});
-	scene.addChild(role3D);
+	}	
 ```
 编译上述代码，（图3）中使用了材质高光色与高光贴图，效果更好。（图4）中只使用了灯光的默认白色高光色，效果一般。
 
@@ -218,29 +222,34 @@
 我们从unity3D中创建一个Cube模型（unity中创建的模型带切线信息），并赋上漫反射贴图与法线贴图后用LayaAir导出插件导出数据并使用，法线贴图也会自动加载到模型上。修改“快速开启3D之旅”课程中的代码如下，编译运行后见（图10）凹凸效果。
 
 ```java
-	//添加方向光
-	var directionLight:DirectionLight = scene.addChild(new DirectionLight()) as DirectionLight;
-	directionLight.ambientColor = new Vector3(0.5, 0.5, 0.5);
-	directionLight.specularColor = new Vector3(0.5, 0.5, 0.5);//为球体增加高光
-	directionLight.diffuseColor = new Vector3(1, 1, 1);
-	directionLight.direction = new Vector3(0.5, -1, 0);	
+         ......
+		  //添加方向光
+          var directionLight:DirectionLight = scene.addChild(new DirectionLight()) as DirectionLight;
+          directionLight.ambientColor = new Vector3(0.5, 0.5, 0.5);
+          directionLight.specularColor = new Vector3(0.5, 0.5, 0.5);//为球体增加高光
+          directionLight.diffuseColor = new Vector3(1, 1, 1);
+          directionLight.direction = new Vector3(0.5, -1, 0);	
 
-	//创建unity中导出的模型
-	var box:Sprite3D=Sprite3D.load("layaScene_box/box.lh");
-	//也可以代码加载法线贴图
-//	box.on(Event.HIERARCHY_LOADED,null,function():void
-//	{
-		//按角度旋转模型
-//		box.transform.rotate(new Vector3(0,0,180),true,false);
-		//从模型中获取meshSprite3D对像
-//		var meshSprite3D:MeshSprite3D=box.getChildAt(0) as MeshSprite3D;
-		//获取模型的材质实例
-//		var material:StandardMaterial=meshSprite3D.meshRender.material as StandardMaterial;
-		//为材质添加法线贴图
-//		material.normalTexture=Texture2D.load("layaScene_box/Assets/texture/layabox_normal.png");
-//	});
-	//加载到场景中
-	scene.addChild(box);
+          //创建unity中导出的模型
+          var box:Sprite3D=Sprite3D.load("layaScene_box/box.lh");
+          //模型与材质加载完成事件监听
+          box.on(Event.HIERARCHY_LOADED,this,onLoadComplete,[box]);
+          //也可以代码加载法线贴图
+
+          //加载到场景中
+          scene.addChild(box);
+      }
+		/** 模型与材质加载完成后回调***/		
+		private function onLoadComplete(role3D:Sprite3D):void
+		{
+            //也可以代码加载法线贴图
+          	//从模型中获取meshSprite3D对像
+//         	var meshSprite3D:MeshSprite3D=box.getChildAt(0) as MeshSprite3D;
+         	//获取模型的材质实例
+//          var material:StandardMaterial=meshSprite3D.meshRender.material as StandardMaterial;
+          	//为材质添加法线贴图
+//         	material.normalTexture=Texture2D.load("layaScene_box/Assets/texture/layabox_normal.png");
+        }
 			
 ```
 
