@@ -17,12 +17,12 @@
 在“快速开启3D之旅”课程的代码中，我们创建使用了标准材质，并在漫反射贴图上添加了一张纹理图片，并赋给了模型。
 
 ```java
-	//创建标准材质
-	var material:StandardMaterial = new StandardMaterial();
-	//创建漫反射二维纹理贴图
-	material.diffuseTexture = Texture2D.load("res/layabox.png");
-	//为box模型赋材质
-	box.meshRender.material = material;
+//创建标准材质
+var material:StandardMaterial = new StandardMaterial();
+//创建漫反射二维纹理贴图
+material.diffuseTexture = Texture2D.load("res/layabox.png");
+//为box模型赋材质
+box.meshRender.material = material;
 ```
 
 当然，这只是简单的一种用法，我们暂时只运用了最重要的漫反射贴图，要达到更好的美术效果，开发者还需了解材质的光色与贴图属性。
@@ -63,24 +63,22 @@ Tips：MeshSprite3D模型中为MeshRender，SkinnedMeshSprite3D模型中为Skinn
 #### 获取并修改自身材质
 
 ```java
-			......
-			//加载导出的卡车模型
-			var role3D:Sprite3D=Sprite3D.load("LayaScene_truck/truck.lh");
-			//模型与材质加载完成监听与回调
-			role3D.on(Event.HIERARCHY_LOADED,this,onLoadComplete,[role3D]);
-			scene.addChild(role3D);
-		}
-
-		/** 模型与材质加载完成后回调***/		
-		private function onLoadComplete(role3D:Sprite3D):void
-		{
-            //获取车身模型（查看.lh文件，模型中两个对象，车头“head”与车身"body",它们都用同一个材质）
-            var meshSprite3D:MeshSprite3D=role3D.getChildAt(0).getChildAt(0) as MeshSprite3D;
-            //从模型上获取自身材质
-            var material:StandardMaterial=meshSprite3D.meshRender.material;
-            //修改材质的反射颜色，让模型偏红
-            material.albedo=new Vector4(1,0,0,1);	
-		}
+......
+//加载导出的卡车模型
+var role3D:Sprite3D=Sprite3D.load("LayaScene_truck/truck.lh");
+//模型与材质加载完成监听与回调
+role3D.on(Event.HIERARCHY_LOADED,this,onLoadComplete,[role3D]);
+scene.addChild(role3D);
+/** 模型与材质加载完成后回调***/		
+private function onLoadComplete(role3D:Sprite3D):void
+{
+  //获取车身模型（查看.lh文件，模型中两个对象，车头“head”与车身"body",它们都用同一个材质）
+  var meshSprite3D:MeshSprite3D=role3D.getChildAt(0).getChildAt(0) as MeshSprite3D;
+  //从模型上获取自身材质
+  var material:StandardMaterial=meshSprite3D.meshRender.material;
+  //修改材质的反射颜色，让模型偏红
+  material.albedo=new Vector4(1,0,0,1);	
+}
 ```
 
 编译运行后如下，虽然车身与车头模型都用了同一材质，但只修改了车身的自身材质为红色，不影响车头（图1）。
@@ -92,24 +90,23 @@ Tips：MeshSprite3D模型中为MeshRender，SkinnedMeshSprite3D模型中为Skinn
 #### 获取并修改共享材质
 
 ```java
-			......
-			//加载导出的卡车模型
-			var role3D:Sprite3D=Sprite3D.load("LayaScene_truck/truck.lh");
-			//模型与材质加载完成监听与回调
-			role3D.on(Event.HIERARCHY_LOADED,this,onLoadComplete,[role3D]);
-			scene.addChild(role3D);
-		}
+......
+//加载导出的卡车模型
+role3D=Sprite3D.load("LayaScene_truck/truck.lh");
+//模型与材质加载完成监听与回调
+role3D.on(Event.HIERARCHY_LOADED,this,onLoadComplete);
+scene.addChild(role3D);
 
-		/** 模型与材质加载完成后回调***/		
-		private function onLoadComplete(role3D:Sprite3D):void
-		{
-			//获取模型（查看.lh文件，模型中两个对象，车头“head”与车身"body",它们都用同一个材质）
-			var meshSprite3D:MeshSprite3D=role3D.getChildAt(0).getChildAt(0) as MeshSprite3D;
-			//从模型上获取共享材质
-			var sharedMaterial:StandardMaterial=meshSprite3D.meshRender.sharedMaterial;
-			//修改材质的反射颜色，让模型偏红
-			sharedMaterial.albedo=new Vector4(1,0,0,1);	
-		}
+/** 模型与材质加载完成后回调***/		
+private function onLoadComplete():void
+{
+  //获取模型（查看.lh文件，模型中两个对象，车头“head”与车身"body",它们都用同一个材质）
+  var meshSprite3D:MeshSprite3D=role3D.getChildAt(0).getChildAt(0) as MeshSprite3D;
+  //从模型上获取共享材质
+  var sharedMaterial:StandardMaterial=meshSprite3D.meshRender.sharedMaterial;
+  //修改材质的反射颜色，让模型偏红
+  sharedMaterial.albedo=new Vector4(1,0,0,1);	
+}
 ```
 编译运行效果如下，修改了共享材质后，因为车头与车身模型都使用了该材质，它们的材质都被改变了（图2）。
 
@@ -124,15 +121,14 @@ Tips：MeshSprite3D模型中为MeshRender，SkinnedMeshSprite3D模型中为Skinn
 下列代码提供了对模型或模型容器子对象获取并修改材质的方法，我们直接对所有场景子对象进行了材质修改。
 
 ```java
-	......
-	//加载场景
-	var scene:Scene=Scene.load("LayaScene_loveScene/loveScene.ls");
-	//场景模型与材质加载完成监听与回调
-	role3D.on(Event.HIERARCHY_LOADED,null,function():void
-	{
-          setModelMaterial(model:*)
-     });
- }
+......
+//加载场景
+scene = Scene.load("LayaScene_loveScene/loveScene.ls");
+//场景模型与材质加载完成监听与回调
+scene.on(Event.HIERARCHY_LOADED,this,function():void
+{
+    setModelMaterial(scene)
+});
 /**
 *修改模型材质
 * @param model 场景或模型
@@ -172,8 +168,10 @@ private function setModelMaterial(model:*):void
     }
   }
   //递归方法获取子对象
-  for (var i:int = 0; i < model._childs.length; i++)  setModelMaterial(model._childs[i]);
-}
+for (var i:int = 0; i < model._childs.length; i++)
+  {
+    setModelMaterial(model._childs[i]);
+  }
 ```
 
 编译运行后效果如下（图3），场景中所有的模型材质都加上了一层蓝色。
