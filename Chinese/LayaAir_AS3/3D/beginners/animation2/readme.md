@@ -61,7 +61,7 @@
 			//创建加载材质动画模型
 			var box:Sprite3D=Sprite3D.load("LayaScene_uvAction/uvAction.lh");
 			//模型与材质、动画加载完成后回调
-			box.on(Event.HIERARCHY_LOADED,this,onLoadComplete,[box]);
+			box.on(Event.HIERARCHY_LOADED,this,onLoadComplete);
 			scene.addChild(box);
 		}
 		/** 模型与材质加载完成后回调***/		
