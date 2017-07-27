@@ -33,13 +33,13 @@
 
 在“LayaAir3D之模型”篇中我们介绍了模型包括了模型网格与材质两部分，加载.ls、.lh数据时，会自动加载模型所对应的材质。
 
-最新的引擎版本中，模型网格与材质进行了分离，unity导出插件工具不再将材质与导出的.lm模型文件进行绑定。因此如果加载.lm格式资源，则需要重新赋于其材质才能完整显示，否者只显示为白模。
+最新的引擎版本中，模型网格与材质进行了分离，unity导出插件工具不再将材质与导出的.lm模型文件进行绑定。因此如果加载.lm格式资源，则需要重新赋予其材质才能完整显示，否则只显示为白模。
 
 这时可以使用导出后产生的.lmat材质文件，加载创建标准材质并赋给模型，方式与模型加载类似。
 
 ```java
 //异步加载材质文件创建标准材质（也可以预加载）
-var material:StandardMaterial = StandardMaterial.load("truck/Assets/Materials/truck.lmat");
+var material:StandardMaterial = StandardMaterial.load("truck/Assets/Materials/t0200.lmat");
 //为box模型赋材质
 box.meshRender.material = material;
 ```

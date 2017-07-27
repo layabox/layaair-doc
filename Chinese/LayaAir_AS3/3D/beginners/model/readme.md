@@ -118,7 +118,6 @@ package {
 			box3D.meshRender.material = material;
 			
 		}		 
-		
 	}
 }
 ```
@@ -161,25 +160,24 @@ package {
 “*.lh” 格式加载与场景加载方法类似，由异步加载Sprite3D.load()或预加载Laya.loader.create()方法加载，参考代码：
 
 ```java
-    	......
-        //添加3D场景
-        var scene:Scene = new Scene();
-        Laya.stage.addChild(scene);
+......
+//添加3D场景
+var scene:Scene = new Scene();
+Laya.stage.addChild(scene);
 
-        //方法一：直接异步加载
-//      var sprite3D:Sprite3D = Sprite3D.load("res/room.lh");
-//    	scene.addChild(sprite3D);
+//方法一：直接异步加载
+//var sprite3D:Sprite3D = Sprite3D.load("res/room.lh");
+//scene.addChild(sprite3D);
 
-        //方法二：预加载，.lh默认会创建为Sprite3D类型对象，并放入对象池中
-        Laya.loader.create("res/room.lh",Handler.create(this,onCreateComplete));
-	}
-	//预加载完成后回调
-	private functiononCreateComplete():void
-	{ 
-      	//实例化加载并创建好的3D对象
-      	var sprite3D:Sprite3D=Laya.loader.getRes("res/room.lh");
-      	scene.addChild(sprite3D);
-	}
+//方法二：预加载，.lh默认会创建为Sprite3D类型对象，并放入对象池中
+Laya.loader.create("res/room.lh",Handler.create(this,onCreateComplete));
+//预加载完成后回调
+private functiononCreateComplete():void
+{ 
+  //实例化加载并创建好的3D对象
+  var sprite3D:Sprite3D=Laya.loader.getRes("res/room.lh");
+  scene.addChild(sprite3D);
+}
 ```
 
 
@@ -195,31 +193,29 @@ package {
 通过异步加载MeshSprite.load()或预加载Laya.loader.create()方法加载，参考代码如下：
 
 ```java
-	......
-	//添加3D场景
-	var scene:Scene = new Scene();
-	Laya.stage.addChild(scene);
+......
+//添加3D场景
+var scene:Scene = new Scene();
+Laya.stage.addChild(scene);
 
-	//方法一：直接异步加载
+//方法一：直接异步加载
 //	var mesh:Mesh=Mesh.load("LayaScene_01/Assets/model/loveScene_jianzhu.lm");
 //	var meshSprite3D:MeshSprite3D = new MeshSprite(mesh);
 
-	//方法二：预加载，.lm默认创建为Mesh类型
-	Laya.loader.create("LayaScene_01/Assets/model/loveScene_jianzhu.lm", 									 				Handler.create(this,onCreateComplete));    
-	}
-	
-	//预加载完成后回调
-	private function onCreateComplete():void
-	{ 
-        //创建预加载的模型网格 
-        var mesh:Mesh=Laya.loader.getRes("LayaScene_01/Assets/model/loveScene_jianzhu.lm");
-        //创建3D模型
-        var meshSprite3D:MeshSprite3D=new MeshSprite3D(mesh);
-        scene.addChild(meshSprite3D);
-	}
+//方法二：预加载，.lm默认创建为Mesh类型
+Laya.loader.create("LayaScene_01/Assets/model/loveScene_jianzhu.lm",Handler.create(this,onCreateComplete));    
+//预加载完成后回调
+private function onCreateComplete():void
+{ 
+  //创建预加载的模型网格 
+  var mesh:Mesh=Laya.loader.getRes("LayaScene_01/Assets/model/loveScene_jianzhu.lm");
+  //创建3D模型
+  var meshSprite3D:MeshSprite3D=new MeshSprite3D(mesh);
+  scene.addChild(meshSprite3D);
+}
 ```
 
-用上述的三种方法都可以在游戏画面中显示出模型，材质贴图引擎也会自动加载到模型上。在项目中我们可以根据情况使用上述三种方法，固定场景我们可以使用.ls格式加载，而活动的物品可以使用.ls或.lm方式加载。 
+用上述的两种方法都可以在游戏画面中显示出模型，材质贴图引擎也会自动加载到模型上。在项目中我们可以根据情况使用上述两种方法，固定场景我们可以使用.ls格式加载，而活动的物品可以使用.ls或.lm方式加载。 
 
 
 
@@ -240,23 +236,21 @@ tips：在3ds max中建模时，建议对模型的子对象取名，并且制定
 获取子对象时还应注意一个问题，就是模型与材质未加载完成，是无法获取子对象的，因此需要资源预加载，或异步加载时进行完成事件监听。
 
 ```java
-			......
-			//加载导出的卡车模型
-			var truck3D:Sprite3D=Sprite3D.load("LayaScene_truck/truck.lh");
-			//模型与材质加载完成事件监听
-			truck3D.on(Event.HIERARCHY_LOADED,null,onLoded);
-			scene.addChild(truck3D);
-		}
+......
+//加载导出的卡车模型
+truck3D = Sprite3D.load("LayaScene_truck/truck.lh");
+//模型与材质加载完成事件监听
+truck3D.on(Event.HIERARCHY_LOADED,this,onLoded);
+scene.addChild(truck3D);
 
-		//模型与材质加载完成后回调
-        private function onLoded():void
-		{
-            //获取模型（查看.lh文件，有两个子对象模型，一为车头“head”，一为车身"body",暂取其中一个模型）
-            var meshSprite3D:MeshSprite3D=role3D.getChildAt(0).getChildAt(0) as MeshSprite3D;
-            //输出模型的名字
-            trace(meshSprite3D.name); //输出“body”
-		}
-
+//模型与材质加载完成后回调
+private function onLoded():void
+{
+  //获取模型（查看.lh文件，有两个子对象模型，一为车头“head”，一为车身"body",暂取其中一个模型）
+  var meshSprite3D:MeshSprite3D=truck3D.getChildAt(0).getChildAt(0) as MeshSprite3D;
+  //输出模型的名字
+  trace(meshSprite3D.name); //输出“body”
+}
 ```
 
 编译上例代码，我们可以看到模型显示了（图4），在浏览器下按F12打开控制台，我们可以看到输出了模型的名字为“body”，说明模型获取成功。
@@ -274,34 +268,32 @@ tips：在3ds max中建模时，建议对模型的子对象取名，并且制定
 查看以下示例，当加载完卡车模型2秒后，我们创建新的汽车头网格对象更换原有的车身网格，效果如（图4）。
 
 ```java
-			......
-			//加载导出的卡车模型
-			var truck3D:Sprite3D=Sprite3D.load("LayaScene_truck/truck.lh");
-			scene.addChild(truck3D);
-			//模型与材质加载完成后回调
-			truck3D.on(Event.HIERARCHY_LOADED,this,onLoded);
-		}
+......
+//加载导出的卡车模型
+truck3D=Sprite3D.load("LayaScene_truck/truck.lh");
+scene.addChild(truck3D);
+//模型与材质加载完成后回调
+truck3D.on(Event.HIERARCHY_LOADED,this,onLoded);
 
-		//模型与材质加载完成后回调
-        private function onLoded():void
-		{
-            //获取模型（查看.lh文件，有两个子对象模型，一为车头“head”，一为车身"body"）
-            var meshSprite3D:MeshSprite3D=truck3D.getChildAt(0).getChildAt(0) as MeshSprite3D;
-            //输出模型的名字
-            trace(meshSprite3D.name); //输出“body”
-          	//2秒后更换模型网格
-			Laya.timer.once(2000,this,onTimerOnce);
-		}
+//模型与材质加载完成后回调
+private function onLoded():void
+{
+  //获取模型（查看.lh文件，有两个子对象模型，一为车头“head”，一为车身"body"）
+  meshSprite3D=truck3D.getChildAt(0).getChildAt(0) as MeshSprite3D;
+  //输出模型的名字
+  trace(meshSprite3D.name); //输出“body”
+  //2秒后更换模型网格
+  Laya.timer.once(2000,this,onTimerOnce);
+}
 
-		//模型与材质加载完成后回调
-        private function onTimerOnce():void
-		{
-            //创建模型网格并更换原始网格
-            meshSprite3D.meshFilter.sharedMesh = Mesh.load("LayaScene_truck/Assets/truck-head.lm");
-            //因使用了卡车头网格，位置会重合，因此进行位置移动
-            meshSprite3D.transform.translate(new Vector3(0,0,-8));
-		}
-
+//模型与材质加载完成后回调
+private function onTimerOnce():void
+{
+  //创建模型网格并更换原始网格
+  meshSprite3D.meshFilter.sharedMesh = Mesh.load("LayaScene_truck/Assets/truck-head.lm");
+  //因使用了卡车头网格，位置会重合，因此进行位置移动
+  meshSprite3D.transform.translate(new Vector3(0,0,-8));
+}
 ```
 
 ![图片5](img/5.gif)<br>（图5） 
