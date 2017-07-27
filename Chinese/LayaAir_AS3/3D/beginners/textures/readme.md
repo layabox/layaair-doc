@@ -63,7 +63,7 @@
 	box.meshRender.material = material;
 ```
 
-![图片2](img/2.png)<br>（图2）漫反色染色与贴图混合
+![图片2](img/2.png)<br>（图2）漫反射颜色与贴图混合
 
 
 
@@ -80,34 +80,33 @@
 修改“快速开启3D之旅”课程中的代码，在场景中加载一辆卡车，可观察一下使用了高光色、高光贴图，并与默认只使用灯光高光进行一下对比，代码如下
 
 ```java
-	......
-	//创建平行光 -------------------
-	var light:DirectionLight = scene.addChild(new DirectionLight()) as DirectionLight;
-	//修改灯光方向
-	light.direction = new Vector3(0.3, -1, 0);
-	//设置高光色为白色
-	light.specularColor=new Vector3(1,1,1);
-			
-	//加载导出的卡车模型
-	var role3D:Sprite3D=Sprite3D.load("LayaScene_truck/truck.lh");
-    //模型与材质加载完成事件监听
-    role3D.on(Event.HIERARCHY_LOADED,this,onLoadComplete,[role3D]);
-	scene.addChild(role3D);
-}
+......
+  //创建平行光 -------------------
+  var light:DirectionLight = scene.addChild(new DirectionLight()) as DirectionLight;
+//修改灯光方向
+light.direction = new Vector3(0.3, -1, 0);
+//设置高光色为白色
+light.specularColor=new Vector3(1,1,1);
 
-    /** 模型与材质加载完成后回调***/		
-    private function onLoadComplete(role3D:Sprite3D):void
-    {
-		//获取模型
-		var meshSprite3D:MeshSprite3D=role3D.getChildAt(0).getChildAt(0) as MeshSprite3D;
-		//从模型上获取共享材质
-		var sharedMaterial:StandardMaterial=meshSprite3D.meshRender.sharedMaterial;
-		//修改材质的高光颜色，让高光处偏红
-		sharedMaterial.specularColor=new Vector4(1,0,0,1);
-		//加载高光贴图（与漫反射一致，也可单独制作高光贴图）
-        sharedMaterial.specularTexture=sharedMaterial.diffuseTexture;
-      	//sharedMaterial.specularTexture=Texture2D.load("LayaScene_truck/Assets/texture/t0200.png");
-	}	
+//加载导出的卡车模型
+role3D=Sprite3D.load("LayaScene_truck/truck.lh");
+//模型与材质加载完成事件监听
+role3D.on(Event.HIERARCHY_LOADED,this,onLoadComplete);
+scene.addChild(role3D);
+
+/** 模型与材质加载完成后回调***/		
+private function onLoadComplete():void
+{
+  //获取模型
+  var meshSprite3D:MeshSprite3D=role3D.getChildAt(0).getChildAt(0) as MeshSprite3D;
+  //从模型上获取共享材质
+  var sharedMaterial:StandardMaterial=meshSprite3D.meshRender.sharedMaterial;
+  //修改材质的高光颜色，让高光处偏红
+  sharedMaterial.specularColor=new Vector4(1,0,0,1);
+  //加载高光贴图（与漫反射一致，也可单独制作高光贴图）
+  sharedMaterial.specularTexture=sharedMaterial.diffuseTexture;
+  //sharedMaterial.specularTexture=Texture2D.load("LayaScene_truck/Assets/texture/t0200.png");
+}	
 ```
 编译上述代码，（图3）中使用了材质高光色与高光贴图，效果更好。（图4）中只使用了灯光的默认白色高光色，效果一般。
 
@@ -126,23 +125,23 @@
 修改“快速开启3D之旅”课程中的代码如下可得到（图6）效果：
 
 ```java
-	//添加方向光（灯光色会与材质色融合，因此改灯光色为黑白灰色，且不能曝光过度）
-	var directionLight:DirectionLight = scene.addChild(new DirectionLight()) as DirectionLight;
-	directionLight.ambientColor = new Vector3(0.5, 0.5, 0.5);
-	directionLight.specularColor = new Vector3(0, 0, 0);
-	directionLight.diffuseColor = new Vector3(1, 1, 1);
-	directionLight.direction = new Vector3(0.5, -1, 0);	
+//添加方向光（灯光色会与材质色融合，因此改灯光色为黑白灰色，且不能曝光过度）
+var directionLight:DirectionLight = scene.addChild(new DirectionLight()) as DirectionLight;
+directionLight.ambientColor = new Vector3(0.5, 0.5, 0.5);
+directionLight.specularColor = new Vector3(0, 0, 0);
+directionLight.diffuseColor = new Vector3(1, 1, 1);
+directionLight.direction = new Vector3(0.5, -1, 0);	
 
-	//创建标准材质
-	var material:StandardMaterial = new StandardMaterial();
-	//创建漫反射二维纹理贴图
-	material.diffuseTexture = Texture2D.load("res/layabox.png");
-	//创建漫反射二维纹理贴图
-	material.diffuseTexture = Texture2D.load("res/layabox.png");
-	//设置环境色，提亮模型
-	material.ambientColor =new Vector3(2,2,2);
-	//为box模型赋材质
-	box.meshRender.material = material;
+//创建标准材质
+var material:StandardMaterial = new StandardMaterial();
+//创建漫反射二维纹理贴图
+material.diffuseTexture = Texture2D.load("res/layabox.png");
+//创建漫反射二维纹理贴图
+material.diffuseTexture = Texture2D.load("res/layabox.png");
+//设置环境色，提亮模型
+material.ambientColor =new Vector3(2,2,2);
+//为box模型赋材质
+box.meshRender.material = material;
 ```
 
 ![图片5](img/5.png)<br>（图5）固定灯光下，材质未使用环境颜色
@@ -166,31 +165,31 @@
  修改“快速开启3D之旅”课程中的代码如下，为了更好的观察反射效果，使用球形模型。运行后可得到（图7）效果：
 
 ```java
-	//添加方向光
-	var directionLight:DirectionLight = scene.addChild(new DirectionLight()) as DirectionLight;
-	directionLight.ambientColor = new Vector3(0.5, 0.5, 0.5);
-	directionLight.specularColor = new Vector3(0.5, 0.5, 0.5);//为球体增加高光
-	directionLight.diffuseColor = new Vector3(1, 1, 1);
-	directionLight.direction = new Vector3(0.5, -1, 0);	
+//添加方向光
+var directionLight:DirectionLight = scene.addChild(new DirectionLight()) as DirectionLight;
+directionLight.ambientColor = new Vector3(0.5, 0.5, 0.5);
+directionLight.specularColor = new Vector3(0.5, 0.5, 0.5);//为球体增加高光
+directionLight.diffuseColor = new Vector3(1, 1, 1);
+directionLight.direction = new Vector3(0.5, -1, 0);	
 
-	//添加自定义模型
-	var sphere:MeshSprite3D = scene.addChild(new MeshSprite3D(new SphereMesh())) as MeshSprite3D;
-	sphere.transform.rotate(new Vector3(0,45,0),false,false);
-			
-	//创建标准材质
-	var material:StandardMaterial = new StandardMaterial();
-	//创建漫反射二维纹理贴图
-	material.diffuseTexture = Texture2D.load("res/layabox.png");
-			
-	//降低反射率，加强反射贴图反射
-	material.albedo=new Vector4(0.2,0.2,0.2,0);
-	//设置渲染模式为双面不透明(否者无法显示反射贴图)
-	material.renderMode=StandardMaterial.RENDERMODE_OPAQUEDOUBLEFACE;
-	//创建反射贴图，用立方体全视角贴图进行赋值（类似于360全景包裹）
-	material.reflectTexture = TextureCube.load("skyBox/skyCube.ltc");
-			
-	//为球型模型赋材质
-	sphere.meshRender.material = material;
+//添加自定义模型
+var sphere:MeshSprite3D = scene.addChild(new MeshSprite3D(new SphereMesh())) as MeshSprite3D;
+sphere.transform.rotate(new Vector3(0,45,0),false,false);
+
+//创建标准材质
+var material:StandardMaterial = new StandardMaterial();
+//创建漫反射二维纹理贴图
+material.diffuseTexture = Texture2D.load("res/layabox.png");
+
+//降低反射率，加强反射贴图反射
+material.albedo=new Vector4(0.2,0.2,0.2,0);
+//设置渲染模式为双面不透明(否者无法显示反射贴图)
+material.renderMode=StandardMaterial.RENDERMODE_OPAQUEDOUBLEFACE;
+//创建反射贴图，用立方体全视角贴图进行赋值（类似于360全景包裹）
+material.reflectTexture = TextureCube.load("skyBox/skyCube.ltc");
+
+//为球型模型赋材质
+sphere.meshRender.material = material;
 ```
 
 ![图片7](img/7.png)<br>（图7）反射贴图
@@ -211,7 +210,7 @@
 
 1．法线贴图对模型数据有一定的要求，如果模型上没有切线信息将无法产生法线凹凸的效果。例如LayaAir 3D引擎中自带的各种Mesh网格类型BoxMesh、SphereMesh、CylinderMesh等是没有切线信息的，即使使用了法线贴图也不会在视图中显示出凹凸。
 
-2．如果需要使用法线贴图，且模型是通过LayaAir的unity插件中导出，在Mesh Setting网格设置时需要注意不能勾选“忽略切线”选项，如（图8）。
+2．如果需要使用法线贴图，且模型是通过LayaAir的unity插件中导出，在Mesh Setting网格设置时需要注意不能勾选“忽略切线”选项，如（图9）。
 
 ![图片9](img/9.png)<br>（图9）
 
@@ -222,34 +221,33 @@
 我们从unity3D中创建一个Cube模型（unity中创建的模型带切线信息），并赋上漫反射贴图与法线贴图后用LayaAir导出插件导出数据并使用，法线贴图也会自动加载到模型上。修改“快速开启3D之旅”课程中的代码如下，编译运行后见（图10）凹凸效果。
 
 ```java
-         ......
-		  //添加方向光
-          var directionLight:DirectionLight = scene.addChild(new DirectionLight()) as DirectionLight;
-          directionLight.ambientColor = new Vector3(0.5, 0.5, 0.5);
-          directionLight.specularColor = new Vector3(0.5, 0.5, 0.5);//为球体增加高光
-          directionLight.diffuseColor = new Vector3(1, 1, 1);
-          directionLight.direction = new Vector3(0.5, -1, 0);	
+......
+//添加方向光
+var directionLight:DirectionLight = scene.addChild(new DirectionLight()) as DirectionLight;
+directionLight.ambientColor = new Vector3(0.5, 0.5, 0.5);
+directionLight.specularColor = new Vector3(0.5, 0.5, 0.5);//为球体增加高光
+directionLight.diffuseColor = new Vector3(1, 1, 1);
+directionLight.direction = new Vector3(0.5, -1, 0);	
 
-          //创建unity中导出的模型
-          var box:Sprite3D=Sprite3D.load("layaScene_box/box.lh");
-          //模型与材质加载完成事件监听
-          box.on(Event.HIERARCHY_LOADED,this,onLoadComplete,[box]);
-          //也可以代码加载法线贴图
+//创建unity中导出的模型
+var box:Sprite3D=Sprite3D.load("layaScene_box/box.lh");
+//模型与材质加载完成事件监听
+box.on(Event.HIERARCHY_LOADED,this,onLoadComplete);
+//也可以代码加载法线贴图
 
-          //加载到场景中
-          scene.addChild(box);
-      }
-		/** 模型与材质加载完成后回调***/		
-		private function onLoadComplete(role3D:Sprite3D):void
-		{
-            //也可以代码加载法线贴图
-          	//从模型中获取meshSprite3D对像
-//         	var meshSprite3D:MeshSprite3D=box.getChildAt(0) as MeshSprite3D;
-         	//获取模型的材质实例
-//          var material:StandardMaterial=meshSprite3D.meshRender.material as StandardMaterial;
-          	//为材质添加法线贴图
-//         	material.normalTexture=Texture2D.load("layaScene_box/Assets/texture/layabox_normal.png");
-        }
+//加载到场景中
+scene.addChild(box);
+/** 模型与材质加载完成后回调***/		
+private function onLoadComplete(role3D:Sprite3D):void
+{
+  //也可以代码加载法线贴图
+  //从模型中获取meshSprite3D对像
+  //var meshSprite3D:MeshSprite3D=box.getChildAt(0) as MeshSprite3D;
+  //获取模型的材质实例
+  //var material:StandardMaterial=meshSprite3D.meshRender.material as StandardMaterial;
+  //为材质添加法线贴图
+  //material.normalTexture=Texture2D.load("layaScene_box/Assets/texture/layabox_normal.png");
+}
 			
 ```
 
@@ -270,35 +268,34 @@
 例如我们通过下例代码，加载一个场景，然后先通过光照设置达到夜晚效果（图11）。
 
 ```java
-		......	
-		//添加3D场景
-		var scene:Scene = Scene.load("LayaScene_loveScene/loveScene.ls");
-		Laya.stage.addChild(scene);
-			
-		//创建摄像机(横纵比，近距裁剪，远距裁剪)
-		var camera:Camera = new Camera( 0, 0.1, 1000);
-		//加载到场景
-		scene.addChild(camera);
-		//移动摄像机位置
-		camera.transform.position=new Vector3(-8, 4, 20);
-		//旋转摄像机角度
-		camera.transform.rotate(new Vector3( -8, -25, 0), true, false);
-		//设置摄像机视野范围（角度） 
-		camera.fieldOfView=35;
-		//加入摄像机移动控制脚本
-		camera.addComponent(CameraMoveScript);
-			
-		//创建平行光 -------------------
-		var light:DirectionLight = scene.addChild(new DirectionLight()) as DirectionLight;
-		//修改灯光方向
-		light.direction = new Vector3(0.3, -1, 0);
-		//设置为无高光
-		light.specularColor=new Vector3(0,0,0);
-		//设置环境光偏暗蓝
-		light.ambientColor=new Vector3(0.2,0.2,1);
-		//设置漫反射光偏暗
-		light.diffuseColor=new Vector3(0.5,0.5,0.5);
+......	
+  //添加3D场景
+  var scene:Scene = Scene.load("LayaScene_loveScene/loveScene.ls");
+Laya.stage.addChild(scene);
 
+//创建摄像机(横纵比，近距裁剪，远距裁剪)
+var camera:Camera = new Camera( 0, 0.1, 1000);
+//加载到场景
+scene.addChild(camera);
+//移动摄像机位置
+camera.transform.position=new Vector3(-8, 4, 20);
+//旋转摄像机角度
+camera.transform.rotate(new Vector3( -8, -25, 0), true, false);
+//设置摄像机视野范围（角度） 
+camera.fieldOfView=35;
+//加入摄像机移动控制脚本
+camera.addComponent(CameraMoveScript);
+
+//创建平行光 -------------------
+var light:DirectionLight = scene.addChild(new DirectionLight()) as DirectionLight;
+//修改灯光方向
+light.direction = new Vector3(0.3, -1, 0);
+//设置为无高光
+light.specularColor=new Vector3(0,0,0);
+//设置环境光偏暗蓝
+light.ambientColor=new Vector3(0.2,0.2,1);
+//设置漫反射光偏暗
+light.diffuseColor=new Vector3(0.5,0.5,0.5);
 ```
 ![图片11](img/11.png)<br>（图11）
 
