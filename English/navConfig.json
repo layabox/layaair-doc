@@ -31,11 +31,11 @@
             ]
           },
           {
-            "name_2_name": "Layabox简介",
+            "name_2_name": "Layabox Presentation",
             "name_2_data": [
               {
-                "name_3_name": "Layabox的前世今生",
-                "name_3_url": "Chinese/Layabox_Intro/",
+                "name_3_name": "Layabox backstage",
+                "name_3_url": "English/Layabox_Intro/",
                 "name_3_file": "readme.md"
               },
               {
