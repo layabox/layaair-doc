@@ -1,1 +1,1 @@
-LayaNative更新日志
+LayaNative Update log

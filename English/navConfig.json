@@ -3,14 +3,14 @@
     "name": "ActionScript",
     "data": [
       {
-        "nav_1_name": "简介篇（AS3）",
+        "nav_1_name": "Introduction（AS3）",
         "nav_1_data": [
           {
-            "name_2_name": "初识HTML5",
+            "name_2_name": "Overview HTML5",
             "name_2_data": [
               {
-                "name_3_name": "什么是HTML5？",
-                "name_3_url": "Chinese/Layabox_Intro/",
+                "name_3_name": "What is HTML5？",
+                "name_3_url": "English/Layabox_Intro/",
                 "name_3_file": "what_is_HTML5.md"
               }
             ]
@@ -31,11 +31,11 @@
             ]
           },
           {
-            "name_2_name": "Layabox简介",
+            "name_2_name": "Layabox presentation",
             "name_2_data": [
               {
-                "name_3_name": "Layabox的前世今生",
-                "name_3_url": "Chinese/Layabox_Intro/",
+                "name_3_name": "Layabox backstage",
+                "name_3_url": "English/Layabox_Intro/",
                 "name_3_file": "readme.md"
               },
               {

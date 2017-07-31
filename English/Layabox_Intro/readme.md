@@ -1,33 +1,31 @@
-# Layabox的前世今生
+# Layabox overview
 
 
 
-## Layabox的前世
+## Layabox backstory
 
 
 
-###  一、团队核心技术骨干 
+###  1. Solid core technical team 
 
-​        Layabox的创始人谢成鸿在2003年将国内三大休闲娱乐平台之一的”可乐吧“以数千万价格卖给清华同方后，创立了3D端游研发公司”中娱在线“。Layabox公司成立时的引擎技术骨干均来自于追随谢成鸿多年的3D端游引擎核心成员，时间最长者达10多年。因此深厚的引擎经验积累为Layabox的引擎高速发展以及3D引擎发展方向奠定了基础。
+​        Xie ChengHong is the founder and CEO of Layabox. In 2003 he set up one of the 3 top emerging entertainment  and amusement platform of China "KeLe8". After reach his first success story, he sold it for dozen millions RMB to Tsinghua TongFang. He drove new business into 3D technology and lead  passionately several R&D project. Employees which follow him from the beginning 10 years ago, could build a game engine based on cumulated experience. Layabox laid down by a mature development for novice and expert users.
 
-### 二、HTML5引擎研发起源
+### 2. HTML5 R&D engine development origin
 
-​        在端游市场巨额亏损的同时，Layabox的创始人谢成鸿在2011年底成立LAYA实验室，开始研究可同时发布APP和HTML5的通用型引擎。并分别在2012年推出行业首款同屏多人实时交互对战的休闲对战类大型HTML5游戏《疯狂雪球》、2013年推出行业首款HTML5与APP同时发行的大型卡牌策略类HTML5游戏《上吧主公》（曾用名《喵喵三国传》）。并取得不错的商业成绩。2014年完成首款重度动作类HTML5游戏《猎刃2》的测试版，力证HTML5游戏技术与品质表现力已达到APP精品水准。
-
-
-
-直到2015年LayaFlash开源引擎推出前，Layabox的前世引擎LAYA一直处于未开源的自用引擎阶段。
+​        With smartphone/tablet, global games market growth overtake PC industry, making a new mainstream for audience and profit. In end of 2011, Founder Xie ChengHong  etablish  Laya technologies, standing for a business strategy focus on "hybrid app" features. With HTML5, he released in 2012 a casual game with multiplayer battle mode : "Crazy Snowball".  The next year, publish "Meow Meow three kingdom", a large card strategy game category. Both webApp game result a good business income, Xie ChengHong continue production with mid-core game "Hunter Blade 2" in 2014.
 
 
 
-
-
-# Layabox的今生
-
-​        2014年底，Layabox品牌建立，天使轮获千万级投资，成立搜游网络科技（北京）有限公司（海外Layabox Inc.）。2015年推出第一代开源引擎LayaFlash，成为行业唯一支持Flash AS3语言的引擎。2016年推出第二代开源引擎LayaAir，支持AS3、TS、JS三种语言开发，且浏览器裸跑（不依赖Runtime）性能媲美APP。全面支持2D、3D、AR、VR的产品研发。
+From 2015, Open-source engine project have been start with LayaFlash transcompiler software.
 
 
 
-​        2016年，Layabox完成A轮亿元融资。确定了引擎业务（LayaAir引擎相关）、原生服务（LayaNative打包及Runtime相关）、发行业务（代理发行、定制投资）、渠道业务（独家渠道、联运渠道、嵌入式商店渠道）、自研业务（自研与联合研发）等生态型业务发展方向。
 
-​        
+
+# Layabox nowadays activities
+
+​        At the end of 2014, the Layabox brand was established, and the angel was awarded a ten million investment, which was founded by Layabox (Beijing Inc.). Launched in 2015, the first generation of open source engine LayaFlash, became the industry's only support Flash AS3 language engine. In 2016 launched the second generation engine LayaAir, AS3, TS, JS supports three kinds of language development, and the browser Back (without Runtime) performance comparable to APP. Fully support the product development of 2D, 3D, AR and VR.
+
+
+
+​        In 2016, Layabox completed a round of $ 10 million financing. (LayaAir engine related), primary service (LayaNative packaging and Runtime related), distribution business (agent distribution, custom investment), channel business (exclusive channel, transport channel, embedded store channel), self-study business (self- Research and joint research and development) and other eco-business development direction.
