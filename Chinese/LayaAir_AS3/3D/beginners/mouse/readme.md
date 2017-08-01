@@ -463,7 +463,7 @@ package
 				//克隆一个货物模型
 				var cloneBox:Sprite3D=Sprite3D.instantiate(box);
 				//为货物模型添加碰撞器（可以在货物上继续放放置货物）
-				MeshSprite3D(cloneBox.getChildAt(0)).addComponent(MeshCollider);					
+				(cloneBox.getChildAt(0) as MeshSprite3D).addComponent(MeshCollider);				
 				scene.addChild(cloneBox);
 				//修改位置到碰撞点处
 				cloneBox.transform.position=rayCastHit.position;

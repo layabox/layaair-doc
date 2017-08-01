@@ -1,4 +1,4 @@
-## LayaAir3D之动画二
+# LayaAir3D之动画二
 
 在上一章节课程中我们了解了骨骼动画的unity处理与导出使用，在本节中，我们将继续介绍材质动画与刚体动画的制作与使用，它们在3D游戏的特效中运用非常广泛。
 
@@ -10,19 +10,21 @@
 
 下面我们就用霓虹灯材质动画（图1）效果来讲解在unity中创建动画并导出使用方法，步骤如下。
 
-![图1](img/1.gif)<br>（图1）
+![1](img/1.gif)(图1)</br>
 
-#### 导入模型，修改材质类型
+
+
+### 导入模型，修改材质类型
 
 在3ds max中制作的空调机箱、霓虹灯带导出成FBX后，再导入untiy中（开发者们可以偿试在3ds max中制作材质动画并导出使用，可以发现在unity无法播放）。
 
 拖拽入场景中，选择需要制作的动画模型，在右侧界面中修改其材质，Shader类型为粒子加色类型Particles/Additive（目前暂时只支持此种材质类型的动画 ，其他的shader类型导出时会报错）。
 
-![图2](img/2.png)<br>（图2）
+![2](img/2.png)(图2)</br>
 
 
 
-#### 创建材质动画
+### 创建材质动画
 
 1、修改好材质类型后，同样选择要制作动画的模型，点击菜单栏window下Animation打开动画编辑界面，快捷键Ctrl+6。
 
@@ -36,50 +38,47 @@
 
 此种制作动画方式与3ds max中制作流程基本相同，可以让美术设计师直接在unity中编辑（图3）。
 
-![图3](img/3.gif)<br>（图3）
+![3](img/3.gif)(图3)</br>
 
 
 
-#### 创建动画控制器
+### 创建动画控制器
 
 与之前的创建动画控制器相同，在资源管理器中右键创建动画控制器，取名为uvAction，双击打开后，将上一步创建的动画文件uvAnimation拖拽入动画控制器中。
 
 选择模型，将动画控制器拖拽入模型的动画组件中，点击unity运行，我们就可以看到动画按我们的需求播放了（图4）。
 
-![图4](img/4.gif)<br>（图4）
+![4](img/4.gif)(图4)</br>
 
 
 
-#### 导出并使用动画资源
+### 导出并使用动画资源
 
 在unity中编辑好动画，用LayaAir插件导出Sprite3D类型.lh资源，如果导出时没有报错，将资源拷贝到项目的h5目录下，那么在项目中可以直接用Sprite3D.load()方法加载或预加载。
 
 参考以下代码，加载完成动画2000毫秒后动画停止（图1）。
 
-```java
-......
+```typescript
 //创建加载材质动画模型
-box=Sprite3D.load("LayaScene_uvAction/uvAction.lh");
+this.box = Laya.Sprite3D.load("LayaScene_uvAction/uvAction.lh");
 //模型与材质、动画加载完成后回调
-box.on(Event.HIERARCHY_LOADED,this,onLoadComplete);
-scene.addChild(box);
-/** 模型与材质加载完成后回调***/		
-private function onLoadComplete():void
-{
+this.box.on(Laya.Event.HIERARCHY_LOADED,this,onLoadComplete);
+scene.addChild(this.box);
+//模型与材质加载完成后回调
+function onLoadComplete(){
   //获取模型上的动画组件
-  ani = box.getChildAt(0).getComponentByType(Animator) as Animator;
+  this.ani = this.box.getChildAt(0).getComponentByType(Laya.Animator);
   //动画2000毫秒后停止
   Laya.timer.once(2000,this,onLoop);
 }
-private function onLoop():void
-{
-  ani.stop();
+function onLoop(){
+	this.ani.stop();
 }
 ```
 
 
 
-### 刚体动画（变换动画） 
+### 刚体动画（变换动画）
 
 刚体动画又称为变换动画，是指不改变模型顶点、材质的基础上，只对模型进行旋转、缩放、位移的动画，这种动画在游戏中也经常使用，比如说脚底光环、刀光等。当然刚体动画与材质动画也经常结合使用。
 
@@ -89,7 +88,7 @@ private function onLoop():void
 
 以下为制作的刚体动画效果（图5），对四个模型片分别使用了不同的材质，然后对模型进行了旋转和缩放修改产生动画。
 
-![图5](img/5.gif)<br>（图5） 
+![5](img/5.gif)(图5)</br>
 
 
 
@@ -98,4 +97,3 @@ private function onLoop():void
 LayaAir摄像机目前还无法导出，在未来的版本中，摄像机可以导出到引擎中使用，因此，如果在unity中制作了摄像机动画，导出后在游戏中也能进行控制使用。
 
 它在unity中的动画制作方法与刚体动画一致，可对它的属性进行动画修改。使用加载方式也一致。
-

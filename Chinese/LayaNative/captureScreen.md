@@ -53,7 +53,7 @@ image.putImageData(arrayBuff,width,height);
 ### 4.简单代码实例
 
 ```javascript
-if( windoow.conch )
+if( window.conch )
 {
     window.conch.captureScreen(function(arrayBuff,width,height){
         /*
