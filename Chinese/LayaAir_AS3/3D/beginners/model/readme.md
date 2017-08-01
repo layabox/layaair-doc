@@ -172,7 +172,7 @@ Laya.stage.addChild(scene);
 //方法二：预加载，.lh默认会创建为Sprite3D类型对象，并放入对象池中
 Laya.loader.create("res/room.lh",Handler.create(this,onCreateComplete));
 //预加载完成后回调
-private functiononCreateComplete():void
+private function onCreateComplete():void
 { 
   //实例化加载并创建好的3D对象
   var sprite3D:Sprite3D=Laya.loader.getRes("res/room.lh");

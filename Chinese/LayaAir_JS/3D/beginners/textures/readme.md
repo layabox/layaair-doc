@@ -132,8 +132,6 @@ directionLight.direction = new Laya.Vector3(0.5, -1, 0);
 var material = new Laya.StandardMaterial();
 //创建漫反射二维纹理贴图
 material.diffuseTexture = Laya.Texture2D.load("res/layabox.png");
-//创建漫反射二维纹理贴图
-material.diffuseTexture = Laya.Texture2D.load("res/layabox.png");
 //设置环境色，提亮模型
 material.ambientColor =new Laya.Vector3(2,2,2);
 //为box模型赋材质
