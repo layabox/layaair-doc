@@ -10,4 +10,4 @@
 
 
 
-​        With the push of Layabox engine, HTML5 technology has been able to achieved original and competitive 2D, 3D, VR, AR games. Target Flash, APP, HTML5 release in once with same technology, optimized and concept for scalable engine technology. it expected to be use for general-purpose multimedia content and long term for developers. HTML5 engine technology will get more job opportunities.
+​        With the push of Layabox engine, HTML5 technology has been able to achieved original and competitive 2D, 3D, VR, AR games. Target Flash, APP, HTML5 release in once with same code, optimized and concept for scalable engine. it expected to be use for general-purpose multimedia content and long term for developers. HTML5 technology will get more job opportunities.
