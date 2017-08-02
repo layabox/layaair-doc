@@ -1,33 +1,33 @@
-# HTML5游戏的行业机会
+# Opportunity of HTML5 game industry
 
 
 
-​        从行业的发展规律来看，每隔一定的周期就会从蓝海步入红海，然后通过新的技术变革产生新的行业机会。
+​        In development industry cycle process. Emerging market encounter lot of competitors, and only stronger and more innovative one survive. The same new trend wave come to HTML5.
 
 
 
-​        从端游到页游，再到手游，这个周期越来越短。在如今手游的红海大背景下，HTML5游戏的行业机会或将到来。
+​        The life cycle of new products is being shorter and shorter, which would make the enterprises produce several generations of products with different technology, including HTML5.
 
 
 
-## HTML5游戏的技术条件
+## Technical context of HTML5 game
 
-​        技术是新行业机会的基础，如果说HTML5的游戏无法承载APP级的游戏品质和表现力，那对于要求越来越高的玩家而言，很难去接受降低品质去玩游戏。HTML5游戏行业自然难以发展壮大。而当前，随着LayaAir引擎的性能突破，以及重度HTML5游戏案例的不断推出，无论是2D还是3D，都已经证实了HTML5游戏技术可实现APP的游戏品质及效果。
-
-
-
-
-
-## HTML5游戏的产品盈利能力
-
-​        2016年《传奇世界H5》与《决战沙城》两款破2000万月流水的HTML5产品诞生，已经证明了HTML5行业的用户付费能力，同时也证明了HTML5的渠道与支付正在逐步成熟，足以支持优质产品达到千万级月流水。
+​        Technology specification lead new industry opportunities. Many comparaison are done between Native APP and Hybrid one made with HTML5, most based from quality of the gameplay and performance. Due to the exigence of players, HTML5 industry face to slow growing and develop. At present, with the LayaAir engine performance breakthrough, as well as the introduction of remarkable HTML5 game case, whether 2D or 3D, have confirmed the HTML5 game technology can rival APP native game quality and effect.
 
 
 
 
 
-## HTML5的发展趋势
+## HTML5 game product profitability
 
-​        2016年，海外Facebook打开了HTML5游戏的入口，国内的流量巨头微信、手机QQ、支付宝也将打开HTML5游戏的入口。预计2017年HTML5渠道流量将会更进一步的放开。
+​        At year 2016, Both "ChuanQi ShiJie H5" and "JueZhan ShaCheng" received 20 millions of view in one month. It reveals the high potential of HTML5 diffusion, a market maturity for profit with high quality product.
 
-​        从整体环境来看，无论是技术、还是产品、或是渠道流量，都有着非常快速的发展。HTML5游戏的时代或将于2017年打开。拥抱HTML5游戏为时不晚。
+
+
+
+
+## The development trend of HTML5
+
+​        In 2016, Facebook bring highlight to HTML5 game with Instant Games, equivalent platform coming out from giant WeChat, mobile phone QQ and Alipay too. It is expected that HTML5 channel traffic will be further liberalized in 2017.
+
+​        From the overall environment factors, whether it is technology,  products, or channel traffic, it have a fast development. The age of HTML5 games will open in 2017. It's not too late to get start.
