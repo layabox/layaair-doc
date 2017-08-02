@@ -10,7 +10,7 @@
 
 
 
-## Technical context of HTML5 game
+## Technical context
 
 ​        Technology specification lead new industry opportunities. Many comparaison are done between Native APP and Hybrid one made with HTML5, most based from quality of the gameplay and performance. Due to the exigence of players, HTML5 industry face to slow growing and develop. At present, with the LayaAir engine performance breakthrough, as well as the introduction of remarkable HTML5 game case, whether 2D or 3D, have confirmed the HTML5 game technology can rival APP native game quality and effect.
 
@@ -18,7 +18,7 @@
 
 
 
-## HTML5 game product profitability
+## Product profitability
 
 ​        At year 2016, Both "ChuanQi ShiJie H5" and "JueZhan ShaCheng" received 20 millions of view in one month. It reveals the high potential of HTML5 diffusion, a market maturity for profit with high quality product.
 
@@ -26,7 +26,7 @@
 
 
 
-## The development trend of HTML5
+## Development trend
 
 ​        In 2016, Facebook bring highlight to HTML5 game with Instant Games, equivalent platform coming out from giant WeChat, mobile phone QQ and Alipay too. It is expected that HTML5 channel traffic will be further liberalized in 2017.
 
