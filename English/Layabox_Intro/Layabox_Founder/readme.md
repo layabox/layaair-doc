@@ -22,7 +22,7 @@ Layabox CEO said : "As a programmer, I want to create something can reflect my v
 ​	![img](img/2.jpg)<br/>
 ​	 picture(2)
 
-　　In 2014, Mr. Xie founded LayaBox, through LayaFlash main feature, received 1.5 millions USD from angel investors.  During 2015,  the entire HTML5 industry chain, including engine, CP, channel platform, data services and other dozens of companies have access to financing. People relative to HTML5 industries start lively discussion on market opportunities. But until 2016, the outbreak has not come yet, the capital for the HTML5 industry has become a lot more cautious attitude. Meanwhile in June 2016 LayaBox got  series A round financing. With Mr. Jin Huifeng, a total of 1.5 million funds could be reach. Investment in that field is rarely happen, question remain as how Mr. Xie could receive good confidence level in capital venture.
+　　In 2014, Mr. Xie founded LayaBox, through LayaFlash main feature, received 1.5 millions USD from angel investors.  During 2015,  the entire HTML5 industry chain, including engine, CP, channel platform, data services and other dozens of companies have access to financing. People relative to HTML5 industries start lively discussion on market opportunities. But until 2016, the outbreak has not come yet, the capital for the HTML5 industry has become a lot more cautious attitude. Meanwhile in June 2016 LayaBox got  series A round financing. With Mr. Jin Huifeng, a total of 1.5 million USD funds could be reach. Investment in that field is rarely happen, question remain as how Mr. Xie could receive good confidence level in capital venture.
 
 
 
@@ -30,7 +30,7 @@ Layabox CEO said : "As a programmer, I want to create something can reflect my v
 
 
 
-　　Mr. Xie is very confident about his team and products, and he believes that mobile WEB must be the trend of development. Traffic revenues generate from user engagement is a buoyant market which H5 games can play an important role. With multi-platform release solutions, LayaBox stand to simplify and reduces significiantly the cost and improves the game performance. Currently,  LayaBox provide a package solutions based around the game engine, including his own runtime. A complete ecosystem for developers and education plan, which Layabox support a cooperation "Education Alliance" with major university. It brings facilities for college students groups eager to learn 2D or 3D multimedia contents.
+　　Mr. Xie is very confident about his team and products, and he believes that mobile WEB must be the trend of development. Traffic revenues generate from user engagement is a buoyant market which HTML5 games can play an important role. With multi-platform release solutions, LayaBox stand to simplify and reduces significiantly the cost and improves the game performance. Currently,  LayaBox provides a package solutions based around the game engine, including his own runtime. A complete ecosystem for developers and education plan, which Layabox support a cooperation "Education Alliance" with major universities. It brings facilities for college students groups eager to learn 2D or 3D multimedia contents.
 
 
 
