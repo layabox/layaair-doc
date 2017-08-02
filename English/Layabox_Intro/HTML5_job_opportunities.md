@@ -1,13 +1,13 @@
-# HTML5游戏的就业机会
+# Job opportunities
 
 
 
-​        当前APP手游市场已然步入红海，在发行成本不断增高的大环境下，中小APP手游研发商纷纷破产或转型，APP手游人才的需求也正大幅度衰减。
+​        Currently Native mobile APP market have entered in new era, whereas the cost of development keep increasing, small or medium APP mobile and R&D business impend over bankruptcy. Demand not follow the offer, and opportunity dont tends to increase significantly.
 
 
 
-​        而伴随着HTML5千万级月流水产品的增多，以及微信等巨头流量入口的打开，HTML5游戏的人才需求正处于高度增长的阶段。
+​        However with large stream market, several platform have been create to generate profits such as Wechat , and HTML5 skills are more and more  craved.
 
 
 
-​        在以Layabox为首的引擎方推动下，HTML5引擎技术已经可以实现重度的2D、3D、VR、AR游戏。尤其是Flash、APP、HTML5游戏可同时发布的技术，更是加速游戏研发商向通用性引擎技术转型，在未来，通用型HTML5引擎技术将会获得更多的就业机会。
+​        With the push of Layabox engine, HTML5 technology has been able to achieved original and competitive 2D, 3D, VR, AR games. Target Flash, APP, HTML5 release in once with same technology, optimized and concept for scalable engine technology. it expected to be use for general-purpose multimedia content and long term for developers. HTML5 engine technology will get more job opportunities.
