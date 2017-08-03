@@ -49,12 +49,12 @@
             "name_2_name": "LayaAir引擎简介",
             "name_2_data": [
               {
-                "name_3_name": "LayaAir功能介绍",
-                "name_3_url": "Chinese/Layabox_Intro/",
+                "name_3_name": "LayaAir features",
+                "name_3_url": "English/Layabox_Intro/",
                 "name_3_file": "LayaAir_introduction.md"
               },
               {
-                "name_3_name": "LayaAir features",
+                "name_3_name": "LayaAir 引擎特性简介",
                 "name_3_url": "English/Layabox_Intro/",
                 "name_3_file": "LayaAir_features.md"
               },
