@@ -16,16 +16,16 @@
             ]
           },
           {
-            "name_2_name": "拥抱HTML5游戏",
+            "name_2_name": "Claim for HTML5",
             "name_2_data": [
               {
-                "name_3_name": "HTML5游戏的就业机会",
-                "name_3_url": "Chinese/Layabox_Intro/",
+                "name_3_name": "Job opportunities",
+                "name_3_url": "English/Layabox_Intro/",
                 "name_3_file": "HTML5_job_opportunities.md"
               },
               {
-                "name_3_name": "HTML5游戏的行业机会",
-                "name_3_url": "Chinese/Layabox_Intro/",
+                "name_3_name": "Opportunity of HTML5 game industry",
+                "name_3_url": "English/Layabox_Intro/",
                 "name_3_file": "HTML5_Game_Opportunities.md"
               }
             ]
@@ -49,13 +49,13 @@
             "name_2_name": "LayaAir引擎简介",
             "name_2_data": [
               {
-                "name_3_name": "LayaAir功能介绍",
-                "name_3_url": "Chinese/Layabox_Intro/",
+                "name_3_name": "LayaAir features",
+                "name_3_url": "English/Layabox_Intro/",
                 "name_3_file": "LayaAir_introduction.md"
               },
               {
-                "name_3_name": "LayaAir引擎特性简介",
-                "name_3_url": "Chinese/Layabox_Intro/",
+                "name_3_name": "LayaAir 引擎特性简介",
+                "name_3_url": "English/Layabox_Intro/",
                 "name_3_file": "LayaAir_features.md"
               },
               {
