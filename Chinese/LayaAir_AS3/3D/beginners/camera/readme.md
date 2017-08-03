@@ -146,5 +146,73 @@ camera.transform.lookAt	(box.transform.position,new Vector3(0,-1,0));
 
 
 
+### 多摄像机的使用
 
+在同一个场景中，可以使用多个摄像机，当加载到场景中后，它们会产生各自的游戏视图画面。在我们以前遇到的游戏中，如双人3D游戏就使用了两个3D摄像机，左半屏幕显示一个玩家，右半屏幕显示另一个，极大的丰富了游戏性。
+
+不过多摄像机的缺点是非常耗性能，模型三角面数与DrawCall数量会成倍上升，多几个摄像机就会多出几倍性能损耗，因此开发者们需酌情考虑。
+
+3D场景的显示大小与位置与2D游戏不太一样，主要是靠摄像机的视口（ViewPort）来控制，通过它来进行屏幕的分割。
+
+下例中我们加载一个3D场景，并通过ViewPort进行左右视口分离，代码如下：
+
+```java
+package
+{
+	import laya.d3.core.Camera;
+	import laya.d3.core.scene.Scene;
+	import laya.d3.math.Vector3;
+	import laya.d3.math.Viewport;
+	import laya.display.Stage;
+	import laya.utils.Handler;
+	import laya.utils.Stat;
+
+	public class LayaAir3D_MultiCamera
+	{
+		public function LayaAir3D_MultiCamera()
+		{
+			//初始化引擎
+			Laya3D.init(1280, 720,true);
+			//适配模式
+			Laya.stage.scaleMode = Stage.SCALE_EXACTFIT;
+			Laya.stage.screenMode = Stage.SCREEN_NONE;
+			//开启统计信息
+			Stat.show();			
+			//加载3D资源
+			Laya.loader.create("LayaScene_loveScene/loveScene.ls",Handler.create(this,on3DComplete));
+		}
+		
+		private function on3DComplete():void
+		{
+			//创建场景
+			var scene:Scene=Scene.load("LayaScene_loveScene/loveScene.ls");
+			Laya.stage.addChild(scene);
+			
+			//创建摄像机1添加到场景
+			var camera1:Camera=new Camera();
+			scene.addChild(camera1);
+			//摄像机1添加控制脚本
+			camera1.addComponent(CameraMoveScript);
+			//修改摄像机1位置及角度
+			camera1.transform.translate(new Vector3(0,2,8),true);
+			camera1.transform.rotate(new Vector3(-23,0,0),true,false);
+			//设置视口为左半屏
+			camera1.viewport=new Viewport(0,0,640,720);
+			
+			//创建摄像机2添加到场景
+			var camera2:Camera=new Camera();
+			scene.addChild(camera2);
+			//修改摄像机2位置及角度
+			camera2.transform.rotate(new Vector3(-45,0,0),false,false);
+			camera2.transform.translate(new Vector3(0,0,25),true);
+			//设置视口为右半屏
+			camera2.viewport=new Viewport(640,0,640,720);
+		}
+	}
+}
+```
+
+编译运行上述代码，运行效果如图6。开发者们同时也可以测试，在单摄像机下时，DrawCall与三角面数会少一半。
+
+![图片6](img/6.png)<br>（图6）双摄像机分屏 
 

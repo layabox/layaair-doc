@@ -41,13 +41,15 @@ package
 	
 	import view.RolePropView;
 
-  	/**多场景实例主类***/
+	/**多场景实例主类***/
 	public class LayaAir3D_MultiScene
 	{
 		/**游戏主摄像机***/
 		private var camera:Camera;	
 		/**角色装备展示界面***/
 		private var roleProp:RolePropView;
+		
+		private var cameraScript:CameraMoveScript;
 		
 		public function LayaAir3D_MultiScene()
 		{
@@ -74,8 +76,8 @@ package
 			//修改摄像机位置与方向
 			camera.transform.translate(new Vector3(0,2,8),true);
 			camera.transform.rotate(new Vector3(-23,0,0),true,false);
-			//添加摄像机脚本
-			camera.addComponent(CameraMoveScript);	
+			//添加摄像机脚本并获取
+			cameraScript=camera.addComponent(CameraMoveScript) as CameraMoveScript;		
 			
 			//加载2D界面资源
 			Laya.loader.load("res/atlas/comp.atlas",Handler.create(this,on2DComplete));
@@ -89,30 +91,39 @@ package
 		
 		private function createRoleUI():void
 		{
-			//如果摄像机组件大于0，移除控制脚本
-			if(camera.componentsCount>0) camera.removeComponentByType(CameraMoveScript);
 			//创建2D属性UI
 			roleProp = RolePropView.getInstance();
 			Laya.stage.addChild(roleProp);
-			
-			//界面拖动与从舞台移除事件监听
+			//界面拖动事件监听
 			roleProp.on(Event.DRAG_MOVE,this,onDragMove);
-			roleProp.on(Event.REMOVED,this,onRemoved);
+			//鼠标在界面上按下时摄像机控制脚本失效
+			roleProp.on(Event.MOUSE_DOWN,this,onScriptFalse);
+			
+			//界面移除或鼠标抬起后摄像机脚本启用
+			roleProp.on(Event.REMOVED,this,onScriptTrue);	
+			Laya.stage.on(Event.MOUSE_UP,this,onScriptTrue);
 		}
 		
 		/**界面拖动回调****/		
 		private function onDragMove():void
 		{
+			//摄像机控制脚本失效
+			onScriptFalse();
 			//界面中摄像机视口跟随移动
-			roleProp.camera.viewport=new
-              				Viewport(roleProp.x,roleProp.y,roleProp.width,roleProp.height);
+			roleProp.camera.viewport=new Viewport(roleProp.x,roleProp.y,roleProp.width,roleProp.height);
 		}
 		
-		/**界面停止拖动回调****/	
-		private function onRemoved():void
+		/**摄像机控制脚本启用****/	
+		private function onScriptTrue():void
 		{
-			//添加摄像机控制脚本
-			camera.addComponent(CameraMoveScript);	
+			//摄像机控制脚本启用
+			cameraScript.enable=true; 
+		}
+		/**摄像机控制脚本失效****/	
+		private function onScriptFalse():void
+		{
+			//摄像机控制脚本失效
+			cameraScript.enable=false;
 		}
 	}
 }
@@ -171,13 +182,13 @@ package view
 			UIScene=new Scene();
 			this.addChild(UIScene);
 			
-			//本界面鼠标可点击触发拖动的区域（必须是Dialog类型界面）
+			//在对话框中，鼠标可点击触发拖动的区域
 			this.dragArea="0,0,520,80";
 			
 			//创建角色
 			role=Laya.loader.getRes("LayaScene_girl/girl.lh");
 			UIScene.addChild(role);
-			//修改角色位置（超出摄像机视口部分将不会显示）
+			//修改角色位置（超出摄像机视口后将不会显示）
 			role.transform.translate(new Vector3(0,0,0),false)
 			
 			//创建摄像机
@@ -189,6 +200,7 @@ package view
 			camera.transform.translate(new Vector3(0,1.2,3),false);
 			//关闭按钮事件监听
 			this.btn_close.on(Event.MOUSE_DOWN,this,onClose);
+			
 		}
 		
 		/**关闭按钮事件回调***/		
@@ -196,9 +208,9 @@ package view
 		{
 			//移除并摧毁UI界面
 			Laya.stage.removeChild(this);
-			//设置UI位置恢复为居中显示
+			//设置UI位置为居中显示
 			this.pos(xx,yy);			
-			//设置摄像机视口大小位置与UI一致
+			//设置摄像机视口大小与UI一致
 			camera.viewport=new Viewport(xx,yy,this.width,this.height);
 		}
 	}

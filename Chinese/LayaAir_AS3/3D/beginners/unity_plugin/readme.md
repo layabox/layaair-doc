@@ -28,7 +28,11 @@
 
 ### 导出资源设置
 
-我们在unity中创建一个汽车模型，然后我们用LayaAir的插件导出。点击菜单栏LayaPlugin，会出现导出设置面板，在这我们将详细为大家讲解。
+点击菜单栏LayaPlugin，会出现导出设置面板，在这我们将详细为大家讲解。
+
+**Tips：导出插件工具1.4.0版我们增加了新的一些功能，如图3中，点击菜单LayaAir3D后，下拉菜单中出现了更多的子项，LayaAir Tool是指导出资设置面板，可以把它拖拉到unity3D的界面的适合位置上，下次打开这个项目时，它会保持在设定的位置。**
+
+**LayaAir Demo、Study、Ansewers等可以点击打开LayaAir官网，分别代表着示例、学习文档、论坛，方便开发者们解惑。**
 
 ![动图3](img/3.gif)<br>（图3）
 
@@ -81,9 +85,29 @@ Compress Lsani   暂时无用，开发中，压缩骨骼动画数据，减小文
 
 
 
+#### Terrain Setting
+
+unity地型导出设置（图7）
+
+Convert Terrain To Mesh  
+如果场景中有地型，转换地型成网格模型。
+untiy的地型制作非常方便，可以用笔刷绘制地型高度，如山川、河沟等，还支持笔刷绘制多张细节贴图，用于几种贴图的地表制作。LayaAir导出插件会把地型转化成Mesh，方便开发者使用。有区别的是材质和普通材质不同，包含了细节贴图。
+
+Resolution
+导出的模型网格面数优化设置，一般默认Medium中等即可。以下为设置的优化等级，每小一级相当于除以4的面数精度。
+Very Height  优化后的面数最高
+Height           优化后的面数相对高
+Medium	       优化后的面数中等
+Low		       优化后的面数低
+Very Low       优化后的面数最低     
+
+![图片7](img/7.png)<br>（图7）
+
+
+
 #### GameObject Setting 
 
-游戏物品节点设置（图7）
+游戏物品节点设置（图8）
 
 Ignore Null Game Objects 
 导出时忽略空节点，LayaAir引擎不支持的节点也记作空节点，如照相机节点，灯光节点，可减少精灵数。
@@ -97,14 +121,14 @@ Optimize Game Objects
 Batch Make The First Level Game Objects 
 批量导出（必须选择sprite3d才会有）批量导出场景中所有一级节点。
 
- ![图片7](img/7.png)<br>（图7）
+ ![图片8](img/8.png)<br>（图8）
 
 
 
 
 #### Other Setting
 
-其他设置（图8）
+其他设置（图9）
 
 Cover Original Export Files 
 导出时覆盖原始导出文件
@@ -115,7 +139,7 @@ Customize Export Root Directory Name
 Automatically Save The Configuration 
 导出时自动保存当前配置
 
- ![图片8](img/8.png)<br>（图8）
+ ![图片9](img/9.png)<br>（图9）
 
 
 
@@ -127,7 +151,7 @@ Revert 从配置表中读取已保存配置
 Save   保存当前配置，保存后，下次打开后会直接使用之前配置，方便开发者们操作。
 Laya Export  导出当前资源，点击后，将导出当前场景或模型的数据到指定路径上。
 
- ![图片9](img/9.png)<br>（图9）
+ ![图片10](img/10.png)<br>（图10）
 
 
 
@@ -135,9 +159,9 @@ Laya Export  导出当前资源，点击后，将导出当前场景或模型的�
 
 ### 导出的资源简单介绍
 
-当配置好输出场景设置后，点击Laya Export 按钮，导出后生成了默认的LayaScene_truck文件夹（图10）。
+我们在unity中创建一个汽车模型，然后我们用LayaAir的插件导出。当配置好输出场景设置后，点击Laya Export 按钮，导出后生成了默认的LayaScene_truck文件夹（图11）。
 
- ![图片10](img/10.png)<br>（图10）
+ ![图片11](img/11.png)<br>（图11）
 
 见上图文件资源，导出后生成了.ls、.lm、.lmat数据资源，及贴图png、tga资源。
 
@@ -198,7 +222,7 @@ package {
 }
 ```
 
-编译运行上述简单代码，我们发现场景加载成功，场景中的模型也显示到了3D视图上（图10）。
+编译运行上述简单代码，我们发现场景加载成功，场景中的模型也显示到了3D视图上（图12）。
 
- ![图片11](img/11.png)<br>（图11）
+ ![图片12](img/12.png)<br>（图12）
 
