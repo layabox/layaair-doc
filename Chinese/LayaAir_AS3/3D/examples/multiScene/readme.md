@@ -2,11 +2,11 @@
 
 ### 多场景的运用
 
-3D场景不仅可以和2D混合使用，同时在舞台上也可以有多个3D场景，并且还可以2D中嵌入3D场景，通过场景中的摄像机视口显示不同的大小和位置。
+3D场景不仅可以和2D混合使用，同时在舞台上也可以有多个3D场景，并且还能2D中嵌入3D场景，通过场景中的摄像机视口控制显示场景画面的大小和位置。
 
-在游戏中我们经常也会这么运用，例如角色装备属性界面，界面中显示了3D角色的模型与动画，装备栏中更换装备图标后，角色模型也进行换装变化。
+在游戏中我们经常也会这么运用，例如角色装备属性界面，界面中显示了3D角色的模型与动画，装备栏中更换装备图标后，角色模型还可进行换装变化。
 
-下例中我们对装备属性界面进行了模拟（图1），双击屏幕打开装备界面，显示3D角色待机动画及身上装备展示，点击按住界面标题可拖动界面，内部的3D场景、角色也跟随移动。
+下例中我们对装备属性界面进行了简单模拟（图1），功能为双击屏幕打开装备界面，显示3D角色待机动画及身上装备展示，点击按住界面标题可拖动界面，内部的3D场景、角色也跟随移动。
 
 ![图片1](img/1.gif)<br> （图1）
 
@@ -48,7 +48,7 @@ package
 		private var camera:Camera;	
 		/**角色装备展示界面***/
 		private var roleProp:RolePropView;
-		
+		/**主摄像机控制脚本***/
 		private var cameraScript:CameraMoveScript;
 		
 		public function LayaAir3D_MultiScene()
@@ -91,7 +91,7 @@ package
 		
 		private function createRoleUI():void
 		{
-			//创建2D属性UI
+			//创建角色属性UI（单例模型，预防打开多个）
 			roleProp = RolePropView.getInstance();
 			Laya.stage.addChild(roleProp);
 			//界面拖动事件监听
@@ -110,7 +110,8 @@ package
 			//摄像机控制脚本失效
 			onScriptFalse();
 			//界面中摄像机视口跟随移动
-			roleProp.camera.viewport=new Viewport(roleProp.x,roleProp.y,roleProp.width,roleProp.height);
+			roleProp.camera.viewport=new 	
+              Viewport(roleProp.x,roleProp.y,roleProp.width,roleProp.height);
 		}
 		
 		/**摄像机控制脚本启用****/	
@@ -129,7 +130,7 @@ package
 }
 ```
 
-界面类RolePropView参考代码如下：
+界面类RolePropView，内部创建3D场景、角色、摄像机，参考代码如下：
 
 ```java
 package view
@@ -150,7 +151,7 @@ package view
 	{
 		/**界面实例***/		
 		private static var instance:RolePropView;
-		/**界面中的场景***/
+		/**界面中的3D场景***/
 		private var UIScene:Scene;
 		/**界面中的摄像机***/
 		public var camera:Camera
@@ -206,11 +207,11 @@ package view
 		/**关闭按钮事件回调***/		
 		private function onClose():void
 		{
-			//移除并摧毁UI界面
+			//移除UI界面
 			Laya.stage.removeChild(this);
-			//设置UI位置为居中显示
+			//恢复UI位置为居中显示
 			this.pos(xx,yy);			
-			//设置摄像机视口大小与UI一致
+			//恢复摄像机视口大小与位置
 			camera.viewport=new Viewport(xx,yy,this.width,this.height);
 		}
 	}

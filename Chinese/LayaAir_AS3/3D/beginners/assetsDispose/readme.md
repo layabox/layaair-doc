@@ -22,11 +22,11 @@
 
 
 
-### 加载时资源处理原则
+### 加载资源时处理原则
 
 通过上图的例子我们可以看到LayaAir3D引擎处理资源与显存的关系，为了达到游戏性能优化目的，在加载资源时也要注意一些原则。
 
-1、加载资源时不要一次性把所有资源全部加载，只加载需要资源（分段加载模式）。3D资源加载完成后会根据资源后缀名称直接创建出3D显示对象，比如.ls会创建出Scene，.lh会创建Sprite3D对象等，创建好的对象资源会直接放入显存当中，哪怕是没有放到舞台上，因此资源过多会大量占有显存。
+1、加载资源时不要一次性把所有资源全部加载，只加载需要资源（分段加载模式）。3D资源加载完成后会根据资源后缀名称直接创建出3D显示对象，比如.ls会创建出Scene，.lh会创建Sprite3D对象等，创建好的对象资源哪怕是没有放到舞台上，也会直接放入显存当中，因此资源过多会占有大量显存。
 
 2、合理管理显存，经常反复使用的资源在显存中不需要释放，而不反复使用的资源在使用完后立即释放以节省性能开销。比如主角资源，3D道具资源，玩家经常使用，可以一直存放在显存中，提取速度快；而一些大型场景，在切换时可以释放掉资源，场景关卡贴图、模型资源都较大，释放后能省几十上百兆大小的显存开销。
 
@@ -94,9 +94,9 @@ package view
 
 #### 通过资源地址表释放显存资源
 
-在主类中，我们以双击鼠标方式切换场景，使用对象释放显存资源方法，并加载新场景。
+在主类中，我们以鼠标双击舞台方式切换场景，使用资源地址释放显存资源的方法，并加载新场景。
 
-通过资源路径列表方法灵活，可以通过配置表的方式释放资源，增加删除资源也很方便。比如美术在导出场景时，新建一个JSON表，将此场景中切换后不需要的资源路径都放到JSON表中，有用的资源不入表，资源就不释放，比如一些公用的NPC、道具、特效等游戏元素。
+通过资源路径列表方法灵活，可以通过配置表的方式，表里增加删除资源也很方便。比如美术在导出场景时，新建一个JSON表，将此场景中切换后不需要的资源路径都放到J表中，有用的资源不入表，资源就不释放，比如一些公用的NPC、道具、特效等游戏元素资源。
 
 Tips：资源包括：场景光照贴图lightmap、材质.lmat、模型.lm、各种类型贴图.png或.jpg、动画.lani、骨骼.lav等资源。
 
@@ -106,24 +106,15 @@ Tips：资源包括：场景光照贴图lightmap、材质.lmat、模型.lm、各
 
 ![图6](img/6.png)<br>（图6）
 
-Json编辑完成后，可用检查工具检测格式是否正确。然后我们修改主类代码如下
+Json编辑完成后，可用检查工具检测格式是否正确。然后创建主类代码如下：
 
 ```java
 package
 {
-	import laya.d3.animation.AnimationClip;
-	import laya.d3.component.Animator;
 	import laya.d3.core.Camera;
-	import laya.d3.core.MeshSprite3D;
-	import laya.d3.core.SkinnedMeshSprite3D;
 	import laya.d3.core.Sprite3D;
-	import laya.d3.core.material.BaseMaterial;
-	import laya.d3.core.material.StandardMaterial;
 	import laya.d3.core.scene.Scene;
 	import laya.d3.math.Vector3;
-	import laya.d3.resource.BaseTexture;
-	import laya.d3.resource.Texture2D;
-	import laya.d3.resource.models.BaseMesh;
 	import laya.display.Stage;
 	import laya.events.Event;
 	import laya.net.Loader;
@@ -225,8 +216,8 @@ package
 			//移除摄像机与角色
 			scene.removeChild(camera);
 			scene.removeChild(role);
-	
-			//释放资源方法2（释放的资源配置表）
+			
+			//列表释放显存资源方法（释放的资源配置表）
 			assetsDispose("LayaScene_loveScene/loveScene.json");
 			
 			//销毁之前场景
@@ -247,16 +238,20 @@ package
 			
 			//设置场景层级在最下层
 			Laya.stage.setChildIndex(scene,0);
+			
+			//现有显存中的资源
+			trace("现有显存中的资源:",Loader.loadedMap)
 		}
-		
+
 		/**
-		 * 显存中资源释放方法2(利用资源表方式，每个场景配置资源路径表)
+		 * 列表释放显存资源方法(利用资源表方式，每个场景配置资源路径表)
 		 * @param target3D 需要释放资源的对象资源表assetsUrl:String
 		 */		
 		private function assetsDispose(assetsUrl:String):void
 		{
-			//加载显存释放的资源配置表
-			Laya.loader.load([{url:assetsUrl,type:Loader.JSON}],Handler.create(this,onAssetsOK,[assetsUrl]));
+			//加载盘释放的资源配置表
+			Laya.loader.load([{url:assetsUrl,type:Loader.JSON}],
+                             Handler.create(this,onAssetsOK,[assetsUrl]));
 		}
 		
 		/**加载资源释放表完成后**/		
@@ -271,15 +266,12 @@ package
 				//资源释放
 				resource.dispose();
 			}
-          			
-			//现有显存中的资源
-			trace("现有显存中的资源:",Loader.loadedMap)
 		}
 	}
 }
 ```
 
-观察上述代码，加载完配置表后，我们通过Laya.loader.getRes(arr[i].url)方法直接获取资源产生的对象（创建时会根据url后缀名产生不同的类型对象，getRes方法可直接读出来），它们都是Resource类的子类，因此对象调用dispose()方法后就可释放资源。
+观察上述代码assetsDispose(assetsUrl:String)方法，加载完配置表后，我们通过Laya.loader.getRes(arr[i].url)方法直接获取资源产生的对象（创建时会根据url后缀名产生不同的类型对象，getRes方法可直接读出来），它们都是Resource类的子类，因此对象调用dispose()方法后就可释放资源。
 
 释放完资源后，还可通过Loader.loadeMap属性查看现有缓存中的资源。
 
