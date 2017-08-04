@@ -111,7 +111,7 @@
       import laya.net.Loader;
       import laya.utils.Handler;
       import laya.webgl.WebGL;
-      import ui.ListDemoUI;
+      import ui.ListPageUI;
    
       public class ListDemo 
       {
@@ -129,7 +129,7 @@
            private function onLoaded():void
           {
           //实例UI界面
-          var listView:ListDemoUI = new ListDemoUI();
+          var listView:ListPageUI = new ListPageUI();
           Laya.stage.addChild(listView);    
           }
       }
@@ -170,7 +170,7 @@
       import laya.ui.Label;
       import laya.utils.Handler;
       import laya.webgl.WebGL;
-      import ui.ListDemoUI;
+      import ui.ListPageUI;
    
       public class ListDemo 
       {
@@ -189,7 +189,7 @@
            private function onLoaded():void
           {
           //实例UI界面
-          listView = new ListDemoUI();
+          listView = new ListPageUI();
           Laya.stage.addChild(listView);    
           //获得List模拟数据，并渲染
           getListData(); 
@@ -214,7 +214,7 @@
   private function onRender(cell:Box,index:int):void 
     {
       //如果索引不再可索引范围，则终止该函数
-                      if(index  arr.length)return;
+                      if(index > arr.length)return;
                       //获取当前渲染条目的数据
                       var data:Object=arr[index];
                       //根据子节点的名字listNumber，获取子节点对象。         
@@ -269,7 +269,7 @@ listView._list.vScrollBarSkin='';
       import laya.ui.Label;
       import laya.utils.Handler;
       import laya.webgl.WebGL;
-      import ui.ListDemoUI;
+      import ui.ListPageUI;
    
       public class ListDemo 
       {
@@ -288,7 +288,7 @@ listView._list.vScrollBarSkin='';
            private function onLoaded():void
           {
           //实例UI界面
-          listView = new ListDemoUI();
+          listView = new ListPageUI();
           Laya.stage.addChild(listView);    
           //获得List模拟数据，并渲染
           getListData(); 
@@ -354,7 +354,7 @@ listView._list.vScrollBarSkin='';
    import laya.ui.Label;
    import laya.utils.Handler;
    import laya.webgl.WebGL;
-   import ui.ListDemoUI;
+   import ui.ListPageUI;
    public class ListDemo 
    {
     private var listView:ListDemoUI;//UI面板
@@ -372,7 +372,7 @@ listView._list.vScrollBarSkin='';
      private function onLoaded():void
     {
     //实例UI界面
-    listView = new ListDemoUI();
+    listView = new ListPageUI();
     Laya.stage.addChild(listView);    
     //获得List模拟数据，并渲染
           getListData(); 
