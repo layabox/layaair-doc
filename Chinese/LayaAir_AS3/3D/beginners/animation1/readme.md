@@ -127,16 +127,18 @@ var ani:Animator=role3D.getChildAt(0).getComponentByType(Animator) as Animator;
 
 查看Animator动画组件中play()方法，具体方法参数如下：
 
+**Tips：1.7.9版后，play()方法取消了loop是否循环参数，老版本还可以使用。动画是否循环请在unity编辑器动画属性中进行勾选设置，导出后引擎将遵循其设置进行动画播放。见图5、6中loop Time选择框！**
+
 ```java
 /**
 * 播放动画。
 * @param	name 如果为null则播放默认动画，否则按名字播放动画片段。
-* @param	loop 是否循环播放。
 * @param	playbackRate 播放速率。
 * @param	startFrame 开始帧率。
 * @param	endFrame 结束帧率.-1表示为最大结束帧率。
 */
-play(name:String=null,loop:Boolean=true,playbackRate:Number=1.0,startFrame:int=0,endFrame:int=-1)
+play(name:String=null,playbackRate:Number=1.0,startFrame:int=0,endFrame:int=-1)
+ 
 ```
 
 修改示例中的代码如下：
@@ -150,7 +152,7 @@ scene.addChild(role3D);
 //获取角色动画组件
 var ani:Animator=role3D.getChildAt(0).getComponentByType(Animator) as Animator;
 //播放控制器中某个动画(播放第0帧到34帧的站立呼吸动画)
-ani.play(null,true,1,0,34);
+ani.play(null,1,0,34);
 ```
 
 编译运行后效果如下，只循环播放了0-34帧的站立动画。
@@ -169,7 +171,7 @@ unity中动画片段分段方法如下：
 
 Tips：如需在游戏中动画循环播放，请勾选下图中“Loop Time"选项。
 
-![图5](img/5.png)<br>（图5）
+![图5](img/5.png)<br>（图5） 
 
 在本示例中一共4个动作，根据美术提供的动画帧数，修改增加成4个动画片段（图6）。
 
