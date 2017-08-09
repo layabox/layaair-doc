@@ -88,7 +88,6 @@ if( window.conch )
     window.conch.showAssistantTouch(false);
 }
 ```
-
 **Tips：**
 *1、如果AssitantTouch更早消失，可以在config.js中进行设置*
 *2、在LayaPlayer-0.9.5以前的版本，默认是打开的，0.9.5以后的版本，默认就是关闭的*
@@ -140,7 +139,17 @@ alert(localStorage.test);
 window.showAlertOnJsException(false);
 ```
 
-## 10. 接管android的后退按钮
+## 10. 设置慢速模式（30帧）
+LayaPlayer中FPS默认是60，但是针对于很多对实时性要求不强的游戏，刷新到30帧就可以了，这个时候可以通过以下函数进行设置。
+```javascript
+conch.config.setSlowFrame(true);
+```
+**Tips**  
+**1、conch.config只能LayaPlayer环境下调用，在网页版本中是没有conch定义的，所有需要判断一下是否存在。**  
+**2、如果使用as语言开发的时候，可以通过 Browser.window['conch']这种方式获得conch对象。**
+
+
+## 11. 接管android的后退按钮
 （LayaNative版本 >=0.9.8）  
 以前版本的LayaNative，对后退键的处理方式是连续按两次后退键就退出App。 从0.9.8以后，LayaNative引入了两个函数 conch.setOnBackPressedFunction(onBack) 和conch.exit(), 可以在脚本中接管对后退键的处理。接口定义为：  
 
