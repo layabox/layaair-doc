@@ -54,7 +54,7 @@
                 "name_3_file": "LayaAir_introduction.md"
               },
               {
-                "name_3_name": "Introduction to engine features",
+                "name_3_name": "Introduction of the engine",
                 "name_3_url": "English/Layabox_Intro/",
                 "name_3_file": "LayaAir_features.md"
               },
@@ -64,8 +64,8 @@
                 "name_3_file": "readme.md"
               },
               {
-                "name_3_name": "LayaAir引擎AS3与Flash原生AS3的开发差异",
-                "name_3_url": "Chinese/LayaAir_AS3/",
+                "name_3_name": "Difference between LayaAir engine AS3 and Flash native AS3",
+                "name_3_url": "English/LayaAir_AS3/",
                 "name_3_file": "readme.md"
               }
             ]
