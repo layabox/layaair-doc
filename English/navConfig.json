@@ -46,7 +46,7 @@
             ]
           },
           {
-            "name_2_name": "LayaAir引擎简介",
+            "name_2_name": "LayaAir engine summary",
             "name_2_data": [
               {
                 "name_3_name": "LayaAir features",
@@ -59,8 +59,8 @@
                 "name_3_file": "LayaAir_features.md"
               },
               {
-                "name_3_name": "LayaAir引擎快速上手指南【新手必读】",
-                "name_3_url": "Chinese/",
+                "name_3_name": "Quick Start Guide (recommended for beginner)",
+                "name_3_url": "English/",
                 "name_3_file": "readme.md"
               },
               {
