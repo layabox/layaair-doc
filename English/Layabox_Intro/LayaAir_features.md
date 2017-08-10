@@ -1,63 +1,64 @@
-# LayaAir引擎特性简介
+# Introduction to the LayaAir engine features
 
 
 
-​        LayaAir是Layabox旗下的第二代HTML5开源引擎。是全球唯一支持ActionScript3、JavaScript、TypeScript三种开发语言，并且一次开发同时发布Native APP与HTML5的游戏引擎，也是全球首款基于HTML5协议的全能型开源引擎。除支持2D\3D\VR\AR的游戏开发外，引擎还可以用于应用软件、广告、营销、教育等众多领域。
+​        LayaAir is Layabox's second generation HTML5 open source engine. It support ActionScript3, JavaScript, TypeScript language development and release for apps mobile and HTML5. In addition to supporting 2D\3D\VR\AR game development, the engine can also be used in advertising, marketing, education and many other fields.
 
-​        LayaAir引擎是一套全新设计的精简API的游戏引擎，具有极致的性能、轻量易用、支持多语言开发、API功能齐全、工具链完善高效、开源免费、支持多版本发布等特点。
-
-
-
-### 极致性能
-
-​        LayaAir引擎同时支持WebGL与Canvas渲染。优先使用webgl渲染（当WebGL不可用时，自动无缝转换为canvas渲染）。引擎设计过程中以性能为优先原则进行极致优化，在谷歌等优秀的浏览器环境下运行性能媲美Unity3D等APP原生引擎。LayaAir拥有多款APP级的已上线2D游戏精品和3D游戏精品，证明LayaAir引擎的流畅性能。
+​        With a new streamlined design API game engine, with optimal performance, light weight and easy to use,cross platform conception,  efficient, free open source tool chain, support multi releases etc..
 
 
 
-### 轻量易用
+### Flexible
 
-​        LayaAir引擎 API设计上追求精简，简单易用，上手容易，引擎本身非常注意自身大小，是目前同等功能最小的HTML5引擎。
-
-
-
-### 支持多语言开发
-
-​        LayaAir引擎同时支持ActionScript3、TypeScript、JavaScript三种语言开发HTML使用任意一种自己喜欢的语言开发即可。
+​        An open-source HTML5 engine which provides Canvas and WebGl for rendering, if Webgl is not supported, it switch automatically into Canvas mode.  Assets content and level design issues have been think for Unity3D or MAYA/3DS MAX user. LayaAir has a variety of mobile app which has been on-line in 2D or 3D game store.
 
 
 
-### 功能齐全
 
-​        LayaAir引擎同时支持2D，3D，VR ，AR，时间轴动画，缓动、UI系统、粒子动画、骨骼动画、物理系统等。
+### Conveniant
+
+​        Easy to use, easy to get started, the engine itself is complete while being aware careful on size.
 
 
 
-### 工具链完善高效
+### Support for multilingual development
 
-​        LayaAir引擎除提供可视化的集成式开发环境LayaAirIDE编辑器外，还支持大量主流的第三方工具链，如：Unity3D、TiledMap、Spine、DragonBones等。建立了完善的工具链生态，可视化的编辑器，清晰的工作流，让美术，策划，程序紧密配合，大幅提升开发效率。
+​        The LayaAir engine supports ActionScript3, TypeScript, and JavaScript development. Using whatever language you like won't effect on final performance.
+
+
+
+### Scalable project
+
+​        The LayaAir engine is fit for any 2D, 3D, VR, AR project. Useful functionalities provided such as timeline, slow motion, UI systems, particle animation, skeletal animation, and physical systems.
+
+
+
+### Efficiant and complete toolchain
+
+​        In addition to providing  LayaAirIDE editor, the LayaAir engine also supports a large number of  third party tool chains such as Unity3D, TiledMap, Spine, DragonBones, and so on. Set up a perfect tool chain ecology, visual editor, clear workflow, conveniant for  team cooperation with designer, greatly enhance an efficiency development.
 
 ### 
 
-### 开源免费
+### Free and open-source
 
-​         LayaAir引擎遵循MIT开源协议，源码免费使用，包括商用。并将引擎源码全部开源并托管到github（[https://github.com/layabox/layaair）。](https://github.com/layabox/layaair%EF%BC%89%E3%80%82)
+​         LayaAir engine is under MIT license, source code is free to be modified, including for commercial applications. Update source code project are managed on GitHub（[https://github.com/layabox/layaair）。](https://github.com/layabox/layaair%EF%BC%89%E3%80%82)
 
 
 
-### 强力的技术支持
+### Strong technical support
 
-​       LayaAir引擎提供了强力的技术支持，包括官网文档、微信公众号、QQ技术交流群、官网问答社区、在线视频教育的课堂等。
+​       Learning facilities accompagny LayaAir engine , such as the official website document, WeChat official page, QQ group, forum community, online video education classroom and so on.
 
-​     LayaAir引擎开发者中心：[http://ldc.layabox.com/](http://ldc.layabox.com/)
+​     LayaAir Developer Center:[http://ldc.layabox.com/](http://ldc.layabox.com/)
 
-​     LayaAir引擎微信公众号：Layabox
+​     LayaAir official WeChat account page: Layabox
 
-​     LayaAir引擎问答社区：[http://ask.layabox.com/](http://ask.layabox.com/)
+​     LayaAir engine Q & A community: [http://ask.layabox.com/](http://ask.layabox.com/)
 
-​     LayaAir引擎视频教学课堂：[http://layabox.ke.qq.com/](http://layabox.ke.qq.com/)
+​     LayaAir video tutorial classroom: [http://layabox.ke.qq.com/](http://layabox.ke.qq.com/)
 
-​     LayaAir开发者综合交流QQ群：330223972
+​     LayaAir official QQ group: 330223972
 
-​     LayaAir引擎2D交流QQ群：104144216
+​     LayaAir 2D technical QQ group: 104144216
 
-​     LayaAir引擎3D&VR交流QQ群：343966316
+​     LayaAir 3D/VR technical QQ group: 343966316

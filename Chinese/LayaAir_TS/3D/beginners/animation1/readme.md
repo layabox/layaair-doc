@@ -104,16 +104,17 @@ var ani:Laya.Animator=role3D.getChildAt(0).getComponentByType(Laya.Animator) as 
 
 查看Animator动画组件中play()方法，具体方法参数如下：
 
+**Tips：1.7.9版后，play()方法取消了loop是否循环参数，老版本还可以使用。动画是否循环请在unity编辑器动画属性中进行勾选设置，导出后引擎将遵循其设置进行动画播放。见图5、6中loop Time选择框！**
+
 ```java
 /**
 * 播放动画。
 * @param    name 如果为null则播放默认动画，否则按名字播放动画片段。
-* @param    loop 是否循环播放。
 * @param    playbackRate 播放速率。
 * @param    startFrame 开始帧率。
 * @param    endFrame 结束帧率.-1表示为最大结束帧率。
 */
-play(name:String=null,loop:Boolean=true,playbackRate:Number=1.0,startFrame:int=0,endFrame:int=-1)
+play(name:String=null,playbackRate:Number=1.0,startFrame:int=0,endFrame:int=-1)
 ```
 
 修改示例中的代码如下：

@@ -2,15 +2,15 @@
 
 # 其他说明
 
-## 1.关于第三方地图
+## 1. 关于第三方地图
 
 LayaPlayer底层渲染使用openGLES渲染，使用android的GLSurfaceView控件和iOS的GLKView控件，所以无法支持第三方地图，如百度地图。
 
-## 2.关于文件格式
+## 2. 关于文件格式
 
 **项目中的文本格式文件（例如:ini、xml、html、json、js等）都必须是utf8编码格式，因为iOS设备不支持非utf8格式编码的文件。**
 
-## 3.debug模式和release模式
+## 3. debug模式和release模式
 
 LayaPlayer底层LOG分为三种：
 
@@ -42,13 +42,13 @@ if( window.conch )
 
 ![1](img/1.png)
 
-## 5.关于iOS模拟器
+## 5. 关于iOS模拟器
 
 LayaPlayer在0.9.5以后的版本，支持iOS模拟器运行，构建好项目后，选择模拟器便可运行。
 
 **Tips：虽然LayaPlayer支持iOS模拟器，但是运行效率比较低，建议开发者使用iOS真机调试。**
 
-## 6.获取各种信息
+## 6. 获取各种信息
 
 | 函数名称                 | 函数说明               | 返回值说明                                    | 备注                               |
 | -------------------- | ------------------ | ---------------------------------------- | -------------------------------- |
@@ -74,7 +74,7 @@ if( window.conch )
 *1、conch只能LayaPlayer环境下调用，在网页版本中是没有conch定义的，所有需要判断一下是否存在。*
 *2、如果使用as语言开发的时候，可以通过 Browser.window['conch']这种方式获得conch对象。*
 
-## 7.AssistantTouch
+## 7. AssistantTouch
 
 LayaPlayer引擎内嵌了一个AssistantTouch，如下图所示：
 
@@ -88,12 +88,11 @@ if( window.conch )
     window.conch.showAssistantTouch(false);
 }
 ```
-
 **Tips：**
 *1、如果AssitantTouch更早消失，可以在config.js中进行设置*
 *2、在LayaPlayer-0.9.5以前的版本，默认是打开的，0.9.5以后的版本，默认就是关闭的*
 
-## 8、关于LocalStorage
+## 8. 关于LocalStorage
 
 LayaNative支持LocalStorage的使用，但是有格式要求，必须使用getItem()、setItem()来存储值以及取值
 
@@ -132,7 +131,7 @@ alert(localStorage.test);
 
 
 
-## 9、屏蔽项目中报错弹框
+## 9. 屏蔽项目中报错弹框
 
 项目运行过程中有时会弹出一些错误的提示，这些提示都是项目中有代码写错了。我们的建议是解决掉这些错误弹框里边的错，如果实在是解决不掉再去屏蔽。报错弹框代码如下所示：
 
@@ -140,5 +139,49 @@ alert(localStorage.test);
 window.showAlertOnJsException(false);
 ```
 
+## 10. 设置慢速模式（30帧）
+LayaPlayer中FPS默认是60，但是针对于很多对实时性要求不强的游戏，刷新到30帧就可以了，这个时候可以通过以下函数进行设置。
+```javascript
+conch.config.setSlowFrame(true);
+```
+**Tips**  
+**1、conch.config只能LayaPlayer环境下调用，在网页版本中是没有conch定义的，所有需要判断一下是否存在。**  
+**2、如果使用as语言开发的时候，可以通过 Browser.window['conch']这种方式获得conch对象。**
 
+
+## 11. 接管android的后退按钮
+（LayaNative版本 >=0.9.8）  
+以前版本的LayaNative，对后退键的处理方式是连续按两次后退键就退出App。 从0.9.8以后，LayaNative引入了两个函数 conch.setOnBackPressedFunction(onBack) 和conch.exit(), 可以在脚本中接管对后退键的处理。接口定义为：  
+
+```javascript
+interface conch {
+    ...
+    setOnBackPressedFunction(onBack:()=>void);
+    exit():void;
+    ...
+}
+```
+
+*setOnBackPressedFunction(f)*  
+f是当用户按下后退键的时候执行的函数。
+一旦调用了这个函数，就屏蔽了两次退出的功能，这时候，如果想要退出应用的话，只能通过调用exit()函数来实现。
+
+*exit()*    
+调用这个函数直接退出App。
+
+*注意*
+只有Android版有这两个函数。
+
+js示例：  
+```javascript
+var n=3;
+if(window.conch && window.conch.setOnBackPressedFunction){
+    window.conch.setOnBackPressedFunction(()=>{
+        console.log('press back '+n);
+        if(n-- <=0){
+            window.conch.exit();
+        }
+    });
+}
+```
 
