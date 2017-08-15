@@ -1753,21 +1753,21 @@
                 "name_3_name": "LayaAir3D之脚本组件",
                 "name_3_url": "Chinese/LayaAir_TS/3D/beginners/Script_component3D/",
                 "name_3_file": "readme.md"
+              }, 
+            ]
+          },
+          {
+            "name_2_name": "3D简单实例",
+            "name_2_data": [
+              {
+                "name_3_name": "3D角色动画控制",
+                "name_3_url": "Chinese/LayaAir_TS/3D/examples/roleAniControl/",
+                "name_3_file": "readme.md"
               },
               {
-                "name_2_name": "3D简单实例",
-                "name_2_data": [
-                  {
-                    "name_3_name": "3D角色动画控制",
-                    "name_3_url": "Chinese/LayaAir_TS/3D/examples/roleAniControl/",
-                    "name_3_file": "readme.md"
-                  },
-                  {
-                    "name_3_name": "3D角色脚本控制与碰撞检测",
-                    "name_3_url": "Chinese/LayaAir_TS/3D/examples/roleScriptControl/",
-                    "name_3_file": "readme.md"
-                  }
-                ]
+                "name_3_name": "3D角色脚本控制与碰撞检测",
+                "name_3_url": "Chinese/LayaAir_TS/3D/examples/roleScriptControl/",
+                "name_3_file": "readme.md"
               }
             ]
           }
@@ -2666,21 +2666,21 @@
                 "name_3_name": "LayaAir3D之脚本组件",
                 "name_3_url": "Chinese/LayaAir_JS/3D/beginners/Script_component3D/",
                 "name_3_file": "readme.md"
+              }
+            ]
+          },
+          {
+            "name_2_name": "3D简单实例",
+            "name_2_data": [
+              {
+                "name_3_name": "3D角色动画控制",
+                "name_3_url": "Chinese/LayaAir_JS/3D/examples/roleAniControl/",
+                "name_3_file": "readme.md"
               },
               {
-                "name_2_name": "3D简单实例",
-                "name_2_data": [
-                  {
-                    "name_3_name": "3D角色动画控制",
-                    "name_3_url": "Chinese/LayaAir_JS/3D/examples/roleAniControl/",
-                    "name_3_file": "readme.md"
-                  },
-                  {
-                    "name_3_name": "3D角色脚本控制与碰撞检测",
-                    "name_3_url": "Chinese/LayaAir_JS/3D/examples/roleScriptControl/",
-                    "name_3_file": "readme.md"
-                  }
-                ]
+                "name_3_name": "3D角色脚本控制与碰撞检测",
+                "name_3_url": "Chinese/LayaAir_JS/3D/examples/roleScriptControl/",
+                "name_3_file": "readme.md"
               }
             ]
           }
