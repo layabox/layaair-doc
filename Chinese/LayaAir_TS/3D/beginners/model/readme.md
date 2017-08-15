@@ -154,7 +154,7 @@ private onCreateComplete():void{
 
 “*.lm”文件是模型数据文件，可以生成MeshSprite3D或SkinnedMeshSprite3D类型显示对象的网格数据Mesh，包含了模型网格的顶点位置、法线、顶点色、顶点UV等信息。
 
-通过一部加载MeshSprite.load()或预加载Laya.loader.create()方法加载，参考代码如下：
+通过异步加载MeshSprite.load()或预加载Laya.loader.create()方法加载，参考代码如下：
 
 ```typescript
 ......
