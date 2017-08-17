@@ -1,62 +1,62 @@
-# Layabox的引擎非游戏案例
+# Non games relative product 
 
  
 
-Layabox旗下第二代引擎LayaAir是全球首款基于HTML5协议的全能型开源引擎。是全球唯一支持Flash AS3、JavaScript、TypeScript三种开发语言，并且一次开发同时发布APP、HTML5、Flash三个版本的游戏引擎。 除支持2D\3D\VR\AR的游戏开发外，引擎还可以用于应用软件、广告、营销、教育等众多领域，性能媲美APP引擎。
+LayaAir is the Layabox's second generation engine, one of the most active and popular open source engine based on the HTML5 protocol. Support Flash, AS3, JavaScript, TypeScript development languages, target  mobile APP, HTML5, Flash release platform from same code source. In addition to supporting the development of 2D\3D\VR\AR games, the engine can also be used in more general applications, advertising, marketing, education and many other fields. Performance are comparable to the mobile APP engine ones.
 
-下面将在众多的非游戏案例中，选择几个知名的代表作品，展示给开发者朋友们：
+Here are a number of non-game case content, a selection showcase from well-known representative company and establishment:
 
 
 
-## 一、LayaAir IDE
+## 1. LayaAir IDE
 
-LayaAir IDE是由LayaAir引擎开发，基于LayaAir UI系统，实现可视化编辑功能和自适应效果，看起来和原生桌面软件没有差别！
+LayaAir IDE was specifically concepted and developed for the LayaAir engine API, with ergonimic LayaAir UI system,  visual editing and adaptive effects.
 ​	![blob.png](img/1.png)<br/>
-​	图(1)可前往Layabox官网下载
+​	Figure (1) can download it Layabox official website
 
 
 
-## 二、Burberry 微信H5广告
+## 2. Burberyy Wechat HTML5 advertising
 
-上海彼邑采用LayaAir引擎开发的奢侈品牌Burberry新年广告出现在微信朋友圈，一时成为热点。整个H5融合了私人订制、产品展示、吴亦凡拜年等元素，将精美的画质、流畅的体验、出色的视频播放性能融为一体，展现出了Burberry的英式优雅。
+Shanghai BiYi used LayaAir engine to develope the luxury brand Burberry New Year's advertising. It appeared in WeChat moment, and make viral buzz temporarily. Excellent video broadcast performance integration, showing the Burberry British elegance.
 
 ​	![blob.png](img/2.png)<br/>
-​	图(2)
+​	Picture(2)
 
 ​	![blob.png](img/3.png)<br/>
-​	图(3)
+​	Picture(3)
 
 
 
 
 
-## 三、深圳地铁线路图
+## 3. Shenzhen subway map
 
-2016年，深圳地铁为了方便市民出行，使用LayaAir引擎制作了在线地铁运营网络路线图，方便市民实时查询各站之间的来往及换乘，让市民能够清晰的规划出行线路。
+In 2016,  in order to facilitate the public travel display service. The Shenzhen Metro use LayaAir engine production to render online subway operation network. With road map to facilitate the public real-time inquiries between the station exchanges and transfer, make for users a clearly plan travel routes.
 
 ​	![blob.png](img/5.png)<br/>
-​	图(5) 可前往深圳地铁官网体验
+​	Picture(5) available on Shenzhen Metro official website
 
 
 
-## 四、美团营销广告
+## 4. MeiTuan group marketing advertising
 
 ![6-1](img/6-1.png) 
 
-（图6-1）美团H5营销广告截图
+(Picture 6-1) MeiTuan group screenshots of HTML5 marketing advertising 
 
 ![6-2](img/6-2.png) 
 
-（图6-2）美团H5营销广告体验二维码
+(Picture 6-2) MeiTuan  QRcode to display the HTML5 advertisment
 
 
 
-## 五、乐视营销广告
+## 5. LeShi Music marketing advertising
 
 ![7-1](img/7-1.png) 
 
-（图7-1）乐视营销广告截图
+(Picture 7-1) Leshi Music advertising screenshots
 
 ![7-2](img/7-2.png) 
 
-（图7-2）乐视营销广告体验二维码
+(Figure 7-2) Leshi Music QRcode to display the HTML5 advertisment
