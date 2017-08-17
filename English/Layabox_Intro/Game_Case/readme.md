@@ -79,7 +79,7 @@ Based on the Japanese popular classic cartoon "Hunter X Hunter", an adapted RPG 
 
 ## Layabox second generation open source engine LayaAir
 
-　　**Support ActionScript3, TypeScript, JavaScript language development, can display Canvas or WebGL rendering modes. Scalable project suitable for 2D, 3D, AR, VR content for Flash, HTML5, APP (Android and iOS) mobile release platform. In a browser running environment that does not require Runtime, LayaAir game performance are  comparable to APP games. LayaAir publish in April 2016 an open source framework, the engine cover by Tencent, Xianhai, Hudie Hudong, Kaixing Wang, Sanqi Hu entertainment, Feiyin, 91wan, Hu ai hudong and other well-known developers used.
+　　**Support ActionScript3, TypeScript, JavaScript language development, can display Canvas or WebGL rendering modes. Scalable project suitable for 2D, 3D, AR, VR content for Flash, HTML5, APP (Android and iOS) mobile release platform.** In a browser running environment that does not require Runtime, LayaAir game performance are  comparable to APP games. LayaAir publish in April 2016 an open source framework, the engine cover by Tencent, Xianhai, Hudie Hudong, Kaixing Wang, Sanqi Hu entertainment, Feiyin, 91wan, Hu ai hudong and other well-known developers used.
 
 
 
