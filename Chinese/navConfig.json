@@ -1627,6 +1627,21 @@
             ]
           },
           {
+            "name_2_name": "游戏加载策略",
+            "name_2_data": [
+              {
+                "name_3_name": "二进制图片",
+                "name_3_url": "Chinese/LayaAir_TS/2D/advanced/loadStrategy/binary_Image/",
+                "name_3_file": "readme.md"
+              },
+              {
+                "name_3_name": "多线程worker",
+                "name_3_url": "Chinese/LayaAir_TS/2D/advanced/loadStrategy/worker/",
+                "name_3_file": "readme.md"
+              }
+            ]
+          },
+          {
             "name_2_name": "性能优化",
             "name_2_data": [
               {
@@ -1767,6 +1782,11 @@
               {
                 "name_3_name": "3D角色脚本控制与碰撞检测",
                 "name_3_url": "Chinese/LayaAir_TS/3D/examples/roleScriptControl/",
+                "name_3_file": "readme.md"
+              },
+              {
+                "name_3_name": "3D多场景运用示例",
+                "name_3_url": "Chinese/LayaAir_TS/3D/examples/multiScene/",
                 "name_3_file": "readme.md"
               }
             ]
@@ -2540,6 +2560,21 @@
             ]
           },
           {
+            "name_2_name": "游戏加载策略",
+            "name_2_data": [
+              {
+                "name_3_name": "二进制图片",
+                "name_3_url": "Chinese/LayaAir_JS/2D/advanced/loadStrategy/binary_Image/",
+                "name_3_file": "readme.md"
+              },
+              {
+                "name_3_name": "多线程worker",
+                "name_3_url": "Chinese/LayaAir_JS/2D/advanced/loadStrategy/worker/",
+                "name_3_file": "readme.md"
+              }
+            ]
+          },
+          {
             "name_2_name": "性能优化",
             "name_2_data": [
               {
@@ -2680,6 +2715,11 @@
               {
                 "name_3_name": "3D角色脚本控制与碰撞检测",
                 "name_3_url": "Chinese/LayaAir_JS/3D/examples/roleScriptControl/",
+                "name_3_file": "readme.md"
+              },
+              {
+                "name_3_name": "3D多场景运用示例",
+                "name_3_url": "Chinese/LayaAir_JS/3D/examples/multiScene/",
                 "name_3_file": "readme.md"
               }
             ]
