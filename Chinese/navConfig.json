@@ -1768,6 +1768,11 @@
                 "name_3_name": "LayaAir3D之脚本组件",
                 "name_3_url": "Chinese/LayaAir_TS/3D/beginners/Script_component3D/",
                 "name_3_file": "readme.md"
+              },
+              {
+                "name_3_name": "LayaAir3D之资源释放",
+                "name_3_url": "Chinese/LayaAir_TS/3D/beginners/assetsDispose/",
+                "name_3_file": "readme.md"
               }
             ]
           },
@@ -2700,6 +2705,11 @@
               {
                 "name_3_name": "LayaAir3D之脚本组件",
                 "name_3_url": "Chinese/LayaAir_JS/3D/beginners/Script_component3D/",
+                "name_3_file": "readme.md"
+              },
+              {
+                "name_3_name": "LayaAir3D之资源释放",
+                "name_3_url": "Chinese/LayaAir_JS/3D/beginners/assetsDispose/",
                 "name_3_file": "readme.md"
               }
             ]
