@@ -88,14 +88,14 @@
         ]
       },
       {
-        "nav_1_name": "2D基础篇（AS3）",
+        "nav_1_name": "2D Fundamentals (AS3)",
         "nav_1_data": [
           {
-            "name_2_name": "快速上手",
+            "name_2_name": "Quick start",
             "name_2_data": [
               {
-                "name_3_name": "用LayaAirIDE创建AS3项目并详解目录结构",
-                "name_3_url": "Chinese/LayaAir_AS3/2D/beginners/basic/LayaAirIDECreateProjects_DirectoryStructure/",
+                "name_3_name": "Create AS3 project with LayaAirIDE and directory structure explained",
+                "name_3_url": "English/LayaAir_AS3/2D/beginners/basic/LayaAirIDECreateProjects_DirectoryStructure/",
                 "name_3_file": "readme.md"
               },
               {
