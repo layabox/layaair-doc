@@ -1,137 +1,137 @@
-# 用LayaAirIDE创建AS3项目并详解目录结构
+# Create AS3 project with LayaAirIDE and directory structure explained
 
-　　尽管当前推荐AS3开发者采用FlashDevelop和FlashBuilder环境开发LayaAir引擎的HTML5项目。但是我们建议先通过LayaAirIDE创建项目，再通过FlashDevelop或FlashBuilder打开编辑。通过LayaAirIDE创建项目会默认建立清晰的目录结构。下面我们就以LayaAirIDE工具创建AS3空项目作为开始，带领大家创建项目并介绍项目的结构。
-
-
-
-## 一、用LayaAirIDE创建AS3项目
-
-步骤一：打开LayaAirIDE，点击新建项目，如图1
-
-![图片](img/1.jpg)   <br />（图1）
+　　Although we previously recommended FlashDevelop and FlashBuilder environments  for AS3 developer, we advice creating the project first through LayaAirIDE. Then can opening and continue edit via FlashDevelop or FlashBuilder. Building a project through LayaAirIDE will create a clear directory structure by default. Now let's start with the LayaAirIDE tool to create the AS3 empty project, leading you to introduce the structure of the project.
 
 
 
-步骤二：选择“LayaAir空项目”在设置项目名称、路径、类型，以及选择完引擎版本后，点击“创建”建立一个新的空项目。如图2。
+## A. create a AS3 project with LayaAirIDE
 
-![图片](img/2.jpg) <br /> （图2）
+Step 1: Open LayaAirIDE and click the new project, as shown in Picture 1
 
-
-
-步骤三：在点击“创建”后，可以看到项目的结构，项目文件夹结构如图3所示：
-
-![图片](img/3.png)  <br />（图3）
+![图片](img/1.jpg)   <br />(Picture 1)
 
 
 
-至此我们已成功的创建了一个AS3项目工程，推荐采用FlashDevelop或Flash Builder打开项目。
+Step 2: Select "LayaAir empty project". After setting the project name, path, type, and select the engine version, click create to generate a new empty project. As shown in figure 2.
+
+![图片](img/2.jpg) <br /> (Picture 2)
+
+
+
+Step 3: after you click create, you can see the structure of the project. The folder structure of the project is shown in figure 3:
+
+![图片](img/3.png)  <br />(Picture 3)
+
+
+
+At this point we have successfully created an AS3 project, it is recommended to use FlashDevelop or Flash Builder to open the project.
 
 
 
 
 
-## 二、介绍AS3项目结构
+## B. Introduce the AS3 project structure
 
-**接下来，将会结合上一节中创建的项目结构来介绍每个目录的作用。**
+**Next, the role of each directory will be introduced in conjunction with the project structure created in the previous section.**
 
 ​    
 
-### 2.1 项目配置目录（.laya文件夹）
+### 2.1 project configuration directory (.laya folder)
 
-​    .laya 文件夹下存放的是项目在开发运行中的一些配置信息，如图4所示。
+​    The.laya folder stores some of the configuration information details relative to development project, as shown in figure 4.
 
 ![4](img/4.jpg)<br />
-（图4）
+(Picture 4)
 
 
 
-#### 2.1.1  `.laya/launch.json`文件介绍 
+#### 2.1.1  `.laya/launch.json`file introduction 
 
- `.laya/launch.json` 文件保存了项目调试的一些配置信息,分别是LayaAirIDE的调试配置和chrome浏览器调试配置。不要轻易去改动，改错后会影响项目的调试。
+ `.laya/launch.json` file saves the configuration information necessary about project debugging. Respectively, the debug is handle with LayaAirIDE and configuration with Chrome. After settings is done, Manually change may not easy since the project will affect the debugging error.
 
-　　`configurations`： 这个属性下有`layaAir`和`chrome`两种调试的配置可用。
+　　`configurations`： The property have layaAir and chrome debug configuration available.
 
-　　`"name": "layaAir"` ： 表示用LayaAirIDE内置的调试方式。
+　　`"name": "layaAir"` : Indicates the built-in debugging mode with LayaAirIDE.
 
-　　`"name": "chrome调试"`   ： 表示用本地chrome浏览器调试。
+　　`"name": "chrome调试"`   : Indicates debugging with local Chrome browser.
 
-　　`"file": "${workspaceRoot}/bin/h5/index.html"` ： 表示项目运行启动的入口文件路径。
+　　`"file": "${workspaceRoot}/bin/h5/index.html"` : Define the path directory where project's run start
 
-　　`"runtimeExecutable": "C:/Program Files (x86)/Google/Chrome/Application/chrome.exe"`： 为本地chrome浏览器的路径，开发者根据自己的需要来设置这个路径。
+　　`"runtimeExecutable": "C:/Program Files (x86)/Google/Chrome/Application/chrome.exe"`： The path directory of Chrome browser, developers set this path according to their own needs.
 
-　　`"userDataDir": "${tmpdir}"` 表示chrome调试缓存的临时目录，默认为用户的临时目录，开发者可以更改设置，例如将缓存设置为当前项目根目录下的cache目录： `"userDataDir": "${workspaceRoot}/cache"`。
+　　`"userDataDir": "${tmpdir}"` represent the temporary directory the chrome debug cache, default is the user's temporary directory, developers can change settings. For example, cache settings directory under the current project root path: "userDataDir": `"userDataDir": "${workspaceRoot}/cache"`。
 
 ​	
 
-#### 2.1.2 `tasks.json`文件介绍 
+#### 2.1.2 `tasks.json`file introduction
 
-`tasks.json` 是任务配置文件，打开后内容如下图所示：
+`tasks.json` is the task configuration file. After opening, the contents are shown below:
 
-![图片](img/7.jpg)<br />（图7）
+![图片](img/7.jpg)<br />(Picture 7)
 
-**args参数说明：**
+**Args parameter description:**
 
-　　`command`属性是代表启动哪个文件，AS项目启动的是LayaCompiler编译器工具。
+　　`command`The command property is the name of which file to start, and the AS project starts with the LayaCompiler transcompiler tool.
 
-　　`args`属性代表传递的参数，默认的是传递的. actionScriptProperties这个文件。
+　　`args`The args property represents the passed parameter, and default transfer to ". ActionScriptProperties" file.
 
-​	假如你是fd的配置文件可以修改成为：
+​	If you are configuring file from FlashDevelop, you can change it to:
 
 ```
 "args": ["${workspaceRoot}/LayaUISample.as3proj;iflash=false;windowshow=false;chromerun=false"];
 ```
 
-#### 2.1.3  `astool`目录
+#### 2.1.3 astool content
 
-​	`astool`是LayaCompiler编译器存放目录，`layajs`是MAC系统下的AS3编译器，`layajs.exe`是windows系统下的AS3编译器。
+​	`astool` is the LayaCompiler compiler to store directories, layajs is the AS3 compiler under the MAC system, and layajs.exe is the AS3 compiler under the windows system.
 
 
 
-### 2.2 项目的输出目录（bin/h5）
+### 2.2 The output directory of the project (bin/h5)
 
-​    `bin/h5`目录存放的是当前项目的输出文件。用于存放项目中的ActionScript3.0 文件编译生成的js 文件和HTML5页面。
+​    `bin/h5` directory stores the output file for the current project. Used to store the ActionScript 3.0 files in the project, compile the generated JS and HTML5 files pages.
 
-​    *Tips: 如果开发者需要新建资源等运行目录或文件，需要放置于`bin/h5`的同级或子级目录中。*
-
- 
-
-### 2.3 UI项目目录（laya）
-
-​    “`laya`”目录用于存放LayaAirIDE当前的UI项目。
-
-​    “`laya/assets`” 目录用来存放UI页面、粒子等组件所需的图片资源。
-
-​    “`laya/pages`”目录用来存放LayaAirIDE创建页面布局生成的文件。
-
-​    “`laya/.laya`”文件是LayaAirIDE的UI项目配置文件。
+​    *Tips: if developers need new resources, such as running directories or files, they need to be placed in the sibling or sub directory of the bin/h5.*
 
  
 
-### 2.4 项目库目录（libs）
+### 2.3 UI project directory (Laya)
 
-​    “`libs`”目录内为项目的库目录，用于存放项目使用的库文件。
+​    “`laya`” directory is used to store the current UI project for LayaAirIDE.
 
-​    “`libs/laya/src`”目录内存放LayaAir引擎库文件。
+​    “`laya/assets`” directory is used to store the image assets resources required for components suomponents, particles, and so on.
+
+​    “`laya/pages`” directory is used to store files generated by LayaAirIDE to create page layouts.
+
+​    “`laya/.laya`” file is the LayaAirIDE UI project configuration file.
+
+ 
+
+### 2.4 project library directory (libs)
+
+​    “`libs`” Library directory for the project which store all libraries files used by the project.
+
+​    “`libs/laya/src`” the LayaAir engine library file is stored in the "libs/lay /src" directory.
 
 
 
-### 2.5 项目的AS3代码目录（src）
+### 2.5 The AS3 code directory for the project (src)
 
-​    项目中的用到的AS3代码文件（.as文件）默认将存放在 src 目录。
-
-
+​    The AS3 code file (.as extension) used in the project will be stored in the src directory by default.
 
 
 
 
 
-## 三、项目配置文件介绍
 
-### 3.1 LayaAirIDE项目配置文件（项目名.laya）
 
-​    `项目名.laya` 是LayaAirIDE项目的配置文件，文件内记录了当前项目的项目名称、使用的类库版本号和项目类型。
+## C. Introduction of project configuration file
 
-​    例如：
+### 3.1 LayaAirIDE project configuration file (project name.Laya)
+
+​    `项目名.laya` name extension is the LayaAirIDE project configuration file. The project name of the current project was recorded in the file.
+
+​    By example:
 
 ```json
 {"proName":"myLaya","version":"1.5.4","proType":0}
@@ -139,22 +139,22 @@
 
 
 
-### 3.2 FlashDevelop项目配置文件（项目名.as3proj）
+### 3.2 FlashDevelop project configuration file (name project .as3proj)
 
-​    `项目名.as3proj`文件是FlashDevelop项目的配置文件。使用 FlashDevelop 编辑器开发AS3项目时，可以通过打开资源管理器，然后在目录中双击此文件用FlashDevelop 打开此项目。
+​    `项目名.as3proj` name extension is the FlashDevelop project configuration file. Use Flash Develop IDE when you develop AS3 project, You can open the Explorer and open it and then double-click the file in the directory to launch it.
 
-![图片](img/8.png) <br /> （图8）
+![图片](img/8.png) <br /> (Picture 8)
 
-或者先打开FlashDevelop工具，然后在菜单栏通过“文件”->“打开”找到项目名.as3proj所在的目录打开此项目。
+Open FlashDevelop, browse from menu bar "File"->"open" and find your .as3proj project to import LayaAirIDE AS3 into the workspace you previously make.
 
-![图片](img/9.png)<br />（图9）
+![图片](img/9.png)<br />(Picture 9)
 
 
 
-### 3.3 Flash Builder 项目配置文件
+### 3.3 Flash Builder project configuration file.
 
-​    `.settings`文件夹、`.actionScriptProperties`文件和`.project`文件是Flash Builder 项目的配置文件。使用 Flash Builder时，可以通过菜单栏“文件”->“导入Flash Builder项目”来导入LayaAirIDE创建的AS3项目。导入Flash Builder项目如下图所示：
+​    `.settings`folder, `.actionScriptProperties` and `.project`files are FlashBuiler project configuration file. With Flash Builder, browse from menu bar "File"->"Import Flash Builder Project" to import LayaAirIDE AS3 project you previously make. Import your project from Flash Builder as shown below :
 
- ![图片](img/10.png)<br /> （图10）
+ ![图片](img/10.png)<br /> (picture 10)
 
  
