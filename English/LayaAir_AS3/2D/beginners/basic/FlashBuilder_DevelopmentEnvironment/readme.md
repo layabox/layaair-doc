@@ -1,70 +1,70 @@
-# Flash Builder开发环境配置
+# Flash Builder IDE configuration
 
-### 第一步： LayaAir Engine下载
+### Step 1: LayaAir Engine Download
 
-#### 1.1 引擎下载
+#### 1.1 Engine Download
 
-​     使用LayaAirIDE开发的话，下载LayaAirIDE会自带引擎包。若开发者使用第三方工具开发，那需要先下载引擎。在官网首页或者开发者中心菜单中，拥有引擎下载的链接入口，打开链接后会出现引擎各个版本的下载列表，每一个版本均提供AS3、TS、JS三种开发语言，选择对应的开发语言包，直接点击下载即可。 
+​     If you use LayaAirIDE development, Download LayaAirIDE which include your own engine package. If developers use third party tools, you need to download the engine first. You can get it from the main page of the layabox official website. the link lead you to various versions of the engine from download list, choose among each version of AS3, TS, JS corresponding of your need, and directly click to download.
 
-#### 1.2 引擎包目录结构介绍  
+#### 1.2 Engine package directory structure 
 
-我们下载AS3版本的引擎包。当下载解压后，可以看到AS3版本的目录结构如下图所示：
+We download the AS3 version pack. After decompressed the download archive, you can see the directory structure of the AS3 version, as shown in the following figure:
 
-![图1](img/1.png) <br/>  （图1） 
+![图1](img/1.png) <br/>  (picture 1)
 
-- “LayaAirFlash”目录内是发布Flash的版本才需要的引擎库代码。
+- “LayaAirFlash” directory is the engine code necessary to released Flash version.
 
-- “libs”引擎代码目录，LayaAir引擎库代码处于该目录的src子目录中。
+- “libs” engine code directory, contain library code in src subdirectory src.
 
-- “laya.js.exe”为Windows系统下的AS3代码编译器，用于将AS3代码编译为JS代码。
+- “laya.js.exe” is the AS3 code compiler for the Windows system, which is used to transcompile AS3 code into JS.
 
-- “LayaJSMac”为苹果MAC系统下的AS3代码编译器，用于将AS3代码编译为JS代码。
+- “LayaJSMac” is the AS3 code compiler for the apple MAC system,  which is used to transcompile AS3 code into JS.
 
-- “playerglobal.swc”用于替换AS3原生编译器SDK，去除原生API语法提示，增加引擎API提示。 
+- “playerglobal.swc” is used to replace the AS3 native compiler SDK, removing native API syntax hints, and adding engine API prompts.
 
-- "worker.js"，指定worker.js路径，可以开启使用WorkerLoader来加载解码图片的功能，起到优化加载优化的作用，具体使用查看相关文档。
+- "worker.js" specify the worker.js path, you can use to open WorkerLoader functionaity and decoding pictures, optimize loading part, and others relative view document.
 
   ​
 
-### 第二步 安装Google Chrome浏览器
+### Step 2: Install Google Chrome
 
-​    当执行AS3代码编译后，默认调用Chrome浏览器打开运行项目，需要安装此浏览器进行项目调试。已安装的可跳过本步骤。
+​    When AS3 code is compiled, Google Chrome browser is called by default to run the project. In order to debugging, you need to install it.
 
 
 
-### 第三步 配置Flash Builder中的AS3编译环境
+### Step 3 : Configure AS3 compilation environment in Flash Builder
 
-​**    步骤一**：打开Flash Builder，找到“外部工具 配置”并打开该配置窗口。
+​**    A.** Open Flash Builder, find "external tool configuration" and open the configuration window.
 
 ​    ![2.jpg](img/2.jpg)<br/>
-​  图（2）  
+​  picture (2)
 
 
-​**    步骤二**：在配置窗口内，右键选中“程序”，点击“新建”，打开新建配置窗口。
+​**    B.** In the configuration window, right-click the program, click "New", and open the new configuration window.
 
 ​    ![3.jpg](img/3.jpg)<br/>
-​   图（3） 
+​   picture (3)
 
 
 
-**步骤三**：
+**C.**
 
-首先修改外部程序名称为“`LayaCompiler`”。
+First modify the external program name for “`LayaCompiler`”。
 
-然后点击“浏览文件系统”找到“`laya.js.exe`”或者直接复制”`laya.js.exe`”的路径粘贴到“位置”输入栏。
+Then click on the "Browse File System" and find “`laya.js.exe`”, or copy the ”`laya.js.exe`” path directly to the "location" input field.
 
-最后在“自变量”栏里输入`"${project_loc}\.actionScriptProperties;iflash=false"`，点击”应用“即可完成本次配置。
+Finally, in the "argument" column, enter `"${project_loc}\.actionScriptProperties;iflash=false"`, and click "apply" to complete the configuration.
 
-如果我们不想每次编译都启动一个新的谷歌浏览器进程，按刚才的配置方式再次创建一个外部程序，仅需将自变量参数改为`"${project_loc}\.actionScriptProperties;iflash=false;chromerun=false;"`如图4、图5所示。
+If we don't want to compile at every time  google browser process start,  create an external program according to the configuration with the following parameter `"${project_loc}\.actionScriptProperties;iflash=false;chromerun=false;"` Figures 4 and 5 are shown.。
 
-![4](img/4.png)<br />  （图4）
+![4](img/4.png)<br />  picture (4)
 
-![图5](img/5.png) <br/> (图5)
+![图5](img/5.png) <br/> picture (5)
 
  
 
-**Tips：“D:\LayaBox\LayaAirAs3_1.7.3_beta\as\laya.js.exe”应为laya.js.exe的实际所在路径。MAC系统下为“D:\LayaBox\LayaAirAs3_1.7.3_beta\as\LayaJSMac”**
+**Tips: “D:\LayaBox\LayaAirAs3_1.7.3_beta\as\laya.js.exe”should be the actual path of laya.js.exe. Under MAC system should be  “D:\LayaBox\LayaAirAs3_1.7.3_beta\as\LayaJSMac”**
 
 
 
-至此，建立项目前的LayaAir引擎下载，浏览器下载，Flash Builder环境下的AS3编译器配置就结束了。欢迎开发者在其它章节里继续学习。
+At this point, Installation of LayaAir engine, browser, AS3 transcompiler configuration in the Flash Builder environment are complete. Developers are encouraged to continue learning in other chapters.
