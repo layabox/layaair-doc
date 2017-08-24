@@ -105,7 +105,7 @@ Based on the Japanese popular classic cartoon "Hunter X Hunter", an adapted RPG 
 
 ###    LayaAir showcase product with  "Extreme poker"
 
-　　A community game, with many classics such as card, chess, fishing and Landlord game.
+　　A community game, with many classics such as various card and board games.
 
 ​	![blob.png](img/9.png)<br/>
 ​	Picture(9)  "Extreme poker" (scan QR code to launch game)
