@@ -16,7 +16,7 @@ LayaAir IDE was specifically concepted and developed for the LayaAir engine API,
 
 
 
-## 2. Burberyy Wechat HTML5 advertising
+## 2. Burberry Wechat HTML5 advertising
 
 Shanghai BiYi used LayaAir engine to develope the luxury brand Burberry New Year's advertising. It appeared in WeChat moment, and make viral buzz temporarily. Excellent video broadcast performance integration, showing the Burberry British elegance.
 
