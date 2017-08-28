@@ -1638,6 +1638,11 @@
                 "name_3_name": "多线程worker",
                 "name_3_url": "Chinese/LayaAir_TS/2D/advanced/loadStrategy/worker/",
                 "name_3_file": "readme.md"
+              },
+              {
+                "name_3_name": "资源版本管理",
+                "name_3_url": "Chinese/LayaAir_TS/2D/advanced/loadStrategy/versionManagement/",
+                "name_3_file": "readme.md"
               }
             ]
           },
@@ -1697,6 +1702,11 @@
               {
                 "name_3_name": "用LayaAir引擎解析Tiled Map地图",
                 "name_3_url": "Chinese/LayaAir_TS/2D/advanced/extension_modules/TiledMap/",
+                "name_3_file": "readme.md"
+              },
+              {
+                "name_3_name": "LayaAir和原生DOM交互",
+                "name_3_url": "Chinese/LayaAir_TS/2D/advanced/extension_modules/DOM/",
                 "name_3_file": "readme.md"
               },
               {
@@ -2581,6 +2591,11 @@
                 "name_3_name": "多线程worker",
                 "name_3_url": "Chinese/LayaAir_JS/2D/advanced/loadStrategy/worker/",
                 "name_3_file": "readme.md"
+              },
+              {
+                "name_3_name": "资源版本管理",
+                "name_3_url": "Chinese/LayaAir_JS/2D/advanced/loadStrategy/versionManagement/",
+                "name_3_file": "readme.md"
               }
             ]
           },
@@ -2640,6 +2655,11 @@
               {
                 "name_3_name": "用LayaAir引擎解析Tiled Map地图",
                 "name_3_url": "Chinese/LayaAir_JS/2D/advanced/extension_modules/TiledMap/",
+                "name_3_file": "readme.md"
+              },
+              {
+                "name_3_name": "LayaAir和原生DOM交互",
+                "name_3_url": "Chinese/LayaAir_TS/2D/advanced/extension_modules/DOM/",
                 "name_3_file": "readme.md"
               },
               {
