@@ -1,109 +1,109 @@
-# FlashBuiler中第一个程序“Hello Layabox”
+# FlashBuiler display first "Hello Layabox" program 
 
-> **本篇采用AS3语言在FlashBuilder环境中显示文本Hello Layabox，学完本篇即为完成LayaAir引擎的第一个程序。在学习本篇前务必保证先阅读完：Flash Builder开发环境的配置**
+> **This article uses the AS3 language to display "Hello Layabox" text in the FlashBuilder environment, This is the first program tutorial with the LayaAir engine. Before you continue this article, be sure to read firstly: "Flash Builder IDE configuration"**
 >
-> 如果大家已阅读《用LayaAirIDE创建AS3项目并详解目录结构》，并且已建立好项目的，可以跳过第一步。我们建议大家采用LayaAirIDE建立项目。
+> Ensure you have read before "Create AS3 project with LayaAirIDE and directory structure explained" too.
 >
 
 
 
-## 第一步 新建项目
+## The first part focus to build a new project
 
-**步骤一**：
+**Step 1**:
 
-打开Flash Builder，在菜单栏里点“文件”，然后选中“新建”点击“ActionScript项目”，进入创建项目的窗口。如图1所示
+Open Flash Builder. In menu bar, click "File", then select "New" , "ActionScript Project". a new window appeared to create the project as shown in Figure 1.
 
 ![1](img/1.jpg)<br />
-(图1)
+(Picture 1)
 
 
 
-**步骤二**：
+**Step 2**:
 
-在“项目名”输入栏里输入项目名称，然后在“文件夹”输入栏里输入项目存储目录或者是点击“浏览”选择存储的目录。然后点击“下一步”进入引擎编译与引擎库配置的“构建路径”窗口。如图2所示
+Enter the project name in the "Project name" input field, enter the project PATH directory in the "Folder" input field, or click "Browse" to select where your directory location. Then click "Next" to enter the "Build Path" window of the engine compilation and engine configuration as shown in picture 2
 
 ![2](img/2.jpg)<br />
-(图2)
+(Picture 2)
 
 
 
-**步骤三**：
+**Step 3**:
 
-在构建的路径配置“库路径”窗口中先删除系统自带的编译SDK（目的是为了避免导错包），
+In the built path configuration "library path",  first delete the system comes with the compiled SDK  (the purpose is to avoid the error package),
 
-然后点击“添加SWC”，将引擎包里的“playerglobal.swc”添加进来。
+Then click "add SWC" and add the "playerglobal.swc" in the engine package
 
-如果项目有发布Flash版本的需求就把LayaAirFlash中的“LayaAirFlash.swc”添加进来。如动图3所示
+If the project has released of Flash version, it requieres LayaAirFlash  which can be added with "LayaAirFlash.swc". As shown in Figure 3
 
-![动图3](img/3.gif) <br /> (动图3)
-
-
-
-***Tips**：引擎包目录下`LayaAirFlash/flash`文件夹中的`glsl2agal.swc`也是用于Flash版本的发布，但是，引用`glsl2agal.swc`之后需要在项目的源路径处引用发布Flash的库。而LayaAirFlash.swc集成了库，所以无需重复引用。需要注意的是`LayaAirFlash.swc`和`glsl2agal.swc`文件只能引入其中一个。
+![动图3](img/3.gif) <br /> (Picture 3)
 
 
 
-**步骤四**：
-
-在引入swc之后，建议将输出文件夹由默认的`bin-debug`设置为`bin`，如图4所示。因为LayaAirIDE创建项目后默认的发布目录是采用的bin目录，由于通常UI、动画等游戏设计需要用到LayaAirIDE，所以建议在创建项目的时候统一设置为`bin`。
-
-![图4](img/4.png) <br /> (图4)
+***Tips**: the glsl2agal.swc in the LayaAirFlash/flash folder in the engine package directory is also used for Flash version release , but, referencing glsl2agal.swc, you need to reference the library that publish Flash at the source path of the project. LayaAirFlash.swc integrates libraries, so there is no need to duplicate references. Need attention to import LayaAirFlash.swc or glsl2agal.swc file.
 
 
 
-**步骤五**：
+**Step 4**:
 
-在构建路径配置的“`源路径`”窗口里点击“`添加文件夹`”，输入“引擎库所在目录”或点击“浏览”选择“引擎库所在目录”（注意：引擎库所在的目录是libs文件夹下的src文件），然后点击确定，即完成了引擎库的导入。如动图5所示
+After set with swc files, it is recommended that the default output folder bin-debug rename to bin, as shown in Figure 4. Because LayaAirIDE default release project directory is used in bin directory,  which include assets content such as UI, animation depends to bin.
 
-![动图5](img/5.gif) <br /> (动图5)
-
-如果我们需要发布Flash版本，并且之前库路径引用的是`glsl2agal.swc`，那么在源路径引用的时候，还需要添加发布flash所需的源库（*引用LayaAirFlash.swc的不用添加*），flash源库位于“`引擎库目录\as\LayaAirFlash\flash\src`”目录内，如图5-2所示。
-
-![图5-2](img/5-2.png) <br /> （图5-2）
+![图4](img/4.png) <br /> (Picture 4)
 
 
 
-**最后，点击最下方的“完成”按钮，结束新建项目的引导。**
+**Step 5**:
+
+Click “`Add Folder“` in the “`Source Path“` window to define the build path configuration.  Enter "directory where the engine library is located" or click "Browse" to select "directory where the engine library is located. (Note: The directory where the engine library is located is the libs folder The src file), and then click OK, that is, the completion of the engine library import. As shown in Figure 5
+
+![动图5](img/5.gif) <br /> (Picture 5)
+
+If we need to release into Flash version,  the previous library path refers to `glsl2agal.swc` is necessary. Then the source path is referenced （LayaAirFlash.swc is not added）with source library located in the directory “`引擎库目录\as\LayaAirFlash\flash\src`”, As shown in Figure 5-2.
+
+![图5-2](img/5-2.png) <br /> (Picture 5-2)
+
+
+
+**Finally, click the bottom of the finish button to end the boot of the new project.**
 
 　　
 
 
 
-## 第二步 显示文字“Hello Layabox”
+## Second part is display text "Hello Layabox"
 
-**步骤一**：
+**Step 1**:
 
-菜单栏“文件”中选中“新建”，单击“ActionScript类”，打开新建类文件的窗口。如图6所示
+In menu bar, Click on "file" and select "new". Choose "ActionScript class" to open the new class file window. As shown in Figure 6
 
-![5](img/5.jpg)<br /> (图6)
-
-
-
-*Tips：新建的ActionScript项目中会自带一个跟项目名称同名的ActionScript类，如果需要用到这个类的话需要把里边的Sprite包删除掉，因为是Flash原生的包，不删除的话会报错。*
+![5](img/5.jpg)<br /> (Picture 6)
 
 
 
-**步骤二**：
+*Tips: the new ActionScript project will bring a project name with the same name of the ActionScript class, if you need to use this class, then need to remove the inside of the Sprite package. Since it is Flash original package, if you do not delete it, you will occurs some errors.*
 
-在名称栏输入HelloLayabox，点击“完成”新建一个ActionScript类。如图6-1所示
+
+
+**Step 2:**
+
+Enter HelloLayabox in the name field and click "Finish" to create a new ActionScript class. As shown in picture 6-1
 
 ![6](img/6.jpg)<br />
-(图6-1)
+(Picture 6-1)
 
 
 
-**步骤三**：
+**Step 3**:
 
-将HelloLayabox.as设置为默认应用程序。如图7所示
+Set HelloLayabox.as to the default application. As shown in Figure 7
 
 ![7](img/7.jpg)<br />
-(图7)
+(Picture 7)
 
 
 
-**步骤四**：
+**Step 4:**
 
-双击打开HelloLayabox.as，开始编写代码。将一个“Hello Layabox”的文本添加到舞台，代码如下：
+Double click to open HelloLayabox.as and start writing code. Add a "Hello Layabox" text to the stage with code follows:
 
 ```typescript
 package
@@ -113,14 +113,14 @@ package
 	{
 		public function HelloLayabox()
 		{
-			//初始化引擎
+			 // Create the stage with the default black background color 
 			Laya.init(600, 300);
 			var txt:Text = new Text();
-			//设置文本内容
+			// Set text content
 			txt.text = "Hello Layabox";
-			//设置文本颜色为白色，默认颜色为黑色
+			// Set the text color to white, the default color to black
 			txt.color = '#ffffff';
-			//将文本内容添加到舞台 
+			// Add text content to the stage
 			Laya.stage.addChild(txt);
 		}
 	}
@@ -129,25 +129,25 @@ package
 
 
 
-**步骤五**：
+**Step 6:**
 
-完成代码编写后，使用之前文章里配置的编译器，点击按钮开始编译，编译完成后会自动启动chrome运行代码。如图8所示
+When you've finished writing the code, use the compiler you configured from previous article, click the button to start compiling, and then start compilation and run code automatically with chrome. As shown in Figure 8
 
 ![8](img/8.jpg) <br />
 
-(图8)
+(picture 8)
 
 
-运行结果如图9所示
+The results are shown in picture 9
 
 ![9](img/9.jpg)<br />
-(图9)
+(picture 9)
 
 
 
-**步骤六**：
+**Part 6 :**
 
-“Hello Layabox”虽然已经显示出来了，但是太简陋了，下面我们就让“Hello Layabox”变的好看一些，代码如下：
+Although  this "Hello Layabox" has been successfully display, it is too simple. Let's add a better look with the following code :：
 
 ```typescript
 package
@@ -157,25 +157,25 @@ package
 	{
 		public function HelloLayabox()
 		{
-			//初始化引擎
+			//Create the stage with the default black background color 
 			Laya.init(600, 300);
 			var txt:Text = new Text();
 			txt.text = "Hello Layabox";
-			//设置文本颜色   
+			// Set the text color 
 			txt.color = '#FF0000';
-			//设置文本字体大小，单位是像素   
+			// Set the size of the text font in pixels   
 			txt.fontSize = 66;
-			//设置字体描边   
+			// Set the font stroke  
 			txt.stroke = 5;
-			//描边为5像素   
+			// Set it at 5 pixels
 			txt.strokeColor = '#FFFFFF';
-			//设置为粗体   
+			// Set bold type
 			txt.bold = true;
-			//设置文本的显示起点位置X,Y   
+			// Sets the coordinate X,Y display start point of the text.
 			txt.pos(60, 100);
-			//设置舞台背景色   
+			// Set stage background color
 			Laya.stage.bgColor = '#23238E';
-			//将文本内容添加到舞台   
+			// Add text content to the stage 
 			Laya.stage.addChild(txt);
 		}
 	}
@@ -184,11 +184,12 @@ package
 
 
 
-运行结果如图10所示
+The results are shown below:
 
 ![10](img/10.jpg)<br />
-(图10)
+picture (10)
 
 
 
-至此，如果您能跟随本篇入门教程完成上图的显示，恭喜您入门成功，我们已经完成了第一个采用AS3语言开发的HTML5程序，也说明了LayaAir的开发环境配置无误。更多LayaAir引擎开发的API使用方法，请前往官网Layabox开发者中心查看在线API与在线DEMO。
+At this point, if you can follow this tutorial, succesfully display your program so congratulations! We have completed the first HTML5 program developed by AS3 language in LayaAirIDE,  with correct environment configuration with LayaAir. 
+For more LayaAir engine development API usage, please go to the official website Layabox Developer Center to view online API and online DEMO.
