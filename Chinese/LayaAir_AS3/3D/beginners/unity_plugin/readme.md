@@ -30,7 +30,7 @@
 
 点击菜单栏LayaPlugin，会出现导出设置面板，在这我们将详细为大家讲解。
 
-**Tips：导出插件工具1.4.0版我们增加了新的一些功能，如图3中，点击菜单LayaAir3D后，下拉菜单中出现了更多的子项，LayaAir Tool是指导出资设置面板，可以把它拖拉到unity3D的界面的适合位置上，下次打开这个项目时，它会保持在设定的位置。**
+**Tips：导出插件工具1.5.0版我们增加了新的一些功能，如图3中，点击菜单LayaAir3D后，下拉菜单中出现了更多的子项，LayaAir Tool是指导出资设置面板，可以把它拖拉到unity3D的界面的适合位置上，下次打开这个项目时，它会保持在设定的位置。**
 
 **LayaAir Demo、Study、Ansewers等可以点击打开LayaAir官网，分别代表着示例、学习文档、论坛，方便开发者们解惑。**
 
@@ -110,7 +110,8 @@ Very Low       优化后的面数最低
 游戏物品节点设置（图8）
 
 Ignore Null Game Objects 
-导出时忽略空节点，LayaAir引擎不支持的节点也记作空节点，如照相机节点，灯光节点，可减少精灵数。
+导出时忽略空节点，LayaAir引擎不支持的节点也记作空节点，如灯光节点，可减少精灵数。
+注：1.5.0版已支持摄像机导出，因此忽略空节点不会影响摄像机导出。
 
 Ignore Not Active Game Objects 
 导出时忽略在unity场景中未激活的节点。
@@ -145,11 +146,15 @@ Automatically Save The Configuration
 
 #### 导出设置
 
-Borower 保存的文件路径
-Clear  清空当前配置
-Revert 从配置表中读取已保存配置
-Save   保存当前配置，保存后，下次打开后会直接使用之前配置，方便开发者们操作。
-Laya Export  导出当前资源，点击后，将导出当前场景或模型的数据到指定路径上。
+Borower             保存的文件路径
+Clear Config      清空当前配置
+Revert  Config   从配置表中读取已保存配置
+Save  Config      保存当前配置，保存后，下次打开后会直接使用之前配置，方便开发者们操作。
+LayaAir Run       点击可使用LayaAir引擎直接运行该场景。
+​        		     LayaAirRun使用须知：                
+​	                    1.必须安装Node环境，express拓展模块（工具内置了express，如果无法正常使用，请自行安装）；
+​          	            2.场景中确保有一个照相机,自行调整其位置，角度，最终layaAir运行效果会与Unity运行结果保持一致。
+LayaAir Export  导出当前资源，点击后，将导出当前场景或模型的数据到指定路径上。
 
  ![图片10](img/10.png)<br>（图10）
 

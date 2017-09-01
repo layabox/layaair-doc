@@ -97,25 +97,39 @@ var ani=role3D.getChildAt(0).getComponentByType(Laya.Animator);
 
 有了动画组件后，怎么只播放其中一个动作呢？有两种方法实现对动作的控制与切换。
 
-1、播放动画帧方式。
+
+
+#### 1.代码定义动画剪辑播放
 
 上例中，在unity中并未对动画进行拆分，我们使用了模型的默认动画Take 001，插件只导出了一个.lani格式的动画解析文件。
 
-因此控制播放其中某段动画，需要设置播放方法的“开始帧”与“结束帧”方式实现。
+因此控制播放其中某段动画，需要在代码中增加自定义动画剪辑，在动画剪辑中设置开始与结束帧率方式实现。
 
 查看Animator动画组件中play()方法，具体方法参数如下：
 
-**Tips：1.7.9版后，play()方法取消了loop是否循环参数，老版本还可以使用。动画是否循环请在unity编辑器动画属性中进行勾选设置，导出后引擎将遵循其设置进行动画播放。见图5、6中loop Time选择框！**
+**Tips：1.7.10版后，play()方法取消了loop是否循环、开始帧率、结束帧率参数。动画是否循环请在unity编辑器动画属性中进行勾选设置，导出后引擎将遵循其设置进行动画播放。见图5、6中loop Time选择框！**
 
 ```java
 /**
 * 播放动画。
-* @param    name 如果为null则播放默认动画，否则按名字播放动画片段。
-* @param    playbackRate 播放速率。
-* @param    startFrame 开始帧率。
-* @param    endFrame 结束帧率.-1表示为最大结束帧率。
+* @param	name 如果为null则播放默认动画，否则按名字播放动画片段。
+* @param	playbackRate 播放速率。
 */
-play(name:String=null,playbackRate:Number=1.0,startFrame:int=0,endFrame:int=-1)
+play(name:String=null,playbackRate:Number=1.0)
+```
+
+
+**如需播放动画的某一帧到某一帧，可在原有动画的基础上创建增加动画剪辑（片断）AnimationClip，最新Animator类提供了addClip()实例方法，可以允许开发者创建动画剪辑并定义名称，然后通过play(动画剪辑名称)方法播放。**
+
+```java
+/**
+* 添加动画片段。
+* @param	clip 动画片段。
+* @param	playName 动画片段播放名称，如果为null,则使用clip.name作为播放名称。
+* @param   开始帧率。
+* @param   结束帧率。
+*/
+public function addClip(clip:AnimationClip, playName:String = null, startFrame:int = 0, endFrame:int = 4294967295
 ```
 
 修改示例中的代码如下：
@@ -127,15 +141,30 @@ var role3D=Laya.loader.getRes("monkey/monkey.lh");
 scene.addChild(role3D);
 //获取角色动画组件
 var ani = role3D.getChildAt(0).getComponentByType(Laya.Animator);
-//播放控制器中某个动画(播放第0帧到34帧的站立呼吸动画)
-ani.play(null,true,1,0,34);
+
+//加载一个动画文件创建动画剪辑（可以是已有的动画，也可以是此角色需增加的新动画文件）
+//var clip =Laya.AnimationClip.load("monkey/Assets/monkey-Take_001.lani");
+//从现有的动画中获取动画剪辑（默认根据.lani文件创建的动画剪辑）
+var clip =ani.clip;
+
+//增加一个动画剪辑引用，从clip中的0-34帧创建名为stand的动画剪辑
+ani.addClip(clip,"stand",0,34);
+//增加一个动画剪辑引用，从clip中的40-70帧创建名为move的新动画剪辑
+ani.addClip(clip,"move",40,70);
+
+//播放某个动画剪辑
+ani.play("move");
+//可获取动画剪辑总数
+console.log("当前动画剪辑总数为："+ani.getClipCount());
 ```
 
 编译运行后效果如下，只循环播放了0-34帧的站立动画。
 
 ![4](img/4.gif)(图4)</br>
 
-2、播放动画片段（动画剪辑）名方式
+
+
+#### 2.Unity中定义动画剪辑播放
 
 unity中可以对动画进行分段，并对剪辑的片段取名。 导出的资源在控制时，可通过名称进行动画切换，方便开发者们使用。（这种方式在资源导出时增加了动画解析文件，以致增加Http访问次数，使用哪种方式开发者们可根据情况自行考虑）
 
