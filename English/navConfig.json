@@ -131,11 +131,11 @@
             ]
           },
           {
-            "name_2_name": "基础概念",
+            "name_2_name": "Elemantary Concept",
             "name_2_data": [
               {
-                "name_3_name": "显示对象及相关概念",
-                "name_3_url": "Chinese/LayaAir_AS3/2D/beginners/basic/",
+                "name_3_name": "Display objects and containers",
+                "name_3_url": "English/LayaAir_AS3/2D/beginners/basic/",
                 "name_3_file": "readme.md"
               }
             ]
