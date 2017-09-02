@@ -40,7 +40,7 @@
 
 ### 开源免费
 
-​         LayaAir引擎遵循MIT开源协议，源码免费使用，包括商用。并将引擎源码全部开源并托管到github（[https://github.com/layabox/layaair）。](https://github.com/layabox/layaair%EF%BC%89%E3%80%82)
+​         LayaAir引擎遵循MIT开源协议，源码免费使用，包括商用。并将引擎源码全部开源并托管到github（[https://github.com/layabox/layaair](https://github.com/layabox/layaair)）。
 
 
 
