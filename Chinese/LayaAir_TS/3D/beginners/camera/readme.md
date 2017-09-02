@@ -4,6 +4,58 @@ LayaAir中的摄像机可以理解成拍摄电影或者电视剧时候的摄像�
 
 当然，摄像机还有其他比较重要的属性，下面将一一介绍它的功能。
 
+### 从Unity中导出摄像机
+
+引擎1.7.10版与unity导出插件1.5.0版发布后，在unity中所创建的摄像机可以被导出了！并且导出文件保留了摄像机在3D空间中的位置、视角、背景颜色、载剪、视野等参数，当加载了导出后的场景，显示的画面效果与unity中完全一致，方便了开发者们对摄像机视角的控制。
+
+同时，因为LayaAir 3D引擎支持多摄像机，因此也可以在unity中设置多个摄像机并导出，关于多摄像机的视口设置请查看本课最后的“多摄像机使用”小节。
+
+那么，如果在unity中创建了摄像机并导出，在代码中加载导出文件后，我们怎么去获取摄像机呢？这可以通过场景的子节点索引或名称来获取，获取后我们还可以对它进行移动旋转、设置天空盒、添加脚本等操作。
+
+代码如下：
+
+```java
+package {
+	import laya.d3.core.Camera;
+	import laya.d3.core.scene.Scene;
+	import laya.display.Stage;
+	import laya.utils.Handler;
+	import laya.utils.Stat;
+  
+	public class LayaAir3D
+	{
+		public function LayaAir3D() 
+		{
+			//初始化引擎
+			Laya3D.init(1000, 500,true);			
+			//适配模式
+			Laya.stage.scaleMode = Stage.SCALE_FULL;
+			Laya.stage.screenMode = Stage.SCREEN_NONE;
+			//开启统计信息
+			Stat.show();			
+			//预加载角色动画资源
+			Laya.loader.create("monkey/monkey.ls",Handler.create(this,onSceneOK));
+		}		
+		
+		private function onSceneOK():void
+		{
+			//添加3D场景
+			var scene:Scene = Laya.loader.getRes("monkey/monkey.ls");
+			Laya.stage.addChild(scene);  
+          
+         	//从场景中获取摄像机
+            var camera:Camera = scene.getChildByName("Main Camera") as Camera;
+          	//后续对摄像机的逻辑操作.......
+        }
+	}
+}
+			
+```
+
+  在Untiy中，摄像机默认名为“Main Camera"，因此在上述代码中，通过scene的getChildByName(“Main Camera")方法得到了摄像机，以供后续逻辑操作。开发者们也可以在unity中自定义摄像机的名字。
+
+
+
 **（tips：下列示例代码在`快速开启3D之旅`文档中的代码基础上修改）**
 
 ### 摄像机移动与旋转
@@ -147,3 +199,67 @@ skyBox.textureCube = Laya.TextureCube.load("skyBox/skyCube.ltc");
 ```
 
 ![5](img/5.png)</br>(图5)使用天空盒
+
+
+
+### 多摄像机的使用
+
+在同一个场景中，可以使用多个摄像机，当加载到场景中后，它们会产生各自的游戏视图画面。在我们以前遇到的游戏中，如双人3D游戏就使用了两个3D摄像机，左半屏幕显示一个玩家，右半屏幕显示另一个，极大的丰富了游戏性。
+
+不过多摄像机的缺点是非常耗性能，模型三角面数与DrawCall数量会成倍上升，多几个摄像机就会多出几倍性能损耗，因此开发者们需酌情考虑。
+
+3D场景的显示大小与位置与2D游戏不太一样，主要是靠摄像机的视口（ViewPort）来控制，通过它来进行屏幕的分割。
+
+下例中我们加载一个3D场景，并通过ViewPort进行左右视口分离，代码如下：
+
+```java
+class LayaAir3D_MultiCamera
+{
+  constructor()
+  {
+    //初始化引擎
+    Laya3D.init(1280, 720,true);
+    //适配模式
+    Laya.stage.scaleMode = Laya.Stage.SCALE_EXACTFIT;
+    Laya.stage.screenMode = Laya.Stage.SCREEN_NONE;
+    //开启统计信息
+    Laya.Stat.show();			
+    //加载3D资源
+    Laya.loader.create("LayaScene_loveScene/loveScene.ls",
+                       Laya.Handler.create(this,this.on3DComplete));
+  }
+
+  private  on3DComplete():void
+  {
+    //创建场景
+    var scene:Laya.Scene=Laya.Scene.load("LayaScene_loveScene/loveScene.ls");
+    Laya.stage.addChild(scene);
+
+    //创建摄像机1添加到场景
+    var camera1:Laya.Camera=new Laya.Camera();
+    scene.addChild(camera1);
+    //摄像机1添加控制脚本
+    // camera1.addComponent(CameraMoveScript);
+    //修改摄像机1位置及角度
+    camera1.transform.translate(new Laya.Vector3(0,2,8),true);
+    camera1.transform.rotate(new Laya.Vector3(-23,0,0),true,false);
+    //设置视口为左半屏
+    camera1.viewport=new Laya.Viewport(0,0,640,720);
+
+    //创建摄像机2添加到场景
+    var camera2:Laya.Camera=new Laya.Camera();
+    scene.addChild(camera2);
+    //修改摄像机2位置及角度
+    camera2.transform.rotate(new Laya.Vector3(-45,0,0),false,false);
+    camera2.transform.translate(new Laya.Vector3(0,0,25),true);
+    //设置视口为右半屏
+    camera2.viewport=new Laya.Viewport(640,0,640,720);
+  }
+}
+new LayaAir3D_MultiCamera();
+```
+
+编译运行上述代码，运行效果如图6。开发者们同时也可以测试，在单摄像机下时，DrawCall与三角面数会少一半。
+
+![图片6](img/6.png)<br>（图6）双摄像机分屏 
+

@@ -6,6 +6,60 @@ LayaAir中的摄像机可以理解成拍摄电影或者电视剧时候的摄像�
 
 当然，摄像机还有其他比较重要的属性，下面将一一介绍它的功能。
 
+
+
+### 从Unity中导出摄像机
+
+引擎1.7.10版与unity导出插件1.5.0版发布后，在unity中所创建的摄像机可以被导出了！并且导出文件保留了摄像机在3D空间中的位置、视角、背景颜色、载剪、视野等参数，当加载了导出后的场景，显示的画面效果与unity中完全一致，方便了开发者们对摄像机视角的控制。
+
+同时，因为LayaAir 3D引擎支持多摄像机，因此也可以在unity中设置多个摄像机并导出，关于多摄像机的视口设置请查看本课最后的“多摄像机使用”小节。
+
+那么，如果在unity中创建了摄像机并导出，在代码中加载导出文件后，我们怎么去获取摄像机呢？这可以通过场景的子节点索引或名称来获取，获取后我们还可以对它进行移动旋转、设置天空盒、添加脚本等操作。
+
+代码如下：
+
+```java
+package {
+	import laya.d3.core.Camera;
+	import laya.d3.core.scene.Scene;
+	import laya.display.Stage;
+	import laya.utils.Handler;
+	import laya.utils.Stat;
+  
+	public class LayaAir3D
+	{
+		public function LayaAir3D() 
+		{
+			//初始化引擎
+			Laya3D.init(1000, 500,true);			
+			//适配模式
+			Laya.stage.scaleMode = Stage.SCALE_FULL;
+			Laya.stage.screenMode = Stage.SCREEN_NONE;
+			//开启统计信息
+			Stat.show();			
+			//预加载角色动画资源
+			Laya.loader.create("monkey/monkey.ls",Handler.create(this,onSceneOK));
+		}		
+		
+		private function onSceneOK():void
+		{
+			//添加3D场景
+			var scene:Scene = Laya.loader.getRes("monkey/monkey.ls");
+			Laya.stage.addChild(scene);  
+          
+         	//从场景中获取摄像机
+            var camera:Camera = scene.getChildByName("Main Camera") as Camera;
+          	//后续对摄像机的逻辑操作.......
+        }
+	}
+}
+			
+```
+
+  在Untiy中，摄像机默认名为“Main Camera"，因此在上述代码中，通过scene的getChildByName(“Main Camera")方法得到了摄像机，以供后续逻辑操作。开发者们也可以在unity中自定义摄像机的名字。
+
+
+
 ### 摄像机移动与旋转
 
 摄像机继承于Sprite3D，因此还可以对它进行3D变换的操作，通过transform属性在3D场景中移动旋转变化，多角度取景，使观众或游戏者获得更真实的空间体验。
