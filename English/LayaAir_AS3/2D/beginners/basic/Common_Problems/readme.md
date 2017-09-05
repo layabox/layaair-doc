@@ -76,7 +76,7 @@ When a compile - time error occurs in Figure 6, it is certain that the document 
 ​        ![blob.png](img/11.png)<br/>
 ​        (Picture 11)
 
-**Solution : **
+**Solution :**
 
 ​        Most of these problems are caused by illegal characters.
 
@@ -97,7 +97,7 @@ When a compile - time error occurs in Figure 6, it is certain that the document 
 ​        ![blob.png](img/12.png)<br/>
 ​        (Picture 12)
 
-**Solution :  **
+**Solution :**
 
 ​            Since there is no mouse, the program file is not selected, andrun directly to compile will lead to the error shown in figure 12.
 
