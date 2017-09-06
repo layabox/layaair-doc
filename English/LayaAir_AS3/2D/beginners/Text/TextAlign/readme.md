@@ -1,4 +1,4 @@
-# Text Alignment & auto Wrap
+# Text alignment & auto wrap
 
 With alignment mode, with horizontal and vertical attributes, can let text be displayed in the center of the text area. Here  we can get  a first look at the parameters from API,  through the example code as introduce. API parameters for text styles are in laya.display.text :
 
