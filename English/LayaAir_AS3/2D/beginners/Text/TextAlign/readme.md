@@ -28,9 +28,9 @@ package
 			var txt:Text = new Text();
 			// Set text content
 			txt.text = "hello_world";
-			// etting text area background color
+			// Setting text area background color
 			txt.bgColor = "#c30c30";
-			// ets the dimension of the text
+			// Set the dimension of the text
 			txt.width = 400;
 			txt.height = 400;
 			// Set text horizontally centered
@@ -72,7 +72,7 @@ package
 			var txt:Text = new Text();
 			// Set text content
 			txt.text = "Layabox是HTML5引擎技术提供商与优秀的游戏发行商，面向AS/JS/TS开发者提供HTML5开发技术方案！";
-			//Setting text area background color
+			// Setting text area background color
 			txt.bgColor = "#c30c30";
 			// Set Text Area dimension
 			txt.width = 400;
