@@ -1,4 +1,4 @@
-# LayaAir API Class document overview
+# LayaAir API Class text overview
 
 LayaAir can support text through the laya.display.Text class, set the font style, color, size and so on. Integration code of text class sets with the style is done as follows:
 
