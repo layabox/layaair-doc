@@ -141,11 +141,11 @@
             ]
           },
           {
-            "name_2_name": "文本",
+            "name_2_name": "Text",
             "name_2_data": [
               {
-                "name_3_name": "文本类API概述",
-                "name_3_url": "Chinese/LayaAir_AS3/2D/beginners/Text/API_List/",
+                "name_3_name": "LayaAir API Class Text overview",
+                "name_3_url": "English/LayaAir_AS3/2D/beginners/Text/API_List/",
                 "name_3_file": "readme.md"
               },
               {
