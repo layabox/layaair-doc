@@ -1,16 +1,16 @@
-# 超出文本区域的处理&滚动文本
+# Handle properly text area  & scrolling text
 
-文本在添加内容的时候免不了超出我们所设置的文本区域，这时候我们要对文本进行处理，不处理的话内容有可能超出我们舞台。
+When text content is added, and exceed the text area dimension, wordwrap may not be enough to handle your entire content.
 
-Laya.display.text 中所使用的API 参数：
+The API parameter used in Laya.display.text:
 
 ![1](img/1.png)</br>
 
-hidden:不显示超出文本域的字符。
+hidden: Do not show characters beyond the text field.
 
-visible:不进行任何裁切。
+visible: do not make any cuts.
 
-scroll:不显示文本域外的字符像素，并且支持scroll接口。
+scroll: does not display character pixels outside the text field, and supports the scroll interface.
 
 ```typescript
 package
@@ -21,22 +21,22 @@ package
 	{
 		public function Text_AutoSize()
 		{
-			// 不支持WebGL时自动切换至Canvas
+			// Automatically switch to Canvas when WebGL is not supported
 			Laya.init(550, 400, WebGL);
 			setup();
 		}
 		private function setup():void
 		{
 			var t1:Text = createText();
-			//设置不进行任何裁剪
+			//Set without any clipping
 			t1.overflow = Text.VISIBLE;
 			t1.pos(10, 10);
 			var t2:Text= createText();
-			//设置不显示文本域外的字符像素
+			//Set the character pixels outside the text field
 			t2.overflow = Text.SCROLL;
 			t2.pos(10, 110);
 			var t3 = createText();
-			//设置不显示超出文本域的字符
+			//The setting does not display characters beyond the text field
 			t3.overflow = Text.HIDDEN;
 			t3.pos(10, 210);
 		}
@@ -48,7 +48,7 @@ package
 				"Layabox是HTML5引擎技术提供商与优秀的游戏发行商，面向AS/JS/TS开发者提供HTML5开发技术方案！\n" +
 				"Layabox是HTML5引擎技术提供商与优秀的游戏发行商，面向AS/JS/TS开发者提供HTML5开发技术方案！";
 			txt.borderColor = "#FFFF00";
-			//设置宽高以后自动裁剪会按照这个区域裁剪
+			//After setting the width and height, the automatic crop will be cut according to this area
 			txt.size(300, 50);
 			txt.fontSize = 20;
 			txt.color = "#ffffff";
@@ -61,11 +61,11 @@ package
 
 ![2](img/2.png)</br>
 
-可以看到3种方法的对文本处理的不同，每种处理都有各自的优缺点，性能比最高的还是hidden。
+You can see the three methods of different text processing, each treatment has its own advantages and disadvantages, highest performance is hidden.
 
-除了通过对文本区域设置overflow ，还可以通过使用scrollX和scrollY滚动文本视口，通过滚动文本来显示全部的文本内容。
+In addition to the text by setting the overflow area, also can use scrollX and scrollY to scroll text viewport.
 
-要是想要实现滚动文本需要使用 overflow = Text.SCROLL 使用 Text.HIDDEN的话即时你设置了滚动也没有效果。
+If you want to implement scrolling text, you need to use overflow = Text.SCROLL
 
 ```typescript
 package 
@@ -81,7 +81,7 @@ package
 		private var prevY:Number = 0;
 		public function Text_Scroll() 
 		{
-			// 不支持WebGL时自动切换至Canvas
+			//  Automatically switch to Canvas when WebGL is not supported
 			Laya.init(Browser.clientWidth, Browser.clientHeight, WebGL);
 			createText();
 		}
@@ -105,7 +105,7 @@ package
 			Laya.stage.addChild(txt);
 			txt.on(Event.MOUSE_DOWN, this, startScrollText);
 		}
-		/* 开始滚动文本 */
+		/* Start scrolling text */
 		private function startScrollText(e:Event):void
 		{
 			prevX = txt.mouseX;
@@ -113,13 +113,13 @@ package
 			Laya.stage.on(Event.MOUSE_MOVE, this, scrollText);
 			Laya.stage.on(Event.MOUSE_UP, this, finishScrollText);
 		}
-		/* 停止滚动文本 */
+		/* Stop scrolling text */
 		private function finishScrollText(e:Event):void
 		{
 			Laya.stage.off(Event.MOUSE_MOVE, this, scrollText);
 			Laya.stage.off(Event.MOUSE_UP, this, finishScrollText);
 		}
-		/* 鼠标滚动文本 */
+		/* Mouse scrolls the text */
 		private function scrollText(e:Event):void
 		{
 			var nowX:Number = txt.mouseX;
@@ -137,4 +137,4 @@ package
 
 ![4](img/4.png)</br>
 
-这里我们就通过滚动文本显示更多的文本内容，在实际编码中根据项目需要使用overflow的3种处理方式，还有自动换行和滚动文本可以对文本进行处理。
+In current code sample, Here we display more text content with scrolling text and word wrap.
