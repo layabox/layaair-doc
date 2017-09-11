@@ -176,11 +176,11 @@
             ]
           },
           {
-            "name_2_name": "位图",
+            "name_2_name": "Bitmap",
             "name_2_data": [
               {
-                "name_3_name": "显示与切换图片",
-                "name_3_url": "Chinese/LayaAir_AS3/2D/beginners/Bitmap/loadImage_drawTexture/",
+                "name_3_name": "Draw lines and polylines",
+                "name_3_url": "English/LayaAir_AS3/2D/beginners/Bitmap/loadImage_drawTexture/",
                 "name_3_file": "readme.md"
               },
               {
