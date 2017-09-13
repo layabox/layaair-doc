@@ -1,25 +1,25 @@
-# 设置滤镜效果
+# Filter effect
 
-> LayaAir引擎提供了颜色滤镜、发光（或阴影）滤镜、模糊滤镜三种效果。其中颜色滤镜支持Canvas与WebGL模式，而发光滤镜与模糊滤镜由于对性能的消耗较大，因此仅支持WebGL模式。
-
-
-
-## 1、设置颜色滤镜
-
-### 1.1 颜色滤镜 API 简述
-
-颜色滤镜类 ColorFilter位于laya.filters包中，通过指定矩阵（*排列成4 x 5 的矩阵*）改变各颜色通道。
-
-点击   [laya.filters.ColorFilter ](http://layaair.ldc.layabox.com/api/index.html?category=Filter&class=laya.filters.ColorFilter) 查看API说明。
+> LayaAir engine provides 3 effects:  color filter, light (or shadow) filter and  blur filter. The color filter supports Canvas and WebGL mode, light filter and blur filter support only WebGL mode because of the large consumption of performance.
 
 
 
-### 1.2 设置颜色滤镜
+## 1. Set the color filter
 
-如果要给一个位图设置颜色滤镜，需要先设置一个颜色矩阵，然后用ColorFilter方法创建一个颜色滤镜实例，如下面的代码所示：
+### 1.1 Introducing Color Filter API
+
+The color filter class ColorFilter is located in laya.filters package, change the color channel by specifying the matrix (arranged in 4 x 5 matrix).
+
+Click   [laya.filters.ColorFilter ](http://layaair.ldc.layabox.com/api/index.html?category=Filter&class=laya.filters.ColorFilter) to view the API instructions.
+
+
+
+### 1.2 Set color filter
+
+If you want to set a color filter for a bitmap, you need to set a color matrix first, and then use a ColorFilter method to create a color filter, as shown in the following code:
 
 ```java
-//颜色矩阵，红色
+//Color matrix, set to red
 var colorMatrix:Array = 
 [
   1, 0, 0, 0, 0, //R
@@ -28,11 +28,11 @@ var colorMatrix:Array =
   0, 0, 0, 1, 0, //A
 ];
 
-//创建颜色滤镜
+// Create a color filter
 var redFilter:ColorFilter = new ColorFilter(colorMatrix)
 ```
 
-最后通过Spriter的filters属性将颜色滤镜效果叠加到位图中。下面我们创建一个Main.as入口类，并设置为默认应用程序（推荐用FlashBuilder），编写代码如下：
+Finally,through the Sprite's filters property, the color filter effect is superimposed on the bitmap. Then, we create a Main.as entry class and set it as the default application (recommended by FlashBuilder). Write the code as follows:
 
 ```java
 package
@@ -44,23 +44,23 @@ package
 	{
 		public function Main()
 		{
-			//初始化舞台
+			// Initialize the stage
 			Laya.init(1334,750);                
-			//设置舞台背景色
+			// Set the stage background color
 			Laya.stage.bgColor  = "#ffffff";
 			
-			//原始位图
+			// Create a bitmap at coordinates 100, 50
 			createImg(100,50);
-			//红色滤镜
+			// Red filter
 			creteRedFilter();
-			//灰色滤镜
+			// Gray filter
 			createGrayFilter();
 		}
 		
-		/**创建红色滤镜位图**/
+		/** Create a red filter bitmap **/
 		private function creteRedFilter():void
 		{
-			//颜色滤镜矩阵,红色
+			// Color filter matrix, set to red value
 			var colorMatrix:Array = 
 				[
 					1, 0, 0, 0, 0, //R
@@ -69,20 +69,20 @@ package
 					0, 0, 0, 1, 0, //A
 				];
 			
-			//创建红色颜色滤镜
+			// Create a red color filter
 			var redFilter:ColorFilter = new ColorFilter(colorMatrix);
               
-            //在坐标280,50位置创建一个位图
+            // Create a bitmap at coordinates 280, 50
 			var img:Sprite = createImg(280,50); 
-			//添加红色颜色滤镜效果
+			// Add a red color filter effect
 			img.filters = [redFilter];
 		}	
 		
 		
-		/**创建灰色滤镜位图**/
+		/** Creating a gray filter bitmap **/
 		private function createGrayFilter():void
 		{
-			//颜色滤镜矩阵,灰色
+			// Color filter matrix,  set to gray value
 			var colorMatrix:Array = 
 				[
 					0.3086, 0.6094, 0.0820, 0, 0,  //R
@@ -90,24 +90,24 @@ package
 					0.3086, 0.6094, 0.0820, 0, 0,  //B
 					0, 0, 0, 1, 0, //A
 				];
-			//创建灰色颜色滤镜
+			// Create a gray color filter
 			var GrayFilter:ColorFilter = new ColorFilter(colorMatrix);
           
-			//在坐标460,50位置创建一个位图
+			// Create a bitmap at coordinates 460, 50
 			var img:Sprite = createImg(460,50); 	
-			//添加灰色颜色滤镜效果
+			// Add gray color filter effect
 			img.filters = [GrayFilter];
 		}
 		
-		/**创建位图**/
+		/** Create bitmap **/
 		 private function createImg(w:int,h:int):Sprite
 		{
 			 var Img:Sprite = new Sprite(); 
 			 
-			 //添加到舞台
+			 // Add to the stage
 			 Laya.stage.addChild(Img);   
 			 
-			 //加载显示图片
+			 // Load display pictures
 			 Img.loadImage("res/img/monkey1.png",w,h); 
 			 
 			 return Img;
@@ -116,31 +116,31 @@ package
 }
 ```
 
-在上面的代码中，我们创建了一个原始位图、一个红色滤镜效果位图、一个灰色滤镜效果位图。运行效果如图1所示：
+In the above code, we created a original  raw bitmap, with red filter effect bitmap and gray filter effect bitmap. Operation results shown in Figure 1:
 
-![图1](img/1.png) <br /> (图1)
-
-
+![图1](img/1.png) <br /> (Picture 1)
 
 
 
-## 2、设置发光与阴影滤镜
-
-### 2.1 发光滤镜 API 简述
-
-发光滤镜类 GlowFilter位于laya.filters包中，通过调整发光的偏移角度也可以当成阴影滤使用，参数说明如图2所示。注意：该滤镜只支持WebGL模式下有效。
-
-![图2](img/2.png) <br /> (图2)
-
-点击   [laya.filters. GlowFilter](http://layaair.ldc.layabox.com/api/index.html?category=Filter&class=laya.filters.GlowFilter)  查看API说明。
 
 
+## 2. set the light and shadow filter
 
-### 2.2 设置发光滤镜与阴影滤镜
+### 2.1 Introduction to the light filter API
 
-发光与阴影滤镜的设置比较简单，我们直接通过编码查看示例效果，
+The light filter class for GlowFilter is located in the laya.filters package, and the shading angle can also be adjusting  as a shadow filter. The parameters are shown in Figure 2. Note: This filter only works in WebGL mode.
 
-先创建一个Main.as入口类，并设置为默认应用程序（推荐用FlashBuilder），编写代码如下：
+![图2](img/2.png) <br /> (Picture 2)
+
+Click on [laya.filters. GlowFilter](http://layaair.ldc.layabox.com/api/index.html?category=Filter&class=laya.filters.GlowFilter)  to see the API instructions.
+
+
+
+### 2.2 Set up filter and shadow filter
+
+The light and shadow filter settings is simple, and we directly look through the code to see the example results,
+
+first create a Main.as entry class and set it as the default application (recommended with  FlashBuilder). Write the code as follows:
 
 ```java
 package
@@ -153,50 +153,50 @@ package
 	{
 		public function Main()
 		{
-			//初始化舞台
+			// Initialize the stage
 			Laya.init(1334,750,WebGL);                
-			//设置舞台背景色
+			// Set the stage background color
 			Laya.stage.bgColor  = "#ffffff";
 			
-			//原始位图
+			// Original bitmap
 			createImg(100,50);			
-			//发光滤镜
+			// Glow filter
 			creteGlowFilter();			
-			//阴影滤镜
+			// Shadow Filter
 			createShadeFilter();
 		}
 		
-		/**创建发光滤镜位图**/
+		/**Create a glow filter bitmap**/
 		private function creteGlowFilter():void
 		{			
-			//创建发光滤镜
+			// Create glow filters
 			var glowFilter:GlowFilter = new GlowFilter("#ff0000", 15, 0, 0)
-			//在坐标280,50创建位图
+			// Create a bitmap at coordinates 280,50
 			var img:Sprite = createImg(280,50); 		
-			//添加发光滤镜
+			// Add light filter
 			img.filters = [glowFilter];
 			
 		}	
 		
 		
-		/**创建阴影滤镜位图**/
+		/** Creating shadow filter bitmap **/
 		private function createShadeFilter():void
 		{
-			//创建阴影滤镜
+			//Create shadow filters
 			var glowFilter:GlowFilter = new GlowFilter("#000000", 8, 8, 8)
-			//在坐标460,50创建位图
+			// Create bitmaps in coordinate 460,50
 			var img:Sprite = createImg(460,50);			
-			//添加阴影滤镜
+			// Add a shadow filter
 			img.filters = [glowFilter];				
 		}
 		
-		/**创建位图**/
+		/**create  bitmap**/
 		 private function createImg(w:int,h:int):Sprite
 		{
 			 var Img:Sprite = new Sprite(); 			 
-			 //添加到舞台
+			 // Added to the stage
 			 Laya.stage.addChild(Img);   			 
-			 //加载显示图片，坐标位于100,50
+			 // Load the display picture with coordinates at 100, 50
 			 Img.loadImage("res/img/monkey1.png",w,h); 			 
 			 return Img;
 		}
@@ -204,29 +204,29 @@ package
 }
 ```
 
-在上面的代码中，我们创建了一个原始位图、一个发光滤镜效果位图、一个阴影滤镜效果位图。运行效果如图3所示：
+In the code above, we created a new bitmap, apply light filter effect and a shadow filter effect on it. The running effect is shown in figure 3:
 
-![图3](img/3.png) <br /> (图3)
-
-
-
-## 3、设置模糊滤镜
-
-### 3.1 模糊滤镜 API 简述
-
-模糊滤镜类 BlurFilter位于laya.filters包中，通过调整strength参数设置模糊滤镜的强度，值越大，越糊滤。参数说明如图4所示。注意：该滤镜只支持WebGL模式下有效。
-
-![图4](img/4.png) <br /> (图4)
-
-点击   [laya.filters. BlurFilter](http://layaair.ldc.layabox.com/api/index.html?category=Filter&class=laya.filters.BlurFilter)  查看API说明。
+![图3](img/3.png) <br /> (Picture 3)
 
 
 
-### 3.2 设置模糊滤镜
+## 3、Set blur filter
 
-模糊滤镜的设置比较简单，创建一个模糊滤镜实例，然后设置模糊强度，叠加给位图即可，我们直接通过编码查看示例效果。
+### 3.1 Fuzzy filter API introducing
 
-先创建一个Main.as入口类，并设置为默认应用程序（推荐用FlashBuilder），编写代码如下：
+The BlurFilter class located in the laya.filters package. It is possible to adjust the intensity  parameter. The parameter instructions are shown in figure 4. Note: this filter only supports WebGL mode.
+
+![图4](img/4.png) <br /> (Picture 4)
+
+Click on   [laya.filters. BlurFilter](http://layaair.ldc.layabox.com/api/index.html?category=Filter&class=laya.filters.BlurFilter)   to view the API instructions.
+
+
+
+### 3.2 Set the blur filter
+
+Blur filter settings are relatively simple. Create a filter instance, and then set the fuzzy strength attribute. Superimposed on the bitmap, and  see the sample effect directly through the code.
+
+First create a Main.as entry class and set it as the default application (recommended with FlashBuilder). Write the code as follows:
 
 ```java
 package
@@ -239,40 +239,40 @@ package
 	{
 		public function Main()
 		{
-			//初始化舞台
+			 // Initialize the stage
 			Laya.init(1334,750,WebGL);                
-			//设置舞台背景色
+			// Set the stage background color
 			Laya.stage.bgColor  = "#ffffff";
 			
-			//原始位图
+			// Original bitmap
 			createImg(100,50);			
-			//模糊滤镜
+			// Blur filter
 			createBlurFilter();			
 	
 		}
 		
-		/**创建糊滤滤镜位图**/
+		/** Create and paste filter bitmap **/
 		private function createBlurFilter():void
 		{			
-			//创建模糊滤镜实例
+			// Create a fuzzy filter instance
 			var blurFilter:BlurFilter = new BlurFilter();
-			//设置模糊强度
+			// Set the blur strength
 			blurFilter.strength = 5;
-			//在坐标280,50创建位图
+			// Create a bitmap at coordinates 280,50
 			var img:Sprite = createImg(280,50); 		
-			//添加滤镜效果
+			// Add a filter effect
 			img.filters = [blurFilter];
 			
 		}	
 
 		
-		/**创建位图**/
+		/** Create a bitmap **/
 		private function createImg(w:int,h:int):Sprite
 		{
 			var Img:Sprite = new Sprite(); 			 
-			//添加到舞台
+			// Added to the stage
 			Laya.stage.addChild(Img);   			 
-			//加载显示图片
+			// Load the display picture with coordinates parameters at w, h
 			Img.loadImage("res/img/monkey1.png",w,h); 			 
 			return Img;
 		}
@@ -280,9 +280,9 @@ package
 }
 ```
 
-在上面的代码中，我们创建了一个原始位图、一个模糊滤镜效果位图。运行效果如图5所示：
+In the code above, we created an raw original bitmap with blur filter effect bitmap. The running effect is shown in figure 5:
 
-![图5](img/5.png) <br /> (图5)
+![图5](img/5.png) <br /> (Picture 5)
 
 
 
