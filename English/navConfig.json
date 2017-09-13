@@ -189,14 +189,14 @@
                 "name_3_file": "readme.md"
               },
               {
-                "name_3_name": "设置滤镜",
-                "name_3_url": "Chinese/LayaAir_AS3/2D/beginners/Bitmap/filter/",
+                "name_3_name": "Filter effect",
+                "name_3_url": "English/LayaAir_AS3/2D/beginners/Bitmap/filter/",
                 "name_3_file": "readme.md"
               }
             ]
           },
           {
-            "name_2_name": "矢量图",
+            "name_2_name": "Vector diagram",
             "name_2_data": [
               {
                 "name_3_name": "矢量绘图API概述",
