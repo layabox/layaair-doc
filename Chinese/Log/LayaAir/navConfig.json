@@ -14,9 +14,9 @@
     "url": "1.7.9.md",
     "date":"2017-08-25",
     "download": {
-      "js": "http://ldc.layabox.com/download/LayaAirJS_1.7.9.zip",
-      "ts": "http://ldc.layabox.com/download/LayaAirTS_1.7.9.zip",
-      "as": "http://ldc.layabox.com/download/LayaAirAS3_1.7.9.zip"
+      "js": "http://ldc.layabox.com/download/LayaAirJS_1.7.9.zip?v1",
+      "ts": "http://ldc.layabox.com/download/LayaAirTS_1.7.9.zip?v1",
+      "as": "http://ldc.layabox.com/download/LayaAirAS3_1.7.9.zip?v1"
     }  
   },
   {
