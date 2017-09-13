@@ -199,8 +199,8 @@
             "name_2_name": "Vector diagram",
             "name_2_data": [
               {
-                "name_3_name": "矢量绘图API概述",
-                "name_3_url": "Chinese/LayaAir_AS3/2D/beginners/Graphics/API_Overview/",
+                "name_3_name": "LayaAir Graphics Vector API overview",
+                "name_3_url": "English/LayaAir_AS3/2D/beginners/Graphics/API_Overview/",
                 "name_3_file": "readme.md"
               },
               {
