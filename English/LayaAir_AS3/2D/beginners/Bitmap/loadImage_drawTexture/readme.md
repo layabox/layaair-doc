@@ -1,4 +1,4 @@
-# Draw lines and polylines
+# Display and toggle pictures
 
 > Picture are the elementrary display for game development, this article will introduce Sprite.loadImage and Graphics.drawTexture class, two ways to display pictures.
 
