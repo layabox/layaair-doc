@@ -179,7 +179,7 @@
             "name_2_name": "Bitmap",
             "name_2_data": [
               {
-                "name_3_name": "Draw lines and polylines",
+                "name_3_name": "Display and toggle pictures",
                 "name_3_url": "English/LayaAir_AS3/2D/beginners/Bitmap/loadImage_drawTexture/",
                 "name_3_file": "readme.md"
               },
@@ -204,8 +204,8 @@
                 "name_3_file": "readme.md"
               },
               {
-                "name_3_name": "绘制直线与折线",
-                "name_3_url": "Chinese/LayaAir_AS3/2D/beginners/Graphics/line/",
+                "name_3_name": "Draw lines and polylines",
+                "name_3_url": "English/LayaAir_AS3/2D/beginners/Graphics/line/",
                 "name_3_file": "readme.md"
               },
               {
