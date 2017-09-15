@@ -196,7 +196,7 @@
             ]
           },
           {
-            "name_2_name": "Vector diagram",
+            "name_2_name": "Graphics vector",
             "name_2_data": [
               {
                 "name_3_name": "LayaAir Graphics Vector API overview",
@@ -209,8 +209,8 @@
                 "name_3_file": "readme.md"
               },
               {
-                "name_3_name": "绘制曲线",
-                "name_3_url": "Chinese/LayaAir_AS3/2D/beginners/Graphics/Curve/",
+                "name_3_name": "Draw curve",
+                "name_3_url": "English/LayaAir_AS3/2D/beginners/Graphics/Curve/",
                 "name_3_file": "readme.md"
               },
               {
@@ -229,8 +229,8 @@
                 "name_3_file": "readme.md"
               },
               {
-                "name_3_name": "消除矢量图绘制锯齿",
-                "name_3_url": "Chinese/LayaAir_AS3/2D/beginners/Graphics/",
+                "name_3_name": "Eliminate aliased rasterization in vector image",
+                "name_3_url": "English/LayaAir_AS3/2D/beginners/Graphics/",
                 "name_3_file": "readme.md"
               }
             ]
