@@ -5,8 +5,8 @@ LayaPlayer支持websocket。
 1. 支持ipv6。
 2. 支持设置代理。  
 ### 限制  
-1. 不支持安全连接，所以类似  wss://echo.websocket.org 这种地址是无法连接上的。
-2. 不支持子协议,例如:  
+1. 暂不支持wss协议，例如: 'wss://echo.websocket.org'。
+2. 暂不支持子协议,例如:  
     ```javascript
     var ws = new WebSocket('ws://echo.websocket.org','soap');
     ```
