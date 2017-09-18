@@ -145,7 +145,7 @@ The code runs as shown below:
 ​   	(Picture 7)   
 
 ​   	![9](img/8.png)<br/>
-​   	(Picture 8)  三角形
+​   	(Picture 8)  triangle
 
 ​   	![9](img/9.png)<br/>
 ​   	(Picture 9)  irregular polygons
