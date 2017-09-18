@@ -1,17 +1,17 @@
-# 绘制三角形、多边形及根据数据绘制图案
+# Draw triangles, polygons, and custom patterns
 
 
 
-​        在绘制三角形、多边形以及根据指定的路径数据绘制出图案均可使用LayaAir引擎中laya.display.Graphics类的“drawpoly();”方法实现。该方法的详细说明如下图所示：
+​        Drawing a triangle, a polygon, or a custom pattern based on the specified path data can be done using the "drawpoly ();" method from laya.display.Graphics class in the LayaAir engine. A detailed description of the method is shown below:
 
 ​	![blob.png](img/1.png)<br/>
-​	（图1）
+​	(Picture 1)
 
 
 
-### 一、绘制三角形
+### A. Draw triangles
 
-下面我们用LayaAir引擎先绘制一个三角形，示例代码如下：
+Now, We'll use the LayaAir engine to draw  first a triangle. The example code is as follows:
 
 ```java
 package
@@ -34,7 +34,7 @@ package
         {
             sp = new Sprite();
             Laya.stage.addChild(sp);
-            //画三角形
+            // draw a triangle
             sp.graphics.drawPoly(30, 28, [0, 100, 50, 0, 100, 100], "#ffff00");
               
         }
@@ -42,38 +42,38 @@ package
 }
 ```
 
-代码运行效果如下图所示：
+The code works as shown below:：
 
 ​	![blob.png](img/2.png)<br/>
-​	（图2）
+​	(Picture 2)
 
-​        通过代码，我们可以看出，drawPoly第三位参数的“0，100”是A点坐标。“50，0”是B点坐标。“100, 100”是C点坐标，将三个坐标点连接后填充第四位参数的颜色值，即绘制出上图的黄色三角形。但是这里需要大家理解和注意的是，第三位参数中所有的坐标都是相对坐标，都会受到第一位和第二位坐标参数“30，28”的影响。一旦“30，28”产生改变，整体形状位置都会受到影响。
-
-
+​        Through the code, we can see that the third parameter of drawPoly function with point A, B,C (for coordinates respectively "0,100" , "50,0" , "100, 100"). The three coordinate points connected are filled with color value defined in the fourth parameter,  draw the yellow triangle above.  But what you need to understand and notice here is that all the coordinates in the third parameters are relative coordinates, which set in first and second parameters "30,28". Once the "30,28" changes, the overall shape of the position will be affected.
 
 
 
-### **二、绘制多边形**
 
-​        我们继续用上面的代码示例，通过增加drawPoly第三位参数的坐标，来实现多边形的绘制，修改的代码如下：
+
+### **B. draw polygons**
+
+​        We continue to use the above code example, by increasing the drawPoly third parameter coordinates, to achieve the polygon drawing, modify the code as follows:
 
 ```java
-//画多边形
+//Draw polygons
 sp.graphics.drawPoly(30, 28, [0, 100, 50, 0, 100, 100, 75, 150, 25, 150], "#ffff00");
 ```
 
-代码运行效果如下图所示：
+The code runs as shown below:
 
 ​	![blob.png](img/3.png)<br/>
-​	（图3）
+​	(Picture 3)
 
-​        在修改的代码中，新增了D点坐标”75，150“与E点坐标”25，150“。通过将各个坐标点连接填充颜色后，即绘制出我们想要的多边形。要绘制更多边的多边形，按上述方式增加坐标点即可。
+​        In the modified code, we added the D point coordinates "75,150" and E point coordinates "25,150". By connecting the coordinates point to fill the color, we draw the polygon we want. To draw more polygons with more edges, increase the coordinate point  in the same way as above.
 
 
 
-### **三、根据指定的路径数据绘制出图案**
+### **C. Draw a pattern based on the specified path data**
 
-​        通过上面的三角形和多边形，我们已经掌握了drawPoly的绘图用法，下面再通过示例深入介绍一下，如何指定路径绘制一个五角星。示例代码如下：
+​        Through the triangle and polygon above, we have mastered the drawPoly drawing usage. The following example through an in-depth introduction, how to specify the path to draw a five-pointed star. The sample code is as follows:
 
 ```java
 package
@@ -97,16 +97,16 @@ package
          Laya.stage.addChild(canvas);
           
          var path:Array = []; 
-         path.push(0, -130);//五角星A点坐标
-         path.push(33, -33);//五角星B点坐标
-         path.push(137, -30);//五角星C点坐标
-         path.push(55, 32);//五角星D点坐标
-         path.push(85, 130);//五角星E点坐标
-         path.push(0, 73);//五角星F点坐标
-         path.push(-85, 130);//五角星G点坐标
-         path.push(-55, 32);//五角星H点坐标
-         path.push(-137, -30);//五角星I点坐标
-         path.push(-33, -33);//五角星J点坐标
+         path.push(0, -130);//Pentagram  coordinate A
+         path.push(33, -33);//Pentagram  coordinate B
+         path.push(137, -30);//Pentagram  coordinate C
+         path.push(55, 32);//Pentagram  coordinate D
+         path.push(85, 130);//Pentagram  coordinate E
+         path.push(0, 73);//Pentagram  coordinate F
+         path.push(-85, 130);//Pentagram  coordinate G
+         path.push(-55, 32);//Pentagram  coordinate H
+         path.push(-137, -30);//Pentagram  coordinate I
+         path.push(-33, -33);//Pentagram  coordinate J
           
          canvas.graphics.drawPoly(Laya.stage.width / 2, Laya.stage.height / 2, path, "#FF7F50");       
      }
@@ -114,42 +114,42 @@ package
 }
 ```
 
-代码运行效果如下图所示：
+The code runs as shown below:
 
 ​	![blob.png](img/4.png)<br/>
-​	（图4）
+​	(Picture 4)
 
-​        通过上面的示例代码的写法，是不是感觉代码的可读性得到了增强，大家也可以将之前的三角形或多边形改成这种方式去体验一下，掌握了这些基础，可以衍生出很多灵活的用法，比如数据来自服务端等。
-
-
+​        Through the example code above written, we can handle many manners to draw polygon.
 
 
 
-### 四、用LayaAirIDE通过控件绘制不规则图形（包括三角形，多边形）
+
+
+### D. Drawing irregular graphics with LayaAirIDE through the control (including triangles, polygons)
 
 
 
-**步骤一**：打开我们的LayaAirIDE，点击设计模式，新建一个View页面
+**1**.Open LayaAirIDE and click design mode to create a new View page
 
 ​	![6](img/5.png)<br/>
-​   	（图5）  
+​   	(Picture 5) 
 
-**步骤二**：将组件中的曲线组件拖动到View页面上，就会自动生成默认的多边形
+**2**. Drag the curve component into the View page to automatically generate the default polygon
 
 ​	![7](img/6.png)<br/>
-​   	（图6）  
+​   	(Picture 6)  
 
-**步骤三**：修改（添加/减少）Poly组件属性中的数值，改变多边形的大小、颜色等等。
+**3**. Modify (add / subtract) the values in the Poly component properties, change the size of the polygon, the color, and so on.
 
 ​   	![8](img/7.png)<br/>
-​   	（图7）  
+​   	(Picture 7)   
 
 ​   	![9](img/8.png)<br/>
-​   	（图8） 三角形
+​   	(Picture 8)  三角形
 
 ​   	![9](img/9.png)<br/>
-​   	（图9） 不规则多边形 
+​   	(Picture 9)  irregular polygons
 
 
 
-到此我们通过LayaAirIDE组件绘制多边形就完成了。
+Here we draw the polygon through the LayaAirIDE component.
