@@ -236,41 +236,41 @@
             ]
           },
           {
-            "name_2_name": "动画基础",
+            "name_2_name": "Animation",
             "name_2_data": [
               {
-                "name_3_name": "图集动画",
-                "name_3_url": "Chinese/LayaAir_AS3/2D/beginners/animation/atlas/",
+                "name_3_name": "Atlas animation usage",
+                "name_3_url": "English/LayaAir_AS3/2D/beginners/animation/atlas/",
                 "name_3_file": "readme.md"
               },
               {
-                "name_3_name": "缓动动画",
-                "name_3_url": "Chinese/LayaAir_AS3/2D/beginners/animation/Tween/",
+                "name_3_name": "Tween Animation",
+                "name_3_url": "English/LayaAir_AS3/2D/beginners/animation/Tween/",
                 "name_3_file": "readme.md"
               },
               {
-                "name_3_name": "时间轴动画",
-                "name_3_url": "Chinese/LayaAir_AS3/IDE/Use_IDE/TimelineAnimation/",
+                "name_3_name": "Timeline Animation",
+                "name_3_url": "English/LayaAir_AS3/IDE/Use_IDE/TimelineAnimation/",
                 "name_3_file": "readme.md"
               },
               {
-                "name_3_name": "动效模板",
-                "name_3_url": "Chinese/LayaAir_AS3/IDE/Use_IDE/EffectAnimation/",
+                "name_3_name": "Effect Animation",
+                "name_3_url": "English/LayaAir_AS3/IDE/Use_IDE/EffectAnimation/",
                 "name_3_file": "readme.md"
               },
               {
                 "name_3_name": "SWF动画使用",
-                "name_3_url": "Chinese/LayaAir_AS3/2D/beginners/animation/swf/",
+                "name_3_url": "English/LayaAir_AS3/2D/beginners/animation/swf/",
                 "name_3_file": "readme.md"
               },
               {
                 "name_3_name": "Spine动画使用",
-                "name_3_url": "Chinese/LayaAir_AS3/2D/beginners/animation/spine/",
+                "name_3_url": "English/LayaAir_AS3/2D/beginners/animation/spine/",
                 "name_3_file": "readme.md"
               },
               {
                 "name_3_name": "DragonBone动画使用",
-                "name_3_url": "Chinese/LayaAir_AS3/2D/beginners/animation/DragonBone/",
+                "name_3_url": "English/LayaAir_AS3/2D/beginners/animation/DragonBone/",
                 "name_3_file": "readme.md"
               }
             ]
