@@ -1,10 +1,10 @@
-# 设置文本基础样式
+# Set text style attributes
 
-在我们的一些项目中，文本是会被经常的使用，免不了为这个文本设置字体大小，字体颜色，文本内容等。
+In some of our projects, the text will be used frequently, which is inevitably to set the font size, font color, text content, etc... 
 
-我们先做一个最基本的demo 创建一个文本，给这个文本添加文本内容、设置字体颜色（背景默认为黑，不修改颜色没有效果）。
+Let's start with a basic demo  to create a text,  add text content and set the font color (background default color is black).
 
-Laya.display.text 中的关于文本样式的API参数：
+Laya.display.text set  text style with API parameters:
 
 ![image.png](http://old.ldc.layabox.com/uploadfile/image/20170215/1487127187988736.png)
 
@@ -18,7 +18,7 @@ package {
   public class LayaSample {
    
   public function LayaSample() {
-  //初始化引擎
+  // Initialize engine
   Laya.init(1136, 640);
    
   var  txt:Text = new Text();
@@ -31,9 +31,9 @@ package {
 }
 ```
 
-这个时候我们就可以看到txt已经添加到舞台上了，显示了txt中 白色的hello_world。
+At this point, we can see that txt has been added to the stage, showing hello_world in white.
 
-接着我们给我们的文本添加一些其他的字体样式，粗体、斜体、字体大小等。
+Now we add some other font styles to our text, such as bold, italic, and font size.
 
 ![image.png](http://old.ldc.layabox.com/uploadfile/image/20170215/1487127744336222.png)
 
@@ -47,23 +47,23 @@ package {
   public class LayaSample {
    
   public function LayaSample() {
-  //初始化引擎
+  // Initialize engine
   Laya.init(1136, 640);
    
   var  txt:Text = new Text();
-  //设置文本内容
+  // Set text content
   txt.text = "hello_world";
-  //设置文本颜色
+  //Set text color
   txt.color = "#ffffff";
-  //设置文本字体
+  //Set text font
   txt.font = "Ya Hei";
-  //设置字体大小
+  //Set font size
   txt.fontSize = 32;
-  //设置文本区背景
+  //Setting text area background
   txt.bgColor = "#c30c30";
-  //设置文本框的颜色
+  //Sets the color of the text box
   txt.borderColor = "#23cfcf";
-  //设置粗体、斜体
+  //Set bold and italic
   txt.bold = true;
   txt.italic = true;
    
@@ -76,4 +76,4 @@ package {
 
 ![image.png](http://old.ldc.layabox.com/uploadfile/image/20170215/1487128553866671.png)
 
-这里我们就可以看到字体样式、字体大小有明显的变化，文本框的最外围又一圈浅蓝色的边框，文本区的背景变为红色。有兴趣的可以修改之中的数值，更深一步的理解这些属性的使用方法。
+Here we can see the font style, the font size has obviously and other details changes.

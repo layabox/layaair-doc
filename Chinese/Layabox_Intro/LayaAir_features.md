@@ -40,7 +40,7 @@
 
 ### 开源免费
 
-​         LayaAir引擎遵循MIT开源协议，源码免费使用，包括商用。并将引擎源码全部开源并托管到github（[https://github.com/layabox/layaair）。](https://github.com/layabox/layaair%EF%BC%89%E3%80%82)
+​         LayaAir引擎遵循MIT开源协议，源码免费使用，包括商用。并将引擎源码全部开源并托管到github（[https://github.com/layabox/layaair](https://github.com/layabox/layaair)）。
 
 
 
@@ -56,8 +56,8 @@
 
 ​     LayaAir引擎视频教学课堂：[http://layabox.ke.qq.com/](http://layabox.ke.qq.com/)
 
-​     LayaAir开发者综合交流QQ群：330223972
+​     LayaAir开发者综合交流QQ群：330223972 (已满)
 
-​     LayaAir引擎2D交流QQ群：104144216
+​     LayaAir引擎2D交流QQ群：135887157
 
 ​     LayaAir引擎3D&VR交流QQ群：343966316
