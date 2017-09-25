@@ -17,7 +17,7 @@
 
 ### 1.2 VSlider组件的皮肤（skin）规范
 
-​	VSlider资源命名规以vsliser为前缀名，它的默认资源总共3个，分别为滑块资源`vslider$bar.png`、进度条资源`vslider$progress.png` 及底图资源`vsliser.png`。
+​	VSlider资源命名规以vsliser为前缀名，它的默认资源总共3个，分别为滑块资源`vslider$bar.png`、进度条资源`vslider$progress.png` 及底图资源`vslider.png`。
 
 ​	资源至少应当有两个，一个底图资源，一个滑块资源，否则无法实现滑动功能。缺少了进度条资源组件不会报错，只是不显示进度。
 
