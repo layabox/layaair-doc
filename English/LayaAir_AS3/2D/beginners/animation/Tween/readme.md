@@ -4,9 +4,9 @@
 
 In Game development, tween animation is commonly use, certainly most important factors to enhance the game UI experience. Such as the dialog box pops up, close, the button appears and disappear, the props into the backpack, etc. we can directly use the LayaAir engine provided Tween slow and Ease class moving to achieve quickly.
 
-`Tween`  slow action class is used to achieve slow movement of target object attributes, such as setting the target's X or Y axis's slow range, and setting the start, stop, and cleanup. More Tween's API
+`Tween`  slow action class is used to achieve slow movement of target object attributes, such as setting the target's X or Y axis's slow range, and setting the start, stop, and cleanup. 
 
-`Ease`class defines a large number of moving functions to achieve the specific effect of `Tween` motion animation. LayaAir engine Tween class and Ease class combination, can satisfy the need in game development requierements. Click on the link to view API full details directly:  [https://layaair.ldc.layabox.com/api/?category=Core&class=laya.utils.Tween](https://layaair.ldc.layabox.com/api/?category=Core&class=laya.utils.Tween)
+`Ease`	class defines a large number of moving functions to achieve the specific effect of `Tween` motion animation. LayaAir engine Tween class and Ease class combination, can satisfy the need in game development requierements. Click on the link to view API full details directly:  [https://layaair.ldc.layabox.com/api/?category=Core&class=laya.utils.Tween](https://layaair.ldc.layabox.com/api/?category=Core&class=laya.utils.Tween)
 
 `Ease` class API on the easing function of the basic introduction, click on the link to directly view the API:[https://layaair.ldc.layabox.com/api/?category=Core&class=laya.utils.Ease](https://layaair.ldc.layabox.com/api/?category=Core&class=laya.utils.Ease)
 
