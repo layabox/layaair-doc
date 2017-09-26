@@ -8,7 +8,7 @@ In Game development, tween animation is commonly use, certainly most important f
 
 `Ease`class defines a large number of moving functions to achieve the specific effect of `Tween` motion animation. LayaAir engine Tween class and Ease class combination, can satisfy the need in game development requierements. Click on the link to view API full details directly:  [https://layaair.ldc.layabox.com/api/?category=Core&class=laya.utils.Tween](https://layaair.ldc.layabox.com/api/?category=Core&class=laya.utils.Tween)
 
-`Ease`类的API中对缓动函数进行了基础的介绍，点击链接可直接查看API：[https://layaair.ldc.layabox.com/api/?category=Core&class=laya.utils.Ease](https://layaair.ldc.layabox.com/api/?category=Core&class=laya.utils.Ease)
+`Ease` class API on the easing function of the basic introduction, click on the link to directly view the API:[https://layaair.ldc.layabox.com/api/?category=Core&class=laya.utils.Ease](https://layaair.ldc.layabox.com/api/?category=Core&class=laya.utils.Ease)
 
 `Ease` class API with various tween movement are display in demo sample, click on the link to view API directly:[https://layaair.ldc.layabox.com/demo/?Tween_EaseFunctionsDemo](https://layaair.ldc.layabox.com/demo/?Tween_EaseFunctionsDemo)
 
