@@ -276,11 +276,11 @@
             ]
           },
           {
-            "name_2_name": "数据与通信",
+            "name_2_name": "Data and Communication",
             "name_2_data": [
               {
-                "name_3_name": "HttpRequest详解",
-                "name_3_url": "Chinese/LayaAir_AS3/2D/beginners/Data_Communication/HttpRequest/",
+                "name_3_name": "HttpRequest Methods",
+                "name_3_url": "English/LayaAir_AS3/2D/beginners/Data_Communication/HttpRequest/",
                 "name_3_file": "readme.md"
               },
               {
