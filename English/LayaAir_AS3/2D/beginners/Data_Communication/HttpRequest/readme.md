@@ -43,7 +43,7 @@ Returns the value of the specified response header. if the response header has n
 
 Initialize a request
 
-###### 参数
+###### parameter
 
 - `method`
 
@@ -196,7 +196,7 @@ package
             super.send(url,data,method,responseType,headers);
             this._http.upload.onprogress= function(e:Object):void
             {
-                //上传进度
+                //Upload progress
             }
             this._http.upload.onload= function(e:Object):void
             {
