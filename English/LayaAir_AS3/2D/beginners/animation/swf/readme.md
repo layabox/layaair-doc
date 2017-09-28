@@ -15,7 +15,7 @@ In order to support the rapid migration from Flash to HTML5 projects, the LayaAi
 
 Prepare an animated file that conforms to the SWF conversion specification, and then open the design pattern of LayaAirIDE.
 
-Select the menu `tool ` --> `SWF conversion` conversion to open the SWF conversion tool panel, as shown in Figure 1.
+Select the menu `tool ` --> `SWF conversion` to open the SWF conversion tool panel, as shown in Figure 1.
 
 ![图1](img/1.png) 
 
