@@ -314,8 +314,8 @@
             "name_2_name": "硬件设备相关",
             "name_2_data": [
               {
-                "name_3_name": "音乐与音效播放",
-                "name_3_url": "Chinese/LayaAir_AS3/2D/beginners/devices/SoundManager/",
+                "name_3_name": "Handle music and sound effects",
+                "name_3_url": "English/LayaAir_AS3/2D/beginners/devices/SoundManager/",
                 "name_3_file": "readme.md"
               },
               {
