@@ -1,7 +1,7 @@
 # Timeline animation editor
 
-*[notice] this tutorial uses LayaAirIDE version 1.73. If there is any difference in the text, please get the latest version of LayaAirIDE.*
-> Timeline animation editor is the core module of LayaAirIDE, through the production of key frames on the time axi. Automatically generate animation frames in motion, you can quickly achieve the game alpha transparency gradient, displacement, rotation, zoom and other animation effects. Saving the production process most of the time, improve the development efficiency. This article is a comprehensive introduction to the timeline animation editor function and use,  from the timeline animation editor to use in coding.
+*[notice] this tutorial uses LayaAirIDE version 1.73. If there is any difference in the article contents, please get the latest version of LayaAirIDE.*
+> Timeline animation editor is the core module of LayaAirIDE, through the production of key frames with timeline. Automatically generate animation frames in motion, you can quickly achieve the game alpha transparency gradient, displacement, rotation, zoom and other animation effects. Saving the production process most of the time, improve the development efficiency. This article is a comprehensive introduction to the timeline animation editor function and use,  with code and animation editor.
 >
 
 
