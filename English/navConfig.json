@@ -299,13 +299,13 @@
                 "name_3_file": "readme.md"
               },
               {
-                "name_3_name": "JSONP跨域读取数据",
-                "name_3_url": "Chinese/LayaAir_AS3/2D/beginners/Data_Communication/jsonp/",
+                "name_3_name": "JSONP reads data across domains",
+                "name_3_url": "English/LayaAir_AS3/2D/beginners/Data_Communication/jsonp/",
                 "name_3_file": "readme.md"
               },
               {
                 "name_3_name": "Web Storage数据存储",
-                "name_3_url": "Chinese/LayaAir_AS3/2D/beginners/Data_Communication/webStorage/",
+                "name_3_url": "English/LayaAir_AS3/2D/beginners/Data_Communication/webStorage/",
                 "name_3_file": "readme.md"
               }
             ]
