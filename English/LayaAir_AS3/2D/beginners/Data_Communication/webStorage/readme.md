@@ -1,4 +1,4 @@
-# Web Storage data storage
+# Web Storage store data "locally"
 
 HTML5 provides two new ways to store data on the client side:
 
@@ -94,7 +94,7 @@ package
 }
 ```
 
-var sessionStorage:* = Browser.window.sessionStorage;这句话的意思就是获取当前页面中的sessionStorage会话对象。
+var sessionStorage:* = Browser.window.sessionStorage; getting the sessionStorage session object in the current page.
 
 
 
