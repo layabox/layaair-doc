@@ -319,8 +319,8 @@
                 "name_3_file": "readme.md"
               },
               {
-                "name_3_name": "陀螺仪与加速计",
-                "name_3_url": "Chinese/LayaAir_AS3/2D/beginners/devices/motion/",
+                "name_3_name": "Gyroscope and accelerometer",
+                "name_3_url": "English/LayaAir_AS3/2D/beginners/devices/motion/",
                 "name_3_file": "readme.md"
               },
               {
@@ -329,8 +329,8 @@
                 "name_3_file": "readme.md"
               },
               {
-                "name_3_name": "使用百度地图显示当前位置",
-                "name_3_url": "Chinese/LayaAir_AS3/2D/beginners/devices/baiduMap/",
+                "name_3_name": "Use Baidu map to show the current location",
+                "name_3_url": "English/LayaAir_AS3/2D/beginners/devices/baiduMap/",
                 "name_3_file": "readme.md"
               }
             ]
