@@ -259,12 +259,12 @@
                 "name_3_file": "readme.md"
               },
               {
-                "name_3_name": "SWF动画使用",
+                "name_3_name": "SWF content",
                 "name_3_url": "English/LayaAir_AS3/2D/beginners/animation/swf/",
                 "name_3_file": "readme.md"
               },
               {
-                "name_3_name": "Spine动画使用",
+                "name_3_name": "Plays Spine skeleton ",
                 "name_3_url": "English/LayaAir_AS3/2D/beginners/animation/spine/",
                 "name_3_file": "readme.md"
               },
@@ -276,46 +276,46 @@
             ]
           },
           {
-            "name_2_name": "数据与通信",
+            "name_2_name": "Data and Communication",
             "name_2_data": [
               {
-                "name_3_name": "HttpRequest详解",
-                "name_3_url": "Chinese/LayaAir_AS3/2D/beginners/Data_Communication/HttpRequest/",
+                "name_3_name": "HttpRequest Methods",
+                "name_3_url": "English/LayaAir_AS3/2D/beginners/Data_Communication/HttpRequest/",
                 "name_3_file": "readme.md"
               },
               {
-                "name_3_name": "WebSocket发送与接收数据",
-                "name_3_url": "Chinese/LayaAir_AS3/2D/beginners/Data_Communication/WebSocket/",
+                "name_3_name": "Sends and receives data with WebSocket",
+                "name_3_url": "English/LayaAir_AS3/2D/beginners/Data_Communication/WebSocket/",
                 "name_3_file": "readme.md"
               },
               {
-                "name_3_name": "Byte二进制读写",
-                "name_3_url": "Chinese/LayaAir_AS3/2D/beginners/Data_Communication/Byte/",
+                "name_3_name": "Read and write Byte binary data",
+                "name_3_url": "English/LayaAir_AS3/2D/beginners/Data_Communication/Byte/",
                 "name_3_file": "readme.md"
               },
               {
-                "name_3_name": "JSON数据详解",
-                "name_3_url": "Chinese/LayaAir_AS3/2D/beginners/Data_Communication/json/",
+                "name_3_name": "JSON data information",
+                "name_3_url": "English/LayaAir_AS3/2D/beginners/Data_Communication/json/",
                 "name_3_file": "readme.md"
               },
               {
-                "name_3_name": "JSONP跨域读取数据",
-                "name_3_url": "Chinese/LayaAir_AS3/2D/beginners/Data_Communication/jsonp/",
+                "name_3_name": "JSONP reads data across domains",
+                "name_3_url": "English/LayaAir_AS3/2D/beginners/Data_Communication/jsonp/",
                 "name_3_file": "readme.md"
               },
               {
-                "name_3_name": "Web Storage数据存储",
-                "name_3_url": "Chinese/LayaAir_AS3/2D/beginners/Data_Communication/webStorage/",
+                "name_3_name": "Web Storage store data locally",
+                "name_3_url": "English/LayaAir_AS3/2D/beginners/Data_Communication/webStorage/",
                 "name_3_file": "readme.md"
               }
             ]
           },
           {
-            "name_2_name": "硬件设备相关",
+            "name_2_name": "Hardware device related",
             "name_2_data": [
               {
-                "name_3_name": "音乐与音效播放",
-                "name_3_url": "Chinese/LayaAir_AS3/2D/beginners/devices/SoundManager/",
+                "name_3_name": "Handle music and sound effects",
+                "name_3_url": "English/LayaAir_AS3/2D/beginners/devices/SoundManager/",
                 "name_3_file": "readme.md"
               },
               {
@@ -324,8 +324,8 @@
                 "name_3_file": "readme.md"
               },
               {
-                "name_3_name": "用Geolocation获取地理位置信息",
-                "name_3_url": "Chinese/LayaAir_AS3/2D/beginners/devices/geolocation/",
+                "name_3_name": "Using Geolocation and relative information",
+                "name_3_url": "English/LayaAir_AS3/2D/beginners/devices/geolocation/",
                 "name_3_file": "readme.md"
               },
               {

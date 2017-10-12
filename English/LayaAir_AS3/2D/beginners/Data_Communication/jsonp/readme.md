@@ -1,49 +1,49 @@
-# JSONP跨域读取数据
+# JSONP reads data across domains
 
-web的开发者基本都用过JSONP。那什么是JSONP呢？它是不是也是一种数据格式呢？和JSON有什么关系呢？LayaAir支不支持JSONP呢？下面就这些问题逐一解答。
-
-
-
-### 一、什么是JSONP
-
-JSONP（JSON with Padding）是JSON的一种“使用模式”，可以让网页从别的域名（网站）获取到资料，即跨域读取数据。为什么我们从不同的域（网站）访问数据需要一个特殊的技术（JSONP）呢？这是因为同源策略。同源策略，它是由Netscape提出的一个著名的安全策略，现在所有支持JavaScript的浏览器都会使用这个策略。
-
-从定义可以看出JSON是一种数据交换格式，而JSONP是一种跨域数据交互协议。一个是描述信息的格式，一个是信息传递双方约定的方法，可用于解决主流浏览器的跨域数据访问的问题。由于同源策略，一般来说位于xxx.com的网页无法与非xxx.com的服务器沟通，而HTML的DOM元素是一个例外，一般来讲凡是带有src属性的DOM元素不受跨域的限制，由此我们想到了<script>标签的src，利用这个src网页可以得到从其他来源动态产生的JSON资料，而这种使用模式就是所谓的JSONP。用JSONP抓到的资料并不是JSON，而是任意的JavaScript，用JavaScript执译器执行而不是用JSON解析器解析。
+Web developers have basically used JSONP. So what is JSONP? Is it also a data format? What  relationship does it have to do with JSON? LayaAir doesn't support JSONP? Here are the answers to these questions one by one.
 
 
 
-### 二、如何使用？
+### 1. what is JSONP
 
-1.在客户端调用提供JSONP支持的URL Service，获取JSONP格式数据。
+JSONP (JSON with Padding) is a "use mode" of JSON, which allows web pages to obtain data from other domain names (websites), that is, cross domain reading of data. Why do we need a special technology (JSONP) to access data from different domains (sites)? This is because of the homologous strategy. Homology strategy, which is a well-known security policy proposed by Netscape, is now used by all browsers that support JavaScript.
 
-如果客户想访问http://www.layabox.com/?jsonp=callbackFunction
+As you can see from the definition, JSON is a data interchange format, and JSONP is a cross domain data interaction protocol. One is to describe the format of information, one is the method of mutual agreement between the two sides of information transmission, and it can be used to solve the problem of cross domain data access of mainstream browsers. The homologous strategy, generally located in the xxx.com and non xxx.com server page can not communicate, and the DOM element HTML is an exception, generally those with a SRC attribute DOM element from the cross domain restrictions.<script> The tag SRC, using this SRC page, allows you to get JSON information that is dynamically generated from other sources, and this usage pattern is called JSONP. The data captured with JSONP is not JSON, but arbitrary JavaScript data, executed with the JavaScript interpreter instead of using the JSON parser.
 
-假设客户期望返回JSON数据：[“data1”，data2]
 
-那么真正返回到客户端的Script Tags:callbackFunction(["data1","data2"])
 
-因此，客户端可以这样写：
+### 2. how to use?
 
-在你的html页面加上如下的标签：
+1.In the client call, the URL Service that provides the JSONP support gets the JSONP format data.
+
+Developer can visit http://www.layabox.com/?jsonp=callbackFunction
+
+Suppose the client-side side expects to return the JSON data: [“data1”，data2]
+
+Then really go back to the client-side with Script Tags:callbackFunction(["data1","data2"])
+
+Therefore, the client-side can write this way:
+
+Add the following labels to your HTML page:
 
 ```javascript
 <script type = "text/javascript" src = ">
 ```
 
-你的JavaScript文件的这个回调方法可以这样写：
+Callback method for your JavaScript file can be written like this:
 
 ```javascript
 <script type = "text/javascript">
 function callbackFunction(data1,data2)
 {
-  //这里写你的回调逻辑
+  //Write your callback logic here
 }
 </script>
 ```
 
-那么在LayaAir中怎么写和使用呢？其实很简单，这里我们需要借助一个服务器才可以看到效果。服务器我们选择nodejs搭建一个简单的服务器，nodejs的安装这里不再详细解释。可以参考nodejs官网或者自己搜索资料。
+So how do you write and use it in LayaAir? In fact, it is very simple, we need to use a server here to see the effect. Server, we select nodejs to build a simple server, nodejs installation here no longer explain in detail. You can refer to nodejs's official website or your own search information.
 
-安装完成nodejs后我们写一段简单的js脚本就可以创建一个简单的服务器。代码如下：
+After the installation of nodejs we write a simple js script can create a simple server. The code is as follows:
 
 ```javascript
 var http = require("http");
@@ -57,13 +57,13 @@ sever.listen(9090)
 res.end("LayaSample.onComplete()");
 ```
 
-这句话的意思是服务器回传给客户端LayaSample.onComplete()并且执行这个函数。
+This means that the server returns to the client LayaSample.onComplete () and executes the function.
 
-通过几行代码就创建了一个简单的服务器，然后打开命令行，用nodejs运行这个js文件或者脚本。就可以看到服务器启动了。
+Through a few lines of code to create a simple server, and then open the command line, use nodejs to run the js file or script. You can see the server started.
 
 
 
-接下来我们写前端的逻辑。打开LayaAir的IDE创建一个空项目，语言选择as3，具体代码如下所示：
+Next, we write the front end logic. Open the LayaAir IDE, create an empty project, select the language AS3, and the specific code is as follows:
 
 ```java
 package
@@ -80,24 +80,24 @@ package
 			script.src = "http://localhost:9090/?a=1";
 		}
 		public static function onComplete():void{
-			trace("JSONP执行到这里");
+			trace("JSONP is executed here");
 		}
 	}
 }
 ```
 
 ```java
-var script:* = Browser.createElement("script");//这句话的含义是创建一个脚本的标签，原生的所有dom元素都可以通过这个方法创建。
+var script:* = Browser.createElement("script");//The meaning of this sentence is to create a script tag, where all native DOM elements can be created
 ```
 
 ```java
-Browser.document.body.appendChild(script);//是把创建的script标签添加到body上。
+Browser.document.body.appendChild(script);// create the script tag to add to the body.
 ```
 
 ```java
-script.src = "http://localhost:9090/?a=1";//设置script的远程访问地址。这句话就可以请求到我们刚才创建的那个服务器。用谷歌打开LayaAirIDE生成的二维码地址。
+script.src = "http://localhost:9090/?a=1";//Sets the remote access address for script. This sentence can be applied to the server we just created.  Use Google to open the QR code address generated by LayaAirIDE.
 ```
 
 ![1](img/1.png)<br/>
 
-然后F12打开谷歌的控制台，发现输出了“JSONP执行到这里”；也就是执行了我们的onComplete这个函数。这样就完成了JSONP的功能。
+Then F12 opens the Google console and finds the output "JSONP executes here"; that is, the function of our onComplete is executed. This completes the function of JSONP.
