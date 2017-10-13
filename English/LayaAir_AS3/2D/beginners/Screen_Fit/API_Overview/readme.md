@@ -6,7 +6,7 @@
 
 ​	In order to get a better understanding of the screen adaptation, we start with the Iphone screen resolution development:
 
-　　In previous mobile devices, the screen pixels are relatively low, such as Iphone3, whose resolution is 320 x 480, and on Iphone3, a pixel equals a screen physical pixel. Later with the device screen pixel density is more and more high, starting from iPhone4, Apple launched the Retina screen resolution to 640 * 960, doubled, but the screen size did not change, which means the same size on the screen, the pixel is doubled, the increase is devicePixelRatio, other Android mobile the equipment is also similar.
+　　For most first smartphone generation, screen pixels were relatively low, such as Iphone3, whose resolution is 320 x 480, and on Iphone3, a pixel equals a screen physical pixel. Later with the device screen pixel density is more and more high, starting from iPhone4, Apple launched the Retina screen resolution to 640 * 960, doubled, but the screen size did not change, which means the same size on the screen, the pixel is doubled, the increase is devicePixelRatio, other Android mobile the equipment is also similar.
 
 　　So we come up with a formula:    ` physical resolution = pixel resolution *devicePixelRatio`;
 
