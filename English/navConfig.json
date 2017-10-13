@@ -336,11 +336,11 @@
             ]
           },
           {
-            "name_2_name": "屏幕适配",
+            "name_2_name": "Screen display mode",
             "name_2_data": [
               {
-                "name_3_name": "屏幕适配API概述",
-                "name_3_url": "Chinese/LayaAir_AS3/2D/beginners/Screen_Fit/API_Overview/",
+                "name_3_name": "Screen adaptation API overview",
+                "name_3_url": "English/LayaAir_AS3/2D/beginners/Screen_Fit/API_Overview/",
                 "name_3_file": "readme.md"
               },
               {
