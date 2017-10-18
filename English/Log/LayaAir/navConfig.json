@@ -4,8 +4,8 @@
     "url": "1.7.11beta.md",
     "date":"2017-09-16",
     "download": {
-      "js": "http://ldc.layabox.com/download/LayaAirJS_1.7.11_beta.zip?v1",
-      "ts": "http://ldc.layabox.com/download/LayaAirTS_1.7.11_beta.zip?v2",
+      "js": "http://ldc.layabox.com/download/LayaAirJS_1.7.11_beta.zip?v2",
+      "ts": "http://ldc.layabox.com/download/LayaAirTS_1.7.11_beta.zip?v3",
       "as": "http://ldc.layabox.com/download/LayaAirAS3_1.7.11_beta.zip?v2"
     }
   },
