@@ -8,7 +8,7 @@ The template library is the work area where we store and use templates. The use 
 
 
 
-### First, default IOS style template
+### 1. Default IOS style template
 
 ​        LayaAirIDE provides by default a batch of IOS-style common UI templates, as shown in figure 1.
 
