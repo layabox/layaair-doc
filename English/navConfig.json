@@ -371,7 +371,7 @@
         "nav_1_name": "LayaAir IDE篇（AS3）",
         "nav_1_data": [
           {
-            "name_2_name": "代码模式基础",
+            "name_2_name": "Code pattern basic",
             "name_2_data": [
               {
                 "name_3_name": "Overview of code pattern layout",
@@ -388,8 +388,8 @@
                 "name_3_file": "readme.md"
               },
               {
-                "name_3_name": "代码模式的快捷键设置",
-                "name_3_url": "Chinese/LayaAir_AS3/IDE/Code_Mode/shortcut_key/",
+                "name_3_name": "Shortcut key for code editing ",
+                "name_3_url": "English/LayaAir_AS3/IDE/Code_Mode/shortcut_key/",
                 "name_3_file": "readme.md"
               }
             ]
