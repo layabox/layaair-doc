@@ -8,7 +8,7 @@
 
 ### 1.1 Base class Component
 
-LayaAirIDE's own component classes are all located in the laya.ui package, and **all components inherit directly or indirectly from the Component class** (component base class).  In the API document of the LayaAir engine, click the UI category, as shown in Figure 1, and find the [laya.ui.Component类](http://layaair.ldc.layabox.com/api/index.html?category=UI&class=laya.ui.Component). You can view the relevant component API instructions.
+LayaAirIDE's own component classes are all located in the laya.ui package, and **all components inherit directly or indirectly from the Component class** (component base class).  In the API document of the LayaAir engine, click the UI category, as shown in Figure 1, and find the [laya.ui.Component Class](http://layaair.ldc.layabox.com/api/index.html?category=UI&class=laya.ui.Component). You can view the relevant component API instructions.
 
 ![图1](img/1.png) <br /> (Picture 1)
 
