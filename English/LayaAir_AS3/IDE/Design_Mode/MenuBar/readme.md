@@ -1,210 +1,210 @@
-# 菜单栏介绍
+# Introduction to the menu bar
 
  
 
-​        菜单栏 位于界面最上方，包含了整个IDE的控制信息，对界面不熟悉的朋友可以快速的在菜单栏中找到需要进行操作的功能。下面我们将对菜单栏的进行详细介绍。
+​        The menu bar is located at the top of the interface, which contains the whole IDE control information. Developers who are not familiar with the interface can quickly find the function that needs to be operated in the menu bar.  Below we will introduce the menu bar in detail.
 
 ​   ![blob.png](img/1.png)<br/>
-​        	（图1）
+​        	（Picture 1）
 
  
 
-### 一、文件      
+### 1. Document  
 
 ​   ![blob.png](img/2.png)<br/>
-​        	（图2）
+​        	（Picture 2）
 
-- 新建项目： 通过新建项目选项窗口来创建一个新的项目。
+- New project: create a new project through the new project options window.
 
-- 新建文件： 通过新建页面窗口来创建一个新的编辑页面，快捷键 Ctrl+N。
+- New file: create a new edit page through the new page window, shortcut key Ctrl+N.
 
-- 新建目录： 在项目中创建一个新的页面文件夹，快捷键 Ctrl+D。
+- New directory: create a new page folder in the project, shortcut key Ctrl+D.
 
-- 打开项目： 通过资源管理器来浏览并打开一个项目，快捷键 Ctrl+D。
+- Open the project: through the Explorer to browse and open a project, shortcut keys Ctrl + D.
 
-- 转换项目： 在转换项目窗口中，可以选择MornUI项目，将其转换为LayaAir项目。
+- Conversion project: in the conversion project window, you can choose the MornUI project and convert it to the LayaAir project.
 
-- 设置项目： 设置项目的配置文件，快捷键 F9。
+- Set the project: set the project configuration file, shortcut key F9.
 
-- 设置页面： 设置页面的默认属性，快捷键 Ctrl+P。
+- Settings page: set the default attribute of the page, shortcut key Ctrl+P.
 
-- 刷新编辑器：可以刷新编辑器的状态，相当于复位或重启编辑器。 
+- Refresh editor: You can refresh the editor's state, equivalent to the reset or restart editor.
 
   ​
 
 
-### 二、编辑
+### 2. Edit
 
 ​  ![图片1.png](img/3.png)<br/>
-​        	（图3）
+​        	（Picture 3）
 
-- 撤销： 撤销当前操作，返回上一步操作，快捷键 Ctrl+Z。
+- Undo: Undo the current operation, return to the previous step, the shortcut Ctrl + Z.
 
-- 重做： 当撤销过多时，可以恢复撤销的操作，快捷键 Ctrl+Y。 
+- Redo: When undoing too much, you can undo the undo action, the shortcut Ctrl + Y.
 
-- 删除： 删除选中的资源或控件，快捷键 Delete。
+- Delete: delete the selected resource or control, shortcut key Delete.
 
-- 复制： 复制当前选中的资源或控件，快捷键 Ctrl+C。
+- Copy: Copy the currently selected resource or control, shortcut Ctrl + C.
 
-- 粘贴： 对已经复制的资源或控件进行粘贴操作，快捷键 Ctrl+V。
+- Paste: Paste the already copied resources or controls, shortcut key Ctrl + V.
 
-- 原位粘贴：在控件原有位置复制粘贴选中控件，快捷键 Ctrl+Shift+V。
+- In situ paste: copy and paste the selected control in the original position of the control, the shortcut key Ctrl+Shift+V.
 
-- 剪切：剪切选中控件或资源，快捷键 Ctrl+X。
+- Cut: shear select controls or resources, shortcut key Ctrl+X.
 
-- 全选：选中全部控件，快捷键 Ctrl+A。
+- Select: select all controls, shortcut Ctrl+A.
 
-- 快速移动：将选中的控件快速向方向键位置移动10像素，快捷键 Shift+方向键。
+- Quick move: move the selected controls quickly to the position of the directional key, move 10 pixels, and the shortcut key Shift+ direction key.
 
-- 转为容器：将选中的控件转为容器，可以在转换框中选择具体转的容器类型，快捷键 Ctrl+B。
+- Turn to a container: convert the selected control to a container. You can choose the specific container type in the conversion box, the shortcut key Ctrl+B.
 
-- 移除容器：将选中容器移除容器类型转为普通控件，快捷键 Ctrl+U。
+- Remove container: remove the container from the selected container to the common control. The shortcut key Ctrl+U.
 
-- 重复复制：在弹出的重复组件中设置要多次复制的行数列数以及间距，快捷键 Ctrl+R。
+- Duplicate replication: set the number of rows and the number of rows to be copied multiple times in the repeated component, and the shortcut key Ctrl+R.
 
-- 定位资源：快速定位资源在资源管理器中的位置，快捷键 Ctrl+K。
+- Location resource: location of quick resource in Explorer, shortcut key Ctrl+K.
 
-- 查找替换：弹出替换窗口，可将查找到的位置替换成别的内容，快捷键 Ctrl+F。
+- Find replace: pop-up replacement window, you can find the location replaced by other content, shortcut key Ctrl+F.
 
-- 保存文件：保存文件更改，快捷键 Ctrl+S。
+- Save the file: save the file change, shortcut key Ctrl+S.
 
-- 保存所有文件：保存所有文件更改，快捷键 Ctrl+Shift+S。
+- Save all files: save all file changes, shortcut key Ctrl+Shift+S.
 
   ​
 
 
 
-### 三、视图
+### 3. View
 
 ​   ![图片1.png](img/4.png)<br/>
-​             （图4）
-- 放大视图：放大场景编辑器，快捷键 Ctrl++。
+​             （Picture 4）
+- Zoom view: zoom in the scene editor, shortcut key Ctrl++.
 
-- 缩小视图：缩小场景编辑器，快捷键 Ctrl+-。
+- Zoom view: reduce scene editor, shortcut key Ctrl+-.
 
-- 恢复视图：恢复场景编辑器至原始大小，快捷键 Ctrl+0 （或Ctrl+|）。
+- Restore view: restore the scene editor to the original size, shortcut key Ctrl+0 (or Ctrl+|).
 
-- 拖动视图：按住鼠标右键（或鼠标滚轮）拖动视图位置。
+- Drag view: hold the right mouse button (or mouse wheel) to drag the view position.
 
-- 显示/隐藏参考视图：设置在场景编辑器中显示/隐藏视图，快捷键 F8。
+- Show / hide reference view: set the display / hide view in the scene editor, shortcut key F8.
 
-- 显示/隐藏标尺：设置在场景编辑器中显示/隐藏标尺，快捷键 Ctrl+Shift+R。
+- Show / hide ruler: set in the scene editor to show / hide the ruler, shortcut key Ctrl+Shift+R.
 
-- 节点向上：控制选中的控件在层级管理器中的层级位置向上移动一位，快捷键 Ctrl+↑。
+- To control the selected node in the hierarchy control manager level position to move a shortcut key, up Ctrl+↑.
 
-- 节点向下：控制选中的控件在层级管理器中的层级位置向下移动一位，快捷键 Ctrl+↓。
+- ​Node level down: position control selected controls in the hierarchical management for the downward movement of a shortcut key Ctrl+↓.
 
   ​
 
 
-### 四、工具
+### 4. Tool
 
 ​   ![blob.png](img/5.png)<br/>
-​        	（图5）
+​        	（Picture 5）
 
 
 
-- SWF转换：打开SWF资源转化工具窗口，以供用户进行SWF转换操作。
+- SWF conversion: open the SWF resource conversion tool window, for the user to carry on the SWF conversion operation.
 
-- JS压缩：打开JS压缩工具窗口，以供用户将JS文件进行压缩和混淆。
+- JS compression: open the JS compression tool window for users to compress and confuse JS files.
 
-- 龙骨动画转换：打开龙骨动画转换窗口，以供用户将DragonBones骨骼动画转换为LayaAir识别的格式。
+- Keel animation conversion: open the keel animation conversion window for users to convert DragonBones skeletal animation into LayaAir recognition format.
 
-- Spine动画转换：打开Spine动画转换窗口，以供用户将Spine骨骼动画转换为LayaAir识别的格式。
+- Spine animation conversion: open the Spine animation conversion window for users to convert Spine skeletal animation into LayaAir recognition format.
 
-- 图集打包：打开图集打包窗口，以供用户进行图集打包操作。
+- Atlas packaging: open atlas packing window for users to carry out atlas packaging operations.
 
-- 运行器下载：打开运行器下载的二维码窗口，以供用户扫码下载LayaNative的运行器。
+- Runtime Download: open the two-dimensional code window downloaded by the operator for the user to scan the code to download the LayaNative operator.
 
-- 打包APP：APP打包的环境配置与操作窗口，以供用户将LayaAir项目打包为安卓的APP（apk文件）
+- Packaging APP:APP packaging environment configuration and operation window for users to package LayaAir project for Android's APP (APK file)
 
-- 渠道打包工具：打开渠道打包窗口，以供用户将LayaAir引擎项目直接打包为已对接多个安卓主流渠道的apk包。
+- Channel packaging tools: open channel packing window for users to directly package LayaAir engine project into APK packages which have been connected to a number of mainstream Android channels.
 
-- APP构建：打开构建功能窗口，以供用户将LayaAir引擎项目构建为Android-eclipse、Android-studio、XCode(IOS)三种移动端的APP项目工程。
+- APP Construction: open the construction function window for users to build LayaAir engine project as Android-eclipse, Android-studio, XCode (IOS) three mobile terminal APP project.
 
-- 3D转换工具：打开3D转换工具的URL链接，压缩包内提供了3DMax与Unity3D编辑器的资源转换工具，让3DMax与Unity3D的资源成为LayaAir引擎支持的资源。
+- 3D conversion tool: open 3D conversion tool URL link, compression package provides the 3DMax and Unity3D editor of the resource conversion tool, let 3DMax and Unity3D resources become LayaAir engine support resources.
 
   ​
 
 
 
-### 五、窗口
+### 5. Windows
 
 ​   ![blob.png](img/6.png)<br/>
-​        	（图6）
+​        	（Picture 6）
 
-- 动画面板：如果动画管理器面板被关闭，可以在这里设置将该面板重新显示。
+- Animation panel: if the animation manager panel is closed, you can set it up here to display the panel again.
 
-- 帧属性面板：如果帧属性面板被关闭，可以在这里设置将该面板重新显示。
+- Frame property panel: if the frame property panel is closed, you can set it here to display the panel again.
 
-- 项目面板：如果项目管理器面板被关闭，可以在这里设置将该面板重新显示。
+- Project panel: if the project manager panel is closed, you can set it up here to display the panel again.
 
-- 资源面板：如果资源管理器面板被关闭，可以在这里设置将该面板重新显示。
+- Resource panel: if the Explorer panel is closed, you can set up to display the panel again.
 
-- 属性面板：如果属性设置器面板被关闭，可以在这里设置将该面板重新显示。
+- Property panel: if the property setter panel is closed, you can set it to re display this panel.
 
-- 层级面板：如果层级管理器面板被关闭，可以在这里设置将该面板重新显示。
+- Hierarchical panel: if the hierarchy manager panel is closed, you can set it up here to display the panel again.
 
-- 模板面板：如果模板管理器面板被关闭，可以在这里设置将该面板重新显示。
+- Template panel: if the template manager panel is closed, you can set it up here to display the panel again.
 
-- 组件面板：如果组件面板被关闭，可以在这里设置将该面板重新显示。
+- Component panel: if the component panel is closed, you can set it up here to display the panel again.
 
-- 恢复面板设置：恢复所有管理器面板的位置以及视图大小，快捷键 F3。
+- Restore panel settings: restore the location of all management panels and view size, shortcut F3.
 
   ​
 
-### 六、设置
+### 6. Set up
 
   ![blob.png](img/8.png)<br/>
-  ​        	（图8）
+  ​        	（Picture 8）
 
-- 编辑器设置：UI发布后的模式设置与标尺显示设置。
-- 类库管理：用于设置当前项目使用的类库版本。
-
-
+- Editor settings: mode settings and ruler display settings after UI release.
+- Class library management: the class library version used to set up the current project.
 
 
-### 七、导出
+
+
+### 7. Export
 
 ​  ![blob.png](img/7.png) <br/>
-​        	（图7）
+​        	（Picture 7）
 
-- 导出：将做好的界面打包导出，如果资源文件夹未产生变化则跳过该文件夹只对已变化文件夹进行打包并导出，快捷键 F12。
+- Export: the interface will be packaged export, if the resource folder does not change, then skip the folder, only to change the folder for packaging and export, shortcut key F12.
 
-- 清理并导出：强制清理之前已经打包过的资源文件，对所有文件进行重新打包并导出，快捷键 Ctrl+F12。
+- Cleaning and exporting: resource files that have been packaged before forced cleanup, repackaged and exported for all files, shortcut key Ctrl+F12.
 
-- 导出代码（不导出资源）：当资源没有产生变化，只是UI位置、属性等产生变化时，使用该功能，仅重新导出UI代码，不会重新导出资源，会加快UI项目的导出效率。
+- Export code (not export resources): when resources did not change, only UI position and attributes change when using this function, only to re export the UI code, not to re export resources, will speed up the output efficiency of the UI project.
 
-- 发布（不打包未使用资源）：与F12功能相近，但是只会对已经使用的资源进行打包并导出，不对未使用的资源进行操作。使用该功能因为需要遍历全部资源的使用状态，会导致UI项目的导出速度减慢，所以不建议开发的时候使用，仅在发布项目线上版本的时候使用即可。
+- Publishing (not packing unused resources): similar to F12 functionality, but only packaging and exporting already used resources, and not operating unused resources. The use of this function, because you need to traverse the use of all resources, will lead to UI project export speed slowed down, so it is not recommended to use when development, only in the release of online version of the project can be used
 
-- 导出语言包：该功能可以提取当前LayaAirIDE所有的UI文本内容生成lang.lang文件，用以设置多语言版本。
+- Export language package: this function can extract all the current LayaAirIDE UI text content, generate lang.lang file, to set up multilingual version.
 
-- 刷新资源及页面：刷新并重新显示资源及页面，一般在产生资源变动的情况下用来刷新所有，快捷键 F5。
+- Refresh resources and pages: refresh and re display resources and pages, usually in the case of resource changes, used to refresh all, shortcut key F5.
 
-- 刷新页面：对页面进行刷新并重新显示页面，快捷键 F6。
+- Refresh the page: refresh the page and re display the page, shortcut key F6.
 
-- 刷新资源：刷新资源管理器，重新显示资源管理器对资源的引用，快捷键 F7。
+- Refresh resources: refresh explorer, re display Explorer reference to resource, shortcut key F7.
 
-- 查找未被使用的资源：查找项目中未被使用的资源，并整理成列表，方便快速删除不用的资源，快捷键 F4。
+- Find unused resources: find unused resources in the project, and sort out a list, easy to quickly delete the unused resources, shortcut key F4.
 
   ​
 
 
-### 八、插件
+### 8. Plug-in
 
-可自主编辑开发插件或寻找共享插件安装至IDE中，以供开发者使用。
+You can edit and develop plug-ins or find shared plug-ins to install to IDE for developers to use.
 
-### 九、帮助
+### 9. Help
 
 ​  ![blob.png](img/9.png)<br/>
-​        	（图9）
+​        	（Picture 9）
 
-- 开发人员工具：用于打开编辑器的调试页面。
-- 官网： 打开Layabox官网链接。
-- 官网示例：打开官网的LayaAir引擎示例链接。
-- 开发者中心：打开Layabox开发者中心链接。
-- 打开编辑器本地缓存：打开编辑器的本地缓存文件所在目录。
-- 检查更新：打开LayaAirIDE的版本下载列表链接。
-- 更新日志：打开gitHub中的引擎与IDE版本更新日志链接。
-- 当前版本号：显示LayaAirIDE当前的版本号。
+- Developer Tools: Used to open the editor's debug page.
+- Official website: open Layabox official website link.
+- Example: Open the official website of the LayaAir engine example link.
+- Developer Center: Open the Layabox Developer Center link.
+- Open the editor local cache: open the directory where the editor's local cache file resides.
+- Check update: open LayaAirIDE version download list link.
+- Update log: open the link between the engine in gitHub and the IDE version update log.
+- Current version number: displays the current version number of LayaAirIDE.
 
