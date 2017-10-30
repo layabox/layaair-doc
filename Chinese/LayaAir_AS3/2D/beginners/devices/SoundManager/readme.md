@@ -36,4 +36,4 @@
 
 **四、音乐与音效播放的完整示例**
 
-该示例的完整代码地址为：[http://layaair.ldc.layabox.com/demo/?Sound_SimpleDemo](http://layaair.ldc.layabox.com/demo/?Sound_SimpleDemo)
+该示例的完整代码地址为：http://layaair.ldc.layabox.com/demo/?2d&Sound&SimpleDemo

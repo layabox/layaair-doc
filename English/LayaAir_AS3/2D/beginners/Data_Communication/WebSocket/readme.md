@@ -1,23 +1,23 @@
 ## WebSocket
 
-​	WebSockets 是一种基于 ws 协议的技术，它使得建立全双工连接成为可能。websocket 常见于浏览器中，但是这个协议不受使用平台的限制。
+​	WebSockets is a technology based on the ws protocol, which makes it possible to establish a full-duplex connection. Websocket is common in the browser, but this protocol is not limited by the use of the platform.
 
-​	websocket 发送数据的格式一般为二进制和字符串。LayaAir引擎已经为我们封装好了websocket 和Byte的类，收发数据结合Byte类就可以完成。下面我们搭建一个简单的收发数据的例子来看下浏览器的长连接是如何工作的。
+​	Websocket sends data in a format that is usually binary and string. The LayaAir engine has packaged the websocket and Byte classes for us, sending and receiving data together with the Byte class. Let's set up a simple example of sending and receiving data to see how the browser's long connection works.
 
-### 客户端
+### Client
 
-​	LayaAir内部的Socket是对websocket的封装，websocket的连接是异步的，所以一切和后端的交互都要等待open事件成功之后，前后端建立了连接通道才可以正常的收发消息。因此实例化socket之后四个事件是我们必须监听的：
+​	LayaAir internal Socket is websocket package, the websocket connection is asynchronous, so after all the interaction and back-end to wait for the open event, before and after the end of establishing a connection channel can send and receive messages normal. Therefore, after instantiating the socket, the four event is that we must listen:
 
 ``` 
-Event.OPEN		:连接正常打开抛出的事件
-Event.MESSAGE	:接收到消息抛出的事件
-Event.CLOSE		:socket关闭抛出的事件
-Event.ERROR		:连接出错抛出的事件
+Event.OPEN		:The connection is normally opened to throw the event
+Event.MESSAGE	:Receive the event thrown by the message
+Event.CLOSE		:socket off throws the event
+Event.ERROR		:Connection error throws an event
 ```
 
-上面这四个事件是必要的，这也是我们处理网络消息的前提。
+The above four events are necessary, which is the premise of our handling of network messages.
 
-​	这里我们用AS项目进行讲解，新建一个LayaAir的空项目。声明一个Socket的实例，声明一个Byte的实例：
+​	Here we use the AS project to explain, create a new LayaAir empty project. Declare an instance of Socket that declares an instance of Byte:
 
 ```java
 package {
@@ -31,13 +31,13 @@ package {
 		private var socket:Socket;
 		private var byte:Byte;
 		public function Game() {
-			//初始化引擎
+			//Initialize the engine
 			Laya.init(600, 400,WebGL);//
 			this.byte = new Byte();
-            this.byte.endian = Byte.LITTLE_ENDIAN;//这里我们采用小端；
+            this.byte.endian = Byte.LITTLE_ENDIAN;//Here we use small endian;
 			this.socket = new Socket();
-			this.socket.endian = Byte.LITTLE_ENDIAN;//这里我们采用小端；
-			this.socket.connectByUrl("ws://localhost:8989");//建立连接；
+			this.socket.endian = Byte.LITTLE_ENDIAN;//Here we use small endian;
+			this.socket.connectByUrl("ws://localhost:8989");//establish connection;
 			this.socket.on(Event.OPEN,this,openHandler);
 			this.socket.on(Event.MESSAGE,this,receiveHandler);
             this.socket.on(Event.CLOSE,this,closeHandler);
@@ -46,79 +46,79 @@ package {
 		}
 		private function openHandler(event:Object = null):void
 		{
-			//正确建立连接；
+			//Correctly establish a connection;
 			
 		}
 		private function receiveHandler(msg:Object = null):void
 		{
-			///接收到数据触发函数
+			///Received data trigger function
 		}
         private function closeHandler(e:Object= null):void
         {
-            //关闭事件
+            //Close event
         }
         private function errorHandler(e:Object = null):void
         {
-            //连接出错
+            //Connection error
         }
 	}
 }
 ```
 
-​	注意：我们看到我们实例化Byte和socket的时候都设置了endian，这个是很容易忽略的地方，有些开发者不注意这个，前端和服务端的endian不一致，导致了接收的数据是乱码，所以读写数据的时候一定要保证endian的一致。
+​	Note: we see us instantiate Byte and socket are set in endian, this is very easy to ignore the place, some developers do not pay attention to this, front end and server endian inconsistent, resulting in the received data is garbled, so Read and write data must ensure that the endian of the same.
 
-​	Socket连接服务器有三种方式：
+​	There are three ways to connect to a Socket server:
 
-| 方式             | 说明                                       |
+| Mode             | Description                                       |
 | -------------- | ---------------------------------------- |
-| 构造函数传参         | 立即连接 比如 new Socket("192.168.1.2",8899);注意这里的host参数没有ws前缀。 |
-| connect方法      | 传递url和端口号，连接服务器；socket.connect("192.168.0.1.2"，8989);注意这里的host参数没有ws前缀。 |
-| connectByUrl方法 | 传递整个url，比如 socket.connectByUrl("ws://localhost:8989");这里有ws前缀。 |
+|  Constructor arguments         |  immediately connected, such as new, Socket ("192.168.1.2", 8899); note that the host parameter here does not have a WS prefix. |
+| connect method      | pass url and port number, connect to the server; socket.connect ("192.168.0.1.2", 8989); Note that the host parameter here does not have the ws prefix. |
+| connectByUrl method | method passes the entire url, such as socket.connectByUrl ("ws: // localhost: 8989"); there is a ws prefix. |
 
-​	连接成功之后，会触发Event.OPEN事件，我们就可以正式的收发数据。
+​	After the connection is successful, will trigger Event.OPEN event, we can formally send and receive data.
 
-##### 发送数据
+##### send data
 
-​	发送数据很简单，只需要调用socket的send函数即可，参数可以是String或者ArrayBuffer。
+​	Send data is very simple, only need to call the socket send function can be, the parameters can be String or ArrayBuffer.
 
-发送字符串格式
-
-```java
-this.socket.send("hello world");//这是发送字符串的形式。
-```
-
-发送二进制格式的数据
+Send the string format
 
 ```java
-this.byte.writeByte(1);//写入一个字节
-this.byte.writeInt16(20);//写入一个int16的数据
-this.byte.writeFloat32(20.5);//写入一个32位的浮点数据
-this.byte.writeUTFString("hello");// 写入一个字符串；
-
-var by:Byte = new Byte();//这里声明一个临时Byte类型
-by.endian = Byte.LITTLE_ENDIAN;//设置endian；
-by.writeInt32(5000);//写入一个int32数据
-by.writeUint16(16);//写入一个uint16 数据
-byte.writeArrayBuffer(by.buffer);//把临时字节数据的数据写入byte中，这里注意写入的是by.buffer;
-
-this.socket.send(this.byte.buffer);//这里是把字节数组的数据通过socket发送给服务器。
-byte.clear();//清除掉数据;方便下次读写；
+this.socket.send("hello world");//This is the form in which the string is sent.
 ```
 
-​	上面我们看到，我们通过一个字节数组把我们需要的数据读入一个Byte数组，最后发送给服务器的是`byte.buffer`,这是一个ArrayBuffer的数据类型。这里一定要注意send的参数是ArrayBuffer，很多开发者可能不注意，直接传递成了Byte，导致发送数据不正确。假如写成`this.socket.send(this.byte);`这是错误的，这点一定要注意。
+Send data in binary format
 
-##### 接收数据
+```java
+this.byte.writeByte(1);//Write a byte
+this.byte.writeInt16(20);//Write an int16 of data
+this.byte.writeFloat32(20.5);//Write a 32-bit floating point data
+this.byte.writeUTFString("hello");// Write a string;
 
-​	客户端从服务器接收到的数据都会派发到Event.MESSAGE监听函数中。receiveHandler的参数就是服务器发送回来的数据。可能是字符串，也可能是二进制ArrayBuffer。接收到的是字符串我们不用读，拿来直接用就可以。但是接收到的是二进制的话我们需要读取出来，转成我们需要的类型。
+var by:Byte = new Byte();//Declare a temporary Byte type here
+by.endian = Byte.LITTLE_ENDIAN;//Set endian;
+by.writeInt32(5000);//Write an int32 data
+by.writeUint16(16);//Write a uint16 data
+byte.writeArrayBuffer(by.buffer);//The temporary byte data into the byte, the note here is written by.buffer;
+
+this.socket.send(this.byte.buffer);//This is the byte array of data through the socket sent to the server.
+byte.clear();//Clear the data; to facilitate the next read and write;
+```
+
+​	As we can see above, we read the data we want into a Byte array through a byte array, and finally the byte.buffer is sent to the server, which is a data type of ArrayBuffer. It's important to note that the send parameter is ArrayBuffer, and many developers may not notice it and pass it directly to Byte, causing the sending data to be incorrect. If written in this.socket.send (this.byte), this is wrong, this must pay attention.
+
+##### receive data
+
+​	The data received by the client from the server is distributed to the Event.MESSAGE listener function. The receiveHandler parameter is the data that is sent back by the server. It could be a string, or it could be a binary ArrayBuffer. What we receive is strings. We don't need to read them. We can use them directly. But when received is binary, we need to read it and turn it into the type we need.
 
 ```java
 private function receiveHandler(msg:Object = null):void
 {
-	//.............这里我们假设收到的是二进制ArrayBuffer
+	//.............Here we assume that the binary ArrayBuffer is received
     this.byte.clear();
-    this.byte.writeArrayBuffer(msg);//把接收到的二进制数据读进byte数组便于解析。
-    this.byte.pos = 0;//设置偏移指针；
-  	////下面开始读取数据，按照服务器传递过来的数据，按照顺序读取
+    this.byte.writeArrayBuffer(msg);//Read the received binary data into a byte array for easy parsing.
+    this.byte.pos = 0;//Set offset pointer;
+  	////The following began to read the data, according to the server to pass the data, in accordance with the order to read
     var a:int = this.byte.getByte();
     var b:int = this.byte.getInt16();
     var c:Number = this.byte.getFloat32();

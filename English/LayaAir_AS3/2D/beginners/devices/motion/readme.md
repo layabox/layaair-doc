@@ -1,51 +1,51 @@
-# laya.device.motion详解：陀螺仪与加速计
+# Laya.device.motion description: gyroscope and accelerometer
 
 [TOC]
 
-laya.device.motion中共有四个类供开发者使用，分别为加速信息AccelerationInfo、加速计Accelerator、陀螺仪Gyroscope、保存旋转信息RotationInfo。本节将详细描述laya.device.motion API的相关内容。
+Laya.device.motion have four classes for developers to use,AccelerationInfo,  Accelerator, Gyroscope and RotationInf. This section will describe in detail the relevant content of laya.device.motion API.
 
-## 1、陀螺仪
+## 1. Gyroscope
 
-​	`Gyroscope`通过`change`事件对设备方向改变进行监听。该事件有两个回调参数：
+​	`Gyroscope`  listens for `change`  in device orientation via the change event. This event has two callback parameters:
 
-- `absolute` —— 如果设备提供的方位是基于设备坐标系统和地球坐标系统间的差距，则是`true`；如果设备无法检测到地球坐标系统，`absolute`为`false`。
-- `rotationInfo` —— RotationInfo类型，包含`alpha`、`beta`、`gamma`三个值，将在下面详细讨论。
+- `absolute` —— true if the device is based on the difference between the device coordinate system and the Earth coordinate system; if the device can not detect the earth coordinate system, `absolute` is `false`。
+- `rotationInfo` —— RotationInfo type, containing `alpha`,`beta`,`gamma`, discuss in detail below.
 
- ​`alpha`、`beta`和`gamma`属性必须指示设备的方向，其表现形式为从固定在地球上的坐标系到固定在设备上的坐标系的转换。坐标系必须按照下面的描述调整。
+ ​`alpha`,`beta` and `gamma` attributes must indicate the direction of the device, which is represented by the transformation from the coordinate system on the earth to the coordinate system fixed on the device. Coordinate systems must be adjusted in accordance with the following description.
 
- ​地球坐标系是一个位于用户位置的“东、北、上”系。其拥有3个轴，地面相切与1984世界测地系统的spheriod的用户所在位置。
+ ​The earth coordinate system is a "East, north, upper" system at the user's location. It has 3 axes, where the ground is tangent to the user of the spheriod of the 1984 world geodetic system.
 
-- 东（X）在地面上，垂直于北轴，向东为正。
+- East (X) on the ground, perpendicular to the north axis, east is positive
 
-- 北（Y）在地面上，向正北为正（指向北极）。
+- North (Y) on the ground, to the north is positive (pointing to the North).
 
-- 上（Z）垂直于地面，向上为正。
+- Up (Z) is perpendicular to the ground and is positive.
 
-  对于一个移动设备，例如电话或平板，设备坐标系的定义于屏幕的标准方向相关。如果在设备旋转或展开滑动键盘时屏幕方向发生变化，这不会影响关于设备的坐标系的方向。
+  For a mobile phone or tablet, the device coordinate system is defined in the standard direction of the screen. If the screen orientation changes when the device rotates or unfolds the sliding keyboard, this does not affect the direction of the coordinate system of the device.
 
-- x在屏幕或键盘平面上，屏幕或键盘的右侧为正。
+- X is on the screen or keyboard plane, and the right side of the screen or keyboard is positive.
 
-- y在屏幕或键盘屏幕上，屏幕或键盘的上方为正。
+- Y is on the screen or keyboard screen,  top of screen  or the keyboard is positive.
 
-- z垂直于屏幕或键盘屏幕，离开屏幕或键盘为正。
+- Z is perpendicular to the screen or keyboard screen, out of screen or keyboard being positive.
 
-  ​旋转必须使用右手规则，即正向沿一个轴旋转为从该轴的方向看顺时针旋转。从两个系重合开始，旋转应用下列规则：
+  ​ The rotation is defined by right hand rule, also call clockwise. Starting from the two lines coincides, rotate the following rules:
 
-1. #### 以设备坐标系z轴为轴，旋转`alpha`度。`alpha`的作用域为[0, 360]。
+1. #### Rotate the `alpha`  degree with the z-axis of the device coordinate system. The range of  `alpha` is [0, 360]。
 
 ![blob.png](img/1.png)<br/>
-（图1）
+(Picture 1)
 
-2. #### 以设备坐标系x轴为轴，旋转`beta`度。`beta`的作用域为[-180, 180]。
+2. #### Rotate the device to`beta` coordinate system of the equipment coordinate in x axis, the range of `beta` is [-180, 180]。
 
 ![blob.png](img/2.png)<br/>
-（图2）
+(Picture 2）
 
-3. #### 已设备坐标系y轴为轴，旋转`gamma`度。`gamma`的作用域为[-90, 90]。
+3. #### The device coordinate system is y, the axis is axis, and the rotation is `gamma` degrees. The range of `gamma` is [-90, 90]。
 
 ![blob.png](img/3.png)<br/>
-（图3）
-下面演示获取旋转方位信息：
+(Picture 3）
+The following shows the rotation orientation information:
 
 ```typescript
 private var info:Text;
@@ -74,22 +74,22 @@ private function onDeviceorientation(absolute:Boolean, rotationInfo:RotationI
 
 
 
-## 2、加速计
+## 2. Accelerometer
 
-​	`Accelerator`类定期发送设备的运动传感器检测的活动。此数据表示设备在三维轴上的运动。当设备移动时，传感器检测此移动并返回设备的加速坐标。即使静止的时候，也可以得到包含重力的加速坐标。
+​	`Accelerator` class periodically sends the device's motion sensor detection activity. This data indicates the movement of the device on the three-dimensional axis. When the device moves, the sensor detects the movement and returns the acceleration coordinates of the device. Even when it is still, you can get acceleration coordinates that contain gravity.
 
-​	`change`事件的回调函数拥有一个以下参数：
+​	`change` callback function of the change event has one of the following parameters:
 
-- `acceleration` —— `AccelerationInfo`类型。提供宿主设备相对于地球坐标系的加速信息，其表现形式为定义于陀螺仪章节的主坐标系，单位是`m/s^2`。
-- `accelerationIncludingGravity` —— `AccelerationInfo` 类型。对于不能提供排除重力影响的加速数据的实现（例如缺少陀螺仪），作为替代，可以提供受重力影响的加速数据。这对于许多应用来说并不好用，但提供这些信息意味着提供了最大力度的支持。在此情况下，`accelerationIncludingGravity`属性提供宿主设备的加速信息，并加上一个加速度相等方向相反的反重力加速度。其表现形式为定义于陀螺仪章节的主坐标系。加速信息的单位是`m/s^2`。
-- `rotationRate` —— `RotationInfo`类型。属性提供宿主设备在空间中旋转的速率，其表现形式为定义于陀螺仪章节的的角度变化速率，单位必须是`deg/s`。
-- `interval` —— 从硬件获得数据的间隔，单位是毫秒。
+- `acceleration` —— `AccelerationInfo` Type. Provides acceleration information of the host device relative to the earth coordinate system, which is represented in the main coordinate system defined in the section of the gyroscope, in units of `m/s^2`。
+- `accelerationIncludingGravity` —— `AccelerationInfo` Type. For acceleration data that can not provide the effect of excluding gravity (eg, lack of gyroscopes), as an alternative, acceleration data can be provided by gravity. This is not easy for many applications, but providing this information means providing maximum support. In this case, the `accelerationIncludingGravity`property provides the acceleration information for the host device and adds an inverse counter-gravity acceleration in the opposite direction of acceleration. The representation is defined as the main coordinate system of the gyroscope chapter. The unit of acceleration information is`m/s^2`。
+- `rotationRate` —— `RotationInfo` attribute provides the rate at which the host device rotates in space, in the form of an angle change rate defined in the gyroscope chapter, which must be `deg/s`。
+- `interval` —— interval from which data is obtained from hardware is milliseconds.
 
-### 2.1 获取设备物理方向运动信息
+### 2.1 Get the physical direction of the device movement information
 
- 加速计轴是设备的物理方向，这表示当你旋转了设备，加速计轴也会随之旋转。
+ Accelerometer axis is the physical direction of the device, which means that when you rotate the device, the accelerometer axis will rotate.
 
-下面演示获取设备运动信息：
+ The following demonstrates acquisition of equipment movement information:
 
 ```typescript
 private var info:Text;
@@ -117,11 +117,11 @@ private function onMotoin(acceleration:AccelerationInfo, accelerationIncludingGr
 }
 ```
 
-### **2.2 获取设备显示方向运动信息**
+### **2.2  Get the device to display the direction of movement information**
 
-​	由于我们可能需要显示方向上的运行信息，这表示即使旋转了设备，加速计轴不随之改变，如y轴 始终保持着垂直。使用`Accelerator.getTransformedAcceleration()`即可获取到显示方向上的运行信息。
+​	You may need to display information as running direction, considering also if device rotating, the accelerometer axis does not change, such as the Y has always maintained vertically. Using `Accelerator.getTransformedAcceleration()`, you can get the running information in the display direction.
 
-​	在上例的代码的`onMotion`函数中，使用`AccelerationInfo`前先使用`Accelerator.getTransformedAcceleration()`转换信息：
+​	The `onMotion`  function in the above code example, using `Accelerator.getTransformedAcceleration()` convert information before using `AccelerationInfo` :
 
 ```typescript
 private function onMotoin(acceleration:AccelerationInfo, accelerationIncludingGravity:AccelerationInfo, rotationRate:RotationInfo, interval:int):void

@@ -184,4 +184,13 @@ if(window.conch && window.conch.setOnBackPressedFunction){
     });
 }
 ```
-
+## 12. 引擎初始化或加载启动脚本过程中的异常处理
+在LayaPlayer-0.9.11版本以后，当引擎初始化、加载启动脚本过程中，如果发生异常（如网络不稳定），引擎会自动调用到window.onLayaInitError(error)函数，该函数默认在config.js中定义，代码如下：
+```javascript
+window.onLayaInitError=function(e)
+{
+	console.log("onLayaInitError error=" + e);
+	alert("加载游戏失败，可能由于您的网络不稳定，请退出重进");
+}
+```
+开发者可以根据自己需求，修改报错信息和报错方式。

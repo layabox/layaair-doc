@@ -654,6 +654,11 @@
                 "name_3_name": "使用chrome的性能分析器",
                 "name_3_url": "Chinese/LayaAir_AS3/2D/advanced/PerformanceOptimization/Chrome_Profiles/",
                 "name_3_file": "readme.md"
+              },
+              {
+                "name_3_name": "Texture内存回收",
+                "name_3_url": "Chinese/LayaAir_AS3/2D/advanced/PerformanceOptimization/clearTextureRes/",
+                "name_3_file": "readme.md"
               }
             ]
           },

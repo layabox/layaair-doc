@@ -127,7 +127,7 @@
     })();
   
     function onLoaded(){
-        ListDemoView = new ListDemoUI();
+        ListDemoView = new ListPageUI();
         Laya.stage.addChild(ListDemoView);
     }
      
@@ -183,7 +183,7 @@
     })();
   
     function onLoaded(){
-        ListDemoView = new ListDemoUI();
+        ListDemoView = new ListPageUI();
         Laya.stage.addChild(ListDemoView);
         //获得List模拟数据，并渲染
          getListData(); 
@@ -272,7 +272,7 @@ listView._list.vScrollBarSkin='';
     })();
   
     function onLoaded(){
-        ListDemoView = new ListDemoUI();
+        ListDemoView = new ListPageUI();
         Laya.stage.addChild(ListDemoView);
         //获得List模拟数据，并渲染
          getListData(); 
@@ -350,7 +350,7 @@ listView._list.vScrollBarSkin='';
     })();
   
     function onLoaded(){
-        ListDemoView = new ListDemoUI();
+        ListDemoView = new ListPageUI();
         Laya.stage.addChild(ListDemoView);
         //获得List模拟数据，并渲染
          getListData(); 

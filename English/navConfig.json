@@ -284,34 +284,34 @@
                 "name_3_file": "readme.md"
               },
               {
-                "name_3_name": "WebSocket发送与接收数据",
-                "name_3_url": "Chinese/LayaAir_AS3/2D/beginners/Data_Communication/WebSocket/",
+                "name_3_name": "Sends and receives data with WebSocket",
+                "name_3_url": "English/LayaAir_AS3/2D/beginners/Data_Communication/WebSocket/",
                 "name_3_file": "readme.md"
               },
               {
-                "name_3_name": "Byte二进制读写",
-                "name_3_url": "Chinese/LayaAir_AS3/2D/beginners/Data_Communication/Byte/",
+                "name_3_name": "Read and write Byte binary data",
+                "name_3_url": "English/LayaAir_AS3/2D/beginners/Data_Communication/Byte/",
                 "name_3_file": "readme.md"
               },
               {
-                "name_3_name": "JSON数据详解",
-                "name_3_url": "Chinese/LayaAir_AS3/2D/beginners/Data_Communication/json/",
+                "name_3_name": "JSON data information",
+                "name_3_url": "English/LayaAir_AS3/2D/beginners/Data_Communication/json/",
                 "name_3_file": "readme.md"
               },
               {
-                "name_3_name": "JSONP跨域读取数据",
-                "name_3_url": "Chinese/LayaAir_AS3/2D/beginners/Data_Communication/jsonp/",
+                "name_3_name": "JSONP reads data across domains",
+                "name_3_url": "English/LayaAir_AS3/2D/beginners/Data_Communication/jsonp/",
                 "name_3_file": "readme.md"
               },
               {
-                "name_3_name": "Web Storage数据存储",
-                "name_3_url": "Chinese/LayaAir_AS3/2D/beginners/Data_Communication/webStorage/",
+                "name_3_name": "Web Storage store data locally",
+                "name_3_url": "English/LayaAir_AS3/2D/beginners/Data_Communication/webStorage/",
                 "name_3_file": "readme.md"
               }
             ]
           },
           {
-            "name_2_name": "硬件设备相关",
+            "name_2_name": "Hardware device related",
             "name_2_data": [
               {
                 "name_3_name": "Handle music and sound effects",
@@ -319,43 +319,43 @@
                 "name_3_file": "readme.md"
               },
               {
-                "name_3_name": "陀螺仪与加速计",
-                "name_3_url": "Chinese/LayaAir_AS3/2D/beginners/devices/motion/",
+                "name_3_name": "Gyroscope and accelerometer",
+                "name_3_url": "English/LayaAir_AS3/2D/beginners/devices/motion/",
                 "name_3_file": "readme.md"
               },
               {
-                "name_3_name": "用Geolocation获取地理位置信息",
-                "name_3_url": "Chinese/LayaAir_AS3/2D/beginners/devices/geolocation/",
+                "name_3_name": "Using Geolocation and relative information",
+                "name_3_url": "English/LayaAir_AS3/2D/beginners/devices/geolocation/",
                 "name_3_file": "readme.md"
               },
               {
-                "name_3_name": "使用百度地图显示当前位置",
-                "name_3_url": "Chinese/LayaAir_AS3/2D/beginners/devices/baiduMap/",
+                "name_3_name": "Use Baidu map to show the current location",
+                "name_3_url": "English/LayaAir_AS3/2D/beginners/devices/baiduMap/",
                 "name_3_file": "readme.md"
               }
             ]
           },
           {
-            "name_2_name": "屏幕适配",
+            "name_2_name": "Screen display mode",
             "name_2_data": [
               {
-                "name_3_name": "屏幕适配API概述",
-                "name_3_url": "Chinese/LayaAir_AS3/2D/beginners/Screen_Fit/API_Overview/",
+                "name_3_name": "Screen adaptation API overview",
+                "name_3_url": "English/LayaAir_AS3/2D/beginners/Screen_Fit/API_Overview/",
                 "name_3_file": "readme.md"
               },
               {
-                "name_3_name": "对齐模式：水平对齐与垂直对齐",
-                "name_3_url": "Chinese/LayaAir_AS3/2D/beginners/Screen_Fit/Alignment/",
+                "name_3_name": "Align mode: Horizontal and vertical alignment",
+                "name_3_url": "English/LayaAir_AS3/2D/beginners/Screen_Fit/Alignment/",
                 "name_3_file": "readme.md"
               },
               {
-                "name_3_name": "自动横屏与横屏游戏",
-                "name_3_url": "Chinese/LayaAir_AS3/2D/beginners/Screen_Fit/Landscape_Mode/",
+                "name_3_name": "Automatic lock game to landscape screen mode",
+                "name_3_url": "English/LayaAir_AS3/2D/beginners/Screen_Fit/Landscape_Mode/",
                 "name_3_file": "readme.md"
               },
               {
-                "name_3_name": "游戏自动竖屏设置",
-                "name_3_url": "Chinese/LayaAir_AS3/2D/beginners/Screen_Fit/VerticalScreen_mode/",
+                "name_3_name": "Automatically lock screen to landscape or portrait mode",
+                "name_3_url": "English/LayaAir_AS3/2D/beginners/Screen_Fit/VerticalScreen_mode/",
                 "name_3_file": "readme.md"
               },
               {
@@ -371,25 +371,25 @@
         "nav_1_name": "LayaAir IDE篇（AS3）",
         "nav_1_data": [
           {
-            "name_2_name": "代码模式基础",
+            "name_2_name": "Code pattern basic",
             "name_2_data": [
               {
-                "name_3_name": "代码模式布局概述",
-                "name_3_url": "Chinese/LayaAir_AS3/IDE/Code_Mode/GUI_Layout/",
+                "name_3_name": "Overview of code pattern layout",
+                "name_3_url": "English/LayaAir_AS3/IDE/Code_Mode/GUI_Layout/",
                 "name_3_file": "readme.md"
               },
               {
-                "name_3_name": "菜单栏详解",
-                "name_3_url": "Chinese/LayaAir_AS3/IDE/Code_Mode/MenuBar/",
+                "name_3_name": "Menu bar",
+                "name_3_url": "English/LayaAir_AS3/IDE/Code_Mode/MenuBar/",
                 "name_3_file": "readme.md"
               },{
-                "name_3_name": "工具栏介绍",
-                "name_3_url": "Chinese/LayaAir_AS3/IDE/Code_Mode/ToolBar/",
+                "name_3_name": "Toolbar Utilities",
+                "name_3_url": "English/LayaAir_AS3/IDE/Code_Mode/ToolBar/",
                 "name_3_file": "readme.md"
               },
               {
-                "name_3_name": "代码模式的快捷键设置",
-                "name_3_url": "Chinese/LayaAir_AS3/IDE/Code_Mode/shortcut_key/",
+                "name_3_name": "Shortcut key for code editing ",
+                "name_3_url": "English/LayaAir_AS3/IDE/Code_Mode/shortcut_key/",
                 "name_3_file": "readme.md"
               }
             ]
@@ -398,28 +398,28 @@
             "name_2_name": "设计模式基础",
             "name_2_data": [
               {
-                "name_3_name": "设计模式界面概述",
-                "name_3_url": "Chinese/LayaAir_AS3/IDE/Design_Mode/GUI_Layout/",
+                "name_3_name": "Design Mode interface overview",
+                "name_3_url": "English/LayaAir_AS3/IDE/Design_Mode/GUI_Layout/",
                 "name_3_file": "readme.md"
               },
               {
-                "name_3_name": "自定义界面布局与恢复",
-                "name_3_url": "Chinese/LayaAir_AS3/IDE/Design_Mode/Custom_GUI/",
+                "name_3_name": "Custom interface layout and recovery default",
+                "name_3_url": "English/LayaAir_AS3/IDE/Design_Mode/Custom_GUI/",
                 "name_3_file": "readme.md"
               },
               {
-                "name_3_name": "菜单栏介绍",
-                "name_3_url": "Chinese/LayaAir_AS3/IDE/Design_Mode/MenuBar/",
+                "name_3_name": "Menu Bar",
+                "name_3_url": "English/LayaAir_AS3/IDE/Design_Mode/MenuBar/",
                 "name_3_file": "readme.md"
               },
               {
-                "name_3_name": "工具栏介绍",
-                "name_3_url": "Chinese/LayaAir_AS3/IDE/Design_Mode/ToolBar/",
+                "name_3_name": "Toolbar introduction",
+                "name_3_url": "English/LayaAir_AS3/IDE/Design_Mode/ToolBar/",
                 "name_3_file": "readme.md"
               },
               {
-                "name_3_name": "项目管理器",
-                "name_3_url": "Chinese/LayaAir_AS3/IDE/Design_Mode/ProjectManager/",
+                "name_3_name": "Project manager",
+                "name_3_url": "English/LayaAir_AS3/IDE/Design_Mode/ProjectManager/",
                 "name_3_file": "readme.md"
               },
               {
@@ -428,38 +428,38 @@
                 "name_3_file": "readme.md"
               },
               {
-                "name_3_name": "IDE组件详解",
-                "name_3_url": "Chinese/LayaAir_AS3/IDE/Design_Mode/Component_Detailed/",
+                "name_3_name": "IDE component class and  type",
+                "name_3_url": "English/LayaAir_AS3/IDE/Design_Mode/Component_Detailed/",
                 "name_3_file": "readme.md"
               },
               {
-                "name_3_name": "模板库",
-                "name_3_url": "Chinese/LayaAir_AS3/IDE/Design_Mode/Template/",
+                "name_3_name": "Template library",
+                "name_3_url": "English/LayaAir_AS3/IDE/Design_Mode/Template/",
                 "name_3_file": "readme.md"
               },
               {
-                "name_3_name": "场景编辑器",
-                "name_3_url": "Chinese/LayaAir_AS3/IDE/Design_Mode/Scene/",
+                "name_3_name": "Scene Editor",
+                "name_3_url": "English/LayaAir_AS3/IDE/Design_Mode/Scene/",
                 "name_3_file": "readme.md"
               },
               {
-                "name_3_name": "属性设置器",
-                "name_3_url": "Chinese/LayaAir_AS3/IDE/Design_Mode/Attribute_Set/",
+                "name_3_name": "Attribute setter",
+                "name_3_url": "English/LayaAir_AS3/IDE/Design_Mode/Attribute_Set/",
                 "name_3_file": "readme.md"
               },
               {
-                "name_3_name": "UI页面、粒子、动画、脚本新建面板详解",
-                "name_3_url": "Chinese/LayaAir_AS3/IDE/Design_Mode/NewPanel/",
+                "name_3_name": "New panel detail, UI page, particle, animation and script ",
+                "name_3_url": "English/LayaAir_AS3/IDE/Design_Mode/NewPanel/",
                 "name_3_file": "readme.md"
               },
               {
-                "name_3_name": "层级管理器",
-                "name_3_url": "Chinese/LayaAir_AS3/IDE/Design_Mode/HierarchyManager/",
+                "name_3_name": "Hierarchy Manager",
+                "name_3_url": "English/LayaAir_AS3/IDE/Design_Mode/HierarchyManager/",
                 "name_3_file": "readme.md"
               },
               {
-                "name_3_name": "组件库",
-                "name_3_url": "Chinese/LayaAir_AS3/IDE/Design_Mode/Component/",
+                "name_3_name": "Component library",
+                "name_3_url": "English/LayaAir_AS3/IDE/Design_Mode/Component/",
                 "name_3_file": "readme.md"
               }
             ]
@@ -468,8 +468,8 @@
             "name_2_name": "使用IDE创作",
             "name_2_data": [
               {
-                "name_3_name": "图集制作与使用详解",
-                "name_3_url": "Chinese/LayaAir_AS3/IDE/Use_IDE/Atlas/",
+                "name_3_name": "Create Atlas and details usage",
+                "name_3_url": "English/LayaAir_AS3/IDE/Use_IDE/Atlas/",
                 "name_3_file": "readme.md"
               },
               {
