@@ -286,7 +286,7 @@ private function onLoded():void
   Laya.timer.once(2000,this,onTimerOnce);
 }
 
-//模型与材质加载完成后回调
+//2秒后更换模型网格
 private function onTimerOnce():void
 {
   //创建模型网格并更换原始网格
