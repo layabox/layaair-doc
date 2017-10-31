@@ -1,128 +1,18 @@
-## LayaAir3D之模型
+## LayaAir3D之骨骼挂点
 
-### 模型概述
+### 骨骼挂点概述
 
-3D模型是指通过三维软件按照物体的结构建模形成的3D立体对象。目前LayaAir 3D引擎中包括了两种模型显示类型，一为普通模型**MeshSprite3D**，二为蒙皮动画模型**SkinnedMeshSprite3D**。
+骨骼挂点一般运用在3D模型与骨骼的绑定上。比如武器要随着角色手的运动而运动，那么我们就可以把武器与手上骨骼进行绑定，作为手上骨骼的子层级。
 
-区别是蒙皮动画模型是指在制作时加入了蒙皮与骨骼动画的模型，常用于有动画的角色。而普通模型是指未有动画的场景景观模型等。
-
-它们都包括了模型网格与材质两部分。
-
-**模型网格(Mesh)：**
-
-模型网格是由点、线、面组成的三维数据，LayaAir引擎中有专门的Mesh网格数据类，将它赋予3D模型显示对象MeshSprite3D或SkinnedMeshSprite3D后就可以在场景中显示出来。
-
-目前3D制作软件较多，最主流的是3ds max与maya软件。3D模型的数据格式也较多，如FBX、3DS、OBJ等。
-
-LayaAir引擎提供了模型导出工具FBXTools与unity3D导出插件，用于生成layaAir所需要的3D数据格式。建议使用unity导出插件，FBXTools工具以后将不会更新。
-
-**材质(Material)：**
-
-材质说明我们将在独立的章节介绍，在本章节中暂不说明。
+绑定后的3D模型也可以通过代码来移除绑定或者换另外的3D模型，这样也实现了武器或装备的换装功能。
 
 
 
-### 创建引擎自带的基础模型
+### 在Unity中设置骨骼挂点
 
- 在快速开启3D之旅的课程中，我们已用到了BoxMesh盒子模型，本节课中介绍LayaAir引擎提供的其他SphereMesh、CylinderMesh基础模型数据，我们依次创建它们，并通过transform属性去移动它们的位置，具体代码如下：。
 
-创建时，需注意的是，加载到场景中的引擎自带模型，轴心点在模型正中心，因此我们是以模型中心点为参考进行移动、旋转、缩放。加载到场景中时，模型默认会放置到场景的世界座标原点上，与2D类似。
 
-```java
-package {
 
-	import laya.d3.core.Camera;
-	import laya.d3.core.MeshSprite3D;
-	import laya.d3.core.light.DirectionLight;
-	import laya.d3.core.material.StandardMaterial;
-	import laya.d3.core.scene.Scene;
-	import laya.d3.math.Vector3;
-	import laya.d3.math.Vector4;
-	import laya.d3.resource.Texture2D;
-	import laya.d3.resource.models.BoxMesh;
-	import laya.d3.resource.models.CylinderMesh;
-	import laya.d3.resource.models.SphereMesh;
-	import laya.display.Stage;
-	import laya.utils.Stat;
-
-	public class LayaAir3D_Model
-	{
-		
-		public function LayaAir3D_Model() 
-		{
-			//初始化引擎
-			Laya3D.init(1000, 500,true);
-			
-			//适配模式
-			Laya.stage.scaleMode = Stage.SCALE_FULL;
-			Laya.stage.screenMode = Stage.SCREEN_NONE;
-
-			//开启统计信息
-			Stat.show();
-			
-			//添加3D场景-----------------------
-			var scene:Scene = new Scene();
-			Laya.stage.addChild(scene);
-			
-			
-			//创建摄像机(横纵比，近距裁剪，远距裁剪)-----
-			var camera:Camera = new Camera( 0, 0.1, 1000);
-			//加载到场景
-			scene.addChild(camera);
-			//移动摄像机位置
-			camera.transform.position=new Vector3(0, 3, 10);
-			//旋转摄像机角度
-			camera.transform.rotate(new Vector3( -17, 0, 0), true, false);
-			//加入摄像机移动控制脚本
-			camera.addComponent(CameraMoveScript);
-			
-			
-			//创建方向光 ------------------------
-			var light:DirectionLight = scene.addChild(new DirectionLight()) as DirectionLight;
-			//移动灯光位置
-			light.transform.translate(new Vector3(0,2,5));
-			//调整灯光方向
-			light.direction = new Vector3(0.5, -1, 0);
-			//设置灯光环境色
-			light.ambientColor = new Vector3(1, 1, 1); 
-			//设置灯光漫反射颜色
-			light.diffuseColor = new Vector3(0.3, 0.3, 0.3);
-			
-			
-			//创建模型-------------------------------
-			//创建盒子模型(参数为：长、宽、高，单位：米)
-			var boxMesh:BoxMesh=new BoxMesh(2,2,2);
-			//创建模型显示对象
-			var box3D:MeshSprite3D=new MeshSprite3D(boxMesh);
-			scene.addChild(box3D);
-			
-			//创建球体模型(参数为：半径、水平层数、垂直层数)
-			var sphereMesh:SphereMesh=new SphereMesh(1,8,8);
-			//创建模型显示对象
-			var sphere3D:MeshSprite3D=new MeshSprite3D(sphereMesh);
-			//x轴上移动-3米（世界座标 向左）
-			sphere3D.transform.translate(new Vector3(-3,0,0),false);
-			scene.addChild(sphere3D);
-			
-			//创建圆柱体模型(参数为：半径、高、圆截面线段数)
-			var cylinderMesh:CylinderMesh=new CylinderMesh(1,2,8);
-			//创建模型显示对象
-			var cylinder3D:MeshSprite3D=new MeshSprite3D(cylinderMesh);
-			//x轴上移动3米（世界座标 向右）
-			cylinder3D.transform.translate(new Vector3(3,0,0),false);
-			scene.addChild(cylinder3D);
-			
-			//创建材质----------------------------------
-			var material:StandardMaterial = new StandardMaterial();
-			//为模型赋材质（单个材质可赋给多个模型）
-			box3D.meshRender.material = material;
-			
-		}		 
-	}
-}
-```
-
-上面的代码中，创建了摄像机与灯光，并添加了三种基本几何体模型，它们使用了最基本的默认材质。显示效果如图1。
 
 ![图片1](img/1.png)<br>（图1）
 
