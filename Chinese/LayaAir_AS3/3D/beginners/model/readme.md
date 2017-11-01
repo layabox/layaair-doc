@@ -83,10 +83,11 @@ package {
 			light.transform.translate(new Vector3(0,2,5));
 			//调整灯光方向
 			light.direction = new Vector3(0.5, -1, 0);
-			//设置灯光环境色
-			light.ambientColor = new Vector3(1, 1, 1); 
-			//设置灯光漫反射颜色
-			light.diffuseColor = new Vector3(0.3, 0.3, 0.3);
+			//设置灯光颜色
+			light.color = new Vector3(0.3, 0.3, 0.3);
+          
+          	//设置灯光环境色
+			scene.ambientColor = new Vector3(1, 1, 1); 
 			
 			
 			//创建模型-------------------------------

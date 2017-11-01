@@ -48,10 +48,9 @@
 ```java
 	//添加方向光（灯光色会与材质色融合，因此改灯光色为黑白灰色，且不能曝光过度）
 	var directionLight:DirectionLight = scene.addChild(new DirectionLight()) as DirectionLight;
-	directionLight.ambientColor = new Vector3(0.5, 0.5, 0.5);
-	directionLight.specularColor = new Vector3(0, 0, 0);
-	directionLight.diffuseColor = new Vector3(1, 1, 1);
+	directionLight.color = new Vector3(1, 1, 1);
 	directionLight.direction = new Vector3(0.5, -1, 0);	
+	scene.ambientColor = new Vector3(0.5, 0.5, 0.5);
 
 	//创建标准材质
 	var material:StandardMaterial = new StandardMaterial();
@@ -81,12 +80,10 @@
 
 ```java
 ......
-  //创建平行光 -------------------
+//创建平行光 -------------------
   var light:DirectionLight = scene.addChild(new DirectionLight()) as DirectionLight;
 //修改灯光方向
 light.direction = new Vector3(0.3, -1, 0);
-//设置高光色为白色
-light.specularColor=new Vector3(1,1,1);
 
 //加载导出的卡车模型
 role3D=Sprite3D.load("LayaScene_truck/truck.lh");
@@ -127,10 +124,9 @@ private function onLoadComplete():void
 ```java
 //添加方向光（灯光色会与材质色融合，因此改灯光色为黑白灰色，且不能曝光过度）
 var directionLight:DirectionLight = scene.addChild(new DirectionLight()) as DirectionLight;
-directionLight.ambientColor = new Vector3(0.5, 0.5, 0.5);
-directionLight.specularColor = new Vector3(0, 0, 0);
-directionLight.diffuseColor = new Vector3(1, 1, 1);
+directionLight.color = new Vector3(1, 1, 1);
 directionLight.direction = new Vector3(0.5, -1, 0);	
+scene.ambientColor = new Vector3(0.5, 0.5, 0.5);
 
 //创建标准材质
 var material:StandardMaterial = new StandardMaterial();
@@ -164,11 +160,11 @@ box.meshRender.material = material;
 
 ```java
 //添加方向光
+//添加方向光（灯光色会与材质色融合，因此改灯光色为黑白灰色，且不能曝光过度）
 var directionLight:DirectionLight = scene.addChild(new DirectionLight()) as DirectionLight;
-directionLight.ambientColor = new Vector3(0.5, 0.5, 0.5);
-directionLight.specularColor = new Vector3(0.5, 0.5, 0.5);//为球体增加高光
-directionLight.diffuseColor = new Vector3(1, 1, 1);
+directionLight.color = new Vector3(1, 1, 1);
 directionLight.direction = new Vector3(0.5, -1, 0);	
+scene.ambientColor = new Vector3(0.5, 0.5, 0.5);
 
 //添加自定义模型
 var sphere:MeshSprite3D = scene.addChild(new MeshSprite3D(new SphereMesh())) as MeshSprite3D;
@@ -220,12 +216,11 @@ sphere.meshRender.material = material;
 
 ```java
 ......
-//添加方向光
-var directionLight:DirectionLight = scene.addChild(new DirectionLight()) as DirectionLight;
-directionLight.ambientColor = new Vector3(0.5, 0.5, 0.5);
-directionLight.specularColor = new Vector3(0.5, 0.5, 0.5);//为球体增加高光
-directionLight.diffuseColor = new Vector3(1, 1, 1);
+  //添加方向光（灯光色会与材质色融合，因此改灯光色为黑白灰色，且不能曝光过度）
+  var directionLight:DirectionLight = scene.addChild(new DirectionLight()) as DirectionLight;
+directionLight.color = new Vector3(1, 1, 1);
 directionLight.direction = new Vector3(0.5, -1, 0);	
+scene.ambientColor = new Vector3(0.5, 0.5, 0.5);
 
 //创建unity中导出的模型
 var box:Sprite3D=Sprite3D.load("layaScene_box/box.lh");
@@ -288,12 +283,10 @@ camera.addComponent(CameraMoveScript);
 var light:DirectionLight = scene.addChild(new DirectionLight()) as DirectionLight;
 //修改灯光方向
 light.direction = new Vector3(0.3, -1, 0);
-//设置为无高光
-light.specularColor=new Vector3(0,0,0);
 //设置环境光偏暗蓝
-light.ambientColor=new Vector3(0.2,0.2,1);
-//设置漫反射光偏暗
-light.diffuseColor=new Vector3(0.5,0.5,0.5);
+scene.ambientColor=new Vector3(0.2,0.2,1);
+//设置灯光光偏暗
+light.color=new Vector3(0.5,0.5,0.5);
 ```
 ![图片11](img/11.png)<br>（图11）
 

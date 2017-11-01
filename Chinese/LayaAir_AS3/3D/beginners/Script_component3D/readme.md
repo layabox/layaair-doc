@@ -167,14 +167,13 @@ package {
 			
 			//添加平行光----------------------------------
 			var directionLight:DirectionLight = scene.addChild(new DirectionLight()) as DirectionLight;
-			//灯光的环境色
-			directionLight.ambientColor = new Vector3(0.6, 0.6, 0.6);
-			//灯光的高光色
-			directionLight.specularColor = new Vector3(0.6, 0.6, 0.6);
 			//灯光的漫反射颜色
-			directionLight.diffuseColor = new Vector3(1.6, 1.6, 1.6);
+			directionLight.color = new Vector3(1.6, 1.6, 1.6);
 			//灯光的方向(弧度)
 			directionLight.direction = new Vector3(0.3, -1, 0);
+          
+          	//灯光的环境色
+			scene.ambientColor = new Vector3(0.6, 0.6, 0.6);
 			
 			//添加自定义模型------------------------------
 			var box:MeshSprite3D = scene.addChild(new MeshSprite3D(new BoxMesh(1,1,1))) as MeshSprite3D;

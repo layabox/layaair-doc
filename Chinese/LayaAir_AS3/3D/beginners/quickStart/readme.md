@@ -60,12 +60,8 @@ package {
 
 			//添加平行光----------------------------------
 			var directionLight:DirectionLight = scene.addChild(new DirectionLight()) as DirectionLight;
-            //灯光的环境色
-			directionLight.ambientColor = new Vector3(0.6, 0.6, 0.6);
-          	//灯光的高光色
-			directionLight.specularColor = new Vector3(0.6, 0.6, 0.6);
           	//灯光的漫反射颜色
-			directionLight.diffuseColor = new Vector3(1.6, 1.6, 1.6);
+			directionLight.color = new Vector3(1.6, 1.6, 1.6);
           	//灯光的方向(弧度)
 			directionLight.direction = new Vector3(1, -1, 0);
 
@@ -169,12 +165,10 @@ LayaAir 3D引擎坐标用专业术语来说属于**`右手坐标系`**（图5）
 示例中以下代码运用了向量作为颜色赋值：
 
 ```java
-            //灯光的环境色
-			directionLight.ambientColor = new Vector3(0.6, 0.6, 0.6);
-          	//灯光的高光色
-			directionLight.specularColor = new Vector3(0.6, 0.6, 0.6);
           	//灯光的漫反射颜色
-			directionLight.diffuseColor = new Vector3(1.6, 1.6, 1.6);
+			directionLight.color = new Vector3(1.6, 1.6, 1.6);
+          	//灯光的方向(弧度)
+			directionLight.direction = new Vector3(1, -1, 0);
 ```
 
 在项目中，还有许多比较复杂的用法，需要运用向量作一些数学运算，本课程作为入门课程，在此暂时不多作介绍。
