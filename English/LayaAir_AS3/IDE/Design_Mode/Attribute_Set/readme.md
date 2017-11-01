@@ -1,123 +1,124 @@
-# 属性设置器
+# Attribute setter
 
-​         属性设置器是我们查看并编辑当前选中组件属性的工作区域。在场景编辑器或层级管理器中选中组件，就会在属性设置器中显示该组件的属性以供查询和编辑。
+​         The attribute setter is the working area where we view and edit the component properties of the currently selected component. When you select components in the scene editor or the hierarchy manager, you will display the properties of the component in the attribute setter for query and edit.
 
-属性设置器面板如图1所示，从上到下通常为： 组件或节点名、**公用**属性、**常用**属性、**宽高及位置**、**旋转及缩放**、**其他**等等。
+Attribute setter panel shown in Figure 1, from top to bottom are usually: component or node name, **common** attributes, **commonly used**attributes, **width and height**, **location, rotation** , **scaling** and so on
 
  ![imgage](img/1.png)<br/>
-​  （图1）属性面板分组
+​  (Figure 1) attribute panel grouping
 
 
 
-## 1、`公用`属性介绍
+## 1. Introduction of  `public` properties
 
-公用属性中通常是`var`、`name`、`renderType`。如图2-1所示。
+Common attributes are usually `var`,`name`,`renderType`. As shown in Figure 2-1.
 
-![图2-1](img/2-1.png) <br /> (图2-1)
+![图2-1](img/2-1.png) <br /> (picture 2-1)
 
-### 1.1 设置全局变量名称
+### 1.1 Set the global variable name
 
-`Var` ：声名一个唯一的全局变量名称，用于在项目的代码中根据这个名称来调用这个组件。
+`Var` ：Creates a unique global variable name that is used to invoke this component in the code of the project.
 
-### 1.2 设置组件标识名称
+### 1.2  Set the component identification name
 
-`name`： 是组件的标识名称，通常用于层级管理器中区分其它组件，他的父容器也可以通过这个名称找到这个组件。
+`name`： the identity name of a component, which is usually used to distinguish other components in a hierarchical manager, and its parent container can also find this component by this name.
 
-### 1.3 设置组件的节点功能类型
+### 1.3 Set the node function type of the component
 
-`renderType`：节点功能类型，分别有mask、hit、unHit、render、instance五种。
+`renderType`：node function types, respectively, mask, hit, unHit, render, instance five kinds.
 
-#### 1.3.1 设置为遮罩
+#### 1.3.1 Set as mask
 
-　　当组件被设置为`mask`时，该组件为遮罩，其**父级组件**只有mask遮罩区域为可见，效果如动图2-2所示。
+　　When the component is set to `mask`, the component is masked, its **parent component** only mask mask area is visible, the effect shown in Figure 2-2.
 
-　　![动图2-2](img/2-2.gif) <br /> （动图2-2）
+　　![动图2-2](img/2-2.gif) <br /> （Picture 2-2）
 
-#### 1.3.2 设置点击区域与非点击区域
+#### 1.3.2 Settings click area and non click area
 
-　　当组件被设置为`hit`时，该组件所在的父级组件区域可以被点击。当组件被设置为`unHit`时，该组件所在的父级组件区域为非点击区域。**如果点区域hit的组件与非点击区域unHit的组件叠加时**，非点击区域unHit优先级更高。如图2-3所示，绿色圆所在的非点击区域（unHit），包括被叠加的嘴巴区域都不可以被点击。只有头部的红色半月区域可以被点击。
+　　When the component is set to `hit`, the parent component region in which the component is located can be clicked. When the component is set to `unHit`, the parent component area of the component is non-clicked area.**If the component of the point area hit is superimposed with the component of the non click area unHit**, the unHit priority is higher in the non clickable region. As shown in Figure 2-3, the non clickable region of the green circle (unHit), including a overlapping mouth area, can not be clicked. Only the red half moon area of the head can be clicked.
 
-　　![图2-3](img/2-3.png) <br />(图2-3)
+　　![图2-3](img/2-3.png) <br />(Picture 2-3)
 
-#### 1.3.3 设置为List的render
+#### 1.3.3  Set to List for render
 
-　　当该组件被设置为`render`时，该组件可重复渲染，用于列表List的制作。在制作列表的思路上，需要先将多个组件全选后通过ctrl+B设置为box容器。并将该容器的renderType属性设置为render。然后再使用ctrl+B将该box设置为List。如动图2-4所示。
+　　When the component is set to `render`, the component can be rendered repeatedly for the production of List List. In the production of the list of ideas, the need to first select all components through ctrl + B Set to box container. And set the renderType property of the container to render. And then use ctrl + B to set the box as a List. As shown in Figure 2-4.
 
-![动图2-4](img/2-4.gif) <br />(动图2-4)
+![动图2-4](img/2-4.gif) <br />(Picture 2-4)
 
-#### 1.3.4 设置为单例instance
+#### 1.3.4 Set to single instance instance
 
-　　当该组件被设置为`instance`时，该组件为单例组件，当多处重复使用的时候，单例组件仅会被实例化一次。节约性能开销。
-
+　　When the component is set to `instance`, the component is a single instance component, and when multiple instances are reused, the singleton component will only be instantiated once. Save performance overhead.
 
 
 　　
 
-## 2、`常用`属性介绍
+## 2. Introduction of `common` attributes
 
-在常用属性里，有一些操作是通用的。这里我们分别介绍一下。
+In the commonly used attributes, there are some operations are generic. Let's introduce them separately.
 
-### 2.1 九宫格操作(sizeGrid)
+### 2.1 Scale grid operation (sizeGrid)
 
-九宫格是通过四条直线将UI分隔成9块，如果出现对UI的拉伸操作，中间区域为计算填充，其它区域会保持原有设计，无论UI如何拉伸都会保持不变。是游戏开发中常用的功能。
+The UI is divided into 9 blocks by four straight lines. If there is a stretching operation for UI, the middle area for the calculation of the fill, and the rest of the region will maintain the original design, no matter how stretched UI will remain unchanged. It is a common function in game development.
 
-常用属性中的`sizeGrid`属性正是九宫格设置，通过点击属性输入栏右侧的`grid`按钮，可以进入九宫格设置的可视化操作面板。如图3-1所示。
+The `sizeGrid`attribute in the commonly used attributes is the setting of the nine squares. By clicking the `grid`button on the right side of the attribute input column, you can enter the visual operation panel set up by the square lattice. As shown in figure 3-1.
 
-![图3-1](img/3-1.png) <br / > (图3-1)
+![图3-1](img/3-1.png) <br / > (Picture 3-1)
 
-当打开九宫格设置后，左侧为效果预览区、右侧为九宫格可视化操作区。通过鼠标拖拽的方式改变九宫格填充区域，即时获得预览效果，调整完点击确定即可。操作如动图3-2所示。
+When you open the nine square settings, the left side is the effect preview area, the right side is the nine square visual operation area. Through the mouse drag and drop way to change the nine square filling area, immediately get preview effect, adjust click click ok. The operation is shown in figure 3-2.
 
-![动图3-2](img/3-2.gif) <br /> (动图3-2)
+![动图3-2](img/3-2.gif) <br /> (Picture 3-2)
 
-### 2.2 皮肤设置(skin)
+### 2.2 Skin Settings
 
-`skin`属性可以设置改变组件的皮肤。除了手动在属性栏内输入皮肤的路径外，还可以从资源管理器中直接拖动资源到`skin`属性输入栏，快速实现皮肤的切换。另外，点击属性输入栏右侧的`skin按钮`，可以从众多的资源中，快速定位到当前的资源。操作如动图3-3所示。
+`skin` property can be set to change the skin of the component. In addition to manually in the path attribute column enter the `skin`, also from the Explorer drive directly to the skin property of resource input field, fast switching of the `skin`. In addition, click the skin button on the right of the property input bar, which can quickly locate the current resource from a large number of resources. The operation is shown in figure 3-3.
 
-![动图3-3](img/3-3.gif) <br /> (动图3-3)
+![动图3-3](img/3-3.gif) <br /> (Picture 3-3)
 
 
 
-### 2.3 皮肤状态切割(stateNum)
+### 2.3 skin state cutting (stateNum)
 
 在Button、checkBox等组件的使用中，组件的皮肤资源是多态竖向排列组成，如图3-4所示。
 
-![图3-4](img/3-4.png) <br /> (图3-4)
+![图3-4](img/3-4.png) <br /> (Picture 3-4)
 
-#### 皮肤的切割方式：
+#### The way of skin cutting:
 
-三态是将皮肤图片按竖直方向以等比分割的形式分为3部分，如图3-4所示，**从上至下**依次为`弹起或离开状态`皮肤、 `经过状态`皮肤、 `按下和选中`（*保持按下*）状态皮肤，三态常用于PC浏览器中。
+The three state is the skin pictures in the vertical direction to the geometric segmentation form is divided into 3 parts, as shown in Figure 3-4,**from top to bottom up** or `leave the state`of skin,  `, through the state`, ` press and select`（*Keep pressed*）state skin,  three state commonly used in the PC browser.
 
-在移动设备上，通常只采用两态，图片以竖直方向被等比切割为两部分，上面的部分为`弹起或离开状态状态`皮肤，下面的部分为 `经过和按下以及选中状态`（*保持按下*）皮肤。
+On mobile devices, usually by only two states, geometric picture was cut into two parts in the vertical direction, the upper part is `up or leave the state` of the skin,  the following part is  `after and press and select the state`（*press down*） skin
 
-单态不切割图片，无论什么状态，皮肤只有一种，保持不变。
+Single state without cutting the picture, no matter what state, the skin is only one, remain unchanged.
 
-#### 用stateNum指定皮肤按几态切割：
+#### Specified skin with stateNum by several states:
 
-对于存在状态区分的组件，stateNum的属性值决定皮肤资源图片的切割方式。默认的stateNum属性值为3，也就是说默认按3态按钮进行切割，等比分割为3部分。如果是两态按钮，需要将stateNum的属性值设为2，等比切割为2部分。单态按钮设置为1，不进行切割。
+For components that have status differences, the attribute values of stateNum determine the way to cut skin resources pictures. The default stateNum attribute value is 3, that is to say, the default is cut by the 3 State button, and the geometric segmentation is divided into 3 parts. If it is a two state button, you need to set the attribute value of stateNum to 2, and cut it into 2 parts. The single button is set to 1, not cut.
+  
 
-　这里需要注意的是，指定按钮状态，需要与按钮皮肤对应好。如果是三态的按钮皮肤，stateNum设置为2，切割后如图3-5所示，是错误的。
-
-![图3-5](img/3-5.png) <br > (图3-5)
-
+　It should be noted that, specify the button state, need to correspond to the button skin. If it is a tri-state button skin, stateNum is set to 2, as shown in Figure 3-5 after cutting, is wrong.
 
 
-### 2.4 强大的runtime属性
-
-`runtime`是属性管理器中非常强大的一个组件扩展功能。通过在runtime属性中设置逻辑类，实例时创建的不再是组件的可视类，而是runtime属性中指定的逻辑类。该属性中需要指定逻辑类的全路径，例如“game.user.player”。
+![图3-5](img/3-5.png) <br > (Picture 3-5)
 
 
 
-### 2.5 可视化颜色设置
+### 2.4 Powerful runtime properties
 
-在color的属性设置时，可以手动输入颜色值，也可以点击右侧的颜色设置按钮，在颜色设置面板中指定颜色，然后点击面板外的任意区域即可完成可视化颜色设置，如动图3-6所示。
+`runtime`is a very powerful component extension in the Property Manager. By setting the logical class in the runtime property, the instance is no longer the visual class of the component, but the logical class specified in the runtime property. This attribute needs to specify the full path of the logical class, such as “game.user.player”。
 
-![动图3-6](img/3-6.gif) <br />（动图3-6）
 
-### 2.6 数字的拖拉调节
 
-如果属性值是数字的话，输入框边上会有一个拖拉调节面板。很多开发者没有注意到这个小技巧，通过鼠标左键点击调节面板，然后向上拖动或向下拉，即可对数字进行微调，场景编辑器中的对应组件也会产生即时的可视化变化。如动图3-7所示。
+### 2.5 Visualize color settings
 
-![动图3-7](img/3-7.gif) <br /> (动图3-7)
+The color property is set, you can manually enter the color value, can also click on the right side of the color settings button in the color settings specify the color panel, then click on the outer panel of arbitrary region can complete the visual color settings, such as shown in figure 3-6.
+
+![动图3-6](img/3-6.gif) <br />（Picture 3-6）
+
+### 2.6 Digital drag adjustment
+
+If the attribute value is numeric, there is a drag adjustment panel on the edge of the input box. Many developers are not aware of this trick by adjusting panel click the left mouse button, and then drag up or down, you can fine tune the number of components corresponding to the scene editor will produce instant visual changes. As shown in figure 3-7.
+
+![动图3-7](img/3-7.gif) <br /> (Picture 3-7)
 
 ### 
 
