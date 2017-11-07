@@ -204,7 +204,7 @@
   
     function onRender(cell,index){
          //如果索引不再可索引范围，则终止该函数
-        if(index  arr.length)return;
+        if(index > arr.length)return;
         //获取当前渲染条目的数据
         var data = arr[index];
         //根据子节点的名字listNumber，获取子节点对象。         
@@ -295,7 +295,7 @@ listView._list.vScrollBarSkin='';
   
     function onRender(cell,index){
          //如果索引不再可索引范围，则终止该函数
-        if(index  arr.length)return;
+        if(index > arr.length)return;
         //获取当前渲染条目的数据
         var data = arr[index];
         //根据子节点的名字listNumber，获取子节点对象。         
@@ -377,7 +377,7 @@ listView._list.vScrollBarSkin='';
   
     function onRender(cell,index){
          //如果索引不再可索引范围，则终止该函数
-        if(index  arr.length)return;
+        if(index > arr.length)return;
         //获取当前渲染条目的数据
         var data = arr[index];
         //根据子节点的名字listNumber，获取子节点对象。         
