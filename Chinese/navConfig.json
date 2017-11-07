@@ -745,6 +745,11 @@
                 "name_3_url": "Chinese/LayaAir_AS3/3D/beginners/textures/",
                 "name_3_file": "readme.md"
               },
+			  {
+                "name_3_name": "LayaAir3D之BlinnPhong材质",
+                "name_3_url": "Chinese/LayaAir_AS3/3D/beginners/materials_blinnPhong/",
+                "name_3_file": "readme.md"
+              },
               {
                 "name_3_name": "LayaAir3D之动画一",
                 "name_3_url": "Chinese/LayaAir_AS3/3D/beginners/animation1/",
