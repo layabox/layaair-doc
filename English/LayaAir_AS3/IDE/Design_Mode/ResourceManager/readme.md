@@ -1,38 +1,38 @@
-# 资源管理器介绍
+# Introduction to Resource Manager
 
-资源管理器是我们用来访问和管理项目资源的工作区域。在开始工作时，添加资源是必须的步骤。本篇将会介绍资源管理器的功能使用以及资源命名规则。 
-
-
-
-## 1、界面介绍
-
-​        资源管理器将项目资源文件夹中的内容以树状结构展示出来，如图1所示， 下面我们介绍各个界面元素。
-
-![图片1.png](img/1.png)<br/>（图1）
-
-​        `资源预览界面`：资源列表中选中的资源会直接在`资源预览界面`显示出来。
-
-​        `资源列表`：在`项目根目录/laya/assets/`目录下的资源都会在`资源列表`中显示。选中目录或目录下的资源，右键`打开所在目录`，会直接打开操作系统中的目录。
-
-​       `常用功能按钮`：在资源管理器的最下面是常用的功能按钮，包括打开目录、设置默认属性、刷新资源列表、关键字过滤。
+The resource manager is the work area we use to access and manage project resources. It is a necessary step to add a resource when you start working. This article will introduce the resource manager's function usage and resource naming rules.
 
 
 
-## 2、功能介绍
+## 1. Interface introduction
 
-### 2.1 打开所在目录
+​        The resource manager displays the contents of the project resource folder as a tree structure, as shown in Figure 1. Here we introduce each interface element.
 
-资源管理器中的所有资源，即可以在IDE中管理，也可以直接在系统中直接操作管理。因此，当`选中`目录或资源时，`右键菜单`里点击`打开所在目录`或直接点击打开所在目录的`功能按钮`直接打开。操作如图2所示。
+![图片1.png](img/1.png)<br/>（Picture 1）
 
-![图2](img/2.png) <br /> (图2)
+​        `Resource preview interface`：The resource selected in the resource list is displayed directly in the `resource preview interface`.
 
-### 2.2 创建、删除、刷新
+​        `Resource list`：in the `project root/laya/assets/` directory are displayed in the `the resource list`. Select the directory or directory resources, right-click `open directory`, will directly open the directory in the operating system.
 
-#### 创建资源和目录
+​       `Common function buttons`： at the bottom of the resource manager are common function buttons, including opening directories, setting default attributes, refreshing resource lists, and keyword filtering.
 
-当打开所在目录后，我们可以方便创建资源和目录。比如将所需的资源或目录直接粘贴到资源管理器根目录中（*项目根目录/laya/assets/*），按F5刷新后，资源就可以在IDE里使用了。
 
-#### 删除
+
+## 2. Function introduction
+
+### 2.1 Open the directory
+
+All the resources in the resource manager can be managed in IDE, and can be directly operated and managed in the system. Therefore, when the `selected`  directory or resources, ` right-click menu` click `Open Directory`. The `function button` or click Open Directory directly open. The operation is illustrated in figure 2.
+
+![图2](img/2.png) <br /> (Picture 2)
+
+### 2.2  create, delete, refresh
+
+#### Create resources and directories
+
+When you open the directory, we can easily create resources and directories. For example, paste the required resources or directories directly into the root directory of the resource manager （*project root directory /laya/assets/*）, After F5 refreshes, the resources can be used in IDE.
+
+#### delete
 
 当删除目录或资源的时候，有两种方式。第一种是IDE里选中要删除的资源或目录，右键菜单里点击删除选项或者直接按Delete键删除。第二种是打开所在目录，在系统目录内，直接删除。两者的区别是IDE里删除会自动刷新，系统目录里删除需要在IDE里点击刷新按钮或快捷键F5刷新。
 

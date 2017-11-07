@@ -319,8 +319,3 @@ public class Test {
 ConchJNI.RunJS("alert('hello world')");
 ```
 
-**附录:**
-
-[二次开发demo for Eclipse(Android) 示例下载](http://ldc.layabox.com/download/tools/SampleForEclipse.zip)
-
-[二次开发demo for AndroidStudio(Android) 示例下载](http://ldc.layabox.com/download/tools/SampleForAndroidStudio.zip)
