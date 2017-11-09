@@ -99,7 +99,7 @@ private onLoadComplete():void{
   //获取车身模型（查看.lh文件，模型中两个对象，车头“head”与车身“body”，它们都用同一个材质）
   var meshSprite3D:Laya.MeshSprite3D = this.role3D.getChildAt(0).getChildAt(0) as Laya.MeshSprite3D;
   //从模型上获取共享材质
-  var shareMaterial:Laya.StandardMaterial = meshSprite3D.meshRender.material as Laya.StandardMaterial;
+  var shareMaterial:Laya.StandardMaterial = meshSprite3D.meshRender.shareMaterial as Laya.StandardMaterial;
   //修改材质的反射颜色，让模型偏红
   shareMaterial.albedo = new Laya.Vector4(1,0,0,1);
 }
