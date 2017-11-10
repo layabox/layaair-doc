@@ -34,103 +34,103 @@ When you open the directory, we can easily create resources and directories. For
 
 #### delete
 
-当删除目录或资源的时候，有两种方式。第一种是IDE里选中要删除的资源或目录，右键菜单里点击删除选项或者直接按Delete键删除。第二种是打开所在目录，在系统目录内，直接删除。两者的区别是IDE里删除会自动刷新，系统目录里删除需要在IDE里点击刷新按钮或快捷键F5刷新。
+When delete the directory or resources, there are two ways. The first is the resource or directory that you want to delete in the IDE, right-click on the menu, or delete the Delete key directly. The second is to open directory, system directory, delete. The difference is that IDE will automatically refresh deleted, delete the directory in the system need to click the refresh button or shortcut key F5 refresh in IDE.
 
-#### 刷新
+#### refresh
 
-刷新是资源管理器中的常见操作。点击资源管理器底部的`刷新按钮`或者`快捷键F7`可以刷新资源管理器的资源列表，与系统列表保持一致。也可以按快捷键F5刷新资源管理器列表。
+Refresh is a common operation in Explorer. Click the `refresh button` at the bottom of the Explorer or the `shortcut key F7` to refresh the resource list of the resource manager and keep it consistent with the system list. You can also press the shortcut key F5 to refresh the resource manager list.
 
-*Tips：F5快捷键不仅是刷新资源管理器，会同时也刷新项目管理器，如果修改的资源是UI项目中使用的，需要按F5快捷键。*
+*Tips：F5 shortcut key is not only refresh the Explorer, will also refresh the project manager, if the modified resource is used in the UI project, you need to press the F5 shortcut key.*
 
-关于资源和目录的创建、删除与刷新操作可以参考动图3所示。
+The creation, deletion, and refresh operations for resources and directories can be found in Figure 3.
 
-![动图3](img/3.gif) <br /> (动图3)
-
-
-
-### 2.3 过滤资源
-
-当资源较多时，可以通过在资源管理器搜索框中输入文本关键字来过滤资源，方便快速找到资源。操作如动图4所示。
-
-![动图4](img/4.gif) <br />(动图4)
+![动图3](img/3.gif) <br /> (Picture 3)
 
 
 
-### 2.4 设置默认属性
+### 2.3 Filter resources
 
-选中资源或目录，可以右键设置默认属性，或者直接点击资源管理器最底层的功能按钮，如图5所示。
+When there are more resources, you can filter the resources by inputting the text keywords in the explorer search box, can find the resources quickly and conveniently. The operation is shown in figure 4.
 
-![图5](img/5.png) <br />(图5)
-
-点击`设置默认属性`后，会弹面资源属性设置面板，如图6所示。
-
-![图6](img/6.png) <br /> (图6)
-
-**设置面板介绍**
-
-`资源名称`：显示资源管理器中的资源名称与路径。
-
-`组件类型`：组件类型的下拉选项内是全部的组件类型（*全部组件类型可查看文档《IDE组件详解》*），如果我们想改变IDE默认识别的组件类型，指定为其它组件类型时，可以在这里设置。
-
-`设置九宫`：为资源设置九宫格属性，该功能的效果与属性设置器中的九宫格设置相同，具体操作参照属性设置器中的九宫格设置说明。
-
-`默认全局属性`：该栏也是对应`属性设置器`中的属性设置，比如组件的属性width想设置为800，那么在该栏中设置“width=800”即可。如果要提前设置多个属性，直接换行设置多个属性值即可。如图7所示
-
-![图7](img/7.png) <br /> (图7)
-
-**Tips：`设置九宫`与`默认全局属性`设置，都属于组件属性的预先设置。当同一个组件资源在多处使用，并需要配置相同的属性时，该设置可以减少很多的重复性操作。**
-
-`打包类型`：`默认`会采用项目设置（F9）中的打包规则。除此之外，通过该处功能可以手动对资源设置为`打包`或`不打包`。当设置为非默认选项后，指定的打包类型优先级高于项目设置。
-
-`图片类型`：当IDE中两张相邻的图片拼接完好，但是在浏览器运行时存在拼接空隙（通常为黑线）时，将图片类型设置为`Repeat`即可解决。
+![动图4](img/4.gif) <br />(Picture 4)
 
 
 
-### 2.5 使用资源
+### 2.4 Set the default properties
 
-选中资源后，按住鼠标拖拽至场景编辑器即可使用该资源组件，如动图8所示。
+Select the resource or directory, can right-click the default attribute, or click the bottom function button of the resource manager, as shown in figure 5.
 
-![动图8](img/8.gif) <br /> (动图8)
+![图5](img/5.png) <br />(Picture 5)
 
+Click to `set the default attributes`, can play the resources property settings panel, as shown in figure 6.
 
+![图6](img/6.png) <br /> (Picture 6)
 
-### 2.6   查找引用与文本替换
+**Set up the panel**
 
-#### 查找引用
+`Resource Name`： Displays the resource name and path in the resource manager.
 
-选中资源组件后，`右键`点击`查找引用`，在查找替换面板内，点击`查找`可以找到当前选中组件被哪些项目页面所引用。操作如动图9所示。
+`Component Type`：The drop-down option for the component type is all of the component types（*all component types can be viewed in the documentation《IDE component details》*）,  if we want to change the default IDE to identify the type of component, specified as the other component type can be set here.
 
-![动图9](img/9.gif) <br /> (动图9)
+`Setting the 9th grid`：set the attribute of the 9th grid for the resource, the function of the function is the same as the setting of the nine square in the attribute setting device, and the specific operation refers to the setting of the square in the attribute setting device.
 
-#### 替换文本
+`Default global properties`： this column is also a `property` in the corresponding settings, such as the component's attribute width would like to set to 800, then in the column set "width = 800" can be. If you want to set multiple attributes in advance, the direct line can be set to multiple attribute values. As shown in Figure 7.
 
-在`查找替换`面板内，点击`替换`，可以替换所有与`查找文本`中的值相同的`skin属性`内容。如动图10所示。
+![图7](img/7.png) <br /> (Picture 7)
 
-![动图10](img/10.gif) <br />(动图10)
+**Tips：`set 9th grid` and `Default global attribute` set all belong to the component properties set in advance. When the same component resources used in multiple locations, and need to configure the same attribute, this setting can reduce it Multiple repetitive operations.
 
+`Package type`：By `default` , the packing rules in the project settings (F9) are used. In addition, the function can be manually set to `packing` and `not packing`. When set to a non-default option, the specified package type has a higher priority than the project setting.
 
-
-### 2.7  一键替换场景编辑器中的选中组件
-
-先选中`场景编辑器`中的组件，然后`右键`选中`资源管理器`内要替换的资源，点击右键菜单的`替换选中对象`，即可一键替换场景编辑器中的组件，如动图11所示。当已调整好位置，只想切换其它资源的时候，该功能比较实用。
-
-![动图11](img/11.gif) <br /> (动图11)
-
- *Tips：一键替换不仅可以替换相同类型的组件，也可以一键替换不同类型的组件。*
+`Image type`：when two adjacent images in IDE are in good condition, but when there is a gap in the browser running (usually black line), the picture type is set to `Repeat` to solve.
 
 
 
+### 2.5 use resources
+
+After you select the resource, drag and drop the mouse to the scene editor to use the resource component, as shown in figure 8.
+
+![动图8](img/8.gif) <br /> (Picture 8)
 
 
-## 3、资源命名规则
 
-资源管理器中的资源在场景编辑器中都会识别为组件使用，而识别组件类型的默认方式就是资源的命名前缀。比如命名为 btn_xxx 会被识别为按钮，命名为 tab_xxx 的会被识别为Tab组件。下面我们对于资源命名的详细规则进行介绍，开发者务必熟练记忆掌握。如果对组件并不了解的开发者，请先阅读《IDE组件详解》文档。
+### 2.6   Find references and text replacements
 
-### 3.1 基础组件的命名规则
+#### Find references
 
- 下面列举LayaAirIDE基础组件默认的资源命名规则： 
+After you select the resource component,` right-click` on the `search reference`. In the Find Replacement panel, click `search`to find which project pages the currently selected component is referenced. The operation is shown in Figure 9.
 
-| 基础组件名称      | 组件中文名称   | 资源前缀（全写，不区分大小写）     | 资源前缀(缩写，区分大小写) |
+![动图9](img/9.gif) <br /> (Picture 9)
+
+#### Text replacements
+
+In the `find replacement`panel, click `replace` to replace all the `skin property` content that is the same as the value in the Find text. As shown in Figure 10.
+
+![动图10](img/10.gif) <br />(Figure 10)
+
+
+
+### 2.7  key components Replace the selected component in the Scene Editor
+
+First select the ` components in the scene editor`, and then right-click ` the resource manager` to select `the resources to replace`e, click the right-click menu to replace the selected object, you can replace the scene editor with a key, as shown in Figure 11. When the location has been adjusted, just want to switch to other resources, the function is more practical.
+
+![动图11](img/11.gif) <br /> (picture 11)
+
+ *Tips： A key replacement can not only replace the same type of component, you can also replace a key type of different components.*
+
+
+
+
+
+## 3、Resource naming rules
+
+The resources in the explorer are identified as components in the scene editor, and the default way to identify the component type is the named prefix of the resource. For example, named btn_xxx will be identified as button Named tab_xxx, will be identified as a Tab component. Below we detailed rules for naming resources are introduced, developers must grasp skilled memory. If you do not understand the component developer, please read the "Detailed explanation of IDE component" document.
+
+### 3.1 Naming rules for basic components
+
+ Here are basic components of LayaAirIDE default resource naming rules:
+
+| Basic component name      | Component Chinese name   | Resource prefix (full write, case insensitive)      | Resource prefix (abbreviated, case sensitive) |
 | ----------- | -------- | ------------------- | -------------- |
 | Label       | 文本框      | label_              | --             |
 | TextInput   | 输入框      | textinput_          | input_         |
@@ -147,59 +147,60 @@ When you open the directory, we can easily create resources and directories. For
 | ComboBox    | 下拉框      | combobox_           | combo_         |
 | VScrollBar  | 垂直滚动条    | vscrollbar_         | vscroll_       |
 | HScrollBar  | 水平滚动条    | hscrollbar_         | hscroll_       |
-| Image       | 位图       | 不被识别为其它组件的都被视为Image | --             |
+| Image       | 位图       | Not recognized as other components are considered Image | --             |
 
-**Tips**: 资源可以直接用前缀名的全写或缩写，而不加下划线。比如`textinput.png`和`input.png`。但是如果还跟随其它字符必须加下划线，比如`inputAAA.png`不会被识别为输入框组件，`input_AAA.png`会识别为输入框（TextInput）组件。
-
-
-
-### 3.2 特殊组件
-
-IDE自带的特殊组件一共有五个，分别是垂直滑动条组件VSlider、水平滑动条组件HSlider、进度条组件ProgressBar、垂直滚动条组件VScrollBar、水平滚动条组件HScrollBar。
-
-#### 特殊组件的构成
-
-特殊组件并不是单张图片，而是由多张图片组成。主资源图片的命名规则遵守基础组件的命名规则，附加资源由两部分构成，这两部分用`$`符号相连，`$`之前是主资源的名称，`$`之后是关联状态的名称。
-
-`bar`指的是`滑动\移动`状态。比如`ProgressBa$bar.png`，从命名上可以看出，他从属于ProgressBar组件，当产生进度条（`bar`）时使用`ProgressBa$bar.png`资源。
-
-`down`指的是`向下`状态。如果是横向滚动条，`down`通常是`向右`的默认状态或点击时的状态。
-
-`up`指的是`向上`状态。如果是横向滚动条，`up`通常是`向左`的默认状态或点击时的状态。
-
-特殊组件的命名与构成，如想更直观的了解，可以对比图12中的资源命名。
-
-![图12](img/12.png) <br />(图12)
-
-**Tips**：*由于`资源管理器`中对于特殊组件的附加资源不会单独显示，列表中只会显示主资源组件。如果要对特殊组件资源进行操作，需要通过`打开所在目录`功能，在系统的文件目录中进行管理操作。*
+**Tips**: resources can be directly used to prefix all written or abbreviations, and underline. Such as `textinput.png` and `input.png`. But if you still follow the other characters must be underlined, for example `inputAAA.png` Will be recognized as an input box component, `input_AAA.png` will be identified as the input box (TextInput) component.
 
 
 
-### 3.3 容器组件
+### 3.2 Special components
 
-容器组件包括Box、List、Tab、RadioGroup、ViewStack、Panel、HBox、VBox、Tree、Sprite。除Tab外，通常不会在资源列表中出现，而是在`场景编辑器`中转换而来，当在`场景编辑器`内选中单个或多个组件时，通过快捷键`Ctrl + B`可以转换为容器，容器的各种类型可以在下拉列表中查看，如图13所示。
+There are five special components of IDE, vertical slider component VSlider, horizontal slider component HSlider, progress bar component ProgressBar, vertical scroll bar component VScrollBar, horizontal roll Moving bar assembly HScrollBar.
 
-![图13](img/13.png) <br />(图13)
+#### The composition of special components
+
+A special component is not a single picture, but consists of multiple pictures. The naming rules of the main resource pictures comply with the naming rules of the underlying components, and the additional resources are composed of two parts, which are used in two parts `$` Symbolic connection, `$` The name of the primary resource, `$` Next is the name of the associated state.
+
+`bar` refers to the `Slide\Move` statement. For example `ProgressBa$bar.png`, you can see from the name, he belongs to the ProgressBar component, when the progress bar （`bar`） using `ProgressBa$bar.png` resources.
+
+`down` refers to a `downward` state. If the horizontal scroll bar, `down` is usually the default or click on the `right` of the state.
+
+`up` efers to the `upward` state. If the horizontal scroll bar, `up` is usually the default or click on the `left` of the state.
+
+Named special components and composition, to a more intuitive understanding of the resource name can be compared in figure 12.
+
+![图12](img/12.png) <br />(Picture 12)
+
+**Tips**：*Because the additional resources for the special component in the ` resource manager`are not displayed separately, only the primary resource component is displayed in the list. If you want to operate on special component resources, you need to `open the directory` function, in the system file directory management operations.*
 
 
 
-### 3.4 自定义组件识别的前缀
+### 3.3 Container assembly
 
-如果我们不想采用IDE默认的组件前缀，如何修改呢？修改`laya.editorUI.xml`文件对应的组件配置即可，所有的IDE自带组件相关信息都存储该文件中。
+Container components include Box, List, Tab, RadioGroup, ViewStack, Panel, HBox, VBox, Tree, Sprite. In addition to Tab, usually do not appear in the list of resources, but when in the `scene editor`, when selecting single or multiple components in the `scene editor`, through the shortcut `Ctrl + B` can be converted to various types of containers, the container can be viewed in the drop-down list, as shown in figure 13.
 
-`laya.editorUI.xml`位于`LayaAirIDE根目录\resources\app\out\vs\layaEditor\renders\`目录下。
-
-`resName`中的值即是组件的前缀缩写名称（组件的前缀全称不可修改），修改`resName`的值即可。比如我们将`Button`组件的识别前缀由`resName="btn"`改为resName="bt"。保存好再去刷新IDE编辑器，发现原来以btn前缀命名的Button资源被识别为Image资源，而以bt前缀命名的资源则被识别为Button组件。如图14所示。
-
-![图14](img/14.png) <br /> (图14)
-
-*Tips：在没有特殊需求的情况下，建议不修改默认前缀。*
+![图13](img/13.png) <br />(picture 13)
 
 
 
-### 3.5 可识别的资源类型（资源后缀）
+### 3.4 Prefix for custom component recognition
 
- LayaAir IDE 识别的图像资源格式只有标准的png和jpg图像格式。请不要使用其它类型的图像资源或者是其它类型资源改名为png和jpg的图像资源。
+If we don't want to use the default prefix IDE, how to change? Modify the `laya.editorUI.xml` file corresponding to the component configuration, all the IDE own components related information stored in the file.
+
+`laya.editorUI.xml`under `LayaAirIDE根目录\resources\app\out\vs\layaEditor\renders\` directory.
+
+The value in `resName` is the prefix name of the component (the full prefix of the component can not be modified), modify the value of  `resName`. For example, we will identify the prefix `Button` component by `resName="btn"`to resName="bt". Save and then refresh the IDE editor, found that the original BTN prefix named Button resources are identified as Image resources, while the BT prefix named resources are identified as Button components. As shown in figure 14.
+
+![图14](img/14.png) <br /> (Picture 14)
+
+*Tips：In the absence of special requirements, it is recommended not to modify the default prefix.*
+
+
+
+### 3.5 Identifiable resource types (resource suffix)
+
+ 
+The LayaAir IDE recognizes only the standard png and jpg image formats. Please do not use other types of image resources or other types of resources renamed png and jpg image resources.
 
 
 
