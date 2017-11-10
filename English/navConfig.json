@@ -368,7 +368,7 @@
         ]
       },
       {
-        "nav_1_name": "LayaAir IDE篇（AS3）",
+        "nav_1_name": "LayaAir IDE（AS3）",
         "nav_1_data": [
           {
             "name_2_name": "Code pattern basic",
@@ -395,7 +395,7 @@
             ]
           },
           {
-            "name_2_name": "设计模式基础",
+            "name_2_name": "Design Patterns overview",
             "name_2_data": [
               {
                 "name_3_name": "Design Mode interface overview",
