@@ -12,22 +12,39 @@
 
 LayaAir3D引擎现支持的碰撞器有三种类型，分别是**球型碰撞器SphereCollider**，**盒型碰撞器BoxCollider**，**网格碰撞器MeshCollider**。从**碰撞检测精确度**和**消耗性能**从低到高依次为SphereCollider—BoxCollider—MeshCollider；可以根据游戏中开发需求，选择适合的碰撞器。
 
-3D显示对象添加碰撞器组件的方法如下：
+3D显示对象代码添加碰撞器组件的方法如下（引擎1.7.12版），建议开发者不要用代码添加方试，较麻烦，可直接在Unity中添加碰撞组件导出使用。
 
 Tips：碰撞器必须添加到MeshSprite3D类型的显示对象上，不能添加到Sprite3D对象上，否则会失效。
 
 ```java
-		/**
-		* 给3D精灵添加碰撞器组件
-		* BoxCollider    : 盒型碰撞器
-		* SphereCollider : 球型碰撞器
-		* MeshCollider   : 网格碰撞器
-		*/
-		meshSprite3d1.addComponent(MeshCollider);
-		meshSprite3d2.addComponent(SphereCollider);
-		meshSprite3d3.addComponent(BoxCollider);
-		
+/**
+* 给3D精灵添加碰撞器组件
+* BoxCollider    : 盒型碰撞器
+* SphereCollider : 球型碰撞器
+* MeshCollider   : 网格碰撞器
+*/
+//添加Mesh碰撞器组件并获取
+var meshCollider:MeshCollider=meshSprite3d1.addComponent(MeshCollider);
+//设置mesh碰撞器网格属性（否则无法被检测）
+meshCollider.mesh=meshSprite3d1.meshFilter.sharedMesh;
+
+//添加球形碰撞器组件并获取
+var sphereCollider:SphereCollider = meshSprite3d2.addComponent(SphereCollider);
+//设置球形碰撞器中心位置
+sphereCollider.center = meshSprite3d2.meshFilter.sharedMesh.boundingSphere.center.clone();
+//设置球形碰撞器半径
+sphereCollider.radius = meshSprite3d2.meshFilter.sharedMesh.boundingSphere.radius;
+
+//添加盒形碰撞器
+var boxCollider:BoxCollider =meshSprite3d3.addComponent(BoxCollider);
+boxCollider.setFromBoundBox(meshSprite3d3.meshFilter.sharedMesh.boundingBox);		
 ```
+
+在引擎1.7.12与导出插件1.7.0版开始，在Unity中添加到3D模型上的Collider可以导出并且引擎自动加载创建。不过目前暂时不支持MeshCollider的导出，将在后续版本中完善该功能。 
+
+在Unity中为模型添加了BoxCollider与SphereCollider后，还可以根据需求对碰撞盒或碰撞球的大小进行设置，碰撞盒可以比实际模型偏小或者偏大，位置也可更改，方便开发者们逻辑处理。
+
+Tips：在Unity编辑器中，一个3D物体可支持多个碰撞器，但LayaAir导出插件（1.7.0版）目前只支持第一个碰撞器的导出，它请开发者们注意。如果希望在模型上添加多可碰撞器，可在制作模型时分解成多个子网格模型，在子网格模型上各自添加碰撞器用于检测。在后续的1.7.13版本中，我们将支持无子网格的3D物体多个碰撞器导出。
 
 
 
@@ -247,15 +264,15 @@ package
 			{
 				var meshSprite3D:MeshSprite3D=scene.getChildAt(i) as MeshSprite3D;
 				//添加网格型碰撞器组件
-				meshSprite3D.addComponent(BoxCollider);
+				var boxCollider:BoxCollider=meshSprite3D.addComponent(BoxCollider);
+              	//为盒形碰撞器设置盒子大小（否则没有尺寸，无法被射线检测）
+                boxCollider.setFromBoundBox(meshSprite3D.meshFilter.sharedMesh.boundingBox);
 			}
 			
 			//鼠标点击事件回调
 			Laya.stage.on(Event.MOUSE_DOWN,this,onMouseDown);
 		}
-		
-		
-		
+				
 		/**
 		 * 渲染的最后阶段执行
 		 * @param	state 渲染状态参数。
@@ -382,8 +399,10 @@ package
 			gameScene.addChild(truck3D);
 			//获取货车的车身（车头不进行装货）
 			var meshSprite3D:MeshSprite3D=truck3D.getChildAt(0).getChildByName("body") as MeshSprite3D;
-			//添加网格型碰撞器组件
-			meshSprite3D.addComponent(MeshCollider);
+          	//添加网格型碰撞器组件
+          	var meshCollider:MeshCollider=meshSprite3D.addComponent(MeshCollider);
+          	//为Mesh碰撞器mesh网格（否则没有尺寸，无法被射线检测）
+         	boxCollider.mesh=meshSprite3D.meshFilter.sharedMesh;
 		}
 	}
 }
@@ -524,10 +543,13 @@ package
 			if(rayCastHit.sprite3D)
 			{
 				//克隆一个货物模型 
-				var cloneBox:Sprite3D=Sprite3D.instantiate(box);
-				//为货物模型添加碰撞器（可以在货物上继续放放置货物）
-				(cloneBox.getChildAt(0) as MeshSprite3D).addComponent(MeshCollider);
-				
+				var cloneBox:MeshSprite3D=Sprite3D.instantiate(box).getChildAt(0) as MeshSprite3D;
+
+			    //添加网格型碰撞器组件
+          		var meshCollider:MeshCollider=meshSprite3D.addComponent(MeshCollider);
+          		//为Mesh碰撞器mesh网格（否则没有尺寸，无法被射线检测）
+         	 	meshCollider.mesh=meshSprite3D.meshFilter.sharedMesh;	
+                            
 				scene.addChild(cloneBox);
 				//修改位置到碰撞点处
 				cloneBox.transform.position=rayCastHit.position;
