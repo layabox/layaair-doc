@@ -1805,6 +1805,11 @@
                 "name_3_file": "readme.md"
               },
               {
+                "name_3_name": "LayaAir3D之骨骼挂点",
+                "name_3_url": "Chinese/LayaAir_TS/3D/beginners/bonePoint/",
+                "name_3_file": "readme.md"
+              },
+              {
                 "name_3_name": "LayaAir3D之鼠标交互",
                 "name_3_url": "Chinese/LayaAir_TS/3D/beginners/mouse/",
                 "name_3_file": "readme.md"
@@ -2765,6 +2770,11 @@
 			  {
                 "name_3_name": "LayaAir3D之脚本组件",
                 "name_3_url": "Chinese/LayaAir_JS/3D/beginners/Script_component3D/",
+                "name_3_file": "readme.md"
+              },
+              {
+                "name_3_name": "LayaAir3D之骨骼挂点",
+                "name_3_url": "Chinese/LayaAir_JS/3D/beginners/bonePoint/",
                 "name_3_file": "readme.md"
               },
               {
