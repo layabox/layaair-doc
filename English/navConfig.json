@@ -477,12 +477,12 @@
                 "name_3_url": "English/LayaAir_AS3/IDE/Use_IDE/EffectAnimation/",
                 "name_3_file": "readme.md"
               },{
-                "name_3_name": "时间轴动画编辑器详解(GraphicAnimation)",
-                "name_3_url": "Chinese/LayaAir_AS3/IDE/Use_IDE/TimelineAnimation/",
+                "name_3_name": "Timeline animation editor explain (GraphicAnimation)",
+                "name_3_url": "English/LayaAir_AS3/IDE/Use_IDE/TimelineAnimation/",
                 "name_3_file": "readme.md"
               },{
-                "name_3_name": "自定义组件的制作与使用",
-                "name_3_url": "Chinese/LayaAir_AS3/IDE/Use_IDE/customComponent/",
+                "name_3_name": "Making and using custom components",
+                "name_3_url": "English/LayaAir_AS3/IDE/Use_IDE/customComponent/",
                 "name_3_file": "readme.md"
               }
             ]
