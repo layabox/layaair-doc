@@ -24,9 +24,9 @@
 ​	Here's an example of the TextArea component in laya.editorUI.xml:
 
 ```xml
-	<TextArea className="laya.editorUI.TextArea" inherit="TextInput" defaultValue="text='TextArea'" skinLabel="skin" resName="area" icon="TextArea" groups="公用,常用,宽高及位置,旋转及缩放" drag="3">
-		<prop name="vScrollBarSkin" tips="垂直滚动条皮肤" type="string" default="" accept="res" group="常用" />
-		<prop name="hScrollBarSkin" tips="水平滚动条皮肤" type="string" default="" accept="res" group="常用" />
+	<TextArea className="laya.editorUI.TextArea" inherit="TextInput" defaultValue="text='TextArea'" skinLabel="skin" resName="area" icon="TextArea" groups="Common, commonly used, size and position, rotation and scaling" drag="3">
+		<prop name="vScrollBarSkin" tips="Vertical scroll bar skin" type="string" default="" accept="res" group="Commonly used" />
+		<prop name="hScrollBarSkin" tips="Horizontal scroll bar skin" type="string" default="" accept="res" group="Commonly used" />
 	</TextArea>
 ```
 
@@ -99,43 +99,43 @@ package component
 	import laya.events.Event;
 	import laya.utils.Tween;
 	
-  	//继承button组件
+  	// Inherit button component
 	public class ScaleButton extends Button
 	{
 	
-		//缩放时间100毫秒
+		// Scale time 100 ms
 		public var scaleTime:int = 100;
 		public function ScaleButton(skin:String=null,label:String="")
 		{
-			//调用父类的构造函数
+			// Call the parent class's constructor
 			super(skin,label);
 			
-			/* 设置按钮为单态按钮
-			** 取值：
-			** 1：单态。图片不做切割，按钮的皮肤状态只有一种。
-			** 2：两态。图片将以竖直方向被等比切割为2部分，从上向下，依次为弹起状态皮肤、按下和经过及选中状态皮肤。
-			** 3：三态。图片将以竖直方向被等比切割为2部分，从上向下，依次为弹起状态皮肤、经过状态皮肤、按下和选中状态皮肤
+			/* Set the button as a single button
+			** Value：
+			** 1：Singlet state. The picture is not cut, and the skin condition of the button is only one.
+			** 2：Two state. The picture will be cut vertically into 2 parts in vertical direction, from top to bottom, in turn, bounce skin, press and pass and select the state of skin.
+			** 3：Three state. The picture will be cut vertically into 2 parts in vertical direction, from top to bottom, in turn, bounce state skin, through the state skin, press and select the state of the skin
 			*/
 			this.stateNum = 1;
 			
-			//添加鼠标按下事件侦听。按时时缩小按钮。
+			//Adding a mouse to event listening. Zoom button on time.
 			this.on(Event.MOUSE_DOWN,this,scaleSmal);
-			//添加鼠标抬起事件侦听。抬起时还原按钮。
+			//Adding mouse to raise event listening. Restore button when lifting.
 			this.on(Event.MOUSE_UP,this, scaleBig);
-			//添加鼠标离开事件侦听。离开时还原按钮。
+			//Adding mouse to event listening. When you leave, restore button.
 			this.on(Event.MOUSE_OUT,this, scaleBig);
 			
 		}
 		
 		private function scaleBig():void
 		{
-			//变大还原的缓动效果
+			//Slow action of increasing reduction
 			Tween.to(this, {scaleX:1,scaleY:1},scaleTime);
 		}
 		
 		private function scaleSmal():void
 		{
-			//缩小至0.8的缓动效果
+			//Slow down to 0.8
 			Tween.to(this,{scaleX:0.8,scaleY:0.8},scaleTime);
 		}
 	}
@@ -148,8 +148,8 @@ package component
 ​	Create a subcontract configuration file module.def, in the root directory of the project, open the file, and compile the generated JS file name “ScaleButton” and the subpaths to compile in the file according to the subcontract rule“src/component” as follows:：
 
 ```
-module:"ScaleButton"  	//设置组件编译后的分包JS文件名
-path:"src/component"      //设置需要分包的组件所在目录路径
+module:"ScaleButton"  	//Setting the compiled sub - packet JS file name
+path:"src/component"      //Set directory path where components need to be subcontracted
 ```
 
 ​	After the completion of the subcontracting rules and save, we compiled just compiled ScaleButton.as (in this article for ease of presentation, we set ScaleButton.as file directly to the document class), you can see js
@@ -166,8 +166,8 @@ Directory has a ScaleButton.js, as shown in Figure 4, open this js we can see th
 <?xml version="1.0" encoding="utf-8" ?>
 <uiComp>
 	<ScaleButton className="component.ScaleButton" inherit="Button" skinLabel="skin" 
-	defaultValue="label=''" resName="sButton" icon="Box" groups="公用, 常用, 宽高及位置" drag="3">
-		<prop name="scaleTime" tips="缩放使用的时间" type="number" default="100" group="常用" />
+	defaultValue="label=''" resName="sButton" icon="Box" groups="Common, commonly used, size and position" drag="3">
+		<prop name="scaleTime" tips="Zoom use time" type="number" default="100" group="Common" />
 	</ScaleButton>
 </uiComp>
 ```
@@ -178,7 +178,7 @@ Directory has a ScaleButton.js, as shown in Figure 4, open this js we can see th
 
 #### 	4.1 Add a Component to the IDE's Custom Component Catalog
 
-​	After the XML configuration file is written, it is saved directly in the directory of the custom component（LayaAirIDE根目录下的“resources\app\out\vs\layaEditor\renders\custom”内）, within the LayaAirIDE root directory, and the naming requirement of the component XML is needed Consistent with the component JS, here we are named ScaleButton.xml. Then we copied the generated ScaleButton.js （"root directory /bin/h5/js" directory, referring to figure 4） to custom Component directory. As shown in figure 5:
+​	After the XML configuration file is written, it is saved directly in the directory of the custom component（LayaAirIDE Root directory “resources\app\out\vs\layaEditor\renders\custom” ）, within the LayaAirIDE root directory, and the naming requirement of the component XML is needed Consistent with the component JS, here we are named ScaleButton.xml. Then we copied the generated ScaleButton.js （"root directory /bin/h5/js" directory, referring to figure 4） to custom Component directory. As shown in figure 5:
 
 ​	![5](img/5.jpg)
 
@@ -202,16 +202,17 @@ Directory has a ScaleButton.js, as shown in Figure 4, open this js we can see th
 
 ​	(Figure 8) the component name of the IDE corresponds to the tag name of the component XML
 
-​	**Tips:** The extra reminder is that the icon for the component icon is not sButton.png in the LayaAirIDE root \resources\app\out\vs\layaEditor\laya\basics\Custom"目录中的sButton.png。icon图标位于LayaAirIDE根目录下的"resources\app\out\vs\layaEditor\laya\icons\components"目录内，对应xml中icon属性的值，上文中的xml说明已进行介绍。如果创建自己的icon图标，参照components目录内的icon尺寸标识制作，放到components目录内，然后在xml中设置对应的文件名即可。
+​	**Tips:** 额外提醒的是，组件的icon图标并非是”LayaAirIDE根目录\resources\app\out\vs\layaEditor\laya\basics\Custom”目录中的sButton.png。icon图标位于LayaAirIDE根目录下的”resources\app\out\vs\layaEditor\laya\icons\components”目录内，对应xml中icon属性的值，上文中的xml说明已进行介绍。如果创建自己的icon图标，参照components目录内的icon尺寸标识制作，放到components目录内，然后在xml中设置对应的文件名即可。
 
 #### 4.3 displays in the IDE resource panel
 
-​	Resource panel, the default in the comp file placed in the common UI component skin resources, component naming conventions to facilitate the identification of the skin resources as components（resources must be stored in the "project root directory \laya\assets"下才会被识别为组件）。与组件面板的组件属性skin值为空不同，资源面板中的组件属性skin默认值是"\laya\assets"目录下的相对路径。
+​	Resource panel, the default in the comp file placed in the common UI component skin resources, component naming conventions to facilitate the identification of the skin resources as components（resources must be stored in the "project root directory \laya\assets"identified as a component）. Unlike the palette component's skin property, which is blank, the default property of the skin property in the palette is the relative path in the "\laya\assets" directory.
+
 ​	为了方便项目使用带skin资源的组件，我们继续介绍如何在资源面板中显示组件。首先我们先准备一张skin资源，由于上文示例的自定义组件是缩放按钮，我们直接复制任意一张图片即可体验缩放按钮组件的缩放效果。图片资源复制到"项目根目录\laya\assets"目录下即可，图片资源命名为xml中resName的属性值sButton或以sButton为前缀，如图9所示。
 
 ​	![9](img/9.jpg)
 
-​	（图9）
+​	（Picture 9）
 
 ​	​After the resource copy is completed, we again open the LayaAirIDE resource management panel, click the refresh resource tree button to see the just copied sButton_1.png, click on the picture, we can see the picture Preview. This shows that our custom component with the skin defaults was successfully added to the project's Explorer panel, as shown in Figure 10.
 
@@ -278,10 +279,10 @@ package
 	{
 		public function Main()
 		{
-			//初始化舞台
+			//Initial stage
 			Laya.init(1136,640);
 					
-			//加载图片资源，回调
+			//Load picture resources, callback
 			Laya.loader.load("res/img/monkey1.png",Handler.create(this, onLoaded));
 			
 		}
@@ -289,9 +290,9 @@ package
 		private function onLoaded():void
 		{
 			var scaleButton:ScaleButton = new ScaleButton();
-			//组件skin的资源路径
+			//The resource path of the component skin组件skin的资源路径
 			scaleButton.skin = "res/img/monkey1.png";
-			//添加到舞台
+			//Add to the stage
 			Laya.stage.addChild(scaleButton);
 		}
 	}
@@ -302,9 +303,9 @@ package
 
 ​	![15](img/15.gif)
 
-​	（图15）
+​	（Picture 15）
 
-​	Tips：调试成功，准备发布组件时，不要忘记把分包配置文件module.def恢复。另外，发布分包的JS代码时，调试时import的laya.ui也要恢复为 laya.editor。
+​	Tips：When debugging is successful, when you're ready to publish components, don't forget to restore the packet configuration file module.def. In addition, when the JS code of the subcontract is released, the import of laya.ui will be restored to laya.editor at the time of debugging.
 
 ### 6. Component registration
 
@@ -313,7 +314,7 @@ package
 ​	For example：
 
 ```java
-View.regComponent("ScaleButton",component.ScaleButton);//注册组件
+View.regComponent("ScaleButton",component.ScaleButton);//Register components
 ```
 
 
