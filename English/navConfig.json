@@ -695,39 +695,39 @@
         ]
       },      
       { 
-        "nav_1_name": "LayaAir 3D引擎（AS3）",
+        "nav_1_name": "LayaAir 3D engine（AS3）",
         "nav_1_data": [
           {
             "name_2_name": "3D引擎基础",
             "name_2_data": [
               {
-                "name_3_name": "快速开启3D之旅",
-                "name_3_url": "Chinese/LayaAir_AS3/3D/beginners/quickStart/",
+                "name_3_name": "QuickStart guide for 3D project ",
+                "name_3_url": "English/LayaAir_AS3/3D/beginners/quickStart/",
                 "name_3_file": "readme.md"
               },
               {
-                "name_3_name": "unity插件工具使用",
-                "name_3_url": "Chinese/LayaAir_AS3/3D/beginners/unity_plugin/",
+                "name_3_name": "Unity plug-in utility",
+                "name_3_url": "English/LayaAir_AS3/3D/beginners/unity_plugin/",
                 "name_3_file": "readme.md"
               },
               {
                 "name_3_name": "LayaAir3D之场景Scene",
-                "name_3_url": "Chinese/LayaAir_AS3/3D/beginners/scene/",
+                "name_3_url": "English/LayaAir_AS3/3D/beginners/scene/",
                 "name_3_file": "readme.md"
               },
               {
                 "name_3_name": "LayaAir3D之摄像机Camera",
-                "name_3_url": "Chinese/LayaAir_AS3/3D/beginners/camera/",
+                "name_3_url": "English/LayaAir_AS3/3D/beginners/camera/",
                 "name_3_file": "readme.md"
               },
               {
                 "name_3_name": "LayaAir之灯光",
-                "name_3_url": "Chinese/LayaAir_AS3/3D/beginners/light/",
+                "name_3_url": "English/LayaAir_AS3/3D/beginners/light/",
                 "name_3_file": "readme.md"
               },
               {
                 "name_3_name": "LayaAir3D之模型",
-                "name_3_url": "Chinese/LayaAir_AS3/3D/beginners/model/",
+                "name_3_url": "English/LayaAir_AS3/3D/beginners/model/",
                 "name_3_file": "readme.md"
               }
             ]
