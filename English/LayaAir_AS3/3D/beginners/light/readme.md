@@ -1,4 +1,4 @@
-## LayaAir3D之光源
+## LayaAir3D Lighting
 
 Lighting is very important in the 3D world. 3D objects produce three-dimensional light and shade change, color hue change, projection and so on, which can be used in lighting settings.
 
@@ -11,19 +11,19 @@ There are many kinds of lights. Different light sources have different effects, 
 Point light is the light source that emits light from all directions, also known as omnidirectional or spherical light. In reality, point light sources, such as light bulbs and candles, can sense that the light source is of intensity, color and attenuation radius.
 
 ```java
-	//创建点光
+	// Create point light
 	var light:PointLight = scene.addChild(new PointLight()) as PointLight;
-	//移动灯光位置
+	// Moving light position
 	light.transform.translate(new Vector3(-3,5,0));
-	//设置点光照亮范围
+	// Set point light range
 	light.range=6;
-	//设置点光的衰减
+	// Set the attenuation of the point light
 	light.attenuation = new Vector3(0.01,.01,.03);
 ```
 Range to set the scope of the point light source, the radiation range equivalent to a point of light, the greater the value, the greater the illumination range, in Figure 1 by the illumination range setting is therefore not to be light where the black figure 2 light beyond the light and model distance, so all is light.
 
 
-![图片1](img/1.png)（图1）  ![图片2](img/2.png)（图2）
+![图片1](img/1.png)（图1）  ![图片2](img/2.png)（Picture 2）
 
 In order to set the point light source attenuation, the smaller the attenuation value, the less attenuation, so the brightness of the object in the light range is higher.
 
@@ -35,9 +35,9 @@ In order to set the point light source attenuation, the smaller the attenuation 
 Parallel light is different from point light. It has a fixed direction, can be set by radian value, and there is no attenuation and illumination range. It will illuminate all the models in the whole scene. The 3D world is often used to simulate the fixed direction of the sun.
 
 ```java
-	//创建平行光
+	// Create parallel light
 	var light:DirectionLight = scene.addChild(new DirectionLight()) as DirectionLight;
-	//设置平行光的方向
+	// Set the direction of parallel light
 	light.direction = new Vector3(0.5, -1, 0);
 ```
 
@@ -50,17 +50,17 @@ Direction is the direction of parallel light, representing the direction on the 
 Focus refers to the direction of light emitted from a specific light, such as a flashlight, stage lights and. The illumination area gradually enlarges according to the distance factor, and the edge of the illumination region also has attenuation phenomenon.
 
 ```java
-	//添加聚光
+	// Add spotlight
 	var light:SpotLight=scene.addChild(new SpotLight()) as SpotLight;
-	//设置聚光的位置
+	// Set the spotlight position
 	light.transform.position=new Vector3(0,5,0)
-	//设置聚光的衰减
+	// Set the attenuation of the spotlight
 	light.attenuation = new Vector3(0.1, 0, 0.1);
-	//设置聚光的方向
+	// Set the spotlight direction
 	light.direction=new Vector3(0, -1, 0);
-	//设置聚光范围
+	// Set concentration range
 	light.range=5;
-	//设置聚光值
+	// Set the spotlight value
 	light.spot=5;
 ```
 
@@ -89,11 +89,11 @@ The code setting environment is as follows: Yellow environment light is generate
 Before the course we introduced the three-dimensional vector can be used to set the color values, we again look at the vector of three elements in representing the red, green and blue color, which combined the myriads of changes color, the highest value of each color is more than 1, will produce the exposure effect.
 
 ```java
-//设置灯光的环境色为纯黄色（计算机中，红+绿=黄）
+//Set the ambient light color is pure yellow (computer, red + green = yellow)
 light.ambientColor = new Vector3(1,1,0);
 ```
 
-![图片5](img/5.png)（图5）  
+![图片5](img/5.png)（Picture 5）  
 
 
 
@@ -104,7 +104,7 @@ Also known as the light source color, the light is affected by the brightness an
 The following code, we set the light source color is pure red, then the model will be affected by the light part of the red impact, because we set the environment before the yellow light, so the smooth surface is red + Yellow + orange color mixing (Figure 6).
 
 ```java
-//设置灯光的漫反射色为纯红色
+// Set the light diffuse color to pure red
 light.ambientColor = new Vector3(1,0,0);
 ```
 
@@ -112,7 +112,7 @@ light.ambientColor = new Vector3(1,0,0);
 
 Turn off the ambient light, and we can see (Figure 7) the effect, because without the Yellow environmental color, the light of the model is all turned into a light source color. Therefore, in the process of project development, we have to take into account the mixed effects of various light color attributes of lighting.
 
-![图片7](img/7.png)（图7） 
+![图片7](img/7.png)（Picture 7） 
 
 
 
@@ -125,11 +125,11 @@ There are two ways to adjust the high light color of the model, one is to set th
 Because the box model does not produce high light, we observe it with a smoother sphere model. In Figure 8-1, there is no high light color in the code, and the engine defaults to pure white, so the white dimming is shown. In the following code, we set the high light color to blue, and in Figure 8-2 we can see clearly that the blue light is generated on the sphere, because it is purple with the addition of diffuse red.
 
 ```java
-//设置高光颜色为蓝
+// Set the highlight color to blue
 light.specularColor = new Vector3(0.5,0.5,1);
 ```
 
-![图片8-1](img/8-1.png)（图8-1） ![图片8-2](img/8-2.png)（图8-2） 
+![图片8-1](img/8-1.png)（图8-1） ![图片8-2](img/8-2.png)（Picture 8-2） 
 
 
 
@@ -179,73 +179,73 @@ package {
     {
 		public function LayaAir3D()
         {
-			//初始化引擎
+			// Initialize the engine
 			Laya3D.init(1000, 500,true);
 			
-			//适配模式
+			// Adaptation mode
 			Laya.stage.scaleMode = Stage.SCALE_FULL;
 			Laya.stage.screenMode = Stage.SCREEN_NONE;
 
-			//开启统计信息
+			// Turn on statistics
 			Stat.show();
 			
-			//添加3D场景
+			// Add 3D scene
 			var scene:Scene = Laya.stage.addChild(new Scene()) as Scene;
 			 
-			//创建摄像机(横纵比，近距裁剪，远距裁剪)
+			// Create a camera (Aspect ratio, Close crop, Long crop)
 			var camera:Camera = new Camera( 0, 0.1, 100);
-			//加载到场景
+			// Load into the scene
 			scene.addChild(camera);
-			//移动摄像机位置
+			// Position of camera
 			camera.transform.translate(new Vector3(0, 4, 8));
-			//旋转摄像机角度
+			// Angle of rotating camera
 			camera.transform.rotate(new Vector3( -30, 0, 0), true, false);
 			
-			//创建方向光
+			// Create directional light
 		    var light:DirectionLight = scene.addChild(new DirectionLight()) as DirectionLight;
-		    //移动灯光位置
+		    // Moving light position
 		    light.transform.translate(new Vector3(0,5,0));
-			//设置灯光方向
+			// Set lighting direction
 		    light.direction = new Vector3(0.3, -1, 0);
-		    //设置灯光环境色
+		    // Setting light environment color
 //		    light.ambientColor = new Vector3(1, 1, 0); 
-			//设置灯光漫反射颜色
+			// Set the color of the diffuse light
 			light.diffuseColor = new Vector3(1, 0, 0);
-			//设置灯光高光色
+			// Set the light highlight color
 		    light.specularColor = new Vector3(0, 0.5, 0.5);
 
 		 
-		    //添加灯光投影
+		    // Add light projection
 		    light.shadow=true;
-			//产生投影的范围（如过小将不会产生投影）
+			// Produce a projection range (such as small will not produce a projection)
 		    light.shadowDistance=45;
-          	//生成阴影贴图数量
+          	//Generate shadow map number
 			light.shadowPSSMCount = 1;
-			//模糊等级,越大越高,效果更好，更耗性能
+			//Fuzzy level, the more high, better, more consumption performance
           	light.shadowPCFType=1;
-			//投影质量
+			//Projection quality
 		    light.shadowResolution=2048;
 
 			 
-			//创建盒子模型
+			// Create box model
 			var box:MeshSprite3D = scene.addChild(new MeshSprite3D(new BoxMesh(1.5,1.5,1.5))) as MeshSprite3D;
-			//自身y座标旋转
+			// Self y coordinate rotation
 			box.transform.rotate(new Vector3(0,45,0),true,false);
-			//接受阴影
+			// Enable shadows
 			box.meshRender.receiveShadow=true;
 			
-			//创建球体模型
+			// Create sphere model
 			var sphere:MeshSprite3D = scene.addChild(new MeshSprite3D(new SphereMesh())) as MeshSprite3D;
-			//按父空间移动球体
+			// Move the sphere in the parent space
 			sphere.transform.translate(new Vector3(0,1.5,0),false);
-			//产生阴影
+			// Shadow
 			sphere.meshRender.castShadow=true;
 			
-			//创建材质
+			// Create material
 			var material:StandardMaterial = new StandardMaterial();
-			//材质加载漫反射贴图
+			// Material loading diffuse reflection map
 			material.diffuseTexture = Texture2D.load("res/layabox.png");
-			//为模型赋材质（单个材质可赋给多个模型）
+			// Assign material to model (single material can be assigned to multiple models)
 			sphere.meshRender.material = material;
 			box.meshRender.material = material;
 		}		
