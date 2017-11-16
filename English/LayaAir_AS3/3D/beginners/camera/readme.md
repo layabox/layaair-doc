@@ -1,146 +1,150 @@
-## LayaAir3D之摄像机Camera
+## LayaAir3D Camera
 
-LayaAir中的摄像机可以理解成拍摄电影或者电视剧时候的摄像机，用来捕捉三维世界画面，然后呈现到屏幕上。同时，LayaAir 3D引擎中还增加了VR摄像机，开发者们可以用它开发VR立体应用或游戏。
+The camera in LayaAir can be understood as a camera for shooting movies or TV dramas, capturing 3D world pictures and then presenting them to the screen. At the same time, the LayaAir 3D engine also adds VR cameras, developers can use it to develop VR stereo applications or games.
 
-当然，摄像机还有其他比较重要的属性，下面将一一介绍它的功能。
+Of course, there are other important properties of the camera, and the following will be introduced its function.
 
-### 摄像机移动与旋转
+### Camera movement and rotation
 
-摄像机继承于Sprite3D，因此还可以对它进行3D变换的操作，通过transform属性在3D场景中移动旋转变化，多角度取景，使观众或游戏者获得更真实的空间体验。
+The camera inherits from Sprite3D, so it can also be 3D transform operation, through the transform property in the 3D scene to move the rotation change, multi-angle viewfinder, the audience or the player get a more realistic space experience.
 
-设置相机的旋转：
+Set the camera's rotation:
 
 ```java
-//实例化一个相机，设置纵横比，0为自动匹配。0.1最近看到的距离，100最远看到的距离。
+// Instantiate a camera, set the aspect ratio, 0 for automatic matching. 0.1 recently seen distance, 100 farthest seen distance.
 var camera:Camera = new Camera(0, 0.1, 100)
-//移动相机，设置相机的向z轴移动3米。true代表是局部坐标，false是相对世界坐标。 
+// Move the camera to set the camera to move 3 meters to the z-axis. true represents the local coordinates, false is the relative world coordinates. 
 camera.transform.translate(new Vector3(0, 0, 3),false);
-//加载到场景
+// Load to scene
 scene.addChild(camera);
 ```
-设置相机的旋转
+Set the camera's rotation
 
 ```java
-//欧拉角旋转相机。局部坐标，弧度制（false为角度制）。
+// Euler rotation camera. Local coordinate, radian system (false angle system).
 camera.transform.rotate(new Vector3(0, 0, 3), true, true);
 ```
 
 
 
-### 摄像机正交投影与透视投影
+### Orthogonal projection and perspective projection of camera
 
-在我们观察世界的时候，看到的都是带有“近大远小”透视效果的世界，在3D引擎中，为了更好的模拟人眼所看到的世界，默认的摄像机带着“透视投影”的效果。
+When we observe the world, see is a "near the small" perspective of the world, in the 3D engine, in order to better simulate the human eye can see the world, the default camera with a "projection" effect.
 
-![图片1](img/1.png)<br>（图1）默认透视投影
+![图片1](img/1.png)<br> (Figure 1) default perspective projection
 
-但有很大一部分游戏，特别是斜45度视角的2D、3D混合游戏，游戏画面是不能带透视效果的，那么这个时候，我们需要设置摄像机为“正交投影”，使它不产生近大远小的透视效果。
+But there is a big part of the game, especially the 2D and 3D mixed game oblique angle of 45 degrees, the game screen is not with the perspective effect, so this time, we need to set the camera to the orthogonal projection, so it doesn't produce much smaller near the perspective effect.
 
 ```javascript
-	//正交投影属性设置
+	//Orthographic Projection Properties setting
 	camera.orthographicProjection = true;
-	//正交垂直矩阵距离,控制3D物体远近与显示大小
+	//Orthogonal vertical matrix distance to control 3D object distance and display size
 	camera.orthographicVerticalSize = 7;
-	//移动摄像机位置
+	//Move the camera position
 	camera.transform.translate(new Vector3(0, 26.5, 45));
-	//旋转摄像机角度
+	//Angle of rotating camera
 	camera.transform.rotate(new Vector3( -30, 0, 0), true, false);
 ```
 
-![图片2](img/2.png)<br>（图2）正交投影 
+![图片2](img/2.png)<br> (Figure 2) orthogonal projection
 
 
 
-### 摄像机裁剪与视野
+### Camera cropping and field of vision
 
-**远近距离的裁剪**
+**Clipping distance**
 
-摄像机还可以设置远近距离的裁剪，只显示远近距离之间的场景模型，之外的模型不进行渲染显示。它最大的优势在于提高游戏的性能。
+The camera can also set the distance between the crop, showing only the distance between the scene model, the model does not render outside the display. Its biggest advantage is to improve the performance of the game.
 
-创建摄像机时，摄像机构造函数会默认剪切为近距0.3米，远距为1000米（图1）。开发者可以在构造函数中设置或通过摄像机属性进行设置。
+When creating a camera, the camera constructor will cut it by default at a distance of 0.3 meters and a distance of 1000 meters (Figure 1). Developers can set in the constructor or set via 
 
-![图片3](img/3.png)<br>（图3）
+camera properties.
+
+
+![图片3](img/3.png)<br>（Picture 3）
 
 ```javascript
-	//创建摄像机时初始化裁剪(横纵比，近距裁剪，远距裁剪)
+	//Initialize cropping when creating a camera (Aspect ratio, Close crop, Long crop)
 	var camera:Camera = new Camera( 0, 0.1, 100);
-	//近距裁剪
+	//near cropping
 	camera.nearPlane=0;
-	//远距裁剪
+	//Far distance cutting
 	camera.farPlane=100;
 ```
 
-tips：一般在游戏中，我们会把雾效与摄像机剪切同时使用，雾效远距以外的地方基本都看不清楚，这时就可以设置远距离剪切，提高游戏渲染性能。
+tips：Generally in the game, we will use the fog effect and the camera cut at the same time, the fog effect is far from the basic place are not clear, then you can set the remote cut, improve the game rendering performance.
 
-**摄像机视野**
+**Camera view**
 
-摄像机视野类似于焦距，通过视野参数的调整，可以看到视图中的场景范围、透视的近大远小变化，它是通过角度值进行调整，角度越大，视野范围越大，开发者可以根据自己的需求进行设置。
+Camera field of vision is similar to the focal length, through the adjustment of visual field parameters, you can see the view of the scene range, near-large changes in perspective, it is adjusted by the angle value, the greater the angle, the greater the field of view, developers can Set their own needs.
 
   ```java
-//设置相机的视野范围90度
+//Set the camera's field of view 90 degrees
 camera.fieldOfView = 90;
   ```
 
 
 
-### 摄像机捕捉目标
+### Camera capture target
 
-在创建摄像机时，我们经常需要调整摄像机的位置，用于对准显示某个三维物体，或显示某个区域。对于初学者来说，空间思维还未形成习惯，调整位置所花的时间会很多。
+In creating a camera, we often need to adjust the camera position, for alignment to display a three-dimensional object, or display a region. For beginners, space thinking has not yet formed a habit, the adjustment of the time spent will be a lot.
 
-LayaAir 3D引擎3D变换提供了一个lookAt()方法，用于捕捉目标，自动调整3D对象对准目标点。摄像机也可以使用它达到我们的调整视角的目的。代码如下
+LayaAir 3D engine 3D transform provides a lookAt () method, used to capture the target, automatically adjust the 3D object alignment point. The camera can also use it to achieve our goal of adjusting the viewing angle. Code is as follows
 
-lookAt（target 观察目标向量，up 向上向量，isLocal 是否局部空间）
+LookAt (target observation target vector, up upward vector, isLocal local space)
 
 ```java
-//添加场景
+//Add scene
 var scene:Scene = new Scene();
 Laya.stage.addChild(scene);
-//添加自定义模型
+//Add a custom model
 var box:MeshSprite3D = scene.addChild(new MeshSprite3D(new BoxMesh(1,1,1))) as MeshSprite3D;
 scene.addChild(box);
-//添加摄像机
+//Add camera
 var camera:Camera = (scene.addChild(new Camera())) as Camera;
-//摄像机捕捉模型目标
+//Camera captures model targets
 camera.transform.lookAt	(box.transform.position,new Vector3(0,-1,0));
 ```
-我们把相机的up设置为（0,-1,0）的方向，摄像机的y向为负数，会在Y轴上倒转，所以画面变成了倒置的方体（图4）。其他几个方向初学者们可以多作尝试。
+We set the camera's up in the direction of (0, -1,0), and the camera's y direction is negative, and it reverses on the Y axis, so the picture becomes inverted square (Figure 4). Other directions, beginners can try more.
 
-![图片4](img/4.png)<br>（图4）捕捉目标
+![图片4](img/4.png)<br> (Figure 4) capture the target
 
 
 
-### 摄像机背景色与天空盒
 
-**背景色**
+### Camera background color and sky box
 
-在3D场景中，背景颜色我们是用摄像机去控制的，通过设置摄像机clearColor属性来改变3D空间的背景色，颜色使用三维向量Vector3(红,绿,蓝)方式赋值调整，引擎默认设为纯黑色。
+**background color**
+
+In the 3D scene, we use the camera to control the background color, by setting the camera clearColor property to change the background color of the 3D space, the color using the three-dimensional vector Vector3 (red, green, blue) way to adjust the value, the engine defaults to pure black.
 
 ```java
-	//设置背景颜色
+	//Setting background color
 	camera.clearColor = new Vector3(0.5,0.5,0.6);
 ```
 
-**天空盒**
+**Sky box**
 
-场景中大多时候需要表现天空远景，比如蓝天白云、黄昏、星空等，在LayaAir 3D引擎中，是通过在摄像机属性上添加天空盒（SkyBox）的方式创建。
+Most of the scenes in the scene need to show sky views, such as blue sky, white clouds, dusk, stars, etc. in the LayaAir 3D engine, it is created by adding a sky box (SkyBox) to the camera property.
 
-不过如果摄像机使用了正交投影，天空盒将达不到所要效果，开发者们可以偿试。
+But if the camera uses the orthogonal projection, the sky box will not be able to achieve the desired results, developers can try.
 
-天空盒是由一个立方体模型及6张可以无缝相接的材质贴图构成，有点类似于360全景地图，随着视角的旋转改变，我们可以观察到四面八方都有远景效果。
+The sky box is made up of a cube model and 6 seamless texture maps, which are similar to 360 panoramic maps. With the rotation of the view angle, we can observe the foreground effect in all directions.
 
-下列代码中“skyCube.ltc"中用JSON格式存储了6张贴图的路径，在此不多作介绍，我们将在天空盒详解中介绍制作天空盒贴图的方法及“skyCube.ltc"配置。
+The following code “skyCube.ltc" in the JSON format to store 6 maps of the path, here is not much to introduce, we will introduce in the sky box details of the sky box mapping methods and “skyCube.ltc" configuration.
 
 ```java
-	//创建天空盒
+	//Create sky box
 	var skyBox:SkyBox=new SkyBox();
-	//清除标记，使用天空（必须设置，否者无法显示天空）
+	//Clear tags, use the sky (must set, no, can not show the sky)
 	camera.clearFlag=BaseCamera.CLEARFLAG_SKY;
-	//绑定天空盒对象到摄像机
+	//Bind sky box objects to the camera
 	camera.sky=skyBox;
-	//为天空盒加载贴图文件
+	//Load the map file for the sky box
 	skyBox.textureCube=TextureCube.load("skyBox/skyCube.ltc");
 ```
 
-![图片5](img/5.png)<br>（图5）使用天空盒
+![图片5](img/5.png)<br>(Figure 5) Use the skybox.
 
 
 
