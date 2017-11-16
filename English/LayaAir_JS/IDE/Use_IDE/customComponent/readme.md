@@ -158,7 +158,7 @@ var laya;
 ```xml
 <?xml version="1.0" encoding="utf-8" ?>
 <uiComp>
-	<ScaleButton className="laya.customUI.ScaleButton" inherit="Button" skinLabel="skin" 
+	<ScaleButton className="laya.customUI.ScaleButton" runClass="component.ScaleButton"  inherit="Button" skinLabel="skin" 
 	defaultValue="label=''" resName="sbtn" icon="sbtn" groups="公用，常用，宽高及位置" drag="3">
 		<prop name="scaleTime" tips="缩放使用的时间" type="number" default="100" group="常用" />
 	</ScaleButton>

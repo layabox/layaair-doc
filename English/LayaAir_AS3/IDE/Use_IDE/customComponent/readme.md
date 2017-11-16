@@ -165,7 +165,7 @@ Directory has a ScaleButton.js, as shown in Figure 4, open this js we can see th
 ```xml
 <?xml version="1.0" encoding="utf-8" ?>
 <uiComp>
-	<ScaleButton className="component.ScaleButton" inherit="Button" skinLabel="skin" 
+	<ScaleButton className="component.ScaleButton" runClass="component.ScaleButton"  inherit="Button" skinLabel="skin" 
 	defaultValue="label=''" resName="sButton" icon="Box" groups="Common, commonly used, size and position" drag="3">
 		<prop name="scaleTime" tips="Zoom use time" type="number" default="100" group="Common" />
 	</ScaleButton>
