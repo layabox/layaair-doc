@@ -698,7 +698,7 @@
         "nav_1_name": "LayaAir 3D engine（AS3）",
         "nav_1_data": [
           {
-            "name_2_name": "3D引擎基础",
+            "name_2_name": "3D Engine basics",
             "name_2_data": [
               {
                 "name_3_name": "QuickStart guide for 3D project ",
@@ -733,21 +733,21 @@
             ]
           },
 	  {
-            "name_2_name": "3D简单实例",
+            "name_2_name": "example of 3D sample",
             "name_2_data": [
               {
                 "name_3_name": "3D角色动画控制",
-                "name_3_url": "Chinese/LayaAir_AS3/3D/examples/roleAniControl/",
+                "name_3_url": "English/LayaAir_AS3/3D/examples/roleAniControl/",
                 "name_3_file": "readme.md"
               },
               {
                 "name_3_name": "3D角色脚本控制与碰撞检测",
-                "name_3_url": "Chinese/LayaAir_AS3/3D/examples/roleScriptControl/",
+                "name_3_url": "English/LayaAir_AS3/3D/examples/roleScriptControl/",
                 "name_3_file": "readme.md"
               },
               {
                 "name_3_name": "3D多场景运用示例",
-                "name_3_url": "Chinese/LayaAir_AS3/3D/examples/multiScene/",
+                "name_3_url": "English/LayaAir_AS3/3D/examples/multiScene/",
                 "name_3_file": "readme.md"
               }
             ]
