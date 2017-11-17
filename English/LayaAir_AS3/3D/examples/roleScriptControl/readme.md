@@ -4,14 +4,14 @@
 
 ### requirement analysis
 
-This course focuses on beginners' comprehensive application of 3D engine, including 3D scene processing and loading, role collision detection and animation control switching, etc., to show developers a basic development example similar to RPG game level .
+This course focuses on beginners' comprehensive application of 3D engine, including 3D scene processing and loading, character collision detection and animation control switching, etc., to show developers a basic development example similar to RPG game level .
 
 basic needs are:
 
-1、The joystick controls the role to move back and forth in the scene. After the rocker controller is released, the character stops moving and standby.
-2、The attack button switch to attack animation role, always press the button can not stop the attack, the click of a button to play at least one complete attack animation, animation playback before the end of the attack button, such as priority greater than rocker, rocker still pressed, attack stop after playing mobile animation and displacement.
+1、The joystick controls the character to move back and forth in the scene. After the rocker controller is released, the character stops moving and standby.
+2、The attack button switch to attack animation character, always press the button can not stop the attack, the click of a button to play at least one complete attack animation, animation playback before the end of the attack button, such as priority greater than rocker, rocker still pressed, attack stop after playing mobile animation and displacement.
 3、There are barriers in the scene, some places can't walk, and when the characters walk to stop, they stop moving.
-4、The same role is cloned, and two roles are controlled simultaneously, such as one of them will not be affected until the barrier stops.
+4、The same character is cloned, and two characters are controlled simultaneously, such as one of them will not be affected until the barrier stops.
 
 The reference effect is shown in Figure 1
 
@@ -27,7 +27,7 @@ The reference effect is shown in Figure 1
 
 3. when the document is written, the advanced type of the 3D engine is being perfected, so the blocking in the scene is temporarily judged by the walking zone Collider and the ray detection mode.
 
-​      Art can be a role model making 3D scene in the walking area, as shown in Figure 2, are in use, not for rendering, but the code needed to add it to the mesh Collider, the position has a ray and a collision for collision detection by the role before, if the information is not without collision, role walk, collision with the role of information can walk. And, of course, you can also create a model in the non walkable region.
+​      Art can be a character model making 3D scene in the walking area, as shown in Figure 2, are in use, not for rendering, but the code needed to add it to the mesh Collider, the position has a ray and a collision for collision detection by the character before, if the information is not without collision, character walk, collision with the character of information can walk. And, of course, you can also create a model in the non walkable region.
 
 ​     When the advanced land type function is perfect, the technical document will be introduced in detail, and recommend developers to use advanced ground type, better performance.
 
@@ -37,7 +37,7 @@ The reference effect is shown in Figure 1
 
 ### Joystick controller and attack button
 
-The interface between the loading progress page and the "technical document 3D role switch and animation" is basically the same as the code, which is not explained here.
+The interface between the loading progress page and the "technical document 3D character switch and animation" is basically the same as the code, which is not explained here.
 
 Joystick controller and attack button interface is commonly used in 2D, 3D game, developers can refer to use. Create two interfaces in LayaAir IDE, named Rocker.ui, Attack.ui, Rocker.ui is composed of touch point pictures and background maps, Attack.ui is composed of an attack button, it can also add other skills button to expand. The interface is shown in Figure 3 and figure 4.
 
@@ -235,11 +235,11 @@ package view
 
 ### Example main class
 
-There is almost no control logic in the example primary class, creating scenes, cameras, roles, too. Instead of using lights and lighting maps, developers are advised to have no dynamic light in the scene, without adding lights, and will be much higher in performance. Role shadows can use transparent texture models.
+There is almost no control logic in the example primary class, creating scenes, cameras, characters, too. Instead of using lights and lighting maps, developers are advised to have no dynamic light in the scene, without adding lights, and will be much higher in performance. Character shadows can use transparent texture models.
 
 In the scene, we need to get the walking area model moveArea from the scene model, which can be set as no render, and the code is not `moveArea.meshRender.enable=false`, And add it to the grid Collider MeshCollider. The mesh collider is more accurate and consistent with the model itself, and the hollowed out region will not be detected. Of course, the cost of performance will be larger.
 
-The joystick, attack button and camera movement are set as static to facilitate the use and control of the role control script.
+The joystick, attack button and camera movement are set as static to facilitate the use and control of the character control script.
 
 The main class code is as follows:
 
@@ -389,21 +389,21 @@ package
 
 
 
-### Role control script component
+### Character control script component
 
 Component functions are powerful, and scripts inherit components. For important attributes and methods, please refer to the script component of “technical document - LayaAir3D”
 
 Script component development model provides us with another set of ways of thinking. Unlike inheritance, it is more flexible and can be added, removed and assembled at any time to achieve the desired effect, and can be completely separated from control and display. Developers can try this method more.
 
-In this case, the role control uses the script component method, in the script, we mainly perform the following functions.
+In this case, the character control uses the script component method, in the script, we mainly perform the following functions.
 
-1. get the script belongs to the role of animation components, for the control of animation, in the override component _start () method to obtain animation components.
+1. get the script belongs to the character of animation components, for the control of animation, in the override component _start () method to obtain animation components.
 
-2. role animation, walk, standby, attack method separation, role animation to complete event monitoring.
+2. character animation, walk, standby, attack method separation, character animation to complete event monitoring.
 
-3. the role collision detection, in the script update method _update (), the role of location ray and walking area collision detection, judge whether the role is blocked.
+3. the character collision detection, in the script update method _update (), the character of location ray and walking area collision detection, judge whether the character is blocked.
 
-4. role update, in the script update method _update (), access to rocker angle, attack button, and according to its properties to control the role of animation switching.
+4. character update, in the script update method _update (), access to rocker angle, attack button, and according to its properties to control the character of animation switching.
 
 5. the camera follows the displacement of the movement of the characters to update the displacement synchronously.
 
