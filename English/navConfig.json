@@ -782,7 +782,7 @@
             "name_2_name": "example of 3D sample",
             "name_2_data": [
               {
-                "name_3_name": "3D角色动画控制",
+                "name_3_name": "3D character switching and animation",
                 "name_3_url": "English/LayaAir_AS3/3D/examples/roleAniControl/",
                 "name_3_file": "readme.md"
               },
