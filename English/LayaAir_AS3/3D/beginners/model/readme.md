@@ -50,71 +50,71 @@ package {
 		
 		public function LayaAir3D_Model() 
 		{
-			//初始化引擎
+			//Initialization engine
 			Laya3D.init(1000, 500,true);
 			
-			//适配模式
+			//Adaptation mode
 			Laya.stage.scaleMode = Stage.SCALE_FULL;
 			Laya.stage.screenMode = Stage.SCREEN_NONE;
 
-			//开启统计信息
+			//Turn on statistics
 			Stat.show();
 			
-			//添加3D场景-----------------------
+			//Add 3D scene-----------------------
 			var scene:Scene = new Scene();
 			Laya.stage.addChild(scene);
 			
 			
-			//创建摄像机(横纵比，近距裁剪，远距裁剪)-----
+			//Create camera (horizontal to vertical ratio, close clipping, far distance clipping)-----
 			var camera:Camera = new Camera( 0, 0.1, 1000);
-			//加载到场景
+			//Load to scene
 			scene.addChild(camera);
-			//移动摄像机位置
+			//Position of camera
 			camera.transform.position=new Vector3(0, 3, 10);
-			//旋转摄像机角度
+			//Angle of rotating camera
 			camera.transform.rotate(new Vector3( -17, 0, 0), true, false);
-			//加入摄像机移动控制脚本
+			//Add camera to move control script
 			camera.addComponent(CameraMoveScript);
 			
 			
-			//创建方向光 ------------------------
+			//Create directional light ------------------------
 			var light:DirectionLight = scene.addChild(new DirectionLight()) as DirectionLight;
-			//移动灯光位置
+			//Moving light position
 			light.transform.translate(new Vector3(0,2,5));
-			//调整灯光方向
+			//Adjust the light direction
 			light.direction = new Vector3(0.5, -1, 0);
-			//设置灯光环境色
+			//Setting light environment color
 			light.ambientColor = new Vector3(1, 1, 1); 
-			//设置灯光漫反射颜色
+			//Set the color of the diffuse light
 			light.diffuseColor = new Vector3(0.3, 0.3, 0.3);
 			
 			
-			//创建模型-------------------------------
-			//创建盒子模型(参数为：长、宽、高，单位：米)
+			//Create model-------------------------------
+			//Create a box model (parameters: length, width, height, unit: meter)
 			var boxMesh:BoxMesh=new BoxMesh(2,2,2);
-			//创建模型显示对象
+			//Creating model display objects
 			var box3D:MeshSprite3D=new MeshSprite3D(boxMesh);
 			scene.addChild(box3D);
 			
-			//创建球体模型(参数为：半径、水平层数、垂直层数)
+			//Create sphere model (parameters: radius, horizontal layer, vertical layer number)
 			var sphereMesh:SphereMesh=new SphereMesh(1,8,8);
-			//创建模型显示对象
+			//Creating model display objects
 			var sphere3D:MeshSprite3D=new MeshSprite3D(sphereMesh);
-			//x轴上移动-3米（世界座标 向左）
+			//X axis moves -3 meters (world coordinates to the left)
 			sphere3D.transform.translate(new Vector3(-3,0,0),false);
 			scene.addChild(sphere3D);
 			
-			//创建圆柱体模型(参数为：半径、高、圆截面线段数)
+			//Create a cylinder model (parameters: radius, high, round section line number)
 			var cylinderMesh:CylinderMesh=new CylinderMesh(1,2,8);
-			//创建模型显示对象
+			//Creating model display objects
 			var cylinder3D:MeshSprite3D=new MeshSprite3D(cylinderMesh);
-			//x轴上移动3米（世界座标 向右）
+			//X axis moves 3 meters (world coordinates to the right)
 			cylinder3D.transform.translate(new Vector3(3,0,0),false);
 			scene.addChild(cylinder3D);
 			
-			//创建材质----------------------------------
+			//Create material---------------------------------
 			var material:StandardMaterial = new StandardMaterial();
-			//为模型赋材质（单个材质可赋给多个模型）
+			//Assign material to model (single material can be assigned to multiple models)
 			box3D.meshRender.material = material;
 			
 		}		 
@@ -123,40 +123,40 @@ package {
 }
 ```
 
-上面的代码中，创建了摄像机与灯光，并添加了三种基本几何体模型，它们使用了最基本的默认材质。显示效果如图1。
+In the code above, cameras and lights are created, and three basic geometry models are added. They use the most basic default material. The display effect is shown in figure 1.
 
-![图片1](img/1.png)<br>（图1）
-
-
-
-### 创建三维软件生成的模型
-
-上述三种基本模型主要用于开发者学习测试。游戏中的模型大都是三维软件制作后，导入unity编辑器中编辑拼接，再用layaAir导出工具转化产生，然后通过3D场景或模型显示类加载使用。
-
-在此我们再次来说明一下导出的资源类别与文件使用方法。
-
-导出的文件夹中，包括的资源较多（图2），有场景、3D模型容器、3D模型、3D材质等解析文件，还有光照贴图、材质贴图等数据文件。
-
-![图片2](img/2.png)<br>（图2）
-
-**loveScene文件夹**是在untiy中创建光照贴图后产生的文件夹，与在untiy中创建的场景名相同，光照贴图在场景Scene篇已有介绍。
-
-**Materials文件夹**是在unity中导入FBX模型时创建材质球的文件夹，导出后的资源为对应的LayaAir材质数据解析文件，文件中存储着材质的渲染模式、贴图资源路径、材质的各种光色属性等。
-
-**Texture文件夹**是在unity中创建的存放贴图的文件夹，其中资源为材质的贴图文件，是一系列的图片文件，在LayaAir引擎中我们使用jpg或png格式的图片，可使用导出工具把其他格式图片自动转化jpg或png，请开发者们一定注意。
+![图片1](img/1.png)<br>（Picture 1）
 
 
 
-#### *.ls格式Scene数据文件
+### Create a 3D software-generated model
 
-导出的场景Scene类型数据文件，在之前的课程中我们已有讲解，在此不多作说明。
+These three basic models are mainly used for developer learning tests. Most of the models in the game are three-dimensional software, after the introduction of unity editor edit splicing, and then use the layaAir export tool transformation generation, and then through the 3D scene or model display class loading use.
+
+Here, let's explain again the exported resource class and how the file is used.
+
+Export folder contains more resources (Figure 2), there are scenes, 3D model container, 3D model, 3D material and other analytical files, as well as light maps, texture maps and other data files.
+
+![图片2](img/2.png)<br>（Picture 2）
+
+**loveScene文件夹** The folder created after creating the lighting map in untiy is the same as the scene name created in untiy, and the illumination map has been introduced in the scene Scene.
+
+**Materials文件夹** When you import the FBX model in unity, you create the folder of the material ball, and the exported resource is the corresponding LayaAir material data parsing file. The file is stored in the rendering mode of material, the path of mapping resources, and the various light and color attributes of material.
+
+**Texture文件夹** Is created in the unity store map folder, which is the material resources mapping file, is a series of picture files in the LayaAir engine we use JPG or PNG format, can be used to export other format images automatically transformed into JPG or PNG, please developers must pay attention to.
+
+
+
+#### *.ls format Scene data file
+
+Export scenario Scene type data file, we have already explained in the previous courses, but not much explanation.
 
 
 
 
-#### *.lh格式Sprite3D数据文件
+#### *.lh format Sprite3D data file
 
-导出的3D显示对象容器Spirte3D类型数据文件，JSON格式编码，是unity3D中layaAir导出插件选择导出”Sprite3D“类别生成，内部存储比*.ls格式少了光照贴图，其他全部相同。
+The exported 3D display object container Spirte3D type data file, JSON format code, is the layaAir export plug-in in unity3D select export ”Sprite3D“ category generation, internal storage less than the *.ls format, less light map, the other all the same.
 
 “*.lh” Format loading is similar to scenario loading, which is loaded by asynchronous loading Sprite3D.load() or pre loaded Laya.loader.create() method, and reference code:
 
