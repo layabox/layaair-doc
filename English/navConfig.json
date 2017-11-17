@@ -779,7 +779,7 @@
             ]
           },
 	  {
-            "name_2_name": "example of 3D sample",
+            "name_2_name": "3D sample reference",
             "name_2_data": [
               {
                 "name_3_name": "3D character switching and animation",
@@ -801,10 +801,10 @@
         ]
       },
       { 
-        "nav_1_name": "实例开发篇（AS3）",
+        "nav_1_name": "Sample projects （AS3）",
         "nav_1_data": [
           {
-            "name_2_name": "LayaAir IDE实用示例",
+            "name_2_name": "LayaAir IDE Practical Example",
             "name_2_data": [
               {
                 "name_3_name": "List example: display, add, delete",
