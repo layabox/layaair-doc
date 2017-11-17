@@ -1,32 +1,32 @@
-## LayaAir3D之模型
+## LayaAir3D Model
 
-### 模型概述
+### Model overview
 
-3D模型是指通过三维软件按照物体的结构建模形成的3D立体对象。目前LayaAir 3D引擎中包括了两种模型显示类型，一为普通模型**MeshSprite3D**，二为蒙皮动画模型**SkinnedMeshSprite3D**。
+3D model refers to the 3D object formed by 3D software modeling according to object structure. Currently two types of model display are included in LayaAir 3D engine, one is the general model **MeshSprite3D**, and the other is the skin animation model **SkinnedMeshSprite3D**。
 
-区别是蒙皮动画模型是指在制作时加入了蒙皮与骨骼动画的模型，常用于有动画的角色。而普通模型是指未有动画的场景景观模型等。
+The difference is that the skinning animation model refers to the model of skinning and skeletal animation, which is often used in animation. The ordinary model refers to the scene without animation, such as landscape or static model.
 
-它们都包括了模型网格与材质两部分。
+Both include mesh and the material data.
 
-**模型网格(Mesh)：**
+**Mesh:**
 
-模型网格是由点、线、面组成的三维数据，LayaAir引擎中有专门的Mesh网格数据类，将它赋予3D模型显示对象MeshSprite3D或SkinnedMeshSprite3D后就可以在场景中显示出来。
+Mesh is a three-dimensional data composed of points, lines and triangles. In the LayaAir engine, there is a special Mesh grid data class, which is given to the 3D model to display objects MeshSprite3D or SkinnedMeshSprite3D, and then can be displayed in the scene.
 
-目前3D制作软件较多，最主流的是3ds max与maya软件。3D模型的数据格式也较多，如FBX、3DS、OBJ等。
+Now 3D production software is more popular, and the most mainstream are 3ds Max and Maya software. 3D model data format more spread are FBX, 3DS, OBJ.
 
-LayaAir引擎提供了模型导出工具FBXTools与unity3D导出插件，用于生成layaAir所需要的3D数据格式。建议使用unity导出插件，FBXTools工具以后将不会更新。
+The LayaAir engine provides model export tools FBXTools and unity3D export plug-ins, which are used to generate 3D data formats needed for layaAir. It is recommended to use the unity export plug-in, and the FBXTools will not be updated in the future.
 
-**材质(Material)：**
+**Material:**
 
-材质说明我们将在独立的章节介绍，在本章节中暂不说明。
+Material Description we will be introduced in a separate article, and will not be described here.
 
 
 
-### 创建引擎自带的基础模型
+### Creating the basic model of the engine
 
- 在快速开启3D之旅的课程中，我们已用到了BoxMesh盒子模型，本节课中介绍LayaAir引擎提供的其他SphereMesh、CylinderMesh基础模型数据，我们依次创建它们，并通过transform属性去移动它们的位置，具体代码如下：。
+ We've used the BoxMesh model previously in quickStart guide article, and in this lesson we'll cover the other SphereMesh, CylinderMesh base model data provided by the LayaAir engine. We create in turn and move their position through the transform property, Specific code is as follows :
 
-创建时，需注意的是，加载到场景中的引擎自带模型，轴心点在模型正中心，因此我们是以模型中心点为参考进行移动、旋转、缩放。加载到场景中时，模型默认会放置到场景的世界座标原点上，与2D类似。
+When you create, you need to pay attention to, the engine is loaded into the scene with the model, the axis point in the center of the model, so we are based on the center point of the model for reference, move, rotate, zoom. When loaded into the scene, the model defaults to the world coordinate origin of the scene, similar to 2D.
 
 ```java
 package {
@@ -158,17 +158,17 @@ package {
 
 导出的3D显示对象容器Spirte3D类型数据文件，JSON格式编码，是unity3D中layaAir导出插件选择导出”Sprite3D“类别生成，内部存储比*.ls格式少了光照贴图，其他全部相同。
 
-“*.lh” 格式加载与场景加载方法类似，由异步加载Sprite3D.load()或预加载Laya.loader.create()方法加载，参考代码：
+“*.lh” Format loading is similar to scenario loading, which is loaded by asynchronous loading Sprite3D.load() or pre loaded Laya.loader.create() method, and reference code:
 
 ```java
-//添加3D场景
+//Add 3D scene
 var scene:Scene = new Scene();
 Laya.stage.addChild(scene);
 
-//方法一：直接异步加载
+//Method 1: direct asynchronous loading
 var sprite3D:Sprite3D = Sprite3D.load("res/room.lh");
 
-//方法二：预加载，创建为Sprite3D类型
+//Method two: preload to create a Sprite3D type
 Laya.loader.create("res/room.lh",Handler.create(this,function():void{ 
 				var sprite3D:Sprite3D=Laya.loader.getRes("res/room.lh");
   				scene.addChild(sprite3D);
@@ -177,15 +177,15 @@ Laya.loader.create("res/room.lh",Handler.create(this,function():void{
 
 
 
-#### *.lm格式数据文件
+#### *.lm Formatted data file
 
-无论是导出”Scene“文件或”Sprite3D“文件类型，在导出的资源文件夹中都包含了系列*.lm格式文件，本项目中model文件夹为unity中开发者自建的存储FBX模型的文件夹，如图2，在导出时生成了对应的文件夹和.lm资源文件。
+Whether it is derived from ”Scene“ file or file type ”Sprite3D“ a series of *.lm format files are included in the derived Resources folder, FBX storage model for unity developers built the model folder in the project folder, as shown in Figure 2, created the corresponding folder and.Lm resource file when exporting.
 
-![图片3](img/3.png)<br>（图3）
+![图片3](img/3.png)<br>（picture 3）
 
-"*.lm"文件是模型数据文件，可以生成MeshSprite3D或SkinnedMeshSprite3D类型显示对象的网格数据Mesh，包含了模型网格的顶点位置、法线、顶点色、顶点UV等信息。
+"*.lm" The file is the model data file, which can generate the grid data Mesh of MeshSprite3D or SkinnedMeshSprite3D type display object, including the vertex position, normal line, vertex color, vertex UV and other information of the model grid.
 
-通过异步加载MeshSprite.load()或预加载Laya.loader.create()方法加载，参考代码如下：
+Load asynchronously by MeshSprite.load() or pre loading Laya.loader.create() method. The reference code is as follows:
 
 ```java
 //添加3D场景
@@ -208,23 +208,23 @@ Laya.loader.create("LayaScene_01/Assets/model/loveScene_jianzhu.lm",
 				   }),null,Mesh);
 ```
 
-用上述的三种方法都可以在游戏画面中显示出模型，材质贴图引擎也会自动加载到模型上。在项目中我们可以根据情况使用上述三种方法，固定场景我们可以使用.ls格式加载，而活动的物品可以使用.ls或.lm方式加载。 
+With the three methods mentioned above, the model can be displayed in the game screen, and the material map engine will automatically load onto the model. In the project, we can use the above three methods according to the situation, fixed scene, we can use .ls format to load, and active items can be loaded by .ls或 or lm mode. 
 
 
 
-### 获取子对象模型及网格
+### Obtain child object model and mesh properties
 
-3D模型在有时候会由多个子模型对象构成，例如场景模型.ls，基本都是由多个物体模型与材质构成，外层是Sprite3D容器，内部才是真正的模型MeshSprite3D或SkinnedMeshSprite3D。并且还可能会有多个层次嵌套。
+The 3D model is sometimes composed of multiple sub model objects, such as the scene model .ls, which is basically made up of multiple object models and materials. The outer layer is a Sprite3D container, and the inside is the real model MeshSprite3D or SkinnedMeshSprite3D. And there may be multiple levels nested.
 
-#### 获取子对象模型
+#### Get child object model
 
-在编写游戏逻辑时，有的模型需要被修改，或者是切换与删除模型、或者是给模型加组件、或者是获取模型上的动画组件及修改模型的材质等。这都需要从加载的模型中去获取子对象，我们可以通过**getChildAt()、getChildByName()**方法去获取子对象，这与2D引擎获取子对象方法一样。
+When writing game logic, some models need to be modified, or to switch and delete the model, add components, or to obtain the animation components of the model and the material of the modified model. We all need to get the child object from the loaded model, and we can get the child object by the **getChildAt(), getChildByName()** method, which is the same as the 2D engine getting the child object method.
 
-下面我们来加载一个卡车模型的.lh文件，然后获取它的子对象。在获取子对象之前，建议打开.lh文件查看模型的父子层级关系，因为在制作模型时，我们也不能确定模型是由多少个子对象模型构成，及它们的命名规则。
+Let's load a.lh file of the truck model, and then get its child object. Before getting a child object, it is recommended to open the.lh file to see the parent-child hierarchy of the model, because we cannot determine how many sub object models are formed and their naming rules when making the model.
 
-tips：在3ds max中建模时，建议对模型的子对象取名，并且制定项目的资源命名规则，不要用默认的模型名称。
+Tips: when modeling in 3ds max, it is recommended to name the sub objects of the model, and to formulate the resource naming rules of the project, instead of using the default model name.
 
-下例加载从unity导出的卡车truck.lh，打开后通过JSON结构可以看到，外层是一个Sprite3D容器（相当于unity的场景），内部又是一个Sprtie3D容器（相当于unity场景中的卡车），卡车容器中是两个子对象模型MeshSprite3D（车头与车身模型）。因此我们需要两次getChildAt()方式才能获取到模型MeshSprite3D。
+The following example loads the truck.lh truck exported from unity. After opening it, you can see through the JSON structure that the outer layer is a Sprite3D container (the equivalent of unity scene) and inside is a Sprite3D container (equivalent to the truck in the unity). In the truck container are two sub-object models MeshSprite3D (front and body models). So we need call twice getChildAt () method to get the model MeshSprite3D.
 
 ```java
 			//加载导出的卡车模型
@@ -240,19 +240,19 @@ tips：在3ds max中建模时，建议对模型的子对象取名，并且制定
 			scene.addChild(truck3D);
 ```
 
-编译上例代码，我们可以看到模型显示了（图4），在浏览器下按F12打开控制台，我们可以看到输出了模型的名字为“body”，说明模型获取成功。
+Compile the sample code, we can see the model is displayed (Figure 4), open the console by pressing F12 in the browser, we can see that the model name is output “body”, indicating that the model was successful.
 
-![图片4](img/4.png)<br>（图4） 
+![图片4](img/4.png)<br>（Picture 4） 
 
 
 
-#### 获取模型网格Mesh
+#### Get Mesh properties
 
-在游戏中，我们经常打造角色换装系统，有时是换模型，有时是换贴图，有时候两者都换。因为材质贴图部分在后续章节中才讲解，因此本章节中我们只介绍更换模型网格的方法。
+In the game, we often create the character dressup system, sometimes for the model, sometimes for the map, and sometimes both change. Because the material texture part will be explained in the following chapters, we only introduce the method of replacing the model mesh in this chapter.
 
-模型MeshSprite3D或SkinnedMeshSprite3D中有**meshFilter**属性，它是一个网格过滤器类实例，这个属性中的**sharedMesh**就是模型的网格，可以对它进行重新创建更换及销毁。
+The model MeshSprite3D or SkinnedMeshSprite3D has a **meshFilter** property, which is a grid filter class instance. The **sharedMesh** in this property is the mesh of the model, which can be recreated, replaced, and destroyed.
 
-查看以下示例，当加载完卡车模型2秒后，我们创建新的汽车头网格对象更换原有的车身网格，效果如（图4）。
+See the example below. After loading the truck model for 2 seconds, we create a new car head mesh object to replace the original body mesh, and the effect is as follows (Figure 4).
 
 ```java
 			//加载导出的卡车模型
@@ -277,4 +277,4 @@ tips：在3ds max中建模时，建议对模型的子对象取名，并且制定
 			scene.addChild(truck3D);
 ```
 
-![图片5](img/5.gif)<br>（图5） 
+![图片5](img/5.gif)<br>（Picture 5） 
