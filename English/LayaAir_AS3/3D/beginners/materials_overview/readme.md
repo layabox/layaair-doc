@@ -1,167 +1,167 @@
-## LayaAir3D之材质概述
+## Material overview of LayaAir3D
 
-### 材质概述
+### Material Overview
 
-材质就是物体的材料质感，例如木头、金属、玻璃、毛发、水等，它们的粗糙度、光泽度、反射、透明、颜色、纹理等材质属性都有所不同。
+Material is the material texture of objects, such as wood, metal, glass, hair, water, etc., their roughness, gloss, reflection, transparency, color, texture and other material attributes are different.
 
-大多数3D引擎中都有独立的材质类用于程序代码控制，三维制作软件中材质处理也是最重要的部分之一，游戏美术开发者们经常有一句话，在3D游戏场景制作中，三分看模型，七分靠材质。
+Most 3D engines have separate material classes for program code control, and material processing is also one of the most important parts of 3D production software. Game developers often have a word, in the 3D game scene production, three points to see the model, seven by the material.
 
-材质的种类也有很多，在三维制作软件中有标准材质、多维材质、合成材质、双面材质、光线跟踪材质等。在LayaAir 3D引擎中目前主要支持的是标准材质StandardMatrial。
+There are many kinds of materials, and there are standard materials, multi-dimensional materials, synthetic materials, double-sided materials, ray tracing materials and so on in 3D production software. In the LayaAir 3D engine, the main support is the standard material StandardMatrial.
 
 
 
-### 创建标准材质
+### Create standard materials
 
-如果在代码中的模型没有赋材质，在3D视图中无法显示模型的纹理、质感等，只默认为纯白色。
+If the model in the code does not assign material, the texture and texture of the model can not be displayed in the 3D view, only the default is pure white.
 
-在“快速开启3D之旅”课程的代码中，我们创建使用了标准材质，并在漫反射贴图上添加了一张纹理图片，并赋给了模型。
+In the code from the “ quickStart guide for 3D project” article, we created the standard material, added a texture image to the diffuse map, and assigned it to the model.
 
 ```java
-	//创建标准材质
+	// Create standard materials
 	var material:StandardMaterial = new StandardMaterial();
-	//创建漫反射二维纹理贴图
+	// Creating 2D texture maps with diffuse reflectance
 	material.diffuseTexture = Texture2D.load("res/layabox.png");
-	//为box模型赋材质
+	//Assign material to box model
 	box.meshRender.material = material;
 ```
 
-当然，这只是简单的一种用法，我们暂时只运用了最重要的漫反射贴图，要达到更好的美术效果，开发者还需了解材质的光色与贴图属性。
+Of course, this is just a simple usage, we just use the most important diffuse reflectance map, to achieve better artistic effect, developers need to know the color of the material and mapping properties.
 
 
 
-### 材质的加载
+### Material loading
 
-在“LayaAir3D之模型”篇中我们介绍了模型包括了模型网格与材质两部分，加载.ls、.lh数据时，会自动加载模型所对应的材质。
+In “LayaAir3D Model”, we introduce the model, which includes two parts: mesh and material. When loading .ls and.lh data, the model will automatically load the corresponding material.
 
-最新的引擎版本中，模型网格与材质进行了分离，unity导出插件工具不再将材质与导出的.lm模型文件进行绑定。因此如果加载.lm格式资源，则需要重新赋于其材质才能完整显示，否者只显示为白模。
+In the latest engine version, the model grid is separated from the material, and the unity export plug-in tool no longer binds the material to the exported.Lm model file. So if the loading .lm format resources, you will need to give the material to display or display only for white mold.
 
-这时可以使用导出后产生的.lmat材质文件，加载创建标准材质并赋给模型，方式与模型加载类似。
+At this point, you can use the exported .lmat material file, load the creation of standard material and assigned to the model, the way similar to the model load.
 
 ```java
-//异步加载材质文件创建标准材质（也可以预加载）
+// Asynchronously load material files to create standard material (also preloaded).
 var material:StandardMaterial = StandardMaterial.load("truck/Assets/Materials/truck.lmat");
-//为box模型赋材质
+// Assign material to box model
 box.meshRender.material = material;
 ```
 
 
 
-### 从加载的模型上获取材质
+### Get material from the loaded model
 
-在上面的例子中我们创建了标准材质，但在实际的项目运用中，我们很少用代码的方式给模型赋材质，而是直接在3D软件制作或在unity中创建材质，然后通过工具导出LayaAir格式后使用。
+In the above example, we created the standard material, but in the actual project use, we rarely use code to model the material, but directly in the 3D software production or creation of materials in unity, and then use the tool export LayaAir format after use.
 
-使用时引擎会自动在模型上加载材质，并且很多时候一个模型上会有多个标准材质，自动的方式为我们省下了很多开发时间。但在这种情况下，如果我们需要改变、更换材质怎么呢？我们首先需要在模型上获取当前的材质。
+When used, the engine will automatically load the material on the model, and many times, a model will have more than the standard material, automatic way for us to save a lot of development time. But in this case, what if we need to change and change the material? We first need to get the current material on the model.
 
-LayaAir 3D引擎为我们提供了网格渲染器MeshRender类和蒙皮动画网格渲染器SkinnedMeshRender，在可视模型上提供了它们的实例，我们可以通过它们来获取模型上的材质。
+The LayaAir 3D engine gives us the MeshRender class for mesh renderers and SkinnedMeshRender, the skinned animated grid renderer that provides their instances on the visual model, which we can use to get the material on the model.
 
-Tips：MeshSprite3D模型中为MeshRender，SkinnedMeshSprite3D模型中为SkinnedMeshRender。
+Tips: MeshRender in MeshSprite3D model, SkinnedMeshRender in SkinnedMeshSprite3D model.
 
-获取的材质分为两种类型，一种是自身材质Material，如果自身材质被修改了，只有自身模型显示进行变化；一种是共享材质SharedMaterial，因为材质相对独立，多个模型都可以用同一个材质，如果获取的是共享材质并修改了，自身模型显示会变化，其他模型用到这个材质的部分也会发生改变。因此，开发者们需要根据情况进行选择。
+The material is divided into two types, one is the material of Material, if the material is changed, only their own models show changes; one is to share SharedMaterial material, because the material is relatively independent, multiple models can use the same material, if the acquisition is to share and modify the material itself, the model display will change, the other part of the model used in this material will change. Therefore, developers need to choose according to the situation.
 
 
 
-#### 获取并修改自身材质
+#### Get and modify your own material
 
 ```java
-			//加载导出的卡车模型
+			// Load exported truck model
 			var role3D:Sprite3D=Sprite3D.load("LayaScene_truck/truck.lh");
-			//模型与材质加载完成监听与回调
+			// Model and material loading completed listening and callback
 			role3D.on(Event.HIERARCHY_LOADED,null,function():void
 			{
-				//获取车身模型（查看.lh文件，模型中两个对象，车头“head”与车身"body",它们都用同一个材质）
+				// Get the body model （look at .lh file, two objects in the model, the front“head” and the car "body",, they both use the same material）
 				var meshSprite3D:MeshSprite3D=role3D.getChildAt(0).getChildAt(0) as MeshSprite3D;
-				//从模型上获取自身材质
+				//Get the material from the model
 				var material:StandardMaterial=meshSprite3D.meshRender.material;
-				//修改材质的反射颜色，让模型偏红
+				//Modify the reflection color of the material, make the model red
 				material.albedo=new Vector4(1,0,0,1);				
 			});
 			scene.addChild(role3D);
 ```
 
-编译运行后如下，虽然车身与车头模型都用了同一材质，但只修改了车身的自身材质为红色，不影响车头（图1）。
+After compiling and running, as follows, although the body and the front model are used the same material, but only modify the body's own material is red, does not affect the front (Figure 1).
 
-![图片1](img/1.png)<br>（图1）
+![图片1](img/1.png)<br>（Picture 1）
 
 
 
-#### 获取并修改共享材质
+#### Get and modify shared material
 
 ```java
-			//加载导出的卡车模型
+			//Load derived truck model
 			var role3D:Sprite3D=Sprite3D.load("LayaScene_truck/truck.lh");
-			//模型与材质加载完成监听与回调
+			//Model and material loading completed listening and callback
 			role3D.on(Event.HIERARCHY_LOADED,null,function():void
 			{
-				//获取模型（查看.lh文件，模型中两个对象，车头“head”与车身"body",它们都用同一个材质）
+				//Get the body model （look at .lh file, two objects in the model, the front“head” and the car "body",, they both use the same material）
 				var meshSprite3D:MeshSprite3D=role3D.getChildAt(0).getChildAt(0) as MeshSprite3D;
-				//从模型上获取共享材质
+				//Get shared material from the model
 				var sharedMaterial:StandardMaterial=meshSprite3D.meshRender.sharedMaterial;
-				//修改材质的反射颜色，让模型偏红
+				//Modify the reflection color of the material, make the model red
 				sharedMaterial.albedo=new Vector4(1,0,0,1);
 			});
 			scene.addChild(role3D);
 ```
-编译运行效果如下，修改了共享材质后，因为车头与车身模型都使用了该材质，它们的材质都被改变了（图2）。
+The compiling and running effect is as follows: after modifying the shared material, the material is changed because the front and body models are used (Figure 2).
 
-![图片2](img/2.png)<br>（图2）
+![图片2](img/2.png)<br>（Picture 2）
 
 
 
-#### 获取并修改材质列表
+#### Get and modify the list of materials
 
-在3d制作软件中，经常会有一个模型有多个材质的情况，我们称之为多维材质。不过经过工具导出数据加载后，引擎会自动创建成模型的材质列表数组materials或sharedMaterials，因此在修改材质时，可以用for循环或递归的方式进行。
+In 3D production software, there is often a model with multiple materials, which we call multidimensional materials. However, after the tool export data is loaded, the engine will automatically create a model of the material list array materials or sharedMaterials, so when modifying the material, you can use the for cycle or recursive way.
 
-下列代码提供了对模型或模型容器子对象获取并修改材质的方法，我们直接对所有场景子对象进行了材质修改。
+The following code provides methods to obtain and modify material for model or model container sub objects. We directly modify the material for all scene sub objects.
 
 ```java
 	......
-	//加载场景
+	// Loading scene
 	var scene:Scene=Scene.load("LayaScene_loveScene/loveScene.ls");
-	//场景模型与材质加载完成监听与回调
+	// Scene model and material loading complete listening and callback
 	role3D.on(Event.HIERARCHY_LOADED,null,function():void
 	{
           setModelMaterial(model:*)
      });
  }
 /**
-*修改模型材质
-* @param model 场景或模型
+*Modify model material
+* @param model Scene or model
  */		
 private function setModelMaterial(model:*):void
 {
-  //如果是模型网格显示对象
+  //If model meshes display objects
   if (model is MeshSprite3D) 
   {
-    //获取模型网格对象
+    //Acquiring model mesh objects
     var meshSprite3D:MeshSprite3D = model as MeshSprite3D;
-    //对模型网格中的所有材质进行修改
+    //Modify all the material in the model grid
     for (var m:int = 0; m < meshSprite3D.meshRender.materials.length; m++)
     {
-      //获取共享材质
+      //Get shared material
       var mat:StandardMaterial = meshSprite3D.meshRender.materials[m] as StandardMaterial;
-      //修改材质反射颜色
+      //Modify material reflection color
       mat.albedo=new Vector4(0.5,0.5,1,1);
     }
   }
-  //如果是蒙皮模型网格显示对象
+  //If it is skinning model mesh display object
   if (model is SkinnedMeshSprite3D) 
   {
-    //获取蒙皮模型网格显示对象
+    //Get skin model mesh display object
     var skinnedMeshSprite3D:SkinnedMeshSprite3D = model as SkinnedMeshSprite3D;
-    //对蒙皮模型网格中的所有材质进行修改
+    //Modify all of the material in the skin model grid
     for (var n:int = 0; n < skinnedMeshSprite3D.skinnedMeshRender.materials.length; n++)
     {
-      //获取共享材质
+      //Get shared material
       var mat1:StandardMaterial = skinnedMeshSprite3D.skinnedMeshRender.materials[n] as 				  	StandardMaterial;
-      //修改材质反射颜色
+      //Modify material reflection color
       mat1.albedo=new Vector4(0.5,0.5,1,1);
     }
   }
-  //递归方法获取子对象
+  //Recursive method to obtain sub objects
   for (var i:int = 0; i < model._childs.length; i++)  setModelMaterial(model._childs[i]);
 }
 ```
 
-编译运行后效果如下（图3），场景中所有的模型材质都加上了一层蓝色。
+After compiling and running, the effect is as follows (Figure 3), and all the model materials in the scene are added with a layer of blue.
 
-![图片3](img/3.png)<br>（图3）
+![图片3](img/3.png)<br>（Picture 3）
