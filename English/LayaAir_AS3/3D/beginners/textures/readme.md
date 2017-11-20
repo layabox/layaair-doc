@@ -1,73 +1,73 @@
-## LayaAir3D之材质光色与贴图
+## LayaAir3D material light color and texture
 
-### 材质光色与贴图属性
+### Material color and texture attributes
 
-标准材质属性与灯光光色属性有一定的类似，体现在漫反射、高光、环境色等属性上，但材质包括得更全，更方便调整物体美术效果，主要包括了反射率、漫反射颜色与漫反射贴图、高光色与高光贴图、环境色与环境贴图、反射颜色与反射贴图、法线凹凸贴图。下面我们对这些属性进行详细的介绍。
+The standard of material properties and light color properties have similar, reflected in the diffuse, high light, color and other environmental attributes, but the material including more full, more convenient adjustment object art effects, including reflectance, diffuse color and diffuse, specular and specular color, environment and environment texture, color and reflection reflection mapping, normal map. Here we give a detailed description of these properties.
 
 
 
-#### 反射率
+#### Albedo
 
-反射率(albedo)主要反映的是材质的明亮程度与颜色，数值越高，材质越明亮。
+Albedo(reflectivity) is the main reflection is the brightness and color of the material, the higher the value, the brighter the material.
 
-反射率的值是一个四维向量，查看下列代码，向量中四个元素分别代表着红、绿、蓝、透明alpha。
+The value of the reflectivity is a four-dimensional vector. Look at the following code. The four elements in the vector represent red, green, blue, transparent alpha, respectively.
 
-透明alpha效果为百分比，0为全透明，1为不透明，如果需要设置为半透明或全透明显示，只调整反射率还不行，还需要设置材质的渲染模式为混合类型才能达到目的（图1）。
+Transparent alpha effect is defined in percentage, 0 is fully transparent, 1 is opaque, if you need to set to translucent or fully transparent display, only adjust reflectivity is not enough, also need to set the material rendering mode for mixed type to achieve the purpose (Figure 1).
 
-修改“快速开启3D之旅”课程中的代码如下可得到图1效果：
+Modify the code in the “Quickstart guide for 3D project” article as follows in Figure 1 effect:
 
 ```java
-	//创建标准材质
+	//Create a standard material
 	var material:StandardMaterial = new StandardMaterial();
-	//创建漫反射二维纹理贴图
+	//Create a diffuse 2D texture map
 	material.diffuseTexture = Texture2D.load("res/layabox.png"); 	
 
-	//只有设置了渲染模式为透明混合类型才能达到透明效果
-	//设置材质蓝色染色及30%半透明
+	//Transparent effects can be achieved only by setting the render mode as transparent mixed type
+	//Set the material blue stained and 30% translucent
 	material.albedo=new Vector4(1,1,2,0.3);
-	//渲染模式(也可设置数值，5-13等为混合类型，可观察其效果变化)
+	//Rendering mode (you can also set the value, 5-13, etc. for the mixed type, you can observe the effect of change)
 	material.renderMode=StandardMaterial.RENDERMODE_DEPTHREAD_TRANSPARENTDOUBLEFACE;;
-	//为box模型赋材质
+	//Assign material to box model
 	box.meshRender.material = material;
 ```
 
-![图片1](img/1.png)<br>（图1）反射率染色与透明  
+![图片1](img/1.png)<br>（Picture 1）Reflectance staining and transparency
 
 
 
-#### 漫反射颜色与漫反射贴图
+#### Diffuse color reflection and diffuse map
 
-漫反射颜色(diffuseColor )是指材质的单一自身颜色，美术行业内可以称它为物体的固有色。而漫反射贴图( diffuseTexture)是指材质的2D固有纹理图片，比如木头材质需要使用木头纹理图片，砖墙材质需要使用砖墙纹理图片。
+Diffuse reflectance (diffuseColor) refers to the single color of the material, the art industry can be called the object of the solid color. The diffuse reflectance map (diffuseTexture) refers to the 2D inherent texture of the material, such as wood materials need to use wood texture images, brick wall materials need to use brick wall texture pictures.
 
-游戏中使用最多的就是漫反射贴图，游戏美术贴图绘制中工作量最大的也是漫反射贴图，它能基本反映物体的基本质感。
+The most popular thing in the game is diffuse mapping, and the most powerful one in game art mapping is diffuse reflection, which basically reflects the basic texture of objects.
 
-漫反射颜色与贴图在LayaAir 3D引擎中也可以混合使用，它们会有融合效果，漫反射颜色会对模型的光照面进行染色（背光面不会产生变化），它类似于灯光的漫反射光源色，产生更整体的色调（图2）。
+Diffuse color and texture can also mix in the LayaAir 3D engine, they will have the fusion effect, diffuse color will face light on the model of staining (backlight surface not change), a diffuse light source color similar to light, produce more overall tone (Figure 2).
 
-修改“快速开启3D之旅”课程中的代码如下，创建了蓝色的漫反射颜色，受光面偏蓝了，见（图2）效果：
+Modify the code in the “Quickstart guide for 3D project” code in the course is as follows, create a blue diffuse color, by the blue side of the light, see (Figure 2) effect:
 
 ```java
-	//添加方向光（灯光色会与材质色融合，因此改灯光色为黑白灰色，且不能曝光过度）
+	//Add directional light (light color and material color fusion, changing light color to black and white gray, and can not exposure excessive)
 	var directionLight:DirectionLight = scene.addChild(new DirectionLight()) as DirectionLight;
 	directionLight.ambientColor = new Vector3(0.5, 0.5, 0.5);
 	directionLight.specularColor = new Vector3(0, 0, 0);
 	directionLight.diffuseColor = new Vector3(1, 1, 1);
 	directionLight.direction = new Vector3(0.5, -1, 0);	
 
-	//创建标准材质
+	//Create a standard material
 	var material:StandardMaterial = new StandardMaterial();
-	//创建漫反射颜色
+	//Create a diffuse color
 	material.diffuseColor=new Vector3(.5,.5,2);
-	//创建漫反射二维纹理贴图
+	//Create a diffuse 2D texture map
 	material.diffuseTexture = Texture2D.load("res/layabox.png");
-	//为box模型赋材质
+	//Assign the material to the box model
 	box.meshRender.material = material;
 ```
 
-![图片2](img/2.png)<br>（图2）漫反色染色与贴图混合
+![图片2](img/2.png)<br>（Picture 2）Diffuse color and texture mixed blend
 
 
 
-#### 高光色与高光贴图
+#### High light color and specular map
 
 高光色（specularColor )与灯光高光色一样，是指模型物体转角处，或正对着光源处产生的高光颜色。
 
