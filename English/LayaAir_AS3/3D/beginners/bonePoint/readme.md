@@ -1,70 +1,70 @@
-## LayaAir3D之骨骼挂点
+## LayaAir3D skeletal bone point
 
-### 骨骼挂点概述
+### Skeletal bone point overview
 
-骨骼挂点一般运用在3D模型与骨骼的绑定上。比如武器要随着角色手的运动而运动，那么我们就可以把武器与手上骨骼进行绑定，作为手上骨骼的子层级。
+Skeletal bone points are commonly used in the binding of 3D models to bones. For example, the weapon moves with the movement of the hand, so we can bind the weapon to the skeleton of the hand as the sub level of the hand skeleton.
 
-绑定后的3D模型也可以通过代码来移除绑定或者换另外的3D模型，这样也实现了武器或装备的换装功能。
-
-
-
-### 在Unity中设置骨骼挂点
+The binding 3D model can also be used to remove the binding or replace the 3D model by code, which also implements the reloading function of weapons or equipment.
 
 
 
-
-
-![图片1](img/1.png)<br>（图1）
-
-
-
-### 创建三维软件生成的模型
-
-上述三种基本模型主要用于开发者学习测试。游戏中的模型大都是三维软件制作后，导入unity编辑器中编辑拼接，再用layaAir导出工具转化产生，然后通过3D场景或模型显示类加载使用。
-
-在此我们再次来说明一下导出的资源类别与文件使用方法。
-
-导出的文件夹中，包括的资源较多（图2），有场景、3D模型容器、3D模型、3D材质等解析文件，还有光照贴图、材质贴图等数据文件。
-
-![图片2](img/2.png)<br>（图2）
-
-**loveScene文件夹**是在untiy中创建光照贴图后产生的文件夹，与在untiy中创建的场景名相同，光照贴图在场景Scene篇已有介绍。
-
-**Materials文件夹**是在unity中导入FBX模型时创建材质球的文件夹，导出后的资源为对应的LayaAir材质数据解析文件，文件中存储着材质的渲染模式、贴图资源路径、材质的各种光色属性等。
-
-**Texture文件夹**是在unity中创建的存放贴图的文件夹，其中资源为材质的贴图文件，是一系列的图片文件，在LayaAir引擎中我们使用jpg或png格式的图片，可使用导出工具把其他格式图片自动转化jpg或png，请开发者们一定注意。
-
-
-
-#### *.ls格式Scene数据文件
-
-导出的场景Scene类型数据文件，在之前的课程中我们已有讲解，在此不多作说明。
+### Setting up skeletal bone points in Unity
 
 
 
 
-#### *.lh格式Sprite3D数据文件
 
-导出的3D显示对象容器Spirte3D类型数据文件，JSON格式编码，是unity3D中layaAir导出插件选择导出”Sprite3D“类别生成，内部存储比*.ls格式少了光照贴图，其他全部相同。
+![图片1](img/1.png)<br>（Picture 1）
 
-“*.lh” 格式加载与场景加载方法类似，由异步加载Sprite3D.load()或预加载Laya.loader.create()方法加载，参考代码：
+
+
+### Creating a model for 3D software generation
+
+These three basic models are mainly used for developer learning tests. Most of the models in the game are three-dimensional software, after the introduction of unity editor edit splicing, and then use the layaAir export tool transformation generation, and then through the 3D scene or model display class loading use.
+
+Here, let's explain again the exported resource class and how the file is used.
+
+Export folder contains more resources (Figure 2), there are scenes, 3D model container, 3D model, 3D material and other analytical files, as well as light maps, texture maps and other data files.
+
+![图片2](img/2.png)<br>（Picture 2）
+
+**loveScene Folder** The folder created after creating the lighting map in untiy is the same as the scene name created in untiy, and the illumination map has been introduced in the scene Scene.
+
+**Materials Folder** When you import the FBX model in unity, you create the folder of the material ball, and the exported resource is the corresponding LayaAir material data parsing file. The file is stored in the rendering mode of material, the path of mapping resources, and the various light and color attributes of material.
+
+**Texture Folder** is created in the unity store map folder, which is the material resources mapping file, is a series of picture files in the LayaAir engine we use JPG or PNG format, can be used to export other format images automatically transformed into JPG or PNG, please developers must pay attention to.
+
+
+
+#### *.ls format Scene data file
+
+Export scenario Scene type data file, we have already explained in the previous courses, but not much explanation.
+
+
+
+
+#### *.lh Format Sprite3D data file
+
+The exported 3D display object container Spirte3D type data file, JSON format code, is the layaAir export plug-in selection export in unity3D ”Sprite3D“ Class generation, internal storage ratio *.ls Format less light map, all the others are the same.
+
+“*.lh” Format loading is similar to scenario loading by asynchronous loading Sprite3D.load() or preload Laya.loader.create() Method loading reference code：
 
 ```java
 ......
-//添加3D场景
+//Add 3D scene
 var scene:Scene = new Scene();
 Laya.stage.addChild(scene);
 
-//方法一：直接异步加载
+//Method 1: direct asynchronous loading
 //var sprite3D:Sprite3D = Sprite3D.load("res/room.lh");
 //scene.addChild(sprite3D);
 
-//方法二：预加载，.lh默认会创建为Sprite3D类型对象，并放入对象池中
+//Method two: preloading,.Lh defaults to create Sprite3D type objects and put them into the object pool
 Laya.loader.create("res/room.lh",Handler.create(this,onCreateComplete));
 //预加载完成后回调
 private function onCreateComplete():void
 { 
-  //实例化加载并创建好的3D对象
+  //Instantiate, load, and create a good 3D object
   var sprite3D:Sprite3D=Laya.loader.getRes("res/room.lh");
   scene.addChild(sprite3D);
 }
@@ -72,15 +72,15 @@ private function onCreateComplete():void
 
 
 
-#### *.lm格式数据文件
+#### *.lm Format data file
 
-无论是导出”Scene“文件或”Sprite3D“文件类型，在导出的资源文件夹中都包含了系列*.lm格式文件，本项目中model文件夹为unity中开发者自建的存储FBX模型的文件夹，如图2，在导出时生成了对应的文件夹和.lm资源文件。
+Either export ”Scene“ File or ”Sprite3D“ file type, a series is included in the exported resource folder*.lm Format file, in this project model Folder as unity folder that stores the FBX model built by the developer, as shown in Figure 2, generates the corresponding folder and .lm resource file when exporting.
 
 ![图片3](img/3.png)<br>（图3）
 
-"*.lm"文件是模型数据文件，可以生成MeshSprite3D或SkinnedMeshSprite3D类型显示对象的网格数据Mesh，包含了模型网格的顶点位置、法线、顶点色、顶点UV等信息。
+"*.lm" file is the model data file, which can generate the grid data Mesh of MeshSprite3D or SkinnedMeshSprite3D type display object, including the vertex position, normal line, vertex color, vertex UV and other information of the model grid.
 
-通过异步加载MeshSprite.load()或预加载Laya.loader.create()方法加载，参考代码如下：
+Load asynchronously by loading MeshSprite.load () or pre loading Laya.loader.create () method. The reference code is as follows:
 
 ```java
 ......
@@ -105,25 +105,25 @@ private function onCreateComplete():void
 }
 ```
 
-用上述的两种方法都可以在游戏画面中显示出模型，材质贴图引擎也会自动加载到模型上。在项目中我们可以根据情况使用上述两种方法，固定场景我们可以使用.ls格式加载，而活动的物品可以使用.ls或.lm方式加载。 
+With the two methods mentioned above, the model can be displayed in the game screen, and the material map engine will automatically load onto the model. In the project, we can use the above two methods according to the situation, fixed scene, we can use.Ls format to load, and active items can be loaded by .ls or .lm mode.
 
 
 
-### 获取子对象模型及网格
+### Get the child object model and grid
 
-3D模型在有时候会由多个子模型对象构成，例如场景模型.ls，基本都是由多个物体模型与材质构成，外层是Sprite3D容器，内部才是真正的模型MeshSprite3D或SkinnedMeshSprite3D。并且还可能会有多个层次嵌套。
+The 3D model is sometimes composed of multiple sub model objects, such as the scene model .ls, which is basically made up of multiple object models and materials. The outer layer is a Sprite3D container, and the inside is the real model MeshSprite3D or SkinnedMeshSprite3D. There may be multiple levels nested.
 
-#### 获取子对象模型
+#### Get child object model
 
-在编写游戏逻辑时，有的模型需要被修改，或者是切换与删除模型、或者是给模型加组件、或者是获取模型上的动画组件及修改模型的材质等。这都需要从加载的模型中去获取子对象，我们可以通过**getChildAt()、getChildByName()**方法去获取子对象，这与2D引擎获取子对象方法一样。
+When writing game logic, some models need to be modified, or to switch and delete the model, or to model add components, or to obtain the animation components of the model and the material of the modified model. We all need to get the child object from the loaded model, and we can go through **getChildAt()、getChildByName()** Method to get the child object, which is the same as the 2D engine acquires the child object method.
 
-下面我们来加载一个卡车模型的.lh文件，然后获取它的子对象。在获取子对象之前，建议打开.lh文件查看模型的父子层级关系，因为在制作模型时，我们也不能确定模型是由多少个子对象模型构成，及它们的命名规则。
+Let's load a.Lh file of the truck model, and then get its child object. Before getting a child object, it is recommended to open the .lh file to see the parent-child hierarchy of the model, because we cannot determine how many sub object models are formed and their naming rules when making the model.
 
-tips：在3ds max中建模时，建议对模型的子对象取名，并且制定项目的资源命名规则，不要用默认的模型名称。
+tips：When modeling in 3ds max, it is recommended to name the sub object of the model, and to formulate the resource naming rules of the project, instead of using the default model name.
 
-下例加载从unity导出的卡车truck.lh，打开后通过JSON结构可以看到，外层是一个Sprite3D容器（相当于unity的场景），内部又是一个Sprtie3D容器（相当于unity场景中的卡车），卡车容器中是两个子对象模型MeshSprite3D（车头与车身模型）。因此我们需要两次getChildAt()方式才能获取到模型MeshSprite3D。
+Under the loading cases derived from the unity truck.lh truck, see open through the JSON structure, the outer layer is a Sprite3D container (equivalent to unity, internal scene) is a container of Sprtie3D (equivalent to unity in the scene, the container truck truck) is the two sub object model MeshSprite3D (head and body model). So we need two getChildAt () methods to get the model MeshSprite3D.
 
-获取子对象时还应注意一个问题，就是模型与材质未加载完成，是无法获取子对象的，因此需要资源预加载，或异步加载时进行完成事件监听。
+When you get a child object, you should also pay attention to a problem, that is, the model and the material are not loaded, it is impossible to obtain the child object, so the need for resource preloading, or asynchronous event listener to complete the load.
 
 ```java
 ......
@@ -143,19 +143,19 @@ private function onLoded():void
 }
 ```
 
-编译上例代码，我们可以看到模型显示了（图4），在浏览器下按F12打开控制台，我们可以看到输出了模型的名字为“body”，说明模型获取成功。
+Compile the sample code, we can see the model is displayed (Figure 4), open the console by pressing F12 in the browser, we can see that the model name is output “body”, indicating that the model was successful.
 
-![图片4](img/4.png)<br>（图4） 
+![图片4](img/4.png)<br>（Picture 4） 
 
 
 
-#### 获取模型网格Mesh
+#### Get the Mesh
 
-在游戏中，我们经常打造角色换装系统，有时是换模型，有时是换贴图，有时候两者都换。因为材质贴图部分在后续章节中才讲解，因此本章节中我们只介绍更换模型网格的方法。
+In the game, we often create the character dressup system, sometimes for the model, sometimes for the map, and sometimes both change. Because the material texture part will be explained in the following chapters, we only introduce the method of replacing the model mesh in this chapter.
 
-模型MeshSprite3D或SkinnedMeshSprite3D中有**meshFilter**属性，它是一个网格过滤器类实例，这个属性中的**sharedMesh**就是模型的网格，可以对它进行重新创建更换及销毁。
+Available in Model MeshSprite3D or SkinnedMeshSprite3D **meshFilter** Property, which is an instance of a grid filter class in this property **sharedMesh** Is the model of the grid, it can be re-created to replace and destroy it.
 
-查看以下示例，当加载完卡车模型2秒后，我们创建新的汽车头网格对象更换原有的车身网格，效果如（图4）。
+See the example below. After loading the truck model for 2 seconds, we create a new car head grid object to replace the original car body grid, the effect is as shown in Figure 4.
 
 ```java
 ......
@@ -186,4 +186,4 @@ private function onTimerOnce():void
 }
 ```
 
-![图片5](img/5.gif)<br>（图5） 
+![图片5](img/5.gif)<br>（Picture 5） 
