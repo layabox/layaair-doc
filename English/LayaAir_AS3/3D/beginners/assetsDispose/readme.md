@@ -1,24 +1,24 @@
-## LayaAir3D之资源释放
+## LayaAir3D release resource
 
 
 
-### 为什么要资源释放
+### Why should the release of resources
 
-在LayaAir 3D游戏开发中，资源释放非常重要。3D资源包括了模型、贴图、材质、动画等，为了达到好的画面效果，文件会比2D大很多，而3D引擎基本所有资源都会放入GPU中进行计算渲染，因此占用很多的显存。当游戏关卡的不断加载，游戏不断深入，放入显存中的资源越来越多，如果不释放资源，那么游戏最后终将崩溃。
+In LayaAir 3D game development, resource release is very important. 3D resources including models, textures, materials, animation and so on, in order to achieve a good picture effect, the file is much greater than 2D, while the 3D engine basically all resources will be calculated into GPU rendering, so take a lot of memory. Continuous loading when the points of the game, the game continues, more and more resources into the memory, if you do not release the resources, then the game will eventually collapse.
 
-显存不像内存，内存有垃圾回收机制，而显存不一样，必须手动释放，因此显存的资源释放必须受到重视！
+Unlike RAM memory, memory garbage collection mechanism, and memory is not the same, must be manually released, so the memory resource release must be taken seriously!
 
-观察图1、图2中统计工具中的显存大小
+Observe the memory size in the statistics tool in Figure 1 and Figure 2
 
-图1为游戏启动后加载的第一个场景，面数为30527，占用显存85.2M。
+Figure 1 shows the first scene loaded after the game starts, with a face count of 30527 and memory usage of 85.2M.
 
-![图1](img/1.png)<br>（图1）
+![图1](img/1.png)<br>（Picture 1）
 
-图2为游戏加载的第二场景，面数只有7455，但加载后显存资源却有118.91M。这是什么原因呢？面数少，场景小，贴图其实也比图1中场景少很多，光照贴图也小很多，但显存资源却更大了！
+Figure 2 is the second game loading scene, the number is only 7455, but after the loading of memory resources but 118.91M. What is the reason for this? Face a few small scenes, texture is also in Figure 1 the scene a lot less, lightmap is much smaller, but the memory resources are greater!
 
-这就是因为第一关场景并未被释放掉，它的资源还在显存中，因此显存占用变大了。如果不手动清除，游戏继续切换其他场景，当达到一定量后，手机显存将被耗光，游戏卡死、闪退、发热等现象就有频出。
+This is because the first scene has not been released, its resource is still in memory, so the memory usage becomes large. If you do not manually clear, the game continues to switch to other scene, when reaching a certain amount, mobile phone memory will be depleted, the game stuck, flash back, fever phenomenon is frequent.
 
-![图2](img/2.png)<br>（图2）
+![图2](img/2.png)<br>（Picture 2）
 
 
 
@@ -32,17 +32,17 @@
 
 
 
-### 释放显存资源方法
+### Handles principles when loading resources
 
-释放显存资源有两种方法，一种是通过对象来释放显存资源，但遍历资源对象太麻烦，在此不作推荐，另一种是通过资源地址来释放显存资源，从资源管理角度上来说，通过资源地址方法更加灵活，可以配置JSON数据表来管理。
+The release of memory resources in two ways, one is to release the memory resources through the object, but the object traversal resources too much trouble, this is not recommended, the other is to release the memory resource through address, from the resource management perspective, through the resource address method is more flexible and can be configured to manage JSON data table.
 
-#### 切换场景和释放资源的过渡界面
+#### Transition interface for switching scene and releasing resources
 
-在加载资源和切换场景时，我们在IDE中制作一个进度显示界面用于过渡，如图3
+When loading resources and switching scenes, we make a progress display interface for the transition in IDE, as shown in Figure 3
 
-![图3](img/3.png)<br>（图3）
+![图3](img/3.png)<br>（Picture 3）
 
-IDE发布后，编写一个控制类，逻辑代码参考如下：
+After the IDE is published, a control class is written, and the logical code is referenced as follows:
 
 ```java
 package view
@@ -92,21 +92,21 @@ package view
 
 
 
-#### 通过资源地址表释放显存资源
+#### Address table memory resources by resource release
 
-在主类中，我们以鼠标双击舞台方式切换场景，使用资源地址释放显存资源的方法，并加载新场景。
+In the main class, we have to double click on the stage scene mode switching method using memory address resources, release resources, and loading a new scene.
 
-通过资源路径列表方法灵活，可以通过配置表的方式，表里增加删除资源也很方便。比如美术在导出场景时，新建一个JSON表，将此场景中切换后不需要的资源路径都放到J表中，有用的资源不入表，资源就不释放，比如一些公用的NPC、道具、特效等游戏元素资源。
+Through the resource path list method is flexible, you can through configuration table, add delete resources is also very convenient. For example, when the art export scene, a new JSON table, the scene after the switch does not need the resource path is placed in the J table, useful resources into the table, the resources are not released, such as some public NPC, props, special effects and other game element resources.
 
-Tips：资源包括：场景光照贴图lightmap、材质.lmat、模型.lm、各种类型贴图.png或.jpg、动画.lani、骨骼.lav等资源。
+Tips：resources include: scene light mapping lightmap, material .lmat, model .lm, various types of maps .png or.jpg, animation .lani, skeletal .lav and other resources
 
-下面我们来介绍一下资源表方法，首先在导出的资源文件目录中建立json文件并编辑需释放的路径资源，形成一个Json数组，名字与.ls文件一致，方使逻辑调用，本例中为 loveScene.json。如图5、6。
+Here we introduce the resource table method, first in the export of the resource file directory to establish JSON file and edit the path resources to be released, form a json array, the name consistent with the .ls file, so that the logic call, in this case for  loveScene.json. (Picture 5, 6)
 
-![图5](img/5.png)<br>（图5）
+![图5](img/5.png)<br>（Picture 5）
 
-![图6](img/6.png)<br>（图6）
+![图6](img/6.png)<br>（Picture 6）
 
-Json编辑完成后，可用检查工具检测格式是否正确。然后创建主类代码如下：
+After the Json editing is completed, check tool checking format is correct. Then create the main class code as follows:
 
 ```java
 package
@@ -271,10 +271,10 @@ package
 }
 ```
 
-观察上述代码assetsDispose(assetsUrl:String)方法，加载完配置表后，我们通过Laya.loader.getRes(arr[i].url)方法直接获取资源产生的对象（创建时会根据url后缀名产生不同的类型对象，getRes方法可直接读出来），它们都是Resource类的子类，因此对象调用dispose()方法后就可释放资源。
+Observe the above code assetsDispose (assetsUrl:String) method, after loading the configuration table, we use Laya.loader.getRes (arr[i].url) method for direct access to resources of the object (created will produce different types of objects, according to the URL suffix getRes method can be directly read out), they are a subclass of Resource, so called dispose (object I can release resources) method.
 
-释放完资源后，还可通过Loader.loadeMap属性查看现有缓存中的资源。
+After releasing the resources, you can also view the resources in the existing cache through the Loader.loadeMap attribute.
 
-编译运行上述代码我们可以看到图4效果，释放完成并加载新场景时，显存占用比之前小很多了。之前未释放资源时为118.91M，释放后显存只占了56.11M。
+Compile and run the above code we can see in Figure 4, the release is completed and when loading a new scene, much less memory usage than before. Before the release of resources for 118.91M, after the release of memory accounted for only 56.11M.
 
-![图4](img/4.png)<br>（图4）
+![图4](img/4.png)<br>（Picture 4）
