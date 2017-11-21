@@ -1,4 +1,4 @@
-## Animation of LayaAir3D (part 1)
+## Animation with LayaAir3D (part 1)
 
 At present, the LayaAir3D engine has made a lot of adjustments to the animation part, although the old version of the animation has been retained, but it is recommended that developers use the new animation component mode. The new animation Animator component integrates several types of old animation, without classification to create, save the development time, including skeletal animation, material animation, steel animation, camera animation, etc..
 
