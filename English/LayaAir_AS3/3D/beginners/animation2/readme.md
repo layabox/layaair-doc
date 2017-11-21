@@ -91,5 +91,5 @@ The following is the effect of transform animation (Figure 5), the use of differ
 
 LayaAir camera is not yet exported. In the future version, the camera can be exported to the engine. Therefore, if the camera animation is made in unity, it can be used in the game after export.
 
-Its animation method in unity is consistent with that of steel body animation, and its attributes can be modified by animation. Using the loading method is also consistent.
+Its animation method in unity is consistent with that of transform animation, and its attributes can be modified by animation. Using the loading method is also consistent.
 
