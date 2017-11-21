@@ -22,13 +22,13 @@ This is because the first scene has not been released, its resource is still in 
 
 
 
-### 加载资源时处理原则
+### Processing principles when loading resources
 
-通过上图的例子我们可以看到LayaAir3D引擎处理资源与显存的关系，为了达到游戏性能优化目的，在加载资源时也要注意一些原则。
+Through the above examples we can see the relationship between the LayaAir3D engine and memory resources, in order to achieve the purpose of optimizing the game performance, when loading resources should also pay attention to some principles.
 
-1、加载资源时不要一次性把所有资源全部加载，只加载需要资源（分段加载模式）。3D资源加载完成后会根据资源后缀名称直接创建出3D显示对象，比如.ls会创建出Scene，.lh会创建Sprite3D对象等，创建好的对象资源哪怕是没有放到舞台上，也会直接放入显存当中，因此资源过多会占有大量显存。
+1. Don't load all the resources at once, but only need to load the resource (subsection loading mode). 3D after the completion of loading of resources according to the resource name suffix directly create the 3D display objects, such as.Ls will create Scene,.Lh creates a Sprite3D object, created the object resources even if there is on stage, will also directly into the memory, so too many resources will occupy a lot of memory.
 
-2、合理管理显存，经常反复使用的资源在显存中不需要释放，而不反复使用的资源在使用完后立即释放以节省性能开销。比如主角资源，3D道具资源，玩家经常使用，可以一直存放在显存中，提取速度快；而一些大型场景，在切换时可以释放掉资源，场景关卡贴图、模型资源都较大，释放后能省几十上百兆大小的显存开销。
+2. The rational management of memory, often repeated use of resources do not need to be released in the video memory, without the repeated use of the resources in immediately after release in order to save the performance overhead. For example, the protagonist of resources, 3D resources often use props, game player, can be kept in memory, fast extraction speed; and some of the large scene, when switching can release resources, scene level mapping and model resources are larger, after the release of memory overhead can save tens of hundreds of megabytes in size.
 
 
 
