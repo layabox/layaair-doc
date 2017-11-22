@@ -1,4 +1,4 @@
-## LayaAir3D BlinnPhong of material
+## LayaAir3D BlinnPhong material
 
 ### BlinnPhong Material Overview
 
