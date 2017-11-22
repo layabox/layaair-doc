@@ -488,91 +488,91 @@
             ]
           },
           {
-            "name_2_name": "IDE组件属性详解",
+            "name_2_name": "IDE component property reference",
             "name_2_data": [
               {
-                "name_3_name": "Button属性详解",
-                "name_3_url": "Chinese/LayaAir_AS3/IDE/Component_Detailed/Button/",
+                "name_3_name": "Button",
+                "name_3_url": "English/LayaAir_AS3/IDE/Component_Detailed/Button/",
                 "name_3_file": "readme.md"
               },
               {
-                "name_3_name": "CheckBox属性详解",
-                "name_3_url": "Chinese/LayaAir_AS3/IDE/Component_Detailed/CheckBox/",
+                "name_3_name": "CheckBox",
+                "name_3_url": "English/LayaAir_AS3/IDE/Component_Detailed/CheckBox/",
                 "name_3_file": "readme.md"
               },
               {
-                "name_3_name": "Clip属性详解",
-                "name_3_url": "Chinese/LayaAir_AS3/IDE/Component_Detailed/Clip/",
+                "name_3_name": "Clip",
+                "name_3_url": "English/LayaAir_AS3/IDE/Component_Detailed/Clip/",
                 "name_3_file": "readme.md"
               },
               {
-                "name_3_name": "ComboBox属性详解",
-                "name_3_url": "Chinese/LayaAir_AS3/IDE/Component_Detailed/ComboBox/",
+                "name_3_name": "ComboBox",
+                "name_3_url": "English/LayaAir_AS3/IDE/Component_Detailed/ComboBox/",
                 "name_3_file": "readme.md"
               },
               {
-                "name_3_name": "Image属性详解",
-                "name_3_url": "Chinese/LayaAir_AS3/IDE/Component_Detailed/Image/",
+                "name_3_name": "Image",
+                "name_3_url": "English/LayaAir_AS3/IDE/Component_Detailed/Image/",
                 "name_3_file": "readme.md"
               },
               {
-                "name_3_name": "Label属性详解",
-                "name_3_url": "Chinese/LayaAir_AS3/IDE/Component_Detailed/Label/",
+                "name_3_name": "Label",
+                "name_3_url": "English/LayaAir_AS3/IDE/Component_Detailed/Label/",
                 "name_3_file": "readme.md"
               },
               {
-                "name_3_name": "List属性详解",
-                "name_3_url": "Chinese/LayaAir_AS3/IDE/Component_Detailed/List/",
+                "name_3_name": "List",
+                "name_3_url": "English/LayaAir_AS3/IDE/Component_Detailed/List/",
                 "name_3_file": "readme.md"
               },
               {
-                "name_3_name": "HScrollBar属性详解",
-                "name_3_url": "Chinese/LayaAir_AS3/IDE/Component_Detailed/HScrollBar/",
+                "name_3_name": "HScrollBar",
+                "name_3_url": "English/LayaAir_AS3/IDE/Component_Detailed/HScrollBar/",
                 "name_3_file": "readme.md"
               },
               {
-                "name_3_name": "VScrollBar属性详解",
-                "name_3_url": "Chinese/LayaAir_AS3/IDE/Component_Detailed/VScrollBar/",
+                "name_3_name": "VScrollBar",
+                "name_3_url": "English/LayaAir_AS3/IDE/Component_Detailed/VScrollBar/",
                 "name_3_file": "readme.md"
               },
               {
-                "name_3_name": "HSlider属性详解",
-                "name_3_url": "Chinese/LayaAir_AS3/IDE/Component_Detailed/HSlider/",
+                "name_3_name": "HSlider",
+                "name_3_url": "English/LayaAir_AS3/IDE/Component_Detailed/HSlider/",
                 "name_3_file": "readme.md"
               },
               {
-                "name_3_name": "VSlider属性详解",
-                "name_3_url": "Chinese/LayaAir_AS3/IDE/Component_Detailed/VSlider/",
+                "name_3_name": "VSlider",
+                "name_3_url": "English/LayaAir_AS3/IDE/Component_Detailed/VSlider/",
                 "name_3_file": "readme.md"
               },
               {
-                "name_3_name": "ProgressBar属性详解",
-                "name_3_url": "Chinese/LayaAir_AS3/IDE/Component_Detailed/ProgressBar/",
+                "name_3_name": "ProgressBar",
+                "name_3_url": "English/LayaAir_AS3/IDE/Component_Detailed/ProgressBar/",
                 "name_3_file": "readme.md"
               },
               {
-                "name_3_name": "RadioGroup属性详解",
-                "name_3_url": "Chinese/LayaAir_AS3/IDE/Component_Detailed/RadioGroup/",
+                "name_3_name": "RadioGroup",
+                "name_3_url": "English/LayaAir_AS3/IDE/Component_Detailed/RadioGroup/",
                 "name_3_file": "readme.md"
               },
               {
-                "name_3_name": "Tab属性详解",
-                "name_3_url": "Chinese/LayaAir_AS3/IDE/Component_Detailed/Tab/",
+                "name_3_name": "Tab",
+                "name_3_url": "English/LayaAir_AS3/IDE/Component_Detailed/Tab/",
                 "name_3_file": "readme.md"
               },
               {
-                "name_3_name": "Tree属性详解",
-                "name_3_url": "Chinese/LayaAir_AS3/IDE/Component_Detailed/Tree/",
+                "name_3_name": "Tree",
+                "name_3_url": "English/LayaAir_AS3/IDE/Component_Detailed/Tree/",
                 "name_3_file": "readme.md"
               },
               {
-                "name_3_name": "ViewStack属性详解",
-                "name_3_url": "Chinese/LayaAir_AS3/IDE/Component_Detailed/ViewStack/",
+                "name_3_name": "ViewStack",
+                "name_3_url": "English/LayaAir_AS3/IDE/Component_Detailed/ViewStack/",
                 "name_3_file": "readme.md"
               },
               {
-                "name_3_name": "Animation属性详解",
-                "name_3_url": "Chinese/LayaAir_AS3/IDE/Component_Detailed/Animation/",
+                "name_3_name": "Animation",
+                "name_3_url": "English/LayaAir_AS3/IDE/Component_Detailed/Animation/",
                 "name_3_file": "readme.md"
               }
             ]
