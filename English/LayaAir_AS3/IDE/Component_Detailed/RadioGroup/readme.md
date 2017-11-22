@@ -1,107 +1,107 @@
-# RadioGroup 组件详解
+# RadioGroup component
 
-> 由于很多组件属性是通用的，常用及通用的组件属性在`属性设置器`文档中已进行介绍。阅读本篇内容前请先阅读《属性设置器》文档。
+> Because many component properties are generic, common and generic component attributes have been introduced in the `Property Setter`. Please read the 《Property Setter》 document before reading this article.
 
-## 1、了解RadioGroup组件
+## 1. Understanding RadioGroup components
 
-### 1.1 RadioGroup组件的作用
+### 1.1 RadioGroup components
 
-RadioGroup是单选框按钮组，按钮组之内的组件选项互相排斥，用户每次只能选择一个单选框（Radio）组件。如动图1所示。
-![图片4.png](img/1.gif)<br/>（动图1）
+RadioGroup is a radio frame button group, and the component options within the button group repel each other. The user can only select a Radio component at a time. As shown in figure 1.
+![图片4.png](img/1.gif)<br/>（Picture 1）
 
-### 1.2 RadioGroup组件的皮肤（skin）规范
+### 1.2 Skin specification (skin) for RadioGroup components
 
-RadioGroup组件的皮肤是以`RadioGroup`或以`RadioGroup_`为前缀进行命名，在皮肤设计规范方面，是竖向等分的两态图或三态图，如图2所示。
+The skin of the RadioGroup component is `RadioGroup` Or to `RadioGroup_` Naming the prefix, in the skin design specification, is a vertically equal two state diagram or three state diagram, as shown in figure 2.
 
-![图2](img/2.png) <br />(图2)三态RadioGroup皮肤
+![图2](img/2.png) <br />(Picture 2) Three state RadioGroup skin
 
-*Tips：RadioGroup组件的皮肤无法使用九宫格属性，所以要在资源设计的时候就确定好实际应用时的大小。*
+*Tips：The skin of the RadioGroup component cannot use the nine cell attribute, so the size of the actual application should be determined when the resource is designed.*
 
-### 1.3 RadioGroup组件的API介绍
+### 1.3 Introduction of API for RadioGroup component
 
-  RadioGroup 的API介绍请参考 [ http://layaair.ldc.layabox.com/api/index.html?category=Core&class=laya.ui.RadioGroup](http://layaair.ldc.layabox.com/api/index.html?category=Core&class=laya.ui.RadioGroup)。
-
-
-
-
-## 2、通过LayaAirIDE创建RadioGroup组件
-
-### 	2.1 创建RadioGroup
-
-​        点击选择资源管理器里的 RadioGroup 组件资源，拖拽到场景编辑器，即在页面中成功的创建了一个 RadioGroup  组件。如动图3所示。
-​      ![动图3](img/3.gif) <br /> （动图3）
+  RadioGroup API introduction, please refer to [ http://layaair.ldc.layabox.com/api/index.html?category=Core&class=laya.ui.RadioGroup](http://layaair.ldc.layabox.com/api/index.html?category=Core&class=laya.ui.RadioGroup)。
 
 
 
-### 2.2 通过labels增加单选框 
 
-​       如动图3中所示，默认的单选框组中只有两个单选框。如想增加单选框，只需在labels属性中增加新的标签即可，修改标签内容也在该属性中设置，操作如动图4-1所示。
+## 2. Creating RadioGroup components through LayaAirIDE
 
-​       ![动图4-1](img/4-1.gif) <br /> （动图4-1）
+### 	2.1 Creating RadioGroup
 
-
-
-### 2.3  改变单选框组RadioGroup的布局方向与间距 
-
- RadioGroup 默认是水平布局（*horizontal*），通过更改direction属性，实现垂直布局（*vertical*）。设置间距可以通过space属性实现。如动图4-2所示。
-![动图4-2](img/4-2.gif) <br /> （动图4-2）
+​        Click on the RadioGroup component resource in the resource manager and drag it to the scene editor, which creates a RadioGroup component successfully in the page. As shown in figure 3.
+​      ![动图3](img/3.gif) <br /> （Picture 3）
 
 
 
-### 2.4 设置单选框组RadioGroup的默认选项
+### 2.2 Adding a radio box through labels.
 
-selectedIndex属性是用于改变单选框组的索引值，默认不设置时，不勾选任何选项，如果要设置RadioGroup的默认勾选，可以设置selectedIndex的属性值，0为第1个单选框，1为第2个单选框……以此类推。
+​       As shown in Figure 3, there are only two radio frames in the default radio frame group. If you want to add a radio box, you just add a new tag in the labels property, and modify the label content is set in the property, as shown in figure 4-1.
 
-假设我们将属性值设置为0时，运行效果如动图4-3所示。
-![动图4-3](img/4-3.gif) <br /> （动图4-3）
+​       ![动图4-1](img/4-1.gif) <br /> （Picture 4-1）
+
+
+
+### 2.3  Changing the layout direction and spacing of the radio frame group RadioGroup
+
+ RadioGroup The default is horizontal layout（*horizontal*）, Vertical layout is achieved by changing the direction property（*vertical*）. Set spacing can be achieved by space attribute. As shown in figure 4-2.
+![动图4-2](img/4-2.gif) <br /> （Picture 4-2）
+
+
+
+### 2.4 Set default options for setting up a radio frame group RadioGroup
+
+The selectedIndex attribute is used to change the index value of the radio box group. When the default is not set, no options are selected. If you want to set the default check of RadioGroup, you can set the attribute value of selectedIndex, 0 for first radio frames, 1 for second radio frames...... And so on。
+
+Suppose we set the attribute value to 0, the running effect is shown in figure 4-3.
+![动图4-3](img/4-3.gif) <br /> （Picture 4-3）
 
 ### 
 
 
 
-## 3、创建自定义的RadioGroup组件
+## 3. Creating custom RadioGroup components
 
-​	在上例中，我们使用了同一种单选框资源通过设置labels生成了三个子项目的单选框组。然而在实际的游戏中，在同一个RadioGroup组件中对单选框样式有不同的需求，那么通过labels设置的方式是无法达到效果的，这个时候就需要使用自定义RadioGroup组件的方式。
-
-
+​	In this case, we use the same radio resource box and generate three sub projects by setting the labels radio button group. However, in the actual game, in the same RadioGroup component in the radio box style has different needs, then through the labels set way is unable to achieve the effect, at this time you need to use the custom RadioGroup component way.
 
 
-### 3.1 准备美术资源
 
-​	我们用两张不同的`radio单选框`美术资源来组成`自定义RadioGroup组件`，资源如 图5 所示。
 
-​        ![图片5.png](img/5.png)<br/>    （图5 ）
+### 3.1 Preparing art resources
+
+​	We use two different ones `radio box` Art resources to form `Custom RadioGroup components`, The resources are shown in figure 5.
+
+​        ![图片5.png](img/5.png)<br/>    （Picture 5 ）
 
 **Tips**：
 
-这里要特别注意一下皮肤图片的命名规则，在自定义的RadioGroup组件中，我们不能使用`RadioGroup`或`RadioGroup_`为前缀命名。因为要使用Radio单选框组件来作为它的子项组件，所以本例中的图片资源命名使用`radio_`为前缀。
+Special attention should be paid to the naming rules of skin pictures. We can't use them in custom RadioGroup components `RadioGroup` or `RadioGroup_` prefix. Because the Radio radio widget is used as its child component, the name of the picture resource in this example is prefixed with `radio_` prefix.
 
 
 
-### 3.2 在IDE中创建Radio组件
+### 3.2 Creating Radio components in IDE
 
-将资源拷贝到项目的资源管理器文件夹，然后在IDE中，将制作的radio组件从资源管理器中逐个拖拽到场景编辑器，从左到右（或从上到下）将每个Radio组件的name属性，按先后顺序依次修改成“item0、item1、item2.....”，（不按此规则增加名字属性，生成的RadioGroup组件为无效组件，不能正常运行。）
+The resource Explorer folder copied to the project, and then in IDE, the radio components produced by one by one from the explorer to drag the scene editor, from left to right (or down) the name property of each Radio component, in order to “item0、item1、item2.....”，(do not add name attribute by this rule, the generated RadioGroup component is invalid component, can not run normally)
 
-当设置完label属性的文本、label标签的字体颜色、大小、位置关系等，以及调整好位置后，效果如 图6、图7 所示。
+After setting the text of the label attribute, the font color, size, position relationship of the label tag, and adjusting the position, the effect is shown in Figure 6 and figure 7.
 
-​        ![图片6.png](img/6.png)<br/>    （图6）
+​        ![图片6.png](img/6.png)<br/>    （Picture 6）
 
-​        ![图片7.png](img/7.png)<br/>    （图7）
+​        ![图片7.png](img/7.png)<br/>    （Picture 7）
 
-​	**Tips：自定义的RadioGroup组件的name属性中，命名规则为英文字符+数字，英文字符后不能加下划线，数字要按先后顺序从0开始。**。
-
-
-
-### 3.3 转换成RadioGroup容器
-
-​	当修改好子项属性后，全选组件按快捷键Ctrl+B转换成容器，选择转换成RadioGroup容器类型并确定，如图8所示。
-
-​        ![图片8.png](img/8.png)<br/>    （图8）
+​	**Tips：In the name attribute of the custom RadioGroup component, the naming rules are English characters + numbers, and the English characters cannot be underlined. The numbers should begin in order from 0.**
 
 
 
-​	转换成功后，调整默认选择的索引selectedIndex为0（第一个Radio），如图9所示，单选框间距space、方向direction可以不调节，在场景编辑器中通过鼠标调整也可以。
+### 3.3 Convert to RadioGroup container
 
-​        ![图片9.png](img/9.png)<br/>    （图9）
+​	When the modified sub item properties, select the component into a container press Ctrl+B, select RadioGroup into the container type and determine, as shown in figure 8.
 
-​	通过以上几个步骤可以看到自定义RadioGroup组件制作成功。默认选择了第一个选框并切换到它的第三帧选择状态，其他选框则是第一帧未选择状态。
+​        ![图片8.png](img/8.png)<br/>    （Picture 8）
+
+
+
+​	After the conversion is successful, adjust the default selection index selectedIndex is 0 (the first Radio), as shown in Figure 9, radio frame spacing space, direction direction can not adjust, in the scene editor by mouse adjustment can also.
+
+​        ![图片9.png](img/9.png)<br/>    （  Picture 9）
+
+​	Through these steps, you can see that the custom RadioGroup component is successful. By default, the first checkbox is selected and switched to its third frame selection state, and the other checkbox is the unselected state of the first frame.
