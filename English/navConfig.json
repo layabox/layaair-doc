@@ -598,21 +598,21 @@
             ]
           },
           {
-            "name_2_name": "游戏加载策略",
+            "name_2_name": "Game loading handler",
             "name_2_data": [
               {
-                "name_3_name": "二进制图片",
-                "name_3_url": "Chinese/LayaAir_AS3/2D/advanced/loadStrategy/binary_Image/",
+                "name_3_name": "Binary image",
+                "name_3_url": "English/LayaAir_AS3/2D/advanced/loadStrategy/binary_Image/",
                 "name_3_file": "readme.md"
               },
               {
-                "name_3_name": "多线程worker",
-                "name_3_url": "Chinese/LayaAir_AS3/2D/advanced/loadStrategy/worker/",
+                "name_3_name": "Multithreading worker",
+                "name_3_url": "English/LayaAir_AS3/2D/advanced/loadStrategy/worker/",
                 "name_3_file": "readme.md"
               },
               {
-                "name_3_name": "资源版本管理",
-                "name_3_url": "Chinese/LayaAir_AS3/2D/advanced/loadStrategy/versionManagement/",
+                "name_3_name": "Resource version management",
+                "name_3_url": "English/LayaAir_AS3/2D/advanced/loadStrategy/versionManagement/",
                 "name_3_file": "readme.md"
               }
             ]
@@ -658,11 +658,11 @@
             ]
           },
           {
-            "name_2_name": "动画进阶",
+            "name_2_name": "Animation",
             "name_2_data": [
               {
-                "name_3_name": "骨骼动画进阶",
-                "name_3_url": "Chinese/LayaAir_AS3/2D/advanced/animation/bone/",
+                "name_3_name": "Bone animation",
+                "name_3_url": "English/LayaAir_AS3/2D/advanced/animation/bone/",
                 "name_3_file": "readme.md"
               }
             ]
