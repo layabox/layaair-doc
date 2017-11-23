@@ -23,7 +23,7 @@
 
 ​	Passing messages to the internal scope of the worker. This method receives a single parameter, that is, the data to be passed to the worker. Data can be either a value or a process [Structured copy](http://www.whatwg.org/specs/web-apps/current-work/multipage/common-dom-interfaces.html#transferable)Algorithm processed JavaScript Objects, in other words, can contain circular references.
 
-#######参数
+####### parameter
 
 - aMessage
 
@@ -33,7 +33,7 @@
 
   An optional array of objects for the transfer of their ownership. If the ownership of an object is transferred, it will not be used in the original context, but only within the transferred worker.
 
-#####terminate()
+##### terminate()
 
   Immediate termination of worker. This method does not leave worker any chance to complete the operation; it simply stops immediately.
 
