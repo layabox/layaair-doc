@@ -1,12 +1,12 @@
-# LayaAir DebugTool调试工具
+# LayaAir DebugTool
 
-### 1、启用DebugTool调试面板
+### 1. Enable DebugTool
 
-在项目中引入LayaAir Debug类库“ laya.debug.DebugTool”;
+Introduced in the project LayaAir Debug library“ laya.debug.DebugTool”;
 
-LayaAir DebugTool调试面板是基于Div的调试窗口，无需下载安装任何插件，引入调试库即可以直接运行在项目中。启动调试面板的`DebugTool.init()`方法位于`laya.debug.DebugTool`类中，可以在初始化舞台方法`Laya.init()`后的任意代码中增加使用，例如下面代码所示：
+LayaAir DebugTool debug panel is based on the Div debug window, without the need to download and install any plug-ins, the introduction of debugging library, that can run directly in the project. The `DebugTool.init()` method of starting the debug panel is in the `laya.debug.DebugTool` class, and can be added to any code that initializes the stage method `Laya.init()` such as the code below:
 
-入口类Main.as
+Entry class Main.as
 
 ```java
 package
@@ -34,148 +34,146 @@ package
 }
 ```
 
-调试面板启用成功后如图1所示。
+When the debug panel is enabled successfully, as shown in figure 1.
 
 ![图1，调试面板工具页面](img/1.png)  
 
-（图1）
+（Picture 1）
 
 
 
-### 2、节点选取功能
+### 2. Node selection function
 
-先点击调试面板的顶部第一个`选取`按钮图标。
+Click on the first `select` button icon at the top of the debug panel.
 
-然后在游戏页面的节点中滑动，会显示节点的边框。
+Then slide in the node of the game page, will display the border of the node.
 
-单击鼠标可选中该节点。与此同时，调试面板的节点分类中会显示出该节点的属性值信息。效果如动图2所示。
+Click the mouse to select the node. At the same time, the node attribute information of the node will be displayed in the node classification of the debug panel. The effect is shown in figure 2.
 
 ![动图2](img/2.gif) 
 
-(动图2)
+(Picture 2)
 
 
 
-### 3、设置显示属性
+### 3. Setting display properties
 
-点击调试面板第二排的齿轮图标，可以设置`要显示的属性`。
+Click on the gear icon in the second row of the debug panel to set `the attribute to be displayed`.
 
-在新弹出的显示属性设置面板内，可以添加和删除节点中要显示的属性信息。相关操作如动图3所示。
+In the new pop-up display property settings panel, you can add and delete attribute information to be displayed in the node. The related operations are shown in Fig. 3.
 
 ![动图3](img/3.gif)  
 
-（动图3）
+（Picture 3）
 
 
 
-### 4、拖动选取
+### 4. Drag selection
 
-左键点击顶部的第二个`拖动选取`按钮图标，然后保持按住并拖动到想要查看的显示对象节点上，即可在调试面板中查看到该节点的属性信息，相关操作如动图4所示。
+Left-click the second `drag select` button icon at the top, and then hold and drag to the display object node you want to view, you can view the attribute information of this node in the debug panel. For example, Figure 4 shows.
 
 
 ![动图4](img/4.gif)  
 
-（动图4）
+（Picture 4）
 
 
 
-### 5、快速查询功能
+### 5. Quick search function
 
-#### 5.1 用快捷键获取页面中的节点对象
+#### 5.1 Use shortcuts to get the node object in the page
 
-通过长按快捷键`Alt+V`,并同时用鼠标选取页面节点对象的方式。可以获取页面中的节点对象，用以右键操作或快速查询该对象的属性，如动图5-1所示。
+The method of selecting the page node object by pressing the shortcut key `Alt+V` and selecting the mouse at the same time. You can get the node object in the page to right-click or query the property of the object quickly, as shown in figure 5-1.
 
 ![动图5-1](img/5-1.gif)  
 
-（动图5-1）
+（Picture 5-1）
 
-#### 5.2 通过关键字查询获取页面中的节点对象列表
+#### 5.2 Getting the list of node objects in the page by keyword query
 
-相对于快捷键的精准定位获取方式，可以通过`对象查询`按钮（*放大镜图标*）来获取对象列表。
+Relative to the shortcut key to obtain accurate positioning, you can through the `Object Query`button （*magnifier icon*）to get the list of objects.
 
-当点击放大镜图标后，会弹出一个新的对象查询面板，可以查找到在name或class中包含了关键字的对象。如图5-2所示。
+When you click the magnifier icon, a new object query panel pops up, and you can find the objects that contain keywords in name or class. As shown in figure 5-2.
 
 ![图5-2](img/5-2.png) 
 
-（图5-2）
+（Picture 5-2）
 
-#### 5.3 在对象中快速查询属性内容
+#### 5.3 Quickly query attribute contents in objects
 
-无论是通过快捷键还是关键字定位到的对象，都可以通过属性查询功能，快速查询到属性值。
+Whether through shortcuts or keyword positioning of the object, you can quickly query attribute values through the attribute query function.
 
-操作方式为：在`属性查询输入框`中**输入**一个或多个`属性名称`（多个属性需要用英文逗号相隔），然后`按回车键`即可获得属性内容。操作方式如动图5-3所示。
+The operation mode is: `enter` one or more **attribute names** in ` attribute query input box` (multiple attributes need to be separated by English comma), and then click the `Enter` key to get the attribute content. The operation mode is shown in figure 5-3.
 
 ![动图5-3](img/5-3.gif)  
 
-（动图5-3）
+（Picture 5-3）
 
 
 
-### 6、性能统计
+### 6. Performance statistics
 
-#### 6.1 对象创建统计
+#### 6.1 Object creation statistics
 
-点击`对象`按钮，可以获得对象创建的统计信息，信息的内容分别是 `对象名、当前运行创建的对象数量、当前运行距上次运行增加的对象数量`。统计信息如图6-1所示。
+Click on the `Objects`Button, you can get the statistics created by the object, the content of the information are the `object name, the number of objects created by the current operation, and the number of objects currently running since the last operation`. Figure 6-1 shows the statistics.
 
 ![图6-1](img/6-1.png)   
 
-（图6-1）
+（Picture 6-1）
 
-#### 6.2 对象创建统计详情与增量详情
+#### 6.2 Object creation statistics details and increment details
 
-在对象创建的统计信息列表中，鼠标右键可以点击查询统计的详细情况和增量创建的详细情况，如图6-2所示。
+In the list of statistics created by the object, the right mouse button can click on the details of the query statistics and the details of incremental creation, as shown in figure 6-2.
 
 ![图6-2](img/6-2.png)   
 
-（图6-2）
+（Picture 6-2）
 
-#### 6.3  渲染用时统计
+#### 6.3  Rendering time statistics
 
-渲染用时统计用于查询当前游戏渲染所消耗的用时，单位为毫秒(ms)。点击`渲染`按钮可以获得当前游戏渲染用时统计数据，如图6-3所示。
+Rendering time statistics is used to query the time consumed by the current game rendering, and the unit is milliseconds (ms). Click `Render` the button allows you to get the statistics of the render time of the current game, as shown in figure 6-3.
 
 ![图6-3](img/6-3.png)   
 
-（图6-3）
+（Picture 6-3）
 
 
 
-#### 6.4 cache重绘统计
+#### 6.4 Cache redraw statistics
 
-点击`重绘`按钮可以查询到cache重绘的数据排行，重绘数量多的对象排在前列。效果如图6-4所示。
+Click `Redraw`button, you can query the cache redraw data ranking, redraw a large number of objects at the forefront. The effect is shown in figure 6-4.
 
 ![图6-4](img/6-4.png)   
 
-（图6-4）
+（Picture 6-4）
 
 
 
-#### 6.5 资源缓存统计
+#### 6.5 Resource cache statistics
 
-点击`资源`按钮，可以查看到**资源缓存的列表**，如图6-5所示。
+Click the `resource` button, and you can see the **list of resource caches**, as shown in figure 6-5.
 
 ![图6-5](img/6-5.png)   
 
-（图6-5）
+（Picture 6-5）
 
 
 
-### 7、右键功能菜单
+### 7. Right-click menu
 
-调试面板中，右键会弹出相应的功能菜单，如图7所示。尤其是节点、查询以及渲染性能统计的右键功能菜单，需要熟练了了解与掌握。
+In the debug panel, the right button pops up the corresponding function menu, as shown in figure 7. In particular, the node, query and rendering performance statistics right-click menu, you need to have a good understanding and mastery.
 
 ![图7](img/7.png) 
 
-(图7)
+(Picture 7)
 
 
 
-右键中的功能比较容易理解。开发者可以逐一体验。这里大家可以重点关注一下**节点工具**，该工具可以针对选择的节点进行显示/隐藏操作、可以显示出当前节点的mouseEnable关系链、可以显示出选中节点的Size关系链等等！比较实用和常用。
-
-节点工具操作如动图8所示。
+The function in the right key is easier to understand. Developers can experience it one by one. Here you can focus on the **node tool**. Tool can be selected for the node display / hide operation, can show the current node of the mouseEnable relationship chain, can display the selected node of the Size relationship chain, and so on! More practical and commonly used.
 
 ![动图8](img/8.gif)  
 
-(动图8)
+(Picture 8)
 
 
 
