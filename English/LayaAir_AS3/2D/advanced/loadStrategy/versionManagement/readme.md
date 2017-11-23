@@ -4,7 +4,7 @@
 
 ​	Here we use the command line. See the next steps.
 
-- Install nodejs, official website to download nodejs 下载地址https://nodejs.org/en/。
+- Install nodejs, official website to download nodejs https://nodejs.org/en/。
 
 - Install the layacmd tool. download link https://www.npmjs.com/package/layacmd。
 
