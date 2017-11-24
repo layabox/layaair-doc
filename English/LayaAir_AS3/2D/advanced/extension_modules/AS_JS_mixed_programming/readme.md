@@ -117,7 +117,7 @@ package
 
 　　In the project we will inevitably use third-party js library to assist in the development. So how do we deal with AS projects? Here we take the most commonly used jquery.js to explain.
 
-​	首先在jquery的[官网下载](http://jquery.com/download/)jquery.js版本，示例中我们用`jquery-3.2.0.min.js`。在项目入口的index.html页面（通常位于“`bin\h5\`”目录下）添加`<script type="text/javascript" src="jquery-3.2.0.min.js"></script>`。
+​	First of all get jQuery from  [[official website download](http://jquery.com/download/)jquery.js Version, we use the example `jquery-3.2.0.min.js`. At the entry of the project index.html page（ Located under directory “`bin\h5\`”） Add to`<script type="text/javascript" src="jquery-3.2.0.min.js"></script>`。
 
 ​	*Tips: Third-party library import must be added prior to the introduction of the LayaAir engine library.*
 
@@ -182,7 +182,6 @@ package {
 
 
 ​	The above example just defines a static method, and we can even open all of the internal methods and properties,
-
 JSDemo.as code is modified as follows:
 
 ```java
