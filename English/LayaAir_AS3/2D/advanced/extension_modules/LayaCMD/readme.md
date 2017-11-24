@@ -127,9 +127,9 @@ $ layacmd ui -c -m release # 导出前清理，并且把mode设置为release
 
 ## Resource version control
 
-**资源版本控制**用于为资源生成版本。版本号默认从数字1000开始递增，如果传入`--versionName`参数，则使用用户指定的版本名称。下次建立建立版本时如果没有再次指定`--name`，版本号为1002，因为每次生成版本，**资源版本控制**内部版本计数器都会递增。
+**Resource version control**  is used to generate versions for resources. The version number defaults to increment from the number 1000. If the `--versionName` parameter is passed in, the user specified version name is used. Next time you build a version, if you don't specify the `--name` again, the version number is 1002, because every time the version is generated,  **resource version control** the internal version counter will increase.
 
-在建立版本时，相对于上次版本建立，修改了的文件或者新增的文件会被记录在新版本中。如果没有新增文件或者没有修改文件，不会有新版本生成。
+When you build the version, the modified file or the new file will be recorded in the new version relative to the previous version. If there are no new files or no modified files, no new version will be generated.
 
 ```shell
 $ layacmd resourceVersion -h
@@ -145,11 +145,11 @@ $ layacmd resourceVersion -h
     -n --versionName <version name>  version name, default is numbers start from 1000.
 ```
 
-该命令不需要当前目录包含**layaair**项目，取而代之的是，你需要指定输入目录。
+This command does not require the current directory to contain the **layaair** project. Instead, you need to specify the input directory.
 
 
 
-#### 使用
+#### Use
 
 ```shell
 $ layacmd resourceVersion -i input_dir -o output_dir -n 1.1.0
@@ -158,7 +158,7 @@ $ layacmd resourceVersion -i input_dir -o output_dir -n 1.1.0
 
 
 
-#### 生成的文件
+#### Generated files
 
 > 1000
 >
