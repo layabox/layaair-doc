@@ -1,21 +1,21 @@
 # layacmd
 [TOC]
 
-**layacmd**是**layaair**的命令行工具，可以使用**layacmd**不打开**IDE**的情况下对**layaair**项目进行编译发布等操作。它包含以下功能，这些功能都对应一个子命令。
+**layacmd** is **layaair** command-line tool that can be used **layacmd**  to open **layaair**  project compile and publish operations without opening the  **IDE**. It contains the following functions, each of which corresponds to a sub command.
 
-| 功能             | 子命令             |
+| function             | Sub command             |
 | -------------- | --------------- |
-| 编译             | compile         |
-| 发布             | publish         |
-| 导出UI           | ui              |
-| 资源版本控制         | resourceVersion |
-| 图集打包           | atlas           |
-| 使用guetzli压缩jpg | guetzli         |
-| 打开静态文件服务器      | open            |
+| Compile             | compile         |
+| Release             | publish         |
+| Export UI           | ui              |
+| Resource versioning         | resourceVersion |
+| Atlas packing          | atlas           |
+| Using guetzli to compress jpg | guetzli         |
+| Open static file server      | open            |
 
 
 
-##  安装
+##  Install
 
 ```shell
 $ npm install layacmd -g
@@ -25,35 +25,35 @@ $ npm install layacmd -g
 
 ## CLI
 
-**layacmd**的命令类似**git**命令，它的形式是：
+**layacmd* command is similar to the **git** command, and it is in the form of:
 
 ```shell
 $ layacmd [command] [args]
 ```
 
-比如编译项目：
+For example, the compilation project ：
 
 ```shell
 $ layacmd compile
 ```
 
-或者查看帮助信息：
+Or view help information ：
 
 ```shell
 $ layacmd --help
 ```
 
-不仅**layacmd**本身，所有的子命令都有版本信息和帮助信息，查看子命令帮助信息：
+Not only the **layacmd** itself, all the commands have version information and help information, but also look at the sub command help information:
 
 ```shell
 $ layacmd command -h
 ```
 
-**layacmd**的大部分子命令都需要当前工作目录下包含**layaair**项目，少数命令可以手动指定输入目录，如`guetzl`，`atlas`命令则是即可以直接`$ layacmd atlas`，也可以指定输入目录。
+Most of the **layacmd** commands required current working directory contains the **layaair** project, a few commands can be specified manually enter the directory, such as `guetzl`, `atlas`  command is that can be directly `$ layacmd atlas`, you can also specify the input directory.
 
 
 
-## 编译
+## Compile
 
 ```shell
 $ layacmd compile -h
@@ -66,9 +66,9 @@ $ layacmd compile -h
     -V, --version  output the version number
 ```
 
-如果当前目录有**layaair**项目，该命令会生成编译后的**JavaScript**文件。编译只有**ActionScript**和**TypeScript**项目需要，如果是**JavaScript**，则什么也不做。
+If the current directory has a **layaair** project, the command generates the compiled **JavaScript** file. Compilation only **ActionScript** , **TypeScript** and **JavaScript**.
 
-#### 使用
+#### use
 
 ```shell
 $ layacmd copmile
@@ -76,7 +76,7 @@ $ layacmd copmile
 
 
 
-##  发布
+##  release
 
 ```shell
 $ layacmd publish --help
@@ -90,9 +90,9 @@ $ layacmd publish --help
     -o --compressOptions <options>  Compress options. 'no' for no processing, 'c' for compress, 'cc' for compress and concat.
 ```
 
-如果当前目录有**layaair**项目，该命令会生成发布后的**JavaScript**文件，发布的文件夹名为*release，*可以对文件进行合并压缩。
+If the current directory has a **layaair** project, the command generates the published **JavaScript** file, and the published folder is called *release，* which can merge and compress files.
 
-#### 使用
+#### Use
 
 ```shell
 $ layacmd publish -o cc # 指定了压缩选项为合并并压缩
@@ -100,7 +100,7 @@ $ layacmd publish -o cc # 指定了压缩选项为合并并压缩
 
 
 
-## 导出UI
+## Export UI
 
 ```shell
 $ layacmdui -h
@@ -115,9 +115,9 @@ $ layacmdui -h
     -m --mode <mode>  'normal' or 'release', specify 'release' will generate UI code files exclude unused resources.
 ```
 
-如果当前目录有**layaair**项目，该命令为UI页面导出代码。
+If the current directory has a **layaair** project, the command exports the code for the UI page.
 
-#### 使用
+#### Use
 
 ```shell
 $ layacmd ui -c -m release # 导出前清理，并且把mode设置为release
@@ -125,7 +125,7 @@ $ layacmd ui -c -m release # 导出前清理，并且把mode设置为release
 
 
 
-## 资源版本控制
+## Resource version control
 
 **资源版本控制**用于为资源生成版本。版本号默认从数字1000开始递增，如果传入`--versionName`参数，则使用用户指定的版本名称。下次建立建立版本时如果没有再次指定`--name`，版本号为1002，因为每次生成版本，**资源版本控制**内部版本计数器都会递增。
 
@@ -178,21 +178,21 @@ $ layacmd resourceVersion -i input_dir -o output_dir -n 1.1.0
 
 
 
-#### 资源版本
+#### Resource version
 
-名为*1000*、*1001*、*1002*的文件夹是默认资源版本名称，里面保存的是对应版本被修改了的资源。根据从*manifest.json*中得到的每个资源的最新版本号，从这些文件夹读取*manifest.json*对应的版本资源。
-
-
-
-#### .record记录文件
-
-*.record*在**Unix-like**系统中是隐藏文件。这个文件保存最近的版本建立信息，**资源版本控制**由此来判定建立新版本时哪些文件被修改。这个文件不能被删除，如果这个文件丢失，之前建立的版本就会丢失，相当于重新开始建立版本。
+The folders named *1000*、*1001*、*1002* are the default resource version names, and the saved resources for the corresponding version are saved. According to the latest version of each resource obtained from *manifest.json* the corresponding version resources of *manifest.json* are read from these folders.
 
 
 
-#### manifest.json资源清单
+#### .record Record file
 
-用户根据*manifest.json*获取最新的资源。该文件包含资源键值对：
+*.record* is a hidden file in the **Unix-like** system. This file holds the most recent version creation information,，**Resource version control** and thereby determines which files are modified when the new version is built. If the file is lost, the previous version will be lost, equivalent to re establishing the version.
+
+
+
+#### manifest.json Resource list
+
+Users according to *manifest.json*  for the latest resources. This file contains resource key-value pairs:
 
 ```json
 {
@@ -204,61 +204,61 @@ $ layacmd resourceVersion -i input_dir -o output_dir -n 1.1.0
 }
 ```
 
-用户从该映射中获取资源对应的版本号后，使用`资源根目录/版本号/相对文件路径`得到资源的url，加载并使用。
+When the user obtains the version number corresponding to the resource from the map, the URL of the resource is obtained by using the `Resource root directory / version number / relative file path` Get the url of the resource, load and use.
 
 
 
-#### 资源版本切换
+#### Resource version switching
 
-由于*manifest.json*保存各版本的文件版本号。所以只需要保留历史*manifest.json*即可使用对应版本的资源。
+Because *manifest.json*  saves the version number of each version of the file. So just save history  *manifest.json* and use the resources of the corresponding version.
 
 
 
-## 图集打包
+## Atlas packing
 
-**图集打包**根据输入目录，生成该目录下所有文件及子目录内的图片的图片集合。图片集合以文件夹为单位，同一张图片集合可能因为超出指定最大尺寸而被分为多张。
+**atlas packing** according to the input directory, generate all the files in the directory and the picture collection in the subdirectory. The picture set is a folder, and the same set of pictures may be divided into multiple sheets due to the size of the specified maximum.
 
-该命令可以在**layaair**项目目录下执行，也可以不在，这时需要指定输入路径。
+This command can be executed under **layaair** project directory, or it can not be in, and then you need to specify the input path.
 
-| 参数                 | 说明                                       |
+| parameter                 | Explain                                      |
 | ------------------ | ---------------------------------------- |
-| version            | 打印版本信息                                   |
-| help               | 打印帮助信息                                   |
-| input, d           | 将被打包的图片集合根目录（可以                          |
-| output, o          | 打包后的图片集合和配置文件的保存目录                       |
-| resDir, r          | 无法被打包的文件的输出目录                            |
-| extrudeList, E     | 需要像素扩展的图片列表，逗号分隔                         |
-| maxAtlasWidth, W   | 允许的图集最大宽度，默认2048                         |
-| maxAtlasHeight, H  | 允许的图集最大高度，默认2048                         |
-| tileWidthLimit, w  | 允许被打包的图片的最大宽度，默认512                      |
-| tileHeightLimit, h | 允许被打包的图片的最大高度，默认512                      |
-| includeList, i     | 无论是否符合条件，都会被打包的图片列表，逗号分隔                 |
-| excludeList, x     | 无论是否符合条件，都不会被打包的图片列表，逗号分隔                |
-| shapePadding, p    | 每张图片的间距，默认为2                             |
-| force, f           | 无视是否距上次打包后修改过资源，都强制重新打包                  |
-| powerOfTwo, 2      | 开启后，会尽量以2的整次幂为前提并保持最小空间来排列（导出的图集不会是2的整次幂尺寸 |
-| cropAlpha, c       | 是否裁减掉图片的透明区域                             |
-| textureFormat      | 默认"png32"，还可选为"png8"                     |
-| config             | 使用配置文件中的参数                               |
-| init               | 生成默认配置文件                                 |
+| version            | Print version information                                 |
+| help               | print the help information                                  |
+| input, d           | The root directory of the picture to be packaged                         |
+| output, o          | Packed picture collection and saved directory of configuration file                       |
+| resDir, r          | The output directory of the file that can not be packaged                           |
+| extrudeList, E     | A list of pictures that need pixel expansion, separated by commas                       |
+| maxAtlasWidth, W   | The maximum allowable album width, the default 2048                        |
+| maxAtlasHeight, H  | Allow the maximum height of the gallery, the default 2048                      |
+| tileWidthLimit, w  | Allow the maximum width of the picture is packaged, the default 512                      |
+| tileHeightLimit, h | Allow the maximum height of the picture to be packaged, the default 512                     |
+| includeList, i     | No matter whether the conditions are met, will be packaged list of pictures, separated by commas                |
+| excludeList, x     | Whether or not eligible, will not be packaged list of pictures, separated by commas                |
+| shapePadding, p    | The spacing of each picture, the default is 2                             |
+| force, f           | Ignoring whether the resource has been modified since the last package, are forced to repackage                  |
+| powerOfTwo, 2      | When turned on, you try to arrange with the power of 2 as a whole and the minimum space (the exported set will not be the power of 2 |
+| cropAlpha, c       | Whether to cut off the transparent area of the picture                             |
+| textureFormat      | Default "png32", but also optional "png8"                     |
+| config             | Use the parameters in the configuration file                           |
+| init               | Generate a default profile                                 |
 
-#### 使用
+#### Use
 
-##### 使用全局的临时配置文件
+##### Using global temporary configuration files
 
-在**layaair**项目目录中执行图集打包：
+Implementing atlas packing in the **layaair**  project directory:
 
 ```shell
 $ layacmd atlas
 ```
 
-这个命令会使用位于临时目录，如**windows**的` %userprofile%\AppData\Roaming\LayaAirIDE\`的*packParam.json*文件中指定的参数打包。这个文件在使用**IDE**打开不同的项目打包时会被改写。因此使用**layacmd**不推荐这种方式。
+This command is packaged with the parameters specified in the *packParam.json* file of the temporary directory, such as ` %userprofile%\AppData\Roaming\LayaAirIDE\` in **windows**. This file will be rewritten when you open different projects using  **IDE**. Therefore, using **layacmd** does not recommend this approach.
 
 
 
-##### 在命令行指定打包参数
+##### Specify packing parameters on the command line
 
-**图集打包**为命令提供了众多参数，可以直接在命令行指定，如：
+**Atlas packing** many parameters are provided for the command, which can be specified directly on the command line, such as:
 
 ```shell
 $ layacmd atlas -d . -o ./bin/res/atlas --textFormat png8
@@ -267,19 +267,19 @@ $ layacmd atlas -d . -o ./bin/res/atlas --textFormat png8
 # 指定导出png8格式图片
 ```
 
-更多参数见上面表格。
+For more parameters, see the above table.
 
 
 
-##### 使用为项目生成的配置文件
+##### Using configuration files generated for projects
 
-使用`init`参数生成配置文件：
+Using `init` parameters to generate configuration files:
 
 ```shell
 $ layacmd atlas --init
 ```
 
-将会生成默认名为atlasConfig的json文件：
+The default JSON file will be generated by atlasConfig.
 
 ```json
 {
@@ -310,9 +310,9 @@ $ layacmd atlas --init
     }
 }
 ```
-以上字段除了`inputDir`外全都有默认值，你必须指定输入目录。其余各参数的说明和上列表格所述一致。
+All fields except `inputDir` have default values. You must specify the input directory. The rest of the parameters are consistent with those listed in the above table.
 
-之后使用以下命令识别配置文件以及生成图片集合：
+Then use the following command to recognize the configuration file and generate a photo collection:
 
 ```shell
 $ layacmd atlas --config atlasConfig
@@ -322,11 +322,11 @@ $ layacmd atlas --config atlasConfig
 
 ## guetzli
 
-**guetzli**是**google**的开源**jpeg**编码器。关于它的介绍、注意事项等参见官方https://github.com/google/guetzli。
+**guetzli** is **google** an open source **jpeg** encoder for google. About its introduction, precautions, see the official https://github.com/google/guetzli。
 
-**guetzli**的压缩过程很慢，而且占用资源大，所以可能要等待些时间。
+**guetzli** compression process is slow, and it takes up a lot of resources, so it's possible to wait for some time.
 
-最好在**资源版本控制**生成的文件夹中使用**guetzli**压缩，这可以保证不会重复压缩一张图。
+It is best to use **guetzli** compression in the folder generated by the **Resource version control**, which ensures that you will not repeatedly compress a graph.
 
 ```shell
 $ layacmd guetzli -h
@@ -341,9 +341,9 @@ $ layacmd guetzli -h
     -q --quality <quality>  quality, more than 84.
 ```
 
-该命令不需要当前目录包含**layaair**项目，取而代之的是，你需要指定输入目录。压缩成功后，源文件会被修改。压缩失败则源文件保持不变。
+This command does not require the current directory to contain the **layaair** project. Instead, you need to specify the input directory. After the compression is successful, the source file will be modified. The source file remains unchanged when the compression fails.
 
-#### 使用
+#### use
 
 ```shell
 $ layacmd guetzli -i input_dir -q 95
@@ -352,7 +352,7 @@ $ layacmd guetzli -i input_dir -q 95
 
 
 
-## 打开静态文件服务器
+## Open the static file server
 
 ```shell
 $ layacmd open --help
@@ -370,7 +370,7 @@ $ layacmd open --help
     -f              enable html5 history
 ```
 
-#####  使用
+#####  use
 
 ```shell
 $ layacmd open
