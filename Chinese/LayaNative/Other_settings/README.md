@@ -195,7 +195,7 @@ window.onLayaInitError=function(e)
 ```
 开发者可以根据自己需求，修改报错信息和报错方式。
 
-## 12. 获取设备型号
+## 13. 获取设备型号
 在LayaPlayer-0.9.12版本以后，iOS可以通过调用conch.config.getDeviceInfo()获取设备型号。可以用于iPhone X的适配，代码如下：
 ```javascript
 if( window.conch )
