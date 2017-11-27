@@ -139,4 +139,4 @@ Text.changeText will directly modify the last instruction drawn in the drawing i
 
 · The style of the text is always the same (color, thickness, italics, alignment, etc.)
 
-​        Even so, the actual programming will still often use such a need.
+​        Even so, it's always used in practical programming.
