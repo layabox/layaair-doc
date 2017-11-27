@@ -67,7 +67,7 @@
 
 三维向量在3D游戏开发中有多种含意，它可以表位置、距离、速度、角度、弧度等。在本例中，如子弹的射击方向就是一个三维向量，从方向向量也可以计算出子弹的速度，这些都需要用向量数学公式。
 
-本例中所用三维向量公式如下：
+三维向量基础公式如下：
 
 **A点到B点的方向：AB方向三维向量 = B目标位置三维向量 —  A起始位置三维向量** 
 
@@ -121,7 +121,7 @@ BC表示B点到C点的方向向量，AB表示A点到B点方向向量，AC表示A
 1. 通过getChildByName()方法在场景中找到立方盒子，为它们分别添加立方体控制脚本CubeScript，用于碰撞检测。
 
 2. 鼠标点击事件中，使用克隆方法创建子弹，这种方法可以将子弹的碰撞器SphereCollider及刚体组件rigidbody一并克隆。
-   创建子弹后，为子弹添加子弹控制脚本BulletScript，并使用自定义的脚本方法setShootDirection(directionV3:Vector3)设置子弹的飞行方向。
+   创建子弹后，为子弹添加子弹控制脚本BulletScript，并使用BulletScript方法setShootDirection(directionV3:Vector3)设置子弹的飞行方向。
 
 3. 子弹的飞行方向通过鼠标点击场景时产生的射线计算后获得。
    鼠标点击3D场景空间由摄像机产生射线，判断射线与场景中的3D模型是否相交（射线碰撞检测），如果相交，那么子弹方向就是相交目标位置与子弹起始位置产生的方向；如果不相交，那么根据射线方向、摄像机位置、子弹初始位置计算子弹飞行的方向。
@@ -259,6 +259,7 @@ package script_collision
 				
 				//根据摄像机与子弹的位置求出子弹到摄像机的方向向量
 				var bV3:Vector3=new Vector3();
+              	//子弹到摄像机的方向向量=摄像机位置向量 - 子弹位置向量
 				Vector3.subtract(camera.transform.position,bullet.transform.position,bV3);
 				
 				//射击的方向向量 = 射线方向向量 + 子弹到摄像机的方向向量
@@ -280,7 +281,7 @@ package script_collision
 
 当场景中的其它碰撞器与脚本绑定模型的碰撞器发生重叠，会触发多种状态，并根据状态去触发不同的方法。
 
-触发状态共有三种，包括：其它碰撞器与自己碰撞器碰撞时、其它碰撞器与自己碰撞器逐帧重叠时、其它碰撞器与自己碰撞器相互离开时。
+触发状态共有三种，包括：其它碰撞器与自己碰撞器碰撞时方法`onTriggerEnter(other:Collider)`、其它碰撞器与自己碰撞器逐帧重叠时方法`onTriggerStay(other:Collider)`、其它碰撞器与自己碰撞器相互离开时方法`onTriggerExit(other:Collider)`。
 
 它们对应着不同的触发方法（请查看下例代码），可以在脚本继承类中去覆盖原有触发方法，并在其中实现自己的逻辑。触发方法中还会把其它碰撞器作为参数传递过来，方便开发者获取其它碰撞器的模型对象、属性等。
 
@@ -394,6 +395,14 @@ package
 
 #### 立方体脚本类功能实现
 
+立方体控制脚本也继承于脚本Script，同样用到了新增脚本功能的三种触发方法，区别是在三种方法中的逻辑有所不同。
+
+当子弹碰撞器进入立方体盒子碰撞器时方法`onTriggerEnter(other:Collider)`中，根据立方体盒子碰撞器获取到立方体的脚本，从它的脚本中获得子弹速度和方向，用于立方体盒子的击退速度和击退方向，并且在脚本更新方法中模拟立方体盒子被击退的效果。
+
+当子弹碰撞器离开立方体盒子碰撞器时方法`onTriggerExit(other:Collider)`，立方体盒子生命值减少，被三发子弹击中后，立方体盒子被击毁消失。
+
+立方体控制脚本代码如下：
+
 ```typescript
 package
 {
@@ -445,10 +454,8 @@ package
 			var sp3D:MeshSprite3D=other.owner as MeshSprite3D;
 			//获取子弹对象模型脚本
 			var script:BulletScript=sp3D.getComponentByType(BulletScript) as BulletScript;
-			//获取子弹速度为
+			//获取子弹速度与方向
 			this.repelledV3=script.speedV3.clone();
-			//被攻击速度归一化成单位一向量
-			Vector3.normalize(repelledV3,repelledV3);
 			
 			//设置为被攻击状态
 			isAttacked=true;
@@ -509,4 +516,6 @@ package
 ```
 
 
+
+完成上述简单的三个类后，我们可以看到图1所示效果，当然，要真正完成一个射击游戏，不会如此简单，本例代码主要为初学者们打开思路，可以举一反三。
 
