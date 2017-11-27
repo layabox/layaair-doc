@@ -1,10 +1,10 @@
-# 减少CPU使用量
+# Reduce CPU usage
 
 
 
-### **一、减少动态属性查找**
+### **1. Reduce the dynamic property search**
 
-JavaScript中任何对象都是动态的，你可以任意地添加属性。然而，在大量的属性里查找某属性可能很耗时。如果需要频繁使用某个属性值，可以使用局部变量来保存它：
+Any object in JavaScript is dynamic, and you can add attributes arbitrarily. However, it may be time-consuming to find an attribute in a large number of attributes. If you need to use an attribute value frequently, you can use local variables to save it:
 
 ```javascript
 private function foo():void
@@ -19,14 +19,14 @@ private function foo():void
 
 
 
-### 二、计时器
+### 2. Timer
 
-​        LayaAir提供两种计时器循环来执行代码块。
+​        LayaAir provides two timer loops to execute code blocks
 
-1. `Laya.timer.frameLoop`执行频率依赖于帧频率，可通过Stat.FPS查看当前帧频。
+1. `Laya.timer.frameLoop` execution frequency depends on the frame frequency, which can be checked by Stat.FPS.
 
 
-2. `Laya.timer.loop`执行频率依赖于参数指定时间。
+2. `Laya.timer.loop` the frequency of execution depends on the parameters specified time.
 
 
 
@@ -39,19 +39,19 @@ private function dispose():void 
 }
 ```
 
-​        当一个对象的生命周期结束时，记得清除其内部的Timer：
+​        When an object's life cycle ends, remember to clear its internal Timer ：
 
  
 
  
 
-### **三、获取显示对象边界的做法**
+### **3.  access to display the boundaries of the object approach**
 
-在相对布局中，很经常需要正确地获取显示对象的边界。获取显示对象的边界也有多种做法，而其间差异很有必要知道。
+In the relative layout, it is often necessary to get the display object's boundaries correctly. There are many ways to get the boundaries of the display objects, but the differences are necessary to know.
 
  
 
-1. 使用getBounds/ getGraphicBounds。
+1. Use getBounds/ getGraphicBounds.
 
    ```javascript
    var sp:Sprite = new Sprite();
@@ -60,9 +60,9 @@ private function dispose():void 
    Laya.stage.addChild(sp);
    ```
 
-​        getBounds可以满足多数多数需求，但由于其需要计算边界，不适合频繁调用。
+​        getBounds meets most majority requirements, but is not suitable for frequent calls due to the need to calculate boundaries.
 
-2. 设置容器的autoSize为true。
+2. The autoSize of the set container is true.
 
 ```javascript
 var sp:Sprite = new Sprite();
@@ -71,9 +71,9 @@ sp.graphics.drawRect(0, 0, 100, 100, "#FF0000");
 Laya.stage.addChild(sp);
 ```
 
-​        上述代码可以在运行时正确获取宽高。autoSize在获取宽高并且显示列表的状态发生改变时会重新计算（autoSize通过getBoudns计算宽高）。所以对拥有大量子对象的容器应用autoSize是不可取的。如果设置了size，autoSize将不起效。
+​        The above code gets the correct height and width at run time. autoSize recalculates when the width and height are acquired and the status of the display list is changed (autoSize calculates the width and height from getBoudns). So it is not advisable to apply autoSize to a container that has a large number of children. If you set size, autoSize will not work.
 
-​        使用loadImage后获取宽高：
+​        Using loadImage to obtain width height:
 
 ```javascript
 var sp:Sprite = new Sprite();
@@ -84,9 +84,9 @@ sp.loadImage("res/apes/monkey2.png", 0, 0, 0, 0, Handler.create(this, func
 Laya.stage.addChild(sp);
 ```
 
-​        loadImage在加载完成的回调函数触发之后才可以正确获取宽高。
+​        LoadImage gets the width exactly after the loaded callback function is triggered.
 
-3. **直接调用size设置：**
+3. **Call size settings directly:**
 
 ```javascript
 Laya.loader.load("res/apes/monkey2.png", Handler.create(this, function()
@@ -99,27 +99,27 @@ Laya.loader.load("res/apes/monkey2.png", Handler.create(this, function()
 }));
 ```
 
-使用Graphics.drawTexture并不会自动设置容器的宽高，但是可以使用Texture的宽高赋予容器。毋庸置疑，这是最高效的方式。
+Using Graphics.drawTexture does not automatically set the width and height of the container, but can use the Texture's width height to give the container. Needless to say, this is the most efficient way.
 
-**注：getGraphicsBounds用于获取矢量绘图宽高。**
-
-
-
-### **四、根据活动状态改变帧频**
-
-​        帧频有三种模式，
-
-- Stage.FRAME_SLOW维持FPS在30；
-- Stage.FRAME_FAST维持FPS在60；
-- Stage.FRAME_MOUSE则选择性维持FPS在30或60帧。
+**notes: getGraphicsBounds is used to obtain vector drawing width**
 
 
 
-​        有时并不需要让游戏以60FPS的速率执行，因为30FPS已经能够满足多数情况下人类视觉的响应，但是鼠标交互时，30FPS可能会造成画面的不连贯，于是Stage.FRAME_MOUSE应运而生。
+### **4. change the frame rate according to the active state**
+
+​        There are 3 modes of frame rate
+
+- Stage.FRAME_SLOW maintained FPS at  30；
+- Stage.FRAME_FAST maintained FPS at  60；
+- Stage.FRAME_MOUSE the FPS is selectively maintained at 30 or 60 frame
+
+
+
+​        Sometimes it doesn't require games to execute at 60FPS rates, because 30FPS has been able to respond to human vision in most situations, but when the mouse interacts, the 30FPS may cause the picture to be incoherent, and Stage.FRAME_MOUSE emerges as the times require.
 
  
 
-​        下例展示以Stage.FRAME_SLOW的帧率，在画布上移动鼠标，使圆球跟随鼠标移动： 
+​        The following example shows the movement of the mouse on the canvas with the frame rate of Stage.FRAME_SLOW, so that the ball follows the mouse movement: 
 
 ```javascript
 Laya.init(Browser.width, Browser.height);
@@ -137,28 +137,28 @@ Laya.stage.on(Event.MOUSE_MOVE, this, function()
 ```
 
 ​         ![图片1.png](img/1.png)<br/>
-​        （图1）
+​        （Picture 1）
 
-​        此时FPS显示30，并且在鼠标移动时，可以感觉到圆球位置的更新不连贯。设置Stage.frameRate为Stage.FRAME_MOUSE：
+​        At this point FPS display 30, and the mouse movement, you can feel the ball position update inconsistent. Set Stage.frameRate to Stage.FRAME_MOUSE：
 
 ```javascript
 Laya.stage.frameRate = Stage.FRAME_MOUSE;
 ```
 
 ​        ![图片1.png](img/2.png)<br/>
-​        （图2）
+​        （Picture 2）
 
-​        此时在鼠标移动后FPS会显示60，并且画面流畅度提升。在鼠标静止2秒不动后，FPS又会恢复到30帧。
+​        At this point, after the mouse moves, FPS will display 60, and the picture fluency increases. After the mouse is still 2 seconds, the FPS will revert to 30 frames.
 
 
 
-### **五、使用callLater**
+### **5. Use callLater**
 
-callLater使代码块延迟至本帧渲染前执行。如果当前的操作频繁改变某对象的状态，此时可以考虑使用callLater，以减少重复计算。
+callLater Delays the code block until this frame is rendered. If the current operation frequently changes the state of an object, then callLater can be considered to reduce repeated computations.
 
  
 
-​        考虑一个图形，对它设置任何改变外观的属性都将导致图形重绘：
+​        Considering a graph, setting any attributes that change its appearance will result in redrawing of the graph:
 
 ```javascript
 var rotation:int = 0,
@@ -191,7 +191,7 @@ public function update()
 
  
 
-​        调用以下代码更改状态：
+​        Call the following code to change the state ：
 
 ```javascript
 setRotation(90);
@@ -199,7 +199,7 @@ setScale(2);
 setPosition(30);
 ```
 
-​        控制台的打印结果是:
+​        The print result of the console is :
 
 ```javascript
 rotation: 90scale: 1position: 0
@@ -207,24 +207,24 @@ rotation: 90scale: 2position: 0
 rotation: 90scale: 2position: 30
 ```
 
-update被调用了三次，并且最后的结果是正确的，但是前面两次调用都是不需要的。
+Update was called three times, and the final result was correct, but the previous two calls were not needed.
 
-​        尝试将三处update改为：
+​        Try to change three update to:
 
 ```javascript
 Laya.timer.callLater(this, update);
 ```
 
-​        此时，update只会调用一次，并且是我们想要的结果。
+​        At this point, update will only call once, and that's what we want.
 
 
 
-### **六、图片/图集加载**
+### **6. picture / atlas loading**
 
-在完成图片/图集的加载之后，引擎就会开始处理图片资源。如果加载的是一张图集，会处理每张子图片。如果一次性处理大量的图片，这个过程可能会造成长时间的卡顿。
+Once the picture / atlas is loaded, the engine will begin to process picture resources. If you load an atlas, you can process each of the sub pictures. If you process a large amount of pictures at one time, this process may create a long time and jerky.
 
  
 
-在游戏的资源加载中，可以将资源按照关卡、场景等分类加载。在同一时间处理的图片越好，当时的游戏响应速度也会更快。在资源使用完成后，也可以予以卸载，释放内存。
+n the game's resource loading, you can load the resources according to the level, scene and other categories. The better the picture at the same time, the faster the game responds. After the completion of the use of resources, you can also uninstall, release memory..
 
  
