@@ -1,59 +1,59 @@
-# 图形渲染性能
+# Graphics rendering performance
 
 
 
-### **一、优化Sprite**
+### **1. Optimize Sprite**
 
-1. 尽量减少不必要的层次嵌套，减少Sprite数量。
+1. Minimize unnecessary nesting and reduce the number of Sprite.
 
-2. 非可见区域的对象尽量从显示列表移除或者设置visible=false。
+2. Objects in non-visible areas should be removed from the display list or set as far as possible visible=false。
 
-3. 对于容器内有大量静态内容或者不经常变化的内容（比如按钮），可以对整个容器设置cacheAs属性，能大量减少Sprite的数量，显著提高性能。如果有动态内容，最好和静态内容分开，以便只缓存静态内容。
+3. For containers that have a large amount of static or infrequently changing content (such as buttons), you can set the cacheAs attribute for the entire container, dramatically reducing the number of sprites and dramatically improving performance. If you have dynamic content, it is best to separate it from static content so that only static content is cached.
 
-4. Panel内，会针对panel区域外的直接子对象（子对象的子对象判断不了）进行不渲染处理，超出panel区域的子对象是不产生消耗的。
-
-   ​
-
-### **二、优化DrawCall**
-
-1. 对复杂静态内容设置cacheAs，能大量减少DrawCall，使用好cacheAs是游戏优化的关键。
-
-2. 尽量保证同图集的图片渲染顺序是挨着的，如果不同图集交叉渲染，会增加DrawCall数量。
-
-3. 尽量保证同一个面板中的所有资源用一个图集，这样能减少提交批次。
+4. In Panel, the direct sub object outside the panel region (the sub object of the sub object can not be judged) is rendered without rendering, and the sub object beyond the panel region is not consumed.
 
    ​
 
-### **三、优化Canvas**
+### **2. Optimize DrawCall**
 
-​      在对Canvas优化时，我们需要注意，在以下场合不要使用cacheAs：
+1. Setting cacheAs to complex static content can reduce DrawCall greatly. Using cacheAs well is the key to game optimization.
 
-1. 对象非常简单，比如一个字或者一个图片，设置cacheAs="bitmap"不但不提高性能，反而会损失性能。
+2. Try to make sure that the image sequence of the same atlas is next to each other, and if the cross rendering is different, it will increase the number of DrawCall.
 
-2. 容器内有经常变化的内容，比如容器内有一个动画或者倒计时，如果再对这个容器设置cacheAs="bitmap"，会损失性能。
+3. Try to make sure that all the resources in the same panel use an atlas, which reduces the submission batch.
+
+   ​
+
+### **3. Canvas optimization**
+
+​      In the optimization of Canvas, we need to pay attention to, do not use cacheAs in the following occasions:
+
+1. The object is very simple, such as a word or a picture, setting cacheAs= "bitmap" not only does not improve performance, but will lose performance.
+
+2. There are always changes in the container, such as an animation or countdown in the container. If you set the cacheAs= "bitmap" to this container, it will lose performance.
 
 
-可以通过查看Canvas统计信息的第一个值，判断是否一直在刷新Canvas缓存。
-
-
-
-### **四、关于cacheAs**
-
-设置cacheAs可将显示对象缓存为静态图像，当cacheAs时，子对象发生变化，会自动重新缓存，同时也可以手动调用reCache方法更新缓存。 建议把不经常变化的复杂内容，缓存为静态图像，能极大提高渲染性能，cacheAs有"none"，"normal"和"bitmap"三个值可选。
-
-1. 默认为"none"，不做任何缓存。
-
-2. 当值为"normal"时，Canvas下进行画布缓存，webgl模式下进行命令缓存。
-
-3. 当值为"bitmap"时，Canvas下进行依然是画布缓存，webGL模式下使用renderTarget缓存。这里需要注意的是，webGL下renderTarget缓存模式有2048大小限制，超出2048会额外增加内存开销。另外，不断重绘时开销也比较大，但是会减少drawcall，渲染性能最高。 webGL下命令缓存模式只会减少节点遍历及命令组织，不会减少drawcall，性能中等。
+You can determine whether the Canvas cache has been refreshed by looking at the first value of the Canvas statistics.
 
 
 
-设置cacheAs后，还可以设置staticCache=true以阻止自动更新缓存，同时可以手动调用reCache方法更新缓存。
+### **4. About cacheAs**
 
-​        cacheAs主要通过两方面提升性能。一是减少节点遍历和顶点计算；二是减少drawCall。善用cacheAs将是引擎优化性能的利器。
+Setting cacheAs can cache the display object as a static image. When cacheAs, the child object changes, automatically re cache, and can manually update the cache by calling the reCache method. It is recommended to cache the complex content that is not always changing as a static image, which can greatly improve rendering performance. CacheAs has three values: "none", "normal" and "bitmap".
 
-​        下例绘制10000个文本：
+1. The default is "none" without any cache.
+
+2. When the task is "normal", the canvas cache is executed under Canvas, and the command cache is executed under webgl mode.
+
+3. When the value is "bitmap", the canvas is still cached under Canvas, and the renderTarget cache is used in webGL mode. It's important to note that the renderTarget cache mode in webGL has a 2048 size limit, and over 2048 adds extra memory overhead. In addition, the cost of continuous redrawing is relatively large, but it will reduce the drawcall, rendering the highest performance. Under webGL, the command cache mode only reduces the node traversal and command organization, and does not reduce drawcall, medium performance.
+
+
+
+After setting the cacheAs, you can also set staticCache = true to prevent automatic updates of the cache, and you can manually call the reCache method to update the cache.
+
+​        CacheAs mainly through two aspects to improve performance. First, reduce node traversal and vertex calculation; the second is to reduce drawCall.  Good use of cacheAs will be a powerful tool for optimizing engine performance.
+
+​       The next example draws 10000 text:
 
 ```javascript
 package 
@@ -108,20 +108,19 @@ textBox.cacheAs = "bitmap";
 
 
 
-### **五、文字描边**
+### **5. text strokes**
 
-在运行时，设置了描边的文本比没有描边的文本多调用一次绘图指令。此时，文本对CPU的使用量和文本的数量成正比。因此，尽量使用替代方案来完成同样的需求。
+At run time, set the stroke stroke more text than text without a call instruction. At this point, the amount of text used for CPU is proportional to the amount of text. So, try to use alternatives to accomplish the same requirements.
 
-· 对于几乎不变动的文本内容，可以使用cacheAs降低性能消耗，参见“图形渲染性能 - 关于cacheAs”。
+· For almost unchanged text content, cacheAs can be used to reduce performance consumption, see "graphics rendering performance - about cacheAs".
 
-· 对于内容经常变动，但是使用的字符数量较少的文本域，可以选择使用位图字体。
+· Bitmap fonts can be used for text fields where content changes frequently, but fewer characters are used.
 
 
 
-### **六、跳过文本排版，直接渲染**
+### **6.  skip text layout, direct rendering**
 
-大多数情况下，很多文本都不需要复杂的排版，仅仅简单地显示一行字。为了迎合这一需求，Text提供的名为changeText的方法可以直接跳过排版。
-
+In most cases, a lot of text does not require complicated typography, just simply displaying a line of characters. In order to meet this demand, Text provides a method called changeText can skip layout.
 
 
 ```javascript
@@ -134,10 +133,10 @@ text.changeText("text changed.");
 
  
 
-Text.changeText会直接修改绘图指令中该文本绘制的最后一条指令，这种前面的绘图指令依旧存在的行为会导致changeText只使用于以下情况：
+Text.changeText will directly modify the last instruction drawn in the drawing instruction. The behavior of the previous drawing instruction still leads to changeText only used in the following situations:
 
-· 文本始终只有一行。
+· The text is always one line
 
-· 文本的样式始终不变（颜色、粗细、斜体、对齐等等）。
+· The style of the text is always the same (color, thickness, italics, alignment, etc.)
 
-​        即使如此，实际编程中依旧会经常使用到这样的需要。
+​        Even so, the actual programming will still often use such a need.
