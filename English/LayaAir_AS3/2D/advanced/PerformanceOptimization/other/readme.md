@@ -18,18 +18,18 @@ If you want to use, it is recommended to use in WebGL mode;
 
 ### 3. Do not create objects and complex calculations in the Timer loop
 
-由于Timer的`loop()`与`frameLoop()`方法里会不断的循环执行，当创建对象及复杂计算时，会导致大量的性能消耗出现在循环里，因此，尽可能不要在循环里创建对象及复杂计算。
+Because Timer's `loop()` and `frameLoop()` methods will continue to cycle execution, when creating objects and complex computing, will cause a large number of performance consumption in the loop, so as far as possible not to create objects in the loop and complex computing.
 
 
 
 ### 4. Use autoSize and getBounds as few as possible
 
-`autoSize()`与`getBounds()`需要大量计算，对性能的影响较大，尽量少用。
+`autoSize()` and `getBounds()` need a lot of calculation, which has great influence on performance, and uses less as much as possible.
 
 
 
 ### 5. Execution of functions by try catch can be very slow
 
-项目中尽量减少`try catch`的使用，被`try catch`的函数执行会变得非常慢。
+Trying to minimize the use of `try catch`, in a project can be very slow when it is executed by `try catch` functions.
 
  
