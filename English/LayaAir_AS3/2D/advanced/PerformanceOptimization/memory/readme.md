@@ -1,12 +1,12 @@
-# 内存优化方式
+# Memory optimization methods
 
-### 1、通过对象池优化内存
+### 1. Optimizing memory by object pool
 
-对象池优化是游戏开发中非常重要的优化方式，也是影响游戏性能的重要因素之一。
+Object pooling optimization is one of the most important optimization methods in game development and also one of the most important factors affecting game performance.
 
-在游戏中有许多对象在不停的创建与移除，比如角色攻击子弹、特效的创建与移除，NPC的被消灭与刷新等，在创建过程中非常消耗性能，特别是数量多的情况下。
+There are many objects in the game that are constantly created and removed, such as the role of attack bullets, the creation and removal of special effects, NPC's destruction and refresh, etc., in the process of creating a very consumption performance, especially in the case of a large number .
 
-对象池技术能很好解决以上问题，在对象移除消失的时候回收到对象池，需要新对象的时候直接从对象池中取出使用。
+The object pooling technique is a good solution to the above problem. When the object is removed, the object pool is returned to the object pool, and the object is extracted directly from the object pool when the new object is needed.
 
 优点是减少了实例化对象时的开销，且能让对象反复使用，减少了新内存分配与垃圾回收器运行的机会。
 
