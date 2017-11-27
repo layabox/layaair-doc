@@ -107,7 +107,7 @@ Shader is the unique performance indicator of WebGL mode, which means the number
 
 
 
-### 7、Canvas介绍
+### 7. Canvas Introduction
 
 In Canvas mode, there are three values, as shown in Figure 5, where there is no value until CacheAs is set, default is `0/0/0`. It respectively means: `number of canvas redrawn per frame` / `The number of canvas with “normal” buffer type` / `number of canvas types with “bitmap” buffer type`.
 
