@@ -622,37 +622,37 @@
             "name_2_data": [
               {
                 "name_3_name": "性能统计面板介绍",
-                "name_3_url": "Chinese/LayaAir_AS3/2D/advanced/PerformanceOptimization/Stat_Panel/",
+                "name_3_url": "English/LayaAir_AS3/2D/advanced/PerformanceOptimization/Stat_Panel/",
                 "name_3_file": "readme.md"
               },
               {
                 "name_3_name": "内存优化方式",
-                "name_3_url": "Chinese/LayaAir_AS3/2D/advanced/PerformanceOptimization/memory/",
+                "name_3_url": "English/LayaAir_AS3/2D/advanced/PerformanceOptimization/memory/",
                 "name_3_file": "readme.md"
               },
               {
                 "name_3_name": "渲染优化原则",
-                "name_3_url": "Chinese/LayaAir_AS3/2D/advanced/PerformanceOptimization/rendering/",
+                "name_3_url": "English/LayaAir_AS3/2D/advanced/PerformanceOptimization/rendering/",
                 "name_3_file": "readme.md"
               },
               {
                 "name_3_name": "CacheAs静态缓存优化",
-                "name_3_url": "Chinese/LayaAir_AS3/2D/advanced/PerformanceOptimization/cacheAs/",
+                "name_3_url": "English/LayaAir_AS3/2D/advanced/PerformanceOptimization/cacheAs/",
                 "name_3_file": "readme.md"
               },
               {
                 "name_3_name": "CPU优化方式",
-                "name_3_url": "Chinese/LayaAir_AS3/2D/advanced/PerformanceOptimization/CPU/",
+                "name_3_url": "English/LayaAir_AS3/2D/advanced/PerformanceOptimization/CPU/",
                 "name_3_file": "readme.md"
               },
               {
                 "name_3_name": "其它优化策略",
-                "name_3_url": "Chinese/LayaAir_AS3/2D/advanced/PerformanceOptimization/other/",
+                "name_3_url": "English/LayaAir_AS3/2D/advanced/PerformanceOptimization/other/",
                 "name_3_file": "readme.md"
               },
               {
                 "name_3_name": "使用chrome的性能分析器",
-                "name_3_url": "Chinese/LayaAir_AS3/2D/advanced/PerformanceOptimization/Chrome_Profiles/",
+                "name_3_url": "English/LayaAir_AS3/2D/advanced/PerformanceOptimization/Chrome_Profiles/",
                 "name_3_file": "readme.md"
               }
             ]
