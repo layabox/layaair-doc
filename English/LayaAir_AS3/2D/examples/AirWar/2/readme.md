@@ -20,7 +20,7 @@
 
 ![试玩.png](img/0.png)<br />（Picture 2）
 
-新New page corresponding description, please refer to the following table.
+New page corresponding description, please refer to the following table.
 
 | game IDE visualizations  | File description              |
 | ------------ | ----------------- |
@@ -47,7 +47,7 @@ GamePlay, GameOver page and GameStart page production basically the same way (Fi
 
 
 
-#### 游戏地图背景
+#### Game map background
 
 To create and open GameBg.ui pages, we dragged two background.png from the explorer to the background editor for background use, and the upper and lower two sides were aligned continuously, and used for map continuous rolling. And set two graph variable names (VaR attributes) for BG1, BG2. The Y coordinates of BG2 are -1280.
 
