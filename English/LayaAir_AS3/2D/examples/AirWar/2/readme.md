@@ -1,4 +1,4 @@
-# 2. Visual resource making of Editors
+# 2. Editor visualized resource production
 
 
 
