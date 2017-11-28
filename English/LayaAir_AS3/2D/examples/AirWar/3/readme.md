@@ -1,22 +1,22 @@
-# 三、游戏UI流程控制
+# 3. Game UI process control
 
-###游戏流程控制概述
+### Game Process Control Overview
 
-​	在前一节课程中，我们制作了所有的可视化资源，并生成了UI的显示类。这节课开始我们进入正式的游戏逻辑代码编辑中，一方面熟悉游戏开发的流程、思路，一方面学习LayaAir UI功能的实现。
+​	In the previous section, we made all the visualizations and generated UI's display classes. At the beginning of this lesson, we entered the formal game logic code editing. On the one hand, we were familiar with the game development process and train of thought. On the one hand, we learned the realization of LayaAir UI function.
 
-​       根据之前的需求分析，《飞机大战》的游戏的流程相对简单，游戏开始—游戏进行中—角色死亡—游戏结束—重新开始—游戏进行中.....因此在本节课中，我们主要实现游戏的基本流程，但重点是如何实现游戏UI功能，这也是上一堂课的的个延续。
+​       According to the previous needs analysis,  the process of  《Aircraft war》 is relatively simple. The game starts -- the game is going on -- the character death -- the end of the game -- the restart. .. So in this lesson, we mainly implement the basic process of the game, but the focus is on how to implement the game UI function, which is also a continuation of the last lesson.
 
-界面流程效果演示地址：（加链接或二维码）
+Interface process effects demo address: (plus links or two-dimensional code)
 
 
 
-### 新建游戏主类
+### New game main class
 
-切换IDE到代码基础模式，在src文件夹中新建一个Main类，首先初始化LayaAir引擎，分辨率为720*1280（需与IDE中页面尺寸相同），然后加载游戏资源与开始页面，做为我们游戏的第一步。
+Switch IDE to code base mode, create a Main class in the src folder, first initialize the LayaAir engine, a resolution of 720 * 1280(the page size in IDE is the same) and then the game resources and the start page are loaded to be the first step of our game.
 
-这里笔者推荐使用Flash Builder或FlashDevelop进行书写代码，LayaAir对于AS3的支持还不是很完善，代码提示的功能还比较弱。
+Here, I recommend using Flash Builder or FlashDevelop to write code, LayaAir's support for AS3 is not perfect, and the function of code prompt is relatively weak.
 
-在Main类中加入以下代码：
+Add the following code in the Main class:
 
 ```
 package {
@@ -50,11 +50,11 @@ package {
 }
 ```
 
-LayaAir引擎要求在程序加载UI页面前，需先对所需资源进行加载完成才会显示。在上两节课中我们说到IDE中编辑的界面资源发布后会自动图集打包，UI资源生成的地址为"bin/h5/res/atlas/"下。
+The LayaAir engine requires that the program should be loaded before loading the UI page before the program is loaded. In the last two lessons, we said that the editor's interface resources in IDE will be packaged automatically after the publication of the interface resources, and the UI resource is generated under the "bin/h5/res/atlas/" directory.
 
- 资源加载完成后，在完成的回调函数中实例化开始页面，并加载到舞台中。编译项目，可以看到开始页面已经显示出来了。
+ After the resource load is complete, instantiate the start page in the completed callback function and load it into the Stage. Compile the project, you can see the start page has been displayed.
 
-但因尺寸太大，浏览器显示不全，因此我们可以在引擎初始化方法Laya.init()下方加入屏幕适配，让游戏全屏，大小与浏览器大小保持一致。（详细屏幕适配设置请查API）
+However, due to the size is too large, the browser is not displayed, so we can add a screen adaptation below the engine initialization method Laya.init (), so that the game full screen, size and browser size consistent. (Detailed screen adaptation settings check API)
 
 ```
 	//全屏不等比缩放模式
@@ -63,24 +63,24 @@ LayaAir引擎要求在程序加载UI页面前，需先对所需资源进行加�
 
 
 
-### 游戏流程控制
+### Game process control
 
-根据之前思维导图分析，我们先编写游戏的整体流程控制，可以让我们的开发思路更加清晰，如果是大型项目也可以让工作分工更明确。下面我们就为游戏建立一个基本的流程循环体系。
+According to the previous mind map analysis, we first write the whole process control of the game, which can make our development ideas clearer. If it's a large project, it can also make the division of work more clear. Here we build a basic flow cycle system for the game.
 
-首先我们添加流程页面全局变量，一共四个页面。
+First, we add the process page global variable, a total of four pages.
 
-然后我们用三个方法来作为游戏的主要流程：游戏开始gameStart()、游戏中gameInit()、游戏结束gameOver()，负责游戏流程页面的显示与切换。
+Then we use the three way as the main process of the game: the game starts gameStart (), the game gameInit (), the game ends gameOver (), is responsible for the game process page display and the handover.
 
-在gameInit()方法中，因为暂时没有角色加入，无法用主角死亡来调用gameOver()方法，因此加入一个时间延迟来模拟流程调用。
+In the gameInit () method, because the temporary role is not added, the gameOver () method cannot be invoked by the death of the leading actor, so a time delay is added to simulate the process call.
 
-**注：**因为gameInit()与gameOver()方法在游戏过程中会被反复运行（游戏中—游戏结束—游戏中—游戏结束.....），同学们可以发现，地图、游戏中UI及游戏结束UI就会被反复创建，这样就造成不必要的内存开销。
+**Note：** Because the gameInit () and gameOver () methods are repeatedly executed during the game (in game - end of game - in game - end of game .....), students can find that the map, in-game UI, and game over UI It will be repeatedly created, resulting in unnecessary memory overhead.
 
-那么我们有两种方法解决：
-一是把UI都修改成单例模式，这样在游戏中就只存在一个实例UI。
-二是在实例化时判断是否已被实例化。可以用“||=”运算符，如果对象已有实例，那么就直接使用，没有的话再实例出来。
-例如：play||=new GamePlayUI()，它等同于play=play||new GamePlayUI()
+So we have two ways to solve it:
+One is to modify the UI into a single example, so that only one instance, UI, is present in the game.
+The two is whether it is instantiated when it is instantiated. You can use “||=”operator, if the object has an example, then used directly, then no instance out.
+For example: play||=new GamePlayUI(), which is equivalent to play=play||new GamePlayUI()
 
-全部代码如下：
+The whole code is as follows：
 
 ```
 package {
@@ -173,7 +173,7 @@ package {
 }
 ```
 
-以上代码通过编译后，游戏的基本流程全部跑通。
+After the code is compiled, the basic process of the game is all run through.
 
-当然，还有很多细节部分并未完善，比如开始页面中游戏加载进度更新显示，页面与按钮未有动画效果，这些都可以通过页面类自身的代码去实现，下一课我们再开始进入页面代码逻辑的编写。
+Of course, there are a lot of details is not perfect, such as the beginning of the page loading progress game updates page button and no animation, which can be realized by the page class code, written in the next lesson we'll begin to enter the page code logic.
 
