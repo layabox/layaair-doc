@@ -1,15 +1,15 @@
-# 如何用LayaNative测试App运行项目
+# How to run a project with LayaNative test App
 
-### 一、下载与安装
+### 1. Download and install
 
-打开LayaAirIDE，在“工具”菜单里点击"运行器下载"，会弹出二维码下载地址。
+Open LayaAirIDE, in the “Tools” menu, click "Runtime Download",  and pop up display a QR code download address.
 
 ​	![图片](img/1.png)
-​	图(1)
+​	Picture (1)
 
 ​	![图片](img/2.png)
-​	图(2)
-**Tips：LayaPlayer不是浏览器，输入地址的请输入全路径，即使默认启动的是index.html，也要输入/index.html。**
+​	Picture (2)
+**Tips：LayaPlayer is not a browser, enter the address to enter the full path, even if the default boot is index.html, also to enter /index.html. **
 * http://testgame.layabox.com/index.html      正确  
 * http://192.168.0.100:8899/index.html        正确  
 * http://testgame.layabox.com/                错误    
@@ -17,115 +17,115 @@
 * http://192.168.0.100:8899/                  错误  
 * http://192.168.0.100:8899                   错误  
 
-**Tips：输入地址后，如果发现屏幕上没有显示任何画面，有可能是因为项目没有正确设置横竖屏，请参考文档：https://github.com/layabox/layaair-doc/tree/master/Chinese/LayaNative/screen_orientation **
+**Tips: input address, if you find any screen is not displayed on the screen, it may be because the project is not properly set screen, please refer to the document: https://github.com/layabox/layaair-doc/tree/master/English/LayaNative/screen_orientation **
 
-#### 1.Android下载和安装
+#### 1. Android download and install
 
-直接用android手机进行扫码，点击apk进行安装即可。
+Scan directly with android phone code, click apk to install.
 
-**Tips：如果使用微信扫码，由于微信的安全设置，扫码后需要复制链接地址到手机浏览器中进行下载。**    
+**Tips：If you use the WeChat scan code, because of the WeChat security settings,  after scanning code need to copy the link address to the mobile browser to download.**    
 
-#### 2.iOS下载和安装
+#### 2.iOS download and install
 
-　　用微信扫码后，点击“在Safari中打开”，在Safari浏览器中打开后点击 Install按钮，然后点击安装即可，如下图所示：
+　　Scan with the WeChat, click "Open with Safari", open the Safari browser, click the Install button, and then click Install, as shown below:
 
-**步骤1：**
+**Step 1: **
 
 ​	![图片](img/3.png)<br/>
-​	图(3)
+​	Picture (3)
 
  
 
-**步骤2：**
+**Step 2：**
 
 ​	![图片](img/4.png)<br/>
-​	图(4)
+​	Picture (4)
 
  
 
-**步骤3：**
+**STep 3：**
 
 ​	 ![图片](img/5.png)<br/>
-​	图(5)
+​	Picture (5)
 
   **Tips**：
 
-点击安装后，这里没有自动跳转功能，需要手动去系统桌面上看一下，是否存在Layabox的应用正在安装，如果正在安装，就等待安装结束后进行下一步操作。
+Click the installation, there is no automatic jump function, you need to manually go to the system desktop look at the existence of Layabox application is installed, if you are installing, waiting for the installation after the next step.
 
 
 
-　　安装成功后，点击运行会弹出"未受信任的企业开发者"，这个时候需要开发者自己进行设置一下。需要点击"设置"-->"通用"-->"设备管理"-->"点击LayaBox Network Technology.."-->"点击信任"，随后再打开LayaBox应用程序便可以使用了，如下图所示：
+　　After the installation is successful, click Run to pop the "untrusted enterprise developer" and this time needs the developer to set it on its own. You need to click "set"-->"General"-->"Device Management"-->" Click LayaBox Network Technology.."-->"Click Trust".  Finally you can open LayaBox application, use it as shown below.
 
-**步骤4：**
+**Step 4：**
 
 ​	![图片](img/6.png)<br/>
-​	图(6)
+​	Picture (6)
 
  
 
-**步骤5：**
+**Step 5：**
 
 ​	![图片](img/7.png)<br/>
-​	图(7)
+​	Picture (7)
 
  
 
-**步骤6：**
+**Step 6：**
 
 ​	![图片](img/8.png)<br/>
-​	图(8)
+​	Picture (8)
 
  
 
-**步骤7：**
+**Step 7：**
 
 ​	![图片](img/9.png)<br/>
-​	图(9)
+​	Picture (9)
 
  
 
-**步骤8：**
+**Step 8：**
 
 ​	![图片](img/10.png)<br/>
-​	图(10)
+​	Picture (10)
 
  
 
-#### 3.打开应用
+#### 3. Open the application
 
-　　打开应用之后，会看见如图11的界面：
+　　After opening the application, you will see the interface of Figure 11:
 
 ​	![图片](img/11.png)<br/>
-​	图(11)
+​	Picture (11)
 
-　　默认的地址是LayaBox提供的一个性能测试实例，点击“GO”按钮便可以进入性能测试。当然开发者可以输入自己的项目地址进行测试，如下图所示：
+　　The default address is a performance test instance provided by LayaBox, and click the “GO” button to enter the performance test. Of course, developers can enter their own project addresses for testing, as shown in the following figure:
 
 
 
 ​	![图片](img/12.png)<br/>
-​	图(12)
+​	Picture (12)
 
  
 
-在项目中可以点击AssistiveTouch，点击后退便可以返回首页。
+Click on AssistiveTouch in the project and click Back to return to the home page.
 
 ​	![图片](img/13.png)<br/>
-​	图(13)
+​	Picture (13)
 
  
 
-第二次打开app的时候会自动记录上次输入的地址。
+The second time you open the app will automatically record the last entered address.
 
 ​	![图片](img/14.png)<br/>
-​	图(14)
+​	Picture (14)
 
  
 
-#### 4.注意事项
+#### 4. Precautions
 
-　　文本格式的文件（例如:ini、xml、html、json、js等）都必须是utf8编码格式，因为IOS设备现在尚不支持非utf8格式编码的文件。
+　　Text format files (for example: ini, XML, HTML, JSON, JS, etc.) must be utf8 encoding format, because IOS devices do not support non utf8 format encoded files now.
 
 
-#### 5.建议
+#### 5. Suggestion
 
-　　建议开发者学习一下android和ios开发的基本知识，使用过程中可以把移动设备连接到电脑上，随时查看log，log中有很多重要的信息，可以帮助开发者定位问题。比如：非utf8格式编码的文件名字、网络错误、下载错误等等。
+　　It is recommended that developers learn the basic knowledge of Android and IOS development. They can connect mobile devices to computers and check log at any time. There are many important information in log, which can help developers locate problems. For example, file names, network errors, downloading errors, and so on, which are encoded in non - utf8 format.
