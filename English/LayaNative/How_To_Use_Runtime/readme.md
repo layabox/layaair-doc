@@ -1,4 +1,4 @@
-# How to run a project with LayaNative test App
+# How to run and test an APP project with LayaNative
 
 ### 1. Download and install
 
