@@ -9,7 +9,7 @@
             "name_2_name": "Overview HTML5",
             "name_2_data": [
               {
-                "name_3_name": "What is HTML5？",
+                "name_3_name": "What is HTML5 ?",
                 "name_3_url": "English/Layabox_Intro/",
                 "name_3_file": "what_is_HTML5.md"
               }
@@ -834,45 +834,45 @@
             ]
           },
           {
-            "name_2_name": "《微信飞机大战》实战开发",
+            "name_2_name": "Wechat app 《AirCraft War》 game",
             "name_2_data": [
               {
-                "name_3_name": "项目需求分析与资源准备",
+                "name_3_name": "Project requirement analysis and resource",
                 "name_3_url": "English/LayaAir_AS3/2D/examples/AirWar/1/",
                 "name_3_file": "readme.md"
               },
               {
-                "name_3_name": "编辑器可视化资源制作",
+                "name_3_name": "Editor visualized resource production",
                 "name_3_url": "English/LayaAir_AS3/2D/examples/AirWar/2/",
                 "name_3_file": "readme.md"
               },
               {
-                "name_3_name": "游戏流程控制",
+                "name_3_name": "Game UI control",
                 "name_3_url": "English/LayaAir_AS3/2D/examples/AirWar/3/",
                 "name_3_file": "readme.md"
               },
               {
-                "name_3_name": "游戏UI功能实现",
+                "name_3_name": "Game UI function",
                 "name_3_url": "English/LayaAir_AS3/2D/examples/AirWar/4/",
                 "name_3_file": "readme.md"
               },
               {
-                "name_3_name": "游戏主角与操控",
+                "name_3_name": "Game characters and control",
                 "name_3_url": "English/LayaAir_AS3/2D/examples/AirWar/5/",
                 "name_3_file": "readme.md"
               },
               {
-                "name_3_name": "创建敌机与角色碰撞",
+                "name_3_name": "Create a collision between the enemy and the role collision",
                 "name_3_url": "English/LayaAir_AS3/2D/examples/AirWar/6/",
                 "name_3_file": "readme.md"
               },
               {
-                "name_3_name": "主角射击与掉落道具",
+                "name_3_name": "Protagonist shooting and falling props",
                 "name_3_url": "English/LayaAir_AS3/2D/examples/AirWar/7/",
                 "name_3_file": "readme.md"
               },
               {
-                "name_3_name": "关卡升级与音效播放",
+                "name_3_name": "Level upgrades and sound playback",
                 "name_3_url": "English/LayaAir_AS3/2D/examples/AirWar/8/",
                 "name_3_file": "readme.md"
               }
