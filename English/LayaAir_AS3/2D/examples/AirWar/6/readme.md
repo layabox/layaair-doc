@@ -1,28 +1,28 @@
-# 六、创建敌机与角色碰撞
+# 6. Create a collision between the enemy and the role
 
 
 
-​	在上节课中，我们实现了主角的加载与操控，还加入了边界检查更新。这节课我们要向主角施加压力了，创建一群群敌机飞向主角，让主角不再孤单。当然，如果主角被撞击后，会失血直至死亡。
+​	In the last lesson, we implemented the load and manipulation of the protagonist, and added the border check update. In this lesson we have to put pressure on the protagonist to create a group of enemy planes to fly to the protagonist, so that the protagonist is no longer alone. Of course, if the protagonist is hit, it will lose blood until it dies.
 
 
 
-### 创建敌机，让他们飞行起来
+### Create an enemy aircraft and let them fly
 
-代码思路如下：
+Code idea is as follows：
 
-1.在Main类中建立创建敌人方法creatEnemy()，可生成不同的敌人。
+1. The creation of an enemy method in the Main class, creatEnemy (), can generate different enemies.
 
-2.在Main类主循环loop()中加入定期创建敌机逻辑代码。
+2. Add regular creation of enemy logic code in the Main class main loop loop ().
 
-3.在角色Role类中建立角色死亡方法die()，包括了从舞台移除、事件移除、对象回收等，
+3. In the role Role class, the role of the role death method die () is established, including the stage removal, event removal, object recovery, and so on.
 
-4.修改角色Role类中更新方法update()，角色每帧根据速度移动。增加除主角外的其他角色边界检查，当飞出屏幕后，消失并被对象池回收。
+4. Modify the update method update () in the role Role class, which moves each frame according to the speed. Add other role boundary checks except for the protagonist. After flying out of the screen, it disappears and is reclaimed by the object pool.
 
 
 
-#### 创建敌机方法
+#### Create a method of enemy aircraft
 
-打开Main主类，创建creatEnemy()方法
+Open the Main main class and create the creatEnemy () method
 
 ```
 		/**
@@ -50,20 +50,20 @@
 		}
 ```
 
-观察以上代码，我们在创建敌人时用到了“对象池”方式，详情请参考API。
+Looking at the above code, we use the “object pool“ method when we create the enemy. For details, please refer to API.
 
 ```
 		//创建敌人，从对象池创建
 		var enemy:Role = Pool.getItemByClass("role", Role);
 ```
 
-正常情况下敌机大量的创建出现，然后被击毁消失，这个过程中内存消耗很大，游戏的性能会越来越低。LayaAir提供的对象回收再利用方法有效的解决了这个问题。
+Under normal circumstances, a lot of the creation of the enemy aircraft, and then destroyed and disappeared, the process of memory consumption, the performance of the game will become less and more low. The object recovery and reuse method provided by LayaAir effectively solves this problem.
 
 
 
-#### 定期创建敌人
+#### Create an enemy on a regular basis
 
-在Main类加入属性：敌机血量表hps、敌机速度表speeds、敌机数量表nums，用于游戏数值使用与调整。
+In the Main class add properties: the enemy blood volume table HPS, the enemy speed table speeds, the enemy number table nums, for the use and adjustment of the game.
 
 ```
 		/****敌机血量表****/
@@ -74,9 +74,9 @@
 		private var speeds: Array = [3, 2, 1];
 ```
 
-主循环loop()中加入定期创建代码。根据当前帧数算出不同延迟时间产生敌机。
+The main loop loop () is added to the regular creation code. According to the current number of values of different delay time generation aircraft.
 
-去除主角更新方法hero.update()，改为对角色层进行遍历，让所有角色（主角与敌机）都进行更新，边界检查等。
+Remove the protagonist update method hero.update (), instead of traversing the role layer, allowing all roles (protagonists and enemy aircraft) to be updated, border check, and so on.
 
 ```
 		/**
@@ -119,9 +119,9 @@
 
 
 
-#### 角色死亡与回收
+#### Role death and recovery
 
-在角色类中建立角色死亡方法die()，注意对象池回收方法Pool.recover("role", this)，角色只有回收后才能从对象池中创建
+The role death method die(), is set up in the role class. We should pay attention to the object pool recovery method  Pool.recover("role", this). After the role is recovered, it can be created from the object pool.
 
 ```
 		/**角色死亡并回收到对象池**/
@@ -138,9 +138,9 @@
 		}
 ```
 
-#### 角色更新
+#### Role update
 
-修改角色更新方法update()，增加角色根据速度移动，超出边界处理，并加入死亡回收。
+Modify the role update method update (), increase the role to move according to speed, exceed the boundary processing, and add the death recovery.
 
 注：主角死亡后不回收，以免新对象使用主角对象创建，发生主角属性修改问题。
 
