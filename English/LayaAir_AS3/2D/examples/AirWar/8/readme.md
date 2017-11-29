@@ -1,4 +1,4 @@
-# 8. level upgrades and sound playback
+# 8. Level upgrades and sound playback
 
 
 
