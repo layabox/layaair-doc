@@ -884,16 +884,16 @@
         "nav_1_name": "LayaNative原生服务",
         "nav_1_data": [
           {
-            "name_2_name": "LayaNative手把手",
+            "name_2_name": "LayaNative overview",
             "name_2_data": [
               {
-                "name_3_name": "测试App安装",
-                "name_3_url": "Chinese/LayaNative/How_To_Use_Runtime/",
+                "name_3_name": "APP installation",
+                "name_3_url": "English/LayaNative/How_To_Use_Runtime/",
                 "name_3_file": "readme.md"
               },              
               {
-                "name_3_name": "运行Hello LayaBox项目",
-                "name_3_url": "Chinese/LayaNative/run_HelloLayaBox/",
+                "name_3_name": "Running the Hello LayaBox project",
+                "name_3_url": "English/LayaNative/run_HelloLayaBox/",
                 "name_3_file": "README.md"
               }
             ]
