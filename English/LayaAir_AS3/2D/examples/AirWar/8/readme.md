@@ -1,18 +1,18 @@
-# 八、关卡升级与音效播放
+# 8. level upgrades and sound playback
 
 
 
-​	通过上几节课的学习制作，《飞机大战》核心功能全部完成。为了达到更多的游戏趣味性和体验，这节课我们加入关卡升级功能，让游戏的难度逐步增加，玩家的成就感更强。然后加上音效播放，游戏体验感也会更好。
+​	Learning through the last few lessons,《Aircraft war》 all the core functions are completed. In order to achieve more interest and experience in the game, we add the upgrading function of the level to increase the difficulty of the game and make the players feel more successful. And then, with sound effects, the experience of the game will be better.
 
 
 
-### 关卡升级，游戏难度增加
+### Upgrade the card and increase the difficulty of the game
 
-关卡升级由玩家获得的积分转换运算，关卡越高，说明玩家操控越好。随着关卡的升级，增强敌机的血量、创建敌机时间缩短、敌机飞行速度加快、数量也逐步增加，这样游戏难度就增加了。
+The card is upgraded by the player's integral conversion operation. The higher the level, the better the player is manipulated. With the upgrading of the gateway, the amount of enemy aircraft is increased, the time to create enemy planes is shortened, the speed of enemy planes is accelerated, and the number is increasing.
 
-#### 增加关卡相关属性
+#### Increased card related attributes
 
-在Main类中增加关卡相关属性。createTime、speedUp、hpUp、numUp、levelUpScore。
+Add the barrier related attributes in the Main class. createTime、speedUp、hpUp、numUp、levelUpScore.
 
 ```
 		//游戏关卡提升属性
@@ -30,9 +30,9 @@
 
 
 
-#### 创建关卡升级计算方法
+#### The method of building up a card upgrade calculation
 
-在主类Main中增加游戏升级方法levelUp()。
+Add the game upgrade method levelUp () in the main class Main.
 
 ```
 		/**
@@ -63,9 +63,9 @@
 
 
 
-#### 主循环中检测关卡升级
+#### Checkout escalation in the main loop
 
-如果角色未死亡，那么每帧检测是否关卡升级。
+If the role is not dead, then the checkout is upgraded per frame.
 
 			/**
 			 游戏主循环
@@ -98,9 +98,9 @@
 
 
 
-#### 创建敌机时，加入升级数据
+#### When you create an enemy machine, add the upgrade data
 
-当关卡升级时，创建的敌机参数会有所改变，我们需要在Main类主循环中修改创建敌机部分代码。
+When the card is upgraded, the enemy parameters that are created will change, and we need to modify the code for creating the enemy parts in the Main class main loop.
 
 ```
 			//创建敌机，加入关卡升级数据，提高难度
@@ -123,9 +123,9 @@
 
 
 
-#### 游戏初始化，重置关卡数据
+#### Game initialization, reset the card data
 
-在Main类gameInit()方法中，一定要重置关卡数据。否则重新开始后，上局的关卡数据还留着，UI显示是从上一局数据开始增加，同时一大波超快、血量超厚的飞机会碾向你.....
+In the Main class gameInit () method, you must reset the card data. Otherwise, after the restart, the upper level's data remain. The UI display is increasing from the previous Bureau's data. At the same time, a super fast and super heavy aircraft will run to you.
 
 ```
 		/**
@@ -159,27 +159,27 @@
 			......
 ```
 
-修改完所有代码，编译运行可以看到随着积分score的增加，UI中的关卡数level也增加了，同时，敌机的速度、血量等也会越来越高，游戏的难度也变得更大（图1）。重新开始后数据也重新刷新，一切正常。
+After modifying all the code, compile and run, we can see that with the increase of integral score, the number of level in UI is also increased. Meanwhile, the speed and volume of the enemy aircraft will also become higher and higher, and the difficulty of the game will also increase. (Fig. 1). After restarting, the data is refreshed, and everything is normal.
 
-当然，同学们也可以自己去调整一下升级数据，让你的游戏或更难，或更易。
-
-
-
-![思维导图.png](img/1.png)<br />（图1）
+Of course, students can also adjust their own upgrade data to make your game more difficult, or easier.
 
 
 
-### 增加游戏音效
+![思维导图.png](img/1.png)<br />（Picture 1）
 
-游戏中增加了好的音乐音效，会让一款游戏增色不少。在开始页面GameStart.as中，我们已经加载了游戏音效资源，也把游戏音效sound目录拷贝到了发布目录h5中，因此本节课中我们可以直接使用。
 
-注：提前加载音效可以减少声音的延迟现象。
 
-LayaAir提供了SoundManager类方便管理声音（详情请看API）。其中playSound用来播放声音特效，比如游戏射击声音，击中声音，爆炸声音，UI按钮声音等。playMusic是用来播放背景音乐，两者都可以设置一个url参数和loops播放次数。
+### Increase the sound effect of the game
 
-下面我们在角色Role类中增加音效播放
+In the game, a good music sound will be added to the game, which will make a game more coloring. In the initial page GameStart.as, we have already loaded the sound resources of the game, and copied the game sound sound directory to the publishing directory H5, so we can use this lesson directly.
 
-吃道具音效，在eatProp()方法中加入代码
+Note: early loading of sound effects can reduce the delay of sound.
+
+LayaAir provides a SoundManager class that is convenient to manage sound (for details, see API). PlaySound is used to play sound effects such as game shooting sound, hit sound, explosion sound, UI button sound, and so on. PlayMusic is used to play background music, both of which can set a URL parameter and the number of loops playback times.
+
+Here we add sound effects to the role Role class
+
+Eat the sound effect of the prop, add the code in the eatProp () method
 
 ```
 		/**
@@ -195,7 +195,7 @@ LayaAir提供了SoundManager类方便管理声音（详情请看API）。其中p
 			......
 ```
 
-发射子弹音效，在shoot()方法中增加代码
+Launch a bullet sound, add code in the shoot () method
 
 ```
 		/**
@@ -222,7 +222,7 @@ LayaAir提供了SoundManager类方便管理声音（详情请看API）。其中p
 		}
 ```
 
-角色死亡音效，在lostHp()方法中，播放角色死亡动画处增加死亡音效播放代码
+Role death sound effect, in the lostHp () method, play the role death animation to increase the dead sound performance code
 
 ```
 		/**
@@ -241,14 +241,13 @@ LayaAir提供了SoundManager类方便管理声音（详情请看API）。其中p
 			}
 		}
 ```
-
-保存并编译，我们发现，当我们开炮、角色死亡及吃道具时已有音效播放。同学们也可以去找更多更好的音效音乐，让你的游戏更加完美。
-
+Save and compile, we found that we had sound effects when we fired, the characters died and we ate the props. Students can also find more and better sound music to make your game more perfect.
 
 
-下面我们把修改后的Main类与Role类代码全部代码全部展示出来。
 
-### 主类Main.as全部代码
+Here we show all the code for the modified Main class and the Role class code.
+
+### Main.as all the main code
 
 ```
 package {
@@ -610,7 +609,7 @@ package {
 
 
 
-### Role类全部代码：
+### Role class all code:
 
 ```
 package
