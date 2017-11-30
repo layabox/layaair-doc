@@ -102,7 +102,7 @@ LayaPlatformCallback.GetInstance().LP_LoginCallback(objCallBack.toString());
 | sendToDesktop         | 发送到桌面      | `conchMarket.sendToDesktop(JSON.stringify(sData),function(data));` |
 | sendMessageToPlatform | 发送消息       | `conchMarket.sendMessageToPlatform(JSON.stringify(sData),function(data));` |
 | canSendToDesktop      | 能否pushicon | `conchMarket.canSendToDesktop(JSON.stringify(sData),function(data));` |
-| openTopicCircle       | 打开话题圈      | `conchMarket.openTopicCircle(JSON.stringify(sData),function(data));` |  
+| openTopicCircle       | 打开话题圈      | `conchMarket.openTopicCircle(JSON.stringify(sData),function(data));` |
 
 **附录:**
 
