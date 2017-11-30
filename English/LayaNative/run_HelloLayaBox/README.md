@@ -4,7 +4,7 @@ Remember that when you look at this document, you should mastered the LayaAir or
 
 **Tips：Enter a project address, if you find any screen is not displayed on the screen, it may be because the project is not properly set horizontal and vertical screen, please refer to the document https://github.com/layabox/layaair-doc/tree/master/Chinese/LayaNative/screen_orientation **
 
-Step 1： I have now created a Hello LayaBox a simple project, as shown in Figure 1
+Step 1： We have now created a Hello LayaBox a simple project, as shown in Figure 1
 
 ![图1](img/1.jpg)
 
