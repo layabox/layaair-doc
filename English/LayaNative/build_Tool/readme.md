@@ -1,168 +1,167 @@
-# LayaBox 构建工具
-　　构建工具用来生成LayaPlayer的移动端App项目，相当于App项目向导。目前支持Android（Eclipse项目、Android studio项目）和iOS(XCode项目)。
+# LayaBox Build tools
+　　The build tool is used to generate the LayaPlayer's mobile terminal App project, equivalent to the App project wizard. It is currently supported by Android (Eclipse project, Android studio project) and iOS (XCode project).
 
-## 1. 运行需求
-#### 1.1 基础开发环境
+## 1. Operating requirements
+#### 1.1 Basic development environment
 
-​	构建项目必须要准备好开发环境。比如：构建iOS项目需要准备好Mac电脑和XCode，android需要准备好Eclipse或Android studio。
+​	Construction projects must be prepared to develop the environment. For example: building a iOS project needs to be ready for Mac computers and XCode, and Android needs to be ready for Eclipse or Android studio.
 
-## 2. 面向用户
-　　无论是构建Android还是iOS项目，则必须要有相应的Android或iOS的App开发基础。  如果不具备，请先去学习了解相关的基础知识。
+## 2. user-oriented
+　　Whether to build Android or iOS projects, there must be a corresponding Android or iOS base for App development. If you don't, please learn the basic knowledge first
 
 
 
-## 3. 在LayaAirIDE的打开App构建
+## 3. Open the App build in LayaAirIDE
 
-在[Layabox官网](Layabox.com)下载layaAirIDE，打开LayaAirIDE-->工具-->app构建，如图1所示：
+In [Layabox Official website](Layabox.com)Download layaAirIDE, open LayaAirIDE -->Tools -->app build, as shown in Figure 1:
 
 
 ![图1](1.jpg)
 
-(图1)
+(Picture 1)
 
 
-　由于构建工具需的库文件比较大，因此并没有直接包含在LayaAirIDE中，在第一次使用这个工具的时候，会先下载SDK包，如下图：
+Because the library files needed for building tools are relatively large, they are not directly included in LayaAirIDE. When you first use this tool, you will download the SDK package first.
 
 ![](0.gif)  
 
-​  (图2)
+​  (Picture 2)
 
-**注意**
+**note**
 
-这个文件比较大，所以下载的时候需要耐心等待。
+This file is relatively large, so be patient while waiting for download.
 
-一旦下载完成，以后再点 "app构建" 的时候就会直接弹出构建对话框。
+Once the download is complete,  then the build dialog box will be popped directly when the "app build"  is later.
 
-## 4. 项目构建界面参数
+## 4. Project build interface parameters
 
-在LayaAirIDE中打开项目构建的界面，如图3所示：
+Open the project build interface in LayaAirIDE, as shown in Figure 3:
 
 ![2](2.jpg)
-(图3)
+(Picture 3)
 
-* 平台
+* platform
 
-   构建生成的项目工程的类型，有Android Eclipse项目、Android studio项目、iOS 项目 三种选项，如果需要生成Android项目，可以选择Android-eclipse或Android-studio（ 由于google已经不再维护Eclipse，建议选择Android Studio项目，我们也会在以后的版本中去掉对Eclipse的支持）。 如果需要生成XCode(iOS)项目，则选择iOS选项。 
+   Build the type of generated project, Android Eclipse, Android studio or iOS project. If you need to build a Android project, you can select Android-eclipse or Android-studio (as the Google no longer maintain Eclipse, recommended to choose the Android Studio project, we will remove the support for Eclipse in later editions). If you need to generate the XCode (iOS) project, select the iOS option.
 
 
-* 单机版app：
+* stand-alone version app：
 
-   如果勾选此选项，则构建的项目打包的App是单机版，否则就是在线版。单机版不需要联网，没有对应的url，不用提供url。但是必须提供游戏资源，否则打包之后无法运行。
+   If this option is checked, the App packaged for the project is a stand-alone version, otherwise it is an online version. The stand-alone version does not need networking, no corresponding URL, and no URL. But the game resources must be provided, otherwise you can't run after the package.
 
-* 项目名称：
+* project name：
 
-   App的名称。同时也是构建项目的输出目录。
+   App's name. It is also the output directory of the build project.
 
-* 包名 ：
+* Package names ：
 
-   应用的包名，这个正常情况下是不可见的。一般采用反域名命名规则（有利于分辨和避免与系统中已经有的APP冲突)。   
+   Application package name, is not visible in the normal case.  The rule of naming anti domain names is generally used (in favor of resolving and avoiding conflicts with existing APP in the system). 
 
-　　例如 : com.layabox.runtime.demo   
-　　包名必须是 xxx.yyy.zzz 的格式，至少要有两级，即xxx.yyy 。否则打包会失败。
+　　for example : com.layabox.runtime.demo   
+　　name format of the package must be xxx.yyy.zzz at least two levels, that isxxx.yyy . Otherwise the packaging will fail.
 
-* 游戏url：
+* Game url：
 
-   如果要打包的应用是一个在线项目，则需要提供一个启动url，指向一个html页面，是应用的入口。而通过LayaAir生成的项目，会输出一个启动页面，一般是index.html。 在测试的时候，为了方便，通常是使用的本地URL地址在浏览器中测试，当打成Android App的时候，必须有一个真正的webserver的地址，
+   If you want to package the application is an online project, you need to provide a startup URL, pointing to a HTML page, the entry of the application. And a project that is generated through LayaAir will output a startup page, usually index.html. When testing, for convenience, the local URL address usually used is tested in browser. When typing Android App, there must be a real webserver address.
 
-   例如：  
+   for example：  
 
-　　*局域网地址：*  
+　　*LAN address：*  
 
 ``` 
     http://10.10.20.19:8888/index.html
 ```
-　　*实际地址:*  
+　　*The actual address:*  
 ``` 
     http://layaair.ldc.layabox.com/layaplayer/index.html
 ```
 
-​	**注意 **
+​	**note **
 
-​	LayaPlayer对html的支持非常有限，参考[这里](https://github.com/layabox/layaair-doc/tree/master/Chinese/LayaNative/native_index);
+​	LayaPlayer has very limited support for html, from [here](https://github.com/layabox/layaair-doc/tree/master/English/LayaNative/native_index);
 
-* 输出路径：
+* Output path:
 
-   构建生成的 App 工程项目的存放地址。
+   Build the generated App project storage address.
 
-* 资源路径：
+* Resource path：
 
-   资源是脚本、图片、声音等资源。对于在线游戏，只要有游戏的url就能正常运行，但是把资源直接打进App包中的话，可以避免网络下载，加快资源载入速度。如果是单机游戏，由于没有提供游戏url，就必须给资源目录，把所需的资源全部打包进App。
+   Resources are assets such as scripts, pictures, sounds, and so on. For online games, as long as the game's URL can run normally, but the resources can be directly entered into the App package, it can avoid network downloading and accelerate the loading speed of resources. If it is a single game, because no game URL is provided, you must give the resource directory and pack all the required resources into the App.
+   
+   The resources packaged into App can still be updated through our DCC tools (resource cache management).
+   If this time did not set the resource path, after building the project, you can still manually add resources, add method reference [LayaDcc Tool](https://github.com/layabox/layaair-doc/tree/master/Chinese/LayaNative/LayaDcc_Tool)。  
 
-   打包进App的资源依然可以通过我们的dcc工具（资源缓存管理）进行更新。
-   如果这时候没有设置资源路径，在构建完项目以后，依然可以手动添加资源，添加方法参考 [LayaDcc工具](https://github.com/layabox/layaair-doc/tree/master/Chinese/LayaNative/LayaDcc_Tool)。  
+   **Note : **  
 
-   **注意：**  
+   　　The disadvantage of packaging resources is to increase the size of the package  
 
-   　　把资源打包的缺点是会增加包体的大小。  
-
-   　　打包资源的在线游戏，必须在server端打dcc，否则就会失去打包的优势，依然会下载所有的资源。如何打dcc，参考 [LayaDcc工具](https://github.com/layabox/layaair-doc/tree/master/Chinese/LayaNative/LayaDcc_Tool)。
-
-
-
-## ５. 构建好的项目工程的使用
-
-构建好的 App工程，可以用对应的开发工具打开进行二次开发和打包等操作。
-
-- Android-eclipe（android）项目可以使用 eclipse软件进行导入和开发。
-- Android-studio（android）项目可以使用 android-studio软件进行导入和开发。
-- XCode（ios）项目可以使用 xcode 软件进行导入和开发。打开XCode(ios)项目后需要选择真正的ios设备进行build。（注意：真正的设备是 armv7、armv7s、arm64 架构。而如果使用ios Simulator 则是 X86 架构，目前 LayaNative 在 ios 设备上尚未支持 X86 架构，如果使用模拟器编译是无法通过的。（0.9.5版开始支持模拟器）
+   　　The online game for packaging resources must be DCC at the server side, otherwise the advantage of packaging will be lost and all the resources will still be downloaded. How to play DCC, reference [LayaDcc工具](https://github.com/layabox/layaair-doc/tree/master/Chinese/LayaNative/LayaDcc_Tool)。
 
 
 
-**参考资源：**
+## 5. use of the built project
 
-- [Eclipse搭建Android环境](https://github.com/layabox/layaair-doc/tree/master/Chinese/LayaNative/setUpAndroidEnvironment_Eclipse)
+To build a good App project, two development and packaging operations can be opened with the corresponding development tools.
 
-- [Android Studio的使用和配置](https://github.com/layabox/layaair-doc/tree/master/Chinese/LayaNative/AndroidStudio_ConfigurationAndApplication)
+- Android-eclipe（android）project can be imported and developed using eclipse software.
+- Android-studio（android）project can be imported and developed using android-studio software.
+- XCode (IOS) project can be imported and developed using Xcode software. After opening the XCode (IOS) project, you need to select a real IOS device for build. (Note: the real device is the armv7, armv7s, arm64 architecture. If IOS Simulator is used, it is X86 architecture. At present, LayaNative has not yet supported X86 architecture on IOS devices, if it is compiled by simulator, it cannot be passed. (0.9.5 version begins to support emulators)
 
-- [IOS打包发布App详细流程](https://github.com/layabox/layaair-doc/tree/master/Chinese/LayaNative/packagingReleases_IOS)
+
+
+**Reference resources：**
+
+- [Eclipse set up the Android environment](https://github.com/layabox/layaair-doc/tree/master/Chinese/LayaNative/setUpAndroidEnvironment_Eclipse)
+
+- [Android Studio usage and configuration](https://github.com/layabox/layaair-doc/tree/master/English/LayaNative/AndroidStudio_ConfigurationAndApplication)
+
+- [IOS package release App detailed process](https://github.com/layabox/layaair-doc/tree/master/English/LayaNative/packagingReleases_IOS)
 
   ​
 
-## 6. 手动切换单机版和网络版
+## 6. Manual switch and network edition
 
-构建完成之后，可以通过直接在项目中修改代码来切换单机版和网络版。
+Once built, you can switch standalone and web versions by modifying the code directly in the project.
 
-1. Android 项目  
+1. Android project 
 
-     在构建的项目中打开MainActivity.java，搜索 `mPlugin.game_plugin_set_option("localize","false");`  
-     单机版需要设置为"true"，如`mPlugin.game_plugin_set_option("localize","true");`  
-     如果要设置为网络版，就要修改为：`mPlugin.game_plugin_set_option("localize","false");`， 并且设置正确的地址：  
-     `mPlugin.game_plugin_set_option("gameUrl", "http://你的地址/index.html");`
+     Open in the build project MainActivity.java, search for `mPlugin.game_plugin_set_option("localize","false");`  
+     Stand-alone version needs to be set to "true", Such as `mPlugin.game_plugin_set_option("localize","true");`  
+     If you want to set it to the network version, you'll have to change it to : `mPlugin.game_plugin_set_option("localize","false");`,  And set the correct address ：  
+     `mPlugin.game_plugin_set_option("gameUrl", "http://YOUR ADDRESS/index.html");`
 
 
-2. iOS 项目
+2. iOS project
 
-   iOS项目构建完成后，项目目录下的 resource/scripts/index.js 脚本的最后有个执行loadUrl的函数，这里会加载首页地址，修改这里的地址就能切换单机版和网络版，单机版的地址固定为 `http://stand.alone.version/index.html`。
+   After the completion of the iOS project construction, Under the project directory resource/scripts/index.js At the end of the script, there is a function to execute the loadUrl, home address will be loaded here. Change the address here will be able to switch stand-alone and online version, Stand-alone version of the address fixed as `http://stand.alone.version/index.html`。
 
-   例如一开始是网络版，地址为：  
+   For example, the beginning is the online version, address: 
 
     `loadUrl(conch.presetUrl||"http://10.10.20.19:7788/index.html");`   
-   要改成单机版的话，修改这句话：  
+   To change into stand-alone version, modify this sentence ：  
     `loadUrl(conch.presetUrl||"http://stand.alone.version/index.html");`  
-   反之亦然。  
+   and conversely. 
 
-   **注意**   
-   一旦修改了url地址，原来打包的资源就都失效了。这时候，需要手动删除 cache目录下内容，重新用layadcc来生成打包资源，参见[《LayaDCC工具》](https://github.com/layabox/layaair-doc/tree/master/Chinese/LayaNative/LayaDcc_Tool)。
+   **note**   
+   Once you modify the url address, the original packaged resources are invalid. At this time, you need to manually delete the contents of the cache directory and reuse the layadcc to generate the packaging resources. See [《LayaDCC Tool》](https://github.com/layabox/layaair-doc/tree/master/Chinese/LayaNative/LayaDcc_Tool)。
 
-## 7. 资源刷新
+## 7. Resource refresh
 
-通过IDE构建好工程，如果选择的是单机版和打包资源版本。会在resource/cache目录下，把所有h5项目的资源（包括：脚本、图片、html、声音等）全部打包到了这个目录下。  
-``android的目录： assets/cache/  ``  
-``iOS的目录：  resource/cache/  ``  
+A good project is built through IDE, if you choose a single version and a package resource version. In resource/cache directory, all the resources of the H5 project (including: scripts, pictures, HTML, sound, etc.) are packed into this directory. 
+``android directory： assets/cache/  ``  
+``iOS directory：  resource/cache/  ``  
 
-但是在开发过程中，h5的项目一直在变化，为了避免每次都重新构建工程，在IDE-1.7.6-Beta版本之后，可以通过命令行进行刷新。
+However during the development process h5 project has been changing, in order to avoid rebuild the project every time, in the IDE-1.7.6-Beta version, you can refresh through the command line.
 
-资源包版本调用命令：``layanative refreshres -u http://testgame.layabox.com/index.html``    
-单机版本调用命令：``layanative refreshres`` 
+Resource package  version calls the command : ``layanative refreshres -u http://testgame.layabox.com/index.html``    
+Stand-alone version calls the command : ``layanative refreshres`` 
 
 ***Tips***  
-**1、必须在构建的app工程目录下，执行命令。最明显的标志就是要在navtie.json的目录下，如下图所示：**
+**1. you must build the app project directory, execute the command. The most obvious sign is to be in the navtie.json directory, as shown below: **
 ![](3.jpg)    
 
-关于layanative命令行如何安装使用，请参考[layanative命令行工具使用](https://ldc.layabox.com/doc/?nav=ch-as-5-3-0)
+About how to install and use layanative command line, please refer to [layanative Command line tools use](https://ldc.layabox.com/doc/?nav=en-as-5-3-0)
 
 
-## 8. 其他注意问题
-　　android studio构建完成后，需要根据自己的环境修改android sdk的版本号，现在设置的是23，需要修改的
-文件是 app/build.gradle。
+## 8. Other attention issues
+　　Android studio build is completed, you need to modify android sdk version number according to their own environment, and now set to 23, you need to modify the file is app/build.gradle.
