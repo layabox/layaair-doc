@@ -795,6 +795,11 @@
                 "name_3_name": "3D multi-scene application example",
                 "name_3_url": "English/LayaAir_AS3/3D/examples/multiScene/",
                 "name_3_file": "readme.md"
+              },
+              {
+                "name_3_name": "3D子弹射击碰撞检测",
+                "name_3_url": "English/LayaAir_AS3/3D/examples/bulletShoot/",
+                "name_3_file": "readme.md"
               }
             ]
           }
