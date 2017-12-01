@@ -80,49 +80,48 @@ Android application package name is not visible in the normal case. The rule of 
 
 #### 4.2.5 Output directory
 
-　　就是打包结果，如果没有错误的话，这个目录下面就会生成重新打包好的文件，现在名字固定为 game.apk。 实际使用的时候可以改名，
-　　改文件名不会影响app安装后显示的名称。  
-　　*Tips: 如果打包过程中出现问题而中断，则会在这个目录下残留一些临时目录，遇到这种情况，只要直接把这些目录删掉即可。*
+　　It is the result of the package. If there is no error, this directory will generate a re-packaged files, and now the name is fixed as game.apk. The actual use of the name can be renamed, change the name of the file will not affect the name displayed after the installation of the app.
+　　*Tips: If there is a problem in the packaging process, there will be some temporary directory under this directory. If this happens, just delete these directories directly.*
 
 
 
-#### 4.2.6 资源路径
+#### 4.2.6 Resource path
 
-　　资源就是实际的游戏资源，例如脚本、图片、声音等。对于在线游戏，只要有游戏的url就能正常运行，但是把资源直接打进包中的话， 可以避免网络下载，加快资源载入速度。如果是单机游戏，由于没有提供游戏url，就必须给资源目录，把所需的资源全部打包进apk。 注意打包进apk的资源依然可以通过我们的dcc工具（资源缓存管理）进行更新。
+　　Resource is the actual game assets, such as scripts, pictures, sounds, etc. For online games, URL can run as long as there is a game, but the resources directly into the package words can avoid network download, speed up resource loading speed. If it is stand-alone game, because there is no game url must give the resource directory, all the necessary resources packaged into the apk. 注意打包进apk resources can still be through our dcc tools（Resource cache management）update.
 
-　　*Tips: 打包资源的在线游戏，必须在server端打dcc了，否则就会失去打包的优势，依然会下载所有的资源。如何打dcc，参考[LayaDcc打包工具](https://github.com/layabox/layaair-doc/tree/master/Chinese/LayaNative/LayaDcc_Tool)*
+　　*Tips: online game for packaging resources must be DCC at the server side. Otherwise, it will lose the advantage of packaging, and will still download all the resources. How to play DCC. Reference resources [LayaDcc Packaging tools](https://github.com/layabox/layaair-doc/tree/master/Chinese/LayaNative/LayaDcc_Tool)*
 
 
 
 #### 4.2.7 ICON  
 
-　　APP的图标文件，打包工具会根据这个文件来生成android需要的各个大小的图标。因此，这个图标最好符合android的最大图标的大小， 例如 144x144，如果原始图片太小，生成的图标效果就会变差。图标文件的格式必须是jpg或者png，如果有圆角的话，必须是png格式且圆角部分透明。
+　　 Icon file of the APP, the packaging tool will generate the icons of the size required by the Android based on this file. Therefore, this icon is best suited to the size of the maximum icon of Android, such as 144x144, If the original image is too small, the resulting icon will be less effective. Icon file format must be jpg or png, if rounded corner one, it must be png format and transparent.
 
 
 
-#### 4.2.8 keystore，keystore密码，alias，alias密码  
+#### 4.2.8 keystore，keystore Password, alias, alias Password 
 
-　　这些都是keystore相关的参数。keystore用来给生成的apk进行签名。如果不填，打包工具会使用自带的keystore文件来签名。 不过为了安全，建议使用自己的keystore文件。如果还没有keystore文件，可以用java自带的keytool来生成一个，具体生成方法可以 查找keytool帮助或者百度一下。
+　　These are keystore related parameters. keystore is used to sign the generated apk. If not fill, the packaging tool will use own keystore file to sign. But for security, it is recommended to use your own keystore file. If you do not have a keystore file yet, can use java comes with keytool to generate one, specific generation method can look for keytool help or Baidu
 
-　　为什么要有keystore密码和alias密码两个密码呢？ 如果粗略解释下，可以认为keystore是一个 集合，可以包含很多证书，他里面的每个证书都有一个别名，就是alias。如果要取出某个证书来使用的话，首先要进入keystore，于是就需要 keystore的密码，然后要取出里面的某个alias的证书，又要这个alias的密码。
-
-
-
-#### 4.2.9 配置脚本：
-
-　　配置脚本相关请参考：[打包相关的其它设置综述](https://ldc.layabox.com/doc/?nav=ch-as-5-1-4)
+　　Why should there be two passwords for the keystore password and the alias password ? If you roughly explain, You can think of the keystore as a collection, can think of the keystore as a set, Each of the certificates in him has an alias, that is alias. If you want to remove a certificate to use, first to enter the keystore, so you need the keystore password, and then to remove the alias inside a certificate, but also the alias password.
 
 
 
-#### 4.2.10 启动LOGO：
+#### 4.2.9 Configuration scripts : 
 
-　　启动页面中的logo可以替换成自己的设计的图片。
-
-　　*Tips: 使用LayaNative打包服务。启动页面中必须保留包含Layabox的LOGO图，此处仅为启动LOGO的设计样式改变，也就是说可以采用Layabox的LOGO图与产品LOGO结合等方式。*
+　　Please refer to the relevant configuration script: [Package-related other settings overview](https://ldc.layabox.com/doc/?nav=ch-as-5-1-4)
 
 
 
-#### 4.2.11打包：
+#### 4.2.10 Start LOGO：
 
-　　填好各参数后点击 `打包` 按钮执行打包工作，打包时间较长，因此会有一个进度提示，如果没有任何错误，进度到达100% 以后，在输出目录就会生成最后的打包结果。打包完成后，在输出目录下会生成一个game.apk文件。
+　　The logo in the startup page can be replaced with a custom picture design.
+
+　　*Tips: uses LayaNative package services. The LOGO diagram that contains Layabox must be kept in the Launcher page, which is only changed to start the LOGO design mode. LOGO diagram of Layabox can be combined with product LOGO. *
+
+
+
+#### 4.2.11 Package：
+
+　　When you fill in the parameters,  click the `package` button to perform the packing work. Whether packing time takes long, there will be a progress prompt. If there is no error, the progress reached 100% and the output directory will generate the final package results. After the package is complete, a game.apk file is generated in the output directory.
 
