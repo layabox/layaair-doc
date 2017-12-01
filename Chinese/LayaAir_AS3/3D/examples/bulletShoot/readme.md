@@ -1,33 +1,33 @@
 
 
-## 3D子弹射击碰撞检测示例
+## 3D bullet shooting with collision detection
 
 
 
-### 需求分析
+### requirement analysis
 
-本章课程主要向初学者们演示3D物体间的碰撞检测的简单运用，在3D引擎1.7.12版发布后，引擎的脚本功能趋于完善，增加了关于碰撞检测的触发方法，开发者们可以方便的使用它们进行类似射击类游戏的开发。
+This article mainly demonstrates to beginners a sample application of collision detection between 3D objects. After the release of 3D Engine version 1.7.12, the script function of the engine tends to be perfect, and the triggering method for collision detection is added so that developers can conveniently The use of them for a similar shooting game development.
 
-在之前的示例中，我们运用了射线与碰撞器进行碰撞检测，通过碰撞信息的属性判断，实现鼠标交互或者其他碰撞逻辑。但要实现如子弹在移动过程中与场景其他3D物体进行碰撞检测比较麻烦，本章课程中就主要讲解它们的实现方法。
+In previous examples, we used collision detection with ray and Collider, and realized mouse interaction or other collision logic by judging the attributes of collision information. However, it is troublesome to realize the collision detection of a bullet with other 3D objects in the scene during the moving process. Below, methods for implementing the collision detection are mainly described.
 
-基本需求为：
-1、鼠标点击场景的3D空间，创建子弹，并对准鼠标点方向进行射击。
+Basic needs are:
+1. Mouse click on the scene of the 3D space, create a bullet, and aim the mouse point shooting direction.
 
-2、子弹创建后，自动根据鼠标点击方向进行飞行，目标点可以是场景中的3D物品，也可以是空白空间。
+2. After the bullet is created, it automatically flies according to the mouse click direction, the target point can be the 3D item in the scene, and it can also be a blank space.
 3、当子弹飞行中碰撞到3D物体后，子弹销毁；如果子弹未击中目标，飞行一段距离后销毁。
 4、当场景中物品被子弹击中后，物品根据子弹方向，产生被击退效果，并且减血，当血小于0时，物品销毁。
 
-**Tips：因真正的射击游戏比较复杂，比如需要有枪械模型，枪械枪管根据鼠标移动进行旋转，从枪管中发出射线用于检测碰撞等。本例中为了初学者学习需要，减化了需求，子弹在固定的位置发出，根据鼠标点击确定飞行方向。**
+**Tips：The real shooting game is more complex, need a gun model, which rotates according to mouse movement, rays are emitted from the gun to detect an eventual collision. In this case, for beginners to learn basic concept, the course reduced to strict necessary functions. Bullet is sent out in a fixed position, and the direction of the flight is determined according to the click of the mouse.**
 
-参考效果如下图1
+Reference effect as shown in Figure 1
 
-![图1](img/1.gif)<br>（图1）
+![图1](img/1.gif)<br>（Picture 1）
 
 
 
-### 需用的引擎技术方案分析
+### request analysis of engine technical scheme
 
-1、**资源制作：**场景在Unity中进行制作，需在可被击毁的3D物品加入盒型碰撞器组件，目前引擎和插件版本可以导出碰撞器组件（MeshCollider网格碰撞器暂时无法导出，后期将陆续支持），不需要在代码中添加。
+1、**Resource production：** Scenario are made in Unity and require the inclusion of a box-typ ecollider component on the wrecked 3D items. Currently engine and plug-in versions can export the collider component（MeshCollider grid collider can not be exported temporarily, and later will be supported.）. It does not need to be added to the code.
 
 子弹暂时放入场景之中，居于摄像机之后，用于克隆创建子弹。子弹作为碰撞检测的发起者，需要添加碰撞器（球型）与刚体组件，在导出时，引擎能自动识别。
 
