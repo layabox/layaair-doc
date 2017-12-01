@@ -800,6 +800,11 @@
                 "name_3_name": "3D多场景运用示例",
                 "name_3_url": "Chinese/LayaAir_AS3/3D/examples/multiScene/",
                 "name_3_file": "readme.md"
+              },
+              {
+                "name_3_name": "3D子弹射击碰撞检测",
+                "name_3_url": "Chinese/LayaAir_AS3/3D/examples/bulletShoot/",
+                "name_3_file": "readme.md"
               }
             ]
           }
@@ -1838,6 +1843,11 @@
                 "name_3_name": "3D多场景运用示例",
                 "name_3_url": "Chinese/LayaAir_TS/3D/examples/multiScene/",
                 "name_3_file": "readme.md"
+              },
+              {
+                "name_3_name": "3D子弹射击碰撞检测",
+                "name_3_url": "Chinese/LayaAir_TS/3D/examples/bulletShoot/",
+                "name_3_file": "readme.md"
               }
             ]
           }
@@ -2806,6 +2816,11 @@
               {
                 "name_3_name": "3D多场景运用示例",
                 "name_3_url": "Chinese/LayaAir_JS/3D/examples/multiScene/",
+                "name_3_file": "readme.md"
+              },
+              {
+                "name_3_name": "3D子弹射击碰撞检测",
+                "name_3_url": "Chinese/LayaAir_JS/3D/examples/bulletShoot/",
                 "name_3_file": "readme.md"
               }
             ]

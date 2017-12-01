@@ -795,6 +795,11 @@
                 "name_3_name": "3D multi-scene application example",
                 "name_3_url": "English/LayaAir_AS3/3D/examples/multiScene/",
                 "name_3_file": "readme.md"
+              },
+              {
+                "name_3_name": "3D子弹射击碰撞检测",
+                "name_3_url": "English/LayaAir_AS3/3D/examples/bulletShoot/",
+                "name_3_file": "readme.md"
               }
             ]
           }
@@ -884,16 +889,16 @@
         "nav_1_name": "LayaNative原生服务",
         "nav_1_data": [
           {
-            "name_2_name": "LayaNative手把手",
+            "name_2_name": "LayaNative overview",
             "name_2_data": [
               {
-                "name_3_name": "测试App安装",
-                "name_3_url": "Chinese/LayaNative/How_To_Use_Runtime/",
+                "name_3_name": "APP installation",
+                "name_3_url": "English/LayaNative/How_To_Use_Runtime/",
                 "name_3_file": "readme.md"
               },              
               {
-                "name_3_name": "运行Hello LayaBox项目",
-                "name_3_url": "Chinese/LayaNative/run_HelloLayaBox/",
+                "name_3_name": "Running the Hello LayaBox project",
+                "name_3_url": "English/LayaNative/run_HelloLayaBox/",
                 "name_3_file": "README.md"
               }
             ]
@@ -1024,21 +1029,21 @@
             ]
           },
           {
-            "name_2_name": "LayaNative工具使用",
+            "name_2_name": "LayaNative tools and utilities",
             "name_2_data": [
               {
-                "name_3_name": "layanative 命令行工具使用",
-                "name_3_url": "Chinese/LayaNative/build_Cmd/",
+                "name_3_name": "layanative command-line",
+                "name_3_url": "English/LayaNative/build_Cmd/",
                 "name_3_file": "README.md"
               },
               {
-                "name_3_name": "使用IDE构建工程",
-                "name_3_url": "Chinese/LayaNative/build_Tool/",
+                "name_3_name": "Use the IDE to build the project",
+                "name_3_url": "English/LayaNative/build_Tool/",
                 "name_3_file": "readme.md"
               },
               {
-                "name_3_name": "打包工具使用",
-                "name_3_url": "Chinese/LayaNative/packaging_Tools/",
+                "name_3_name": "Packaging",
+                "name_3_url": "English/LayaNative/packaging_Tools/",
                 "name_3_file": "readme.md"
               }
             ]

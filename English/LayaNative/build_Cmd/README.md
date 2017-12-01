@@ -1,8 +1,8 @@
-# LayaNative命令行工具
-layanative命令行工具用来生成Android和iOS原生项目，以及项目的资源刷新功能， 方便项目迭代过程中的资源更新。
-生成项目的功能对应IDE中的 `工具/app构建` 。
-## 1.命令详解
-### 1.安装layanative
+# LayaNative command line tools
+The layanative command line tools are used to generate Android and iOS native projects, as well as the resource refresh capabilities of the project to facilitate resource updates during the project iteration.
+The function of the generated project corresponds to the  `Tool/app build` in IDE.
+## 1. linux
+### 1. Install layanative
 windows
 ```   
 $ npm install -g layanative  
@@ -11,100 +11,102 @@ mac
 ```   
 $ sudo npm install -g layanative  
 ```
-### 1.查看SDK版本信息
-SDK就是native项目的模板。listversion命令会列出当前所有可用的SDK版本信息，在下面创建native项目的时候可以通过参数指定需要的版本。    
+### 1. Look at SDK version information
+The SDK is a native project template. The listversion command will list all currently available SDK version information. When creating a native project below, you can specify the required version by using the parameter.   
 ```   
 $ layanative listversions  
 ```
-### 2.创建native项目
-createapp命令用于创建native项目  
-可以先用下面的命令查看下命令createapp的帮助信息
+### 2.Create a native project
+createapp command is used to create a native project
+You can use the following command to view the command createapp help information
 ```
 $ layanative createapp --help
 ```
-#### 用法:
+#### usage:
     layanative createapp [-f res_path] [--path output_path] [-s sdk_path | -v version] [-p all|ios|android_eclipse|android_studio] [-t 0|1|2] [-u url] [-n project_name] [-a app_name] [--package_name package_name]
 
-#### 参数说明:
+#### Parameter description:
 
-| 关键字 | 描述
+| Keyword | describe
 | ------------ | ------------ 
-| `--folder,-f` |    资源路径：把游戏资源打包进客户端以减少网络下载,选择本地的游戏目录，例如启动index在d:/game/index.html下,那资源路径就是d:/game。t为0时可不填
-| `--path` |       native项目输出目录 [默认值: "."]
-| `--version，-v` |       SDK版本：自动使用特定版本的SDK，系统会从服务器下载SDK并存放在特定位置。--version和--sdk互相矛盾不能同时指定，都不指定时默认使用最新版本的SDK
-| `--platform, -p` |    项目平台 [可选值: all, ios, android_eclipse, android_studio][默认值: all]
-| `--type, -t` |       创建类型 [0: 不打资源包 1: 打资源包 2: 单机版本] [默认值: 0]
-| `--url, -u` |       游戏地址 [当t为0或者1的时候，必须填，当t为2的时候，不用填写]
-| `--name, -n` |       项目名称：native项目的名称 [默认值: LayaBox]
-| `--app_name, -a` |      应用名称：app安装到手机后显示的名称 [默认值: LayaBox]
-| `--package_name` |       包名 [默认值: com.layabox.game]
-| `--sdk,-s` |       SDK本地目录：自定义的SDK目录，可选参数。断网情况下使用，一般情况下建议使用参数--version。
-当type为1或2时会打资源包到native项目，为0时不打。打包资源底层实际是调用dcc的方法。打包资源dcc相关，参考 [LayaDcc工具](https://github.com/layabox/layaair-doc/tree/master/Chinese/LayaNative/LayaDcc_Tool)。  
-可以用--path参数指定项目的输出路径，默认输出到当前路径下。
+| `--folder,-f` |    Resource path: pack the game resources into the client to reduce network downloading and select the local game directory,  for example start index at d:/game/index.html  and the resource path is d:/game. t can not be filled at 0
+| `--path` |       native project output directory [Default value: "."]
+| `--version，-v` |       SDK Version: using a specific version of the SDK automatically, system downloads the SDK from the server and stores it in a specific location. --version with--sdk Conflicts can not be specified at the same time, the latest version of SDK is not used by default.
+| `--platform, -p` |   Project platform [Optional value: all, ios, android_eclipse, android_studio][Default value: all]
+| `--type, -t` |       build type [0: Do not hit the resource package 1: Play resource package 2: Stand-alone version] [Default value: 0]
+| `--url, -u` |       Game address [When t is 0 or 1, you have to fill it out, and when t is 2, you don't have to fill in it.]
+| `--name, -n` |       project name：native APP name of the project [Default: LayaBox]
+| `--app_name, -a` |      Application Name：name that appears after the app is installed to the phone [Default: LayaBox]
+| `--package_name` |       Package names [Default: com.layabox.game]
+| `--sdk,-s` |       SDK local directory: Custom SDK directory, Optional parameters. Optional parameters, under normal circumstances it is recommended to use the parameters--version。
+When the type is 1 or 2 will hit the resource package to the native project,Do not play at 0. ottom layer of the package resource is actually a method of calling dcc. Package resource dcc related, reference [LayaDcc Tool](https://github.com/layabox/layaair-doc/tree/master/English/LayaNative/LayaDcc_Tool)。  
+Can use --path Parameters specify the output path of a project, default output to the current path
 
-根据-v使用v0.9.5版本的SDK
+Using the -v  version v0.9.5 of the SDK
 ```
 $ layanative createapp -f SnowBallH5 -t -1 -n SnowBallNative -u http://10.10.20.102:8899/index.html -v v0.9.5
 ```
 
-既没指定-v也没指定-s，使用最新版本的SDK
+Neither specify -v nor  -s is specified, using the latest version of SDK
 ```
 $ layanative createapp -f SnowBallH5 -t -1 -n SnowBallNative -u http://10.10.20.102:8899/index.html
 ```
-用--version或者-v指定版本需要联网环境，断网情况下可以用--sdk或者-s指定SDK目录。[SDK下载地址](https://ldc.layabox.com/layadownload/?type=layaairnative-LayaAir%20Native%20SDK%200.9.6)
+Using--version or -v specified version needs a networked environment, Can be used under the network off --sdk or -s Specify the SDK directory [SDK Download address](https://ldc.layabox.com/layadownload/?type=layaairnative-LayaAir%20Native%20SDK%200.9.6)
 ```
 $ layanative createapp -f SnowBallH5 -t -1 -n SnowBallNative -u http://10.10.20.102:8899/index.html -s D:/v0.9.6
 ```
-### 3.刷新native项目资源包
-refreshres命令用于刷新native项目的资源包  
-项目迭代过程中，h5项目有了修改，可以用refreshres命令，重新打包刷新资源和代码到native项目中。
-#### 用法:
+### 3.Refresh the native project resource package
+refreshres command is used to refresh the resource package for the native project
+During the project iteration, the H5 project has been modified, you can use refreshres command, re-package refresh resources and code to the native project.
+#### usage:
     layanative refreshres [-p all|ios|android_eclipse|android_studio] [--path path] [-u url]
 
-#### 参数说明:
+#### Parameter Description:
 
-| 关键字 | 描述
+| Keywords | description
 | ------------ | ------------ 
-| `--platform, -p` |    项目平台 [可选值: all, ios, android_eclipse, android_studio][默认值: all]
-| `--path` |       native项目路径 [默认值: "."]
-| `--url, -u` |       游戏地址
+| `--platform, -p` |    Project platform [Optional value: all, ios, android_eclipse, android_studio][默认值: all]
+| `--path` |       native project path [Defaults: "."]
+| `--url, -u` |       Game address
 
 
-如果创建的项目是单机版，refreshres时不需要输入url。如果输入网络版url，打的是网络版的资源包，那么还需要更改项目代码，才能变成网络版的项目。  
-如果创建的项目是网络版，refreshres时必须输入url。如果输入新的地址，那么还要更改项目中设置url的代码，才能完成URL的替换。如果输入单机版地址，打的是单机版的资源包，那么还需要更改项目代码，才能变成单机版的项目。    
-手动切换单机版和网络版相关，参考 [LayaBox 构建工具](https://github.com/layabox/layaair-doc/tree/master/Chinese/LayaNative/build_Tool)。
+If the created project is a single machine version, you do not need to enter url for refreshres.  If you enter the network version url,It's a network version of the resource package, Then you need to change the project code, To become a network version of the project. 
+If the project created is a network version, You must enter URL when refreshres.If you enter a new address, then change the code to set up URL in the project. If you enter a stand-alone version of the address and call a single version of the resource package, you need to change the project code to become a stand-alone project.
+Manually switch between stand-alone and online versions, reference [LayaBox Build tools](https://github.com/layabox/layaair-doc/tree/master/English/LayaNative/build_Tool)。
 
-createapp时把资源路径写在了生成的native项目目录下的native.json文件中。如果后来资源移到了别的地方，会报错找不到资源目录。createapp时，如果-t参数指定为0时，不打资源，可以不指定资源路径参数，native.json中写的资源路径为空，这种项目refreshres时会报资源路径为空的错误。上述两种情况可以手动修改native.json文件，指定正确的资源路径。
-### 4.删除native项目资源包
-removeres命令用于删除native项目的资源包  
-#### 用法:
+When createapp is called, resource path is written in the native.json file in the generated native project directory. If the resource was moved somewhere else later, it would not be able to find resource directory. Createapp, if the -t parameter is specified as 0, no resource can be specified, no resource path parameters can be specified, and the resource path written in native.json is empty. When refreshres is used, it will report empty errors in resource path. These two cases can manually modify the native.json file to specify the correct resource path.
+
+### 4. Delete the native project resource package
+The removeres command is used to delete the resource package for the native project
+
+#### usage :
     layanative removeres [--path path] 
-#### 参数说明:
+#### Parameter Description:
 
-| 关键字 | 描述
+| Keywords | description
 | ------------ | ------------ 
-| `--path` |       native项目路径 [默认值: "."]
+| `--path` |       native Project path [Default: "."]
 
-## 3.应用实例
-1.首先建立下图所示的目录结构。SnowBallH5是html5项目资源目录
+## 3.Applications
+1. First create the directory structure shown below. SnowBallH5 is the html5 project resource directory
 
 ![图1](img/1.png)  
-2.查看SDK版本信息  
+2. Check SDK version information
 ![图2](img/2.png)  
-3.创建native项目  
+3. Create a native project
 ![图3](img/3.png)  
-4.生成下图所示目录结构。  
+4. Generate the directory structure shown below. 
 ![图4](img/4.png)  
-5.随时刷新资源包  
-在dev目录下，通过--path指定native工程的目录    
+5. Refresh the resource package at any time 
+In the dev directory, the directory of the native project is specified by --path  
 ![图5](img/5.png)       
-进入native项目目录，不需要指定--path参数了  
+Entering the native project directory, you do not need to specify the --path parameter
 ![图5](img/6.png)   
-5.如果不需要资源包，删除它    
-在dev目录下，通过--path指定native工程的目录     
+5. If you do not need a resource package, delete it
+In the dev directory, specify the native project's directory via --path
 ![图5](img/7.png)    
-进入native项目目录，不需要指定--path参数了   
+Into the native project directory, do not need to specify the - path parameter 
 ![图5](img/8.png)  
 
    
-注意：在Mac上执行命令行，窗口会变灰，原因未知（上面图中可见）。但是，只要出现命令提示符就表示命令执行完毕，可以继续输入命令。
+Note: If you execute the command line on your Mac, the window will be grayed out for unknown reasons (visible in the picture above). However, as long as the command prompt appears, the command execution is complete and the command can continue.
