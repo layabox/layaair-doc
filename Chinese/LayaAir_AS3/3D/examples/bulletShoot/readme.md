@@ -14,8 +14,8 @@ Basic needs are:
 1. Mouse click on the scene of the 3D space, create a bullet, and aim the mouse point shooting direction.
 
 2. After the bullet is created, it automatically flies according to the mouse click direction, the target point can be the 3D item in the scene, and it can also be a blank space.
-3、当子弹飞行中碰撞到3D物体后，子弹销毁；如果子弹未击中目标，飞行一段距离后销毁。
-4、当场景中物品被子弹击中后，物品根据子弹方向，产生被击退效果，并且减血，当血小于0时，物品销毁。
+3. When the bullet collides with the 3D object, the bullet is destroyed; if the bullet fails to hit the target, the bullet will be destroyed after a far flight trajectory.
+4. When the object is hit by a subprojectile in the scene, the item is retreated according to the direction of the bullet, and the HP is reduced. When the HP is less than 0, the item is destroyed.
 
 **Tips：The real shooting game is more complex, need a gun model, which rotates according to mouse movement, rays are emitted from the gun to detect an eventual collision. In this case, for beginners to learn basic concept, the course reduced to strict necessary functions. Bullet is sent out in a fixed position, and the direction of the flight is determined according to the click of the mouse.**
 
@@ -29,17 +29,17 @@ Reference effect as shown in Figure 1
 
 1、**Resource production：** Scenario are made in Unity and require the inclusion of a box-typ ecollider component on the wrecked 3D items. Currently engine and plug-in versions can export the collider component（MeshCollider grid collider can not be exported temporarily, and later will be supported.）. It does not need to be added to the code.
 
-子弹暂时放入场景之中，居于摄像机之后，用于克隆创建子弹。子弹作为碰撞检测的发起者，需要添加碰撞器（球型）与刚体组件，在导出时，引擎能自动识别。
+Bullets into the scene for the time being, living in the camera, used to clone to create a bullet. As the initiator of the collision detection, the bullet needs to add a collider (ball type) and a rigid body component, and the engine can recognize automatically when being exported.
 
-2、**碰撞检测原理：**碰撞检测因为引擎优化的原则，分为碰撞发起者与碰撞被动接受者。
+2、**Collision detection principle ：** Because of the principle of engine optimization, collision detection is divided into collision initiator and collision passive receiver.
 
-碰撞发起者3D模型需要添加“刚体”组件，有刚体组件的模型为碰撞发起者，无刚体组件的3D模型代表碰撞接受者，它们添加到场景后，引擎会自动判断发起者与接受者的碰撞器是否重叠。
+The 3D model of collision initiator needs to add "rigid body" components. The rigid body model is the collision initiator, and the 3D model without rigid components represents the collision receiver. After adding them to the scene, the engine automatically determines whether the initiator and the receiver collider overlap.
 
-因此在本例中，子弹作为碰撞发起者需要添加刚体与碰撞器两个组件，立方体盒子只加碰撞器即可。
+Therefore, in this case, the bullet, as a collision initiator, needs to add two components of the rigid body and the collider, and the cube box can only be added to the collider.
 
-3、**脚本触发：**当引擎判断碰撞发起者与接受者的碰撞器重叠后，会查询3D模型是否有脚本组件，如果有，将会根据碰撞的不同阶段去触发脚本的不同方法，类似于发出了各种碰撞事件，去执行不同的回调方法。这些方法包括：碰撞器碰撞时触发方法、碰撞器重叠时逐帧触发方法、碰撞器分离时触发方法。
+3. **Script triggered: ** When the engine determines that collision initiator and the receiver overlap, it queries whether there is a script component in the 3D model. If there is, it will trigger different methods of the script according to the different phases of the collision, similar to issuing various collision events, To implement a different callback method. These methods include triggering methods when the collision of the collision device, triggering method frame by frame when the collision device is overlapped, and triggering method when the collision device separates.
 
-4、**碰撞器大小设置：**从引擎1.7.12版本开始，碰撞器的大小也可以进行设置了，有的时候需要碰撞器大于或小于3D模型用于碰撞检测，因此在Untiy中，可以根据需要对模型的碰撞器大小进行修改。
+4. **Collider size settings：** From the 1.7.12 version of the engine, the size of the collider can also be set up. Sometimes, the collider is larger than or smaller than the 3D model for collision detection. Therefore, in Untiy, the size of the collider can be modified according to the need.
 
 
 
