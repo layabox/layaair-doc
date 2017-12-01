@@ -2,7 +2,7 @@
 
 **在LayaAir引擎中如果渲染模式采用了WebGL，则图片拼接处会经常出现缝隙。如下图所示：**
 
-![1](C:\Users\mengjia\Desktop\WebGL下黑屏\img\1.png)</br>(图1)
+![1](E:\Awork\AGitWork\layaair-doc\Chinese\CommonProblem\2D\GapProblem\img\1.png)</br>(图1)
 
 ### 出现缝隙的原因：
 
@@ -14,13 +14,13 @@
 
 在LayaAir引擎中有两种打包图集的方法。一种是直接在UI编辑模式下导出资源，一种是使用工具栏中的图集打包工具进行打包。但是这两种功能都做了同样的事情，把小图合并到图集的时候都增加了保护边，如下图所示：
 
-![2](C:\Users\mengjia\Desktop\WebGL下黑屏\img\2.png)</br>(图2)
+![2](E:\Awork\AGitWork\layaair-doc\Chinese\CommonProblem\2D\GapProblem\img\2.png)</br>(图2)
 
 **（绿色部分代表最边缘的像素）**
 
 合并到一张大图中位置为100,100。合并到大图中的时候就会自动把最边缘的像素扩充出来，但是真正绘制的时候，还是取100,100的位置。这样就能避免缝隙，如下图所示：
 
-![3](C:\Users\mengjia\Desktop\WebGL下黑屏\img\3.png)</br>(图3)
+![3](E:\Awork\AGitWork\layaair-doc\Chinese\CommonProblem\2D\GapProblem\img\3.png)</br>(图3)
 
 **（蓝色部分就是扩充出来的边，这个边的像素值就是复制图2中的边缘值）**
 
