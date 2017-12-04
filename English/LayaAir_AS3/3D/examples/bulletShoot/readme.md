@@ -1,132 +1,135 @@
 
 
-## 3D子弹射击碰撞检测示例
+## 3D bullet shooting with collision detection
 
 
 
-### 需求分析
+### requirement analysis
 
-本章课程主要向初学者们演示3D物体间的碰撞检测的简单运用，在3D引擎1.7.12版发布后，引擎的脚本功能趋于完善，增加了关于碰撞检测的触发方法，开发者们可以方便的使用它们进行类似射击类游戏的开发。
+This article mainly demonstrates to beginners a sample application of collision detection between 3D objects. After the release of 3D Engine version 1.7.12, the script function of the engine tends to be perfect, and the triggering method for collision detection is added so that developers can conveniently The use of them for a similar shooting game development.
 
-在之前的示例中，我们运用了射线与碰撞器进行碰撞检测，通过碰撞信息的属性判断，实现鼠标交互或者其他碰撞逻辑。但要实现如子弹在移动过程中与场景其他3D物体进行碰撞检测比较麻烦，本章课程中就主要讲解它们的实现方法。
+In previous examples, we used collision detection with ray and Collider, and realized mouse interaction or other collision logic by judging the attributes of collision information. However, it is troublesome to realize the collision detection of a bullet with other 3D objects in the scene during the moving process. Below, methods for implementing the collision detection are mainly described.
 
-基本需求为：
-1、鼠标点击场景的3D空间，创建子弹，并对准鼠标点方向进行射击。
+Basic needs are:
+1. Mouse click on the scene of the 3D space, create a bullet, and aim the mouse point shooting direction.
 
-2、子弹创建后，自动根据鼠标点击方向进行飞行，目标点可以是场景中的3D物品，也可以是空白空间。
-3、当子弹飞行中碰撞到3D物体后，子弹销毁；如果子弹未击中目标，飞行一段距离后销毁。
-4、当场景中物品被子弹击中后，物品根据子弹方向，产生被击退效果，并且减血，当血小于0时，物品销毁。
+2. After the bullet is created, it automatically flies according to the mouse click direction, the target point can be the 3D item in the scene, and it can also be a blank space.
 
-**Tips：因真正的射击游戏比较复杂，比如需要有枪械模型，枪械枪管根据鼠标移动进行旋转，从枪管中发出射线用于检测碰撞等。本例中为了初学者学习需要，减化了需求，子弹在固定的位置发出，根据鼠标点击确定飞行方向。**
+3. When the bullet collides with the 3D object, the bullet is destroyed; if the bullet fails to hit the target, the bullet will be destroyed after a far flight trajectory.
 
-参考效果如下图1
+4. When the object is hit by a subprojectile in the scene, the item is retreated according to the direction of the bullet, and the HP is reduced. When the HP is less than 0, the item is destroyed.
 
-![图1](img/1.gif)<br>（图1）
+**Tips：The real shooting game is more complex, need a gun model, which rotates according to mouse movement, rays are emitted from the gun to detect an eventual collision. In this case, for beginners to learn basic concept, the course reduced to strict necessary functions. Bullet is sent out in a fixed position, and the direction of the flight is determined according to the click of the mouse.**
+
+Reference effect as shown in Figure 1
+
+![图1](img/1.gif)<br>（Picture 1）
 
 
 
-### 需用的引擎技术方案分析
+### request analysis of engine technical scheme
 
-1、**资源制作：**场景在Unity中进行制作，需在可被击毁的3D物品加入盒型碰撞器组件，目前引擎和插件版本可以导出碰撞器组件（MeshCollider网格碰撞器暂时无法导出，后期将陆续支持），不需要在代码中添加。
+1. **Resource production：**Scenario are made in Unity and require the inclusion of a box-typ ecollider component on the wrecked 3D items. Currently engine and plug-in versions can export the collider component（MeshCollider grid collider can not be exported temporarily, and later will be supported.）. It does not need to be added to the code.
 
 子弹暂时放入场景之中，居于摄像机之后，用于克隆创建子弹。子弹作为碰撞检测的发起者，需要添加碰撞器（球型）与刚体组件，在导出时，引擎能自动识别。
 
-2、**碰撞检测原理：**碰撞检测因为引擎优化的原则，分为碰撞发起者与碰撞被动接受者。
+2. **Collision detection principle ：** Because of the principle of engine optimization, collision detection is divided into collision initiator and collision passive receiver.
 
-碰撞发起者3D模型需要添加“刚体”组件，有刚体组件的模型为碰撞发起者，无刚体组件的3D模型代表碰撞接受者，它们添加到场景后，引擎会自动判断发起者与接受者的碰撞器是否重叠。
+The 3D model of collision initiator needs to add "rigid body" components. The rigid body model is the collision initiator, and the 3D model without rigid components represents the collision receiver. After adding them to the scene, the engine automatically determines whether the initiator and the receiver collider overlap.
 
-因此在本例中，子弹作为碰撞发起者需要添加刚体与碰撞器两个组件，立方体盒子只加碰撞器即可。
+Therefore, in this case, the bullet, as a collision initiator, needs to add two components of the rigid body and the collider, and the cube box can only be added to the collider.
 
-3、**脚本触发：**当引擎判断碰撞发起者与接受者的碰撞器重叠后，会查询3D模型是否有脚本组件，如果有，将会根据碰撞的不同阶段去触发脚本的不同方法，类似于发出了各种碰撞事件，去执行不同的回调方法。这些方法包括：碰撞器碰撞时触发方法、碰撞器重叠时逐帧触发方法、碰撞器分离时触发方法。
+3. **Script triggered: ** When the engine determines that collision initiator and the receiver overlap, it queries whether there is a script component in the 3D model. If there is, it will trigger different methods of the script according to the different phases of the collision, similar to issuing various collision events, To implement a different callback method. These methods include triggering methods when the collision of the collision device, triggering method frame by frame when the collision device is overlapped, and triggering method when the collision device separates.
 
-4、**碰撞器大小设置：**从引擎1.7.12版本开始，碰撞器的大小也可以进行设置了，有的时候需要碰撞器大于或小于3D模型用于碰撞检测，因此在Untiy中，可以根据需要对模型的碰撞器大小进行修改。
-
-
-
-在Untiy中创建场景bulletShoot，如图2所示，在立方体盒子上添加碰撞器组件Box Collider，在红色子弹模型上添加Sphere Collider与Rigidbody组件，它们的组件参数采用默认设置即可。
-
-![图2](img/2.png)<br>（图2）
+4. **Collider size settings：** From the 1.7.12 version of the engine, the size of the collider can also be set up. Sometimes, the collider is larger than or smaller than the 3D model for collision detection. Therefore, in Untiy, the size of the collider can be modified according to the need.
 
 
 
-### 功能实现
+Create scene bulletShoot in Unity, as shown in Figure 2, add bumper component Box Collider on the cube box, add Sphere Collider and Rigidbody components on the red bullet model, and their component parameters  with default settings.
 
-本示例功能实现可分为三个类进行逻辑编写：
-
-**主控类Laya3D_BulletAttack.as**，主要用于加载资源、添加子弹与立方体盒子控制脚本，实现鼠标点击事件时创建子弹，生成子弹发射方向等功能。
-
-**子弹脚本类BulletScript.as**，用于控制子弹飞行，通过脚本中碰撞检测的触发方法，实现判断是否击中及子弹销毁等功能。
-
-**立方体控制脚本CubeScript.as**，用于判断是否被子弹击中，当被击中时，实现击退效果动画、减血及被摧毁功能。
+![图2](img/2.png)<br>（Picture 2）
 
 
 
-#### 本例中所需向量数学知识
+### Function realization
 
-要充分理解本章内容，在此需要初学者们学习或回顾一下向量的基础知识，我们会用到向量的加减、归一、取模等运算。
+The implementation of this example can be divided into three categories for logic writing :
 
-三维向量在3D游戏开发中有多种含意，它可以表位置、距离、速度、角度、弧度等。在本例中，如子弹的射击方向就是一个三维向量，从方向向量也可以计算出子弹的速度，这些都需要用向量数学公式。
+**Main Class Laya3D_BulletAttack.as**, mainly used for load resources, add bullets and cube box control script, create a bullet when the mouse click event, generate bullet firing direction and other functions.
 
-三维向量基础公式如下：
+**Bullet script class BulletScript.as**, it is used to control the function of bullet flight, through the trigger method of collision detection in the script, to realize the function of judging whether the hit and the bullet are destroyed.
 
-**A点到B点的方向：AB方向三维向量 = B目标位置三维向量 —  A起始位置三维向量** 
-
-引擎提供方法为：`Vector3.subtract(a:Vector3, b:Vector3, out:Vector3)`。
-
-运用：由3D空间中的两个点的位置，得到一个方向向量，比如子弹飞行方向，攻击的目标点位置向量-子弹当前位置向量。
-
-
-**AC方向向量 = AB方向向量 + BC方向向量**    
-
-引擎提供方法为：`Vector3.add(ab:Vector3, bc:Vector3, ac:Vector3)`。
-
-AC表示A点到C点的方向向量，AB表示A点到B点方向向量，BC表示B点到C点的方向向量（可画图理解）。
-
-
-**BC方向向量 = AB方向向量 — AC方向向量**
-
-引擎提供方法为：`Vector3.subtract(ab:Vector3, ac:Vector3, bc:Vector3)`。
-
-BC表示B点到C点的方向向量，AB表示A点到B点方向向量，AC表示A点到C点的方向向量（可画图理解）。
-
-
-**AB标准方向向量（长度为单位一的向量） = AB方向向量归一化**
-
-引擎提供方法为：`Vector3.normalize(s:Vector3, out:Vector3)`。
-
-运用：任何向量的长度（模）都可以归一化为标准向量，单位为一。比如可以把方向向量归一后，作为速度的标准值，速度设置为归一向量的倍数。
-
-
-**缩放后向量（长度缩放） = 原始向量 * 实数**
-
-引擎提供方法为：`Vector3.scale(v3:Vector3, num:Number, out:Vector3)`。
-
-根据num的值大小进行缩放，可以生成原始向量的num倍长度的向量。
-
-
-**向量的长度值 = 开方（向量.x平方 + 向量.y平方 + 向量.z平方）**
-
-引擎提供方法：`Vector3.scalarLength(a:Vector3)`，返回长度
-
-运用：我们可以通过取向量长度来作为距离、速度参考，向量长度最小值为0。
+**Cube control script CubeScript.as**, used to judge whether the bullet is hit or not, and when it is hit, it achieves the function of animation, blood reduction and destruction.
 
 
 
+#### Knowledge of vector mathematics required in this case
+
+To fully understand the content of this chapter, we need beginners to learn or review the basic knowledge of vectors. We will use vector addition, subtraction, normalization, modulo and other operations.
+
+The 3D vector has many meanings in the development of 3D game. It can table position, distance, speed, angle, arc and so on. In this case, for example, the firing direction of a bullet is a three-dimensional vector, and the velocity of a bullet can also be calculated from the direction vector. All these require vector mathematical formula.
+
+The three dimensional vector basic formula is as follows ：
+
+**Direction from point A to point B:  AB direction 3D vector  = B Target position 3D vector - A Start position 3D vector** 
+
+The engine provides method ：`Vector3.subtract(a:Vector3, b:Vector3, out:Vector3)`。
+
+Use: From the position of two points in 3D space to get a direction vector, such as the direction of the bullet flight, the attack target vector position - the bullet current position vector.
 
 
-#### 主控制类功能实现
+**AC direction vector = AB direction vector + BC direction vector**    
 
-主控类Laya3D_BulletAttack.as的主要功能为三点：
+The engine provides method: `Vector3.add(ab:Vector3, bc:Vector3, ac:Vector3)`。
 
-1. 通过getChildByName()方法在场景中找到立方盒子，为它们分别添加立方体控制脚本CubeScript，用于碰撞检测。
+AC represents the direction vector of A point to C point, AB represents the direction vector of A point to B point, and BC represents the direction vector of B point to C point (picture understanding).
 
-2. 鼠标点击事件中，使用克隆方法创建子弹，这种方法可以将子弹的碰撞器SphereCollider及刚体组件rigidbody一并克隆。
-   创建子弹后，为子弹添加子弹控制脚本BulletScript，并使用BulletScript方法setShootDirection(directionV3:Vector3)设置子弹的飞行方向。
 
-3. 子弹的飞行方向通过鼠标点击场景时产生的射线计算后获得。
-   鼠标点击3D场景空间由摄像机产生射线，判断射线与场景中的3D模型是否相交（射线碰撞检测），如果相交，那么子弹方向就是相交目标位置与子弹起始位置产生的方向；如果不相交，那么根据射线方向、摄像机位置、子弹初始位置计算子弹飞行的方向。
+**BC direction vector = AB direction vector - AC direction vector**
 
-   主类具体代码如下：
+The engine provides method: `Vector3.subtract(ab:Vector3, ac:Vector3, bc:Vector3)`。
+
+BC means the direction vector from point B to point C, AB means the vector from point A to point B, and AC means the direction vector from point A to point C (understandable).
+
+
+**AB Standard Direction Vector (Vector with length in units of one) = AB Direction vector normalized**
+
+The engine provides method ：`Vector3.normalize(s:Vector3, out:Vector3)`。
+
+use：The length (modulus) of any vector can be normalized to a standard vector in unity. For example, the direction vector can be normalized, as the standard speed, speed is set to multiples of the normal vector.
+
+
+**Scaled post vector (length scaling) = original vector * real number**
+
+The engine provides method：`Vector3.scale(v3:Vector3, num:Number, out:Vector3)`。
+
+Scaling the value of the num value can generate a vector of num times the length of the original vector.
+
+
+**The length of a vector (.X = sqrt square +.Y vector vector vector.Z + square square)**
+
+Engine provides methods ：`Vector3.scalarLength(a:Vector3)`, Return length
+
+运用：We can take the length of the vector as the distance, speed reference, the minimum vector length of 0.
+
+
+
+
+
+#### Main control class function implementation
+
+The main function of the master class Laya3D_BulletAttack.as in three points : 
+
+1. The cube box is found in the scene by the getChildByName() method, and the cube control script CubeScript is added to them for collision detection.
+
+2. In the mouse click event, the cloned method is used to create a bullet, which can clone the bullet's Collider SphereCollider and the rigid body component, rigidbody.
+After creating the bullet, add the bullet control script BulletScript to the bullet, and use the BulletScript method setShootDirection (directionV3:Vector3) to set the direction of the bullet's flight.
+
+3. The direction of the bullet's flight is calculated by the ray generated when the mouse clicks on the scene.
+
+   The mouse click on the 3D scene space generated by the camera ray, 3D model to determine whether the intersection of a ray and in the scene (ray collision detection). If intersecting,  the direction of the bullet is the direction that intersects the target position and the starting position of the bullet; if they do not intersect, then according to the ray direction, camera position,  initial position of the bullet to calculate the bullet flight direction.
+   
+   The main class code is as follows ：
 
 ```typescript
 package script_collision
@@ -275,17 +278,17 @@ package script_collision
 
 
 
-#### 子弹控制脚本类功能实现
+#### Bullet control script class functions
 
-子弹控制脚本继承于脚本Script，引擎1.7.12版增加了脚本绑定者的碰撞检测触发方法，当然，前提是绑定者需要有碰撞器组件，否则无法触发成功。
+The bullet control script is inherited from Script, engine version 1.7.12 adds the method for triggering the collision detection of the script binding. Of course, the binding requires a collider component, otherwise the trigger will fail.
 
-当场景中的其它碰撞器与脚本绑定模型的碰撞器发生重叠，会触发多种状态，并根据状态去触发不同的方法。
+When other colliders in the scene overlap the collider of the script binding model, multiple states are triggered and different methods are triggered depending on the state.
 
-触发状态共有三种，包括：其它碰撞器与自己碰撞器碰撞时方法`onTriggerEnter(other:Collider)`、其它碰撞器与自己碰撞器逐帧重叠时方法`onTriggerStay(other:Collider)`、其它碰撞器与自己碰撞器相互离开时方法`onTriggerExit(other:Collider)`。
+There are three kinds of triggering States, including : Other Colliders collide with their own collider method `onTriggerEnter(other:Collider)`, other colliders and their colliders overlap each frame method `onTriggerStay(other:Collider)`. Method of reduplication of other Collider and its collider frame by frame`onTriggerExit(other:Collider)`。
 
-它们对应着不同的触发方法（请查看下例代码），可以在脚本继承类中去覆盖原有触发方法，并在其中实现自己的逻辑。触发方法中还会把其它碰撞器作为参数传递过来，方便开发者获取其它碰撞器的模型对象、属性等。
+They correspond to different triggers methods (see the example code below) , you can override the original trigger method in the script inheritance class and implement its own logic in it. In the trigger method, the other collider will be transferred as a parameter to facilitate the developer to obtain the model objects and attributes and so on.
 
-子弹控制脚本代码如下：
+Bullet control script code is as follows : 
 
 ```typescript
 package
@@ -393,15 +396,15 @@ package
 
 
 
-#### 立方体脚本类功能实现
+#### Cube script class function implementation
 
-立方体控制脚本也继承于脚本Script，同样用到了新增脚本功能的三种触发方法，区别是在三种方法中的逻辑有所不同。
+Cube control script also inherits the Script, also used the new trigger function of the three trigger method, the difference is that the logic of the three methods are different.
 
-当子弹碰撞器进入立方体盒子碰撞器时方法`onTriggerEnter(other:Collider)`中，根据立方体盒子碰撞器获取到立方体的脚本，从它的脚本中获得子弹速度和方向，用于立方体盒子的击退速度和击退方向，并且在脚本更新方法中模拟立方体盒子被击退的效果。
+When the bullet collider enters the cube box Collider `onTriggerEnter(other:Collider)` method, script to get a cube based on a cube box Collider，get the speed and direction of the bullet from its script, breakdown speed and direction of the cube box, and in the script update method to simulate the cube box was knocked back effect
 
-当子弹碰撞器离开立方体盒子碰撞器时方法`onTriggerExit(other:Collider)`，立方体盒子生命值减少，被三发子弹击中后，立方体盒子被击毁消失。
+When the bullet collider leaves the cube box Collider `onTriggerExit(other:Collider)`, Cube box life reduced. After being hit by three bullets, the cube box destroy and disappear.
 
-立方体控制脚本代码如下：
+The cube control script code is as follows :
 
 ```typescript
 package
@@ -517,5 +520,5 @@ package
 
 
 
-完成上述简单的三个类后，我们可以看到图1所示效果，当然，要真正完成一个射击游戏，不会如此简单，本例代码主要为初学者们打开思路，可以举一反三。
+After the completion of the above three simple class, we can see the effect shown in Figure 1. Of course, to really complete a shooting game, will not be so simple, this code is mainly for beginners to open ideas, you can use it as reference.
 
