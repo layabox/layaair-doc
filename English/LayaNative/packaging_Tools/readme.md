@@ -109,7 +109,7 @@ Android application package name is not visible in the normal case. The rule of 
 
 #### 4.2.9 Configuration scripts : 
 
-　　Please refer to the relevant configuration script: [Package-related other settings overview](https://ldc.layabox.com/doc/?nav=ch-as-5-1-4)
+　　Please refer to the relevant configuration script: [Package-related other settings overview](https://ldc.layabox.com/doc/?nav=en-as-6-1-8)
 
 
 
