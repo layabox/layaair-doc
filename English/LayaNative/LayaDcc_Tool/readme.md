@@ -189,19 +189,19 @@ filetable1.txt 这个文件不再使用。
     把update目录删掉，然后重新安装一下app，以去掉内部的缓存，这样dcc机制就关掉了，每个文件每次请求都会重新下载。  
     如果某次又打了一下dcc，在服务器端生成了update目录，则缓存又会起作用，想关掉的话，再来一遍上面的操作。
 
-## 附录
-1. LayaDCC的流程  
+## Further more
+1. Process of LayaDCC
    ![](img/1.png)  
-   图12  
-   对应的代码在 index.js 中。
+   Picture 12  
+   Corresponding code in index.js
 
-2. 下载某个cdn节点上的文件。
+2. Download a file on a CDN node.
 ```sh
 curl -H "Host:www.layabox.com" http://182.110.238.110/bestgame/index.html >a.html
 ```
-表示把 182.110.238.110 节点上的 `http://www.layabox.com/bestgame/index.html`的文件下载下来，保存到 a.html中。
+Representing the 182.110.238.110 node `http://www.layabox.com/bestgame/index.html`,  file is downloaded and saved to a.html
 其中的 Host：后面的内容改成自己的域名， `http://`后面的ip地址改成节点服务器的地址，那怎么获得节点服务器地址呢？在LayaPlayer中，节点服务器通常不会改变，所以可以通过任意一个Download的打印来得到地址，例如:  
 ```
 Downloaded http://www.layabox.com/bestgame/bestgame.min.js@182.110.238.110 s=44216b56 l=422
 ```
-就知道节点地址是182.110.238.110。 
+It is known that the node address is  182.110.238.110。 
