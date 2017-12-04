@@ -2,7 +2,7 @@
 
 
 
-## 1. Install JDK
+## A. Install JDK
 
 ### 1. JDK Download
 
@@ -34,7 +34,7 @@ Click “Next step”, Change and confirm the installation path（D:\Java\jdk1.6
 
 After changing the path click Next, then “complete”。
 
-### 3. Environment variable settings
+### C. Environment variable settings
 
 XP：“My computer” -->Right-click the property --> “advanced” -->“Environment variables” -->System variables（WIN7：“my computer -->Right-click the property -->“Advanced system settings” -->“advanced” -->“Environment variables” -->System variables）.
 
@@ -68,13 +68,13 @@ attention ：java_home Behind can not add “;”，and note that the path name 
 
 dt.jar and tools.jar  are the most basic packages of two Java, it contains the most important Lang packages in Java to a variety of advanced functions such as visual swing packages, essential to Java.
 
-| jar包      | 类别                                       | 备注说明                                     |
+| jar Package      | Category                                       | Note description                                     |
 | --------- | ---------------------------------------- | ---------------------------------------- |
-| tools.jar | 工具类库，编译和运行需要其中的类sun.tools.java.*，sun.tools.javac.* | 一般只在javac时用到，java XXX.java 等价于java –classpath=%java_home%/lib/tools.jar XX.XXX.main XXX.java，javac是对上述命令的封装，因此不用加到classpath中。应用服务器用来编译JSP文件，应用服务器会自己加载，不需要自己设置。 |
-| rt.jar    | java基础类库                                 | 默认在根classloader的加载路径里面，无需添加至classpath，同样jre/lib下的大部分jar都在这个路径中；检测方法：删去classpath中的rt.jar，用java –verbose命令检测。 |
-| dt.jar    | 运行环境的类库，主要是swing包                        | 用到swing时最好加上，Eclipse开发环境默认是JRE，所以需要设置。   |
+| tools.jar | The class library, compilation, and running of the class sun.tools.java.*，sun.tools.javac.* | Usually used only in javac，java XXX.java Equivalent to java –classpath=%java_home%/lib/tools.jar XX.XXX.main XXX.java，javac is the encapsulation of the above commands,  so it doesn't have to be added to classpath. The application server is used to compile JSP files, application server will load its own, do not have to set up your own settings. |
+| rt.jar    | java Basic class library                                 |  The default is in the load path of the root classloader, No need to add to classpath, same jre/lib Most of the jar below is in this path； Detection method: delete the classpath of rt.jar, use java –verbose Command detection.  |
+| dt.jar    | Class library for running environment, Mainly swing packages                        | It's best to add to swing, default of the Eclipse development environment is JRE, so it needs to be set up   |
 
-**参考资源：**
+**Reference resources ：**
 
 3个jar包的作用：[http://blog.csdn.net/hlw881008/article/details/5505251](http://blog.csdn.net/hlw881008/article/details/5505251)
 
