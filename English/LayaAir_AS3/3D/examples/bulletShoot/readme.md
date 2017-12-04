@@ -31,7 +31,7 @@ Reference effect as shown in Figure 1
 
 1. **Resource production：**Scenario are made in Unity and require the inclusion of a box-typ ecollider component on the wrecked 3D items. Currently engine and plug-in versions can export the collider component（MeshCollider grid collider can not be exported temporarily, and later will be supported.）. It does not need to be added to the code.
 
-子弹暂时放入场景之中，居于摄像机之后，用于克隆创建子弹。子弹作为碰撞检测的发起者，需要添加碰撞器（球型）与刚体组件，在导出时，引擎能自动识别。
+The bullet was temporarily placed in the scene, after the camera was used, and clone a bullet. As the initiator of the collision detection, the bullet needs to be added to the Collider (ball type) and the rigid body component. In the export, the engine can automatically identify the engine.
 
 2. **Collision detection principle ：** Because of the principle of engine optimization, collision detection is divided into collision initiator and collision passive receiver.
 
