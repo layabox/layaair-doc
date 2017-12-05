@@ -11,7 +11,7 @@ layadcc it can also be used to create a resource package that is used to pack th
 There are three current resource packaging solutions.
 1. #### App networking package：  
 
-   App   itself does not have any resources,  and the volume is the smallest.
+   App itself does not have any resources,  and the volume is the smallest.
    LayaPlayer first run time, all the resources used will be downloaded from the server side, And cached in the local。Second and after operation, DCC file will be obtained from the server first, and then when you need to download a file, Check whether local resources need to be updated, Only when it needs to be updated is it really downloaded, Non-updated resources are read directly from the local cache
    Local caches will increase gradually.
 
@@ -135,37 +135,37 @@ filetable1.txt This file is no longer used.
    **Print information instructions ：**  
     Inside the url followed by @127.0.0.1 is for debugging, Indicates the server address corresponding to this file. s=0Indicates that this file does not have dcc information,  l=xxx indicates the length of the downloaded file.
 
-    如果打了资源包，即cache目录下的东西拷贝到上面指定的目录了，这时候最直观的变化是包变大了。然后运行app，会有从资源包读取资源的打印，如下：
+    If you hit a resource package, that is, the things under the cache directory are copied to the above specified directory, and the most intuitive change is that the package becomes larger. Then running app, there will be a print of the resource read from the resource package, as follows:
     ![](img/8.png)    
-    图10  
-   **打印信息说明**  
-   打印 `found the file in the package:` 就表示对应的资源是从包中获取的，没有去网络下载，看到这个日志就表示打包资源成功。如果打的单机版，则所有资源都应该有这个打印，不应该有任何下载。
+    Picture 10  
+   **Print information description**  
+   Print `found the file in the package:` It means that the corresponding resources are obtained from the package, No download to the network, seeing this log indicates the success of packaging resources. If you hit the stand-alone version, Then all resources should have this print, there should be no downloads.
 
-2. 服务是否有dcc的测试：  
-   在浏览器里打开地址： http://www.layabox.com/bestgame/update/filetable.txt  
-   注意要改成自己的地址，如果文件存在，表示打过dcc。如下图：  
+2. Whether the service has a DCC test：  
+   Open the address in a browser： http://www.layabox.com/bestgame/update/filetable.txt  
+   Notice to change to your own address, if the file exists, it means to hit DCC. As follows:  
    ![](img/6.png)  
-   图11 
+   Picture 11 
 
-3. 更新机制起作用的测试  
-   直观的测试就是更新了资源，App产生了对应的改变，例如修改了的图片，能在app上看到。从日志看的话，就是资源获取的时候，凡是没有改变的都是打印 `found the file in the package:`， 而改变了的都是打印  `Downlaod [ ] xxxurl `。   
-   **注意**  
-     1 Download只执行一次，第二次再进入app，这个资源如果没改，就会直接从缓存取。
-     2 DCC的机制是运行时更新，所以只有执行到需要这个资源的时候才会下载，而不是一启动就下载所有更新。
-
-
-**总结**  
-* 凡是有 `Downlaod [ ] url `就表示下载，说明没有dcc或者资源更新了  
-* 凡是有`found the file in the package:`，说明打包资源成功，dcc起作用了。
+3. Update mechanism works for the test
+   An intuitive test is to update the resources, App产生了对应的改变, App produces a corresponding change, Can see on app. From the log，It's time to get the resources, Those who have not changed are printed  `found the file in the package:`, And the change is all printed `Downlaod [ ] xxxurl `。   
+   **Note**  
+     1 The Download is only executed once, and second times into the app, and if the resource is not changed, it will be taken directly from the cache.
+     2 The mechanism of DCC is the runtime update, so it will be downloaded only when the resource is needed, instead of downloading all updates as soon as it is started.
 
 
-**注意:**  
-* layadcc执行的时候会修改所有文件的修改时间，目的是为了防止cdn在回源的时候以为文件没有被修改。 
-* 上面的地址是虚构的，不存在一个 http://www.layabox.com/bestgame/index.html 的地址。
+**summary**  
+* All there is `Downlaod [ ] url ` That means download, no dcc or resource update
+* All there is`found the file in the package:`, description package resources success, dcc work.
 
 
-## 常见问题
-1. 打包资源以后，没感觉速度变快，怀疑所有的资源还是都在下载。
+**Note :**  
+* When layadcc is executed, the modification time of all files will be modified, the purpose is to prevent cdn in the back of the source that the file has not been modified.
+* The above address is fictive, address does not exist http://www.layabox.com/bestgame/index.html 
+
+
+## Common problem
+1. After packing the resources, it doesn't feel fast, may caused by resources are still downloading.
     1. 确定是否真的都是在下载，看日志是不是有上面提到的Download和find，如果既有读缓存，也有下载，则没有问题，只是真的下载慢。
     2. 如果全部都是Download，没有读缓存  
         1. 是不是忘了打dcc了，通过浏览器检查服务器是否有dcc信息。
