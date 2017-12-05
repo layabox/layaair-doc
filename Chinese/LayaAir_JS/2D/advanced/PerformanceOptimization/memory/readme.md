@@ -155,12 +155,11 @@ JavaScript运行时无法启动垃圾回收器。要确保一个对象能够被�
 下例演示加载资源后对比资源卸载前和卸载后的资源状态：
 
 ```javascript
-var assets = [
-    { assets: "res/apes/monkey0.png", type: Laya.Loader.IMAGE },
-    { assets: "res/apes/monkey1.png", type: Laya.Loader.IMAGE },
-    { assets: "res/apes/monkey2.png", type: Laya.Loader.IMAGE },
-    { assets: "res/apes/monkey3.png", type: Laya.Loader.IMAGE },
-];
+var assets = [];
+assets.push("res/apes/monkey0.png");
+assets.push("res/apes/monkey1.png");
+assets.push("res/apes/monkey2.png");
+assets.push("res/apes/monkey3.png");
 Laya.loader.load(assets, Laya.Handler.create(this, onAssetsLoaded));
 function onAssetsLoaded() {
     for (var i = 0, len = assets.length; i < len; ++i) {
