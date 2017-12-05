@@ -47,13 +47,13 @@ If you install it smoothly, you can execute layadcc directly on the command line
 ### 3.Usage method
 
 ```
-layadcc 资源目录 [options]
+layadcc Resource catalog [options]
 options:
-    -cache 生成资源包.
-    -lwr 文件路径全部转为小写。（一般不需要）
-    -url url 如果要打包资源的话，对应的url.
-    -cout outpath 打包资源的输出目录，如果不设置的话，就是在资源目录下。
-例如:
+    -cache Generate a resource package.
+    -lwr All file paths are in lowercase.（Generally do not need）
+    -url url If you want to package resources, Corresponding url.
+    -cout outpath Packaging resources output directory, If not set up, it's under the resource directory.
+for example:
    layadcc d:/game/wow -cache -url www.game.com
 ```
 ### 4. Actual operationn
@@ -85,54 +85,55 @@ Following figure :
 ![](img/2.gif)  
 Picture 3  
 
-加了`-cache`参数后，就会遍历所有的资源文件，输出到`-cout`指定的目录下，如果没有`-cout`参数，就在工作目录下创建一个layadccout目录（如上图），输出目录下的cache目录就是打包App的时候需要使用的资源。  
-然后把这个目录拷贝到构建的项目的对应的目录中，就可以编译打包生成App。  
-在不同的开发环境下，需要放到不同的目录中（如果使用LayaAirIDE或者layabox命令行工具，可以自动完成这一步）。  
+After adding the `-cache` parameter, all the resource files will be traversed, Output to `-cout` specified directory, if there is not `-cout` Parameters, create a layadccout directory in the working directory（As shown above）, the cache directory in the output directory is the resource to be used when packaging the App.
+Then you can copy this directory into the corresponding directory of the project that you build, and you can compile and pack the App.  
+In different development environments, it needs to be placed in different directories（If you use the LayaAirIDE or layabox command line tools, This can be done automatically）.  
 
 **Android Eclipse:**  
 ![1](img/1.jpg) <br />
-（图4） android的资源目录是项目下的assets目录   
+（Picture 4） The resource directory of the Android is the assets directory under the project
 
 **Android Studio:**  
 ![](img/5.png)  
-（图5）  
+（Picture 5）  
 
 **iOS XCode:**  
 ![2](img/2.jpg) <br />
-（图6）IOS是resource目录
+（Picture 6）IOS is the resource directory
 
-#### 4.4 更新服务器
-这是App发布后最常见的操作。每当更新了html5项目的内容，需要提交到服务器或者本地测试的时候，都要生成新的dcc，以便客户端能更新到最新资源。操作过程如下图：   
+#### 4.4 Update server
+This is the most common operation after the release of App. Whenever updating the contents of the HTML5 project, we need to generate new DCC when we need to submit to the server or local test, so that the client can update to the latest resources. The operation process is as follows
+Picture ：   
 ![](img/1.gif)  
-图7   
+Picture 7   
 
-可以看到执行完layadcc后，在指定目录（现在是当前路径 . ）下面会生成一个update目录。然后把这个update目录拷贝到本地或者远程服务器的相同目录即可。  
+You can see that after the layadcc is executed, in the specified directory（Now is the current path）A update directory will be generated below. Then copy the update directory to the same directory in the local or remote server.
 **Tips:**   
-为了方便和不出错误，建议直接在服务器所在目录下执行layadcc。
+For convenience and no error, it is recommended to execute layadcc directly in the directory where the server is located.
 
-**update目录介绍：**   
+**update Catalog introduction:**   
 ![](img/4.png)  
-图8  
+Picture 8  
 
-allfiles.txt 所有的资源文件的相对路径。  
-assetsid.txt 本次dcc统计的整个资源包的校验码。  
-filetable.bin dcc主文件，里面是每个文件的校验值。  
-filetable.txt 文本格式的dcc文件，除了前三行，每一行代表一个文件和对应的校验值，与allfiles.txt正好对应起来，即第4行对应的文件是allfiles.txt的第一行。  
-filetable1.txt 这个文件不再使用。  
+allfiles.txt Relative path of all resource files.
+assetsid.txt  dcc statistics of the entire resource package checksum.
+filetable.bin dcc main file, which is the check value of each file.
+filetable.txt Text format DCC files, with the exception of the first three lines, each row represents a file and the corresponding check value, And allfiles.txt exactly correspond, Line 4 corresponds to the file is the first line of allfiles.txt.
+filetable1.txt This file is no longer used. 
 
-**注意:**  
-1. 如果web服务器上的目录里面没有update目录，或者update目录里面没有内容，则客户端的dcc更新机制就会关闭，这样所有的资源每次都会重新下载。在开发期间建议用这种方式。
-2. 上面的例子是在当前目录下，实际也可以指定其他路径，相对或绝对都可以，例如:  
-   `layadcc d:/game/bin/h5` 或者 `layadcc ../bin/h5`
+**Be careful:**  
+1. If there is no update directory on the web server directory, Or update directory there is no content, The client dcc update mechanism will be closed, So all the resources will be downloaded again. It is recommended to use this method during development.
+2. The above example is in the current directory,in fact, you can specify other paths, relative or absolute, for example:
+   `layadcc d:/game/bin/h5` or `layadcc ../bin/h5`
 
 
-#### 4.5 测试
-1. 资源打包成功的测试  
-   先说包中没有资源的情况，这种情况下所有的资源都会从网上下载，日志如下:   
+#### 4.5 test
+1. Test for successful resource packaging
+   First say that there is no resource in the package, in this case all the resources will be downloaded from the Internet，log is as follows:   
    ![](img/7.png)  
-   图9  可以看到有很多的Download   
-   **打印信息说明：**  
-    这里面的url后面跟着的 @127.0.0.1是调试用的，表示这个文件对应的服务器地址。s=0表示这个文件没有dcc信息， l=xxx表示下载的文件的长度。
+   Picture 9  Can see a lot of Download   
+   **Print information instructions ：**  
+    Inside the url followed by @127.0.0.1 is for debugging, Indicates the server address corresponding to this file. s=0Indicates that this file does not have dcc information,  l=xxx indicates the length of the downloaded file.
 
     如果打了资源包，即cache目录下的东西拷贝到上面指定的目录了，这时候最直观的变化是包变大了。然后运行app，会有从资源包读取资源的打印，如下：
     ![](img/8.png)    
