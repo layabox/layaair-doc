@@ -1,10 +1,10 @@
-# 用反射机制实现二次开发
+# Realize secondary development with reflection mechanism
 
 　　LayaNative通过提供反射机制来帮助开发者可以方便的进行二次开发, 下面通过反射机制的实现及使用来了解一下如何进行二次开发.
 
-## 1. 实现反射
+## 1. Bringing Reflection
 
-　　使用LayaNative, 可以在JavaScript层通过字符串动态创建移动端的原生开发语言(Android下Java, iOS下Objective-C)编写的类或函数.
+　　With LayaNative, you can dynamically create the class or function written by the native development language of the mobile terminal under the Android (Java under iOS, Objective-C) on the JavaScript level.
 
 LayaNative的反射主要通过下面的PlatformClass和PlatformObj来使用.
 
@@ -65,21 +65,20 @@ class PlatformObj
 }
 ```
 
-(Tips: 所有参数目前只支持普通类型: 数字, 字符串, bool; 在OC层: 数字和bool对应NSNumber, 字符串对应NSString)
+(Tips: All parameters are currently only supported by common  types: Numbers, strings, bool. In the OC layer: The number and bool correspond to NSNumber, String corresponds to NSString)
 
 
 
-## 2. 使用反射
+## 2. Use reflection
+  Here are two simple examples of how to use the reflection mechanism for the secondary development.
 
-  下面通过两个简单的示例来了解一下如何使用反射机制进行二次开发.
+###   2.1 Turn the flash on / off  is realized by calling the static function
 
-###   2.1 通过调用静态函数 实现闪光灯的打开/关闭
+**Function example:**
 
-**功能示例:**
+####     2.1.1 JavaScript layer:
 
-####     2.1.1 JavaScript层:
-
-对Android平台的调用方式: 
+The way to call the Android platform: 
 ```javascript
 // a、创建Test类
 var Test=Laya.PlatformClass.createClass("com.layabox.test.Test"); // 这个名字要与下面声明的Java的类名匹配.
@@ -92,7 +91,7 @@ document.addEventListener("touchstart",function(e){
 });
 ```
 
-对iOS平台的调用方式:
+The way to call the iOS platform:
 ```javascript
 // a、创建Test类
 var Test=Laya.PlatformClass.createClass("Test"); // 这个名字要与下面声明的OC的类名匹配 iOS不用包名
@@ -105,7 +104,7 @@ Test.call("openlight:",a); // iOS注意函数签名为 "openlight:"
 });
 ```
 
-####     2.1.2 Android/Java层声明需要创建的类Test:
+####     2.1.2 Android/Java layer declaration needs to create the class Test:
 
 ```javascript
 package com.layabox.test;
@@ -133,7 +132,7 @@ public class Test {
 }
 ```
 
-####     2.1.3 Android/Java层 修改Manifest:
+####     2.1.3 Android/JavaLayer modification Manifest:
 
 ```java
 <uses-permission android:name="android.permission.FLASHLIGHT" />
@@ -146,7 +145,7 @@ public class Test {
 
 ```
 
-####     2.1.4 iOS/OC层声明上面需要创建的类Test:
+####     2.1.4 iOS/OC Layer declarations above that need to be created Test class:
 
 ```javascript
 #import <AVFoundation/AVCaptureSession.h>
@@ -196,28 +195,28 @@ static AVCaptureSession * session = nil;
 }
 @end
 ```
-如果运行崩溃在Info.plist中加入Privacy - Camera Usage Description  
+If the run crashes , Info.plist add the Privacy - Camera Usage Description  
 ![www](img/1.png)  
-注意：源文件后缀要改成.mm 。调用静态函数注意脚本的调用写法。OC的方法是静态的类方法要用+。
-如果OC需要返回参数给脚本或者通知脚本，需要调用callbackToJSWithClass或者callbackToJSWithClassName
-脚本要改为Test.callWithBack(function(msg){alert(msg);},"openlight:",a);
+Note: the source file suffix should be changed to.mm. Call the static function to pay attention to the call writing of the script. The method of OC is a static class method to use +.
+If OC needs to return a parameter to a script or a notification script, you need to call callbackToJSWithClass or callbackToJSWithClassName
+The script should be changed to Test.callWithBack(function(msg){alert(msg);},"openlight:",a);
 
-####      通过上述步骤就实现了 奇数下点击一下打开闪光灯, 偶数下点击关闭闪光灯 的功能.
+####      It is achieved through the above steps. Odd number click to open the flash. Even click to turn off the function of the flash
 
 
 
-###   2.2 通过调用对象的函数实现简单的加法减法
+###   2.2 By calling the function of the object to achieve a simple addition and subtraction
 
-**示例:**
+**Sample:**
 
-####     2.2.1 JavaScript层:
+####     2.2.1 JavaScript layer:
 
-​      (注: Android平台支持函数返回值也可以通过回调获取返回值, iOS平台只支持通过回调获取返回值.)
+​      (Note:  Android platform supports the return value of the function and can also get the return value by the callback,  iOS platform only supports the return value obtained through a callback.)
 
-​      对Android平台的调用方式: 
+​      way to call the Android platform: 
 
 ```javascript
-//a、创建Test类
+//a. Create a Test class
 var Test=Laya.PlatformClass.createClass("com.layabox.test.Test");
  
 //b、创建Test对象
@@ -230,7 +229,7 @@ var n=testMinus.call("operator",2,3); // Android 才可以直接返回
 alert("2-3="+n);
 ```
 
-​      对iOS平台的调用方式:
+​      Way to call the iOS platform:
 
 ```javascript
 //a、创建Test类
@@ -247,7 +246,7 @@ testAdd.callWithBack(function(n){alert("2+3="+n);},"operatorWith:and:",2,3);
 testMinus.callWithBack(function(n){alert("2-3="+n);},"operatorWith:and:",2,3);
 ```
 
-####     2.2.2 Android/Java层声明需要创建的类Test:
+####     2.2.2 Android/Java Layer declaration need to create a class Test:
 
 ```javascript
 package com.layabox.test;
@@ -272,7 +271,7 @@ public class Test {
 }
 ```
 
-####     2.2.3 iOS/OC层声明需要创建的类Test:
+####     2.2.3 iOS/OC Layer declaration need to create a class Test:
 
 ```javascript
 #import <Foundation/NSObject.h>
@@ -299,21 +298,21 @@ public class Test {
 }
 @end
 ```
-注意：源文件后缀要改成.mm 。调用实例方法注意脚本的调用写法。OC的方法是实例方法要用-。回调要用  callbackToJSWithObject。
-​    通过上述步骤就完成了简单的加法减法。
+Note：The source file suffix to be changed to .mm. Call the instance method to pay attention to the call script. The OC method is used by the instance method. Callback use callbackToJSWithObject.
+​    A simple addition and subtraction is completed through the above steps
 
-  通过上述方法可以很方便的进行原生代码相关的二次开发, 此外, LayaNative为了帮助开发者节省更多的时间, 封装了conchMarket全局类, 让开发者可以更方便的对接渠道。
+  Through the above methods, we can easily carry out the two development of native code. In addition, LayaNative saves more time to help developers, encapsulates conchMarket global class, so that developers can more easily connect to channels.
 
 
-##  3.平台代码（android/ios）主动执行js脚本
+##  3. Platform code（android/ios）initiatively executes the JS script
 
-###     3.1 IOS/OC执行JS脚本
+###     3.1 IOS/OC execute the JS script
 
 ```javascript
 [[conchRuntime GetIOSConchRuntime] runJS:@"alert('hello')"];
 ```
 
-###     3.2 Android/Java执行JS脚本
+###     3.2 Android/Java execute the JS script
 
 ```javascript
 ConchJNI.RunJS("alert('hello world')");
