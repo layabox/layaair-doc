@@ -1,26 +1,26 @@
-# 用反射机制对接Native APP渠道
+# Use reflective mechanism to dock Native APP channels
 
-LayaNative通过反射机制为开发者提供了对接渠道的接口, 下面的内容通过实现对接渠道商城(conchMarket)详细的介绍了如何利用反射机制完成对接渠道的工作.
+LayaNative provides ,through the reflection mechanism for developers, a docking channel interface. The following contents introduce in detail how to use reflection mechanism to complete the work of docking channel by implementing docking channel Mall (conchMarket).
 
-### 1.对接渠道商城
+### 1.Docking channel mall
 
-LayaNative已经通过反射机制实现JavaScript与原生开发语言(Android下Java, iOS下Objective-C)的互相调用, 开发者只需要完成剩下的关于原生开发语言(Android下Java, iOS下Objective-C)部分的开发工作.
+LayaNative has implemented JavaScript and native development languages through reflection mechanisms (Android under Java, iOS under Objective-C) Call each other, Developers only need to complete the rest of the native development language part of the development work.
 
-#### 1.1 iOS系统下的对接渠道商城实现:
+#### 1.1 iOS system docking channel Mall to achieve:
 
-##### Part.1 - 类名反射:
+##### Part.1 - Class name reflection:
 
- 通过LayaNative构建出的iOS项目工程中我们会看到PlatformInterface目录下有自动创建的MarketAppStore类, 这个类继承自LayaPlatformInterface类, 并且在resource/config.ini中设置了platformClassName=MarketAppStore, 这样, 我们以login方法为例, 只需要在MarketAppStore.mm中重写LP_Login方法, 就完成了对login方法的二次开发.
+ In the iOS project project built through LayaNative, we will see that there are automatically created MarketAppStore classes in the PlatformInterface directory, class inherits from the LayaPlatformInterface class, And set in the resource/config.ini platformClassName=MarketAppStore. In this way, we take the login method as an example, and only need to rewrite the LP_Login method in the MarketAppStore.mm, and we have completed the two development of the login method.
 
-##### Part.2 - JavaScript调用OC:
+##### Part.2 - JavaScript call OC:
 
- 还是以上述的login方法为例, 在JavaScript中, 通过conchMarket类调用的login方法实际上就是在调用LayaPlatformInterface中的LP_Login方法, 而这个过程其实就是JavaScript调用OC的过程.
+ Taking the above login method as an example, in JavaScript, the login method invoked by conchMarket class is actually calling the LP_Login method in LayaPlatformInterface, which is actually the process of JavaScript calling OC.
 
-##### Part.3 - OC调用JavaScript:
+##### Part.3 - OC transfer JavaScript:
 
- 继续以上述的login方法为例, 在JavaScript中, 通过conchMarket类调用的login方法执行完成后会执行回调方法, 这个回调方法在LayaPlatformCallback中声明, 然后在LayaPlatformInterface的LP_Login中调用LayaPlatformCallback的LP_LoginCallback方法来实现OC调用JavaScript.
+ To continue with the above login method, for example, in JavaScript, call through the conchMarket class login method is executed after the implementation of the callback method, the callback method is declared in LayaPlatformCallback, and then call LayaPlatformCallback LP_LoginCallback method in Lay_PlatformInterface LP_Login to achieve OC Call JavaScript.
 
-##### Part.4 - 代码片段:
+##### Part.4 - code segment:
 
 ```javascript
 // JavaScript中调用方式: conchMarket.login([参数], [回调函数]) ;
@@ -40,21 +40,21 @@ console.log(data);
 }
 ```
 
-#### 1.2 Android系统下的对接渠道商城实现:
+#### 1.2 Android docking channel under the system is realized :
 
-##### Part.1 - 类名反射:
+##### Part.1 - Class name reflection:
 
- 通过LayaNative构建出的Android项目工程中我们会看到layaair.game.Market包中有自动创建的MarketTest类, 这个类继承自LayaPlatformInterface类, 我们以login方法为例, 只需要在MarketTest.java中重写LP_Login方法, 就完成了对login方法的二次开发.
+ In the Android project built through LayaNative, we will see the layaair.game.Market package automatically created MarketTest class
 
-##### Part.2 - JavaScript调用Java:
+##### Part.2 - JavaScript call Java:
 
- 还是以上述的login方法为例, 在JavaScript中, 通过conchMarket类调用的login方法实际上就是在调用LayaPlatformInterface中的LP_Login方法, 而这个过程其实就是JavaScript调用Java的过程. 即: conchMarket.login => LayaPlatformInterface的LP_Login方法.
+ Taking the above login method as an example, in JavaScript, the login method invoked by conchMarket class is actually calling the LP_Login method in LayaPlatformInterface, which is actually the process of JavaScript calling Java. Which is: conchMarket.login => LayaPlatformInterface from LP_Login method.
 
-##### Part.3 - Java调用JavaScript:
+##### Part.3 - Java call JavaScript:
 
- 继续以上述的login方法为例, 在JavaScript中, 通过conchMarket类调用的login方法执行完成后会执行回调方法, 这个回调方法在LayaPlatformCallback中声明, 然后在LayaPlatformInterface的LP_Login中调用LayaPlatformCallback的LP_LoginCallback方法来实现Java调用JavaScript. 即: LayaPlatformInterface的LP_Login => LayaPlatformCallback的LP_LoginCallback.
+ To continue with the above login method in JavaScript, through the conchMarket class executes after the callback method, the callback method in a LayaPlatformCallback statement. Then call the LP_LoginCallback method in LayaPlatformInterface LP_Login LayaPlatformCallback to achieve Java call JavaScript. Which is : LayaPlatformInterface from LP_Login => LayaPlatformCallback from LP_LoginCallback.
 
-##### Part.4 - 代码片段:
+##### Part.4 - code snippets:
 
 ```javascript
 // JavaScript中调用方式: conchMarket.login([参数], [回调函数]) ;
@@ -75,11 +75,11 @@ LayaPlatformCallback.GetInstance().LP_LoginCallback(objCallBack.toString());
 }
 ```
 
-### 2.对接渠道的API整合
+### 2.API integration of docking channels
 
-　　通过LayaNative提供的反射机制, 开发者可以将不同渠道的一些常用的API(如: 登录, 分享, 充值等)在JavaScript层做一套统一的接口, 然后再使用系统原生开发语言根据, LayaNative通过conchMarket全局类将对接渠道相关的API都整合起来, 以方便开发者使用, 如下表:
+　　Through the reflection mechanism provided by LayaNative, developers can make some common APIs (such as login, share, reload, etc.) in different layers to make a unified interface in the JavaScript layer, and then use the native language of the system. LayaNative uses conchMarket The global class integrates the APIs that interface with the channel to facilitate the use of developers, as shown in the following table:
 
-(注: 接口对应的原生开发语言(Android下Java, iOS下Objective-C)部分的编码工作请参照二次开发中的示例代码自行完成.)
+Note: the coding of the interface corresponding to the native development language (Android with Java, iOS with Objective-C) is done by reference to the sample code in the second development.
 
 | API名称                 | API描述      | API原型                                    |
 | --------------------- | ---------- | ---------------------------------------- |
@@ -104,8 +104,8 @@ LayaPlatformCallback.GetInstance().LP_LoginCallback(objCallBack.toString());
 | canSendToDesktop      | 能否pushicon | `conchMarket.canSendToDesktop(JSON.stringify(sData),function(data));` |
 | openTopicCircle       | 打开话题圈      | `conchMarket.openTopicCircle(JSON.stringify(sData),function(data));` |
 
-**附录:**
+**Annex:**
 
-[对接渠道demo for Eclipse(Android) 示例下载](http://ldc.layabox.com/download/tools/SampleForEclipse.zip)
+[Docking channel demo for Eclipse (Android) example Download](http://ldc.layabox.com/download/tools/SampleForEclipse.zip)
 
-[对接渠道demo for AndroidStudio(Android) 示例下载](http://ldc.layabox.com/download/tools/SampleForAndroidStudio.zip)
+[Docking channel demo for AndroidStudio (Android) example Download](http://ldc.layabox.com/download/tools/SampleForAndroidStudio.zip)
