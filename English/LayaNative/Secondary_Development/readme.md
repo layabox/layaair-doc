@@ -1,12 +1,12 @@
 # Realize secondary development with reflection mechanism
 
-　　LayaNative通过提供反射机制来帮助开发者可以方便的进行二次开发, 下面通过反射机制的实现及使用来了解一下如何进行二次开发.
+　　LayaNative by providing reflection mechanism to help developers can easily secondary development. Next, we will learn how to do two development through the implementation and use of reflection mechanism.
 
 ## 1. Bringing Reflection
 
 　　With LayaNative, you can dynamically create the class or function written by the native development language of the mobile terminal under the Android (Java under iOS, Objective-C) on the JavaScript level.
 
-LayaNative的反射主要通过下面的PlatformClass和PlatformObj来使用.
+LayaNative's reflections are mainly used by the following PlatformClass and PlatformObj.
 
 ```javascript
 // 平台类.
