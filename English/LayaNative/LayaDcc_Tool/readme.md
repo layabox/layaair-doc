@@ -166,29 +166,29 @@ filetable1.txt This file is no longer used.
 
 ## Common problem
 1. After packing the resources, it doesn't feel fast, may caused by resources are still downloading.
-    1. 确定是否真的都是在下载，看日志是不是有上面提到的Download和find，如果既有读缓存，也有下载，则没有问题，只是真的下载慢。
-    2. 如果全部都是Download，没有读缓存  
-        1. 是不是忘了打dcc了，通过浏览器检查服务器是否有dcc信息。
-        2. 检查打包资源路径是否正确。
+    1. Determine whether they are really downloading, see if logs have Download and find mentioned above, if there are both read caching and downloading, there is no problem, but really download slowly.
+    2. If all are Download, no read cache 
+        1. Did you forget to play DCC and check whether the server has DCC information through the browser?
+        2. Check whether the package resource path is correct.
 
-2. App发布后，修改了部分资源，但是没有被App更新到。  
-    1. 是不是忘了打dcc了？
-    2. 打了dcc了，但是忘了提交到服务器上（建议在服务器打dcc）？
-    3. 打了dcc了，也提交到服务器了，但是由于有cdn，还没有把这个变化分发到你所在的节点。
+2. After the release of App, some resources were modified but not updated by the App. 
+    1. Did you forget to play dcc?
+    2. I hit DCC, but forgot to submit it to the server (it is recommended to play DCC on the server)?
+    3. DCC has been hit, and it is also submitted to the server, but because of the CDN, this change has not been distributed to your node.
 
-3. 我确认dcc流程都对了，但是某个资源每次都会重新下载，不走缓存。
-    1. 确认这个资源是否在打包资源中，即dcc列表中，可以在 update/allfiles.txt中搜索这个文件。
-    2. 如果在。确认请求这个资源的url是否有search部分，即?xxx, 如果加了的话，是无法走dcc流程的。    
-    3. 如果也没有search，那有可能是这个文件的实际内容与校验值不匹配，dcc会以为是错误的文件，就不缓存了。可能的原因：
-        1. 打完dcc以后，有人把这个文件的内容又给改了，导致dcc校验值与实际文件内容不匹配。解决方法：重新打dcc
-        2. 没人改文件内容，但是dcc是在客户端打的，文件在上传到服务器以后，被上传软件修改内容了。这种情况一般发生在文本文件上，例如有的版本管理工具和ftp工具会把windows下的回车换行变成unix的回车。解决方法：用zip的方式传文件，或者在服务器上打dcc。 
-        3. 没有上面的问题，而且错误的是图片。可能原因是有的系统会全局截获http请求，在请求图片的时候，通过自己的服务器来缓存一个被压缩过的图片，来达到所谓的节省流量。这个压缩过的图片的校验值肯定与dcc记录的不一样。解决方法：关掉节省流量功能。
-        4. 如果没有开流量节省。但是使用了cdn，则还可能是cdn的问题，例如dcc文件被刷新了，但是对应的资源文件没有刷新。确认方法：通过curl命令下载本节点上的资源文件（方法见附录），与源站的资源文件比较，如果不同，即确认。解决方法：强制刷新cdn节点，或者找cdn客服。
+3. I confirm that the DCC process is all right, but one resource will be downloaded each time, do not take the cache.
+    1. Confirm whether this resource is in the package resource, that is, in the DCC list, and you can search this file in update/allfiles.txt.
+    2. If it's in. Confirm whether the URL that requests this resource has an search part, that is, XXX, and if added, it is impossible to walk the DCC process.   
+    3. If there is no search, it may be that the actual content of the file does not match the check value, and DCC will think it is a wrong file, and it will not be cached. Possible reasons:
+        1. After playing DCC, someone changed the content of the file, causing the DCC check value to be inconsistent with the actual file content. Solution: replay DCC
+        2. No one changed the content of the file, but DCC was hit on the client side. After the file was uploaded to the server, the content was modified by the uploaded software. This usually happens on a text file, for example, some version management tools and FTP tools will change the return line from the windows back to the UNIX return. Solution: pass the file in the zip way, or hit the DCC on the server.
+        3. There is no above problem, and the wrong one is the picture. The possible reason is that some systems will intercept HTTP requests all over the world. When requesting pictures, they can cache a compressed picture through their own servers, so as to achieve the so-called saving traffic. The checked value of the compressed picture is definitely not the same as the DCC record. The solution: turn off the flow saving function.
+        4. If there is no open flow savings. But with CDN, it may also be a problem with CDN, for example, the DCC file has been refreshed, but the corresponding resource file is not refreshed. Confirm the method: download the resource file on this node (method see Appendix) through the curl command, and compare it with the source file of the source station, if it is different, that is, confirm. Solution: force the CDN node to refresh, or look for CDN service.
 
-4. 开发期间，每次更新都打dcc太麻烦。  
-    不要用layadcc来打dcc，如果已经打了，
-    把update目录删掉，然后重新安装一下app，以去掉内部的缓存，这样dcc机制就关掉了，每个文件每次请求都会重新下载。  
-    如果某次又打了一下dcc，在服务器端生成了update目录，则缓存又会起作用，想关掉的话，再来一遍上面的操作。
+4. During development, every time you hit dcc too much trouble.
+    Do not use layadcc to hit DCC, if it has been hit,
+    Delete the update directory and reinstall the app to remove the internal cache, so that the DCC mechanism is turned off, and each file is downloaded every request. 
+    If you hit DCC another time and generate the update directory on the server side, the cache will play a role, and if you want to turn it off, you can do it again.
 
 ## Further more
 1. Process of LayaDCC
@@ -201,7 +201,7 @@ filetable1.txt This file is no longer used.
 curl -H "Host:www.layabox.com" http://182.110.238.110/bestgame/index.html >a.html
 ```
 Representing the 182.110.238.110 node `http://www.layabox.com/bestgame/index.html`,  file is downloaded and saved to a.html
-其中的 Host：后面的内容改成自己的域名， `http://`后面的ip地址改成节点服务器的地址，那怎么获得节点服务器地址呢？在LayaPlayer中，节点服务器通常不会改变，所以可以通过任意一个Download的打印来得到地址，例如:  
+The Host in it: the later content is changed to its own domain name, `http://`following IP address is changed to the address of the node server. How do you get the node server address? In LayaPlayer, the node server is usually not changed, so you can get the address through any Download print, for example :  
 ```
 Downloaded http://www.layabox.com/bestgame/bestgame.min.js@182.110.238.110 s=44216b56 l=422
 ```
