@@ -958,72 +958,72 @@
             "name_2_data": [
               {
                 "name_3_name": "缓存工具-layadcc",
-                "name_3_url": "Chinese/LayaNative/LayaDcc_Tool/",
+                "name_3_url": "English/LayaNative/LayaDcc_Tool/",
                 "name_3_file": "readme.md"
               },              
               {
                 "name_3_name": "显存管理",
-                "name_3_url": "Chinese/LayaNative/memory_manager/",
+                "name_3_url": "English/LayaNative/memory_manager/",
                 "name_3_file": "README.md"
               },              
               {
                 "name_3_name": "二次开发",
-                "name_3_url": "Chinese/LayaNative/Secondary_Development/",
+                "name_3_url": "English/LayaNative/Secondary_Development/",
                 "name_3_file": "readme.md"
               },              
               {
                 "name_3_name": "渠道对接",
-                "name_3_url": "Chinese/LayaNative/Platform_Interface/",
+                "name_3_url": "English/LayaNative/Platform_Interface/",
                 "name_3_file": "readme.md"
               },              
               {
                 "name_3_name": "iOS-App内购",
-                "name_3_url": "Chinese/LayaNative/In_APP_Purchase_IOS/",
+                "name_3_url": "English/LayaNative/In_APP_Purchase_IOS/",
                 "name_3_file": "readme.md"
               },              
               {
                 "name_3_name": "webview",
-                "name_3_url": "Chinese/LayaNative/webview/",
+                "name_3_url": "English/LayaNative/webview/",
                 "name_3_file": "README.md"
               },              
               {
                 "name_3_name": "处理http劫持",
-                "name_3_url": "Chinese/LayaNative/",
+                "name_3_url": "English/LayaNative/",
                 "name_3_file": "anti-hijack.md"
               },              
               {
                 "name_3_name": "截屏",
-                "name_3_url": "Chinese/LayaNative/",
+                "name_3_url": "English/LayaNative/",
                 "name_3_file": "captureScreen.md"
               },              
               {
                 "name_3_name": "android嵌入字体",
-                "name_3_url": "Chinese/LayaNative/built_in_font/",
+                "name_3_url": "English/LayaNative/built_in_font/",
                 "name_3_file": "README.md"
               },
 			  {
                 "name_3_name": "扩展字体",
-                "name_3_url": "Chinese/LayaNative/extend-font/",
+                "name_3_url": "English/LayaNative/extend-font/",
                 "name_3_file": "README.md"
               },
 			  {
                 "name_3_name": "zip更新",
-                "name_3_url": "Chinese/LayaNative/resourceUpdate/",
+                "name_3_url": "English/LayaNative/resourceUpdate/",
                 "name_3_file": "readme.md"
               },
 			  {
                 "name_3_name": "APK扩展机制",
-                "name_3_url": "Chinese/LayaNative/apk_expansion/",
+                "name_3_url": "English/LayaNative/apk_expansion/",
                 "name_3_file": "README.md"
               },
 			  {
                 "name_3_name": "APK-update",
-                "name_3_url": "Chinese/LayaNative/apk-update/",
+                "name_3_url": "English/LayaNative/apk-update/",
                 "name_3_file": "README.md"
               },
 			  {
                 "name_3_name": "自动大图合集系统",
-                "name_3_url": "Chinese/LayaNative/autoAltas/",
+                "name_3_url": "English/LayaNative/autoAltas/",
                 "name_3_file": "README.md"
               }
             ]
