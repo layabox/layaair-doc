@@ -30,7 +30,7 @@ canclose parameter is used to control whether the WebView can be turned off:
 *2. If you use ActionScript language development, you can through `Browser.window['conch'] ` can get conch object.*
 
 
-## actual effect
+## current effect
 ![ios webview](img/1.png)  
 Picture 1  
 X in the upper left corner of WebView, it is when the canclose is set to true, corresponding close button. if canclose=false , doesn't have this button.
