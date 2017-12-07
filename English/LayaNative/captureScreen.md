@@ -1,10 +1,10 @@
-# 截屏
+# Screenshots
 
-在项目开发过程中经常会有截屏的需求，例如：截取屏幕上的内容进行分享或者二次绘制。
+There are often screenshots in the project development process, such as : Intercept the content on the screen to share or draw two times.
 
-### 1.截屏函数
+### 1.Screen capture function
 
-截屏函数是LayaPlayer特有函数，所有需用通过conch对象调用，代码如下：
+Screen capture function is a LayaPlayer specific function, and all needs to be called through the conch object, and the code is as follows:
 ```javascript
 if( windoow.conch )
 {
@@ -13,15 +13,15 @@ if( windoow.conch )
     }
 }
 ```
-**函数说明**：captureScreen需要传入一个回调函数，回调函数有三个参数，分别是图片ImageData，类型是一个arrayBuffer，图片的宽和高。  
+**Function description**：captureScreen need to pass in a callback function, the callback function has three parameters, respectively: picture ImageData, type is arrayBuffer, width and height of the picture.
 
 **Tips**  
-*1、conch只能LayaPlayer环境下调用，在网页版本中是没有conch定义的，所有需要判断一下是否存在。*  
-*2、如果使用as语言开发的时候，可以通过 `Browser.window['conch'] `这种方式获得conch对象。*
+*1. Conch can only be called under the LayaPlayer environment, and there is no conch definition in the web version.*  
+*2. If you use the as language development, you can get `Browser.window['conch'] ` this way conch object*
 
-### 2.保存图片函数
+### 2. Save image function
 
-当截屏的回调函数回调后，可以通过conch的saveAsPng把图片存储到本地，具体函数如下：
+When the screen capture callback function is applied, you can save the picture by conch saveAsPng stored locally, the specific function is as follows:
 
 ```javascript
 conch.saveAsPng( arrayBuff,width,height,conch.getCachePath()+"/test.png" );
@@ -33,24 +33,24 @@ image.onload=function()
 }
 image.src="file:///" + conch.getCachePath()+"/test.png";
 ```
-**函数说明**：saveAsPng需要传入三个参数，第一个参数是图片的ImageData数据，第二、三个参数分别为宽和高，第三个参数为存储完整路径和文件名。  
+**Function description**：saveAsPng needs to import three parameters. The first parameter is the ImageData data of the picture, the second and third parameters are wide and high, and the third parameter is to store the complete path and file name.
 
 **Tips**：  
-*存储的完整路径，开发者可根据自己需求进行填写，但是必须保证路径是正确的，代码实例中，通过`conch.getCachePath()`获得到了该应用的缓存目录为存储目录。*
+*The complete path of storage can be completed by developers according to their needs, but the path must be guaranteed. In the code instances, the cache directory of the application is stored directory by `conch.getCachePath()`*
 
 
-### 3.直接通过putImageData生成图片
-截屏后除了可以把图片保存到本地以外，还可以通过putImageData的方式，把imageData数据put到image对象中，代码如下：
+### 3. Generating pictures directly through putImageData
+In addition to the screen shots can be saved to the outside of the picture, you can also putImageData way, put the imageData data to the image object, the code is as follows: 
 ```javascript
 var image = window.document.createElement("img");
 image.putImageData(arrayBuff,width,height);
 ```
-**函数说明**：putImageData函数需要有三个参数，分别是二进制数据、图片的宽、高。
+**Function description**: The putImageData function needs to have three parameters, the binary data, the width and the height of the picture.
 
 **Tips**  
-*putImageData函数是同步函数，putImageData后可直接使用image，不需要等待onload函数*
+*The putImageData function is a synchronization function, and the putImageData can be used directly after the image, without waiting for the onload function*
 
-### 4.简单代码实例
+### 4. Simple code examples
 
 ```javascript
 if( window.conch )
