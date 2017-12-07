@@ -81,28 +81,28 @@ LayaPlatformCallback.GetInstance().LP_LoginCallback(objCallBack.toString());
 
 Note: the coding of the interface corresponding to the native development language (Android with Java, iOS with Objective-C) is done by reference to the sample code in the second development.
 
-| API名称                 | API描述      | API原型                                    |
+| API名称                 | API description     | API prototype                                   |
 | --------------------- | ---------- | ---------------------------------------- |
-| init                  | 初始化Market  | `conchMarket.init(JSON.stringify(sData),function(data));` |
-| login                 | 登陆         | `conchMarket.login(JSON.stringify(sData),function(data));` |
-| logout                | 登出         | `conchMarket.logout(JSON.stringify(sData),function(data));` |
-| switchUser            | 切换用户       | `conchMarket.switchUser(JSON.stringify(sData),function(data));` |
-| enterPlatform         | 进入第三方的平台   | `conchMarket.enterPlatform(JSON.stringify(sData),function(data));` |
-| enterBBS              | 进入论坛       | `conchMarket.enterBBS(JSON.stringify(sData),function(data));` |
-| enterFeedback         | 反馈         | `conchMarket.enterFeedback(JSON.stringify(sData),function(data));` |
-| enterAccountMgr       | 进入账户管理     | `conchMarket.enterAccountMgr(JSON.stringify(sData),function(data));` |
-| authorize             | 授权         | `conchMarket.authorize(JSON.stringify(sData),function(data));` |
-| refreshToken          | 刷新token    | `conchMarket.refreshToken(JSON.stringify(sData),function(data));` |
-| recharge              | 充值         | `conchMarket.recharge(JSON.stringify(sData),function(data));` |
-| buyProps              | 购买道具       | `conchMarket.buyProps(JSON.stringify(sData),function(data));` |
-| setRechargeInfo       | 设置充值信息     | `conchMarket.setRechargeInfo(JSON.stringify(sData),function(data));` |
-| enterShareAndFeed     | 分享         | `conchMarket.enterShareAndFeed(JSON.stringify(sData),function(data));` |
-| enterInvite           | 邀请         | `conchMarket.enterInvite(JSON.stringify(sData),function(data));` |
-| getGameFriends        | 获得好友列表     | `conchMarket.getGameFriends(JSON.stringify(sData),function(data));` |
-| sendToDesktop         | 发送到桌面      | `conchMarket.sendToDesktop(JSON.stringify(sData),function(data));` |
-| sendMessageToPlatform | 发送消息       | `conchMarket.sendMessageToPlatform(JSON.stringify(sData),function(data));` |
-| canSendToDesktop      | 能否pushicon | `conchMarket.canSendToDesktop(JSON.stringify(sData),function(data));` |
-| openTopicCircle       | 打开话题圈      | `conchMarket.openTopicCircle(JSON.stringify(sData),function(data));` |
+| init                  | Initialize Market  | `conchMarket.init(JSON.stringify(sData),function(data));` |
+| login                 | -         | `conchMarket.login(JSON.stringify(sData),function(data));` |
+| logout                | -         | `conchMarket.logout(JSON.stringify(sData),function(data));` |
+| switchUser            | -      | `conchMarket.switchUser(JSON.stringify(sData),function(data));` |
+| enterPlatform         | A platform into the third party   | `conchMarket.enterPlatform(JSON.stringify(sData),function(data));` |
+| enterBBS              | Into the forum       | `conchMarket.enterBBS(JSON.stringify(sData),function(data));` |
+| enterFeedback         | -        | `conchMarket.enterFeedback(JSON.stringify(sData),function(data));` |
+| enterAccountMgr       | Entry into account management     | `conchMarket.enterAccountMgr(JSON.stringify(sData),function(data));` |
+| authorize             | -         | `conchMarket.authorize(JSON.stringify(sData),function(data));` |
+| refreshToken          | -    | `conchMarket.refreshToken(JSON.stringify(sData),function(data));` |
+| recharge              | -         | `conchMarket.recharge(JSON.stringify(sData),function(data));` |
+| buyProps              | Purchase props       | `conchMarket.buyProps(JSON.stringify(sData),function(data));` |
+| setRechargeInfo       | -     | `conchMarket.setRechargeInfo(JSON.stringify(sData),function(data));` |
+| enterShareAndFeed     | share it         | `conchMarket.enterShareAndFeed(JSON.stringify(sData),function(data));` |
+| enterInvite           | -         | `conchMarket.enterInvite(JSON.stringify(sData),function(data));` |
+| getGameFriends        | Get friends list     | `conchMarket.getGameFriends(JSON.stringify(sData),function(data));` |
+| sendToDesktop         | -      | `conchMarket.sendToDesktop(JSON.stringify(sData),function(data));` |
+| sendMessageToPlatform | -       | `conchMarket.sendMessageToPlatform(JSON.stringify(sData),function(data));` |
+| canSendToDesktop      | whether can pushicon | `conchMarket.canSendToDesktop(JSON.stringify(sData),function(data));` |
+| openTopicCircle       | Open the topic circle      | `conchMarket.openTopicCircle(JSON.stringify(sData),function(data));` |
 
 **Annex:**
 
