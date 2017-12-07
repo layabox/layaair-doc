@@ -6,7 +6,7 @@ There are often screenshots in the project development process, such as : Interc
 
 Screen capture function is a LayaPlayer specific function, and all needs to be called through the conch object, and the code is as follows:
 ```javascript
-if( windoow.conch )
+if( window.conch )
 {
     window.conch.captureScreen(function(arrayBuff,width,height){
 
