@@ -1,18 +1,18 @@
 
-# 扩展字体
+# Extended fonts
 
-在移动设备中，自带的中文字体一般只有一种，开发者如果想要定制个性化字体，LayaPlayer-0.9.7以后的版本支持通过XMLHttpRequest下载字体，并使用该字体，效果如下图1所示：
+In mobile devices, there is only one native Chinese font available. If developers want to customize personalized fonts, LayaPlayer-0.9.7 and later versions supports downloading font via XMLHttpRequest, and using this font, the effect is shown below in Figure 1:
 ![图1](img/1.jpg)
 
 
-## 实现步骤
+## Implementation steps
 
-1、通过XMLHttpRequest以arraybuffer的方式进行下载字体文件。  
-2、字体下载成功后，调用`conch.setFontFaceFromBuffer("AA",xhr.response);`这个函数进行设置字体,第一个参数是在引擎中的字体名字，在这随便取名为AA。
-3、设置使用该字体，然后进行绘制。
+1. Through the XMLHttpRequest arraybuffer to download the font file. 
+2. After the success of the font download, call `conch.setFontFaceFromBuffer("AA",xhr.response);` function sets the font, the first parameter is the name of the font in the engine, arbitrarily named AA here.
+3. Set use of the font, and then draw.
 
 
-具体实现代码:
+Concrete realization of the code:
 
 ```javascript
 var xhr = new XMLHttpRequest();
@@ -40,7 +40,7 @@ function onDrawFrame()
 }
 ```
 
-**TIPS：一定要等待字体下载完成后，设置了setFontFaceFromBuffer，才可以使用该字体。**
+**TIPS：When you have to wait for the font download to be completed, you set up the setFontFaceFromBuffer to use the font.**
 
 
 
