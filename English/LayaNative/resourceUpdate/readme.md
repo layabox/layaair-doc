@@ -1,6 +1,5 @@
-## LayaNative的资源更新方法
-游戏发布之后必然会遇到更新的问题，这里的更新是指用LayaNative打包的游戏发布后，因为修改bug或者添加功能，想要修改客户端的部分代码和图片等数据。  
-目前LayaNative支持两种资源更新方式：  
+## LayaNative resource update method
+After the game is released, it is bound to encounter new problems. The update here refers to the game that is packaged after LayaNative is released. Because of modifying bug or adding function, we want to modify some parts of the client's code and pictures：  
 
 ### 1. 用户不可见的更新（推荐）。  
 
