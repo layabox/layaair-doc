@@ -24,7 +24,7 @@
 
 （2）音频文件尽量小，不仅仅是带宽的限制，还有浏览器音频解码的效率问题。
 
-注意：打包APP有声音格式限制，请参考（[LayaNative_其他设置_声音](http://xn--layanative__-726s570ami3awq0l7zubi66b/)）
+注意：打包APP有声音格式限制，请参考[（LayaNative声音设置）](https://ldc.layabox.com/doc/?nav=zh-as-6-1-3)
 
 **三、音频音量的控制**
 
