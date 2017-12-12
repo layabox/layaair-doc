@@ -38,7 +38,7 @@ Update code process is as follows:
 
 ## 3. How to configure automatic update
 
-1、在assets目录下打开config.ini,内容如下所示：
+1. Open the config.ini under the assets directory, and the contents are as follows:
 ```
 IsHandleUpdateAPK=0
 ApkUpdateUrl=http://www.layabox.com/layaplayer/apk/update/conch-layaair/version.xml
@@ -47,10 +47,10 @@ UpdateAPKFileName=autoupdate.apk
 AppVersion=0.9.6
 CheckNetwork=1
 ```
-设置`IsHandleUpdateAPK=1`  
-将version.xml文件配置到自己的服务器上，并配置`ApkUpdateUrl`为正确路径。  
+Set `IsHandleUpdateAPK=1`  
+Configure the version.xml file on your own server and correct path of `ApkUpdateUrl`.
 
-2、配置version.xml文件，内容如下所示：
+2. Configure the version.xml file as follows : 
 ```
 <update>
     <versionCode>13</versionCode>
@@ -61,12 +61,12 @@ CheckNetwork=1
     </url>
 </update>
 ```
-versionCode：是当前的版本号，类型为int类型  
-name：应用名称  
-version：版本号信息，类型为字符串  
-url:apk的下载地址    
+versionCode：is the current version number, type int type 
+name：Application Name
+version：Version number information, type as string 
+url:apk download address    
 
-3、正确设置你自己工程中的manifest.xml或者build.gradle中的versioncode,如下所示：
+3. Correctly set your own project in manifest.xml or  the versioncode in the build.gradle, as follows:
 ```
 defaultConfig {
         applicationId "com.example.layaboxsdk_demo"
@@ -77,6 +77,6 @@ defaultConfig {
     }
 ```
 
-## 4、注意事项
+## 4. Precautions
 
-1、更新下来的apk包，覆盖原有apk包，需要两个apk的包名和签名必须一致。  
+1. The updated APK package, which covers the original APK package, requires two APK package names and signatures must be the same.
