@@ -1,4 +1,4 @@
-# Automatic large map set system
+# Automatic large Atlas set system
 
 ## 1. Overview
 
