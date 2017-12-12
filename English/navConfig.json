@@ -904,51 +904,51 @@
             ]
           },
           {
-            "name_2_name": "LayaNative基础文档",
+            "name_2_name": "LayaNative Basic documents",
             "name_2_data": [
               {
-                "name_3_name": "LayaNative综述",
-                "name_3_url": "Chinese/LayaNative/LayaNative_Introduction/",
+                "name_3_name": "LayaNative Summary",
+                "name_3_url": "English/LayaNative/LayaNative_Introduction/",
                 "name_3_file": "readme.md"
               },              
               {
                 "name_3_name": "LayaPlayer不是浏览器",
-                "name_3_url": "Chinese/LayaNative/native_index/",
+                "name_3_url": "English/LayaNative/native_index/",
                 "name_3_file": "README.md"
               },              
               {
                 "name_3_name": "横竖屏设置",
-                "name_3_url": "Chinese/LayaNative/screen_orientation/",
+                "name_3_url": "English/LayaNative/screen_orientation/",
                 "name_3_file": "README.md"
               },              
               {
                 "name_3_name": "关于声音",
-                "name_3_url": "Chinese/LayaNative/sound/",
+                "name_3_url": "English/LayaNative/sound/",
                 "name_3_file": "README.md"
               },              
               {
                 "name_3_name": "启动画面",
-                "name_3_url": "Chinese/LayaNative/loading_view/",
+                "name_3_url": "English/LayaNative/loading_view/",
                 "name_3_file": "README.md"
               },              
               {
                 "name_3_name": "关于webSocket",
-                "name_3_url": "Chinese/LayaNative/",
+                "name_3_url": "English/LayaNative/",
                 "name_3_file": "websocket.md"
               },              
               {
                 "name_3_name": "关于网络状态监听",
-                "name_3_url": "Chinese/LayaNative/network/",
+                "name_3_url": "English/LayaNative/network/",
                 "name_3_file": "README.md"
               },
 			  {
-                "name_3_name": "关于iOS-IPV6",
-                "name_3_url": "Chinese/LayaNative/ipv6/",
+                "name_3_name": "About iOS-IPV6",
+                "name_3_url": "English/LayaNative/ipv6/",
                 "name_3_file": "README.md"
               },              
               {
                 "name_3_name": "其他",
-                "name_3_url": "Chinese/LayaNative/Other_settings/",
+                "name_3_url": "English/LayaNative/Other_settings/",
                 "name_3_file": "README.md"
               }
             ]
