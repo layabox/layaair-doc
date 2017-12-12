@@ -1,16 +1,16 @@
 
-# android-APK更新
+# android-APK update
 
-LayaPlayer-0.9.7以后版本，android模板工程中开放了apk自动更新的代码，开发者可以根据项目需求自行修改代码，也可以关闭或删除该代码。
+LayaPlayer-0.9.7 or later,  android template project is open apk automatic update code，Developers can modify the code according to project needs. You can also close or delete the code.
 
-**TIPS：看懂这篇文档，需要具备android的基本开发知识**
+**TIPS：Understand this document, you need to have the basic android development knowledge of Android**
 
-## 1、代码介绍
+## 1. Code introduction
 
-1、自动更新的代码路径在`src\main\java\layaair\autoupdateversion`,这个目录为apk自动更新的代码，如下图1所示:
+1. Automatically updated code path at `src\main\java\layaair\autoupdateversion`, directory is APK automatically updated code. As shown in Figure 1 below :
 ![图1](img/1.jpg)   
 
-2、在MainActivity.java中的onCreate函数，会先调用checkApkUpdate，如果没有更新或者更新完成后，再回调到initEngine函数,如果开发者不想要apkUpdate功能，可以删除该函数，直接调用initEngine即可。
+2. The onCreate function in MainActivity.java calls checkApkUpdate first，If there is no update or update is complete, then call back initEngine function, if developers do not want apkUpdate function, you can delete the function. Call initEngine directly.
 
 ```java
 protected void onCreate(Bundle savedInstanceState) {
@@ -25,18 +25,18 @@ protected void onCreate(Bundle savedInstanceState) {
     }
 ```
 
-## 2、apk更新流程
+## 2. apk update process
 
-更新代码流程如下：
-1、程序启动后先通过读取config.ini，读取`IsHandleUpdateAPK`这个变量，如果值为0，代表不自己处理更新流程，直接启动游戏。如果值为1，则继续checkUpdate流程。  
-2、继续读取config.ini，读取`ApkUpdateUrl`，这是一个xml文件，这个xml文件中记录了最新的版本号，以及最新版本的apk的地址。  
-3、如果本地apk版本号小于线上的版本号，则提示是否更新最新版本，用户可以选择是或者否。  
-4、如果选择“是”，程序会在外网下载最新的版本的apk，进行更新安装。  
-5、如果选择“否”，则直接进入游戏。
+Update code process is as follows:
+1. After the program starts by reading config.ini, read `IsHandleUpdateAPK` variable, if the value is 0, does not process the update process by itself, and starts the game directly。If the value is 1, continue the checkUpdate process.
+2. Continue reading config.ini, and read `ApkUpdateUrl`. This is a XML file, latest version number is recorded in this XML file，And the latest version of the APK address.  
+3. If the local APK version number is smaller than the online version number，Is prompted to update the latest version. The user can choose yes or no.
+4. If you choose "Yes", the program will download the latest version of apk in the external network to update the installation.  
+5、If you choose "No", go directly into the game.
 
-**TIPS：如果开发者想要强制更新，选择“否”直接退出游戏，请自行debug原代码，并根据自己需求修改**
+**TIPS：If the developer wants to force the update, select  "no" directly to exit the game, please debug the original code, and modify according to their needs**
 
-## 3、如何配置自动更新
+## 3. How to configure automatic update
 
 1、在assets目录下打开config.ini,内容如下所示：
 ```
