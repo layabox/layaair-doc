@@ -1,8 +1,10 @@
-# layacmd
+@ -1,271 +0,0 @@
+
+# layaair-cmd
 
 [TOC]
 
-**layacmd**是**layaair**的命令行工具，可以使用**layacmd**不打开**IDE**的情况下对**layaair**项目进行编译发布等操作。它包含以下功能，这些功能都对应一个子命令。
+**layaair-cmd**是**layaair**的命令行工具，可以使用**layaair-cmd**不打开**IDE**的情况下对**layaair**项目进行编译发布等操作。它包含以下功能，这些功能都对应一个子命令。
 
 | 功能             | 子命令             |
 | -------------- | --------------- |
@@ -18,47 +20,47 @@
 ##  安装
 
 ```shell
-$ npm install layacmd -g
+$ npm install layaair-cmd -g
 ```
 
 
 
 ## CLI
 
-**layacmd**的命令类似**git**命令，它的形式是：
+**layaair-cmd**的命令类似**git**命令，它的形式是：
 
 ```shell
-$ layacmd [command] [args]
+$ layaair-cmd [command] [args]
 ```
 
 比如编译项目：
 
 ```shell
-$ layacmd compile
+$ layaair-cmd compile
 ```
 
 或者查看帮助信息：
 
 ```shell
-$ layacmd --help
+$ layaair-cmd --help
 ```
 
-不仅**layacmd**本身，所有的子命令都有版本信息和帮助信息，查看子命令帮助信息：
+不仅**layaair-cmd**本身，所有的子命令都有版本信息和帮助信息，查看子命令帮助信息：
 
 ```shell
-$ layacmd command -h
+$ layaair-cmd command -h
 ```
 
-**layacmd**的大部分子命令都需要当前工作目录下包含**layaair**项目，少数命令可以手动指定输入目录，如`guetzl`，`atlas`命令则是即可以直接`$ layacmd atlas`，也可以指定输入目录。
+**layaair-cmd**的大部分子命令都需要当前工作目录下包含**layaair**项目，少数命令可以手动指定输入目录，如`guetzl`，`atlas`命令则是即可以直接`$ layaair-cmd atlas`，也可以指定输入目录。
 
 
 
 ## 编译
 
 ```shell
-$ layacmd compile -h
+$ layaair-cmd compile -h
 
-  Usage: layacmd-compile [options]
+  Usage: layaair-cmd compile [options]
 
   Options:
 
@@ -71,7 +73,7 @@ $ layacmd compile -h
 #### 使用
 
 ```shell
-$ layacmd copmile
+$ layaair-cmd compile
 ```
 
 
@@ -79,9 +81,9 @@ $ layacmd copmile
 ##  发布
 
 ```shell
-$ layacmd publish -h
+$ layaair-cmd publish -h
 
-  Usage: layacmd-publish [options]
+  Usage: layaair-cmd publish [options]
 
   Options:
 
@@ -99,15 +101,15 @@ $ layacmd publish -h
 #### 使用
 
 ```shell
-$ layacmd publish -o cc # 指定了压缩选项为合并并压缩
+$ layaair-cmd publish -o cc # 指定了压缩选项为合并并压缩
 ```
 
 ## 导出UI
 
 ```shell
-$ layacmd ui -h
+$ layaair-cmd ui -h
 
-  Usage: layacmd-ui [options]
+  Usage: layaair-cmd ui [options]
 
   Options:
 
@@ -124,9 +126,9 @@ $ layacmd ui -h
 #### 使用
 
 ```shell
-$ layacmd ui -c -m release # 导出前清理，并且把mode设置为release
-$ layacmd ui -d # 导出UI代码文件
-$ layacmd ui -a # 导出图集文件
+$ layaair-cmd ui -c -m release # 导出前清理，并且把mode设置为release
+$ layaair-cmd ui -d # 导出UI代码文件
+$ layaair-cmd ui -a # 导出图集文件
 ```
 
 
@@ -140,9 +142,9 @@ $ layacmd ui -a # 导出图集文件
 > 在最终使用资源时，不允许使用上层相对路径，即路径中包含“..”。
 
 ```shell
-$ layacmd resourceVersion -h
+$ layaair-cmd resourceVersion -h
 
-  Usage: layacmd-resourceVersion [options]
+  Usage: layaair-cmd resourceVersion [options]
 
   Options:
 
@@ -160,7 +162,7 @@ $ layacmd resourceVersion -h
 #### 使用
 
 ```shell
-$ layacmd resourceVersion -i input_dir -o output_dir -n 1.1.0
+$ layaair-cmd resourceVersion -i input_dir -o output_dir -n 1.1.0
 # 指定了输入目录、输出目录和版本名称
 ```
 
@@ -230,9 +232,9 @@ $ layacmd resourceVersion -i input_dir -o output_dir -n 1.1.0
 最好在**资源版本控制**生成的文件夹中使用**guetzli**压缩，这可以保证不会重复压缩一张图。
 
 ```shell
-$ layacmd guetzli -h
+$ layaair-cmd guetzli -h
 
-  Usage: layacmd-guetzli [options]
+  Usage: layaair-cmd guetzli [options]
 
   Options:
 
@@ -247,7 +249,7 @@ $ layacmd guetzli -h
 #### 使用
 
 ```shell
-$ layacmd guetzli -i input_dir -q 95
+$ layaair-cmd guetzli -i input_dir -q 95
 # 指定了压缩率95
 ```
 
@@ -256,9 +258,9 @@ $ layacmd guetzli -i input_dir -q 95
 ## 打开静态文件服务器
 
 ```shell
-$ layacmd open -h
+$ layaair-cmd open -h
 
-  Usage: layacmd-open [port] [args]
+  Usage: layaair-cmd open [port] [args]
 
   Options:
 
