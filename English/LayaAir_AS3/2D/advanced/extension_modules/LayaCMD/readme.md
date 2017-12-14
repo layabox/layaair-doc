@@ -1,7 +1,7 @@
-# layacmd
+# laya-cmd
 [TOC]
 
-**layacmd** is **layaair** command-line tool that can be used **layacmd**  to open **layaair**  project compile and publish operations without opening the  **IDE**. It contains the following functions, each of which corresponds to a sub command.
+**laya-cmd** is **layaair** command-line tool that can be used **laya-cmd**  to open **layaair**  project compile and publish operations without opening the  **IDE**. It contains the following functions, each of which corresponds to a sub command.
 
 | function             | Sub command             |
 | -------------- | --------------- |
@@ -18,47 +18,47 @@
 ##  Install
 
 ```shell
-$ npm install layacmd -g
+$ npm install laya-cmd -g
 ```
 
 
 
 ## CLI
 
-**layacmd* command is similar to the **git** command, and it is in the form of:
+**laya-cmd* command is similar to the **git** command, and it is in the form of:
 
 ```shell
-$ layacmd [command] [args]
+$ laya-cmd [command] [args]
 ```
 
 For example, the compilation project ：
 
 ```shell
-$ layacmd compile
+$ laya-cmd compile
 ```
 
 Or view help information ：
 
 ```shell
-$ layacmd --help
+$ laya-cmd --help
 ```
 
-Not only the **layacmd** itself, all the commands have version information and help information, but also look at the sub command help information:
+Not only the **laya-cmd** itself, all the commands have version information and help information, but also look at the sub command help information:
 
 ```shell
-$ layacmd command -h
+$ laya-cmd command -h
 ```
 
-Most of the **layacmd** commands required current working directory contains the **layaair** project, a few commands can be specified manually enter the directory, such as `guetzl`, `atlas`  command is that can be directly `$ layacmd atlas`, you can also specify the input directory.
+Most of the **laya-cmd** commands required current working directory contains the **layaair** project, a few commands can be specified manually enter the directory, such as `guetzl`, `atlas`  command is that can be directly `$ laya-cmd atlas`, you can also specify the input directory.
 
 
 
 ## Compile
 
 ```shell
-$ layacmd compile -h
+$ laya-cmd compile -h
 
-  Usage: layacmd-compile [options]
+  Usage: laya-cmd-compile [options]
 
   Options:
 
@@ -71,7 +71,7 @@ If the current directory has a **layaair** project, the command generates the co
 #### use
 
 ```shell
-$ layacmd copmile
+$ laya-cmd compile
 ```
 
 
@@ -79,9 +79,9 @@ $ layacmd copmile
 ##  release
 
 ```shell
-$ layacmd publish --help
+$ laya-cmd publish --help
 
-  Usage: layacmd-publish [options]
+  Usage: laya-cmd-publish [options]
 
   Options:
 
@@ -95,7 +95,7 @@ If the current directory has a **layaair** project, the command generates the pu
 #### Use
 
 ```shell
-$ layacmd publish -o cc # 指定了压缩选项为合并并压缩
+$ laya-cmd publish -o cc # 指定了压缩选项为合并并压缩
 ```
 
 
@@ -103,9 +103,9 @@ $ layacmd publish -o cc # 指定了压缩选项为合并并压缩
 ## Export UI
 
 ```shell
-$ layacmdui -h
+$ laya-cmdui -h
 
-  Usage: layacmd-ui [options]
+  Usage: laya-cmd-ui [options]
 
   Options:
 
@@ -120,7 +120,7 @@ If the current directory has a **layaair** project, the command exports the code
 #### Use
 
 ```shell
-$ layacmd ui -c -m release # 导出前清理，并且把mode设置为release
+$ laya-cmd ui -c -m release # 导出前清理，并且把mode设置为release
 ```
 
 
@@ -132,9 +132,9 @@ $ layacmd ui -c -m release # 导出前清理，并且把mode设置为release
 When you build the version, the modified file or the new file will be recorded in the new version relative to the previous version. If there are no new files or no modified files, no new version will be generated.
 
 ```shell
-$ layacmd resourceVersion -h
+$ laya-cmd resourceVersion -h
 
-  Usage: layacmd-resourceVersion [options]
+  Usage: laya-cmd-resourceVersion [options]
 
   Options:
 
@@ -152,7 +152,7 @@ This command does not require the current directory to contain the **layaair** p
 #### Use
 
 ```shell
-$ layacmd resourceVersion -i input_dir -o output_dir -n 1.1.0
+$ laya-cmd resourceVersion -i input_dir -o output_dir -n 1.1.0
 # 指定了输入目录、输出目录和版本名称
 ```
 
@@ -249,10 +249,10 @@ This command can be executed under **layaair** project directory, or it can not 
 Implementing atlas packing in the **layaair**  project directory:
 
 ```shell
-$ layacmd atlas
+$ laya-cmd atlas
 ```
 
-This command is packaged with the parameters specified in the *packParam.json* file of the temporary directory, such as ` %userprofile%\AppData\Roaming\LayaAirIDE\` in **windows**. This file will be rewritten when you open different projects using  **IDE**. Therefore, using **layacmd** does not recommend this approach.
+This command is packaged with the parameters specified in the *packParam.json* file of the temporary directory, such as ` %userprofile%\AppData\Roaming\LayaAirIDE\` in **windows**. This file will be rewritten when you open different projects using  **IDE**. Therefore, using **laya-cmd** does not recommend this approach.
 
 
 
@@ -261,7 +261,7 @@ This command is packaged with the parameters specified in the *packParam.json* f
 **Atlas packing** many parameters are provided for the command, which can be specified directly on the command line, such as:
 
 ```shell
-$ layacmd atlas -d . -o ./bin/res/atlas --textFormat png8
+$ laya-cmd atlas -d . -o ./bin/res/atlas --textFormat png8
 # 指定当前目录为输入目录
 # 指定输出目录
 # 指定导出png8格式图片
@@ -276,7 +276,7 @@ For more parameters, see the above table.
 Using `init` parameters to generate configuration files:
 
 ```shell
-$ layacmd atlas --init
+$ laya-cmd atlas --init
 ```
 
 The default JSON file will be generated by atlasConfig.
@@ -315,7 +315,7 @@ All fields except `inputDir` have default values. You must specify the input dir
 Then use the following command to recognize the configuration file and generate a photo collection:
 
 ```shell
-$ layacmd atlas --config atlasConfig
+$ laya-cmd atlas --config atlasConfig
 ```
 
 
@@ -329,9 +329,9 @@ $ layacmd atlas --config atlasConfig
 It is best to use **guetzli** compression in the folder generated by the **Resource version control**, which ensures that you will not repeatedly compress a graph.
 
 ```shell
-$ layacmd guetzli -h
+$ laya-cmd guetzli -h
 
-  Usage: layacmd-guetzli [options]
+  Usage: laya-cmd-guetzli [options]
 
   Options:
 
@@ -346,7 +346,7 @@ This command does not require the current directory to contain the **layaair** p
 #### use
 
 ```shell
-$ layacmd guetzli -i input_dir -q 95
+$ laya-cmd guetzli -i input_dir -q 95
 # 指定了压缩率95
 ```
 
@@ -355,9 +355,9 @@ $ layacmd guetzli -i input_dir -q 95
 ## Open the static file server
 
 ```shell
-$ layacmd open --help
+$ laya-cmd open --help
 
-  Usage: layacmd-open [port] [args]
+  Usage: laya-cmd-open [port] [args]
 
   Options:
 
@@ -365,7 +365,7 @@ $ layacmd open --help
     -V, --version   output the version number
     -p <port>       resource directory.
     -s              don't open browser
-    -h <hostname>   with hostname, such as layacmd open -h localhost
+    -h <hostname>   with hostname, such as laya-cmd open -h localhost
     -d <directory>  with folder
     -f              enable html5 history
 ```
@@ -373,15 +373,15 @@ $ layacmd open --help
 #####  use
 
 ```shell
-$ layacmd open
+$ laya-cmd open
 # 带端口号
-$ layacmd -p 8000
+$ laya-cmd -p 8000
 # 静默启动（不打开浏览器）
-$ layacmd -s
+$ laya-cmd -s
 # 使用hostname打开
-$ layacmd -h localhost -p 8888
+$ laya-cmd -h localhost -p 8888
 # 指定根目录
-$ layacmd -d ~/git/anywhere
+$ laya-cmd -d ~/git/anywhere
 # enable html5 history
-$ layacmd -f /index.html
+$ laya-cmd -f /index.html
 ```
