@@ -886,7 +886,7 @@
         ]
       },
       {
-        "nav_1_name": "LayaNative原生服务",
+        "nav_1_name": "LayaNative Primary service",
         "nav_1_data": [
           {
             "name_2_name": "LayaNative overview",
@@ -912,32 +912,32 @@
                 "name_3_file": "readme.md"
               },              
               {
-                "name_3_name": "LayaPlayer不是浏览器",
+                "name_3_name": "LayaPlayer is not a browser",
                 "name_3_url": "English/LayaNative/native_index/",
                 "name_3_file": "README.md"
               },              
               {
-                "name_3_name": "横竖屏设置",
+                "name_3_name": "Screen settings",
                 "name_3_url": "English/LayaNative/screen_orientation/",
                 "name_3_file": "README.md"
               },              
               {
-                "name_3_name": "关于声音",
+                "name_3_name": "Sound",
                 "name_3_url": "English/LayaNative/sound/",
                 "name_3_file": "README.md"
               },              
               {
-                "name_3_name": "启动画面",
+                "name_3_name": "Loading interface",
                 "name_3_url": "English/LayaNative/loading_view/",
                 "name_3_file": "README.md"
               },              
               {
-                "name_3_name": "关于webSocket",
+                "name_3_name": "About webSocket",
                 "name_3_url": "English/LayaNative/",
                 "name_3_file": "websocket.md"
               },              
               {
-                "name_3_name": "关于网络状态监听",
+                "name_3_name": "Network status monitoring",
                 "name_3_url": "English/LayaNative/network/",
                 "name_3_file": "README.md"
               },
@@ -947,7 +947,7 @@
                 "name_3_file": "README.md"
               },              
               {
-                "name_3_name": "其他",
+                "name_3_name": "Other settings",
                 "name_3_url": "English/LayaNative/Other_settings/",
                 "name_3_file": "README.md"
               }
@@ -1037,12 +1037,12 @@
                 "name_3_file": "README.md"
               },
               {
-                "name_3_name": "使用IDE构建工程",
+                "name_3_name": "Build project with IDE",
                 "name_3_url": "English/LayaNative/build_Tool/",
                 "name_3_file": "readme.md"
               },
               {
-                "name_3_name": "打包工具使用",
+                "name_3_name": "Packaging tools to use",
                 "name_3_url": "English/LayaNative/packaging_Tools/",
                 "name_3_file": "readme.md"
               }
