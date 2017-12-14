@@ -1,18 +1,18 @@
 
 
-# 其他说明
+# Other instructions
 
-## 1. 关于第三方地图
+## 1. About third party maps
 
-LayaPlayer底层渲染使用openGLES渲染，使用android的GLSurfaceView控件和iOS的GLKView控件，所以无法支持第三方地图，如百度地图。
+LayaPlayer rendering is based on openGLES rendering, using GLSurfaceView control of Android and GLKView control of iOS, so it can't support third party map, such as Baidu map.
 
-## 2. 关于文件格式
+## 2. About the file format
 
-**项目中的文本格式文件（例如:ini、xml、html、json、js等）都必须是utf8编码格式，因为iOS设备不支持非utf8格式编码的文件。**
+**Text format files in the project (ini, XML, HTML, JSON, JS, etc.) must be utf8 encoding format, because iOS devices do not support non utf8 format encoded files.**
 
-## 3. debug模式和release模式
+## 3. Debug mode and release mode
 
-LayaPlayer底层LOG分为三种：
+The bottom LOG of LayaPlayer is divided into three kinds:
 
 ```java
 LOGI 普通流程log
@@ -20,7 +20,7 @@ LOGW 警告log
 LOGE 错误log
 ```
 
-在js脚本中，开发者可以通过以下函数设置Debug模式：
+In the JS script, the developer can set the Debug mode by the following functions:
 
 ```javascript
 if( window.conch )
@@ -32,34 +32,34 @@ if( window.conch )
 ```
 
 **Tips**
-*1、conch只能LayaPlayer环境下调用，在网页版本中是没有conch定义的，所有需要判断一下是否存在。*
-*2、如果使用as语言开发的时候，可以通过 Browser.window['conch']这种方式获得conch对象。*
+*1、conch can only be called under the LayaPlayer environment, and there is no conch definition in the web version.*
+*2、If you use the as language to develop, you can get conch objects in this way through Browser.window['conch']*
 
-## 4.关于iOS对接微信
+## 4. About iOS Docking WeChat
 
-在iOS平台下对接微信SDK，微信1.77版本以后需要增加-Objc的参数，微信的官方文档中默认让增加`-Objc -all_load`,但是这样会导致编译报错。
-遇到到这种情况可以把参数变成 `-Objc -force_load libWeChatSDK.a`，配置后，如图1所示：
+In the iOS platform docking micro-channel SDK, WeChat 1.77 version after the need to increase -Objc parameters, WeChat official documentation to increase the `-Objc -all_load`,  but this will cause the compiler error.
+Encountered this situation can change the parameter `-Objc -force_load libWeChatSDK.a` after configuration, as shown in Figure 1:
 
 ![1](img/1.png)
 
-## 5. 关于iOS模拟器
+## 5. On the iOS simulator
 
-LayaPlayer在0.9.5以后的版本，支持iOS模拟器运行，构建好项目后，选择模拟器便可运行。
+The version of LayaPlayer after 0.9.5 supports the run of the iOS emulator, and after building a good project, the selection simulator can run.
 
-**Tips：虽然LayaPlayer支持iOS模拟器，但是运行效率比较低，建议开发者使用iOS真机调试。**
+**Tips：Although LayaPlayer supports the iOS simulator, but the efficiency is relatively low, that developers use iOS device debugging.**
 
-## 6. 获取各种信息
+## 6. Get all kinds of information
 
-| 函数名称                 | 函数说明               | 返回值说明                                    | 备注                               |
+| Function name                 | Function description               | Return value description                                    | Remarks                               |
 | -------------------- | ------------------ | ---------------------------------------- | -------------------------------- |
-| getTotalMem()        | 获得运行设备总内存          | 单位为KB                                    |                                  |
-| getUsedMem()         | 获得当前应用程序占用的内存      | 单位为KB                                    | 返回值不太准确，但是可以作为参考                 |
-| getAvalidMem()       | 获得可用的内存            | 单位为KB                                    | 返回值不太准确，但是可以作为参考                 |
-| getNetworkType()     | 获得网络状态             | 返回int值，NET_NO = 0;NET_WIFI = 1;NET_2G = 2;NET_3G = 3;NET_4G = 4;NET_UNKNOWN=5 |                                  |
-| getRuntimeVersion()  | 获得LayaPlayer的版本    | 返回值是一个字符串，类似ios-conch5-0.9.2、android-conch5-0.9 |                                  |
-| getOS()              | 获得当前系统             | 返回值类似“Conch-ios” “Conch-android”字符串      |                                  |
-| getAppVersion()      | 获得iOS-App的版本号      | 返回字符串 1.1                                | iOS-app的版本号，通过这个版本号，可以做APP的更新提示。 |
-| getAppLocalVersion() | 获得iOS-App的Local版本号 | 返回字符串1.2                                 | iOS-app的版本号，通过这个版本号，可以做APP的更新提示。 |
+| getTotalMem()        | To run the total memory of the device          | The unit is KB                                    |                                  |
+| getUsedMem()         | Get the memory occupied by the current application      | The unit is KB                                    | The return value is not accurate, but it can be used as a reference                 |
+| getAvalidMem()       | Obtaining available memory          | he unit is KB                                    | The return value is not accurate, but it can be used as a reference                 |
+| getNetworkType()     | Getting network state             | Return the int value，NET_NO = 0;NET_WIFI = 1;NET_2G = 2;NET_3G = 3;NET_4G = 4;NET_UNKNOWN=5 |                                  |
+| getRuntimeVersion()  | Get a version of LayaPlayer    | The return value is a string, similar to ios-conch5-0.9.2、android-conch5-0.9 |                                  |
+| getOS()              | Get the current system             | Return values are similar “Conch-ios” “Conch-android” Character string      |                                  |
+| getAppVersion()      | Get the version number of iOS-App      | Return to string 1.1                               | IOS-app version number, through this version number, can be a APP update prompt |
+| getAppLocalVersion() | Get the Local version number of iOS-App | Return to string 1.2                                 | The version number of iOS-app, through this version number, can be used as a APP update. |
 
 这些函数都属于conch.config类的函数，调用实例：
 
@@ -193,10 +193,10 @@ window.onLayaInitError=function(e)
 	alert("加载游戏失败，可能由于您的网络不稳定，请退出重进");
 }
 ```
-开发者可以根据自己需求，修改报错信息和报错方式。
+The developer can modify the false information and the wrong way of reporting according to its own needs.
 
-## 13. 获取设备型号
-在LayaPlayer-0.9.12版本以后，iOS可以通过调用conch.config.getDeviceInfo()获取设备型号。可以用于iPhone X的适配，代码如下：
+## 13. Obtain the device model
+After LayaPlayer-0.9.12, iOS can get the device model by calling conch.config.getDeviceInfo (). Can be used for iPhone X adaptation, the code is as follows:
 ```javascript
 if( window.conch )
 {
