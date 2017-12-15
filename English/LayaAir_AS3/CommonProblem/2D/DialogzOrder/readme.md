@@ -1,4 +1,4 @@
-# 设置显示对象层级位于Dialog之上
+# Set the display object hierarchy on top of Dialog
 
 在项目开发中通常都会用到弹出对话框以及对话框的拖动、模式窗口等功能；也就是Dialog组件。
 
