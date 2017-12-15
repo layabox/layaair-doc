@@ -1,56 +1,56 @@
-# WebGL拼接图片产生缝隙的问题
+# WebGL stitching pictures generated gap problem
 
-**在LayaAir引擎中如果渲染模式采用了WebGL，则图片拼接处会经常出现缝隙。如下图所示：**
+**In the LayaAir engine, if the rendering mode is WebGL, there will be a lot of stitching around border picture. As shown in the following figure**
 
-![1](img/1.png)</br>(图1)
+![1](img/1.png)</br>(Picture 1)
 
-### 出现缝隙的原因：
+### The reason for the gap:
 
-1）3D世界中半个像素的问题；WebGL是采用显卡硬件加速渲染，绘制一张纹理是通过UV和图片的像素值对位的方法，以及WebGL中的寻址方法等。（本篇文章中不再过多解释半个像素的资料，有兴趣的可以去google查下）
+1）Half-pixel problem in the 3D world; WebGL is the use of graphics hardware accelerated rendering, rendering a texture through the UV and image pixel value of the bit alignment method, and addressing methods in WebGL. (This article is no longer too much to explain half pixel data, check google for further more details)
 
-2）2D中资源带有缩放或增加缩放的时候，由于精度的问题，这个缝隙出现的会更加明显。
+2）When 2D resources are scaled, this gap will be more apparent due to the accuracy issues.
 
-### 引擎中画面处理方式：
+### Image processing in the engine:
 
-在LayaAir引擎中有两种打包图集的方法。一种是直接在UI编辑模式下导出资源，一种是使用工具栏中的图集打包工具进行打包。但是这两种功能都做了同样的事情，把小图合并到图集的时候都增加了保护边，如下图所示：
+There are two ways to pack the atlas in the LayaAir engine. One is to export the resources directly in the UI edit mode, and the other is to use the atlas packing tool in the toolbar to pack it. But both of the two functions do the same thing. When the thumbnail is merged into the atlas, the protection edge is added, as shown in the following figure:
 
-![2](img/2.png)</br>(图2)
+![2](img/2.png)</br>(Picture 2)
 
-**（绿色部分代表最边缘的像素）**
+**（The green part represents the most marginal pixel）**
 
-合并到一张大图中位置为100,100。合并到大图中的时候就会自动把最边缘的像素扩充出来，但是真正绘制的时候，还是取100,100的位置。这样就能避免缝隙，如下图所示：
+The position of merging into a large picture is 100, 100. When merging into the big picture, the most edge pixels will be automatically expanded, but when they are really drawn, they will take a 100100 position. This can avoid the gap, as shown in the following figure:
 
-![3](img/3.png)</br>(图3)
+![3](img/3.png)</br>(Picture 3)
 
-**（蓝色部分就是扩充出来的边，这个边的像素值就是复制图2中的边缘值）**
+**（The blue part is the extended edge, and the pixel value of the edge is the edge value of the copy Figure 2.）**
 
-### 拼接的地图如何修改？
+### How does the map of the stitching be modified?
 
-通过上面讲解的原理，大家应该都理解了。但是很多场景是通过第三方工具拼接的，比如使用了Tiled-Map：
+Through the above explanation principle, we should all understand. But many scenes are stitched together by third-party tools, such as using Tiled-Map:
 
-**Tiled-Map没有做这样的保护边，该如何处理呢？**
+**Tiled-Map does not do such a protective edge, how to deal with it ? **
 
-最简单的方法就是采样的时候各缩小一个像素值，比如场景元素是64*64的格子，那么绘制的代码如下所示：
+The easiest way is to reduce the sampling time of a pixel value, such as the scene element with 64*64 grid size, then draw the code as follows:
 
 ```typescript
 drawImage(image,sx,sy,sw,sh,dx,dy,dw,dh);
 ```
 
-原本是用以下方式来写的：
+It was originally written in the following way:
 
 ```typescript
 drawImage(image,128,256,64,64,100,100,64,64);//这种写法就可能会出现缝隙
 ```
 
-现在则需要改为：
+Now it needs to be changed to:
 
 ```typescript
 drawImage(image,128+1,256+1,64-1,64-1,100,100,64,64);
 ```
 
-也就是采样的时候把资源缩小一圈，但是绘制的时候，还是64那么大。大部分这种处理方法是看不出来的（大多数游戏就是这样处理的）。
+When the sampling resources to reduce the circle,  but when drawing, 64 too large as it is drawn. Most of this approach can not be seen (most games are handled this way).
 
-但是如果想要更好的效果，则需要美术下点功夫，比如绘制图片元素的时候，就已经把保护边给绘制好。
+But if you want a better effect, you need to make some effort under the art, for example, when drawing a picture element, you have already drawn the protection side edge.
 
 
 
