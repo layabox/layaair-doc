@@ -1,4 +1,4 @@
-# Graphic mixed chat room client (on)
+# chat room client GUI (Part 1)
 
 ### Simple client requirement analysis
 
