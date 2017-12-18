@@ -1053,17 +1053,17 @@
             "name_2_data": [
               {
                 "name_3_name": "android开发环境搭建-Eclipse",
-                "name_3_url": "Chinese/LayaNative/setUpAndroidEnvironment_Eclipse/",
+                "name_3_url": "English/LayaNative/setUpAndroidEnvironment_Eclipse/",
                 "name_3_file": "readme.md"
               },
               {
                 "name_3_name": "android开发环境搭建-AndroidStudio",
-                "name_3_url": "Chinese/LayaNative/AndroidStudio_ConfigurationAndApplication/",
+                "name_3_url": "English/LayaNative/AndroidStudio_ConfigurationAndApplication/",
                 "name_3_file": "readme.md"
               },
               {
                 "name_3_name": "iOS真机调试",
-                "name_3_url": "Chinese/LayaNative/packagingReleases_IOS/",
+                "name_3_url": "English/LayaNative/packagingReleases_IOS/",
                 "name_3_file": "readme.md"
               }
             ]
