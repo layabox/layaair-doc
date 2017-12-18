@@ -1,12 +1,12 @@
-# 富文本HtmlDivElement的使用
+# Use of rich text HtmlDivElement
 
-**在项目开发中通常会使用到富文本来实现图文混排的功能，在本篇文档中我们来列出一些开发者常见的问题。**
+**In the project development are usually used to achieve rich text by mixed function in this document lists some common problems to our developers.**
 
-**1.如何在同一个文本中设置Bold、Font、FontSize、Color、下划线？**
+**1. How to set up Bold, Font, FontSize, Color, underline in the same text?**
 
-**【注意：目前不支持斜体、描边、span标签内嵌的方式】**
+** [Note: italics, strokes, and span tags are not currently supported] **
 
-示例如下：
+The examples are as follows :
 
 ```typescript
 var div:HTMLDivElement=new HTMLDivElement();
@@ -18,9 +18,9 @@ div.innerHTML="<span style='font-weight:bold;" +
 Laya.stage.addChild(div);
 ```
 
-**2.如何在同一个文本中设置字体、颜色不同？**
+**2. How to set the font in the same text, different colors ?**
 
-示例如下：
+The examples are as follows:
 
 ```typescript
 var htmlD:HTMLDivElement = new HTMLDivElement();
@@ -28,9 +28,9 @@ Laya.stage.addChild(htmlD);
 htmlD.innerHTML = "<font style='fontSize:30' color='#67fc2c'>测试<br/></font><font style='fontSize:20'>html组件<br/></font>";
 ```
 
-**3.如何获取html文本的实际内容？获取html文本的实际宽高（contextWidth、contextHeight）?**
+**3. How to get the actual content of html text? Get the actual height of html text（contextWidth、contextHeight）?**
 
-示例如下：
+The examples are as follows :
 
 ```typescript
 var htmlDiv:HTMLDivElement=new HTMLDivElement();
@@ -60,11 +60,11 @@ var htmlDiv:HTMLDivElement=new HTMLDivElement();
 			Laya.stage.addChild(htmlDiv);
 ```
 
-**4.如何设置文本的水平居中对齐(align需要和width配合使用)、换行(<br/换行需要有行高>)、空格_(;)？**
+**4. How to set up the horizontal alignment of the text (align needs to be used with width), change line (<br/ Line breaks need to have line height >)、Space _(;)？**
 
-**【注意：目前不支持文本的垂直居中对齐，开发者可以将(图片的高度-文本的高度)/2的值赋给文本的Y值，进行垂直居中对齐替代设置】**
+** [Note: Currently, vertical alignment of the text is not supported. The developer can assign the value of  (the height of the image - the height of the text) / 2 to the Y value of the text, and center it vertically to replace it.] **
 
-示例如下：
+Here is an example :
 
 ```typescript
 var html3:HTMLDivElement=new HTMLDivElement();
@@ -75,9 +75,9 @@ html3.innerHTML="<br/><span>  测试水平居中对齐</span>";
 Laya.stage.addChild(html3);
 ```
 
-**5.如何实现超链接？**
+**5. How to implement hyperlinks ? **
 
-示例如下：
+The examples are as follows :
 
 ```typescript
 var div:HTMLDivElement=new HTMLDivElement();
@@ -91,9 +91,9 @@ private function onLink(data:*):void
 }
 ```
 
-**6.如何显示图片？**
+**6. How to display the picture ?**
 
-示例如下：
+The examples are as follows : 
 
 ```typescript
 var imageHtml:HTMLDivElement=new HTMLDivElement();
@@ -101,9 +101,9 @@ imageHtml.innerHTML="<img src='res/boy.png'></img>";
 Laya.stage.addChild(imageHtml);
 ```
 
-**7.如何实现html页面跳转？**
+**7. How to achieve HTML page Jump ?**
 
-示例如下：
+The examples are as follows : 
 
 ```typescript
 var iHtml:HTMLIframeElement=new HTMLIframeElement();
@@ -111,9 +111,9 @@ Laya.stage.addChild(iHtml);
 iHtml.href="res/html/test.html";
 ```
 
-**8.如何追加文本内容appendHtml？**
+**8. How to add text content appendHtml ？**
 
-示例如下：
+The examples are as follows :
 
 ```typescript
 var appendHtml:HTMLDivElement=new HTMLDivElement();
@@ -123,9 +123,9 @@ appendHtml.appendHTML("<br/>  BBBBBBBBBB");
 appendHtml.layout();
 ```
 
-**9.为HtmlDivElement设置行间距，leading属性，注意，必须设置valign='top'**
+**9.Setting line spacing for HtmlDivElement, leading property, attention, must be set valign='top'**
 
-示例如下：
+The examples are as follows :
 
 ```typescript
 var t:HTMLDivElement = new HTMLDivElement ;
@@ -137,9 +137,9 @@ t.style.leading = 10;
 t.innerHTML = "akshfkjashfkjhakshjdfhkasjdfhsaf";
 ```
 
-**10.解决IOS手机上英文字母偏下的问题（在style样式中加垂直向上对齐valign:top属性）**
+**10. Solve the problem of the English alphabet on the IOS cell phone（with the vertical alignment of the valign:top attributes in the style style）**
 
-示例如下：
+The examples are as follows :
 
 ```typescript
 var html:HTMLDivElement=new HTMLDivElement();
