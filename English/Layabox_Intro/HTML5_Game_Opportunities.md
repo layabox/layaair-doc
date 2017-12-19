@@ -1,4 +1,4 @@
-# Opportunity of HTML5 game Industry
+# Opportunity of HTML5 game industry
 
 
 
