@@ -654,6 +654,11 @@
                 "name_3_name": "Using Chrome's profiler",
                 "name_3_url": "English/LayaAir_AS3/2D/advanced/PerformanceOptimization/Chrome_Profiles/",
                 "name_3_file": "readme.md"
+              },
+              {
+                "name_3_name": "Texture内存回收",
+                "name_3_url": "English/LayaAir_AS3/2D/advanced/PerformanceOptimization/clearTextureRes/",
+                "name_3_file": "readme.md"
               }
             ]
           },
