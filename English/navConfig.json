@@ -656,7 +656,7 @@
                 "name_3_file": "readme.md"
               },
               {
-                "name_3_name": "Texture内存回收",
+                "name_3_name": "Texture resource destruction",
                 "name_3_url": "English/LayaAir_AS3/2D/advanced/PerformanceOptimization/clearTextureRes/",
                 "name_3_file": "readme.md"
               }
