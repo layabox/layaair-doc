@@ -2660,70 +2660,67 @@
             ]
           },
           {
-            "name_2_name": "性能优化",
-
+            "name_2_name": "Game loading handler",
             "name_2_data": [
               {
-                "name_3_name": "性能统计面板介绍",
 
+                "name_3_name": "Binary image",
                 "name_3_url": "English/LayaAir_JS/2D/advanced/PerformanceOptimization/Stat_Panel/",
                 "name_3_file": "readme.md"
               },
               {
-                "name_3_name": "内存优化方式",
 
+                "name_3_name": "Multithreading worker",
                 "name_3_url": "English/LayaAir_JS/2D/advanced/PerformanceOptimization/memory/",
                 "name_3_file": "readme.md"
               },
               {
-                "name_3_name": "渲染优化原则",
 
+                "name_3_name": "Resource version management",
                 "name_3_url": "English/LayaAir_JS/2D/advanced/PerformanceOptimization/rendering/",
                 "name_3_file": "readme.md"
               },
               {
-                "name_3_name": "CacheAs静态缓存优化",
+                "name_3_name": "CacheAs static cache",
                 "name_3_url": "English/LayaAir_JS/2D/advanced/PerformanceOptimization/cacheAs/",
                 "name_3_file": "readme.md"
               },
               {
-                "name_3_name": "CPU优化方式",
+                "name_3_name": "CPU optimization method",
                 "name_3_url": "English/LayaAir_JS/2D/advanced/PerformanceOptimization/CPU/",
                 "name_3_file": "readme.md"
               },
               {
-                "name_3_name": "其它优化策略",
 
+                "name_3_name": "Other optimization strategies",
                 "name_3_url": "English/LayaAir_JS/2D/advanced/PerformanceOptimization/other/",
                 "name_3_file": "readme.md"
               },
               {
-                "name_3_name": "使用chrome的性能分析器",
 
+                "name_3_name": "Using Chrome's profiler",
                 "name_3_url": "English/LayaAir_JS/2D/advanced/PerformanceOptimization/Chrome_Profiles/",
                 "name_3_file": "readme.md"
               }
             ]
           },
           {
-            "name_2_name": "动画进阶",
-
+            "name_2_name": "Animation",
             "name_2_data": [
               {
-                "name_3_name": "骨骼动画进阶",
 
+                "name_3_name": "Bone animation",
                 "name_3_url": "English/LayaAir_JS/2D/advanced/animation/bone/",
                 "name_3_file": "readme.md"
               }
             ]
           },
           {
-            "name_2_name": "扩展模块",
-
+            "name_2_name": "Extended module",
             "name_2_data": [
               {
-                "name_3_name": "用LayaAir引擎解析Tiled Map地图",
 
+                "name_3_name": "Analyze Tiled Map with LayaAir engine",
                 "name_3_url": "English/LayaAir_JS/2D/advanced/extension_modules/TiledMap/",
                 "name_3_file": "readme.md"
               }
@@ -2732,14 +2729,14 @@
         ]
       },
       {
-        "nav_1_name": "实例开发篇（JS）",
+        "nav_1_name": "LayaAir 3D engine（JS）",
         "nav_1_data": [
           {
-            "name_2_name": "LayaAir IDE实用示例",
+            "name_2_name": "LayaAir IDE Practical Example",
             "name_2_data": [
               {
-                "name_3_name": "List示例：显示、增加、删除",
 
+                "name_3_name": "List example: display, add, delete",
                 "name_3_url": "English/LayaAir_JS/2D/examples/LayaAirIDE/List_display_add_del/",
                 "name_3_file": "readme.md"
               }
@@ -2748,7 +2745,7 @@
         ]
       },
       {
-        "nav_1_name": "LayaNative原生服务",
+        "nav_1_name": "LayaNative Primary service",
         "nav_1_data": [
           {
             "name_2_name": "LayaNative overview",
