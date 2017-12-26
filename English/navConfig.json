@@ -2751,70 +2751,70 @@
         "nav_1_name": "LayaNative原生服务",
         "nav_1_data": [
           {
-            "name_2_name": "LayaNative手把手",
+            "name_2_name": "LayaNative overview",
             "name_2_data": [
               {
-                "name_3_name": "测试App安装",
 
+                "name_3_name": "APP installation",
                 "name_3_url": "English/LayaNative/How_To_Use_Runtime/",
                 "name_3_file": "readme.md"
               },              
               {
-                "name_3_name": "运行Hello LayaBox项目",
+                "name_3_name": "Running the Hello LayaBox project",
                 "name_3_url": "English/LayaNative/run_HelloLayaBox/",
                 "name_3_file": "README.md"
               }
             ]
           },
           {
-            "name_2_name": "LayaNative基础文档",
+            "name_2_name": "LayaNative Basic documents",
             "name_2_data": [
               {
-                "name_3_name": "LayaNative综述",
+                "name_3_name": "LayaNative Summary",
                 "name_3_url": "English/LayaNative/LayaNative_Introduction/",
                 "name_3_file": "readme.md"
               },              
               {
-                "name_3_name": "LayaPlayer不是浏览器",
+                "name_3_name": "LayaPlayer is not a browser",
                 "name_3_url": "English/LayaNative/native_index/",
                 "name_3_file": "README.md"
               },              
               {
-                "name_3_name": "横竖屏设置",
 
+                "name_3_name": "Screen settings",
                 "name_3_url": "English/LayaNative/screen_orientation/",
                 "name_3_file": "README.md"
               },              
               {
-                "name_3_name": "关于声音",
 
+                "name_3_name": "Sound",
                 "name_3_url": "English/LayaNative/sound/",
                 "name_3_file": "README.md"
               },              
               {
-                "name_3_name": "启动画面",
 
+                "name_3_name": "Loading interface",
                 "name_3_url": "English/LayaNative/loading_view/",
                 "name_3_file": "README.md"
               },              
               {
-                "name_3_name": "关于webSocket",
+                "name_3_name": "About webSocket",
                 "name_3_url": "English/LayaNative/",
                 "name_3_file": "websocket.md"
               },              
               {
-                "name_3_name": "关于网络状态监听",
 
+                "name_3_name": "Network status monitoring",
                 "name_3_url": "English/LayaNative/network/",
                 "name_3_file": "README.md"
               },              
 			  {
-                "name_3_name": "关于iOS-IPV6",
+                "name_3_name": "About iOS-IPV6",
                 "name_3_url": "English/LayaNative/ipv6/",
                 "name_3_file": "README.md"
               }, 
               {
-                "name_3_name": "其他",
+                "name_3_name": "Other settings",
                 "name_3_url": "English/LayaNative/Other_settings/",
                 "name_3_file": "README.md"
               }
@@ -2892,7 +2892,7 @@
                 "name_3_url": "English/LayaNative/apk-update/",
                 "name_3_file": "README.md"
               },
-			  {
+	      {
 
                 "name_3_name": "Automatic large Atlas set system",
                 "name_3_url": "English/LayaNative/autoAltas/",
