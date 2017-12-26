@@ -2524,115 +2524,115 @@
             ]
           },
           {
-            "name_2_name": "使用IDE创作",
+            "name_2_name": "Using IDE Tools creation",
             "name_2_data": [
               {
-                "name_3_name": "图集制作与使用详解",
-
+                "name_3_name": "Create Atlas and details usage",
                 "name_3_url": "English/LayaAir_JS/IDE/Use_IDE/Atlas/",
                 "name_3_file": "readme.md"
               },
               {
-                "name_3_name": "创建动画模板(EffectAnimation)",
+                "name_3_name": "Create dynamic template (EffectAnimation)",
                 "name_3_url": "English/LayaAir_JS/IDE/Use_IDE/EffectAnimation/",
                 "name_3_file": "readme.md"
-              },{
-                "name_3_name": "时间轴动画编辑器详解(GraphicAnimation)",
+              },
+	      {
+                "name_3_name": "Timeline animation editor explain (GraphicAnimation)",
                 "name_3_url": "English/LayaAir_JS/IDE/Use_IDE/TimelineAnimation/",
                 "name_3_file": "readme.md"
-              },{
-                "name_3_name": "自定义组件的制作与使用",
-
+              },
+	      {
+                "name_3_name": "Making and using custom components",
                 "name_3_url": "English/LayaAir_JS/IDE/Use_IDE/customComponent/",
                 "name_3_file": "readme.md"
               }
             ]
           },
           {
-            "name_2_name": "IDE组件属性详解",
+            "name_2_name": "IDE component property reference",
             "name_2_data": [
               {
-                "name_3_name": "Button属性详解",
+                "name_3_name": "Button",
                 "name_3_url": "English/LayaAir_JS/IDE/Component_Detailed/Button/",
                 "name_3_file": "readme.md"
               },
               {
-                "name_3_name": "CheckBox属性详解",
+                "name_3_name": "CheckBox",
                 "name_3_url": "English/LayaAir_JS/IDE/Component_Detailed/CheckBox/",
                 "name_3_file": "readme.md"
               },
               {
-                "name_3_name": "Clip属性详解",
+                "name_3_name": "Clip",
                 "name_3_url": "English/LayaAir_JS/IDE/Component_Detailed/Clip/",
                 "name_3_file": "readme.md"
               },
               {
-                "name_3_name": "ComboBox属性详解",
+                "name_3_name": "ComboBox",
                 "name_3_url": "English/LayaAir_JS/IDE/Component_Detailed/ComboBox/",
                 "name_3_file": "readme.md"
               },
               {
-                "name_3_name": "Image属性详解",
+                "name_3_name": "Image",
                 "name_3_url": "English/LayaAir_JS/IDE/Component_Detailed/Image/",
                 "name_3_file": "readme.md"
               },
               {
-                "name_3_name": "Label属性详解",
+                "name_3_name": "Label",
                 "name_3_url": "English/LayaAir_JS/IDE/Component_Detailed/Label/",
                 "name_3_file": "readme.md"
               },
               {
-                "name_3_name": "List属性详解",
+                "name_3_name": "List",
                 "name_3_url": "English/LayaAir_JS/IDE/Component_Detailed/List/",
                 "name_3_file": "readme.md"
               },
               {
-                "name_3_name": "HScrollBar属性详解",
+                "name_3_name": "HScrollBar",
                 "name_3_url": "English/LayaAir_JS/IDE/Component_Detailed/HScrollBar/",
                 "name_3_file": "readme.md"
               },
               {
-                "name_3_name": "VScrollBar属性详解",
+                "name_3_name": "VScrollBar",
                 "name_3_url": "English/LayaAir_JS/IDE/Component_Detailed/VScrollBar/",
                 "name_3_file": "readme.md"
               },
               {
-                "name_3_name": "HSlider属性详解",
+                "name_3_name": "HSlider",
                 "name_3_url": "English/LayaAir_JS/IDE/Component_Detailed/HSlider/",
                 "name_3_file": "readme.md"
               },
               {
-                "name_3_name": "VSlider属性详解",
+                "name_3_name": "VSlider",
                 "name_3_url": "English/LayaAir_JS/IDE/Component_Detailed/VSlider/",
                 "name_3_file": "readme.md"
               },
               {
-                "name_3_name": "ProgressBar属性详解",
+                "name_3_name": "ProgressBar",
                 "name_3_url": "English/LayaAir_JS/IDE/Component_Detailed/ProgressBar/",
                 "name_3_file": "readme.md"
               },
               {
-                "name_3_name": "RadioGroup属性详解",
+                "name_3_name": "RadioGroup",
                 "name_3_url": "English/LayaAir_JS/IDE/Component_Detailed/RadioGroup/",
                 "name_3_file": "readme.md"
               },
               {
-                "name_3_name": "Tab属性详解",
+                "name_3_name": "Tab",
                 "name_3_url": "English/LayaAir_JS/IDE/Component_Detailed/Tab/",
                 "name_3_file": "readme.md"
               },
               {
-                "name_3_name": "Tree属性详解",
+                "name_3_name": "Tree",
                 "name_3_url": "English/LayaAir_JS/IDE/Component_Detailed/Tree/",
                 "name_3_file": "readme.md"
               },
               {
-                "name_3_name": "ViewStack属性详解",
+                "name_3_name": "ViewStack",
                 "name_3_url": "English/LayaAir_JS/IDE/Component_Detailed/ViewStack/",
                 "name_3_file": "readme.md"
               },
               {
-                "name_3_name": "Animation属性详解",
+                "name_3_name": "Animation",
                 "name_3_url": "English/LayaAir_JS/IDE/Component_Detailed/Animation/",
                 "name_3_file": "readme.md"
               }
@@ -2641,19 +2641,19 @@
         ]
       },
       {
-        "nav_1_name": "2D进阶篇（JS）",
+        "nav_1_name": "2D Advanced（JS）",
         "nav_1_data": [
           {
-            "name_2_name": "调试相关",
 
+            "name_2_name": "Debugging features",
             "name_2_data": [
               {
-                "name_3_name": "LayaAir DebugPanel 调试工具",
+                "name_3_name": "LayaAir DebugPanel",
                 "name_3_url": "English/LayaAir_JS/2D/advanced/debug/DebugPanel/",
                 "name_3_file": "readme.md"
               },
               {
-                "name_3_name": "LayaAir DebugTool 调试工具",
+                "name_3_name": "LayaAir DebugTool",
                 "name_3_url": "English/LayaAir_JS/2D/advanced/debug/DebugTool/",
                 "name_3_file": "readme.md"
               }
