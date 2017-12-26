@@ -2025,6 +2025,31 @@
             ]
           }
         ]
+      },
+      {
+      	"nav_1_name":"FAQ",
+      	"nav_1_data":[
+      		{
+      			"name_2_name":"Common problems in 2D",
+	      		"name_2_data":[
+	      			{
+	      				"name_3_name":"WebGL stitching pictures generated gap problem",
+	      				"name_3_url":"English/CommonProblem/2D/GapProblem/",
+	      				"name_3_file":"readme.md"
+	      			},
+	      			{
+	      				"name_3_name":"Use of rich text HtmlDivElement",
+	      				"name_3_url":"English/LayaAir_AS3/CommonProblem/2D/useHTML/",
+	      				"name_3_file":"readme.md"
+	      			},
+	      			{
+	      				"name_3_name":"Set the page depth level order above dialog",
+	      				"name_3_url":"English/LayaAir_AS3/CommonProblem/2D/DialogzOrder/",
+	      				"name_3_file":"readme.md"
+	      			}
+	      		]
+      		}
+      	]
       }
     ]
   },
@@ -2940,6 +2965,31 @@
             ]
           }
         ]
+      },
+      {
+      	"nav_1_name":"FAQ",
+      	"nav_1_data":[
+      		{
+      			"name_2_name":"Common problems in 2D",
+	      		"name_2_data":[
+	      			{
+	      				"name_3_name":"WebGL stitching pictures generated gap problem",
+	      				"name_3_url":"English/CommonProblem/2D/GapProblem/",
+	      				"name_3_file":"readme.md"
+	      			},
+	      			{
+	      				"name_3_name":"Use of rich text HtmlDivElement",
+	      				"name_3_url":"English/LayaAir_AS3/CommonProblem/2D/useHTML/",
+	      				"name_3_file":"readme.md"
+	      			},
+	      			{
+	      				"name_3_name":"Set the page depth level order above dialog",
+	      				"name_3_url":"English/LayaAir_AS3/CommonProblem/2D/DialogzOrder/",
+	      				"name_3_file":"readme.md"
+	      			}
+	      		]
+      		}
+      	]
       }
     ]
   }
