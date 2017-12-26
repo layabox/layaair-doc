@@ -2408,116 +2408,114 @@
         ]
       },
       {
-        "nav_1_name": "LayaAir IDE篇（JS）",
+        "nav_1_name": "LayaAir IDE（JS）",
         "nav_1_data": [
-          {
-            "name_2_name": "代码模式基础",
-
+        {
+            "name_2_name": "Code pattern basic",
             "name_2_data": [
               {
-                "name_3_name": "代码模式布局概述",
 
+                "name_3_name": "Overview of code pattern layout",
                 "name_3_url": "English/LayaAir_JS/IDE/Code_Mode/GUI_Layout/",
                 "name_3_file": "readme.md"
               },
               {
-                "name_3_name": "菜单栏详解",
 
+                "name_3_name": "Menu bar",
                 "name_3_url": "English/LayaAir_JS/IDE/Code_Mode/MenuBar/",
                 "name_3_file": "readme.md"
               },
               {
-                "name_3_name": "工具栏介绍",
 
+                "name_3_name": "Toolbar Utilities",
                 "name_3_url": "English/LayaAir_JS/IDE/Code_Mode/ToolBar/",
                 "name_3_file": "readme.md"
               },
               {
-                "name_3_name": "代码模式的快捷键设置",
 
+                "name_3_name": "Shortcut key for code editing",
                 "name_3_url": "English/LayaAir_JS/IDE/Code_Mode/shortcut_key/",
                 "name_3_file": "readme.md"
               }
             ]
           },
-          {
-            "name_2_name": "设计模式基础",
-
+ 	  {
+            "name_2_name": "Design Patterns overview",
             "name_2_data": [
               {
-                "name_3_name": "设计模式界面概述",
 
+                "name_3_name": "Design Mode interface overview",
                 "name_3_url": "English/LayaAir_JS/IDE/Design_Mode/GUI_Layout/",
                 "name_3_file": "readme.md"
               },
               {
-                "name_3_name": "自定义界面布局与恢复",
 
+                "name_3_name": "Custom interface layout and recovery default",
                 "name_3_url": "English/LayaAir_JS/IDE/Design_Mode/Custom_GUI/",
                 "name_3_file": "readme.md"
               },
               {
-                "name_3_name": "菜单栏介绍",
 
+                "name_3_name": "Menu Bar",
                 "name_3_url": "English/LayaAir_JS/IDE/Design_Mode/MenuBar/",
                 "name_3_file": "readme.md"
               },
               {
-                "name_3_name": "工具栏介绍",
 
+                "name_3_name": "Toolbar introduction",
                 "name_3_url": "English/LayaAir_JS/IDE/Design_Mode/ToolBar/",
                 "name_3_file": "readme.md"
               },
               {
-                "name_3_name": "项目管理器",
 
+                "name_3_name": "Project manager",
                 "name_3_url": "English/LayaAir_JS/IDE/Design_Mode/ProjectManager/",
                 "name_3_file": "readme.md"
               },
               {
-                "name_3_name": "资源管理器",
 
+                "name_3_name": "Resource Manager",
                 "name_3_url": "English/LayaAir_JS/IDE/Design_Mode/ResourceManager/",
                 "name_3_file": "readme.md"
               },
               {
-                "name_3_name": "组件库",
 
+                "name_3_name": "IDE component class and  type",
                 "name_3_url": "English/LayaAir_JS/IDE/Design_Mode/Component/",
                 "name_3_file": "readme.md"
               },
               {
-                "name_3_name": "模板库",
 
+                "name_3_name": "Template library",
                 "name_3_url": "English/LayaAir_JS/IDE/Design_Mode/Template/",
                 "name_3_file": "readme.md"
               },
               {
-                "name_3_name": "场景编辑器",
 
+                "name_3_name": "Scene Editor",
                 "name_3_url": "English/LayaAir_JS/IDE/Design_Mode/Scene/",
                 "name_3_file": "readme.md"
               },
               {
-                "name_3_name": "属性设置器",
 
+                "name_3_name": "Attribute setter",
                 "name_3_url": "English/LayaAir_JS/IDE/Design_Mode/Attribute_Set/",
                 "name_3_file": "readme.md"
               },
               {
-                "name_3_name": "UI页面、粒子、动画、脚本新建面板详解",
 
+                "name_3_name": "New panel detail, UI page, particle, animation and script",
                 "name_3_url": "English/LayaAir_JS/IDE/Design_Mode/NewPanel/",
                 "name_3_file": "readme.md"
               },
               {
-                "name_3_name": "层级管理器",
 
+                "name_3_name": "Hierarchy Manager",
                 "name_3_url": "English/LayaAir_JS/IDE/Design_Mode/HierarchyManager/",
                 "name_3_file": "readme.md"
               },
               {
-                "name_3_name": "IDE组件详解",
+                "name_3_name": "IDE component detailed library",
                 "name_3_url": "English/LayaAir_JS/IDE/Design_Mode/Component_Detailed/",
                 "name_3_file": "readme.md"
               }
