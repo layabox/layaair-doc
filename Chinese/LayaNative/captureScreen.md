@@ -33,7 +33,21 @@ image.onload=function()
 }
 image.src="file:///" + conch.getCachePath()+"/test.png";
 ```
-**函数说明**：saveAsPng需要传入三个参数，第一个参数是图片的ImageData数据，第二、三个参数分别为宽和高，第三个参数为存储完整路径和文件名。  
+在LayaNative-0.9.13以后，还可以通过conch的saveAsJpeg把图片存储到本地，具体函数如下：  
+
+```javascript
+conch.saveAsJpeg( arrayBuff,width,height,conch.getCachePath()+"/test.jpg" );
+//存储后便可以通过 file:///的方式直接进行访问了
+var image = window.document.createElement("img");
+image.onload=function()
+{	
+	
+}
+image.src="file:///" + conch.getCachePath()+"/test.jpg";
+```
+
+
+**函数说明**：saveAsJpeg和saveAsPng需要传入三个参数，第一个参数是图片的ImageData数据，第二、三个参数分别为宽和高，第三个参数为存储完整路径和文件名。  
 
 **Tips**：  
 *存储的完整路径，开发者可根据自己需求进行填写，但是必须保证路径是正确的，代码实例中，通过`conch.getCachePath()`获得到了该应用的缓存目录为存储目录。*
@@ -49,8 +63,16 @@ image.putImageData(arrayBuff,width,height);
 
 **Tips**  
 *putImageData函数是同步函数，putImageData后可直接使用image，不需要等待onload函数*
+### 4.格式转换函数
+在LayaNative-0.9.13以后，截屏后可以把图片的ImageData数据转换成jpg或者png格式，代码如下：
+```javascript
+var jpg = conch.convertBitmapToJpeg(arrayBuff,width,height);
+fs_writeFileSync(conch.getCachePath()+"/test.jpg");//保存到本地或者其他操作
 
-### 4.简单代码实例
+var png = conch.convertBitmapToPng(arrayBuff,width,height);
+fs_writeFileSync(conch.getCachePath()+"/test.png");//保存到本地或者其他操作
+```
+### 5.简单代码实例
 
 ```javascript
 if( window.conch )

@@ -148,6 +148,10 @@ conch.config.setSlowFrame(true);
 **1、conch.config只能LayaPlayer环境下调用，在网页版本中是没有conch定义的，所有需要判断一下是否存在。**  
 **2、如果使用as语言开发的时候，可以通过 Browser.window['conch']这种方式获得conch对象。**
 
+在 LayaNative-0.9.13和LayaAir-1.7.14以后LayaNative与LayaAir浏览器版本的写法统一了，以后尽量使用下面的写法。
+```javascript
+Laya.stage.frameRate = "slow";//"fast" "slow" "mouse" "sleep"
+```
 
 ## 11. 接管android的后退按钮
 （LayaNative版本 >=0.9.8）  
