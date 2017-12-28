@@ -1,431 +1,431 @@
-# IOS打包发布APP的所有详细流程 
+# IOS packaged release APP all the detailed processes
 
-其他一些不错的参考：[点击打开链接：ios开发者证书申请及xcode5应用上线发布](https://www.lvtao.net/ios/558.html)
+Some other good reference: [Click to open link: IOS Developer Certificate Application and xcode5 application online release](https://www.lvtao.net/ios/558.html)
 
 
 
-## 一、申请苹果开发者账号
+## Part A. Application for Apple Developer account
 
-  首先需要申请苹果开发者账号才能在APP store 里发布应用。
+  First, you need to apply for an apple developer account to publish the application in APP store.
 
-　　开发者账号分为：（1）个人开发者账号   （2）企业开发者账号  
+　　The developer account is divided into:（1）Personal developer account   （2）Enterprise developer account 
 
-　　主要的区别是：[点击打开链接](http://www.zhihu.com/question/20308474)
+　　The main difference is：[Click here for details](http://www.zhihu.com/question/20308474)
 
-### 1.个人开发者以及企业开发账号申请
+### 1.Personal developer and Enterprise Development Account Application
 
-　　[**点击打开链接**](http://jingyan.baidu.com/article/676629976d12aa54d51b841f.html)
+　　[**Click on the open link**](http://jingyan.baidu.com/article/676629976d12aa54d51b841f.html)
 
-其中企业申请的时候需要邓白氏编码：
+Which companies need to apply when D-U-N-S Number coding:
 
-#### 1.1     公司的邓白氏编码
+#### 1.1     The company's  D-U-N-S Number
 
- 给苹果公司发个邮件（或则直接拨打苹果开发者服务热线:4006 701 855 2）。他会给你提供免费注册邓白氏码的网址。直接注册就好.
+ Apple Corp to send an email (or directly call the Apple Developer service hotline: 40067018552). He will provide you with free registration Duns. A direct registration is good.
 
    [https://developer.apple.com/ios/enroll/dunsLookupForm.action](https://developer.apple.com/ios/enroll/dunsLookupForm.action)
 
-#### 1.2     公司的营业执照副本和公司中英文名对照证明
+#### 1.2     A copy of the company's business license and the company in English name control certificate
 
- 证明你公司英文名的信件（这个其实只要一句话说一下就好了，比如你就写此信标明我们公司的英文名是 XXXX就ok了），公司盖章。
+ Proof of your company's English name of the letter (in fact, as long as a sentence just fine, for example, you write this letter to indicate our company's English name is XXXX ok), the company sealed.
 
-   很多国内公司都无法传真到国外，这个时候你可以使用网络传真，推荐用 [http://faxzero.com/](http://faxzero.com/) 
+   Many domestic companies are unable to fax abroad, this time you can use Internet fax, recommended [http://faxzero.com/](http://faxzero.com/) 
 
-#### 1.3     一张开通VISA或MASTER的信用卡
+#### 1.3     A credit card that opens VISA or MASTER
 
- 可以是个人的，提交帐号给Apple代扣款（$99美金）
+ It can be personal, submitting accounts to Apple ($99)
 
 
 
-### 2、 步骤
+### 2. Account registration
 
-#### 2.1     申请邓白氏码
+#### 2.1     Application of Duns
 
-　　 首先要申请邓白氏码,在申请的第二天你就会接到电话，跟邮件。那个邮件不是邓白氏码。而是你的申请码。最好是留着吧。是个十位码, 大约中午的时间你会接到华夏邓白氏的电话。就是跟你核对一下资料。大约晚上的时候，你就会接受到新的邮件。那个才是邓白氏码。这个邓白氏码是无效的，需要等至少14天后才可以使用.
+　　 First apply for the D-U-N-S Number  code, you will receive the phone the second day of the application, with the mail. That mail is not Dun & Bradstreet code. But your application code. It is best to keep it. Is a ten-digit code, about noon you will receive a call from Huaxia Dun & Bradstreet. Is to check with you about the information. About night, you will receive a new mail. That is the Dun & Bradstreet code. This D & B code is invalid and needs to wait at least 14 days before it can be used.
 
-　　等14天后，去ios develop网站申请公司开发者账号，如果提示邓白氏码无效，则给苹果开发者中心打电话,告诉他邓白氏无效，她会处理（可能是和邓白氏联系）过几天（具体几天客服会告诉你）邓白氏码就可用了。
+　　After 14 days, go to the ios develop website and apply for the developer account. If you are prompted with an invalid Dun & Bradstreet code, call Apple Developer Center and tell him that D & B is invalid and she will process (maybe contact with D & B) A few days (specific customer service will tell you a few days) Dun & Bradstreet code is available.
 
-　　然后你会填公司信息的时候可能会遇到提示说公司信息和苹果数据库中的信息不符（其实是邓白氏的数据库与苹果的数据库未同步），不要着急，接着打电话，她会告诉你在苹果数据库中的公司信息。然后告诉你一个邓白氏的联系邮箱（这个邮箱是邓白氏专为申请苹果公司开发者账号使用的）你把苹果数据库中的公司信息发给邓白氏让它更改。再等14天，再去申请，一切就ok了.这种情况不是每个人都会遇到。如果信息相符，那是最好的了。不用再等14天了。
-
-  
-
-*Tips：耐心等待14天后再注册，邓白氏码有尝试次数限制。*
-
-#### 2.2     信息注册
-
- 　　申请完邓白氏码后,就是去注册iOS公司开发者账号了, 到 [http://developer.apple.com/programs/ios/](http://developer.apple.com/programs/ios/) 这个开发者账号注册入口，开始enroll(注册)。如果你已经有apple的个人账号了，那你可以将你的个人账号作为开发者账号，不然你就新申请一个账号。
-
-　　当让你选择你是注册成为个人或者公司时，请选择公司。注册是填信息一定要注意，不要乱填，要真是填写，不然后面验证时你就麻烦了。当问你你要选择那个开发平台时，你要选择ios.
-
-　　当你注册完个人apple账号，就会转入公司信息填写。公司信息填写也要真实填写，这个是会和你的公司营业执照挂钩的，后面审核会用到。注册信息只能是用英文的，所以对于没有英文名的公司和地址，都要先去处理这些东西了。填写完公司信息，下一步就是填写邮件（这个后期会用来跟apple开发者中心联系）和代表人（你可以选择你自己或者你老板的名称，都可以）。接下来就是等待对方审核了，这一般会等待1-2天，如果审核过了，对方会给你发邮件。
+　　Then you may fill in the company information may encounter prompts that the company information and information in the Apple database does not match (in fact, Dun & Bradstreet database and Apple's database is not synchronized), do not worry, then call, she will tell you Company information in the Apple database. Then tell you a D & B's email address (this email is used by Dun & Bradstreet exclusively for Apple developer accounts) and you send the company information in the Apple database to D & B to change it. Wait another 14 days, go to apply, everything ok. This situation is not everyone will encounter. If the information matches, it is the best. Do not wait 14 days.
 
   
 
-PS：代表人，及legal entity字段，必须与申请邓白氏码时填写的一致，否则无法通过，这个即是上面说的数据库信息不符的字段。
+*Tips: wait patiently for 14 days and then register, Duncan code has the number of attempts to limit.*
 
-#### 2.3     传真资料
+#### 2.2     Information registration
 
-　　apple那边如果通过了你的公司信息，就会发邮件要你传送资料过去（对方会用 [devenroll@apple.com](mailto:devenroll@apple.com)这个邮件）。你需要传送你的公司营业执照，一封证明你公司英文名的信件（这个其实只要一句话说一下就好了，比如你就写此信标明我们公司的英文名是 XXXX就ok了），公司盖章。然后传真过去。很多国内公司都无法传真到国外，这个时候你可以使用网络传真（我就是这么做的），推荐用 [http://faxzero.com/](http://faxzero.com/) 
+ 　　After applying for the D & B code, it is to register iOS developer account, to  [http://developer.apple.com/programs/ios/](http://developer.apple.com/programs/ios/) This developer account registration entry, start enroll (registration). If you already have an apple personal account, then you can be your personal account as a developer account, or you apply for a new account.
 
-　　**这一步是最麻烦的，要等3-4天的审核期**
+　　When you choose to be registered as a person or company, please choose the company. Registration is to fill in the information must be paid attention to, do not disorderly fill, to really fill, or you will be in trouble when the back of the verification. When you ask you to choose that development platform, you have to choose ios.
 
-*Tips：实在不行可以传真到亚洲苹果并请他们转交苹果开发者团队。 不过苹果不推荐这么做。*
+　　When you have registered your personal Apple account, you will be transferred to the company information to fill in. The information of the company should be filled in. This will be linked to the business license of your company, and the subsequent audit will be used. Registration information can only be used in English, so for companies and addresses without English names, it is necessary to deal with these things first. After completing the company information, the next step is to fill in the mail, which will be used to contact the Apple Developer Center later, and you can choose the name of yourself or your boss. The next thing is to wait for the other party to review it. It will usually wait for 1-2 days, and if it has been examined, the other party will send you mail.
 
-#### 2.4     电话验证
+  
 
-​    如果你的传真对方通过了，对方会发邮件给你，让你打电话进行验证。里面有个中文区电话，你可以选择打这个电话。
+PS：Representatives, and legal entity fields, must be the same as when applying for the D & B code, otherwise can not be passed, this is what the above information does not match the database field. .
 
-#### 2.5     付款
+#### 2.3     Fax information
 
-　　 电话验证完，一般几分钟你就会收到邮件让你付款。apple是不开通国内在线付款的，所以，你得填一张purchaseform。你要准备一张跨国的信用卡（比如visa，或者mastercard等），把你的信用卡信息填进去，然后吧purchase form再次传真过去。基本上等2天后，如果对方通过你的付款，你就正式开通啦。
+　　apple over there if you have passed your company information, it will send you a message to send information in the past（The other party will use this mail [devenroll@apple.com](mailto:devenroll@apple.com)）. You need to send your company's business license, a letter to prove your company's English name. This is just a word to say, for example, you write this letter to indicate that our company's English name is XXXX, OK, and the company seal. And then fax the past. Many domestic companies can't fax it to foreign countries. This time you can use Internet fax. Recommended : [http://faxzero.com/](http://faxzero.com/) 
 
-#### 2.6     激活账号
+　　**This step is the most troublesome, to wait for 3-4 days review period**
 
-　　付完款后，账号基本就开通了，然后苹果会发一个激活账号的邮件，邮件中有激活码，直接点激活码去激活。
+*Tips：Apple doesn't recommend fax and ask them to turn to the apple developer team.*
 
- 到这里开发者账号申请结束。
+#### 2.4     Phone verification
+
+​    If your fax is passed by, the other person will email you and let you call for verification. There is a Chinese area phone, you can choose to call this.
+
+#### 2.5     Payment
+
+　　 When the phone is finished, you will receive an email in a few minutes for you to pay. Apple does not open domestic online payment, so you have to fill in a purchaseform. You need to prepare a transnational credit card (such as visa or Mastercard, etc.), fill in your credit card information, and fax it to purchase form again. After the first 2 days, if the other side passes your payment, you will be officially opened.
+
+#### 2.6     Activation account
+
+　　After payment, the account is basically opened, and then the apple will send an email that activates the account. There is an activation code in the mail, and the activation code is activated directly.
+
+ Here is the end of the application for the developer account.
 
 
 
-## 二、申请APPID
+## B. Apply for APPID
 
-### 1 . 添加BundleID
+### 1 . Add BundleID
 
 ​      ![img](img/1.png)<br />
-​      图(1)
+​      Picture (1)
 
-**点击添加之后**
+**After clicking Add**
 
 ​      ![img](img/2.png)<br />
-​      图(2)
+​      Picture (2)
 
-**选择要发布的商店**
+**Select the store to release**
 
 ​      ![img](img/3.png)<br />
-​      图(3)
+​      Picture (3)
 
- 最后提交就好了
+ The final submission is good
 
-### 2. 连接iTunesConnect
+### 2. Connect iTunesConnect
 
-​         刚激活的账号暂时无法登录iTunesConnect，需要等苹果给你发一封关于可以登录的邮件后才能登录，否则会说你无权限。![4](img/4.png)<br />
-图(4)
+​         Just activated account is temporarily unable to log on to iTunesConnect. You need to wait for apple to send you a message about login, then you can log in, otherwise you will not have permission. ![4](img/4.png)<br />
+Picture (4)
 
 
 
-### 3. 创建新应用
+### 3. Create new applications
 
-**3.1  登录iTunes Connect后，点击“管理你的应用” 进入管理页。**
+**3.1  After logging in to iTunes Connect, click Manage Your Apps to go to the Admin page. **
 
 ​      ![img](img/5.png)<br />
-​      图(5)
+​      Picture (5)
 
 
 
- **3.2  点击“添加新的应用”按钮**
+ **3.2  Click the “Add new application” button**
 
 ​      ![img](img/6.png)<br />
-​      图(6)
+​      Picture (6)
 
   
 
-前两个就不说了，第三个SKUNumber什么意思我也不知道，为了保持唯一，并好记，就和BundleID一样。第四个BundleID一经选择，就不能更改，所以要谨慎选择。
+We dont know what SKUNumber mean exactly, we suggest to fill same as BundleID. The fourth BundleID, once selected, can not be changed, so be careful.
 
-**3.3 设置生效时间和价格**
+**3.3 Set effective time and price**
 
 ​      ![img](img/7.png)<br />
-​      图(7)
+​      Picture (7)
 
 
 
- 这里的价格是按层级来的，并不是具体的多少钱，Tier 1为1美元，在中国商店就相当于6元人民币。
+ The price here is by level, and not exactly how much money, Tier 1 for 1 US dollars, equivalent to 6 yuan in Chinese shops.
 
- 注意下面还有一个你的APP发布的商店，默认是所有商店都发布。
+Note that there is also a store where your app is published, by default all stores are released.
 
 
 
 ​      ![img](img/8.png)<br />
-​      图(8)
+​      Piture (8)
 
 
 
- **3.4 设置APP信息**
+ **3.4 Set APP information**
 
-​     包括版本号，所有权
+​     Including the version number, ownership
 
 ​      ![img](img/9.png)<br />
-​      图(9)
+​      Picture (9)
 
 ​     
 
-　　还有APP的内容描述，默认都选择None，根据自己的APP实际情况
+　　APP content description, the default is None, according to the actual situation of their own APP
 
 ​      ![img](img/10.png)<br />
-​      图(10)
+​      Picture (10)
 
-　　然后是一些元数据，关于APP的描述，用于显示在APPStore中。关键字用于用户可以利用这些关键字搜索到你的APP。SupportURL是当你的APP出现问题时，用户可以联系的地址。
+　　Then there are some metadata, the description of APP, which is used to display in APPStore. The keyword is used by the user to use these keywords to search your APP. SupportURL is the address that the user can contact when your APP has a problem.
 
 ​        ![img](img/11.png)<br />
-​      图(11)
+​      Picture (11)
 
-　　接着是APPStore审核的反馈信息，包括联系人信息，以及提供APP的测试账号。
+　　Then the feedback information of the APPStore audit, including the contact information, and the APP test account.
 
 ​      ![img](img/12.png)<br />
-​      图(12)
+​      Picture (12)
 
-​        最后是上传Icon、屏幕截图，屏幕截图不超过5张。
+​        The last is to upload Icon, screen screenshots, screen screenshots not more than 5.
 
 ​      ![img](img/13.png) <br />
-​      图(13)
+​      Picture (13)
 
-​        提交，就有APP ID了。
+​        Submit, there is an APP ID.
 
 ​      ![img](img/14.png)<br />
-​      图(14)
+​      Picture (14)
 
 ### 
 
 **Tips：**
 
-​            注意现在的状态为Preparefor Upload，点击ViewDetails, 进入后点击“Readyto Upload    Binary”
+​            Note that the current status is Preparefor Upload, click ViewDetails, after entering "Readyto Upload Binary"
 
 ​      ![img](img/15.png)<br />
-​      图(15)
+​      Picture (15)
 
-​            接着会询问你是否使用加密功能，选择后保存。
+​            Then you will be asked if you want to use the encryption feature, choose to save it later.
 
 ​      ![img](img/16.png) <br />
-​      图(16)
+​      Picture (16)
 
-​            现在的状态为“WaitingFor Upload”了。
+​            The current status is  “Waiting For Upload”。
 
 
 
-## 三、上传应用
+## Part C. Uploading application
 
-### 1 创建CSR文件
+### 1 Create a CSR file
 
-1.1   打开电脑中的钥匙串，在应用程序中找到
+1.1   Open the keychain in your computer and find it in the application
 
 ​      ![img](img/17.png)<br />
-​      图(17)
+​      Picture (17)
 
 
 
- 1.2 选择导航栏中下面的选项
+ 1.2 Select the following options in the navigation bar
 
 ​        ![img](img/18.png)<br />
-​      图(18)
+​      Picture (18)
 
 
 
- 1.3 然后输入用户邮箱，名字，选择保存到硬盘。
+ 1.3 Then enter the user's mailbox, name, choose to save to hard disk.
 
 ​      ![img](img/19.png)<br />
-​      图(19)
+​      Picture (19)
 
- **注意：用户的Email 是开发者账号的邮箱，CA邮箱可以不用填写，前提是你选择的是存储到硬盘**
+ **Note: The user's Email is the developer's account mailbox, CA mailbox can not fill in, provided that you choose to store to the hard disk**
 
-这时在本地就生成了一个这样的文件
+At this point in time to generate such a document
 
 ​      ![img](img/20.png)<br />
-​      图(20)（这个文件在开发者中心生成发布证书的时候需要用到）
+​      Picture (20)（This file needs to be used when a certificate is generated by the developer center）
 
-### 2 创建发布证书
+### 2 Create a publishing certificate
 
- 2.1 选择App Store
+ 2.1 Select App Store
 
 ​      ![img](img/21.png)<br />
-​      图(21)
+​      Picture (21)
 
- 2.2 上传刚刚创建的CSR文件
+ 2.2 Upload the CSR file you just created
 
 ​      ![img](img/22.png)<br />
-​      图(22)
+​      Picture (22)
 
- 2.3 上传后证书创建成功，下载到本地。
+ 2.3 After the certificate is successfully created, download to the local.
 
 ​      ![img](img/23.png)<br />
-​      图(23)
+​      Picture (23)
 
-2.4 双击该文件，加入到钥匙串中。
+2.4 Double-click the file to add it to the keychain.
 
 ​      ![img](img/24.png)<br />
-​      图(24)
+​      Picture (24)
 
-**这样做的目的就是为你的电脑安装发布许可证，只有这样你的电脑才能发布程序**
+**The purpose of this is to publish a license for your computer installation, and only in this way your computer can release the program.**
 
 
 
-### 3 创建ProvisioningProfiles
+### 3 Create  ProvisioningProfiles
 
-####  3.1 选择APP Store                              
+####  3.1 Select APP Store                              
 
 ​      ![img](img/25.png)<br />
-​      图(25)
+​      Picture (25)
 
 
 
-####  3.2 选择App ID
+####  3.2 Select App ID
 
 ​        ![img](img/26.png)<br />
-​      图(26)
+​       Picture (26)
 
 
 
-####  3.3 选择证书
+####  3.3 Select a certificate
 
 ​      ![img](img/27.png)<br />
-​      图(27)
+​      Picture (27)
 
 
 
-　　这个证书也就是刚刚生成的那个证书，在这我遇到的一个错误就是，有两个证书，我选择了一个错误的，结果打包出来的描述文件有问题，导致发布失败。
+　　This certificate is also the certificate that has just been generated. One mistake can be encountered was that there were two certificates. If chose a wrong one, resulting in the problem that the package description file was out of order, which resulted in the failure of publication.
 
 
 
 ####  3.4 命名
 
 ​      ![img](img/28.png)<br />
-​      图(28)
+​      Picture (28)
 
-选择的名字，在安装到Xcode的时候可以看得见。
+The name of your choice is visible to you when installing to Xcode.
 
- 3.5 最后提交后下载ProvisioningProfiles文件到本地，双击打开添加到Xcode中。
+ 3.5 After the final submission, download the ProvisioningProfiles file to the local, double click open to add to the Xcode.
 
 
 
-### 4. Xcode设置
+### 4. Xcode settings
 
-####  4.1 设置target
+####  4.1 Setting up target
 
-​                    这里的BundleIdentifier必须和前面申请的BundleID一致；版本号也必须和前面申请AppID时的版本号一致。
+​                    The BundleIdentifier here must be consistent with the BundleID previously applied; the version number must also be consistent with the version number of the previous application for AppID.
 
 ​      ![img](img/29.png)<br />
-​      图(29)
+​      Picture (29)
 ​      ![img](img/30.png)<br />
-​      图(30)
+​      Picture (30)
 
-####  4.2 修改签名文件
+####  4.2 Modify the signature file
 
-　　必须选择前面创建的ProvisioningProfiles文件
+　　You must select the ProvisioningProfiles file you created earlier
 
 ![img](img/31.png)<br />
-​      图(31)
+​      picture (31)
 
   
 
-####  4.3 添加发布配置
+####  4.3 Add distribution configuration
 
- 如果没有添加一个
+ If you did not add one
 
 ​      ![img](img/32.png)<br />
-​      图(32)
+​      picture (32)
 
-接下来就是打包程序
+Next is the packing process
 
-在我们的xcode 中有一个打包的按钮
+There is a packaged button in our xcode
 
 ​      ![img](img/33.png)<br />
-​      图(33)
+​      picture (33)
 
-打好包后，它会自动弹出来，也可以在 orignize 查看
+After the package is completed, it will pop up automatically, or you can view it in "origanizer"
 
 ​      ![img](img/34.png)<br />
-​      图(34)
+​      picture (34)
 
 ​      ![img](img/35.png)<br />
-​      图(35)
+​      picture (35)
 
-之后就是验证信息，点击上图的Validate 进行验证一下，确定没问题了在提交。不验证也可以提交，但是如果不验证的话有问题会很麻烦，最好养成先验证后提交的好习惯。
+After that, verify the information, click the "Validate" above to verify it, and make sure that it is no problem in submission. No verification can also be submitted, but if you do not verify the problem will be very troublesome, it is better to form a good habit of checking and submitting.
 
-点击验证后，出现一下图框，在这边输入开发者的账号和密码，点next
+Click on the verification, there will be a frame, here enter the developer's account and password, click next
 
 ​      ![img](img/36.png)<br />
-​      图(36)
+​      picture (36)
 
-选择一个描述文件（具有发布证书的描述文件）
+Select a description file (with the description of the certificate issued)
 
 ​      ![img](img/37.png)<br />
-​      图(37)
+​      picture (37)
 
-这个界面说明你的app没问题，如果有问题的话会提示错误或警告，有错误的要要重新修改你的app再次打包验证，有一些警告可以不做修改直接提交，这个纯粹是看你是否完美主义。
+This interface indicates that your app is OK. If there is a problem, it will prompt errors or warnings. If you have questions, you need to revise your app again. There are some warnings, which can be directly submitted without modification, which is purely based on your perfectionism.
 
 ​      ![img](img/38.png)<br />
-​      图(38)
+​      picture (38)
 
 
 
 
 
-## 四、将应用提交到app store
+## Part D.  Submit the application to app store
 
-苹果推荐用xcode自带的application loader 来提交我们的应用，但是除了用这个以外还能用其他的，下面来分别介绍。
+Apple recommends the use of Application Loader with Xcode to submit our application, but in addition to this, we can also use the other, the following.
 
-### 第一种：直接将应用发到app store
+### 1. the application directly to the app store
 
-*（不推荐这种方法）*
+*（This method is not recommended）*
 
-点击distribute
+Click distribute
 
 ​      ![img](img/39.png)<br />
-​      图(39)
+​      picture (39)
 
-选择
+select
 
 ​      ![img](img/40.png)<br />
-​      图(40)
+​      picture (40)
 
 ​      ![img](img/41.png)<br />
-​      图(41)
+​      picture (41)
 
 ​      ![img](img/42.png)<br />
-​      图(42)
+​      picture (42)
 
-点击submit后就可以提交了
+After clicking submit, you can validate it
 
 
 
-### 第二种：用xcode自带的application loader来提交我们的应用。
+### 2. xcode comes with the application loader to submit our application.
 
-（推荐）
+（recommend）
 
-和上述方法第一步相同点击distribute，但是选择第二个选项
+Same as the first step above, click on distribute, but select the second option
 
 ​      ![img](img/43.png)<br />
-​      图(43)
+​      picture (43)
 
-这里将生成一个ipa供我们保存到本地
+Here will generate a ipa for us to save to the local
 
 ​      ![img](img/44.png)<br />
-​      图(44)
+​      picture (44)
 
-保存好后，选择 xcode — open develop
+After saving, select xcode - open develop
 
 er tool — application loader
 
 ​      ![img](img/45.png)<br />
-​      图(45)
+​      picture (45)
 
- 看到如下图片，填好信息后，就可以上传了
+See the picture below, fill in the information, you can upload
 
 ​      ![img](img/46.png)<br />
-​      图(46)
+​      picture (46)
 
 ​      ![img](img/47.png)<br />
-​      图(47)
+​      picture (47)
 
 ​      ![img](img/48.png)<br />
-​      图(48)
+​      picture (48)
 
-这边点击“选取”后，将我们刚刚存在本地的.ipa 文件上传就可以了
+Here click on the "Select", we will just have a local upload .ipa file on it
 
 ​      ![img](img/49.png)<br />
-​      图(49)
+​      picture (49)
 
 ​      ![img](img/50.png)<br />
-​      图(50)
+​      picture (50)
 
 ​      ![img](img/51.png)<br />
-​      图(51)
+​      picture (51)
 
-上传成功，这个时候，可以看到你的app的状态也变成了 waiting for review 。上传完成后的5、6天可以查看我们应用的状态看有没有改变，没改变也不用着急，当苹果审核时，状态会变成 in review。接下来你就可以知道你的应用是成功了还是被拒绝了。
+Upload success, this time, you can see the status of your app has become waiting for review. 5,6 days after the upload is complete we can see the status of our application to see if there is any change, no change or a hurry. When Apple reviews, the status will be changed to in review. Next you can know your application is successful or rejected.

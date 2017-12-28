@@ -1,29 +1,29 @@
-# Texture资源销毁
+# Texture resource destruction
 
-### 旧版资源销毁clearRes()方法
+### Legacy version resource destruction clearRes () method
 
-在游戏开发中，2D资源的销毁经常会用到，一些只用一次或长时间不使用的图片资源，我们可以销毁释放掉，用于节省内存。引擎在LoaderManager类中提供了clearRes()方法通过资源地址进行资源销毁。
-
-
-
-### 新版资源销毁方法clearTextureRes()
-
-新版方法与旧版方法功能大体差不多，但官方推荐使用新的clearTextureRes()方法，它的优势如下：
-
-1.加载的2D资源为Texture类型，新方法只销毁了texture使用的图片资源，但会保留texture资源壳，如果下次渲染的时候，发现texture使用的图片资源不存在，则会自动恢复图片资源用于显示。
-而clearRes会彻底销毁texture，导致不能再使用。
-
-2.clearTextureRes()能确保立即销毁图片资源，并且不用担心销毁错误。而clearRes()则采用引用计数方式销毁，如果其他地方有资源引用，则资源无法被销毁。
+In the development of games, the destruction of 2D resources is often used. Some images that are not used for a single time or for a long time can be destroyed and released to save memory. The engine provides the clearRes () method in the LoaderManager class to destroy the resource through the resource address.
 
 
 
-### 资源销毁不成功的情况分析与解决
+### New version of resource destruction method clearTextureRes ()
 
-LayaAir引擎在进行资源自动优化时，部分小的图片或图集图片会被打到自动大图合集中，这种图片用新旧版销毁方法都不能被销毁，它们优先被大图合集管理器管理。
+The new version is roughly the same as the old version, but the official recommendation is to use the new clearTextureRes () method, which has the following advantages:
 
-这种情况下，如果还想资源被销毁，可以使用以下两种方式解决：
+1.The 2D resource loaded is Texture type. The new method only destroys the image resources used by texture, but it preserves the texture resource shell. If we find that the image resources used by texture do not exist next time, we will automatically restore the image resources to display.
+And clearRes will destroy the texture thoroughly, causing it to not be used again.
 
-1.设置自动打包入大图合集图片的大小限制，引擎默认设置图片大小为`512*512` 。可以设置为256或128等，这样进入大图合集的图集图片就会少很多，方便我们手动资源销毁。
+2. clearTextureRes () ensures that image resources are immediately destroyed without any worries about the destruction of the image. The clearRes () is the use of reference counting method of destruction, if there is resource references elsewhere, the resources can not be destroyed.
+
+
+
+### Analysis and solution of unsuccessful destruction of resources
+
+When the LayaAir engine optimizes the resources, some small pictures or atlas images will be beaten to the automatic big picture collection. Such pictures can't be destroyed by the old and new version destroying methods. They are first managed by the big picture collector manager.
+
+In this case, if you want the resources to be destroyed, you can use the following two ways:
+
+1. Set the size limit of automatically packaged into the aggregate picture of the big picture. The engine set the picture size to `512*512` by default. It can be set to 256 or 128, so that there will be a lot less in the set of the atlas, which is convenient for our manual resource destruction.
 
 ```java
 //大图合集管理器中，设置进入大图合集图片的最大尺寸
@@ -31,7 +31,7 @@ AtlasResourceManager.atlasLimitWidth = 256;
 AtlasResourceManager.atlasLimitHeight = 256;
 ```
 
-2.设置资源为不进行大图合集优化，方法如下述代码：
+2. Set the resource for no large graph Aggregation Optimization, such as the following code:
 
 ```java
 //根据路径获取资源
@@ -42,9 +42,9 @@ texture.bitmap.enableMerageInAtlas = false;
 
 
 
-### clearTextureRes()方法简单示例
+### clearTextureRes() Simple method example
 
-加载资源并显示图片后，按下键盘H隐藏图片与动画，并销毁资源，当按下S键后重新显示，在无资源的情况下会自动恢复资源。
+After loading the resources and displaying the pictures, press the keyboard H to hide pictures and animations, destroy the resources, re press them when pressing the S key, and automatically restore resources without resources.
 
 ```java
 package {

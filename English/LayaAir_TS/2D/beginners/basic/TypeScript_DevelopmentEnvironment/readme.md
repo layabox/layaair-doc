@@ -1,48 +1,48 @@
-# 搭建开发环境（TS代码编译器）
+# Build a development environment (TS code compiler)
 
 
 
-### 1.1 Node.js下载
+### 1.1 Node.js Download
 
-​        TypeScript开发HTML5需要Node.js环境，如果没有安装过的，请前往官方下载(建议LTS版本)，如图1，URL地址为：[https://nodejs.org/en/](https://nodejs.org/en/)
+​        TypeScript development HTML5 needs the Node.js environment, if not installed, please go to the official download (recommended version LTS), such as Figure 1, URL address : [https://nodejs.org/en/](https://nodejs.org/en/)
 
 ​        ![blob.png](img/1.png)<br/>
-​         图（1）
+​         Picture（1）
 
-### 1.2 配置TypeScript编译环境
+### 1.2 Configuring the TypeScript compilation environment
 
-​        步骤一：安装Node.js，找到刚刚下载的Node.js安装包，一步一步的安装即可。如果已安装的，可以跳过此步骤。
+​        Step 1：Install Node.js, find the just downloaded Node.js installation package, and install it step by step. If you have installed it, you can skip this step
 
 ​        ![blob.png](img/2.png)<br/>
-​         图（2）
+​         Picture（2）
 
  
 
-​        步骤二：安装完Node.js后，接着就可以使用NPM来安装TypeScript Compiler，之后就能通过这个Compiler来将TypeScript编译成为JavaScript。在这个步骤里，开发者需要打开cmd命令行工具，输入指令“`npm install -g typescript`”，按回车键后，即可开始进行TypeScript Compiler的安装。
+​        Step 2：After installing Node.js, Then you can use NPM to install TypeScript Compiler. Then you can compile TypeScript into JavaScript through this Compiler. In this step, developers need to open the CMD command line tool，Input instruction “`npm install -g typescript`”. When you press the return key, you can start the installation of TypeScript Compiler
 
 ```typescript
 npm install -g typescript
 ```
 
 ​        ![blob.png](img/3.png)<br/>
-​         图（3）
+​         Picture（3）
 
 
 
-​         步骤三：如下图所示，当我们看到 “-- typescrip@ 版本号” 的时候，可以确认完成了 TypeScript Compiler的安装，此时，关闭命令行工具即可。 
+​         Step 3：As shown in the following figure, when we see “-- typescrip@ version number” At the time, you can confirm the installation of the TypeScript Compiler, then can close the command line tool 
 
 ​        ![blob.png](img/4.png)<br/>
-​         图（4）
+​         Picture（4）
 
 
 
-###  1.3 检查TypeScript编译环境版本
+###  1.3 Check the TypeScript compiled environment version
 
-在命令行输入“tsc -v” 命令可查看当前TypeScript编译的版本
+Enter the “tsc -v” command on the command line to view the current version of the TypeScript compiled
 
 ```typescript
 tsc -v
 ```
 
 ​       ![blob.png](img/5.png)<br/>
-​         图（5）
+​         Picture（5）

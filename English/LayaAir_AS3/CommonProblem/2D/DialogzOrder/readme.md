@@ -1,10 +1,10 @@
-# 设置显示对象层级位于Dialog之上
+# Set the display object hierarchy on top of Dialog
 
-在项目开发中通常都会用到弹出对话框以及对话框的拖动、模式窗口等功能；也就是Dialog组件。
+In the development of the project, the pop-up dialog, the drag of the dialog box, the mode window and other functions, are used in the development of the project; that is, the Dialog component.
 
-开发者在使用的过程中可能会遇到一个常见问题，就是当Dialog页面弹出之后，如果想点击该页面上的某个按钮显示其它页面，这时候会发现要显示的那个页面并没有显示出来，这是为什么呢？
+Developers may have a common problem in the process of using Dialog page pops up, if you want to click a button on the page display other pages, this time will find that the page to display is not displayed, Why is this?
 
-是因为在对话框管理器DialogManager类里边设置了dialog的默认层级为1000，所以如果想让显示对象显示在Dialog之上的话则需要**设置该显示对象的层级zOrder>1000**。否则最后要显示的页面就会被Dialog遮盖。关键代码以及效果如下所示：
+Because the default level, dialog box manager DialogManager class is 1000, so if you want the display object to be displayed on Dialog, you need ** setting the level zOrder>1000 ** of the display object. Otherwise the final page to be displayed will be covered by the Dialog. The key code and the effects are shown below : 
 
 ```typescript
 //实例化Dialog页面
