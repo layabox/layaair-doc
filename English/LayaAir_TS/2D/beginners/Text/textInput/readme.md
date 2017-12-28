@@ -1,12 +1,12 @@
-# textInput的单行输入&多行输入
+# Single  & multiline textInput 
 
-文本输入框是游戏中经常会用到的一个UI组件，任何时候需要输入的时候都要使用到textInput这个类，我们先看一下TextInput这个类的API。
+The text input box is a UI component that is often used in game.  Lets have a look at the TextInput API class.
 
-laya.ui.textInput中所有的API参数：
+All API parameters in Laya.ui.textInput:
 
 ![1](img/1.png)</br>
 
-这里我们设置文本的单行输入和多行输入，单行输入只能在一行内输入，多行可以通过回车在上一行未满的情况下在下一行输入。
+Here we set single and multi line input for text. Single line input can only be entered in one line. Multiple lines can contain lines with carriage return before the last line is full.
 
 ```typescript
 class LayaSample {
@@ -45,7 +45,7 @@ class LayaSample {
 new LayaSample();
 ```
 
-运行结果：
+operation result:
 
 ![2](img/2.png)</br>
 

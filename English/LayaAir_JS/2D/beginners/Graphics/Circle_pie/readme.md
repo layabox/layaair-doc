@@ -1,15 +1,15 @@
-# 绘制圆形与扇形
+# Draw circles and fan-shaped
 
 
 
-### 一、绘制圆形
+### A. draw circles
 
-圆形的绘制理解起来比较简单，通过圆形的中心点坐标与半径，即可方便的通过LayaAir引擎laya.display.Graphics这个API的“drawCircle();”方法实现。该方法的详细说明如下图所示：
+The circular drawing is easy to understand, and it can be conveniently implemented by the LayaAir laya.display.Graphics Method API (drawCircle). Give data such as center coordinates and radius of the circle, detailed description of the method is shown below:
 
 ​	![blob.png](img/1.png)<br/>
-​	（图1）
+​	(Picture 1)
 
-下面我们用LayaAir引擎绘制一个圆形，示例代码如下：
+Below we use the LayaAir engine to draw a circle, the sample code is as follows:
 
 ```javascript
 (function()
@@ -34,23 +34,23 @@
 })();
 ```
 
-代码运行效果如下图所示：
+The code runs as shown below:
 
 ​	![blob.png](img/2.png)<br/>
-​	（图2）
+​	(Picture 2)
 
-​        圆形绘制比较简单，“80，80”是圆形中心点坐标。50是半径，"#ff0000"是圆形填充颜色值。
+​        Circular drawing is relatively simple, "80, 80" is the central coordinates of the circle. 50 is the radius, and "#ff0000" is the fill color value.
 
 
 
-### 二、绘制扇形
+### B. draw fan-shaped
 
-​        下面继续延伸，介绍一下比圆形稍复杂一点的扇形绘制方法“drawPie();”该方法的详细说明如下图所示：
+​        To go further, let introduce a fan-shape drawing method that is slightly more complicated than the circle; "drawPie ()"; the method is detailed as shown in the following figure:
 
 ​	![blob.png](img/3.png)<br/>
-​	（图3）
+​	(Picture 3)
 
-下面我们用LayaAir引擎绘制一个扇形，示例代码如下：
+Here we use the LayaAir engine to draw a fan-shape, the sample code is as follows:
 
 ```javascript
 (function()
@@ -75,54 +75,54 @@
 })();
 ```
 
-代码运行效果如下图所示：
+The code runs as shown below:
 
 ​	![blob.png](img/4.png)<br/>
-​	（图4）
-绘制扇形与圆形类似，前三个参数的用法也是一样的，只是增加了绘制开始与结束的角度。为了让大家更好的理解，扇形的绘制代码与参数沿用圆形代码示例，除了方法名的改变，只增加了90与180两个角度参数。大家可在编码过程中通过调整参数，再深入理解。
+​	(Picture 4)
+Fan is similar to the circle code example,  the first three arguments are the same,  except increased parameters before the fill color value. It is set for two angle parameters (90 and 180). we adjust the parameters to further understanding.
 
 
 
-### 三、通过LayaAirIDE拖动控件绘制圆形
+### C. Drawing circle graphics with LayaAirIDE through control tools
 
-**步骤一：**打开我们的LayaAirIDE，点击设计模式，新建一个View页面
+**1**. Open LayaAirIDE and click design mode to create a new View page
 
 ​	![6](img/5.png)<br/>
-​   	（图5）  
+​   	(Picture 5)  
 
-**步骤二：**将组件中的曲线组件拖动到View页面上，就会自动生成默认的圆形
+**2**. Drag the curve component into the View page to automatically generate the default circle
 
 ​	![7](img/6.png)<br/>
-​   	（图6）  
+​   	(Picture 6) 
 
-**步骤三：**修改（添加/减少）Circle组件属性中的数值，改变圆形的大小、颜色、外框等等。
+**3**. Modify (add / subtract) the values in the Circle component properties, change the size of the circle, the color, the outer frame, and so on.
 
 ​   	![8](img/7.png)<br/>
-​   	（图7）  
+​   	(Picture 7)  
 
 ​   	![9](img/8.png)<br/>
-​   	（图8）  
+​   	(Picture 8)
 
 
 
-### 四、通过LayaAirIDE拖动控件绘制扇形
+### D. Drawing fan-shaped graphics with LayaAirIDE through control tools
 
-**步骤一：**打开我们的LayaAirIDE，点击设计模式，新建一个View页面
+**1**. Open LayaAirIDE and click design mode to create a new View page
 
 ​	![6](img/5.png)<br/>
-​   	（图9）  
+​   	(Picture 9)  
 
-**步骤二：**将组件中的曲线组件拖动到View页面上，就会自动生成默认的扇形
+**2**. Drag the curve component in the component onto the View page to automatically generate the default fan
 
 ​	![7](img/9.png)<br/>
-​   	（图10）  
+​   	(Picture 10)  
 
-**步骤三：**修改（添加/减少）Pie组件属性中的数值，改变扇形的角度、大小、颜色等等。
+**3**. Modify (add / subtract) the values in the Pie component properties, change the fan's angle, size, color, and so on.
 
 ​   	![8](img/10.png)<br/>
-​   	（图11）  
+​   	(Picture 11)
 
 ​   	![9](img/11.png)<br/>
-​   	（图12）  
+​   	(Picture 12)  
 
-到此我们通过LayaAirIDE的组件绘制圆形和扇形就完成了。
+Here we draw the circle and fan-shaped through the LayaAirIDE component.

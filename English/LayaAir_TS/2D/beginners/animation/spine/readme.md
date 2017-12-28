@@ -1,94 +1,95 @@
-# LayaAir引擎播放Spine骨骼动画
+# LayaAir engine plays Spine skeleton animation
 
-> 本篇采用LayaAirIDE 1.7.6版本截图说明，如有差异，请下载最新稳定版本的LayaAirIDE，并以最新版本为准。
+> This article uses LayaAirIDE 1.7.6 version screenshot description, if any differences, please download the latest stable version of LayaAirIDE, and the latest version shall prevail.
 
-Spine骨骼动画，是游戏中经常使用的骨骼动画之一，通过LayaAirIDE自带的转换工具，可以将Spine骨骼动画格式转换为LayaAir引擎支持的骨骼动画格式。
+Spine skeletal animation is one of the skeletal animations frequently used in games. The Spine skeletal animation format can be converted into a skeletal animation format supported by the LayaAir engine with LayaAirIDE's own conversion tool.
 
 
 
-### 1、原版Spine骨骼动画导出时的注意事项
+### 1. Original Spine skeleton animation specificities
 
-原版Spine骨骼动画在导出时，有几个事项需要注意，否则无法完成转换。
+In the export of the original Spine skeletal animation, several things need to pay attention to, or you can't complete the conversion.
 
-#### 1.1 仅支持导出为JSON格式的转换
+#### 1.1 Supports export only JSON format conversions 
 
-Spine骨骼动画支持JSON与二进制两种数据导出方式，需要注意的是LayaAirIDE的Spine转换工具只支持JSON格式的转换。请导出时选择JSON格式导出。
+Spine skeletal animation supports JSON and binary two data export methods, it should be noted that the LayaAirIDE Spine conversion tools only support JSON format version. When exporting, select export in JSON format.
 
-#### 1.2 导出时必须创建图集
+#### 1.2 You must create Atlas when exporting
 
-LayaAirIDE的Spine转换工具只支持图集模式的Spine骨骼动画转换，因此，在使用Spine骨骼动画编辑工具导出时，必须勾选`创建图集`，如图1所示。
+The LayaAirIDE Spine conversion tool supports only the  Spine skeletal animation with atlas mode, so you must check the `creation atlas` when you export using the Spine skeletal animation editing tool, as shown in figure 1.
 
 ![图1](img/1.png) 
 
-(图1) Spine 骨骼动画编辑工具的导出界面
+(Picture 1) Spine the export of editing tool interface for the Spine skeletal animation
 
-#### 1.3 在图集打包的设置项里，不能勾选旋转选项
+#### 1.3 In the atlas package settings item, you can not check the rotation options
 
-在Spine骨骼动画编辑工具的创建图集右侧，点击`设置`按钮进入图集打包设置（Pack Settings）界面。要确认区域设置里的`旋转`选项处于未勾选状态。勾选`旋转`选项后，LayaAirIDE转换Spine工具，无法转换成功。
+On the right side of the creation of the Spine skeleton animation editing tool, click the `Setting` button, enter the atlas packaging settings tab (Pack Settings) interface. Make sure that the `settings`  option in the locale is unchecked. After you select the `旋转`选项后，LayaAirIDE转换Spine工具，无法转换成功。
 
 ![图2](img/2.png) 
 
-(图2) Spine 骨骼动画导出的图集打包设置界面
+(Picture 2) Spine skeleton animation export atlas packaging settings interface
 
-#### 1.4 要注意导出的Spine版本
+#### 1.4 Notify the exported version of Spine
 
-LayaAirIDE并非所有Spine版本都支持转换。支持的版本号在Spine转换工具面板中有显示。截止到本篇文档时，Spine从3.4.0.2版本开始，已支持到3.6.16版本。后续LayaAirIDE会不定期进行Spine版本支持的更新，开发者可关注转换工具面板上的版本号支持状态的改变。
+LayaAirIDE does not support all conversions for all Spine versions. The supported version numbers are displayed in the Spine Conversion Tool panel. As of this document, Spine released version has been supported  from 3.4.0.2 to 3.6.16. 
+Subsequent LayaAirIDE will update the Spine version regularly, and the developer may be concerned about the change status of the version number in the conversion tool panel.
 
-#### 1.5  转换整个导出的目录
+#### 1.5  Convert the entire exported directory
 
-导出生成的文件为`atlas,json,png`格式的文件，如图3所示。需要注意的是，使用转换工具转换时，不要直接拖动文件去转换，要将整个父级目录（*如图3中的spine目录*）拖入到转换面板中。
+The exported files generated are `atlas,json,png`, as shown in figure 3. It should be noted that when converting tools, you do not drag files directly to convert, and drag the entire parent directory, such as the spine directory in Figure 3, into the conversion panel.
 
 ![图3](img/3.png) 
 
-(图3)
+(Picture 3)
 
 
 
-### 2、将Spine动画转换为LayaAir引擎识别的格式
+### 2. Spine animation converted to LayaAir engine to identify the format
 
-#### 2.1 打开转换工具面板
+#### 2.1 Open the Conversion Tool panel
 
-在LayaAirIDE的`设计模式`中，依次点击菜单栏的 `工具` --> `Spine动画转换` ，如图4所示，即可打开`Spine格式转换`工具。
+In the `design mode` of LayaAirIDE, click the menu bar `tool ` --> `Spine animation conversion` , as shown in Figure 4, you can open the `Spine format conversion` tool.
 
 ![图4](img/4.png) 
 
-(图4)
+(Picture 4)
 
 
-在打开的`Spine格式转换`工具面板中，顶部Spine后面的括号内是支持转换的spine版本号，如图5所示，当前支持将Spine 3.4.0.2和3.6.16版本以及两个版本之间的Spine骨骼动画转换为LayaAir引擎支持的格式。
+In `Spine format conversion` tool panel, the top Spine behind the brackets is about support the  version number conversion, as shown in Figure 5. Current support from Spine 3.4.0.2 to 3.6.16 version and by the LayaAir engine.
 
 ![图5](img/5.png) 
 
-(图5)
+(Picture 5)
 
 
 
 
-#### 2.2 生成.sk后缀的骨骼动画文件
+#### 2.2 Generate .sk suffix for skeletal animation files
 
-打开`Spine格式转换`工具面板后，将spine导出的资源目录拖入到转换面板，或者点击浏览按钮选择spine导出的资源目录。然后点击`确定` ，即可在原资源目录下生成一个新的.sk后缀的骨骼动画文件。
+After opening the  ` Spine Format Conversion`drag the spine exported resource directory into the conversion panel, or click the Browse button to select the spine exported resource directory. And then click `OK` to create a new .sk suffix skeletal animation file in the original resource directory. As shown in Figure 6.
 
 ![图6](img/6.png) 
 
-(图6)
+(Picture 6)
 
 
 
-### 3、Spine动画的加载显示
+### 3. Spine animation loading display
 
-#### 3.1 将转换后的spine动画资源复制到项目对应的目录。
+#### 3.1 Copy the converted spine animation resource to the corresponding directory of the project.
 
-除了转换生成的.sk格式文件，.png后缀的图集资源也需要复制到项目的目录中，如图7所示。（*其它导出的文件则不用管，仅供转换工具使用。*）
+In addition to converting the generated .sk format file, the .png suffix library resource also needs to be copied to the project's directory, as shown in Figure 7. (Other exported files are not used for conversion tools only.)
 
 ![图7](img/7.png) 
 
-(图7)
+(Picture 7)
 
-#### 3.2 spine动画播放示例
+#### 3.2 spine animation playback example
 
-下面的示例将用到`laya.ani.bone.Skeleton` 类，具体API说明可直接打开链接查看：[https://layaair.ldc.layabox.com/api/?category=Bone&class=laya.ani.bone.Skeleton](https://layaair.ldc.layabox.com/api/?category=Bone&class=laya.ani.bone.Skeleton)
+Following example will use the `laya.ani.bone.Skeleton`  class, and the specific API instructions can directly open the link view:[https://layaair.ldc.layabox.com/api/?category=Bone&class=laya.ani.bone.Skeleton](https://layaair.ldc.layabox.com/api/?category=Bone&class=laya.ani.bone.Skeleton)
 
-创建 SpineDemo.ts，代码编写如下：
+Create a document class SpineDemo.ts, code written as follows:
 
 ```typescript
 //初始化舞台
@@ -101,9 +102,10 @@ skeleton.pos(600,700);
 //通过加载直接创建动画
 skeleton.load("res/spine/spineboy/spineboy.sk");
 ```
-运行效果如动图8所示
+The operation effect is shown in Figure 8
 
 ![动图8](img/8.gif) 
 
-(动图8)
+(Picture 8)
+
 

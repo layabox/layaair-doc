@@ -1,10 +1,10 @@
-# 设置文本基础样式
+# Set text style attributes
 
-在我们的一些项目中，文本是会被经常的使用，免不了为这个文本设置字体大小，字体颜色，文本内容等。
+In some of our projects, the text will be used frequently, which is inevitably to set the font size, font color, text content, etc... 
 
-我们先做一个最基本的Demo创建一个文本，给这个文本添加文本内容、设置字体颜色（背景默认为黑色，不修改颜色没有效果）。
+Let's start with a basic demo  to create a text,  add text content and set the font color (background default color is black).
 
-laya.display.text中的关于文本样式的API参数：
+Laya.display.text set  text style with API parameters:
 
 ![1](img/1.png)</br>
 
@@ -22,9 +22,9 @@ txt.color = "#ffffff";
 Laya.stage.addChild(txt);
 ```
 
-这个时候我们就可以看到txt已经添加到舞台上了，显示了txt中白色的hello_world。
+At this point, we can see that txt has been added to the stage, showing hello_world in white.
 
-接着我们给文本添加一些其他的字体样式，粗体、斜体、字体大小等。
+Now we add some other font styles to our text, such as bold, italic, and font size.
 
 ![3](img/3.png)<br/>
 
@@ -56,4 +56,4 @@ Laya.stage.addChild(txt);
 
 ![5](img/5.png)</br>
 
-这里我们就可以看到字体样式、字体大小有明显的变化，文本框的最外围有一圈浅蓝色的边框，文本区的背景变为红色。有兴趣的话可以修改其中的数值，更深一步的理解这些属性的使用方法。
+Here we can see the font style, the font size has obviously and other details changes.
