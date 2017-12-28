@@ -1,35 +1,35 @@
-# 其它优化策略
+# Other optimization strategies
 
-### 1、减少粒子的使用数量
+### 1. Reduce the number of particles used
 
-由于粒子属于矢量绘制，大量使用粒子对CPU压力大，在移动平台Canvas模式下，尽量不用粒子；
+As the particles belong to the vector drawing, a lot of use of particles on the CPU pressure, in the mobile platform Canvas mode, try not to use particles;
 
-WebGL模式下可以采用GPU运算，能减轻CPU压力，但也要尽量控制，减少使用量。
-
-
-
-### 2、Canvas模式尽量减少旋转，缩放，alpha等属性的使用
-
-在Canvas模式下，尽量减少旋转，缩放，alpha等属性的使用，这些属性会对性能产生消耗。
-
-如要使用，建议在WebGL模式下使用；
+WebGL mode can use GPU operation, can reduce the pressure of CPU, but also try to control and reduce the amount used.
 
 
 
-### 3、不要在Timer的循环里创建对象及复杂计算
+### 2. Canvas mode to minimize the use of rotation, scaling, alpha and other attributes
 
-由于Timer的`loop()`与`frameLoop()`方法里会不断的循环执行，当创建对象及复杂计算时，会导致大量的性能消耗出现在循环里，因此，尽可能不要在循环里创建对象及复杂计算。
+In Canvas mode, minimize the use of properties such as rotation, scaling, and alpha, which consume performance.
 
-
-
-### 4、尽量少用autoSize与getBounds
-
-`autoSize()`与`getBounds()`需要大量计算，对性能的影响较大，尽量少用。
+If you want to use, it is recommended to use in WebGL mode;
 
 
 
-### 5、被try catch的函数执行会变得非常慢
+### 3. Do not create objects and complex calculations in the Timer loop
 
-项目中尽量减少`try catch`的使用，被`try catch`的函数执行会变得非常慢。
+Because Timer's `loop()` and `frameLoop()` methods will continue to cycle execution, when creating objects and complex computing, will cause a large number of performance consumption in the loop, so as far as possible not to create objects in the loop and complex computing.
+
+
+
+### 4. Use autoSize and getBounds as few as possible
+
+`autoSize()` and `getBounds()` need a lot of calculation, which has great influence on performance, and uses less as much as possible.
+
+
+
+### 5. Execution of functions by try catch can be very slow
+
+Trying to minimize the use of `try catch`, in a project can be very slow when it is executed by `try catch` functions.
 
  

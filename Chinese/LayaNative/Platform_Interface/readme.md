@@ -103,3 +103,9 @@ LayaPlatformCallback.GetInstance().LP_LoginCallback(objCallBack.toString());
 | sendMessageToPlatform | 发送消息       | `conchMarket.sendMessageToPlatform(JSON.stringify(sData),function(data));` |
 | canSendToDesktop      | 能否pushicon | `conchMarket.canSendToDesktop(JSON.stringify(sData),function(data));` |
 | openTopicCircle       | 打开话题圈      | `conchMarket.openTopicCircle(JSON.stringify(sData),function(data));` |
+
+**附录:**
+
+[对接渠道demo for Eclipse(Android) 示例下载](http://ldc.layabox.com/download/tools/SampleForEclipse.zip)
+
+[对接渠道demo for AndroidStudio(Android) 示例下载](http://ldc.layabox.com/download/tools/SampleForAndroidStudio.zip)

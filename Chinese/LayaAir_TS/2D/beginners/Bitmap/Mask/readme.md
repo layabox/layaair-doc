@@ -159,8 +159,8 @@ new MaskDemo();
 ```java
 module laya
 {
-	import Loader = laya.Loader;
-	import Handler= laya.Handler;	
+	import Loader = Laya.Loader;
+	import Handler= Laya.Handler;	
 	import maskDemoUI = ui.maskDemoUI;
 	
 	export class MaskDemo

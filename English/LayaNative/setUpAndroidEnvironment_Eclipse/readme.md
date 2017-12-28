@@ -1,80 +1,80 @@
-# Eclipse搭建android环境
+# Eclipse set up the Android environment
 
 
 
-## 一、安装JDK
+## A. Install JDK
 
-### 1、JDK下载
+### 1. JDK Download
 
-打开网站[http://www.oracle.com/technetwork/java/javase/downloads/jdk8-downloads-2133151.html](http://www.oracle.com/technetwork/java/javase/downloads/jdk8-downloads-2133151.html)，会看到“Java SE”的下载页面，如图1-1，点击windows x86版本下载即可。
+Open the web site [http://www.oracle.com/technetwork/java/javase/downloads/jdk8-downloads-2133151.html](http://www.oracle.com/technetwork/java/javase/downloads/jdk8-downloads-2133151.html)，check “Java SE” Download page, as shown in Figure 1-1, click on the windows x86 version to download.
 
 ![图1-1](img/1.jpg)
 
-**图1-1 Java SE下载页面**
+**Figure 1-1 Java SE download page**
 
 
 
-### 2、安装JDK
+### 2. Install JDK
 
-双击jdk-8u121-windows-i586.exe，得到如图1-2界面。
+Double-click jdk-8u121-windows-i586.exe, get the interface as shown in Figure 1-2.
 
 ![img](img/2.png)
 
-**图1-2 Java SDK 设置界面**
+**Figure 1-2 Java SDK settings interface**
 
 
 
-点击“下一步”，更改并确认安装路径（D:\Java\jdk1.6.0_21\，请注意若改变路径后请加上Java\jdk1.6.0_21\，防止安装文件与D盘文件混合），点击“下一步”。
+Click “Next step”, Change and confirm the installation path（D:\Java\jdk1.6.0_21\, Please note if you change the path please add Java\jdk1.6.0_21\, prevent installation files and D drive files mixed）,Click “Next step”。
 
 ![img](img/3.png)
 
-**图1-3 Java 目标文件夹安装界面**
+**Figure 1-3 Java target folder installation interface**
 
 
 
-更改路径后点击下一步，然后“完成”。
+After changing the path click Next, then “complete”。
 
-### 3、环境变量设置
+### C. Environment variable settings
 
-XP：“我的电脑” -->右键属性 --> “高级” -->“环境变量” -->系统变量（WIN7：“我的电脑” -->右键属性 -->“高级系统设置” -->“高级” -->“环境变量” -->系统变量）。
+XP：“My computer” -->Right-click the property --> “advanced” -->“Environment variables” -->System variables（WIN7：“my computer -->Right-click the property -->“Advanced system settings” -->“advanced” -->“Environment variables” -->System variables）.
 
-**设置以下三个属性以及其值：**
+**Set the following three properties and their values:**
 
 `java_home：D:\Program Files\Java\jdk1.6.0_21`
 
-指向JDK安装路径，在该路径下你应该能够找到bin、lib等目录。JDK的安装路径可以选择任意磁盘目录，但是建议目录层次浅一点。
+Pointing to the JDK installation path, you should be able to find bin, lib, and other directories under this path. The installation path of the JDK can choose any disk directory, but it is recommended that the directory is at a lower level.
 
 `path：%java_home%\bin;%java_home%\jre\bin`
 
-指向JDK的bin目录，该目录下存放的是各种编译执行命令，使系统可以在任意路径下识别java命令，并且在控制台编译运行时就无需键入大串的路径，否则以后每运行一次java程序就要先把它的class文件移动到%java_home%\bin目录下，然后打开DOS将路径改到该路径下面，执行class文件。
+Point to the JDK bin directory, compiling execution commands are stored in this directory, so system can identify java commands in any path，And when the console is compiled and run, there is no need to type a large string. Otherwise, every time after running a java program must first move its class file to %java_home%\bin directory, then open the DOS to change the path to the path and execute the class file.
 
-由于安装了JDK后，该目录下就有了两个虚拟机（JDK下的JRE和JRE），所以需要包括两个虚拟机下的bin文件夹。
+Since JDK has been installed, the directory has two virtual machines (JDK JRE and JRE), so you need to include the bin folder under two virtual machines.
 
-倘若在path中没有添加“jdk1.6.0_21\bin”，将会出现图1-4所示情况：
+If not added in the path “jdk1.6.0_21\bin”, situation shown in Figure 1-4 will appear:
 
 ![img](img/4.png)
 
-**图1-4 javac问题**
+**Figure 1-4 javac problem**
 
 `classpath：.;%java_home%\lib\dt.jar;`
 
-指向java程序编译运行时的类文件搜索路径，告诉JVM要使用或执行的class放在什么路径上，便于JVM加载class文件，目的达到用户可以import *，“.;”表示编译运行时先查找当前目录的class文件，dt.jar作用是运行环境类库，提供Java Swing组建显示的支持，可以用WinRAR打开看看，jar和zip格式一样，只是扩展名不同；tools.jar作用是提供工具类库和实用程序的非核心类；lib提供开发工具使用文件。
+The search path of the class file that points to the Java program at runtime, JVM tell what path to use or execute on the class, easy to load class files by JVM, purpose of the user can import *，“.;” class file that represents the current directory when the compilation runtime，dt.jar function is the runtime environment class library, Provide support for Java Swing to build display, can open it with WinRAR. jaris the same as the zip  format, only the extension name is different. Only the extension name is different；tools.jar role is to provide non-core classes for utility classes and utilities；lib provide development tools to use the file.
 
-打开“开始” -->“运行”，打入“cmd”，进入dos系统界面。然后输入“javac”，如果安装成功，系统会显示一系列关于javac命令的参数以及用法。
+Open “Start” -->“Function”, Enter “cmd”, Access to the DOS system interface. And then enter “javac”, if the installation is successful, the system displays a series of parameters and usage about the javac command.
 
-特别注意：java_home后面不能加“;”，并且注意路径名是JDK的路径，而不是JRE，并且对变量名是不区分大小写的。
+attention ：java_home Behind can not add “;”，and note that the path name is the path of the JDK, not JRE, and the variable name is not case-sensitive.
 
-#### 补充：dt.jar、rt.jar、tools.jar
+#### additional: dt.jar、rt.jar、tools.jar
 
-dt.jar和tools.jar是两个java最基本的包，里面包含了java中最重要的lang包到各种高级功能如可视化的swing包，是java必不可少的。
+dt.jar and tools.jar  are the most basic packages of two Java, it contains the most important Lang packages in Java to a variety of advanced functions such as visual swing packages, essential to Java.
 
-| jar包      | 类别                                       | 备注说明                                     |
+| jar Package      | Category                                       | Note description                                     |
 | --------- | ---------------------------------------- | ---------------------------------------- |
-| tools.jar | 工具类库，编译和运行需要其中的类sun.tools.java.*，sun.tools.javac.* | 一般只在javac时用到，java XXX.java 等价于java –classpath=%java_home%/lib/tools.jar XX.XXX.main XXX.java，javac是对上述命令的封装，因此不用加到classpath中。应用服务器用来编译JSP文件，应用服务器会自己加载，不需要自己设置。 |
-| rt.jar    | java基础类库                                 | 默认在根classloader的加载路径里面，无需添加至classpath，同样jre/lib下的大部分jar都在这个路径中；检测方法：删去classpath中的rt.jar，用java –verbose命令检测。 |
-| dt.jar    | 运行环境的类库，主要是swing包                        | 用到swing时最好加上，Eclipse开发环境默认是JRE，所以需要设置。   |
+| tools.jar | The class library, compilation, and running of the class sun.tools.java.*，sun.tools.javac.* | Usually used only in javac，java XXX.java Equivalent to java –classpath=%java_home%/lib/tools.jar XX.XXX.main XXX.java，javac is the encapsulation of the above commands,  so it doesn't have to be added to classpath. The application server is used to compile JSP files, application server will load its own, do not have to set up your own settings. |
+| rt.jar    | java Basic class library                                 |  The default is in the load path of the root classloader, No need to add to classpath, same jre/lib Most of the jar below is in this path； Detection method: delete the classpath of rt.jar, use java –verbose Command detection.  |
+| dt.jar    | Class library for running environment, Mainly swing packages                        | It's best to add to swing, default of the Eclipse development environment is JRE, so it needs to be set up   |
 
-**参考资源：**
+**Reference resources ：**
 
 3个jar包的作用：[http://blog.csdn.net/hlw881008/article/details/5505251](http://blog.csdn.net/hlw881008/article/details/5505251)
 

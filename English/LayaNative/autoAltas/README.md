@@ -1,12 +1,12 @@
-# 自动大图集系统  
+# Automatic large Atlas set system
 
-## 1.综述  
+## 1. Overview
 
-为了优化应用程序运行效率，减少DrawCall，在LayaNative中，有一套自动大图集管理系统。当image的宽和高都小于512的时候，图片会自动合并到大图合集中，但开发者使用的方法无需修改。  
+In order to optimize the running efficiency of the application and reduce the DrawCall, there is a set of automatic large atlas management system in LayaNative. When the image width and height are less than 512, the images will be automatically merged into the collection of large graphs, but the methods used by the developers do not need to be modified.
 
-创建自动大图集的数量，LayaNative按照设备内存情况，默认配置了一些参数，当所有大图合集全部被占满，系统会自动清理，确保大图合集的数量不会超出预先设置的个数。
+Create a large number of automatic large atlas, LayaNative According to the memory of the device, the default configuration of some parameters, when all the big picture collection is full, the system will automatically clean up, ensure that the number of large map collection does not exceed the number set in advance.
 
-默认设置的参数如下所示:  
+The parameters of the default settings are shown below: 
 
 ```javascript
 var nMem = conchConfig.getTotalMem();
@@ -25,9 +25,9 @@ else if (nMem > 1048576) {
 ```
 
 
-## 2.如何配置大图合集的数量
+## 2. How to configure the number of large map collection
 
-由于每个项目都有特殊性，开发者也可以根据自己需求进行设定，需要在config.js设定，代码如下：
+Because each project has its own particularity. Developers can also be set according to their needs，Need to set in config.js, the code is as follows :
 
 ```javascript
 var loadingView= window.loadingView;
@@ -51,23 +51,23 @@ else if (nMem > 1048576) {
 }
 ```
 
-**Tips：这个显存池size的设定必须放在应用程序开始启动的地方，程序中不可动态设定，config.js是LayaPlayer启动后立刻就会执行的js，所以放在这才是最安全的。**  
+**Tips: memory pool size set must be started in places where the application can not be dynamically set the program, config.js LayaPlayer will start immediately after the implementation of the JS, so here is the most secure. **  
 
 
-##  3.config.js在哪
+##  3.config.js emplacement
 
-ios版本：在工程目录下的resource\scripts\config.js  
-android版本：在工程目录下的assets\scripts\config.js    
+ios edition: under the project directory resource\scripts\config.js  
+android edition: under the project directory assets\scripts\config.js    
 
 
-## 4.设置image放入自动大图合集中的尺寸限制
+## 4. Set the size limit in the automatic big picture collection by setting image
 
-在上面说过，当image宽和高都小于512的时候，会自动合并到大图合集中，在LayaNative-0.9.10版本以后，开发者可以在config.js设置这个size的值，代码如下：
+As mentioned above, when the image width and height are all less than 512, it will automatically merge into the big picture collection. After the LayaNative-0.9.10 version, developers can set the size value in config.js, the code is as follows:
 ```javascript
 conchConfig.pushAtlasLimitSize = 256;//当图片size小于256的时候，合并到大图合集中
 ```
 
 
-## 5.特殊说明
+## 5. Extra description
 
-注意：合并到大图集中的图片，当image被删除后，显存不会立即被释放，因为该张大图集中还存有其他图片，所有无法立即从显卡中删除。但是自动大图集管理器，会自动管理这些显存的生命周期，确保这些大图集占用显存的数量恒定在一个值。比如，设定为10张，图集的尺寸为1024*1024,占用显存就是40MB。
+Note: Images merged into a large collection will not be released immediately after the image is deleted because other images are still present in the large album, and all images can not be deleted immediately. But the automatic atlas manager will automatically manage the memory of the life cycle, to ensure that these large number of atlas occupied memory at a constant value. For example, set for 10, of size 1024*1024, occupied memory is 40MB.

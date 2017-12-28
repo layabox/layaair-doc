@@ -498,7 +498,7 @@ Before we made multiple animations in TimeLine.ani, how do we load and use other
 
 Modify the sample code to use multiple Animation as follows:
 
-**Enrty class TimeLineDemo.as** 
+**Entry class TimeLineDemo.as** 
 
 ```java
 package

@@ -1,49 +1,48 @@
-# LayaNative综述
+# LayaNative Summary
+
+
+LayaNative is a complete set of development solutions for the development, test, and release of the LayaAir engine for the mobile terminal App, but not limited to the LayaAir engine.  Based on LayaPlayer as the core runtime, LayaNative uses the reflection mechanism and channel docking solution to provide developers with a second open and channel match on the native App and provide testing tools, packaging tools, building tools for developers, HTML5 project package, released into the native App to facilitate.
 
 
 
-LayaNative是LayaAir引擎针对移动端原生App的开发、测试、发布的一套完整的开发解决方案，但不局限于LayaAir引擎。LayaNative以LayaPlayer为核心运行时的基础上，利用反射机制、渠道对接方案提供开发者在原生App上进行二次开放和渠道对接，并提供测试工具、打包工具、构建工具等，为开发者将html5项目打包、发布成原生App提供便利。
+##   **LayaNative contains the following content:**
+
+
+### 1. test tools:
+
+Through the way of simulating browser, input URL to run in the address bar to help developers to quickly see the operating results on the mobile terminal, save a lot of time for repeated packaging test.
 
 
 
-##   **LayaNative包含以下内容:**
-
-
-### 1. 测试工具：
-
-通过模拟浏览器的方式，在地址栏输入URL运行，帮助开发者快速在移动端看到运行效果, 节省大量反复打包测试的时间；
+### 2. Android Packaging Tools:
 
 
 
-### 2. 安卓打包工具：
+Android package tools to help developers quickly generate mobile Android apk installation package (the icon of the APK, the application name, whether to package resources such as developers can freely customize)
 
 
 
-安卓打包工具可帮助开发者快速生成移动端的安卓系统apk安装包（该APK的icon、应用名称、是否打包资源等开发者可自由定制）；
+### 3. Build tools:
 
 
 
-### 3. 构建工具：
+Building tools can help developers to quickly build mobile terminal APP project, and then use the Android Studio、Eclipse、XCode and other development tools->build->run；
 
 
 
-构建工具可帮助开发者快速构建移动端APP项目工程, 然后使用Android Studio、Eclipce、XCode 等开发工具打开->构建->运行；
+### 4. Reflection mechanism:
 
 
 
-### 4. 反射机制:
+Through the reflection mechanism, developers can implement the mutual invocation JavaScript and native languages (Android / Java or iOS / Objective-C), and the developers of the reflection mechanism can conveniently extend the applications to two times.
 
 
 
-通过反射机制,开发者可以实现JavaScript与原生语言(Android/Java 或 iOS/Objective-C)的相互调用，通过反射机制开发者可以很方便的对应用程序进行二次扩展；
+### 5. Channel docking tool (conchMarket):
 
 
 
-### 5. 渠道对接工具内(conchMarket):
-
-
-
-渠道对接工具内嵌了渠道常用对接API，例如: 登录, 分享, 充值,好友关系链等；
+Channel docking tools are embedded with channels commonly used for docking API, such as: login, sharing, recharge, friendship chain and so on.
 
 
 
@@ -51,25 +50,25 @@ LayaNative是LayaAir引擎针对移动端原生App的开发、测试、发布的
 
 
 
-LayaPlayer是LayaNative最核心的部分，它是一个基于JavaScript脚本引擎 + openGLES硬件加速渲染的跨平台引擎，通过对内存与渲染流程进行极致优化，为基于HTML5、WEBGL的多媒体应用、游戏等产品加速，使其性能媲美原生Native-APP。LayaPlayer采用C++语言编写,可嵌入浏览器或操作系统运行，也可以独立运行。  
+LayaPlayer is the core part of the LayaNative, which is a cross-platform engine based on JavaScript scripting engine + openGLES hardware accelerated rendering. It accelerates the memory and rendering process based on HTML5, WEBGL-based multimedia applications, games and other products to make Its performance is comparable to native Native-APP. LayaPlayer is written in the C++ language, which can be embedded in a browser or operating system and can run independently.  
 
 
 
-### 7.LayaNative的原理和开发流程
+### 7.LayaNative principle and development process
 
 
 
 
-（1）、使用LayaAir开发的项目，准备在发布成app版本（ios或android）。  
-（2）、LayaNative会使用核心引擎LayaPlayer进行加速。  
-（3）、开发者可以使用测试工具或者打包工具，快速安装到移动设备上进行简单的测试。  
-（4）、最终通过命令行或者IDE，构建ios或android的工程，进行编译、执行。  
-（5）、如果需要发布到各大渠道（例如：百度、360、AppStroe、google等），需要通过反射机制进行二次开发（即：对接渠道的SDK，登录、充值、分享等）。  
-（6）、最后构建成app进行安装、测试、发布。  
+（1）. The project developed using LayaAir is ready to be released into the app Version (IOS or Android).
+（2）. LayaNative will use the core engine LayaPlayer to speed up.
+（3）. Developers can use test tools or packaging tools to quickly install on mobile devices for a simple test.
+（4）. Finally through the command line or IDE, build ios or android project, compiling and execute.  
+（5）. If it needs to be released to all major channels (such as Baidu, 360, AppStore, Google, etc.), it needs to develop through the reflection mechanism for two times, that is, SDK, login, recharge, share and so on. 
+（6）. Finally, it is built into app to install, test and publish.
 
-流程如图1所示：
+Process shown in Figure 1：
 
 ​	![blob.png](img/1.png)
-​	图（1）
+​	Picture（1）
 
 

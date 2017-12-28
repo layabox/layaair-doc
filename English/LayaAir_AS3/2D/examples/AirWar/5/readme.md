@@ -1,36 +1,36 @@
-# 五、游戏主角与操控
+# 5. game protagonist and control
 
-###游戏角色概述
+###Game character overview
 
-​	在上几节课中，我们用IDE创建了UI，并实现了游戏的流程管理与UI逻辑功能。但最重要的角色还未加入，根据思维导图分析，游戏角色才是游戏的真正核心逻辑（图1）。本节课中，我们将实现游戏主角的部分功能，让主角可以操控起来。
+​	In the last few lessons, we created UI with IDE and implemented the process management of the game and the logic function of the UI. But the most important role has not been added, according to the mind map analysis, the game role is the real core logic of the game (Figure 1). In this lesson, we will realize part of the function of the main character of the game, so that the protagonist can be manipulated.
 
-![思维导图.png](img/1.png)<br />（图1）
+![思维导图.png](img/1.png)<br />（Picture 1）
 
-本节课的制作思路为：
+The production of this lesson ideas:
 
-1.建立基础角色类，可通过初始化方法对角色进行分类，根据角色类型可播放不同的动画。
-2.在主类中实例化主角，并实现主角的控制方法，让主角移动。
-3.建立主角更新方法，并作边界检查，使主角不能移动画屏幕外。
-
-
+1. establish basic role classes, which can be classified by initialization methods, and different animations can be played according to the type of role.
+2. In the main class, the protagonist is instantiated and the protagonist's control method is realized so that the protagonist can move. 
+3. The leading role update method, and the border check, so that the protagonist can not move the screen outside the painting.
 
 
-### 游戏基础角色类的建立
 
-在src目录下新建一个角色类Role.as，继承显示类Sprite（laya.display.Sprite）。
 
-角色类中我们主要实现逻辑为：
+### The establishment of the basic role class of the game
 
-1.角色的基本属性：角色类型type、血量hp、速度speed。
+In the SRC directory, a new role class Role.as is built, and the display class Sprite (laya.display.Sprite) is inherited.
 
-2.角色动画对象roleAni:Animation，用于播放IDE编辑的角色动画。
- 注：加载角色图集资源已在开始页面逻辑中完成，因此只需加载IDE编辑的动画资源gameRole.ani即可。
+The main logic in the role class is that:
 
-3.角色初始化公共方法init()，对角色进行类型、血量、和速度进行初始化，对角色分类。
+1. The basic attributes of the role: the role type type, the blood volume HP, the speed speed.
 
-4.角色动画播放方法playAction(action:String)，可切换角色类型与动画状态。
+2. The role animation object roleAni:Animation is used to play the role animations of IDE editors.
+ Note: the load role atlas resources have been completed in the start page logic, so only the IDE edit animation resource gameRole.ani is loaded.
 
- 具体代码如下：
+3. The role initializes the public method init (), initializes the type, blood volume, and speed of the role, and classifications of the roles.
+
+4. Role animation playback method playAction (action:String), which can switch role type and animation state.
+
+ The specific code is as follows ：
 
 
 ```
@@ -100,15 +100,15 @@ package
 ```
 
 
-当我们建立好角色类，就可以在主类中创建主角飞机了。我们需要在main类中加入以下逻辑：
+When we have set up the role class, we can create the main character plane in the main class. We need to add the following logic to the main class：
 
-1.新增单独的角色层容器roleLayer，所有角色都加载入其中，以方便后期实现角色管理，例如角色碰撞逻辑等。当然，游戏结束时在gameOver()方法中需清空角色层，为下一局游戏做准备。
+1. New role layer container roleLayer is added, and all roles are loaded into it to facilitate the later implementation of role management, such as role collision logic. Of course, at the end of the game, the role layer needs to be emptied in the gameOver () method to prepare for the next game.
 
-2.创建主角全局变量hero，并在游戏gameInit()方法中实例化主角，在角色层中显示出来。
+2.Create the protagonist global variable hero, and instantiate the protagonist in the game gameInit () method, and display it in the role layer.
 
-3.在游戏线束方法gameOver()中，移除角色层。重新实例化时所有角色会全部去除，为下一次游戏做准备。
+3.In the game harness method gameOver (), remove the role layer. When re instantiated, all the roles will be removed to prepare for the next game.
 
-代码参考如下：
+The code reference is as follows:
 
 ```
 		......
@@ -161,36 +161,36 @@ package
 
 
 
-完成上述逻辑代码后，我们发现主角飞机已经加载到屏幕上了，并播放了飞行动画。
+After completing the logical code, we found that the protagonist plane had been loaded on the screen and played the flight animation.
 
 
 
-### 游戏主角的操控
+### Control of the main character of the game
 
-在之前的《飞机大战》游戏教程中，手指滑动，主角自动对齐手指跟随移动。这种操作有一个明显的不足之处，玩家如果手指较粗大，那么飞机就被挡住了，不利于观察。当手指离开再触摸其他位置时，飞机还会瞬移过去，不符合常理。
+In the previous《aircraft war》 game course, the finger slid, the protagonist automatically aligned the finger to follow the movement. There is an obvious inadequacy in this operation. If the player has a larger finger, the plane is blocked and is not conducive to observation. When I touch other position left fingers, the plane will teleport past, which doesn't make sense.
 
-因此，我本节课中，我们会把操控输入方式修改成手指移动，飞机并不会瞬移到手指下，只是根据移动方向和速度进行自身座标改变。
+Therefore, I in this lesson, we will put the control input into modified finger movement and aircraft does not teleport to the fingers, but according to the direction and speed of movement of its coordinates change.
 
-注：LayaAir引擎没有像Flash中把触摸事件（TouchEvent）独立出来，我们可以直接用鼠标事件监听（MouseEvent）的方式识别玩家触摸操作。它也包括多点触摸属性。
+Note: LayaAir engine is independent of touch event (TouchEvent) in Flash. We can identify mouse touch operation directly by mouse event listener (MouseEvent). It also includes multitouch properties.
 
-因没有角色死亡，为了操控时间加长，我们把主类gameInit()方法中，模拟延迟3秒游戏结束修改成延迟30秒。
+Because of no role death, we modified the main class gameInit () method, the analog delay 3 second game, to a delay of 30 seconds in order to lengthen the control time.
 
 ```
 		//模拟游戏结束，30秒时间
 		Laya.timer.once(30000,this,gameOver);
 ```
 
-其他码逻辑思路如下：
+The other code logic is as follows:
 
-1.增加两个属性moveX，moveY，用于记录每次手指移动后，上一帧的触摸位置。
+1. Adding two attributes, moveX, moveY, is used to record the touch position of the last frame after each finger movement.
 
-2.在gameInit()方法中，增加舞台鼠标按下、鼠标移动、鼠标抬起监听事件。并且在按下时监听鼠标移动，在抬起时移除移动监听。当然，在游戏结束时，需把舞台监听全部去除。
+2. In the gameInit () method, it increases the stage mouse press, the mouse movement, and the mouse to lift the monitor. And monitor the mouse movement at the time of press and remove the mobile monitor when it is lifted. Of course, at the end of the game, all the stage monitor needs to be removed.
 
-3.在鼠标移动的方法onMouseMove()中更新主角位置，移动的位置为当前触摸位置减去上一帧触摸的位置。
+3. The position of the main character is updated in the mouse movement method onMouseMove (), and the position of the move is subtracted from the previous touch position for the current touch position.
 
-4.在角色中增加更新方法update()，这个方法中暂时只加入主角的边界检查，使其不能移动到屏幕外。以后还有其他逻辑加入，如角色血量检查、敌机超出边界处理等。
+4. Add the update method update () in the role, which temporarily only adds the lead boundary check to make it impossible to move to the outside of the screen. Later, there are other logic to join, such as the role of blood test, enemy machine beyond the border treatment, and so on.
 
-Main中修改参考代码：
+reference code is modified in Main:
 
 ```
 		......
@@ -264,11 +264,11 @@ Main中修改参考代码：
 
 
 
-### 主角边界检查更新
+### Lead boundary check updated
 
-编译运行，发现手指在屏幕上移动时，飞机也移动了，而不会一下跑到手指下面。但新问题也出现了，因为主角飞机没有强行同步对齐至手指，所以移动过多时，飞机会飞出屏幕之外。 
+When it was compiled and run, it was found that when the finger was moving on the screen, the plane moved, and it wouldn't run down to the finger. But the new problem appears, because the main character plane does not synchronize to the finger, so when it moves too much, the plane will fly out of the screen.
 
-在角色中增加边界检查功能，新增update()方法，具体代码如下：
+Add the border check function in the role, add the update () method, the specific code is as follows:
 
 ```
 		......
@@ -307,7 +307,7 @@ Main中修改参考代码：
 
 
 
-在角色中增加了更新方法后，在主类Main主循环loop()中调用执行主角update()方法，每一帧都判断是否超界。
+After adding the update method in the role, the leading role update () method is called in the main class Main main loop loop (), and  to determine whether each frame is out of bounds.
 
 ```
 		......
@@ -330,15 +330,15 @@ Main中修改参考代码：
 
 
 
-到此，编译运行后，我们需要的效果达成了吗？细心的同学发现还是未达成，角色移动到边界时，动画中心点外的部分还是超出屏幕外了，那么这是什么原因造成的呢？我们明明在边界检查的时候减去了角色动画一半的宽度或高度，但运行起来无效。
+Here, after the compilation runs, do we need the effect? The discovery of a careful student is still not reached. When the role is moved to the boundary, the part outside the center of the animation is still beyond the screen. So what is the reason for this? We clearly subtract half the width or height of the role animation while checking the border, but it doesn't work.
 
-在边界检查处加入trace("角色宽高："+roleAni.width,roleAni.height)代码，运行后，按F12快捷键打开调试模式，我们可以看到控制台输出为“角色宽高：0 0”（图2）。
+Add a trace to the border inspection office ("Role width high："+roleAni.width,roleAni.height)Code, after running, press the F12 shortcut to open the debug mode, and we can see that the console output is “role Width and height ：0 0”（Picture 2）。
 
-![思维导图.png](img/2.png)<br />（图2）
+![思维导图.png](img/2.png)<br />（Picture 2）
 
-哪怕是7000帧后也为0,0，那么这是什么原因呢？
+Even if the 7000 frame is 0,0, then what's the reason?
 
-这是因为动画加载后，只有真正完成一次动画，再通过获取动画对象矩形边界的方法才能获得其宽高属性。那我们处理的方法为：在角色类初始化init()方法中，加入角色“动画播放完成”的监听事件，并建立回调方法来获得宽高！代码参考如下：
+This is because after the animation is loaded, only a real animation is completed, and then the width and height of the animation can be obtained by obtaining the rectangular boundary of the animated object. The way we deal with it is: in the role class initialization init () method, add the role of  “animated play to finish” listening events, and set up callback method to get wide height. The code reference is as follows:
 
 ```
 			......
@@ -369,15 +369,15 @@ Main中修改参考代码：
 		......	
 ```
 
-加入以上代码后编译运行，游戏主角得到了完美的控制，再也不超出边界了！
+Add the above code to compile and run, the game protagonist gets the perfect control, no longer beyond the border!
 
-![思维导图.png](img/3.png)<br />（图1）
+![思维导图.png](img/3.png)<br />（Picture 1）
 
 
 
-本节课修改后的全部代码如下：
+The revised code in this lesson is as follows：
 
-### 主类Main.as全部代码
+### Main.as all the main code
 
 ```
 package {
@@ -575,7 +575,7 @@ package {
 
 
 
-### 角色类Role全部代码
+### The whole code of the role class Role
 
 ```
 package

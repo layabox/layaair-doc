@@ -1,142 +1,141 @@
-# 二、编辑器可视化资源制作
+# 2. Editor visualized resource production
 
 
 
-###游戏可视化资源概述
+### Overview of Game Visualization Resources
 
-​	在前一节课程中，我们分析了开发思路，进行了美术素材资源的准备、分类。在这一节课中，先不要急着敲代码，我们制作好UI界面和动画后再进行逻辑处理。LayaAirIDE是一款强大的可视化编辑工具，游戏中可见的部分都可以在IDE中实现。
+​	In the previous lesson, we analyzed the development ideas and prepared and categorized art materials. In this lesson, do not hurry to knock the code, we make a good UI interface and animation before logical processing. LayaAirIDE is a powerful visual editing tool, the visible part of the game can be achieved in the IDE.
 
-​       这些可视化的元素包括：各类组件、图标、UI页面、动画、地图、粒子等。如果同学们对IDE组件不是那么熟悉，详细教程可查看“技术文档—LayaAir IDE篇”。下面我们就开始一步一步制作《飞机大战》中的可视化资源。	
+​       These visual elements include: various components, icons, UI pages, animations, maps, particles, and more. If students are not so familiar with the IDE components, a detailed tutorial can view the “Technical documents - LayaAir IDE articles”. Let's start with the step-by-step process of creating visual resources in the "aircraft war".
 
 
 
-### 创建游戏页面
+### Create a game page
 
-​	在本示例中，我们在项目管理器中依次新建制作开始页面、游戏进行中页面、游戏结束页面和游戏地图页面。（图1、图2）。
+​	In this example,  we set up a new start page, a game in progress page, a game end page, and a game map page in the Project Manager in this order. (Figure 1, Figure 2).
 
-​	为适应大众手机屏幕，设置页面分辨率为720X1280。游戏进行中、游戏地图页面我们选择默认View类型页面。Dialog类型带弹出动画效果，因此“开始”与“结束”页面采用此类型。
+​	In order to adapt to the public mobile phone screen, the page resolution is set to 720X1280. In the game, we choose the default View type page for the map page of the game. The Dialog type brings the animation effect, so the “start” and “end” pages use this type.
 
-![试玩.png](img/00.png)<br />（图1）
+![试玩.png](img/00.png)<br />（Picture 1）
 
-![试玩.png](img/0.png)<br />（图2）
+![试玩.png](img/0.png)<br />（Picture 2）
 
-新建的页面对应说明请参考下表。
+New page corresponding description, please refer to the following table.
 
-| 本游戏IDE可视化文件  | 文件说明              |
+| game IDE visualizations  | File description              |
 | ------------ | ----------------- |
-| GameBg.ui    | 游戏滚动的地图，View页面类型  |
-| GameOver.ui  | 游戏结束页面，Dialog页面类型 |
-| GamePlay     | 游戏进行中页面，View页面类型  |
-| GameStart.ui | 游戏开始界面，Dialog页面类型 |
+| GameBg.ui    | The map of the game rolling, the View page type  |
+| GameOver.ui  | Game end page, Dialog page type |
+| GamePlay     | Game on page, View page type  |
+| GameStart.ui | Game start interface, Dialog page type |
 
 
 
-#### 游戏流程页面制作
+#### Making game process page
 
-创建、打开GameStart.ui开始页面后，从资源或组件管理器中拖入相应的组件或资源，通过IDE工具进行位置调整、组合，用IDE层次界面调整元素层级和嵌套关系（类似photoShop图层）。右侧属性栏也可对元素宽高位置、旋转缩放进行操作，最终达到美术效果图所需（图3）。
+After creating and opening the GameStart.ui page, drag the corresponding components or resources from the resource or component manager, adjust the location through IDE tools, adjust the element level and nesting relationship with the IDE level interface (similar to the photoShop layer). The right property bar can also operate on the element wide position, rotation zoom, and finally reach the art effect diagram (Figure 3).
 
-页面布局调整好后，为需要程序修改的元素加上变量名（var属性）。例如进度加载文本框Text组件var 取名为txt_load，放按钮的Box组件var取名为btn_start。
+After the page layout is adjusted, add the variable name (var attribute) to the element that needs program modification. For example, the progress loading text box var named component txt_load, put the button box component var named btn_start.
 
-GamePlay、GameOver页面与GameStart页面制作方式基本相同（图4）（图5），再此不多做描述。
+GamePlay, GameOver page and GameStart page production basically the same way (Figure 4) (Figure 5), not much description.
 
-![试玩.png](img/2.png)<br />（图3）
+![试玩.png](img/2.png)<br />（Picture 3）
 
-![试玩.png](img/3.png)<br />（图4）
+![试玩.png](img/3.png)<br />（Picture 4）
 
-![试玩.png](img/4.png)<br />（图5）
-
-
-
-#### 游戏地图背景
-
-创建、打开GameBg.ui页面，我们从资源管理器中拖拽两张background.png到场景编辑器中做背景使用，上下二方连续并对齐，用于地图不停循环滚动使用。并设置两张图变量名（var属性）为bg1、bg2。bg2的y座标为-1280。
-
-当然，只用一张较长的二方连续图也可。有的游戏会在背景上设置两层，一层远景（慢速滚动），一层近景（快速滚动）。
-
-![试玩.png](img/1.png)<br />（图6）
+![试玩.png](img/4.png)<br />（Picture 5）
 
 
 
-至此，游戏页面制作完成，保存后发布（快捷键F12）。在“代码模式”下我们可以看到在项目...\src目录下生成了ui文件夹，文件夹里是IDE发布生成的4个UI类，在程序中实例化后就可加载到舞台显示出来。
+#### Game map background
+
+To create and open GameBg.ui pages, we dragged two background.png from the explorer to the background editor for background use, and the upper and lower two sides were aligned continuously, and used for map continuous rolling. And set two graph variable names (VaR attributes) for BG1, BG2. The Y coordinates of BG2 are -1280.
+
+Of course, only a longer two - party continuous graph is also available. Some games will set two layers in the background, a vision (slow rolling), a close view (fast rolling).
+
+![试玩.png](img/1.png)<br />（Picture 6）
 
 
 
-### 游戏页面中的按钮动画
-
-有时为了界面的效果更好，我们可以在一些按钮或界面元素上加上动画效果。比如结束页面中的”重新开始“按钮，点击后可以向上跳动一下。下面我们就以此例来学习一下制作方法。
-
-1.在场景编辑器中选中”重新开始“按钮。然后勾选时间轴界面中的”动画编辑模式“，会出现播放控制按钮及时间轴（图7）。
-
-![试玩.png](img/6.png)<br />（图7）
-
-2.选择在第8帧左右的位置，把按钮向上移动10个像素左右，时间轴上会相应的出现对象名称和两个关键帧。点击对象名称左边小三角，下方会出现y属性，同样有对应的两个关键帧。这是因为我们改变了对象y轴上的属性，当然，如果你改变了其他属性产生动画，例如x、alpha、scaleX等，也会出现在对象名的下方（图8）。
-
-点击对象名称上方播放控制按钮，我们就可以观察到动画了！如果觉得动画过快或过慢，可以鼠标左右移动关键帧到合适的位置。
-
-![试玩.png](img/44.png)<br />（图8）
-
-3.为了达到更丰富的动画效果，选择y轴上第一帧，右侧“帧属性”界面上会出现“是否缓动”选择（图8），勾选后选择缓动类型为elasticOut，那么按钮会带有一种快速回弹的效果。同学们也可以选择其他的缓动进行尝试选择。
-
-最后我们为这个动画修改名称为ani_restart，以方便程序调用。
-
-注：动画编辑器可以制作很多酷炫动画效果。详细教程请查阅“技术文档—LayaAir IDE篇—使用IDE创作”。
+At this point, the game page is completed and saved after the release (shortcut key F12). Under the “"code mode”, we can see that the UI folder is generated under the ...\src directory of the project. The folder is the 4 UI class generated by IDE, which can be loaded to the stage display after instantiation in the program.
 
 
 
-### 游戏角色动画
+### Button animation in the game page
 
-在项目管理器中，右键新建并打开GameRole.ani角色动画（快捷键Ctrl+N），我们用角色资源制作出游戏需要的各种动画资源。
+Sometimes for the better effect of the interface, we can add animated effects on some buttons or interface elements. For example, at the end of the page, the "restart" button can beat up after clicking. Let's take this example to learn how to make it.
 
-角色动画类型选择默认GraphicAnimation（图9），动画页面大小在游戏中无效，因此根据喜好设置即可，因我们飞机角色为黑白，因此调整参考颜色为非黑。
+1. select the ”restart“ button in the scene editor. Then the ”animation edit mode“ in the timeline interface will be selected, and the play control button and the timeline (Figure 7) appear.
 
-![试玩.png](img/5.png)<br />（图9）
+![试玩.png](img/6.png)<br />（Picture 7）
 
-创建好动画文件后，点开资源管理器中角色资源文件夹gameRole，里面有我们需要制作动画的资源，资源对应当着角色的类型与动画状态。根据需求，我们的角色类型一共分为4种，主角hero，敌人enemy1-3，道具ufo1-2，及子弹bullet1-2。动画状态为飞行fly，受伤hit，死亡down。
+2. Select the position of about eighth frames, move the button up to about 10 pixels, the time axis will correspond to the name of the object and the two key frames. Clicking on the left triangle of the object name, the Y attribute appears below, and there are two corresponding key frames. This is because we have changed the attributes on the Y axis of the object. Of course, if you change the other attributes to generate animations, such as X, alpha, scaleX and so on, it will also appear below the object name (Figure 8).
 
-如资源名为：hero_down1，代表英雄的死亡状态第一帧动画。在此，我们可以用一个表来清晰说明。
+The control button is played over the name of the click object, and we can see the animation! If the animation is too fast or too slow, you can move the key frame around the mouse to the right place.
 
-| 状态\角色类型 | 主角（英雄）        | 敌人1            | 敌人2            | 敌人3（boss）      | 道具   | 子弹        |
+![试玩.png](img/44.png)<br />（Picture 8）
+
+3. In order to achieve more abundant animation effect, choose the first “frame properties” on the Y axis, the “whether to slow” selection will appear on the right frame property interface (Figure 8). After selecting the slow moving type is elasticOut, then the button will have a fast rebound effect. Students can also choose other activities to make an attempt.
+
+Finally, we modify the name ani_restart for this animation to facilitate the program call.
+
+Note: the animation editor can make a lot of cool animation. For a detailed tutorial, refer to “technical documentation - LayaAir IDE - using IDE creation”.
+
+
+
+### Game character animation
+
+In the project manager, the right button creates and opens the GameRole.ani role animation (shortcut key Ctrl+N), we use the role resources to create all kinds of animation resources needed by the game.
+
+The role animation type chooses the default GraphicAnimation (Figure 9). The size of the animation page is invalid in the game, so it can be set according to the preferences, because the role of our aircraft is black and white, so we adjust the reference color to non black.
+
+![试玩.png](img/5.png)<br />（Picture 9）
+
+After creating the animation file, click the role resource folder gameRole in the resource manager, which contains the resources we need to make animation, the type of resources and the animation state. According to the requirements, our role types are divided into 4 types: the protagonist hero, the enemy enemy1-3, the prop ufo1-2, and the bullet bullet1-2. The animated state is flying fly, injured hit, and dead down.
+
+Such as resource name: hero_down1, on behalf of the hero's death state the first frame animation. Here, we can use a table to clearly explain.
+
+| Status \ role type | Protagonist (hero)        | Enemy 1            | Enemy 2            | Enemy 3（boss）      | Prop   | Bullet        |
 | ------- | ------------- | -------------- | -------------- | -------------- | ---- | --------- |
-| 飞行      | hero_fly1 -2  | enemy1_fly1    | enemy2_fly1    | enemy3_fly1-2  | ufo1 | bullet1-2 |
-| 受伤      | 无             | 无              | enemy2_hit1    | enemy3_hit1    |      |           |
-| 死亡      | hero_down1 -4 | enemy1_down1-4 | enemy2_down1-4 | enemy3_down1-4 |      |           |
+| flight      | hero_fly1 -2  | enemy1_fly1    | enemy2_fly1    | enemy3_fly1-2  | ufo1 | bullet1-2 |
+| Injured      | nothing             | nothing             | enemy2_hit1    | enemy3_hit1    |      |           |
+| death      | hero_down1 -4 | enemy1_down1-4 | enemy2_down1-4 | enemy3_down1-4 |      |           |
 
 
 
-创建角色动画方法与步骤
+Create a character animation method and steps
 
-1.勾选动画编辑器界面中“动画编辑模式”，将出现播放控制按钮及时间轴（图10）。
+1.Tick the "Animation Editing Mode" in the animation editor interface and the playback control button and timeline will appear (Figure 10).
 
-![试玩.png](img/6.png)<br />（图10）
-
-
-
-2.在资源管理器中选中单张或多张动画资源图片，拖拽至时间轴上生成动画（图11）。
-
- 例如创建主角飞行动画，选中hero_fly1、hero_fly2两张图拖拽至时间轴上，就生成了主角的飞行动画，打开循环按钮，再点击播放可观察到效果，如觉得动画过快或慢，可调节帧率或两帧间的间隔。
-
-![试玩.png](img/7.png)<br />（图11）
+![试玩.png](img/6.png)<br />（Picture 10）
 
 
 
-3.在场景编辑器中调整动画资源居中到动画原点。在项目程序中，角色碰撞是按角色中心半径计算，因此需把角色动画的中心调整到原点，可以少写一些代码（图10）。
+2.In Explorer, select a single or multiple animation resource images, drag and drop to the timeline to generate animation (Figure 11).
 
-帧率为动画文件本身播放频率，游戏程序中的主频帧率不会干扰影响，本例中所有动画不调整帧的时间间隔，只设置帧率为12帧即可。
+ Such as creating a protagonist flying animation hero_fly1, hero_fly2 two, select the picture to drag the timeline, creates the protagonist flying animation, open circular button, and then click play effect could be observed, such as animation feel too fast or slow, adjustable frame rate or the interval between the two frames.
 
-注：加载后播放状态只在动画直接放置到UI中有效，程序加载动画需用动画的play()方法播放（图10）。
-
-![试玩.png](img/8.png)<br />（图10）
+![试玩.png](img/7.png)<br />（Picture 11）
 
 
 
-4.修改动效名称。IDE中动效名称默认为ani_0，不方便在游戏程序中使用，需修改成组合名称，用于区别角色类型和动画状态。
+3. in the scene editor, adjust the animation resources from middle to the animation origin. In project program, role collision is calculated according to the role center radius, so the center of role animation needs to be adjusted to the origin point, and fewer code can be written (Figure 10).
 
-动画切换时用play()方法切换动画，例如下图中名称hero_fly、hero_die，调用 hero.play(0,true,"hero_fly")播放主角飞行动画。调用hero.play(0,true,"hero_die")时播放主角死亡动画。
+The frame rate is the playing frequency of the animation file itself. The main frequency frame rate of the game program will not interfere with the influence. In this case, all animations do not adjust the frame interval, and the frame rate is only 12 frames.
 
-在本例中，因动画资源不大，因此我们将所有的角色动画都存放在GameRole.ui中，包括主角、敌人、子弹和道具。点击“添加”按钮后，出现新的空时间轴，重复上述4个步骤即可制作完成所有角色动画动效。添加后的动效将出现在动效下拉列表中，选择某其中某个动画可进行重新编辑（图11）。
+Note: after loading, the playback status is valid only when the animation is placed directly into the UI, and the program loading animation needs to be played by the animated play () method (Figure 10).
 
-![试玩.png](img/9.png)<br />（图11）
+![试玩.png](img/8.png)<br />（Picture 10）
 
 
 
-综上所述，在本节课中我们制作了全部的游戏可视化素材，为游戏后序开发打好了基础。在项目开发过程中，UI界面变动修改较多，这时也可以让美术岗位的同事来学习IDE页面及动画的制作，提高工作效率。美术完成后程序再作一些简单调整就可以发布，并进行UI逻辑处理了。
+4. modify the name of the dynamic effect. The name of the dynamic effect in IDE is ani_0, which is not easy to use in the game program and needs to be modified into a combination name to distinguish the role type and animation state.
+
+When you switch the animation, you use the play() method to switch the animation, for example, the name hero_fly, hero_die in the figure below, calling  hero.play(0,true,"hero_fly") to play the main character flying animation. Play hero.play(0,true,"hero_die") when playing the hero's death animation.
+
+In this case, because of the little animation resources, all of the role animations are stored in the GameRole.ui, including the protagonist, the enemy, the bullet and the props. After clicking the “Add” button, a new empty timeline, repeat the above four steps can be made to complete all character animation. The added motion will appear in the Motion Effect drop-down list and select one of the animations for re-editing (Figure 11).
+
+![试玩.png](img/9.png)<br />（Picture 11）
+
+
+In summary, in this lesson we produced all the game visualization material, laid the foundation for the development of the game sequence. In the project development process, UI interface changes more modified, then you can let art colleagues to learn the IDE page and animation production, improve work efficiency. After the art is completed, the program can make some simple adjustments and publish it, and perform UI logic processing.

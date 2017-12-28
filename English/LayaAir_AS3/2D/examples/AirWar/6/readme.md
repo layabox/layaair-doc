@@ -1,28 +1,28 @@
-# 六、创建敌机与角色碰撞
+# 6. Create a collision between the enemy and the role
 
 
 
-​	在上节课中，我们实现了主角的加载与操控，还加入了边界检查更新。这节课我们要向主角施加压力了，创建一群群敌机飞向主角，让主角不再孤单。当然，如果主角被撞击后，会失血直至死亡。
+​	In the last lesson, we implemented the load and manipulation of the protagonist, and added the border check update. In this lesson we have to put pressure on the protagonist to create a group of enemy planes to fly to the protagonist, so that the protagonist is no longer alone. Of course, if the protagonist is hit, it will lose blood until it dies.
 
 
 
-### 创建敌机，让他们飞行起来
+### Create an enemy aircraft and let them fly
 
-代码思路如下：
+Code idea is as follows：
 
-1.在Main类中建立创建敌人方法creatEnemy()，可生成不同的敌人。
+1. The creation of an enemy method in the Main class, creatEnemy (), can generate different enemies.
 
-2.在Main类主循环loop()中加入定期创建敌机逻辑代码。
+2. Add regular creation of enemy logic code in the Main class main loop loop ().
 
-3.在角色Role类中建立角色死亡方法die()，包括了从舞台移除、事件移除、对象回收等，
+3. In the role Role class, the role of the role death method die () is established, including the stage removal, event removal, object recovery, and so on.
 
-4.修改角色Role类中更新方法update()，角色每帧根据速度移动。增加除主角外的其他角色边界检查，当飞出屏幕后，消失并被对象池回收。
+4. Modify the update method update () in the role Role class, which moves each frame according to the speed. Add other role boundary checks except for the protagonist. After flying out of the screen, it disappears and is reclaimed by the object pool.
 
 
 
-#### 创建敌机方法
+#### Create a method of enemy aircraft
 
-打开Main主类，创建creatEnemy()方法
+Open the Main main class and create the creatEnemy () method
 
 ```
 		/**
@@ -50,20 +50,20 @@
 		}
 ```
 
-观察以上代码，我们在创建敌人时用到了“对象池”方式，详情请参考API。
+Looking at the above code, we use the “object pool“ method when we create the enemy. For details, please refer to API.
 
 ```
 		//创建敌人，从对象池创建
 		var enemy:Role = Pool.getItemByClass("role", Role);
 ```
 
-正常情况下敌机大量的创建出现，然后被击毁消失，这个过程中内存消耗很大，游戏的性能会越来越低。LayaAir提供的对象回收再利用方法有效的解决了这个问题。
+Under normal circumstances, a lot of the creation of the enemy aircraft, and then destroyed and disappeared, the process of memory consumption, the performance of the game will become less and more low. The object recovery and reuse method provided by LayaAir effectively solves this problem.
 
 
 
-#### 定期创建敌人
+#### Create an enemy on a regular basis
 
-在Main类加入属性：敌机血量表hps、敌机速度表speeds、敌机数量表nums，用于游戏数值使用与调整。
+In the Main class add properties: the enemy blood volume table HPS, the enemy speed table speeds, the enemy number table nums, for the use and adjustment of the game.
 
 ```
 		/****敌机血量表****/
@@ -74,9 +74,9 @@
 		private var speeds: Array = [3, 2, 1];
 ```
 
-主循环loop()中加入定期创建代码。根据当前帧数算出不同延迟时间产生敌机。
+The main loop loop () is added to the regular creation code. According to the current number of values of different delay time generation aircraft.
 
-去除主角更新方法hero.update()，改为对角色层进行遍历，让所有角色（主角与敌机）都进行更新，边界检查等。
+Remove the protagonist update method hero.update (), instead of traversing the role layer, allowing all roles (protagonists and enemy aircraft) to be updated, border check, and so on.
 
 ```
 		/**
@@ -119,9 +119,9 @@
 
 
 
-#### 角色死亡与回收
+#### Role death and recovery
 
-在角色类中建立角色死亡方法die()，注意对象池回收方法Pool.recover("role", this)，角色只有回收后才能从对象池中创建
+The role death method die(), is set up in the role class. We should pay attention to the object pool recovery method  Pool.recover("role", this). After the role is recovered, it can be created from the object pool.
 
 ```
 		/**角色死亡并回收到对象池**/
@@ -138,11 +138,11 @@
 		}
 ```
 
-#### 角色更新
+#### Role update
 
-修改角色更新方法update()，增加角色根据速度移动，超出边界处理，并加入死亡回收。
+Modify the role update method update (), increase the role to move according to speed, exceed the boundary processing, and add the death recovery.
 
-注：主角死亡后不回收，以免新对象使用主角对象创建，发生主角属性修改问题。
+Note: the protagonist does not recover after the death, so as to avoid the new object to use the main object to create, the main character property modification problem.
 
 ```
 		/**
@@ -194,27 +194,27 @@
 
 
 
-修改完以上代码，编译运行，我们发现敌机一群一群的出现在屏幕中，向下方飞行（图1）。当然，目前还未加碰撞检测，所以同学们的主角还暂时为无敌状态，放心大胆飞吧！
+After modifying the above code, compiling and running, we found a group of enemy aircraft appearing on the screen and flying down (Figure 1). Of course, there is no collision detection at present, so the main characters of the students are still unbeatable.
 
-![思维导图.png](img/1.png)<br />（图1）
-
-
-
-### 碰撞检测与角色状态切换
-
-接下来我们就开始加入碰撞检测逻辑，如果敌机撞上了主角，那么双方切换状态，受伤减血，当生命值小于等于0时，飞机爆炸消毁。大概思路为：
-
-1.为角色类新增碰撞半径hitRadius与阵营camp属性。并在初始化init()方法中加入两个参数。在碰撞检测时，同一阵营不需碰撞检测，不同阵营的角色相交重叠并且距离小于两个半径之和，即判断发生碰撞。
-
-加上属性后需修改在Main类中创建主角和敌机的init()方法。
-
-2.为角色新增掉血方法lostHp()，碰撞后掉血，判断角色是否受伤、死亡，动画切换。
-
-3.在main类主循环中加入碰撞检测逻辑，如碰撞成功，调用角色掉血方法。
+![思维导图.png](img/1.png)<br />（Picture 1）
 
 
 
-#### 新增角色碰撞相关属性
+### Collision detection and role state switching
+
+Next, we begin to join the collision detection logic. If the enemy planes collide with the protagonist, then the two sides switch state and get injured and reduce blood loss. When the life value is less than or equal to 0, the aircraft explode and destroy. The idea is:
+
+1.Add the collision radius hitRadius for the role class and the Camp Camp attribute. And add two parameters to the initialization init () method. In collision detection, the same camp does not need collision detection. The roles of different camps overlap and the distance is less than the sum of two radii, that is, collision is judged.
+
+After adding the properties, you need to modify the init () method to create the protagonist and enemy aircraft in the Main class.
+
+2.New blood loss method lostHp () for the role, after the collision to drop blood, to determine whether the role of injury, death, animation switching.
+
+3.Collision detection logic is added to the main class main loop, such as the collision success, and the role of the role is called the blood drop method.
+
+
+
+#### New role collision related attributes
 
 ```
 		......
@@ -245,7 +245,7 @@
 		......
 ```
 
-在Main类中，新增敌机被击半径数据表radius，并修改主角和创建敌机实例后的初始化init()方法，加入半径与阵营参数，主角阵营为0，敌机为1。
+In the Main class, we add the enemy attack radius data table radius to the class Main, and modify the initialization init () method of the protagonist and the enemy aircraft instance, add the radius and camp parameters, the main faction is 0, and the enemy plane is 1.
 
 ```
 		/***敌机被击半径表***/
@@ -264,9 +264,9 @@
 
 
 
-#### 角色掉血方法和状态改变
+#### Role of blood loss and change of state
 
-在Role类中新增掉血方法lostHp()。
+In the Role class new drop method lostHp()。
 
 ```
 		/**
@@ -290,7 +290,7 @@
 		}
 ```
 
-在此，还要考虑一个细节，当播放完受伤动画后，还需切换回飞行动画；当播放完死亡动画后角色消毁。那么可以在监听“动画完成事件”的回调方法中去实现，修改onComplete()方法，如下：
+Here, a detail should also be considered. When the injury animation is played, you need to switch back to the flight animation; when the death animation is played, the role is destroyed. It can be implemented in the callback method of listening to the "animation completion event", and the onComplete () method is modified, as follows:
 
 ```
 		/***动画完成后回调方法***/
@@ -319,9 +319,9 @@
 
 
 
-#### 加入碰撞检测，让飞机撞起来
+#### Join the collision test, let the aircraft hit
 
-角色准备工作全部做好，那么就可以在Main类主循环中加入碰撞逻辑了，并让角色的血量显示到UI上；修改主循环中遍历角色层部分。代码如下：
+If the role preparation is done well, you can add collision logic to the main loop of Main class, and let the blood of the role be displayed on UI; modify the role layer part of the main loop. The code is as follows
 
 ```
 		/**
@@ -366,11 +366,11 @@
 		......
 ```
 
-编译运行游戏，我们看到主角与敌机碰撞后，游戏中UI上显示了主角血量扣点，敌机要么出现受伤动画，要么爆炸击毁；当主角血量为0时，也播放了爆炸动画，随后消失。
+Compile and run the game, we see the protagonist and the enemy after the collision, the game on the UI show the protagonist blood or wounded enemy Koudian, animation, or explosion destroyed; when the protagonist blood was 0, also showed the explosion animation, then disappeared.
 
-现在主角会死亡了，那我们的游戏流程控制也要做相应的改动。之前我们用了一个30秒延迟来结束游戏，那么现在就可以修改成用角色死亡来打开结束UI页面。
+Now the protagonist will die, and we have to make changes in the control of the game. Before we ended the game with a 30 - second delay, we could now modify it to open the UI page with the role death.
 
-在Main类中注释或去除Laya.timer.once(30000,this,gameOver)代码，在循环中加入主角死亡判断。当然，主角死亡时，爆炸动画都未播放完成，就跳出界面也很不舒服，可以加个延迟执行，体验感会好很多。代码如下
+Comment or remove the Laya.timer.once (30000, this, gameOver) code in the Main class, and add the leading death judgment in the loop. Of course, when the protagonist died, the explosion animated animation was not completed, and the jump out of the interface was also very uncomfortable, can add a delay to execute, the experience will be much better. The code is as follows
 
 ```
 		/**主角死亡后游戏结束时间***/
@@ -402,15 +402,15 @@
 			......
 ```
 
-到此，角色与角色碰撞逻辑全部完成，如果你只做个跑俯视角度的跑酷版，这些代码也够了！！！:)
+At this point, the role and role collision logic is complete, if you only run a run-down look from the runway version, these codes are enough
 
-![思维导图.png](img/2.png)<br />（图1）
+![思维导图.png](img/2.png)<br />（Picture 1）
 
 
 
-下面我们把修改后的Main类与Role类代码全部代码全部展示出来。
+Here we show all the code for the modified Main class and the Role class code.
 
-### 主类Main.as全部代码
+### Main.as all the main code
 
 ```
 package {
@@ -711,7 +711,7 @@ package {
 
 
 
-### Role类全部代码：
+### Role class full code:
 
 ```
 package

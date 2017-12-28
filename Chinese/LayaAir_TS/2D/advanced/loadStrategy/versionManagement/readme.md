@@ -4,9 +4,9 @@
 
  这里我们配合命令行来使用。下面看下步骤。
 
-- 安装nodejs，官网下载nodejs 下载地址[https://nodejs.org/en/。](https://nodejs.org/en/%E3%80%82)
+- 安装nodejs，官网下载nodejs 下载地址[https://nodejs.org/en/](https://nodejs.org/en/%E3%80%82)
 
-- 安装 layacmd工具 。下载地址[https://www.npmjs.com/package/layacmd。](https://www.npmjs.com/package/layacmd%E3%80%82)
+- 安装 layacmd工具 。下载地址[https://www.npmjs.com/package/layacmd](https://www.npmjs.com/package/layacmd%E3%80%82)
 
   这里我用win系统演示。打开cmd窗口，命令行输入 npm install layacmd -g 即可。
 

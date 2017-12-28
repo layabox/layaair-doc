@@ -148,6 +148,10 @@ conch.config.setSlowFrame(true);
 **1、conch.config只能LayaPlayer环境下调用，在网页版本中是没有conch定义的，所有需要判断一下是否存在。**  
 **2、如果使用as语言开发的时候，可以通过 Browser.window['conch']这种方式获得conch对象。**
 
+在 LayaNative-0.9.13和LayaAir-1.7.14以后LayaNative与LayaAir浏览器版本的写法统一了，以后尽量使用下面的写法。
+```javascript
+Laya.stage.frameRate = "slow";//"fast" "slow" "mouse" "sleep"
+```
 
 ## 11. 接管android的后退按钮
 （LayaNative版本 >=0.9.8）  
@@ -194,3 +198,17 @@ window.onLayaInitError=function(e)
 }
 ```
 开发者可以根据自己需求，修改报错信息和报错方式。
+
+## 13. 获取设备型号
+在LayaPlayer-0.9.12版本以后，iOS可以通过调用conch.config.getDeviceInfo()获取设备型号。可以用于iPhone X的适配，代码如下：
+```javascript
+if( window.conch )
+{
+    var devInfo = JSON.parse(window.conch.config.getDeviceInfo());
+
+    if (devInfo.devicename === 'iPhone10,3' || devInfo.devicename === 'iPhone10,6')
+    {
+        // iPhone X适配
+    }
+}
+```

@@ -78,9 +78,9 @@
 
 ​   ![图片1.png](img/4.png)<br/>
 ​             （Picture 4）
-- Zoom view: zoom in the scene editor, shortcut key Ctrl++.
+- Zoom In: zoom in the scene editor, shortcut key Ctrl++.
 
-- Zoom view: reduce scene editor, shortcut key Ctrl+-.
+- Zoom Out: reduce scene editor, shortcut key Ctrl+-.
 
 - Restore view: restore the scene editor to the original size, shortcut key Ctrl+0 (or Ctrl+|).
 

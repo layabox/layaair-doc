@@ -53,18 +53,16 @@ CheckNetwork=1
 2、配置version.xml文件，内容如下所示：
 ```
 <update>
-    <versionCode>13</versionCode>
-    <name>LayaBox</name>
-    <version>0.9.6</version>
-    <url>
-        http://www.layabox.com/layaplayer/apk/update/conch-layaair/AutoUpdate_0.9.6.apk
-    </url>
+  <versionCode>13</versionCode>
+  <name>LayaBox</name>
+  <version>0.9.6</version>
+  <url>http://www.layabox.com/layaplayer/apk/update/conch-layaair/AutoUpdate_0.9.6.apk</url>
 </update>
 ```
 versionCode：是当前的版本号，类型为int类型  
 name：应用名称  
 version：版本号信息，类型为字符串  
-url:apk的下载地址    
+url:apk的下载地址 **【注意：此行代码不允许有空格或回车】**   
 
 3、正确设置你自己工程中的manifest.xml或者build.gradle中的versioncode,如下所示：
 ```

@@ -1,12 +1,12 @@
 
-# 关于网络状态监听
-由于移动设备网络环境不太稳定，当网络发生变化的时候，项目中经常需要给用户一些提示，在LayaPlayer中有两种方法，可以获得网络环境变化。
+# About network status monitoring
+Because the network environment of mobile devices is not stable, when the network changes, the project often need to give users some tips. in LayaPlayer there are two ways to get the network environment changes.
 
-## 1.监听方式
+## 1.Monitor mode
 
-开发者可以使用注册监听函数的方式进行监听网络变化，代码如下：
+Developers can monitor the network using the method of registered monitor function, the code is as follows:
 
-JS代码如下
+The JS code is as follows
 ```javascript
 if( conch )
 {
@@ -16,7 +16,7 @@ if( conch )
     });
 }
 ```
-AS代码如下：
+The AS code is as follows:
 ```javascript
 if ( Render.isConchApp)
 {
@@ -27,7 +27,7 @@ if ( Render.isConchApp)
 }
 ```
 
-**返回值类为int类型**
+**The return value class is int type**
 ```
 NET_NO = 0;
 NET_WIFI = 1;
@@ -37,13 +37,13 @@ NET_4G = 4;
 NET_UNKNOWN=5
 ```
 **Tips**  
-*1、conch只能LayaPlayer环境下调用，在网页版本中是没有conch定义的，所有需要判断一下是否存在。*  
-*2、如果使用as语言开发的时候，可以通过 Browser.window['conch']这种方式获得conch对象。*  
-*3、或者使用if(Render.isConchApp )进行判断都可以。*  
+*1、Conch can only be called under the LayaPlayer environment, and there is no conch definition in the web version.*  
+*2、If you use the as language to develop, you can get conch objects in this way through  Browser.window['conch'] 。*  
+*3、Or you can use  - if(Render.isConchApp ) - to evaluate.*  
 
-## 2.查询方式
+## 2. Query method
 
-开发者还可以通过主动查询的方式，查询网络状态，代码如下：
+Developers can also query the network status through the active query, the code is as follows:
 
 ```javascript
 if( conch )
@@ -52,7 +52,7 @@ if( conch )
 }
 ```
 
-**返回值类为int类型**
+**The return value class is of type int**
 ```
 NET_NO = 0;
 NET_WIFI = 1;

@@ -1,87 +1,86 @@
-# 一、《飞机大战》项目需求分析与资源准备
+# 1.  demand analysis and resource preparation of the 《aircraft war》 project
 
->  本教程与旧版《微信飞机大战》视频教程有所区别，更多的采用了LayaAirIDE编辑器方式进行开发，增加了流程UI的功能与制作教程，减少了代码量，程序结构也有所优化。学习过视频教程的开发者也可以按本教程重新梳理学习一遍。
+>  This tutorial is different from the old version of 《WeChat aircraft war》 video tutorial. It has been developed by LayaAirIDE editor. It has increased the function and production tutorials of process UI, reduced the amount of code, and optimized the program structure. Developers who have studied video tutorials can also be reorganized and learned in this tutorial.
 
-###前言
+###preamble
 
-​	记得当年微信小游戏《飞机大战》吧，无需下载即可在微信直接玩，并且还能分享自己的排名，无数人为之疯狂，这是html5游戏的传播魅力。
+​	Remember that wechat game 《aircraft war》 can be played directly in WeChat without downloading, and you can also share your own rankings. Countless people are crazy about it. This is the charm of HTML5 games and spread it easy.
 
-​	本着向经典致敬的理想，本次笔者将演示如何使用LayaAir快速开发，重现经典游戏。先声明一下：游戏内场景与角色资源全部为原开发者所有，本例只做研究学习之用，源码和资源请勿商用。
+​	In accordance with the ideal of paying tribute to the classics, the author will demonstrate how to use LayaAir to develop fast and reproduce classic games.  First statement: the game scenes and character resources all for the original developer, this case only for research purposes, source code and asset resources are not for commercial using.
 
 
+**Game demo address**: [http://layabox.github.io/layaair-examples/](http://layabox.github.io/layaair-examples/)
 
-**游戏试玩地址**: [http://layabox.github.io/layaair-examples/](http://layabox.github.io/layaair-examples/)
+Game source code：[https://github.com/layabox/layaair-doc/tree/master/project/AS3/AirWar](https://github.com/layabox/layaair-doc/tree/master/project/AS3/AirWar)
 
-游戏项目源码：[https://github.com/layabox/layaair-doc/tree/master/project/AS3/AirWar](https://github.com/layabox/layaair-doc/tree/master/project/AS3/AirWar)
+![试玩.png](img/1.png)<br />（Picture 1） 
 
-![试玩.png](img/1.png)<br />（图1） 
+![试玩.png](img/2.png)<br />（Picture 2）
 
-![试玩.png](img/2.png)<br />（图2）
-
-![试玩.png](img/3.png)<br />（图3）
+![试玩.png](img/3.png)<br />（Picture 3）
 
 
 
 ### 项目需求分析
 
-​	在所有的游戏项目开始阶段，项目需求分析占有较大的时间比例。策划出了项目需求后，有经验的程序员也会自己构建逻辑思维导图，使程序架构上考虑得更加合理，开发思路上更清晰。
+​	At the beginning of all game projects, the analysis of project requirements occupies a larger proportion of time. After planning the needs of the project, experienced programmers will also build their own logical mind map, which will make the program structure more reasonable and have clearer development ideas.
 
-​	因此，本教程根据开发需求提供了基本逻辑思维导图作为参考。建议开发者养成项目开发规划的习惯。
+​	Therefore, this tutorial provides a basic logical thinking map based on development requirements as a reference. It is suggested that developers develop the habit of project development planning.
 
-![思维导图.png](img/4.png)<br />（图4）
+![思维导图.png](img/4.png)<br />（Picture 4）
 
-​	根据以上思维导图分析我们得出以下开发思路：
+​	According to the above thinking map analysis, we get the following development ideas ：
 
-1. 可视化素材制作，分为两步，一是编辑UI，美术制作出效果图，输出与IDE命名规则匹配的图片资源，再进行UI页面编辑；二是可视化角色动画制作，通过IDE时间轴制作角色动画效果，所见即所得，程序直接调用动画生成文件，还可减少代码量。
-2. 游戏流程控制，处理游戏开始、游戏中、游戏结束界面流程页面，并实现其UI功能。
-3. 游戏主要逻辑功能分步骤开发，游戏地图、游戏角色、游戏操控、游戏逻辑、游戏升级等。
+1. The visualization of material production, is divided into two parts : First is the editor of UI, art production renderings, IDE output and naming rules, images, and then UI page editing. Second is the visual character animation, character animation production through the IDE timeline. We can see obviously that program called directly generated animation files can also reduce the amount of code.
+2. Game process control, processing game start, game, game end interface process page, and the realization of its UI function.
+3. The main logic functions of the game are developed step by step, game map, game role, game manipulation, game logic, game upgrading, and so on.
 
-​        基本开发思路有了后，首先让我们开始游戏准备工作吧！
+​        After the basic development idea, let's begin the game preparation work first!
 
 
 
-### 新建LayaAir项目
+### New LayaAir project
 
-​	打开LayaAirIDE，新建一个空项目，如图5所示，项目名称可自定义，本例以 ActionScript 3.0 语言为版本，其他语言同理。点击创建按钮后IDE默认的“代码模式”项目管理器中会出现项目目录。
+​	Open LayaAirIDE, create an empty project. As shown in Figure 5, the project name can be customized. This example is ActionScript 3 language version, and the other languages are the same. After clicking the Create button, the project directory will appear in the default "code mode" project manager of IDE.
 
-![图5](img/5.png)<br />（图5）
+![图5](img/5.png)<br />（Picture 5）
 
-​	项目目录结构和如何用LayaAirIDE创建项目及环境配置，”技术文档－2D基础篇－快速上手“中已经讲过，这里就不再絮讲。不了解的同学建议先看一下。
+​	Project directory structure and how to create projects and environment configuration with LayaAirIDE, ”technical document 2D foundation chapter quick start“ has already talked about here is no longer talk about it. Students do not understand the proposal to take a look.
 
-​       高楼大厦始于足下，凡事总有一个开始，从简到难，我们先从处理美术资源开始。
+​       Edifice begins with a single step, everything must have a beginning, from simple to difficult, we start from the processing of fine arts resources.
 
  
 
 
 
-### 游戏资源准备
+### Game resource preparation
 
-​	打开生成的项目，点击进入”设计模式“，将美术制作的图片资源拖拽到”资源管理器“中。或右键打开所在目录并拷入，目录为”...\AirWar\laya\assets“，拷贝完成后需（快捷键F5）刷新编辑器。
+​	Open the generated project, click into the ”design mode“, and drag the picture resources made by the art to the ”resource manager“. Or the right button opens the directory and copies it into the directory ”...\AirWar\laya\assets“, after the copy is completed, the editor is refreshed (the shortcut key F5).
 
-　　在资源管理器中，每一个文件夹在编辑器导出（快捷键F12）时会自动生成一个打包图集资源。建议图集大小不超过1024ｘ1024，如单张的图超过512ｘ512时，建议不打包。可打开菜单”**项目设置**“面板（快捷键F9）进行自动打包图集的大小限制。
+　　In the resource manager, each folder automatically generates a packaged atlas resource when the editor exports (shortcut F12). It is suggested that the size of the atlas do not exceed 1024x1024, if the single map is more than 512x512, it is suggested not to pack. Open menu ”**item set**“ panel (shortcut key F9) for the size limit of the automatic album atlas.
 
-​	游戏资源文件夹和资源大小管理上比较重要，处理得好的话，加载速度也会比较快，运行效率更高。例如制作本游戏的资源素材（图6），我们分为了两个文件夹，UI资源文件夹与角色动画资源文件夹，及一张超过512的背景图不打包。
+​	Game resource folder and resource size management are more important, well handled, loading speed will be faster and more efficient. For example,  making the game's resource material  (Figure 6) we divided into two folders, UI resource folder and character animation resource folder, and a background map of more than 512 is not packaged.
 
- ![思维导图.png](img/5.png)<br />（图6）
-
-
-　　在gameUI资源文件夹中（图7），bj.jpg背景资源做得较小，可以通过九宫格缩放放大；按钮文字与btn_bg.png按钮背景分开，按钮背景可反复使用节省资源。
-
- ![思维导图.png](img/6.png) <br />（图7）
-（图6）
-
-gameRole文件夹中只存放了角色动画资源（图8），用于IDE中制作动画。
-
-![思维导图.png](img/7.png)<br />（图8）
+ ![思维导图.png](img/5.png)<br />（Picture 6）
 
 
+　　In the game UI resource folder (Figure 7),bj.jpg background resource is smaller, you can zoom through the 9th gridsize zoom. The button text is separated from the btn_bg.png button background, and the button background can be repeatedly used to save resources.
 
-### 游戏资源发布
+ ![思维导图.png](img/6.png) <br />（Picture 7）
+（Picture 6）
 
-当资源文件准备完成后可尝试发布资源（快捷键F12），生成图集资源的目录为：”...\AirWar\bin\h5\res\atlas“下（图8），在游戏程序中加载.atlas或.josn文件就可获得相应的图像资源。
+The gameRole folder contains only character animation resources (Figure 8) for animation in the IDE.
 
-![思维导图.png](img/8.png)<br />（图8） 
+![思维导图.png](img/7.png)<br />（Picture 8）
 
 
 
-通过以上步骤我们清晰的理清了项目开发思路，并准备好了游戏美术素材资源。接下来开始正式进入游戏制作流程，首先从可视化的UI与动画制作开始。
+### Game resource release
+
+When the resource file is ready to try to release resources (shortcut key F12), generate the Atlas resource directory ：”...\AirWar\bin\h5\res\atlas“下（Picture 8）, corresponding image resources can be obtained by loading the.Atlas or.Json files in the game program.
+
+![思维导图.png](img/8.png)<br />（Picture 8） 
+
+
+
+Through the above steps we clearly clarify the idea of the project development, and prepare the game art material resources. Then began to formally enter the game production process, first from the visual UI and animation production.

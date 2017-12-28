@@ -1,32 +1,32 @@
-# 图文混排聊天室之WebSocket服务器
+# Graphic chat room WebSocket server
 
-　　LayaAir引擎在设计之初时，虽然主要用于游戏的客户端开发，但是随着nodejs的盛行，加上LayaAir编译的最终文件为js语言。那么用LayaAir支持的AS、TS语言开发服务器也是一种很不错的选择，它让我们的客户端程序也能前后端同时开发！变成全栈工程师。并且ES5面向过程的那种写法已经越来越难维护，用面向对象的语言来开发显得更为重要。
+　　LayaAir engine at the beginning of the design, although mainly used for game client development, but with the prevalence of nodejs, plus the final file compiled by LayaAir js language. Then use LayaAir support AS, TS language development server is also a very good choice, it allows our client programs can also be developed before and after the end! Into a full stack of engineers. And ES5 process-oriented wording has become more and more difficult to maintain, with object-oriented language development is even more important.
 
-​	本例中我们就用AS3.0语言来开发一套图文混排聊天室，它包括了前后端的开发教程。这节课我们先讲解以AS3.0来开发nodejs WebSocket聊天服务器的课程，并用layaAir进行编译生成nodejs可运行的服务器代码。
-
-
-
-### 下载并安装nodejs
-
-　　开发nodejs当然少不了nodejs的安装。从官网[https://nodejs.org/en/](https://nodejs.org/en/) 下载nodejs的稳定版本。然后基本一路next安装就行。安装完毕，打开cmd 输入`node -v` 假如显示相应得到版本信息就表明安装成功（图1）。关于nodejs的详细信息这里就不在阐述了，可参考nodejs中文网API文档进行了解，网址为http://nodejs.cn/api/。
-
-  ![img](img/1.png)<br/>（图1）
+​	In this case we use AS3.0 language to develop a set of graphic chat room, which includes the development of front and back-end tutorial. This lesson we first explain to AS3.0 to develop nodejs WebSocket chat server course, and compile with layaAir generate nodejs run server code.
 
 
 
-### 下载nodejs服务端WS模块
+### Download and install nodejs
 
-在开发即时聊天服务器时，node服务端的websocket模块需要用第三方模块，这里我们选用ws模块即可（开发者可换成自己熟悉的第三方模块）。
+　　If you have not install it yet, you need from the official website [https://nodejs.org/en/](https://nodejs.org/en/) download a  stable version of nodejs. Then basic all the way next installation on the trip. Installation is complete, open cmd input `node -v` If the corresponding version information is displayed to indicate the installation is successful (Figure 1).Details on nodejs here is not elaborated, you can refer to nodejs network API documentation to understand http://nodejs.org/api/
 
-打开cmd ，进入想要存放ws的目录，输入`npm install ws `回车。我们可以看到以下提示（图2）。这说明我们下载成功，我们下载到了E盘下的tools目录下，下载生成的目录名为：node_modules，里面包括了ws等文件。
-
-![img](img/2.png)<br/>（图2）
+  ![img](img/1.png)<br/>（Picture 1）
 
 
 
-### 新建服务器项目
+### Download the nodejs server WS module
 
-在Flash Builder中新建名为GameServer的Actionscript项目，并修改启动类GameServer.as，去掉继承Sprite的代码，服务器端在node中运行，所以不需要继承显示类。
+When developing an instant messenger server, the websocket module of the node server needs third party modules. Here we choose the WS module (the developer can change into the third party module that is familiar).
+
+Open cmd, enter the directory where you want to store WS, and enter `npm install ws `enter. We can see the following tips (Figure 2). This shows that we downloaded successfully, we downloaded to the E directory under the tools directory, download the generated directory named: node_modules, which includes the WS and other documents.
+
+![img](img/2.png)<br/>（Picture 2）
+
+
+
+### New server project
+
+In the Flash Builder, a new Actionscript project named GameServer, and modify the startup class GameServer.as, remove the code inherited Sprite, server-side run in node, so do not need to inherit the display class.
 ````java
 package
 {
@@ -42,13 +42,12 @@ package
 	}
 }
 ````
-用LayaAir编译运行，可以看到在bin_debug下生成了h5目录及相应的js文件。将我们下载安装ws时生成的目录node_modules拷贝到h5目录中，以供服务器程序调用。
+Compile and run with LayaAir, you can see in the bin_debug generated under the H5 directory and the corresponding JS file. Copy the directory node_modules generated when we download and install ws to the H5 directory for the server program call.
 
 
+### AS3 call nodejs native module method
 
-### AS3调用nodejs原生模块方法
-
-在nodejs中，有较多的模块，比如在本课中会使用到的ws、events、os（详情参考nodejsAPI），js中需要使用时必须导入。原生js调用webSocket方法参考以下代码：
+In nodejs, there are more modules, such as WS, events, and OS that will be used in this lesson (details refer to nodejsAPI), and must be imported when JS needs to be used. The native JS calls the webSocket method for reference to the following code:
 
 ```
 // 导入WebSocket模块:
@@ -59,9 +58,9 @@ const WebSocketServer = WebSocket.Server;
 const wss = new WebSocketServer({ port: 3000});
 ```
 
-上述代码中，通过require()方法导入webSocket模块，然后再实例化使用。那么用LayaAir可编译的AS3.0语言怎么使用呢？
+In the code above, the webSocket module is imported through the require () method, and then instantiated. So how can we use AS3.0 compiled LayaAir language?
 
-观察以下代码，我们运用了LayaAir支持的AS3语言方法`__JS__()`，它可以导入使用原生的js方法，导入并生成类（或对象），然后就可实例化使用。
+Observe the following code, we use LayaAir support AS3 language method `__JS__()`, it can be imported using the native js method, import and generate classes (or objects), and then can be instantiated.
 
 ```
 		/***导入nodeJs原生WebSocket模块中的Server***/
@@ -78,31 +77,31 @@ const wss = new WebSocketServer({ port: 3000});
 		var ifaces:Object = os.networkInterfaces();
 ```
 
-在本节课中，我们所有需要使用原生js方法的地方，都使用了`__JS__()`。
+In this lesson, all of us need to use the native js method, are used `__JS__()`。
 
 
 
-### 聊天服务器的架设
+### Chat server set up
 
-#### 服务器需求分析
+#### Server requirement analysis
 
-当完成nodejs服务器的准备工作，了解了AS3怎么调用js原生方法后，我们开始聊天服务器的正式架设。首先简单分析一下需求（图3）。
+After completing the nodejs server preparation and understanding how AS3 calls the JS native method, we start the official setup of the chat server. First, a brief analysis of the requirements (Figure 3).
 
-1.主类GameServer，建立socket服务器，识别本机IP地址，并监听客户端的连接。
+1. The main class GameServer, the establishment of socket server, identify the IP address of the machine, and listen to the client connection.
 
-2.房间类Room，用于管理连接的客户端，包括客户端的加入、离开、广播、客户端列表更新等。
+2. Room type, used to manage the connection client, including the client to join, leave, broadcast, client list updates, etc..
 
-3.客户端类Client，每连接一个客户端，服务器会生成一个长连接镜像，进行收发消息。
+3. Client class, each connected to a client, the server will generate a long connection mirror, send and receive messages.
 
-![img](img/3.png)<br/>（图3）
+![img](img/3.png)<br/>（Picture 3）
 
-#### 主类GameServer
+#### GameServer main class
 
-主类比较简单，导入了ws模块用于建立服务器，及导入os模块用于检测服务器的硬件网络IP信息等。并监听是否有客户端连接，连接后生成一个带镜像socket客户端Client。
+The main class is relatively simple, import the WS module for the establishment of the server, and import the OS module to detect the server's hardware network, IP information, etc.. And monitor whether there is client connection, connect to generate a mirrored socket client Client.
 
-注意监听中加入了js原生bind(this)的方法，在此我们因未使用LayaAir引擎，因此需加入js原生方法绑定作用域，否则方法中的全局对象会找不到。
+The method of adding JS native bind (this) into the monitoring listener, because we don't use the LayaAir engine, we need to join the JS native method binding domain, otherwise the global object in the method can not be found.
 
-主类逻辑代码如下：
+The main class logic code is as follows:
 
 ```
 package
@@ -177,20 +176,20 @@ package
 
 
 
-#### 房间管理类Room
+#### management Room
 
-本类的主要作用是客户端的管理，一般的聊天室中会创建很多这种房间，比如“群”就相当于房间，多个群就是多个房间，在本课中我们只建立了一个房间，同学们可以在此基础上进行扩展。
+The main function of the client management, the general chat room creates a lot of this room, such as "group" is equivalent to the room, a group is more than one room, in this lesson we just set up a room, the students can be extended on this basis.
 
-除房间普通需求，如新加入房间、离开房间、接收消息需求外，需注意以下逻辑：
+In addition to the general needs of the room, such as the new room, leave the room, receive information needs, we should pay attention to the following logic:
 
-1.客户端昵称列表clientNames主要用于客户端检测重名、更新用户列表使用。
+1. The client nickname list clientNames is mainly used for the client to detect duplicate and update the list of users to use.
 
-2.房间类中导入了nodejs事件发射器模块EventEmitter，用于事件监听与数据传递，它在服务器级别上比LayaAir引擎中的event效率更高，因此建议用原生。
+2. The nodejs event launcher module EventEmitter is introduced into the room class for event monitoring and data transfer. It is more efficient at the server level than the event in the LayaAir engine, so it is recommended to use native.
 
-3.在编写逻辑代码前，需要对消息进行格式分类，前后端统一，建议单独创建消息类进行管理。
-在本课中消息较少，分为登录消息、聊天消息（包括系统消息）、用户列表消息三种，因此暂未建立消息类。
+3. Before writing the logic code, it needs to format the message and unify the front and back sides. It is suggested to create the message class separately to manage it.
+There are few messages in this class, which are divided into three kinds: login message, chat message (including system message) and user list message, so the message class is not established yet.
 
-Room类代码如下：
+Room Class code is as follows:
 
 ```
 package
@@ -333,11 +332,11 @@ package
 
 
 
-#### 客户端类Client
+#### class Client
 
-当前端连接上服务器后，服务器会生成一个前端的客户端镜像，它有与前端一样的socket，消息接收与发送就是在它们两兄弟间进行。因此Client类的作用主要为监听消息事件和客户端断开事件，然后通知房间去处理后续逻辑。
+After the current end is connected to the server, the server generates a front-end client mirror, which has the same socket as the front end, and the message is received and sent between the two brothers. Therefore, the Client class is used to monitor message events and client disconnect events, and then notify the room to process subsequent logic.
 
-Client类代码如下：
+Class Client code is as follows:
 
 ```
 package
@@ -393,17 +392,17 @@ package
 
 
 
-### 编译运行服务器
+### Compile and run server
 
-当实现了服务器的架设后，编译代码！打开cmd，进入到*bin-debug/h5*目录下。**node**运行我们编译好的*GameSever.max.js*文件，可以看到服务器已经运行起来（图4）。
+When the server has been set up, the code is compiled! Open the cmd，and enter the *bin-debug/h5* directory. **node** runs our compiled *GameSever.max.js* file, and you can see that the server is already running (Figure 4).
 
-![img](img/4.png)<br/>（图4）
+![img](img/4.png)<br/>（Picture 4）
 
 
 
-当然，在cmd中运行调试不太方便，如果遇到代码错误，也无法打断点调试，因此建议同学们下载Visual Studio Code运行服务器，支持代码查看查询和断点调试！（图5）
+Of course, in cmd  running debugging is not very convenient, if you encounter code errors, but also can not interrupt point debugging, so it is recommended that students download the  Visual Studio Code   to run the server, support code view query and breakpoint debugging! (Fig 5)
 
-![img](img/5.png)<br/>（图5）
+![img](img/5.png)<br/>（Picture 5）
 
-本节课到此全部结束，上面的代码还是否有逻辑问题，可以编写客户端的过程中进行检验。
+This lesson ends here, the code above has a logical problem and can be tested.
 

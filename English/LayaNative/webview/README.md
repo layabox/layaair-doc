@@ -1,7 +1,7 @@
 
 # webview
-由于LayaPlayer不支持标准的html，有时候项目需要显示一个完整的html页面，这时候可以通过LayaPlayer提供的一个显示webview界面的接口来实现。  
-**接口定义**  
+Because LayaPlayer does not support standard HTML, sometimes a project needs to display a complete HTML page, which can be realized by LayaPlayer's interface displaying WebView interface. 
+**Interface definition**  
 ```typescript
     /**
      * 显示一个webview
@@ -15,30 +15,30 @@
     setExternalLinkEx(url:string,posx:number,posy:number,width:number,height:number,canclose:boolean):void;
 ```
 
-这个函数会在画布的最上层显示一个新的view，在其中显示url的内容。  
-canclose参数用来控制这个webview是否能被关掉：  
-`false`则这个webview一旦被打开就无法关掉了。  
-`true` 则在ios下，会有一个小关闭按钮，点击这个按钮，就可以关闭webview（见图1）；在android下没有关闭按钮，通过后退键来关闭webview（见图2），因为关闭按钮会覆盖部分页面内容，所以尽量不显示。
+This function displays a new view at the top of the canvas, which displays the content of the URL. 
+canclose parameter is used to control whether the WebView can be turned off:
+`false` webview can not be turned off once it is opened.  
+`true` In IOS, there will be a small close button, click this button, you can turn off the WebView (see Figure 1); no close button in the Android, through the back button to shut down the WebView (see Figure 2), because of the close button will cover part of the page content, so try not to show.
 
 
-**限制**
-1. 目前webview无法与app进行交互。
-2. webview的实现依赖于系统，低版本的android可能无法显示。
+**limit**
+1. WebView is currently unable to interact with app.
+2. The implementation of WebView depends on the system, and the lower version of the Android may not be displayed.
 
 **Tips**  
-*1、conch只能LayaPlayer环境下调用，在网页版本中是没有conch定义的，所有需要判断一下是否存在。*  
-*2、如果使用as语言开发的时候，可以通过 `Browser.window['conch'] `这种方式获得conch对象。*
+*1. Conch can only be called under the LayaPlayer environmentl,there is no conch definition in the web version.*  
+*2. If you use ActionScript language development, you can through `Browser.window['conch'] ` can get conch object.*
 
 
-## 实际效果
+## current effect
 ![ios webview](img/1.png)  
-图1  
-webview左上角的x，就是当canclose设置为true的时候，对应的关闭按钮。如果 canclose=false, 则没有这个按钮。
+Picture 1  
+X in the upper left corner of WebView, it is when the canclose is set to true, corresponding close button. if canclose=false , doesn't have this button.
 
 ![android webview](img/2.png)  
-图2  
+Picture 2  
 
-## 示例代码
+## Sample code
 ```javascript
 //@ts-check
 

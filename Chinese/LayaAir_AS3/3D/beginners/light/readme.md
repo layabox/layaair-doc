@@ -218,13 +218,11 @@ package {
 		    light.transform.translate(new Vector3(0,5,0));
 			//设置灯光方向
 		    light.direction = new Vector3(0.3, -1, 0);
-		    //设置灯光环境色
-//		    light.ambientColor = new Vector3(1, 1, 0); 
 			//设置灯光漫反射颜色
 			light.diffuseColor = new Vector3(1, 0, 0);
-			//设置灯光高光色
-		    light.specularColor = new Vector3(0, 0.5, 0.5);
-
+          
+          	//设置灯光环境色
+//		    scene.ambientColor = new Vector3(1, 1, 0); 
 		 
 		    //添加灯光投影
 		    light.shadow=true;

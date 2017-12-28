@@ -1,21 +1,21 @@
-# 显存池管理
+# Memory pool management
 
-为了避免由于显存过大，或者开发者忘记释放显存，导致应用程序被系统直接kill的风险，在LayaPlayer中有一套显存管理机制，原理如图1所示：  
+In order to avoid the memory is too large, or the developer forgets to release memory, cause the application to be directly kill risk system, a set of memory management mechanism in LayaPlayer principle, as shown in figure 1:
 
 
 ![图1](img/1.jpg)  
 
 
 
-**为什么需要自动显存管理，早期的ios设备（iphone4S、ipad2）或者早期的android设备，内存只有512MB，当应用程序内存达到270MB左右，应用程序就会被系统直接kill掉，用户体验非常不好，在游戏中占用资源最多的就是图片资源。**
+**Why do we need automatic memory management, early IOS equipment (iphone4S, ipad2) or early Android memory devices, only 512MB, when the application memory reaches about 270MB, the application system will be directly kill off, the user experience is not good, occupy the most resources in the game is the picture resources.**
 
-### 1.如何配置
+### 1. How to configure
 
 
 
-####  1.1. 默认设置
+####  1.1. Default setting
 
-显存池的size，开发者需要在应用程序开始执行前设定，如果开发者未设定，LayaPlayer内部根据设备的内存情况设定了一个默认值，代码如下：  
+The memory pool size, the developer needs to set the application before the start of execution, if the developer is not set, the LayaPlayer internal memory device according to set a default value, the code is as follows:  
 ```javascript
 var nMem = conchConfig.getTotalMem();
 if (nMem <= 524288) {
@@ -31,8 +31,8 @@ else if (nMem > 1048576) {
 
 
 
-####  1.2. 开发者设定
-开发者也可以根据自己需求进行设定，需要在config.js设定，代码如下：
+####  1.2. Developer settings
+Developers can also be set according to their own needs, you need to set in config.js, the code is as follows:
 
 ```javascript
 var loadingView= window.loadingView;
@@ -56,77 +56,77 @@ else if (nMem > 1048576) {
 }
 ```
 
-**Tips：这个显存池size的设定必须放在应用程序开始启动的地方，程序中不可动态设定，config.js是LayaPlayer启动后立刻就会执行的js，所以放在这才是最安全的。**
+**Tips: The memory pool size set must be started in places where the application can not be dynamically set the program, config.js LayaPlayer will start immediately after the implementation of the JS, so here is the most secure.**
 
 
 
-####  1.3. config.js在哪
+####  1.3. Where is config.js
 
-ios版本：在工程目录下的resource\scripts\config.js  
-android版本：在工程目录下的assets\scripts\config.js  
+ios edition：在工程目录下的resource\scripts\config.js  
+android edition：在工程目录下的assets\scripts\config.js  
 
 
 
-### 2.出现严重卡顿、屏幕闪烁现象
+### 2. Serious jerky, Screen flicker
 
-在LayaPlayer下运行项目，如果出现了严重卡顿、或者屏幕闪烁的现象。这个时候可以把设备连接到电脑上查看log，如果log中一直频繁打印如下内容：  
+Run the project under LayaPlayer, if there is a serious jerky, or the screen flickers. This time you can connect the device to the computer to view the log, if the log has been frequently printed the following:
 
 ```verilog
 freeRes(0):Total:8,left:5,clearedMem:115620
 ```
 
-如下图2所示：
+As shown in Figure 2 below：
 ![图1](img/2.jpg)  
 
-出现这种情况的原因：当前画面下，绘制的图片显存数量已经超出了显存池的最大size，显存池就会一直触发清理函数，同时有可能会出现闪烁现象。
+The reason why this happens：Under current picture, the number of drawing pictures memory has exceeded the maximum size memory pool, the memory pool will always trigger the cleanup function, and the flashing may occur.
 
 
-### 3.如何解决
+### 3. How to solve
 
-####  3.1.扩大显存池的大小
+####  3.1. Expand the size of the memory pool
 
-先按照1.2的方法，把显存池size设置大一些，再次测试项目，如果不在频繁打印freeRes的log，并且卡顿、屏幕闪烁现象也不存在了，证明因为显存问题所导致的问题，或许这个时候你心情能好点。
+According to the 1.2 methods, the memory pool size is set larger, testing project again, if not in frequent print freeRes log, and jerky, screen flicker does not exist, because that memory problems caused by the problem, maybe this time you can be in a good mood.
 
-####  3.2.从根本上解决问题
+####  3.2. Solve the problem fundamentally
 
-如果想从根本上解决问题，开发者需要严格控制图片的生命周期、显存的大小以及是否有残留的画面还在显示。
-#####  3.2.1.如何计算图片的显存
-(1)、一张`1024*1024`图片占用显存大小是： `1024 * 1024 * 4 = 4MB`。
-(2)、一张`768*890`图片占用显存大小是：`1024 * 1024 * 4 = 4MB`，由于部分显卡硬件限制创建纹理的尺寸必须是2的n次幂，所有`768*890`的图片，在显卡中会按照`1024*1024`来创建。
-(3)、强烈建议美术在制作图片的时候，如果图片宽或者高超过512像素的时候，要求图片的尺寸是2的n次幂，切记避免513、1025这样的尺寸出现，低于512的图片LayaPlayer引擎会自动处理合并图集。
-#####  3.2.3.图片内存、显卡关系
+If you want to fundamentally solve the problem, developers need to strictly control the life cycle, the memory size of the picture and the picture is displayed if there is residual.
+#####  3.2.1. How to calculate the picture memory
+(1) a sheet `1024*1024` picture memory size is occupied:  `1024 * 1024 * 4 = 4MB`。
+(2)  a sheet `768*890` picture memory size is occupied: `1024 * 1024 * 4 = 4MB`, Due to the hardware limitations of some graphics cards, the size of the texture must be 2 n power, all `768*890` picture will create `1024*1024` size in the video card.
+(3) It is strongly recommended that when art is making pictures, if the picture is wider or higher than 512 pixels, the size of the requested picture is n's power of 2. Don't avoid such 513 or 1025 sizes. The picture LayaPlayer engine automatically processes the merged atlas.
+#####  3.2.3. Picture memory, graphics card relationship
 ![图3](img/3.jpg)  
 
-**图解：**
-(1)、一张png图片，尺寸为`768*890`，文件大小为420KB。  
-(2)、通过loader函数进行网络加载，消耗流量为420KB。  
-(3)、通过png解码成ImageBitmapData，占用内存`768*890*4=2.73MB`。  
-(4)、将该图片绘制到屏幕上，首先需要在显卡创建一张纹理，这张纹理的大小需要是2的n次幂，所以创建了一张`1024*1024`的纹理，然后把ImageBitmapData数据上传到显卡，内存到显存的拷贝。  
-(5)、这个时候占用`1024*1024*4=4MB`显存，图片数据从内存拷贝到显卡后，内存的BitmapData，引擎中会自动释放掉。  
-(6)、如果预加载了一张图片，但是这张图片长时间都没有进行绘制，就会一直占用内存，LayaPlayer引擎默认会在图片加载20秒后，将该图片的内存进行释放，等需要绘制的时候，再从硬盘中重新加载。
+**Graphic:**
+(1) A png picture, size is `768*890`, File size is 420KB 
+(2) Through the loader function for network loading, the consumption of traffic is 420KB.
+(3) By png decoding into ImageBitmapData, take up memory `768*890*4=2.73MB`。  
+(4) To draw the image onto the screen, you first need to create a texture on the graphics card. The size of this texture needs to be n-th power of 2, so a `1024*1024`, then upload ImageBitmapData data to the graphics card, memory to memory copy.
+(5) This time takes `1024*1024*4=4MB` memory, image data from memory to the graphics card, the memory of the BitmapData engine will be automatically released. 
+(6) If the pre load a picture, but the picture is long time without rendering, would have been to use memory, the LayaPlayer engine will default in loading pictures after 20 seconds, the picture memory release, when need to draw, and then reload from the hard disk.
 
-#####  3.2.3.预加载图片
-很多应用都会用到预加载功能，提前把很多图片预加载到内存中，但是这些图片并没有进行绘制，这个时候内存会比较紧张，LayaPlayer引擎默认会在图片加载20秒后，将这些资源清空掉。所以一定要控制好预加载图片的数量。  
-如果项目需求只是想将图片先下载到本地，先不进行使用，这种情况可以使用资源打包的方式或者LayaDCC的方式。  
-总之预加载图片的数量要慎重。
-通过以下代码可以设置删除内存图片的时间：
+#####  3.2.3. Preloaded picture
+Many applications will use the preload function to preload many images into memory in advance, but these pictures are not drawn. At this time, the memory will be more intense. The LayaPlayer engine will empty the resources by default after loading 20 seconds. So be sure to control the number of preloaded pictures. 
+If the requirements of the project are just to be downloaded first to the local, not to be used first, this can use the way of resource packaging or LayaDCC.
+In a word, the number of preloaded pictures should be careful.
+The time to delete the memory picture can be set by the following code:
 
 ```javascript
-conch.config.setImageReleaseSpaceTime(15000);//单位为毫秒，默认是20000
+conch.config.setImageReleaseSpaceTime(15000);//The unit is millisecond, and the default is 20000
 ```
-看见log输出`JCImageManager::setReleaseSpaceTime=15000`代表设置成功  
+See log output `JCImageManager::setReleaseSpaceTime=15000` setting is successful
 
-**Tips：setImageReleaseSpaceTime函数最好也写在config.js中调用**
+**Tips：setImageReleaseSpaceTime function is also written in the best config.js in the call**
 
-##### 3.2.4. 由于某些节点未删除导致的显存问题
+##### 3.2.4. Because the memory problems caused by some nodes have been deleted
 
-在很多项目中，经常会碰到开始进入游戏首屏界面是正常的，但是切换几次界面或者进入几次场景再回来，发现首屏界面出现了屏幕闪烁，log一直在打印freeRes。  
-这种情况大部分是因为，有的节点没有被删除，画面其实还在一直渲染，只是被主界面遮挡住，这个时候就确保你的应用程序控制好节点的删除、隐藏机制。
+In many projects, it often happens that it is normal to enter the first screen of game. But several times of interface or several scenes are returned. It is found that the first screen is flickering. Log has been printing freeRes.  
+Most of this is because some nodes are not deleted. The screen is still rendering, but it is blocked by the main interface. This time, ensure that your application controls the deletion and hiding mechanism of nodes.
 
 
-### 4.调试手段
+### 4. Debugging means.
 
-如果你在项目中出现了3.2.4的现象，LayaPlayer引擎提供了一个小方法，可以通过该函数把所有画面都设置成半透明，这样找出那些节点画面没有隐藏或者删除，导致的显存问题。
+If you have 3.2.4 phenomenon in the project, the LayaPlayer engine provides a small method, through the function of all the pictures are set to find the picture so translucent, not hide or delete nodes,  resulting in memory problems.
 
 ```javascript
 if( window.conch )
@@ -135,9 +135,9 @@ if( window.conch )
 }
 ```
 **Tips**  
-*1、conch只能LayaPlayer环境下调用，在网页版本中是没有conch定义的，所有需要判断一下是否存在。*  
-*2、如果使用as语言开发的时候，可以通过 `Browser.window['conch'] `这种方式获得conch对象。*
+*1. Conch can only be called under the LayaPlayer environment, and there is no conch definition in the web version, and all needs to be judged if it exists.*  
+*2. If you use the as language to develop, you can get conch objects in this way through  `Browser.window['conch'] `*
 
-如图4所示：
+As shown in Figure 4:
 
 ![图3](img/4.jpg)  

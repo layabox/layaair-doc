@@ -1,60 +1,60 @@
-## LayaAir3D之动画二
+## Animation with LayaAir3D (part 2)
 
-在上一章节课程中我们了解了骨骼动画的unity处理与导出使用，在本节中，我们将继续介绍材质动画与钢体动画的制作与使用，它们在3D游戏的特效中运用非常广泛。
+In the previous chapter, we learned about the unity processing and export of skeletal animation. In this section, we will continue to introduce the production and use of material animation and steel body animation, which are widely used in the special effects of 3D games.
 
-### 材质动画
+### Material animation
 
-骨骼动画主要是以改变模型顶点的方式产生动画，而材质动画则是以改变材质的颜色与贴图方式进行动画。
+Skeletal animation is mainly to change the model vertex animation, and material animation is to change the color of the material and mapping animation.
 
-在三维软件中，例如3ds max中虽然可以制作材质相关动画，但导出成FBX格式时，unity并不能识别，也无法导出成LayaAir 3D引擎所识别的材质动画。因此游戏模型的材质动画必须在unity中制作，并进行某些设置导出后才能为LayaAir 3D引擎使用。
+In three-dimensional software, such as 3ds max, although you can make material related animation, but exported to FBX format, unity can not identify, and can not be exported to the LayaAir 3D engine identified material animation. Therefore, the material animation of the game model must be made in unity, and some settings can be exported to use for the LayaAir 3D engine.
 
-下面我们就用霓虹灯材质动画（图1）效果来讲解在unity中创建动画并导出使用方法，步骤如下。
+Here we will use neon light material animation (Figure 1) effect to explain the creation of animation in unity and export method, the steps are as follows.
 
-![图1](img/1.gif)<br>（图1）
+![图1](img/1.gif)<br>（Picture 1）
 
-#### 导入模型，修改材质类型
+#### Import model, modify material type
 
-在3ds max中制作的空调机箱、霓虹灯带导出成FBX后，再导入untiy中（开发者们可以偿试在3ds max中制作材质动画并导出使用，可以发现在unity无法播放）。
+The air conditioner case and neon lamp band model made in 3ds Max are exported to FBX, and then imported into unity (developers can try to make material animation in 3ds Max and export it, which can be found in unity can not play).
 
-拖拽入场景中，选择需要制作的动画模型，在右侧界面中修改其材质，Shader类型为粒子加色类型Particles/Additive（目前暂时只支持此种材质类型的动画 ，其他的shader类型导出时会报错）。
+Drag and drop into the scene, select the animation model you need to make, modify the material in the right interface, Shader type is the particle additive color type Particles/Additive (currently only support the type of animation, other types of shader export will be wrong).
 
-![图2](img/2.png)<br>（图2）
-
-
-
-#### 创建材质动画
-
-1、修改好材质类型后，同样选择要制作动画的模型，点击菜单栏window下Animation打开动画编辑界面，快捷键Ctrl+6。
-
-2、点击create按钮创建动画并取名，本例中取名为uvAnimation，保存后在资源管理器中会生成动画文件uvAnimation。
-
-3、选择时间轴上时间，修改材质的UV属性Offset中的X方向，每0.05秒调整一次UV位置0.25（相当于贴图向左移动了25%宽度），可以看到霓虹灯模型材质变化了，按时间依次进行调整，形成一个动画循环。
-
-4、修改动画帧的曲线变化，默认为线形滑动动画，不符合我们的动画需求，修改为恒量变化，播放查看，材质动画按需求全部完成。当然，如果需要制作流水、浮云飘动动画可以用线形变化方式。
-
-**tips：使用standard标准Shader类型制作材质动画也可，但注意如果动画编辑界面左框中出现了LayaAir不支持的属性，例如材质Emission属性，在资源导出时会报错，可以将它右键移除，即可正常导出。**
-
-此种制作动画方式与3ds max中制作流程基本相同，可以让美术设计师直接在unity中编辑（图3）。
-
-![图3](img/3.gif)<br>（图3）
+![图2](img/2.png)<br>（Picture 2）
 
 
 
-#### 创建动画控制器
+#### Drag to create material animation
 
-与之前的创建动画控制器相同，在资源管理器中右键创建动画控制器，取名为uvAction，双击打开后，将上一步创建的动画文件uvAnimation拖拽入动画控制器中。
+1. After modifying the material type, choose the animation model, click the menu bar window, open the animation editing interface, shortcut key Ctrl+6, Animation.
 
-选择模型，将动画控制器拖拽入模型的动画组件中，点击unity运行，我们就可以看到动画按我们的需求播放了（图4）。
+2. Click the Create button to create the animation and name it. This example is called uvAnimation. After saving, the animation file uvAnimation will be generated in the resource manager.
 
-![图4](img/4.gif)<br>（图4）
+3. Select the time axis time, modify the X UV property of Offset material in the direction of the adjustment, every 0.05 seconds a UV position 0.25 (equivalent to 25% map to move to the left, you can see the neon width) model of material changes, according to the time order of adjustment, the formation of an animation cycle.
+
+4. The curve changes of animation frames, the default for the linear sliding animation, does not meet our demand for animation, modify the constant changes, play the view, according to the needs of all material animation. Of course, if you need to make flowing water, floating clouds animation, you can use linear changes.
+
+**tips：Use standard Shader type to make material animation can also, but pay attention to if the animation edit interface left box appeared LayaAir does not support the attribute, such as material Emission attribute, in the resource export will be wrong, can be removed right, you can export normally**
+
+This way of making animation is basically the same as that in 3ds max, which allows the art designer to edit directly in unity (Figure 3).
+
+![图3](img/3.gif)<br>（Picture 3）
 
 
 
-#### 导出并使用动画资源
+#### Creating animation controllers
 
-在unity中编辑好动画，用LayaAir插件导出Sprite3D类型.lh资源，如果导出时没有报错，将资源拷贝到项目的h5目录下，那么在项目中可以直接用Sprite3D.load()方法加载或预加载。
+Create the animation controller and the same as before, to create an animation controller in Explorer button named uvAction, double-click to open, will create a step of the uvAnimation animation file drag into the animation controller.
 
-参考以下代码，加载完成动画2000毫秒后动画停止（图1）。
+Select the model, drag the animation controller into the animation component of the model, and click unity to run, so we can see the animation playing according to our requirements (Figure 4).
+
+![图4](img/4.gif)<br>（Picture 4）
+
+
+
+#### Exporting and using animation resources
+
+Edit the animation in unity, export the Sprite3D type .lh resource with the LayaAir plug-in. If there is no error in the export, copy the resources to the H5 directory of the project, then you can load or preload the item directly with the Sprite3D.load () method in the project.
+
+Refer to the following code, and finish the animation 2000 milliseconds after the animation stops (Figure 1).
 
 ```java
 			//创建加载材质动画模型
@@ -72,23 +72,24 @@
 
 
 
-### 钢体动画（变换动画） 
+### Transform animation
 
-钢体动画又称为变换动画，是指不改变模型顶点、材质的基础上，只对模型进行旋转、缩放、位移的动画，这种动画在游戏中也经常使用，比如说脚底光环、刀光等。当然钢体动画与材质动画也经常结合使用。
+Transform animation, refers to the model does not change the vertex, material on the basis of the model only rotate, zoom, displacement animation, this animation is often used in the game, such as the soles of the feet, knife light, etc.. Of course, steel animation and material animation are often used together.
+  
 
-钢体动画与材质动画在制作上也有区别，材质动画必须在unity中制作，否则无法识别和播放动画，而钢体动画可以在3D软件中制作再导入unity中，它可以被识别。
+Transform animation and material animation are also different in the production, material animation must be made in unity, otherwise it can not identify and play animation, and steel animation can be produced in the 3D software, and then imported into unity, it can be recognized.
 
-建议在untiy中编辑动画，钢体动画与材质动画结合使用，配上粒子特效动画，效果更佳，三维软件只提供基本模型导入即可！
+It is recommended to edit animation in unity, transform and material animation combined with particle effect animation, the effect is better, 3D software only provides basic model import!
 
-以下为制作的钢体动画效果（图5），对四个模型片分别使用了不同的材质，然后对模型进行了旋转和缩放修改产生动画。
+The following is the effect of transform animation (Figure 5), the use of different materials for the four model pieces, and then the model was rotated and scaled to modify animation.
 
-![图5](img/5.gif)<br>（图5） 
+![图5](img/5.gif)<br>（Picture 5） 
 
 
 
-### 摄像机动画
+### Camera animation
 
-LayaAir摄像机目前还无法导出，在未来的版本中，摄像机可以导出到引擎中使用，因此，如果在unity中制作了摄像机动画，导出后在游戏中也能进行控制使用。
+LayaAir camera is not yet exported. In the future version, the camera can be exported to the engine. Therefore, if the camera animation is made in unity, it can be used in the game after export.
 
-它在unity中的动画制作方法与钢体动画一致，可对它的属性进行动画修改。使用加载方式也一致。
+Its animation method in unity is consistent with that of transform animation, and its attributes can be modified by animation. Using the loading method is also consistent.
 

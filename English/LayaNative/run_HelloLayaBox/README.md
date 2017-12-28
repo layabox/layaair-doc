@@ -1,37 +1,37 @@
-#  使用LayaNative运行LayaAir项目
+#  Run LayaAir project with LayaNative
 
-相信当你看这篇文档的时候，你已经熟练掌握了LayaAir或对LayaAir有一定的了解，在LayaAir的文档中详细介绍过如何使用LayaIDE创建第一个程序“Hello LayaBox”。
+Remember that when you look at this document, you should mastered the LayaAir or have a certain understanding of the API, LayaAir document details how to use LayaIDE to create the first program "Hello LayaBox".
 
-**Tips：输入项目地址后，如果发现屏幕上没有显示任何画面，有可能是因为项目没有正确设置横竖屏，请参考文档：https://github.com/layabox/layaair-doc/tree/master/Chinese/LayaNative/screen_orientation **
+**Tips：Enter a project address, if you find any screen is not displayed on the screen, it may be because the project is not properly set horizontal and vertical screen, please refer to the document https://github.com/layabox/layaair-doc/tree/master/English/LayaNative/screen_orientation **
 
-步骤一：目前我已经创建好了一个Hello LayaBox的简单项目，如图1所示：  
+Step 1： We have now created a Hello LayaBox a simple project, as shown in Figure 1
 
 ![图1](img/1.jpg)
 
-运行效果如图2所示：
+Operating results shown in Figure 2:
 
 ![图2](img/2.jpg)
 
-步骤二：点击LayaIDE右上角“二维码”菜单键，会出现一个二维码界面，在界面下方显示一个http地址，实例中的地址为`http://10.10.20.200:8900/bin/h5/index.html`,如图3所示：
+Step 2 : Click on the “QR code” menu key in the upper right corner of LayaIDE. A two-dimensional code interface will appear and a HTTP address is displayed below the interface. The address in the instance is `http://10.10.20.200:8900/bin/h5/index.html`, As shown in Figure 3:
 
 ![图3](img/3.jpg)
 
-步骤三：点击二维码界面中的，“浏览器打开”按钮，则会在浏览器中以`http://10.10.20.200:8900/bin/h5/index.html`方式打开，打开后画面如图4所示：  
+Step 3: Click on the QR code interface, the “open browser” button, it will be in the browser to `http://10.10.20.200:8900/bin/h5/index.html`. Open the picture as shown in Figure 4.
 
 ![图4](img/4.jpg)
 
-步骤四：打开已经安装到手机上的LayaBox测试App，打开后如图5所示：
+STep 4: Open the LayaBox test App that has been installed on your cell phone and open as shown in Figure 5.
 
 ![图5](img/5.png)
 
-步骤五：点击输入地址栏输入，`http://10.10.20.200:8900/bin/h5/index.html`,如图6所示：
+Step 5 ：Click the input address bar to enter `http://10.10.20.200:8900/bin/h5/index.html`, as shown in Figure 6:
 
 ![图6](img/6.png)
 
-步骤六：点击'GO'按钮，如图7所示：
+Step 6: Click the 'GO' button, as shown in Figure 7:
 
 ![图7](img/7.png)
 
-步骤七：LayaNative会加载这个Hello LayaBox的项目实例，如图8所示：
+Step 7 : LayaNative will load this Hello LayaBox project instance, as shown in Figure 8:
 
 ![图8](img/8.png)

@@ -1,16 +1,16 @@
-## websocket 
-LayaPlayer支持websocket。  
-现在的websocket基于libwebsocket来实现的，当前版本（0.9.2）及之前版本的LayaPlayer都是用的libwebsockets 1.6。  
-### 特性
-1. 支持ipv6。
-2. 支持设置代理。  
-### 限制  
-1. 暂不支持wss协议，例如: 'wss://echo.websocket.org'。
-2. 暂不支持子协议,例如:  
+## Websocket 
+LayaPlayer supports websocket.
+The current websocket is based on libwebsocket, and the current version (0.9.2) and earlier versions of the LayaPlayer are all use libwebsockets 1.6.
+### Detailed feature
+1. Support IPv6.
+2. Support the setup agent. 
+### Limitations
+1. WSS protocols are not supported, for example: 'wss://echo.websocket.org'。
+2. Subprotocols are not supported, for example: 
     ```javascript
     var ws = new WebSocket('ws://echo.websocket.org','soap');
     ```
-    第二个参数是没有用的,会被直接忽略掉。
+    The second parameters are useless and will be ignored directly.
 
-### 计划
-在未来的版本上计划加上对wss的支持，敬请关注版本更新日志。
+### Prospective
+In the future version plans to add wss support, so stay tuned for version update log.

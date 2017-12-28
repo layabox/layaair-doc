@@ -1,15 +1,15 @@
-# 绘制直线与折线
+# Draw line and polylines
 
 
 
-### 一、绘制直线
+### 1. Draw a straight line
 
-​        在API中搜索laya.display.Graphics类可以查看到该API的各种矢量绘图方法。其中drawLine();用于绘制矢量直线。该方法的详细说明如下图所示：
+​        Search in the API The laya.display.Graphics class various vector drawing methods. drawLine (); is able to draw vector lines, detailed description of the method is shown below:
 
 ​	![blob.png](img/1.png)<br/>
-​	（图1）
+​	(picture 1)
 
-下面我们用LayaAir引擎画一条直线，示例代码如下：
+Here, we use the LayaAir engine to draw a straight line, the sample code is as follows:
 
 ```javascript
 module laya {
@@ -38,25 +38,25 @@ module laya {
 new laya.Sprite_DrawShapes();
 ```
 
-发布后如下图所示，我们画了一条红色的直线。
+After the release, as shown in the picture below, we draw a red straight line.
 
 ​	![blob.png](img/2.png)<br/>
-​	（图2）
+​	(Picture 2)
 
 
 
-### 二、绘制折线
+### 2. Draw the broken line
 
-那么如何绘制折线呢？直接使用drawLines();方法即可。该方法与drawLine比较像，编码时千万不要漏掉了末尾的“s”。drawLines的参数详细说明如下图所示：
+So how do you draw multiple polyline? Use the drawLines () method directly. This method is similar to drawLine, so careful of adding the plurial letter "s". The parameters of drawLines are shown in the following figure:
 
 ​	![blob.png](img/3.png)<br/>
-​	（图3）
+​	(Picture 3)
 
-下面我们用LayaAir引擎画一条折线，示例代码如下：
+Here we use the LayaAir engine to draw a polyline, the sample code is as follows:
 
 
 
-代码运行
+Code run
 
 ```typescript
 module laya {
@@ -84,57 +84,57 @@ module laya {
 new laya.Sprite_DrawShapes();
 ```
 
-效果：
+Effect:
 
 ​	![blob.png](img/4.png)<br/>
-​	（图4）
+​	(Picture 4)
 
-通过代码，我们可以看出，画折线与画直线的参数区别是从第三位开始，第三位参数是Array类型的折线点集合，其中的“0，0”是折点A的起始坐标。“39，-50”是折点B的起始坐标。“78, 0”是折点C的起始坐标，“120, -50”是终点D的坐标。但是这里需要大家理解和注意的是，第三位参数中所有的坐标都是相对坐标，都会受到第一位和第二位参数的“20，88”而影响。一旦“20，88”产生改变，整体折线都会受到影响。
+From the code, we can see that the difference between the drawn polyline and straight line is started from the third parameters, array type which set of broken line points. With point A(0, 0) is the starting coordinate,  B (39, -50), C (78, 0) and D (120, -50). But what you need to understand and notice here is that all the given coordinates are relative coordinates, which are affected by the first and second attributes parameters : "20" and "88". Once the "20" and "88" are changed, the overall polyline will be affected.
 
-大家可以在实际编码的过程中，通过手动调整参数去感受区别。
+In the actual coding process, you can adjust the parameters manually to display your own modifications.
 
 
 
-### 三、用LayaAirIDE拖动控件绘制直线
+### C. use LayaAirIDE drag control to draw a straight line
 
-**步骤一：**打开我们的LayaAirIDE，点击设计模式，新建一个View页面
+**1 **: Open our LayaAirIDE and click design mode to create a new View page
 
 ​	![6](img/5.png)<br/>
-​   	（图5）  
+​   	(Picture 5) 
 
-**步骤二：**将组件中的曲线组件拖动到View页面上，就会自动生成默认的直线
+**2 **: Drag the curve component in the component from View page to automatically generate the default straight line
 
 ​	![7](img/6.png)<br/>
-​   	（图6）  
+​   	(Picture 6)  
 
-**步骤三：**修改（添加/减少）Line组件属性中的数值，改变直线的长度、宽度、颜色等等。
+**3 **: Modify (add / reduce) the values in the Line component property, change the length, width, color and so on.
 
 ​   	![8](img/7.png)<br/>
-​   	（图7）  
+​   	(Picture 7)    
 
 ​   	![9](img/8.png)<br/>
-​   	（图8）  
+​   	(Picture 8)    
 
 
 
-### 四、用LayaAirIDE拖动控件绘制折线
+### D. Use the LayaAirIDE drag control to draw the polyline
 
-**步骤一：**打开我们的LayaAirIDE，点击设计模式，新建一个View页面
+**1 **: open our LayaAirIDE and click design mode to create a new View page
 
 ​	![6](img/5.png)<br/>
-​   	（图9）  
+​   	(Picture 9)  
 
-**步骤二：**将组件中的曲线组件拖动到View页面上，就会自动生成默认的折线
+**2 **: Drag the curve component in the view page to automatically generate the default polyline
 
 ​	![7](img/9.png)<br/>
-​   	（图10）  
+​   	(Picture 10)   
 
-**步骤三：**修改（添加/减少）Lines组件属性中的数值，改变折线的角度、颜色、宽度，或者添加新的折现。
+**3 **: Modify (add / subtract) the values in the Lines component's properties, change the line angle, color, width, or add new discounts for the polyline.
 
 ​   	![8](img/10.png)<br/>
-​   	（图11）  
+​   	(Picture 11)    
 
 ​   	![9](img/11.png)<br/>
-​   	（图12）  
+​   	(Picture 12)   
 
-到此我们通过LayaAirIDE的组件绘制直线和折线就完成了。
+Here we draw the line and polyline through the components in LayaAir IDE.

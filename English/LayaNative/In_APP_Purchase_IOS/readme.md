@@ -1,35 +1,34 @@
-# IOS应用内购买
+# IOS In-App Purchases
 
 
+　　IOS In-app purchases, Hereinafter referred to as IAP.
 
-　　IOS 应用内购买 即In App Purchase, 以下简称IAP.
+　　Because the App Store does not support third-party payment methods such as Alipay and WeChat payment,  so no matter what engine or tool development, eventually must be provided by Apple IAP to complete the transaction.
 
-　　由于App Store不支持类似支付宝和微信支付等第三方支付方式, 所以无论使用什么引擎或工具开发, 最终都需要通过Apple提供的IAP方式完成交易.
+　　In order to help developers save time for debugging IAP related interfaces, Layabox encapsulates the relevant interfaces and provides JavaScript developers with direct calls or extensions.
 
-　　Layabox为了帮助开发者节省IAP相关接口的调试时间, 封装了这部分的相关接口, 并通过JavaScript语言提供给开发者直接调用或者进行扩展.
-
-　　IAP的流程非常简单, 客户端直接和App Store通讯来完成交易, 如下图:
+　　IAP process is very simple, and the client communicates directly with the App Store to complete the transaction, as follows:
 
 ​	![blob.png](1.png) <br/>
-​	图（1）
+​	Picture（1）
 
 
-  对于单机游戏来说, 上图已经完成了一次IAP流程, 但是考虑到可能会出现作弊行为, 开发者还可以增加验证的步骤, 如下图:
+  For a stand-alone game, the IAP process has been completed an IAP process, but considering the possibility of cheating, developers can also increase the verification steps, as shown below:
 
 ​	![blob.png](2.png)<br/>
-​	图（2）
+​	Picture（2）
 
-  经过上述方式可以很好的防止作弊行为, 所以, 建议开发者一定要增加验证的步骤!
+  The above methods can be a good way to prevent cheating, so it is recommended that the developer must increase the steps of validation.
 
-  了解了IAP的流程之后, 就可以开始着手实现功能.
+  After you know the process of IAP, you can start to implement the functionality.
 
-  在使用IAP功能前, 需要进行一些准备工作:
+  Before using the IAP feature, some preparation need to be done:
 
-  [IOS打包发布App详细流程](https://github.com/layabox/layaair-doc/tree/master/Chinese/LayaNative/packagingReleases_IOS)
+  [IOS package release and publishing App detailed process](https://github.com/layabox/layaair-doc/tree/master/English/LayaNative/packagingReleases_IOS)
 
-完成上述操作之后, 就可以参照下面的示例代码完成IAP功能的实现.
+After the above operation is completed, the implementation of the IAP function can be completed with reference to the following example code.
 
-### 1.  应用层JavaScript中编码
+### 1.  Application layer JavaScript coding
 
 ```javascript
 // JavaScript中 组装充值相关参数. (参数意义参见本文末尾处的附录1)
@@ -46,9 +45,9 @@ conchMarket.recharge(json,function(jsonString) {
 });
 ```
 
-### 2.  IOS系统下Objective-C中编码 
+### 2.  Coding in Objective-C under IOS system
 
-(注: LayaNative中提供了一个消耗性商品示例类IAPManager类作为参考)
+(Note: LayaNative sample consumer class IAPManager class is provided as a reference)
 
 ```javascript
 // MarketAppStore.mm文件中的LP_Recharge方法中添加内购相关代码, 然后在JavaScript中调用conchMarket.recharge就会执行此方法.
@@ -58,29 +57,29 @@ conchMarket.recharge(json,function(jsonString) {
 }
 ```
 
-通过上述步骤就可以轻松完成iOS中的IAP功能.
+IAP functionality in iOS can be done easily through the above steps.
 
-### 3.  充值接口及参数说明:   
+### 3.  Recharge interface and parameter description: 
 
   `conchMarket.recharge(jsonParam,callBack);`
 
-`jsonParam`参数是输入参数,为json字符串, json对象必须提供以下属性
+`jsonParam` argument is an input parameter, a json string, and the json object must provide the following properties
 
-| 名称           | 类型     | 描述                          |
+| Name           | type     | description                         |
 | ------------ | ------ | --------------------------- |
-| product_id   | string | 苹果的商品ID (在iTunesConnect中设置) |
-| amount       | number | 购买数量                        |
-| order_id     | string | 订单ID (单机版设置空字符串)            |
-| callback_uri | string | 服务器验证地址 (单机版设置空字符串)         |
+| product_id   | string | Apple's ID (set in iTunesConnect) |
+| amount       | number | Purchase quantity                       |
+| order_id     | string | Order ID (standalone set empty string)           |
+| callback_uri | string | Server authentication address (standalone set empty string)         |
 
 
 
-`callBack`参数是购买回调函数，回传一个json字符串参数，json属性有以下：
+`callBack` parameter is to buy the purchase callback function, which pass back a json string parameter, json attribute has the following:
 
-| 名称         | 类型     | 描述                          |
+| Name         | type     | describe                          |
 | ---------- | ------ | --------------------------- |
-| code       | number | 成功为0, 失败为-1                 |
-| product_id | string | 苹果的商品ID (在iTunesConnect中设置) |
-| amount     | number | 购买数量                        |
-| order_id   | string | 订单ID                        |
-| desc       | string | 成功"success",  失败"error"     |
+| code       | number | The success is 0, and the failure is -1                |
+| product_id | string | Apple's ID (set in iTunesConnect) |
+| amount     | number | Purchase quantity                        |
+| order_id   | string | Order ID                       |
+| desc       | string | Successful "success", failure "error"    |

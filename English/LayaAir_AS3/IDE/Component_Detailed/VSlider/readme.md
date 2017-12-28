@@ -1,102 +1,102 @@
-# VSlider 组件参考
+# VSlider Component Reference
 
 
 
-## 1、了解VSlider组件
+## 1. Understand VSlider components
 
-### 1.1 VSlider的作用与效果演示
+### 1.1 The function and effect demonstration of VSlider
 
-​	HSlider与VSlider组件都是Slider组件的子类，它们分别表示横向滑动条与纵向滑动条。用户可以通过在滑块轨道之间移动滑块来选择值。常用于如播放器进度控制、音量大小控制，一些UI上的数值调整等。
+​	HSlider and VSlider components are subclasses of Slider components, which represent horizontal slip bars and longitudinal sliders respectively. The user can select the value by moving the slider between the slider tracks. Often used in player progress control, volume size control, some UI numerical adjustment, etc..
 
-​      VSlider 组件采用纵向排列。滑块轨道从上向下扩展，而显示数值的标签位于轨道的右边部分，可隐藏。
+​      VSlider components are arranged vertically. The slider track expands from top to bottom, with the label showing the value on the right part of the track, hidden.
 
 ​      ![图片0.gif](img/0.gif)<br/>
-​    （图1）
+​    （Picture 1）
 
 
 
-### 1.2 VSlider组件的皮肤（skin）规范
+### 1.2 Skin specification (skin) for VSlider components
 
-​	VSlider资源命名规以vsliser为前缀名，它的默认资源总共3个，分别为滑块资源`vslider$bar.png`、进度条资源`vslider$progress.png` 及底图资源`vslider.png`。
+​	VSlider resource naming convention prefixed by vsliser, the default resources it a total of 3, respectively, the progress of slider resource  `vslider$bar.png`, resource base `vslider$progress.png` and `vslider.png`.
 
-​	资源至少应当有两个，一个底图资源，一个滑块资源，否则无法实现滑动功能。缺少了进度条资源组件不会报错，只是不显示进度。
+​	There should be at least two resources, a resource base, a slider sliding function of resources, otherwise unattainable. Without the progress bar, the resource component does not report errors, but it does not display the schedule.
 
- 	tips：进度条资源`vslider$progress.png`可以与底图资源`vsliser.png`互换，互换后进度可以反向显示。
+ 	tips：The progress of `vslider$progress.png` resources can be interchanged with the map resource `vsliser.png`, after the exchange of progress can reverse display.
 
 ![图片0.png](img/1.png)<br/>
-​    （图2）
+​    （Picture 2）
 
 
 
-### 1.3 VSlider组件的API介绍
+### 1.3 Introduction of API for VSlider component
 
-VSlider的API介绍请参考 [http://layaair.ldc.layabox.com/api/index.html?category=Core&class=laya.ui.VSlider](http://layaair.ldc.layabox.com/api/index.html?category=Core&class=laya.ui.VSlider)。
+VSlider API introduction, please refer to [http://layaair.ldc.layabox.com/api/index.html?category=Core&class=laya.ui.VSlider](http://layaair.ldc.layabox.com/api/index.html?category=Core&class=laya.ui.VSlider)。
 
 
 
-## 2、通过LayaAirIDE创建VSlider组件
+## 2. Creating VSlider components through LayaAirIDE
 
-### 1.1 创建VSlider
+### 1.1 Creating VSlider
 
-​        点击选择资源面板里的 VSlider 组件资源，拖放到页面编辑区，即可添加 VSlider 组件到页面上。
+​        Click on the VSlider component resource in the resource panel, drag and drop to the page edit area, and then add the VSlider component to the page.
 
-​       VSlider 拖放到编辑器区后，设置sizeGrid九宫格属性，使之放大后不会拉伸，缩放后显示效果如下：
+​       VSlider drag and drop to the editor area, set the sizeGrid nine square attributes, so that it will not be stretched after zooming, zoom display effect is as follows:
 
 ​        ![图片2.png](img/2.png)<br/>
-​    （图2）
+​    （Picture 2）
 
-### 1.2 VSlider 组件常用属性
+### 1.2 VSlider Common attributes of components
 
-​        VSlider组件与HSlider组件属性全部相同，只是组件的方向上有所变化。
+​        The VSlider component and the HSlider component property are all the same, but the component is changed in the direction.
 
-​	同样设置 VSlider 的属性 max 的值为 20、属性 min 的值为0、属性 value 的值为5后，显示效果如下：
+​	Similarly, the attribute max of VSlider is 20, the value of attribute min is 0, and the value of attribute value is 5, the display effect is as follows:
 
 ​        ![图片3.png](img/3.png)<br/>
-​    （图3）
+​    （Picture 3）
 
-**max：**HSlider滑块拖动到最右边时的最大值，默认数值为100；
+**max：**HSlider maximum value of the HSlider slider to the rightmost. The default value is 100;
 
-**min：**Hslider滑块拖动到最左边时的最小值，默认为0；
+**min：**Hslider minimum value of the Hslider slider dragged to the left, defaults to 0;
 
 **value：**滑块目前所处的数值，应当等于max或min，或是它们之间的值。
 
 ​        ![图片4.png](img/4.png)<br/>
-​    （图4）
+​    （Picture 4）
 
-​        在程序中运行时，可以拖动滑块来选择值：
+​        When you run the program, you can drag the slider to select values:
 
 ​        ![图片0.gif](img/0.gif)<br/>
-​    （图5）
+​    （Picture 5）
 
 
 
-### 1.3 用VSlider制作音量控制条
+### 1.3 Making volume control strip with VSlider
 
-在游戏开发或一些其他软件中，用VSlider制作音量控制器很常见。但是如图5所示，并不是我们所需要的效果，进度条方向和大小值全部反过来了。正常的是音量最大值应当在最上方，最小值应当为最下方，进度条也应当是由下向上变化。
+In game development or some other software, making volume controllers with VSlider is very common. But, as shown in Figure 5, it's not the effect we need, and the direction and size of the progress bar all go back. Normal is the maximum volume should be at the top, the minimum should be the bottom, the progress bar should also be from bottom to top changes.
 
-其实要达到正常的效果非常简单，首先就是max与min属性可以反过来设置，例如我们设置max为0，min为20，然后value值默认设置为最大20。
+In fact, to achieve the normal effect is very simple, first of all, Max and min attributes can be set in turn, for example, we set Max is 0, min is 20, and then the default value of value is set to the maximum 20
 
 ​        ![图片5.png](img/5.png)<br/>
-​    （图6）
+​    （Picture 6）
 
-其次是进度条的方向，把进度条资源和底图资源的命名交换一下（图7），刷新IDE并发布，编译运行后我们可以看到进度的方向就是由下而上了！也达到了我们需要的音量控制器效果。
+The second is the direction of the progress bar, progress bar named resources and resource base exchange (Figure 7), refresh IDE and publish, compile and run after we can see the progress of the direction is from the bottom to the top! We also have the effect of the volume controller that we need.
 
 ​        ![图片7.png](img/6.png)<br/>
-​    （图7）
+​    （Picture 7）
 
 ​         ![图片7.gif](img/7.gif)<br/>
-​    （图7）
+​    （Picture 7）
 
 
 
-### 1.4 VSlider 组件特殊其他属性
+### 1.4 VSlider Component specific other attributes
 
- 通用其他属性在”属性设置器“中已有详细介绍，下列为关于HSlider组件相关的特殊属性。
+ Generic other properties are described in detail in the attribute setter, and the following are special attributes related to the HSlider component.
 
-| **属性**         | **功能说明**                          |
+| **Attribute**         | **Functional description**                          |
 | -------------- | --------------------------------- |
-| allowClickBack | 一个布尔值，指定是否允许通过点击滑动条改变 value 属性值。  |
-| showLabel      | 一个布尔值，指定是否隐藏在滑块上方显示value值的标签。     |
-| tick           | 滑动条的刻度值，是指滑块每次拖动的value值改变量。默认值为1。 |
+| allowClickBack | A Boolean value that specifies whether to change the value attribute value by clicking the slider  |
+| showLabel      | A Boolean value specifying whether or not to hide a tag that displays the value value above the slider.     |
+| tick           | The scale value of the slider is the change in the value value of each slide. The default value is 1 |
 
  

@@ -1,36 +1,37 @@
-# 关于声音
+# Sound introduction
 
-在LayaPlayer中，声音分为背景音乐、音效两种模式。
+In LayaPlayer, sound is divided into two modes: background music and sound effect.
 
-## 1.背景音乐
+## 1. Background music
 
-在LayaPlayer中背景音乐只支持mp3格式，同时只能播放一个背景音乐。
+In LayaPlayer, background music is only supported by MP3 format, and only one background music can be played.
 
-## 2.音效
+## 2. Sound effect
 
-在项目中，音效都是高频发事件，为了确保运行效率，LayaPlayer使用openAL播放音效，因为mp3为流媒体格式，目前还无法解析。  
+In projects, sound effects are frequent events. In order to ensure operation efficiency, LayaPlayer uses openAL to play sound effects, because MP3 is streaming media format, and it can not be resolved at present.
+
 **Tips：**  
-**1、LayaPlayer中音效只支持wav和ogg格式.**  
-**2、wav和ogg只支持8位和16位，尚不支持32位**
-**3、注意:LayaPlayer-0.9.5以前的版本，wav和ogg只支持22050采样率、16bit、单声道**
+**1. LayaPlayer sound only supports wav and ogg format**  
+**2. wav and ogg only support 8 and 16, does not support 32-bit**
+**3. Note: LayaPlayer-0.9.5 previous version, wav and ogg only supports 22050 sampling rate, 16bit, mono channel**
 
-如何查看当前LayaPlayer的版本，有两种办法：  
-1、在JS中调用`conch.config.getRuntimeVersion();`方法获得版本号。  
-2、把设备插到电脑上，查看log，如下图所示：  
+To check the current LayaPlayer version, there are two ways:
+1. With JS, call `conch.config.getRuntimeVersion();` method to get the version number.  
+2. Plug the device into the computer and check the log, as shown below:  
 
 ![图0](img/0.png)
 
-## 3.提示信息
+## 3. Prompt information
 
-1、在LayaAir-1.7.5以后版本，如果调用`SoundManager.playSound()`，但是传入的文件格式是mp3，则会弹出提示信息，提示信息如下：  
+1. Later version of LayaAir-1.7.5, if called `SoundManager.playSound()` with MP3 incoming file format, hint information is popped out, and the hint information display as follows: 
 `The sound only supports wav or ogg format,for optimal performance reason,please refer to the official website document.`  
-这个时候需要把mp3转换成wav或者ogg格式。
+means should convert mp3 to wav or ogg format.
 
-2、在LayaAir-1.7.5以前的版本，是没有报错信息的，当你发现每次播放音效都会出现**卡顿现象**，这种情况极有可能是因为播放音效使用了mp3格式，需要转换格式。
+2. ，In the previous version of LayaAir-1.7.5,  there is no error message, you find that every time you play the sound will appear a **jerky effect**. This is most likely because the playback sound used is in the MP3 format, and the format is needed to be convert.
 
-## 4.解决兼容性
+## 4. Resolving compatibility
 
-如果你的项目在网页版本中音效使用mp3格式，但是LayaPlayer中又使用wav格式。建议项目使用配置文件的方式进行加载，这样只用在加载配置文件的地方，增加一次判断是否为LayaPlayer运行环境的，伪代码如下所示：  
+If your project uses the mp3 format for sound effects in the web version, the wav format is used in LayaPlayer. It is recommended that the project be loaded in the way of configuration files, so that it will increase the judgement of LayaPlayer running environment only when loading the configuration files. Pseudo-code is as follows:
 
 ```javascript
 if(window.conch)
@@ -47,43 +48,43 @@ SoundManager.playSound(soundJson[1].url,1);
 ```
 
 **Tips**  
-*1、conch只能LayaPlayer环境下调用，在网页版本中是没有conch定义的，所有需要判断一下是否存在。*  
-*2、如果使用as语言开发的时候，可以通过 `Browser.window['conch'] `这种方式获得conch对象。*
-*3、或者使用`if(Render.isConchApp )`进行判断都可以。*
+*1. Conch can only be called under the LayaPlayer environment, and there is no conch definition in the web version.*  
+*2. If you use the as language to develop, you can get conch objects in this way through `Browser.window['conch'] `*
+*3. Or you can use - `if(Render.isConchApp )` - to evaluate.*
 
-## 5.使用Cool Edit Pro工具进行声音格式转换
-现在有很多可以对MP3转换wav的工具，这里给大家简单介绍一款Cool Edit Pro工具，下面简单介绍下该工具在进行mp3转换wav的具体操作步骤：
-1、首先自行下载并先安装好Cool Edit Pro工具，然后打开Cool Edit Pro程序；
+## 5. Use the Cool Edit Pro tool for sound format conversion
+Now there are many tools that can transform wav to MP3. Here we introduce a Cool Edit Pro tool briefly. Here is a brief introduction to the specific steps of the tool in the process of MP3 transformation wav:
+1. First, download and install Cool Edit Pro first, and then open the Cool Edit Pro program;
 ![图1](img/1.png)
 
 
-2、点击左上角“文件”下的“批量转换”，进入“批量转换”子菜单  
+2. Click “Batch Conversion” under “file” n the upper left corner to enter  “batch conversion” submenu
 
 ![图2](img/2.png)
 
 ![图3](img/3.png)
 
-**注意：建议按照批量文件转换下面的1、2、3、4步骤一步一步来进行操作**
+**Note: It is suggested that the 1, 2, 3, and 4 step of the batch file should be operated step by step.**
 
-3、选择文件来源：点击右侧增加文件。这里我们选择sound文件下的所有文件进行批处理，之后点击打开；  
+3. Select the file source: click the right to add the file. Here we select all the files under the sound file for batch processing, and then click Open:  
 
 ![图4](img/4.png)
 ![图5](img/5.png)
 
-4、转换采样类型：在重采样目录下点击改变目标格式，在这里选择我们所需要的采样率22050Hz、单声道、16位bit，然后点击确定；  
+4. The conversion sampling type: click and change the target format under the resampling directory. Here we choose the sampling rate 22050Hz, mono channel and 16 bit bit that we need, then click OK. 
 ![图6](img/6.png)
 
-5、选择新的格式：输出格式选择我们需要的Windows PCM（*.wav），格式类型22050Hz，16位，单声道；
+5. Select the new format: Output Format Select what we need Windows PCM (*. Wav), format type 22050Hz, 16bit, mono;
 ![图7](img/7.png)
 
-8、选择目标文件夹及文件名：这里就是简单的选择下输出目录就好了，然后点击“运行批处理”进行输出所要的文件，当出现“文件批量转换完成”提示，表示你已成功完成MP3转换wav的批量转换  
+8. Select the destination folder and file name: Here is a simple choice of the output directory just fine, and then click "run the batch" to output the desired file, when the "file batch conversion completed" prompt, indicating that you have successfully completed the MP3 conversion wav batch conversion
 ![图8](img/8.png)
 ![图9](img/9.png)
 
-9、若在运行Cool Edit Pro工具进行批处理时出现下面的弹窗，只需要重新替换下Resample.xfm文件，再重新运行一下Cool Edit Pro就好了。
+9. If you run the Cool Edit Pro tool for batch processing, the following popups will appear. You only need to re replace the Resample.xfm files, then run the Cool Edit Pro again.
 
 ![图10](img/10.png)
 
-**出现这种情况，可以百度搜索一下 cool edit resample.xfm，或者购买正版cool edit，或者。。。(你懂的)**
+**In this case , on Baidu search for a cool edit resample.xfm, or purchase it.**
 
-**10、若网上下载的cool edit pro没有批量转换的话，可以先转一个就有批量转换了**
+**10. If the cool edit pro downloaded on the Internet has no batch conversion, You can convert one to a batch first.**
