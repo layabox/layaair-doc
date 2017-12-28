@@ -1,68 +1,66 @@
-# 绘制曲线
+# Draw curve
+
+> Compare to the straight line, drawing curve and coordinate relationship is more difficult to understand. Since the LayaAir engine draws the Bezier curve, this article will described Bezier curve concept, and how to implement it in engine API.
+>
 
 
 
-​        相对于直线而言，曲线的绘制与坐标关系更难理解一些。由于LayaAir引擎绘制的是贝塞尔曲线，所以本文中先针对贝塞尔曲线的基础进行说明，然后再结合引擎的API进行讲解。
+### **A. basis of the Bezier curve**
+
+​        General vector graphics software which  display the curve, use most of time Bezier function with the line segment and draggable node. Line appears like a scalable rubber band. In drawing software it refers as "pen tool".
+
+​        The Bezier curve is a mathematical curve applied in most 2D graphics application. a curve is defined by four points: a starting point, a terminating point (also called an anchor point), and two mutually separated intermediate points. Slide the two intermediate points modify shape of the Bezier curve.
+
+​       Based on the linear, quadratic, cubic and other formulas, the Bezier curve can get different higher-order. Depending on number of intermediate points construction, the following through the animation so that we intuitively understand:
 
 
-
-### **一、贝塞尔曲线的基础**
-
-​        贝塞尔曲线在港澳台等地称为貝茲曲線，新加坡马来西亚等地称为贝济埃曲线。一般的矢量图形软件通过它来精确画出曲线，贝塞尔曲线由线段与节点组成，节点是可拖动的支点，线段像可伸缩的皮筋，我们在绘图工具上看到的钢笔工具就是来做这种矢量曲线的。
-
-​        贝塞尔曲线是应用于二维图形应用程序的数学曲线。曲线的定义有四个点：起始点、终止点（也称锚点）以及两个相互分离的中间点。滑动两个中间点，贝塞尔曲线的形状会发生变化。
-
-​       基于线性、二次方、三次方等公式的不同，贝塞尔曲线也被称为一次、二次……五次贝塞尔曲线，有些文章也称为一阶、二阶……说的是一回事。下面通过动图让大家直观的理解一下：
-
-#### **1.1 一次贝塞尔曲线**
+#### **1. Bezier curve concept**
 
 ​        ![1.gif](gif/1.gif)<br/>
-​   	（图1）  
+​   	(Picture 1) 
 
-​        说明：上图是由 P0 至 P1 的连续点， 描述的是一条线性的贝赛尔曲线。线性贝塞尔曲线函数中的 t 会经过由 P0 至 P1 的 B(t) 所描述的曲线。例如当 t=0.25 时，B(t) 即一条由点 P0 至 P1 路径的四分之一处。就像由 0 至 1 的连续 t，B(t) 描述一条由 P0 至 P1 的直线。
+​        Explanation: The graph above is a continuous point from P0 to P1, describing a linear Bezier curve. The  function t passes through the curve defined by B(t) from P0 to P1. For example, when t = 0.25, B (t) is a quarter of the path from point P0 to P1. Just like a continuous t, B(t) from 0 to 1, it goes straight line from P0 to P1.
 
-#### **1.2 二次贝塞尔曲线**
+#### **2. Second-order Bezier curve**
 
 ​        ![2.gif](gif/2.gif)<br/>
-​   	（图2）  
+​   	(Picture 2)  
 
 ​      ![blob.png](img/1.png)<br/>
-​   	（图3）  
+​   	(Picture 3) 
 
-​        说明：为建构二次贝塞尔曲线，上图由 P0 至 P1 的连续点 Q0，描述一条线性贝塞尔曲线。由 P1 至 P2 的连续点 Q1，描述一条线性贝塞尔曲线。由 Q0 至 Q1 的连续点 B(t)，描述一条二次贝塞尔曲线。
+​        Explanation: To construct a second-order curve, the graph is described by a continuous function  B (t) with point Q0 from P0 to P1.
 
-#### **1.3 三次贝塞尔曲线**
+#### **3. Third-order Bezier curves**
 
 ​        ![3.gif](gif/3.gif)<br/>
-​   	（图4）  
+​   	(Picture 4)  
 
 ​          ![blob.png](img/2.png)<br/>
-​   	（图5）  
+​   	(Picture 5)
 
-​        说明：对于三次曲线，可由线性贝塞尔曲线描述的中介点 Q0、Q1、Q2，和由二次曲线描述的点 R0、R1 所建构。
+​        Explanation: for the third-order curve, the intermediate points Q0, Q1, and Q2 described curve, constructed by points R0 and R1 which defined the quadratic  curve.
 
-#### **1.4 高阶贝塞尔曲线**
+#### **4. Higher-order Bezier curve**
 
-​        由于高阶贝塞尔曲线并不常见，本文将不再详细说明，想对贝塞尔曲线原理了解更多的可以查看其它相关文章。
+**Since high-order Bezier curve is not common, this article will not mentionned details implementation.**
 
 ​        ![4.gif](gif/4.gif)<br/>
-​   	（图6）  四次贝塞尔曲线
+​   	(Fig. 6) four-order Bezier curves
 
 ​        ![5.gif](gif/5.gif)<br/>
-​   	（图7） 五次贝塞尔曲线
+​   	(Fig. 7) five-order Bezier curves
 
 
 
+### **B.  use the LayaAir engine API to draw the second-order Bezier curve**
 
-
-### **二、用LayaAir引擎API绘制二次贝塞尔曲线**
-
-​        LayaAir引擎的曲线绘制采用的是二次贝塞尔曲线，开发者可以在API文档中搜索laya.display.Graphics类可以查看到“drawCurves();”曲线绘制方法。该方法的详细说明如下图所示：
+​        The LayaAir engine can use second-order curve. To get further more details, please refer at "drawCurves ();" and laya.display.Graphics class in the API document.
 
 ​        ![blob.png](img/3.png)<br/>
-​   	（图8）  
+​   	(Picture 8) 
 
-下面我们用LayaAir引擎绘制矢量曲线，示例代码如下：
+Curve drawing method. A detailed description of the method is shown below:
 
 ```typescript
 module laya {
@@ -90,12 +88,12 @@ module laya {
 new laya.Sprite_DrawShapes();
 ```
 
-发布后如下图所示，我们成功的绘制了一条简单的曲线。
+After the release, as shown in the following picture, we successfully displayed a simple curve.
 
 ​        ![blob.png](img/4.png)<br/>
-​   	（图9）  
+​   	(Picture 9)  
 
-通过增加drawCurves的第三位points点集合的参数，我们可以让曲线更复杂一些，修改的示例代码如下：
+By increasing the parameters of the third point array collection of drawCurves, we can make the curve more details, get a look at the code belows:
 
 ```typescript
 //增加58, 100与78, 0坐标让曲线更复杂一些
@@ -103,36 +101,34 @@ new laya.Sprite_DrawShapes();
 this.sp.graphics.drawCurves(10, 58, [0, 0, 19, -100, 39, 0, 58, 100, 78, 0], "#ff0000", 3) ;
 ```
 
-发布后如下图所示，
+After release, display should look as following figure :
 
 ​        ![blob.png](img/5.png)<br/>
-​   	（图10）  
-如果想绘制更复杂的曲线，可自行调整drawCurves中的参数，再结合二次贝赛尔曲线原理进行理解。
+​   	(Picture 10)
+If you want to draw more complex curves, you can adjust the parameters of drawCurves, and then combine second-order  Bezier curve principle to understand.
 
-最后提醒一下，与绘制折线一样，第三位参数中所有的坐标都是相对坐标，都会受到第一位和第二位参数的“10，58”而影响。一旦“10，58”产生改变，整体曲线都会受到影响。
-
-
+Finally, remind  that with polyline, all the coordinates in the third parameter are relative coordinates, which are affected by the first and second "10, 58". Once the "10" and "58" are changed, the overall curve will be affected.
 
 
 
-### 三、用LayaAirIDE拖动控件绘制二次贝塞尔曲线
+### C. Use the LayaAirIDE drag control, to draw the second-order Bezier curve
 
-​	**步骤一**：打开我们的LayaAirIDE，点击设计模式，新建一个View页面
+​	**1**. open our LayaAirIDE and click design mode to create a new View page
 
 ​	![6](img/6.png)<br/>
-​   	（图11）  
+​   	(Picture 11)  
 
-**步骤二**：将组件中的曲线组件拖动到View页面上，就会自动生成默认的曲线
+**2**. Drag the curve component in the component onto the View page to automatically generate the default curve
 
 ​	![7](img/7.png)<br/>
-​   	（图12）  
+​   	(Picture 12)  
 
-**步骤三**：修改（添加/减少）组件属性中的point的数值，改变曲线的位置或弯曲程度
+**3**. Modify (add / subtract) the value of the point in the Curves component properties, change the position for different degree of curvature
 
 ​   	![8](img/8.png)<br/>
-​   	（图13）  
+​   	(Picture 13)
 
 ​   	![9](img/9.png)<br/>
-​   	（图14）  
+​   	(Picture 14)
 
-到此我们通过LayaAirIDE的组件绘制曲线就完成了
+Here we draw the curve through the LayaAirIDE component.
