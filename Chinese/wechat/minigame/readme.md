@@ -88,7 +88,7 @@ LayaAir开发的应用，可以通过一下方式测试（微信小游戏开发�
 
 ![img](res/10.png) 
 
-**MiniAS3.max.js**为应用程序
+**MiniAS3.max.js**为应用程序，【注意】如果是ts和js项目，最好使用工具把所有js合成一个js，否则可能会出现引用错误
 
 **project.config.json**为项目文件（微信官方提供的）
 
