@@ -40,13 +40,13 @@ LayaAir引擎除了2D强悍的性能优势外，一直在3D的支持方面投入
 
 通过下拉微信列表，可以显示近期玩过的微信小游戏。
 
-![img](data:image/gif;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAADUlEQVQImWNgYGBgAAAABQABh6FO1AAAAABJRU5ErkJggg==)
+![img](img/1.jpg)
 
 **4、桌面入口**
 
 安卓版本的微信，小游戏有添加到桌面的入口。（小编尝试添加到桌面时，实际未成功，不知是BUG，还是接口未正式开放）
 
-![img](data:image/gif;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAADUlEQVQImWNgYGBgAAAABQABh6FO1AAAAABJRU5ErkJggg==)
+![img](img/8.jpg)
 
 **5、关于支付相关**
 
