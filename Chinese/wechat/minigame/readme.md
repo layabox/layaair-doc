@@ -18,7 +18,7 @@
 
 ​	不支持XML(LayaAir引擎提供了适配方案)
 
-​	更多细节请参考官方文档（地址：https://mp.weixin.qq.com/debug/wxadoc/dev/api/）
+​	更多细节请参考官方文档  地址：https://mp.weixin.qq.com/debug/wxadoc/dev/api/
 
 ​	LayaAir引擎适配了这些差异细节，开发者无需特别关注，只需正常用LayaAir引擎开发，然后发布为小游戏即可。
 
@@ -28,7 +28,7 @@
 
 **AS3项目：**
 
-1. 替换AS3引擎类库（如果是1.7.13及以上版本，只需单独复制 wx类库）（最新类库下载地址：https://ldc.layabox.com/layadownload/?type=layaair-LayaAir）
+1. 替换AS3引擎类库（如果是1.7.13及以上版本，只需单独复制 wx类库）  最新类库下载地址：https://ldc.layabox.com/layadownload/?type=layaair-LayaAir
 
 ![img](res/1.png) 
 
@@ -40,7 +40,7 @@
 
 **JS,TS项目：**
 
-1. 下载最新类库，引用laya.wxmini.js下载地址：https://ldc.layabox.com/layadownload/?type=layaair-LayaAir)
+1. 下载最新类库，引用laya.wxmini.js  下载地址：https://ldc.layabox.com/layadownload/?type=layaair-LayaAir
 
 2. 在Laya.init之前，调用Laya.MiniAdpter.init()初始化适配程序，搞定！
 
