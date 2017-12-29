@@ -1,83 +1,83 @@
-# 项目管理器
+# Project Manager
 
-> 本篇采用LayaAirIDE 1.7.3 bate 截图，如有不同，请下载最新的LayaAirIDE，以最新版本IDE为准。
+> This article is based on LayaAirIDE 1.7.3 screenshot, if there are difference, please download the latest LayaAirIDE version.
 
-## 一、项目管理器面板介绍
+## 1. Overview on project manager panel
 
-​         项目管理器是我们用来访问和管理项目的工作区域。在我们使用过程中，项目管理器将“`项目文件夹\laya\pages`”的目录以及工程页面以树状结构展示出来。如图1所示：
+​         ​The project manager is the work area that we can access to handle the project.In our use, the project manager displays the directory of the  “`project folder\laya\pages`”and the project page to show the tree structure. As shown in Figure 1:
 
 ​        ![blob.png](img/1.png)        
 
-​        （图1）
+​        （picture 1）
 
-**树状页面列表： **显示已创建或已导入的项目文件夹及页面。
+**Tree page list: ** displays project folders and pages that have been created or imported.
 
-**打开所在目录：** 打开选中的页面的所在目录。
+**Open the directory：** defined where to open the selected directory.
 
-**设置属性： **在弹出的属性设置窗口中，您可以设置该页面的导出类型与默认属性，如默认大小，color等，该属性全局通用。
+**Setting properties: ** in the pop-up property settings window, you can set the export type of the page and default attributes, such as default size, color, etc., the property of global general.
 
 ​        ![blob.png](img/2.png)
 
-​        （图2）           
+​        （Picture 2）           
 
-​        导出类型默认采用的是**内嵌模式**，该模式导出时会将页面的配置信息导出为项目代码文件。采用**加载模式**，会将所有页面的配置信息导出为json格式的一个文件。**分离模式**也是导出为json格式，但有所区别的是分离模式会将每一个页面独立导出，会产生多个json文件。 
+​        The export type by defaults is **the inline mode**, which exports the configuration information of the page as the project code file. Using the **load mode**,  all page configuration information will be exported to a file in JSON format. ** The split mode ** is also exported to json format, but the difference is that the it exports each page independently and generates multiple json files. 
 
-**刷新页面列表： **在导入项目页面后点击刷新页面列表可以将新导入的文件刷新同步并显示出来。
+**Refresh the page list： **after you import the project page, click the refresh page list to import the page to synchronize and display the newly imported files.
 
-**关键字搜索栏： **在搜索栏里快速输入关键字对拥有该关键字的页面进行过滤，方便快速定位页面位置。如图3所示
+**Keyword search bar： **quickly input keywords in the search column, with the keyword filter, convenient and fast positioning in the page location, as shown in Figure 3
 
 ​        ![blob.png](img/3.png)        
 
-​        （图3）
+​        （picture 3）
 
  
 
-## 二、项目管理器的右键功能介绍
+## 2.  Project manager right key function introduction
 
-**打开**
+**Open**
 
-​        右键`文件`，点击打开，**可以直接在场景编辑器中打开该文件。**
+​        Right click the `file`， click open，**you can directly open the file in the scene editor.**
 
-​        右键`目录`，点击打开，**可以直接打开当前目录的资源管理器**
+​        Right click the `directory`， click to open，**you can directly open the current directory of the resource manager**
 
-**重命名**
+**Rename**
 
-​        重新设定目录或文件的名字。
+​        Reset the name of a directory or file.
 
-**转为模板**
+**Turn to template**
 
-　　只有UI文件才能使用该功能，将UI设置为模板，存放于模板库中被使用。可以设置为常用模板和自定义模板。
+　　Only the UI file can use this function, set the UI as a template and store it in the template library. Can be set as common templates and custom templates
 
 **Clone**
 
-​        对于文件会复制一个完全一样的项目文件。
+​        For files, a completely identical project file is copied.
 
-​        对于目录，会复制整个目录（含目录内的文件）。
+​        For directories, the entire directory is copied (including files in the directory).
 
-**设置默认属性**
+**Set the default properties**
 
-​        只能对`文件`设置页面的默认属性，以及导出类型。如图4-1所示。
+​        You can only set the default properties of the page, as well as the export type. As shown in Figure 4-1.
 
-　　![图4-1](img/4-1.png) <br /> (图4-1)
+　　![图4-1](img/4-1.png) <br /> (picture 4-1)
 
-**删除**
+**Delete**
 
-　　可以通过右键的`删除`功能，删除目录或文件。也可以选中页面后直接按Backspace或Delete键进行删除。如果选中目录文件夹进行删除，删除时会将目录下所有项目页面一并删除，请谨慎操作。
+　　You can`delete` directories or files by right - clicking delete function. You can also select the page and press the Backspace or Delete key to delete it. If you select the directory folder to delete, delete all the items in the directory will be deleted, please be careful.
 
-**新建**
+**New**
 
-​        在项目管理器中，可以新建UI页面/场景、粒子、动画、脚本。鼠标右键单击弹出菜单栏后，我们选择相应的新建功能即可。如图4-2所示
+​        In the project manager, you can create new UI pages / scenes, particles, animations, scripts. Right click the pop-up menu bar, and we select the new appropriate features.As shown in Figure 4-2.
 
 ​        ![blob.png](img/4-2.png)
 
-​        （图4-2）
+​        （picture 4-2）
 
- **新建目录**
+ **New directory**
 
-​        我们还可以在项目管理器中直接新建一个目录。
+​        We can also create a new directory directly in the project manager.
 
-**打开所在目录**
+**Open the directory**
 
-​        选中文件或目录，点击该功能即可打开文件或目录所在的资源管理器目录。
+​        Select the file or directory, click on this function to open the directory where the file or directory is located.
 
 
