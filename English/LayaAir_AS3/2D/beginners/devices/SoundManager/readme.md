@@ -26,7 +26,7 @@
  (2) audio files should be as small as possible, not just the bandwidth limitations, as well as the efficiency of the browser audio decoding.
 
 
-Note: Package APP has sound format restrictions, please refer to（[LayaNative settings sound](http://xn--layanative__-726s570ami3awq0l7zubi66b/)）
+Note: Package APP has sound format restrictions, please refer to（[LayaNative settings sound](http://ldc.layabox.com/doc/?language=en&nav=en-as-6-1-3)）
 
 **3.  audio volume control**
 
