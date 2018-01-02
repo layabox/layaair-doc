@@ -346,7 +346,7 @@ package  {
 
 
 
-### 6. noscale模式
+### 6. noscale mode
 
 ​        The noscale mode is a non - scaling pattern, and the width of the canvas and the stage is equal to the design width. On the basis of maintaining the 1:1 original design ratio, the stage is aligned with the top left corner of the browser screen. When the width of the screen is less than the content, it will be cut, and when the screen width is higher than the content, the black edge will appear. The running effect of this pattern is shown in Figure 12 and figure 13.
 
