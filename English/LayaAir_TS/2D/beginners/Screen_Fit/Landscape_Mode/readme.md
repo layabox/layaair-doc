@@ -1,28 +1,29 @@
-# 自动横屏与横屏游戏
+# Automatic lock game to landscape screen mode
 
 
 
-在讲到引擎的自动横屏之前，先说一说有些人对横屏游戏的误区。
+Before talking about the automatic landscape mode, we need clarify horizontal display statement for the screen game.
 
-直到如今有些人仍在说，如果做H5游戏一定要做竖屏游戏，其实要是深入了解一下，说这些话的，很大一部分是2015年或更早进入H5游戏行业中来的，还有一部分是受到那些早期做H5游戏影响的人。他们为什么会一直有这种误区呢？那到底是哪些原因是支持竖屏游戏论呢？在和大量持此观点的人交流后，总结下来，主要有三点。
+Currently, landscape mode is more "user friendly" for mobile phone device, It is the more natural way to interact with a smartphone.
+So from this user experience, we tend to say that vertical screen is theorically  most adapted.  However, should portrait mode should be rejected ? Here is an introduction of three main points for this debate topic.
 
-#### 第一、横屏游戏对性能的消耗更大？
+#### 1. Does horizontal screen games need more performance consumption?
 
-针对这一观点，有存在这种可能，但这是完全可以避免的。因为导致性能问题，一是某些引擎在屏幕旋转处理上，可能没有处理好。二是项目自身在屏幕旋转后没有作好屏幕适配而导致的渲染量增多。有人会说，竖屏不需要做旋转处理，增加旋转操作肯定会增加游戏的性能消耗。貌似很有道理的样子，实际上旋转通常只有一次，这个性能的消耗也是可以被忽略的。所以横屏游戏性能消耗更大的说法，如果不是自身项目没写好。LayaAir引擎不会存在这种问题。
+We can wonder whether rotation to Portrait mode cause a lost of resource. Since the processing it does only once at init, it is completely avoidable. Also there is not big difference in amount of rendering in the screen compare to vertical screen state, so the question can be ignored.
 
-#### 第二、横屏游戏的游戏用户转化率会更低？
+#### 2. Horizontal screen game user conversion rate will be lower?
 
-这个观点，在早期的H5游戏中是成立的，对于不支持自动横屏的引擎或是没有用引擎的H5游戏，又无法实现自动横屏时。横屏操作，通常会受限于系统的横屏锁定开关。如果需要用户增加操作，的确有可能会导致部分用户的流失。但是Layabox的引擎并不存在这种问题。LayaAir引擎的自动横屏模式，是依据浏览器的显示比例，游戏的水平方向始终与浏览器屏幕较短边保持垂直，并不受系统影响。所以不会存在增加操作而导致用户的额外流失。
+In early stage of first HTML5 games, most of engines didn't support orientation screen, and horizontal mode. So the gameplay should limited to the only vertical screen mode, which can lead loss of some users. LayaAir Engine can support both mode, and depends the game design or content requierement, developers are not limited by the type of the display. So historically, users experience are used to landscape view content. 
 
-#### 第三、竖屏游戏的游戏体验比横屏游戏更好？
+#### 3. Game experience of vertical screen game is better than that of horizontal screen game?
 
-首先不能否认的是，竖屏游戏里有很多非常优秀的游戏。但是横屏游戏，尤其是APP横屏游戏也有非常多的成功游戏案例。H5手游与APP手游除技术差异外，游戏的硬件载体与游戏体验，并没有天然的差异，对于玩家来说，其实他并不在意你采用了什么技术去开发游戏，而游戏本身的品质是否能吸引他玩下去和付费。所以无论是横屏游戏还是竖屏游戏，只要是制作团队优秀，都是可以制作出来精品大作。并不会因为是横屏还是竖屏而影响游戏用户体验。
+The first thing that can't be denied is that there are a lot of great games in the vertical screen game. But horizontal screen games, especially the APP horizontal screen games, also have a lot of successful Games Case. So whether it's a horizontal screen game or a vertical one screen game, as long as the production team is excellent, can be produced out a masterpiece. Depending the gameplay you want to develop or user experience most adapted to your design, will effect significantly the choice. In most of case, portrait display are suitable for casual and portrait for hardcore gamers. 
 
 
 
-## LayaAir引擎如何设置自动横屏
+## How to set auto horizontal screen for LayaAir engine
 
-上面刚刚有提到，LayaAir引擎设置自动横屏后，会让游戏的水平方向始终与浏览器屏幕较短边保持垂直。自动横屏的示例代码如下：   
+As mentioned above, the LayaAir engine sets up an automatic horizontal screen that locks to landscape mode. The automatic horizontal screen example code is as follows:  
 
 ```typescript
 module laya {
@@ -67,17 +68,16 @@ new laya.smartScale();
 ```
 
 
-
-**竖屏状态下的代码运行效果如下：**
+**The function of the code in the vertical state is as follows: **
 
 ​	![blob.png](img/1.png)<br/>
-​	图（1）设置横屏的效果的示例演示
+​	Figure (1) Example of setting the horizontal screen mode
 
-**横屏状态下的代码运行效果如下：**
+**The action of the code in the screen state is as follows: **
 
 ​	![blob.png](img/2.png)<br/>
-​	图（2）改变最短边的效果演示
+​	Figure (2) to change the effect of the shortest side of the demo
 
 
 
-处理自动横屏的代码是“Laya.stage.screenMode = Stage.SCREEN_HORIZONTAL;”示例代码中的注释中已经说明。大家可以在编码过程中进行体验。
+The code for processing the automatic horizontal screen is “Laya.stage.screenMode = Stage.SCREEN_HORIZONTAL;” The comment in the sample code has already been described. We can experience in the coding process.

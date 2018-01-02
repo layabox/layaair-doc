@@ -1,39 +1,41 @@
-# HTML5音乐与音效的播放
+# HTML5 handle music and sound effects
 
 
+​        HTML5 audio playback, there are two mainstream  method, one is the Audio tag playback, and the other is WebAudio binary broadcast.
 
-​        HTML5的音频播放，在当前有两种主流的方式，一种是Audio标签播放,另一种是WebAudio二进制播放。
+​        Audio belongs to the dom element, with ui interface, Audio in the mobile side will have gesture restrictions, gesture-requirement-for-media-playback attributes Indicating that the user must have the gesture operation can play.
 
-​        Audio属于dom元素，带有ui界面，在移动端Audio属于边下载边播放，适合声音文件比较大的文件，但是Audio在移动端会有手势的限制，gesture-requirement-for-media-playback属性表明必须有用户的手势操作才可以播放。
+​        WebAudio is a new form of sound playback, you can load multiple sounds. It is played by binary decoding into browser supported formats. Interface can even achieve audio effect, so that the sound can have dynamic synthesis function.
 
-​        WebAudio是一种新的声音播放形式，可以加载多个声音进行合成，他是通过二进制文件解码成浏览器支持的格式进行播放。而且用这个接口甚至可以实现音频普的动画效果，让声音有了合成的功能。
 
-​        音乐与音效作为游戏中常用的基础元素，LayaAir引擎封装了WebAudio与Audio，在支持WebAudio的浏览器上，优先使用WebAudio，在不支持WebAudio的浏览器上使用Audio，最大化兼容所有浏览器对音频格式的支持，让开发者可以更加方便的，通过调用laya.media.SoundManager API接口就可以直接播放音频。
+​        Music and Sound are the basic elements of the game, LayaAir engine encapsulates WebAudio and Audio. Using Audio on browsers in case WebAudio is not supported, maximizing compatibility with all browser. So that developers can be more convenient, by calling the laya.media.SoundManager API interface can  handle case constraint and play audio directly.
 
-**一、音乐与音效的应用区别**
 
-​        音乐：是指游戏用的背景音乐。采用laya.media.SoundManager音频管理类中的playMusic方法进行播放，由于是背景音乐，playMusic方法只能同时播放一个音频文件。
+**1. difference between the application of music and sound effects**
 
-​        音效：采用的是laya.media.SoundManager音频管理类中的playSound方法，允许同时播放多个音频文件。
+​        ​Music: about background music for a game(BGM). Using the playMusic method in the laya.media.SoundManager audio management class, the playMusic method can only play only one audio file at the same time because of background music. 
 
-**二、音频的兼容性准备**
+​        Sound: using the playSound method in the laya.media.SoundManager audio management class, allowing multiple audio files to be played at the same time.
 
-​        由于音频播放问题的各个浏览器兼容性不同，在开始应用前，我们要做好前期的兼容准备。
+**2.  Audio compatibility preparation**
 
-（1）使用“格式工厂”音频文件转换工具。选择 44100Hz，96kbps 进行转换。
+​        Because of the different audio compatibility issues with different browser ,  we should be aware of cross-browser to avoid application problem.
 
-（2）音频文件尽量小，不仅仅是带宽的限制，还有浏览器音频解码的效率问题。
+ (1) use the format factory audio file conversion tool. Select 44100Hz, 96kbps to conversion.
 
-注意：打包APP有声音格式限制，请参考[（LayaNative声音设置）](https://ldc.layabox.com/doc/?nav=zh-ts-6-1-3)
+ (2) audio files should be as small as possible, not just the bandwidth limitations, as well as the efficiency of the browser audio decoding.
 
-**三、音频音量的控制**
 
-​        声音音量的控制 可以通过laya.media.SoundManager音频管理类中的setSoundVolume方法来设置，
+Note: Package APP has sound format restrictions, please refer to（[LayaNative settings sound](http://ldc.layabox.com/doc/?language=en&nav=en-ts-6-1-3)）
+
+**3.  audio volume control**
+
+​        Sound volume control can be set by the setSoundVolume method in the laya.media.SoundManager audio management class.
 
 ![blob.png](http://old.ldc.layabox.com/uploadfile/image/20170110/1484019651349259.png)
 
-​        如上图所示，我们可以看到，通过设置volume参数，可以有效控制url所对应声音文件的音量大小。
+​        As shown in the figure above, we can see that by setting the volume parameter, you can effectively control the volume of the sound file corresponding to the url.
 
-**四、音乐与音效播放的完整示例**
+**4. complete example of music and sound playback**
 
-该示例的完整代码地址为：http://layaair.ldc.layabox.com/demo/?2d&Sound&SimpleDemo
+The sample full code address of the sample is: [http://layaair.ldc.layabox.com/demo/?Sound_SimpleDemo](http://layaair.ldc.layabox.com/demo/?Sound_SimpleDemo)

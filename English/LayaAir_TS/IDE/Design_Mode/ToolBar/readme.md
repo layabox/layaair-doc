@@ -1,120 +1,120 @@
-# 工具栏介绍
+# Toolbar introduction
 
-> 本篇采用LayaAirIDE 1.7.3 bate 截图，如有不同，请下载最新的LayaAirIDE，以最新版本IDE为准。
+> This article is based on LayaAirIDE 1.7.3 screenshot, if there are difference, please download the latest LayaAirIDE version.
 
-​        工具栏位于编辑器主窗口的正上方，菜单栏下方，当打开项目时，可以看到八组控制按钮或信息，用来为特定面板提供编辑功能或方便我们实施工作流。
+​        The toolbar is located  in the main top window of the editor and below the menu bar. When you open the project, you can see eight sets of control buttons or messages that are used to provide editing functions for specific panels or to facilitate us to implement workflows.
 
 ​        ![blob.png](img/1.png)<br/>
-​    	（图1）
+​    	（Picture 1）
 
  
 
-### 一、项目操作工具
+### 1. Project operation tools
 
 ​    ![图片1.png](img/2.png)<br/>
-​    	（图2）
+​    	（Picture 2）
 
-​        新建目录： 在当前项目中新建一个目录文件夹，快捷键 （Ctrl + D）。
+​        New directory: create a directory folder, shortcut key (Ctrl + D) , in the current project.
 
-​        新建页面： 在选中的目录中新建一个页面（Page），快捷键 （Ctrl + N）。
+​        New page: Create a new page (Page), shortcut key (Ctrl + N) in the selected directory.
 
  
 
-### 二、保存工具
+### 2. Save tools
 
 ​  ![图片1.png](img/3.png)<br/>
-​    	（图3）
+​    	（Picture 3）
 
  
 
-​        保存当前： 保存当前操作的页面，快捷键（Ctrl + S）。
+​        Save the current: save the current operation page, shortcut (Ctrl + S).
 
-​        保存所有： 保存对该项目的所有更改，快捷键（Ctrl + Shift + S）。
+​        Save all: save all changes to the project, shortcut keys (Ctrl + Shift + S).
 
  
 
-### 三、撤销工具
+### 3. Revocation of tools
 
 ​        ![图片1.png](img/4.png)<br/>
-​    	（图4）
+​    	（Picture 4）
 
  
 
-​        撤销： 撤销一次当前操作，快捷键（Ctrl + Z）。
+​        Undo: undo current operation, shortcut key (Ctrl + Z)
 
-​        恢复撤销： 误撤销时可以将撤销掉的操作返回回来，快捷键（Ctrl + Y）。
+​        Recovery Undo: You can return the undo operation and the shortcut key (Ctrl + Y) when you cancel it.
 
  
 
-### 四、刷新发布工具
+### 4. Refresh the release tool
 
 ​        ![图片1.png](img/5.png)<br/>
-​    	（图5）
+​    	（Picture 5）
 
-​        刷新： 在用户导入新资源或对文件有更改后点击刷新，程序会自动加载新的资源或配置，快捷键（F5）。
+​        Refresh: click New after the user imports new resources or changes to the file, the program will automatically load new resources or configuration, shortcut key (F5).
 
-​        发布： 在用户完成设计之后，可以点击发布，生成发布文件进行共享或使用，快捷键（F12）。
+​        Release: after the user has completed the design, you can click on the release, generate publishing files for sharing or use, shortcut key (F12).
 
  
 
-### 五、视图工具
+### 5. Tool viewer
 
 ​        ![图片1.png](img/6.png)<br/>
-​    	（图6）
+​    	（Picture 6）
 
-​        缩小视图： 点击缩小视图按钮后场景会自动进行缩放，但并不影响设计宽高控件大小，快捷键（Ctrl + +）。
+​        Zoom view: after the click of the zoom view button, the scene will automatically scale, but does not affect the design of the width of the high control size, shortcut key (Ctrl + +).
 
-​        放大视图： 点击放大视图按钮后场景会自动进行放大，放大不影响设计宽高及控件大小，快捷键（Ctrl + - ）。
+​        Zoom view: click the zoom view button, the scene will automatically zoom in, zoom in does not affect the design width and control size, shortcut key (Ctrl + -).
 
-​        恢复视图： 点击恢复视图按钮后场景会自动恢复至初始大小，快捷键（Ctrl + \ ）。
+​        Restore view: after clicking the restore View button, the scene automatically restores to the initial size, and the shortcut key (Ctrl +).
 
  
 
-### 六、对齐工具
+### 6. Alignment tool
 
   ![图片1.png](img/7.png)<br/>
 
-​    	（图7）
+​    	（Picture 7）
 
  
 
-​        左对齐： 多个控件左对齐方式将以最左侧控件的起始坐标为对齐点进行左对齐。
+​        Left Alignment: The left alignment of multiple controls will be left-aligned with the starting coordinates of the leftmost control as the alignment point.
 
-​        右对齐： 多个控件右对齐方式将以最右侧控件的结束坐标为对起点进行右对齐。
+​        Right alignment: multiple controls right aligned with right end of the rightmost control as the starting point for right alignment.
 
-​        水平居中对齐： 多个控件水平居中对齐方式将自动计算水平中心坐标进行居中对齐。
+​        Align horizontally: multiple controls align horizontally and align automatically with horizontal center coordinates.
 
-​        垂直居中对齐： 多个控件垂直居中对齐方式将自动计算垂直中心坐标进行居中对齐。
+​        Align vertically: multiple controls are vertically centered. The alignment method calculates the vertical center coordinates automatically and aligns them in the center.
 
-​        顶部对齐： 多个控件顶部对齐方式将以最上方控件的顶点坐标作为对齐点进行顶部对齐。
+​        Top alignment: multiple control top alignment will align top with the vertex coordinates of the top control as the alignment point.
 
-​        底部对齐： 多个控件底部对齐方式将以最下方控件的底部坐标作为对齐点进行底部对齐。
+​        Bottom alignment: the bottom alignment of multiple controls aligns the bottom coordinates of the bottom control as alignment points at the bottom.
 
-​        水平平均间隔：多个控件以水平间隔距离自动计算后按平均距离进行水平对齐。
+​        Horizontal average interval: multiple controls are automatically calculated at horizontal intervals and aligned horizontally at the average distance.
 
-​        垂直平均间隔：多个控件以垂直间隔距离自动计算后按平均距离进行垂直对齐。
+​        Vertical average interval: multiple controls are automatically calculated at vertical intervals and aligned vertically at the average distance.
 
  
 
-### 七、位移操作
+### 7. Displacement operation
 
 ​     ![图片1.png](img/8.png)<br/>
-​    	（图8）
+​    	（Picture 8）
 
  
 
-​        移动到左上角： 将选中的控件移动到场景视图的左上角位置。
+​        Move to the upper left corner: move the selected controls to the upper left corner of the scene view.
 
-​        移动到左下角： 将选中的控件移动到场景视图的左下角位置。
+​        Move to the lower left corner: move the selected controls to the lower left corner of the scene view.
 
-​        移动到右上角： 将选中的控件移动到场景视图的右上角位置。
+​        Move to the upper right corner: move the selected controls to the upper right corner of the scene view.
 
-​        移动到右下角： 将选中的控件移动到场景视图的右下角位置。
+​        Move to the lower right corner: move the selected controls to the lower right corner of the scene view.
 
-​        移动到水平居中： 将选中的控件移动到场景视图的水平居中位置，控件的垂直位置不变。
+​        Move to the middle level: move the selected controls to the horizontal center of the scene view, and keep the vertical position of the control unchanged.
 
-​        移动到垂直居中： 将选中的控件移动到场景视图的垂直居中位置，控件的水平位置不变。
+​        Move to the middle level: move the selected controls to the horizontal center of the scene view, and keep the vertical position of the control unchanged.
 
-​        相对原点居中： 将选中的控件移动到场景视图的原点（0,0）位置，并以原点位置进行垂直与水平位置居中。
+​        Relative origin: move the selected control to the origin of the scene view (0,0), and center vertically and horizontally with the origin position.
 
  

@@ -1,63 +1,63 @@
-# UI场景编辑器
+# UI scene editor
 
-​        场景编辑器是UI、动画等内容创作的核心工作区域，如图1所示，我们可以在场景编辑器中选择和摆放控件，组合容器等。当我们在场景编辑器中选中的组件，还可以通过属性设置器中修改组件的位置、旋转、缩放、尺寸等属性，获得所见即所得的场景效果预览。
+​        Scene editor is the core work area of UI, animation and other content creation. As shown in Figure 1, we can select and place controls in the scene editor, combine containers and much more. When we select the components in the scene editor, you can also modify the component's position, rotation, zoom, size, and other properties in  the attribute setter.
 
 ​     	![图片1.png](img/1.png) <br />
-​     	（图1）
+​     	（Picture 1）
 
 
 
-## 1、视图介绍
+## 1. view introduction
 
-#### 1.1 视图操作
+#### 1.1 View operation
 
-​        您可以通过以下的操作，来移动和定位场景编辑器的视图：
+​        You can move and locate the views of the scene editor through the following operations:
 
-​        1、按住`鼠标右键`或者按住`鼠标滚轮`可以拖拽移动视图。
+​        1、hold `the right mouse`  button or hold down the `mouse wheel`, you can drag and drop moving view.
 
-​         2、快捷键 `Ctrl + +` 或`鼠标滚轮向前`，可以放大视图。
+​         2、Shortcut `Ctrl + +`  or `mouse wheel forward`，can zoom the view.
 
-​         3、快捷键 `Ctrl + -`或 鼠标滚轮向后，可以缩小视图。
+​         3、shortcut `Ctrl + -` or mouse wheel backward, you can narrow the view.
 
-　     4、快捷键 `Ctrl + 0` 可以恢复为100%原始比例视图。
+　     4、the shortcut key `Ctrl + 0` can be restored to 100% of the original scale view.
 
-​         视图操作时，在UI场景编辑器右下角可看到缩放比例大小提示。相关操作如动图2所示。
+​         In view operation, you can see the zoom scale  prompt in the lower right corner of the UI scene editor. The related operations are shown in Fig. 2.
 
-![动图2](img/2.gif)  <br /> (动图2)
-
-
-
-#### 1.2 组件的约束框
-
-​        组件在鼠标选中状态下能够看到约束框（红色且带节点的线框），约束框的矩形区域表示组件的尺寸（size）属性大小。点中任何一个节点可以直接改变组件的大小。
-
-​         ![动图3](img/3.gif)<br/>（动图3） 
-
-**Tips**：即使控件没有包含图像渲染组件（如Sprite）,也可以为控件设置size属性。
+![动图2](img/2.gif)  <br /> (Picture 2)
 
 
 
-#### 1.3 多选节点
+#### 1.2 Constraints for components
 
-​        在场景编辑器中按住鼠标左键并拖拽，可以画出一个红色线条的矩形选区框，松开鼠标按键后，选框内的同层组件都会被选中。在松开鼠标键之前可以任意滑动鼠标来更改选取框的区域。操作效果如动图4所示
+​        The component can see the constraint box (red line with nodes) in the mouse selection state. The rectangular area of the constraint box represents the size attribute of the component. Any node in the point can change the size of the component directly.
 
-![动图4](img/4.gif) <br /> （动图4）
+​         ![动图3](img/3.gif)<br/>（Picture 3） 
 
-
-
-#### 1.4 使用对齐工具布置节点
-
-​        场景编辑器的核心功能就是以所见即所得的方式编辑和布置场景中的可见元素。我们还可以通过主窗口工具栏上方的一系列对齐工具来快捷的布置场景节点。 
-
-​    ![图片5](img/5.png) <br>（图5）
-
-**Tips**：关于具体的对齐工具使用介绍请参考`工具栏介绍`文档。
+**Tips**： even if the control does not contain the image rendering component (such as Sprite), you can also set the size property for the control.
 
 
 
-## 2、代码视图
+#### 1.3 multi-select node
 
-　　点击`场景编辑器`右下角 的`视图`切换按钮 即可切换至`代码`视图模式，如动图6所示。代码视图中显示为场景页面的XML文本配置文件，也可编辑修改XML文本文件进行页面及控件的修改、增删等。
+​        In the scene editor, hold down the left mouse button and drag and drop, you can see a red line rectangular selection box, after the release of the mouse button, the frame of the same layer components will be selected. You can slide the mouse to change the area of the selection box before you release the mouse button. The operation effect is shown in Figure 4
 
-![动图6](img/6.gif) <br /> (动图6)
+![动图4](img/4.gif) <br /> （Picture 4）
+
+
+
+#### 1.4  Arrange the nodes using the Align tool
+
+​        The core function of the scene editor is to edit and arrange the visible elements in the scene in the  "what you see is what you get" way. We can also quickly configure the scene nodes through a series of alignment tools above the main window toolbar. 
+
+​    ![图片5](img/5.png) <br>（Picture 5）
+
+**Tips**：Refer to the `toolbar introduction` documentation for specific alignment tools.
+
+
+
+## 2. Code view
+
+　　Click the view switch button in the lower right corner of the `scene editor` to switch to the `code` ` view` mode, as shown in figure 6.  The code view shows the XML text configuration file for the scene page, and also edits and modifies the XML text file to modify, add and delete the page and the control.
+
+![动图6](img/6.gif) <br /> (Picture 6)
 

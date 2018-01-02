@@ -1,12 +1,12 @@
-# textInput的单行输入&多行输入
+# Single  & multiline textInput 
 
-文本输入框是游戏中经常会用到的一个UI组件，任何时候需要输入的时候都要使用到textInput这个类，我们先看一下TextInput这个类的API。
+The text input box is a UI component that is often used in game.  Lets have a look at the TextInput API class.
 
-laya.ui.textInput中所有的API参数：
+All API parameters in Laya.ui.textInput:
 
 ![1](img/1.png)</br>
 
-这里我们设置文本的单行输入和多行输入，单行输入只能在一行内输入，多行可以通过回车在上一行未满的情况下在下一行输入。
+Here we set single and multi line input for text. Single line input can only be entered in one line. Multiple lines can contain lines with carriage return before the last line is full.
 
 ```javascript
 //初始化引擎,不支持WebGL时自动切换到Canvas
@@ -41,8 +41,9 @@ function Text_InputMultiline(){
 }
 ```
 
-运行结果：
+
+operation result:
 
 ![2](img/2.png)</br>
 
-通过设置multiline为true开启多行输入，实现我们上图的效果。其他的参数和设置Text文本基本相同，想设置不同大小的字体和样式和Text的设置方法一样，大家可以修改上述示例中的参数体验。
+By setting up our multiline to true, shown in  figure above, we will be able to achieve multiple lines of input. Other parameters and settings likes  fonts and styles of different sizes from Text text are basically the same.

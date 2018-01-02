@@ -1,82 +1,81 @@
-# JSON数据详解
+# JSON data information
 
-### 一、什么是JSON？
+### 1. What is JSON?
 
-JSON（JavaScript Object Notation）指的是JavaScript对象表示法，是一种轻量级的数据交换格式。它基于ECMAScript的一个子集。JSON使用JavaScript语法来描述数据对象，但是JSON仍然独立于语言和平台。JSON解析器和JSON库支持许多种不同的编程语言。目前非常多的动态（PHP,JSP,.ENT）变成语言都支持JSON。它易于人阅读和编写，同时也易于机器解析和生成（一般用于提升网络传输速率）。
-
-
-
-### 二、JSON语法规则
-
-JSON语法是JavaScript对象表示法语法的子集。
-
-- 数据在名称/值对中
-- 数据由逗号分隔
-- 花括号保存对象
-- 方括号保存数组
+JSON (JavaScript Object Notation) refers to the JavaScript object representation, which is a lightweight data interchange format. It is based on a subset of ECMAScript. JSON uses JavaScript syntax to describe data objects, but JSON is still independent of language and platform. The JSON parser and the JSON library support many different programming languages. At present, very much dynamic (PHP, JSP,.ENT) become language, all support JSON. It is easy to read and write, and also easy to machine analysis and generation (generally used to improve network transmission rate).
 
 
 
-### 三、JSON名称/值对
+### 2. JSON syntax grammar rules
 
-JSON数据的书写格式是：名称/值对。
+JSON syntax is a subset of JavaScript object representation syntax.
 
-名称/值对包括字段名称(在双引号中)，后面写一个冒号，然后是值：
-
-“name”：“LayaAir教程”；
-
-这个很容易理解，等同于这条JavaScript语句：
-
-name=“LayaAir教程”；
+- JS data is in the name / value pair.
+- data is separated by commas
+- Curly braces save objects
+- Square brackets save arrays
 
 
 
-### 四、JSON的值
+### 3. JSON name / value pair
 
-JSON的值可以是：
+JSON data writing format is: name / value pairs.
 
-- 数字（整数或浮点数）
-- 字符串（在双引号中）
-- 逻辑值（true或false）
-- 数组（在方括号中）
-- 对象（在花括号中）
+name / value pair includes the field name (in double quotation marks), followed by a colon, followed by a value:
+
+“name”：“LayaAir Tutorial”；
+
+This is easy to understand, equivalent to JavaScript statement:
+
+name=“LayaAir Tutorial”；
+
+
+
+### 4. JSON values
+
+The value of JSON can be:
+
+- Numeric (integer or floating point)
+- Strings (in double quotes)
+- Logical value (true or false)
+- Array (in square brackets)
+- Object (in curly braces)
 - null
 
 
 
-### 五、JSON对象
+### 5. JSON object
 
-JSON对象在花括号中书写：
+JSON object is written in curly braces:
 
-对象可以包含多个名称/值对：
+Objects can contain multiple name / value pairs:
 
-{"name":"LayaAir教程","url":"http://layabox.com/"}
+{"name":"LayaAir tutorial","url":"http://layabox.com/"}
 
-这一点也容易理解，等同于这句JavaScript语句：
+This is also easy to understand, equivalent to this JavaScript statement:
 
-name="LayaAir教程" url="http://layabox.com/"
-
-
-
-### 六、JSON文件
-
-- JSON文本的文件类型是".json"
-- JSON文本的MIME类型是"application/json"
+name="LayaAir tutorial" url="http://layabox.com/"
 
 
 
-### 七、JSON的优势
+### 6. JSON file
 
-- 基于纯文本，跨平台传递极其简单；
-- JavaScript原生支持，后台语言几乎全部支持；
-- 轻量级数据格式，占用字符数量极少，特别适合互联网的传递；
-- 可读性较强，虽然比不上XML那么一目了然，但在合理的依次缩进之后还是很容易识别的；
-- 容易编写和解析，当然前提是你要知道数据结构；
-
-PS:说到这里可能会联想到XML。XML和JSON的大战犹如一场辩论，各说各的道理，既然是辩论，终究需要自己保持立场。但是就个人而言，更倾向于使用JSON，网络传输中JSON也有巨大的优势，而且在H5时代各个浏览器对XML的支持度和兼容性还有待考量，解析的效率更是千差万别，对于游戏开发者来说，JSON足够使用。
+- File type of the JSON text is ".Json""
+- MIME type of the JSON text is "application/json""
 
 
 
-### 八、LayaAir与JSON
+### 7. JSON advantage
 
-LayaAir引擎几乎离不开JSON，包括图集打包储存的格式，资源的加载，编辑器组件的描述，类的导出，语言包的支持等。
+- Based on plain text, cross platform delivery is extremely simple;
+- JavaScript native support, background language almost all support;
+- Lightweight data formats, which occupy very few characters, are especially suited for Internet delivery;
+- Readability is strong, although not as clear as XML, but after a reasonable indentation is still very easy to identify;
+- Easy to write and analysis, of course, the premise is that you want to know the data structure;
+
+PS: might think of XML here. supporter between XML and JSON is a debate topics. They speak their own principles. Since they are debating, they need to keep their positions. But personally, prefer to use JSON in the network, JSON also has a huge advantage in the H5 era, and each browser support for XML and the degree of compatibility remains to be considered, the analytical efficiency is different, for game developers, JSON is enough to use.
+
+
+### 8. LayaAir and JSON
+
+The LayaAir engine is almost inseparable from JSON, including the format of the chart packaging, the loading of resources, the description of the editor components, the export of classes, the support of language packs, and so on.

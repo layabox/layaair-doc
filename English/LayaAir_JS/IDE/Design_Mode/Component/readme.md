@@ -1,56 +1,55 @@
-# LayaAir IDE组件库
+# LayaAir IDE component library
 
-### 1、组件列表概览
+### 1. Overview of component lists
 
-LayaAirIDE的组件库里存放着IDE自带的常用组件。分别为2D基础组件、Graphics矢量组件、UI常用组件几大类。如图1、图2、图3所示。
+The component library of LayaAirIDE contains the commonly used components of IDE: 2D basic components, Graphics vector, common and several categories. As shown in Figure 1, figure 2 and figure 3.
 
 ![图1](img/1.png) <br />
 
-(图1)2D基础组件
+(Figure 1) 2D base components
 
 ![图2](img/2.png) <br />
 
-(图2)Graphics矢量组件
+(Figure 2) Graphics vector components
 
 ![图3](img/3.png) <br />
 
-(图3)UI常用组件
+(Figure 3) UI common components
 
 
 
-### 2、组件库与资源管理器的区别
+### 2. The difference between the component library and the resource manager
 
-#### 2.1 存储位置区别
+#### 2.1 storage location difference
 
-组件库中的所有组件存放于LayaAirIDE所在的目录中，属于所有项目的共用组件。
+All the components in the component library are stored in the directory in the LayaAirIDE location, which belongs to the shared components of all projects.
 
-资源管理器中的组件存放于项目的目录中，仅限当前项目使用。
+The components in the resource manager are stored in the project's directory, only for the current project.
 
-#### 2.2 皮肤区别
+#### 2.2 Skin difference
 
-组件库中存放的组件，默认不带皮肤（skin）。放入场景编辑器后根据需要手动设置皮肤。
+The components stored in the component library are by default without skin. Place the scene editor and manually set the skin as needed.
 
-资源管理器中存放的是组件皮肤资源，放入场景编辑器后，通过资源的前缀来识别区分对应的组件，并以拖入的资源为组件皮肤资源。
+In the resource manager, the component skin resource is stored. After the scene editor is placed, the corresponding components are identified by the prefix of the resource, and the resource is taken as the component skin resource.
 
-#### 2.3 组件类型区别
+#### 2.3 Component Type Differences
 
-组件库中包括UI组件、Graphics矢量组件、2D基础（显示对象）组件。
+The component library includes the UI component, the Graphics vector component, and the 2D base (display object) component.
 
-资源管理器中仅存放UI组件。
-
-
-
-### 3、其它组件相关的文档参考
-
-组件库中还可以存放和显示自定义组件，关于自定义组件可以参考`使用IDE创作`分类的`《自定义组件的制作与使用》`。
+Only UI components are stored in the resource manager.
 
 
 
-关于组件库中每一个组件的介绍，在`设计模式基础`分类的`《属性设置器文档》`以及`IDE组件属性详`分类中有详细的介绍。
+### 3. Document reference for other components
+
+You can also store and display custom components in the component library. For custom components you can refer to the `《Creating and Using Custom Components》` using  the ` IDE authoring category`.
 
 
 
-`资源管理器`文档中也有着组件命名规则等与UI组件相关的介绍，在`设计模式基础`分类的`《资源管理器介绍》`。
+The presentation of each component in the component library is described in detail in `《Attribute Setter Documentation》`. ` The design pattern base` come with a detailed classification of the `IDE component properties`.
+
+
+`The resource manager document` also has an introduction to UI components, such as nomenclature naming rules, related to the introduction of the `《resource manager introduction》` in the `design pattern base classification`.
 
 
 

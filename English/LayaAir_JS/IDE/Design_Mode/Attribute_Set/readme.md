@@ -1,369 +1,369 @@
-# 属性设置器
+# Attribute setter
 
-​         属性设置器是我们查看并编辑当前选中组件属性的工作区域。在场景编辑器或层级管理器中选中组件，就会在属性设置器中显示该组件的属性以供查询和编辑。
+​         The attribute setter is the working area where we view and edit the component properties of the currently selected component. When you select components in the scene editor or the hierarchy manager, you will display the properties of the component in the attribute setter for query and edit.
 
-属性设置器面板如图1所示，从上到下通常为： 组件或节点名、**公用**属性、**常用**属性、**宽高及位置**、**旋转及缩放**、**其他**等等。
+Attribute setter panel shown in Figure 1, from top to bottom are usually: component or node name, **common** attributes, **commonly used**attributes, **width and height**, **location, rotation** , **scaling** and so on
 
  ![imgage](img/1.png)<br/>
-​  （图1）属性面板分组
+​  (Figure 1) attribute panel grouping
 
 
 
-## 1、`公用`属性介绍
+## 1. Introduction of  `public` properties
 
-公用属性中通常是`var`、`name`、`renderType`。如图2-1所示。
+Common attributes are usually `var`,`name`,`renderType`. As shown in Figure 2-1.
 
-![图2-1](img/2-1.png) <br /> (图2-1)
+![图2-1](img/2-1.png) <br /> (picture 2-1)
 
-### 1.1 设置全局变量名称
+### 1.1 Set the global variable name
 
-`Var` ：声名一个唯一的全局变量名称，用于在项目的代码中根据这个名称来调用这个组件。
+`Var` ：Creates a unique global variable name that is used to invoke this component in the code of the project.
 
-### 1.2 设置组件标识名称
+### 1.2  Set the component identification name
 
-`name`： 是组件的标识名称，通常用于层级管理器中区分其它组件，他的父容器也可以通过这个名称找到这个组件。
+`name`： the identity name of a component, which is usually used to distinguish other components in a hierarchical manager, and its parent container can also find this component by this name.
 
-### 1.3 设置组件的节点功能类型
+### 1.3 Set the node function type of the component
 
-`renderType`：节点功能类型，分别有mask、hit、unHit、render、instance五种。
+`renderType`：node function types, respectively, mask, hit, unHit, render, instance five kinds.
 
-#### 1.3.1 设置为遮罩
+#### 1.3.1 Set as mask
 
-　　当组件被设置为`mask`时，该组件为遮罩，其**父级组件**只有mask遮罩区域为可见，效果如动图2-2所示。
+　　When the component is set to `mask`, the component is masked, its **parent component** only mask mask area is visible, the effect shown in Figure 2-2.
 
-　　![动图2-2](img/2-2.gif) <br /> （动图2-2）
+　　![动图2-2](img/2-2.gif) <br /> （Picture 2-2）
 
-#### 1.3.2 设置点击区域与非点击区域
+#### 1.3.2 Settings click area and non click area
 
-　　当组件被设置为`hit`时，该组件所在的父级组件区域可以被点击。当组件被设置为`unHit`时，该组件所在的父级组件区域为非点击区域。**如果点区域hit的组件与非点击区域unHit的组件叠加时**，非点击区域unHit优先级更高。如图2-3所示，绿色圆所在的非点击区域（unHit），包括被叠加的嘴巴区域都不可以被点击。只有头部的红色半月区域可以被点击。
+　　When the component is set to `hit`, the parent component region in which the component is located can be clicked. When the component is set to `unHit`, the parent component area of the component is non-clicked area.**If the component of the point area hit is superimposed with the component of the non click area unHit**, the unHit priority is higher in the non clickable region. As shown in Figure 2-3, the non clickable region of the green circle (unHit), including a overlapping mouth area, can not be clicked. Only the red half moon area of the head can be clicked.
 
-　　![图2-3](img/2-3.png) <br />(图2-3)
+　　![图2-3](img/2-3.png) <br />(Picture 2-3)
 
-#### 1.3.3 设置为List的render
+#### 1.3.3  Set to List for render
 
-　　当该组件被设置为`render`时，该组件可重复渲染，用于列表List的制作。在制作列表的思路上，需要先将多个组件全选后通过ctrl+B设置为box容器。并将该容器的renderType属性设置为render。然后再使用ctrl+B将该box设置为List。如动图2-4所示。
+　　When the component is set to `render`, the component can be rendered repeatedly for the production of List List. In the production of the list of ideas, the need to first select all components through ctrl + B Set to box container. And set the renderType property of the container to render. And then use ctrl + B to set the box as a List. As shown in Figure 2-4.
 
-![动图2-4](img/2-4.gif) <br />(动图2-4)
+![动图2-4](img/2-4.gif) <br />(Picture 2-4)
 
-#### 1.3.4 设置为单例instance
+#### 1.3.4 Set to single instance instance
 
-　　当该组件被设置为`instance`时，该组件为单例组件，当多处重复使用的时候，单例组件仅会被实例化一次。节约性能开销。
-
+　　When the component is set to `instance`, the component is a single instance component, and when multiple instances are reused, the singleton component will only be instantiated once. Save performance overhead.
 
 
 　　
 
-## 2、`常用`属性介绍
+## 2. Introduction of `common` attributes
 
-在常用属性里，有一些操作是通用的。这里我们分别介绍一下。
+In the commonly used attributes, there are some operations are generic. Let's introduce them separately.
 
-### 2.1 九宫格操作(sizeGrid)
+### 2.1 Scale grid operation (sizeGrid)
 
-九宫格是通过四条直线将UI分隔成9块，如果出现对UI的拉伸操作，中间区域为计算填充，其它区域会保持原有设计，无论UI如何拉伸都会保持不变。是游戏开发中常用的功能。
+The UI is divided into 9 blocks by four straight lines. If there is a stretching operation for UI, the middle area for the calculation of the fill, and the rest of the region will maintain the original design, no matter how stretched UI will remain unchanged. It is a common function in game development.
 
-常用属性中的`sizeGrid`属性正是九宫格设置，通过点击属性输入栏右侧的`grid`按钮，可以进入九宫格设置的可视化操作面板。如图3-1所示。
+The `sizeGrid`attribute in the commonly used attributes is the setting of the nine squares. By clicking the `grid`button on the right side of the attribute input column, you can enter the visual operation panel set up by the square lattice. As shown in figure 3-1.
 
-![图3-1](img/3-1.png) <br / > (图3-1)
+![图3-1](img/3-1.png) <br / > (Picture 3-1)
 
-当打开九宫格设置后，左侧为效果预览区、右侧为九宫格可视化操作区。通过鼠标拖拽的方式改变九宫格填充区域，即时获得预览效果，调整完点击确定即可。操作如动图3-2所示。
+When you open the nine square settings, the left side is the effect preview area, the right side is the nine square visual operation area. Through the mouse drag and drop way to change the nine square filling area, immediately get preview effect, adjust click click ok. The operation is shown in figure 3-2.
 
-![动图3-2](img/3-2.gif) <br /> (动图3-2)
+![动图3-2](img/3-2.gif) <br /> (Picture 3-2)
 
-### 2.2 皮肤设置(skin)
+### 2.2 Skin Settings
 
-`skin`属性可以设置改变组件的皮肤。除了手动在属性栏内输入皮肤的路径外，还可以从资源管理器中直接拖动资源到`skin`属性输入栏，快速实现皮肤的切换。另外，点击属性输入栏右侧的`skin按钮`，可以从众多的资源中，快速定位到当前的资源。操作如动图3-3所示。
+`skin` property can be set to change the skin of the component. In addition to manually in the path attribute column enter the `skin`, also from the Explorer drive directly to the skin property of resource input field, fast switching of the `skin`. In addition, click the skin button on the right of the property input bar, which can quickly locate the current resource from a large number of resources. The operation is shown in figure 3-3.
 
-![动图3-3](img/3-3.gif) <br /> (动图3-3)
-
-
-
-### 2.3 皮肤状态切割(stateNum)
-
-在Button、checkBox等组件的使用中，组件的皮肤资源是多态竖向排列组成，如图3-4所示。
-
-![图3-4](img/3-4.png) <br /> (图3-4)
-
-#### 皮肤的切割方式：
-
-三态是将皮肤图片按竖直方向以等比分割的形式分为3部分，如图3-4所示，**从上至下**依次为`弹起或离开状态`皮肤、 `经过状态`皮肤、 `按下和选中`（*保持按下*）状态皮肤，三态常用于PC浏览器中。
-
-在移动设备上，通常只采用两态，图片以竖直方向被等比切割为两部分，上面的部分为`弹起或离开状态状态`皮肤，下面的部分为 `经过和按下以及选中状态`（*保持按下*）皮肤。
-
-单态不切割图片，无论什么状态，皮肤只有一种，保持不变。
-
-#### 用stateNum指定皮肤按几态切割：
-
-对于存在状态区分的组件，stateNum的属性值决定皮肤资源图片的切割方式。默认的stateNum属性值为3，也就是说默认按3态按钮进行切割，等比分割为3部分。如果是两态按钮，需要将stateNum的属性值设为2，等比切割为2部分。单态按钮设置为1，不进行切割。
-
-　这里需要注意的是，指定按钮状态，需要与按钮皮肤对应好。如果是三态的按钮皮肤，stateNum设置为2，切割后如图3-5所示，是错误的。
-
-![图3-5](img/3-5.png) <br > (图3-5)
+![动图3-3](img/3-3.gif) <br /> (Picture 3-3)
 
 
 
-### 2.4 强大的runtime属性
+### 2.3 skin state cutting (stateNum)
 
-`runtime`是属性管理器中非常强大的一个组件扩展功能。通过在runtime属性中设置逻辑类，实例时创建的不再是组件的可视类，而是runtime属性中指定的逻辑类。该属性中需要指定逻辑类的全路径，例如“game.user.player”。
+Components such as buttons and checkBox, the skin resources of the component are composed of polymorphic vertical permutations, as shown in Figure 3-4.
+
+![图3-4](img/3-4.png) <br /> (Picture 3-4)
+
+#### The way of skin cutting:
+
+The three state is the skin pictures in the vertical direction to the geometric segmentation form is divided into 3 parts, as shown in Figure 3-4,**from top to bottom up** or `leave the state`of skin,  `, through the state`, ` press and select`（*Keep pressed*）state skin,  three state commonly used in the PC browser.
+
+On mobile devices, usually by only two states, geometric picture was cut into two parts in the vertical direction, the upper part is `up or leave the state` of the skin,  the following part is  `after and press and select the state`（*press down*） skin
+
+Single state without cutting the picture, no matter what state, the skin is only one, remain unchanged.
+
+#### Specified skin with stateNum by several states:
+
+For components that have status differences, the attribute values of stateNum determine the way to cut skin resources pictures. The default stateNum attribute value is 3, that is to say, the default is cut by the 3 State button, and the geometric segmentation is divided into 3 parts. If it is a two state button, you need to set the attribute value of stateNum to 2, and cut it into 2 parts. The single button is set to 1, not cut.
+  
+
+　It should be noted that, specify the button state, need to correspond to the button skin. If it is a tri-state button skin, stateNum is set to 2, as shown in Figure 3-5 after cutting, is wrong.
+
+
+![图3-5](img/3-5.png) <br > (Picture 3-5)
 
 
 
-### 2.5 可视化颜色设置
+### 2.4 Powerful runtime properties
 
-在color的属性设置时，可以手动输入颜色值，也可以点击右侧的颜色设置按钮，在颜色设置面板中指定颜色，然后点击面板外的任意区域即可完成可视化颜色设置，如动图3-6所示。
+`runtime`is a very powerful component extension in the Property Manager. By setting the logical class in the runtime property, the instance is no longer the visual class of the component, but the logical class specified in the runtime property. This attribute needs to specify the full path of the logical class, such as “game.user.player”。
 
-![动图3-6](img/3-6.gif) <br />（动图3-6）
 
-### 2.6 数字的拖拉调节
 
-如果属性值是数字的话，输入框边上会有一个拖拉调节面板。很多开发者没有注意到这个小技巧，通过鼠标左键点击调节面板，然后向上拖动或向下拉，即可对数字进行微调，场景编辑器中的对应组件也会产生即时的可视化变化。如动图3-7所示。
+### 2.5 Visualize color settings
 
-![动图3-7](img/3-7.gif) <br /> (动图3-7)
+The color property is set, you can manually enter the color value, can also click on the right side of the color settings button in the color settings specify the color panel, then click on the outer panel of arbitrary region can complete the visual color settings, such as shown in figure 3-6.
+
+![动图3-6](img/3-6.gif) <br />（Picture 3-6）
+
+### 2.6 Digital drag adjustment
+
+If the attribute value is numeric, there is a drag adjustment panel on the edge of the input box. Many developers are not aware of this trick by adjusting panel click the left mouse button, and then drag up or down, you can fine tune the number of components corresponding to the scene editor will produce instant visual changes. As shown in figure 3-7.
+
+![动图3-7](img/3-7.gif) <br /> (Picture 3-7)
 
 ### 
 
 
 
-## 3、宽高及位置属性
+## 3. Width, height and location attributes
 
-宽高及位置属性在UI制作中有着很重要的作用。主要用于调整位置及UI屏幕适配（图4）。
+The width, height and position attributes play an important role in UI production. Mainly used for adjustment of position and UI screen adaptation (Figure 4).
 
-![图片1.png](img/4.png)<br />（图4）
+![图片1.png](img/4.png)<br />（Picture 4）
 
-### 3.1 x、y属性
+### 3.1 x, y attribute
 
-x与y属性是组件在场景编辑器中的x与y轴坐标。
+The X and Y attributes are axis coordinates of the component in the scene editor.
 
-场景编辑器的左上角为坐标原点`（0, 0）`。 以原点为中心，x轴向右延伸为正坐标增加，y轴向下为正坐标增加。
+The top left corner of the scene editor is the coordinate origin `（0, 0）`. With the origin as the center, the X axis extends to the right coordinate and the Y axis increases to the normal coordinate.
 
-在`场景编辑器`中选中组件后按住鼠标可以移动修改x与y轴位置，也可以在属性输入框中设置固定值。
-
-
-
-### 3.2  width、height宽高属性
-
-在不改变组件大小的情况下，组件的宽高虽会自动计算，但在属性面板中并不会显示出来。当通过约束框或固定值设置对组件进行了缩放重置后，宽高属性会显示出来，同时也可以进行数字的拖拉调节。
-
-不选择任意组件时，当前宽高为页面宽高。
-
-*Tips：部分组件只改能改变约束框大小，实际组件并不会放大，但鼠标点击区域会缩放到约束框的大小，例如CheckBox。*
+After selecting the component in the `Scene editor`, holding the mouse, you can move the X and Y axis positions, and you can also set the fixed values in the property input box.
 
 
+### 3.2  width, height wide and high attributes
 
-### 3.3  UI适配属性
+Without changing the size of the component, the width of the component is automatically calculated, but it does not appear in the property panel. When the components are scaled and reset by the constraint frame or fixed value setting, the high and wide attributes will be displayed, and the digital drag adjustment can also be carried out.
 
-`left、right、top、bottom`四个属性主要用于组件与页面边缘距离位置适配。
+When the component is not selected, the current width is wide and wide.
 
-`centerX、centerY`两个属性主要用于组件与页面中心位置适配。
+*Tips：some components only change the size of the constraint box, and the actual component does not zoom in, but the click area of the mouse will zoom to the size of the constraint box, such as CheckBox.*
 
-在游戏开发中，我们不可能把所有屏幕分辨率全部考虑到，有的分辨率高，有的分辨率低。如果游戏项目代码中使用了全屏适配，组件又固定了位置，在不同分辨率的屏幕下就会造成UI组件错位现象。我们需要按以下方式进行调整。
 
-#### 3.3.1 边距位置适配
 
-**设计目标**：在游戏右上角放一个头像，始终保持屏幕上边缘和右边缘50px。
+### 3.3  UI adaptation property
 
-**错误的实现效果**：
+`left、right、top、bottom` four attributes are mainly used for component and page edge distance location adaptation.
 
-如果我们按某一种屏幕分辨率为组件的x与y设置固定值，则会出现动图5-1的效果。与设计目标不符。
+`centerX、centerY` are mainly used for the adaptation between the component and the page center.
+
+In game development, it's impossible to take all screen resolutions into account, with high resolution and low resolution. If the game project code uses full screen adaptation, the component is fixed, and the UI component dislocation occurs under the screen with different resolutions. We need to adjust in the following way.
+
+#### 3.3.1 margin location adaptation
+
+**Design goal**：Put an avatar in the top right corner of the game, always keep the edge and right edge of the screen 50px.
+
+**Wrong Achievements**：
+
+If we set a fixed value of X and Y on the basis of a certain screen resolution, it will appear the effect of figure 5-1. Inconsistent with design objectives.
 
 ![图5-1](img/5-1.gif) <br />
- (动图5-1) 为组件的x与y设置固定值时，不同屏幕分辨率效果。
+ (Picture 5-1) when the fixed values of the components X and y are set, different screen resolution effect.
 
-**正确的实现效果**：
+**Correct implementation effect**：
 
-`left、right、top、bottom`四个属性分别基于父容器的左边缘、右边缘、上边缘、下边缘。所以要实现在不同屏幕分辨率下的相同居右效果，需要设置right与top的属性值，我们把它都设置成50像素。设置后的运行效果如动图5-2所示。
+`left、right、top、bottom` are based on the left edge, right edge, upper edge and lower edge of the parent container respectively. So to achieve the same right effect at different screen resolutions, you need to set the attribute values of right and top, and we set it to 50 pixels. The running effect after setting is shown in figure 5-2.
 
-![动图5-2](img/5-2.gif) <br />(动图5-2)
+![动图5-2](img/5-2.gif) <br />(Picture 5-2)
 
-**屏幕适配对边距设置的影响**：
+**The effect of screen adaptation on margins setiings**：
 
-这里特别要注意的是，`left、right、top、bottom`的属性效果是基于父容器（页面）的各个边缘，而不是屏幕的各个边缘。父容器（页面）的分辨率一定要与项目中Laya.init()设置的分辨率相同，如果没有设置成相同，那么并不能实现动图5-2的运行效果。
+It is particularly important to note that the properties of`left、right、top、bottom` are based on the edges of the parent container (page), rather than on the edges of the screen. The resolution of the parent container (page) must be the same as the resolution set by the Laya.init () in the project. If it is not set to the same, then the operation effect of Figure 5-2 can not be achieved.
 
 
 
-#### 3.3.2 边距的拉伸适配
+#### 3.3.2 Stretch adaptation for margins
 
-除了居于某一个边缘的适配作用外，同时设置left、right、top、bottom的属性值，还可以根据不同屏幕对组件进行拉伸适配。例如我们将left、right、top、bottom的属性值都设置为100，运行后如动图5-3所示。
+In addition to living in an edge of the adaptation role, while setting the left, right, top, bottom of the property value, but also according to the different components of the screen for tensile fit. For example, we will be left, right, top, bottom of the property value is set to 100, after running, as shown in Figure 5-3.
 
-![动图5-3](img/5-3.gif) <br > (动图5-3)
+![动图5-3](img/5-3.gif) <br > (Picture 5-3)
 
-*Tips：拉伸适配的边距设置方式通常需要结合九宫格来实现。*
+*Tips：Stretch fit margin settings usually need to combine Jiugongge to achieve.*
 
 
 
-#### 3.3.3 中心位置适配
+#### 3.3.3 Center position adaptation
 
-中心适配常用于基于屏幕中间的游戏启动LOGO，弹出提示框等。我们可以通过centerX、centerY进行位置居中设置，如图6-1、6-2所示。
+Center adaptation is often used in the middle of the screen based on the game start LOGO, pop-up prompt box and so on. We can centero, centerY center position, as shown in Figure 6-1,6-2.
 
-![图片1.png](img/6-1.png)<br />（图6-1）
+![图片1.png](img/6-1.png)<br />（Picture 6-1）
 
-![图片1.png](img/6-2.png)<br />（图6-2）
+![图片1.png](img/6-2.png)<br />（Picture 6-2）
 
 
 
-## 4、旋转及缩放属性
+## 4. Rotation and scaling properties
 
-旋转及缩放属性在游戏UI中，特别是在IDE制作动画时经常用到。
+Rotation and scaling properties are often used in game UI, especially when IDE animation is made.
 
-#### 4.1 修改轴心点
+#### 4.1 Modify the pivot point
 
-“轴心点”：组件的旋转或缩放中心点，默认在组件中的原点`（0,0）`点位置。
+“Pivot point”：the center of rotation or scaling of the component, and the default position of the origin `（0,0）` in the component.
 
-pivotX、pivotY、anchorX、anchorY四个属性都是用于修改轴心点位置。
+pivotX、pivotY、anchorX、anchorY are used to modify the location of the pivot point.
 
-pivotX、pivotY（轴心点）是通过改变组件轴心点XY坐标的固定值来修改轴心点位置。
+pivotX、pivotY (axis point) is to change the fixed point of the XY coordinates of the axis point of the component to modify the location of the axis point.
 
-anchorX、anchorY（锚点）是通过X与Y轴的组件宽或高的百分比计算出轴心点坐标位置，如图7所示，宽与高的50%计算出的坐标正好是中心点坐标位置。
+anchorX、anchorY (anchor point) calculate the axis point coordinate position by the percentage of the width or height of the component of X and Y axis. As shown in Figure 7, the coordinates calculated by the width and height of 50% are just the coordinates of the center point.
 
-![图7](img/7.png)<br />（图7）
+![图7](img/7.png)<br />（Picture 7）
 
-**Tips**：*通过锚点是一种非常方便快捷的设置轴心点方式。但是锚点方式只能对UI组件设置轴心点，对于Graphics组件以及Sprite等2D基础组件的轴心点只能通过设置`pivotX与pivotY`的方式实现。*
+**Tips**：*Through anchor point is a very convenient and quick way to set the axis point. However, the anchor point mode can only set the axis point for the UI component, and the axis point of the Graphics component and Sprite and other 2D basic components can only be achieved by setting `pivotX and pivotY`.*
 
-#### 4.2 修改倾斜角度
+#### 4.2 Modify the tilt angle
 
-skewX、skewY是以轴心点为中心进行水平、垂直角度倾斜，修改属性值效果如动图8所示。
+skewX, skewY is the center of the axis as the center of the horizontal, vertical angle tilt, modify the value of the property as shown in Figure 8.
 
-![动图8](img/8.gif)<br />（动图8） 
+![动图8](img/8.gif)<br />（Picture 8） 
 
 
 
-#### 4.3 修改组件缩放大小
+#### 4.3 Modify component zoom size
 
-scaleX、scaleY是以轴心点为中心进行水平、垂直大小缩放。
+scaleX, scaleY is the center of the axis as the center of the horizontal, vertical size scale.
 
-默认为1，不缩放；正数值越大，缩放尺寸越大。
+The default is 1, not zoom; the larger the positive value, the larger the scaling size.
 
-缩放到0，不可见；
+Zoom to 0, not visible;
 
-`-1`为**镜像**，效果如动图9所示 。负数值越大，镜像后缩放尺寸越大。
+`-1` is **mirror**, and the effect is shown in figure 9. The larger the negative value, the larger the scale after the mirror image.
 
-![动图8](img/9.gif)<br />（动图9） 
+![动图8](img/9.gif)<br />（Picture 9） 
 
-**Tips**：*如果轴心点在中心，可以原地镜像，比如角色两个方向可以使用同一个资源实现。*
+**Tips**：*if the pivot point is in the center, it can mirrorthe original, for example, the two directions of the role can be implemented with the same resource.*
 
 
 
-## 5、其他通用属性介绍
+## 5. Introduction of other general attributes
 
-LayaAirIDE提供了大量的组件，它们都有一些相同的其他通用属性，因为它们大都继承于Component组件基类。在这里我们主要介绍一下其他属性中的通用部分，组件本身的特殊属性，我们将在每个单独组件介绍时讲解。
+LayaAirIDE provides a large number of components, which have some of the same generic properties as most of them inherit from the base class of the Component component. Here we introduce the general part of other attributes, the special properties of the component itself, which we'll explain when each individual component is introduced.
 
-通用属性包括以下几类
+Common attributes include the following categories
 
-显示相关属性：alpha、visible
+Show related properties：alpha、visible
 
-缓存相关属性：cacheAs、staticCache
+Cache related attributes：cacheAs、staticCache
 
-鼠标操作相关属性：disabled、gray、htTestPrior、mouseEnabled、mouseThrough
+Mouse operation related attributes：disabled、gray、htTestPrior、mouseEnabled、mouseThrough
 
-label相关属性：labelAlign、labelColors、labelBold、labelFont、labelPadding、labelSize、labelStroke、labelStrokeColor、strokeColor
+label Related attributes：labelAlign、labelColors、labelBold、labelFont、labelPadding、labelSize、labelStroke、labelStrokeColor、strokeColor
 
 
 
-### 5.1 显示相关属性
+### 5.1  Display relevant attributes
 
-显示相关属性相对比较容易理解，显示对象都具有alpha和visible属性。
+Displaying related properties is relatively easy to understand, and display objects have alpha and visible properties.
 
-`alpha`调整显示对象透明度，数值在0-1之间，0为全部透明，1为不透明，区间内属于不同程度半透明。
+`alpha` adjusts the transparency of the object, the value is between 0-1, 0 is all transparent, 1 is opaque, and the interval belongs to different degrees of translucency.
 
-**Tips**：显示对象alpha数值无论为多少，如果加了鼠标监听，那么它都支持鼠标事件，哪怕alpha为0的情况下，鼠标事件也会发生。
+**Tips**：display object alpha value no matter how much, if you add a mouse monitor, then it supports mouse events, even if the alpha is 0 case, the mouse event will occur.
 
-`visible`控制组件的是否显示，该属性为布尔值，默认值为true，正常显示。当值为false时，组件不显示出来，并且鼠标事件无效果。
+`visible` Whether the component is displayed, the property is a Boolean value, the default value is true, the normal display. When the value is false, the component is not displayed, and the mouse event does not work.
 
-*Tips：visible为false时不显示是指在浏览器中运行时不显示，在IDE中设置为false不会即时产生隐藏变化。*
+*Tips：when visible is false, it doesn't display what the browser show. Setting false in IDE will not produce hidden changes immediately.*
 
 
 
-### 5.2 缓存相关属性
+### 5.2 Cache-related attributes
 
-关于缓存优化方面的属性，cacheAs、staticCache建议单个组件不要使用，不经常变化的复杂页面时再使用。
+On the cache optimization of the attributes, cacheAs, staticCache suggested that a single component do not use, do not often change the complex pages when used.
 
 
 
-**当游戏中有大量的UI，并且一个UI有多个节点，变化较小时，我们推荐使用cacheAs（大部分UI都可以使用）。**
+**When there is a large amount of UI in the game and a UI has multiple nodes, we recommend the use of cacheAs (most of the UI can be used).**
 
-例如我们使用的LayaAirIDE软件，软件中的很多面板，例如属性设置器、资源管理器、项目管理器等，它们的节点子对象很多，但不是很频繁的改动，因此我们都使用了cacheAs进行缓存，提高了渲染效率。
+For example, we use the LayaAirIDE software, a lot of panel in the software, such as property, resource management, project management, node of their children a lot, but not change very frequently, so we use the cacheAs cache, to improve the rendering efficiency.
 
 
 
-**对于经常变化的复杂UI，可以把UI分成两层，较少变化的一层使用cacheAs，经常变化的层不使用。**例如有“倒计时”显示的UI，我们也可以把它分成倒计时部分和其他部分，其他部分进行cacheAs，倒计时部分不进行cacheAs。
+**For frequently changing complex UI, the UI can be divided into two layers, the less variable one uses cacheAs, and the frequently changed layer does not.**For example, there are “countdown” display of UI, we can also be divided into the countdown part and other parts, the other part of the cacheAs, the countdown part does not cacheAs.
 
 
 
-开发时使用cacheAs需认真学习理解，错误的理解和使用缓存机制反而会降低性能。下列是两个主要属性的详细说明：
+The use of cacheAs in development requires careful learning and understanding. The wrong understanding and the use of caching mechanisms will degrade performance. The following is a detailed description of the two main attributes:
 
 **cacheAs：**
 
-缓存组件，是否缓存为静态图像，合理作用能提高性能 。它有"none"，"normal"和"bitmap"三个值可选。
+Whether cache components are cached as static images can improve performance reasonably. It has three values: "none"，"normal" and "bitmap".
 
-**"none选项"：**表示不做任何缓存。
+**"none option"：** that does not make any cache.
 
-**"normal选项"：**
+**"normal options "：**
 
-​	canvas模式下进行画布缓存 ：它相当于把由多个子对象组成的UI缓存成一张位图，游戏每帧渲染时，只是渲染缓存的位图，而不是把所有子对象全部渲染一次，因此节省了渲染开销，提高了性能。
+​	canvas mode canvas cache: it is equivalent to a number of sub-objects composed of the UI cache into a bitmap, the game rendering each frame, just render the renderbuffer  bitmap, rather than all the child objects all rendering once, so save Rendering overhead to improved performance.
 
-​	webgl模式下进行命令缓存：它相当于只缓存了子对象遍历过程及程序命令组织，未缓存成一张位图，在游戏每帧渲染时，不用再次去遍历子对象，而是直接把子对象按照遍历好的层级进行显卡渲染，它不会减少drawcall，不会增加内存损耗，渲染性能中等。
+​	webgl mode command cache: it is equivalent to only cache the sub-object traversal process and program command organization, not cached as a bitmap in the game every frame rendering, do not once again to traverse the sub-object, but directly to the sub-objects in accordance with Traverse the good level of graphics rendering, it will not reduce the drawcall, will not increase the memory loss, rendering performance medium.
 
-**Tips**: *cacheAsBitmap属性功能等同cacheAs属性的normal模式，cacheAsBitmap属性为兼容旧版本IDE而保留，当前如果有相关需求，建议使用cacheAs的normal进行设置。*
+**Tips**: *cacheAsBitmap attribute function equivalent cacheAs attribute normal mode, cacheAsBitmap attributes compatible with the old version of the IDE and the current if there is a relevant demand, it is recommended to use cacheAs normal settings.*
 
-**"bitmap选项"**：
+**"bitmap option"**：
 
-​	canvas模式下依然是画布缓存。
+​	canvas mode is still canvas cache.
 
-​	webgl模式下进行renderTarget缓存：它相当于把多个子对象组成的UI 缓存成一张位图并提交给显卡进行每帧渲染，减少了drawcall，渲染性能最高。需注意的是缓存的位图会额外增加一部分内存开销，缓存的位图越大，内存开销越大。且缓存位图大小不能超过2048。这种模式在不断重绘时也会增加CPU的开销。
+​	webgl mode renderTarget cache: it is equivalent to a number of sub-objects composed of the UI cache into a bitmap and submitted to the graphics for each frame rendering, reducing the drawcall, rendering the highest performance. It should be noted that the cache bitmap will be an additional part of the memory overhead, the larger the cache bitmap, the greater the memory overhead. And the size of the cache bitmap can not exceed 2048.
 
-**Tips**：*当cacheAs选择"normal"和"bitmap"时，子对象发生变化，会自动重新缓存，同时也可以手动调用reCache方法更新缓存。* 
+**Tips**：*when cacheAs selects "normal" and "bitmap", the child object changes, automatically re cache, and also manually calls the reCache method to update the cache.* 
 
 
 
 **staticCache：**
 
-设置cacheAs为非"none"时此值才有效，staticCache=true时，子对象变化时不会自动更新缓存，只能通过调用reCache方法手动刷新。
+This value is valid when the cacheAs are set to "none". When staticCache = true, the child object does not automatically update the cache when it changes, and can only be refreshed manually by calling the reCache method.
 
-例如一些数据较多的UI，当UI打开在读取数据时，可能会不停的更新UI显示，这时可以设置staticCache为true，当数据读完后，再通过reCache方法一次性把数据读取并刷新。
+For example, some data are UI, when UI opened at the time of reading data, update the UI may not stop, then you can set the staticCache to true, when the data is read, and then through the reCache method to read the data and refresh time.
 
-具体实例请和数据分析请参考“技术文档—2D进阶篇—cacheAs性能优化”
+For specific examples and data analysis, please refer to “technical documentation - 2D advanced chapter - cacheAs performance optimization.”
 
 
 
-### 5.3 鼠标操作相关属性
+### 5.3 mouse operation related attributes
 
-鼠标操作相关属性说明及演示效果如下
+The mouse operation related attributes description and demonstration effect is as follows
 
-| **其他属性**     | **功能说明**                                 |
+| **Other attribute**     | **function description**                                 |
 | ------------ | ---------------------------------------- |
-| mouseEnabled | 是否接受鼠标事件。 默认为false，如果监听鼠标事件，则会自动设置本对象及父节点的属性 mouseEnable 的值都为 true（如果父节点手动设置为false，则不会更改）。 |
-| disabled     | 是否禁用，禁用后变灰，且不接收鼠标事件。                     |
-| gray         | 是否变灰，变灰后仍能接受鼠标事件。                        |
+| mouseEnabled | Whether to accept mouse events. The default is false, if the monitor mouse events, it will automatically set the object and the parent node properties mouseEnable value is true (if the parent node is set to false, it will not change). |
+| disabled     | whether inactive or not, and does not receive mouse events.                     |
+| gray         | Whether the gray is grayed out or grayed out can still accept the mouse event.                        |
 
-![动图10](img/10.gif)<br />（动图10） 
+![动图10](img/10.gif)<br />（Picture 10） 
 
 **mouseThrough：**
 
-组件mouseEnabled=true鼠标可用时，是否可穿透。默认值为false，如果设置为true，则点击空白区域可以穿透过去，只针对自身有效。
+Component mouseEnabled = true whether the mouse is available, whether it can penetrate. The default value is false. If set to true, clicking on an empty area can penetrate it, only for itself.
 
 **hitTestPrior：**
 
-是否优先检测自己。默认为false， 鼠标碰撞检测是优先检测子对象，然后冒泡到父对象，如果hitTestPrior=true 鼠标碰撞优先检测本对象，本对象被击中后，才进一步检测子对象。 对于已知大小的容器（特别是根容器），默认为false，设置此值为true，能减少节点碰撞，提高性能。
+Whether to preferentially detect yourself. The default is false, the mouse collision detection is the first detection of sub-objects, and then bubbling to the parent object, if hitTestPrior = true mouse collision priority detection of the pair
 
-例如一个较复杂的Box，内部有多个子对象，但我们只需要对Box本身进行鼠标监听，因此可以设置hitTestPrior为true，鼠标点击的时候，省去了从子对象冒泡到Box的过程，直接触发了鼠标事件，从而提高了性能。
+For example, a more complex Box, internal sub object, but we only need to listen to the Box itself, so you can set the hitTestPrior to true, when a mouse click, the process of eliminating the bubbles to the Box object, directly triggered mouse events, thereby improving performance.
 
-*Tips：UI的View组件hitTestPrior默认属性值为true。*
+*Tips:UI View component hitTestPrior default attribute value is true.*
 
 
 
-### 5.4 label相关属性
+### 5.4 label related attributes
 
-很多组件的内部包含了label标签，比如Button、CheckBox、Tab等。它们的其他属性中也有相同的label属性设置，功能说明请看下表
+Many components contain label tags, such as Button, CheckBox, Tab, and so on. They also have the same label attribute settings in other attributes. See the table below for functional instructions
 
-| **属性名**          | **功能说明**                                 |
+| **Property name**          | **function description**                                 |
 | ---------------- | ---------------------------------------- |
-| labelAlign       | 标签对齐模式，默认为居中对齐。注：在CheckBox中无效            |
-| labelColors      | 表示标签各个状态下的文本颜色。 格式: "upColor,overColor,downColor,disableColor"。默认为“蓝色，绿色”。 |
-| labelBold        | 表示标签文本标签是否为粗体字。                          |
-| labelFont        | 表示文本标签的字体名称，以字符串形式表示。IDE中可选择。            |
-| labelPadding     | 表示文本标签的边距。 格式："上边距,右边距,下边距,左边距"。         |
-| labelSize        | 表示文本标签的字体大小。                             |
-| labelStroke      | 文字描边宽度（以像素为单位）。 默认值0，表示不描边。              |
-| labelStrokeColor | 文字描边颜色，以字符串表示。 默认值为 "#000000"（黑色）;       |
-| strokeColor      | 表示各个状态下的描边颜色。 格式: "upColor,overColor,downColor,disableColor"。 |
+| labelAlign       | label alignment mode, the default is centered. Note: Invalid in the CheckBox            |
+| labelColors      |  Indicates the color of the text in each state of the label. Format: "upColor,overColor,downColor,disableColor"The default is “blue, green”。 |
+| labelBold        | indicates whether the tag text label is bold.                          |
+| labelFont        | represents the font name of a text tag and is represented as a string. Optional in IDE.            |
+| labelPadding     | Indicates the margin of the text label. Format: "top margin, right margin, bottom margin, left margin".         |
+| labelSize        | Represents the font size of text labels.                             |
+| labelStroke      | text strokes width (in pixels). The default value of 0, indicates  no stroke.              |
+| labelStrokeColor | text color color, expressed as a string. The default value is "#000000"（black）;       |
+| strokeColor      | represents the stroke color in each state. Format: "upColor,overColor,downColor,disableColor". |
 
-*Tips：以上表格的属性在label组件中不含label，但作用完全一致，比如`labelAlign`属性与label组件的`align`属性完全一致。*
+*Tips：The above table attributes in the label component is not label, but the role of exactly the same, such as `labelAlign` attribute and `align` component attribute exactly the same*

@@ -1,21 +1,20 @@
-# 对齐模式：水平对齐与垂直对齐
+# Align mode: Horizontal and vertical alignment
 
-> 关于对齐模式方面，主要是常规的水平对齐与垂直对齐。LayaAir引擎可以方便快捷的配置，下面我们先了解一下API的参数说明，再通过示例代码进行介绍。
->
+> Horizontal and vertical defined the main alignment mode. LayaAir engine can be convenient and set a quick configuration, below we first understand the API parameters description, and then through the example code to introduce.
 
-参数说明如图1、图2所示：
+The parameters are shown in Figure 1 and Figure 2:
 
 ​	![image.png](img/1.png)<br/>
-​	图（1）屏幕适配的对齐模式
+​	Figure (1) Screen adaptation of the alignment mode
 
 
 
 ​	![blob.png](img/2.png)<br/>
-​	图（2）对齐模式中的属性
+​	Figure (2) Attributes in alignment mode
 
 
 
-我们用水平居中和垂直居中的Demo 进行演示：
+We demonstrate with horizontally centered and vertically centered Demo :
 
 ```javascript
 (function()
@@ -39,9 +38,11 @@
 })();
 ```
 
-运行效果如图3所示：
+The running effect is shown in the following picture:
 
 ​	![blob.png](img/3.png)<br/>
-​	图（3）示例的运行结果
+​	Figure 3 shows the results of the operation
 
-其他的对齐模式可以去修改AlignH和AlignV之中的值，在实际编码的过程中体验不同的对齐模式。
+
+
+Other alignment patterns can modify the values in AlignH and AlignV, and experience different alignment patterns during actual encoding.

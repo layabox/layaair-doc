@@ -1,35 +1,35 @@
-# 模板库
+# Template library
 
->  本篇采用LayaAirIDE 1.7.3 bate 截图，如有不同，请下载最新的LayaAirIDE，以最新版本IDE为准。
+>  This article is based on LayaAirIDE 1.7.3 screenshot, if there are difference, please download the latest LayaAirIDE version.
 
 ​        
 
-模板库是我们用来存放和使用模板的工作区域。使用模板可以大大的提升工作人员的效率需求。  
+The template library is the work area where we store and use templates. The use of templates can greatly enhance the efficiency of the staff needs.
 
 
 
-### 一、默认的IOS风格模板
+### 1. Default IOS style template
 
-​        LayaAirIDE默认提供了一批IOS风格的常用UI模板，如图1所示。
+​        LayaAirIDE provides by default a batch of IOS-style common UI templates, as shown in figure 1.
 
 ​        ![图片1.png](img/1.png)<br/>
-​        （图1）
+​        (Picture 1)
 
 ​    
 
-### 二、创建常用模板和自定义模板
+### 2. Create common templates and custom templates
 
-在`项目管理器`中的UI文件，可以直接右键转换成`常用模板`或者是`自定义模板`。如动图2所示。
+The UI file in the ` project manager`  can be directly converted to a `common template` or a `custom template`. As shown in figure 2.
 
-![动图2](img/2.gif) <br /> (动图2)
+![动图2](img/2.gif) <br /> (Picture 2)
 
-转换成功后会自动刷新面板，如是是首次使用模板转换功能，会自动创建对应的模板目录，如图3所示，我们可以看到`IOS`、`常用模板`、`自定义模板`三个分类目录。
+After the successful conversion, will automatically refresh the panel, such as is the first conversion function using a template, create the corresponding template directory, as shown in Figure 3. We can see in three categories : `IOS`, `commonly used templates`, `custom template`.
 
-![图3](img/3.png) <br /> (图3)
+![图3](img/3.png) <br /> (Picture 3)
 
-模板的目录位于`IDE根目录\resources\app\out\vs\layaEditor\laya\template`目录中，如图4所示，
+The directory of the template is located in the `IDE root folder \resources\app\out\vs\layaEditor\laya\template`, as shown in Figure 4.
 
-![图4](img/4.png) <br />(图4)
+![图4](img/4.png) <br /> (Picture 4)
 
-*Tips: 创建的UI模板是可以用于其它项目的通用模板。*
+*Tips: Created UI template is generic that can be used for other projects.*
 

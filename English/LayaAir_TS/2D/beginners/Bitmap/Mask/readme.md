@@ -1,23 +1,24 @@
-# 设置遮罩
+# Set Mask Properties
 
-> LayaAir的遮罩，可以设置一个对象(支持位图和矢量图)，然后根据对象形状进行遮罩显示。 
+> Can set an object ( bitmap and vector diagram), and then apply the mask according to the object shape.
 >
 
 
 
-## 一、遮罩API介绍
+## A. Introduction to mask API
 
-　　遮罩属性位于[laya.display.Sprite](http://layaair.ldc.layabox.com/api/index.html?category=Core&class=laya.display.Sprite#mask) API内，该属性的说明如图1所示：
+　　The mask attribute is located in the [laya.display.Sprite](http://layaair.ldc.layabox.com/api/index.html?category=Core&class=laya.display.Sprite#mask)  API, and the description of the property  is shown in Figure 1:
 
-![1](img/1.jpg)<br />（图1）
+![1](img/1.jpg)<br />(Picture 1)
 
 
 
-## 二、简单的遮罩示例
+## B. simple example of the mask
 
-### 2.1 我们先用LayaAir引擎显示一张位图
+### 1. We first use LayaAir engine to display a bitmap
 
-创建一个`MaskDemo.ts`入口类，编写代码如下：
+Create a MaskDemo.ts entry class and set it as the default application, write the code as follows:
+
 
 ```typescript
 // 程序入口
@@ -45,13 +46,13 @@ class MaskDemo{
 new MaskDemo();
 ```
 
-运行效果如图2所示：
+Compile operation results shown in Figure 2:
 
-![图2](img/2.jpg)<br />（图2）
+![图2](img/2.jpg)<br />(Picture 2)
 
-### 2.2 创建一个圆形的遮罩区域
+### 2.2 Create a circular mask area
 
-用代码创建一个圆形的遮罩区域。通过mask属性，即可实现遮罩效果。继续看代码和注释，我们将2.1示例代码修改为如下代码：
+Creates a circular mask area through code. With the mask property, you can achieve display effects. Keep looking at the code and annotations, we will modify the 2.1  sample code to the following one :
 
 ```java
 // 程序入口
@@ -90,71 +91,72 @@ class MaskDemo{
 new MaskDemo();
 ```
 
-运行效果如图3所示：
+Operational results shown in Figure 3:
 
-![图3](img/3.jpg) <br />（图3）
+![图3](img/3.jpg) <br />(Picture 3)
 
-通过对比代码我们发现，实现遮罩很简单，把创建的显示对象cMask作为遮罩对象赋值给img对象的mask属性，即实现了img显示对象的遮罩效果。
-
-
-
-
-
-## 三、在LayaAirIDE中设置遮罩
-
-> 除了直接在代码中设置遮罩，也可以通过LayaAirIDE方便的给对象设置遮罩。下面我们跟着引导按步骤操作。
-
-步骤一：创建一个UI页面`maskDemo.ui`，导入资源。*(本步骤不了解的请去IDE章节查看UI创建及资源导入相关文档)*
-
-
-
-步骤二：在资源面板拖入一个`Image`组件到场景编辑区，如图4所示
-
-![图4](img/4.jpg) <br /> （图4）
-
-
-
-步骤三：双击进入`Image`组件内部，然后再到组件面板拖入一个`Sprite`组件，如图5所示。
-
-![图5](img/5.jpg) <br /> （图5）
+By comparing the code, we found that the implementation mask is simple. Now we will assign the created display object cMask to mask object property of the img object.
 
 
 
 
 
-步骤四：选中`Sprite`组件，在右侧属性面板中，将公用属性`renderType`设置为`mask`，如图6所示。
+## C. set the mask in LayaAirIDE
 
-![图6](img/6.jpg) <br /> （图6）
+> In addition to setting the mask directly in the code, you can also easily set the mask for the object through LayaAirIDE. Here we follow the steps instructions.
 
-
-
-步骤五：双击进入`Sprite`组件内部，然后再到组件面板拖入一个`Graphics`圆形组件，调整好位置和大小。层级关系如图7所示。
-
-![图7](img/7.jpg) <br /> （图7）
+1. Create a UI page `maskDemo.ui`, import the resource. *(for further details implementation, please refers to the IDE section in UI creation and resource import related documents)*
 
 
 
-步骤六：连续双击编辑区的空白区域退出`Image`组件内部，即可看到遮罩的效果，如图8所示。
+2. Drag a `Image` component into the scene editing area in the resource panel, as shown in Figure 4
 
-![图8](img/8.jpg) <br /> (图8)
-
-
+![图4](img/4.jpg) <br /> (Picture 4)
 
 
 
-## 四、在项目中应用LayaAirIDE设置的遮罩
+3.  double click into the Image component and then drag  component panel into the  Sprite component, as shown in figure 5.
 
-### 4.1 发布UI
-
-　　在IDE界面按`F12`发布制作遮罩效果的UI页面，会在`src/ui`目录下生成UI类，以及`bin/h5/res/atlas`目录下的图集文件，如图9所示。
-
-![图9](img/9.jpg) <br />（图9）
+![图5](img/5.jpg) <br /> (Picture 5)
 
 
 
-### 4.2 使用IDE生成的类与图集，实现遮罩效果
 
-　　创建一个入口类`MaskDemo.ts`，编码如下：
+
+4. Select the `Sprite`component, in the right properties panel,set the common attribute `renderType` to `mask`, as shown in Figure 6.
+
+![图6](img/6.jpg) <br /> (Picture 6)
+
+
+
+5. double-click into the `Sprite` component,  and then drag the component panel into a `Graphics` circular to adjust the location and size. The hierarchy is shown in figure 7.
+
+![图7](img/7.jpg) <br /> (Picture 7)
+
+
+
+6. Double-click in any blank area of the editing to exit the `Image` component, you can see the effect of the mask, as shown in Figure 8.
+
+![图8](img/8.jpg) <br /> (Picture 8)
+
+
+
+
+
+## D. Apply the mask of the LayaAirIDE settings in the project
+
+### 1. release UI
+
+　　In the IDE interface, press `F12` to publish the mask effect of the UI page, will be generated in the `src/ui`directory UI class, and `bin/h5/res/atlas` directory under the Atlas file, as shown in Figure 9.
+
+![图9](img/9.jpg) <br />(Picture 9)
+
+
+
+### 4.2 use the IDE to generate the class and Atlas, to achieve mask effect
+
+　　Create an entry class `Main.ts`, encoded as follows:
+
 
 ```java
 module laya
@@ -188,7 +190,7 @@ module laya
 }new laya.MaskDemo();
 ```
 
-运行效果如图10所示，我们很快捷的实现了遮罩的效果。
+Operational results shown in Figure 10, we quickly achieve the effect of the mask.
 
-![图10](img/10.jpg) <br /> (图10)
+![图10](img/10.jpg) <br /> (Picture 10)
 

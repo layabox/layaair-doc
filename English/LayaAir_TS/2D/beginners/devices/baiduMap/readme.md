@@ -1,11 +1,11 @@
-# 使用百度地图显示当前位置
+# Use Baidu map to show current location
 
-> 本节一步步演示使用watchPosition()在百度地图上标注出当前所在位置。watchPosition方法来自于Geolocation API，**学习本节前请先阅读Geolocation基础文档或Geolocation API文档。**
+> This section will step-by-step demonstrates the use of watchPosition  in the current location on Baidu map. The watchPosition method comes from Geolocation API.**Before you read this section, read the Geolocation base document or the Geolocation API documentation.**
 >
 
-在开始之前需要在index.html中引入百度地图的脚本文件，这个url在百度地图的官方网站可以免费获取到。演示中使用的url是[http://api.map.baidu.com/api?v=2.0&ak=LIhOlvWfdiPYMCsK5wsqlFQD8wW4Bfy6](http://api.map.baidu.com/api?v=2.0&ak=LIhOlvWfdiPYMCsK5wsqlFQD8wW4Bfy6)
+In the beginning before the need to index the introduction of Baidu map script file, the url in Baidu map of the official website can be free to get. The url used in the demo is [http://api.map.baidu.com/api?v=2.0&ak=LIhOlvWfdiPYMCsK5wsqlFQD8wW4Bfy6](http://api.map.baidu.com/api?v=2.0&ak=LIhOlvWfdiPYMCsK5wsqlFQD8wW4Bfy6)
 
-### **一、首先介绍成员变量：**
+### 1. Introduce the member variables:
 
 ```java
 // 百度地图的API
@@ -17,7 +17,7 @@ private var convertor:* = new BMap.Convertor(); // 坐标转换接口
 private var mapDiv:*; // 包含百度地图的div容器
 ```
 
-### 二、接着是构造函数：
+### 2. Then come with constructor:
 
 ```java
 public function WatchPosition()
@@ -35,9 +35,10 @@ __JS__("this.convertToBaiduCoord = this.convertToBaiduCoord.bind(this)");
 }
 ```
 
-​    由于本例不需要使用LayaAir的显示元素，因此舞台尺寸设置为1。百度地图界面的初始化放在init()中。然后是监听设备位置的变化。最后需要注意，函数convertToBaiduCoord()是将获取到的坐标转换至百度地图坐标，由于它是作为convertor.translate()的参数，所以触发时作用域会被改变，因此在这里绑定了该函数的作用域。
+​    this example does not require the display element of LayaAir, the stage size is set to 1. Baidu map interface initialization is in init (). And then monitor the device location changes. Finally, it should be noted that the function convertToBaiduCoord () is to convert the coordinates to Baidu map coordinates, because it is as convertor.translate () parameters, so the scope of the trigger will be changed, so here the function of the binding Scopes.
 
-##### 2.1 init函数：
+
+##### 2.1 init function :
 
 ```java
 private function init():void
@@ -67,9 +68,10 @@ map.addOverlay(marker);
 }
 ```
 
- init()函数初始化百度地图。关闭了大部分交互功能，只留下拖动地图。地图初始地点位于北京，缩放系数15。并且添加了一个地图标注物。
+ The init () function initializes the Baidu map. Most of the interactive features are closed, leaving only drag maps. The initial site of the map is located in Beijing with a scaling factor of 15. And added a map tag.
 
-##### 2.2 refit函数：
+##### 2.2 refit function :
+
 
 ```java
 private function refit():void
@@ -79,9 +81,9 @@ mapDiv.style.height = Browser.height / Browser.pixelRatio + "px";
 }
 ```
 
-refit()使百度地图充满整个窗口，由于侦听了resize事件，在窗口resize时也会重新填充窗口。
+Set the position of the marker after the conversion is complete and pan the view angle to the viewport centered on the marker.
 
-#####    2.3 updatePosition函数：
+##### 2.4 convertToBaiduCoord function :
 
 ```java
 // 更新设备位置
@@ -96,9 +98,9 @@ convertor.translate([point], 1, 5, convertToBaiduCoord);
 
   updatePosition()是Geolocation.watchPosition()的触发函数，在每次监测到位置改变后都需要把获取到的原始坐标转换到百度坐标，才能在百度地图上显示正确的位置。
 
-注意有的设备浏览器获取到的坐标可能是谷歌坐标，这时convertor.translate的第三个参数就不是5，而是3。
+Set the position of the label after the conversion is complete and pan the view angle to the viewport centered on the label.
 
-##### 2.4 convertToBaiduCoord函数：
+##### 2.5 onError function :
 
 ```java
 // 将原始坐标转换为百度坐标
@@ -133,4 +135,4 @@ alert('ERROR(' + errType + '): ' + err.message);
 }
 ```
 
- 完成以上步骤之后就可以在设备上的浏览器查看效果。如果位置错误，把获取到的坐标当成谷歌坐标试试。注意浏览器本身的安全限制可能需要用户手动允许网页使用地理位置，或者Chrome需要https协议的地址才能够使用地理位置。
+ After you have completed the above steps, you can view the effect on the browser on the device. If the location is wrong, try to get the coordinates as Google coordinates. Note that the security restrictions of the browser itself may require the user to manually allow the page to use a geographical location, or Chrome needs the address of the HTTPS protocol to be able to use the location.

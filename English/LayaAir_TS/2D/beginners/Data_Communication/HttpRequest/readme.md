@@ -1,91 +1,95 @@
-# HttpRequest详解
+# HttpRequest Methods
 
-在项目中我们难免会有发送http请求的需求，在LayaAir引擎中HttpRequest就是我们发送请求的基本类。HttpRequest类其实包装的就是原生的`XMLHttpRequest`，为了开发者更深入的了解这个类，我们先从XMLHttpRequest 开始。
+​	In the project, we will inevitably need to send HTTP requests. LayaAir engine can handle with HttpRequest basic class. Actually packages native is an abstract from `XMLHttpRequest ` , and for developers to get a better understanding of this class, let's start with 
+XMLHttpRequest method.
 
-## 原生XMLHttpRequest
+## Native XMLHttpRequest
 
-**简述**
+#### General overview
 
- XMLHttpRequest中文可以解释为可扩展超文本传输请求。它为客户端提供了在客户端和服务器之间传输数据的功能。它提供了一个通过 URL 来获取数据的简单方式，并且不会使整个页面刷新。这使得网页只更新一部分页面而不会打扰到用户。
+​	It provides the client with the ability to transfer data between the client and the server. It provides a simple way to get data through a URL and does not need refresh the entire page. This allows the page to update only a subset of the pages without disturbing the user (client side).
 
-**属性**
+### Properties
 
-| 属性                 | 类型                         | 描述                                       |
+| Attribute          | type                       | description                              |
 | ------------------ | -------------------------- | ---------------------------------------- |
-| onreadystatechange | function                   | 一个JavaScript函数对象，当readyState属性改变时会调用它。   |
-| readyState         | unsigned short             | 请求的五种状态                                  |
-| response           | varies                     | 响应实体的类型由 `responseType 来指定，` 可以是 `ArrayBuffer` ，`Blob`， [`Document`](https://developer.mozilla.org/zh-CN/docs/Web/API/Document)， JavaScript 对象 (即 “json”)， 或者是字符串。如果请求未完成或失败，则该值为 `null` |
-| responseText       | DOMString                  | 此次请求的响应为文本，或是当请求未成功或还未发送时为 `null`**只读。** |
-| responseType       | XMLHttpRequestResponseType | 设置该值能够改变响应类型。就是告诉服务器你期望的响应格式。            |
-| status             | `unsigned short`           | 该请求的响应状态码 (例如, `状态码`200 表示一个成功的请求).**只读.** |
-| ` statusText`      | ` DOMString`               | 该请求的响应状态信息,包含一个状态码和原因短语 (例如 “`200 OK`“). 只读. |
-| ` upload`          | ` XMLHttpRequestUpload`    | 可以在 `upload 上添加一个事件监听来跟踪上传过程。`           |
-| ` withCredentials` | ` boolean`                 | 表明在进行跨站(cross-site)的访问控制(Access-Control)请求时，是否使用认证信息(例如cookie或授权的header)。 默认为 `false。` |
-| timeout            | number                     | 请求超时时间                                   |
+| onreadystatechange | function                   | JavaScript function object that is called when the readyState property changes.   |
+| readyState         | unsigned short             | five states request                                 |
+| response           | varies                     | type of response entity is made by `responseType spec,` can be `ArrayBuffer` ，`Blob`， [`Document`](https://developer.mozilla.org/zh-CN/docs/Web/API/Document)， JavaScript object ("json"), or string. If the request is incomplete or fails, the value is `null` |
+| responseText       | DOMString                  | Response to this request is text, when is unsuccessful or has not been sent `null`**read-only.** |
+| responseType       | XMLHttpRequestResponseType | Setting this value can change the response type. Tell the server the desired response format            |
+| status             | `unsigned short`           | Response status code for this request (by example, `Status code`200 Represents a successful request).**read-only.** |
+| `statusText`       | `DOMString`                | The request's response status information contains a status code and description(cf. "`200 OK`"). read-only. |
+| `upload`           | `XMLHttpRequestUpload`     | You can add an event listener on the `upload to track the upload process. `           |
+| `withCredentials`  | `boolean`                  | Showed in the cross site access control when requested, Whether to use authentication information(example, cookie or authorized header). Default set to `false。` |
+| timeout            | number                     | Request timeout                                   |
+​	`withCredentials` property generally used not too much. Here we introduce, in web, sending the same domain request  browser will automatically add `cookie`  in `request header`. However transmission cross domain requests it is not portable. This is because in the`CORS`  standard specifications. Browser cannot send any authentication information（`credentials`）, such as "`cookies`" and "`HTTP authentication schemes`", when sending cross domain requests. Unless `xhr.withCredentials` is set `true`（`xhr`object has an attribute called `withCredentials`, the default value is `false`）. So developers should refer to this if cross domain sending cannot carry cookie.
 
- `withCredentials`这个属性一般用到不多，这里我们简单介绍下，在web中，发送同域的请求浏览器会将`cookie`自动加在`request header`中，但是在发送跨域请求时候是不会携带。这是因为在`CORS`标准中做了规定，默认情况下，浏览器在发送跨域请求时不能发送任何认证信息（`credentials`）如”`cookies`“和”`HTTP authentication schemes`“。除非`xhr.withCredentials`为`true`（`xhr`对象有一个属性叫`withCredentials`，默认值为`false`）。所以开发者假如遇到跨域发送不能携带cookie时候请参考这个。
+###method
 
-### 方法
+####abort()
 
-#### abort()
-
-如果请求已经被发送,则立刻中止请求.
+If the request has been sent, the request is aborted immediately.
 
 #### getAllResponseHeaders()
 
-返回所有响应头信息(响应头名和值), 如果响应头还没接受,则返回`null`.
+Returns all the response headers information  (response and top value), or `null` if the response header has not been accepted.
 
 #### getResponseHeader()
 
-返回指定的响应头的值, 如果响应头还没被接受,或该响应头不存在,则返回null.
+Returns the value of the specified response header. if the response header has not been accepted or does not exist, it return null.
 
 #### open()
 
-初始化一个请求.
+Initialize a request
 
-###### 参数
+###### parameter
 
 - `method`
 
-  请求所使用的HTTP方法; 例如 “GET”, “POST”, “PUT”, “DELETE”等. 如果下个参数是非HTTP(S)的URL,则忽略该参数.
+  Request the HTTP method used for example "GET", "POST", "PUT", "DELETE" and so on. If the next parameter is non HTTP (S) URL, the parameter is ignored.
 
 - `url`
 
-  该请求所要访问的URL
+  The URL to which the request is to be accessed
 
 - `async`
 
-  一个可选的布尔值参数，默认为true,意味着是否执行异步操作，如果值为false,则send()方法不会返回任何东西，直到接受到了服务器的返回数据。如果为值为true，一个对开发者透明的通知会发送到相关的事件监听者。这个值必须是true,如果multipart 属性是true，否则将会出现一个意外。
+  An optional boolean parameter, set defaults to true, means whether to perform an asynchronous operation. If the value is false, the send () method does not return anything until the server returns the data. If the value is true, a transparent notification to the developer is sent to the relevant event listener. This value must be true, and if the multipart property is true, an unexpected event will occur.
 
 - `user`
 
-  用户名,可选参数,为授权使用;默认参数为空string.
+  User name, optional parameter, for authorization use; default parameter is null string.
 
 - `password`
-  密码,可选参数,为授权使用;默认参数为空string.密码,可选参数,为授权使用;默认参数为空string.
+  Password, optional parameter for authorization use; default parameter is null string.
+#### overrideMimeType()
 
-  #### overrideMimeType()
-
-  重写由服务器返回的MIME type。这个可用于, 例如，强制把一个响应流当作“text/xml”来处理和解析,即使服务器没有指明数据是这个类型。注意，这个方法必须在send()之前被调用。
+  Overwrite the MIME type returned by the server. Can be used for example to force a response stream to be treated and parsed as "text/xml" even if the server does not specify the data type. Note that this method must be called before send ().
 
 #### send()
 
-发送请求. 如果该请求是异步模式(默认),该方法会立刻返回. 相反,如果请求是同步模式,则直到请求的响应完全接受以后,该方法才会返回.其中send的参数类型如下：
+Send the request. If the request is asynchronous mode (default), the method will return immediately. If the request is in synchronous mode, the method will not return until the requested response is fully accepted. The parameter type of send is as follows:
 
 - `ArrayBuffer`
+
 - `Blob`
+
 - `Document`
+
 - `DOMString`
+
 - `FormData`
+
 - `null`
 
 #### setRequestHeader()
 
-给指定的HTTP请求头赋值.在这之前,你必须确认已经调用 [`open()`](https://developer.mozilla.org/zh-CN/docs/Web/API/XMLHttpRequest#open) 方法打开了一个url.
+  Assign the specified HTTP request header. Before that, you must confirm that the [`open()`](https://developer.mozilla.org/zh-CN/docs/Web/API/XMLHttpRequest#open) method has been called opened with a url.
 
-### 事件
+### event
 
- 基本的事件大致有如下几种：
+​	The basic events are as follows:
 
 - `onloadstart`
 
@@ -101,15 +105,13 @@
 
 - `onloadend`
 
-  我们常用的基本就是进度事件，完成事件，错误事件等
+  What we usually use is progress of events, complete events, errors events, and so on.
 
-  每一个`XMLHttpRequest`里面都有一个`upload`属性，而`upload`是一个`XMLHttpRequestUpload`对象`XMLHttpRequest`和`XMLHttpRequestUpload`都继承了同一个`XMLHttpRequestEventTarget`接口所以upload也具有上述事件。
+  Each `XMLHttpRequest` has an `upload`  attribute, and `upload` is an `XMLHttpRequestUpload` `XMLHttpRequest` object and `XMLHttpRequestUpload` inherited o the same `XMLHttpRequestEventTarget` interface. So upload also has the above events.
 
-  ​
+## How to use it in Laya
 
-  ## 在laya中怎么使用
-
-  laya中用HttpRequest对XMLHttpRequest进行了简单的封装，HttpRequest继承的是EventDispatcher，具有事件派发的功能。我们写个简单的例子来看下用法：
+  	Laya uses HttpRequest to encapsulate XMLHttpRequest in a simple package, HttpRequest inherits EventDispatcher, with the event distribution function. Let's write a simple example to see how it works:
 
   ```typescript
   class LayaSample {
@@ -137,40 +139,40 @@
   new LayaSample();
   ```
 
-上面这个示例我们发送了一个简单的请求，方式是get方式。用来获取一个远端的文件，格式为文本的格式。假如我们动态请求远端数据可以改成如下格式：
+
+​	In the above example we sent a simple request. A form used to obtain a remote file in a text format. If we dynamically request remote data, we can be changed to the following format:
 
 ```javascript
  xhr.send("http:xxx.xxx.com?a=xxxx&b=xxx","","get","text");//发送了一个get请求，携带的参数为a = xxxx,b=xxx
 ```
 
-下面用post方法请求一个数据方式如下：
+The following method uses the post method to request a data as follows:
 
 ```javascript
 xhr.send("http:xxx.xxx.com","a=xxxx&b=xxx","post","text");
 ```
 
-这里的重点是send函数,这个send函数要和XMLHttpRequest的send区分开。看下参数：
+Focus here is the send function, which is separated from the send of XMLHttpRequest. Look at the parameters
 
-###### 参数
+###### parameter
 
-- `url` 请求的远端地址
-- data 发送的数据 ；一般post方法，要传递这个参数。get方法参数和url拼接在一起。
-- method 发送数据的方法 默认为 get
-- responseType 消息返回的类型
-- headers 给指定的HTTP请求头赋值
+- `url`  Remote address of the URL request
+- data to be sent ; general post method, to pass this parameter. get method parameters and url spliced together with the url.
+- method sends data, by default is get
+- responseType  The type of return message
+- headers   assigns the specified HTTP request header
 
-###### 属性
 
-- `http`: 原生XMLHttpRequest的引用，设置XMLHttpRequest的一些属性可以设置这个属性，比如timeout，xhr.http.timeout = 10000，设置超时10秒。
+###### attribute
 
-- `data`: 请求返回的数据。
+- `http`: http: native XMLHttpRequest reference, set some attributes of XMLHttpRequest can set this property, such as timeout, xhr.http.timeout = 10000, set the timeout 10 seconds.
+- `data`: requests returned data.
+- `url` : requested url.
 
-- `url` :请求的url。
+### Extended HttpRequest
 
-- ### 扩展HttpRequest
-
-   在开发过程中HttpRequest可能不能满足我们的需求，比如上传文件，比如设置超时时间，比如操作表单数据等等。扩展HttpRequest很简单，你继承HttpRequest，或者干脆自己重写HttpRequest这个类都可以，这个看开发者的需求，重写HttpRequest建议直接继承EventDispatcher。重写就是重新包装XMLHttpRequest这个类。下面是一个简单的继承的示范：
-
+​	In the development process, HttpRequest may not meet our needs, such as uploading files, such as setting timeout time, such as operating form data, and so on. Extending HttpRequest is simple. You can inherit HttpRequest, or simply rewrite your own HttpRequest class. This looks at the developer's needs, and rewrites HttpRequest's recommendation to inherit EventDispatcher directly. Rewriting is wrapping the class "XMLHttpRequest". Here is an example of a simple inheritance:
+  
    ```typescript
    class HttpRequestExtension extends Laya.HttpRequest {
        constructor() {
@@ -195,13 +197,14 @@ xhr.send("http:xxx.xxx.com","a=xxxx&b=xxx","post","text");
    }
    ```
 
-上面是一个上传文件的示范，添加了XMLHttpRequest的upload的一些事件，这里的super.send简单的用了父类的方法，开发者可以不用，完全自己另写一套来满足自己的需求。
+The above is a file upload demonstration, add some events in XMLHttpRequest upload, where super.send with a simple method of the superclass, developers can not completely on my own to write another set to meet their own needs. 
 
-## 结语
+## Conclusion
 
- XMLHttpRequest这个原生的类其实很庞大，功能很强大，laya的封装只是满足基本的需求，一些特殊的需求，需要自己进行扩展。
+​	XMLHttpRequest native class is very large, powerful, Laya's package refer the basic needs, but your free to expand by your own according the need.
 
-- 详细的`XMLHttpRequest`，请看 [W3C的xhr 标准](https://www.w3.org/TR/XMLHttpRequest/);
-- `XMLHttpRequest`发各种类型的数据，可以参考[发送数据](https://developer.mozilla.org/en-US/docs/Web/API/XMLHttpRequest/Sending_and_Receiving_Binary_Data)和[html5rocks上的这篇文章](http://www.html5rocks.com/zh/tutorials/file/xhr2/)
-- 了解`XMLHttpRequest`的基本使用，可以参考[MDN的XMLHttpRequest介绍](https://developer.mozilla.org/zh-CN/docs/Web/API/XMLHttpRequest)；
-- 想了解跨域请求，则可以参考[W3C的 cors 标准](https://www.w3.org/TR/cors/);
+- Detailed `XMLHttpRequest`, see [W3C's xhr standard](https://www.w3.org/TR/XMLHttpRequest/);
+- `XMLHttpRequest` send all kinds of data, you can refer to [send data](https://developer.mozilla.org/en-US/docs/Web/API/XMLHttpRequest/Sending_and_Receiving_Binary_Data) and [html5rocks article](http://www.html5rocks.com/zh/tutorials/file/xhr2/)
+- Understand the basic use of `XMLHttpRequest` , you can refer to the introduction of [XMLHttpRequest MDN](https://developer.mozilla.org/zh-CN/docs/Web/API/XMLHttpRequest)；
+- To go further with  cross domain requests, you can refer to the [W3C standard](https://www.w3.org/TR/cors/);
+

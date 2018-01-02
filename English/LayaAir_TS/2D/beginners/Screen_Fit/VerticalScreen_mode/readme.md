@@ -1,22 +1,20 @@
-# 游戏自动竖屏及保持竖屏状态
+# The game automatically state screen to landscape or portrait mode
 
 
 
-​        通过LayaAir的自动竖屏设置，无论手机如何旋转，都可让游戏的水平方向始终与浏览器显示屏幕的最长边保持垂直。 
+​        Through the automatic vertical settings of LayaAir, no matter how the mobile phone rotates, the horizontal direction of the game can always keep perpendicular to the longest edge of the browser display screen.
 
-关于屏幕方向的API参数如下图所示：
-
-
+The API parameters for the screen orientation are shown below:
 
 ​	![blob.png](img/1.png)<br/>
-​	图（1）屏幕方向的适配
+​	Figure (1) Screen orientation adaptation
 
 ​	![blob.png](img/2.png)<br/>
-​	图（2）screenMode设置的属性
+​	Figure (2) screenMode set the properties
 
 
 
-LayaAir自动竖屏的示例代码如下：
+The example code of LayaAir automatic vertical screen is as follows:
 
 ```typescript
 module laya {
@@ -60,18 +58,17 @@ new laya.SmartScale_Portrait();
 ```
 
 
-
-手机竖屏状态下的LayaAir自动竖屏运行效果如下图所示：
+LayaAir automatically set vertical screen operation of the mobile phone is as follows:
 
 ​	![blob.png](img/3.png)<br/>
-​	图（3）设置竖屏之后的运行结果
+​	Figure (3) operation result after setting vertical screen : portrait mode
 
 
 
-手机横屏状态下的LayaAir自动竖屏运行效果如下图所示：
+LayaAir automatically set horizontal screen operation of the mobile phone is as follows:
 
 ​	![blob.png](img/4.png)<br/>
-​	图（4）改变最长边之后的运行结果
+​	Figure (4) operation result after setting horizontal screen :  landscape mode
 
 
 

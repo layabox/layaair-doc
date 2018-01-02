@@ -1,18 +1,18 @@
-# 显示与切换图片
+# Display and toggle pictures
 
-> 图片的显示是游戏开发基础，本篇从API到示例分别介绍Sprite.loadImage与Graphics.drawTexture两种显示图片的方法。
+> Picture are the elementrary display for game development, this article will introduce Sprite.loadImage and Graphics.drawTexture class, two ways to display pictures.
 
-## 1、用loadImage方法显示与切换图片
+## 1 . Display and switch pictures with loadImage method
 
-### 1.1 loadImage API概述
+### 1.1 loadImage API overview
 
-在API文档中搜索laya.display.Sprite，可以找到loadImage()方法，如图1所示，我们先熟悉一下该方法的参数。
+In API documentation can find laya.display.Sprite, you can find loadImage() method, as shown in Figure 1. Let's familiarize with the parameters.
 
-![图1](img/1.png) <br /> (图1)
+![图1](img/1.png) <br /> (Picture 1)
 
-### 1.2 用loadImage加载显示图片的示例
+### 1.2 LoadImage to load an example of displaying a picture
 
-创建一个Main.js入口类，编写代码如下：
+Create a Main.js entry class and set it as the default application. Write the code as follows:
 
 ```javascript
 //初始化舞台
@@ -26,15 +26,13 @@ img.loadImage("res/img/monkey1.png",100,50);
 Laya.stage.addChild(img);
 ```
 
-在示例代码里，“`100,50`”是图片的显示坐标信息。示例代码运行效果如图2-1所示：
+In the sample code, "100,50" is the display coordinate information of the picture. The example code runs as shown in figure 2-1:
 
-![图2-1](img/2-1.png) <br /> (图2-1)
+![图2-1](img/2-1.png) <br /> (picture2-1)
 
-### 1.3 用loadImage切换图片的示例
+### 1.3 Example of switching pictures with loadImage
 
-  切换图片是在显示图片的基础之上，增加了清空绘制，然后通过代码逻辑获得新的图片资源重新绘制。具体的代码说明可以参考代码注释及API，结合实例运行体验。
-
-下面我们在Main.js类中修改代码为如下所示：
+  Switching pictures is based on displaying pictures, adding empty drawing, and then drawing new picture resources through code logic. Specific code can refer to the code notes and API for further more description. here is an implementation example :
 
 ```javascript
 //初始化舞台
@@ -66,37 +64,37 @@ function switchImg(){
 }
 ```
 
-运行代码效果如动图2-2所示：
+Run the code as shown in Figure 2-2:
 
-![动图2-2](img/2-2.gif) <br /> (动图2-2)
-
-
+![动图2-2](img/2-2.gif) <br /> (picture 2-2)
 
 
 
 
 
-## 2 、用drawTexture方法显示与切换图片
-
-### 2.1  drawTexture API 概述
-
-在API文档中搜索laya.display.Graphics，可以找到drawTexture()方法，除此之外，还需要了解laya.net.LoaderManager中的load()方法和getRes()方法，以及laya.utils.Handler中的create()方法，各方法的参数图3、图4、图5、图6所示：
-
-![图3](img/3.png) <br /> (图3)
-
-![图4](img/4.png) <br /> (图4)
-
-![图2](img/5.png) <br /> (图5)
-
-![图2](img/6.png) <br /> (图6)
 
 
+## 2. Use drawTexture method to display and switch pictures
 
-### 2.2 用drawTexture 加载显示图片的示例
+### 2.1  drawTexture API overview
 
-​     loadImage()方法可以即时加载外部图片资源，也可以从缓冲区读取图片资源，drawTexture()方法则必须先加载完图片后，再绘制添加到舞台中来，因此在示例代码中需要使用到加载（`Laya.loader.load()`）与回调(`Handler.create()`)的方法，下面我们通过简单的示例代码加载显示一张图片，代码说明请查看代码中的注释部分以及相关API说明。
+In the API documentation about laya.display.Graphics, you can find the drawTexture () method, in addition, also need to understand the load (laya.net.LoaderManager) method, getRes (create) method, and laya.utils.Handler () method, the parameters of the method Figure 3, Figure 4, Figure 5, Figure 6 shows:
 
-创建一个Main.js类，编写代码如下：
+![图3](img/3.png) <br /> (picture 3)
+
+![图4](img/4.png) <br /> (picture 4)
+
+![图2](img/5.png) <br /> (picture 5)
+
+![图2](img/6.png) <br /> (picture 6)
+
+
+
+### 2.2 use drawTexture to load an example of a display picture
+
+​     LoadImage () method can instantly load external image resources, you can also read picture resources from the buffer (drawTexture) method, you must first load the data, and then add to the stage to draw. In the example code to load（`Laya.loader.load()`）and callback (`Handler.create()`) method. Please see the code in the comments section and related API instructions.
+
+Create a Main.js entry class and set it as the default application. Write the code as follows:
 
 ```javascript
 //初始化舞台
@@ -118,19 +116,19 @@ function graphicsImg(){
 }
 ```
 
-代码运行效果如图7-1所示。
+The code runs as shown in Figure 7-1
 
-![图7-1](img/7-1.png) <br /> (图7-1)
-
-
+![图7-1](img/7-1.png) <br /> (picture 7-1)
 
 
 
-### 2.3 用drawTexture 切换图片的示例
 
- 切换图片是在显示图片的基础之上，增加了清空绘制，然后通过代码逻辑获得新的图片资源重新绘制。具体的代码说明可以参考代码注释及API，结合实例运行体验。
 
-下面我们在Main.js类中修改代码为如下所示：
+### 2.3 Example of switching a picture with a drawTexture
+
+ Switching pictures is based on displaying pictures, adding empty drawing, and then drawing new picture resources through code logic. Specific code description, you can refer to the code notes and API, combined with examples of running experience.
+
+Here we modify the code in the Main.js entry class as follows:
 
 ```javascript
 //初始化舞台
@@ -172,9 +170,10 @@ function switchImg(){
 }
 ```
 
-代码运行效果如图7-2所示。
+The code runs as shown in Figure 7-2.
 
-![动图7-2](img/7-2.gif) <br /> (动图7-2)
+
+![动图7-2](img/7-2.gif) <br /> (picture 7-2)
 
 
 

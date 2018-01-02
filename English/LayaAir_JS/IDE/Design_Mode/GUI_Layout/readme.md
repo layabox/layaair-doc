@@ -1,106 +1,106 @@
-# 设计模式界面概述
+# Design Mode Interface Overview
 
-> 本篇采用LayaAirIDE 1.7.3 bate 截图，如有不同，请下载最新的LayaAirIDE，以最新版本IDE为准。
+> This article is based on LayaAirIDE 1.7.3 screenshot, if there are difference, please download the latest LayaAirIDE version.
 
-​         LayaAirIDE分为设计模式，编码模式等多个模块组成。本章节中将介绍设计模式的常用布局及功能区，快速浏览各个面板组成的名称和作用。
+​         LayaAirIDE is divided into module such as design, coding and others. In this section, the common layout and function area of design patterns are introduced, and provides a quick overview of the names and roles of the various panels.
 
 ​	 ![blob.png](img/1.png)<br/>
-​	（图1）
+​	(Picture 1)
 
 
 
-### 一、模式导航栏：
+### 1. Navigation bar module :
 
-​        模式转换按钮功能可以便捷的在界面模式与代码编辑模式间切换
+​        Mode conversion button function can be switched easily between the interface and the code edit mode.
 
 ​	 ![blob.png](img/2.png)<br/>
-​	（图2）
+​	(Picture 2）
 
 
 
-### 二、菜单栏:
+### 2. menu bar :
 
-​        菜单栏上包括了程序操作集合、界面操作、控件操作命令以及工具集合等，详情请阅读菜单栏介绍一节。
+​        The menu bar includes a set of program operations, interface operations, control operation commands, and tool sets. For more  details, please refer to the section about the menu bar.
 
 ​	![blob.png](img/3.png)<br/>
-​	（图3）
+​	(Picture 3）
 
  
 
-### 三、工具栏：
+### 3. Toolbar :
 
-​        工具栏上包括了文件操作、控件操作和场景操作按钮，详情请阅读工具栏介绍一节。
+​        The toolbar includes file operations, control actions, and scene manipulation buttons. For more   details, read  please refer to the section about the toolbar.
 ​	![blob.png](img/4.png)<br/>
-​	（图4）
+​	(Picture 4）
 
 
 
-### 四、项目管理器:
+### 4. Project manager :
 
-​        项目管理器中显示了项目中所有建立的页面(Page),这里会以树状结构来显示,您可以在项目管理器中通过双击来打开要编辑的页面，详情请阅读项目管理器一节.
+​        The project manager shows all pages in the project (Page), which are displayed in a tree structure. You can double-click to open the page you want to edit in the Project Manager. For more   details, read  please refer to the section about Project Manager.
 
 ​	![blob.png](img/5.png)<br/>
-​	（图5）
+​	 (Picture 5）
 
  
 
-### 五、资源管理器：
+### 5. Resource manager :
 
-​        资源管理器里显示了项目资源文件夹（ assets ）中的所有资源。这里会以树状结构显示文件夹中的资源内容。您可以使用右键打开所在文件夹进行资源添加。详情请阅读资源管理器一节。
+​        The resource manager displays all the assets in the project resource folder. Here, The contents folder are displayed in a tree  structure. You can use the right-click button to open the folder to add resources.  For more   details, read  please refer to the section about resource manager.
 
 ​	![blob.png](img/6.png)<br/>
-​	（图6）
+​	(Picture 6）
 
  
 
-### 六、模板库：
+### 6. Template library :
 
-​         模板库里显示了IDE模板文件夹（template）中所有的模板。这里会以树状结构显示文件夹及模版UI的缩略图，并自动同步系统中对模板资源文件夹的修改。您可以将外部模板直接添加到模板文件夹，还可以通过View视图自己制作模板，详情请阅读模板管理器一节。
+​         The template library displays all the templates in the IDE template folder. Folders and the thumbnail of the template UI will be displayed in the tree structure, and it automatically synchronizes with resource folder changes. You can add the external template directly to the template folder, or you can make the template yourself through the View. For more   details, read  please refer to the section about template manager.
 
 ​	![blob.png](img/7.png)<br/>
-​	（图7）
+​	(Picture 7）
 
  
 
-### 七、场景编辑器：
+### 7. Scene editor:
 
-​        场景编辑器是用来展示和编辑UI或动画场景中可视内容的工作区域。所见既所得的场景搭建工作都依靠场景编辑器的显示来完成。详情请阅读场景编辑器一节。
+​        The scene editor is a work area for displaying and editing visual content in UI or animated scenes. Both of the acquired scenes are constructed by the display of the scene editor.  For more   details, read  please refer to the section about  scene editor.
 
 ​	![blob.png](img/8.png)<br/>
-​	（图8）
+​	(Picture 8）
 
   
 
-### 八、属性设置器：
+### 8. Property setter:
 
-​        属性设置器是我们查看并编辑当前选中节点和组件属性的工作区域，这个面板会以最适合的形式展示和编辑选中控件的属性数据。详情请阅读属性设置器一节。
+​        The property setter is the work area that we view and edit the current selected node and component properties. This panel will display and edit the attribute data of the selected control in the most appropriate form. For details, read the property settings section.
 
 ​	![blob.png](img/9.png)<br/>
-​	（图9）
+​	(Picture 9）
 
 
 
-### 九、层级管理器：
+### 9. Hierarchic manager :
 
-​        层级管理器用树状列表的形式展示场景中的所有节点和他们的层级关系，所有在场景编辑器中看到的内容都可以在层级管理器中找到对应的节点条目，在编辑场景时这两个面板的内容会同步显示，一般我们也会同时使用这两个面板来搭建场景。详情请阅读层级管理器一节。
+​        The hierarchy manager displays all nodes in the scene and their hierarchical relationships in the form of a tree list. All the content seen in the scene editor can find the corresponding node entry in the level manager. When editing the scene, the two The contents of the panel will be synchronized display. In general, we will also use the two panels to build the scene. For more information, please read the hierarchy manager section.
 
 ​	![blob.png](img/10.png)<br/>
-​	（图10）
+​	(Picture 10）
 
 
 
-### 十、时间轴动画编辑器：
+### 10. Timeline animation editor :
 
- 时间轴动画编辑器用来在页面里创建时间轴动画。帧属性面板用于显示设置时间轴上的帧详情。详细用法请阅读时间轴动画编辑器一节。
+ Timeline Animation Editor is used to create animation in the page. The Frame Properties panel is used to display the frame details on the set timeline.  For details, please read the section of  Animation Editor.
 
 ​	![1.png](img/11.png)<br/>
-​	（图11）
+​	(Picture 11）
 
 
 
-### 十一、粒子编辑器：
+### 11. Particle editor :
 
-粒子编辑器用来在页面里创建粒子动画。粒子属性面板用于显示设置粒子的属性详情。详细用法请阅读粒子编辑器一节。
+Particle editor is used to create particle animation in the page. The particle property panel is used to display details of the properties of the set particles. For details, please read the particle editor section.
 
 ​	![blob.png](img/12.gif)<br/>
-​	（图12）
+​	(Picture  12）
