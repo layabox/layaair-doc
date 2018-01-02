@@ -1,28 +1,28 @@
-# 资源版本管理
+## Resource version management revision control system
 
-在项目上线后，难免会遇到要更新资源版本。但是浏览器的缓存问题会导致拉取的资源不是最新版本，项目版本不一致导致运行不正常。所以合理的管理资源，更新资源尤为必要。LayaAir引擎提供的资源版本管理工具，有效的解决了这个问题。下面看下具体的用法。**注意：引擎的版本号需要1.7.3以上才可以。**
+​	After the project is on line, it is inevitable to update the resource version. However, the browser cache problem can cause pull resources not the latest version, inconsistent project version, resulting in abnormal operation. Therefore, reasonable management of resources, updating resources is particularly necessary. The resource version management tool provided by the LayaAir engine effectively solves this problem. Look at the specific usage below. **Note: The engine version number needs to be over 1.7.3**
 
- 这里我们配合命令行来使用。下面看下步骤。
+​	Here we use the command line. See the next steps.
 
-- 安装nodejs，官网下载nodejs 下载地址[https://nodejs.org/en/。](https://nodejs.org/en/%E3%80%82)
+- Install nodejs, official website to download nodejs https://nodejs.org/en/。
 
-- 安装 layacmd工具 。下载地址[https://www.npmjs.com/package/layacmd。](https://www.npmjs.com/package/layacmd%E3%80%82)
+- Install the layacmd tool. download link https://www.npmjs.com/package/layacmd。
 
-  这里我用win系统演示。打开cmd窗口，命令行输入 npm install layacmd -g 即可。
+ Here we demonstrate with the win system. Open the cmd console, enter the command line input : npm install layacmd -g
 
-  这个命令行工具提供了很多的功能包括编译，发布，导出资源，创建静态服务器等等功能，相关的教程可以参考layacmd的专题教程。这里我们就拿资源管理的功能来进行说明下。
+  The command line tool provides a number of functions including compiling, publishing, exporting resources, creating static servers, and so on. The tutorials are available for reference to the layacmd tutorial. Here we will take the function of resource management to illustrate.
 
-- 新建个LayaAir项目。
+- Create a new LayaAir project. Here we take the as language as an example.
 
-  然后进入到h5目录下，新建个res的文件夹把资源都放到res目录下，这里我们随便添加几个资源。这里我们添加一个声音文件夹，里面放一个声音文件a.mp3，外层放一个img文件夹，放一个图片1.png的图片。
+  Then go to the H5 directory, new folder res, the resources are placed in the res directory, where we casually add a few resources. Here we add a sound folder, which contains a sound file A.mp3, the outer layer put a img folder, put a picture of 1.png picture.
 
-  在bin目录下打开命令行输入`layacmd resourceVersion -i res -o . -n 1.0.0`这里-i代表资源路径，-o . 代表版本资源输出路径为当前路径，当然开发者也可以自定义输出路径，比如定义路径为version文件夹等等，-n 1.0.0初始化版本为1.0.0。回车之后我们看到生成了几个文件和文件夹。如下图所示：
+  In the bin/h5 directory, open the command line, enter the `layacmd resourceVersion -i res -o . -n 1.0.0`. Here -i represents the resource path, -o . Represents the version resource output path as the current path, and of course, the developer can customize the output path, such as defining the path as a version folder, and so on. The -n 1.0.0 initialization version is 1.0.0. After entering the carriage, we saw several files and folders generated. As shown in fig. :
 
-  ![1](img/1.png)(图1)</br>
+  ![1](img/1.png)
 
-  1.0.0的文件夹里边是1.0.0版本的资源。`.record`文件记录的是文件的md5信息，勿删！`manifest.json`文件里面记录的资源版本号。
+  1.0.0 Folder, which is the 1.0.0 version of the resources `.record` Document is the file MD5 information is deleted! With `manifest.json` , can have the version number of the resources recorded in the file.
 
-  下面看下在程序中怎么应用。
+  See below how to use in the program.
 
   ​
 
@@ -45,15 +45,15 @@ class Main {
 new Main;
 ```
 
-- 在初始化完引擎之后，我们要做的第一件事情就是加载这个`manifest.json`这个文件。引擎提供了相应的方法启用版本管理。
+  After initializing the engine, the first thing we need to do is load the `manifest.json`. The engine provides the appropriate method to enable version management.
 
-`ResourceVersion.enable`这个方法传递进去的是manifest.json文件的路径，ResourceVersion类改写了URL.customFormat的方法。在load资源的时候就会匹配manifest.json里面资源的版本号，进行加载。加载完manifest.json文件后在开始我们的项目的正式逻辑。
+` ResourceVersion.enable` is passed through the path of the manifest.json file, and the ResourceVersion class rewrites the URL.customFormat method. When the load resources, it will match the version number of the resources inside the manifest.json, loading. After loading the manifest.json file, start the formal logic of our project.
 
- 我们在项目逻辑中加载一个声音文件。编译运行上面的代码。打开谷歌的控制台。看下加载文件的信息。如图：
+​	We load a sound file in the project logic. Compile and run the code above. Open the Google console. See the information about loading files. As shown in fig.:
 
-![2](img/2.png)(图2)</br>
+![2](img/2.png)
 
-可以看到加载的是`1.0.0/res/sound/a.mp3`文件夹下的资源。我们在增加一个资源，新建一个文本文件。命名为data.data。放到res/data/data.data文件加下。进行加载代码如下：
+​		You can see that the resources are loaded under the `1.0.0/res/sound/a.mp3` folder. We're adding a resource to create a new text file. It's calleddata.data. Add it to the res/data/data.data file. Loading code is as follows:
 
 ```typescript
 class Main {
@@ -78,26 +78,28 @@ class Main {
 new Main;
 ```
 
-编译上面的代码，打开谷歌管理器看下加载的路径。
 
-![3](img/3.png)(图3)</br>
 
-从中我们看到，在开发模式的时候我们资源还是都放到res目录下，正式发版本的时候我们在用命令行工具进行版本管理。
+​	Compile the code above and open the Google manager to see the loading path.
 
-下面我们在命令行输入下刚才的命令，假设我们还是定义为1.0.0版本`layacmd resourceVersion -i res -o . -n 1.0.0`执行完成之后 在刷新页面看下：
+![3](img/3.png)
+​	From what we see, in the development mode, we still put all the resources in the res directory, the official version of the release, we use the command line tool version management.
 
-![4](img/4.png)(图4)</br>
+​	
 
-发现已经加载的是1.0.0文件夹下的资源了。
+​	Next, we input the command just before the command line, assuming we are still defined as the 1.0.0 version `layacmd resourceVersion -i res -o . -n 1.0.0` look at the refresh page:
 
-上面说的是增加了资源，假如修改了资源呢？那么我们发布版本的时候增加下版本号就好。比如我们修改下data.data的内容。然后在发布下
+![4](img/4.png)
+​	Discover that the resources under the 1.0.0 folder have been loaded.
 
-`layacmd resourceVersion -i res -o . -n 1.0.1`命令行执行下。然后刷新页面看下加载情况。
+​	Talking about the increase of resources, if you modify the resources? So, when we release the version, add the next version number. For example, we modify the content of data.data. And then release it
 
-![5](img/5.png)(图5)</br>
+`	layacmd resourceVersion -i res -o . -n 1.0.1` Under the command line. Then refresh the page to see the loading situation.
 
- **看下这时候加载的是1.0.1文件夹下的资源，a.mp3这个文件没有修改，他还是会去加载1.0.0文件夹下的资源。**
+![5](img/5.png)
 
- 总结:
+​	**At this point, you load the resources under the 1.0.1 folder, and the A.mp3 file is not modified. He will still load the resources under the 1.0.0 folder.**
 
- 至此我们看到只要有资源修改我们就可以修改发布的版本号。这样就会去相应的文件夹下去加载资源。manifest.json文件中记录的版本信息就会更改。
+​	summary:
+
+​	So far, we've seen that we can modify the version number as long as we have the resources modified. This will go to the appropriate folder to load the resources. The version information recorded in the manifest.json file will change.
