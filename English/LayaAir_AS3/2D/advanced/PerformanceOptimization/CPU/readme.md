@@ -225,6 +225,6 @@ Once the picture / atlas is loaded, the engine will begin to process picture res
 
  
 
-n the game's resource loading, you can load the resources according to the level, scene and other categories. The better the picture at the same time, the faster the game responds. After the completion of the use of resources, you can also uninstall, release memory..
+In the game's resource loading, you can load the resources according to the level, scene and other categories. The better the picture at the same time, the faster the game responds. After the completion of the use of resources, you can also uninstall, release memory..
 
  

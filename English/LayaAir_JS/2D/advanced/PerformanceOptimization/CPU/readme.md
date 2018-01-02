@@ -6,6 +6,7 @@
 
 Any object in JavaScript is dynamic, and you can add attributes arbitrarily. However, it may be time-consuming to find an attribute in a large number of attributes. If you need to use an attribute value frequently, you can use local variables to save it:
 
+
 ```typescript
 foo()
 {
@@ -161,7 +162,6 @@ callLater Delays the code block until this frame is rendered. If the current ope
 
 ​        Considering a graph, setting any attributes that change its appearance will result in redrawing of the graph:
 
-
 ```typescript
 var rotation=0,
 scale=1,
@@ -189,7 +189,7 @@ public function update()
 }
 ```
 
-
+ 
 ​        Call the following code to change the state ：
 
 ```
