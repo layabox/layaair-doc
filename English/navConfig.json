@@ -686,13 +686,23 @@
                 "name_3_file": "readme.md"
               },
               {
-                "name_3_name": "Use LayaCMD",
+                "name_3_name": "Use layaair-cmd",
                 "name_3_url": "English/LayaAir_AS3/2D/advanced/extension_modules/LayaCMD/",
                 "name_3_file": "readme.md"
               },
               {
                 "name_3_name": "AS3 and JS mixed coding",
                 "name_3_url": "English/LayaAir_AS3/2D/advanced/extension_modules/AS_JS_mixed_programming/",
+                "name_3_file": "readme.md"
+              },
+			  {
+                "name_3_name": "Custom Shader",
+                "name_3_url": "English/LayaAir_AS3/2D/advanced/extension_modules/Shader/",
+                "name_3_file": "readme.md"
+              },
+              {
+                "name_3_name": "WeChat mini game adapter",
+                "name_3_url": "English/wechat/minigame/",
                 "name_3_file": "readme.md"
               }
             ]
@@ -1823,13 +1833,18 @@
                 "name_3_file": "readme.md"
               },
               {
-                "name_3_name": "Use LayaCMD",
+                "name_3_name": "Use laya-air-cmd",
                 "name_3_url": "English/LayaAir_TS/2D/advanced/extension_modules/LayaCMD/",
                 "name_3_file": "readme.md"
               },
+			  {
+                "name_3_name": "Custom Shader",
+                "name_3_url": "English/LayaAir_TS/2D/advanced/extension_modules/Shader/",
+                "name_3_file": "readme.md"
+              },
               {
-                "name_3_name": "AS3 and JS mixed coding",
-                "name_3_url": "English/LayaAir_TS/2D/advanced/extension_modules/AS_JS_mixed_programming/",
+                "name_3_name": "WeChat mini game adapter",
+                "name_3_url": "English/wechat/minigame/",
                 "name_3_file": "readme.md"
               }
             ]
@@ -2669,13 +2684,18 @@
                 "name_3_file": "readme.md"
               },
               {
-                "name_3_name": "Use LayaCMD",
+                "name_3_name": "Use laya-air-cmd",
                 "name_3_url": "English/LayaAir_JS/2D/advanced/extension_modules/LayaCMD/",
                 "name_3_file": "readme.md"
               },
+			  {
+                "name_3_name": "Custom Shader",
+                "name_3_url": "English/LayaAir_JS/2D/advanced/extension_modules/Shader/",
+                "name_3_file": "readme.md"
+              },
               {
-                "name_3_name": "AS3 and JS mixed coding",
-                "name_3_url": "English/LayaAir_JS/2D/advanced/extension_modules/AS_JS_mixed_programming/",
+                "name_3_name": "WeChat mini game adapter",
+                "name_3_url": "English/wechat/minigame/",
                 "name_3_file": "readme.md"
               }
             ]

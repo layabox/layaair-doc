@@ -1,14 +1,14 @@
-# LayaAir和原生Dom
+## LayaAir and native DOM
 
-在开发项目中，开发者难免遇到dom元素支持，但是LayaAir中不支持或者支持的不完善。那么本节我们就来看下在开发中遇到的一些技巧。
+​	In the development project, developers inevitably encounter DOM element support, but LayaAir does not support or support the imperfect. So we'll look at some of the techniques that we've developed in this section.
 
-### LayaAir之SVG
+### LayaAir with SVG
 
-什么是svg？可能大部分开发者听说过这个名词，或者也知道它是w3c规定的矢量图像描述格式。关于svg的一些定义和历史这里我们不再陈述，感兴趣的开发者可以参考[这里](https://ldc.layabox.com/doc/?nav=zh-as-3-4-1)。但是在项目中真正用到它的地方很少。但是svg的强大是不容忽视的，有些简单的图形，几行文本就可以描述出来，不必进行网络的加载。比如丰富的艺术字，比如奇形怪状的图形，比如文字的透视效果等等假如用程序实现，可能会困难重重，比如下面这个：
+​	What is SVG? Probably most developers have heard this term, or they know it's the description format of vector images prescribed by W3C, and some definitions and history about SVG are not here, and the developers who are interested can refer to them[Here](). But there are few places to actually use it in a project. But the SVG is powerful and can not be ignored, some simple graphics, a few lines of text can be described, need not network loading. Such as rich art words, such as strange shapes, such as the perspective of the text effect, etc.  If the program to achieve, may be much more difficult. For example, the following one.
 
 ![1](img/1.png)</br>
 
-假如你的项目中有这种文字如何处理呢？可能我们想到的是美术出图片。那有没有更简单的方法呢？这里我们选择用svg来进行处理。我们知道在dom元素中用div+css样式来显示这种效果是最简单快捷的方法。那么我们来借助css样式来展示这种效果。下面我们看下简单的脚本怎么实现这种效果。
+What do you do if you have this kind of text in your project? Maybe we're thinking of pictures coming out of art. Is there a simpler way to do that? Here we choose to use SVG for processing. We know that using div+css style to display this effect in DOM elements is the simplest and fastest way. Then we also use CSS style to show this effect. Let's see how a simple script can do this.
 
 ```javascript
 var data = '<svg xmlns="http://www.w3.org/2000/svg" width="200" height="200">' +
@@ -30,14 +30,14 @@ img.style.zIndex = 99999
 document.body.appendChild(img);
 ```
 
-怎么运行上边这段代码呢？打开谷歌浏览器，随便打开一个空白网页，F12，把上面的代码粘贴到控制台，然后回车，就能看到上面截图的效果。或者新建个html把代码粘贴进去，用浏览器打开。是不是很简单呢？然后我们可以任意修改显示的文字。开发者可以修改试试看效果。我们简单的介绍下这段代码。其中data是svg的数据格式，这个可以参考svg的定义和描述。
+How do you run it? Open the Google browser, literally open a blank page, F12, paste the above code to the console, and then enter the car, you can see the effect of screenshot above. Or build a new HTML, paste the code in, and open it with a browser. Is it very simple?. Then we can modify the displayed text arbitrarily. Developers can modify, try to see the effect. We simply introduce this code. Where data is the data format of SVG, which can refer to the definition and description of svg.
 
 ```javascript
 <span style="color:white; text-shadow: 0px 1px 0px #999, 0px 2px 0px #888, 0px 3px 0px #777, 0px 4px 0px #666, 0px 5px 0px #555, 0px 6px 0px #444, 0px 7px 0px #333, 0px 8px 7px #001135;">
 //这里是重点，文字的效果我们是通过svg支持的css样式来设置 text-shadow设置的是文字的css样式效果，假如开发者想改变文字的样式，可以修改style即可。
 ```
 
-上面是在JavaScript中，用原生的dom元素img来进行显示，那么在游戏中我们想用的话该怎么办呢？这个其实很简单，现在我们已经用img显示到页面上了，那么接下来我们要做的是如何在项目中应用和显示这个img。我们新建个项目。代码如下所示：
+​	The above is in JavaScript, with the original DOM element img to display, so what do we want to do in the game? This is actually very simple, and now we've shown it on the page with img, so what we're going to do next is how to apply and display this img in the project. We have a new project. Here, AS language is used to create the project. Code is as follows:
 
 ```typescript
 //初始化引擎
@@ -57,29 +57,27 @@ sp.loadImage(data, 0, 0, 200, 200);
 Laya.stage.addChild(sp);
 ```
 
-通过data来当做url传递给loadImage这个方法引擎就会帮我们加载并解码显示出来。loadImage这个方法中的参数不仅仅有接收地址的url还接收base64和svg的格式。编译运行上面的代码我们看到下图中的效果。
+Passing the data as URL to loadImage, the method engine will help us load and decode it. The parameters of the loadImage method not only receive the address form of URL, but also accept the format of Base64 and svg. When you compile and run the code above, we see the effect in the diagram below.
 
 ![2](img/2.png)</br>
 
-总结：上面的代码给我们很好的启示，在项目中我们的特殊艺术字可以用这种方法更加简单方便。开发者可以自行找一些更加绚丽的效果，比如3D的透视效果，图文混排，阴影，倒影等等。这种方法不仅仅减少了网络的宽带，更重要的是方便我们时时修改。设置好一种样式，项目中导出都可以应用。假如用上面的方法代替位图字体的做法是不是更加高效快捷呢。
+​	Conclusion: the above code gives us good inspiration. In the project, our special artistic words can be more convenient and convenient in this way. Developers can find some more beautiful effects, such as 3D's perspective effect, graphic layout, shadow, reflection, and so on. This method not only reduces the bandwidth of the network, but more importantly, it is convenient for us to modify constantly. Set up a style that can be used everywhere in the project. Is it more efficient to replace bitmap fonts by using the above method instead.
 
-相关链接：
+Related links:
 
-[https://codepen.io/pen/；](https://codepen.io/pen/%EF%BC%9B)
+https://codepen.io/pen/；
 
-[https://developer.mozilla.org/en-US/docs/Web/API/Canvas_API/Drawing_DOM_objects_into_a_canvas；](https://developer.mozilla.org/en-US/docs/Web/API/Canvas_API/Drawing_DOM_objects_into_a_canvas%EF%BC%9B)
+https://developer.mozilla.org/en-US/docs/Web/API/Canvas_API/Drawing_DOM_objects_into_a_canvas；
 
+### DOM element LayaAir of Image
 
+​	In HTML5, image tags are powerful. We don't want to introduce their features here. Here we introduce several simple forms.
 
-### LayaAir之Dom元素Image
+#### QR code
 
-在html5中，image标签功能强大，这里我们不想过多的介绍其特性，这里我们介绍简单的击中常用形式。
+​	One of the more common functions is to display the current two-dimensional code address in the project. User length identification. Here generates two-dimensional code, we use the third party JS class library to generate two-dimensional code. Class library code can be downloaded on GitHub, here I use this [address](https://github.com/davidshimjs/qrcodejs)。
 
-#### 二维码
-
-比较常见的一种功能是在项目中显示当前的二维码地址。用户长按可以识别。这里生成二维码，我们借助第三方的js类库来生成二维码。类库代码可以再GitHub上下载，这里用的是这个[地址](https://github.com/davidshimjs/qrcodejs)。
-
-新建个项目，把下载的qrcode.js添加到index.html中。qrcode的api请参考[地址](https://github.com/davidshimjs/qrcodejs)。具体的逻辑代码如下：
+New project, Download qrcode.js add to index.html. qrcode API please refer to [address](https://github.com/davidshimjs/qrcodejs). The specific logic code is as follows:
 
 ```typescript
 //初始化引擎
@@ -102,32 +100,30 @@ function clickHandler(){
 }
 ```
 
-编译运行上面的代码，然后点击舞台可以看到，二维码已经显示到了舞台上，可以用手机扫下，发现手机已经跳转到了官网。**注意：这个时候生成的二维码在微信或者浏览器中长按没有任何反应，因为qrcode生成的是canvas标签而不是image标签。**所以要想长按弹出识别的选项，只有用image标签才可以。这个开发者可以自行扩展。
+	Compile and run the above code, and then click on the stage can see that the two-dimensional code has been displayed on the stage, you can use mobile phone scanning, found that the phone has jumped to the official website. **notice: the QR code generated at this time doesn't react in Changan or WeChat in the browser, because QRcode generates the canvas tag instead of the img tag**. So you can only use the IMG tag if you want to click on pop-up tags. This developer can expand itself.
 
+### DOM element LayaAir of video
 
+#### Live video
 
-### LayaAir之Dom元素video
+​	In the HTML5 era, video playback basically uses video tags to play, and if there is no rich experience in video playback, the best choice is to use mature play plug-in to achieve. What's popular now is [video.js](https://github.com/videojs/video.js), [hls.js](https://github.com/video-dev/hls.js), [plyr.js](https://github.com/Selz/plyr). It's excellent in terms of compatibility, experience and performance. These plugins are officially given by demo. such as https://plyr.io/，http://video-dev.github.io/hls.js/demo/，http://codepen.io/sampotts/pen/JKEMqB。
 
-#### 视频直播
+Let's take it as follows [Plyr + hls.js](http://codepen.io/sampotts/pen/JKEMqB) Here's an example of how we should write in LayaAir.
 
-在html5时代，视频播放基本用的是video标签来播放，视频播放假如没有丰富的经验，最好的选择是用成熟的播放插件来实现。目前流行的是[video.js](https://github.com/videojs/video.js), [hls.js](https://github.com/video-dev/hls.js), [plyr.js](https://github.com/Selz/plyr)。无论在兼容性，体验和性能方面都是非常优秀的。这些插件的官方都给出了的demo。比如[https://plyr.io/，http://video-dev.github.io/hls.js/demo/，http://codepen.io/sampotts/pen/JKEMqB。](https://plyr.io/%EF%BC%8Chttp://video-dev.github.io/hls.js/demo/%EF%BC%8Chttp://codepen.io/sampotts/pen/JKEMqB%E3%80%82)
-
-下面我们就以[Plyr + hls.js](http://codepen.io/sampotts/pen/JKEMqB)来为例子，看看在LayaAir中我们应该怎么写。
-
-新建个AS的空项目。同时在index.html文件中加入如下代码：
+Create a new AS empty project. At the same time, add the following code in the index.html file:
 
 ![3](img/3.png)</br>
 
-`<link rel="stylesheet" href="https://cdn.plyr.io/1.8.2/plyr.css">`播放器的样式文件，
+`<link rel="stylesheet" href="https://cdn.plyr.io/1.8.2/plyr.css">` The style file of the player,
 
-`<video preload="none" id="player" autoplay controls crossorigin></video>`添加video标签。命名id为“player”，这个一会我们在程序中会用到。
+`<video preload="none" id="player" autoplay controls crossorigin></video>` Plus video tag. Name ID as “player”, and we'll use it in the program for a while.
 
 `<script src="https://cdn.plyr.io/1.8.2/plyr.js"></script>`
 `<script src="https://cdn.jsdelivr.net/hls.js/latest/hls.js"></script>`
 
-这是播放器用到的类库。开发者在生产环境中记得下载到自己的项目中或者服务器中。
+This is the class library used by the player. Developers remember to download to their own projects or servers in the production environment.
 
- 下面是主类的逻辑：
+​	The following is the logic of the main class:
 
 ```typescript
 //初始化引擎
@@ -148,43 +144,43 @@ if (Hls.isSupported()) {
 plyr.setup(video);
 ```
 
-编译运行代码，发现网页已经可以播放视频了。开发者可能注意到这里我们初始化引擎的时候是这样的：
+Compile and run the code and find that the page has already played video. Developers may notice that when we initialize the engine, this is the case:
 
-`Laya.init(0,0);//初始化引擎`;设置尺寸为0，因为这里我们没有和舞台的交互。所以我们这里设置为0，我们甚至可以不初始化。假如开发者项目中含有和舞台交互的逻辑，可以设置适合自己的尺寸。
+`Laya.init(0,0);//Initialization engine`;Set size is 0, because we don't have stage interaction here. So we set it here to 0, and we can even not initialize it. If the developer project contains the logic of interaction with the stage, you can set your own size.
 
- 在播放的过程中开发者可以F12 打开谷歌的控制台，切换到Network标签看下我们的视频是一段段的ts文件。
+​	In the process of playing, developers can F12 open Google console, switch to the Network tab to see, our video is a section of TS file.
 
 ![4](img/4.png)</br>
 
-随着播放的进行，发现文件的个数越来越多。其实这就是基于[hls](https://developer.apple.com/streaming/)协议的播放。该技术基本原理是将视频文件或视频流切分成小片(ts)并建立索引文件(m3u8)。更深层次的原理，比如视频解码，视频帧数据，开发者可以参考如下：
+As the play goes on, more and more files are found. In fact, this is based on [hls](https://developer.apple.com/streaming/) Protocol playback. The basic principle of this technique is to cut video files or video streams into small pieces (TS) and establish index files (m3u8). Deeper principles, such as video decoding, video frame data, developers can refer to as follows:
 
-[https://developer.apple.com/streaming/。](https://developer.apple.com/streaming/%E3%80%82)
+https://developer.apple.com/streaming/。
 
-[https://developer.mozilla.org/zh_CN/docs/Web/API/MediaSource。](https://developer.mozilla.org/zh_CN/docs/Web/API/MediaSource%E3%80%82)
+https://developer.mozilla.org/zh_CN/docs/Web/API/MediaSource。
 
-[https://github.com/nickdesaulniers/netfix](https://github.com/nickdesaulniers/netfix)
+https://github.com/nickdesaulniers/netfix
 
-[https://developer.mozilla.org/en-US/docs/Web/API/HTMLMediaElement](https://developer.mozilla.org/en-US/docs/Web/API/HTMLMediaElement)
+https://developer.mozilla.org/en-US/docs/Web/API/HTMLMediaElement
 
-上面的例子我们使用hls+plyr来进行播放。其他的方法请开发者参考本教程进行扩展。
+We use hls+plyr to play the example above. Other methods are invited to expand the tutorial for reference.
 
-#### 摄像头
+#### Camera
 
- html5的video做摄像头浏览器的支持度是有限的，而且需要**https的协议**谷歌和新版的微信支持度还是不错的。假如你的兼容性不要求那么高，可以尝试下添加摄像头的功能。
+​	The support of HTML5's video as camera browser is limited, and it needs **https agreement** Google and the new version of WeChat support is still good. If your compatibility does not require that high, you can try to add the camera function.
 
-下面我们先来看下mdn上给的例子。
+Let's take a look at the example given on mdn.
 
-[https://mdn.github.io/webaudio-examples/stream-source-buffer/](https://mdn.github.io/webaudio-examples/stream-source-buffer/)
+https://mdn.github.io/webaudio-examples/stream-source-buffer/
 
-开发者用手机或者微信打开这个地址测试下你手机的支持度。
+Developers use mobile phones or WeChat to open this address to test your phone's support.
+![L`6Q322IAT7251L4{J1PWW](img/L`6Q322IAT7251L4{J1P]WW.png)。
 
-![5](img/5.png)</br>
+​	This is a test connection, the protocol is also HTTPS, developers pay attention to this when you call the camera. Your remote address must be https.
 
-这个是个测试的连接，协议也是https的，开发者在调用摄像头的时候要注意这一点。自己的远端地址一定要https。
+​	More information is available here:https://github.com/mdn/webaudio-examples. The link here is an example of sound and video given by mdn.
 
- 更多的资料可以参考这里:[https://github.com/mdn/webaudio-examples.。这里的链接是mdn给出的声音和视频的例子。](https://github.com/mdn/webaudio-examples.%E3%80%82%E8%BF%99%E9%87%8C%E7%9A%84%E9%93%BE%E6%8E%A5%E6%98%AFmdn%E7%BB%99%E5%87%BA%E7%9A%84%E5%A3%B0%E9%9F%B3%E5%92%8C%E8%A7%86%E9%A2%91%E7%9A%84%E4%BE%8B%E5%AD%90%E3%80%82)
+​	LayaAir on the camera also has the corresponding package, below we see the usage.
 
- LayaAir关于摄像头也有相应的封装，下面我们来看下用法。
 
 ```typescript
 //初始化引擎
@@ -234,15 +230,20 @@ function onStageClick() {
 }
 ```
 
-编译运行上面的例子，发现打不开。这很正常，运行这个例子要自己搭建一个https的服务器。然后用手机打开这个地址对应的index.html。搭建一个简单的htpps服务器也很简单。这里我们借助Laya的命令行工具就可以。
 
-- 首先下载node。下载地址[https://nodejs.org/en/，进行安装。](https://nodejs.org/en/%EF%BC%8C%E8%BF%9B%E8%A1%8C%E5%AE%89%E8%A3%85%E3%80%82)
-- 安装完成之后 打开cmd 命令行，输入 npm install -g layacmd 等待安装完成。
-- 找到我们刚才编译的那个index.html。按住shift+右键 在此处打开cmd窗口 输入layacmd open ，然后就会启动一个http和htpps的静态服务器，根据命令行输出的地址，然后我们用手机谷歌浏览器或者微信访问这个地址 比如我们这里是[https://10.10.20.34:8001/index.html。](https://10.10.20.34:8001/index.html%E3%80%82)
+​	Compile and run the above example, found that can not open. This is normal. Run this example to build a HTTPS server yourself. Then use your mobile phone to open the index.html corresponding to this address. It's also simple to build a simple htpps server. Here we can use the command line tool of Laya.
 
-### LayaAir之dom元素File
+- Download node first. Download address https://nodejs.org/en/，Install it.
 
-在项目开发中我们可能会用到让用户上传图片的需求。这个我们需要借助html5的file标签（**微信的要用微信提供的接口，后面的教程我们专门在微信教程中讲。其他浏览器也可能存在兼容性问题**）。下面我们写的简单的例子。
+- When the installation is complete, open the cmd command line, enter  npm install -g layacmd , and wait for the installation to complete.
+
+- Find the index.html we just compiled. Hold the shift+ right here, open the CMD window, enter layacmd open, and then start a static server of HTTP and htpps, according to the command line output address, and then we use mobile phone, Google browser or WeChat to access this address, such as we are here https://10.10.20.34:8001/index.html。
+
+
+
+### LayaAir and the DOM element File
+
+​	In project development, we may need to allow users to upload pictures. This we need to use HTML5 file tag（**WeChat micro-channel to provide the interface, the back of the tutorial we specifically talked about in WeChat tutorial. Other browsers may also exist compatibility**）. Let's write a simple example below.
 
 ```typescript
 //初始化引擎
@@ -267,7 +268,8 @@ fileReader.onload = function (evt) {
 }
 ```
 
-编译上面的代码，点击按钮。选择一个图片文件或者相机进行拍照，发现图片已经显示到舞台上了。那么一个简单的调用相册或者相机的程序就这样完成了。但是我们发现这个“按钮”非常丑陋。那么怎么改变这个按钮样式呢?这个就需要借助css样式来处理下。传统的做法就是把这个按钮的透明值设置为0，然后在放一个和他重合的按钮来代替。通过这样的假象来改变他的样式，其实实际点击的还是他。只不过用户感觉不到。那么我们就来修改下，看看怎么改变样式。
+
+​	Compile the code above, click the button. Choose a picture file or camera to take pictures, and find that the picture has been shown on the stage. So, a simple program that calls an album or camera is done. But we found that the  “button” was very ugly. So how do you change the button style? This needs to be handled with the help of the CSS style. The traditional way is to set the button's transparent value to 0, and then replace it with a button. To change his style through this illusion, actually, click on him. Just the user doesn't feel it. So we'll fix it and see how to change the style.
 
 ```typescript
 //设置file样式
@@ -278,7 +280,7 @@ file.style.position ="absolute";
 file.style.zIndex = 999;
 ```
 
-下面看下完整的代码：
+See the complete code below:
 
 ```typescript
 //初始化引擎
@@ -318,21 +320,21 @@ function onUIAssetsLoaded(){
 }
 ```
 
-编译运行代码，可以看到，那个丑陋的dom按钮不见了。我们点击我们自定义的按钮，一样可以选择图片，显示到舞台上。
+Compile and run the code, you can see, that ugly DOM button disappeared. We click on our custom button, and we can also choose the picture and show it on the stage.
 
-上面的例子我们是把它在原点重合，设置透明度为0,伪装成了不可见。开发者可以试着放到其他的位置来测试下，本节教程不在具体实现。关于file的其他api请参考mdn和w3c相关说明。除了显示到舞台上，可能还有上传服务器的操作，这时候可以用FormData。这个开发者可以尝试下。
+In the example above we put it at the origin of coincidence, set the opacity to 0, disguised as a completely invisiable. Developers can try to test it in other places, and this tutorial is not implemented in detail. Refer to MDN and W3C for other file of api. In addition to the display on the stage, there may be upload server operation, this time you can use FormData. This developer can try it out.
 
-### LayaAir之dom元素script标签
+### DOM element script tag for LayaAir
 
- 有时候我们项目的js文件很多，很大，一次性的全部加载进来不仅仅是流量的浪费，还会造成页面的卡顿，导致极差的用户体验。用压缩混淆的方式虽然能减小些，但是稍微大一点的项目，代码量就会很大。或者地方的js文件，首屏加载时不必要的，这时候我们就需要自适当的时候在加载，因此拆分文件和模块非常必要。拆分文件，就会涉及到即用即加载。那么这时候script标签就会派上用场。
+​	Sometimes we project a lot of JS files, a large, one-time loading all in is not just the flow of waste, will cause the page Caton, leads to poor user experience. Compressed obfuscation can reduce the amount of code, but a little larger items, the code will be large. Or local JS files, the first screen loading is unnecessary, at this time we need to load from the appropriate time, so it is necessary to split files and modules. Split file will involve instant loading. Then the script tag will come in handy.
 
- 通过script的src来加载远端脚本，可以实现这种功能。也可以通过设置script的innerHTML来实现，当然还有第三种eval。下面我们就这几种情况分别说明下用法。
+​	You can implement this functionality by loading remote scripts with script's src. It can also be implemented by setting up script's innerHTML, and of course, there are third eval. Here we illustrate the use of these circumstances.
 
-#### 通过设置src来实现
+#### By setting SRC to achieve
 
- script的创建可以手动添加到页面，也可以代码动态的创建。这里我们以代码创建为例子进行说明。我们先上代码.
+​	The creation of script can be manually added to the page, or the code can be created dynamically. Here we illustrate the code creation as an example. Let's go ahead with the code
 
-代码逻辑如下：
+A new as language project, code logic is as follows：
 
 ```typescript
 //初始化引擎
@@ -351,7 +353,7 @@ script.onerror = function(){
 Laya.Browser.document.body.appendChild(script);
 ```
 
-然后再新建一个js文件，简单代码如下：
+Then create a new JS file, the simple code is as follows：
 
 ```typescript
 var Demo1 = (function () {
@@ -366,7 +368,7 @@ var Demo1 = (function () {
 console.log("我被加载进来了");
 ```
 
-下面我们简单的讲解下这两段代码。
+Here's a brief explanation of these two pieces of code.
 
 `var script = Laya.Browser.document.createElement("script");`创建一个script标签。
 
@@ -380,15 +382,15 @@ console.log("我被加载进来了");
 
 `client.start();`调用实例的函数。
 
-编译运行上面的代码。打开谷歌的控制台，可以看到输出：
+Compile and run the code above. Open the Google Chrome console, you can see the output:
 
-**“我被加载进来了”**
+**"It was loaded in"**
 
-**“调用方法”**
+**"Call method"**
 
-#### 通过script的innerHTML设置
+####Through the script's innerHTML settings
 
- 设置innerHTML其实就是把js的文本格式赋值给innerHTML。这个我们可以通过加载文件的格式把远端加载的文件转换成文本内容赋值给标签。下面看下例子。
+​	Set the innerHTML is actually the js text format assignment to innerHTML. This we can load the file format to convert the remote file loaded into text content assigned to the label. The following example.
 
 ```typescript
 //初始化引擎
@@ -409,9 +411,10 @@ function errorHandler(e){
 }
 ```
 
-编译运行上面的代码，可以看到效果和用src加载的效果是一样的。这个例子是用HttpRequest来加载文件然后把加载的内容赋值给script.innerHTML。标签自行解析执行js。当然本例子是用的HttpRequest来加载，开发者也可以用Laya.loader.load的方法来进行加载。
+Compile and run the above code, you can see the effect and the effect of loading with src is the same. This example uses HttpRequest to load the file and assign the loaded content to script.innerHTML. Label self-analytical implementation js. Of course, this example is used HttpRequest to load, developers can also use Laya.loader.load method to load.
 
-#### eval方法进行加载
+#### eval method to load
+
 
 ```typescript
 function completeHandler(e){
@@ -421,25 +424,25 @@ function completeHandler(e){
 }
 ```
 
-我们把前面的加载完成函数改上面的 `Laya.Browser.window.eval(e);` 然后编译，打开控制台，发现效果是一样的。这个和script标签已经没有什么关系了。
+	We put the front of the load function to complete the above `Browser.window.eval(e);` Then compile, open the console and found that the effect is the same. This script has nothing to do with the label.
 
- 总结:上面的三种常用的方法都可以实现动态加载js文件。三种方法有什么不同呢？
+​	Summary: The above three commonly used methods can be achieved dynamically loaded js file. What is the difference between the three methods?
 
-- script标签src的方式加载的是js文件，这个js文件可以和当前页面不同源，也就是说可以跨域加载。
+- Script tag src way to load the js file, the js file can be different from the current page, which means that you can cross-domain loading.
 
-- script.innerHTML的方法接收的是一段js文件的文本格式，用的是XMLHttpRequest方式进行加载，所以文件不能跨域，或者说允许加载才可以，优点就是这个js文件可以自定义格式，比如进行加密，穿插别的格式，然后用二进制的格式进行加载，在程序中在解码成真正的js。
+- script.innerHTML method to receive a text format is a js file, using the XMLHttpRequest way to load, so the file can not cross-domain, or allow to load it, the advantage is that the js file can be customized format, such as encryption, interspersed with other Format, and then use the binary format to load, in the process of decoding into a real js.
 
-- eval的方法和script.innerHTML的方式基本差不多。加载的内容也是很随意。不过不推荐eval这种方式，eval是快被废弃的方法，无论在性能还是安全性方面都是不推荐使用的。具体的原因请看mdn的解释
+- The way eval and script.innerHTML basically the same. Loaded content is also very casual. However, this method is not recommended eval, eval is a fast way to discard, both in terms of performance and security are not recommended. Specific reasons please see mdn explanation
 
-  [https://developer.mozilla.org/zh-CN/docs/Web/JavaScript/Reference/Global_Objects/eval。](https://developer.mozilla.org/zh-CN/docs/Web/JavaScript/Reference/Global_Objects/eval%E3%80%82)
+  https://developer.mozilla.org/zh-CN/docs/Web/JavaScript/Reference/Global_Objects/eval。
 
-  **其实加载的方式我们还可以放到worker中去，这样更加的减少了页面的渲染压力和卡顿现象。开发者可以阅读worker的教程进行发散。**
+  **In fact, we can load the way to the worker can go, so more to reduce the page rendering pressure and Caton phenomenon. Developers can read the worker's tutorial to diverge**
 
-### LayaAir之dom元素声音
+### LayaAir the dom element of voice
 
- 说起html5的声音，开发者可能第一个想到的是audio标签，但是audio标签对于开发项目极其鸡肋，今天我们讲到的是另一个接口，HTML5提供给JavaScript编程用的Audio API则让我们有能力在代码中直接操作原始的音频流数据，对其进行任意加工再造。音频的api，w3c给我提供了足够的[接口](https://www.w3.org/TR/webaudio/)，在[mdn](https://developer.mozilla.org/zh-CN/docs/Web/API/AudioContext)上面介绍的也比较详细。在支持比较完善的浏览器上，声音的api能做出的视觉效果极其丰富。由于声音的api极其丰富，我们这里就抛砖引玉，简单介绍下用法，至于音频的合成，混音，音效，音频数据进行频谱分析，音频加上滤镜比如提高音色等开发者可以查阅mdn或者相关资料。
+​	Speaking of HTML5 sounds, developers may first think of audio tags, but audio tags are extremely poor for development projects. Today we are talking about another interface. The Audio API provided by HTML5 for JavaScript programming allows us to The ability to directly manipulate the original audio stream data in the code, any of its processing reengineering. The audio API, w3c gave us enough [interface](https://www.w3.org/TR/webaudio/), in [mdn](https://developer.mozilla.org/zh-CN/docs/Web/API/AudioContext)Described above is also more detailed. In support of a more complete browser, the sound of the API can make an extremely rich visual effects. As the voice of the api is extremely rich, we are here to start with, a brief introduction to the usage, as the audio synthesis, mixing, sound effects, audio data for spectrum analysis, audio plus filters such as improving timbre developers can access mdn or related information.
 
- 我们先看下mdn上的一个例子。在这个例子中, 创建一个2秒的缓冲器,并用白噪音填充它, 然后通过[`AudioBufferSourceNode`](https://developer.mozilla.org/zh-CN/docs/Web/API/AudioBufferSourceNode)来播放它. 注释里说明了它的功能。
+​	Let's look at an example on mdn. In this case, create a 2 second buffer and fill it with white noise, and then pass it through [`AudioBufferSourceNode`](https://developer.mozilla.org/zh-CN/docs/Web/API/AudioBufferSourceNode) To play it. The note explains its function
 
 ```javascript
 var audioCtx = new (window.AudioContext || window.webkitAudioContext)();
@@ -474,7 +477,7 @@ window.onclick = function() {
 }
 ```
 
-运行上面的js代码，单击页面就会听到声音播放出来了。那么用LayaAir怎么写呢？
+Run the JS code above and click the page to hear the sound coming out. So, how do you write with LayaAir?
 
 ```typescript
 //初始化引擎
@@ -512,9 +515,10 @@ Laya.stage.on(Laya.Event.CLICK, this, function () {
 });
 ```
 
-编译运行上面的例子，单击舞台，就会听到声音播放出来。这个例子很简单，就是在内存中构建出一个声音。那么外部加载的怎么办呢？
+	Compile and run the above example, click on the stage, you will hear the sound playing out. This is a simple example of building a sound in memory. What about external loading?
 
-下面这个例子我们就外部加载一个声音文件。顺便把声音的频谱我们画出来。
+In the following example, we load a sound file externally. By the way, we can draw the spectrum of the sound.
+
 
 ```typescript
 //初始化引擎
@@ -556,17 +560,18 @@ function drawHandler() {
 }
 ```
 
-编译运行上面的项目，点击舞台可以看到，声音的频谱就显示出来了。如下图所示：
+Compile and run the above items, click on the stage, you can see, the spectrum of the sound is displayed. The following diagram.
 
 ![6](img/6.gif)</br>
 
-总结:可以看到 web的声音功能越来越强大，假如不考虑某些低端机的兼容性，完全可以做一个web的播放器。这里只是做出了一个频谱的效果，开发者可以试试混音，给声音加滤镜等等功能。相关的api可以查阅下mdn。
+Summary: you can see that the voice function of web is becoming more and more powerful. If you don't consider the compatibility of some low-end machines, you can make a web player. This is just a spectrum effect, and developers can try mixing, adding sounds, filters, and so on. The related API can be consulted under mdn.
 
-### LayaAir之dom元素iframe
 
-在插入三方的一些网站的时候我们一般会用到iframe，甚至三方的渠道基本都是用iframe嵌入一个应用。我们项目中也会遇到用iframe的情况。下面的例子就是演示在项目中应用iframe。
+### DOM element LayaAir of iframe
 
-代码如下所示：
+​	When you plug in three party websites, we usually use iframe, and even three party channels are basically embedded with an application iframe. We also encounter iframe in our project. The following example demonstrates the application of iframe in the project.
+
+​	Using ide to create a new empty item. Code is as follows:
 
 ```typescript
 //初始化引擎
@@ -583,4 +588,4 @@ function clickHandler() {
 }
 ```
 
- 这里面需要提醒开发者的就是定位和层级要记得设置。很多开发者不注意导致iframe跑到游戏层的下面儿看不见。
+ ​	What you need to remind developers is positioning and hierarchy, remember to set up. Many developers don't notice the iframe running below the game layer.
