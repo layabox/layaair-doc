@@ -67,10 +67,10 @@ image.putImageData(arrayBuff,width,height);
 在LayaNative-0.9.13以后，截屏后可以把图片的ImageData数据转换成jpg或者png格式，代码如下：
 ```javascript
 var jpg = conch.convertBitmapToJpeg(arrayBuff,width,height);
-fs_writeFileSync(conch.getCachePath()+"/test.jpg");//保存到本地或者其他操作
+window.fs_writeFileSync(conch.getCachePath()+"/test.jpg", jpg);//保存到本地或者其他操作
 
 var png = conch.convertBitmapToPng(arrayBuff,width,height);
-fs_writeFileSync(conch.getCachePath()+"/test.png");//保存到本地或者其他操作
+window.fs_writeFileSync(conch.getCachePath()+"/test.png", png);//保存到本地或者其他操作
 ```
 ### 5.简单代码实例
 
