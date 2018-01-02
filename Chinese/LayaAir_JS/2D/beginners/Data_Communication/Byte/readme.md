@@ -22,160 +22,159 @@
 
   ```typescript
   //实例化一个二进制数组Byte
-  var byte:Byte = new Byte();
+  var byte = new Laya.Byte();
   //或者传入一个类型化数组
-  var uint8Byte:Uint8Array = new Uint8Array(10);
-  var byte:Byte = new Byte(uint8Byte);
+  var uint8Byte = new Uint8Array(10);
+  var byte = new Laya.Byte(uint8Byte);
   //或者传入一个ArrayBuffer类型
-  var buffer:ArrayBuffer = new ArrayBuffer(20);
-  var byte:Byte = new Byte(buffer);
+  var buffer = new ArrayBuffer(20);
+  var byte = new Laya.Byte(buffer);
   ```
 
   ​
 
 
-- **writeArrayBuffer**(arraybuffer:*, offset:uint = 0, length:uint = 0):void
+- **writeArrayBuffer**(arraybuffer, offset, length)
 
   写入指定的二进制缓冲数据。指定数据的偏移量和长度，如下：
 
   ```typescript
-  var byte:Byte = new Byte();
-  var byte1:Byte = new Byte();
+  var byte = new Laya.Byte();
+  var byte1 = new Laya.Byte();
   byte1.writeFloat32(20.0);//写入一个四个字节的浮点数
   byte1.writeInt16(16);//写入一个两个字节的整数
   byte1.writeUTFString("hell world");//写入一个字符串；
   byte.writeArrayBuffer(byte1.buffer,6);//把byte1的数据从第六个字节开始读入byte中。省略其中的浮点数20.0和整数16
   byte.pos = 0;//
-  trace(byte.readUTFString())//从byte中读出字符串。
+  console.log(byte.readUTFString())//从byte中读出字符串。
   ```
 
 - 读取数据
 
-  **getByte**():int在字节流中读一个字节。
+  **getByte**():number在字节流中读一个字节。
 
-  **getInt16**():int在当前字节偏移量位置处读取 Int16 值。
+  **getInt16**():number在当前字节偏移量位置处读取 Int16 值。
 
-  **getInt32**():int在当前字节偏移量位置处读取 Int32 值
+  **getInt32**():number在当前字节偏移量位置处读取 Int32 值
 
-  **getFloat32**():Number在指定字节偏移量位置处读取 Float32 值。
+  **getFloat32**():number在指定字节偏移量位置处读取 Float32 值。
 
-  **getFloat32Array**(start:int, len:int):*从指定的位置读取指定长度的数据用于创建一个 Float32Array 对象并返回此对象。
+  **getFloat32Array**(start:number, len:number):any从指定的位置读取指定长度的数据用于创建一个 Float32Array 对象并返回此对象。
 
-  **getFloat64**():Number在指定字节偏移量位置处读取 Float64 值。
+  **getFloat64**():number在指定字节偏移量位置处读取 Float64 值。
 
-  **getInt16**():int 在当前字节偏移量位置处读取 Int16 值。
+  **getInt16**():number 在当前字节偏移量位置处读取 Int16 值。
 
-  **getInt32**():int在当前字节偏移量位置处读取 Int32 值。
+  **getInt32**():number在当前字节偏移量位置处读取 Int32 值。
 
-  **getUint8**():uint在当前字节偏移量位置处读取 Uint8 值。
+  **getUint8**():number在当前字节偏移量位置处读取 Uint8 值。
 
-  **getUint16**():uint在当前字节偏移量位置处读取 Uint16 值。
+  **getUint16**():number在当前字节偏移量位置处读取 Uint16 值。
 
-  **getUint32**():uint在当前字节偏移量位置处读取 Uint32 值。
+  **getUint32**():number在当前字节偏移量位置处读取 Uint32 值。
 
-  **getInt16Array**(start:int, len:int):*从指定的位置读取指定长度的数据用于创建一个 Int16Array 对象并返回此对象。
+  **getInt16Array**(start:number, len:number):any从指定的位置读取指定长度的数据用于创建一个 Int16Array 对象并返回此对象。
 
-  **getString**():String读取字符型值。
+  **getString**():string读取字符型值。
 
-  **getUTFBytes**(len:int = -1):String 读字符串，必须是 writeUTFBytes 方法写入的字符串。
+  **getUTFBytes**(len:number = -1):string 读字符串，必须是 writeUTFBytes 方法写入的字符串。
 
-  **getUTFString**():String 读取 UTF-8 字符串。
+  **getUTFString**():string 读取 UTF-8 字符串。
 
 
 
 ----------------------------------写入数据----------------------------------
 
-- **writeByte**(value:int):void在字节流中写入一个字节。
+- **writeByte**(value:number)在字节流中写入一个字节。
 
   ```typescript
-   var byte:Byte = new Byte();
+   var byte = new Laya.Byte();
    byte.writeByte(10);//0-255之间
   ```
 
-- **writeFloat32**(value:Number):void在当前字节偏移量位置处写入 Float32 值。范围是$\left[-2^{128}, 2^{127}\right]$，约为-3.4E38—3.4E+38。
+- **writeFloat32**(value:number)在当前字节偏移量位置处写入 Float32 值。范围是$\left[-2^{128}, 2^{127}\right]$，约为-3.4E38—3.4E+38。
 
   ```typescript
-  var byte:Byte = new Byte();
+  var byte = new Laya.Byte();
   byte.writeFloat32(10.021);
   ```
 
-- **writeFloat64**(value:Number):void写入float64位数值 其数值范围为-1.7E308～1.7E+308。
+- **writeFloat64**(value:number)写入float64位数值 其数值范围为-1.7E308～1.7E+308。
 
-- **writeInt16**(value:int):void在当前字节偏移量位置处写入 Int16 值。范围-32768 到 +32767之间。
+- **writeInt16**(value:number)在当前字节偏移量位置处写入 Int16 值。范围-32768 到 +32767之间。
 
   ```typescript
-  var byte:Byte = new Byte();
+  var byte = new Laya.Byte();
   byte.writeInt16(120);
   ```
 
+- **writeInt32**(value:number)在当前字节偏移量位置处写入 Int32 值。-2,147,483,648 到 +2,147,483,647 之间的有符号整数。
 
-- **writeInt32**(value:int):void在当前字节偏移量位置处写入 Int32 值。-2,147,483,648 到 +2,147,483,647 之间的有符号整数。
+- **writeUint16**(value:number)在当前字节偏移量位置处写入 Uint16 值。
 
-- **writeUint16**(value:int):void在当前字节偏移量位置处写入 Uint16 值。
+- **writeUint32**(value:number)在当前字节偏移量位置处写入 Uint32 值。
 
-- **writeUint32**(value:int):void在当前字节偏移量位置处写入 Uint32 值。
+- **writeUint8**(value:number)在当前字节偏移量位置处写入 Uint8 值。
 
-- **writeUint8**(value:int):void在当前字节偏移量位置处写入 Uint8 值。
+- **writeUTFBytes**(value:string)写入字符串，该方法写的字符串要使用 readUTFBytes 方法读取。
 
-- **writeUTFBytes**(value:String):void写入字符串，该方法写的字符串要使用 readUTFBytes 方法读取。
+- **writeUTFString**(value:string)将 UTF-8 字符串写入字节流。
 
-- **writeUTFString**(value:String):void将 UTF-8 字符串写入字节流。
-
-- **clear**():void清除数据。
+- **clear**()清除数据。
 
   ```typescript
-  var byte:Byte = new Byte();
+  var byte = new Laya.Byte();
   byte.clear();//清除所有数据归零。
   ```
 
-- **getSystemEndian()**:String[static] 获取系统的字节存储顺序。
+- **getSystemEndian()**:string[static] 获取系统的字节存储顺序。
 
   ```typescript
-  trace(Byte.getSystemEndian());//打印系统的字节顺序
+  console.log(Laya.Byte.getSystemEndian());//打印系统的字节顺序
   ```
 
 
 - ### 属性
 
-- **BIG_ENDIAN** : String= bigEndian[static] 表示多字节数字的最高有效字节位于字节序列的最前面。
+- **BIG_ENDIAN** : string= bigEndian[static] 表示多字节数字的最高有效字节位于字节序列的最前面。
 
-- **LITTLE_ENDIAN** : String= littleEndian[static] 表示多字节数字的最低有效字节位于字节序列的最前面。
+- **LITTLE_ENDIAN** : string= littleEndian[static] 表示多字节数字的最低有效字节位于字节序列的最前面。
 
-- **[pos]** : int当前读取到的位置。
+- **[pos]** : number当前读取到的位置。
 
   ```typescript
-  var byte:Byte = new Byte();
+  var byte = new Laya.Byte();
   byte.writeInt16(120);
   byte.pos =0;//读取位置归零。
   ```
 
 
-- **length**: int字节长度。
+- **length**: number字节长度。
 
-- **endian** : String字节顺序。
+- **endian** : string字节顺序。
 
   ```typescript
-  var byte:Byte = new Byte();
-  byte.endian = Byte.BIG_ENDIAN;//设置为大端；
+  var byte = new Laya.Byte();
+  byte.endian = Laya.Byte.BIG_ENDIAN;//设置为大端；
   ```
 
-- **bytesAvailable** : int[read-only] 可从字节流的当前位置到末尾读取的数据的字节数。
+- **bytesAvailable** : number[read-only] 可从字节流的当前位置到末尾读取的数据的字节数。
 
   ```typescript
-  var byte:Byte = new Byte();
+  var byte = new Laya.Byte();
   byte.writeFloat32(20.0);
   byte.writeInt16(16);
   byte.writeUTFString("hell world");
   byte.pos = 6;
-  trace(byte.bytesAvailable)
+  console.log(byte.bytesAvailable)
   ```
 
 下面我们通过一个完整的代码来演示下这个类的应用，比如网络连接中，我们接收和发送网络消息。
 
 ```typescript
-var msg:Object ={name:"xxx",age:18,weight:65.5,height:175};
-var byte:Byte = new Byte();//实例化byte数组
-byte.endian = Byte.LITTLE_ENDIAN;//设置大小端
+var msg ={name:"xxx",age:18,weight:65.5,height:175};
+var byte = new Laya.Byte();//实例化byte数组
+byte.endian = Laya.Byte.LITTLE_ENDIAN;//设置大小端
 byte.writeUTFString(msg.name);//写入数据
 byte.writeByte(msg.age);
 byte.writeFloat32(msg.weight);
@@ -187,10 +186,10 @@ byte.writeInt16(msg.height);
 ```typescript
 //设置pos为0 开始从头开始按照写入的顺序读取读取
 byte.pos = 0;
-trace(byte.getUTFString());
-trace(byte.getByte());
-trace(byte.getFloat32());
-trace(byte.getInt16());
+console.log(byte.getUTFString());
+console.log(byte.getByte());
+console.log(byte.getFloat32());
+console.log(byte.getInt16());
 ```
 
 ## h5 类型化数组

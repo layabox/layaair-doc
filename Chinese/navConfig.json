@@ -1329,6 +1329,11 @@
 				"name_3_file": "readme.md"
 			},
 			{
+				"name_3_name": "Byte二进制读写",
+				"name_3_url": "Chinese/LayaAir_TS/2D/beginners/Data_Communication/Byte/",
+				"name_3_file": "readme.md"
+			},
+			{
 				"name_3_name": "JSON数据详解",
 				"name_3_url": "Chinese/LayaAir_TS/2D/beginners/Data_Communication/json/",
 				"name_3_file": "readme.md"
@@ -2295,6 +2300,11 @@
 			{
 				"name_3_name": "WebSocket发送与接收数据",
 				"name_3_url": "Chinese/LayaAir_JS/2D/beginners/Data_Communication/WebSocket/",
+				"name_3_file": "readme.md"
+			},
+			{
+				"name_3_name": "Byte二进制读写",
+				"name_3_url": "Chinese/LayaAir_JS/2D/beginners/Data_Communication/Byte/",
 				"name_3_file": "readme.md"
 			},
 			{
