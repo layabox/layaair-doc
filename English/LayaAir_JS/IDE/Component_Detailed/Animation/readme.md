@@ -1,148 +1,147 @@
-# Animation组件属性详解
-
-> 由于很多组件属性是通用的，常用及通用的组件属性在`属性设置器`文档中已进行介绍。阅读本篇内容前请先阅读《属性设置器》文档。
-
+# Animation Component reference
+> CheckBox component explains that because many component properties are generic, common and generic component have been introduced in the `Property Setter` document. Please read the 《Property Setter》document before reading this article.
 
 
-## 1、初步认知Animation 组件
 
-Animation组件是动画组件，可以方便的创建图集动画或者使用LayaAirIDE创建的ani动画。如动图1所示。
+## 1、Primary cognitive Animation component
+
+The Animation component is an animation component that makes it easy to create atlas animations or use LayaAirIDE to create ani animations. As shown in figure 1.
 
 ![动图1](img/1.gif) 
 
-（动图1）
+（Picture 1）
 
-Animation的API介绍请参考 [https://layaair.ldc.layabox.com/api/?category=Core&class=laya.display.Animation](https://layaair.ldc.layabox.com/api/?category=Core&class=laya.display.Animation)
+Animation API introduction, please refer to [https://layaair.ldc.layabox.com/api/?category=Core&class=laya.display.Animation](https://layaair.ldc.layabox.com/api/?category=Core&class=laya.display.Animation)
 
 
 
-## 2、通过LayaAirIDE创建Animation 组件
+## 2. Create Animation components through LayaAirIDE
 
-### 2.1 创建Animation
+### 2.1 Make Animation
 
-Animation不是常用的UI组件，也不是容器组件。所以在创建Animation组件的时候，需要先从`组件库`里直接拖入Animation组件到IDE的`场景编辑器`中。如动图2所示。
+Animation is not a common UI component, nor is it a container component. So when you create the Animation component, you need to drag directly from the `Component library` Drag directly into the Animation component to the IDE `scene editor`. As shown in figure 2.
 
 ![动图2](img/2.gif) 
 
-（动图2）
+（Picture 2）
 
 
 
 
-### 2.2 通过source属性去接收动画数据源
+### 2.2 Receive the animation data source through the source attribute
 
-在LayaAirIDE里创建Animation组件后，必须要通过source属性去接收动画数据源后才能使用。source属性可以接收图片集合（多张图片，通常是序列帧图）、图集文件（.atlas或.json后缀）、动画文件（.ani后缀）三种。
+After creating the Animation component in LayaAirIDE, you must use the source property to receive the animation data source before you can use it. Source attributes can receive three sets of picture sets (multiple pictures, usually sequence frame), Atlas file (.atlas or.json suffix), animation file (.ani suffix).
 
-#### 2.2.1 用序列帧图片创建
+#### 2.2.1 Creating sequence frame images
 
-打开`资源管理器`，我们将多张美术资源`同时选中`，`拖拽`到`source`属性栏，然后选中场景中刚刚创建的Animation动画，按`回车`键，即可预览动画播放效果。如动图3所示。
+Open `Resource Manager`, we will multiple art resources  `Simultaneous selection`，` drag` to `source`attribute bar, and then select the scene just created Animation animation, press the `enter` key, you can preview the effect of animation. As shown in figure 3.
 
 ![动图3](img/3.gif) 
 
-（动图3）
+（Picture 3）
 
-**Tips**：使用该类型创建的动画不会被缓存到动画模版缓存池中，如果需要缓存，要使用loadImages()方法。
+**Tips**：Animations created with this type will not be cached in the animation template cache pool. If you need to cache, use the loadImages () method.
 
-#### 2.2.2 用图集文件创建
+#### 2.2.2 Creating an atlas file
 
-如果我们将图集文件放到`资源管理器`目录，也可以直接将图集文件`拖拽`到`source`属性栏，然后选中场景中刚刚创建的Animation动画，按`回车`键，即可预览动画播放效果。如动图4所示。
+If we put the atlas file into the `resource manager` directory, you can directly `drag` the atlas file to the `source` attribute bar, and then select the Animation animation just created in the scene, and press the `Enter` key to preview the effect of the animation. As shown in figure 4.
 
 ![动图4](img/4.gif) 
 
-（动图4）
+（Picture 4）
 
-**Tips**：使用此类型创建的动画模版不会被缓存到动画模版缓存池中，如果需要缓存或者创建完毕的回调，要使用loadAtlas()方法。
+**Tips**：The animation template created with this type will not be cached in the animation template cache pool. If you need to cache or create a callback, use the loadAtlas () method.
 
-#### 2.2.3 使用动画文件创建
+#### 2.2.3 Using animation files to create
 
-创建的时间轴动画文件（后缀为.ani）也可以作为Animation动画组件的数据源，如动图5所示，直接`拖拽`到`source`属性栏，然后选中场景中刚刚创建的Animation动画，按`回车`键，即可预览动画播放效果。
+Create a timeline animation file (suffix.Ani) can also be used as a Animation animation component data source, such as shown in Figure 5, direct  `drag` of the `source` the Animation animation just created in the scene, according to the `enter` key, you can preview the animation playback effect.
 
 ![动图5](img/5.gif) 
 
-(动图5) 
+(Picture 5) 
 
-### 2.3 控制动画的播放模式（wrapMode）
+### 2.3 Controlling the playback mode of animation（wrapMode）
 
-动画播放模式属性wrapMode有三个值可选，默认值是0，正序播放。选1时，倒序播放。选2时，pingpong（乒乓）模式，直白一些就是来回播放。下面我们选一组序列图资源分别演示不同模式下的播放差异。
+The animation mode attribute wrapMode has three values selectable, the default value is 0, and the positive sequence play. 1 when played backwards. When choosing 2, pingpong (ping pong) mode, some straightforward is to play back and forth. Next, we choose a sequence of resources to demonstrate the playback differences in different modes.
 
-#### 2.3.1 正序模式播放
+#### 2.3.1 Positive sequence mode play
 
-默认不设置wrapMode属性或是将wrapMode属性值设为0时，为正序播放模式。也就是序列图从前到后的顺序进行播放。
+If the wrapMode attribute is not set by default or the wrapMode attribute value is set to 0, it is the positive sequence play mode. That is, the sequence diagram is played from the previous to the latter.
 
-如动图6所示，即是从序列图phoenix0001到phoenix0025，依次播放。播放结束后，再次从phoenix0001开始到phoenix0025结束，循环播放。
+As shown in Figure 6, it is sequentially played from sequence phoenix0001 to phoenix0025. After playback, start again from phoenix0001 to phoenix0025, cycle playback.
 
 ![动图6](img/6.gif) 
 
-(动图6)
+(Picture 6)
 
-#### 2.3.2 倒序模式播放
+#### 2.3.2 Reverse playback mode
 
-将wrapMode属性值设为1时，为倒序播放模式。也就是序列图后到前的顺序进行播放。与正序播放模式完全相反。
+The wrapMode property value is set to 1, to reverse the playback mode. That is, the sequence diagram is played back to the previous order. Contrary to the positive sequence broadcast mode.
 
-如动图7所示，即是从序列图phoenix0025到phoenix0001，依次播放。播放结束后，再次从phoenix0025开始到phoenix0001结束，循环播放。
+As shown in Figure 7, it is sequentially played from sequence phoenix0025 to phoenix0001. After playback, start again from phoenix0025 to phoenix0001, cycle playback.
 
 
 ![动图7](img/7.gif) 
 
-(动图7)
+(Picture 7)
 
-#### 2.3.3 pingpong（乒乓）模式播放
+#### 2.3.3 pingpong mode play
 
-细心观察一下，可以发现，无法是正序还是倒序，这组凤凰的动作都不流畅。原因是设计这组图的时候，美术只设计了翅膀从上向下的飞舞，所以动作帧的缺失，导致了动作看上去并不流畅。
+Careful observation, can be found, not positive or reverse, the Phoenix group action is not smooth. The reason is that when designing this set of pictures, the art only designed wings flying up and down, so the lack of action frame led to the movement does not look smooth.
 
-而将wrapMode属性值设为2时的pingpong模式，正好可以解决这个问题，同一套动作，正序从phoenix0001到phoenix0025播放完了，并不是直接回到phoenix0001重头播放，而是从phoenix0024到phoenix0001倒序播放。从而让动作更加平滑和完整。因此，pingpong模式也是游戏中经常使用的模式之一，在保障效果的前提下，还可以大幅减少美术资源量。效果如动图8所示。
+The wrapMode attribute value is set to 2 when the pingpong mode, just can solve this problem, the same set of actions, positive sequence from phoenix0001 to phoenix0025 finished playing, and not directly back to the phoenix0001 start playing, but from phoenix0024 to phoenix0001 played backwards. So that the action is more smooth and complete. Therefore, the pingpong model is also one of the frequently used patterns in the game, under the premise of the protection effect, but also can greatly reduce the amount of art resources. The effect is shown in figure 8.
 
 ![动图8](img/8.gif) 
 
-(动图8)
+(Picture 8)
 
-#### 2.4  动画播放的帧间隔时间(interval)
+#### 2.4  Frame interval time for animation
 
-`interval`属性可以设置动画播放的帧间隔时间(单位：毫秒)，默认值为50毫秒。例如，我们将刚刚播放的凤凰动画，放慢一倍，设置为100毫秒。效果如动图9所示。
+`interval` Property can set the frame interval time (unit: ms) for animation playback, and the default value is 50 milliseconds. For example, we're going to slow down the Phoenix animation just now, set it to 100 milliseconds. The effect is shown in figure 9.
 
 
 ![动图9](img/9.gif) 
 
-(动图9)
+(Picure 9)
 
-**Tips**：*如果动画正在播放，设置后会重置帧循环定时器的起始时间为当前时间，也就是说，如果频繁设置interval，会导致动画帧更新的时间间隔会比预想的要慢，甚至不更新。*
-
-
-
-#### 2.5 设置自动播放（autoPlay）
-
-autoPlay属性可以设置是否自动播放，默认为false，不自动播放。如果设置为true，则动画被创建并添加到舞台后自动播放。该属性设置不可以在IDE中即时预览，需要在发布运行时查看属性设置效果。
+**Tips**：*If the animation is playing, the frame will be reset after the start time of the cycle timer is the current time, that is, if you set the interval frequently, it will lead to the animation frame update interval will be slower than expected, or even not updated.*
 
 
 
-#### 2.6 按动效名称自动播放（autoAnimation）
+#### 2.5 Set autoPlay
 
-在LayaAir IDE中创建的时间轴动画文件（.ani后缀）内可能会有多个动画组成的动画集合，通过autoAnimation属性，可以选择其中一个动画名称进行播放。
+The autoPlay property can be set automatically. The default is false. It does not play automatically. If set to true, the animation is created and added to the stage to play automatically. This property setting cannot be previewed in IDE immediately. You need to see the attribute setting effect at the publishing run.
+
+
+
+#### 2.6 autoAnimation (Play automatically) by pressing the name of effect
+
+In the LayaAir IDE created in time axis animation file (.ani suffix), there may be a set of multiple animation assembly, through the autoAnimation attribute, you can choose one of the animation name for playback.
 
 **Tips**：
 
-- 在LayaAirIDE中，`autoAnimation`属性只能对数据源（`source`）属性为时间轴动画文件的（.ani后缀）才可以设置。
-- `autoAnimation`属性值要对应`时间轴动画`编辑中的`帧属性`面板`动效名称`中设置的名字。
+- In LayaAirIDE, the `autoAnimation`property can only be set to the data `source`  attribute for the time axis animation file (.ani suffix).
+- `AutoAnimation` attribute value to correspond the name set `timeline frame` editing. `Frame properties` panel `function name`.
 
 
 
-#### 2.7 设置播放的起始位置（index）
+#### 2.7 Set the playback start position (index)
 
-index属性可以指定动画的帧索引，默认的索引是0，可以设置为动画中的任意一帧。设置后，将会跳到设定的动画帧。
+index attribute can specify the frame index of the animation, the default index is 0, can be set to any frame in the animation. After setting, it will jump to the set animation frame.
 
-Tips：该属性仅用于静态指定，比如通过代码或点击事件来手动切换动画帧。如果设置为自动播放，仍会从第0帧开始播放，与索引的设置没有关系。
+Tips：This property is only used for static assignments, such as manually switching animation frames by code or click event. If set to autoplay, it will still be played from frame 0, regardless of the index setting.
 
 
 
-#### 2.8 设置混合模式（blendMode）
+#### 2.8 Set the blending mode（blendMode）
 
-混合模式`blendMode`属性默认不开启，设置为lighter选项后则开启混合模式。开启后效果如动图10所示。
+Mixed mode `blendMode` property is not enabled by default, set to lighter option is turned on mixed mode. After the opening effect as shown in Figure 10.
 
 ![动图10](img/10.gif) <br />
 
-(动图10)
+(Picture 10)
 
-**Tips**：*混合模式的背景必须是在舞台画布中。比如，只设置Laya.stage.bgColor是无法实现混合模式的。动图10中采用的是Graphics的矩形。*
+**Tips**：*The background of the blend mode must be in the stage canvas. For example, setting Laya.stage.bgColor alone will not work in mixed mode. Figure 10 uses the rectangle of Graphics*
 
 
 

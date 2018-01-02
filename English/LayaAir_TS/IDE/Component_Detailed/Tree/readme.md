@@ -1,102 +1,102 @@
-# Tree 组件参考
+# Tree component reference
 
 
 
-## 一、通过LayaAirIDE创建Tree组件
+## 1. create Tree components through LayaAirIDE
 
-​        Tree 组件用来显示树状结构。用户可以查看排列为可扩展树的层次结构数据。
-​        Tree 组件的脚本接口请参考 [Tree API](http://layaair.ldc.layabox.com/api/index.html?category=Core&class=laya.ui.Tree)。
+​        Tree component is used to display the tree structure. Users can view hierarchical data that is arranged as scalable trees.
+​        Tree script interface of component is referenced [Tree API](http://layaair.ldc.layabox.com/api/index.html?category=Core&class=laya.ui.Tree)。
 
  
 
-### 1.1 Tree 组件主要由两个部分组成：
+### 1.1 Tree component consists of two parts:
 
-- 项单元格（可以是 Box 、页面 View、自定义页面）；
-- 纵向滚动条 VScrollBar；
-
-
-
-### 1.2 Tree 组件的单元格通常由四部分组成：
-
-- 一个单元格选择状态切片动画 Clip；
-- 一个折叠箭头切片动画 Clip ；
-- 一个文件状态切片动画 Clip ；
-- 单元格其他内容元素；
+- Item cell (can be Box, page View, custom page);
+- Vertical scroll bar VScrollBar；
 
 
 
-### 1.3 Tree 组件的图像资源示例
+### 1.2 Tree The cell of the component usually consists of four parts
 
-1. 单元格选择状态切片动画 Clip 资源：
-   切片数为2，切片索引从0开始依次代表：单元格未被选中状态图、单元格选中或悬停状态图。
+- A cell selects the state slice animationClip；
+- A folded arrow slice animation Clip ；
+- A file status slice animation Clip ；
+- Cell Other content elements;
+
+
+
+### 1.3 Tree Sample image resource for the component
+
+1. Cell Selection Status Slice Animation Clip Resources:
+   The number of slices is 2, and the slice index, starting from 0, in turn represents: the cell is unchecked, the cell is selected or hovered.
    ​        ![图片0.png](img/1.png)<br/>
-   ​    （图）
-2. 折叠箭头切片动画 Clip 资源：
-   切片数为2，切片索引从0开始依次代表：文件夹节点折叠状态图、文件夹节点展开状态图。
+   ​    （Picture）
+2. Fold Arrow Slice Animation Clip Resources:
+   The number of slices is 2, and the slice index is 0 in order. The folder node is in a folded state, and the folder node is expanded in a state diagram.
    ​        ![图片0.png](img/2.png)<br/>
-   ​    （图）
-3. 文件状态切片动画 Clip 资源：
-   如果切片数是3，则切片索引从0开始依次代表：文件夹节点折叠状态图、文件夹节点展开状态图、非文件夹节点状态图；
-   如果切片数是2，则切片索引从0开始依次代表：文件夹节点状态图、非文件夹节点状态图；
+   ​    （Picture ）
+3. File Status Slice Animation Clip Resources:
+   If the number of slices is 3, then the slice index from 0 in turn represents: folder node folding state diagram, folder node expansion state diagram, non-folder node state diagram;
+   If the number of slices is 2, the slice index, starting from 0, in turn represents: a folder node state diagram, a non-folder node state diagram;
    ​        ![图片0.png](img/3.png)<br/>
-   ​    （图）
+   ​    （Picture）
 
 
 
-### 1.4创建 Tree 组件
+### 1.4 Create the Tree component
 
- ####1. 编辑 Tree 组件的列表项。
+ ####1. Edit the list of Tree components.
 
-   列表项可以是 Box 类型、View（页面） 类型或自定义的页面类型。此处以Box 类型为例。
-   a.从资源面板里选择拖入一个单元格选择状态的切片动画（ Clip 组件），设置此Clip 组件对象的 name 属性值为 selectBox，设置属性 clipY 的值为2；
-   *注意：此处的选择状态切片动画 （Clip 组件）对象的 name 属性值必须设置为 selectBox，只有这样程序才能识别它，并实现此 Clip 组件对象的显示状态跟随单元项的选择状态而改变的功能，否则此 Clip 对象将会被识别为此单元项的普通显示对象。*
+   The list item can be a Box type, a View type, or a custom page type. Take the Box type for example.
+   a.Select a slice animation (Clip component) that draws a cell selection state from the resource panel. Set the name attribute value of the Clip component object to selectBox, and set the value of the attribute clipY to 2;
+   *Note: the state of the animation slice (Clip components) name object attribute value must be set to selectBox, this program can only identify it, and display the state of the unit selection follow this Clip component object and the function change, otherwise the Clip objects will be identified for the ordinary object display unit.*
 
 ​        ![图片0.png](img/4.png)<br/>
-​    （图）
+​    （Picture）
 
 
-   b.从资源面板里选择并拖拽一个单元格的折叠箭头切片动画（Clip 组件），设置此 Clip 组件对象的 name 属性值为 arrow，设置属性 clipY 的值为2；
-   *注意：此处的折叠箭头切片动画 （Clip 组件）的 name 属性值必须设置为 arrow，只有这样程序才能识别它，并实现点击此 Clip 对象打开或折叠树形节点的功能。否则此 Clip 对象将会被识别为此单元项的普通显示对象。*
+   b.From the resource pane, select and drag the folding arrow slice animation (Clip component) of a cell, set the Clip component object's name attribute value to arrow, and set the value of the attribute clipY to 2;
+   *Note: the name attribute value of the folding arrow slice animation (Clip component) here must be set to arrow. Only in this way can the program recognize it and click on the Clip object to open or collapse the tree node function. Otherwise, the Clip object will be recognized for the ordinary display object of the unit item.。*
 ​        ![图片0.png](img/5.png)<br/>
-​    （图）
-   c.从资源面板里选择并拖拽一个单元格的文件状态切片动画（Clip 组件），设置此 Clip 组件对象的 name 属性值为 folder，设置属性 clipY 的值为 3；
-   *注意：此处的文件状态切片动画（Clip 组件）的 name 属性值必须设置为 folder，只有这样程序才能识别它，并实现此 Clip 组件对象的显示状态跟随单元项的折叠、展开、节点类型（是否有字节点）而改变的功能。否则此 Clip 对象将会被识别为此单元项的普通显示对象。*
+​    （Picture）
+   c.From the resource panel, select and drag a cell's file state slice animation (Clip component), set the Clip component object's name attribute value of folder, set the attribute clipY value of 3;
+   *Note: the file status animation slice (Clip components) value of the name property must be set to folder, this program can only recognize it, and realize the Clip component object display of the folding and unfolding, follow the node type unit item (whether word node) change function. Otherwise, the Clip object will be recognized for the ordinary display object of the unit item.*
 ​        ![图片0.png](img/6.png)<br/>
-​    （图）
+​    （Picture）
 
-    d.拖入此单元项的普通显示对象。
-   此处以 Label 为例，从资源面板里选择并拖入一个 Label 组件对象，在此给这个 Label 对象设置一下属性 name 值为 label ，方便在脚本中对它进行赋值，此name 属性值自定义即可。再设置一下 Label 对象显示相关的属性，使它看起来更美观。
+    d.ordinary display object dragged into this unit item.
+   Here, take Label as an example, select and drag into a Label component object from the resource panel, where you set the attribute for this Label object, name value is label, which is convenient to assign to it in the script. This name attribute value can be customized. Then set the Label object to display the relevant attributes to make it look more beautiful.
 
 ​        ![图片0.png](img/7.png)<br/>
-​    （图）
-   e.选中以上编辑的所有组件对象，使用快捷键 Ctrl + B 或选择 **\*菜单栏->编辑->转换为容器*** 选项，打开转换为容器设置面板，选择容器类型为 Box，然后点击确定按钮完成 Box 容器的添加。
+​    （Picture）
+   e.Select all the component objects of the above edit, use the shortcut key Ctrl + B or choose **\*Menu - > Edit > into container*** options, open to convert the container settings panel, select the container type is Box, and then click the button to complete the Box container to add.
 ​        ![图片0.png](img/8.png)<br/>
-​    （图）
+​    （Picture）
 
 ​    
 
-####2. 转化为 Tree 容器。
-   选择列表渲染项对象，使用快捷键 Ctrl + B 或选择 **菜单栏->编辑->转换为容器** 选项，打开转换为容器设置面板，选择容器类型为 Tree，然后点击确定按钮完成 Tree 容器的添加。
+####2. Convert to Tree container.
+   Select the list render item object and use the shortcut key Ctrl + B Or choose **Menu - > Edit - > into container** Options, open to convert the container settings panel, select the container type is Tree, and then click the button to complete the Tree container to add.
 ​           ![图片0.png](img/9.png)<br/>
-   ​    （图）
+   ​    （Picture）
 
-####3. 指定 Tree 组件的列表渲染项。
-   双击 Tree 组件对象，进入 Tree 对象内部进行编辑，设置 Tree 组件的列表渲染项的属性 name 的值为 render。
-   *注意：此处列表渲染项属性 name 的值必须为 render，否则程序将无法识别。*
+####3. Specifies a list rendering item for the Tree component.
+  Double click the Tree component object and edit it into the Tree object. Set the attribute of the list rendering item of the Tree component. The value of name is render.
+   *Note: the value of the rendering item property name in this list must be render, otherwise the program will not be recognized.*
    ​        ![图片0.png](img/10.png)<br/>
-   ​    （图）
+   ​    （Picture）
 
-####4. 为 Tree 组件添加滚动条。
-   从资源面板里选择一个 VScrollBar 组件，将VScrollBar 组件的资源地址（skin 属性值）设置为 Tree 组件属性scrollBarSkin 的值。
+####4. Adding scroll bars for Tree components.
+   Select a VScrollBar component from the resource panel and set the resource address (skin attribute value) of the VScrollBar component to the value of the Tree component property scrollBarSkin.
 ​           ![图片0.png](img/11.png)<br/>
-   ​    （图）
+   ​    （Picture）
 
-####5. 调整 Tree 的宽高。
-​	设置 Tree 对象的属性 var（全局引用名）的值为 m_tree ，此处名字可以自定义，目的是在脚本中对此 Tree 组件对象赋值。
+####5. Adjust the width of Tree.
+​	Set the value of the Tree object var (global reference name) m_tree, where the name can be customized, the purpose is to script the Tree component object assignment.
 ​           ![图片0.png](img/12.png)<br/>
-​       （图）
+​       （Picture）
 
-####6. 在代码里给 Tree 对象赋值
+####6. Assigning Tree objects in code
 
 ```javascript
 //树结构数据源
@@ -121,41 +121,41 @@ var xml:* = domParser.parseFromString(xmlString, "text/xml");
 //设置 m_tree 的数据源。
 m_tree.xml =xml;
 ```
-#### 7. 在程序中运行查看效果。
+#### 7. Run the view effect in the program.
 
 ​           ![图片0.gif](gif/1.gif)<br/>
    ​    （图）
 
-### 1.5 Tree 组件常用属性
+### 1.5 Common attributes of Tree components
 
 ​        ![图片0.png](img/13.png)<br/>
-​    （图）
+​    （Picture）
 
  
 
-| **属性**        | **功能说明**          |
+| **Attribute**        | **Functional description**          |
 | ------------- | ----------------- |
-| scrollBarSkin | 滚动条皮肤。            |
-| spaceBottom   | 每一项之间的间隔距离。单位是像素。 |
-| spaceLeft     | 左侧缩进距离。单位是像素。     |
+| scrollBarSkin | Scrollbar skin            |
+| spaceBottom   | The distance between each item. Unit is pixel |
+| spaceLeft     | Left indent distance. Unit is pixel     |
 
 
 
 
 
-##  二、通过代码创建Tree组件
+##  2. Create Tree components through code
 
-​	在我们进行书写代码的时候，免不了通过代码控制UI，创建UI_Tree类，在代码中导入`laya.ui.Tree`的包，并通过代码设定Tree相关的属性。
+​	When we write code, we can't control UI by code, create UI_Tree class, import `laya.ui.Tree` package in code, and set Tree related attributes by code.
 
-**运行示例效果：**
+**Run example effect ：**
 ​	![5](gif/2.gif)<br/>
-​	(图5)通过代码创建Tree
+​	(Figure 5) creating Tree through code
 
-​	Tree的其他属性也可以通过代码来设置，下述示例代码演示了如何通过代码创建不同皮肤（样式）的Tree，
+​	Other properties of Tree can also be set up by code. The following example code demonstrates how to create Tree for different skins (styles) through code,
 
-有兴趣的读者可以自己通过代码设置Tree，创建出符合自己需要的文件夹。
+Interested readers can set up Tree by themselves to create folders that match their own needs.
 
-**示例代码：**
+**Sample code：**
 
 ```javascript
 package
