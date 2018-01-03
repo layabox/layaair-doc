@@ -798,6 +798,33 @@
 		}]
 	},
 	{
+		"nav_1_name": "微信小游戏开发",
+		"nav_1_data": [
+		{
+			"name_2_name": "微信小游戏开发基础",
+			"name_2_data": [
+			{
+				"name_3_name": "微信小游戏简介",
+				"name_3_url": "Chinese/wechat/minigame/introduction/",
+				"name_3_file": "readme.md"
+			},
+			{
+				"name_3_name": "创建微信小游戏",
+				"name_3_url": "Chinese/wechat/minigame/novice/",
+				"name_3_file": "readme.md"
+			}]
+		},
+		{
+			"name_2_name": "微信小游戏开发进阶",
+			"name_2_data": [
+			{
+				"name_3_name": "微信小游戏综合介绍",
+				"name_3_url": "Chinese/wechat/minigame/advanced/",
+				"name_3_file": "readme.md"
+			}]
+		}]
+	},
+	{
 		"nav_1_name": "实例开发篇（AS3）",
 		"nav_1_data": [
 		{
@@ -1846,6 +1873,33 @@
 		}]
 	},
 	{
+		"nav_1_name": "微信小游戏开发",
+		"nav_1_data": [
+		{
+			"name_2_name": "微信小游戏开发基础",
+			"name_2_data": [
+			{
+				"name_3_name": "微信小游戏简介",
+				"name_3_url": "Chinese/wechat/minigame/introduction/",
+				"name_3_file": "readme.md"
+			},
+			{
+				"name_3_name": "创建微信小游戏",
+				"name_3_url": "Chinese/wechat/minigame/novice/",
+				"name_3_file": "readme.md"
+			}]
+		},
+		{
+			"name_2_name": "微信小游戏开发进阶",
+			"name_2_data": [
+			{
+				"name_3_name": "微信小游戏综合介绍",
+				"name_3_url": "Chinese/wechat/minigame/advanced/",
+				"name_3_file": "readme.md"
+			}]
+		}]
+	},
+	{
 		"nav_1_name": "实例开发篇（TS）",
 		"nav_1_data": [
 		{
@@ -2820,6 +2874,33 @@
 			{
 				"name_3_name": "3D子弹射击碰撞检测",
 				"name_3_url": "Chinese/LayaAir_JS/3D/examples/bulletShoot/",
+				"name_3_file": "readme.md"
+			}]
+		}]
+	},
+	{
+		"nav_1_name": "微信小游戏开发",
+		"nav_1_data": [
+		{
+			"name_2_name": "微信小游戏开发基础",
+			"name_2_data": [
+			{
+				"name_3_name": "微信小游戏简介",
+				"name_3_url": "Chinese/wechat/minigame/introduction/",
+				"name_3_file": "readme.md"
+			},
+			{
+				"name_3_name": "创建微信小游戏",
+				"name_3_url": "Chinese/wechat/minigame/novice/",
+				"name_3_file": "readme.md"
+			}]
+		},
+		{
+			"name_2_name": "微信小游戏开发进阶",
+			"name_2_data": [
+			{
+				"name_3_name": "微信小游戏综合介绍",
+				"name_3_url": "Chinese/wechat/minigame/advanced/",
 				"name_3_file": "readme.md"
 			}]
 		}]
