@@ -79,7 +79,7 @@
 
 ##  二、通过代码创建VScrollBar组件 
 
-​	在我们进行书写代码的时候，免不了通过代码控制UI，创建`UI_ScrollBar` 类，在代码中导入`laya.ui.VScrollBar `的包，并通过代码设定VScrollBar 相关的属性。
+​	在我们进行书写代码的时候，免不了通过代码控制UI，创建`UI_ScrollBar` 类，并通过代码设定VScrollBar 相关的属性。
 
 **运行示例效果:**
 ​	![5](gif/3.gif)<br/>
@@ -90,103 +90,91 @@
 **示例代码：**
 
 ```javascript
-package
-{
-	import laya.display.Stage;
-	import laya.display.Text;
-	import laya.ui.HScrollBar;
-	import laya.ui.ScrollBar;
-	import laya.ui.VScrollBar;
-	import laya.utils.Handler;
-	import laya.webgl.WebGL;
-
-	public class UI_ScrollBar
-	{
-		/***垂直滚动条资源**/
-		private var skins:Array=["../../../../res/ui/vscroll.png", 
-								"../../../../res/ui/vscroll$bar.png", 
-								"../../../../res/ui/vscroll$down.png",
-								"../../../../res/ui/vscroll$up.png"];
-		/***提示信息文本框**/
-		private var promptText:Text;		
+module laya {
+    import Stage = Laya.Stage;
+    import Text = Laya.Text;
+    import HScrollBar = Laya.HScrollBar;
+    import ScrollBar = Laya.ScrollBar;
+    import VScrollBar = Laya.VScrollBar;
+    import Handler = Laya.Handler;
+    import WebGL = Laya.WebGL;
+    export class UI_ScrollBar {
+        /***垂直滚动条资源**/
+		private skins:Array<string>=["res/ui/vscroll.png", 
+								"res/ui/vscroll$bar.png", 
+								"res/ui/vscroll$down.png",
+								"res/ui/vscroll$up.png"];
+        /***提示信息文本框**/
+        private promptText:Text;      	
 		/****垂直滚动条****/
-		private var vScrollBar:VScrollBar;
-		
-		
-		public function UI_ScrollBar()
-		{
-			// 不支持WebGL时自动切换至Canvas
-			Laya.init(800, 600, WebGL);
-			//画布垂直居中对齐
-			Laya.stage.alignV = Stage.ALIGN_MIDDLE;
-			//画布水平居中对齐
-			Laya.stage.alignH = Stage.ALIGN_CENTER;
-			//等比缩放
-			Laya.stage.scaleMode = Stage.SCALE_SHOWALL;
-			//背景颜色
-			Laya.stage.bgColor = "#232628";
-			
-			//加载资源
-			Laya.loader.load(skins, Handler.create(this, onSkinLoadComplete));
-		}
-
-		/***加载资源完成***/
-		private function onSkinLoadComplete(e:*=null):void
-		{
-			//创建垂直滚动条
-			createVScroller();
-		}
-		
-		/***创建垂直滚动条***/
-		private function createVScroller():void 
-		{
-			//实例化水平滚动条
-			vScrollBar= new VScrollBar();
-			//加载皮肤资源（其他资源根据规范命名后，会自动加载）
-			vScrollBar.skin = "../../../../res/ui/vscroll.png";
-			//设置高度
-			vScrollBar.height = 200;
-			//设置位置
-			vScrollBar.pos(400, 200);
-			//最低滚动位置数字
-			vScrollBar.min = 0;
-			//最高滚动位置数字
-			vScrollBar.max = 100;
-			//滚动变化事件回调
-			vScrollBar.changeHandler = new Handler(this, onChange);
-			//加载到舞台
-			Laya.stage.addChild(vScrollBar);
-			
-			//创建提示信息
-			createPromptText(vScrollBar)
-		}
-
-		/***创建提示信息***/
-		private function createPromptText(scrollBar:ScrollBar):void
-		{
-			//实例化提示信息
-			promptText=new Text();
-			//提示框字体
-			promptText.font="黑体";
-			//提示框字体大小
-			promptText.fontSize=26;
-			//提示框字体颜色
-			promptText.color="#FFFFFF";
-			//提示框初始文本
-			promptText.text="您的选择是： ";
-			//加载到舞台
-			Laya.stage.addChild(promptText);
-			//设置提示框位置
-			promptText.pos(scrollBar.x-130,scrollBar.y-60);
-			
-		}
-		
-		/***滚动条位置变化回调***/
-		private function onChange(value:Number):void 
-		{
-			promptText.text= "滚动条的位置： value=" + value;
-		}
-	}
+		private vScrollBar:VScrollBar;
+        constructor() {
+            // 不支持WebGL时自动切换至Canvas
+            Laya.init(800, 600, WebGL);
+            //画布垂直居中对齐
+            Laya.stage.alignV = Stage.ALIGN_MIDDLE;
+            //画布水平居中对齐
+            Laya.stage.alignH = Stage.ALIGN_CENTER;
+            //等比缩放
+            Laya.stage.scaleMode = Stage.SCALE_SHOWALL;
+            //背景颜色
+            Laya.stage.bgColor = "#232628";
+            //加载资源
+            Laya.loader.load(this.skins, Handler.create(this, this.onSkinLoadComplete));
+        }
+         /***加载资源完成***/
+        private onSkinLoadComplete(e:any=null):void
+        {
+            //创建垂直滚动条
+			this.createVScroller();
+        }
+        /***创建水平滚动条***/
+        private createVScroller():void 
+        {
+            //实例化垂直滚动条
+            this.vScrollBar= new VScrollBar();
+            //加载皮肤资源（其他资源根据规范命名后，会自动加载）
+            this.vScrollBar.skin = "res/ui/vscroll.png";
+            //设置宽度
+            this.vScrollBar.width = 400;
+            //设置位置
+            this.vScrollBar.pos(150, 170);
+            //最低滚动位置数字
+            this.vScrollBar.min = 0;
+            //最高滚动位置数字
+            this.vScrollBar.max = 100;
+            //滚动变化事件回调
+            this.vScrollBar.changeHandler = new Handler(this, this.onChange);
+            //加载到舞台
+            Laya.stage.addChild(this.vScrollBar);
+            //创建提示信息
+            this.createPromptText(this.vScrollBar)
+        }        
+        /***创建提示信息***/
+        private createPromptText(scrollBar:ScrollBar):void
+        {
+            //实例化提示信息
+            this.promptText=new Text();
+            //提示框字体
+            this.promptText.font="黑体";
+            //提示框字体大小
+            this.promptText.fontSize=26;
+            //提示框字体颜色
+            this.promptText.color="#FFFFFF";
+            //提示框初始文本
+            this.promptText.text="您的选择是： ";
+            //加载到舞台
+            Laya.stage.addChild(this.promptText);
+            //设置提示框位置
+            this.promptText.pos(scrollBar.x,scrollBar.y-50);
+        }
+        /***滚动条位置变化回调***/
+        private onChange(value:Number):void 
+        {
+            this.promptText.text= "滚动条的位置： value=" + value;
+        }
+    }
 }
+new laya.UI_ScrollBar();
 ```
 

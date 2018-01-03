@@ -37,7 +37,7 @@
 
 ## 二、通过代码创建Image组件
 
-​	在我们进行书写代码的时候，免不了通过代码控制UI，创建`UI_Image`类，在代码中导入`laya.ui.Image`的包，并通过代码设定Image相关的属性。
+​	在我们进行书写代码的时候，免不了通过代码控制UI，创建`UI_Image`类，通过代码设定Image相关的属性。
 
 **运行示例效果:**
 ​	![5](img/4.png)<br/>
@@ -50,42 +50,32 @@
 **示例代码：**
 
 ```javascript
-package
- {
-	import laya.display.Stage;
-	import laya.ui.Image;
-	import laya.webgl.WebGL;
-	
-	public class UI_Image
-	{
-		public function UI_Image()
-		{
+module laya {
+	import Stage = Laya.Stage;
+	import Image = Laya.Image;
+	import WebGL = Laya.WebGL;
+
+	export class UI_Image {
+		constructor() {
 			// 不支持WebGL时自动切换至Canvas
-			Laya.init(800, 600, WebGL);
-			//画布垂直居中对齐
+			Laya.init(550, 400, WebGL);
+
 			Laya.stage.alignV = Stage.ALIGN_MIDDLE;
-			//画布水平居中对齐
 			Laya.stage.alignH = Stage.ALIGN_CENTER;
-			//等比缩放
+
 			Laya.stage.scaleMode = Stage.SCALE_SHOWALL;
-			//背景颜色
 			Laya.stage.bgColor = "#232628";
 
-			//创建图片
-			createImage();			
+			this.setup();
 		}
 
-		/***创建图片***/
-		private function createImage():void
-		{
-			//实例化图片
-			var img:Image = new Image("../../../../res/ui/dialog (3).png");
-			//设置位置
-			img.pos(165, 62.5);
-			//加载到舞台
-			Laya.stage.addChild(img);
+		private setup(): void {
+			var dialog: Image = new Image("res/ui/dialog (3).png");
+			dialog.pos(165, 62.5);
+			Laya.stage.addChild(dialog);
 		}
 	}
- }
+}
+new laya.UI_Image();
 ```
 
