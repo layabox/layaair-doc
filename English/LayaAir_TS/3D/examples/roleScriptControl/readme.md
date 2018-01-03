@@ -1,52 +1,53 @@
-# 3D角色脚本控制与碰撞检测
-
-### 需求分析
-
-本章课程主要向初学者们讲解3D引擎的综合运用，包括了3D场景的处理与加载，角色碰撞检测与动画的控制切换等。向开发者们展示一个类似于RPG游戏关卡的最基础的开发示例。
-
-**基本需求为：**
-
-1、通过摇杆控制器控制角色在场景中来回走动，摇杆控制器松开后，角色停止移动并待机。
-
-2、可通过攻击按钮切换为角色攻击动画，一直按下按钮可不停攻击，点击一次按钮至少播放一次完整的攻击动画，结束后播放之前的动画，攻击按钮优先级大于摇杆，如摇杆还在按下状态，攻击停止后播放移动动画并位移。
-
-3、场景中需要有阻挡，某些地方角色无法行走，当角色行走至阻挡区时停止移动。
-
-4、克隆一个相同的角色，两个角色被同时控制，如其中一个遇到阻挡停止后，另一个角色不会受到影响。
-
-参考效果如下图1：
-
-![1](img/1.gif)(图1)</br>
+## 3D character  script control and collision detection
 
 
 
-### 需用的引擎技术方案分析
+### requirement analysis
 
-1、摇杆：采用2D引擎鼠标监听方式，2D引擎鼠标事件支持多点触摸，适应手机多点的复杂操作。
+This course focuses on beginners' comprehensive application of 3D engine, including 3D scene processing and loading, character collision detection and animation control switching, etc., to show developers a basic development example similar to RPG game level .
 
-2、角色控制：LayaAir3D引擎支持组件式开发模型，因此角色控制我们采用脚本组件方式，有效的把控制与显示分开。
+basic needs are:
 
-3、场景：在文档编写时，3D引擎的高级地形正在完善中，因此场景中的阻挡暂时采用行走区碰撞器与射线检测方式判断。
+1、The joystick controls the character to move back and forth in the scene. After the rocker controller is released, the character stops moving and standby.
+2、The attack button switch to attack animation character, always press the button can not stop the attack, the click of a button to play at least one complete attack animation, animation playback before the end of the attack button, such as priority greater than rocker, rocker still pressed, attack stop after playing mobile animation and displacement.
+3、There are barriers in the scene, some places can't walk, and when the characters walk to stop, they stop moving.
+4、The same character is cloned, and two characters are controlled simultaneously, such as one of them will not be affected until the barrier stops.
 
-美术可以在3D场景中制作一个角色可行走区的单独模型，如图2。导出使用时，不进行渲染，但在代码中需为它添加网格碰撞器，由角色前行位置产生一条射线与碰撞器进行碰撞检测，如果无碰撞信息，则角色无法行走，有碰撞信息角色可以行走。当然，也可以反过来，不可行走区域制作一个模型。
+The reference effect is shown in Figure 1
 
-当高级地形功能完善后，将出技术文档详细介绍，并推荐开发者们使用高级地形，性能上更加。
-
-![2](img/2.png)(图2)</br>
+![图1](img/1.gif)<br>（Picture 1）
 
 
 
-### 摇杆控制器与攻击按钮
+### Analysis of engine technical scheme needed
 
-加载进度页面与“技术文档—3D角色切换与动画”示例中界面与代码基本一致，在此不多做说明。
+1. Joystick: 2D engine, mouse monitor, 2D engine mouse event support multi touch, to adapt to the complex operation of mobile phones multi-point.
 
-遥杆控制器与攻击按钮界面通用于2D、3D游戏，开发者们可以参考使用。在LayaAirIDE中创建两个界面，取名为Rocker.ui、Attack.ui，Rocker.ui是由触摸点图片与背景图构成，Attack.ui是由一个攻击按钮构成，它里面还可以加入其它技能按钮进行扩展。界面如下图3、图4.
+2. role control: LayaAir3D engine supports component development model, so role control, we use script component mode, effectively control and display separately.
 
-![3](img/3.png)(图3)</br>
+3. when the document is written, the advanced type of the 3D engine is being perfected, so the blocking in the scene is temporarily judged by the walking zone Collider and the ray detection mode.
 
-![4](img/4.png)(图4)</br>
+​      Art can be a character model making 3D scene in the walking area, as shown in Figure 2, are in use, not for rendering, but the code needed to add it to the mesh Collider, the position has a ray and a collision for collision detection by the character before, if the information is not without collision, character walk, collision with the character of information can walk. And, of course, you can also create a model in the non walkable region.
 
-IDE发布导出资源后，在项目ui文件夹中会产生对应的类，我们建立View文件夹并创建RockerView、AttackView类继承它，在里面编写摇杆控制、攻击逻辑代码，示例如下：
+​     When the advanced land type function is perfect, the technical document will be introduced in detail, and recommend developers to use advanced ground type, better performance.
+
+![图2](img/2.png)<br>（Picture 2）
+
+
+
+### Joystick controller and attack button
+
+The interface between the loading progress page and the "technical document 3D character switch and animation" is basically the same as the code, which is not explained here.
+
+Joystick controller and attack button interface is commonly used in 2D, 3D game, developers can refer to use. Create two interfaces in LayaAir IDE, named Rocker.ui, Attack.ui, Rocker.ui is composed of touch point pictures and background maps, Attack.ui is composed of an attack button, it can also add other skills button to expand. The interface is shown in Figure 3 and figure 4.
+
+![图3](img/3.png)<br>（Picture 3）
+
+![图4](img/4.png)<br>（Picture 4）
+
+
+
+After IDE releases the export resource, the RockerUI.as and AttackUI.as classes are generated in the project UI folder. We build the view folder and create the RockerView, AttackView class to inherit it, and write the joystick control and attack logic code in it. The example is as follows:
 
 ```typescript
 class RockerView extends ui.RockerUI{
@@ -179,15 +180,15 @@ class attackView extends ui.attackUI {
 }
 ```
 
-### 示例主类
+### Example main class
 
-示例主类中基本没有控制方面的逻辑，同样是创建场景、摄像机、角色。示例中将不使用灯光，用光照贴图即可，建议开发者们如果场景中没有动态光，可不添加灯光，性能上会高很多，角色阴影可以使用透明贴图模型片。
+There is almost no control logic in the example primary class, creating scenes, cameras, characters, too. Instead of using lights and lighting maps, developers are advised to have no dynamic light in the scene, without adding lights, and will be much higher in performance. Character shadows can use transparent texture models.
 
-场景上需从场景模型中获取行走区域模型moveArea，可以设置它为不渲染，代码为`moveArea.meshRender.enable=false`，并给它加上网格碰撞器MeshCollider，网格碰撞器检测较为精确，与模型本身一致，镂空的区域将不会被检测到。当然，性能上开销将较大。
+In the scene, we need to get the walking area model moveArea from the scene model, which can be set as no render, and the code is not `moveArea.meshRender.enable=false`, And add it to the grid Collider MeshCollider. The mesh collider is more accurate and consistent with the model itself, and the hollowed out region will not be detected. Of course, the cost of performance will be larger.
 
-摇杆、攻击按钮及摄像机移动量设置为静态，以方便角色控制脚本使用和控制。
+The joystick, attack button and camera movement are set as static to facilitate the use and control of the character control script.
 
-主类全部代码如下：
+The main class code is as follows:
 
 ```typescript
 class Example_roleControl {
@@ -297,25 +298,25 @@ new Example_roleControl;
 
 
 
-### 角色控制脚本组件
+### Character control script component
 
-组件功能比较强大，而脚本继承于组件。其中重要属性与方法请查阅“技术文档—LayaAir3D之脚本组件”
+Component functions are powerful, and scripts inherit components. For important attributes and methods, please refer to the script component of “technical document - LayaAir3D”
 
-脚本组件式开发模式为我们提供了另一套思维方式，与继承不同的是它更灵活多变，随时可以添加移除、组合组件，以达到我们所需效果，并且还能达到控制与显示可彻底分离。开发者们可以多多尝试此种方法。
+Script component development model provides us with another set of ways of thinking. Unlike inheritance, it is more flexible and can be added, removed and assembled at any time to achieve the desired effect, and can be completely separated from control and display. Developers can try this method more.
 
-在本例中角色控制我们使用了脚本组件式的方法，在脚本中，我们主要执行以下功能。
+In this case, the character control uses the script component method, in the script, we mainly perform the following functions.
 
-1、获取脚本所属角色动画组件，以供控制动画用，在覆写组件_start()方法中获取动画组件。
+1. get the script belongs to the character of animation components, for the control of animation, in the override component _start () method to obtain animation components.
 
-2、角色动画，行走、待机、攻击方法分离，角色动画完成事件监听。
+2. character animation, walk, standby, attack method separation, character animation to complete event monitoring.
 
-3、角色碰撞检测，在脚本更新方法_update()中，角色位置射线与行走区碰撞检测，判断角色是否被阻挡。
+3. the character collision detection, in the script update method _update (), the character of location ray and walking area collision detection, judge whether the character is blocked.
 
-4、角色更新，在脚本更新方法_update()中，获取摇杆角度、攻击按钮并根据其属性控制角色动画切换。
+4. character update, in the script update method _update (), access to rocker angle, attack button, and according to its properties to control the character of animation switching.
 
-5、摄像机跟随角色移动的位移量进行同步位移更新。
+5. the camera follows the displacement of the movement of the characters to update the displacement synchronously.
 
-脚本全部代码如下：
+The script code is as follows:
 
 ```typescript
 class RoleControlScript extends Laya.Script{
@@ -440,6 +441,6 @@ class RoleControlScript extends Laya.Script{
 }
 ```
 
-如果角色有行走go、站立stand、攻击play动画，当脚本加入到此对象上后，就可以像主角一样被控制了。这就是脚本的灵活之处。
+If the character walks, go, stands stand, attacks the play animation, when the script is added to this object, it can be controlled like a protagonist. That's the flexibility of the script
 
-编译运行代码，可得出图1演示效果。
+Compile and run the code to show the effect of figure 1.

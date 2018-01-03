@@ -20,6 +20,7 @@ Point light is the light source that emits light from all directions, also known
 	// Set the attenuation of the point light
 	light.attenuation = new Vector3(0.01,.01,.03);
 ```
+
 Range to set the scope of the point light source, the radiation range equivalent to a point of light, the greater the value, the greater the illumination range, in Figure 1 by the illumination range setting is therefore not to be light where the black figure 2 light beyond the light and model distance, so all is light.
 
 
@@ -255,7 +256,7 @@ package {
 
 
 
-![图片9](img/9.png)（图9）  ![图片10](img/10.png)（Picture 10） 
+![图片9](img/9.png)（Picture 9）  ![图片10](img/10.png)（Picture 10） 
 
 The above two diagram is the effect of opening before and after the projection. Attention should be paid to the above mentioned attributes in the light and model, and the shadow can not be produced without any link.
 

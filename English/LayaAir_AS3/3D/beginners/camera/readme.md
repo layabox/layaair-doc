@@ -4,6 +4,55 @@ The camera in LayaAir can be understood as a camera for shooting movies or TV dr
 
 Of course, there are other important properties of the camera, and the following will be introduced its function.
 
+### Exporting a camera from Unity
+
+After the 1.7.10 version of the engine and the 1.5.0 version of the unity export plug-in is released, the cameras created in the unity can be exported! And the exported files retain the location, visual angle, background color, scissors, field of view and other parameters of the camera in the 3D space. When loading the scene after export, the effect of the display is exactly the same with that in unity, which is convenient for developers to control the camera's view.
+
+At the same time, because the LayaAir 3D engine supports multiple cameras, so you can also set up multiple cameras is derived in unity, a multi camera viewport settings see the last class of "multi camera use" section.
+
+So, how do we get the camera if you create a camera in unity and export it and load the export file in the code? This can be obtained through the index or name of the sub node of the scene. After we get it, we can also make mobile rotation, set the sky box, add script and so on.
+
+The code is as follows:
+
+```java
+package {
+    import laya.d3.core.Camera;
+    import laya.d3.core.scene.Scene;
+    import laya.display.Stage;
+    import laya.utils.Handler;
+    import laya.utils.Stat;
+    public class LayaAir3D
+    {
+        public function LayaAir3D() 
+        {
+            //初始化引擎
+            Laya3D.init(1000, 500,true);            
+            //适配模式
+            Laya.stage.scaleMode = Stage.SCALE_FULL;
+            Laya.stage.screenMode = Stage.SCREEN_NONE;
+            //开启统计信息
+            Stat.show();            
+            //预加载角色动画资源
+            Laya.loader.create("monkey/monkey.ls",Handler.create(this,onSceneOK));
+        }        
+        private function onSceneOK():void
+        {
+            //添加3D场景
+            var scene:Scene = Laya.loader.getRes("monkey/monkey.ls");
+            Laya.stage.addChild(scene);  
+             //从场景中获取摄像机
+            var camera:Camera = scene.getChildByName("Main Camera") as Camera;
+              //后续对摄像机的逻辑操作.......
+        }
+    }
+}
+			
+```
+
+	In Unity, the camera name is "Main Camera" by default, so in the above code, the camera gets the scene via the getChildByName ("Main Camera") method for subsequent logical operations. Developers can also customize the name of the camera in unity.
+
+  **（tips：The following sample code is modified from the code in the Quick Start 3D Tour documentation）**
+
 ### Camera movement and rotation
 
 The camera inherits from Sprite3D, so it can also be 3D transform operation, through the transform property in the 3D scene to move the rotation change, multi-angle viewfinder, the audience or the player get a more realistic space experience.
@@ -18,7 +67,7 @@ camera.transform.translate(new Vector3(0, 0, 3),false);
 // Load to scene
 scene.addChild(camera);
 ```
-Set the camera's rotation
+Set the camera's rotation :
 
 ```java
 // Euler rotation camera. Local coordinate, radian system (false angle system).
@@ -105,6 +154,7 @@ var camera:Camera = (scene.addChild(new Camera())) as Camera;
 //Camera captures model targets
 camera.transform.lookAt	(box.transform.position,new Vector3(0,-1,0));
 ```
+
 We set the camera's up in the direction of (0, -1,0), and the camera's y direction is negative, and it reverses on the Y axis, so the picture becomes inverted square (Figure 4). Other directions, beginners can try more.
 
 ![图片4](img/4.png)<br> (Figure 4) capture the target
@@ -146,6 +196,70 @@ The following code “skyCube.ltc" in the JSON format to store 6 maps of the pat
 
 ![图片5](img/5.png)<br>(Figure 5) Use the skybox.
 
+
+
+
+
+### Use multiple cameras
+
+In the same scene, multiple cameras can be used, and when they are loaded into the scene, they produce their own view of the game. In the game we met before, such as double 3D game, we used two 3D cameras. The left half screen showed a player, the right half screen showed another, which greatly enriched the game character.
+
+However, the disadvantages of multi cameras are very expensive. The number of triangular faces and DrawCall will increase exponentially. Several cameras will lose several times of performance loss, so developers need to consider it as appropriate.
+
+3D scene shows the size and position of 2D and the game is not the same, mainly rely on the camera viewport (ViewPort) to control, through it to screen segmentation.
+
+In the example below, we loaded a 3D scene, and through the ViewPort around the viewport separation code is as follows:
+
+```java
+class LayaAir3D_MultiCamera
+{
+  constructor()
+  {
+    //初始化引擎
+    Laya3D.init(1280, 720,true);
+    //适配模式
+    Laya.stage.scaleMode = Laya.Stage.SCALE_EXACTFIT;
+    Laya.stage.screenMode = Laya.Stage.SCREEN_NONE;
+    //开启统计信息
+    Laya.Stat.show();			
+    //加载3D资源
+    Laya.loader.create("LayaScene_loveScene/loveScene.ls",
+                       Laya.Handler.create(this,this.on3DComplete));
+  }
+
+  private  on3DComplete():void
+  {
+    //创建场景
+    var scene:Laya.Scene=Laya.Scene.load("LayaScene_loveScene/loveScene.ls");
+    Laya.stage.addChild(scene);
+
+    //创建摄像机1添加到场景
+    var camera1:Laya.Camera=new Laya.Camera();
+    scene.addChild(camera1);
+    //摄像机1添加控制脚本
+    // camera1.addComponent(CameraMoveScript);
+    //修改摄像机1位置及角度
+    camera1.transform.translate(new Laya.Vector3(0,2,8),true);
+    camera1.transform.rotate(new Laya.Vector3(-23,0,0),true,false);
+    //设置视口为左半屏
+    camera1.viewport=new Laya.Viewport(0,0,640,720);
+
+    //创建摄像机2添加到场景
+    var camera2:Laya.Camera=new Laya.Camera();
+    scene.addChild(camera2);
+    //修改摄像机2位置及角度
+    camera2.transform.rotate(new Laya.Vector3(-45,0,0),false,false);
+    camera2.transform.translate(new Laya.Vector3(0,0,25),true);
+    //设置视口为右半屏
+    camera2.viewport=new Laya.Viewport(640,0,640,720);
+  }
+}
+new LayaAir3D_MultiCamera();
+```
+
+Compile and run the above code, the operating results shown in Figure 6. Developers can also test at the same time, with a single camera, DrawCall and the number of triangles will be less than half.
+
+![图片6](img/6.png)<br> (Figure 6) dual cameras split screen
 
 
 

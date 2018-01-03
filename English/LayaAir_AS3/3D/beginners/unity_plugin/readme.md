@@ -80,10 +80,30 @@ Compress Lsani   Temporarily useless, developing, compressing skeletal animation
 ![图片6](img/6.png)<br>（picture 6）
 
 
+#### Terrain Setting
+
+Unity type export settings (Figure 7)
+
+Convert Terrain To Mesh  
+If there is a type in the scene, convert it into a mesh model.
+Unity terrain-making is very convenient, you can use the brush to draw terrain, such as mountains, rivers and ditches, but also support the brush to draw multiple details of the map, for several maps of the surface. LayaAir export plug-in will be converted to Mesh type, convenient for developers to use. The difference is that the material is different from ordinary materials, including the details of the map.
+
+Resolution
+Export model mesh surface optimization settings, the general default Medium can be select. The following is the set of optimization levels, each of which is equivalent to the precision of the number of surfaces divided by 4.
+
+
+Very Height  The highest number of surfaces after optimization
+Height           The optimal number of surfaces is relatively high
+Medium	       The optimized number of surfaces is medium
+Low		       Low surface number after optimization
+Very Low       The minimum number of surfaces is the lowest    
+
+![图片7](img/7.png)<br>（Picture 7）
+
 
 #### GameObject Setting 
 
-Game items node settings（picture 7）
+Game items node settings（picture 8）
 
 Ignore Null Game Objects 
 The empty nodes are ignored when exporting, and the nodes that are not supported by the LayaAir engine are also labeled as empty nodes, such as camera nodes and light nodes, which can reduce the number of sprites.
@@ -97,14 +117,14 @@ When exporting from the first level node in the unity scene, the tree structure 
 Batch Make The First Level Game Objects 
 Batch export (you must select sprite3d only) Batch export all level one node in the scene.
 
- ![图片7](img/7.png)<br>（Picture 7）
+ ![图片8](img/8.png)<br>（Picture 8）
 
 
 
 
 #### Other Setting
 
-Other settings（Picture 8）
+Other settings（Picture 9）
 
 Cover Original Export Files 
 Export raw export file when exporting
@@ -115,7 +135,7 @@ Custom export folder name, the default folder name is“layaScene+scene name”.
 Automatically Save The Configuration 
 Automatically save current configuration when exporting
 
- ![图片8](img/8.png)<br>（Picture 8）
+ ![图片9](img/9.png)<br>（Picture 9）
 
 
 
@@ -127,7 +147,7 @@ Revert reads the saved configuration from the configuration table
 Save   Save the current configuration, saved, the next time you open the direct configuration before use to facilitate developers to operate.
 Laya Export exports the current resource. After clicking, the data of the current scene or model will be exported to the specified path.
 
- ![图片9](img/9.png)<br>（Picture 9）
+ ![图片10](img/10.png)<br>（Picture 10）
 
 
 
@@ -137,7 +157,7 @@ Laya Export exports the current resource. After clicking, the data of the curren
 
 When the output scenario is configured, click the Laya Export button, and then export the default LayaScene_truck folder (Figure 10).
 
- ![图片10](img/10.png)<br>（Picture 10）
+ ![图片11](img/11.png)<br>（Picture 11）
 
 See the file resources on the map, generated after the export. Ls, .lm, .lmat data resources, and maps png, tga resources.
 
@@ -204,5 +224,5 @@ package {
 
 Compile and run the above simple code, we found that the scene is loaded successfully, and the model in the scene is also displayed on the 3D view (Figure 10).
 
- ![图片11](img/11.png)<br>（picture 11）
+ ![图片12](img/12.png)<br>（picture 12）
 
