@@ -1,89 +1,88 @@
-# CacheAs静态缓存优化
+# CacheAs static cache optimization
 
-​        在属性设置器中的其他通用属性里，我们介绍了cacheAs缓存优化概念和功能作用。也推荐开发者在UI界面制作时尽量都合理的使用它，下面我们将用一个UI实例展示cacheAs在项目中的运用，同时我们对cacheAs的使用前后作出数据分析，以供开发者们参考。
+​        In other general attributes of the attribute setter, we introduce the concept and function of cacheAs cache optimization. Also recommend developers to use it as much as possible in the UI interface, we will use a UI example to demonstrate the use of cacheAs in the project, while we make data analysis before and after the use of cacheAs, for developers to refer to.
 
-​	我们先看一下未使用CacheAs缓存功能的情况，如图1所示。在webgl的调试模式下，可以看到UI中每帧的Sprite渲染节点数为23个，DrawCall渲染次数为8，Shader材质提交次数为7次。（*该数据在优化后可以用于性能优化对比*）
+​	Let's take a look at the unused cache function of CacheAs, as shown in figure 1. In the debug mode of webgl, we can see that the number of Sprite rendering nodes per frame is 23, the number of DrawCall rendering is 8, and the number of Shader material submission is 7 times in UI.（*This data can be used for performance optimization after optimization*）
 
  ![imgage](img/1.png)<br/>
-（图1）
+（Picture 1）
 
 
 
-## 1、cacheAs为normal的缓存优化 
+## 1. cacheAs normal cache optimization
 
-当我们使用cacheAs时，将cacheAs设置为“normal”模式，DrawCall与Shader未变，Sprite节点数由23降低到了8，节点渲染性能上优化了近3倍。如图2所示。
+When we use cacheAs, the cacheAs is set to "normal" mode, DrawCall and Shader remain unchanged, the number of Sprite nodes is reduced from 23 to 8, and the node rendering performance is optimized by nearly 3 times. As shown in figure 2.
 
-![图2](img/2.png) <br /> (图2)
-
-**Tips**：
-
-当cacheAs属性值为"normal"时，Canvas下进行画布缓存，webgl模式下进行命令缓存。该模式性能优化中等，它能减少每帧渲染的节点数，但不会减少DrawCall数和Shader数。
-
-
-
-
-
-## 2、cacheAs为bitmap的缓存优化 
-
-当我们使用cacheAs时，并将cacheAs设置为“bitmap”模式。Sprite节点数为8，DrawCall降到了1，Shader数降到了0。只是修改了一个配置，性能上比不用cacheAs优化了十倍以上。效果如图3所示。
-
-![图3](img/3.png) <br /> (图3)
+![图2](img/2.png) <br /> (Picture 2)
 
 **Tips**：
 
-Canvas下依然是画布缓存，在webgl模式下使用renderTarget缓存，相当于缓存成静态位图提交显卡渲染。这里需要注意的是，webGL下renderTarget缓存模式有2048大小限制，超出2048会额外增加内存开销。另外，不断重绘时开销也比较大，但是会减少drawcall，渲染性能最高。 
-
-在本篇文档中，我们的示例UI比较简单，对于一些大型的游戏，节点数超过了50的UI不在少数，采用cacheAs缓存技术以后，渲染性能会提高很多倍。
+When the cacheAs attribute value is "normal", the canvas cache is carried out under Canvas, and the command cache is executed under the webgl mode. The performance of this pattern is moderate, and it can reduce the number of nodes rendered per frame, but it does not reduce the number of DrawCall and the number of Shader.
 
 
 
 
 
-## 3、如何选择缓存优化
+## 2. Cache optimization of cacheAs for bitmap
 
-### 3.1 内存与CPU的考量
+When we use cacheAs, we set cacheAs to "bitmap" mode. The number of Sprite nodes is 8, the DrawCall is reduced to 1, and the Shader number is reduced to 0. Just modifying a configuration, the performance is more than ten times more optimized than not using cacheAs. The effect is shown in figure 3.
 
-#### bitmap模式与内存增加
+![图3](img/3.png) <br /> (Picture 3)
 
-在上例中我们也可以看到，当使用bitmap位图缓存模式后，在CurMem内存数值上有所增加，由之前的17.22M增加到了18.27M，因为缓存位图时消耗了部分内存，但只要UI的宽高不是很大，增加的内存也不会太大。
+**Tips**：
 
-#### 频繁刷新的CPU消耗
+Canvas is still a canvas cache, in the webgl mode using renderTarget cache, equivalent to cache static bitmap submit graphics rendering. It's important to note that the renderTarget cache mode in webGL has a 2048 size limit, and over 2048 adds extra memory overhead. In addition, the cost of continuous redrawing is relatively large, but it will reduce the drawcall, rendering the highest performance.
 
-最需要注意的是UI是否会频繁的刷新，如果很频繁，CPU的损耗会很大，因为缓存位图时子对象一旦发生改变，那么引擎会自动重新缓存位图，缓存位图的过程会消耗CPU。
-
-那么选择使用cacheAs的normal还是bitmap模式，或者不使用cacheAs，我们需要对内存的增加与CPU消耗作为重点考量因素。
+In this document, our example UI is relatively simple, for some large games, the number of nodes is more than 50 of the UI is not a few, the use of cacheAs caching technology, rendering performance will increase many times.
 
 
 
-### 3.2 测试是否频繁重绘
-
-LayaAir引擎提供的DebugPanel调试工具可以帮助大家查看游戏重绘区，在代码中增加`DebugPanel.init();` 方法 ，编译运行项目后，浏览器中会出现调试窗口，如图4所示。
-
-![图3](img/4.png) <br /> (图4)
-
-我们勾选“`显示当前cache重绘`”选项或“`显示所有重绘区域`”。如果UI进行重绘了，重绘区域会显示出绿色框线，绿色框的左上角显示了重绘次数与重绘时间，性能统计工具的Sprite、DrawCall等也会发生改变。
-
-在没有鼠标操作的情况下，如果绿色线框频繁出现，说明**UI在频繁的重绘，那么最好不要用bitmap缓存模式，normal模式可以酌情考虑**。当然，还可以把UI进行分层管理，频繁更新的为一层（不使用cacheAs），不频繁更新的为一层（使用cacheAs），这种方法也能提高性能。
 
 
-### 3.3 低端机型的配置因素
+## 3. How to choose cache optimization
 
-我们在做游戏项目时，通常会考虑到手机配置，大多数情况是游戏适应的机型越多越好，游戏测试员也会用高中低端配置的手机去测试，然后提供优化建议。那么在使用cacheAs的时候，也需要参考手机的内存、CPU大小。
+### 3.1 Memory and CPU considerations
 
-对于一些低端机来说，CPU与内存不高，如果为了提高渲染性能使用了cacheAs，有可能就会出现问题。
+#### Bitmap mode and memory increase
 
-这时开发者们就需要做取舍了，选择要性能还是要游戏机型的广度，或者取中。如果选择适应更多的低端机型，那么需要反复去测试，是否使用cacheAs，还要对比normal与bitmap模式哪种更适合，在优化性能的情况下尽量减少CPU和内存损耗。
+In the example above we can see that when using the Bitmap bitmap caching mode, the increase in CurMem memory value, from the previous 17.22M to 18.27M, because the cache bitmap consumes a part of memory, but as long as the width of the UI is not very high, increased memory will not be too big.
+
+#### Frequent refresh of CPU consumption
+
+The most important thing to notice is whether UI will be refreshed frequently. If it is very frequent, the loss of CPU will be great, because once the sub object is changed in the cache bitmap, the engine will automatically cache the bitmap, and the process of cache bitmap will consume CPU.
+
+So choose to use the cacheAs normal or bitmap mode, or do not use cacheAs, we need to increase the memory and CPU consumption as a key consideration.
 
 
 
-## 4、什么情况下不能使用cacheAs
+### 3.2 Test is frequently redraw
 
-### 4.1 对象非常简单时不能使用
+The DebugPanel debugging tool provided by the LayaAir engine can help you to view the game redraw area and add `DebugPanel.init();` in the code; the method will compile and run the project, and the debug window will appear in the browser, as shown in figure 4.
 
-当对象非常简单时，比如一个字或者一个图片，设置cacheAs不但不提高性能，反而会损失性能。
+![图3](img/4.png) <br /> (Picture 4)
 
-### 4.2 经常变化的内容不能使用
+We check the “`Show current cache redraw`” option or “`Show all redraw  area`”. If the UI is redrawn, the redrawn area will show a green border. The upper left corner of the green box shows repainting times and repainting time, and the Sprite and DrawCall of the performance statistics tool will also change.
 
-容器内有经常变化的内容，比如容器内有一个动画或者倒计时，如果再对这个容器设置cacheAs，会损失性能。
+In the absence of mouse operation, if the green line box appears frequently, indicating the frequent redraw of  **UI, then it is best not to use bitmap cache mode, normal mode can be considered as appropriate**. Of course, you can also manage the UI hierarchically, with frequently updated layers (without cacheAs) and infrequent updates (with cacheAs), which can also improve performance.
 
-我们可以通过查看性能统计面板中的Canvas统计信息第一个值，如果一直在变化，说明一直在重绘，在这种情况下不能使用cacheAs。
+
+### 3.3 Configuration factors of low-end models
+
+When we do games, we usually take into account the configuration of the phone, most of the game is adapted to the more models the better, the game testers will also be tested with high and low end mobile phones to test, and then provide optimization suggestions. So, in the use of cacheAs, also need to refer to the phone's memory, CPU size.
+
+For some low-end machines, CPU and memory is not high, if you use cacheAs to improve rendering performance, there may be problems.
+
+At this time developers need to do the trade-offs, the choice of performance or to the breadth of the game model, or taken. If you choose to adapt to more low-end models, then you need to repeatedly test whether to use cacheAs, but also compare the normal and bitmap mode is more suitable to optimize the performance of the case to minimize CPU and memory loss.
+
+
+## 4. Under some circumstances can not use cacheAs
+
+### 4.1 Objects are not available when they are very simple
+
+When the object is very simple, such as a word or a picture, set cacheAs not only does not improve performance, but will lose performance.
+
+### 4.2 Frequent changes content can not be used
+
+There are often changes in the contents of the container, such as the container has an animation or countdown, and then set this container cacheAs, will lose performance.
+
+We can look at the first value of the Canvas statistics in the performance statistics panel. If it changes all the time, it says that it has been redrawn. In this case, cacheAs cannot be used.

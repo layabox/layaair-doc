@@ -1,22 +1,22 @@
-# 自定义界面布局与恢复
+# Custom interface layout and recovery default
 
->  本篇采用LayaAirIDE 1.7.3 bate 截图，如有不同，请下载最新的LayaAirIDE，以最新版本IDE为准。
-
-
-
-编辑器布局是指LayaAirIDE里各个面板的位置、大小和层叠情况。 
+>  This article is based on LayaAirIDE 1.7.3 screenshot, if there are difference, please download the latest LayaAirIDE version.
 
 
 
-## 预设与恢复布局
+The editor layout refers to the location, size, and tabs of each panel in LayaAirIDE.
 
-### 预设
 
-在LayaAir的设计模式下，可以对界面的各个功能版块进行位置拖动与大小调整，在界面布局修改结束后会自动保存，下次打开时，会按最后一次的布局打开。
 
-### 恢复
+## Preset and restore layout
 
-如果界面模板被关闭或错位，可以采用快捷键`F3`快速**恢复默认的界面布局**，或者在`菜单栏` 中点击-->【`窗口`】 --> 【`恢复面板`】。
+### Preset
+
+In the design mode of LayaAir, you candrag and resize of each function section  in the interface, and save it automatically after the interface layout is modified. The next time you open it, it will open in the last layout.
+
+### Restore
+
+If the interface template is closed or misplaced, the shortcut key `F3` can be used to quickly ** restore the default interface layout**, or from `menu bar` click on the-->【`window`】 --> 【`recovery panel`】。
 
 ![图片](img/0.png) 
 
@@ -26,33 +26,33 @@
 
 
 
-## 自定义界面
+## Custom interface
 
-### 一、调整面板大小：
+### 1. Adjust the panel size :
 
-​        将鼠标悬浮到两个面板之间的边界线上，看到鼠标指针发生变化后，就可以按下鼠标来修改相邻两个面板的大小。如动图1所示。
+​        The mouse is suspended to the boundary line between the two panels. After the mouse pointer is changed,you can press the mouse to modify the size of two adjacent panels. As shown in Figure 1.
 
 ​	![图片](img/1.gif)<br/>
 
-​	（动图1）
+​	（Picture 1）
 
 
 
 
-### 二、移动面板：
+### 2. The mobile panel :
 
-​        点击面板的标签栏并拖拽，可以将面板整个移动到编辑器窗口中的任意位置。如动图2所示，蓝色区域表示面板拖拽放置的目标区域。
+​        Clicking on the tab bar of the panel and dragging it, panel can move to any position in the editor window. As shown in Figure 2, the blue area indicates the target area where the panel is dragging and dropping.
 
 ​	![图片1.png](img/2.gif) <br/>
-​	（动图2）
+​	(Picture 2)
 
  
 
-### 三、层叠面板：
+### 3. Tabs panel :
 
-​        除了移动面板位置，拖拽标签栏的时候还可以移动鼠标到另一个面板的标签栏区域， 在目标面板的边框出现深蓝色外框显示时松开鼠标，就能够将两个面板层叠在一起，如动图3所示。层叠面板在桌面分辨率不足，或排布使用率较低的面板时非常的实用。
+​        In addition to moving the panel position, drag the tab bar when you can move the mouse to another panel of the tab area. in the face of the target panel appears blue frame display where you can release the mouse, you can stack the two panels together , As shown in Figure 3. Tab panels are very convenient when the desktop resolution is low.
 
 ​	![图片1.png](img/3.gif) <br/>
-​	（动图3）
+​	(Picture 3)
 
 

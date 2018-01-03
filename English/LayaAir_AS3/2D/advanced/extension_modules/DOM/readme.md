@@ -69,7 +69,9 @@ package {
 }
 ```
 
-Passing the data as URL to loadImage, the method engine will help us load and decode it. The parameters of the loadImage method not only receive the address form of URL, but also accept the format of Base64 and svg. When you compile and run the code above, we see the effect in the diagram below.![1](img/1.png)
+Passing the data as URL to loadImage, the method engine will help us load and decode it. The parameters of the loadImage method not only receive the address form of URL, but also accept the format of Base64 and svg. When you compile and run the code above, we see the effect in the diagram below.
+
+![1](img/1.png)
 
 ​	Conclusion: the above code gives us good inspiration. In the project, our special artistic words can be more convenient and convenient in this way. Developers can find some more beautiful effects, such as 3D's perspective effect, graphic layout, shadow, reflection, and so on. This method not only reduces the bandwidth of the network, but more importantly, it is convenient for us to modify constantly. Set up a style that can be used everywhere in the project. Is it more efficient to replace bitmap fonts by using the above method instead.
 
@@ -191,11 +193,11 @@ https://github.com/nickdesaulniers/netfix
 
 https://developer.mozilla.org/en-US/docs/Web/API/HTMLMediaElement
 
-上面的例子我们使用hls+plyr来进行播放。其他的方法请开发者参考本教程进行扩展。
+We use hls+plyr to play the example above. Other methods are invited to expand the tutorial for reference.
 
 #### Camera
 
-​	The support of HTML5's video as camera browser is limited, and it needs **https的协议** Google and the new version of WeChat support is still good. If your compatibility does not require that high, you can try to add the camera function.
+​	The support of HTML5's video as camera browser is limited, and it needs **https agreement** Google and the new version of WeChat support is still good. If your compatibility does not require that high, you can try to add the camera function.
 
 Let's take a look at the example given on mdn.
 
@@ -286,7 +288,7 @@ package
 
 ​	Compile and run the above example, found that can not open. This is normal. Run this example to build a HTTPS server yourself. Then use your mobile phone to open the index.html corresponding to this address. It's also simple to build a simple htpps server. Here we can use the command line tool of Laya.
 
-- Download node first. Download address https://nodejs.org/en/，进行安装。
+- Download node first. Download address https://nodejs.org/en/，Install it.
 
 - When the installation is complete, open the cmd command line, enter  npm install -g layacmd , and wait for the installation to complete.
 

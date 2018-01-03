@@ -686,13 +686,23 @@
                 "name_3_file": "readme.md"
               },
               {
-                "name_3_name": "Use LayaCMD",
+                "name_3_name": "Use layaair-cmd",
                 "name_3_url": "English/LayaAir_AS3/2D/advanced/extension_modules/LayaCMD/",
                 "name_3_file": "readme.md"
               },
               {
                 "name_3_name": "AS3 and JS mixed coding",
                 "name_3_url": "English/LayaAir_AS3/2D/advanced/extension_modules/AS_JS_mixed_programming/",
+                "name_3_file": "readme.md"
+              },
+			  {
+                "name_3_name": "Custom Shader",
+                "name_3_url": "English/LayaAir_AS3/2D/advanced/extension_modules/Shader/",
+                "name_3_file": "readme.md"
+              },
+              {
+                "name_3_name": "WeChat mini game adapter",
+                "name_3_url": "English/wechat/minigame/",
                 "name_3_file": "readme.md"
               }
             ]
@@ -1725,7 +1735,6 @@
         "nav_1_name": "2D Advanced（TS）",
         "nav_1_data": [
           {
-
             "name_2_name": "Debugging features",
             "name_2_data": [
               {
@@ -1741,24 +1750,40 @@
             ]
           },
           {
-
             "name_2_name": "Game loading handler",
             "name_2_data": [
               {
-
                 "name_3_name": "Binary image",
+                "name_3_url": "English/LayaAir_TS/2D/advanced/loadStrategy/binary_Image/",
+                "name_3_file": "readme.md"
+              },
+              {
+                "name_3_name": "Multithreading worker",
+                "name_3_url": "English/LayaAir_TS/2D/advanced/loadStrategy/worker/",
+                "name_3_file": "readme.md"
+              },
+              {
+                "name_3_name": "Resource version management",
+                "name_3_url": "English/LayaAir_TS/2D/advanced/loadStrategy/versionManagement/",
+                "name_3_file": "readme.md"
+              }
+            ]
+          },
+          {
+            "name_2_name": "Performance optimization",
+            "name_2_data": [
+              {
+                "name_3_name": "Performance statistics panel ",
                 "name_3_url": "English/LayaAir_TS/2D/advanced/PerformanceOptimization/Stat_Panel/",
                 "name_3_file": "readme.md"
               },
               {
-
-                "name_3_name": "Multithreading worker",
+                "name_3_name": "Memory optimization",
                 "name_3_url": "English/LayaAir_TS/2D/advanced/PerformanceOptimization/memory/",
                 "name_3_file": "readme.md"
               },
               {
-
-                "name_3_name": "Resource version management",
+                "name_3_name": "Rendering principles",
                 "name_3_url": "English/LayaAir_TS/2D/advanced/PerformanceOptimization/rendering/",
                 "name_3_file": "readme.md"
               },
@@ -1773,13 +1798,11 @@
                 "name_3_file": "readme.md"
               },
               {
-
                 "name_3_name": "Other optimization strategies",
                 "name_3_url": "English/LayaAir_TS/2D/advanced/PerformanceOptimization/other/",
                 "name_3_file": "readme.md"
               },
               {
-
                 "name_3_name": "Using Chrome's profiler",
                 "name_3_url": "English/LayaAir_TS/2D/advanced/PerformanceOptimization/Chrome_Profiles/",
                 "name_3_file": "readme.md"
@@ -1787,11 +1810,9 @@
             ]
           },
           {
-
             "name_2_name": "Animation",
             "name_2_data": [
               {
-
                 "name_3_name": "Bone animation",
                 "name_3_url": "English/LayaAir_TS/2D/advanced/animation/bone/",
                 "name_3_file": "readme.md"
@@ -1799,21 +1820,39 @@
             ]
           },
           {
-
             "name_2_name": "Extended module",
             "name_2_data": [
               {
-
                 "name_3_name": "Analyze Tiled Map with LayaAir engine",
                 "name_3_url": "English/LayaAir_TS/2D/advanced/extension_modules/TiledMap/",
+                "name_3_file": "readme.md"
+              },
+              {
+                "name_3_name": "LayaAir interacts with native DOM",
+                "name_3_url": "English/LayaAir_TS/2D/advanced/extension_modules/DOM/",
+                "name_3_file": "readme.md"
+              },
+              {
+                "name_3_name": "Use layaair-cmd",
+                "name_3_url": "English/LayaAir_TS/2D/advanced/extension_modules/LayaCMD/",
+                "name_3_file": "readme.md"
+              },
+			  {
+                "name_3_name": "Custom Shader",
+                "name_3_url": "English/LayaAir_TS/2D/advanced/extension_modules/Shader/",
+                "name_3_file": "readme.md"
+              },
+              {
+                "name_3_name": "WeChat mini game adapter",
+                "name_3_url": "English/wechat/minigame/",
                 "name_3_file": "readme.md"
               }
             ]
           }
         ]
-      },
+      }, 
       { 
-        "nav_1_name": "LayaAir 3D engine（AS3）",
+        "nav_1_name": "LayaAir 3D engine（TS）",
         "nav_1_data": [
           {
             "name_2_name": "3D Engine basics",
@@ -2544,241 +2583,9 @@
         ]
       },
       {
-        "nav_1_name": "LayaAir IDE（JS）",
-        "nav_1_data": [
-        {
-            "name_2_name": "Code pattern basic",
-            "name_2_data": [
-              {
-
-                "name_3_name": "Overview of code pattern layout",
-                "name_3_url": "English/LayaAir_JS/IDE/Code_Mode/GUI_Layout/",
-                "name_3_file": "readme.md"
-              },
-              {
-
-                "name_3_name": "Menu bar",
-                "name_3_url": "English/LayaAir_JS/IDE/Code_Mode/MenuBar/",
-                "name_3_file": "readme.md"
-              },
-              {
-
-                "name_3_name": "Toolbar Utilities",
-                "name_3_url": "English/LayaAir_JS/IDE/Code_Mode/ToolBar/",
-                "name_3_file": "readme.md"
-              },
-              {
-
-                "name_3_name": "Shortcut key for code editing",
-                "name_3_url": "English/LayaAir_JS/IDE/Code_Mode/shortcut_key/",
-                "name_3_file": "readme.md"
-              }
-            ]
-          },
- 	  {
-            "name_2_name": "Design Patterns overview",
-            "name_2_data": [
-              {
-
-                "name_3_name": "Design Mode interface overview",
-                "name_3_url": "English/LayaAir_JS/IDE/Design_Mode/GUI_Layout/",
-                "name_3_file": "readme.md"
-              },
-              {
-
-                "name_3_name": "Custom interface layout and recovery default",
-                "name_3_url": "English/LayaAir_JS/IDE/Design_Mode/Custom_GUI/",
-                "name_3_file": "readme.md"
-              },
-              {
-
-                "name_3_name": "Menu Bar",
-                "name_3_url": "English/LayaAir_JS/IDE/Design_Mode/MenuBar/",
-                "name_3_file": "readme.md"
-              },
-              {
-
-                "name_3_name": "Toolbar introduction",
-                "name_3_url": "English/LayaAir_JS/IDE/Design_Mode/ToolBar/",
-                "name_3_file": "readme.md"
-              },
-              {
-
-                "name_3_name": "Project manager",
-                "name_3_url": "English/LayaAir_JS/IDE/Design_Mode/ProjectManager/",
-                "name_3_file": "readme.md"
-              },
-              {
-
-                "name_3_name": "Resource Manager",
-                "name_3_url": "English/LayaAir_JS/IDE/Design_Mode/ResourceManager/",
-                "name_3_file": "readme.md"
-              },
-              {
-
-                "name_3_name": "IDE component class and  type",
-                "name_3_url": "English/LayaAir_JS/IDE/Design_Mode/Component/",
-                "name_3_file": "readme.md"
-              },
-              {
-
-                "name_3_name": "Template library",
-                "name_3_url": "English/LayaAir_JS/IDE/Design_Mode/Template/",
-                "name_3_file": "readme.md"
-              },
-              {
-
-                "name_3_name": "Scene Editor",
-                "name_3_url": "English/LayaAir_JS/IDE/Design_Mode/Scene/",
-                "name_3_file": "readme.md"
-              },
-              {
-
-                "name_3_name": "Attribute setter",
-                "name_3_url": "English/LayaAir_JS/IDE/Design_Mode/Attribute_Set/",
-                "name_3_file": "readme.md"
-              },
-              {
-
-                "name_3_name": "New panel detail, UI page, particle, animation and script",
-                "name_3_url": "English/LayaAir_JS/IDE/Design_Mode/NewPanel/",
-                "name_3_file": "readme.md"
-              },
-              {
-
-                "name_3_name": "Hierarchy Manager",
-                "name_3_url": "English/LayaAir_JS/IDE/Design_Mode/HierarchyManager/",
-                "name_3_file": "readme.md"
-              },
-              {
-                "name_3_name": "IDE component detailed library",
-                "name_3_url": "English/LayaAir_JS/IDE/Design_Mode/Component_Detailed/",
-                "name_3_file": "readme.md"
-              }
-            ]
-          },
-          {
-            "name_2_name": "Using IDE Tools creation",
-            "name_2_data": [
-              {
-                "name_3_name": "Create Atlas and details usage",
-                "name_3_url": "English/LayaAir_JS/IDE/Use_IDE/Atlas/",
-                "name_3_file": "readme.md"
-              },
-              {
-                "name_3_name": "Create dynamic template (EffectAnimation)",
-                "name_3_url": "English/LayaAir_JS/IDE/Use_IDE/EffectAnimation/",
-                "name_3_file": "readme.md"
-              },
-	      {
-                "name_3_name": "Timeline animation editor explain (GraphicAnimation)",
-                "name_3_url": "English/LayaAir_JS/IDE/Use_IDE/TimelineAnimation/",
-                "name_3_file": "readme.md"
-              },
-	      {
-                "name_3_name": "Making and using custom components",
-                "name_3_url": "English/LayaAir_JS/IDE/Use_IDE/customComponent/",
-                "name_3_file": "readme.md"
-              }
-            ]
-          },
-          {
-            "name_2_name": "IDE component property reference",
-            "name_2_data": [
-              {
-                "name_3_name": "Button",
-                "name_3_url": "English/LayaAir_JS/IDE/Component_Detailed/Button/",
-                "name_3_file": "readme.md"
-              },
-              {
-                "name_3_name": "CheckBox",
-                "name_3_url": "English/LayaAir_JS/IDE/Component_Detailed/CheckBox/",
-                "name_3_file": "readme.md"
-              },
-              {
-                "name_3_name": "Clip",
-                "name_3_url": "English/LayaAir_JS/IDE/Component_Detailed/Clip/",
-                "name_3_file": "readme.md"
-              },
-              {
-                "name_3_name": "ComboBox",
-                "name_3_url": "English/LayaAir_JS/IDE/Component_Detailed/ComboBox/",
-                "name_3_file": "readme.md"
-              },
-              {
-                "name_3_name": "Image",
-                "name_3_url": "English/LayaAir_JS/IDE/Component_Detailed/Image/",
-                "name_3_file": "readme.md"
-              },
-              {
-                "name_3_name": "Label",
-                "name_3_url": "English/LayaAir_JS/IDE/Component_Detailed/Label/",
-                "name_3_file": "readme.md"
-              },
-              {
-                "name_3_name": "List",
-                "name_3_url": "English/LayaAir_JS/IDE/Component_Detailed/List/",
-                "name_3_file": "readme.md"
-              },
-              {
-                "name_3_name": "HScrollBar",
-                "name_3_url": "English/LayaAir_JS/IDE/Component_Detailed/HScrollBar/",
-                "name_3_file": "readme.md"
-              },
-              {
-                "name_3_name": "VScrollBar",
-                "name_3_url": "English/LayaAir_JS/IDE/Component_Detailed/VScrollBar/",
-                "name_3_file": "readme.md"
-              },
-              {
-                "name_3_name": "HSlider",
-                "name_3_url": "English/LayaAir_JS/IDE/Component_Detailed/HSlider/",
-                "name_3_file": "readme.md"
-              },
-              {
-                "name_3_name": "VSlider",
-                "name_3_url": "English/LayaAir_JS/IDE/Component_Detailed/VSlider/",
-                "name_3_file": "readme.md"
-              },
-              {
-                "name_3_name": "ProgressBar",
-                "name_3_url": "English/LayaAir_JS/IDE/Component_Detailed/ProgressBar/",
-                "name_3_file": "readme.md"
-              },
-              {
-                "name_3_name": "RadioGroup",
-                "name_3_url": "English/LayaAir_JS/IDE/Component_Detailed/RadioGroup/",
-                "name_3_file": "readme.md"
-              },
-              {
-                "name_3_name": "Tab",
-                "name_3_url": "English/LayaAir_JS/IDE/Component_Detailed/Tab/",
-                "name_3_file": "readme.md"
-              },
-              {
-                "name_3_name": "Tree",
-                "name_3_url": "English/LayaAir_JS/IDE/Component_Detailed/Tree/",
-                "name_3_file": "readme.md"
-              },
-              {
-                "name_3_name": "ViewStack",
-                "name_3_url": "English/LayaAir_JS/IDE/Component_Detailed/ViewStack/",
-                "name_3_file": "readme.md"
-              },
-              {
-                "name_3_name": "Animation",
-                "name_3_url": "English/LayaAir_JS/IDE/Component_Detailed/Animation/",
-                "name_3_file": "readme.md"
-              }
-            ]
-          }
-        ]
-      },
-      {
         "nav_1_name": "2D Advanced（JS）",
         "nav_1_data": [
           {
-
             "name_2_name": "Debugging features",
             "name_2_data": [
               {
@@ -2797,20 +2604,37 @@
             "name_2_name": "Game loading handler",
             "name_2_data": [
               {
-
                 "name_3_name": "Binary image",
+                "name_3_url": "English/LayaAir_JS/2D/advanced/loadStrategy/binary_Image/",
+                "name_3_file": "readme.md"
+              },
+              {
+                "name_3_name": "Multithreading worker",
+                "name_3_url": "English/LayaAir_JS/2D/advanced/loadStrategy/worker/",
+                "name_3_file": "readme.md"
+              },
+              {
+                "name_3_name": "Resource version management",
+                "name_3_url": "English/LayaAir_JS/2D/advanced/loadStrategy/versionManagement/",
+                "name_3_file": "readme.md"
+              }
+            ]
+          },
+          {
+            "name_2_name": "Performance optimization",
+            "name_2_data": [
+              {
+                "name_3_name": "Performance statistics panel ",
                 "name_3_url": "English/LayaAir_JS/2D/advanced/PerformanceOptimization/Stat_Panel/",
                 "name_3_file": "readme.md"
               },
               {
-
-                "name_3_name": "Multithreading worker",
+                "name_3_name": "Memory optimization",
                 "name_3_url": "English/LayaAir_JS/2D/advanced/PerformanceOptimization/memory/",
                 "name_3_file": "readme.md"
               },
               {
-
-                "name_3_name": "Resource version management",
+                "name_3_name": "Rendering principles",
                 "name_3_url": "English/LayaAir_JS/2D/advanced/PerformanceOptimization/rendering/",
                 "name_3_file": "readme.md"
               },
@@ -2825,13 +2649,11 @@
                 "name_3_file": "readme.md"
               },
               {
-
                 "name_3_name": "Other optimization strategies",
                 "name_3_url": "English/LayaAir_JS/2D/advanced/PerformanceOptimization/other/",
                 "name_3_file": "readme.md"
               },
               {
-
                 "name_3_name": "Using Chrome's profiler",
                 "name_3_url": "English/LayaAir_JS/2D/advanced/PerformanceOptimization/Chrome_Profiles/",
                 "name_3_file": "readme.md"
@@ -2842,7 +2664,6 @@
             "name_2_name": "Animation",
             "name_2_data": [
               {
-
                 "name_3_name": "Bone animation",
                 "name_3_url": "English/LayaAir_JS/2D/advanced/animation/bone/",
                 "name_3_file": "readme.md"
@@ -2853,17 +2674,36 @@
             "name_2_name": "Extended module",
             "name_2_data": [
               {
-
                 "name_3_name": "Analyze Tiled Map with LayaAir engine",
                 "name_3_url": "English/LayaAir_JS/2D/advanced/extension_modules/TiledMap/",
+                "name_3_file": "readme.md"
+              },
+              {
+                "name_3_name": "LayaAir interacts with native DOM",
+                "name_3_url": "English/LayaAir_JS/2D/advanced/extension_modules/DOM/",
+                "name_3_file": "readme.md"
+              },
+              {
+                "name_3_name": "Use layaair-cmd",
+                "name_3_url": "English/LayaAir_JS/2D/advanced/extension_modules/LayaCMD/",
+                "name_3_file": "readme.md"
+              },
+			  {
+                "name_3_name": "Custom Shader",
+                "name_3_url": "English/LayaAir_JS/2D/advanced/extension_modules/Shader/",
+                "name_3_file": "readme.md"
+              },
+              {
+                "name_3_name": "WeChat mini game adapter",
+                "name_3_url": "English/wechat/minigame/",
                 "name_3_file": "readme.md"
               }
             ]
           }
         ]
-      },
+      }, 
       { 
-        "nav_1_name": "LayaAir 3D engine（AS3）",
+        "nav_1_name": "LayaAir 3D engine（JS）",
         "nav_1_data": [
           {
             "name_2_name": "3D Engine basics",

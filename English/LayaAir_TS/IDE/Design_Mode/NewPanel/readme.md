@@ -1,135 +1,135 @@
-# UI页面、粒子、动画、脚本新增面板详解
+# UI page, particle, animation and script new panel detail
 
-　　 在项目管理器器中，右键可以新建UI页面、粒子、动画、脚本，如图1所示，本篇将针对这些功能的一些参数展开介绍。
+　　 In the project manager, right-click to create new UI pages, particles, animation, scripts, as shown in Figure 1, this article will introduce some of the parameters of these features.
 
 ​        ![blob.png](img/1.png)<br/>
-​        	（图1）
+​        	（Picture 1）
 
 
 
-### 一、新建UI页面
+### 1. the new UI page
 
-**在新建的面板中，`页面`栏里可以创建View与Dialog两种UI界面。如图2所示**：
+**In the new panel, you can create two UI interfaces, View and Dialog, in the `page bar`. As shown in figure 2**：
 
 ​        ![blob.png](img/2.png)<br/>
-​        	（图2）
+​        	（Picture 2）
 
-**【参数说明】**
+**[parameter description]**
 
-**页面类型**：
+**Page type**：
 
-　　 默认为View，该类型的页面，没有关闭功能，通常用于游戏背景与一直保持打开的层级页面。另一个选项类型为Dialog，Dialog继承自View，除View的所有功能外，还可以实现会话框的弹出、拖动，关闭窗口等功能，常用于游戏的弹出界面。
+　　 The default is View, and this type of page has no closing function, and is usually used for the game backgrounds and hierarchical pages that have been kept open. Another option type is Dialog, Dialog inherits from View, in addition to all the functions of View, but also can realize the dialog box pop-up, drag, close the window and other functions, often used in the game pop-up interface.
 
-**页面名称**：
+**Page name**：
 
-　　 新建的页面文件名，该项必须填写。 
+　　 New page file name, which must be filled in. 
 
-**参考视图**：
+**Reference view**：
 
-　　 参考视图是通过在设计界面的背景加载一张美术设计原图，方便UI的制作拼接与原设计保持一致的参照图片。该项为可选，参考视图的背景图片并不会导出到项目中，仅用于UI制作的参照。
+　　 Reference view is through the design interface in the background to load a graphic, to facilitate the production of UI, and the original design consistent with the reference picture. The item is optional and the background image of the reference view is not exported to the project. It is only used for the reference of UI production.
 
-**页面宽度**：
+**Page width**：
 
-　　 页面的宽，设置后超过宽度不会被计算，勾选“仅作为参考宽度”后，需要实时计算宽度，对性能会产生额外的压力，不建议勾选。
+　　 The width of the page, after setting the width will not be calculated, check the “only as a reference width”, the need to calculate the width in real time, the performance will produce additional pressure, not recommended check.
 
-**页面高度**：
+**Page height**：
 
-　　 页面的高，设置后超过高度不会被计算，勾选“仅作为参考宽度”后，需要实时计算高度，对性能会产生额外的压力，不建议勾选。
+　　 The height of the page will not be calculated beyond the height after setting, and the “only reference width” will be used to calculate the height in real time, which will cause additional pressure on the performance, and it is not recommended to check.
 
-**参考背景**：
+**Reference background**：
 
-　　 参考背景与参考视图类似，仅用于UI制作的对比参照，不会在项目中生效。是可选项。
-
-
+　　The reference background is similar to the reference view and is only used for UI reference and does not take effect in the project. Is optional.
 
 
 
-### **二、新建粒子**
 
-　　 在新建粒子里，可以创建重力模式与半径模式的2D例子动画，也可以创建3D粒子动画。如下图所示：
+
+### **2. The new particles**
+
+　　 In the new particles, you can create gravitational mode and radius mode 2D example animation, you can also create 3D particle animation. As shown below:
 
 ​        ![blob.png](img/3.png)<br/>
-​        	（图3）
+​        	（Picture 3）
 
-**【参数说明】**
+**[Parameter Description]**
 
-**粒子类型**：
+**Particle type**：
 
-　　粒子类型为重力模式、半径模式、粒子3D模式三种，默认为重力模式。
+　　Particle type is gravity model, radius model and particle 3D mode, the default for the gravity mode.
 
-　　重力模式的粒子是一个角度向另一个方向呈发射式的粒子效果。
+　　Gravity pattern of particles is an angle to the other direction was fired particles effect.
 
-　　半径模式是围绕中心点为半径的旋转式粒子效果。半径模式与重力模式没有根本性区别，重力模式通过调整参数可以实现半径模式的效果，半径模式也可以调整为重力模式的效果，区别仅在于初始参数的配置不同。
+　　The radius model is a rotating particle effect around the center point.  There is no fundamental difference between the radius mode and the gravity mode. The gravity mode can be used to adjust the parameters. The radius mode can also be adjusted to the effect of gravity mode. The difference is that the configuration of the initial parameters is different.
 
-　　粒子3D模式是基于3维的粒子效果。
+　　The particle 3D mode is based on a 3-dimensional particle effect.
 
-**粒子名称**：
+**Particle name**：
 
-　　 新建的粒子文件名，该项必须填写。
-
-
+　　 New particle file name, which must be filled in.
 
 
 
-### **三、新建动画**
 
-　　  在新建动画里，可以创建一个帧动画。
+
+### **3. New animation**
+
+　　  In a new animation, you can create a frame animation.
 
 ​        ![blob.png](img/4.png)<br/>
-​        	（图4）
+​        	（Picture 4）
 
-**【参数说明】**
+**[Parameter Description]**
 
-**动画类型**：
+**Animation Type**：
 
-　　 动画类型为GraphicAnimation与EffectAnimation两种。
+　　 The animation type is GraphicAnimation and EffectAnimation.
 
-　　 GraphicAnimation是默认选项，该项可以创建一个包含多个动画效果的时间轴动画。
+　　 GraphicAnimation is the default option, which creates a timeline animation that contains multiple animation effects.
 
-　　 EffectAnimation为动画模板，只能创建一个动画效果的模板，将效果作用于某个组件，而不能独立显示动画效果。
+　　 EffectAnimation as animation template, can only create a template animation effect, the effect on a component, and can not display the animation effect independently.
 
-**动画名称**：
+**Animation name**：
 
-　　 新建的帧动画文件名，该项必须填写。
+　　 The new frame animation file name must be filled in.
 
-**动画宽度**：
+**Animation width**：
 
-　　动画宽度的设置仅作为设计时的背景宽度使用，在游戏运行中该设置无效。
+　　The animation width setting is only used as the background width of the design, and the setting is invalid in the game operation.
 
-**动画高度**：
+**Animation height**：
 
-　　 动画高度的设置仅作为设计时的背景高度使用，在游戏运行中该设置无效。
+　　 The setting of animation height is only used as the background height of the design, and the setting is invalid in the game operation.
 
-**参考背景**：
+**Reference background**：
 
-　　 参考背景也仅用于动画制作的背景色对比参照，不会在项目中生效。是可选项。
-
-
+　　 Reference background is also only used for background contrast reference of animation, and will not be effective in the project. It's optional.
 
 
 
-### **四、新建脚本**
 
-　　 在新建脚本里，可以创建扩展脚本和附加脚本。如下图所示：
+
+### **4. New script**
+
+　　 In the new script, you can create extended scripts and additional scripts. As shown in the following picture:
 
 ​        ![blob.png](img/5.png)<br/>
-​        	（图5）
+​        	（Picture 5）
 
-**【参数说明】**
+**[Parameter Description]**
 
-**脚本类型**：
+**Script Type**：
 
-　　 默认为扩展脚本，该类型可以继承对象，扩展对象的属性，下图"aa、bb"等属性为生成扩展脚本并修改属性参数后，拖拽到对象的属性面板后的扩展属性。
+　　 The default is the extension script, which can inherit the object, expand the properties of the object, the following figure "aa、bb" and other attributes to generate the extension script and modify the attribute parameters, drag the object after the property panel to expand the properties.
 
 ​        	![blob.png](img/6.png)<br/>
-​        	（图6）
+​        	（Picture 6）
 
-　　 附加脚本不会继承和扩展对象，而是通过附加脚本针对对象进行控制。
+　　 Additional scripts do not inherit and extend the object, but rather control the object with additional scripts.
 
-**脚本名称**：
+**Script Name**：
 
-　　 新建脚本的文件名，该项必须填写。
+　　 The name of the new script, which must be filled in.
 
-**运行类名**：
+**Run class name**：
 
-　　 运行脚本时对应的类名，比如：game.view.myScript
+　　 When running the script corresponding to the class name, such as : game.view.myScript

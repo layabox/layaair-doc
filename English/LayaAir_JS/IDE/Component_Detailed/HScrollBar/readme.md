@@ -1,90 +1,90 @@
-# HScrollBar 组件参考
+# HScrollBar Component
 
 
 
-##  一、通过LayaAirIDE创建HScrollBar组件
+##  1. create HScrollBar components through LayaAirIDE
 
-###         1.1创建HscrollBar
+###         1.1 Creating HscrollBar
 
-​	HScrollBar 组件是一个水平方向滚动条组件。
-​        当数据太多以至于显示区域无法容纳时，最终用户可以使用 HScrollBar 组件控制所显示的数据部分。
-​        滚动条由四部分组成：一个轨道图、一个滑块按钮和两个箭头按钮。
-​        点击选择资源面板里的 HScrollBar 组件，拖放到页面编辑区，即可添加 HScrollBar 组件到页面上。
-​        HScrollBar 组件的脚本接口请参考 [HScrollBar API](http://layaair.ldc.layabox.com/api/index.html?category=Core&class=laya.ui.HScrollBar)。
-​        HScrollBar 组件的图像资源示例：
+​	The HScrollBar component is a horizontal scroll bar component.
+​        When the data is too large to display, the end user can use the HScrollBar component to control the displayed data part.
+​        The scroll bar consists of four parts: a track map, a slider button and two arrow buttons.
+​        Click on the HScrollBar component in the resource panel, drag and drop to the page edit area, and then add the HScrollBar component to the page.
+​        Please refer to the script interface of the HScrollBar component [HScrollBar API](http://layaair.ldc.layabox.com/api/index.html?category=Core&class=laya.ui.HScrollBar)。
+​        An example of image resource for HScrollBar component:
 
 ​        ![图片0.png](img/1.png)<br/>
-​    （图1）
+​    （Picture 1）
 
 ​        ![图片0.png](img/2.png)<br/>
-​    （图2）
+​    （Picture 2）
 
 ​        ![图片0.png](img/3.png)<br/>
-​    （图3）
+​    （Picture 3）
 
 ​        ![图片0.png](img/4.png)<br/>
-​    （图4）
+​    （Picture 4）
 
-​        HScrollBar 拖放到编辑器区后，显示效果：
+​        HScrollBar Drag into the editor area to show the effect:：
 
 ​        ![图片0.png](img/5.png)<br/>
-​    （图5）
+​    （Picture 5）
 
-​        设置 HScrollBar 的属性 max 的值为 10、属性 min 的值为0、属性 value 的值为3后，显示效果如下：
+​        The value of setting HScrollBar attribute Max is 10, the value of attribute min is 0, and the value of attribute value is 3, the display effect is as follows:
 
 ​        ![图片0.png](img/6.png)<br/>
-​    （图6）
+​    （Picture 6）
 
-​        在程序中运行时，可以拖动滑块或点击箭头按钮控制进度条的值：
+​        When you run the program, you can drag the slider or click the arrow button to control the value of the progress bar:
 
 ​        ![图片0.gif](gif/1.gif)<br/>
-​    （图7）
+​    （Picture 7）
 
-​        设置 HScrollBar 的属性 showButtons 的值为 false时的显示效果：
+​        The display effect of setting HScrollBar attribute showButtons when the value is false:
 
 ​        ![图片0.png](img/7.png)<br/>
-​    （图8）
+​    （Picture 8）
 
-​        在程序里运行时的效果：
+​        Common attributes of components:
 
 ​        ![图片0.gif](gif/2.gif)<br/>
-​    （图9）
+​    （Picture 9）
 
  
 
-### 1.2 HScrollBar 组件常用属性
+### 1.2 Common attributes of HScrollBar components
 
 ​        ![图片0.png](img/8.png)<br/>
-​    （图10）
+​    （Picture 10）
 
  
 
-| **属性**            | **功能说明**                            |
+| **Attributes**            | **Functional description**                            |
 | ----------------- | ----------------------------------- |
-| skin              | 滚动条的图像资源地址。                         |
-| sizeGrid          | 滚动条轨道图资源的有效缩放网格数据（九宫格数据）。           |
-| value             | 表示当前滚动位置的数字。                        |
-| min               | 表示最低滚动位置的数字。                        |
-| max               | 表示最高滚动位置的数字。                        |
-| scrollSize        | 表示按下滚动条轨道时页面滚动的增量。                  |
-| mouseWheelEnable  | 一个布尔值，指定是否滑轮滚动，默认值为true。            |
-| touchScrollEnable | 一个布尔值，指定是否开启触摸，默认值为true。            |
-| autoHide          | 一个布尔值，指定是否自动隐藏滚动条(无需滚动时)，默认值为false。 |
-| showButton        | 一个布尔值，指定是否显示向上、向下按钮，默认值为true。       |
+| skin              | The image resource address of the scroll bar                         |
+| sizeGrid          | Efficient scaling of grid data on a scroll bar track map resource.          |
+| value             | The number that represents the current scroll position.                        |
+| min               | The number that represents the minimum rolling position.                        |
+| max               | The number that represents the highest rolling position.                       |
+| scrollSize        | The increment of page scrolling when the scroll bar is pressed.                |
+| mouseWheelEnable  | A Boolean value that specifies whether or not the pulley is rolled. The default value is true.            |
+| touchScrollEnable | A Boolean value that specifies whether to open the touch. The default value is true.            |
+| autoHide          | A Boolean value that specifies whether to scroll the scrollbar automatically (without scrolling) and defaults to false. |
+| showButton        | A Boolean value that specifies whether to display the up and down buttons with the default value of true.       |
 
  
 
-## 二、通过代码创建HScrollBar组件
+## 2. Create HScrollBar components through code
 
-​	在我们进行书写代码的时候，免不了通过代码控制UI，创建`UI_ScrollBar`类，在代码中导入`laya.ui.HScrollBar`的包，并通过代码设定HScrollBar相关的属性。
+​	When we write code, we can't control UI by code, create  `UI_ScrollBar` class, import `laya.ui.HScrollBar`package in code, and set HScrollBar related attributes by code.
 
-**运行示例效果:**
+**Run example effect:**
 ​	![5](gif/4.gif)<br/>
-​	(图11)通过代码创建HScrollBar
+​	(Picture 11)Create code HScrollBar
 
-​	HScrollBar的其他属性也可以通过代码来设置，下述示例演示了如何通过代码创建的HScrollBar，有兴趣的读者可以自己通过代码设置HScrollBar，创建出符合自己需要的HScrollBar。
+​	Other properties of HScrollBar can also be set up by code. The following example demonstrates how to create HScrollBar by code, and the interested readers can set up HScrollBar by themselves to create HScrollBar that meets their own needs.
 
-**示例代码：**
+**Sample code ：**
 
 ```javascript
 package

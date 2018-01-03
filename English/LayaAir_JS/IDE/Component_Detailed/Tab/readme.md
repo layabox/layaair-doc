@@ -1,104 +1,104 @@
-# Tab 组件详解
+# Tab Component
 
-> 由于很多组件属性是通用的，常用及通用的组件属性在`属性设置器`文档中已进行介绍。阅读本篇内容前请先阅读《属性设置器》文档。
+> Because many component properties are generic, common and generic component attributes have been introduced in the `attribute setter`document. Please read the 《property setter》 document before reading this article.
 
-## 1、了解Tab组件
+## 1. Understanding Tab components
 
-### 1.1 Tab组件的作用
+### 1.1 role of Tab components
 
-​        Tab 组件用于定义选项卡按钮组，例如多页面切换显示。如动图1所示。
+​        The Tab component is used to define the tabbed button groups, such as multi page switching display. As shown in figure 1.
 
-![动图1](img/1.gif)<br/>（动图1）
+![动图1](img/1.gif)<br/>（Picture 1）
 
-### 1.2 Tab组件的皮肤（skin）规范
+### 1.2 Skin specification (skin) for Tab components
 
-Tab组件的皮肤是以`tab`或以`tab_`为前缀进行命名，在皮肤设计规范方面，是竖向等分的两态图或三态图，如图2所示。
+The skin of the Tab component is named as `tab` or prefixed with `tab_`. In the skin design specifications, the two state diagram or the three state diagram is vertically equal, as shown in figure 2.
 
-![图2](img/2.png) <br /> (图2)三态Tab皮肤
+![图2](img/2.png) <br /> (Fig. 2) three state Tab skin
 
-*Tips：Tab组件的皮肤无法使用九宫格属性，所以要在资源设计的时候就确定好实际应用时的大小。*
+*Tips：skin of the tab component cannot use the nine cell attribute, so the size of the actual application should be determined when the resource is designed*
 
-### 1.3 Tab 组件的API介绍
+### 1.3 Tab Introduction of API for components
 
-Tab 组件的API介绍请参考  [http://layaair.ldc.layabox.com/api/index.html?category=Core&class=laya.ui.Tab](http://layaair.ldc.layabox.com/api/index.html?category=Core&class=laya.ui.Tab)
-
-
-
-## 2、通过LayaAirIDE创建Tab组件
-
-### 2.1 创建Tab        
-
-
-​        点击选择`资源管理器`里的 Tab 组件资源，拖拽到场景编辑器，即在页面中成功的创建了一个 Tab组件。如动图3所示。
-
-​        ![动图3](img/3.gif)<br/>（动图3）
+Tab component API description, please refer to  [http://layaair.ldc.layabox.com/api/index.html?category=Core&class=laya.ui.Tab](http://layaair.ldc.layabox.com/api/index.html?category=Core&class=laya.ui.Tab)
 
 
 
-### 2.2 通过labels增加标签
+## 2. Create a Tab component with LayaAirIDE
 
- 如动图3中所示，默认的Tab组件中只有两个标签。如想增加标签，只需在labels属性中增加新的标签即可，修改标签中的文本内容也在该属性中设置，操作如动图4-1所示。
-
-![动图4-1](img/4-1.gif) <br />(动图4-1)
+### 2.1 Create Tab        
 
 
+​        Click on the Tab component resource in the `Explorer` to drag and drop to the scene editor, which creates a Tab component successfully in the page. As shown in figure 3.
 
-### 2.3 改变Tab组件的布局方向与间距
+​        ![动图3](img/3.gif)<br/>（Picture 3）
 
-Tab组件 默认是水平布局（*horizontal*），通过更改direction属性，实现垂直布局（*vertical*）。**设置间距**可以通过space属性实现。如动图4-2所示。
+
+
+### 2.2 Adding tags through labels
+
+ As shown in Figure 3, there are only two labels in the default Tab component. If you want to add tags, just add a new tag in the labels attribute, and modify the text content in the tag is also set in this property, operation as shown in figure 4-1.
+
+![动图4-1](img/4-1.gif) <br />(Picture 4-1)
+
+
+
+### 2.3 Changing the layout direction and spacing of Tab components
+
+The Tab component defaults to horizontal layout（*horizontal*），Vertical layout is achieved by changing the direction property（*vertical*）。**Setting distance** it can be implemented through the space property. As shown in figure 4-2.
 ![动图4-2](img/4-2.gif) 
-（动图4-2）
+Picture 4-2）
 
-### 2.4 设置单选框组Tab的默认选项
+### 2.4 Setting default options for radio group Tab
 
-selectedIndex属性是用于改变Tab组件的索引值，默认不设置时，不选择任何选项，如果要设置Tab组件的默认标签选项，可以设置selectedIndex的属性值，0为第1个标签，1为第2个标签……以此类推。运行效果如动图4-3所示。
+The selectedIndex attribute is used to change the index value of the Tab component. When the default is not set, it does not select any option. If you want to set the default tab option of the Tab component, you can set the attribute value of selectedIndex, 0 for first labels, and 1 for second tags...... And so on。 The running effect is shown in figure 4-3.
 
 ![动图4-3](img/4-3.gif) 
-（动图4-3）
+（Picture 4-3）
 
 
 
-## 3、自定义Tab组件
+## 3、Custom Tab components
 
-​	在上例中，我们使用了同一种Tab资源通过设置labels生成了三个标签的Tab组件。然而在实际的游戏中，在同一个Tab组件中对标签样式有不同的需求，那么通过labels设置的方式是无法达到效果的，这个时候就需要使用自定义Tab组件的方式。例如动图5所示的效果。
+​	In this case, we use the same Tab resources by setting the labels generated Tab component three label. However, in actual games, there are different requirements for tag styles in the same Tab component, then the labels setting method can not achieve the effect. At this time, you need to use the custom Tab component. For example, the effect shown in figure 5.
 
-​	![图片5.gif](img/5.gif)<br/> （图5）
+​	![图片5.gif](img/5.gif)<br/> （Picture 5）
 
 
 
-### 3.1  准备美术资源
+### 3.1  Preparing art resources
 
-​	下面我们就用三张不同的两态美术资源来自定义Tab组件，图片资源如图6所示。
+​	Here we'll use three different two state art resources to define the Tab component, and the picture resources are shown in figure 6.
 
- ![图片5.png](img/6.png)<br/>  （图6）
+ ![图片5.png](img/6.png)<br/>  （Picture 6）
 
 **Tips**：
 
-　　特别要注意图片的命名规则，在自定义Tab组件中，我们使用的是多个按钮组件组合，不能直接使用`Tab`组件的命名规则。可以使用`Button`组件、`CheckBox`组件、`Radio`组件的命名规则。图6中使用的btn前缀就是Button组件的命名规则。
-
+　　Special attention should be paid to the naming rules of the picture. In the custom Tab component, we use multiple button component combinations, and cannot directly use the naming rules of the `Tab` components. You can use the naming rules for `Button` components, `CheckBox` components, and`Radio`components. The BTN prefix used in Figure 6 is the naming rule for the Button component.
+  
 ​	
 
-### 3.2 在IDE中制作按钮
+### 3.2 Making buttons in IDE
 
-将资源拷贝到项目的资源管理器文件夹，然后在IDE中，将制作的Button组件从资源管理器中逐个拖拽到场景编辑器，从左到右将每个Radio组件的name属性，按先后顺序依次修改成“item0、item1、item2.....”，（不按此规则增加名字属性，生成的Tab组件为无效组件，不能正常运行）。另外，由于资源是两态的，所以需要将satNum属性值设置为2。当设置完label属性的文本等，效果如 图7 所示。
+The resource Explorer folder copied to the project, and then in IDE, the Button components produced by one by one from the explorer to drag the scene editor, from left to right, the name property of each Radio component, in order to “item0、item1、item2.....”，（do not add name attribute by this rule, the generated Tab component is invalid component and cannot run normally）. In addition, since the resource is two state, you need to set the satNum attribute value to 2. When the text of the label property is set, the effect is shown in figure 7.
 
-![图片6.png](img/7.png)<br/>  （图7）
-
-
-
-### 3.3 转换成Tab容器组件
-
-​	调整好属性后全选三个按钮组件，按快捷键`Ctrl+B`选择`Tab`容器组件，点击`确定`完成转换（图8）。
-
-​	![图片7.png](img/8.png)<br/>  （图8）
+![图片6.png](img/7.png)<br/>  （Picture 7）
 
 
 
-​	转换成功后，调整默认选择的索引selectedIndex为0（第一个Tab标签），单选框间距space为4，方向direction可以不设置或设置为横向（horizontal），如图9所示。
+### 3.3 Convert to Tab container components
 
-​	![图片8.png](img/9.png)<br/>  （图9）
+​	Adjust the attributes after three select button, press the shortcut key `Ctrl+B` Choice `Tab` Container components, click `Determine` Complete the conversion (Figure 8).
 
-​	通过以上几个步骤可以看到自定义Tab组件制作成功。默认选择了第一个选框并切换到它的第三帧选择状态，其他选框则是第一帧未选择状态。
+​	![图片7.png](img/8.png)<br/>  （Picture 8）
+
+
+
+​	After the conversion is successful, the default selection index selectedIndex is 0 (the first Tab tag), the radio frame spacing space is 4, and the direction direction can not be set or set to horizontal (horizontal), as shown in figure 9.
+
+​	![图片8.png](img/9.png)<br/>  （Picture 9）
+
+​	Through these steps, you can see that the custom Tab component is successful. By default, the first checkbox is selected and switched to its third frame selection state, and the other checkbox is the unselected state of the first frame.
 
 
 

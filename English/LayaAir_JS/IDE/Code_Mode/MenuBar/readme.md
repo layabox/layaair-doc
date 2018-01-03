@@ -1,160 +1,160 @@
-# 菜单栏详解
+# Menu bar
 
  
 
-​  代码模式菜单栏包含了一系列常用的功能及选项集合。在本章节中，我们会对代码模式菜单栏做详细的介绍。
+​  The code mode menu bar contains a set of commonly used functions and options. In this chapter, we'll give you a detailed description of the code pattern menu bar.
  ![blob.png](img/1.png)<br/>
-​        （图1）菜单栏面板
+​        (Figure 1) menu bar panel
 
  
 
-## 一、文件
+## 1. File
 
 ​        ![blob.png](img/2.png)<br/>
-​        （图2）文件列表
+​        File list (Figure 2)
 
 
 
-​        **新建项目**：弹出新建项目窗口以供用户选择新建项目名称、位置、项目类型，目前项目类型支持AS、JS、TS三种项目类型。
+​        **New project**：Pop-up window and let users to select a new project name, location, project type supports AS, JS, TS .
 
-​        **新建文件**：新建文件会在编辑视图窗口中新建一个代码文档，文档位置您可以在 资源视图窗口中的工作文件 栏目中找到，新建的代码文档只有进行保存操作时才会真正生成。
+​        **Create a new file**：Make a new document in the Edit View window. The document location can be found in the Work File section from Resource View window. The new code document will be generated only when the save operation is performed.
 
-​        **新建窗口**：新建窗口会弹出一个新的代码编辑窗口以供您进行新项目创建或打开其他项目进行编辑。
+​        **New window**：New window will pop up a new code editing window for you to create a new project or open other items to edit.
 
-​        **打开项目**：打开项目会弹出一个WINDOWS资源管理器 样式的浏览窗口进行项目所在位置选择。确认后IDE会切换成您打开的新的项目。
+​        **Open the project**：Launching project will pop up an Explorer style browser window to browser location of the project. Once confirmed, the IDE will switch to the new project you opened.
 
-​        **打开文件夹**：打开文件夹会弹出一个 WINDOWS资源管理器 样式的浏览窗口进行文件夹所在位置选择，确认后资源视图窗口中自动添加您打开的文件夹。
+​        **Open the folder**：Select folder will pop up an Explorer style browser window to the the folder location, confirm the resource view window automatically add your open folder.
 
-​        **保存**：对当前操作的文件进行保存。
+​        **Save**：Save the current operation file.
 
-​        **另存**：将当前操作的文件另存为新文件。
+​        **Save as**：Save the current operation file as a new file.
 
-​        **保存所有**：对全部文件执行一次保存操作。
+​        **Save all**：Perform a save operation on all files.
 
-​        **刷新编辑器**：刷新编辑器的实时状态。
+​        **Refresh editor**： Refresh the editor's real time state.
 
 
 
   
 
-## 二、编辑
+## 2. Editing
 
 ​        ![blob.png](img/3.png)<br/>
-​        （图3）编辑列表
+​        (Figure 3) edit the list
 
  
 
-​        **撤销**：对当前操作进行一次撤销。 
+​        **Undo**：Undo the current operation
 
-​        **重做**：对已经撤销的操作进行一次恢复。 
+​        **Redo**：Restore a cancelled operation.
 
-​        **剪切**：将选中的段落或文件进行剪切。 
+​        **Cut**：Select the selected paragraph or file for cutting.
 
-​        **粘贴**：将已复制或已剪切的段落或文件进行粘贴操作。 
+​        **Paste**：Paste or copy the copied paragraph or file paste operation.
 
-​        **复制**：对选中的段落或文件进行复制。 
+​        **Copy**：Copy the selected paragraph or file.
 
-​        **全选**：对当前文件内容进行全选操作。 
+​        **Select**：Select the contents of the file.
 
-​        **查找**：在编辑视图窗口右上方弹出查找功能窗口，进行关键字查找。
+​        **Find**：Find the function window on the top of the edit view window for keyword search.
 
 ​        ![图片1.png](img/4.png)<br/>
-​        （图4）查找面板
+​        (Figure 4) find the panel
 
-​        **替换**：在编辑视图窗口右上方弹出替换功能窗口，进行关键字替换。
+​        **Replace**：Function window on the top right of the edit view window to replace keywords.
 
-​        **全局搜索**：将资源视图窗口转换成全局搜索窗口，对关键字进行全项目搜索，列出所有包含该关键字的文件路径以及关键字所在行、关键字数量。并且在代码编辑窗口中对该关键字进行高亮显示。
+​        **Global search**：Convert the resource view window into the global search window, search the keyword for all items, list all the file paths that contain the keyword, and the number of keywords and the number of keywords. And highlight the keyword in the code edit window.
 
  
 
 
 
-## 三、视图
+## 3. View
 
 ​        ![blob.png](img/5.png)<br/>
-​        （图5）视图列表
+​        (Figure 5) view list
 
-​        **文件**：如果资源管理视图被屏蔽，此选项会重现资源管理器窗口。 
+​        **File**：If the resource management view is masked, this option will reproduce the Explorer window. 
 
-​        **搜索**：如果全局搜索窗口被屏蔽，此选项会重现全局搜索窗口。 
+​        **Search**：If the global search window is blocked, this option will reproduce the global search window. 
 
-​        **GIT**：如果GIT窗口被屏蔽，此选项会重现GIT窗口。 
+​        **GIT**：If the GIT window is blocked, this option will reproduce the GIT window. 
 
-​        **调试**：如果调试窗口被屏蔽，此选项会重现调试窗口。 
+​        **Debugging**：If the debug window is blocked, this option will reappear the debug window.
 
-​        **命令面板**：此选项会在编辑视图窗口上方显示命令窗口。 
+​        **Command panel**：This option displays the command window at the top of the edit view window.
 
 ​        ![图片1.png](img/6.png)<br/>
-​        （图6）命令面板
+​        (Figure 6) command panel
 
-​        **错误和警告**：此选项会在编辑视图窗口上方显示错误和警告窗口。 
+​        **Errors and warnings**： This option displays the output window below the edit view window.
 
-​        **输出面板**：此选项会在编辑视图窗口下方显示输出窗口。 
+​        **Output panel**：This option displays the output window below the edit view window.
 
-​        **终端**：此选项目会启动系统命令行终端。
+​        **Terminal**：This option initialize the command line terminal of the system.
 
-​        **调试面板**：此选项会在编辑视图窗口下方显示调试控制台窗口。
+​        **Debug panel**：This option displays the debug console window under the edit view window.
 
-​        **全屏**：将IDE全屏最大化显示。 
+​        **Full Screen**：Maximizes display of IDE into full screen.
 
-​        **拆分编辑器**：将编辑视图窗口进行多份分屏拆分。
+​        **Split editor**： Split the edit view window into multiple split screens.
 
-​        **切换侧边栏**：将侧边栏 显示/隐藏。 
+​        **Toggle sidebar**：display / hide the sidebar. 
 
-​        **移动侧边栏**：将侧边栏移动到 最左侧/最右侧。 
+​        **Move the sidebar** Move the sidebar to the left / right side.
 
-​        **放大**：将LayaAirIDE的显示比例 整体放大。 
+​        **Zoom in**：Enlarge the display ratio of LayaAirIDE.
 
-​        **缩小**：将LayaAirIDE的显示比例整体缩小。
+​        **Zoom out**：Reduce into overall proportion of the display of LayaAirIDE.
 
-​        **重置缩放**：将LayaAirIDE的显示比例重置为默认。
-
-
+​        **Reset zoom**：Reset the display ratio of LayaAirIDE to default scaling.
 
 
 
-## 四、工具
+
+
+## 4. Tools
 
 ​        ![blob.png](img/7.png)<br/>
-​        （图7）工具面板     
+​        (Figure 7) tool panel   
 
-- **SWF转换**：打开SWF资源转化工具窗口，以供用户进行SWF转换操作。
-- **JS压缩工具**：打开JS压缩工具窗口，以供用户将JS文件进行压缩和混淆。
-- **龙骨动画转换**：打开龙骨动画转换窗口，以供用户将DragonBones骨骼动画转换为LayaAir识别的格式。
-- **Spine动画转换**：打开Spine动画转换窗口，以供用户将Spine骨骼动画转换为LayaAir识别的格式。
-- **图集打包**：打开图集打包窗口，以供用户进行图集打包操作。
-- **运行器下载**：打开运行器下载的二维码窗口，以供用户扫码下载LayaNative的运行器。
-- **打包APP**：APP打包的环境配置与操作窗口，以供用户将LayaAir项目打包为安卓的APP（apk文件）
-- **渠道打包工具**：打开渠道打包窗口，以供用户将LayaAir引擎项目直接打包为已对接多个安卓主流渠道的apk包。
-- **构建**：打开构建功能窗口，以供用户将LayaAir引擎项目构建为Android-eclipse、Android-studio、XCode(IOS)三种移动端的APP项目工程。
-- **3D转换工具**：打开3D转换工具的URL链接，压缩包内提供了3DMax与Unity3D编辑器的资源转换工具，让3DMax与Unity3D的资源成为LayaAir引擎支持的资源。
-- **发布Flash版本**：仅支持AS3项目发布为swf文件（flash版本）
-
-
+- **SWF conversion**：Open the SWF resource conversion tool window by the user.
+- **JS compression tool**：Open the JS compression tool window for users to compress and confuse JS files.
+- **Keel animation conversion**：Open keel animation conversion window for users to DragonBones skeleton animation converted to LayaAir recognized format.
+- **Spine Animation Conversion**：Open the Spine animation conversion window for users to convert Spine skeleton animation to LayaAir recognized format.
+- **Atlas packaging**：Open atlas packing window for users to carry out atlas packaging operations.
+- **Runter Download**：Open the two-dimensional code window downloaded by the runtime for the user to scan and download the LayaNative runtime.
+- **Package APP**：APP package environment configuration and operation window for users to LayaAir project packaged as Android's APP (apk file)
+- **Channel packaging tools**：Open channel packing window, users can directly package LayaAir engine project into APK connected to a number of mainstream Android channels.
+- **Build**：Open the build function window for the user to set up LayaAir engine project as Android-eclipse, Android-studio, XCode (IOS) mobile terminal APP project.
+- **3D conversion tool**：Open 3D conversion tool URL link, compression package provides 3DMax and Unity3D conversion tool, let 3DMax and Unity3D assets resources exported into LayaAir engine.
+- **Release Flash version**：Only supports AS3 project to be published as SWF file (flash version)
 
 
 
-## 五、项目
+
+
+## 5. Project
 
 ​        ![blob.png](img/8.png)<br/>
-​        （图8）项目面板
+​        (Figure 8) project panel
 
-​        **类库管理**：用于设置当前项目使用的类库版本。
-
-
+​        **Class library management**：Class library version used to set the current project.
 
 
 
-## 六、帮助
+
+
+## 6. Help
 
 ​        ![blob.png](img/9.png)<br/>
-​        （图9）帮助面板
-- **开发人员工具**：用于打开编辑器的调试页面。
-- **官网**： 打开Layabox官网链接。
-- **官网示例**：打开官网的LayaAir引擎示例链接。
-- **开发者中心**：打开Layabox开发者中心链接。
-- **打开编辑器本地缓存目录**：打开编辑器的本地缓存文件所在目录。
-- **layaAir贡献名单**：向官方提交引擎BUG，可以进入贡献名单。
-- **检查更新**：打开LayaAirIDE的版本下载列表链接。
-- **更新日志**：打开gitHub中的引擎与IDE版本更新日志链接。
-- **当前版本号**：显示LayaAirIDE当前的版本号。
+​        (Figure 9) help panel
+- **Developer Tools**：Used to open the editor's debug page.
+- **Official website**： Open Layabox official website link.
+- **Example**：Open the official website of the LayaAir engine to reach many sample demo links.
+- **Developer Center**：Open the Layabox Developer Center link.
+- **Open the local cache directory of the editor**：Open the directory of the local cache file editor.
+- **LayaAir contribution list**：Official submission engine BUG report, and can participate to contribution list.
+- **Check update**：Open LayaAirIDE version download list link.
+- **Update log**：Open the engine from gitHub with the IDE version update log link.
+- **Current version numbe**：Displays the current version number of LayaAirIDE.

@@ -1,110 +1,108 @@
-# List示例：显示、增加、删除
+# List example: display, add, delete
 
-​        List（列表）是比较常用的功能。本篇结合LayaAir引擎与IDE针对List显示、增加、删除等相关操作进行逐步讲解，供开发者学习引擎与IDE的实战参考。（创建项目等基础操作，请查看其它文档，本篇跳过）
+​        List is a fairly common function. This article combines LayaAir engine and IDE for List display, add, delete and other related operations for step-by-step explanation, for developers learning engine and IDE practical reference. To create basic operations such as projects, check out other documents, skip this article
 
-### 一、用LayaAirIDE制作UI
+### A. make UI with LayaAirIDE
 
-#####  1.1 创建一个View类型的UI页面 
+#####  1.1 Create a View page of type UI
 
 ​        ![1](img/1.png)
-​        （图1）创建一个名为ListPage的View类型UI页面
+​        （Picture 1）Create a View type UI page called ListPage
 
-​        首先，我们在LayaAirIDE的项目管理器内，创建一个View类型的UI页面，宽高为640*1136。页面命名为ListPage。
+​        First of all, we create a View type UI page in the LayaAirIDE project manager, which is 640*1136 wide. The page is named ListPage.
 
-##### 1.2 导入UI资源
+##### 1.2 Import UI resources
 
-​      将美术制作好的UI页面资源导入到资源管理器中。（具体导入方式参考LayaAirIDE资源导入的文档。）
+​      Import the UI page resources of art production into the resource manager. (specific import methods refer to documents imported from LayaAirIDE resources)
 
 ​        ![2](img/2.png)
-​        （图2）
+​        （Picture 2）
 
-##### 1.3 用九宫格制作List背景
+##### 1.3 Making List background with nine squares
 
-**1.3.1 拖拽List背景到舞台**
+**1.3.1 Drag List background to the stage**
 
 ​      ![3](img/3.png)
-​      （图3）将图片背景bg_list.png拖拽到舞台
+​      （Picture 3）Drag the picture  bg_list.png to the stage
 
-​	 **1.3.2  Image属性中通过sizeGrid属性设置九宫格。**
+​	 **1.3.2  Image Passing through attributes into sizeGrid settings.**
 
 ​      ![4](img/4.png)
-​      （图4）点击sizeGrid属性右侧按钮打开九宫格设置面板
+​      （Picture 4）Click on the right button of the sizeGrid property to open the settings panel
 
-​	    **1.3.3 在属性里设置width为640（全屏宽度）**
+​	    **1.3.3 Set width to 640 (full screen width) in the property**
 
 ​      ![5](img/5.png)
-​      （图5）
+​      （Picture 5）
 
 
- ##### 1.4 制作List容器
+ ##### 1.4 Making List containers
 
-**1.4.1 拖拽checkbox.png到舞台，并设置属性name为check。**
+**1.4.1 Drag the checkbox.png to the stage and set the attribute name to check.**
 
 ​    ![6](img/6.png)
-​        （图6）
+​        （Picture 6）
 
-​**1.4.2 拖拽一个label.png到舞台，设置属性name为listNumber，其它属性参照图7。**
+​**1.4.2 Drag a label.png to the stage, set the attribute name to listNumber, and other attributes refer to figure 7. **
 
 ​      ![7](img/7.png)
-​      （图7）用于序号的label组件
+​      （Picture 7）label component for the serial number.
 
-​	**1.4.3 再拖拽一个label.png到舞台，修改文本内容为“List示例文本”，属性设置参照图8所示：**
+​	**1.4.3 Then drag a label.png to the stage and change the text to “List Sample text”, Property settings are shown in Figure 8:**
 
 ​      ![8](img/8.png)
-​   （图8）用于List文本的label组件
+​   （Picture 8）用于List文本的label组件
 
-​	**1.4.4 选中list背景图、序号label、文本label、checkbox，用Ctrl+B快捷键创建一个Box容器。然后选中Box容器，设置Box属性renderType为render。如图9，图10。**
+​	**1.4.4 Select the list background, serial number label, text label, checkbox, use Ctrl + B shortcut keys to create a Box container. Then select the Box container, set the Box property renderType to render. Figure 9, Figure 10. **
 
 ​      ![9](img/9.png)
-​     （图9）
+​     （Picture 9）
 
 ​     ![10](img/10.png)
-​      （图10）
+​      （Picture 10）
 
-​	**1.4.5 点击box容器再次通过Ctrl+B创建一个List容器，如图11。注意，所有的List容器，必须是基于Box容器的，我们看一下图12的层级关系，会更加清晰一些，list基于box循环产生。**
+​	**1.4.5 Click the box container Ctrl + B again to create a List container, as shown in Figure 11. Note that all the List containers must be based on the Box container, so let's take a closer look at the hierarchy in Figure 12, which is based on the box loop.**
 
 ​      ![11](img/11.png)
-​      （图11）
+​      （Picture 11）
 
 ​      ![12](img/12.png)
-​      （图12）
+​      （Picture 12）
 
-#####  1.5 设置List属性
+#####  1.5 Set the List property
 
-​	选取List容器，设置Lis属性 var为_list（通过此变量可以调用该组件下的所有属性），然后根据实际需要设置其它属性，repeatX是X轴的列表数量，repeatY是Y轴的列表数量，spaceX是X轴列表间距，spaceY是Y轴列表间距。如图13所示：
+​	Select the List container, set the Lis property var to _list (this variable can be called under all the properties under the component), and then set the other properties as needed, repeatX is the number of X-axis list, repeatY is the number of Y-axis list, spaceX Is the X-axis list spacing, and spaceY is the Y-axis list spacing. As shown in Figure 13:
 
 ​        ![13](img/13.png)
-​      （图13）
+​      （Picture 13）
 
-##### 1.6 添加操作按钮
+##### 1.6 Add operation button
 
-​        这里，我们直接使用了模板的ButtonTab，拖拽到舞台中，然后点击进入子节点，设置var、label属性以及九宫格等。如图14，图15：
+​        Here, we use the template ButtonTab directly, drag and drop to the stage, and then click into the child node, set the VaR, label attributes, and nine squares, etc.. As shown in Figure 14, figure 15:
 
 ​        ![14](img/14.png)
-​      （图14）
+​      （Picture 14）
 
 ​        ![15](img/15.png)
-​      （图15）
+​      （Picture 15）
 
-​      调整好UI位置细节后，如图16。F12发布UI，就可以进入代码阶段
+​      Adjust the details of the UI position, as shown in figure 16. When F12 releases UI, you can enter the code phase
 
 ​       ![16](img/16.png)
-​      （图16）
+​      （Picture 16）
 
+### 2. Using ActionScript language to realize List code logic
 
+#####         2.1 Display the UI page.
 
-### 二、用JavaScript语言实现List代码逻辑
-
-#####         2.1 显示制作的UI页面
-
-​      2.1.1 创建一个ListDemo.js程序文件，并把对应的js在index.html入口设置为启动文件。
+​      2.1.1 Create a ListDemo.as program file and set it as the startup class.
 
 ​      ![17](img/17.png)
-​     （图17）
+​     （Picture 17）
 
-​      2.1.2  编辑代码，显示UI。
+​      2.1.2  Edit code, display UI
 
-我们先引入加载以及UI类，然后加载显示UI用到的图集资源，最后实例UI界面并添加到舞台。下面通过编码实现这三个环节：
+We first introduce the loading and the UI class, and then load the atlas resources used to display the UI. Finally, the example UI interface is added to the stage. The following three links are implemented through coding ：
 
 ```typescript
 (function()
@@ -134,31 +132,29 @@
 })();
 ```
 
-​*      Tips：代码中的图集路径要根据自己的项目实际情况，灵活调整*
+​*      Tips：The path of the atlas in the code should be flexibly adjusted according to the actual situation of the project*
 
-
-
-​        2.1.3 编码完成后，按F5运行，如图18所示，页面显示和IDE制作的效果一致后，开始编辑逻辑代码。
+​        2.1.3 After the encoding is completed, run according to F5, as shown in Figure 18, the page display and the effect of IDE production is consistent, began to edit the logic code.
 
 ​        ![18](img/18.png)
-​        （图18）
+​        （Picture 18）
 
-#####     2.2 编写代码逻辑
+#####     2.2 Write code logic
 
-​**2.2.1 实现List序号逻辑**
+​**2.2.1 Implementation of List number logic**
 
-​      要实现List序号的数据添加，需要用到“laya.ui.List” API中的list数据源赋值array，单元格渲染处理器renderHandler，以及“laya.display.Node ”API下通过子节点名字获取子节点对象的方法getChildByName。我们先看下API说明：如图19、图20、图21。
+​      In order to realize the data adding of List serial number, we need to use the “laya.ui.List” API in the list data source assignment array, the cell rendering processor renderHandler, and “laya.display.Node” API through the sub node name to obtain the sub node object method getChildByName. Let's look at the API instructions as follows: figure 19, Figure 20, figure 21.
 
 ​        ![19](img/19.png)
-​      （图19）
+​      （Picture 19）
 
 ​      ![20](img/20.png)
-​      （图20）
+​      （Picture 20）
 
 ​      ![21](img/21.png)
-​        （图21）
+​        （Picture 21）
 
- **List序号添加代码如下：**
+ **List serial number to add the code below: **
 
 ```typescript
 (function()
@@ -216,37 +212,37 @@
 })();
 ```
 
-​        代码运行结果如图22所示，成功实现了序号数据的带入。具体实现逻辑与代码说明直接查看代码和注释。
+​        The code running results are shown in Figure 22, and the serial data is successfully brought in. Specific implementation of logic and code instructions to view code and annotations directly.
 
 ​        ![22](img/22.png)
-​      （图22）
+​      （Picture 22）
 
-2.2.2 实现List序滚动
-​      30条模拟数据在上面的示例运行后，只能看到16条。所以我们需要增加一个滚动效果。laya.ui.List的API中vScrollBarSkin可以满足我们的需求，API说明如图23：
+2.2.2 List order scroll
+​      30 simulated data in the above example run, you can only see 16. So we need to add a scroll effect. The vScrollBarSkin in the laya.ui.List API fits our needs. The API description is shown in Figure 23:
 
 ​        ![23](img/23.png)
-​        （图23）
-该功能增加只需一行代码，就不粘全部代码了，将下面代码放到赋值列表数据源之前。
+​        （Picture 23）
+This function adds only one line of code, and it doesn't stick to all the code, and puts the following code before assigning the list data source.
 
 ```typescript
 //添加list滚动条功能
 listView._list.vScrollBarSkin='';
 ```
 
-​       再次运行效果如图24所示：
+​       Again run the effect shown in Figure 24:
 
 ​        ![24](img/24.png)
-​        （图24）
+​        （Picture 24）
 
-2.2.3 实现List增加功能
+2.2.3 List to increase functionality
 
-​       实现List增加，需要用到LayaAir引擎laya.display.Sprite中的事件侦听on()方法对鼠标点击事件CLICK进行侦听，以及laya.ui.List API中添加单元格数据源的方法addItem()；
+​       To achieve List increase, you need to use LayaAir engine in the laya.display.Sprite event listener on () method in the LayaAir engine laya.display.Sprite to listen to the click event CLICK, and the method of adding cell data sources in laya.ui.List API addItem ();
 
 ​    ![25](img/25.png)
-​       （图25）
+​       （Picture 25）
 
 ​       ![26](img/26.png)
-​       （图26）
+​       （Picture 26）
 
  ```typescript
 (function()
@@ -311,19 +307,17 @@ listView._list.vScrollBarSkin='';
 })();
  ```
 
-​       详情直接查看代码与注释。
+​       See the code and notes directly:
 
 
-​       代码运行效果如图27所示：
+​       The code runs as shown in figure 27:
 
 ​       ![27](img/27.png)
-​       （图27）实现列表增加效果
+​       (Figure 27) increase the list effect
 
+2.2.3 Make List able to delete features
 
-
-2.2.3 实现List增加功能删除功能
-
-​       实现List删除功能需要实现多选框checkbox功能、删除按钮的鼠标侦听，删除操作后的数据重新渲染。详情直接查看代码与注释：
+​       List delete functions need to achieve checkbox function, delete the mouse button interception, delete the data after the re rendering. See the code and notes directly:
 
  ```typescript
 (function()
@@ -445,13 +439,12 @@ listView._list.vScrollBarSkin='';
 })();
  ```
 
-​       运行效果如图28所示：
+​       The running effect is shown in figure 28:
 
 ​       ![28](img/28.png)
-​       （图28）删除2、3、4条后的效果
+​       （Picture 28）After removing the effect of 2,3,4
 ​
 
-​        至此，我们已经完成了列表的UI制作，以及显示，新增，删除的代码逻辑。如有疑问请前往社区提出：ask.layabox.com。
-
+​        So far, we have completed the list of UI production, as well as display, add, delete code logic. If you have any questions, please go to the community：ask.layabox.com。
 
 
