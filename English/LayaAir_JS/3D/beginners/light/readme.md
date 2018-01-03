@@ -1,14 +1,14 @@
-# LayaAir3D之光源
+## LayaAir3D Lighting
 
-灯光在3D世界中很重要，三维物体产生立体光影变化、色彩色调变化、投影等可使用灯光设置方式达到。
+Lighting is very important in the 3D world. 3D objects produce three-dimensional light and shade change, color hue change, projection and so on, which can be used in lighting settings.
 
-## 灯光种类
+## Lighting category
 
-灯光的种类有多种，不同的光源呈现的效果不同，可以设置不同的参数，在IDE创建的3D项目中我们可以修改代码查看不同类别的灯光效果。
+There are many kinds of lights. Different light sources have different effects, and different parameters can be set. In the 3D project created by IDE, we can modify the code to see the different types of lighting effects.
 
-### 点光（PointLight）
+### Light (PointLight)
 
-点光是向四面八方发射光线的光源，又称全向光或者球状光，现实中的点光源比如灯泡、蜡烛，可以感觉到光源是有强度、颜色和衰减半径属性。
+Point light is the light source that emits light from all directions, also known as omnidirectional or spherical light. In reality, point light sources, such as light bulbs and candles, can sense that the light source is of intensity, color and attenuation radius.
 
 ```javascript
 //创建点光
@@ -20,20 +20,19 @@ light.range = 6;
 //设置点光的衰减
 light.attenuation = new Laya.Vector3(0.01,0.01,0.03);
 ```
-
-range为设置点光源的范围，相当于点光的照射范围，数值越大，光照范围越大，图1中因光照范围设置不大，因此没被光照的地方为黑色，图2中光照范围超出了灯光与模型的距离，因此全部被照亮。
-
-![1](img/1.png)(图1)![2](img/2.png)(图2)</br>
+Range to set the scope of the point light source, the radiation range equivalent to a point of light, the greater the value, the greater the illumination range, in Figure 1 by the illumination range setting is therefore not to be light where the black figure 2 light beyond the light and model distance, so all is light.
 
 
+![图片1](img/1.png)（图1）  ![图片2](img/2.png)（Picture 2）
 
-attenuation为设置点光源的衰减，数值越小，衰减越少，因此光照范围内的物体亮度更高。
+In order to set the point light source attenuation, the smaller the attenuation value, the less attenuation, so the brightness of the object in the light range is higher.
 
 
 
-### 平行光（DirectionLight）
 
-平行光与点光区别较大，它有固定的一个方向，可通过弧度值设定，并且也没有衰减和光照范围，会对全场景所有模型进行照亮。3D世界中经常用来模拟固定方向的太阳光。
+### Parallel light (DirectionLight)
+
+Parallel light is different from point light. It has a fixed direction, can be set by radian value, and there is no attenuation and illumination range. It will illuminate all the models in the whole scene. The 3D world is often used to simulate the fixed direction of the sun.
 
 ```javascript
 //创建平行光
@@ -43,10 +42,13 @@ light.direction = new Laya.Vector3(0.5, -1, 0);
 ```
 
 
+Direction is the direction of parallel light, representing the direction on the axis of X, y and Z respectively, negative number is negative axis, positive number is positive axis, the range of value is -1 - 0 - 1, beyond the range is -1 or 1, beginners can set the value in this range to observe the change of direction.
 
-### 聚光（SpotLight）
 
-聚光指的是从特定光源方向射出的光，比如手电筒，舞台筒灯等。光照区域根据距离因素逐渐放大，同事光照区域边缘也有衰减现象。
+
+### spotlight (SpotLight)
+
+Focus refers to the direction of light emitted from a specific light, such as a flashlight, stage lights and. The illumination area gradually enlarges according to the distance factor, and the edge of the illumination region also has attenuation phenomenon.
 
 ```javascript
 //添加聚光
@@ -63,48 +65,44 @@ light.range = 5;
 light.spot = 5;
 ```
 
-attenuation为聚光的衰减，设置的值越小，聚光光圈的模糊越小，反之光圈越大。
 
-direction为聚光的方向，方向的值设置方式与平行光一致。
+attenuation The focus attenuation, the smaller the set value, the smaller the concentration aperture blur, and the greater the aperture.
 
-range为聚光的照射范围，与点光类似，区别只是聚光有方向，而点光无方向。
+direction Concentration, and the setting of the direction is consistent with the parallel light.
 
-spot为聚光值，数值越小，光照越强，反之越弱。图3中聚光值为5，图4中聚光值为50，开发者可以根据需求自行调整。
+range Similar to the point light, the difference is only the direction of the spotlight, and the point light has no direction.
 
-![3](img/3.png)(图3)![4](img/4.png)(图4)</br>
+spot For the concentration value, the smaller the value, the stronger the light, the weaker the contrast. The concentration in Figure 3 is 5, and the concentration value in Figure 4 is 50. The developer can adjust himself according to the demand.
+
+![图片3](img/3.png)（图3）  ![图片4](img/4.png)（Picture 4）
 
 
 
-## 光色要素
+## Light color elements
 
-场景中使用了灯光后，在灯光范围内的所有3D模型都将产生影响，LayaAir3D引擎中的灯光包括了以下要素，用于调节场景中的亮度、颜色等。
+All the 3D models in the light range will have an impact when lights are used in the scene, and the lights in the LayaAir 3D engine include the following features to adjust the brightness, color, etc. in the scene.
 
-### 环境颜色（ambientColor）
+### Environmental color(ambientColor)
 
-**Tips：引擎1.7.9版后取消了灯光的环境颜色设置，老版本照常可使用。环境颜色可到材质中去设置。**
+Environment color can simply understand the atmosphere of the scene color. For the model in the scene, the bright and dark surfaces of the model will be affected by the environmental color at the same time. The brighter the ambient color is, the higher the overall brightness of the model is. Of course, the environment is also commonly used in color tone processing, through the whole environment colors red orange yellow green blue purple atmosphere etc..
 
-环境色可以简单的理解为场景的气氛颜色。对于场景中的模型，它们的亮面与暗面会同时被环境色影响，环境色越亮模型的整体亮度越高。当然，环境色也常用语色调处理，可以通过环境色调整出红橙黄绿青蓝紫等气氛。
+The code setting environment is as follows: Yellow environment light is generated, and the model is covered with a layer of yellow (Figure 5).
 
-代码设置环境色如下，产生了黄色的环境光照，模型整体罩上了一层黄色（图5）。
-
-在之前的课程中我们介绍了三维向量可以用来设置颜色值，我们再次回顾一下，向量中三个元素分别代表了红、绿、蓝颜色，由它们来组合成千变万化的色彩，每种颜色的最高值为1，超过后将产生曝光效果。
+Before the course we introduced the three-dimensional vector can be used to set the color values, we again look at the vector of three elements in representing the red, green and blue color, which combined the myriads of changes color, the highest value of each color is more than 1, will produce the exposure effect.
 
 ```javascript
 //设置灯光的环境色为纯黄色（计算机中，红+绿=黄）
 light.ambientColor = new Laya.Vector3(1,1,0);
 ```
-
-![5](img/5.png)(图5)</br>
-
+![图片5](img/5.png)（Picture 5）  
 
 
-### 漫反射颜色（diffuseColor）
 
-**Tips：引擎1.7.9版后增加了color灯光颜色属性设置，与diffuseColor作用相同。**
+### Diffuse reflectance color (diffuseColor)
 
-也称为光源颜色，是灯光对模型受光面的亮度及色彩影响，比如模拟蜡烛光，可对光源进行偏黄调整，那么模型受光面会加入黄色的色调。
+Also known as the light source color, the light is affected by the brightness and color of the model affected by the light, such as the simulation of candle light, the color of the light source can be adjusted yellow, then the model will be added yellow color by the smooth surface.
 
-下列代码中，我们设置了光源颜色为纯红色，那么模型受到光照的部分就会产生红色的影响，因为我们之前设置了环境光为（材质环境光色或老版本灯光环境光色）黄色，所以受光面为红+黄=橙色的混合颜色（图6）。
+The following code, we set the light source color is pure red, then the model will be affected by the light part of the red impact, because we set the environment before the yellow light, so the smooth surface is red + Yellow + orange color mixing (Figure 6).
 
 ```javascript
 //设置灯光的漫反射色为纯红色
@@ -113,60 +111,54 @@ light.ambientColor = new Laya.Vector3(1,1,0);
 light.color = new Laya.Vector3(1,0,0);
 ```
 
-![6](img/6.png)(图6)</br>
+![图片6](img/6.png)（Picture 6） 
 
-关闭环境光，我们可以看到（图7）效果，因为没有黄色的环境色影响，模型的受光面就全部变成了光源色。因此在项目开发过程中，我们得综合考虑灯光的多种光色属性的混色影响。
+Turn off the ambient light, and we can see (Figure 7) the effect, because without the Yellow environmental color, the light of the model is all turned into a light source color. Therefore, in the process of project development, we have to take into account the mixed effects of various light color attributes of lighting.
 
-![7](img/7.png)(图7)</br>
+![图片7](img/7.png)（Picture 7） 
 
 
 
-### 高光颜色（specularColor）
+### Highlight color (specularColor)
 
-**Tips：引擎1.7.9版后取消了灯光的高光颜色设置，老版本照常可使用。高光颜色可到材质中去设置。**
+For the model, in the direction of the light source, and the angle is more sharp, smooth place will produce high light, high light brightness and color can be adjusted by the high light color of the light, the default high light color is pure white.
 
-对于模型来说，正对着光源方向，并且角度较尖锐光滑的地方会产生高光，高光的亮度与颜色可通过灯光的高光颜色进行调整，默认的高光颜色为纯白色。
+There are two ways to adjust the high light color of the model, one is to set the dimming color on the light, the other is to set up the high light map on the material, most of which are directly on the material to adjust the high light color, processing is more convenient, the effect is more realistic.
 
-调整模型的高光色有两种方法，一种是在灯光上设置调光颜色，一种是在材质上设置高光贴图，大多情况是直接在材质上调整高光色，处理起来更方便，效果更真实。
-
-因为box模型无法产生高光，我们用比较光滑的球体模型来观察，图8-1中未代码中为设置高光颜色，引擎默认值为纯白色，因此显示除了白色调光。而下列代码中，我们设置高光颜色为蓝色，图8-2中为可以清晰的看到，球面上产生了蓝色的高光，因为与漫反射红色相加形成了紫色。
+Because the box model does not produce high light, we observe it with a smoother sphere model. In Figure 8-1, there is no high light color in the code, and the engine defaults to pure white, so the white dimming is shown. In the following code, we set the high light color to blue, and in Figure 8-2 we can see clearly that the blue light is generated on the sphere, because it is purple with the addition of diffuse red.
 
 ```javascript
 //设置高光颜色为蓝
 light.specularColor = new Laya.Vector3(0.5,0.5,1);
 ```
 
-![8-1](img/8-1.png)(图8-1)![8-2](img/8-2.png)(图8-2)</br>
+![图片8-1](img/8-1.png)（图8-1） ![图片8-2](img/8-2.png)（Picture 8-2） 
 
 
 
-### 投影（shadow）
+### Projection (shadow)
 
-投影是灯光照射模型时产生的即时阴影，可随着灯光角度、灯光强度、模型位置等变化而变化。投影是3D世界最重要的因素之一，能产生更加强烈的立体感。
+The projection is the immediate shadow produced by the illumination model, and can change with the angle of light, the intensity of light, the position of model, etc.. Projection is one of the most important factors in the 3D world, which can produce a more intense three-dimensional feeling.
 
-即时阴影非常损耗性能，不能用得太多，特别是游戏场景，模型量较大，一般我们不使用即时投影，而使用静态的光照贴图。
+Real time shadows are very poor, and can't be used too much, especially in the game scene. The model is large. Generally, we don't use the real-time projection, and use the static light map.
 
-要让场景中产生投影，我们需了解灯光的以下属性：
+To make projection in the scene, we need to know the following properties of the light：
 
-**shadow：**是否开启投影，布尔值，设置为true后生效。
+**shadow：** Do you want to open the projection, Boolean, and set it to true to take effect.
 
-**shadowDistance：**产生投影的范围，范围是指摄像机到模型的距离，单位为米。大于这个范围模型将不会接受投影与产生投影，开发者可以根据场景大小进行设置。
+**shadowDistance：** The range of projection is the distance from the camera to the model, and the unit is the meter. Beyond this range, the model will not accept projection and projection, and developers can set it according to the size of the scene.
 
-**shadowPSSMCount：**产生阴影贴图的数量，数量越高，阴影越细腻，性能损耗越大。
-
-**shadowResolution：**投影的质量，投影范围中的阴影大小。通过数值设置质量，数值越大，投影质量越高，性能损耗也会随之加高。投影的质量值是以2的N次幂为单位设置，默认为512，可以设置成1024、2048.....等。
-
-**shadowPCFType：**阴影模糊等级0-3，模糊值越大，阴影越柔和，效果越好，但更耗性能。
+**shadowResolution：** The quality of projection, through numerical setting quality, the greater the value, the higher the projection quality, the performance loss will also be heightened. The quality value of the projection is set at 2 N power, the default is 512, and can be set to 1024, 2048, etc...
 
 
 
-只开启和设置灯光的属性还不够，还需在模型上修改投影属性，分别为：
+It is not enough to just open and set the light property, and the projection attributes need to be modified on the model, respectively:
 
-**receiveShadow：**是否接受投影，当模型此属性为true时，计算出的投影会在此模型上显示出来。在游戏中，我们可以把场景的地面，及场景中可走动区域中的模型castShadow属性设置为true。
+**receiveShadow：** Whether the projection is accepted, when the model is true, the light is projected according to the location of the model, the shape of the model grid, and the angle of the light, and then projections are generated on other models. For example, the role of the scene, NPC and other active game elements can open this property.
 
-**castShadow：**是否产生投影，当模型此属性为true时，灯光根据产生阴影的模型位置、模型网格形状大小、与灯光的角度等进行投影计算，然后在接受阴影的模型上产生投影。比如场景中的角色、NPC等活动游戏元素可以开启此属性。
+**castShadow：** Whether the projection is generated, and when the model is true, the projected projection is displayed on this model. In the game, we can set the ground of the scene, and the model castShadow attribute in the moving area in the scene to set to true.
 
-为了能很好的理解投影，我们在下列示例代码中使用平行光，并创建盒子box模型及球体sphere模型加载到场景中，球体用于产生阴影，盒子上接受投影。
+To well understand the projection, we use parallel light in the following example code, and create the box box model and the sphere sphere model loaded into the scene. The sphere is used to receive shadows, and the projection is generated on the box.
 
 ```javascript
 var LayaAir3D = (function () {
@@ -240,6 +232,8 @@ var LayaAir3D = (function () {
 LayaAir3D();
 ```
 
-![9](img/9.png)(图9)![10](img/10.png)(图10)</br>
 
-以上两图为开启投影前与开启投影后的效果，注意：需要在灯光与模型上都设置以上介绍的相关属性，缺了任意环节都无法产生阴影。
+![图片9](img/9.png)（Picture 9）  ![图片10](img/10.png)（Picture 10） 
+
+The above two diagram is the effect of opening before and after the projection. Attention should be paid to the above mentioned attributes in the light and model, and the shadow can not be produced without any link.
+

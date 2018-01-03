@@ -1,20 +1,20 @@
-# LayaAir3D之材质光色与贴图
+## LayaAir3D material light color and texture
 
-### 材质光色与贴图属性
+### Material color and texture attributes
 
-标准材质属性与灯光光色属性有一定的类似，体现在漫反射、高光、环境色等属性上，但材质包括的更全，更方便调整物体美术效果，主要包括了反射率、漫反射颜色与漫反射贴图、高光色与高光贴图、环境色与环境贴图、反射颜色与反射贴图、法线凹凸贴图。下面我们对这些属性进行详细的介绍。
+The standard of material properties and light color properties have similar, reflected in the diffuse, high light, color and other environmental attributes, but the material including more full, more convenient adjustment object art effects, including reflectance, diffuse color and diffuse, specular and specular color, environment and environment texture, color and reflection reflection mapping, normal map. Here we give a detailed description of these properties.
 
 
 
-### 反射率
+#### Albedo
 
-反射率（albedo）主要反映的是材质的明亮程度与颜色，数值越高，材质越明亮。
+Albedo(reflectivity) is the main reflection is the brightness and color of the material, the higher the value, the brighter the material.
 
-反射率的值是一个四维向量，查看下列代码，向量中四个元素分别代表着红、绿、蓝、透明alpha。
+The value of the reflectivity is a four-dimensional vector. Look at the following code. The four elements in the vector represent red, green, blue, transparent alpha, respectively.
 
-透明alpha效果为百分比，0为全透明，1为全透明，如果需要设置为半透明或全透明显示，只调整反射率还不行，还需要设置材质的渲染模式为混合类型才能达到目的（图1）。
+Transparent alpha effect is defined in percentage, 0 is fully transparent, 1 is opaque, if you need to set to translucent or fully transparent display, only adjust reflectivity is not enough, also need to set the material rendering mode for mixed type to achieve the purpose (Figure 1).
 
-修改“快速开启3D之旅”课程中的代码如下可得到图1效果：
+Modify the code in the “Quickstart guide for 3D project” article as follows in Figure 1 effect:
 
 ```typescript
 //创建标准材质
@@ -29,20 +29,19 @@ material.renderMode = Laya.StandardMaterial.RENDERMODE_DEPTHREAD_TRANSPARENTDOUB
 //为box模型赋材质
 box.meshRender.material = material;
 ```
-
-![1](img/1.png)(图1)反射率染色与透明</br>
-
+![图片1](img/1.png)<br>（Picture 1）Reflectance staining and transparency
 
 
-### 漫反射颜色与漫反射贴图
 
-漫反射颜色（diffuseColor）是指材质的单一自身颜色，美术行业内可以称它为物体的固有色。而漫反射贴图（diffuseTexture）是指材质的2D固有纹理图片，比如木头材质需要使用木头纹理图片，砖墙材质需要使用砖墙纹理图片。
+#### Diffuse color reflection and diffuse map
 
-游戏中使用最多的就是漫反射贴图，游戏美术贴图绘制中工作量最大的也是漫反射贴图，它能基本反映物体的基本质感。
+Diffuse reflectance (diffuseColor) refers to the single color of the material, the art industry can be called the object of the solid color. The diffuse reflectance map (diffuseTexture) refers to the 2D inherent texture of the material, such as wood materials need to use wood texture images, brick wall materials need to use brick wall texture pictures.
 
-漫反射颜色与贴图在LayaAir3D引擎中也可以混合使用，它们会有融合效果，漫反射颜色会对模型的光照面进行染色（背光面不会产生变化），它类似于灯光的漫反射光源色，产生更整体的色调（图2）。
+The most popular thing in the game is diffuse mapping, and the most powerful one in game art mapping is diffuse reflection, which basically reflects the basic texture of objects.
 
-修改“快速开启3D之旅”课程中的代码如下，创建了蓝色的漫反射颜色，受光面偏蓝了。见（图2）效果：
+Diffuse color and texture can also mix in the LayaAir 3D engine, they will have the fusion effect, diffuse color will face light on the model of staining (backlight surface not change), a diffuse light source color similar to light, produce more overall tone (Figure 2).
+
+Modify the code in the “Quickstart guide for 3D project” code in the course is as follows, create a blue diffuse color, by the blue side of the light, see (Figure 2) effect:
 
 ```typescript
 //添加方向光（灯光色会与材质色融合，因此改灯光色为黑白灰色，且不能曝光过度）
@@ -60,22 +59,21 @@ material.diffuseTexture = Laya.Texture2D.load("res/layabox.png");
 //为box模型赋材质
 box.meshRender.material = material;
 ```
-
-![2](img/2.png)(图2)漫反射颜色与贴图混合</br>
-
+![图片2](img/2.png)<br>（Picture 2）Diffuse color and texture mixed blend
 
 
-### 高光色与高光贴图 
 
-高光色（specularColor）与灯光高光色一样，是指模型物体转角处，或正对着光源处产生的高光颜色。
+#### High light color and specular map
 
-模型上的高光色受灯光与材质高光色同时影响，如果无灯光或灯光的高光色为黑色，那么即使材质上设置了高光色与高光贴图，模型上的高光同样不会出现。
+High light color (specularColor) is the same as light with high light color, which refers to the high light color at the corner of the model object or the light source.
 
-高光贴图（specularTexture）是一张2D纹理图片，图片中的像素颜色代表着相应模型处的高光颜色和亮度，像素颜色越亮，在像素处的模型高光越亮。
+The high color of the model is influenced by both light and material. If there is no high light color of light or light, then even if the material is set with high light color and high light texture, the model of Gao Guang will not appear.
 
-当然，高光色与高光贴图可以同时使用，效果可能会更好，开发者们可以反复测试，调节出需要的效果。
+The specularTexture is a 2D texture image in which the pixel color represents the highlight color and brightness at the corresponding model. The brighter the pixel color, the brighter the model's highlights at the pixel.
 
-修改“快速开启3D之旅”课程中的代码，在场景中加载一辆卡车，可观察一下使用了高光色、高光贴图，并与默认只使用灯光高光进行一下对比，代码如下：
+Of course, highlight and highlight maps can be used together, the effect may be better, developers can repeatedly test to adjust the desired effect.
+
+Modify the “Quickstart guide for 3D project” course code, loading a truck in the scene, you can observe the use of high-light color, high-light map, and the default light highlight just use the light to make a comparison, the code is as follows
 
 ```typescript
 //创建平行光 -------------------
@@ -104,21 +102,21 @@ private onLoadComplete():void
 }
 ```
 
-编译上述代码，（图3）中使用了材质高光色与高光贴图，效果更好。（图4）中使用了灯光的默认白色高光色，效果一般。
+Compile the above code, (Figure 3) using high color material and high light map, the effect is better. (Figure 4) only using the default white high light color of light, the effect is general.
 
-![3](img/3.png)(图3)</br>
+![图片3](img/3.png)<br>（Picture 3）
 
-![4](img/4.png)(图4)</br>
+![图片4](img/4.png)<br>（Picture 4）
 
 
 
-### 环境色与环境贴图
+#### Environment color and environment map
 
-环境色（ambient）与灯光环境色一样，是对材质进行颜色融合染色，使材质趋于某种颜色色调，同时还能对材质进行提亮，模拟灯箱发光效果。
+The environment color (ambient) is the same as the light environment color, which is the color fusion dyeing of materials, so that the material tends to a certain color tone, but also to improve the material, simulate the luminous effect of the lamp box.
 
-环境贴图( ambientTexture)也是一张2D纹理图片，在LayaAir引擎中暂时取消了环境贴图对模型的影响，后续版本会增加自发光贴图用于替换，目前请暂时用环境色处理模型 。
+The environment map (ambientTexture) is also a 2D texture image. In the LayaAir engine, the environment map is temporarily cancelled, and the subsequent version will increase the self luminous map for replacement. Now, use the environment color to process the model temporarily.
 
-修改“快速开启3D之旅”课程中的代码如下可得到（图6）效果：
+Modify the “Quickstart guide for 3D project”  the code in the course as follows (Figure 6):
 
 ```typescript
 //添加方向光（灯光色会与材质色融合，因此改灯光色为黑白灰色，且不能曝光过度）
@@ -137,25 +135,25 @@ material.ambientColor =new Laya.Vector3(2,2,2);
 box.meshRender.material = material;
 ```
 
-![5](img/5.png)(图5)固定灯光下，材质未使用环境颜色</br>
+![图片5](img/5.png)<br>（Picture 5）Under fixed lighting, the material does not use the ambient color
 
-![6](img/6.png)(图6)固定灯光下，材质使用环境颜色提亮</br>
+![图片6](img/6.png)<br>（Picture 6）Under the fixed lighting, the material uses the environment color to brighten
 
 
 
-### 反射颜色与反射贴图
+#### Reflection color and reflection map
 
-反射颜色(reflectColor)类似于环境颜色，会对材质整体进行颜色融合染色。
+Reflective color (reflectColor) is similar to ambient color, and it can be used for color fusion and coloring of the whole material.
 
-反射贴图( reflectTexture)我们一般是采用一套盒子纹理贴图TextureCube，它会对模型进行整体包裹，模拟周边环境反映在模型上的效果。
+Reflective mapping (reflectTexture), we usually use a set of box texture mapping TextureCube, it will model the overall package, simulate the surrounding environment reflected in the model effect.
 
-反射贴图显示效果同时也与反射率albedo、渲染模式renderMode相关。
+The reflection map is also associated with reflectance albedo and rendering mode renderMode.
 
-渲染模式必须改为双面不透明才能显示反射贴图（StandardMaterial.RENDERMODE_OPAQUEDOUBLEFACE）。
+The rendering mode must be changed to double opaque to display the reflection map (StandardMaterial.RENDERMODE_OPAQUEDOUBLEFACE).
 
-反射率albedo数值越高，反射贴图效果越小，漫反射贴图效果越强，可根据实际的模型材质效果调节，比如水面、镜面、金属面可调节不同的反射率达到需求。
+The higher the reflectance albedo value, the smaller the reflection map effect, the stronger the diffuse reflection effect, and can be adjusted according to the actual model material effect, such as water surface, mirror surface, metal surface can adjust the different reflectivity to meet the demand.
 
-修改“快速开启3D之旅”课程中的代码如下，为了更好的观察反射效果，使用球形模型。运行后可得到（图7）效果：
+ Modify the “Quickstart guide for 3D project” The code in the course is as follows. In order to better observe the reflection effect, the spherical model is used. After operation, the effect can be obtained (Figure 7):
 
 ```typescript
 //添加方向光
@@ -181,29 +179,33 @@ material.reflectTexture = Laya.TextureCube.load("skyBox/skyCube.ltc");
 sphere.meshRender.material = material;
 ```
 
-![7](img/7.png)(图7)反射贴图</br>
+![图片7](img/7.png)<br>（Picture 7）Reflection Mapping
 
 
 
-### 法线凹凸贴图
+#### normal map
 
-法线凹凸贴图(normalTexture)在3D中有着非常重要的作用，模型表现的精细程度主要受法线贴图影响，它能模拟高精度、高面数模型的细节，大大提升游戏画面品质。当然，如果使用法线贴图，对硬件的性能要求随之提高。
+Normal bump mapping (normalTexture) plays a very important role in 3D. The fine degree of model performance is mainly affected by normal map. It can simulate the details of high precision, high surface model, and greatly enhance the quality of the game picture. Of course, if you use the normal map, the hardware performance requirements will be improved.
 
-法线贴图为美术设计师提供，他们靠两种方法制作，一种是在3D制作软件中模型高模烘焙出低模使用的法线贴图，工作量巨大；一种是用漫反射贴图通过一些工具转化成法线贴图，工作量小，但效果比烘焙方法稍差。法线贴图效果如（图8）所示，它是用漫反射贴图转化而成。
+Provide the normal map for the art designer, making them by two methods, one is the huge workload in the fabrication of 3D model high modulus software baking a normal map, low mold use; one is the use of diffuse through some tools into a normal map, the workload is small, but the effect slightly worse than baking method. The normal mapping effect, as shown in Figure 8, is converted from diffuse reflectance maps.
 
-![8](img/8.png)(图8)</br>
+![图片8](img/8.png)<br>（Picture 8） 
 
-如果需要使用法线贴图在开发过程中需注意以下问题：
 
-1．法线贴图对模型数据有一定的要求，如果模型上没有切线信息将无法产生法线凹凸的效果。例如LayaAir 3D引擎中自带的各种Mesh网格类型BoxMesh、SphereMesh、CylinderMesh等是没有切线信息的，即使使用了法线贴图也不会在视图中显示出凹凸。
 
-2．如果需要使用法线贴图，且模型是通过LayaAir的unity插件中导出，在Mesh Setting网格设置时需要注意不能勾选“忽略切线”选项，如（图9）。
+If you need to use normal mapping, you need to pay attention to the following issues in the development process:
 
-![9](img/9.png)(图9)</br>
+1．Normal mapping has certain requirements for model data. If there is no tangent information on the model, the effect of normal concave convex can not be produced. For example, the LayaAir 3D engine comes with various Mesh mesh types, such as BoxMesh, SphereMesh, CylinderMesh, etc., and there is no tangent information. Even if the normal mapping is used, the concave and convex will not appear in the view.
 
-3．如果需要使用法线贴图，游戏场景中必须使用灯光，否则模型上也不会产生凹凸效果。
+2．If you need to use the normal map and the model is exported through the unity plug-in of LayaAir, you need to be careful not to tick the "ignore tangent" option in the Mesh Setting grid setting, such as (Figure 8).
 
-我们从unity3D中创建一个Cube模型（unity中创建的模型带切线信息），并赋上漫反射贴图与法线贴图后用LayaAir导出插件导出数据并使用，法线贴图也会自动加载到模型上。修改“快速开启3D之旅”课程中的代码如下，编译运行后见（图10）凹凸效果。
+![图片9](img/9.png)<br>（Picture 9）
+
+3．If you need to use normal mapping, the game scene must use lights, otherwise the model does not produce bump effect.
+
+
+
+We create a Cube model from unity3D (the model created in unity with tangent information), and with diffuse mapping and normal mapping, export the data with the LayaAir export plug-in, and use the normal map to automatically load onto the model. Modify the "quick open 3D journey" course code is as follows, compile and run see (Figure 10) bump effect.
 
 ```typescript
 //添加方向光
@@ -232,21 +234,21 @@ private onLoadComplete():void
 }
 ```
 
-![10](img/10.png)(图10)法线贴图</br>
+![图片10](img/10.png)<br>（Picture 10）normal map
 
 
 
-### 导出的材质文件.lmat修改
+### Export material file .lmat modification
 
-经过对材质光色与贴图属性的了解，我们了解了怎么通过代码修改物体的材质属性与贴图，灵活的去控制需要达到的效果。
+Through the understanding of the material color light and mapping properties, we learned how to modify the material properties and mapping of the object through the code, flexible control to achieve the desired effect.
 
-不过目前美术上的效果基本都是通过unity编辑器去实现，然后导出数据进行使用。因为目前LayaAir 3D引擎正在完善中，又因H5游戏引擎的特点，不能完全包括unity中所有材质类型与属性，因此在unity中的效果与在实际游戏中的效果会有所差别。
+But at present the effect of art is basically through the unity editor to achieve, and then export data to use. Because the current LayaAir 3D engine is being perfected, and because of the characteristics of H5 game engine, can not fully include all types of materials and attributes in unity, so the effect in unity is different from the actual game effect.
 
-未来的版本中，我们将用插件的方式在unity中创建专用的LayaAir标准材质供开发者们使用，这样可以使在unity中制作的美术效果与游戏的效果完全一致，方便开发者们使用。
+In the future version, we will use plug-in to create special LayaAir standard materials for developers in unity, so that the art effects in unity can be exactly the same as that of the game, which is convenient for developers to use.
 
-那么在等待的这个期间，我们怎么去修改并达到一些美术效果呢？在unity中每一个材质在导出时都会生成.lmat格式文件，我们可以修改材质.lmat文件方式进行调整美术效果。
+So how do we modify and achieve some artistic effects during the waiting period? In unity, each material in export will generate.Lmat format file, we can modify the material.Lmat file to adjust the effect of art.
 
-例如我们通过下例代码，加载一个场景，然后先通过光照设置达到夜晚效果（图11）。
+For example, we load a scene through the next code, and then the night effect is first set by lighting (Figure 11).
 
 ```typescript
 //添加3D场景
@@ -276,12 +278,13 @@ light.ambientColor=new Laya.Vector3(0.2,0.2,1);
 light.diffuseColor=new Laya.Vector3(0.5,0.5,0.5);
 ```
 
-![11](img/11.png)(图11)</br>
+![图片11](img/11.png)<br>（Picture 11）
 
-根据上图所示，如果需要把“Love”形模型变为灯箱的亮度，通过代码修改相对麻烦，相对简单的方式是修改它所对应的材质文件.lmat，打开材质文件观察，可以发现材质文件中存储的就是各种光色属性与贴图（图12），我们修改盖材质的环境光颜色为”1.5,1.2,1.2”，刷新网页文件就可以看到效果，模型变亮了达到灯箱的效果（图13）。
+According to the diagram, if you need to “Love” shape model turns into the brightness of the lamp box, The code changes relatively trouble, relatively simple way is to modify the corresponding material file.Lmat, file open material observation, can be found in the file storage material is a variety of color and texture attributes (Figure 12), we modify the ambient light color cover material for "1.5,1.2,1.2", refresh the page file, you can see the effect, the model lights up to achieve the effect of the light box (Figure 13).
 
-![12](img/12.png)(图12)</br>
+![图片12](img/12.png)<br>（Picture 12）
 
-![13](img/13.png)(图13)</br>
+![图片13](img/13.png)<br>（Picture 13）
 
-通过以上的方法可以调节场景中的各种材质属性，使之达到美术所需效果。当然，我们更期待后续的unity中LayaAir专属材质，直接在unity中编辑与游戏中一致的最终效果。
+Through the above method can adjust the scene of a variety of material properties, so as to achieve the desired effect of art. Of course, we're looking forward to the following LayaAir exclusive material in unity, editing directly in unity and consistent with the final results in the game.
+

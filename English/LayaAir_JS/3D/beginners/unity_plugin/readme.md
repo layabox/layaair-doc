@@ -1,157 +1,153 @@
-## Unity插件使用
+## Unity plug-in utility
 
 
 
-### 下载LayaAir3D导出工具
+### Download the LayaAir3D export tool
 
-下载地址http://ldc.layabox.com/download/tools/LayaAir3DConvertTools.zip
+Download address http://ldc.layabox.com/download/tools/LayaAir3DConvertTools.zip
 
-或者在ide下 菜单-----工具----3D转换工具（图1）。
+Or under ide menu ----- Tools ----3D conversion tool (Figure 1).
 
-下载完成后我们可以看到两款工具，一款是用于转换FBX格式的FBXTools工具，此工具目前暂时不会再维护更新，建议开发者们使用另一款unity导出插件工具，更方便开发者们搭建游戏世界并导出使用。
+After downloading, we can see two tools, one is for converting FBX format FBXTools tools, this tool will no longer maintain updates, suggest that developers use another unity exportPlug-in tools, more convenient for developers to build the game world and export use.
 
-![图片1](img/1.png)<br>（图1）
+![图片1](img/1.png)<br>（Picture 1）
 
 
 
-### 安装导出插件
 
-启动unity，新建个项目，并导入游戏需要的资源与材质、贴图等，项目名称可以按照自己的需要来命名。ctrl+s保存我们的场景，我们这里保存名字叫truck。
+### Install plug-in package
 
-在资源管理界面右键导入LayaAir3D转换工具。插件版本会随着LayaAir引擎功能的增加而更新，但导入的方法是完全一致的。
+Launch unity, create a new project, and import the resources and materials, maps and etc.. The name of the project can be named according to your own needs. Ctrl+s saves our scene, and we save the name here which called truck.
 
-导入工具成功后，在资源管理界面中会出现一个名为LayaPlugin文件夹，同时在unity菜单栏中也会出现导出插件菜单LayaPlugin。如图2：
+Right to import LayaAir3D conversion tools at the resource management interface. The plug-in version will be updated as the LayaAir engine function increases, but the import method is completely the same.
 
-![动图2](img/2.gif)<br>（图2）
+When the import tool succeeds, a LayaPlugin folder appears in the resource management interface, and the export plug-in menu LayaPlugin appears in the unity menu bar. As shown in figure 2:
+
+![动图2](img/2.gif)<br>（Picture 2）
 
 ​
 
-### 导出资源设置
+### Export resource settings
 
-我们在unity中创建一个汽车模型，然后我们用LayaAir的插件导出。点击菜单栏LayaPlugin，会出现导出设置面板，在这我们将详细为大家讲解。
+We create a car model in unity, and then we export it with the plug-in of LayaAir. Click the menu bar LayaPlugin, the export settings panel will appear, which we will explain in detail for you.
 
-![动图3](img/3.gif)<br>（图3）
+![动图3](img/3.gif)<br>（Picture 3）
 
 
 
-#### 导出资源类别
+#### Export resource categories
 
-**Scene类别**是指的整个场景，无论场景中的模型、材质、贴图、动画、还是光照贴图全部导出，主要用于场景制作，文件扩展名是.ls，需要用Scene类或它的继承类加载。
+**Scene class** refers to the whole scene, whether in the scene model, texture, texture, animation, or light maps derived, mainly used for scene production, the file extension is .ls, need to use the Scene class or its inheritance class loading.
 
-**Sprite3D类别**比场景少了光照贴图的导出，经常用于角色或游戏中活动物品的单独资源导出，文件扩展名的是.lh，要用Spite3D加载。
+**Sprite3D class** scene less than Lightmapped are often used to separate resources derived characters or game activity in the article, the file extension is .lh, with Spite3D loading.
 
-它们的加载我们将在“3D技术文档—LayaAir3D之模型篇"介绍。
+Their loading, we will introduce in the “3D technical document - LayaAir3D model" chapter
 
 #### Mesh Setting
 
-网格数据的导出设置，勾选后出现两条信息（图4），它们的可起到压缩模型网格lm文件大小的作用，建议如项目中不用切线（不用法线贴图）与顶点色，请都勾选，可节省20%左右的模型资源大小。
+Grid data export settings, two information check (Figure 4), they can play the model grid LM file size compression effect, suggestions such as projects not tangent (not normal map) and vertex color, please check, can save about 20% of the size of the resource model.
 
-Ignore Vertices Tangent       忽略顶点切线信息
-Ignore Vertices Color            忽略顶点颜色信息
+Ignore Vertices Tangent        ignores vertex tangent information
+Ignore Vertices Color             ignores vertex color information
 
-![图片4](img/4.png)<br>（图4）
+![图片4](img/4.png)<br>（picture 4）
 
 
 
 #### Texture Setting
 
-贴图导出设置，勾选后出下如（图5）信息，在layaAir引擎中只支持png与jpg格式的图片，如果项目中使用了其它格式，游戏加载时会报错，因此需要转换。
+Map export settings, check out, such as (Figure 5) information, in the layaAir engine only supports png and jpg format pictures, if the project uses other formats, the game will load an error, so you need to convert.
 
-Original Texture Type　需要转换格式的原始纹理格式种类
-Non-PNG|JPG　　非png|jpg 现在支持 tga、psd、gif、tif、bmp、exr格式
-PNG、JPG　　　　原始场景中所用png格式资源及所用jpg格式资源
-LightMap　　　　光照贴图，（只有选择Scene类别导出才会有），建议手动ps处理
+Original Texture Type　The format files that needs to be converted
+Non-PNG|JPG　　non png|jpg and tga,psd,gif,tif,bmp,exr are not supported
+PNG,JPG　　　　PNG format resources used in the original scene and the JPG format resources used
+LightMap　　　　Illumination map (only selecting Scene class export will have). Use PhotoShop conversion is recommended
 
-Target Texture Type　 转换目标纹理类型
-PNG 　　　　　　 转换成png格式，带透明通道
-JPG　　　　　　　转换为jpg附带压缩功能，可选择压缩质量
+Target Texture Type　 Converts the target texture type
+PNG 　　　　　　 PNG format, with transparent channel
+JPG　　　　　　　Converted to jpg with compression, optional compression quality
 
-![图片5](img/5.png)<br>（图5）
+![图片5](img/5.png)<br>（picture 5）
 
 
 
 #### Animation Setting
 
-动画导出设置（图6）
+Animation export settings（picture 6）
 
-Optimize Bones   删除动画中无用骨骼，只删除不影响骨骼动画播放的无用骨骼，如果需要做骨骼挂点，请谨慎选择
-Compress Lsani   暂时无用，开发中，压缩骨骼动画数据，减小文件大小
+Optimize Bones   removes the useless bones in animation and removes only useless bones that do not affect the animation of bones
+Compress Lsani   Temporarily useless, developing, compressing skeletal animation data, reducing file size
 
-![图片6](img/6.png)<br>（图6）
+![图片6](img/6.png)<br>（picture 6）
 
 
 
 #### Terrain Setting
 
-unity地型导出设置（图7）
+Unity type export settings (Figure 7)
 
 Convert Terrain To Mesh  
-如果场景中有地型，转换地型成网格模型。
-untiy的地型制作非常方便，可以用笔刷绘制地型高度，如山川、河沟等，还支持笔刷绘制多张细节贴图，用于几种贴图的地表制作。LayaAir导出插件会把地型转化成Mesh，方便开发者使用。有区别的是材质和普通材质不同，包含了细节贴图。
+If there is a type in the scene, convert it into a mesh model.
+Unity terrain-making is very convenient, you can use the brush to draw terrain, such as mountains, rivers and ditches, but also support the brush to draw multiple details of the map, for several maps of the surface. LayaAir export plug-in will be converted to Mesh type, convenient for developers to use. The difference is that the material is different from ordinary materials, including the details of the map.
 
 Resolution
-导出的模型网格面数优化设置，一般默认Medium中等即可。以下为设置的优化等级，每小一级相当于除以4的面数精度。
-Very Height  优化后的面数最高
-Height           优化后的面数相对高
-Medium	       优化后的面数中等
-Low		       优化后的面数低
-Very Low       优化后的面数最低     
-
-![图片7](img/7.png)<br>（图7）
+Export model mesh surface optimization settings, the general default Medium can be select. The following is the set of optimization levels, each of which is equivalent to the precision of the number of surfaces divided by 4.
 
 
+Very Height  The highest number of surfaces after optimization
+Height           The optimal number of surfaces is relatively high
+Medium	       The optimized number of surfaces is medium
+Low		       Low surface number after optimization
+Very Low       The minimum number of surfaces is the lowest    
 
-#### GameObject Setting
+![图片7](img/7.png)<br>（Picture 7）
 
-游戏物品节点设置（图8）
+
+#### GameObject Setting 
+
+Game items node settings（picture 8）
 
 Ignore Null Game Objects 
-导出时忽略空节点，LayaAir引擎不支持的节点也记作空节点，如灯光节点，可减少精灵数。
-注：1.5.0版已支持摄像机导出，因此忽略空节点不会影响摄像机导出。
+The empty nodes are ignored when exporting, and the nodes that are not supported by the LayaAir engine are also labeled as empty nodes, such as camera nodes and light nodes, which can reduce the number of sprites.
 
 Ignore Not Active Game Objects 
-导出时忽略在unity场景中未激活的节点。
+When exporting, the nodes that are not activated in the unity scene are ignored.
 
 Optimize Game Objects 
-导出时从unity场景中第一级节点开始拍平树形结构，删除所有无用节点，可最大程度减少精灵数。
+When exporting from the first level node in the unity scene, the tree structure is flatten and all unnecessary nodes are deleted to minimize the number of sprites.
 
 Batch Make The First Level Game Objects 
-批量导出（必须选择sprite3d才会有）批量导出场景中所有一级节点。
+Batch export (you must select sprite3d only) Batch export all level one node in the scene.
 
- ![图片8](img/8.png)<br>（图8）
-
+ ![图片8](img/8.png)<br>（Picture 8）
 
 
 #### Other Setting
 
-其他设置（图9）
+Other settings（Picture 9）
 
 Cover Original Export Files 
-导出时覆盖原始导出文件
+Export raw export file when exporting
 
 Customize Export Root Directory Name 
-自定义导出文件夹名字，默认的文件夹名字为“layaScene+场景名”。
+Custom export folder name, the default folder name is“layaScene+scene name”.
 
 Automatically Save The Configuration 
-导出时自动保存当前配置
+Automatically save current configuration when exporting
 
- ![图片9](img/9.png)<br>（图9）
+ ![图片9](img/9.png)<br>（Picture 9）
 
 
 
-#### 导出设置
+#### Export settings
 
-Borower             保存的文件路径
-Clear Config      清空当前配置
-Revert  Config   从配置表中读取已保存配置
-Save  Config      保存当前配置，保存后，下次打开后会直接使用之前配置，方便开发者们操作。
-LayaAir Run       点击可使用LayaAir引擎直接运行该场景。
-​        		     LayaAirRun使用须知：                
-​	                    1.必须安装Node环境，express拓展模块（工具内置了express，如果无法正常使用，请自行安装）；
-​          	            2.场景中确保有一个照相机,自行调整其位置，角度，最终layaAir运行效果会与Unity运行结果保持一致。
-LayaAir Export  导出当前资源，点击后，将导出当前场景或模型的数据到指定路径上。
+Browse saved file path
+Clear   Clears the current configuration
+Revert reads the saved configuration from the configuration table
+Save   Save the current configuration, saved, the next time you open the direct configuration before use to facilitate developers to operate.
+Laya Export exports the current resource. After clicking, the data of the current scene or model will be exported to the specified path.
 
- ![图片10](img/10.png)<br>（图10）
+ ![图片10](img/10.png)<br>（Picture 10）
 
 
 
@@ -159,35 +155,39 @@ LayaAir Export  导出当前资源，点击后，将导出当前场景或模型�
 
 
 
-### 导出的资源简单介绍
+### Exported resources are briefly introduced
 
-当配置好输出场景设置后，点击Laya Export 按钮，导出后生成了默认的LayaScene_truck文件夹（图10）。
+When the output scenario is configured, click the Laya Export button, and then export the default LayaScene_truck folder (Figure 10).
 
- ![图片11](img/11.png)<br>（图11）
+ ![图片11](img/11.png)<br>（Picture 11）
 
-见上图文件资源，导出后生成了.ls、.lm、.lmat数据资源，及贴图png、tga资源。
+See the file resources on the map, generated after the export. Ls, .lm, .lmat data resources, and maps png, tga resources.
 
-.ls为场景文件，选择导出Scene类别时生成，包含了场景需要的各种数据，模型、光照贴图、位置等，需用Scene类加载。
+.ls is a scene file, which is generated when the Scene class is exported. It contains all kinds of data needed by the scene, model, illumination map, position and so on, and needs to be 
 
-.lh为模型文件，选择导出Sprite3D类别时生成，缺少光照贴图文件信息，其他与.ls相同。
+loaded with Scene class.
 
-.lm为模型数据文件，相当于FBX格式的转换，可用MeshSprite3D类加载。
+.lh is a model file, generated when you choose to export the Sprite3D category, is missing lightmap file information, and others are the same as .ls.
 
-.lmat为材质数据文件，是在unity中为模型设置的材质信息，加载.ls或.lh文件时会自动加载.lmat产生材质。.lmat还可手动修改其中某些属性。
+.lm is the model data file, equivalent to FBX format conversion, can be loaded by MeshSprite3D class.
 
-.lani为动画数据文件（图10中模型未有动画，因此导出时未生成），如果模型上有动画，导出后将生成动画配置文件，包含了骨骼或帧动画信息。
+.lmat is the material data file, which is the material information which is set for the model in unity. When loading.Ls or.Lh file, it will automatically load.Lmat to produce material. .lmat can also manually modify some of its properties.
 
-它们的具体用法，将在后续课程文档中详细介绍。
+.lani  is the animation data file (the model in Figure 10 is not animated, so it is not generated when exporting). If there is an animation on the model, the animation configuration file will be 
+
+generated, and the skeleton or frame animation information will be generated.
+
+Their specific usage will be described in detail in the following course documentation.
 
 
 
-### 简单加载实例
+### Simply load the instance
 
-我们把LayaScene_truck文件夹内容全部复制到项目的根目录的bin/h5/下。
+We copy the contents of the LayaScene_truck folder to the root directory of the project under bin/h5/下。
 
-Tips：本章节中只介绍简单加载应用，导出后会生成各种格式，它们的详细说明我们将在3D技术文档中“LayaAir3D之场景Scene”和“LayaAir3D之模型”篇介绍。
+Tips：the simple loading application is introduced in this chapter. After exporting, all kinds of formats are generated. Their detailed description will be introduced in the 3D technical document “LayaAir3D Scene” and “Introduce to model in LayaAir3D” articles
 
-加载场景.ls示例代码如下。
+Load scene .ls sample code is as below.
 
 ```java
 var LayaAir3D = (function () 
@@ -219,7 +219,7 @@ var LayaAir3D = (function ()
 LayaAir3D();
 ```
 
-编译运行上述简单代码，我们发现场景加载成功，场景中的模型也显示到了3D视图上（图10）。
+Compile and run the above simple code, we found that the scene is loaded successfully, and the model in the scene is also displayed on the 3D view (Figure 10).
 
- ![图片12](img/12.png)<br>（图12）
+ ![图片12](img/12.png)<br>（picture 12）
 

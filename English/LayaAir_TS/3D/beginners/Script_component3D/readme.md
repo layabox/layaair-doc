@@ -1,53 +1,54 @@
-# LayaAir3D之脚本组件
-
-### 父类组件Component3D
-
-在LayaAir 3D引擎中，为了方便显示对象控制及代码的维护，提供了功能强大的组件类Component3D。我们的动画控制组件、碰撞器、脚本、骨骼挂点等都是基于组件功能的延伸扩展，属于它的子类。并且，LayaAir 3D引擎还支持一个3D对象上添加多个组件，使组件控制更加灵活。
-
-在之前的技术档中，我们介绍了动画控制组件与碰撞器组件的基本功能，在此不再多说。本章节中，**我们主要以脚本组件为示例进行讲解**，因为它继承于组件类，但几乎没有自己的扩展功能，主要使用父类Component3D属性与方法，脚本功能后续更新会增加，敬请期待！。
+## LayaAir3D script component
 
 
+### Parent Class Component Component3D
 
-### 组件的主要属性与方法
+In the LayaAir 3D engine, a powerful component class Component3D is provided to facilitate the display of object control and maintenance of code. Our animation control components, colliders, scripts, skeletal hanging points, etc. are all extensions based on component functionality, which belong to its subclass. And the LayaAir 3D engine also supports adding multiple components on a 3D object to make the component control more flexible.
 
-**owner**：被绑定组件所属的Sprite3D对象。
-
-**enable：**是指组件是否启用，加载组件时，默认情况下是启用状态，如果修改成fasle后，首先会发送激活更改事件，然后组件的更新方法_update()停止执行。
-
-**_load(owner:Sprite3D)：**组件载入时执行方法，默认无代码。可在继承类中覆盖它，将需要初始化的逻辑代码放入其中。
-
-**_start(state:RenderState)：**加载组件的3D对象实例化完成后，第一次更新时执行，默认无代码。可在继承类中覆盖它，将需要3D对象加载完成后的逻辑代码放入其中。
-
-例如3D显示对象异步加载时就添加了脚本，它的子模型与材质还未加载完成，如果脚本中（如构造方法、`_load()`方法中）逻辑代码获取3D显示对象的子对象或贴图就会出现空对象bug。这时就可以把这些逻辑代码入入_start()方法中而避免空对象bug发生。
-
-又例如克隆一个带脚本的3D对象，如果3D对象中也有较多子对象，脚本克隆会先完成，如果脚本中逻辑不放入_start()方法中，去获取子对象时也会发生空对象bug。
-
-**_update(state:RenderState)：**组件更新方法，相当于帧循环。可在继承类中覆盖它，把需要每帧更新的逻辑代码放入此方法中。
+In the previous technical files, we introduced the basic functions of the animation control components and collider components, no longer said here. In this chapter, **We mainly use script component as an example to explain**. Because it inherits component class, but almost without its own expansion function, the main use of the parent class Component3D properties and methods, the script function will be updated later,  so stay tuned! 
 
 
 
-### 组件的相关事件
+### The main components of the properties and methods
 
-**COMPONENT_ADDED：**组件被加载完成事件，由组件所有者Sprite3D发送，并且组件作为参数被发送。
+**owner**：The bound component belongs to the Sprite3D object.
 
-**COMPONENT_REMOVED：**组件被移除后事件，由组件所有者Sprite3D发送，并且组件作为参数被发送。
+**enable：** When the component is loaded, it is enabled by default. If you change it to fasle, you will first send the enable change event, and then the component update method _update () stops executing.
 
-**ENABLE_CHANGED：**组件启用事件，启用属性enable修改后由组件发送，并且启用属性作为参数被发送。
+**_load(owner:Sprite3D)：** The component executes when it is loaded and defaults to no code. You can override it in the inheritance class and put in it the logic code that needs to be initialized.
+
+**_start(state:RenderState)：** The 3D object instantiation of the loaded component is executed after the first update, and defaults to no code. You can override it in the inheritance class and put the logical code that needs to be loaded after the 3D object is loaded.
+
+For example, when a 3D display object is loaded asynchronously, a script is added, and its sub model and the material are not loaded, if the script（such as the construction method, `_load()` function）, empty object bugs appear when logic code fetches sub-objects or textures of 3D display objects. At this point you can put the logic code _start () method to avoid the empty object bug occurs.
+
+For example, cloning a script 3D object, if there are more objects in the 3D object, the script clone will be completed first, if the logic in the script does not put into the _start () method, to obtain the sub object, the empty object bug will also occur.
+
+**_update(state:RenderState)：** Component update method, equivalent to frame cycle. You can override it in the inheritance class and put the logical code that needs to be updated per frame into this method.
 
 
 
-### 脚本组件Script
+### Component related events
 
-脚本继承于组件，因此可以用显示对象的addComponent()方法把脚本添加到3D显示对象上。
+**COMPONENT_ADDED：** The component is loaded to complete the event, sent by the component owner Sprite3D, and the component is sent as a parameter.
 
-在官网的3D引擎示例中，很多示例的摄像机都运用到的摄像机移动脚本CameraMoveScript，摄像机添加了此脚本后，就可以通过鼠标控制它旋转及键盘控制它上下左右前后的移动，开发者们从网上下载示例后，可以找到它进行研究和修改使用。添加脚本组件方法代码如下：
+**COMPONENT_REMOVED：** After the component is removed, the event is sent by the component owner Sprite3D, and the component is sent as a parameter.
+
+**ENABLE_CHANGED：** Component enabled event, enabled property enable modified, sent by component, and enabled property to be sent as a parameter.
+
+
+
+### Script component
+
+The script inherits from the component, so the script can be added to the 3D display object using the addComponent () method of the display object.
+
+In the official website of the 3D engine for example, many of the examples are applied to the camera camera mobile camera script CameraMoveScript, add this script, you can control it through the mouse and keyboard control rotating it up and down and move around before and after the developers from the Internet to download the sample, you can find it to study and modify the use of. Add script component method code as follows:
 
 ```typescript
 //添加摄像机脚本组件
 camera.addComponent(CameraMoveScript);
 ```
 
-当然，在某些逻辑的需要下，也可以把脚本从对象上删除，可以使用3D显示对象的removeComponentByType()方法移除脚本。
+Of course, in some logic, scripts can be removed from objects, and scripts can be removed by using the removeComponentByType () method of 3D display objects.
 
 ```typescript
 //根据类型移除脚本组件
@@ -58,17 +59,18 @@ camera.removeAllComponent();
 
 
 
-### 创建自己的脚本组件
+### Create your own script components
 
-开发者们可以参考摄像机脚本，创建自己的脚本组件用于控制场景中的对象。
+Developers can refer to camera scripts to create their own script components to control objects in the scene.
 
-在LayaAir 3D游戏开发中，我们基本都在unity中创建场景、角色、动画，导出场景并在代码中加载后，就可以对场景中不同的对象加上相应的控制脚本组件。
+In the LayaAir 3D game development, we basically create scenes, roles, animation, export scenarios in unity, and load the code in the code, you can control the different objects in the scene with the corresponding control script components.
 
-比如主角控制脚本、NPC控制脚本、场景物体控制脚本等，一个游戏关卡就这样诞生了，当游戏加载下一个关卡场景后，脚本还可以复用，项目维护起来方便快捷，并且控制与显示进行了分离。
+For example, the protagonist control script and NPC control script, scene control script, a game was born, when the game is loading the next level scene, scripts can also be reused, maintenance is convenient, and the separation and display control.
 
-下列示例中，我们修改技术文档中“快速开启3D之旅”的代码，创建一个控制脚本添加到box上，并且4秒钟后移除脚本组件。
+In the following example, we modify the technical document “QuickStart guide for 3d project” code, create a control script to add to the box, and remove script components after 4 seconds.
 
-首先创建自定义脚本BoxControlScript，用于修改脚本所属对象box的材质、循环旋转。
+First, create custom script BoxControlScript to modify the material, cycle rotation of the object box of the script.
+
 
 ```typescript
 class BoxControlScript extends Laya.Script {
@@ -101,7 +103,8 @@ class BoxControlScript extends Laya.Script {
 }
 ```
 
-然后在“快速开启3D之旅”的代码中，为box添加上述脚本类型，并于4秒后去除脚本。
+Then add the script type to box in the code of “QuickStart guide for 3d project”, and remove the script after 4 seconds.
+
 
 ```typescript
 class LayaAir3D_Script  {
@@ -169,9 +172,11 @@ class LayaAir3D_Script  {
 new LayaAir3D_Script;
 ```
 
-上列代码中，如4秒后开发者们不想移除组件，只是停止使用脚本，可设置脚本启用属性为false。
 
-编译运行上述代码，可以得到以下效果（图1）,移除组件后，模型停止旋转。
+In the code above, such as 4 seconds later, developers don't want to remove components, just stop using scripts, and you can set scripts to enable properties to be false.
 
-![1](img/1.gif)(图1)</br>
+When you compile the above code, you can get the following effect (Figure 1). After the component is removed, the model stops rotating.
+
+![图1](img/1.gif)<br>（Picture 1）
+
 

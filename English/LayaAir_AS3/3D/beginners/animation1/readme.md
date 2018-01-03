@@ -139,6 +139,19 @@ See the play () method in the Animator animation component, and the specific met
 	play(name:String=null,loop:Boolean=true,playbackRate:Number=1.0,startFrame:int=0,endFrame:int=-1)
 ```
 
+**To play an animation frame to a certain frame, based on the original animation to create an animation clip (clip) AnimationClip, the latest Animator class provides addClip () instance method that allows developers to create animation clips and Define the name and play it by the play (movie clip name) method. **
+
+```java
+/**
+* 添加动画片段。
+* @param	clip 动画片段。
+* @param	playName 动画片段播放名称，如果为null,则使用clip.name作为播放名称。
+* @param   开始帧率。
+* @param   结束帧率。
+*/
+public function addClip(clip:AnimationClip, playName:String = null, startFrame:int = 0, endFrame:int = 4294967295
+```
+
 The code in the modified example is as follows:
 
 ```java

@@ -105,6 +105,7 @@ Modify the “Quickstart guide for 3D project” course code, loading a truck in
 	});
 	scene.addChild(role3D);
 ```
+
 Compile the above code, (Figure 3) using high color material and high light map, the effect is better. (Figure 4) only using the default white high light color of light, the effect is general.
 
 ![图片3](img/3.png)<br>（Picture 3）
