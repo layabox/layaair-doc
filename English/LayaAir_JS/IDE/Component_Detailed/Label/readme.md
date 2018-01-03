@@ -1,70 +1,70 @@
-# Label 组件参考
+# Label Component
 
 
 
-## 一、通过LayaAirIDE创建Label组件
+## 1. create a Label component through LayaAirIDE
 
-###     1.1 创建Label
+###     1.1 Create a Label
 
-​        Label 组件用来显示一段文字，文字可以是系统字体或者 BMFont 字体。
+​        Label component is used to display a paragraph of text, the text can be a system font or BMFont font.
 
-​        点击资源面板里的 Label 组件，拖放到页面编辑区，即可添加 Label 组件到页面上。
-​        Label 组件的脚本接口请参考 [Label API](http://layaair.ldc.layabox.com/api/index.html?category=Core&class=laya.ui.Label)。
+​        lick the Resource Panel Label component, drag and drop to the page editing area, you can add a Label component to the page.
+​        Label Please refer to the component's script interface [Label API](http://layaair.ldc.layabox.com/api/index.html?category=Core&class=laya.ui.Label)。
 
-​        Label 组件的资源示例：
+​        Label example of resource for components：
 
 ​        ![图片0.png](img/1.png)<br/>
-​    （图1）
+​    （Picture 1）
 
-​        Label组件拖放到编辑区后，设置 text 属性的值为 LayaAir IDE 后的显示效果如下：
+​        After the Label component is dragged to the edit area, the value of setting the text attribute is LayaAir IDE, and the display effect is as follows:
 
 ​        ![图片0.png](img/2.png)<br/>
-​    （图2）
+​    （Picture 2）
 
  
 
  
 
-###  1.2 Label 属性
+###  1.2 Label attribute
 
 ​        ![图片0.png](img/3.png)<br/>
-​    （图）
+​    （Picture 3）
 
  
 
-| **属性**      | 功能说明                             |
+| **attribute**      | Functional description                            |
 | ----------- | -------------------------------- |
-| text        | 文本内容字符串。                         |
-| align       | 文本的水平对齐方式。可选值有left、center、right。 |
-| valign      | 文本的垂直对齐方式。可选值有top、middle、bottom。 |
-| color       | 文本的颜色值。默认为黑色。                    |
-| bgColor     | 文本背景颜色。                          |
-| font        | 文本的字体名称。                         |
-| fontSize    | 文本的字体大小。                         |
-| bold        | 文本是否为粗体字显示。                      |
-| italic      | 文本是否显示为斜体。                       |
-| wordWrap    | 文本是否换行。                          |
-| stroke      | 文本的描边宽度。                         |
-| strokeColor | 文本的描边颜色。                         |
-| asPassword  | 文本是否显示为密码样式。                     |
-| leading     | 文本的垂直行间距。                        |
-| padding     | 文本的边距。                           |
+| text        | Text content string.                       |
+| align       | Horizontal alignment of text. Optional value left,center,right. |
+| valign      | Vertical alignment of text. Optional value top,middle,bottom. |
+| color       | Color value of text. The default is black.                    |
+| bgColor     | Text background color.                          |
+| font        | Font name of text.                         |
+| fontSize    | Font size of text.                         |
+| bold        | whether is text bold                     |
+| italic      | Text Italic                       |
+| wordWrap    | text wrap                          |
+| stroke      | text of the stroke width                         |
+| strokeColor | Text color                         |
+| asPassword  | text displayed as a password                     |
+| leading     | Vertical line spacing of text。                        |
+| padding     | Text margins                           |
 
  
 
-## 二、通过代码创建Label组件
+## 2. Creating Label components through code
 
- 	在我们进行书写代码的时候，免不了通过代码控制UI，创建`UI_Label`类，在代码中导入`laya.ui.Label`的包，并通过代码设定Label相关的属性。
+ 	When we write code, we can't control UI by code, create `UI_Label` class, import `laya.ui.Label` package in code, and set Label related attributes by code.
 
-**运行示例效果:**
+**Run example effect:**
 ​	![5](img/4.png)<br/>
-​	(图5)通过代码创建Label
+​	(Picture 5) Creating Label through code
 
-​	Label的其他属性也可以通过代码来设置，下述示例代码演示了如何通过代码创建不同皮肤（样式）的Label，有兴趣的读者可以自己通过代码设置Label，创建出符合自己需要的文字效果。
+​	Other attributes of Label can also be set up by code. The following example code demonstrates how to create Label of different skins (styles) by code, and the interested readers can set up Label by themselves to create the text effect that suits their own needs.
 
-​	更多的文字效果可以去查看2D基础篇中的文本部分。
+​	More text effects can be seen in the text section of the 2D basic chapter.
 
-**示例代码：**
+**Sample code：**
 
 ```javascript
 package 

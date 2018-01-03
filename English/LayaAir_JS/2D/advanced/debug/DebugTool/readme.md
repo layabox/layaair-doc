@@ -1,6 +1,6 @@
-# LayaAir DebugTool调试工具
+# LayaAir DebugTool
 
-### 1、启用DebugTool调试面板
+### 1. Enable DebugTool
 
 DebugPanel debugging panel is Div debug window based on the debug panel `DebugPanel.init()` method in the `laya.debugtool.js` file, the JS file in index.html can be `Laya.init in the initialization stage (method), increase the use of arbitrary code after the introduction of index.html, the JS file is shown in the following code:
 

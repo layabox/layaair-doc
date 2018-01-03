@@ -1,10 +1,10 @@
-# HSlider 组件参考
+# HSlider Component reference
 
 
 
-## 一、通过LayaAirIDE创建HSlider组件
+## 1. Understanding HSlider components
 
-### 1.1 创建HSlider
+### 1.1 The function and effect demonstration of HSlider
 
 ​        使用 HSlider 控件，用户可以通过在滑块轨道的终点之间移动滑块来选择值。
 ​        HSlider 组件采用水平方向。滑块轨道从左向右扩展，而标签位于轨道的顶部或底部。
