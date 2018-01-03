@@ -1,53 +1,53 @@
-# Image 组件参考
+# Image Component
 
 
 
-## 一、通过LayaAirIDE创建Image组件
+## 1. Creating Image components through LayaAirIDE
 
-###        1.1 创建image
+###        1.1 Creating image
 
-​	Image 是 UI 里最常见的显示图像的组件，用来显示位图图像。可以设置 Image 组件的 skin 属性来改变 Image 组件呈现的图像。Image 组件支持九宫格数据设定，用于实现图像放大后图像显示不失真的效果。
+​	Image is the most common component of display image in UI, which is used to display bitmap images. You can set the skin property of the Image component to change the image rendered by the Image component. The Image component supports the data setting of the nine squares, which is used to realize the undistorted effect of the image after the image is magnified.
 
-​        点击资源面板里的 Image 组件，拖放到页面编辑区，即可添加 Image组件到页面上。单击选中 Image ，可以在属性面板里设置 Image 的常用属性的值。
-​        Image 组件的脚本接口请参考 [Image API](http://layaair.ldc.layabox.com/api/index.html?category=Core&class=laya.ui.Image)。
+​        Click on the Image component in the resource panel, drag and drop to the page edit area, and then add the Image component to the page. Click Image to set the value of the common attributes of Image in the property pane.
+​        Image script interface of component is referenced [Image API](http://layaair.ldc.layabox.com/api/index.html?category=Core&class=laya.ui.Image)。
 
-​        **Image 组件的资源示例：**
+​        **Image example of resource for components ：**
 
 ​        ![图片0.png](img/1.png)<br/>
-​    （图1）
+​    （Picture 1）
 
-​         **Image 组件拖放到编辑区后显示效果：**
+​         **Image Component drag and drop to edit area display effect ：**
 
 ​        ![图片0.png](img/2.png)<br/>
-​    （图2）
+​    （Picture 2）
 
-### 1.2 Image 组件的常用属性
+### 1.2 Image Common attributes of components
 
 ​        ![图片0.png](img/3.png)<br/>
-​    （图3）
+​    （Picture 3）
 
-| **属性**   | **功能说明**            |
+| **attribute**   | **Functional description**            |
 | -------- | ------------------- |
-| sizeGrid | 位图的有效缩放网格数据（九宫格数据）。 |
-| skin     | 位图的资源。              |
+| sizeGrid | Effective scaling of grid data (bitmap data) |
+| skin     | Bitmap resources              |
 
  
 
-​        添加 Image 组件之后，可以通过从资源面板中拖拽图片资源到 Image 的 skin 属性框，来修改 Image 组件的显示资源图像。
+​        After adding the Image component, you can modify the display resource image of the Image component by dragging the picture resources from the resource panel to the skin property box of the Image.
 
-## 二、通过代码创建Image组件
+## 2. Create Image components through code
 
-​	在我们进行书写代码的时候，免不了通过代码控制UI，创建`UI_Image`类，在代码中导入`laya.ui.Image`的包，并通过代码设定Image相关的属性。
+​	When we write code, we can't control UI by code, create  `UI_Image` class, import `laya.ui.Image` package in code, and set Image related attributes by code.
 
-**运行示例效果:**
+**Run example effect:**
 ​	![5](img/4.png)<br/>
-​	(图5)通过代码创建Image
+​	(Picture5) Creating Image through code
 
-​	Image的其他属性也可以通过代码来设置，下述示例代码演示了如何通过代码创建不同皮肤（样式）的Image，
+​	Other properties of Image can also be set up by code. The following example code demonstrates how to create Image for different skins (styles) through code,
 
-有兴趣的读者可以自己通过代码设置Image，创建出符合自己需要的图片。
+Interested readers can set their own image code, to create a picture that meets their needs.
 
-**示例代码：**
+**Example code：**
 
 ```javascript
 package
