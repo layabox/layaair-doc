@@ -1,12 +1,15 @@
-## LayaAir3D之骨骼挂点
+## LayaAir3D skeletal bone point
 
-### 骨骼挂点概述
+### Skeletal bone point overview
 
-骨骼挂点技术在3D游戏中运用非常普遍，比如武器要随着角色的手的动作而变化，那么我们就可以把武器与手上骨骼进行挂点绑定，武器作为手骨骼的子层级，自然就可以跟随手的动作而变化。
+Skeletal bone points are commonly used in the binding of 3D models to bones. For example, the weapon moves with the movement of the hand, so we can bind the weapon to the skeleton of the hand as the sub level of the hand skeleton.
 
-当然，绑定后的3D模型也可以通过代码来移除绑定或者更换另外的3D模型，通过这种方式可以实现武器或装备的换装功能。
+The binding 3D model can also be used to remove the binding or replace the 3D model by code, which also implements the reloading function of weapons or equipment.
 
-### 在Unity中设置骨骼挂点
+
+
+### Setting up skeletal bone points in Unity
+
 
 骨骼挂点在Unity中设置非常方便，可以在场景的资源层级中直接操作。如下图（图1）
 

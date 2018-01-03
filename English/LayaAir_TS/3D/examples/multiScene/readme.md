@@ -1,30 +1,30 @@
-# 3D多场景运用示例
+## 3D multi-scene application example
 
-### 多场景的运用
+### Multi-scene use
 
-3D场景不仅可以和2D混合使用，同时在舞台上也可以有多个3D场景，并且还能在2D中嵌入3D场景，通过场景中的摄像机视口控制显示场景画面的大小和位置。
+3D scene can not only mix and 2D, also can have more than one 3D scene on the stage, and can be embedded in 2D 3D scene, through the camera viewport in the scene to control the display size and location of the scene.
 
-在游戏中我们经常也会这么运用，例如角色装备属性界面，界面中显示了3D角色的模型与动画，装备栏中更换装备图标后，角色模型还可以进行换装变化。
+We often use it in games, such as the role of equipment attributes interface, the interface shows the role of 3D model and animation, equipment replacement equipment icon in the column, the role model can also be facelift changes.
 
-下例中我们对装备属性界面进行了简单模拟（图1），功能为双击屏幕打开装备界面，显示3D角色待机动画及身上装备展示，点击按住界面标题可拖动界面，内部的3D场景、角色也跟随移动。
+In the next example, we have a simple simulation of the equipment property interface (Figure 1), the function is to double-click the screen to open the equipment interface, display the 3D role animation and equipment display, click and hold the interface title can drag the interface, the internal 3D scene, the role also follows the move.
 
-![1](img/1.gif)(图1)</br>
+![图片1](img/1.gif)<br> （Picture 1）
 
 
 
-### 开发思路与代码
+### Development ideas and code
 
-1、背景为3D主场景，加载游戏场景地图；
+1. The background is the 3D main scene, loading the game scene map
 
-2、在IDE中创建一个简单Dialog类型UI（Dialog可以设置拖动）并发布（图2）。建立RolePropView类继承于UI，并且设置为单例模式（大多数UI都为单例）。在界面之中创建添加另一个3D场景用于显示角色，并设置摄像机视口与2D界面大小一致或更小。
+2. Create a simple Dialog type UI in IDE (Dialog can be set drag) and publish (Figure 2). The RolePropView class is inherited from UI and is set to singleton pattern (most UI are singleton). Create add another 3D scene for displaying a character in the interface, and set the camera viewport and the 2D interface are uniform in size or smaller.
 
-![2](img/2.png)(图2)</br>
+![图片2](img/2.png)<br> （Picture 2）
 
-3、界面添加后，鼠标在界面上按下或移动时主场景中摄像机脚本失效，界面移除或鼠标不在界面上按下后有效。可通过脚本组件的enable属性进行设置。
+3. After the interface is added, the camera script fails in the main scene when the mouse is pressed or moved on the interface, and the interface is removed or the mouse is not pressed on the interface. It can be set by the enable property of script component.
 
-4、添加界面拖动事件监听，拖动界面时，界面场景中摄像机视口ViewPort跟随一起移动（否则3D场景角色会在最初位置）。
+4. Add a drag event listener interface, drag interface, ViewPort interface moves follow the camera viewport scene (or 3D scene character in the first position).
 
-主类LayaAir3D_MultiScene代码如下：
+The main class LayaAir3D_MultiScene reference code is as follows ：
 
 ```typescript
 class LayaAir3D_MultiScene {
@@ -98,7 +98,7 @@ class LayaAir3D_MultiScene {
 new LayaAir3D_MultiScene;
 ```
 
-界面类RolePropView，内部创建3D场景、角色、摄像机，参考代码如下
+Interface class RolePropView, create 3D scene, role, camera, reference code is as follows:
 
 ```typescript
 /*角色装备UI界面（包括3D场景与角色）*/
@@ -164,4 +164,4 @@ class RolePropView extends ui.RolePropUI{
 }
 ```
 
-编译运行上述代码，效果如图1所示。
+Compile and run the above code, the effect is shown in figure 1.
