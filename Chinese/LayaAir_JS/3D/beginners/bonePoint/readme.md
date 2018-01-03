@@ -13,7 +13,7 @@
 需要绑定的对象可以是一个3D容器，也可以只是一个3D模型，调整好它们的位置后，把它们拖入到指定骨骼下作为子层级就挂点绑定成功了，播放动画时，我们可以发现它跟随骨骼动画而变化了。
 
 有的时候，我们需要在刚开始的时候无武器，但又需要挂点，为以后换武器作准备，那么我们也可以在骨骼下放入一个空节点容器GameObject，需要的时候再往里添加不同的3D模型或是多个模型。
-![1](E:\Awork\AGitWork\layaair-doc\Chinese\LayaAir_JS\3D\beginners\bonePoint\img\1.png)</br>
+![1](img\1.png)</br>
 
 (图1)
 
@@ -27,11 +27,11 @@ Animator动画组件类提供了两个实例方法**linkSprite3DToAvatarNode()**
 
 Tips：代码添加骨骼动画之前，需要美术提供需要关联骨骼节点的名字。
 
-![2](E:\Awork\AGitWork\layaair-doc\Chinese\LayaAir_JS\3D\beginners\bonePoint\img\2.png)</br>
+![2](E:img\2.png)</br>
 
 (图2)
 
-![3](E:\Awork\AGitWork\layaair-doc\Chinese\LayaAir_JS\3D\beginners\bonePoint\img\3.png)</br>
+![3](img\3.png)</br>
 
 (图3)
 
@@ -58,12 +58,12 @@ monkeyAni.linkSprite3DToAvatarNode("RHand",box);
 
 下面我们以一个魔法攻击的简单示例来为大家演示一下骨骼挂点的运用（图4）。
 
-![4](E:\Awork\AGitWork\layaair-doc\Chinese\LayaAir_JS\3D\beginners\bonePoint\img\4.gif)</br>
+![4](img\4.gif)</br>
 (图4)
 
 首先如图1中，在Unity中设置魔法光圈为右手骨骼的子节点层级，将右手骨骼名字改为“RHand”，魔法光圈为“weapon”，并导出成.ls资源文件。导出后，我们可以发现手骨骼与光圈出现在模型的子层级文件中（图5），需用时可以根据名字去获取到它们。
 
-![5](E:\Awork\AGitWork\layaair-doc\Chinese\LayaAir_JS\3D\beginners\bonePoint\img\5.png)</br>
+![5](img\5.png)</br>
 (图5)
 
 按照图4魔法攻击效果，可以通过两个类来实现，一个是主类Laya3D_BonePoint.js，用于实现动画播放和生成魔法武器，方案为：在攻击动画播放至36帧左右时，克隆出一个与挂点武器相同的新魔法武器，并添加武器脚本用于飞行，原始挂点武器暂时隐藏，动画播放完成后再重新显示，模拟产生魔法并扔出魔法的效果。
