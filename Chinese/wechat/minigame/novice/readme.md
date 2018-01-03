@@ -23,13 +23,15 @@ LayaAirIDE是LayaAir引擎的集成开发环境，集成了LayaAir引擎与示�
 **开发工具下载地址**：
 https://mp.weixin.qq.com/debug/wxagame/dev/devtools/download.html
 
-#### 3、创建一个小程序开发者帐号，获得开发者ID(AppID)
+#### 3、创建一个小程序的企业开发者帐号，获得开发者ID(AppID)
 
-尽管没有AppID也可以开发调试，但是功能会受到限制。所以在开发之前，最好先去创建一个小程序开发者帐号。
+尽管没有AppID也可以开发调试，但是功能会受到限制。所以在开发之前，最好先去创建一个小程序的企业开发者帐号。
 
 注册地址：https://mp.weixin.qq.com/cgi-bin/registermidpage?action=index&lang=zh_CN
 
-![img](img/2.png)
+![img](img/2.png) 
+
+> Tips:微信小游戏不支持个人注册，如果是个人开发者只能创建小程序项目，无法创建小游戏项目。所以，个人开发者如果想体验，先不要输入AppID，点击输入框下的 **小游戏** 字样进行
 
 ### 
 

@@ -49,3 +49,7 @@ game.js、game.json、project.config.json、weapp-adapter.js 都是微信小游�
 **3、不支持loader预加载声音使用**
 
 用LayaAir引擎开发小游戏时，要注意，不支持通过loader预加载声音文件的使用方式，声音播放直接用SoundManger音频管理类即可。
+
+**4、缓存的大小**
+
+微信小游戏的缓存只有50M，所以要注意控制缓存资源的使用。
