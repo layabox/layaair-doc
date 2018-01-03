@@ -51,7 +51,7 @@ Clip 的脚本接口参考[Clip API](http://layaair.ldc.layabox.com/api/index.ht
 
 ##  二、通过代码创建Clip组件
 
- 	在我们进行书写代码的时候，免不了通过代码控制UI，创建`UI_Clip`类，在代码中导入`laya.ui.Clip`的包，并通过代码设定Clip相关的属性。
+ 	在我们进行书写代码的时候，免不了通过代码控制UI，创建`UI_Clip`类，通过代码设定Clip相关的属性。
 
 **运行示例效果:**
 ​	![1](gif/1.gif)<br/>
@@ -64,151 +64,102 @@ Clip 的脚本接口参考[Clip API](http://layaair.ldc.layabox.com/api/index.ht
 
 **示例代码：**
 
-```javascript
-package
+```typescript
+(function()
 {
-	import laya.display.Stage;
-	import laya.events.Event;
-	import laya.ui.Button;
-	import laya.ui.Clip;
-	import laya.ui.Image;
-	import laya.utils.Handler;
-	import laya.webgl.WebGL;
-	
-	public class UI_Clip
+	var Stage   = Laya.Stage;
+	var Button  = Laya.Button;
+	var Clip    = Laya.Clip;
+	var Image   = Laya.Image;
+	var Handler = Laya.Handler;
+	var WebGL   = Laya.WebGL;
+
+	var buttonSkin = "res/ui/button-7.png";
+	var clipSkin = "res/ui/num0-9.png";
+	var bgSkin = "res/ui/coutDown.png";
+
+	var counter, currFrame, controller;
+
+	(function()
 	{
-		/***控制器按钮资源***/
-		private var buttonSkin:String = "../../../../res/ui/button-7.png";
-		/***切片资源***/
-		private var clipSkin:String = "../../../../res/ui/num0-9.png";
-		/***背景资源***/
-		private var bgSkin:String = "../../../../res/ui/coutDown.png";
-		
-		/***计数器***/
-		private var counter:Clip;
-		/***计数器当前索引***/
-		private var currentIndex:int;
-		/***控制器按钮***/
-		private var controller:Button;
-		
-		public function UI_Clip()
-		{
-			// 不支持WebGL时自动切换至Canvas
-			Laya.init(800, 600, WebGL);
-			//画布垂直居中对齐
-			Laya.stage.alignV = Stage.ALIGN_MIDDLE;
-			//画布水平居中对齐
-			Laya.stage.alignH = Stage.ALIGN_CENTER;
-			//等比缩放
-			Laya.stage.scaleMode = Stage.SCALE_SHOWALL;
-			//背景颜色
-			Laya.stage.bgColor = "#232628";
-			
-			//加载资源
-			Laya.loader.load([buttonSkin, clipSkin, bgSkin], 
-                             laya.utils.Handler.create(this,onSkinLoaded));
-		}
-		
-		/***加载资源完成***/
-		private function onSkinLoaded(e:*=null):void
-		{
-			//显示背景图
-			showBg();
-         	//创建计数器
-			createCounter();
-            //显示总数
-			showTotal();
-            //创建控制按钮
-			createController();
-		}
-		
-		/***显示背景***/
-		private function showBg():void 
-		{
-			//实例化背景图
-			var bg:Image = new Image(bgSkin);
-			//设置图片大小
-			bg.size(224, 302);
-			//位置居舞台中间
-			bg.pos(Laya.stage.width - bg.width >> 1, Laya.stage.height -bg.height >> 1);
-			//加载到舞台
-			Laya.stage.addChild(bg);
-		}
-		
-		/***创建计数器切片***/
-		private function createCounter():void
-		{
-			//实例化计数器切片
-			counter = new Clip(clipSkin, 10, 1);
-			//自动播放
-			counter.autoPlay = true;
-			//播放间隔时间1秒
-			counter.interval = 1000;			
-			//计数器切片位置
-			counter.x = (Laya.stage.width - counter.width) / 2 - 35;
-			counter.y = (Laya.stage.height - counter.height) / 2 - 40;
-			//加载到舞台
-			Laya.stage.addChild(counter);
-		}
-		
-		/***显示总数切片***/
-		private function showTotal():void 
-		{
-			//实例化总数切片
-			var clip:Clip = new Clip(clipSkin, 10, 1);
-			//总数切片索引为最后一个
-			clip.index = clip.clipX - 1;
-			//总数切片位置
-			clip.pos(counter.x + 60, counter.y);
-			//加载到舞台
-			Laya.stage.addChild(clip);
-		}
-		
-		/***创建控制按钮***/
-		private function createController():void 
-		{
-			//实例化控制按钮
-			controller = new Button(buttonSkin, "暂停");
-			//标签字体为粗体
-			controller.labelBold = true;
-			//按钮标签字体颜色的四种状态
-			controller.labelColors = "#FFFFFF,#FFFFFF,#FFFFFF,#FFFFFF";
-			//按钮大小
-			controller.size(84, 30);
-			//按钮点击事件——计数器状态控制
-			controller.on(Event.CLICK, this, onClipState);
-			//按钮位置
-			controller.x = (Laya.stage.width - controller.width) / 2;
-			controller.y = (Laya.stage.height - controller.height) / 2 + 110;
-			//加载到舞台
-			Laya.stage.addChild(controller);
-		}
-		
-		/***计数器状态***/
-		private function onClipState(e:*=null):void 
-		{
-			//如果计数器为播放状态
-			if (counter.isPlaying)
-			{
-				//停止播放动画
-				counter.stop();
-				//记录当前播放索引（如果不记录，重新播放时，索引会从0开始）
-				currentIndex = counter.index;
-				//按钮标签改变
-				controller.label = "播放";
-			}
-			else//计数器为停止状态
-			{
-				//播放动画
-				counter.play();
-				//从当前记录的索引播放
-				counter.index = currentIndex;
-				//按钮标签改变
-				controller.label = "暂停";
-			}
-		}	
+		// 不支持WebGL时自动切换至Canvas
+		Laya.init(800, 600, WebGL);
+
+		Laya.stage.alignV = Stage.ALIGN_MIDDLE;
+		Laya.stage.alignH = Stage.ALIGN_CENTER;
+
+		Laya.stage.scaleMode = Stage.SCALE_SHOWALL;
+		Laya.stage.bgColor = "#232628";
+		//预加载资源
+		Laya.loader.load([buttonSkin, clipSkin, bgSkin], laya.utils.Handler.create(this, onSkinLoaded));
+	})();
+
+	function onSkinLoaded()
+	{
+		showBg();
+		createTimerAnimation();
+		showTotalSeconds();
+		createController();
 	}
-}
+
+	function showBg()
+	{
+		var bg = new Image(bgSkin);
+		bg.size(224, 302);
+		bg.pos(Laya.stage.width - bg.width >> 1, Laya.stage.height - bg.height >> 1);
+		Laya.stage.addChild(bg);
+	}
+
+	function createTimerAnimation()
+	{
+		counter = new Clip(clipSkin, 10, 1);
+		counter.autoPlay = true;
+		counter.interval = 1000;
+
+		counter.x = (Laya.stage.width - counter.width) / 2 - 35;
+		counter.y = (Laya.stage.height - counter.height) / 2 - 40;
+
+		Laya.stage.addChild(counter);
+	}
+
+	function showTotalSeconds()
+	{
+		var clip = new Clip(clipSkin, 10, 1);
+		clip.index = clip.clipX - 1;
+		clip.pos(counter.x + 60, counter.y);
+		Laya.stage.addChild(clip);
+	}
+
+	function createController()
+	{
+		controller = new Button(buttonSkin, "暂停");
+		controller.labelBold = true;
+		controller.labelColors = "#FFFFFF,#FFFFFF,#FFFFFF,#FFFFFF";
+		controller.size(84, 30);
+
+		controller.on('click', this, onClipSwitchState);
+
+		controller.x = (Laya.stage.width - controller.width) / 2;
+		controller.y = (Laya.stage.height - controller.height) / 2 + 110;
+		Laya.stage.addChild(controller);
+	}
+
+	function onClipSwitchState()
+	{
+		if (counter.isPlaying)
+		{
+			counter.stop();
+			currFrame = counter.index;
+			controller.label = "播放";
+		}
+		else
+		{
+			counter.play();
+			counter.index = currFrame;
+			controller.label = "暂停";
+		}
+	}
+})();
 ```
 
 

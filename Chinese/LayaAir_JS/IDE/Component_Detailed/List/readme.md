@@ -32,7 +32,7 @@
 
   方法2：双击List 对象，进入List 内部，设置List 列表渲染项的属性 renderType的值为 render。
 
-  
+
 ​           ![图片0.png](img/3.png)<br/>
    ​    （图3）
 
@@ -53,9 +53,9 @@
 
 
 ```javascript
- var data:Array =[];
+  var data = [];
 
-   for(var m:int =0;m<20;m++){
+   for(var m =0;m<20;m++){
 
         data.push({m_label:"No."+m});
 }
@@ -108,7 +108,7 @@ m_list.array = data;
 
 ## 二、通过代码创建List组件
 
-​	在我们进行书写代码的时候，免不了通过代码控制UI，创建UI_List类，在代码中导入`laya.ui.List`的包，并通过代码设定List相关的属性。
+​	在我们进行书写代码的时候，免不了通过代码控制UI，创建UI_List类，通过代码设定List相关的属性。
 
 **运行示例效果:**
 ​	![5](gif/3.gif)<br/>
@@ -119,124 +119,94 @@ m_list.array = data;
 **示例代码：**
 
 ```javascript
-package
+// 这段代码需要在setupDemo之前执行。
+(function()
 {
-	import laya.display.Stage;
-	import laya.ui.Box;
-	import laya.ui.Image;
-	import laya.ui.List;
-	import laya.utils.Handler;
-	import laya.webgl.WebGL;
-	
-	public class UI_List
-	{
-		//列表对应图片的路径
-		private var data:Array = [  "../../../../res/ui/listskins/1.jpg",
-									"../../../../res/ui/listskins/2.jpg",
-									"../../../../res/ui/listskins/3.jpg",
-									"../../../../res/ui/listskins/4.jpg",
-									"../../../../res/ui/listskins/5.jpg",
-									"../../../../res/ui/listskins/1.jpg",
-									"../../../../res/ui/listskins/2.jpg",
-									"../../../../res/ui/listskins/3.jpg",
-									"../../../../res/ui/listskins/4.jpg",
-									"../../../../res/ui/listskins/5.jpg",
-									"../../../../res/ui/listskins/1.jpg",
-									"../../../../res/ui/listskins/2.jpg",
-									"../../../../res/ui/listskins/3.jpg",
-									"../../../../res/ui/listskins/4.jpg",
-									"../../../../res/ui/listskins/5.jpg"];
-		
-		public function UI_List()
-		{
-			// 不支持WebGL时自动切换至Canvas
-			Laya.init(800, 600, WebGL);
-			//画布垂直居中对齐
-			Laya.stage.alignV = Stage.ALIGN_MIDDLE;
-			//画布水平居中对齐
-			Laya.stage.alignH = Stage.ALIGN_CENTER;
-			//等比缩放
-			Laya.stage.scaleMode = Stage.SCALE_SHOWALL;
-			//背景颜色
-			Laya.stage.bgColor = "#232628";
+	// 项渲染器
+	var Box   = Laya.Box;
+	var Image = Laya.Image;
 
-			//创建列表
-			createList();			
-		}
-		
-		/***创建list列表**/
-		private function createList():void
+	var WID = 373,
+		HEI = 85;
+
+	function Item()
+	{
+		Item.__super.call(this);
+		this.size(WID, HEI);
+		this.img = new Image();
+		this.addChild(this.img);
+
+		this.setImg = function(src)
 		{
-			//实例化列表
-			var list:List = new List();
-			//设置列表渲染单元格为Item类（注：必须是类，不能是实例化对象，Item需类继承于Box）
-			list.itemRender =Item;
-			//列表显示区单元格的列数
-			list.repeatX = 1;
-			//列表显示区单元格的行数
-			list.repeatY = 4;
-			//设置列表位置
-			list.x = (Laya.stage.width - Item.WID) / 2;
-			list.y = (Laya.stage.height - Item.HEI * list.repeatY) / 2;
-			
-			// 使用但隐藏垂直滚动条
-			list.vScrollBarSkin = "";
-			//滚动在头或底回弹时间
-			list.scrollBar.elasticBackTime = 500;
-			//滚动在头或底最大距离
-			list.scrollBar.elasticDistance = 200;
-			
-			//设置为可以选择
-			list.selectEnable = true;
-			//选择单元格时回调方法
-			list.selectHandler = new Handler(this, onSelect);
-			//渲染单元格时的回调方法
-			list.renderHandler = new Handler(this, updateItem);
-			//为列表赋值
-			list.array = data;
-			//加载到舞台
-			Laya.stage.addChild(list);
-		}
-		
-		/***渲染单元格时的回调方法***/
-		private function updateItem(cell:Item, index:int):void 
-		{
-			//用获得的数据给图片更换皮肤
-			cell.img.skin=cell.dataSource;
-		}
-		
-		/***选择单元格回调***/
-		private function onSelect(index:int):void
-		{
-			trace("当前选择的索引：" + index);
+			this.img.skin = src;
 		}
 	}
-}
+	Laya.class(Item, "Item", Box);
 
-
-//单元格类，继承于Box
-import laya.ui.Box;
-import laya.ui.Image;
-
-class Item extends Box
-{
-	/***单元格宽***/
-	public static var WID:int = 375;
-	/***单元格高***/
-	public static var HEI:int = 85;
-	/***单元格中图片***/
-	public var img:Image;
+	// 主要逻辑代码
+	var Stage   = Laya.Stage;
+	var List    = Laya.List;
+	var Handler = Laya.Handler;
+	var WebGL   = Laya.WebGL;
 	
-	public function Item()
-	{
-		//设置大小宽高
-		size(WID, HEI);
-		//实例化图片
-		img = new Image();
-		//加载到单元格中
-		addChild(img);
-	}
-}
 
+	(function()
+	{
+		// 不支持WebGL时自动切换至Canvas
+		Laya.init(800, 600, WebGL);
+
+		Laya.stage.alignV = Stage.ALIGN_MIDDLE;
+		Laya.stage.alignH = Stage.ALIGN_CENTER;
+
+		Laya.stage.scaleMode = Stage.SCALE_SHOWALL;
+		Laya.stage.bgColor = "#232628";
+
+		setup();
+	})();
+
+	function setup()
+	{
+		var list = new List();
+
+		list.itemRender = Item;
+
+		list.repeatX = 1;
+		list.repeatY = 4;
+
+		list.x = (Laya.stage.width - WID) / 2;
+		list.y = (Laya.stage.height - HEI * list.repeatY) / 2;
+
+		// 使用但隐藏滚动条
+		list.vScrollBarSkin = "";
+
+		list.selectEnable = true;
+		list.selectHandler = new Handler(this, onSelect);
+
+		list.renderHandler = new Handler(this, updateItem);
+		Laya.stage.addChild(list);
+
+		// 设置数据项为对应图片的路径
+		var data = [];
+		for (var i = 0; i < 10; ++i)
+		{
+			data.push("res/ui/listskins/1.jpg");
+			data.push("res/ui/listskins/2.jpg");
+			data.push("res/ui/listskins/3.jpg");
+			data.push("res/ui/listskins/4.jpg");
+			data.push("res/ui/listskins/5.jpg");
+		}
+		list.array = data;
+	}
+
+	function updateItem(cell, index)
+	{
+		cell.setImg(cell.dataSource);
+	}
+
+	function onSelect(index)
+	{
+		console.log("当前选择的索引：" + index);
+	}
+})();
 ```
 
