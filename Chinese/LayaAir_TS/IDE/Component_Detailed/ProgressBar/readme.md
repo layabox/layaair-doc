@@ -53,71 +53,55 @@
 **示例代码：**
 
 ```javascript
-package
-{
-	import laya.display.Stage;
-	import laya.ui.ProgressBar;
-	import laya.utils.Handler;
-	import laya.webgl.WebGL;
-	
-	public class UI_ProgressBar
-	{
-		private var progressBar:ProgressBar;
-		
-		public function UI_ProgressBar()
-		{
-			// 不支持WebGL时自动切换至Canvas
-			Laya.init(800, 600, WebGL);
-			//画布垂直居中对齐
-			Laya.stage.alignV = Stage.ALIGN_MIDDLE;
-			//画布水平居中对齐
-			Laya.stage.alignH = Stage.ALIGN_CENTER;
-			//等比缩放
-			Laya.stage.scaleMode = Stage.SCALE_SHOWALL;
-			//背景颜色
-			Laya.stage.bgColor = "#232628";
-			
-			//加载资源
-			Laya.loader.load(["../../../../res/ui/progressBar.png", "../../../../res/ui/progressBar$bar.png"], Handler.create(this, onLoadComplete));
-		}
-		
-		/***加载资源完成***/
-		private function onLoadComplete():void
-		{
-			//实例化进度条
-			progressBar = new ProgressBar("../../../../res/ui/progressBar.png");
-			//设置宽度
-			progressBar.width = 400;
-			//设置显示位置，在舞台居中
-			progressBar.x = (Laya.stage.width - progressBar.width ) / 2;
-			progressBar.y = Laya.stage.height / 2;
-			
-			//设置九宫格边距，以防变形
-			progressBar.sizeGrid = "5,5,5,5";
-			//数据改变时回调方法
-			progressBar.changeHandler = new Handler(this, onChange);
-			//加载到舞台
-			Laya.stage.addChild(progressBar);
-			
-			//时间间隔循环，每100毫秒改变一次数据
-			Laya.timer.loop(100, this, changeValue);
-		}
-		
-		/***时间间隔循环回调，更新进度条***/
-		private function changeValue():void
-		{
-			//最大为1，每次间隔更新5%
-			if (progressBar.value >= 1)
-				progressBar.value = 0;
-			progressBar.value += 0.05;
-		}
-		
-		/***进度条数据改变回调***/
-		private function onChange(value:Number):void
-		{
-			trace("进度：" + Math.floor(value * 100) + "%");
-		}
-	}
+module laya {
+    import Stage = Laya.Stage;
+    import ProgressBar = Laya.ProgressBar;
+    import Handler = Laya.Handler;
+    import WebGL = Laya.WebGL;
+
+    export class UI_ProgressBar {
+        private progressBar: ProgressBar;
+
+        constructor() {
+            // 不支持WebGL时自动切换至Canvas
+            Laya.init(800, 600, WebGL);
+
+            Laya.stage.alignV = Stage.ALIGN_MIDDLE;
+            Laya.stage.alignH = Stage.ALIGN_CENTER;
+
+            Laya.stage.scaleMode = Stage.SCALE_SHOWALL;
+            Laya.stage.bgColor = "#232628";
+
+            Laya.loader.load(["res/ui/progressBar.png", "res/ui/progressBar$bar.png"], Handler.create(this, this.onLoadComplete));
+        }
+
+        private onLoadComplete(): void {
+            this.progressBar = new ProgressBar("res/ui/progressBar.png");
+
+            this.progressBar.width = 400;
+
+            this.progressBar.x = (Laya.stage.width - this.progressBar.width) / 2;
+            this.progressBar.y = Laya.stage.height / 2;
+
+            this.progressBar.sizeGrid = "5,5,5,5";
+            this.progressBar.changeHandler = new Handler(this, this.onChange);
+            Laya.stage.addChild(this.progressBar);
+
+            Laya.timer.loop(100, this, this.changeValue);
+        }
+
+        private changeValue(): void {
+
+            if (this.progressBar.value >= 1)
+                this.progressBar.value = 0;
+            this.progressBar.value += 0.05;
+        }
+
+        private onChange(value: number): void {
+            console.log("进度：" + Math.floor(value * 100) + "%");
+        }
+    }
 }
+new laya.UI_ProgressBar();
 ```
 

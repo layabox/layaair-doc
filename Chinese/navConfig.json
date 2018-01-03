@@ -412,8 +412,8 @@
 				"name_3_file": "readme.md"
 			},
 			{
-				"name_3_name": "IDE组件详解",
-				"name_3_url": "Chinese/LayaAir_AS3/IDE/Design_Mode/Component_Detailed/",
+				"name_3_name": "组件库",
+				"name_3_url": "Chinese/LayaAir_AS3/IDE/Design_Mode/Component/",
 				"name_3_file": "readme.md"
 			},
 			{
@@ -442,8 +442,8 @@
 				"name_3_file": "readme.md"
 			},
 			{
-				"name_3_name": "组件库",
-				"name_3_url": "Chinese/LayaAir_AS3/IDE/Design_Mode/Component/",
+				"name_3_name": "IDE组件详解",
+				"name_3_url": "Chinese/LayaAir_AS3/IDE/Design_Mode/Component_Detailed/",
 				"name_3_file": "readme.md"
 			}]
 		},
@@ -682,11 +682,6 @@
 				"name_3_name": "自定义Shader",
 				"name_3_url": "Chinese/LayaAir_AS3/2D/advanced/extension_modules/Shader/",
 				"name_3_file": "readme.md"
-			},
-			{
-				"name_3_name": "微信小游戏适配",
-				"name_3_url": "Chinese/wechat/minigame/",
-				"name_3_file": "readme.md"
 			}]
 		}]
 	},
@@ -793,6 +788,33 @@
 			{
 				"name_3_name": "3D子弹射击碰撞检测",
 				"name_3_url": "Chinese/LayaAir_AS3/3D/examples/bulletShoot/",
+				"name_3_file": "readme.md"
+			}]
+		}]
+	},
+	{
+		"nav_1_name": "微信小游戏开发",
+		"nav_1_data": [
+		{
+			"name_2_name": "微信小游戏开发基础",
+			"name_2_data": [
+			{
+				"name_3_name": "微信小游戏简介",
+				"name_3_url": "Chinese/wechat/minigame/introduction/",
+				"name_3_file": "readme.md"
+			},
+			{
+				"name_3_name": "创建微信小游戏",
+				"name_3_url": "Chinese/wechat/minigame/novice/",
+				"name_3_file": "readme.md"
+			}]
+		},
+		{
+			"name_2_name": "微信小游戏开发进阶",
+			"name_2_data": [
+			{
+				"name_3_name": "微信小游戏综合介绍",
+				"name_3_url": "Chinese/wechat/minigame/advanced/",
 				"name_3_file": "readme.md"
 			}]
 		}]
@@ -1730,11 +1752,6 @@
 				"name_3_name": "自定义Shader",
 				"name_3_url": "Chinese/LayaAir_TS/2D/advanced/extension_modules/Shader/",
 				"name_3_file": "readme.md"
-			},
-			{
-				"name_3_name": "微信小游戏适配",
-				"name_3_url": "Chinese/wechat/minigame/",
-				"name_3_file": "readme.md"
 			}]
 		}]
 	},
@@ -1841,6 +1858,33 @@
 			{
 				"name_3_name": "3D子弹射击碰撞检测",
 				"name_3_url": "Chinese/LayaAir_TS/3D/examples/bulletShoot/",
+				"name_3_file": "readme.md"
+			}]
+		}]
+	},
+	{
+		"nav_1_name": "微信小游戏开发",
+		"nav_1_data": [
+		{
+			"name_2_name": "微信小游戏开发基础",
+			"name_2_data": [
+			{
+				"name_3_name": "微信小游戏简介",
+				"name_3_url": "Chinese/wechat/minigame/introduction/",
+				"name_3_file": "readme.md"
+			},
+			{
+				"name_3_name": "创建微信小游戏",
+				"name_3_url": "Chinese/wechat/minigame/novice/",
+				"name_3_file": "readme.md"
+			}]
+		},
+		{
+			"name_2_name": "微信小游戏开发进阶",
+			"name_2_data": [
+			{
+				"name_3_name": "微信小游戏综合介绍",
+				"name_3_url": "Chinese/wechat/minigame/advanced/",
 				"name_3_file": "readme.md"
 			}]
 		}]
@@ -2709,11 +2753,6 @@
 				"name_3_name": "自定义Shader",
 				"name_3_url": "Chinese/LayaAir_JS/2D/advanced/extension_modules/Shader/",
 				"name_3_file": "readme.md"
-			},
-			{
-				"name_3_name": "微信小游戏适配",
-				"name_3_url": "Chinese/wechat/minigame/",
-				"name_3_file": "readme.md"
 			}]
 		}]
 	},
@@ -2820,6 +2859,33 @@
 			{
 				"name_3_name": "3D子弹射击碰撞检测",
 				"name_3_url": "Chinese/LayaAir_JS/3D/examples/bulletShoot/",
+				"name_3_file": "readme.md"
+			}]
+		}]
+	},
+	{
+		"nav_1_name": "微信小游戏开发",
+		"nav_1_data": [
+		{
+			"name_2_name": "微信小游戏开发基础",
+			"name_2_data": [
+			{
+				"name_3_name": "微信小游戏简介",
+				"name_3_url": "Chinese/wechat/minigame/introduction/",
+				"name_3_file": "readme.md"
+			},
+			{
+				"name_3_name": "创建微信小游戏",
+				"name_3_url": "Chinese/wechat/minigame/novice/",
+				"name_3_file": "readme.md"
+			}]
+		},
+		{
+			"name_2_name": "微信小游戏开发进阶",
+			"name_2_data": [
+			{
+				"name_3_name": "微信小游戏综合介绍",
+				"name_3_url": "Chinese/wechat/minigame/advanced/",
 				"name_3_file": "readme.md"
 			}]
 		}]

@@ -54,7 +54,7 @@
 
 ## 二、通过代码创建Label组件
 
- 	在我们进行书写代码的时候，免不了通过代码控制UI，创建`UI_Label`类，在代码中导入`laya.ui.Label`的包，并通过代码设定Label相关的属性。
+ 	在我们进行书写代码的时候，免不了通过代码控制UI，创建`UI_Label`类，通过代码设定Label相关的属性。
 
 **运行示例效果:**
 ​	![5](img/4.png)<br/>
@@ -67,76 +67,55 @@
 **示例代码：**
 
 ```javascript
-package 
-{
-	import laya.display.Stage;
-	import laya.ui.Label;
-	import laya.webgl.WebGL;
-	
-	public class UI_Label
-	{
-		public function UI_Label()
-		{
+module laya {
+	import Stage = Laya.Stage;
+	import Label = Laya.Label;
+	import WebGL = Laya.WebGL;
+
+	export class UI_Label {
+		constructor() {
 			// 不支持WebGL时自动切换至Canvas
 			Laya.init(800, 600, WebGL);
-			//画布垂直居中对齐
+
 			Laya.stage.alignV = Stage.ALIGN_MIDDLE;
-			//画布水平居中对齐
 			Laya.stage.alignH = Stage.ALIGN_CENTER;
-			//等比缩放
+
 			Laya.stage.scaleMode = Stage.SCALE_SHOWALL;
-			//背景颜色
 			Laya.stage.bgColor = "#232628";
 
-			//创建多个label文本
-			createMoreLabel();			
+			this.setup();
 		}
 
-		/***创建多个label文本***/
-		private function createMoreLabel():void
-		{
-			//创建各种文本效果并设置位置
-			createLabel("#FFFFFF", null).pos(30, 50);
-			createLabel("#00FFFF", null).pos(290, 50);
-			createLabel("#FFFF00", "#FFFFFF").pos(30, 100);
-			createLabel("#000000", "#FFFFFF").pos(290, 100);
-			createLabel("#FFFFFF", "#00FFFF").pos(30, 150);
-			createLabel("#0080FF", "#00FFFF").pos(290, 150);
+		private setup(): void {
+			this.createLabel("#FFFFFF", null).pos(30, 50);
+			this.createLabel("#00FFFF", null).pos(290, 50);
+			this.createLabel("#FFFF00", "#FFFFFF").pos(30, 100);
+			this.createLabel("#000000", "#FFFFFF").pos(290, 100);
+			this.createLabel("#FFFFFF", "#00FFFF").pos(30, 150);
+			this.createLabel("#0080FF", "#00FFFF").pos(290, 150);
 		}
-		
-		/**
-		 * 创建Label文本
-		 * @param color 	         文字颜色
-		 * @param strokeColor  文字描边颜色
-		 */		
-		private function createLabel(color:String, strokeColor:String):Label
-		{
-			//实例化label文本
-			var label:Label = new Label();
-			//设置文本字体
+
+		private createLabel(color: string, strokeColor: string): Label {
+			const STROKE_WIDTH: number = 4;
+
+			var label: Label = new Label();
 			label.font = "Microsoft YaHei";
-			//设置文本内容
 			label.text = "SAMPLE DEMO";
-			//设置文本字体大小
 			label.fontSize = 30;
-			//设置文本字体颜色
 			label.color = color;
-			
-			//如果有描颜色参数
-			if (strokeColor)
-			{
-				//文本描边宽度为4
-				label.stroke = 4;
-				//设置文本描边颜色
+
+			if (strokeColor) {
+				label.stroke = STROKE_WIDTH;
 				label.strokeColor = strokeColor;
 			}
-			//加载到舞台
+
 			Laya.stage.addChild(label);
-			
+
 			return label;
 		}
 	}
 }
+new laya.UI_Label();
 ```
 
 

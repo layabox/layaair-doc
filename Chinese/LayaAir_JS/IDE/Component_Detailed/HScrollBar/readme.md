@@ -76,7 +76,7 @@
 
 ## 二、通过代码创建HScrollBar组件
 
-​	在我们进行书写代码的时候，免不了通过代码控制UI，创建`UI_ScrollBar`类，在代码中导入`laya.ui.HScrollBar`的包，并通过代码设定HScrollBar相关的属性。
+​	在我们进行书写代码的时候，免不了通过代码控制UI，创建`UI_ScrollBar`类，通过代码设定HScrollBar相关的属性。
 
 **运行示例效果:**
 ​	![5](gif/4.gif)<br/>
@@ -87,102 +87,77 @@
 **示例代码：**
 
 ```javascript
-package
-{
-	import laya.display.Stage;
-	import laya.display.Text;
-	import laya.ui.HScrollBar;
-	import laya.ui.ScrollBar;
-	import laya.ui.VScrollBar;
-	import laya.utils.Handler;
-	import laya.webgl.WebGL;
+var Stage = Laya.Stage;
+var Text = Laya.Text;
+var HScrollBar = Laya.HScrollBar;
+var ScrollBar = Laya.ScrollBar;
+var VScrollBar = Laya.VScrollBar;
+var Handler = Laya.Handler;
+var WebGL = Laya.WebGL;
 
-	public class UI_ScrollBar
-	{
-		/***水平滚动条资源**/
-		private var skins:Array=["../../../../res/ui/hscroll.png", 
-							 	 "../../../../res/ui/hscroll$bar.png", 
-								 "../../../../res/ui/hscroll$down.png",
-								 "../../../../res/ui/hscroll$up.png"];
+/***水平滚动条资源**/
+this.skins = ["res/ui/hscroll.png",
+    "res/ui/hscroll$bar.png",
+    "res/ui/hscroll$down.png",
+    "res/ui/hscroll$up.png"];
 
-		/***提示信息文本框**/
-		private var promptText:Text;		
-		/****水平滚动条****/
-		private var hScrollBar:HScrollBar;		
-		
-		public function UI_ScrollBar()
-		{
-			// 不支持WebGL时自动切换至Canvas
-			Laya.init(800, 600, WebGL);
-			//画布垂直居中对齐
-			Laya.stage.alignV = Stage.ALIGN_MIDDLE;
-			//画布水平居中对齐
-			Laya.stage.alignH = Stage.ALIGN_CENTER;
-			//等比缩放
-			Laya.stage.scaleMode = Stage.SCALE_SHOWALL;
-			//背景颜色
-			Laya.stage.bgColor = "#232628";
-			
-			//加载资源
-			Laya.loader.load(skins, Handler.create(this, onSkinLoadComplete));
-		}
-
-		/***加载资源完成***/
-		private function onSkinLoadComplete(e:*=null):void
-		{
-			//创建水平滚动条
-			createHScroller();
-		}
-		
-		/***创建水平滚动条***/
-		private function createHScroller():void 
-		{
-			//实例化垂直滚动条
-			hScrollBar= new HScrollBar();
-			//加载皮肤资源（其他资源根据规范命名后，会自动加载）
-			hScrollBar.skin = "../../../../res/ui/hscroll.png";
-			//设置宽度
-			hScrollBar.width = 400;
-			//设置位置
-			hScrollBar.pos(150, 170);
-			//最低滚动位置数字
-			hScrollBar.min = 0;
-			//最高滚动位置数字
-			hScrollBar.max = 100;
-			//滚动变化事件回调
-			hScrollBar.changeHandler = new Handler(this, onChange);
-			//加载到舞台
-			Laya.stage.addChild(hScrollBar);
-			
-			//创建提示信息
-			createPromptText(hScrollBar)
-		}		
-		
-		/***创建提示信息***/
-		private function createPromptText(scrollBar:ScrollBar):void
-		{
-			//实例化提示信息
-			promptText=new Text();
-			//提示框字体
-			promptText.font="黑体";
-			//提示框字体大小
-			promptText.fontSize=26;
-			//提示框字体颜色
-			promptText.color="#FFFFFF";
-			//提示框初始文本
-			promptText.text="您的选择是： ";
-			//加载到舞台
-			Laya.stage.addChild(promptText);
-			//设置提示框位置
-			promptText.pos(scrollBar.x,scrollBar.y-50);
-		}
-		
-		/***滚动条位置变化回调***/
-		private function onChange(value:Number):void 
-		{
-			promptText.text= "滚动条的位置： value=" + value;
-		}
-	}
+Laya.init(800, 600, WebGL);
+//画布垂直居中对齐
+Laya.stage.alignV = Stage.ALIGN_MIDDLE;
+//画布水平居中对齐
+Laya.stage.alignH = Stage.ALIGN_CENTER;
+//等比缩放
+Laya.stage.scaleMode = Stage.SCALE_SHOWALL;
+//背景颜色
+Laya.stage.bgColor = "#232628";
+//加载资源
+Laya.loader.load(this.skins, Handler.create(this, onSkinLoadComplete));
+/***加载资源完成***/
+function onSkinLoadComplete(e) {
+    //创建水平滚动条
+    createHScroller();
+}
+/***创建水平滚动条***/
+function createHScroller() {
+    //实例化垂直滚动条
+    this.hScrollBar = new HScrollBar();
+    //加载皮肤资源（其他资源根据规范命名后，会自动加载）
+    this.hScrollBar.skin = "res/ui/hscroll.png";
+    //设置宽度
+    this.hScrollBar.width = 400;
+    //设置位置
+    this.hScrollBar.pos(150, 170);
+    //最低滚动位置数字
+    this.hScrollBar.min = 0;
+    //最高滚动位置数字
+    this.hScrollBar.max = 100;
+    //滚动变化事件回调
+    this.hScrollBar.changeHandler = new Handler(this, onChange);
+    //加载到舞台
+    Laya.stage.addChild(this.hScrollBar);
+    //创建提示信息
+    createPromptText(this.hScrollBar)
+}
+/***创建提示信息***/
+function createPromptText(scrollBar) {
+    //实例化提示信息
+    this.promptText = new Text();
+    //提示框字体
+    this.promptText.font = "黑体";
+    //提示框字体大小
+    this.promptText.fontSize = 26;
+    //提示框字体颜色
+    this.promptText.color = "#FFFFFF";
+    //提示框初始文本
+    this.promptText.text = "您的选择是： ";
+    //加载到舞台
+    Laya.stage.addChild(this.promptText);
+    //设置提示框位置
+    this.promptText.pos(scrollBar.x, scrollBar.y - 50);
+}
+/***滚动条位置变化回调***/
+function onChange(value) {
+    this.promptText.text = "滚动条的位置： value=" + value;
 }
 ```
 
