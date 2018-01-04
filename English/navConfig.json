@@ -699,11 +699,6 @@
                 "name_3_name": "Custom Shader",
                 "name_3_url": "English/LayaAir_AS3/2D/advanced/extension_modules/Shader/",
                 "name_3_file": "readme.md"
-              },
-              {
-                "name_3_name": "WeChat mini game adapter",
-                "name_3_url": "English/wechat/minigame/",
-                "name_3_file": "readme.md"
               }
             ]
           }
@@ -820,6 +815,33 @@
           }
         ]
       },
+	  {
+		"nav_1_name": "微信小游戏开发",
+		"nav_1_data": [
+		{
+			"name_2_name": "微信小游戏开发基础",
+			"name_2_data": [
+			{
+				"name_3_name": "微信小游戏简介",
+				"name_3_url": "Chinese/wechat/minigame/introduction/",
+				"name_3_file": "readme.md"
+			},
+			{
+				"name_3_name": "创建微信小游戏",
+				"name_3_url": "Chinese/wechat/minigame/novice/",
+				"name_3_file": "readme.md"
+			}]
+		},
+		{
+			"name_2_name": "微信小游戏开发进阶",
+			"name_2_data": [
+			{
+				"name_3_name": "微信小游戏综合介绍",
+				"name_3_url": "Chinese/wechat/minigame/advanced/",
+				"name_3_file": "readme.md"
+			}]
+		}]
+	},
       { 
         "nav_1_name": "Sample projects （AS3）",
         "nav_1_data": [
@@ -1841,11 +1863,6 @@
                 "name_3_name": "Custom Shader",
                 "name_3_url": "English/LayaAir_TS/2D/advanced/extension_modules/Shader/",
                 "name_3_file": "readme.md"
-              },
-              {
-                "name_3_name": "WeChat mini game adapter",
-                "name_3_url": "English/wechat/minigame/",
-                "name_3_file": "readme.md"
               }
             ]
           }
@@ -1962,6 +1979,33 @@
           }
         ]
       },
+	{
+		"nav_1_name": "微信小游戏开发",
+		"nav_1_data": [
+		{
+			"name_2_name": "微信小游戏开发基础",
+			"name_2_data": [
+			{
+				"name_3_name": "微信小游戏简介",
+				"name_3_url": "Chinese/wechat/minigame/introduction/",
+				"name_3_file": "readme.md"
+			},
+			{
+				"name_3_name": "创建微信小游戏",
+				"name_3_url": "Chinese/wechat/minigame/novice/",
+				"name_3_file": "readme.md"
+			}]
+		},
+		{
+			"name_2_name": "微信小游戏开发进阶",
+			"name_2_data": [
+			{
+				"name_3_name": "微信小游戏综合介绍",
+				"name_3_url": "Chinese/wechat/minigame/advanced/",
+				"name_3_file": "readme.md"
+			}]
+		}]
+	},
       {
         "nav_1_name": "Sample projects（TS）",
         "nav_1_data": [
@@ -2904,11 +2948,6 @@
                 "name_3_name": "Custom Shader",
                 "name_3_url": "English/LayaAir_JS/2D/advanced/extension_modules/Shader/",
                 "name_3_file": "readme.md"
-              },
-              {
-                "name_3_name": "WeChat mini game adapter",
-                "name_3_url": "English/wechat/minigame/",
-                "name_3_file": "readme.md"
               }
             ]
           }
@@ -3025,6 +3064,33 @@
           }
         ]
       },
+	  {
+		"nav_1_name": "微信小游戏开发",
+		"nav_1_data": [
+		{
+			"name_2_name": "微信小游戏开发基础",
+			"name_2_data": [
+			{
+				"name_3_name": "微信小游戏简介",
+				"name_3_url": "Chinese/wechat/minigame/introduction/",
+				"name_3_file": "readme.md"
+			},
+			{
+				"name_3_name": "创建微信小游戏",
+				"name_3_url": "Chinese/wechat/minigame/novice/",
+				"name_3_file": "readme.md"
+			}]
+		},
+		{
+			"name_2_name": "微信小游戏开发进阶",
+			"name_2_data": [
+			{
+				"name_3_name": "微信小游戏综合介绍",
+				"name_3_url": "Chinese/wechat/minigame/advanced/",
+				"name_3_file": "readme.md"
+			}]
+		}]
+	},
       {
         "nav_1_name": "Sample projects （JS）",
         "nav_1_data": [

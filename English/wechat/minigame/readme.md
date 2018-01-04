@@ -1,70 +1,70 @@
-# LayaAir WeChat mini game adapter tutorial
+# LayaAir微信小游戏适配教程
 
-​	The WeChat mini-game has come, and the LayaAir engine has been well equipped. **Prior to the use of LayaAir development projects, only the initialization of the adaptation program, without changing the other project code, seamless adaptation of WeChat games**A quick way to open a small game.
+​	微信小游戏来了，LayaAir引擎已经做好了底层适配，**之前使用LayaAir开发的项目，只需初始化一下适配程序，无需更改其他项目代码，无缝适配微信小游戏**，快速开启小游戏之路。
 
-​	notice that  **WeChat game environment is not a browser**, it's a runtime made with C++ and V8. The interfaces are compatible with most Canvas and Webgl, but there are also incompatible places:
+​	需要注意的是，**微信小游戏运行环境并不是浏览器**，而是用C++加V8打造的runtime。接口兼容大部分Canvas和Webgl，但也有不兼容的地方：
 
-​	won't support DOM，Bom API
+​	不支持DOM，Bom API
 
-​	Only one canvas
+​	只有一个画布
 
-​	not support eval
+​	不支持eval
 
-​	Network to use a secure domain name
+​	网络要使用安全域名
 
-​	Code package can not be exceeded 4M
+​	代码包不能超过4M
 
-​	Support file cache, but can not be exceeded 50M
+​	支持文件缓存，但不能超过50M
 
-​	Not support XML(LayaAir engine provides a solution)
+​	不支持XML(LayaAir引擎提供了适配方案)
 
-​	Please refer to the official documents for more details  address：https://mp.weixin.qq.com/debug/wxadoc/dev/api/
+​	更多细节请参考官方文档  地址：https://mp.weixin.qq.com/debug/wxadoc/dev/api/
 
-​	The LayaAir engine matches these differences, and developers don't have to pay special attention to it, just use the LayaAir engine normally, and then publish it as a small game.
+​	LayaAir引擎适配了这些差异细节，开发者无需特别关注，只需正常用LayaAir引擎开发，然后发布为小游戏即可。
 
 
 
-## Old project adaptation process：
+## 老项目适配流程：
 
-**AS3 project：**
+**AS3项目：**
 
-1. Replace AS3 engine class library (if it is 1.7.13 and above, only a separate copy wx class library) Download the latest class library: https://ldc.layabox.com/layadownload/?type=layaair-LayaAir
+1. 替换AS3引擎类库（如果是1.7.13及以上版本，只需单独复制 wx类库）  最新类库下载地址：https://ldc.layabox.com/layadownload/?type=layaair-LayaAir
 
 ![img](res/1.png) 
 
-2. Before Laya.init, call MiniAdpter.init () initialize the adapter, get it!
+2. 在Laya.init之前，调用MiniAdpter.init()初始化适配程序，搞定！
 
 ![img](res/2.png) 
 
 
 
-**JS,TS project:**
+**JS,TS项目：**
 
-1. Download the latest library, reference laya.wxmini.js download address: https://ldc.layabox.com/layadownload/?type=layaair-LayaAir
+1. 下载最新类库，引用laya.wxmini.js  下载地址：https://ldc.layabox.com/layadownload/?type=layaair-LayaAir
 
-2. Before Laya.init, call Laya.MiniAdpter.init () to initialize the adapter and get it done !
+2. 在Laya.init之前，调用Laya.MiniAdpter.init()初始化适配程序，搞定！
 
 ![img](res/3.png) 
 
 
 
-## New project development
+## 新项目开发
 
-Use the IDE to create a new game project
+使用IDE新建小游戏项目即可
 
 ![img](res/4.png)
 
 
 
-## Test the game
+## 测试小游戏
 
-LayaAir development of the application, you can use a way to test (WeChat game development tools may not yet fully open):
+LayaAir开发的应用，可以通过一下方式测试（微信小游戏开发工具可能还未完全开放）： 
 
-1. Download WeChat web developer tools, select mini-program projects
+1. 下载微信web开发者工具，选择小程序项目
 
 ![img](res/5.png) 
 
-2. Build a new small program project
+2. 新建一个小程序项目
 
 
 
@@ -72,38 +72,37 @@ LayaAir development of the application, you can use a way to test (WeChat game d
 
  
 
-3. Delete all of the original files
+3. 删除原来的所有文件
 
-4. Copy applications and small game configuration files (temporarily Copy, it is expected that WeChat's new tools will be generated automatically)
+4. Copy应用和小游戏配置文件（暂时是Copy，预计微信新版工具会自动生成）
 
 ![img](res/7.png) 
 
-The structure of the document is as follows:
-**res** 
-The game is to use some resources, local resources directory, a small program allows each game has a capacity of 4M package, we can put the pre loaded loading images into local, most of the resources required from the external load, which can then be loaded from the file to write to the local save up to second calls to start![img](res/8.png)
-**game.js** Is the small game start entry file (provided by official WeChat)
+文件结构如下：
+**res** 是游戏使用到的一些资源，本地资源目录，小程序允许每个游戏有4M的容量包，我们可以把预加载的loading图片放到本地，大部分资源需要从外网加载，然后可以将加载的文件写入到本地存起来，第二次启动时调用![img](res/8.png)
+**game.js**是小游戏启动入口文件（微信官方提供的）
 
 ![img](res/9.png) 
 
-**game.json**Is the project configuration file, you can configure the game's vertical and horizontal screen, network request parameters (WeChat provide) 
+**game.json**是项目配置文件，可以配置游戏的横竖屏、网络请求参数等（微信提供） 
 
 ![img](res/10.png) 
 
-**MiniAS3.max.js** For applications, [note] if it is a TS and JS project, it is best to use a tool to synthesize all JS to a JS, otherwise a reference error may occur
+**MiniAS3.max.js**为应用程序，【注意】如果是ts和js项目，最好使用工具把所有js合成一个js，否则可能会出现引用错误
 
-**project.config.json** For project documents (WeChat official)
+**project.config.json**为项目文件（微信官方提供的）
 
-**weapp-adapter.js** It's a small game library (WeChat's official)
+**weapp-adapter.js**是小游戏库（微信官方提供的） 
 
  
 
-The running effect is as follows：
+运行效果如下：
 
 ![img](res/11.png) 
 
 
 
-**If you can't show it sometimes, try cleaning the cache**
+**如果有时显示不出来，可以试试清除缓存**
 
 ![img](res/12.png) 
 
