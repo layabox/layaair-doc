@@ -823,12 +823,12 @@
 			"name_2_data": [
 			{
 				"name_3_name": "微信小游戏简介",
-				"name_3_url": "Chinese/wechat/minigame/introduction/",
+				"name_3_url": "English/wechat/minigame/introduction/",
 				"name_3_file": "readme.md"
 			},
 			{
 				"name_3_name": "创建微信小游戏",
-				"name_3_url": "Chinese/wechat/minigame/novice/",
+				"name_3_url": "English/wechat/minigame/novice/",
 				"name_3_file": "readme.md"
 			}]
 		},
@@ -837,7 +837,7 @@
 			"name_2_data": [
 			{
 				"name_3_name": "微信小游戏综合介绍",
-				"name_3_url": "Chinese/wechat/minigame/advanced/",
+				"name_3_url": "English/wechat/minigame/advanced/",
 				"name_3_file": "readme.md"
 			}]
 		}]
@@ -1127,7 +1127,12 @@
 	      				"name_3_name":"Set the page depth level order above dialog",
 	      				"name_3_url":"English/LayaAir_AS3/CommonProblem/2D/DialogzOrder/",
 	      				"name_3_file":"readme.md"
-	      			}
+	      			},
+					{
+						"name_3_name": "WebGL下拼接图片产生缝隙的问题",
+						"name_3_url": "English/CommonProblem/2D/CrossDomain/",
+						"name_3_file": "readme.md"
+					}
 	      		]
       		}
       	]
@@ -1987,12 +1992,12 @@
 			"name_2_data": [
 			{
 				"name_3_name": "微信小游戏简介",
-				"name_3_url": "Chinese/wechat/minigame/introduction/",
+				"name_3_url": "English/wechat/minigame/introduction/",
 				"name_3_file": "readme.md"
 			},
 			{
 				"name_3_name": "创建微信小游戏",
-				"name_3_url": "Chinese/wechat/minigame/novice/",
+				"name_3_url": "English/wechat/minigame/novice/",
 				"name_3_file": "readme.md"
 			}]
 		},
@@ -2001,7 +2006,7 @@
 			"name_2_data": [
 			{
 				"name_3_name": "微信小游戏综合介绍",
-				"name_3_url": "Chinese/wechat/minigame/advanced/",
+				"name_3_url": "English/wechat/minigame/advanced/",
 				"name_3_file": "readme.md"
 			}]
 		}]
@@ -2240,7 +2245,12 @@
 	      				"name_3_name":"Set the page depth level order above dialog",
 	      				"name_3_url":"English/LayaAir_TS/CommonProblem/2D/DialogzOrder/",
 	      				"name_3_file":"readme.md"
-	      			}
+	      			},
+					{
+						"name_3_name": "WebGL下拼接图片产生缝隙的问题",
+						"name_3_url": "English/CommonProblem/2D/CrossDomain/",
+						"name_3_file": "readme.md"
+					}
 	      		]
       		}
       	]
@@ -3072,12 +3082,12 @@
 			"name_2_data": [
 			{
 				"name_3_name": "微信小游戏简介",
-				"name_3_url": "Chinese/wechat/minigame/introduction/",
+				"name_3_url": "English/wechat/minigame/introduction/",
 				"name_3_file": "readme.md"
 			},
 			{
 				"name_3_name": "创建微信小游戏",
-				"name_3_url": "Chinese/wechat/minigame/novice/",
+				"name_3_url": "English/wechat/minigame/novice/",
 				"name_3_file": "readme.md"
 			}]
 		},
@@ -3086,7 +3096,7 @@
 			"name_2_data": [
 			{
 				"name_3_name": "微信小游戏综合介绍",
-				"name_3_url": "Chinese/wechat/minigame/advanced/",
+				"name_3_url": "English/wechat/minigame/advanced/",
 				"name_3_file": "readme.md"
 			}]
 		}]
@@ -3326,7 +3336,12 @@
 	      				"name_3_name":"Set the page depth level order above dialog",
 	      				"name_3_url":"English/LayaAir_JS/CommonProblem/2D/DialogzOrder/",
 	      				"name_3_file":"readme.md"
-	      			}
+	      			},
+					{
+						"name_3_name": "WebGL下拼接图片产生缝隙的问题",
+						"name_3_url": "English/CommonProblem/2D/CrossDomain/",
+						"name_3_file": "readme.md"
+					}
 	      		]
       		}
       	]
