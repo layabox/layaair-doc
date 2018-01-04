@@ -10,37 +10,33 @@ The binding 3D model can also be used to remove the binding or replace the 3D mo
 
 ### Setting up skeletal bone points in Unity
 
+Bone hanging points are very convenient to set up in Unity, which can be operated directly in the resource level of the scene. The following diagram (Figure 1)
 
-骨骼挂点在Unity中设置非常方便，可以在场景的资源层级中直接操作。如下图（图1）
+The object needs to be bound can be a 3D container, or just a 3D model, adjust their position, put them into the designated as a sub level skeleton hanging point binding is successful, the animation, we can find that it follows the change of skeletal animation.
 
-需要绑定的对象可以是一个3D容器，也可以只是一个3D模型，调整好它们的位置后，把它们拖入到指定骨骼下作为子层级就挂点绑定成功了，播放动画时，我们可以发现它跟随骨骼动画而变化了。
+Sometimes, we need no weapons in the beginning, in order to prepare for the future for weapons for customize or upgrade characters, we can also add an empty container node GameObject in the bone, and then when you need to add different 3D models or multiple models.
 
-有的时候，我们需要在刚开始的时候无武器，但又需要挂点，为以后换武器作准备，那么我们也可以在骨骼下放入一个空节点容器GameObject，需要的时候再往里添加不同的3D模型或是多个模型。
-![1](img\1.png)</br>
+![图1](img/1.png)<br>（Figure 1）
 
-(图1)
+**Tips: when our skeleton hang points are set up, skeletons and hanging objects will be automatically exported to.Ls or.Lh files. We can get them through getChildByName () method. But you have to pay special attention: if the skeleton hanging point only when bound to the empty container object, used after dynamically add sub object, then it can't check the GameObject Setting Null Game Objects Ignore ignore empty node set in the export plug-in, otherwise empty container hanging point object will not be exported to.Ls or.Lh.**  
 
-**Tips：当我们的骨骼挂点设置好后，骨骼与挂点对象会自动导出到.ls或.lh文件中，我们可以通过getChildByName()方法获取到它们。不过要特别注意：如果骨骼挂点时只绑定了空的容器对象，用于以后动态添加子对象，那么在导出插件中不能勾选GameObject Setting 中的 Ignore Null Game Objects忽略空节点设置，否则空容器挂点对象不会被导出到.ls或.lh中。**
 
-### 在代码中实现骨骼挂点
 
-一般情况，我们都是在Unity中去添加骨骼挂点。不过LayaAir引擎也提供了代码的挂点方式，可以灵活的添加和移除骨骼挂点。
+### Implement bone hanging point in code
 
-Animator动画组件类提供了两个实例方法**linkSprite3DToAvatarNode()**与**unLinkSprite3DToAvatarNode()**可以实现挂点的添加与移除（图2、图3）。
+In general, we all add bone hanging points in Unity. But the LayaAir engine also provides the way to hang the code to add and remove the bones of the skeleton flexibly.
 
-Tips：代码添加骨骼动画之前，需要美术提供需要关联骨骼节点的名字。
+The Animator animation component class provides two instance methods **linkSprite3DToAvatarNode()** and **unLinkSprite3DToAvatarNode()** to enable attachment and removal of hanging points (Figure 2, Figure 3).
 
-![2](E:img\2.png)</br>
+Tips：Before the code is added to the skeleton animation, you need to provide the name of the bone node that needs to be associated with the skeleton.
 
-(图2)
+![图2](img/2.png)<br>（figure 2）
 
-![3](img\3.png)</br>
+![图3](img/3.png)<br>（figure  3）
 
-(图3)
+The specific code reference is as follows:
 
-具体使用的代码参考如下：
-
-从场景中获取骨骼动画模型—获取模型的动画组件—创建挂点对象—通过动画组件绑定骨骼与挂点对象。
+Get a Skeletal Animation Model from a Scene - Get a Model's Animation Component - Create a Drop Point Object - bind the skeleton and the point object through the animation component.
 
 ```javascript
 //从场景中获取动画模型
@@ -57,21 +53,20 @@ monkeyAni.linkSprite3DToAvatarNode("RHand",box);
 //monkeyAni.unLinkSprite3DToAvatarNode("RHand",box);
 ```
 
-### 骨骼挂点运用示例
 
-下面我们以一个魔法攻击的简单示例来为大家演示一下骨骼挂点的运用（图4）。
+### Example of application of bone hanging point
 
-![4](img\4.gif)</br>
-(图4)
+Let's demonstrate the use of bone hangs for you with a simple example of a magic attack (Figure 4).
 
-首先如图1中，在Unity中设置魔法光圈为右手骨骼的子节点层级，将右手骨骼名字改为“RHand”，魔法光圈为“weapon”，并导出成.ls资源文件。导出后，我们可以发现手骨骼与光圈出现在模型的子层级文件中（图5），需用时可以根据名字去获取到它们。
+![图4](img/4.gif)<br>（Picture 4）
 
-![5](img\5.png)</br>
-(图5)
+First of all, as shown in Figure 1, in Unity, we set the magic node of the child node level of the right-handed skeleton in the Unity, change the name of the right-handed skeleton to “RHand”, the magic aperture is “weapon”, and export it into the.Ls resource file. After exporting, we can find that the hand skeleton and the aperture appear in the sublevel file of the model (Figure 5), wwhich can be retrieved by name when needed.
 
-按照图4魔法攻击效果，可以通过两个类来实现，一个是主类Laya3D_BonePoint.js，用于实现动画播放和生成魔法武器，方案为：在攻击动画播放至36帧左右时，克隆出一个与挂点武器相同的新魔法武器，并添加武器脚本用于飞行，原始挂点武器暂时隐藏，动画播放完成后再重新显示，模拟产生魔法并扔出魔法的效果。
+![图5](img/5.png)<br>（figure 5）
 
-武器脚本WeaponScript.js实现魔法飞行和销毁。全部代码如下：
+Magic attack in accordance with Figure 4 effect can be achieved through two classes, one is the main class Laya3D_BonePoint.as, used to achieve the animation player and generate magic weapon, the program is: in the attack animation to 36 frames or so, cloned a The same new magic weapon hanging point weapons, and add a weapon script for flight, the original point of hanging weapons temporarily hidden, the animated playback is complete and then re-display, to produce magic and throw magic effect.
+
+WeaponScript WeaponScript.js Magic flying and destruction. All the code is as follows:
 
 ```javascript
 //初始化引擎

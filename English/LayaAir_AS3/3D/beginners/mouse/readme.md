@@ -17,18 +17,33 @@ Here's how to add a collider component to a 3D display object:
 Tips：The collider must be added to the MeshSprite3D type display object and cannot be added to the Sprite3D object, otherwise it will fail.
 
 ```java
-		/**
-		* Adding collider components to 3D Wizard
-		* BoxCollider    : Box type Collider
-		* SphereCollider : Sphere type Collider
-		* MeshCollider   : Mesh type Collider
-		*/
-		meshSprite3d1.addComponent(MeshCollider);
-		meshSprite3d2.addComponent(SphereCollider);
-		meshSprite3d3.addComponent(BoxCollider);
+/**
+* 给3D精灵添加碰撞器组件
+* BoxCollider    : 盒型碰撞器
+* SphereCollider : 球型碰撞器
+* MeshCollider   : 网格碰撞器
+*/
+//添加Mesh碰撞器组件并获取
+var meshCollider:MeshCollider=meshSprite3d1.addComponent(MeshCollider);
+//设置mesh碰撞器网格属性（否则无法被检测）
+meshCollider.mesh=meshSprite3d1.meshFilter.sharedMesh;
+//添加球形碰撞器组件并获取
+var sphereCollider:SphereCollider = meshSprite3d2.addComponent(SphereCollider);
+//设置球形碰撞器中心位置
+sphereCollider.center = meshSprite3d2.meshFilter.sharedMesh.boundingSphere.center.clone();
+//设置球形碰撞器半径
+sphereCollider.radius = meshSprite3d2.meshFilter.sharedMesh.boundingSphere.radius;
+//添加盒形碰撞器
+var boxCollider:BoxCollider =meshSprite3d3.addComponent(BoxCollider);
+boxCollider.setFromBoundBox(meshSprite3d3.meshFilter.sharedMesh.boundingBox);
 		
 ```
 
+At the start of the engine 1.7.12 and the export plug-in 1.7.0 version, the Collider added to the 3D model in Unity can be exported and the engine is automatically loaded to create. However, the export of MeshCollider is not supported for the time being, and the function will be improved in the subsequent version.
+
+In Unity, after adding BoxCollider and SphereCollider to the model, it can also set up the size of collision box or collision ball according to the requirement. The collision box can be smaller or larger than the actual model, and the location can also be changed, which is convenient for developers to process logically.
+
+Tips: in the Unity editor, a 3D object can support multiple colliders, but the LayaAir export plug-in (1.7.0 version) currently supports only the first collision exporter, which is the developer's attention. If we want to add multiple colliders on the model, we can decompose it into multiple sub mesh models when making models, and add bumper to detect each sub grid model. In the subsequent 1.7.13 version, we will support multiple collisions derived from 3D objects without submeshes.
 
 
 #### Layer
@@ -96,20 +111,85 @@ According to the above concepts and methods, we will make an example of mouse pi
 
 1. Create several 3D objects in the scene, take three cars as an example, build the scene through unity and export it.
 
-2. Adding colliders for 3D items, setting up layers, creating ray, collision information, etc..
+2. Setting up an instance of the Scene, and the scenario script control class SceneScript, and adding the script with addScript () when loading the scene.
 
-3. Rewrite scene rendering post-processing method (also can use frame cycle method), in the method to update the created ray, you can draw a vector reference line according to the ray origin to observe, and determine whether the ray and 3D objects intersect.
+3. Overwrite the script's `_start()` method, set the layer, create rays, collision information, and add a collider to the 3D item in the scene.
 
-4. Adding a mouse click event, if you click the mouse and intersect with the 3D object, then we let the 3D object disappear and prompt access to information.
+4. Rewrite scene rendering post-processing `_postRenderUpdate()` method (also can use frame cycle method), in the method to update the created ray, you can draw a vector reference line according to the ray origin to observe, and determine whether the ray and 3D objects intersect.
+
+Tips: you can also use the script update method `_update()`, but the drawing reference line will not see the reference line of the mouse click position after the model. So we use the rendering method `_postRenderUpdate()`. It means that after rendering the scene, we will draw the vector reference line.
+
+5. Adding a mouse click event, if you click the mouse and intersect with the 3D object, then we let the 3D object disappear and prompt access to information.
 
 All the code is as follows:
 
 ```java
 package
 {
-	import laya.d3.component.physics.BoxCollider;
 	import laya.d3.core.Camera;
-	import laya.d3.core.Layer;
+	import laya.d3.core.Sprite3D;
+	import laya.d3.core.scene.Scene;
+	import laya.display.Stage;
+	import laya.display.Text;
+	import laya.events.Event;
+	import laya.utils.Handler;
+
+	public class LayaAir3D_MouseInteraction
+	{
+		/**提示信息文本框**/
+		public static var txt:Text;
+		
+		public function LayaAir3D_MouseInteraction()
+		{
+			//初始化引擎
+			Laya3D.init(1000, 500,true);
+			
+			//适配模式
+			Laya.stage.scaleMode = Stage.SCALE_FULL;
+			Laya.stage.screenMode = Stage.SCREEN_NONE;
+			
+			//加载3D资源
+            Laya.loader.create(["LayaScene_collider3D/collider3D.ls",
+                            "LayaScene_truck/truck.lh",
+                            "LayaScene_box/box.lh"],Laya.Handler.create(this,this.onComplete));
+			
+			//创建信息提示框
+			txt=new Text();
+			txt.text="还未获得汽车！！";
+			txt.color="#ff0000";
+			txt.bold=true;
+			txt.fontSize=30;
+			txt.pos(100,50);
+			Laya.stage.addChild(txt);			
+		}
+		
+		private function onComplete():void
+		{
+			//添加3D场景
+			var scene:Scene = Laya.loader.getRes("LayaScene_collider3D/collider3D.ls");
+			Laya.stage.addChild(scene);
+			//为场景添加控制脚本			
+			scene.addScript(SceneScript);
+		}
+	}
+}
+```
+
+
+The script class SceneScript code is as follows:
+
+**Tips: from the 1.7.10 version, update method and rendering of the scene itself (lateRender) postprocessing method was canceled, but the scene increases the script component control function, so it can pass through the script component in the final rendering method of executing _postRenderUpdate () to achieve the mouse drawing reference line.**
+
+
+```java
+package
+{
+	
+	import laya.d3.component.Script;
+	import laya.d3.component.physics.BoxCollider;
+	import laya.d3.component.physics.MeshCollider;
+	import laya.d3.core.Camera;
+	import laya.d3.core.ComponentNode;
 	import laya.d3.core.MeshSprite3D;
 	import laya.d3.core.PhasorSpriter3D;
 	import laya.d3.core.Sprite3D;
@@ -121,110 +201,128 @@ package
 	import laya.d3.math.Vector4;
 	import laya.d3.utils.Physics;
 	import laya.d3.utils.RaycastHit;
-	import laya.display.Stage;
-	import laya.display.Text;
 	import laya.events.Event;
+	import laya.events.MouseManager;
 	import laya.webgl.WebGLContext;
-
-	public class LayaAir3D_MouseInteraction
+	
+	public class SceneScript extends Script
 	{
-		public function LayaAir3D_MouseInteraction()
+		private var scene:Scene;
+		/**3D摄像机**/
+		private var camera:Camera;
+		/**用于鼠标检测的射线**/
+		private var ray:Ray;
+		/**画矢量线的3D显示对象**/
+		private var phasorSprite3D:PhasorSpriter3D;
+		/**碰撞信息**/
+		private var rayCastHit:RaycastHit;	
+		
+		
+		/**鼠标点击创建的3D对象**/
+		public static var box:Sprite3D;
+		/***获得的物品***/
+		private var nameArray:Array=[];
+		
+		public function SceneScript()
 		{
-			//初始化引擎
-			Laya3D.init(1000, 500,true);
-			
-			//适配模式
-			Laya.stage.scaleMode = Stage.SCALE_FULL;
-			Laya.stage.screenMode = Stage.SCREEN_NONE;
-			
-			//添加3D场景
-			var scene:Scene = Scene.load("LayaScene_collider3D/collider3D.ls");
-			Laya.stage.addChild(scene);			
-			
-			//创建信息提示框
-			var txt:Text=new Text();
-			txt.text="鼠标未拾取3D物体！";
-			txt.color="#ff0000";
-			txt.bold=true;
-			txt.fontSize=30;
-			txt.pos(100,100);
-			Laya.stage.addChild(txt);
-			//获得的物品
-			var nameArray:Array=[];
-			
-			
+		}
+		
+		/**
+		 * 覆写3D对象加载组件时执行的方法
+		 * @param owner 加载此组件的3D对象
+		 */	
+		override public function _load(owner:ComponentNode):void
+		{
+			//获取脚本所属对象
+			scene=owner as Scene;
+		}
+		
+		/**
+		 * 覆写加载组件的3D对象实例化完成后，第一次更新时执行
+		 */	
+		override public function _start(state:RenderState):void
+		{
 			//创建摄像机(横纵比，近距裁剪，远距裁剪)
-			var camera:Camera= new Camera( 0, 0.1, 1000);
-			camera.transform.position = new Vector3(0,6,10);
+			camera= new Camera( 0, 0.1, 1000);
+			camera.transform.position = new Vector3(1,7,10);
 			camera.transform.rotate(new Vector3(-30,0,0),false,false);
 			//加载到场景
 			scene.addChild(camera);
 			//加入摄像机移动控制脚本
 			camera.addComponent(CameraMoveScript);
 			
+			//创建一条射线
+			ray = new Ray(new Vector3(),new Vector3());
+			//创建矢量3D精灵
+			phasorSprite3D = new PhasorSpriter3D();
+			//创建碰撞信息
+			rayCastHit =new RaycastHit();
 			
-			//鼠标拾取相关----------------------------------------------					
-			//场景加载完成后回调
-			scene.on(Event.HIERARCHY_LOADED,null,function():void{
 			
-				//为场景中的所有3D子对象加入碰撞器
-				for(var i:int=scene.numChidren-1;i>-1;i--)
-				{
-					var meshSprite3D:MeshSprite3D=scene.getChildAt(0) as MeshSprite3D;
-					//设置3D物体在第10层（默认在第0层）
-					meshSprite3D.layer=Layer.getLayerByNumber(10);
-					//添加盒子型碰撞器组件
-					meshSprite3D.addComponent(BoxCollider);
-				}
+			//为场景中3D对象添加组件
+			for(var i:int=scene.numChildren-1;i>-1;i--)
+			{
+				var meshSprite3D:MeshSprite3D=scene.getChildAt(i) as MeshSprite3D;
+				//添加网格型碰撞器组件
+				var boxCollider:BoxCollider=meshSprite3D.addComponent(BoxCollider);
+              	//为盒形碰撞器设置盒子大小（否则没有尺寸，无法被射线检测）
+                boxCollider.setFromBoundBox(meshSprite3D.meshFilter.sharedMesh.boundingBox);
+			}
 			
-				//创建一条射线
-				var ray:Ray = new Ray(new Vector3(),new Vector3());
-				//创建矢量3D精灵（参考线）
-				var phasorSprite3D:PhasorSpriter3D = new PhasorSpriter3D();
-				//创建碰撞信息
-				var rayCastHit:RaycastHit=new RaycastHit();	
+			//鼠标点击事件回调
+			Laya.stage.on(Event.MOUSE_DOWN,this,onMouseDown);
+		}
 				
-				//重写scene的渲染后处理方法lateRender()，并进行碰撞检测，绘制参考线。
-				//也可以用帧循环方式，不过参考线会在模型之下，用lateRender方法可使参考线在模型之上
-                //还可以创建Scene继承类，在类中覆盖重写此方法
-				scene.lateRender=function(state:RenderState):void
-				{
-					//根据鼠标屏幕2D座标修改生成射线数据 
-					camera.viewportPointToRay(new Vector2(Laya.stage.mouseX,Laya.stage.mouseY),ray);
-                  	//射线检测，最近物体碰撞器信息，最大检测距离为300米，只检测第10层
-					Physics.rayCast(ray,rayCastHit,300,10);
-                  
-					//摄像机位置（参考线的另一端）
-					var position:Vector3=new Vector3(camera.position.x, 0, camera.position.z);
-					//开始绘制矢量3D精灵，类型为线型
-					phasorSprite3D.begin(WebGLContext.LINES, camera);
-					//根据射线的原点与摄像机位置绘制参考直线（矢量线并不是射线真正的路径，射线垂直于屏幕）
-					phasorSprite3D.line(ray.origin, new Vector4(1,0,0,1), position , new Vector4(1,0,0,1));
-					//结束绘制
-					phasorSprite3D.end();
-				};
-				
-				//鼠标点击事件回调
-				Laya.stage.on(Event.MOUSE_DOWN,null,function():void{
-					
-					//如果碰撞信息中的模型不为空
-					if(rayCastHit.sprite3D)
-					{
-						//从场景中移除模型
-						scene.removeChild(rayCastHit.sprite3D);
-						//将模型名字存入数组
-						nameArray.push(rayCastHit.sprite3D.name);
-						//文件提示信息
-						txt.text="你获得了汽车"+rayCastHit.sprite3D.name+"!，现有的汽车为："+nameArray;
-						//销毁物体(如不销毁还能被检测)
-						rayCastHit.sprite3D.destroy();
-					}					
-				});
-			});
+		/**
+		 * 渲染的最后阶段执行
+		 * @param	state 渲染状态参数。
+		 */		
+		override public function _postRenderUpdate(state:RenderState):void
+		{
+
+			//根据鼠标屏幕2D座标修改生成射线数据 
+//			camera.viewportPointToRay(new 	Vector2(Laya.stage.mouseX,Laya.stage.mouseY),ray);		
+			camera.viewportPointToRay(new Vector2(MouseManager.instance.mouseX,
+                                                  MouseManager.instance.mouseY),ray);
+			
+			//射线检测，最近物体碰撞器信息，最大检测距离为300米，默认检测第0层
+			Physics.rayCast(ray,rayCastHit,300);			
+			
+          	//画参考线-----------------------------------------------------
+			//摄像机位置
+			var position:Vector3=new Vector3(camera.position.x, 0, camera.position.z);
+			//开始绘制矢量3D精灵，类型为线型
+			phasorSprite3D.begin(WebGLContext.LINES, camera);
+			//根据射线的原点绘制参考直线（为了观察方便而绘制，但矢量线并不是射线真正的路径）
+			phasorSprite3D.line(ray.origin, new Vector4(1,0,0,1), position , new Vector4(1,0,0,1));
+			//结束绘制
+			phasorSprite3D.end();
+		}
+		
+       	/**
+		 * 鼠标点击拾取
+		 */
+		private function onMouseDown():void
+		{
+			//如果碰撞信息中的模型不为空,删除模型
+			if(rayCastHit.sprite3D)
+			{
+				//从场景中移除模型
+				scene.removeChild(rayCastHit.sprite3D);
+				//将模型名字存入数组
+				nameArray.push(rayCastHit.sprite3D.name);
+				//文件提示信息
+				LayaAir3D_MouseInteraction.txt.text="你获得了汽车"+
+                  							rayCastHit.sprite3D.name+"!，现有的汽车为："+nameArray;
+				//销毁物体(如不销毁还能被检测)
+				rayCastHit.sprite3D.destroy();
+			}	
 		}
 	}
 }
 ```
+
+
 
 Compile the code, you can get the following effect (Figure 2), click the mouse to get the car, and remove the car model from the scene.
 
@@ -247,30 +345,23 @@ The reference code is as follows:
 ```java
 package
 {
-	import laya.d3.component.physics.BoxCollider;
 	import laya.d3.component.physics.MeshCollider;
 	import laya.d3.core.Camera;
-	import laya.d3.core.Layer;
 	import laya.d3.core.MeshSprite3D;
-	import laya.d3.core.PhasorSpriter3D;
 	import laya.d3.core.Sprite3D;
-	import laya.d3.core.light.DirectionLight;
-	import laya.d3.core.render.RenderState;
 	import laya.d3.core.scene.Scene;
-	import laya.d3.math.Ray;
-	import laya.d3.math.Vector2;
-	import laya.d3.math.Vector3;
-	import laya.d3.math.Vector4;
-	import laya.d3.resource.models.BoxMesh;
-	import laya.d3.utils.Physics;
-	import laya.d3.utils.RaycastHit;
 	import laya.display.Stage;
 	import laya.display.Text;
 	import laya.events.Event;
-	import laya.webgl.WebGLContext;
+	import laya.utils.Handler;
 
 	public class LayaAir3D_MouseInteraction
 	{
+		/**自定义场景**/		
+		private var gameScene:GameScene;
+		/**提示信息文本框**/
+		public static var txt:Text;
+		
 		public function LayaAir3D_MouseInteraction()
 		{
 			//初始化引擎
@@ -280,25 +371,108 @@ package
 			Laya.stage.scaleMode = Stage.SCALE_FULL;
 			Laya.stage.screenMode = Stage.SCREEN_NONE;
 			
-			//添加3D场景
-//			var scene:Scene = Scene.load("LayaScene_truck/truck.ls");
-			var scene:Scene=new Scene();
-			Laya.stage.addChild(scene);			
+			//加载3D资源
+			Laya.loader.create([{url:"LayaScene_truck/truck.lh"},
+								{url:"LayaScene_box/box.lh"}],Handler.create(this,onComplete));
 			
 			//创建信息提示框
-			var txt:Text=new Text();
+			txt=new Text();
 			txt.text="还未装载货物！";
 			txt.color="#ff0000";
 			txt.bold=true;
 			txt.fontSize=30;
 			txt.pos(100,50);
-			Laya.stage.addChild(txt);
-			//获得的物品
-			var nameArray:Array=[];
+			Laya.stage.addChild(txt);			
+		}
+		
+		private function onComplete():void
+		{
+			//创建3D场景
+			var scene:Scene=new Scene();
+			//初始化场景（摄像机、碰撞相关对象、添加碰撞器等）
+			Laya.stage.addChild(scene);
+			//为场景添加控制脚本
+			scene.addScript(SceneScript);
 			
-			
+			//创建货车模型，加载到场景中
+			var truck3D:Sprite3D=Laya.loader.getRes("LayaScene_truck/truck.lh");
+			gameScene.addChild(truck3D);
+			//获取货车的车身（车头不进行装货）
+			var meshSprite3D:MeshSprite3D=truck3D.getChildAt(0).getChildByName("body") as MeshSprite3D;
+          	//添加网格型碰撞器组件
+          	var meshCollider:MeshCollider=meshSprite3D.addComponent(MeshCollider);
+          	//为Mesh碰撞器mesh网格（否则没有尺寸，无法被射线检测）
+         	boxCollider.mesh=meshSprite3D.meshFilter.sharedMesh;
+		}
+	}
+}
+```
+
+The scene script control class code is modified as follows:
+
+```java
+package
+{
+	
+	import laya.d3.component.Script;
+	import laya.d3.component.physics.BoxCollider;
+	import laya.d3.component.physics.MeshCollider;
+	import laya.d3.core.Camera;
+	import laya.d3.core.ComponentNode;
+	import laya.d3.core.MeshSprite3D;
+	import laya.d3.core.PhasorSpriter3D;
+	import laya.d3.core.Sprite3D;
+	import laya.d3.core.render.RenderState;
+	import laya.d3.core.scene.Scene;
+	import laya.d3.math.Ray;
+	import laya.d3.math.Vector2;
+	import laya.d3.math.Vector3;
+	import laya.d3.math.Vector4;
+	import laya.d3.utils.Physics;
+	import laya.d3.utils.RaycastHit;
+	import laya.events.Event;
+	import laya.events.MouseManager;
+	import laya.webgl.WebGLContext;
+	
+	public class SceneScript extends Script
+	{
+		private var scene:Scene;
+		/**3D摄像机**/
+		private var camera:Camera;
+		/**用于鼠标检测的射线**/
+		private var ray:Ray;
+		/**画矢量线的3D显示对象**/
+		private var phasorSprite3D:PhasorSpriter3D;
+		/**碰撞信息**/
+		private var rayCastHit:RaycastHit;	
+		
+		
+		/**鼠标点击创建的3D对象**/
+		public static var box:Sprite3D;
+		/***获得的物品***/
+		private var nameArray:Array=[];
+		
+		public function SceneScript()
+		{
+		}
+		
+		/**
+		 * 覆写3D对象加载组件时执行的方法
+		 * @param owner 加载此组件的3D对象
+		 */	
+		override public function _load(owner:ComponentNode):void
+		{
+			//获取脚本所属对象
+			scene=owner as Scene;
+		}
+		
+		/**
+		 * 覆写加载组件的3D对象实例化完成后，第一次更新时执行
+		 */	
+		override public function _start(state:RenderState):void
+		{
 			//创建摄像机(横纵比，近距裁剪，远距裁剪)
-			var camera:Camera= new Camera( 0, 0.1, 1000);
+			camera= new Camera( 0, 0.1, 1000);
 			camera.transform.position = new Vector3(1,7,10);
 			camera.transform.rotate(new Vector3(-30,0,0),false,false);
 			//加载到场景
@@ -306,106 +480,89 @@ package
 			//加入摄像机移动控制脚本
 			camera.addComponent(CameraMoveScript);
 			
-			
-			//创建货车模型，加载到场景中
-			var truck3D:Sprite3D=Sprite3D.load("LayaScene_truck/truck.lh");
-			scene.addChild(truck3D);
+			//创建一条射线
+			ray = new Ray(new Vector3(),new Vector3());
+			//创建矢量3D精灵
+			phasorSprite3D = new PhasorSpriter3D();
+			//创建碰撞信息
+			rayCastHit =new RaycastHit();
+	
 			
 			//鼠标点击需要创建的物品，用于克隆使用（货车上的货物）
-			var box:Sprite3D=Sprite3D.load("LayaScene_box/box.lh");
+			box=Laya.loader.getRes("LayaScene_box/box.lh");
+			//鼠标点击事件回调
+			Laya.stage.on(Event.MOUSE_DOWN,this,onMouseDown);
+		}		
+		
+		/**
+		 * 渲染的最后阶段执行
+		 * @param	state 渲染状态参数。
+		 */		
+		override public function _postRenderUpdate(state:RenderState):void
+		{
+			//根据鼠标屏幕2D座标修改生成射线数据 
+//			camera.viewportPointToRay(new Vector2(Laya.stage.mouseX,Laya.stage.mouseY),ray);
 			
-			//鼠标创建相关----------------------------------------------					
-			//货车加载完成后回调
-			truck3D.on(Event.HIERARCHY_LOADED,null,function():void{
+			camera.viewportPointToRay(new Vector2(MouseManager.instance.mouseX,
+                                                  MouseManager.instance.mouseY),ray);
 			
-//				trace(truck3D._childs[0].getChildByName("head"),111111)
-				//为货车中的所有3D子对象加入碰撞器
-				for(var i:int=truck3D.getChildAt(0).numChildren-1;i>-1;i--)
-				{
-					var meshSprite3D:MeshSprite3D=truck3D.getChildAt(0).getChildAt(i) as MeshSprite3D;
-					//添加网格型碰撞器组件
-					meshSprite3D.addComponent(MeshCollider);
-				}
+			//射线检测，最近物体碰撞器信息，最大检测距离为300米，默认检测第0层
+			Physics.rayCast(ray,rayCastHit,300);			
 			
-				//创建一条射线
-				var ray:Ray = new Ray(new Vector3(),new Vector3());
-				//创建矢量3D精灵
-				var phasorSprite3D:PhasorSpriter3D = new PhasorSpriter3D();
-				//创建碰撞信息
-				var rayCastHit:RaycastHit=new RaycastHit();	
+          	//画参考线-----------------------------------------------------
+			//摄像机位置
+			var position:Vector3=new Vector3(camera.position.x, 0, camera.position.z);
+			//开始绘制矢量3D精灵，类型为线型
+			phasorSprite3D.begin(WebGLContext.LINES, camera);
+			//根据射线的原点绘制参考直线（为了观察方便而绘制，但矢量线并不是射线真正的路径）
+			phasorSprite3D.line(ray.origin, new Vector4(1,0,0,1), position , new Vector4(1,0,0,1));
+			
+			//如果与物品相交,画三面边线
+			if(rayCastHit.sprite3D)
+			{ 
+				//从碰撞信息中获取碰撞处的三角面顶点
+				var trianglePositions:Array= rayCastHit.trianglePositions;
+				//矢量绘制三角面边线
+				phasorSprite3D.line(trianglePositions[0], new Vector4(1,0,0,1), 
+                                    trianglePositions[1], new Vector4(1,0,0,1));
+				phasorSprite3D.line(trianglePositions[1], new Vector4(1,0,0,1), 
+                                    trianglePositions[2], new Vector4(1,0,0,1));
+				phasorSprite3D.line(trianglePositions[2], new Vector4(1,0,0,1),
+                                    trianglePositions[0], new Vector4(1,0,0,1));
+			}			
+			//结束绘制
+			phasorSprite3D.end();
+		}		
+		
+		/**
+		 * 鼠标放置
+		 */
+		private function onMouseDown():void
+		{
+			//如果点击时有相交的3D物体，则创建物体
+			if(rayCastHit.sprite3D)
+			{
+				//克隆一个货物模型 
+				var cloneBox:MeshSprite3D=Sprite3D.instantiate(box).getChildAt(0) as MeshSprite3D;
+
+			    //添加网格型碰撞器组件
+          		var meshCollider:MeshCollider=meshSprite3D.addComponent(MeshCollider);
+          		//为Mesh碰撞器mesh网格（否则没有尺寸，无法被射线检测）
+         	 	meshCollider.mesh=meshSprite3D.meshFilter.sharedMesh;	
+                            
+				scene.addChild(cloneBox);
+				//修改位置到碰撞点处
+				cloneBox.transform.position=rayCastHit.position;
 				
-				//重写scene的渲染后处理方法lateRender()，并进行碰撞检测，绘制参考线，此方法类似于帧循环。
-				//渲染场景后再绘制参考线，使参考线在模型上方
-				//也可以创建Scene继承类，在类中覆盖重写此方法
-				scene.lateRender=function(state:RenderState):void
-				{
-					//根据鼠标屏幕2D座标修改生成射线数据 
-					camera.viewportPointToRay(new Vector2(Laya.stage.mouseX,Laya.stage.mouseY),ray);
-					
-					//射线检测，最近物体碰撞器信息，最大检测距离为300米，默认检测第0层
-					Physics.rayCast(ray,rayCastHit,300);
-					
-					
-					//摄像机位置
-					var position:Vector3=new Vector3(camera.position.x, 0, camera.position.z);
-					//开始绘制矢量3D精灵，类型为线型
-					phasorSprite3D.begin(WebGLContext.LINES, camera);
-					//根据射线的原点绘制参考直线（为了观察方便而绘制，但矢量线并不是射线真正的路径）
-					phasorSprite3D.line(ray.origin, new Vector4(1,0,0,1), position , new Vector4(1,0,0,1));
-					
-					//如果与物品相交
-					if(rayCastHit.sprite3D)
-					{ 
-						//从碰撞信息中获取碰撞处的三角面顶点
-						var trianglePositions:Array= rayCastHit.trianglePositions;
-						//矢量绘制三角面边线
-						phasorSprite3D.line(trianglePositions[0], new Vector4(1,0,0,1), trianglePositions[1], new Vector4(1,0,0,1));
-						phasorSprite3D.line(trianglePositions[1], new Vector4(1,0,0,1), trianglePositions[2], new Vector4(1,0,0,1));
-						phasorSprite3D.line(trianglePositions[2], new Vector4(1,0,0,1), trianglePositions[0], new Vector4(1,0,0,1));
-					}
-					
-					//结束绘制
-					phasorSprite3D.end();
-				};
-				
-				//鼠标点击事件回调
-				Laya.stage.on(Event.MOUSE_DOWN,null,function():void{
-					
-					//如果碰撞信息中的模型不为空,删除模型
-//					if(rayCastHit.sprite3D)
-//					{
-//						//从场景中移除模型
-//						scene.removeChild(rayCastHit.sprite3D);
-//						//将模型名字存入数组
-//						nameArray.push(rayCastHit.sprite3D.name);
-//						//文件提示信息
-//						txt.text="你获得了汽车"+rayCastHit.sprite3D.name+"!，现有的汽车为："+nameArray;
-//						//销毁物体(如不销毁还能被检测)
-//						rayCastHit.sprite3D.destroy();
-//					}	
-					
-					//如果点击时有相交的3D物体，则创建物体
-					if(rayCastHit.sprite3D)
-					{
-						//克隆一个货物模型
-						var cloneBox:Sprite3D=Sprite3D.instantiate(box);
-						//为货物模型也添加碰撞器（可以在货物上继续放放置货物）
-						cloneBox.getChildAt(0).addComponent(MeshCollider);
-						
-						scene.addChild(cloneBox);
-						//修改位置到碰撞点处
-						cloneBox.transform.position=rayCastHit.position;
-						
-						//更新提示信息
-						nameArray.push(cloneBox.name);
-						txt.text="您在货车上装载了 "+nameArray.length+" 件货物!";
-					}
-				});
-			});
+				//更新提示信息
+				nameArray.push(cloneBox.name);
+				LayaAir3D_MouseInteraction.txt.text="您在货车上装载了 "+nameArray.length+" 件货物!";
+			}
 		}
 	}
 }
 ```
+
 
 The code is compiled and run, and we can see that objects can be created by clicking on the mouse (Figure 3), and when the ray intersects the model, it shows the triangle at the intersection of the model.
 

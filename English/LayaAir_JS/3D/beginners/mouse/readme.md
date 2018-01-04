@@ -1,20 +1,20 @@
-# LayaAir3D之鼠标交互
+## LayaAir3D mouse interaction
 
-### 鼠标交互概述
+### Mouse interaction overview
 
-在LayaAir2D引擎中，2D显示对象都有鼠标事件供我们使用，编写逻辑简单方便。在LayaAir 3D引擎中并未实现这种功能，3D空间更为复杂，显示对象在空间中有纵深远近、层叠、裁剪、父子等关系，并且空间还在不断变换。因此3D引擎采用了碰撞器、层与物理射线检测、碰撞信息的方式进行鼠标判断，下面先让我们来先了解它们的概念与作用。
+In the LayaAir2D engine, 2D display objects have mouse events for us to use, writing logic is simple and convenient. In the LayaAir 3D engine does not achieve this function, 3D space is more complex, display objects in space depth, distance, stacking, cutting, father son relationship, and the space is constantly changing. Therefore, the 3D engine uses a collision device, layer and physical ray detection, collision information in the way of mouse judgment, let us first to understand their concepts and functions.
 
 
 
-### 碰撞器Collider
+#### Collider
 
-碰撞器是一种物理组件，可以添加到3D显示对象上，主要用于3D空间中的物体进行碰撞检测，根据3D显示对象的形状不同，也分为了不同的类型。
+Collider is a physical component that can be added to a 3D display object and is mainly used for collision detection of objects in 3D space. According to the shape of the 3D display object, it is also divided into different types.
 
-LayaAir3D引擎现支持的碰撞器有三种类型，分别是**球型碰撞器SphereCollider**，**盒型碰撞器BoxCollider**，**网格碰撞器MeshCollider**。从**碰撞检测精确度**和**消耗性能**从低到高依次为SphereCollider—BoxCollider—MeshCollider；可以根据游戏中开发需求，选择适合的碰撞器。
+The LayaAir3D engine now supports three types of colliders : **SphereCollider**，**BoxCollider**，**MeshCollider**. From **Collision Detection Accuracy** and **Consumption Performance** Low to High SphereCollider-BoxCollider-MeshCollider; Choose the appropriate collider that your game development needs.
 
-3D显示对象添加碰撞器组件的方法如下：
+Here's how to add a collider component to a 3D display object:
 
-Tips：碰撞器必须添加到MeshSprite3D类型的显示对象上，不能添加到Sprite3D对象上，否则会失效。
+Tips：The collider must be added to the MeshSprite3D type display object and cannot be added to the Sprite3D object, otherwise it will fail.
 
 ```typescript
 /**
@@ -23,18 +23,34 @@ Tips：碰撞器必须添加到MeshSprite3D类型的显示对象上，不能添�
 * SphereCollider : 球型碰撞器
 * MeshCollider   : 网格碰撞器
 */
-meshSprite3d1.addComponent(Laya.MeshCollider);
-meshSprite3d2.addComponent(Laya.SphereCollider);
-meshSprite3d3.addComponent(Laya.BoxCollider);
+//添加Mesh碰撞器组件并获取
+var meshCollider=meshSprite3d1.addComponent(MeshCollider);
+//设置mesh碰撞器网格属性（否则无法被检测）
+meshCollider.mesh=meshSprite3d1.meshFilter.sharedMesh;
+
+//添加球形碰撞器组件并获取
+var sphereCollider = meshSprite3d2.addComponent(SphereCollider);
+//设置球形碰撞器中心位置
+sphereCollider.center = meshSprite3d2.meshFilter.sharedMesh.boundingSphere.center.clone();
+//设置球形碰撞器半径
+sphereCollider.radius = meshSprite3d2.meshFilter.sharedMesh.boundingSphere.radius;
+
+//添加盒形碰撞器
+var boxCollider =meshSprite3d3.addComponent(BoxCollider);
+boxCollider.setFromBoundBox(meshSprite3d3.meshFilter.sharedMesh.boundingBox);
 ```
 
+在引擎1.7.12与导出插件1.7.0版开始，在Unity中添加到3D模型上的Collider可以导出并且引擎自动加载创建。不过目前暂时不支持MeshCollider的导出，将在后续版本中完善该功能。 
 
+在Unity中为模型添加了BoxCollider与SphereCollider后，还可以根据需求对碰撞盒或碰撞球的大小进行设置，碰撞盒可以比实际模型偏小或者偏大，位置也可更改，方便开发者们逻辑处理。
 
-### 层Layer
+Tips：在Unity编辑器中，一个3D物体可支持多个碰撞器，但LayaAir导出插件（1.7.0版）目前只支持第一个碰撞器的导出，它请开发者们注意。如果希望在模型上添加多可碰撞器，可在制作模型时分解成多个子网格模型，在子网格模型上各自添加碰撞器用于检测。在后续的1.7.13版本中，我们将支持无子网格的3D物体多个碰撞器导出。
 
-默认场景中有32层，你可以选择把3D精灵扔在任意层内。用在摄像机上，摄像机可以根据层级进行裁剪；**用在碰撞检测上，可以控制碰撞什么层，不碰撞什么层**。
+#### Layer
 
-指定3D精灵层的方法如下：
+There are 32 layers in the default scenario, and you can choose to throw the 3D sprite in any layer. On the camera, the camera can be trimmed according to the hierarchy; **used in collision detection to control which layer to collide, and what layer does not collide**。
+
+Here's how to specify the 3D sprite layer:
 
 ```typescript
 //指定3D精灵的层
@@ -44,13 +60,13 @@ meshSprite3d2.layer = Layer.getLayerByNumber(13);
 
 
 
-### 射线Ray
+#### Ray
 
-射线是一个数据类型，并不是显示对象，它有原点origin、方向direction的属性。
+Ray is a data type, not a display object. It has the attributes of origin and direction.
 
-在游戏中，因为视图空间经常变化，为了模拟鼠标的在3D空间中的位置，LayaAir3D引擎提供了摄像机Camera创建射线的方法，它产生了一条与屏幕垂直的一条射线。
+In the game, because the view space is constantly changing, in order to simulate the position of the mouse in the 3D space, the LayaAir3D engine provides the camera Camera method of creating rays, which produces a ray perpendicular to the screen.
 
-摄像机创建射线方法如下：
+The camera creates a ray method as follows:
 
 ```typescript
 //射线初始化（必须初始化）
@@ -65,45 +81,46 @@ camera.viewportPointToRay(point, ray);
 
 
 
-### 物理射线检测
 
-当我们为场景中3D显示对象创建了碰撞器，为它们设置了层（默认在第0层），并创建了射线后，就可以用物理射线碰撞来进行是否相交检测了，开发者可以根据需求进行自己的逻辑判断，比如鼠标拾取、选择、创建等。
+#### Physical ray detection
 
-物理射线检测我们使用了Physics物理类，它提供了我们两个方法，检测获取发生碰撞的第一个碰撞器信息方法rayCast()，和检测获取发生碰撞的所有碰撞器信息rayCastAll()方法，它们都是静态方法，开发者可以根据需求选择使用，API如（图1）
+When we were in the scene 3D display object created colliders, they set up (the default layer in the zeroth layer), and creates a ray, we can detect whether the intersection of physical ray, developers can own logic judgment according to requirements, such as the rat, and to create a standard pickup.
 
-![1](img/1.png)(图1)</br>
+The physical ray detection we use the Physics physical, it provides us with two methods, the first method for collision detection to obtain the information of collision (rayCast), and obtain the collision detection (rayCastAll) for all collision information, they are static method, the developer can choose to use according to the demand, such as API (Figure 1)
 
-
-
-### 碰撞信息RayCastHit
-
-射线检测的碰撞信息在检测前必须初始化，如果射线与3D显示对象相交了，可以从碰撞信息RayCastHit属性中获得相交对象、相交的空间位置、相交的三角面顶点等各种信息。
-
-sprite3D即是相交的3D显示对象，如果未有相交对象则为null。
-
-position为射线与模型相交的点的空间位置。
-
-trianglePositions属性为相交的三角面顶点位置数组，当然，需有个前提是碰撞器的类型必须为MeshCollider，否则顶点位置属性为0。
+ ![图1](img/1.png)<br>（Picture 1）
 
 
 
-### 鼠标拾取示例
+#### Collision information RayCastHit
 
-根据以上的概念和方法，我们来制作一个鼠标拾取的示例，按以下步骤进行：
+The collision information of ray detection must be initialized before detection. If the ray intersects the 3D display object, the information of intersection object, intersection space position and intersected triangle vertex can be obtained from the RayCastHit attribute of collision information.
 
-1、在unity场景中创建几个3D物品，以三辆汽车为例，通过导出导出插件使用。
+Sprite3D is the intersection of the 3D display object, if there is no intersection object is null.
 
-2、建立场景Scene的实例，及场景脚本控制类SceneScript，并在加载场景时使用addScript()加入脚本。
+Position is the spatial location of the point where the ray intersects the model.
 
-2、覆写脚本的`_start()`方法，设置层，创建射线、碰撞信息等，并为场景中3D物品添加碰撞器。
+The trianglePositions property is the array of vertices on the intersecting triangle. Of course, there must be a premise that the type of the collider must be MeshCollider, otherwise the vertex position attribute is 0.
 
-3、重写脚本渲染后期处理方法`_postRenderUpdate()`，在方法中可以根据射线原点画一条矢量参考直线进行观察，并判断射线与3D物品是否相交。
 
-Tips：也可使用脚本更新方法`_update()`，但画的参考线会在模型之后，看不到鼠标点击位置的参考线，所以使用了渲染后方法`_postRenderUpdate()`，意思是渲染完场景后再绘制矢量参考线。
 
-4、加入鼠标点击事件，如果点击了鼠标且又与3D物品相交，那么我们就让3D物品消失并提示获取信息。
+### Example of mouse pick up
 
-主类代码如下：
+According to the above concepts and methods, we will make an example of mouse picking, according to the following steps:
+
+1. Create several 3D objects in the scene, take three cars as an example, build the scene through unity and export it.
+
+2. Setting up an instance of the Scene, and the scenario script control class SceneScript, and adding the script with addScript () when loading the scene.
+
+3. Overwrite the script's `_start()` method, set the layer, create rays, collision information, and add a collider to the 3D item in the scene.
+
+4. Rewrite scene rendering post-processing `_postRenderUpdate()` method (also can use frame cycle method), in the method to update the created ray, you can draw a vector reference line according to the ray origin to observe, and determine whether the ray and 3D objects intersect.
+
+Tips: you can also use the script update method `_update()`, but the drawing reference line will not see the reference line of the mouse click position after the model. So we use the rendering method `_postRenderUpdate()`. It means that after rendering the scene, we will draw the vector reference line.
+
+5. Adding a mouse click event, if you click the mouse and intersect with the 3D object, then we let the 3D object disappear and prompt access to information.
+
+All the code is as follows:
 
 ```typescript
 var LayaAir3D = (function () 
@@ -147,9 +164,10 @@ var LayaAir3D = (function ()
 LayaAir3D();
 ```
 
-脚本类SceneScript代码如下：
 
-**Tips：从1.7.10版本后，场景自身的更新方法及渲染后处理lateRender()等方法被取消，但场景增加了脚本组件控制功能，因此可以通过脚本组件中的渲染最后执行方法_postRenderUpdate()来实现鼠标参考线的绘制。**。
+The script class SceneScript code is as follows:
+
+**Tips: from the 1.7.10 version, update method and rendering of the scene itself (lateRender) postprocessing method was canceled, but the scene increases the script component control function, so it can pass through the script component in the final rendering method of executing _postRenderUpdate () to achieve the mouse drawing reference line.**
 
 ```typescript
 var SceneScript = (function(_super)
@@ -206,9 +224,10 @@ var SceneScript = (function(_super)
         //为场景中3D对象添加组件
         for(var i = scene.numChildren-1;i>-1;i--)
         {
-            var meshSprite3D = scene.getChildAt(i);
             //添加网格型碰撞器组件
-            meshSprite3D.addComponent(Laya.BoxCollider);
+            var boxCollider=meshSprite3D.addComponent(Laya.BoxCollider);
+            //为盒形碰撞器设置盒子大小（否则没有尺寸，无法被射线检测）
+            boxCollider.setFromBoundBox(meshSprite3D.meshFilter.sharedMesh.boundingBox);
         }            
         //鼠标点击事件回调
         Laya.stage.on(Laya.Event.MOUSE_DOWN,this,onMouseDown);
@@ -254,25 +273,25 @@ var SceneScript = (function(_super)
 })(Laya.Script);
 ```
 
-编译上示代码，可以得到以下效果（图2），鼠标点击获得汽车，并从场景中移除汽车模型。
-
-![2](img/2.gif)(图2)</br>
 
 
+Compile the code, you can get the following effect (Figure 2), click the mouse to get the car, and remove the car model from the scene.
 
-### 鼠标创建放置物体
+ ![图2](img/2.gif)<br>（Picture 2）
 
-在游戏中我们还经常使用鼠标控制放置游戏物品，比如养成类游戏在地面放置建筑、角色、道具等。
 
-鼠标放置物体与拾取物体大致方法差不多，同样需要使用碰撞器、射线、射线检测、碰撞信息等3D元素与方法。
 
-而创建物品时，点击模型射线与之相交后，我们可以通过碰撞信息rayCastHit.position获得点击的位置，然后将创建的物品放置此处。并且，创建物品时我们使用了克隆的方式，开发者们注意其方法。
+### Create object by mouse
 
-在拾取示例中我们使用了盒型碰撞器BoxCollider，在创建示例中我们使用网格碰撞器MeshCollider，它更精确，可以获取模型上的相交三角面顶点，方法为rayCastHit.trianglePositions，根据顶点位置我们可以把它画出来用于观察！
+In the game, we also often use the mouse to control the placement of game items, such as the formation of games, placed in the ground building, role, props and so on.
 
-主类代码修改如下：
+The mouse placed objects and picking objects roughly the same method, also need to use Collider, ray, ray detection, collision information and other 3D elements and methods.
 
-创建货车模型，并为货车车身添加网格碰撞器组件。
+When creating objects, click the model ray and intersect it, we can get the click position through the collision information rayCastHit.position, and then place the created objects here. And when we create things, we use cloning, and developers pay attention to it.
+
+In the example we used in picking up the box Collider in BoxCollider, create a sample we use a mesh Collider MeshCollider, it can obtain more accurate intersection triangles vertex model, method for rayCastHit.trianglePositions, according to the vertex position we can draw it for observation!
+
+The reference code is as follows:
 
 ```typescript
 var LayaAir3D = (function () 
@@ -311,10 +330,13 @@ var LayaAir3D = (function ()
             //创建货车模型，加载到场景中
             var truck3D = Laya.loader.getRes("LayaScene_truck/truck.lh");
             scene.addChild(truck3D);
-            //获取货车的车身（车头不进行装货）
-            var meshSprite3D = truck3D.getChildAt(0).getChildByName("body");
-            //添加网格型碰撞器组件
-            meshSprite3D.addComponent(Laya.MeshCollider);
+          
+			//获取货车的车身（车头不进行装货）
+			var meshSprite3D=truck3D.getChildAt(0).getChildByName("body");
+          	//添加网格型碰撞器组件
+          	var meshCollider=meshSprite3D.addComponent(Laya.MeshCollider);
+          	//为Mesh碰撞器mesh网格（否则没有尺寸，无法被射线检测）
+         	boxCollider.mesh=meshSprite3D.meshFilter.sharedMesh;
 		}
 
     }
@@ -324,7 +346,7 @@ var LayaAir3D = (function ()
 LayaAir3D();
 ```
 
-场景子类代码修改如下：
+The scene script control class code is modified as follows:
 
 ```typescript
 var SceneScript = (function(_super)
@@ -427,10 +449,13 @@ var SceneScript = (function(_super)
         //如果碰撞信息中的模型不为空,删除模型
         if(rayCastHit.sprite3D)
         {
-            //克隆一个货物模型
-            var cloneBox = Laya.Sprite3D.instantiate(box);
-            //为货物模型添加碰撞器（可以在货物上继续放放置货物）
-            cloneBox.getChildAt(0).addComponent(Laya.MeshCollider);                    
+            //克隆一个货物模型 
+            var cloneBox=Laya.Sprite3D.instantiate(box).getChildAt(0);
+
+            //添加网格型碰撞器组件
+            var meshCollider=meshSprite3D.addComponent(Laya.MeshCollider);
+            //为Mesh碰撞器mesh网格（否则没有尺寸，无法被射线检测）
+            meshCollider.mesh=meshSprite3D.meshFilter.sharedMesh;                   
             scene.addChild(cloneBox);
             //修改位置到碰撞点处
             cloneBox.transform.position = rayCastHit.position;
@@ -443,6 +468,6 @@ var SceneScript = (function(_super)
 })(Laya.Script);
 ```
 
-编译运行上示代码，我们可以看见可以通过鼠标点击创建物体了（图3），并且射线与模型相交时显示了模型相交处的三角面。
+The code is compiled and run, and we can see that objects can be created by clicking on the mouse (Figure 3), and when the ray intersects the model, it shows the triangle at the intersection of the model.
 
-![3](img/3.gif)(图3)</br>
+![图3](img/3.gif)<br>（Picture 3）
