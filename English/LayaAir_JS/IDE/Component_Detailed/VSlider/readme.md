@@ -1,190 +1,102 @@
-# VSlider 组件参考
+# VSlider Component Reference
 
 
 
-## 一、通过LayaAirIDE创建VSlider组件 
+## 1. Understand VSlider components
 
-### 1.1 创建VSlider  
+### 1.1 The function and effect demonstration of VSlider
 
-​        使用 VSlider 控件，用户可以通过在滑块轨道的终点之间移动滑块来选择值。
-​        VSlider 控件采用垂直滑动方向。滑块轨道从上向下扩展，而标签位于轨道的左右两侧。
-​        点击选择资源面板里的 VSlider 组件，拖放到页面编辑区，即可添加 VSlider 组件到页面上。
-​        VSlider 组件的脚本接口请参考 [VSlider API](http://layaair.ldc.layabox.com/api/index.html?category=Core&class=laya.ui.VSlider)。
+​	HSlider and VSlider components are subclasses of Slider components, which represent horizontal slip bars and longitudinal sliders respectively. The user can select the value by moving the slider between the slider tracks. Often used in player progress control, volume size control, some UI numerical adjustment, etc..
 
-​        VSlider 组件的图像资源示例：
+​      VSlider components are arranged vertically. The slider track expands from top to bottom, with the label showing the value on the right part of the track, hidden.
 
-​        ![图片0.png](img/1.png)<br/>
-​    （图1）
-
-​        ![图片0.png](img/2.png)<br/>
-​    （图2）
-
-​        VSlider 拖放到编辑器区后，显示效果：
-
-​        ![图片0.png](img/3.png)<br/>
-​    （图3）
-
-​        设置 VSlider 的属性 max 的值为 10、属性 min 的值为0、属性 value 的值为3后，显示效果如下：
-
-​        ![图片0.png](img/4.png)<br/>
-​    （图4）
-
-​        在程序中的运行时，可以拖动滑块来选择值：
-
-​        ![图片0.gif](gif/1.gif)<br/>
-​    （图5）
-
- 
-
-  
-
-### 1.2 VSlider 组件常用属性
-
-​        ![图片0.png](img/5.png)<br/>
-​    （图6）
-
- 
-
-| **属性**         | **功能说明**                         |
-| -------------- | -------------------------------- |
-| allowClickBack | 一个布尔值，指定是否允许通过点击滑动条改变 value 属性值。 |
-| max            | 获取或设置表示最高位置的数字。 默认值为100。         |
-| min            | 获取或设置表示最低位置的数字。 默认值为0。           |
-| showLabel      | 一个布尔值，指定是否显示标签。                  |
-| sizeGrid       | 滑动条背景图资源的有效缩放网格数据（九宫格数据）。        |
-| skin           | 滑动条的图像资源地址。                      |
-| tick           | 滑动条的刻度值。默认值为1。                   |
-| value          | 滑块位置的数字值。                        |
-
- 
-
-## 二、通过代码创建VSlider组件 
-
-​	在我们进行书写代码的时候，免不了通过代码控制UI，创建`UI_VSlide`r类，在代码中导入`laya.ui.VSlider `的包，并通过代码设定VSlider 相关的属性。
-
-**运行示例效果:**
-​	![5](gif/2.gif)<br/>
-​	(图5)通过代码创建VSlider 
-
-​	VSlider 的其他属性也可以通过代码来设置，下述示例代码演示了如何通过代码创建不同皮肤（样式）的VSlider ，
-
-有兴趣的读者可以自己通过代码设置VSlider ，创建出符合自己需要的VSlider 。
-
-**示例代码：**
-
-```javascript
-package
-{
-	
-	import laya.display.Stage;
-	import laya.display.Text;
-	import laya.events.Event;
-	import laya.ui.HSlider;
-	import laya.ui.Slider;
-	import laya.ui.VSlider;
-	import laya.utils.Handler;
-	import laya.webgl.WebGL;
-	
-	public class UI_Slider
-	{
-      	/***滑块图片资源**/
-		private var skins:Array = ["../../../../res/ui/vslider.png", 																   "../../../../res/ui/vslider$bar.png"];
-		
-		/***提示信息文本框**/
-		private var promptText:Text;
-		/***垂直滑动条**/
-		private var vs:VSlider 
-		
-		public function UI_Slider()
-		{
-			// 不支持WebGL时自动切换至Canvas
-			Laya.init(800, 600, WebGL);
-			//画布垂直居中对齐
-			Laya.stage.alignV = Stage.ALIGN_MIDDLE;
-			//画布水平居中对齐
-			Laya.stage.alignH = Stage.ALIGN_CENTER;
-			//等比缩放
-			Laya.stage.scaleMode = Stage.SCALE_SHOWALL;
-			//背景颜色
-			Laya.stage.bgColor = "#232628";
-			
-			//加载资源
-			Laya.loader.load(skins, Handler.create(this, onLoadComplete));
-		}
-		
-		/***加载资源完成***/
-		private function onLoadComplete(e:*=null):void
-		{
-			//从父类中设置滑块数值变化文字体本颜色（默认为黑色）
-			Slider.label.color="#FFFFFF";
-			//从父类中设置滑块数值变化文本字体大小
-			Slider.label.fontSize=16;
-			
-			//创建垂直滑动条
-			createVSlider();
-		}
-		
-		/****创建垂直滑动条****/
-		private function createVSlider():void
-		{
-			//实例化垂直滑动条
-			var vs:VSlider = new VSlider();
-			//更换或加载皮肤资源
-			vs.skin = "../../../../res/ui/vslider.png";
-			//设置滑块高度
-			vs.bar.height=50;
-			//设置整体高度
-			vs.height = 300;
-			//设置位置
-			vs.pos(400, 150);
-			//最小滑动位置数字
-			vs.min = 0;
-			//最大滑动位置数字
-			vs.max = 100;
-			//默认滑块位置
-			vs.value = 50;
-			//最小滑动量
-			vs.tick = 2;
-			//滑动数据变化回调方法
-			vs.changeHandler = new Handler(this, onChange);
-			//加载到舞台
-			Laya.stage.addChild(vs);
-			
-			//创建提示信息
-			createPromptText(vs);
-			//显示默滑块位置信息
-			onChange(vs.value)
-		}
-		
-		/***创建提示信息***/
-		private function createPromptText(slider:Slider):void
-		{
-			//实例化提示信息
-			promptText=new Text();
-			//提示框字体
-			promptText.font="黑体";
-			//提示框字体大小
-			promptText.fontSize=26;
-			//提示框字体颜色
-			promptText.color="#FFFFFF";
-			//提示框初始文本
-			promptText.text="您的选择是： ";
-			//加载到舞台
-			Laya.stage.addChild(promptText);
-			//设置提示框位置
-			promptText.pos(slider.x-110, slider.y-80);
-			
-		}
-		
-		/***拖动滑块数据变化回调方法***/
-		private function onChange(value:Number):void
-		{
-			promptText.text="当前滑块的位置：" + value;
-		}
-	}
-}
-```
+​      ![图片0.gif](img/0.gif)<br/>
+​    （Picture 1）
 
 
+
+### 1.2 Skin specification (skin) for VSlider components
+
+​	VSlider resource naming convention prefixed by vsliser, the default resources it a total of 3, respectively, the progress of slider resource  `vslider$bar.png`, resource base `vslider$progress.png` and `vslider.png`.
+
+​	There should be at least two resources, a resource base, a slider sliding function of resources, otherwise unattainable. Without the progress bar, the resource component does not report errors, but it does not display the schedule.
+
+ 	tips：The progress of `vslider$progress.png` resources can be interchanged with the map resource `vsliser.png`, after the exchange of progress can reverse display.
+
+![图片0.png](img/1.png)<br/>
+​    （Picture 2）
+
+
+
+### 1.3 Introduction of API for VSlider component
+
+VSlider API introduction, please refer to [http://layaair.ldc.layabox.com/api/index.html?category=Core&class=laya.ui.VSlider](http://layaair.ldc.layabox.com/api/index.html?category=Core&class=laya.ui.VSlider)。
+
+
+
+## 2. Creating VSlider components through LayaAirIDE
+
+### 1.1 Creating VSlider
+
+​        Click on the VSlider component resource in the resource panel, drag and drop to the page edit area, and then add the VSlider component to the page.
+
+​       VSlider drag and drop to the editor area, set the sizeGrid nine square attributes, so that it will not be stretched after zooming, zoom display effect is as follows:
+
+​        ![图片2.png](img/2.png)<br/>
+​    （Picture 2）
+
+### 1.2 VSlider Common attributes of components
+
+​        The VSlider component and the HSlider component property are all the same, but the component is changed in the direction.
+
+​	Similarly, the attribute max of VSlider is 20, the value of attribute min is 0, and the value of attribute value is 5, the display effect is as follows:
+
+​        ![图片3.png](img/3.png)<br/>
+​    （Picture 3）
+
+**max：**HSlider maximum value of the HSlider slider to the rightmost. The default value is 100;
+
+**min：**Hslider minimum value of the Hslider slider dragged to the left, defaults to 0;
+
+**value：**滑块目前所处的数值，应当等于max或min，或是它们之间的值。
+
+​        ![图片4.png](img/4.png)<br/>
+​    （Picture 4）
+
+​        When you run the program, you can drag the slider to select values:
+
+​        ![图片0.gif](img/0.gif)<br/>
+​    （Picture 5）
+
+
+
+### 1.3 Making volume control strip with VSlider
+
+In game development or some other software, making volume controllers with VSlider is very common. But, as shown in Figure 5, it's not the effect we need, and the direction and size of the progress bar all go back. Normal is the maximum volume should be at the top, the minimum should be the bottom, the progress bar should also be from bottom to top changes.
+
+In fact, to achieve the normal effect is very simple, first of all, Max and min attributes can be set in turn, for example, we set Max is 0, min is 20, and then the default value of value is set to the maximum 20
+
+​        ![图片5.png](img/5.png)<br/>
+​    （Picture 6）
+
+The second is the direction of the progress bar, progress bar named resources and resource base exchange (Figure 7), refresh IDE and publish, compile and run after we can see the progress of the direction is from the bottom to the top! We also have the effect of the volume controller that we need.
+
+​        ![图片7.png](img/6.png)<br/>
+​    （Picture 7）
+
+​         ![图片7.gif](img/7.gif)<br/>
+​    （Picture 7）
+
+
+
+### 1.4 VSlider Component specific other attributes
+
+ Generic other properties are described in detail in the attribute setter, and the following are special attributes related to the HSlider component.
+
+| **Attribute**         | **Functional description**                          |
+| -------------- | --------------------------------- |
+| allowClickBack | A Boolean value that specifies whether to change the value attribute value by clicking the slider  |
+| showLabel      | A Boolean value specifying whether or not to hide a tag that displays the value value above the slider.     |
+| tick           | The scale value of the slider is the change in the value value of each slide. The default value is 1 |
 
  
