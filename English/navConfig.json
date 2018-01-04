@@ -574,7 +574,12 @@
                 "name_3_name": "Animation",
                 "name_3_url": "English/LayaAir_AS3/IDE/Component_Detailed/Animation/",
                 "name_3_file": "readme.md"
-              }
+              },
+				{
+					"name_3_name": "Panel使用文档",
+					"name_3_url": "English/LayaAir_AS3/IDE/Component_Detailed/Panel/",
+					"name_3_file": "readme.md"
+				}
             ]
           }
         ]
@@ -1753,7 +1758,12 @@
                 "name_3_name": "Animation",
                 "name_3_url": "English/LayaAir_TS/IDE/Component_Detailed/Animation/",
                 "name_3_file": "readme.md"
-              }
+              },
+				{
+					"name_3_name": "Panel使用文档",
+					"name_3_url": "English/LayaAir_TS/IDE/Component_Detailed/Panel/",
+					"name_3_file": "readme.md"
+				}
             ]
           }
         ]
@@ -2843,7 +2853,12 @@
                 "name_3_name": "Animation",
                 "name_3_url": "English/LayaAir_JS/IDE/Component_Detailed/Animation/",
                 "name_3_file": "readme.md"
-              }
+              },
+				{
+					"name_3_name": "Panel使用文档",
+					"name_3_url": "English/LayaAir_JS/IDE/Component_Detailed/Panel/",
+					"name_3_file": "readme.md"
+				}
             ]
           }
         ]
