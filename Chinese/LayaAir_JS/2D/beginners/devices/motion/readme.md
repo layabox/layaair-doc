@@ -48,27 +48,21 @@ laya.device.motion中共有四个类供开发者使用，分别为加速信息Ac
 下面演示获取旋转方位信息：
 
 ```typescript
-private var info:Text;
- 
-public function Gyroscope_Sample() 
-{
- Laya.init(550, 400);
-  
- info = new Text();
- info.fontSize = 50;
- info.color = "#FFFFFF";
- info.size(Laya.stage.width, Laya.stage.height);
- Laya.stage.addChild(info);
-  
- Gyroscope.instance.on(Event.CHANGE, this, onDeviceorientation);
-}
- 
-private function onDeviceorientation(absolute:Boolean, rotationInfo:RotationInfo):void 
-{
- info.text = 
- "alpha:" + Math.floor(rotationInfo.alpha) + '\n' +
- "beta :" + Math.floor(rotationInfo.beta) + '\n' +
- "gamma:" + Math.floor(rotationInfo.gamma);
+Laya.init(550, 400);
+
+this.info = new Laya.Text();
+this.info.fontSize = 50;
+this.info.color = "#FFFFFF";
+this.info.size(Laya.stage.width, Laya.stage.height);
+ Laya.stage.addChild(this.info);
+
+ Laya.Gyroscope.instance.on(Laya.Event.CHANGE, this, onDeviceorientation);
+
+function onDeviceorientation(absolute, rotationInfo) {
+    this.info.text =
+        "alpha:" + Math.floor(rotationInfo.alpha) + '\n' +
+        "beta :" + Math.floor(rotationInfo.beta) + '\n' +
+        "gamma:" + Math.floor(rotationInfo.gamma);
 }
 ```
 
@@ -92,28 +86,22 @@ private function onDeviceorientation(absolute:Boolean, rotationInfo:RotationI
 下面演示获取设备运动信息：
 
 ```typescript
-private var info:Text;
+Laya.init(550, 400);
 
-public function Accelerator_Sample()
-{
-	Laya.init(Browser.width, Browser.height);
-	
-	info = new Text();
-	info.fontSize = 50;
-	info.color = "#FFFFFF";
-	info.size(Laya.stage.width, Laya.stage.height);
-	Laya.stage.addChild(info);
-	
-	Accelerator.instance.on(Event.CHANGE, this, onMotoin);
-}
+this.info = new Laya.Text();
+this.info.fontSize = 50;
+this.info.color = "#FFFFFF";
+this.info.size(Laya.stage.width, Laya.stage.height);
+Laya.stage.addChild(this.info);
 
-private function onMotoin(acceleration:AccelerationInfo, accelerationIncludingGravity:AccelerationInfo, rotationRate:RotationInfo, interval:int):void
-{
-	info.text = 
-		'acceleration:(' + acceleration.x.toFixed(3) + ', ' + acceleration.y.toFixed(3) + ', ' + acceleration.z.toFixed(3) + ')\n' +
-		'accelerationIncludingGravity:(' + accelerationIncludingGravity.x.toFixed(3) + ', ' + accelerationIncludingGravity.y.toFixed(3) + ', ' + accelerationIncludingGravity.z.toFixed(3) + ')\n' +
-		'rotationRate: alpha ' + Math.floor(rotationRate.alpha) + ', beta ' + Math.floor(rotationRate.beta) + ', gamma ' + Math.floor(rotationRate.gamma) + '\n' +
-		'interval: ' + interval;
+Laya.Accelerator.instance.on(Laya.Event.CHANGE, this, onMotoin);
+
+function onMotoin(acceleration, accelerationIncludingGravity, rotationRate, interval) {
+    this.info.text =
+        'acceleration:(' + acceleration.x.toFixed(3) + ', ' + acceleration.y.toFixed(3) + ', ' + acceleration.z.toFixed(3) + ')\n' +
+        'accelerationIncludingGravity:(' + accelerationIncludingGravity.x.toFixed(3) + ', ' + accelerationIncludingGravity.y.toFixed(3) + ', ' + accelerationIncludingGravity.z.toFixed(3) + ')\n' +
+        'rotationRate: alpha ' + Math.floor(rotationRate.alpha) + ', beta ' + Math.floor(rotationRate.beta) + ', gamma ' + Math.floor(rotationRate.gamma) + '\n' +
+        'interval: ' + interval;
 }
 ```
 
@@ -124,7 +112,7 @@ private function onMotoin(acceleration:AccelerationInfo, accelerationIncludingGr
 ​	在上例的代码的`onMotion`函数中，使用`AccelerationInfo`前先使用`Accelerator.getTransformedAcceleration()`转换信息：
 
 ```typescript
-private function onMotoin(acceleration:AccelerationInfo, accelerationIncludingGravity:AccelerationInfo, rotationRate:RotationInfo, interval:int):void
+function onMotoin(acceleration, accelerationIncludingGravity, rotationRate, interval)
 {
 	acceleration = Accelerator.getTransformedAcceleration(acceleration);
   	accelerationIncludingGravity = Accelerator.getTransformedAcceleration(accelerationIncludingGravity);
