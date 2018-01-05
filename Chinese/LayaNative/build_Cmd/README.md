@@ -44,16 +44,16 @@ $ layanative createapp --help
 
 根据-v使用v0.9.5版本的SDK
 ```
-$ layanative createapp -f SnowBallH5 -t -1 -n SnowBallNative -u http://10.10.20.102:8899/index.html -v v0.9.5
+$ layanative createapp -f SnowBallH5 -t 1 -n SnowBallNative -u http://10.10.20.102:8899/index.html -v v0.9.5
 ```
 
 既没指定-v也没指定-s，使用最新版本的SDK
 ```
-$ layanative createapp -f SnowBallH5 -t -1 -n SnowBallNative -u http://10.10.20.102:8899/index.html
+$ layanative createapp -f SnowBallH5 -t 1 -n SnowBallNative -u http://10.10.20.102:8899/index.html
 ```
 用--version或者-v指定版本需要联网环境，断网情况下可以用--sdk或者-s指定SDK目录。[SDK下载地址](https://ldc.layabox.com/layadownload/?type=layaairnative-LayaAir%20Native%20SDK%200.9.6)
 ```
-$ layanative createapp -f SnowBallH5 -t -1 -n SnowBallNative -u http://10.10.20.102:8899/index.html -s D:/v0.9.6
+$ layanative createapp -f SnowBallH5 -t 1 -n SnowBallNative -u http://10.10.20.102:8899/index.html -s D:/v0.9.6
 ```
 ### 3.刷新native项目资源包
 refreshres命令用于刷新native项目的资源包  
