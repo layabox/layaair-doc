@@ -576,7 +576,7 @@
                 "name_3_file": "readme.md"
               },
 				{
-					"name_3_name": "Panel使用文档",
+					"name_3_name": "Panel",
 					"name_3_url": "English/LayaAir_AS3/IDE/Component_Detailed/Panel/",
 					"name_3_file": "readme.md"
 				}
@@ -1134,7 +1134,7 @@
 	      				"name_3_file":"readme.md"
 	      			},
 					{
-						"name_3_name": "WebGL下拼接图片产生缝隙的问题",
+						"name_3_name": "Cross-domain processing",
 						"name_3_url": "English/CommonProblem/2D/CrossDomain/",
 						"name_3_file": "readme.md"
 					}
@@ -1760,7 +1760,7 @@
                 "name_3_file": "readme.md"
               },
 				{
-					"name_3_name": "Panel使用文档",
+					"name_3_name": "Panel",
 					"name_3_url": "English/LayaAir_TS/IDE/Component_Detailed/Panel/",
 					"name_3_file": "readme.md"
 				}
@@ -2257,7 +2257,7 @@
 	      				"name_3_file":"readme.md"
 	      			},
 					{
-						"name_3_name": "WebGL下拼接图片产生缝隙的问题",
+						"name_3_name": "Cross-domain processing",
 						"name_3_url": "English/CommonProblem/2D/CrossDomain/",
 						"name_3_file": "readme.md"
 					}
@@ -2855,7 +2855,7 @@
                 "name_3_file": "readme.md"
               },
 				{
-					"name_3_name": "Panel使用文档",
+					"name_3_name": "Panel",
 					"name_3_url": "English/LayaAir_JS/IDE/Component_Detailed/Panel/",
 					"name_3_file": "readme.md"
 				}
@@ -3336,7 +3336,7 @@
       	"nav_1_data":[
       	{
       	"name_2_name":"Common problems in 2D",
-	"name_2_data":[
+		"name_2_data":[
 		{
 	      			"name_3_name":"WebGL stitching pictures generated gap problem",
 	      			"name_3_url":"English/CommonProblem/2D/GapProblem/",
@@ -3353,7 +3353,7 @@
 	      				"name_3_file":"readme.md"
 	      			},
 					{
-						"name_3_name": "WebGL下拼接图片产生缝隙的问题",
+						"name_3_name": "Cross-domain processing",
 						"name_3_url": "English/CommonProblem/2D/CrossDomain/",
 						"name_3_file": "readme.md"
 					}

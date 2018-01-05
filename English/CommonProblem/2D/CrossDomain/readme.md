@@ -1,28 +1,28 @@
-# 跨域的处理
+# Cross domain processing
 
-很多新手开发者制作完成一个Demo运行的时候有几率会出现资源无法显示的问题（代码完全正确的情况下），这时打开浏览器的控制台会发现资源跨域了。
+When many new novice developers finish making a Demo operation, there is a chance that resources can't be displayed.
 
-提示内容如下所示：
+The contents of the hint are as follows:
 
 *No 'Access-Control-Allow-Origin' header is present on the requested resource. Origin 'file://' is therefore not allowed access.*
 
-**为什么会跨域？**
+**Why do you need cross the domain ?**
 
-在浏览器默认的情况下，如果加载一个本地文件，会出现交叉域访问的问题。这就是**跨域**。
+When the browser is default, if you load a local file, there will be a cross-border access problem. This is the **cross-border**.
 
-**如何解决跨域问题？**
+**How to solve cross-domain issues ?**
 
-跨域分为两种。一种是文件请求跨域，一种是数据请求跨域
+Cross-domain is divided into two kinds. One is cross-domain file request, one is cross-domain data requests
 
-##### 1.文件请求跨域
+##### 1. File request across domains
 
-文件请求跨域的解决方法有两种，一种是给浏览器添加启动参数。在此以chrome为例；选中chrome浏览器快捷方式打开的图标——>右击打开属性——>打开快捷方式一栏——>目标末尾添加（前边有引号的话加在引号外） --allow-file-access-from-files。如下图所示：
+There are two solutions to cross-domain file requests, one is to add startup parameters to the browser. Here to chrome, for example; select the chrome browser shortcut to open the icon -> right click to open the property -> open the shortcut bar -> the end of the target to add (in front of the quotation marks, plus the quotation marks) --allow-file-access-from-files. As shown below:
 
-![1](img\1.png)(图1)
+![1](img\1.png)(figure 1)
 
-这时将所有已打开的chrome浏览器页面全部关闭重新运行即可。
+All the open Chrome browser pages are turned off and run again.
 
-**以上方法只能解决本地调试的问题，无法解决其他主机存在的跨域问题**。想彻底解决文件跨域问题则需修改webServer（一般webserver大多数都是apache、nginx、tomcat等），在请求特定的域名下加上跨域标识，这里以nginx为例：
+**The above method can only solve the problem of local debugging, and can not solve the cross - domain problems existing by other hosts** To solve the problem of file cross domain, we need to modify webServer (general webserver, most of which are Apache, nginx, Tomcat, etc.), and add cross domain identities to request specific domain names. Here's nginx as an example :
 
 ```
 http {
@@ -41,20 +41,20 @@ http {
 
 ```
 
-这样就可以实现GET,POST,OPTIONS跨域请求的支持，也可以 add_header Access-Control-Allow-Origin [http://www.layabox.com;](http://www.layabox.com%3B/) --指定允许的url；
+This enables the support of GET, POST, OPTIONS cross domain requests, and can also be implemented add_header Access-Control-Allow-Origin [http://www.layabox.com;](http://www.layabox.com%3B/) --Specified permissible of url；
 
-##### 2.数据请求跨域
+##### 2. Data request cross domain
 
-数据请求跨域需要后端配合修改，在请求里加上header标识，这里以php语言为例：
+The data request cross domain requires the backend coordination modification, and the header logo is added to the request. In this case, the PHP language is used as an example :
 
 ```
 header("Access-Control-Allow-Origin: *");
 ```
 
-不一定用*，它是允许所有的主机跨域访问，开发者也可以写指定域名下的主机才能进行访问
+It does not necessarily use *, it allows all hosts to cross domain access, and developers can also write the host under the specified domain name for access.
 
 
 
-**关于微信头像跨域：**
+**About WeChat Avatar cross domain: **
 
-可以在后台把图片下载到自己的服务器上，然后通过自己的服务器进行访问头像资源
+You can download the picture to your own server in the background, and then access your avatar resources through your own server
