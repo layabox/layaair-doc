@@ -564,6 +564,15 @@
 				"name_3_url": "Chinese/LayaAir_AS3/IDE/Component_Detailed/Panel/",
 				"name_3_file": "readme.md"
 			}]
+		},
+		{
+			"name_2_name": "脚本使用",
+			"name_2_data": [
+			{
+				"name_3_name": "runTime使用",
+				"name_3_url": "Chinese/LayaAir_AS3/IDE/ScriptUse/runtime/",
+				"name_3_file": "readme.md"
+			}]
 		}]
 	},
 	{
@@ -1644,6 +1653,15 @@
 				"name_3_url": "Chinese/LayaAir_TS/IDE/Component_Detailed/Panel/",
 				"name_3_file": "readme.md"
 			}]
+		},
+		{
+			"name_2_name": "脚本使用",
+			"name_2_data": [
+			{
+				"name_3_name": "runTime使用",
+				"name_3_url": "Chinese/LayaAir_TS/IDE/ScriptUse/runtime/",
+				"name_3_file": "readme.md"
+			}]
 		}]
 	},
 	{
@@ -2643,6 +2661,15 @@
 			{
 				"name_3_name": "Panel使用文档",
 				"name_3_url": "Chinese/LayaAir_JS/IDE/Component_Detailed/Panel/",
+				"name_3_file": "readme.md"
+			}]
+		},
+		{
+			"name_2_name": "脚本使用",
+			"name_2_data": [
+			{
+				"name_3_name": "runTime使用",
+				"name_3_url": "Chinese/LayaAir_JS/IDE/ScriptUse/runtime/",
 				"name_3_file": "readme.md"
 			}]
 		}]
