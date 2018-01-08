@@ -1,65 +1,65 @@
-# 创建一个微信小游戏
+# Create a WeChat mini-game
 
-### 一、准备好开发环境
+### A. Setting environment for development
 
-#### 1、下载并安装LayaAirIDE集成开发环境
+#### 1. Download and install LayaAirIDE integrated development environment
 
-LayaAirIDE是LayaAir引擎的集成开发环境，集成了LayaAir引擎与示例项目，UI、动画等可视化编辑，项目代码编写与管理等开发工具。**开发者可以直接采用LayaAirIDE创建微信小游戏的示例项目。**
+LayaAirIDE is an integrated development environment for the LayaAir engine, integrating with LayaAir engine and example projects, UI, animation and other visual editing, project code development and management tools. **Developers can directly use LayaAirIDE to create a sample project for Wechat Games.**
 
-**官网下载地址** ：[http://ldc.layabox.com/layadownload/?type=layaairide](http://ldc.layabox.com/layadownload/?type=layaairide)
+**Official website to download address** ：[http://ldc.layabox.com/layadownload/?type=layaairide](http://ldc.layabox.com/layadownload/?type=layaairide)
 
-> Tips：LayaAirIDE 1.7.14版本才开始集成微信小游戏开发
+> Tips：LayaAirIDE 1.7.14 Version began to integrate micro-channel game development
 
-#### 2、下载并安装微信小游戏开发工具
+#### 2. Download and install WeChat game development tools
 
-微信小游戏开发工具是小游戏开发与测试的环境，由于LayaAir引擎的开发者完全可以使用LayaAirIDE进行项目开发，那么安装这个小游戏开发工具主要是用于小游戏项目编译、预览、真机测试与调试、上传发布等。
+WeChat game development tool is a small game development and testing environment, because LayaAir engine developers can use LayaAirIDE for project development, installing this game development tool is mainly used for small game project compilation, preview, real machine test and Debugging, upload and publish issued.
 
 ![img](img/1.png)
 
-在小游戏开发文档的首页里，通过导航链接前往开发者工具下载页面 ，去下载开发工具。
+In the first page of the game development document, go to the Developer Tools download page via the navigation link to download the development tools.
 
 ![3](img/3.jpg) 
 
-**开发工具下载地址**：
+**Development tool downloading address**：
 https://mp.weixin.qq.com/debug/wxagame/dev/devtools/download.html
 
-#### 3、创建一个小程序的企业开发者帐号，获得开发者ID(AppID)
+#### 3. Create an enterprise developer account for a mini-program, get the developer ID (AppID)
 
-尽管没有AppID也可以开发调试，但是功能会受到限制。所以在开发之前，最好先去创建一个小程序的企业开发者帐号。
+Although debugging can be developed without AppID, functionality is limited. So before development, it is best to create a small program of enterprise developer account for  optimal conditions.
 
-注册地址：https://mp.weixin.qq.com/cgi-bin/registermidpage?action=index&lang=zh_CN
+Registered address: https://mp.weixin.qq.com/cgi-bin/registermidpage?action=index&lang=zh_CN
 
 ![img](img/2.png) 
 
-> Tips:微信小游戏不支持个人注册，如果是个人开发者只能创建小程序项目，无法创建小游戏项目。所以，个人开发者如果想体验，先不要输入AppID，点击输入框下的 **小游戏** 字样进行
+> Tips:WeChat game does not support individual registration, if it is a personal developer can only create a small program, can not create a small game project. So, personal developers if you want to experience, first do not enter AppID, click on the input box under the **mini-game** words.
 
 ### 
 
-### 二、创建微信小游戏项目
+### B. Create micro-channel game project
 
-#### 1、用LayaAirIDE创建小游戏示例项目
+#### 1. Create a game demo project with LayaAirIDE
 
-打开LayaAirIDE，新建项目。选择”微信小游戏示例“，设置项目名称、项目路径、开发语言类型、引擎版本。就可以创建小游戏项目了，如下图所示。
+Open LayaAirIDE and build a new project. Select the ”WeChat mini-game example“, set the name of the project, the project path, the development language type, engine version. You can create a small game, as shown in the following figure.
 
 ![img](img/4.jpg)
 
-> Tips：本示例暂以ActionScript3开发语言为例，后面会讲一下TS和JS项目与AS3项目的区别。
+> Tips：This example is temporarily ActionScript3 development language, and the difference between the TS and JS projects and the AS3 project will be described later.
 
-#### 2、查看示例项目效果
+#### 2. See the sample project results
 
-创建完项目之后，我们可以直接点一下调试按钮（如下图所示）。就可以看到我们的示例什么样子。
+After creating the project, we can click the debug button (as shown below). You can see what our example looks like.
 
 ![img](img/5.jpg)
 
-> Tips：这一步除了编译js，主要为了让大家记住我们的示例什么样子，后面，如果小游戏效果也是这样的就没错了。
+> Tips：In addition to compiling JS, this step is mainly to let you remember what our example looks like. Later, if the effect of the small game is the same , result should be not wrong.
 
-#### 3、简单了解项目的发布目录。
+#### 3. Simple understanding of the project's release directory.
 
 ![img](img/6.png)
 
-LayaAir开发者应该了解，项目目录/bin下级的h5目录才是运行目录。LayaAirIDE已经自动在示例项目内创建了小游戏的适配程序和项目文件，所以在开发阶段，创建小游戏项目的时候，直接将小游戏项目目录指向这个示例运行目录即可。（TS和JS项目与AS项目有所不同，另外，大型游戏项目正式发布的时候，据我们的经验来看，最好在小游戏开发工具内再另外建立一个用于正式发布的小游戏项目，具体的相关介绍，会放到进阶文档里细讲）
+LayaAir developers should understand that the h5 directory under the project directory / bin is the running directory. LayaAirIDE has automatically created a mini-game adapter and project files within the sample project, so in the development phase, when creating a game project, direct the game project directory to this sample run directory. (The TS and JS projects are different from the AS projects. In addition, when the large-scale game project is officially released, in our experience, it is best to create a separate game project for official release in the game development tool, Specific related introduction, will be put into the advanced document details)
 
-**特别提醒** ：
+**special reminder** ：
 
 > 由于TS与JS目录下的引擎js文件是多个，没有合并。是不被微信小游戏支持的，如果是TS或JS项目，1.7.14 beta版本只能先采用第三方的JS合并工具（比如webPack）将JS合并，然后再复制到小游戏的项目目录运行。LayaAirIDE计划1.7.14正式版本开始集成微信小游戏自动合并发布的功能。在LayaAirIDE中实现任何语言版本都可以一键发布为小游戏项目的目标。
 
@@ -129,7 +129,7 @@ require("./main.min.js");
 
 ![img](img/12.png) 
 
-修改后的game.js参考：
+The modified game.js reference:
 
 ```javascript
 require("./weapp-adapter.js");
@@ -141,22 +141,22 @@ require("./js/ui/layaUI.max.all.js");
 require("./main.min.js");
 ```
 
-需要提醒的，如果项目比较大，那改的地方就会比较多。**至少在当前，并不推荐这种方式**，因为IDE每次发布和更新项目时，又会被覆盖掉。建议采用JS合并的方式，将多个项目JS合并成为一个JS。
+It needs to be reminded that if the project is larger, there will be more places to change. **Currently this is not recommended*, because IDE will be overlaid every time it releases and updates the project. It is suggested that JS merge is adopted to merge multiple project JS into a JS.
 
-#### 4、真机测试与调试
+#### 4. The testing and debugging of the prototype
 
-除非是一些新手遇到的小游戏的兼容问题，由于LayaAirIDE里也可以调试项目效果，基本上两边的效果不会有不一一致的情况。所以这里最重要的是点击**预览**功能，通过手机微信扫码，在微信内进行真机测试与调试。
+Unless it is a small game for some novice encountered compatibility issues, because LayaAirIDE can also debug project, basically the effect of both sides will different. So the most important thing here is the ** preview ** feature, through the mobile WeChat scan code, in the WeChat real machine testing and debugging.
 
 ![img](img/14.png) 
 
-用微信扫码后，就启动了小程序项目，点击右上角的浮窗按钮，可以打开调试和打开性能监控面板。
+Scan the QR code with wechat, it launch the application project, click the floating window button in the upper right corner, you can open the debug and open the performance monitoring panel.
 
 ![img](img/10.png)
 
-开启真机调试与性能监控面板后，如下图所示。
+Open the device debugging and performance monitoring panel, as shown below.
 
 ![img](img/11.png) 
 
 
 
-至此，一个完整的小游戏开发流程就结束了。是不是很简单。采用LayaAirIDE开发的小游戏项目，基本上是无缝用于微信小游戏项目。
+At this point, a complete process of small game development is over. Is it not very simple? The small game developed by LayaAirIDE is basically intuitive to release WeChat mini-game.

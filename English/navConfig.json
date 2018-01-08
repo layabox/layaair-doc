@@ -827,12 +827,12 @@
 			"name_2_name": "微信小游戏开发基础",
 			"name_2_data": [
 			{
-				"name_3_name": "微信小游戏简介",
+				"name_3_name": "Brief introduction",
 				"name_3_url": "English/wechat/minigame/introduction/",
 				"name_3_file": "readme.md"
 			},
 			{
-				"name_3_name": "创建微信小游戏",
+				"name_3_name": "Create a WeChat mini-game",
 				"name_3_url": "English/wechat/minigame/novice/",
 				"name_3_file": "readme.md"
 			}]

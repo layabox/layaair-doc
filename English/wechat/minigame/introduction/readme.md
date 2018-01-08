@@ -1,59 +1,56 @@
-# 微信小游戏简介
+# A brief introduction to WeChat games
 
-##### 首先，我们要了解什么是微信小游戏？
+##### First of all, what do we need to know about WeChat games?
 
-腾讯官方的解释是：
+Tencent's official explanation is:
 
-> 微信小游戏是微信小程序的一个类目，它即点即玩，无需下载安装，体验轻便，可以和微信内的好友一起玩，比如PK、围观等。
+> WeChat mini game is a category of WeChat components, which main point target game, no need to download and install, experience lightweight, you can play with friends in WeChat, such as PK, live streaming and so on.
 
-即点即玩，无需下载安装。这应该就是H5游戏了吧？
+That is, the point is to play game and no need to download the installation. This should be possible through the H5 game technology. (see -Introduction- chapter about HTML5 specifications)
 
-怎么解释呢？这要先从H5的定义说起……
 
-通常大家都认为H5就是HTML5的简称，但是在开发者的眼里，HTML5只是一个WEB技术标准，符合这个标准的，并且能在浏览器里运行的游戏才是HTML5游戏。而更多的人，对技术了解不多。为了便于理解，把即点即玩，无需下载安装的游戏都称之为H5游戏，还有人叫手机页游。
+The running environment of the WeChat game is not on a browser, but it runs on the Runtime in the WeChat APP. Although the interface of the WeChat game is compatible with most Canvas and Webgl, it have specificness. Obviously, from a strict definition, WeChat games are not conform with some standard HTML5 games.
 
-微信小游戏的运行环境并不是浏览器，也不能在浏览器中运行，而是运行于微信APP中的Runtime。尽管微信小游戏的接口兼容大部分Canvas和Webgl，具有即点即玩，无需下载安装的HTML5特性。显然，从严格的定义来讲，微信小游戏不是标准的HTML5游戏。
+**So ** How can a game that can be developed can also run in a browser?
 
-**那么，**如何能做到开发的游戏还能在浏览器中也运行起来呢？
+##### Can developers only use the open API development of WeChat games?
 
-##### 开发者只能使用微信小游戏的开放API开发吗？
+we will continue to introduce our topics through these two questions.
 
-带着这两个问题，我们继续介绍。
+As we all know, LayaAir engine is based on HTML5 full platform engine based on HTML5. Since it want be cross-platform,, the WeChat game are considerate in our compatibility requierement!
 
-众所周知，LayaAir引擎是基于HTML5的全平台引擎，既然是全平台，那当然不能错过微信小游戏啦！
+Since the official realease of WeChat game, LayaAir engine also launched a WeChat game support for developers. From LayaAir 1.7.14 version, developers can download the latest version engine or IDE, only need initialization adapter program according to the adapter document, so that HTML5 game items can be simply initializing adapted to WeChat small game project.
 
-所以，在微信小游戏发布的当天，LayaAir引擎也为开发者推出微信小游戏的适配库。自LayaAir 1.7.14版开始，开发者下载最新版本引擎或IDE，只需要按照适配教程文档，初始化一下适配程序，即可将HTML5游戏项目无缝适配为微信小游戏项目。
+In this way, the project developed through the LayaAir engine run not only in a browser, or packaged APP (iOS and Android), but also can run on the WeChat mini-games platform.
 
-这样，通过LayaAir引擎开发出来的项目，不仅可以运行在浏览器中、或者打包成为APP（iOS与Android）、还可以运行在微信小游戏的平台中。
+Developers should be warn that the WeChat game work differently than classics HTML5 browser,
 
-或许，开发者还想了解，既然微信小游戏不是HTML5，
+##### What are the differences that need to be paid attention to in the process of development?
 
-##### 那在开发的过程中需要注意哪些差异呢？
+If we use WeChat official API to develop, there are still some things to pay attention  such as not supporting DOM and BOM, only one canvas, no eval, XML issues and so on.
 
-如果是采用微信官方API开发的话，还是要有一些要注意的，比如不支持DOM与BOM、小游戏只能有一个画布、不支持Eval、不支持XML等等……
+However,
 
-但是，
+For the developers using LayaAir engine, it is not necessary to know exactly what are differences, there is no constraint rule in coding development. Even if it has been developed using LayaAir engine to complete the replacement of the old project, the latest version of the engine library, in the main program (Laya.init) before the entrance, call MiniAdpter.init () this method initializes a matching procedure, the pre loaded local packet content into the layaNativeDir directory, can be the perfect support for WeChat game.
 
-对于LayaAir引擎的开发者来讲，不用刻意去了解到底有哪些差异，按照正常的LayaAir引擎开发规则去开发就可以了。即便是已经采用LayaAir引擎开发完成的老项目，替换最新版本引擎类库后，在主程序入口的Laya.init()之前，调用MiniAdpter.init()这个方法，去初始化一下适配程序，把预加载的本地包内容放入到layaNativeDir目录，即可完美支持微信小游戏。
-
-**AS3版本初始化**
+**AS3 code implementation: **
 
 ```java
-//AS3版本初始化微信小游戏的适配
+// AS3 Initialization WeChat game adapter
 MiniAdpter.init();
-//初始化引擎
+// Initialize the engine
 Laya.init(1136,640);
 ```
 
-**TypeScript或JavaScript版本初始化：**
+**TypeScript and JavaScript code implementation: **
 
 ```javascript
-//TS或JS版本初始化微信小游戏的适配
+// TS and JS Initialization WeChat game adapter
 Laya.MiniAdpter.init();
-//初始化引擎
+// Initialize the engine
 Laya.init(1136,640);
 ```
 
 
 
-> Tips：关于layaNativeDir目录，以及小游戏的具体适配内容，可以查看相关的其它文档
+> Tips：About layaNativeDir directory, as well as the specific adaptation of the game, you can see other related documents
