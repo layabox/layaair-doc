@@ -581,10 +581,18 @@
 					"name_3_file": "readme.md"
 				}
             ]
-          }
-        ]
-      },
-      {
+		  },
+		  {
+			"name_2_name": "脚本使用",
+			"name_2_data": [
+			{
+				"name_3_name": "runTime使用",
+				"name_3_url": "Chinese/LayaAir_AS3/IDE/ScriptUse/runtime/",
+				"name_3_file": "readme.md"
+			}]
+		  }]
+	  },
+	  {
         "nav_1_name": "2D Advanced（AS3）",
         "nav_1_data": [
           {
