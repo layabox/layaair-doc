@@ -44,16 +44,16 @@ Can use --path Parameters specify the output path of a project, default output t
 
 Using the -v  version v0.9.5 of the SDK
 ```
-$ layanative createapp -f SnowBallH5 -t -1 -n SnowBallNative -u http://10.10.20.102:8899/index.html -v v0.9.5
+$ layanative createapp -f SnowBallH5 -t 1 -n SnowBallNative -u http://10.10.20.102:8899/index.html -v v0.9.5
 ```
 
 Neither specify -v nor  -s is specified, using the latest version of SDK
 ```
-$ layanative createapp -f SnowBallH5 -t -1 -n SnowBallNative -u http://10.10.20.102:8899/index.html
+$ layanative createapp -f SnowBallH5 -t 1 -n SnowBallNative -u http://10.10.20.102:8899/index.html
 ```
 Using--version or -v specified version needs a networked environment, Can be used under the network off --sdk or -s Specify the SDK directory [SDK Download address](https://ldc.layabox.com/layadownload/?type=layaairnative-LayaAir%20Native%20SDK%200.9.6)
 ```
-$ layanative createapp -f SnowBallH5 -t -1 -n SnowBallNative -u http://10.10.20.102:8899/index.html -s D:/v0.9.6
+$ layanative createapp -f SnowBallH5 -t 1 -n SnowBallNative -u http://10.10.20.102:8899/index.html -s D:/v0.9.6
 ```
 ### 3.Refresh the native project resource package
 refreshres command is used to refresh the resource package for the native project
