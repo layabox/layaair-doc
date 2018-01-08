@@ -829,10 +829,10 @@
         ]
       },
 	  {
-		"nav_1_name": "微信小游戏开发",
+		"nav_1_name": "WeChat game development",
 		"nav_1_data": [
 		{
-			"name_2_name": "微信小游戏开发基础",
+			"name_2_name": "WeChat mini-game basic",
 			"name_2_data": [
 			{
 				"name_3_name": "Brief introduction",
@@ -846,10 +846,10 @@
 			}]
 		},
 		{
-			"name_2_name": "微信小游戏开发进阶",
+			"name_2_name": "WeChat mini-game advanced",
 			"name_2_data": [
 			{
-				"name_3_name": "微信小游戏综合介绍",
+				"name_3_name": "Comprehensive description to WeChat games",
 				"name_3_url": "English/wechat/minigame/advanced/",
 				"name_3_file": "readme.md"
 			}]
@@ -2011,27 +2011,27 @@
         ]
       },
 	{
-		"nav_1_name": "微信小游戏开发",
+		"nav_1_name": "WeChat game development",
 		"nav_1_data": [
 		{
-			"name_2_name": "微信小游戏开发基础",
+			"name_2_name": "WeChat mini-game basic",
 			"name_2_data": [
 			{
-				"name_3_name": "微信小游戏简介",
+				"name_3_name": "Brief introduction",
 				"name_3_url": "English/wechat/minigame/introduction/",
 				"name_3_file": "readme.md"
 			},
 			{
-				"name_3_name": "创建微信小游戏",
+				"name_3_name": "Create a WeChat mini-game",
 				"name_3_url": "English/wechat/minigame/novice/",
 				"name_3_file": "readme.md"
 			}]
 		},
 		{
-			"name_2_name": "微信小游戏开发进阶",
+			"name_2_name": "WeChat mini-game advanced",
 			"name_2_data": [
 			{
-				"name_3_name": "微信小游戏综合介绍",
+				"name_3_name": "Comprehensive description to WeChat games绍",
 				"name_3_url": "English/wechat/minigame/advanced/",
 				"name_3_file": "readme.md"
 			}]
@@ -3114,27 +3114,27 @@
         ]
       },
 	  {
-		"nav_1_name": "微信小游戏开发",
+		"nav_1_name": "WeChat game development",
 		"nav_1_data": [
 		{
-			"name_2_name": "微信小游戏开发基础",
+			"name_2_name": "WeChat mini-game basic",
 			"name_2_data": [
 			{
-				"name_3_name": "微信小游戏简介",
+				"name_3_name": "Brief introduction",
 				"name_3_url": "English/wechat/minigame/introduction/",
 				"name_3_file": "readme.md"
 			},
 			{
-				"name_3_name": "创建微信小游戏",
+				"name_3_name": "Create a WeChat mini-game",
 				"name_3_url": "English/wechat/minigame/novice/",
 				"name_3_file": "readme.md"
 			}]
 		},
 		{
-			"name_2_name": "微信小游戏开发进阶",
+			"name_2_name": "WeChat mini-game advanced",
 			"name_2_data": [
 			{
-				"name_3_name": "微信小游戏综合介绍",
+				"name_3_name": "Comprehensive description to WeChat games",
 				"name_3_url": "English/wechat/minigame/advanced/",
 				"name_3_file": "readme.md"
 			}]

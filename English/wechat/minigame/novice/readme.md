@@ -61,58 +61,58 @@ LayaAir developers should understand that the h5 directory under the project dir
 
 **special reminder** ：
 
-> 由于TS与JS目录下的引擎js文件是多个，没有合并。是不被微信小游戏支持的，如果是TS或JS项目，1.7.14 beta版本只能先采用第三方的JS合并工具（比如webPack）将JS合并，然后再复制到小游戏的项目目录运行。LayaAirIDE计划1.7.14正式版本开始集成微信小游戏自动合并发布的功能。在LayaAirIDE中实现任何语言版本都可以一键发布为小游戏项目的目标。
+> because the engine JS files under the TS and JS directory are multiple, not merged. It is not supported by WeChat games. If it's TS or JS project, the 1.7.14 beta version can only merge the JS with the third party JS merge tool, such as webPack, then copy it to the small game's project directory. The formal version of the LayaAirIDE plan 1.7.14 begins to integrate the functions of the WeChat game auto merge release. Any language version in LayaAirIDE can be released as a target for small game projects.
 
-### 三、创建小游戏项目
+### C. Create a small game project
 
-#### 1、开发者帐号登录，选择项目类型
+#### 1. Developer account login, select the project type
 
-打开”微信web开发者工具“，用开发者的微信扫码登录。然后选择**小程序项目**点击进入项目设置。
+Open the ”WeChat web developer tool“ and log in with the developer's WeChat scavenging code. Then select the **small program project** click into the project settings.
 
 ![img](img/7.jpg)
 
-#### 2、设置小程序项目
+#### 2. Setting up a mini-program project
 
-在小程序项目设置面板里，`项目目录`可以选择LayaAirIDE创建的小游戏示例项目的运行目录。（如果想另外创建目录，那么在小游戏调试与发布前，要将LayaAirIDE里的运行目录内容，手动复制到这个目录内）
+In the minigame program project settings panel, the `project directory` can select the running directory of the minigame example project created by LayaAirIDE. (if you want to create an additional directory, you can manually copy the contents of the running directory in the LayaAirIDE before the debug and release of the game.)
 
 ![img](img/8.jpg)
 
-AppID在小程序开发者帐号里获得（如下图所示）。如果没有，可以点击AppID输入框下的小游戏进行体验，但是功能会受到限制。
+AppID in the app developer account (as shown below). If not, you can click the AppID input box to experience the game, but the function will be limited.
 
 ![img](img/9.jpg) 
 
 
 
-**需要特别注意**的是小游戏不支持个人注册，如果是个人开 发者，那输入AppID后只能进入小程序的开发，进不了小游戏的开发。所以个人开发者如果要体验，不要输入AppID，点击输入框下的小游戏进行体验。如果你看不到小游戏几个字，那你下的版本一定是错的，不支持小游戏。要重新按本文档中提供的地址重新下载。
+**Need special attention** mini-game does not support personal registration, if it is a personal developer, then enter AppID can only enter the development of small programs, can not enter the development of small games. So if personal developers want to experience, do not enter AppID, click the input box to experience the game. If you can not see the game a few words, then your version must be wrong, do not support the game. Re-download at the address provided in this document.
 
 
 
-#### 3、微信开发者工具的编译与调试
+#### 3. Compilation and debugging of WeChat developer tools
 
-完成小游戏项目的创建后，点击编译，即可在工具内预览效果和调试，AS3项目的话，由于JS在编译时自动合并了，所以到这一步应该非常顺利，可以看到模式器中的效果与LayaAirIDE中的调试效果是一致的。
+Create game project, click on the compiler, can be in the preview and debugging tools, AS3 project, the JS automatically merge at compile time, so this step should be very smooth, you can see the effect with the LayaAirIDE model in the debugging results are consistent.
 
 ![13](img/13.png) 
 
-如果是TS或JS版本。如果不手动修改一定会报错。我们可以在调试器里看到报错信息，这块的调试就是chrome的调试方式，所以就不细讲了。
+If it is TS or JS version. If you do not manually modify the error will be. We can see the error message in the debugger, this piece of debugging is chrome debugging, so it is not detailed.
 
-报错的原因基本上是由两个问题导致。
+The reasons for the errors are basically caused by two issues.
 
-第一、TS与JS版本目前还没有集成小游戏的JS合并功能，所以多个JS文件会因为跨文件的执行域问题报错。
+1. TS and JS versions have not yet integrated the JS merge capabilities of small games, so multiple JS files will be mistaken for cross file execution domain problems.
 
-第二、同样是由于LayaAirIDE暂时还没有集成JS合并，所以小游戏的入口程序game.js里，引擎并未自动引入游戏的入口文件。所以不手动修改，肯定是找不到入口文件的。
+2.the same is due to LayaAirIDE not yet integrated JS merger, so the game's entry game.js, the engine does not automatically import the game's import file. So do not manually modify, certainly can not find the entrance document.
 
-**解决方案**：
+**solution**:
 
-第一、要使用第三方JS合并工具，将多个JS合并成为一个JS。然后修改入口程序game.js，将合并后的js引入即可。
+1. Use a third-party JS merge tool to combine multiple JS into a single JS. Then modify the entry procedure game.js, the merged js can be introduced.
 
-修改后的game.js参考：
+Modified game.js reference :
 
 ```javascript
 require("./weapp-adapter.js");
 require("./main.min.js");
 ```
 
-第二、如果引擎JS不想合并到一起，也是可以的，只把项目JS合并到一起就行了。但是要在入口程序里将多个引擎JS引用进来。
+2. If the engine JS do not want to merge together, it is possible, only the project JS together on the line. But in the importation process will be more than one engine JS references come in.
 
 修改后的game.js参考：
 
@@ -125,7 +125,7 @@ require("./libs/min/laya.ui.min.js");
 require("./main.min.js");
 ```
 
-第三、有没有不合并的解决方式呢，也是可以的，因为JS之间的执行域问题导致的报错，那么，我们将执行域设置为全局域，那就可以解决了。比如，我们的小游戏示例程序，通过调试器可以看出是找不到TestPageUI，那么我们在layaUI.max.all.js找到TestPageUI将其变为window.TestPageUI（如下图所示），然后再修改入口程序game.js，引用所有的JS就可以了。
+3. there is no non-merger solution, it is possible, because of the implementation of domain problems caused by JS error, then, we will set the execution domain to the global domain, it can be solved. For example, our game demo program, you can see through the debugger can not find TestPageUI, then we find the TestPageUI in layaUI.max.all.js it becomes window.TestPageUI (as shown below), and then modify The entrance procedure game.js, all JS can reference.
 
 ![img](img/12.png) 
 
