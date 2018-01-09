@@ -1,36 +1,36 @@
-# runTime的使用
+# Implement runTime
 
-在LayaAirIDE中资源面板下所有的组件均有runtime的属性，runtime是该组件运行时的逻辑类；相同组件可使用同一runtime类来实现相同的功能，比如不同页面上需要对相同的组件实现同一功能。**需要注意的是组件的runtime逻辑类如果不继承组件自身，并且继承的对象中没有该组件的属性时，这个属性则会失效。**
+In LayaAirIDE, all components of the resource panel have the attributes of runtime. Runtime is the logical class of the component runtime. The same components can use the same runtime class to achieve the same functions, for example, different pages need the same components to achieve the same function. **what we need to pay attention to is the runtime logic class of components. If we do not inherit the components themselves and inherit objects without the attributes of the component, this property will fail. **
 
-**本篇文章将对两个不同页面中的Image组件设置同一个runtime逻辑类来实现相同的功能，运行效果如动图0所示：**
+**This article will implement the same function for the Image component in two different pages with the same runtime logic class, as shown in the dynamic figure 0.**
 
-![0](img\0.gif)(图0)
+![0](img\0.gif)(figure 0)
 
-### 一、给页面中的组件设置runtime类
+### 1. Set the runtime class for the components in the page
 
-在页面管理目录下创建两个UI页面，分别叫MonkeyPage和BGPage。两个UI页面中各拖入一张Image组件，设置runtime属性为game.ImageRunTime。如图1图2所示：
+Create two UI pages in the page management directory, called MonkeyPage and BGPage. Each of the two UI pages is dragged into a Image component, and the runtime property is set to game.ImageRunTime. As shown in Figure 1, figure 2:
 
-![1](img\1.png)(图1)
+![1](img\1.png)(Figure 1)
 
-![2](img\2.png)(图2)
+![2](img\2.png)(Figure 2)
 
-设置完成之后保存导出UI，开始编写逻辑代码。
+Save the export UI after the setup is complete, and start writing the code.
 
 
 
-### 二、代码逻辑处理
+### 2. code process
 
-切换到代码模式下，打开layaUI.max.all.ts文件之后会发现里边有报错，如下图所示：
+After opening BGPageUI and MonkeyPageUI class in FlashBuilder, you will find that there is a report error in it, as shown in the following figure (here we open BGPageUI class, MonkeyPageUI is similar to BGPageUI class):
 
-![3](img\3.png)(图3)
+![3](img\3.png)(figure 3)
 
-这个报错不用担心，是因为项目中ImageRunTime逻辑类是需要开发者自己创建的，这里还没有创建，同时也没有game包，所以编辑器找不到，导致报错。
+Do not worry about this error, because the project ImageRunTime logical class needs to create their own, there is not created, there is no game package, so the editor can not find, resulting in an error.
 
-接下来我们在src目录下创建一个game包，在game包中创建一个ImageRunTime类，创建之后我们就会发现layaUI.max.all.ts中的报错消失了，如图4所示：
+Next we create a game package in the src directory and create an ImageRunTime class in the game package. After creating we will find BGPageUI and MonkeyPageUI class error disappeared, as shown in Figure 4:
 
-![4](img\4.png)(图4)
+![4](img\4.png)(figure 4)
 
-然后在ImageRunTime类中编写我们想要实现的效果，比如实现一个点击缩放（类似按钮）的功能，全部代码如下所示：
+Then write the effect we want to achieve in the ImageRunTime class, such as implementing a click zoom (something like a button) with the following code:
 
 ```typescript
 module game {
@@ -64,7 +64,8 @@ module game {
 }
 ```
 
-在主运行类中实例化这两个UI界面，代码如下所示：
+The two UI interfaces are instantiated in the main run class, as shown in the code as follows:
+
 
 ```typescript
 // 程序入口
@@ -95,13 +96,13 @@ class GameMain {
 new GameMain();
 ```
 
-最终运行效果如图0所示
+Final run effect shown in Figure 0
 
 
 
-### 三、如果runtime逻辑类继承的对象非自身组件
+### 3. Whether object inherited by the runtime logic class is not its own component
 
-在以上代码中我们演示了继承自身组件Image所实现的效果，如果继承一个Button组件类会出现什么情况呢？我们来操作看下。代码以及实现效果如下所示：
+In the code above, we demonstrate the effect of inheriting from the Image itself, what happens if we inherit a Button component class? Let's take a look at it. The code and the effect are as follows:
 
 ```typescript
 module game {
@@ -121,6 +122,6 @@ module game {
 }
 ```
 
-![5](img\5.gif)(图5)
+![5](img\5.gif)(figure 5)
 
-这时我们会发现UI页面上的资源显示的很怪异，这时因为按钮的skin默认是三态的，当Image的runtime逻辑类继承自Button组件后，它就不再是一个Image组件了，而是一个Button组件。
+At this point we will find the UI page resources display weird, this is because the button skin is three state  by default, when the Image runtime logic class inherits from the Button component, it is no longer an Image component, but a  Button component.
