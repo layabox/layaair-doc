@@ -1142,6 +1142,11 @@
 	      				"name_3_file":"readme.md"
 	      			},
 					{
+	      				"name_3_name":"截屏分享处理",
+	      				"name_3_url":"English/LayaAir_AS3/CommonProblem/2D/Screenshot/",
+	      				"name_3_file":"readme.md"
+	      			},
+					{
 						"name_3_name": "Cross-domain processing",
 						"name_3_url": "English/CommonProblem/2D/CrossDomain/",
 						"name_3_file": "readme.md"
@@ -2273,6 +2278,11 @@
 	      				"name_3_file":"readme.md"
 	      			},
 					{
+	      				"name_3_name":"截屏分享处理",
+	      				"name_3_url":"English/LayaAir_TS/CommonProblem/2D/Screenshot/",
+	      				"name_3_file":"readme.md"
+	      			},
+					{
 						"name_3_name": "Cross-domain processing",
 						"name_3_url": "English/CommonProblem/2D/CrossDomain/",
 						"name_3_file": "readme.md"
@@ -3374,6 +3384,11 @@
 	      			{
 	      				"name_3_name":"Set the page depth level order above dialog",
 	      				"name_3_url":"English/LayaAir_JS/CommonProblem/2D/DialogzOrder/",
+	      				"name_3_file":"readme.md"
+	      			},
+					{
+	      				"name_3_name":"截屏分享处理",
+	      				"name_3_url":"English/LayaAir_JS/CommonProblem/2D/Screenshot/",
 	      				"name_3_file":"readme.md"
 	      			},
 					{
