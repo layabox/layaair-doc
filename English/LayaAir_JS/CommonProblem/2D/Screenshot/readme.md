@@ -1,16 +1,16 @@
-# 如何截屏
+# Save and share screenshot
 
-在项目开发的过程中经常会有截屏的需求，例如：截取屏幕上的内容进行显示、分享以及二次绘制等。
+In the process of project development, there is often a need for screenshots, such as the content of the screenshot on the screen, sharing, and post processing.
 
-在LayaAir中的Sprite类中提供了drawToCanvas方法来实现截屏的需求。API如图1所示：
+The drawToCanvas method is provided in the Sprite class in LayaAir for screen capture. API shown in Figure 1:
 
-![1](img\1.png)(图1)
+![1](img\1.png)(figure 1)
 
-从API中我们可以看出drawToCanvas一共有两种使用方式。一种是**将绘制的图片当做图片源，绘制到其他Sprite中**；一种是**获取原始图片数据，分享到网上，从而实现截图效果**。接下来我们将用代码示例来实现这两种功能。
+From API we can see that there are two ways of using drawToCanvas in all. One kind is **Draw the picture as a picture source and draw it to other Sprites**. Another is **to get the original image data, share online, in order to achieve the screenshot effect**. Next we will use code examples to achieve these two functions.
 
-### 1、将截出来的图片绘制到其他Sprite中
+### 1. Draw the captured images into other Sprite
 
-在stage上实例化两个Sprite，一个用来显示原始的图片，一个用来显示截取的图片；全部代码如下所示：
+On stage, two Sprite are instantiated, one is used to display the original picture, and one is used to display the captured images; the whole code is as follows:
 
 ```typescript
 //初始化引擎
@@ -37,15 +37,15 @@ function onClick() {
 }
 ```
 
-运行效果如动图2所示：
+The running effect is shown as shown in Figure 2.
 
-![2](img\2.gif)(图2)
+![2](img\2.gif)(figure 2)
 
 
 
-### 2、保存分享截屏数据
+### 2. Share screenshot data
 
-将图片数据保存发送给服务器。全部代码如下所示：
+Save the image data to the server. The whole code is as follows:
 
 ```typescript
 //初始化引擎
@@ -68,10 +68,10 @@ function onClick() {
 }
 ```
 
-点击stage之后我们可以在看到输出的base64信息，如动图3所示：
+Click the stage after we can see the output of the base64 information, as shown in Figure 3 :
 
-![3](img\3.gif)(图3)
+![3](img\3.gif)(Picture 3)
 
 
 
-在LayaNative下实现截屏请跳转至[这里](https://ldc.layabox.com/doc/?nav=zh-js-7-2-7)
+For a screenshot under LayaNative please go to [this page](https://ldc.layabox.com/doc/?nav=en-js-7-2-7)
