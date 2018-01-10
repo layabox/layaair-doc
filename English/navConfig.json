@@ -583,10 +583,10 @@
             ]
 		  },
 		  {
-			"name_2_name": "脚本使用",
+			"name_2_name": "Script use",
 			"name_2_data": [
 			{
-				"name_3_name": "runTime使用",
+				"name_3_name": "Implement runTime",
 				"name_3_url": "English/LayaAir_AS3/IDE/ScriptUse/runtime/",
 				"name_3_file": "readme.md"
 			}]
@@ -1139,6 +1139,11 @@
 	      			{
 	      				"name_3_name":"Set the page depth level order above dialog",
 	      				"name_3_url":"English/LayaAir_AS3/CommonProblem/2D/DialogzOrder/",
+	      				"name_3_file":"readme.md"
+	      			},
+					{
+	      				"name_3_name":"Save and share screenshot",
+	      				"name_3_url":"English/LayaAir_AS3/CommonProblem/2D/Screenshot/",
 	      				"name_3_file":"readme.md"
 	      			},
 					{
@@ -1775,10 +1780,10 @@
             ]
 		},
 		{
-			"name_2_name": "脚本使用",
+			"name_2_name": "Script use",
 			"name_2_data": [
 			{
-				"name_3_name": "runTime使用",
+				"name_3_name": "Implement runTime",
 				"name_3_url": "English/LayaAir_TS/IDE/ScriptUse/runtime/",
 				"name_3_file": "readme.md"
 			}]
@@ -2031,7 +2036,7 @@
 			"name_2_name": "WeChat mini-game advanced",
 			"name_2_data": [
 			{
-				"name_3_name": "Comprehensive description to WeChat games绍",
+				"name_3_name": "Comprehensive description to WeChat games",
 				"name_3_url": "English/wechat/minigame/advanced/",
 				"name_3_file": "readme.md"
 			}]
@@ -2270,6 +2275,11 @@
 	      			{
 	      				"name_3_name":"Set the page depth level order above dialog",
 	      				"name_3_url":"English/LayaAir_TS/CommonProblem/2D/DialogzOrder/",
+	      				"name_3_file":"readme.md"
+	      			},
+					{
+	      				"name_3_name":"Save and share screenshot",
+	      				"name_3_url":"English/LayaAir_TS/CommonProblem/2D/Screenshot/",
 	      				"name_3_file":"readme.md"
 	      			},
 					{
@@ -2878,10 +2888,10 @@
             ]
 		 },
 		 {
-			"name_2_name": "脚本使用",
+			"name_2_name": "Script use",
 			"name_2_data": [
 			{
-				"name_3_name": "runTime使用",
+				"name_3_name": "Implement runTime",
 				"name_3_url": "English/LayaAir_JS/IDE/ScriptUse/runtime/",
 				"name_3_file": "readme.md"
 			}]
@@ -3374,6 +3384,11 @@
 	      			{
 	      				"name_3_name":"Set the page depth level order above dialog",
 	      				"name_3_url":"English/LayaAir_JS/CommonProblem/2D/DialogzOrder/",
+	      				"name_3_file":"readme.md"
+	      			},
+					{
+	      				"name_3_name":"Save and share screenshot",
+	      				"name_3_url":"English/LayaAir_JS/CommonProblem/2D/Screenshot/",
 	      				"name_3_file":"readme.md"
 	      			},
 					{
