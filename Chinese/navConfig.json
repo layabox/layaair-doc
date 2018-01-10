@@ -816,6 +816,11 @@
 				"name_3_name": "创建微信小游戏",
 				"name_3_url": "Chinese/wechat/minigame/novice/",
 				"name_3_file": "readme.md"
+			},
+			{
+				"name_3_name": "用3D项目演示老项目如何适配微信小游戏",
+				"name_3_url": "Chinese/wechat/minigame/3D-adapter/",
+				"name_3_file": "readme.md"
 			}]
 		},
 		{
@@ -1900,6 +1905,11 @@
 				"name_3_name": "创建微信小游戏",
 				"name_3_url": "Chinese/wechat/minigame/novice/",
 				"name_3_file": "readme.md"
+			},
+			{
+				"name_3_name": "用3D项目演示老项目如何适配微信小游戏",
+				"name_3_url": "Chinese/wechat/minigame/3D-adapter/",
+				"name_3_file": "readme.md"
 			}]
 		},
 		{
@@ -2914,6 +2924,11 @@
 			{
 				"name_3_name": "创建微信小游戏",
 				"name_3_url": "Chinese/wechat/minigame/novice/",
+				"name_3_file": "readme.md"
+			},
+			{
+				"name_3_name": "用3D项目演示老项目如何适配微信小游戏",
+				"name_3_url": "Chinese/wechat/minigame/3D-adapter/",
 				"name_3_file": "readme.md"
 			}]
 		},
