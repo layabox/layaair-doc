@@ -490,6 +490,11 @@
           {
             "name_2_name": "IDE component property reference",
             "name_2_data": [
+			  {
+                "name_3_name": "组件命名规则",
+                "name_3_url": "English/LayaAir_AS3/IDE/Component_Detailed/NamingRules/",
+                "name_3_file": "readme.md"
+              },
               {
                 "name_3_name": "Button",
                 "name_3_url": "English/LayaAir_AS3/IDE/Component_Detailed/Button/",
@@ -842,6 +847,11 @@
 			{
 				"name_3_name": "Create a WeChat mini-game",
 				"name_3_url": "English/wechat/minigame/novice/",
+				"name_3_file": "readme.md"
+			},
+			{
+				"name_3_name": "用3D项目演示老项目如何适配微信小游戏",
+				"name_3_url": "English/wechat/minigame/3D-adapter/",
 				"name_3_file": "readme.md"
 			}]
 		},
@@ -1687,6 +1697,11 @@
           {
             "name_2_name": "IDE component property reference",
             "name_2_data": [
+			  {
+                "name_3_name": "组件命名规则",
+                "name_3_url": "English/LayaAir_TS/IDE/Component_Detailed/NamingRules/",
+                "name_3_file": "readme.md"
+              },
               {
                 "name_3_name": "Button",
                 "name_3_url": "English/LayaAir_TS/IDE/Component_Detailed/Button/",
@@ -2029,6 +2044,11 @@
 			{
 				"name_3_name": "Create a WeChat mini-game",
 				"name_3_url": "English/wechat/minigame/novice/",
+				"name_3_file": "readme.md"
+			},
+			{
+				"name_3_name": "用3D项目演示老项目如何适配微信小游戏",
+				"name_3_url": "English/wechat/minigame/3D-adapter/",
 				"name_3_file": "readme.md"
 			}]
 		},
@@ -2795,6 +2815,11 @@
           {
             "name_2_name": "IDE component property reference",
             "name_2_data": [
+			  {
+                "name_3_name": "组件命名规则",
+                "name_3_url": "English/LayaAir_JS/IDE/Component_Detailed/NamingRules/",
+                "name_3_file": "readme.md"
+              },
               {
                 "name_3_name": "Button",
                 "name_3_url": "English/LayaAir_JS/IDE/Component_Detailed/Button/",
@@ -3137,6 +3162,11 @@
 			{
 				"name_3_name": "Create a WeChat mini-game",
 				"name_3_url": "English/wechat/minigame/novice/",
+				"name_3_file": "readme.md"
+			},
+			{
+				"name_3_name": "用3D项目演示老项目如何适配微信小游戏",
+				"name_3_url": "English/wechat/minigame/3D-adapter/",
 				"name_3_file": "readme.md"
 			}]
 		},

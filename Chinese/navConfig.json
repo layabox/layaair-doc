@@ -474,11 +474,21 @@
 				"name_3_name": "自定义组件的制作与使用",
 				"name_3_url": "Chinese/LayaAir_AS3/IDE/Use_IDE/customComponent/",
 				"name_3_file": "readme.md"
+			},
+			{
+				"name_3_name": "预设的使用",
+				"name_3_url": "Chinese/LayaAir_AS3/IDE/Use_IDE/PresetUse/",
+				"name_3_file": "readme.md"
 			}]
 		},
 		{
 			"name_2_name": "IDE组件属性详解",
 			"name_2_data": [
+			{
+				"name_3_name": "组件命名规则",
+				"name_3_url": "Chinese/LayaAir_TS/IDE/Component_Detailed/NamingRules/",
+				"name_3_file": "readme.md"
+			},
 			{
 				"name_3_name": "Button属性详解",
 				"name_3_url": "Chinese/LayaAir_AS3/IDE/Component_Detailed/Button/",
@@ -576,6 +586,16 @@
 			{
 				"name_3_name": "runTime使用",
 				"name_3_url": "Chinese/LayaAir_AS3/IDE/ScriptUse/runtime/",
+				"name_3_file": "readme.md"
+			},
+			{
+				"name_3_name": "扩展脚本的使用",
+				"name_3_url": "Chinese/LayaAir_AS3/IDE/ScriptUse/extendScript/",
+				"name_3_file": "readme.md"
+			},
+			{
+				"name_3_name": "附加脚本的使用",
+				"name_3_url": "Chinese/LayaAir_AS3/IDE/ScriptUse/additionalScript/",
 				"name_3_file": "readme.md"
 			}]
 		}]
@@ -1578,11 +1598,22 @@
 				"name_3_name": "自定义组件的制作与使用",
 				"name_3_url": "Chinese/LayaAir_TS/IDE/Use_IDE/customComponent/",
 				"name_3_file": "readme.md"
+			},
+			{
+				"name_3_name": "预设的使用",
+				"name_3_url": "Chinese/LayaAir_TS/IDE/Use_IDE/PresetUse/",
+				"name_3_file": "readme.md"
 			}]
 		},
 		{
 			"name_2_name": "IDE组件属性详解",
 			"name_2_data": [
+			{
+				"name_3_name": "组件命名规则",
+				"name_3_url": "Chinese/LayaAir_TS/IDE/Component_Detailed/NamingRules/",
+				"name_3_file": "readme.md"
+			},
+
 			{
 				"name_3_name": "Button属性详解",
 				"name_3_url": "Chinese/LayaAir_TS/IDE/Component_Detailed/Button/",
@@ -1680,6 +1711,16 @@
 			{
 				"name_3_name": "runTime使用",
 				"name_3_url": "Chinese/LayaAir_TS/IDE/ScriptUse/runtime/",
+				"name_3_file": "readme.md"
+			},
+			{
+				"name_3_name": "扩展脚本的使用",
+				"name_3_url": "Chinese/LayaAir_TS/IDE/ScriptUse/extendScript/",
+				"name_3_file": "readme.md"
+			},
+			{
+				"name_3_name": "附加脚本的使用",
+				"name_3_url": "Chinese/LayaAir_TS/IDE/ScriptUse/additionalScript/",
 				"name_3_file": "readme.md"
 			}]
 		}]
@@ -2603,11 +2644,21 @@
 				"name_3_name": "自定义组件的制作与使用",
 				"name_3_url": "Chinese/LayaAir_JS/IDE/Use_IDE/customComponent/",
 				"name_3_file": "readme.md"
+			},
+			{
+				"name_3_name": "预设的使用",
+				"name_3_url": "Chinese/LayaAir_JS/IDE/Use_IDE/PresetUse/",
+				"name_3_file": "readme.md"
 			}]
 		},
 		{
 			"name_2_name": "IDE组件属性详解",
 			"name_2_data": [
+			{
+				"name_3_name": "组件命名规则",
+				"name_3_url": "Chinese/LayaAir_TS/IDE/Component_Detailed/NamingRules/",
+				"name_3_file": "readme.md"
+			},
 			{
 				"name_3_name": "Button属性详解",
 				"name_3_url": "Chinese/LayaAir_JS/IDE/Component_Detailed/Button/",
@@ -2705,6 +2756,16 @@
 			{
 				"name_3_name": "runTime使用",
 				"name_3_url": "Chinese/LayaAir_JS/IDE/ScriptUse/runtime/",
+				"name_3_file": "readme.md"
+			},
+			{
+				"name_3_name": "扩展脚本的使用",
+				"name_3_url": "Chinese/LayaAir_JS/IDE/ScriptUse/extendScript/",
+				"name_3_file": "readme.md"
+			},
+			{
+				"name_3_name": "附加脚本的使用",
+				"name_3_url": "Chinese/LayaAir_JS/IDE/ScriptUse/additionalScript/",
 				"name_3_file": "readme.md"
 			}]
 		}]
