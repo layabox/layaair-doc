@@ -7,9 +7,9 @@
 ​	启用版本管理之后，将会生成带hash的文件名，并生成一个version.json的文件名映射文件，在项目中可以通过使用ResourceVersion类进行版本控制，使用版本控制之后就会在加载时自动去加载带hash的文件名。
 
 未打包的项目：
-![publish](res/old.png)
+![publish](res/old.png) 
 打包后的项目：
-![publish](res/hashed.png)
+![publish](res/hashed.png) 
 
 
 
@@ -51,5 +51,5 @@ package {
 }
 ```
 
-程序运行实际的加载图
-![publish](res/load.png)
+程序运行实际的加载图：
+![publish](res/load.png) 
