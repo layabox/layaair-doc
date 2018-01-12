@@ -582,6 +582,16 @@
 				"name_3_name": "runTime使用",
 				"name_3_url": "Chinese/LayaAir_AS3/IDE/ScriptUse/runtime/",
 				"name_3_file": "readme.md"
+			},
+			{
+				"name_3_name": "扩展脚本的使用",
+				"name_3_url": "Chinese/LayaAir_AS3/IDE/ScriptUse/extendScript/",
+				"name_3_file": "readme.md"
+			},
+			{
+				"name_3_name": "附加脚本的使用",
+				"name_3_url": "Chinese/LayaAir_AS3/IDE/ScriptUse/additionalScript/",
+				"name_3_file": "readme.md"
 			}]
 		}]
 	},
