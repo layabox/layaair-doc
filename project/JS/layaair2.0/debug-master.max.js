@@ -1,4 +1,4 @@
-
+console.log("LayaAir2.0");
 
 var window = window || global;
 var document = document || (window.document = {});
