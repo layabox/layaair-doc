@@ -56,7 +56,7 @@
 
 这个报错不用担心，是因为项目中MonkeyScript脚本对应的逻辑类是需要开发者自己创建的，由于还没有创建，所以编辑器找不到，导致报错。
 
-接下来，我们在src/game包下班创建一个MonkeyScript类（如果没有game包的话，需要先在src目录下创建一个game包）。添加之后就会发现ExpandPageUI类中的报错消失了，如图8所示：
+接下来，我们在src/game包下边创建一个MonkeyScript类（如果没有game包的话，需要先在src目录下创建一个game包）。添加之后就会发现ExpandPageUI类中的报错消失了，如图8所示：
 
 ![8](img\8.png)(图8)
 

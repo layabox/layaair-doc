@@ -62,7 +62,7 @@
 
 ​	接下来，我们在src目录下创建一个game包，然后在game包中创建一个MonkeyProp类。添加之后就会发现ExpandPageUI文件中的报错消失了，如图9所示：
 
-![9](E:\MyDocument\官网文档\官网补充文档\A引擎新增\扩展脚本的使用\img\9.png)(图9)
+![9](img\9.png)(图9)
 
 在MonkeyProp中编写扩展脚本中新增的属性，全部代码如下所示：
 
