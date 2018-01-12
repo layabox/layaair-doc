@@ -376,6 +376,11 @@
 				"name_3_name": "代码模式的快捷键设置",
 				"name_3_url": "Chinese/LayaAir_AS3/IDE/Code_Mode/shortcut_key/",
 				"name_3_file": "readme.md"
+			},
+			{
+				"name_3_name": "项目菜单详解",
+				"name_3_url": "Chinese/LayaAir_AS3/IDE/Code_Mode/release/",
+				"name_3_file": "readme.md"
 			}]
 		},
 		{
@@ -1475,6 +1480,11 @@
 				"name_3_name": "代码模式的快捷键设置",
 				"name_3_url": "Chinese/LayaAir_TS/IDE/Code_Mode/shortcut_key/",
 				"name_3_file": "readme.md"
+			},
+			{
+				"name_3_name": "项目菜单详解",
+				"name_3_url": "Chinese/LayaAir_TS/IDE/Code_Mode/release/",
+				"name_3_file": "readme.md"
 			}]
 		},
 		{
@@ -2494,6 +2504,11 @@
 			{
 				"name_3_name": "代码模式的快捷键设置",
 				"name_3_url": "Chinese/LayaAir_JS/IDE/Code_Mode/shortcut_key/",
+				"name_3_file": "readme.md"
+			},
+			{
+				"name_3_name": "项目菜单详解",
+				"name_3_url": "Chinese/LayaAir_JS/IDE/Code_Mode/release/",
 				"name_3_file": "readme.md"
 			}]
 		},
