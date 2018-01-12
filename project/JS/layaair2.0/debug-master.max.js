@@ -1,4 +1,5 @@
-console.log("LayaAir2.0");
+
+
 var window = window || global;
 var document = document || (window.document = {});
 /***********************************/
@@ -888,6 +889,7 @@ var Laya=window.Laya=(function(window,document){
 			}
 			this.tick+=0.1;
 		}
+
 		return PerformanceTest_Maggots;
 	})()
 
@@ -18756,7 +18758,7 @@ var Laya=window.Laya=(function(window,document){
 			Shader.addInclude("parts/BlurFilter_ps_uniform.glsl","uniform vec4 strength_sig2_2sig2_gauss1;\nuniform vec2 blurInfo;\n\n#define PI 3.141593\n\n//float sigma=strength/3.0;//3Ïƒä»¥å¤–å½±å“å¾ˆå°ã€‚å³å½“Ïƒ=1çš„æ—¶å€™ï¼ŒåŠå¾„ä¸º3\n//float sig2 = sigma*sigma;\n//float _2sig2 = 2.0*sig2;\n//return 1.0/(2*PI*sig2)*exp(-(x*x+y*y)/_2sig2)\n//float gauss1 = 1.0/(2.0*PI*sig2);\n\nfloat getGaussian(float x, float y){\n    return strength_sig2_2sig2_gauss1.w*exp(-(x*x+y*y)/strength_sig2_2sig2_gauss1.z);\n}\n\nvec4 blur(){\n    const float blurw = 9.0;\n    vec4 vec4Color = vec4(0.0,0.0,0.0,0.0);\n    vec2 halfsz=vec2(blurw,blurw)/2.0/blurInfo;    \n    vec2 startpos=v_texcoord-halfsz;\n    vec2 ctexcoord = startpos;\n    vec2 step = 1.0/blurInfo;  //æ¯ä¸ªåƒç´       \n    \n    for(float y = 0.0;y<=blurw; ++y){\n        ctexcoord.x=startpos.x;\n        for(float x = 0.0;x<=blurw; ++x){\n            //TODO çº¹ç†åæ ‡çš„å›ºå®šåç§»åº”è¯¥åœ¨vsä¸­å¤„ç†\n            vec4Color += texture2D(texture, ctexcoord)*getGaussian(x-blurw/2.0,y-blurw/2.0);\n            ctexcoord.x+=step.x;\n        }\n        ctexcoord.y+=step.y;\n    }\n    return vec4Color;\n}");
 			Shader.addInclude("parts/ColorAdd.glsl","#begin code ColorAdd_ps_logic\n	gl_FragColor = vec4(colorAdd.rgb,colorAdd.a*gl_FragColor.a);\n	gl_FragColor.xyz *= colorAdd.a;\n#end\n\n#begin code ColorAdd_ps_uniform\n	uniform vec4 colorAdd;\n#end\n");
 			var vs,ps;
-			vs="attribute vec4 posuv;\nattribute vec4 attribColor;\nattribute vec4 clipDir;\nattribute vec4 clipRect;\nvarying vec2 cliped;\nuniform vec2 size;\n\n#ifdef WORLDMAT\n	uniform mat4 mmat;\n#endif\n\nvarying vec4 v_texcoordAlpha;\nvarying vec4 v_color;\n\nvoid main() {\n\n#ifdef WORLDMAT\n	vec4 pos=mmat*vec4(posuv.xy,0.,1.);\n	gl_Position =vec4((pos.x/size.x-0.5)*2.0,(0.5-pos.y/size.y)*2.0,0.,1.0);\n#else\n	gl_Position =vec4((posuv.x/size.x-0.5)*2.0,(0.5-posuv.y/size.y)*2.0,0.,1.0);\n#endif\n  \n	v_texcoordAlpha.xy = posuv.zw;\n	//v_texcoordAlpha.z = attribColor.a/255.0;\n	v_color = attribColor/255.0;\n	v_color.xyz*=v_color.w;//·´ÕıºóÃæÒ²ÒªÔ¤³Ë\n	vec2 clippos = posuv.xy - clipRect.xy;\n	if(clipRect.z>20000. && clipRect.w>20000.)\n		cliped = vec2(0.5,0.5);\n	else \n		cliped=vec2( dot(clippos,clipDir.xy)/clipRect.z, dot(clippos,clipDir.zw)/clipRect.w);\n\n}";
+			vs="attribute vec4 posuv;\nattribute vec4 attribColor;\nattribute vec4 clipDir;\nattribute vec4 clipRect;\nvarying vec2 cliped;\nuniform vec2 size;\n\n#ifdef WORLDMAT\n	uniform mat4 mmat;\n#endif\n\nvarying vec4 v_texcoordAlpha;\nvarying vec4 v_color;\n\nvoid main() {\n\n#ifdef WORLDMAT\n	vec4 pos=mmat*vec4(posuv.xy,0.,1.);\n	gl_Position =vec4((pos.x/size.x-0.5)*2.0,(0.5-pos.y/size.y)*2.0,0.,1.0);\n#else\n	gl_Position =vec4((posuv.x/size.x-0.5)*2.0,(0.5-posuv.y/size.y)*2.0,0.,1.0);\n#endif\n  \n	v_texcoordAlpha.xy = posuv.zw;\n	//v_texcoordAlpha.z = attribColor.a/255.0;\n	v_color = attribColor/255.0;\n	v_color.xyz*=v_color.w;//ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ò²ÒªÔ¤ï¿½ï¿½\n	vec2 clippos = posuv.xy - clipRect.xy;\n	if(clipRect.z>20000. && clipRect.w>20000.)\n		cliped = vec2(0.5,0.5);\n	else \n		cliped=vec2( dot(clippos,clipDir.xy)/clipRect.z, dot(clippos,clipDir.zw)/clipRect.w);\n\n}";
 			ps="precision mediump float;\n//precision highp float;\nvarying vec4 v_texcoordAlpha;\nvarying vec4 v_color;\nuniform sampler2D texture;\nvarying vec2 cliped;\n\n#import?BLUR_FILTER  \"parts/BlurFilter_ps_uniform.glsl\";\n#import?COLOR_FILTER \"parts/ColorFilter.glsl\" with ColorFilter_ps_uniform;\n#import?GLOW_FILTER \"parts/GlowFilter_ps_uniform.glsl\";\n\n#import?COLOR_ADD \"parts/ColorAdd.glsl\" with ColorAdd_ps_uniform;\n\nvoid main() {\n	if(cliped.x<0.) discard;\n	if(cliped.x>1.) discard;\n	if(cliped.y<0.) discard;\n	if(cliped.y>1.) discard;\n	\n   vec4 color= texture2D(texture, v_texcoordAlpha.xy);\n   color.a*=v_color.w;\n   //color.rgb*=v_color.w;\n   color.rgb*=v_color.rgb;\n   gl_FragColor=color;\n   \n   #import?COLOR_ADD \"parts/ColorAdd.glsl\" with ColorAdd_ps_logic;\n   \n   #import?BLUR_FILTER  \"parts/BlurFilter_ps_logic.glsl\";\n   \n   #import?COLOR_FILTER \"parts/ColorFilter.glsl\" with ColorFilter_ps_logic;\n   \n   #import?GLOW_FILTER \"parts/GlowFilter_ps_logic.glsl\";\n   \n}";
 			Shader.preCompile2D(0,0x01,vs,ps,null);
 			vs="attribute vec4 posuv;\nattribute vec4 attribColor;\nattribute vec4 clipDir;\nattribute vec4 clipRect;\nvarying vec2 cliped;\nuniform vec2 size;\nuniform mat4 mmat;\nvarying vec4 color;\nvoid main() {\n	vec4 pos=mmat*vec4(posuv.xy,0.,1.);\n	gl_Position =vec4((pos.x/size.x-0.5)*2.0,(0.5-pos.y/size.y)*2.0,0.,1.0);\n	color = attribColor/255.0;\n	vec2 clippos = posuv.xy - clipRect.xy;\n	if(clipRect.z>20000. && clipRect.w>20000.)\n		cliped = vec2(0.5,0.5);\n	else \n		cliped=vec2( dot(clippos,clipDir.xy)/clipRect.z, dot(clippos,clipDir.zw)/clipRect.w);\n}";
@@ -18765,7 +18767,7 @@ var Laya=window.Laya=(function(window,document){
 			vs="attribute vec4 position;\nattribute vec4 attribColor;\nattribute vec4 clipDir;\nattribute vec4 clipRect;\nuniform mat4 mmat;\nuniform mat4 u_mmat2;\n//uniform vec2 u_pos;\nuniform vec2 size;\nvarying vec4 color;\n//vec4 dirxy=vec4(0.9,0.1, -0.1,0.9);\n//vec4 clip=vec4(100.,30.,300.,600.);\nvarying vec2 cliped;\nvoid main(){\n	vec4 tPos = vec4(position.x,position.y ,position.z,position.w);\n	vec4 pos=mmat*tPos;\n	gl_Position =vec4((pos.x/size.x-0.5)*2.0,(0.5-pos.y/size.y)*2.0,pos.z,1.0);\n	vec2 clippos = tPos.xy - clipRect.xy;\n	if(clipRect.z>20000. && clipRect.w>20000.)\n		cliped = vec2(0.5,0.5);\n	else \n		cliped=vec2( dot(clippos,clipDir.xy)/clipRect.z, dot(clippos,clipDir.zw)/clipRect.w);\n  //pos2d.x = dot(clippos,dirx);\n  color=attribColor/255.;\n}";
 			ps="precision mediump float;\n//precision mediump float;\nvarying vec4 color;\n//uniform float alpha;\nvarying vec2 cliped;\nvoid main(){\n	//vec4 a=vec4(color.r, color.g, color.b, 1);\n	//a.a*=alpha;\n    gl_FragColor= color;// vec4(color.r, color.g, color.b, alpha);\n	gl_FragColor.rgb*=color.a;\n	if(cliped.x<0.) discard;\n	if(cliped.x>1.) discard;\n	if(cliped.y<0.) discard;\n	if(cliped.y>1.) discard;\n}";
 			Shader.preCompile2D(0,0x04,vs,ps,null);
-			vs="attribute vec4 posuv;\nattribute vec4 attribColor;\nattribute vec4 clipDir;\nattribute vec4 clipRect;\nvarying vec2 cliped;\nuniform vec2 size;\n\n#ifdef WORLDMAT\n	uniform mat4 mmat;\n#endif\n\nvarying vec4 v_texcoordAlpha;\nvarying vec4 v_color;\n\nvoid main() {\n\n#ifdef WORLDMAT\n	vec4 pos=mmat*vec4(posuv.xy,0.,1.);\n	gl_Position =vec4((pos.x/size.x-0.5)*2.0,(0.5-pos.y/size.y)*2.0,0.,1.0);\n#else\n	gl_Position =vec4((posuv.x/size.x-0.5)*2.0,(0.5-posuv.y/size.y)*2.0,0.,1.0);\n#endif\n  \n	v_texcoordAlpha.xy = posuv.zw;\n	//v_texcoordAlpha.z = attribColor.a/255.0;\n	v_color = attribColor/255.0;\n	v_color.xyz*=v_color.w;//·´ÕıºóÃæÒ²ÒªÔ¤³Ë\n	vec2 clippos = posuv.xy - clipRect.xy;\n	if(clipRect.z>20000. && clipRect.w>20000.)\n		cliped = vec2(0.5,0.5);\n	else \n		cliped=vec2( dot(clippos,clipDir.xy)/clipRect.z, dot(clippos,clipDir.zw)/clipRect.w);\n\n}";
+			vs="attribute vec4 posuv;\nattribute vec4 attribColor;\nattribute vec4 clipDir;\nattribute vec4 clipRect;\nvarying vec2 cliped;\nuniform vec2 size;\n\n#ifdef WORLDMAT\n	uniform mat4 mmat;\n#endif\n\nvarying vec4 v_texcoordAlpha;\nvarying vec4 v_color;\n\nvoid main() {\n\n#ifdef WORLDMAT\n	vec4 pos=mmat*vec4(posuv.xy,0.,1.);\n	gl_Position =vec4((pos.x/size.x-0.5)*2.0,(0.5-pos.y/size.y)*2.0,0.,1.0);\n#else\n	gl_Position =vec4((posuv.x/size.x-0.5)*2.0,(0.5-posuv.y/size.y)*2.0,0.,1.0);\n#endif\n  \n	v_texcoordAlpha.xy = posuv.zw;\n	//v_texcoordAlpha.z = attribColor.a/255.0;\n	v_color = attribColor/255.0;\n	v_color.xyz*=v_color.w;//ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ò²ÒªÔ¤ï¿½ï¿½\n	vec2 clippos = posuv.xy - clipRect.xy;\n	if(clipRect.z>20000. && clipRect.w>20000.)\n		cliped = vec2(0.5,0.5);\n	else \n		cliped=vec2( dot(clippos,clipDir.xy)/clipRect.z, dot(clippos,clipDir.zw)/clipRect.w);\n\n}";
 			ps="#ifdef FSHIGHPRECISION\n	precision highp float;\n#else\n	precision mediump float;\n#endif\n\n//precision highp float;\nvarying vec2 v_texcoord;\nuniform sampler2D texture;\nuniform float alpha;\nuniform vec4 u_TexRange;\nuniform vec2 u_offset;\n\n#import?BLUR_FILTER  \"parts/BlurFilter_ps_uniform.glsl\";\n\n#import?COLOR_FILTER \"parts/ColorFilter.glsl\" with ColorFilter_ps_uniform;\n\n#import?GLOW_FILTER \"parts/GlowFilter_ps_uniform.glsl\";\n\n#import?COLOR_ADD \"parts/ColorAdd.glsl\" with ColorAdd_ps_uniform;\n\nvoid main() {\n   vec2 newTexCoord;\n   newTexCoord.x = mod(u_offset.x + v_texcoord.x,u_TexRange.y) + u_TexRange.x;\n   newTexCoord.y = mod(u_offset.y + v_texcoord.y,u_TexRange.w) + u_TexRange.z;\n   vec4 color= texture2D(texture, newTexCoord);\n   color.a*=alpha;\n   gl_FragColor=color;\n   \n   #import?COLOR_ADD \"parts/ColorAdd.glsl\" with ColorAdd_ps_logic;\n   \n   #import?BLUR_FILTER  \"parts/BlurFilter_ps_logic.glsl\";\n   \n   #import?COLOR_FILTER \"parts/ColorFilter.glsl\" with ColorFilter_ps_logic;\n   \n   #import?GLOW_FILTER \"parts/GlowFilter_ps_logic.glsl\";\n}";
 			Shader.preCompile2D(0,0x100,vs,ps,null);
 			vs="attribute vec2 position;\nattribute vec2 texcoord;\nattribute vec4 color;\nuniform vec2 size;\nuniform float offsetX;\nuniform float offsetY;\nuniform mat4 mmat;\nuniform mat4 u_mmat2;\nvarying vec2 v_texcoord;\nvarying vec4 v_color;\nvoid main() {\n  vec4 pos=mmat*u_mmat2*vec4(offsetX+position.x,offsetY+position.y,0,1 );\n  gl_Position = vec4((pos.x/size.x-0.5)*2.0,(0.5-pos.y/size.y)*2.0,pos.z,1.0);\n  v_color = color;\n  v_color.rgb *= v_color.a;\n  v_texcoord = texcoord;  \n}";
@@ -20252,22 +20254,22 @@ var Laya=window.Laya=(function(window,document){
 			this.submitType=submitType;
 		}
 
-		//±È½Ï3¸ö£¬Íâ²¿Ìá¹©2¸ö
+		//ï¿½È½ï¿½3ï¿½ï¿½ï¿½ï¿½ï¿½â²¿ï¿½á¹©2ï¿½ï¿½
 		__proto.equal3_2=function(next,submitType,other){
 			return this.submitType===submitType && this.other===other && this.blendShader===next.blendShader;
 		}
 
-		//È«±È½Ï¡£Íâ²¿Ìá¹©2¸ö
+		//È«ï¿½È½Ï¡ï¿½ï¿½â²¿ï¿½á¹©2ï¿½ï¿½
 		__proto.equal4_2=function(next,submitType,other){
 			return this.submitType===submitType && this.other===other && this.blendShader===next.blendShader;
 		}
 
-		//±È½Ï3¸ö
+		//ï¿½È½ï¿½3ï¿½ï¿½
 		__proto.equal_3=function(next){
 			return this.submitType===next.submitType && this.blendShader===next.blendShader;
 		}
 
-		//È«±È½Ï¡£4¸ö
+		//È«ï¿½È½Ï¡ï¿½4ï¿½ï¿½
 		__proto.equal=function(next){
 			return this.other===next.other && this.submitType===next.submitType && this.blendShader===next.blendShader;
 		}
@@ -46221,7 +46223,7 @@ var Laya=window.Laya=(function(window,document){
 		}
 
 		/**
-		*°ÑÎ»ÖÃÊı×é±£´æµ½vb£¬ibÖĞ
+		*ï¿½ï¿½Î»ï¿½ï¿½ï¿½ï¿½ï¿½é±£ï¿½æµ½vbï¿½ï¿½ibï¿½ï¿½
 		*@param ib
 		*@param vb
 		*@param start
@@ -51192,7 +51194,7 @@ var Laya=window.Laya=(function(window,document){
 	*/
 	//class laya.webgl.shader.BaseShader extends laya.resource.Resource
 	var BaseShader=(function(_super){
-		//µ±Ç°°ó¶¨µÄshader
+		//ï¿½ï¿½Ç°ï¿½ó¶¨µï¿½shader
 		function BaseShader(){
 			BaseShader.__super.call(this);
 		}
