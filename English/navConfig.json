@@ -391,8 +391,17 @@
                 "name_3_name": "Shortcut key for code editing ",
                 "name_3_url": "English/LayaAir_AS3/IDE/Code_Mode/shortcut_key/",
                 "name_3_file": "readme.md"
-              }
-            ]
+			  },
+			  {
+				"name_3_name": "Project release detailed explanation",
+				"name_3_url": "English/LayaAir_AS3/IDE/Code_Mode/release/",
+				"name_3_file": "readme.md"
+			  },
+			  {
+				"name_3_name": "Introduction of version management function",
+				"name_3_url": "English/LayaAir_AS3/IDE/Code_Mode/version/",
+				"name_3_file": "readme.md"
+			  }]
           },
           {
             "name_2_name": "Design Patterns overview",
@@ -593,6 +602,16 @@
 			{
 				"name_3_name": "Implement runTime",
 				"name_3_url": "English/LayaAir_AS3/IDE/ScriptUse/runtime/",
+				"name_3_file": "readme.md"
+			},
+			{
+				"name_3_name": "Extended scripts",
+				"name_3_url": "English/LayaAir_AS3/IDE/ScriptUse/extendScript/",
+				"name_3_file": "readme.md"
+			},
+			{
+				"name_3_name": "Additional scripts",
+				"name_3_url": "English/LayaAir_AS3/IDE/ScriptUse/additionalScript/",
 				"name_3_file": "readme.md"
 			}]
 		  }]
@@ -1582,8 +1601,17 @@
                 "name_3_name": "Shortcut key for code editing",
                 "name_3_url": "English/LayaAir_TS/IDE/Code_Mode/shortcut_key/",
                 "name_3_file": "readme.md"
-              }
-            ]
+			  },
+			  {
+				"name_3_name": "Project release detailed explanation",
+				"name_3_url": "English/LayaAir_TS/IDE/Code_Mode/release/",
+				"name_3_file": "readme.md"
+			  },
+			  {
+				"name_3_name": "Introduction of version management function",
+				"name_3_url": "English/LayaAir_TS/IDE/Code_Mode/version/",
+				"name_3_file": "readme.md"
+			  }]
           },
           {
 
@@ -1800,6 +1828,16 @@
 			{
 				"name_3_name": "Implement runTime",
 				"name_3_url": "English/LayaAir_TS/IDE/ScriptUse/runtime/",
+				"name_3_file": "readme.md"
+			},
+			{
+				"name_3_name": "Extended scripts",
+				"name_3_url": "English/LayaAir_TS/IDE/ScriptUse/extendScript/",
+				"name_3_file": "readme.md"
+			},
+			{
+				"name_3_name": "Additional scripts",
+				"name_3_url": "English/LayaAir_TS/IDE/ScriptUse/additionalScript/",
 				"name_3_file": "readme.md"
 			}]
 		}]
@@ -2716,8 +2754,17 @@
                 "name_3_name": "Shortcut key for code editing ",
                 "name_3_url": "English/LayaAir_JS/IDE/Code_Mode/shortcut_key/",
                 "name_3_file": "readme.md"
-              }
-            ]
+			  },
+			  {
+				"name_3_name": "Project release detailed explanation",
+				"name_3_url": "English/LayaAir_JS/IDE/Code_Mode/release/",
+				"name_3_file": "readme.md"
+			  },
+			  {
+				"name_3_name": "Introduction of version management function",
+				"name_3_url": "English/LayaAir_JS/IDE/Code_Mode/version/",
+				"name_3_file": "readme.md"
+			  }]
           },
           {
             "name_2_name": "Design Patterns overview",
@@ -2918,6 +2965,16 @@
 			{
 				"name_3_name": "Implement runTime",
 				"name_3_url": "English/LayaAir_JS/IDE/ScriptUse/runtime/",
+				"name_3_file": "readme.md"
+			},
+			{
+				"name_3_name": "Extended scripts",
+				"name_3_url": "English/LayaAir_JS/IDE/ScriptUse/extendScript/",
+				"name_3_file": "readme.md"
+			},
+			{
+				"name_3_name": "Additional scripts",
+				"name_3_url": "English/LayaAir_JS/IDE/ScriptUse/additionalScript/",
 				"name_3_file": "readme.md"
 			}]
 		}]
