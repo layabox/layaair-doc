@@ -1,70 +1,71 @@
-# 扩展脚本的使用
+# Extended scripts
 
-​	在项目开发中，经常会有这种情况；官方提供的组件满足不了需求，比如想扩展Button组件功能，增加新的属性，还想在IDE里面给新属性设置。在LayaAirIDE1.4.0版本之后提供了两种方式：扩展脚本和附加脚本。
+​	This is often the case in the development of a project: When official components can not provided the customers demand. For example, an extended Button component function. Add new attributes, also want to set the new property in the IDE. After LayaAirIDE1.4.0 version provides two ways: extended scripts and additional scripts.
 
-​	**扩展脚本：**用继承的方式，扩展某个组件功能，实现自己的逻辑，甚至增加新的属性，并且在IDE里面显示新属性，可视化的设置新属性	
+​	**Extended Script: ** In the way of inheritance, it expands a component function, implements own logic, even adds new properties, and displays new attributes in IDE, setting up new attributes visually.
 
-​	**附加脚本：**用非继承的方式，附加的方式，给某个组件增加一些行为，增加新的属性，并且在IDE里面显示新属性，可视化的设置新属性	
+​	**Additional script: ** In a non-inherited way, an additional way to add some behavior to a component, add new properties, and display new properties in the IDE, the visual settings of new properties	
 
-​	有了上述扩展方式后，开发者可以任意修改组件的行为、增加新的属性、可视化的让UI场景与代码结合；同一个场景中可以添加多个扩展脚本。
+​	With these extensions, developers can modify the behavior of components, add new attributes, visualize the combination of UI scenarios and codes, and add multiple extension scripts to the same scenario.
 
-​	**扩展脚本和附加脚本的区别**：扩展脚本继承自组件本身；附加脚本是在组件自身上添加了一个控制该组件的脚本，可以修改当前组件的任意属性，不继承。
+​	**Difference between extended and additional scripts**: The extension script inherits from the component itself; the additional script adds a script controlling the component to the component itself, which can modify any property of the current component without inheritance.
 
-​	**本篇文章我们将对多个组件添加同一个脚本，让它们的移动速度和名字不同为例，来详细的介绍扩展脚本的使用方法。最终效果如下图所示（图中的卡顿是录屏软件导致的，以实际效果为准）：**
+​	**In this article, we will detail the use of extended scripts by adding the same script to multiple components, moving them at different speeds and names. The final result is as shown below (fuzzy in the picture is caused by the recording software, real effect is smoother animated):**
 
-![0](img\0.gif)(图0)
+![0](img\0.gif)(Picture 0)
 
-### 一、制作UI页面
+### 1. Making UI pages
 
-​	新建一个名为ExpandPage的UI页面。在该UI页面上放入一个Box组件，在Box组件中放入一张图片以及一个文本组件；给文本组件的name命名为userN，设置好大小、对齐方式后保存。如图1所示：
+​	Create a new UI page named ExpandPage. Put a Box component on the UI page, put a picture and a text component in the Box component, name name for the text component, set the size and alignment and save it. As shown in Figure 1:
 
-![1](img\1.png)(图1)
-
-
-
-### 二、创建扩展脚本并添加到组件身上赋值
-
-​	在UI面板管理中右键—新建脚本，选择扩展脚本（可以在创建UI页面中选择脚本一栏），脚本所对应的逻辑类即下边的运行类名。如图2所示：
-
-![2](img\2.png)(图2)
-
-​	点击确定按钮后会在项目面板中自动生成一个.prop文件，该文件中会自带一些常用的属性，新增属性时可以参考这些属性模板，如图3所示：
-
-![3](img\3.png)(图3)
-
-在MonkeyProp标签中加入我们所需的属性，如图4所示：
-
-![4](img\4.png)(图4)
-
-​	扩展脚本编辑完成后打开UI界面，为了能让开发者更直观的看到变化，在此将Box复制多个到UI界面中，如图5所示：
-
-![5](img\5.png)(图5)
-
-接下来将制作好的MonkeyProp.prop扩展脚本以拖拽的形式放到Box上，如动图6所示：
-
-![6](img\6.gif)(图6)
-
-​	拖拽到组件身上之后在层级列表和UI界面中是看不出变化的，但是会在Box组件右侧属性栏中看到新增的属性。如图7所示：
-
-![7](img\7.png)(图7)
-
-​	给三个组件的speed和userName赋值，速度按序递增，分别设置为1.2.3，名称为小a、小b、小c；也就为这三个相同组件的对象属性进行了不同的赋值。保存之后按快捷键F12（Ctrl+F12）导出UI，到代码中编写代码。
+![1](img\1.png)(Picture 1)
 
 
 
-### 三、代码逻辑编写
+### 2. Create an extension script and add a value to the component
 
-在代码编辑模式下打开layaUI.max.all.js文件，会发现里边有注册一个类。如图8所示：
+​	Right-click in the UI panel management - new script, select the extended script (you can create a UI page, select the script column), the script corresponds to the logical class that runs below the class name. as shown in picture 2:
 
-![8](img\8.png)(图8)
+![2](img\2.png)(picture 2)
 
-​	这个报错不用担心，这是因为项目中MonkeyProp脚本对应的逻辑类是需要开发者自己创建的，由于还没有创建，所以编辑器找不到，导致报错。
+​	Click the OK button in the project panel will automatically generate a. Prop file. There are some common properties in this file, which can be referred to when new attributes are added, as shown in Figure 3.
 
-​	接下来，我们在src目录下创建一个game包，然后在game包中创建一个MonkeyProp类，在该类中继承一个Box容器。回到UI文件中就会发现ExpandPageUI文件中的报错消失了，如图9所示：
+![3](img\3.png)(picture 3)
 
-![9](img\9.png)(图9)
+Add the attributes we need in the MonkeyProp label, as shown in Figure 4.
 
-在MonkeyProp中编写扩展脚本中新增的属性，全部代码如下所示：
+![4](img\4.png)(picture 4)
+
+​	The extension script editor opens the UI interface to enable developers to see changes more intuitively, here to copy multiple Box copies to the UI interface, as shown in Figure 5:
+
+![5](img\5.png)(picture 5)
+
+Next, you will make a MonkeyProp.prop extension script with Box drag-and-drop, as shown in Figure 6:
+
+![6](img\6.gif)(picture 6)
+
+​	After dragging and dropping on the component, there is no change in the hierarchical list and UI interface, but you will see the new properties in the right property bar of the Box component. As shown in Figure 7:
+
+![7](img\7.png)(picture 7)
+
+​	Give three components speed and userName assignment, the speed increases in order, set to 1.2.3， respectively, the name is 小a、小b、小c: The object attributes of the three components of the same component are also assigned different values. After saving, UI is exported according to the shortcut key F12 (Ctrl+F12), and code is written in editor.
+
+
+
+### 3. Logic code written
+
+After importing the project into FlashBuilder Open ExpandPageUI file will find an error, can not find game.MonkeyProp. As shown in Figure 8:
+
+![8](img\8.png)(Picture 8)
+
+​	This error do not worry, this is because the project MonkeyProp script corresponding to the logic class is the need to create their own developers, because it has not been created, so the editor can not find, resulting in an error.
+
+​	Next, we create a game package in the src directory and create a MonkeyProp class in the game package. After adding you will find ExpandPageUI file error disappears, as shown in Figure 9:
+
+![9](img\9.png)(picture 9)
+
+Write new properties in the extension script in MonkeyProp, all of the code is as follows:
+
 
 ```typescript
 var game;
@@ -110,7 +111,7 @@ var game;
 })(game || (game = {}));
 ```
 
-最后在入口类中实例化ExpandPageUI页面（**注意：实例化UI界面之前必须先预加载所需资源**），代码如下所示：
+Finally instantiate the ExpandPageUI page in the entry class (**Note: You must preload the required resources before instantiating the UI interface  **）, The code is as follows:
 
 ```typescript
 //初始化引擎
@@ -128,7 +129,7 @@ function onLoaded() {
 }
 ```
 
-最终显示结果如文章开头图0所示
+The final result is shown in Figure 0 at the beginning of the article.
 
 
 
