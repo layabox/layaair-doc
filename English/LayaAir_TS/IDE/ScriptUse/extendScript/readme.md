@@ -16,7 +16,7 @@
 
 ### 1. Making UI pages
 
-​	Create a new UI page named ExpandPage. Put a Box component on the UI page, put a picture and a text component in the Box component, name name for the text component, set the size and alignment and save it. As shown in Figure 1:
+​	Create a new UI page named ExpandPage. Put a Box component on the UI page, put a picture and a text component in the Box component, name userN for the text component, set the size and alignment and save it. As shown in Figure 1:
 
 ![1](img\1.png)(Picture 1)
 

@@ -16,7 +16,7 @@
 
 ### 1. Making UI pages
 
-​	Create a new UI page named ExpandPage. Put a Box component on the UI page, put a picture and a text component in the Box component, name name for the text component, set the size and alignment and save it. As shown in Figure 1:
+​	Create a new UI page named ExpandPage. Put a Box component on the UI page, put a picture and a text component in the Box component, name userN for the text component, set the size and alignment and save it. As shown in Figure 1:
 
 ![1](img\1.png)(Picture 1)
 
@@ -52,7 +52,7 @@ Next, you will make a MonkeyProp.prop extension script with Box drag-and-drop, a
 
 
 
-### 3. Logic code written
+### 3. Code writing
 
 After importing the project into FlashBuilder Open ExpandPageUI file will find an error, can not find game.MonkeyProp. As shown in Figure 8:
 

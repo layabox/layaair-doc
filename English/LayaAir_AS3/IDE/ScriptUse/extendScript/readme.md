@@ -16,7 +16,7 @@
 
 ### 1. Making UI pages
 
-​	Create a new UI page named ExpandPage. Put a Box component on the UI page, put a picture and a text component in the Box component, name name for the text component, set the size and alignment and save it. As shown in Figure 1:
+​	Create a new UI page named ExpandPage. Put a Box component on the UI page, put a picture and a text component in the Box component, name userN for the text component, set the size and alignment and save it. As shown in Figure 1:
 
 ![1](img\1.png)(Picture 1)
 
@@ -56,15 +56,15 @@ Next, you will make a MonkeyProp.prop extension script with Box drag-and-drop, a
 
 After importing the project into FlashBuilder Open ExpandPageUI file will find an error, can not find game.MonkeyProp. As shown in Figure 8:
 
-![8](img\8.png)(图8)
+![8](img\8.png)(Picture 8)
 
-​	这个报错不用担心，这是因为项目中MonkeyProp脚本对应的逻辑类是需要开发者自己创建的，由于还没有创建，所以编辑器找不到，导致报错。
+​	This error do not worry, this is because the project MonkeyProp script corresponding to the logic class is the need to create their own developers, because it has not been created, so the editor can not find, resulting in an error.
 
-​	接下来，我们在src目录下创建一个game包，然后在game包中创建一个MonkeyProp类。添加之后就会发现ExpandPageUI文件中的报错消失了，如图9所示：
+​	Next, we create a game package in the src directory and create a MonkeyProp class in the game package. After adding you will find ExpandPageUI file error disappears, as shown in Figure 9:
 
 ![9](img\9.png)(picture 9)
 
-在MonkeyProp中编写扩展脚本中新增的属性，全部代码如下所示：
+Write new properties in the extension script in MonkeyProp, all of the code is as follows:
 
 ```typescript
 package game
