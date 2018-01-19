@@ -6,7 +6,7 @@
 
 截屏函数是LayaPlayer特有函数，所有需用通过conch对象调用，代码如下：
 ```javascript
-if( windoow.conch )
+if( window.conch )
 {
     window.conch.captureScreen(function(arrayBuff,width,height){
 
