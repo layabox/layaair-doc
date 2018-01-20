@@ -2,7 +2,7 @@
 
 ### 一、LayaAirIDE中的小游戏发布目录详解
 
-![img](img/1.png)  
+![img](img/1-1.png)  
 
 （图1）
 
