@@ -232,6 +232,10 @@ var LayaAir3D1 = (function () {
           //创建摄像机1添加到场景
           var camera1=new Laya.Camera();
           scene.addChild(camera1);
+          
+          //摄像机1添加控制脚本
+          camera1.addComponent(CameraMoveScript);
+
           //修改摄像机1位置及角度
           camera1.transform.translate(new Laya.Vector3(0,2,8),true);
           camera1.transform.rotate(new Laya.Vector3(-23,0,0),true,false);
