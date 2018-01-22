@@ -832,13 +832,13 @@
 		}]
 	},
 	{
-		"nav_1_name": "微信小游戏开发",
+		"nav_1_name": "微信小游戏与QQ玩一玩",
 		"nav_1_data": [
 		{
 			"name_2_name": "微信小游戏开发基础",
 			"name_2_data": [
 			{
-				"name_3_name": "微信小游戏简介",
+				"name_3_name": "微信小游戏基础介绍与上线政策",
 				"name_3_url": "Chinese/wechat/minigame/introduction/",
 				"name_3_file": "readme.md"
 			},
@@ -859,6 +859,15 @@
 			{
 				"name_3_name": "微信小游戏综合介绍",
 				"name_3_url": "Chinese/wechat/minigame/advanced/",
+				"name_3_file": "readme.md"
+			}]
+		},
+		{
+			"name_2_name": "QQ玩一玩开发基础",
+			"name_2_data": [
+			{
+				"name_3_name": "QQ玩一玩基础介绍与游戏发布",
+				"name_3_url": "Chinese/qq/introduction/",
 				"name_3_file": "readme.md"
 			}]
 		}]
@@ -1952,13 +1961,13 @@
 		}]
 	},
 	{
-		"nav_1_name": "微信小游戏开发",
+		"nav_1_name": "微信小游戏与QQ玩一玩",
 		"nav_1_data": [
 		{
 			"name_2_name": "微信小游戏开发基础",
 			"name_2_data": [
 			{
-				"name_3_name": "微信小游戏简介",
+				"name_3_name": "微信小游戏基础介绍与上线政策",
 				"name_3_url": "Chinese/wechat/minigame/introduction/",
 				"name_3_file": "readme.md"
 			},
@@ -1979,6 +1988,15 @@
 			{
 				"name_3_name": "微信小游戏综合介绍",
 				"name_3_url": "Chinese/wechat/minigame/advanced/",
+				"name_3_file": "readme.md"
+			}]
+		},
+		{
+			"name_2_name": "QQ玩一玩开发基础",
+			"name_2_data": [
+			{
+				"name_3_name": "QQ玩一玩基础介绍与游戏发布",
+				"name_3_url": "Chinese/qq/introduction/",
 				"name_3_file": "readme.md"
 			}]
 		}]
@@ -3002,13 +3020,13 @@
 		}]
 	},
 	{
-		"nav_1_name": "微信小游戏开发",
+		"nav_1_name": "微信小游戏与QQ玩一玩",
 		"nav_1_data": [
 		{
 			"name_2_name": "微信小游戏开发基础",
 			"name_2_data": [
 			{
-				"name_3_name": "微信小游戏简介",
+				"name_3_name": "微信小游戏基础介绍与上线政策",
 				"name_3_url": "Chinese/wechat/minigame/introduction/",
 				"name_3_file": "readme.md"
 			},
@@ -3029,6 +3047,15 @@
 			{
 				"name_3_name": "微信小游戏综合介绍",
 				"name_3_url": "Chinese/wechat/minigame/advanced/",
+				"name_3_file": "readme.md"
+			}]
+		},
+		{
+			"name_2_name": "QQ玩一玩开发基础",
+			"name_2_data": [
+			{
+				"name_3_name": "QQ玩一玩基础介绍与游戏发布",
+				"name_3_url": "Chinese/qq/introduction/",
 				"name_3_file": "readme.md"
 			}]
 		}]
