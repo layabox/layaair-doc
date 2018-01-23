@@ -882,6 +882,15 @@
 				"name_3_url": "English/wechat/minigame/advanced/",
 				"name_3_file": "readme.md"
 			}]
+		},
+		{
+			"name_2_name": "QQ玩一玩开发基础",
+			"name_2_data": [
+			{
+				"name_3_name": "QQ玩一玩基础介绍与游戏发布",
+				"name_3_url": "English/qq/introduction/",
+				"name_3_file": "readme.md"
+			}]
 		}]
 	},
       { 
@@ -2098,6 +2107,15 @@
 				"name_3_url": "English/wechat/minigame/advanced/",
 				"name_3_file": "readme.md"
 			}]
+		},
+		{
+			"name_2_name": "QQ玩一玩开发基础",
+			"name_2_data": [
+			{
+				"name_3_name": "QQ玩一玩基础介绍与游戏发布",
+				"name_3_url": "English/qq/introduction/",
+				"name_3_file": "readme.md"
+			}]
 		}]
 	},
       {
@@ -3233,6 +3251,15 @@
 			{
 				"name_3_name": "Comprehensive description to WeChat games",
 				"name_3_url": "English/wechat/minigame/advanced/",
+				"name_3_file": "readme.md"
+			}]
+		},
+		{
+			"name_2_name": "QQ玩一玩开发基础",
+			"name_2_data": [
+			{
+				"name_3_name": "QQ玩一玩基础介绍与游戏发布",
+				"name_3_url": "English/qq/introduction/",
 				"name_3_file": "readme.md"
 			}]
 		}]
