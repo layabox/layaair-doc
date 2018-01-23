@@ -1,108 +1,105 @@
-# 用3D项目演示老项目如何适配微信小游戏
+# Demonstrate how adapt old projects to  WeChat mini-games with the 3D
 
-基于有部分开发者在3D小游戏方面也有开发需求，以及老项目适配需求，本篇将为大家介绍3D示例项目创建、老项目的适配详解等，完整的小游戏开发流程。
+Based on the development needs from some developers in 3D games as well as general old projects,  this article will introduce how 3D sample project creation and the detailed adaptation of the old project. The complete matching process for mini-game development.
 
-#### 必读提示：
+####  Must-know tips:
 
-> 1、在LayaAir IDE的1.7.14正式版本中，将支持创建微信小游戏3D示例项目。
+> 1. In the official 1.7.14 version of the LayaAir IDE, it support creating WeChat mini-game 3D sample projects.
 >
-> 2、阅读本文前，请先阅读《创建微信小游戏》，更多配置环境的基础内容本篇不再重复介绍。
+> 2. Before reading this article, please look at "create WeChat mini-Games" first. So the basic content of configuration environment is no longer repeated.
 >
-> 3、本篇中的小游戏适配流程，也适用于老版本IDE创建和开发的项目。
+> 3. This process for mini-game adaptation, is also applicable to the older version of the IDE for create and develop projects.
 
 
 
-### 第一步：创建一个3D示例项目（旧项目适配可跳过本步骤）
+### A. create a 3D example project (old project adaptation can skip this step)
 
-先打开LayaAirIDE，进入新建项目界面。选择LayaAir 3D示例项目。
+Open LayaAirIDE, enter the new project interface. Choose the LayaAir 3D sample project.
 
 ![图1](img/1.png) 
 
-输入项目名称，路径，选择AS3语言的项目类型，1.7.14beta版引擎。
+Enter the project name, path, select the AS3 language project type, 1.7.14beta version of the engine.
 
-点击创建，即完成了一个3D项目的创建。
+Click Create to complete the creation of 3D project.
 
-### 第二步：适配微信小游戏
+### B. match with WeChat mini-games
 
-创建完3D示例项目，点击**运行**（或F5）可以看到一个三维的立方体。说明我们这个3D示例项目是可以正常运行的。
+After creating the 3D sample project, click **Run** (or F5) to see a three-dimensional cube. It shows that our 3D example project can run normally.
 
 ![图2](img/2.png) 
 
-关闭运行调试弹出的窗口，我们在编码模式下的**文件**菜单内点击**新建窗口**（ctrl+shift+N），然后创建一个新项目，选择微信小游戏示例项目创建之后，打开小游戏示例项目的“bin\h5”目录，将game.js、game.json、project.config.json、weapp-adapter.js 这四个文件复制到3D示例项目的“bin\h5”目录下。复制完效果如下图所示。
+Close run debugging pop-up window, we are in the encoding mode ** file ** click on the file menu ** new window ** (ctrl + shift + N), and then create a new project. Select WeChat mini-game example project creation, open the "bin \ h5" directory of the game demo project and copy the four files game.js, game.json, project.config.json and weapp-adapter.js to the "bin \ h5" directory of the 3D sample project . The effect of the copy is shown as shown in the following figure.
 
 ![图3](img/3.png) 
 
-> Tips：复制小游戏的适配文件，如果不想创建新的小游戏项目，也可以直接在LayaAirIDE根目录下的“resources\app\out\vs\layaEditor\laya\code\as\wxminigame\bin\h5\”目录下复制。
+> Tips: copy the matching files of mini-games, if you don't want to create new mini-game items, you can also copy them directly under the “resources\app\out\vs\layaEditor\laya\code\as\wxminigame\bin\h5\” directory under the LayaAirIDE root directory.
 
+After the copy of the adapter file is completed, you need to modify the main program of game.js
 
+To open game.js for editing, you need to first recommend mini-game to match library file weapp-adapter.js, and then import the game entry procedure of project (this example is LayaAir3D.max.js).
 
-复制适配文件完成后，需要修改小游戏的入口程序game.js。
-
-打开game.js进行编辑，要先引用小游戏适配库文件weapp-adapter.js，然后引入游戏项目的入口程序（本例为LayaAir3D.max.js）。
-
-game.js修改后如下所示：
+game.js modified as follows:
 
 ```javascript
 require("weapp-adapter.js");
 require("LayaAir3D.max.js");
 ```
 
-然后，就是修改游戏入口程序，增加适配代码了。
+Then we modify the game entry program and add the adaptation code.
 
-打开src目录下的示例入程序LayaAir3D.as
+Open the src directory into the sample LayaAir3D.as program
 
-先导入适配库
+First import the adapter Library
 
 ```java
 import laya.wx.mini.MiniAdpter;
 ```
 
-然后在初始化引擎前，初始化小游戏适配
+Then, before initializing the engine, mini-game is initialized.
 
 ```javascript
 //微信小游戏适配
 MiniAdpter.init();
 ```
 
-效果如下图所示：
+The effect is shown in the following figure:
 
 ![图](img/6.png) 
 
-完成适配代码的添加，点击编译或运行调试按钮，没有报错提示的话，那就完成了小游戏的适配。
+When you add the fit code, click the compile or run the debug button, and do the mini-game without error message.
 
 
+### C. Create a WeChat game
 
-### 第三步，创建微信小游戏项目
-
-打开微信开发者工具，选择小程序项目，在项目创建的界面里。项目目录设置为3D示例项目的bin/h5目录。
+Open the WeChat developer tool, select the mini-game program project, in the project created interface. Run the debug button, then complete the project directory is set to the bin/h5 directory of the 3D sample project.
 
 ![图4](img/4.png) 
 
-AppID这一栏，如果有企业的小程序开发者ID就填写，没有的话,就点击ID输入框下的小游戏。如下图所示。
+AppID this column, whether there is an enterprise's mini-program developer ID to fill out. if not, click on the ID input box of the mini-game. As shown in the following figure.
 
 ![图5](img/5.png) 
 
 **Tips**：
 
-> 1、如果没看到小游戏的字样，请按之前文档中链接重新下开发者工具，一定是下错了。
+If you don't see the words of a small game, please link the developer tool in the previous document, and it must be wrong.
+> 1. If you do not see the displaying words of the mini-game, please press link in the previous document under the developer tools, must be wrong.
 >
-> 2、如果是不是企业的AppID，不要填写，个人AppID不支持开发微信小游戏项目。
+> 2. If it is not the enterprise's AppID, do not fill in, personal AppID does not support the development channel of mini-game project.
 
-完成项目创建后，会进入小游戏开发界面。默认情况下，模拟器是打开的，如果看到和LayaAirIDE效果一致就没问题了。如下图所示。（除非是项目配置错了，一般是不会有问题的。）
+After the completion of the project is created, the game development interface will be entered. By default, the simulator is open, and it's no problem if you see the LayaAirIDE effect. As shown in the following figure. (unless the configuration of the project is wrong, it is generally not a problem.)
 
 ![图](img/7.png) 
 
-> Tips：模拟器的顶部状态条，在真机环境上是没有的，真机上的小游戏是全屏显示。所以不用管，如果觉得影响了性能统计面板，可以在项目代码中，把统计面板的位置向下调一下。
+> Tips：At the top of the state there is a simulator of real environment, the real game is full-screen displayed. So do not control, if you feel that the impact of the performance statistics panel, you can reduce the position of the statistical panel in the project code.
 
 
+### 4. Understand the process of daily development and debugging
 
-### 第四步，了解日常开发与调试流程
+Since we were just creating a WeChat game, we used release directory in the LayaAirIDE project. So, after each compilation, the mini-game development tool will automatically refresh the compiled display effect.
 
-因为刚刚在创建微信小游戏的时候，我们使用的是LayaAirIDE项目中的发布目录。所以，每次编译后，小游戏开发工具内会自动刷新编译后的显示效果。
+If, let's turn the 3D cube up and modify the entry program LayaAir3D.as of the example project.
 
-假如，我们让这个三维立方体转起来，修改示例项目的入口程序LayaAir3D.as。
-
-在最后一段的代码后增加
+Added after the last part of the code
 
 ```javascript
 //旋转方向与角度设置
@@ -113,20 +110,20 @@ Laya.timer.loop(10,null,function():void{
 })
 ```
 
-然后，在LayaAirIDE中点编译，再打开微信开发者工具，我们可以看到转起来的立方体，如下图所示：
+Then, compiling at the LayaAirIDE and opening the WeChat developer tool, we can see the turned 3D cube, as shown in the following figure:
 
 ![图](img/8.gif) 
 
-在这种情况下，我们点预览按钮，通过微信扫码，可以直接在微信中进行真机体验和测试。
+In this case, we point the preview button, through WeChat scan code, can be directly carried out real experience and testing in WeChat.
 
-但是，当我们的项目超过4M的时候，再点预览，就会提示“上限为4096kb，请删除文件后重试”，如下图所示：
+However, when our project is over 4M, the preview will prompt "the upper limit is 4096kb, please delete the file and try again", as shown in the following figure:
 
 ![图](img/9.png) 
 
-问题来了，大型游戏超过4M是肯定的，那如何真机体验和测试呢？
+The matter is, case with more than 4M large game, then how to handle and solve this issues?
 
-首先，我们要将游戏项目里要放到4M包内的和放到云服务器动态加载的区分开。
+First of all, we want the game project to be placed within the 4M package and put it into cloud server dynamically loaded seperately.
 
-刚才示例中，我们使用的是本地路径，所以可以直接访问本地资源。那么正式开发的时候，应该怎么处理呢。我们建议本地4M包内的资源，除了入口JS和项目配置文件，都放到layaNativeDir这个目录中。因为这样，方便我们使用统一的动态加载的URL路径。引擎在适配小游戏的时候已进行了处理，当处于layaNativeDir目录下，即便使用了URL动态路径，仍然会只从本地目录内加载。
+In the previous example, we are using the local path, so we can access local resources directly, so let's see how to deal with the official development. We recommend that the resources in the local 4M package be put in the layaNativeDir directory, including the entry JS and the project configuration file. Because of this, it is convenient for us to use a unified, dynamically loaded URL path. The engine has been processed when the game is adapted. When it is in the layaNativeDir directory, even if it uses the URL dynamic path, it will still load from the local directory.
 
-所以，正式开发的时候，如果想使用预览功能，在真机上测试，要再创建一个动态加载资源的小游戏项目，只将小于4M的本地包内容，复制到小游戏的项目目录中。其它资源采用动态加载的方式加载进来。
+From the official development, if you want to use the preview feature in the real machine test, to create a dynamic loaded resources game project, only less than 4M local package content are supported. Copy to the game's project directory, other resources are loaded in a dynamic way.
