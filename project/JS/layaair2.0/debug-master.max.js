@@ -1,3 +1,6 @@
+
+console.log("LayaAir2.0-2D");
+
 var window = window || global;
 var document = document || (window.document = {});
 /***********************************/
