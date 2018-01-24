@@ -1,0 +1,24 @@
+{
+	"version":"LAYAMATERIAL:01",
+	"props":{
+		"exposure":1.68,
+		"rotation":0,
+		"vectors":[
+			{
+				"name":"tintColor",
+				"value":[
+					0.7941176,
+					0.7941176,
+					0.7941176,
+					0.5
+				]
+			}
+		],
+		"textures":[
+			{
+				"name":"textureCube",
+				"path":"SkyboxMaterial.ltc"
+			}
+		]
+	}
+}
