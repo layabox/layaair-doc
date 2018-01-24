@@ -54,7 +54,7 @@
 						"linkSprites":{}
 					},
 					"clipPaths":[
-						"Assets/LayaMonkey/LayaMonkey-Take 001.lani"
+						"Assets/LayaMonkey/LayaMonkey-Take001.lani"
 					],
 					"playOnWake":true
 				}
