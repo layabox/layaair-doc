@@ -485,15 +485,22 @@
                 "name_3_name": "Create dynamic template (EffectAnimation)",
                 "name_3_url": "English/LayaAir_AS3/IDE/Use_IDE/EffectAnimation/",
                 "name_3_file": "readme.md"
-              },{
+              },
+			  {
                 "name_3_name": "Timeline animation editor explain (GraphicAnimation)",
                 "name_3_url": "English/LayaAir_AS3/IDE/Use_IDE/TimelineAnimation/",
                 "name_3_file": "readme.md"
-              },{
+              },
+			  {
                 "name_3_name": "Making and using custom components",
                 "name_3_url": "English/LayaAir_AS3/IDE/Use_IDE/customComponent/",
                 "name_3_file": "readme.md"
-              }
+              },
+			  {
+				"name_3_name": "预设的使用",
+				"name_3_url": "English/LayaAir_AS3/IDE/Use_IDE/PresetUse/",
+				"name_3_file": "readme.md"
+			  }
             ]
           },
           {
@@ -1719,16 +1726,23 @@
                 "name_3_name": "Create dynamic template (EffectAnimation)",
                 "name_3_url": "English/LayaAir_TS/IDE/Use_IDE/EffectAnimation/",
                 "name_3_file": "readme.md"
-              },{
+              },
+			  {
                 "name_3_name": "Timeline animation editor explain (GraphicAnimation)",
                 "name_3_url": "English/LayaAir_TS/IDE/Use_IDE/TimelineAnimation/",
                 "name_3_file": "readme.md"
-              },{
+              },
+			  {
 
                 "name_3_name": "Making and using custom components",
                 "name_3_url": "English/LayaAir_TS/IDE/Use_IDE/customComponent/",
                 "name_3_file": "readme.md"
-              }
+              },
+			  {
+				"name_3_name": "预设的使用",
+				"name_3_url": "English/LayaAir_TS/IDE/Use_IDE/PresetUse/",
+				"name_3_file": "readme.md"
+			  }
             ]
           },
           {
@@ -2866,15 +2880,22 @@
                 "name_3_name": "Create dynamic template (EffectAnimation)",
                 "name_3_url": "English/LayaAir_JS/IDE/Use_IDE/EffectAnimation/",
                 "name_3_file": "readme.md"
-              },{
+              },
+			  {
                 "name_3_name": "Timeline animation editor explain (GraphicAnimation)",
                 "name_3_url": "English/LayaAir_JS/IDE/Use_IDE/TimelineAnimation/",
                 "name_3_file": "readme.md"
-              },{
+              },
+			  {
                 "name_3_name": "Making and using custom components",
                 "name_3_url": "English/LayaAir_JS/IDE/Use_IDE/customComponent/",
                 "name_3_file": "readme.md"
-              }
+              },
+			  {
+				"name_3_name": "预设的使用",
+				"name_3_url": "English/LayaAir_TS/IDE/Use_IDE/PresetUse/",
+				"name_3_file": "readme.md"
+			  }
             ]
           },
           {
