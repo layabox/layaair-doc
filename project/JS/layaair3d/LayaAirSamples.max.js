@@ -655,7 +655,7 @@ var Laya=window.Laya=(function(window,document){
 			Laya.stage.scaleMode="full";
 			Laya.stage.screenMode="none";
 			Stat.show();
-			this.scene=Scene.load("../../../../res/threeDimen/scene/Arena/Arena.ls");
+			this.scene=Scene.load("res/threeDimen/scene/Arena/Arena.ls");
 			Laya.stage.addChild(this.scene);
 			var camera=this.scene.addChild(new Camera(0,1,100));
 			camera.transform.translate(new Vector3(0,5,7));
@@ -663,9 +663,9 @@ var Laya=window.Laya=(function(window,document){
 			camera.addComponent(CameraMoveScript);
 			camera.clearFlag=1;
 			var skyBox=new SkyBox();
-			skyBox.sharedMaterial=SkyBoxMaterial.load("../../../../res/threeDimen/skyBox/skyBox4/SkyboxMaterial.lmat");
+			skyBox.sharedMaterial=SkyBoxMaterial.load("res/threeDimen/skyBox/skyBox4/SkyboxMaterial.lmat");
 			camera.sky=skyBox;
-			this.layaMonkey=Sprite3D.load("../../../../res/threeDimen/skinModel/LayaMonkey/LayaMonkey.lh");
+			this.layaMonkey=Sprite3D.load("res/threeDimen/skinModel/LayaMonkey/LayaMonkey.lh");
 			this.layaMonkey.once("hierarchyloaded",this,function(){
 				var monkeyAnimator=(_$this.layaMonkey.getChildAt(0)).getComponentByType(Animator);
 				monkeyAnimator.clip.islooping=true;
