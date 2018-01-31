@@ -195,7 +195,7 @@ Laya.loader.load([{url: "res/atlas/ui.json", type: Loader.ATLAS}], Handler.creat
 
 例如：上文中图6的资源打包后如图1所示，现在我们将图6中`ui`目录下的小图`monkey1.png`在项目中通过图集的方式显示出来，示例代码如下：
 
-**Main.as入口类：**
+**Main.ts入口类：**
 
 ```typescript
 Laya.init(1334, 750);
