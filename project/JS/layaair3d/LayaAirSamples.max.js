@@ -1,5 +1,5 @@
 
-console.log("LayaAir-2.0-3D-1.1");
+console.log("LayaAir2.0-3D-1.555");
 
 var window = window || global;
 var document = document || (window.document = {});
@@ -23651,10 +23651,7 @@ var Laya=window.Laya=(function(window,document){
 		}
 
 		WebGLContext.useProgram=function(gl,program){
-			if (WebGLContext._useProgram===program)
-				return false;
 			gl.useProgram(program);
-			WebGLContext._useProgram=program;
 			return true;
 		}
 
