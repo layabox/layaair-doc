@@ -158,7 +158,7 @@ var laya;
 ```xml
 <?xml version="1.0" encoding="utf-8" ?>
 <uiComp>
-	<ScaleButton className="laya.customUI.ScaleButton" runClass="component.ScaleButton"  inherit="Button" skinLabel="skin" 
+	<ScaleButton className="laya.customUI.ScaleButton" runClass="laya.customUI.ScaleButton"  inherit="Button" skinLabel="skin" 
 	defaultValue="label=''" resName="sbtn" icon="sbtn" groups="公用，常用，宽高及位置" drag="3">
 		<prop name="scaleTime" tips="缩放使用的时间" type="number" default="100" group="常用" />
 	</ScaleButton>
@@ -187,7 +187,7 @@ var laya;
 ![5](img/5.jpg)
 (图5)
 
-　　然后在Custom目录内放一个以sButton命名的png 图标（建议尺寸为16*16），如图6所示，完成该步骤即可在IDE的组件面板中找到我们自己创建的缩放按钮组件，如图7所示。
+　　然后在Custom目录内放一个以sbtn命名的png 图标（建议尺寸为16*16），如图6所示，完成该步骤即可在IDE的组件面板中找到我们自己创建的缩放按钮组件，如图7所示。
 
 ![6](img/6.jpg)
 (图6)图标命名对应组件xml中resName属性的值
@@ -195,7 +195,7 @@ var laya;
 ![7](img/7.jpg)
 (图7)IDE的组件名对应组件xml的标记名
 
-**Tips:** 额外提醒的是，组件的icon图标并非是"LayaAirIDE根目录\resources\app\out\vs\layaEditor\laya\basics\Custom"目录中的sButton.png。icon图标位于LayaAirIDE根目录下的"resources\app\out\vs\layaEditor\laya\icons\components"目录内，对应xml中icon属性的值，上文中的xml说明已进行介绍。如果创建自己的icon图标，参照components目录内的icon尺寸标识制作，放到components目录内，然后在xml中设置对应的文件名即可。
+**Tips:** 额外提醒的是，组件的icon图标并非是"LayaAirIDE根目录\resources\app\out\vs\layaEditor\laya\basics\Custom"目录中的sbtn.png。icon图标位于LayaAirIDE根目录下的"resources\app\out\vs\layaEditor\laya\icons\components"目录内，对应xml中icon属性的值，上文中的xml说明已进行介绍。如果创建自己的icon图标，参照components目录内的icon尺寸标识制作，放到components目录内，然后在xml中设置对应的文件名即可。
 
 
 
@@ -203,13 +203,13 @@ var laya;
 
 　　资源面板中，默认在comp文件中放置了常用UI组件的skin资源，通过组件命名规则方便的将skin资源识别为组件使用（资源必须存放于"项目根目录\laya\assets"下才会被识别为组件）。与组件面板的组件属性skin值为空不同，资源面板中的组件属性skin默认值是"\laya\assets"目录下的相对路径。
 
-　　为了方便项目使用带skin资源的组件，我们继续介绍如何在资源面板中显示组件。首先我们先准备一张skin资源，由于上文示例的自定义组件是缩放按钮，我们直接复制任意一张图片即可体验缩放按钮组件的缩放效果。图片资源复制到"项目根目录\laya\assets"目录下即可，图片资源命名为xml中resName的属性值sButton或以sButton为前缀，如图8所示。
+　　为了方便项目使用带skin资源的组件，我们继续介绍如何在资源面板中显示组件。首先我们先准备一张skin资源，由于上文示例的自定义组件是缩放按钮，我们直接复制任意一张图片即可体验缩放按钮组件的缩放效果。图片资源复制到"项目根目录\laya\assets"目录下即可，图片资源命名为xml中resName的属性值sbtn或以sbtn为前缀，如图8所示。
 
 ![8](img/8.jpg)
 
 (图8)
 
-　　资源复制完成后，我们再次打开LayaAirIDE的资源管理面板，点击刷新资源树按钮即可看到刚刚复制的sButton_1.png，点击该图片，我们可以看到图片的预览。说明我们带skin默认值的自定义组件成功的添加到项目的资源管理面板中，如图9所示。
+　　资源复制完成后，我们再次打开LayaAirIDE的资源管理面板，点击刷新资源树按钮即可看到刚刚复制的sbtn_1.png，点击该图片，我们可以看到图片的预览。说明我们带skin默认值的自定义组件成功的添加到项目的资源管理面板中，如图9所示。
 
 ![9](img/9.jpg)
 (图9)
@@ -222,7 +222,7 @@ var laya;
 
 #### 4.4.1从资源面板中使用
 
-　　在资源管理面板中找到sButton为前缀的组件，直接拖拽到页面，点击可看到缩放效果，如图10所示。
+　　在资源管理面板中找到sbtn为前缀的组件，直接拖拽到页面，点击可看到缩放效果，如图10所示。
 
 ![10](img/10.gif)
 (图10)
