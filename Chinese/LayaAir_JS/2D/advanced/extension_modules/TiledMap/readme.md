@@ -168,7 +168,7 @@ this.tMap.createMap("res/TiledMap/orthogonal.json",viewRect,Laya.Handler.create(
 
 （图10）
 
-`setViewPortPivotByScale()`方法的第一个参数scaleX是X轴方向的缩放坐标比例，scaleY是X轴方向的缩放坐标比例。
+`setViewPortPivotByScale()`方法的第一个参数scaleX是X轴方向的缩放坐标比例，scaleY是Y轴方向的缩放坐标比例。
 
 例如：
 
