@@ -1660,7 +1660,7 @@ var volumeRender=(function(){
 		Laya.timer.frameLoop(1,this,this.onloop);
 		this.scene=Laya.stage.addChild(new Scene());
 		var tip=document.createElement('div');;
-		tip.innerHTML='下载资源中...';tip.style='font-size: 32;color: #00ff00;position: absolute;top: 300;left: 300;';document.body.appendChild(tip);;
+		tip.innerHTML='下载资源中...';tip.style='font-size: 32;color: #00ff00;position: absolute;top: 30;left: 30;';document.body.appendChild(tip);;
 		this.htmlTip=tip;
 		var camera=this.addCam(new Vector3(0,6,6),new Vector3(0,0,0));
 		VolumeMaterial.initShader();
