@@ -1652,16 +1652,20 @@ var CacheTest=(function(){
 var volumeRender=(function(){
 	function volumeRender(){
 		this.scene=null;
+		this.spTip=null;
 		this.sp1=null;
 		Laya3D.init(0,0,true);
 		Laya.stage.scaleMode="full";
 		Laya.stage.screenMode="none";
-		Stat.show();
 		Laya.timer.frameLoop(1,this,this.onloop);
 		this.scene=Laya.stage.addChild(new Scene());
+		var tip=document.createElement('div');;
+		tip.innerHTML='下载资源中...';tip.style='font-size: 32;color: #00ff00;position: absolute;top: 300;left: 300;';document.body.appendChild(tip);;
+		this.htmlTip=tip;
 		var camera=this.addCam(new Vector3(0,6,6),new Vector3(0,0,0));
 		VolumeMaterial.initShader();
 		this.sp1=this.scene.addChild(new VolumeSprite3D(camera));
+		this.sp1.once("complete",this,this.OnVolumeEnd,[this]);
 		this.sp1.loadVolumeData('res/256.kt1');
 	}
 
@@ -1672,6 +1676,10 @@ var volumeRender=(function(){
 		camera.transform.translate(pos);
 		camera.transform.lookAt(lookat,new Vector3(0,1,0));
 		return camera;
+	}
+
+	__proto.OnVolumeEnd=function(obj){
+		document.body.removeChild(obj.htmlTip);;
 	}
 
 	__proto.onloop=function(){
@@ -1700,7 +1708,7 @@ var Config=(function(){
 	Config.preserveDrawingBuffer=false;
 	Config.smartCache=false;
 	Config.webGL2D_MeshAllocMaxMem=true;
-	Config.useWebGL2=true;
+	Config.useWebGL2=false;
 	return Config;
 })()
 
@@ -73656,7 +73664,6 @@ var VolumeTexture=(function(_super){
 		this.slicesData=null;
 		gl.texParameteri(0x0DE1,0x2801,0x2601);
 		gl.texParameteri(0x0DE1,0x2800,0x2601);
-		gl.texParameteri(0x0DE1,0x2803,0x812F);
 		this.memorySize=w *h *4;
 		this._recreateLock=false;
 	}
@@ -73666,9 +73673,6 @@ var VolumeTexture=(function(_super){
 		gl.bindTexture(0x806f,this._glTexture);
 		gl.texParameteri(0x806f,gl.TEXTURE_MIN_FILTER,0x2601);
 		gl.texParameteri(0x806f,gl.TEXTURE_MAG_FILTER,0x2601);
-		gl.texParameteri(0x806f,0x2803,0x812F);
-		gl.texParameteri(0x806f,0x2802,0x812F);
-		gl.texParameteri(0x806f,WebGLContext.TEXTURE_WRAP_R,0x812F);
 		gl.texImage3D(
 		0x806f,
 		0,
@@ -75825,7 +75829,8 @@ var VolumeSprite3D=(function(_super){
 			var mtl=this._render.sharedMaterial;
 			mtl.setTexture(tex,tex._gridNum,tex._vtPixSize.z);
 			var bb=tex._vtRealSize;
-			_$this._transform.scale=new Vector3(bb.x/_$this.unit,bb.z/_$this.unit,bb.y/_$this.unit);
+			_$this._transform.scale=new Vector3(bb.x / _$this.unit,bb.z / _$this.unit,bb.y / _$this.unit);
+			_$this.event("complete");
 		},this);
 	}
 
