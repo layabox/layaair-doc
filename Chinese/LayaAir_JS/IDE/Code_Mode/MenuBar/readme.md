@@ -122,13 +122,12 @@
 - **JS压缩工具**：打开JS压缩工具窗口，以供用户将JS文件进行压缩和混淆。
 - **龙骨动画转换**：打开龙骨动画转换窗口，以供用户将DragonBones骨骼动画转换为LayaAir识别的格式。
 - **Spine动画转换**：打开Spine动画转换窗口，以供用户将Spine骨骼动画转换为LayaAir识别的格式。
+- **Psd2UI**：将pad文件直接转为UI页面，资源命名规则可参考[这里](https://ask.layabox.com/question/7365)
 - **图集打包**：打开图集打包窗口，以供用户进行图集打包操作。
 - **运行器下载**：打开运行器下载的二维码窗口，以供用户扫码下载LayaNative的运行器。
 - **打包APP**：APP打包的环境配置与操作窗口，以供用户将LayaAir项目打包为安卓的APP（apk文件）
-- **渠道打包工具**：打开渠道打包窗口，以供用户将LayaAir引擎项目直接打包为已对接多个安卓主流渠道的apk包。
-- **构建**：打开构建功能窗口，以供用户将LayaAir引擎项目构建为Android-eclipse、Android-studio、XCode(IOS)三种移动端的APP项目工程。
+- **app构建**：打开构建功能窗口，以供用户将LayaAir引擎项目构建为Android-eclipse、Android-studio、XCode(IOS)三种移动端的APP项目工程。
 - **3D转换工具**：打开3D转换工具的URL链接，压缩包内提供了3DMax与Unity3D编辑器的资源转换工具，让3DMax与Unity3D的资源成为LayaAir引擎支持的资源。
-- **发布Flash版本**：仅支持AS3项目发布为swf文件（flash版本）
 
 
 
@@ -154,7 +153,6 @@
 - **官网示例**：打开官网的LayaAir引擎示例链接。
 - **开发者中心**：打开Layabox开发者中心链接。
 - **打开编辑器本地缓存目录**：打开编辑器的本地缓存文件所在目录。
-- **layaAir贡献名单**：向官方提交引擎BUG，可以进入贡献名单。
 - **检查更新**：打开LayaAirIDE的版本下载列表链接。
 - **更新日志**：打开gitHub中的引擎与IDE版本更新日志链接。
 - **当前版本号**：显示LayaAirIDE当前的版本号。
