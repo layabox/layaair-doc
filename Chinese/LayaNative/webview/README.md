@@ -63,3 +63,8 @@ document.addEventListener('touchstart',()=>{
 });
 ```
 
+## 如何在代码中动态关闭webview页面
+
+```javascript
+conch.closeExternalLink();
+```
