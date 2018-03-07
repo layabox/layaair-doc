@@ -392,6 +392,7 @@ var Laya=window.Laya=(function(window,document){
 			else{
 				Laya.init(Browser.width,Browser.height,WebGL);
 			}
+			Stat.show();
 			this.wrapBounds=new Rectangle(-this.padding,-this.padding,Laya.stage.width+this.padding *2,Laya.stage.height+this.padding *2);
 			Laya.loader.load(this.texturePath,Handler.create(this,this.onTextureLoaded));
 			Laya.loader.load(this.texturePath1,Handler.create(this,this.onTextureLoaded1));
