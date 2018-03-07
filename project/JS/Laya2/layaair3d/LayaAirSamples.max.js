@@ -665,7 +665,7 @@ var Laya=window.Laya=(function(window,document){
 			camera.addComponent(CameraMoveScript);
 			camera.clearFlag=1;
 			var skyBox=new SkyBox();
-			skyBox.sharedMaterial=SkyBoxMaterial.load("res/threeDimen/skyBox/skyBox4/SkyboxMaterial.lmat");
+			skyBox.sharedMaterial=SkyBoxMaterial.load("res/threeDimen/skybox/skyBox4/SkyboxMaterial.lmat");
 			camera.sky=skyBox;
 			this.layaMonkey=Sprite3D.load("res/threeDimen/skinModel/LayaMonkey/LayaMonkey.lh");
 			this.layaMonkey.once("hierarchyloaded",this,function(){
