@@ -21,8 +21,8 @@ scene.addChild(box);
 
 //创建BlinnPhong材质
 var mat:BlinnPhongMaterial=new BlinnPhongMaterial();
-mat.diffuseColor=new Vector4(0.5,0.3,0.3,1);
-mat.diffuseTexture=Texture2D.load("res/layabox.png");
+mat.albedoColor=new Vector4(0.5,0.3,0.3,1);
+mat.albedoTexture=Texture2D.load("res/layabox.png");
 
 //加载材质资源方法创建
 //var mat:BlinnPhongMaterial=BlinnPhongMaterial.load("truck/Assets/Materials/t0200.lmat");
