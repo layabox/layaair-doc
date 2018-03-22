@@ -1,0 +1,4 @@
+/debug-master.max.js
+/index.html
+/res/tinyMaggot.png
+/res/tinyMaggot1.png
