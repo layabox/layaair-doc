@@ -1,6 +1,6 @@
 # Byte二进制读写
 
-在开发项目中，二进制的操作是不可或缺的。在html5时代，对二进制的支持已经有了很大的突破。但是api的繁琐，对开发者开发项目来说不太方便。在页游时代，ActionScript3.0的二进制数组ByteArray，功能完善，api操作简单易懂，因此Laya的Byte在参考ByteArray的同事承接了html5的TypedArray类型化数组的特点。下面看下主要的用法
+在开发项目中，二进制的操作是不可或缺的。在html5时代，对二进制的支持已经有了很大的突破。但是api的繁琐，对开发者开发项目来说不太方便。在页游时代，ActionScript3.0的二进制数组ByteArray，功能完善，api操作简单易懂，因此Laya的Byte在参考ByteArray的同时承接了html5的TypedArray类型化数组的特点。下面看下主要的用法
 
 ### 常用方法
 
