@@ -1,5 +1,5 @@
 
-console.log("LayaAir2.0-2D-1234");
+console.log("LayaAir2.0-2D");
 
 var window = window || global;
 var document = document || (window.document = {});
@@ -199,8 +199,8 @@ var Laya=window.Laya=(function(window,document){
 (function(window,document,Laya){
 	var __un=Laya.un,__uns=Laya.uns,__static=Laya.static,__class=Laya.class,__getset=Laya.getset,__newvec=Laya.__newvec;
 	Laya.interface('laya.ui.IItem');
-	Laya.interface('laya.ui.ISelect');
 	Laya.interface('laya.ui.IRender');
+	Laya.interface('laya.ui.ISelect');
 	Laya.interface('laya.d3.core.IClone');
 	Laya.interface('laya.runtime.IMarket');
 	Laya.interface('laya.filters.IFilter');
@@ -437,10 +437,10 @@ var Laya=window.Laya=(function(window,document){
 		__proto.newMaggot=function(index){
 			var maggot=new Maggot();
 			if (index % 50==0){
-				maggot.graphics.drawTexture(this.maggotTexture1,0,0);
+				maggot.texture=this.maggotTexture1;
 			}
 			else{
-				maggot.graphics.drawTexture(this.maggotTexture,0,0);
+				maggot.texture=this.maggotTexture;
 			}
 			maggot.pivot(16.5,35);
 			var rndScale=0.8+Math.random()*0.3;
@@ -929,6 +929,7 @@ var Laya=window.Laya=(function(window,document){
 		Config.preserveDrawingBuffer=false;
 		Config.smartCache=false;
 		Config.webGL2D_MeshAllocMaxMem=true;
+		Config.useWebGL2=true;
 		return Config;
 	})()
 
@@ -3255,8 +3256,8 @@ var Laya=window.Laya=(function(window,document){
 			cmd._commandEncoder.uniformEx(LayaNative2D.VALUEVIEWS,"u_view");
 			cmd._commandEncoder.uniformTexture("u_tex",texture.bitmap._glTextureType,0x84C0,texture.bitmap._glTexture);
 			var buffer=new Float32Array([0,0,0,0,texture.bitmap.width,0,1,0,texture.bitmap.width,texture.bitmap.height,1,1,0,texture.bitmap.height,0,1]);
-			cmd._commandEncoder.setRectMesh(buffer);
-			cmd._commandEncoder.modifyMesh(LayaNative2D.VALUEMATRIX32,0,10);
+			cmd._commandEncoder.setRectMesh(1,buffer);
+			cmd._commandEncoder.modifyMesh(LayaNative2D.VALUEMATRIX32,0,7);
 			LayaGL.syncBufferToRenderThread(cmd._commandEncoder.getPtrID());
 			return cmd;
 		}
@@ -4600,8 +4601,9 @@ var Laya=window.Laya=(function(window,document){
 		SpriteConst.POSMATRIX=13;
 		SpriteConst.POSALPHA=19;
 		SpriteConst.POSGRAPICS=20;
-		SpriteConst.POSLAYAGL3D=21;
-		SpriteConst.POSSIZE=22;
+		SpriteConst.POSGRAPICS_DATA=21;
+		SpriteConst.POSLAYAGL3D=22;
+		SpriteConst.POSSIZE=23;
 		SpriteConst.ALPHA=0x01;
 		SpriteConst.TRANSFORM=0x02;
 		SpriteConst.BLEND=0x04;
@@ -4791,9 +4793,9 @@ var Laya=window.Laya=(function(window,document){
 		Event.FULL_SCREEN_CHANGE="fullscreenchange";
 		Event.DEVICE_LOST="devicelost";
 		Event.MESH_CHANGED="meshchanged";
-		Event.RENDERQUEUE_CHANGED="renderqueuechanged";
 		Event.WORLDMATRIX_NEEDCHANGE="worldmatrixneedchanged";
 		Event.ANIMATION_CHANGED="animationchanged";
+		Event.TRAIL_FILTER_CHANGE="trailfilterchange";
 		return Event;
 	})()
 
@@ -6918,6 +6920,44 @@ var Laya=window.Laya=(function(window,document){
 
 
 	/**
+	*...
+	*@author ww
+	*/
+	//class laya.net.AtlasInfoManager
+	var AtlasInfoManager=(function(){
+		function AtlasInfoManager(){}
+		__class(AtlasInfoManager,'laya.net.AtlasInfoManager');
+		AtlasInfoManager.enable=function(infoFile,callback){
+			Laya.loader.load(infoFile,Handler.create(null,AtlasInfoManager._onInfoLoaded,[callback]),null,"json");
+		}
+
+		AtlasInfoManager._onInfoLoaded=function(callback,data){
+			var tKey;
+			var tPrefix;
+			var tArr;
+			var i=0,len=0;
+			for (tKey in data){
+				tArr=data[tKey];
+				tPrefix=tArr[0];
+				tArr=tArr[1];
+				len=tArr.length;
+				for (i=0;i < len;i++){
+					AtlasInfoManager._fileLoadDic[tPrefix+tArr[i]]=tKey;
+				}
+			}
+			callback && callback.run();
+		}
+
+		AtlasInfoManager.getFileLoadPath=function(file){
+			return AtlasInfoManager._fileLoadDic[file]||file;
+		}
+
+		AtlasInfoManager._fileLoadDic={};
+		return AtlasInfoManager;
+	})()
+
+
+	/**
 	*<p> <code>LocalStorage</code> 类用于没有时间限制的本地数据存储。</p>
 	*/
 	//class laya.net.LocalStorage
@@ -7097,7 +7137,7 @@ var Laya=window.Laya=(function(window,document){
 			}
 		}
 
-		__proto._initWithNative=function(isUseArray,isSyncToRenderThread){
+		__proto._initForNative=function(isUseArray,isSyncToRenderThread){
 			this._buffer=new ArrayBuffer(this._byteLen);
 			this._idata=new Int32Array(this._buffer);
 			this._fdata=new Float32Array(this._buffer);
@@ -7157,7 +7197,7 @@ var Laya=window.Laya=(function(window,document){
 			}
 		}
 
-		__proto._needWithNative=function(sz){
+		__proto._needForNative=function(sz){
 			if ((this._byteLen-(this._idata[0] << 2))>=sz)return;
 			this._byteLen+=(sz > this._adjustSize)? sz :this._adjustSize;
 			var pre=this._idata;
@@ -8373,7 +8413,7 @@ var Laya=window.Laya=(function(window,document){
 			idata[0]=i;
 		}
 
-		__proto.setValueWithShareData=function(valueID,dataOffset,operateType){
+		__proto.setValueByShareData=function(valueID,dataOffset,operateType){
 			this.add_iiii(12,valueID,dataOffset,operateType);
 		}
 
@@ -8418,8 +8458,8 @@ var Laya=window.Laya=(function(window,document){
 			this.add_i(-1);
 		}
 
-		__proto.setRectMesh=function(data){
-			this.add_i(20);
+		__proto.setRectMesh=function(nRectNum,data){
+			this.add_ii(20,nRectNum);
 			this.wab(data,data.byteLength);
 		}
 
@@ -8492,6 +8532,19 @@ var Laya=window.Laya=(function(window,document){
 			this.add_iiiiiiiiiiii(36,transformFlag,matrixResultID,x,y,pivotX,pivotY,scaleX,scaleY,skewX,skewY,rotate);
 		}
 
+		__proto.useCommandEncoderEx=function(comEncoderID,shareDataID,type){
+			this.add_iiii(37,comEncoderID,shareDataID,type);
+		}
+
+		__proto.uniformTextureEx=function(name,texLocation,texture){
+			this.add_iii(38,texLocation,texture);
+			this.add_String(name);
+		}
+
+		__proto.setRectMeshEx=function(nRectNum,dataOffset,lenght){
+			this.add_iiii(39,nRectNum,dataOffset,lenght);
+		}
+
 		GLCommandEncoder.__init__=function(){
 			if (Render.isConchApp){
 				GLCommandEncoder._locTable=new ProgramLocationTable();
@@ -8512,7 +8565,7 @@ var Laya=window.Laya=(function(window,document){
 		GLCommandEncoder.UPLOADSHADERATTRIBUTES=9;
 		GLCommandEncoder.UPLOADSHADERUNIFORMS=10;
 		GLCommandEncoder.UPLOADSHADERPARAMS=11;
-		GLCommandEncoder.SETVALUEWITHSHAREDATA=12;
+		GLCommandEncoder.SETVALUEBYSHAREDATA=12;
 		GLCommandEncoder.USECOMMANDENCODER=13;
 		GLCommandEncoder.CREATEPROGRAMEX=14;
 		GLCommandEncoder.CREATEVDO=15;
@@ -8537,6 +8590,9 @@ var Laya=window.Laya=(function(window,document){
 		GLCommandEncoder.SETSHADERDEFINE=34;
 		GLCommandEncoder.FORCENOMERGE=35;
 		GLCommandEncoder.CALCLOCALMATRIX32=36;
+		GLCommandEncoder.USECOMMANDENCODEREX=37;
+		GLCommandEncoder.UNIFORMTEXTUREEX=38;
+		GLCommandEncoder.SETRECTMESHEX=39;
 		GLCommandEncoder.GETCONTEXTATTRIBUTES=64;
 		GLCommandEncoder.ISCONTEXTLOST=65;
 		GLCommandEncoder.GETSUPPORTEDEXTENSIONS=66;
@@ -9422,8 +9478,8 @@ var Laya=window.Laya=(function(window,document){
 			return 0;
 		}
 
-		__proto.setValueWithShareData=function(valueID,dataOffset,operateType){
-			this._currentContext.setValueWithShareData(valueID,dataOffset,operateType);
+		__proto.setValueByShareData=function(valueID,dataOffset,operateType){
+			this._currentContext.setValueByShareData(valueID,dataOffset,operateType);
 		}
 
 		__proto.useCommandEncoder=function(id){
@@ -9454,8 +9510,8 @@ var Laya=window.Laya=(function(window,document){
 			this._currentContext.uniformEx(nValueID,sUniformName);
 		}
 
-		__proto.setRectMesh=function(data){
-			this._currentContext.setRectMesh(data);
+		__proto.setRectMesh=function(nRectNum,data){
+			this._currentContext.setRectMesh(nRectNum,data);
 		}
 
 		__proto.modifyMesh=function(nValueID,nVertexDescID,operatorType){
@@ -9522,6 +9578,18 @@ var Laya=window.Laya=(function(window,document){
 			this._currentContext.calcLocalMatrix32(transformFlag,matrixResultID,x,y,pivotX,pivotY,scaleX,scaleY,skewX,skewY,rotate);
 		}
 
+		__proto.useCommandEncoderEx=function(comEncoderID,shareDataID,type){
+			this._currentContext.useCommandEncoderEx(comEncoderID,shareDataID,type);
+		}
+
+		__proto.uniformTextureEx=function(name,texLocation,texture){
+			this._currentContext.uniformTextureEx(name,texLocation,texture);
+		}
+
+		__proto.setRectMeshEx=function(nRectNum,dataOffset,lenght){
+			this._currentContext.setRectMeshEx(nRectNum,dataOffset,lenght);
+		}
+
 		LayaGL.__init__=function(){
 			if (Render.isConchApp){
 				LayaGL._syncBufferList=new Int32Array(LayaGL._syncBufferSize);
@@ -9558,17 +9626,17 @@ var Laya=window.Laya=(function(window,document){
 		LayaGL._frameCount=0;
 		LayaGL._tempGLEncoder=null;
 		LayaGL.instance=null
-		LayaGL.VALUE_OPERATE_EXECUTE_JS_THREAD_BUFFER=0;
-		LayaGL.VALUE_OPERATE_EXECUTE_RENDER_THREAD_BUFFER=1;
-		LayaGL.VALUE_OPERATE_EXECUTE_COPY_TO_RENDER=2;
-		LayaGL.VALUE_OPERATE_ADD=3;
-		LayaGL.VALUE_OPERATE_SUB=4;
-		LayaGL.VALUE_OPERATE_MUL=5;
-		LayaGL.VALUE_OPERATE_DIV=6;
-		LayaGL.VALUE_OPERATE_M2_MUL=7;
-		LayaGL.VALUE_OPERATE_M3_MUL=8;
-		LayaGL.VALUE_OPERATE_M4_MUL=9;
-		LayaGL.VALUE_OPERATE_M32_MUL=10;
+		LayaGL.EXECUTE_JS_THREAD_BUFFER=0;
+		LayaGL.EXECUTE_RENDER_THREAD_BUFFER=1;
+		LayaGL.EXECUTE_COPY_TO_RENDER=2;
+		LayaGL.VALUE_OPERATE_ADD=0;
+		LayaGL.VALUE_OPERATE_SUB=1;
+		LayaGL.VALUE_OPERATE_MUL=2;
+		LayaGL.VALUE_OPERATE_DIV=3;
+		LayaGL.VALUE_OPERATE_M2_MUL=4;
+		LayaGL.VALUE_OPERATE_M3_MUL=5;
+		LayaGL.VALUE_OPERATE_M4_MUL=6;
+		LayaGL.VALUE_OPERATE_M32_MUL=7;
 		return LayaGL;
 	})()
 
@@ -9791,6 +9859,7 @@ var Laya=window.Laya=(function(window,document){
 	*/
 	//class laya.renders.layagl.LayaNative2D
 	var LayaNative2D=(function(){
+		//只绘制一张图的graphics
 		function LayaNative2D(){}
 		__class(LayaNative2D,'laya.renders.layagl.LayaNative2D');
 		LayaNative2D.__init__=function(){
@@ -9800,7 +9869,7 @@ var Laya=window.Laya=(function(window,document){
 				LayaGL.instance.endValueDefine();
 				LayaNative2D.PROGRAMEX_DRAWTEXTURE=LayaGL.instance.createProgramEx("attribute vec2 position; \
 				attribute vec2 texcoord;\
-				uniform vec4 u_view;\
+				uniform vec2 u_view;\
 				varying vec2 v_texCoord;\
 				void main()\
 				{\
@@ -9820,6 +9889,15 @@ var Laya=window.Laya=(function(window,document){
 				}","position,texcoord");
 				LayaNative2D.VAO_XYUV=LayaGL.instance.createVDO(new Int32Array([0x1406,0,2,16,0x1406,8,2,16,]));
 				LayaGLTemplate.__init__();
+				LayaNative2D.SIMPLE_GRAPHICS_TEXTURE=new Graphics();
+				var commandEncoder=LayaNative2D.SIMPLE_GRAPHICS_TEXTURE._commandEncoder;;
+				commandEncoder.useProgramEx(laya.renders.layagl.LayaNative2D.PROGRAMEX_DRAWTEXTURE);
+				commandEncoder.useVDO(laya.renders.layagl.LayaNative2D.VAO_XYUV);
+				commandEncoder.uniformEx(laya.renders.layagl.LayaNative2D.VALUEVIEWS,"u_view");
+				commandEncoder.uniformTextureEx("u_tex",0x84C0,0);
+				commandEncoder.setRectMeshEx(1,4,16 *4);
+				commandEncoder.modifyMesh(laya.renders.layagl.LayaNative2D.VALUEMATRIX32,0,7);
+				LayaGL.syncBufferToRenderThread(commandEncoder.getPtrID());
 			}
 		}
 
@@ -9829,6 +9907,7 @@ var Laya=window.Laya=(function(window,document){
 		LayaNative2D.VALUEVIEWS=1;
 		LayaNative2D.VALUEMATRIX32=0;
 		LayaNative2D.VALUEALPHA=0;
+		LayaNative2D.SIMPLE_GRAPHICS_TEXTURE=null;
 		return LayaNative2D;
 	})()
 
@@ -9839,7 +9918,7 @@ var Laya=window.Laya=(function(window,document){
 	*/
 	//class laya.renders.layagl.ParamData
 	var ParamData=(function(){
-		function ParamData(sz){
+		function ParamData(sz,bSyncRenderThread){
 			this._data=null;
 			this._int32Data=null;
 			this._float32Data=null;
@@ -9847,7 +9926,7 @@ var Laya=window.Laya=(function(window,document){
 			this._int32Data=new Int32Array(this._data);
 			this._float32Data=new Float32Array(this._data);
 			if (Render.isConchApp){
-				LayaGL.createArrayBufferRef(this._data,0,false);
+				LayaGL.createArrayBufferRef(this._data,0,bSyncRenderThread);
 			}
 		}
 
@@ -9873,8 +9952,8 @@ var Laya=window.Laya=(function(window,document){
 			this._int32Data[SpriteConst.SPRITE_DATA[name]]=Color.create(value).numColor;
 		}
 
-		ParamData.create=function(sz){
-			return new ParamData(sz);
+		ParamData.create=function(sz,bSyncRenderThread){
+			return new ParamData(sz,bSyncRenderThread);
 		}
 
 		ParamData._pool=[];
@@ -11543,9 +11622,9 @@ var Laya=window.Laya=(function(window,document){
 
 		__class(LayaGLTemplate,'laya.runtime.LayaGLTemplate');
 		var __proto=LayaGLTemplate.prototype;
-		__proto.addComd=function(valueID,offset,operate){
-			this._commStr+="setValueWithShareData("+valueID+","+offset+","+operate+");";
-			this._commandEncoder.setValueWithShareData(valueID,offset,operate);
+		__proto.addComd=function(funcName,argsArray){
+			this._commStr+=funcName+"("+argsArray+");";
+			this._commandEncoder[funcName].apply(this._commandEncoder,argsArray);
 		}
 
 		__proto.addCalcLocalDataCommd=function(){
@@ -11566,7 +11645,7 @@ var Laya=window.Laya=(function(window,document){
 						template.addCalcLocalDataCommd();
 					};
 					var obj=LayaGLTemplate.__FUN_PARAM__[n];
-					template.addComd(obj.valueID,obj.offset,obj.operate);
+					template.addComd(obj.func,obj.args);
 				}
 				n <<=1;
 			}
@@ -11576,10 +11655,10 @@ var Laya=window.Laya=(function(window,document){
 		}
 
 		LayaGLTemplate.__init__=function(){
-			LayaGLTemplate.__FUN_PARAM__[0x01]={valueID:LayaNative2D.VALUEALPHA,offset:19*4,operate:5 };
-			LayaGLTemplate.__FUN_PARAM__[0x02]={valueID:LayaNative2D.VALUEMATRIX32,offset:13 *4,operate:10 };
-			LayaGLTemplate.__FUN_PARAM__[0x200]={valueID:-1,offset:20*4,operate:1 };
-			LayaGLTemplate.__FUN_PARAM__[0x400]={valueID:-1,offset:21*4,operate:2 };
+			LayaGLTemplate.__FUN_PARAM__[0x01]={func:"setValueByShareData",args:[LayaNative2D.VALUEALPHA,19*4,2] };
+			LayaGLTemplate.__FUN_PARAM__[0x02]={func:"setValueByShareData",args:[LayaNative2D.VALUEMATRIX32,13 *4,7] };
+			LayaGLTemplate.__FUN_PARAM__[0x200]={func:"useCommandEncoderEx",args:[20*4,21*4,1] };
+			LayaGLTemplate.__FUN_PARAM__[0x400]={func:"useCommandEncoderEx",args:[22*4,-1,2] };
 		}
 
 		LayaGLTemplate.GLS=[];
@@ -14142,8 +14221,8 @@ var Laya=window.Laya=(function(window,document){
 			var baseTexture=BaseTexture;
 			var skinnedMeshRender=SkinnedMeshRender;
 			if (window.conch){
-				commandEncoder.prototype._init=commandEncoder.prototype._initWithNative;
-				commandEncoder.prototype._need=commandEncoder.prototype._needWithNative;
+				commandEncoder.prototype._init=commandEncoder.prototype._initForNative;
+				commandEncoder.prototype._need=commandEncoder.prototype._needForNative;
 				commandEncoder.prototype.add_String=commandEncoder.prototype.add_StringForNative;
 				commandEncoder.prototype.addShaderAttribute=commandEncoder.prototype.addShaderAttributeForNative;
 				commandEncoder.prototype.addShaderUniform=commandEncoder.prototype.addShaderUniformForNative;
@@ -14173,7 +14252,6 @@ var Laya=window.Laya=(function(window,document){
 				shader3D.prototype._uniformMatrix3fv=shader3D.prototype._uniformMatrix3fvForNative;
 				shader3D.prototype._uniformMatrix4fv=shader3D.prototype._uniformMatrix4fvForNative;
 				baseTexture.prototype._getGLFormat=baseTexture.prototype._getGLFormatForNative;
-				skinnedMeshRender.prototype._computeSkinnedData=skinnedMeshRender.prototype._computeSkinnedDataForNative;
 				Utils3D.matrix4x4MultiplyFFF=Utils3D.matrix4x4MultiplyFFFForNative;
 			}
 			ConchSpriteAdpt.init();
@@ -15088,16 +15166,6 @@ var Laya=window.Laya=(function(window,document){
 			return Utils._gid++;
 		}
 
-		Utils.parseXMLFromString=function(value){
-			var rst;
-			value=value.replace(/>\s+</g,'><');
-			rst=(new DOMParser()).parseFromString(value,'text/xml');
-			if (rst.firstChild.textContent.indexOf("This page contains the following errors")>-1){
-				throw new Error(rst.firstChild.firstChild.textContent);
-			}
-			return rst;
-		}
-
 		Utils.concatArray=function(source,array){
 			if (!array)return source;
 			if (!source)return array;
@@ -15251,10 +15319,42 @@ var Laya=window.Laya=(function(window,document){
 			dom.style.top=transform.y+'px';
 		}
 
+		Utils.isOkTextureList=function(textureList){
+			if (!textureList)return false;
+			var i=0,len=textureList.length;
+			var tTexture;
+			for (i=0;i < len;i++){
+				tTexture=textureList[i];
+				if (!tTexture||!tTexture.source)return false;
+			}
+			return true;
+		}
+
+		Utils.isOKCmdList=function(cmds){
+			if (!cmds)return false;
+			var i=0,len=cmds.length;
+			var cmd;
+			var tex;
+			for (i=0;i < len;i++){
+				cmd=cmds[i];
+			}
+			return true;
+		}
+
 		Utils._gid=1;
 		Utils._pi=180 / Math.PI;
 		Utils._pi2=Math.PI / 180;
 		Utils._extReg=/\.(\w+)\??/g;
+		Utils.parseXMLFromString=function(value){
+			var rst;
+			value=value.replace(/>\s+</g,'><');
+			rst=(new DOMParser()).parseFromString(value,'text/xml');
+			if (rst.firstChild.textContent.indexOf("This page contains the following errors")>-1){
+				throw new Error(rst.firstChild.firstChild.textContent);
+			}
+			return rst;
+		}
+
 		return Utils;
 	})()
 
@@ -15830,8 +15930,8 @@ var Laya=window.Laya=(function(window,document){
 	//class laya.webgl.canvas.save.SaveClipRect
 	var SaveClipRect=(function(){
 		function SaveClipRect(){
-			//this._clipSaveRect=null;
-			//this._submitScissor=null;
+			this._clipInfoID=-1;
+			this._transedClipInfo=new Array(6);
 			this._clipRect=new Rectangle();
 		}
 
@@ -15840,22 +15940,30 @@ var Laya=window.Laya=(function(window,document){
 		Laya.imps(__proto,{"laya.webgl.canvas.save.ISaveData":true})
 		__proto.isSaveMark=function(){return false;}
 		__proto.restore=function(context){
-			context._clipRect=this._clipSaveRect;
-			context._clipTransed=false;
+			context._transedClipInfo[0]=this._transedClipInfo[0];
+			context._transedClipInfo[1]=this._transedClipInfo[1];
+			context._transedClipInfo[2]=this._transedClipInfo[2];
+			context._transedClipInfo[3]=this._transedClipInfo[3];
+			context._transedClipInfo[4]=this._transedClipInfo[4];
+			context._transedClipInfo[5]=this._transedClipInfo[5];
+			this._clipRect.clone(context._clipRect);
+			context._clipInfoID=this._clipInfoID;
 			SaveClipRect.POOL[SaveClipRect.POOL._length++]=this;
-			this._submitScissor.submitLength=context._submits._length-this._submitScissor.submitIndex;
-			context._curSubmit=context._submits[context._submits._length++]=Submit.RENDERBASE;
-			context._submitKey.submitType=-1;
 		}
 
-		SaveClipRect.save=function(context,submitScissor){
+		SaveClipRect.save=function(context){
 			if ((context._saveMark._saveuse & 0x20000)==0x20000)return;
 			context._saveMark._saveuse |=0x20000;
 			var cache=SaveClipRect.POOL;
 			var o=cache._length > 0 ? cache[--cache._length] :(new SaveClipRect());
-			o._clipSaveRect=context._clipRect;
-			context._clipRect=o._clipRect.copyFrom(context._clipRect);
-			o._submitScissor=submitScissor;
+			o._transedClipInfo[0]=context._transedClipInfo[0];
+			o._transedClipInfo[1]=context._transedClipInfo[1];
+			o._transedClipInfo[2]=context._transedClipInfo[2];
+			o._transedClipInfo[3]=context._transedClipInfo[3];
+			o._transedClipInfo[4]=context._transedClipInfo[4];
+			o._transedClipInfo[5]=context._transedClipInfo[5];
+			context._clipRect.clone(o._clipRect);
+			o._clipInfoID=context._clipInfoID;
 			var _save=context._save;
 			_save[_save._length++]=o;
 		}
@@ -19385,7 +19493,6 @@ var Laya=window.Laya=(function(window,document){
 			this._vao=null;
 			this._attribInfo=null;
 			this._quadNum=0;
-			this._fixedib=false;
 			this.canReuse=false;
 			this._stride=stride;
 			this._vb=new VertexBuffer2D(stride,0x88E8);
@@ -19520,14 +19627,9 @@ var Laya=window.Laya=(function(window,document){
 		*/
 		__proto.useMesh=function(gl){
 			this._applied || this.configVAO(gl);
-			if (Mesh2D._bindedVAO!==this._vao){
-				gl.bindVertexArray(this._vao);;
-				Mesh2D._bindedVAO=this._vao;
-			}
+			WebGLContext.bindVertexArray(gl,this._vao);
 			this._vb.bind();
-			if(!this._fixedib){
-				this._ib._bind_upload()|| this._ib.bind();
-			}
+			this._ib._bind_upload()|| this._ib.bind();
 			this._vb._bind_upload()|| this._vb.bind();
 		}
 
@@ -19551,7 +19653,6 @@ var Laya=window.Laya=(function(window,document){
 		}
 
 		Mesh2D._gvaoid=0;
-		Mesh2D._bindedVAO=null
 		return Mesh2D;
 	})()
 
@@ -20158,13 +20259,17 @@ var Laya=window.Laya=(function(window,document){
 			}
 			function getWebGLContext (canvas){
 				var gl;
-				var names=["webgl","experimental-webgl","webkit-3d","moz-webgl"];
+				var names=["webgl2","webgl","experimental-webgl","webkit-3d","moz-webgl"];
+				if (!Config.useWebGL2){
+					names.shift();
+				}
 				for (var i=0;i < names.length;i++){
 					try {
 						gl=canvas.getContext(names[i],{stencil:Config.isStencil,alpha:Config.isAlpha,antialias:Config.isAntialias,premultipliedAlpha:Config.premultipliedAlpha,preserveDrawingBuffer:Config.preserveDrawingBuffer});
 					}catch (e){}
 					if (gl){
-						(i!==0)&& (WebGL._isExperimentalWebgl=true);
+						(names[i]==='webgl2')&& (laya.webgl.WebGL._isWebGL2=true);
+						(i >=2)&& (WebGL._isExperimentalWebgl=true);
 						new LayaGL(gl);
 						return gl;
 					}
@@ -20177,18 +20282,20 @@ var Laya=window.Laya=(function(window,document){
 			if (Render.isWebGL)return true;
 			var gl=WebGL.mainContext;
 			WebGLContext.__init__(gl);
-			if (!(gl instanceof WebGLRenderingContext)){
-				ext=gl.rawgl.getExtension("OES_vertex_array_object");
-				}else{
-				var ext=gl.getExtension("OES_vertex_array_object");
-			}
-			if (ext){
-				console.log("EXT:webgl support OES_vertex_array_object！");
-				gl.createVertexArray=function(){return ext.createVertexArrayOES();};
-				gl.bindVertexArray=function(vao){ext.bindVertexArrayOES(vao);};
-				}else {
-				gl.createVertexArray=function(){throw "not implemented";};;
-				gl.bindVertexArray=function(){throw "not implemented";};;
+			if(!laya.webgl.WebGL._isWebGL2){
+				if (!(gl instanceof WebGLRenderingContext)){
+					ext=gl.rawgl.getExtension("OES_vertex_array_object");
+					}else{
+					var ext=gl.getExtension("OES_vertex_array_object");
+				}
+				if (ext){
+					console.log("EXT:webgl support OES_vertex_array_object！");
+					gl.createVertexArray=function(){return ext.createVertexArrayOES();};
+					gl.bindVertexArray=function(vao){ext.bindVertexArrayOES(vao);};
+					}else {
+					gl.createVertexArray=function(){throw "not implemented";};;
+					gl.bindVertexArray=function(){throw "not implemented";};;
+				}
 			}
 			HTMLImage.create=function (src,def){
 				return new Texture2D(1,true,false);
@@ -20471,6 +20578,7 @@ var Laya=window.Laya=(function(window,document){
 		WebGL.shaderHighPrecision=false;
 		WebGL._bg_null=[0,0,0,0];
 		WebGL._isExperimentalWebgl=false;
+		WebGL._isWebGL2=false;
 		return WebGL;
 	})()
 
@@ -20675,6 +20783,13 @@ var Laya=window.Laya=(function(window,document){
 			}
 		}
 
+		WebGLContext.bindVertexArray=function(gl,vertexArray){
+			if (WebGLContext._bindedVAO!==vertexArray){
+				gl.bindVertexArray(vertexArray);
+				WebGLContext._bindedVAO=vertexArray;
+			}
+		}
+
 		WebGLContext.DEPTH_BUFFER_BIT=0x00000100;
 		WebGLContext.STENCIL_BUFFER_BIT=0x00000400;
 		WebGLContext.COLOR_BUFFER_BIT=0x00004000;
@@ -20855,6 +20970,7 @@ var Laya=window.Laya=(function(window,document){
 		WebGLContext.TEXTURE_WRAP_S=0x2802;
 		WebGLContext.TEXTURE_WRAP_T=0x2803;
 		WebGLContext.TEXTURE_2D=0x0DE1;
+		WebGLContext.TEXTURE_3D=0x806f;
 		WebGLContext.TEXTURE=0x1702;
 		WebGLContext.TEXTURE_CUBE_MAP=0x8513;
 		WebGLContext.TEXTURE_BINDING_CUBE_MAP=0x8514;
@@ -20983,6 +21099,7 @@ var Laya=window.Laya=(function(window,document){
 		WebGLContext._cullFace=false;
 		WebGLContext._frontFace=0x0901;
 		WebGLContext._activedTextureID=0x84C0;
+		WebGLContext._bindedVAO=null
 		__static(WebGLContext,
 		['_activeTextures',function(){return this._activeTextures=new Array(8);}
 		]);
@@ -21288,643 +21405,6 @@ var Laya=window.Laya=(function(window,document){
 
 	/**
 	*@private
-	*/
-	//class laya.ani.bone.Bone
-	var Bone=(function(){
-		function Bone(){
-			this.name=null;
-			this.root=null;
-			this.parentBone=null;
-			this.length=10;
-			this.transform=null;
-			this.inheritScale=true;
-			this.inheritRotation=true;
-			this.rotation=NaN;
-			this.resultRotation=NaN;
-			this.d=-1;
-			this._tempMatrix=null;
-			this._sprite=null;
-			this.resultTransform=new Transform();
-			this.resultMatrix=new Matrix();
-			this._children=[];
-		}
-
-		__class(Bone,'laya.ani.bone.Bone');
-		var __proto=Bone.prototype;
-		__proto.setTempMatrix=function(matrix){
-			this._tempMatrix=matrix;
-			var i=0,n=0;
-			var tBone;
-			for (i=0,n=this._children.length;i < n;i++){
-				tBone=this._children[i];
-				tBone.setTempMatrix(this._tempMatrix);
-			}
-		}
-
-		__proto.update=function(pMatrix){
-			this.rotation=this.transform.skX;
-			var tResultMatrix;
-			if (pMatrix){
-				tResultMatrix=this.resultTransform.getMatrix();
-				Matrix.mul(tResultMatrix,pMatrix,this.resultMatrix);
-				this.resultRotation=this.rotation;
-			}
-			else {
-				this.resultRotation=this.rotation+this.parentBone.resultRotation;
-				if (this.parentBone){
-					if (this.inheritRotation && this.inheritScale){
-						tResultMatrix=this.resultTransform.getMatrix();
-						Matrix.mul(tResultMatrix,this.parentBone.resultMatrix,this.resultMatrix);
-					}
-					else {
-						var temp=0;
-						var parent=this.parentBone;
-						var tAngle=NaN;
-						var cos=NaN;
-						var sin=NaN;
-						var tParentMatrix=this.parentBone.resultMatrix;
-						tResultMatrix=this.resultTransform.getMatrix();
-						var worldX=tParentMatrix.a *tResultMatrix.tx+tParentMatrix.c *tResultMatrix.ty+tParentMatrix.tx;
-						var worldY=tParentMatrix.b *tResultMatrix.tx+tParentMatrix.d *tResultMatrix.ty+tParentMatrix.ty;
-						var tTestMatrix=new Matrix();
-						if (this.inheritRotation){
-							tAngle=Math.atan2(parent.resultMatrix.b,parent.resultMatrix.a);
-							cos=Math.cos(tAngle),sin=Math.sin(tAngle);
-							tTestMatrix.setTo(cos,sin,-sin,cos,0,0);
-							Matrix.mul(this._tempMatrix,tTestMatrix,Matrix.TEMP);
-							Matrix.TEMP.copyTo(tTestMatrix);
-							tResultMatrix=this.resultTransform.getMatrix();
-							Matrix.mul(tResultMatrix,tTestMatrix,this.resultMatrix);
-							if (this.resultTransform.scX *this.resultTransform.scY < 0){
-								this.resultMatrix.rotate(Math.PI*0.5);
-							}
-							this.resultMatrix.tx=worldX;
-							this.resultMatrix.ty=worldY;
-						}
-						else if (this.inheritScale){
-							tResultMatrix=this.resultTransform.getMatrix();
-							Matrix.TEMP.identity();
-							Matrix.TEMP.d=this.d;
-							Matrix.mul(tResultMatrix,Matrix.TEMP,this.resultMatrix);
-							this.resultMatrix.tx=worldX;
-							this.resultMatrix.ty=worldY;
-						}
-						else {
-							tResultMatrix=this.resultTransform.getMatrix();
-							Matrix.TEMP.identity();
-							Matrix.TEMP.d=this.d;
-							Matrix.mul(tResultMatrix,Matrix.TEMP,this.resultMatrix);
-							this.resultMatrix.tx=worldX;
-							this.resultMatrix.ty=worldY;
-						}
-					}
-				}
-				else {
-					tResultMatrix=this.resultTransform.getMatrix();
-					tResultMatrix.copyTo(this.resultMatrix);
-				}
-			};
-			var i=0,n=0;
-			var tBone;
-			for (i=0,n=this._children.length;i < n;i++){
-				tBone=this._children[i];
-				tBone.update();
-			}
-		}
-
-		__proto.updateChild=function(){
-			var i=0,n=0;
-			var tBone;
-			for (i=0,n=this._children.length;i < n;i++){
-				tBone=this._children[i];
-				tBone.update();
-			}
-		}
-
-		__proto.setRotation=function(rd){
-			if (this._sprite){
-				this._sprite.rotation=rd *180 / Math.PI;
-			}
-		}
-
-		__proto.updateDraw=function(x,y){
-			if (!Bone.ShowBones || Bone.ShowBones[this.name]){
-				if (this._sprite){
-					this._sprite.x=x+this.resultMatrix.tx;
-					this._sprite.y=y+this.resultMatrix.ty;
-				}
-				else {
-					this._sprite=new Sprite();
-					this._sprite.graphics.drawCircle(0,0,5,"#ff0000");
-					this._sprite.graphics.drawLine(0,0,this.length,0,"#00ff00");
-					this._sprite.graphics.fillText(this.name,0,0,"20px Arial","#00ff00","center");
-					Laya.stage.addChild(this._sprite);
-					this._sprite.x=x+this.resultMatrix.tx;
-					this._sprite.y=y+this.resultMatrix.ty;
-				}
-			};
-			var i=0,n=0;
-			var tBone;
-			for (i=0,n=this._children.length;i < n;i++){
-				tBone=this._children[i];
-				tBone.updateDraw(x,y);
-			}
-		}
-
-		__proto.addChild=function(bone){
-			this._children.push(bone);
-			bone.parentBone=this;
-		}
-
-		__proto.findBone=function(boneName){
-			if (this.name==boneName){
-				return this;
-			}
-			else {
-				var i=0,n=0;
-				var tBone;
-				var tResult;
-				for (i=0,n=this._children.length;i < n;i++){
-					tBone=this._children[i];
-					tResult=tBone.findBone(boneName);
-					if (tResult){
-						return tResult;
-					}
-				}
-			}
-			return null;
-		}
-
-		__proto.localToWorld=function(local){
-			var localX=local[0];
-			var localY=local[1];
-			local[0]=localX *this.resultMatrix.a+localY *this.resultMatrix.c+this.resultMatrix.tx;
-			local[1]=localX *this.resultMatrix.b+localY *this.resultMatrix.d+this.resultMatrix.ty;
-		}
-
-		Bone.ShowBones={};
-		return Bone;
-	})()
-
-
-	/**
-	*@private
-	*/
-	//class laya.ani.bone.BoneSlot
-	var BoneSlot=(function(){
-		function BoneSlot(){
-			this.name=null;
-			this.parent=null;
-			this.attachmentName=null;
-			this.srcDisplayIndex=-1;
-			this.type="src";
-			this.templet=null;
-			this.currSlotData=null;
-			this.currTexture=null;
-			this.currDisplayData=null;
-			this.displayIndex=-1;
-			this._diyTexture=null;
-			this._parentMatrix=null;
-			this._resultMatrix=null;
-			this._replaceDic={};
-			this._curDiyUV=null;
-			this._curDiyVS=null;
-			this._skinSprite=null;
-			this.deformData=null;
-			this._mVerticleArr=null;
-			this._preGraphicVerticle=null;
-			this._preGraphicMatrix=null;
-		}
-
-		__class(BoneSlot,'laya.ani.bone.BoneSlot');
-		var __proto=BoneSlot.prototype;
-		/**
-		*设置要显示的插槽数据
-		*@param slotData
-		*@param disIndex
-		*@param freshIndex 是否重置纹理
-		*/
-		__proto.showSlotData=function(slotData,freshIndex){
-			(freshIndex===void 0)&& (freshIndex=true);
-			this.currSlotData=slotData;
-			if(freshIndex)
-				this.displayIndex=this.srcDisplayIndex;
-			this.currDisplayData=null;
-			this.currTexture=null;
-		}
-
-		/**
-		*通过名字显示指定对象
-		*@param name
-		*/
-		__proto.showDisplayByName=function(name){
-			if (this.currSlotData){
-				this.showDisplayByIndex(this.currSlotData.getDisplayByName(name));
-			}
-		}
-
-		/**
-		*替换贴图名
-		*@param tarName 要替换的贴图名
-		*@param newName 替换后的贴图名
-		*/
-		__proto.replaceDisplayByName=function(tarName,newName){
-			if (!this.currSlotData)return;
-			var preIndex=0;
-			preIndex=this.currSlotData.getDisplayByName(tarName);
-			var newIndex=0;
-			newIndex=this.currSlotData.getDisplayByName(newName);
-			this.replaceDisplayByIndex(preIndex,newIndex);
-		}
-
-		/**
-		*替换贴图索引
-		*@param tarIndex 要替换的索引
-		*@param newIndex 替换后的索引
-		*/
-		__proto.replaceDisplayByIndex=function(tarIndex,newIndex){
-			if (!this.currSlotData)return;
-			this._replaceDic[tarIndex]=newIndex;
-			if (this.displayIndex==tarIndex){
-				this.showDisplayByIndex(tarIndex);
-			}
-		}
-
-		/**
-		*指定显示对象
-		*@param index
-		*/
-		__proto.showDisplayByIndex=function(index){
-			if (this._replaceDic[index])index=this._replaceDic[index];
-			if (this.currSlotData && index >-1 && index < this.currSlotData.displayArr.length){
-				this.displayIndex=index;
-				this.currDisplayData=this.currSlotData.displayArr[index];
-				if (this.currDisplayData){
-					var tName=this.currDisplayData.name;
-					this.currTexture=this.templet.getTexture(tName);
-					if (this.currTexture && Render.isWebGL && this.currDisplayData.type==0 && this.currDisplayData.uvs){
-						this.currTexture=this.currDisplayData.createTexture(this.currTexture);
-					}
-				}
-				}else {
-				this.displayIndex=-1;
-				this.currDisplayData=null;
-				this.currTexture=null;
-			}
-		}
-
-		/**
-		*替换皮肤
-		*@param _texture
-		*/
-		__proto.replaceSkin=function(_texture){
-			this._diyTexture=_texture;
-			if (this._curDiyUV)this._curDiyUV.length=0;
-			if (this.currDisplayData&&this._diyTexture==this.currDisplayData.texture){
-				this._diyTexture=null;
-			}
-		}
-
-		/**
-		*保存父矩阵的索引
-		*@param parentMatrix
-		*/
-		__proto.setParentMatrix=function(parentMatrix){
-			this._parentMatrix=parentMatrix;
-		}
-
-		__proto.getSaveVerticle=function(tArr){
-			if (BoneSlot.useSameMatrixAndVerticle&&this._preGraphicVerticle && BoneSlot.isSameArr(tArr,this._preGraphicVerticle)){
-				tArr=this._preGraphicVerticle;
-				}else{
-				tArr=Utils.copyArray([],tArr);
-				this._preGraphicVerticle=tArr;
-			}
-			return tArr;
-		}
-
-		__proto.getSaveMatrix=function(tResultMatrix){
-			if (BoneSlot.useSameMatrixAndVerticle&&this._preGraphicMatrix && BoneSlot.isSameMatrix(tResultMatrix,this._preGraphicMatrix)){
-				tResultMatrix=this._preGraphicMatrix;
-				}else{
-				var newMatrix=tResultMatrix.clone();
-				tResultMatrix=newMatrix;
-				this._preGraphicMatrix=tResultMatrix;
-			}
-			return tResultMatrix;
-		}
-
-		/**
-		*把纹理画到Graphics上
-		*@param graphics
-		*@param noUseSave
-		*/
-		__proto.draw=function(graphics,boneMatrixArray,noUseSave,alpha){
-			(noUseSave===void 0)&& (noUseSave=false);
-			(alpha===void 0)&& (alpha=1);
-			if ((this._diyTexture==null && this.currTexture==null)|| this.currDisplayData==null){
-				if (!(this.currDisplayData && this.currDisplayData.type==3)){
-					return;
-				}
-			};
-			var tTexture=this.currTexture;
-			if (this._diyTexture)tTexture=this._diyTexture;
-			var tSkinSprite;
-			switch (this.currDisplayData.type){
-				case 0:
-					if (graphics){
-						var tCurrentMatrix=this.getDisplayMatrix();
-						if (this._parentMatrix){
-							var tRotateKey=false;
-							if (tCurrentMatrix){
-								Matrix.mul(tCurrentMatrix,this._parentMatrix,Matrix.TEMP);
-								var tResultMatrix;
-								if (noUseSave){
-									if (this._resultMatrix==null)this._resultMatrix=new Matrix();
-									tResultMatrix=this._resultMatrix;
-									}else {
-									tResultMatrix=BoneSlot._tempResultMatrix;
-								}
-								if ((!Render.isWebGL && this.currDisplayData.uvs)|| (Render.isWebGL && this._diyTexture && this.currDisplayData.uvs)){
-									var tTestMatrix=BoneSlot._tempMatrix;
-									tTestMatrix.identity();
-									if (this.currDisplayData.uvs[1] > this.currDisplayData.uvs[5]){
-										tTestMatrix.d=-1;
-									}
-									if (this.currDisplayData.uvs[0] > this.currDisplayData.uvs[4]
-										&& this.currDisplayData.uvs[1] > this.currDisplayData.uvs[5]){
-										tRotateKey=true;
-										tTestMatrix.rotate(-Math.PI/2);
-									}
-									Matrix.mul(tTestMatrix,Matrix.TEMP,tResultMatrix);
-									}else {
-									Matrix.TEMP.copyTo(tResultMatrix);
-								}
-								if (!noUseSave){
-									tResultMatrix=this.getSaveMatrix(tResultMatrix);
-								}
-								if (tRotateKey){
-									graphics.drawTexture(tTexture,-this.currDisplayData.height / 2,-this.currDisplayData.width / 2,this.currDisplayData.height,this.currDisplayData.width,tResultMatrix);
-									}else {
-									graphics.drawTexture(tTexture,-this.currDisplayData.width / 2,-this.currDisplayData.height / 2,this.currDisplayData.width,this.currDisplayData.height,tResultMatrix);
-								}
-							}
-						}
-					}
-					break ;
-				case 1:
-					if (noUseSave){
-						if (this._skinSprite==null){
-							this._skinSprite=BoneSlot.createSkinMesh();
-						}
-						tSkinSprite=this._skinSprite;
-						}else {
-						tSkinSprite=BoneSlot.createSkinMesh();
-					}
-					if (tSkinSprite==null){
-						return;
-					};
-					var tIBArray;
-					var tRed=1;
-					var tGreed=1;
-					var tBlue=1;
-					var tAlpha=1;
-					if (this.currDisplayData.bones==null){
-						var tVertices=this.currDisplayData.weights;
-						if (this.deformData){
-							tVertices=this.deformData;
-						};
-						var tUVs;
-						if (this._diyTexture){
-							if (!this._curDiyUV){
-								this._curDiyUV=[];
-							}
-							if (this._curDiyUV.length==0){
-								this._curDiyUV=UVTools.getRelativeUV(this.currTexture.uv,this.currDisplayData.uvs,this._curDiyUV);
-								this._curDiyUV=UVTools.getAbsoluteUV(this._diyTexture.uv,this._curDiyUV,this._curDiyUV);
-							}
-							tUVs=this._curDiyUV;
-							}else{
-							tUVs=this.currDisplayData.uvs;
-						}
-						this._mVerticleArr=tVertices;
-						var tTriangleNum=this.currDisplayData.triangles.length / 3;
-						tIBArray=this.currDisplayData.triangles;
-						if (this.deformData){
-							if (!noUseSave){
-								this._mVerticleArr=this.getSaveVerticle(this._mVerticleArr);
-							}
-						}
-						tSkinSprite.init2(tTexture,tIBArray,this._mVerticleArr,tUVs);
-						var tCurrentMatrix2=this.getDisplayMatrix();
-						if (this._parentMatrix){
-							if (tCurrentMatrix2){
-								Matrix.mul(tCurrentMatrix2,this._parentMatrix,Matrix.TEMP);
-								var tResultMatrix2;
-								if (noUseSave){
-									if (this._resultMatrix==null)this._resultMatrix=new Matrix();
-									tResultMatrix2=this._resultMatrix;
-									}else {
-									tResultMatrix2=BoneSlot._tempResultMatrix;
-								}
-								Matrix.TEMP.copyTo(tResultMatrix2);
-								if (!noUseSave){
-									tResultMatrix2=this.getSaveMatrix(tResultMatrix2);
-								}
-								tSkinSprite.transform=tResultMatrix2;
-							}
-						}
-						}else {
-						this.skinMesh(boneMatrixArray,tSkinSprite,alpha);
-					}
-					graphics.drawSkin(tSkinSprite);
-					break ;
-				case 2:
-					if (noUseSave){
-						if (this._skinSprite==null){
-							this._skinSprite=BoneSlot.createSkinMesh();
-						}
-						tSkinSprite=this._skinSprite;
-						}else {
-						tSkinSprite=BoneSlot.createSkinMesh();
-					}
-					if (tSkinSprite==null){
-						return;
-					}
-					this.skinMesh(boneMatrixArray,tSkinSprite,alpha);
-					graphics.drawSkin(tSkinSprite);
-					break ;
-				case 3:
-					break ;
-				}
-		}
-
-		/**
-		*显示蒙皮动画
-		*@param boneMatrixArray 当前帧的骨骼矩阵
-		*/
-		__proto.skinMesh=function(boneMatrixArray,skinSprite,alpha){
-			var tTexture=this.currTexture;
-			var tBones=this.currDisplayData.bones;
-			var tUvs;
-			if (this._diyTexture){
-				tTexture=this._diyTexture;
-				if (!this._curDiyUV){
-					this._curDiyUV=[];
-				}
-				if (this._curDiyUV.length==0){
-					this._curDiyUV=UVTools.getRelativeUV(this.currTexture.uv,this.currDisplayData.uvs,this._curDiyUV);
-					this._curDiyUV=UVTools.getAbsoluteUV(this._diyTexture.uv,this._curDiyUV,this._curDiyUV);
-				}
-				tUvs=this._curDiyUV;
-				}else{
-				tUvs=this.currDisplayData.uvs;
-			};
-			var tWeights=this.currDisplayData.weights;
-			var tTriangles=this.currDisplayData.triangles;
-			var tIBArray;
-			var tRx=0;
-			var tRy=0;
-			var nn=0;
-			var tMatrix;
-			var tX=NaN;
-			var tY=NaN;
-			var tB=0;
-			var tWeight=0;
-			var tVertices;
-			var i=0,j=0,n=0;
-			var tRed=1;
-			var tGreed=1;
-			var tBlue=1;
-			var tAlpha=alpha;
-			BoneSlot._tempVerticleArr.length=0;
-			tVertices=BoneSlot._tempVerticleArr;
-			if (this.deformData && this.deformData.length > 0){
-				var f=0;
-				for (i=0,n=tBones.length;i < n;){
-					nn=tBones[i++]+i;
-					tRx=0,tRy=0;
-					for (;i < nn;i++){
-						tMatrix=boneMatrixArray[tBones[i]]
-						tX=tWeights[tB]+this.deformData[f++];
-						tY=tWeights[tB+1]+this.deformData[f++];
-						tWeight=tWeights[tB+2];
-						tRx+=(tX *tMatrix.a+tY *tMatrix.c+tMatrix.tx)*tWeight;
-						tRy+=(tX *tMatrix.b+tY *tMatrix.d+tMatrix.ty)*tWeight;
-						tB+=3;
-					}
-					tVertices.push(tRx,tRy);
-				}
-				}else {
-				for (i=0,n=tBones.length;i < n;){
-					nn=tBones[i++]+i;
-					tRx=0,tRy=0;
-					for (;i < nn;i++){
-						tMatrix=boneMatrixArray[tBones[i]]
-						tX=tWeights[tB];
-						tY=tWeights[tB+1];
-						tWeight=tWeights[tB+2];
-						tRx+=(tX *tMatrix.a+tY *tMatrix.c+tMatrix.tx)*tWeight;
-						tRy+=(tX *tMatrix.b+tY *tMatrix.d+tMatrix.ty)*tWeight;
-						tB+=3;
-					}
-					tVertices.push(tRx,tRy);
-				}
-			}
-			this._mVerticleArr=tVertices;
-			tIBArray=tTriangles;
-			this._mVerticleArr=this.getSaveVerticle(this._mVerticleArr);
-			skinSprite.init2(tTexture,tIBArray,this._mVerticleArr,tUvs);
-		}
-
-		/**
-		*画骨骼的起始点，方便调试
-		*@param graphics
-		*/
-		__proto.drawBonePoint=function(graphics){
-			if (graphics && this._parentMatrix){
-				graphics.drawCircle(this._parentMatrix.tx,this._parentMatrix.ty,5,"#ff0000");
-			}
-		}
-
-		/**
-		*得到显示对象的矩阵
-		*@return
-		*/
-		__proto.getDisplayMatrix=function(){
-			if (this.currDisplayData){
-				return this.currDisplayData.transform.getMatrix();
-			}
-			return null;
-		}
-
-		/**
-		*得到插糟的矩阵
-		*@return
-		*/
-		__proto.getMatrix=function(){
-			return this._resultMatrix;
-		}
-
-		/**
-		*用原始数据拷贝出一个
-		*@return
-		*/
-		__proto.copy=function(){
-			var tBoneSlot=new BoneSlot();
-			tBoneSlot.type="copy";
-			tBoneSlot.name=this.name;
-			tBoneSlot.attachmentName=this.attachmentName;
-			tBoneSlot.srcDisplayIndex=this.srcDisplayIndex;
-			tBoneSlot.parent=this.parent;
-			tBoneSlot.displayIndex=this.displayIndex;
-			tBoneSlot.templet=this.templet;
-			tBoneSlot.currSlotData=this.currSlotData;
-			tBoneSlot.currTexture=this.currTexture;
-			tBoneSlot.currDisplayData=this.currDisplayData;
-			return tBoneSlot;
-		}
-
-		BoneSlot.createSkinMesh=function(){
-			if (Render.isWebGL || Render.isConchApp){
-				return RunDriver.skinAniSprite();
-				}else{
-				if (!Render.isWebGL){
-					if (Skeleton.useSimpleMeshInCanvas){
-						return new SimpleSkinMeshCanvas();
-						}else{
-						return new SkinMeshCanvas();
-					}
-				}
-			}
-			return null;
-		}
-
-		BoneSlot.isSameArr=function(arrA,arrB){
-			if (arrA.length !=arrB.length)return false;
-			var i=0,len=0;
-			len=arrA.length;
-			for (i=0;i < len;i++){
-				if (arrA[i] !=arrB[i])return false;
-			}
-			return true;
-		}
-
-		BoneSlot.isSameMatrix=function(mtA,mtB){
-			return mtA.a==mtB.a && mtA.b==mtB.b && mtA.c==mtB.c && mtA.d==mtB.d && Math.abs(mtA.tx-mtB.tx)<0.00001 && Math.abs(mtA.ty-mtB.ty)<0.00001;
-		}
-
-		BoneSlot.useSameMatrixAndVerticle=true;
-		BoneSlot._tempVerticleArr=[];
-		__static(BoneSlot,
-		['_tempMatrix',function(){return this._tempMatrix=new Matrix();},'_tempResultMatrix',function(){return this._tempResultMatrix=new Matrix();}
-		]);
-		return BoneSlot;
-	})()
-
-
-	/**
-	*@private
 	*canvas mesh渲染器
 	*/
 	//class laya.ani.bone.canvasmesh.CanvasMeshRender
@@ -22108,1504 +21588,6 @@ var Laya=window.Laya=(function(window,document){
 		}
 
 		return MeshData;
-	})()
-
-
-	/**
-	*@private
-	*/
-	//class laya.ani.bone.DeformAniData
-	var DeformAniData=(function(){
-		function DeformAniData(){
-			this.skinName=null;
-			this.deformSlotDataList=[];
-		}
-
-		__class(DeformAniData,'laya.ani.bone.DeformAniData');
-		return DeformAniData;
-	})()
-
-
-	/**
-	*@private
-	*/
-	//class laya.ani.bone.DeformSlotData
-	var DeformSlotData=(function(){
-		function DeformSlotData(){
-			this.deformSlotDisplayList=[];
-		}
-
-		__class(DeformSlotData,'laya.ani.bone.DeformSlotData');
-		return DeformSlotData;
-	})()
-
-
-	/**
-	*@private
-	*/
-	//class laya.ani.bone.DeformSlotDisplayData
-	var DeformSlotDisplayData=(function(){
-		function DeformSlotDisplayData(){
-			this.boneSlot=null;
-			this.slotIndex=-1;
-			this.attachment=null;
-			this.deformData=null;
-			this.frameIndex=0;
-			this.timeList=[];
-			this.vectices=[];
-			this.tweenKeyList=[];
-		}
-
-		__class(DeformSlotDisplayData,'laya.ani.bone.DeformSlotDisplayData');
-		var __proto=DeformSlotDisplayData.prototype;
-		__proto.binarySearch1=function(values,target){
-			var low=0;
-			var high=values.length-2;
-			if (high==0)
-				return 1;
-			var current=high >>> 1;
-			while (true){
-				if (values[Math.floor(current+1)] <=target)
-					low=current+1;
-				else
-				high=current;
-				if (low==high)
-					return low+1;
-				current=(low+high)>>> 1;
-			}
-			return 0;
-		}
-
-		// Can't happen.
-		__proto.apply=function(time,boneSlot,alpha){
-			(alpha===void 0)&& (alpha=1);
-			time+=0.05;
-			if (this.timeList.length <=0){
-				return;
-			};
-			var i=0;
-			var n=0;
-			var tTime=this.timeList[0];
-			if (time < tTime){
-				return;
-			};
-			var tVertexCount=this.vectices[0].length;
-			var tVertices=[];
-			var tFrameIndex=this.binarySearch1(this.timeList,time);
-			this.frameIndex=tFrameIndex;
-			if (time >=this.timeList[this.timeList.length-1]){
-				var lastVertices=this.vectices[this.vectices.length-1];
-				if (alpha < 1){
-					for (i=0;i < tVertexCount;i++){
-						tVertices[i]+=(lastVertices[i]-tVertices[i])*alpha;
-					}
-					}else {
-					for (i=0;i < tVertexCount;i++){
-						tVertices[i]=lastVertices[i];
-					}
-				}
-				this.deformData=tVertices;
-				return;
-			};
-			var tTweenKey=this.tweenKeyList[this.frameIndex];
-			var tPrevVertices=this.vectices[this.frameIndex-1];
-			var tNextVertices=this.vectices[this.frameIndex];
-			var tPreFrameTime=this.timeList[this.frameIndex-1];
-			var tFrameTime=this.timeList[this.frameIndex];
-			if (this.tweenKeyList[tFrameIndex-1]){
-				alpha=(time-tPreFrameTime)/ (tFrameTime-tPreFrameTime);
-				}else {
-				alpha=0;
-			};
-			var tPrev=NaN;
-			for (i=0;i < tVertexCount;i++){
-				tPrev=tPrevVertices[i];
-				tVertices[i]=tPrev+(tNextVertices[i]-tPrev)*alpha;
-			}
-			this.deformData=tVertices;
-		}
-
-		return DeformSlotDisplayData;
-	})()
-
-
-	/**
-	*@private
-	*/
-	//class laya.ani.bone.DrawOrderData
-	var DrawOrderData=(function(){
-		function DrawOrderData(){
-			this.time=NaN;
-			this.drawOrder=[];
-		}
-
-		__class(DrawOrderData,'laya.ani.bone.DrawOrderData');
-		return DrawOrderData;
-	})()
-
-
-	/**
-	*@private
-	*/
-	//class laya.ani.bone.EventData
-	var EventData=(function(){
-		function EventData(){
-			this.name=null;
-			this.intValue=0;
-			this.floatValue=NaN;
-			this.stringValue=null;
-			this.time=NaN;
-		}
-
-		__class(EventData,'laya.ani.bone.EventData');
-		return EventData;
-	})()
-
-
-	/**
-	*@private
-	*/
-	//class laya.ani.bone.IkConstraint
-	var IkConstraint=(function(){
-		function IkConstraint(data,bones){
-			this._targetBone=null;
-			this._bones=null;
-			this._data=null;
-			this.name=null;
-			this.mix=NaN;
-			this.bendDirection=NaN;
-			this.isSpine=true;
-			this._sp=null;
-			this.isDebug=false;
-			this._data=data;
-			this._targetBone=bones[data.targetBoneIndex];
-			this.isSpine=data.isSpine;
-			if (this._bones==null)this._bones=[];
-			this._bones.length=0;
-			for (var i=0,n=data.boneIndexs.length;i < n;i++){
-				this._bones.push(bones[data.boneIndexs[i]]);
-			}
-			this.name=data.name;
-			this.mix=data.mix;
-			this.bendDirection=data.bendDirection;
-		}
-
-		__class(IkConstraint,'laya.ani.bone.IkConstraint');
-		var __proto=IkConstraint.prototype;
-		__proto.apply=function(){
-			switch (this._bones.length){
-				case 1:
-					this._applyIk1(this._bones[0],this._targetBone.resultMatrix.tx,this._targetBone.resultMatrix.ty,this.mix);
-					break ;
-				case 2:
-					if (this.isSpine){
-						this._applyIk2(this._bones[0],this._bones[1],this._targetBone.resultMatrix.tx,this._targetBone.resultMatrix.ty,this.bendDirection,this.mix);
-						}else{
-						this._applyIk3(this._bones[0],this._bones[1],this._targetBone.resultMatrix.tx,this._targetBone.resultMatrix.ty,this.bendDirection,this.mix);
-					}
-					break ;
-				}
-		}
-
-		__proto._applyIk1=function(bone,targetX,targetY,alpha){
-			var pp=bone.parentBone;
-			var id=1 / (pp.resultMatrix.a *pp.resultMatrix.d-pp.resultMatrix.b *pp.resultMatrix.c);
-			var x=targetX-pp.resultMatrix.tx;
-			var y=targetY-pp.resultMatrix.ty;
-			var tx=(x *pp.resultMatrix.d-y *pp.resultMatrix.c)*id-bone.transform.x;
-			var ty=(y *pp.resultMatrix.a-x *pp.resultMatrix.b)*id-bone.transform.y;
-			var rotationIK=Math.atan2(ty,tx)*IkConstraint.radDeg-0-bone.transform.skX;
-			if (bone.transform.scX < 0)rotationIK+=180;
-			if (rotationIK > 180)
-				rotationIK-=360;
-			else if (rotationIK <-180)rotationIK+=360;
-			bone.transform.skX=bone.transform.skY=bone.transform.skX+rotationIK *alpha;
-			bone.update();
-		}
-
-		__proto.updatePos=function(x,y){
-			if (this._sp){
-				this._sp.pos(x,y);
-			}
-		}
-
-		__proto._applyIk2=function(parent,child,targetX,targetY,bendDir,alpha){
-			if (alpha==0){
-				return;
-			};
-			var px=parent.resultTransform.x,py=parent.resultTransform.y;
-			var psx=parent.transform.scX,psy=parent.transform.scY;
-			var csx=child.transform.scX;
-			var os1=0,os2=0,s2=0;
-			if (psx < 0){
-				psx=-psx;
-				os1=180;
-				s2=-1;
-				}else {
-				os1=0;
-				s2=1;
-			}
-			if (psy < 0){
-				psy=-psy;
-				s2=-s2;
-			}
-			if (csx < 0){
-				csx=-csx;
-				os2=180;
-				}else {
-				os2=0
-			};
-			var cx=child.resultTransform.x,cy=NaN,cwx=NaN,cwy=NaN;
-			var a=parent.resultMatrix.a,b=parent.resultMatrix.c;
-			var c=parent.resultMatrix.b,d=parent.resultMatrix.d;
-			var u=Math.abs(psx-psy)<=0.0001;
-			if (!u){
-				cy=0;
-				cwx=a *cx+parent.resultMatrix.tx;
-				cwy=c *cx+parent.resultMatrix.ty;
-				}else {
-				cy=child.resultTransform.y;
-				cwx=a *cx+b *cy+parent.resultMatrix.tx;
-				cwy=c *cx+d *cy+parent.resultMatrix.ty;
-			}
-			if (this.isDebug){
-				if (!this._sp){
-					this._sp=new Sprite();
-					Laya.stage.addChild(this._sp);
-				}
-				this._sp.graphics.clear(true);
-				this._sp.graphics.drawCircle(targetX,targetY,15,"#ffff00");
-				this._sp.graphics.drawCircle(cwx,cwy,15,"#ff00ff");
-			}
-			parent.setRotation(Math.atan2(cwy-parent.resultMatrix.ty,cwx-parent.resultMatrix.tx));
-			var pp=parent.parentBone;
-			a=pp.resultMatrix.a;
-			b=pp.resultMatrix.c;
-			c=pp.resultMatrix.b;
-			d=pp.resultMatrix.d;
-			var id=1 / (a *d-b *c);
-			var x=targetX-pp.resultMatrix.tx,y=targetY-pp.resultMatrix.ty;
-			var tx=(x *d-y *b)*id-px;
-			var ty=(y *a-x *c)*id-py;
-			x=cwx-pp.resultMatrix.tx;
-			y=cwy-pp.resultMatrix.ty;
-			var dx=(x *d-y *b)*id-px;
-			var dy=(y *a-x *c)*id-py;
-			var l1=Math.sqrt(dx *dx+dy *dy);
-			var l2=child.length *csx;
-			var a1=NaN,a2=NaN;
-			if (u){
-				l2 *=psx;
-				var cos=(tx *tx+ty *ty-l1 *l1-l2 *l2)/ (2 *l1 *l2);
-				if (cos <-1)
-					cos=-1;
-				else if (cos > 1)cos=1;
-				a2=Math.acos(cos)*bendDir;
-				a=l1+l2 *cos;
-				b=l2 *Math.sin(a2);
-				a1=Math.atan2(ty *a-tx *b,tx *a+ty *b);
-				}else {
-				a=psx *l2;
-				b=psy *l2;
-				var aa=a *a,bb=b *b,dd=tx *tx+ty *ty,ta=Math.atan2(ty,tx);
-				c=bb *l1 *l1+aa *dd-aa *bb;
-				var c1=-2 *bb *l1,c2=bb-aa;
-				d=c1 *c1-4 *c2 *c;
-				if (d > 0){
-					var q=Math.sqrt(d);
-					if (c1 < 0)q=-q;
-					q=-(c1+q)/ 2;
-					var r0=q / c2,r1=c / q;
-					var r=Math.abs(r0)< Math.abs(r1)? r0 :r1;
-					if (r *r <=dd){
-						y=Math.sqrt(dd-r *r)*bendDir;
-						a1=ta-Math.atan2(y,r);
-						a2=Math.atan2(y / psy,(r-l1)/ psx);
-					}
-				};
-				var minAngle=0,minDist=Number.MAX_VALUE,minX=0,minY=0;
-				var maxAngle=0,maxDist=0,maxX=0,maxY=0;
-				x=l1+a;
-				d=x *x;
-				if (d > maxDist){
-					maxAngle=0;
-					maxDist=d;
-					maxX=x;
-				}
-				x=l1-a;
-				d=x *x;
-				if (d < minDist){
-					minAngle=Math.PI;
-					minDist=d;
-					minX=x;
-				};
-				var angle=Math.acos(-a *l1 / (aa-bb));
-				x=a *Math.cos(angle)+l1;
-				y=b *Math.sin(angle);
-				d=x *x+y *y;
-				if (d < minDist){
-					minAngle=angle;
-					minDist=d;
-					minX=x;
-					minY=y;
-				}
-				if (d > maxDist){
-					maxAngle=angle;
-					maxDist=d;
-					maxX=x;
-					maxY=y;
-				}
-				if (dd <=(minDist+maxDist)/ 2){
-					a1=ta-Math.atan2(minY *bendDir,minX);
-					a2=minAngle *bendDir;
-					}else {
-					a1=ta-Math.atan2(maxY *bendDir,maxX);
-					a2=maxAngle *bendDir;
-				}
-			};
-			var os=Math.atan2(cy,cx)*s2;
-			var rotation=parent.resultTransform.skX;
-			a1=(a1-os)*IkConstraint.radDeg+os1-rotation;
-			if (a1 > 180)
-				a1-=360;
-			else if (a1 <-180)a1+=360;
-			parent.resultTransform.x=px;
-			parent.resultTransform.y=py;
-			parent.resultTransform.skX=parent.resultTransform.skY=rotation+a1 *alpha;
-			rotation=child.resultTransform.skX;
-			rotation=rotation % 360;
-			a2=((a2+os)*IkConstraint.radDeg-0)*s2+os2-rotation;
-			if (a2 > 180)
-				a2-=360;
-			else if (a2 <-180)a2+=360;
-			child.resultTransform.x=cx;
-			child.resultTransform.y=cy;
-			child.resultTransform.skX=child.resultTransform.skY=child.resultTransform.skY+a2 *alpha;
-			parent.update();
-		}
-
-		__proto._applyIk3=function(parent,child,targetX,targetY,bendDir,alpha){
-			if (alpha==0){
-				return;
-			};
-			var cwx=NaN,cwy=NaN;
-			var x=child.resultMatrix.a *child.length;
-			var y=child.resultMatrix.b *child.length;
-			var lLL=x *x+y *y;
-			var lL=Math.sqrt(lLL);
-			var parentX=parent.resultMatrix.tx;
-			var parentY=parent.resultMatrix.ty;
-			var childX=child.resultMatrix.tx;
-			var childY=child.resultMatrix.ty;
-			var dX=childX-parentX;
-			var dY=childY-parentY;
-			var lPP=dX *dX+dY *dY;
-			var lP=Math.sqrt(lPP);
-			dX=targetX-parent.resultMatrix.tx;
-			dY=targetY-parent.resultMatrix.ty;
-			var lTT=dX *dX+dY *dY;
-			var lT=Math.sqrt(lTT);
-			var ikRadianA=0;
-			if (lL+lP <=lT || lT+lL <=lP || lT+lP <=lL){
-				var rate=NaN;
-				if (lL+lP <=lT){
-					rate=1;
-					}else{
-					rate=-1;
-				}
-				childX=parentX+rate*(targetX-parentX)*lP / lT;
-				childY=parentY+rate*(targetY-parentY)*lP / lT;
-			}
-			else{
-				var h=(lPP-lLL+lTT)/ (2 *lTT);
-				var r=Math.sqrt(lPP-h *h *lTT)/ lT;
-				var hX=parentX+(dX *h);
-				var hY=parentY+(dY *h);
-				var rX=-dY *r;
-				var rY=dX *r;
-				if (bendDir>0){
-					childX=hX-rX;
-					childY=hY-rY;
-				}
-				else{
-					childX=hX+rX;
-					childY=hY+rY;
-				}
-			}
-			cwx=childX;
-			cwy=childY;
-			if (this.isDebug){
-				if (!this._sp){
-					this._sp=new Sprite();
-					Laya.stage.addChild(this._sp);
-				}
-				this._sp.graphics.clear(true);
-				this._sp.graphics.drawCircle(parentX,parentY,15,"#ff00ff");
-				this._sp.graphics.drawCircle(targetX,targetY,15,"#ffff00");
-				this._sp.graphics.drawCircle(cwx,cwy,15,"#ff00ff");
-			};
-			var pRotation=NaN;
-			pRotation=Math.atan2(cwy-parent.resultMatrix.ty,cwx-parent.resultMatrix.tx);
-			parent.setRotation(pRotation);
-			var pTarMatrix;
-			pTarMatrix=IkConstraint._tempMatrix;
-			pTarMatrix.identity();
-			pTarMatrix.rotate(pRotation);
-			pTarMatrix.scale(parent.resultMatrix.getScaleX(),parent.resultMatrix.getScaleY());
-			pTarMatrix.translate(parent.resultMatrix.tx,parent.resultMatrix.ty);
-			pTarMatrix.copyTo(parent.resultMatrix);
-			parent.updateChild();
-			var childRotation=NaN;
-			childRotation=Math.atan2(targetY-cwy,targetX-cwx);
-			child.setRotation(childRotation);
-			var childTarMatrix;
-			childTarMatrix=IkConstraint._tempMatrix;
-			childTarMatrix.identity();
-			childTarMatrix.rotate(childRotation);
-			childTarMatrix.scale(child.resultMatrix.getScaleX(),child.resultMatrix.getScaleY());
-			childTarMatrix.translate(cwx,cwy);
-			pTarMatrix.copyTo(child.resultMatrix);
-			child.updateChild();
-		}
-
-		__static(IkConstraint,
-		['radDeg',function(){return this.radDeg=180 / Math.PI;},'degRad',function(){return this.degRad=Math.PI / 180;},'_tempMatrix',function(){return this._tempMatrix=new Matrix();}
-		]);
-		return IkConstraint;
-	})()
-
-
-	/**
-	*@private
-	*/
-	//class laya.ani.bone.IkConstraintData
-	var IkConstraintData=(function(){
-		function IkConstraintData(){
-			this.name=null;
-			this.targetBoneName=null;
-			this.bendDirection=1;
-			this.mix=1;
-			this.isSpine=true;
-			this.targetBoneIndex=-1;
-			this.boneNames=[];
-			this.boneIndexs=[];
-		}
-
-		__class(IkConstraintData,'laya.ani.bone.IkConstraintData');
-		return IkConstraintData;
-	})()
-
-
-	/**
-	*@private
-	*Mesh数据处理工具
-	*@version 1.0
-	*
-	*@created 2017-4-28 下午2:46:23
-	*/
-	//class laya.ani.bone.MeshTools
-	var MeshTools=(function(){
-		function MeshTools(){};
-		__class(MeshTools,'laya.ani.bone.MeshTools');
-		MeshTools.findEdge=function(verticles,offI,min){
-			(offI===void 0)&& (offI=0);
-			(min===void 0)&& (min=true);
-			var i=0,len=0;
-			var tIndex=0;
-			len=verticles.length;
-			tIndex=-1;
-			for (i=0;i < len;i+=2){
-				if (tIndex < 0 || (min==(verticles[tIndex+offI] < verticles[i+offI]))){
-					tIndex=i;
-				}
-			}
-			return tIndex;
-		}
-
-		MeshTools.findBestTriangle=function(verticles){
-			var topI=0;
-			topI=MeshTools.findEdge(verticles,1,true);
-			var bottomI=0;
-			bottomI=MeshTools.findEdge(verticles,1,false);
-			var leftI=0;
-			leftI=MeshTools.findEdge(verticles,0,true);
-			var rightI=0;
-			rightI=MeshTools.findEdge(verticles,0,false);
-			var rst;
-			rst=MeshTools._bestTriangle;
-			rst.length=0;
-			rst.push(leftI,rightI);
-			if (rst.indexOf(topI)< 0)rst.push(topI);
-			if (rst.indexOf(bottomI)< 0)rst.push(bottomI);
-			return rst;
-		}
-
-		MeshTools.solveMesh=function(mesh,rst){
-			rst=rst||[];
-			rst.length=0;
-			var mUv;
-			mUv=mesh.uvs;
-			var mVer;
-			mVer=mesh.vertices;
-			var uvAbs;
-			var indexs;
-			indexs=MeshTools.findBestTriangle(mUv);
-			var index0=0;
-			var index1=0;
-			var index2=0;
-			index0=indexs[0];
-			index1=indexs[1];
-			index2=indexs[2];
-			MeshTools._absArr.length=0;
-			uvAbs=MeshTools.solvePoints(mesh.texture.uv,mUv[index0],mUv[index0+1],mUv[index1]-mUv[index0],mUv[index1+1]-mUv[index0+1],mUv[index2]-mUv[index0],mUv[index2+1]-mUv[index0+1],MeshTools._absArr);
-			var newVerticles;
-			newVerticles=MeshTools.transPoints(uvAbs,mVer[index0],mVer[index0+1],mVer[index1]-mVer[index0],mVer[index1+1]-mVer[index0+1],mVer[index2]-mVer[index0],mVer[index2+1]-mVer[index0+1],rst);
-			return newVerticles;
-		}
-
-		MeshTools.solvePoints=function(pointList,oX,oY,v1x,v1y,v2x,v2y,rst){
-			rst=rst||[];
-			var i=0,len=0;
-			len=pointList.length;
-			var tRst;
-			for (i=0;i < len;i+=2){
-				tRst=MeshTools.solve2(pointList[i],pointList[i+1],oX,oY,v1x,v1y,v2x,v2y);
-				rst.push(tRst[0],tRst[1]);
-			}
-			return rst;
-		}
-
-		MeshTools.transPoints=function(abs,oX,oY,v1x,v1y,v2x,v2y,rst){
-			rst=rst|| [];
-			var i=0,len=0;
-			len=abs.length;
-			var tRst;
-			for (i=0;i < len;i+=2){
-				tRst=MeshTools.transPoint(abs[i],abs[i+1],oX,oY,v1x,v1y,v2x,v2y,rst);
-			}
-			return rst;
-		}
-
-		MeshTools.transPoint=function(a,b,oX,oY,v1x,v1y,v2x,v2y,rst){
-			rst=rst|| [];
-			var nX=NaN;
-			var nY=NaN;
-			nX=oX+v1x *a+v2x *b;
-			nY=oY+v1y *a+v2y *b;
-			rst.push(nX,nY)
-			return rst;
-		}
-
-		MeshTools.solve2=function(rx,ry,oX,oY,v1x,v1y,v2x,v2y,rv,rst){
-			(rv===void 0)&& (rv=false);
-			rst=rst||[];
-			var a=NaN,b=NaN;
-			if (v1x==0){
-				return MeshTools.solve2(rx,ry,oX,oY,v2x,v2y,v1x,v1y,true,rst);
-			};
-			var dX=NaN;
-			var dY=NaN;
-			dX=rx-oX;
-			dY=ry-oY;
-			b=(dY-dX *v1y / v1x)/ (v2y-v2x *v1y / v1x);
-			a=(dX-b *v2x)/ v1x;
-			if(rv){
-				rst.push(b,a);
-				}else{
-				rst.push(a,b);
-			}
-			return rst;
-		}
-
-		MeshTools.solve=function(pointC,point0,v1,v2){
-			return MeshTools.solve2(pointC.x,pointC.y,point0.x,point0.y,v1.x,v1.y,v2.x,v2.y);
-		}
-
-		MeshTools._bestTriangle=[];
-		MeshTools._absArr=[];
-		return MeshTools;
-	})()
-
-
-	/**
-	*@private
-	*路径作用器
-	*1，生成根据骨骼计算控制点
-	*2，根据控制点生成路径，并计算路径上的节点
-	*3，根据节点，重新调整骨骼位置
-	*/
-	//class laya.ani.bone.PathConstraint
-	var PathConstraint=(function(){
-		function PathConstraint(data,bones){
-			this.target=null;
-			this.data=null;
-			this.bones=null;
-			this.position=NaN;
-			this.spacing=NaN;
-			this.rotateMix=NaN;
-			this.translateMix=NaN;
-			this._debugKey=false;
-			this._spaces=null;
-			this._segments=[];
-			this._curves=[];
-			this.data=data;
-			this.position=data.position;
-			this.spacing=data.spacing;
-			this.rotateMix=data.rotateMix;
-			this.translateMix=data.translateMix;
-			this.bones=[];
-			var tBoneIds=this.data.bones;
-			for (var i=0,n=tBoneIds.length;i < n;i++){
-				this.bones.push(bones[tBoneIds[i]]);
-			}
-		}
-
-		__class(PathConstraint,'laya.ani.bone.PathConstraint');
-		var __proto=PathConstraint.prototype;
-		/**
-		*计算骨骼在路径上的节点
-		*@param boneSlot
-		*@param boneMatrixArray
-		*@param graphics
-		*/
-		__proto.apply=function(boneList,graphics){
-			var tTranslateMix=this.translateMix;
-			var tRotateMix=this.translateMix;
-			var tTranslate=tTranslateMix > 0;
-			var tRotate=tRotateMix > 0;
-			var tSpacingMode=this.data.spacingMode;
-			var tLengthSpacing=tSpacingMode=="length";
-			var tRotateMode=this.data.rotateMode;
-			var tTangents=tRotateMode=="tangent";
-			var tScale=tRotateMode=="chainScale";
-			var lengths=[];
-			var boneCount=this.bones.length;
-			var spacesCount=tTangents ? boneCount :boneCount+1;
-			var spaces=[];
-			this._spaces=spaces;
-			spaces[0]=this.position;
-			var spacing=this.spacing;
-			if (tScale || tLengthSpacing){
-				for (var i=0,n=spacesCount-1;i < n;){
-					var bone=this.bones[i];
-					var length=bone.length;
-					var x=length *bone.resultMatrix.a;
-					var y=length *bone.resultMatrix.b;
-					length=Math.sqrt(x *x+y *y);
-					if (tScale)
-						lengths[i]=length;
-					spaces[++i]=tLengthSpacing ? Math.max(0,length+spacing):spacing;
-				}
-			}
-			else {
-				for (i=1;i < spacesCount;i++){
-					spaces[i]=spacing;
-				}
-			};
-			var positions=this.computeWorldPositions(this.target,boneList,graphics,spacesCount,tTangents,this.data.positionMode=="percent",tSpacingMode=="percent");
-			if (this._debugKey){
-				for (i=0;i < positions.length;i++){
-					graphics.drawCircle(positions[i++],positions[i++],5,"#00ff00");
-				};
-				var tLinePos=[];
-				for (i=0;i < positions.length;i++){
-					tLinePos.push(positions[i++],positions[i++]);
-				}
-				graphics.drawLines(0,0,tLinePos,"#ff0000");
-			};
-			var skeletonX=NaN;
-			var skeletonY=NaN;
-			var boneX=positions[0];
-			var boneY=positions[1];
-			var offsetRotation=this.data.offsetRotation;
-			var tip=tRotateMode=="chain" && offsetRotation==0;
-			var p=NaN;
-			for (i=0,p=3;i < boneCount;i++,p+=3){
-				bone=this.bones[i];
-				bone.resultMatrix.tx+=(boneX-bone.resultMatrix.tx)*tTranslateMix;
-				bone.resultMatrix.ty+=(boneY-bone.resultMatrix.ty)*tTranslateMix;
-				x=positions[p];
-				y=positions[p+1];
-				var dx=x-boneX,dy=y-boneY;
-				if (tScale){
-					length=lengths[i];
-					if (length !=0){
-						var s=(Math.sqrt(dx *dx+dy *dy)/ length-1)*tRotateMix+1;
-						bone.resultMatrix.a *=s;
-						bone.resultMatrix.c *=s;
-					}
-				}
-				boneX=x;
-				boneY=y;
-				if (tRotate){
-					var a=bone.resultMatrix.a;
-					var b=bone.resultMatrix.c;
-					var c=bone.resultMatrix.b;
-					var d=bone.resultMatrix.d;
-					var r=NaN;
-					var cos=NaN;
-					var sin=NaN;
-					if (tTangents){
-						r=positions[p-1];
-					}
-					else if (spaces[i+1]==0){
-						r=positions[p+2];
-					}
-					else {
-						r=Math.atan2(dy,dx);
-					}
-					r-=Math.atan2(c,a)-offsetRotation / 180 *Math.PI;
-					if (tip){
-						cos=Math.cos(r);
-						sin=Math.sin(r);
-						length=bone.length;
-						boneX+=(length *(cos *a-sin *c)-dx)*tRotateMix;
-						boneY+=(length *(sin *a+cos *c)-dy)*tRotateMix;
-					}
-					if (r > Math.PI){
-						r-=(Math.PI *2);
-					}
-					else if (r <-Math.PI){
-						r+=(Math.PI *2);
-					}
-					r *=tRotateMix;
-					cos=Math.cos(r);
-					sin=Math.sin(r);
-					bone.resultMatrix.a=cos *a-sin *c;
-					bone.resultMatrix.c=cos *b-sin *d;
-					bone.resultMatrix.b=sin *a+cos *c;
-					bone.resultMatrix.d=sin *b+cos *d;
-				}
-			}
-		}
-
-		/**
-		*计算顶点的世界坐标
-		*@param boneSlot
-		*@param boneList
-		*@param start
-		*@param count
-		*@param worldVertices
-		*@param offset
-		*/
-		__proto.computeWorldVertices2=function(boneSlot,boneList,start,count,worldVertices,offset){
-			var tBones=boneSlot.currDisplayData.bones;
-			var tWeights=boneSlot.currDisplayData.weights;
-			var tTriangles=boneSlot.currDisplayData.triangles;
-			var tMatrix;
-			var i=0;
-			var v=0;
-			var skip=0;
-			var n=0;
-			var w=0;
-			var b=0;
-			var wx=0;
-			var wy=0;
-			var vx=0;
-			var vy=0;
-			var bone;
-			var len=0;
-			if (tBones==null){
-				if (!tTriangles)tTriangles=tWeights;
-				if (boneSlot.deformData)
-					tTriangles=boneSlot.deformData;
-				var parentName;
-				parentName=boneSlot.parent;
-				if (boneList){
-					len=boneList.length;
-					for (i=0;i < len;i++){
-						if (boneList[i].name==parentName){
-							bone=boneList[i];
-							break ;
-						}
-					}
-				};
-				var tBoneMt;
-				if (bone){
-					tBoneMt=bone.resultMatrix;
-				}
-				if (!tBoneMt)tBoneMt=PathConstraint._tempMt;
-				var x=tBoneMt.tx;
-				var y=tBoneMt.ty;
-				var a=tBoneMt.a,bb=tBoneMt.b,c=tBoneMt.c,d=tBoneMt.d;
-				if(bone)d*=bone.d;
-				for (v=start,w=offset;w < count;v+=2,w+=2){
-					vx=tTriangles[v],vy=tTriangles[v+1];
-					worldVertices[w]=vx *a+vy *bb+x;
-					worldVertices[w+1]=-(vx *c+vy *d+y);
-				}
-				return;
-			}
-			for (i=0;i < start;i+=2){
-				n=tBones[v];
-				v+=n+1;
-				skip+=n;
-			};
-			var skeletonBones=boneList;
-			for (w=offset,b=skip *3;w < count;w+=2){
-				wx=0,wy=0;
-				n=tBones[v++];
-				n+=v;
-				for (;v < n;v++,b+=3){
-					tMatrix=skeletonBones[tBones[v]].resultMatrix;
-					vx=tWeights[b];
-					vy=tWeights[b+1];
-					var weight=tWeights[b+2];
-					wx+=(vx *tMatrix.a+vy *tMatrix.c+tMatrix.tx)*weight;
-					wy+=(vx *tMatrix.b+vy *tMatrix.d+tMatrix.ty)*weight;
-				}
-				worldVertices[w]=wx;
-				worldVertices[w+1]=wy;
-			}
-		}
-
-		/**
-		*计算路径上的节点
-		*@param boneSlot
-		*@param boneList
-		*@param graphics
-		*@param spacesCount
-		*@param tangents
-		*@param percentPosition
-		*@param percentSpacing
-		*@return
-		*/
-		__proto.computeWorldPositions=function(boneSlot,boneList,graphics,spacesCount,tangents,percentPosition,percentSpacing){
-			var tBones=boneSlot.currDisplayData.bones;
-			var tWeights=boneSlot.currDisplayData.weights;
-			var tTriangles=boneSlot.currDisplayData.triangles;
-			var tRx=0;
-			var tRy=0;
-			var nn=0;
-			var tMatrix;
-			var tX=NaN;
-			var tY=NaN;
-			var tB=0;
-			var tWeight=0;
-			var tVertices=[];
-			var i=0,j=0,n=0;
-			var verticesLength=boneSlot.currDisplayData.verLen;
-			var target=boneSlot;
-			var position=this.position;
-			var spaces=this._spaces;
-			var world=[];
-			var out=[];
-			var closed=false;
-			var curveCount=verticesLength / 6;
-			var prevCurve=-1;
-			var pathLength=NaN;
-			var o=0,curve=0;
-			var p=NaN;
-			var space=NaN;
-			var prev=NaN;
-			var length=NaN;
-			if (!true){
-				var lengths=boneSlot.currDisplayData.lengths;
-				curveCount-=closed ? 1 :2;
-				pathLength=lengths[curveCount];
-				if (percentPosition)
-					position *=pathLength;
-				if (percentSpacing){
-					for (i=0;i < spacesCount;i++)
-					spaces[i] *=pathLength;
-				}
-				world.length=8;
-				for (i=0,o=0,curve=0;i < spacesCount;i++,o+=3){
-					space=spaces[i];
-					position+=space;
-					p=position;
-					if (closed){
-						p %=pathLength;
-						if (p < 0)
-							p+=pathLength;
-						curve=0;
-					}
-					else if (p < 0){
-						if (prevCurve !=PathConstraint.BEFORE){
-							prevCurve=PathConstraint.BEFORE;
-							this.computeWorldVertices2(target,boneList,2,4,world,0);
-						}
-						this.addBeforePosition(p,world,0,out,o);
-						continue ;
-					}
-					else if (p > pathLength){
-						if (prevCurve !=PathConstraint.AFTER){
-							prevCurve=PathConstraint.AFTER;
-							this.computeWorldVertices2(target,boneList,verticesLength-6,4,world,0);
-						}
-						this.addAfterPosition(p-pathLength,world,0,out,o);
-						continue ;
-					}
-					for (;;curve++){
-						length=lengths[curve];
-						if (p > length)
-							continue ;
-						if (curve==0)
-							p /=length;
-						else {
-							prev=lengths[curve-1];
-							p=(p-prev)/ (length-prev);
-						}
-						break ;
-					}
-					if (curve !=prevCurve){
-						prevCurve=curve;
-						if (closed && curve==curveCount){
-							this.computeWorldVertices2(target,boneList,verticesLength-4,4,world,0);
-							this.computeWorldVertices2(target,boneList,0,4,world,4);
-						}
-						else
-						this.computeWorldVertices2(target,boneList,curve *6+2,8,world,0);
-					}
-					this.addCurvePosition(p,world[0],world[1],world[2],world[3],world[4],world[5],world[6],world[7],out,o,tangents || (i > 0 && space==0));
-				}
-				return out;
-			}
-			if (closed){
-				verticesLength+=2;
-				world[verticesLength-2]=world[0];
-				world[verticesLength-1]=world[1];
-			}
-			else {
-				curveCount--;
-				verticesLength-=4;
-				this.computeWorldVertices2(boneSlot,boneList,2,verticesLength,tVertices,0);
-				if (this._debugKey){
-					for (i=0;i < tVertices.length;){
-						graphics.drawCircle(tVertices[i++],tVertices[i++],10,"#ff0000");
-					}
-				}
-				world=tVertices;
-			}
-			this._curves.length=curveCount;
-			var curves=this._curves;
-			pathLength=0;
-			var x1=world[0],y1=world[1],cx1=0,cy1=0,cx2=0,cy2=0,x2=0,y2=0;
-			var tmpx=NaN,tmpy=NaN,dddfx=NaN,dddfy=NaN,ddfx=NaN,ddfy=NaN,dfx=NaN,dfy=NaN;
-			var w=0;
-			for (i=0,w=2;i < curveCount;i++,w+=6){
-				cx1=world[w];
-				cy1=world[w+1];
-				cx2=world[w+2];
-				cy2=world[w+3];
-				x2=world[w+4];
-				y2=world[w+5];
-				tmpx=(x1-cx1 *2+cx2)*0.1875;
-				tmpy=(y1-cy1 *2+cy2)*0.1875;
-				dddfx=((cx1-cx2)*3-x1+x2)*0.09375;
-				dddfy=((cy1-cy2)*3-y1+y2)*0.09375;
-				ddfx=tmpx *2+dddfx;
-				ddfy=tmpy *2+dddfy;
-				dfx=(cx1-x1)*0.75+tmpx+dddfx *0.16666667;
-				dfy=(cy1-y1)*0.75+tmpy+dddfy *0.16666667;
-				pathLength+=Math.sqrt(dfx *dfx+dfy *dfy);
-				dfx+=ddfx;
-				dfy+=ddfy;
-				ddfx+=dddfx;
-				ddfy+=dddfy;
-				pathLength+=Math.sqrt(dfx *dfx+dfy *dfy);
-				dfx+=ddfx;
-				dfy+=ddfy;
-				pathLength+=Math.sqrt(dfx *dfx+dfy *dfy);
-				dfx+=ddfx+dddfx;
-				dfy+=ddfy+dddfy;
-				pathLength+=Math.sqrt(dfx *dfx+dfy *dfy);
-				curves[i]=pathLength;
-				x1=x2;
-				y1=y2;
-			}
-			if (percentPosition)
-				position *=pathLength;
-			if (percentSpacing){
-				for (i=0;i < spacesCount;i++)
-				spaces[i] *=pathLength;
-			};
-			var segments=this._segments;
-			var curveLength=0;
-			var segment=0;
-			for (i=0,o=0,curve=0,segment=0;i < spacesCount;i++,o+=3){
-				space=spaces[i];
-				position+=space;
-				p=position;
-				if (closed){
-					p %=pathLength;
-					if (p < 0)
-						p+=pathLength;
-					curve=0;
-				}
-				else if (p < 0){
-					this.addBeforePosition(p,world,0,out,o);
-					continue ;
-				}
-				else if (p > pathLength){
-					this.addAfterPosition(p-pathLength,world,verticesLength-4,out,o);
-					continue ;
-				}
-				for (;;curve++){
-					length=curves[curve];
-					if (p > length)
-						continue ;
-					if (curve==0)
-						p /=length;
-					else {
-						prev=curves[curve-1];
-						p=(p-prev)/ (length-prev);
-					}
-					break ;
-				}
-				if (curve !=prevCurve){
-					prevCurve=curve;
-					var ii=curve *6;
-					x1=world[ii];
-					y1=world[ii+1];
-					cx1=world[ii+2];
-					cy1=world[ii+3];
-					cx2=world[ii+4];
-					cy2=world[ii+5];
-					x2=world[ii+6];
-					y2=world[ii+7];
-					tmpx=(x1-cx1 *2+cx2)*0.03;
-					tmpy=(y1-cy1 *2+cy2)*0.03;
-					dddfx=((cx1-cx2)*3-x1+x2)*0.006;
-					dddfy=((cy1-cy2)*3-y1+y2)*0.006;
-					ddfx=tmpx *2+dddfx;
-					ddfy=tmpy *2+dddfy;
-					dfx=(cx1-x1)*0.3+tmpx+dddfx *0.16666667;
-					dfy=(cy1-y1)*0.3+tmpy+dddfy *0.16666667;
-					curveLength=Math.sqrt(dfx *dfx+dfy *dfy);
-					segments[0]=curveLength;
-					for (ii=1;ii < 8;ii++){
-						dfx+=ddfx;
-						dfy+=ddfy;
-						ddfx+=dddfx;
-						ddfy+=dddfy;
-						curveLength+=Math.sqrt(dfx *dfx+dfy *dfy);
-						segments[ii]=curveLength;
-					}
-					dfx+=ddfx;
-					dfy+=ddfy;
-					curveLength+=Math.sqrt(dfx *dfx+dfy *dfy);
-					segments[8]=curveLength;
-					dfx+=ddfx+dddfx;
-					dfy+=ddfy+dddfy;
-					curveLength+=Math.sqrt(dfx *dfx+dfy *dfy);
-					segments[9]=curveLength;
-					segment=0;
-				}
-				p *=curveLength;
-				for (;;segment++){
-					length=segments[segment];
-					if (p > length)
-						continue ;
-					if (segment==0)
-						p /=length;
-					else {
-						prev=segments[segment-1];
-						p=segment+(p-prev)/ (length-prev);
-					}
-					break ;
-				}
-				this.addCurvePosition(p *0.1,x1,y1,cx1,cy1,cx2,cy2,x2,y2,out,o,tangents || (i > 0 && space==0));
-			}
-			return out;
-		}
-
-		__proto.addBeforePosition=function(p,temp,i,out,o){
-			var x1=temp[i],y1=temp[i+1],dx=temp[i+2]-x1,dy=temp[i+3]-y1,r=Math.atan2(dy,dx);
-			out[o]=x1+p *Math.cos(r);
-			out[o+1]=y1+p *Math.sin(r);
-			out[o+2]=r;
-		}
-
-		__proto.addAfterPosition=function(p,temp,i,out,o){
-			var x1=temp[i+2],y1=temp[i+3],dx=x1-temp[i],dy=y1-temp[i+1],r=Math.atan2(dy,dx);
-			out[o]=x1+p *Math.cos(r);
-			out[o+1]=y1+p *Math.sin(r);
-			out[o+2]=r;
-		}
-
-		__proto.addCurvePosition=function(p,x1,y1,cx1,cy1,cx2,cy2,x2,y2,out,o,tangents){
-			if (p==0)
-				p=0.0001;
-			var tt=p *p,ttt=tt *p,u=1-p,uu=u *u,uuu=uu *u;
-			var ut=u *p,ut3=ut *3,uut3=u *ut3,utt3=ut3 *p;
-			var x=x1 *uuu+cx1 *uut3+cx2 *utt3+x2 *ttt,y=y1 *uuu+cy1 *uut3+cy2 *utt3+y2 *ttt;
-			out[o]=x;
-			out[o+1]=y;
-			if (tangents){
-				out[o+2]=Math.atan2(y-(y1 *uu+cy1 *ut *2+cy2 *tt),x-(x1 *uu+cx1 *ut *2+cx2 *tt));
-			}
-			else {
-				out[o+2]=0;
-			}
-		}
-
-		PathConstraint.NONE=-1;
-		PathConstraint.BEFORE=-2;
-		PathConstraint.AFTER=-3;
-		__static(PathConstraint,
-		['_tempMt',function(){return this._tempMt=new Matrix();}
-		]);
-		return PathConstraint;
-	})()
-
-
-	/**
-	*@private
-	*/
-	//class laya.ani.bone.PathConstraintData
-	var PathConstraintData=(function(){
-		function PathConstraintData(){
-			this.name=null;
-			this.target=null;
-			this.positionMode=null;
-			this.spacingMode=null;
-			this.rotateMode=null;
-			this.offsetRotation=NaN;
-			this.position=NaN;
-			this.spacing=NaN;
-			this.rotateMix=NaN;
-			this.translateMix=NaN;
-			this.bones=[];
-		}
-
-		__class(PathConstraintData,'laya.ani.bone.PathConstraintData');
-		return PathConstraintData;
-	})()
-
-
-	/**
-	*@private
-	*/
-	//class laya.ani.bone.SkinData
-	var SkinData=(function(){
-		function SkinData(){
-			this.name=null;
-			this.slotArr=[];
-		}
-
-		__class(SkinData,'laya.ani.bone.SkinData');
-		return SkinData;
-	})()
-
-
-	/**
-	*@private
-	*/
-	//class laya.ani.bone.SkinSlotDisplayData
-	var SkinSlotDisplayData=(function(){
-		function SkinSlotDisplayData(){
-			this.name=null;
-			this.attachmentName=null;
-			this.type=0;
-			this.transform=null;
-			this.width=NaN;
-			this.height=NaN;
-			this.texture=null;
-			this.bones=null;
-			this.uvs=null;
-			this.weights=null;
-			this.triangles=null;
-			this.vertices=null;
-			this.lengths=null;
-			this.verLen=0;
-		}
-
-		__class(SkinSlotDisplayData,'laya.ani.bone.SkinSlotDisplayData');
-		var __proto=SkinSlotDisplayData.prototype;
-		__proto.createTexture=function(currTexture){
-			if (this.texture)return this.texture;
-			this.texture=new Texture(currTexture.bitmap,this.uvs,currTexture.sourceWidth,currTexture.sourceWidth);
-			if (this.uvs[0] > this.uvs[4]
-				&& this.uvs[1] > this.uvs[5]){
-				this.texture.width=currTexture.height;
-				this.texture.height=currTexture.width;
-				this.texture.offsetX=-currTexture.offsetX;
-				this.texture.offsetY=-currTexture.offsetY;
-				}else {
-				this.texture.width=currTexture.width;
-				this.texture.height=currTexture.height;
-				this.texture.offsetX=-currTexture.offsetX;
-				this.texture.offsetY=-currTexture.offsetY;
-			}
-			return this.texture;
-		}
-
-		__proto.destory=function(){
-			if (this.texture)this.texture.destroy();
-		}
-
-		return SkinSlotDisplayData;
-	})()
-
-
-	/**
-	*@private
-	*/
-	//class laya.ani.bone.SlotData
-	var SlotData=(function(){
-		function SlotData(){
-			this.name=null;
-			this.displayArr=[];
-		}
-
-		__class(SlotData,'laya.ani.bone.SlotData');
-		var __proto=SlotData.prototype;
-		__proto.getDisplayByName=function(name){
-			var tDisplay;
-			for (var i=0,n=this.displayArr.length;i < n;i++){
-				tDisplay=this.displayArr[i];
-				if (tDisplay.attachmentName==name){
-					return i;
-				}
-			}
-			return-1;
-		}
-
-		return SlotData;
-	})()
-
-
-	/**
-	*@private
-	*/
-	//class laya.ani.bone.TfConstraint
-	var TfConstraint=(function(){
-		function TfConstraint(data,bones){
-			this._data=null;
-			this._bones=null;
-			this.target=null;
-			this.rotateMix=NaN;
-			this.translateMix=NaN;
-			this.scaleMix=NaN;
-			this.shearMix=NaN;
-			this._temp=__newvec(2,0);
-			this._data=data;
-			if (this._bones==null){
-				this._bones=[];
-			}
-			this.target=bones[data.targetIndex];
-			var j=0,n=0;
-			for (j=0,n=data.boneIndexs.length;j < n;j++){
-				this._bones.push(bones[data.boneIndexs[j]]);
-			}
-			this.rotateMix=data.rotateMix;
-			this.translateMix=data.translateMix;
-			this.scaleMix=data.scaleMix;
-			this.shearMix=data.shearMix;
-		}
-
-		__class(TfConstraint,'laya.ani.bone.TfConstraint');
-		var __proto=TfConstraint.prototype;
-		__proto.apply=function(){
-			var tTfBone;
-			var ta=this.target.resultMatrix.a,tb=this.target.resultMatrix.b,tc=this.target.resultMatrix.c,td=this.target.resultMatrix.d;
-			for (var j=0,n=this._bones.length;j < n;j++){
-				tTfBone=this._bones[j];
-				if (this.rotateMix > 0){
-					var a=tTfBone.resultMatrix.a,b=tTfBone.resultMatrix.b,c=tTfBone.resultMatrix.c,d=tTfBone.resultMatrix.d;
-					var r=Math.atan2(tc,ta)-Math.atan2(c,a)+this._data.offsetRotation *Math.PI / 180;
-					if (r > Math.PI)
-						r-=Math.PI *2;
-					else if (r <-Math.PI)r+=Math.PI *2;
-					r *=this.rotateMix;
-					var cos=Math.cos(r),sin=Math.sin(r);
-					tTfBone.resultMatrix.a=cos *a-sin *c;
-					tTfBone.resultMatrix.b=cos *b-sin *d;
-					tTfBone.resultMatrix.c=sin *a+cos *c;
-					tTfBone.resultMatrix.d=sin *b+cos *d;
-				}
-				if (this.translateMix){
-					this._temp[0]=this._data.offsetX;
-					this._temp[1]=this._data.offsetY;
-					this.target.localToWorld(this._temp);
-					tTfBone.resultMatrix.tx+=(this._temp[0]-tTfBone.resultMatrix.tx)*this.translateMix;
-					tTfBone.resultMatrix.ty+=(this._temp[1]-tTfBone.resultMatrix.ty)*this.translateMix;
-					tTfBone.updateChild();
-				}
-				if (this.scaleMix > 0){
-					var bs=Math.sqrt(tTfBone.resultMatrix.a *tTfBone.resultMatrix.a+tTfBone.resultMatrix.c *tTfBone.resultMatrix.c);
-					var ts=Math.sqrt(ta *ta+tc *tc);
-					var s=bs > 0.00001 ? (bs+(ts-bs+this._data.offsetScaleX)*this.scaleMix)/ bs :0;
-					tTfBone.resultMatrix.a *=s;
-					tTfBone.resultMatrix.c *=s;
-					bs=Math.sqrt(tTfBone.resultMatrix.b *tTfBone.resultMatrix.b+tTfBone.resultMatrix.d *tTfBone.resultMatrix.d);
-					ts=Math.sqrt(tb *tb+td *td);
-					s=bs > 0.00001 ? (bs+(ts-bs+this._data.offsetScaleY)*this.scaleMix)/ bs :0;
-					tTfBone.resultMatrix.b *=s;
-					tTfBone.resultMatrix.d *=s;
-				}
-				if (this.shearMix > 0){
-					b=tTfBone.resultMatrix.b,d=tTfBone.resultMatrix.d;
-					var by=Math.atan2(d,b);
-					r=Math.atan2(td,tb)-Math.atan2(tc,ta)-(by-Math.atan2(tTfBone.resultMatrix.c,tTfBone.resultMatrix.a));
-					if (r > Math.PI)
-						r-=Math.PI *2;
-					else if (r <-Math.PI)r+=Math.PI *2;
-					r=by+(r+this._data.offsetShearY *Math.PI / 180)*this.shearMix;
-					s=Math.sqrt(b *b+d *d);
-					tTfBone.resultMatrix.b=Math.cos(r)*s;
-					tTfBone.resultMatrix.d=Math.sin(r)*s;
-				}
-			}
-		}
-
-		return TfConstraint;
-	})()
-
-
-	/**
-	*@private
-	*/
-	//class laya.ani.bone.TfConstraintData
-	var TfConstraintData=(function(){
-		function TfConstraintData(){
-			this.name=null;
-			this.targetIndex=0;
-			this.rotateMix=NaN;
-			this.translateMix=NaN;
-			this.scaleMix=NaN;
-			this.shearMix=NaN;
-			this.offsetRotation=NaN;
-			this.offsetX=NaN;
-			this.offsetY=NaN;
-			this.offsetScaleX=NaN;
-			this.offsetScaleY=NaN;
-			this.offsetShearY=NaN;
-			this.boneIndexs=[];
-		}
-
-		__class(TfConstraintData,'laya.ani.bone.TfConstraintData');
-		return TfConstraintData;
-	})()
-
-
-	/**
-	*@private
-	*/
-	//class laya.ani.bone.Transform
-	var Transform=(function(){
-		function Transform(){
-			this.skX=0;
-			this.skY=0;
-			this.scX=1;
-			this.scY=1;
-			this.x=0;
-			this.y=0;
-			this.skewX=0;
-			this.skewY=0;
-			this.mMatrix=null;
-		}
-
-		__class(Transform,'laya.ani.bone.Transform');
-		var __proto=Transform.prototype;
-		__proto.initData=function(data){
-			if (data.x !=undefined){
-				this.x=data.x;
-			}
-			if (data.y !=undefined){
-				this.y=data.y;
-			}
-			if (data.skX !=undefined){
-				this.skX=data.skX;
-			}
-			if (data.skY !=undefined){
-				this.skY=data.skY;
-			}
-			if (data.scX !=undefined){
-				this.scX=data.scX;
-			}
-			if (data.scY !=undefined){
-				this.scY=data.scY;
-			}
-		}
-
-		__proto.getMatrix=function(){
-			var tMatrix;
-			if (this.mMatrix){
-				tMatrix=this.mMatrix;
-				}else {
-				tMatrix=this.mMatrix=new Matrix();
-			}
-			tMatrix.identity();
-			tMatrix.scale(this.scX,this.scY);
-			if (this.skewX || this.skewY){
-				this.skew(tMatrix,this.skewX *Math.PI / 180,this.skewY *Math.PI / 180);
-			}
-			tMatrix.rotate(this.skX *Math.PI / 180);
-			tMatrix.translate(this.x,this.y);
-			return tMatrix;
-		}
-
-		__proto.skew=function(m,x,y){
-			var sinX=Math.sin(y);
-			var cosX=Math.cos(y);
-			var sinY=Math.sin(x);
-			var cosY=Math.cos(x);
-			m.setTo(m.a *cosY-m.b *sinX,
-			m.a *sinY+m.b *cosX,
-			m.c *cosY-m.d *sinX,
-			m.c *sinY+m.d *cosX,
-			m.tx *cosY-m.ty *sinX,
-			m.tx *sinY+m.ty *cosX);
-			return m;
-		}
-
-		return Transform;
-	})()
-
-
-	/**
-	*用于UV转换的工具类
-	*@private
-	*/
-	//class laya.ani.bone.UVTools
-	var UVTools=(function(){
-		function UVTools(){}
-		__class(UVTools,'laya.ani.bone.UVTools');
-		UVTools.getRelativeUV=function(bigUV,smallUV,rst){
-			var startX=bigUV[0];
-			var width=bigUV[2]-bigUV[0];
-			var startY=bigUV[1];
-			var height=bigUV[5]-bigUV[1];
-			if(!rst)rst=[];
-			rst.length=smallUV.length;
-			var i=0,len=0;
-			len=rst.length;
-			var dWidth=1 / width;
-			var dHeight=1 / height;
-			for (i=0;i < len;i+=2){
-				rst[i]=(smallUV[i]-startX)*dWidth;
-				rst[i+1]=(smallUV[i+1]-startY)*dHeight;
-			}
-			return rst;
-		}
-
-		UVTools.getAbsoluteUV=function(bigUV,smallUV,rst){
-			if (bigUV[0]==0 && bigUV[1]==0 && bigUV[4]==1 && bigUV[5]==1){
-				if (rst){
-					Utils.copyArray(rst,smallUV);
-					return rst;
-					}else{
-					return smallUV;
-				}
-			};
-			var startX=bigUV[0];
-			var width=bigUV[2]-bigUV[0];
-			var startY=bigUV[1];
-			var height=bigUV[5]-bigUV[1];
-			if(!rst)rst=[];
-			rst.length=smallUV.length;
-			var i=0,len=0;
-			len=rst.length;
-			for (i=0;i < len;i+=2){
-				rst[i]=smallUV[i]*width+startX;
-				rst[i+1]=smallUV[i+1]*height+startY;
-			}
-			return rst;
-		}
-
-		return UVTools;
 	})()
 
 
@@ -24594,8 +22576,8 @@ var Laya=window.Laya=(function(window,document){
 	var Layer=(function(){
 		function Layer(){
 			//this._number=0;
-			//this._mask=0;
 			//this._visible=false;
+			//this._mask=0;
 			//this._nonRigidbodyOffset=0;
 			//this._colliders=null;
 			//this.name=null;
@@ -27458,7 +25440,6 @@ var Laya=window.Laya=(function(window,document){
 			this._hasBegun=false;
 			this._numVertsPerPrimitive=0;
 			this._camera=null;
-			this._sharderNameID=0;
 			this._shader=null;
 			this._shaderCompile=null;
 			this._vbData=new Float32Array(this._defaultBufferSize);
@@ -27468,8 +25449,7 @@ var Laya=window.Laya=(function(window,document){
 			this._vb=new VertexBuffer3D(PhasorSpriter3D._vertexDeclaration.vertexStride*(this._defaultBufferSize / this._floatSizePerVer),0x88E8);
 			this._vb.vertexDeclaration=PhasorSpriter3D._vertexDeclaration;
 			this._ib=IndexBuffer3D.create("ushort",this._defaultBufferSize,0x88E8);
-			this._sharderNameID=ShaderInstance.nameKey.getID("LINE");
-			this._shaderCompile=Shader3D._preCompileShader[this._sharderNameID];
+			this._shaderCompile=Shader3D._preCompileShader["LINE"];
 		}
 
 		__class(PhasorSpriter3D,'laya.d3.core.PhasorSpriter3D');
@@ -27680,11 +25660,11 @@ var Laya=window.Laya=(function(window,document){
 			this._vb.setData(this._vbData);
 			this._vb.bind();
 			this._ib.bind();
-			this._shader=this._shaderCompile.withCompile(0,0,0);
+			this._shader=this._shaderCompile._passes[0].withCompile(0,0,0);
 			this._shader.bind();
-			this._shader.uploadAttributes(PhasorSpriter3D._vertexDeclaration._shaderValues._data,null);
-			this._spriteShaderValue.setValue(1,(this._camera).projectionViewMatrix.elements);
-			this._shader.uploadSpriteUniforms(this._spriteShaderValue._data);
+			this._shader.uploadAttributes(PhasorSpriter3D._vertexDeclaration._shaderValues);
+			this._spriteShaderValue.setMatrix4x4(1,(this._camera).projectionViewMatrix);
+			this._shader.uploadUniforms(null,this._spriteShaderValue,false);
 			Stat.drawCall++;
 			LayaGL.instance.drawElements(this._primitiveType,this._posInIBData,0x1403,0);
 			this._posInIBData=0;
@@ -27745,6 +25725,9 @@ var Laya=window.Laya=(function(window,document){
 		__class(RenderContext3D,'laya.d3.core.render.RenderContext3D');
 		RenderContext3D.clientWidth=0;
 		RenderContext3D.clientHeight=0;
+		__static(RenderContext3D,
+		['_instance',function(){return this._instance=new RenderContext3D();}
+		]);
 		return RenderContext3D;
 	})()
 
@@ -27756,8 +25739,8 @@ var Laya=window.Laya=(function(window,document){
 	//class laya.d3.core.render.RenderElement
 	var RenderElement=(function(){
 		function RenderElement(){
-			//this.transform=null;
-			//this.geometry=null;
+			//this._transform=null;
+			//this._geometry=null;
 			//this.material=null;
 			//this.render=null;
 		}
@@ -27767,15 +25750,31 @@ var Laya=window.Laya=(function(window,document){
 		/**
 		*@private
 		*/
-		__proto.addToOpaqueRenderQueue=function(scene,queue){
-			queue._elements.push(this);
+		__proto.setTransform=function(transform){
+			this._transform=transform;
 		}
 
 		/**
 		*@private
 		*/
-		__proto.addToTransparentRenderQueue=function(queue){
-			queue._elements.push(this);
+		__proto.setGeometry=function(geometry){
+			this._geometry=geometry;
+		}
+
+		/**
+		*@private
+		*/
+		__proto.addToOpaqueRenderQueue=function(context,queue){
+			queue.elements.push(this);
+		}
+
+		/**
+		*@private
+		*/
+		__proto.addToTransparentRenderQueue=function(context,queue){
+			queue.elements.push(this);
+			queue.lastTransparentBatched=false;
+			queue.lastTransparentRenderElement=this;
 		}
 
 		return RenderElement;
@@ -27788,51 +25787,95 @@ var Laya=window.Laya=(function(window,document){
 	*/
 	//class laya.d3.core.render.RenderQueue
 	var RenderQueue=(function(){
-		function RenderQueue(scene,isOpaque){
-			this._id=0;
-			this._lastRenderElement=null;
-			this._lastBatched=null;
-			this._elements=null;
-			this._renderableRenderObjects=null;
-			this._scene=null;
-			this.isOpaque=false;
-			(isOpaque===void 0)&& (isOpaque=true);
+		function RenderQueue(isTransparent){
+			//this._id=0;
+			//this.elements=null;
+			//this.isTransparent=false;
+			//this.lastTransparentRenderElement=null;
+			//this.lastTransparentBatched=false;
+			(isTransparent===void 0)&& (isTransparent=false);
 			this._id=++RenderQueue._uniqueIDCounter;
-			this.isOpaque=isOpaque;
-			this._scene=scene;
-			this._elements=[];
-			this._renderableRenderObjects=[];
+			this.isTransparent=isTransparent;
+			this.elements=[];
 		}
 
 		__class(RenderQueue,'laya.d3.core.render.RenderQueue');
 		var __proto=RenderQueue.prototype;
 		/**
 		*@private
-		*准备渲染队列。
-		*@param state 渲染状态。
 		*/
-		__proto._preRender=function(state){}
+		__proto._compare=function(left,right){
+			var renderQueue=left.material.renderQueue-right.material.renderQueue;
+			if (renderQueue===0){
+				return left.render._distanceForSort-right.render._distanceForSort;
+				}else {
+				return renderQueue;
+			}
+		}
+
+		/**
+		*@private
+		*/
+		__proto._partitionRenderObject=function(left,right){
+			var pivot=this.elements[Math.floor((right+left)/ 2)];
+			while (left <=right){
+				while (this._compare(this.elements[left],pivot)< 0)
+				left++;
+				while (this._compare(this.elements[right],pivot)> 0)
+				right--;
+				if (left < right){
+					var temp=this.elements[left];
+					this.elements[left]=this.elements[right];
+					this.elements[right]=temp;
+					left++;
+					right--;
+					}else if (left===right){
+					left++;
+					break ;
+				}
+			}
+			return left;
+		}
+
+		/**
+		*@private
+		*/
+		__proto._quickSort=function(left,right){
+			if (this.elements.length > 1){
+				var index=this._partitionRenderObject(left,right);
+				var leftIndex=index-1;
+				if (left < leftIndex)
+					this._quickSort(left,leftIndex);
+				if (index < right)
+					this._quickSort(index,right);
+			}
+		}
+
 		/**
 		*@private
 		*渲染队列。
 		*@param state 渲染状态。
 		*/
 		__proto._render=function(context,isTarget){
-			RenderQueue._updateMark++;
 			var lastStateRenderState,lastStateRender;
 			var loopCount=Stat.loopCount;
-			var scene=this._scene;
+			var scene=context.scene;
 			var camera=context.camera;
-			for (var i=0,n=this._elements.length;i < n;i++){
-				var element=this.isOpaque ? this._elements[i] :this._elements[n-i-1];
-				var transform=element.transform;
+			for (var i=0,n=this.elements.length;i < n;i++){
+				var element=this.isTransparent ? this.elements[n-i-1] :this.elements[i];
+				var transform=element._transform;
 				var render=element.render;
-				var geometry=element.geometry;
+				var geometry=element._geometry;
 				var material=element.material;
 				context.renderElement=element;
-				if (render._updateMark!==RenderQueue._updateMark){
+				if (loopCount!==render._updateLoopCount){
 					render._renderUpdate(context,transform);
-					render._updateMark=RenderQueue._updateMark;
+					render._renderUpdateWithCamera(context,transform);
+					render._updateLoopCount=loopCount;
+					render._updateCamera=camera;
+					}else if (camera!==render._updateCamera){
+					render._renderUpdateWithCamera(context,transform);
+					render._updateCamera=camera;
 				}
 				if (geometry._prepareRender(context)){
 					var renderStates=material._renderStates;
@@ -27896,85 +25939,14 @@ var Laya=window.Laya=(function(window,document){
 
 		/**
 		*@private
-		*渲染队列。
-		*@param state 渲染状态。
-		*/
-		__proto._renderShadow=function(state,isOnePSSM){
-			var loopCount=Stat.loopCount;
-			var scene=this._scene;
-			var camera=state.camera;
-			var vertexBuffer,vertexDeclaration,shader;
-			var forceUploadParams=false;
-			var lastStateMaterial,lastStateOwner;
-			for (var i=0,n=this._elements.length;i < n;i++){
-				var renderElement=this._elements[i];
-				var renderObj,material,owner;
-				if (renderElement._type===0){
-					if (!isOnePSSM && (owner._projectionViewWorldUpdateCamera!==camera || owner._projectionViewWorldUpdateLoopCount!==Stat.loopCount)){
-						owner._render._renderUpdate(state);
-						owner._projectionViewWorldUpdateLoopCount=Stat.loopCount;
-						owner._projectionViewWorldUpdateCamera=camera;
-					}
-					state.renderElement=renderElement;
-					renderObj=renderElement.geometry,material=renderElement.material;
-					if (renderObj._beforeRender(state)){
-						vertexBuffer=renderObj._getVertexBuffer(0);
-						vertexDeclaration=vertexBuffer.vertexDeclaration;
-						shader=state.shader=material._getShader(scene._defineDatas.value,vertexDeclaration.shaderDefineValue,owner._defineDatas.value);
-						forceUploadParams=shader.bind()|| (loopCount!==shader._uploadLoopCount);
-						if (shader._uploadVertexBuffers!==vertexBuffer || forceUploadParams){
-							shader.uploadAttributes(vertexDeclaration._shaderValues,null);
-							shader._uploadVertexBuffers=vertexBuffer;
-						}
-						if (camera!==shader._uploadCamera || shader._uploadRender!==owner || forceUploadParams){
-							shader.uploadUniforms(shader._spriteUniformParamsMap,owner._shaderValues);
-							shader._uploadRender=owner;
-						}
-						if (camera!==shader._uploadCamera || forceUploadParams){
-							shader.uploadUniforms(shader._cameraUniformParamsMap,camera._shaderValues);
-							shader._uploadCamera=camera;
-						}
-						if (shader._uploadMaterial!==material || forceUploadParams){
-							shader.uploadUniforms(shader._materialUniformParamsMap,material._shaderValues);
-							shader._uploadMaterial=material;
-						}
-						if (lastStateMaterial!==material){
-							material._setRenderStateFrontFace(false,owner.transform);
-							lastStateMaterial=material;
-							lastStateOwner=owner;
-							}else {
-							if (lastStateOwner!==owner){
-								material._setRenderStateFrontFace(false,owner.transform);
-								lastStateOwner=owner;
-							}
-						}
-						renderObj._render(state);
-						shader._uploadLoopCount=loopCount;
-					}
-				}
-			}
-		}
-
-		/**
-		*@private
 		*/
 		__proto.clear=function(){
-			this._elements.length=0;
-			this._lastRenderElement=null;
-			this._lastBatched=false;
+			this.elements.length=0;
+			this.lastTransparentRenderElement=null;
+			this.lastTransparentBatched=false;
 		}
 
-		/**
-		*获取唯一标识ID(通常用于优化或识别)。
-		*/
-		__getset(0,__proto,'id',function(){
-			return this._id;
-		});
-
 		RenderQueue._uniqueIDCounter=0;
-		RenderQueue.OPAQUE=1;
-		RenderQueue.TRANSPARENT=2;
-		RenderQueue._updateMark=-1;
 		return RenderQueue;
 	})()
 
@@ -28115,7 +26087,7 @@ var Laya=window.Laya=(function(window,document){
 						if (boundFrustum.containsBoundSphere(render.boundingSphere)===0)
 							continue ;
 					}
-					render._renderUpdate(projectionView);
+					render._renderUpdateWithCamera(projectionView);
 					render._distanceForSort=Vector3.distance(render.boundingSphere.center,cameraPosition)+render.sortingFudge;
 					var renderElements=render._renderElements;
 					for (j=0,m=renderElements.length;j < m;j++){
@@ -28124,11 +26096,11 @@ var Laya=window.Laya=(function(window,document){
 						if (staticBatch){
 							staticBatch._addBatchRenderElement(renderElement);
 							}else {
-							var renderObj=renderElement.geometry;
+							var renderObj=renderElement._geometry;
 							if ((renderObj.triangleCount < DynamicBatch.maxCombineTriangleCount)&& (renderObj._vertexBufferCount===1)&& (renderObj._getIndexBuffer())&& (renderElement.material.renderQueue < 2)&& renderElement._canDynamicBatch && (!render._owner.isStatic))
 								dynamicBatchManager._addPrepareRenderElement(renderElement);
 							else
-							this._scene.getRenderQueue(renderElement.material.renderQueue).addElement(renderElement);
+							this._scene._getRenderQueue(renderElement.material.renderQueue).addElement(renderElement);
 						}
 					}
 				}
@@ -28196,7 +26168,7 @@ var Laya=window.Laya=(function(window,document){
 				if (baseRender.castShadow && Layer.isVisible(baseRender._owner.layer.mask)&& baseRender.enable){
 					if (testVisible && lightBoundFrustum.containsBoundSphere(baseRender.boundingSphere)===0)
 						continue ;
-					baseRender._renderUpdate(lightViewProjectMatrix);
+					baseRender._renderUpdateWithCamera(lightViewProjectMatrix);
 					var renderElements=baseRender._renderElements;
 					for (j=0,m=renderElements.length;j < m;j++)
 					shadowQueue.addElement(renderElements[j]);
@@ -28263,6 +26235,287 @@ var Laya=window.Laya=(function(window,document){
 	})()
 
 
+	//class laya.d3.core.trail.module.Color
+	var Color$1=(function(){
+		function Color(r,g,b,a){
+			this.r=NaN;
+			this.g=NaN;
+			this.b=NaN;
+			this.a=NaN;
+			this.r=r;
+			this.g=g;
+			this.b=b;
+			this.a=a;
+		}
+
+		__class(Color,'laya.d3.core.trail.module.Color',null,'Color$1');
+		__static(Color,
+		['RED',function(){return this.RED=new Color(1,0,0,1);},'GREEN',function(){return this.GREEN=new Color(0,1,0,1);},'BLUE',function(){return this.BLUE=new Color(0,0,1,1);},'CYAN',function(){return this.CYAN=new Color(0,1,1,1);},'YELLOW',function(){return this.YELLOW=new Color(1,0.92,0.016,1);},'MAGENTA',function(){return this.MAGENTA=new Color(1,0,1,1);},'GRAY',function(){return this.GRAY=new Color(0.5,0.5,0.5,1);},'WHITE',function(){return this.WHITE=new Color(1,1,1,1);},'BLACK',function(){return this.BLACK=new Color(0,0,0,1);}
+		]);
+		return Color;
+	})()
+
+
+	//class laya.d3.core.trail.module.Gradient
+	var Gradient=(function(){
+		function Gradient(){
+			this._mode=0;
+			this._colorKeys=null;
+			this._alphaKeys=null;
+			this.index=0;
+			this._colorKeyData=new Float32Array(40);
+			this._alphaKeyData=new Float32Array(20);
+			this._colorKeys=[];
+			this._alphaKeys=[];
+		}
+
+		__class(Gradient,'laya.d3.core.trail.module.Gradient');
+		var __proto=Gradient.prototype;
+		/**
+		*设置渐变，使用一组颜色关键帧数据和透明度关键帧数据。
+		*@param colorKeys 渐变的颜色值关键帧数据(最大长度为10)。
+		*@param alphaKeys 渐变的透明度关键帧数据(最大长度为10)。
+		*/
+		__proto.setKeys=function(colorKeys,alphaKeys){
+			this._colorKeys=colorKeys;
+			this.index=0;
+			var gradientColorKey;
+			for (var i=0;i < colorKeys.length;i++){
+				gradientColorKey=colorKeys[i];
+				var color=gradientColorKey.color;
+				this._colorKeyData[this.index++]=color.r;
+				this._colorKeyData[this.index++]=color.g;
+				this._colorKeyData[this.index++]=color.b;
+				this._colorKeyData[this.index++]=gradientColorKey.time;
+			}
+			this._alphaKeys=alphaKeys;
+			this.index=0;
+			var gradientAlphaKey;
+			for (var j=0;j < alphaKeys.length;j++){
+				gradientAlphaKey=alphaKeys[j];
+				this._alphaKeyData[this.index++]=gradientAlphaKey.alpha;
+				this._alphaKeyData[this.index++]=gradientAlphaKey.time;
+			}
+		}
+
+		/**
+		*设置梯度模式。
+		*@param value 梯度模式。
+		*/
+		/**
+		*获取梯度模式。
+		*@return 梯度模式。
+		*/
+		__getset(0,__proto,'mode',function(){
+			return this._mode;
+			},function(value){
+			this._mode=value;
+		});
+
+		/**
+		*设置颜色值关键帧数据
+		*/
+		/**
+		*获取颜色值关键帧数据
+		*/
+		__getset(0,__proto,'colorKeys',function(){
+			return this._colorKeys;
+			},function(values){
+			this._colorKeys=values;
+			this.index=0;
+			for (var i=0;i < values.length;i++){
+				var value=values[i];
+				var color=value.color;
+				this._colorKeyData[this.index++]=color.r;
+				this._colorKeyData[this.index++]=color.g;
+				this._colorKeyData[this.index++]=color.b;
+				this._colorKeyData[this.index++]=value.time;
+			}
+		});
+
+		/**
+		*设置透明度关键帧数据
+		*/
+		/**
+		*获取透明度关键帧数据
+		*/
+		__getset(0,__proto,'alphaKeys',function(){
+			return this._alphaKeys;
+			},function(values){
+			this._alphaKeys=values;
+			this.index=0;
+			for (var i=0;i < values.length;i++){
+				var value=values[i];
+				this._alphaKeyData[this.index++]=value.alpha;
+				this._alphaKeyData[this.index++]=value.time;
+			}
+		});
+
+		return Gradient;
+	})()
+
+
+	//class laya.d3.core.trail.module.GradientAlphaKey
+	var GradientAlphaKey=(function(){
+		function GradientAlphaKey(alpha,time){
+			this._alpha=NaN;
+			this._time=NaN;
+			this._alpha=alpha;
+			this._time=time;
+		}
+
+		__class(GradientAlphaKey,'laya.d3.core.trail.module.GradientAlphaKey');
+		var __proto=GradientAlphaKey.prototype;
+		/**
+		*设置透明度。
+		*@param value 透明度。
+		*/
+		/**
+		*获取透明度。
+		*@return 透明度。
+		*/
+		__getset(0,__proto,'alpha',function(){
+			return this._alpha;
+			},function(value){
+			this._alpha=value;
+		});
+
+		/**
+		*设置时间。
+		*@param value 时间。
+		*/
+		/**
+		*获取时间。
+		*@return 时间。
+		*/
+		__getset(0,__proto,'time',function(){
+			return this._time;
+			},function(value){
+			this._time=value;
+		});
+
+		return GradientAlphaKey;
+	})()
+
+
+	//class laya.d3.core.trail.module.GradientColorKey
+	var GradientColorKey=(function(){
+		function GradientColorKey(color,time){
+			this._color=null;
+			this._time=NaN;
+			this._color=color;
+			this._time=time;
+		}
+
+		__class(GradientColorKey,'laya.d3.core.trail.module.GradientColorKey');
+		var __proto=GradientColorKey.prototype;
+		/**
+		*设置颜色值。
+		*@param value 颜色值。
+		*/
+		/**
+		*获取颜色值。
+		*@return 颜色值。
+		*/
+		__getset(0,__proto,'color',function(){
+			return this._color;
+			},function(value){
+			this._color=value;
+		});
+
+		/**
+		*设置时间。
+		*@param value 时间。
+		*/
+		/**
+		*获取时间。
+		*@return 时间。
+		*/
+		__getset(0,__proto,'time',function(){
+			return this._time;
+			},function(value){
+			this._time=value;
+		});
+
+		return GradientColorKey;
+	})()
+
+
+	/**
+	*...
+	*@author ...
+	*/
+	//class laya.d3.core.trail.module.GradientMode
+	var GradientMode=(function(){
+		function GradientMode(){};
+		__class(GradientMode,'laya.d3.core.trail.module.GradientMode');
+		GradientMode.Blend=0;
+		GradientMode.Fixed=1;
+		return GradientMode;
+	})()
+
+
+	/**
+	*...
+	*@author ...
+	*/
+	//class laya.d3.core.trail.module.TextureMode
+	var TextureMode=(function(){
+		function TextureMode(){};
+		__class(TextureMode,'laya.d3.core.trail.module.TextureMode');
+		TextureMode.Stretch=0;
+		TextureMode.Tile=1;
+		return TextureMode;
+	})()
+
+
+	//class laya.d3.core.trail.module.TrailKeyFrame
+	var TrailKeyFrame=(function(){
+		function TrailKeyFrame(){
+			this.time=NaN;
+			this.inTangent=NaN;
+			this.outTangent=NaN;
+			this.value=NaN;
+		}
+
+		__class(TrailKeyFrame,'laya.d3.core.trail.module.TrailKeyFrame');
+		return TrailKeyFrame;
+	})()
+
+
+	/**
+	*<code>VertexTrail</code> 类用于创建拖尾顶点结构。
+	*/
+	//class laya.d3.core.trail.VertexTrail
+	var VertexTrail=(function(){
+		function VertexTrail(){}
+		__class(VertexTrail,'laya.d3.core.trail.VertexTrail');
+		var __proto=VertexTrail.prototype;
+		Laya.imps(__proto,{"laya.d3.graphics.IVertex":true})
+		__getset(0,__proto,'vertexDeclaration',function(){
+			return VertexTrail._vertexDeclaration1;
+		});
+
+		__getset(1,VertexTrail,'vertexDeclaration1',function(){
+			return VertexTrail._vertexDeclaration1;
+		});
+
+		__getset(1,VertexTrail,'vertexDeclaration2',function(){
+			return VertexTrail._vertexDeclaration2;
+		});
+
+		__static(VertexTrail,
+		['_vertexDeclaration1',function(){return this._vertexDeclaration1=new VertexDeclaration(32,
+			[new VertexElement(0,"vector3",0),
+			new VertexElement(12,"vector3",42),
+			new VertexElement(24,"single",33),
+			new VertexElement(28,"single",41)]);},'_vertexDeclaration2',function(){return this._vertexDeclaration2=new VertexDeclaration(4,
+			[new VertexElement(0,"single",39)]);}
+		]);
+		return VertexTrail;
+	})()
+
+
 	/**
 	*@private
 	*<code>DynamicBatchManager</code> 类用于管理动态批处理。
@@ -28315,10 +26568,11 @@ var Laya=window.Laya=(function(window,document){
 		*/
 		function FrustumCulling(){}
 		__class(FrustumCulling,'laya.d3.graphics.FrustumCulling');
-		FrustumCulling.renderObjectCulling=function(boundFrustum,scene,context){
+		FrustumCulling.renderObjectCulling=function(boundFrustum,scene,context,renders,validCount){
 			var i=0,n=0,j=0,m=0;
 			var queues=scene._quenes;
-			for (i=0,n=queues.length;i < n;i++){
+			var queueCount=queues.length;
+			for (i=0;i < queueCount;i++){
 				var queue=queues[i];
 				(queue)&& (queue.clear());
 			};
@@ -28328,97 +26582,27 @@ var Laya=window.Laya=(function(window,document){
 			var dynamicBatchManagers=DynamicBatchManager._managers;
 			for (i=0,n=dynamicBatchManagers.length;i < n;i++)
 			dynamicBatchManagers[i]._clear();
-			var renderObjects=scene._renderObjects;
-			var camPos=context.camera.transform.position;
-			var validCount=scene._cullingRendersLength;
+			var camPos=context.camera._transform.position;
 			for (i=0;i < validCount;i++){
-				var baseRender=renderObjects[i];
-				if (Layer.isVisible(baseRender._owner.layer.mask)&& baseRender.enable && baseRender._needRender(boundFrustum)){
-					baseRender._distanceForSort=Vector3.distance(baseRender.boundingSphere.center,camPos)+baseRender.sortingFudge;
-					}else {
-					scene.swapRenderObject(i--,--validCount);
-				}
-			}
-			(validCount > 0)&& (scene._quickSort(renderObjects,0,validCount-1));
-			for (i=0;i < validCount;i++){
-				var elements=renderObjects[i]._renderElements;
-				for (j=0,m=elements.length;j < m;j++){
-					var element=elements[j];
-					var renderQueue=scene.getRenderQueue(element.material.renderQueue);
-					if (renderQueue.isOpaque)
-						element.addToOpaqueRenderQueue(scene,renderQueue);
-					else
-					element.addToTransparentRenderQueue(renderQueue);
-				}
-			}
-		}
-
-		FrustumCulling.renderShadowObjectCulling=function(scene,lightFrustum,shadowQueues,lightViewProjectMatrix,nPSSMNum){
-			var i=0,j=0,n=0,m=0;
-			for (i=0,n=shadowQueues.length;i < n;i++){
-				var quene=shadowQueues[i];
-				(quene)&& (quene.clear());
-			};
-			var frustumCullingObjects=scene._renderObjects;
-			var baseRender,shadowQueue,renderElements;
-			if (nPSSMNum > 1){
-				for (i=0,n=scene._cullingRendersLength;i < n;i++){
-					baseRender=frustumCullingObjects[i];
-					if (baseRender.castShadow && Layer.isVisible(baseRender._owner.layer.mask)&& baseRender.enable){
-						for (var k=1,kNum=lightFrustum.length;k < kNum;k++){
-							shadowQueue=shadowQueues[k-1];
-							if (lightFrustum[k].containsBoundSphere(baseRender.boundingSphere)!==0){
-								renderElements=baseRender._renderElements;
-								for (j=0,m=renderElements.length;j < m;j++)
-								shadowQueue.addElement(renderElements[j]);
-							}
-						}
-					}
-				}
-				}else {
-				for (i=0,n=scene._cullingRendersLength;i < n;i++){
-					baseRender=frustumCullingObjects[i];
-					if (baseRender.castShadow && Layer.isVisible(baseRender._owner.layer.mask)&& baseRender.enable){
-						if (lightFrustum[0].containsBoundSphere(baseRender.boundingSphere)!==0){
-							baseRender._renderUpdate(lightViewProjectMatrix);
-							shadowQueue=shadowQueues[0];
-							renderElements=baseRender._renderElements;
-							for (j=0,m=renderElements.length;j < m;j++)
-							shadowQueue.addElement(renderElements[j]);
-						}
+				var render=renders[i];
+				if (Layer.isVisible(render._owner._layer._mask)&& render._enable && render._needRender(boundFrustum)){
+					render._distanceForSort=Vector3.distance(render.boundingSphere.center,camPos)+render.sortingFudge;
+					var elements=render._renderElements;
+					for (j=0,m=elements.length;j < m;j++){
+						var element=elements[j];
+						var renderQueue=scene._getRenderQueue(element.material.renderQueue);
+						if (renderQueue.isTransparent)
+							element.addToTransparentRenderQueue(context,renderQueue);
+						else
+						element.addToOpaqueRenderQueue(context,renderQueue);
 					}
 				}
 			}
-		}
-
-		FrustumCulling.renderShadowObjectCullingOctree=function(scene,lightFrustum,quenesResult,lightViewProjectMatrix,nPSSMNum){
-			for (var i=0,n=quenesResult.length;i < n;i++){
-				var quene=quenesResult[i];
-				(quene)&& (quene.clear());
-			}
-			if (nPSSMNum > 1){
-				scene.treeRoot.cullingShadowObjects(lightFrustum,quenesResult,true,0,scene);
-				}else {
-				scene.treeRoot.cullingShadowObjectsOnePSSM(lightFrustum[0],quenesResult,lightViewProjectMatrix,true,0,scene);
-			}
-		}
-
-		FrustumCulling.renderObjectCullingOctree=function(boundFrustum,scene,camera,view,projection,projectionView){
-			var i=0,n=0;
-			var queues=scene._quenes;
-			var dynamicBatchManager=scene._dynamicBatchManager;
-			for (i=0,n=queues.length;i < n;i++){
+			for (i=0;i < queueCount;i++){
 				var queue=queues[i];
-				(queue)&& (queue.clear());
-			};
-			var staticBatchManagers=StaticBatchManager._managers;
-			for (i=0,n=staticBatchManagers.length;i < n;i++)
-			staticBatchManagers[i]._clear();
-			dynamicBatchManager._clearRenderElements();
-			scene._renderObjects.length=0;
-			scene.treeRoot.cullingObjects(boundFrustum,true,0,camera.transform.position,projectionView);
-			dynamicBatchManager._finishCombineDynamicBatch(scene);
-			dynamicBatchManager._addToRenderQueue(scene,view,projection,projectionView);
+				var count=queue.elements.length;
+				(count > 0)&& (queue._quickSort(0,count-1));
+			}
 		}
 
 		return FrustumCulling;
@@ -28479,7 +26663,6 @@ var Laya=window.Laya=(function(window,document){
 				if (index < right)
 					this._quickSort(items,index,right);
 			}
-			return items;
 		}
 
 		/**
@@ -28508,13 +26691,6 @@ var Laya=window.Laya=(function(window,document){
 		/**
 		*@private
 		*/
-		__proto._getStaticBatch=function(rootOwner,vertexDeclaration,number){
-			throw "StaticBatch:must override this function.";
-		}
-
-		/**
-		*@private
-		*/
 		__proto._addBatchSprite=function(renderableSprite3D){
 			var renderElements=renderableSprite3D._render._renderElements;
 			for (var i=0,n=renderElements.length;i < n;i++)
@@ -28531,26 +26707,8 @@ var Laya=window.Laya=(function(window,document){
 		/**
 		*@private
 		*/
-		__proto._destroyRenderElement=function(renderElement){
-			var staticBatch=renderElement.staticBatch;
-			staticBatch.remove(renderElement);
-			if (staticBatch.getBatchElementsCount()===0){
-				staticBatch.dispose();
-				delete this._staticBatches[staticBatch.key];
-			}
-		}
-
-		/**
-		*@private
-		*/
 		__proto._garbageCollection=function(){
-			for (var key in this._staticBatches){
-				var staticBatch=this._staticBatches[key];
-				if (staticBatch.getBatchElementsCount()===0){
-					staticBatch.dispose();
-					delete this._staticBatches[staticBatch.key];
-				}
-			}
+			throw "StaticBatchManager: must override it.";
 		}
 
 		/**
@@ -31358,6 +29516,11 @@ var Laya=window.Laya=(function(window,document){
 		VertexElementUsage.RANDOM1=35;
 		VertexElementUsage.SIMULATIONWORLDPOSTION=36;
 		VertexElementUsage.SIMULATIONWORLDROTATION=37;
+		VertexElementUsage.TEXCOORD3D0=38;
+		VertexElementUsage.TEXTURECOORDINATE0X=39;
+		VertexElementUsage.TEXTURECOORDINATE0X1=40;
+		VertexElementUsage.TEXTURECOORDINATE0Y=41;
+		VertexElementUsage.OFFSETVECTOR=42;
 		return VertexElementUsage;
 	})()
 
@@ -34124,7 +32287,7 @@ var Laya=window.Laya=(function(window,document){
 				var _tempV30ez=Math.abs(_tempV30e[2]);
 				if (MathUtils3D.nearEqual(_tempV30ex,extentsex)&& MathUtils3D.nearEqual(_tempV30ey,extentsey)&& MathUtils3D.nearEqual(_tempV30ez,extentsez))
 					containsAny=true;
-				if (_tempV30ex < extentsex && _tempV30ey < extentsey && extentsez < _tempV30ez)
+				if (_tempV30ex < extentsex && _tempV30ey < extentsey && _tempV30ez < extentsez)
 					containsAny=true;
 				else
 				containsAll=false;
@@ -34180,6 +32343,8 @@ var Laya=window.Laya=(function(window,document){
 		}
 
 		/**
+		*For accuracy,The transformation matrix for both <see cref="OrientedBoundingBox"/> must not have any scaling applied to it.
+		*Anyway,scaling using Scale method will keep this method accurate.
 		*该包围盒是否包含空间中另一OBB包围盒
 		*@param obb OBB包围盒
 		*@return 返回位置关系
@@ -34244,8 +32409,8 @@ var Laya=window.Laya=(function(window,document){
 				for (k=0;k < 3;k++){
 					var i1=(i+1)% 3,i2=(i+2)% 3;
 					var k1=(k+1)% 3,k2=(k+2)% 3;
-					extentA=sizeAe[i1] *OrientedBoundBox._tempM1.getElementByRowColumn(i2,k)+sizeBe[i2] *OrientedBoundBox._tempM1.getElementByRowColumn(i1,k);
-					extentB=sizeAe[k1] *OrientedBoundBox._tempM1.getElementByRowColumn(i,k2)+sizeBe[k2] *OrientedBoundBox._tempM1.getElementByRowColumn(i,k1);
+					extentA=sizeAe[i1] *OrientedBoundBox._tempM1.getElementByRowColumn(i2,k)+sizeAe[i2] *OrientedBoundBox._tempM1.getElementByRowColumn(i1,k);
+					extentB=sizeBe[k1] *OrientedBoundBox._tempM1.getElementByRowColumn(i,k2)+sizeBe[k2] *OrientedBoundBox._tempM1.getElementByRowColumn(i,k1);
 					separation=Math.abs(vsepAe[i2] *OrientedBoundBox._tempM0.getElementByRowColumn(i1,k)-vsepAe[i1] *OrientedBoundBox._tempM0.getElementByRowColumn(i2,k));
 					if (separation > extentA+extentB)
 						return 0;
@@ -35469,48 +33634,48 @@ var Laya=window.Laya=(function(window,document){
 
 
 	/**
-	*<code>Sky</code> 类用于创建天空的父类，抽象类不允许实例。
+	*@private
+	*<code>SkyBox</code> 类用于创建天空盒。
 	*/
-	//class laya.d3.resource.models.Sky
-	var Sky=(function(){
-		function Sky(){
-			//this._sharedMaterial=null;
+	//class laya.d3.resource.models.SkyBox
+	var SkyBox=(function(){
+		function SkyBox(){
 			//this._vertexBuffer=null;
 			//this._indexBuffer=null;
+			var halfHeight=0.5;
+			var halfWidth=0.5;
+			var halfDepth=0.5;
+			var vertices=new Float32Array([-halfDepth,halfHeight,-halfWidth,halfDepth,halfHeight,-halfWidth,halfDepth,halfHeight,halfWidth,-halfDepth,halfHeight,halfWidth,
+			-halfDepth,-halfHeight,-halfWidth,halfDepth,-halfHeight,-halfWidth,halfDepth,-halfHeight,halfWidth,-halfDepth,-halfHeight,halfWidth]);
+			var indices=new Uint8Array([0,1,2,2,3,0,
+			4,7,6,6,5,4,
+			0,3,7,7,4,0,
+			1,5,6,6,2,1,
+			3,2,6,6,7,3,
+			0,4,5,5,1,0]);
+			this._vertexBuffer=new VertexBuffer3D(VertexPosition.vertexDeclaration.vertexStride *8,0x88E4,false);
+			this._vertexBuffer.vertexDeclaration=VertexPosition.vertexDeclaration;
+			this._indexBuffer=new IndexBuffer3D("ubyte",36,0x88E4,false);
+			this._vertexBuffer.setData(vertices);
+			this._indexBuffer.setData(indices);
 		}
 
-		__class(Sky,'laya.d3.resource.models.Sky');
-		var __proto=Sky.prototype;
+		__class(SkyBox,'laya.d3.resource.models.SkyBox');
+		var __proto=SkyBox.prototype;
 		/**
 		*@private
 		*/
-		__proto._changeMaterialReference=function(lastValue,value){
-			(lastValue)&& (lastValue._removeReference());
-			value._addReference();
+		__proto._render=function(state){
+			this._indexBuffer.bind();
+			LayaGL.instance.drawElements(0x0004,36,0x1401,0);
+			Stat.trianglesFaces+=12;
+			Stat.drawCall++;
 		}
 
-		/**
-		*@private
-		*/
-		__proto._render=function(state){}
-		/**
-		*设置天空立方体纹理。
-		*@param value 天空立方体纹理。
-		*/
-		/**
-		*获取天空立方体纹理。
-		*@return 天空立方体纹理。
-		*/
-		__getset(0,__proto,'sharedMaterial',function(){
-			return this._sharedMaterial;
-			},function(value){
-			if (this._sharedMaterial!==value){
-				this._sharedMaterial=value;
-				this._changeMaterialReference(this._sharedMaterial,value);
-			}
-		});
-
-		return Sky;
+		__static(SkyBox,
+		['_instance',function(){return this._instance=new SkyBox();}
+		]);
+		return SkyBox;
 	})()
 
 
@@ -35544,12 +33709,20 @@ var Laya=window.Laya=(function(window,document){
 		}
 
 		/**
+		*是否包含Shader宏定义。
+		*@param value 宏定义。
+		*/
+		__proto.has=function(define){
+			return (this.value & define)> 0;
+		}
+
+		/**
 		*克隆。
 		*@param destObject 克隆源。
 		*/
 		__proto.cloneTo=function(destObject){
 			var destDefineData=destObject;
-			this.value=destDefineData.value;
+			destDefineData.value=this.value;
 		}
 
 		/**
@@ -35572,19 +33745,16 @@ var Laya=window.Laya=(function(window,document){
 	*/
 	//class laya.d3.shader.Shader3D
 	var Shader3D=(function(){
-		function Shader3D(name,attributeMap,uniformMap,includeFiles){
+		function Shader3D(name,attributeMap,uniformMap,includeFiles,spriteDefines,materialDefines){
 			//this._attributeMap=null;
 			//this._uniformMap=null;
+			//this._name=null;
 			//this._publicDefines=null;
 			//this._publicDefinesMap=null;
-			//this._publicDefinesValue=0;
 			//this._spriteDefines=null;
 			//this._spriteDefinesMap=null;
-			//this._spriteDefinesValue=0;
 			//this._materialDefines=null;
 			//this._materialDefinesMap=null;
-			//this._materialDefinesValue=0;
-			//this._name=null;
 			//this._passes=null;
 			this._name=name;
 			this._publicDefines=[];
@@ -35593,7 +33763,9 @@ var Laya=window.Laya=(function(window,document){
 			this._spriteDefinesMap={};
 			this._materialDefines=[];
 			this._materialDefinesMap={};
-			this._publicDefinesValue=this._addDefines(this._publicDefines,this._publicDefinesMap,Shader3D._globleDefines);
+			this._addDefines(this._publicDefines,this._publicDefinesMap,Shader3D._globleDefines);
+			(spriteDefines)&& (this._addDefines(this._spriteDefines,this._spriteDefinesMap,spriteDefines.defines));
+			(materialDefines)&& (this._addDefines(this._materialDefines,this._materialDefinesMap,materialDefines.defines));
 			this._passes=[];
 			this._attributeMap=attributeMap;
 			this._uniformMap=uniformMap;
@@ -35605,15 +33777,12 @@ var Laya=window.Laya=(function(window,document){
 		*@private
 		*/
 		__proto._addDefines=function(defines,definesMap,supportDefines){
-			var validDefineValue=0;
 			for (var k in supportDefines){
 				var name=supportDefines[k];
 				var i=parseInt(k);
 				defines[i]=name;
 				definesMap[name]=i;
-				validDefineValue |=i;
 			}
-			return validDefineValue;
 		}
 
 		/**
@@ -35621,24 +33790,6 @@ var Laya=window.Laya=(function(window,document){
 		*/
 		__proto._addShaderPass=function(vs,ps){
 			this._passes.push(new ShaderPass(this,vs,ps));
-		}
-
-		/**
-		*注册材质宏定义。
-		*@param name 宏定义名称。zx
-		*@return
-		*/
-		__proto.addMaterialDefines=function(shaderDefines){
-			this._materialDefinesValue=this._addDefines(this._materialDefines,this._materialDefinesMap,shaderDefines.defines);
-		}
-
-		/**
-		*注册精灵宏定义。
-		*@param name 宏定义名称。
-		*@return
-		*/
-		__proto.addSpriteDefines=function(shaderDefines){
-			this._spriteDefinesValue=this._addDefines(this._spriteDefines,this._spriteDefinesMap,shaderDefines.defines);
 		}
 
 		/**
@@ -35677,8 +33828,8 @@ var Laya=window.Laya=(function(window,document){
 			}
 		}
 
-		Shader3D.add=function(name,attributeMap,uniformMap){
-			return laya.d3.shader.Shader3D._preCompileShader[name]=new Shader3D(name,attributeMap,uniformMap,ShaderCompile.includes);
+		Shader3D.add=function(name,attributeMap,uniformMap,spriteDefines,materialDefines){
+			return laya.d3.shader.Shader3D._preCompileShader[name]=new Shader3D(name,attributeMap,uniformMap,ShaderCompile.includes,spriteDefines,materialDefines);
 		}
 
 		Shader3D.get=function(name){
@@ -35858,7 +34009,7 @@ var Laya=window.Laya=(function(window,document){
 		__proto.setTexture=function(index,value){
 			var lastValue=this._data[index];
 			this._data[index]=value;
-			if (this._ownerResource.referenceCount > 0){
+			if (this._ownerResource&&this._ownerResource.referenceCount > 0){
 				(lastValue)&& (lastValue._removeReference());
 				(value)&& (value._addReference());
 			}
@@ -36036,8 +34187,7 @@ var Laya=window.Laya=(function(window,document){
 		*@private [NATIVE]
 		*/
 		__proto.getVectorForNative=function(index){
-			alert("ShaderData getVector can't support");
-			return null;
+			return this._nativeArray[index];
 		}
 
 		/**
@@ -36199,14 +34349,13 @@ var Laya=window.Laya=(function(window,document){
 			Scene.SHADERDEFINE_SHADOW_PCF1=Shader3D.registerPublicDefine("SHADOWMAP_PCF1");
 			Scene.SHADERDEFINE_SHADOW_PCF2=Shader3D.registerPublicDefine("SHADOWMAP_PCF2");
 			Scene.SHADERDEFINE_SHADOW_PCF3=Shader3D.registerPublicDefine("SHADOWMAP_PCF3");
-			Scene.SAHDERDEFINE_DEPTHFOG=Shader3D.registerPublicDefine("DEPTHFOG");
+			Scene.SHADERDEFINE_REFLECTMAP=Shader3D.registerPublicDefine("REFLECTMAP");
 			Shader3D.addInclude("Lighting.glsl","\nstruct DirectionLight\n{\n	vec3 Color;\n	vec3 Direction;\n};\n\nstruct PointLight\n{\n	vec3 Color;\n	vec3 Position;\n	float Range;\n};\n\nstruct SpotLight\n{\n	vec3 Color;\n	vec3 Position;\n	vec3 Direction;\n	float Spot;\n	float Range;\n};\n\n// U3D中使用衰减纹理,此函数模拟并非正确\n//float U3DAttenuation(in vec3 L,in float invLightRadius)\n//{\n//	float fRatio = clamp(length(L) * invLightRadius,0.0,1.0);\n//	fRatio *= fRatio;\n//	return 1.0 / (1.0 + 25.0 * fRatio)* clamp(4.0*(1.0 - fRatio),0.0,1.0); //fade to black as if 4 pixel texture\n//} \n\n// Same as Just Cause 2 and Crysis 2 (you can read GPU Pro 1 book for more information)\nfloat BasicAttenuation(in vec3 L,in float invLightRadius)\n{\n	vec3 distance = L * invLightRadius;\n	float attenuation = clamp(1.0 - dot(distance, distance),0.0,1.0); // Equals float attenuation = saturate(1.0f - dot(L, L) / (lightRadius *  lightRadius)); 	\n	return attenuation * attenuation;\n} \n\n// Inspired on http://fools.slindev.com/viewtopic.php?f=11&t=21&view=unread#unread	\nfloat NaturalAttenuation(in vec3 L,in float invLightRadius)\n{\n	float attenuationFactor = 30.0;\n	vec3 distance = L * invLightRadius;\n	float attenuation = dot(distance, distance); // Equals float attenuation = dot(L, L) / (lightRadius *  lightRadius);\n	attenuation = 1.0 / (attenuation * attenuationFactor + 1.0);\n	// Second we move down the function therewith it reaches zero at abscissa 1:\n	attenuationFactor = 1.0 / (attenuationFactor + 1.0); //attenuationFactor contains now the value we have to subtract\n	attenuation = max(attenuation - attenuationFactor, 0.0); // The max fixes a bug.\n	// Finally we expand the equation along the y-axis so that it starts with a function value of 1 again.\n	attenuation /= 1.0 - attenuationFactor;\n	return attenuation;\n} \n\nvoid LayaAirBlinnPhongLight (in vec3 specColor,in float specColorIntensity,in vec3 normal,in vec3 gloss, in vec3 viewDir,in vec3 lightColor, in vec3 lightVec,out vec3 diffuseColor,out vec3 specularColor)\n{\n    mediump vec3 h = normalize(viewDir-lightVec);\n    lowp float ln = max (0.0, dot (-lightVec,normal));\n    float nh = max (0.0, dot (h,normal));\n	diffuseColor=lightColor * ln;\n	specularColor=lightColor *specColor*pow (nh, specColorIntensity*128.0) * gloss;\n}\n\nvoid LayaAirBlinnPhongDiectionLight (in vec3 specColor,in float specColorIntensity,in vec3 normal,in vec3 gloss, in vec3 viewDir, in DirectionLight light,out vec3 diffuseColor,out vec3 specularColor)\n{\n	vec3 lightVec=normalize(light.Direction);\n	LayaAirBlinnPhongLight(specColor,specColorIntensity,normal,gloss,viewDir,light.Color,lightVec,diffuseColor,specularColor);\n}\n\nvoid LayaAirBlinnPhongPointLight (in vec3 pos,in vec3 specColor,in float specColorIntensity,in vec3 normal,in vec3 gloss, in vec3 viewDir, in PointLight light,out vec3 diffuseColor,out vec3 specularColor)\n{\n	vec3 lightVec =  pos-light.Position;\n	//if( length(lightVec) > light.Range )\n	//	return;\n	LayaAirBlinnPhongLight(specColor,specColorIntensity,normal,gloss,viewDir,light.Color,lightVec/length(lightVec),diffuseColor,specularColor);\n	float attenuate = BasicAttenuation(lightVec, 1.0/light.Range);\n	diffuseColor *= attenuate;\n	specularColor*= attenuate;\n}\n\nvoid LayaAirBlinnPhongSpotLight (in vec3 pos,in vec3 specColor,in float specColorIntensity,in vec3 normal,in vec3 gloss, in vec3 viewDir, in SpotLight light,out vec3 diffuseColor,out vec3 specularColor)\n{\n	vec3 lightVec =  pos-light.Position;\n	//if( length(lightVec) > light.Range )\n	//	return;\n	vec3 normalLightVec=lightVec/length(lightVec);\n	LayaAirBlinnPhongLight(specColor,specColorIntensity,normal,gloss,viewDir,light.Color,normalLightVec,diffuseColor,specularColor);\n	float spot = pow(max(dot(normalLightVec, normalize(light.Direction)), 0.0), light.Spot);\n	float attenuate = spot*BasicAttenuation(lightVec, 1.0/light.Range);\n	diffuseColor *= attenuate;\n	specularColor*= attenuate;\n}\n\nvec3 NormalSampleToWorldSpace(vec3 normalMapSample, vec3 unitNormal, vec3 tangent,vec3 binormal)\n{\n	vec3 normalT =vec3(2.0*normalMapSample.x - 1.0,1.0-2.0*normalMapSample.y,2.0*normalMapSample.z - 1.0);\n	\n	// Build orthonormal basis.\n	vec3 N = normalize(unitNormal);\n	vec3 T = normalize(tangent);\n	vec3 B = normalize(binormal);\n	mat3 TBN = mat3(T, B, N);\n	\n	// Transform from tangent space to world space.\n	vec3 bumpedNormal = TBN*normalT;\n\n	return bumpedNormal;\n}\n\n\n");
 			Shader3D.addInclude("ShadowHelper.glsl","uniform sampler2D u_shadowMap1;\nuniform sampler2D u_shadowMap2;\nuniform sampler2D u_shadowMap3;\nuniform vec2	  u_shadowPCFoffset;\nuniform vec4     u_shadowPSSMDistance;\nvec4 packDepth(const in float depth)\n{\n	const vec4 bitShift = vec4(256.0*256.0*256.0, 256.0*256.0, 256.0, 1.0);\n	const vec4 bitMask	= vec4(0.0, 1.0/256.0, 1.0/256.0, 1.0/256.0);\n	vec4 res = mod(depth*bitShift*vec4(255), vec4(256))/vec4(255);\n	res -= res.xxyz * bitMask;\n	return res;\n}\nfloat unpackDepth(const in vec4 rgbaDepth)\n{\n	const vec4 bitShift = vec4(1.0/(256.0*256.0*256.0), 1.0/(256.0*256.0), 1.0/256.0, 1.0);\n	float depth = dot(rgbaDepth, bitShift);\n	return depth;\n}\nfloat tex2DPCF( sampler2D shadowMap,vec2 texcoord,vec2 invsize,float zRef )\n{\n	vec2 texelpos =texcoord / invsize;\n	vec2 lerps = fract( texelpos );\n	float sourcevals[4];\n	sourcevals[0] = float( unpackDepth(texture2D(shadowMap,texcoord)) > zRef );\n	sourcevals[1] = float( unpackDepth(texture2D(shadowMap,texcoord + vec2(invsize.x,0))) > zRef );\n	sourcevals[2] = float( unpackDepth(texture2D(shadowMap,texcoord + vec2(0,invsize.y))) > zRef );\n	sourcevals[3] = float( unpackDepth(texture2D(shadowMap,texcoord + vec2(invsize.x, invsize.y) )) > zRef );\n	return mix( mix(sourcevals[0],sourcevals[2],lerps.y),mix(sourcevals[1],sourcevals[3],lerps.y),lerps.x );\n}\nfloat getShadowPSSM3( sampler2D shadowMap1,sampler2D shadowMap2,sampler2D shadowMap3,mat4 lightShadowVP[4],vec4 pssmDistance,vec2 shadowPCFOffset,vec3 worldPos,float posViewZ,float zBias )\n{\n	float value = 1.0;\n	int nPSNum = int(posViewZ>pssmDistance.x);\n	nPSNum += int(posViewZ>pssmDistance.y);\n	nPSNum += int(posViewZ>pssmDistance.z);\n	//真SB,webgl不支持在PS中直接访问数组\n	mat4 lightVP;\n	if( nPSNum == 0 )\n	{\n		lightVP = lightShadowVP[1];\n	}\n	else if( nPSNum == 1 )\n	{\n		lightVP = lightShadowVP[2];\n	}\n	else if( nPSNum == 2 )\n	{\n		lightVP = lightShadowVP[3];\n	}\n	vec4 vLightMVPPos = lightVP * vec4(worldPos,1.0);\n	//为了效率，在CPU计算/2.0 + 0.5\n	//vec3 vText = (vLightMVPPos.xyz / vLightMVPPos.w)/2.0 + 0.5;\n	vec3 vText = vLightMVPPos.xyz / vLightMVPPos.w;\n	float fMyZ = vText.z - zBias;\n	/*\n	bvec4 bInFrustumVec = bvec4 ( vText.x >= 0.0, vText.x <= 1.0, vText.y >= 0.0, vText.y <= 1.0 );\n	bool bInFrustum = all( bInFrustumVec );\n	bvec2 bFrustumTestVec = bvec2( bInFrustum, fMyZ <= 1.0 );\n	bool bFrustumTest = all( bFrustumTestVec );\n	if ( bFrustumTest ) \n	*/\n	if( fMyZ <= 1.0 )\n	{\n		float zdepth=0.0;\n#ifdef SHADOWMAP_PCF3\n		if ( nPSNum == 0 )\n		{\n			value =  tex2DPCF( shadowMap1, vText.xy,shadowPCFOffset,fMyZ );\n			value += tex2DPCF( shadowMap1, vText.xy+vec2(shadowPCFOffset.xy),shadowPCFOffset,	fMyZ );\n			value += tex2DPCF( shadowMap1, vText.xy+vec2(shadowPCFOffset.x,0),shadowPCFOffset,	fMyZ );\n			value += tex2DPCF( shadowMap1, vText.xy+vec2(0,shadowPCFOffset.y),shadowPCFOffset,	fMyZ );\n			value = value/4.0;\n		} \n		else if( nPSNum == 1 )\n		{\n			value = tex2DPCF( shadowMap2,vText.xy,shadowPCFOffset,fMyZ);\n		}\n		else if( nPSNum == 2 )\n		{\n			vec4 color = texture2D( shadowMap3,vText.xy );\n			zdepth = unpackDepth(color);\n			value = float(fMyZ < zdepth);\n		}\n#endif\n#ifdef SHADOWMAP_PCF2\n		if ( nPSNum == 0 )\n		{\n			value = tex2DPCF( shadowMap1,vText.xy,shadowPCFOffset,fMyZ);\n		}\n		else if( nPSNum == 1 )\n		{\n			value = tex2DPCF( shadowMap2,vText.xy,shadowPCFOffset,fMyZ);\n		}\n		else if( nPSNum == 2 )\n		{\n			vec4 color = texture2D( shadowMap3,vText.xy );\n			zdepth = unpackDepth(color);\n			value = float(fMyZ < zdepth);\n		}\n\n#endif\n#ifdef SHADOWMAP_PCF1\n		if ( nPSNum == 0 )\n		{\n			value = tex2DPCF( shadowMap1,vText.xy,shadowPCFOffset,fMyZ);\n		}\n		else if( nPSNum == 1 )\n		{\n			vec4 color = texture2D( shadowMap2,vText.xy );\n			zdepth = unpackDepth(color);\n			value = float(fMyZ < zdepth);\n		}\n		else if( nPSNum == 2 )\n		{\n			vec4 color = texture2D( shadowMap3,vText.xy );\n			zdepth = unpackDepth(color);\n			value = float(fMyZ < zdepth);\n		}\n#endif\n#ifdef SHADOWMAP_PCF_NO\n		vec4 color;\n		if ( nPSNum == 0 )\n		{\n			color = texture2D( shadowMap1,vText.xy );\n		}\n		else if( nPSNum == 1 )\n		{\n			color = texture2D( shadowMap2,vText.xy );\n		}\n		else if( nPSNum == 2 )\n		{\n			color = texture2D( shadowMap3,vText.xy );\n		}\n		zdepth = unpackDepth(color);\n		value = float(fMyZ < zdepth);\n#endif\n	}\n	return value;\n}\nfloat getShadowPSSM2( sampler2D shadowMap1,sampler2D shadowMap2,mat4 lightShadowVP[4],vec4 pssmDistance,vec2 shadowPCFOffset,vec3 worldPos,float posViewZ,float zBias )\n{\n	float value = 1.0;\n	int nPSNum = int(posViewZ>pssmDistance.x);\n	nPSNum += int(posViewZ>pssmDistance.y);\n	//真SB,webgl不支持在PS中直接访问数组\n	mat4 lightVP;\n	if( nPSNum == 0 )\n	{\n		lightVP = lightShadowVP[1];\n	}\n	else if( nPSNum == 1 )\n	{\n		lightVP = lightShadowVP[2];\n	}\n	vec4 vLightMVPPos = lightVP * vec4(worldPos,1.0);\n	//为了效率，在CPU计算/2.0 + 0.5\n	//vec3 vText = (vLightMVPPos.xyz / vLightMVPPos.w)/2.0 + 0.5;\n	vec3 vText = vLightMVPPos.xyz / vLightMVPPos.w;\n	float fMyZ = vText.z - zBias;\n	/*\n	bvec4 bInFrustumVec = bvec4 ( vText.x >= 0.0, vText.x <= 1.0, vText.y >= 0.0, vText.y <= 1.0 );\n	bool bInFrustum = all( bInFrustumVec );\n	bvec2 bFrustumTestVec = bvec2( bInFrustum, fMyZ <= 1.0 );\n	bool bFrustumTest = all( bFrustumTestVec );\n	if ( bFrustumTest ) \n	*/\n	if( fMyZ <= 1.0 )\n	{\n		float zdepth=0.0;\n#ifdef SHADOWMAP_PCF3\n		if ( nPSNum == 0 )\n		{\n			value =  tex2DPCF( shadowMap1, vText.xy,shadowPCFOffset,fMyZ );\n			value += tex2DPCF( shadowMap1, vText.xy+vec2(shadowPCFOffset.xy),shadowPCFOffset,	fMyZ );\n			value += tex2DPCF( shadowMap1, vText.xy+vec2(shadowPCFOffset.x,0),shadowPCFOffset,	fMyZ );\n			value += tex2DPCF( shadowMap1, vText.xy+vec2(0,shadowPCFOffset.y),shadowPCFOffset,	fMyZ );\n			value = value/4.0;\n		}\n		else if( nPSNum == 1 )\n		{\n			value = tex2DPCF( shadowMap2,vText.xy,shadowPCFOffset,fMyZ);\n		}\n#endif\n#ifdef SHADOWMAP_PCF2\n		if ( nPSNum == 0 )\n		{\n			value = tex2DPCF( shadowMap1,vText.xy,shadowPCFOffset,fMyZ);\n		}\n		else if( nPSNum == 1 )\n		{\n			value = tex2DPCF( shadowMap2,vText.xy,shadowPCFOffset,fMyZ);\n		}\n#endif\n#ifdef SHADOWMAP_PCF1\n		if ( nPSNum == 0 )\n		{\n			value = tex2DPCF( shadowMap1,vText.xy,shadowPCFOffset,fMyZ);\n		}\n		else if( nPSNum == 1 )\n		{\n			vec4 color = texture2D( shadowMap2,vText.xy );\n			zdepth = unpackDepth(color);\n			value = float(fMyZ < zdepth);\n		}\n#endif\n#ifdef SHADOWMAP_PCF_NO\n		vec4 color;\n		if ( nPSNum == 0 )\n		{\n			color = texture2D( shadowMap1,vText.xy );\n		}\n		else if( nPSNum == 1 )\n		{\n			color = texture2D( shadowMap2,vText.xy );\n		}\n		zdepth = unpackDepth(color);\n		value = float(fMyZ < zdepth);\n#endif\n	}\n	return value;\n}\nfloat getShadowPSSM1( sampler2D shadowMap1,vec4 lightMVPPos,vec4 pssmDistance,vec2 shadowPCFOffset,float posViewZ,float zBias )\n{\n	float value = 1.0;\n	if( posViewZ < pssmDistance.x )\n	{\n		vec3 vText = lightMVPPos.xyz / lightMVPPos.w;\n		float fMyZ = vText.z - zBias;\n		/*\n		bvec4 bInFrustumVec = bvec4 ( vText.x >= 0.0, vText.x <= 1.0, vText.y >= 0.0, vText.y <= 1.0 );\n		bool bInFrustum = all( bInFrustumVec );\n		bvec2 bFrustumTestVec = bvec2( bInFrustum, fMyZ <= 1.0 );\n		bool bFrustumTest = all( bFrustumTestVec );\n		*/\n		if ( fMyZ <= 1.0 ) \n		{\n			float zdepth=0.0;\n#ifdef SHADOWMAP_PCF3\n			value =  tex2DPCF( shadowMap1, vText.xy,shadowPCFOffset,fMyZ );\n			value += tex2DPCF( shadowMap1, vText.xy+vec2(shadowPCFOffset.xy),shadowPCFOffset,fMyZ );\n			value += tex2DPCF( shadowMap1, vText.xy+vec2(shadowPCFOffset.x,0),shadowPCFOffset,fMyZ );\n			value += tex2DPCF( shadowMap1, vText.xy+vec2(0,shadowPCFOffset.y),shadowPCFOffset,fMyZ );\n			value = value/4.0;\n#endif\n#ifdef SHADOWMAP_PCF2		\n			value = tex2DPCF( shadowMap1,vText.xy,shadowPCFOffset,fMyZ);\n#endif\n#ifdef SHADOWMAP_PCF1\n			value = tex2DPCF( shadowMap1,vText.xy,shadowPCFOffset,fMyZ);\n#endif\n#ifdef SHADOWMAP_PCF_NO		\n			vec4 color = texture2D( shadowMap1,vText.xy );\n			zdepth = unpackDepth(color);\n			value = float(fMyZ < zdepth);\n#endif\n		}\n	}\n	return value;\n}");
-			Shader3D.addInclude("WaveFunction.glsl","\nuniform vec2 u_WaveInfoD[20];\nuniform vec4 u_WaveInfo[20];\n\nuniform float TEXWAVE_UV_SCALE ;//= 20.0; //每texwidth像素代表的实际距离\n/**\n	这里的计算都是\n*/\n\n/**\n* 计算一个波形\n*  开始计算的时候都按照z向上，最后输出的时候，颠倒一下。\n* @param tm {float} 毫秒\n*/\nvoid calcGerstnerWave(float curtm, vec3 pos, float deep, vec2 uvpos, out vec3 opos, out vec3 B, out vec3 T, out vec3 N, out float foamS){\n	float tm = curtm/1000.;\n	opos = pos;\n	vec3 wpos=vec3(0.);		//累加的位置\n	N=vec3(0.,0.,0.);	//输出的法线初始化一下\n	T=vec3(0.,0.,0.);\n	B=vec3(0.,0.,0.);\n	vec2 cD ;//= D;\n	//float deepAtt = max(0.,min(deep,1.0));\n	//A*=deepAtt; //TODO\n	\n	for( int i=0; i<4; i++){\n		cD = u_WaveInfoD[i];//vec2(wi.winfo[0],wi.winfo[1]);// wi.vDir;\n		float Q = u_WaveInfo[i].x;//wi.QorK;\n		float A = u_WaveInfo[i].y;//wi.A;\n		float W = u_WaveInfo[i].z;//wi.omega;\n		float P = u_WaveInfo[i].w;//wi.phi;\n		float dop = dot(cD,uvpos);\n		float c = cos(dop*W - tm*P);//TODO 优化\n		float s = sin(dop*W - tm*P);\n		float AWs = A*W*s;\n		float AWc = A*W*c;\n		float _QxyAWs = -Q*cD.x*cD.y*AWs;\n		\n		wpos += vec3(Q*A*cD.x*c,\n					Q*A*cD.y*c,\n					A*s);\n		N += vec3(-cD.x*AWc,\n				-cD.y*AWc,\n				Q*AWs);//记得最后1-\n		T += vec3(_QxyAWs,\n				Q*cD.y*cD.y*AWs,//记得1-\n				cD.y*AWc\n			);\n		B += vec3(Q*cD.x*cD.x*AWs,//记得1-\n				_QxyAWs,\n				cD.x*AWc\n			);\n		//float v1 = exp(-tan((dop*W - tm*P)/2.+1.07));//除2，+pi/2 这样正好能对齐\n#ifdef USE_FOAM		\n		float v1 = 0.5-sin((dop*W - tm*P)/1.+2.0)/2.;\n		foamS += pow(v1,9.)/4.;\n#endif\n	}\n	T.y=1.-T.y; B.x=1.-B.x;N.z=1.-N.z;\n	opos += vec3(wpos.x,wpos.z*min(deep/10.,1.),wpos.y);\n	//y和z交换一下。现在根据uv计算的位置，所以直接交换yz就行。其他情况下有问题么\n	T.xyz=T.xzy;\n	B.xyz=B.xzy;\n	N.xyz=N.xzy;\n}\n\n\nvoid calcWave(float curtm, vec2 uv, out vec3 B, out vec3 T, out vec3 N){\n	float tm = curtm/1000.;\n	N=vec3(0.,0.,0.);	//输出的法线初始化一下\n	vec2 uvpos = uv*TEXWAVE_UV_SCALE; //TODO 这个范围是什么 就是1？\n	uvpos.y*=-1.;\n	vec2 cD;// = D;\n	const int NumWaves = 4;\n	float scale = 1./float(NumWaves);\n	for( int i=0; i<NumWaves; i++){\n		cD = u_WaveInfoD[i];//vec2(wi.winfo[0],wi.winfo[1]);// wi.vDir;\n		float k = 1.5;//u_WaveInfo[i].x;//wi.QorK; TODO  不知道为什么，这个取u_WaveInfo[i].x，在mi3w上就会闪。测试发现实际值也传过来了，就是1.5\n		float A = u_WaveInfo[i].y;//wi.A;\n		float W = u_WaveInfo[i].z;//wi.omega;\n		float P = u_WaveInfo[i].w;//wi.phi;\n		\n		float dop = dot(cD,uvpos);\n		float c = cos(dop*W - tm*P);//TODO 优化\n		float s = sin(dop*W - tm*P);\n		/*\n		float AWs = A*W*s;\n		float AWc = A*W*c;\n		float _QxyAWs = -Q*cD.x*cD.y*AWs;\n		\n		N += vec3(-cD.x*AWc,\n				-cD.y*AWc,\n				Q*AWs);//记得最后1-\n		*/\n		float kWAc = scale*c;//k*W*A*c;  为了提高精度，这里只保留sin，cos部分，实际使用的时候再乘回来。\n		//float kWAc = k*W*A*c;  \n		N += vec3(\n			-kWAc*cD.x*pow((s+1.)/2.,k-1.),\n			-kWAc*cD.y*pow((s+1.)/2.,k-1.),\n			1.\n		);\n	}\n	//N.z=1.-N.z;\n	//y和z交换一下。现在根据uv计算的位置，所以直接交换yz就行。其他情况下有问题么\n	N.xyz=N.xzy;\n}\n");
-			Shader3D.addInclude("BRDF.glsl","vec4 LayaAirBRDF(in vec3 diffuseColor, in vec3 specularColor, in float oneMinusReflectivity, in float smoothness, in vec3 normal, in vec3 viewDir, in vec3 lightDir, in vec3 lightColor, in vec3 gi)\n{\n	float perceptualRoughness = SmoothnessToPerceptualRoughness(smoothness);\n	vec3 halfDir = SafeNormalize(viewDir - lightDir);\n	\n	float nv = abs(dot(normal, viewDir));\n	\n	float nl = clamp(dot(normal,   -lightDir),  0.0, 1.0);\n	float nh = clamp(dot(normal,     halfDir),  0.0, 1.0);\n	float lv = clamp(dot(lightDir,   viewDir),  0.0, 1.0);\n	float lh = clamp(dot(lightDir,  -halfDir),  0.0, 1.0);\n	\n	float diffuseTerm = DisneyDiffuse(nv, nl, lh, perceptualRoughness) * nl;\n	\n	float roughness = PerceptualRoughnessToRoughness(perceptualRoughness);\n	\n	//#if UNITY_BRDF_GGX\n	float V = SmithJointGGXVisibilityTerm(nl, nv, roughness);\n	float D = GGXTerm(nh, roughness);\n	\n	float specularTerm = V * D * PI;\n	\n	specularTerm = sqrt(max(0.0001, specularTerm));\n	specularTerm = max(0.0, specularTerm * nl);\n	\n	vec4 color;\n	color.rgb = diffuseColor * (gi + lightColor * diffuseTerm) + specularTerm * lightColor * FresnelTerm (specularColor, lh);\n	\n	color.a = 1.0;\n	return color;\n}");
-			Shader3D.addInclude("PBRUtils.glsl","struct DirectionLight\n{\n	vec3 Color;\n	vec3 Direction;\n};\n\nvec3 UnpackScaleNormal(in vec2 uv0)\n{\n	#ifdef NORMALTEXTURE\n		vec3 normalT;\n		vec4 normalMapSample = texture2D(u_NormalTexture, uv0);\n		normalT.x = 2.0 * normalMapSample.x - 1.0;\n		normalT.y = 1.0 - 2.0 * normalMapSample.y;\n		normalT.xy *= u_normalScale;\n		normalT.z = sqrt(1.0 - clamp(dot(normalT.xy, normalT.xy), 0.0, 1.0));\n		\n		vec3 T = normalize(v_Tangent);\n		vec3 B = normalize(v_Binormal);\n		vec3 N = normalize(v_Normal);\n		mat3 TBN = mat3(T, B, N);\n		\n		vec3 bumpedNormal = TBN * normalize(normalT);\n		return bumpedNormal;\n	#else\n		return normalize(v_Normal);\n	#endif\n}\n\nvec4 DielectricSpecularColor = vec4(0.220916301, 0.220916301, 0.220916301, 1.0 - 0.220916301);\n\nfloat PI = 3.14159265359;\n\nvec3 FresnelTerm (in vec3 F0, in float cosA)\n{\n	return F0 + (vec3(1.0) - F0) * pow(1.0 - cosA, 5.0);\n}\n\nfloat PerceptualRoughnessToRoughness(in float perceptualRoughness)\n{\n	return perceptualRoughness * perceptualRoughness;\n}\n\nfloat PerceptualRoughnessToSpecularPower(in float perceptualRoughness)\n{\n	float m = PerceptualRoughnessToRoughness(perceptualRoughness);\n	float sq = max(0.0001, m * m);\n	float n = (2.0 / sq) - 2.0;\n	n = max(n, 0.0001);\n	return n;\n}\n\nfloat RoughnessToPerceptualRoughness(in float roughness)\n{\n	return sqrt(roughness);\n}\n\nfloat SmoothnessToRoughness(in float smoothness)\n{\n	return (1.0 - smoothness) * (1.0 - smoothness);\n}\n\nfloat SmoothnessToPerceptualRoughness(in float smoothness)\n{\n	return (1.0 - smoothness);\n}\n\nvec3 SafeNormalize(in vec3 inVec)\n{\n	float dp3 = max(0.001,dot(inVec,inVec));\n	return inVec * (1.0 / sqrt(dp3));\n}\n\nfloat DisneyDiffuse(in float NdotV, in float NdotL, in float LdotH, in float perceptualRoughness)\n{\n	float fd90 = 0.5 + 2.0 * LdotH * LdotH * perceptualRoughness;\n	float lightScatter	= (1.0 + (fd90 - 1.0) * pow(1.0 - NdotL,5.0));\n	float viewScatter	= (1.0 + (fd90 - 1.0) * pow(1.0 - NdotV,5.0));\n\n	return lightScatter * viewScatter;\n}\n\nfloat SmithJointGGXVisibilityTerm (float NdotL, float NdotV, float roughness)\n{\n	float a = roughness;\n	float lambdaV = NdotL * (NdotV * (1.0 - a) + a);\n	float lambdaL = NdotV * (NdotL * (1.0 - a) + a);\n\n	return 0.5 / (lambdaV + lambdaL + 0.00001);\n}\n\nfloat GGXTerm (float NdotH, float roughness)\n{\n	float a2 = roughness * roughness;\n	float d = (NdotH * a2 - NdotH) * NdotH + 1.0;\n	return 0.31830988618 * a2 / (d * d + 0.0000001);\n}\n\nfloat OneMinusReflectivityFromMetallic(in float metallic)\n{\n	float oneMinusDielectricSpec = DielectricSpecularColor.a;\n	return oneMinusDielectricSpec - metallic * oneMinusDielectricSpec;\n}\n\nfloat SpecularStrength(vec3 specular)\n{\n    //(SHADER_TARGET < 30)return specular.r; \n    return max (max (specular.r, specular.g), specular.b);\n}\n\nvec3 DiffuseAndSpecularFromMetallic(in vec3 diffuseColor, in float metallic, out vec3 specularColor, out float oneMinusReflectivity)\n{\n	specularColor = mix(DielectricSpecularColor.rgb, diffuseColor, metallic);\n	oneMinusReflectivity = OneMinusReflectivityFromMetallic(metallic);\n	return diffuseColor * oneMinusReflectivity;\n}\n\nvec3 EnergyConservationBetweenDiffuseAndSpecular(in vec3 diffuseColor, in vec3 specularColor, out float oneMinusReflectivity)\n{\n	oneMinusReflectivity = 1.0 - SpecularStrength(specularColor);\n	return diffuseColor * oneMinusReflectivity;\n}\n\nvec4 Occlusion(in vec2 uv0){\n	#ifdef OCCLUSIONTEXTURE\n		vec4 occlusionTextureColor = texture2D(u_OcclusionTexture, uv0);\n		float occ = occlusionTextureColor.g;\n		float oneMinusT = 1.0 - u_occlusionStrength;\n		float lerpOneTo = oneMinusT + occ * u_occlusionStrength;\n		return occlusionTextureColor * lerpOneTo;\n	#else\n		return vec4(1.0);\n	#endif\n}\n\nvec2 ParallaxOffset(in vec3 viewDir){\n	#ifdef PARALLAXTEXTURE\n		float h = texture2D(u_ParallaxTexture, v_Texcoord0).g;\n		h = h * u_parallaxScale - u_parallaxScale / 2.0;\n		vec3 v = viewDir;\n		v.z += 0.42;\n		vec2 offset = h * (v.xy / v.z);\n		return v_Texcoord0 + offset;\n	#else\n		return v_Texcoord0;\n	#endif\n}\n\n");
-			Shader3D.addInclude("PBRStandardLighting.glsl","#include \"PBRUtils.glsl\"\n#include \"BRDF.glsl\"\n\nvec4 PBRStandardLight(in vec3 diffuseColor, in float metallic, in float smoothness, in vec3 normal, in vec3 viewDir, in vec3 lightDir, in vec3 lightColor, in vec3 gi)\n{\n	float oneMinusReflectivity;\n	vec3 specularColor;\n	diffuseColor = DiffuseAndSpecularFromMetallic (diffuseColor, metallic, specularColor, oneMinusReflectivity);\n	\n	vec4 color = LayaAirBRDF(diffuseColor, specularColor, oneMinusReflectivity, smoothness, normal, viewDir, lightDir, lightColor, gi);\n	return color;\n}\n\nvec4 PBRStandardDiectionLight (in vec3 diffuseColor, in float metallic, in float smoothness, in vec3 normal, in vec3 viewDir, in DirectionLight light, in vec3 gi)\n{\n	vec3 lightVec = normalize(light.Direction);\n	return PBRStandardLight(diffuseColor, metallic, smoothness, normal, viewDir, lightVec, light.Color, gi);\n}\n\nvec2 MetallicGloss(in float diffuseTextureAlpha, in vec2 uv0)\n{\n	vec2 mg;\n	\n	#ifdef METALLICGLOSSTEXTURE\n		vec4 metallicGlossTextureColor = texture2D(u_MetallicGlossTexture, uv0);\n		#ifdef SMOOTHNESSSOURCE_DIFFUSETEXTURE_ALPHA\n			mg.r = metallicGlossTextureColor.r;\n			mg.g = diffuseTextureAlpha;\n		#else\n		    mg = metallicGlossTextureColor.ra;\n		#endif\n		mg.g *= u_smoothnessScale;\n	#else\n		mg.r = u_metallic;\n		#ifdef SMOOTHNESSSOURCE_DIFFUSETEXTURE_ALPHA\n			mg.g = diffuseTextureAlpha * u_smoothnessScale;\n		#else\n			mg.g = u_smoothness;\n		#endif\n	#endif\n	\n	return mg;\n}\n\n");
-			Shader3D.addInclude("PBRSpecularLighting.glsl","#include \"PBRUtils.glsl\"\n#include \"BRDF.glsl\"\n\nvec4 PBRSpecularLight(in vec3 diffuseColor, in vec3 specularColor, in float smoothness, in vec3 normal, in vec3 viewDir, in vec3 lightDir, in vec3 lightColor, in vec3 gi)\n{\n	float oneMinusReflectivity;\n	diffuseColor = EnergyConservationBetweenDiffuseAndSpecular (diffuseColor, specularColor, oneMinusReflectivity);\n	\n	vec4 color = LayaAirBRDF(diffuseColor, specularColor, oneMinusReflectivity, smoothness, normal, viewDir, lightDir, lightColor, gi);\n	return color;\n}\n\nvec4 PBRSpecularDiectionLight (in vec3 diffuseColor, in vec3 specularColor, in float smoothness, in vec3 normal, in vec3 viewDir, in DirectionLight light, in vec3 gi)\n{\n	vec3 lightVec = normalize(light.Direction);\n	return PBRSpecularLight(diffuseColor, specularColor, smoothness, normal, viewDir, lightVec, light.Color, gi);\n}\n\nvec4 SpecularGloss(float diffuseTextureAlpha, in vec2 uv0)\n{\n    vec4 sg;\n	\n	#ifdef SPECULARTEXTURE\n		vec4 specularTextureColor = texture2D(u_SpecularTexture, uv0);\n		#ifdef SMOOTHNESSSOURCE_DIFFUSETEXTURE_ALPHA\n			sg.rgb = specularTextureColor.rgb;\n			sg.a = diffuseTextureAlpha;\n		#else\n			sg = specularTextureColor;\n		#endif\n		sg.a *= u_smoothnessScale;\n	#else\n		sg.rgb = u_SpecularColor.rgb;\n		#ifdef SMOOTHNESSSOURCE_DIFFUSETEXTURE_ALPHA\n			sg.a = diffuseTextureAlpha * u_smoothnessScale;\n		#else\n			sg.a = u_smoothness;\n		#endif\n	#endif\n	\n    return sg;\n}\n\n");
+			Shader3D.addInclude("BRDF.glsl","struct LayaGI\n{\n	vec3 diffuse;\n	vec3 specular;\n};\n\nvec4 LayaAirBRDF(in vec3 diffuseColor, in vec3 specularColor, in float oneMinusReflectivity, in float smoothness, in vec3 normal, in vec3 viewDir, in vec3 lightDir, in vec3 lightColor, in LayaGI gi)\n{\n	float perceptualRoughness = SmoothnessToPerceptualRoughness(smoothness);\n	vec3 halfDir = SafeNormalize(viewDir - lightDir);\n	\n	float nv = abs(dot(normal, viewDir));\n	\n	float nl = clamp(dot(normal,   -lightDir),  0.0, 1.0);\n	float nh = clamp(dot(normal,     halfDir),  0.0, 1.0);\n	float lv = clamp(dot(lightDir,   viewDir),  0.0, 1.0);\n	float lh = clamp(dot(lightDir,  -halfDir),  0.0, 1.0);\n	\n	float diffuseTerm = DisneyDiffuse(nv, nl, lh, perceptualRoughness) * nl;\n	\n	float roughness = PerceptualRoughnessToRoughness(perceptualRoughness);\n	\n	//#if UNITY_BRDF_GGX\n	float V = SmithJointGGXVisibilityTerm(nl, nv, roughness);\n	float D = GGXTerm(nh, roughness);\n	\n	float specularTerm = V * D * PI;\n	\n	specularTerm = sqrt(max(0.0001, specularTerm));\n	specularTerm = max(0.0, specularTerm * nl);\n	\n	float surfaceReduction = 1.0 - 0.28 * roughness * perceptualRoughness;\n	float grazingTerm = clamp(smoothness + (1.0 - oneMinusReflectivity), 0.0, 1.0);\n	\n	vec4 color;\n	color.rgb = diffuseColor * (gi.diffuse + lightColor * diffuseTerm) \n			  + specularTerm * lightColor * FresnelTerm (specularColor, lh)\n			  + surfaceReduction * gi.specular * FresnelLerp(specularColor, vec3(grazingTerm), nv);\n	\n	color.a = 1.0;\n	return color;\n}");
+			Shader3D.addInclude("PBRUtils.glsl","struct DirectionLight\n{\n	vec3 Color;\n	vec3 Direction;\n};\n\nvec3 UnpackScaleNormal(in vec2 uv0)\n{\n	#ifdef NORMALTEXTURE\n		vec3 normalT;\n		vec4 normalMapSample = texture2D(u_NormalTexture, uv0);\n		normalT.x = 2.0 * normalMapSample.x - 1.0;\n		normalT.y = 1.0 - 2.0 * normalMapSample.y;\n		normalT.xy *= u_normalScale;\n		normalT.z = sqrt(1.0 - clamp(dot(normalT.xy, normalT.xy), 0.0, 1.0));\n		\n		vec3 T = normalize(v_Tangent);\n		vec3 B = normalize(v_Binormal);\n		vec3 N = normalize(v_Normal);\n		mat3 TBN = mat3(T, B, N);\n		\n		vec3 bumpedNormal = TBN * normalize(normalT);\n		return bumpedNormal;\n	#else\n		return normalize(v_Normal);\n	#endif\n}\n\nvec4 DielectricSpecularColor = vec4(0.220916301, 0.220916301, 0.220916301, 1.0 - 0.220916301);\n\nfloat PI = 3.14159265359;\n\nvec3 FresnelTerm (in vec3 F0, in float cosA)\n{\n	return F0 + (vec3(1.0) - F0) * pow(1.0 - cosA, 5.0);\n}\n\nvec3 FresnelLerp (in vec3 F0, in vec3 F90, float cosA)\n{\n    float t = pow(1.0 - cosA, 5.0);\n    return mix(F0, F90, t);\n}\n\nfloat PerceptualRoughnessToRoughness(in float perceptualRoughness)\n{\n	return perceptualRoughness * perceptualRoughness;\n}\n\nfloat PerceptualRoughnessToSpecularPower(in float perceptualRoughness)\n{\n	float m = PerceptualRoughnessToRoughness(perceptualRoughness);\n	float sq = max(0.0001, m * m);\n	float n = (2.0 / sq) - 2.0;\n	n = max(n, 0.0001);\n	return n;\n}\n\nfloat RoughnessToPerceptualRoughness(in float roughness)\n{\n	return sqrt(roughness);\n}\n\nfloat SmoothnessToRoughness(in float smoothness)\n{\n	return (1.0 - smoothness) * (1.0 - smoothness);\n}\n\nfloat SmoothnessToPerceptualRoughness(in float smoothness)\n{\n	return (1.0 - smoothness);\n}\n\nvec3 SafeNormalize(in vec3 inVec)\n{\n	float dp3 = max(0.001,dot(inVec,inVec));\n	return inVec * (1.0 / sqrt(dp3));\n}\n\nfloat DisneyDiffuse(in float NdotV, in float NdotL, in float LdotH, in float perceptualRoughness)\n{\n	float fd90 = 0.5 + 2.0 * LdotH * LdotH * perceptualRoughness;\n	float lightScatter	= (1.0 + (fd90 - 1.0) * pow(1.0 - NdotL,5.0));\n	float viewScatter	= (1.0 + (fd90 - 1.0) * pow(1.0 - NdotV,5.0));\n\n	return lightScatter * viewScatter;\n}\n\nfloat SmithJointGGXVisibilityTerm (float NdotL, float NdotV, float roughness)\n{\n	float a = roughness;\n	float lambdaV = NdotL * (NdotV * (1.0 - a) + a);\n	float lambdaL = NdotV * (NdotL * (1.0 - a) + a);\n\n	return 0.5 / (lambdaV + lambdaL + 0.00001);\n}\n\nfloat GGXTerm (float NdotH, float roughness)\n{\n	float a2 = roughness * roughness;\n	float d = (NdotH * a2 - NdotH) * NdotH + 1.0;\n	return 0.31830988618 * a2 / (d * d + 0.0000001);\n}\n\nfloat OneMinusReflectivityFromMetallic(in float metallic)\n{\n	float oneMinusDielectricSpec = DielectricSpecularColor.a;\n	return oneMinusDielectricSpec - metallic * oneMinusDielectricSpec;\n}\n\nfloat SpecularStrength(vec3 specular)\n{\n    //(SHADER_TARGET < 30)return specular.r; \n    return max (max (specular.r, specular.g), specular.b);\n}\n\nvec3 DiffuseAndSpecularFromMetallic(in vec3 diffuseColor, in float metallic, out vec3 specularColor, out float oneMinusReflectivity)\n{\n	specularColor = mix(DielectricSpecularColor.rgb, diffuseColor, metallic);\n	oneMinusReflectivity = OneMinusReflectivityFromMetallic(metallic);\n	return diffuseColor * oneMinusReflectivity;\n}\n\nvec3 EnergyConservationBetweenDiffuseAndSpecular(in vec3 diffuseColor, in vec3 specularColor, out float oneMinusReflectivity)\n{\n	oneMinusReflectivity = 1.0 - SpecularStrength(specularColor);\n	return diffuseColor * oneMinusReflectivity;\n}\n\nvec4 Occlusion(in vec2 uv0){\n	#ifdef OCCLUSIONTEXTURE\n		vec4 occlusionTextureColor = texture2D(u_OcclusionTexture, uv0);\n		float occ = occlusionTextureColor.g;\n		float oneMinusT = 1.0 - u_occlusionStrength;\n		float lerpOneTo = oneMinusT + occ * u_occlusionStrength;\n		return occlusionTextureColor * lerpOneTo;\n	#else\n		return vec4(1.0);\n	#endif\n}\n\nvec2 ParallaxOffset(in vec3 viewDir){\n	#ifdef PARALLAXTEXTURE\n		float h = texture2D(u_ParallaxTexture, v_Texcoord0).g;\n		h = h * u_parallaxScale - u_parallaxScale / 2.0;\n		vec3 v = viewDir;\n		v.z += 0.42;\n		vec2 offset = h * (v.xy / v.z);\n		return v_Texcoord0 + offset;\n	#else\n		return v_Texcoord0;\n	#endif\n}\n\nvec3 ReflectCubeMap(in vec3 viewDir, in vec3 normal){\n	#ifdef REFLECTMAP\n		vec3 incident = -viewDir;\n		vec3 reflectionVector = reflect(incident, normal);\n		vec3 reflectionColor = textureCube(u_ReflectTexture, vec3(-reflectionVector.x, reflectionVector.yz)).rgb;\n		return reflectionColor;\n	#else\n		return vec3(0.0);\n	#endif\n}\n\n");
+			Shader3D.addInclude("PBRStandardLighting.glsl","#include \"PBRUtils.glsl\"\n#include \"BRDF.glsl\"\n\nvec4 PBRStandardLight(in vec3 diffuseColor, in float metallic, in float smoothness, in vec3 normal, in vec3 viewDir, in vec3 lightDir, in vec3 lightColor, in LayaGI gi)\n{\n	float oneMinusReflectivity;\n	vec3 specularColor;\n	diffuseColor = DiffuseAndSpecularFromMetallic (diffuseColor, metallic, specularColor, oneMinusReflectivity);\n	\n	vec4 color = LayaAirBRDF(diffuseColor, specularColor, oneMinusReflectivity, smoothness, normal, viewDir, lightDir, lightColor, gi);\n	return color;\n}\n\nvec4 PBRStandardDiectionLight (in vec3 diffuseColor, in float metallic, in float smoothness, in vec3 normal, in vec3 viewDir, in DirectionLight light, in LayaGI gi)\n{\n	vec3 lightVec = normalize(light.Direction);\n	return PBRStandardLight(diffuseColor, metallic, smoothness, normal, viewDir, lightVec, light.Color, gi);\n}\n\nvec2 MetallicGloss(in float diffuseTextureAlpha, in vec2 uv0)\n{\n	vec2 mg;\n	\n	#ifdef METALLICGLOSSTEXTURE\n		vec4 metallicGlossTextureColor = texture2D(u_MetallicGlossTexture, uv0);\n		#ifdef SMOOTHNESSSOURCE_DIFFUSETEXTURE_ALPHA\n			mg.r = metallicGlossTextureColor.r;\n			mg.g = diffuseTextureAlpha;\n		#else\n		    mg = metallicGlossTextureColor.ra;\n		#endif\n		mg.g *= u_smoothnessScale;\n	#else\n		mg.r = u_metallic;\n		#ifdef SMOOTHNESSSOURCE_DIFFUSETEXTURE_ALPHA\n			mg.g = diffuseTextureAlpha * u_smoothnessScale;\n		#else\n			mg.g = u_smoothness;\n		#endif\n	#endif\n	\n	return mg;\n}\n\n");
+			Shader3D.addInclude("PBRSpecularLighting.glsl","#include \"PBRUtils.glsl\"\n#include \"BRDF.glsl\"\n\nvec4 PBRSpecularLight(in vec3 diffuseColor, in vec3 specularColor, in float smoothness, in vec3 normal, in vec3 viewDir, in vec3 lightDir, in vec3 lightColor, in LayaGI gi)\n{\n	float oneMinusReflectivity;\n	diffuseColor = EnergyConservationBetweenDiffuseAndSpecular (diffuseColor, specularColor, oneMinusReflectivity);\n	\n	vec4 color = LayaAirBRDF(diffuseColor, specularColor, oneMinusReflectivity, smoothness, normal, viewDir, lightDir, lightColor, gi);\n	return color;\n}\n\nvec4 PBRSpecularDiectionLight (in vec3 diffuseColor, in vec3 specularColor, in float smoothness, in vec3 normal, in vec3 viewDir, in DirectionLight light, in LayaGI gi)\n{\n	vec3 lightVec = normalize(light.Direction);\n	return PBRSpecularLight(diffuseColor, specularColor, smoothness, normal, viewDir, lightVec, light.Color, gi);\n}\n\nvec4 SpecularGloss(float diffuseTextureAlpha, in vec2 uv0)\n{\n    vec4 sg;\n	\n	#ifdef SPECULARTEXTURE\n		vec4 specularTextureColor = texture2D(u_SpecularTexture, uv0);\n		#ifdef SMOOTHNESSSOURCE_DIFFUSETEXTURE_ALPHA\n			sg.rgb = specularTextureColor.rgb;\n			sg.a = diffuseTextureAlpha;\n		#else\n			sg = specularTextureColor;\n		#endif\n		sg.a *= u_smoothnessScale;\n	#else\n		sg.rgb = u_SpecularColor.rgb;\n		#ifdef SMOOTHNESSSOURCE_DIFFUSETEXTURE_ALPHA\n			sg.a = diffuseTextureAlpha * u_smoothnessScale;\n		#else\n			sg.a = u_smoothness;\n		#endif\n	#endif\n	\n    return sg;\n}\n\n");
 			Shader3D.addInclude("LightHelper.glsl","\nstruct DirectionLight\n{\n vec3 Direction;\n vec3 Diffuse;\n};\n\nstruct PointLight\n{\n vec3 Diffuse;\n vec3 Attenuation;\n vec3 Position;\n float Range;\n};\n\nstruct SpotLight\n{\n vec3 Diffuse;\n vec3 Attenuation;\n vec3 Position;\n vec3 Direction;\n float Spot;\n float Range;\n};\n\n\nvec3 NormalSampleToWorldSpace(vec3 normalMapSample, vec3 unitNormal, vec3 tangent)\n{\n	vec3 normalT = 2.0*normalMapSample - 1.0;\n\n	// Build orthonormal basis.\n	vec3 N = normalize(unitNormal);\n	vec3 T = normalize(tangent- dot(tangent, N)*N);\n	vec3 B = cross(T, N);\n\n	mat3 TBN = mat3(T, B, N);\n\n	// Transform from tangent space to world space.\n	vec3 bumpedNormal = TBN*normalT;\n\n	return bumpedNormal;\n}\n\n\nvoid  computeDirectionLight(in vec3 matDif,in vec3 matAmb,in vec4 matSpe,in DirectionLight dirLight,in vec3 ambinentColor,in vec3 normal,in vec3 toEye,out vec3 dif,out vec3 amb,out vec3 spec)\n{\n	dif=vec3(0.0);//不初始化在IOS中闪烁，PC中不会闪烁\n	amb=vec3(0.0);\n	spec=vec3(0.0);\n	vec3 lightVec=-normalize(dirLight.Direction);\n	\n	amb=matAmb*ambinentColor;\n	\n	float  diffuseFactor=dot(lightVec, normal);\n	\n	if(diffuseFactor>0.0)\n	{\n	   vec3 v = reflect(-lightVec, normal);\n	   float specFactor = pow(max(dot(v, toEye), 0.0), matSpe.w);\n	   \n	   dif = diffuseFactor * matDif * dirLight.Diffuse;\n	   spec = specFactor * matSpe.rgb;\n	}\n	\n}\n\nvoid computePointLight(in vec3 matDif,in vec3 matAmb,in vec4 matSpe,in PointLight poiLight,in vec3 ambinentColor, in vec3 pos,in vec3 normal,in vec3 toEye,out vec3 dif,out vec3 amb,out vec3 spec)\n{\n	dif=vec3(0.0);\n	amb=vec3(0.0);\n	spec=vec3(0.0);\n	vec3 lightVec = poiLight.Position - pos;\n		\n	float d = length(lightVec);\n	\n	if( d > poiLight.Range )\n		return;\n		\n	lightVec /= d; \n	\n	amb = matAmb*ambinentColor;	\n\n	float diffuseFactor = dot(lightVec, normal);\n\n	if( diffuseFactor > 0.0 )\n	{\n		vec3 v= reflect(-lightVec, normal);\n		float specFactor = pow(max(dot(v, toEye), 0.0), matSpe.w);\n					\n		dif = diffuseFactor * matDif * poiLight.Diffuse;\n		spec = specFactor * matSpe.rgb;\n	}\n\n	float attenuate = 1.0 / dot(poiLight.Attenuation, vec3(1.0, d, d*d));\n\n	dif *= attenuate;\n	spec*= attenuate;\n}\n\nvoid ComputeSpotLight(in vec3 matDif,in vec3 matAmb,in vec4 matSpe,in SpotLight spoLight,in vec3 ambinentColor,in vec3 pos, in vec3 normal,in vec3 toEye,out vec3 dif,out vec3 amb,out vec3 spec)\n{\n	amb = vec3(0.0);\n	dif =vec3(0.0);\n	spec= vec3(0.0);\n	vec3 lightVec = spoLight.Position - pos;\n		\n	float d = length(lightVec);\n	\n	if( d > spoLight.Range)\n		return;\n		\n	lightVec /= d; \n	\n	amb = matAmb*ambinentColor;	\n\n	float diffuseFactor = dot(lightVec, normal);\n\n	if(diffuseFactor > 0.0)\n	{\n		vec3 v= reflect(-lightVec, normal);\n		float specFactor = pow(max(dot(v, toEye), 0.0), matSpe.w);\n					\n		dif = diffuseFactor * matDif * spoLight.Diffuse;\n		spec = specFactor * matSpe.rgb;\n	}\n	\n	float spot = pow(max(dot(-lightVec, normalize(spoLight.Direction)), 0.0), spoLight.Spot);\n\n	float attenuate = spot/dot(spoLight.Attenuation, vec3(1.0, d, d*d));\n\n	amb *= spot;\n	dif *= attenuate;\n	spec*= attenuate;\n}\n\n");
 			var vs,ps;
 			var attributeMap={
@@ -36217,24 +34366,26 @@ var Laya=window.Laya=(function(window,document){
 				'a_Texcoord1':15,
 				'a_BoneWeights':7,
 				'a_BoneIndices':6,
+				'a_Texcoord3d':38,
 				'a_Tangent0':5};
 			var uniformMap={
 				'u_Bones':[0,0],
 				'u_DiffuseTexture':[1,1],
 				'u_SpecularTexture':[3,1],
 				'u_NormalTexture':[2,1],
-				'u_ReflectTexture':[5,1],
 				'u_AlphaTestValue':[0,1],
-				'u_DiffuseColor':[6,1],
-				'u_MaterialSpecular':[8,1],
-				'u_Shininess':[9,1],
-				'u_MaterialReflect':[10,1],
-				'u_TilingOffset':[11,1],
+				'u_DiffuseColor':[5,1],
+				'u_MaterialSpecular':[6,1],
+				'u_Shininess':[7,1],
+				'u_TilingOffset':[8,1],
+				'u_ReflectColor':[9,1],
 				'u_WorldMat':[0,2],
 				'u_MvpMatrix':[1,2],
 				'u_LightmapScaleOffset':[2,2],
 				'u_LightMap':[3,2],
 				'u_CameraPos':[0,3],
+				'u_ReflectTexture':[22,4],
+				'u_ReflectIntensity':[23,4],
 				'u_FogStart':[1,4],
 				'u_FogRange':[2,4],
 				'u_FogColor':[0,4],
@@ -36255,72 +34406,10 @@ var Laya=window.Laya=(function(window,document){
 				'u_shadowPSSMDistance':[15,4],
 				'u_lightShadowVP':[16,4],
 				'u_shadowPCFoffset':[17,4]};
-			vs="attribute vec4 a_Position;\nuniform mat4 u_MvpMatrix;\n\n#if defined(DIFFUSEMAP)||((defined(DIRECTIONLIGHT)||defined(POINTLIGHT)||defined(SPOTLIGHT))&&(defined(SPECULARMAP)||defined(NORMALMAP)))||(defined(LIGHTMAP)&&defined(UV))\n	attribute vec2 a_Texcoord0;\n	varying vec2 v_Texcoord0;\n#endif\n\n#if defined(LIGHTMAP)&&defined(UV1)\n	attribute vec2 a_Texcoord1;\n#endif\n\n#ifdef LIGHTMAP\n	uniform vec4 u_LightmapScaleOffset;\n	varying vec2 v_LightMapUV;\n#endif\n\n#ifdef COLOR\n	attribute vec4 a_Color;\n	varying vec4 v_Color;\n#endif\n\n#ifdef BONE\n	const int c_MaxBoneCount = 24;\n	attribute vec4 a_BoneIndices;\n	attribute vec4 a_BoneWeights;\n	uniform mat4 u_Bones[c_MaxBoneCount];\n#endif\n\n#if defined(DIRECTIONLIGHT)||defined(POINTLIGHT)||defined(SPOTLIGHT)||defined(REFLECTMAP)\n	attribute vec3 a_Normal;\n	varying vec3 v_Normal; \n#endif\n\n#if defined(DIRECTIONLIGHT)||defined(POINTLIGHT)||defined(SPOTLIGHT)||defined(REFLECTMAP)\n	uniform vec3 u_CameraPos;\n	varying vec3 v_ViewDir; \n#endif\n\n#if (defined(DIRECTIONLIGHT)||defined(POINTLIGHT)||defined(SPOTLIGHT)||defined(REFLECTMAP))&&defined(NORMALMAP)\n	attribute vec4 a_Tangent0;\n	varying vec3 v_Tangent;\n	varying vec3 v_Binormal;\n#endif\n\n#if defined(DIRECTIONLIGHT)||defined(POINTLIGHT)||defined(SPOTLIGHT)||defined(REFLECTMAP)||defined(RECEIVESHADOW)\n	uniform mat4 u_WorldMat;\n	varying vec3 v_PositionWorld;\n#endif\n\nvarying float v_posViewZ;\n#ifdef RECEIVESHADOW\n  #ifdef SHADOWMAP_PSSM1 \n  varying vec4 v_lightMVPPos;\n  uniform mat4 u_lightShadowVP[4];\n  #endif\n#endif\n\n#ifdef TILINGOFFSET\n	uniform vec4 u_TilingOffset;\n#endif\n\nvoid main_castShadow()\n{\n	#ifdef BONE\n		mat4 skinTransform=mat4(0.0);\n		skinTransform += u_Bones[int(a_BoneIndices.x)] * a_BoneWeights.x;\n		skinTransform += u_Bones[int(a_BoneIndices.y)] * a_BoneWeights.y;\n		skinTransform += u_Bones[int(a_BoneIndices.z)] * a_BoneWeights.z;\n		skinTransform += u_Bones[int(a_BoneIndices.w)] * a_BoneWeights.w;\n		vec4 position=skinTransform*a_Position;\n		gl_Position = u_MvpMatrix * position;\n	#else\n		gl_Position = u_MvpMatrix * a_Position;\n	#endif\n	 \n	//TODO没考虑UV动画呢\n	#if defined(DIFFUSEMAP)&&defined(ALPHATEST)\n		v_Texcoord0=a_Texcoord0;\n	#endif\n		v_posViewZ = gl_Position.z;\n}\n\nvoid main_normal()\n{\n	#ifdef BONE\n		mat4 skinTransform=mat4(0.0);\n		skinTransform += u_Bones[int(a_BoneIndices.x)] * a_BoneWeights.x;\n		skinTransform += u_Bones[int(a_BoneIndices.y)] * a_BoneWeights.y;\n		skinTransform += u_Bones[int(a_BoneIndices.z)] * a_BoneWeights.z;\n		skinTransform += u_Bones[int(a_BoneIndices.w)] * a_BoneWeights.w;\n		vec4 position=skinTransform*a_Position;\n		gl_Position = u_MvpMatrix * position;\n	#else\n		gl_Position = u_MvpMatrix * a_Position;\n	#endif\n\n	#if defined(DIRECTIONLIGHT)||defined(POINTLIGHT)||defined(SPOTLIGHT)||defined(REFLECTMAP)\n		mat3 worldMat;\n		#ifdef BONE\n			worldMat=mat3(u_WorldMat*skinTransform);\n		#else\n			worldMat=mat3(u_WorldMat);\n		#endif  \n		v_Normal=worldMat*a_Normal;//TODO:法线可以用\"魔法\"矩阵\n		#if (defined(DIRECTIONLIGHT)||defined(POINTLIGHT)||defined(SPOTLIGHT))&&defined(NORMALMAP)\n			v_Tangent=worldMat*a_Tangent0.xyz;\n			v_Binormal=cross(v_Normal,v_Tangent)*a_Tangent0.w;\n		#endif\n	#endif\n\n	#if defined(DIRECTIONLIGHT)||defined(POINTLIGHT)||defined(SPOTLIGHT)||defined(REFLECTMAP)||defined(RECEIVESHADOW)\n		#ifdef BONE\n			v_PositionWorld=(u_WorldMat*position).xyz;\n		#else\n			v_PositionWorld=(u_WorldMat*a_Position).xyz;\n		#endif\n	#endif\n	\n	#if defined(DIRECTIONLIGHT)||defined(POINTLIGHT)||defined(SPOTLIGHT)||defined(REFLECTMAP)\n		v_ViewDir=u_CameraPos-v_PositionWorld;\n	#endif\n\n	#if defined(DIFFUSEMAP)||((defined(DIRECTIONLIGHT)||defined(POINTLIGHT)||defined(SPOTLIGHT))&&(defined(SPECULARMAP)||defined(NORMALMAP)))\n		v_Texcoord0=a_Texcoord0;\n		#ifdef TILINGOFFSET\n			v_Texcoord0=(vec2(v_Texcoord0.x,v_Texcoord0.y-1.0)*u_TilingOffset.xy)+u_TilingOffset.zw;\n			v_Texcoord0=vec2(v_Texcoord0.x,1.0+v_Texcoord0.y);\n		#endif\n	#endif\n\n	#ifdef LIGHTMAP\n		#ifdef UV1\n			v_LightMapUV=vec2(a_Texcoord1.x*u_LightmapScaleOffset.x+u_LightmapScaleOffset.z,1.0+a_Texcoord1.y*u_LightmapScaleOffset.y+u_LightmapScaleOffset.w);\n		#else\n			v_LightMapUV=vec2(a_Texcoord0.x,a_Texcoord0.y-1.0)*u_LightmapScaleOffset.xy+u_LightmapScaleOffset.zw;\n		#endif \n	#endif\n\n	#ifdef COLOR\n		v_Color=a_Color;\n	#endif\n\n	#ifdef RECEIVESHADOW\n		v_posViewZ = gl_Position.w;\n		#ifdef SHADOWMAP_PSSM1 \n			v_lightMVPPos = u_lightShadowVP[0] * vec4(v_PositionWorld,1.0);\n		#endif\n	#endif\n}\n\nvoid main()\n{\n	#ifdef CASTSHADOW\n		main_castShadow();\n	#else\n		main_normal();\n	#endif\n}";
-			ps="#ifdef HIGHPRECISION\n	precision highp float;\n#else\n	precision mediump float;\n#endif\n\n#include \"Lighting.glsl\";\n\nuniform vec4 u_DiffuseColor;\n\n#ifdef COLOR\n	varying vec4 v_Color;\n#endif\n\n#if defined(DIRECTIONLIGHT)||defined(POINTLIGHT)||defined(SPOTLIGHT)||defined(REFLECTMAP)\n	varying vec3 v_ViewDir; \n#endif\n\n#ifdef ALPHATEST\n	uniform float u_AlphaTestValue;\n#endif\n\n#ifdef DIFFUSEMAP\n	uniform sampler2D u_DiffuseTexture;\n#endif\n\n#ifdef REFLECTMAP\n	uniform samplerCube u_ReflectTexture;\n	uniform vec3 u_MaterialReflect;\n#endif\n\n#if defined(DIFFUSEMAP)||((defined(DIRECTIONLIGHT)||defined(POINTLIGHT)||defined(SPOTLIGHT))&&(defined(SPECULARMAP)||defined(NORMALMAP)))\n	varying vec2 v_Texcoord0;\n#endif\n\n#ifdef LIGHTMAP\n	varying vec2 v_LightMapUV;\n	uniform sampler2D u_LightMap;\n#endif\n\n#if defined(DIRECTIONLIGHT)||defined(POINTLIGHT)||defined(SPOTLIGHT)\n	uniform vec3 u_MaterialSpecular;\n	uniform float u_Shininess;\n	#ifdef SPECULARMAP \n		uniform sampler2D u_SpecularTexture;\n	#endif\n#endif\n\n#ifdef FOG\n	uniform float u_FogStart;\n	uniform float u_FogRange;\n	#ifdef ADDTIVEFOG\n	#else\n		uniform vec3 u_FogColor;\n	#endif\n#endif\n\n\n#if defined(DIRECTIONLIGHT)||defined(POINTLIGHT)||defined(SPOTLIGHT)||defined(REFLECTMAP)\n	varying vec3 v_Normal;\n#endif\n\n#if (defined(DIRECTIONLIGHT)||defined(POINTLIGHT)||defined(SPOTLIGHT))&&defined(NORMALMAP)\n	uniform sampler2D u_NormalTexture;\n	varying vec3 v_Tangent;\n	varying vec3 v_Binormal;\n#endif\n\n#ifdef DIRECTIONLIGHT\n	uniform DirectionLight u_DirectionLight;\n#endif\n\n#ifdef POINTLIGHT\n	uniform PointLight u_PointLight;\n#endif\n\n#ifdef SPOTLIGHT\n	uniform SpotLight u_SpotLight;\n#endif\n\nuniform vec3 u_AmbientColor;\n\n\n#if defined(POINTLIGHT)||defined(SPOTLIGHT)||defined(REFLECTMAP)||defined(RECEIVESHADOW)\n	varying vec3 v_PositionWorld;\n#endif\n\n#include \"ShadowHelper.glsl\"\nvarying float v_posViewZ;\n#ifdef RECEIVESHADOW\n	#if defined(SHADOWMAP_PSSM2)||defined(SHADOWMAP_PSSM3)\n		uniform mat4 u_lightShadowVP[4];\n	#endif\n	#ifdef SHADOWMAP_PSSM1 \n		varying vec4 v_lightMVPPos;\n	#endif\n#endif\n\nvoid main_castShadow()\n{\n	//gl_FragColor=vec4(v_posViewZ,0.0,0.0,1.0);\n	gl_FragColor=packDepth(v_posViewZ);\n	#if defined(DIFFUSEMAP)&&defined(ALPHATEST)\n		float alpha = texture2D(u_DiffuseTexture,v_Texcoord0).w;\n		if( alpha < u_AlphaTestValue )\n		{\n			discard;\n		}\n	#endif\n}\nvoid main_normal()\n{\n	vec4 mainColor=u_DiffuseColor;\n	#ifdef DIFFUSEMAP\n		vec4 difTexColor=texture2D(u_DiffuseTexture, v_Texcoord0);\n		mainColor=mainColor*difTexColor;\n	#endif \n	#ifdef COLOR\n		mainColor=mainColor*v_Color;\n	#endif \n    \n	#ifdef ALPHATEST\n		if(mainColor.a<u_AlphaTestValue)\n			discard;\n	#endif\n  \n	#if defined(DIRECTIONLIGHT)||defined(POINTLIGHT)||defined(SPOTLIGHT)||defined(REFLECTMAP)\n		vec3 normal;\n		#if (defined(DIRECTIONLIGHT)||defined(POINTLIGHT)||defined(SPOTLIGHT))&&defined(NORMALMAP)\n			vec3 normalMapSample = texture2D(u_NormalTexture, v_Texcoord0).rgb;\n			normal = normalize(NormalSampleToWorldSpace(normalMapSample, v_Normal, v_Tangent,v_Binormal));\n		#else\n			normal = normalize(v_Normal);\n		#endif\n	#endif\n	\n	#if defined(DIRECTIONLIGHT)||defined(POINTLIGHT)||defined(SPOTLIGHT)\n		vec3 viewDir= normalize(v_ViewDir);\n		vec3 diffuse = vec3(0.0);\n		vec3 specular= vec3(0.0);\n		vec3 dif,spe;\n		#ifdef SPECULARMAP\n			vec3 gloss=texture2D(u_SpecularTexture, v_Texcoord0).rgb;\n		#else\n			#ifdef DIFFUSEMAP\n				vec3 gloss=vec3(difTexColor.a);\n			#else\n				vec3 gloss=vec3(1.0);\n			#endif\n		#endif\n	#endif\n\n	\n	#ifdef DIRECTIONLIGHT\n		LayaAirBlinnPhongDiectionLight(u_MaterialSpecular,u_Shininess,normal,gloss,viewDir,u_DirectionLight,dif,spe);\n		diffuse+=dif;\n		specular+=spe;\n	#endif\n \n	#ifdef POINTLIGHT\n		LayaAirBlinnPhongPointLight(v_PositionWorld,u_MaterialSpecular,u_Shininess,normal,gloss,viewDir,u_PointLight,dif,spe);\n		diffuse+=dif;\n		specular+=spe;\n	#endif\n\n	#ifdef SPOTLIGHT\n		LayaAirBlinnPhongSpotLight(v_PositionWorld,u_MaterialSpecular,u_Shininess,normal,gloss,viewDir,u_SpotLight,dif,spe);\n		diffuse+=dif;\n		specular+=spe;\n	#endif\n\n	\n	vec3 finalDiffuse;\n	#ifdef LIGHTMAP\n		finalDiffuse=texture2D(u_LightMap, v_LightMapUV).rgb*2.0;\n	#else\n		finalDiffuse=vec3(0.0);\n	#endif\n\n	#if defined(DIRECTIONLIGHT)||defined(POINTLIGHT)||defined(SPOTLIGHT)\n		finalDiffuse+=diffuse;\n	#endif\n\n	#ifdef RECEIVESHADOW\n		float shadowValue = 1.0;\n		#ifdef SHADOWMAP_PSSM3\n			shadowValue = getShadowPSSM3( u_shadowMap1,u_shadowMap2,u_shadowMap3,u_lightShadowVP,u_shadowPSSMDistance,u_shadowPCFoffset,v_PositionWorld,v_posViewZ,0.001);\n		#endif\n		#ifdef SHADOWMAP_PSSM2\n			shadowValue = getShadowPSSM2( u_shadowMap1,u_shadowMap2,u_lightShadowVP,u_shadowPSSMDistance,u_shadowPCFoffset,v_PositionWorld,v_posViewZ,0.001);\n		#endif \n		#ifdef SHADOWMAP_PSSM1\n			shadowValue = getShadowPSSM1( u_shadowMap1,v_lightMVPPos,u_shadowPSSMDistance,u_shadowPCFoffset,v_posViewZ,0.001);\n		#endif\n		gl_FragColor =vec4(mainColor.rgb*(u_AmbientColor + finalDiffuse)*shadowValue,mainColor.a);\n	#else\n		gl_FragColor =vec4(mainColor.rgb*(u_AmbientColor + finalDiffuse),mainColor.a);\n	#endif\n	\n\n	#if defined(DIRECTIONLIGHT)||defined(POINTLIGHT)||defined(SPOTLIGHT)\n		#ifdef RECEIVESHADOW\n			gl_FragColor.rgb+=specular*shadowValue;\n		#else\n			gl_FragColor.rgb+=specular;\n		#endif\n	#endif\n\n\n	#ifdef REFLECTMAP\n		vec3 incident = -viewDir;\n		vec3 reflectionVector = reflect(incident,normal);\n		vec3 reflectionColor  = textureCube(u_ReflectTexture,reflectionVector).rgb;\n		gl_FragColor.rgb += u_MaterialReflect*reflectionColor;\n	#endif\n	  \n	#ifdef FOG\n		float lerpFact=clamp((1.0/gl_FragCoord.w-u_FogStart)/u_FogRange,0.0,1.0);\n		#ifdef ADDTIVEFOG\n			gl_FragColor.rgb=mix(gl_FragColor.rgb,vec3(0.0,0.0,0.0),lerpFact);\n		#else\n			gl_FragColor.rgb=mix(gl_FragColor.rgb,u_FogColor,lerpFact);\n		#endif\n	#endif\n}\n\nvoid main()\n{\n	#ifdef CASTSHADOW		\n		main_castShadow();\n	#else\n	  main_normal();\n	#endif  \n}\n\n";
-			var shaderCompile=Shader3D.add("BLINNPHONG",attributeMap,uniformMap);
-			shaderCompile._addShaderPass(vs,ps);
-			shaderCompile.addSpriteDefines(SkinnedMeshSprite3D.shaderDefines);
-			shaderCompile.addMaterialDefines(BlinnPhongMaterial.shaderDefines);
-			attributeMap={
-				'a_Position':0,
-				'a_Color':1,
-				'a_Normal':3,
-				'a_Texcoord0':2,
-				'a_Texcoord1':15,
-				'a_TexcoordNext0':14,
-				'a_BoneWeights':7,
-				'a_BoneIndices':6,
-				'a_Tangent0':5};
-			uniformMap={
-				'u_Bones':[0,0],
-				'u_DiffuseTexture':[1,1],
-				'u_SpecularTexture':[3,1],
-				'u_NormalTexture':[2,1],
-				'u_AmbientTexture':[5,1],
-				'u_ReflectTexture':[6,1],
-				'u_AlphaTestValue':[0,1],
-				'u_Albedo':[7,1],
-				'u_UVMatrix':[13,1],
-				'u_UVAge':[14,1],
-				'u_UVAniAge':[8,1],
-				'u_MaterialDiffuse':[10,1],
-				'u_MaterialAmbient':[9,1],
-				'u_MaterialSpecular':[11,1],
-				'u_MaterialReflect':[12,1],
-				'u_TilingOffset':[15,1],
-				'u_WorldMat':[0,2],
-				'u_MvpMatrix':[1,2],
-				'u_LightmapScaleOffset':[2,2],
-				'u_LightMap':[3,2],
-				'u_CameraPos':[0,3],
-				'u_FogStart':[1,4],
-				'u_FogRange':[2,4],
-				'u_FogColor':[0,4],
-				'u_DirectionLight.Direction':[3,4],
-				'u_DirectionLight.Diffuse':[4,4],
-				'u_PointLight.Position':[5,4],
-				'u_PointLight.Range':[6,4],
-				'u_PointLight.Attenuation':[7,4],
-				'u_PointLight.Diffuse':[8,4],
-				'u_SpotLight.Position':[9,4],
-				'u_SpotLight.Direction':[10,4],
-				'u_SpotLight.Range':[12,4],
-				'u_SpotLight.Spot':[11,4],
-				'u_SpotLight.Attenuation':[13,4],
-				'u_SpotLight.Diffuse':[14,4],
-				'u_AmbientColor':[21,4],
-				'u_shadowMap1':[18,4],
-				'u_shadowMap2':[19,4],
-				'u_shadowMap3':[20,4],
-				'u_shadowPSSMDistance':[15,4],
-				'u_lightShadowVP':[16,4],
-				'u_shadowPCFoffset':[17,4]};
 			vs="attribute vec4 a_Position;\nuniform mat4 u_MvpMatrix;\nattribute vec2 a_Texcoord0;\nvarying vec2 v_Texcoord0;\n\n#ifdef COLOR\nattribute vec4 a_Color;\nvarying vec4 v_Color;\n#endif\n\n#ifdef BONE\nattribute vec4 a_BoneIndices;\nattribute vec4 a_BoneWeights;\nuniform mat4 u_Bones[24];\n#endif\n\nvoid main_normal()\n{\n#ifdef BONE\n	mat4 skinTransform=mat4(0.0);\n	skinTransform += u_Bones[int(a_BoneIndices.x)] * a_BoneWeights.x;\n	skinTransform += u_Bones[int(a_BoneIndices.y)] * a_BoneWeights.y;\n	skinTransform += u_Bones[int(a_BoneIndices.z)] * a_BoneWeights.z;\n	skinTransform += u_Bones[int(a_BoneIndices.w)] * a_BoneWeights.w;\n	vec4 position=skinTransform*a_Position;\n	gl_Position = u_MvpMatrix * position;\n#else\n	gl_Position = u_MvpMatrix * a_Position;\n#endif\n	v_Texcoord0=a_Texcoord0;\n#ifdef COLOR\n	v_Color=a_Color;\n#endif\n}\n\nvoid main()\n{\n	main_normal();\n}";
 			ps="#ifdef HIGHPRECISION\nprecision highp float;\n#else\nprecision mediump float;\n#endif\n\nuniform sampler2D u_DiffuseTexture;\nvarying vec2 v_Texcoord0;\n#ifdef COLOR\nvarying vec4 v_Color;\n#endif\n\nvoid main_normal()\n{\n#ifdef COLOR\n	vec4 texColor=texture2D(u_DiffuseTexture, v_Texcoord0);\n	gl_FragColor=texColor*v_Color;\n#else\n	gl_FragColor=texture2D(u_DiffuseTexture, v_Texcoord0)*vec4(0.8,0.8,0.8,1.0);\n#endif\n}\nvoid main()\n{\n	main_normal();\n}\n\n";
-			shaderCompile=Shader3D.add("SIMPLE",attributeMap,uniformMap);
-			shaderCompile._addShaderPass(vs,ps);
-			shaderCompile.addSpriteDefines(SkinnedMeshSprite3D.shaderDefines);
-			shaderCompile.addMaterialDefines(StandardMaterial.shaderDefines);
+			var shader=Shader3D.add("BLINNPHONG",attributeMap,uniformMap,SkinnedMeshSprite3D.shaderDefines,BlinnPhongMaterial.shaderDefines);
+			shader._addShaderPass(vs,ps);
 			attributeMap={
 				'a_Position':0,
 				'a_Color':1};
@@ -36328,8 +34417,8 @@ var Laya=window.Laya=(function(window,document){
 				'u_MvpMatrix':[1,2]};
 			vs="attribute vec4 a_Position;\nuniform mat4 u_MvpMatrix;\nattribute vec4 a_Color;\nvarying vec4 v_Color;\n\n\nvoid main()\n{\n  gl_Position = u_MvpMatrix * a_Position;\n  v_Color=a_Color;\n}";
 			ps="#ifdef HIGHPRECISION\nprecision highp float;\n#else\nprecision mediump float;\n#endif\n\nvarying vec4 v_Color;\n\nvoid main()\n{\n  gl_FragColor=v_Color; \n}\n\n";
-			shaderCompile=Shader3D.add("LINE",attributeMap,uniformMap);
-			shaderCompile._addShaderPass(vs,ps);
+			shader=Shader3D.add("LINE",attributeMap,uniformMap);
+			shader._addShaderPass(vs,ps);
 			attributeMap={
 				'a_position':0,
 				'a_normal':3,
@@ -36388,10 +34477,8 @@ var Laya=window.Laya=(function(window,document){
 				'u_shadowPCFoffset':[17,4]};
 			vs="\nuniform mat4 modelMatrix;\n//uniform mat4 modelViewMatrix;\n//uniform mat4 projectionMatrix;\nuniform mat4 u_View;\nuniform mat4 u_Project;\nuniform mat4 mvp;\n//uniform mat4 viewMatrix;\nuniform vec3 cameraPosition;\n\nattribute vec3 a_position;\nattribute vec3 a_normal;\n#ifdef HAS_TANGENT\nattribute vec3 tangent;\nattribute vec3 binormal;\n#endif\nattribute vec2 uv;\n#ifdef BONE\nattribute vec4 a_BoneIndices;\nattribute vec4 a_BoneWeights;\nconst int c_MaxBoneCount = 24;\nuniform mat4 u_Bones[c_MaxBoneCount];\n#endif\n\nvarying vec2 vUv;\nvarying vec3 vWorldNorm;\nvarying vec4 vViewPos;\nvarying vec4 vWorldPos;\nvarying vec3 vLightDir;\nvarying vec3 vViewDir;\n#ifdef HAS_TANGENT\nvarying vec3 vWorldTangent;\nvarying vec3 vWorldBinormal;\n#endif\n\n#ifdef RECEIVESHADOW\nvarying float v_posViewZ;\n  #ifdef SHADOWMAP_PSSM1 \n  varying vec4 v_lightMVPPos;\n  uniform mat4 u_lightShadowVP[4];\n  #endif\n#endif\n\nvoid main() {\n#ifdef BONE\n	mat4 skinTransform=mat4(0.0);\n	skinTransform += u_Bones[int(a_BoneIndices.x)] * a_BoneWeights.x;\n	skinTransform += u_Bones[int(a_BoneIndices.y)] * a_BoneWeights.y;\n	skinTransform += u_Bones[int(a_BoneIndices.z)] * a_BoneWeights.z;\n	skinTransform += u_Bones[int(a_BoneIndices.w)] * a_BoneWeights.w;\n	gl_Position = mvp*skinTransform*vec4(a_position,1.);\n	mat4 modelMat = modelMatrix*skinTransform;\n#else\n	gl_Position = mvp*vec4(a_position,1.);\n	mat4 modelMat = modelMatrix;\n#endif	\n	vWorldPos = modelMat*vec4(a_position,1.);\n\n#ifdef CASTSHADOW \n	#if defined(DIFFUSEMAP)&&defined(ALPHATEST)\n		vUv = uv;\n	#endif	\n#else\n    vUv = uv;\n	vWorldNorm = normalize((modelMat*vec4(a_normal,0.0)).xyz);\n	#ifdef HAS_TANGENT\n	vWorldTangent = normalize((modelMat*vec4(tangent,0.0)).xyz);\n	vWorldBinormal = normalize((modelMat*vec4(binormal,0.0)).xyz);\n	#endif\n    \n    vViewDir = (vWorldPos.xyz-cameraPosition);//这个不能normalize。否则无法线性差值了\n#ifdef RECEIVESHADOW\n	v_posViewZ = gl_Position.z;\n	#ifdef SHADOWMAP_PSSM1 \n		v_lightMVPPos = u_lightShadowVP[0] * vWorldPos;\n	#endif\n#endif	\n#endif\n}\n";
 			ps="//#version 300 es\n\nprecision highp float;\nprecision lowp int;\n\nconst float PI = 3.14159265358979323846264;\nconst float _2PI = 6.2831853071796;\nvarying vec2 vUv;\nvarying vec3 vWorldNorm;\n#ifdef HAS_TANGENT\nvarying vec3 vWorldTangent;\nvarying vec3 vWorldBinormal;\n#endif\nvarying vec3 vViewDir;\nvarying vec4 vViewPos;\nvarying vec4 vWorldPos;\n//\nuniform sampler2D texBaseColor;\nuniform sampler2D texNormal;\n//预计算的贴图\nuniform sampler2D texPrefilterdEnv;\nuniform sampler2D texBRDFLUT;\nuniform sampler2D texPrefilterDiff;\n#ifdef HAS_PBRINFO\nuniform sampler2D texPbrInfo;   //Ao, Roughness, Metallic\n#endif\nuniform float u_hdrexposure;\nuniform float u_AlphaTestValue;\n\nuniform float u_roughness;\nuniform float u_metaless;\nconst float maxlv = 7.;	//现在只支持512分辨率的环境贴图\nconst int nmaxlv = 9;//\n							\nuniform mat4 irrad_mat_red;\nuniform mat4 irrad_mat_green;\nuniform mat4 irrad_mat_blue;							\n\nvec3 speccontrib = vec3(0.);\n\nconst float _maxu8 = 255.0;\nconst float _maxu16 = 65535.0;\nconst float _shift8 = 256.0;    //平移的话是*256而不是255\nvec2 _RGBAToU16(const in vec4 rgba){\n    return vec2((rgba.r*_maxu8+rgba.g*_maxu8*_shift8)/_maxu16, (rgba.b*_maxu8+rgba.a*_maxu8*_shift8)/_maxu16);\n}\nvec3 _RGBEToRGB( const in vec4 rgba ){\n    float f = pow(2.0, rgba.w * 255.0 - (128.0 + 8.0));\n    return rgba.rgb * (255.0 * f);\n}\n\nfloat saturate(float v){\n    return min(max(v,0.),1.);\n}\n\nvec4 tex2dLod(sampler2D tex, float u, float v, float lod){\n	vec2 uv = vec2(u,v);\n	uv+=mod(gl_FragCoord.xy-vec2(0.5),2.0)*vec2(128.,0.);\n	return texture2D(tex,uv,lod-16.);\n}\n\n/*\n* 对一个全景图进行采样。假设x轴指向中心。\n*/\nvec4 texPanorama(sampler2D tex, const in vec3 dir){\n	float envu = atan(dir.z,dir.x)/_2PI+0.5; 	\n	float envv = acos(dir.y)/PI;//(1.0-dir.y)/2.0;\n	return texture2D(tex,vec2(envu,envv));\n}\n\nvec4 texPanoramaLod(sampler2D tex, const in vec3 dir, float lod){\n	float envu = atan(dir.z,dir.x)/_2PI+0.5; 	\n	float envv = acos(dir.y)/PI;//(1.0-dir.y)/2.0;\n	return tex2dLod(tex,envu,envv,lod);\n}\n\n/*\n    计算sh光照。\n    使用level=2，所以需要9个系数。\n    https://cseweb.ucsd.edu/~ravir/papers/envmap/envmap.pdf\n*/\nfloat environment_exposure = 1.0;\nvec3 diff_sh9(vec3 dir){\n	vec4 shDir = vec4(dir.x,-dir.z,dir.y,1.0);\n  return max(vec3(0.0), vec3(\n	dot(shDir, irrad_mat_red * shDir),\n	dot(shDir, irrad_mat_green * shDir),\n	dot(shDir, irrad_mat_blue * shDir)\n	)) * environment_exposure;	\n}\n\n#ifdef HAS_TANGENT\nvec3 applyNormalTex( vec3 norm, vec3 surf_norm ) {\n    vec3 mapN = norm * 2.0 - 1.0;\n    //mapN.xy = normalScale * mapN.xy;\n    mat3 tsn = mat3( vWorldTangent, vWorldBinormal, surf_norm );\n    return normalize( tsn * mapN );\n}\n#endif\n\nvec4 pbrlight(vec3 normal, float rough, float NoV, vec3 R){\n    vec4 basecolor = texture2D(texBaseColor,vUv);\n	basecolor.rgb = pow(basecolor.rgb,vec3(2.2));\n	float metaless = 1.0; 	\n	const float ismetalinfov = (128./255.);\n	if(basecolor.a>=ismetalinfov){//这时候表示金属度\n		metaless = (basecolor.a-ismetalinfov)*2.;\n		basecolor.a = 1.0;\n	}else{\n		metaless = 0.;\n		basecolor.a = basecolor.a*2.0;\n	}\n	#ifdef FIX_METALESS\n	metaless = u_metaless;\n	#endif\n	#ifdef HAS_PBRINFO	\n	vec4 pbrinfo = texture2D(texPbrInfo, vUv);\n	metaless = pbrinfo.b;\n	rough = pbrinfo.g;\n	#endif\n    const vec3 nonmetalF0 =vec3(0.02);\n    vec3 F0 =  mix(nonmetalF0, basecolor.rgb, metaless);\n	\n    vec4 PrefilteredColor = texPanoramaLod(texPrefilterdEnv, R, rough*maxlv);\n    PrefilteredColor.rgb = _RGBEToRGB(PrefilteredColor);\n    vec4 EnvBRDF = texture2D(texBRDFLUT,vec2(rough , NoV));//TODO lod\n    vec2 rg = _RGBAToU16(EnvBRDF);    \n    speccontrib = (F0* rg.x + saturate( 50.0 * PrefilteredColor.g ) * rg.y);\n	vec3 color_spec = PrefilteredColor.rgb*speccontrib;\n	\n	vec3 color_diff=diff_sh9(normal);\n	vec3 outc =  color_diff*mix(basecolor.rgb,vec3(0.),metaless)*(vec3(1.0)-speccontrib)+color_spec;\n	#ifdef HAS_PBRINFO\n	outc*=pbrinfo.r;\n	#endif\n	return vec4(outc, basecolor.a);\n}\n\nvec3 oldlight(vec4 normal, float NoV, vec3 R){\n    vec4 basecolor = texture2D(texBaseColor,vUv);\n	const vec3 lightdir=normalize(vec3(1.,1.,0.));\n	const vec3 spcecol = vec3(1.,0.8,0.8);\n	const vec3 amb = vec3(0.5);\n	vec3 diffv =  (vec3(saturate(dot(lightdir,normal.xyz)))+amb);\n	//vec3 spec = spcecol* pow(saturate(dot(R,lightdir)),(1.-pbrinfo.g)*5.);\n	return diffv*basecolor.rgb;//+spec;\n}\n\n#include \"ShadowHelper.glsl\"\n#ifdef RECEIVESHADOW\nvarying float v_posViewZ;\n	#if defined(SHADOWMAP_PSSM2)||defined(SHADOWMAP_PSSM3)\n	uniform mat4 u_lightShadowVP[4];\n	#endif\n	#ifdef SHADOWMAP_PSSM1 \n	varying vec4 v_lightMVPPos;\n	#endif\n#endif\n\nvoid main() {\n#ifdef CASTSHADOW\n	gl_FragColor=packDepth(gl_FragCoord.w);\n	#if defined(DIFFUSEMAP)&&defined(ALPHATEST)\n		float alpha = texture2D(texBaseColor,vUv).w;\n		if( alpha < u_AlphaTestValue ){\n			discard;\n		}\n	#endif\n#else\n\n	#ifdef RECEIVESHADOW\n		float shadowValue = 1.0;\n		#ifdef SHADOWMAP_PSSM3\n			shadowValue = getShadowPSSM3( u_shadowMap1,u_shadowMap2,u_shadowMap3,u_lightShadowVP,u_shadowPSSMDistance,u_shadowPCFoffset,vWorldPos.xyz,v_posViewZ,0.0001);\n		#endif\n		#ifdef SHADOWMAP_PSSM2\n			shadowValue = getShadowPSSM2( u_shadowMap1,u_shadowMap2,u_lightShadowVP,u_shadowPSSMDistance,u_shadowPCFoffset,vWorldPos.xyz,v_posViewZ,0.0001);\n		#endif \n		#ifdef SHADOWMAP_PSSM1\n			shadowValue = getShadowPSSM1( u_shadowMap1,v_lightMVPPos,u_shadowPSSMDistance,u_shadowPCFoffset,v_posViewZ,0.0001);\n		#endif\n	#endif	\n	\n    vec3 normal =  normalize(vWorldNorm);\n	vec4 normtex = texture2D( texNormal, vUv );\n	#ifdef HAS_TANGENT	\n	normal = applyNormalTex(normtex.xyz, normal);\n	#endif\n    vec3 view   = -normalize(vViewDir);\n    float NoV = saturate(dot( view, normal ));\n    vec3 R = 2. * NoV * normal - view;\n	float roughness = normtex.a;\n	#ifdef FIX_ROUGHNESS\n	roughness = u_roughness;\n	#endif\n	\n	vec4 pbrl = pbrlight(normal,roughness,NoV,R)*u_hdrexposure;\n    gl_FragColor.rgb =  pow(pbrl.rgb,vec3(0.45455));\n	//gl_FragColor.rgb = oldlight(normtex,NoV,R);\n	#ifdef RECEIVESHADOW\n	gl_FragColor.rgb *= max(shadowValue,0.7);\n	#endif\n	\n    gl_FragColor.a = pbrl.a;\n\n#endif\n}\n";
-			shaderCompile=Shader3D.add("PBR",attributeMap,uniformMap);
-			shaderCompile._addShaderPass(vs,ps);
-			shaderCompile.addSpriteDefines(SkinnedMeshSprite3D.shaderDefines);
-			shaderCompile.addMaterialDefines(PBRMaterial.shaderDefines);
+			shader=Shader3D.add("PBR",attributeMap,uniformMap,SkinnedMeshSprite3D.shaderDefines,PBRMaterial.shaderDefines);
+			shader._addShaderPass(vs,ps);
 			attributeMap={
 				'a_Position':0,
 				'a_Normal':3,
@@ -36420,9 +34507,11 @@ var Laya=window.Laya=(function(window,document){
 				'u_occlusionStrength':[13,1],
 				'u_normalScale':[14,1],
 				'u_parallaxScale':[15,1],
-				'u_TilingOffset':[17,1],
+				'u_TilingOffset':[18,1],
 				'u_DirectionLight.Direction':[3,4],
 				'u_DirectionLight.Color':[4,4],
+				'u_ReflectTexture':[22,4],
+				'u_ReflectIntensity':[23,4],
 				'u_AmbientColor':[21,4],
 				'u_shadowMap1':[18,4],
 				'u_shadowMap2':[19,4],
@@ -36432,11 +34521,9 @@ var Laya=window.Laya=(function(window,document){
 				'u_shadowPCFoffset':[17,4]
 			};
 			vs="attribute vec4 a_Position;\nattribute vec3 a_Normal;\nattribute vec4 a_Tangent0;\nattribute vec2 a_Texcoord0;\n\nuniform mat4 u_MvpMatrix;\nuniform mat4 u_WorldMat;\nuniform vec3 u_CameraPos;\n\nvarying vec2 v_Texcoord0;\nvarying vec3 v_Normal;\nvarying vec3 v_Tangent;\nvarying vec3 v_Binormal;\nvarying vec3 v_ViewDir;\nvarying vec3 v_PositionWorld;\n\n#ifdef TILINGOFFSET\n	uniform vec4 u_TilingOffset;\n#endif\n\nvarying float v_posViewZ;\n#ifdef RECEIVESHADOW\n  #ifdef SHADOWMAP_PSSM1 \n	  varying vec4 v_lightMVPPos;\n	  uniform mat4 u_lightShadowVP[4];\n  #endif\n#endif\n\n#ifdef BONE\n	const int c_MaxBoneCount = 24;\n	attribute vec4 a_BoneIndices;\n	attribute vec4 a_BoneWeights;\n	uniform mat4 u_Bones[c_MaxBoneCount];\n#endif\n\nvoid main_castShadow()\n{\n	#ifdef BONE\n		mat4 skinTransform=mat4(0.0);\n		skinTransform += u_Bones[int(a_BoneIndices.x)] * a_BoneWeights.x;\n		skinTransform += u_Bones[int(a_BoneIndices.y)] * a_BoneWeights.y;\n		skinTransform += u_Bones[int(a_BoneIndices.z)] * a_BoneWeights.z;\n		skinTransform += u_Bones[int(a_BoneIndices.w)] * a_BoneWeights.w;\n		vec4 position = skinTransform * a_Position;\n		gl_Position = u_MvpMatrix * position;\n	#else\n		gl_Position = u_MvpMatrix * a_Position;\n	#endif\n	 \n	//TODO没考虑UV动画呢\n	#if defined(DIFFUSEMAP)&&defined(ALPHATEST)\n		v_Texcoord0 = a_Texcoord0;\n	#endif\n		v_posViewZ = gl_Position.z;\n}\n\nvoid main_normal()\n{\n	mat3 worldMat;\n	#ifdef BONE\n		mat4 skinTransform = mat4(0.0);\n		skinTransform += u_Bones[int(a_BoneIndices.x)] * a_BoneWeights.x;\n		skinTransform += u_Bones[int(a_BoneIndices.y)] * a_BoneWeights.y;\n		skinTransform += u_Bones[int(a_BoneIndices.z)] * a_BoneWeights.z;\n		skinTransform += u_Bones[int(a_BoneIndices.w)] * a_BoneWeights.w;\n		vec4 position = skinTransform * a_Position;\n		gl_Position = u_MvpMatrix * position;\n		worldMat=mat3(u_WorldMat*skinTransform);\n		v_PositionWorld = (u_WorldMat * position).xyz;\n	#else\n		gl_Position = u_MvpMatrix * a_Position;\n		worldMat = mat3(u_WorldMat);\n		v_PositionWorld = (u_WorldMat * a_Position).xyz;\n	#endif\n	\n	v_Normal = worldMat * a_Normal;\n	v_Tangent = worldMat * a_Tangent0.xyz;\n	v_Binormal = cross(v_Normal, v_Tangent) * a_Tangent0.w;\n  \n	v_Texcoord0 = a_Texcoord0;\n	#ifdef TILINGOFFSET\n		v_Texcoord0=(vec2(v_Texcoord0.x,v_Texcoord0.y-1.0)*u_TilingOffset.xy)+u_TilingOffset.zw;\n	#endif\n		v_Texcoord0=vec2(v_Texcoord0.x,1.0 + v_Texcoord0.y);\n  \n	v_ViewDir = u_CameraPos - v_PositionWorld;\n  \n	#ifdef RECEIVESHADOW\n		v_posViewZ = gl_Position.w;\n		#ifdef SHADOWMAP_PSSM1 \n			v_lightMVPPos = u_lightShadowVP[0] * vec4(v_PositionWorld,1.0);\n		#endif\n	#endif\n}\n\nvoid main()\n{\n	#ifdef CASTSHADOW\n		main_castShadow();\n	#else\n		main_normal();\n	#endif\n}";
-			ps="#ifdef FSHIGHPRECISION\n	precision highp float;\n#else\n	precision mediump float;\n#endif\n\nvarying vec2 v_Texcoord0;\nvarying vec3 v_Normal;\nvarying vec3 v_Tangent;\nvarying vec3 v_Binormal;\nvarying vec3 v_ViewDir;\n\nuniform vec4 u_AmbientColor;\nuniform vec4 u_DiffuseColor;\n\n#ifdef DIFFUSETEXTURE\n	uniform sampler2D u_DiffuseTexture;\n#endif\n#ifdef METALLICGLOSSTEXTURE\n	uniform sampler2D u_MetallicGlossTexture;\n#endif\n#ifdef NORMALTEXTURE\n	uniform sampler2D u_NormalTexture;\n	uniform float u_normalScale;\n#endif\n#ifdef PARALLAXTEXTURE\n	uniform sampler2D u_ParallaxTexture;\n	uniform float u_parallaxScale;\n#endif\n#ifdef OCCLUSIONTEXTURE\n	uniform sampler2D u_OcclusionTexture;\n	uniform float u_occlusionStrength;\n#endif\n#ifdef EMISSION\n	#ifdef EMISSIONTEXTURE\n		uniform sampler2D u_EmissionTexture;\n	#endif\n	uniform vec4 u_EmissionColor;\n#endif\n\nuniform float u_AlphaTestValue;\nuniform float u_metallic;\nuniform float u_smoothness;\nuniform float u_smoothnessScale;\n\n#include \"PBRStandardLighting.glsl\"\n#include \"ShadowHelper.glsl\"\n\nvarying float v_posViewZ;\n#ifdef RECEIVESHADOW\n	#if defined(SHADOWMAP_PSSM2)||defined(SHADOWMAP_PSSM3)\n		uniform mat4 u_lightShadowVP[4];\n	#endif\n	#ifdef SHADOWMAP_PSSM1 \n		varying vec4 v_lightMVPPos;\n	#endif\n#endif\n\nuniform DirectionLight u_DirectionLight;\n\nvoid main_castShadow()\n{\n	gl_FragColor=packDepth(v_posViewZ);\n	#if defined(DIFFUSEMAP)&&defined(ALPHATEST)\n		float alpha = texture2D(u_DiffuseTexture,v_Texcoord0).w;\n		if( alpha < u_AlphaTestValue )\n		{\n			discard;\n		}\n	#endif\n}\n\nvoid main_normal()\n{	\n	vec3 viewDir = normalize(v_ViewDir);\n	\n	vec2 uv0 = ParallaxOffset(viewDir);\n	\n	vec2 mg;\n	#ifdef DIFFUSETEXTURE\n		vec4 diffuseTextureColor = texture2D(u_DiffuseTexture, uv0);\n		vec4 diffuseColor = diffuseTextureColor * u_DiffuseColor;\n		mg = MetallicGloss(diffuseTextureColor.a, uv0);\n	#else\n		vec4 diffuseColor = u_DiffuseColor;\n		mg = MetallicGloss(1.0, uv0);\n	#endif\n	\n	#ifdef ALPHATEST\n		if(diffuseColor.a < u_AlphaTestValue)\n			discard;\n	#endif\n	\n	gl_FragColor = diffuseColor;\n	\n	vec3 normal = UnpackScaleNormal(uv0);\n  \n	vec3 gi = (u_AmbientColor * Occlusion(uv0)).rgb;\n  \n	vec4 color = PBRStandardDiectionLight(diffuseColor.rgb, mg.r, mg.g, normal, viewDir, u_DirectionLight, gi);\n	\n	color.a = diffuseColor.a;\n	\n	#ifdef EMISSION\n		vec4 emissionColor = u_EmissionColor;\n		#ifdef EMISSIONTEXTURE\n			emissionColor *=  texture2D(u_EmissionTexture, uv0);\n		#endif\n		color.rgb += emissionColor.rgb;\n	#endif\n	\n	#ifdef RECEIVESHADOW\n		float shadowValue = 1.0;\n		#ifdef SHADOWMAP_PSSM3\n			shadowValue = getShadowPSSM3( u_shadowMap1,u_shadowMap2,u_shadowMap3,u_lightShadowVP,u_shadowPSSMDistance,u_shadowPCFoffset,v_PositionWorld,v_posViewZ,0.001);\n		#endif\n		#ifdef SHADOWMAP_PSSM2\n			shadowValue = getShadowPSSM2( u_shadowMap1,u_shadowMap2,u_lightShadowVP,u_shadowPSSMDistance,u_shadowPCFoffset,v_PositionWorld,v_posViewZ,0.001);\n		#endif \n		#ifdef SHADOWMAP_PSSM1\n			shadowValue = getShadowPSSM1( u_shadowMap1,v_lightMVPPos,u_shadowPSSMDistance,u_shadowPCFoffset,v_posViewZ,0.001);\n		#endif\n		gl_FragColor = vec4(color.rgb * shadowValue, color.a);\n	#else\n		gl_FragColor = color;\n	#endif\n}\n\nvoid main()\n{\n	#ifdef CASTSHADOW		\n		main_castShadow();\n	#else\n		main_normal();\n	#endif  \n}\n\n";
-			shaderCompile=Shader3D.add("PBRStandard",attributeMap,uniformMap);
-			shaderCompile._addShaderPass(vs,ps);
-			shaderCompile.addSpriteDefines(SkinnedMeshSprite3D.shaderDefines);
-			shaderCompile.addMaterialDefines(PBRStandardMaterial.shaderDefines);
+			ps="#ifdef FSHIGHPRECISION\n	precision highp float;\n#else\n	precision mediump float;\n#endif\n\nvarying vec2 v_Texcoord0;\nvarying vec3 v_Normal;\nvarying vec3 v_Tangent;\nvarying vec3 v_Binormal;\nvarying vec3 v_ViewDir;\n\nuniform vec4 u_AmbientColor;\nuniform vec4 u_DiffuseColor;\n\n#ifdef DIFFUSETEXTURE\n	uniform sampler2D u_DiffuseTexture;\n#endif\n#ifdef METALLICGLOSSTEXTURE\n	uniform sampler2D u_MetallicGlossTexture;\n#endif\n#ifdef NORMALTEXTURE\n	uniform sampler2D u_NormalTexture;\n	uniform float u_normalScale;\n#endif\n#ifdef PARALLAXTEXTURE\n	uniform sampler2D u_ParallaxTexture;\n	uniform float u_parallaxScale;\n#endif\n#ifdef OCCLUSIONTEXTURE\n	uniform sampler2D u_OcclusionTexture;\n	uniform float u_occlusionStrength;\n#endif\n#ifdef EMISSION\n	#ifdef EMISSIONTEXTURE\n		uniform sampler2D u_EmissionTexture;\n	#endif\n	uniform vec4 u_EmissionColor;\n#endif\n#ifdef REFLECTMAP\n	uniform samplerCube u_ReflectTexture;\n	uniform float u_ReflectIntensity;\n#endif\n\nuniform float u_AlphaTestValue;\nuniform float u_metallic;\nuniform float u_smoothness;\nuniform float u_smoothnessScale;\n\n#include \"PBRStandardLighting.glsl\"\n#include \"ShadowHelper.glsl\"\n\nvarying float v_posViewZ;\n#ifdef RECEIVESHADOW\n	#if defined(SHADOWMAP_PSSM2)||defined(SHADOWMAP_PSSM3)\n		uniform mat4 u_lightShadowVP[4];\n	#endif\n	#ifdef SHADOWMAP_PSSM1 \n		varying vec4 v_lightMVPPos;\n	#endif\n#endif\n\nuniform DirectionLight u_DirectionLight;\n\nvoid main_castShadow()\n{\n	gl_FragColor=packDepth(v_posViewZ);\n	#if defined(DIFFUSEMAP)&&defined(ALPHATEST)\n		float alpha = texture2D(u_DiffuseTexture,v_Texcoord0).w;\n		if( alpha < u_AlphaTestValue )\n		{\n			discard;\n		}\n	#endif\n}\n\nvoid main_normal()\n{	\n	vec3 viewDir = normalize(v_ViewDir);\n	\n	vec2 uv0 = ParallaxOffset(viewDir);\n	\n	vec2 mg;\n	#ifdef DIFFUSETEXTURE\n		vec4 diffuseTextureColor = texture2D(u_DiffuseTexture, uv0);\n		vec4 diffuseColor = diffuseTextureColor * u_DiffuseColor;\n		mg = MetallicGloss(diffuseTextureColor.a, uv0);\n	#else\n		vec4 diffuseColor = u_DiffuseColor;\n		mg = MetallicGloss(1.0, uv0);\n	#endif\n	\n	#ifdef ALPHATEST\n		if(diffuseColor.a < u_AlphaTestValue)\n			discard;\n	#endif\n	\n	gl_FragColor = diffuseColor;\n	\n	vec3 normal = UnpackScaleNormal(uv0);\n  \n	LayaGI gi;\n	gi.diffuse = (u_AmbientColor * Occlusion(uv0)).rgb;\n	gi.specular = ReflectCubeMap(viewDir, normal);\n  \n	vec4 color = PBRStandardDiectionLight(diffuseColor.rgb, mg.r, mg.g, normal, viewDir, u_DirectionLight, gi);\n	\n	color.a = diffuseColor.a;\n	\n	#ifdef EMISSION\n		vec4 emissionColor = u_EmissionColor;\n		#ifdef EMISSIONTEXTURE\n			emissionColor *=  texture2D(u_EmissionTexture, uv0);\n		#endif\n		color.rgb += emissionColor.rgb;\n	#endif\n	\n	#ifdef RECEIVESHADOW\n		float shadowValue = 1.0;\n		#ifdef SHADOWMAP_PSSM3\n			shadowValue = getShadowPSSM3( u_shadowMap1,u_shadowMap2,u_shadowMap3,u_lightShadowVP,u_shadowPSSMDistance,u_shadowPCFoffset,v_PositionWorld,v_posViewZ,0.001);\n		#endif\n		#ifdef SHADOWMAP_PSSM2\n			shadowValue = getShadowPSSM2( u_shadowMap1,u_shadowMap2,u_lightShadowVP,u_shadowPSSMDistance,u_shadowPCFoffset,v_PositionWorld,v_posViewZ,0.001);\n		#endif \n		#ifdef SHADOWMAP_PSSM1\n			shadowValue = getShadowPSSM1( u_shadowMap1,v_lightMVPPos,u_shadowPSSMDistance,u_shadowPCFoffset,v_posViewZ,0.001);\n		#endif\n		gl_FragColor = vec4(color.rgb * shadowValue, color.a);\n	#else\n		gl_FragColor = color;\n	#endif\n}\n\nvoid main()\n{\n	#ifdef CASTSHADOW		\n		main_castShadow();\n	#else\n		main_normal();\n	#endif  \n}\n\n";
+			shader=Shader3D.add("PBRStandard",attributeMap,uniformMap,SkinnedMeshSprite3D.shaderDefines,PBRStandardMaterial.shaderDefines);
+			shader._addShaderPass(vs,ps);
 			attributeMap={
 				'a_Position':0,
 				'a_Normal':3,
@@ -36465,9 +34552,11 @@ var Laya=window.Laya=(function(window,document){
 				'u_occlusionStrength':[13,1],
 				'u_normalScale':[14,1],
 				'u_parallaxScale':[15,1],
-				'u_TilingOffset':[17,1],
+				'u_TilingOffset':[18,1],
 				'u_DirectionLight.Direction':[3,4],
 				'u_DirectionLight.Color':[4,4],
+				'u_ReflectTexture':[22,4],
+				'u_ReflectIntensity':[23,4],
 				'u_AmbientColor':[21,4],
 				'u_shadowMap1':[18,4],
 				'u_shadowMap2':[19,4],
@@ -36477,64 +34566,9 @@ var Laya=window.Laya=(function(window,document){
 				'u_shadowPCFoffset':[17,4]
 			};
 			vs="attribute vec4 a_Position;\nattribute vec3 a_Normal;\nattribute vec4 a_Tangent0;\nattribute vec2 a_Texcoord0;\n\nuniform mat4 u_MvpMatrix;\nuniform mat4 u_WorldMat;\nuniform vec3 u_CameraPos;\n\nvarying vec2 v_Texcoord0;\nvarying vec3 v_Normal;\nvarying vec3 v_Tangent;\nvarying vec3 v_Binormal;\nvarying vec3 v_ViewDir;\nvarying vec3 v_PositionWorld;\n\n#ifdef TILINGOFFSET\n	uniform vec4 u_TilingOffset;\n#endif\n\nvarying float v_posViewZ;\n#ifdef RECEIVESHADOW\n  #ifdef SHADOWMAP_PSSM1 \n	  varying vec4 v_lightMVPPos;\n	  uniform mat4 u_lightShadowVP[4];\n  #endif\n#endif\n\n#ifdef BONE\n	const int c_MaxBoneCount = 24;\n	attribute vec4 a_BoneIndices;\n	attribute vec4 a_BoneWeights;\n	uniform mat4 u_Bones[c_MaxBoneCount];\n#endif\n\nvoid main_castShadow()\n{\n	#ifdef BONE\n		mat4 skinTransform=mat4(0.0);\n		skinTransform += u_Bones[int(a_BoneIndices.x)] * a_BoneWeights.x;\n		skinTransform += u_Bones[int(a_BoneIndices.y)] * a_BoneWeights.y;\n		skinTransform += u_Bones[int(a_BoneIndices.z)] * a_BoneWeights.z;\n		skinTransform += u_Bones[int(a_BoneIndices.w)] * a_BoneWeights.w;\n		vec4 position = skinTransform * a_Position;\n		gl_Position = u_MvpMatrix * position;\n	#else\n		gl_Position = u_MvpMatrix * a_Position;\n	#endif\n	 \n	//TODO没考虑UV动画呢\n	#if defined(DIFFUSEMAP)&&defined(ALPHATEST)\n		v_Texcoord0 = a_Texcoord0;\n	#endif\n		v_posViewZ = gl_Position.z;\n}\n\nvoid main_normal()\n{\n	mat3 worldMat;\n	#ifdef BONE\n		mat4 skinTransform = mat4(0.0);\n		skinTransform += u_Bones[int(a_BoneIndices.x)] * a_BoneWeights.x;\n		skinTransform += u_Bones[int(a_BoneIndices.y)] * a_BoneWeights.y;\n		skinTransform += u_Bones[int(a_BoneIndices.z)] * a_BoneWeights.z;\n		skinTransform += u_Bones[int(a_BoneIndices.w)] * a_BoneWeights.w;\n		vec4 position = skinTransform * a_Position;\n		gl_Position = u_MvpMatrix * position;\n		worldMat=mat3(u_WorldMat*skinTransform);\n		v_PositionWorld = (u_WorldMat * position).xyz;\n	#else\n		gl_Position = u_MvpMatrix * a_Position;\n		worldMat = mat3(u_WorldMat);\n		v_PositionWorld = (u_WorldMat * a_Position).xyz;\n	#endif\n	\n	v_Normal = worldMat * a_Normal;\n	v_Tangent = worldMat * a_Tangent0.xyz;\n	v_Binormal = cross(v_Normal, v_Tangent) * a_Tangent0.w;\n  \n	v_Texcoord0 = a_Texcoord0;\n	#ifdef TILINGOFFSET\n		v_Texcoord0=(vec2(v_Texcoord0.x,v_Texcoord0.y-1.0)*u_TilingOffset.xy)+u_TilingOffset.zw;\n	#endif\n		v_Texcoord0=vec2(v_Texcoord0.x,1.0 + v_Texcoord0.y);\n  \n	v_ViewDir = u_CameraPos - v_PositionWorld;\n  \n	#ifdef RECEIVESHADOW\n		v_posViewZ = gl_Position.w;\n		#ifdef SHADOWMAP_PSSM1 \n			v_lightMVPPos = u_lightShadowVP[0] * vec4(v_PositionWorld,1.0);\n		#endif\n	#endif\n}\n\nvoid main()\n{\n	#ifdef CASTSHADOW\n		main_castShadow();\n	#else\n		main_normal();\n	#endif\n}";
-			ps="#ifdef FSHIGHPRECISION\n	precision highp float;\n#else\n	precision mediump float;\n#endif\n\nvarying vec2 v_Texcoord0;\nvarying vec3 v_Normal;\nvarying vec3 v_Tangent;\nvarying vec3 v_Binormal;\nvarying vec3 v_ViewDir;\n\nuniform vec4 u_AmbientColor;\nuniform vec4 u_DiffuseColor;\nuniform vec4 u_SpecularColor;\n\n#ifdef DIFFUSETEXTURE\n	uniform sampler2D u_DiffuseTexture;\n#endif\n#ifdef SPECULARTEXTURE\n	uniform sampler2D u_SpecularTexture;\n#endif\n#ifdef NORMALTEXTURE\n	uniform sampler2D u_NormalTexture;\n	uniform float u_normalScale;\n#endif\n#ifdef PARALLAXTEXTURE\n	uniform sampler2D u_ParallaxTexture;\n	uniform float u_parallaxScale;\n#endif\n#ifdef OCCLUSIONTEXTURE\n	uniform sampler2D u_OcclusionTexture;\n	uniform float u_occlusionStrength;\n#endif\n#ifdef EMISSION\n	#ifdef EMISSIONTEXTURE\n		uniform sampler2D u_EmissionTexture;\n	#endif\n	uniform vec4 u_EmissionColor;\n#endif\n\nuniform float u_AlphaTestValue;\nuniform float u_metallic;\nuniform float u_smoothness;\nuniform float u_smoothnessScale;\n\n#include \"PBRSpecularLighting.glsl\"\n#include \"ShadowHelper.glsl\"\n\nvarying float v_posViewZ;\n#ifdef RECEIVESHADOW\n	#if defined(SHADOWMAP_PSSM2)||defined(SHADOWMAP_PSSM3)\n		uniform mat4 u_lightShadowVP[4];\n	#endif\n	#ifdef SHADOWMAP_PSSM1 \n		varying vec4 v_lightMVPPos;\n	#endif\n#endif\n\nuniform DirectionLight u_DirectionLight;\n\nvoid main_castShadow()\n{\n	gl_FragColor=packDepth(v_posViewZ);\n	#if defined(DIFFUSEMAP)&&defined(ALPHATEST)\n		float alpha = texture2D(u_DiffuseTexture,v_Texcoord0).w;\n		if( alpha < u_AlphaTestValue )\n		{\n			discard;\n		}\n	#endif\n}\n\nvoid main_normal()\n{	\n	vec3 viewDir = normalize(v_ViewDir);\n	\n	vec2 uv0 = ParallaxOffset(viewDir);\n	\n	vec4 sg;\n	#ifdef DIFFUSETEXTURE\n		vec4 diffuseTextureColor = texture2D(u_DiffuseTexture, uv0);\n		vec4 diffuseColor = diffuseTextureColor * u_DiffuseColor;\n		sg = SpecularGloss(diffuseTextureColor.a, uv0);\n	#else\n		vec4 diffuseColor = u_DiffuseColor;\n		sg = SpecularGloss(1.0, uv0);\n	#endif\n	\n	#ifdef ALPHATEST\n		if(diffuseColor.a < u_AlphaTestValue)\n			discard;\n	#endif\n  \n	vec3 normal = UnpackScaleNormal(uv0);\n	\n	vec3 gi = (u_AmbientColor * Occlusion(uv0)).rgb;\n	\n	//float a = (sg.r+sg.g+sg.b) / 3.0;\n  \n	vec4 color = PBRSpecularDiectionLight(diffuseColor.rgb, sg.rgb, sg.a, normal,viewDir, u_DirectionLight, gi);\n	\n	color.a = diffuseColor.a;\n	\n	#ifdef EMISSION\n		vec4 emissionColor = u_EmissionColor;\n		#ifdef EMISSIONTEXTURE\n			emissionColor *=  texture2D(u_EmissionTexture, uv0);\n		#endif\n		color.rgb += emissionColor.rgb;\n	#endif\n	\n	#ifdef RECEIVESHADOW\n		float shadowValue = 1.0;\n		#ifdef SHADOWMAP_PSSM3\n			shadowValue = getShadowPSSM3( u_shadowMap1,u_shadowMap2,u_shadowMap3,u_lightShadowVP,u_shadowPSSMDistance,u_shadowPCFoffset,v_PositionWorld,v_posViewZ,0.001);\n		#endif\n		#ifdef SHADOWMAP_PSSM2\n			shadowValue = getShadowPSSM2( u_shadowMap1,u_shadowMap2,u_lightShadowVP,u_shadowPSSMDistance,u_shadowPCFoffset,v_PositionWorld,v_posViewZ,0.001);\n		#endif \n		#ifdef SHADOWMAP_PSSM1\n			shadowValue = getShadowPSSM1( u_shadowMap1,v_lightMVPPos,u_shadowPSSMDistance,u_shadowPCFoffset,v_posViewZ,0.001);\n		#endif\n		gl_FragColor = vec4(color.rgb * shadowValue, color.a);\n	#else\n		gl_FragColor = color;\n	#endif\n}\n\nvoid main()\n{\n	#ifdef CASTSHADOW		\n		main_castShadow();\n	#else\n		main_normal();\n	#endif  \n}\n\n";
-			shaderCompile=Shader3D.add("PBRSpecular",attributeMap,uniformMap);
-			shaderCompile._addShaderPass(vs,ps);
-			shaderCompile.addSpriteDefines(SkinnedMeshSprite3D.shaderDefines);
-			shaderCompile.addMaterialDefines(PBRSpecularMaterial.shaderDefines);
-			attributeMap={
-				'a_position':0,
-				'a_normal':3,
-				'uv':2};
-			uniformMap={
-				'irrad_mat_red':[10,3],
-				'irrad_mat_green':[11,3],
-				'irrad_mat_blue':[12,3],
-				'u_hdrexposure':[13,3],
-				'texBaseColor':[1,1],
-				'texNormal':[2,1],
-				'texSky':[11,1],
-				'texUnderWater':[3,1],
-				'texPrefilterdEnv':[8,3],
-				'texPrefilterDiff':[7,3],
-				'texWaterDisp':[4,1],
-				'texWaveDetail':[9,1],
-				'texDeepColor':[10,1],
-				'texWaterInfo':[16,1],
-				'texFoam':[17,1],
-				'GEOWAVE_UV_SCALE':[18,1],
-				'modelMatrix':[0,2],
-				'mvp':[1,2],
-				'cameraPosition':[0,3],
-				'u_curTm':[8,1],
-				'u_scrsize':[15,1],
-				'u_WaveInfoD':[13,1],
-				'u_WaveInfo':[12,1],
-				'u_WaveMainDir':[14,1],
-				'u_DeepScale':[20,1],
-				'u_SeaColor':[19,1],
-				'u_View':[1,3],
-				'u_Project':[2,3],
-				'u_FogStart':[1,4],
-				'u_FogRange':[2,4],
-				'u_FogColor':[0,4],
-				'u_DirectionLight.Direction':[3,4],
-				'u_DirectionLight.Diffuse':[4,4],
-				'u_PointLight.Position':[5,4],
-				'u_PointLight.Range':[6,4],
-				'u_PointLight.Attenuation':[7,4],
-				'u_PointLight.Diffuse':[8,4],
-				'u_SpotLight.Position':[9,4],
-				'u_SpotLight.Direction':[10,4],
-				'u_SpotLight.Range':[12,4],
-				'u_SpotLight.Spot':[11,4],
-				'u_SpotLight.Attenuation':[13,4],
-				'u_SpotLight.Diffuse':[14,4]};
-			vs="\nuniform mat4 modelMatrix;\n//uniform mat4 modelViewMatrix;\n//uniform mat4 projectionMatrix;\nuniform mat4 u_View;\nuniform mat4 u_Project;\nuniform mat4 mvp;\n//uniform mat4 viewMatrix;\nuniform vec3 cameraPosition;\nuniform float u_curTm;\n\nattribute vec3 a_position;\nattribute vec3 a_normal;\nattribute vec2 uv;\n//uniform sampler2D texWaterDisp;\n#ifdef USE_VERTEX_DEEPINFO\n#else\nuniform sampler2D texWaterInfo;\nvarying vec4 vWaterInfo;\nuniform float u_DeepScale;//texWaterInfo.r*vDeepScale\n#endif\nuniform float u_WaveMainDir;	//主波方向\nuniform float GEOWAVE_UV_SCALE ;//= 100.0;\n\n\nvarying vec2 vUv;\nvarying vec3 vWorldNorm;\nvarying vec3 vWorldTan;\nvarying vec3 vWorldBin;\nvarying vec4 vViewPos;\nvarying vec4 vWorldPos;\nvarying vec3 vLightDir;\nvarying vec3 vViewDir;\nvarying vec3 vDisp;\nvarying float fDeep;\nvarying mat2 matUVTrans;\nvarying float fFoam;\n\nconst float PI = 3.14159265358979323846264;\n\n#include \"WaveFunction.glsl\"\n\nvec2 getPosFromUV(vec2 uv){\n	return uv*50.;\n}\n\nvoid main() {\n	vec3 pos = a_position;\n    vUv = uv;\n	\n	//vDisp = texture2D(texWaterDisp,uv).rgb;\n	//vec3 disp = vDisp;\n	\n	//TODO 这里有个潜规则。\n	float tt = pos.y; pos.y=pos.z; pos.z=-tt;\n	\n	#ifdef USE_VERTEX_DEEPINFO\n	fDeep = -pos.y;\n	pos.y=0.0;\n	#else\n	vWaterInfo = texture2D(texWaterInfo,uv);\n	fDeep = vWaterInfo.r*u_DeepScale;\n	#endif\n	\n	\n	//计算波形\n	mat4 modelMat = modelMatrix;\n	vec3 opos, T,B,N;\n	float foams=0.;\n	vec2 uvpos = uv*GEOWAVE_UV_SCALE+vec2(modelMat[3][0],0.);//TODO 如果有旋转缩放怎么办\n	calcGerstnerWave(u_curTm, pos,fDeep, uvpos,opos,B,T,N,foams);\n	fFoam = foams;\n	gl_Position = mvp*vec4(opos,1.);\n	vWorldPos = modelMat*vec4(opos,1.);\n\n	vWorldNorm = normalize((modelMatrix*vec4(N,0.0)).xyz);\n	vWorldTan = normalize((modelMatrix*vec4(T,0.0)).xyz);\n	vWorldBin = normalize((modelMatrix*vec4(B,0.0)).xyz);\n    vViewDir = vWorldPos.xyz-cameraPosition; //这个不能取normalize，否则会引入非线性\n	\n	float s = sin(u_WaveMainDir);\n	float c = cos(u_WaveMainDir);\n	matUVTrans = mat2(c,-s,s,c);\n}\n";
-			ps="//#version 300 es\n\nprecision highp float;\nprecision lowp int;\n\nconst float PI = 3.14159265358979323846264;\nconst float _2PI = 6.2831853071796;\nvarying vec2 vUv;\nvarying vec3 vWorldNorm;\nvarying vec3 vWorldTan;\nvarying vec3 vWorldBin;\nvarying vec3 vViewDir;//入射。pos-cam\nvarying vec4 vViewPos;\nvarying vec4 vWorldPos;\nvarying float fDeep;\nvarying mat2 matUVTrans;\n#ifdef USE_VERTEX_DEEPINFO\n#else\nvarying vec4 vWaterInfo;\n#endif\nmat3 matTBNOff;//\n\n//\nuniform sampler2D texBaseColor;\nuniform sampler2D texNormal;\n#ifdef CUBE_ENV\nuniform samplerCube texSky;\n#else\nuniform sampler2D texSky;\n#endif\nuniform sampler2D texUnderWater;\nuniform sampler2D texWaveDetail;\n//uniform sampler2D texDeepColor;\nuniform sampler2D texFoam;\nvarying float fFoam;\nuniform float u_curTm;\nuniform vec2 u_scrsize;\nuniform vec3 u_SeaColor;//\n\nconst int NumTexWaves=4;\nconst float Amp_over_L = 0.01;\n//const vec3 SEA_COLOR1 = vec3(0.0292,0.672,0.7467);//大洋\n//const vec3 SEA_COLOR2 = vec3(0,0.927,0.43);//近海\n\nconst float _maxu8 = 255.0;\nconst float _maxu16 = 65535.0;\nconst float _shift8 = 256.0;    //平移的话是*256而不是255\nvec2 _RGBAToU16(const in vec4 rgba){\n    return vec2((rgba.r*_maxu8+rgba.g*_maxu8*_shift8)/_maxu16, (rgba.b*_maxu8+rgba.a*_maxu8*_shift8)/_maxu16);\n}\nvec3 _RGBEToRGB( const in vec4 rgba ){\n    float f = pow(2.0, rgba.w * 255.0 - (128.0 + 8.0));\n    return rgba.rgb * (255.0 * f);\n}\n\nfloat saturate(float v){\n    return min(max(v,0.),1.);\n}\n\n/*\n	各种 ToneMap\n*/\n//Reinhard\nvec3 ReinhardToneMapping(vec3 color, float adapted_lum) {\n    const float MIDDLE_GREY = 1.;\n    color *= MIDDLE_GREY / adapted_lum;\n    return color / (1.0 + color);\n}\n\n//CE2\nvec3 CEToneMapping(vec3 color, float adapted_lum){\n    return 1. - exp(-adapted_lum * color);\n}\n\n//UC2\nvec3 F1(vec3 x){\n	const float A = 0.22;\n	const float B = 0.30;\n	const float C = 0.10;\n	const float D = 0.20;\n	const float E = 0.01;\n	const float F = 0.30;\n \n	return ((x * (A * x + C * B) + D * E) / (x * (A * x + B) + D * F)) - E / F;\n}\n\nvec3 Uncharted2ToneMapping(vec3 color, float adapted_lum){\n	const vec3 WHITE = vec3(11.2);\n	return F1(1.6 * adapted_lum * color) / F1(WHITE);\n}\n\n//ACES\nvec3 ACESToneMapping(vec3 color, float adapted_lum){\n	const float A = 2.51;\n	const float B = 0.03;\n	const float C = 2.43;\n	const float D = 0.59;\n	const float E = 0.14;\n\n	color *= adapted_lum;\n	return (color * (A * color + B)) / (color * (C * color + D) + E);\n}\n\n/*\n* 对一个全景图进行采样。假设x轴指向中心。\n*/\nvec4 texPanorama(sampler2D tex, const in vec3 dir){\n	float envu = atan(dir.z,dir.x)/_2PI+0.5; 	\n	float envv = acos(dir.y)/PI;//(1.0-dir.y)/2.0;\n	return texture2D(tex,vec2(envu,envv));\n}\n\n/*\n	与位于0点的测试棒的相交测试交点\n	这个是瞎写的，只是为了测试\n*/\nbool hitClydiner(vec3 pos, vec3 dir, out vec3 hitpos, out vec3 hitnormal){\n	const float r = 0.5;\n	float a = dir.x*dir.x+dir.z*dir.z;\n	float b = 2.*dir.x*pos.x+2.*dir.z*pos.z;\n	float c = pos.x*pos.x+pos.z*pos.z-r*r;\n	float d = b*b-4.*a*c;\n	if(d>=0.0){\n		float t = (-b+sqrt(d))/2./a;\n		t =min(t, (-b-sqrt(d))/2./a);\n		hitpos = pos+dir*t;\n		return true;\n	}\n	/*\n	vec3 v1 = normalize(cross(dir,vec3(0.,1.,0.)));//公垂线\n	float dist = dot(pos,v1);//最短距离\n	if(abs(dist)<r){\n		return true;\n	}\n	*/\n	return false;\n}\n\n///* 根据散射公式来计算某个方向的颜色 *///\n//\nfloat phase_function(float costheta, float g, float g2){\n	return 1.5*( (1.0-g2) / (2.0+g2) ) * (1.0+costheta*costheta) / pow(1.0+g2-2.0*g*costheta, 1.5);	\n}\n\nconst float _density = .2;\nconst vec3 _vLightDir=vec3(0.,-1.,0.);//必须是规格化的\nconst int _SAMPLENUM = 20;\nconst float _K1 = 1.0;\nconst float _g = -0.93;\n//\nvec3 calcScatter(vec3 start, vec3 dir, vec3 end){\n	float len = length(end-start);\n	float costheta = dot(dir,_vLightDir);\n	float g2 = _g*_g;\n	float K = _K1*len*_density*phase_function(costheta,_g,g2);\n	//用分段的方式来积分\n	float dlen = len/float(_SAMPLENUM);//距离平分\n	float ddeep = (start.y-end.y)/float(_SAMPLENUM);//深度平分\n	float sum=0.;\n	for( int i=0; i<_SAMPLENUM; i++){\n		float fi = float(i);\n		float v1 = exp(-_density*(dlen+ddeep)*fi);//TODO 应该可以用分析法计算出来\n		sum += v1;\n	}\n	return vec3(K*sum);\n}\n///* 根据散射公式来计算某个方向的亮度  END *///\n\nconst float cDeep = -2.;	//假设水的深度\nvec3 getShuiDiColor(vec3 pos, vec3 dir, vec3 normal){\n	//一个无限大的水底，黑白格纹理。纹理长度为1米\n	float t = ( cDeep-pos.y )/dir.y;\n	if(t<0.) return vec3(1.,0.,0.);//TEST\n	bool bhit = false;\n	vec3 hitpos;\n	vec3 hitcolor;\n	vec3 hn;\n	if(hitClydiner(pos,dir,hitpos,hn) && hitpos.y>cDeep && hitpos.y<pos.y){\n		bhit=true;\n		hitcolor = vec3(.8,.8,.8);\n\n	}else\n	{\n		hitpos = pos+dir*t;\n		vec3 hp = floor(hitpos);\n		float a = mod((hp.x+hp.z),2.);\n		hitcolor = (a<.9)?vec3(0.,0.,0.):vec3(1.,1.,1.);\n		//hitcolor = texture2D(texUnderWater,hitpos.xz/10.).rgb;\n	}\n	\n	float l = length(hitpos-pos);\n	//return texture2D(texDeepColor,vec2(min(max(l/400.,0.),1.),0.5)).rgb;\n	//return SEA_COLOR1*calcScatter(pos,dir,hitpos);\n	float left = pow(0.8,l);//假设透过率为80%，则到达水底的时候的光强。\n	return mix(hitcolor,u_SeaColor,1.-left);\n}\n\n/*\n	view已经normalize了\n*/\nvec3 getRefractColor(vec3 view,vec3 normal){\n	vec3 T = refract(-view, normal, 0.7);\n	return getShuiDiColor(vWorldPos.xyz,T,normal); \n}\n\nvec4 calcWaterC(vec3 view, vec3 normal, float von, vec3 R, float rough){\n	/*\n	只有浪顶的法线向下，也就是波形形成了交叠的时候，才会这样，所以要通过参数控制避免出现这种情况，而不是在这里保护。\n	if(dot(R,vec3(0.,1.,0.))<0.){\n		R = -R;\n	}\n	*/\n	//vec3 refr = getRefractColor(-view,normal);\n#ifdef USE_REFR_TEX	\n	vec3 refr = texture2D(texUnderWater, gl_FragCoord.xy/u_scrsize+normal.xz/8.).rgb;\n#else\n	vec3 refr = u_SeaColor;\n#endif\n	float F0=0.02;\n	//菲涅尔，越大反射越强\n	float f =  F0+(1.0-F0)*exp2((-5.55473*von-6.98316)*von);\n	//float f = F0+(1.0-F0)*pow(1.-von,5.);\n	//能看到水底的程度。反射剩余的*水中的衰减\n	//float a = (1.-f)*(1.-deepk);\n#ifdef CUBE_ENV\n	vec4 reflc = textureCube(texSky,R);\n#else\n	vec4 reflc = texPanorama(texSky, R);\n#endif\n#ifdef HDR_ENV\n	vec3 refl = _RGBEToRGB(reflc)*f;\n#else\n	vec3 refl = reflc.rgb*f;\n#endif\n	//return vec4(refl*(1.-rough),1.);\n	\n	//vec3 refl = reflc.rgb*f;\n	vec3 final = mix(refr, u_SeaColor, min(fDeep/10.,1.))+refl*(max(0.,1.-rough));\n#ifdef HDR_ENV\n	final = ACESToneMapping(final,1.);//TODO 这个要uniform传入\n#endif\n	return vec4(final,f);\n}\n\nvoid main() {\n    vec3 normal =  normalize(vWorldNorm);\n	//如果uv=1为100米，希望每个细节纹理表示20米的小波形，则uv缩放是 100/20。细节纹理内部也要用这个值，即pos=uv*20\n	vec2 ruv = matUVTrans*vUv;\n	vec3 detailNorm = texture2D(texWaveDetail,fract(ruv*5.)).rgb*2.-vec3(1.);//TODO uv怎么算\n	float texNormScale = 2.*PI*float(NumTexWaves)*Amp_over_L*2.5;\n	detailNorm *= vec3(texNormScale,1.,texNormScale);\n	//旋转\n	//细节纹理来自rendertarget，因此需要颠倒z\n	\n	matTBNOff = mat3(matUVTrans[0][0],0.,matUVTrans[1][0],\n	0.,1.,0.,\n	matUVTrans[0][1],0.,matUVTrans[1][1]\n	);\n	\n	/*\n	matTBNOff = mat3(0.,0.,1.,\n	0.,1.,0.,\n	-1.,0.,0.\n	);\n	*/\n\n    mat3 tsn = mat3( vWorldBin, normal, vWorldTan);	\n    //normal = normalize(tsn * matTBNOff * detailNorm);\n	normal = normalize(tsn * detailNorm); //这个应该更正确。因为本身方向就是根据uv算的，如果是静态图片才需要转换。\n	//vec4 normtex = texture2D( texNormal, vUv );\n    vec3 view   = -normalize(vViewDir);//view 是指向camera的\n    float NoV = saturate(dot( view, normal ));\n    //vec3 R = 2. * NoV * normal - view;\n	\n#ifdef USE_FOAM	\n	vec4 foamc = (texture2D(texFoam,vUv*50.)+texture2D(texFoam,vUv*20.))/2.;\n	float nearcoast = 1.-min(fDeep/10.,1.);// 1.-vWaterInfo.r;\n	float foams = (nearcoast/4.+fFoam)*2.*nearcoast;\n#else\n	float foams =0.;\n#endif\n	\n	vec3 R = reflect(-view,normal);\n	vec4 wc = calcWaterC(view, normal,NoV,R, foams);\n\n	gl_FragColor.rgb = wc.rgb;//normalize(detailNorm).rrr;//((normal)+vec3(0.0))/1.;//normalize(normal).rgb;//texture2D(texWaveDetail,vUv).rgb;// fracColor * texture2D(texUnderWater, vUv*20.0).rgb;// vec3(1.0);//pbrl.rgb;\n    gl_FragColor.a = 1.0;//wc.a;\n#ifdef USE_FOAM\n	gl_FragColor.rgb = mix(gl_FragColor.rgb,vec3(1.),foamc.a*foams);\n	gl_FragColor.a = foamc.r;\n#endif\n	//if(mod(vUv.x*100.,1.0)<0.02 || mod(vUv.y*100.,1.0)<0.02) gl_FragColor.rgb=vec3(0.5,.5,.5);\n	//gl_FragColor.rgb = detailNorm;\n}\n";
-			shaderCompile=Shader3D.add("Water",attributeMap,uniformMap);
-			shaderCompile._addShaderPass(vs,ps);
-			shaderCompile.addMaterialDefines(WaterMaterial.shaderDefines);
+			ps="#ifdef FSHIGHPRECISION\n	precision highp float;\n#else\n	precision mediump float;\n#endif\n\nvarying vec2 v_Texcoord0;\nvarying vec3 v_Normal;\nvarying vec3 v_Tangent;\nvarying vec3 v_Binormal;\nvarying vec3 v_ViewDir;\n\nuniform vec4 u_AmbientColor;\nuniform vec4 u_DiffuseColor;\nuniform vec4 u_SpecularColor;\n\n#ifdef DIFFUSETEXTURE\n	uniform sampler2D u_DiffuseTexture;\n#endif\n#ifdef SPECULARTEXTURE\n	uniform sampler2D u_SpecularTexture;\n#endif\n#ifdef NORMALTEXTURE\n	uniform sampler2D u_NormalTexture;\n	uniform float u_normalScale;\n#endif\n#ifdef PARALLAXTEXTURE\n	uniform sampler2D u_ParallaxTexture;\n	uniform float u_parallaxScale;\n#endif\n#ifdef OCCLUSIONTEXTURE\n	uniform sampler2D u_OcclusionTexture;\n	uniform float u_occlusionStrength;\n#endif\n#ifdef EMISSION\n	#ifdef EMISSIONTEXTURE\n		uniform sampler2D u_EmissionTexture;\n	#endif\n	uniform vec4 u_EmissionColor;\n#endif\n#ifdef REFLECTMAP\n	uniform samplerCube u_ReflectTexture;\n	uniform float u_ReflectIntensity;\n#endif\n\nuniform float u_AlphaTestValue;\nuniform float u_metallic;\nuniform float u_smoothness;\nuniform float u_smoothnessScale;\n\n#include \"PBRSpecularLighting.glsl\"\n#include \"ShadowHelper.glsl\"\n\nvarying float v_posViewZ;\n#ifdef RECEIVESHADOW\n	#if defined(SHADOWMAP_PSSM2)||defined(SHADOWMAP_PSSM3)\n		uniform mat4 u_lightShadowVP[4];\n	#endif\n	#ifdef SHADOWMAP_PSSM1 \n		varying vec4 v_lightMVPPos;\n	#endif\n#endif\n\nuniform DirectionLight u_DirectionLight;\n\nvoid main_castShadow()\n{\n	gl_FragColor=packDepth(v_posViewZ);\n	#if defined(DIFFUSEMAP)&&defined(ALPHATEST)\n		float alpha = texture2D(u_DiffuseTexture,v_Texcoord0).w;\n		if( alpha < u_AlphaTestValue )\n		{\n			discard;\n		}\n	#endif\n}\n\nvoid main_normal()\n{	\n	vec3 viewDir = normalize(v_ViewDir);\n	\n	vec2 uv0 = ParallaxOffset(viewDir);\n	\n	vec4 sg;\n	#ifdef DIFFUSETEXTURE\n		vec4 diffuseTextureColor = texture2D(u_DiffuseTexture, uv0);\n		vec4 diffuseColor = diffuseTextureColor * u_DiffuseColor;\n		sg = SpecularGloss(diffuseTextureColor.a, uv0);\n	#else\n		vec4 diffuseColor = u_DiffuseColor;\n		sg = SpecularGloss(1.0, uv0);\n	#endif\n	\n	#ifdef ALPHATEST\n		if(diffuseColor.a < u_AlphaTestValue)\n			discard;\n	#endif\n  \n	vec3 normal = UnpackScaleNormal(uv0);\n	\n	LayaGI gi;\n	gi.diffuse = (u_AmbientColor * Occlusion(uv0)).rgb;\n	gi.specular = ReflectCubeMap(viewDir, normal);\n	\n	//float a = (sg.r+sg.g+sg.b) / 3.0;\n  \n	vec4 color = PBRSpecularDiectionLight(diffuseColor.rgb, sg.rgb, sg.a, normal,viewDir, u_DirectionLight, gi);\n	\n	color.a = diffuseColor.a;\n	\n	#ifdef EMISSION\n		vec4 emissionColor = u_EmissionColor;\n		#ifdef EMISSIONTEXTURE\n			emissionColor *=  texture2D(u_EmissionTexture, uv0);\n		#endif\n		color.rgb += emissionColor.rgb;\n	#endif\n	\n	#ifdef RECEIVESHADOW\n		float shadowValue = 1.0;\n		#ifdef SHADOWMAP_PSSM3\n			shadowValue = getShadowPSSM3( u_shadowMap1,u_shadowMap2,u_shadowMap3,u_lightShadowVP,u_shadowPSSMDistance,u_shadowPCFoffset,v_PositionWorld,v_posViewZ,0.001);\n		#endif\n		#ifdef SHADOWMAP_PSSM2\n			shadowValue = getShadowPSSM2( u_shadowMap1,u_shadowMap2,u_lightShadowVP,u_shadowPSSMDistance,u_shadowPCFoffset,v_PositionWorld,v_posViewZ,0.001);\n		#endif \n		#ifdef SHADOWMAP_PSSM1\n			shadowValue = getShadowPSSM1( u_shadowMap1,v_lightMVPPos,u_shadowPSSMDistance,u_shadowPCFoffset,v_posViewZ,0.001);\n		#endif\n		gl_FragColor = vec4(color.rgb * shadowValue, color.a);\n	#else\n		gl_FragColor = color;\n	#endif\n}\n\nvoid main()\n{\n	#ifdef CASTSHADOW		\n		main_castShadow();\n	#else\n		main_normal();\n	#endif  \n}\n\n";
+			shader=Shader3D.add("PBRSpecular",attributeMap,uniformMap,SkinnedMeshSprite3D.shaderDefines,PBRSpecularMaterial.shaderDefines);
+			shader._addShaderPass(vs,ps);
 			attributeMap={
 				'a_CornerTextureCoordinate':17,
 				'a_MeshPosition':0,
@@ -36615,10 +34649,8 @@ var Laya=window.Laya=(function(window,document){
 				'u_FogColor':[0,4]};
 			vs="#ifdef HIGHPRECISION\n  precision highp float;\n#else\n  precision mediump float;\n#endif\n\n#if defined(SPHERHBILLBOARD)||defined(STRETCHEDBILLBOARD)||defined(HORIZONTALBILLBOARD)||defined(VERTICALBILLBOARD)\n	attribute vec4 a_CornerTextureCoordinate;\n#endif\n#ifdef RENDERMODE_MESH\n	attribute vec3 a_MeshPosition;\n	attribute vec4 a_MeshColor;\n	attribute vec2 a_MeshTextureCoordinate;\n	varying vec4 v_MeshColor;\n#endif\n\nattribute vec4 a_ShapePositionStartLifeTime;\nattribute vec4 a_DirectionTime;\nattribute vec4 a_StartColor;\nattribute vec3 a_StartSize;\nattribute vec3 a_StartRotation0;\nattribute float a_StartSpeed;\n#if defined(COLOROVERLIFETIME)||defined(RANDOMCOLOROVERLIFETIME)||defined(SIZEOVERLIFETIMERANDOMCURVES)||defined(SIZEOVERLIFETIMERANDOMCURVESSEPERATE)||defined(ROTATIONOVERLIFETIMERANDOMCONSTANTS)||defined(ROTATIONOVERLIFETIMERANDOMCURVES)\n  attribute vec4 a_Random0;\n#endif\n#if defined(TEXTURESHEETANIMATIONRANDOMCURVE)||defined(VELOCITYOVERLIFETIMERANDOMCONSTANT)||defined(VELOCITYOVERLIFETIMERANDOMCURVE)\n  attribute vec4 a_Random1;\n#endif\nattribute vec3 a_SimulationWorldPostion;\nattribute vec4 a_SimulationWorldRotation;\n\nvarying float v_Discard;\nvarying vec4 v_Color;\n#ifdef DIFFUSEMAP\n	varying vec2 v_TextureCoordinate;\n#endif\n\nuniform float u_CurrentTime;\nuniform vec3 u_Gravity;\n\nuniform vec3 u_WorldPosition;\nuniform vec4 u_WorldRotation;\nuniform bool u_ThreeDStartRotation;\nuniform int u_ScalingMode;\nuniform vec3 u_PositionScale;\nuniform vec3 u_SizeScale;\nuniform mat4 u_View;\nuniform mat4 u_Projection;\n\n#ifdef STRETCHEDBILLBOARD\n	uniform vec3 u_CameraPosition;\n#endif\nuniform vec3 u_CameraDirection;//TODO:只有几种广告牌模式需要用\nuniform vec3 u_CameraUp;\n\nuniform  float u_StretchedBillboardLengthScale;\nuniform  float u_StretchedBillboardSpeedScale;\nuniform int u_SimulationSpace;\n\n#if defined(VELOCITYOVERLIFETIMECONSTANT)||defined(VELOCITYOVERLIFETIMECURVE)||defined(VELOCITYOVERLIFETIMERANDOMCONSTANT)||defined(VELOCITYOVERLIFETIMERANDOMCURVE)\n  uniform  int  u_VOLSpaceType;\n#endif\n#if defined(VELOCITYOVERLIFETIMECONSTANT)||defined(VELOCITYOVERLIFETIMERANDOMCONSTANT)\n  uniform  vec3 u_VOLVelocityConst;\n#endif\n#if defined(VELOCITYOVERLIFETIMECURVE)||defined(VELOCITYOVERLIFETIMERANDOMCURVE)\n  uniform  vec2 u_VOLVelocityGradientX[4];//x为key,y为速度\n  uniform  vec2 u_VOLVelocityGradientY[4];//x为key,y为速度\n  uniform  vec2 u_VOLVelocityGradientZ[4];//x为key,y为速度\n#endif\n#ifdef VELOCITYOVERLIFETIMERANDOMCONSTANT\n  uniform  vec3 u_VOLVelocityConstMax;\n#endif\n#ifdef VELOCITYOVERLIFETIMERANDOMCURVE\n  uniform  vec2 u_VOLVelocityGradientMaxX[4];//x为key,y为速度\n  uniform  vec2 u_VOLVelocityGradientMaxY[4];//x为key,y为速度\n  uniform  vec2 u_VOLVelocityGradientMaxZ[4];//x为key,y为速度\n#endif\n\n#ifdef COLOROVERLIFETIME\n  uniform  vec4 u_ColorOverLifeGradientColors[4];//x为key,yzw为Color\n  uniform  vec2 u_ColorOverLifeGradientAlphas[4];//x为key,y为Alpha\n#endif\n#ifdef RANDOMCOLOROVERLIFETIME\n  uniform  vec4 u_ColorOverLifeGradientColors[4];//x为key,yzw为Color\n  uniform  vec2 u_ColorOverLifeGradientAlphas[4];//x为key,y为Alpha\n  uniform  vec4 u_MaxColorOverLifeGradientColors[4];//x为key,yzw为Color\n  uniform  vec2 u_MaxColorOverLifeGradientAlphas[4];//x为key,y为Alpha\n#endif\n\n\n#if defined(SIZEOVERLIFETIMECURVE)||defined(SIZEOVERLIFETIMERANDOMCURVES)\n  uniform  vec2 u_SOLSizeGradient[4];//x为key,y为尺寸\n#endif\n#ifdef SIZEOVERLIFETIMERANDOMCURVES\n  uniform  vec2 u_SOLSizeGradientMax[4];//x为key,y为尺寸\n#endif\n#if defined(SIZEOVERLIFETIMECURVESEPERATE)||defined(SIZEOVERLIFETIMERANDOMCURVESSEPERATE)\n  uniform  vec2 u_SOLSizeGradientX[4];//x为key,y为尺寸\n  uniform  vec2 u_SOLSizeGradientY[4];//x为key,y为尺寸\n  uniform  vec2 u_SOLSizeGradientZ[4];//x为key,y为尺寸\n#endif\n#ifdef SIZEOVERLIFETIMERANDOMCURVESSEPERATE\n  uniform  vec2 u_SOLSizeGradientMaxX[4];//x为key,y为尺寸\n  uniform  vec2 u_SOLSizeGradientMaxY[4];//x为key,y为尺寸\n  uniform  vec2 u_SOLSizeGradientMaxZ[4];//x为key,y为尺寸\n#endif\n\n\n#ifdef ROTATIONOVERLIFETIME\n  #if defined(ROTATIONOVERLIFETIMECONSTANT)||defined(ROTATIONOVERLIFETIMERANDOMCONSTANTS)\n    uniform  float u_ROLAngularVelocityConst;\n  #endif\n  #ifdef ROTATIONOVERLIFETIMERANDOMCONSTANTS\n    uniform  float u_ROLAngularVelocityConstMax;\n  #endif\n  #if defined(ROTATIONOVERLIFETIMECURVE)||defined(ROTATIONOVERLIFETIMERANDOMCURVES)\n    uniform  vec2 u_ROLAngularVelocityGradient[4];//x为key,y为旋转\n  #endif\n  #ifdef ROTATIONOVERLIFETIMERANDOMCURVES\n    uniform  vec2 u_ROLAngularVelocityGradientMax[4];//x为key,y为旋转\n  #endif\n#endif\n#ifdef ROTATIONOVERLIFETIMESEPERATE\n  #if defined(ROTATIONOVERLIFETIMECONSTANT)||defined(ROTATIONOVERLIFETIMERANDOMCONSTANTS)\n    uniform  vec3 u_ROLAngularVelocityConstSeprarate;\n  #endif\n  #ifdef ROTATIONOVERLIFETIMERANDOMCONSTANTS\n    uniform  vec3 u_ROLAngularVelocityConstMaxSeprarate;\n  #endif\n  #if defined(ROTATIONOVERLIFETIMECURVE)||defined(ROTATIONOVERLIFETIMERANDOMCURVES)\n    uniform  vec2 u_ROLAngularVelocityGradientX[4];\n    uniform  vec2 u_ROLAngularVelocityGradientY[4];\n    uniform  vec2 u_ROLAngularVelocityGradientZ[4];\n	uniform  vec2 u_ROLAngularVelocityGradientW[4];\n  #endif\n  #ifdef ROTATIONOVERLIFETIMERANDOMCURVES\n    uniform  vec2 u_ROLAngularVelocityGradientMaxX[4];\n    uniform  vec2 u_ROLAngularVelocityGradientMaxY[4];\n    uniform  vec2 u_ROLAngularVelocityGradientMaxZ[4];\n	uniform  vec2 u_ROLAngularVelocityGradientMaxW[4];\n  #endif\n#endif\n\n#if defined(TEXTURESHEETANIMATIONCURVE)||defined(TEXTURESHEETANIMATIONRANDOMCURVE)\n  uniform  float u_TSACycles;\n  uniform  vec2 u_TSASubUVLength;\n  uniform  vec2 u_TSAGradientUVs[4];//x为key,y为frame\n#endif\n#ifdef TEXTURESHEETANIMATIONRANDOMCURVE\n  uniform  vec2 u_TSAMaxGradientUVs[4];//x为key,y为frame\n#endif\n\n#ifdef FOG\n	varying vec3 v_PositionWorld;\n#endif\n\n#ifdef TILINGOFFSET\n	uniform vec4 u_TilingOffset;\n#endif\n\nvec3 rotationByEuler(in vec3 vector,in vec3 rot)\n{\n	float halfRoll = rot.z * 0.5;\n    float halfPitch = rot.x * 0.5;\n	float halfYaw = rot.y * 0.5;\n\n	float sinRoll = sin(halfRoll);\n	float cosRoll = cos(halfRoll);\n	float sinPitch = sin(halfPitch);\n	float cosPitch = cos(halfPitch);\n	float sinYaw = sin(halfYaw);\n	float cosYaw = cos(halfYaw);\n\n	float quaX = (cosYaw * sinPitch * cosRoll) + (sinYaw * cosPitch * sinRoll);\n	float quaY = (sinYaw * cosPitch * cosRoll) - (cosYaw * sinPitch * sinRoll);\n	float quaZ = (cosYaw * cosPitch * sinRoll) - (sinYaw * sinPitch * cosRoll);\n	float quaW = (cosYaw * cosPitch * cosRoll) + (sinYaw * sinPitch * sinRoll);\n	\n	//vec4 q=vec4(quaX,quaY,quaZ,quaW);\n	//vec3 temp = cross(q.xyz, vector) + q.w * vector;\n	//return (cross(temp, -q.xyz) + dot(q.xyz,vector) * q.xyz + q.w * temp);\n	\n	float x = quaX + quaX;\n    float y = quaY + quaY;\n    float z = quaZ + quaZ;\n    float wx = quaW * x;\n    float wy = quaW * y;\n    float wz = quaW * z;\n	float xx = quaX * x;\n    float xy = quaX * y;\n	float xz = quaX * z;\n    float yy = quaY * y;\n    float yz = quaY * z;\n    float zz = quaZ * z;\n\n    return vec3(((vector.x * ((1.0 - yy) - zz)) + (vector.y * (xy - wz))) + (vector.z * (xz + wy)),\n                ((vector.x * (xy + wz)) + (vector.y * ((1.0 - xx) - zz))) + (vector.z * (yz - wx)),\n                ((vector.x * (xz - wy)) + (vector.y * (yz + wx))) + (vector.z * ((1.0 - xx) - yy)));\n	\n}\n\n//假定axis已经归一化\nvec3 rotationByAxis(in vec3 vector,in vec3 axis, in float angle)\n{\n	float halfAngle = angle * 0.5;\n	float sin = sin(halfAngle);\n	\n	float quaX = axis.x * sin;\n	float quaY = axis.y * sin;\n	float quaZ = axis.z * sin;\n	float quaW = cos(halfAngle);\n	\n	//vec4 q=vec4(quaX,quaY,quaZ,quaW);\n	//vec3 temp = cross(q.xyz, vector) + q.w * vector;\n	//return (cross(temp, -q.xyz) + dot(q.xyz,vector) * q.xyz + q.w * temp);\n	\n	float x = quaX + quaX;\n    float y = quaY + quaY;\n    float z = quaZ + quaZ;\n    float wx = quaW * x;\n    float wy = quaW * y;\n    float wz = quaW * z;\n	float xx = quaX * x;\n    float xy = quaX * y;\n	float xz = quaX * z;\n    float yy = quaY * y;\n    float yz = quaY * z;\n    float zz = quaZ * z;\n\n    return vec3(((vector.x * ((1.0 - yy) - zz)) + (vector.y * (xy - wz))) + (vector.z * (xz + wy)),\n                ((vector.x * (xy + wz)) + (vector.y * ((1.0 - xx) - zz))) + (vector.z * (yz - wx)),\n                ((vector.x * (xz - wy)) + (vector.y * (yz + wx))) + (vector.z * ((1.0 - xx) - yy)));\n	\n}\n\nvec3 rotationByQuaternions(in vec3 v,in vec4 q) \n{\n	return v + 2.0 * cross(q.xyz, cross(q.xyz, v) + q.w * v);\n}\n\n \n#if defined(VELOCITYOVERLIFETIMECURVE)||defined(VELOCITYOVERLIFETIMERANDOMCURVE)||defined(SIZEOVERLIFETIMECURVE)||defined(SIZEOVERLIFETIMECURVESEPERATE)||defined(SIZEOVERLIFETIMERANDOMCURVES)||defined(SIZEOVERLIFETIMERANDOMCURVESSEPERATE)\nfloat getCurValueFromGradientFloat(in vec2 gradientNumbers[4],in float normalizedAge)\n{\n	float curValue;\n	for(int i=1;i<4;i++)\n	{\n		vec2 gradientNumber=gradientNumbers[i];\n		float key=gradientNumber.x;\n		if(key>=normalizedAge)\n		{\n			vec2 lastGradientNumber=gradientNumbers[i-1];\n			float lastKey=lastGradientNumber.x;\n			float age=(normalizedAge-lastKey)/(key-lastKey);\n			curValue=mix(lastGradientNumber.y,gradientNumber.y,age);\n			break;\n		}\n	}\n	return curValue;\n}\n#endif\n\n#if defined(VELOCITYOVERLIFETIMECURVE)||defined(VELOCITYOVERLIFETIMERANDOMCURVE)||defined(ROTATIONOVERLIFETIMECURVE)||defined(ROTATIONOVERLIFETIMERANDOMCURVES)\nfloat getTotalValueFromGradientFloat(in vec2 gradientNumbers[4],in float normalizedAge)\n{\n	float totalValue=0.0;\n	for(int i=1;i<4;i++)\n	{\n		vec2 gradientNumber=gradientNumbers[i];\n		float key=gradientNumber.x;\n		vec2 lastGradientNumber=gradientNumbers[i-1];\n		float lastValue=lastGradientNumber.y;\n		\n		if(key>=normalizedAge){\n			float lastKey=lastGradientNumber.x;\n			float age=(normalizedAge-lastKey)/(key-lastKey);\n			totalValue+=(lastValue+mix(lastValue,gradientNumber.y,age))/2.0*a_ShapePositionStartLifeTime.w*(normalizedAge-lastKey);\n			break;\n		}\n		else{\n			totalValue+=(lastValue+gradientNumber.y)/2.0*a_ShapePositionStartLifeTime.w*(key-lastGradientNumber.x);\n		}\n	}\n	return totalValue;\n}\n#endif\n\n#if defined(COLOROVERLIFETIME)||defined(RANDOMCOLOROVERLIFETIME)\nvec4 getColorFromGradient(in vec2 gradientAlphas[4],in vec4 gradientColors[4],in float normalizedAge)\n{\n	vec4 overTimeColor;\n	for(int i=1;i<4;i++)\n	{\n		vec2 gradientAlpha=gradientAlphas[i];\n		float alphaKey=gradientAlpha.x;\n		if(alphaKey>=normalizedAge)\n		{\n			vec2 lastGradientAlpha=gradientAlphas[i-1];\n			float lastAlphaKey=lastGradientAlpha.x;\n			float age=(normalizedAge-lastAlphaKey)/(alphaKey-lastAlphaKey);\n			overTimeColor.a=mix(lastGradientAlpha.y,gradientAlpha.y,age);\n			break;\n		}\n	}\n	\n	for(int i=1;i<4;i++)\n	{\n		vec4 gradientColor=gradientColors[i];\n		float colorKey=gradientColor.x;\n		if(colorKey>=normalizedAge)\n		{\n			vec4 lastGradientColor=gradientColors[i-1];\n			float lastColorKey=lastGradientColor.x;\n			float age=(normalizedAge-lastColorKey)/(colorKey-lastColorKey);\n			overTimeColor.rgb=mix(gradientColors[i-1].yzw,gradientColor.yzw,age);\n			break;\n		}\n	}\n	return overTimeColor;\n}\n#endif\n\n\n#if defined(TEXTURESHEETANIMATIONCURVE)||defined(TEXTURESHEETANIMATIONRANDOMCURVE)\nfloat getFrameFromGradient(in vec2 gradientFrames[4],in float normalizedAge)\n{\n	float overTimeFrame;\n	for(int i=1;i<4;i++)\n	{\n		vec2 gradientFrame=gradientFrames[i];\n		float key=gradientFrame.x;\n		if(key>=normalizedAge)\n		{\n			vec2 lastGradientFrame=gradientFrames[i-1];\n			float lastKey=lastGradientFrame.x;\n			float age=(normalizedAge-lastKey)/(key-lastKey);\n			overTimeFrame=mix(lastGradientFrame.y,gradientFrame.y,age);\n			break;\n		}\n	}\n	return floor(overTimeFrame);\n}\n#endif\n\n#if defined(VELOCITYOVERLIFETIMECONSTANT)||defined(VELOCITYOVERLIFETIMECURVE)||defined(VELOCITYOVERLIFETIMERANDOMCONSTANT)||defined(VELOCITYOVERLIFETIMERANDOMCURVE)\nvec3 computeParticleLifeVelocity(in float normalizedAge)\n{\n  vec3 outLifeVelocity;\n  #ifdef VELOCITYOVERLIFETIMECONSTANT\n	 outLifeVelocity=u_VOLVelocityConst; \n  #endif\n  #ifdef VELOCITYOVERLIFETIMECURVE\n     outLifeVelocity= vec3(getCurValueFromGradientFloat(u_VOLVelocityGradientX,normalizedAge),getCurValueFromGradientFloat(u_VOLVelocityGradientY,normalizedAge),getCurValueFromGradientFloat(u_VOLVelocityGradientZ,normalizedAge));\n  #endif\n  #ifdef VELOCITYOVERLIFETIMERANDOMCONSTANT\n	 outLifeVelocity=mix(u_VOLVelocityConst,u_VOLVelocityConstMax,vec3(a_Random1.y,a_Random1.z,a_Random1.w)); \n  #endif\n  #ifdef VELOCITYOVERLIFETIMERANDOMCURVE\n     outLifeVelocity=vec3(mix(getCurValueFromGradientFloat(u_VOLVelocityGradientX,normalizedAge),getCurValueFromGradientFloat(u_VOLVelocityGradientMaxX,normalizedAge),a_Random1.y),\n	                 mix(getCurValueFromGradientFloat(u_VOLVelocityGradientY,normalizedAge),getCurValueFromGradientFloat(u_VOLVelocityGradientMaxY,normalizedAge),a_Random1.z),\n					 mix(getCurValueFromGradientFloat(u_VOLVelocityGradientZ,normalizedAge),getCurValueFromGradientFloat(u_VOLVelocityGradientMaxZ,normalizedAge),a_Random1.w));\n  #endif\n					\n  return outLifeVelocity;\n} \n#endif\n\nvec3 computeParticlePosition(in vec3 startVelocity, in vec3 lifeVelocity,in float age,in float normalizedAge,vec3 gravityVelocity,vec4 worldRotation)\n{\n   vec3 startPosition;\n   vec3 lifePosition;\n   #if defined(VELOCITYOVERLIFETIMECONSTANT)||defined(VELOCITYOVERLIFETIMECURVE)||defined(VELOCITYOVERLIFETIMERANDOMCONSTANT)||defined(VELOCITYOVERLIFETIMERANDOMCURVE)\n	#ifdef VELOCITYOVERLIFETIMECONSTANT\n		  startPosition=startVelocity*age;\n		  lifePosition=lifeVelocity*age;\n	#endif\n	#ifdef VELOCITYOVERLIFETIMECURVE\n		  startPosition=startVelocity*age;\n		  lifePosition=vec3(getTotalValueFromGradientFloat(u_VOLVelocityGradientX,normalizedAge),getTotalValueFromGradientFloat(u_VOLVelocityGradientY,normalizedAge),getTotalValueFromGradientFloat(u_VOLVelocityGradientZ,normalizedAge));\n	#endif\n	#ifdef VELOCITYOVERLIFETIMERANDOMCONSTANT\n		  startPosition=startVelocity*age;\n		  lifePosition=lifeVelocity*age;\n	#endif\n	#ifdef VELOCITYOVERLIFETIMERANDOMCURVE\n		  startPosition=startVelocity*age;\n		  lifePosition=vec3(mix(getTotalValueFromGradientFloat(u_VOLVelocityGradientX,normalizedAge),getTotalValueFromGradientFloat(u_VOLVelocityGradientMaxX,normalizedAge),a_Random1.y)\n	      ,mix(getTotalValueFromGradientFloat(u_VOLVelocityGradientY,normalizedAge),getTotalValueFromGradientFloat(u_VOLVelocityGradientMaxY,normalizedAge),a_Random1.z)\n	      ,mix(getTotalValueFromGradientFloat(u_VOLVelocityGradientZ,normalizedAge),getTotalValueFromGradientFloat(u_VOLVelocityGradientMaxZ,normalizedAge),a_Random1.w));\n	#endif\n	\n	vec3 finalPosition;\n	if(u_VOLSpaceType==0){\n	  if(u_ScalingMode!=2)\n	   finalPosition =rotationByQuaternions(u_PositionScale*(a_ShapePositionStartLifeTime.xyz+startPosition+lifePosition),worldRotation);\n	  else\n	   finalPosition =rotationByQuaternions(u_PositionScale*a_ShapePositionStartLifeTime.xyz+startPosition+lifePosition,worldRotation);\n	}\n	else{\n	  if(u_ScalingMode!=2)\n	    finalPosition = rotationByQuaternions(u_PositionScale*(a_ShapePositionStartLifeTime.xyz+startPosition),worldRotation)+lifePosition;\n	  else\n	    finalPosition = rotationByQuaternions(u_PositionScale*a_ShapePositionStartLifeTime.xyz+startPosition,worldRotation)+lifePosition;\n	}\n  #else\n	 startPosition=startVelocity*age;\n	 vec3 finalPosition;\n	 if(u_ScalingMode!=2)\n	   finalPosition = rotationByQuaternions(u_PositionScale*(a_ShapePositionStartLifeTime.xyz+startPosition),worldRotation);\n	 else\n	   finalPosition = rotationByQuaternions(u_PositionScale*a_ShapePositionStartLifeTime.xyz+startPosition,worldRotation);\n  #endif\n  \n  if(u_SimulationSpace==0)\n    finalPosition=finalPosition+a_SimulationWorldPostion;\n  else if(u_SimulationSpace==1) \n    finalPosition=finalPosition+u_WorldPosition;\n  \n  finalPosition+=0.5*gravityVelocity*age;\n \n  return  finalPosition;\n}\n\n\nvec4 computeParticleColor(in vec4 color,in float normalizedAge)\n{\n	#ifdef COLOROVERLIFETIME\n	  color*=getColorFromGradient(u_ColorOverLifeGradientAlphas,u_ColorOverLifeGradientColors,normalizedAge);\n	#endif\n	\n	#ifdef RANDOMCOLOROVERLIFETIME\n	  color*=mix(getColorFromGradient(u_ColorOverLifeGradientAlphas,u_ColorOverLifeGradientColors,normalizedAge),getColorFromGradient(u_MaxColorOverLifeGradientAlphas,u_MaxColorOverLifeGradientColors,normalizedAge),a_Random0.y);\n	#endif\n\n    return color;\n}\n\nvec2 computeParticleSizeBillbard(in vec2 size,in float normalizedAge)\n{\n	#ifdef SIZEOVERLIFETIMECURVE\n		size*=getCurValueFromGradientFloat(u_SOLSizeGradient,normalizedAge);\n	#endif\n	#ifdef SIZEOVERLIFETIMERANDOMCURVES\n	    size*=mix(getCurValueFromGradientFloat(u_SOLSizeGradient,normalizedAge),getCurValueFromGradientFloat(u_SOLSizeGradientMax,normalizedAge),a_Random0.z); \n	#endif\n	#ifdef SIZEOVERLIFETIMECURVESEPERATE\n		size*=vec2(getCurValueFromGradientFloat(u_SOLSizeGradientX,normalizedAge),getCurValueFromGradientFloat(u_SOLSizeGradientY,normalizedAge));\n	#endif\n	#ifdef SIZEOVERLIFETIMERANDOMCURVESSEPERATE\n	    size*=vec2(mix(getCurValueFromGradientFloat(u_SOLSizeGradientX,normalizedAge),getCurValueFromGradientFloat(u_SOLSizeGradientMaxX,normalizedAge),a_Random0.z)\n	    ,mix(getCurValueFromGradientFloat(u_SOLSizeGradientY,normalizedAge),getCurValueFromGradientFloat(u_SOLSizeGradientMaxY,normalizedAge),a_Random0.z));\n	#endif\n	return size;\n}\n\n#ifdef RENDERMODE_MESH\nvec3 computeParticleSizeMesh(in vec3 size,in float normalizedAge)\n{\n	#ifdef SIZEOVERLIFETIMECURVE\n		size*=getCurValueFromGradientFloat(u_SOLSizeGradient,normalizedAge);\n	#endif\n	#ifdef SIZEOVERLIFETIMERANDOMCURVES\n	    size*=mix(getCurValueFromGradientFloat(u_SOLSizeGradient,normalizedAge),getCurValueFromGradientFloat(u_SOLSizeGradientMax,normalizedAge),a_Random0.z); \n	#endif\n	#ifdef SIZEOVERLIFETIMECURVESEPERATE\n		size*=vec3(getCurValueFromGradientFloat(u_SOLSizeGradientX,normalizedAge),getCurValueFromGradientFloat(u_SOLSizeGradientY,normalizedAge),getCurValueFromGradientFloat(u_SOLSizeGradientZ,normalizedAge));\n	#endif\n	#ifdef SIZEOVERLIFETIMERANDOMCURVESSEPERATE\n	    size*=vec3(mix(getCurValueFromGradientFloat(u_SOLSizeGradientX,normalizedAge),getCurValueFromGradientFloat(u_SOLSizeGradientMaxX,normalizedAge),a_Random0.z)\n	    ,mix(getCurValueFromGradientFloat(u_SOLSizeGradientY,normalizedAge),getCurValueFromGradientFloat(u_SOLSizeGradientMaxY,normalizedAge),a_Random0.z)\n		,mix(getCurValueFromGradientFloat(u_SOLSizeGradientZ,normalizedAge),getCurValueFromGradientFloat(u_SOLSizeGradientMaxZ,normalizedAge),a_Random0.z));\n	#endif\n	return size;\n}\n#endif\n\nfloat computeParticleRotationFloat(in float rotation,in float age,in float normalizedAge)\n{ \n	#ifdef ROTATIONOVERLIFETIME\n		#ifdef ROTATIONOVERLIFETIMECONSTANT\n			float ageRot=u_ROLAngularVelocityConst*age;\n	        rotation+=ageRot;\n		#endif\n		#ifdef ROTATIONOVERLIFETIMECURVE\n			rotation+=getTotalValueFromGradientFloat(u_ROLAngularVelocityGradient,normalizedAge);\n		#endif\n		#ifdef ROTATIONOVERLIFETIMERANDOMCONSTANTS\n			float ageRot=mix(u_ROLAngularVelocityConst,u_ROLAngularVelocityConstMax,a_Random0.w)*age;\n	        rotation+=ageRot;\n	    #endif\n		#ifdef ROTATIONOVERLIFETIMERANDOMCURVES\n			rotation+=mix(getTotalValueFromGradientFloat(u_ROLAngularVelocityGradient,normalizedAge),getTotalValueFromGradientFloat(u_ROLAngularVelocityGradientMax,normalizedAge),a_Random0.w);\n		#endif\n	#endif\n	#ifdef ROTATIONOVERLIFETIMESEPERATE\n		#ifdef ROTATIONOVERLIFETIMECONSTANT\n			float ageRot=u_ROLAngularVelocityConstSeprarate.z*age;\n	        rotation+=ageRot;\n		#endif\n		#ifdef ROTATIONOVERLIFETIMECURVE\n			rotation+=getTotalValueFromGradientFloat(u_ROLAngularVelocityGradientZ,normalizedAge);\n		#endif\n		#ifdef ROTATIONOVERLIFETIMERANDOMCONSTANTS\n			float ageRot=mix(u_ROLAngularVelocityConstSeprarate.z,u_ROLAngularVelocityConstMaxSeprarate.z,a_Random0.w)*age;\n	        rotation+=ageRot;\n	    #endif\n		#ifdef ROTATIONOVERLIFETIMERANDOMCURVES\n			rotation+=mix(getTotalValueFromGradientFloat(u_ROLAngularVelocityGradientZ,normalizedAge),getTotalValueFromGradientFloat(u_ROLAngularVelocityGradientMaxZ,normalizedAge),a_Random0.w));\n		#endif\n	#endif\n	return rotation;\n}\n\n#if defined(RENDERMODE_MESH)&&(defined(ROTATIONOVERLIFETIME)||defined(ROTATIONOVERLIFETIMESEPERATE))\nvec3 computeParticleRotationVec3(in vec3 rotation,in float age,in float normalizedAge)\n{ \n	#ifdef ROTATIONOVERLIFETIME\n	#ifdef ROTATIONOVERLIFETIMECONSTANT\n			float ageRot=u_ROLAngularVelocityConst*age;\n	        rotation+=ageRot;\n		#endif\n		#ifdef ROTATIONOVERLIFETIMECURVE\n			rotation+=getTotalValueFromGradientFloat(u_ROLAngularVelocityGradient,normalizedAge);\n		#endif\n		#ifdef ROTATIONOVERLIFETIMERANDOMCONSTANTS\n			float ageRot=mix(u_ROLAngularVelocityConst,u_ROLAngularVelocityConstMax,a_Random0.w)*age;\n	        rotation+=ageRot;\n	    #endif\n		#ifdef ROTATIONOVERLIFETIMERANDOMCURVES\n			rotation+=mix(getTotalValueFromGradientFloat(u_ROLAngularVelocityGradient,normalizedAge),getTotalValueFromGradientFloat(u_ROLAngularVelocityGradientMax,normalizedAge),a_Random0.w);\n		#endif\n	#endif\n	#ifdef ROTATIONOVERLIFETIMESEPERATE\n	#ifdef ROTATIONOVERLIFETIMECONSTANT\n			vec3 ageRot=u_ROLAngularVelocityConstSeprarate*age;\n	        rotation+=ageRot;\n		#endif\n		#ifdef ROTATIONOVERLIFETIMECURVE\n			rotation+=vec3(getTotalValueFromGradientFloat(u_ROLAngularVelocityGradientX,normalizedAge),getTotalValueFromGradientFloat(u_ROLAngularVelocityGradientY,normalizedAge),getTotalValueFromGradientFloat(u_ROLAngularVelocityGradientZ,normalizedAge));\n		#endif\n		#ifdef ROTATIONOVERLIFETIMERANDOMCONSTANTS\n			vec3 ageRot=mix(u_ROLAngularVelocityConstSeprarate,u_ROLAngularVelocityConstMaxSeprarate,a_Random0.w)*age;\n	        rotation+=ageRot;\n	    #endif\n		#ifdef ROTATIONOVERLIFETIMERANDOMCURVES\n			rotation+=vec3(mix(getTotalValueFromGradientFloat(u_ROLAngularVelocityGradientX,normalizedAge),getTotalValueFromGradientFloat(u_ROLAngularVelocityGradientMaxX,normalizedAge),a_Random0.w)\n	        ,mix(getTotalValueFromGradientFloat(u_ROLAngularVelocityGradientY,normalizedAge),getTotalValueFromGradientFloat(u_ROLAngularVelocityGradientMaxY,normalizedAge),a_Random0.w)\n	        ,mix(getTotalValueFromGradientFloat(u_ROLAngularVelocityGradientZ,normalizedAge),getTotalValueFromGradientFloat(u_ROLAngularVelocityGradientMaxZ,normalizedAge),a_Random0.w));\n		#endif\n	#endif\n	return rotation;\n}\n#endif\n\nvec2 computeParticleUV(in vec2 uv,in float normalizedAge)\n{ \n	#ifdef TEXTURESHEETANIMATIONCURVE\n		float cycleNormalizedAge=normalizedAge*u_TSACycles;\n		float frame=getFrameFromGradient(u_TSAGradientUVs,cycleNormalizedAge-floor(cycleNormalizedAge));\n		float totalULength=frame*u_TSASubUVLength.x;\n		float floorTotalULength=floor(totalULength);\n	    uv.x+=totalULength-floorTotalULength;\n		uv.y+=floorTotalULength*u_TSASubUVLength.y;\n    #endif\n	#ifdef TEXTURESHEETANIMATIONRANDOMCURVE\n		float cycleNormalizedAge=normalizedAge*u_TSACycles;\n		float uvNormalizedAge=cycleNormalizedAge-floor(cycleNormalizedAge);\n	    float frame=floor(mix(getFrameFromGradient(u_TSAGradientUVs,uvNormalizedAge),getFrameFromGradient(u_TSAMaxGradientUVs,uvNormalizedAge),a_Random1.x));\n		float totalULength=frame*u_TSASubUVLength.x;\n		float floorTotalULength=floor(totalULength);\n	    uv.x+=totalULength-floorTotalULength;\n		uv.y+=floorTotalULength*u_TSASubUVLength.y;\n    #endif\n	return uv;\n}\n\nvoid main()\n{\n	float age = u_CurrentTime - a_DirectionTime.w;\n	float normalizedAge = age/a_ShapePositionStartLifeTime.w;\n	vec3 lifeVelocity;\n	if(normalizedAge<1.0){ \n	vec3 startVelocity=a_DirectionTime.xyz*a_StartSpeed;\n	#if defined(VELOCITYOVERLIFETIMECONSTANT)||defined(VELOCITYOVERLIFETIMECURVE)||defined(VELOCITYOVERLIFETIMERANDOMCONSTANT)||defined(VELOCITYOVERLIFETIMERANDOMCURVE)\n		lifeVelocity= computeParticleLifeVelocity(normalizedAge);//计算粒子生命周期速度\n	#endif \n	vec3 gravityVelocity=u_Gravity*age;\n	\n	vec4 worldRotation;\n	if(u_SimulationSpace==0)\n		worldRotation=a_SimulationWorldRotation;\n	else\n		worldRotation=u_WorldRotation;\n	\n	vec3 center=computeParticlePosition(startVelocity, lifeVelocity, age, normalizedAge,gravityVelocity,worldRotation);//计算粒子位置\n   \n   \n   #ifdef SPHERHBILLBOARD\n		vec2 corner=a_CornerTextureCoordinate.xy;//Billboard模式z轴无效\n        vec3 cameraUpVector =normalize(u_CameraUp);//TODO:是否外面归一化\n        vec3 sideVector = normalize(cross(u_CameraDirection,cameraUpVector));\n        vec3 upVector = normalize(cross(sideVector,u_CameraDirection));\n	    corner*=computeParticleSizeBillbard(a_StartSize.xy,normalizedAge);\n		#if defined(ROTATIONOVERLIFETIME)||defined(ROTATIONOVERLIFETIMESEPERATE)\n			if(u_ThreeDStartRotation){\n				vec3 rotation=vec3(a_StartRotation0.xy,computeParticleRotationFloat(a_StartRotation0.z,age,normalizedAge));\n				center += u_SizeScale.xzy*rotationByEuler(corner.x*sideVector+corner.y*upVector,rotation);\n			}\n			else{\n				float rot = computeParticleRotationFloat(a_StartRotation0.x, age,normalizedAge);\n				float c = cos(rot);\n				float s = sin(rot);\n				mat2 rotation= mat2(c, -s, s, c);\n				corner=rotation*corner;\n				center += u_SizeScale.xzy*(corner.x*sideVector+corner.y*upVector);\n			}\n		#else\n			if(u_ThreeDStartRotation){\n				center += u_SizeScale.xzy*rotationByEuler(corner.x*sideVector+corner.y*upVector,a_StartRotation0);\n			}\n			else{\n				float c = cos(a_StartRotation0.x);\n				float s = sin(a_StartRotation0.x);\n				mat2 rotation= mat2(c, -s, s, c);\n				corner=rotation*corner;\n				center += u_SizeScale.xzy*(corner.x*sideVector+corner.y*upVector);\n			}\n		#endif\n   #endif\n   \n   #ifdef STRETCHEDBILLBOARD\n	vec2 corner=a_CornerTextureCoordinate.xy;//Billboard模式z轴无效\n	vec3 velocity;\n	#if defined(VELOCITYOVERLIFETIMECONSTANT)||defined(VELOCITYOVERLIFETIMECURVE)||defined(VELOCITYOVERLIFETIMERANDOMCONSTANT)||defined(VELOCITYOVERLIFETIMERANDOMCURVE)\n	    if(u_VOLSpaceType==0)\n		  velocity=rotationByQuaternions(u_SizeScale*(startVelocity+lifeVelocity),worldRotation)+gravityVelocity;\n	    else\n		  velocity=rotationByQuaternions(u_SizeScale*startVelocity,worldRotation)+lifeVelocity+gravityVelocity;\n    #else\n	    velocity= rotationByQuaternions(u_SizeScale*startVelocity,worldRotation)+gravityVelocity;\n    #endif	\n		vec3 cameraUpVector = normalize(velocity);\n		vec3 direction = normalize(center-u_CameraPosition);\n        vec3 sideVector = normalize(cross(direction,normalize(velocity)));\n		\n		sideVector=u_SizeScale.xzy*sideVector;\n		cameraUpVector=length(vec3(u_SizeScale.x,0.0,0.0))*cameraUpVector;\n		\n	    vec2 size=computeParticleSizeBillbard(a_StartSize.xy,normalizedAge);\n		\n	    const mat2 rotaionZHalfPI=mat2(0.0, -1.0, 1.0, 0.0);\n	    corner=rotaionZHalfPI*corner;\n	    corner.y=corner.y-abs(corner.y);\n		\n	    float speed=length(velocity);//TODO:\n	    center +=sign(u_SizeScale.x)*(sign(u_StretchedBillboardLengthScale)*size.x*corner.x*sideVector+(speed*u_StretchedBillboardSpeedScale+size.y*u_StretchedBillboardLengthScale)*corner.y*cameraUpVector);\n   #endif\n   \n   #ifdef HORIZONTALBILLBOARD\n		vec2 corner=a_CornerTextureCoordinate.xy;//Billboard模式z轴无效\n        const vec3 cameraUpVector=vec3(0.0,0.0,1.0);\n	    const vec3 sideVector = vec3(-1.0,0.0,0.0);\n		\n		float rot = computeParticleRotationFloat(a_StartRotation0.x, age,normalizedAge);\n        float c = cos(rot);\n        float s = sin(rot);\n        mat2 rotation= mat2(c, -s, s, c);\n	    corner=rotation*corner*cos(0.78539816339744830961566084581988);//TODO:临时缩小cos45,不确定U3D原因\n		corner*=computeParticleSizeBillbard(a_StartSize.xy,normalizedAge);\n        center +=u_SizeScale.xzy*(corner.x*sideVector+ corner.y*cameraUpVector);\n   #endif\n   \n   #ifdef VERTICALBILLBOARD\n		vec2 corner=a_CornerTextureCoordinate.xy;//Billboard模式z轴无效\n        const vec3 cameraUpVector =vec3(0.0,1.0,0.0);\n        vec3 sideVector = normalize(cross(u_CameraDirection,cameraUpVector));\n		\n		float rot = computeParticleRotationFloat(a_StartRotation0.x, age,normalizedAge);\n        float c = cos(rot);\n        float s = sin(rot);\n        mat2 rotation= mat2(c, -s, s, c);\n	    corner=rotation*corner*cos(0.78539816339744830961566084581988);//TODO:临时缩小cos45,不确定U3D原因\n		corner*=computeParticleSizeBillbard(a_StartSize.xy,normalizedAge);\n        center +=u_SizeScale.xzy*(corner.x*sideVector+ corner.y*cameraUpVector);\n   #endif\n   \n   #ifdef RENDERMODE_MESH\n	    vec3 size=computeParticleSizeMesh(a_StartSize,normalizedAge);\n		#if defined(ROTATIONOVERLIFETIME)||defined(ROTATIONOVERLIFETIMESEPERATE)\n			if(u_ThreeDStartRotation){\n				vec3 rotation=vec3(a_StartRotation0.xy,-computeParticleRotationFloat(a_StartRotation0.z, age,normalizedAge));\n				center+= rotationByQuaternions(u_SizeScale*rotationByEuler(a_MeshPosition*size,rotation),worldRotation);\n			}\n			else{\n				#ifdef ROTATIONOVERLIFETIME\n					float angle=computeParticleRotationFloat(a_StartRotation0.x, age,normalizedAge);\n					if(a_ShapePositionStartLifeTime.x!=0.0||a_ShapePositionStartLifeTime.y!=0.0){\n						center+= (rotationByQuaternions(rotationByAxis(u_SizeScale*a_MeshPosition*size,normalize(cross(vec3(0.0,0.0,1.0),vec3(a_ShapePositionStartLifeTime.xy,0.0))),angle),worldRotation));//已验证\n					}\n					else{\n						#ifdef SHAPE\n							center+= u_SizeScale.xzy*(rotationByQuaternions(rotationByAxis(a_MeshPosition*size,vec3(0.0,-1.0,0.0),angle),worldRotation));\n						#else\n							if(u_SimulationSpace==0)\n								center+=rotationByAxis(u_SizeScale*a_MeshPosition*size,vec3(0.0,0.0,-1.0),angle);//已验证\n							else if(u_SimulationSpace==1)\n								center+=rotationByQuaternions(u_SizeScale*rotationByAxis(a_MeshPosition*size,vec3(0.0,0.0,-1.0),angle),worldRotation);//已验证\n						#endif\n					}\n				#endif\n				#ifdef ROTATIONOVERLIFETIMESEPERATE\n					//TODO:是否应合并if(u_ThreeDStartRotation)分支代码,待测试\n					vec3 angle=computeParticleRotationVec3(vec3(0.0,0.0,a_StartRotation0.z), age,normalizedAge);\n					center+= (rotationByQuaternions(rotationByEuler(u_SizeScale*a_MeshPosition*size,vec3(angle.x,angle.y,angle.z)),worldRotation));//已验证\n				#endif		\n			}\n		#else\n			if(u_ThreeDStartRotation){\n				center+= rotationByQuaternions(u_SizeScale*rotationByEuler(a_MeshPosition*size,a_StartRotation0),worldRotation);//已验证\n			}\n			else{\n				if(a_ShapePositionStartLifeTime.x!=0.0||a_ShapePositionStartLifeTime.y!=0.0){\n					if(u_SimulationSpace==0)\n						center+= rotationByAxis(u_SizeScale*a_MeshPosition*size,normalize(cross(vec3(0.0,0.0,1.0),vec3(a_ShapePositionStartLifeTime.xy,0.0))),a_StartRotation0.x);\n					else if(u_SimulationSpace==1)\n						center+= (rotationByQuaternions(u_SizeScale*rotationByAxis(a_MeshPosition*size,normalize(cross(vec3(0.0,0.0,1.0),vec3(a_ShapePositionStartLifeTime.xy,0.0))),a_StartRotation0.x),worldRotation));//已验证\n				}\n				else{\n					#ifdef SHAPE\n						if(u_SimulationSpace==0)\n							center+= u_SizeScale*rotationByAxis(a_MeshPosition*size,vec3(0.0,-1.0,0.0),a_StartRotation0.x);\n						else if(u_SimulationSpace==1)\n							center+= rotationByQuaternions(u_SizeScale*rotationByAxis(a_MeshPosition*size,vec3(0.0,-1.0,0.0),a_StartRotation0.x),worldRotation);	\n					#else\n						if(u_SimulationSpace==0)\n							center+= rotationByAxis(u_SizeScale*a_MeshPosition*size,vec3(0.0,0.0,-1.0),a_StartRotation0.x);\n						else if(u_SimulationSpace==1)\n							center+= rotationByQuaternions(u_SizeScale*rotationByAxis(a_MeshPosition*size,vec3(0.0,0.0,-1.0),a_StartRotation0.x),worldRotation);//已验证\n					#endif\n				}\n			}\n		#endif\n		v_MeshColor=a_MeshColor;\n   #endif\n   \n    gl_Position=u_Projection*u_View*vec4(center,1.0);\n    v_Color = computeParticleColor(a_StartColor, normalizedAge);\n	#ifdef DIFFUSEMAP\n		#if defined(SPHERHBILLBOARD)||defined(STRETCHEDBILLBOARD)||defined(HORIZONTALBILLBOARD)||defined(VERTICALBILLBOARD)\n			v_TextureCoordinate =computeParticleUV(a_CornerTextureCoordinate.zw, normalizedAge);\n		#endif\n		#ifdef RENDERMODE_MESH\n			v_TextureCoordinate =computeParticleUV(a_MeshTextureCoordinate, normalizedAge);\n		#endif\n		\n		#ifdef TILINGOFFSET\n			v_TextureCoordinate=vec2(v_TextureCoordinate.x,1.0-v_TextureCoordinate.y)*u_TilingOffset.xy+vec2(u_TilingOffset.z,-u_TilingOffset.w);//需要特殊处理\n			v_TextureCoordinate=vec2(v_TextureCoordinate.x,1.0-v_TextureCoordinate.y);//需要特殊处理\n		#endif\n	#endif\n    v_Discard=0.0;\n	  \n	#ifdef FOG\n		v_PositionWorld=center;\n	#endif\n   }\n   else\n	{\n		v_Discard=1.0;\n	}\n}\n\n";
 			ps="#ifdef HIGHPRECISION\n  precision highp float;\n#else\n  precision mediump float;\n#endif\n\nvarying float v_Discard;\nvarying vec4 v_Color;\nvarying vec2 v_TextureCoordinate;\nuniform sampler2D u_texture;\nuniform vec4 u_Tintcolor;\n\n#ifdef RENDERMODE_MESH\n	varying vec4 v_MeshColor;\n#endif\n\n#ifdef FOG\n	varying vec3 v_PositionWorld;\n	uniform vec3 u_CameraPosition;\n	uniform float u_FogStart;\n	uniform float u_FogRange;\n	#ifdef ADDTIVEFOG\n	#else\n		uniform vec3 u_FogColor;\n	#endif\n#endif\n\n\nvoid main()\n{	\n	#ifdef RENDERMODE_MESH\n		gl_FragColor=v_MeshColor;\n	#else\n		gl_FragColor=vec4(1.0);	\n	#endif\n		\n	#ifdef DIFFUSEMAP\n		if(v_Discard!=0.0)\n			discard;\n		#ifdef TINTCOLOR\n			gl_FragColor*=texture2D(u_texture,v_TextureCoordinate)*u_Tintcolor*2.0*v_Color;\n		#else\n			gl_FragColor*=texture2D(u_texture,v_TextureCoordinate)*v_Color;\n		#endif\n	#else\n		#ifdef TINTCOLOR\n			gl_FragColor*=u_Tintcolor*2.0*v_Color;\n		#else\n			gl_FragColor*=v_Color;\n		#endif\n	#endif\n	\n	#ifdef FOG\n		vec3 toEye=u_CameraPosition-v_PositionWorld;\n		float toEyeLength=length(toEye);\n		toEye/=toEyeLength;\n		\n		float lerpFact=clamp((toEyeLength-u_FogStart)/u_FogRange,0.0,1.0);\n		#ifdef ADDTIVEFOG\n			gl_FragColor.rgb=mix(gl_FragColor.rgb,vec3(0.0,0.0,0.0),lerpFact);\n		#else\n			gl_FragColor.rgb=mix(gl_FragColor.rgb,u_FogColor,lerpFact);\n		#endif\n	#endif\n}";
-			shaderCompile=Shader3D.add("PARTICLESHURIKEN",attributeMap,uniformMap);
-			shaderCompile._addShaderPass(vs,ps);
-			shaderCompile.addSpriteDefines(ShuriKenParticle3D.shaderDefines);
-			shaderCompile.addMaterialDefines(ShurikenParticleMaterial.shaderDefines);
+			shader=Shader3D.add("PARTICLESHURIKEN",attributeMap,uniformMap,ShuriKenParticle3D.shaderDefines,ShurikenParticleMaterial.shaderDefines);
+			shader._addShaderPass(vs,ps);
 			attributeMap={
 				'a_Position':0};
 			uniformMap={
@@ -36627,22 +34659,10 @@ var Laya=window.Laya=(function(window,document){
 				'u_Rotation':[3,1],
 				'u_CubeTexture':[4,1],
 				'u_MvpMatrix':[4,3]};
-			vs="attribute vec4 a_Position;\nuniform mat4 u_MvpMatrix;\nuniform float u_Rotation;\nvarying vec3 v_Texcoord;\n\n\nvec4 rotateAroundYInDegrees (vec4 vertex, float degrees)\n{\n	float angle = degrees * 3.141593 / 180.0;\n	float sina=sin(angle);\n	float cosa=cos(angle);\n	mat2 m = mat2(cosa, -sina, sina, cosa);\n	return vec4(m*vertex.xz, vertex.yw).xzyw;\n}\n		\nvoid main()\n{\n	vec4 position=rotateAroundYInDegrees(a_Position,u_Rotation);\n	gl_Position = (u_MvpMatrix*position).xyww;\n	v_Texcoord=vec3(-a_Position.x,a_Position.yz);\n}\n";
+			vs="attribute vec4 a_Position;\nuniform mat4 u_MvpMatrix;\nuniform float u_Rotation;\nvarying vec3 v_Texcoord;\n\n\nvec4 rotateAroundYInDegrees (vec4 vertex, float degrees)\n{\n	float angle = degrees * 3.141593 / 180.0;\n	float sina=sin(angle);\n	float cosa=cos(angle);\n	mat2 m = mat2(cosa, -sina, sina, cosa);\n	return vec4(m*vertex.xz, vertex.yw).xzyw;\n}\n		\nvoid main()\n{\n	vec4 position=rotateAroundYInDegrees(a_Position,u_Rotation);\n	gl_Position = (u_MvpMatrix*position).xyww;\n	v_Texcoord=vec3(-a_Position.x,a_Position.yz);//转换坐标系\n}\n";
 			ps="#ifdef HIGHPRECISION\nprecision highp float;\n#else\nprecision mediump float;\n#endif\n\nvarying vec3 v_Texcoord;\n\nuniform samplerCube u_CubeTexture;\nuniform float u_Exposure;\nuniform vec4 u_TintColor;\n\n\nvoid main()\n{	\n	vec3 color=textureCube(u_CubeTexture, v_Texcoord).rgb*u_TintColor.rgb*u_Exposure*2.0;\n	gl_FragColor=vec4(color,1.0);\n}\n\n";
-			shaderCompile=Shader3D.add("SkyBox",attributeMap,uniformMap);
-			shaderCompile._addShaderPass(vs,ps);
-			attributeMap={
-				'a_Position':0,
-				'a_Texcoord0':2};
-			uniformMap={
-				'u_Intensity':[Sky.INTENSITY,1],
-				'u_AlphaBlending':[Sky.ALPHABLENDING,1],
-				'u_texture':[Sky.DIFFUSETEXTURE,1],
-				'u_MvpMatrix':[4,3]};
-			vs="attribute vec4 a_Position;\nattribute vec2 a_Texcoord0;\nuniform mat4 u_MvpMatrix;\nvarying vec2 v_Texcoord;\n\n\nvoid main()\n{\n  gl_Position = (u_MvpMatrix*a_Position).xyww;\n  v_Texcoord = a_Texcoord0;\n}\n";
-			ps="#ifdef HIGHPRECISION\nprecision highp float;\n#else\nprecision mediump float;\n#endif\n\nuniform float u_Intensity;\nuniform float u_AlphaBlending;\nuniform sampler2D u_texture;\n\nvarying vec2 v_Texcoord;\n\n\nvoid main()\n{	\n  gl_FragColor=vec4(texture2D(u_texture, v_Texcoord).rgb*u_Intensity,u_AlphaBlending);\n}\n\n";
-			shaderCompile=Shader3D.add("SkyDome",attributeMap,uniformMap);
-			shaderCompile._addShaderPass(vs,ps);
+			shader=Shader3D.add("SkyBox",attributeMap,uniformMap);
+			shader._addShaderPass(vs,ps);
 			attributeMap={
 				'a_Position':0,
 				'a_Normal':3,
@@ -36690,11 +34710,9 @@ var Laya=window.Laya=(function(window,document){
 				'u_lightShadowVP':[16,4],
 				'u_shadowPCFoffset':[17,4]};
 			vs="attribute vec4 a_Position;\n\n#if defined(DIRECTIONLIGHT)||defined(POINTLIGHT)||defined(SPOTLIGHT)||defined(LIGHTMAP)\n	attribute vec3 a_Normal;\n	varying vec3 v_Normal;\n#endif\n\n#if defined(DIRECTIONLIGHT)||defined(POINTLIGHT)||defined(SPOTLIGHT)||(defined(RECEIVESHADOW)&&defined(SHADOWMAP_PSSM1))\n	uniform mat4 u_WorldMat;\n	varying vec3 v_PositionWorld;\n#endif\n\nvarying float v_posViewZ;\n#ifdef RECEIVESHADOW\n  #ifdef SHADOWMAP_PSSM1 \n  varying vec4 v_lightMVPPos;\n  uniform mat4 u_lightShadowVP[4];\n  #endif\n#endif\n\n#ifdef LIGHTMAP\n	uniform vec4 u_LightmapScaleOffset;\n	varying vec2 v_LightMapUV;\n#endif\n\nattribute vec2 a_Texcoord0;\nattribute vec2 a_Texcoord1;\nvarying vec2 v_Texcoord0;\nvarying vec2 v_Texcoord1;\nuniform mat4 u_MvpMatrix;\n\nvoid main()\n{\n	gl_Position = u_MvpMatrix * a_Position;\n	v_Texcoord0=a_Texcoord0;\n	v_Texcoord1=a_Texcoord1;\n	\n#if defined(DIRECTIONLIGHT)||defined(POINTLIGHT)||defined(SPOTLIGHT)\n	v_Normal=a_Normal;\n#endif\n\n#if defined(DIRECTIONLIGHT)||defined(POINTLIGHT)||defined(SPOTLIGHT)||(defined(RECEIVESHADOW)&&defined(SHADOWMAP_PSSM1))\n	v_PositionWorld=(u_WorldMat*a_Position).xyz;\n#endif\n\n#ifdef LIGHTMAP\n	//这个地方使用a_Normal 并不是真的代表normal，其实凑巧法线图的uv正好是符合 light_Map的UV\n	v_LightMapUV=vec2(a_Normal.x*u_LightmapScaleOffset.x+u_LightmapScaleOffset.z,(a_Normal.y-1.0)*u_LightmapScaleOffset.y+u_LightmapScaleOffset.w);\n#endif\n\n#ifdef RECEIVESHADOW\n	v_posViewZ = gl_Position.w;\n	#ifdef SHADOWMAP_PSSM1\n		v_lightMVPPos = u_lightShadowVP[0] * vec4(v_PositionWorld,1.0);\n	#endif\n#endif\n\n}";
-			ps="#ifdef HIGHPRECISION\n	precision highp float;\n#else\n	precision mediump float;\n#endif\n\n#include?DIRECTIONLIGHT||POINTLIGHT||SPOTLIGHT \"LightHelper.glsl\";\n\n#if defined(DIRECTIONLIGHT)||defined(POINTLIGHT)||defined(SPOTLIGHT)\n	uniform vec3 u_MaterialDiffuse;\n	uniform vec4 u_MaterialSpecular;\n	uniform vec3 u_CameraPos;\n	varying vec3 v_Normal;\n	varying vec3 v_PositionWorld;\n#endif\n\n#if defined(DIRECTIONLIGHT)||defined(POINTLIGHT)||defined(SPOTLIGHT)||defined(LIGHTMAP)\n	uniform vec3 u_MaterialAmbient;\n#endif\n\n#ifdef FOG\n	uniform float u_FogStart;\n	uniform float u_FogRange;\n	uniform vec3 u_FogColor;\n#endif\n\n\n#ifdef DIRECTIONLIGHT\n	uniform DirectionLight u_DirectionLight;\n#endif\n\n#ifdef POINTLIGHT\n	uniform PointLight u_PointLight;\n#endif\n\n#ifdef SPOTLIGHT\n	uniform SpotLight u_SpotLight;\n#endif\n\nuniform vec3 u_AmbientColor;\n\n#include \"ShadowHelper.glsl\"\n#ifdef RECEIVESHADOW\n	#if defined(SHADOWMAP_PSSM2)||defined(SHADOWMAP_PSSM3)\n	uniform mat4 u_lightShadowVP[4];\n	#endif\n	#ifdef SHADOWMAP_PSSM1 \n	varying vec4 v_lightMVPPos;\n	#endif\n#endif\nvarying float v_posViewZ;\n\n\nuniform sampler2D u_SplatAlphaTexture;\nuniform sampler2D u_NormalTexture;\nuniform sampler2D u_DiffuseTexture1;\nuniform sampler2D u_DiffuseTexture2;\nuniform sampler2D u_DiffuseTexture3;\nuniform sampler2D u_DiffuseTexture4;\nuniform vec2 u_DiffuseScale1;\nuniform vec2 u_DiffuseScale2;\nuniform vec2 u_DiffuseScale3;\nuniform vec2 u_DiffuseScale4;\nvarying vec2 v_Texcoord0;\nvarying vec2 v_Texcoord1;\n\n#ifdef LIGHTMAP\n	uniform sampler2D u_LightMap;\n	varying vec2 v_LightMapUV;\n#endif\n\nvoid main()\n{\n#ifdef DETAIL_NUM1\n	vec4 color1 = texture2D(u_DiffuseTexture1, v_Texcoord1/u_DiffuseScale1);\n	vec4 splatAlpha = texture2D(u_SplatAlphaTexture, v_Texcoord0);\n	gl_FragColor.xyz = color1.xyz;\n#endif\n#ifdef DETAIL_NUM2\n	vec4 color1 = texture2D(u_DiffuseTexture1, v_Texcoord1/u_DiffuseScale1);\n	vec4 color2 = texture2D(u_DiffuseTexture2, v_Texcoord1/u_DiffuseScale2);\n	vec4 splatAlpha = texture2D(u_SplatAlphaTexture, v_Texcoord0);\n	gl_FragColor.xyz = color1.xyz * (1.0-splatAlpha.r) + color2.xyz * splatAlpha.r;\n#endif\n#ifdef DETAIL_NUM3\n	vec4 color1 = texture2D(u_DiffuseTexture1, v_Texcoord1/u_DiffuseScale1);\n	vec4 color2 = texture2D(u_DiffuseTexture2, v_Texcoord1/u_DiffuseScale2);\n	vec4 color3 = texture2D(u_DiffuseTexture3, v_Texcoord1/u_DiffuseScale3);\n	vec4 splatAlpha = texture2D(u_SplatAlphaTexture, v_Texcoord0);\n	gl_FragColor.xyz = color1.xyz * (1.0-(splatAlpha.r+splatAlpha.g)) + color2.xyz * splatAlpha.r + color3.xyz * splatAlpha.g;\n#endif\n#ifdef DETAIL_NUM4\n	vec4 color1 = texture2D(u_DiffuseTexture1, v_Texcoord1/u_DiffuseScale1);\n	vec4 color2 = texture2D(u_DiffuseTexture2, v_Texcoord1/u_DiffuseScale2);\n	vec4 color3 = texture2D(u_DiffuseTexture3, v_Texcoord1/u_DiffuseScale3);\n	vec4 color4 = texture2D(u_DiffuseTexture4, v_Texcoord1/u_DiffuseScale4);\n	vec4 splatAlpha = texture2D(u_SplatAlphaTexture, v_Texcoord0);\n	gl_FragColor.xyz = color1.xyz * (1.0-(splatAlpha.r+splatAlpha.g+splatAlpha.b))+ color2.xyz * splatAlpha.r + color3.xyz * splatAlpha.g + color4.xyz * splatAlpha.b;\n#endif\n	gl_FragColor.w = splatAlpha.a;\n		\n#if defined(DIRECTIONLIGHT)||defined(POINTLIGHT)||defined(SPOTLIGHT)\n    vec3 normal = texture2D(u_NormalTexture,v_Normal.xy).xyz;\n	normal = normal*2.0 - vec3(1.0);\n	vec3 diffuse = vec3(0.0);\n	vec3 ambient = vec3(0.0);\n	vec3 specular= vec3(0.0);\n	vec3 dif, amb, spe;\n#endif\n\n#if defined(DIRECTIONLIGHT)||defined(POINTLIGHT)||defined(SPOTLIGHT)||defined(FOG)\n	vec3 toEye;\n	#ifdef FOG\n		toEye=u_CameraPos-v_PositionWorld;\n		float toEyeLength=length(toEye);\n		toEye/=toEyeLength;\n	#else\n		toEye=normalize(u_CameraPos-v_PositionWorld);\n	#endif\n#endif\n\n#ifdef DIRECTIONLIGHT\n	computeDirectionLight(u_MaterialDiffuse,u_MaterialAmbient,u_MaterialSpecular,u_DirectionLight,u_AmbientColor,normal,toEye, dif, amb, spe);\n	diffuse+=dif;\n	ambient+=amb;\n	specular+=spe;\n#endif\n \n#ifdef POINTLIGHT\n	computePointLight(u_MaterialDiffuse,u_MaterialAmbient,u_MaterialSpecular,u_PointLight,u_AmbientColor,v_PositionWorld,normal,toEye, dif, amb, spe);\n	diffuse+=dif;\n	ambient+=amb;\n	specular+=spe;\n#endif\n\n#ifdef SPOTLIGHT\n	ComputeSpotLight(u_MaterialDiffuse,u_MaterialAmbient,u_MaterialSpecular,u_SpotLight,u_AmbientColor,v_PositionWorld,normal,toEye, dif, amb, spe);\n	diffuse+=dif;\n	ambient+=amb;\n	specular+=spe;\n#endif\n\n#ifdef RECEIVESHADOW\n	float shadowValue = 1.0;\n	#ifdef SHADOWMAP_PSSM3\n		shadowValue = getShadowPSSM3( u_shadowMap1,u_shadowMap2,u_shadowMap3,u_lightShadowVP,u_shadowPSSMDistance,u_shadowPCFoffset,v_PositionWorld,v_posViewZ,0.001);\n	#endif\n	#ifdef SHADOWMAP_PSSM2\n		shadowValue = getShadowPSSM2( u_shadowMap1,u_shadowMap2,u_lightShadowVP,u_shadowPSSMDistance,u_shadowPCFoffset,v_PositionWorld,v_posViewZ,0.001);\n	#endif \n	#ifdef SHADOWMAP_PSSM1\n		shadowValue = getShadowPSSM1( u_shadowMap1,v_lightMVPPos,u_shadowPSSMDistance,u_shadowPCFoffset,v_posViewZ,0.001);\n	#endif\n#endif\n\n#ifdef LIGHTMAP\n	#if defined(DIRECTIONLIGHT)||defined(POINTLIGHT)||defined(SPOTLIGHT)\n		gl_FragColor.rgb=gl_FragColor.rgb*(u_MaterialAmbient + texture2D(u_LightMap, v_LightMapUV).rgb);\n	#else\n		#if defined(RECEIVESHADOW)\n			gl_FragColor.rgb=gl_FragColor.rgb*(u_MaterialAmbient + texture2D(u_LightMap, v_LightMapUV).rgb * shadowValue);\n		#else\n			gl_FragColor.rgb=gl_FragColor.rgb*(u_MaterialAmbient + texture2D(u_LightMap, v_LightMapUV).rgb);\n		#endif\n	#endif\n#endif\n\n#if defined(DIRECTIONLIGHT)||defined(POINTLIGHT)||defined(SPOTLIGHT)\n	#ifdef RECEIVESHADOW\n		gl_FragColor =vec4( gl_FragColor.rgb*(ambient + diffuse*shadowValue) + specular * shadowValue,gl_FragColor.a);\n	#else\n		gl_FragColor =vec4( gl_FragColor.rgb*(ambient + diffuse) + specular, gl_FragColor.a);\n	#endif\n#endif\n\n#ifdef FOG\n	float lerpFact=clamp((toEyeLength-u_FogStart)/u_FogRange,0.0,1.0);\n	gl_FragColor.rgb=mix(gl_FragColor.rgb,u_FogColor,lerpFact);\n#endif\n}\n\n";
-			shaderCompile=Shader3D.add("Terrain",attributeMap,uniformMap);
-			shaderCompile._addShaderPass(vs,ps);
-			shaderCompile.addSpriteDefines(RenderableSprite3D.shaderDefines);
-			shaderCompile.addMaterialDefines(TerrainMaterial.shaderDefines);
+			ps="#ifdef HIGHPRECISION\n	precision highp float;\n#else\n	precision mediump float;\n#endif\n\n#include?DIRECTIONLIGHT||POINTLIGHT||SPOTLIGHT \"LightHelper.glsl\";\n\n#if defined(DIRECTIONLIGHT)||defined(POINTLIGHT)||defined(SPOTLIGHT)\n	uniform vec3 u_MaterialDiffuse;\n	uniform vec4 u_MaterialSpecular;\n	uniform vec3 u_CameraPos;\n	varying vec3 v_Normal;\n	varying vec3 v_PositionWorld;\n#endif\n\n#if defined(DIRECTIONLIGHT)||defined(POINTLIGHT)||defined(SPOTLIGHT)||defined(LIGHTMAP)\n	uniform vec3 u_MaterialAmbient;\n#endif\n\n#ifdef FOG\n	uniform float u_FogStart;\n	uniform float u_FogRange;\n	uniform vec3 u_FogColor;\n#endif\n\n\n#ifdef DIRECTIONLIGHT\n	uniform DirectionLight u_DirectionLight;\n#endif\n\n#ifdef POINTLIGHT\n	uniform PointLight u_PointLight;\n#endif\n\n#ifdef SPOTLIGHT\n	uniform SpotLight u_SpotLight;\n#endif\n\nuniform vec3 u_AmbientColor;\n\n#include \"ShadowHelper.glsl\"\n#ifdef RECEIVESHADOW\n	#if defined(SHADOWMAP_PSSM2)||defined(SHADOWMAP_PSSM3)\n	uniform mat4 u_lightShadowVP[4];\n	#endif\n	#ifdef SHADOWMAP_PSSM1 \n	varying vec4 v_lightMVPPos;\n	#endif\n#endif\nvarying float v_posViewZ;\n\n\nuniform sampler2D u_SplatAlphaTexture;\nuniform sampler2D u_NormalTexture;\nuniform sampler2D u_DiffuseTexture1;\nuniform sampler2D u_DiffuseTexture2;\nuniform sampler2D u_DiffuseTexture3;\nuniform sampler2D u_DiffuseTexture4;\nuniform vec2 u_DiffuseScale1;\nuniform vec2 u_DiffuseScale2;\nuniform vec2 u_DiffuseScale3;\nuniform vec2 u_DiffuseScale4;\nvarying vec2 v_Texcoord0;\nvarying vec2 v_Texcoord1;\n\n#ifdef LIGHTMAP\n	uniform sampler2D u_LightMap;\n	varying vec2 v_LightMapUV;\n#endif\n\nvoid main()\n{\n	#ifdef DETAIL_NUM1\n		vec4 color1 = texture2D(u_DiffuseTexture1, v_Texcoord1/u_DiffuseScale1);\n		vec4 splatAlpha = texture2D(u_SplatAlphaTexture, v_Texcoord0);\n		gl_FragColor.xyz = color1.xyz;\n		gl_FragColor.w = splatAlpha.a;\n	#endif\n	#ifdef DETAIL_NUM2\n		vec4 color1 = texture2D(u_DiffuseTexture1, v_Texcoord1/u_DiffuseScale1);\n		vec4 color2 = texture2D(u_DiffuseTexture2, v_Texcoord1/u_DiffuseScale2);\n		vec4 splatAlpha = texture2D(u_SplatAlphaTexture, v_Texcoord0);\n		gl_FragColor.xyz = color1.xyz * (1.0-splatAlpha.r) + color2.xyz * splatAlpha.r;\n		gl_FragColor.w = splatAlpha.a;\n	#endif\n	#ifdef DETAIL_NUM3\n		vec4 color1 = texture2D(u_DiffuseTexture1, v_Texcoord1/u_DiffuseScale1);\n		vec4 color2 = texture2D(u_DiffuseTexture2, v_Texcoord1/u_DiffuseScale2);\n		vec4 color3 = texture2D(u_DiffuseTexture3, v_Texcoord1/u_DiffuseScale3);\n		vec4 splatAlpha = texture2D(u_SplatAlphaTexture, v_Texcoord0);\n		gl_FragColor.xyz = color1.xyz * (1.0-(splatAlpha.r+splatAlpha.g)) + color2.xyz * splatAlpha.r + color3.xyz * splatAlpha.g;\n		gl_FragColor.w = splatAlpha.a;\n	#endif\n	#ifdef DETAIL_NUM4\n		vec4 color1 = texture2D(u_DiffuseTexture1, v_Texcoord1/u_DiffuseScale1);\n		vec4 color2 = texture2D(u_DiffuseTexture2, v_Texcoord1/u_DiffuseScale2);\n		vec4 color3 = texture2D(u_DiffuseTexture3, v_Texcoord1/u_DiffuseScale3);\n		vec4 color4 = texture2D(u_DiffuseTexture4, v_Texcoord1/u_DiffuseScale4);\n		vec4 splatAlpha = texture2D(u_SplatAlphaTexture, v_Texcoord0);\n		gl_FragColor.xyz = color1.xyz * (1.0-(splatAlpha.r+splatAlpha.g+splatAlpha.b))+ color2.xyz * splatAlpha.r + color3.xyz * splatAlpha.g + color4.xyz * splatAlpha.b;\n		gl_FragColor.w = splatAlpha.a;\n	#endif\n	\n		\n#if defined(DIRECTIONLIGHT)||defined(POINTLIGHT)||defined(SPOTLIGHT)\n    vec3 normal = texture2D(u_NormalTexture,v_Normal.xy).xyz;\n	normal = normal*2.0 - vec3(1.0);\n	vec3 diffuse = vec3(0.0);\n	vec3 ambient = vec3(0.0);\n	vec3 specular= vec3(0.0);\n	vec3 dif, amb, spe;\n#endif\n\n#if defined(DIRECTIONLIGHT)||defined(POINTLIGHT)||defined(SPOTLIGHT)||defined(FOG)\n	vec3 toEye;\n	#ifdef FOG\n		toEye=u_CameraPos-v_PositionWorld;\n		float toEyeLength=length(toEye);\n		toEye/=toEyeLength;\n	#else\n		toEye=normalize(u_CameraPos-v_PositionWorld);\n	#endif\n#endif\n\n#ifdef DIRECTIONLIGHT\n	computeDirectionLight(u_MaterialDiffuse,u_MaterialAmbient,u_MaterialSpecular,u_DirectionLight,u_AmbientColor,normal,toEye, dif, amb, spe);\n	diffuse+=dif;\n	ambient+=amb;\n	specular+=spe;\n#endif\n \n#ifdef POINTLIGHT\n	computePointLight(u_MaterialDiffuse,u_MaterialAmbient,u_MaterialSpecular,u_PointLight,u_AmbientColor,v_PositionWorld,normal,toEye, dif, amb, spe);\n	diffuse+=dif;\n	ambient+=amb;\n	specular+=spe;\n#endif\n\n#ifdef SPOTLIGHT\n	ComputeSpotLight(u_MaterialDiffuse,u_MaterialAmbient,u_MaterialSpecular,u_SpotLight,u_AmbientColor,v_PositionWorld,normal,toEye, dif, amb, spe);\n	diffuse+=dif;\n	ambient+=amb;\n	specular+=spe;\n#endif\n\n#ifdef RECEIVESHADOW\n	float shadowValue = 1.0;\n	#ifdef SHADOWMAP_PSSM3\n		shadowValue = getShadowPSSM3( u_shadowMap1,u_shadowMap2,u_shadowMap3,u_lightShadowVP,u_shadowPSSMDistance,u_shadowPCFoffset,v_PositionWorld,v_posViewZ,0.001);\n	#endif\n	#ifdef SHADOWMAP_PSSM2\n		shadowValue = getShadowPSSM2( u_shadowMap1,u_shadowMap2,u_lightShadowVP,u_shadowPSSMDistance,u_shadowPCFoffset,v_PositionWorld,v_posViewZ,0.001);\n	#endif \n	#ifdef SHADOWMAP_PSSM1\n		shadowValue = getShadowPSSM1( u_shadowMap1,v_lightMVPPos,u_shadowPSSMDistance,u_shadowPCFoffset,v_posViewZ,0.001);\n	#endif\n#endif\n\n#ifdef LIGHTMAP\n	#if defined(DIRECTIONLIGHT)||defined(POINTLIGHT)||defined(SPOTLIGHT)\n		gl_FragColor.rgb=gl_FragColor.rgb*(u_MaterialAmbient + texture2D(u_LightMap, v_LightMapUV).rgb);\n	#else\n		#if defined(RECEIVESHADOW)\n			gl_FragColor.rgb=gl_FragColor.rgb*(u_MaterialAmbient + texture2D(u_LightMap, v_LightMapUV).rgb * shadowValue);\n		#else\n			gl_FragColor.rgb=gl_FragColor.rgb*(u_MaterialAmbient + texture2D(u_LightMap, v_LightMapUV).rgb);\n		#endif\n	#endif\n#endif\n\n#if defined(DIRECTIONLIGHT)||defined(POINTLIGHT)||defined(SPOTLIGHT)\n	#ifdef RECEIVESHADOW\n		gl_FragColor =vec4( gl_FragColor.rgb*(ambient + diffuse*shadowValue) + specular * shadowValue,gl_FragColor.a);\n	#else\n		gl_FragColor =vec4( gl_FragColor.rgb*(ambient + diffuse) + specular, gl_FragColor.a);\n	#endif\n#endif\n\n#ifdef FOG\n	float lerpFact=clamp((toEyeLength-u_FogStart)/u_FogRange,0.0,1.0);\n	gl_FragColor.rgb=mix(gl_FragColor.rgb,u_FogColor,lerpFact);\n#endif\n}\n\n";
+			shader=Shader3D.add("Terrain",attributeMap,uniformMap,RenderableSprite3D.shaderDefines,TerrainMaterial.shaderDefines);
+			shader._addShaderPass(vs,ps);
 			attributeMap={
 				'a_Position':0,
 				'a_Normal':3,
@@ -36746,10 +34764,33 @@ var Laya=window.Laya=(function(window,document){
 			};
 			vs="attribute vec4 a_Position;\nattribute vec2 a_Texcoord0;\n\nuniform mat4 u_MvpMatrix;\n\nvarying vec2 v_Texcoord0;\n\n#if defined(DIRECTIONLIGHT)||defined(POINTLIGHT)||defined(SPOTLIGHT)||defined(LIGHTMAP)\n	attribute vec3 a_Normal;\n	varying vec3 v_Normal;\n#endif\n\n#if defined(DIRECTIONLIGHT)||defined(POINTLIGHT)||defined(SPOTLIGHT)||defined(FOG)||(defined(RECEIVESHADOW)&&defined(SHADOWMAP_PSSM1))\n	uniform mat4 u_WorldMat;\n	varying vec3 v_PositionWorld;\n#endif\n\n#ifdef LIGHTMAP\n	varying vec2 v_LightMapUV;\n	uniform vec4 u_LightmapScaleOffset;\n#endif\n\n#ifdef RECEIVESHADOW\n	varying float v_posViewZ;\n	#ifdef SHADOWMAP_PSSM1 \n		varying vec4 v_lightMVPPos;\n		uniform mat4 u_lightShadowVP[4];\n	#endif\n#endif\n\nvoid main()\n{\n	gl_Position = u_MvpMatrix * a_Position;\n  \n	v_Texcoord0 = a_Texcoord0;\n  \n	#ifdef LIGHTMAP\n		v_LightMapUV = vec2(a_Texcoord0.x*u_LightmapScaleOffset.x+u_LightmapScaleOffset.z,(a_Texcoord0.y-1.0)*u_LightmapScaleOffset.y+u_LightmapScaleOffset.w);\n	#endif\n  \n	#if defined(DIRECTIONLIGHT)||defined(POINTLIGHT)||defined(SPOTLIGHT)\n		v_Normal = a_Normal;\n	#endif\n\n	#if defined(DIRECTIONLIGHT)||defined(POINTLIGHT)||defined(SPOTLIGHT)||defined(FOG)||(defined(RECEIVESHADOW)&&defined(SHADOWMAP_PSSM1))\n		v_PositionWorld=(u_WorldMat*a_Position).xyz;\n	#endif\n\n	#ifdef RECEIVESHADOW\n		v_posViewZ = gl_Position.w;\n		#ifdef SHADOWMAP_PSSM1\n			v_lightMVPPos = u_lightShadowVP[0] * vec4(v_PositionWorld,1.0);\n		#endif\n	#endif\n}";
 			ps="#ifdef HIGHPRECISION\n	precision highp float;\n#else\n	precision mediump float;\n#endif\n\n#include?DIRECTIONLIGHT||POINTLIGHT||SPOTLIGHT \"LightHelper.glsl\";\n\n#if defined(DIRECTIONLIGHT)||defined(POINTLIGHT)||defined(SPOTLIGHT)||defined(FOG)\n	uniform vec3 u_MaterialDiffuse;\n	uniform vec4 u_MaterialSpecular;\n	uniform vec3 u_CameraPos;\n	varying vec3 v_Normal;\n	varying vec3 v_PositionWorld;\n#endif\n\n#ifdef FOG\n	uniform float u_FogStart;\n	uniform float u_FogRange;\n	uniform vec3 u_FogColor;\n#endif\n\n\n#ifdef DIRECTIONLIGHT\n	uniform DirectionLight u_DirectionLight;\n#endif\n\n#ifdef POINTLIGHT\n	uniform PointLight u_PointLight;\n#endif\n\n#ifdef SPOTLIGHT\n	uniform SpotLight u_SpotLight;\n#endif\n\nuniform vec3 u_AmbientColor;\n\n#include \"ShadowHelper.glsl\"\n#ifdef RECEIVESHADOW\n	#if defined(SHADOWMAP_PSSM2)||defined(SHADOWMAP_PSSM3)\n	uniform mat4 u_lightShadowVP[4];\n	#endif\n	#ifdef SHADOWMAP_PSSM1 \n	varying vec4 v_lightMVPPos;\n	#endif\n#endif\nvarying float v_posViewZ;\n\n\nuniform sampler2D u_SplatAlphaTexture;\n\nuniform sampler2D u_DiffuseTexture1;\nuniform sampler2D u_DiffuseTexture2;\nuniform sampler2D u_DiffuseTexture3;\nuniform sampler2D u_DiffuseTexture4;\nuniform sampler2D u_DiffuseTexture5;\n\nuniform vec4 u_DiffuseScaleOffset1;\nuniform vec4 u_DiffuseScaleOffset2;\nuniform vec4 u_DiffuseScaleOffset3;\nuniform vec4 u_DiffuseScaleOffset4;\nuniform vec4 u_DiffuseScaleOffset5;\n\nvarying vec2 v_Texcoord0;\n\nuniform vec3 u_MaterialAmbient;\nuniform vec4 u_MaterialAlbedo;\n\n#ifdef LIGHTMAP\n	uniform sampler2D u_LightMap;\n	varying vec2 v_LightMapUV;\n#endif\n\nvoid main()\n{\n	#ifdef ExtendTerrain_DETAIL_NUM1\n		vec4 splatAlpha = texture2D(u_SplatAlphaTexture, v_Texcoord0);\n		vec4 color1 = texture2D(u_DiffuseTexture1, v_Texcoord0 * u_DiffuseScaleOffset1.xy);\n		gl_FragColor.xyz = color1.xyz * splatAlpha.r;\n	#endif\n	#ifdef ExtendTerrain_DETAIL_NUM2\n		vec4 splatAlpha = texture2D(u_SplatAlphaTexture, v_Texcoord0);\n		vec4 color1 = texture2D(u_DiffuseTexture1, v_Texcoord0 * u_DiffuseScaleOffset1.xy);\n		vec4 color2 = texture2D(u_DiffuseTexture2, v_Texcoord0 * u_DiffuseScaleOffset2.xy);\n		gl_FragColor.xyz = color1.xyz * splatAlpha.r + color2.xyz * (1.0 - splatAlpha.r);\n	#endif\n	#ifdef ExtendTerrain_DETAIL_NUM3\n		vec4 splatAlpha = texture2D(u_SplatAlphaTexture, v_Texcoord0);\n		vec4 color1 = texture2D(u_DiffuseTexture1, v_Texcoord0 * u_DiffuseScaleOffset1.xy);\n		vec4 color2 = texture2D(u_DiffuseTexture2, v_Texcoord0 * u_DiffuseScaleOffset2.xy);\n		vec4 color3 = texture2D(u_DiffuseTexture3, v_Texcoord0 * u_DiffuseScaleOffset3.xy);\n		gl_FragColor.xyz = color1.xyz * splatAlpha.r  + color2.xyz * splatAlpha.g + color3.xyz * (1.0 - splatAlpha.r - splatAlpha.g);\n	#endif\n	#ifdef ExtendTerrain_DETAIL_NUM4\n		vec4 splatAlpha = texture2D(u_SplatAlphaTexture, v_Texcoord0);\n		vec4 color1 = texture2D(u_DiffuseTexture1, v_Texcoord0 * u_DiffuseScaleOffset1.xy);\n		vec4 color2 = texture2D(u_DiffuseTexture2, v_Texcoord0 * u_DiffuseScaleOffset2.xy);\n		vec4 color3 = texture2D(u_DiffuseTexture3, v_Texcoord0 * u_DiffuseScaleOffset3.xy);\n		vec4 color4 = texture2D(u_DiffuseTexture4, v_Texcoord0 * u_DiffuseScaleOffset4.xy);\n		gl_FragColor.xyz = color1.xyz * splatAlpha.r  + color2.xyz * splatAlpha.g + color3.xyz * splatAlpha.b + color4.xyz * (1.0 - splatAlpha.r - splatAlpha.g - splatAlpha.b);\n	#endif\n	#ifdef ExtendTerrain_DETAIL_NUM5\n		vec4 splatAlpha = texture2D(u_SplatAlphaTexture, v_Texcoord0);\n		vec4 color1 = texture2D(u_DiffuseTexture1, v_Texcoord0 * u_DiffuseScaleOffset1.xy);\n		vec4 color2 = texture2D(u_DiffuseTexture2, v_Texcoord0 * u_DiffuseScaleOffset2.xy);\n		vec4 color3 = texture2D(u_DiffuseTexture3, v_Texcoord0 * u_DiffuseScaleOffset3.xy);\n		vec4 color4 = texture2D(u_DiffuseTexture4, v_Texcoord0 * u_DiffuseScaleOffset4.xy);\n		vec4 color5 = texture2D(u_DiffuseTexture5, v_Texcoord0 * u_DiffuseScaleOffset5.xy);\n		gl_FragColor.xyz = color1.xyz * splatAlpha.r  + color2.xyz * splatAlpha.g + color3.xyz * splatAlpha.b + color4.xyz * splatAlpha.a + color5.xyz * (1.0 - splatAlpha.r - splatAlpha.g - splatAlpha.b - splatAlpha.a);\n	#endif\n		gl_FragColor.w = splatAlpha.a;\n		\n#if defined(DIRECTIONLIGHT)||defined(POINTLIGHT)||defined(SPOTLIGHT)\n    vec3 normal = v_Normal;\n	vec3 diffuse = vec3(0.0);\n	vec3 ambient = vec3(0.0);\n	vec3 specular= vec3(0.0);\n	vec3 dif, amb, spe;\n#endif\n\n#if defined(DIRECTIONLIGHT)||defined(POINTLIGHT)||defined(SPOTLIGHT)||defined(FOG)\n	vec3 toEye;\n	#ifdef FOG\n		toEye=u_CameraPos-v_PositionWorld;\n		float toEyeLength=length(toEye);\n		toEye/=toEyeLength;\n	#else\n		toEye=normalize(u_CameraPos-v_PositionWorld);\n	#endif\n#endif\n\n#ifdef DIRECTIONLIGHT\n	computeDirectionLight(u_MaterialDiffuse,u_MaterialAmbient,u_MaterialSpecular,u_DirectionLight,u_AmbientColor,normal,toEye, dif, amb, spe);\n	diffuse+=dif;\n	ambient+=amb;\n	specular+=spe;\n#endif\n \n#ifdef POINTLIGHT\n	computePointLight(u_MaterialDiffuse,u_MaterialAmbient,u_MaterialSpecular,u_PointLight,u_AmbientColor,v_PositionWorld,normal,toEye, dif, amb, spe);\n	diffuse+=dif;\n	ambient+=amb;\n	specular+=spe;\n#endif\n\n#ifdef SPOTLIGHT\n	ComputeSpotLight(u_MaterialDiffuse,u_MaterialAmbient,u_MaterialSpecular,u_SpotLight,u_AmbientColor,v_PositionWorld,normal,toEye, dif, amb, spe);\n	diffuse+=dif;\n	ambient+=amb;\n	specular+=spe;\n#endif\n\n#ifdef RECEIVESHADOW\n	float shadowValue = 1.0;\n	#ifdef SHADOWMAP_PSSM3\n		shadowValue = getShadowPSSM3( u_shadowMap1,u_shadowMap2,u_shadowMap3,u_lightShadowVP,u_shadowPSSMDistance,u_shadowPCFoffset,v_PositionWorld,v_posViewZ,0.001);\n	#endif\n	#ifdef SHADOWMAP_PSSM2\n		shadowValue = getShadowPSSM2( u_shadowMap1,u_shadowMap2,u_lightShadowVP,u_shadowPSSMDistance,u_shadowPCFoffset,v_PositionWorld,v_posViewZ,0.001);\n	#endif \n	#ifdef SHADOWMAP_PSSM1\n		shadowValue = getShadowPSSM1( u_shadowMap1,v_lightMVPPos,u_shadowPSSMDistance,u_shadowPCFoffset,v_posViewZ,0.001);\n	#endif\n#endif\n\n#ifdef LIGHTMAP\n	#if defined(DIRECTIONLIGHT)||defined(POINTLIGHT)||defined(SPOTLIGHT)\n		gl_FragColor.rgb=gl_FragColor.rgb*(u_MaterialAmbient + texture2D(u_LightMap, v_LightMapUV).rgb);\n	#else\n		#if defined(RECEIVESHADOW)		\n			gl_FragColor.rgb=gl_FragColor.rgb*(u_MaterialAmbient+texture2D(u_LightMap, v_LightMapUV).rgb * shadowValue);\n			//vec3 tColor= u_MaterialAmbient + texture2D(u_LightMap, v_LightMapUV).rgb * shadowValue + mix(vec3(0.15,0.15,0.15),vec3(0.0),shadowValue);\n			//gl_FragColor.rgb*=tColor;\n		#else\n			gl_FragColor.rgb=gl_FragColor.rgb*(u_MaterialAmbient + texture2D(u_LightMap, v_LightMapUV).rgb);\n		#endif\n	#endif\n#endif\n\ngl_FragColor=gl_FragColor*u_MaterialAlbedo;\n\n#if defined(DIRECTIONLIGHT)||defined(POINTLIGHT)||defined(SPOTLIGHT)\n	#ifdef RECEIVESHADOW\n		gl_FragColor = vec4( gl_FragColor.rgb*(ambient + diffuse*shadowValue) + specular * shadowValue,gl_FragColor.a);\n	#else\n		gl_FragColor =vec4( gl_FragColor.rgb*(ambient + diffuse) + specular, gl_FragColor.a);\n	#endif\n#endif\n\n#ifdef FOG\n	float lerpFact=clamp((toEyeLength-u_FogStart)/u_FogRange,0.0,1.0);\n	gl_FragColor.rgb=mix(gl_FragColor.rgb,u_FogColor,lerpFact);\n#endif\n}\n\n\n\n\n\n";
-			shaderCompile=Shader3D.add("ExtendTerrain",attributeMap,uniformMap);
-			shaderCompile._addShaderPass(vs,ps);
-			shaderCompile.addSpriteDefines(RenderableSprite3D.shaderDefines);
-			shaderCompile.addSpriteDefines(ExtendTerrainMaterial.shaderDefines);
+			shader=Shader3D.add("ExtendTerrain",attributeMap,uniformMap,RenderableSprite3D.shaderDefines,ExtendTerrainMaterial.shaderDefines);
+			shader._addShaderPass(vs,ps);
+			attributeMap={
+				'a_Position' :0,
+				'a_OffsetVector':42,
+				'a_Texcoord0X' :39,
+				'a_Texcoord0Y' :41,
+				'a_BirthTime' :33
+			};
+			uniformMap={
+				'u_MvpMatrix':[1,2],
+				'u_VMatrix':[1,3],
+				'u_PMatrix':[2,3],
+				'u_TilingOffset':[3,1],
+				'u_MainTexture':[1,1],
+				'u_MainColor':[2,1],
+				'u_CurTime' :[3,2],
+				'u_LifeTime' :[4,2],
+				'u_WidthCurve' :[5,2],
+				'u_WidthCurveKeyLength' :[6,2],
+				'u_GradientColorkey' :[7,2],
+				'u_GradientAlphakey' :[8,2]
+			};
+			vs="attribute vec3 a_Position;\nattribute vec3 a_OffsetVector;\nattribute vec4 a_Color;\nattribute float a_Texcoord0X;\nattribute float a_Texcoord0Y;\nattribute float a_BirthTime;\n\nuniform mat4 u_VMatrix;\nuniform mat4 u_PMatrix;\n\nuniform vec4 u_TilingOffset;\n\nuniform float u_CurTime;\nuniform float u_LifeTime;\nuniform vec4 u_WidthCurve[10];\nuniform int u_WidthCurveKeyLength;\n\nuniform vec4 u_GradientColorkey[10];\nuniform vec2 u_GradientAlphakey[10];\n\nvarying vec2 v_Texcoord0;\nvarying vec4 v_Color;\n\nfloat hermiteInterpolate(float t, float outTangent, float inTangent, float duration, float value1, float value2)\n{\n	float t2 = t * t;\n	float t3 = t2 * t;\n	float a = 2.0 * t3 - 3.0 * t2 + 1.0;\n	float b = t3 - 2.0 * t2 + t;\n	float c = t3 - t2;\n	float d = -2.0 * t3 + 3.0 * t2;\n	return a * value1 + b * outTangent * duration + c * inTangent * duration + d * value2;\n}\n\nfloat getCurWidth(in float normalizeTime)\n{\n	if(normalizeTime == 0.0){\n		return u_WidthCurve[0].w;\n	}\n	else if(normalizeTime >= 1.0){\n		return u_WidthCurve[u_WidthCurveKeyLength - 1].w;\n	}\n	else{\n		for(int i = 0; i < 10; i ++ )\n		{\n			if(normalizeTime == u_WidthCurve[i].x)\n			{\n				return u_WidthCurve[i].w;\n			}\n			\n			vec4 lastFrame = u_WidthCurve[i];\n			vec4 nextFrame = u_WidthCurve[i + 1];\n			if(normalizeTime > lastFrame.x && normalizeTime < nextFrame.x)\n			{\n				float duration = nextFrame.x - lastFrame.x;\n				float t = (normalizeTime - lastFrame.x) / duration;\n				float outTangent = lastFrame.z;\n				float inTangent = nextFrame.y;\n				float value1 = lastFrame.w;\n				float value2 = nextFrame.w;\n				return hermiteInterpolate(t, outTangent, inTangent, duration, value1, value2);\n			}\n		}	\n	}\n}	\n\nvec4 getColorFromGradientByBlend(in vec4 gradientColors[10], in vec2 gradientAlphas[10], in float normalizeTime)\n{\n	vec4 color;\n	for(int i = 1; i < 10; i++)\n	{\n		vec4 gradientColor = gradientColors[i];\n		float colorKey = gradientColor.w;\n		if(colorKey >= normalizeTime)\n		{\n			vec4 lastGradientColor = gradientColors[i-1];\n			float lastColorKey = lastGradientColor.w;\n			float age = (normalizeTime - lastColorKey) / (colorKey - lastColorKey);\n			color.rgb = mix(gradientColors[i-1].xyz, gradientColor.xyz, age);\n			break;\n		}\n	}\n	for(int i = 1; i < 10; i++)\n	{\n		vec2 gradientAlpha = gradientAlphas[i];\n		float alphaKey = gradientAlpha.y;\n		if(alphaKey >= normalizeTime)\n		{\n			vec2 lastGradientAlpha = gradientAlphas[i-1];\n			float lastAlphaKey = lastGradientAlpha.y;\n			float age = (normalizeTime - lastAlphaKey) / (alphaKey - lastAlphaKey);\n			color.a = mix(lastGradientAlpha.x, gradientAlpha.x, age);\n			break;\n		}\n	}\n	return color;\n}\n\nvec4 getColorFromGradientByFixed(in vec4 gradientColors[10], in vec2 gradientAlphas[10], in float normalizeTime)\n{\n	vec4 color;\n	for(int i = 1; i < 10; i++)\n	{\n		vec4 gradientColor = gradientColors[i];\n		if(gradientColor.w >= normalizeTime)\n		{\n			color.rgb = gradientColor.xyz;\n			break;\n		}\n	}\n	for(int i = 1; i < 10; i++)\n	{\n		vec2 gradientAlpha = gradientAlphas[i];\n		if(gradientAlpha.y >= normalizeTime)\n		{\n			color.a = gradientAlpha.x;\n			break;\n		}\n	}\n	return color;\n}\n\nvoid main()\n{\n	float normalizeTime = (u_CurTime - a_BirthTime) / u_LifeTime;\n	\n	gl_Position = u_PMatrix * u_VMatrix * vec4(a_Position + a_OffsetVector * getCurWidth(normalizeTime),1.0);\n	\n	v_Texcoord0 = vec2(a_Texcoord0X, a_Texcoord0Y);\n	\n	#ifdef TILINGOFFSET\n		v_Texcoord0 = (vec2(v_Texcoord0.x, v_Texcoord0.y) * u_TilingOffset.xy) + u_TilingOffset.zw;\n	#endif\n		v_Texcoord0 = vec2(v_Texcoord0.x, v_Texcoord0.y);\n		\n	v_Texcoord0 = (vec2(v_Texcoord0.x, v_Texcoord0.y) * u_TilingOffset.xy) + u_TilingOffset.zw;\n	\n	#ifdef GRADIENTMODE_BLEND\n		v_Color = getColorFromGradientByBlend(u_GradientColorkey, u_GradientAlphakey, normalizeTime);\n	#else\n		v_Color = getColorFromGradientByFixed(u_GradientColorkey, u_GradientAlphakey, normalizeTime);\n	#endif\n}\n\n\n\n";
+			ps="#ifdef HIGHPRECISION\n	precision highp float;\n#else\n	precision mediump float;\n#endif\n\nuniform sampler2D u_MainTexture;\nuniform vec4 u_MainColor;\n\nvarying vec2 v_Texcoord0;\nvarying vec4 v_Color;\n\nvoid main()\n{	\n	vec4 color = 2.0 * u_MainColor * v_Color;\n	#ifdef DIFFUSETEXTURE\n		vec4 mainTextureColor = texture2D(u_MainTexture, v_Texcoord0);\n		color *= mainTextureColor;\n	#endif\n	gl_FragColor = color;\n}\n\n";
+			shader=Shader3D.add("Trail",attributeMap,uniformMap);
+			shader._addShaderPass(vs,ps);
 		}
 
 		return ShaderInit3D;
@@ -36791,20 +34832,16 @@ var Laya=window.Laya=(function(window,document){
 			//this.lastFieldOfView=NaN;
 			//this.lastAspectRatio=NaN;
 			this._currentPSSM=-1;
-			this._numberOfPSSM=3;
+			this._shadowMapCount=3;
 			this._maxDistance=200.0;
-			this._ratioOfDistance=1.0 / this._numberOfPSSM;
+			this._ratioOfDistance=1.0 / this._shadowMapCount;
 			this._statesDirty=true;
-			this._lightCulling=null;
-			this._renderTarget=null;
-			this._lightVPMatrix=null;
-			this._lightCameras=null;
-			this._shadowQuenes=null;
+			//this.cameras=null;
 			this._shadowMapTextureSize=1024;
 			this._scene=null;
 			this._PCFType=0;
 			this._shaderValueLightVP=null;
-			this._shaderValueVPs=null;
+			//this._shaderValueVPs=null;
 			this._spiltDistance=new Array(3+1);
 			this._globalParallelLightDir=new Vector3(0,-1,0);
 			this._boundingSphere=new Array(3+1);
@@ -36822,9 +34859,11 @@ var Laya=window.Laya=(function(window,document){
 			this._tempMax=new Vector4();
 			this._tempMatrix44=new Matrix4x4;
 			this._splitFrustumCulling=new BoundFrustum(Matrix4x4.DEFAULT);
-			this._tempScaleMatrix44=new Matrix4x4;
+			this._tempScaleMatrix44=new Matrix4x4();
 			this._shadowPCFOffset=new Vector2(1.0 / 1024.0,1.0 / 1024.0);
 			this._shaderValueDistance=new Vector4();
+			this.cameras=[];
+			this._shaderValueVPs=[];
 			var i=0;
 			for (i=0;i < this._spiltDistance.length;i++){
 				this._spiltDistance[i]=0.0;
@@ -36850,13 +34889,13 @@ var Laya=window.Laya=(function(window,document){
 		var __proto=ParallelSplitShadowMap.prototype;
 		__proto.setInfo=function(scene,maxDistance,globalParallelDir,shadowMapTextureSize,numberOfPSSM,PCFType){
 			if (numberOfPSSM > 3){
-				this._numberOfPSSM=3;
+				this._shadowMapCount=3;
 			}
 			this._scene=scene;
 			this._maxDistance=maxDistance;
-			this.PSSMNum=numberOfPSSM;
+			this.shadowMapCount=numberOfPSSM;
 			this._globalParallelLightDir=globalParallelDir;
-			this._ratioOfDistance=1.0 / this._numberOfPSSM;
+			this._ratioOfDistance=1.0 / this._shadowMapCount;
 			for (var i=0;i < this._spiltDistance.length;i++){
 				this._spiltDistance[i]=0.0;
 			}
@@ -36913,27 +34952,11 @@ var Laya=window.Laya=(function(window,document){
 			return this._maxDistance;
 		}
 
-		__proto._setGlobalParallelLightDir=function(dir){
-			this._globalParallelLightDir=dir;
-		}
-
-		__proto.getGlobalParallelLightDir=function(){
-			return this._globalParallelLightDir;
-		}
-
-		__proto.getCurrentPSSM=function(){
-			return this._currentPSSM;
-		}
-
-		__proto.getLightCamera=function(index){
-			return this._lightCameras[index];
-		}
-
 		/**
 		*@private
 		*/
 		__proto._beginSampler=function(index,sceneCamera){
-			if (index < 0 || index > this._numberOfPSSM)
+			if (index < 0 || index > this._shadowMapCount)
 				throw new Error("ParallelSplitShadowMap: beginSample invalid index");
 			this._currentPSSM=index;
 			this._update(sceneCamera);
@@ -36950,11 +34973,11 @@ var Laya=window.Laya=(function(window,document){
 		*@private
 		*/
 		__proto._calcAllLightCameraInfo=function(sceneCamera){
-			if (this._numberOfPSSM===1){
+			if (this._shadowMapCount===1){
 				this._beginSampler(0,sceneCamera);
 				this.endSampler(sceneCamera);
 				}else {
-				for (var i=0,n=this._numberOfPSSM+1;i < n;i++){
+				for (var i=0,n=this._shadowMapCount+1;i < n;i++){
 					this._beginSampler(i,sceneCamera);
 					this.endSampler(sceneCamera);
 				}
@@ -36993,7 +35016,7 @@ var Laya=window.Laya=(function(window,document){
 		*/
 		__proto._uploadShaderValue=function(){
 			var defDatas=this._scene._defineDatas;
-			switch (this._numberOfPSSM){
+			switch (this._shadowMapCount){
 				case 1:
 					defDatas.add(Scene.SHADERDEFINE_SHADOW_PSSM1);
 					defDatas.remove(Scene.SHADERDEFINE_SHADOW_PSSM2);
@@ -37014,18 +35037,18 @@ var Laya=window.Laya=(function(window,document){
 			sceneSV.setVector(15,this._shaderValueDistance);
 			sceneSV.setBuffer(16,this._shaderValueLightVP);
 			sceneSV.setVector(17,this._shadowPCFOffset);
-			switch (this._numberOfPSSM){
+			switch (this._shadowMapCount){
 				case 3:
-					sceneSV.setTexture(18,this.getRenderTarget(1));
-					sceneSV.setTexture(19,this.getRenderTarget(2));
-					sceneSV.setTexture(20,this.getRenderTarget(3));
+					sceneSV.setTexture(18,this.cameras[1].renderTarget);
+					sceneSV.setTexture(19,this.cameras[2].renderTarget)
+					sceneSV.setTexture(20,this.cameras[3].renderTarget);
 					break ;
 				case 2:
-					sceneSV.setTexture(18,this.getRenderTarget(1));
-					sceneSV.setTexture(19,this.getRenderTarget(2));
+					sceneSV.setTexture(18,this.cameras[1].renderTarget);
+					sceneSV.setTexture(19,this.cameras[2].renderTarget);
 					break ;
 				case 1:
-					sceneSV.setTexture(18,this.getRenderTarget(1));
+					sceneSV.setTexture(18,this.cameras[1].renderTarget);
 					break ;
 				}
 		}
@@ -37035,17 +35058,17 @@ var Laya=window.Laya=(function(window,document){
 		*/
 		__proto._calcSplitDistance=function(nearPlane){
 			var far=this._maxDistance;
-			var invNumberOfPSSM=1.0 / this._numberOfPSSM;
+			var invNumberOfPSSM=1.0 / this._shadowMapCount;
 			var i=0;
-			for (i=0;i <=this._numberOfPSSM;i++){
+			for (i=0;i <=this._shadowMapCount;i++){
 				this._uniformDistance[i]=nearPlane+(far-nearPlane)*i *invNumberOfPSSM;
 			};
 			var farDivNear=far / nearPlane;
-			for (i=0;i <=this._numberOfPSSM;i++){
+			for (i=0;i <=this._shadowMapCount;i++){
 				var n=Math.pow(farDivNear,i *invNumberOfPSSM);
 				this._logDistance[i]=nearPlane *n;
 			}
-			for (i=0;i <=this._numberOfPSSM;i++){
+			for (i=0;i <=this._shadowMapCount;i++){
 				this._spiltDistance[i]=this._uniformDistance[i] *this._ratioOfDistance+this._logDistance[i] *(1.0-this._ratioOfDistance);
 			}
 			this._shaderValueDistance.x=this._spiltDistance[1];
@@ -37064,7 +35087,7 @@ var Laya=window.Laya=(function(window,document){
 			var width=NaN;
 			var distance=NaN;
 			var i=0;
-			for (i=0;i <=this._numberOfPSSM;i++){
+			for (i=0;i <=this._shadowMapCount;i++){
 				distance=this._spiltDistance[i];
 				height=distance *halfTanValue;
 				width=height *aspectRatio;
@@ -37092,7 +35115,7 @@ var Laya=window.Laya=(function(window,document){
 			var min;
 			var max;
 			var center;
-			for (i=1;i <=this._numberOfPSSM;i++){
+			for (i=1;i <=this._shadowMapCount;i++){
 				d=this._dimension[i].elements;
 				min=this._boundingBox[i].min.elements;
 				min[0]=-d[0];
@@ -37109,10 +35132,10 @@ var Laya=window.Laya=(function(window,document){
 				this._boundingSphere[i].radius=Math.sqrt(Math.pow(max[0]-min[0],2)+Math.pow(max[1]-min[1],2)+Math.pow(max[2]-min[2],2))*0.5;
 			}
 			min=this._boundingBox[0].min.elements;
-			d=this._dimension[this._numberOfPSSM].elements;
+			d=this._dimension[this._shadowMapCount].elements;
 			min[0]=-d[0];
 			min[1]=-d[1];
-			min[2]=-this._spiltDistance[this._numberOfPSSM];
+			min[2]=-this._spiltDistance[this._shadowMapCount];
 			max=this._boundingBox[0].max.elements;
 			max[0]=d[0];
 			max[1]=d[1];
@@ -37128,7 +35151,7 @@ var Laya=window.Laya=(function(window,document){
 			if (this._currentPSSM > 0){
 				Matrix4x4.createPerspective(3.1416 *sceneCamera.fieldOfView / 180.0,(sceneCamera).aspectRatio,this._spiltDistance[this._currentPSSM-1],this._spiltDistance[this._currentPSSM],this._tempMatrix44);
 				}else {
-				Matrix4x4.createPerspective(3.1416 *sceneCamera.fieldOfView / 180.0,(sceneCamera).aspectRatio,this._spiltDistance[0],this._spiltDistance[this._numberOfPSSM],this._tempMatrix44);
+				Matrix4x4.createPerspective(3.1416 *sceneCamera.fieldOfView / 180.0,(sceneCamera).aspectRatio,this._spiltDistance[0],this._spiltDistance[this._shadowMapCount],this._tempMatrix44);
 			}
 			Matrix4x4.multiply(this._tempMatrix44,(sceneCamera).viewMatrix,this._tempMatrix44);
 			this._splitFrustumCulling.matrix=this._tempMatrix44;
@@ -37138,81 +35161,23 @@ var Laya=window.Laya=(function(window,document){
 		*@private
 		*/
 		__proto._rebuildRenderInfo=function(){
-			var nNum=this._numberOfPSSM+1;
+			var nNum=this._shadowMapCount+1;
 			var i=0;
-			if (this._renderTarget==null){
-				this._renderTarget=__newvec(nNum);
-				this._renderTarget[0]=null;
-				for (i=1;i < nNum;i++){
-					this._renderTarget[i]=new laya.d3.resource.RenderTexture(this._shadowMapTextureSize,this._shadowMapTextureSize,0x1908,0x1401,0x81A5,false,false,0x2600,0x2600);
-				}
-				}else if (this._renderTarget.length !=nNum){
-				this.disposeAllRenderTarget();
-				this._renderTarget.length=nNum;
-				this._renderTarget[0]=null;
-				for (i=1;i < nNum;i++){
-					this._renderTarget[i]=new laya.d3.resource.RenderTexture(this._shadowMapTextureSize,this._shadowMapTextureSize,0x1908,0x1401,0x81A5,false,false,0x2600,0x2600);
-				}
-				}else {
-				for (i=1;i < nNum;i++){
-					if (this._renderTarget[i]==null || this._renderTarget[i].width !=this._shadowMapTextureSize || this._renderTarget[i].height !=this._shadowMapTextureSize){
-						if (this._renderTarget[i] !=null){
-							this._renderTarget[i].destroy();
-						}
-						this._renderTarget[i]=new laya.d3.resource.RenderTexture(this._shadowMapTextureSize,this._shadowMapTextureSize,0x1908,0x1401,0x81A5,false,false,0x2600,0x2600);
-					}
-				}
-			}
-			if (this._lightCulling==null || this._lightCulling.length !=nNum){
-				if (this._lightCulling){
-					this._lightCulling.length=nNum;
-					}else {
-					this._lightCulling=__newvec(nNum);
-				}
-				for (i=0;i < this._lightCulling.length;i++){
-					this._lightCulling[i]=new BoundFrustum(Matrix4x4.DEFAULT);
-				}
-			}
-			if (this._lightVPMatrix==null || this._lightVPMatrix.length !=nNum){
-				if (this._lightVPMatrix){
-					this._lightVPMatrix.length=nNum;
-					}else {
-					this._lightVPMatrix=__newvec(nNum);
-				}
-				for (i=0;i < this._lightVPMatrix.length;i++){
-					this._lightVPMatrix[i]=new Matrix4x4();
-				}
-			}
-			if (this._lightCameras==null || this._lightCameras.length !=nNum){
-				if (this._lightCameras){
-					this._lightCameras.length=nNum;
-					}else {
-					this._lightCameras=__newvec(nNum);
-				}
-				for (i=0;i < this._lightCameras.length;i++){
-					this._lightCameras[i]=new Camera();
-					this._lightCameras[i].name="lightCamera"+i;
-				}
-			}
-			if (this._shadowQuenes==null || this._shadowQuenes.length !=this._numberOfPSSM){
-				if (this._shadowQuenes){
-					this._shadowQuenes.length=this._numberOfPSSM;
-					}else {
-					this._shadowQuenes=__newvec(this._numberOfPSSM);
-				}
-				for (i=0;i < this._shadowQuenes.length;i++){
-					this._shadowQuenes[i]=new RenderQueue(this._scene);
-				}
-			}
-			if (this._shaderValueVPs==null || this._shaderValueVPs.length !=nNum){
-				if (this._shaderValueVPs){
-					this._shaderValueVPs.length=nNum;
-					}else {
-					this._shaderValueVPs=__newvec(nNum);
-				}
-				this._shaderValueLightVP=new Float32Array(nNum *16);
-				for (i=0;i < nNum;i++){
-					this._shaderValueVPs[i]=new Float32Array(this._shaderValueLightVP.buffer,i *64);
+			this.cameras.length=nNum;
+			for (i=0;i < nNum;i++){
+				if (!this.cameras[i]){
+					var camera=new Camera();
+					camera.name="lightCamera"+i;
+					camera.clearColor=new Vector4(1.0,1.0,1.0,1.0);
+					this.cameras[i]=camera;
+				};
+				var shadowMap=this.cameras[i].renderTarget;
+				if (shadowMap==null || shadowMap.width !=this._shadowMapTextureSize || shadowMap.height !=this._shadowMapTextureSize){
+					(shadowMap)&& (shadowMap.destroy());
+					shadowMap=new RenderTexture(this._shadowMapTextureSize,this._shadowMapTextureSize,1,0);
+					shadowMap.mipmap=false;
+					shadowMap.filterMode=0;
+					this.cameras[i].renderTarget=shadowMap;
 				}
 			}
 		}
@@ -37232,14 +35197,15 @@ var Laya=window.Laya=(function(window,document){
 			lookAt3Element[1]=lookAt4Element[1];
 			lookAt3Element[2]=lookAt4Element[2];
 			var lightUpElement=this._tempLightUp.elements;
-			var sceneCameraDir=sceneCamera.forward.elements;
+			sceneCamera.transform.worldMatrix.getForward(ParallelSplitShadowMap._tempVector30);
+			var sceneCameraDir=ParallelSplitShadowMap._tempVector30.elements;
 			lightUpElement[0]=sceneCameraDir[0];
 			lightUpElement[1]=1.0;
 			lightUpElement[2]=sceneCameraDir[2];
 			Vector3.normalize(this._tempLightUp,this._tempLightUp);
 			Vector3.scale(this._globalParallelLightDir,boundSphere.radius *4,this._tempPos);
 			Vector3.subtract(this._tempLookAt3,this._tempPos,this._tempPos);
-			var curLightCamera=this._lightCameras[this._currentPSSM];
+			var curLightCamera=this.cameras[this._currentPSSM];
 			curLightCamera.transform.position=this._tempPos;
 			curLightCamera.transform.lookAt(this._tempLookAt3,this._tempLightUp,false);
 			var tempMaxElements=this._tempMax.elements;
@@ -37283,21 +35249,8 @@ var Laya=window.Laya=(function(window,document){
 			curLightCamera.transform.position=this._tempPos;
 			curLightCamera.transform.lookAt(this._tempLookAt3,this._tempLightUp,false);
 			Matrix4x4.createOrthoOffCenterRH(tempMinElements[0],tempMaxElements[0],tempMinElements[1],tempMaxElements[1],1.0,farPlane+0.5 *(tempMaxElements[2]-tempMinElements[2]),curLightCamera.projectionMatrix);
-			curLightCamera.projectionViewMatrix.cloneTo(this._lightVPMatrix[this._currentPSSM]);
-			this._lightCulling[this._currentPSSM].matrix=this._lightVPMatrix[this._currentPSSM];
-			ParallelSplitShadowMap.multiplyMatrixOutFloat32Array(this._tempScaleMatrix44,this._lightVPMatrix[this._currentPSSM],this._shaderValueVPs[this._currentPSSM]);
-		}
-
-		__proto.getLightFrustumCulling=function(currentPSSM){
-			return this._lightCulling[currentPSSM];
-		}
-
-		__proto.getSplitFrustumCulling=function(){
-			return this._splitFrustumCulling;
-		}
-
-		__proto.getSplitDistance=function(index){
-			return this._spiltDistance[index];
+			var projectView=curLightCamera.projectionViewMatrix;
+			ParallelSplitShadowMap.multiplyMatrixOutFloat32Array(this._tempScaleMatrix44,projectView,this._shaderValueVPs[this._currentPSSM]);
 		}
 
 		__proto.setShadowMapTextureSize=function(size){
@@ -37309,40 +35262,28 @@ var Laya=window.Laya=(function(window,document){
 			}
 		}
 
-		__proto.getShadowMapTextureSize=function(){
-			return this._shadowMapTextureSize;
-		}
-
-		__proto.beginRenderTarget=function(index){
-			this._renderTarget[index].start();
-		}
-
-		__proto.endRenderTarget=function(index){
-			this._renderTarget[index].end();
-		}
-
-		__proto.getRenderTarget=function(index){
-			return this._renderTarget[index];
-		}
-
 		__proto.disposeAllRenderTarget=function(){
-			for (var i=0,n=this._numberOfPSSM+1;i < n;i++){
-				if (this._renderTarget[i]){
-					this._renderTarget[i].destroy();
-					this._renderTarget[i]=null;
+			for (var i=0,n=this._shadowMapCount+1;i < n;i++){
+				if (this.cameras[i].renderTarget){
+					this.cameras[i].renderTarget.destroy();
+					this.cameras[i].renderTarget=null;
 				}
 			}
 		}
 
-		__getset(0,__proto,'PSSMNum',function(){
-			return this._numberOfPSSM;
+		__getset(0,__proto,'shadowMapCount',function(){
+			return this._shadowMapCount;
 			},function(value){
 			value=value > 0 ? value :1;
 			value=value <=3 ? value :3;
-			if (this._numberOfPSSM !=value){
-				this._numberOfPSSM=value;
-				this._ratioOfDistance=1.0 / this._numberOfPSSM;
+			if (this._shadowMapCount !=value){
+				this._shadowMapCount=value;
+				this._ratioOfDistance=1.0 / this._shadowMapCount;
 				this._statesDirty=true;
+				this._shaderValueLightVP=new Float32Array(value *16);
+				this._shaderValueVPs.length=value;
+				for (var i=0;i < value;i++)
+				this._shaderValueVPs[i]=new Float32Array(this._shaderValueLightVP.buffer,i *64);
 			}
 		});
 
@@ -37363,6 +35304,9 @@ var Laya=window.Laya=(function(window,document){
 		}
 
 		ParallelSplitShadowMap.MAX_PSSM_COUNT=3;
+		__static(ParallelSplitShadowMap,
+		['_tempVector30',function(){return this._tempVector30=new Vector3();}
+		]);
 		return ParallelSplitShadowMap;
 	})()
 
@@ -38753,9 +36697,9 @@ var Laya=window.Laya=(function(window,document){
 			createMap["lh"]=[Sprite3D,"SPRITE3DHIERARCHY"];
 			createMap["ls"]=[Scene,"SPRITE3DHIERARCHY"];
 			createMap["lm"]=[Mesh,"MESH"];
-			createMap["lmat"]=[StandardMaterial,"MATERIAL"];
+			createMap["lmat"]=[laya.d3.core.material.StandardMaterial,"MATERIAL"];
 			createMap["lpbr"]=[PBRMaterial,"MATERIAL"];
-			createMap["ltc"]=[TextureCube,"TEXTURECUBE"];
+			createMap["ltc"]=[laya.d3.resource.TextureCube,"TEXTURECUBE"];
 			createMap["jpg"]=[Texture2D,"nativeimage"];
 			createMap["jpeg"]=[Texture2D,"nativeimage"];
 			createMap["png"]=[Texture2D,"nativeimage"];
@@ -38764,6 +36708,7 @@ var Laya=window.Laya=(function(window,document){
 			createMap["lrani"]=[AnimationTemplet,"arraybuffer"];
 			createMap["raw"]=[DataTexture2D,"arraybuffer"];
 			createMap["mipmaps"]=[DataTexture2D,"arraybuffer"];
+			createMap["ktx"]=[laya.d3.resource.VolumeTexture,"arraybuffer"];
 			createMap["thdata"]=[TerrainHeightData,"arraybuffer"];
 			createMap["lt"]=[TerrainRes,"TERRAIN"];
 			createMap["lani"]=[AnimationClip,"arraybuffer"];
@@ -38780,12 +36725,31 @@ var Laya=window.Laya=(function(window,document){
 			Laya3D._innerFourthLevelLoaderManager.on("error",null,Laya3D._eventLoadManagerError);
 		}
 
+		Laya3D.formatRelativePath=function(base,value){
+			var char1=value.charAt(0);
+			if (char1==="."){
+				var parts=(base+value).split("/");
+				for (var i=0,len=parts.length;i < len;i++){
+					if (parts[i]=='..'){
+						var index=i-1;
+						if (index > 0 && parts[index]!=='..'){
+							parts.splice(index,2);
+							i-=2;
+						}
+					}
+				}
+				return parts.join('/');
+				}else {
+				return base+value;
+			}
+		}
+
 		Laya3D._eventLoadManagerError=function(msg){
 			Laya.loader.event("error",msg);
 		}
 
 		Laya3D._addHierarchyInnerUrls=function(urls,urlMap,urlVersion,hierarchyBasePath,path,clas){
-			var formatSubUrl=URL.formatURL(hierarchyBasePath+path);
+			var formatSubUrl=Laya3D.formatRelativePath(hierarchyBasePath,path);
 			(urlVersion)&& (formatSubUrl=formatSubUrl+urlVersion);
 			urls.push({url:formatSubUrl,clas:clas});
 			urlMap[path]=formatSubUrl;
@@ -38804,7 +36768,7 @@ var Laya=window.Laya=(function(window,document){
 			}
 		}
 
-		Laya3D._getSprite3DHierarchyInnerUrls=function(node,firstLevelUrls,secondLevelUrls,fourthLelUrls,urlMap,urlVersion,hierarchyBasePath){
+		Laya3D._getSprite3DHierarchyInnerUrls=function(node,firstLevelUrls,secondLevelUrls,thirdLevelUrls,fourthLelUrls,urlMap,urlVersion,hierarchyBasePath){
 			var i=0,n=0;
 			var customProps=node.customProps;
 			switch (node.type){
@@ -38813,14 +36777,15 @@ var Laya=window.Laya=(function(window,document){
 					for (i=0,n=lightmaps.length;i < n;i++){
 						var lightMap=lightmaps[i].replace("exr","png");
 						Laya3D._addHierarchyInnerUrls(fourthLelUrls,urlMap,urlVersion,hierarchyBasePath,lightMap,Texture2D);
-					}
+					};
+					var reflectionTextureData=customProps.reflectionTexture;
+					(reflectionTextureData)&& (Laya3D._addHierarchyInnerUrls(thirdLevelUrls,urlMap,urlVersion,hierarchyBasePath,reflectionTextureData,laya.d3.resource.TextureCube));
+					var skyboxMaterial=customProps.skyboxMaterial;
+					(skyboxMaterial)&& (Laya3D._parseMaterial(skyboxMaterial,secondLevelUrls,urlMap,urlVersion,hierarchyBasePath));
 					break ;
 				case "Camera":;
-					var skyBoxData=customProps.skyBox;
-					if (skyBoxData){
-						var sharedMaterial=skyBoxData.sharedMaterial;
-						(sharedMaterial)&& (Laya3D._parseMaterial(sharedMaterial,secondLevelUrls,urlMap,urlVersion,hierarchyBasePath));
-					}
+					var skyboxMaterial=customProps.skyboxMaterial;
+					(skyboxMaterial)&& (Laya3D._parseMaterial(skyboxMaterial,secondLevelUrls,urlMap,urlVersion,hierarchyBasePath));
 					break ;
 				case "MeshSprite3D":
 				case "SkinnedMeshSprite3D":;
@@ -38857,7 +36822,7 @@ var Laya=window.Laya=(function(window,document){
 			};
 			var children=node.child;
 			for (i=0,n=children.length;i < n;i++)
-			Laya3D._getSprite3DHierarchyInnerUrls(children[i],firstLevelUrls,secondLevelUrls,fourthLelUrls,urlMap,urlVersion,hierarchyBasePath);
+			Laya3D._getSprite3DHierarchyInnerUrls(children[i],firstLevelUrls,secondLevelUrls,thirdLevelUrls,fourthLelUrls,urlMap,urlVersion,hierarchyBasePath);
 		}
 
 		Laya3D._loadHierarchy=function(loader){
@@ -38874,9 +36839,10 @@ var Laya=window.Laya=(function(window,document){
 				var hierarchyBasePath=URL.getPath(url);
 				var firstLevUrls=[];
 				var secondLevUrls=[];
+				var thirdLevUrls=[];
 				var forthLevUrls=[];
 				var urlMap={};
-				Laya3D._getSprite3DHierarchyInnerUrls(lhData,firstLevUrls,secondLevUrls,forthLevUrls,urlMap,urlVersion,hierarchyBasePath);
+				Laya3D._getSprite3DHierarchyInnerUrls(lhData,firstLevUrls,secondLevUrls,thirdLevUrls,forthLevUrls,urlMap,urlVersion,hierarchyBasePath);
 				var urlCount=firstLevUrls.length+secondLevUrls.length+forthLevUrls.length;
 				var totalProcessCount=urlCount+1;
 				var weight=1 / totalProcessCount;
@@ -38884,14 +36850,28 @@ var Laya=window.Laya=(function(window,document){
 				if (forthLevUrls.length > 0){
 					var processCeil=urlCount / totalProcessCount;
 					var processHandler=Handler.create(null,Laya3D._onProcessChange,[loader,weight,processCeil],false);
-					Laya3D._innerFourthLevelLoaderManager.create(forthLevUrls,Handler.create(null,Laya3D._onHierarchyInnerForthLevResouLoaded,[loader,group,processHandler,lhData,urlMap,firstLevUrls,secondLevUrls,weight+processCeil *forthLevUrls.length,processCeil]),processHandler,null,null,1,true,group);
+					Laya3D._innerFourthLevelLoaderManager.create(forthLevUrls,Handler.create(null,Laya3D._onHierarchyInnerForthLevResouLoaded,[loader,group,processHandler,lhData,urlMap,firstLevUrls,secondLevUrls,thirdLevUrls,weight+processCeil *forthLevUrls.length,processCeil]),processHandler,null,null,1,true,group);
 					}else {
-					Laya3D._onHierarchyInnerForthLevResouLoaded(loader,group,null,lhData,urlMap,firstLevUrls,secondLevUrls,weight,processCeil);
+					Laya3D._onHierarchyInnerForthLevResouLoaded(loader,group,null,lhData,urlMap,firstLevUrls,secondLevUrls,thirdLevUrls,weight,processCeil);
 				}
 			}
 		}
 
-		Laya3D._onHierarchyInnerForthLevResouLoaded=function(loader,group,processHandler,lhData,urlMap,firstLevUrls,secondLevUrls,processOffset,processCeil){
+		Laya3D._onHierarchyInnerForthLevResouLoaded=function(loader,group,processHandler,lhData,urlMap,firstLevUrls,secondLevUrls,thirdLevUrls,processOffset,processCeil){
+			if (loader._class.destroyed){
+				loader.endLoad();
+				}else {
+				(processHandler)&& (processHandler.recover());
+				if (thirdLevUrls.length > 0){
+					var process=Handler.create(null,Laya3D._onProcessChange,[loader,processOffset,processCeil],false);
+					Laya3D._innerThirdLevelLoaderManager.create(thirdLevUrls,Handler.create(null,Laya3D._onHierarchyInnerThirdLevResouLoaded,[loader,group,process,lhData,urlMap,firstLevUrls,secondLevUrls,processOffset+processCeil *secondLevUrls.length,processCeil]),processHandler,null,null,1,true,group);
+					}else {
+					Laya3D._onHierarchyInnerThirdLevResouLoaded(loader,group,null,lhData,urlMap,firstLevUrls,secondLevUrls,processOffset,processCeil);
+				}
+			}
+		}
+
+		Laya3D._onHierarchyInnerThirdLevResouLoaded=function(loader,group,processHandler,lhData,urlMap,firstLevUrls,secondLevUrls,processOffset,processCeil){
 			if (loader._class.destroyed){
 				loader.endLoad();
 				}else {
@@ -38942,7 +36922,7 @@ var Laya=window.Laya=(function(window,document){
 				var i=0,n=0,count=0;
 				var heightData=ltData.heightData;
 				heightMapURL=heightData.url;
-				formatUrl=URL.formatURL(terrainBasePath+heightMapURL);
+				formatUrl=Laya3D.formatRelativePath(terrainBasePath,heightMapURL);
 				(urlVersion)&& (formatUrl=formatUrl+urlVersion);
 				urlMap[heightMapURL]=formatUrl;
 				heightMapURL=formatUrl;
@@ -38957,7 +36937,7 @@ var Laya=window.Laya=(function(window,document){
 				textureURLs.push({url:alphaMaps[i],params:[false,false,0x1908,true]});
 				for (i=0,n=textureURLs.length;i < n;i++){
 					var subUrl=textureURLs[i].url;
-					formatUrl=URL.formatURL(terrainBasePath+subUrl);
+					formatUrl=Laya3D.formatRelativePath(terrainBasePath,subUrl);
 					(urlVersion)&& (formatUrl=formatUrl+urlVersion);
 					textureURLs[i].url=formatUrl;
 					urlMap[subUrl]=formatUrl;
@@ -39031,7 +37011,7 @@ var Laya=window.Laya=(function(window,document){
 					}
 				for (i=0,n=urls.length;i < n;i++){
 					var subUrl=urls[i];
-					formatSubUrl=URL.formatURL(meshBasePath+subUrl);
+					formatSubUrl=Laya3D.formatRelativePath(meshBasePath,subUrl);
 					(urlVersion)&& (formatSubUrl=formatSubUrl+urlVersion);
 					urls[i]=formatSubUrl;
 					urlMap[subUrl]=formatSubUrl;
@@ -39052,15 +37032,6 @@ var Laya=window.Laya=(function(window,document){
 		Laya3D._onMeshMateialLoaded=function(loader,processHandler,lmData,urlMap){
 			loader.endLoad([lmData,urlMap]);
 			processHandler.recover();
-		}
-
-		Laya3D._getMaterialTexturePath=function(path,urlVersion,materialBath){
-			var extenIndex=path.length-4;
-			if (path.indexOf(".dds")==extenIndex || path.indexOf(".tga")==extenIndex || path.indexOf(".exr")==extenIndex || path.indexOf(".DDS")==extenIndex || path.indexOf(".TGA")==extenIndex || path.indexOf(".EXR")==extenIndex)
-				path=path.substr(0,extenIndex)+".png";
-			path=URL.formatURL(materialBath+path);
-			(urlVersion)&& (path=path+urlVersion);
-			return path;
 		}
 
 		Laya3D._loadMaterial=function(loader){
@@ -39092,7 +37063,7 @@ var Laya=window.Laya=(function(window,document){
 									var extenIndex=tex2DPath.length-4;
 									if (tex2DPath.indexOf(".exr")==extenIndex || tex2DPath.indexOf(".EXR")==extenIndex)
 										tex2DPath=tex2DPath.substr(0,extenIndex)+".png";
-									formatSubUrl=URL.formatURL(materialBasePath+tex2DPath);
+									formatSubUrl=Laya3D.formatRelativePath(materialBasePath,tex2DPath);
 									(urlVersion)&& (formatSubUrl=formatSubUrl+urlVersion);
 									urls.push({url:formatSubUrl,params:tex2D.params});
 									urlMap[tex2DPath]=formatSubUrl;
@@ -39131,7 +37102,7 @@ var Laya=window.Laya=(function(window,document){
 				loader.endLoad();
 				}else {
 				var ltcBasePath=URL.getPath(loader.url);
-				var urls=[URL.formatURL(ltcBasePath+ltcData.front),URL.formatURL(ltcBasePath+ltcData.back),URL.formatURL(ltcBasePath+ltcData.left),URL.formatURL(ltcBasePath+ltcData.right),URL.formatURL(ltcBasePath+ltcData.up),URL.formatURL(ltcBasePath+ltcData.down)];
+				var urls=[Laya3D.formatRelativePath(ltcBasePath,ltcData.front),Laya3D.formatRelativePath(ltcBasePath,ltcData.back),Laya3D.formatRelativePath(ltcBasePath,ltcData.left),Laya3D.formatRelativePath(ltcBasePath,ltcData.right),Laya3D.formatRelativePath(ltcBasePath,ltcData.up),Laya3D.formatRelativePath(ltcBasePath,ltcData.down)];
 				var ltcWeight=1.0 / 7.0;
 				Laya3D._onProcessChange(loader,0,ltcWeight,1.0);
 				var processHandler=Handler.create(null,Laya3D._onProcessChange,[loader,ltcWeight,6 / 7],false);
@@ -39191,19 +37162,17 @@ var Laya=window.Laya=(function(window,document){
 			ShuriKenParticle3D.__init__();
 			BaseMaterial.__init__();
 			BlinnPhongMaterial.__init__();
-			StandardMaterial.__init__();
 			PBRMaterial.__init__();
 			PBRStandardMaterial.__init__();
-			PBRSpecularMaterial.__init__();
-			WaterMaterial.__init__();
+			PBRStandardMaterial.__init__();
+			TrailSprite3D.__init__();
+			TrailMaterial.__init__();
 			ShurikenParticleMaterial.__init__();
 			TerrainMaterial.__init__();
 			ShaderInit3D.__init__();
-			SkyBox.__init__();
 			MeshSprite3D.__init__();
 			AnimationNode.__init__();
 			Texture2D.__init__();
-			TextureCube.__init__();
 			Laya3D.__init__();
 			if (Laya3D.debugMode || OctreeNode.debugMode)
 				Laya3D._debugPhasorSprite=new PhasorSpriter3D();
@@ -39256,6 +37225,7 @@ var Laya=window.Laya=(function(window,document){
 	var Styles=(function(){
 		function Styles(){};
 		__class(Styles,'laya.ui.Styles');
+		Styles.labelColor="#000000";
 		Styles.buttonStateNum=3;
 		Styles.scrollBarMinNum=15;
 		Styles.scrollBarDelayTime=500;
@@ -39324,8 +37294,20 @@ var Laya=window.Laya=(function(window,document){
 			return str.replace(/\\(\w)/g,UIUtils._getReplaceStr);
 		}
 
+		UIUtils.getBindFun=function(value){
+			var fun=UIUtils._funMap.get(value);
+			if (fun==null){
+				var temp="\""+value+"\"";
+				temp=temp.replace(/^"\${|}"$/g,"").replace(/\${/g,"\"+").replace(/}/g,"+\"");
+				var str="(function(data){if(data==null)return;with(data){try{\nreturn "+temp+"\n}catch(e){}}})";
+				fun=Browser.window.eval(str);
+				UIUtils._funMap.set(value,fun);
+			}
+			return fun;
+		}
+
 		__static(UIUtils,
-		['grayFilter',function(){return this.grayFilter=new ColorFilter([0.3086,0.6094,0.082,0,0,0.3086,0.6094,0.082,0,0,0.3086,0.6094,0.082,0,0,0,0,0,1,0]);},'escapeSequence',function(){return this.escapeSequence={"\\n":"\n","\\t":"\t"};}
+		['grayFilter',function(){return this.grayFilter=new ColorFilter([0.3086,0.6094,0.082,0,0,0.3086,0.6094,0.082,0,0,0.3086,0.6094,0.082,0,0,0,0,0,1,0]);},'escapeSequence',function(){return this.escapeSequence={"\\n":"\n","\\t":"\t"};},'_funMap',function(){return this._funMap=new WeakObject();}
 		]);
 		return UIUtils;
 	})()
@@ -39346,6 +37328,269 @@ var Laya=window.Laya=(function(window,document){
 	})()
 
 
+	//class laya.d3.resource.DataTexture2D extends laya.d3.resource.BaseTexture
+	var DataTexture2D=(function(_super){
+		function DataTexture2D(){
+			this.simLodInfo=null;
+			this._buffer=null;
+			this._mipmaps=null;
+			this._recreateLock=false;
+			this._needReleaseAgain=false;
+			DataTexture2D.__super.call(this);
+			/*no*/this._glTextureType=0x0DE1;
+		}
+
+		__class(DataTexture2D,'laya.d3.resource.DataTexture2D');
+		var __proto=DataTexture2D.prototype;
+		__proto.genDebugMipmaps=function(){
+			var ret=[];
+			ret.push(new Uint8Array((new Uint32Array(512 *256)).fill(0xff0000ff).buffer));
+			ret.push(new Uint8Array((new Uint32Array(256 *128)).fill(0xff0080ff).buffer));
+			ret.push(new Uint8Array((new Uint32Array(128 *64)).fill(0xff00ffff).buffer));
+			ret.push(new Uint8Array((new Uint32Array(64 *32)).fill(0xff00ff00).buffer));
+			ret.push(new Uint8Array((new Uint32Array(32 *16)).fill(0xff804000).buffer));
+			ret.push(new Uint8Array((new Uint32Array(16 *8)).fill(0xffff0000).buffer));
+			ret.push(new Uint8Array((new Uint32Array(8 *4)).fill(0xffff0080).buffer));
+			ret.push(new Uint8Array((new Uint32Array(4 *2)).fill(0x0).buffer));
+			ret.push(new Uint8Array((new Uint32Array(2 *1)).fill(0xff808080).buffer));
+			ret.push(new Uint8Array((new Uint32Array(1 *1)).fill(0xffffffff).buffer));
+			return ret;
+		}
+
+		/**
+		*@private
+		*/
+		__proto._onTextureLoaded=function(buff){}
+		/**
+		*@private
+		*/
+		__proto._createWebGlTexture=function(){
+			if (!this._buffer && !this._mipmaps)
+				throw "create GLTextur err:no data";
+			var gl=LayaGL.instance;
+			gl.getExtension("EXT_shader_texture_lod");
+			var w=/*no*/this._width;
+			var h=/*no*/this._height;
+			WebGLContext.bindTexture(gl,/*no*/this._glTextureType,/*no*/this._glTexture);
+			if (this._mipmaps){
+				if (laya.d3.resource.DataTexture2D.lodasatlas){
+					var infoi=0;
+					gl.texImage2D(/*no*/this._glTextureType,0,0x1908,/*no*/this._width,/*no*/this._height,0,0x1908,0x1401,null);
+					for (var i=0;i < this._mipmaps.length;i++){
+						if (this._mipmaps[i].byteLength !=cw *ch *4){
+							throw "mipmap size error  level:"+i;
+						}
+						gl.texSubImage2D(/*no*/this._glTextureType,0,DataTexture2D.simLodRect[infoi++],DataTexture2D.simLodRect[infoi++],DataTexture2D.simLodRect[infoi++],DataTexture2D.simLodRect[infoi++],0x1908,0x1401,new Uint8Array(this._mipmaps[i]));
+					}
+					this.minFifter=0x2601;
+					this.magFifter=0x2601;
+					}else {
+					var cw=this._width;
+					var ch=this._height;
+					infoi=0;
+					gl.texImage2D(/*no*/this._glTextureType,0,0x1908,/*no*/this._width,/*no*/this._height,0,0x1908,0x1401,null);
+					for (i=0;i < this._mipmaps.length;i++){
+						if (this._mipmaps[i].byteLength !=cw *ch *4){
+							throw "mipmap size error  level:"+i;
+						}
+						gl.texImage2D(/*no*/this._glTextureType,i,0x1908,cw,ch,0,0x1908,0x1401,new Uint8Array(this._mipmaps[i]));
+						cw /=2;
+						ch /=2;
+						if (cw < 1)cw=1;
+						if (ch < 1)ch=1;
+						this.minFifter=0x2703;
+						this.magFifter=0x2601;
+					}
+				}
+				this.mipmap=false;
+				}else {
+				gl.texImage2D(/*no*/this._glTextureType,0,0x1908,w,h,0,0x1908,0x1401,new Uint8Array(this._buffer));
+			};
+			var minFifter=this._minFifter;
+			var magFifter=this._magFifter;
+			var repeat=this._repeat ? 0x2901 :0x812F;
+			var isPot=Arith.isPOT(w,h);
+			if (isPot){
+				if (this._mipmap || this._mipmaps)
+					(minFifter!==-1)|| (minFifter=0x2703);
+				else
+				(minFifter!==-1)|| (minFifter=0x2601);
+				(magFifter!==-1)|| (magFifter=0x2601);
+				gl.texParameteri(/*no*/this._glTextureType,0x2801,minFifter);
+				gl.texParameteri(/*no*/this._glTextureType,0x2800,magFifter);
+				gl.texParameteri(/*no*/this._glTextureType,0x2802,repeat);
+				if (this._mipmaps)
+					gl.texParameteri(/*no*/this._glTextureType,0x2803,0x812F);
+				else
+				gl.texParameteri(/*no*/this._glTextureType,0x2803,repeat);
+				this._mipmap && gl.generateMipmap(/*no*/this._glTextureType);
+				}else {
+				throw "data texture must be POT";
+			}
+			if (this.src && this.src.length > 0)
+				this._buffer=null;
+			if (isPot)
+				/*no*/this.memorySize=w *h *4 *(1+1 / 3);
+			else
+			/*no*/this.memorySize=w *h *4;
+			this._recreateLock=false;
+		}
+
+		/**
+		*重新创建资源，如果异步创建中被强制释放再创建，则需等待释放完成后再重新加载创建。
+		*/
+		__proto.recreateResource=function(){
+			if (!this._buffer)
+				return;
+			this._needReleaseAgain=false;
+			if (!this._buffer && !this._mipmaps){
+				this._recreateLock=true;
+				var _this=this;
+				}else {
+				if (this._recreateLock){
+					return;
+				}
+				this._createWebGlTexture();
+			}
+		}
+
+		/**
+		*@private
+		*/
+		__proto.onAsynLoaded=function(data,params){
+			var imgdata;
+			if (params){
+				imgdata=params[0].call(this,data);
+			}
+			if (imgdata){
+				this._width=imgdata.width;
+				this._height=imgdata.height;
+				this._buffer=imgdata.data;
+			}
+		}
+
+		/**
+		*返回图片像素。
+		*@return 图片像素。
+		*/
+		__proto.getPixels=function(){
+			return new Uint8Array(this._buffer);
+		}
+
+		/**
+		*销毁资源。
+		*/
+		__proto.disposeResource=function(){
+			if (this._recreateLock){
+				this._needReleaseAgain=true;
+			}
+			if (/*no*/this._glTexture){
+				LayaGL.instance.deleteTexture(/*no*/this._glTexture);
+				/*no*/this._glTexture=null;
+				this._buffer=null;
+				/*no*/this.memorySize=0;
+			}
+		}
+
+		DataTexture2D.create=function(data,w,h,magfilter,minfilter,mipmap){
+			(magfilter===void 0)&& (magfilter=0x2601);
+			(minfilter===void 0)&& (minfilter=0x2601);
+			(mipmap===void 0)&& (mipmap=true);
+			if (!data || data.byteLength < (w *h *4))
+				throw 'DataTexture2D create error';
+			var ret=new DataTexture2D();
+			ret._buffer=data;
+			ret._width=w;
+			ret._height=h;
+			ret._mipmap=mipmap;
+			ret._magFifter=magfilter;
+			ret._minFifter=minfilter;
+			if (ret._conchTexture){
+				alert('怎么给runtime传递datatexture数据');
+			}else
+			ret.activeResource();
+			return ret;
+		}
+
+		DataTexture2D.load=function(url,w,h,magfilter,minfilter){
+			(w===void 0)&& (w=0);
+			(h===void 0)&& (h=0);
+			(magfilter===void 0)&& (magfilter=0x2601);
+			(minfilter===void 0)&& (minfilter=0x2601);
+			var extension=Utils.getFileExtension(url);
+			if (extension==='mipmaps'){
+				var ret=Laya.loader.create(url,null,null,DataTexture2D,[function(data){
+					this._mipmaps=[];
+					var szinfo=new Uint32Array(data);
+					this._width=szinfo[0];
+					var validw=512;
+					if (laya.d3.resource.DataTexture2D.lodasatlas){
+						this._width *=2;
+						validw=1024;
+					}
+					if (this._width !=validw){
+						console.error("现在只支持512x256的环境贴图。当前的是"+szinfo[0]);
+						throw "现在只支持512x256的环境贴图。当前的是"+szinfo[0];
+					}
+					this._height=szinfo[1];
+					var curw=laya.d3.resource.DataTexture2D.lodasatlas ? this._width / 2 :this._width;
+					var curh=this._height;
+					var cursz=8;
+					while (true){
+						var curbufsz=curw *curh *4;
+						if (cursz+curbufsz > data.byteLength){
+							throw "load mipmaps data size error ";
+						};
+						var tbuf=new Uint8Array(data,cursz,curbufsz);
+						this._mipmaps.push(tbuf);
+						cursz+=curbufsz;
+						if (curw==1 && curh==1){
+							break ;
+						}
+						curw /=2;
+						curh /=2;
+						if (curw < 1)curw=1;
+						if (curh < 1)curh=1;
+					}
+					return null;
+				}]);
+				if (laya.d3.resource.DataTexture2D.lodasatlas){
+					ret.simLodInfo=new Float32Array(40);
+					for (var i=0;i < ret.simLodInfo.length;){
+						ret.simLodInfo[i]=(DataTexture2D.simLodRect[i]+0.5)/ 1024;
+						i++;
+						ret.simLodInfo[i]=(DataTexture2D.simLodRect[i]+0.5)/ 256;
+						i++;
+						ret.simLodInfo[i]=Math.max(DataTexture2D.simLodRect[i]-1,0.1)/ 1024;
+						i++;
+						ret.simLodInfo[i]=Math.max(DataTexture2D.simLodRect[i]-1.5,0.1)/ 256;
+						i++;
+					}
+				}
+				return ret;
+				}else if (typeof(w)=='number'){
+				return Laya.loader.create(url,null,null,DataTexture2D,[function(data){
+					this._width=w;
+					this._height=h;
+					this._buffer=data;
+					return null;
+				}]);
+				}else if (typeof(w)=='function'){
+				return Laya.loader.create(url,null,null,DataTexture2D,[w]);
+				}else {
+				throw new Error("unknown params.");
+			}
+		}
+
+		DataTexture2D.lodasatlas=false;
+		__static(DataTexture2D,
+		['simLodRect',function(){return this.simLodRect=new Uint32Array([
+			0,0,512,256,512,0,256,128,512+256,0,128,64,512+256+128,0,64,32,512+256+128+64,0,32,16,512+256+128+64+32,0,16,8,512+256+128+64+32+16,0,8,4,512+256+128+64+32+16+8,0,4,2,512+256+128+64+32+16+8+4,0,2,1,512+256+128+64+32+16+8+4+2,0,1,1]);}
+		]);
+		return DataTexture2D;
+	})(laya.d3.resource.BaseTexture)
+
+
 	/**
 	*<code>Node</code> 类是可放在显示列表中的所有对象的基类。该显示列表管理 Laya 运行时中显示的所有对象。使用 Node 类排列显示列表中的显示对象。Node 对象可以有子显示对象。
 	*/
@@ -39359,7 +37604,6 @@ var Laya=window.Laya=(function(window,document){
 			this.data=null;
 			Node.__super.call(this);
 			this._children=Node.ARRAY_EMPTY;
-			this._$P=Node.PROP_EMPTY;
 			this.timer=Laya.timer;
 			this.createGLBuffer();
 		}
@@ -39397,15 +37641,6 @@ var Laya=window.Laya=(function(window,document){
 				ele._setBit(type,true);
 				ele=ele._parent;
 			}
-		}
-
-		/**@private */
-		__proto._set$P=function(key,value){
-			if (!this.destroyed){
-				this._$P===Node.PROP_EMPTY && (this._$P={});
-				this._$P[key]=value;
-			}
-			return value;
 		}
 
 		/**
@@ -40421,6 +38656,7 @@ var Laya=window.Laya=(function(window,document){
 			this._data=null;
 			this._class=null;
 			this._url=null;
+			this._originalUrl=null;
 			this._type=null;
 			this._cache=false;
 			this._http=null;
@@ -40444,6 +38680,13 @@ var Laya=window.Laya=(function(window,document){
 			(cache===void 0)&& (cache=true);
 			(ignoreCache===void 0)&& (ignoreCache=false);
 			(useWorkerLoader===void 0)&& (useWorkerLoader=false);
+			if (AtlasInfoManager.getFileLoadPath(url)!=url){
+				this._originalUrl=url;
+				type="atlas";
+				url=AtlasInfoManager.getFileLoadPath(url);
+				}else{
+				this._originalUrl=null;
+			}
 			this._url=url;
 			if (url.indexOf("data:image")===0)type="image";
 			else url=URL.formatURL(url);
@@ -40690,6 +38933,7 @@ var Laya=window.Laya=(function(window,document){
 		__proto.endLoad=function(content){
 			content && (this._data=content);
 			if (this._cache)Loader.cacheRes(this._url,this._data);
+			if (this._originalUrl && laya.net.Loader.getRes(this._originalUrl))this._data=laya.net.Loader.getRes(this._originalUrl);
 			this._customParse=false;
 			this.event("progress",1);
 			this.event("complete",(this.data instanceof Array)? [this.data] :this.data);
@@ -43708,6 +41952,7 @@ var Laya=window.Laya=(function(window,document){
 		}
 
 		__proto.clipRect=function(x,y,width,height){
+			SaveClipRect.save(this);
 			if (this._clipRect==WebGLContext2D.MAXCLIPRECT){
 				this._clipRect=new Rectangle(x,y,width,height);
 				}else {
@@ -44820,30 +43065,6 @@ var Laya=window.Laya=(function(window,document){
 
 
 	/**
-	*@private
-	*/
-	//class laya.ani.GraphicsAni extends laya.display.Graphics
-	var GraphicsAni=(function(_super){
-		function GraphicsAni(){GraphicsAni.__super.call(this);;
-		};
-
-		__class(GraphicsAni,'laya.ani.GraphicsAni',_super);
-		var __proto=GraphicsAni.prototype;
-		/**
-		*@private
-		*画自定义蒙皮动画
-		*@param skin
-		*/
-		__proto.drawSkin=function(skin){
-			var arr=[skin];
-			this._saveToCmd(Render._context._drawSkin,arr);
-		}
-
-		return GraphicsAni;
-	})(Graphics)
-
-
-	/**
 	*<code>MeshFilter</code> 类用于创建网格过滤器。
 	*/
 	//class laya.d3.core.MeshFilter extends laya.events.EventDispatcher
@@ -44860,8 +43081,31 @@ var Laya=window.Laya=(function(window,document){
 		/**
 		*@private
 		*/
-		__proto._sharedMeshLoaded=function(){
-			this.event("loaded");
+		__proto._changeRenderObjectByMesh=function(index){
+			var render=this._owner._render;
+			var elements=render._renderElements;
+			var renderElement=elements[index];
+			if (renderElement){
+				renderElement.setGeometry(this._sharedMesh._getSubMesh(index));
+				}else {
+				var material=render.sharedMaterials[index];
+				(material)|| (material=BlinnPhongMaterial.defaultMaterial);
+				renderElement=elements[index]=new SubMeshRenderElement();
+				renderElement.setTransform(this._owner._transform);
+				renderElement.render=render;
+				renderElement.material=material;
+				renderElement.setGeometry(this._sharedMesh._getSubMesh(index));
+			}
+		}
+
+		/**
+		*@private
+		*/
+		__proto._changeRenderObjectsByMesh=function(){
+			var renderElementsCount=this._sharedMesh.subMeshCount;
+			this._owner._render._renderElements.length=renderElementsCount;
+			for (var i=0;i < renderElementsCount;i++)
+			this._changeRenderObjectByMesh(i);
 		}
 
 		/**
@@ -44883,14 +43127,20 @@ var Laya=window.Laya=(function(window,document){
 		__getset(0,__proto,'sharedMesh',function(){
 			return this._sharedMesh;
 			},function(value){
-			var lastValue=this._sharedMesh;
-			(lastValue)&& (lastValue._removeReference());
-			this._sharedMesh=value;
-			value._addReference();
-			this.event("meshchanged",[this,lastValue,value]);
-			if (!value.loaded){
-				this._sharedMesh.once("loaded",this,this._sharedMeshLoaded);
+			if (this._sharedMesh!==value){
+				var lastValue=this._sharedMesh;
+				if (lastValue){
+					lastValue._removeReference();
+					(lastValue.loaded)|| (lastValue.off("loaded",this,this._changeRenderObjectsByMesh));
+				}
+				value._addReference();
+				this._sharedMesh=value;
+				if (value.loaded)
+					this._changeRenderObjectsByMesh();
+				else
+				value.once("loaded",this,this._changeRenderObjectsByMesh);
 			}
+			this.event("meshchanged",[this,lastValue,value]);
 		});
 
 		return MeshFilter;
@@ -44907,9 +43157,9 @@ var Laya=window.Laya=(function(window,document){
 			//this._destroyed=false;
 			//this._lightmapScaleOffset=null;
 			//this._lightmapIndex=0;
-			//this._enable=false;
 			//this._receiveShadow=false;
 			//this._materialsInstance=null;
+			//this._castShadow=false;
 			//this._boundingSphere=null;
 			//this._boundingBox=null;
 			//this._boundingBoxCenter=null;
@@ -44917,24 +43167,24 @@ var Laya=window.Laya=(function(window,document){
 			//this._boundingBoxNeedChange=false;
 			//this._boundingBoxCenterNeedChange=false;
 			//this._octreeNodeNeedChange=false;
+			//this._enable=false;
 			//this._shaderValues=null;
 			//this._defineDatas=null;
-			//this._indexInSceneList=0;
+			//this._indexInList=0;
+			//this._indexInCastShadowList=0;
 			//this._materials=null;
 			//this._scene=null;
 			//this._owner=null;
 			//this._renderElements=null;
 			//this._distanceForSort=NaN;
 			//this._treeNode=null;
-			//this._isPartOfStaticBatch=false;
-			//this._staticBatchRootSprite3D=null;
-			//this._staticBatchRenderElements=null;
-			//this._updateMark=0;
+			//this._updateLoopCount=0;
+			//this._updateCamera=null;
 			//this.sortingFudge=NaN;
-			//this.castShadow=false;
 			BaseRender.__super.call(this);
 			this._id=++BaseRender._uniqueIDCounter;
-			this._indexInSceneList=-1;
+			this._indexInList=-1;
+			this._indexInCastShadowList=-1;
 			this._boundingBox=new BoundBox(new Vector3(),new Vector3());
 			this._boundingBoxCenter=new Vector3();
 			this._boundingSphere=new BoundSphere(new Vector3(),0);
@@ -44944,16 +43194,14 @@ var Laya=window.Laya=(function(window,document){
 			this._octreeNodeNeedChange=true;
 			this._materials=[];
 			this._renderElements=[];
-			this._isPartOfStaticBatch=false;
 			this._destroyed=false;
 			this._owner=owner;
 			this._enable=true;
 			this._materialsInstance=[];
-			this._updateMark=-1;
 			this._shaderValues=new ShaderDatas(this,shaderDataSize);
 			this._defineDatas=new DefineDatas();
 			this.lightmapIndex=-1;
-			this.castShadow=false;
+			this._castShadow=false;
 			this.receiveShadow=false;
 			this.sortingFudge=0.0;
 			(owner)&& (this._owner.transform.on("worldmatrixneedchanged",this,this._onWorldMatNeedChange));
@@ -45066,8 +43314,14 @@ var Laya=window.Laya=(function(window,document){
 
 		/**
 		*@private
+		*逐精灵执行。
 		*/
 		__proto._renderUpdate=function(context,transform){}
+		/**
+		*@private
+		*逐精灵和相机执行。
+		*/
+		__proto._renderUpdateWithCamera=function(context,transform){}
 		/**
 		*@private
 		*/
@@ -45190,6 +43444,28 @@ var Laya=window.Laya=(function(window,document){
 			this._lightmapScaleOffset=value;
 			this._shaderValues.setVector(2,value);
 			this._defineDatas.add(RenderableSprite3D.SHADERDEFINE_SCALEOFFSETLIGHTINGMAPUV);
+		});
+
+		/**
+		*设置是否产生阴影。
+		*@param value 是否产生阴影。
+		*/
+		/**
+		*获取是否产生阴影。
+		*@return 是否产生阴影。
+		*/
+		__getset(0,__proto,'castShadow',function(){
+			return this._castShadow;
+			},function(value){
+			if (this._castShadow!==value){
+				if (this._owner.activeInHierarchy){
+					if (value)
+						this._scene._addShadowCastRenderObject(this);
+					else
+					this._scene._removeShadowCastRenderObject(this);
+				}
+				this._castShadow=value;
+			}
 		});
 
 		/**
@@ -45462,6 +43738,238 @@ var Laya=window.Laya=(function(window,document){
 
 
 	/**
+	*...
+	*@author ...
+	*/
+	//class laya.d3.core.trail.TrailFilter extends laya.events.EventDispatcher
+	var TrailFilter=(function(_super){
+		function TrailFilter(owner){
+			this._owner=null;
+			this._trailRenderElements=null;
+			this._minVertexDistance=NaN;
+			this._widthMultiplier=NaN;
+			this._time=NaN;
+			this._widthCurve=null;
+			this._colorGradient=null;
+			this._textureMode=0;
+			this._curtime=0;
+			this._curSubTrailFinishCurTime=0;
+			this._curSubTrailFinished=false;
+			this._hasLifeSubTrail=false;
+			this._trailTotalLength=0;
+			this._trailSupplementLength=0;
+			this._trailDeadLength=0;
+			this._trailRenderElementIndex=0;
+			TrailFilter.__super.call(this);
+			this._curSubTrailFinishPosition=new Vector3();
+			this._curSubTrailFinishDirection=new Vector3();
+			this._owner=owner;
+			this._trailRenderElements=[];
+			this.addRenderElement();
+		}
+
+		__class(TrailFilter,'laya.d3.core.trail.TrailFilter',_super);
+		var __proto=TrailFilter.prototype;
+		__proto.getRenderElementsCount=function(){
+			return this._trailRenderElements.length;
+		}
+
+		__proto.addRenderElement=function(){
+			for (var i=0;i < this._trailRenderElements.length;i++){
+				if (this._trailRenderElements[i]._isDead==true){
+					this._trailRenderElements[i].reActivate();
+					return i;
+				}
+			};
+			var _trailRenderElement=new TrailRenderElement(this);
+			this._trailRenderElements.push(_trailRenderElement);
+			return this._trailRenderElements.length-1;
+		}
+
+		__proto.getRenderElement=function(index){
+			return this._trailRenderElements[index];
+		}
+
+		__proto._update=function(state){
+			this._curtime+=state.elapsedTime / 1000;
+			this._owner._render._shaderValues.setNumber(3,this._curtime);
+			if (this._curSubTrailFinished){
+				this._curSubTrailFinished=false;
+				this._trailRenderElementIndex=this.addRenderElement();
+				this.event("trailfilterchange",[this._trailRenderElementIndex,this._trailRenderElements[this._trailRenderElementIndex]]);
+			}
+		}
+
+		/**
+		*@private
+		*/
+		__proto.destroy=function(){
+			for (var i=0;i < this._trailRenderElements.length;i++){
+				this._trailRenderElements[i]._destroy();
+			}
+			this._trailRenderElements=null;
+			this._widthCurve=null;
+			this._colorGradient=null;
+			this._curSubTrailFinishPosition=null;
+			this._curSubTrailFinishDirection=null;
+		}
+
+		/**
+		*设置宽度倍数。
+		*@param value 宽度倍数。
+		*/
+		/**
+		*获取宽度倍数。
+		*@return 宽度倍数。
+		*/
+		__getset(0,__proto,'widthMultiplier',function(){
+			return this._widthMultiplier;
+			},function(value){
+			this._widthMultiplier=value;
+		});
+
+		/**
+		*设置淡出时间。
+		*@param value 淡出时间。
+		*/
+		/**
+		*获取淡出时间。
+		*@return 淡出时间。
+		*/
+		__getset(0,__proto,'time',function(){
+			return this._time;
+			},function(value){
+			this._time=value;
+			this._owner._render._shaderValues.setNumber(4,value);
+		});
+
+		/**
+		*设置宽度曲线。
+		*@param value 宽度曲线。
+		*/
+		/**
+		*获取宽度曲线。
+		*@return 宽度曲线。
+		*/
+		__getset(0,__proto,'widthCurve',function(){
+			return this._widthCurve;
+			},function(value){
+			this._widthCurve=value;
+			var widthCurveFloatArray=new Float32Array(value.length *4);
+			var i=0,j=0,index=0;
+			for (i=0,j=value.length;i < j;i++){
+				widthCurveFloatArray[index++]=value[i].time;
+				widthCurveFloatArray[index++]=value[i].inTangent;
+				widthCurveFloatArray[index++]=value[i].outTangent;
+				widthCurveFloatArray[index++]=value[i].value;
+			}
+			this._owner._render._shaderValues.setBuffer(5,widthCurveFloatArray);
+			this._owner._render._shaderValues.setInt(6,value.length);
+		});
+
+		/**
+		*设置新旧顶点之间最小距离。
+		*@param value 新旧顶点之间最小距离。
+		*/
+		/**
+		*获取新旧顶点之间最小距离。
+		*@return 新旧顶点之间最小距离。
+		*/
+		__getset(0,__proto,'minVertexDistance',function(){
+			return this._minVertexDistance;
+			},function(value){
+			this._minVertexDistance=value;
+		});
+
+		/**
+		*设置颜色梯度。
+		*@param value 颜色梯度。
+		*/
+		/**
+		*获取颜色梯度。
+		*@return 颜色梯度。
+		*/
+		__getset(0,__proto,'colorGradient',function(){
+			return this._colorGradient;
+			},function(value){
+			this._colorGradient=value;
+			this._owner._render._shaderValues.setBuffer(7,value._colorKeyData);
+			this._owner._render._shaderValues.setBuffer(8,value._alphaKeyData);
+			if (value.mode==0){
+				this._owner._render._defineDatas.add(TrailSprite3D.SHADERDEFINE_GRADIENTMODE_BLEND);
+			}
+			else{
+				this._owner._render._defineDatas.remove(TrailSprite3D.SHADERDEFINE_GRADIENTMODE_BLEND);
+			}
+		});
+
+		/**
+		*设置纹理模式。
+		*@param value 纹理模式。
+		*/
+		/**
+		*获取纹理模式。
+		*@return 纹理模式。
+		*/
+		__getset(0,__proto,'textureMode',function(){
+			return this._textureMode;
+			},function(value){
+			this._textureMode=value;
+		});
+
+		return TrailFilter;
+	})(EventDispatcher)
+
+
+	//class laya.webgl.shader.d2.ShaderDefines2D extends laya.webgl.shader.ShaderDefines
+	var ShaderDefines2D=(function(_super){
+		function ShaderDefines2D(){
+			ShaderDefines2D.__super.call(this,ShaderDefines2D.__name2int,ShaderDefines2D.__int2name,ShaderDefines2D.__int2nameMap);
+		}
+
+		__class(ShaderDefines2D,'laya.webgl.shader.d2.ShaderDefines2D',_super);
+		ShaderDefines2D.__init__=function(){
+			ShaderDefines2D.reg("TEXTURE2D",0x01);
+			ShaderDefines2D.reg("PRIMITIVE",0x04);
+			ShaderDefines2D.reg("GLOW_FILTER",0x08);
+			ShaderDefines2D.reg("BLUR_FILTER",0x10);
+			ShaderDefines2D.reg("COLOR_FILTER",0x20);
+			ShaderDefines2D.reg("COLOR_ADD",0x40);
+			ShaderDefines2D.reg("WORLDMAT",0x80);
+			ShaderDefines2D.reg("FILLTEXTURE",0x100);
+			ShaderDefines2D.reg("FSHIGHPRECISION",0x400);
+		}
+
+		ShaderDefines2D.reg=function(name,value){
+			ShaderDefines._reg(name,value,ShaderDefines2D.__name2int,ShaderDefines2D.__int2name);
+		}
+
+		ShaderDefines2D.toText=function(value,int2name,int2nameMap){
+			return ShaderDefines._toText(value,int2name,int2nameMap);
+		}
+
+		ShaderDefines2D.toInt=function(names){
+			return ShaderDefines._toInt(names,ShaderDefines2D.__name2int);
+		}
+
+		ShaderDefines2D.TEXTURE2D=0x01;
+		ShaderDefines2D.PRIMITIVE=0x04;
+		ShaderDefines2D.FILTERGLOW=0x08;
+		ShaderDefines2D.FILTERBLUR=0x10;
+		ShaderDefines2D.FILTERCOLOR=0x20;
+		ShaderDefines2D.COLORADD=0x40;
+		ShaderDefines2D.WORLDMAT=0x80;
+		ShaderDefines2D.FILLTEXTURE=0x100;
+		ShaderDefines2D.SKINMESH=0x200;
+		ShaderDefines2D.SHADERDEFINE_FSHIGHPRECISION=0x400;
+		ShaderDefines2D.__name2int={};
+		ShaderDefines2D.__int2name=[];
+		ShaderDefines2D.__int2nameMap=[];
+		return ShaderDefines2D;
+	})(ShaderDefines)
+
+
+	/**
 	*<code>Transform3D</code> 类用于实现3D变换。
 	*/
 	//class laya.d3.core.Transform3D extends laya.events.EventDispatcher
@@ -45478,6 +43986,7 @@ var Laya=window.Laya=(function(window,document){
 			this._parent=null;
 			this._children=null;
 			this._dummy=null;
+			this._id=0;
 			this.pivot=null;
 			Transform3D.__super.call(this);
 			this._localPosition=new Vector3();
@@ -45492,6 +44001,7 @@ var Laya=window.Laya=(function(window,document){
 			this._forward=new Vector3();
 			this._up=new Vector3();
 			this._right=new Vector3();
+			this._id=++Transform3D._uniqueIDCounter;
 			this._owner=owner;
 			this._children=[];
 		}
@@ -46025,6 +44535,7 @@ var Laya=window.Laya=(function(window,document){
 			}
 		});
 
+		Transform3D._uniqueIDCounter=0;
 		__static(Transform3D,
 		['_tempVector30',function(){return this._tempVector30=new Vector3();},'_tempVector31',function(){return this._tempVector31=new Vector3();},'_tempVector32',function(){return this._tempVector32=new Vector3();},'_tempVector33',function(){return this._tempVector33=new Vector3();},'_tempQuaternion0',function(){return this._tempQuaternion0=new Quaternion();},'_tempMatrix0',function(){return this._tempMatrix0=new Matrix4x4();},'_angleToRandin',function(){return this._angleToRandin=180 / Math.PI;}
 		]);
@@ -46145,54 +44656,6 @@ var Laya=window.Laya=(function(window,document){
 		]);
 		return TransformUV;
 	})(EventDispatcher)
-
-
-	//class laya.webgl.shader.d2.ShaderDefines2D extends laya.webgl.shader.ShaderDefines
-	var ShaderDefines2D=(function(_super){
-		function ShaderDefines2D(){
-			ShaderDefines2D.__super.call(this,ShaderDefines2D.__name2int,ShaderDefines2D.__int2name,ShaderDefines2D.__int2nameMap);
-		}
-
-		__class(ShaderDefines2D,'laya.webgl.shader.d2.ShaderDefines2D',_super);
-		ShaderDefines2D.__init__=function(){
-			ShaderDefines2D.reg("TEXTURE2D",0x01);
-			ShaderDefines2D.reg("PRIMITIVE",0x04);
-			ShaderDefines2D.reg("GLOW_FILTER",0x08);
-			ShaderDefines2D.reg("BLUR_FILTER",0x10);
-			ShaderDefines2D.reg("COLOR_FILTER",0x20);
-			ShaderDefines2D.reg("COLOR_ADD",0x40);
-			ShaderDefines2D.reg("WORLDMAT",0x80);
-			ShaderDefines2D.reg("FILLTEXTURE",0x100);
-			ShaderDefines2D.reg("FSHIGHPRECISION",0x400);
-		}
-
-		ShaderDefines2D.reg=function(name,value){
-			ShaderDefines._reg(name,value,ShaderDefines2D.__name2int,ShaderDefines2D.__int2name);
-		}
-
-		ShaderDefines2D.toText=function(value,int2name,int2nameMap){
-			return ShaderDefines._toText(value,int2name,int2nameMap);
-		}
-
-		ShaderDefines2D.toInt=function(names){
-			return ShaderDefines._toInt(names,ShaderDefines2D.__name2int);
-		}
-
-		ShaderDefines2D.TEXTURE2D=0x01;
-		ShaderDefines2D.PRIMITIVE=0x04;
-		ShaderDefines2D.FILTERGLOW=0x08;
-		ShaderDefines2D.FILTERBLUR=0x10;
-		ShaderDefines2D.FILTERCOLOR=0x20;
-		ShaderDefines2D.COLORADD=0x40;
-		ShaderDefines2D.WORLDMAT=0x80;
-		ShaderDefines2D.FILLTEXTURE=0x100;
-		ShaderDefines2D.SKINMESH=0x200;
-		ShaderDefines2D.SHADERDEFINE_FSHIGHPRECISION=0x400;
-		ShaderDefines2D.__name2int={};
-		ShaderDefines2D.__int2name=[];
-		ShaderDefines2D.__int2nameMap=[];
-		return ShaderDefines2D;
-	})(ShaderDefines)
 
 
 	//class laya.webgl.shader.d2.skinAnishader.SkinSV extends laya.webgl.shader.d2.value.Value2D
@@ -46530,7 +44993,6 @@ var Laya=window.Laya=(function(window,document){
 		function MeshQuadTexture(){
 			MeshQuadTexture.__super.call(this,laya.webgl.utils.MeshQuadTexture.const_stride);
 			this.canReuse=true;
-			this._fixedib=true;
 			this.setAttributes(laya.webgl.utils.MeshQuadTexture._fixattriInfo);
 			if(!laya.webgl.utils.MeshQuadTexture._fixib){
 				this.createQuadIB(MeshQuadTexture._maxIB);
@@ -46609,7 +45071,6 @@ var Laya=window.Laya=(function(window,document){
 		function MeshTexture(){
 			MeshTexture.__super.call(this,laya.webgl.utils.MeshTexture.const_stride);
 			this.canReuse=true;
-			this._fixedib=false;
 			this.setAttributes(laya.webgl.utils.MeshTexture._fixattriInfo);
 		}
 
@@ -46760,248 +45221,50 @@ var Laya=window.Laya=(function(window,document){
 
 
 	/**
-	*<code>TerrainFilter</code> 类用于创建TerrainFilter过滤器。
+	*@private
+	*Canvas版本的SkinMesh
 	*/
-	//class laya.d3.terrain.TerrainFilter extends laya.events.EventDispatcher
-	var TerrainFilter=(function(_super){
-		function TerrainFilter(owner,chunkOffsetX,chunkOffsetZ,gridSize,terrainHeightData,heightDataWidth,heightDataHeight,cameraCoordinateInverse){
-			this._owner=null;
-			this._gridSize=NaN;
-			this.memorySize=0;
-			this._numberVertices=0;
-			this._maxNumberIndices=0;
-			this._currentNumberIndices=0;
-			this._numberTriangle=0;
-			this._vertexBuffer=null;
-			this._indexBuffer=null;
-			this._boundingSphere=null;
-			this._boundingBox=null;
-			this._indexArrayBuffer=null;
-			this._boundingBoxCorners=null;
-			this._leafs=null;
-			this._leafNum=0;
-			this._terrainHeightData=null;
-			this._terrainHeightDataWidth=0;
-			this._terrainHeightDataHeight=0;
-			this._chunkOffsetX=0;
-			this._chunkOffsetZ=0;
-			this._cameraCoordinateInverse=false;
-			this._cameraPos=null;
-			this._currentLOD=0;
-			this._perspectiveFactor=NaN;
-			this._LODTolerance=0;
-			TerrainFilter.__super.call(this);
-			this._owner=owner;
-			this._cameraPos=new Vector3();
-			this._chunkOffsetX=chunkOffsetX;
-			this._chunkOffsetZ=chunkOffsetZ;
-			this._gridSize=gridSize;
-			this._terrainHeightData=terrainHeightData;
-			this._terrainHeightDataWidth=heightDataWidth;
-			this._terrainHeightDataHeight=heightDataHeight;
-			this._leafNum=(TerrainLeaf.CHUNK_GRID_NUM / TerrainLeaf.LEAF_GRID_NUM)*(TerrainLeaf.CHUNK_GRID_NUM / TerrainLeaf.LEAF_GRID_NUM);
-			this._leafs=__newvec(this._leafNum);
-			this._cameraCoordinateInverse=cameraCoordinateInverse;
-			for (var i=0;i < this._leafNum;i++){
-				this._leafs[i]=new TerrainLeaf();
-			}
-			this.recreateResource();
+	//class laya.ani.bone.canvasmesh.SkinMeshCanvas extends laya.ani.bone.canvasmesh.CanvasMeshRender
+	var SkinMeshCanvas=(function(_super){
+		function SkinMeshCanvas(){
+			SkinMeshCanvas.__super.call(this);
+			this.mesh=new MeshData();
 		}
 
-		__class(TerrainFilter,'laya.d3.terrain.TerrainFilter',_super);
-		var __proto=TerrainFilter.prototype;
-		/**
-		*@inheritDoc
-		*/
-		__proto.destroy=function(){
-			this._owner=null;
-			if (this._vertexBuffer)this._vertexBuffer.destroy();
-			if (this._indexBuffer)this._indexBuffer.destroy();
-		}
-
-		__proto.recreateResource=function(){
-			this._currentNumberIndices=0;
-			this._numberTriangle=0;
-			var nLeafVertexCount=TerrainLeaf.LEAF_VERTEXT_COUNT;
-			var nLeafIndexCount=TerrainLeaf.LEAF_MAX_INDEX_COUNT;
-			this._numberVertices=nLeafVertexCount *this._leafNum;
-			this._maxNumberIndices=nLeafIndexCount *this._leafNum;
-			this._indexArrayBuffer=new Uint16Array(this._maxNumberIndices);
-			var vertexDeclaration=VertexPositionTerrain.vertexDeclaration;
-			var vertexFloatStride=vertexDeclaration.vertexStride / 4;
-			var vertices=new Float32Array(this._numberVertices *vertexFloatStride);
-			var nNum=TerrainLeaf.CHUNK_GRID_NUM / TerrainLeaf.LEAF_GRID_NUM;
-			var i=0,x=0,z=0;
-			for (i=0;i < this._leafNum;i++){
-				x=i % nNum;
-				z=Math.floor(i / nNum);
-				this._leafs[i].calcVertextBuffer(this._chunkOffsetX,this._chunkOffsetZ,x *TerrainLeaf.LEAF_GRID_NUM,z *TerrainLeaf.LEAF_GRID_NUM,this._gridSize,vertices,i *TerrainLeaf.LEAF_PLANE_VERTEXT_COUNT,vertexFloatStride,this._terrainHeightData,this._terrainHeightDataWidth,this._terrainHeightDataHeight,this._cameraCoordinateInverse);
-			}
-			for (i=0;i < this._leafNum;i++){
-				x=i % nNum;
-				z=Math.floor(i / nNum);
-				this._leafs[i].calcSkirtVertextBuffer(this._chunkOffsetX,this._chunkOffsetZ,x *TerrainLeaf.LEAF_GRID_NUM,z *TerrainLeaf.LEAF_GRID_NUM,this._gridSize,vertices,this._leafNum *TerrainLeaf.LEAF_PLANE_VERTEXT_COUNT+i *TerrainLeaf.LEAF_SKIRT_VERTEXT_COUNT,vertexFloatStride,this._terrainHeightData,this._terrainHeightDataWidth,this._terrainHeightDataHeight);
-			}
-			this.assembleIndexInit();
-			this._vertexBuffer=new VertexBuffer3D(vertexDeclaration.vertexStride*this._numberVertices,0x88E4,false);
-			this._vertexBuffer.vertexDeclaration=vertexDeclaration;
-			this._indexBuffer=new IndexBuffer3D("ushort",this._maxNumberIndices,0x88E4,false);
-			this._vertexBuffer.setData(vertices);
-			this._indexBuffer.setData(this._indexArrayBuffer);
-			this.memorySize=(this._vertexBuffer._byteLength+this._indexBuffer._byteLength)*2;
-			this.calcOriginalBoudingBoxAndSphere();
-		}
-
-		__proto.setLODLevel=function(leafsLODLevel){
-			if (leafsLODLevel.length !=4)return true;
-			var nLOD=((leafsLODLevel[0]+1)<< 24)+((leafsLODLevel[1]+1)<< 16)+((leafsLODLevel[2]+1)<< 8)+(leafsLODLevel[3]+1);
-			if (this._currentLOD==nLOD){
-				return false;
-			}
-			this._currentLOD=nLOD;
-			return true;
-		}
-
-		__proto.assembleIndexInit=function(){
-			this._currentNumberIndices=0;
-			this._numberTriangle=0;
-			var nOffsetIndex=0;
-			for (var i=0;i < this._leafNum;i++){
-				var planeLODIndex=TerrainLeaf.getPlaneLODIndex(i,0);
-				this._indexArrayBuffer.set(planeLODIndex,nOffsetIndex);
-				nOffsetIndex+=planeLODIndex.length;
-				var skirtLODIndex=TerrainLeaf.getSkirtLODIndex(i,0);
-				this._indexArrayBuffer.set(skirtLODIndex,nOffsetIndex);
-				nOffsetIndex+=skirtLODIndex.length;
-				this._currentNumberIndices+=(planeLODIndex.length+skirtLODIndex.length);
-			}
-			this._numberTriangle=this._currentNumberIndices / 3;
-		}
-
-		__proto.isNeedAssemble=function(camera,cameraPostion){
-			var perspectiveFactor=Math.min(camera.viewport.width,camera.viewport.height)/ (2 *Math.tan(Math.PI *camera.fieldOfView / 180.0));
-			if (this._perspectiveFactor !=perspectiveFactor){
-				this._perspectiveFactor=perspectiveFactor;
-				return 1;
-			}
-			if (this._LODTolerance !=Terrain.LOD_TOLERANCE_VALUE){
-				this._LODTolerance=Terrain.LOD_TOLERANCE_VALUE;
-				return 1;
-			}
-			if (Vector3.equals(cameraPostion,this._cameraPos)==false){
-				this._cameraPos.x=cameraPostion.x;
-				this._cameraPos.y=cameraPostion.y;
-				this._cameraPos.z=cameraPostion.z;
-				return 2;
-			}
-			return 0;
-		}
-
-		__proto.assembleIndex=function(camera,cameraPostion){
-			var nNeedType=this.isNeedAssemble(camera,cameraPostion);
-			if (nNeedType > 0){
-				for (var i=0;i < this._leafNum;i++){
-					TerrainFilter._TEMP_ARRAY_BUFFER[i]=this._leafs[i].determineLod(cameraPostion,this._perspectiveFactor,Terrain.LOD_TOLERANCE_VALUE,nNeedType==1);
-				}
-				if (this.setLODLevel(TerrainFilter._TEMP_ARRAY_BUFFER)){
-					this._currentNumberIndices=0;
-					this._numberTriangle=0;
-					var nOffsetIndex=0;
-					for (i=0;i < this._leafNum;i++){
-						var nLODLevel=TerrainFilter._TEMP_ARRAY_BUFFER[i];
-						var planeLODIndex=TerrainLeaf.getPlaneLODIndex(i,nLODLevel);
-						this._indexArrayBuffer.set(planeLODIndex,nOffsetIndex);
-						nOffsetIndex+=planeLODIndex.length;
-						var skirtLODIndex=TerrainLeaf.getSkirtLODIndex(i,nLODLevel);
-						this._indexArrayBuffer.set(skirtLODIndex,nOffsetIndex);
-						nOffsetIndex+=skirtLODIndex.length;
-						this._currentNumberIndices+=(planeLODIndex.length+skirtLODIndex.length);
-					}
-					this._numberTriangle=this._currentNumberIndices / 3;
-					return true;
-				}
-			}
-			return false;
-		}
-
-		__proto.calcOriginalBoudingBoxAndSphere=function(){
-			var sizeOfY=new Vector2(2147483647,-2147483647);
-			for (var i=0;i < this._leafNum;i++){
-				sizeOfY.x=this._leafs[i]._sizeOfY.x < sizeOfY.x ? this._leafs[i]._sizeOfY.x :sizeOfY.x;
-				sizeOfY.y=this._leafs[i]._sizeOfY.y > sizeOfY.y ? this._leafs[i]._sizeOfY.y :sizeOfY.y;
+		__class(SkinMeshCanvas,'laya.ani.bone.canvasmesh.SkinMeshCanvas',_super);
+		var __proto=SkinMeshCanvas.prototype;
+		__proto.init2=function(texture,ps,verticles,uvs){
+			if (this.transform){
+				this.transform=null;
 			};
-			var min=new Vector3(this._chunkOffsetX *TerrainLeaf.CHUNK_GRID_NUM *this._gridSize,sizeOfY.x,this._chunkOffsetZ *TerrainLeaf.CHUNK_GRID_NUM *this._gridSize);
-			var max=new Vector3((this._chunkOffsetX+1)*TerrainLeaf.CHUNK_GRID_NUM *this._gridSize,sizeOfY.y,(this._chunkOffsetZ+1)*TerrainLeaf.CHUNK_GRID_NUM *this._gridSize);
-			if (TerrainLeaf.__ADAPT_MATRIX__){
-				Vector3.transformV3ToV3(min,TerrainLeaf.__ADAPT_MATRIX__,min);
-				Vector3.transformV3ToV3(max,TerrainLeaf.__ADAPT_MATRIX__,max);
-			}
-			this._boundingBox=new BoundBox(min,max);
-			var size=new Vector3();
-			Vector3.subtract(max,min,size);
-			Vector3.scale(size,0.5,size);
-			var center=new Vector3();
-			Vector3.add(min,size,center);
-			this._boundingSphere=new BoundSphere(center,Vector3.scalarLength(size));
-			this._boundingBoxCorners=__newvec(8,null);
-			this._boundingBox.getCorners(this._boundingBoxCorners);
+			var _ps=ps || [0,1,3,3,1,2];
+			this.mesh.texture=texture;
+			this.mesh.indexes=_ps;
+			this.mesh.vertices=verticles;
+			this.mesh.uvs=uvs;
 		}
 
-		__proto.calcLeafBoudingBox=function(worldMatrix){
-			for (var i=0;i < this._leafNum;i++){
-				this._leafs[i].calcLeafBoudingBox(worldMatrix);
-			}
-		}
-
-		__proto.calcLeafBoudingSphere=function(worldMatrix,maxScale){
-			for (var i=0;i < this._leafNum;i++){
-				this._leafs[i].calcLeafBoudingSphere(worldMatrix,maxScale);
+		__proto.render=function(context,x,y){
+			if(!this.mesh.texture)return;
+			if(!this.transform){
+				this.transform=SkinMeshCanvas._tempMatrix;
+				this.transform.identity();
+				this.transform.translate(x,y);
+				this.renderToContext(context);
+				this.transform.translate(-x,-y);
+				this.transform=null;
+				}else{
+				this.transform.translate(x,y);
+				this.renderToContext(context);
+				this.transform.translate(-x,-y);
 			}
 		}
 
-		__proto._getVertexBuffer=function(index){
-			(index===void 0)&& (index=0);
-			if (index==0){
-				return this._vertexBuffer;
-			}
-			return null;
-		}
-
-		__proto._getIndexBuffer=function(){
-			return this._indexBuffer;
-		}
-
-		__proto._beforeRender=function(state){
-			this._indexBuffer.bind();
-			var terrainMaterial=state.renderElement.material;
-			if (terrainMaterial.blend==BaseMaterial.BLEND_DISABLE){
-				var camera=state.camera;
-				if (this.assembleIndex(camera,camera.position)){
-					this._indexBuffer.setData(this._indexArrayBuffer);
-				}
-			}
-			return true;
-		}
-
-		__proto._render=function(state){
-			LayaGL.instance.drawElements(Terrain.RENDER_LINE_MODEL ? 0x0001 :0x0004,this._currentNumberIndices,0x1403,0);
-			Stat.trianglesFaces+=this._numberTriangle;
-			Stat.drawCall++;
-		}
-
-		__getset(0,__proto,'_vertexBufferCount',function(){
-			return this._numberVertices;
-		});
-
-		__getset(0,__proto,'triangleCount',function(){
-			return this._numberTriangle;
-		});
-
-		__static(TerrainFilter,
-		['_TEMP_ARRAY_BUFFER',function(){return this._TEMP_ARRAY_BUFFER=new Uint32Array(TerrainLeaf.CHUNK_GRID_NUM / TerrainLeaf.LEAF_GRID_NUM *TerrainLeaf.CHUNK_GRID_NUM / TerrainLeaf.LEAF_GRID_NUM);}
+		__static(SkinMeshCanvas,
+		['_tempMatrix',function(){return this._tempMatrix=new Matrix();}
 		]);
-		return TerrainFilter;
-	})(EventDispatcher)
+		return SkinMeshCanvas;
+	})(CanvasMeshRender)
 
 
 	/**
@@ -47148,53 +45411,6 @@ var Laya=window.Laya=(function(window,document){
 
 
 	/**
-	*@private
-	*Canvas版本的SkinMesh
-	*/
-	//class laya.ani.bone.canvasmesh.SkinMeshCanvas extends laya.ani.bone.canvasmesh.CanvasMeshRender
-	var SkinMeshCanvas=(function(_super){
-		function SkinMeshCanvas(){
-			SkinMeshCanvas.__super.call(this);
-			this.mesh=new MeshData();
-		}
-
-		__class(SkinMeshCanvas,'laya.ani.bone.canvasmesh.SkinMeshCanvas',_super);
-		var __proto=SkinMeshCanvas.prototype;
-		__proto.init2=function(texture,ps,verticles,uvs){
-			if (this.transform){
-				this.transform=null;
-			};
-			var _ps=ps || [0,1,3,3,1,2];
-			this.mesh.texture=texture;
-			this.mesh.indexes=_ps;
-			this.mesh.vertices=verticles;
-			this.mesh.uvs=uvs;
-		}
-
-		__proto.render=function(context,x,y){
-			if(!this.mesh.texture)return;
-			if(!this.transform){
-				this.transform=SkinMeshCanvas._tempMatrix;
-				this.transform.identity();
-				this.transform.translate(x,y);
-				this.renderToContext(context);
-				this.transform.translate(-x,-y);
-				this.transform=null;
-				}else{
-				this.transform.translate(x,y);
-				this.renderToContext(context);
-				this.transform.translate(-x,-y);
-			}
-		}
-
-		__static(SkinMeshCanvas,
-		['_tempMatrix',function(){return this._tempMatrix=new Matrix();}
-		]);
-		return SkinMeshCanvas;
-	})(CanvasMeshRender)
-
-
-	/**
 	*<code>AutoBitmap</code> 类是用于表示位图图像或绘制图形的显示对象。
 	*<p>封装了位置，宽高及九宫格的处理，供UI组件使用。</p>
 	*/
@@ -47247,7 +45463,7 @@ var Laya=window.Laya=(function(window,document){
 				}else {
 				source.$_GID || (source.$_GID=Utils.getGID());
 				var key=source.$_GID+"."+width+"."+height+"."+sizeGrid.join(".");
-				if (WeakObject.I.get(key)){
+				if (Utils.isOKCmdList(WeakObject.I.get(key))){
 					this.cmds=WeakObject.I.get(key);
 					return;
 				}
@@ -47258,12 +45474,16 @@ var Laya=window.Laya=(function(window,document){
 				var left=sizeGrid[3];
 				var repeat=sizeGrid[4];
 				var needClip=false;
+				if (width==sw){
+					left=right=0;
+				}
+				if (height==sh){
+					top=bottom=0;
+				}
 				if (left+right > width){
 					var clipWidth=width;
 					needClip=true;
 					width=left+right;
-				}
-				if (needClip){
 					this.save();
 					this.clipRect(0,0,clipWidth,height);
 				}
@@ -47286,7 +45506,7 @@ var Laya=window.Laya=(function(window,document){
 			(width===void 0)&& (width=0);
 			(height===void 0)&& (height=0);
 			if (width < 0.1 || height < 0.1)return;
-			if (repeat && (tex.width!=width || tex.height !=height))this.fillTexture(tex,x,y,width,height);
+			if (repeat && (tex.width !=width || tex.height !=height))this.fillTexture(tex,x,y,width,height);
 			else this.drawImage(tex,x,y,width,height);
 		}
 
@@ -47379,7 +45599,7 @@ var Laya=window.Laya=(function(window,document){
 			tex.$_GID || (tex.$_GID=Utils.getGID())
 			var key=tex.$_GID+"."+x+"."+y+"."+width+"."+height;
 			var texture=WeakObject.I.get(key);
-			if (!texture){
+			if (!texture||!texture.source){
 				texture=Texture.createFromTexture(tex,x,y,width,height);
 				WeakObject.I.set(key,texture);
 			}
@@ -49182,23 +47402,352 @@ var Laya=window.Laya=(function(window,document){
 
 
 	/**
-	*@private
-	*<code>DynamicBatch</code> 类用于动态批处理。
+	*...
+	*@author ...
 	*/
-	//class laya.d3.graphics.DynamicBatch extends laya.d3.core.GeometryElement
-	var DynamicBatch=(function(_super){
-		/**
-		*创建一个 <code>DynamicBatch</code> 实例。
-		*/
-		function DynamicBatch(){
-			DynamicBatch.__super.call(this);
+	//class laya.d3.core.trail.TrailRenderElement extends laya.d3.core.GeometryElement
+	var TrailRenderElement=(function(_super){
+		function TrailRenderElement(owner){
+			this._id=0;
+			this._owner=null;
+			this._camera=null;
+			this._verticesCount=0;
+			this._virtualVerticesCount=0;
+			this._maxVerticesCount=256;
+			this._vertices1=null;
+			this._vertexBuffer1=null;
+			this._floatCountPerVertices1=8;
+			this._verticesIndex1=0;
+			this._everyAddVerticeCount1=0;
+			this._delLength=0;
+			this._vertices2=null;
+			this._vertexBuffer2=null;
+			this._floatCountPerVertices2=1;
+			this._everyGroupVertexBirthTime=null;
+			this._VerticesToTailLength=null;
+			this._everyVertexToPreVertexDistance=null;
+			this._pointe=null;
+			this._pointAtoBVector3e=null;
+			this._isStart=false;
+			this._isFinish=false;
+			this._isDead=false;
+			this._curtime=NaN;
+			this._curDisappearIndex=0;
+			TrailRenderElement.__super.call(this);
+			this._lastPosition=new Vector3();
+			this._curPosition=new Vector3();
+			this._delVector3=new Vector3();
+			this._lastFixedVertexPosition=new Vector3();
+			this._pointAtoBVector3=new Vector3();
+			this._pointA=new Vector3();
+			this._pointB=new Vector3();
+			this._owner=owner;
+			this._id=TrailRenderElement.renderElementCount++;
+			if (this._id==0){
+				owner._owner.transform.position.cloneTo(this._lastPosition);
+				}else {
+				owner._curSubTrailFinishPosition.cloneTo(this._lastPosition);
+			}
+			this._everyGroupVertexBirthTime=[];
+			this._VerticesToTailLength=new Float32Array(this._maxVerticesCount);
+			this._everyVertexToPreVertexDistance=new Float32Array(this._maxVerticesCount);
+			this._vertices1=new Float32Array(this._maxVerticesCount *this._floatCountPerVertices1);
+			this._vertices2=new Float32Array(this._maxVerticesCount *this._floatCountPerVertices2);
+			this._vertexBuffer1=new VertexBuffer3D(VertexTrail.vertexDeclaration1,this._maxVerticesCount,0x88E4,true);
+			this._vertexBuffer2=new VertexBuffer3D(VertexTrail.vertexDeclaration2,this._maxVerticesCount,0x88E4,true);
+			this._vertexBuffers=[];
+			this._vertexBuffers.push(this._vertexBuffer1);
+			this._vertexBuffers.push(this._vertexBuffer2);
 		}
 
-		__class(DynamicBatch,'laya.d3.graphics.DynamicBatch',_super);
-		DynamicBatch.maxAllowVertexCount=8;
-		DynamicBatch.maxAllowAttribueCount=900;
-		DynamicBatch.maxIndicesCount=32000;
-		return DynamicBatch;
+		__class(TrailRenderElement,'laya.d3.core.trail.TrailRenderElement',_super);
+		var __proto=TrailRenderElement.prototype;
+		/**
+		*@private
+		*更新Trail数据
+		*/
+		__proto._updateTrail=function(){
+			this._everyAddVerticeCount1=0;
+			if (!this._isStart){
+				this._addTrailByFirstPosition(this._lastPosition,this._curPosition);
+			}
+			this._addTrailByNextPosition(this._curPosition);
+			this._vertexBuffer1.setData(this._vertices1,this._verticesIndex1,this._verticesIndex1,this._everyAddVerticeCount1);
+			this._verticesIndex1+=this._everyAddVerticeCount1;
+			this._curPosition.cloneTo(this._lastPosition);
+			if (this._virtualVerticesCount==2){
+				this._verticesIndex1-=this._floatCountPerVertices1 *2;
+			}
+		}
+
+		/**
+		*@private
+		*通过起始位置添加TrailRenderElement起始数据
+		*@param firstPosition 起始位置
+		*@param secondPosition 第二次位置
+		*/
+		__proto._addTrailByFirstPosition=function(firstPosition,secondPosition){
+			Vector3.subtract(secondPosition,firstPosition,this._delVector3);
+			Vector3.cross(this._delVector3,this._camera.forward,this._pointAtoBVector3);
+			Vector3.normalize(this._pointAtoBVector3,this._pointAtoBVector3);
+			Vector3.scale(this._pointAtoBVector3,this._owner.widthMultiplier / 2,this._pointAtoBVector3);
+			this._updateVerticesByPosition(firstPosition);
+			firstPosition.cloneTo(this._lastFixedVertexPosition);
+			this._verticesCount+=2;
+			this._curtime=this._owner._hasLifeSubTrail ? this._owner._curSubTrailFinishCurTime :this._owner._curtime;
+			this._everyGroupVertexBirthTime.push(this._curtime);
+			this._isStart=true;
+			this._owner._hasLifeSubTrail=true;
+		}
+
+		/**
+		*@private
+		*通过位置更新TrailRenderElement数据
+		*@param position 位置
+		*/
+		__proto._addTrailByNextPosition=function(position){
+			Vector3.subtract(position,this._lastFixedVertexPosition,this._delVector3);
+			Vector3.cross(this._delVector3,this._camera.forward,this._pointAtoBVector3);
+			Vector3.normalize(this._pointAtoBVector3,this._pointAtoBVector3);
+			Vector3.scale(this._pointAtoBVector3,this._owner.widthMultiplier / 2,this._pointAtoBVector3);
+			this._delLength=Vector3.scalarLength(this._delVector3);
+			if (this._delLength-this._owner.minVertexDistance >=MathUtils3D.zeroTolerance){
+				this._owner._trailTotalLength+=this._delLength;
+				this._owner._trailSupplementLength=0;
+				this._updateVerticesByPosition(position);
+				position.cloneTo(this._lastFixedVertexPosition);
+				this._verticesCount+=2;
+				this._virtualVerticesCount=0;
+				this._everyGroupVertexBirthTime.push(this._owner._curtime);
+				if (this._verticesCount==this._maxVerticesCount){
+					this._onTrailRenderElementFinish();
+				}
+			}
+			else {
+				this._owner._trailSupplementLength=this._delLength;
+				this._updateVerticesByPosition(position);
+				this._virtualVerticesCount=2;
+			}
+		}
+
+		/**
+		*@private
+		*通过位置更新顶点数据
+		*@param position 位置
+		*/
+		__proto._updateVerticesByPosition=function(position){
+			this._pointe=position.elements;
+			this._pointAtoBVector3e=this._pointAtoBVector3.elements;
+			this._curtime=this._owner._curtime;
+			if (this._owner._hasLifeSubTrail && this._isStart==false){
+				this._pointe=this._owner._curSubTrailFinishPosition.elements;
+				this._pointAtoBVector3e=this._owner._curSubTrailFinishDirection.elements;
+				this._curtime=this._owner._curSubTrailFinishCurTime;
+			}
+			this._vertices1[this._verticesIndex1+this._everyAddVerticeCount1++]=this._pointe[0];
+			this._vertices1[this._verticesIndex1+this._everyAddVerticeCount1++]=this._pointe[1];
+			this._vertices1[this._verticesIndex1+this._everyAddVerticeCount1++]=this._pointe[2];
+			this._vertices1[this._verticesIndex1+this._everyAddVerticeCount1++]=-this._pointAtoBVector3e[0];
+			this._vertices1[this._verticesIndex1+this._everyAddVerticeCount1++]=-this._pointAtoBVector3e[1];
+			this._vertices1[this._verticesIndex1+this._everyAddVerticeCount1++]=-this._pointAtoBVector3e[2];
+			this._vertices1[this._verticesIndex1+this._everyAddVerticeCount1++]=this._curtime;
+			this._vertices1[this._verticesIndex1+this._everyAddVerticeCount1++]=1.0;
+			this._vertices1[this._verticesIndex1+this._everyAddVerticeCount1++]=this._pointe[0];
+			this._vertices1[this._verticesIndex1+this._everyAddVerticeCount1++]=this._pointe[1];
+			this._vertices1[this._verticesIndex1+this._everyAddVerticeCount1++]=this._pointe[2];
+			this._vertices1[this._verticesIndex1+this._everyAddVerticeCount1++]=this._pointAtoBVector3e[0];
+			this._vertices1[this._verticesIndex1+this._everyAddVerticeCount1++]=this._pointAtoBVector3e[1];
+			this._vertices1[this._verticesIndex1+this._everyAddVerticeCount1++]=this._pointAtoBVector3e[2];
+			this._vertices1[this._verticesIndex1+this._everyAddVerticeCount1++]=this._curtime;
+			this._vertices1[this._verticesIndex1+this._everyAddVerticeCount1++]=0.0;
+			this._VerticesToTailLength[this._verticesCount / 2]=this._owner._trailTotalLength+this._owner._trailSupplementLength;
+			if (this._owner._trailSupplementLength==0){
+				this._everyVertexToPreVertexDistance[this._verticesCount / 2]=this._delLength;
+				}else {
+				this._everyVertexToPreVertexDistance[this._verticesCount / 2]=this._isStart ? this._owner._trailSupplementLength :0;
+			}
+		}
+
+		/**
+		*更新VertexBuffer2数据
+		*/
+		__proto._updateVertexBuffer2=function(){
+			var _uvIndex=0;
+			var _uvX=0.0;
+			var i=0,j=0;
+			for (i=0,j=(this._verticesCount+this._virtualVerticesCount)/ 2;i < j;i++){
+				if (this._owner.textureMode==0){
+					_uvX=(this._VerticesToTailLength[i]-this._owner._trailDeadLength)/ (this._owner._trailTotalLength+this._owner._trailSupplementLength-this._owner._trailDeadLength);
+				}
+				else{
+					_uvX=this._owner._trailTotalLength+this._owner._trailSupplementLength-this._VerticesToTailLength[i];
+				}
+				this._vertices2[_uvIndex++]=1.0-_uvX;
+				this._vertices2[_uvIndex++]=1.0-_uvX;
+			}
+			this._vertexBuffer2.setData(this._vertices2,0,0,this._verticesCount+this._virtualVerticesCount);
+		}
+
+		/**
+		*trailRenderElement完成时调用
+		*@param finishedPosition
+		*/
+		__proto._onTrailRenderElementFinish=function(){
+			this._lastFixedVertexPosition.cloneTo(this._owner._curSubTrailFinishPosition);
+			this._pointAtoBVector3.cloneTo(this._owner._curSubTrailFinishDirection);
+			this._owner._curSubTrailFinishCurTime=this._owner._curtime;
+			this._isFinish=true;
+		}
+
+		/**
+		*@private
+		*/
+		__proto._updateDisappear=function(){
+			var i=0,j=0;
+			for (i=this._curDisappearIndex,j=(this._verticesCount+this._virtualVerticesCount)/ 2;i < j;i++){
+				if (this._owner._curtime-this._everyGroupVertexBirthTime[i] >=this._owner.time+MathUtils3D.zeroTolerance){
+					this._curDisappearIndex++;
+					this._owner._trailDeadLength+=this._everyVertexToPreVertexDistance[this._curDisappearIndex];
+					if (this._curDisappearIndex >=(this._verticesCount+this._virtualVerticesCount)/ 2){
+						this._isDead=true;
+					}
+				}
+			}
+		}
+
+		/**
+		*渲染前调用
+		*@param state 渲染状态
+		*@return 是否渲染
+		*/
+		__proto._prepareRender=function(state){
+			this._camera=state.camera;
+			if (this._camera==null)
+				return false;
+			this._owner._owner.transform.position.cloneTo(this._curPosition);
+			if (!this._isDead){
+				if (this._verticesCount < this._maxVerticesCount){
+					if (!Vector3.equals(this._lastPosition,this._curPosition)){
+						this._updateTrail();
+					}
+					}else {
+					if (this._isFinish){
+						this._isFinish=false;
+						this._owner._curSubTrailFinished=true;
+					}
+				}
+				if (this._verticesCount > 0){
+					this._updateVertexBuffer2();
+					this._updateDisappear();
+					return true;
+				}
+			}
+			return false;
+		}
+
+		/**
+		*渲染时调用
+		*@param state 渲染状态
+		*/
+		__proto._render=function(state){
+			if (this._isDead)
+				return;
+			WebGL.mainContext.drawArrays(0x0005,this._curDisappearIndex *2,this._verticesCount+this._virtualVerticesCount-this._curDisappearIndex *2);
+			Stat.drawCall++;
+			Stat.trianglesFaces+=(this._verticesCount+this._virtualVerticesCount-this._curDisappearIndex *2-2);
+		}
+
+		/**
+		*获取vertexBuffer
+		*@param index vertexBuffer索引
+		*@return vertexBuffer
+		*/
+		__proto._getVertexBuffer=function(index){
+			(index===void 0)&& (index=0);
+			if (index===0)
+				return this._vertexBuffer1;
+			else if (index===1)
+			return this._vertexBuffer2;
+			else
+			return null;
+		}
+
+		/**
+		*获取vertexBuffer数组
+		*@return vertexBuffer数组
+		*/
+		__proto._getVertexBuffers=function(){
+			return this._vertexBuffers;
+		}
+
+		/**
+		*获取顶点索引缓冲
+		*@return 顶点索引缓冲
+		*/
+		__proto._getIndexBuffer=function(){
+			return null;
+		}
+
+		/**
+		*重新激活该renderElement
+		*/
+		__proto.reActivate=function(){
+			this._id=laya.d3.core.trail.TrailRenderElement.renderElementCount++;
+			this._isStart=false;
+			this._isFinish=false;
+			this._isDead=false;
+			this._verticesCount=0;
+			this._virtualVerticesCount=0;
+			this._verticesIndex1=0;
+			this._delLength=0;
+			this._curDisappearIndex=0;
+			this._everyGroupVertexBirthTime=[];
+			this._owner._curSubTrailFinishPosition.cloneTo(this._lastPosition);
+		}
+
+		/**
+		*@private
+		*/
+		__proto._destroy=function(){
+			this._vertexBuffer1.dispose();
+			this._vertexBuffer2.dispose();
+			this._vertices1=null;
+			this._vertexBuffer1=null;
+			this._vertices2=null;
+			this._vertexBuffer2=null;
+			this._vertexBuffers=null;
+			this._everyGroupVertexBirthTime=null;
+			this._VerticesToTailLength=null;
+			this._everyVertexToPreVertexDistance=null;
+			this._lastPosition=null;
+			this._curPosition=null;
+			this._delVector3=null;
+			this._lastFixedVertexPosition=null;
+			this._pointAtoBVector3=null;
+			this._pointe=null;
+			this._pointAtoBVector3e=null;
+			this._pointA=null;
+			this._pointB=null;
+		}
+
+		/**
+		*获取vertexBuffer数量
+		*@return vertexBuffer数量
+		*/
+		__getset(0,__proto,'_vertexBufferCount',function(){
+			return this._vertexBuffers.length;
+		});
+
+		/**
+		*获取三角面数量
+		*@return 三角面数量
+		*/
+		__getset(0,__proto,'triangleCount',function(){
+			return 0;
+		});
+
+		TrailRenderElement.renderElementCount=0;
+		return TrailRenderElement;
 	})(GeometryElement)
 
 
@@ -49769,60 +48318,441 @@ var Laya=window.Laya=(function(window,document){
 
 	/**
 	*@private
-	*<code>StaticBatch</code> 类用于静态合并的父类,该类为抽象类。
+	*<code>DynamicBatch</code> 类用于动态批处理。
 	*/
-	//class laya.d3.graphics.StaticBatch extends laya.d3.core.GeometryElement
-	var StaticBatch=(function(_super){
-		function StaticBatch(key,manager,rootOwner){
+	//class laya.d3.graphics.DynamicBatch extends laya.d3.core.GeometryElement
+	var DynamicBatch=(function(_super){
+		/**
+		*创建一个 <code>DynamicBatch</code> 实例。
+		*/
+		function DynamicBatch(){
+			DynamicBatch.__super.call(this);
+		}
+
+		__class(DynamicBatch,'laya.d3.graphics.DynamicBatch',_super);
+		DynamicBatch.maxAllowVertexCount=8;
+		DynamicBatch.maxAllowAttribueCount=900;
+		DynamicBatch.maxIndicesCount=32000;
+		return DynamicBatch;
+	})(GeometryElement)
+
+
+	/**
+	*@private
+	*<code>SubMeshDynamicBatch</code> 类用于网格动态合并。
+	*/
+	//class laya.d3.graphics.SubMeshDynamicBatch extends laya.d3.core.GeometryElement
+	var SubMeshDynamicBatch=(function(_super){
+		function SubMeshDynamicBatch(){
+			this._vertices=null;
+			this._indexBuffer=null;
+			this._indices=null;
+			this._positionOffset=0;
+			this._normalOffset=0;
+			this._colorOffset=0;
+			this._uv0Offset=0;
+			this._uv1Offset=0;
+			this._sTangentOffset=0;
+			SubMeshDynamicBatch.__super.call(this);
+			var maxVerDec=VertexPositionNormalColorTexture0Texture1STangent.vertexDeclaration;
+			var maxByteCount=maxVerDec.vertexStride *32000;
+			this._vertices=new Float32Array(maxByteCount / 4);
+			this._vertexBuffer=new VertexBuffer3D(maxByteCount,0x88E8);
+			this._indices=new Int16Array(32000);
+			this._indexBuffer=new IndexBuffer3D("ushort",this._indices.length,0x88E8);
+		}
+
+		__class(SubMeshDynamicBatch,'laya.d3.graphics.SubMeshDynamicBatch',_super);
+		var __proto=SubMeshDynamicBatch.prototype;
+		/**
+		*@private
+		*/
+		__proto._getBatchVertices=function(vertexDeclaration,batchVertices,batchOffset,transform,element,subMesh){
+			var vertexFloatCount=vertexDeclaration.vertexStride / 4;
+			var oriVertexes=subMesh._vertexBuffer.getData();
+			var lightmapScaleOffset=element.render.lightmapScaleOffset;
+			var vertexStart=subMesh._vertexStart;
+			var vertexCount=subMesh._vertexCount;
+			element._computeWorldPositionsAndNormals(this._positionOffset,this._normalOffset);
+			var worldPositions=element._dynamicWorldPositions;
+			var worldNormals=element._dynamicWorldNormals;
+			for (var i=0;i < vertexCount;i++){
+				var oriOffset=(i+vertexStart)*vertexFloatCount;
+				var bakeOffset=(i+batchOffset)*vertexFloatCount;
+				var oriOff=i *3;
+				var bakOff=bakeOffset+this._positionOffset;
+				batchVertices[bakOff]=worldPositions[oriOff];
+				batchVertices[bakOff+1]=worldPositions[oriOff+1];
+				batchVertices[bakOff+2]=worldPositions[oriOff+2];
+				if (this._normalOffset!==-1){
+					bakOff=bakeOffset+this._normalOffset;
+					batchVertices[bakOff]=worldNormals[oriOff];
+					batchVertices[bakOff+1]=worldNormals[oriOff+1];
+					batchVertices[bakOff+2]=worldNormals[oriOff+2];
+				}
+				if (this._colorOffset!==-1){
+					bakOff=bakeOffset+this._colorOffset;
+					oriOff=oriOffset+this._colorOffset;
+					batchVertices[bakOff]=oriVertexes[oriOff];
+					batchVertices[bakOff+1]=oriVertexes[oriOff+1];
+					batchVertices[bakOff+2]=oriVertexes[oriOff+2];
+					batchVertices[bakOff+3]=oriVertexes[oriOff+3];
+				}
+				if (this._uv0Offset!==-1){
+					bakOff=bakeOffset+this._uv0Offset;
+					oriOff=oriOffset+this._uv0Offset;
+					batchVertices[bakOff]=oriVertexes[oriOff];
+					batchVertices[bakOff+1]=oriVertexes[oriOff+1];
+				}
+				if (this._sTangentOffset!==-1){
+					bakOff=bakeOffset+this._sTangentOffset;
+					oriOff=oriOffset+this._sTangentOffset;
+					batchVertices[bakOff]=oriVertexes[oriOff];
+					batchVertices[bakOff+1]=oriVertexes[oriOff+1];
+					batchVertices[bakOff+2]=oriVertexes[oriOff+2];
+					batchVertices[bakOff+3]=oriVertexes[oriOff+3];
+					bakOff=bakeOffset+this._sTangentOffset;
+					oriOff=oriOffset+this._sTangentOffset;
+					batchVertices[bakOff]=oriVertexes[oriOff];
+					batchVertices[bakOff+1]=oriVertexes[oriOff+1];
+					batchVertices[bakOff+2]=oriVertexes[oriOff+2];
+					batchVertices[bakOff+3]=oriVertexes[oriOff+3];
+				}
+			}
+		}
+
+		/**
+		*@private
+		*/
+		__proto._getBatchIndices=function(batchIndices,batchIndexCount,transform,subMesh,indexOffset){
+			var subIndices=subMesh._indices;
+			var k=0,m=0,batchOffset=0;
+			var isInvert=transform._isFrontFaceInvert;
+			if (isInvert){
+				for (k=0,m=subIndices.length;k < m;k+=3){
+					batchOffset=batchIndexCount+k;
+					batchIndices[batchOffset]=indexOffset+subIndices[k];
+					batchIndices[batchOffset+1]=indexOffset+subIndices[k+2];
+					batchIndices[batchOffset+2]=indexOffset+subIndices[k+1];
+				}
+				}else {
+				for (k=m,m=subIndices.length;k < m;k+=3){
+					batchOffset=batchIndexCount+k;
+					batchIndices[batchOffset]=indexOffset+subIndices[k];
+					batchIndices[batchOffset+1]=indexOffset+subIndices[k+1];
+					batchIndices[batchOffset+2]=indexOffset+subIndices[k+2];
+				}
+			}
+		}
+
+		/**
+		*@private
+		*/
+		__proto._flush=function(vertexCount,indexCount){
+			this._vertexBuffer.setData(this._vertices,0,0,vertexCount *(this._vertexBuffer.vertexDeclaration.vertexStride / 4));
+			this._indexBuffer.setData(this._indices,0,0,indexCount);
+			LayaGL.instance.drawElements(0x0004,indexCount,0x1403,0);
+			Stat.drawCall++;
+			Stat.trianglesFaces+=indexCount / 3;
+		}
+
+		/**
+		*@inheritDoc
+		*/
+		__proto._prepareRender=function(state){
+			var element=state.renderElement;
+			var vertexDeclaration=element.dynamicVertexDeclaration;
+			this._vertexBuffer.vertexDeclaration=vertexDeclaration;
+			this._setVertexBuffer(this._vertexBuffer);
+			this._positionOffset=vertexDeclaration.getVertexElementByUsage(0).offset / 4;
+			var normalElement=vertexDeclaration.getVertexElementByUsage(3);
+			this._normalOffset=normalElement ? normalElement.offset / 4 :-1;
+			var colorElement=vertexDeclaration.getVertexElementByUsage(1);
+			this._colorOffset=colorElement ? colorElement.offset / 4 :-1;
+			var uv0Element=vertexDeclaration.getVertexElementByUsage(2);
+			this._uv0Offset=uv0Element ? uv0Element.offset / 4 :-1;
+			var uv1Element=vertexDeclaration.getVertexElementByUsage(15);
+			this._uv1Offset=uv1Element ? uv1Element.offset / 4 :-1;
+			var tangentElement=vertexDeclaration.getVertexElementByUsage(5);
+			this._sTangentOffset=tangentElement ? tangentElement.offset / 4 :-1;
+			return true;
+		}
+
+		/**
+		*@inheritDoc
+		*/
+		__proto._render=function(context){
+			var element=context.renderElement;
+			var vertexDeclaration=element.dynamicVertexDeclaration;
+			var batchElements=element.dynamicBatchElementList;
+			var batchVertexCount=0;
+			var batchIndexCount=0;
+			var floatStride=vertexDeclaration.vertexStride / 4;
+			for (var i=0,n=batchElements.length;i < n;i++){
+				var element=batchElements [i];
+				var subMesh=element._geometry;
+				var vertexCount=subMesh._vertexCount;
+				var indexCount=subMesh._indexCount;
+				if (batchIndexCount+indexCount > 32000){
+					this._flush(batchVertexCount,batchIndexCount);
+					batchVertexCount=batchIndexCount=0;
+				};
+				var transform=element._transform;
+				this._getBatchVertices(vertexDeclaration,this._vertices,batchVertexCount,transform,element,subMesh);
+				var indexOffset=batchVertexCount-subMesh._vertexStart;
+				this._getBatchIndices(this._indices,batchIndexCount,transform,subMesh,indexOffset);
+				batchVertexCount+=vertexCount;
+				batchIndexCount+=indexCount;
+			}
+			this._flush(batchVertexCount,batchIndexCount);
+		}
+
+		SubMeshDynamicBatch.maxAllowVertexCount=10;
+		SubMeshDynamicBatch.maxAllowAttribueCount=900;
+		SubMeshDynamicBatch.maxIndicesCount=32000;
+		SubMeshDynamicBatch.instance=null
+		return SubMeshDynamicBatch;
+	})(GeometryElement)
+
+
+	/**
+	*@private
+	*<code>SubMeshStaticBatch</code> 类用于网格静态合并。
+	*/
+	//class laya.d3.graphics.SubMeshStaticBatch extends laya.d3.core.GeometryElement
+	var SubMeshStaticBatch=(function(_super){
+		function SubMeshStaticBatch(key,rootOwner,vertexDeclaration){
+			//this._currentBatchVertexCount=0;
+			//this._currentBatchIndexCount=0;
+			//this._vertexDeclaration=null;
+			//this._indexBuffer=null;
+			//this._needRevertLightingDefine=false;
 			//this._batchElements=null;
 			//this._batchID=0;
-			//this.rootOwner=null;
 			//this.key=null;
-			//this.manager=null;
-			StaticBatch.__super.call(this);
+			//this.rootOwner=null;
+			SubMeshStaticBatch.__super.call(this);
+			this._batchID=SubMeshStaticBatch._batchIDCounter++;
 			this._batchElements=[];
-			this._batchID=StaticBatch._batchIDCounter++;
+			this._currentBatchVertexCount=0;
+			this._currentBatchIndexCount=0;
+			this._vertexDeclaration=vertexDeclaration;
 			this.key=key;
-			this.manager=manager;
 			this.rootOwner=rootOwner;
 		}
 
-		__class(StaticBatch,'laya.d3.graphics.StaticBatch',_super);
-		var __proto=StaticBatch.prototype;
+		__class(SubMeshStaticBatch,'laya.d3.graphics.SubMeshStaticBatch',_super);
+		var __proto=SubMeshStaticBatch.prototype;
 		Laya.imps(__proto,{"laya.resource.IDispose":true})
 		/**
 		*@private
 		*/
-		__proto._compareBatchRenderElement=function(a,b){
-			throw new Error("StaticBatch:must override this function.");
+		__proto._getStaticBatchBakedVertexs=function(batchVertices,batchOffset,batchOwnerTransform,transform,render,subMesh){
+			var vertexBuffer=subMesh._vertexBuffer;
+			var vertexDeclaration=vertexBuffer.vertexDeclaration;
+			var positionOffset=vertexDeclaration.getVertexElementByUsage(0).offset / 4;
+			var normalElement=vertexDeclaration.getVertexElementByUsage(3);
+			var normalOffset=normalElement ? normalElement.offset / 4 :-1;
+			var colorElement=vertexDeclaration.getVertexElementByUsage(1);
+			var colorOffset=colorElement ? colorElement.offset / 4 :-1;
+			var uv0Element=vertexDeclaration.getVertexElementByUsage(2);
+			var uv0Offset=uv0Element ? uv0Element.offset / 4 :-1;
+			var uv1Element=vertexDeclaration.getVertexElementByUsage(15);
+			var uv1Offset=uv1Element ? uv1Element.offset / 4 :-1;
+			var tangentElement=vertexDeclaration.getVertexElementByUsage(5);
+			var sTangentOffset=tangentElement ? tangentElement.offset / 4 :-1;
+			var bakeVertexFloatCount=18;
+			var oriVertexFloatCount=vertexDeclaration.vertexStride / 4;
+			var oriVertexes=vertexBuffer.getData();
+			var worldMat;
+			if (batchOwnerTransform){
+				var rootMat=batchOwnerTransform.worldMatrix;
+				rootMat.invert(SubMeshStaticBatch._tempMatrix4x40);
+				worldMat=SubMeshStaticBatch._tempMatrix4x41;
+				Matrix4x4.multiply(SubMeshStaticBatch._tempMatrix4x40,transform.worldMatrix,worldMat);
+				}else {
+				worldMat=transform.worldMatrix;
+			};
+			var rotation=SubMeshStaticBatch._tempQuaternion0;
+			worldMat.decomposeTransRotScale(SubMeshStaticBatch._tempVector30,rotation,SubMeshStaticBatch._tempVector31);
+			var lightmapScaleOffset=render.lightmapScaleOffset;
+			var vertexStart=subMesh._vertexStart;
+			var vertexCount=subMesh._vertexCount;
+			for (var i=0;i < vertexCount;i++){
+				var oriOffset=(i+vertexStart)*oriVertexFloatCount;
+				var bakeOffset=(i+batchOffset)*bakeVertexFloatCount;
+				Utils3D.transformVector3ArrayToVector3ArrayCoordinate(oriVertexes,oriOffset+positionOffset,worldMat,batchVertices,bakeOffset+0);
+				if (normalOffset!==-1)
+					Utils3D.transformVector3ArrayByQuat(oriVertexes,oriOffset+normalOffset,rotation,batchVertices,bakeOffset+3);
+				var j=0,m=0;
+				var bakOff=bakeOffset+6;
+				if (colorOffset!==-1){
+					var oriOff=oriOffset+colorOffset;
+					for (j=0,m=4;j < m;j++)
+					batchVertices[bakOff+j]=oriVertexes[oriOff+j];
+					}else {
+					for (j=0,m=4;j < m;j++)
+					batchVertices[bakOff+j]=1.0;
+				}
+				if (uv0Offset!==-1){
+					var absUv0Offset=oriOffset+uv0Offset;
+					batchVertices[bakeOffset+10]=oriVertexes[absUv0Offset];
+					batchVertices[bakeOffset+11]=oriVertexes[absUv0Offset+1];
+				}
+				if (lightmapScaleOffset){
+					if (uv1Offset!==-1)
+						Utils3D.transformLightingMapTexcoordByUV1Array(oriVertexes,oriOffset+uv1Offset,lightmapScaleOffset,batchVertices,bakeOffset+12);
+					else
+					Utils3D.transformLightingMapTexcoordByUV0Array(oriVertexes,oriOffset+uv0Offset,lightmapScaleOffset,batchVertices,bakeOffset+12);
+				}
+				if (sTangentOffset!==-1){
+					var absSTanegntOffset=oriOffset+sTangentOffset;
+					batchVertices[bakeOffset+14]=oriVertexes[absSTanegntOffset];
+					batchVertices[bakeOffset+15]=oriVertexes[absSTanegntOffset+1];
+					batchVertices[bakeOffset+16]=oriVertexes[absSTanegntOffset+2];
+					batchVertices[bakeOffset+17]=oriVertexes[absSTanegntOffset+3];
+				}
+			}
+			return vertexCount;
+		}
+
+		/**
+		*@inheritDoc
+		*/
+		__proto._prepareRender=function(context){
+			var defineDatas=context.renderElement.render._defineDatas;
+			if (defineDatas.has(RenderableSprite3D.SHADERDEFINE_SCALEOFFSETLIGHTINGMAPUV)){
+				defineDatas.remove(RenderableSprite3D.SHADERDEFINE_SCALEOFFSETLIGHTINGMAPUV);
+				this._needRevertLightingDefine=true;
+				}else {
+				this._needRevertLightingDefine=false;
+			}
+			return true;
 		}
 
 		/**
 		*@private
 		*/
-		__proto.finishInit=function(){
-			throw "StaticBatch:must override this function.";
+		__proto.addTest=function(renderElement){
+			var vertexCount=0;
+			var subMeshVertexCount=(renderElement._geometry)._vertexCount;
+			vertexCount=this._currentBatchVertexCount+subMeshVertexCount;
+			if (vertexCount > 65535)
+				return false;
+			return true;
 		}
 
 		/**
 		*@private
 		*/
 		__proto.add=function(renderElement){
-			throw "StaticBatch:must override this function.";
+			var oldStaticBatch=renderElement.staticBatch;
+			(oldStaticBatch)&& (oldStaticBatch.remove(),console.log("移除"));
+			var subMesh=renderElement._geometry;
+			var subMeshVertexCount=subMesh._vertexCount;
+			this._batchElements.push(renderElement);
+			renderElement.staticBatch=this;
+			this._currentBatchIndexCount+=subMesh._indexCount;
+			this._currentBatchVertexCount+=subMeshVertexCount;
 		}
 
 		/**
 		*@private
 		*/
 		__proto.remove=function(renderElement){
-			throw "StaticBatch:must override this function.";
+			var subMesh=renderElement._geometry;
+			var index=this._batchElements.indexOf(renderElement);
+			if (index!==-1){
+				this._batchElements.splice(index,1);
+				renderElement.staticBatch=null;
+				var subMeshVertexCount=subMesh._vertexCount;
+				this._currentBatchIndexCount=this._currentBatchIndexCount-subMesh._indexCount;
+				this._currentBatchVertexCount=this._currentBatchVertexCount-subMeshVertexCount;
+			}
 		}
 
 		/**
 		*@private
 		*/
-		__proto.getBatchElementsCount=function(){
-			return this._batchElements.length;
+		__proto.finishInit=function(){
+			if (this._vertexBuffer){
+				this._vertexBuffer.destroy();
+				this._indexBuffer.destroy();
+			};
+			var batchVertexCount=0;
+			var batchIndexCount=0;
+			var floatStride=this._vertexDeclaration.vertexStride / 4;
+			var vertexDatas=new Float32Array(floatStride *this._currentBatchVertexCount);
+			var indexDatas=new Uint16Array(this._currentBatchIndexCount);
+			this._vertexBuffer=new VertexBuffer3D(this._vertexDeclaration.vertexStride *this._currentBatchVertexCount,0x88E4);
+			this._vertexBuffer.vertexDeclaration=this._vertexDeclaration;
+			this._indexBuffer=IndexBuffer3D.create("ushort",this._currentBatchIndexCount,0x88E4);
+			for (var i=0,n=this._batchElements.length;i < n;i++){
+				var renderElement=this._batchElements [i];
+				var subMesh=renderElement._geometry;
+				var subMeshVerCount=this._getStaticBatchBakedVertexs(vertexDatas,batchVertexCount,this.rootOwner ? this.rootOwner._transform :null,renderElement._transform,(renderElement.render),subMesh);
+				var subIndices=subMesh.getIndices();
+				var indexOffset=batchVertexCount-subMesh._vertexStart;
+				var indexEnd=batchIndexCount+subIndices.length;
+				renderElement.staticBatchIndexStart=batchIndexCount;
+				renderElement.staticBatchIndexEnd=indexEnd;
+				indexDatas.set(subIndices,batchIndexCount);
+				var k=0;
+				var isInvert=this.rootOwner ? (renderElement._transform._isFrontFaceInvert!==this.rootOwner.transform._isFrontFaceInvert):renderElement._transform._isFrontFaceInvert;
+				if (isInvert){
+					for (k=batchIndexCount;k < indexEnd;k+=3){
+						indexDatas[k]=indexOffset+indexDatas[k];
+						var index1=indexDatas[k+1];
+						var index2=indexDatas[k+2];
+						indexDatas[k+1]=indexOffset+index2;
+						indexDatas[k+2]=indexOffset+index1;
+					}
+					}else {
+					for (k=batchIndexCount;k < indexEnd;k+=3){
+						indexDatas[k]=indexOffset+indexDatas[k];
+						indexDatas[k+1]=indexOffset+indexDatas[k+1];
+						indexDatas[k+2]=indexOffset+indexDatas[k+2];
+					}
+				}
+				batchIndexCount+=subIndices.length;
+				batchVertexCount+=subMeshVerCount;
+			}
+			this._vertexBuffer.setData(vertexDatas);
+			this._indexBuffer.setData(indexDatas);
+			this._setVertexBuffer(this._vertexBuffer);
+			this._setVertexBuffer(this._vertexBuffer);
+		}
+
+		/**
+		*@inheritDoc
+		*/
+		__proto._render=function(state){
+			this._indexBuffer.bind();
+			var element=state.renderElement;
+			var batchElementList=(element).staticBatchElementList;
+			var from=0;
+			var end=0;
+			for (var i=1,n=batchElementList.length;i < n;i++){
+				var lastElement=batchElementList[i-1];
+				if (lastElement.staticBatchIndexEnd===batchElementList[i].staticBatchIndexStart){
+					end++;
+					continue ;
+					}else {
+					var start=batchElementList[from].staticBatchIndexStart;
+					var indexCount=batchElementList[end].staticBatchIndexEnd-start;
+					LayaGL.instance.drawElements(0x0004,indexCount,0x1403,start *2);
+					from=++end;
+					Stat.drawCall++;
+					Stat.trianglesFaces+=indexCount / 3;
+				}
+			};
+			var start=batchElementList[from].staticBatchIndexStart;
+			var indexCount=batchElementList[end].staticBatchIndexEnd-start;
+			LayaGL.instance.drawElements(0x0004,indexCount,0x1403,start *2);
+			Stat.drawCall++;
+			Stat.trianglesFaces+=indexCount / 3;
+			if (this._needRevertLightingDefine)
+				element.render._defineDatas.add(RenderableSprite3D.SHADERDEFINE_SCALEOFFSETLIGHTINGMAPUV);
 		}
 
 		/**
@@ -49832,13 +48762,281 @@ var Laya=window.Laya=(function(window,document){
 			this._batchElements=null;
 			this.rootOwner=null;
 			this.key=null;
-			this.manager=null;
+			this._vertexDeclaration=null;
+			this._vertexBuffer.destroy();
+			this._indexBuffer.destroy();
 		}
 
-		StaticBatch.maxBatchVertexCount=65535;
-		StaticBatch._batchIDCounter=0;
-		return StaticBatch;
+		SubMeshStaticBatch.maxBatchVertexCount=65535;
+		SubMeshStaticBatch._batchIDCounter=0;
+		__static(SubMeshStaticBatch,
+		['_tempVector30',function(){return this._tempVector30=new Vector3();},'_tempVector31',function(){return this._tempVector31=new Vector3();},'_tempQuaternion0',function(){return this._tempQuaternion0=new Quaternion();},'_tempMatrix4x40',function(){return this._tempMatrix4x40=new Matrix4x4();},'_tempMatrix4x41',function(){return this._tempMatrix4x41=new Matrix4x4();}
+		]);
+		return SubMeshStaticBatch;
 	})(GeometryElement)
+
+
+	/**
+	*@private
+	*/
+	//class laya.d3.core.render.SubMeshRenderElement extends laya.d3.core.render.RenderElement
+	var SubMeshRenderElement=(function(_super){
+		function SubMeshRenderElement(){
+			//this._dynamicWorldPositionNormalNeedUpdate=false;
+			//this._dynamicWorldPositions=null;
+			//this._dynamicWorldNormals=null;
+			//this.skinnedDatas=null;
+			//this.staticBatch=null;
+			//this.staticBatchIndexStart=0;
+			//this.staticBatchIndexEnd=0;
+			//this.staticBatchElementList=null;
+			//this.dynamicBatchElementList=null;
+			//this.dynamicVertexDeclaration=null;
+			SubMeshRenderElement.__super.call(this);
+			this._dynamicWorldPositionNormalNeedUpdate=true;
+			this._dynamicWorldPositions=[];
+			this._dynamicWorldNormals=[];
+		}
+
+		__class(SubMeshRenderElement,'laya.d3.core.render.SubMeshRenderElement',_super);
+		var __proto=SubMeshRenderElement.prototype;
+		/**
+		*@private
+		*/
+		__proto._onWorldMatrixChanged=function(){
+			this._dynamicWorldPositionNormalNeedUpdate=true;
+		}
+
+		/**
+		*@inheritDoc
+		*/
+		__proto._computeWorldPositionsAndNormals=function(positionOffset,normalOffset){
+			if (this._dynamicWorldPositionNormalNeedUpdate){
+				var subMesh=this._geometry;
+				var vertexBuffer=subMesh._vertexBuffer;
+				var vertexFloatCount=vertexBuffer.vertexDeclaration.vertexStride / 4;
+				var oriVertexes=vertexBuffer.getData();
+				var worldMat=this._transform.worldMatrix;
+				var rotation=this._transform.rotation;
+				var vertexStart=subMesh._vertexStart;
+				var vertexCount=subMesh._vertexCount;
+				for (var i=0;i < vertexCount;i++){
+					var oriOffset=(i+vertexStart)*vertexFloatCount;
+					var bakeOffset=i *3;
+					Utils3D.transformVector3ArrayToVector3ArrayCoordinate(oriVertexes,oriOffset+positionOffset,worldMat,this._dynamicWorldPositions,bakeOffset);
+					(normalOffset!==-1)&& (Utils3D.transformVector3ArrayByQuat(oriVertexes,oriOffset+normalOffset,rotation,this._dynamicWorldNormals,bakeOffset));
+				}
+				this._dynamicWorldPositionNormalNeedUpdate=false;
+			}
+		}
+
+		/**
+		*@inheritDoc
+		*/
+		__proto.setTransform=function(transform){
+			if (this._transform!==transform){
+				(this._transform)&& (this._transform.off("worldmatrixneedchanged",this,this._onWorldMatrixChanged));
+				(transform)&& (transform.on("worldmatrixneedchanged",this,this._onWorldMatrixChanged));
+				this._dynamicWorldPositionNormalNeedUpdate=true;
+				this._transform=transform;
+			}
+		}
+
+		/**
+		*@inheritDoc
+		*/
+		__proto.setGeometry=function(geometry){
+			if (this._geometry!==geometry){
+				var vertexCount=(geometry)._vertexCount;
+				if (vertexCount <=10){
+					var length=vertexCount *3;
+					this._dynamicWorldPositions.length=length;
+					this._dynamicWorldNormals.length=length;
+					}else {
+					this._dynamicWorldPositions.length=0;
+					this._dynamicWorldNormals.length=0;
+				}
+				this._geometry=geometry;
+			}
+		}
+
+		/**
+		*@inheritDoc
+		*/
+		__proto.addToOpaqueRenderQueue=function(context,queue){
+			var elements=queue.elements;
+			if (this.staticBatch){
+				var staManager=MeshRenderStaticBatchManager.instance;
+				var staLightIndex=this.render.lightmapIndex+1;
+				var staLightMapMarks=(staManager._opaqueBatchMarks[staLightIndex])|| (staManager._opaqueBatchMarks[staLightIndex]=[]);
+				var staReceiveShadowMarks=(staLightMapMarks[this.render.receiveShadow ? 0 :1])|| (staLightMapMarks[this.render.receiveShadow ? 0 :1]=[]);
+				var staMaterialMarks=(staReceiveShadowMarks[this.material.id])|| (staReceiveShadowMarks[this.material.id]=[]);
+				var staBatchMarks=(staMaterialMarks[this.staticBatch._batchID])|| (staMaterialMarks[this.staticBatch._batchID]=new Array(3));
+				if (staManager._updateCountMark===staBatchMarks[0]){
+					var staBatchIndex=staBatchMarks[1];
+					if (staBatchMarks[2]){
+						elements[staBatchIndex].staticBatchElementList.push(this);
+						}else {
+						var staOriElement=elements[staBatchIndex];
+						var staOriRender=staOriElement.render;
+						var staBatchElement=staManager._getBatchRenderElementFromPool();
+						staBatchElement.setGeometry(this.staticBatch);
+						staBatchElement.material=staOriElement.material;
+						var staRootOwner=this.staticBatch.rootOwner;
+						var staBatchTransform=staRootOwner ? staRootOwner._transform :null;
+						staBatchElement.setTransform(staBatchTransform);
+						var staBatchRender=staManager._getBatchRender(context,staBatchTransform,staOriRender.lightmapIndex,staOriRender.receiveShadow);
+						staBatchRender._setBelongScene(context.scene);
+						staBatchElement.render=staBatchRender;
+						var staBatchList=staBatchElement.staticBatchElementList;
+						staBatchList.length=0;
+						staBatchList.push(staOriElement);
+						staBatchList.push(this);
+						elements[staBatchIndex]=staBatchElement;
+						staBatchMarks[2]=true;
+					}
+					}else {
+					staBatchMarks[0]=staManager._updateCountMark;
+					staBatchMarks[1]=elements.length;
+					staBatchMarks[2]=false;
+					elements.push(this);
+				}
+				}else {
+				var verDec=this._geometry._vertexBuffer.vertexDeclaration;
+				var vertexCount=(this._geometry)._vertexCount;
+				var attributeCount=vertexCount *verDec.vertexElements.length;
+				if (attributeCount < 900 && vertexCount <=10){
+					var dynManager=MeshRenderDynamicBatchManager.instance;
+					var dynLightIndex=this.render.lightmapIndex+1;
+					var dynLightMapMarks=(dynManager._opaqueBatchMarks[dynLightIndex])|| (dynManager._opaqueBatchMarks[dynLightIndex]=[]);
+					var dynReceiveShadowMarks=(dynLightMapMarks[this.render.receiveShadow ? 0 :1])|| (dynLightMapMarks[this.render.receiveShadow ? 0 :1]=[]);
+					var staMaterialMarks=(dynReceiveShadowMarks[this.material.id])|| (dynReceiveShadowMarks[this.material.id]=[]);
+					var dynBatchMarks=(staMaterialMarks[verDec.id])|| (staMaterialMarks[verDec.id]=new Array(3));
+					if (dynManager._updateCountMark===dynBatchMarks[0]){
+						var dynBatchIndex=dynBatchMarks[1];
+						if (dynBatchMarks[2]){
+							elements[dynBatchIndex].dynamicBatchElementList.push(this);
+							}else {
+							var dynOriElement=elements[dynBatchIndex];
+							var dynOriRender=dynOriElement.render;
+							var dynBatchElement=dynManager._getBatchRenderElementFromPool();
+							dynBatchElement.setGeometry(SubMeshDynamicBatch.instance);
+							dynBatchElement.material=dynOriElement.material;
+							dynBatchElement.setTransform(null);
+							var dynBatchRender=dynManager._getBatchRender(context,dynOriRender.lightmapIndex,dynOriRender.receiveShadow);
+							dynBatchRender._setBelongScene(context.scene);
+							dynBatchElement.render=dynBatchRender;
+							dynBatchElement.dynamicVertexDeclaration=verDec;
+							var dynBatchList=dynBatchElement.dynamicBatchElementList;
+							dynBatchList.length=0;
+							dynBatchList.push(dynOriElement);
+							dynBatchList.push(this);
+							elements[dynBatchIndex]=dynBatchElement;
+							dynBatchMarks[2]=true;
+						}
+						}else {
+						dynBatchMarks[0]=dynManager._updateCountMark;
+						dynBatchMarks[1]=elements.length;
+						dynBatchMarks[2]=false;
+						elements.push(this);
+					}
+					}else {
+					elements.push(this);
+				}
+			}
+		}
+
+		/**
+		*@inheritDoc
+		*/
+		__proto.addToTransparentRenderQueue=function(context,queue){
+			var elements=queue.elements;
+			if (this.staticBatch){
+				var staManager=MeshRenderStaticBatchManager.instance;
+				var staLastElement=queue.lastTransparentRenderElement;
+				if (staLastElement){
+					var staLastRender=staLastElement.render;
+					if (staLastElement.staticBatch!==this.staticBatch || staLastElement.material!==this.material || staLastRender.receiveShadow!==this.render.receiveShadow || staLastRender.lightmapIndex!==this.render.lightmapIndex){
+						elements.push(this);
+						queue.lastTransparentBatched=false;
+						}else {
+						if (queue.lastTransparentBatched){
+							(elements [elements.length-1]).staticBatchElementList.push((this));
+							}else {
+							var staBatchElement=staManager._getBatchRenderElementFromPool();
+							staBatchElement.setGeometry(this.staticBatch);
+							staBatchElement.material=staLastElement.material;
+							var staRootOwner=this.staticBatch.rootOwner;
+							var staBatchTransform=staRootOwner ? staRootOwner._transform :null;
+							staBatchElement.setTransform(staBatchTransform);
+							var staBatchRender=staManager._getBatchRender(context,staBatchTransform,staLastRender.lightmapIndex,staLastRender.receiveShadow);
+							staBatchRender._setBelongScene(context.scene);
+							staBatchElement.render=staBatchRender;
+							var staBatchList=staBatchElement.staticBatchElementList;
+							staBatchList.length=0;
+							staBatchList.push(staLastElement);
+							staBatchList.push(this);
+							elements[elements.length-1]=staBatchElement;
+						}
+						queue.lastTransparentBatched=true;
+					}
+					}else {
+					elements.push(this);
+					queue.lastTransparentBatched=false;
+				}
+				queue.lastTransparentRenderElement=this;
+				}else {
+				var verDec=this._geometry._vertexBuffer.vertexDeclaration;
+				var vertexCount=(this._geometry)._vertexCount;
+				var attributeCount=vertexCount *verDec.vertexElements.length;
+				if (attributeCount < 900 && vertexCount <=10){
+					var dynManager=MeshRenderDynamicBatchManager.instance;
+					var dynLastElement=queue.lastTransparentRenderElement;
+					if (dynLastElement){
+						var dynLastRender=dynLastElement.render;
+						if (dynLastElement._geometry._vertexBuffer._vertexDeclaration!==verDec || dynLastElement.material!==this.material || dynLastRender.receiveShadow!==this.render.receiveShadow || dynLastRender.lightmapIndex!==this.render.lightmapIndex){
+							elements.push(this);
+							queue.lastTransparentBatched=false;
+							}else {
+							if (queue.lastTransparentBatched){
+								(elements [elements.length-1]).staticBatchElementList.push((this));
+								}else {
+								var dynBatchElement=dynManager._getBatchRenderElementFromPool();
+								dynBatchElement.setGeometry(SubMeshDynamicBatch.instance);
+								dynBatchElement.material=dynLastElement.material;
+								dynBatchElement.setTransform(null);
+								var dynBatchRender=dynManager._getBatchRender(context,dynLastRender.lightmapIndex,dynLastRender.receiveShadow);
+								dynBatchRender._setBelongScene(context.scene);
+								dynBatchElement.render=dynBatchRender;
+								var dynBatchList=dynBatchElement.staticBatchElementList;
+								dynBatchList.length=0;
+								dynBatchList.push(dynLastElement);
+								dynBatchList.push(this);
+								elements[elements.length-1]=dynBatchElement;
+							}
+							queue.lastTransparentBatched=true;
+						}
+						}else {
+						elements.push(this);
+						queue.lastTransparentBatched=false;
+					}
+					queue.lastTransparentRenderElement=this;
+					}else {
+					elements.push(this);
+					queue.lastTransparentRenderElement=this;
+				}
+			}
+		}
+
+		/**
+		*@inheritDoc
+		*/
+		__proto._destroy=function(){
+			(this.staticBatch)&& (MeshRenderStaticBatchManager.instance._destroyRenderElement(this));
+		}
+
+		return SubMeshRenderElement;
+	})(RenderElement)
 
 
 	/**
@@ -49849,11 +49047,25 @@ var Laya=window.Laya=(function(window,document){
 		function ShaderPass(owner,vs,ps){
 			//this._owner=null;
 			//this._cacheSharders=null;
+			//this._publicValidDefine=0;
+			//this._spriteValidDefine=0;
+			//this._materialValidDefine=0;
 			//this._validDefineMap=null;
 			this._owner=owner;
 			this._cacheSharders=[];
 			this._validDefineMap={};
 			ShaderPass.__super.call(this,vs,ps,null,this._validDefineMap);
+			var publicDefineMap=owner._publicDefinesMap;
+			var spriteDefineMap=owner._spriteDefinesMap;
+			var materialDefineMap=owner._materialDefinesMap;
+			for (var k in this._validDefineMap){
+				if (publicDefineMap[k] !=null)
+					this._publicValidDefine |=publicDefineMap[k];
+				else if (spriteDefineMap[k] !=null)
+				this._spriteValidDefine |=spriteDefineMap[k];
+				else if (materialDefineMap[k] !=null)
+				this._materialValidDefine |=materialDefineMap[k];
+			}
 		}
 
 		__class(ShaderPass,'laya.d3.shader.ShaderPass',_super);
@@ -49879,9 +49091,9 @@ var Laya=window.Laya=(function(window,document){
 		*@private
 		*/
 		__proto.withCompile=function(publicDefine,spriteDefine,materialDefine){
-			publicDefine &=this._owner._publicDefinesValue;
-			spriteDefine &=this._owner._spriteDefinesValue;
-			materialDefine &=this._owner._materialDefinesValue;
+			publicDefine &=this._publicValidDefine;
+			spriteDefine &=this._spriteValidDefine;
+			materialDefine &=this._materialValidDefine;
 			var shader;
 			var spriteDefShaders,materialDefShaders;
 			spriteDefShaders=this._cacheSharders[publicDefine];
@@ -49912,7 +49124,7 @@ var Laya=window.Laya=(function(window,document){
 				var materialDefGroupStr="";
 				for (key in materialDefGroup)
 				materialDefGroupStr+=key+" ";
-				console.log("ShaderCompile3DDebugMode---(Name:"+this._owner._name+" PassIndex:"+this._owner._passes.indexOf(this)+" PublicDefine:"+publicDefine+" SpriteDefine:"+spriteDefine+" MaterialDefine:"+materialDefine+" PublicDefineGroup:"+publicDefGroupStr+" SpriteDefineGroup:"+spriteDefGroupStr+"MaterialDefineGroup: "+materialDefGroupStr+")---ShaderCompile3DDebugMode");
+				console.log("Shader3DDebugMode---(Name:"+this._owner._name+" PassIndex:"+this._owner._passes.indexOf(this)+" PublicDefine:"+publicDefine+" SpriteDefine:"+spriteDefine+" MaterialDefine:"+materialDefine+" PublicDefineGroup:"+publicDefGroupStr+" SpriteDefineGroup:"+spriteDefGroupStr+"MaterialDefineGroup: "+materialDefGroupStr+")---ShaderCompile3DDebugMode");
 			};
 			var defMap={};
 			var defineStr="";
@@ -49935,8 +49147,18 @@ var Laya=window.Laya=(function(window,document){
 				}
 			};
 			var vs=this._VS.toscript(defMap,[]);
+			var vsVersion='';
+			if (vs[0].indexOf('#version')==0){
+				vsVersion=vs[0]+'\n';
+				vs.shift();
+			};
 			var ps=this._PS.toscript(defMap,[]);
-			shader=new ShaderInstance(defineStr+vs.join('\n'),defineStr+ps.join('\n'),this._owner._attributeMap,this._owner._uniformMap);
+			var psVersion='';
+			if (ps[0].indexOf('#version')==0){
+				psVersion=ps[0]+'\n';
+				ps.shift();
+			}
+			shader=new ShaderInstance(vsVersion+defineStr+vs.join('\n'),psVersion+defineStr+ps.join('\n'),this._owner._attributeMap,this._owner._uniformMap);
 			materialDefShaders[materialDefine]=shader;
 			return shader;
 		}
@@ -49947,332 +49169,45 @@ var Laya=window.Laya=(function(window,document){
 
 	/**
 	*@private
+	*<code>primitiveGeometry</code> 类用于实现简单几何体。
 	*/
-	//class laya.d3.core.render.SubMeshRenderElement extends laya.d3.core.render.RenderElement
-	var SubMeshRenderElement=(function(_super){
-		function SubMeshRenderElement(){
-			//this.skinnedDatas=null;
-			//this.staticBatch=null;
-			//this.staticBatchIndexStart=0;
-			//this.staticBatchIndexEnd=0;
-			//this.staticBatchElementList=null;
-			//this.dynamicBatchElementList=null;
-			//this.dynamicVertexDeclaration=null;
-			SubMeshRenderElement.__super.call(this);
+	//class laya.d3.resource.models.primitiveGeometry extends laya.d3.core.GeometryElement
+	var primitiveGeometry=(function(_super){
+		function primitiveGeometry(){
+			//this._indexBuffer=null;
+			primitiveGeometry.__super.call(this);
 		}
 
-		__class(SubMeshRenderElement,'laya.d3.core.render.SubMeshRenderElement',_super);
-		var __proto=SubMeshRenderElement.prototype;
+		__class(primitiveGeometry,'laya.d3.resource.models.primitiveGeometry',_super);
+		var __proto=primitiveGeometry.prototype;
+		Laya.imps(__proto,{"laya.resource.IDispose":true})
 		/**
 		*@inheritDoc
 		*/
-		__proto.addToOpaqueRenderQueue=function(scene,queue){
-			var elements=queue._elements;
-			if (this.staticBatch){
-				var staManager=MeshSprite3DStaticBatchManager.instance;
-				var staLightIndex=this.render.lightmapIndex+1;
-				var staLightMapMarks=(staManager._opaqueBatchMarks[staLightIndex])|| (staManager._opaqueBatchMarks[staLightIndex]=[]);
-				var staReceiveShadowMarks=(staLightMapMarks[this.render.receiveShadow ? 0 :1])|| (staLightMapMarks[this.render.receiveShadow ? 0 :1]=[]);
-				var staMaterialMarks=(staReceiveShadowMarks[this.material.id])|| (staReceiveShadowMarks[this.material.id]=[]);
-				var staBatchMarks=(staMaterialMarks[this.staticBatch._batchID])|| (staMaterialMarks[this.staticBatch._batchID]=new Array(3));
-				if (staManager._updateCountMark===staBatchMarks[0]){
-					var staBatchIndex=staBatchMarks[1];
-					if (staBatchMarks[2]){
-						elements[staBatchIndex].staticBatchElementList.push(this);
-						}else {
-						var staOriElement=elements[staBatchIndex];
-						var staOriRender=staOriElement.render;
-						var staBatchElement=staManager._getBatchRenderElementFromPool();
-						staBatchElement.geometry=this.staticBatch;
-						staBatchElement.material=staOriElement.material;
-						var staRootOwner=this.staticBatch.rootOwner;
-						staBatchElement.transform=staRootOwner ? staRootOwner._transform :null;
-						var batchRender=staManager._getBatchRender(staOriRender.lightmapIndex,staOriRender.receiveShadow);
-						batchRender._setBelongScene(scene);
-						staBatchElement.render=batchRender;
-						var staBatchList=staBatchElement.staticBatchElementList;
-						staBatchList.length=0;
-						staBatchList.push(staOriElement);
-						staBatchList.push(this);
-						elements[staBatchIndex]=staBatchElement;
-						staBatchMarks[2]=true;
-					}
-					}else {
-					staBatchMarks[0]=staManager._updateCountMark;
-					staBatchMarks[1]=elements.length;
-					staBatchMarks[2]=false;
-					elements.push(this);
-				}
-				}else {
-				var verDec=this.geometry._vertexBuffer.vertexDeclaration;
-				var vertexCount=(this.geometry)._vertexCount;
-				var attributeCount=vertexCount *verDec.vertexElements.length;
-				if (attributeCount < 900 && vertexCount <=8){
-					var dynManager=MeshSprite3DDynamicBatchManager.instance;
-					var dynLightIndex=this.render.lightmapIndex+1;
-					var dynLightMapMarks=(dynManager._opaqueBatchMarks[dynLightIndex])|| (dynManager._opaqueBatchMarks[dynLightIndex]=[]);
-					var dynReceiveShadowMarks=(dynLightMapMarks[this.render.receiveShadow ? 0 :1])|| (dynLightMapMarks[this.render.receiveShadow ? 0 :1]=[]);
-					var staMaterialMarks=(dynReceiveShadowMarks[this.material.id])|| (dynReceiveShadowMarks[this.material.id]=[]);
-					var dynBatchMarks=(staMaterialMarks[verDec.id])|| (staMaterialMarks[verDec.id]=new Array(3));
-					if (dynManager._updateCountMark===dynBatchMarks[0]){
-						var dynBatchIndex=dynBatchMarks[1];
-						if (dynBatchMarks[2]){
-							elements[dynBatchIndex].dynamicBatchElementList.push(this);
-							}else {
-							var dynOriElement=elements[dynBatchIndex];
-							var dynOriRender=dynOriElement.render;
-							var dynBatchElement=dynManager._getBatchRenderElementFromPool();
-							dynBatchElement.geometry=SubMeshDynamicBatch.instance;
-							dynBatchElement.material=dynOriElement.material;
-							dynBatchElement.transform=null;
-							dynBatchElement.render=dynOriElement.render;
-							dynBatchElement.dynamicVertexDeclaration=verDec;
-							var dynBatchList=dynBatchElement.dynamicBatchElementList;
-							dynBatchList.length=0;
-							dynBatchList.push(dynOriElement);
-							dynBatchList.push(this);
-							elements[dynBatchIndex]=dynBatchElement;
-							dynBatchMarks[2]=true;
-						}
-						}else {
-						dynBatchMarks[0]=dynManager._updateCountMark;
-						dynBatchMarks[1]=elements.length;
-						dynBatchMarks[2]=false;
-						elements.push(this);
-					}
-					}else {
-					elements.push(this);
-				}
-			}
+		__proto._render=function(state){
+			this._indexBuffer.bind();
+			var count=this._indexBuffer.indexCount;
+			WebGL.mainContext.drawElements(0x0004,count,0x1403,0);
+			Stat.drawCall++;
+			Stat.trianglesFaces+=count / 3;
 		}
 
 		/**
 		*@inheritDoc
 		*/
-		__proto.addToTransparentRenderQueue=function(queue){
-			var elements=queue._elements;
-			if (this.staticBatch){
-				var lastElement=queue._lastRenderElement;
-				if (lastElement){
-					var lastRender=lastElement.render;
-					if (lastElement.staticBatch!==this.staticBatch || lastElement.material!==this.material || lastRender.receiveShadow!==this.render.receiveShadow || lastRender.lightmapIndex!==this.render.lightmapIndex){
-						elements.push(this);
-						queue._lastBatched=false;
-						}else {
-						if (queue._lastBatched){
-							(elements [elements.length-1]).staticBatchElementList.push((this));
-							}else {
-							var staBatchElement=(this.staticBatch.manager)._getBatchRenderElementFromPool();
-							staBatchElement.geometry=this.staticBatch;
-							staBatchElement.material=lastElement.material;
-							var staRootOwner=this.staticBatch.rootOwner;
-							staBatchElement.transform=staRootOwner ? staRootOwner._transform :null;
-							staBatchElement.render=lastElement.render;
-							var staBatchList=staBatchElement.staticBatchElementList;
-							staBatchList.length=0;
-							staBatchList.push(lastElement);
-							staBatchList.push(this);
-							elements[elements.length-1]=staBatchElement;
-						}
-						queue._lastBatched=true;
-					}
-					}else {
-					elements.push(this);
-					queue._lastBatched=false;
-				}
-				queue._lastRenderElement=this;
-				}else {
-				elements.push(this);
-				queue._lastRenderElement=this;
-			}
-		}
+		__getset(0,__proto,'_vertexBufferCount',function(){
+			return 1;
+		});
 
 		/**
 		*@inheritDoc
 		*/
-		__proto._destroy=function(){
-			(this.staticBatch)&& (this.staticBatch.manager._destroyRenderElement(this));
-		}
+		__getset(0,__proto,'triangleCount',function(){
+			return this._indexBuffer.indexCount / 3;
+		});
 
-		return SubMeshRenderElement;
-	})(RenderElement)
-
-
-	/**
-	*@private
-	*<code>MeshSprite3DDynamicBatchManager</code> 类用于网格精灵动态批处理管理。
-	*/
-	//class laya.d3.graphics.MeshSprite3DDynamicBatchManager extends laya.d3.graphics.DynamicBatchManager
-	var MeshSprite3DDynamicBatchManager=(function(_super){
-		function MeshSprite3DDynamicBatchManager(){
-			//this._updateCountMark=0;
-			this._opaqueBatchMarks=[];
-			MeshSprite3DDynamicBatchManager.__super.call(this);
-			SubMeshDynamicBatch.instance=new SubMeshDynamicBatch();
-			this._updateCountMark=0;
-		}
-
-		__class(MeshSprite3DDynamicBatchManager,'laya.d3.graphics.MeshSprite3DDynamicBatchManager',_super);
-		var __proto=MeshSprite3DDynamicBatchManager.prototype;
-		/**
-		*@inheritDoc
-		*/
-		__proto._getBatchRenderElementFromPool=function(){
-			var renderElement=this._batchRenderElementPool[this._batchRenderElementPoolIndex++];
-			if (!renderElement){
-				renderElement=new SubMeshRenderElement();
-				this._batchRenderElementPool[this._batchRenderElementPoolIndex-1]=renderElement;
-				renderElement.dynamicBatchElementList=[];
-			}
-			return renderElement;
-		}
-
-		/**
-		*@inheritDoc
-		*/
-		__proto._clear=function(){
-			_super.prototype._clear.call(this);
-			this._updateCountMark++;
-		}
-
-		__static(MeshSprite3DDynamicBatchManager,
-		['instance',function(){return this.instance=new MeshSprite3DDynamicBatchManager();}
-		]);
-		return MeshSprite3DDynamicBatchManager;
-	})(DynamicBatchManager)
-
-
-	/**
-	*@private
-	*<code>MeshSprite3DStaticBatchManager</code> 类用于网格精灵静态批处理管理。
-	*/
-	//class laya.d3.graphics.MeshSprite3DStaticBatchManager extends laya.d3.graphics.StaticBatchManager
-	var MeshSprite3DStaticBatchManager=(function(_super){
-		function MeshSprite3DStaticBatchManager(){
-			//this._cacheBatchOwner=null;
-			//this._updateCountMark=0;
-			this._opaqueBatchMarks=[];
-			MeshSprite3DStaticBatchManager.__super.call(this);
-			this._cacheBatchOwner=[];
-			this._updateCountMark=0;
-		}
-
-		__class(MeshSprite3DStaticBatchManager,'laya.d3.graphics.MeshSprite3DStaticBatchManager',_super);
-		var __proto=MeshSprite3DStaticBatchManager.prototype;
-		/**
-		*@inheritDoc
-		*/
-		__proto._compare=function(left,right){
-			var lRender=left.render,rRender=right.render;
-			var leftGeo=left.geometry,rightGeo=right.geometry;
-			var lightOffset=lRender.lightmapIndex-rRender.lightmapIndex;
-			if (lightOffset===0){
-				var receiveShadowOffset=lRender.receiveShadow-rRender.receiveShadow;
-				if (receiveShadowOffset===0){
-					var materialOffset=left.material.id-right.material.id;
-					if (materialOffset===0){
-						var verDec=leftGeo._vertexBuffer.vertexDeclaration.id-rightGeo._vertexBuffer.vertexDeclaration.id;
-						if (verDec==0){
-							return rightGeo.triangleCount-leftGeo.triangleCount;
-							}else {
-							return verDec;
-						}
-						}else {
-						return materialOffset;
-					}
-					}else {
-					return receiveShadowOffset;
-				}
-				}else {
-				return lightOffset;
-			}
-		}
-
-		/**
-		*@private
-		*/
-		__proto._getBatchRender=function(lightMapIndex,receiveShadow){
-			var subCacheRender=this._cacheBatchOwner[lightMapIndex];
-			(subCacheRender)|| (subCacheRender=this._cacheBatchOwner[lightMapIndex]=__newvec(2,null));
-			var render=subCacheRender[receiveShadow ? 1 :0];
-			if (render){
-				return render;
-				}else {
-				render=new MeshRender(null,4);
-				render.lightmapIndex=lightMapIndex;
-				render.receiveShadow=receiveShadow;
-				subCacheRender[receiveShadow ? 1 :0]=render;
-				return render;
-			}
-		}
-
-		/**
-		*@inheritDoc
-		*/
-		__proto._getBatchRenderElementFromPool=function(){
-			var renderElement=this._batchRenderElementPool[this._batchRenderElementPoolIndex++];
-			if (!renderElement){
-				renderElement=new SubMeshRenderElement();
-				this._batchRenderElementPool[this._batchRenderElementPoolIndex-1]=renderElement;
-				renderElement.staticBatchElementList=[];
-			}
-			return renderElement;
-		}
-
-		/**
-		*@inheritDoc
-		*/
-		__proto._getStaticBatch=function(rootOwner,number){
-			var key;
-			if (rootOwner)
-				key=rootOwner.id.toString()+number.toString();
-			else
-			key=number.toString();
-			return (this._staticBatches[key])|| (this._staticBatches[key]=new SubMeshStaticBatch(key,this,rootOwner,VertexPositionNormalColorTexture0Texture1STangent.vertexDeclaration));
-		}
-
-		/**
-		*@inheritDoc
-		*/
-		__proto._initStaticBatchs=function(rootOwner){
-			this._quickSort(this._initBatchElements,0,this._initBatchElements.length-1);
-			var lastCanMerage=false;
-			var curStaticBatch;
-			var batchNumber=0;
-			for (var i=0,n=this._initBatchElements.length;i < n;i++){
-				var renderElement=this._initBatchElements[i];
-				if (lastCanMerage){
-					if (curStaticBatch.addTest(renderElement)){
-						curStaticBatch.add(renderElement);
-						}else {
-						lastCanMerage=false;
-						batchNumber++;
-					}
-					}else {
-					var lastIndex=n-1;
-					if (i!==lastIndex){
-						curStaticBatch=this._getStaticBatch(rootOwner,batchNumber);
-						curStaticBatch.add(renderElement);
-						lastCanMerage=true;
-					}
-				}
-			}
-			_super.prototype._initStaticBatchs.call(this);
-		}
-
-		/**
-		*@inheritDoc
-		*/
-		__proto._clear=function(){
-			_super.prototype._clear.call(this);
-			this._updateCountMark++;
-		}
-
-		__static(MeshSprite3DStaticBatchManager,
-		['instance',function(){return this.instance=new MeshSprite3DStaticBatchManager();}
-		]);
-		return MeshSprite3DStaticBatchManager;
-	})(StaticBatchManager)
+		return primitiveGeometry;
+	})(GeometryElement)
 
 
 	/**
@@ -50357,6 +49292,474 @@ var Laya=window.Laya=(function(window,document){
 		});
 
 		return SubMesh;
+	})(GeometryElement)
+
+
+	/**
+	*@private
+	*<code>MeshSprite3DDynamicBatchManager</code> 类用于网格精灵动态批处理管理。
+	*/
+	//class laya.d3.graphics.MeshRenderDynamicBatchManager extends laya.d3.graphics.DynamicBatchManager
+	var MeshRenderDynamicBatchManager=(function(_super){
+		function MeshRenderDynamicBatchManager(){
+			//this._cacheBatchOwner=null;
+			//this._updateCountMark=0;
+			this._opaqueBatchMarks=[];
+			MeshRenderDynamicBatchManager.__super.call(this);
+			SubMeshDynamicBatch.instance=new SubMeshDynamicBatch();
+			this._cacheBatchOwner=[];
+			this._updateCountMark=0;
+		}
+
+		__class(MeshRenderDynamicBatchManager,'laya.d3.graphics.MeshRenderDynamicBatchManager',_super);
+		var __proto=MeshRenderDynamicBatchManager.prototype;
+		/**
+		*@private
+		*/
+		__proto._getBatchRender=function(context,lightMapIndex,receiveShadow){
+			var lightRenders=this._cacheBatchOwner[lightMapIndex];
+			(lightRenders)|| (lightRenders=this._cacheBatchOwner[lightMapIndex]=__newvec(2,null));
+			var render=lightRenders[receiveShadow ? 1 :0];
+			if (!render){
+				render=new MeshRender(null,4);
+				render.lightmapIndex=lightMapIndex;
+				render.receiveShadow=receiveShadow;
+				lightRenders[receiveShadow ? 1 :0]=render;
+			}
+			return render;
+		}
+
+		/**
+		*@inheritDoc
+		*/
+		__proto._getBatchRenderElementFromPool=function(){
+			var renderElement=this._batchRenderElementPool [this._batchRenderElementPoolIndex++];
+			if (!renderElement){
+				renderElement=new SubMeshRenderElement();
+				this._batchRenderElementPool[this._batchRenderElementPoolIndex-1]=renderElement;
+				renderElement.dynamicBatchElementList=[];
+			}
+			return renderElement;
+		}
+
+		/**
+		*@inheritDoc
+		*/
+		__proto._clear=function(){
+			_super.prototype._clear.call(this);
+			this._updateCountMark++;
+		}
+
+		__static(MeshRenderDynamicBatchManager,
+		['instance',function(){return this.instance=new MeshRenderDynamicBatchManager();}
+		]);
+		return MeshRenderDynamicBatchManager;
+	})(DynamicBatchManager)
+
+
+	/**
+	*@private
+	*<code>MeshSprite3DStaticBatchManager</code> 类用于网格精灵静态批处理管理。
+	*/
+	//class laya.d3.graphics.MeshRenderStaticBatchManager extends laya.d3.graphics.StaticBatchManager
+	var MeshRenderStaticBatchManager=(function(_super){
+		function MeshRenderStaticBatchManager(){
+			//this._cacheBatchOwner=null;
+			//this._updateCountMark=0;
+			this._opaqueBatchMarks=[];
+			MeshRenderStaticBatchManager.__super.call(this);
+			this._cacheBatchOwner=[];
+			this._updateCountMark=0;
+		}
+
+		__class(MeshRenderStaticBatchManager,'laya.d3.graphics.MeshRenderStaticBatchManager',_super);
+		var __proto=MeshRenderStaticBatchManager.prototype;
+		/**
+		*@inheritDoc
+		*/
+		__proto._compare=function(left,right){
+			var lRender=left.render,rRender=right.render;
+			var leftGeo=left._geometry,rightGeo=right._geometry;
+			var lightOffset=lRender.lightmapIndex-rRender.lightmapIndex;
+			if (lightOffset===0){
+				var receiveShadowOffset=(lRender.receiveShadow?1:0)-(rRender.receiveShadow?1:0);
+				if (receiveShadowOffset===0){
+					var materialOffset=left.material.id-right.material.id;
+					if (materialOffset===0){
+						var verDec=leftGeo._vertexBuffer.vertexDeclaration.id-rightGeo._vertexBuffer.vertexDeclaration.id;
+						if (verDec===0){
+							return rightGeo.triangleCount-leftGeo.triangleCount;
+							}else {
+							return verDec;
+						}
+						}else {
+						return materialOffset;
+					}
+					}else {
+					return receiveShadowOffset;
+				}
+				}else {
+				return lightOffset;
+			}
+		}
+
+		/**
+		*@private
+		*/
+		__proto._getBatchRender=function(context,transform,lightMapIndex,receiveShadow){
+			var lightRenders=this._cacheBatchOwner[lightMapIndex];
+			(lightRenders)|| (lightRenders=this._cacheBatchOwner[lightMapIndex]=__newvec(2,null));
+			var shadowRenders=lightRenders[receiveShadow ? 1 :0];
+			shadowRenders || (shadowRenders=lightRenders[receiveShadow ? 1 :0]=[]);
+			var index=transform ? transform._id :0;
+			var render=shadowRenders[index];
+			if (!render){
+				render=new MeshRender(null,4);
+				render.lightmapIndex=lightMapIndex;
+				render.receiveShadow=receiveShadow;
+				shadowRenders[index]=render;
+			}
+			return render;
+		}
+
+		/**
+		*@inheritDoc
+		*/
+		__proto._getBatchRenderElementFromPool=function(){
+			var renderElement=this._batchRenderElementPool[this._batchRenderElementPoolIndex++];
+			if (!renderElement){
+				renderElement=new SubMeshRenderElement();
+				this._batchRenderElementPool[this._batchRenderElementPoolIndex-1]=renderElement;
+				renderElement.staticBatchElementList=[];
+			}
+			return renderElement;
+		}
+
+		/**
+		*@private
+		*/
+		__proto._getStaticBatch=function(rootOwner,number){
+			var key;
+			if (rootOwner)
+				key=rootOwner.id.toString()+number.toString();
+			else
+			key=number.toString();
+			return (this._staticBatches[key])|| (this._staticBatches[key]=new SubMeshStaticBatch(key,rootOwner,VertexPositionNormalColorTexture0Texture1STangent.vertexDeclaration));
+		}
+
+		/**
+		*@inheritDoc
+		*/
+		__proto._initStaticBatchs=function(rootOwner){
+			this._quickSort(this._initBatchElements,0,this._initBatchElements.length-1);
+			var lastCanMerage=false;
+			var curStaticBatch;
+			var batchNumber=0;
+			for (var i=0,n=this._initBatchElements.length;i < n;i++){
+				var renderElement=this._initBatchElements[i];
+				if (lastCanMerage){
+					if (curStaticBatch.addTest(renderElement)){
+						curStaticBatch.add(renderElement);
+						}else {
+						lastCanMerage=false;
+						batchNumber++;
+					}
+					}else {
+					var lastIndex=n-1;
+					if (i!==lastIndex){
+						curStaticBatch=this._getStaticBatch(rootOwner,batchNumber);
+						curStaticBatch.add(renderElement);
+						lastCanMerage=true;
+					}
+				}
+			}
+			_super.prototype._initStaticBatchs.call(this,rootOwner);
+		}
+
+		/**
+		*@private
+		*/
+		__proto._destroyRenderElement=function(renderElement){
+			var staticBatch=(renderElement).staticBatch;
+			staticBatch.remove(renderElement);
+			if (staticBatch._batchElements.length===0){
+				staticBatch.dispose();
+				delete this._staticBatches[staticBatch.key];
+			}
+		}
+
+		/**
+		*@inheritDoc
+		*/
+		__proto._garbageCollection=function(){
+			for (var key in this._staticBatches){
+				var staticBatch=this._staticBatches[key];
+				if (staticBatch._batchElements.length===0){
+					staticBatch.dispose();
+					delete this._staticBatches[staticBatch.key];
+				}
+			}
+		}
+
+		/**
+		*@inheritDoc
+		*/
+		__proto._clear=function(){
+			_super.prototype._clear.call(this);
+			this._updateCountMark++;
+		}
+
+		__static(MeshRenderStaticBatchManager,
+		['instance',function(){return this.instance=new MeshRenderStaticBatchManager();}
+		]);
+		return MeshRenderStaticBatchManager;
+	})(StaticBatchManager)
+
+
+	/**
+	*<code>TerrainFilter</code> 类用于创建TerrainFilter过滤器。
+	*/
+	//class laya.d3.terrain.TerrainFilter extends laya.d3.core.GeometryElement
+	var TerrainFilter=(function(_super){
+		function TerrainFilter(owner,chunkOffsetX,chunkOffsetZ,gridSize,terrainHeightData,heightDataWidth,heightDataHeight,cameraCoordinateInverse){
+			this._owner=null;
+			this._gridSize=NaN;
+			this.memorySize=0;
+			this._numberVertices=0;
+			this._maxNumberIndices=0;
+			this._currentNumberIndices=0;
+			this._numberTriangle=0;
+			this._vertexBuffer=null;
+			this._indexBuffer=null;
+			this._indexArrayBuffer=null;
+			this._boundingBoxCorners=null;
+			this._leafs=null;
+			this._leafNum=0;
+			this._terrainHeightData=null;
+			this._terrainHeightDataWidth=0;
+			this._terrainHeightDataHeight=0;
+			this._chunkOffsetX=0;
+			this._chunkOffsetZ=0;
+			this._cameraCoordinateInverse=false;
+			this._cameraPos=null;
+			this._currentLOD=0;
+			this._perspectiveFactor=NaN;
+			this._LODTolerance=0;
+			this._boundingSphere=null;
+			this._boundingBox=null;
+			TerrainFilter.__super.call(this);
+			this._owner=owner;
+			this._cameraPos=new Vector3();
+			this._chunkOffsetX=chunkOffsetX;
+			this._chunkOffsetZ=chunkOffsetZ;
+			this._gridSize=gridSize;
+			this._terrainHeightData=terrainHeightData;
+			this._terrainHeightDataWidth=heightDataWidth;
+			this._terrainHeightDataHeight=heightDataHeight;
+			this._leafNum=(TerrainLeaf.CHUNK_GRID_NUM / TerrainLeaf.LEAF_GRID_NUM)*(TerrainLeaf.CHUNK_GRID_NUM / TerrainLeaf.LEAF_GRID_NUM);
+			this._leafs=__newvec(this._leafNum);
+			this._cameraCoordinateInverse=cameraCoordinateInverse;
+			for (var i=0;i < this._leafNum;i++){
+				this._leafs[i]=new TerrainLeaf();
+			}
+			this.recreateResource();
+		}
+
+		__class(TerrainFilter,'laya.d3.terrain.TerrainFilter',_super);
+		var __proto=TerrainFilter.prototype;
+		/**
+		*@inheritDoc
+		*/
+		__proto.destroy=function(){
+			this._owner=null;
+			if (this._vertexBuffer)this._vertexBuffer.destroy();
+			if (this._indexBuffer)this._indexBuffer.destroy();
+		}
+
+		__proto.recreateResource=function(){
+			this._currentNumberIndices=0;
+			this._numberTriangle=0;
+			var nLeafVertexCount=TerrainLeaf.LEAF_VERTEXT_COUNT;
+			var nLeafIndexCount=TerrainLeaf.LEAF_MAX_INDEX_COUNT;
+			this._numberVertices=nLeafVertexCount *this._leafNum;
+			this._maxNumberIndices=nLeafIndexCount *this._leafNum;
+			this._indexArrayBuffer=new Uint16Array(this._maxNumberIndices);
+			var vertexDeclaration=VertexPositionTerrain.vertexDeclaration;
+			var vertexFloatStride=vertexDeclaration.vertexStride / 4;
+			var vertices=new Float32Array(this._numberVertices *vertexFloatStride);
+			var nNum=TerrainLeaf.CHUNK_GRID_NUM / TerrainLeaf.LEAF_GRID_NUM;
+			var i=0,x=0,z=0;
+			for (i=0;i < this._leafNum;i++){
+				x=i % nNum;
+				z=Math.floor(i / nNum);
+				this._leafs[i].calcVertextBuffer(this._chunkOffsetX,this._chunkOffsetZ,x *TerrainLeaf.LEAF_GRID_NUM,z *TerrainLeaf.LEAF_GRID_NUM,this._gridSize,vertices,i *TerrainLeaf.LEAF_PLANE_VERTEXT_COUNT,vertexFloatStride,this._terrainHeightData,this._terrainHeightDataWidth,this._terrainHeightDataHeight,this._cameraCoordinateInverse);
+			}
+			for (i=0;i < this._leafNum;i++){
+				x=i % nNum;
+				z=Math.floor(i / nNum);
+				this._leafs[i].calcSkirtVertextBuffer(this._chunkOffsetX,this._chunkOffsetZ,x *TerrainLeaf.LEAF_GRID_NUM,z *TerrainLeaf.LEAF_GRID_NUM,this._gridSize,vertices,this._leafNum *TerrainLeaf.LEAF_PLANE_VERTEXT_COUNT+i *TerrainLeaf.LEAF_SKIRT_VERTEXT_COUNT,vertexFloatStride,this._terrainHeightData,this._terrainHeightDataWidth,this._terrainHeightDataHeight);
+			}
+			this.assembleIndexInit();
+			this._vertexBuffer=new VertexBuffer3D(vertexDeclaration.vertexStride *this._numberVertices,0x88E4,false);
+			this._vertexBuffer.vertexDeclaration=vertexDeclaration;
+			this._indexBuffer=new IndexBuffer3D("ushort",this._maxNumberIndices,0x88E4,false);
+			this._vertexBuffer.setData(vertices);
+			this._indexBuffer.setData(this._indexArrayBuffer);
+			this.memorySize=(this._vertexBuffer._byteLength+this._indexBuffer._byteLength)*2;
+			this.calcOriginalBoudingBoxAndSphere();
+			this._setVertexBuffer(this._vertexBuffer);
+		}
+
+		__proto.setLODLevel=function(leafsLODLevel){
+			if (leafsLODLevel.length !=4)return true;
+			var nLOD=((leafsLODLevel[0]+1)<< 24)+((leafsLODLevel[1]+1)<< 16)+((leafsLODLevel[2]+1)<< 8)+(leafsLODLevel[3]+1);
+			if (this._currentLOD==nLOD){
+				return false;
+			}
+			this._currentLOD=nLOD;
+			return true;
+		}
+
+		__proto.assembleIndexInit=function(){
+			this._currentNumberIndices=0;
+			this._numberTriangle=0;
+			var nOffsetIndex=0;
+			for (var i=0;i < this._leafNum;i++){
+				var planeLODIndex=TerrainLeaf.getPlaneLODIndex(i,0);
+				this._indexArrayBuffer.set(planeLODIndex,nOffsetIndex);
+				nOffsetIndex+=planeLODIndex.length;
+				var skirtLODIndex=TerrainLeaf.getSkirtLODIndex(i,0);
+				this._indexArrayBuffer.set(skirtLODIndex,nOffsetIndex);
+				nOffsetIndex+=skirtLODIndex.length;
+				this._currentNumberIndices+=(planeLODIndex.length+skirtLODIndex.length);
+			}
+			this._numberTriangle=this._currentNumberIndices / 3;
+		}
+
+		__proto.isNeedAssemble=function(camera,cameraPostion){
+			var perspectiveFactor=Math.min(camera.viewport.width,camera.viewport.height)/ (2 *Math.tan(Math.PI *camera.fieldOfView / 180.0));
+			if (this._perspectiveFactor !=perspectiveFactor){
+				this._perspectiveFactor=perspectiveFactor;
+				return 1;
+			}
+			if (this._LODTolerance !=Terrain.LOD_TOLERANCE_VALUE){
+				this._LODTolerance=Terrain.LOD_TOLERANCE_VALUE;
+				return 1;
+			}
+			if (Vector3.equals(cameraPostion,this._cameraPos)==false){
+				this._cameraPos.x=cameraPostion.x;
+				this._cameraPos.y=cameraPostion.y;
+				this._cameraPos.z=cameraPostion.z;
+				return 2;
+			}
+			return 0;
+		}
+
+		__proto.assembleIndex=function(camera,cameraPostion){
+			var nNeedType=this.isNeedAssemble(camera,cameraPostion);
+			if (nNeedType > 0){
+				for (var i=0;i < this._leafNum;i++){
+					TerrainFilter._TEMP_ARRAY_BUFFER[i]=this._leafs[i].determineLod(cameraPostion,this._perspectiveFactor,Terrain.LOD_TOLERANCE_VALUE,nNeedType==1);
+				}
+				if (this.setLODLevel(TerrainFilter._TEMP_ARRAY_BUFFER)){
+					this._currentNumberIndices=0;
+					this._numberTriangle=0;
+					var nOffsetIndex=0;
+					for (i=0;i < this._leafNum;i++){
+						var nLODLevel=TerrainFilter._TEMP_ARRAY_BUFFER[i];
+						var planeLODIndex=TerrainLeaf.getPlaneLODIndex(i,nLODLevel);
+						this._indexArrayBuffer.set(planeLODIndex,nOffsetIndex);
+						nOffsetIndex+=planeLODIndex.length;
+						var skirtLODIndex=TerrainLeaf.getSkirtLODIndex(i,nLODLevel);
+						this._indexArrayBuffer.set(skirtLODIndex,nOffsetIndex);
+						nOffsetIndex+=skirtLODIndex.length;
+						this._currentNumberIndices+=(planeLODIndex.length+skirtLODIndex.length);
+					}
+					this._numberTriangle=this._currentNumberIndices / 3;
+					return true;
+				}
+			}
+			return false;
+		}
+
+		__proto.calcOriginalBoudingBoxAndSphere=function(){
+			var sizeOfY=new Vector2(2147483647,-2147483647);
+			for (var i=0;i < this._leafNum;i++){
+				sizeOfY.x=this._leafs[i]._sizeOfY.x < sizeOfY.x ? this._leafs[i]._sizeOfY.x :sizeOfY.x;
+				sizeOfY.y=this._leafs[i]._sizeOfY.y > sizeOfY.y ? this._leafs[i]._sizeOfY.y :sizeOfY.y;
+			};
+			var min=new Vector3(this._chunkOffsetX *TerrainLeaf.CHUNK_GRID_NUM *this._gridSize,sizeOfY.x,this._chunkOffsetZ *TerrainLeaf.CHUNK_GRID_NUM *this._gridSize);
+			var max=new Vector3((this._chunkOffsetX+1)*TerrainLeaf.CHUNK_GRID_NUM *this._gridSize,sizeOfY.y,(this._chunkOffsetZ+1)*TerrainLeaf.CHUNK_GRID_NUM *this._gridSize);
+			if (TerrainLeaf.__ADAPT_MATRIX__){
+				Vector3.transformV3ToV3(min,TerrainLeaf.__ADAPT_MATRIX__,min);
+				Vector3.transformV3ToV3(max,TerrainLeaf.__ADAPT_MATRIX__,max);
+			}
+			this._boundingBox=new BoundBox(min,max);
+			var size=new Vector3();
+			Vector3.subtract(max,min,size);
+			Vector3.scale(size,0.5,size);
+			var center=new Vector3();
+			Vector3.add(min,size,center);
+			this._boundingSphere=new BoundSphere(center,Vector3.scalarLength(size));
+			this._boundingBoxCorners=__newvec(8,null);
+			this._boundingBox.getCorners(this._boundingBoxCorners);
+		}
+
+		__proto.calcLeafBoudingBox=function(worldMatrix){
+			for (var i=0;i < this._leafNum;i++){
+				this._leafs[i].calcLeafBoudingBox(worldMatrix);
+			}
+		}
+
+		__proto.calcLeafBoudingSphere=function(worldMatrix,maxScale){
+			for (var i=0;i < this._leafNum;i++){
+				this._leafs[i].calcLeafBoudingSphere(worldMatrix,maxScale);
+			}
+		}
+
+		__proto._getVertexBuffer=function(index){
+			(index===void 0)&& (index=0);
+			if (index==0){
+				return this._vertexBuffer;
+			}
+			return null;
+		}
+
+		__proto._getIndexBuffer=function(){
+			return this._indexBuffer;
+		}
+
+		__proto._prepareRender=function(state){
+			this._indexBuffer.bind();
+			var terrainMaterial=state.renderElement.material;
+			if (terrainMaterial.blend==BaseMaterial.BLEND_DISABLE){
+				var camera=state.camera;
+				if (this.assembleIndex(camera,camera.transform.position)){
+					this._indexBuffer.setData(this._indexArrayBuffer);
+				}
+			}
+			return true;
+		}
+
+		__proto._render=function(state){
+			var vertexDeclaration=VertexPositionTerrain.vertexDeclaration;
+			LayaGL.instance.drawElements(Terrain.RENDER_LINE_MODEL ? 0x0001 :0x0004,this._currentNumberIndices,0x1403,0);
+			Stat.trianglesFaces+=this._numberTriangle;
+			Stat.drawCall++;
+		}
+
+		__getset(0,__proto,'_vertexBufferCount',function(){
+			return this._numberVertices;
+		});
+
+		__getset(0,__proto,'triangleCount',function(){
+			return this._numberTriangle;
+		});
+
+		__static(TerrainFilter,
+		['_TEMP_ARRAY_BUFFER',function(){return this._TEMP_ARRAY_BUFFER=new Uint32Array(TerrainLeaf.CHUNK_GRID_NUM / TerrainLeaf.LEAF_GRID_NUM *TerrainLeaf.CHUNK_GRID_NUM / TerrainLeaf.LEAF_GRID_NUM);}
+		]);
+		return TerrainFilter;
 	})(GeometryElement)
 
 
@@ -51100,58 +50503,6 @@ var Laya=window.Laya=(function(window,document){
 
 
 	/**
-	*<code>SkyBox</code> 类用于创建天空盒。
-	*/
-	//class laya.d3.resource.models.SkyBox extends laya.d3.resource.models.Sky
-	var SkyBox=(function(_super){
-		/**
-		*创建一个 <code>SkyBox</code> 实例。
-		*/
-		function SkyBox(){
-			SkyBox.__super.call(this);
-			this._vertexBuffer=SkyBox._skyBoxVerexbuffer;
-			this._indexBuffer=SkyBox._skyBoxIndexbuffer;
-		}
-
-		__class(SkyBox,'laya.d3.resource.models.SkyBox',_super);
-		var __proto=SkyBox.prototype;
-		/**
-		*@inheritDoc
-		*/
-		__proto._render=function(state){
-			LayaGL.instance.drawElements(0x0004,36,0x1401,0);
-			Stat.trianglesFaces+=12;
-			Stat.drawCall++;
-		}
-
-		SkyBox.__init__=function(){
-			var halfHeight=0.5;
-			var halfWidth=0.5;
-			var halfDepth=0.5;
-			var vertices=new Float32Array([
-			-halfDepth,halfHeight,-halfWidth,halfDepth,halfHeight,-halfWidth,halfDepth,halfHeight,halfWidth,-halfDepth,halfHeight,halfWidth,
-			-halfDepth,-halfHeight,-halfWidth,halfDepth,-halfHeight,-halfWidth,halfDepth,-halfHeight,halfWidth,-halfDepth,-halfHeight,halfWidth]);
-			var indices=new Uint8Array([
-			0,1,2,2,3,0,
-			4,7,6,6,5,4,
-			0,3,7,7,4,0,
-			1,5,6,6,2,1,
-			3,2,6,6,7,3,
-			0,4,5,5,1,0]);
-			SkyBox._skyBoxVerexbuffer=new VertexBuffer3D(VertexPosition.vertexDeclaration.vertexStride*8,0x88E4,false);
-			SkyBox._skyBoxVerexbuffer.vertexDeclaration=VertexPosition.vertexDeclaration;
-			SkyBox._skyBoxIndexbuffer=new IndexBuffer3D("ubyte",36,0x88E4,false);
-			SkyBox._skyBoxVerexbuffer.setData(vertices);
-			SkyBox._skyBoxIndexbuffer.setData(indices);
-		}
-
-		SkyBox._skyBoxVerexbuffer=null
-		SkyBox._skyBoxIndexbuffer=null
-		return SkyBox;
-	})(Sky)
-
-
-	/**
 	*<p> <code>Sprite</code> 是基本的显示图形的显示列表节点。 <code>Sprite</code> 默认没有宽高，默认不接受鼠标事件。通过 <code>graphics</code> 可以绘制图片或者矢量图，支持旋转，缩放，位移等操作。<code>Sprite</code>同时也是容器类，可用来添加多个子节点。</p>
 	*<p>注意： <code>Sprite</code> 默认没有宽高，可以通过<code>getBounds</code>函数获取；也可手动设置宽高；还可以设置<code>autoSize=true</code>，然后再获取宽高。<code>Sprite</code>的宽高一般用于进行碰撞检测和排版，并不影响显示图像大小，如果需要更改显示图像大小，请使用 <code>scaleX</code> ， <code>scaleY</code> ， <code>scale</code>。</p>
 	*<p> <code>Sprite</code> 默认不接受鼠标事件，即<code>mouseEnabled=false</code>，但是只要对其监听任意鼠标事件，会自动打开自己以及所有父对象的<code>mouseEnabled=true</code>。所以一般也无需手动设置<code>mouseEnabled</code>。</p>
@@ -51617,7 +50968,7 @@ var Laya=window.Laya=(function(window,document){
 		__proto.setLayaGL3D=function(value){
 			if (value){
 				if (Render.isConchApp){
-					this.data._int32Data[21]=value._buffer._buffer["_ptrID"];
+					this.data._int32Data[22]=value._buffer._buffer["_ptrID"];
 				}
 				this._renderType |=0x400;
 			}
@@ -52551,6 +51902,7 @@ var Laya=window.Laya=(function(window,document){
 	//class laya.runtime.ConchSpriteAdpt extends laya.display.Node
 	var ConchSpriteAdpt=(function(_super){
 		function ConchSpriteAdpt(){
+			this._drawSimpleImageData=null;
 			this._dataf32=null;
 			this._datai32=null;
 			this._x=0;
@@ -52562,7 +51914,7 @@ var Laya=window.Laya=(function(window,document){
 		__class(ConchSpriteAdpt,'laya.runtime.ConchSpriteAdpt',_super);
 		var __proto=ConchSpriteAdpt.prototype;
 		__proto.createData=function(){
-			this.data=ParamData.create(22 *4);
+			this.data=ParamData.create(23,false);
 			this._datai32=this.data._int32Data;
 			this._dataf32=this.data._float32Data;
 			this._dataf32[19]=1;
@@ -52579,11 +51931,11 @@ var Laya=window.Laya=(function(window,document){
 		}
 
 		__proto._createTransform=function(){
-			return MatrixConch.create(new Float32Array(this._dataf32.buffer,13*4,6*4));
+			return MatrixConch.create(new Float32Array(this._dataf32.buffer,13*4,6));
 		}
 
 		__proto._setGraphics=function(value){
-			this.data._int32Data[20]=value._commandEncoder._buffer["_ptrID"];
+			this._datai32[20]=value._commandEncoder._buffer["_ptrID"];
 		}
 
 		__proto._setCacheAs=function(value){
@@ -52665,7 +52017,23 @@ var Laya=window.Laya=(function(window,document){
 		}
 
 		__proto._setTexture=function(value){
-			this._datai32[SpriteConst.POSTEXTURE]=value._conchTexture.id;
+			this.graphics=LayaNative2D.SIMPLE_GRAPHICS_TEXTURE;
+			this._drawSimpleImageData=ParamData.create(17,true);
+			this._drawSimpleImageData._int32Data[0]=value.bitmap._glTexture;
+			var floatData=this._drawSimpleImageData._float32Data;
+			floatData[5]=floatData[9]=value.bitmap.width;
+			floatData[10]=floatData[14]=value.bitmap.height;
+			floatData[3]=value.uv[0];
+			floatData[4]=value.uv[1];
+			floatData[7]=value.uv[2];
+			floatData[8]=value.uv[3];
+			floatData[11]=value.uv[4];
+			floatData[12]=value.uv[5];
+			floatData[15]=value.uv[6];
+			floatData[16]=value.uv[7];
+			var nPtrID=this._drawSimpleImageData._data["_ptrID"];
+			this._datai32[21]=nPtrID;
+			LayaGL.syncBufferToRenderThread(nPtrID);
 		}
 
 		__proto._adjustTransform=function(){
@@ -53128,7 +52496,7 @@ var Laya=window.Laya=(function(window,document){
 				return;
 			var gl=WebGL.mainContext;
 			var glTex=this._source=gl.createTexture();
-			gl.bindTexture(0x0DE1,glTex);
+			WebGLContext.bindTexture(gl,0x0DE1,glTex);
 			gl.texImage2D(0x0DE1,0,0x1908,this._mgr._textureWidth,this._mgr._textureWidth,0,0x1908,0x1401,null);
 			gl.texParameteri(0x0DE1,0x2801,0x2601);
 			gl.texParameteri(0x0DE1,0x2800,0x2601);
@@ -53145,7 +52513,7 @@ var Laya=window.Laya=(function(window,document){
 		__proto.addChar=function(data,x,y){
 			!this._source && this.recreateResource();
 			var gl=WebGL.mainContext;
-			gl.bindTexture(0x0DE1,this._source);
+			WebGLContext.bindTexture(gl,0x0DE1,this._source);
 			gl.pixelStorei(0x9241,true);
 			gl.texSubImage2D(0x0DE1,0,x,y,0x1908,0x1401,data);
 			gl.pixelStorei(0x9241,false);
@@ -54304,7 +53672,7 @@ var Laya=window.Laya=(function(window,document){
 			this._defineDatas=new DefineDatas();
 			this._disablePublicDefineDatas=new DefineDatas();
 			this._shaderValues=new ShaderDatas(this,dataSize);
-			this.renderQueue=1;
+			this.renderQueue=1000;
 			this._alphaTest=false;
 			this._renderStates=[];
 		}
@@ -54367,6 +53735,18 @@ var Laya=window.Laya=(function(window,document){
 						var value=props[key];
 						for (i=0,n=this._renderStates.length;i < n;i++)
 						this._renderStates[i][key]=value;
+						break ;
+						case "renderQueue":;
+						var queue=props[key];
+						switch (queue){
+							case 1:
+								this.renderQueue=1000;
+								break ;
+							case 2:
+								this.renderQueue=3000;
+								break ;
+							default :
+							}
 						break ;
 						default :
 						this[key]=props[key];
@@ -54505,91 +53885,15 @@ var Laya=window.Laya=(function(window,document){
 			BaseMaterial.SHADERDEFINE_ALPHATEST=BaseMaterial.shaderDefines.registerDefine("ALPHATEST");
 		}
 
+		BaseMaterial.RENDERQUEUE_OPAQUE=1000;
+		BaseMaterial.RENDERQUEUE_ALPHATEST=2000;
+		BaseMaterial.RENDERQUEUE_TRANSPARENT=3000;
 		BaseMaterial.ALPHATESTVALUE=0;
 		BaseMaterial.SHADERDEFINE_ALPHATEST=0;
 		__static(BaseMaterial,
 		['shaderDefines',function(){return this.shaderDefines=new ShaderDefines$1();}
 		]);
 		return BaseMaterial;
-	})(Resource)
-
-
-	/**
-	*<code>BaseMesh</code> 类用于创建网格,抽象类,不允许实例。
-	*/
-	//class laya.d3.resource.models.BaseMesh extends laya.resource.Resource
-	var BaseMesh=(function(_super){
-		function BaseMesh(){
-			this._subMeshCount=0;
-			this._boundingBox=null;
-			this._boundingSphere=null;
-			this._boundingBoxCorners=null;
-			this._positions=null;
-			BaseMesh.__super.call(this);
-			this._boundingBoxCorners=__newvec(8,null);
-		}
-
-		__class(BaseMesh,'laya.d3.resource.models.BaseMesh',_super);
-		var __proto=BaseMesh.prototype;
-		/**
-		*获取网格顶点,请重载此方法。
-		*@return 网格顶点。
-		*/
-		__proto._getPositions=function(){
-			throw new Error("未Override,请重载该属性！");
-		}
-
-		/**
-		*@private
-		*/
-		__proto._generateBoundingObject=function(){
-			this._boundingSphere=new BoundSphere(new Vector3(),0);
-			BoundSphere.createfromPoints(this._positions,this._boundingSphere);
-			this._boundingBox=new BoundBox(new Vector3(),new Vector3());
-			BoundBox.createfromPoints(this._positions,this._boundingBox);
-			this._boundingBox.getCorners(this._boundingBoxCorners);
-		}
-
-		/**
-		*@private
-		*/
-		__proto._getSubMesh=function(index){
-			throw new Error("未Override,请重载该属性！");
-		}
-
-		/**
-		*获取SubMesh的个数。
-		*@return SubMesh的个数。
-		*/
-		__getset(0,__proto,'subMeshCount',function(){
-			return this._subMeshCount;
-		});
-
-		/**
-		*获取AABB包围盒,禁止修改其数据。
-		*@return AABB包围盒。
-		*/
-		__getset(0,__proto,'boundingBox',function(){
-			return this._boundingBox;
-		});
-
-		/**
-		*获取包围球顶点,禁止修改其数据。
-		*@return 包围球。
-		*/
-		__getset(0,__proto,'boundingBoxCorners',function(){
-			return this._boundingBoxCorners;
-		});
-
-		/**
-		*获取包围球,禁止修改其数据。
-		*@return 包围球。
-		*/
-		__getset(0,__proto,'boundingSphere',function(){
-			return this._boundingSphere;
-		});
-
-		return BaseMesh;
 	})(Resource)
 
 
@@ -54703,7 +54007,6 @@ var Laya=window.Laya=(function(window,document){
 			//this._cacheFrameRateInterval=NaN;
 			//this._cacheFrameRate=0;
 			//this._cachePlayRate=NaN;
-			//this._currentPlayClip=null;
 			//this._currentPlayClipIndex=0;
 			//this._stoped=false;
 			//this._currentTime=NaN;
@@ -54721,8 +54024,6 @@ var Laya=window.Laya=(function(window,document){
 			//this._cacheNodesDefaultlValues=null;
 			//this._cacheNodesSpriteOwners=null;
 			//this._cacheNodesAvatarOwners=null;
-			//this._lastPlayAnimationClip=null;
-			//this._lastPlayAnimationClipIndex=0;
 			//this._publicClipsDatas=null;
 			//this._publicAvatarNodeDatas=null;
 			//this._curAvatarNodeDatas=null;
@@ -54749,12 +54050,12 @@ var Laya=window.Laya=(function(window,document){
 			this._cacheSpriteToNodesMap=[];
 			this._cacheFullFrames=[];
 			this._publicClipsDatas=[];
+			this._currentPlayClipIndex=-1;
 			this._playEventIndex=-1;
 			this._updateTransformPropertyLoopCount=-1;
 			this._lastFrameIndex=-1;
 			this._defaultClipIndex=-1;
 			this._cachePlayRate=1.0;
-			this._currentPlayClip=null;
 			this._currentFrameIndex=-1;
 			this._currentTime=0.0;
 			this._elapsedPlaybackTime=0;
@@ -54964,7 +54265,7 @@ var Laya=window.Laya=(function(window,document){
 		*@private
 		*/
 		__proto._eventScript=function(from,to){
-			var events=this._currentPlayClip._events;
+			var events=this._clips[this._currentPlayClipIndex]._events;
 			for (var n=events.length;this._playEventIndex < n;this._playEventIndex++){
 				var eve=events[this._playEventIndex];
 				var eventTime=eve.time;
@@ -55001,22 +54302,27 @@ var Laya=window.Laya=(function(window,document){
 			this._currentFrameIndex=Math.max(Math.floor(aniClipPlayDuration / cacheFrameInterval-0.00001),0);
 			this._currentFrameTime=this._currentFrameIndex *cacheFrameInterval;
 			this._eventScript(lastTime,aniClipPlayDuration);
-			this._currentPlayClip=null;
 		}
 
 		/**
 		*@private
 		*/
-		__proto._revertKeyframeNodes=function(clip,clipIndex){
+		__proto._revertKeyframeNodes=function(clipIndex){
+			var originalValues=this._cacheNodesDefaultlValues[clipIndex];
+			var frameNodes=this._clips[clipIndex]._nodes;
 			if (this._avatar){
-				var originalValues=this._cacheNodesDefaultlValues[clipIndex];
-				var frameNodes=clip._nodes;
-				var nodeOwners=this._cacheNodesAvatarOwners[clipIndex];
-				for (var i=0,n=nodeOwners.length;i < n;i++){
-					var owner=nodeOwners[i];
-					(owner)&& (AnimationNode._propertySetFuncs[frameNodes[i].propertyNameID](owner,null,originalValues[i]));
+				var avatarOwners=this._cacheNodesAvatarOwners[clipIndex];
+				for (var i=0,n=avatarOwners.length;i < n;i++){
+					var avatarOwner=avatarOwners[i];
+					(avatarOwner)&& (AnimationNode._propertySetFuncs[frameNodes[i].propertyNameID](avatarOwner,null,originalValues[i]));
 				}
-			}else {}
+				}else {
+				var spriteOwners=this._cacheNodesSpriteOwners[clipIndex];
+				for (var i=0,n=spriteOwners.length;i < n;i++){
+					var spriteOwner=spriteOwners[i];
+					(spriteOwner)&& (AnimationNode._propertySetFuncs[frameNodes[i].propertyNameID](null,spriteOwner,originalValues[i]));
+				}
+			}
 		}
 
 		/**
@@ -55026,7 +54332,7 @@ var Laya=window.Laya=(function(window,document){
 			var i=0,n=0;
 			var frameNode,keyFrames,endKeyframeData;
 			this._lastFrameIndex=-1;
-			var frameNodes=this._currentPlayClip._nodes;
+			var frameNodes=this._clips[this._currentPlayClipIndex]._nodes;
 			if (this._avatar){
 				var avatarOwners=this._cacheNodesAvatarOwners[this._currentPlayClipIndex];
 				for (i=0,n=avatarOwners.length;i < n;i++){
@@ -55052,11 +54358,12 @@ var Laya=window.Laya=(function(window,document){
 		*@private
 		*/
 		__proto._setAnimationClipPropertyToAnimationNode=function(nodeOwners,propertyMap,clipDatas){
+			var nodes=this._clips[this._currentPlayClipIndex]._nodes;
 			for (var i=0,n=propertyMap.length;i < n;i++){
 				var nodexIndex=propertyMap[i];
 				var owner=nodeOwners[nodexIndex];
 				if (owner){
-					var ketframeNode=this._currentPlayClip._nodes[nodexIndex];
+					var ketframeNode=nodes[nodexIndex];
 					var datas=clipDatas[nodexIndex];
 					(datas)&& (AnimationNode._propertySetFuncs[ketframeNode.propertyNameID](owner,null,datas));
 				}
@@ -55067,10 +54374,11 @@ var Laya=window.Laya=(function(window,document){
 		*@private
 		*/
 		__proto._setAnimationClipPropertyToSprite3D=function(nodeOwners,curClipAnimationDatas){
+			var nodes=this._clips[this._currentPlayClipIndex]._nodes;
 			for (var i=0,n=nodeOwners.length;i < n;i++){
 				var owner=nodeOwners[i];
 				if (owner){
-					var ketframeNode=this._currentPlayClip._nodes[i];
+					var ketframeNode=nodes[i];
 					var datas=curClipAnimationDatas[i];
 					(datas)&& (AnimationNode._propertySetFuncs[ketframeNode.propertyNameID](null,owner,datas));
 				}
@@ -55137,7 +54445,8 @@ var Laya=window.Laya=(function(window,document){
 					avatarNodeDatas[i]=nodeMatrix;
 					nodeTransform._setWorldMatrixAndUpdate(nodeMatrix);
 					}else {
-					avatarNodeDatas[i]=Animator.deafaultMatrix;
+					var mat=nodeTransform.getWorldMatrix();
+					avatarNodeDatas[i]=mat ? mat :Animator.deafaultMatrix;
 				}
 			}
 		}
@@ -55195,36 +54504,39 @@ var Laya=window.Laya=(function(window,document){
 		*@private
 		*/
 		__proto._updatePlayer=function(elapsedTime){
-			if (this._currentPlayClip==null || this._stoped || !this._currentPlayClip.loaded)
+			if (this._currentPlayClipIndex===-1 || this._stoped)
 				return;
-			var cacheFrameInterval=this._cacheFrameRateInterval *this._cachePlayRate;
-			var time=0;
-			(this._startUpdateLoopCount!==Stat.loopCount)&& (time=elapsedTime *this.playbackRate,this._elapsedPlaybackTime+=time);
-			var frameRate=this._currentPlayClip._frameRate;
-			var playStart=this._playStartFrames[this._currentPlayClipIndex] / frameRate;
-			var playEnd=Math.min(this._playEndFrames[this._currentPlayClipIndex] / frameRate,this._currentPlayClip._duration);
-			var aniClipPlayDuration=playEnd-playStart;
-			if ((!this._currentPlayClip.islooping && this._elapsedPlaybackTime >=aniClipPlayDuration)){
-				this._onAnimationStop();
-				this._setPlayParamsWhenStop(aniClipPlayDuration,cacheFrameInterval);
-				return;
-			}
-			time+=this._currentTime;
-			if (aniClipPlayDuration > 0){
-				if (time >=aniClipPlayDuration){
-					do {
-						time-=aniClipPlayDuration;
-						if (time < aniClipPlayDuration){
-							this._setPlayParams(time,cacheFrameInterval);
-						}
-						this._playEventIndex=0;
-						this._eventScript(0,time);
-					}while (time >=aniClipPlayDuration)
-					}else {
-					this._setPlayParams(time,cacheFrameInterval);
+			var clip=this._clips[this._currentPlayClipIndex];
+			if (clip.loaded){
+				var cacheFrameInterval=this._cacheFrameRateInterval *this._cachePlayRate;
+				var time=0;
+				(this._startUpdateLoopCount!==Stat.loopCount)&& (time=elapsedTime *this.playbackRate,this._elapsedPlaybackTime+=time);
+				var frameRate=clip._frameRate;
+				var playStart=this._playStartFrames[this._currentPlayClipIndex] / frameRate;
+				var playEnd=Math.min(this._playEndFrames[this._currentPlayClipIndex] / frameRate,clip._duration);
+				var aniClipPlayDuration=playEnd-playStart;
+				if ((!clip.islooping && this._elapsedPlaybackTime >=aniClipPlayDuration)){
+					this._onAnimationStop();
+					this._setPlayParamsWhenStop(aniClipPlayDuration,cacheFrameInterval);
+					return;
 				}
-				}else {
-				this._currentTime=this._currentFrameTime=this._currentFrameIndex=this._playEventIndex=0;
+				time+=this._currentTime;
+				if (aniClipPlayDuration > 0){
+					if (time >=aniClipPlayDuration){
+						do {
+							time-=aniClipPlayDuration;
+							if (time < aniClipPlayDuration){
+								this._setPlayParams(time,cacheFrameInterval);
+							}
+							this._playEventIndex=0;
+							this._eventScript(0,time);
+						}while (time >=aniClipPlayDuration)
+						}else {
+						this._setPlayParams(time,cacheFrameInterval);
+					}
+					}else {
+					this._currentTime=this._currentFrameTime=this._currentFrameIndex=this._playEventIndex=0;
+				}
 			}
 		}
 
@@ -55254,7 +54566,7 @@ var Laya=window.Laya=(function(window,document){
 		*/
 		__proto._update=function(){
 			this._updatePlayer(Laya.timer.delta / 1000.0);
-			var clip=this._currentPlayClip;
+			var clip=this._clips[this._currentPlayClipIndex];
 			if (this.playState!==2 || !clip || !clip.loaded)
 				return;
 			var rate=this.playbackRate *Laya.timer.scale;
@@ -55295,7 +54607,7 @@ var Laya=window.Laya=(function(window,document){
 					var spriteOwners=this._cacheNodesSpriteOwners[this._currentPlayClipIndex];
 					if (!clipDatas){
 						clipDatas=[];
-						clipDatas.length=this._currentPlayClip._nodes.length;
+						clipDatas.length=clip._nodes.length;
 						clip._evaluateAnimationlDatasCacheMode(spriteOwners,this._cacheFullFrames[this._currentPlayClipIndex],this,clipDatas,null);
 						clip._cacheAnimationData(cacheRate,frameIndex,clipDatas);
 					}
@@ -55359,7 +54671,6 @@ var Laya=window.Laya=(function(window,document){
 			_super.prototype.destroy();
 			for (var i=0,n=this._clips.length;i < n;i++)
 			this._clips[i]._removeReference();
-			this._currentPlayClip=null;
 			this._clipNames=null;
 			this._cacheNodesSpriteOwners=null;
 			this._cacheNodesAvatarOwners=null;
@@ -55502,20 +54813,16 @@ var Laya=window.Laya=(function(window,document){
 		*播放动画。
 		*@param name 如果为null则播放默认动画，否则按名字播放动画片段。
 		*@param playbackRate 播放速率。
-		*@param startFrame 开始帧率。
-		*@param endFrame 结束帧率.-1表示为最大结束帧率。
 		*/
 		__proto.play=function(name,playbackRate){
 			(playbackRate===void 0)&& (playbackRate=1.0);
 			if (!name && this._defaultClipIndex==-1)
 				throw new Error("Animator:must have  default clip value,please set clip property.");
-			if (name){
-				this._currentPlayClipIndex=this._clipNames.indexOf(name);
-				this._currentPlayClip=this._clips[this._currentPlayClipIndex];
-				}else {
-				this._currentPlayClipIndex=this._defaultClipIndex;
-				this._currentPlayClip=this._clips[this._defaultClipIndex];
-			}
+			var playClipIndex=0;
+			if (name)
+				playClipIndex=this._clipNames.indexOf(name);
+			else
+			playClipIndex=this._defaultClipIndex;
 			this._currentTime=0;
 			this._currentFrameTime=0;
 			this._elapsedPlaybackTime=0;
@@ -55524,14 +54831,17 @@ var Laya=window.Laya=(function(window,document){
 			this._stoped=false;
 			this._currentFrameIndex=0;
 			this._startUpdateLoopCount=Stat.loopCount;
-			if (this._lastPlayAnimationClip){
-				(this._lastPlayAnimationClip!==this._currentPlayClip)&& (this._revertKeyframeNodes(this._lastPlayAnimationClip,this._lastPlayAnimationClipIndex));
-			}
+			(this._currentPlayClipIndex!==-1 && this._currentPlayClipIndex!==playClipIndex)&& (this._revertKeyframeNodes(this._currentPlayClipIndex));
 			this._updatePlayer(0);
-			this._lastPlayAnimationClip=this._currentPlayClip;
-			this._lastPlayAnimationClipIndex=this._currentPlayClipIndex;
+			this._currentPlayClipIndex=playClipIndex;
 		}
 
+		/**
+		*在当前动画状态和目标动画状态之间进行融合过渡播放。
+		*@param name 目标动画状态。
+		*@param transitionDuration 过渡时间,该值为当前动画状态的归一化时间，值在0.0~1.0之间。
+		*/
+		__proto.crossFade=function(name,transitionDuration){}
 		/**
 		*停止播放当前动画
 		*/
@@ -55585,10 +54895,9 @@ var Laya=window.Laya=(function(window,document){
 		*@return 当前播放状态
 		*/
 		__getset(0,__proto,'playState',function(){
-			if (this._currentPlayClip==null)
-				return 0;
 			if (this._stoped)
 				return 0;
+			else
 			return 2;
 		});
 
@@ -55695,7 +55004,7 @@ var Laya=window.Laya=(function(window,document){
 		*@return value 当前动画索引
 		*/
 		__getset(0,__proto,'currentPlayClip',function(){
-			return this._currentPlayClip;
+			return this._clips[this._currentPlayClipIndex];
 		});
 
 		/**
@@ -55703,7 +55012,7 @@ var Laya=window.Laya=(function(window,document){
 		*@return value 当前时间
 		*/
 		__getset(0,__proto,'currentPlayTime',function(){
-			return this._currentTime+(this._playStartFrames[this._currentPlayClipIndex] / this._currentPlayClip._frameRate);
+			return this._currentTime+(this._playStartFrames[this._currentPlayClipIndex] / this._clips[this._currentPlayClipIndex]._frameRate);
 		});
 
 		/**
@@ -55711,7 +55020,7 @@ var Laya=window.Laya=(function(window,document){
 		*@param value 当前时间
 		*/
 		__getset(0,__proto,'playbackTime',null,function(value){
-			if (this._currentPlayClip==null || !this._currentPlayClip || !this._currentPlayClip.loaded)
+			if (this._currentPlayClipIndex===-1 || !this._clips[this._currentPlayClipIndex].loaded)
 				return;
 			this._startUpdateLoopCount=Stat.loopCount;
 			var cacheFrameInterval=this._cacheFrameRateInterval *this._cachePlayRate;
@@ -55748,7 +55057,6 @@ var Laya=window.Laya=(function(window,document){
 			//this._runtimeCollisonTestMap=null;
 			//this._ignoreCollisonMap=null;
 			//this.isTrigger=false;
-			this.physicsObjectId=0;
 			Collider.__super.call(this);
 			this._isRigidbody=false;
 			this._runtimeCollisonMap={};
@@ -55767,7 +55075,6 @@ var Laya=window.Laya=(function(window,document){
 			var spriteOwner=this._owner;
 			var rigidbody=spriteOwner.getComponentByType(Rigidbody);
 			(rigidbody)&& (this._isRigidbody=true);
-			(spriteOwner.displayedInStage)&& (spriteOwner.layer._addCollider(this));
 			spriteOwner._colliders.push(this);
 		}
 
@@ -55777,7 +55084,6 @@ var Laya=window.Laya=(function(window,document){
 		__proto._uninitialize=function(){
 			_super.prototype._uninitialize.call(this);
 			var spriteOwner=this._owner;
-			(spriteOwner.displayedInStage)&& (spriteOwner.layer._removeCollider(this));
 			var colliders=(spriteOwner)._colliders;
 			colliders.splice(colliders.indexOf(this),1);
 			for (var k in this._runtimeCollisonMap){
@@ -55794,7 +55100,6 @@ var Laya=window.Laya=(function(window,document){
 		*/
 		__proto._onActive=function(){
 			(this._owner).layer._addCollider(this);
-			this.addPhysicsObject();
 		}
 
 		/**
@@ -55803,7 +55108,6 @@ var Laya=window.Laya=(function(window,document){
 		__proto._onInActive=function(){
 			this._clearCollsionMap();
 			(this._owner).layer._removeCollider(this);
-			this.removePhySicsObject();
 		}
 
 		/**
@@ -55862,60 +55166,6 @@ var Laya=window.Laya=(function(window,document){
 			throw new Error("Collider:Must override it.");
 		}
 
-		__proto.addPhysicsObject=function(){
-			var physicsObject=new Object();
-			var owner=this._owner;
-			Collider._physicsObjects.push(owner);
-			if (this._isRigidbody){
-				var rigidBody=owner.getComponentByType(Rigidbody);
-				if (rigidBody.isKinematic){
-					physicsObject.mass=0;
-				}
-				else{
-					physicsObject.mass=rigidBody.mass;
-				}
-			}
-			else{
-				physicsObject.mass=0;
-			}
-			this.physicsObjectId=Collider._physicsObjectIndex++;
-			physicsObject.id=this.physicsObjectId;
-			owner.physicsObjectId=this.physicsObjectId;
-			var transform=owner.transform;
-			var position=transform.position;
-			var rotation=transform.rotation;
-			var scale=transform.scale;
-			physicsObject.dirtyPosition=false;
-			physicsObject.dirtyRotation=false;
-			physicsObject.position={x:-position.x,y:position.y,z:position.z};
-			physicsObject.rotation={x:-rotation.x,y:rotation.y,z:rotation.z,w:-rotation.w};
-			if (this instanceof BoxCollider){
-				var boundBox=(owner).meshFilter.sharedMesh.boundingBox;
-				var max=boundBox.max;
-				var min=boundBox.min;
-				var width=max.x-min.x;
-				var height=max.y-min.y;
-				var depth=max.z-min.z;
-				physicsObject.width=width *scale.x;
-				physicsObject.height=height *scale.y;
-				physicsObject.depth=depth *scale.z;
-				physicsObject.type="box";
-				}else if (this instanceof SphereCollider){
-				physicsObject.type="sphere";
-				}else {
-				throw Error("This type is not supported for a while!")
-			}
-			physicsObject.friction=0.4;
-			physicsObject.restitution=0.4;
-			(this._owner).scene.physicsWorker.execute("addObject",physicsObject);
-			return physicsObject;
-		}
-
-		__proto.removePhySicsObject=function(){
-			delete Collider._physicsObjects[this.physicsObjectId];
-			(this._owner).scene.physicsWorker.execute("removeObject",{id:this.physicsObjectId});
-		}
-
 		/**
 		*@inheritDoc
 		*/
@@ -55937,8 +55187,6 @@ var Laya=window.Laya=(function(window,document){
 		});
 
 		Collider._isSingleton=false;
-		Collider._physicsObjects=[];
-		Collider._physicsObjectIndex=0;
 		return Collider;
 	})(Component3D)
 
@@ -56047,35 +55295,6 @@ var Laya=window.Laya=(function(window,document){
 
 		return Rigidbody;
 	})(Component3D)
-
-
-	//class laya.webgl.shader.d2.value.TextSV extends laya.webgl.shader.d2.value.TextureSV
-	var TextSV=(function(_super){
-		function TextSV(args){
-			TextSV.__super.call(this,0x40);
-			this.defines.add(0x40);
-		}
-
-		__class(TextSV,'laya.webgl.shader.d2.value.TextSV',_super);
-		var __proto=TextSV.prototype;
-		__proto.release=function(){
-			TextSV.pool[TextSV._length++]=this;
-			this.clear();
-		}
-
-		__proto.clear=function(){
-			_super.prototype.clear.call(this);
-		}
-
-		TextSV.create=function(){
-			if (TextSV._length)return TextSV.pool[--TextSV._length];
-			else return new TextSV(null);
-		}
-
-		TextSV.pool=[];
-		TextSV._length=0;
-		return TextSV;
-	})(TextureSV)
 
 
 	/**
@@ -56230,6 +55449,114 @@ var Laya=window.Laya=(function(window,document){
 		]);
 		return Script;
 	})(Component3D)
+
+
+	/**
+	*<code>BaseMesh</code> 类用于创建网格,抽象类,不允许实例。
+	*/
+	//class laya.d3.resource.models.BaseMesh extends laya.resource.Resource
+	var BaseMesh=(function(_super){
+		function BaseMesh(){
+			this._subMeshCount=0;
+			this._boundingBox=null;
+			this._boundingSphere=null;
+			this._boundingBoxCorners=null;
+			this._positions=null;
+			BaseMesh.__super.call(this);
+			this._boundingBoxCorners=__newvec(8,null);
+		}
+
+		__class(BaseMesh,'laya.d3.resource.models.BaseMesh',_super);
+		var __proto=BaseMesh.prototype;
+		/**
+		*获取网格顶点,请重载此方法。
+		*@return 网格顶点。
+		*/
+		__proto._getPositions=function(){
+			throw new Error("未Override,请重载该属性！");
+		}
+
+		/**
+		*@private
+		*/
+		__proto._generateBoundingObject=function(){
+			this._boundingSphere=new BoundSphere(new Vector3(),0);
+			BoundSphere.createfromPoints(this._positions,this._boundingSphere);
+			this._boundingBox=new BoundBox(new Vector3(),new Vector3());
+			BoundBox.createfromPoints(this._positions,this._boundingBox);
+			this._boundingBox.getCorners(this._boundingBoxCorners);
+		}
+
+		/**
+		*@private
+		*/
+		__proto._getSubMesh=function(index){
+			throw new Error("未Override,请重载该属性！");
+		}
+
+		/**
+		*获取SubMesh的个数。
+		*@return SubMesh的个数。
+		*/
+		__getset(0,__proto,'subMeshCount',function(){
+			return this._subMeshCount;
+		});
+
+		/**
+		*获取AABB包围盒,禁止修改其数据。
+		*@return AABB包围盒。
+		*/
+		__getset(0,__proto,'boundingBox',function(){
+			return this._boundingBox;
+		});
+
+		/**
+		*获取包围球顶点,禁止修改其数据。
+		*@return 包围球。
+		*/
+		__getset(0,__proto,'boundingBoxCorners',function(){
+			return this._boundingBoxCorners;
+		});
+
+		/**
+		*获取包围球,禁止修改其数据。
+		*@return 包围球。
+		*/
+		__getset(0,__proto,'boundingSphere',function(){
+			return this._boundingSphere;
+		});
+
+		return BaseMesh;
+	})(Resource)
+
+
+	//class laya.webgl.shader.d2.value.TextSV extends laya.webgl.shader.d2.value.TextureSV
+	var TextSV=(function(_super){
+		function TextSV(args){
+			TextSV.__super.call(this,0x40);
+			this.defines.add(0x40);
+		}
+
+		__class(TextSV,'laya.webgl.shader.d2.value.TextSV',_super);
+		var __proto=TextSV.prototype;
+		__proto.release=function(){
+			TextSV.pool[TextSV._length++]=this;
+			this.clear();
+		}
+
+		__proto.clear=function(){
+			_super.prototype.clear.call(this);
+		}
+
+		TextSV.create=function(){
+			if (TextSV._length)return TextSV.pool[--TextSV._length];
+			else return new TextSV(null);
+		}
+
+		TextSV.pool=[];
+		TextSV._length=0;
+		return TextSV;
+	})(TextureSV)
 
 
 	/**
@@ -56449,6 +55776,11 @@ var Laya=window.Laya=(function(window,document){
 					one.textureID=WebGLContext._glTextureIDs[this._curActTexIndex++];
 					one.fun=this._uniform_sampler2D;
 					break ;
+				case 0x8b5f:
+					gl.uniform1i(one.location,this._curActTexIndex);
+					one.textureID=WebGLContext._glTextureIDs[this._curActTexIndex++];
+					one.fun=this._uniform_sampler3D;
+					break ;
 				case 0x8B60:
 					gl.uniform1i(one.location,this._curActTexIndex);
 					one.textureID=WebGLContext._glTextureIDs[this._curActTexIndex++];
@@ -56480,13 +55812,12 @@ var Laya=window.Laya=(function(window,document){
 			var bindedAttributeBuffer=Buffer._bindedAtributeBuffer;
 			var bindedAttributeDeclaration=Buffer._bindedAttributeDeclaration;
 			var location=one.location;
-			var verBuf=Buffer._bindedVertexBuffer;
-			var verDec=verBuf._vertexDeclaration;
+			var verBuf=Buffer._bindedVertexBuffer;;
 			(bindedAttributeBuffer[location])|| (gl.enableVertexAttribArray(location));
-			if (bindedAttributeBuffer[location]!==verBuf || bindedAttributeDeclaration[location]!==verDec){
+			if (bindedAttributeBuffer[location]!==verBuf || bindedAttributeDeclaration[location]!==value){
 				gl.vertexAttribPointer(location,value[0],value[1],value[2],value[3],value[4]);
 				bindedAttributeBuffer[location]=verBuf;
-				bindedAttributeDeclaration[location]=verDec;
+				bindedAttributeDeclaration[location]=value;
 				return 1;
 			}
 			return 0;
@@ -56722,6 +56053,14 @@ var Laya=window.Laya=(function(window,document){
 			var gl=LayaGL.instance;
 			WebGLContext.activeTexture(gl,one.textureID);
 			WebGLContext.bindTexture(gl,0x0DE1,value);
+			return 0;
+		}
+
+		__proto._uniform_sampler3D=function(one,texture){
+			var value=texture._getSource()|| texture.defaulteTexture._getSource();
+			var gl=LayaGL.instance;
+			WebGLContext.activeTexture(gl,one.textureID);
+			WebGLContext.bindTexture(gl,0x806f,value);
 			return 0;
 		}
 
@@ -56991,7 +56330,7 @@ var Laya=window.Laya=(function(window,document){
 			//this._projectionViewWorldMatrix=null;
 			MeshRender.__super.call(this,owner,shaderDataSize);
 			this._projectionViewWorldMatrix=new Matrix4x4();
-			(owner)&&((owner).meshFilter.on("meshchanged",this,this._onMeshChanged));
+			(owner)&& ((owner).meshFilter.on("meshchanged",this,this._onMeshChanged));
 		}
 
 		__class(MeshRender,'laya.d3.core.MeshRender',_super);
@@ -57000,18 +56339,20 @@ var Laya=window.Laya=(function(window,document){
 		*@private
 		*/
 		__proto._onMeshChanged=function(meshFilter,oldMesh,mesh){
-			if (mesh.loaded){
-				this._boundingSphereNeedChange=this._boundingBoxNeedChange=this._boundingBoxCenterNeedChange=this._octreeNodeNeedChange=true;
-				}else {
-				mesh.once("loaded",this,this._onMeshLoaed);
-			}
+			if (mesh.loaded)
+				this._onMeshLoaed();
+			else
+			mesh.once("loaded",this,this._onMeshLoaed);
 		}
 
 		/**
 		*@private
 		*/
-		__proto._onMeshLoaed=function(sender,enable){
-			this._boundingSphereNeedChange=this._boundingBoxNeedChange=this._boundingBoxCenterNeedChange=this._octreeNodeNeedChange=true;
+		__proto._onMeshLoaed=function(){
+			this._boundingSphereNeedChange=true;
+			this._boundingBoxNeedChange=true;
+			this._boundingBoxCenterNeedChange=true;
+			this._octreeNodeNeedChange=true;
 		}
 
 		/**
@@ -57081,16 +56422,22 @@ var Laya=window.Laya=(function(window,document){
 		*@inheritDoc
 		*/
 		__proto._renderUpdate=function(context,transform){
+			if (transform)
+				this._shaderValues.setMatrix4x4(0,transform.worldMatrix);
+			else
+			this._shaderValues.setMatrix4x4(0,Matrix4x4.DEFAULT);
+		}
+
+		/**
+		*@inheritDoc
+		*/
+		__proto._renderUpdateWithCamera=function(context,transform){
 			var projectionView=context.projectionViewMatrix;
-			var sv=this._shaderValues;
 			if (transform){
-				var worldMat=transform.worldMatrix;
-				sv.setMatrix4x4(0,worldMat);
-				Matrix4x4.multiply(projectionView,worldMat,this._projectionViewWorldMatrix);
-				sv.setMatrix4x4(1,this._projectionViewWorldMatrix);
+				Matrix4x4.multiply(projectionView,transform.worldMatrix,this._projectionViewWorldMatrix);
+				this._shaderValues.setMatrix4x4(1,this._projectionViewWorldMatrix);
 				}else {
-				sv.setMatrix4x4(0,Matrix4x4.DEFAULT);
-				sv.setMatrix4x4(1,projectionView);
+				this._shaderValues.setMatrix4x4(1,projectionView);
 			}
 			if (Laya3D.debugMode)
 				this._renderRenderableBoundBox();
@@ -57179,7 +56526,6 @@ var Laya=window.Laya=(function(window,document){
 		*@inheritDoc
 		*/
 		__proto._renderUpdate=function(context,transfrom){
-			var projectionView=context.projectionViewMatrix;
 			var particleSystem=(this._owner).particleSystem;
 			var sv=this._shaderValues;
 			var transform=this._owner.transform;
@@ -57322,6 +56668,45 @@ var Laya=window.Laya=(function(window,document){
 
 
 	/**
+	*...
+	*@author ...
+	*/
+	//class laya.d3.core.trail.TrailRenderer extends laya.d3.core.render.BaseRender
+	var TrailRenderer=(function(_super){
+		function TrailRenderer(owner){
+			TrailRenderer.__super.call(this,owner);
+		}
+
+		__class(TrailRenderer,'laya.d3.core.trail.TrailRenderer',_super);
+		var __proto=TrailRenderer.prototype;
+		__proto._calculateBoundingBox=function(){
+			var minE=this._boundingBox.min.elements;
+			minE[0]=-Number.MAX_VALUE;
+			minE[1]=-Number.MAX_VALUE;
+			minE[2]=-Number.MAX_VALUE;
+			var maxE=this._boundingBox.min.elements;
+			maxE[0]=Number.MAX_VALUE;
+			maxE[1]=Number.MAX_VALUE;
+			maxE[2]=Number.MAX_VALUE;
+		}
+
+		__proto._calculateBoundingSphere=function(){
+			var centerE=this._boundingSphere.center.elements;
+			centerE[0]=0;
+			centerE[1]=0;
+			centerE[2]=0;
+			this._boundingSphere.radius=Number.MAX_VALUE;
+		}
+
+		__proto._renderUpdate=function(projectionView){
+			return true;
+		}
+
+		return TrailRenderer;
+	})(BaseRender)
+
+
+	/**
 	*@private
 	*将mesh元素缓存到canvas中并进行绘制
 	*/
@@ -57397,178 +56782,16 @@ var Laya=window.Laya=(function(window,document){
 
 
 	/**
-	*@private
-	*简化mesh绘制，多顶点mesh改为四顶点mesh，只绘制矩形不绘制三角形
-	*/
-	//class laya.ani.bone.canvasmesh.SimpleSkinMeshCanvas extends laya.ani.bone.canvasmesh.SkinMeshCanvas
-	var SimpleSkinMeshCanvas=(function(_super){
-		function SimpleSkinMeshCanvas(){
-			this.cacheOK=false;
-			this.cacheCmdOK=false;
-			this.transformCmds=[];
-			this.drawCmds=[]
-			SimpleSkinMeshCanvas.__super.call(this);
-			this.tempMesh=new MeshData();
-		}
-
-		__class(SimpleSkinMeshCanvas,'laya.ani.bone.canvasmesh.SimpleSkinMeshCanvas',_super);
-		var __proto=SimpleSkinMeshCanvas.prototype;
-		__proto.init2=function(texture,ps,verticles,uvs){
-			_super.prototype.init2.call(this,texture,ps,verticles,uvs);
-			this.cacheOK=false;
-			this.cacheCmdOK=false;
-			this.transformCmds.length=6;
-			this.drawCmds.length=9;
-		}
-
-		__proto.renderToContext=function(context){
-			this.context=context.ctx || context;
-			if (this.mesh){
-				if (this.mesh.uvs.length <=8){
-					if (this.mode==0){
-						this._renderWithIndexes(this.mesh);
-					}
-					else {
-						this._renderNoIndexes(this.mesh);
-					}
-					return;
-				}
-				if (!this.cacheOK){
-					this.tempMesh.texture=this.mesh.texture;
-					this.tempMesh.uvs=this.mesh.texture.uv;
-					this.tempMesh.vertices=MeshTools.solveMesh(this.mesh,this.tempMesh.vertices);
-					this.cacheOK=true;
-				}
-				if (this.mode==0){
-					this._renderWithIndexes(this.tempMesh);
-				}
-				else {
-					this._renderNoIndexes(this.tempMesh);
-				}
-			}
-		}
-
-		__proto._renderWithIndexes=function(mesh){
-			if(this.cacheCmdOK){
-				this.renderByCache(mesh);
-				return;
-			};
-			var indexes=mesh.indexes;
-			var i=0,len=indexes.length;
-			if (len > 1)
-				len=1;
-			for (i=0;i < len;i+=3){
-				var index0=indexes[i] *2;
-				var index1=indexes[i+1] *2;
-				var index2=indexes[i+2] *2;
-				this._renderDrawTriangle(mesh,index0,index1,index2);
-			}
-			this.cacheCmdOK=true;
-		}
-
-		__proto._renderDrawTriangle=function(mesh,index0,index1,index2){
-			var context=this.context;
-			var uvs=mesh.uvs;
-			var vertices=mesh.vertices;
-			var texture=mesh.texture;
-			var source=texture.bitmap;
-			var textureSource=source.source;
-			var textureWidth=texture.width;
-			var textureHeight=texture.height;
-			var sourceWidth=source.width;
-			var sourceHeight=source.height;
-			var u0=NaN;
-			var u1=NaN;
-			var u2=NaN;
-			var v0=NaN;
-			var v1=NaN;
-			var v2=NaN;
-			if (mesh.useUvTransform){
-				var ut=mesh.uvTransform;
-				u0=((uvs[index0] *ut.a)+(uvs[index0+1] *ut.c)+ut.tx)*sourceWidth;
-				u1=((uvs[index1] *ut.a)+(uvs[index1+1] *ut.c)+ut.tx)*sourceWidth;
-				u2=((uvs[index2] *ut.a)+(uvs[index2+1] *ut.c)+ut.tx)*sourceWidth;
-				v0=((uvs[index0] *ut.b)+(uvs[index0+1] *ut.d)+ut.ty)*sourceHeight;
-				v1=((uvs[index1] *ut.b)+(uvs[index1+1] *ut.d)+ut.ty)*sourceHeight;
-				v2=((uvs[index2] *ut.b)+(uvs[index2+1] *ut.d)+ut.ty)*sourceHeight;
-			}
-			else {
-				u0=uvs[index0] *sourceWidth;
-				u1=uvs[index1] *sourceWidth;
-				u2=uvs[index2] *sourceWidth;
-				v0=uvs[index0+1] *sourceHeight;
-				v1=uvs[index1+1] *sourceHeight;
-				v2=uvs[index2+1] *sourceHeight;
-			};
-			var x0=vertices[index0];
-			var x1=vertices[index1];
-			var x2=vertices[index2];
-			var y0=vertices[index0+1];
-			var y1=vertices[index1+1];
-			var y2=vertices[index2+1];
-			var delta=(u0 *v1)+(v0 *u2)+(u1 *v2)-(v1 *u2)-(v0 *u1)-(u0 *v2);
-			var dDelta=1 / delta;
-			var deltaA=(x0 *v1)+(v0 *x2)+(x1 *v2)-(v1 *x2)-(v0 *x1)-(x0 *v2);
-			var deltaB=(u0 *x1)+(x0 *u2)+(u1 *x2)-(x1 *u2)-(x0 *u1)-(u0 *x2);
-			var deltaC=(u0 *v1 *x2)+(v0 *x1 *u2)+(x0 *u1 *v2)-(x0 *v1 *u2)-(v0 *u1 *x2)-(u0 *x1 *v2);
-			var deltaD=(y0 *v1)+(v0 *y2)+(y1 *v2)-(v1 *y2)-(v0 *y1)-(y0 *v2);
-			var deltaE=(u0 *y1)+(y0 *u2)+(u1 *y2)-(y1 *u2)-(y0 *u1)-(u0 *y2);
-			var deltaF=(u0 *v1 *y2)+(v0 *y1 *u2)+(y0 *u1 *v2)-(y0 *v1 *u2)-(v0 *u1 *y2)-(u0 *y1 *v2);
-			this.transformCmds[0]=deltaA *dDelta;
-			this.transformCmds[1]=deltaD *dDelta;
-			this.transformCmds[2]=deltaB *dDelta;
-			this.transformCmds[3]=deltaE *dDelta;
-			this.transformCmds[4]=deltaC *dDelta;
-			this.transformCmds[5]=deltaF *dDelta;
-			this.drawCmds[0]=textureSource;
-			this.drawCmds[1]=texture.uv[0] *sourceWidth;
-			this.drawCmds[2]=texture.uv[1] *sourceHeight;
-			this.drawCmds[3]=textureWidth;
-			this.drawCmds[4]=textureHeight;
-			this.drawCmds[5]=texture.uv[0] *sourceWidth;
-			this.drawCmds[6]=texture.uv[1] *sourceHeight;
-			this.drawCmds[7]=textureWidth;
-			this.drawCmds[8]=textureHeight;
-			context.save();
-			if (this.transform){
-				var mt=this.transform;
-				context.transform(mt.a,mt.b,mt.c,mt.d,mt.tx,mt.ty);
-			}
-			context.transform.apply(context,this.transformCmds);
-			context.drawImage.apply(context,this.drawCmds);
-			context.restore();
-		}
-
-		/**
-		*绘制缓存的命令
-		*@param mesh
-		*
-		*/
-		__proto.renderByCache=function(mesh){
-			var context=this.context;
-			context.save();
-			if (this.transform){
-				var mt=this.transform;
-				context.transform(mt.a,mt.b,mt.c,mt.d,mt.tx,mt.ty);
-			}
-			context.transform.apply(context,this.transformCmds);
-			context.drawImage.apply(context,this.drawCmds);
-			context.restore();
-		}
-
-		return SimpleSkinMeshCanvas;
-	})(SkinMeshCanvas)
-
-
-	/**
 	*<code>MeshRender</code> 类用于网格渲染器。
 	*/
 	//class laya.d3.terrain.TerrainRender extends laya.d3.core.render.BaseRender
 	var TerrainRender=(function(_super){
 		function TerrainRender(owner){
 			this._terrainSprite3DOwner=null;
+			this._projectionViewWorldMatrix=null;
 			TerrainRender.__super.call(this,owner);
 			this._terrainSprite3DOwner=owner;
+			this._projectionViewWorldMatrix=new Matrix4x4();
 		}
 
 		__class(TerrainRender,'laya.d3.terrain.TerrainRender',_super);
@@ -57578,7 +56801,7 @@ var Laya=window.Laya=(function(window,document){
 			if (terrainFilter==null){
 				this._boundingSphere.toDefault();
 				}else {
-				var meshBoundingSphere=terrainFilter._originalBoundingSphere;
+				var meshBoundingSphere=terrainFilter._boundingSphere;
 				var maxScale=NaN;
 				var transform=this._terrainSprite3DOwner.transform;
 				var scale=transform.scale;
@@ -57622,12 +56845,13 @@ var Laya=window.Laya=(function(window,document){
 		/**
 		*@private
 		*/
-		__proto._renderUpdate=function(context,transfrom){
+		__proto._renderUpdate=function(context,transform){
 			var projectionView=context.projectionViewMatrix;
 			var sv=this._shaderValues;
-			sv.setMatrix4x4(0,this._owner.transform.worldMatrix);
-			var projViewWorld=this._owner.getProjectionViewWorldMatrix(projectionView);
-			sv.setMatrix4x4(1,projViewWorld);
+			var worldMat=transform.worldMatrix;
+			sv.setMatrix4x4(0,worldMat);
+			Matrix4x4.multiply(projectionView,worldMat,this._projectionViewWorldMatrix);
+			sv.setMatrix4x4(1,this._projectionViewWorldMatrix);
 		}
 
 		/**
@@ -57640,412 +56864,6 @@ var Laya=window.Laya=(function(window,document){
 
 		return TerrainRender;
 	})(BaseRender)
-
-
-	/**
-	*@private
-	*<code>SubMeshDynamicBatch</code> 类用于网格动态合并。
-	*/
-	//class laya.d3.graphics.SubMeshDynamicBatch extends laya.d3.graphics.DynamicBatch
-	var SubMeshDynamicBatch=(function(_super){
-		function SubMeshDynamicBatch(){
-			this._vertices=null;
-			this._indexBuffer=null;
-			this._indices=null;
-			this._positionOffset=0;
-			this._normalOffset=0;
-			this._colorOffset=0;
-			this._uv0Offset=0;
-			this._uv1Offset=0;
-			this._sTangentOffset=0;
-			SubMeshDynamicBatch.__super.call(this);
-			var maxVerDec=VertexPositionNormalColorTexture0Texture1STangent.vertexDeclaration;
-			var maxByteCount=maxVerDec.vertexStride *32000;
-			this._vertices=new Float32Array(maxByteCount / 4);
-			this._vertexBuffer=new VertexBuffer3D(maxByteCount,0x88E8);
-			this._indices=new Int16Array(32000);
-			this._indexBuffer=new IndexBuffer3D("ushort",this._indices.length,0x88E8);
-		}
-
-		__class(SubMeshDynamicBatch,'laya.d3.graphics.SubMeshDynamicBatch',_super);
-		var __proto=SubMeshDynamicBatch.prototype;
-		/**
-		*@private
-		*/
-		__proto._getBatchVertices=function(vertexDeclaration,batchVertices,batchOffset,transform,render,subMesh){
-			var vertexFloatCount=vertexDeclaration.vertexStride / 4;
-			var oriVertexes=subMesh._vertexBuffer.getData();
-			var worldMat=transform.worldMatrix;
-			var rotation=transform.rotation;
-			var lightmapScaleOffset=render.lightmapScaleOffset;
-			var vertexStart=subMesh._vertexStart;
-			var vertexCount=subMesh._vertexCount;
-			for (var i=0;i < vertexCount;i++){
-				var oriOffset=(i+vertexStart)*vertexFloatCount;
-				var bakeOffset=(i+batchOffset)*vertexFloatCount;
-				Utils3D.transformVector3ArrayToVector3ArrayCoordinate(oriVertexes,oriOffset+this._positionOffset,worldMat,batchVertices,bakeOffset+this._positionOffset);
-				if (this._normalOffset!==-1)
-					Utils3D.transformVector3ArrayByQuat(oriVertexes,oriOffset+this._normalOffset,rotation,batchVertices,bakeOffset+this._normalOffset);
-				var bakOff=0,oriOff=0;
-				if (this._colorOffset!==-1){
-					bakOff=bakeOffset+this._colorOffset;
-					oriOff=oriOffset+this._colorOffset;
-					batchVertices[bakOff]=oriVertexes[oriOff];
-					batchVertices[bakOff+1]=oriVertexes[oriOff+1];
-					batchVertices[bakOff+2]=oriVertexes[oriOff+2];
-					batchVertices[bakOff+3]=oriVertexes[oriOff+3];
-				}
-				if (this._uv0Offset!==-1){
-					bakOff=bakeOffset+this._uv0Offset;
-					oriOff=oriOffset+this._uv0Offset;
-					batchVertices[bakOff]=oriVertexes[oriOff];
-					batchVertices[bakOff+1]=oriVertexes[oriOff+1];
-				}
-				if (this._sTangentOffset!==-1){
-					bakOff=bakeOffset+this._sTangentOffset;
-					oriOff=oriOffset+this._sTangentOffset;
-					batchVertices[bakOff]=oriVertexes[oriOff];
-					batchVertices[bakOff+1]=oriVertexes[oriOff+1];
-					batchVertices[bakOff+2]=oriVertexes[oriOff+2];
-					batchVertices[bakOff+3]=oriVertexes[oriOff+3];
-				}
-			}
-		}
-
-		/**
-		*@private
-		*/
-		__proto._getBatchIndices=function(batchIndices,batchIndexCount,transform,subMesh,indexOffset){
-			var subIndices=subMesh._indices;
-			var k=0,m=0,batchOffset=0;
-			var isInvert=transform._isFrontFaceInvert;
-			if (isInvert){
-				for (k=0,m=subIndices.length;k < m;k+=3){
-					batchOffset=batchIndexCount+k;
-					batchIndices[batchOffset]=indexOffset+subIndices[k];
-					batchIndices[batchOffset+1]=indexOffset+subIndices[k+2];
-					batchIndices[batchOffset+2]=indexOffset+subIndices[k+1];
-				}
-				}else {
-				for (k=m,m=subIndices.length;k < m;k+=3){
-					batchOffset=batchIndexCount+k;
-					batchIndices[batchOffset]=indexOffset+subIndices[k];
-					batchIndices[batchOffset+1]=indexOffset+subIndices[k+1];
-					batchIndices[batchOffset+2]=indexOffset+subIndices[k+2];
-				}
-			}
-		}
-
-		/**
-		*@private
-		*/
-		__proto._flush=function(vertexCount,indexCount){
-			this._vertexBuffer.setData(this._vertices,0,0,vertexCount *(this._vertexBuffer.vertexDeclaration.vertexStride / 4));
-			this._indexBuffer.setData(this._indices,0,0,indexCount);
-			LayaGL.instance.drawElements(0x0004,indexCount,0x1403,0);
-			Stat.drawCall++;
-			Stat.trianglesFaces+=indexCount / 3;
-		}
-
-		/**
-		*@inheritDoc
-		*/
-		__proto._prepareRender=function(state){
-			var element=state.renderElement;
-			var vertexDeclaration=element.dynamicVertexDeclaration;
-			this._vertexBuffer.vertexDeclaration=vertexDeclaration;
-			this._setVertexBuffer(this._vertexBuffer);
-			this._positionOffset=vertexDeclaration.getVertexElementByUsage(0).offset / 4;
-			var normalElement=vertexDeclaration.getVertexElementByUsage(3);
-			this._normalOffset=normalElement ? normalElement.offset / 4 :-1;
-			var colorElement=vertexDeclaration.getVertexElementByUsage(1);
-			this._colorOffset=colorElement ? colorElement.offset / 4 :-1;
-			var uv0Element=vertexDeclaration.getVertexElementByUsage(2);
-			this._uv0Offset=uv0Element ? uv0Element.offset / 4 :-1;
-			var uv1Element=vertexDeclaration.getVertexElementByUsage(15);
-			this._uv1Offset=uv1Element ? uv1Element.offset / 4 :-1;
-			var tangentElement=vertexDeclaration.getVertexElementByUsage(5);
-			this._sTangentOffset=tangentElement ? tangentElement.offset / 4 :-1;
-			return true;
-		}
-
-		/**
-		*@inheritDoc
-		*/
-		__proto._render=function(context){
-			var element=context.renderElement;
-			var vertexDeclaration=element.dynamicVertexDeclaration;
-			var batchElements=element.dynamicBatchElementList;
-			var batchVertexCount=0;
-			var batchIndexCount=0;
-			var floatStride=vertexDeclaration.vertexStride / 4;
-			for (var i=0,n=batchElements.length;i < n;i++){
-				var element=batchElements [i];
-				var subMesh=element.geometry;
-				var vertexCount=subMesh._vertexCount;
-				var indexCount=subMesh._indexCount;
-				if (batchIndexCount+indexCount > 32000){
-					this._flush(batchVertexCount,batchIndexCount);
-					batchVertexCount=batchIndexCount=0;
-				};
-				var transform=element.transform;
-				this._getBatchVertices(vertexDeclaration,this._vertices,batchVertexCount,transform,(element.render),subMesh);
-				var indexOffset=batchVertexCount-subMesh._vertexStart;
-				this._getBatchIndices(this._indices,batchIndexCount,transform,subMesh,indexOffset);
-				batchVertexCount+=vertexCount;
-				batchIndexCount+=indexCount;
-			}
-			this._flush(batchVertexCount,batchIndexCount);
-		}
-
-		SubMeshDynamicBatch.instance=null
-		return SubMeshDynamicBatch;
-	})(DynamicBatch)
-
-
-	/**
-	*@private
-	*<code>SubMeshStaticBatch</code> 类用于网格静态合并。
-	*/
-	//class laya.d3.graphics.SubMeshStaticBatch extends laya.d3.graphics.StaticBatch
-	var SubMeshStaticBatch=(function(_super){
-		function SubMeshStaticBatch(key,manager,rootOwner,vertexDeclaration){
-			this._vertexDeclaration=null;
-			this._currentBatchVertexCount=0;
-			this._currentBatchIndexCount=0;
-			this._indexBuffer=null;
-			SubMeshStaticBatch.__super.call(this,key,manager,rootOwner);
-			this._currentBatchVertexCount=0;
-			this._currentBatchIndexCount=0;
-			this._vertexDeclaration=vertexDeclaration;
-		}
-
-		__class(SubMeshStaticBatch,'laya.d3.graphics.SubMeshStaticBatch',_super);
-		var __proto=SubMeshStaticBatch.prototype;
-		/**
-		*@private
-		*/
-		__proto._getStaticBatchBakedVertexs=function(batchVertices,batchOffset,batchOwnerTransform,transform,render,subMesh){
-			var vertexBuffer=subMesh._vertexBuffer;
-			var vertexDeclaration=vertexBuffer.vertexDeclaration;
-			var positionOffset=vertexDeclaration.getVertexElementByUsage(0).offset / 4;
-			var normalElement=vertexDeclaration.getVertexElementByUsage(3);
-			var normalOffset=normalElement ? normalElement.offset / 4 :-1;
-			var colorElement=vertexDeclaration.getVertexElementByUsage(1);
-			var colorOffset=colorElement ? colorElement.offset / 4 :-1;
-			var uv0Element=vertexDeclaration.getVertexElementByUsage(2);
-			var uv0Offset=uv0Element ? uv0Element.offset / 4 :-1;
-			var uv1Element=vertexDeclaration.getVertexElementByUsage(15);
-			var uv1Offset=uv1Element ? uv1Element.offset / 4 :-1;
-			var tangentElement=vertexDeclaration.getVertexElementByUsage(5);
-			var sTangentOffset=tangentElement ? tangentElement.offset / 4 :-1;
-			var bakeVertexFloatCount=18;
-			var oriVertexFloatCount=vertexDeclaration.vertexStride / 4;
-			var oriVertexes=vertexBuffer.getData();
-			var worldMat;
-			if (batchOwnerTransform){
-				var rootMat=batchOwnerTransform.worldMatrix;
-				rootMat.invert(SubMeshStaticBatch._tempMatrix4x40);
-				worldMat=SubMeshStaticBatch._tempMatrix4x41;
-				Matrix4x4.multiply(SubMeshStaticBatch._tempMatrix4x40,transform.worldMatrix,worldMat);
-				}else {
-				worldMat=transform.worldMatrix;
-			};
-			var rotation=SubMeshStaticBatch._tempQuaternion0;
-			worldMat.decomposeTransRotScale(SubMeshStaticBatch._tempVector30,rotation,SubMeshStaticBatch._tempVector31);
-			var lightmapScaleOffset=render.lightmapScaleOffset;
-			var vertexStart=subMesh._vertexStart;
-			var vertexCount=subMesh._vertexCount;
-			for (var i=0;i < vertexCount;i++){
-				var oriOffset=(i+vertexStart)*oriVertexFloatCount;
-				var bakeOffset=(i+batchOffset)*bakeVertexFloatCount;
-				Utils3D.transformVector3ArrayToVector3ArrayCoordinate(oriVertexes,oriOffset+positionOffset,worldMat,batchVertices,bakeOffset+0);
-				if (normalOffset!==-1)
-					Utils3D.transformVector3ArrayByQuat(oriVertexes,oriOffset+normalOffset,rotation,batchVertices,bakeOffset+3);
-				var j=0,m=0;
-				var bakOff=bakeOffset+6;
-				if (colorOffset!==-1){
-					var oriOff=oriOffset+colorOffset;
-					for (j=0,m=4;j < m;j++)
-					batchVertices[bakOff+j]=oriVertexes[oriOff+j];
-					}else {
-					for (j=0,m=4;j < m;j++)
-					batchVertices[bakOff+j]=1.0;
-				}
-				if (uv0Offset!==-1){
-					var absUv0Offset=oriOffset+uv0Offset;
-					batchVertices[bakeOffset+10]=oriVertexes[absUv0Offset];
-					batchVertices[bakeOffset+11]=oriVertexes[absUv0Offset+1];
-				}
-				if (lightmapScaleOffset){
-					if (uv1Offset!==-1)
-						Utils3D.transformLightingMapTexcoordByUV1Array(oriVertexes,oriOffset+uv1Offset,lightmapScaleOffset,batchVertices,bakeOffset+12);
-					else
-					Utils3D.transformLightingMapTexcoordByUV0Array(oriVertexes,oriOffset+uv0Offset,lightmapScaleOffset,batchVertices,bakeOffset+12);
-				}
-				if (sTangentOffset!==-1){
-					var absSTanegntOffset=oriOffset+sTangentOffset;
-					batchVertices[bakeOffset+14]=oriVertexes[absSTanegntOffset];
-					batchVertices[bakeOffset+15]=oriVertexes[absSTanegntOffset+1];
-					batchVertices[bakeOffset+16]=oriVertexes[absSTanegntOffset+2];
-					batchVertices[bakeOffset+17]=oriVertexes[absSTanegntOffset+3];
-				}
-			}
-			return vertexCount;
-		}
-
-		/**
-		*@inheritDoc
-		*/
-		__proto._compareBatchRenderElement=function(a,b){
-			return (a)._batchIndexStart > (b)._batchIndexStart;
-		}
-
-		/**
-		*@private
-		*/
-		__proto.addTest=function(renderElement){
-			var vertexCount=0;
-			var subMeshVertexCount=(renderElement.geometry)._vertexCount;
-			vertexCount=this._currentBatchVertexCount+subMeshVertexCount;
-			if (vertexCount > 65535)
-				return false;
-			return true;
-		}
-
-		/**
-		*@private
-		*/
-		__proto.add=function(renderElement){
-			var oldStaticBatch=renderElement.staticBatch;
-			(oldStaticBatch)&& (oldStaticBatch.remove(),console.log("移除"));
-			var subMesh=renderElement.geometry;
-			var subMeshVertexCount=subMesh._vertexCount;
-			this._batchElements.push(renderElement);
-			renderElement.staticBatch=this;
-			this._currentBatchIndexCount+=subMesh._indexCount;
-			this._currentBatchVertexCount+=subMeshVertexCount;
-		}
-
-		/**
-		*@private
-		*/
-		__proto.remove=function(renderElement){
-			var subMesh=renderElement.geometry;
-			var index=this._batchElements.indexOf(renderElement);
-			if (index!==-1){
-				this._batchElements.splice(index,1);
-				renderElement.staticBatch=null;
-				var subMeshVertexCount=subMesh._vertexCount;
-				this._currentBatchIndexCount=this._currentBatchIndexCount-subMesh._indexCount;
-				this._currentBatchVertexCount=this._currentBatchVertexCount-subMeshVertexCount;
-			}
-		}
-
-		/**
-		*@inheritDoc
-		*/
-		__proto.finishInit=function(){
-			if (this._vertexBuffer){
-				this._vertexBuffer.destroy();
-				this._indexBuffer.destroy();
-			};
-			var batchVertexCount=0;
-			var batchIndexCount=0;
-			var floatStride=this._vertexDeclaration.vertexStride / 4;
-			var vertexDatas=new Float32Array(floatStride *this._currentBatchVertexCount);
-			var indexDatas=new Uint16Array(this._currentBatchIndexCount);
-			this._vertexBuffer=new VertexBuffer3D(this._vertexDeclaration.vertexStride *this._currentBatchVertexCount,0x88E4);
-			this._vertexBuffer.vertexDeclaration=this._vertexDeclaration;
-			this._indexBuffer=IndexBuffer3D.create("ushort",this._currentBatchIndexCount,0x88E4);
-			for (var i=0,n=this._batchElements.length;i < n;i++){
-				var renderElement=this._batchElements [i];
-				var subMesh=renderElement.geometry;
-				var subMeshVerCount=this._getStaticBatchBakedVertexs(vertexDatas,batchVertexCount,this.rootOwner ? this.rootOwner._transform :null,renderElement.transform,(renderElement.render),subMesh);
-				var subIndices=subMesh.getIndices();
-				var indexOffset=batchVertexCount-subMesh._vertexStart;
-				var indexEnd=batchIndexCount+subIndices.length;
-				renderElement.staticBatchIndexStart=batchIndexCount;
-				renderElement.staticBatchIndexEnd=indexEnd;
-				indexDatas.set(subIndices,batchIndexCount);
-				var k=0;
-				var isInvert=this.rootOwner ? (renderElement.transform._isFrontFaceInvert!==this.rootOwner.transform._isFrontFaceInvert):renderElement.transform._isFrontFaceInvert;
-				if (isInvert){
-					for (k=batchIndexCount;k < indexEnd;k+=3){
-						indexDatas[k]=indexOffset+indexDatas[k];
-						var index1=indexDatas[k+1];
-						var index2=indexDatas[k+2];
-						indexDatas[k+1]=indexOffset+index2;
-						indexDatas[k+2]=indexOffset+index1;
-					}
-					}else {
-					for (k=batchIndexCount;k < indexEnd;k+=3){
-						indexDatas[k]=indexOffset+indexDatas[k];
-						indexDatas[k+1]=indexOffset+indexDatas[k+1];
-						indexDatas[k+2]=indexOffset+indexDatas[k+2];
-					}
-				}
-				batchIndexCount+=subIndices.length;
-				batchVertexCount+=subMeshVerCount;
-			}
-			this._vertexBuffer.setData(vertexDatas);
-			this._indexBuffer.setData(indexDatas);
-			this._setVertexBuffer(this._vertexBuffer);
-			this._setVertexBuffer(this._vertexBuffer);
-		}
-
-		/**
-		*@inheritDoc
-		*/
-		__proto._prepareRender=function(state){
-			return true;
-		}
-
-		/**
-		*@inheritDoc
-		*/
-		__proto._render=function(state){
-			this._indexBuffer.bind();
-			var batchElementList=(state.renderElement).staticBatchElementList;
-			var from=0;
-			var end=0;
-			for (var i=1,n=batchElementList.length;i < n;i++){
-				var lastElement=batchElementList[i-1];
-				var element=batchElementList[i];
-				if (lastElement.staticBatchIndexEnd===element.staticBatchIndexStart){
-					end++;
-					continue ;
-					}else {
-					var start=batchElementList[from].staticBatchIndexStart;
-					var indexCount=batchElementList[end].staticBatchIndexEnd-start;
-					LayaGL.instance.drawElements(0x0004,indexCount,0x1403,start *2);
-					from=++end;
-					Stat.drawCall++;
-					Stat.trianglesFaces+=indexCount / 3;
-				}
-			};
-			var start=batchElementList[from].staticBatchIndexStart;
-			var indexCount=batchElementList[end].staticBatchIndexEnd-start;
-			LayaGL.instance.drawElements(0x0004,indexCount,0x1403,start *2);
-			Stat.drawCall++;
-			Stat.trianglesFaces+=indexCount / 3;
-		}
-
-		/**
-		*@inheritDoc
-		*/
-		__proto.dispose=function(){
-			_super.prototype.dispose.call(this);
-			this._vertexDeclaration=null;
-			this._vertexBuffer.destroy();
-			this._indexBuffer.destroy();
-		}
-
-		__static(SubMeshStaticBatch,
-		['_tempVector30',function(){return this._tempVector30=new Vector3();},'_tempVector31',function(){return this._tempVector31=new Vector3();},'_tempQuaternion0',function(){return this._tempQuaternion0=new Quaternion();},'_tempMatrix4x40',function(){return this._tempMatrix4x40=new Matrix4x4();},'_tempMatrix4x41',function(){return this._tempMatrix4x41=new Matrix4x4();}
-		]);
-		return SubMeshStaticBatch;
-	})(StaticBatch)
 
 
 	/**
@@ -58200,6 +57018,7 @@ var Laya=window.Laya=(function(window,document){
 				this.resetLayoutX();
 				this.resetLayoutY();
 			}
+			this.event("resize");
 		}
 
 		/**
@@ -60224,971 +59043,6 @@ var Laya=window.Laya=(function(window,document){
 
 
 	/**
-	*骨骼动画由<code>Templet</code>，<code>AnimationPlayer</code>，<code>Skeleton</code>三部分组成。
-	*/
-	//class laya.ani.bone.Skeleton extends laya.display.Sprite
-	var Skeleton=(function(_super){
-		function Skeleton(templet,aniMode){
-			this._templet=null;
-			this._player=null;
-			this._curOriginalData=null;
-			this._boneMatrixArray=[];
-			this._lastTime=0;
-			this._currAniName=null;
-			this._currAniIndex=-1;
-			this._pause=true;
-			this._aniClipIndex=-1;
-			this._clipIndex=-1;
-			this._skinIndex=0;
-			this._skinName="default";
-			this._aniMode=0;
-			this._graphicsCache=null;
-			this._boneSlotDic=null;
-			this._bindBoneBoneSlotDic=null;
-			this._boneSlotArray=null;
-			this._index=-1;
-			this._total=-1;
-			this._indexControl=false;
-			this._aniPath=null;
-			this._texturePath=null;
-			this._complete=null;
-			this._loadAniMode=0;
-			this._yReverseMatrix=null;
-			this._ikArr=null;
-			this._tfArr=null;
-			this._pathDic=null;
-			this._rootBone=null;
-			this._boneList=null;
-			this._aniSectionDic=null;
-			this._eventIndex=0;
-			this._drawOrderIndex=0;
-			this._drawOrder=null;
-			this._lastAniClipIndex=-1;
-			this._lastUpdateAniClipIndex=-1;
-			Skeleton.__super.call(this);
-			(aniMode===void 0)&& (aniMode=0);
-			if (templet)this.init(templet,aniMode);
-		}
-
-		__class(Skeleton,'laya.ani.bone.Skeleton',_super);
-		var __proto=Skeleton.prototype;
-		/**
-		*初始化动画
-		*@param templet 模板
-		*@param aniMode 动画模式
-		*<table border=1>
-		*<tr><th>模式</th><th>描述</th></tr>
-		*<tr>
-		*<td>0</td> <td>使用模板缓冲的数据，模板缓冲的数据，不允许修改（内存开销小，计算开销小，不支持换装）</td>
-		*</tr>
-		*<tr>
-		*<td>1</td> <td>使用动画自己的缓冲区，每个动画都会有自己的缓冲区，相当耗费内存 （内存开销大，计算开销小，支持换装）</td>
-		*</tr>
-		*<tr>
-		*<td>2</td> <td>使用动态方式，去实时去画（内存开销小，计算开销大，支持换装,不建议使用）</td>
-		*</tr>
-		*</table>
-		*/
-		__proto.init=function(templet,aniMode){
-			(aniMode===void 0)&& (aniMode=0);
-			var i=0,n=0;
-			if (aniMode==1){
-				this._graphicsCache=[];
-				for (i=0,n=templet.getAnimationCount();i < n;i++){
-					this._graphicsCache.push([]);
-				}
-			}
-			this._yReverseMatrix=templet.yReverseMatrix;
-			this._aniMode=aniMode;
-			this._templet=templet;
-			this._player=new AnimationPlayer();
-			this._player.cacheFrameRate=templet.rate;
-			this._player.templet=templet;
-			this._player.play();
-			this._parseSrcBoneMatrix();
-			this._boneList=templet.mBoneArr;
-			this._rootBone=templet.mRootBone;
-			this._aniSectionDic=templet.aniSectionDic;
-			if (templet.ikArr.length > 0){
-				this._ikArr=[];
-				for (i=0,n=templet.ikArr.length;i < n;i++){
-					this._ikArr.push(new IkConstraint(templet.ikArr[i],this._boneList));
-				}
-			}
-			if (templet.pathArr.length > 0){
-				var tPathData;
-				var tPathConstraint;
-				if (this._pathDic==null)this._pathDic={};
-				var tBoneSlot;
-				for (i=0,n=templet.pathArr.length;i < n;i++){
-					tPathData=templet.pathArr[i];
-					tPathConstraint=new PathConstraint(tPathData,this._boneList);
-					tBoneSlot=this._boneSlotDic[tPathData.name];
-					if (tBoneSlot){
-						tPathConstraint=new PathConstraint(tPathData,this._boneList);
-						tPathConstraint.target=tBoneSlot;
-					}
-					this._pathDic[tPathData.name]=tPathConstraint;
-				}
-			}
-			if (templet.tfArr.length > 0){
-				this._tfArr=[];
-				for (i=0,n=templet.tfArr.length;i < n;i++){
-					this._tfArr.push(new TfConstraint(templet.tfArr[i],this._boneList));
-				}
-			}
-			if (templet.skinDataArray.length > 0){
-				var tSkinData=this._templet.skinDataArray[this._skinIndex];
-				this._skinName=tSkinData.name;
-			}
-			this._player.on("played",this,this._onPlay);
-			this._player.on("stopped",this,this._onStop);
-			this._player.on("paused",this,this._onPause);
-		}
-
-		/**
-		*通过加载直接创建动画
-		*@param path 要加载的动画文件路径
-		*@param complete 加载完成的回调函数
-		*@param aniMode 与<code>Skeleton.init</code>的<code>aniMode</code>作用一致
-		*/
-		__proto.load=function(path,complete,aniMode){
-			(aniMode===void 0)&& (aniMode=0);
-			this._aniPath=path;
-			this._complete=complete;
-			this._loadAniMode=aniMode;
-			Laya.loader.load([{url:path,type:"arraybuffer"}],Handler.create(this,this._onLoaded));
-		}
-
-		/**
-		*加载完成
-		*/
-		__proto._onLoaded=function(){
-			var arraybuffer=Loader.getRes(this._aniPath);
-			if (arraybuffer==null)return;
-			if (Templet.TEMPLET_DICTIONARY==null){
-				Templet.TEMPLET_DICTIONARY={};
-			};
-			var tFactory;
-			tFactory=Templet.TEMPLET_DICTIONARY[this._aniPath];
-			if (tFactory){
-				if (tFactory.isParseFail){
-					this._parseFail();
-					}else{
-					if (tFactory.isParserComplete){
-						this._parseComplete();
-						}else{
-						tFactory.on("complete",this,this._parseComplete);
-						tFactory.on("error",this,this._parseFail);
-					}
-				}
-				}else {
-				tFactory=new Templet();
-				tFactory.url=this._aniPath;
-				Templet.TEMPLET_DICTIONARY[this._aniPath]=tFactory;
-				tFactory.on("complete",this,this._parseComplete);
-				tFactory.on("error",this,this._parseFail);
-				tFactory.isParserComplete=false;
-				tFactory.parseData(null,arraybuffer);
-			}
-		}
-
-		/**
-		*解析完成
-		*/
-		__proto._parseComplete=function(){
-			var tTemple=Templet.TEMPLET_DICTIONARY[this._aniPath];
-			if (tTemple){
-				this.init(tTemple,this._loadAniMode);
-				this.play(0,true);
-			}
-			this._complete && this._complete.runWith(this);
-		}
-
-		/**
-		*解析失败
-		*/
-		__proto._parseFail=function(){
-			console.log("[Error]:"+this._aniPath+"解析失败");
-		}
-
-		/**
-		*传递PLAY事件
-		*/
-		__proto._onPlay=function(){
-			this.event("played");
-		}
-
-		/**
-		*传递STOP事件
-		*/
-		__proto._onStop=function(){
-			var tEventData;
-			var tEventAniArr=this._templet.eventAniArr;
-			var tEventArr=tEventAniArr[this._aniClipIndex];
-			if (tEventArr && this._eventIndex < tEventArr.length){
-				for (;this._eventIndex < tEventArr.length;this._eventIndex++){
-					tEventData=tEventArr[this._eventIndex];
-					if (tEventData.time >=this._player.playStart && tEventData.time <=this._player.playEnd){
-						this.event("label",tEventData);
-					}
-				}
-			}
-			this._eventIndex=0;
-			this._drawOrder=null;
-			this.event("stopped");
-		}
-
-		/**
-		*传递PAUSE事件
-		*/
-		__proto._onPause=function(){
-			this.event("paused");
-		}
-
-		/**
-		*创建骨骼的矩阵，保存每次计算的最终结果
-		*/
-		__proto._parseSrcBoneMatrix=function(){
-			var i=0,n=0;
-			n=this._templet.srcBoneMatrixArr.length;
-			for (i=0;i < n;i++){
-				this._boneMatrixArray.push(new Matrix());
-			}
-			if (this._aniMode==0){
-				this._boneSlotDic=this._templet.boneSlotDic;
-				this._bindBoneBoneSlotDic=this._templet.bindBoneBoneSlotDic;
-				this._boneSlotArray=this._templet.boneSlotArray;
-				}else {
-				if (this._boneSlotDic==null)this._boneSlotDic={};
-				if (this._bindBoneBoneSlotDic==null)this._bindBoneBoneSlotDic={};
-				if (this._boneSlotArray==null)this._boneSlotArray=[];
-				var tArr=this._templet.boneSlotArray;
-				var tBS;
-				var tBSArr;
-				for (i=0,n=tArr.length;i < n;i++){
-					tBS=tArr[i];
-					tBSArr=this._bindBoneBoneSlotDic[tBS.parent];
-					if (tBSArr==null){
-						this._bindBoneBoneSlotDic[tBS.parent]=tBSArr=[];
-					}
-					this._boneSlotDic[tBS.name]=tBS=tBS.copy();
-					tBSArr.push(tBS);
-					this._boneSlotArray.push(tBS);
-				}
-			}
-		}
-
-		__proto._emitMissedEvents=function(startTime,endTime,startIndex){
-			(startIndex===void 0)&& (startIndex=0);
-			var tEventAniArr=this._templet.eventAniArr;
-			var tEventArr=tEventAniArr[this._player.currentAnimationClipIndex];
-			if (tEventArr){
-				var i=0,len=0;
-				var tEventData;
-				len=tEventArr.length;
-				for (i=startIndex;i < len;i++){
-					tEventData=tEventArr[i];
-					if (tEventData.time >=this._player.playStart && tEventData.time <=this._player.playEnd){
-						this.event("label",tEventData);
-					}
-				}
-			}
-		}
-
-		/**
-		*更新动画
-		*@param autoKey true为正常更新，false为index手动更新
-		*/
-		__proto._update=function(autoKey){
-			(autoKey===void 0)&& (autoKey=true);
-			if (this._pause)return;
-			if (autoKey && this._indexControl){
-				return;
-			};
-			var tCurrTime=Laya.timer.currTimer;
-			var preIndex=this._player.currentKeyframeIndex;
-			var dTime=tCurrTime-this._lastTime;
-			if (autoKey){
-				this._player._update(dTime);
-				}else{
-				preIndex=-1;
-			}
-			this._lastTime=tCurrTime;
-			if (!this._player)return;
-			this._index=this._clipIndex=this._player.currentKeyframeIndex;
-			if (this._index < 0)return;
-			if (dTime>0&&this._clipIndex==preIndex&&this._lastUpdateAniClipIndex==this._aniClipIndex){
-				return;
-			}
-			this._lastUpdateAniClipIndex=this._aniClipIndex;
-			if (preIndex > this._clipIndex&&this._eventIndex!=0){
-				this._emitMissedEvents(this._player.playStart,this._player.playEnd,this._eventIndex);
-				this._eventIndex=0;
-			};
-			var tEventData;
-			var tEventAniArr=this._templet.eventAniArr;
-			var tEventArr=tEventAniArr[this._aniClipIndex];
-			if (tEventArr && this._eventIndex < tEventArr.length){
-				tEventData=tEventArr[this._eventIndex];
-				if (tEventData.time >=this._player.playStart && tEventData.time <=this._player.playEnd){
-					if (this._player.currentPlayTime >=tEventData.time){
-						this.event("label",tEventData);
-						this._eventIndex++;
-					}
-					}else {
-					this._eventIndex++;
-				}
-			};
-			var tGraphics;
-			if (this._aniMode==0){
-				tGraphics=this._templet.getGrahicsDataWithCache(this._aniClipIndex,this._clipIndex);
-				if (tGraphics){
-					if (this.graphics !=tGraphics){
-						this.graphics=tGraphics;
-					}
-					return;
-					}else{
-				}
-				}else if (this._aniMode==1){
-				tGraphics=this._getGrahicsDataWithCache(this._aniClipIndex,this._clipIndex);
-				if (tGraphics){
-					if (this.graphics !=tGraphics){
-						this.graphics=tGraphics;
-					}
-					return;
-					}else{
-				}
-			}
-			this._createGraphics();
-		}
-
-		/**
-		*@private
-		*创建grahics图像
-		*/
-		__proto._createGraphics=function(_clipIndex){
-			(_clipIndex===void 0)&& (_clipIndex=-1);
-			if (_clipIndex==-1)_clipIndex=this._clipIndex;
-			var curTime=_clipIndex *this._player.cacheFrameRateInterval;
-			var tDrawOrderData;
-			var tDrawOrderAniArr=this._templet.drawOrderAniArr;
-			var tDrawOrderArr=tDrawOrderAniArr[this._aniClipIndex];
-			if (tDrawOrderArr && tDrawOrderArr.length > 0){
-				this._drawOrderIndex=0;
-				tDrawOrderData=tDrawOrderArr[this._drawOrderIndex];
-				while (curTime >=tDrawOrderData.time){
-					this._drawOrder=tDrawOrderData.drawOrder;
-					this._drawOrderIndex++;
-					if (this._drawOrderIndex >=tDrawOrderArr.length){
-						break ;
-					}
-					tDrawOrderData=tDrawOrderArr[this._drawOrderIndex];
-				}
-			};
-			var tGraphics;
-			if (this._aniMode==0 || this._aniMode==1){
-				this.graphics=new GraphicsAni();
-				}else {
-				if ((this.graphics instanceof laya.ani.GraphicsAni )){
-					this.graphics.clear(true);
-					}else {
-					this.graphics=new GraphicsAni();
-				}
-			}
-			tGraphics=this.graphics;
-			var bones=this._templet.getNodes(this._aniClipIndex);
-			this._templet.getOriginalData(this._aniClipIndex,this._curOriginalData,this._player._fullFrames[this._aniClipIndex],_clipIndex,curTime);
-			var tSectionArr=this._aniSectionDic[this._aniClipIndex];
-			var tParentMatrix;
-			var tStartIndex=0;
-			var i=0,j=0,k=0,n=0;
-			var tDBBoneSlot;
-			var tDBBoneSlotArr;
-			var tParentTransform;
-			var tSrcBone;
-			var tResultTransform;
-			var boneCount=this._templet.srcBoneMatrixArr.length;
-			for (i=0,n=tSectionArr[0];i < boneCount;i++){
-				tSrcBone=this._boneList[i];
-				tParentTransform=this._templet.srcBoneMatrixArr[i];
-				tResultTransform=tSrcBone.resultTransform;
-				tResultTransform.scX=tParentTransform.scX *this._curOriginalData[tStartIndex++];
-				tResultTransform.skX=tParentTransform.skX+this._curOriginalData[tStartIndex++];
-				tResultTransform.skY=tParentTransform.skY+this._curOriginalData[tStartIndex++];
-				tResultTransform.scY=tParentTransform.scY *this._curOriginalData[tStartIndex++];
-				tResultTransform.x=tParentTransform.x+this._curOriginalData[tStartIndex++];
-				tResultTransform.y=tParentTransform.y+this._curOriginalData[tStartIndex++];
-				if (this._templet.tMatrixDataLen===8){
-					tResultTransform.skewX=tParentTransform.skewX+this._curOriginalData[tStartIndex++];
-					tResultTransform.skewY=tParentTransform.skewY+this._curOriginalData[tStartIndex++];
-				}
-			};
-			var tSlotDic={};
-			var tSlotAlphaDic={};
-			var tBoneData;
-			for (n+=tSectionArr[1];i < n;i++){
-				tBoneData=bones[i];
-				tSlotDic[tBoneData.name]=this._curOriginalData[tStartIndex++];
-				tSlotAlphaDic[tBoneData.name]=this._curOriginalData[tStartIndex++];
-				tStartIndex+=4;
-			};
-			var tBendDirectionDic={};
-			var tMixDic={};
-			for (n+=tSectionArr[2];i < n;i++){
-				tBoneData=bones[i];
-				tBendDirectionDic[tBoneData.name]=this._curOriginalData[tStartIndex++];
-				tMixDic[tBoneData.name]=this._curOriginalData[tStartIndex++];
-				tStartIndex+=4;
-			}
-			if (this._pathDic){
-				var tPathConstraint;
-				for (n+=tSectionArr[3];i < n;i++){
-					tBoneData=bones[i];
-					tPathConstraint=this._pathDic[tBoneData.name];
-					if (tPathConstraint){
-						var tByte=new Byte(tBoneData.extenData);
-						switch(tByte.getByte()){
-							case 1:
-								tPathConstraint.position=this._curOriginalData[tStartIndex++];
-								break ;
-							case 2:
-								tPathConstraint.spacing=this._curOriginalData[tStartIndex++];
-								break ;
-							case 3:
-								tPathConstraint.rotateMix=this._curOriginalData[tStartIndex++];
-								tPathConstraint.translateMix=this._curOriginalData[tStartIndex++];
-								break ;
-							}
-					}
-				}
-			}
-			if (this._yReverseMatrix){
-				this._rootBone.update(this._yReverseMatrix);
-				}else {
-				this._rootBone.update(Matrix.TEMP.identity());
-			}
-			if (this._ikArr){
-				var tIkConstraint;
-				for (i=0,n=this._ikArr.length;i < n;i++){
-					tIkConstraint=this._ikArr[i];
-					if (tBendDirectionDic.hasOwnProperty(tIkConstraint.name)){
-						tIkConstraint.bendDirection=tBendDirectionDic[tIkConstraint.name];
-					}
-					if (tMixDic.hasOwnProperty(tIkConstraint.name)){
-						tIkConstraint.mix=tMixDic[tIkConstraint.name]
-					}
-					tIkConstraint.apply();
-				}
-			}
-			if (this._pathDic){
-				for (var tPathStr in this._pathDic){
-					tPathConstraint=this._pathDic[tPathStr];
-					tPathConstraint.apply(this._boneList,tGraphics);
-				}
-			}
-			if (this._tfArr){
-				var tTfConstraint;
-				for (i=0,k=this._tfArr.length;i < k;i++){
-					tTfConstraint=this._tfArr[i];
-					tTfConstraint.apply();
-				}
-			}
-			for (i=0,k=this._boneList.length;i < k;i++){
-				tSrcBone=this._boneList[i];
-				tDBBoneSlotArr=this._bindBoneBoneSlotDic[tSrcBone.name];
-				tSrcBone.resultMatrix.copyTo(this._boneMatrixArray[i]);
-				if (tDBBoneSlotArr){
-					for (j=0,n=tDBBoneSlotArr.length;j < n;j++){
-						tDBBoneSlot=tDBBoneSlotArr[j];
-						if (tDBBoneSlot){
-							tDBBoneSlot.setParentMatrix(tSrcBone.resultMatrix);
-						}
-					}
-				}
-			};
-			var tDeformDic={};
-			var tDeformAniArr=this._templet.deformAniArr;
-			var tDeformAniData;
-			var tDeformSlotData;
-			var tDeformSlotDisplayData;
-			if (tDeformAniArr && tDeformAniArr.length > 0){
-				if (this._lastAniClipIndex !=this._aniClipIndex){
-					this._lastAniClipIndex=this._aniClipIndex;
-					for (i=0,n=this._boneSlotArray.length;i < n;i++){
-						tDBBoneSlot=this._boneSlotArray[i];
-						tDBBoneSlot.deformData=null;
-					}
-				};
-				var tSkinDeformAni=tDeformAniArr[this._aniClipIndex];
-				tDeformAniData=(tSkinDeformAni["default"]);
-				this._setDeform(tDeformAniData,tDeformDic,this._boneSlotArray,curTime);
-				var tSkin;
-				for (tSkin in tSkinDeformAni){
-					if (tSkin!="default"&&tSkin!=this._skinName){
-						tDeformAniData=tSkinDeformAni [tSkin];
-						this._setDeform(tDeformAniData,tDeformDic,this._boneSlotArray,curTime);
-					}
-				}
-				if (this._skinName !="default"){
-					tDeformAniData=(tSkinDeformAni[this._skinName]);
-					this._setDeform(tDeformAniData,tDeformDic,this._boneSlotArray,curTime);
-				}
-			};
-			var tSlotData2;
-			var tSlotData3;
-			var tObject;
-			if (this._drawOrder){
-				for (i=0,n=this._drawOrder.length;i < n;i++){
-					tDBBoneSlot=this._boneSlotArray[this._drawOrder[i]];
-					tSlotData2=tSlotDic[tDBBoneSlot.name];
-					tSlotData3=tSlotAlphaDic[tDBBoneSlot.name];
-					if (isNaN(tSlotData3))tSlotData3=1;
-					if (tSlotData3 < 0.01)continue ;
-					if (tSlotData3!=1){
-						tGraphics.save();
-						tGraphics.alpha(tSlotData3);
-					}
-					if (!isNaN(tSlotData2)&&tSlotData2!=-2){
-						if (this._templet.attachmentNames){
-							tDBBoneSlot.showDisplayByName(this._templet.attachmentNames[tSlotData2]);
-							}else {
-							tDBBoneSlot.showDisplayByIndex(tSlotData2);
-						}
-					}
-					if (tDeformDic[this._drawOrder[i]]){
-						tObject=tDeformDic[this._drawOrder[i]];
-						if (tDBBoneSlot.currDisplayData && tObject[tDBBoneSlot.currDisplayData.attachmentName]){
-							tDBBoneSlot.deformData=tObject[tDBBoneSlot.currDisplayData.attachmentName];
-							}else {
-							tDBBoneSlot.deformData=null;
-						}
-						}else {
-						tDBBoneSlot.deformData=null;
-					}
-					tDBBoneSlot.draw(tGraphics,this._boneMatrixArray,this._aniMode==2,tSlotData3);
-					if (tSlotData3!=1){
-						tGraphics.restore();
-					}
-				}
-				}else {
-				for (i=0,n=this._boneSlotArray.length;i < n;i++){
-					tDBBoneSlot=this._boneSlotArray[i];
-					tSlotData2=tSlotDic[tDBBoneSlot.name];
-					tSlotData3=tSlotAlphaDic[tDBBoneSlot.name];
-					if (isNaN(tSlotData3))tSlotData3=1;
-					if (tSlotData3 < 0.01)continue ;
-					if (tSlotData3!=1){
-						tGraphics.save();
-						tGraphics.alpha(tSlotData3);
-					}
-					if (!isNaN(tSlotData2)&&tSlotData2!=-2){
-						if (this._templet.attachmentNames){
-							tDBBoneSlot.showDisplayByName(this._templet.attachmentNames[tSlotData2]);
-							}else {
-							tDBBoneSlot.showDisplayByIndex(tSlotData2);
-						}
-					}
-					if (tDeformDic[i]){
-						tObject=tDeformDic[i];
-						if (tDBBoneSlot.currDisplayData && tObject[tDBBoneSlot.currDisplayData.attachmentName]){
-							tDBBoneSlot.deformData=tObject[tDBBoneSlot.currDisplayData.attachmentName];
-							}else {
-							tDBBoneSlot.deformData=null;
-						}
-						}else {
-						tDBBoneSlot.deformData=null;
-					}
-					tDBBoneSlot.draw(tGraphics,this._boneMatrixArray,this._aniMode==2,tSlotData3);
-					if (tSlotData3!=1){
-						tGraphics.restore();
-					}
-				}
-			}
-			if (this._aniMode==0){
-				this._templet.setGrahicsDataWithCache(this._aniClipIndex,_clipIndex,tGraphics);
-				this._checkIsAllParsed(this._aniClipIndex);
-				}else if (this._aniMode==1){
-				this._setGrahicsDataWithCache(this._aniClipIndex,_clipIndex,tGraphics);
-			}
-		}
-
-		__proto._checkIsAllParsed=function(_aniClipIndex){
-			var i=0,len=0;
-			len=Math.floor(0.01+this._templet.getAniDuration(this._player.currentAnimationClipIndex)/ 1000 *this._player.cacheFrameRate);
-			for (i=0;i < len;i++){
-				if (!this._templet.getGrahicsDataWithCache(_aniClipIndex,i))return;
-			}
-			if (!this._templet.getGrahicsDataWithCache(_aniClipIndex,len)){
-				this._createGraphics(len);
-				return;
-			}
-			this._templet.deleteAniData(_aniClipIndex);
-		}
-
-		/**
-		*设置deform数据
-		*@param tDeformAniData
-		*@param tDeformDic
-		*@param _boneSlotArray
-		*@param curTime
-		*/
-		__proto._setDeform=function(tDeformAniData,tDeformDic,_boneSlotArray,curTime){
-			if (!tDeformAniData)return;
-			var tDeformSlotData;
-			var tDeformSlotDisplayData;
-			var tDBBoneSlot;
-			var i=0,n=0,j=0;
-			if (tDeformAniData){
-				for (i=0,n=tDeformAniData.deformSlotDataList.length;i < n;i++){
-					tDeformSlotData=tDeformAniData.deformSlotDataList[i];
-					for (j=0;j < tDeformSlotData.deformSlotDisplayList.length;j++){
-						tDeformSlotDisplayData=tDeformSlotData.deformSlotDisplayList[j];
-						tDBBoneSlot=_boneSlotArray[tDeformSlotDisplayData.slotIndex];
-						tDeformSlotDisplayData.apply(curTime,tDBBoneSlot);
-						if (!tDeformDic[tDeformSlotDisplayData.slotIndex]){
-							tDeformDic[tDeformSlotDisplayData.slotIndex]={};
-						}
-						tDeformDic[tDeformSlotDisplayData.slotIndex][tDeformSlotDisplayData.attachment]=tDeformSlotDisplayData.deformData;
-					}
-				}
-			}
-		}
-
-		/**
-		*得到当前动画的数量
-		*@return 当前动画的数量
-		*/
-		__proto.getAnimNum=function(){
-			return this._templet.getAnimationCount();
-		}
-
-		/**
-		*得到指定动画的名字
-		*@param index 动画的索引
-		*/
-		__proto.getAniNameByIndex=function(index){
-			return this._templet.getAniNameByIndex(index);
-		}
-
-		/**
-		*通过名字得到插槽的引用
-		*@param name 动画的名字
-		*@return 插槽的引用
-		*/
-		__proto.getSlotByName=function(name){
-			return this._boneSlotDic[name];
-		}
-
-		/**
-		*通过名字显示一套皮肤
-		*@param name 皮肤的名字
-		*@param freshSlotIndex 是否将插槽纹理重置到初始化状态
-		*/
-		__proto.showSkinByName=function(name,freshSlotIndex){
-			(freshSlotIndex===void 0)&& (freshSlotIndex=true);
-			this.showSkinByIndex(this._templet.getSkinIndexByName(name),freshSlotIndex);
-		}
-
-		/**
-		*通过索引显示一套皮肤
-		*@param skinIndex 皮肤索引
-		*@param freshSlotIndex 是否将插槽纹理重置到初始化状态
-		*/
-		__proto.showSkinByIndex=function(skinIndex,freshSlotIndex){
-			(freshSlotIndex===void 0)&& (freshSlotIndex=true);
-			for (var i=0;i < this._boneSlotArray.length;i++){
-				(this._boneSlotArray [i]).showSlotData(null,freshSlotIndex);
-			}
-			if (this._templet.showSkinByIndex(this._boneSlotDic,skinIndex,freshSlotIndex)){
-				var tSkinData=this._templet.skinDataArray[skinIndex];
-				this._skinIndex=skinIndex;
-				this._skinName=tSkinData.name;
-			}
-			this._clearCache();
-		}
-
-		/**
-		*设置某插槽的皮肤
-		*@param slotName 插槽名称
-		*@param index 插糟皮肤的索引
-		*/
-		__proto.showSlotSkinByIndex=function(slotName,index){
-			if (this._aniMode==0)return;
-			var tBoneSlot=this.getSlotByName(slotName);
-			if (tBoneSlot){
-				tBoneSlot.showDisplayByIndex(index);
-			}
-			this._clearCache();
-		}
-
-		/**
-		*设置某插槽的皮肤
-		*@param slotName 插槽名称
-		*@param name 皮肤名称
-		*/
-		__proto.showSlotSkinByName=function(slotName,name){
-			if (this._aniMode==0)return;
-			var tBoneSlot=this.getSlotByName(slotName);
-			if (tBoneSlot){
-				tBoneSlot.showDisplayByName(name);
-			}
-			this._clearCache();
-		}
-
-		/**
-		*替换插槽贴图名
-		*@param slotName 插槽名称
-		*@param oldName 要替换的贴图名
-		*@param newName 替换后的贴图名
-		*/
-		__proto.replaceSlotSkinName=function(slotName,oldName,newName){
-			if (this._aniMode==0)return;
-			var tBoneSlot=this.getSlotByName(slotName);
-			if (tBoneSlot){
-				tBoneSlot.replaceDisplayByName(oldName,newName);
-			}
-			this._clearCache();
-		}
-
-		/**
-		*替换插槽的贴图索引
-		*@param slotName 插槽名称
-		*@param oldIndex 要替换的索引
-		*@param newIndex 替换后的索引
-		*/
-		__proto.replaceSlotSkinByIndex=function(slotName,oldIndex,newIndex){
-			if (this._aniMode==0)return;
-			var tBoneSlot=this.getSlotByName(slotName);
-			if (tBoneSlot){
-				tBoneSlot.replaceDisplayByIndex(oldIndex,newIndex);
-			}
-			this._clearCache();
-		}
-
-		/**
-		*设置自定义皮肤
-		*@param name 插糟的名字
-		*@param texture 自定义的纹理
-		*/
-		__proto.setSlotSkin=function(slotName,texture){
-			if (this._aniMode==0)return;
-			var tBoneSlot=this.getSlotByName(slotName);
-			if (tBoneSlot){
-				tBoneSlot.replaceSkin(texture);
-			}
-			this._clearCache();
-		}
-
-		/**
-		*换装的时候，需要清一下缓冲区
-		*/
-		__proto._clearCache=function(){
-			if (this._aniMode==1){
-				for (var i=0,n=this._graphicsCache.length;i < n;i++){
-					this._graphicsCache[i].length=0;
-				}
-			}
-		}
-
-		/**
-		*播放动画
-		*
-		*@param nameOrIndex 动画名字或者索引
-		*@param loop 是否循环播放
-		*@param force false,如果要播的动画跟上一个相同就不生效,true,强制生效
-		*@param start 起始时间
-		*@param end 结束时间
-		*@param freshSkin 是否刷新皮肤数据
-		*/
-		__proto.play=function(nameOrIndex,loop,force,start,end,freshSkin){
-			(force===void 0)&& (force=true);
-			(start===void 0)&& (start=0);
-			(end===void 0)&& (end=0);
-			(freshSkin===void 0)&& (freshSkin=true);
-			this._indexControl=false;
-			var index=-1;
-			var duration=NaN;
-			if (loop){
-				duration=2147483647;
-				}else {
-				duration=0;
-			}
-			if ((typeof nameOrIndex=='string')){
-				for (var i=0,n=this._templet.getAnimationCount();i < n;i++){
-					var animation=this._templet.getAnimation(i);
-					if (animation && nameOrIndex==animation.name){
-						index=i;
-						break ;
-					}
-				}
-				}else {
-				index=nameOrIndex;
-			}
-			if (index >-1 && index < this.getAnimNum()){
-				this._aniClipIndex=index;
-				if (force || this._pause || this._currAniIndex !=index){
-					this._currAniIndex=index;
-					this._curOriginalData=new Float32Array(this._templet.getTotalkeyframesLength(index));
-					this._drawOrder=null;
-					this._eventIndex=0;
-					this._player.play(index,this._player.playbackRate,duration,start,end);
-					if(freshSkin)
-						this._templet.showSkinByIndex(this._boneSlotDic,this._skinIndex);
-					if (this._pause){
-						this._pause=false;
-						this._lastTime=Browser.now();
-						Laya.stage.frameLoop(1,this,this._update,null,true);
-					}
-					this._update();
-				}
-			}
-		}
-
-		/**
-		*停止动画
-		*/
-		__proto.stop=function(){
-			if (!this._pause){
-				this._pause=true;
-				if (this._player){
-					this._player.stop(true);
-				}
-				Laya.timer.clear(this,this._update);
-			}
-		}
-
-		/**
-		*设置动画播放速率
-		*@param value 1为标准速率
-		*/
-		__proto.playbackRate=function(value){
-			if (this._player){
-				this._player.playbackRate=value;
-			}
-		}
-
-		/**
-		*暂停动画的播放
-		*/
-		__proto.paused=function(){
-			if (!this._pause){
-				this._pause=true;
-				if (this._player){
-					this._player.paused=true;
-				}
-				Laya.timer.clear(this,this._update);
-			}
-		}
-
-		/**
-		*恢复动画的播放
-		*/
-		__proto.resume=function(){
-			this._indexControl=false;
-			if (this._pause){
-				this._pause=false;
-				if (this._player){
-					this._player.paused=false;
-				}
-				this._lastTime=Browser.now();
-				Laya.stage.frameLoop(1,this,this._update,null,true);
-			}
-		}
-
-		/**
-		*@private
-		*得到缓冲数据
-		*@param aniIndex
-		*@param frameIndex
-		*@return
-		*/
-		__proto._getGrahicsDataWithCache=function(aniIndex,frameIndex){
-			return this._graphicsCache[aniIndex][frameIndex];
-		}
-
-		/**
-		*@private
-		*保存缓冲grahpics
-		*@param aniIndex
-		*@param frameIndex
-		*@param graphics
-		*/
-		__proto._setGrahicsDataWithCache=function(aniIndex,frameIndex,graphics){
-			this._graphicsCache[aniIndex][frameIndex]=graphics;
-		}
-
-		/**
-		*销毁当前动画
-		*/
-		__proto.destroy=function(destroyChild){
-			(destroyChild===void 0)&& (destroyChild=true);
-			_super.prototype.destroy.call(this,destroyChild);
-			this._templet=null;
-			if(this._player)this._player.offAll();
-			this._player=null;
-			this._curOriginalData=null;
-			this._boneMatrixArray.length=0;
-			this._lastTime=0;
-			Laya.timer.clear(this,this._update);
-		}
-
-		/**
-		*设置动画路径
-		*/
-		/**
-		*得到资源的URL
-		*/
-		__getset(0,__proto,'url',function(){
-			return this._aniPath;
-			},function(path){
-			this.load(path);
-		});
-
-		/**
-		*@private
-		*设置帧索引
-		*/
-		/**
-		*@private
-		*得到帧索引
-		*/
-		__getset(0,__proto,'index',function(){
-			return this._index;
-			},function(value){
-			if (this.player){
-				this._index=value;
-				this._player.currentTime=this._index *1000 / this._player.cacheFrameRate;
-				this._indexControl=true;
-				this._update(false);
-			}
-		});
-
-		/**
-		*得到总帧数据
-		*/
-		__getset(0,__proto,'total',function(){
-			if (this._templet && this._player){
-				this._total=Math.floor(this._templet.getAniDuration(this._player.currentAnimationClipIndex)/ 1000 *this._player.cacheFrameRate);
-				}else {
-				this._total=-1;
-			}
-			return this._total;
-		});
-
-		/**
-		*得到播放器的引用
-		*/
-		__getset(0,__proto,'player',function(){
-			return this._player;
-		});
-
-		Skeleton.useSimpleMeshInCanvas=false;
-		return Skeleton;
-	})(Sprite)
-
-
-	/**
 	*<code>HTMLCanvas</code> 是 Html Canvas 的代理类，封装了 Canvas 的属性和方法。。请不要直接使用 new HTMLCanvas！
 	*/
 	//class laya.resource.HTMLCanvas extends laya.resource.Bitmap
@@ -62772,7 +60626,7 @@ var Laya=window.Laya=(function(window,document){
 		__proto._activeHierarchy=function(){
 			var i=0,n=0;
 			this._activeInHierarchy=true;
-			this._addSelfRenderObjects();
+			this._onActive();
 			for (i=0,n=this._components.length;i < n;i++)
 			this._components[i]._onOwnerActiveChange(true);
 			this.event("activeinhierarchychanged",true);
@@ -62788,7 +60642,7 @@ var Laya=window.Laya=(function(window,document){
 		__proto._inActiveHierarchy=function(){
 			var i=0,n=0;
 			this._activeInHierarchy=false;
-			this._clearSelfRenderObjects();
+			this._onInActive();
 			for (i=0,n=this._components.length;i < n;i++)
 			this._components[i]._onOwnerActiveChange(false);
 			this.event("activeinhierarchychanged",false);
@@ -62801,11 +60655,11 @@ var Laya=window.Laya=(function(window,document){
 		/**
 		*清理自身渲染物体，请重载此函数。
 		*/
-		__proto._clearSelfRenderObjects=function(){}
+		__proto._onInActive=function(){}
 		/**
 		*添加自身渲染物体，请重载此函数。
 		*/
-		__proto._addSelfRenderObjects=function(){}
+		__proto._onActive=function(){}
 		/**
 		*@private
 		*/
@@ -62887,7 +60741,7 @@ var Laya=window.Laya=(function(window,document){
 			this._transform=null;
 			this._colliders=null;
 			Loader.clearRes(this.url);
-			(this.loaded)||(Laya3D._cancelLoadByUrl(this.url));
+			(this.loaded)|| (Laya3D._cancelLoadByUrl(this.url));
 		}
 
 		/**
@@ -62957,20 +60811,22 @@ var Laya=window.Laya=(function(window,document){
 		__getset(0,__proto,'layer',function(){
 			return this._layer;
 			},function(value){
-			if (value){
-				if (this.displayedInStage){
-					var i=0,n=this._colliders.length;
-					if (this._layer){
+			if (this._layer!==value){
+				if (value){
+					if (this._activeInHierarchy){
+						var i=0,n=this._colliders.length;
+						if (this._layer){
+							for (i=0;i < n;i++)
+							this._layer._removeCollider(this._colliders[i]);
+						}
 						for (i=0;i < n;i++)
-						this._layer._removeCollider(this._colliders[i]);
+						value._addCollider(this._colliders[i]);
 					}
-					for (i=0;i < n;i++)
-					value._addCollider(this._colliders[i]);
+					this._layer=value;
+					this.event("layerchanged",value);
+					}else {
+					throw new Error("Layer value can be null.");
 				}
-				this._layer=value;
-				this.event("layerchanged",value);
-				}else {
-				throw new Error("Layer value can be null.");
 			}
 		});
 
@@ -63018,710 +60874,6 @@ var Laya=window.Laya=(function(window,document){
 
 
 	/**
-	*动画模板类
-	*/
-	//class laya.ani.bone.Templet extends laya.ani.AnimationTemplet
-	var Templet=(function(_super){
-		function Templet(){
-			this._mainTexture=null;
-			this._textureJson=null;
-			this._graphicsCache=[];
-			this.srcBoneMatrixArr=[];
-			this.ikArr=[];
-			this.tfArr=[];
-			this.pathArr=[];
-			this.boneSlotDic={};
-			this.bindBoneBoneSlotDic={};
-			this.boneSlotArray=[];
-			this.skinDataArray=[];
-			this.skinDic={};
-			this.subTextureDic={};
-			this.isParseFail=false;
-			this.yReverseMatrix=null;
-			this.drawOrderAniArr=[];
-			this.eventAniArr=[];
-			this.attachmentNames=null;
-			this.deformAniArr=[];
-			this._isDestroyed=false;
-			this._rate=30;
-			this.isParserComplete=false;
-			this.aniSectionDic={};
-			this._skBufferUrl=null;
-			this._textureDic={};
-			this._loadList=null;
-			this._path=null;
-			this.tMatrixDataLen=0;
-			this.mRootBone=null;
-			Templet.__super.call(this);
-			this.skinSlotDisplayDataArr=[];
-			this.mBoneArr=[];
-		}
-
-		__class(Templet,'laya.ani.bone.Templet',_super);
-		var __proto=Templet.prototype;
-		__proto.loadAni=function(url){
-			this._skBufferUrl=url;
-			Laya.loader.load(url,Handler.create(this,this.onComplete),null,"arraybuffer");
-		}
-
-		__proto.onComplete=function(content){
-			if (this._isDestroyed){
-				this.destroy();
-				return;
-			};
-			var tSkBuffer=Loader.getRes(this._skBufferUrl);
-			if (!tSkBuffer){
-				this.event("error","load failed:"+this._skBufferUrl);
-				return;
-			}
-			this._path=this._skBufferUrl.slice(0,this._skBufferUrl.lastIndexOf("/"))+"/";
-			this.parseData(null,tSkBuffer);
-		}
-
-		/**
-		*解析骨骼动画数据
-		*@param texture 骨骼动画用到的纹理
-		*@param skeletonData 骨骼动画信息及纹理分块信息
-		*@param playbackRate 缓冲的帧率数据（会根据帧率去分帧）
-		*/
-		__proto.parseData=function(texture,skeletonData,playbackRate){
-			(playbackRate===void 0)&& (playbackRate=30);
-			if(!this._path&&this.url)this._path=this.url.slice(0,this.url.lastIndexOf("/"))+"/";
-			this._mainTexture=texture;
-			if (this._mainTexture){
-				if (Render.isWebGL && texture.bitmap){
-					texture.bitmap.enableMerageInAtlas=false;
-				}
-			}
-			this._rate=playbackRate;
-			this.parse(skeletonData);
-		}
-
-		/**
-		*创建动画
-		*0,使用模板缓冲的数据，模板缓冲的数据，不允许修改 （内存开销小，计算开销小，不支持换装）
-		*1,使用动画自己的缓冲区，每个动画都会有自己的缓冲区，相当耗费内存 （内存开销大，计算开销小，支持换装）
-		*2,使用动态方式，去实时去画 （内存开销小，计算开销大，支持换装,不建议使用）
-		*@param aniMode 0 动画模式，0:不支持换装,1,2支持换装
-		*@return
-		*/
-		__proto.buildArmature=function(aniMode){
-			(aniMode===void 0)&& (aniMode=0);
-			return new Skeleton(this,aniMode);
-		}
-
-		/**
-		*@private
-		*解析动画
-		*@param data 解析的二进制数据
-		*@param playbackRate 帧率
-		*/
-		__proto.parse=function(data){
-			_super.prototype.parse.call(this,data);
-			this._loaded=true;
-			this.event("loaded",this);
-			if (this._aniVersion !=Templet.LAYA_ANIMATION_VISION){
-				console.log("[Error] 版本不一致，请使用IDE版本配套的重新导出"+this._aniVersion+"->"+Templet.LAYA_ANIMATION_VISION);
-				this._loaded=false;
-			}
-			if (this.loaded){
-				if (this._mainTexture){
-					this._parsePublicExtData();
-					}else {
-					this._parseTexturePath();
-				}
-				}else {
-				this.event("error",this);
-				this.isParseFail=true;
-			}
-		}
-
-		__proto._parseTexturePath=function(){
-			if (this._isDestroyed){
-				this.destroy();
-				return;
-			};
-			var i=0;
-			this._loadList=[];
-			var tByte=new Byte(this.getPublicExtData());
-			var tX=0,tY=0,tWidth=0,tHeight=0;
-			var tFrameX=0,tFrameY=0,tFrameWidth=0,tFrameHeight=0;
-			var tTempleData=0;
-			var tTextureLen=tByte.getInt32();
-			var tTextureName=tByte.readUTFString();
-			var tTextureNameArr=tTextureName.split("\n");
-			var tTexture;
-			var tSrcTexturePath;
-			for (i=0;i < tTextureLen;i++){
-				tSrcTexturePath=this._path+tTextureNameArr[i *2];
-				tTextureName=tTextureNameArr[i *2+1];
-				tX=tByte.getFloat32();
-				tY=tByte.getFloat32();
-				tWidth=tByte.getFloat32();
-				tHeight=tByte.getFloat32();
-				tTempleData=tByte.getFloat32();
-				tFrameX=isNaN(tTempleData)? 0 :tTempleData;
-				tTempleData=tByte.getFloat32();
-				tFrameY=isNaN(tTempleData)? 0 :tTempleData;
-				tTempleData=tByte.getFloat32();
-				tFrameWidth=isNaN(tTempleData)? tWidth :tTempleData;
-				tTempleData=tByte.getFloat32();
-				tFrameHeight=isNaN(tTempleData)? tHeight :tTempleData;
-				if (this._loadList.indexOf(tSrcTexturePath)==-1){
-					this._loadList.push(tSrcTexturePath);
-				}
-			}
-			Laya.loader.load(this._loadList,Handler.create(this,this._textureComplete));
-		}
-
-		/**
-		*纹理加载完成
-		*/
-		__proto._textureComplete=function(){
-			var tTexture;
-			var tTextureName;
-			for (var i=0,n=this._loadList.length;i < n;i++){
-				tTextureName=this._loadList[i];
-				tTexture=this._textureDic[tTextureName]=Loader.getRes(tTextureName);
-				if (Render.isWebGL && tTexture && tTexture.bitmap){
-					tTexture.bitmap.enableMerageInAtlas=false;
-				}
-			}
-			this._parsePublicExtData();
-		}
-
-		/**
-		*解析自定义数据
-		*/
-		__proto._parsePublicExtData=function(){
-			var i=0,j=0,k=0,l=0,n=0;
-			for (i=0,n=this.getAnimationCount();i < n;i++){
-				this._graphicsCache.push([]);
-			};
-			var isSpine=false;
-			isSpine=this._aniClassName !="Dragon";
-			var tByte=new Byte(this.getPublicExtData());
-			var tX=0,tY=0,tWidth=0,tHeight=0;
-			var tFrameX=0,tFrameY=0,tFrameWidth=0,tFrameHeight=0;
-			var tTempleData=0;
-			var tTextureLen=tByte.getInt32();
-			var tTextureName=tByte.readUTFString();
-			var tTextureNameArr=tTextureName.split("\n");
-			var tTexture;
-			var tSrcTexturePath;
-			for (i=0;i < tTextureLen;i++){
-				tTexture=this._mainTexture;
-				tSrcTexturePath=this._path+tTextureNameArr[i *2];
-				tTextureName=tTextureNameArr[i *2+1];
-				if (this._mainTexture==null){
-					tTexture=this._textureDic[tSrcTexturePath];
-				}
-				if (!tTexture){
-					this.event("error",this);
-					this.isParseFail=true;
-					return;
-				}
-				tX=tByte.getFloat32();
-				tY=tByte.getFloat32();
-				tWidth=tByte.getFloat32();
-				tHeight=tByte.getFloat32();
-				tTempleData=tByte.getFloat32();
-				tFrameX=isNaN(tTempleData)? 0 :tTempleData;
-				tTempleData=tByte.getFloat32();
-				tFrameY=isNaN(tTempleData)? 0 :tTempleData;
-				tTempleData=tByte.getFloat32();
-				tFrameWidth=isNaN(tTempleData)? tWidth :tTempleData;
-				tTempleData=tByte.getFloat32();
-				tFrameHeight=isNaN(tTempleData)? tHeight :tTempleData;
-				this.subTextureDic[tTextureName]=Texture.create(tTexture,tX,tY,tWidth,tHeight,-tFrameX,-tFrameY,tFrameWidth,tFrameHeight);
-			}
-			this._mainTexture=tTexture;
-			var tAniCount=tByte.getUint16();
-			var tSectionArr;
-			for (i=0;i < tAniCount;i++){
-				tSectionArr=[];
-				tSectionArr.push(tByte.getUint16());
-				tSectionArr.push(tByte.getUint16());
-				tSectionArr.push(tByte.getUint16());
-				tSectionArr.push(tByte.getUint16());
-				this.aniSectionDic[i]=tSectionArr;
-			};
-			var tBone;
-			var tParentBone;
-			var tName;
-			var tParentName;
-			var tBoneLen=tByte.getInt16();
-			var tBoneDic={};
-			var tRootBone;
-			for (i=0;i < tBoneLen;i++){
-				tBone=new Bone();
-				if (i==0){
-					tRootBone=tBone;
-					}else {
-					tBone.root=tRootBone;
-				}
-				tBone.d=isSpine?-1:1;
-				tName=tByte.readUTFString();
-				tParentName=tByte.readUTFString();
-				tBone.length=tByte.getFloat32();
-				if (tByte.getByte()==1){
-					tBone.inheritRotation=false;
-				}
-				if (tByte.getByte()==1){
-					tBone.inheritScale=false;
-				}
-				tBone.name=tName;
-				if (tParentName){
-					tParentBone=tBoneDic[tParentName];
-					if (tParentBone){
-						tParentBone.addChild(tBone);
-						}else {
-						this.mRootBone=tBone;
-					}
-				}
-				tBoneDic[tName]=tBone;
-				this.mBoneArr.push(tBone);
-			}
-			this.tMatrixDataLen=tByte.getUint16();
-			var tLen=tByte.getUint16();
-			var parentIndex=0;
-			var boneLength=Math.floor(tLen / this.tMatrixDataLen);
-			var tResultTransform;
-			var tMatrixArray=this.srcBoneMatrixArr;
-			for (i=0;i < boneLength;i++){
-				tResultTransform=new Transform();
-				tResultTransform.scX=tByte.getFloat32();
-				tResultTransform.skX=tByte.getFloat32();
-				tResultTransform.skY=tByte.getFloat32();
-				tResultTransform.scY=tByte.getFloat32();
-				tResultTransform.x=tByte.getFloat32();
-				tResultTransform.y=tByte.getFloat32();
-				if (this.tMatrixDataLen===8){
-					tResultTransform.skewX=tByte.getFloat32();
-					tResultTransform.skewY=tByte.getFloat32();
-				}
-				tMatrixArray.push(tResultTransform);
-				tBone=this.mBoneArr[i];
-				tBone.transform=tResultTransform;
-			};
-			var tIkConstraintData;
-			var tIkLen=tByte.getUint16();
-			var tIkBoneLen=0;
-			for (i=0;i < tIkLen;i++){
-				tIkConstraintData=new IkConstraintData();
-				tIkBoneLen=tByte.getUint16();
-				for (j=0;j < tIkBoneLen;j++){
-					tIkConstraintData.boneNames.push(tByte.readUTFString());
-					tIkConstraintData.boneIndexs.push(tByte.getInt16());
-				}
-				tIkConstraintData.name=tByte.readUTFString();
-				tIkConstraintData.targetBoneName=tByte.readUTFString();
-				tIkConstraintData.targetBoneIndex=tByte.getInt16();
-				tIkConstraintData.bendDirection=tByte.getFloat32();
-				tIkConstraintData.mix=tByte.getFloat32();
-				tIkConstraintData.isSpine=isSpine;
-				this.ikArr.push(tIkConstraintData);
-			};
-			var tTfConstraintData;
-			var tTfLen=tByte.getUint16();
-			var tTfBoneLen=0;
-			for (i=0;i < tTfLen;i++){
-				tTfConstraintData=new TfConstraintData();
-				tTfBoneLen=tByte.getUint16();
-				for (j=0;j < tTfBoneLen;j++){
-					tTfConstraintData.boneIndexs.push(tByte.getInt16());
-				}
-				tTfConstraintData.name=tByte.getUTFString();
-				tTfConstraintData.targetIndex=tByte.getInt16();
-				tTfConstraintData.rotateMix=tByte.getFloat32();
-				tTfConstraintData.translateMix=tByte.getFloat32();
-				tTfConstraintData.scaleMix=tByte.getFloat32();
-				tTfConstraintData.shearMix=tByte.getFloat32();
-				tTfConstraintData.offsetRotation=tByte.getFloat32();
-				tTfConstraintData.offsetX=tByte.getFloat32();
-				tTfConstraintData.offsetY=tByte.getFloat32();
-				tTfConstraintData.offsetScaleX=tByte.getFloat32();
-				tTfConstraintData.offsetScaleY=tByte.getFloat32();
-				tTfConstraintData.offsetShearY=tByte.getFloat32();
-				this.tfArr.push(tTfConstraintData);
-			};
-			var tPathConstraintData;
-			var tPathLen=tByte.getUint16();
-			var tPathBoneLen=0;
-			for (i=0;i < tPathLen;i++){
-				tPathConstraintData=new PathConstraintData();
-				tPathConstraintData.name=tByte.readUTFString();
-				tPathBoneLen=tByte.getUint16();
-				for (j=0;j < tPathBoneLen;j++){
-					tPathConstraintData.bones.push(tByte.getInt16());
-				}
-				tPathConstraintData.target=tByte.readUTFString();
-				tPathConstraintData.positionMode=tByte.readUTFString();
-				tPathConstraintData.spacingMode=tByte.readUTFString();
-				tPathConstraintData.rotateMode=tByte.readUTFString();
-				tPathConstraintData.offsetRotation=tByte.getFloat32();
-				tPathConstraintData.position=tByte.getFloat32();
-				tPathConstraintData.spacing=tByte.getFloat32();
-				tPathConstraintData.rotateMix=tByte.getFloat32();
-				tPathConstraintData.translateMix=tByte.getFloat32();
-				this.pathArr.push(tPathConstraintData);
-			};
-			var tDeformSlotLen=0;
-			var tDeformSlotDisplayLen=0;
-			var tDSlotIndex=0;
-			var tDAttachment;
-			var tDeformTimeLen=0;
-			var tDTime=NaN;
-			var tDeformVecticesLen=0;
-			var tDeformAniData;
-			var tDeformSlotData;
-			var tDeformSlotDisplayData;
-			var tDeformVectices;
-			var tDeformAniLen=tByte.getInt16();
-			for (i=0;i < tDeformAniLen;i++){
-				var tDeformSkinLen=tByte.getUint8();
-				var tSkinDic={};
-				this.deformAniArr.push(tSkinDic);
-				for (var f=0;f < tDeformSkinLen;f++){
-					tDeformAniData=new DeformAniData();
-					tDeformAniData.skinName=tByte.getUTFString();
-					tSkinDic[tDeformAniData.skinName]=tDeformAniData;
-					tDeformSlotLen=tByte.getInt16();
-					for (j=0;j < tDeformSlotLen;j++){
-						tDeformSlotData=new DeformSlotData();
-						tDeformAniData.deformSlotDataList.push(tDeformSlotData);
-						tDeformSlotDisplayLen=tByte.getInt16();
-						for (k=0;k < tDeformSlotDisplayLen;k++){
-							tDeformSlotDisplayData=new DeformSlotDisplayData();
-							tDeformSlotData.deformSlotDisplayList.push(tDeformSlotDisplayData);
-							tDeformSlotDisplayData.slotIndex=tDSlotIndex=tByte.getInt16();
-							tDeformSlotDisplayData.attachment=tDAttachment=tByte.getUTFString();
-							tDeformTimeLen=tByte.getInt16();
-							for (l=0;l < tDeformTimeLen;l++){
-								if (tByte.getByte()==1){
-									tDeformSlotDisplayData.tweenKeyList.push(true);
-									}else {
-									tDeformSlotDisplayData.tweenKeyList.push(false);
-								}
-								tDTime=tByte.getFloat32();
-								tDeformSlotDisplayData.timeList.push(tDTime);
-								tDeformVectices=[];
-								tDeformSlotDisplayData.vectices.push(tDeformVectices);
-								tDeformVecticesLen=tByte.getInt16();
-								for (n=0;n < tDeformVecticesLen;n++){
-									tDeformVectices.push(tByte.getFloat32());
-								}
-							}
-						}
-					}
-				}
-			};
-			var tDrawOrderArr;
-			var tDrawOrderAniLen=tByte.getInt16();
-			var tDrawOrderLen=0;
-			var tDrawOrderData;
-			var tDoLen=0;
-			for (i=0;i < tDrawOrderAniLen;i++){
-				tDrawOrderLen=tByte.getInt16();
-				tDrawOrderArr=[];
-				for (j=0;j < tDrawOrderLen;j++){
-					tDrawOrderData=new DrawOrderData();
-					tDrawOrderData.time=tByte.getFloat32();
-					tDoLen=tByte.getInt16();
-					for (k=0;k < tDoLen;k++){
-						tDrawOrderData.drawOrder.push(tByte.getInt16());
-					}
-					tDrawOrderArr.push(tDrawOrderData);
-				}
-				this.drawOrderAniArr.push(tDrawOrderArr);
-			};
-			var tEventArr;
-			var tEventAniLen=tByte.getInt16();
-			var tEventLen=0;
-			var tEventData;
-			for (i=0;i < tEventAniLen;i++){
-				tEventLen=tByte.getInt16();
-				tEventArr=[];
-				for (j=0;j < tEventLen;j++){
-					tEventData=new EventData();
-					tEventData.name=tByte.getUTFString();
-					tEventData.intValue=tByte.getInt32();
-					tEventData.floatValue=tByte.getFloat32();
-					tEventData.stringValue=tByte.getUTFString();
-					tEventData.time=tByte.getFloat32();
-					tEventArr.push(tEventData);
-				}
-				this.eventAniArr.push(tEventArr);
-			};
-			var tAttachmentLen=tByte.getInt16();
-			if (tAttachmentLen > 0){
-				this.attachmentNames=[];
-				for (i=0;i < tAttachmentLen;i++){
-					this.attachmentNames.push(tByte.getUTFString());
-				}
-			};
-			var tBoneSlotLen=tByte.getInt16();
-			var tDBBoneSlot;
-			var tDBBoneSlotArr;
-			for (i=0;i < tBoneSlotLen;i++){
-				tDBBoneSlot=new BoneSlot();
-				tDBBoneSlot.name=tByte.readUTFString();
-				tDBBoneSlot.parent=tByte.readUTFString();
-				tDBBoneSlot.attachmentName=tByte.readUTFString();
-				tDBBoneSlot.srcDisplayIndex=tDBBoneSlot.displayIndex=tByte.getInt16();
-				tDBBoneSlot.templet=this;
-				this.boneSlotDic[tDBBoneSlot.name]=tDBBoneSlot;
-				tDBBoneSlotArr=this.bindBoneBoneSlotDic[tDBBoneSlot.parent];
-				if (tDBBoneSlotArr==null){
-					this.bindBoneBoneSlotDic[tDBBoneSlot.parent]=tDBBoneSlotArr=[];
-				}
-				tDBBoneSlotArr.push(tDBBoneSlot);
-				this.boneSlotArray.push(tDBBoneSlot);
-			};
-			var tNameString=tByte.readUTFString();
-			var tNameArray=tNameString.split("\n");
-			var tNameStartIndex=0;
-			var tSkinDataLen=tByte.getUint8();
-			var tSkinData,tSlotData,tDisplayData;
-			var tSlotDataLen=0,tDisplayDataLen=0;
-			var tUvLen=0,tWeightLen=0,tTriangleLen=0,tVerticeLen=0,tLengthLen=0;
-			for (i=0;i < tSkinDataLen;i++){
-				tSkinData=new SkinData();
-				tSkinData.name=tNameArray[tNameStartIndex++];
-				tSlotDataLen=tByte.getUint8();
-				for (j=0;j < tSlotDataLen;j++){
-					tSlotData=new SlotData();
-					tSlotData.name=tNameArray[tNameStartIndex++];
-					tDBBoneSlot=this.boneSlotDic[tSlotData.name];
-					tDisplayDataLen=tByte.getUint8();
-					for (k=0;k < tDisplayDataLen;k++){
-						tDisplayData=new SkinSlotDisplayData();
-						this.skinSlotDisplayDataArr.push(tDisplayData);
-						tDisplayData.name=tNameArray[tNameStartIndex++];
-						tDisplayData.attachmentName=tNameArray[tNameStartIndex++];
-						tDisplayData.transform=new Transform();
-						tDisplayData.transform.scX=tByte.getFloat32();
-						tDisplayData.transform.skX=tByte.getFloat32();
-						tDisplayData.transform.skY=tByte.getFloat32();
-						tDisplayData.transform.scY=tByte.getFloat32();
-						tDisplayData.transform.x=tByte.getFloat32();
-						tDisplayData.transform.y=tByte.getFloat32();
-						tSlotData.displayArr.push(tDisplayData);
-						tDisplayData.width=tByte.getFloat32();
-						tDisplayData.height=tByte.getFloat32();
-						tDisplayData.type=tByte.getUint8();
-						tDisplayData.verLen=tByte.getUint16();
-						tBoneLen=tByte.getUint16();
-						if (tBoneLen > 0){
-							tDisplayData.bones=[];
-							for (l=0;l < tBoneLen;l++){
-								var tBoneId=tByte.getUint16();
-								tDisplayData.bones.push(tBoneId);
-							}
-						}
-						tUvLen=tByte.getUint16();
-						if (tUvLen > 0){
-							tDisplayData.uvs=[];
-							for (l=0;l < tUvLen;l++){
-								tDisplayData.uvs.push(tByte.getFloat32());
-							}
-						}
-						tWeightLen=tByte.getUint16();
-						if (tWeightLen > 0){
-							tDisplayData.weights=[];
-							for (l=0;l < tWeightLen;l++){
-								tDisplayData.weights.push(tByte.getFloat32());
-							}
-						}
-						tTriangleLen=tByte.getUint16();
-						if (tTriangleLen > 0){
-							tDisplayData.triangles=[];
-							for (l=0;l < tTriangleLen;l++){
-								tDisplayData.triangles.push(tByte.getUint16());
-							}
-						}
-						tVerticeLen=tByte.getUint16();
-						if (tVerticeLen > 0){
-							tDisplayData.vertices=[];
-							for (l=0;l < tVerticeLen;l++){
-								tDisplayData.vertices.push(tByte.getFloat32());
-							}
-						}
-						tLengthLen=tByte.getUint16();
-						if (tLengthLen > 0){
-							tDisplayData.lengths=[];
-							for (l=0;l < tLengthLen;l++){
-								tDisplayData.lengths.push(tByte.getFloat32());
-							}
-						}
-					}
-					tSkinData.slotArr.push(tSlotData);
-				}
-				this.skinDic[tSkinData.name]=tSkinData;
-				this.skinDataArray.push(tSkinData);
-			};
-			var tReverse=tByte.getUint8();
-			if (tReverse==1){
-				this.yReverseMatrix=new Matrix(1,0,0,-1,0,0);
-				if (tRootBone){
-					tRootBone.setTempMatrix(this.yReverseMatrix);
-				}
-				}else {
-				if (tRootBone){
-					tRootBone.setTempMatrix(new Matrix());
-				}
-			}
-			this.showSkinByIndex(this.boneSlotDic,0);
-			this.isParserComplete=true;
-			this.event("complete",this);
-		}
-
-		/**
-		*得到指定的纹理
-		*@param name 纹理的名字
-		*@return
-		*/
-		__proto.getTexture=function(name){
-			var tTexture=this.subTextureDic[name];
-			if (tTexture==null){
-				return this._mainTexture;
-			}
-			return tTexture;
-		}
-
-		/**
-		*@private
-		*显示指定的皮肤
-		*@param boneSlotDic 插糟字典的引用
-		*@param skinIndex 皮肤的索引
-		*@param freshDisplayIndex 是否重置插槽纹理
-		*/
-		__proto.showSkinByIndex=function(boneSlotDic,skinIndex,freshDisplayIndex){
-			(freshDisplayIndex===void 0)&& (freshDisplayIndex=true);
-			if (skinIndex < 0 && skinIndex >=this.skinDataArray.length)return false;
-			var i=0,n=0;
-			var tBoneSlot;
-			var tSlotData;
-			var tSkinData=this.skinDataArray[skinIndex];
-			if (tSkinData){
-				for (i=0,n=tSkinData.slotArr.length;i < n;i++){
-					tSlotData=tSkinData.slotArr[i];
-					if (tSlotData){
-						tBoneSlot=boneSlotDic[tSlotData.name];
-						if (tBoneSlot){
-							tBoneSlot.showSlotData(tSlotData,freshDisplayIndex);
-							if (freshDisplayIndex&&tBoneSlot.attachmentName !="undefined" && tBoneSlot.attachmentName !="null"){
-								tBoneSlot.showDisplayByName(tBoneSlot.attachmentName);
-								}else {
-								tBoneSlot.showDisplayByIndex(tBoneSlot.displayIndex);
-							}
-						}
-					}
-				}
-				return true;
-			}
-			return false;
-		}
-
-		/**
-		*通过皮肤名字得到皮肤索引
-		*@param skinName 皮肤名称
-		*@return
-		*/
-		__proto.getSkinIndexByName=function(skinName){
-			var tSkinData;
-			for (var i=0,n=this.skinDataArray.length;i < n;i++){
-				tSkinData=this.skinDataArray[i];
-				if (tSkinData.name==skinName){
-					return i;
-				}
-			}
-			return-1;
-		}
-
-		/**
-		*@private
-		*得到缓冲数据
-		*@param aniIndex 动画索引
-		*@param frameIndex 帧索引
-		*@return
-		*/
-		__proto.getGrahicsDataWithCache=function(aniIndex,frameIndex){
-			return this._graphicsCache[aniIndex][frameIndex];
-		}
-
-		/**
-		*@private
-		*保存缓冲grahpics
-		*@param aniIndex 动画索引
-		*@param frameIndex 帧索引
-		*@param graphics 要保存的数据
-		*/
-		__proto.setGrahicsDataWithCache=function(aniIndex,frameIndex,graphics){
-			this._graphicsCache[aniIndex][frameIndex]=graphics;
-		}
-
-		__proto.deleteAniData=function(aniIndex){
-			if (this._anis[aniIndex]){
-				var tAniDataO=this._anis[aniIndex];
-				tAniDataO.bone3DMap=null;
-				tAniDataO.nodes=null;
-			}
-		}
-
-		/**
-		*释放纹理
-		*/
-		__proto.destroy=function(){
-			this._isDestroyed=true;
-			var tTexture;
-			for(var $each_tTexture in this.subTextureDic){
-				tTexture=this.subTextureDic[$each_tTexture];
-				if(tTexture)
-					tTexture.destroy();
-			}
-			var $each_tTexture;
-			for($each_tTexture in this._textureDic){
-				tTexture=this._textureDic[$each_tTexture];
-				if(tTexture)
-					tTexture.destroy();
-			};
-			var tSkinSlotDisplayData;
-			for (var i=0,n=this.skinSlotDisplayDataArr.length;i < n;i++){
-				tSkinSlotDisplayData=this.skinSlotDisplayDataArr[i];
-				tSkinSlotDisplayData.destory();
-			}
-			this.skinSlotDisplayDataArr.length=0;
-			if (this.url){
-				delete Templet.TEMPLET_DICTIONARY[this.url];
-			}
-			laya.resource.Resource.prototype.destroy.call(this);
-		}
-
-		/**
-		*通过索引得动画名称
-		*@param index
-		*@return
-		*/
-		__proto.getAniNameByIndex=function(index){
-			var tAni=this.getAnimation(index);
-			if (tAni)return tAni.name;
-			return null;
-		}
-
-		__getset(0,__proto,'rate',function(){
-			return this._rate;
-			},function(v){
-			this._rate=v;
-		});
-
-		Templet.LAYA_ANIMATION_VISION="LAYAANIMATION:1.6.0";
-		Templet.TEMPLET_DICTIONARY=null
-		return Templet;
-	})(AnimationTemplet)
-
-
-	/**
 	*<code>BaseScene</code> 类用于实现场景。
 	*/
 	//class laya.d3.core.scene.Scene extends laya.d3.core.ComponentNode
@@ -63731,17 +60883,17 @@ var Laya=window.Laya=(function(window,document){
 			//this._group=null;
 			//this._glCommandEncoder=null;
 			//this._lightmaps=null;
+			//this._skyboxMaterial=null;
 			this._enableLightCount=3;
 			//this._renderTargetTexture=null;
-			this._customRenderQueneIndex=11;
 			//this._lastCurrentTime=NaN;
 			//this._enableFog=false;
-			//this._enableDepthFog=false;
 			//this._shaderValues=null;
 			//this._defineDatas=null;
-			//this._cullingRendersLength=0;
+			//this._rendersLength=0;
 			//this._renderObjects=null;
-			//this._dynamicBatchManager=null;
+			//this._castShadowRendersLength=0;
+			//this._castShadowRenderObjects=null;
 			this.enableLight=true;
 			//this.treeRoot=null;
 			//this.treeSize=null;
@@ -63751,15 +60903,14 @@ var Laya=window.Laya=(function(window,document){
 			this._renderType=0;
 			//this.physicsWorker=null;
 			Scene.__super.call(this);
-			this._renderState=new RenderContext3D();
 			this._lights=[];
 			this._quenes=[];
 			this._cameraPool=[];
 			this._key=new SubmitKey();
 			if (Render.isConchApp){
 				this._glCommandEncoder=LayaGL.instance.createCommandEncoder(102400,2560,false);
-				this.data=ParamData.create(22 *4);
-				this.data._int32Data[21]=this._glCommandEncoder._buffer["_ptrID"];
+				this.data=ParamData.create(23 *4);
+				this.data._int32Data[22]=this._glCommandEncoder._buffer["_ptrID"];
 				this._renderType |=0x400;
 				this.data._int32Data[0]=this._renderType;
 			}
@@ -63767,22 +60918,46 @@ var Laya=window.Laya=(function(window,document){
 			this._defineDatas=new DefineDatas();
 			this._shaderValues=new ShaderDatas(null,22);
 			this.parallelSplitShadowMaps=[];
-			this._dynamicBatchManager=new DynamicBatchManager();
 			this._renderObjects=[];
-			this._cullingRendersLength=0;
+			this._castShadowRenderObjects=[];
+			this._rendersLength=0;
+			this._castShadowRendersLength=0;
 			this.enableFog=false;
 			this.fogStart=300;
 			this.fogRange=1000;
 			this.fogColor=new Vector3(0.7,0.7,0.7);
 			this.ambientColor=new Vector3(0.212,0.227,0.259);
+			this.reflectionIntensity=1.0;
 			(WebGL.shaderHighPrecision)&& (this._defineDatas.add(Shader3D.SHADERDEFINE_HIGHPRECISION));
 			this.on("display",this,this._display);
 			this.on("undisplay",this,this._unDisplay);
+			this._quenes[0]=new RenderQueue(false);
+			this._quenes[1]=new RenderQueue(true);
 		}
 
 		__class(Scene,'laya.d3.core.scene.Scene',_super);
 		var __proto=Scene.prototype;
 		Laya.imps(__proto,{"laya.webgl.submit.ISubmit":true,"laya.resource.ICreateResource":true})
+		/**
+		*@private
+		*/
+		__proto._binarySearchIndexInCameraPool=function(camera){
+			var start=0;
+			var end=this._cameraPool.length-1;
+			var mid=0;
+			while (start <=end){
+				mid=Math.floor((start+end)/ 2);
+				var midValue=this._cameraPool[mid]._renderingOrder;
+				if (midValue==camera._renderingOrder)
+					return mid;
+				else if (midValue > camera._renderingOrder)
+				end=mid-1;
+				else
+				start=mid+1;
+			}
+			return start;
+		}
+
 		/**
 		*@private
 		*/
@@ -63876,18 +61051,6 @@ var Laya=window.Laya=(function(window,document){
 
 		/**
 		*@private
-		*场景相关渲染准备设置。
-		*@param gl WebGL上下文。
-		*@return state 渲染状态。
-		*/
-		__proto._prepareUpdateToRenderState=function(gl,state){
-			state.elapsedTime=this._lastCurrentTime ? this.timer.currTimer-this._lastCurrentTime :0;
-			this._lastCurrentTime=this.timer.currTimer;
-			state.scene=this;
-		}
-
-		/**
-		*@private
 		*/
 		__proto._prepareSceneToRender=function(state){
 			var lightCount=this._lights.length;
@@ -63906,19 +61069,32 @@ var Laya=window.Laya=(function(window,document){
 		/**
 		*@private
 		*/
-		__proto._preRenderScene=function(gl,state,boundFrustum){
-			var i=0,iNum=0;
-			var camera=state.camera;
+		__proto._addCamera=function(camera){
+			var index=this._binarySearchIndexInCameraPool(camera);
+			this._cameraPool.splice(index,0,camera);
+		}
+
+		/**
+		*@private
+		*/
+		__proto._removeCamera=function(camera){
+			var index=this._binarySearchIndexInCameraPool(camera);
+			this._cameraPool.splice(index,1);
+		}
+
+		/**
+		*@private
+		*/
+		__proto._preRenderScene=function(gl,context,boundFrustum){
+			var camera=context.camera;
 			if (camera.useOcclusionCulling){
 				if (this.treeRoot)
-					FrustumCulling.renderObjectCullingOctree(boundFrustum,this,state);
+					FrustumCulling.renderObjectCullingOctree(boundFrustum,this,context);
 				else
-				FrustumCulling.renderObjectCulling(boundFrustum,this,state);
+				FrustumCulling.renderObjectCulling(boundFrustum,this,context,this._renderObjects,this._rendersLength);
 				}else {
-				FrustumCulling.renderObjectCulling(null,this,state);
+				FrustumCulling.renderObjectCulling(null,this,context,this._renderObjects,this._rendersLength);
 			}
-			for (i=0,iNum=this._quenes.length;i < iNum;i++)
-			(this._quenes[i])&& (this._quenes[i]._preRender(state));
 		}
 
 		/**
@@ -63995,51 +61171,35 @@ var Laya=window.Laya=(function(window,document){
 		__proto._renderScene=function(gl,state){
 			var camera=state.camera;
 			var position=camera.transform.position;
-			var i=0,n=0;
-			var queue;
-			for (i=0;i < 2;i++){
-				queue=this._quenes[i];
-				if (queue){
-					camera.renderTarget ? queue._render(state,true):queue._render(state,false);
-				}
-			}
+			var queue=this._quenes[0];
+			camera.renderTarget ? queue._render(state,true):queue._render(state,false);
 			if (camera.clearFlag===1){
-				var sky=camera.sky;
-				if (sky){
-					var material=sky.sharedMaterial;
-					if (material){
-						WebGLContext.setCullFace(gl,false);
-						WebGLContext.setDepthFunc(gl,0x0203);
-						WebGLContext.setDepthMask(gl,false);
-						var shader=state.shader=material._shader._passes[0].withCompile(0,0,0);
-						var forceUploadParams=shader.bind()|| (Stat.loopCount!==shader._uploadLoopCount);
-						var vertexBuffer=sky._vertexBuffer;
-						if (ShaderInstance._uploadVertexBuffers!==vertexBuffer){
-							vertexBuffer.bind();
-							shader.uploadAttributes(vertexBuffer.vertexDeclaration._shaderValues);
-							ShaderInstance._uploadVertexBuffers=vertexBuffer;
-						}
-						sky._indexBuffer.bind();
-						if (shader._uploadMaterial!==material || forceUploadParams){
-							shader.uploadUniforms(shader._materialUniformParamsMap,material._shaderValues,true);
-							shader._uploadMaterial=material;
-						}
-						if (camera!==shader._uploadCamera || forceUploadParams){
-							shader.uploadUniforms(shader._cameraUniformParamsMap,camera._shaderValues,true);
-							shader._uploadCamera=camera;
-						}
-						sky._render(state);
-						WebGLContext.setDepthFunc(gl,0x0201);
-						WebGLContext.setDepthMask(gl,true);
+				var skyMaterial=camera.skyboxMaterial || this._skyboxMaterial;
+				if (skyMaterial){
+					WebGLContext.setCullFace(gl,false);
+					WebGLContext.setDepthFunc(gl,0x0203);
+					WebGLContext.setDepthMask(gl,false);
+					var shader=state.shader=skyMaterial._shader._passes[0].withCompile(0,0,0);
+					var forceUploadParams=shader.bind()|| (Stat.loopCount!==shader._uploadLoopCount);
+					var skyBox=SkyBox._instance;
+					var vertexBuffer=skyBox._vertexBuffer;
+					vertexBuffer.bind();
+					shader.uploadAttributes(vertexBuffer.vertexDeclaration._shaderValues);
+					if (shader._uploadMaterial!==skyMaterial || forceUploadParams){
+						shader.uploadUniforms(shader._materialUniformParamsMap,skyMaterial._shaderValues,true);
+						shader._uploadMaterial=skyMaterial;
 					}
+					if (camera!==shader._uploadCamera || forceUploadParams){
+						shader.uploadUniforms(shader._cameraUniformParamsMap,camera._shaderValues,true);
+						shader._uploadCamera=camera;
+					}
+					skyBox._render(state);
+					WebGLContext.setDepthFunc(gl,0x0201);
+					WebGLContext.setDepthMask(gl,true);
 				}
 			}
-			for (i=2,n=this._quenes.length;i < n;i++){
-				queue=this._quenes[i];
-				if (queue){
-					camera.renderTarget ? queue._render(state,true):queue._render(state,false);
-				}
-			}
+			queue=this._quenes[1];
+			camera.renderTarget ? queue._render(state,true):queue._render(state,false);
 		}
 
 		/**
@@ -64072,6 +61232,10 @@ var Laya=window.Laya=(function(window,document){
 				ambCol.fromArray(ambientColorData);
 				this.ambientColor=ambCol;
 			};
+			var skyboxMaterialData=customProps.skyboxMaterial;
+			(skyboxMaterialData)&& (this.skyboxMaterial=Loader.getRes(innerResouMap[skyboxMaterialData.path]));
+			var reflectionTextureData=customProps.reflectionTexture;
+			reflectionTextureData && (this.reflectionTexture=Loader.getRes(innerResouMap[reflectionTextureData]));
 			var fogColorData=customProps.fogColor;
 			if (fogColorData){
 				var fogCol=this.fogColor;
@@ -64099,64 +61263,10 @@ var Laya=window.Laya=(function(window,document){
 		*@private
 		*/
 		__proto._updateScene=function(){
-			this._prepareUpdateToRenderState(LayaGL.instance,this._renderState);
-		}
-
-		/**
-		*@private
-		*/
-		__proto._preRenderShadow=function(state,lightFrustum,shdowQueues,lightViewProjectMatrix,nPSSMNum){
-			if (this.treeRoot){
-				FrustumCulling.renderShadowObjectCullingOctree(this,lightFrustum,shdowQueues,lightViewProjectMatrix,nPSSMNum);
-				}else {
-				FrustumCulling.renderShadowObjectCulling(this,lightFrustum,shdowQueues,lightViewProjectMatrix,nPSSMNum);
-			}
-			for (var i=0,iNum=shdowQueues.length;i < iNum;i++)
-			(shdowQueues[i])&& (shdowQueues[i]._preRender(state));
-		}
-
-		/**
-		*@private
-		*/
-		__proto._renderShadowMap=function(gl,state,sceneCamera){
-			var parallelSplitShadowMap=this.parallelSplitShadowMaps[0];
-			parallelSplitShadowMap._calcAllLightCameraInfo(sceneCamera);
-			var pssmNum=parallelSplitShadowMap.PSSMNum;
-			this._preRenderShadow(state,parallelSplitShadowMap._lightCulling,parallelSplitShadowMap._shadowQuenes,parallelSplitShadowMap._lightVPMatrix[0],pssmNum);
-			this._defineDatas.add(ParallelSplitShadowMap.SHADERDEFINE_CAST_SHADOW);
-			var renderTarget,shadowQuene,lightCamera;
-			if (pssmNum > 1){
-				for (var i=0;i < pssmNum;i++){
-					renderTarget=parallelSplitShadowMap.getRenderTarget(i+1);
-					parallelSplitShadowMap.beginRenderTarget(i+1);
-					gl.clearColor(1,1,1,1);
-					gl.clear(0x00004000 | 0x00000100);
-					gl.viewport(0,0,renderTarget.width,renderTarget.height);
-					state.camera=lightCamera=parallelSplitShadowMap.getLightCamera(i);
-					lightCamera._prepareCameraToRender();
-					lightCamera._prepareCameraViewProject(lightCamera.viewMatrix,lightCamera.projectionMatrix);
-					state.projectionViewMatrix=parallelSplitShadowMap._lightVPMatrix[i+1];
-					shadowQuene=parallelSplitShadowMap._shadowQuenes[i];
-					shadowQuene._preRender(state);
-					shadowQuene._renderShadow(state,false);
-					parallelSplitShadowMap.endRenderTarget(i+1);
-				}
-				}else {
-				renderTarget=parallelSplitShadowMap.getRenderTarget(1);
-				parallelSplitShadowMap.beginRenderTarget(1);
-				gl.clearColor(1,1,1,1);
-				gl.clear(0x00004000 | 0x00000100);
-				gl.viewport(0,0,renderTarget.width,renderTarget.height);
-				state.camera=lightCamera=parallelSplitShadowMap.getLightCamera(0);
-				lightCamera._prepareCameraToRender();
-				lightCamera._prepareCameraViewProject(lightCamera.viewMatrix,lightCamera.projectionMatrix);
-				state.projectionViewMatrix=parallelSplitShadowMap._lightVPMatrix[0];
-				shadowQuene=parallelSplitShadowMap._shadowQuenes[0];
-				shadowQuene._preRender(state);
-				shadowQuene._renderShadow(state,true);
-				parallelSplitShadowMap.endRenderTarget(1);
-			}
-			this._defineDatas.remove(ParallelSplitShadowMap.SHADERDEFINE_CAST_SHADOW);
+			var context=RenderContext3D._instance;
+			context.elapsedTime=this._lastCurrentTime ? this.timer.currTimer-this._lastCurrentTime :0;
+			context.scene=this;
+			this._lastCurrentTime=this.timer.currTimer;
 		}
 
 		/**
@@ -64195,34 +61305,34 @@ var Laya=window.Laya=(function(window,document){
 		}
 
 		/**
-		*@inheritDoc
+		*@private
 		*/
-		__proto.addRenderObject=function(renderObject){
+		__proto._addRenderObject=function(render){
 			if (this.treeRoot){
-				this.addTreeNode(renderObject);
+				this.addTreeNode(render);
 				}else {
-				if (this._cullingRendersLength===this._renderObjects.length)
-					this._renderObjects.push(renderObject);
+				if (this._rendersLength===this._renderObjects.length)
+					this._renderObjects.push(render);
 				else
-				this._renderObjects[this._cullingRendersLength]=renderObject;
-				renderObject._indexInSceneList=this._cullingRendersLength++;
+				this._renderObjects[this._rendersLength]=render;
+				render._indexInList=this._rendersLength++;
 			}
 		}
 
 		/**
 		*@private
 		*/
-		__proto.removeRenderObject=function(renderObject){
+		__proto._removeRenderObject=function(render){
 			if (this.treeRoot){
-				this.removeTreeNode(renderObject);
+				this.removeTreeNode(render);
 				}else {
-				this._cullingRendersLength--;
-				var indexInSceneList=renderObject._indexInSceneList;
-				if (indexInSceneList!==this._cullingRendersLength){
-					var endRender=this._renderObjects[this._cullingRendersLength];
+				this._rendersLength--;
+				var indexInSceneList=render._indexInList;
+				if (indexInSceneList!==this._rendersLength){
+					var endRender=this._renderObjects[this._rendersLength];
 					this._renderObjects[indexInSceneList]=endRender;
-					endRender._indexInSceneList=indexInSceneList;
-					renderObject._indexInSceneList=-1;
+					endRender._indexInList=indexInSceneList;
+					render._indexInList=-1;
 				}
 			}
 		}
@@ -64230,74 +61340,44 @@ var Laya=window.Laya=(function(window,document){
 		/**
 		*@private
 		*/
-		__proto.swapRenderObject=function(leftIndex,rightIndex){
-			var temp=this._renderObjects[leftIndex];
-			temp._indexInSceneList=rightIndex;
-			var right=this._renderObjects[rightIndex];
-			right._indexInSceneList=leftIndex;
-			this._renderObjects[leftIndex]=right;
-			this._renderObjects[rightIndex]=temp;
-		}
-
-		/**
-		*@private
-		*/
-		__proto._partition=function(items,left,right){
-			var pivot=items[Math.floor((right+left)/ 2)]._distanceForSort;
-			while (left <=right){
-				while (items[left]._distanceForSort < pivot)
-				left++;
-				while (items[right]._distanceForSort > pivot)
-				right--;
-				if (left < right){
-					this.swapRenderObject(left,right);
-					left++;
-					right--;
-					}else if (left===right){
-					left++;
-					break ;
-				}
-			}
-			return left;
-		}
-
-		/**
-		*@private
-		*/
-		__proto._quickSort=function(items,left,right){
-			if (items.length > 1){
-				var index=this._partition(items,left,right);
-				var leftIndex=index-1;
-				if (left < leftIndex)
-					this._quickSort(items,left,leftIndex);
-				if (index < right)
-					this._quickSort(items,index,right);
-			}
-			return items;
-		}
-
-		/**
-		*获得某个渲染队列。
-		*@param index 渲染队列索引。
-		*@return 渲染队列。
-		*/
-		__proto.getRenderQueue=function(index){
-			var queue=this._quenes[index];
-			if (!queue){
-				if (index===2)
-					this._quenes[index]=queue=new RenderQueue(this,false)
+		__proto._addShadowCastRenderObject=function(render){
+			if (this.treeRoot){
+				this.addTreeNode(render);
+				}else {
+				if (this._castShadowRendersLength===this._castShadowRenderObjects.length)
+					this._castShadowRenderObjects.push(render);
 				else
-				this._quenes[index]=queue=new RenderQueue(this,true);
+				this._castShadowRenderObjects[this._castShadowRendersLength]=render;
+				render._indexInCastShadowList=this._castShadowRendersLength++;
 			}
-			return queue;
 		}
 
 		/**
-		*添加渲染队列。
-		*@param renderConfig 渲染队列配置文件。
+		*@private
 		*/
-		__proto.addRenderQuene=function(){
-			this._quenes[this._customRenderQueneIndex++]=new RenderQueue(this);
+		__proto._removeShadowCastRenderObject=function(render){
+			if (this.treeRoot){
+				this.removeTreeNode(render);
+				}else {
+				this._castShadowRendersLength--;
+				var indexInCastShadowList=render._indexInCastShadowList;
+				if (indexInCastShadowList!==this._castShadowRendersLength){
+					var endRender=this._castShadowRenderObjects[this._castShadowRendersLength];
+					this._castShadowRenderObjects[indexInCastShadowList]=endRender;
+					endRender._indexInCastShadowList=indexInCastShadowList;
+					render._indexInCastShadowList=-1;
+				}
+			}
+		}
+
+		/**
+		*@private
+		*/
+		__proto._getRenderQueue=function(index){
+			if (index < 3000)
+				return this._quenes[0];
+			else
+			return this._quenes[1];
 		}
 
 		/**
@@ -64321,20 +61401,19 @@ var Laya=window.Laya=(function(window,document){
 			if (this.destroyed)
 				return;
 			laya.display.Node.prototype.destroy.call(this,destroyChild);
-			this._renderState=null;
 			this._lights=null;
 			this._lightmaps=null;
 			this._renderTargetTexture=null;
 			this._shaderValues=null;
 			this._renderObjects=null;
-			this._dynamicBatchManager=null;
+			this._castShadowRenderObjects=null;
 			this._quenes=null;
 			this._cameraPool=null;
 			this.treeRoot=null;
 			this.treeSize=null;
 			this.parallelSplitShadowMaps=null;
 			Loader.clearRes(this.url);
-			(this.loaded)||(Laya3D._cancelLoadByUrl(this.url));
+			(this.loaded)|| (Laya3D._cancelLoadByUrl(this.url));
 		}
 
 		/**
@@ -64351,21 +61430,20 @@ var Laya=window.Laya=(function(window,document){
 			var gl=LayaGL.instance;
 			if (this._glCommandEncoder)this._glCommandEncoder.clearEncoding();
 			gl.beginCommandEncoding(this._glCommandEncoder);
-			var renderState=this._renderState;
-			this._prepareSceneToRender(this._renderState);
-			var i=0,n=0,camera;
+			WebGLContext.bindVertexArray(gl,null);
+			var context=RenderContext3D._instance;
+			this._prepareSceneToRender(context);
+			var i=0,n=0;
 			if (Laya3D.debugMode || OctreeNode.debugMode){
 				for (i=0,n=this._cameraPool.length;i < n;i++){
-					camera=this._cameraPool[i];
+					var camera=this._cameraPool[i];
 					Laya3D._debugPhasorSprite.begin(0x0001,camera);
-					(camera.activeInHierarchy)&& (camera._renderCamera(gl,renderState,this));
+					camera._render(gl,context,this);
 					Laya3D._debugPhasorSprite.end();
 				}
 				}else {
-				for (i=0,n=this._cameraPool.length;i < n;i++){
-					camera=this._cameraPool[i];
-					(camera.activeInHierarchy)&& (camera._renderCamera(gl,renderState,this));
-				}
+				for (i=0,n=this._cameraPool.length;i < n;i++)
+				this._cameraPool[i]._render(gl,context,this);
 			}
 			this._set2DRenderConfig(gl);
 			gl.endCommandEncoding();
@@ -64422,10 +61500,9 @@ var Laya=window.Laya=(function(window,document){
 			if (this._enableFog!==value){
 				this._enableFog=value;
 				if (value){
-					this._defineDatas.add(Shader3D.SHADERDEFINE_FOG);
-					this._defineDatas.remove(Shader3D.SAHDERDEFINE_DEPTHFOG);
+					this._defineDatas.add(laya.d3.core.scene.Scene.SHADERDEFINE_FOG);
 				}else
-				this._defineDatas.remove(Shader3D.SHADERDEFINE_FOG);
+				this._defineDatas.remove(laya.d3.core.scene.Scene.SHADERDEFINE_FOG);
 			}
 		});
 
@@ -64435,20 +61512,6 @@ var Laya=window.Laya=(function(window,document){
 		*/
 		__getset(0,__proto,'url',function(){
 			return this._url;
-		});
-
-		__getset(0,__proto,'enableDepthFog',function(){
-			return this._enableDepthFog;
-			},function(v){
-			if (this._enableDepthFog !=v){
-				this._enableDepthFog=v;
-				if (v){
-					this._defineDatas.add(Shader3D.SAHDERDEFINE_DEPTHFOG);
-					this._defineDatas.remove(Shader3D.SHADERDEFINE_FOG);
-					}else {
-					this._defineDatas.remove(Shader3D.SAHDERDEFINE_DEPTHFOG);
-				}
-			}
 		});
 
 		/**
@@ -64466,6 +61529,21 @@ var Laya=window.Laya=(function(window,document){
 		});
 
 		/**
+		*设置反射强度。
+		*@param 反射强度。
+		*/
+		/**
+		*获取反射强度。
+		*@return 反射强度。
+		*/
+		__getset(0,__proto,'reflectionIntensity',function(){
+			return this._shaderValues.getNumber(23);
+			},function(value){
+			value=Math.max(Math.min(value,1.0),0.0);
+			this._shaderValues.setNumber(23,value);
+		});
+
+		/**
 		*设置雾化范围。
 		*@param value 雾化范围。
 		*/
@@ -64480,6 +61558,24 @@ var Laya=window.Laya=(function(window,document){
 		});
 
 		/**
+		*设置天空盒材质。
+		*@param 天空盒材质。
+		*/
+		/**
+		*获取天空盒材质。
+		*@return 天空盒材质。
+		*/
+		__getset(0,__proto,'skyboxMaterial',function(){
+			return this._skyboxMaterial;
+			},function(value){
+			if (this._skyboxMaterial!==value){
+				(this._skyboxMaterial)&& (this._skyboxMaterial._removeReference());
+				value._addReference();
+				this._skyboxMaterial=value;
+			}
+		});
+
+		/**
 		*设置环境光颜色。
 		*@param value 环境光颜色。
 		*/
@@ -64491,6 +61587,24 @@ var Laya=window.Laya=(function(window,document){
 			return this._shaderValues.getVector(21);
 			},function(value){
 			this._shaderValues.setVector(21,value);
+		});
+
+		/**
+		*设置反射贴图。
+		*@param 反射贴图。
+		*/
+		/**
+		*获取反射贴图。
+		*@return 反射贴图。
+		*/
+		__getset(0,__proto,'reflectionTexture',function(){
+			return this._shaderValues.getTexture(22);
+			},function(value){
+			this._shaderValues.setTexture(22,value);
+			if (value)
+				this._defineDatas.add(laya.d3.core.scene.Scene.SHADERDEFINE_REFLECTMAP);
+			else
+			this._defineDatas.remove(laya.d3.core.scene.Scene.SHADERDEFINE_REFLECTMAP);
 		});
 
 		/**
@@ -64527,7 +61641,6 @@ var Laya=window.Laya=(function(window,document){
 		Scene.SHADERDEFINE_DIRECTIONLIGHT=0;
 		Scene.SHADERDEFINE_POINTLIGHT=0;
 		Scene.SHADERDEFINE_SPOTLIGHT=0;
-		Scene.SAHDERDEFINE_DEPTHFOG=0;
 		Scene.SHADERDEFINE_CAST_SHADOW=0;
 		Scene.SHADERDEFINE_SHADOW_PSSM1=0;
 		Scene.SHADERDEFINE_SHADOW_PSSM2=0;
@@ -64536,6 +61649,7 @@ var Laya=window.Laya=(function(window,document){
 		Scene.SHADERDEFINE_SHADOW_PCF1=0;
 		Scene.SHADERDEFINE_SHADOW_PCF2=0;
 		Scene.SHADERDEFINE_SHADOW_PCF3=0;
+		Scene.SHADERDEFINE_REFLECTMAP=0;
 		Scene.FOGCOLOR=0;
 		Scene.FOGSTART=1;
 		Scene.FOGRANGE=2;
@@ -64558,6 +61672,8 @@ var Laya=window.Laya=(function(window,document){
 		Scene.SHADOWMAPTEXTURE2=19;
 		Scene.SHADOWMAPTEXTURE3=20;
 		Scene.AMBIENTCOLOR=21;
+		Scene.REFLECTIONTEXTURE=22;
+		Scene.REFLETIONINTENSITY=23;
 		return Scene;
 	})(ComponentNode)
 
@@ -64604,6 +61720,19 @@ var Laya=window.Laya=(function(window,document){
 
 		__class(IndexBuffer3D,'laya.d3.graphics.IndexBuffer3D',_super);
 		var __proto=IndexBuffer3D.prototype;
+		/**
+		*@inheritDoc
+		*/
+		__proto.bind=function(){
+			if (Buffer._bindedIndexBuffer!==this._glBuffer){
+				LayaGL.instance.bindBuffer(0x8893,this._glBuffer);
+				Buffer._bindedIndexBuffer=this._glBuffer;
+				return true;
+				}else {
+				return false;
+			}
+		}
+
 		/**
 		*设置数据。
 		*@param data 索引数据。
@@ -64713,18 +61842,20 @@ var Laya=window.Laya=(function(window,document){
 			//this._albedoColor=null;
 			//this._albedoIntensity=NaN;
 			//this._enableLighting=false;
+			//this._enableReflection=false;
 			BlinnPhongMaterial.__super.call(this,12);
 			this.setShaderName("BLINNPHONG");
 			var sv=this._shaderValues;
 			this._albedoIntensity=1.0;
 			this._albedoColor=new Vector4(1.0,1.0,1.0,1.0);
-			sv.setVector(6,new Vector4(1.0,1.0,1.0,1.0));
-			sv.setVector(8,new Vector3(1.0,1.0,1.0));
-			sv.setNumber(9,0.078125);
-			sv.setVector(10,new Vector3(1.0,1.0,1.0));
+			sv.setVector(5,new Vector4(1.0,1.0,1.0,1.0));
+			sv.setVector(6,new Vector3(1.0,1.0,1.0));
+			sv.setNumber(7,0.078125);
 			sv.setNumber(0,0.5);
-			sv.setVector(11,new Vector4(1.0,1.0,0.0,0.0));
+			sv.setVector(8,new Vector4(1.0,1.0,0.0,0.0));
+			sv.setVector(9,new Vector3(0.5,0.5,0.5));
 			this._enableLighting=true;
+			this._enableReflection=false;
 			this.renderMode=0;
 		}
 
@@ -64746,7 +61877,7 @@ var Laya=window.Laya=(function(window,document){
 			switch (value){
 				case 0:
 					this.alphaTest=false;
-					this.renderQueue=1;
+					this.renderQueue=1000;
 					renderState.depthWrite=true;
 					renderState.cull=2;
 					renderState.blend=0;
@@ -64754,7 +61885,7 @@ var Laya=window.Laya=(function(window,document){
 					this._defineDatas.remove(BlinnPhongMaterial.SHADERDEFINE_ADDTIVEFOG);
 					break ;
 				case 1:
-					this.renderQueue=1;
+					this.renderQueue=2000;
 					this.alphaTest=true;
 					renderState.depthWrite=true;
 					renderState.cull=2;
@@ -64763,7 +61894,7 @@ var Laya=window.Laya=(function(window,document){
 					this._defineDatas.remove(BlinnPhongMaterial.SHADERDEFINE_ADDTIVEFOG);
 					break ;
 				case 2:
-					this.renderQueue=2;
+					this.renderQueue=3000;
 					this.alphaTest=false;
 					renderState.depthWrite=false;
 					renderState.cull=2;
@@ -64774,7 +61905,7 @@ var Laya=window.Laya=(function(window,document){
 					this._defineDatas.remove(BlinnPhongMaterial.SHADERDEFINE_ADDTIVEFOG);
 					break ;
 				case 3:
-					this.renderQueue=2;
+					this.renderQueue=3000;
 					this.alphaTest=false;
 					renderState.depthWrite=false;
 					renderState.cull=2;
@@ -64808,20 +61939,6 @@ var Laya=window.Laya=(function(window,document){
 		});
 
 		/**
-		*设置反射颜色。
-		*@param value 反射颜色。
-		*/
-		/**
-		*获取反射颜色。
-		*@return value 反射颜色。
-		*/
-		__getset(0,__proto,'reflectColor',function(){
-			return this._shaderValues.getVector(10);
-			},function(value){
-			this._shaderValues.setVector(10,value);
-		});
-
-		/**
 		*获取纹理平铺和偏移。
 		*@param value 纹理平铺和偏移。
 		*/
@@ -64830,7 +61947,7 @@ var Laya=window.Laya=(function(window,document){
 		*@return 纹理平铺和偏移。
 		*/
 		__getset(0,__proto,'tilingOffset',function(){
-			return this._shaderValues.getVector(11);
+			return this._shaderValues.getVector(8);
 			},function(value){
 			if (value){
 				var valueE=value.elements;
@@ -64841,7 +61958,7 @@ var Laya=window.Laya=(function(window,document){
 				}else {
 				this._defineDatas.remove(laya.d3.core.material.BlinnPhongMaterial.SHADERDEFINE_TILINGOFFSET);
 			}
-			this._shaderValues.setVector(11,value);
+			this._shaderValues.setVector(8,value);
 		});
 
 		/**
@@ -64853,9 +61970,9 @@ var Laya=window.Laya=(function(window,document){
 		*@return 高光颜色。
 		*/
 		__getset(0,__proto,'specularColor',function(){
-			return this._shaderValues.getVector(8);
+			return this._shaderValues.getVector(6);
 			},function(value){
-			this._shaderValues.setVector(8,value);
+			this._shaderValues.setVector(6,value);
 		});
 
 		/**
@@ -64869,7 +61986,7 @@ var Laya=window.Laya=(function(window,document){
 		__getset(0,__proto,'albedoColor',function(){
 			return this._albedoColor;
 			},function(value){
-			var finalAlbedo=this._shaderValues.getVector(6);
+			var finalAlbedo=this._shaderValues.getVector(5);
 			Vector4.scale(value,this._albedoIntensity,finalAlbedo);
 			this._albedoColor=value;
 		});
@@ -64886,10 +62003,28 @@ var Laya=window.Laya=(function(window,document){
 			return this._albedoIntensity;
 			},function(value){
 			if (this._albedoIntensity!==value){
-				var finalAlbedo=this._shaderValues.getVector(6);
+				var finalAlbedo=this._shaderValues.getVector(5);
 				Vector4.scale(this._albedoColor,value,finalAlbedo);
 				this._albedoIntensity=value;
 			}
+		});
+
+		/**
+		*设置高光贴图，高光强度则从该贴图RGB值中获取,如果该值为空则从漫反射贴图的Alpha通道获取。
+		*@param value 高光贴图。
+		*/
+		/**
+		*获取高光贴图。
+		*@return 高光贴图。
+		*/
+		__getset(0,__proto,'specularTexture',function(){
+			return this._shaderValues.getTexture(3);
+			},function(value){
+			if (value)
+				this._defineDatas.add(laya.d3.core.material.BlinnPhongMaterial.SHADERDEFINE_SPECULARMAP);
+			else
+			this._defineDatas.remove(laya.d3.core.material.BlinnPhongMaterial.SHADERDEFINE_SPECULARMAP);
+			this._shaderValues.setTexture(3,value);
 		});
 
 		/**
@@ -64919,46 +62054,10 @@ var Laya=window.Laya=(function(window,document){
 		*@return 高光强度。
 		*/
 		__getset(0,__proto,'shininess',function(){
-			return this._shaderValues.getNumber(9);
+			return this._shaderValues.getNumber(7);
 			},function(value){
 			value=Math.max(0.0,Math.min(1.0,value));
-			this._shaderValues.setNumber(9,value);
-		});
-
-		/**
-		*设置高光贴图，高光强度则从该贴图RGB值中获取,如果该值为空则从漫反射贴图的Alpha通道获取。
-		*@param value 高光贴图。
-		*/
-		/**
-		*获取高光贴图。
-		*@return 高光贴图。
-		*/
-		__getset(0,__proto,'specularTexture',function(){
-			return this._shaderValues.getTexture(3);
-			},function(value){
-			if (value)
-				this._defineDatas.add(laya.d3.core.material.BlinnPhongMaterial.SHADERDEFINE_SPECULARMAP);
-			else
-			this._defineDatas.remove(laya.d3.core.material.BlinnPhongMaterial.SHADERDEFINE_SPECULARMAP);
-			this._shaderValues.setTexture(3,value);
-		});
-
-		/**
-		*设置反射贴图。
-		*@param value 反射贴图。
-		*/
-		/**
-		*获取反射贴图。
-		*@return 反射贴图。
-		*/
-		__getset(0,__proto,'reflectTexture',function(){
-			return this._shaderValues.getTexture(5);
-			},function(value){
-			if (value)
-				this._defineDatas.add(laya.d3.core.material.BlinnPhongMaterial.SHADERDEFINE_REFLECTMAP);
-			else
-			this._defineDatas.remove(laya.d3.core.material.BlinnPhongMaterial.SHADERDEFINE_REFLECTMAP);
-			this._shaderValues.setTexture(5,value);
+			this._shaderValues.setNumber(7,value);
 		});
 
 		/**
@@ -64981,11 +62080,44 @@ var Laya=window.Laya=(function(window,document){
 			}
 		});
 
+		/**
+		*设置是否启用光照。
+		*@param value 是否启用光照。
+		*/
+		/**
+		*获取是否启用光照。
+		*@return 是否启用光照。
+		*/
+		__getset(0,__proto,'enableReflection',function(){
+			return this._enableReflection;
+			},function(value){
+			if (this._enableReflection!==value){
+				if (value)
+					this._disablePublicDefineDatas.remove(Scene.SHADERDEFINE_REFLECTMAP);
+				else
+				this._disablePublicDefineDatas.add(Scene.SHADERDEFINE_REFLECTMAP);
+				this._enableReflection=value;
+			}
+		});
+
+		/**
+		*设置反射颜色。
+		*@param value 反射颜色。
+		*/
+		/**
+		*获取反射颜色。
+		*@return 反射颜色。
+		*/
+		__getset(0,__proto,'reflectionColor',function(){
+			return this._shaderValues.getVector(9);
+			},function(value){
+			this._shaderValues.setVector(9,value);
+		});
+
 		BlinnPhongMaterial.__init__=function(){
 			BlinnPhongMaterial.SHADERDEFINE_DIFFUSEMAP=BlinnPhongMaterial.shaderDefines.registerDefine("DIFFUSEMAP");
 			BlinnPhongMaterial.SHADERDEFINE_NORMALMAP=BlinnPhongMaterial.shaderDefines.registerDefine("NORMALMAP");
 			BlinnPhongMaterial.SHADERDEFINE_SPECULARMAP=BlinnPhongMaterial.shaderDefines.registerDefine("SPECULARMAP");
-			BlinnPhongMaterial.SHADERDEFINE_REFLECTMAP=BlinnPhongMaterial.shaderDefines.registerDefine("REFLECTMAP");
 			BlinnPhongMaterial.SHADERDEFINE_TILINGOFFSET=BlinnPhongMaterial.shaderDefines.registerDefine("TILINGOFFSET");
 			BlinnPhongMaterial.SHADERDEFINE_ADDTIVEFOG=BlinnPhongMaterial.shaderDefines.registerDefine("ADDTIVEFOG");
 		}
@@ -65003,19 +62135,17 @@ var Laya=window.Laya=(function(window,document){
 		BlinnPhongMaterial.SHADERDEFINE_DIFFUSEMAP=0;
 		BlinnPhongMaterial.SHADERDEFINE_NORMALMAP=0;
 		BlinnPhongMaterial.SHADERDEFINE_SPECULARMAP=0;
-		BlinnPhongMaterial.SHADERDEFINE_REFLECTMAP=0;
 		BlinnPhongMaterial.SHADERDEFINE_TILINGOFFSET=0;
 		BlinnPhongMaterial.SHADERDEFINE_ADDTIVEFOG=0;
 		BlinnPhongMaterial.ALBEDOTEXTURE=1;
 		BlinnPhongMaterial.NORMALTEXTURE=2;
 		BlinnPhongMaterial.SPECULARTEXTURE=3;
 		BlinnPhongMaterial.EMISSIVETEXTURE=4;
-		BlinnPhongMaterial.REFLECTTEXTURE=5;
-		BlinnPhongMaterial.ALBEDOCOLOR=6;
-		BlinnPhongMaterial.MATERIALSPECULAR=8;
-		BlinnPhongMaterial.SHININESS=9;
-		BlinnPhongMaterial.MATERIALREFLECT=10;
-		BlinnPhongMaterial.TILINGOFFSET=11;
+		BlinnPhongMaterial.ALBEDOCOLOR=5;
+		BlinnPhongMaterial.MATERIALSPECULAR=6;
+		BlinnPhongMaterial.SHININESS=7;
+		BlinnPhongMaterial.TILINGOFFSET=8;
+		BlinnPhongMaterial.REFLECTIONCOLOR=9;
 		__static(BlinnPhongMaterial,
 		['defaultMaterial',function(){return this.defaultMaterial=new BlinnPhongMaterial();},'shaderDefines',function(){return this.shaderDefines=new ShaderDefines$1(BaseMaterial.shaderDefines);}
 		]);
@@ -65123,14 +62253,14 @@ var Laya=window.Laya=(function(window,document){
 			var renderState=this.getRenderState();
 			switch (value){
 				case 1:
-					this.renderQueue=1;
+					this.renderQueue=1000;
 					renderState.depthWrite=true;
 					renderState.cull=2;
 					renderState.blend=0;
 					renderState.depthTest=0x0201;
 					break ;
 				case 2:
-					this.renderQueue=1;
+					this.renderQueue=1000;
 					renderState.depthWrite=false;
 					renderState.cull=2;
 					renderState.blend=1;
@@ -65478,14 +62608,14 @@ var Laya=window.Laya=(function(window,document){
 			var renderState=this.getRenderState();
 			switch (value){
 				case 1:
-					renderState.renderQueue=1;
+					renderState.renderQueue=1000;
 					renderState.depthWrite=true;
 					renderState.cull=2;
 					renderState.blend=0;
 					this.alphaTest=false;
 					break ;
 				case 2:
-					this.renderQueue=1;
+					this.renderQueue=1000;
 					renderState.depthWrite=true;
 					renderState.cull=0;
 					renderState.blend=0;
@@ -65495,10 +62625,10 @@ var Laya=window.Laya=(function(window,document){
 					renderState.depthWrite=true;
 					renderState.cull=2;
 					renderState.blend=0;
-					this.renderQueue=1;
+					this.renderQueue=2000;
 					break ;
 				case 13:
-					this.renderQueue=2;
+					this.renderQueue=3000;
 					renderState.depthWrite=true;
 					renderState.cull=2;
 					renderState.blend=1;
@@ -65580,7 +62710,7 @@ var Laya=window.Laya=(function(window,document){
 	//class laya.d3.core.material.PBRSpecularMaterial extends laya.d3.core.material.BaseMaterial
 	var PBRSpecularMaterial=(function(_super){
 		function PBRSpecularMaterial(){
-			PBRSpecularMaterial.__super.call(this,18);
+			PBRSpecularMaterial.__super.call(this,19);
 			this.setShaderName("PBRSpecular");
 			this._shaderValues.setVector(7,new Vector4(1.0,1.0,1.0,1.0));
 			this._shaderValues.setVector(9,new Vector4(0.0,0.0,0.0,0.0));
@@ -65861,6 +62991,24 @@ var Laya=window.Laya=(function(window,document){
 		});
 
 		/**
+		*设置是否开启反射。
+		*@param value 是否开启反射。
+		*/
+		/**
+		*获取是否开启反射。
+		*@return 是否开启反射。
+		*/
+		__getset(0,__proto,'enableReflection',function(){
+			return this._shaderValues.getBool(17);
+			},function(value){
+			this._shaderValues.setBool(17,true);
+			if (value)
+				this._disablePublicDefineDatas.remove(Scene.SHADERDEFINE_REFLECTMAP);
+			else
+			this._disablePublicDefineDatas.add(Scene.SHADERDEFINE_REFLECTMAP);
+		});
+
+		/**
 		*获取纹理平铺和偏移。
 		*@param value 纹理平铺和偏移。
 		*/
@@ -65874,7 +63022,7 @@ var Laya=window.Laya=(function(window,document){
 				}else {
 				this._defineDatas.remove(laya.d3.core.material.PBRSpecularMaterial.SHADERDEFINE_TILINGOFFSET);
 			}
-			this._shaderValues.setVector(17,value);
+			this._shaderValues.setVector(18,value);
 		});
 
 		PBRSpecularMaterial.__init__=function(){
@@ -65916,7 +63064,8 @@ var Laya=window.Laya=(function(window,document){
 		PBRSpecularMaterial.NORMALSCALE=14;
 		PBRSpecularMaterial.PARALLAXSCALE=15;
 		PBRSpecularMaterial.ENABLEEMISSION=16;
-		PBRSpecularMaterial.TILINGOFFSET=17;
+		PBRSpecularMaterial.ENABLEREFLECT=17;
+		PBRSpecularMaterial.TILINGOFFSET=18;
 		__static(PBRSpecularMaterial,
 		['shaderDefines',function(){return this.shaderDefines=new ShaderDefines$1(BaseMaterial.shaderDefines);}
 		]);
@@ -65931,7 +63080,7 @@ var Laya=window.Laya=(function(window,document){
 	//class laya.d3.core.material.PBRStandardMaterial extends laya.d3.core.material.BaseMaterial
 	var PBRStandardMaterial=(function(_super){
 		function PBRStandardMaterial(){
-			PBRStandardMaterial.__super.call(this,18);
+			PBRStandardMaterial.__super.call(this,19);
 			this.setShaderName("PBRStandard");
 			this._shaderValues.setVector(7,new Vector4(1.0,1.0,1.0,1.0));
 			this._shaderValues.setVector(8,new Vector4(0.0,0.0,0.0,0.0));
@@ -65943,7 +63092,9 @@ var Laya=window.Laya=(function(window,document){
 			this._shaderValues.setNumber(14,1.0);
 			this._shaderValues.setNumber(15,0.001);
 			this._shaderValues.setBool(16,false);
+			this._shaderValues.setBool(17,true);
 			this._shaderValues.setNumber(0,0.5);
+			this._disablePublicDefineDatas.remove(Scene.SHADERDEFINE_REFLECTMAP);
 		}
 
 		__class(PBRStandardMaterial,'laya.d3.core.material.PBRStandardMaterial',_super);
@@ -66213,6 +63364,24 @@ var Laya=window.Laya=(function(window,document){
 		});
 
 		/**
+		*设置是否开启反射。
+		*@param value 是否开启反射。
+		*/
+		/**
+		*获取是否开启反射。
+		*@return 是否开启反射。
+		*/
+		__getset(0,__proto,'enableReflection',function(){
+			return this._shaderValues.getBool(17);
+			},function(value){
+			this._shaderValues.setBool(17,true);
+			if (value)
+				this._disablePublicDefineDatas.remove(Scene.SHADERDEFINE_REFLECTMAP);
+			else
+			this._disablePublicDefineDatas.add(Scene.SHADERDEFINE_REFLECTMAP);
+		});
+
+		/**
 		*获取纹理平铺和偏移。
 		*@param value 纹理平铺和偏移。
 		*/
@@ -66226,7 +63395,7 @@ var Laya=window.Laya=(function(window,document){
 				}else {
 				this._defineDatas.remove(laya.d3.core.material.PBRStandardMaterial.SHADERDEFINE_TILINGOFFSET);
 			}
-			this._shaderValues.setVector(17,value);
+			this._shaderValues.setVector(18,value);
 		});
 
 		PBRStandardMaterial.__init__=function(){
@@ -66238,6 +63407,7 @@ var Laya=window.Laya=(function(window,document){
 			PBRStandardMaterial.SHADERDEFINE_OCCLUSIONTEXTURE=PBRStandardMaterial.shaderDefines.registerDefine("OCCLUSIONTEXTURE");
 			PBRStandardMaterial.SHADERDEFINE_EMISSION=PBRStandardMaterial.shaderDefines.registerDefine("EMISSION");
 			PBRStandardMaterial.SHADERDEFINE_EMISSIONTEXTURE=PBRStandardMaterial.shaderDefines.registerDefine("EMISSIONTEXTURE");
+			PBRStandardMaterial.SHADERDEFINE_REFLECTMAP=PBRStandardMaterial.shaderDefines.registerDefine("REFLECTMAP");
 			PBRStandardMaterial.SHADERDEFINE_TILINGOFFSET=PBRStandardMaterial.shaderDefines.registerDefine("TILINGOFFSET");
 		}
 
@@ -66251,6 +63421,7 @@ var Laya=window.Laya=(function(window,document){
 		PBRStandardMaterial.SHADERDEFINE_PARALLAXTEXTURE=0;
 		PBRStandardMaterial.SHADERDEFINE_EMISSION=0;
 		PBRStandardMaterial.SHADERDEFINE_EMISSIONTEXTURE=0;
+		PBRStandardMaterial.SHADERDEFINE_REFLECTMAP=0;
 		PBRStandardMaterial.SHADERDEFINE_TILINGOFFSET=0;
 		PBRStandardMaterial.DIFFUSETEXTURE=1;
 		PBRStandardMaterial.METALLICGLOSSTEXTURE=2;
@@ -66268,7 +63439,8 @@ var Laya=window.Laya=(function(window,document){
 		PBRStandardMaterial.NORMALSCALE=14;
 		PBRStandardMaterial.PARALLAXSCALE=15;
 		PBRStandardMaterial.ENABLEEMISSION=16;
-		PBRStandardMaterial.TILINGOFFSET=17;
+		PBRStandardMaterial.ENABLEREFLECT=17;
+		PBRStandardMaterial.TILINGOFFSET=18;
 		__static(PBRStandardMaterial,
 		['shaderDefines',function(){return this.shaderDefines=new ShaderDefines$1(BaseMaterial.shaderDefines);}
 		]);
@@ -66357,482 +63529,6 @@ var Laya=window.Laya=(function(window,document){
 		['defaultMaterial',function(){return this.defaultMaterial=new SkyBoxMaterial();}
 		]);
 		return SkyBoxMaterial;
-	})(BaseMaterial)
-
-
-	/**
-	*...
-	*@author ...
-	*/
-	//class laya.d3.core.material.StandardMaterial extends laya.d3.core.material.BaseMaterial
-	var StandardMaterial=(function(_super){
-		function StandardMaterial(){
-			this._transformUV=null;
-			StandardMaterial.__super.call(this,16);
-			this.setShaderName("SIMPLE");
-			var sv=this._shaderValues;
-			sv.setVector(9,new Vector3(0.6,0.6,0.6));
-			sv.setVector(10,new Vector3(1.0,1.0,1.0));
-			sv.setVector(11,new Vector4(1.0,1.0,1.0,8.0));
-			sv.setVector(12,new Vector3(1.0,1.0,1.0));
-			sv.setVector(7,new Vector4(1.0,1.0,1.0,1.0));
-			sv.setNumber(0,0.5);
-			sv.setVector(15,new Vector4(1.0,1.0,0.0,0.0));
-			this.renderMode=1;
-		}
-
-		__class(StandardMaterial,'laya.d3.core.material.StandardMaterial',_super);
-		var __proto=StandardMaterial.prototype;
-		/**
-		*禁用灯光。
-		*/
-		__proto.disableLight=function(){
-			this._disablePublicDefineDatas.add(Scene.SHADERDEFINE_POINTLIGHT | Scene.SHADERDEFINE_SPOTLIGHT | Scene.SHADERDEFINE_DIRECTIONLIGHT);
-		}
-
-		/**
-		*禁用雾化。
-		*/
-		__proto.disableFog=function(){
-			this._disablePublicDefineDatas.add(Shader3D.SHADERDEFINE_FOG);
-		}
-
-		/**
-		*@inheritDoc
-		*/
-		__proto.cloneTo=function(destObject){
-			_super.prototype.cloneTo.call(this,destObject);
-			var dest=destObject;
-			(this._transformUV)&& (dest._transformUV=this._transformUV.clone());
-		}
-
-		/**
-		*设置环境光颜色。
-		*@param value 环境光颜色。
-		*/
-		__getset(0,__proto,'ambientColor',function(){
-			return this._shaderValues.getVector(9);
-			},function(value){
-			this._shaderValues.setVector(9,value);
-		});
-
-		/**
-		*获取环境贴图。
-		*@return 环境贴图。
-		*/
-		__getset(0,__proto,'ambientTexture',function(){
-			return this._shaderValues.getTexture(5);
-		});
-
-		/**
-		*设置渲染模式。
-		*@return 渲染模式。
-		*/
-		__getset(0,__proto,'renderMode',null,function(value){
-			var renderState=this.getRenderState();
-			switch (value){
-				case 1:
-					this.renderQueue=1;
-					renderState.depthWrite=true;
-					renderState.cull=2;
-					renderState.blend=0;
-					this.alphaTest=false;
-					this._defineDatas.remove(StandardMaterial.SHADERDEFINE_ADDTIVEFOG);
-					break ;
-				case 2:
-					this.renderQueue=1;
-					renderState.depthWrite=true;
-					renderState.cull=0;
-					renderState.blend=0;
-					this.alphaTest=false;
-					this._defineDatas.remove(StandardMaterial.SHADERDEFINE_ADDTIVEFOG);
-					break ;
-				case 3:
-					this.renderQueue=1;
-					renderState.depthWrite=true;
-					renderState.cull=2;
-					renderState.blend=0;
-					this.alphaTest=true;
-					this._defineDatas.remove(StandardMaterial.SHADERDEFINE_ADDTIVEFOG);
-					break ;
-				case 4:
-					this.renderQueue=1;
-					renderState.depthWrite=true;
-					renderState.cull=0;
-					renderState.blend=0;
-					this.alphaTest=true;
-					this._defineDatas.remove(StandardMaterial.SHADERDEFINE_ADDTIVEFOG);
-					break ;
-				case 13:
-					this.renderQueue=2;
-					renderState.depthWrite=true;
-					renderState.cull=2;
-					renderState.blend=1;
-					renderState.srcBlend=0x0302;
-					renderState.dstBlend=0x0303;
-					this.alphaTest=false;
-					this._defineDatas.remove(StandardMaterial.SHADERDEFINE_ADDTIVEFOG);
-					break ;
-				case 14:
-					this.renderQueue=2;
-					renderState.depthWrite=true;
-					renderState.cull=0;
-					renderState.blend=1;
-					renderState.srcBlend=0x0302;
-					renderState.dstBlend=0x0303;
-					this.alphaTest=false;
-					this._defineDatas.remove(StandardMaterial.SHADERDEFINE_ADDTIVEFOG);
-					break ;
-				case 15:
-					this.renderQueue=2;
-					renderState.depthWrite=true;
-					renderState.cull=2;
-					renderState.blend=1;
-					renderState.srcBlend=0x0302;
-					renderState.dstBlend=1;
-					this.alphaTest=false;
-					this._defineDatas.add(StandardMaterial.SHADERDEFINE_ADDTIVEFOG);
-					break ;
-				case 16:
-					this.renderQueue=2;
-					renderState.depthWrite=true;
-					renderState.cull=0;
-					renderState.blend=1;
-					renderState.srcBlend=0x0302;
-					renderState.dstBlend=1;
-					this.alphaTest=false;
-					this._defineDatas.add(StandardMaterial.SHADERDEFINE_ADDTIVEFOG);
-					break ;
-				case 5:
-					this.renderQueue=2;
-					renderState.depthWrite=false;
-					renderState.cull=2;
-					renderState.blend=1;
-					renderState.srcBlend=0x0302;
-					renderState.dstBlend=0x0303;
-					this.alphaTest=false;
-					this._defineDatas.remove(StandardMaterial.SHADERDEFINE_ADDTIVEFOG);
-					break ;
-				case 6:
-					this.renderQueue=2;
-					renderState.depthWrite=false;
-					renderState.cull=0;
-					renderState.blend=1;
-					renderState.srcBlend=0x0302;
-					renderState.dstBlend=0x0303;
-					this.alphaTest=false;
-					this._defineDatas.remove(StandardMaterial.SHADERDEFINE_ADDTIVEFOG);
-					break ;
-				case 7:
-					this.renderQueue=2;
-					renderState.depthWrite=false;
-					renderState.cull=2;
-					renderState.blend=1;
-					renderState.srcBlend=0x0302;
-					renderState.dstBlend=1;
-					this.alphaTest=false;
-					this._defineDatas.add(StandardMaterial.SHADERDEFINE_ADDTIVEFOG);
-					break ;
-				case 8:
-					this.renderQueue=2;
-					renderState.depthWrite=false;
-					renderState.cull=0;
-					renderState.blend=1;
-					renderState.srcBlend=0x0302;
-					renderState.dstBlend=1;
-					renderState.alphaTest=false;
-					this._defineDatas.add(StandardMaterial.SHADERDEFINE_ADDTIVEFOG);
-					break ;
-				case 9:
-					this.renderQueue=2;
-					renderState.depthTest=0x0201;
-					renderState.cull=2;
-					renderState.blend=1;
-					renderState.srcBlend=0x0302;
-					renderState.dstBlend=0x0303;
-					renderState.alphaTest=false;
-					this._defineDatas.remove(StandardMaterial.SHADERDEFINE_ADDTIVEFOG);
-					break ;
-				case 10:
-					this.renderQueue=2;
-					renderState.depthTest=0x0201;
-					renderState.cull=0;
-					renderState.blend=1;
-					renderState.srcBlend=0x0302;
-					renderState.dstBlend=0x0303;
-					this.alphaTest=false;
-					this._defineDatas.remove(StandardMaterial.SHADERDEFINE_ADDTIVEFOG);
-					break ;
-				case 11:
-					this.renderQueue=2;
-					renderState.depthTest=0x0201;
-					renderState.cull=2;
-					renderState.blend=1;
-					renderState.srcBlend=0x0302;
-					renderState.dstBlend=1;
-					this.alphaTest=false;
-					this._defineDatas.add(StandardMaterial.SHADERDEFINE_ADDTIVEFOG);
-					break ;
-				case 12:
-					this.renderQueue=2;
-					renderState.depthTest=0x0201;
-					renderState.cull=0;
-					renderState.blend=1;
-					renderState.srcBlend=0x0302;
-					renderState.dstBlend=1;
-					this.alphaTest=false;
-					this._defineDatas.add(StandardMaterial.SHADERDEFINE_ADDTIVEFOG);
-					break ;
-				default :
-					throw new Error("Material:renderMode value error.");
-				}
-		});
-
-		/**
-		*设置反射颜色。
-		*@param value 反射颜色。
-		*/
-		__getset(0,__proto,'reflectColor',function(){
-			return this._shaderValues.getVector(12);
-			},function(value){
-			this._shaderValues.setVector(12,value);
-		});
-
-		/**
-		*获取纹理平铺和偏移。
-		*@param value 纹理平铺和偏移。
-		*/
-		/**
-		*获取纹理平铺和偏移。
-		*@return 纹理平铺和偏移。
-		*/
-		__getset(0,__proto,'tilingOffset',function(){
-			return this._shaderValues.getVector(15);
-			},function(value){
-			if (value){
-				var valueE=value.elements;
-				if (valueE[0] !=1 || valueE[1] !=1 || valueE[2] !=0 || valueE[3] !=0)
-					this._defineDatas.add(laya.d3.core.material.StandardMaterial.SHADERDEFINE_TILINGOFFSET);
-				else
-				this._defineDatas.remove(laya.d3.core.material.StandardMaterial.SHADERDEFINE_TILINGOFFSET);
-				}else {
-				this._defineDatas.remove(laya.d3.core.material.StandardMaterial.SHADERDEFINE_TILINGOFFSET);
-			}
-			this._shaderValues.setVector(15,value);
-		});
-
-		/**
-		*设置反射率。
-		*@param value 反射率。
-		*/
-		__getset(0,__proto,'albedo',function(){
-			return this._shaderValues.getVector(7);
-			},function(value){
-			this._shaderValues.setVector(7,value);
-		});
-
-		/**
-		*设置漫反射光颜色。
-		*@param value 漫反射光颜色。
-		*/
-		__getset(0,__proto,'diffuseColor',function(){
-			return this._shaderValues.getVector(10);
-			},function(value){
-			this._shaderValues.setVector(10,value);
-		});
-
-		/**
-		*设置反射率。
-		*@param value 反射率。
-		*/
-		__getset(0,__proto,'albedoColor',function(){
-			return this._shaderValues.getVector(7);
-			},function(value){
-			this._shaderValues.setVector(7,value);
-		});
-
-		/**
-		*设置高光颜色。
-		*@param value 高光颜色。
-		*/
-		__getset(0,__proto,'specularColor',function(){
-			return this._shaderValues.getVector(11);
-			},function(value){
-			this._shaderValues.setVector(11,value);
-		});
-
-		/**
-		*设置漫反射贴图。
-		*@param value 漫反射贴图。
-		*/
-		/**
-		*获取漫反射贴图。
-		*@return 漫反射贴图。
-		*/
-		__getset(0,__proto,'diffuseTexture',function(){
-			return this._shaderValues.getTexture(1);
-			},function(value){
-			if (value){
-				this._defineDatas.add(laya.d3.core.material.StandardMaterial.SHADERDEFINE_DIFFUSEMAP);
-				}else {
-				this._defineDatas.remove(laya.d3.core.material.StandardMaterial.SHADERDEFINE_DIFFUSEMAP);
-			}
-			this._shaderValues.setTexture(1,value);
-		});
-
-		/**
-		*设置法线贴图。
-		*@param value 法线贴图。
-		*/
-		/**
-		*获取法线贴图。
-		*@return 法线贴图。
-		*/
-		__getset(0,__proto,'normalTexture',function(){
-			return this._shaderValues.getTexture(2);
-			},function(value){
-			if (value){
-				this._defineDatas.add(laya.d3.core.material.StandardMaterial.SHADERDEFINE_NORMALMAP);
-				}else {
-				this._defineDatas.remove(laya.d3.core.material.StandardMaterial.SHADERDEFINE_NORMALMAP);
-			}
-			this._shaderValues.setTexture(2,value);
-		});
-
-		/**
-		*设置高光贴图。
-		*@param value 高光贴图。
-		*/
-		/**
-		*获取高光贴图。
-		*@return 高光贴图。
-		*/
-		__getset(0,__proto,'specularTexture',function(){
-			return this._shaderValues.getTexture(3);
-			},function(value){
-			if (value){
-				this._defineDatas.add(laya.d3.core.material.StandardMaterial.SHADERDEFINE_SPECULARMAP);
-				}else {
-				this._defineDatas.remove(laya.d3.core.material.StandardMaterial.SHADERDEFINE_SPECULARMAP);
-			}
-			this._shaderValues.setTexture(3,value);
-		});
-
-		/**
-		*设置放射贴图。
-		*@param value 放射贴图。
-		*/
-		/**
-		*获取放射贴图。
-		*@return 放射贴图。
-		*/
-		__getset(0,__proto,'emissiveTexture',function(){
-			return this._shaderValues.getTexture(4);
-			},function(value){
-			if (value){
-				this._defineDatas.add(laya.d3.core.material.StandardMaterial.SHADERDEFINE_EMISSIVEMAP);
-				}else {
-				this._defineDatas.remove(laya.d3.core.material.StandardMaterial.SHADERDEFINE_EMISSIVEMAP);
-			}
-			this._shaderValues.setTexture(4,value);
-		});
-
-		/**
-		*设置反射贴图。
-		*@param value 反射贴图。
-		*/
-		/**
-		*获取反射贴图。
-		*@return 反射贴图。
-		*/
-		__getset(0,__proto,'reflectTexture',function(){
-			return this._shaderValues.getTexture(6);
-			},function(value){
-			if (value){
-				this._defineDatas.add(laya.d3.core.material.StandardMaterial.SHADERDEFINE_REFLECTMAP);
-				}else {
-				this._defineDatas.remove(laya.d3.core.material.StandardMaterial.SHADERDEFINE_REFLECTMAP);
-			}
-			this._shaderValues.setTexture(6,value);
-		});
-
-		/**
-		*设置UV变换。
-		*@param value UV变换。
-		*/
-		/**
-		*获取UV变换。
-		*@return UV变换。
-		*/
-		__getset(0,__proto,'transformUV',function(){
-			return this._transformUV;
-			},function(value){
-			this._transformUV=value;
-			this._shaderValues.setMatrix4x4(13,value.matrix);
-			if (value)
-				this._defineDatas.add(laya.d3.core.material.StandardMaterial.SHADERDEFINE_UVTRANSFORM);
-			else
-			this._defineDatas.remove(laya.d3.core.material.StandardMaterial.SHADERDEFINE_UVTRANSFORM);
-		});
-
-		StandardMaterial.__init__=function(){
-			StandardMaterial.SHADERDEFINE_DIFFUSEMAP=StandardMaterial.shaderDefines.registerDefine("DIFFUSEMAP");
-			StandardMaterial.SHADERDEFINE_NORMALMAP=StandardMaterial.shaderDefines.registerDefine("NORMALMAP");
-			StandardMaterial.SHADERDEFINE_SPECULARMAP=StandardMaterial.shaderDefines.registerDefine("SPECULARMAP");
-			StandardMaterial.SHADERDEFINE_EMISSIVEMAP=StandardMaterial.shaderDefines.registerDefine("EMISSIVEMAP");
-			StandardMaterial.SHADERDEFINE_REFLECTMAP=StandardMaterial.shaderDefines.registerDefine("REFLECTMAP");
-			StandardMaterial.SHADERDEFINE_UVTRANSFORM=StandardMaterial.shaderDefines.registerDefine("UVTRANSFORM");
-			StandardMaterial.SHADERDEFINE_TILINGOFFSET=StandardMaterial.shaderDefines.registerDefine("TILINGOFFSET");
-			StandardMaterial.SHADERDEFINE_ADDTIVEFOG=StandardMaterial.shaderDefines.registerDefine("ADDTIVEFOG");
-		}
-
-		StandardMaterial.load=function(url){
-			return Laya.loader.create(url,null,null,StandardMaterial);
-		}
-
-		StandardMaterial.RENDERMODE_OPAQUE=1;
-		StandardMaterial.RENDERMODE_OPAQUEDOUBLEFACE=2;
-		StandardMaterial.RENDERMODE_CUTOUT=3;
-		StandardMaterial.RENDERMODE_CUTOUTDOUBLEFACE=4;
-		StandardMaterial.RENDERMODE_TRANSPARENT=13;
-		StandardMaterial.RENDERMODE_TRANSPARENTDOUBLEFACE=14;
-		StandardMaterial.RENDERMODE_ADDTIVE=15;
-		StandardMaterial.RENDERMODE_ADDTIVEDOUBLEFACE=16;
-		StandardMaterial.RENDERMODE_DEPTHREAD_TRANSPARENT=5;
-		StandardMaterial.RENDERMODE_DEPTHREAD_TRANSPARENTDOUBLEFACE=6;
-		StandardMaterial.RENDERMODE_DEPTHREAD_ADDTIVE=7;
-		StandardMaterial.RENDERMODE_DEPTHREAD_ADDTIVEDOUBLEFACE=8;
-		StandardMaterial.RENDERMODE_NONDEPTH_TRANSPARENT=9;
-		StandardMaterial.RENDERMODE_NONDEPTH_TRANSPARENTDOUBLEFACE=10;
-		StandardMaterial.RENDERMODE_NONDEPTH_ADDTIVE=11;
-		StandardMaterial.RENDERMODE_NONDEPTH_ADDTIVEDOUBLEFACE=12;
-		StandardMaterial.SHADERDEFINE_DIFFUSEMAP=0;
-		StandardMaterial.SHADERDEFINE_NORMALMAP=0;
-		StandardMaterial.SHADERDEFINE_SPECULARMAP=0;
-		StandardMaterial.SHADERDEFINE_EMISSIVEMAP=0;
-		StandardMaterial.SHADERDEFINE_REFLECTMAP=0;
-		StandardMaterial.SHADERDEFINE_UVTRANSFORM=0;
-		StandardMaterial.SHADERDEFINE_TILINGOFFSET=0;
-		StandardMaterial.SHADERDEFINE_ADDTIVEFOG=0;
-		StandardMaterial.DIFFUSETEXTURE=1;
-		StandardMaterial.NORMALTEXTURE=2;
-		StandardMaterial.SPECULARTEXTURE=3;
-		StandardMaterial.EMISSIVETEXTURE=4;
-		StandardMaterial.AMBIENTTEXTURE=5;
-		StandardMaterial.REFLECTTEXTURE=6;
-		StandardMaterial.ALBEDO=7;
-		StandardMaterial.UVANIAGE=8;
-		StandardMaterial.MATERIALAMBIENT=9;
-		StandardMaterial.MATERIALDIFFUSE=10;
-		StandardMaterial.MATERIALSPECULAR=11;
-		StandardMaterial.MATERIALREFLECT=12;
-		StandardMaterial.UVMATRIX=13;
-		StandardMaterial.UVAGE=14;
-		StandardMaterial.TILINGOFFSET=15;
-		__static(StandardMaterial,
-		['defaultMaterial',function(){return this.defaultMaterial=new StandardMaterial();},'shaderDefines',function(){return this.shaderDefines=new ShaderDefines$1(BaseMaterial.shaderDefines);}
-		]);
-		return StandardMaterial;
 	})(BaseMaterial)
 
 
@@ -66933,14 +63629,14 @@ var Laya=window.Laya=(function(window,document){
 			var renderState=this.getRenderState();
 			switch (value){
 				case 1:
-					this.renderQueue=1;
+					this.renderQueue=1000;
 					renderState.depthWrite=true;
 					renderState.cull=2;
 					renderState.blend=0;
 					renderState.depthTest=0x0201;
 					break ;
 				case 2:
-					this.renderQueue=1;
+					this.renderQueue=1000;
 					renderState.depthWrite=false;
 					renderState.cull=2;
 					renderState.blend=1;
@@ -67084,389 +63780,6 @@ var Laya=window.Laya=(function(window,document){
 	})(BaseMaterial)
 
 
-	//class laya.d3.core.material.WaterMaterial extends laya.d3.core.material.BaseMaterial
-	var WaterMaterial=(function(_super){
-		function WaterMaterial(){
-			this._useVertexDeep=false;
-			WaterMaterial.__super.call(this,21);
-			this.setShaderName("Water");
-		}
-
-		__class(WaterMaterial,'laya.d3.core.material.WaterMaterial',_super);
-		var __proto=WaterMaterial.prototype;
-		/**
-		*禁用雾化。
-		*/
-		__proto.disableFog=function(){
-			this._disablePublicDefineDatas.add(Shader3D.SHADERDEFINE_FOG);
-		}
-
-		/**
-		*设置漫反射贴图。
-		*@param value 漫反射贴图。
-		*/
-		/**
-		*获取漫反射贴图。
-		*@return 漫反射贴图。
-		*/
-		__getset(0,__proto,'diffuseTexture',function(){
-			return this._shaderValues.getTexture(1);
-			},function(value){
-			this._shaderValues.setTexture(1,value);
-		});
-
-		/**
-		*设置法线贴图。
-		*@param value 法线贴图。
-		*/
-		/**
-		*获取法线贴图。
-		*@return 法线贴图。
-		*/
-		__getset(0,__proto,'normalTexture',function(){
-			return this._shaderValues.getTexture(2);
-			},function(value){
-			this._shaderValues.setTexture(2,value);
-		});
-
-		__getset(0,__proto,'underWaterTexture',function(){
-			return this._shaderValues.getTexture(3);
-			},function(value){
-			this._shaderValues.setTexture(3,value);
-		});
-
-		__getset(0,__proto,'deepColorTexture',function(){
-			return this._shaderValues.getTexture(10);
-			},function(v){
-			this._shaderValues.setTexture(10,v);
-		});
-
-		__getset(0,__proto,'useFoam',null,function(v){
-			if (v){
-				this._defineDatas.add(WaterMaterial.SHADERDEFINE_USE_FOAM);
-				}else {
-				this._defineDatas.remove(WaterMaterial.SHADERDEFINE_USE_FOAM);
-			}
-		});
-
-		__getset(0,__proto,'skyTexture',function(){
-			return this._shaderValues.getTexture(11);
-			},function(v){
-			this._shaderValues.setTexture(11,v);
-		});
-
-		__getset(0,__proto,'deepScale',function(){
-			return this._shaderValues.getNumber(20);
-			},function(v){
-			this._shaderValues.setNumber(20,v);
-		});
-
-		__getset(0,__proto,'detailTexture',function(){
-			return this._shaderValues.getTexture(9);
-			},function(value){
-			this._shaderValues.setTexture(9,value);
-		});
-
-		__getset(0,__proto,'foamTexture',function(){
-			return this._shaderValues.getTexture(17);
-			},function(v){
-			this._shaderValues.setTexture(17,v);
-		});
-
-		__getset(0,__proto,'waterInfoTexture',function(){
-			return this._shaderValues.getTexture(16);
-			},function(v){
-			this._shaderValues.setTexture(16,v);
-		});
-
-		/**
-		*对定点进行变换的纹理。现在不用
-		*/
-		__getset(0,__proto,'vertexDispTexture',function(){
-			return this._shaderValues.getTexture(4);
-			},function(value){
-			this._shaderValues.setTexture(4,value);
-		});
-
-		__getset(0,__proto,'currentTm',function(){
-			return this._shaderValues.getNumber(8);
-			},function(v){
-			this._shaderValues.setNumber(8,v);
-		});
-
-		__getset(0,__proto,'waveInfo',function(){
-			return this._shaderValues.getBuffer(12);
-			},function(v){
-			this._shaderValues.setBuffer(12,v);
-		});
-
-		__getset(0,__proto,'waveInfoD',function(){
-			return this._shaderValues.getBuffer(13);
-			},function(v){
-			this._shaderValues.setBuffer(13,v);
-		});
-
-		__getset(0,__proto,'waveMainDir',function(){
-			return this._shaderValues.getNumber(14);
-			},function(deg){
-			this._shaderValues.setNumber(14,deg *Math.PI / 180);
-		});
-
-		__getset(0,__proto,'geoWaveUVScale',function(){
-			return this._shaderValues.getNumber(18);
-			},function(v){
-			this._shaderValues.setNumber(18,v);
-		});
-
-		__getset(0,__proto,'windSpeed',function(){
-			return 0;
-			},function(s){
-		});
-
-		__getset(0,__proto,'scrsize',null,function(v){
-			this._shaderValues.setBuffer(15,v);
-		});
-
-		__getset(0,__proto,'seaColor',function(){
-			return this._shaderValues.getBuffer(19);
-			},function(v){
-			this._shaderValues.setBuffer(19,v);
-		});
-
-		__getset(0,__proto,'useVertexDeep',function(){
-			return this._useVertexDeep;
-			},function(v){
-			this._useVertexDeep=v;
-			if (v)
-				this._defineDatas.add(WaterMaterial.SHADERDEFINE_USEVERTEXHEIGHT);
-			else {
-				this._defineDatas.remove(WaterMaterial.SHADERDEFINE_USEVERTEXHEIGHT);
-			}
-		});
-
-		__getset(0,__proto,'windDir',function(){
-			return 0;
-			},function(d){
-		});
-
-		__getset(0,__proto,'useRefractTexture',null,function(v){
-			if (v){
-				this._defineDatas.add(WaterMaterial.SHADERDEFINE_USE_REFRACT_TEX);
-				}else {
-				this._defineDatas.remove(WaterMaterial.SHADERDEFINE_USE_REFRACT_TEX);
-			}
-		});
-
-		__getset(0,__proto,'renderMode',null,function(value){
-			var renderState=this.getRenderState();
-			switch (value){
-				case 1:
-					this.renderQueue=1;
-					renderState.depthWrite=true;
-					renderState.cull=2;
-					renderState.blend=0;
-					this.alphaTest=false;
-					break ;
-				case 2:
-					this.renderQueue=1;
-					renderState.depthWrite=true;
-					renderState.cull=0;
-					renderState.blend=0;
-					this.alphaTest=false;
-					break ;
-				case 3:
-					renderState.depthWrite=true;
-					renderState.cull=2;
-					renderState.blend=0;
-					this.renderQueue=1;
-					break ;
-				case 13:
-					this.renderQueue=2;
-					renderState.depthWrite=true;
-					renderState.cull=2;
-					renderState.blend=1;
-					renderState.srcBlend=0x0302;
-					renderState.dstBlend=0x0303;
-					break ;
-				default :
-					throw new Error("PBRMaterial:renderMode value error.");
-				}
-		});
-
-		WaterMaterial.__init__=function(){
-			WaterMaterial.SHADERDEFINE_CUBE_ENV=WaterMaterial.shaderDefines.registerDefine("CUBE_ENV");
-			WaterMaterial.SHADERDEFINE_HDR_ENV=WaterMaterial.shaderDefines.registerDefine("HDR_ENV");
-			WaterMaterial.SHADERDEFINE_SHOW_NORMAL=WaterMaterial.shaderDefines.registerDefine("SHOW_NORMAL");
-			WaterMaterial.SHADERDEFINE_USEVERTEXHEIGHT=WaterMaterial.shaderDefines.registerDefine("USE_VERTEX_DEEPINFO");
-			WaterMaterial.SHADERDEFINE_USE_FOAM=WaterMaterial.shaderDefines.registerDefine("USE_FOAM");
-			WaterMaterial.SHADERDEFINE_USE_REFRACT_TEX=WaterMaterial.shaderDefines.registerDefine("USE_REFR_TEX");
-		}
-
-		WaterMaterial.load=function(url){
-			return Laya.loader.create(url,null,null,WaterMaterial);
-		}
-
-		WaterMaterial.DIFFUSETEXTURE=1;
-		WaterMaterial.NORMALTEXTURE=2;
-		WaterMaterial.UNDERWATERTEXTURE=3;
-		WaterMaterial.VERTEXDISPTEXTURE=4;
-		WaterMaterial.UVANIAGE=5;
-		WaterMaterial.UVMATRIX=6;
-		WaterMaterial.UVAGE=7;
-		WaterMaterial.CURTM=8;
-		WaterMaterial.DETAILTEXTURE=9;
-		WaterMaterial.DEEPCOLORTEXTURE=10;
-		WaterMaterial.SKYTEXTURE=11;
-		WaterMaterial.WAVEINFO=12;
-		WaterMaterial.WAVEINFOD=13;
-		WaterMaterial.WAVEMAINDIR=14;
-		WaterMaterial.SCRSIZE=15;
-		WaterMaterial.WATERINFO=16;
-		WaterMaterial.FOAMTEXTURE=17;
-		WaterMaterial.GEOWAVE_UV_SCALE=18;
-		WaterMaterial.SEA_COLOR=19;
-		WaterMaterial.WAVEINFODEEPSCALE=20;
-		WaterMaterial.SHADERDEFINE_SHOW_NORMAL=0;
-		WaterMaterial.SHADERDEFINE_CUBE_ENV=0;
-		WaterMaterial.SHADERDEFINE_HDR_ENV=0;
-		WaterMaterial.SHADERDEFINE_USE_FOAM=0;
-		WaterMaterial.SHADERDEFINE_USE_REFRACT_TEX=0;
-		WaterMaterial.SHADERDEFINE_USEVERTEXHEIGHT=0;
-		WaterMaterial.RENDERMODE_OPAQUE=1;
-		WaterMaterial.RENDERMODE_OPAQUEDOUBLEFACE=2;
-		WaterMaterial.RENDERMODE_CUTOUT=3;
-		WaterMaterial.RENDERMODE_CUTOUTDOUBLEFACE=4;
-		WaterMaterial.RENDERMODE_TRANSPARENT=13;
-		__static(WaterMaterial,
-		['defaultMaterial',function(){return this.defaultMaterial=new WaterMaterial();},'shaderDefines',function(){return this.shaderDefines=new ShaderDefines$1(BaseMaterial.shaderDefines);}
-		]);
-		return WaterMaterial;
-	})(BaseMaterial)
-
-
-	/**
-	*<code>VertexBuffer3D</code> 类用于创建顶点缓冲。
-	*/
-	//class laya.d3.graphics.VertexBuffer3D extends laya.webgl.utils.Buffer
-	var VertexBuffer3D=(function(_super){
-		function VertexBuffer3D(byteLength,bufferUsage,canRead){
-			this._vertexCount=0;
-			this._canRead=false;
-			this._vertexDeclaration=null;
-			(canRead===void 0)&& (canRead=false);
-			VertexBuffer3D.__super.call(this);
-			this._vertexCount=-1;
-			this._bufferUsage=bufferUsage;
-			this._bufferType=0x8892;
-			this._canRead=canRead;
-			this.memorySize=this._byteLength=byteLength;
-			this.bind();
-			LayaGL.instance.bufferData(this._bufferType,this._byteLength,this._bufferUsage);
-			canRead && (this._buffer=new Float32Array(this._byteLength / 4));
-		}
-
-		__class(VertexBuffer3D,'laya.d3.graphics.VertexBuffer3D',_super);
-		var __proto=VertexBuffer3D.prototype;
-		/**
-		*和索引缓冲一起绑定。
-		*@param ib 索引缓冲。
-		*/
-		__proto.bindWithIndexBuffer=function(ib){
-			(ib)&& (ib.bind());
-			this.bind();
-		}
-
-		/**
-		*设置数据。
-		*@param data 顶点数据。
-		*@param bufferOffset 顶点缓冲中的偏移。
-		*@param dataStartIndex 顶点数据的偏移。
-		*@param dataCount 顶点数据的数量。
-		*/
-		__proto.setData=function(data,bufferOffset,dataStartIndex,dataCount){
-			(bufferOffset===void 0)&& (bufferOffset=0);
-			(dataStartIndex===void 0)&& (dataStartIndex=0);
-			(dataCount===void 0)&& (dataCount=4294967295);
-			if (dataStartIndex!==0 || dataCount!==4294967295)
-				data=new Float32Array(data.buffer,dataStartIndex *4,dataCount);
-			this.bind();
-			LayaGL.instance.bufferSubData(this._bufferType,bufferOffset *4,data);
-			if (this._canRead){
-				if (bufferOffset!==0 || dataStartIndex!==0 || dataCount!==4294967295){
-					var maxLength=this._buffer.length-bufferOffset;
-					if (dataCount > maxLength)
-						dataCount=maxLength;
-					for (var i=0;i < dataCount;i++)
-					this._buffer[bufferOffset+i]=data[i];
-					}else {
-					this._buffer=data;
-				}
-			}
-		}
-
-		/**
-		*获取顶点数据。
-		*@return 顶点数据。
-		*/
-		__proto.getData=function(){
-			if (this._canRead)
-				return this._buffer;
-			else
-			throw new Error("Can't read data from VertexBuffer with only write flag!");
-		}
-
-		/**销毁顶点缓冲。*/
-		__proto.disposeResource=function(){
-			var gl=LayaGL.instance;
-			var elements=this._vertexDeclaration.vertexElements;
-			var enableAtributes=Buffer._bindedAtributeBuffer;
-			for (var i=0,n=elements.length;i < n;i++){
-				if (enableAtributes[i]===this._glBuffer){
-					gl.disableVertexAttribArray(i);
-					enableAtributes[i]=null;
-				}
-			}
-			_super.prototype.disposeResource.call(this);
-			this._buffer=null;
-			this._vertexDeclaration=null;
-			this.memorySize=0;
-		}
-
-		/**
-		*获取顶点声明。
-		*/
-		/**
-		*获取顶点声明。
-		*/
-		__getset(0,__proto,'vertexDeclaration',function(){
-			return this._vertexDeclaration;
-			},function(value){
-			if (this._vertexDeclaration!==value){
-				this._vertexDeclaration=value;
-				this._vertexCount=value ? this._byteLength / value.vertexStride :-1;
-			}
-		});
-
-		/**
-		*获取顶点个数。
-		*@return 顶点个数。
-		*/
-		__getset(0,__proto,'vertexCount',function(){
-			return this._vertexCount;
-		});
-
-		/**
-		*获取是否可读。
-		*@return 是否可读。
-		*/
-		__getset(0,__proto,'canRead',function(){
-			return this._canRead;
-		});
-
-		return VertexBuffer3D;
-	})(Buffer)
-
-
 	/**
 	*...
 	*@author ...
@@ -67489,7 +63802,7 @@ var Laya=window.Laya=(function(window,document){
 			var renderState=this.getRenderState();
 			switch (value){
 				case 1:
-					this.renderQueue=1;
+					this.renderQueue=1000;
 					renderState.depthWrite=true;
 					renderState.cull=2;
 					renderState.blend=0;
@@ -67497,7 +63810,7 @@ var Laya=window.Laya=(function(window,document){
 					this._defineDatas.remove(ShurikenParticleMaterial.SHADERDEFINE_ADDTIVEFOG);
 					break ;
 				case 2:
-					this.renderQueue=1;
+					this.renderQueue=1000;
 					renderState.depthWrite=true;
 					renderState.cull=0;
 					renderState.blend=0;
@@ -67505,7 +63818,7 @@ var Laya=window.Laya=(function(window,document){
 					this._defineDatas.remove(ShurikenParticleMaterial.SHADERDEFINE_ADDTIVEFOG);
 					break ;
 				case 3:
-					this.renderQueue=1;
+					this.renderQueue=BaseMaterial.SHADERDEFINE_ALPHATEST;
 					renderState.depthWrite=true;
 					renderState.cull=2;
 					renderState.blend=0;
@@ -67513,7 +63826,7 @@ var Laya=window.Laya=(function(window,document){
 					this._defineDatas.remove(ShurikenParticleMaterial.SHADERDEFINE_ADDTIVEFOG);
 					break ;
 				case 4:
-					this.renderQueue=1;
+					this.renderQueue=2000;
 					renderState.depthWrite=true;
 					renderState.cull=0;
 					renderState.blend=0;
@@ -67521,7 +63834,7 @@ var Laya=window.Laya=(function(window,document){
 					this._defineDatas.remove(ShurikenParticleMaterial.SHADERDEFINE_ADDTIVEFOG);
 					break ;
 				case 13:
-					this.renderQueue=2;
+					this.renderQueue=3000;
 					renderState.depthWrite=true;
 					renderState.cull=2;
 					renderState.blend=1;
@@ -67531,7 +63844,7 @@ var Laya=window.Laya=(function(window,document){
 					this._defineDatas.remove(ShurikenParticleMaterial.SHADERDEFINE_ADDTIVEFOG);
 					break ;
 				case 14:
-					this.renderQueue=2;
+					this.renderQueue=3000;
 					renderState.depthWrite=true;
 					renderState.cull=0;
 					renderState.blend=1;
@@ -67541,7 +63854,7 @@ var Laya=window.Laya=(function(window,document){
 					this._defineDatas.remove(ShurikenParticleMaterial.SHADERDEFINE_ADDTIVEFOG);
 					break ;
 				case 15:
-					this.renderQueue=2;
+					this.renderQueue=3000;
 					renderState.depthWrite=true;
 					renderState.cull=2;
 					renderState.blend=1;
@@ -67551,7 +63864,7 @@ var Laya=window.Laya=(function(window,document){
 					this._defineDatas.add(ShurikenParticleMaterial.SHADERDEFINE_ADDTIVEFOG);
 					break ;
 				case 16:
-					this.renderQueue=2;
+					this.renderQueue=3000;
 					renderState.depthWrite=true;
 					renderState.cull=0;
 					renderState.blend=1;
@@ -67561,7 +63874,7 @@ var Laya=window.Laya=(function(window,document){
 					this._defineDatas.add(ShurikenParticleMaterial.SHADERDEFINE_ADDTIVEFOG);
 					break ;
 				case 5:
-					this.renderQueue=2;
+					this.renderQueue=3000;
 					renderState.depthWrite=false;
 					renderState.cull=2;
 					renderState.blend=1;
@@ -67571,7 +63884,7 @@ var Laya=window.Laya=(function(window,document){
 					this._defineDatas.remove(ShurikenParticleMaterial.SHADERDEFINE_ADDTIVEFOG);
 					break ;
 				case 6:
-					this.renderQueue=2;
+					this.renderQueue=3000;
 					renderState.depthWrite=false;
 					renderState.cull=0;
 					renderState.blend=1;
@@ -67581,7 +63894,7 @@ var Laya=window.Laya=(function(window,document){
 					this._defineDatas.remove(ShurikenParticleMaterial.SHADERDEFINE_ADDTIVEFOG);
 					break ;
 				case 7:
-					this.renderQueue=2;
+					this.renderQueue=3000;
 					renderState.depthWrite=false;
 					renderState.cull=2;
 					renderState.blend=1;
@@ -67591,7 +63904,7 @@ var Laya=window.Laya=(function(window,document){
 					this._defineDatas.add(ShurikenParticleMaterial.SHADERDEFINE_ADDTIVEFOG);
 					break ;
 				case 8:
-					this.renderQueue=2;
+					this.renderQueue=3000;
 					renderState.depthWrite=false;
 					renderState.cull=0;
 					renderState.blend=1;
@@ -67601,7 +63914,7 @@ var Laya=window.Laya=(function(window,document){
 					this._defineDatas.add(ShurikenParticleMaterial.SHADERDEFINE_ADDTIVEFOG);
 					break ;
 				case 9:
-					this.renderQueue=2;
+					this.renderQueue=3000;
 					renderState.depthTest=RenderQueue.DEPTHTEST_LESS;
 					renderState.cull=2;
 					renderState.blend=1;
@@ -67611,7 +63924,7 @@ var Laya=window.Laya=(function(window,document){
 					this._defineDatas.remove(ShurikenParticleMaterial.SHADERDEFINE_ADDTIVEFOG);
 					break ;
 				case 10:
-					this.renderQueue=2;
+					this.renderQueue=3000;
 					renderState.depthTest=0x0201;
 					renderState.cull=0;
 					renderState.blend=1;
@@ -67621,7 +63934,7 @@ var Laya=window.Laya=(function(window,document){
 					this._defineDatas.remove(ShurikenParticleMaterial.SHADERDEFINE_ADDTIVEFOG);
 					break ;
 				case 11:
-					this.renderQueue=2;
+					this.renderQueue=3000;
 					renderState.depthTest=0x0201;
 					renderState.cull=2;
 					renderState.blend=1;
@@ -67631,7 +63944,7 @@ var Laya=window.Laya=(function(window,document){
 					this._defineDatas.add(ShurikenParticleMaterial.SHADERDEFINE_ADDTIVEFOG);
 					break ;
 				case 12:
-					this.renderQueue=2;
+					this.renderQueue=3000;
 					renderState.depthTest=RenderQueue.DEPTHTEST_LESS;
 					renderState.cull=0;
 					renderState.blend=1;
@@ -67742,6 +64055,223 @@ var Laya=window.Laya=(function(window,document){
 		['defaultMaterial',function(){return this.defaultMaterial=new ShurikenParticleMaterial();},'shaderDefines',function(){return this.shaderDefines=new ShaderDefines$1(BaseMaterial.shaderDefines);}
 		]);
 		return ShurikenParticleMaterial;
+	})(BaseMaterial)
+
+
+	/**
+	*<code>VertexBuffer3D</code> 类用于创建顶点缓冲。
+	*/
+	//class laya.d3.graphics.VertexBuffer3D extends laya.webgl.utils.Buffer
+	var VertexBuffer3D=(function(_super){
+		function VertexBuffer3D(byteLength,bufferUsage,canRead){
+			this._vertexCount=0;
+			this._canRead=false;
+			this._vertexDeclaration=null;
+			(canRead===void 0)&& (canRead=false);
+			VertexBuffer3D.__super.call(this);
+			this._vertexCount=-1;
+			this._bufferUsage=bufferUsage;
+			this._bufferType=0x8892;
+			this._canRead=canRead;
+			this.memorySize=this._byteLength=byteLength;
+			this.bind();
+			LayaGL.instance.bufferData(this._bufferType,this._byteLength,this._bufferUsage);
+			canRead && (this._buffer=new Float32Array(this._byteLength / 4));
+		}
+
+		__class(VertexBuffer3D,'laya.d3.graphics.VertexBuffer3D',_super);
+		var __proto=VertexBuffer3D.prototype;
+		/**
+		*@inheritDoc
+		*/
+		__proto.bind=function(){
+			if (Buffer._bindedVertexBuffer!==this._glBuffer){
+				LayaGL.instance.bindBuffer(0x8892,this._glBuffer);
+				Buffer._bindedVertexBuffer=this._glBuffer;
+				return true;
+				}else {
+				return false;
+			}
+		}
+
+		/**
+		*设置数据。
+		*@param data 顶点数据。
+		*@param bufferOffset 顶点缓冲中的偏移。
+		*@param dataStartIndex 顶点数据的偏移。
+		*@param dataCount 顶点数据的数量。
+		*/
+		__proto.setData=function(data,bufferOffset,dataStartIndex,dataCount){
+			(bufferOffset===void 0)&& (bufferOffset=0);
+			(dataStartIndex===void 0)&& (dataStartIndex=0);
+			(dataCount===void 0)&& (dataCount=4294967295);
+			if (dataStartIndex!==0 || dataCount!==4294967295)
+				data=new Float32Array(data.buffer,dataStartIndex *4,dataCount);
+			this.bind();
+			LayaGL.instance.bufferSubData(this._bufferType,bufferOffset *4,data);
+			if (this._canRead){
+				if (bufferOffset!==0 || dataStartIndex!==0 || dataCount!==4294967295){
+					var maxLength=this._buffer.length-bufferOffset;
+					if (dataCount > maxLength)
+						dataCount=maxLength;
+					for (var i=0;i < dataCount;i++)
+					this._buffer[bufferOffset+i]=data[i];
+					}else {
+					this._buffer=data;
+				}
+			}
+		}
+
+		/**
+		*获取顶点数据。
+		*@return 顶点数据。
+		*/
+		__proto.getData=function(){
+			if (this._canRead)
+				return this._buffer;
+			else
+			throw new Error("Can't read data from VertexBuffer with only write flag!");
+		}
+
+		/**销毁顶点缓冲。*/
+		__proto.disposeResource=function(){
+			var gl=LayaGL.instance;
+			var elements=this._vertexDeclaration.vertexElements;
+			var enableAtributes=Buffer._bindedAtributeBuffer;
+			for (var i=0,n=elements.length;i < n;i++){
+				if (enableAtributes[i]===this._glBuffer){
+					gl.disableVertexAttribArray(i);
+					enableAtributes[i]=null;
+				}
+			}
+			_super.prototype.disposeResource.call(this);
+			this._buffer=null;
+			this._vertexDeclaration=null;
+			this.memorySize=0;
+		}
+
+		/**
+		*获取顶点声明。
+		*/
+		/**
+		*获取顶点声明。
+		*/
+		__getset(0,__proto,'vertexDeclaration',function(){
+			return this._vertexDeclaration;
+			},function(value){
+			if (this._vertexDeclaration!==value){
+				this._vertexDeclaration=value;
+				this._vertexCount=value ? this._byteLength / value.vertexStride :-1;
+			}
+		});
+
+		/**
+		*获取顶点个数。
+		*@return 顶点个数。
+		*/
+		__getset(0,__proto,'vertexCount',function(){
+			return this._vertexCount;
+		});
+
+		/**
+		*获取是否可读。
+		*@return 是否可读。
+		*/
+		__getset(0,__proto,'canRead',function(){
+			return this._canRead;
+		});
+
+		return VertexBuffer3D;
+	})(Buffer)
+
+
+	/**
+	*...
+	*@author ...
+	*/
+	//class laya.d3.core.trail.TrailMaterial extends laya.d3.core.material.BaseMaterial
+	var TrailMaterial=(function(_super){
+		function TrailMaterial(){
+			TrailMaterial.__super.call(this);
+			this.setShaderName("Trail");
+			this._shaderValues.setVector(2,new Vector4(1.0,1.0,1.0,1.0));
+		}
+
+		__class(TrailMaterial,'laya.d3.core.trail.TrailMaterial',_super);
+		var __proto=TrailMaterial.prototype;
+		/**
+		*设置颜色。
+		*@param value 颜色。
+		*/
+		/**
+		*获取颜色。
+		*@return 颜色。
+		*/
+		__getset(0,__proto,'tintColor',function(){
+			return this._shaderValues.getVector(2);
+			},function(value){
+			this._shaderValues.setVector(2,value);
+		});
+
+		/**
+		*设置贴图。
+		*@param value 贴图。
+		*/
+		/**
+		*获取贴图。
+		*@return 贴图。
+		*/
+		__getset(0,__proto,'diffuseTexture',function(){
+			return this._shaderValues._getTexture(1);
+			},function(value){
+			if (value)
+				this._defineDatas.add(laya.d3.core.trail.TrailMaterial.SHADERDEFINE_DIFFUSETEXTURE);
+			else
+			this._defineDatas.remove(laya.d3.core.trail.TrailMaterial.SHADERDEFINE_DIFFUSETEXTURE);
+			this._shaderValues.setTexture(1,value);
+		});
+
+		/**
+		*设置纹理平铺和偏移。
+		*@param value 纹理平铺和偏移。
+		*/
+		/**
+		*获取纹理平铺和偏移。
+		*@return 纹理平铺和偏移。
+		*/
+		__getset(0,__proto,'tilingOffset',function(){
+			return this._shaderValues.getVector(3);
+			},function(value){
+			if (value){
+				var valueE=value.elements;
+				if (valueE[0] !=1 || valueE[1] !=1 || valueE[2] !=0 || valueE[3] !=0)
+					this._defineDatas.add(laya.d3.core.trail.TrailMaterial.SHADERDEFINE_TILINGOFFSET);
+				else
+				this._defineDatas.remove(laya.d3.core.trail.TrailMaterial.SHADERDEFINE_TILINGOFFSET);
+				}else {
+				this._defineDatas.remove(laya.d3.core.trail.TrailMaterial.SHADERDEFINE_TILINGOFFSET);
+			}
+			this._shaderValues.setVector(3,value);
+		});
+
+		TrailMaterial.__init__=function(){
+			TrailMaterial.SHADERDEFINE_DIFFUSETEXTURE=TrailMaterial.shaderDefines.registerDefine("DIFFUSETEXTURE");
+			TrailMaterial.SHADERDEFINE_TILINGOFFSET=TrailMaterial.shaderDefines.registerDefine("TILINGOFFSET");
+		}
+
+		TrailMaterial.load=function(url){
+			return Laya.loader.create(url,null,null,TrailMaterial);
+		}
+
+		TrailMaterial.SHADERDEFINE_DIFFUSETEXTURE=0;
+		TrailMaterial.SHADERDEFINE_TILINGOFFSET=0;
+		TrailMaterial.DIFFUSETEXTURE=1;
+		TrailMaterial.TINTCOLOR=2;
+		TrailMaterial.TILINGOFFSET=3;
+		__static(TrailMaterial,
+		['defaultMaterial',function(){return this.defaultMaterial=new TrailMaterial();},'shaderDefines',function(){return this.shaderDefines=new ShaderDefines$1(BaseMaterial.shaderDefines);}
+		]);
+		return TrailMaterial;
 	})(BaseMaterial)
 
 
@@ -68002,7 +64532,7 @@ var Laya=window.Laya=(function(window,document){
 		*@param state 渲染状态参数。
 		*/
 		__proto._preRenderUpdate=function(state){
-			var subMesh=state.renderElement.geometry;
+			var subMesh=state.renderElement._geometry;
 			if (this._curAnimationDatas)
 				subMesh._skinAnimationDatas=this._curAnimationDatas[subMesh._indexInMesh];
 			else
@@ -68095,14 +64625,26 @@ var Laya=window.Laya=(function(window,document){
 		*/
 		__proto._updateCollider=function(){
 			if (this._needUpdate){
+				var obbMat=this._transformOrientedBoundBox.transformation;
 				var transform=(this._owner).transform;
-				var ownerWorldMatrix=transform.worldMatrix;
-				ownerWorldMatrix.cloneTo(this._transformOrientedBoundBox.transformation);
-				Vector3.multiply(transform.scale,this.center,BoxCollider._deviationV3);
-				Vector3.transformQuat(BoxCollider._deviationV3,transform.rotation,BoxCollider._deviationV3);
-				this._transformOrientedBoundBox.getCenter(BoxCollider._obbCenterV3);
-				Vector3.add(BoxCollider._obbCenterV3,BoxCollider._deviationV3,BoxCollider._deviationV3);
-				this._transformOrientedBoundBox.transformation.setTranslationVector(BoxCollider._deviationV3);
+				var rotation=transform.rotation;
+				var scale=transform.scale;
+				var centerE=this.center.elements;
+				if (centerE[0]===0.0 && centerE[1]===0.0 && centerE[2]===0.0){
+					Matrix4x4.createAffineTransformation(transform.position,rotation,Vector3.ONE,obbMat);
+					}else {
+					Vector3.multiply(this.center,scale,BoxCollider._deviationV3);
+					Vector3.transformQuat(BoxCollider._deviationV3,rotation,BoxCollider._deviationV3);
+					Vector3.add(transform.position,BoxCollider._deviationV3,BoxCollider._deviationV3);
+					Matrix4x4.createAffineTransformation(BoxCollider._deviationV3,rotation,Vector3.ONE,obbMat);
+				}
+				this._transformOrientedBoundBox.transformation=obbMat;
+				var extentsE=this._transformOrientedBoundBox.extents.elements;
+				var sizeE=this._size.elements;
+				var scaleE=scale.elements;
+				extentsE[0]=sizeE[0] *0.5 *scaleE[0];
+				extentsE[1]=sizeE[1] *0.5 *scaleE[1];
+				extentsE[2]=sizeE[2] *0.5 *scaleE[2];
 				this._needUpdate=false;
 			}
 		}
@@ -68241,7 +64783,7 @@ var Laya=window.Laya=(function(window,document){
 			return this._size;
 			},function(value){
 			this._size=value;
-			Vector3.scale(value,0.5,this._transformOrientedBoundBox.extents);
+			this._needUpdate=true;
 		});
 
 		__static(BoxCollider,
@@ -68295,10 +64837,10 @@ var Laya=window.Laya=(function(window,document){
 			Vector3.TransformNormal(rayDirection,invertWorldMatrix,transformRay.direction);
 			var curMinDistance=Number.MAX_VALUE;
 			for (var i=0,n=this._mesh.subMeshCount;i < n;i++){
-				var renderObj=this._mesh._getSubMesh(i);
-				var vertexBuffer=renderObj._vertexBuffers[0];
+				var geometry=this._mesh._getSubMesh(i);
+				var vertexBuffer=geometry._vertexBuffer;
 				var vertexDatas=vertexBuffer.getData();
-				var indexDatas=renderObj._indexBuffer.getData();
+				var indexDatas=geometry._indexBuffer.getData();
 				var elementRaycastHit=MeshCollider._tempRaycastHit;
 				var isHit=Picker.rayIntersectsPositionsAndIndices(transformRay,vertexDatas,vertexBuffer.vertexDeclaration,indexDatas,elementRaycastHit);
 				if (isHit){
@@ -68638,7 +65180,6 @@ var Laya=window.Laya=(function(window,document){
 			//this._rootIndex=0;
 			//this._rootBone=null;
 			//this.localBoundSphere=null;
-			this._hasIndependentBound=true;
 			SkinnedMeshRender.__super.call(this,owner,shaderDataSize);
 			this._owner.transform.off("worldmatrixneedchanged",this,this._onWorldMatNeedChange);
 			this._skinnedDataLoopMarks=[];
@@ -68737,7 +65278,30 @@ var Laya=window.Laya=(function(window,document){
 		/**
 		*@private
 		*/
-		__proto._computeSkinnedData=function(cache,boneIndices,bindPoseInices,data,pathMarks){
+		__proto._computeSkinnedData=function(){
+			var cache=this._cacheAnimator._canCache;
+			if (this._cacheMesh && this._cacheMesh.loaded && this._cacheAvatar && this._cacheAvatar.loaded){
+				var i=0,n=0;
+				var bindPoseInices=this._cacheMesh._bindPoseIndices;
+				var bindPoses=this._cacheMesh._inverseBindPoses;
+				var pathMarks=this._cacheMesh._skinDataPathMarks;
+				for (i=0;i < this._cacheMesh.subMeshCount;i++){
+					var subBoneIndices=this._cacheMesh._getSubMesh(i)._boneIndicesList;
+					var subData=this._skinnedData[i];
+					for (var j=0,m=subBoneIndices.length;j < m;j++){
+						var boneIndices=subBoneIndices[j];
+						var data=subData[j];
+						this._computeSubSkinnedData(cache,boneIndices,bindPoseInices,data,pathMarks);
+					}
+					(this._renderElements [i]).skinnedDatas=subData;
+				}
+			}
+		}
+
+		/**
+		*@private
+		*/
+		__proto._computeSubSkinnedData=function(cache,boneIndices,bindPoseInices,data,pathMarks){
 			var curAvatarAnimationDatas=this._cacheAnimator._curAvatarNodeDatas;
 			var bindPoses=this._cacheMesh._inverseBindPoses;
 			for (var k=0,q=boneIndices.length;k < q;k++){
@@ -68797,14 +65361,12 @@ var Laya=window.Laya=(function(window,document){
 		*@inheritDoc
 		*/
 		__proto._calculateBoundingBox=function(){
-			if (this._hasIndependentBound){
-				if (this._cacheAnimator){
-					var rootBone=this._cacheAnimator._avatarNodeMap[this._rootBone];
-					if (rootBone==null || this._localBoundBox==null)
-						this._boundingBox.toDefault();
-					else
-					this._calculateBoundBoxByInitCorners(this._localBoundingBoxCorners);
-				}
+			if (this._cacheAnimator){
+				var rootBone=this._cacheAnimator._avatarNodeMap[this._rootBone];
+				if (rootBone==null || this._localBoundBox==null)
+					this._boundingBox.toDefault();
+				else
+				this._calculateBoundBoxByInitCorners(this._localBoundingBoxCorners);
 				}else {
 				_super.prototype._calculateBoundingBox.call(this);
 			}
@@ -68814,14 +65376,12 @@ var Laya=window.Laya=(function(window,document){
 		*@inheritDoc
 		*/
 		__proto._calculateBoundingSphere=function(){
-			if (this._hasIndependentBound){
-				if (this._cacheAnimator){
-					var rootBone=this._cacheAnimator._avatarNodeMap[this._rootBone];
-					if (rootBone==null || this.localBoundSphere==null)
-						this._boundingSphere.toDefault();
-					else
-					this._calculateBoundingSphereByInitSphere(this.localBoundSphere);
-				}
+			if (this._cacheAnimator){
+				var rootBone=this._cacheAnimator._avatarNodeMap[this._rootBone];
+				if (rootBone==null || this.localBoundSphere==null)
+					this._boundingSphere.toDefault();
+				else
+				this._calculateBoundingSphereByInitSphere(this.localBoundSphere);
 				}else {
 				_super.prototype._calculateBoundingSphere.call(this);
 			}
@@ -68840,46 +65400,45 @@ var Laya=window.Laya=(function(window,document){
 		/**
 		*@inheritDoc
 		*/
-		__proto._renderUpdate=function(context,transform){
-			var projectionView=context.projectionViewMatrix;
+		__proto._needRender=function(boundFrustum){
 			var animator=this._cacheAnimator;
-			var subMeshCount=this._cacheMesh.subMeshCount;
-			var sv=this._shaderValues;
-			var worldMat=transform.worldMatrix;
 			if (animator){
-				var cache=animator._canCache;
-				var curAvatarAnimationDatas=this._cacheAnimator._curAvatarNodeDatas;
-				if (this._hasIndependentBound){
-					if (cache)
-						Utils3D.matrix4x4MultiplyMFM((this._cacheAnimator.owner).transform.worldMatrix,curAvatarAnimationDatas[this._rootIndex],worldMat);
-					else
+				var transform=this._owner._transform;
+				var worldMat=transform.worldMatrix;
+				if (animator._canCache){
+					var curAvatarAnimationDatas=animator._curAvatarNodeDatas;
+					Utils3D.matrix4x4MultiplyMFM((this._cacheAnimator.owner).transform.worldMatrix,curAvatarAnimationDatas[this._rootIndex],worldMat);
+					}else {
 					Utils3D.matrix4x4MultiplyMFM((this._cacheAnimator.owner).transform.worldMatrix,animator._avatarNodeMap[this._rootBone].transform.getWorldMatrix(),worldMat);
-					transform.worldMatrix=worldMat;
-				};
-				var aniOwner=animator.owner;
-				sv.setMatrix4x4(0,aniOwner._transform.worldMatrix);
-				Matrix4x4.multiply(projectionView,aniOwner.transform.worldMatrix,this._projectionViewWorldMatrix);
-				sv.setMatrix4x4(1,this._projectionViewWorldMatrix);
-				if (this._cacheMesh && this._cacheMesh.loaded && this._cacheAvatar && this._cacheAvatar.loaded){
-					var i=0,n=0;
-					var bindPoseInices=this._cacheMesh._bindPoseIndices;
-					var bindPoses=this._cacheMesh._inverseBindPoses;
-					var pathMarks=this._cacheMesh._skinDataPathMarks;
-					for (i=0;i < subMeshCount;i++){
-						var subBoneIndices=this._cacheMesh._getSubMesh(i)._boneIndicesList;
-						var subData=this._skinnedData[i];
-						for (var j=0,m=subBoneIndices.length;j < m;j++){
-							var boneIndices=subBoneIndices[j];
-							var data=subData[j];
-							this._computeSkinnedData(cache,boneIndices,bindPoseInices,data,pathMarks);
-						}
-						(this._renderElements [i]).skinnedDatas=subData;
-					}
 				}
+				transform.worldMatrix=worldMat;
+			}
+			return _super.prototype._needRender.call(this,boundFrustum);
+		}
+
+		/**
+		*@inheritDoc
+		*/
+		__proto._renderUpdate=function(context,transform){
+			if (this._cacheAnimator){
+				this._computeSkinnedData();
+				this._shaderValues.setMatrix4x4(0,(this._cacheAnimator.owner)._transform.worldMatrix);
 				}else {
-				sv.setMatrix4x4(0,worldMat);
-				Matrix4x4.multiply(projectionView,worldMat,this._projectionViewWorldMatrix);
-				sv.setMatrix4x4(1,this._projectionViewWorldMatrix);
+				this._shaderValues.setMatrix4x4(0,transform.worldMatrix);
+			}
+		}
+
+		/**
+		*@inheritDoc
+		*/
+		__proto._renderUpdateWithCamera=function(context,transform){
+			var projectionView=context.projectionViewMatrix;
+			if (this._cacheAnimator){
+				Matrix4x4.multiply(projectionView,(this._cacheAnimator.owner)._transform.worldMatrix,this._projectionViewWorldMatrix);
+				this._shaderValues.setMatrix4x4(1,this._projectionViewWorldMatrix);
+				}else {
+				Matrix4x4.multiply(projectionView,transform.worldMatrix,this._projectionViewWorldMatrix);
+				this._shaderValues.setMatrix4x4(1,this._projectionViewWorldMatrix);
 			}
 			if (Laya3D.debugMode)
 				this._renderRenderableBoundBox();
@@ -68935,6 +65494,86 @@ var Laya=window.Laya=(function(window,document){
 
 		return SkinnedMeshRender;
 	})(MeshRender)
+
+
+	/**
+	*<code>PrimitiveMesh</code> 类用于创建简单网格。
+	*/
+	//class laya.d3.resource.models.PrimitiveMesh extends laya.d3.resource.models.BaseMesh
+	var PrimitiveMesh=(function(_super){
+		function PrimitiveMesh(){
+			//this._primitveGeometry=null;
+			PrimitiveMesh.__super.call(this);
+			this._subMeshCount=1;
+			this._primitveGeometry=new primitiveGeometry();
+		}
+
+		__class(PrimitiveMesh,'laya.d3.resource.models.PrimitiveMesh',_super);
+		var __proto=PrimitiveMesh.prototype;
+		/**
+		*获取网格顶点
+		*@return 网格顶点。
+		*/
+		__proto._getPositions=function(){
+			var vertexBuffer=this._primitveGeometry._vertexBuffer;
+			var vertices=[];
+			var positionElement;
+			var vertexElements=vertexBuffer.vertexDeclaration.vertexElements;
+			var j=0;
+			for (j=0;j < vertexElements.length;j++){
+				var vertexElement=vertexElements[j];
+				if (vertexElement.elementFormat==="vector3" && vertexElement.elementUsage===0){
+					positionElement=vertexElement;
+					break ;
+				}
+			};
+			var verticesData=vertexBuffer.getData();
+			for (j=0;j < verticesData.length;j+=vertexBuffer.vertexDeclaration.vertexStride / 4){
+				var ofset=j+positionElement.offset / 4;
+				var position=new Vector3(verticesData[ofset+0],verticesData[ofset+1],verticesData[ofset+2]);
+				vertices.push(position);
+			}
+			return vertices;
+		}
+
+		/**
+		*@private
+		*/
+		__proto._getSubMesh=function(index){
+			return (index===0)? this._primitveGeometry :null;
+		}
+
+		/**
+		*设置几何体数据。
+		*@param vertexDeclaration 顶点声明。
+		*@param vertices 顶点数据。
+		*@param indices 多音数据。
+		*/
+		__proto.setData=function(vertexDeclaration,vertices,indices){
+			(this.released)|| (this.releaseResource());
+			var vertexBuffer=new VertexBuffer3D(vertices.length *4,0x88E4,true);
+			vertexBuffer.vertexDeclaration=vertexDeclaration;
+			vertexBuffer.setData(vertices);
+			this._primitveGeometry._setVertexBuffer(vertexBuffer);
+			var indexBuffer=new IndexBuffer3D("ushort",indices.length,0x88E4,true);
+			indexBuffer.setData(indices);
+			this._primitveGeometry._indexBuffer=indexBuffer;
+			this.memorySize=(vertexBuffer._byteLength+indexBuffer._byteLength)*2;
+			this._activeResource();
+			this._positions=this._getPositions();
+			this._generateBoundingObject();
+		}
+
+		/**
+		*@inheritDoc
+		*/
+		__proto.disposeResource=function(){
+			this._primitveGeometry.dispose();
+			this.memorySize=0;
+		}
+
+		return PrimitiveMesh;
+	})(BaseMesh)
 
 
 	/**
@@ -70141,15 +66780,8 @@ var Laya=window.Laya=(function(window,document){
 		__proto.start=function(){
 			var gl=LayaGL.instance;
 			LayaGL.instance.bindFramebuffer(0x8D40,this._frameBuffer);
-			this._lastRT=RenderTexture._currentActive;
 			RenderTexture._currentActive=this;
-			this._readyed=true;
-			gl.viewport(0,0,this._width,this._height);
-			this._lastWidth=RenderState2D.width;
-			this._lastHeight=RenderState2D.height;
-			RenderState2D.width=this._width;
-			RenderState2D.height=this._height;
-			BaseShader.activeShader=null;
+			this._readyed=false;
 		}
 
 		/**
@@ -70343,7 +66975,7 @@ var Laya=window.Laya=(function(window,document){
 				Browser.canvas.size(width,height);
 				Browser.canvas.clear();
 				Browser.context.drawImage(source,0,0,width,height);
-				this._pixels=new Uint8Array(Browser.context.getImageData(0,0,width,width).data.buffer);
+				this._pixels=new Uint8Array(Browser.context.getImageData(0,0,width,height).data.buffer);
 			}
 			this._readyed=true;
 			this._activeResource();
@@ -70386,6 +67018,10 @@ var Laya=window.Laya=(function(window,document){
 		*@inheritDoc
 		*/
 		__proto.onAsynLoaded=function(data,params){
+			if (params){
+				var canRead=params.canRead;
+				(canRead!==undefined)&& (this._canRead=canRead);
+			}
 			_super.prototype.onAsynLoaded.call(this,data,params);
 			this.setImageSource(data);
 		}
@@ -70585,6 +67221,12 @@ var Laya=window.Laya=(function(window,document){
 			!this._selected && (this.state=Button.stateMap[e.type]);
 		}
 
+		__proto._skinLoaded=function(){
+			this.callLater(this.changeClips);
+			this._setStateChanged();
+			this.event("loaded");
+		}
+
 		/**
 		*@private
 		*对象的资源切片发生改变。
@@ -70600,6 +67242,9 @@ var Laya=window.Laya=(function(window,document){
 			img.$_GID || (img.$_GID=Utils.getGID());
 			var key=img.$_GID+"-"+this._stateNum;
 			var clips=WeakObject.I.get(key);
+			if (!Utils.isOkTextureList(clips)){
+				clips=null;
+			}
 			if (clips)this._sources=clips;
 			else {
 				this._sources=[];
@@ -70679,8 +67324,15 @@ var Laya=window.Laya=(function(window,document){
 			},function(value){
 			if (this._skin !=value){
 				this._skin=value;
-				this.callLater(this.changeClips);
-				this._setStateChanged();
+				if (value){
+					if (!Loader.getRes(value)){
+						Laya.loader.load(this._skin,Handler.create(this,this._skinLoaded),null,"image",1);
+						}else{
+						this._skinLoaded();
+					}
+					}else {
+					this._skinLoaded();
+				}
 			}
 		});
 
@@ -70722,8 +67374,10 @@ var Laya=window.Laya=(function(window,document){
 		__getset(0,__proto,'stateNum',function(){
 			return this._stateNum;
 			},function(value){
-			if ((typeof value=='string'))parseInt(value)
-				if (this._stateNum !=value){
+			if ((typeof value=='string')){
+				value=parseInt(value);
+			}
+			if (this._stateNum !=value){
 				this._stateNum=value < 1 ? 1 :value > 3 ? 3 :value;
 				this.callLater(this.changeClips);
 			}
@@ -71036,6 +67690,7 @@ var Laya=window.Laya=(function(window,document){
 			this._index=0;
 			this._clipChanged=false;
 			this._group=null;
+			this._toIndex=-1;
 			Clip.__super.call(this);
 			(clipX===void 0)&& (clipX=1);
 			(clipY===void 0)&& (clipY=1);
@@ -71078,6 +67733,11 @@ var Laya=window.Laya=(function(window,document){
 			}
 		}
 
+		__proto._skinLoaded=function(){
+			this._setClipChanged();
+			this.event("loaded");
+		}
+
 		/**
 		*@private
 		*改变切片的资源、切片的大小。
@@ -71105,6 +67765,9 @@ var Laya=window.Laya=(function(window,document){
 				var h=this._clipHeight || Math.ceil(img.sourceHeight / this._clipY);
 				var key=this._skin+w+h;
 				var clips=WeakObject.I.get(key);
+				if (!Utils.isOkTextureList(clips)){
+					clips=null;
+				}
 				if (clips)this._sources=clips;
 				else {
 					this._sources=[];
@@ -71123,10 +67786,15 @@ var Laya=window.Laya=(function(window,document){
 
 		/**
 		*播放动画。
+		*@param from 开始索引
+		*@param to 结束索引，-1为不限制
 		*/
-		__proto.play=function(){
+		__proto.play=function(from,to){
+			(from===void 0)&& (from=0);
+			(to===void 0)&& (to=-1);
 			this._isPlaying=true;
-			this.index=0;
+			this.index=from;
+			this._toIndex=to;
 			this._index++;
 			Laya.timer.loop(this.interval,this,this._loop);
 			this.on("display",this,this._onDisplay);
@@ -71137,9 +67805,11 @@ var Laya=window.Laya=(function(window,document){
 		*@private
 		*/
 		__proto._loop=function(){
-			if (this._visible && this._sources){
-				this.index=this._index,this._index++;
-				this._index >=this._sources.length && (this._index=0);
+			if (this._style.visible && this._sources){
+				this._index++;
+				if (this._toIndex >-1 && this._index >=this._toIndex)this.stop();
+				else if (this._index >=this._sources.length)this._index=0;
+				this.index=this._index;
 			}
 		}
 
@@ -71149,6 +67819,7 @@ var Laya=window.Laya=(function(window,document){
 		__proto.stop=function(){
 			this._isPlaying=false;
 			Laya.timer.clear(this,this._loop);
+			this.event("complete");
 		}
 
 		/**@private */
@@ -71180,7 +67851,11 @@ var Laya=window.Laya=(function(window,document){
 			if (this._skin !=value){
 				this._skin=value;
 				if (value){
-					this._setClipChanged()
+					if(!Loader.getRes(value)){
+						Laya.loader.load(this._skin,Handler.create(this,this._skinLoaded),null,"image",1);
+						}else{
+						this._skinLoaded();
+					}
 					}else {
 					this._bitmap.source=null;
 				}
@@ -71658,8 +68333,8 @@ var Laya=window.Laya=(function(window,document){
 		__getset(0,__proto,'skin',function(){
 			return this._colorButton.skin;
 			},function(value){
+			this._colorButton.once("loaded",this,this.changeColor);
 			this._colorButton.skin=value;
-			this.changeColor();
 		});
 
 		/**
@@ -71918,10 +68593,17 @@ var Laya=window.Laya=(function(window,document){
 			this._button.label=this.selectedLabel;
 		}
 
+		__proto._onStageMouseWheel=function(e){
+			if(!this._list||this._list.contains(e.target))return;
+			this.removeList(null);
+		}
+
 		/**
 		*关闭下拉列表。
 		*/
 		__proto.removeList=function(e){
+			Laya.stage.off("mousedown",this,this.removeList);
+			Laya.stage.off("mousewheel",this,this._onStageMouseWheel);
 			this.isOpen=false;
 		}
 
@@ -72074,6 +68756,7 @@ var Laya=window.Laya=(function(window,document){
 					this._list.zOrder=1001;
 					Laya._currentStage.addChild(this._list);
 					Laya.stage.once("mousedown",this,this.removeList);
+					Laya.stage.on("mousewheel",this,this._onStageMouseWheel);
 					this._list.selectedIndex=this._selectedIndex;
 					}else {
 					this._list && this._list.removeSelf();
@@ -72266,7 +68949,7 @@ var Laya=window.Laya=(function(window,document){
 		*滑块位置发生改变的处理函数。
 		*/
 		__proto.onSliderChange=function(){
-			this.value=this.slider.value;
+			if(this._value !=this.slider.value)this.value=this.slider.value;
 		}
 
 		/**
@@ -72300,6 +68983,12 @@ var Laya=window.Laya=(function(window,document){
 			Laya.timer.clear(this,this.slide);
 		}
 
+		__proto._skinLoaded=function(){
+			this.slider.skin=this._skin;
+			this.callLater(this.changeScrollBar);
+			this.event("loaded");
+		}
+
 		/**
 		*@private
 		*更改对象的皮肤及位置。
@@ -72314,11 +69003,13 @@ var Laya=window.Laya=(function(window,document){
 			if (this.slider.isVertical)this.slider.y=this._showButtons ? this.upButton.height :0;
 			else this.slider.x=this._showButtons ? this.upButton.width :0;
 			this.resetPositions();
+			this.repaint();
 		}
 
 		/**@inheritDoc */
 		__proto.changeSize=function(){
 			_super.prototype.changeSize.call(this);
+			this.repaint();
 			this.resetPositions();
 			this.event("change");
 			this.changeHandler && this.changeHandler.runWith(this.value);
@@ -72519,8 +69210,11 @@ var Laya=window.Laya=(function(window,document){
 			},function(value){
 			if (this._skin !=value){
 				this._skin=value;
-				this.slider.skin=this._skin;
-				this.callLater(this.changeScrollBar);
+				if (this._skin&&!Loader.getRes(this._skin)){
+					Laya.loader.load([this._skin,this._skin.replace(".png","$up.png"),this._skin.replace(".png","$down.png"),this._skin.replace(".png","$bar.png")],Handler.create(this,this._skinLoaded));
+					}else{
+					this._skinLoaded();
+				}
 			}
 		});
 
@@ -72563,13 +69257,16 @@ var Laya=window.Laya=(function(window,document){
 			return this._value;
 			},function(v){
 			if (v!==this._value){
-				if (this._isElastic)this._value=v;
-				else {
-					this.slider.value=v;
-					this._value=this.slider.value;
+				this._value=v;
+				if (!this._isElastic){
+					if (this.slider._value !=v){
+						this.slider._value=v;
+						this.slider.changeValue();
+					}
+					this._value=this.slider._value;
 				}
 				this.event("change");
-				this.changeHandler && this.changeHandler.runWith(this.value);
+				this.changeHandler && this.changeHandler.runWith(this._value);
 			}
 		});
 
@@ -72751,6 +69448,7 @@ var Laya=window.Laya=(function(window,document){
 			this._ty=Laya.stage.mouseY;
 			Laya.stage.on("mousemove",this,this.mouseMove);
 			Laya.stage.once("mouseup",this,this.mouseUp);
+			Laya.stage.once("mouseout",this,this.mouseUp);
 			this.showValueText();
 		}
 
@@ -72786,6 +69484,8 @@ var Laya=window.Laya=(function(window,document){
 		*/
 		__proto.mouseUp=function(e){
 			Laya.stage.off("mousemove",this,this.mouseMove);
+			Laya.stage.off("mouseup",this,this.mouseUp);
+			Laya.stage.off("mouseout",this,this.mouseUp);
 			this.sendChangeEvent("changed");
 			this.hideValueText();
 		}
@@ -72825,6 +69525,23 @@ var Laya=window.Laya=(function(window,document){
 			(type===void 0)&& (type="change");
 			this.event(type);
 			this.changeHandler && this.changeHandler.runWith(this._value);
+		}
+
+		__proto._skinLoaded=function(){
+			this._bg.skin=this._skin;
+			this._bar.skin=this._skin.replace(".png","$bar.png");
+			var progressSkin=this._skin.replace(".png","$progress.png");
+			if (Loader.getRes(progressSkin)){
+				if (!this._progress){
+					this.addChild(this._progress=new Image());
+					this._progress.sizeGrid=this._bar.sizeGrid;
+					this.setChildIndex(this._progress,1);
+				}
+				this._progress.skin=progressSkin;
+			}
+			this.setBarPoint();
+			this.callLater(this.changeValue);
+			this.event("loaded");
 		}
 
 		/**
@@ -72901,19 +69618,11 @@ var Laya=window.Laya=(function(window,document){
 			},function(value){
 			if (this._skin !=value){
 				this._skin=value;
-				this._bg.skin=this._skin;
-				this._bar.skin=this._skin.replace(".png","$bar.png");
-				var progressSkin=this._skin.replace(".png","$progress.png");
-				if (Loader.getRes(progressSkin)){
-					if (!this._progress){
-						this.addChild(this._progress=new Image());
-						this._progress.sizeGrid=this._bar.sizeGrid;
-						this.setChildIndex(this._progress,1);
-					}
-					this._progress.skin=progressSkin;
+				if (this._skin&&!Loader.getRes(this._skin)){
+					Laya.loader.load([this._skin,this._skin.replace(".png","$bar.png")],Handler.create(this,this._skinLoaded));
+					}else{
+					this._skinLoaded();
 				}
-				this.setBarPoint();
-				this.callLater(this.changeValue);
 			}
 		});
 
@@ -73735,6 +70444,13 @@ var Laya=window.Laya=(function(window,document){
 			this._bar._bitmap.autoCacheCmd=false;
 		}
 
+		__proto._skinLoaded=function(){
+			this._bg.skin=this._skin;
+			this._bar.skin=this._skin.replace(".png","$bar.png");
+			this.callLater(this.changeValue);
+			this.event("loaded");
+		}
+
 		/**
 		*@private
 		*更改进度值的显示。
@@ -73766,9 +70482,11 @@ var Laya=window.Laya=(function(window,document){
 			},function(value){
 			if (this._skin !=value){
 				this._skin=value;
-				this._bg.skin=this._skin;
-				this._bar.skin=this._skin.replace(".png","$bar.png");
-				this.callLater(this.changeValue);
+				if (this._skin&&!Loader.getRes(this._skin)){
+					Laya.loader.load(this._skin,Handler.create(this,this._skinLoaded),null,"image",1);
+					}else{
+					this._skinLoaded();
+				}
 			}
 		});
 
@@ -73988,401 +70706,6 @@ var Laya=window.Laya=(function(window,document){
 	})(Buffer2D)
 
 
-	//class laya.d3.resource.DataTexture2D extends laya.webgl.resource.BaseTexture
-	var DataTexture2D=(function(_super){
-		function DataTexture2D(){
-			this.simLodInfo=null;
-			this._buffer=null;
-			this._mipmaps=null;
-			this._recreateLock=false;
-			this._needReleaseAgain=false;
-			DataTexture2D.__super.call(this);
-			this._glTextureType=0x0DE1;
-		}
-
-		__class(DataTexture2D,'laya.d3.resource.DataTexture2D',_super);
-		var __proto=DataTexture2D.prototype;
-		__proto.genDebugMipmaps=function(){
-			var ret=[];
-			ret.push(new Uint8Array((new Uint32Array(512 *256)).fill(0xff0000ff).buffer));
-			ret.push(new Uint8Array((new Uint32Array(256 *128)).fill(0xff0080ff).buffer));
-			ret.push(new Uint8Array((new Uint32Array(128 *64)).fill(0xff00ffff).buffer));
-			ret.push(new Uint8Array((new Uint32Array(64 *32)).fill(0xff00ff00).buffer));
-			ret.push(new Uint8Array((new Uint32Array(32 *16)).fill(0xff804000).buffer));
-			ret.push(new Uint8Array((new Uint32Array(16 *8)).fill(0xffff0000).buffer));
-			ret.push(new Uint8Array((new Uint32Array(8 *4)).fill(0xffff0080).buffer));
-			ret.push(new Uint8Array((new Uint32Array(4 *2)).fill(0x0).buffer));
-			ret.push(new Uint8Array((new Uint32Array(2 *1)).fill(0xff808080).buffer));
-			ret.push(new Uint8Array((new Uint32Array(1 *1)).fill(0xffffffff).buffer));
-			return ret;
-		}
-
-		/**
-		*@private
-		*/
-		__proto._onTextureLoaded=function(buff){}
-		/**
-		*@private
-		*/
-		__proto._createWebGlTexture=function(){
-			if (!this._buffer && !this._mipmaps)
-				throw "create GLTextur err:no data";
-			var gl=LayaGL.instance;
-			gl.getExtension("EXT_shader_texture_lod");
-			var w=this._width;
-			var h=this._height;
-			WebGLContext.bindTexture(gl,this._glTextureType,this._glTexture);
-			if (this._mipmaps){
-				if (laya.d3.resource.DataTexture2D.lodasatlas){
-					var infoi=0;
-					gl.texImage2D(this._glTextureType,0,0x1908,this._width,this._height,0,0x1908,0x1401,null);
-					for (var i=0;i < this._mipmaps.length;i++){
-						if (this._mipmaps[i].byteLength !=cw *ch *4){
-							throw "mipmap size error  level:"+i;
-						}
-						gl.texSubImage2D(this._glTextureType,0,DataTexture2D.simLodRect[infoi++],DataTexture2D.simLodRect[infoi++],DataTexture2D.simLodRect[infoi++],DataTexture2D.simLodRect[infoi++],0x1908,0x1401,new Uint8Array(this._mipmaps[i]));
-					}
-					this.minFifter=0x2601;
-					this.magFifter=0x2601;
-					}else {
-					var cw=this._width;
-					var ch=this._height;
-					infoi=0;
-					gl.texImage2D(this._glTextureType,0,0x1908,this._width,this._height,0,0x1908,0x1401,null);
-					for (i=0;i < this._mipmaps.length;i++){
-						if (this._mipmaps[i].byteLength !=cw *ch *4){
-							throw "mipmap size error  level:"+i;
-						}
-						gl.texImage2D(this._glTextureType,i,0x1908,cw,ch,0,0x1908,0x1401,new Uint8Array(this._mipmaps[i]));
-						cw /=2;
-						ch /=2;
-						if (cw < 1)cw=1;
-						if (ch < 1)ch=1;
-						this.minFifter=0x2703;
-						this.magFifter=0x2601;
-					}
-				}
-				this.mipmap=false;
-				}else {
-				gl.texImage2D(this._glTextureType,0,0x1908,w,h,0,0x1908,0x1401,new Uint8Array(this._buffer));
-			};
-			var minFifter=this._minFifter;
-			var magFifter=this._magFifter;
-			var repeat=this._repeat ? 0x2901 :0x812F;
-			var isPot=Arith.isPOT(w,h);
-			if (isPot){
-				if (this._mipmap || this._mipmaps)
-					(minFifter!==-1)|| (minFifter=0x2703);
-				else
-				(minFifter!==-1)|| (minFifter=0x2601);
-				(magFifter!==-1)|| (magFifter=0x2601);
-				gl.texParameteri(this._glTextureType,0x2801,minFifter);
-				gl.texParameteri(this._glTextureType,0x2800,magFifter);
-				gl.texParameteri(this._glTextureType,0x2802,repeat);
-				if (this._mipmaps)
-					gl.texParameteri(this._glTextureType,0x2803,0x812F);
-				else
-				gl.texParameteri(this._glTextureType,0x2803,repeat);
-				this._mipmap && gl.generateMipmap(this._glTextureType);
-				}else {
-				throw "data texture must be POT";
-			}
-			if (this.src && this.src.length > 0)
-				this._buffer=null;
-			if (isPot)
-				this.memorySize=w *h *4 *(1+1 / 3);
-			else
-			this.memorySize=w *h *4;
-			this._recreateLock=false;
-		}
-
-		/**
-		*重新创建资源，如果异步创建中被强制释放再创建，则需等待释放完成后再重新加载创建。
-		*/
-		__proto.recreateResource=function(){
-			if (!this._buffer)
-				return;
-			this._needReleaseAgain=false;
-			if (!this._buffer && !this._mipmaps){
-				this._recreateLock=true;
-				var _this=this;
-				}else {
-				if (this._recreateLock){
-					return;
-				}
-				this._createWebGlTexture();
-			}
-		}
-
-		/**
-		*@private
-		*/
-		__proto.onAsynLoaded=function(data,params){
-			var imgdata;
-			if (params){
-				imgdata=params[0].call(this,data);
-			}
-			if (imgdata){
-				this._width=imgdata.width;
-				this._height=imgdata.height;
-				this._buffer=imgdata.data;
-			}
-		}
-
-		/**
-		*返回图片像素。
-		*@return 图片像素。
-		*/
-		__proto.getPixels=function(){
-			return new Uint8Array(this._buffer);
-		}
-
-		/**
-		*销毁资源。
-		*/
-		__proto.disposeResource=function(){
-			if (this._recreateLock){
-				this._needReleaseAgain=true;
-			}
-			if (this._glTexture){
-				LayaGL.instance.deleteTexture(this._glTexture);
-				this._glTexture=null;
-				this._buffer=null;
-				this.memorySize=0;
-			}
-		}
-
-		DataTexture2D.create=function(data,w,h,magfilter,minfilter,mipmap){
-			(magfilter===void 0)&& (magfilter=0x2601);
-			(minfilter===void 0)&& (minfilter=0x2601);
-			(mipmap===void 0)&& (mipmap=true);
-			if (!data || data.byteLength < (w *h *4))
-				throw 'DataTexture2D create error';
-			var ret=new DataTexture2D();
-			ret._buffer=data;
-			ret._width=w;
-			ret._height=h;
-			ret._mipmap=mipmap;
-			ret._magFifter=magfilter;
-			ret._minFifter=minfilter;
-			if (ret._conchTexture){
-				alert('怎么给runtime传递datatexture数据');
-			}else
-			ret.activeResource();
-			return ret;
-		}
-
-		DataTexture2D.load=function(url,w,h,magfilter,minfilter){
-			(w===void 0)&& (w=0);
-			(h===void 0)&& (h=0);
-			(magfilter===void 0)&& (magfilter=0x2601);
-			(minfilter===void 0)&& (minfilter=0x2601);
-			var extension=Utils.getFileExtension(url);
-			if (extension==='mipmaps'){
-				var ret=Laya.loader.create(url,null,null,DataTexture2D,[function(data){
-					this._mipmaps=[];
-					var szinfo=new Uint32Array(data);
-					this._width=szinfo[0];
-					var validw=512;
-					if (laya.d3.resource.DataTexture2D.lodasatlas){
-						this._width *=2;
-						validw=1024;
-					}
-					if (this._width !=validw){
-						console.error("现在只支持512x256的环境贴图。当前的是"+szinfo[0]);
-						throw "现在只支持512x256的环境贴图。当前的是"+szinfo[0];
-					}
-					this._height=szinfo[1];
-					var curw=laya.d3.resource.DataTexture2D.lodasatlas ? this._width / 2 :this._width;
-					var curh=this._height;
-					var cursz=8;
-					while (true){
-						var curbufsz=curw *curh *4;
-						if (cursz+curbufsz > data.byteLength){
-							throw "load mipmaps data size error ";
-						};
-						var tbuf=new Uint8Array(data,cursz,curbufsz);
-						this._mipmaps.push(tbuf);
-						cursz+=curbufsz;
-						if (curw==1 && curh==1){
-							break ;
-						}
-						curw /=2;
-						curh /=2;
-						if (curw < 1)curw=1;
-						if (curh < 1)curh=1;
-					}
-					return null;
-				}]);
-				if (laya.d3.resource.DataTexture2D.lodasatlas){
-					ret.simLodInfo=new Float32Array(40);
-					for (var i=0;i < ret.simLodInfo.length;){
-						ret.simLodInfo[i]=(DataTexture2D.simLodRect[i]+0.5)/ 1024;
-						i++;
-						ret.simLodInfo[i]=(DataTexture2D.simLodRect[i]+0.5)/ 256;
-						i++;
-						ret.simLodInfo[i]=Math.max(DataTexture2D.simLodRect[i]-1,0.1)/ 1024;
-						i++;
-						ret.simLodInfo[i]=Math.max(DataTexture2D.simLodRect[i]-1.5,0.1)/ 256;
-						i++;
-					}
-				}
-				return ret;
-				}else if (typeof(w)=='number'){
-				return Laya.loader.create(url,null,null,DataTexture2D,[function(data){
-					this._width=w;
-					this._height=h;
-					this._buffer=data;
-					return null;
-				}]);
-				}else if (typeof(w)=='function'){
-				return Laya.loader.create(url,null,null,DataTexture2D,[w]);
-				}else {
-				throw new Error("unknown params.");
-			}
-		}
-
-		DataTexture2D.lodasatlas=false;
-		__static(DataTexture2D,
-		['simLodRect',function(){return this.simLodRect=new Uint32Array([
-			0,0,512,256,512,0,256,128,512+256,0,128,64,512+256+128,0,64,32,512+256+128+64,0,32,16,512+256+128+64+32,0,16,8,512+256+128+64+32+16,0,8,4,512+256+128+64+32+16+8,0,4,2,512+256+128+64+32+16+8+4,0,2,1,512+256+128+64+32+16+8+4+2,0,1,1]);}
-		]);
-		return DataTexture2D;
-	})(BaseTexture)
-
-
-	/**
-	*<code>TextureCube</code> 类用于生成立方体纹理。
-	*/
-	//class laya.d3.resource.TextureCube extends laya.webgl.resource.BaseTexture
-	var TextureCube=(function(_super){
-		function TextureCube(format,mipmap){
-			//this._premultiplyAlpha=0;
-			(format===void 0)&& (format=0);
-			(mipmap===void 0)&& (mipmap=false);
-			TextureCube.__super.call(this,format,mipmap);
-			this._glTextureType=0x8513;
-		}
-
-		__class(TextureCube,'laya.d3.resource.TextureCube',_super);
-		var __proto=TextureCube.prototype;
-		/**
-		*通过六张图片源填充纹理。
-		*@param 图片源数组。
-		*/
-		__proto.setSixSideImageSources=function(source,premultiplyAlpha){
-			(premultiplyAlpha===void 0)&& (premultiplyAlpha=false);
-			var width=0;
-			var height=0;
-			for (var i=0;i < 6;i++){
-				var nextWidth=source[i].width;
-				var nextHeight=source[i].height;
-				if (i > 0){
-					if (width!==nextWidth)
-						throw "TextureCube: each side image's width and height must same.";
-				}
-				width=nextWidth;
-				height=nextHeight;
-				if (width!==height)
-					throw "TextureCube: each side image's width and height must same.";
-			}
-			this._width=width;
-			this._height=height;
-			var gl=LayaGL.instance;
-			WebGLContext.bindTexture(gl,this._glTextureType,this._glTexture);
-			var glFormat=this._getGLFormat();
-			(premultiplyAlpha)&& (gl.pixelStorei(0x9241,true));
-			gl.texImage2D(0x8519,0,glFormat,glFormat,0x1401,source[0]);
-			gl.texImage2D(0x851A,0,glFormat,glFormat,0x1401,source[1]);
-			gl.texImage2D(0x8515,0,glFormat,glFormat,0x1401,source[2]);
-			gl.texImage2D(0x8516,0,glFormat,glFormat,0x1401,source[3]);
-			gl.texImage2D(0x8517,0,glFormat,glFormat,0x1401,source[4]);
-			gl.texImage2D(0x8518,0,glFormat,glFormat,0x1401,source[5]);
-			(premultiplyAlpha)&& (gl.pixelStorei(0x9241,false));
-			if (this._mipmap && this._isPot(width)&& this._isPot(height)){
-				gl.generateMipmap(this._glTextureType);
-				this.memorySize=width *height *4 *(1+1 / 3)*6;
-				}else {
-				this.memorySize=width *height *4 *6;
-			}
-			this._setWarpMode(0x2802,this._wrapModeU);
-			this._setWarpMode(0x2803,this._wrapModeV);
-			this._setFilterMode(this._filterMode);
-			this._readyed=true;
-			this._activeResource();
-		}
-
-		/**
-		*通过六张图片源填充纹理。
-		*@param 图片源数组。
-		*/
-		__proto.setSixSidePixels=function(width,height,pixels){
-			if (width <=0 || height <=0)
-				throw new Error("TextureCube:width or height must large than 0.");
-			if (!pixels)
-				throw new Error("TextureCube:pixels can't be null.");
-			this._width=width;
-			this._height=height;
-			var gl=LayaGL.instance;
-			WebGLContext.bindTexture(gl,this._glTextureType,this._glTexture);
-			var glFormat=this._getGLFormat();
-			gl.texImage2D(0x8519,0,glFormat,width,height,0,glFormat,0x1401,pixels[0]);
-			gl.texImage2D(0x851A,0,glFormat,width,height,0,glFormat,0x1401,pixels[1]);
-			gl.texImage2D(0x8515,0,glFormat,width,height,0,glFormat,0x1401,pixels[2]);
-			gl.texImage2D(0x8516,0,glFormat,width,height,0,glFormat,0x1401,pixels[3]);
-			gl.texImage2D(0x8517,0,glFormat,width,height,0,glFormat,0x1401,pixels[4]);
-			gl.texImage2D(0x8518,0,glFormat,width,height,0,glFormat,0x1401,pixels[5]);
-			if (this._mipmap && this._isPot(width)&& this._isPot(height)){
-				gl.generateMipmap(this._glTextureType);
-				this.memorySize=width *height *4 *(1+1 / 3)*6;
-				}else {
-				this.memorySize=width *height *4 *6;
-			}
-			this._setWarpMode(0x2802,this._wrapModeU);
-			this._setWarpMode(0x2803,this._wrapModeV);
-			this._setFilterMode(this._filterMode);
-			this._readyed=true;
-			this._activeResource();
-		}
-
-		/**
-		*@inheritDoc
-		*/
-		__proto.onAsynLoaded=function(data,params){
-			_super.prototype.onAsynLoaded.call(this,data,params);
-			this.setSixSideImageSources(data);
-		}
-
-		/**
-		*@inheritDoc
-		*/
-		__proto.recoverResource=function(){}
-		/**
-		*@inheritDoc
-		*/
-		__getset(0,__proto,'defaulteTexture',function(){
-			return TextureCube.grayTexture;
-		});
-
-		TextureCube.__init__=function(){
-			var pixels=new Uint8Array(3);
-			pixels[0]=128;
-			pixels[1]=128;
-			pixels[2]=128;
-			TextureCube.grayTexture.setSixSidePixels(1,1,[pixels,pixels,pixels,pixels,pixels,pixels]);
-		}
-
-		TextureCube.load=function(url){
-			return Laya.loader.create(url,null,null,TextureCube);
-		}
-
-		__static(TextureCube,
-		['grayTexture',function(){return this.grayTexture=new TextureCube(0,false);}
-		]);
-		return TextureCube;
-	})(BaseTexture)
-
-
 	/**
 	*<code>BaseCamera</code> 类用于创建摄像机的父类。
 	*/
@@ -74395,7 +70718,7 @@ var Laya=window.Laya=(function(window,document){
 			//this._farPlane=NaN;
 			//this._fieldOfView=NaN;
 			//this._orthographicVerticalSize=NaN;
-			//this._sky=null;
+			//this._skyboxMaterial=null;
 			//this._orthographic=false;
 			//this._renderTarget=null;
 			//this._useUserProjectionMatrix=false;
@@ -74482,7 +70805,7 @@ var Laya=window.Laya=(function(window,document){
 		/**
 		*@private
 		*/
-		__proto._renderCamera=function(gl,state,scene){}
+		__proto._render=function(gl,context,scene){}
 		/**
 		*增加可视图层。
 		*@param layer 图层。
@@ -74518,25 +70841,18 @@ var Laya=window.Laya=(function(window,document){
 			this._calculateProjectionMatrix();
 		}
 
-		//}// BoundingFrustumWorldSpace
-		__proto._addSelfRenderObjects=function(){
-			var cameraPool=this.scene._cameraPool;
-			var cmaeraCount=cameraPool.length;
-			if (cmaeraCount > 0){
-				for (var i=cmaeraCount-1;i >=0;i--){
-					if (this.renderingOrder <=cameraPool[i].renderingOrder){
-						cameraPool.splice(i+1,0,this);
-						break ;
-					}
-				}
-				}else {
-				cameraPool.push(this);
-			}
+		/**
+		*@inheritDoc
+		*/
+		__proto._onActive=function(){
+			this._scene._addCamera(this);
 		}
 
-		__proto._clearSelfRenderObjects=function(){
-			var cameraPool=this.scene._cameraPool;
-			cameraPool.splice(cameraPool.indexOf(this),1);
+		/**
+		*@inheritDoc
+		*/
+		__proto._onInActive=function(){
+			this._scene._removeCamera(this);
 		}
 
 		/**
@@ -74545,11 +70861,8 @@ var Laya=window.Laya=(function(window,document){
 		__proto._parseCustomProps=function(rootNode,innerResouMap,customProps){
 			var color=customProps.clearColor;
 			this.clearColor=new Vector4(color[0],color[1],color[2],color[3]);
-			var skyBox=customProps.skyBox;
-			if (skyBox){
-				this.sky=new SkyBox();
-				this.sky.sharedMaterial=Loader.getRes(innerResouMap[skyBox.sharedMaterial.path]);
-			}
+			var skyboxMaterial=customProps.skyboxMaterial;
+			(skyboxMaterial)&& (this._skyboxMaterial=Loader.getRes(innerResouMap[skyboxMaterial.path]));
 		}
 
 		/**
@@ -74557,19 +70870,29 @@ var Laya=window.Laya=(function(window,document){
 		*/
 		__proto.destroy=function(destroyChild){
 			(destroyChild===void 0)&& (destroyChild=true);
-			(this._sky)&& (this._sky.destroy());
+			this._skyboxMaterial._removeReference();
+			this._skyboxMaterial=null;
 			this.renderTarget=null;
 			Laya.stage.off("resize",this,this._onScreenSizeChanged);
 			_super.prototype.destroy.call(this,destroyChild);
 		}
 
-		/**设置天空。*/
-		/**获取天空。*/
-		__getset(0,__proto,'sky',function(){
-			return this._sky;
+		/**
+		*设置天空盒材质。
+		*@param 天空盒材质。
+		*/
+		/**
+		*获取天空盒材质。
+		*@return 天空盒材质。
+		*/
+		__getset(0,__proto,'skyboxMaterial',function(){
+			return this._skyboxMaterial;
 			},function(value){
-			this._sky=value;
-			value._ownerCamera=this;
+			if (this._skyboxMaterial!==value){
+				(this._skyboxMaterial)&& (this._skyboxMaterial._removeReference());
+				value._addReference();
+				this._skyboxMaterial=value;
+			}
 		});
 
 		/**
@@ -74736,14 +71059,14 @@ var Laya=window.Laya=(function(window,document){
 		/**
 		*@inheritDoc
 		*/
-		__proto._addSelfRenderObjects=function(){
+		__proto._onActive=function(){
 			(this.lightmapBakedType!==LightSprite.LIGHTMAPBAKEDTYPE_BAKED)&& (this._scene._addLight(this));
 		}
 
 		/**
 		*@inheritDoc
 		*/
-		__proto._clearSelfRenderObjects=function(){
+		__proto._onInActive=function(){
 			(this.lightmapBakedType!==LightSprite.LIGHTMAPBAKEDTYPE_BAKED)&& (this._scene._removeLight(this));
 		}
 
@@ -74845,7 +71168,7 @@ var Laya=window.Laya=(function(window,document){
 			return this._shadowMapCount;
 			},function(value){
 			this._shadowMapCount=value;
-			(this._parallelSplitShadowMap)&& (this._parallelSplitShadowMap.PSSMNum=value);
+			(this._parallelSplitShadowMap)&& (this._parallelSplitShadowMap.shadowMapCount=value);
 		});
 
 		/**
@@ -74899,13 +71222,15 @@ var Laya=window.Laya=(function(window,document){
 		__class(RenderableSprite3D,'laya.d3.core.RenderableSprite3D',_super);
 		var __proto=RenderableSprite3D.prototype;
 		/**@private */
-		__proto._clearSelfRenderObjects=function(){
-			this._scene.removeRenderObject(this._render);
+		__proto._onInActive=function(){
+			this._scene._removeRenderObject(this._render);
+			(this._render.castShadow)&& (this._scene._removeShadowCastRenderObject(this._render));
 		}
 
 		/**@private */
-		__proto._addSelfRenderObjects=function(){
-			this._scene.addRenderObject(this._render);
+		__proto._onActive=function(){
+			this._scene._addRenderObject(this._render);
+			(this._render.castShadow)&& (this._scene._addShadowCastRenderObject(this._render));
 		}
 
 		/**
@@ -75132,14 +71457,139 @@ var Laya=window.Laya=(function(window,document){
 
 
 	/**
+	*<code>Sphere</code> 类用于创建球体。
+	*/
+	//class laya.d3.resource.models.SphereMesh extends laya.d3.resource.models.PrimitiveMesh
+	var SphereMesh=(function(_super){
+		function SphereMesh(radius,stacks,slices){
+			this._radius=NaN;
+			this._slices=0;
+			this._stacks=0;
+			(radius===void 0)&& (radius=0.5);
+			(stacks===void 0)&& (stacks=32);
+			(slices===void 0)&& (slices=32);
+			SphereMesh.__super.call(this);
+			this._radius=radius;
+			this._stacks=stacks;
+			this._slices=slices;
+			this._create();
+		}
+
+		__class(SphereMesh,'laya.d3.resource.models.SphereMesh',_super);
+		var __proto=SphereMesh.prototype;
+		/**
+		*@private
+		*/
+		__proto._create=function(){
+			var vertexCount=(this._stacks+1)*(this._slices+1);
+			var indexCount=(3 *this._stacks *(this._slices+1))*2;
+			var indices=new Uint16Array(indexCount);
+			var vertexDeclaration=VertexPositionNormalTexture.vertexDeclaration;
+			var vertexFloatStride=vertexDeclaration.vertexStride / 4;
+			var vertices=new Float32Array(vertexCount *vertexFloatStride);
+			var stackAngle=Math.PI / this._stacks;
+			var sliceAngle=(Math.PI *2.0)/ this._slices;
+			var vertexIndex=0;
+			var vertexCount=0;
+			var indexCount=0;
+			for (var stack=0;stack < (this._stacks+1);stack++){
+				var r=Math.sin(stack *stackAngle);
+				var y=Math.cos(stack *stackAngle);
+				for (var slice=0;slice < (this._slices+1);slice++){
+					var x=r *Math.sin(slice *sliceAngle+Math.PI *1 / 2);
+					var z=r *Math.cos(slice *sliceAngle+Math.PI *1 / 2);
+					vertices[vertexCount+0]=x *this._radius;
+					vertices[vertexCount+1]=y *this._radius;
+					vertices[vertexCount+2]=z *this._radius;
+					vertices[vertexCount+3]=x;
+					vertices[vertexCount+4]=y;
+					vertices[vertexCount+5]=z;
+					vertices[vertexCount+6]=slice / this._slices;
+					vertices[vertexCount+7]=stack / this._stacks;
+					vertexCount+=vertexFloatStride;
+					if (stack !=(this._stacks-1)){
+						indices[indexCount++]=vertexIndex+(this._slices+1);
+						indices[indexCount++]=vertexIndex;
+						indices[indexCount++]=vertexIndex+1;
+						indices[indexCount++]=vertexIndex+(this._slices);
+						indices[indexCount++]=vertexIndex;
+						indices[indexCount++]=vertexIndex+(this._slices+1);
+						vertexIndex++;
+					}
+				}
+			}
+			this.setData(vertexDeclaration,vertices,indices);
+		}
+
+		/**
+		*设置半径（改变此属性会重新生成顶点和索引）
+		*@param value 半径
+		*/
+		/**
+		*返回半径
+		*@return 半径
+		*/
+		__getset(0,__proto,'radius',function(){
+			return this._radius;
+			},function(value){
+			if (this._radius!==value){
+				this._radius=value;
+				this.releaseResource();
+				this._create();
+			}
+		});
+
+		/**
+		*设置宽度分段（改变此属性会重新生成顶点和索引）
+		*@param value 宽度分段
+		*/
+		/**
+		*获取宽度分段
+		*@return 宽度分段
+		*/
+		__getset(0,__proto,'slices',function(){
+			return this._slices;
+			},function(value){
+			if (this._slices!==value){
+				this._slices=value;
+				this.releaseResource();
+				this._create();
+			}
+		});
+
+		/**
+		*设置高度分段（改变此属性会重新生成顶点和索引）
+		*@param value高度分段
+		*/
+		/**
+		*获取高度分段
+		*@return 高度分段
+		*/
+		__getset(0,__proto,'stacks',function(){
+			return this._stacks;
+			},function(value){
+			if (this._stacks!==value){
+				this._stacks=value;
+				this.releaseResource();
+				this._create();
+			}
+		});
+
+		return SphereMesh;
+	})(PrimitiveMesh)
+
+
+	/**
 	*<code>View</code> 是一个视图类。
 	*@internal <p><code>View</code></p>
 	*/
 	//class laya.ui.View extends laya.ui.Box
 	var View=(function(_super){
+		var DataWatcher;
 		function View(){
 			this._idMap=null;
 			this._aniList=null;
+			this._watchMap={};
 			View.__super.call(this);
 		}
 
@@ -75180,6 +71630,7 @@ var Laya=window.Laya=(function(window,document){
 			if (this._width > 0 && uiView.props.hitTestPrior==null && !this.mouseThrough)this.hitTestPrior=true;
 		}
 
+		__proto.onEvent=function(type,event){}
 		/**
 		*@private
 		*装载UI视图。用于加载模式。
@@ -75199,17 +71650,28 @@ var Laya=window.Laya=(function(window,document){
 			if (this._aniList)this._aniList.length=0;
 			this._idMap=null;
 			this._aniList=null;
+			this._watchMap=null;
 			laya.ui.Component.prototype.destroy.call(this,destroyChild);
 		}
 
+		/**@private */
+		__proto.changeData=function(key){
+			var arr=this._watchMap[key];
+			if (!arr)return;
+			console.log("change",key);
+			for (var i=0,n=arr.length;i < n;i++){
+				var watcher=arr[i];
+				watcher.exe(this);
+			}
+		}
+
 		View._regs=function(){
-			var key;
-			for (key in View.uiClassMap){
+			for (var key in View.uiClassMap){
 				ClassUtils.regClass(key,View.uiClassMap[key]);
 			}
 		}
 
-		View.createComp=function(uiView,comp,view){
+		View.createComp=function(uiView,comp,view,dataMap){
 			comp=comp || View.getCompInstance(uiView);
 			if (!comp){
 				console.warn("can not create:"+uiView.type);
@@ -75217,6 +71679,7 @@ var Laya=window.Laya=(function(window,document){
 			};
 			var child=uiView.child;
 			if (child){
+				var isList=(comp instanceof laya.ui.List );
 				for (var i=0,n=child.length;i < n;i++){
 					var node=child[i];
 					if (comp.hasOwnProperty("itemRender")&& (node.props.name=="render" || node.props.renderType==="render")){
@@ -75226,7 +71689,13 @@ var Laya=window.Laya=(function(window,document){
 						}else if (ClassUtils._isDrawType(node.type)){
 						ClassUtils._addGraphicToSprite(node,comp,true);
 						}else {
-						var tChild=View.createComp(node,null,view);
+						if (isList){
+							var arr=[];
+							var tChild=View.createComp(node,null,view,arr);
+							if (arr.length)tChild["_$bindData"]=arr;
+							}else {
+							tChild=View.createComp(node,null,view,dataMap);
+						}
 						if (node.type=="Script"){
 							if ("owner" in tChild){
 								tChild["owner"]=comp;
@@ -75244,7 +71713,12 @@ var Laya=window.Laya=(function(window,document){
 			var props=uiView.props;
 			for (var prop in props){
 				var value=props[prop];
-				View.setCompValue(comp,prop,value,view);
+				if (View.eventDic[prop]){
+					if (value&&view){
+						(comp).on(prop,view,view.onEvent,[value]);
+					}
+				}else
+				View.setCompValue(comp,prop,value,view,dataMap);
 			}
 			if (Laya.__typeof(comp,'laya.ui.IItem'))(comp).initItems();
 			if (uiView.compId && view && view._idMap){
@@ -75253,17 +71727,52 @@ var Laya=window.Laya=(function(window,document){
 			return comp;
 		}
 
-		View.setCompValue=function(comp,prop,value,view){
+		View.setCompValue=function(comp,prop,value,view,dataMap){
+			if ((typeof value=='string')&& value.indexOf("${")>-1){
+				View._sheet || (View._sheet=ClassUtils.getClass("laya.data.Table"));
+				if (!View._sheet){
+					console.warn("Can not find class Sheet");
+					return;
+				}
+				if (dataMap){
+					dataMap.push(comp,prop,value);
+					}else if (view){
+					if (value.indexOf("].")==-1){
+						value=value.replace(".","[0].");
+					};
+					var watcher=new DataWatcher(comp,prop,value);
+					watcher.exe(view);
+					var one,temp;
+					var str=value.replace(/\[.*?\]\./g,".");
+					while ((one=View._parseWatchData.exec(str))!=null){
+						var key1=one[1];
+						while ((temp=View._parseKeyWord.exec(key1))!=null){
+							var key2=temp[0];
+							var arr=(view._watchMap[key2] || (view._watchMap[key2]=[]));
+							arr.push(watcher);
+							View._sheet.I.notifer.on(key2,view,view.changeData,[key2]);
+						}
+						arr=(view._watchMap[key1] || (view._watchMap[key1]=[]));
+						arr.push(watcher);
+						View._sheet.I.notifer.on(key1,view,view.changeData,[key1]);
+					}
+				}
+				return;
+			}
 			if (prop==="var" && view){
 				view[value]=comp;
+				}else if (prop=="onClick"){
+				var fun=Browser.window.eval("(function(){"+value+"})");
+				comp.on("click",view,fun);
 				}else {
-				comp[prop]=(value==="true" ? true :(value==="false" ? false :value))
+				comp[prop]=(value==="true" ? true :(value==="false" ? false :value));
 			}
 		}
 
 		View.getCompInstance=function(json){
-			var runtime=json.props?json.props.runtime:null;
-			var compClass=runtime ? (View.viewClassMap[runtime] || View.uiClassMap[runtime]|| Laya["__classmap"][runtime]):View.uiClassMap[json.type];
+			var runtime=json.props ? json.props.runtime :null;
+			var compClass;
+			compClass=runtime ? (View.viewClassMap[runtime] || View.uiClassMap[runtime]|| Laya["__classmap"][runtime]):View.uiClassMap[json.type];
 			if (json.props && json.props.hasOwnProperty("renderType")&& json.props["renderType"]=="instance")return compClass["instance"];
 			return compClass ? new compClass():null;
 		}
@@ -75283,11 +71792,30 @@ var Laya=window.Laya=(function(window,document){
 
 		View.uiMap={};
 		View.viewClassMap={};
+		View._sheet=null
 		__static(View,
-		['uiClassMap',function(){return this.uiClassMap={"ViewStack":ViewStack,"LinkButton":Button,"TextArea":TextArea,"ColorPicker":ColorPicker,"Box":Box,"Button":Button,"CheckBox":CheckBox,"Clip":Clip,"ComboBox":ComboBox,"Component":Component,"HScrollBar":HScrollBar,"HSlider":HSlider,"Image":Image,"Label":Label,"List":List,"Panel":Panel,"ProgressBar":ProgressBar,"Radio":Radio,"RadioGroup":RadioGroup,"ScrollBar":ScrollBar,"Slider":Slider,"Tab":Tab,"TextInput":TextInput,"View":View,"VScrollBar":VScrollBar,"VSlider":VSlider,"Tree":Tree,"HBox":HBox,"VBox":VBox,"Sprite":Sprite,"Animation":Animation,"Text":Text,"FontClip":FontClip};}
+		['uiClassMap',function(){return this.uiClassMap={"ViewStack":ViewStack,"LinkButton":Button,"TextArea":TextArea,"ColorPicker":ColorPicker,"Box":Box,"Button":Button,"CheckBox":CheckBox,"Clip":Clip,"ComboBox":ComboBox,"Component":Component,"HScrollBar":HScrollBar,"HSlider":HSlider,"Image":Image,"Label":Label,"List":List,"Panel":Panel,"ProgressBar":ProgressBar,"Radio":Radio,"RadioGroup":RadioGroup,"ScrollBar":ScrollBar,"Slider":Slider,"Tab":Tab,"TextInput":TextInput,"View":View,"VScrollBar":VScrollBar,"VSlider":VSlider,"Tree":Tree,"HBox":HBox,"VBox":VBox,"Sprite":Sprite,"Animation":Animation,"Text":Text,"FontClip":FontClip};},'eventDic',function(){return this.eventDic={"mousedown":true,"mouseup":true,"mousemove":true,"mouseover":true,"mouseout":true,"click":true,"doubleclick":true,"rightmousedown":true,"rightmouseup":true,"rightclick":true };},'_parseWatchData',function(){return this._parseWatchData=/\${(.*?)}/g;},'_parseKeyWord',function(){return this._parseKeyWord=/[a-zA-Z_][a-zA-Z0-9_]*(?:(?:\.[a-zA-Z_][a-zA-Z0-9_]*)+)/g;}
 		]);
 		View.__init$=function(){
 			View._regs()
+			//class DataWatcher
+			DataWatcher=(function(){
+				function DataWatcher(comp,prop,value){
+					this.comp=null;
+					this.prop=null;
+					this.value=null;
+					this.comp=comp;
+					this.prop=prop;
+					this.value=value;
+				}
+				__class(DataWatcher,'');
+				var __proto=DataWatcher.prototype;
+				__proto.exe=function(view){
+					var fun=UIUtils.getBindFun(this.value);
+					this.comp[this.prop]=fun.call(this,view);
+				}
+				return DataWatcher;
+			})()
 		}
 
 		return View;
@@ -76820,6 +73348,7 @@ var Laya=window.Laya=(function(window,document){
 			content.height=height;
 			content._style.scrollRect || (content.scrollRect=Rectangle.create());
 			content._style.scrollRect.setTo(0,0,width,height);
+			content.scrollRect=content.scrollRect;
 		}
 
 		/**
@@ -76833,6 +73362,7 @@ var Laya=window.Laya=(function(window,document){
 			if (rect){
 				var start=Math.round(scrollBar.value);
 				scrollBar.isVertical ? rect.y=start :rect.x=start;
+				this._content.scrollRect=rect;
 			}
 		}
 
@@ -77131,6 +73661,11 @@ var Laya=window.Laya=(function(window,document){
 			if (this._items && index >-1 && index < this._items.length)this._items[index].selected=selected;
 		}
 
+		__proto._skinLoaded=function(){
+			this._setLabelChanged();
+			this.event("loaded");
+		}
+
 		/**
 		*@private
 		*创建一个项显示对象。
@@ -77211,7 +73746,11 @@ var Laya=window.Laya=(function(window,document){
 			},function(value){
 			if (this._skin !=value){
 				this._skin=value;
-				this._setLabelChanged();
+				if (this._skin&&!Loader.getRes(this._skin)){
+					Laya.loader.load(this._skin,Handler.create(this,this._skinLoaded),null,"image",1);
+					}else{
+					this._skinLoaded();
+				}
 			}
 		});
 
@@ -78945,6 +75484,14 @@ var Laya=window.Laya=(function(window,document){
 			this.height=22;
 		}
 
+		__proto._skinLoaded=function(){
+			this._bg || (this.graphics=this._bg=new AutoBitmap());
+			this._bg.source=Loader.getRes(this._skin);
+			this._width && (this._bg.width=this._width);
+			this._height && (this._bg.height=this._height);
+			this.event("loaded");
+		}
+
 		/**选中输入框内的文本。*/
 		__proto.select=function(){
 			(this._tf).select();
@@ -79002,10 +75549,11 @@ var Laya=window.Laya=(function(window,document){
 			},function(value){
 			if (this._skin !=value){
 				this._skin=value;
-				this._bg || (this.graphics=this._bg=new AutoBitmap());
-				this._bg.source=Loader.getRes(this._skin);
-				this._width && (this._bg.width=this._width);
-				this._height && (this._bg.height=this._height);
+				if (this._skin&&!Loader.getRes(this._skin)){
+					Laya.loader.load(this._skin,Handler.create(this,this._skinLoaded),null,"image",1);
+					}else{
+					this._skinLoaded();
+				}
 			}
 		});
 
@@ -79293,29 +75841,51 @@ var Laya=window.Laya=(function(window,document){
 		/**
 		*@inheritDoc
 		*/
-		__proto._renderCamera=function(gl,state,scene){
-			(scene.parallelSplitShadowMaps[0])&& (scene._renderShadowMap(gl,state,this));
-			state.camera=this;
-			this._prepareCameraToRender();
+		__proto._render=function(gl,context,scene){
+			if (scene.parallelSplitShadowMaps[0]){
+				var parallelSplitShadowMap=scene.parallelSplitShadowMaps[0];
+				parallelSplitShadowMap._calcAllLightCameraInfo(this);
+				scene._defineDatas.add(Scene.SHADERDEFINE_CAST_SHADOW);
+				for (var i=0,n=parallelSplitShadowMap.shadowMapCount;i < n;i++){
+					var smCamera=parallelSplitShadowMap.cameras[i];
+					context.camera=smCamera;
+					context.projectionViewMatrix=smCamera.projectionViewMatrix;
+					var scene=context.scene;
+					FrustumCulling.renderObjectCulling(smCamera.boundFrustum,scene,context,scene._castShadowRenderObjects,scene._castShadowRendersLength);
+					var shadowMap=parallelSplitShadowMap.cameras[i+1].renderTarget;
+					shadowMap.start();
+					context.camera=smCamera;
+					context.viewport=smCamera.viewport;
+					smCamera._prepareCameraToRender();
+					smCamera._prepareCameraViewProject(smCamera.viewMatrix,smCamera.projectionMatrix,smCamera._projectionViewMatrixNoTranslateScale);
+					scene._clear(gl,context);
+					var queue=scene._quenes[0];
+					queue._render(context,false);
+					shadowMap.end();
+				}
+				scene._defineDatas.remove(Scene.SHADERDEFINE_CAST_SHADOW);
+			}
+			context.camera=this;
 			Script._preRender();
 			var viewMat,projectMat;
-			viewMat=state.viewMatrix=this.viewMatrix;
+			viewMat=context.viewMatrix=this.viewMatrix;
 			var renderTar=this._renderTarget;
 			if (renderTar){
 				renderTar.start();
 				Matrix4x4.multiply(BaseCamera._invertYScaleMatrix,this._projectionMatrix,BaseCamera._invertYProjectionMatrix);
 				Matrix4x4.multiply(BaseCamera._invertYScaleMatrix,this.projectionViewMatrix,BaseCamera._invertYProjectionViewMatrix);
-				projectMat=state.projectionMatrix=BaseCamera._invertYProjectionMatrix;
-				state.projectionViewMatrix=BaseCamera._invertYProjectionViewMatrix;
+				projectMat=context.projectionMatrix=BaseCamera._invertYProjectionMatrix;
+				context.projectionViewMatrix=BaseCamera._invertYProjectionViewMatrix;
 				}else {
-				projectMat=state.projectionMatrix=this._projectionMatrix;
-				state.projectionViewMatrix=this.projectionViewMatrix;
+				projectMat=context.projectionMatrix=this._projectionMatrix;
+				context.projectionViewMatrix=this.projectionViewMatrix;
 			}
+			context.viewport=this.viewport;
+			this._prepareCameraToRender();
 			this._prepareCameraViewProject(viewMat,projectMat,this._projectionViewMatrixNoTranslateScale);
-			state.viewport=this.viewport;
-			scene._preRenderScene(gl,state,this.boundFrustum);
-			scene._clear(gl,state);
-			scene._renderScene(gl,state);
+			scene._preRenderScene(gl,context,this.boundFrustum);
+			scene._clear(gl,context);
+			scene._renderScene(gl,context);
 			Script._postRender();
 			(renderTar)&& (renderTar.end());
 		}
@@ -79571,15 +76141,15 @@ var Laya=window.Laya=(function(window,document){
 		/**
 		*@inheritDoc
 		*/
-		__proto._addSelfRenderObjects=function(){
-			_super.prototype._addSelfRenderObjects.call(this);
+		__proto._onActive=function(){
+			_super.prototype._onActive.call(this);
 			this._shadow && (this._initShadow());
 		}
 
 		/**
 		*@inheritDoc
 		*/
-		__proto._clearSelfRenderObjects=function(){
+		__proto._onInActive=function(){
 			var shaderValue=this._scene._shaderValues;
 			shaderValue.setVector(4,null);
 			shaderValue.setVector(3,null);
@@ -79632,57 +76202,11 @@ var Laya=window.Laya=(function(window,document){
 			MeshSprite3D.__super.call(this,name);
 			this._meshFilter=new MeshFilter(this);
 			this._render=new MeshRender(this,4);
-			this._meshFilter.on("meshchanged",this,this._onMeshChanged);
 			(mesh)&& (this._meshFilter.sharedMesh=mesh);
 		}
 
 		__class(MeshSprite3D,'laya.d3.core.MeshSprite3D',_super);
 		var __proto=MeshSprite3D.prototype;
-		/**
-		*@private
-		*/
-		__proto._changeRenderObjectByMesh=function(index){
-			var renderObjects=this._render._renderElements;
-			var renderElement=renderObjects[index];
-			(renderElement)|| (renderElement=renderObjects[index]=new SubMeshRenderElement());
-			var material=this._render.sharedMaterials[index];
-			(material)|| (material=StandardMaterial.defaultMaterial);
-			var renderObj=this._meshFilter.sharedMesh._getSubMesh(index);
-			renderElement.transform=this._transform;
-			renderElement.render=this._render;
-			renderElement.geometry=renderObj;
-			renderElement.material=material;
-			return renderElement;
-		}
-
-		/**
-		*@private
-		*/
-		__proto._changeRenderObjectsByMesh=function(){
-			var renderElementsCount=this._meshFilter.sharedMesh.subMeshCount;
-			this._render._renderElements.length=renderElementsCount;
-			for (var i=0;i < renderElementsCount;i++)
-			this._changeRenderObjectByMesh(i);
-		}
-
-		/**
-		*@private
-		*/
-		__proto._onMeshChanged=function(meshFilter){
-			var mesh=meshFilter.sharedMesh;
-			if (mesh.loaded)
-				this._changeRenderObjectsByMesh();
-			else
-			mesh.once("loaded",this,this._onMeshLoaded);
-		}
-
-		/**
-		*@private
-		*/
-		__proto._onMeshLoaded=function(sender){
-			(sender===this.meshFilter.sharedMesh)&& (this._changeRenderObjectsByMesh());
-		}
-
 		/**
 		*@inheritDoc
 		*/
@@ -79713,7 +76237,7 @@ var Laya=window.Laya=(function(window,document){
 		*@inheritDoc
 		*/
 		__proto._addToInitStaticBatchManager=function(){
-			MeshSprite3DStaticBatchManager.instance._addBatchSprite(this);
+			MeshRenderStaticBatchManager.instance._addBatchSprite(this);
 		}
 
 		/**
@@ -79726,7 +76250,7 @@ var Laya=window.Laya=(function(window,document){
 			var destMeshRender=meshSprite3D._render;
 			destMeshRender.enable=meshRender.enable;
 			destMeshRender.sharedMaterials=meshRender.sharedMaterials;
-			destMeshRender.castShadow=meshRender.castShadow;
+			destMeshRender._castShadow=meshRender._castShadow;
 			var lightmapScaleOffset=meshRender.lightmapScaleOffset;
 			lightmapScaleOffset && (destMeshRender.lightmapScaleOffset=lightmapScaleOffset.clone());
 			destMeshRender.lightmapIndex=meshRender.lightmapIndex;
@@ -79763,8 +76287,8 @@ var Laya=window.Laya=(function(window,document){
 		});
 
 		MeshSprite3D.__init__=function(){
-			StaticBatchManager._registerManager(MeshSprite3DStaticBatchManager.instance);
-			DynamicBatchManager._registerManager(MeshSprite3DDynamicBatchManager.instance);
+			StaticBatchManager._registerManager(MeshRenderStaticBatchManager.instance);
+			DynamicBatchManager._registerManager(MeshRenderDynamicBatchManager.instance);
 		}
 
 		MeshSprite3D.load=function(url){
@@ -79787,9 +76311,9 @@ var Laya=window.Laya=(function(window,document){
 			this._particleSystem=new ShurikenParticleSystem(this);
 			var elements=this._render._renderElements;
 			var element=elements[0]=new RenderElement();
-			element.transform=this._transform;
+			element.setTransform(this._transform);
 			element.render=this._render;
-			element.geometry=this._particleSystem;
+			element.setGeometry(this._particleSystem);
 			element.material=ShurikenParticleMaterial.defaultMaterial;
 		}
 
@@ -80404,50 +76928,11 @@ var Laya=window.Laya=(function(window,document){
 			this._subMeshOffset=[];
 			this._meshFilter=new MeshFilter(this);
 			this._render=new SkinnedMeshRender(this,4);
-			this._meshFilter.on("meshchanged",this,this._onMeshChanged);
 			(mesh)&& (this._meshFilter.sharedMesh=mesh);
 		}
 
 		__class(SkinnedMeshSprite3D,'laya.d3.core.SkinnedMeshSprite3D',_super);
 		var __proto=SkinnedMeshSprite3D.prototype;
-		/**
-		*@private
-		*/
-		__proto._changeRenderObjectByMesh=function(index){
-			var renderObjects=this._render._renderElements;
-			var renderElement=renderObjects[index];
-			(renderElement)|| (renderElement=renderObjects[index]=new SubMeshRenderElement());
-			var material=this._render.sharedMaterials[index];
-			(material)|| (material=StandardMaterial.defaultMaterial);
-			var renderObj=this._meshFilter.sharedMesh._getSubMesh(index);
-			renderElement.transform=this._transform;
-			renderElement.render=this._render;
-			renderElement.geometry=renderObj;
-			renderElement.material=material;
-			return renderElement;
-		}
-
-		/**
-		*@private
-		*/
-		__proto._changeRenderObjectsByMesh=function(){
-			var renderElementsCount=this._meshFilter.sharedMesh.subMeshCount;
-			this._render._renderElements.length=renderElementsCount;
-			for (var i=0;i < renderElementsCount;i++)
-			this._changeRenderObjectByMesh(i);
-		}
-
-		/**
-		*@private
-		*/
-		__proto._onMeshChanged=function(meshFilter){
-			var mesh=meshFilter.sharedMesh;
-			if (mesh.loaded)
-				this._changeRenderObjectsByMesh();
-			else
-			mesh.once("loaded",this,this._changeRenderObjectsByMesh);
-		}
-
 		/**
 		*@inheritDoc
 		*/
@@ -80475,14 +76960,10 @@ var Laya=window.Laya=(function(window,document){
 			var rootBone=customProps.rootBone;
 			(rootBone)&& (render._setRootBone(rootBone));
 			var boundBox=customProps.boundBox;
-			if (boundBox){
-				var min=boundBox.min;
-				var max=boundBox.max;
-				var localBoundBox=new BoundBox(new Vector3(min[0],min[1],min[2]),new Vector3(max[0],max[1],max[2]));
-				render.localBoundBox=localBoundBox;
-				}else {
-				render._hasIndependentBound=false;
-			};
+			var min=boundBox.min;
+			var max=boundBox.max;
+			var localBoundBox=new BoundBox(new Vector3(min[0],min[1],min[2]),new Vector3(max[0],max[1],max[2]));
+			render.localBoundBox=localBoundBox;
 			var boundSphere=customProps.boundSphere;
 			if (boundSphere){
 				var center=boundSphere.center;
@@ -80514,7 +76995,7 @@ var Laya=window.Laya=(function(window,document){
 			var destMeshRender=meshSprite3D._render;
 			destMeshRender.enable=meshRender.enable;
 			destMeshRender.sharedMaterials=meshRender.sharedMaterials;
-			destMeshRender.castShadow=meshRender.castShadow;
+			destMeshRender._castShadow=meshRender._castShadow;
 			var lightmapScaleOffset=meshRender.lightmapScaleOffset;
 			lightmapScaleOffset && (destMeshRender.lightmapScaleOffset=lightmapScaleOffset.clone());
 			destMeshRender.receiveShadow=meshRender.receiveShadow;
@@ -80524,7 +77005,6 @@ var Laya=window.Laya=(function(window,document){
 			(lbp)&& (destMeshRender.localBoundSphere=lbp.clone());
 			var lbb=meshRender.localBoundBox;
 			(lbb)&& (destMeshRender.localBoundBox=lbb.clone());
-			destMeshRender._hasIndependentBound=meshRender._hasIndependentBound;
 			laya.d3.core.Sprite3D.prototype.cloneTo.call(this,destObject);
 		}
 
@@ -80573,6 +77053,162 @@ var Laya=window.Laya=(function(window,document){
 
 
 	/**
+	*...
+	*@author ...
+	*/
+	//class laya.d3.core.trail.TrailSprite3D extends laya.d3.core.RenderableSprite3D
+	var TrailSprite3D=(function(_super){
+		function TrailSprite3D(){
+			this._geometryFilter=null;
+			TrailSprite3D.__super.call(this);
+			this._geometryFilter=new TrailFilter(this);
+			this._render=new TrailRenderer(this);
+			this._changeRenderObjectsByMaterial(this._render,0,TrailMaterial.defaultMaterial);
+			this._render.on(Event.MATERIAL_CHANGED,this,this._changeRenderObjectsByMaterial);
+			this._geometryFilter.on("trailfilterchange",this,this._changeRenderObjectsByRenderElement);
+		}
+
+		__class(TrailSprite3D,'laya.d3.core.trail.TrailSprite3D',_super);
+		var __proto=TrailSprite3D.prototype;
+		__proto._changeRenderObjectsByMaterial=function(sender,index,material){
+			var renderElementsCount=(this._geometryFilter).getRenderElementsCount();
+			this._render._renderElements.length=renderElementsCount;
+			for (var i=0;i < renderElementsCount;i++){
+				this._changeRenderObjectByMaterial(i,material);
+			}
+		}
+
+		__proto._changeRenderObjectByMaterial=function(index,material){
+			var renderObjects=this._render._renderElements;
+			(material)|| (material=TrailMaterial.defaultMaterial);
+			var renderElement=renderObjects[index];
+			(renderElement)|| (renderElement=renderObjects[index]=new RenderElement());
+			renderElement._sprite3D=this;
+			renderElement.renderObj=(this._geometryFilter).getRenderElement(index);
+			renderElement._render=this._render;
+			renderElement._material=material;
+		}
+
+		__proto._changeRenderObjectsByRenderElement=function(index,trailRenderElement){
+			var renderObjects=this._render._renderElements;
+			var renderElement=renderObjects[index];
+			(renderElement)|| (renderElement=renderObjects[index]=new RenderElement());
+			renderElement._sprite3D=this;
+			renderElement.renderObj=trailRenderElement;
+			renderElement._render=this._render;
+			renderElement._material=this._render.sharedMaterial;
+		}
+
+		__proto._update=function(state){
+			_super.prototype._update(state);
+			(this._geometryFilter)._update(state);
+		}
+
+		/**
+		*@inheritDoc
+		*/
+		__proto._parseCustomProps=function(rootNode,innerResouMap,customProps,json){
+			var render=this._render;
+			var filter=this._geometryFilter;
+			var i=0,j=0;
+			var materials=customProps.materials;
+			if (materials){
+				var sharedMaterials=render.sharedMaterials;
+				var materialCount=materials.length;
+				sharedMaterials.length=materialCount;
+				for (i=0;i < materialCount;i++)
+				sharedMaterials[i]=Loader.getRes(innerResouMap[materials[i].path]);
+				render.sharedMaterials=sharedMaterials;
+			};
+			var props=json.props;
+			filter.time=props.time;
+			filter.minVertexDistance=props.minVertexDistance;
+			filter.widthMultiplier=props.widthMultiplier;
+			filter.textureMode=props.textureMode;
+			var _widthCurve=[];
+			var widthCurve=customProps.widthCurve;
+			for (i=0,j=widthCurve.length;i < j;i++){
+				var trailkeyframe=new TrailKeyFrame();
+				trailkeyframe.time=widthCurve[i].time;
+				trailkeyframe.inTangent=widthCurve[i].inTangent;
+				trailkeyframe.outTangent=widthCurve[i].outTangent;
+				trailkeyframe.value=widthCurve[i].value;
+				_widthCurve.push(trailkeyframe);
+			}
+			filter.widthCurve=_widthCurve;
+			var colorGradientNode=customProps.colorGradient;
+			var _colorGradient=new Gradient();
+			_colorGradient.mode=colorGradientNode.mode;
+			var colorKeys=[];
+			var colorKey;
+			var _colorKeys=colorGradientNode.colorKeys;
+			var _colorKey;
+			for (i=0,j=_colorKeys.length;i < j;i++){
+				_colorKey=_colorKeys[i];
+				colorKey=new GradientColorKey(new Color$1(_colorKey.value[0],_colorKey.value[1],_colorKey.value[2],1.0),_colorKey.time);
+				colorKeys.push(colorKey);
+			};
+			var alphaKeys=[];
+			var alphaKey;
+			var _alphaKeys=colorGradientNode.alphaKeys;
+			var _alphaKey;
+			for (i=0,j=_alphaKeys.length;i < j;i++){
+				_alphaKey=_alphaKeys[i];
+				alphaKey=new GradientAlphaKey(_alphaKey.value,_alphaKey.time);
+				alphaKeys.push(alphaKey);
+			}
+			_colorGradient.setKeys(colorKeys,alphaKeys);
+			filter.colorGradient=_colorGradient;
+		}
+
+		/**
+		*<p>销毁此对象。</p>
+		*@param destroyChild 是否同时销毁子节点，若值为true,则销毁子节点，否则不销毁子节点。
+		*/
+		__proto.destroy=function(destroyChild){
+			(destroyChild===void 0)&& (destroyChild=true);
+			if (this.destroyed)
+				return;
+			_super.prototype.destroy.call(this,destroyChild);
+			(this._geometryFilter).destroy();
+			this._geometryFilter=null;
+		}
+
+		/**
+		*获取Trail过滤器。
+		*@return Trail过滤器。
+		*/
+		__getset(0,__proto,'trailFilter',function(){
+			return this._geometryFilter;
+		});
+
+		/**
+		*获取Trail渲染器。
+		*@return Trail渲染器。
+		*/
+		__getset(0,__proto,'trailRender',function(){
+			return this._render;
+		});
+
+		TrailSprite3D.__init__=function(){
+			TrailSprite3D.SHADERDEFINE_GRADIENTMODE_BLEND=TrailSprite3D.shaderDefines.registerDefine("GRADIENTMODE_BLEND");
+		}
+
+		TrailSprite3D.CURTIME=3;
+		TrailSprite3D.LIFETIME=4;
+		TrailSprite3D.WIDTHCURVE=5;
+		TrailSprite3D.WIDTHCURVEKEYLENGTH=6;
+		TrailSprite3D.GRADIENTCOLORKEY=7;
+		TrailSprite3D.GRADIENTALPHAKEY=8;
+		TrailSprite3D.SHADERDEFINE_GRADIENTMODE_BLEND=0;
+		__static(TrailSprite3D,
+		['shaderDefines',function(){return this.shaderDefines=new ShaderDefines$1(RenderableSprite3D.shaderDefines);}
+		]);
+		return TrailSprite3D;
+	})(RenderableSprite3D)
+
+
+	/**
 	*<code>TerrainChunk</code> 类用于创建地块。
 	*/
 	//class laya.d3.terrain.TerrainChunk extends laya.d3.core.RenderableSprite3D
@@ -80614,9 +77250,9 @@ var Laya=window.Laya=(function(window,document){
 				terrainMaterial.renderMode=2;
 			};
 			var renderElement=new RenderElement();
-			renderElement.transform=this._transform;
+			renderElement.setTransform(this._transform);
 			renderElement.render=this._render;
-			renderElement.geometry=this._terrainFilter;
+			renderElement.setGeometry(this._terrainFilter);
 			renderElement.material=terrainMaterial;
 			this._render._materials.push(terrainMaterial);
 			this._render._renderElements.push(renderElement);
@@ -81245,7 +77881,38 @@ var Laya=window.Laya=(function(window,document){
 	})(TestPageUI)
 
 
-	Laya.__init([GLCommandEncoder,EventDispatcher,LoaderManager,GraphicAnimation,Path,Timer,WebGLContext2D,ShaderCompile,Render,DrawText,View]);
+	Laya.__init([GLCommandEncoder,LoaderManager,EventDispatcher,WebGLContext2D,GraphicAnimation,Path,Timer,ShaderCompile,Render,DrawText,View]);
 	new PerformanceTest_Maggots();
 
 })(window,document,Laya);
+
+
+/*
+1 file:///G:/LayaAirGit-Master/d3/src/laya/d3/resource/DataTexture2D.as (10):warning:laya.d3.resource.DataTexture2D extends laya.d3.resource.BaseTexture,This class  is not defined;
+2 file:///G:/LayaAirGit-Master/d3/src/laya/d3/resource/DataTexture2D.as (132):warning:_glTextureType This variable is not defined.
+3 file:///G:/LayaAirGit-Master/d3/src/laya/d3/resource/DataTexture2D.as (158):warning:_width This variable is not defined.
+4 file:///G:/LayaAirGit-Master/d3/src/laya/d3/resource/DataTexture2D.as (159):warning:_height This variable is not defined.
+5 file:///G:/LayaAirGit-Master/d3/src/laya/d3/resource/DataTexture2D.as (161):warning:_glTextureType This variable is not defined.
+6 file:///G:/LayaAirGit-Master/d3/src/laya/d3/resource/DataTexture2D.as (161):warning:_glTexture This variable is not defined.
+7 file:///G:/LayaAirGit-Master/d3/src/laya/d3/resource/DataTexture2D.as (166):warning:_glTextureType This variable is not defined.
+8 file:///G:/LayaAirGit-Master/d3/src/laya/d3/resource/DataTexture2D.as (166):warning:_width This variable is not defined.
+9 file:///G:/LayaAirGit-Master/d3/src/laya/d3/resource/DataTexture2D.as (166):warning:_height This variable is not defined.
+10 file:///G:/LayaAirGit-Master/d3/src/laya/d3/resource/DataTexture2D.as (171):warning:_glTextureType This variable is not defined.
+11 file:///G:/LayaAirGit-Master/d3/src/laya/d3/resource/DataTexture2D.as (179):warning:_glTextureType This variable is not defined.
+12 file:///G:/LayaAirGit-Master/d3/src/laya/d3/resource/DataTexture2D.as (179):warning:_width This variable is not defined.
+13 file:///G:/LayaAirGit-Master/d3/src/laya/d3/resource/DataTexture2D.as (179):warning:_height This variable is not defined.
+14 file:///G:/LayaAirGit-Master/d3/src/laya/d3/resource/DataTexture2D.as (184):warning:_glTextureType This variable is not defined.
+15 file:///G:/LayaAirGit-Master/d3/src/laya/d3/resource/DataTexture2D.as (195):warning:_glTextureType This variable is not defined.
+16 file:///G:/LayaAirGit-Master/d3/src/laya/d3/resource/DataTexture2D.as (210):warning:_glTextureType This variable is not defined.
+17 file:///G:/LayaAirGit-Master/d3/src/laya/d3/resource/DataTexture2D.as (211):warning:_glTextureType This variable is not defined.
+18 file:///G:/LayaAirGit-Master/d3/src/laya/d3/resource/DataTexture2D.as (212):warning:_glTextureType This variable is not defined.
+19 file:///G:/LayaAirGit-Master/d3/src/laya/d3/resource/DataTexture2D.as (214):warning:_glTextureType This variable is not defined.
+20 file:///G:/LayaAirGit-Master/d3/src/laya/d3/resource/DataTexture2D.as (216):warning:_glTextureType This variable is not defined.
+21 file:///G:/LayaAirGit-Master/d3/src/laya/d3/resource/DataTexture2D.as (217):warning:_glTextureType This variable is not defined.
+22 file:///G:/LayaAirGit-Master/d3/src/laya/d3/resource/DataTexture2D.as (225):warning:memorySize This variable is not defined.
+23 file:///G:/LayaAirGit-Master/d3/src/laya/d3/resource/DataTexture2D.as (226):warning:memorySize This variable is not defined.
+24 file:///G:/LayaAirGit-Master/d3/src/laya/d3/resource/DataTexture2D.as (278):warning:_glTexture This variable is not defined.
+25 file:///G:/LayaAirGit-Master/d3/src/laya/d3/resource/DataTexture2D.as (279):warning:_glTexture This variable is not defined.
+26 file:///G:/LayaAirGit-Master/d3/src/laya/d3/resource/DataTexture2D.as (280):warning:_glTexture This variable is not defined.
+27 file:///G:/LayaAirGit-Master/d3/src/laya/d3/resource/DataTexture2D.as (282):warning:memorySize This variable is not defined.
+*/

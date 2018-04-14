@@ -888,6 +888,14 @@
 				"name_3_name": "Comprehensive description to WeChat games",
 				"name_3_url": "English/wechat/minigame/advanced/",
 				"name_3_file": "readme.md"
+			},{
+				"name_3_name": "微信小游戏的物理缓存管理",
+				"name_3_url": "English/wechat/minigame/advanced/50M/",
+				"name_3_file": "readme.md"
+			},{
+				"name_3_name": "微信小游戏的4M本地包使用",
+				"name_3_url": "English/wechat/minigame/advanced/4M/",
+				"name_3_file": "readme.md"
 			}]
 		},
 		{
