@@ -1,0 +1,2717 @@
+{
+"1051": {
+	"id": 1051,
+	"name": "青铜5阶1星",
+	"matchLevel": 1,
+	"maxStar": 3,
+	"getSkill": 0,
+	"taskId1": "12,46",
+	"taskId2": "209,220",
+	"taskId42": "209,320",
+	"starReq": 0,
+	"rankLv": 1,
+	"rewardId": [],
+	"rewardNum": []
+}
+,
+"1052": {
+	"id": 1052,
+	"name": "青铜5阶2星",
+	"matchLevel": 2,
+	"maxStar": 3,
+	"getSkill": 0,
+	"taskId1": "12,46",
+	"taskId2": "209,220",
+	"taskId42": "209,320",
+	"starReq": 1,
+	"rankLv": 1,
+	"rewardId": [],
+	"rewardNum": []
+}
+,
+"1053": {
+	"id": 1053,
+	"name": "青铜5阶3星",
+	"matchLevel": 3,
+	"maxStar": 3,
+	"getSkill": 0,
+	"taskId1": "12,46",
+	"taskId2": "209,220",
+	"taskId42": "209,320",
+	"starReq": 2,
+	"rankLv": 1,
+	"rewardId": [],
+	"rewardNum": []
+}
+,
+"1041": {
+	"id": 1041,
+	"name": "青铜4阶1星",
+	"matchLevel": 4,
+	"maxStar": 3,
+	"getSkill": 1,
+	"taskId1": "12,46",
+	"taskId2": "209,220",
+	"taskId42": "209,320",
+	"starReq": 3,
+	"rankLv": 1,
+	"rewardId": [],
+	"rewardNum": []
+}
+,
+"1042": {
+	"id": 1042,
+	"name": "青铜4阶2星",
+	"matchLevel": 4,
+	"maxStar": 3,
+	"getSkill": 0,
+	"taskId1": "12,46",
+	"taskId2": "209,220",
+	"taskId42": "209,320",
+	"starReq": 4,
+	"rankLv": 1,
+	"rewardId": [],
+	"rewardNum": []
+}
+,
+"1043": {
+	"id": 1043,
+	"name": "青铜4阶3星",
+	"matchLevel": 4,
+	"maxStar": 3,
+	"getSkill": 0,
+	"taskId1": "12,46",
+	"taskId2": "209,220",
+	"taskId42": "209,320",
+	"starReq": 5,
+	"rankLv": 1,
+	"rewardId": [],
+	"rewardNum": []
+}
+,
+"1031": {
+	"id": 1031,
+	"name": "青铜3阶1星",
+	"matchLevel": 4,
+	"maxStar": 3,
+	"getSkill": 0,
+	"taskId1": "12,46",
+	"taskId2": "209,220",
+	"taskId42": "209,320",
+	"starReq": 6,
+	"rankLv": 1,
+	"rewardId": [],
+	"rewardNum": []
+}
+,
+"1032": {
+	"id": 1032,
+	"name": "青铜3阶2星",
+	"matchLevel": 4,
+	"maxStar": 3,
+	"getSkill": 0,
+	"taskId1": "12,46",
+	"taskId2": "209,220",
+	"taskId42": "209,320",
+	"starReq": 7,
+	"rankLv": 1,
+	"rewardId": [],
+	"rewardNum": []
+}
+,
+"1033": {
+	"id": 1033,
+	"name": "青铜3阶3星",
+	"matchLevel": 4,
+	"maxStar": 3,
+	"getSkill": 0,
+	"taskId1": "12,46",
+	"taskId2": "209,220",
+	"taskId42": "209,320",
+	"starReq": 8,
+	"rankLv": 1,
+	"rewardId": [],
+	"rewardNum": []
+}
+,
+"1021": {
+	"id": 1021,
+	"name": "青铜2阶1星",
+	"matchLevel": 4,
+	"maxStar": 3,
+	"getSkill": 0,
+	"taskId1": "12,46",
+	"taskId2": "209,220",
+	"taskId42": "209,320",
+	"starReq": 9,
+	"rankLv": 1,
+	"rewardId": [],
+	"rewardNum": []
+}
+,
+"1022": {
+	"id": 1022,
+	"name": "青铜2阶2星",
+	"matchLevel": 4,
+	"maxStar": 3,
+	"getSkill": 0,
+	"taskId1": "12,46",
+	"taskId2": "209,220",
+	"taskId42": "209,320",
+	"starReq": 10,
+	"rankLv": 1,
+	"rewardId": [],
+	"rewardNum": []
+}
+,
+"1023": {
+	"id": 1023,
+	"name": "青铜2阶3星",
+	"matchLevel": 4,
+	"maxStar": 3,
+	"getSkill": 0,
+	"taskId1": "12,46",
+	"taskId2": "209,220",
+	"taskId42": "209,320",
+	"starReq": 11,
+	"rankLv": 1,
+	"rewardId": [],
+	"rewardNum": []
+}
+,
+"1011": {
+	"id": 1011,
+	"name": "青铜1阶1星",
+	"matchLevel": 4,
+	"maxStar": 3,
+	"getSkill": 1,
+	"taskId1": "12,46",
+	"taskId2": "209,220",
+	"taskId42": "209,320",
+	"starReq": 12,
+	"rankLv": 1,
+	"rewardId": [],
+	"rewardNum": []
+}
+,
+"1012": {
+	"id": 1012,
+	"name": "青铜1阶2星",
+	"matchLevel": 4,
+	"maxStar": 3,
+	"getSkill": 0,
+	"taskId1": "12,46",
+	"taskId2": "209,220",
+	"taskId42": "209,320",
+	"starReq": 13,
+	"rankLv": 1,
+	"rewardId": [],
+	"rewardNum": []
+}
+,
+"1013": {
+	"id": 1013,
+	"name": "青铜1阶3星",
+	"matchLevel": 4,
+	"maxStar": 3,
+	"getSkill": 0,
+	"taskId1": "12,46",
+	"taskId2": "209,220",
+	"taskId42": "209,320",
+	"starReq": 14,
+	"rankLv": 1,
+	"rewardId": [],
+	"rewardNum": []
+}
+,
+"1151": {
+	"id": 1151,
+	"name": "白银5阶1星",
+	"matchLevel": 5,
+	"maxStar": 3,
+	"getSkill": 0,
+	"taskId1": "14,50",
+	"taskId2": "209,221",
+	"taskId42": "209,321",
+	"starReq": 15,
+	"rankLv": 2,
+	"rewardId": [1041],
+	"rewardNum": [1]
+}
+,
+"1152": {
+	"id": 1152,
+	"name": "白银5阶2星",
+	"matchLevel": 5,
+	"maxStar": 3,
+	"getSkill": 0,
+	"taskId1": "14,50",
+	"taskId2": "209,221",
+	"taskId42": "209,321",
+	"starReq": 16,
+	"rankLv": 2,
+	"rewardId": [],
+	"rewardNum": []
+}
+,
+"1153": {
+	"id": 1153,
+	"name": "白银5阶3星",
+	"matchLevel": 5,
+	"maxStar": 3,
+	"getSkill": 0,
+	"taskId1": "14,50",
+	"taskId2": "209,221",
+	"taskId42": "209,321",
+	"starReq": 17,
+	"rankLv": 2,
+	"rewardId": [],
+	"rewardNum": []
+}
+,
+"1141": {
+	"id": 1141,
+	"name": "白银4阶1星",
+	"matchLevel": 5,
+	"maxStar": 3,
+	"getSkill": 1,
+	"taskId1": "14,50",
+	"taskId2": "209,221",
+	"taskId42": "209,321",
+	"starReq": 18,
+	"rankLv": 2,
+	"rewardId": [],
+	"rewardNum": []
+}
+,
+"1142": {
+	"id": 1142,
+	"name": "白银4阶2星",
+	"matchLevel": 5,
+	"maxStar": 3,
+	"getSkill": 0,
+	"taskId1": "14,50",
+	"taskId2": "209,221",
+	"taskId42": "209,321",
+	"starReq": 19,
+	"rankLv": 2,
+	"rewardId": [],
+	"rewardNum": []
+}
+,
+"1143": {
+	"id": 1143,
+	"name": "白银4阶3星",
+	"matchLevel": 5,
+	"maxStar": 3,
+	"getSkill": 0,
+	"taskId1": "14,50",
+	"taskId2": "209,221",
+	"taskId42": "209,321",
+	"starReq": 20,
+	"rankLv": 2,
+	"rewardId": [],
+	"rewardNum": []
+}
+,
+"1131": {
+	"id": 1131,
+	"name": "白银3阶1星",
+	"matchLevel": 5,
+	"maxStar": 3,
+	"getSkill": 0,
+	"taskId1": "14,50",
+	"taskId2": "209,221",
+	"taskId42": "209,321",
+	"starReq": 21,
+	"rankLv": 2,
+	"rewardId": [],
+	"rewardNum": []
+}
+,
+"1132": {
+	"id": 1132,
+	"name": "白银3阶2星",
+	"matchLevel": 5,
+	"maxStar": 3,
+	"getSkill": 0,
+	"taskId1": "14,50",
+	"taskId2": "209,221",
+	"taskId42": "209,321",
+	"starReq": 22,
+	"rankLv": 2,
+	"rewardId": [],
+	"rewardNum": []
+}
+,
+"1133": {
+	"id": 1133,
+	"name": "白银3阶3星",
+	"matchLevel": 5,
+	"maxStar": 3,
+	"getSkill": 0,
+	"taskId1": "14,50",
+	"taskId2": "209,221",
+	"taskId42": "209,321",
+	"starReq": 23,
+	"rankLv": 2,
+	"rewardId": [],
+	"rewardNum": []
+}
+,
+"1121": {
+	"id": 1121,
+	"name": "白银2阶1星",
+	"matchLevel": 5,
+	"maxStar": 3,
+	"getSkill": 0,
+	"taskId1": "14,50",
+	"taskId2": "209,221",
+	"taskId42": "209,321",
+	"starReq": 24,
+	"rankLv": 2,
+	"rewardId": [],
+	"rewardNum": []
+}
+,
+"1122": {
+	"id": 1122,
+	"name": "白银2阶2星",
+	"matchLevel": 5,
+	"maxStar": 3,
+	"getSkill": 0,
+	"taskId1": "14,50",
+	"taskId2": "209,221",
+	"taskId42": "209,321",
+	"starReq": 25,
+	"rankLv": 2,
+	"rewardId": [],
+	"rewardNum": []
+}
+,
+"1123": {
+	"id": 1123,
+	"name": "白银2阶3星",
+	"matchLevel": 5,
+	"maxStar": 3,
+	"getSkill": 0,
+	"taskId1": "14,50",
+	"taskId2": "209,221",
+	"taskId42": "209,321",
+	"starReq": 26,
+	"rankLv": 2,
+	"rewardId": [],
+	"rewardNum": []
+}
+,
+"1111": {
+	"id": 1111,
+	"name": "白银1阶1星",
+	"matchLevel": 5,
+	"maxStar": 3,
+	"getSkill": 1,
+	"taskId1": "14,50",
+	"taskId2": "209,221",
+	"taskId42": "209,321",
+	"starReq": 27,
+	"rankLv": 2,
+	"rewardId": [],
+	"rewardNum": []
+}
+,
+"1112": {
+	"id": 1112,
+	"name": "白银1阶2星",
+	"matchLevel": 5,
+	"maxStar": 3,
+	"getSkill": 0,
+	"taskId1": "14,50",
+	"taskId2": "209,221",
+	"taskId42": "209,321",
+	"starReq": 28,
+	"rankLv": 2,
+	"rewardId": [],
+	"rewardNum": []
+}
+,
+"1113": {
+	"id": 1113,
+	"name": "白银1阶3星",
+	"matchLevel": 5,
+	"maxStar": 3,
+	"getSkill": 0,
+	"taskId1": "14,50",
+	"taskId2": "209,221",
+	"taskId42": "209,321",
+	"starReq": 29,
+	"rankLv": 2,
+	"rewardId": [],
+	"rewardNum": []
+}
+,
+"1251": {
+	"id": 1251,
+	"name": "黄金5阶1星",
+	"matchLevel": 6,
+	"maxStar": 3,
+	"getSkill": 0,
+	"taskId1": "16,54,31",
+	"taskId2": "210,222,213",
+	"taskId42": "209,322",
+	"starReq": 30,
+	"rankLv": 3,
+	"rewardId": [1037],
+	"rewardNum": [1]
+}
+,
+"1252": {
+	"id": 1252,
+	"name": "黄金5阶2星",
+	"matchLevel": 6,
+	"maxStar": 3,
+	"getSkill": 0,
+	"taskId1": "16,54,31",
+	"taskId2": "210,222,213",
+	"taskId42": "209,322",
+	"starReq": 31,
+	"rankLv": 3,
+	"rewardId": [],
+	"rewardNum": []
+}
+,
+"1253": {
+	"id": 1253,
+	"name": "黄金5阶3星",
+	"matchLevel": 6,
+	"maxStar": 3,
+	"getSkill": 0,
+	"taskId1": "16,54,31",
+	"taskId2": "210,222,213",
+	"taskId42": "209,322",
+	"starReq": 32,
+	"rankLv": 3,
+	"rewardId": [],
+	"rewardNum": []
+}
+,
+"1241": {
+	"id": 1241,
+	"name": "黄金4阶1星",
+	"matchLevel": 6,
+	"maxStar": 3,
+	"getSkill": 1,
+	"taskId1": "16,54,31",
+	"taskId2": "210,222,213",
+	"taskId42": "209,322",
+	"starReq": 33,
+	"rankLv": 3,
+	"rewardId": [],
+	"rewardNum": []
+}
+,
+"1242": {
+	"id": 1242,
+	"name": "黄金4阶2星",
+	"matchLevel": 6,
+	"maxStar": 3,
+	"getSkill": 0,
+	"taskId1": "16,54,31",
+	"taskId2": "210,222,213",
+	"taskId42": "209,322",
+	"starReq": 34,
+	"rankLv": 3,
+	"rewardId": [],
+	"rewardNum": []
+}
+,
+"1243": {
+	"id": 1243,
+	"name": "黄金4阶3星",
+	"matchLevel": 6,
+	"maxStar": 3,
+	"getSkill": 0,
+	"taskId1": "16,54,31",
+	"taskId2": "210,222,213",
+	"taskId42": "209,322",
+	"starReq": 35,
+	"rankLv": 3,
+	"rewardId": [],
+	"rewardNum": []
+}
+,
+"1231": {
+	"id": 1231,
+	"name": "黄金3阶1星",
+	"matchLevel": 6,
+	"maxStar": 3,
+	"getSkill": 0,
+	"taskId1": "16,54,31",
+	"taskId2": "210,222,213",
+	"taskId42": "209,322",
+	"starReq": 36,
+	"rankLv": 3,
+	"rewardId": [],
+	"rewardNum": []
+}
+,
+"1232": {
+	"id": 1232,
+	"name": "黄金3阶2星",
+	"matchLevel": 6,
+	"maxStar": 3,
+	"getSkill": 0,
+	"taskId1": "16,54,31",
+	"taskId2": "210,222,213",
+	"taskId42": "209,322",
+	"starReq": 37,
+	"rankLv": 3,
+	"rewardId": [],
+	"rewardNum": []
+}
+,
+"1233": {
+	"id": 1233,
+	"name": "黄金3阶3星",
+	"matchLevel": 6,
+	"maxStar": 3,
+	"getSkill": 0,
+	"taskId1": "16,54,31",
+	"taskId2": "210,222,213",
+	"taskId42": "209,322",
+	"starReq": 38,
+	"rankLv": 3,
+	"rewardId": [],
+	"rewardNum": []
+}
+,
+"1221": {
+	"id": 1221,
+	"name": "黄金2阶1星",
+	"matchLevel": 6,
+	"maxStar": 3,
+	"getSkill": 0,
+	"taskId1": "16,54,31",
+	"taskId2": "210,222,213",
+	"taskId42": "209,322",
+	"starReq": 39,
+	"rankLv": 3,
+	"rewardId": [],
+	"rewardNum": []
+}
+,
+"1222": {
+	"id": 1222,
+	"name": "黄金2阶2星",
+	"matchLevel": 6,
+	"maxStar": 3,
+	"getSkill": 0,
+	"taskId1": "16,54,31",
+	"taskId2": "210,222,213",
+	"taskId42": "209,322",
+	"starReq": 40,
+	"rankLv": 3,
+	"rewardId": [],
+	"rewardNum": []
+}
+,
+"1223": {
+	"id": 1223,
+	"name": "黄金2阶3星",
+	"matchLevel": 6,
+	"maxStar": 3,
+	"getSkill": 0,
+	"taskId1": "16,54,31",
+	"taskId2": "210,222,213",
+	"taskId42": "209,322",
+	"starReq": 41,
+	"rankLv": 3,
+	"rewardId": [],
+	"rewardNum": []
+}
+,
+"1211": {
+	"id": 1211,
+	"name": "黄金1阶1星",
+	"matchLevel": 6,
+	"maxStar": 3,
+	"getSkill": 0,
+	"taskId1": "16,54,31",
+	"taskId2": "210,222,213",
+	"taskId42": "209,322",
+	"starReq": 42,
+	"rankLv": 3,
+	"rewardId": [],
+	"rewardNum": []
+}
+,
+"1212": {
+	"id": 1212,
+	"name": "黄金1阶2星",
+	"matchLevel": 6,
+	"maxStar": 3,
+	"getSkill": 0,
+	"taskId1": "16,54,31",
+	"taskId2": "210,222,213",
+	"taskId42": "209,322",
+	"starReq": 43,
+	"rankLv": 3,
+	"rewardId": [],
+	"rewardNum": []
+}
+,
+"1213": {
+	"id": 1213,
+	"name": "黄金1阶3星",
+	"matchLevel": 6,
+	"maxStar": 3,
+	"getSkill": 0,
+	"taskId1": "16,54,31",
+	"taskId2": "210,222,213",
+	"taskId42": "209,322",
+	"starReq": 44,
+	"rankLv": 3,
+	"rewardId": [],
+	"rewardNum": []
+}
+,
+"1351": {
+	"id": 1351,
+	"name": "白金5阶1星",
+	"matchLevel": 7,
+	"maxStar": 4,
+	"getSkill": 0,
+	"taskId1": "18,58,33",
+	"taskId2": "210,224,213",
+	"taskId42": "209,323",
+	"starReq": 45,
+	"rankLv": 4,
+	"rewardId": [1],
+	"rewardNum": [100]
+}
+,
+"1352": {
+	"id": 1352,
+	"name": "白金5阶2星",
+	"matchLevel": 7,
+	"maxStar": 4,
+	"getSkill": 0,
+	"taskId1": "18,58,33",
+	"taskId2": "210,224,213",
+	"taskId42": "209,323",
+	"starReq": 46,
+	"rankLv": 4,
+	"rewardId": [],
+	"rewardNum": []
+}
+,
+"1353": {
+	"id": 1353,
+	"name": "白金5阶3星",
+	"matchLevel": 7,
+	"maxStar": 4,
+	"getSkill": 0,
+	"taskId1": "18,58,33",
+	"taskId2": "210,224,213",
+	"taskId42": "209,323",
+	"starReq": 47,
+	"rankLv": 4,
+	"rewardId": [],
+	"rewardNum": []
+}
+,
+"1354": {
+	"id": 1354,
+	"name": "白金5阶4星",
+	"matchLevel": 7,
+	"maxStar": 4,
+	"getSkill": 0,
+	"taskId1": "18,58,33",
+	"taskId2": "210,224,213",
+	"taskId42": "209,323",
+	"starReq": 48,
+	"rankLv": 4,
+	"rewardId": [],
+	"rewardNum": []
+}
+,
+"1341": {
+	"id": 1341,
+	"name": "白金4阶1星",
+	"matchLevel": 7,
+	"maxStar": 4,
+	"getSkill": 0,
+	"taskId1": "18,58,33",
+	"taskId2": "210,224,213",
+	"taskId42": "209,323",
+	"starReq": 49,
+	"rankLv": 4,
+	"rewardId": [],
+	"rewardNum": []
+}
+,
+"1342": {
+	"id": 1342,
+	"name": "白金4阶2星",
+	"matchLevel": 7,
+	"maxStar": 4,
+	"getSkill": 0,
+	"taskId1": "18,58,33",
+	"taskId2": "210,224,213",
+	"taskId42": "209,323",
+	"starReq": 50,
+	"rankLv": 4,
+	"rewardId": [],
+	"rewardNum": []
+}
+,
+"1343": {
+	"id": 1343,
+	"name": "白金4阶3星",
+	"matchLevel": 7,
+	"maxStar": 4,
+	"getSkill": 0,
+	"taskId1": "18,58,33",
+	"taskId2": "210,224,213",
+	"taskId42": "209,323",
+	"starReq": 51,
+	"rankLv": 4,
+	"rewardId": [],
+	"rewardNum": []
+}
+,
+"1344": {
+	"id": 1344,
+	"name": "白金4阶4星",
+	"matchLevel": 7,
+	"maxStar": 4,
+	"getSkill": 0,
+	"taskId1": "18,58,33",
+	"taskId2": "210,224,213",
+	"taskId42": "209,323",
+	"starReq": 52,
+	"rankLv": 4,
+	"rewardId": [],
+	"rewardNum": []
+}
+,
+"1331": {
+	"id": 1331,
+	"name": "白金3阶1星",
+	"matchLevel": 7,
+	"maxStar": 4,
+	"getSkill": 0,
+	"taskId1": "18,58,33",
+	"taskId2": "210,224,213",
+	"taskId42": "209,323",
+	"starReq": 53,
+	"rankLv": 4,
+	"rewardId": [],
+	"rewardNum": []
+}
+,
+"1332": {
+	"id": 1332,
+	"name": "白金3阶2星",
+	"matchLevel": 7,
+	"maxStar": 4,
+	"getSkill": 0,
+	"taskId1": "18,58,33",
+	"taskId2": "210,224,213",
+	"taskId42": "209,323",
+	"starReq": 54,
+	"rankLv": 4,
+	"rewardId": [],
+	"rewardNum": []
+}
+,
+"1333": {
+	"id": 1333,
+	"name": "白金3阶3星",
+	"matchLevel": 7,
+	"maxStar": 4,
+	"getSkill": 0,
+	"taskId1": "18,58,33",
+	"taskId2": "210,224,213",
+	"taskId42": "209,323",
+	"starReq": 55,
+	"rankLv": 4,
+	"rewardId": [],
+	"rewardNum": []
+}
+,
+"1334": {
+	"id": 1334,
+	"name": "白金3阶4星",
+	"matchLevel": 7,
+	"maxStar": 4,
+	"getSkill": 0,
+	"taskId1": "18,58,33",
+	"taskId2": "210,224,213",
+	"taskId42": "209,323",
+	"starReq": 56,
+	"rankLv": 4,
+	"rewardId": [],
+	"rewardNum": []
+}
+,
+"1321": {
+	"id": 1321,
+	"name": "白金2阶1星",
+	"matchLevel": 7,
+	"maxStar": 4,
+	"getSkill": 0,
+	"taskId1": "18,58,33",
+	"taskId2": "210,224,213",
+	"taskId42": "209,323",
+	"starReq": 57,
+	"rankLv": 4,
+	"rewardId": [],
+	"rewardNum": []
+}
+,
+"1322": {
+	"id": 1322,
+	"name": "白金2阶2星",
+	"matchLevel": 7,
+	"maxStar": 4,
+	"getSkill": 0,
+	"taskId1": "18,58,33",
+	"taskId2": "210,224,213",
+	"taskId42": "209,323",
+	"starReq": 58,
+	"rankLv": 4,
+	"rewardId": [],
+	"rewardNum": []
+}
+,
+"1323": {
+	"id": 1323,
+	"name": "白金2阶3星",
+	"matchLevel": 7,
+	"maxStar": 4,
+	"getSkill": 0,
+	"taskId1": "18,58,33",
+	"taskId2": "210,224,213",
+	"taskId42": "209,323",
+	"starReq": 59,
+	"rankLv": 4,
+	"rewardId": [],
+	"rewardNum": []
+}
+,
+"1324": {
+	"id": 1324,
+	"name": "白金2阶4星",
+	"matchLevel": 7,
+	"maxStar": 4,
+	"getSkill": 0,
+	"taskId1": "18,58,33",
+	"taskId2": "210,224,213",
+	"taskId42": "209,323",
+	"starReq": 60,
+	"rankLv": 4,
+	"rewardId": [],
+	"rewardNum": []
+}
+,
+"1311": {
+	"id": 1311,
+	"name": "白金1阶1星",
+	"matchLevel": 7,
+	"maxStar": 4,
+	"getSkill": 0,
+	"taskId1": "18,58,33",
+	"taskId2": "210,224,213",
+	"taskId42": "209,323",
+	"starReq": 61,
+	"rankLv": 4,
+	"rewardId": [],
+	"rewardNum": []
+}
+,
+"1312": {
+	"id": 1312,
+	"name": "白金1阶2星",
+	"matchLevel": 7,
+	"maxStar": 4,
+	"getSkill": 0,
+	"taskId1": "18,58,33",
+	"taskId2": "210,224,213",
+	"taskId42": "209,323",
+	"starReq": 62,
+	"rankLv": 4,
+	"rewardId": [],
+	"rewardNum": []
+}
+,
+"1313": {
+	"id": 1313,
+	"name": "白金1阶3星",
+	"matchLevel": 7,
+	"maxStar": 4,
+	"getSkill": 0,
+	"taskId1": "18,58,33",
+	"taskId2": "210,224,213",
+	"taskId42": "209,323",
+	"starReq": 63,
+	"rankLv": 4,
+	"rewardId": [],
+	"rewardNum": []
+}
+,
+"1314": {
+	"id": 1314,
+	"name": "白金1阶4星",
+	"matchLevel": 7,
+	"maxStar": 4,
+	"getSkill": 0,
+	"taskId1": "18,58,33",
+	"taskId2": "210,224,213",
+	"taskId42": "209,323",
+	"starReq": 64,
+	"rankLv": 4,
+	"rewardId": [],
+	"rewardNum": []
+}
+,
+"1451": {
+	"id": 1451,
+	"name": "钻石5阶1星",
+	"matchLevel": 8,
+	"maxStar": 5,
+	"getSkill": 0,
+	"taskId1": "19,62,35",
+	"taskId2": "210,227,213",
+	"taskId42": "209,324",
+	"starReq": 65,
+	"rankLv": 5,
+	"rewardId": [1],
+	"rewardNum": [150]
+}
+,
+"1452": {
+	"id": 1452,
+	"name": "钻石5阶2星",
+	"matchLevel": 8,
+	"maxStar": 5,
+	"getSkill": 0,
+	"taskId1": "19,62,35",
+	"taskId2": "210,227,213",
+	"taskId42": "209,324",
+	"starReq": 66,
+	"rankLv": 5,
+	"rewardId": [],
+	"rewardNum": []
+}
+,
+"1453": {
+	"id": 1453,
+	"name": "钻石5阶3星",
+	"matchLevel": 8,
+	"maxStar": 5,
+	"getSkill": 0,
+	"taskId1": "19,62,35",
+	"taskId2": "210,227,213",
+	"taskId42": "209,324",
+	"starReq": 67,
+	"rankLv": 5,
+	"rewardId": [],
+	"rewardNum": []
+}
+,
+"1454": {
+	"id": 1454,
+	"name": "钻石5阶4星",
+	"matchLevel": 8,
+	"maxStar": 5,
+	"getSkill": 0,
+	"taskId1": "19,62,35",
+	"taskId2": "210,227,213",
+	"taskId42": "209,324",
+	"starReq": 68,
+	"rankLv": 5,
+	"rewardId": [],
+	"rewardNum": []
+}
+,
+"1455": {
+	"id": 1455,
+	"name": "钻石5阶5星",
+	"matchLevel": 8,
+	"maxStar": 5,
+	"getSkill": 0,
+	"taskId1": "19,62,35",
+	"taskId2": "210,227,213",
+	"taskId42": "209,324",
+	"starReq": 69,
+	"rankLv": 5,
+	"rewardId": [],
+	"rewardNum": []
+}
+,
+"1441": {
+	"id": 1441,
+	"name": "钻石4阶1星",
+	"matchLevel": 8,
+	"maxStar": 5,
+	"getSkill": 0,
+	"taskId1": "19,62,35",
+	"taskId2": "210,227,213",
+	"taskId42": "209,324",
+	"starReq": 70,
+	"rankLv": 5,
+	"rewardId": [],
+	"rewardNum": []
+}
+,
+"1442": {
+	"id": 1442,
+	"name": "钻石4阶2星",
+	"matchLevel": 8,
+	"maxStar": 5,
+	"getSkill": 0,
+	"taskId1": "19,62,35",
+	"taskId2": "210,227,213",
+	"taskId42": "209,324",
+	"starReq": 71,
+	"rankLv": 5,
+	"rewardId": [],
+	"rewardNum": []
+}
+,
+"1443": {
+	"id": 1443,
+	"name": "钻石4阶3星",
+	"matchLevel": 8,
+	"maxStar": 5,
+	"getSkill": 0,
+	"taskId1": "19,62,35",
+	"taskId2": "210,227,213",
+	"taskId42": "209,324",
+	"starReq": 72,
+	"rankLv": 5,
+	"rewardId": [],
+	"rewardNum": []
+}
+,
+"1444": {
+	"id": 1444,
+	"name": "钻石4阶4星",
+	"matchLevel": 8,
+	"maxStar": 5,
+	"getSkill": 0,
+	"taskId1": "19,62,35",
+	"taskId2": "210,227,213",
+	"taskId42": "209,324",
+	"starReq": 73,
+	"rankLv": 5,
+	"rewardId": [],
+	"rewardNum": []
+}
+,
+"1445": {
+	"id": 1445,
+	"name": "钻石4阶5星",
+	"matchLevel": 8,
+	"maxStar": 5,
+	"getSkill": 0,
+	"taskId1": "19,62,35",
+	"taskId2": "210,227,213",
+	"taskId42": "209,324",
+	"starReq": 74,
+	"rankLv": 5,
+	"rewardId": [],
+	"rewardNum": []
+}
+,
+"1431": {
+	"id": 1431,
+	"name": "钻石3阶1星",
+	"matchLevel": 8,
+	"maxStar": 5,
+	"getSkill": 0,
+	"taskId1": "19,62,35",
+	"taskId2": "210,227,213",
+	"taskId42": "209,324",
+	"starReq": 75,
+	"rankLv": 5,
+	"rewardId": [],
+	"rewardNum": []
+}
+,
+"1432": {
+	"id": 1432,
+	"name": "钻石3阶2星",
+	"matchLevel": 8,
+	"maxStar": 5,
+	"getSkill": 0,
+	"taskId1": "19,62,35",
+	"taskId2": "210,227,213",
+	"taskId42": "209,324",
+	"starReq": 76,
+	"rankLv": 5,
+	"rewardId": [],
+	"rewardNum": []
+}
+,
+"1433": {
+	"id": 1433,
+	"name": "钻石3阶3星",
+	"matchLevel": 8,
+	"maxStar": 5,
+	"getSkill": 0,
+	"taskId1": "19,62,35",
+	"taskId2": "210,227,213",
+	"taskId42": "209,324",
+	"starReq": 77,
+	"rankLv": 5,
+	"rewardId": [],
+	"rewardNum": []
+}
+,
+"1434": {
+	"id": 1434,
+	"name": "钻石3阶4星",
+	"matchLevel": 8,
+	"maxStar": 5,
+	"getSkill": 0,
+	"taskId1": "19,62,35",
+	"taskId2": "210,227,213",
+	"taskId42": "209,324",
+	"starReq": 78,
+	"rankLv": 5,
+	"rewardId": [],
+	"rewardNum": []
+}
+,
+"1435": {
+	"id": 1435,
+	"name": "钻石3阶5星",
+	"matchLevel": 8,
+	"maxStar": 5,
+	"getSkill": 0,
+	"taskId1": "19,62,35",
+	"taskId2": "210,227,213",
+	"taskId42": "209,324",
+	"starReq": 79,
+	"rankLv": 5,
+	"rewardId": [],
+	"rewardNum": []
+}
+,
+"1421": {
+	"id": 1421,
+	"name": "钻石2阶1星",
+	"matchLevel": 8,
+	"maxStar": 5,
+	"getSkill": 0,
+	"taskId1": "19,62,35",
+	"taskId2": "210,227,213",
+	"taskId42": "209,324",
+	"starReq": 80,
+	"rankLv": 5,
+	"rewardId": [],
+	"rewardNum": []
+}
+,
+"1422": {
+	"id": 1422,
+	"name": "钻石2阶2星",
+	"matchLevel": 8,
+	"maxStar": 5,
+	"getSkill": 0,
+	"taskId1": "19,62,35",
+	"taskId2": "210,227,213",
+	"taskId42": "209,324",
+	"starReq": 81,
+	"rankLv": 5,
+	"rewardId": [],
+	"rewardNum": []
+}
+,
+"1423": {
+	"id": 1423,
+	"name": "钻石2阶3星",
+	"matchLevel": 8,
+	"maxStar": 5,
+	"getSkill": 0,
+	"taskId1": "19,62,35",
+	"taskId2": "210,227,213",
+	"taskId42": "209,324",
+	"starReq": 82,
+	"rankLv": 5,
+	"rewardId": [],
+	"rewardNum": []
+}
+,
+"1424": {
+	"id": 1424,
+	"name": "钻石2阶4星",
+	"matchLevel": 8,
+	"maxStar": 5,
+	"getSkill": 0,
+	"taskId1": "19,62,35",
+	"taskId2": "210,227,213",
+	"taskId42": "209,324",
+	"starReq": 83,
+	"rankLv": 5,
+	"rewardId": [],
+	"rewardNum": []
+}
+,
+"1425": {
+	"id": 1425,
+	"name": "钻石2阶5星",
+	"matchLevel": 8,
+	"maxStar": 5,
+	"getSkill": 0,
+	"taskId1": "19,62,35",
+	"taskId2": "210,227,213",
+	"taskId42": "209,324",
+	"starReq": 84,
+	"rankLv": 5,
+	"rewardId": [],
+	"rewardNum": []
+}
+,
+"1411": {
+	"id": 1411,
+	"name": "钻石1阶1星",
+	"matchLevel": 8,
+	"maxStar": 5,
+	"getSkill": 0,
+	"taskId1": "19,62,35",
+	"taskId2": "210,227,213",
+	"taskId42": "209,324",
+	"starReq": 85,
+	"rankLv": 5,
+	"rewardId": [],
+	"rewardNum": []
+}
+,
+"1412": {
+	"id": 1412,
+	"name": "钻石1阶2星",
+	"matchLevel": 8,
+	"maxStar": 5,
+	"getSkill": 0,
+	"taskId1": "19,62,35",
+	"taskId2": "210,227,213",
+	"taskId42": "209,324",
+	"starReq": 86,
+	"rankLv": 5,
+	"rewardId": [],
+	"rewardNum": []
+}
+,
+"1413": {
+	"id": 1413,
+	"name": "钻石1阶3星",
+	"matchLevel": 8,
+	"maxStar": 5,
+	"getSkill": 0,
+	"taskId1": "19,62,35",
+	"taskId2": "210,227,213",
+	"taskId42": "209,324",
+	"starReq": 87,
+	"rankLv": 5,
+	"rewardId": [],
+	"rewardNum": []
+}
+,
+"1414": {
+	"id": 1414,
+	"name": "钻石1阶4星",
+	"matchLevel": 8,
+	"maxStar": 5,
+	"getSkill": 0,
+	"taskId1": "19,62,35",
+	"taskId2": "210,227,213",
+	"taskId42": "209,324",
+	"starReq": 88,
+	"rankLv": 5,
+	"rewardId": [],
+	"rewardNum": []
+}
+,
+"1415": {
+	"id": 1415,
+	"name": "钻石1阶5星",
+	"matchLevel": 8,
+	"maxStar": 5,
+	"getSkill": 0,
+	"taskId1": "19,62,35",
+	"taskId2": "210,227,213",
+	"taskId42": "209,324",
+	"starReq": 89,
+	"rankLv": 5,
+	"rewardId": [],
+	"rewardNum": []
+}
+,
+"1551": {
+	"id": 1551,
+	"name": "彩钻5阶1星",
+	"matchLevel": 9,
+	"maxStar": 5,
+	"getSkill": 0,
+	"taskId1": "20,64,36",
+	"taskId2": "210,230,213",
+	"taskId42": "209,325,213",
+	"starReq": 90,
+	"rankLv": 6,
+	"rewardId": [1],
+	"rewardNum": [200]
+}
+,
+"1552": {
+	"id": 1552,
+	"name": "彩钻5阶2星",
+	"matchLevel": 9,
+	"maxStar": 5,
+	"getSkill": 0,
+	"taskId1": "20,64,36",
+	"taskId2": "210,230,213",
+	"taskId42": "209,325,213",
+	"starReq": 91,
+	"rankLv": 6,
+	"rewardId": [],
+	"rewardNum": []
+}
+,
+"1553": {
+	"id": 1553,
+	"name": "彩钻5阶3星",
+	"matchLevel": 9,
+	"maxStar": 5,
+	"getSkill": 0,
+	"taskId1": "20,64,36",
+	"taskId2": "210,230,213",
+	"taskId42": "209,325,213",
+	"starReq": 92,
+	"rankLv": 6,
+	"rewardId": [],
+	"rewardNum": []
+}
+,
+"1554": {
+	"id": 1554,
+	"name": "彩钻5阶4星",
+	"matchLevel": 9,
+	"maxStar": 5,
+	"getSkill": 0,
+	"taskId1": "20,64,36",
+	"taskId2": "210,230,213",
+	"taskId42": "209,325,213",
+	"starReq": 93,
+	"rankLv": 6,
+	"rewardId": [],
+	"rewardNum": []
+}
+,
+"1555": {
+	"id": 1555,
+	"name": "彩钻5阶5星",
+	"matchLevel": 9,
+	"maxStar": 5,
+	"getSkill": 0,
+	"taskId1": "20,64,36",
+	"taskId2": "210,230,213",
+	"taskId42": "209,325,213",
+	"starReq": 94,
+	"rankLv": 6,
+	"rewardId": [],
+	"rewardNum": []
+}
+,
+"1541": {
+	"id": 1541,
+	"name": "彩钻4阶1星",
+	"matchLevel": 9,
+	"maxStar": 5,
+	"getSkill": 0,
+	"taskId1": "20,64,36",
+	"taskId2": "210,230,213",
+	"taskId42": "209,325,213",
+	"starReq": 95,
+	"rankLv": 6,
+	"rewardId": [],
+	"rewardNum": []
+}
+,
+"1542": {
+	"id": 1542,
+	"name": "彩钻4阶2星",
+	"matchLevel": 9,
+	"maxStar": 5,
+	"getSkill": 0,
+	"taskId1": "20,64,36",
+	"taskId2": "210,230,213",
+	"taskId42": "209,325,213",
+	"starReq": 96,
+	"rankLv": 6,
+	"rewardId": [],
+	"rewardNum": []
+}
+,
+"1543": {
+	"id": 1543,
+	"name": "彩钻4阶3星",
+	"matchLevel": 9,
+	"maxStar": 5,
+	"getSkill": 0,
+	"taskId1": "20,64,36",
+	"taskId2": "210,230,213",
+	"taskId42": "209,325,213",
+	"starReq": 97,
+	"rankLv": 6,
+	"rewardId": [],
+	"rewardNum": []
+}
+,
+"1544": {
+	"id": 1544,
+	"name": "彩钻4阶4星",
+	"matchLevel": 9,
+	"maxStar": 5,
+	"getSkill": 0,
+	"taskId1": "20,64,36",
+	"taskId2": "210,230,213",
+	"taskId42": "209,325,213",
+	"starReq": 98,
+	"rankLv": 6,
+	"rewardId": [],
+	"rewardNum": []
+}
+,
+"1545": {
+	"id": 1545,
+	"name": "彩钻4阶5星",
+	"matchLevel": 9,
+	"maxStar": 5,
+	"getSkill": 0,
+	"taskId1": "20,64,36",
+	"taskId2": "210,230,213",
+	"taskId42": "209,325,213",
+	"starReq": 99,
+	"rankLv": 6,
+	"rewardId": [],
+	"rewardNum": []
+}
+,
+"1531": {
+	"id": 1531,
+	"name": "彩钻3阶1星",
+	"matchLevel": 9,
+	"maxStar": 5,
+	"getSkill": 0,
+	"taskId1": "20,64,36",
+	"taskId2": "210,230,213",
+	"taskId42": "209,325,213",
+	"starReq": 100,
+	"rankLv": 6,
+	"rewardId": [],
+	"rewardNum": []
+}
+,
+"1532": {
+	"id": 1532,
+	"name": "彩钻3阶2星",
+	"matchLevel": 9,
+	"maxStar": 5,
+	"getSkill": 0,
+	"taskId1": "20,64,36",
+	"taskId2": "210,230,213",
+	"taskId42": "209,325,213",
+	"starReq": 101,
+	"rankLv": 6,
+	"rewardId": [],
+	"rewardNum": []
+}
+,
+"1533": {
+	"id": 1533,
+	"name": "彩钻3阶3星",
+	"matchLevel": 9,
+	"maxStar": 5,
+	"getSkill": 0,
+	"taskId1": "20,64,36",
+	"taskId2": "210,230,213",
+	"taskId42": "209,325,213",
+	"starReq": 102,
+	"rankLv": 6,
+	"rewardId": [],
+	"rewardNum": []
+}
+,
+"1534": {
+	"id": 1534,
+	"name": "彩钻3阶4星",
+	"matchLevel": 9,
+	"maxStar": 5,
+	"getSkill": 0,
+	"taskId1": "20,64,36",
+	"taskId2": "210,230,213",
+	"taskId42": "209,325,213",
+	"starReq": 103,
+	"rankLv": 6,
+	"rewardId": [],
+	"rewardNum": []
+}
+,
+"1535": {
+	"id": 1535,
+	"name": "彩钻3阶5星",
+	"matchLevel": 9,
+	"maxStar": 5,
+	"getSkill": 0,
+	"taskId1": "20,64,36",
+	"taskId2": "210,230,213",
+	"taskId42": "209,325,213",
+	"starReq": 104,
+	"rankLv": 6,
+	"rewardId": [],
+	"rewardNum": []
+}
+,
+"1521": {
+	"id": 1521,
+	"name": "彩钻2阶1星",
+	"matchLevel": 9,
+	"maxStar": 5,
+	"getSkill": 0,
+	"taskId1": "20,64,36",
+	"taskId2": "210,230,213",
+	"taskId42": "209,325,213",
+	"starReq": 105,
+	"rankLv": 6,
+	"rewardId": [],
+	"rewardNum": []
+}
+,
+"1522": {
+	"id": 1522,
+	"name": "彩钻2阶2星",
+	"matchLevel": 9,
+	"maxStar": 5,
+	"getSkill": 0,
+	"taskId1": "20,64,36",
+	"taskId2": "210,230,213",
+	"taskId42": "209,325,213",
+	"starReq": 106,
+	"rankLv": 6,
+	"rewardId": [],
+	"rewardNum": []
+}
+,
+"1523": {
+	"id": 1523,
+	"name": "彩钻2阶3星",
+	"matchLevel": 9,
+	"maxStar": 5,
+	"getSkill": 0,
+	"taskId1": "20,64,36",
+	"taskId2": "210,230,213",
+	"taskId42": "209,325,213",
+	"starReq": 107,
+	"rankLv": 6,
+	"rewardId": [],
+	"rewardNum": []
+}
+,
+"1524": {
+	"id": 1524,
+	"name": "彩钻2阶4星",
+	"matchLevel": 9,
+	"maxStar": 5,
+	"getSkill": 0,
+	"taskId1": "20,64,36",
+	"taskId2": "210,230,213",
+	"taskId42": "209,325,213",
+	"starReq": 108,
+	"rankLv": 6,
+	"rewardId": [],
+	"rewardNum": []
+}
+,
+"1525": {
+	"id": 1525,
+	"name": "彩钻2阶5星",
+	"matchLevel": 9,
+	"maxStar": 5,
+	"getSkill": 0,
+	"taskId1": "20,64,36",
+	"taskId2": "210,230,213",
+	"taskId42": "209,325,213",
+	"starReq": 109,
+	"rankLv": 6,
+	"rewardId": [],
+	"rewardNum": []
+}
+,
+"1511": {
+	"id": 1511,
+	"name": "彩钻1阶1星",
+	"matchLevel": 9,
+	"maxStar": 5,
+	"getSkill": 0,
+	"taskId1": "20,64,36",
+	"taskId2": "210,230,213",
+	"taskId42": "209,325,213",
+	"starReq": 110,
+	"rankLv": 6,
+	"rewardId": [],
+	"rewardNum": []
+}
+,
+"1512": {
+	"id": 1512,
+	"name": "彩钻1阶2星",
+	"matchLevel": 9,
+	"maxStar": 5,
+	"getSkill": 0,
+	"taskId1": "20,64,36",
+	"taskId2": "210,230,213",
+	"taskId42": "209,325,213",
+	"starReq": 111,
+	"rankLv": 6,
+	"rewardId": [],
+	"rewardNum": []
+}
+,
+"1513": {
+	"id": 1513,
+	"name": "彩钻1阶3星",
+	"matchLevel": 9,
+	"maxStar": 5,
+	"getSkill": 0,
+	"taskId1": "20,64,36",
+	"taskId2": "210,230,213",
+	"taskId42": "209,325,213",
+	"starReq": 112,
+	"rankLv": 6,
+	"rewardId": [],
+	"rewardNum": []
+}
+,
+"1514": {
+	"id": 1514,
+	"name": "彩钻1阶4星",
+	"matchLevel": 9,
+	"maxStar": 5,
+	"getSkill": 0,
+	"taskId1": "20,64,36",
+	"taskId2": "210,230,213",
+	"taskId42": "209,325,213",
+	"starReq": 113,
+	"rankLv": 6,
+	"rewardId": [],
+	"rewardNum": []
+}
+,
+"1515": {
+	"id": 1515,
+	"name": "彩钻1阶5星",
+	"matchLevel": 9,
+	"maxStar": 5,
+	"getSkill": 0,
+	"taskId1": "20,64,36",
+	"taskId2": "210,230,213",
+	"taskId42": "209,325,213",
+	"starReq": 114,
+	"rankLv": 6,
+	"rewardId": [],
+	"rewardNum": []
+}
+,
+"2051": {
+	"id": 2051,
+	"name": "传说5阶1星",
+	"matchLevel": 9,
+	"maxStar": 6,
+	"getSkill": 0,
+	"taskId1": "21,66,37",
+	"taskId2": "210,234,214",
+	"taskId42": "210,330,213",
+	"starReq": 115,
+	"rankLv": 11,
+	"rewardId": [1],
+	"rewardNum": [250]
+}
+,
+"2052": {
+	"id": 2052,
+	"name": "传说5阶2星",
+	"matchLevel": 9,
+	"maxStar": 6,
+	"getSkill": 0,
+	"taskId1": "21,66,37",
+	"taskId2": "210,234,214",
+	"taskId42": "210,330,213",
+	"starReq": 116,
+	"rankLv": 11,
+	"rewardId": [],
+	"rewardNum": []
+}
+,
+"2053": {
+	"id": 2053,
+	"name": "传说5阶3星",
+	"matchLevel": 9,
+	"maxStar": 6,
+	"getSkill": 0,
+	"taskId1": "21,66,37",
+	"taskId2": "210,234,214",
+	"taskId42": "210,330,213",
+	"starReq": 117,
+	"rankLv": 11,
+	"rewardId": [],
+	"rewardNum": []
+}
+,
+"2054": {
+	"id": 2054,
+	"name": "传说5阶4星",
+	"matchLevel": 9,
+	"maxStar": 6,
+	"getSkill": 0,
+	"taskId1": "21,66,37",
+	"taskId2": "210,234,214",
+	"taskId42": "210,330,213",
+	"starReq": 118,
+	"rankLv": 11,
+	"rewardId": [],
+	"rewardNum": []
+}
+,
+"2055": {
+	"id": 2055,
+	"name": "传说5阶5星",
+	"matchLevel": 9,
+	"maxStar": 6,
+	"getSkill": 0,
+	"taskId1": "21,66,37",
+	"taskId2": "210,234,214",
+	"taskId42": "210,330,213",
+	"starReq": 119,
+	"rankLv": 11,
+	"rewardId": [],
+	"rewardNum": []
+}
+,
+"2056": {
+	"id": 2056,
+	"name": "传说5阶6星",
+	"matchLevel": 9,
+	"maxStar": 6,
+	"getSkill": 0,
+	"taskId1": "21,66,37",
+	"taskId2": "210,234,214",
+	"taskId42": "210,330,213",
+	"starReq": 120,
+	"rankLv": 11,
+	"rewardId": [],
+	"rewardNum": []
+}
+,
+"2041": {
+	"id": 2041,
+	"name": "传说4阶1星",
+	"matchLevel": 9,
+	"maxStar": 6,
+	"getSkill": 0,
+	"taskId1": "21,66,37",
+	"taskId2": "210,234,214",
+	"taskId42": "210,330,213",
+	"starReq": 121,
+	"rankLv": 11,
+	"rewardId": [],
+	"rewardNum": []
+}
+,
+"2042": {
+	"id": 2042,
+	"name": "传说4阶2星",
+	"matchLevel": 9,
+	"maxStar": 6,
+	"getSkill": 0,
+	"taskId1": "21,66,37",
+	"taskId2": "210,234,214",
+	"taskId42": "210,330,213",
+	"starReq": 122,
+	"rankLv": 11,
+	"rewardId": [],
+	"rewardNum": []
+}
+,
+"2043": {
+	"id": 2043,
+	"name": "传说4阶3星",
+	"matchLevel": 9,
+	"maxStar": 6,
+	"getSkill": 0,
+	"taskId1": "21,66,37",
+	"taskId2": "210,234,214",
+	"taskId42": "210,330,213",
+	"starReq": 123,
+	"rankLv": 11,
+	"rewardId": [],
+	"rewardNum": []
+}
+,
+"2044": {
+	"id": 2044,
+	"name": "传说4阶4星",
+	"matchLevel": 9,
+	"maxStar": 6,
+	"getSkill": 0,
+	"taskId1": "21,66,37",
+	"taskId2": "210,234,214",
+	"taskId42": "210,330,213",
+	"starReq": 124,
+	"rankLv": 11,
+	"rewardId": [],
+	"rewardNum": []
+}
+,
+"2045": {
+	"id": 2045,
+	"name": "传说4阶5星",
+	"matchLevel": 9,
+	"maxStar": 6,
+	"getSkill": 0,
+	"taskId1": "21,66,37",
+	"taskId2": "210,234,214",
+	"taskId42": "210,330,213",
+	"starReq": 125,
+	"rankLv": 11,
+	"rewardId": [],
+	"rewardNum": []
+}
+,
+"2046": {
+	"id": 2046,
+	"name": "传说4阶6星",
+	"matchLevel": 9,
+	"maxStar": 6,
+	"getSkill": 0,
+	"taskId1": "21,66,37",
+	"taskId2": "210,234,214",
+	"taskId42": "210,330,213",
+	"starReq": 126,
+	"rankLv": 11,
+	"rewardId": [],
+	"rewardNum": []
+}
+,
+"2031": {
+	"id": 2031,
+	"name": "传说3阶1星",
+	"matchLevel": 9,
+	"maxStar": 6,
+	"getSkill": 0,
+	"taskId1": "21,66,37",
+	"taskId2": "210,234,214",
+	"taskId42": "210,330,213",
+	"starReq": 127,
+	"rankLv": 11,
+	"rewardId": [],
+	"rewardNum": []
+}
+,
+"2032": {
+	"id": 2032,
+	"name": "传说3阶2星",
+	"matchLevel": 9,
+	"maxStar": 6,
+	"getSkill": 0,
+	"taskId1": "21,66,37",
+	"taskId2": "210,234,214",
+	"taskId42": "210,330,213",
+	"starReq": 128,
+	"rankLv": 11,
+	"rewardId": [],
+	"rewardNum": []
+}
+,
+"2033": {
+	"id": 2033,
+	"name": "传说3阶3星",
+	"matchLevel": 9,
+	"maxStar": 6,
+	"getSkill": 0,
+	"taskId1": "21,66,37",
+	"taskId2": "210,234,214",
+	"taskId42": "210,330,213",
+	"starReq": 129,
+	"rankLv": 11,
+	"rewardId": [],
+	"rewardNum": []
+}
+,
+"2034": {
+	"id": 2034,
+	"name": "传说3阶4星",
+	"matchLevel": 9,
+	"maxStar": 6,
+	"getSkill": 0,
+	"taskId1": "21,66,37",
+	"taskId2": "210,234,214",
+	"taskId42": "210,330,213",
+	"starReq": 130,
+	"rankLv": 11,
+	"rewardId": [],
+	"rewardNum": []
+}
+,
+"2035": {
+	"id": 2035,
+	"name": "传说3阶5星",
+	"matchLevel": 9,
+	"maxStar": 6,
+	"getSkill": 0,
+	"taskId1": "21,66,37",
+	"taskId2": "210,234,214",
+	"taskId42": "210,330,213",
+	"starReq": 131,
+	"rankLv": 11,
+	"rewardId": [],
+	"rewardNum": []
+}
+,
+"2036": {
+	"id": 2036,
+	"name": "传说3阶6星",
+	"matchLevel": 9,
+	"maxStar": 6,
+	"getSkill": 0,
+	"taskId1": "21,66,37",
+	"taskId2": "210,234,214",
+	"taskId42": "210,330,213",
+	"starReq": 132,
+	"rankLv": 11,
+	"rewardId": [],
+	"rewardNum": []
+}
+,
+"2021": {
+	"id": 2021,
+	"name": "传说2阶1星",
+	"matchLevel": 9,
+	"maxStar": 6,
+	"getSkill": 0,
+	"taskId1": "21,66,37",
+	"taskId2": "210,234,214",
+	"taskId42": "210,330,213",
+	"starReq": 133,
+	"rankLv": 11,
+	"rewardId": [],
+	"rewardNum": []
+}
+,
+"2022": {
+	"id": 2022,
+	"name": "传说2阶2星",
+	"matchLevel": 9,
+	"maxStar": 6,
+	"getSkill": 0,
+	"taskId1": "21,66,37",
+	"taskId2": "210,234,214",
+	"taskId42": "210,330,213",
+	"starReq": 134,
+	"rankLv": 11,
+	"rewardId": [],
+	"rewardNum": []
+}
+,
+"2023": {
+	"id": 2023,
+	"name": "传说2阶3星",
+	"matchLevel": 9,
+	"maxStar": 6,
+	"getSkill": 0,
+	"taskId1": "21,66,37",
+	"taskId2": "210,234,214",
+	"taskId42": "210,330,213",
+	"starReq": 135,
+	"rankLv": 11,
+	"rewardId": [],
+	"rewardNum": []
+}
+,
+"2024": {
+	"id": 2024,
+	"name": "传说2阶4星",
+	"matchLevel": 9,
+	"maxStar": 6,
+	"getSkill": 0,
+	"taskId1": "21,66,37",
+	"taskId2": "210,234,214",
+	"taskId42": "210,330,213",
+	"starReq": 136,
+	"rankLv": 11,
+	"rewardId": [],
+	"rewardNum": []
+}
+,
+"2025": {
+	"id": 2025,
+	"name": "传说2阶5星",
+	"matchLevel": 9,
+	"maxStar": 6,
+	"getSkill": 0,
+	"taskId1": "21,66,37",
+	"taskId2": "210,234,214",
+	"taskId42": "210,330,213",
+	"starReq": 137,
+	"rankLv": 11,
+	"rewardId": [],
+	"rewardNum": []
+}
+,
+"2026": {
+	"id": 2026,
+	"name": "传说2阶6星",
+	"matchLevel": 9,
+	"maxStar": 6,
+	"getSkill": 0,
+	"taskId1": "21,66,37",
+	"taskId2": "210,234,214",
+	"taskId42": "210,330,213",
+	"starReq": 138,
+	"rankLv": 11,
+	"rewardId": [],
+	"rewardNum": []
+}
+,
+"2011": {
+	"id": 2011,
+	"name": "传说1阶1星",
+	"matchLevel": 9,
+	"maxStar": 6,
+	"getSkill": 0,
+	"taskId1": "21,66,37",
+	"taskId2": "210,234,214",
+	"taskId42": "210,330,213",
+	"starReq": 139,
+	"rankLv": 11,
+	"rewardId": [],
+	"rewardNum": []
+}
+,
+"2012": {
+	"id": 2012,
+	"name": "传说1阶2星",
+	"matchLevel": 9,
+	"maxStar": 6,
+	"getSkill": 0,
+	"taskId1": "21,66,37",
+	"taskId2": "210,234,214",
+	"taskId42": "210,330,213",
+	"starReq": 140,
+	"rankLv": 11,
+	"rewardId": [],
+	"rewardNum": []
+}
+,
+"2013": {
+	"id": 2013,
+	"name": "传说1阶3星",
+	"matchLevel": 9,
+	"maxStar": 6,
+	"getSkill": 0,
+	"taskId1": "21,66,37",
+	"taskId2": "210,234,214",
+	"taskId42": "210,330,213",
+	"starReq": 141,
+	"rankLv": 11,
+	"rewardId": [],
+	"rewardNum": []
+}
+,
+"2014": {
+	"id": 2014,
+	"name": "传说1阶4星",
+	"matchLevel": 9,
+	"maxStar": 6,
+	"getSkill": 0,
+	"taskId1": "21,66,37",
+	"taskId2": "210,234,214",
+	"taskId42": "210,330,213",
+	"starReq": 142,
+	"rankLv": 11,
+	"rewardId": [],
+	"rewardNum": []
+}
+,
+"2015": {
+	"id": 2015,
+	"name": "传说1阶5星",
+	"matchLevel": 9,
+	"maxStar": 6,
+	"getSkill": 0,
+	"taskId1": "21,66,37",
+	"taskId2": "210,234,214",
+	"taskId42": "210,330,213",
+	"starReq": 143,
+	"rankLv": 11,
+	"rewardId": [],
+	"rewardNum": []
+}
+,
+"2016": {
+	"id": 2016,
+	"name": "传说1阶6星",
+	"matchLevel": 9,
+	"maxStar": 6,
+	"getSkill": 0,
+	"taskId1": "21,66,37",
+	"taskId2": "210,234,214",
+	"taskId42": "210,330,213",
+	"starReq": 144,
+	"rankLv": 11,
+	"rewardId": [],
+	"rewardNum": []
+}
+,
+"2151": {
+	"id": 2151,
+	"name": "神话5阶1星",
+	"matchLevel": 9,
+	"maxStar": 7,
+	"getSkill": 0,
+	"taskId1": "21,67,38",
+	"taskId2": "210,239,214",
+	"taskId42": "210,331,214",
+	"starReq": 145,
+	"rankLv": 12,
+	"rewardId": [1],
+	"rewardNum": [300]
+}
+,
+"2152": {
+	"id": 2152,
+	"name": "神话5阶2星",
+	"matchLevel": 9,
+	"maxStar": 7,
+	"getSkill": 0,
+	"taskId1": "21,67,38",
+	"taskId2": "210,239,214",
+	"taskId42": "210,331,214",
+	"starReq": 146,
+	"rankLv": 12,
+	"rewardId": [],
+	"rewardNum": []
+}
+,
+"2153": {
+	"id": 2153,
+	"name": "神话5阶3星",
+	"matchLevel": 9,
+	"maxStar": 7,
+	"getSkill": 0,
+	"taskId1": "21,67,38",
+	"taskId2": "210,239,214",
+	"taskId42": "210,331,214",
+	"starReq": 147,
+	"rankLv": 12,
+	"rewardId": [],
+	"rewardNum": []
+}
+,
+"2154": {
+	"id": 2154,
+	"name": "神话5阶4星",
+	"matchLevel": 9,
+	"maxStar": 7,
+	"getSkill": 0,
+	"taskId1": "21,67,38",
+	"taskId2": "210,239,214",
+	"taskId42": "210,331,214",
+	"starReq": 148,
+	"rankLv": 12,
+	"rewardId": [],
+	"rewardNum": []
+}
+,
+"2155": {
+	"id": 2155,
+	"name": "神话5阶5星",
+	"matchLevel": 9,
+	"maxStar": 7,
+	"getSkill": 0,
+	"taskId1": "21,67,38",
+	"taskId2": "210,239,214",
+	"taskId42": "210,331,214",
+	"starReq": 149,
+	"rankLv": 12,
+	"rewardId": [],
+	"rewardNum": []
+}
+,
+"2156": {
+	"id": 2156,
+	"name": "神话5阶6星",
+	"matchLevel": 9,
+	"maxStar": 7,
+	"getSkill": 0,
+	"taskId1": "21,67,38",
+	"taskId2": "210,239,214",
+	"taskId42": "210,331,214",
+	"starReq": 150,
+	"rankLv": 12,
+	"rewardId": [],
+	"rewardNum": []
+}
+,
+"2157": {
+	"id": 2157,
+	"name": "神话5阶7星",
+	"matchLevel": 9,
+	"maxStar": 7,
+	"getSkill": 0,
+	"taskId1": "21,67,38",
+	"taskId2": "210,239,214",
+	"taskId42": "210,331,214",
+	"starReq": 151,
+	"rankLv": 12,
+	"rewardId": [],
+	"rewardNum": []
+}
+,
+"2141": {
+	"id": 2141,
+	"name": "神话4阶1星",
+	"matchLevel": 9,
+	"maxStar": 7,
+	"getSkill": 0,
+	"taskId1": "21,67,38",
+	"taskId2": "210,239,214",
+	"taskId42": "210,331,214",
+	"starReq": 152,
+	"rankLv": 12,
+	"rewardId": [],
+	"rewardNum": []
+}
+,
+"2142": {
+	"id": 2142,
+	"name": "神话4阶2星",
+	"matchLevel": 9,
+	"maxStar": 7,
+	"getSkill": 0,
+	"taskId1": "21,67,38",
+	"taskId2": "210,239,214",
+	"taskId42": "210,331,214",
+	"starReq": 153,
+	"rankLv": 12,
+	"rewardId": [],
+	"rewardNum": []
+}
+,
+"2143": {
+	"id": 2143,
+	"name": "神话4阶3星",
+	"matchLevel": 9,
+	"maxStar": 7,
+	"getSkill": 0,
+	"taskId1": "21,67,38",
+	"taskId2": "210,239,214",
+	"taskId42": "210,331,214",
+	"starReq": 154,
+	"rankLv": 12,
+	"rewardId": [],
+	"rewardNum": []
+}
+,
+"2144": {
+	"id": 2144,
+	"name": "神话4阶4星",
+	"matchLevel": 9,
+	"maxStar": 7,
+	"getSkill": 0,
+	"taskId1": "21,67,38",
+	"taskId2": "210,239,214",
+	"taskId42": "210,331,214",
+	"starReq": 155,
+	"rankLv": 12,
+	"rewardId": [],
+	"rewardNum": []
+}
+,
+"2145": {
+	"id": 2145,
+	"name": "神话4阶5星",
+	"matchLevel": 9,
+	"maxStar": 7,
+	"getSkill": 0,
+	"taskId1": "21,67,38",
+	"taskId2": "210,239,214",
+	"taskId42": "210,331,214",
+	"starReq": 156,
+	"rankLv": 12,
+	"rewardId": [],
+	"rewardNum": []
+}
+,
+"2146": {
+	"id": 2146,
+	"name": "神话4阶6星",
+	"matchLevel": 9,
+	"maxStar": 7,
+	"getSkill": 0,
+	"taskId1": "21,67,38",
+	"taskId2": "210,239,214",
+	"taskId42": "210,331,214",
+	"starReq": 157,
+	"rankLv": 12,
+	"rewardId": [],
+	"rewardNum": []
+}
+,
+"2147": {
+	"id": 2147,
+	"name": "神话4阶7星",
+	"matchLevel": 9,
+	"maxStar": 7,
+	"getSkill": 0,
+	"taskId1": "21,67,38",
+	"taskId2": "210,239,214",
+	"taskId42": "210,331,214",
+	"starReq": 158,
+	"rankLv": 12,
+	"rewardId": [],
+	"rewardNum": []
+}
+,
+"2131": {
+	"id": 2131,
+	"name": "神话3阶1星",
+	"matchLevel": 9,
+	"maxStar": 7,
+	"getSkill": 0,
+	"taskId1": "21,67,38",
+	"taskId2": "210,239,214",
+	"taskId42": "210,331,214",
+	"starReq": 159,
+	"rankLv": 12,
+	"rewardId": [],
+	"rewardNum": []
+}
+,
+"2132": {
+	"id": 2132,
+	"name": "神话3阶2星",
+	"matchLevel": 9,
+	"maxStar": 7,
+	"getSkill": 0,
+	"taskId1": "21,67,38",
+	"taskId2": "210,239,214",
+	"taskId42": "210,331,214",
+	"starReq": 160,
+	"rankLv": 12,
+	"rewardId": [],
+	"rewardNum": []
+}
+,
+"2133": {
+	"id": 2133,
+	"name": "神话3阶3星",
+	"matchLevel": 9,
+	"maxStar": 7,
+	"getSkill": 0,
+	"taskId1": "21,67,38",
+	"taskId2": "210,239,214",
+	"taskId42": "210,331,214",
+	"starReq": 161,
+	"rankLv": 12,
+	"rewardId": [],
+	"rewardNum": []
+}
+,
+"2134": {
+	"id": 2134,
+	"name": "神话3阶4星",
+	"matchLevel": 9,
+	"maxStar": 7,
+	"getSkill": 0,
+	"taskId1": "21,67,38",
+	"taskId2": "210,239,214",
+	"taskId42": "210,331,214",
+	"starReq": 162,
+	"rankLv": 12,
+	"rewardId": [],
+	"rewardNum": []
+}
+,
+"2135": {
+	"id": 2135,
+	"name": "神话3阶5星",
+	"matchLevel": 9,
+	"maxStar": 7,
+	"getSkill": 0,
+	"taskId1": "21,67,38",
+	"taskId2": "210,239,214",
+	"taskId42": "210,331,214",
+	"starReq": 163,
+	"rankLv": 12,
+	"rewardId": [],
+	"rewardNum": []
+}
+,
+"2136": {
+	"id": 2136,
+	"name": "神话3阶6星",
+	"matchLevel": 9,
+	"maxStar": 7,
+	"getSkill": 0,
+	"taskId1": "21,67,38",
+	"taskId2": "210,239,214",
+	"taskId42": "210,331,214",
+	"starReq": 164,
+	"rankLv": 12,
+	"rewardId": [],
+	"rewardNum": []
+}
+,
+"2137": {
+	"id": 2137,
+	"name": "神话3阶7星",
+	"matchLevel": 9,
+	"maxStar": 7,
+	"getSkill": 0,
+	"taskId1": "21,67,38",
+	"taskId2": "210,239,214",
+	"taskId42": "210,331,214",
+	"starReq": 165,
+	"rankLv": 12,
+	"rewardId": [],
+	"rewardNum": []
+}
+,
+"2121": {
+	"id": 2121,
+	"name": "神话2阶1星",
+	"matchLevel": 9,
+	"maxStar": 7,
+	"getSkill": 0,
+	"taskId1": "21,67,38",
+	"taskId2": "210,239,214",
+	"taskId42": "210,331,214",
+	"starReq": 166,
+	"rankLv": 12,
+	"rewardId": [],
+	"rewardNum": []
+}
+,
+"2122": {
+	"id": 2122,
+	"name": "神话2阶2星",
+	"matchLevel": 9,
+	"maxStar": 7,
+	"getSkill": 0,
+	"taskId1": "21,67,38",
+	"taskId2": "210,239,214",
+	"taskId42": "210,331,214",
+	"starReq": 167,
+	"rankLv": 12,
+	"rewardId": [],
+	"rewardNum": []
+}
+,
+"2123": {
+	"id": 2123,
+	"name": "神话2阶3星",
+	"matchLevel": 9,
+	"maxStar": 7,
+	"getSkill": 0,
+	"taskId1": "21,67,38",
+	"taskId2": "210,239,214",
+	"taskId42": "210,331,214",
+	"starReq": 168,
+	"rankLv": 12,
+	"rewardId": [],
+	"rewardNum": []
+}
+,
+"2124": {
+	"id": 2124,
+	"name": "神话2阶4星",
+	"matchLevel": 9,
+	"maxStar": 7,
+	"getSkill": 0,
+	"taskId1": "21,67,38",
+	"taskId2": "210,239,214",
+	"taskId42": "210,331,214",
+	"starReq": 169,
+	"rankLv": 12,
+	"rewardId": [],
+	"rewardNum": []
+}
+,
+"2125": {
+	"id": 2125,
+	"name": "神话2阶5星",
+	"matchLevel": 9,
+	"maxStar": 7,
+	"getSkill": 0,
+	"taskId1": "21,67,38",
+	"taskId2": "210,239,214",
+	"taskId42": "210,331,214",
+	"starReq": 170,
+	"rankLv": 12,
+	"rewardId": [],
+	"rewardNum": []
+}
+,
+"2126": {
+	"id": 2126,
+	"name": "神话2阶6星",
+	"matchLevel": 9,
+	"maxStar": 7,
+	"getSkill": 0,
+	"taskId1": "21,67,38",
+	"taskId2": "210,239,214",
+	"taskId42": "210,331,214",
+	"starReq": 171,
+	"rankLv": 12,
+	"rewardId": [],
+	"rewardNum": []
+}
+,
+"2127": {
+	"id": 2127,
+	"name": "神话2阶7星",
+	"matchLevel": 9,
+	"maxStar": 7,
+	"getSkill": 0,
+	"taskId1": "21,67,38",
+	"taskId2": "210,239,214",
+	"taskId42": "210,331,214",
+	"starReq": 172,
+	"rankLv": 12,
+	"rewardId": [],
+	"rewardNum": []
+}
+,
+"2111": {
+	"id": 2111,
+	"name": "神话1阶1星",
+	"matchLevel": 9,
+	"maxStar": 7,
+	"getSkill": 0,
+	"taskId1": "21,67,38",
+	"taskId2": "210,239,214",
+	"taskId42": "210,331,214",
+	"starReq": 173,
+	"rankLv": 12,
+	"rewardId": [],
+	"rewardNum": []
+}
+,
+"2112": {
+	"id": 2112,
+	"name": "神话1阶2星",
+	"matchLevel": 9,
+	"maxStar": 7,
+	"getSkill": 0,
+	"taskId1": "21,67,38",
+	"taskId2": "210,239,214",
+	"taskId42": "210,331,214",
+	"starReq": 174,
+	"rankLv": 12,
+	"rewardId": [],
+	"rewardNum": []
+}
+,
+"2113": {
+	"id": 2113,
+	"name": "神话1阶3星",
+	"matchLevel": 9,
+	"maxStar": 7,
+	"getSkill": 0,
+	"taskId1": "21,67,38",
+	"taskId2": "210,239,214",
+	"taskId42": "210,331,214",
+	"starReq": 175,
+	"rankLv": 12,
+	"rewardId": [],
+	"rewardNum": []
+}
+,
+"2114": {
+	"id": 2114,
+	"name": "神话1阶4星",
+	"matchLevel": 9,
+	"maxStar": 7,
+	"getSkill": 0,
+	"taskId1": "21,67,38",
+	"taskId2": "210,239,214",
+	"taskId42": "210,331,214",
+	"starReq": 176,
+	"rankLv": 12,
+	"rewardId": [],
+	"rewardNum": []
+}
+,
+"2115": {
+	"id": 2115,
+	"name": "神话1阶5星",
+	"matchLevel": 9,
+	"maxStar": 7,
+	"getSkill": 0,
+	"taskId1": "21,67,38",
+	"taskId2": "210,239,214",
+	"taskId42": "210,331,214",
+	"starReq": 177,
+	"rankLv": 12,
+	"rewardId": [],
+	"rewardNum": []
+}
+,
+"2116": {
+	"id": 2116,
+	"name": "神话1阶6星",
+	"matchLevel": 9,
+	"maxStar": 7,
+	"getSkill": 0,
+	"taskId1": "21,67,38",
+	"taskId2": "210,239,214",
+	"taskId42": "210,331,214",
+	"starReq": 178,
+	"rankLv": 12,
+	"rewardId": [],
+	"rewardNum": []
+}
+,
+"2117": {
+	"id": 2117,
+	"name": "神话1阶7星",
+	"matchLevel": 9,
+	"maxStar": 7,
+	"getSkill": 0,
+	"taskId1": "21,67,38",
+	"taskId2": "210,239,214",
+	"taskId42": "210,331,214",
+	"starReq": 179,
+	"rankLv": 12,
+	"rewardId": [],
+	"rewardNum": []
+}
+,
+"22": {
+	"id": 22,
+	"name": "超神",
+	"matchLevel": 9,
+	"maxStar": 0,
+	"getSkill": 0,
+	"taskId1": "21,68,38",
+	"taskId2": "210,240,214",
+	"taskId42": "210,332,214",
+	"starReq": 180,
+	"rankLv": 13,
+	"rewardId": [1],
+	"rewardNum": [500]
+}
+
+}

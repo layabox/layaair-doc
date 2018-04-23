@@ -1,0 +1,64 @@
+{
+  "roomListMode": 0,
+  "defaultRoomListType": 0,
+  "layaMarketOpenId": "10404",
+  "layaMarketOpenKey": "ae4fd3bd4156116d17610cdca712962e",
+  "layaMarketRelatedId": {"308":845,"337":1180,"303":1181},
+  "routerAddr":{"ip":"fkxq.sh.1251285021.clb.myqcloud.com","port":17000},
+"banUnionIdList":["-103","-104"],
+"isEmbeddedMode":1,
+  "customUI": {
+     "login": {
+      "ui": "Login.ui",
+      "res": [ 
+        {"url":"common.json","type":"atlas"},
+        {"url":"login.json","type":"atlas"},
+        {"url":"login/bg.png","type":"image"}
+      ]
+    },
+    "reg": {
+      "ui": "Reg.ui",
+      "res": [ 
+        {"url":"common.json","type":"atlas"},
+        {"url":"login.json","type":"atlas"},
+        {"url":"reg.json","type":"atlas"},
+        {"url":"login/bg.png","type":"image"}
+      ]
+    },
+    "messagebox": {
+      "ui": "MessageBox.ui",
+      "res": [ 
+         {"url":"jiage/blue_bg.png","type":"image"},
+         {"url":"jiage/bg02.png","type":"image"},
+        {"url":"jiage/btn_bg.png","type":"image"},
+        {"url":"jiage/loginBG1.jpg","type":"image"},
+	{"url":"jiage/close.png","type":"image"},
+	{"url":"jiage/imgText.png","type":"image"},
+	{"url":"jiage/title_prompt.png","type":"image"}
+      ]
+    },
+    "login_qb":{
+        "ui":"chooselogin.ui",
+        "res":[
+            {"url":"chooselogin/bj.jpg","type":"image"},
+            {"url":"chooselogin/ch.png","type":"image"},
+            {"url":"chooselogin/qq.png","type":"image"},
+            {"url":"chooselogin/wx.png","type":"image"}
+        ]
+    }
+  },
+  "roomTypeList": [
+    {
+      "id": 1,
+      "name": "自由模式"
+    },
+    {
+      "id": 2,
+      "name": "组队模式"
+    },
+    {
+      "id": 3,
+      "name": "新手模式"
+    }
+  ]
+}

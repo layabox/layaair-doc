@@ -1,0 +1,1067 @@
+{
+"0": {
+	"value": 0,
+	"damageReduction": -0.42857142857,
+	"scoreGatheringScale": 0,
+	"damageScaleByStr": 0,
+	"bulletSpeedScaleByStr": 0,
+	"bulletTimeScaleByStr": 0,
+	"atkAnimationScaleByCtr": 0,
+	"atkCDScaleByCtr": 0,
+	"maxSpeedScaleBySpd": 0,
+	"skillCDScaleBySpd": 0,
+	"xuliScoreSpeedScale": -0.375,
+	"xuliMaxScoreScale": -0.375
+}
+,
+"1": {
+	"value": 1,
+	"damageReduction": -0.4161849711,
+	"scoreGatheringScale": 0,
+	"damageScaleByStr": 0,
+	"bulletSpeedScaleByStr": 0,
+	"bulletTimeScaleByStr": 0,
+	"atkAnimationScaleByCtr": 0,
+	"atkCDScaleByCtr": 0,
+	"maxSpeedScaleBySpd": 0,
+	"skillCDScaleBySpd": 0,
+	"xuliScoreSpeedScale": -0.3654822335,
+	"xuliMaxScoreScale": -0.3654822335
+}
+,
+"2": {
+	"value": 2,
+	"damageReduction": -0.40350877193,
+	"scoreGatheringScale": 0,
+	"damageScaleByStr": 0,
+	"bulletSpeedScaleByStr": 0,
+	"bulletTimeScaleByStr": 0,
+	"atkAnimationScaleByCtr": 0,
+	"atkCDScaleByCtr": 0,
+	"maxSpeedScaleBySpd": 0,
+	"skillCDScaleBySpd": 0,
+	"xuliScoreSpeedScale": -0.35567010309,
+	"xuliMaxScoreScale": -0.35567010309
+}
+,
+"3": {
+	"value": 3,
+	"damageReduction": -0.39053254438,
+	"scoreGatheringScale": 0,
+	"damageScaleByStr": 0,
+	"bulletSpeedScaleByStr": 0,
+	"bulletTimeScaleByStr": 0,
+	"atkAnimationScaleByCtr": 0,
+	"atkCDScaleByCtr": 0,
+	"maxSpeedScaleBySpd": 0,
+	"skillCDScaleBySpd": 0,
+	"xuliScoreSpeedScale": -0.34554973822,
+	"xuliMaxScoreScale": -0.34554973822
+}
+,
+"4": {
+	"value": 4,
+	"damageReduction": -0.37724550898,
+	"scoreGatheringScale": 0,
+	"damageScaleByStr": 0,
+	"bulletSpeedScaleByStr": 0,
+	"bulletTimeScaleByStr": 0,
+	"atkAnimationScaleByCtr": 0,
+	"atkCDScaleByCtr": 0,
+	"maxSpeedScaleBySpd": 0,
+	"skillCDScaleBySpd": 0,
+	"xuliScoreSpeedScale": -0.33510638298,
+	"xuliMaxScoreScale": -0.33510638298
+}
+,
+"5": {
+	"value": 5,
+	"damageReduction": -0.36363636364,
+	"scoreGatheringScale": 0,
+	"damageScaleByStr": 0,
+	"bulletSpeedScaleByStr": 0,
+	"bulletTimeScaleByStr": 0,
+	"atkAnimationScaleByCtr": 0,
+	"atkCDScaleByCtr": 0,
+	"maxSpeedScaleBySpd": 0,
+	"skillCDScaleBySpd": 0,
+	"xuliScoreSpeedScale": -0.32432432432,
+	"xuliMaxScoreScale": -0.32432432432
+}
+,
+"6": {
+	"value": 6,
+	"damageReduction": -0.34969325153,
+	"scoreGatheringScale": 0,
+	"damageScaleByStr": 0,
+	"bulletSpeedScaleByStr": 0,
+	"bulletTimeScaleByStr": 0,
+	"atkAnimationScaleByCtr": 0,
+	"atkCDScaleByCtr": 0,
+	"maxSpeedScaleBySpd": 0,
+	"skillCDScaleBySpd": 0,
+	"xuliScoreSpeedScale": -0.31318681319,
+	"xuliMaxScoreScale": -0.31318681319
+}
+,
+"7": {
+	"value": 7,
+	"damageReduction": -0.33540372671,
+	"scoreGatheringScale": 0,
+	"damageScaleByStr": 0,
+	"bulletSpeedScaleByStr": 0,
+	"bulletTimeScaleByStr": 0,
+	"atkAnimationScaleByCtr": 0,
+	"atkCDScaleByCtr": 0,
+	"maxSpeedScaleBySpd": 0,
+	"skillCDScaleBySpd": 0,
+	"xuliScoreSpeedScale": -0.30167597765,
+	"xuliMaxScoreScale": -0.30167597765
+}
+,
+"8": {
+	"value": 8,
+	"damageReduction": -0.32075471698,
+	"scoreGatheringScale": 0,
+	"damageScaleByStr": 0,
+	"bulletSpeedScaleByStr": 0,
+	"bulletTimeScaleByStr": 0,
+	"atkAnimationScaleByCtr": 0,
+	"atkCDScaleByCtr": 0,
+	"maxSpeedScaleBySpd": 0,
+	"skillCDScaleBySpd": 0,
+	"xuliScoreSpeedScale": -0.28977272727,
+	"xuliMaxScoreScale": -0.28977272727
+}
+,
+"9": {
+	"value": 9,
+	"damageReduction": -0.30573248408,
+	"scoreGatheringScale": 0,
+	"damageScaleByStr": 0,
+	"bulletSpeedScaleByStr": 0,
+	"bulletTimeScaleByStr": 0,
+	"atkAnimationScaleByCtr": 0,
+	"atkCDScaleByCtr": 0,
+	"maxSpeedScaleBySpd": 0,
+	"skillCDScaleBySpd": 0,
+	"xuliScoreSpeedScale": -0.2774566474,
+	"xuliMaxScoreScale": -0.2774566474
+}
+,
+"10": {
+	"value": 10,
+	"damageReduction": -0.29032258065,
+	"scoreGatheringScale": 0,
+	"damageScaleByStr": 0,
+	"bulletSpeedScaleByStr": 0,
+	"bulletTimeScaleByStr": 0,
+	"atkAnimationScaleByCtr": 0,
+	"atkCDScaleByCtr": 0,
+	"maxSpeedScaleBySpd": 0,
+	"skillCDScaleBySpd": 0,
+	"xuliScoreSpeedScale": -0.26470588235,
+	"xuliMaxScoreScale": -0.26470588235
+}
+,
+"11": {
+	"value": 11,
+	"damageReduction": -0.27450980392,
+	"scoreGatheringScale": 0,
+	"damageScaleByStr": 0,
+	"bulletSpeedScaleByStr": 0,
+	"bulletTimeScaleByStr": 0,
+	"atkAnimationScaleByCtr": 0,
+	"atkCDScaleByCtr": 0,
+	"maxSpeedScaleBySpd": 0,
+	"skillCDScaleBySpd": 0,
+	"xuliScoreSpeedScale": -0.25149700599,
+	"xuliMaxScoreScale": -0.25149700599
+}
+,
+"12": {
+	"value": 12,
+	"damageReduction": -0.2582781457,
+	"scoreGatheringScale": 0,
+	"damageScaleByStr": 0,
+	"bulletSpeedScaleByStr": 0,
+	"bulletTimeScaleByStr": 0,
+	"atkAnimationScaleByCtr": 0,
+	"atkCDScaleByCtr": 0,
+	"maxSpeedScaleBySpd": 0,
+	"skillCDScaleBySpd": 0,
+	"xuliScoreSpeedScale": -0.23780487805,
+	"xuliMaxScoreScale": -0.23780487805
+}
+,
+"13": {
+	"value": 13,
+	"damageReduction": -0.24161073826,
+	"scoreGatheringScale": 0,
+	"damageScaleByStr": 0,
+	"bulletSpeedScaleByStr": 0,
+	"bulletTimeScaleByStr": 0,
+	"atkAnimationScaleByCtr": 0,
+	"atkCDScaleByCtr": 0,
+	"maxSpeedScaleBySpd": 0,
+	"skillCDScaleBySpd": 0,
+	"xuliScoreSpeedScale": -0.22360248447,
+	"xuliMaxScoreScale": -0.22360248447
+}
+,
+"14": {
+	"value": 14,
+	"damageReduction": -0.22448979592,
+	"scoreGatheringScale": 0,
+	"damageScaleByStr": 0,
+	"bulletSpeedScaleByStr": 0,
+	"bulletTimeScaleByStr": 0,
+	"atkAnimationScaleByCtr": 0,
+	"atkCDScaleByCtr": 0,
+	"maxSpeedScaleBySpd": 0,
+	"skillCDScaleBySpd": 0,
+	"xuliScoreSpeedScale": -0.20886075949,
+	"xuliMaxScoreScale": -0.20886075949
+}
+,
+"15": {
+	"value": 15,
+	"damageReduction": -0.20689655172,
+	"scoreGatheringScale": 0,
+	"damageScaleByStr": 0,
+	"bulletSpeedScaleByStr": 0,
+	"bulletTimeScaleByStr": 0,
+	"atkAnimationScaleByCtr": 0,
+	"atkCDScaleByCtr": 0,
+	"maxSpeedScaleBySpd": 0,
+	"skillCDScaleBySpd": 0,
+	"xuliScoreSpeedScale": -0.1935483871,
+	"xuliMaxScoreScale": -0.1935483871
+}
+,
+"16": {
+	"value": 16,
+	"damageReduction": -0.18881118881,
+	"scoreGatheringScale": 0,
+	"damageScaleByStr": 0,
+	"bulletSpeedScaleByStr": 0,
+	"bulletTimeScaleByStr": 0,
+	"atkAnimationScaleByCtr": 0,
+	"atkCDScaleByCtr": 0,
+	"maxSpeedScaleBySpd": 0,
+	"skillCDScaleBySpd": 0,
+	"xuliScoreSpeedScale": -0.17763157895,
+	"xuliMaxScoreScale": -0.17763157895
+}
+,
+"17": {
+	"value": 17,
+	"damageReduction": -0.17021276596,
+	"scoreGatheringScale": 0,
+	"damageScaleByStr": 0,
+	"bulletSpeedScaleByStr": 0,
+	"bulletTimeScaleByStr": 0,
+	"atkAnimationScaleByCtr": 0,
+	"atkCDScaleByCtr": 0,
+	"maxSpeedScaleBySpd": 0,
+	"skillCDScaleBySpd": 0,
+	"xuliScoreSpeedScale": -0.1610738255,
+	"xuliMaxScoreScale": -0.1610738255
+}
+,
+"18": {
+	"value": 18,
+	"damageReduction": -0.15107913669,
+	"scoreGatheringScale": 0,
+	"damageScaleByStr": 0,
+	"bulletSpeedScaleByStr": 0,
+	"bulletTimeScaleByStr": 0,
+	"atkAnimationScaleByCtr": 0,
+	"atkCDScaleByCtr": 0,
+	"maxSpeedScaleBySpd": 0,
+	"skillCDScaleBySpd": 0,
+	"xuliScoreSpeedScale": -0.14383561644,
+	"xuliMaxScoreScale": -0.14383561644
+}
+,
+"19": {
+	"value": 19,
+	"damageReduction": -0.13138686131,
+	"scoreGatheringScale": 0,
+	"damageScaleByStr": 0,
+	"bulletSpeedScaleByStr": 0,
+	"bulletTimeScaleByStr": 0,
+	"atkAnimationScaleByCtr": 0,
+	"atkCDScaleByCtr": 0,
+	"maxSpeedScaleBySpd": 0,
+	"skillCDScaleBySpd": 0,
+	"xuliScoreSpeedScale": -0.12587412587,
+	"xuliMaxScoreScale": -0.12587412587
+}
+,
+"20": {
+	"value": 20,
+	"damageReduction": -0.11111111111,
+	"scoreGatheringScale": 0,
+	"damageScaleByStr": 0,
+	"bulletSpeedScaleByStr": 0,
+	"bulletTimeScaleByStr": 0,
+	"atkAnimationScaleByCtr": 0,
+	"atkCDScaleByCtr": 0,
+	"maxSpeedScaleBySpd": 0,
+	"skillCDScaleBySpd": 0,
+	"xuliScoreSpeedScale": -0.10714285714,
+	"xuliMaxScoreScale": -0.10714285714
+}
+,
+"21": {
+	"value": 21,
+	"damageReduction": -0.09022556391,
+	"scoreGatheringScale": 0,
+	"damageScaleByStr": 0,
+	"bulletSpeedScaleByStr": 0,
+	"bulletTimeScaleByStr": 0,
+	"atkAnimationScaleByCtr": 0,
+	"atkCDScaleByCtr": 0,
+	"maxSpeedScaleBySpd": 0,
+	"skillCDScaleBySpd": 0,
+	"xuliScoreSpeedScale": -0.087591240876,
+	"xuliMaxScoreScale": -0.087591240876
+}
+,
+"22": {
+	"value": 22,
+	"damageReduction": -0.068702290076,
+	"scoreGatheringScale": 0,
+	"damageScaleByStr": 0,
+	"bulletSpeedScaleByStr": 0,
+	"bulletTimeScaleByStr": 0,
+	"atkAnimationScaleByCtr": 0,
+	"atkCDScaleByCtr": 0,
+	"maxSpeedScaleBySpd": 0,
+	"skillCDScaleBySpd": 0,
+	"xuliScoreSpeedScale": -0.067164179104,
+	"xuliMaxScoreScale": -0.067164179104
+}
+,
+"23": {
+	"value": 23,
+	"damageReduction": -0.046511627907,
+	"scoreGatheringScale": 0,
+	"damageScaleByStr": 0,
+	"bulletSpeedScaleByStr": 0,
+	"bulletTimeScaleByStr": 0,
+	"atkAnimationScaleByCtr": 0,
+	"atkCDScaleByCtr": 0,
+	"maxSpeedScaleBySpd": 0,
+	"skillCDScaleBySpd": 0,
+	"xuliScoreSpeedScale": -0.045801526718,
+	"xuliMaxScoreScale": -0.045801526718
+}
+,
+"24": {
+	"value": 24,
+	"damageReduction": -0.023622047244,
+	"scoreGatheringScale": 0,
+	"damageScaleByStr": 0,
+	"bulletSpeedScaleByStr": 0,
+	"bulletTimeScaleByStr": 0,
+	"atkAnimationScaleByCtr": 0,
+	"atkCDScaleByCtr": 0,
+	"maxSpeedScaleBySpd": 0,
+	"skillCDScaleBySpd": 0,
+	"xuliScoreSpeedScale": -0.0234375,
+	"xuliMaxScoreScale": -0.0234375
+}
+,
+"25": {
+	"value": 25,
+	"damageReduction": 0,
+	"scoreGatheringScale": 0,
+	"damageScaleByStr": 0,
+	"bulletSpeedScaleByStr": 0,
+	"bulletTimeScaleByStr": 0,
+	"atkAnimationScaleByCtr": 0,
+	"atkCDScaleByCtr": 0,
+	"maxSpeedScaleBySpd": 0,
+	"skillCDScaleBySpd": 0,
+	"xuliScoreSpeedScale": 0,
+	"xuliMaxScoreScale": 0
+}
+,
+"26": {
+	"value": 26,
+	"damageReduction": 0.023076923077,
+	"scoreGatheringScale": 0,
+	"damageScaleByStr": 0,
+	"bulletSpeedScaleByStr": 0,
+	"bulletTimeScaleByStr": 0,
+	"atkAnimationScaleByCtr": 0,
+	"atkCDScaleByCtr": 0,
+	"maxSpeedScaleBySpd": 0,
+	"skillCDScaleBySpd": 0,
+	"xuliScoreSpeedScale": 0.024,
+	"xuliMaxScoreScale": 0.024
+}
+,
+"27": {
+	"value": 27,
+	"damageReduction": 0.044444444444,
+	"scoreGatheringScale": 0,
+	"damageScaleByStr": 0,
+	"bulletSpeedScaleByStr": 0,
+	"bulletTimeScaleByStr": 0,
+	"atkAnimationScaleByCtr": 0,
+	"atkCDScaleByCtr": 0,
+	"maxSpeedScaleBySpd": 0,
+	"skillCDScaleBySpd": 0,
+	"xuliScoreSpeedScale": 0.048,
+	"xuliMaxScoreScale": 0.048
+}
+,
+"28": {
+	"value": 28,
+	"damageReduction": 0.064285714286,
+	"scoreGatheringScale": 0,
+	"damageScaleByStr": 0,
+	"bulletSpeedScaleByStr": 0,
+	"bulletTimeScaleByStr": 0,
+	"atkAnimationScaleByCtr": 0,
+	"atkCDScaleByCtr": 0,
+	"maxSpeedScaleBySpd": 0,
+	"skillCDScaleBySpd": 0,
+	"xuliScoreSpeedScale": 0.072,
+	"xuliMaxScoreScale": 0.072
+}
+,
+"29": {
+	"value": 29,
+	"damageReduction": 0.08275862069,
+	"scoreGatheringScale": 0,
+	"damageScaleByStr": 0,
+	"bulletSpeedScaleByStr": 0,
+	"bulletTimeScaleByStr": 0,
+	"atkAnimationScaleByCtr": 0,
+	"atkCDScaleByCtr": 0,
+	"maxSpeedScaleBySpd": 0,
+	"skillCDScaleBySpd": 0,
+	"xuliScoreSpeedScale": 0.096,
+	"xuliMaxScoreScale": 0.096
+}
+,
+"30": {
+	"value": 30,
+	"damageReduction": 0.1,
+	"scoreGatheringScale": 0,
+	"damageScaleByStr": 0,
+	"bulletSpeedScaleByStr": 0,
+	"bulletTimeScaleByStr": 0,
+	"atkAnimationScaleByCtr": 0,
+	"atkCDScaleByCtr": 0,
+	"maxSpeedScaleBySpd": 0,
+	"skillCDScaleBySpd": 0,
+	"xuliScoreSpeedScale": 0.12,
+	"xuliMaxScoreScale": 0.12
+}
+,
+"31": {
+	"value": 31,
+	"damageReduction": 0.11612903226,
+	"scoreGatheringScale": 0,
+	"damageScaleByStr": 0,
+	"bulletSpeedScaleByStr": 0,
+	"bulletTimeScaleByStr": 0,
+	"atkAnimationScaleByCtr": 0,
+	"atkCDScaleByCtr": 0,
+	"maxSpeedScaleBySpd": 0,
+	"skillCDScaleBySpd": 0,
+	"xuliScoreSpeedScale": 0.144,
+	"xuliMaxScoreScale": 0.144
+}
+,
+"32": {
+	"value": 32,
+	"damageReduction": 0.13125,
+	"scoreGatheringScale": 0,
+	"damageScaleByStr": 0,
+	"bulletSpeedScaleByStr": 0,
+	"bulletTimeScaleByStr": 0,
+	"atkAnimationScaleByCtr": 0,
+	"atkCDScaleByCtr": 0,
+	"maxSpeedScaleBySpd": 0,
+	"skillCDScaleBySpd": 0,
+	"xuliScoreSpeedScale": 0.168,
+	"xuliMaxScoreScale": 0.168
+}
+,
+"33": {
+	"value": 33,
+	"damageReduction": 0.14545454545,
+	"scoreGatheringScale": 0,
+	"damageScaleByStr": 0,
+	"bulletSpeedScaleByStr": 0,
+	"bulletTimeScaleByStr": 0,
+	"atkAnimationScaleByCtr": 0,
+	"atkCDScaleByCtr": 0,
+	"maxSpeedScaleBySpd": 0,
+	"skillCDScaleBySpd": 0,
+	"xuliScoreSpeedScale": 0.192,
+	"xuliMaxScoreScale": 0.192
+}
+,
+"34": {
+	"value": 34,
+	"damageReduction": 0.15882352941,
+	"scoreGatheringScale": 0,
+	"damageScaleByStr": 0,
+	"bulletSpeedScaleByStr": 0,
+	"bulletTimeScaleByStr": 0,
+	"atkAnimationScaleByCtr": 0,
+	"atkCDScaleByCtr": 0,
+	"maxSpeedScaleBySpd": 0,
+	"skillCDScaleBySpd": 0,
+	"xuliScoreSpeedScale": 0.216,
+	"xuliMaxScoreScale": 0.216
+}
+,
+"35": {
+	"value": 35,
+	"damageReduction": 0.17142857143,
+	"scoreGatheringScale": 0,
+	"damageScaleByStr": 0,
+	"bulletSpeedScaleByStr": 0,
+	"bulletTimeScaleByStr": 0,
+	"atkAnimationScaleByCtr": 0,
+	"atkCDScaleByCtr": 0,
+	"maxSpeedScaleBySpd": 0,
+	"skillCDScaleBySpd": 0,
+	"xuliScoreSpeedScale": 0.24,
+	"xuliMaxScoreScale": 0.24
+}
+,
+"36": {
+	"value": 36,
+	"damageReduction": 0.18333333333,
+	"scoreGatheringScale": 0,
+	"damageScaleByStr": 0,
+	"bulletSpeedScaleByStr": 0,
+	"bulletTimeScaleByStr": 0,
+	"atkAnimationScaleByCtr": 0,
+	"atkCDScaleByCtr": 0,
+	"maxSpeedScaleBySpd": 0,
+	"skillCDScaleBySpd": 0,
+	"xuliScoreSpeedScale": 0.264,
+	"xuliMaxScoreScale": 0.264
+}
+,
+"37": {
+	"value": 37,
+	"damageReduction": 0.19459459459,
+	"scoreGatheringScale": 0,
+	"damageScaleByStr": 0,
+	"bulletSpeedScaleByStr": 0,
+	"bulletTimeScaleByStr": 0,
+	"atkAnimationScaleByCtr": 0,
+	"atkCDScaleByCtr": 0,
+	"maxSpeedScaleBySpd": 0,
+	"skillCDScaleBySpd": 0,
+	"xuliScoreSpeedScale": 0.288,
+	"xuliMaxScoreScale": 0.288
+}
+,
+"38": {
+	"value": 38,
+	"damageReduction": 0.20526315789,
+	"scoreGatheringScale": 0,
+	"damageScaleByStr": 0,
+	"bulletSpeedScaleByStr": 0,
+	"bulletTimeScaleByStr": 0,
+	"atkAnimationScaleByCtr": 0,
+	"atkCDScaleByCtr": 0,
+	"maxSpeedScaleBySpd": 0,
+	"skillCDScaleBySpd": 0,
+	"xuliScoreSpeedScale": 0.312,
+	"xuliMaxScoreScale": 0.312
+}
+,
+"39": {
+	"value": 39,
+	"damageReduction": 0.21538461538,
+	"scoreGatheringScale": 0,
+	"damageScaleByStr": 0,
+	"bulletSpeedScaleByStr": 0,
+	"bulletTimeScaleByStr": 0,
+	"atkAnimationScaleByCtr": 0,
+	"atkCDScaleByCtr": 0,
+	"maxSpeedScaleBySpd": 0,
+	"skillCDScaleBySpd": 0,
+	"xuliScoreSpeedScale": 0.336,
+	"xuliMaxScoreScale": 0.336
+}
+,
+"40": {
+	"value": 40,
+	"damageReduction": 0.225,
+	"scoreGatheringScale": 0,
+	"damageScaleByStr": 0,
+	"bulletSpeedScaleByStr": 0,
+	"bulletTimeScaleByStr": 0,
+	"atkAnimationScaleByCtr": 0,
+	"atkCDScaleByCtr": 0,
+	"maxSpeedScaleBySpd": 0,
+	"skillCDScaleBySpd": 0,
+	"xuliScoreSpeedScale": 0.36,
+	"xuliMaxScoreScale": 0.36
+}
+,
+"41": {
+	"value": 41,
+	"damageReduction": 0.23414634146,
+	"scoreGatheringScale": 0,
+	"damageScaleByStr": 0,
+	"bulletSpeedScaleByStr": 0,
+	"bulletTimeScaleByStr": 0,
+	"atkAnimationScaleByCtr": 0,
+	"atkCDScaleByCtr": 0,
+	"maxSpeedScaleBySpd": 0,
+	"skillCDScaleBySpd": 0,
+	"xuliScoreSpeedScale": 0.384,
+	"xuliMaxScoreScale": 0.384
+}
+,
+"42": {
+	"value": 42,
+	"damageReduction": 0.24285714286,
+	"scoreGatheringScale": 0,
+	"damageScaleByStr": 0,
+	"bulletSpeedScaleByStr": 0,
+	"bulletTimeScaleByStr": 0,
+	"atkAnimationScaleByCtr": 0,
+	"atkCDScaleByCtr": 0,
+	"maxSpeedScaleBySpd": 0,
+	"skillCDScaleBySpd": 0,
+	"xuliScoreSpeedScale": 0.408,
+	"xuliMaxScoreScale": 0.408
+}
+,
+"43": {
+	"value": 43,
+	"damageReduction": 0.2511627907,
+	"scoreGatheringScale": 0,
+	"damageScaleByStr": 0,
+	"bulletSpeedScaleByStr": 0,
+	"bulletTimeScaleByStr": 0,
+	"atkAnimationScaleByCtr": 0,
+	"atkCDScaleByCtr": 0,
+	"maxSpeedScaleBySpd": 0,
+	"skillCDScaleBySpd": 0,
+	"xuliScoreSpeedScale": 0.432,
+	"xuliMaxScoreScale": 0.432
+}
+,
+"44": {
+	"value": 44,
+	"damageReduction": 0.25909090909,
+	"scoreGatheringScale": 0,
+	"damageScaleByStr": 0,
+	"bulletSpeedScaleByStr": 0,
+	"bulletTimeScaleByStr": 0,
+	"atkAnimationScaleByCtr": 0,
+	"atkCDScaleByCtr": 0,
+	"maxSpeedScaleBySpd": 0,
+	"skillCDScaleBySpd": 0,
+	"xuliScoreSpeedScale": 0.456,
+	"xuliMaxScoreScale": 0.456
+}
+,
+"45": {
+	"value": 45,
+	"damageReduction": 0.26666666667,
+	"scoreGatheringScale": 0,
+	"damageScaleByStr": 0,
+	"bulletSpeedScaleByStr": 0,
+	"bulletTimeScaleByStr": 0,
+	"atkAnimationScaleByCtr": 0,
+	"atkCDScaleByCtr": 0,
+	"maxSpeedScaleBySpd": 0,
+	"skillCDScaleBySpd": 0,
+	"xuliScoreSpeedScale": 0.48,
+	"xuliMaxScoreScale": 0.48
+}
+,
+"46": {
+	"value": 46,
+	"damageReduction": 0.27391304348,
+	"scoreGatheringScale": 0,
+	"damageScaleByStr": 0,
+	"bulletSpeedScaleByStr": 0,
+	"bulletTimeScaleByStr": 0,
+	"atkAnimationScaleByCtr": 0,
+	"atkCDScaleByCtr": 0,
+	"maxSpeedScaleBySpd": 0,
+	"skillCDScaleBySpd": 0,
+	"xuliScoreSpeedScale": 0.504,
+	"xuliMaxScoreScale": 0.504
+}
+,
+"47": {
+	"value": 47,
+	"damageReduction": 0.28085106383,
+	"scoreGatheringScale": 0,
+	"damageScaleByStr": 0,
+	"bulletSpeedScaleByStr": 0,
+	"bulletTimeScaleByStr": 0,
+	"atkAnimationScaleByCtr": 0,
+	"atkCDScaleByCtr": 0,
+	"maxSpeedScaleBySpd": 0,
+	"skillCDScaleBySpd": 0,
+	"xuliScoreSpeedScale": 0.528,
+	"xuliMaxScoreScale": 0.528
+}
+,
+"48": {
+	"value": 48,
+	"damageReduction": 0.2875,
+	"scoreGatheringScale": 0,
+	"damageScaleByStr": 0,
+	"bulletSpeedScaleByStr": 0,
+	"bulletTimeScaleByStr": 0,
+	"atkAnimationScaleByCtr": 0,
+	"atkCDScaleByCtr": 0,
+	"maxSpeedScaleBySpd": 0,
+	"skillCDScaleBySpd": 0,
+	"xuliScoreSpeedScale": 0.552,
+	"xuliMaxScoreScale": 0.552
+}
+,
+"49": {
+	"value": 49,
+	"damageReduction": 0.29387755102,
+	"scoreGatheringScale": 0,
+	"damageScaleByStr": 0,
+	"bulletSpeedScaleByStr": 0,
+	"bulletTimeScaleByStr": 0,
+	"atkAnimationScaleByCtr": 0,
+	"atkCDScaleByCtr": 0,
+	"maxSpeedScaleBySpd": 0,
+	"skillCDScaleBySpd": 0,
+	"xuliScoreSpeedScale": 0.576,
+	"xuliMaxScoreScale": 0.576
+}
+,
+"50": {
+	"value": 50,
+	"damageReduction": 0.3,
+	"scoreGatheringScale": 0,
+	"damageScaleByStr": 0,
+	"bulletSpeedScaleByStr": 0,
+	"bulletTimeScaleByStr": 0,
+	"atkAnimationScaleByCtr": 0,
+	"atkCDScaleByCtr": 0,
+	"maxSpeedScaleBySpd": 0,
+	"skillCDScaleBySpd": 0,
+	"xuliScoreSpeedScale": 0.6,
+	"xuliMaxScoreScale": 0.6
+}
+,
+"51": {
+	"value": 51,
+	"damageReduction": 0.30588235294,
+	"scoreGatheringScale": 0,
+	"damageScaleByStr": 0,
+	"bulletSpeedScaleByStr": 0,
+	"bulletTimeScaleByStr": 0,
+	"atkAnimationScaleByCtr": 0,
+	"atkCDScaleByCtr": 0,
+	"maxSpeedScaleBySpd": 0,
+	"skillCDScaleBySpd": 0,
+	"xuliScoreSpeedScale": 0.624,
+	"xuliMaxScoreScale": 0.624
+}
+,
+"52": {
+	"value": 52,
+	"damageReduction": 0.31153846154,
+	"scoreGatheringScale": 0,
+	"damageScaleByStr": 0,
+	"bulletSpeedScaleByStr": 0,
+	"bulletTimeScaleByStr": 0,
+	"atkAnimationScaleByCtr": 0,
+	"atkCDScaleByCtr": 0,
+	"maxSpeedScaleBySpd": 0,
+	"skillCDScaleBySpd": 0,
+	"xuliScoreSpeedScale": 0.648,
+	"xuliMaxScoreScale": 0.648
+}
+,
+"53": {
+	"value": 53,
+	"damageReduction": 0.31698113208,
+	"scoreGatheringScale": 0,
+	"damageScaleByStr": 0,
+	"bulletSpeedScaleByStr": 0,
+	"bulletTimeScaleByStr": 0,
+	"atkAnimationScaleByCtr": 0,
+	"atkCDScaleByCtr": 0,
+	"maxSpeedScaleBySpd": 0,
+	"skillCDScaleBySpd": 0,
+	"xuliScoreSpeedScale": 0.672,
+	"xuliMaxScoreScale": 0.672
+}
+,
+"54": {
+	"value": 54,
+	"damageReduction": 0.32222222222,
+	"scoreGatheringScale": 0,
+	"damageScaleByStr": 0,
+	"bulletSpeedScaleByStr": 0,
+	"bulletTimeScaleByStr": 0,
+	"atkAnimationScaleByCtr": 0,
+	"atkCDScaleByCtr": 0,
+	"maxSpeedScaleBySpd": 0,
+	"skillCDScaleBySpd": 0,
+	"xuliScoreSpeedScale": 0.696,
+	"xuliMaxScoreScale": 0.696
+}
+,
+"55": {
+	"value": 55,
+	"damageReduction": 0.32727272727,
+	"scoreGatheringScale": 0,
+	"damageScaleByStr": 0,
+	"bulletSpeedScaleByStr": 0,
+	"bulletTimeScaleByStr": 0,
+	"atkAnimationScaleByCtr": 0,
+	"atkCDScaleByCtr": 0,
+	"maxSpeedScaleBySpd": 0,
+	"skillCDScaleBySpd": 0,
+	"xuliScoreSpeedScale": 0.72,
+	"xuliMaxScoreScale": 0.72
+}
+,
+"56": {
+	"value": 56,
+	"damageReduction": 0.33214285714,
+	"scoreGatheringScale": 0,
+	"damageScaleByStr": 0,
+	"bulletSpeedScaleByStr": 0,
+	"bulletTimeScaleByStr": 0,
+	"atkAnimationScaleByCtr": 0,
+	"atkCDScaleByCtr": 0,
+	"maxSpeedScaleBySpd": 0,
+	"skillCDScaleBySpd": 0,
+	"xuliScoreSpeedScale": 0.744,
+	"xuliMaxScoreScale": 0.744
+}
+,
+"57": {
+	"value": 57,
+	"damageReduction": 0.33684210526,
+	"scoreGatheringScale": 0,
+	"damageScaleByStr": 0,
+	"bulletSpeedScaleByStr": 0,
+	"bulletTimeScaleByStr": 0,
+	"atkAnimationScaleByCtr": 0,
+	"atkCDScaleByCtr": 0,
+	"maxSpeedScaleBySpd": 0,
+	"skillCDScaleBySpd": 0,
+	"xuliScoreSpeedScale": 0.768,
+	"xuliMaxScoreScale": 0.768
+}
+,
+"58": {
+	"value": 58,
+	"damageReduction": 0.34137931034,
+	"scoreGatheringScale": 0,
+	"damageScaleByStr": 0,
+	"bulletSpeedScaleByStr": 0,
+	"bulletTimeScaleByStr": 0,
+	"atkAnimationScaleByCtr": 0,
+	"atkCDScaleByCtr": 0,
+	"maxSpeedScaleBySpd": 0,
+	"skillCDScaleBySpd": 0,
+	"xuliScoreSpeedScale": 0.792,
+	"xuliMaxScoreScale": 0.792
+}
+,
+"59": {
+	"value": 59,
+	"damageReduction": 0.34576271186,
+	"scoreGatheringScale": 0,
+	"damageScaleByStr": 0,
+	"bulletSpeedScaleByStr": 0,
+	"bulletTimeScaleByStr": 0,
+	"atkAnimationScaleByCtr": 0,
+	"atkCDScaleByCtr": 0,
+	"maxSpeedScaleBySpd": 0,
+	"skillCDScaleBySpd": 0,
+	"xuliScoreSpeedScale": 0.816,
+	"xuliMaxScoreScale": 0.816
+}
+,
+"60": {
+	"value": 60,
+	"damageReduction": 0.35,
+	"scoreGatheringScale": 0,
+	"damageScaleByStr": 0,
+	"bulletSpeedScaleByStr": 0,
+	"bulletTimeScaleByStr": 0,
+	"atkAnimationScaleByCtr": 0,
+	"atkCDScaleByCtr": 0,
+	"maxSpeedScaleBySpd": 0,
+	"skillCDScaleBySpd": 0,
+	"xuliScoreSpeedScale": 0.84,
+	"xuliMaxScoreScale": 0.84
+}
+,
+"61": {
+	"value": 61,
+	"damageReduction": 0.35409836066,
+	"scoreGatheringScale": 0,
+	"damageScaleByStr": 0,
+	"bulletSpeedScaleByStr": 0,
+	"bulletTimeScaleByStr": 0,
+	"atkAnimationScaleByCtr": 0,
+	"atkCDScaleByCtr": 0,
+	"maxSpeedScaleBySpd": 0,
+	"skillCDScaleBySpd": 0,
+	"xuliScoreSpeedScale": 0.864,
+	"xuliMaxScoreScale": 0.864
+}
+,
+"62": {
+	"value": 62,
+	"damageReduction": 0.35806451613,
+	"scoreGatheringScale": 0,
+	"damageScaleByStr": 0,
+	"bulletSpeedScaleByStr": 0,
+	"bulletTimeScaleByStr": 0,
+	"atkAnimationScaleByCtr": 0,
+	"atkCDScaleByCtr": 0,
+	"maxSpeedScaleBySpd": 0,
+	"skillCDScaleBySpd": 0,
+	"xuliScoreSpeedScale": 0.888,
+	"xuliMaxScoreScale": 0.888
+}
+,
+"63": {
+	"value": 63,
+	"damageReduction": 0.3619047619,
+	"scoreGatheringScale": 0,
+	"damageScaleByStr": 0,
+	"bulletSpeedScaleByStr": 0,
+	"bulletTimeScaleByStr": 0,
+	"atkAnimationScaleByCtr": 0,
+	"atkCDScaleByCtr": 0,
+	"maxSpeedScaleBySpd": 0,
+	"skillCDScaleBySpd": 0,
+	"xuliScoreSpeedScale": 0.912,
+	"xuliMaxScoreScale": 0.912
+}
+,
+"64": {
+	"value": 64,
+	"damageReduction": 0.365625,
+	"scoreGatheringScale": 0,
+	"damageScaleByStr": 0,
+	"bulletSpeedScaleByStr": 0,
+	"bulletTimeScaleByStr": 0,
+	"atkAnimationScaleByCtr": 0,
+	"atkCDScaleByCtr": 0,
+	"maxSpeedScaleBySpd": 0,
+	"skillCDScaleBySpd": 0,
+	"xuliScoreSpeedScale": 0.936,
+	"xuliMaxScoreScale": 0.936
+}
+,
+"65": {
+	"value": 65,
+	"damageReduction": 0.36923076923,
+	"scoreGatheringScale": 0,
+	"damageScaleByStr": 0,
+	"bulletSpeedScaleByStr": 0,
+	"bulletTimeScaleByStr": 0,
+	"atkAnimationScaleByCtr": 0,
+	"atkCDScaleByCtr": 0,
+	"maxSpeedScaleBySpd": 0,
+	"skillCDScaleBySpd": 0,
+	"xuliScoreSpeedScale": 0.96,
+	"xuliMaxScoreScale": 0.96
+}
+,
+"66": {
+	"value": 66,
+	"damageReduction": 0.37272727273,
+	"scoreGatheringScale": 0,
+	"damageScaleByStr": 0,
+	"bulletSpeedScaleByStr": 0,
+	"bulletTimeScaleByStr": 0,
+	"atkAnimationScaleByCtr": 0,
+	"atkCDScaleByCtr": 0,
+	"maxSpeedScaleBySpd": 0,
+	"skillCDScaleBySpd": 0,
+	"xuliScoreSpeedScale": 0.984,
+	"xuliMaxScoreScale": 0.984
+}
+,
+"67": {
+	"value": 67,
+	"damageReduction": 0.37611940299,
+	"scoreGatheringScale": 0,
+	"damageScaleByStr": 0,
+	"bulletSpeedScaleByStr": 0,
+	"bulletTimeScaleByStr": 0,
+	"atkAnimationScaleByCtr": 0,
+	"atkCDScaleByCtr": 0,
+	"maxSpeedScaleBySpd": 0,
+	"skillCDScaleBySpd": 0,
+	"xuliScoreSpeedScale": 1.008,
+	"xuliMaxScoreScale": 1.008
+}
+,
+"68": {
+	"value": 68,
+	"damageReduction": 0.37941176471,
+	"scoreGatheringScale": 0,
+	"damageScaleByStr": 0,
+	"bulletSpeedScaleByStr": 0,
+	"bulletTimeScaleByStr": 0,
+	"atkAnimationScaleByCtr": 0,
+	"atkCDScaleByCtr": 0,
+	"maxSpeedScaleBySpd": 0,
+	"skillCDScaleBySpd": 0,
+	"xuliScoreSpeedScale": 1.032,
+	"xuliMaxScoreScale": 1.032
+}
+,
+"69": {
+	"value": 69,
+	"damageReduction": 0.38260869565,
+	"scoreGatheringScale": 0,
+	"damageScaleByStr": 0,
+	"bulletSpeedScaleByStr": 0,
+	"bulletTimeScaleByStr": 0,
+	"atkAnimationScaleByCtr": 0,
+	"atkCDScaleByCtr": 0,
+	"maxSpeedScaleBySpd": 0,
+	"skillCDScaleBySpd": 0,
+	"xuliScoreSpeedScale": 1.056,
+	"xuliMaxScoreScale": 1.056
+}
+,
+"70": {
+	"value": 70,
+	"damageReduction": 0.38571428571,
+	"scoreGatheringScale": 0,
+	"damageScaleByStr": 0,
+	"bulletSpeedScaleByStr": 0,
+	"bulletTimeScaleByStr": 0,
+	"atkAnimationScaleByCtr": 0,
+	"atkCDScaleByCtr": 0,
+	"maxSpeedScaleBySpd": 0,
+	"skillCDScaleBySpd": 0,
+	"xuliScoreSpeedScale": 1.08,
+	"xuliMaxScoreScale": 1.08
+}
+
+}

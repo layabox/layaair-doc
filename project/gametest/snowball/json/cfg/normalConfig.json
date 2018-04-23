@@ -1,0 +1,18 @@
+{
+    "treasureChestNum": 4,
+    "snowBoxItemId": 50001,
+    "newbieBoxItemId": 50001,
+    "getSnowBoxNum": 3,
+    "getSnowBoxScore": 3000,
+    "randomSkillLevel": [3, 6, 9, 12, 15, 18],
+    "crazyTime": 60000,
+    "crazyMoveSpeed": 1.2,
+    "crazyCollGetBullet": 2,
+    "crazyMaxBullet": 2,
+    "shareAward": { "1": { "maxShareCount": 1, "rewardID": [7103,7102,7104,7107], "rewardNum": [1] }, "2": { "maxShareCount": 20, "rewardID": [3], "rewardNum": [50] } },
+    "useBlood": 0,
+    "TEST_MOVESPEED": 1,
+    "TEST_BULLETVANISHTIME": 1,
+    "TEST_BULLETSPEED": 1,
+    "TEST_MODELSIZE": 1
+}

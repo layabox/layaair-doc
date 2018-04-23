@@ -1,0 +1,37 @@
+{
+"1": {
+	"id": 1,
+	"times": 12,
+	"rewardId": [3],
+	"rewardCount": [100]
+}
+,
+"2": {
+	"id": 2,
+	"times": 24,
+	"rewardId": [3,1],
+	"rewardCount": [200,10]
+}
+,
+"3": {
+	"id": 3,
+	"times": 36,
+	"rewardId": [3,1],
+	"rewardCount": [300,20]
+}
+,
+"4": {
+	"id": 4,
+	"times": 48,
+	"rewardId": [3,1],
+	"rewardCount": [400,40]
+}
+,
+"5": {
+	"id": 5,
+	"times": 60,
+	"rewardId": [3,1],
+	"rewardCount": [500,100]
+}
+
+}
