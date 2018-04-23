@@ -1,0 +1,41 @@
+{
+	"version":"LAYAMATERIAL:01",
+	"props":{
+		"name":"CFX2_GhostStretch Add",
+		"cull":2,
+		"blend":1,
+		"srcBlend":770,
+		"dstBlend":1,
+		"alphaTest":false,
+		"depthWrite":false,
+		"depthTest":513,
+		"renderQueue":2,
+		"textures":[
+			{
+				"name":"diffuseTexture",
+				"path":"../../Textures/CFX2_T_Ghost.png"
+			}
+		],
+		"vectors":[
+			{
+				"name":"tilingOffset",
+				"value":[
+					1,
+					1,
+					0,
+					0
+				]
+			},
+			{
+				"name":"tintColor",
+				"value":[
+					1,
+					1,
+					1,
+					1
+				]
+			}
+		],
+		"defines":[]
+	}
+}

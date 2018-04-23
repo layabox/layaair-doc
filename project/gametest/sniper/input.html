@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+</head>
+<body>
+	<h2>请输入目标图片尺寸</h2>
+	<input type="text" id="content">
+	<input type="submit" id="submitBtn">
+	<script src='pngCreater.js' loader='laya'></script>
+	<script src='canvas2image.js' loader='laya'></script>
+	<script type="text/javascript">
+		var btn = document.getElementById("submitBtn");
+		var text = document.getElementById("content");
+
+		btn.onclick = function() {
+			const ipc = require('electron').ipcRenderer
+			
+			ipc.send('open-information-dialog',text.value)
+			
+		}
+	</script>
+	
+</body>
+</html>

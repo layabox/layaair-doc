@@ -1,0 +1,31 @@
+{
+	"version":"LAYAMATERIAL:01",
+	"props":{
+		"name":"Lantern_glow",
+		"cull":2,
+		"blend":0,
+		"srcBlend":1,
+		"dstBlend":0,
+		"alphaTest":false,
+		"depthWrite":true,
+		"renderQueue":1,
+		"textures":[
+			{
+				"name":"diffuseTexture",
+				"path":""
+			}
+		],
+		"vectors":[
+			{
+				"name":"tintColor",
+				"value":[
+					0.5,
+					0.5,
+					0.5,
+					0.5
+				]
+			}
+		],
+		"defines":[]
+	}
+}

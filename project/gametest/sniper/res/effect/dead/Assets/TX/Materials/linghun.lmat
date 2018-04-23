@@ -1,0 +1,34 @@
+{
+	"version":"LAYAMATERIAL:01",
+	"props":{
+		"name":"linghun",
+		"shaderName":"SIMPLE",
+		"cull":0,
+		"blend":1,
+		"srcBlend":770,
+		"dstBlend":1,
+		"alphaTest":false,
+		"depthWrite":false,
+		"renderQueue":2,
+		"textures":[
+			{
+				"name":"diffuseTexture",
+				"path":"../../JMO Assets/Cartoon FX/Textures/CFX2_T_Ghost1.png"
+			}
+		],
+		"vectors":[
+			{
+				"name":"tintColor",
+				"value":[
+					0.5882353,
+					0.3200692,
+					0.5253549,
+					0.728
+				]
+			}
+		],
+		"defines":[
+			"ADDTIVEFOG"
+		]
+	}
+}

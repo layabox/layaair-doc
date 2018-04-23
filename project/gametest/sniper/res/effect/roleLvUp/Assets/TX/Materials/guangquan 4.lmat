@@ -1,0 +1,34 @@
+{
+	"version":"LAYAMATERIAL:01",
+	"props":{
+		"name":"guangquan 4",
+		"shaderName":"SIMPLE",
+		"cull":0,
+		"blend":1,
+		"srcBlend":770,
+		"dstBlend":1,
+		"alphaTest":false,
+		"depthWrite":false,
+		"renderQueue":2,
+		"textures":[
+			{
+				"name":"diffuseTexture",
+				"path":"../../tietu/flare2b_orange.png"
+			}
+		],
+		"vectors":[
+			{
+				"name":"tintColor",
+				"value":[
+					1,
+					0.5966531,
+					0.2867647,
+					1
+				]
+			}
+		],
+		"defines":[
+			"ADDTIVEFOG"
+		]
+	}
+}

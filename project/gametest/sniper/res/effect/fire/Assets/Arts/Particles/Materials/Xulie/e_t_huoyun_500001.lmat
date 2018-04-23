@@ -1,0 +1,34 @@
+{
+	"version":"LAYAMATERIAL:01",
+	"props":{
+		"name":"e_t_huoyun_500001",
+		"shaderName":"SIMPLE",
+		"cull":0,
+		"blend":1,
+		"srcBlend":770,
+		"dstBlend":1,
+		"alphaTest":false,
+		"depthWrite":false,
+		"renderQueue":2,
+		"textures":[
+			{
+				"name":"diffuseTexture",
+				"path":"../../Textures/GT128/e_t_huoyun_4x4_01.png"
+			}
+		],
+		"vectors":[
+			{
+				"name":"tintColor",
+				"value":[
+					0.5411981,
+					0.6641734,
+					0.9558824,
+					0.591
+				]
+			}
+		],
+		"defines":[
+			"ADDTIVEFOG"
+		]
+	}
+}

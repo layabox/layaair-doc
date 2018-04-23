@@ -1,0 +1,32 @@
+{
+	"version":"LAYAMATERIAL:01",
+	"props":{
+		"name":"dilie 1",
+		"shaderName":"SIMPLE",
+		"cull":0,
+		"blend":1,
+		"srcBlend":770,
+		"dstBlend":771,
+		"alphaTest":false,
+		"depthWrite":false,
+		"renderQueue":2,
+		"textures":[
+			{
+				"name":"diffuseTexture",
+				"path":"../../tietu/flare2d1.png"
+			}
+		],
+		"vectors":[
+			{
+				"name":"tintColor",
+				"value":[
+					1,
+					0.6764706,
+					0.1911765,
+					0.447
+				]
+			}
+		],
+		"defines":[]
+	}
+}

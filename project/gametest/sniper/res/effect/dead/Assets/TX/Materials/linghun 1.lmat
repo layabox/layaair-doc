@@ -1,0 +1,34 @@
+{
+	"version":"LAYAMATERIAL:01",
+	"props":{
+		"name":"linghun 1",
+		"shaderName":"SIMPLE",
+		"cull":0,
+		"blend":1,
+		"srcBlend":770,
+		"dstBlend":1,
+		"alphaTest":false,
+		"depthWrite":false,
+		"renderQueue":2,
+		"textures":[
+			{
+				"name":"diffuseTexture",
+				"path":"../../tietu/other/tx_other_1188.png"
+			}
+		],
+		"vectors":[
+			{
+				"name":"tintColor",
+				"value":[
+					0.7132353,
+					0.4195502,
+					0.6443712,
+					1
+				]
+			}
+		],
+		"defines":[
+			"ADDTIVEFOG"
+		]
+	}
+}
