@@ -1,0 +1,230 @@
+{
+"1": {
+	"id": 1,
+	"desc": "每日登录",
+	"msg": "欢迎来到雪球世界",
+	"condition": 1,
+	"isRand": 0,
+	"stay": 6000,
+	"jiange": 3000,
+	"times": 2,
+	"priority": 0
+}
+,
+"2": {
+	"id": 2,
+	"desc": "分享1次游戏",
+	"msg": "给好友分享一下游戏吧",
+	"condition": 0,
+	"isRand": 0,
+	"stay": 6000,
+	"jiange": 3000,
+	"times": 2,
+	"priority": 3
+}
+,
+"3": {
+	"id": 3,
+	"desc": "参与1次夺宝",
+	"msg": "去【商城夺宝】可获得丰厚奖励哦",
+	"condition": 0,
+	"isRand": 0,
+	"stay": 6000,
+	"jiange": 3000,
+	"times": 3,
+	"priority": 3
+}
+,
+"4": {
+	"id": 4,
+	"desc": "完成3场自由模式对战",
+	"msg": "完成3场【自由模式】对战即可领取奖励",
+	"condition": 0,
+	"isRand": 0,
+	"stay": 6000,
+	"jiange": 3000,
+	"times": 3,
+	"priority": 3
+}
+,
+"5": {
+	"id": 5,
+	"desc": "和好友一起完成1场对战",
+	"msg": "邀请好友来打一局吧",
+	"condition": 0,
+	"isRand": 0,
+	"stay": 6000,
+	"jiange": 3000,
+	"times": 3,
+	"priority": 3
+}
+,
+"6": {
+	"id": 6,
+	"desc": "任意模式完成30次击杀",
+	"msg": "累计击杀30人即可领取奖励",
+	"condition": 0,
+	"isRand": 0,
+	"stay": 6000,
+	"jiange": 3000,
+	"times": 3,
+	"priority": 3
+}
+,
+"7": {
+	"id": 7,
+	"desc": "赢得1次自由模式排名前3名",
+	"msg": "赢得1次【自由模式】排名前3名即可领取奖励",
+	"condition": 0,
+	"isRand": 0,
+	"stay": 6000,
+	"jiange": 3000,
+	"times": 3,
+	"priority": 3
+}
+,
+"8": {
+	"id": 8,
+	"desc": "赢得1次团队模式排名前2名",
+	"msg": "赢得1次【团队模式】排名前2名即可领取奖励",
+	"condition": 0,
+	"isRand": 0,
+	"stay": 6000,
+	"jiange": 3000,
+	"times": 3,
+	"priority": 3
+}
+,
+"9": {
+	"id": 9,
+	"desc": "单局积分超过2000分",
+	"msg": "单局对战【积分】超过2000分即可领取奖励",
+	"condition": 0,
+	"isRand": 0,
+	"stay": 6000,
+	"jiange": 3000,
+	"times": 3,
+	"priority": 3
+}
+,
+"10": {
+	"id": 10,
+	"desc": "今日累计花费200金币",
+	"msg": "今日累计花费200金币即可领取奖励",
+	"condition": 0,
+	"isRand": 0,
+	"stay": 6000,
+	"jiange": 3000,
+	"times": 3,
+	"priority": 3
+}
+,
+"11": {
+	"id": 11,
+	"desc": "完成1次冰雪议会转盘",
+	"msg": "完成1次冰雪议会转盘即可领取奖励",
+	"condition": 0,
+	"isRand": 0,
+	"stay": 6000,
+	"jiange": 3000,
+	"times": 3,
+	"priority": 3
+}
+,
+"12": {
+	"id": 12,
+	"desc": "日活跃第一档",
+	"msg": "您有未领取的宝箱哦",
+	"condition": 1,
+	"isRand": 0,
+	"stay": 6000,
+	"jiange": 3000,
+	"times": 2,
+	"priority": 1
+}
+,
+"13": {
+	"id": 13,
+	"desc": "日活跃第二档",
+	"msg": "您有未领取的宝箱哦",
+	"condition": 1,
+	"isRand": 0,
+	"stay": 6000,
+	"jiange": 3000,
+	"times": 2,
+	"priority": 1
+}
+,
+"14": {
+	"id": 14,
+	"desc": "日活跃第三档",
+	"msg": "您有未领取的宝箱哦",
+	"condition": 1,
+	"isRand": 0,
+	"stay": 6000,
+	"jiange": 3000,
+	"times": 2,
+	"priority": 1
+}
+,
+"15": {
+	"id": 15,
+	"desc": "周活跃第一档",
+	"msg": "您有未领取的宝箱哦",
+	"condition": 1,
+	"isRand": 0,
+	"stay": 6000,
+	"jiange": 3000,
+	"times": 2,
+	"priority": 1
+}
+,
+"16": {
+	"id": 16,
+	"desc": "周活跃第二档",
+	"msg": "您有未领取的宝箱哦",
+	"condition": 1,
+	"isRand": 0,
+	"stay": 6000,
+	"jiange": 3000,
+	"times": 2,
+	"priority": 1
+}
+,
+"17": {
+	"id": 17,
+	"desc": "奖励未领取",
+	"msg": "您有未领取的任务奖励哦",
+	"condition": 1,
+	"isRand": 0,
+	"stay": 6000,
+	"jiange": 3000,
+	"times": 3,
+	"priority": 2
+}
+,
+"18": {
+	"id": 18,
+	"desc": "随机1",
+	"msg": "我在穿短袖，而你在打雪球",
+	"condition": 1,
+	"isRand": 1,
+	"stay": 6000,
+	"jiange": 3000,
+	"times": 3,
+	"priority": 3
+}
+,
+"19": {
+	"id": 19,
+	"desc": "随机2",
+	"msg": "再赢一把就睡觉",
+	"condition": 1,
+	"isRand": 1,
+	"stay": 6000,
+	"jiange": 3000,
+	"times": 3,
+	"priority": 3
+}
+
+}

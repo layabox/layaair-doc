@@ -1,0 +1,274 @@
+{
+"menu": {
+	"point": "menu",
+	"QQ": "标题",
+	"QQDesc": "描述",
+	"QQImage": "icon.png",
+	"QQBall": "标题1",
+	"QQBallDesc": "描述1",
+	"QQBallImage": "icon.png",
+	"WX": "标题",
+	"WXDesc": "描述",
+	"WXImage": "icon.png",
+	"WXBall": "标题1",
+	"WXBallDesc": "描述1",
+	"WXBallImage": "icon.png"
+}
+,
+"other": {
+	"point": "other",
+	"QQ": "玩全民打雪球,这样玩没毛病",
+	"QQDesc": "全网极趣Q版游戏,操作&冒险两不误",
+	"QQImage": "icon.png",
+	"QQBall": "玩全民打雪球,这样玩没毛病",
+	"QQBallDesc": "全网极趣Q版游戏,操作&冒险两不误",
+	"QQBallImage": "icon.png",
+	"WX": "玩全民打雪球,这样玩没毛病",
+	"WXDesc": "全网极趣Q版游戏,操作&冒险两不误",
+	"WXImage": "icon.png",
+	"WXBall": "玩全民打雪球,这样玩没毛病",
+	"WXBallDesc": "全网极趣Q版游戏,操作&冒险两不误",
+	"WXBallImage": "icon.png"
+}
+,
+"Invitingfriends": {
+	"point": "Invitingfriends",
+	"QQ": "想你的夜,这游戏要上天",
+	"QQDesc": "多希望你能和我开黑,玩的人都脱单了",
+	"QQImage": "icon.png",
+	"QQBall": "想你的夜,这游戏要上天",
+	"QQBallDesc": "多希望你能和我开黑,玩的人都脱单了",
+	"QQBallImage": "icon.png",
+	"WX": "这游戏要上天,再玩剁手",
+	"WXDesc": "玩的人都脱单了,深度沉迷不能自拔，求支援",
+	"WXImage": "icon.png",
+	"WXBall": "这游戏要上天,再玩剁手",
+	"WXBallDesc": "玩的人都脱单了,深度沉迷不能自拔，求支援",
+	"WXBallImage": "icon.png"
+}
+,
+"Sharingactivities": {
+	"point": "Sharingactivities",
+	"QQ": "结识百变萌友,神不知鬼不觉,快到碗里来,biubiubiu",
+	"QQDesc": "多人同屏实时开黑,搞怪技能鬼魅打法,畅饮雪花激情开团,敌人吓得抖三抖",
+	"QQImage": "icon.png",
+	"QQBall": "结识百变萌友,神不知鬼不觉,快到碗里来,biubiubiu",
+	"QQBallDesc": "多人同屏实时开黑,搞怪技能鬼魅打法,畅饮雪花激情开团,敌人吓得抖三抖",
+	"QQBallImage": "icon.png",
+	"WX": "结识百变萌友,神不知鬼不觉,快到碗里来,biubiubiu",
+	"WXDesc": "多人同屏实时开黑,搞怪技能鬼魅打法,畅饮雪花激情开团,敌人吓得抖三抖",
+	"WXImage": "icon.png",
+	"WXBall": "结识百变萌友,神不知鬼不觉,快到碗里来,biubiubiu",
+	"WXBallDesc": "多人同屏实时开黑,搞怪技能鬼魅打法,畅饮雪花激情开团,敌人吓得抖三抖",
+	"WXBallImage": "icon.png"
+}
+,
+"home": {
+	"point": "home",
+	"QQ": "我的家园,家园相遇",
+	"QQDesc": "都到了，不进来坐坐嘛？,没有故事，只有事故",
+	"QQImage": "icon.png",
+	"QQBall": "我的家园,家园相遇",
+	"QQBallDesc": "都到了，不进来坐坐嘛？,没有故事，只有事故",
+	"QQBallImage": "icon.png",
+	"WX": "我的家园,凛冬将至,说走咱就走",
+	"WXDesc": "都到了，不进来坐坐嘛？,入驻城堡的机会可要抓牢啊,趣味乱斗，来一场魔性冒险",
+	"WXImage": "icon.png",
+	"WXBall": "我的家园,凛冬将至,说走咱就走",
+	"WXBallDesc": "都到了，不进来坐坐嘛？,入驻城堡的机会可要抓牢啊,趣味乱斗，来一场魔性冒险",
+	"WXBallImage": "icon.png"
+}
+,
+"Season": {
+	"point": "Season",
+	"QQ": "单打独斗不过瘾,快乐免费玩",
+	"QQDesc": "多人组队趣味无穷,雪球带你重回童年",
+	"QQImage": "icon.png",
+	"QQBall": "单打独斗不过瘾,快乐免费玩",
+	"QQBallDesc": "多人组队趣味无穷,雪球带你重回童年",
+	"QQBallImage": "icon.png",
+	"WX": "单打独斗不过瘾,快乐免费玩",
+	"WXDesc": "多人组队趣味无穷,雪球带你重回童年",
+	"WXImage": "icon.png",
+	"WXBall": "单打独斗不过瘾,快乐免费玩",
+	"WXBallDesc": "多人组队趣味无穷,雪球带你重回童年",
+	"WXBallImage": "icon.png"
+}
+,
+"Achievement": {
+	"point": "Achievement",
+	"QQ": "最佳成就达人,实力的象征",
+	"QQDesc": "厉不厉害？想不想学？,技术不够，成就来凑",
+	"QQImage": "icon.png",
+	"QQBall": "最佳成就达人,实力的象征",
+	"QQBallDesc": "厉不厉害？想不想学？,技术不够，成就来凑",
+	"QQBallImage": "icon.png",
+	"WX": "最佳成就达人,实力的象征",
+	"WXDesc": "厉不厉害？想不想学？,技术不够，成就来凑",
+	"WXImage": "icon.png",
+	"WXBall": "最佳成就达人,实力的象征",
+	"WXBallDesc": "厉不厉害？想不想学？,技术不够，成就来凑",
+	"WXBallImage": "icon.png"
+}
+,
+"Transcend": {
+	"point": "Transcend",
+	"QQ": "还！有！谁,你尽管浪",
+	"QQDesc": "超神暴走信手拈来，我就问还有谁,请随意发挥，一套带不走算我输",
+	"QQImage": "icon.png",
+	"QQBall": "还！有！谁,你尽管浪",
+	"QQBallDesc": "超神暴走信手拈来，我就问还有谁,请随意发挥，一套带不走算我输",
+	"QQBallImage": "icon.png",
+	"WX": "还！有！谁,你尽管浪",
+	"WXDesc": "超神暴走信手拈来，我就问还有谁,请随意发挥，一套带不走算我输",
+	"WXImage": "icon.png",
+	"WXBall": "还！有！谁,你尽管浪",
+	"WXBallDesc": "超神暴走信手拈来，我就问还有谁,请随意发挥，一套带不走算我输",
+	"WXBallImage": "icon.png"
+}
+,
+"Friendrecall": {
+	"point": "Friendrecall",
+	"QQ": "春风十里不如你,没时间解释了",
+	"QQDesc": "曾携手开黑，望荣耀回归,老司机发车，有奶有肉来输出",
+	"QQImage": "icon.png",
+	"QQBall": "春风十里不如你,没时间解释了",
+	"QQBallDesc": "曾携手开黑，望荣耀回归,老司机发车，有奶有肉来输出",
+	"QQBallImage": "icon.png",
+	"WX": "春风十里不如你,没时间解释了",
+	"WXDesc": "曾携手开黑，望荣耀回归,老司机发车，有奶有肉来输出",
+	"WXImage": "icon.png",
+	"WXBall": "春风十里不如你,没时间解释了",
+	"WXBallDesc": "曾携手开黑，望荣耀回归,老司机发车，有奶有肉来输出",
+	"WXBallImage": "icon.png"
+}
+,
+"Settlement": {
+	"point": "Settlement",
+	"QQ": "感觉身体被掏空,日照香炉生紫烟",
+	"QQDesc": "扶我起来还能再刚一宿,雪球就是我的天",
+	"QQImage": "icon.png",
+	"QQBall": "感觉身体被掏空,日照香炉生紫烟",
+	"QQBallDesc": "扶我起来还能再刚一宿,雪球就是我的天",
+	"QQBallImage": "icon.png",
+	"WX": "感觉身体被掏空,3秒上手，开黑互怼,还有这种操作？",
+	"WXDesc": "扶我起来还能再刚一宿,英雄多，技能爽，好友开黑套路多,我可能玩了个假英雄",
+	"WXImage": "icon.png",
+	"WXBall": "感觉身体被掏空,3秒上手，开黑互怼,还有这种操作？",
+	"WXBallDesc": "扶我起来还能再刚一宿,英雄多，技能爽，好友开黑套路多,我可能玩了个假英雄",
+	"WXBallImage": "icon.png"
+}
+,
+"teammodel": {
+	"point": "teammodel",
+	"QQ": "团队邀请,组队邀请",
+	"QQDesc": "给我5分钟，带你碾压一切,团队就差你了，点击加入随时开车",
+	"QQImage": "icon.png",
+	"QQBall": "团队邀请,组队邀请",
+	"QQBallDesc": "给我5分钟，带你碾压一切,团队就差你了，点击加入随时开车",
+	"QQBallImage": "icon.png",
+	"WX": "团队邀请,组队邀请",
+	"WXDesc": "老司机发车，有奶有肉来输出,团队就差你了，点击加入随时开车",
+	"WXImage": "icon.png",
+	"WXBall": "团队邀请,组队邀请",
+	"WXBallDesc": "老司机发车，有奶有肉来输出,团队就差你了，点击加入随时开车",
+	"WXBallImage": "icon.png"
+}
+,
+"friendmodel": {
+	"point": "friendmodel",
+	"QQ": "朋友局邀请,朋友开黑",
+	"QQDesc": "春风十里，就差你,再不来可就没位置了哟",
+	"QQImage": "icon.png",
+	"QQBall": "朋友局邀请,朋友开黑",
+	"QQBallDesc": "春风十里，就差你,再不来可就没位置了哟",
+	"QQBallImage": "icon.png",
+	"WX": "朋友局邀请,朋友开黑",
+	"WXDesc": "春风十里，就差你,再不来可就没位置了哟",
+	"WXImage": "icon.png",
+	"WXBall": "朋友局邀请,朋友开黑",
+	"WXBallDesc": "春风十里，就差你,再不来可就没位置了哟",
+	"WXBallImage": "icon.png"
+}
+,
+"demo": {
+	"point": "demo",
+	"QQ": "3秒上手，开黑互怼,还有这种操作？",
+	"QQDesc": "英雄多，技能爽，好友开黑套路多,我可能玩了个假英雄",
+	"QQImage": "icon.png",
+	"QQBall": "3秒上手，开黑互怼,还有这种操作？",
+	"QQBallDesc": "英雄多，技能爽，好友开黑套路多,我可能玩了个假英雄",
+	"QQBallImage": "icon.png",
+	"WX": "3秒上手，开黑互怼,还有这种操作？",
+	"WXDesc": "英雄多，技能爽，好友开黑套路多,我可能玩了个假英雄",
+	"WXImage": "icon.png",
+	"WXBall": "3秒上手，开黑互怼,还有这种操作？",
+	"WXBallDesc": "英雄多，技能爽，好友开黑套路多,我可能玩了个假英雄",
+	"WXBallImage": "icon.png"
+}
+,
+"playerpk": {
+	"point": "playerpk",
+	"QQ": "全民打雪球,全民打雪球",
+	"QQDesc": "我的打雪仗数据更新啦，朋友们来比一比吧！",
+	"QQImage": "share_pk.png",
+	"QQBall": "空",
+	"QQBallDesc": "空",
+	"QQBallImage": "空",
+	"WX": "空",
+	"WXDesc": "空",
+	"WXImage": "空",
+	"WXBall": "空",
+	"WXBallDesc": "空",
+	"WXBallImage": "空"
+}
+,
+"team3vepk": {
+	"point": "team3vepk",
+	"QQ": "全民打雪球,全民打雪球",
+	"QQDesc": "小伙伴们，来跟我一起玩一局3V3吧！",
+	"QQImage": "share_3v3.png",
+	"QQBall": "空",
+	"QQBallDesc": "空",
+	"QQBallImage": "空",
+	"WX": "空",
+	"WXDesc": "空",
+	"WXImage": "空",
+	"WXBall": "空",
+	"WXBallDesc": "空",
+	"WXBallImage": "空"
+}
+,
+"rankPK": {
+	"point": "rankPK",
+	"QQ": "全民打雪球,全民打雪球",
+	"QQDesc": "伙伴们，打开看一下自己的实力排名吧！",
+	"QQImage": "share_rank.png",
+	"QQBall": "",
+	"QQBallDesc": "",
+	"QQBallImage": "",
+	"WX": "",
+	"WXDesc": "",
+	"WXImage": "",
+	"WXBall": "",
+	"WXBallDesc": "",
+	"WXBallImage": ""
+}
+,
+"rewardInfo": {
+	"point": "rewardInfo",
+	"QQ": "全民打雪球,全民打雪球",
+	"QQDesc": "我在《全民大雪球》中的战绩超群，你敢来挑战吗？",
+	"QQImage": "share_3v3.png",
+	"QQBall": "",
+	"QQBallDesc": "",
+	"QQBallImage": "",
+	"WX": "",
+	"WXDesc": "",
+	"WXImage": "",
+	"WXBall": "",
+	"WXBallDesc": "",
+	"WXBallImage": ""
+}
+
+}

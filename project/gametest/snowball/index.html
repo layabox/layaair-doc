@@ -1,0 +1,283 @@
+﻿<html>
+<head>
+    <meta charset='utf-8'/>
+    <title>全民打雪球</title>
+    <meta name='viewport'
+          content='width=device-width,initial-scale=1.0,minimum-scale=1.0,maximum-scale=1.0,user-scalable=no'/>
+    <meta name='apple-mobile-web-app-capable' content='yes'/>
+    <meta name='full-screen' content='true'/>
+    <meta name='screen-orientation' content='landscape'/>
+	<meta name="x5-orientation" content="landscape">
+    <meta name='x5-fullscreen' content='true'/>
+    <meta name='360-fullscreen' content='true'/>
+    <meta http-equiv='expires' content='0'/>
+    <meta name='laya' logoimg='logo.png' logobkcolor='#ffffff' screenorientation='landscape' cacheid='fffffffff'/>
+    <meta itemprop='name' content='全民打雪球'/>
+    <meta itemprop='description' content='寻找全球变暖前的童年'/>
+    <meta itemprop='image' content=window.location.protocol + '//client.xq.qq.com/qiu/shareIcon/icon.png'/>
+    <script>
+        window.top == window.self && window.navigator.standalone && (function () {
+            var __href = "" + window.location.href;
+            if (__href.indexOf('?standalone=') < 0) {
+                var ofs = __href.indexOf('?');
+                var mk = '?standalone=' + (new Date()).valueOf() + '&';
+                if (ofs > 0) __href = __href.substr(0, ofs) + mk + __href.substr(ofs + 1);
+                else __href += mk;
+                window.location.href = __href;
+            }
+        })();
+    </script>
+    <script>
+        //;(function(b,f){
+        // var a=document.createElement("script");a.async=true;a.charset="UTF-8";a.src=f;if(!window.conch){var d=document.querySelector("script");d.parentNode.insertBefore(a,d);}var e=[];var c=function(h){if(typeof DCAgent==="undefined"){e.push(arguments)}else{var g=DCAgent[h];if(!g){return console.log("DCAgent."+h+" is undefined")}if(typeof g==="function"){return g.apply(DCAgent,[].slice.call(arguments,1))}else{return g}}};c.loadTime=Date.now();c.cache=e;window[b]=c;window["DCAgentObject"]=b
+        //})("dc", "./js/dcagent.v2.min.js");
+        // 修改为SDK脚本所在路径
+
+        // 初始化
+        //dc('init', {
+        //  // APPID
+        //  appId: 'CD74A57DF109BDFA128D2B822F82FB4EA',
+        //  // 渠道名
+        //  channel: 'wexin'
+        //  // 其他配置参数参考 http://wiki.dataeye.com/h5/document/html5/api.html#init
+        //});
+    </script>
+    <link rel="apple-touch-icon" href="res/desktop/icon.png"/>
+    <style>
+        @-webkit-keyframes square-spin {
+            0% {
+                -webkit-transform: rotate(0)
+            }
+            100% {
+                -webkit-transform: rotate(360deg)
+            }
+        }
+
+        .square {
+            -webkit-animation: square-spin 1.8s 0s linear infinite;
+        }
+        @-webkit-keyframes blink {
+            0% {
+                opacity:0;
+            }
+            100% {
+                opacity:1;
+            }
+        }
+
+        .bl {
+            -webkit-animation: blink 1s 0s linear 1;
+            -webkit-animation-fill-mode: forwards ;
+        }
+    </style>
+</head>
+<body style='margin:0;overflow:none;overflow-x:hidden;overflow-y:hidden;background-color: #206eb0;scroll:no'>
+
+<div id="start"
+     style="width:100%;height:100%;position:absolute;background-color:#206eb0;text-align:center;z-index:1000000;color:#fff;font-size:20px;font-family:'黑体';overflow:hidden">
+    <div id="splash"
+         style="position:absolute;width:1280px;height:720px; transform-origin:0 0;-webkit-transform-origin:0 0;background-color:#ffffff;background-position:center center;background-repeat:no-repeat;background-size:cover;">
+		 <div style="position:absolute;left:50%;top:50%;background-image:url('staticRes/ly.png');background-size:100% 100%;background-repeat:no-repeat;margin-left:-300px;margin-top:-83px;width:600px;height:166px"></div>
+        <div id="xzd"
+             style="opacity:0;position:absolute;width:1280px;height:720px; transform-origin:0 0;-webkit-transform-origin:0 0;background-color:#ffffff;background-image: url('staticRes/ld.jpg');background-position:center center;background-repeat:no-repeat;background-size:cover;">
+        <div id="djs" style='position:absolute;font-size:32px;color:#333333;bottom:80px;text-align:center;width:100%;'>
+            <img class="square" width=32 height=32 style="position: relative;top: 5px;left:8px;"
+                 src="staticRes/sq.png"/>
+            <div id="ditu" style="position:absolute;z-index: -10;background-image: url('staticRes/dt.png');background-repeat: no-repeat;background-size: 100% 100%;width:600px;height: 60px;top:50%;margin-left: -296px;margin-top: -30px;left:50%"></div><span id="TMTEXT" style="color:#ffffff;width:100%;text-algin:center">Start immediately after </span><span id='TIME' style="color:#ffffff;width:20px">8 seconds</span>
+        </div>
+        <div id="notice"
+             style="position:absolute;display:none;left:50%;width:560px;margin-left:-280px;font-size:24px;bottom:180px;color:#fff;text-align:center;">
+        </div>
+    </div>
+    <div id='STARTMSG' style='position:absolute;left:-1000000px'></div>
+</div>
+<script>
+if(!window.conch)
+{
+	document.ontouchmove  = function(e){
+		e.preventDefault() ;
+	}
+	var splash = document.getElementById('splash');
+	function onresize(){
+	    var w=window._width||window.innerWidth;    //screen.width;
+		var h=window._height||window.innerHeight;  //screen.height;
+		if (w<h){
+			var sx=h/1280;
+			var sy=w/720;
+			var s = Math.max(sx,sy);
+			splash.style.left=w+"px";
+			splash.style.top =(h-1280*s)/2+'px';
+			splash.style.transform=splash.style.webkitTransform="rotate(90deg) scale("+s+","+s+")";
+		}else{
+			var sx=w/1280;
+			var sy=h/720;
+			var s = Math.max(sx,sy);//alert('sx:'+sx+',sy:'+sy);
+			splash.style.left=(w-1280*s)/2+'px';
+			splash.style.top=(h-720*s)/2+'px';
+			splash.style.transform=splash.style.webkitTransform="scale("+s+","+s+")";
+		}
+
+	}
+	
+	function orientationChange() {
+
+    switch(window.orientation) {
+    　　case 0: 
+	    case 180:
+	         if(window.innerWidth>window.innerHeight)
+			 {
+			    window._width=window.innerHeight;
+				window._height=window.innerWidth;
+			 }
+            break;
+    　　case -90: 
+         case 90:   
+             if(window.innerWidth<window.innerHeight)
+			 {
+			    window._width=window.innerHeight;
+				window._height=window.innerWidth;
+			 }
+            break;
+
+    }
+	onresize();
+	}
+
+	window.onorientationchange = orientationChange;
+	window.addEventListener('resize', onresize,false);
+	window.addEventListener('load', onresize,false);
+	onresize();
+
+	var tm=8;
+	window.myTimeIndex = tm;
+	function __showTime__()
+	{
+		var time = document.getElementById('TIME');
+		if(!time) return;
+		tm--;
+		var s = '';
+		try{				
+			s += gmr.GetCurrentGame()._clientIsReady? '':'C';
+			s += gmr.GetCurrentGame()._userDataIsReady? '':'U';
+		}catch(e){
+		}
+		if(tm<1)
+		{
+			window.myIndexInfo = "Preparing data";
+			document.getElementById('TMTEXT').innerText="Preparing data"+(s==''?'':'('+s+')');
+			time.style.display="none";
+		}
+		else
+		{
+			time.innerText=""+tm+" seconds";
+			window.myTimeIndex = tm;
+		}
+		setTimeout(__showTime__, 1000);
+	}
+	setTimeout(__showTime__, 1000)
+
+    var _t_m_=60000;
+    function __chkLoadJS__()
+    {
+        var mjs=document.getElementById("mainjs");
+        if(!mjs.isLoaded){
+            alert("网络异常,请刷新页面重试!(js)");
+            window.location.reload();
+            return ;
+        }
+    }
+    setTimeout(__chkLoadJS__, _t_m_);
+
+}
+
+
+
+window._logtimeArray=[];
+window.logtime=function(name){
+	window._logtimeArray.push({name:name,tm:new Date().valueOf()})
+}
+window.alertTimeLog=function(){
+	var s='';
+	for (var i=0;i<window._logtimeArray.length;i++){
+		if (i>0){
+			s += window._logtimeArray[i]['name']+'耗时:'+(window._logtimeArray[i]['tm']-window._logtimeArray[i-1]['tm'])+'ms\n';
+		}
+	}
+	console.log(s);
+}
+logtime('开始计时');
+function makeUri(){
+	var url = [];
+	var search = window.location.search.substr(1);
+	var searchs = search.split('&');
+	url.push(window.location.protocol);
+	url.push('//');
+	url.push(window.location.host);
+	url.push(window.location.pathname);
+	url.push('?');
+	for (var i=0;i<searchs.length;i++){
+		var _param = searchs[i].split('=');
+		if (_param[0]=='token'||_param[0]=='referee') continue;
+		if (_param[0]!='gameid' && _param[0]!='spId') continue;
+		if (i!=0)
+		{
+			url.push('&');
+		}
+		url.push(_param[0]+'='+_param[1]);
+	}
+	return url.join('');
+}
+window.shareObj = {
+	title:'全民打雪球',
+	desc:'寻找全球变暖前的童年,2016原创轻竞技网游！',
+	link:makeUri(),
+	imgUrl:window.location.protocol+'//'+window.location.host+'/shareIcon/icon.png'
+};
+window.resetShareInfo=function(){
+}
+resetShareInfo();
+</script>
+<script>
+    var mainjs = document.createElement("script");
+    mainjs.id="mainjs";
+	var vid="?"+Date.now();
+    if (window.conch ||window.location.href.indexOf("&debug=true")>0) vid="";
+    mainjs.onload = function (){
+        mainjs.isLoaded = true ;
+    }
+    var xzd = document.getElementById('xzd');
+    var op = 0;
+    setTimeout(function(){
+        //xzd.setAttribute('class','bl');
+    },400);
+	mainjs.src = "version.js"+vid;
+    document.body.appendChild(mainjs);
+	if (typeof WeixinJSBridge == "object" && typeof WeixinJSBridge.invoke == "function") {
+　	　handleFontSize();
+　　} else {
+	　　if (document.addEventListener) {
+	　　　　document.addEventListener("WeixinJSBridgeReady", handleFontSize, false);
+	　　} else if (document.attachEvent) {
+	　　　　document.attachEvent("WeixinJSBridgeReady", handleFontSize);
+	　　　　document.attachEvent("onWeixinJSBridgeReady", handleFontSize);
+	　　}
+	}
+	function handleFontSize() {
+		if (window.WeixinJSBridge){
+			　　// 设置网页字体为默认大小
+			　　WeixinJSBridge.invoke('setFontSizeCallback', {
+			　　'fontSize': 0
+			　　});
+
+			　　// 重写设置网页字体大小的事件
+			　　WeixinJSBridge.on('menu:setfont', function () {
+			　　　　WeixinJSBridge.invoke('setFontSizeCallback', {
+			　　　　　　'fontSize': 0
+			　　　　});
+			　　});
+		　}
+	}
+	console.log("weixin://whiteScreenEnd")
+</script>
+</body>
+</html>

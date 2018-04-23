@@ -1,0 +1,13 @@
+{
+"1": {
+	"id": 1,
+	"lbIcon": "cztip1.png",
+	"msg": "限时特惠每日限购1次",
+	"rewardId": [3,90001],
+	"rewardNum": [100,5],
+	"price": 6,
+	"isDayLimit": 1,
+	"endTime": "2018/2/28"
+}
+
+}
