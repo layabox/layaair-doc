@@ -1,4 +1,5 @@
 /ammo.js
+/debug-master.max.js
 /index.html
 /LayaAirSamples.max.html
 /LayaAirSamples.max.js
