@@ -22,7 +22,7 @@
 
 `RadioGroup`组件（单选框按钮组）：radiogroup_xxx；
 
-`VSlider`组件（垂直滑动条）：valider_xxx；
+`VSlider`组件（垂直滑动条）：vslider_xxx；
 
 `HSlider`组件（水平滑动条）：hslider_xxx；
 
