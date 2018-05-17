@@ -1,6 +1,6 @@
 # 用LayaAir引擎解析Tiled Map地图（详解）
 
-> //author@charley
+> author：charley
 >
 
 Tiled Map Editor是一个免费的地图编辑器，可以用来编辑2D游戏地图，LayaAir引擎支持解析Tiled Map导出的地图。本文将介绍如何在LayaAir引擎开发中使用Tiled Map Editor导出的地图。
