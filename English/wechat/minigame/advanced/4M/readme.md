@@ -1,49 +1,49 @@
-# 微信小游戏4M本地包的使用
+# WeChat game 4M local package usage
 
-通常我们开发项目的时候，会直接使用本地路径，比如示例中引用的就是本地路径，
+Usually when we develop projects, we will use the local path directly. For example, the local path referenced in the example.
 
 ```javascript
 Laya.Texture2D.load("res/layabox.png");
 ```
 
-如果项目的目录中，全部大小加起来不超过4M的话，只要能找到本地的资源，怎么写也没问题。
+If the directory size of a project does not exceed 4MB, it will be fine to get local resources.
 
-但是，
+However，
 
-微信小游戏的本地包有4M的限制，一旦超过这个限制，那就不允许上传，不允许真机预览。
+Once this limit is exceeded, no more upload is allowed, and real machine previews is not rendered.
 
-所以，我们的**项目要是大于4M后，怎么处理呢？**
+So what do we do if our **project is larger than 4M?**
 
-要进行资源目录的规划，分为本地加载与网络动态加载，两种模式结合使用。
+We need to plan the resource directory, which is divided into two modes: local loading and network dynamic loading.
 
-本地加载的规划里，我们除了入口文件和必用的配置文件外，只放一些预加载必用的素材，比如加载进度（Loading）页用到的背景与图形等。总之，就是不能超过4M。
+In the local loading plan, we only put some preloaded and necessary materials, such as the background and graphics used by the Loading page, in addition to the entry files and the necessary configuration files. In a word, it is not more than 4M.
 
-> Tips：需要提醒注意的是微信小游戏不允许动态加载创建JS，所以，JS必须要放在4M包里，也就是说JS加上基础配置文件必须要小于4M，项目适配时如果超过4M，要进行优化控制。
+> Tips：It should be noted that the WeChat game does not allow JS to be dynamically loaded. Therefore, the JS must be placed in the 4M package. That is, the JS plus the basic configuration file must be less than 4M. should be optimized / minify.
 
 
 
-**网络动态加载的路径怎么处理呢**。在本地加载的`load()`方法之后使用`URL.basePath`方法。
+**How to handle the dynamic loading of the network**。Loaded locally with `load()` after the use of the method `URL.basePath` .
 
-例如：
+By example:
 
 ```javascript
 material.diffuseTexture = Laya.Texture2D.load("res/layabox.png");
 box.meshRender.material = material;
-Laya.URL.basePath = "https://XXXX.com";//请把XXXX换成自己的真实网址；
-//在此之下，再使用load加载资源，都会自动加入URL网址。从网络上动态加载。
+Laya.URL.basePath = "https://XXXX.com";//Please change XXXX to your real Web site :
+//Under this, use load function resource again. URL will be add automatically. Dynamic loading from the network.
 ```
 
-使用`URL.basePath`方法后，再使用load加载本地路径，都会自动加上URL.basePath里的网址。这样就实现了本地与网络加载的结合。
+call `URL.basePath` method then, then use load function to get the local path. All will be fill automatically URL.basePath in it. This realizes the combination of local and network loading.。
 
 
 
-**这样就结束了吗？并没有！**
+**Have we mentionned all things ? not yet !**
 
-按刚刚的写法，`res/layabox.png`明明已经上传到微信小游戏的本地目录，但是如果在使用`URL.basePath`之后，再次加载`res/layabox.png`并不会从本地加载使用，而是从网络动态加载使用。这并不是我们要的结果。
+According to the just writing method, `res/layabox.png` obviously, it has been uploaded to the local directory of WeChat game. But if you are using `URL.basePath` after that, load again `res/layabox.png` It will not be loaded from the local use, but loaded dynamically from the network. This is not the result we want.
 
 
 
-所以，引擎针对使用`URL.basePath`之后，如何再次使用本地加载，进行了**特殊目录和文件的处理**，也就是本地包白名单机制。如下例所示：
+So, the engine uses `URL.basePath`. After that, how to use local load again，Carry out **Handling of special catalogues and files**, That is the local packet whitelist mechanism. As shown in the following examples :
 
 ```javascript
 MiniAdpter.nativefiles =  [
@@ -57,4 +57,4 @@ MiniAdpter.nativefiles =  [
 ];
 ```
 
-**只要是MiniAdpter.nativefiles里存在的目录名或文件，引擎会自动将该目录视为本地目录**，即便使用了URL.basePath，对于包含在nativefiles白名单内的目录名或文件，都不会从网络动态加载，只会从本地加载。
+**As long as it is MiniAdpter.nativefiles a directory name or file that exists in it, the engine will automatically consider the directory as a local directory**. Even with the use of URL.basePath, For directory names or files that are included in the nativefiles whitelist.Will not load dynamically from the network, will only load from the local.

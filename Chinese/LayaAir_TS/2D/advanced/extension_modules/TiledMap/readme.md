@@ -1,4 +1,6 @@
-# 用LayaAir引擎解析Tiled Map地图
+# 用LayaAir引擎解析Tiled Map地图（详解）
+
+> author：charley
 
 Tiled Map Editor是一个免费的地图编辑器，可以用来编辑2D游戏地图，LayaAir引擎支持解析Tiled Map导出的地图。本文将介绍如何在LayaAir引擎开发中使用Tiled Map Editor导出的地图。
 
@@ -8,31 +10,37 @@ Tiled Map Editor是一个免费的地图编辑器，可以用来编辑2D游戏�
 
 
 
-## 1、导出Tiled Map地图
+## 1、导出引擎支持的Tiled Map地图
 
 ### 1.1 Tiled Map Editor下载安装
 
 打开官方首页（[http://www.mapeditor.org/](http://www.mapeditor.org/)）后，直接点击`DownLoad at itch.io`按钮进入下载链接（[https://thorbjorn.itch.io/tiled](https://thorbjorn.itch.io/tiled)）。如果官网改版，也可以直接从下载页[http://www.mapeditor.org/download.html](http://www.mapeditor.org/download.html)找到下载链接。
 
-找到对应的系统版本链接，下载安装即可，(*本篇文档采用的版本为Tiled 1.0.1*)。
+找到对应的系统版本链接，下载安装即可，(*本篇文档采用的版本为Tiled 1.1.5* )。
 
 **Tips**：
 
 *打开下载会弹出赞助该软件的付费页面，如果不想付费，可以直接点击 No thanks, just take me to the downloads，会带你进入一个免费下载的链接。*
 
+*如果官网的版本有问题了，github`https://github.com/layabox/layaair-doc`里有一份64位windows版的Tiled 1.1.5* 。
 
 
-### 1.2 	新建与导出Tiled Map地图的格式
 
-#### 1.2.1 图块层格式的要求
+### 1.2 	导出引擎支持的Tiled Map地图格式
 
-LayaAir引擎不支持Tiled Map地图为Base64的图块层格式。所以在`创建`新地图时必须为`CSV格式`，如图1所示。
+Tiled Map工具的具体使用方式，本文不多讲，可以自行在百度或谷歌中搜索相关教程文档。和引擎有莫大关系的是格式。需要开发者特别注意，一般出问题都是在这里没有注意。
+
+#### 1.2.1 创建地图时，对图块层格式的要求
+
+点击新建地图，设置好地图大小和块大小等初始参数后，点击另存为，存在你指定的位置即完成了创建。
+
+然而，图块层格式需要特别注意，由于**LayaAir引擎不支持Tiled Map地图为Base64的图块层格式。**所以在`创建`新地图时**必须**为`CSV格式`，如图1所示。
 
 ![图1](img/1.png) 
 
 （图1）
 
-如果创建的时候选错了，可以在属性面板里，将`图块层格式`改为CSV或者是XML，如图2所示，Base64相关的格式都不支持。
+**如果创建的时候选错了**，也可以在属性面板里，将`图块层格式`**改为CSV或者是XML**，如图2所示，**Base64相关的格式都不支持。**
 
 ![图2](img/2.png) 
 
@@ -40,25 +48,37 @@ LayaAir引擎不支持Tiled Map地图为Base64的图块层格式。所以在`创
 
 #### 1.2.2  导出为json格式
 
-在导出的时候，我们要选择json的格式。本例中，我们直接打开Tiled Map的示例地图orthogonal-outside.tmx（*位于Tiled Map地图安装目录的 examples目录下*）然后命名为orthogonal.json，保存到项目目录内（本例为`项目根目录\bin\h5\res\TiledMap\`），如图3所示。
+本例中，我们直接打开Tiled Map的示例地图orthogonal-outside.tmx（*位于Tiled Map地图安装目录的 examples目录下*）
+
+##### 在导出的时候，我们要选择json的格式。
+
+在Tiled工具的`文件`菜单里，点击`另存为`，将已完成的Tiled地图，另存为json文件类型，本例命名为orthogonal.json（文件名开发者随意，后面保持一致即可），点击`保存`，存到**项目目录内**（本例为`项目根目录\bin\h5\res\TiledMap\`），如图3所示。
 
 ![图3](img/3.png) 
 
 (图3)
 
-### 1.3 修改图集路径
+### 1.3 修改图集路径和复制Tiled资源
 
-打开刚刚保存的`orthogonal.json`，搜索关键字`"image"`我们会发现默认的image路径位于Tiled安装目录中(路径前边遮挡的是TiledMap的安装路径)。如图4所示。
+##### 只是存为json文件还不够，我们还要更改image绝对路径为相对路径。
+
+我们通过IDE，打开刚刚保存的`orthogonal.json`，搜索关键字`"image"`我们会发现默认的image路径位于Tiled安装目录中。如图4所示。
 
 ![图4](img/4.png) 
 
-(图4)路径在Tiled安装目录中肯定是不行的，所以，我们需要先将这个图片(*buch-outdoor.png*)复制到项目目录，与之前保存的`orthogonal.json`同级，如图5所示。
+(图4)
+
+##### 路径在Tiled安装目录中肯定是不行的，
+
+所以，我们需要先**将这个图片(*buch-outdoor.png*)复制到项目目录**，与之前保存的`orthogonal.json`同级，
+
+如图5所示。
 
 ![图5](img/5.png) 
 
-(图5)
+##### (图5)
 
-然后将orthogonal.json中的`image`路径修改为相对路径`"image":"buch-outdoor.png",`
+然后将orthogonal.json中的`image`**路径修改为相对路径**`"image":"buch-outdoor.png",`
 
 准备阶段结束，下面开始步入编码阶段……
 

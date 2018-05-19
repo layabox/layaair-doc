@@ -1,0 +1,32 @@
+{
+	"version":"LAYAMATERIAL:01",
+	"props":{
+		"name":"paoyan",
+		"shaderName":"SIMPLE",
+		"cull":0,
+		"blend":1,
+		"srcBlend":770,
+		"dstBlend":771,
+		"alphaTest":false,
+		"depthWrite":false,
+		"renderQueue":2,
+		"textures":[
+			{
+				"name":"diffuseTexture",
+				"path":"../moxing/c08a23a4cd19938478d9096f2e337547.png"
+			}
+		],
+		"vectors":[
+			{
+				"name":"tintColor",
+				"value":[
+					0.3014706,
+					0.3014706,
+					0.3014706,
+					0.547
+				]
+			}
+		],
+		"defines":[]
+	}
+}

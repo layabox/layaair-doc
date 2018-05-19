@@ -1,0 +1,242 @@
+{
+"61001": {
+	"id": 61001,
+	"bid":320,
+	"time": 504,
+	"speed": 0.576,
+	"bomArea": 0,
+	"delay":0,
+	"interval":5000,
+	"singleAckScale": [0.9],
+	"shootOffset":0
+}
+,
+"62001": {
+	"id": 62001,
+	"bid":332,
+	"time": 106,
+	"speed": 0,
+	"bomArea": 169,
+	"delay":0,
+	"interval":5000,
+	"singleAckScale": [1.25],
+	"shootOffset":0
+}
+,
+"43001": {
+	"id": 43001,
+	"bid":322,
+	"time": 434,
+	"speed": 0.552,
+	"bomArea": 0,
+	"delay":0,
+	"interval":5000,
+	"singleAckScale": [0.65],
+	"shootOffset":40
+}
+,
+"48001": {
+	"id": 48001,
+	"bid":329,
+	"time": 340,
+	"speed": 0.55,
+	"bomArea": 150,
+	"delay":0,
+	"interval":5000,
+	"singleAckScale": [1.2],
+	"shootOffset":0
+}
+,
+"46001": {
+	"id": 46001,
+	"bid":309,
+	"time": 500,
+	"speed": 0.43,
+	"bomArea": 100,
+	"delay":0,
+	"interval":5000,
+	"singleAckScale": [0.65],
+	"shootOffset":40
+}
+,
+"36001": {
+	"id": 36001,
+	"bid":323,
+	"time": 400,
+	"speed": 0.48,
+	"bomArea": 0,
+	"delay":0,
+	"interval":5000,
+	"singleAckScale": [0.75],
+	"shootOffset":40
+}
+,
+"57001": {
+	"id": 57001,
+	"bid":300,
+	"time": 500,
+	"speed": 0.68,
+	"bomArea": 0,
+	"delay":0,
+	"interval":5000,
+	"singleAckScale": [1.5],
+	"shootOffset":40
+}
+,
+"110001": {
+	"id": 110001,
+	"bid":309,
+	"time": 500,
+	"speed": 0.43,
+	"bomArea": 100,
+	"delay":0,
+	"interval":5000,
+	"singleAckScale": [0.8],
+	"shootOffset":40
+}
+,
+"52001": {
+	"id": 52001,
+	"bid":331,
+	"time": 400,
+	"speed": 0.55,
+	"bomArea": 0,
+	"delay":0,
+	"interval":5000,
+	"singleAckScale": [0.8],
+	"shootOffset":40
+}
+,
+"65001": {
+	"id": 65001,
+	"bid":305,
+	"time": 900,
+	"speed": 1.2,
+	"bomArea": 0,
+	"delay":0,
+	"interval":5000,
+	"singleAckScale": [2.8],
+	"shootOffset":40
+}
+,
+"47001": {
+	"id": 47001,
+	"bid":327,
+	"time": 1000,
+	"speed": 0,
+	"bomArea": 100,
+	"delay":0,
+	"interval":200,
+	"singleAckScale": [0.21],
+	"shootOffset":75
+}
+,
+"33001": {
+	"id": 33001,
+	"bid":330,
+	"time": 1,
+	"speed": 0,
+	"bomArea": 400,
+	"delay":0,
+	"interval":5000,
+	"singleAckScale": [2.2],
+	"shootOffset":0
+}
+,
+"64001": {
+	"id": 64001,
+	"bid":321,
+	"time": 2000,
+	"speed": 0,
+	"bomArea": 200,
+	"delay":0,
+	"interval":500,
+	"singleAckScale": [0.24],
+	"shootOffset":0
+}
+,
+"51001": {
+	"id": 51001,
+	"bid":319,
+	"time": 500,
+	"speed": 0,
+	"bomArea": 240,
+	"delay":0,
+	"interval":5000,
+	"singleAckScale": [1.95],
+	"shootOffset":0
+}
+,
+"53001": {
+	"id": 53001,
+	"bid":317,
+	"time": 1000,
+	"speed": 0,
+	"bomArea": 150,
+	"delay":0,
+	"interval":250,
+	"singleAckScale": [0.125],
+	"shootOffset":0
+}
+,
+"49001": {
+	"id": 49001,
+	"bid":328,
+	"time": 1000,
+	"speed": 0,
+	"bomArea": 240,
+	"delay":900,
+	"interval":5000,
+	"singleAckScale": [1.2],
+	"shootOffset":0
+}
+,
+"58001": {
+	"id": 58001,
+	"bid":325,
+	"time": 1,
+	"speed": 1,
+	"bomArea": 150,
+	"delay":0,
+	"interval":5000,
+	"singleAckScale": [1.1],
+	"shootOffset":75
+}
+,
+"67001": {
+	"id": 67001,
+	"bid":326,
+	"time": 2000,
+	"speed": 0,
+	"bomArea": 360,
+	"delay":0,
+	"interval":500,
+	"singleAckScale": [0.825],
+	"shootOffset":0
+}
+,
+"280001": {
+	"id": 280001,
+	"bid":313,
+	"time": 1000,
+	"speed": 0,
+	"bomArea": 640,
+	"delay":500,
+	"interval":100,
+	"singleAckScale": [1],
+	"shootOffset":0
+}
+,
+"7": {
+	"id": 7,
+	"bid":314,
+	"time": 450,
+	"speed": 0.42,
+	"bomArea": 0,
+	"delay":0,
+	"interval":5000,
+	"singleAckScale": [0.65],
+	"shootOffset":0
+}
+
+}

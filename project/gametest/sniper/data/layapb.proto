@@ -1,0 +1,16 @@
+package data;
+syntax = "proto3";
+
+message NetMessage{
+	fixed32 length=1;
+	fixed32 commandId=2;
+	fixed32 extend=3;
+	fixed32 dataSize=4;
+	bytes data=5;
+}
+
+message DataChangeMsg{
+  uint32 type = 1;
+  string sheetName = 2;
+}
+

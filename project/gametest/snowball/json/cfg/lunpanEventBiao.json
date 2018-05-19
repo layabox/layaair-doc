@@ -1,0 +1,479 @@
+{
+"0":{
+	"id": 0,
+	"et1": 0,
+	"et2": 0,
+	"comPro": [],
+	"msg": "此id表示空格子",
+	"imgUrl": "wheel/gezi_0.png"
+}
+,
+"1":{
+	"id": 1,
+	"et1": 0,
+	"et2": 0,
+	"comPro": [],
+	"msg": "此id表示起点",
+	"imgUrl": "wheel/gezi_1.png"
+}
+,
+"2":{
+	"id": 2,
+	"et1": 0,
+	"et2": 0,
+	"comPro": [],
+	"msg": "此id表示终点",
+	"imgUrl": "wheel/gezi_2.png"
+}
+,
+"3":{
+	"id": 3,
+	"et1": 1,
+	"et2": 1,
+	"comPro": [2.5],
+	"msg": "自由战",
+	"imgUrl": "wheel/gezi_3.png"
+}
+,
+"4":{
+	"id": 4,
+	"et1": 1,
+	"et2": 2,
+	"comPro": [2.5],
+	"msg": "团战",
+	"imgUrl": "wheel/gezi_3.png"
+}
+,
+"5":{
+	"id": 5,
+	"et1": 1,
+	"et2": 3,
+	"comPro": [2.5],
+	"msg": "友谊战",
+	"imgUrl": "wheel/gezi_3.png"
+}
+,
+"6":{
+	"id": 6,
+	"et1": 2,
+	"et2": 10,
+	"comPro": [3,100],
+	"msg": "获得金币",
+	"imgUrl": "wheel/gezi_4.png"
+}
+,
+"7":{
+	"id": 7,
+	"et1": 2,
+	"et2": 11,
+	"comPro": [6001,1],
+	"msg": "获得物品",
+	"imgUrl": "wheel/gezi_4.png"
+}
+,
+"8":{
+	"id": 8,
+	"et1": 3,
+	"et2": 4,
+	"comPro": [],
+	"msg": "邀请好友",
+	"imgUrl": "wheel/gezi_4.png"
+}
+,
+"9":{
+	"id": 9,
+	"et1": 3,
+	"et2": 5,
+	"comPro": [94008,3,94010,3,94014,3],
+	"msg": "分享游戏",
+	"imgUrl": "wheel/gezi_4.png"
+}
+,
+"10":{
+	"id": 10,
+	"et1": 4,
+	"et2": 6,
+	"comPro": [1],
+	"msg": "骰子+n",
+	"imgUrl": "wheel/gezi_4.png"
+}
+,
+"11":{
+	"id": 11,
+	"et1": 4,
+	"et2": 6,
+	"comPro": [2],
+	"msg": "骰子+n",
+	"imgUrl": "wheel/gezi_4.png"
+}
+,
+"12":{
+	"id": 12,
+	"et1": 4,
+	"et2": 6,
+	"comPro": [3],
+	"msg": "骰子+n",
+	"imgUrl": "wheel/gezi_4.png"
+}
+,
+"13":{
+	"id": 13,
+	"et1": 4,
+	"et2": 6,
+	"comPro": [4],
+	"msg": "骰子+n",
+	"imgUrl": "wheel/gezi_4.png"
+}
+,
+"14":{
+	"id": 14,
+	"et1": 4,
+	"et2": 6,
+	"comPro": [5],
+	"msg": "骰子+n",
+	"imgUrl": "wheel/gezi_4.png"
+}
+,
+"15":{
+	"id": 15,
+	"et1": 4,
+	"et2": 6,
+	"comPro": [6],
+	"msg": "骰子+n",
+	"imgUrl": "wheel/gezi_4.png"
+}
+,
+"16":{
+	"id": 16,
+	"et1": 4,
+	"et2": 6,
+	"comPro": [7],
+	"msg": "骰子+n",
+	"imgUrl": "wheel/gezi_4.png"
+}
+,
+"17":{
+	"id": 17,
+	"et1": 4,
+	"et2": 6,
+	"comPro": [8],
+	"msg": "骰子+n",
+	"imgUrl": "wheel/gezi_4.png"
+}
+,
+"18":{
+	"id": 18,
+	"et1": 4,
+	"et2": 6,
+	"comPro": [9],
+	"msg": "骰子+n",
+	"imgUrl": "wheel/gezi_4.png"
+}
+,
+"19":{
+	"id": 19,
+	"et1": 4,
+	"et2": 7,
+	"comPro": [1],
+	"msg": "倒退n格",
+	"imgUrl": "wheel/gezi_4.png"
+}
+,
+"20":{
+	"id": 20,
+	"et1": 4,
+	"et2": 7,
+	"comPro": [2],
+	"msg": "倒退n格",
+	"imgUrl": "wheel/gezi_4.png"
+}
+,
+"21":{
+	"id": 21,
+	"et1": 4,
+	"et2": 7,
+	"comPro": [3],
+	"msg": "倒退n格",
+	"imgUrl": "wheel/gezi_4.png"
+}
+,
+"22":{
+	"id": 22,
+	"et1": 4,
+	"et2": 7,
+	"comPro": [4],
+	"msg": "倒退n格",
+	"imgUrl": "wheel/gezi_4.png"
+}
+,
+"23":{
+	"id": 23,
+	"et1": 4,
+	"et2": 7,
+	"comPro": [5],
+	"msg": "倒退n格",
+	"imgUrl": "wheel/gezi_4.png"
+}
+,
+"24":{
+	"id": 24,
+	"et1": 4,
+	"et2": 7,
+	"comPro": [6],
+	"msg": "倒退n格",
+	"imgUrl": "wheel/gezi_4.png"
+}
+,
+"25":{
+	"id": 25,
+	"et1": 4,
+	"et2": 7,
+	"comPro": [7],
+	"msg": "倒退n格",
+	"imgUrl": "wheel/gezi_4.png"
+}
+,
+"26":{
+	"id": 26,
+	"et1": 4,
+	"et2": 7,
+	"comPro": [8],
+	"msg": "倒退n格",
+	"imgUrl": "wheel/gezi_4.png"
+}
+,
+"27":{
+	"id": 27,
+	"et1": 4,
+	"et2": 8,
+	"comPro": [1],
+	"msg": "前进n格",
+	"imgUrl": "wheel/gezi_4.png"
+}
+,
+"28":{
+	"id": 28,
+	"et1": 4,
+	"et2": 8,
+	"comPro": [2],
+	"msg": "前进n格",
+	"imgUrl": "wheel/gezi_4.png"
+}
+,
+"29":{
+	"id": 29,
+	"et1": 4,
+	"et2": 8,
+	"comPro": [3],
+	"msg": "前进n格",
+	"imgUrl": "wheel/gezi_4.png"
+}
+,
+"30":{
+	"id": 30,
+	"et1": 4,
+	"et2": 8,
+	"comPro": [4],
+	"msg": "前进n格",
+	"imgUrl": "wheel/gezi_4.png"
+}
+,
+"31":{
+	"id": 31,
+	"et1": 4,
+	"et2": 8,
+	"comPro": [5],
+	"msg": "前进n格",
+	"imgUrl": "wheel/gezi_4.png"
+}
+,
+"32":{
+	"id": 32,
+	"et1": 4,
+	"et2": 8,
+	"comPro": [6],
+	"msg": "前进n格",
+	"imgUrl": "wheel/gezi_4.png"
+}
+,
+"33":{
+	"id": 33,
+	"et1": 4,
+	"et2": 8,
+	"comPro": [7],
+	"msg": "前进n格",
+	"imgUrl": "wheel/gezi_4.png"
+}
+,
+"34":{
+	"id": 34,
+	"et1": 4,
+	"et2": 8,
+	"comPro": [8],
+	"msg": "前进n格",
+	"imgUrl": "wheel/gezi_4.png"
+}
+,
+"35":{
+	"id": 35,
+	"et1": 4,
+	"et2": 8,
+	"comPro": [9],
+	"msg": "前进n格",
+	"imgUrl": "wheel/gezi_4.png"
+}
+,
+"36":{
+	"id": 36,
+	"et1": 4,
+	"et2": 9,
+	"comPro": [],
+	"msg": "返回起点",
+	"imgUrl": "wheel/gezi_1.png"
+}
+,
+"37":{
+	"id": 37,
+	"et1": 2,
+	"et2": 11,
+	"comPro": [94010,2],
+	"msg": "闪现碎片2",
+	"imgUrl": "wheel/gezi_4.png"
+}
+,
+"38":{
+	"id": 38,
+	"et1": 2,
+	"et2": 11,
+	"comPro": [94010,3],
+	"msg": "闪现碎片3",
+	"imgUrl": "wheel/gezi_4.png"
+}
+,
+"39":{
+	"id": 39,
+	"et1": 2,
+	"et2": 11,
+	"comPro": [94010,4],
+	"msg": "闪现碎片4",
+	"imgUrl": "wheel/gezi_4.png"
+}
+,
+"40":{
+	"id": 40,
+	"et1": 2,
+	"et2": 11,
+	"comPro": [94014,2],
+	"msg": "幽灵碎片2",
+	"imgUrl": "wheel/gezi_4.png"
+}
+,
+"41":{
+	"id": 41,
+	"et1": 2,
+	"et2": 11,
+	"comPro": [94014,3],
+	"msg": "幽灵碎片3",
+	"imgUrl": "wheel/gezi_4.png"
+}
+,
+"42":{
+	"id": 42,
+	"et1": 2,
+	"et2": 11,
+	"comPro": [94014,4],
+	"msg": "幽灵碎片4",
+	"imgUrl": "wheel/gezi_4.png"
+}
+,
+"43":{
+	"id": 43,
+	"et1": 2,
+	"et2": 11,
+	"comPro": [94008,2],
+	"msg": "护盾碎片2",
+	"imgUrl": "wheel/gezi_4.png"
+}
+,
+"44":{
+	"id": 44,
+	"et1": 2,
+	"et2": 11,
+	"comPro": [94008,3],
+	"msg": "护盾碎片3",
+	"imgUrl": "wheel/gezi_4.png"
+}
+,
+"45":{
+	"id": 45,
+	"et1": 2,
+	"et2": 11,
+	"comPro": [94008,4],
+	"msg": "护盾碎片4",
+	"imgUrl": "wheel/gezi_4.png"
+}
+,
+"46":{
+	"id": 46,
+	"et1": 2,
+	"et2": 10,
+	"comPro": [3,58],
+	"msg": "金币58",
+	"imgUrl": "wheel/gezi_4.png"
+}
+,
+"47":{
+	"id": 47,
+	"et1": 2,
+	"et2": 10,
+	"comPro": [3,88],
+	"msg": "金币88",
+	"imgUrl": "wheel/gezi_4.png"
+}
+,
+"48":{
+	"id": 48,
+	"et1": 2,
+	"et2": 10,
+	"comPro": [3,188],
+	"msg": "金币188",
+	"imgUrl": "wheel/gezi_4.png"
+}
+,
+"49":{
+	"id": 49,
+	"et1": 2,
+	"et2": 11,
+	"comPro": [94001,1],
+	"msg": "深海冰晶",
+	"imgUrl": "wheel/gezi_4.png"
+}
+,
+"50":{
+	"id": 50,
+	"et1": 2,
+	"et2": 12,
+	"comPro": [1,10],
+	"msg": "钻石10",
+	"imgUrl": "wheel/gezi_4.png"
+}
+,
+"51":{
+	"id": 51,
+	"et1": 2,
+	"et2": 12,
+	"comPro": [1,20],
+	"msg": "钻石20",
+	"imgUrl": "wheel/gezi_4.png"
+}
+,
+"52":{
+	"id": 52,
+	"et1": 2,
+	"et2": 11,
+	"comPro": [94008,3,94010,3,94014,3],
+	"msg": "xjbp",
+	"imgUrl": "wheel/gezi_4.png"
+}
+
+}

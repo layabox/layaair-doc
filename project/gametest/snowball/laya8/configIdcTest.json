@@ -1,0 +1,58 @@
+{
+  "roomListMode": 0,
+  "defaultRoomListType": 0,
+  "layaMarketOpenId": "10404",
+  "layaMarketOpenKey": "ae4fd3bd4156116d17610cdca712962e",
+  "layaMarketRelatedId": {"308":845,"337":1180,"303":1181},
+  "routerAddr":{"ip":"fkxq.qq.com","port":12292},
+  "signSite":"//test.config.hall.fkxq.laya8.com/",
+"banUnionIdList":["-103","-104"],
+"isEmbeddedMode":1,
+  "customUI": {
+     "login": {
+      "ui": "Login.ui",
+      "res": [ 
+        {"url":"common.json","type":"atlas"},
+        {"url":"login.json","type":"atlas"},
+        {"url":"login/bg.png","type":"image"}
+      ]
+    },
+    "reg": {
+      "ui": "Reg.ui",
+      "res": [ 
+        {"url":"common.json","type":"atlas"},
+        {"url":"login.json","type":"atlas"},
+        {"url":"reg.json","type":"atlas"},
+        {"url":"login/bg.png","type":"image"}
+      ]
+    },
+    "messagebox": {
+      "ui": "MessageBox.ui",
+      "res": [ 
+	{"url":"MessageBox/MessageBox.atlas","type":"atlas"},
+	{"url":"MessageBox/loginBG1.jpg","type":"image"}
+      ]
+    },
+    "login_qb":{
+        "ui":"chooselogin.ui",
+        "res":[
+            {"url":"chooselogin/chooselogin.atlas","type":"atlas"},
+            {"url":"chooselogin/bj.jpg","type":"image"}
+        ]
+    }
+  },
+  "roomTypeList": [
+    {
+      "id": 1,
+      "name": "自由模式"
+    },
+    {
+      "id": 2,
+      "name": "组队模式"
+    },
+    {
+      "id": 3,
+      "name": "新手模式"
+    }
+  ]
+}

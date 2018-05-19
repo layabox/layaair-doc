@@ -1,0 +1,352 @@
+{
+	"1": {
+		"ID": 1,
+		"type": 0,
+		"skillID": 3,
+		"probability": 10,
+		"minimumLevel": 1,
+		"accumulate": 1,
+		"conflictSkills": "",
+		"heroType": 1,
+		"frontSkill": 0
+	},	"2": {
+		"ID": 2,
+		"type": 0,
+		"skillID": 4,
+		"probability": 10,
+		"minimumLevel": 1,
+		"accumulate": 3,
+		"conflictSkills": "",
+		"heroType": 1,
+		"frontSkill": 0
+	},	"3": {
+		"ID": 3,
+		"type": 0,
+		"skillID": 6,
+		"probability": 10,
+		"minimumLevel": 1,
+		"accumulate": 3,
+		"conflictSkills": "",
+		"heroType": 1,
+		"frontSkill": 0
+	},	"4": {
+		"ID": 4,
+		"type": 0,
+		"skillID": 7,
+		"probability": 10,
+		"minimumLevel": 1,
+		"accumulate": 2,
+		"conflictSkills": "",
+		"heroType": 1,
+		"frontSkill": 0
+	},	"5": {
+		"ID": 5,
+		"type": 0,
+		"skillID": 8,
+		"probability": 10,
+		"minimumLevel": 1,
+		"accumulate": 2,
+		"conflictSkills": "",
+		"heroType": 1,
+		"frontSkill": 0
+	},	"6": {
+		"ID": 6,
+		"type": 0,
+		"skillID": 9,
+		"probability": 10,
+		"minimumLevel": 1,
+		"accumulate": 2,
+		"conflictSkills": "",
+		"heroType": 1,
+		"frontSkill": 0
+	},	"7": {
+		"ID": 7,
+		"type": 0,
+		"skillID": 11,
+		"probability": 10,
+		"minimumLevel": 1,
+		"accumulate": 2,
+		"conflictSkills": "",
+		"heroType": 2,
+		"frontSkill": 0
+	},	"8": {
+		"ID": 8,
+		"type": 0,
+		"skillID": 12,
+		"probability": 10,
+		"minimumLevel": 1,
+		"accumulate": 2,
+		"conflictSkills": "",
+		"heroType": 2,
+		"frontSkill": 0
+	},	"9": {
+		"ID": 9,
+		"type": 0,
+		"skillID": 13,
+		"probability": 10,
+		"minimumLevel": 1,
+		"accumulate": 2,
+		"conflictSkills": "",
+		"heroType": 2,
+		"frontSkill": 0
+	},	"10": {
+		"ID": 10,
+		"type": 0,
+		"skillID": 14,
+		"probability": 10,
+		"minimumLevel": 1,
+		"accumulate": 2,
+		"conflictSkills": "",
+		"heroType": 2,
+		"frontSkill": 0
+	},	"11": {
+		"ID": 11,
+		"type": 0,
+		"skillID": 15,
+		"probability": 10,
+		"minimumLevel": 1,
+		"accumulate": 2,
+		"conflictSkills": "",
+		"heroType": 2,
+		"frontSkill": 0
+	},	"12": {
+		"ID": 12,
+		"type": 2,
+		"skillID": 17,
+		"probability": 10,
+		"minimumLevel": 1,
+		"accumulate": 3,
+		"conflictSkills": "",
+		"heroType": 3,
+		"frontSkill": 0
+	},	"13": {
+		"ID": 13,
+		"type": 2,
+		"skillID": 18,
+		"probability": 10,
+		"minimumLevel": 1,
+		"accumulate": 3,
+		"conflictSkills": "",
+		"heroType": 3,
+		"frontSkill": 0
+	},	"14": {
+		"ID": 14,
+		"type": 2,
+		"skillID": 19,
+		"probability": 10,
+		"minimumLevel": 1,
+		"accumulate": 2,
+		"conflictSkills": "",
+		"heroType": 3,
+		"frontSkill": 0
+	},	"15": {
+		"ID": 15,
+		"type": 0,
+		"skillID": 20,
+		"probability": 0,
+		"minimumLevel": 1,
+		"accumulate": 1,
+		"conflictSkills": "",
+		"heroType": 3,
+		"frontSkill": 0
+	},	"16": {
+		"ID": 16,
+		"type": 2,
+		"skillID": 21,
+		"probability": 10,
+		"minimumLevel": 1,
+		"accumulate": 2,
+		"conflictSkills": "",
+		"heroType": 3,
+		"frontSkill": 0
+	},	"17": {
+		"ID": 17,
+		"type": 0,
+		"skillID": 23,
+		"probability": 10,
+		"minimumLevel": 1,
+		"accumulate": 2,
+		"conflictSkills": "",
+		"heroType": 4,
+		"frontSkill": 0
+	},	"18": {
+		"ID": 18,
+		"type": 5,
+		"skillID": 24,
+		"probability": 10,
+		"minimumLevel": 1,
+		"accumulate": 2,
+		"conflictSkills": "",
+		"heroType": 4,
+		"frontSkill": 23
+	},	"19": {
+		"ID": 19,
+		"type": 0,
+		"skillID": 25,
+		"probability": 0,
+		"minimumLevel": 1,
+		"accumulate": 2,
+		"conflictSkills": "",
+		"heroType": 4,
+		"frontSkill": 0
+	},	"20": {
+		"ID": 20,
+		"type": 3,
+		"skillID": 26,
+		"probability": 10,
+		"minimumLevel": 1,
+		"accumulate": 2,
+		"conflictSkills": "",
+		"heroType": 4,
+		"frontSkill": 0
+	},	"21": {
+		"ID": 21,
+		"type": 0,
+		"skillID": 27,
+		"probability": 10,
+		"minimumLevel": 1,
+		"accumulate": 3,
+		"conflictSkills": "",
+		"heroType": 4,
+		"frontSkill": 0
+	},	"22": {
+		"ID": 22,
+		"type": 0,
+		"skillID": 29,
+		"probability": 10,
+		"minimumLevel": 1,
+		"accumulate": 2,
+		"conflictSkills": "",
+		"heroType": 1,
+		"frontSkill": 0
+	},	"23": {
+		"ID": 23,
+		"type": 0,
+		"skillID": 30,
+		"probability": 10,
+		"minimumLevel": 1,
+		"accumulate": 1,
+		"conflictSkills": "",
+		"heroType": 2,
+		"frontSkill": 0
+	},	"24": {
+		"ID": 24,
+		"type": 0,
+		"skillID": 32,
+		"probability": 10,
+		"minimumLevel": 1,
+		"accumulate": 2,
+		"conflictSkills": "",
+		"heroType": 2,
+		"frontSkill": 0
+	},	"25": {
+		"ID": 25,
+		"type": 5,
+		"skillID": 37,
+		"probability": 10,
+		"minimumLevel": 1,
+		"accumulate": 1,
+		"conflictSkills": "",
+		"heroType": 3,
+		"frontSkill": 0
+	},	"26": {
+		"ID": 26,
+		"type": 1,
+		"skillID": 39,
+		"probability": 10,
+		"minimumLevel": 1,
+		"accumulate": 2,
+		"conflictSkills": "",
+		"heroType": 3,
+		"frontSkill": 0
+	},	"27": {
+		"ID": 27,
+		"type": 1,
+		"skillID": 40,
+		"probability": 10,
+		"minimumLevel": 1,
+		"accumulate": 2,
+		"conflictSkills": "",
+		"heroType": 3,
+		"frontSkill": 0
+	},	"28": {
+		"ID": 28,
+		"type": 1,
+		"skillID": 41,
+		"probability": 10,
+		"minimumLevel": 1,
+		"accumulate": 2,
+		"conflictSkills": "",
+		"heroType": 3,
+		"frontSkill": 0
+	},	"29": {
+		"ID": 29,
+		"type": 3,
+		"skillID": 54,
+		"probability": 10,
+		"minimumLevel": 1,
+		"accumulate": 1,
+		"conflictSkills": "",
+		"heroType": 4,
+		"frontSkill": 0
+	},	"30": {
+		"ID": 30,
+		"type": 0,
+		"skillID": 55,
+		"probability": 10,
+		"minimumLevel": 1,
+		"accumulate": 2,
+		"conflictSkills": "",
+		"heroType": 4,
+		"frontSkill": 0
+	},	"31": {
+		"ID": 31,
+		"type": 0,
+		"skillID": 56,
+		"probability": 10,
+		"minimumLevel": 1,
+		"accumulate": 3,
+		"conflictSkills": "",
+		"heroType": 4,
+		"frontSkill": 0
+	},	"32": {
+		"ID": 32,
+		"type": 4,
+		"skillID": 66,
+		"probability": 10,
+		"minimumLevel": 1,
+		"accumulate": 1,
+		"conflictSkills": "",
+		"heroType": 4,
+		"frontSkill": 0
+	},	"33": {
+		"ID": 33,
+		"type": 1,
+		"skillID": 17,
+		"probability": 10,
+		"minimumLevel": 1,
+		"accumulate": 3,
+		"conflictSkills": "",
+		"heroType": 3,
+		"frontSkill": 0
+	},	"34": {
+		"ID": 34,
+		"type": 1,
+		"skillID": 18,
+		"probability": 10,
+		"minimumLevel": 1,
+		"accumulate": 3,
+		"conflictSkills": "",
+		"heroType": 3,
+		"frontSkill": 0
+	},	"35": {
+		"ID": 35,
+		"type": 1,
+		"skillID": 19,
+		"probability": 10,
+		"minimumLevel": 1,
+		"accumulate": 2,
+		"conflictSkills": "",
+		"heroType": 3,
+		"frontSkill": 0
+	}}
