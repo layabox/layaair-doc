@@ -335,13 +335,8 @@
 				"name_3_file": "readme.md"
 			},
 			{
-				"name_3_name": "自动横屏与横屏游戏",
-				"name_3_url": "Chinese/LayaAir_AS3/2D/beginners/Screen_Fit/Landscape_Mode/",
-				"name_3_file": "readme.md"
-			},
-			{
-				"name_3_name": "游戏自动竖屏设置",
-				"name_3_url": "Chinese/LayaAir_AS3/2D/beginners/Screen_Fit/VerticalScreen_mode/",
+				"name_3_name": "屏幕方向：自动横屏与自动竖屏的设置详解",
+				"name_3_url": "Chinese/LayaAir_AS3/2D/beginners/Screen_Fit/screenMode/",
 				"name_3_file": "readme.md"
 			},
 			{
@@ -1481,13 +1476,8 @@
 				"name_3_file": "readme.md"
 			},
 			{
-				"name_3_name": "自动横屏与横屏游戏",
-				"name_3_url": "Chinese/LayaAir_TS/2D/beginners/Screen_Fit/Landscape_Mode/",
-				"name_3_file": "readme.md"
-			},
-			{
-				"name_3_name": "游戏自动竖屏设置",
-				"name_3_url": "Chinese/LayaAir_TS/2D/beginners/Screen_Fit/VerticalScreen_mode/",
+				"name_3_name": "屏幕方向：自动横屏与自动竖屏的设置详解",
+				"name_3_url": "Chinese/LayaAir_TS/2D/beginners/Screen_Fit/screenMode/",
 				"name_3_file": "readme.md"
 			},
 			{
@@ -2541,13 +2531,8 @@
 				"name_3_file": "readme.md"
 			},
 			{
-				"name_3_name": "自动横屏与横屏游戏",
-				"name_3_url": "Chinese/LayaAir_JS/2D/beginners/Screen_Fit/Landscape_Mode/",
-				"name_3_file": "readme.md"
-			},
-			{
-				"name_3_name": "游戏自动竖屏设置",
-				"name_3_url": "Chinese/LayaAir_JS/2D/beginners/Screen_Fit/VerticalScreen_mode/",
+				"name_3_name": "屏幕方向：自动横屏与自动竖屏的设置详解",
+				"name_3_url": "Chinese/LayaAir_JS/2D/beginners/Screen_Fit/screenMode/",
 				"name_3_file": "readme.md"
 			},
 			{
