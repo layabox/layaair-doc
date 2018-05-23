@@ -301,7 +301,7 @@
 			"name_2_name": "硬件设备相关",
 			"name_2_data": [
 			{
-				"name_3_name": "音乐与音效播放",
+				"name_3_name": "音乐与音效的播放与控制",
 				"name_3_url": "Chinese/LayaAir_AS3/2D/beginners/devices/SoundManager/",
 				"name_3_file": "readme.md"
 			},
@@ -1442,7 +1442,7 @@
 			"name_2_name": "硬件设备相关",
 			"name_2_data": [
 			{
-				"name_3_name": "音乐与音效播放",
+				"name_3_name": "音乐与音效的播放与控制",
 				"name_3_url": "Chinese/LayaAir_TS/2D/beginners/devices/SoundManager/",
 				"name_3_file": "readme.md"
 			},
@@ -2497,7 +2497,7 @@
 			"name_2_name": "硬件设备相关",
 			"name_2_data": [
 			{
-				"name_3_name": "音乐与音效播放",
+				"name_3_name": "音乐与音效的播放与控制",
 				"name_3_url": "Chinese/LayaAir_JS/2D/beginners/devices/SoundManager/",
 				"name_3_file": "readme.md"
 			},
