@@ -8,30 +8,38 @@ LayaAirIDE是LayaAir引擎的集成开发环境，集成了LayaAir引擎与示�
 
 **官网下载地址** ：[http://ldc.layabox.com/layadownload/?type=layaairide](http://ldc.layabox.com/layadownload/?type=layaairide)
 
-> Tips：LayaAirIDE 1.7.14版本才开始集成微信小游戏开发
+> Tips：由于从1.7.17的版本增加了3D适配与缓存管理，建议开发者使用1.7.17或更高的版本。
+
+
 
 #### 2、下载并安装微信小游戏开发工具
 
 微信小游戏开发工具是小游戏开发与测试的环境，由于LayaAir引擎的开发者完全可以使用LayaAirIDE进行项目开发，那么安装这个小游戏开发工具主要是用于小游戏项目编译、预览、真机测试与调试、上传发布等。
 
-![img](img/1.png)
-
-在小游戏开发文档的首页里，通过导航链接前往开发者工具下载页面 ，去下载开发工具。
-
-![3](img/3.jpg) 
-
 **开发工具下载地址**：
-https://mp.weixin.qq.com/debug/wxagame/dev/devtools/download.html
+[https://developers.weixin.qq.com/minigame/dev/devtools/download.html](https://developers.weixin.qq.com/minigame/dev/devtools/download.html)
+
+![3](img/3.png)  
+
+
 
 #### 3、创建一个小程序的企业开发者帐号，获得开发者ID(AppID)
 
-尽管没有AppID也可以开发调试，但是功能会受到限制。所以在开发之前，最好先去创建一个小程序的企业开发者帐号。
+尽管没有AppID也可以开发调试，但是功能会受到限制。所以在开发之前，最好先去创建一个小程序的开发者帐号。
 
-注册地址：https://mp.weixin.qq.com/cgi-bin/registermidpage?action=index&lang=zh_CN
+注册地址：[https://mp.weixin.qq.com/wxopen/waregister?action=step1](https://mp.weixin.qq.com/wxopen/waregister?action=step1)
 
-![img](img/2.png) 
+**Tips:**
 
-> Tips:微信小游戏暂时还不支持个人注册（未来会开放给个人注册），如果是个人开发者只能创建小程序项目，无法创建小游戏项目。所以，个人开发者如果想体验，先不要输入AppID，直接点击输入框下的 **小游戏** 字样进行体验。
+*个人开发者不需要版号，但也不能开通支付功能，如果游戏中涉及支付功能，必须要使用企业开发者帐号。并且要提交版号。*
+
+注册完开发者帐号并登录后，在设置菜单的开发设置里可以获得开发者ID。
+
+![图2-2](img/2-2.png)
+
+**Tips:**
+
+> *建议开发者先注册好开发者帐号，记录好AppID*
 
 ### 
 
@@ -43,13 +51,13 @@ https://mp.weixin.qq.com/debug/wxagame/dev/devtools/download.html
 
 ![img](img/5.png)
 
-> Tips：本示例暂以ActionScript3开发语言为例，后面会讲一下TS和JS项目与AS3项目的区别。
+
 
 #### 2、查看示例项目效果
 
 创建完项目之后，我们可以直接点一下调试按钮（如下图所示）。就可以看到我们的示例什么样子。
 
-![img](img/5.jpg)
+![img](img/5.jpg)  
 
 > Tips：这一步除了编译js，主要为了让大家记住我们的示例什么样子，后面，如果小游戏效果也是这样的就没错了。
 
@@ -71,17 +79,17 @@ https://mp.weixin.qq.com/debug/wxagame/dev/devtools/download.html
 
 打开”微信web开发者工具“，用开发者的微信扫码登录。然后选择**小程序项目**点击进入项目设置。
 
-![img](img/7.jpg) 
-
-#### 2、设置小程序项目
-
-在小程序项目设置面板里，`项目目录`可以选择LayaAirIDE刚刚发布小游戏的目录。
-
 ![img](img/8.png) 
 
-AppID在小程序开发者帐号里获得（如下图所示）。如果没有，可以点击AppID输入框下的小游戏进行体验，但是功能会受到限制。
+#### 2、创建小游戏项目
 
-![img](img/9.jpg) 
+在小程序项目设置面板里，`项目目录`可以选择LayaAirIDE刚刚发布小游戏的目录。AppID按之前准备好的ID输入即可，不输入也可以开发调试，不过功能会受到限制。所以最好还是输入AppID。
+
+![img](img/8-1.png) 
+
+**Tips:**特别提示一下，如果在IDE里创建的不是小游戏示例项目，那么创建的时候就没有小游戏的工程文件，没有工程文件的目录，小游戏开发工具是不允许导入的，会提示 “ 请选择空项目或含......... ”，如下图所示。所以为了避免后面的麻烦，开发小游戏一定要在IDE创建项目时，就直接创建小游戏示例项目。
+
+![图8-2](img/8-2.png) 
 
 
 
@@ -99,7 +107,7 @@ AppID在小程序开发者帐号里获得（如下图所示）。如果没有，
 
 #### 4、真机测试与调试
 
-由于LayaAirIDE里也可以调试项目效果，基本上两边的效果不会有不一一致的情况。所以这里最重要的是点击**预览**功能，通过手机微信扫码，在微信内进行真机测试与调试。
+由于LayaAirIDE里也可以调试项目效果，除非是适配相关的问题，基本上两边的效果不会有不一一致的情况。所以这里最重要的是点击**预览**功能，通过手机微信扫码，在微信内进行真机测试与调试。比如cacheAs目前在微信小游戏里还不支持，如果有cacheAs等微信不支持的功能，在真机里就会报错。
 
 ![img](img/14.png) 
 
