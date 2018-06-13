@@ -1,28 +1,8 @@
-# 微信小游戏4M本地包与50M物理缓存使用详解
-
-#### 一、小游戏的文件使用原理
-
-H5在浏览器中运行，由直接从网络动态加载使用，如果浏览器有缓存会优先读取缓存文件。
-
-而微信小游戏的底层并不是H5的浏览器，所以文件的管理与使用也与浏览器的机制不同。
-
-在微信小游戏里，文件的使用通常是是由本地包、网络动态加载、本地物理缓存构成。
-
-首次打开微信小游戏，会先加载本地包中的资源，然后动态加载网络中的资源。
-
-![1](img/1.jpg) 
-
-如果是非首次打开微信小游戏，LayaAir引擎默认提供了缓存管理机制，本地包之外的资源，优先从物理缓存中加载，缓存中不存在的才需要从网络
-
-
-
-
-
-
+# 微信小游戏4M本地包的使用
 
 通常我们开发项目的时候，会直接使用本地路径，比如示例中引用的就是本地路径，
 
-```javascript
+```json
 Laya.Texture2D.load("res/layabox.png");
 ```
 
@@ -40,13 +20,11 @@ Laya.Texture2D.load("res/layabox.png");
 
 > Tips：需要提醒注意的是微信小游戏不允许动态加载创建JS，所以，JS必须要放在4M包里，也就是说JS加上基础配置文件必须要小于4M，项目适配时如果超过4M，要进行优化控制。
 
-
-
 **网络动态加载的路径怎么处理呢**。在本地加载的`load()`方法之后使用`URL.basePath`方法。
 
 例如：
 
-```javascript
+```java
 material.diffuseTexture = Laya.Texture2D.load("res/layabox.png");
 box.meshRender.material = material;
 Laya.URL.basePath = "https://XXXX.com";//请把XXXX换成自己的真实网址；
@@ -55,17 +33,13 @@ Laya.URL.basePath = "https://XXXX.com";//请把XXXX换成自己的真实网址�
 
 使用`URL.basePath`方法后，再使用load加载本地路径，都会自动加上URL.basePath里的网址。这样就实现了本地与网络加载的结合。
 
-
-
 **这样就结束了吗？并没有！**
 
 按刚刚的写法，`res/layabox.png`明明已经上传到微信小游戏的本地目录，但是如果在使用`URL.basePath`之后，再次加载`res/layabox.png`并不会从本地加载使用，而是从网络动态加载使用。这并不是我们要的结果。
 
-
-
 所以，引擎针对使用`URL.basePath`之后，如何再次使用本地加载，进行了**特殊目录和文件的处理**，也就是本地包白名单机制。如下例所示：
 
-```javascript
+```json
 MiniAdpter.nativefiles =  [
     "wxlocal",
     "res/atlas/houzi.atlas",
