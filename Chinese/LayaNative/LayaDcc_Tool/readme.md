@@ -146,14 +146,14 @@ filetable1.txt 这个文件不再使用。
    图11 
 
 3. 更新机制起作用的测试  
-   直观的测试就是更新了资源，App产生了对应的改变，例如修改了的图片，能在app上看到。从日志看的话，就是资源获取的时候，凡是没有改变的都是打印 `found the file in the package:`， 而改变了的都是打印  `Downlaod [ ] xxxurl `。   
+   直观的测试就是更新了资源，App产生了对应的改变，例如修改了的图片，能在app上看到。从日志看的话，就是资源获取的时候，凡是没有改变的都是打印 `found the file in the package:`， 而改变了的都是打印  `download [ ] xxxurl `。   
    **注意**  
      1 Download只执行一次，第二次再进入app，这个资源如果没改，就会直接从缓存取。
      2 DCC的机制是运行时更新，所以只有执行到需要这个资源的时候才会下载，而不是一启动就下载所有更新。
 
 
 **总结**  
-* 凡是有 `Downlaod [ ] url `就表示下载，说明没有dcc或者资源更新了  
+* 凡是有 `download [ ] url `就表示下载，说明没有dcc或者资源更新了  
 * 凡是有`found the file in the package:`，说明打包资源成功，dcc起作用了。
 
 
