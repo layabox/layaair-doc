@@ -546,3 +546,13 @@ tMap.removeCoveredTile = true;
 (图15-3)
 
 只要是自定义属性type设置为1的地形，当removeCoveredTile开启后。被遮挡不可见时都可以被移除，以提高性能。
+
+
+
+
+
+## 本文赞赏
+
+如果您觉得本文对您有帮助，欢迎扫码赞赏作者，您的激励是我们写出更多优质文档的动力。
+
+![wechatPay](../../../../../wechatPay.jpg)
