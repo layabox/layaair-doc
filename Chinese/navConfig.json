@@ -828,35 +828,35 @@
 			"name_2_name": "微信小游戏开发基础",
 			"name_2_data": [
 			{
-				"name_3_name": "微信小游戏基础介绍与上线政策",
-				"name_3_url": "Chinese/wechat/minigame/introduction/",
+				"name_3_name": "微信小游戏入门介绍",
+				"name_3_url": "Chinese/wechat/AS/introduction/",
 				"name_3_file": "readme.md"
 			},
 			{
-				"name_3_name": "创建微信小游戏",
-				"name_3_url": "Chinese/wechat/minigame/novice/",
+				"name_3_name": "创建第一个微信小游戏",
+				"name_3_url": "Chinese/wechat/AS/novice/",
 				"name_3_file": "readme.md"
 			},
 			{
 				"name_3_name": "老项目适配微信小游戏详解",
-				"name_3_url": "Chinese/wechat/minigame/old_adapter/",
+				"name_3_url": "Chinese/wechat/AS/old_adapter/",
 				"name_3_file": "readme.md"
-			}]
-		},
-		{
-			"name_2_name": "微信小游戏开发进阶",
-			"name_2_data": [
+			},
 			{
-				"name_3_name": "微信小游戏综合介绍",
-				"name_3_url": "Chinese/wechat/minigame/advanced/",
+				"name_3_name": "小游戏发布工具与小游戏目录介绍",
+				"name_3_url": "Chinese/wechat/AS/publishing_tools/",
 				"name_3_file": "readme.md"
 			},{
-				"name_3_name": "微信小游戏的物理缓存管理",
-				"name_3_url": "Chinese/wechat/minigame/advanced/50M/",
+				"name_3_name": "微信小游戏的4M本地包与动态资源加载",
+				"name_3_url": "Chinese/wechat/AS/4M/",
 				"name_3_file": "readme.md"
 			},{
-				"name_3_name": "微信小游戏的4M本地包使用",
-				"name_3_url": "Chinese/wechat/minigame/advanced/4M/",
+				"name_3_name": "微信小游戏的50M物理缓存管理",
+				"name_3_url": "Chinese/wechat/AS/50M/",
+				"name_3_file": "readme.md"
+			},{
+				"name_3_name": "微信小游戏常见问题汇总（7.16更新）",
+				"name_3_url": "Chinese/wechat/AS/FAQ/",
 				"name_3_file": "readme.md"
 			}]
 		},
@@ -1950,27 +1950,35 @@
 			"name_2_name": "微信小游戏开发基础",
 			"name_2_data": [
 			{
-				"name_3_name": "微信小游戏基础介绍与上线政策",
-				"name_3_url": "Chinese/wechat/minigame/introduction/",
+				"name_3_name": "微信小游戏入门介绍",
+				"name_3_url": "Chinese/wechat/AS/introduction/",
 				"name_3_file": "readme.md"
 			},
 			{
-				"name_3_name": "创建微信小游戏",
-				"name_3_url": "Chinese/wechat/minigame/novice/",
+				"name_3_name": "创建第一个微信小游戏",
+				"name_3_url": "Chinese/wechat/AS/novice/",
 				"name_3_file": "readme.md"
 			},
 			{
 				"name_3_name": "老项目适配微信小游戏详解",
-				"name_3_url": "Chinese/wechat/minigame/old_adapter/",
+				"name_3_url": "Chinese/wechat/AS/old_adapter/",
 				"name_3_file": "readme.md"
-			}]
-		},
-		{
-			"name_2_name": "微信小游戏开发进阶",
-			"name_2_data": [
+			},
 			{
-				"name_3_name": "微信小游戏综合介绍",
-				"name_3_url": "Chinese/wechat/minigame/advanced/",
+				"name_3_name": "小游戏发布工具与小游戏目录介绍",
+				"name_3_url": "Chinese/wechat/AS/publishing_tools/",
+				"name_3_file": "readme.md"
+			},{
+				"name_3_name": "微信小游戏的4M本地包与动态资源加载",
+				"name_3_url": "Chinese/wechat/AS/4M/",
+				"name_3_file": "readme.md"
+			},{
+				"name_3_name": "微信小游戏的50M物理缓存管理",
+				"name_3_url": "Chinese/wechat/AS/50M/",
+				"name_3_file": "readme.md"
+			},{
+				"name_3_name": "微信小游戏常见问题汇总（7.16更新）",
+				"name_3_url": "Chinese/wechat/AS/FAQ/",
 				"name_3_file": "readme.md"
 			}]
 		},
@@ -2994,27 +3002,35 @@
 			"name_2_name": "微信小游戏开发基础",
 			"name_2_data": [
 			{
-				"name_3_name": "微信小游戏基础介绍与上线政策",
-				"name_3_url": "Chinese/wechat/minigame/introduction/",
+				"name_3_name": "微信小游戏入门介绍",
+				"name_3_url": "Chinese/wechat/AS/introduction/",
 				"name_3_file": "readme.md"
 			},
 			{
-				"name_3_name": "创建微信小游戏",
-				"name_3_url": "Chinese/wechat/minigame/novice/",
+				"name_3_name": "创建第一个微信小游戏",
+				"name_3_url": "Chinese/wechat/AS/novice/",
 				"name_3_file": "readme.md"
 			},
 			{
 				"name_3_name": "老项目适配微信小游戏详解",
-				"name_3_url": "Chinese/wechat/minigame/old_adapter/",
+				"name_3_url": "Chinese/wechat/AS/old_adapter/",
 				"name_3_file": "readme.md"
-			}]
-		},
-		{
-			"name_2_name": "微信小游戏开发进阶",
-			"name_2_data": [
+			},
 			{
-				"name_3_name": "微信小游戏综合介绍",
-				"name_3_url": "Chinese/wechat/minigame/advanced/",
+				"name_3_name": "小游戏发布工具与小游戏目录介绍",
+				"name_3_url": "Chinese/wechat/AS/publishing_tools/",
+				"name_3_file": "readme.md"
+			},{
+				"name_3_name": "微信小游戏的4M本地包与动态资源加载",
+				"name_3_url": "Chinese/wechat/AS/4M/",
+				"name_3_file": "readme.md"
+			},{
+				"name_3_name": "微信小游戏的50M物理缓存管理",
+				"name_3_url": "Chinese/wechat/AS/50M/",
+				"name_3_file": "readme.md"
+			},{
+				"name_3_name": "微信小游戏常见问题汇总（7.16更新）",
+				"name_3_url": "Chinese/wechat/AS/FAQ/",
 				"name_3_file": "readme.md"
 			}]
 		},
