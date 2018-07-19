@@ -1,0 +1,7 @@
+{
+	"scripts":[
+    "build/three.js",
+	"perf_doublesided.js"
+    ],
+	"screenorientation":"landscape"
+}
