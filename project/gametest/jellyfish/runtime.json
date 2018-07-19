@@ -1,0 +1,18 @@
+{
+	"scripts":[
+    "js/lib/mjs.js",
+	"js/shader.js",
+    "js/initWin.js",
+    "js/initUniforms.js",
+    "js/initTextures.js",
+    "js/initShaders.js",
+    "js/initBuffers.js",
+    "js/interact.js",
+    "js/debug.js",
+    "js/tick.js",
+    "js/simulator.js",
+    "js/drawJellyfish.js",
+    "js/drawScene.js"
+    ],
+	"screenorientation":"landscape"
+}
