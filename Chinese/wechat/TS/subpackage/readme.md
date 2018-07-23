@@ -30,7 +30,11 @@ LayaAir引擎的开发者，UI大多都是通过LayaAirIDE制作。
 
 总之，加载模式与分离模式可以减少包体JS的大小。如果能通过这种方式解决的，也许不必用分包来解决。具体情况视项目而定。
 
-#### 2、压缩与混淆
+#### **2、删除不必要的JS代码**
+
+在没有分包的情况下，在HTML页里引用的JS都会合并到一个js文件里（code.js），除非是在项目中对js另有引用。否则，不在HTML页内的其它js可以直接删除掉，比如一些没有用到的引擎库js。可以在项目目录下就直接删除，这样发布的时候也不会再出现了。
+
+#### 3、压缩与混淆
 
 通过压缩混淆后的js代码，包体会明显减少很多。如果JS没超4M，可以不用分。资源等内容，完全可以走URL动态加载使用，在首次加载后，会存在物理缓存内，不超过50M的常用缓存内容，下次打开无需加载。
 
@@ -104,7 +108,7 @@ loadTask.onProgressUpdate(res => {
 
 我为大家准备了两个比较简单的示例项目，下载解压后，defaultDemo目录下为分包之前的示例项目，subPackageDemo目录下为分包后的示例项目。开发者可以在阅读本文档的同时，用分包前和分包后项目对比差异，帮助理解小游戏分包。
 
-下载地址为：
+下载地址为：[https://github.com/layabox/layaair-doc/raw/master/project/TS/TS_subPackage_Demo.zip](https://github.com/layabox/layaair-doc/raw/master/project/TS/TS_subPackage_Demo.zip)
 
 
 
@@ -150,102 +154,145 @@ loadTask.onProgressUpdate(res => {
   },
   "subpackages": [
     {
-      "name": "b",
+      "name": "subpackage",
       "root": "js/subpackage/"
     }
   ]
 }
 ```
 
-规划和设置完小游戏的分包目录后。我们去创建AS项目的分包文件与目录。
+规划和设置完小游戏的分包目录后。我们去创建分包目录与文件。
 
-##### 创建AS分包文件module.def
+##### 注意root路径
 
-在**项目的根目录**，创建一个普通的空文本文件，并取名为`module.def` ，文件中输入内容如下：
+TS项目`src`目录下的项目代码在编译和发布的时候，如果在`bin/index.html`里有引用。会与引擎库一起统一合并到code.js里。不在`bin/index.html`里引用则直接复制到`js`目录下。所以`root`的路径不要漏掉js。如图3所示。
 
-```json
-module:"subpackage/b"
-path:"src/subpackage"
+![图3](img/3.png) 
+
+(图3)
+
+##### 一个重要的编译"坑"
+
+分包的时候TS项目还存在一个IDE编译导致的坑，那就是TS项目每次编译会生成新的js到bin目录下。然而每次生成之后，也会自动把生成的js引用也更新到index.html里。然而，刚刚提到index.html里引用到的都会合并到code.js里，恰恰分包的代码，我们是不希望合到code.js里。所以每次编译后，发布小游戏之前。一定要打开index.html里看一下，分包的js是否被引用了。如果被引用了，一定要注释掉。如图4所示。
+
+![图4](img/4.png) 
+
+（图4）
+
+> Tips: 以后的版本，如有时间会考虑IDE来解决，解决前请大家一定要注意。并在发布的时候避免因引用导致分包失败。
+
+##### 创建game.js
+
+尽管root中可以指定具体js文件为入口，但是考虑到分包内可能会有多个js，所以本文档示例中还是采用了目录的默认入口game.js。
+
+game.js我们直接到bin目录下，编译后的分包目录里创建就好了。game.js里引入分包js路径，如下所示。
+
+```javascript
+require('b.js');
 ```
 
-**module内的值代表的是分包生成的新js名称和路径。**上面示例中，subpackage为分包后的目录名，b为js的文件名，如果不想要目录，只填写b，那就会生成不含目录的b.js。
 
-这里需要提一下的是，无论是有目录还是没有目录，都会生成在`bin/h5/js`目录下。如上例中的值，实际生成的路径为`bin/h5/js/subpackage/b.js`。所以正好对应小游戏game.json中规划的路径`js/subpackage/`。
 
-**path内的值代表的是module对应的AS源文件目录**。需要说明的是，path`src/subpackage`内如果有多个as文件，只要每个文件之间有引用关系，会统一编译到同一个js内（module指定的值）。
+#### 4、开始分包编码
 
-> module与path的值都放到引号里，结束不需要符号，但一定要换行。
+上一步创建完分包目录与分包文件，那么可以开始进行分包编码了。
 
-##### 尤其重要的引用关系
+首先在原则上，既然要做分包，那么**主包与分包的逻辑关联性要尽可能越少越好**。
 
-分包中的类，在主包中，必须要引用，如果不引用。是不会将分包文件`module.def`内`path`指定路径内的代码编译到`module`指定的目录及文件中。分包与分包之间，也是这样，无论当前代码是否用到。必须要引用到。
+当然，有的开发者也不可避免的会需要一些主包与分包相互调用的关联需求。所以我给大家准备的简单示例里，就是将原本在一个主包里的逻辑，拆出一部分放到分包里。
 
-例如，在示例项目中，我们将subpackage包内的b类引入。
+打开defaultDemo目录下示例项目，我们只保留通用的UI显示方法showUI，图集加载后的回调onLoaded里，我们保留初次显示UI的逻辑。将按钮监听，以及页面切换等逻辑放到b.ts里。
 
-```typescript
-import subpackage.b;
+分出的b.ts代码如下所示：
+
+```javascript
+/**
+* 分包 
+*/
+module subpackage{
+
+	export class b{
+        private GameMain:any;
+        private ui:any;
+		constructor(){
+             //监听按钮btnA的点击事件，触发后处理
+            this.GameMain.newUI.btnA.on(Laya.Event.CLICK, this, this.showB);
+		}
+
+            //显示B页
+        private showB():void
+        {
+            this.GameMain.showUI(this.ui.bUI,this.GameMain.newUI)
+
+            //监听按钮btnB的点击事件，触发后处理
+            this.GameMain.newUI.btnB.on(Laya.Event.CLICK, this, this.showA);
+        }
+
+        //显示A页
+        private showA():void
+        {
+           this.GameMain.showUI(this.ui.aUI,this.GameMain.newUI)
+        
+            //监听按钮btnA的点击事件，触发后处理
+            this.GameMain.newUI.btnA.on(Laya.Event.CLICK, this, this.showB);
+        }
+	}
+
+}
+//实例化
+new subpackage.b();
 ```
 
- 
-
-#### 4、分包代码的使用
-
-上一步完成分包文件与目录的创建与规划，那么可以开始进行分包编码了。
-
-首先原则上，既然要做分包，那么**主包与分包的逻辑关联性要尽可能越少越好**。
-
-另外不得不提一句，在分包方面TS与JS都要针对window域进行项目改造，而AS而不需要针对window域进行修改，因为编译器已经帮开发者处理好了。只需要按照LayaAir引擎的分包规则进行处理即可。
-
-所以，这里重点讲一下如何使用分包中的类与方法。至于分包的示例，可以直接下载我提供的示例DEMO查看。
+代码分出后，我们不要忘了在主包内调用微信小游戏官方提供的分包加载与回调通知方法。在示例项目中，我们直接在图集加载的回调里，加载分包。然后在加载成功后输出`success`的log。示例代码如下：
 
 ```javascript
 //图集加载后回调
-private function onLoaded():void
+private onLoaded():void
 {
-
-    showUI(aUI);
-	//微信小游戏官方提供的分包加载方法
-    const loadTask = __JS__('wx').loadSubpackage({
-        name: 'b', // name 可以填 name 或者 root
+    this.showUI(ui.aUI);
+    
+	//小游戏官方的分包加载方式
+    const loadTask = wx.loadSubpackage({
+        name: 'subpackage', // name 可以填 name 或者 root
         success: function(res) {
             // 分包加载成功后通过 success 回调
             console.log("success");
-
-            //实例化分包的类
-            b = __JS__('new subpackage.b()');
-
-            //把实例化的UI传给分包的类
-            b.newUI = newUI;
-
-            //初始化分包，监听按钮事件
-            b.init();
         },
         fail: function(res) {
             // 分包加载失败通过 fail 回调
             console.log("fail");
         }
-    });
-
+    });       
 }
 ```
 
-我们来看一下onLoaded这个方法，在调用showUI显示完UI后，直接使用了微信小游戏官方提供的分包加载方法。在分包加载成功后success的回调方法内，我们开始通过`__JS__（'new subpackage.b()'）；`来实例化分包内的方法。这里为什么 用JS的方法去实例呢，因为直接使用分包的内容，因为编译后，分成了不同的js，而不在同一个文件则无法找到对应的类，就会报错。所以使用分包的类与方法，必须要使用`__JS__（'XXX'）；` ，xxx为js代码。
+这个时候，按小游戏官方的文档，理论上，分包的流程应该已经结束，我们可以发布小游戏代码，在微信开发者工具中看一看效果。
 
-#### 5、总结一下
+不用意外，肯定会有报错，我们可以继续看文档。
 
-AS项目的分包，其实在官方示例的基础上，使用AS项目的分包即可。对于以前就会分包的开发者，AS的小游戏分包会非常顺利。所以本篇其实就是结合小游戏，再次讲了一下AS项目如何分包。
+#### 5、window域
 
-**AS分包的要点回顾** ：
+在浏览器里，默认就都在window域里。而小游戏并不是，所以小游戏多个js之间的调用就会出问题，所以为解决这个问题，IDE发布的时候，会将所有项目js与引擎一起整合到code.js里，如今分包的方案，又将会面临window域这个问题。所以，主包与分包有调用需求时，那必须要先将被调用的函数或者变量要先放到window域里。然后在使用的时候前面也要带上window这个关键字。下面我们就用示例项目进行实战体验。
 
-1、在项目根目录创建module.def文件；
+首先我们在主包中，把分包中用到的ui类以及主包的类都放到window域里，这样，分包可以在需要使用的时候，直接从window里取出即可，如下所示。
 
-2、填写正确的分包后路径与js文件名(module)与正确的对应源文件路径(path)；
+```javascript
+//把需要被分包中使用的放到window域里
+window["ui"] = ui;
+window["GameMain"] = new GameMain();
+```
 
-3、创建分包代码文件，进行分包编码；
+在分包b.ts中我们要取出window中ui与GameMain类。可添加下面代码：
 
-4、在主包内引用分包的类；
+```javascript
+//从window域里取出
+this.ui = window["ui"];
+this.GameMain = window["GameMain"];
+```
 
+> 具体的实战中，开发者可以对比分包前与分包后的两个示例项目。   
 
+同理，如果主包中使用到分包的类，也要先放到window域中，然后使用window关键字取出。具体的使用就是这么简单。通过对window域的了解。分包遇到的window相关问题就可以得到解决。
 
 ### 六、开发者实战建议
 
