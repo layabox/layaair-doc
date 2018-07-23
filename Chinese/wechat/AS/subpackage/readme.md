@@ -104,7 +104,7 @@ loadTask.onProgressUpdate(res => {
 
 我为大家准备了两个比较简单的示例项目，下载解压后，defaultDemo目录下为分包之前的示例项目，subPackageDemo目录下为分包后的示例项目。开发者可以在阅读本文档的同时，用分包前和分包后项目对比差异，帮助理解小游戏分包。
 
-下载地址为：
+下载地址为：[https://github.com/layabox/layaair-doc/raw/master/project/AS3/AS_subPackage_Demo.zip](https://github.com/layabox/layaair-doc/raw/master/project/AS3/AS_subPackage_Demo.zip)
 
 
 
