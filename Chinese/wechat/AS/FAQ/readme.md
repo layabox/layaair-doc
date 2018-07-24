@@ -60,6 +60,10 @@ public static var getUrlAndEncode:Function = function(url:String,type:String):St
 
 由于小游戏window作用域的问题，会出现`Matter is not defined` 的报错。或者在竖屏模式下，鼠标无事件。这些问题都已经在引擎库1.7.20的版本里，对Matter.js进行了修复。请使用1.7.20及以后的版本，可解决以上问题。但是，需要注意的是，Layabox团队已对Matter.js进行了修改，以后只能使用引擎中提供的Matter.js，不可从第三方获得Matter.js进行替换，否则适配工作将由自己来实现。
 
+引擎未更新之前，可以前往社区中[下载](https://ask.layabox.com/question/15055)（下面的链接）。在最佳答案的附件matter.zip里。替换matter.js即可。
+
+[https://ask.layabox.com/question/15055](https://ask.layabox.com/question/15055)
+
 
 
 ### 后续更新：
