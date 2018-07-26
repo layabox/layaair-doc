@@ -1,10 +1,8 @@
 # 加载界面
-
+为了方便开发者，自定义LoadingView，1.0版本使用原生功能实现的新的LoadingView  
 应用程序在启动的时候，需要加载必要的html、js、图片，这个时候就需要通过加载界面显示进度，LayaPlayer在运行项目的时候，默认有一个LoadingView界面，一段时间后，即可进入游戏，如图一所示：  
 
 ​![图1](img/1.png) <br/>
-
-从LayaPlayer-1.0版本开始用Android和iOS原生功能实现了新的LoadingView
 ## 1.进度条控制
 
 ​开发者可以在config.js中，控制LoadingView的背景色、字体颜色、Tips等。  
