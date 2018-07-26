@@ -52,7 +52,11 @@ public static var getUrlAndEncode:Function = function(url:String,type:String):St
 
 #### 4、声音无法用loader预加载
 
-由于微信小游戏不支持预加载声音文件到内存的使用方式，直接用SoundManger音频管理类进行声音播放即可。
+在音频方面，由于微信小游戏与HTML5原生浏览器的使用方式不同，小游戏底层环境不支持创建声音实例的接口以实例存储方式的使用。所以，不能直接使用loader的方式预加载网络的音频文件再使用。
+
+可以用SoundManger音频管理类直接播放音频文件。
+
+或者，对于存在预加载需求的，可以通过缓存文件下载的方法downLoadFile，先将文件下载到本地缓存中，确认缓存中存在后，直接播放本地缓存中的音频文件，也可以达到预加载的效果。
 
 
 
