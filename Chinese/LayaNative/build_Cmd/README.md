@@ -39,6 +39,7 @@ $ layanative createapp --help
 | `--app_name, -a` |      应用名称：app安装到手机后显示的名称 [默认值: LayaBox]
 | `--package_name` |       包名 [默认值: com.layabox.game]
 | `--sdk,-s` |       SDK本地目录：自定义的SDK目录，可选参数。断网情况下使用，一般情况下建议使用参数--version。
+| `--demension,-d` |   项目类型2D还是3D,版本1.2.13新增 [可选值: 2D, 3D] [默认值: 2D]
 当type为1或2时会打资源包到native项目，为0时不打。打包资源底层实际是调用dcc的方法。打包资源dcc相关，参考 [LayaDcc工具](https://github.com/layabox/layaair-doc/tree/master/Chinese/LayaNative/LayaDcc_Tool)。  
 可以用--path参数指定项目的输出路径，默认输出到当前路径下。
 
