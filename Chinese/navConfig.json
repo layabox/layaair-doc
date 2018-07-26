@@ -991,6 +991,11 @@
 				"name_3_file": "README.md"
 			},
 			{
+				"name_3_name": "新启动画面",
+				"name_3_url": "Chinese/LayaNative/loading_view_new/",
+				"name_3_file": "README.md"
+			},
+			{
 				"name_3_name": "启动画面",
 				"name_3_url": "Chinese/LayaNative/loading_view/",
 				"name_3_file": "README.md"
@@ -1019,6 +1024,11 @@
 		{
 			"name_2_name": "LayaNative进阶",
 			"name_2_data": [
+			{
+				"name_3_name": "3D",
+				"name_3_url": "Chinese/LayaNative/3d/",
+				"name_3_file": "3d.md"
+			},
 			{
 				"name_3_name": "缓存工具-layadcc",
 				"name_3_url": "Chinese/LayaNative/LayaDcc_Tool/",
@@ -2051,6 +2061,11 @@
 			{
 				"name_3_name": "关于声音",
 				"name_3_url": "Chinese/LayaNative/sound/",
+				"name_3_file": "README.md"
+			},
+			{
+				"name_3_name": "新启动画面",
+				"name_3_url": "Chinese/LayaNative/loading_view_new/",
 				"name_3_file": "README.md"
 			},
 			{
@@ -3110,6 +3125,11 @@
 				"name_3_file": "README.md"
 			},
 			{
+				"name_3_name": "新启动画面",
+				"name_3_url": "Chinese/LayaNative/loading_view_new/",
+				"name_3_file": "README.md"
+			},
+			{
 				"name_3_name": "启动画面",
 				"name_3_url": "Chinese/LayaNative/loading_view/",
 				"name_3_file": "README.md"
@@ -3138,6 +3158,11 @@
 		{
 			"name_2_name": "LayaNative进阶",
 			"name_2_data": [
+			{
+				"name_3_name": "3D",
+				"name_3_url": "Chinese/LayaNative/3d/",
+				"name_3_file": "3d.md"
+			},
 			{
 				"name_3_name": "缓存工具-layadcc",
 				"name_3_url": "Chinese/LayaNative/LayaDcc_Tool/",
