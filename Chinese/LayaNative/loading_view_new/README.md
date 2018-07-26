@@ -4,7 +4,7 @@
 
 ​![图1](img/1.png) <br/>
 
-本文档针对LayaPlayer-1.0以后的版本用Android和iOS原生功能实现的新的LoadingView
+从LayaPlayer-1.0版本开始开始用Android和iOS原生功能实现了新的LoadingView
 ## 1.进度条控制
 
 ​开发者可以在config.js中，控制LoadingView的背景色、字体颜色、Tips等。  
