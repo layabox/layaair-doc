@@ -14,5 +14,5 @@
     "js/drawJellyfish.js",
     "js/drawScene.js"
     ],
-	"screenorientation":"landscape"
+	"screenorientation":"sensor_landscape"
 }

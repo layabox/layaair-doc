@@ -3,5 +3,5 @@
     "build/three.js",
 	"perf_doublesided.js"
     ],
-	"screenorientation":"landscape"
+	"screenorientation":"sensor_landscape"
 }

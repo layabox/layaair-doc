@@ -1,0 +1,27 @@
+{
+	"scripts":[
+    "wxhelper.js",
+    "tdl/base.js",
+    "tdl/buffers.js",
+    "tdl/fast.js",
+    "tdl/clock.js",
+    "tdl/io.js",
+    "tdl/log.js",
+    "tdl/math.js",
+    "tdl/misc.js",
+    "tdl/models.js",
+    "tdl/particles.js",
+    "tdl/primitives.js",
+    "tdl/programs.js",
+    "tdl/screenshot.js",
+    "tdl/shader.js",
+    "tdl/string.js",
+    "tdl/sync.js",
+    "tdl/textures.js",
+    "tdl/webgl.js",
+    "aquarium-shader.js",
+    "aquarium-common.js",
+    "aquarium.js"
+    ],
+	"screenorientation":"sensor_landscape"
+}
