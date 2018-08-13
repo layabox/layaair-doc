@@ -6,11 +6,9 @@
 
 Laya.display.text 中的关于文本样式的API参数：
 
-![image.png](http://old.ldc.layabox.com/uploadfile/image/20170215/1487127187988736.png)
+![1.png](img/1.png)
 
-![image.png](http://old.ldc.layabox.com/uploadfile/image/20170215/1487127220597758.png)
-
-![image.png](http://old.ldc.layabox.com/uploadfile/image/20170215/1487127321516833.png)
+![2.png](img/2.png)
 
 ```java
 package {
@@ -35,11 +33,11 @@ package {
 
 接着我们给我们的文本添加一些其他的字体样式，粗体、斜体、字体大小等。
 
-![image.png](http://old.ldc.layabox.com/uploadfile/image/20170215/1487127744336222.png)
+![3](img/3.png) 
 
-![image.png](http://old.ldc.layabox.com/uploadfile/image/20170215/1487127760332130.png)
+![3](img/4.png) 
 
-![image.png](http://old.ldc.layabox.com/uploadfile/image/20170215/1487127830163998.png)
+
 
 ```java
 package {
@@ -74,6 +72,6 @@ package {
 }
 ```
 
-![image.png](http://old.ldc.layabox.com/uploadfile/image/20170215/1487128553866671.png)
+![5](img/5.png)
 
 这里我们就可以看到字体样式、字体大小有明显的变化，文本框的最外围又一圈浅蓝色的边框，文本区的背景变为红色。有兴趣的可以修改之中的数值，更深一步的理解这些属性的使用方法。
