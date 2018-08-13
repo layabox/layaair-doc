@@ -71,7 +71,7 @@
 
 下面是一个完整的示例运行的效果。        
 
-![blob.png](http://old.ldc.layabox.com/uploadfile/image/20170104/1483538174403712.png)
+![8.png](img/8.png)
 
  完整代码如下：
 
