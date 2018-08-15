@@ -10,7 +10,7 @@
 
 `Ease`类的API中对缓动函数进行了基础的介绍，点击链接可直接查看API：[https://layaair.ldc.layabox.com/api/?category=Core&class=laya.utils.Ease](https://layaair.ldc.layabox.com/api/?category=Core&class=laya.utils.Ease)
 
-`Ease`类的API中的各个缓动函数效果可以查看演示DEMO，链接：[https://layaair.ldc.layabox.com/demo/?Tween_EaseFunctionsDemo](https://layaair.ldc.layabox.com/demo/?Tween_EaseFunctionsDemo)
+`Ease`类的API中的各个缓动函数效果可以查看演示DEMO，链接：https://layaair.ldc.layabox.com/demo/?category=2d&group=Tween&name=EaseFunctionsDemo 
 
 
 
