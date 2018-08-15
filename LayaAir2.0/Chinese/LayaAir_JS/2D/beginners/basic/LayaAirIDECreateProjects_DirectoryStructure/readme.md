@@ -56,7 +56,7 @@
 
 #### 2.1.2  `.laya/gulpfile.js` 文件说明
 
-　　`gulpfile.js`文件是利用 Node.js 流的威力基于gulp的，是ide编译需要用到的文件，你可以快速构建项目并减少频繁的 IO 操作 通过代码优于配置的策略，让简单的任务简单，复杂的任务可管理。
+　　`gulpfile.js`新版IDE使用gulpfile.js进行编译，编译过程在gulpfile.js内定义，可以自定义自己的流程，轻松扩展编译调试流程.
 
 
 
