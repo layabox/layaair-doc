@@ -1,26 +1,26 @@
 [
   {
-    "name": "LayaAir IDE 1.7.19.1 beta",
-    "url": "1.7.19.1beta.md",
-    "date":"2018-5-23",
+    "name": "LayaAir IDE 1.7.20 beta",
+    "url": "1.7.20beta.md",
+    "date": "2018-8-17",
     "download": {
-      "apple": "http://ldc.layabox.com/download/1.7.19.1/darwin/LayaAirIDE_beta.zip",
-      "windows": "http://ldc.layabox.com/download/1.7.19.1/win/LayaAirIDE_beta.zip"
+      "apple": "http://ldc.layabox.com/download/1.7.20/darwin/LayaAirIDE_beta.zip",
+      "windows": "http://ldc.layabox.com/download/1.7.20/win/LayaAirIDE_beta.zip"
     }
   },
   {
-    "name": "LayaAir IDE 1.7.19 beta",
-    "url": "1.7.19beta.md",
-    "date":"2018-5-18",
+    "name": "LayaAir IDE 1.7.19",
+    "url": "1.7.19.md",
+    "date": "2018-8-17",
     "download": {
-      "apple": "http://ldc.layabox.com/download/1.7.19/darwin/LayaAirIDE_beta.zip",
-      "windows": "http://ldc.layabox.com/download/1.7.19/win/LayaAirIDE_beta.zip"
+      "apple": "http://ldc.layabox.com/download/1.7.19/darwin/LayaAirIDE.zip",
+      "windows": "http://ldc.layabox.com/download/1.7.19/win/LayaAirIDE.zip"
     }
   },
   {
     "name": "LayaAir IDE 1.7.18",
     "url": "1.7.18.md",
-    "date":"2018-5-18",
+    "date": "2018-5-18",
     "download": {
       "apple": "http://ldc.layabox.com/download/1.7.18/darwin/LayaAirIDE.zip",
       "windows": "http://ldc.layabox.com/download/1.7.18/win/LayaAirIDE.zip"
@@ -29,7 +29,7 @@
   {
     "name": "LayaAir IDE 1.7.17",
     "url": "1.7.17.md",
-    "date":"2018-4-14",
+    "date": "2018-4-14",
     "download": {
       "apple": "http://ldc.layabox.com/download/1.7.17/darwin/LayaAirIDE.zip",
       "windows": "http://ldc.layabox.com/download/1.7.17/win/LayaAirIDE.zip"
@@ -38,7 +38,7 @@
   {
     "name": "LayaAir IDE 1.7.16",
     "url": "1.7.16.md",
-    "date":"2018-3-9",
+    "date": "2018-3-9",
     "download": {
       "apple": "http://ldc.layabox.com/download/1.7.16/darwin/LayaAirIDE.zip?v=2",
       "windows": "http://ldc.layabox.com/download/1.7.16/win/LayaAirIDE.zip?v=2"
@@ -47,7 +47,7 @@
   {
     "name": "LayaAir IDE 1.7.15",
     "url": "1.7.15.md",
-    "date":"2018-1-26",
+    "date": "2018-1-26",
     "download": {
       "apple": "http://ldc.layabox.com/download/1.7.15/darwin/LayaAirIDE.zip",
       "windows": "http://ldc.layabox.com/download/1.7.15/win/LayaAirIDE.zip"
@@ -56,7 +56,7 @@
   {
     "name": "LayaAir IDE 1.7.14 beta",
     "url": "1.7.14beta.md",
-    "date":"2017-12-29",
+    "date": "2017-12-29",
     "download": {
       "apple": "http://ldc.layabox.com/download/1.7.14/darwin/LayaAirIDE_beta.zip",
       "windows": "http://ldc.layabox.com/download/1.7.14/win/LayaAirIDE_beta.zip"
@@ -65,7 +65,7 @@
   {
     "name": "LayaAir IDE 1.7.13",
     "url": "1.7.13.md",
-    "date":"2017-11-27",
+    "date": "2017-11-27",
     "download": {
       "apple": "http://ldc.layabox.com/download/1.7.13/darwin/LayaAirIDE.zip",
       "windows": "http://ldc.layabox.com/download/1.7.13/win/LayaAirIDE.zip"
@@ -74,7 +74,7 @@
   {
     "name": "LayaAir IDE 1.7.12",
     "url": "1.7.12.md",
-    "date":"2017-11-27",
+    "date": "2017-11-27",
     "download": {
       "apple": "http://ldc.layabox.com/download/1.7.12/darwin/LayaAirIDE.zip",
       "windows": "http://ldc.layabox.com/download/1.7.12/win/LayaAirIDE.zip"
@@ -83,7 +83,7 @@
   {
     "name": "LayaAir IDE 1.7.11",
     "url": "1.7.11.md",
-    "date":"2017-10-29",
+    "date": "2017-10-29",
     "download": {
       "apple": "http://ldc.layabox.com/download/1.7.11/darwin/LayaAirIDE.zip",
       "windows": "http://ldc.layabox.com/download/1.7.11/win/LayaAirIDE.zip"
@@ -92,7 +92,7 @@
   {
     "name": "LayaAir IDE 1.7.10",
     "url": "1.7.10.md",
-    "date":"2017-09-16",
+    "date": "2017-09-16",
     "download": {
       "apple": "http://ldc.layabox.com/download/1.7.10/darwin/LayaAirIDE.zip?v1",
       "windows": "http://ldc.layabox.com/download/1.7.10/win/LayaAirIDE.zip?v1"
@@ -101,7 +101,7 @@
   {
     "name": "LayaAir IDE 1.7.9",
     "url": "1.7.9.md",
-    "date":"2017-08-25",
+    "date": "2017-08-25",
     "download": {
       "apple": "http://ldc.layabox.com/download/LayaAirIDEMac_1.7.9.zip?v1",
       "windows": "http://ldc.layabox.com/download/LayaAirIDE_1.7.9.zip?v1"
@@ -110,7 +110,7 @@
   {
     "name": "LayaAir IDE 1.7.8",
     "url": "1.7.8.md",
-    "date":"2017-08-05",
+    "date": "2017-08-05",
     "download": {
       "apple": "http://ldc.layabox.com/download/LayaAirIDEMac_1.7.8.zip",
       "windows": "http://ldc.layabox.com/download/LayaAirIDE_1.7.8.zip"
@@ -119,7 +119,7 @@
   {
     "name": "LayaAir IDE 1.7.7",
     "url": "1.7.7.md",
-    "date":"2017-07-15",
+    "date": "2017-07-15",
     "download": {
       "apple": "http://ldc.layabox.com/download/LayaAirIDEMac_1.7.7.zip",
       "windows": "http://ldc.layabox.com/download/LayaAirIDE_1.7.7.zip"
@@ -128,7 +128,7 @@
   {
     "name": "LayaAir IDE 1.7.6",
     "url": "1.7.6.md",
-    "date":"2017-06-26",
+    "date": "2017-06-26",
     "download": {
       "apple": "http://ldc.layabox.com/download/LayaAirIDEMac_1.7.6.zip",
       "windows": "http://ldc.layabox.com/download/LayaAirIDE_1.7.6.zip"
@@ -137,7 +137,7 @@
   {
     "name": "LayaAir IDE 1.7.5",
     "url": "1.7.5.md",
-    "date":"2017-06-03",
+    "date": "2017-06-03",
     "download": {
       "apple": "http://ldc.layabox.com/download/LayaAirIDEMac_1.7.5.zip",
       "windows": "http://ldc.layabox.com/download/LayaAirIDE_1.7.5.zip"
@@ -146,7 +146,7 @@
   {
     "name": "LayaAir IDE 1.7.4",
     "url": "1.7.4.md",
-    "date":"2017-05-13",
+    "date": "2017-05-13",
     "download": {
       "apple": "http://ldc.layabox.com/download/LayaAirIDEMac_1.7.4.zip",
       "windows": "http://ldc.layabox.com/download/LayaAirIDE_1.7.4.zip"
@@ -155,7 +155,7 @@
   {
     "name": "LayaAir IDE 1.7.3",
     "url": "1.7.3.md",
-    "date":"2017-04-06",
+    "date": "2017-04-06",
     "download": {
       "apple": "http://ldc.layabox.com/download/LayaAirIDEMac_1.7.3.zip",
       "windows": "http://ldc.layabox.com/download/LayaAirIDE_1.7.3.zip"
@@ -164,7 +164,7 @@
   {
     "name": "LayaAir IDE 1.7.2",
     "url": "1.7.2.md",
-    "date":"2017-03-18",
+    "date": "2017-03-18",
     "download": {
       "apple": "http://ldc.layabox.com/download/LayaAirIDEMac_1.7.2.zip",
       "windows": "http://ldc.layabox.com/download/LayaAirIDE_1.7.2.zip"
@@ -173,97 +173,97 @@
   {
     "name": "LayaAir IDE 1.7.1",
     "url": "1.7.1.md",
-    "date":"2017-03-04",
+    "date": "2017-03-04",
     "download": {
       "apple": "http://ldc.layabox.com/download/LayaAirIDEMac_1.7.1.zip",
       "windows": "http://ldc.layabox.com/download/LayaAirIDE_1.7.1.zip"
-    }   
+    }
   },
   {
     "name": "LayaAir IDE 1.7.0",
     "url": "1.7.0.md",
-    "date":"2017-02-21",
+    "date": "2017-02-21",
     "download": {
       "apple": "http://ldc.layabox.com/download/LayaAirIDEMac_1.7.0.zip",
       "windows": "http://ldc.layabox.com/download/LayaAirIDE_1.7.0.zip"
-    }   
+    }
   },
   {
     "name": "LayaAir IDE 1.6.2",
     "url": "1.6.2.md",
-    "date":"2017-02-18",
+    "date": "2017-02-18",
     "download": {
       "apple": "http://ldc.layabox.com/download/LayaAirIDEMac_1.6.2.zip",
       "windows": "http://ldc.layabox.com/download/LayaAirIDE_1.6.2.zip"
-    }   
+    }
   },
   {
     "name": "LayaAir IDE 1.6.1",
     "url": "1.6.1.md",
-    "date":"2017-01-20",
+    "date": "2017-01-20",
     "download": {
       "apple": "http://ldc.layabox.com/download/LayaAirIDEMac_1.6.1.zip",
       "windows": "http://ldc.layabox.com/download/LayaAirIDE_1.6.1.zip"
-    }   
+    }
   },
   {
     "name": "LayaAir IDE 1.6.0",
     "url": "1.6.0.md",
-    "date":"2016-12-23",
+    "date": "2016-12-23",
     "download": {
       "apple": "http://ldc.layabox.com/download/LayaAirIDEMac_1.6.0.zip",
       "windows": "http://ldc.layabox.com/download/LayaAirIDE_1.6.0.zip"
-    }   
+    }
   },
   {
     "name": "LayaAir IDE 1.5.5",
     "url": "1.5.5.md",
-    "date":"2016-12-09",
+    "date": "2016-12-09",
     "download": {
       "apple": "http://ldc.layabox.com/download/LayaAirIDEMac_1.5.5.zip",
       "windows": "http://ldc.layabox.com/download/LayaAirIDE_1.5.5.zip"
-    }   
+    }
   },
   {
     "name": "LayaAir IDE 1.5.4",
     "url": "1.5.4.md",
-    "date":"2016-11-26",
+    "date": "2016-11-26",
     "download": {
       "apple": "http://ldc.layabox.com/download/LayaAirIDEMac_1.5.4.zip",
       "windows": "http://ldc.layabox.com/download/LayaAirIDE_1.5.4.zip"
-    }   
+    }
   },
   {
     "name": "LayaAir IDE 1.5.3",
     "url": "1.5.3.md",
-    "date":"2016-11-12",
+    "date": "2016-11-12",
     "download": {
       "apple": "http://ldc.layabox.com/download/LayaAirIDEMac_1.5.3.zip",
       "windows": "http://ldc.layabox.com/download/LayaAirIDE_1.5.3.zip"
-    }   
+    }
   },
   {
     "name": "LayaAir IDE 1.5.2",
     "url": "1.5.2.md",
-    "date":"2016-10-29",
+    "date": "2016-10-29",
     "download": {
       "apple": "http://ldc.layabox.com/download/LayaAirIDEMac_1.5.2.zip",
       "windows": "http://ldc.layabox.com/download/LayaAirIDE_1.5.2.zip"
-    }  
+    }
   },
   {
     "name": "LayaAir IDE 1.5.0",
     "url": "1.5.0.md",
-    "date":"2016-10-15",
+    "date": "2016-10-15",
     "download": {
       "apple": "http://ldc.layabox.com/download/LayaAirIDEMac_1.5.0.zip",
       "windows": "http://ldc.layabox.com/download/LayaAirIDE_1.5.0.zip"
-    }  
+    }
   },
   {
     "name": "LayaAir IDE 1.4.0",
     "url": "1.4.0.md",
-    "date":"2016-09-28",
+    "date": "2016-09-28",
     "download": {
       "apple": "http://ldc.layabox.com/download/LayaAirIDEMac_1.4.0.zip",
       "windows": "http://ldc.layabox.com/download/LayaAirIDE_1.4.0.zip"
