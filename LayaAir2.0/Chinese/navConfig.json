@@ -422,11 +422,6 @@
 				"name_3_file": "readme.md"
 			},
 			{
-				"name_3_name": "模板库",
-				"name_3_url": "Chinese/LayaAir_AS3/IDE/Design_Mode/Template/",
-				"name_3_file": "readme.md"
-			},
-			{
 				"name_3_name": "场景编辑器",
 				"name_3_url": "Chinese/LayaAir_AS3/IDE/Design_Mode/Scene/",
 				"name_3_file": "readme.md"
@@ -587,16 +582,6 @@
 				"name_3_name": "runTime使用",
 				"name_3_url": "Chinese/LayaAir_AS3/IDE/ScriptUse/runtime/",
 				"name_3_file": "readme.md"
-			},
-			{
-				"name_3_name": "扩展脚本的使用",
-				"name_3_url": "Chinese/LayaAir_AS3/IDE/ScriptUse/extendScript/",
-				"name_3_file": "readme.md"
-			},
-			{
-				"name_3_name": "附加脚本的使用",
-				"name_3_url": "Chinese/LayaAir_AS3/IDE/ScriptUse/additionalScript/",
-				"name_3_file": "readme.md"
 			}]
 		}]
 	},
@@ -690,11 +675,6 @@
 			{
 				"name_3_name": "LayaAir和原生DOM交互",
 				"name_3_url": "Chinese/LayaAir_AS3/2D/advanced/extension_modules/DOM/",
-				"name_3_file": "readme.md"
-			},
-			{
-				"name_3_name": "使用layaair-cmd",
-				"name_3_url": "Chinese/LayaAir_AS3/2D/advanced/extension_modules/LayaCMD/",
 				"name_3_file": "readme.md"
 			},
 			{
@@ -1562,11 +1542,6 @@
 				"name_3_file": "readme.md"
 			},
 			{
-				"name_3_name": "模板库",
-				"name_3_url": "Chinese/LayaAir_TS/IDE/Design_Mode/Template/",
-				"name_3_file": "readme.md"
-			},
-			{
 				"name_3_name": "场景编辑器",
 				"name_3_url": "Chinese/LayaAir_TS/IDE/Design_Mode/Scene/",
 				"name_3_file": "readme.md"
@@ -1728,16 +1703,6 @@
 				"name_3_name": "runTime使用",
 				"name_3_url": "Chinese/LayaAir_TS/IDE/ScriptUse/runtime/",
 				"name_3_file": "readme.md"
-			},
-			{
-				"name_3_name": "扩展脚本的使用",
-				"name_3_url": "Chinese/LayaAir_TS/IDE/ScriptUse/extendScript/",
-				"name_3_file": "readme.md"
-			},
-			{
-				"name_3_name": "附加脚本的使用",
-				"name_3_url": "Chinese/LayaAir_TS/IDE/ScriptUse/additionalScript/",
-				"name_3_file": "readme.md"
 			}]
 		}]
 	},
@@ -1750,11 +1715,6 @@
 			{
 				"name_3_name": "LayaAir DebugPanel 调试工具",
 				"name_3_url": "Chinese/LayaAir_TS/2D/advanced/debug/DebugPanel/",
-				"name_3_file": "readme.md"
-			},
-			{
-				"name_3_name": "LayaAir DebugTool 调试工具",
-				"name_3_url": "Chinese/LayaAir_TS/2D/advanced/debug/DebugTool/",
 				"name_3_file": "readme.md"
 			}]
 		},
@@ -2624,11 +2584,6 @@
 				"name_3_file": "readme.md"
 			},
 			{
-				"name_3_name": "模板库",
-				"name_3_url": "Chinese/LayaAir_JS/IDE/Design_Mode/Template/",
-				"name_3_file": "readme.md"
-			},
-			{
 				"name_3_name": "场景编辑器",
 				"name_3_url": "Chinese/LayaAir_JS/IDE/Design_Mode/Scene/",
 				"name_3_file": "readme.md"
@@ -2789,16 +2744,6 @@
 				"name_3_name": "runTime使用",
 				"name_3_url": "Chinese/LayaAir_JS/IDE/ScriptUse/runtime/",
 				"name_3_file": "readme.md"
-			},
-			{
-				"name_3_name": "扩展脚本的使用",
-				"name_3_url": "Chinese/LayaAir_JS/IDE/ScriptUse/extendScript/",
-				"name_3_file": "readme.md"
-			},
-			{
-				"name_3_name": "附加脚本的使用",
-				"name_3_url": "Chinese/LayaAir_JS/IDE/ScriptUse/additionalScript/",
-				"name_3_file": "readme.md"
 			}]
 		}]
 	},
@@ -2811,11 +2756,6 @@
 			{
 				"name_3_name": "LayaAir DebugPanel 调试工具",
 				"name_3_url": "Chinese/LayaAir_JS/2D/advanced/debug/DebugPanel/",
-				"name_3_file": "readme.md"
-			},
-			{
-				"name_3_name": "LayaAir DebugTool 调试工具",
-				"name_3_url": "Chinese/LayaAir_JS/2D/advanced/debug/DebugTool/",
 				"name_3_file": "readme.md"
 			}]
 		},
