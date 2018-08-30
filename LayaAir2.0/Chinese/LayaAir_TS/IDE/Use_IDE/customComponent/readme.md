@@ -7,7 +7,7 @@
 
 组件目录位于LayaAirIDE根目录下的“\resources\app\out\vs\layaEditor\renders”目录内。如图1所示：
 
-![1](img/1.jpg) <br />
+![1](img/1.png) <br />
 （图1）
 
 **组件目录结构介绍**：
@@ -76,7 +76,7 @@
 
 　　先用LayaAirIDE创建一个TS项目（创建项目请查看相关教程，本篇不再详解）。然后将下载的zip包解压，把layaeditor.d.ts文件放在libs目录下。如图2所示：
 
-![2](img/2.jpg) <br />
+![2](img/2.png) <br />
 （图2）
 
 
@@ -87,7 +87,7 @@
 
 　　 先创建一个组件目录(包)"component"，方便未来其它组件的分类，然后在component目录下创建一个缩放按钮类ScaleButton.ts，如图3所示：
 
-![3](img/3.jpg)<br />
+![3](img/3.png)<br />
 （图3）
 
 创建完成后，我们开始编写缩放组件的代码如下：
@@ -153,28 +153,28 @@ Tips：xml的配置信息内容解释参照上文的组件xml说明。
 
 　　xml配置文件编写完成后，直接保存在自定义组件的目录（LayaAirIDE根目录下的“resources\app\out\vs\layaEditor\renders\custom”内），组件xml的命名需要与组件js保持一致，这里我们命名为ScaleButton.xml。然后我们将分包编译生成的ScaleButton.js（"项目根目录/bin/js"目录下，参照图4）复制到自定义组件的目录。如图5所示：
 
-![5](img/5.jpg)<br />
+![5](img/4.png)<br />
 （图5）
 
 #### 4.2在IDE组件面板中显示
 
 　　打开IDE组件目录（LayaAirIDE根目录\resources\app\out\vs\layaEditor\laya\basics）新建一个自定义组件存放目录Custom，用于存放自义定的组件，如图6所示。
 
-![6](img/6.jpg)<br />
+![6](img/5.png)<br />
 (图6)
 
 
 
-　　然后在Custom目录内放一个以sButton命名的png 图标（建议尺寸为16*16），如图7所示，完成该步骤即可在IDE的组件面板中找到我们自己创建的缩放按钮组件，如图8所示。
+　　然后在Custom目录内放一个以ScaleButton命名的png 图标（建议尺寸为16*16），如图7所示，完成该步骤即可在IDE的组件面板中找到我们自己创建的缩放按钮组件，如图8所示。
 
 
 
-![7](img/7.jpg)<br />
+![7](img/6.png)<br />
 （图7）图标命名对应组件xml中resName属性的值
 
 
 
-![8](img/8.jpg)<br />
+![8](img/7.png)<br />
 （图8）IDE的组件名对应组件xml的标记名
 
 **Tips:** 额外提醒的是，组件的icon图标并非是"LayaAirIDE根目录\resources\app\out\vs\layaEditor\laya\basics\Custom"目录中的sButton.png。icon图标位于LayaAirIDE根目录下的"resources\app\out\vs\layaEditor\laya\icons\components"目录内，对应xml中icon属性的值，上文中的xml说明已进行介绍。如果创建自己的icon图标，参照components目录内的icon尺寸标识制作，放到components目录内，然后在xml中设置对应的文件名即可。
@@ -187,16 +187,16 @@ Tips：xml的配置信息内容解释参照上文的组件xml说明。
 
 　　为了方便项目使用带skin资源的组件，我们继续介绍如何在资源面板中显示组件。首先我们先准备一张skin资源，由于上文示例的自定义组件是缩放按钮，我们直接复制任意一张图片即可体验缩放按钮组件的缩放效果。图片资源复制到"项目根目录\laya\assets"目录下即可，图片资源命名为xml中resName的属性值sButton或以sButton为前缀，如图9所示。
 
-![9](img/9.jpg)<br />
+![9](img/9.png)<br />
 (图9)
 
 
 
-　　资源复制完成后，我们再次打开LayaAirIDE的资源管理面板，点击刷新资源树按钮即可看到刚刚复制的sButton_1.png，点击该图片，我们可以看到图片的预览。说明我们带skin默认值的自定义组件成功的添加到项目的资源管理面板中，如图10所示。
+　　资源复制完成后，我们再次打开LayaAirIDE的资源管理面板，点击刷新资源树按钮即可看到刚刚复制的ScaleButton_monkey.png，点击该图片，我们可以看到图片的预览。说明我们带skin默认值的自定义组件成功的添加到项目的资源管理面板中，如图10所示。
 
 
 
-![10](img/10.jpg)<br />
+![10](img/8.png)<br />
 (图10)
 
 　　Tips：资源面板中显示的组件仅用于当前项目，添加到组件面板中才是所有项目的通用组件。
@@ -211,14 +211,14 @@ Tips：xml的配置信息内容解释参照上文的组件xml说明。
 
 　　在资源管理面板中找到sButton为前缀的组件，直接拖拽到页面，点击可看到缩放效果，如图11。
 
-![11](img/11.gif)<br />
+![11](img/ide11.gif)<br />
 （图11）
 
 ##### 4.4.2从组件面板中使用
 
 　　在组件面板中找到ScaleButton组件，直接拖拽到页面，点击可看到缩放效果，如图12。
 
-![12](img/12.gif)<br />
+![12](img/ide12.gif)<br />
 (图12)组件面板中不含图片资源，需要通过属性skin设置
 
 
@@ -233,14 +233,14 @@ Tips：xml的配置信息内容解释参照上文的组件xml说明。
 
 　　复制一张图片到项目的资源路径"项目根目录/res/img"目录下，如图13所示。
 
-![13](img/13.jpg)<br />
+![13](img/12.png)<br />
 (图13)
 
 #### 5.2修改组件的类引用
 
 　　打开上文编写的缩放按钮代码ScaleButton.ts，将原来的组件库引入“import Button = laya.editorUI.Button;”改为引擎的UI库引入“import Button = laya.ui.Button;”，其它保持不变。因为 laya.editorUI是用于LayaAirIDE的，而项目运行必须引用引擎库laya.ui。如图14所示：
 
-![14](img/14.jpg)<br />
+![14](img/13.png)<br />
 (图14)
 
 #### 5.3创建一个入口类
@@ -248,27 +248,53 @@ Tips：xml的配置信息内容解释参照上文的组件xml说明。
 　　在“项目根目录/src”下创建一个入口类Main.ts，编码如下：
 
 ```typescript
+import GameConfig from "./GameConfig";
+import ScaleButton from"./component/ScaleButton";
 class Main {
-    constructor() {
-        //初始化舞台
-        Laya.init(600,400);
-        //预加载资源，回调
-        Laya.loader.load("res/img/monkey1.png",Laya.Handler.create(this,this.onLoaded),null,Laya.Loader.IMAGE)
-    }
-    private onLoaded():void{
-        var scaleButton:component.ScaleButton = new component.ScaleButton();
-        //组件skin的资源路径
-        scaleButton.skin = "res/img/monkey1.png";
-        //添加到舞台上
-        Laya.stage.addChild(scaleButton);
-    }
+	constructor() {
+		//根据IDE设置初始化引擎		
+		if (window["Laya3D"]) Laya3D.init(GameConfig.width, GameConfig.height);
+		else Laya.init(GameConfig.width, GameConfig.height, Laya["WebGL"]);
+		Laya["Physics"] && Laya["Physics"].enable();
+		Laya["DebugPanel"] && Laya["Physics"].enable();
+		Laya.stage.scaleMode = GameConfig.scaleMode;
+		Laya.stage.screenMode = GameConfig.screenMode;
+
+		//打开调试面板（通过IDE设置调试模式，或者url地址增加debug=true参数，均可打开调试面板）
+		if (GameConfig.debug || Laya.Utils.getQueryString("debug") == "true") Laya.enableDebugPanel();
+		if (GameConfig.stat) Laya.Stat.show();
+		Laya.alertGlobalError = true;
+
+		//激活资源版本控制，version.json由IDE发布功能自动生成，如果没有也不影响后续流程
+		Laya.ResourceVersion.enable("version.json", Laya.Handler.create(this, this.onVersionLoaded), Laya.ResourceVersion.FILENAME_VERSION);
+	}
+
+	onVersionLoaded(): void {
+		//激活大小图映射，加载小图的时候，如果发现小图在大图合集里面，则优先加载大图合集，而不是小图
+		Laya.AtlasInfoManager.enable("fileconfig.json", Laya.Handler.create(this, this.onConfigLoaded));
+	}
+
+	onConfigLoaded(): void {
+		//加载IDE指定的场景
+		//GameConfig.startScene && Laya.Scene.open(GameConfig.startScene);
+		Laya.loader.load("res/img/monkey.png",Laya.Handler.create(this,this.onLoaded),null,Laya.Loader.IMAGE)
+	}
+
+	onLoaded():void{
+		var scaleButton:ScaleButton = new ScaleButton();
+		scaleButton.skin = "res/img/monkey.png";
+		Laya.stage.addChild(scaleButton);
+
+	}
 }
+//激活启动类
 new Main();
+
 ```
 
-　　将Main在index.html文件中设置为启动类，如图15所示。然后在浏览器中点击能够实现缩放效果时，如图16所示。说明这是有效的自定义组件，可以放心的添加到IDE中使用了。（注意：正常的步骤是调试在分包之前，而本篇先介绍的分包操作，如果直接调试会出现报错，所以在编译运行之前，需要先将分包配置文件module.def改名或删除）
+　　将Main在.laya/gulpfile.js文件中设置为启动类，如图15所示。然后在浏览器中点击能够实现缩放效果时，如图16所示。说明这是有效的自定义组件，可以放心的添加到IDE中使用了。（注意：正常的步骤是调试在分包之前，而本篇先介绍的分包操作，如果直接调试会出现报错，所以在编译运行之前，需要先将分包配置文件module.def改名或删除）
 
-![15](img/15.jpg)<br />
+![15](img/14.png)<br />
 (图15)
 
 ![16](img/16.gif)<br />
@@ -294,12 +320,12 @@ View.regComponent("ScaleButton",component.ScaleButton);//注册组件
 
 如果自定义的组件是容器类组件，如果需要在项目中使用，则需要在LayaAir IDE 项目的编辑器模式下，按F9打开项目设置面板，在“容器列表”中添加自定义的容器组件类名（以逗号间隔），如图17所示。
 
-![17](img/17.jpg)<br />
+![17](img/16.png)<br />
 (图17)
 
 如果自定义的组件是页面类组件，如果需要在项目中使用，则需要在此LayaAir IDE 项目的编辑器模式下，打开项目设置面板，在“页面列表”中添加自定义的页面组件类名（以逗号间隔），如图18所示。
 
-![18](img/18.jpg)<br />
+![18](img/17.png)<br />
 （图18）
 
 本篇至此结束，如有疑问请到社区提出：http://ask.layabox.com
