@@ -10,7 +10,13 @@
 
 ### 一、给页面中的组件设置runtime类
 
-在页面管理目录下创建两个UI页面，分别叫MonkeyPage和BGPage。两个UI页面中各拖入一张Image组件，设置runtime属性为game.ImageRunTime。如图1图2所示：
+在页面管理目录下创建两个UI页面，分别叫MonkeyPage和BGPage。如下图，
+
+注意！！导出类型一定要设置为分离模式，只有这个模式可以生成UI类脚本，默认不会生成。
+
+![1](img\ide1.png)
+
+两个UI页面中各拖入一张Image组件，设置runtime属性为game.ImageRunTime。如图1图2所示：
 
 ![1](img\ide3.png)(图1)
 
