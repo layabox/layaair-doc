@@ -125,7 +125,7 @@ var ani:Animator=role3D.getChildAt(0).getComponentByType(Animator) as Animator;
 
 查看Animator动画组件中play()方法，具体方法参数如下：
 
-**Tips：2.0.0版后，play()方法取消了loop是否循环、开始帧率、结束帧率参数。动画是否循环请在unity编辑器动画属性中进行勾选设置，导出后引擎将遵循其设置进行动画播放。见图5、6中loop Time选择框！**
+**Tips：1.7.10版后，play()方法取消了loop是否循环、开始帧率、结束帧率参数。动画是否循环请在unity编辑器动画属性中进行勾选设置，导出后引擎将遵循其设置进行动画播放。见图5、6中loop Time选择框！**
 
 ```java
 /**

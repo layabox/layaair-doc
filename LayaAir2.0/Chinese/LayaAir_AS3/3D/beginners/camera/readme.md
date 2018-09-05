@@ -172,7 +172,7 @@ camera.transform.lookAt	(box.transform.position,new Vector3(0,-1,0));
 
 ```java
 	//设置背景颜色
-	camera.clearColor = new Vector3(0.5,0.5,0.6);
+	camera.clearColor = new Vector4(0.5,0.5,0.6,1);
 ```
 
 **天空盒**

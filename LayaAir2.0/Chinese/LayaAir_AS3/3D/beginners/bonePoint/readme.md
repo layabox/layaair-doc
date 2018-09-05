@@ -46,8 +46,8 @@ Tips：代码添加骨骼动画之前，需要美术提供需要关联骨骼节�
 
   //需要挂点的3D对象
   var box:MeshSprite3D=new MeshSprite3D(new BoxMesh(1,1,1));
-  //将3D对象加载到scene中（一定要加入到场景）
-  scene.addChild(box);
+  //将3D对象加载到角色中（一定要加入到角色的Animator模型上）
+  monkey.getChildAt(0).addChild(box);
   //将挂点物品添加到某个骨骼上（美术提供骨骼的名称）
   monkeyAni.linkSprite3DToAvatarNode("RHand",box);
 
@@ -72,99 +72,87 @@ Tips：代码添加骨骼动画之前，需要美术提供需要关联骨骼节�
 武器脚本WeaponScript.as实现魔法飞行和销毁。全部代码如下：
 
 ```typescript
-package
-{
-	import laya.d3.component.Animator;
-	import laya.d3.component.Script;
-	import laya.d3.core.MeshSprite3D;
-	import laya.d3.core.Sprite3D;
-	import laya.d3.core.scene.Scene;
-	import laya.display.Sprite;
-	import laya.display.Stage;
-	import laya.events.Event;
-	import laya.utils.Handler;
-	import laya.utils.Stat;
+package {
+  import laya.d3.core.Camera;
+  import laya.d3.core.MeshSprite3D;
+  import laya.d3.core.Sprite3D;
+  import laya.d3.core.light.DirectionLight;
+  import laya.d3.math.Vector3;
+  import laya.d3.math.Vector4;
+  import laya.d3.resource.models.BoxMesh;
+  import laya.display.Stage;
+  import laya.utils.Stat;
+  import laya.d3.core.scene.Scene3D;
+  import laya.d3.core.material.BlinnPhongMaterial;
+  import laya.webgl.resource.Texture2D;
+  import laya.utils.Handler;
+  import laya.d3.component.Animator;
+  import laya.d3.component.Script3D;
+  public class LayaAir3D {
+    public var box :MeshSprite3D;
+  public var scene:Scene3D;
+  public var weaponIsClone:Boolean = false;
+  public var heroAni:Animator;
+  public function LayaAir3D() {
 
-	public class Laya3D_BonePoint
-	{
-		public var scene:Scene;		
-		/**角色动画组件**/	
-		public var monkeyAni:Animator;
-		/**骨骼挂点绑定的武器**/		
-		public var weapon:Sprite3D;
-		/**武器克隆**/	
-		public var weaponClone:Sprite3D;
-		/**武器是否已克隆**/
-		private var weaponIsClone:Boolean=false; 		
-		
-		public function Laya3D_BonePoint()
-		{
-			//初始化引擎
-			Laya3D.init(1280, 720,true);			
-			//适配模式
-			Laya.stage.scaleMode = Stage.SCALE_FULL;
-			Laya.stage.screenMode = Stage.SCREEN_NONE;			
-			//开启统计信息
-			Stat.show();
-			
-			//加载3D资源
-			Laya.loader.create("LayaScene_monkey/monkey.ls",Handler.create(this,onComplete));
-		}
-		
-		//资源加载完成回调
-		private function onComplete():void
-		{
-			//创建场景
-			scene=Laya.loader.getRes("LayaScene_monkey/monkey.ls");
-			Laya.stage.addChild(scene);
-			
-			//从场景中获取动画模型
-			var monkey:Sprite3D=scene.getChildByName("monkey") as Sprite3D;
-			//获取动画模型中动画组件
-			this.monkeyAni=monkey.getComponentByType(Animator) as Animator;
-			
-			//获取挂点骨骼(Unity中设置的挂点骨胳会被导出，可获取)
-			var handBip:Sprite3D=monkey.getChildByName("RHand") as Sprite3D;
-			//获取挂点的武器模型
-			this.weapon=handBip.getChildByName("weapon") as Sprite3D;
-		 
-			//监听动画完成事件
-			this.monkeyAni.on(Event.COMPLETE,this,onAniComplete);
-			
-            //帧循环，用于监控动画播放的当前帧
-			Laya.timer.frameLoop(1,this,onFrame);
-		}
-		
-		private function onAniComplete():void
-		{
-			//动画播放完成后武器激活显示
-			this.weapon.active=true;
-			//动画播放完成后，设置为未克隆，方便下次克隆新武器
-			this.weaponIsClone=false;
-		}		
-			
-		//在攻击动画播放到一定帧时，克隆一个新武器特效
-		private function onFrame():void
-		{
-			//在动画35-37帧之间时克隆一个飞出的武器
-			//（不能用==35帧方式，帧率不满时可能跳帧，导致克隆失败。后期版本将支持帧标签事件，可解决此问题）
-			if(this.monkeyAni.currentFrameIndex>=35&&this.monkeyAni.currentFrameIndex<=37)
-			{
-				//确保在35-37帧之间只克隆一次
-				if(this.weaponIsClone) return;
-				//克隆新武器（模型、位置、矩阵等全被克隆）
-				var weaponClone:Sprite3D=Sprite3D.instantiate(this.weapon);
-				//为武器特效添加脚本
-				weaponClone.addComponent(WeaponScript);
-				//将克隆武器放入场景中
-				scene.addChild(weaponClone);				
-				//设置为已克隆
-				this.weaponIsClone=true;				
-				//隐藏原始武器
-				this.weapon.active=false;
-			}
-		}		
-	}
+    //初始化引擎
+    Laya3D.init(0, 0);
+
+    //适配模式
+    Laya.stage.scaleMode = Stage.SCALE_FULL;
+    Laya.stage.screenMode = Stage.SCREEN_NONE;
+
+    //开启统计信息
+    Stat.show();
+
+    //添加3D场景
+    scene = Laya.stage.addChild(new Scene3D()) as Scene3D;
+
+    //添加照相机
+    var camera:Camera = (scene.addChild(new Camera( 0, 0.1, 100))) as Camera;
+    camera.transform.translate(new Vector3(0, 3, 3));
+    camera.transform.rotate(new Vector3( -30, 0, 0), true, false);
+    camera.clearColor = null;
+
+    //添加方向光
+    var directionLight:DirectionLight = scene.addChild(new DirectionLight()) as DirectionLight;
+    directionLight.color = new Vector3(0.6, 0.6, 0.6);
+    directionLight.transform.worldMatrix.setForward(new Vector3(1, -1, 0));
+
+    box = new MeshSprite3D(new BoxMesh(0.3,0.3,0.3));
+
+    Sprite3D.load("h5/LayaScene_monkey/ACG_man.lh",Handler.create(this,function(sp:Sprite3D):void{
+      var hero:Sprite3D = scene.addChild(sp)as Sprite3D;
+      hero.getChildAt(0).addChild(box);
+      heroAni = hero.getChildAt(0).getComponent(Animator)
+      heroAni.linkSprite3DToAvatarNode("Dummy002",box);
+
+      Laya.timer.frameLoop(1,this,function():void{
+        onFrame();
+      })
+    }));
+  }
+  private function onFrame():void{ 
+    //当动画播放到百分之五十到六十之间时进行克隆
+    if (0.6>(heroAni.getCurrentAnimatorPlayState(0)._normalizedTime-Math.floor(heroAni.getCurrentAnimatorPlayState(0)._normalizedTime))>0.5)
+    {
+      if(weaponIsClone)return;
+      trace("sssssss")
+      //克隆模型（位置，矩阵，等信息全被克隆）
+      var weaponClone:Sprite3D = Sprite3D.instantiate(this.box);
+      //为模型添加在定义脚本
+      weaponClone.addComponent(WeaponScript);		
+      //把克隆的武器放入场景中
+      scene.addChild(weaponClone);
+      weaponIsClone = true;
+    }
+    else if ((heroAni.getCurrentAnimatorPlayState(0)._normalizedTime-Math.floor(heroAni.getCurrentAnimatorPlayState(0)._normalizedTime))>0.98)
+    {
+      weaponIsClone = false;
+    }
+
+  }
+}
 }
 ```
 
@@ -178,14 +166,14 @@ package {
 	import laya.d3.math.Vector4;
 	import laya.d3.math.Vector3;
 	import laya.d3.core.material.PBRSpecularMaterial;
+	import laya.d3.component.Script3D;
 
-	public class WeaponScript extends Script{
+	public class WeaponScript extends Script3D {
 		//**************** wq *****************************************
         //被脚本绑定的物体
         private var weapon:MeshSprite3D;
         //武器生命周期
-        public var lifeTime:int = 100;
-
+        public var lifeTime:int = 30;
 		public function WeaponScript() {
 
         }

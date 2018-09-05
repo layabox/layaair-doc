@@ -12,7 +12,7 @@
 
 模型网格是由点、线、面组成的三维数据，LayaAir引擎中有专门的Mesh网格数据类，将它赋予3D模型显示对象MeshSprite3D或SkinnedMeshSprite3D后就可以在场景中显示出来。
 
-目前3D制作软件较多，最主流的是3ds max与maya软件。3D模型的数据格式也较多，如FBX、3DS、OBJ等。
+目前3D制作软件较多，最主流的是3d max与maya软件。3D模型的数据格式也较多，如FBX、3DS、OBJ等。
 
 LayaAir引擎提供了模型导出工具FBXTools与unity3D导出插件，用于生成layaAir所需要的3D数据格式。建议使用unity导出插件，FBXTools工具以后将不会更新。
 

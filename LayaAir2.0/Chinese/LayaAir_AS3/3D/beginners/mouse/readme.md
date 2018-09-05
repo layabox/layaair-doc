@@ -12,7 +12,7 @@
 
 LayaAir3D引擎现支持的碰撞器有三种类型，分别是**球型碰撞器SphereCollider**，**盒型碰撞器BoxCollider**，**网格碰撞器MeshCollider**。从**碰撞检测精确度**和**消耗性能**从低到高依次为SphereCollider—BoxCollider—MeshCollider；可以根据游戏中开发需求，选择适合的碰撞器。
 
-3D显示对象代码添加碰撞器组件的方法如下（引擎1.7.12版），建议开发者不要用代码添加方试，较麻烦，可直接在Unity中添加碰撞组件导出使用。
+3D显示对象代码添加碰撞器组件的方法如下（引擎2.0版），建议开发者不要用代码添加方试，较麻烦，可直接在Unity中添加碰撞组件导出使用。
 
 Tips：碰撞器必须添加到MeshSprite3D类型的显示对象上，不能添加到Sprite3D对象上，否则会失效。
 
@@ -180,6 +180,8 @@ public function addMouseEvent():void{
 }
 public var _outHitResult:HitResult = new HitResult();
 public function onMouseDown():void{
+	posX = point.elements[0] = MouseManager.instance.mouseX;
+	posY = point.elements[1] = MouseManager.instance.mouseY;
 //产生射线
   camera.viewportPointToRay(point,ray);
   //拿到射线碰撞的物体
@@ -193,7 +195,7 @@ public function onMouseDown():void{
   }
 ```
 
-脚本类SceneScript代码如下：
+#### 覆写脚本：
 
 **直接覆写Script3D的onMouseDown鼠标监听事件，当鼠标点击到模型时会被触发。**
 
@@ -260,9 +262,9 @@ package common{
 
 鼠标放置物体与拾取物体大致方法差不多，同样需要使用碰撞器、射线、射线检测、碰撞信息等3D元素与方法。 
 
-而创建物品时，点击模型射线与之相交后，我们可以通过碰撞信息rayCastHit.position获得点击的位置，然后将创建的物品放置此处。并且，创建物品时我们使用了克隆的方式，开发者们注意其方法。
+而创建物品时，点击模型射线与之相交后，我们可以通过碰撞信息rayCastHit.point获得点击的位置，然后将创建的物品放置此处。并且，创建物品时我们使用了克隆的方式，开发者们注意其方法。
 
-在拾取示例中我们使用了盒型碰撞器BoxCollider，在创建示例中我们使用网格碰撞器MeshCollider，它更精确，可以获取模型上的相交三角面顶点，方法为rayCastHit.trianglePositions，根据顶点位置我们可以把它画出来用于观察！
+在拾取示例中我们使用了盒型碰撞器BoxCollider，在创建示例中我们使用网格碰撞器MeshCollider，它更精确。
 
 主类代码修改如下：
 
@@ -299,16 +301,7 @@ package
 
       //加载3D资源
       Laya.loader.create([{url:"LayaScene_truck/truck.lh"},
-                          {url:"LayaScene_box/box.lh"}],Handler.create(this,onComplete));
-
-      //创建信息提示框
-      txt=new Text();
-      txt.text="还未装载货物！";
-      txt.color="#ff0000";
-      txt.bold=true;
-      txt.fontSize=30;
-      txt.pos(100,50);
-      Laya.stage.addChild(txt);			
+                          {url:"LayaScene_box/box.lh"}],Handler.create(this,onComplete));	
     }
 
     private function onComplete():void

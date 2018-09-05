@@ -16,15 +16,13 @@
 
 **enable：**是指组件是否启用，加载组件时，默认情况下是启用状态，如果修改成fasle后，首先会发送启用更改事件，然后组件的更新方法_update()停止执行。
 
-**_load(owner:Sprite3D)：**组件载入时执行方法，默认无代码。可在继承类中覆盖它，将需要初始化的逻辑代码放入其中。
+**onAwake()：**组件创建后只执行一次，默认无代码。可在继承类中覆盖它，将需要初始化的逻辑代码放入其中。
 
-**_start(state:RenderState)：**加载组件的3D对象实例化完成后，第一次更新时执行，默认无代码。可在继承类中覆盖它，将需要3D对象加载完成后的逻辑代码放入其中。
+**onStart()：**加载组件的3D对象实例化完成后，第一次更新时执行，默认无代码。可在继承类中覆盖它，将需要3D对象加载完成后的逻辑代码放入其中。
 
-例如3D显示对象异步加载时就添加了脚本，它的子模型与材质还未加载完成，如果脚本中（如构造方法、`_load()`方法中）逻辑代码获取3D显示对象的子对象或贴图就会出现空对象bug。这时就可以把逻辑代码放入_start()方法中而避免空对象bug发生。
+又例如克隆一个带脚本的3D对象，如果3D对象中有较多子对象，脚本克隆会先完成，如果脚本中逻辑不放入onStart()方法中，去获取子对象时会发生空对象bug。
 
-又例如克隆一个带脚本的3D对象，如果3D对象中有较多子对象，脚本克隆会先完成，如果脚本中逻辑不放入_start()方法中，去获取子对象时也会发生空对象bug。
-
-**_update(state:RenderState)：**组件更新方法，相当于帧循环。可在继承类中覆盖它，把需要每帧更新的逻辑代码放入此方法中。
+**onUpdate()：**组件更新方法，相当于帧循环。可在继承类中覆盖它，把需要每帧更新的逻辑代码放入此方法中。
 
 
 
@@ -38,7 +36,7 @@
 
 
 
-### 脚本组件Script 
+### 脚本组件Script3D 
 
 脚本继承于组件，因此可以用显示对象的addComponent()方法把脚本添加到3D显示对象上。
 
@@ -74,7 +72,7 @@ camera.removeAllComponent();
 
 ```java
 package {
-	import laya.components.Script;
+	import laya.components.Script3D;
 	import laya.d3.core.MeshSprite3D;
 	import laya.d3.core.Sprite3D;
 	import laya.d3.core.material.RenderState;
@@ -83,7 +81,7 @@ package {
 	import laya.d3.math.Vector3;
 	import laya.d3.core.material.PBRSpecularMaterial;
 
-	public class BoxControlScript extends Script{
+	public class BoxControlScript extends Script3D{
 		//**************** wq *****************************************
         private var box:MeshSprite3D;
 		public function BoxControlScript() {

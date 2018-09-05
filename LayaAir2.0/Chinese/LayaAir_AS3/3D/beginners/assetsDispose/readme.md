@@ -45,48 +45,35 @@
 IDE发布后，编写一个控制类，逻辑代码参考如下：
 
 ```java
-package view
-{
-	import ui.ProgressBarUI;
-	
-	public class AssetLoadView extends ProgressBarUI
-	{
-		/**资源加载进度***/
-		private var progress:int=0;
-		
-		public function AssetLoadView()
-		{
-		}
-		/**
-		 * 初始化，进度计时
-		 */	
-		public function init():void
-		{
-			progress=0;
-			//进度增加的帧循环
-			Laya.timer.loop(20,this,onLoop);
-		}
-		/**
-		 * 资源加载进度模拟（假进度）
-		 */		
-		private function onLoop():void
-		{
-			//进度增加
-			progress++;
-			//最高100%进度
-			if(progress>100)
-			{
-				progress=100;
-				this.tips.text="游戏加载完毕，即将进入游戏..."
-				Laya.timer.clearAll();
-				this.removeSelf();				
-			}else
-			{
-				this.pro.value=progress/100;
-				this.tips.text="游戏正在加载中，当前进度为："+progress+"%!"
-			}
-		}
-	}
+package view {
+  import ui.ProgressBarUI;
+
+  public class loading extends ProgressBarUI {
+
+    public function loading() {
+
+    }
+    public function setValue(num:Number):void{
+      this.pro.value = num;
+    }
+    public function init():void{
+      this.pro.value = 0;
+      //进度增加帧循环
+      Laya.timer.loop(20,this,loop);
+    }		
+    //资源加载进度模拟*（假进度）
+    private function loop():void{
+      //进度增加
+      this.pro.value +=0.01;
+      //最高进度度100%
+      if(this.pro.value>=1)
+      {
+        this.pro.value = 100;
+        Laya.timer.clearAll(this);
+        this.removeSelf();
+      }
+    }
+  }
 }
 ```
 
@@ -109,172 +96,124 @@ Tips：资源包括：场景光照贴图lightmap、材质.lmat、模型.lm、各
 Json编辑完成后，可用检查工具检测格式是否正确。然后创建主类代码如下：
 
 ```java
-package
-{
-	import laya.d3.core.Camera;
-	import laya.d3.core.Sprite3D;
-	import laya.d3.core.scene.Scene;
-	import laya.d3.math.Vector3;
-	import laya.display.Stage;
-	import laya.events.Event;
-	import laya.net.Loader;
-	import laya.resource.Resource;
-	import laya.utils.Handler;
-	import laya.utils.Stat;
-	
-	import view.AssetLoadView;
+package {
+  import laya.d3.core.Camera;
+  import laya.d3.core.MeshSprite3D;
+  import laya.d3.core.Sprite3D;
+  import laya.d3.core.light.DirectionLight;
+  import laya.d3.math.Vector3;
+  import laya.d3.math.Vector4;
+  import laya.d3.resource.models.BoxMesh;
+  import laya.display.Stage;
+  import laya.utils.Stat;
+  import laya.d3.core.scene.Scene3D;
+  import laya.d3.core.material.BlinnPhongMaterial;
+  import laya.webgl.resource.Texture2D;
+  import laya.utils.Handler;
+  import view.loading;
+  import laya.events.Event;
+  import laya.resource.Resource;
+  public class LayaAir3D {
+    public var load:loading;
+    private var scene:Scene3D;
+    public function LayaAir3D() {
 
-	/**
-	 * 资源释放示例
-	 */	
-	public class LayaAir3D_AssetsDespose
-	{
-		/***3D场景****/
-		private var scene:Scene;
-		/***3D摄像机****/
-		private var camera:Camera;
-		/***3D角色****/
-		private var role:Sprite3D;
-		/***2D加载进度界面（假）****/
-		private	var progress:AssetLoadView
-		
-		public function LayaAir3D_AssetsDespose()
-		{
-			//初始化引擎
-			Laya3D.init(1334, 750 ,true);
-			//画布垂直居中对齐
-			Laya.stage.alignV = Stage.ALIGN_MIDDLE;
-			//画布水平居中对齐
-			Laya.stage.alignH = Stage.ALIGN_CENTER;
-			//等比缩放
-			Laya.stage.scaleMode = Stage.SCALE_FIXED_AUTO;
-			//自动横屏，游戏的水平方向始终与浏览器屏幕较短边保持垂直
-			Laya.stage.screenMode = "horizontal";
-			//开启统计信息
-			Stat.show();
-			
-			//加载2D资源
-			Laya.loader.load("res/atlas/comp.atlas",Handler.create(this,on2DComplete));
-		}
-		
-		/**
-		 * 加载2D资源完成回调
-		 */	
-		private function on2DComplete():void
-		{
-			//实例化加载进度页面
-			progress=new AssetLoadView();
-			progress.init();
-			progress.loadTitle.text="资源加载与释放示例";
-			Laya.stage.addChild(progress);
-			
-			//加载第一关场景角色3D资源(不能全部加载，否则太占显存)
-			Laya.loader.create([{url:"LayaScene_loveScene/loveScene.ls"},
-								{url:"LayaScene_girl/girl.lh"}],Handler.create(this,on3DComplete));
-		}
-		
-		/**
-		 * 加载3D资源完成回调 
-		 */		
-		private function on3DComplete():void
-		{
-			//实例化场景
-			scene=Laya.loader.getRes("LayaScene_loveScene/loveScene.ls");
-			Laya.stage.addChild(scene);
-			Laya.stage.setChildIndex(scene,0);
-			
-			//实例化摄像机
-			camera=new Camera();
-			//移动摄像机位置
-			camera.transform.translate(new Vector3(-1, 2, 15));
-			//设置摄像机视野范围（角度） 
-			camera.fieldOfView=25;	
-			camera.transform.lookAt(new Vector3(-1,0,0),new Vector3(0,0,0));
-			scene.addChild(camera);
+      //初始化引擎
+      Laya3D.init(0, 0);
 
-			//实例化角色添加到场景
-			role=Laya.loader.getRes("LayaScene_girl/girl.lh");
-			scene.addChild(role);
+      //适配模式
+      Laya.stage.scaleMode = Stage.SCALE_FULL;
+      Laya.stage.screenMode = Stage.SCREEN_NONE;
 
-			//双击游戏画面切换场景
-			Laya.stage.on(Event.DOUBLE_CLICK,this,onChangeScene);
-		}
-		
-		/**
-		 * 加载第二关场景资源，切换场景 
-		 */	
-		private function onChangeScene():void
-		{
-			//去除双击事件监听
-			Laya.stage.off(Event.DOUBLE_CLICK,this,onChangeScene);
-			
-			//切换场景加载界面
-			progress.init();
-			progress.loadTitle.text="正在切换场景，请稍后"
-			Laya.stage.addChild(progress);
-			
-			//移除摄像机与角色
-			scene.removeChild(camera);
-			scene.removeChild(role);
-			
-			//列表释放显存资源方法（释放的资源配置表）
-			assetsDispose("LayaScene_loveScene/loveScene.json");
-			
-			//销毁之前场景
-			scene.destroy();
-			
-			//加载第二关场景资源到游戏中
-			scene=Scene.load("LayaScene_scene02/scene02.ls");
-			Laya.stage.addChild(scene);
-			
-			//摄像机的位置与对准目标
-			camera.transform.position=new Vector3(-1, 1, 8);
-			camera.transform.lookAt(new Vector3(-1.5,0.5,0),new Vector3(0,0,0));
-			
-			//添加摄像机与角色到新场景
-			scene.addChild(camera);
-			scene.addChild(role);
-			role.transform.position=new Vector3(-1, 0, -3.5);
-			
-			//设置场景层级在最下层
-			Laya.stage.setChildIndex(scene,0);
-			
-			//现有显存中的资源
-			trace("现有显存中的资源:",Loader.loadedMap)
-		}
+      //开启统计信息
+      Stat.show();
+      //加载2D资源文件
+      Laya.loader.load("h5/res/atlas/comp.atlas",Handler.create(this,Complete2D));
+    }
+    public function Complete2D():void{
+      //实例化加载进度界面
+      load = new loading();
+      Laya.stage.addChild(load);
+      load.init();
+      //加载场景3D资源(不能全部加载，否则太占显存)
+      Laya.loader.create(["h5/LayaScene_test/test.ls","h5/LayaScene_twonScene/twonScene.ls"],Handler.create(this,Complete3D))
 
-		/**
-		 * 列表释放显存资源方法(利用资源表方式，每个场景配置资源路径表)
-		 * @param target3D 需要释放资源的对象资源表assetsUrl:String
-		 */		
-		private function assetsDispose(assetsUrl:String):void
-		{
-			//加载盘释放的资源配置表
-			Laya.loader.load([{url:assetsUrl,type:Loader.JSON}],
-                             Handler.create(this,onAssetsOK,[assetsUrl]));
-		}
-		
-		/**加载资源释放表完成后**/		
-		private function onAssetsOK(assetsUrl:String):void
-		{
-			//获取加载的数据（Json数组转化成数组）
-			var arr:Array=Laya.loader.getRes(assetsUrl);
-			for(var i:int=arr.length-1;i>-1;i--)
-			{
-				//根据资源路径获取资源（Resource为材质、贴图、网格等的基类）
-				var resource:Resource=Laya.loader.getRes(arr[i].url);
-				//资源释放
-				resource.dispose();
-			}
-		}
-	}
+    }	
+    //加载3D资源完成的回调
+    public function	Complete3D():void{
+      //添加场景
+      scene = Laya.stage.addChild(Laya.loader.getRes("h5/LayaScene_test/test.ls"))as Scene3D;
+      Laya.stage.setChildIndex(scene,0);
+      //点击游戏画面切换场景
+      Laya.stage.on(Event.MOUSE_DOWN,this,ChangeScene);
+    }
+    //加载第二关场景资源，切换场景
+    private function ChangeScene():void{
+      //去除场景的点击切换事件
+      Laya.stage.off(Event.MOUSE_DOWN,this,ChangeScene);
+      //移出之前的场景
+      scene.removeSelf();
+      load.init();
+      Laya.stage.addChild(load);
+      scene.destroy();
+
+      //加载第二关场景资源到游戏中
+      scene = Laya.loader.getRes("h5/LayaScene_twonScene/twonScene.ls");
+      Laya.stage.addChild(scene);
+      //设置游戏场景层级
+      Laya.stage.setChildIndex(scene,0);
+
+      //列表释放显存资源的方法（利用资源表方式，每个场景配置资源路径表）
+      assetsDispose();
+    }
+    private function assetsDispose():void{
+      //加载释放的资源配置表
+      Laya.loader.load("loveScene.json",Handler.create(this,this.onAssetOK));
+    }
+    //加载资源释放表完成后
+    private function onAssetOK():void{
+      
+      
+      //获取加载的数据（Json数据转换成数组）
+      var arr:Array = Laya.loader.getRes("loveScene.json");
+      for(var i:Number = arr.length-1;i>-1;i--)
+      {
+        //根据资源路径获取资源
+        var resource:Resource = Laya.loader.getRes(arr[i].url)as Resource;
+        //非空
+        if(resource)
+        {
+          //销毁资源（非强制销毁）
+          resource.releaseResource(false);
+        }
+        else
+        {
+          console.log(arr[i].url);
+        }
+      }
+    }
+  }
 }
 ```
 
-观察上述代码assetsDispose(assetsUrl:String)方法，加载完配置表后，我们通过Laya.loader.getRes(arr[i].url)方法直接获取资源产生的对象（创建时会根据url后缀名产生不同的类型对象，getRes方法可直接读出来），它们都是Resource类的子类，因此对象调用dispose()方法后就可释放资源。
+观察上述代码assetsDispose(assetsUrl:String)方法，加载完配置表后，我们通过Laya.loader.getRes(arr[i].url)方法直接获取资源产生的对象（创建时会根据url后缀名产生不同的类型对象，getRes方法可直接读出来），它们都是Resource类的子类，因此对象调用 releaseResource(false);方法后就可释放资源。
 
 释放完资源后，还可通过Loader.loadeMap属性查看现有缓存中的资源。
 
 编译运行上述代码我们可以看到图4效果，释放完成并加载新场景时，显存占用比之前小很多了。之前未释放资源时为118.91M，释放后显存只占了56.11M。
 
 ![图4](img/4.png)<br>（图4）
+
+LayaAir2.0为了 方便开发者开发对3D资源释放添加了更方便的释放方式
+
+在加载3D资源时给资源指定相应的分组，然后依靠 Resource.destroyUnusedResources("组名字");
+
+进行资源的整体释放
+
+```
+//加载资源时指定资源的相应分组
+Laya.loader.load("h5/LayaScene_test/test.ls",Handler.create(this,this.onAssetOK),null,null,1,true,"Scene1");
+//销毁当前没有被使用的资源,该函数会忽略lock=true的资源。(指定分组)
+Resource.destroyUnusedResources("scene1");
+```
+
