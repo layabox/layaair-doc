@@ -98,7 +98,7 @@ scene.ambientColor = new Laya.Vector3(1,1,0);
 
 ```javascript
 //设置灯光的漫反射色为纯红色
-//light.diffuseColor = new Laya.Vector3(1,0,0);
+light.diffuseColor = new Laya.Vector3(1,0,0);
 //设置灯光颜色为纯红色(与diffuseColor作用相同)
 light.color = new Laya.Vector3(1,0,0);
 ```
