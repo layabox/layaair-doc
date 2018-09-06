@@ -194,10 +194,10 @@ Tips：本章节中只介绍简单加载应用，导出后会生成各种格式�
 加载场景.ls示例代码如下。
 
 ```java
-var LayaAir3D = (function () 
+var Main = (function () 
 {
     
-    function LayaAir3D() 
+    function Main() 
     {
         //初始化引擎
         Laya3D.init(0, 0,true);
@@ -220,10 +220,10 @@ var LayaAir3D = (function ()
         }))
  
 	}
- 	return LayaAir3D;
+ 	return Main;
 } ());
 
-LayaAir3D();
+Main();
 ```
 
 编译运行上述简单代码，我们发现场景加载成功，场景中的模型也显示到了3D视图上（图10）。
