@@ -57,8 +57,8 @@
 参考以下代码，加载完成动画2000毫秒后动画停止（图1）。
 
 ```java
-	//创建加载材质动画模型
-			Sprite3D.load("h5/LayaScene_CeShiDemo/Cube.lh",Handler.create(this,function(sp:Sprite3D):void{
+//创建加载材质动画模型
+Sprite3D.load("h5/LayaScene_CeShiDemo/Cube.lh",Handler.create(this,function(sp:Sprite3D):void{
 					var box :Sprite3D   = scene.addChild(sp)as Sprite3D;
 					//获取模型上的动画组件
 					ani = sp.getChildAt(0).getComponent(Animator)as Animator;

@@ -163,7 +163,7 @@ Laya.stage.addChild(scene);
 //	var sprite3D:Sprite3D = scene.addChild(sp)as Sprite3D;
 //}));
 
-//方法二：预加载，并放入对象池中
+//方法二：预加载
 Laya.loader.create("res/room.lh",Handler.create(this,function():void{
 	var sprite3D:Sprite3D = Laya.loader.getRes("res/room.lh");
 	scene.addChild(sprite3D);
@@ -222,11 +222,9 @@ tips：在3ds max中建模时，建议对模型的子对象取名，并且制定
 获取子对象时还应注意一个问题，就是模型与材质未加载完成，是无法获取子对象的，因此需要资源预加载，或异步加载时进行完成事件监听。
 
 ```java
-
-var truck3D:Sprite3D;
 //加载导出的卡车模型
 Sprite3D.load("LayaScene_truck.lh",Handler.create(this,function(s:*):void{
-	truck3D = s;
+	var truck3D:Sprite3D = s as Sprite3D;
     //获取模型（查看.lh文件，有两个子对象模型，一为车头“head”，一为车身"body",暂取其中一个模型）
 	var meshSprite3D:MeshSprite3D = truck3D.getChildAt(0).getChildAt(0)as MeshSprite3D;
      //输出模型的名字

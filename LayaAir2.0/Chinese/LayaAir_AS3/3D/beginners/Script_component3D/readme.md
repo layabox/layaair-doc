@@ -32,8 +32,6 @@
 
 **COMPONENT_REMOVED：**组件被移除后事件，由组件所有者Sprite3D发送，并且组件作为参数被发送。
 
-**ENABLE_CHANGED：**组件启用事件，启用属性enable修改后由组件发送，并且启用属性作为参数被发送。
-
 
 
 ### 脚本组件Script3D 

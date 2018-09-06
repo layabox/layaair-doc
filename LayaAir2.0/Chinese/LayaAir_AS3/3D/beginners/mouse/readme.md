@@ -24,29 +24,23 @@ Tips：碰撞器必须添加到MeshSprite3D类型的显示对象上，不能添�
 * MeshCollider   : 网格碰撞器
 */
 
-//添加自定义模型(box)
-var box:MeshSprite3D = scene.addChild(new MeshSprite3D(new BoxMesh(1,1,1))) as MeshSprite3D;
-box.transform.rotate(new Vector3(0,45,0),false,false);
-box.transform.translate(new Vector3(3,0,0));
-//创建一个球体
-sphere = scene.addChild(new MeshSprite3D(new SphereMesh(0.5)))as MeshSprite3D;
-//创建一个面片
-var plane:MeshSprite3D = scene.addChild(new MeshSprite3D(new PlaneMesh(20,20)))as MeshSprite3D;
-plane.transform.translate(new Vector3(0,-2,0));
-
-//给模型添加碰撞器前需要先给模型添加碰撞组件
+//给模型添加盒子碰撞器
 var boxCollider:PhysicsCollider =  box.addComponent(PhysicsCollider)as PhysicsCollider;
 var boxShape:BoxColliderShape = new BoxColliderShape(1,1,1);
 
-//给球添加碰撞组件
+//给模型添加球碰撞器
 var sphereCollider:PhysicsCollider = sphere.addComponent(PhysicsCollider)as PhysicsCollider;
 var sphereShape:SphereColliderShape = new SphereColliderShape(0.5);
 sphereCollider.colliderShape = sphereShape;
 
-//给面片添加碰撞器
-var planeCollider:PhysicsCollider = plane.addComponent(PhysicsCollider)as PhysicsCollider;
-var planeShape:BoxColliderShape = new BoxColliderShape(20,0,20);
-planeCollider.colliderShape = planeShape;		
+//给模型添加碰撞组件
+var meshCollider:PhysicsCollider = meshSprite3D.addComponent(PhysicsCollider);
+//创建网格碰撞器
+var meshShape:MeshColliderShape = new MeshColliderShape();
+//获取模型的mesh
+meshShape.mesh = meshSprite3D.meshFilter.sharedMesh as Mesh
+//设置模型的碰撞形状
+meshCollider.colliderShape = meshShape;	
 ```
 
 在引擎1.7.12与导出插件1.7.0版开始，在Unity中添加到3D模型上的Collider可以导出并且引擎自动加载创建。不过目前暂时不支持MeshCollider的导出，将在后续版本中完善该功能。 
@@ -182,11 +176,11 @@ public var _outHitResult:HitResult = new HitResult();
 public function onMouseDown():void{
 	posX = point.elements[0] = MouseManager.instance.mouseX;
 	posY = point.elements[1] = MouseManager.instance.mouseY;
-//产生射线
+  //产生射线
   camera.viewportPointToRay(point,ray);
   //拿到射线碰撞的物体
   scene.physicsSimulation.rayCast(ray,_outHitResult);
-//如果碰撞到物体
+  //如果碰撞到物体
   if (_outHitResult.succeeded)
   {
     //删除碰撞到的物体
@@ -287,8 +281,6 @@ package
   {
     /**自定义场景**/		
     private var gameScene:GameScene;
-    /**提示信息文本框**/
-    public static var txt:Text;
 
     public function LayaAir3D_MouseInteraction()
     {

@@ -16,14 +16,15 @@
 
 ```java
 //添加自定义模型
-var box:MeshSprite3D = scene.addChild(new MeshSprite3D(new BoxMesh(1,1,1))) as MeshSprite3D;
-box.transform.rotate(new Vector3(0,45,0),false,false);
-
-//创建BlinnPhong材质
-var material:BlinnPhongMaterial = new BlinnPhongMaterial();
-Texture2D.load("res/layabox.png",Handler.create(this,function(text:Texture2D):void{
-	material.albedoTexture = text;
-}))
+var box = scene.addChild(new Laya.MeshSprite3D(new Laya.BoxMesh(1, 1, 1)));
+box.transform.rotate(new Laya.Vector3(0, 45, 0), false, false);
+//创建材质
+var material = new Laya.BlinnPhongMaterial();
+Laya.Texture2D.load("res/layabox.png", Laya.Handler.create(null, function(tex) {
+  material.albedoTexture = tex;
+}));
+//加载材质资源方法创建
+// var mat = Laya.BlinnPhongMaterial.load("truck/Assets/Materials/t0200.lmat")
 //为模型赋材质
 box.meshRenderer.material = material;
 ```

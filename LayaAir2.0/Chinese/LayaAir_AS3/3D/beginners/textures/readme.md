@@ -197,6 +197,7 @@ sphere.meshRenderer.material = material;
 我们从unity3D中创建一个Cube模型（unity中创建的模型带切线信息），并赋上漫反射贴图与法线贴图后用LayaAir导出插件导出数据并使用，法线贴图也会自动加载到模型上。修改“快速开启3D之旅”课程中的代码如下，编译运行后见（图10）凹凸效果。
 
 ```java
+//创建unity中导出的场景
 Scene3D.load("h5/LayaScene_test_Light/test_Light.ls",Handler.create(this,function(s:Scene3D):void{
 	var scene:Scene3D = Laya.stage.addChild(s)as Scene3D;
 	//也可以代码加载法线贴图

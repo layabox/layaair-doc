@@ -140,15 +140,22 @@ play(name:String=null,playbackRate:Number=1.0)
 **如需播放动画的某一帧到某一帧，可在原有动画的基础上创建增加动画剪辑（片断）AnimationClip，最新Animator类提供了addClip()实例方法，可以允许开发者创建动画剪辑并定义名称，然后通过play(动画剪辑名称)方法播放。**
 
 ```java
-
-/**
-* 添加动画片段。
-* @param	clip 动画片段。
-* @param	playName 动画片段播放名称，如果为null,则使用clip.name作为播放名称。
-* @param   开始帧率。
-* @param   结束帧率。
-*/
-public function addClip(clip:AnimationClip, playName:String = null, startFrame:int = 0, endFrame:int = 4294967295
+//创建一个动画动作状态
+    var state1:AnimatorState = new AnimatorState();
+    //设置动作状态的名称
+    state1.name = "hello";
+//设置动作状态播放的起始时间（起始时间与结束时间的设置为0-1的百分比数值）  要截取的时间点 / 动画的总时长
+    state1.clipStart = 10/40;
+    //设置动作状态播放的结束时间
+    state1.clipEnd = 20/40;
+    //得到默认动画赋值给Clip（getDefaultState默认动画为Unity中animation的数组顺序0下标的动画）
+    state1.clip = ani.getDefaultState().clip;
+    //动画播放是否循环
+    state1.clip.islooping = true;
+    //添加动画状态到动画组件里
+    ani.addState(state1);
+    //播放动画
+    ani.play("hello");
 ```
 
 修改示例中的代码如下：
