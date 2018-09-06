@@ -132,7 +132,7 @@ private setModelMaterial(model:*):void
   {
     //获取模型网格对象
     var meshSprite3D:Laya.MeshSprite3D = model as Laya.MeshSprite3D;
-    for(var i :int = 0; i < meshSprite3D.meshRenderer.materials.length;i++)
+    for(var i :int = 0; i < meshSprite3D.meshRenderer.sharedMaterials.length;i++)
 	{
 		//根据下标获取模型共享材质组中的共享材质
 		var material:Laya.BlinnPhongMaterial = materials.meshRenderer.sharedMaterials[i] as             Laya.BlinnPhongMaterial;
