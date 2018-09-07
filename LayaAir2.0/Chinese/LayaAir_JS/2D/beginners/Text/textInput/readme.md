@@ -24,7 +24,7 @@ function Text_InputSingleline(){
     textInput.y = 0;//设置 textInput 对象的属性 y 的值，用于控制 textInput 对象的显示位置。
     textInput.width = 300;//设置 textInput 的宽度。
     textInput.height = 200;//设置 textInput 的高度。
-    textInput.bgColor = "#c30c30";
+    textInput.bgColor = "#aabbcc";
     Laya.stage.addChild(textInput);//将 textInput 添加到显示列表。
 }
 function Text_InputMultiline(){
@@ -36,7 +36,7 @@ function Text_InputMultiline(){
     textInput.y = 300//设置 textInput 对象的属性 y 的值，用于控制 textInput 对象的显示位置。
     textInput.width = 300;//设置 textInput 的宽度。
     textInput.height = 200;//设置 textInput 的高度。
-    textInput.bgColor = "#c30c30";
+    textInput.bgColor = "#aabbcc";
     Laya.stage.addChild(textInput);//将 textInput 添加到显示列表。
 }
 ```
