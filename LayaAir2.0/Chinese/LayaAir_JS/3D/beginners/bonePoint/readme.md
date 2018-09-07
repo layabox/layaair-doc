@@ -152,10 +152,10 @@ new Main();
 export default class WeaponScript extends Laya.Script3D{
     constructor(){
         super();
-        var lifeTime =100;
     }
     onAwake(){
         console.log("Script awake");
+        this.lifeTime =100;
     }
     onUpdate(){
         this.owner.transform.rotate(new Laya.Vector3(0,0.5,0),false,false);

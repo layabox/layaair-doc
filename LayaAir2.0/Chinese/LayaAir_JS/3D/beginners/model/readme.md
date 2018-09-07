@@ -179,9 +179,9 @@ Laya.loader.create("LayaScene_01/Assets/model/loveScene_jianzhu.lm",Laya.Handler
 private onCreateComplete():void
 { 
   //创建预加载的模型网格 
-  var mesh:Laya.Mesh = Laya.loader.getRes("LayaScene_01/Assets/model/loveScene_jianzhu.lm");
+  var mesh= Laya.loader.getRes("LayaScene_01/Assets/model/loveScene_jianzhu.lm");
   //创建3D模型
-  var meshSprite3D:Laya.MeshSprite3D = new Laya.MeshSprite3D(mesh);
+  var meshSprite3D = new Laya.MeshSprite3D(mesh);
   this.scene.addChild(meshSprite3D);
 }
 ```
@@ -207,7 +207,7 @@ tips：在3ds max中建模时，建议对模型的子对象取名，并且制定
 ```javascript
 ......
 //加载导出的卡车模型
-Sprite3D.load("LayaScene_truck.lh",Laya.Handler.create(this,function(s){
+Laya.Sprite3D.load("LayaScene_truck.lh",Laya.Handler.create(this,function(s){
 	var truck3D = scene.addChild(s);
     console.log(this.truck3D);
     //获取模型（查看.lh文件，有两个子对象模型，一为车头“head”，一为车身“body”，暂取其中一个模型）
@@ -234,26 +234,30 @@ Sprite3D.load("LayaScene_truck.lh",Laya.Handler.create(this,function(s){
 ```javascript
 ......
 //加载导出的卡车模型
-Sprite3D.load("LayaScene_truck.lh",Laya.Handler.create(this,onLoaded))
+Laya.Sprite3D.load("LayaScene_truck.lh",Laya.Handler.create(this,this.onLoaded));
+......
+
 //模型与材质加载完成后回调
-private onLoaded(s):void
-{ 
-  var truck3D = scene.addChild(s);
-  console.log(this.truck3D);
-  //获取模型（查看.lh文件，有两个子对象模型，一为车头“head”，一为车身“body”，暂取其中一个模型）
-  this.meshSprite3D = this.truck3D.getChildAt(0).getChildAt(0) as Laya.MeshSprite3D;
-  //输出模型的名字(输出“body”)
-  console.log(this.meshSprite3D.name);
-  //2秒后更换模型网格
-  Laya.timer.once(2000,this,this.onTimerOnce);
+var _proto = Main.prototype;
+_proto.onLoaded = function(s){
+    var truck3D = scene.addChild(s);
+    console.log(this.truck3D);
+    //获取模型（查看.lh文件，有两个子对象模型，一为车头“head”，一为车身“body”，暂取其中一个模型）
+    this.meshSprite3D = this.truck3D.getChildAt(0).getChildAt(0) as Laya.MeshSprite3D;
+    //输出模型的名字(输出“body”)
+    console.log(this.meshSprite3D.name);
+    //2秒后更换模型网格
+    Laya.timer.once(2000,this,this.onTimerOnce); 
 }
-private onTimerOnce():void{
+
+_proto.onTimerOnce = function(){
   //创建模型网格并更换原始网格
-Mesh.load("LayaScene_truck/Assets/truck-head.lm",Laya.Handler.create(this,function(m){
-  this.meshSprite3D.meshFilter.sharedMesh = m;
-  this.meshSprite3D.transform.translate(new Laya.Vector3(0,0,-8));
-}))
+Laya.Mesh.load("LayaScene_truck/Assets/truck-head.lm",Laya.Handler.create(this,function(m){
+  	this.meshSprite3D.meshFilter.sharedMesh = m;
+  	this.meshSprite3D.transform.translate(new Laya.Vector3(0,0,-8));
+}));
 }
+......
 ```
 
 ![5](img/5.gif)(图5)</br>

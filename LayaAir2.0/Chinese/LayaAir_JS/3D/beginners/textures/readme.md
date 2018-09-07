@@ -87,7 +87,7 @@ box.meshRenderer.material = material;
   //修改材质的高光颜色，让高光处偏红
   sharedMaterial.specularColor = new Laya.Vector4(1,0,0,1);
   //加载高光贴图（与漫反射一致，也可单独制作高光贴图）
- Texture2D.load("h5/res/layabox.png",Handler.create(this,function(text:Texture2D):void{
+  Laya.Texture2D.load("res/layabox.png",Laya.Handler.create(this,function(text){
       sharedMaterial.specularTexture = text;
   }));
 ```

@@ -10,7 +10,7 @@
 
 ### 加载场景资源
 
-下列代码中”LayaScene_01/loveScene.ls”文件是unity3D中layaAir导出插件选择导出”Scene“类别生成，文件的扩展名为.ls（理解成laya scene 简写）。内部存储了场景所需的光照贴图、包含的多个或单个模型文件等。用Scene.load()方法可以直接加载到场景中并显示出来。
+下列代码中”LayaScene_01/loveScene.ls”文件是unity3D中layaAir导出插件选择导出”Scene“类别生成，文件的扩展名为.ls（理解成laya scene 简写）。内部存储了场景所需的光照贴图、包含的多个或单个模型文件等。用Scene3D.load()方法可以直接加载到场景中并显示出来。
 
 ```typescript
 //初始化引擎
@@ -20,31 +20,31 @@ Laya.stage.screenMode = Laya.Stage.SCREEN_NONE;
 Laya.Stat.show();
 //加载插件导出的场景。
 Laya.Scene3D.load("LayaScene_01/loveScene.ls",Laya.Handler.create(null,function(scene){
-  
+    Laya.stage.addChild(scene);
+    //创建摄像机(横纵比，近距裁剪，远距裁剪)
+    var camera = new Laya.Camera(0, 0.1, 1000);
+    //加载到场景
+    scene.addChild(camera);
+    //移动摄像机位置
+    camera.transform.position = new Laya.Vector3(0, 5, 23);
+    //旋转摄像机角度
+    camera.transform.rotate(new Laya.Vector3(-17, 0, 0), true, false);
+    //设置摄像机视野范围（角度）
+    camera.fieldOfView = 35;
+    //设置背景颜色
+    camera.clearColor = new Laya.Vector4(0, 0, 0.6, 1);
+    //加入摄像机移动控制脚本
+    camera.addComponent(CameraMoveScript);
+    //创建方向光 -------------------
+    var light = scene.addChild(new Laya.DirectionLight());
+    //移动灯光位置
+    light.transform.translate(new Laya.Vector3(0, 2, 5));
+    //调整灯光方向
+    light.transform.worldMatrix.setForward(new Laya.Vector3(0, -0.5, 0));
+    //设置灯光环境色
+    light.color = new Laya.Vector3(1, 1, 1);
 }));
-Laya.stage.addChild(scene);
-//创建摄像机(横纵比，近距裁剪，远距裁剪)
-var camera = new Laya.Camera(0, 0.1, 1000);
-//加载到场景
-scene.addChild(camera);
-//移动摄像机位置
-camera.transform.position = new Laya.Vector3(0, 5, 23);
-//旋转摄像机角度
-camera.transform.rotate(new Laya.Vector3(-17, 0, 0), true, false);
-//设置摄像机视野范围（角度）
-camera.fieldOfView = 35;
-//设置背景颜色
-camera.clearColor = new Laya.Vector4(0, 0, 0.6, 1);
-//加入摄像机移动控制脚本
-camera.addComponent(CameraMoveScript);
-//创建方向光 -------------------
-var light = scene.addChild(new Laya.DirectionLight());
-//移动灯光位置
-light.transform.translate(new Laya.Vector3(0, 2, 5));
-//调整灯光方向
-light.direction = new Laya.Vector3(0, -.5, 1);
-//设置灯光环境色
-light.color = new Laya.Vector3(1, 1, 1);
+
 ```
 
 编译调试示例代码可以看到屏幕上显示了一个漂亮的场景（图1）。
@@ -53,7 +53,7 @@ light.color = new Laya.Vector3(1, 1, 1);
 
 ### 场景资源预加载
 
-上面的例子Scene.load()方法是资源的异步加载，有时候3D的资源比较大，需要预加载来来提升首屏的体验。这时候我们可以用加载器预加载。2D游戏资源我们是用Laya.loader.load()方法预加载，而3D资源必须用Laya.loader.create()这个方法,请参考的相关的AP描述。
+上面的例子Scene3D.load()方法是资源的异步加载，有时候3D的资源比较大，需要预加载来来提升首屏的体验。这时候我们可以用加载器预加载。2D游戏资源我们是用Laya.loader.load()方法预加载，而3D资源必须用Laya.loader.create()这个方法,请参考的相关的AP描述。
 
 ```typescript
 //单个资源
@@ -61,7 +61,7 @@ Laya.loader.create("res/Cube.ls",Laya.Handler.create(this,completeHandler));
 //批量加载
 Laya.loader.create(["res/Cube1.ls","res/Cube2.ls","res/Cube3.ls"],Laya.Handler.create(this,completeHandler));
 //批量加载 并创建不同的类型；
-Laya.loader.create([{url:"res/Cube1.ls"，"type":Laya.Scene},{url:"res/Cube2.lh","type":Laya.Sprite3D},{url:"res/Cube3.lm","type":Laya.MeshSprite3D}],Laya.Handler.create(this,completeHandler));
+Laya.loader.create([{url:"res/Cube1.ls"},{url:"res/Cube2.lh"},{url:"res/Cube3.lm"}],Laya.Handler.create(this,completeHandler));
 ```
 
 在项目中，一般我们都会采用加载器的方式，可以对资源有很好的管理。
@@ -76,10 +76,10 @@ Laya.stage.screenMode = Laya.Stage.SCREEN_NONE;
 Laya.Stat.show();
 //因为只有一个资源 所以我们传进去字符串就可以，队列的话可以传递一个数组队列。
 Laya.loader.create("LayaScene_01/loveScene.ls",
-    Laya.Handler.create(this, this.completeHandler), null, Laya.Scene);
+    Laya.Handler.create(this, this.completeHandler));
 function completeHandler() {
     // 第一种方法 获取场景
-    // var scene=Laya.Scene.load("LayaScene_01/loveScene.ls");
+    // var scene=Laya.Scene3D.load("LayaScene_01/loveScene.ls");
     // 第二种方法，缓存后加载方式
     var scene = Laya.loader.getRes("LayaScene_01/loveScene.ls");
     Laya.stage.addChild(scene);

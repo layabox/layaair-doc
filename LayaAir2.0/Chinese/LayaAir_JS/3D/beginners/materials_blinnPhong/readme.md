@@ -2,7 +2,7 @@
 
 ### BlinnPhong材质概述
 
-在之前的LayaAir 3D引擎版本中（1.7.12版本前），模型材质只支持传统的StandardMaterial标准材质，在Unity中无论模型材质用哪种类型的Shader，插件导出的都为标准材质（粒子材质除外）。
+在之前的LayaAir 3D引擎版本中（1.7.12版本前），模型材质只支持传统的PBRStandardMaterial标准材质，在Unity中无论模型材质用哪种类型的Shader，插件导出的都为标准材质（粒子材质除外）。
 
 因为Unity中标准和其他材质与LayaAir标准材质有所差异，因此开发者使用导出的3D资源时，我们会发现美术效果与Unity中会有不同，需要在代码中修改各种材质属性参数或调节灯光后才能达到所需效果，为开发者们带来了不便。
 
@@ -28,7 +28,7 @@ mat.albedoTexture=Laya.Texture2D.load("res/layabox.png");
 //var mat=Laya.BlinnPhongMaterial.load("truck/Assets/Materials/t0200.lmat");
 
 //为模型赋材质
-box.meshRender.material=mat;
+box.meshRenderer.material=mat;
 ```
 
 

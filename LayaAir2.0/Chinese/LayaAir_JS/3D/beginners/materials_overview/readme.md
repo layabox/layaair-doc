@@ -6,7 +6,7 @@
 
 大多数3D引擎中都有独立的材质类用于程序代码控制，三维制作软件中材质处理也是最重要的部分之一。游戏美术开发者们经常有一句话，在3D游戏场景制作中，三分看模型，七分靠材质。
 
-材质的种类也有很多，在三维制作软件中有标准材质、多维材质、合成材质、双面材质、光线跟踪材质等。在LayaAir3D引擎中目前主要支持的是标准材质StandardMatrial。
+材质的种类也有很多，在三维制作软件中有标准材质、多维材质、合成材质、双面材质、光线跟踪材质等。在LayaAir3D引擎中目前主要支持的是标准材质PBRStandardMatrial。
 
 
 
@@ -53,11 +53,11 @@ box .meshRenderer.material = Laya.BlinnPhongMaterial.load("truck/Assets/Material
 
 使用时引擎会自动在模型上加载材质，并且很多时候一个模型上会有多个标准材质，自动的方式为我们省下了很多开发时间。但在这种情况下，如果我们需要改变、更换材质怎么办呢？我们首先需要在模型上获取当前的材质。
 
-LayaAir3D引擎为我们提供了网格渲染器MeshRender类和蒙皮动画网格渲染器SkinnedMeshRender，在可视模型上提供了它们的实例，我们可以通过它们来获取模型上的材质。
+LayaAir3D引擎为我们提供了网格渲染器MeshRenderer类和蒙皮动画网格渲染器SkinnedMeshRenderer，在可视模型上提供了它们的实例，我们可以通过它们来获取模型上的材质。
 
-Tips：MeshSprite3D模型中为MeshRender，SkinnedMeshSprite3D模型中为SkinnedMeshRender。
+Tips：MeshSprite3D模型中为MeshRenderer，SkinnedMeshSprite3D模型中为SkinnedMeshRenderer。
 
-获取的材质跟为两种类型，一种是自身材质Material，如果自身材质被修改了，只有自身模型显示进行变化；一种是共享材质SharedMaterial，因为材质相对独立，多个模型都可以用同一个材质，如果获取的是共享材质并修改了，自身模型显示会变化，其他模型用到这个材质的部分也会发生改变。因此，开发者们需要根据情况进行选择。
+获取的材质跟为两种类型，一种是自身材质Material，如果自身材质被修改了，只有自身模型显示进行变化；一种是共享材质PBRSharedMaterial，因为材质相对独立，多个模型都可以用同一个材质，如果获取的是共享材质并修改了，自身模型显示会变化，其他模型用到这个材质的部分也会发生改变。因此，开发者们需要根据情况进行选择。
 
 
 
@@ -120,28 +120,28 @@ Laya.Sprite3D.load("LayaScene_test_Light/test_Light.lh",Laya.Handler.create(this
 function setModelMaterial(model){
   //如果是模型网格显示对象
   if(model instanceof Laya.MeshSprite3D){
-    //获取模型网格对象
-    var meshSprite3D = model;
-    //对模型网格中的所有材质进行修改
-    for(var m = 0;m < materials.meshRenderer.sharedMaterials.length;m++){
-      //获取共享材质
-      var mat =  materials.meshRenderer.sharedMaterials[m];
-      //修改材质反射颜色
-      material.albedoColor = new Vector4(0.5,0.5,1,1);
-    }
+      //获取模型网格对象
+      var meshSprite3D = model;
+      //对模型网格中的所有材质进行修改
+      for(var m = 0;m < materials.meshRenderer.sharedMaterials.length;m++){
+        //获取共享材质
+        var mat =  materials.meshRenderer.sharedMaterials[m];
+        //修改材质反射颜色
+        material.albedoColor = new Laya.Vector4(0.5,0.5,1,1);
+      }
   }
   //如果是蒙皮模型网格显示对象
   if(model instanceof Laya.SkinnedMeshSprite3D){
     //获取蒙皮模型网格显示对象
     var skinnedMeshSprite3D = model;
     //获取材质列表数组
-    var materials1 = skinnedMeshSprite3D.skinnedMeshRender.materials;
+    var materials1 = skinnedMeshSprite3D.skinnedMeshRenderer.materials;
     //对蒙皮模型网格中的所有材质进行修改
     for(var n = 0;n < materials1.length;n++){
       //获取共享材质
       var mat1 = materials1[n];
       //修改材质反射颜色
-      mat1.albedoColor = new Vector4(0.5,0.5,1,1);
+      mat1.albedoColor = new Laya.Vector4(0.5,0.5,1,1);
     }
   }
   //递归方法获取子对象

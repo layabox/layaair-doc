@@ -29,8 +29,10 @@ var LayaAir3D = (function () {
         //开启统计信息
         Laya.Stat.show();		
         //预加载角色动画资源
-        Laya.loader.create("monkey/monkey.ls",Laya.Handler.create(this,onSceneOK));
-       var _proto = Main.Prototype;
+        Laya.loader.create("monkey/monkey.ls",Laya.Handler.create(this,this.onSceneOK));
+       
+	}
+ 	  var _proto = Main.Prototype;
       _proto.onSceneOK = function(s)
         {
           //添加3D场景
@@ -39,7 +41,6 @@ var LayaAir3D = (function () {
           var camera= scene.getChildByName("Main Camera");
           //后续对摄像机的逻辑操作.......
         }
-	}
 	return LayaAir3D;
 } ());
 LayaAir3D();
@@ -219,8 +220,9 @@ var Main = (function () {
         //开启统计信息
         Laya.Stat.show();		
         //预加载资源
-			  Laya.loader.create("LayaScene_loveScene/loveScene.ls",Laya.Handler.create(this,on3DComplete));
-	var _proto = Main.prototype;
+			  Laya.loader.create("LayaScene_loveScene/loveScene.ls",Laya.Handler.create(this,this.on3DComplete));
+	}
+  		var _proto = Main.prototype;
         _proto.on3DComplete=function(s)
         {
           //创建场景
@@ -248,10 +250,9 @@ var Main = (function () {
           //设置视口为右半屏
           camera2.viewport=new Laya.Viewport(640,0,640,720);
         }
-	}
 	return Main;
 } ());
-Main();
+new Main();
 ```
 
 编译运行上述代码，运行效果如图6。开发者们同时也可以测试，在单摄像机下时，DrawCall与三角面数会少一半。

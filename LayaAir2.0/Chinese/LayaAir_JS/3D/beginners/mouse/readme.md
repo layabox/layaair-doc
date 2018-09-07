@@ -312,11 +312,11 @@ Main();
 export default class SceneScript extends Laya.Script3D{
   constructor(){
     super();
-    var camera;
-    var ray;
-    var box;
-    var point;
-    var rayCastHit;
+    this.camera = 0;
+    this.ray = 0;
+    this.point = 0;
+    this.rayCastHit = 0;
+    this.box = 0;
   }
 
   onStart(){
