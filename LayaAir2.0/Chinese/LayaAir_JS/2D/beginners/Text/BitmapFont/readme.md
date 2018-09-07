@@ -88,7 +88,7 @@ function init(){
     this.mBitmapFont.setSpaceWidth(10);
     Laya.Text.registerBitmapFont(this.mFontName,this.mBitmapFont);
     var txt = new Laya.Text();
-    txt.text = "这是layabox测试文件";
+    txt.text = "这是测试";
     //设置宽度，高度自动匹配
     txt.width = 250;
     //自动换行
