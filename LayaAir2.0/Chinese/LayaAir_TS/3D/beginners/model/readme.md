@@ -60,11 +60,11 @@ class LayaAir3D {
         //移动灯光位置
         light.transform.translate(new Laya.Vector3(0,2,5));
         //调整灯光方向
-        light.direction = new Laya.Vector3(0.5, -1, 0);
-        //设置灯光环境色
-        light.ambientColor = new Laya.Vector3(1, 1, 1); 
+        light.transform.worldMatrix.setForward(new Laya.Vector3(0.5, -1, 0));
         //设置灯光漫反射颜色
         light.diffuseColor = new Laya.Vector3(0.3, 0.3, 0.3);
+        //设置灯光环境色
+        scene.ambientColor = new Laya.Vector3(1, 1, 1); 
         //创建模型-------------------------------
         //创建盒子模型(参数为：长、宽、高，单位：米)
         var boxMesh:Laya.BoxMesh=new Laya.BoxMesh(2,2,2);
@@ -88,7 +88,7 @@ class LayaAir3D {
         //创建材质----------------------------------
         var material:Laya.PBRStandardMaterial = new Laya.PBRStandardMaterial();
         //为模型赋材质（单个材质可赋给多个模型）
-        box3D.meshRender.material = material;
+        box3D.meshRenderer.material = material;
 
     }
 }

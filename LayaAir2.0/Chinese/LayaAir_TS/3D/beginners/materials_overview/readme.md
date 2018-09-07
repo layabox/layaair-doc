@@ -90,7 +90,7 @@ Laya.Sprite3D.load("LayaScene_truck/truck.lh",Laya.Handler.create(this,function(
 ```typescript
 ......
 //加载导出的卡车模型
-Laya.Sprite3D.load("LayaScene_truck/truck.lh",Handler.create(this,function(sp:Laya.Sprite3D):void{
+Laya.Sprite3D.load("LayaScene_truck/truck.lh",Laya.Handler.create(this,function(sp:Laya.Sprite3D):void{
     var truck:Laya.Sprite3D = scene.addChild(sp)as Laya.Sprite3D;
     //获取车身模型（查看.lh文件，模型	中两个对象，车头“head”与车身"body",它们都用同一个材质）
     var meshSprite3D:Laya.MeshSprite3D = truck.getChildAt(1).getChildAt(0) as Laya.MeshSprite3D;
@@ -118,24 +118,25 @@ Laya.Sprite3D.load("LayaScene_truck/truck.lh",Handler.create(this,function(sp:La
 ......
 //加载场景
 Laya.Scene3D.load("LayaScene_loveScene/loveScene.ls",Laya.Handler.create(this,function(s:*):void{
-	var scene:Laya.Laya.Scene3D = Laya.stage.addChild(s)as Laya.Scene3D;
+	var scene:Laya.Scene3D = Laya.stage.addChild(s)as Laya.Scene3D;
     this.setModelMaterial(scene);
 }))
+....
 /**
 *修改模型材质
 * @param model 场景或模型
  */		
-private setModelMaterial(model:*):void
+private setModelMaterial(model):void
 {
   //如果是模型网格显示对象
   if (model instanceof Laya.MeshSprite3D) 
   {
     //获取模型网格对象
     var meshSprite3D:Laya.MeshSprite3D = model as Laya.MeshSprite3D;
-    for(var i :int = 0; i < meshSprite3D.meshRenderer.sharedMaterials.length;i++)
+    for(var i :number = 0; i < meshSprite3D.meshRenderer.sharedMaterials.length;i++)
 	{
 		//根据下标获取模型共享材质组中的共享材质
-		var material:Laya.BlinnPhongMaterial = materials.meshRenderer.sharedMaterials[i] as             Laya.BlinnPhongMaterial;
+		var material:Laya.BlinnPhongMaterial = materials.skinnedMeshRenderer.sharedMaterials[i] as             Laya.BlinnPhongMaterial;
 		material.albedoColor = new Laya.Vector4(0,0,1,1)
 	}
   }
@@ -144,15 +145,15 @@ private setModelMaterial(model:*):void
   {
     //获取蒙皮模型网格显示对象
     var skinnedMeshSprite3D:Laya.SkinnedMeshSprite3D = model as Laya.SkinnedMeshSprite3D;
-	for(var i :int = 0; i < skinnedMeshSprite3D.meshRenderer.materials.length;i++)
+	for(var i :number = 0; i < skinnedMeshSprite3D.skinnedMeshRenderer.materials.length;i++)
     {
       //根据下标获取模型共享材质组中的共享材质
-      var material:BlinnPhongMaterial = materials.meshRenderer.sharedMaterials[i] as BlinnPhongMaterial;
+      var material:Laya.BlinnPhongMaterial = materials.meshRenderer.sharedMaterials[i] as Laya.BlinnPhongMaterial;
       material.albedoColor = new Laya.Vector4(0,0,1,1)
     }
   }
   //递归方法获取子对象
-	for (var i:int = 0; i < model._children.length; i++)
+	for (var i:number = 0; i < model._children.length; i++)
  	{
     	this.setModelMaterial(model._children[i]);
     }

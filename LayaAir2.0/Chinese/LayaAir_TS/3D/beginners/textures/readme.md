@@ -20,14 +20,14 @@
 //创建标准材质
 var material:Laya.PBRSpecularMaterial = new Laya.PBRSpecularMaterial();
 //创建漫反射二维纹理贴图
-Laya.Texture2D.load("res/layabox.png",Laya.Handler.create(t:Laya.Texture2D):void{
+Laya.Texture2D.load("res/layabox.png",Laya.Handler.create(this,function(t:Laya.Texture2D):void{
    	material.albedoTexture = t;
-})
+}));
 //只有设置了渲染模式为透明混合类型才能达到透明效果
 //设置材质蓝色染色及30%半透明
 material.albedoColor=new Laya.Vector4(1,1,2,0.3);
 //渲染模式(也可设置数值，5-13等为混合类型，可观察其效果变化)
-material.renderMode = Laya.StandardMaterial.RENDERMODE_TRANSPARENT;
+material.renderMode = Laya.PBRStandardMaterial.RENDERMODE_TRANSPARENT;
 //为box模型赋材质
 box.meshRenderer.material = material;
 ```
@@ -56,7 +56,7 @@ scene.ambientColor = new Laya.Vector3(0.5, 0.5, 0.5);
 //创建标准材质
 var material:Laya.BlinnPhongMaterial = new Laya.BlinnPhongMaterial();
 //创建漫反射二维纹理贴图
-Laya.Texture2D.load("res/layabox.png",Handler.create(this,function(t:Laya.Texture2D):void{
+Laya.Texture2D.load("res/layabox.png",Laya.Handler.create(this,function(t:Laya.Texture2D):void{
 	material.albedoTexture = t;
 	//设置材质漫反射颜色
 	material.albedoColor = new Laya.Vector4(0.5,0.5,2,1);
@@ -89,7 +89,7 @@ var sharedMaterial:Laya.BlinnPhongMaterial = meshSprite3D.meshRenderer.sharedMat
 //修改材质的高光颜色，让高光处偏红
 sharedMaterial.specularColor = new Laya.Vector4(1,0,0,1);
 //加载高光贴图（与漫反射一致，也可单独制作高光贴图）
-Laya.Texture2D.load("res/layabox.png",Handler.create(this,function(t:Laya.Texture2D):void{
+Laya.Texture2D.load("res/layabox.png",Laya.Handler.create(this,function(t:Laya.Texture2D):void{
      sharedMaterial.specularTexture = t;
 }));
 ```
@@ -137,7 +137,7 @@ scene.ambientColor = new Laya.Vector3(0.5,0.5,0.5);
 //添加方向光
 var directionLight:Laya.DirectionLight = this.scene.addChild(new Laya.DirectionLight()) as Laya.DirectionLight;
 directionLight.color = new Laya.Vector3(1, 1, 1);
-directionLight.transform.worldMatrix.setForward(new Vector3(0, -100, 0));
+directionLight.transform.worldMatrix.setForward(new Laya.Vector3(0, -100, 0));
 //设置环境光颜色
 scene.ambientColor = new Laya.Vector3(0.5, 0.5, 0.5);
 //添加自定义模型
@@ -195,7 +195,7 @@ sphere.meshRenderer.material = material;
 
 ```typescript
 Laya.Scene3D.load("h5/LayaScene_test_Light/test_Light.ls",Laya.Handler.create(this,function(s:Laya.Scene3D):void{
-	var scene:Scene3D = Laya.stage.addChild(s)as Laya.Scene3D;
+	var scene:Laya.Scene3D = Laya.stage.addChild(s)as Laya.Scene3D;
 	//也可以代码加载法线贴图
 	//从模型中获取meshSprite3D对像
 	//var meshSprite3D:Laya.MeshSprite3D=s.getChildByName("Cube") as Laya.MeshSprite3D;
@@ -234,7 +234,7 @@ Laya.Scene3D.load("h5/LayaScene_test_Light/test_Light.ls",Laya.Handler.create(th
     //获取场景灯光
 	var light:Laya.DirectionLight = scene.getChildByName("Directional light") as Laya.DirectionLight;
 	//设置灯光光偏暗
-	light.color = new Laya.Laya.Vector3(0.5,0.5,0.5);
+	light.color = new Laya.Vector3(0.5,0.5,0.5);
 }));
 ```
 

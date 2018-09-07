@@ -19,7 +19,7 @@ Laya.stage.scaleMode = Laya.Stage.SCALE_FULL;
 Laya.stage.screenMode = Laya.Stage.SCREEN_NONE;
 Laya.Stat.show();
 //加载插件导出的场景。
-Laya.Scene3D.getRes("LayaScene_01/loveScene.ls",Laya.Handler.create(this,function(s:Laya.Scene3D){
+Laya.Scene3D.load("LayaScene_01/loveScene.ls",Laya.Handler.create(this,function(s:Laya.Scene3D){
   	var scene: Laya.Scene3D = s;
     Laya.stage.addChild(scene);
     //创建摄像机(横纵比，近距裁剪，远距裁剪)
@@ -41,11 +41,10 @@ Laya.Scene3D.getRes("LayaScene_01/loveScene.ls",Laya.Handler.create(this,functio
     //移动灯光位置
     light.transform.translate(new Laya.Vector3(0, 2, 5));
     //调整灯光方向
-    light.direction = new Laya.Vector3(0, -.5, 1);
+  	light.transform.worldMatrix.setForward(new Laya.Vector3(0, -0.5, 0));
     //设置灯光环境色
     light.color = new Laya.Vector3(1, 1, 1);
 }));
-
 ```
 
 编译调试示例代码可以看到屏幕上显示了一个漂亮的场景（图1）。

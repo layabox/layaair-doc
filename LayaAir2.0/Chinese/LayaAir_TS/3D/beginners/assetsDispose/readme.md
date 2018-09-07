@@ -64,7 +64,7 @@ export default class loading extends ui.LoadingUI{
         this.pro.value += 0.01;
         //最高100%进度
         if(this.pro.value>=1){
-            this.pro.value =100;
+            this.pro.value =1;
             Laya.timer.clearAll(this);
             this.removeSelf();
             // Laya.stage.event("");

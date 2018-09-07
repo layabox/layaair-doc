@@ -22,11 +22,10 @@ scene.addChild(box);
 //创建BlinnPhong材质
 var mat:Laya.BlinnPhongMaterial=new Laya.BlinnPhongMaterial();
 Laya.Texture2D.load("res/layabox.png",Laya.Handler.create(this,function(t:Laya.Texture2D):void{
-  	 material.albedoTexture = text;
+  	 material.albedoTexture = t;
      //为模型赋材质
      box.meshRenderer.material = material;
 }));
-
 ```
 
 
