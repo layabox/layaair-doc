@@ -233,14 +233,14 @@ package {
 			//自身y座标旋转
 			box.transform.rotate(new Vector3(0,45,0),true,false);
 			//接受阴影
-			box.meshRender.receiveShadow=true;
+			box.meshRenderer.receiveShadow=true;
 			
 			//创建球体模型
 			var sphere:MeshSprite3D = scene.addChild(new MeshSprite3D(new SphereMesh())) as MeshSprite3D;
 			//按父空间移动球体
 			sphere.transform.translate(new Vector3(0,1.5,0),false);
 			//产生阴影
-			sphere.meshRender.castShadow=true;
+			sphere.meshRenderer.castShadow=true;
 			//创建材质
 			var material:PBRSpecularMaterial = new PBRSpecularMaterial();
 			//材质加载漫反射贴图
@@ -248,7 +248,7 @@ package {
           material.albedoTexture = text;
           //为模型赋材质（单个材质可赋给多个模型）
           sphere.meshRenderer.material = material;
-          box.meshRender.material = material;
+          box.meshRenderer.material = material;
        	 }));
 		}		
 	}
