@@ -154,38 +154,49 @@ new MaskDemo();
 
 ### 4.2 使用IDE生成的类与图集，实现遮罩效果
 
-　　创建一个入口类`MaskDemo.ts`，编码如下：
+　　编辑模式下按F9 设置引擎预览 ，启动场景为maskDemoUI
+
+![图9](img/10.png)
+
+
+
+主类代码如下：
 
 ```java
-module laya
-{
-	import Loader = Laya.Loader;
-	import Handler= Laya.Handler;	
-	import maskDemoUI = ui.maskDemoUI;
-	
-	export class MaskDemo
-	{
-      private cMask:maskDemoUI;
-		
-     constructor()
-		{
-			//初始化舞台
-			Laya.init(1136,640);
-			//设置舞台背景色
-			Laya.stage.bgColor = "#ffffff"    
-				
-			//加载图集资源，加载成功后添加到舞台
-			Laya.loader.load("res/atlas/ui.atlas",Handler.create(this,this.onLoaded));
-			
-		}
-		
-		private onLoaded():void
-		{
-			this.cMask = new maskDemoUI();
-			Laya.stage.addChild(this.cMask);
-		}
+import GameConfig from "./GameConfig";
+import { ui } from "./ui/maskDemoUI";
+class Main {
+	constructor() {
+		//根据IDE设置初始化引擎		
+		if (window["Laya3D"]) Laya3D.init(GameConfig.width, GameConfig.height);
+		else Laya.init(GameConfig.width, GameConfig.height, Laya["WebGL"]);
+		Laya["Physics"] && Laya["Physics"].enable();
+		Laya["DebugPanel"] && Laya["Physics"].enable();
+		Laya.stage.scaleMode = GameConfig.scaleMode;
+		Laya.stage.screenMode = GameConfig.screenMode;
+
+		//打开调试面板（通过IDE设置调试模式，或者url地址增加debug=true参数，均可打开调试面板）
+		if (GameConfig.debug || Laya.Utils.getQueryString("debug") == "true") Laya.enableDebugPanel();
+		if (GameConfig.stat) Laya.Stat.show();
+		Laya.alertGlobalError = true;
+
+		//激活资源版本控制，version.json由IDE发布功能自动生成，如果没有也不影响后续流程
+		Laya.ResourceVersion.enable("version.json", Laya.Handler.create(this, this.onVersionLoaded), Laya.ResourceVersion.FILENAME_VERSION);
 	}
-}new laya.MaskDemo();
+
+	onVersionLoaded(): void {
+		//激活大小图映射，加载小图的时候，如果发现小图在大图合集里面，则优先加载大图合集，而不是小图
+		Laya.AtlasInfoManager.enable("fileconfig.json", Laya.Handler.create(this, this.onConfigLoaded));
+	}
+
+	onConfigLoaded(): void {
+		//加载IDE指定的场景
+		GameConfig.startScene && Laya.Scene.open(GameConfig.startScene);
+	}
+}
+//激活启动类
+new Main();
+
 ```
 
 运行效果如图10所示，我们很快捷的实现了遮罩的效果。
