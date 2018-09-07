@@ -64,7 +64,7 @@ export default class loading extends ui.LoadingUI{
         this.pro.value += 0.01;
         //最高100%进度
         if(this.pro.value>=1){
-            this.pro.value =1;
+            this.pro.value =100;
             Laya.timer.clearAll(this);
             this.removeSelf();
             // Laya.stage.event("");
@@ -150,12 +150,12 @@ class Main {
 
   private assetsDispose(){
     //加载资源释放表
-    Laya.loader.load("res.json",Laya.Handler.create(this,this.onAssetOK)); 
+    Laya.loader.load("loveScene.json",Laya.Handler.create(this,this.onAssetOK)); 
   }
   //加载资源释放表完成后
   private onAssetOK():void{
     //获取加载的数据（Json数据转化成数组）
-    var arr:any = Laya.Loader.getRes("res.json");
+    var arr:any = Laya.Loader.getRes("loveScene.json");
     for(var i:number=arr.length -1;i>-1;i--){
       //根据资源路径获取资源
       var resource:Laya.Resource = Laya.loader.getRes(arr[i].url) as Laya.Resource;

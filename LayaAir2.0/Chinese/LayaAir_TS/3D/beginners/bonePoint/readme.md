@@ -66,19 +66,12 @@ monkeyAni.linkSprite3DToAvatarNode("RHand",box);
 ![5](img\5.png)</br>
 (图5)
 
-按照图4魔法攻击效果，可以通过两个类来实现，一个是主类Laya3D_BonePoint.ts，用于实现动画播放和生成魔法武器，方案为：在攻击动画播放至36帧左右时，克隆出一个与挂点武器相同的新魔法武器，并添加武器脚本用于飞行，原始挂点武器暂时隐藏，动画播放完成后再重新显示，模拟产生魔法并扔出魔法的效果。
+按照图4魔法攻击效果，可以通过两个类来实现，一个是主类Main.ts，用于实现动画播放和生成魔法武器，方案为：在攻击动画播放至36帧左右时，克隆出一个与挂点武器相同的新魔法武器，并添加武器脚本用于飞行，原始挂点武器暂时隐藏，动画播放完成后再重新显示，模拟产生魔法并扔出魔法的效果。
 
 武器脚本WeaponScript.ts实现魔法飞行和销毁。全部代码如下：
 
 ```typescript
-class Laya3D_BonePoint {
-  public scene: Laya.Scene;
-  /**角色动画组件**/
-  public monkeyAni: Laya.Animator;
-  /**骨骼挂点绑定的武器**/
-  public weapon: Laya.Sprite3D;
-  /**武器克隆**/import WeaponScript from "./WeaponScript";
-
+/**武器克隆**/import WeaponScript from "./WeaponScript";
 // 程序入口
 class Main {
   private scene:Laya.Scene3D;
@@ -145,76 +138,6 @@ class Main {
   }
 }
 new Main();
-public weaponClone: Laya.Sprite3D;
-/**武器是否已克隆**/
-private weaponIsClone: boolean = false;
-constructor() {
-  //初始化引擎
-  Laya3D.init(1280, 720, true);
-  //适配模式
-  Laya.stage.scaleMode = Laya.Stage.SCALE_FULL;
-  Laya.stage.screenMode = Laya.Stage.SCREEN_NONE;
-  //开启统计信息
-  Laya.Stat.show();
-  //加载3D资源
-  Laya.loader.create("LayaScene_monkey/monkey.ls", Laya.Handler.create(this, this.onComplete));
-}
-public Laya3D_BonePoint() {
-  //初始化引擎
-  Laya3D.init(1280, 720, true);
-  //适配模式
-  Laya.stage.scaleMode = Laya.Stage.SCALE_FULL;
-  Laya.stage.screenMode = Laya.Stage.SCREEN_NONE;
-  //开启统计信息
-  Laya.Stat.show();
-  //加载3D资源
-  Laya.loader.create("LayaScene_monkey/monkey.ls", Laya.Handler.create(this, this.onComplete));
-}
-//资源加载完成回调
-private onComplete(): void {
-  //创建场景
-  this.scene = Laya.loader.getRes("LayaScene_monkey/monkey.ls");
-  Laya.stage.addChild(this.scene);
-  //从场景中获取动画模型
-  var monkey: Laya.Sprite3D = this.scene.getChildByName("monkey") as Laya.Sprite3D;
-  //获取动画模型中动画组件
-  this.monkeyAni = monkey.getComponentByType(Laya.Animator) as Laya.Animator;
-  //获取挂点骨骼(Unity中设置的挂点骨胳会被导出，可获取)
-  var handBip: Laya.Sprite3D = monkey.getChildByName("RHand") as Laya.Sprite3D;
-  //获取挂点的武器模型
-  this.weapon = handBip.getChildByName("weapon") as Laya.Sprite3D;
-  //监听动画完成事件
-  this.monkeyAni.on(Laya.Event.COMPLETE, this, this.onAniComplete);
-  //帧循环，用于监控动画播放的当前帧
-  Laya.timer.frameLoop(1, this, this.onFrame);
-}
-private onAniComplete(): void {
-  //动画播放完成后武器激活显示
-  this.weapon.active = true;
-  //动画播放完成后，设置为未克隆，方便下次克隆新武器
-  this.weaponIsClone = false;
-}
-//在攻击动画播放到一定帧时，克隆一个新武器特效
-private onFrame(): void {
-  //在动画35-37帧之间时克隆一个飞出的武器
-  //（不能用==35帧方式，帧率不满时可能跳帧，导致克隆失败。后期版本将支持帧标签事件，可解决此问题）
-  if (this.monkeyAni.currentFrameIndex >= 35 && this.monkeyAni.currentFrameIndex <= 37) {
-    //确保在35-37帧之间只克隆一次
-    if (this.weaponIsClone) return;
-    //克隆新武器（模型、位置、矩阵等全被克隆）
-    var weaponClone: Laya.Sprite3D = Laya.Sprite3D.instantiate(this.weapon);
-    //为武器特效添加脚本
-    weaponClone.addComponent(WeaponScript);
-    //将克隆武器放入场景中
-    this.scene.addChild(weaponClone);
-    //设置为已克隆
-    this.weaponIsClone = true;
-    //隐藏原始武器
-    this.weapon.active = false;
-  }
-}
-}
-new Laya3D_BonePoint;
 ```
 
 
