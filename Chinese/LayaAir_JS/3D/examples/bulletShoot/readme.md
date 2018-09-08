@@ -83,7 +83,7 @@
 AC表示A点到C点的方向向量，AB表示A点到B点方向向量，BC表示B点到C点的方向向量（可画图理解）。
 
 
-**BC方向向量 = AB方向向量 — AC方向向量**
+**CB方向向量 = AB方向向量 — AC方向向量**
 
 引擎提供方法为：`Vector3.subtract(ab:Vector3, ac:Vector3, bc:Vector3)`。
 
