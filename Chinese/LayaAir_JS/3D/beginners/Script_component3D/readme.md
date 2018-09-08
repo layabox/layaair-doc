@@ -93,7 +93,7 @@ var BoxControlScript = (function(_super){
     /*覆写组件更新方法（相当于帧循环）
     *state渲染状态
     */
-    BoxControlScript.prototype._updata = function(state){
+    BoxControlScript.prototype._update = function(state){
         //所属脚本对象旋转更新
         this.box.transform.rotate(new Laya.Vector3(0,0.5,0),false,false);
     }
