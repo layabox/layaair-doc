@@ -143,7 +143,7 @@ new Main();
 
 
 ```typescript
-class WeaponScript extends Laya.Script {
+ export default class WeaponScript extends Laya.Script {
     /**被脚本绑定的武器**/
     public weapon: Laya.Sprite3D;
     /**武器生命周期**/
@@ -152,11 +152,11 @@ class WeaponScript extends Laya.Script {
         super();
     }
     //获取绑定对象
-    public _load(owner:Laya.ComponentNode): void {
-        this.weapon = owner as Laya.Sprite3D;
+    public onAwake(): void {
+        this.weapon = this.owner as Laya.Sprite3D;
     }
     //覆盖组件更新方法，实现武器帧循环
-    public _update(state: Laya.RenderState): void {
+    public onUpdate(): void {
         //武器旋转更新
         this.weapon.transform.rotate(new Laya.Vector3(2, 2, 0), true, false);
         //武器移动更新
