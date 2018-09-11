@@ -36,9 +36,9 @@
 
 `HScrollBar`组件（水平滚动条）：hscroll_xxx 或 hscrollbar_xxx；
 
-`Image`组件（图形组件）：不是以上规则的，都会被识别为Image组件。
+`Image`组件（图形组件）：image_xxx;
 
-
+不是以上规则的，都会被识别为Sprite。
 
 下面是示例组件图片：
 
