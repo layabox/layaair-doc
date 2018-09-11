@@ -53,7 +53,7 @@
 
 ​        cacheAs主要通过两方面提升性能。一是减少节点遍历和顶点计算；二是减少drawCall。善用cacheAs将是引擎优化性能的利器。
 
-​        下例绘制10000个文本：
+​        下例绘制10000个文本(根据电脑性能而定，本例为10000)：
 
 ```javascript
 package 
@@ -129,7 +129,7 @@ var txt:Text = new Text();
 txt.text = "text";
 Laya.stage.addChild(txt);
 //后面只是更新文字内容，使用changeText能提高性能
-text.changeText("text changed.");
+txt.changeText("text changed.");
 ```
 
  
