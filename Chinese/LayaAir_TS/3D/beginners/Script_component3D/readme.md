@@ -94,7 +94,7 @@ class BoxControlScript extends Laya.Script {
     /*覆写组件更新方法（相当于帧循环）
     *state渲染状态
     */
-    public _updata(state:Laya.RenderState):void{
+    public _update(state:Laya.RenderState):void{
         //所属脚本对象旋转更新
         this.box.transform.rotate(new Laya.Vector3(0,0.5,0),false,false);
     }
