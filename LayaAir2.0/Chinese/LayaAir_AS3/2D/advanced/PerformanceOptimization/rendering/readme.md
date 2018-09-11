@@ -79,7 +79,7 @@ package
 					txt.color = "#CCCCCC";
 					txt.x = Math.random()  *  550;
 					txt.y = Math.random()  *  400;
-					textBox.addChild(text);
+					textBox.addChild(txt);
 					}
 					Laya.stage.addChild(textBox);
 		}
