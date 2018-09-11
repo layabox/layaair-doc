@@ -125,7 +125,7 @@ LayaAirIDE中打包图集的方式一共有两种。
 
 3.2.1 资源管理器中的图集导出路径
 
-　　导出到项目后，自动打包好的图集默认位于“`项目根目录/bin/h5/res/atlas/`”目录下，图集命名与打包工具中的图集命名一样，以目录名为图集名称，如图7所示。
+　　导出到项目后，自动打包好的图集默认位于“`项目根目录/bin/res/atlas/`”目录下，图集命名与打包工具中的图集命名一样，以目录名为图集名称，如图7所示。
 
 　　![图7](img/7-1.png) <br /> (图7-1)
 
@@ -151,14 +151,14 @@ LayaAirIDE中打包图集的方式一共有两种。
 
 ```javascript
 //atlas方式图集使用示例
-Laya.loader.load("./res/atlas/ui.atlas", Handler.create(this, onLoaded));
+Laya.loader.load("./res/atlas/ui.atlas", Laya.Handler.create(this, onLoaded));
 ```
 
 　　`.json`是一种兼容第三方的图集配置方式，由于`.json`文件应用广泛，不仅仅用于图集，所以为了识别是否为图集配置信息，在加载`.json`文件的图集时，需要填写类型进行区分。json方式加载图集的示例代码为：
 
 ```javascript
 //json方式图集使用示例
-Laya.loader.load([{url: "res/atlas/ui.json", type: Loader.ATLAS}], Handler.create(this, onLoaded));
+Laya.loader.load([{url: "res/atlas/ui.json", type: Loader.JSON}], Laya.Handler.create(this, onLoaded));
 ```
 
 
