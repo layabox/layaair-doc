@@ -27,7 +27,7 @@ Animator动画组件类提供了两个实例方法**linkSprite3DToAvatarNode()**
 
 Tips：代码添加骨骼动画之前，需要美术提供需要关联骨骼节点的名字。
 
-![2](E:img\2.png)</br>
+![2](img\2.png)</br>
 
 (图2)
 
