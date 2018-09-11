@@ -158,7 +158,7 @@ Laya.loader.load("./res/atlas/ui.atlas", Handler.create(this, onLoaded));
 
 ```java
 //json方式图集使用示例
-Laya.loader.load([{url: "res/atlas/ui.json", type: Loader.ATLAS}], Handler.create(this, onLoaded));
+Laya.loader.load([{url: "res/atlas/ui.json", type: Loader.JSON}], Handler.create(this, onLoaded));
 ```
 
 
