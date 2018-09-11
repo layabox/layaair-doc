@@ -43,7 +43,7 @@
 
  cacheAs主要通过两方面提升性能。一是减少节点遍历和顶点计算；二是减少drawCall。善用cacheAs将是引擎优化性能的利器。
 
- 下例绘制10000个文本：
+ 下例绘制10000个文本(根据电脑性能而定，本例为10000)：
 
 ```javascript
 Laya.init(550,400,Laya.WebGL);
@@ -96,7 +96,7 @@ var txt=new Laya.Text();
 txt.text="text";
 Laya.stage.addChild(txt);
 //后面只是更新文字内容，使用changeText能提高性能
-text.changeText("text changed.");
+txt.changeText("text changed.");
 ```
 
 Text.changeText会直接修改绘图指令中该文本绘制的最后一条指令，这种前面的绘图指令依旧存在的行为会导致changeText只使用于以下情况：
