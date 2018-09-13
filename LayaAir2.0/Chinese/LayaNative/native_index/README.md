@@ -22,6 +22,14 @@ LayaNative可以选择通过index.js或是runtime.json启动。这两个文件�
 * 使用loadLib函数确定项目运行时需要加载的js文件。
 * 修改window.screenOrientation变量的值，对横竖屏设置。
 
+例如：
+
+```javascript
+window.screenOrientation = "landscape"; // 设置屏幕为横屏
+loadLib("libs/matter.js");   // 启动时载入“libs/matter.js”文件
+```
+
+
 **注意：** 请不要在index.js文件里编写任何逻辑代码，如果编写可能会发生未知的错误。
 
 **2.使用runtime.json作为启动文件**
@@ -30,3 +38,13 @@ LayaNative可以选择通过index.js或是runtime.json启动。这两个文件�
 
 * "scripts" : 用于确定项目运行时需要加载的js文件。
 * "screenOrientation" : 对横竖屏设置。
+
+例如，以下设置为启动时载入"F:/myLaya/temp.js"文件，屏幕设置为横屏
+
+```json
+{
+	"scripts": ["F:/myLaya/temp.js"],
+	"screenOrientation": "landscape"
+}
+
+```

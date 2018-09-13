@@ -23,19 +23,19 @@ window.screenOrientation = "sensor_landscape";
 
 * runtime.json
 
-如果使用runtime.json设置屏幕方向，修改screenorientation的值即可：
+如果使用runtime.json设置屏幕方向，修改screenOrientation的值即可：
 
 ```json
-"screenorientation":"sensor_landscape"
+"screenOrientation":"sensor_landscape"
 ```
 
-screenorientation的取值和index.js里的window.screenOrientation取值相同。
+screenOrientation的取值和index.js里的window.screenOrientation取值相同。
 
 ## 二、项目构建后横竖屏的设置
 
 ### 1.iOS
 
-iOS项目构建成功后，打开resource/config.ini文件，修改`orientation=30`的值，如下图所示：
+iOS项目构建成功后，打开resource/config.ini文件，修改`orientation=16`的值，如下图所示：
 
 ![图1](img/1.png)
 
@@ -52,7 +52,7 @@ orientation=6   //代表竖屏可以任意旋转
 orientation=24  //代表横屏可以任意旋转  
 ```
 
-**注意：** iOS工程项目内的横竖屏设置最好全部勾选，仅通过config.ini设置横竖屏。如果设置的不一致可能会发生崩溃。如下图： 
+**注意：** iOS工程项目内的横竖屏设置最好和config.ini设置一致。如果设置的不一致可能会发生崩溃。如下图： 
 
 ![图](img/2.png)
 
