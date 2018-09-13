@@ -2,7 +2,7 @@
 
 相信当你看这篇文档的时候，你已经熟练掌握了LayaAir或对LayaAir有一定的了解，在LayaAir的文档中详细介绍过如何使用LayaIDE创建第一个程序“Hello LayaBox”。
 
-**Tips：输入项目地址后，如果发现屏幕上没有显示任何画面，有可能是因为项目没有正确设置横竖屏，请参考文档：https://github.com/layabox/layaair-doc/tree/master/Chinese/LayaNative/screen_orientation**
+<!-- TODO:更换链接地址 **Tips：输入项目地址后，如果发现屏幕上没有显示任何画面，有可能是因为项目没有正确设置横竖屏，请参考文档：https://github.com/layabox/layaair-doc/tree/master/Chinese/LayaNative/screen_orientation** -->
 
 步骤一：目前我已经创建好了一个Hello LayaBox的简单项目，如图1所示：  
 

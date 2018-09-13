@@ -124,7 +124,7 @@
 * http://192.168.0.100:8899/ 错误  
 * http://192.168.0.100:8899 错误  
 
-**Tips：输入地址后，如果发现屏幕上没有显示任何画面，有可能是因为项目没有正确设置横竖屏，请参考文档：https://github.com/layabox/layaair-doc/tree/master/Chinese/LayaNative/screen_orientation**
+<!-- TODO:等待发完后更换连接地址 **Tips：输入地址后，如果发现屏幕上没有显示任何画面，有可能是因为项目没有正确设置横竖屏，请参考文档：https://github.com/layabox/layaair-doc/tree/master/Chinese/LayaNative/screen_orientation** -->
 
 
 ### 三、注意事项

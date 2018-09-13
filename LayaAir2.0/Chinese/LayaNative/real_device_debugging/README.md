@@ -26,7 +26,7 @@ JavaScript代码的调试，是使用调试机上的Chrome浏览器进行的。A
 
 使用LayaAirIDE对项目进行构建，生成Android的工程。
 
-具体可参考“使用IDE构建工程”。
+<!-- TODO：添加链接地址。 具体可参考“使用IDE构建工程”。 -->
 
 ### 步骤2：修改调试模式
 
@@ -56,7 +56,15 @@ JSDebugMode的取值和含义如下：
 
 如果选择的是Debug/Normal模式，等待Android测试机成功**启动并运行**项目。
 
+![](img/android_app_run.png)
+
+图2 Android测试机成功启动并运行项目
+
 如果选择的是Debug/Wait模式，等待Android测试机成功**启动**项目。
+
+![](img/android_app_boot.png)
+
+图3 Android测试机成功启动
 
 ### 步骤4：使用Chrome连接工程
 
@@ -72,7 +80,7 @@ JSDebugMode的取值和含义如下：
 
 ![](img/debug_connected.png)
 
-图2
+图4
 
 
 ## 三、使用测试App进行调试
@@ -85,7 +93,7 @@ JSDebugMode的取值和含义如下：
 
 ![图](img/app_ip_port.png)
 
-图3
+图5
 
 ### 步骤2：选择调试模式
 
@@ -93,24 +101,29 @@ JSDebugMode的取值和含义如下：
 
 ![图](img/debug_wait.png)
 
-图4
+图6
 
 ![图](img/debug_normal.png)
 
-图5
+图7
 
 
 ### 步骤3：扫描项目的二维码
 
 点击测试App中间的蓝色二维码图标，扫描项目的layanative的二维码地址。
 
-如果选择的是Debug/Normal模式则等待项目成功启动并运行。
+如果选择的是Debug/Normal模式则等待项目成功**启动并运行**。
+
+![图](img/app_run.png)
+
+图8 案例项目成功运行
+
 
 如果选择的是Debug/Wait模式则等待测试App弹出下面的界面：
 
 ![图](img/chrome_connect.png)
 
-图6
+图9
 
 ### 步骤4：在Chrome浏览器中连接测试App
 
@@ -126,7 +139,7 @@ JSDebugMode的取值和含义如下：
 
 ![](img/debug_connected.png)
 
-图7
+图10
 
 **Tips：** 测试App中的快捷按钮
 
@@ -160,22 +173,22 @@ JSDebugMode的取值和含义如下：
 
 ![](img/7.png)
 
-图7
+图11
 
 步骤2：取消所有的断点
 
 ![](img/8.png)
 
-图8
+图12
 
 步骤3：重启启动工程，再使用Chrome连接工程。
 
 ![](img/9.png)
 
-图9
+图13
 
 步骤4：恢复需要的断点
 
 ![](img/7.png)
 
-图9
+图14

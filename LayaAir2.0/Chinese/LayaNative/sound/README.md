@@ -13,19 +13,14 @@
 **1、LayaNative中的音效只支持wav和ogg格式。**  
 **2、wav和ogg只支持8位和16位，尚不支持32位。**
 
-如何查看当前LayaNative的版本，有两种办法：  
-1、在JS中调用`conch.config.getRuntimeVersion();`方法获得版本号。  
-2、把设备插到电脑上，查看log，如下图所示：  
-
-![图0](img/0.png)
+**Tips:** wav和ogg建议使用22050采样率、16bit、单声道。
 
 ## 3.提示信息
 
-1、在LayaAir-1.7.5以后版本，如果调用`SoundManager.playSound()`，但是传入的文件格式是mp3，则会弹出提示信息，提示信息如下：  
+如果调用`SoundManager.playSound()`，但是传入的文件格式是mp3，则会弹出提示信息，提示信息如下：  
 `The sound only supports wav or ogg format,for optimal performance reason,please refer to the official website document.`  
 这个时候需要把mp3转换成wav或者ogg格式。
 
-2、在LayaAir-1.7.5以前的版本，是没有报错信息的，当你发现每次播放音效都会出现**卡顿现象**，这种情况极有可能是因为播放音效使用了mp3格式，需要转换格式。
 
 ## 4.解决兼容性
 
