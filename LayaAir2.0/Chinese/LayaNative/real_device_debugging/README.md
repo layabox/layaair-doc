@@ -20,7 +20,7 @@ JavaScript代码的调试，是使用调试机上的Chrome浏览器进行的。A
 
 **注意：在调试的工程中请确保调试机与Android测试机在同一网络上。**
 
-## 二、测试构建的项目
+## 二、构建的项目
 
 ### 步骤1: 
 
@@ -54,7 +54,7 @@ JSDebugMode的取值和含义如下：
 
 使用Android Studio编译工程。
 
-如果选择的是Debug/Normal模式，等待Android测试机成功成功**启动并运行**项目。
+如果选择的是Debug/Normal模式，等待Android测试机成功**启动并运行**项目。
 
 如果选择的是Debug/Wait模式，等待Android测试机成功**启动**项目。
 
