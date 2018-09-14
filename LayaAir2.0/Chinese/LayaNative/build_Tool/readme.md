@@ -62,23 +62,19 @@
 
 * 游戏url：
 
-   如果要打包的应用是一个在线项目，则需要提供一个启动url，指向一个html页面，是应用的入口。而通过LayaAir生成的项目，会输出一个启动页面，一般是index.html。 在测试的时候，为了方便，通常是使用的本地URL地址在浏览器中测试，当打成Android App的时候，必须有一个真正的webserver的地址，
+   如果要打包的应用是一个在线项目，则需要提供一个启动url，指向一个js或json文件，是应用的入口。而通过LayaAir生成的项目，会输出一个启动页面，一般是index.js。 在测试的时候，为了方便，通常是使用的本地URL地址在浏览器中测试，当打成Android App的时候，必须有一个真正的webserver的地址，
 
    例如：  
 
 　　*局域网地址：*  
 
 ``` 
-    http://10.10.20.19:8888/index.html
+    http://10.10.20.19:8888/index.js
 ```
 　　*实际地址:*  
 ``` 
-    http://layaair.ldc.layabox.com/layaplayer/index.html
+    http://nativetest.layabox.com/layaplayer/index.js
 ```
-
-​	**注意 **
-
-​	LayaPlayer对html的支持非常有限，参考[这里](https://github.com/layabox/layaair-doc/tree/master/Chinese/LayaNative/native_index);
 
 * 输出路径：
 
@@ -128,7 +124,7 @@
      在构建的项目中打开MainActivity.java，搜索 `mPlugin.game_plugin_set_option("localize","false");`  
      单机版需要设置为"true"，如`mPlugin.game_plugin_set_option("localize","true");`  
      如果要设置为网络版，就要修改为：`mPlugin.game_plugin_set_option("localize","false");`， 并且设置正确的地址：  
-     `mPlugin.game_plugin_set_option("gameUrl", "http://你的地址/index.html");`
+     `mPlugin.game_plugin_set_option("gameUrl", "http://你的地址/index.js");`
 
 
 2. iOS 项目
@@ -137,9 +133,9 @@
 
    例如一开始是网络版，地址为：  
 
-    `loadUrl(conch.presetUrl||"http://10.10.20.19:7788/index.html");`   
+    `loadUrl(conch.presetUrl||"http://10.10.20.19:7788/index.js");`   
    要改成单机版的话，修改这句话：  
-    `loadUrl(conch.presetUrl||"http://stand.alone.version/index.html");`  
+    `loadUrl(conch.presetUrl||"http://stand.alone.version/runtime.json");`  
    反之亦然。  
 
    **注意**   
@@ -153,7 +149,7 @@
 
 但是在开发过程中，h5的项目一直在变化，为了避免每次都重新构建工程，在IDE-1.7.6-Beta版本之后，可以通过命令行进行刷新。
 
-资源包版本调用命令：``layanative refreshres -u http://testgame.layabox.com/index.html``    
+资源包版本调用命令：``layanative refreshres -u http://testgame.layabox.com/index.js``    
 单机版本调用命令：``layanative refreshres`` 
 
 ***Tips***  
