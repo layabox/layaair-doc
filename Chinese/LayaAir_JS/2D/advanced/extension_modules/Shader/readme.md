@@ -12,7 +12,7 @@ Shader（着色器）有两种。一种是顶点着色器，用于控制几何�
 
 **2.编写着色器变量类。**
 
-在src/shaser目录下新建一个类文件myShaderValue.js，用于编写着色器程序的变量类。
+在src/shader目录下新建一个类文件myShaderValue.js，用于编写着色器程序的变量类。
 
 代码如下：
 
