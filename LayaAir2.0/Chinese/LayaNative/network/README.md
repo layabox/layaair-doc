@@ -34,7 +34,7 @@ NET_WIFI = 1;
 NET_2G = 2;
 NET_3G = 3;
 NET_4G = 4;
-NET_UNKNOWN=5
+NET_YES = 5;
 ```
 **Tips**  
 *1、conch只能LayaNative环境下调用，在网页版本中是没有conch定义的，所有需要判断一下是否存在。*  
@@ -59,7 +59,7 @@ NET_WIFI = 1;
 NET_2G = 2;
 NET_3G = 3;
 NET_4G = 4;
-NET_UNKNOWN=5
+NET_YES = 5;
 ```
 
 
