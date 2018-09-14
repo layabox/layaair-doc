@@ -770,30 +770,6 @@
 				"name_3_url": "Chinese/LayaAir_AS3/3D/beginners/assetsDispose/",
 				"name_3_file": "readme.md"
 			}]
-		},
-		{
-			"name_2_name": "3D简单实例",
-			"name_2_data": [
-			{
-				"name_3_name": "3D角色动画控制",
-				"name_3_url": "Chinese/LayaAir_AS3/3D/examples/roleAniControl/",
-				"name_3_file": "readme.md"
-			},
-			{
-				"name_3_name": "3D角色脚本控制与碰撞检测",
-				"name_3_url": "Chinese/LayaAir_AS3/3D/examples/roleScriptControl/",
-				"name_3_file": "readme.md"
-			},
-			{
-				"name_3_name": "3D多场景运用示例",
-				"name_3_url": "Chinese/LayaAir_AS3/3D/examples/multiScene/",
-				"name_3_file": "readme.md"
-			},
-			{
-				"name_3_name": "3D子弹射击碰撞检测",
-				"name_3_url": "Chinese/LayaAir_AS3/3D/examples/bulletShoot/",
-				"name_3_file": "readme.md"
-			}]
 		}]
 	},
 	{
@@ -845,82 +821,6 @@
 			{
 				"name_3_name": "QQ玩一玩基础介绍与游戏发布",
 				"name_3_url": "Chinese/qq/introduction/",
-				"name_3_file": "readme.md"
-			}]
-		}]
-	},
-	{
-		"nav_1_name": "实例开发篇（AS3）",
-		"nav_1_data": [
-		{
-			"name_2_name": "LayaAir IDE实用示例",
-			"name_2_data": [
-			{
-				"name_3_name": "List示例：显示、增加、删除",
-				"name_3_url": "Chinese/LayaAir_AS3/2D/examples/LayaAirIDE/List_display_add_del/",
-				"name_3_file": "readme.md"
-			}]
-		},
-		{
-			"name_2_name": "图文混排聊天室教程",
-			"name_2_data": [
-			{
-				"name_3_name": "图文混排聊天室之WebSocket服务器",
-				"name_3_url": "Chinese/LayaAir_AS3/2D/examples/chat/1/",
-				"name_3_file": "readme.md"
-			},
-			{
-				"name_3_name": "图文混排聊天室之客户端（上）",
-				"name_3_url": "Chinese/LayaAir_AS3/2D/examples/chat/2/",
-				"name_3_file": "readme.md"
-			},
-			{
-				"name_3_name": "图文混排聊天室之客户端（下）",
-				"name_3_url": "Chinese/LayaAir_AS3/2D/examples/chat/3/",
-				"name_3_file": "readme.md"
-			}]
-		},
-		{
-			"name_2_name": "《微信飞机大战》实战开发",
-			"name_2_data": [
-			{
-				"name_3_name": "项目需求分析与资源准备",
-				"name_3_url": "Chinese/LayaAir_AS3/2D/examples/AirWar/1/",
-				"name_3_file": "readme.md"
-			},
-			{
-				"name_3_name": "编辑器可视化资源制作",
-				"name_3_url": "Chinese/LayaAir_AS3/2D/examples/AirWar/2/",
-				"name_3_file": "readme.md"
-			},
-			{
-				"name_3_name": "游戏流程控制",
-				"name_3_url": "Chinese/LayaAir_AS3/2D/examples/AirWar/3/",
-				"name_3_file": "readme.md"
-			},
-			{
-				"name_3_name": "游戏UI功能实现",
-				"name_3_url": "Chinese/LayaAir_AS3/2D/examples/AirWar/4/",
-				"name_3_file": "readme.md"
-			},
-			{
-				"name_3_name": "游戏主角与操控",
-				"name_3_url": "Chinese/LayaAir_AS3/2D/examples/AirWar/5/",
-				"name_3_file": "readme.md"
-			},
-			{
-				"name_3_name": "创建敌机与角色碰撞",
-				"name_3_url": "Chinese/LayaAir_AS3/2D/examples/AirWar/6/",
-				"name_3_file": "readme.md"
-			},
-			{
-				"name_3_name": "主角射击与掉落道具",
-				"name_3_url": "Chinese/LayaAir_AS3/2D/examples/AirWar/7/",
-				"name_3_file": "readme.md"
-			},
-			{
-				"name_3_name": "关卡升级与音效播放",
-				"name_3_url": "Chinese/LayaAir_AS3/2D/examples/AirWar/8/",
 				"name_3_file": "readme.md"
 			}]
 		}]
@@ -1803,30 +1703,6 @@
 				"name_3_url": "Chinese/LayaAir_TS/3D/beginners/assetsDispose/",
 				"name_3_file": "readme.md"
 			}]
-		},
-		{
-			"name_2_name": "3D简单实例",
-			"name_2_data": [
-			{
-				"name_3_name": "3D角色动画控制",
-				"name_3_url": "Chinese/LayaAir_TS/3D/examples/roleAniControl/",
-				"name_3_file": "readme.md"
-			},
-			{
-				"name_3_name": "3D角色脚本控制与碰撞检测",
-				"name_3_url": "Chinese/LayaAir_TS/3D/examples/roleScriptControl/",
-				"name_3_file": "readme.md"
-			},
-			{
-				"name_3_name": "3D多场景运用示例",
-				"name_3_url": "Chinese/LayaAir_TS/3D/examples/multiScene/",
-				"name_3_file": "readme.md"
-			},
-			{
-				"name_3_name": "3D子弹射击碰撞检测",
-				"name_3_url": "Chinese/LayaAir_TS/3D/examples/bulletShoot/",
-				"name_3_file": "readme.md"
-			}]
 		}]
 	},
 	{
@@ -1883,14 +1759,141 @@
 		}]
 	},
 	{
-		"nav_1_name": "实例开发篇（TS）",
+		"nav_1_name": "LayaNative原生服务",
 		"nav_1_data": [
 		{
-			"name_2_name": "LayaAir IDE实用示例",
+			"name_2_name": "LayaNative一步一步",
 			"name_2_data": [
 			{
-				"name_3_name": "List示例：显示、增加、删除",
-				"name_3_url": "Chinese/LayaAir_TS/2D/examples/LayaAirIDE/List_display_add_del/",
+				"name_3_name": "测试App安装",
+				"name_3_url": "Chinese/LayaNative/How_To_Use_Runtime/",
+				"name_3_file": "readme.md"
+			},
+			{
+				"name_3_name": "运行Hello LayaBox项目",
+				"name_3_url": "Chinese/LayaNative/run_HelloLayaBox/",
+				"name_3_file": "README.md"
+			},
+			{
+				"name_3_name": "LayaNative不是浏览器",
+				"name_3_url": "Chinese/LayaNative/native_index/",
+				"name_3_file": "README.md"
+			}]
+		},
+		{
+			"name_2_name": "LayaNative基础文档",
+			"name_2_data": [
+			{
+				"name_3_name": "LayaNative综述",
+				"name_3_url": "Chinese/LayaNative/LayaNative_Introduction/",
+				"name_3_file": "readme.md"
+			},
+			{
+				"name_3_name": "横竖屏设置",
+				"name_3_url": "Chinese/LayaNative/screen_orientation/",
+				"name_3_file": "README.md"
+			},
+			{
+				"name_3_name": "关于声音",
+				"name_3_url": "Chinese/LayaNative/sound/",
+				"name_3_file": "README.md"
+			},
+			{
+				"name_3_name": "启动画面LoadingView",
+				"name_3_url": "Chinese/LayaNative/loading_view_new/",
+				"name_3_file": "README.md"
+			},
+			{
+				"name_3_name": "关于网络监听",
+				"name_3_url": "Chinese/LayaNative/network/",
+				"name_3_file": "README.md"
+			},
+			{
+				"name_3_name": "关于iOS-IPV6",
+				"name_3_url": "Chinese/LayaNative/ipv6/",
+				"name_3_file": "README.md"
+			},
+			{
+				"name_3_name": "关于LocalStorage",
+				"name_3_url": "Chinese/LayaNative/LocalStrorage/",
+				"name_3_file": "README.md"
+			},
+			{
+				"name_3_name": "处理Android后退按钮",
+				"name_3_url": "Chinese/LayaNative/Android_BackPress/",
+				"name_3_file": "README.md"
+			},
+			{
+				"name_3_name": "Android真机调试JavaScript",
+				"name_3_url": "Chinese/LayaNative/real_device_debugging/",
+				"name_3_file": "README.md"
+			},
+			{
+				"name_3_name": "其他",
+				"name_3_url": "Chinese/LayaNative/Other_settings/",
+				"name_3_file": "README.md"
+			}]
+		},
+		{
+			"name_2_name": "LayaNative进阶",
+			"name_2_data": [
+			{
+				"name_3_name": "缓存工具-layadcc",
+				"name_3_url": "Chinese/LayaNative/LayaDcc_Tool/",
+				"name_3_file": "readme.md"
+			},
+			{
+				"name_3_name": "二次开发",
+				"name_3_url": "Chinese/LayaNative/Secondary_Development/",
+				"name_3_file": "readme.md"
+			},
+			{
+				"name_3_name": "渠道对接",
+				"name_3_url": "Chinese/LayaNative/Platform_Interface/",
+				"name_3_file": "readme.md"
+			},
+			{
+				"name_3_name": "iOS-App内购",
+				"name_3_url": "Chinese/LayaNative/In_APP_Purchase_IOS/",
+				"name_3_file": "readme.md"
+			},
+			{
+				"name_3_name": "webview",
+				"name_3_url": "Chinese/LayaNative/webview/",
+				"name_3_file": "README.md"
+			},
+			{
+				"name_3_name": "嵌入字体",
+				"name_3_url": "Chinese/LayaNative/built_in_font/",
+				"name_3_file": "README.md"
+			},
+			{
+				"name_3_name": "zip更新",
+				"name_3_url": "Chinese/LayaNative/zipUpdate/",
+				"name_3_file": "readme.md"
+			},
+			{
+				"name_3_name": "APK扩展机制",
+				"name_3_url": "Chinese/LayaNative/apk_expansion/",
+				"name_3_file": "README.md"
+			},
+			{
+				"name_3_name": "APK-update",
+				"name_3_url": "Chinese/LayaNative/apk-update/",
+				"name_3_file": "README.md"
+			}]
+		},
+		{
+			"name_2_name": "LayaNative工具使用",
+			"name_2_data": [
+			{
+				"name_3_name": "layanative 命令行工具使用",
+				"name_3_url": "Chinese/LayaNative/build_Cmd/",
+				"name_3_file": "README.md"
+			},
+			{
+				"name_3_name": "使用IDE构建工程",
+				"name_3_url": "Chinese/LayaNative/build_Tool/",
 				"name_3_file": "readme.md"
 			}]
 		}]
@@ -2628,30 +2631,6 @@
 				"name_3_url": "Chinese/LayaAir_JS/3D/beginners/assetsDispose/",
 				"name_3_file": "readme.md"
 			}]
-		},
-		{
-			"name_2_name": "3D简单实例",
-			"name_2_data": [
-			{
-				"name_3_name": "3D角色动画控制",
-				"name_3_url": "Chinese/LayaAir_JS/3D/examples/roleAniControl/",
-				"name_3_file": "readme.md"
-			},
-			{
-				"name_3_name": "3D角色脚本控制与碰撞检测",
-				"name_3_url": "Chinese/LayaAir_JS/3D/examples/roleScriptControl/",
-				"name_3_file": "readme.md"
-			},
-			{
-				"name_3_name": "3D多场景运用示例",
-				"name_3_url": "Chinese/LayaAir_JS/3D/examples/multiScene/",
-				"name_3_file": "readme.md"
-			},
-			{
-				"name_3_name": "3D子弹射击碰撞检测",
-				"name_3_url": "Chinese/LayaAir_JS/3D/examples/bulletShoot/",
-				"name_3_file": "readme.md"
-			}]
 		}]
 	},
 	{
@@ -2703,19 +2682,6 @@
 			{
 				"name_3_name": "QQ玩一玩基础介绍与游戏发布",
 				"name_3_url": "Chinese/qq/introduction/",
-				"name_3_file": "readme.md"
-			}]
-		}]
-	},
-	{
-		"nav_1_name": "实例开发篇（JS）",
-		"nav_1_data": [
-		{
-			"name_2_name": "LayaAir IDE实用示例",
-			"name_2_data": [
-			{
-				"name_3_name": "List示例：显示、增加、删除",
-				"name_3_url": "Chinese/LayaAir_JS/2D/examples/LayaAirIDE/List_display_add_del/",
 				"name_3_file": "readme.md"
 			}]
 		}]
