@@ -5,25 +5,25 @@ layanative命令行工具用来生成Android和iOS原生项目，以及项目的
 ### 1.安装layanative
 windows
 ```   
-$ npm install -g layanative  
+$ npm install -g layanative2  
 ```
 mac
 ```   
-$ sudo npm install -g layanative  
+$ sudo npm install -g layanative2  
 ```
 ### 1.查看SDK版本信息
 SDK就是native项目的模板。listversion命令会列出当前所有可用的SDK版本信息，在下面创建native项目的时候可以通过参数指定需要的版本。    
 ```   
-$ layanative listversions  
+$ layanative2 listversions  
 ```
 ### 2.创建native项目
 createapp命令用于创建native项目  
 可以先用下面的命令查看下命令createapp的帮助信息
 ```
-$ layanative createapp --help
+$ layanative2 createapp --help
 ```
 #### 用法:
-    layanative createapp [-f res_path] [--path output_path] [-s sdk_path | -v version] [-p all|ios|android_eclipse|android_studio] [-t 0|1|2] [-u url] [-n project_name] [-a app_name] [--package_name package_name]
+    layanative2 createapp [-f res_path] [--path output_path] [-s sdk_path | -v version] [-p all|ios|android_eclipse|android_studio] [-t 0|1|2] [-u url] [-n project_name] [-a app_name] [--package_name package_name]
 
 #### 参数说明:
 
@@ -39,28 +39,27 @@ $ layanative createapp --help
 | `--app_name, -a` |      应用名称：app安装到手机后显示的名称 [默认值: LayaBox]
 | `--package_name` |       包名 [默认值: com.layabox.game]
 | `--sdk,-s` |       SDK本地目录：自定义的SDK目录，可选参数。断网情况下使用，一般情况下建议使用参数--version。
-| `--demension,-d` |   项目类型2D还是3D,版本1.2.13新增 [可选值: 2D, 3D] [默认值: 2D]
 当type为1或2时会打资源包到native项目，为0时不打。打包资源底层实际是调用dcc的方法。打包资源dcc相关，参考 [LayaDcc工具](https://github.com/layabox/layaair-doc/tree/master/Chinese/LayaNative/LayaDcc_Tool)。  
 可以用--path参数指定项目的输出路径，默认输出到当前路径下。
 
 根据-v使用v0.9.5版本的SDK
 ```
-$ layanative createapp -f SnowBallH5 -t 1 -n SnowBallNative -u http://10.10.20.102:8899/index.html -v v0.9.5
+$ layanative2 createapp -f SnowBallH5 -t 1 -n SnowBallNative -u http://10.10.20.102:8899/index.html -v v0.9.5
 ```
 
 既没指定-v也没指定-s，使用最新版本的SDK
 ```
-$ layanative createapp -f SnowBallH5 -t 1 -n SnowBallNative -u http://10.10.20.102:8899/index.html
+$ layanative2 createapp -f SnowBallH5 -t 1 -n SnowBallNative -u http://10.10.20.102:8899/index.html
 ```
 用--version或者-v指定版本需要联网环境，断网情况下可以用--sdk或者-s指定SDK目录。[SDK下载地址](https://ldc.layabox.com/layadownload/?type=layaairnative-LayaAir%20Native%20SDK%200.9.6)
 ```
-$ layanative createapp -f SnowBallH5 -t 1 -n SnowBallNative -u http://10.10.20.102:8899/index.html -s D:/v0.9.6
+$ layanative2 createapp -f SnowBallH5 -t 1 -n SnowBallNative -u http://10.10.20.102:8899/index.html -s D:/v0.9.6
 ```
 ### 3.刷新native项目资源包
 refreshres命令用于刷新native项目的资源包  
 项目迭代过程中，h5项目有了修改，可以用refreshres命令，重新打包刷新资源和代码到native项目中。
 #### 用法:
-    layanative refreshres [-p all|ios|android_eclipse|android_studio] [--path path] [-u url]
+    layanative2 refreshres [-p all|ios|android_eclipse|android_studio] [--path path] [-u url]
 
 #### 参数说明:
 
@@ -79,7 +78,7 @@ createapp时把资源路径写在了生成的native项目目录下的native.json
 ### 4.删除native项目资源包
 removeres命令用于删除native项目的资源包  
 #### 用法:
-    layanative removeres [--path path] 
+    layanative2 removeres [--path path] 
 #### 参数说明:
 
 | 关键字 | 描述
