@@ -18,37 +18,27 @@
 以下为具体的使用代码示例：
 
 ```java
-package {
-	import laya.net.Loader;
-	import laya.net.ResourceVersion;
-	import laya.utils.Handler;
-	import view.TestView;
-	
-	public class LayaUISample {
+
+		//初始化引擎
+		Laya.init(600, 400);
+		//设置版本控制类型为使用文件名映射的方式
+		Laya.ResourceVersion.type = Laya.ResourceVersion.FILENAME_VERSION;
+		//加载版本信息文件
+		Laya.ResourceVersion.enable("version.json", Laya.Handler.create(this, beginLoad));
 		
-		public function LayaUISample() {
-			//初始化引擎
-			Laya.init(600, 400);
-			
-			//设置版本控制类型为使用文件名映射的方式
-			ResourceVersion.type = ResourceVersion.FILENAME_VERSION;
-			//加载版本信息文件
-			ResourceVersion.enable("version.json", Handler.create(this, beginLoad));		
-		}
-		
-		private function beginLoad():void
-		{
+		function beginLoad()
+        {
 			//加载引擎需要的资源
-			Laya.loader.load([{url: "res/atlas/comp.atlas", type: Loader.ATLAS}], Handler.create(this, onLoaded));
+			Laya.loader.load([{url: "res/atlas/comp.atlas", type: Laya.Loader.ATLAS}], Laya.Handler.create(this, onLoaded));
 		}
 		
-		private function onLoaded():void {
+		function onLoaded() 
+        {
 			//实例UI界面
 			var testView:TestView = new TestView();
 			Laya.stage.addChild(testView);
 		}
-	}
-}
+
 ```
 
 程序运行实际的加载图
