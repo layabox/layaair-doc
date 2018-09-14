@@ -21,10 +21,61 @@
 
 这个函数会在画布的最上层显示一个新的view，在其中显示url的内容。
 
-canclose参数用来控制这个webview是否能被关掉：  
-`false`则这个webview一旦被打开就无法关掉了。  
-`true` 则在ios下，会有一个小关闭按钮，点击这个按钮，就可以关闭webview（见图1）；在android下没有关闭按钮，通过后退键来关闭webview（见图2），因为关闭按钮会覆盖部分页面内容，所以尽量不显示。
+`canclose`参数用来控制这个webview是否能被关掉：  
+* 设置为`false`时:
 
+    代码如下：
+
+    ```typescript
+    document.addEventListener('touchstart',()=>{
+        if(conch){
+            var l = 50;
+            var t = 50;
+            var w = window.innerWidth - l * 2;
+            var h = window.innerHeight - t * 2;
+            conch.setExternalLinkEx('http://www.layabox.com',l,t,w,h,false); // canclose设置为false
+            //conch.setExternalLink('http://www.baidu.com');
+        }
+    });
+    ```
+
+    webview显示出来后就无法关闭，效果如下：  
+
+    ![ios webview](img/1.png)
+
+    图1
+
+* 设置为`true`时: 
+
+    代码如下：
+
+    ```typescript
+    document.addEventListener('touchstart',()=>{
+        if(conch){
+            var l = 50;
+            var t = 50;
+            var w = window.innerWidth - l * 2;
+            var h = window.innerHeight - t * 2;
+            conch.setExternalLinkEx('http://www.layabox.com',l,t,w,h,true); // canclose设置为true
+            //conch.setExternalLink('http://www.baidu.com');
+        }
+    });
+    ```
+
+
+
+    * 在ios下，会有一个小关闭按钮，点击这个按钮，就可以关闭webview。 效果如下：
+
+        ![ios webview](img/2.png)
+
+        图2
+
+    * 因为关闭按钮会覆盖部分页面内容，且Android设备上提供了后退键，因此Android设备上webview显示后没有关闭按钮，可以通过**后退键**关闭webview。如下图：
+
+
+        ![android webview](img/3.png)
+
+        图3  此时可以点击后退键关闭webview
 
 ### 2. 限制
 1. 目前webview无法与app进行交互。
@@ -34,42 +85,6 @@ canclose参数用来控制这个webview是否能被关掉：
 *1、conch只能LayaNative环境下调用，在网页版本中是没有conch定义的，所有需要判断一下是否存在。*  
 *2、如果使用as语言开发的时候，可以通过 `Browser.window['conch'] `这种方式获得conch对象。*
 
-
-## 实际效果
-![ios webview](img/1.png)
-
-图1
-
-webview左上角的x，就是当canclose设置为true的时候，对应的关闭按钮。如果 canclose=false, 则没有这个按钮。
-
-![android webview](img/2.png)
-
-图2  
-
-## 二、示例代码
-```javascript
-//@ts-check
-
-conch && conch.showAssistantTouch(false);
-var ctx = document.createElement('canvas').getContext('2d');
-function render(){
-    ctx.fillStyle='#99d9ea';
-    ctx.fillRect(0,0,window.innerWidth,window.innerHeight);
-    window.requestAnimationFrame(render);
-}
-window.requestAnimationFrame(render);
-
-document.addEventListener('touchstart',()=>{
-    if(conch){
-        var l = 50;
-        var t = 50;
-        var w = window.innerWidth-l*2;
-        var h = window.innerHeight-t*2;
-        conch.setExternalLinkEx('http://www.layabox.com',l,t,w,h,true);
-        //conch.setExternalLink('http://www.baidu.com');
-    }
-});
-```
 
 ## 三、如何在代码中动态关闭webview页面
 

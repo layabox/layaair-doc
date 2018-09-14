@@ -1,6 +1,7 @@
 # 加载界面
-为了方便开发者，自定义LoadingView，1.0版本使用原生功能实现的新的LoadingView  
-应用程序在启动的时候，需要加载必要的html、js、图片，这个时候就需要通过加载界面显示进度，LayaPlayer在运行项目的时候，默认有一个LoadingView界面，一段时间后，即可进入游戏，如图1所示：  
+为了方便开发者，自定义LoadingView，LayaNative使用原生功能实现的新的LoadingView。
+
+应用程序在启动的时候，需要加载必要的html、js、图片，这个时候就需要通过加载界面显示进度，LayaNative在运行项目的时候，默认有一个LoadingView界面，一段时间后，即可进入游戏，如图1所示：  
 
 ​![图1](img/1.png) <br/>
 
@@ -35,10 +36,27 @@ if(window.loadingView)
 然后在项目中根据加载完成情况，设置进度条的显示进度，调用函数如下:  
 
 ```javascript
-loadingView.loading(nPercent);//参数为0-100的整数值，当值为100的时候LoadingView自动关闭
+window.loadingView.loading(nPercent);//参数为0-100的整数值，当值为100的时候LoadingView自动关闭
 ```  
 
-项目中的伪代码如下：
+具体的步骤如下：
+
+**步骤1：** 在`config.js`中设置`loadingView.loadingAutoClose`的值为`false`
+
+```javascript
+window.loadingView = new loadingView();
+if(window.loadingView)
+{
+    window.loadingView.loadingAutoClose=false; // 设置值为false，开发者手动控制加载界面的关闭
+    ...
+}
+
+```
+
+**步骤2：** 调用`loadingView.loading(nPercent)`更新进度条
+
+伪代码如下：
+
 ```javascript
 var nPercent=0;
 var image1 = document.createElement('img');
@@ -72,12 +90,26 @@ image3.onload=function()
 image3.src = "c.png";
 ```
 
+**Tips：**
+
+当`loadingView.loading(nPercent)`函数传入的值等于100时，加载界面会自动关闭。也可以通过调用`loadingView.hideLoadingView()`关闭加载界面。
+
 ## 3.去掉所有文字显示
 
-可以去掉所有文字的显示，包括tips和加载百分比，修改config.js，把`showTextInfo`的值设置为`false`即可。
+可以去掉所有文字的显示，包括tips和加载百分比，修改config.js，把`showTextInfo`的值设置为`false`即可，代码如下：
+
 ```javascript
-loadingView.showTextInfo=true;//改成false
+window.loadingView = new loadingView();
+if(window.loadingView)
+{
+    ...
+    window.loadingView.setTips(["新世界的大门即将打开","敌军还有30秒抵达战场","妈妈说，心急吃不了热豆腐"]);//设置tips数组，会随机出现
+
+    window.loadingView.showTextInfo=false; // 值设置为false
+
+}
 ```
+
 ## 4.自定义界面和功能
 所有代码公开，因此开发者可以根据需要修改代码实现任何所需自定义功能。
 
