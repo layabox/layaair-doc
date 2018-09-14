@@ -13,7 +13,7 @@
 
 ## 3. 在LayaAirIDE的打开App构建
 
-在[Layabox官网](Layabox.com)下载layaAirIDE，打开LayaAirIDE-->工具-->app构建，如图1所示：
+在[Layabox官网](Layabox.com)下载layaAirIDE，打开LayaAirIDE-->点击左上角LOGO图标-->工具-->app构建，如图1所示：
 
 
 ![图1](1.jpg)
@@ -85,13 +85,13 @@
    资源是脚本、图片、声音等资源。对于在线游戏，只要有游戏的url就能正常运行，但是把资源直接打进App包中的话，可以避免网络下载，加快资源载入速度。如果是单机游戏，由于没有提供游戏url，就必须给资源目录，把所需的资源全部打包进App。
 
    打包进App的资源依然可以通过我们的dcc工具（资源缓存管理）进行更新。
-   如果这时候没有设置资源路径，在构建完项目以后，依然可以手动添加资源，添加方法参考 [LayaDcc工具](https://github.com/layabox/layaair-doc/tree/master/Chinese/LayaNative/LayaDcc_Tool)。  
+   如果这时候没有设置资源路径，在构建完项目以后，依然可以手动添加资源，添加方法参考 [LayaDcc工具](https://ldc.layabox.com/doc2/?nav=zh-as-6-2-0)。  
 
    **注意：**  
 
    　　把资源打包的缺点是会增加包体的大小。  
 
-   　　打包资源的在线游戏，必须在server端打dcc，否则就会失去打包的优势，依然会下载所有的资源。如何打dcc，参考 [LayaDcc工具](https://github.com/layabox/layaair-doc/tree/master/Chinese/LayaNative/LayaDcc_Tool)。
+   　　打包资源的在线游戏，必须在server端打dcc，否则就会失去打包的优势，依然会下载所有的资源。如何打dcc，参考 [LayaDcc工具](https://ldc.layabox.com/doc2/?nav=zh-as-6-2-0)。
 
 
 
@@ -139,7 +139,7 @@
    反之亦然。  
 
    **注意**   
-   一旦修改了url地址，原来打包的资源就都失效了。这时候，需要手动删除 cache目录下内容，重新用layadcc来生成打包资源，参见[《LayaDCC工具》](https://github.com/layabox/layaair-doc/tree/master/Chinese/LayaNative/LayaDcc_Tool)。
+   一旦修改了url地址，原来打包的资源就都失效了。这时候，需要手动删除 cache目录下内容，重新用layadcc来生成打包资源，参见[《LayaDCC工具》](https://ldc.layabox.com/doc2/?nav=zh-as-6-2-0)。
 
 ## 7. 资源刷新
 
@@ -156,7 +156,7 @@
 **1、必须在构建的app工程目录下，执行命令。最明显的标志就是要在navtie.json的目录下，如下图所示：**
 ![](3.jpg)    
 
-关于layanative命令行如何安装使用，请参考[layanative命令行工具使用](https://ldc.layabox.com/doc/?nav=ch-as-5-3-0)
+关于layanative命令行如何安装使用，请参考[layanative命令行工具使用](https://ldc.layabox.com/doc2/?nav=zh-as-6-3-0)
 
 
 ## 8. 其他注意问题
