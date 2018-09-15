@@ -1,6 +1,8 @@
 # LayaBox 构建工具
-　　构建工具用来生成LayaPlayer的移动端App项目，相当于App项目向导。目前支持Android（Eclipse项目、Android studio项目）和iOS(XCode项目)。
-
+　　构建工具用来生成LayaPlayer的移动端App项目，相当于App项目向导。目前支持Android（Eclipse项目、Android studio项目）和iOS(XCode项目)。  
+**注意：**
+**LayaNative2.0-Android，要求系统最低版本为4.0**
+**LayaNative2.0-iOS，要求系统最低版本为10.0**
 ## 1. 运行需求
 #### 1.1 基础开发环境
 
