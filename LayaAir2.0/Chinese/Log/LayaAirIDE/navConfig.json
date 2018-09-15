@@ -1,0 +1,11 @@
+[
+  {
+    "name": "LayaAir IDE 2.0 beta",
+    "url": "readme.md",
+    "date": "2018-9-15",
+    "download": {
+      "apple": "http://ldc.layabox.com/download/1.7.20.2/darwin/LayaAirIDE_beta.zip",
+      "windows": "http://ldc.layabox.com/download/1.7.20.2/win/LayaAirIDE_beta.zip"
+    }
+  }
+ ]
