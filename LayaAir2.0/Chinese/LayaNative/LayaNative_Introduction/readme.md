@@ -4,7 +4,11 @@
 
 LayaNative是LayaAir引擎针对移动端原生App的开发、测试、发布的一套完整的开发解决方案，但不局限于LayaAir引擎。LayaNative以LayaPlayer为核心运行时的基础上，利用反射机制、渠道对接方案提供开发者在原生App上进行二次开放和渠道对接，并提供测试器、构建工具，为开发者将html5项目打包、发布成原生App提供便利。
 
+**注意：**
+**LayaNative2.0-Android，要求系统最低版本为4.0**
+**LayaNative2.0-iOS，要求系统最低版本为10.0** 
 
+ 
 
 ##   **LayaNative包含以下内容:**
 
