@@ -41,7 +41,7 @@ LayaNative2.0经过代码重构，性能对比1.0版本有很大的提高。
 2、支持显卡纹理压缩，不仅提高渲染效率还能减少显存的占用。
 
 3、优化的二次开发，更容易理解，方便开发者使用，详见文档：
-https://github.com/layabox/layaair-doc/tree/master/LayaAir2.0/Chinese/LayaNative/Secondary_Development
+https://github.com/layabox/layaair-doc/tree/master/LayaAir2.0/Chinese/LayaNative/Secondary_Development  
 
 
 ## 四、易用性
@@ -54,6 +54,8 @@ https://github.com/layabox/layaair-doc/tree/master/LayaAir2.0/Chinese/LayaNative
 
 ![图](img/debug_connected.png)
 
+详见文档：
+https://github.com/layabox/layaair-doc/tree/master/LayaAir2.0/Chinese/LayaNative/real_device_debugging  
 
 2) 测试App支持扫码启动项目
 
@@ -61,9 +63,16 @@ https://github.com/layabox/layaair-doc/tree/master/LayaAir2.0/Chinese/LayaNative
 
 ![图](img/app_debug_1_0.png)
 
+详见文档：
+https://github.com/layabox/layaair-doc/tree/master/LayaAir2.0/Chinese/LayaNative/How_To_Use_Runtime  
+
+
 
 ### 2. 可以定制内容更加丰富的启动界面
 
 LayaNative 2.0的loadingview是采用平台原生语言开发的，Android使用Java语言，IOS使用Objective-C语言。相较于1.0使用JavaScript语言开发的LoadingView，2.0提供了更加丰富的定制功能。不仅能够更换图片，开发者还可以使用平台语言实现自己想要的功能。
 
 ![图](img/loadingview_2_0.png)
+
+详见文档：
+https://github.com/layabox/layaair-doc/tree/master/LayaAir2.0/Chinese/LayaNative/loading_view_new
