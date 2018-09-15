@@ -8,35 +8,16 @@ LayaAir包括引擎库与LayaAir IDE两大核心部分
 
 
 
-## LayaAir引擎库功能
+## LayaAir2.0引擎库功能
 
-LayaAir引擎支持精灵、矢量图、文本、富文本、位图字体、动画、骨骼、音频与视频、滤镜、事件、加载、缓动、时间、网络、UI系统、物理系统、TiledMap、prtocol等API；支持开发2D、3D、VR的产品研发，支持Canvas与WebGL模式，支持同时发布为HTML5、Flash、APP（IOS、安卓）多种版本。
-
-
-
-**其中：**
-
-- laya.core是核心包，封装了显示对象渲染，事件，时间管理，时间轴动画，缓动，消息交互，socket，本地存储，鼠标触摸，声音，加载，颜色滤镜，位图字体等。
-
-- laya.webgl 包封装了webgl渲染管线，如果使用webgl渲染，可以在初始化时调用Laya.init(1000,800,laya.webgl.WebGL);
-
-- laya.ani.js是动画模块，包含了swf动画，骨骼动画等。
-
-- laya.filter.js包含更多webgl滤镜，比如外发光，阴影，模糊以及更多。
-
-- laya.html.js封装了html动态排版功能。
-
-- laya.ui.js提供了制作UI的各种组件实现。
-
-- laya.tilemap.js提供tileMap解析支持。
-
-  ​
+LayaAir2.0引擎支持精灵、矢量图、文本、富文本、位图字体、动画、骨骼、音频与视频、滤镜、事件、加载、缓动、时间、网络、UI系统、物理系统、TiledMap、prtocol等API；支持开发2D、3D、VR的产品研发，支持Canvas与WebGL模式，支持同时发布为HTML5、Flash、APP（IOS、安卓）微信小游戏，QQ玩一玩多种版本。
 
 
 
-## LayaAir IDE功能
 
-LayaAir IDE主要包括代码开发编辑器、可视化编辑器、第三方工具链支持工具等。
+## LayaAir2.0 IDE功能
+
+LayaAir2.0 IDE主要包括代码开发编辑器、可视化编辑器、第三方工具链支持工具等。
 
 其中主要功能包括：
 
@@ -52,3 +33,9 @@ LayaAir IDE主要包括代码开发编辑器、可视化编辑器、第三方工
 - Flash发布
 - JS混淆与压缩
 - 第三方工具链转换工具（SWF、Unity3D、3Dmax、TiledMap、Spine、龙骨……）
+
+Laya2.0 IDE 兼容LayaAir 1.x版本的写法，在2d项目中，可以不需要太大的改动即可把原有项目升级到2.0引擎（升级前备份）
+
+Laya2.0 IDE 采用挂载组件脚本与场景管理的方式进行开发，在ide中编辑场景与页面组件，通过添加脚本的方式，使项目开发更利于程序，美术，策划的协同工作，并且对初次接触Laya的开发者，更易于上手，开发方式更友好。
+
+更多问题请访问社区http://ask.layabox.com
