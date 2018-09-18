@@ -10,7 +10,7 @@
 
 下载地址:
 
-http://ldc.layabox.com/download/tools/LayaAir3DConvertTools.zip
+http://ldc.layabox.com/download/2.0.0beta1/unityplugin/LayaAirUnityPlugin_beta.unitypackage
 
 或者在LayaAirIDE 的**工具**菜单下，点击 **3D转换工具** 即可跳转到下载链接 如图1所示。
 
