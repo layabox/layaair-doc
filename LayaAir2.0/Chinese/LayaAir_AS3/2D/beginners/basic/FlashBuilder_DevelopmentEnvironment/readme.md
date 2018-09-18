@@ -4,7 +4,7 @@
 
 #### 1.1 引擎下载
 
-​     使用LayaAirIDE开发的话，下载LayaAirIDE会自带引擎包。若开发者使用第三方工具开发，那需要先下载引擎。在官网首页或者开发者中心菜单中，拥有引擎下载的链接入口，打开链接后会出现引擎各个版本的下载列表，每一个版本均提供AS3、TS、JS三种开发语言，选择对应的开发语言包，直接点击下载即可。 
+​     使用LayaAirIDE开发的话，下载LayaAirIDE会自带引擎包。每一个版本均提供AS3、TS、JS三种开发语言，选择对应的开发语言包 。 
 
 #### 1.2 引擎包目录结构介绍  
 
@@ -12,19 +12,14 @@
 
 ![图1](img/1.png) <br/>  （图1） 
 
-- “LayaAirFlash”目录内是发布Flash的版本才需要的引擎库代码。
-
-- “libs”引擎代码目录，LayaAir引擎库代码处于该目录的src子目录中。
+- "jslibs",“libs”为引擎代码目录，LayaAir引擎库代码处于该目录中。
 
 - “laya.js.exe”为Windows系统下的AS3代码编译器，用于将AS3代码编译为JS代码。
 
 - “LayaJSMac”为苹果MAC系统下的AS3代码编译器，用于将AS3代码编译为JS代码。
 
-- “playerglobal.swc”用于替换AS3原生编译器SDK，去除原生API语法提示，增加引擎API提示。 
-
-- "worker.js"，指定worker.js路径，可以开启使用WorkerLoader来加载解码图片的功能，起到优化加载优化的作用，具体使用查看相关文档。
-
   ​
+
 
 ### 第二步 安装Google Chrome浏览器
 
@@ -53,9 +48,9 @@
 
 然后点击“浏览文件系统”找到“`laya.js.exe`”或者直接复制”`laya.js.exe`”的路径粘贴到“位置”输入栏。
 
-最后在“自变量”栏里输入`"${project_loc}\.actionScriptProperties;iflash=false"`，点击”应用“即可完成本次配置。
+最后在“自变量”栏里输入`"${project_loc}\.actionScriptProperties;iflash=false;chromerun=false;quickcompile=true;out=.laya/temp.js;subpath="`，点击”应用“即可完成本次配置。
 
-如果我们不想每次编译都启动一个新的谷歌浏览器进程，按刚才的配置方式再次创建一个外部程序，仅需将自变量参数改为`"${project_loc}\.actionScriptProperties;iflash=false;chromerun=false;"`如图4、图5所示。
+如果我们不想每次编译都启动一个新的谷歌浏览器进程，按刚才的配置方式再次创建一个外部程序，仅需将自变量参数改为`"${project_loc}\.actionScriptProperties;iflash=false;chromerun=false;quickcompile=true;out=.laya/temp.js;subpath="`如图4、图5所示。
 
 ![4](img/4.png)<br />  （图4）
 
@@ -63,7 +58,7 @@
 
  
 
-**Tips：“D:\LayaBox\LayaAirAs3_1.7.3_beta\as\laya.js.exe”应为laya.js.exe的实际所在路径。MAC系统下为“D:\LayaBox\LayaAirAs3_1.7.3_beta\as\LayaJSMac”**
+**Tips：“D:\layaide2.0\layaairide\resources\app\out\vs\layaEditor\laya\libs\2.0.0beta\as\laya.js.exe”应为laya.js.exe的实际所在路径。MAC系统下为“”userPath“\layaairide\resources\app\out\vs\layaEditor\laya\libs\2.0.0beta\as\LayaJSMac”**
 
 
 
