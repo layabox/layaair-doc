@@ -8,7 +8,7 @@
 
 ### 下载LayaAir3D导出工具
 
-下载地址http://ldc.layabox.com/download/tools/LayaAir3DConvertTools.zip
+下载地址http://ldc.layabox.com/download/2.0.0beta1/unityplugin/LayaAirUnityPlugin_beta.unitypackage
 
 或者在ide下 菜单-----工具----3D转换工具（图1）。
 
