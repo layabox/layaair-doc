@@ -119,7 +119,7 @@ appendHtml.appendHTML("<br/>  BBBBBBBBBB");
 appendHtml.layout();
 ```
 
-**9.为HtmlDivElement设置行间距，leading属性，注意，必须设置valign='top'**
+**9.为HtmlDivElement设置行间距，leading属性，注意，必须设置valign='middle'**
 
 示例如下：
 
