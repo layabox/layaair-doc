@@ -450,11 +450,7 @@
 		{
 			"name_2_name": "使用IDE创作",
 			"name_2_data": [
-			{
-				"name_3_name": "场景管理",
-				"name_3_url": "Chinese/LayaAir_AS3/IDE/Use_IDE/Scene/",
-				"name_3_file": "readme.md"
-			},
+			
 			{
 				"name_3_name": "图集制作与使用详解",
 				"name_3_url": "Chinese/LayaAir_AS3/IDE/Use_IDE/Atlas/",
@@ -478,6 +474,11 @@
 			{
 				"name_3_name": "预设的使用",
 				"name_3_url": "Chinese/LayaAir_AS3/IDE/Use_IDE/PresetUse/",
+				"name_3_file": "readme.md"
+			},
+			{
+				"name_3_name": "场景管理",
+				"name_3_url": "Chinese/LayaAir_AS3/IDE/Use_IDE/Scene/",
 				"name_3_file": "readme.md"
 			}]
 		},
@@ -1402,11 +1403,7 @@
 		{
 			"name_2_name": "使用IDE创作",
 			"name_2_data": [
-			{
-				"name_3_name": "场景管理",
-				"name_3_url": "Chinese/LayaAir_TS/IDE/Use_IDE/Scene/",
-				"name_3_file": "readme.md"
-			},
+			
 			{
 				"name_3_name": "图集制作与使用详解",
 				"name_3_url": "Chinese/LayaAir_TS/IDE/Use_IDE/Atlas/",
@@ -1430,6 +1427,11 @@
 			{
 				"name_3_name": "预设的使用",
 				"name_3_url": "Chinese/LayaAir_TS/IDE/Use_IDE/PresetUse/",
+				"name_3_file": "readme.md"
+			},
+			{
+				"name_3_name": "场景管理",
+				"name_3_url": "Chinese/LayaAir_TS/IDE/Use_IDE/Scene/",
 				"name_3_file": "readme.md"
 			}]
 		},
