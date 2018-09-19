@@ -49,11 +49,11 @@
 ### 在LayaAir项目中使用位图字体
 
 1.把资源放在项目的输出目录下。
- 把制作导出的位图文件修改为同一名字（.fnt 文件和.png文件），然后放到LayaAir项目的bin/h5目录下。
+ 把制作导出的位图文件修改为同一名字（.fnt 文件和.png文件），然后放到LayaAir项目的bin/res目录下。
 
 ![7](img/7.png)</br>
 
-如图：把test_0.png名字改为test.png,保证跟fnt文件同名。再把test.png和test.fnt文件放到H5目录下。
+如图：把test_0.png名字改为test.png,保证跟fnt文件同名。再把test.png和test.fnt文件放到bin/res目录下。
 
 **位图字体在 LayaAir项目中的常规使用方法：**
 
