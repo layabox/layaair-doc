@@ -30,7 +30,9 @@ Start.as代码如上图所示读者自行完成。
 
 
 
-然后在编译运行项目，即可看到如下结果，在启动场景中点击start按钮，即可切换场景，更多内容请参照
+然后在编译运行项目，即可看到如下结果，在启动场景中点击start按钮，即可切换场景，
+
+更多内容请参照API:
 
 https://layaair.ldc.layabox.com/api2/Chinese/index.html?category=Core&class=laya.display.Scene，
 
