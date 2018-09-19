@@ -34,7 +34,7 @@ Start.ts代码如上图所示读者自行完成。
 
 更多内容请参照API:
 
-https://layaair.ldc.layabox.com/api2/Chinese/index.html?category=Core&class=laya.display.Scene，
+https://layaair.ldc.layabox.com/api2/Chinese/index.html?category=Core&class=laya.display.Scene
 
 或者访问社区http://ask.layabox.com
 
