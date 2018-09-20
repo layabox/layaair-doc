@@ -13,17 +13,14 @@
 ​    ![图片1.jpg](img/1.png)<br/>
 ​  图(1)
 
-- “LayaAirFlash”目录内是发布Flash的版本才需要的引擎库代码。
-
-- “libs”引擎代码目录，LayaAir引擎库代码处于该目录的src子目录中。
+- "jslibs",“libs”为引擎代码目录，LayaAir引擎库代码处于该目录中。
 
 - “laya.js.exe”为Windows系统下的AS3代码编译器，用于将AS3代码编译为JS代码。
 
-- “LayaJSMac”为苹果MAC系统下的AS3代码编译器，用于将AS3代码编译为JS代码。
-
-- “playerglobal.swc”用于替换AS3原生编译器SDK，去除原生API语法提示，增加引擎API提示。 
+- “Layajs”为苹果MAC系统下的AS3代码编译器，用于将AS3代码编译为JS代码。
 
   ​
+
 
 
 
@@ -54,13 +51,13 @@
 
 ```
 SaveAllModified
-RunProcessCaptured|D:\LayaBox\LayaAirAs3_1.5.5\as\laya.js.exe;"$(ProjectPath)";iflash=false;
+RunProcessCaptured|D:\layaide2.0\layaairide\resources\app\out\vs\layaEditor\laya\libs\2.0.0beta1\as\layajs.exe;"$(ProjectPath)";iflash=false;chromerun=false;quickcompile=true;out=bin/js/bundle.js;subpath=
 ```
 
 ​    ![blob.png](img/5.png)<br/>
 ​  图(5)
 
-**Tips：“D:\LayaBox\LayaAirAs3_1.5.5\as\laya.js.exe”应为laya.js.exe的实际所在路径。**
+**Tips：“D:\layaide2.0\layaairide\resources\app\out\vs\layaEditor\laya\libs\2.0.0beta1\as\laya.js.exe”应为laya.js.exe的实际所在路径。**
 
 
 
