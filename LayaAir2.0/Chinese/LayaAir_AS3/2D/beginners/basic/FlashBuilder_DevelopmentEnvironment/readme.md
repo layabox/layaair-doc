@@ -48,9 +48,9 @@
 
 然后点击“浏览文件系统”找到“`laya.js.exe`”或者直接复制”`laya.js.exe`”的路径粘贴到“位置”输入栏。
 
-最后在“自变量”栏里输入`"${project_loc}\.actionScriptProperties;iflash=false;chromerun=false;quickcompile=true;out=.laya/temp.js;subpath="`，点击”应用“即可完成本次配置。
+最后在“自变量”栏里输入`"${project_loc}\.actionScriptProperties;iflash=false;chromerun=false;quickcompile=true;out=bin/js/bundle.js;subpath="`，点击”应用“即可完成本次配置。
 
-如果我们不想每次编译都启动一个新的谷歌浏览器进程，按刚才的配置方式再次创建一个外部程序，仅需将自变量参数改为`"${project_loc}\.actionScriptProperties;iflash=false;chromerun=false;quickcompile=true;out=.laya/temp.js;subpath="`如图4、图5所示。
+如果我们不想每次编译都启动一个新的谷歌浏览器进程，按刚才的配置方式再次创建一个外部程序，仅需将自变量参数改为`"${project_loc}\.actionScriptProperties;iflash=false;chromerun=false;quickcompile=true;out=bin/js/bundle.js;subpath="`如图4、图5所示。
 
 ![4](img/4.png)<br />  （图4）
 
