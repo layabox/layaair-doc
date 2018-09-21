@@ -1,5 +1,13 @@
 # 在android真机上调试JavaScript代码
 
+
+## 注意：
+由于最近chrome版本更新到了69，导致在LayaNative环境真机调试JS，无法手工设置断点调试，解决方案：
+1、开发者可以在代码中写debugger的方式，进行调试。
+2、安装一个Chrome68的版本进行调试。
+我公司引擎组会尽快解决这个问题，给大家造成不便，敬请谅解。
+
+
 ## 一、调试的原理
 
 JavaScript代码的调试，是使用调试机上的Chrome浏览器进行的。Android测试机上的LayaNative启动的时候，会同时启动一个WebSocket服务器。Chrome浏览器通过WebSocket与LayaNative连接通信，从而实现使用Chrome对项目的JavaScript的调试。
