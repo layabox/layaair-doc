@@ -7,8 +7,10 @@
 ​    **步骤一**：选中src右键单击，然后左键点击“新建文件”，在src目录下建立一个HelloLayabox.ts的文件。（Tips：HelloLayabox.ts必须创建在src目录下，才会被编译）
 
 ​	![图片](img/1.png)<br/>
-	图（1）
 
+然后修改.laya目录下的gulpfile.js 文件，修改启动类为HelloLayabox.ts
+
+![图片](img/modi.png)
 
 
 ​         **步骤二**：点击打开src目录下的HelloLayabox.ts，开始编写如下代码：
