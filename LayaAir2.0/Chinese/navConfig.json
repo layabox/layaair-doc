@@ -604,8 +604,13 @@
 				"name_3_file": "readme.md"
 			},
 			{
-			  "name_3_name": "距离关节",
+			  "name_3_name": "物理(一)(距离关节)",
 				"name_3_url": "Chinese/LayaAir_AS3/IDE/Use_physics/joint/",
+				"name_3_file": "readme.md"
+			},
+			{
+			  "name_3_name": "物理(二)(平移，旋转，齿轮)",
+				"name_3_url": "Chinese/LayaAir_AS3/IDE/Use_physics/GearJoint/",
 				"name_3_file": "readme.md"
 			}]
 		}]
@@ -1567,8 +1572,13 @@
 				"name_3_file": "readme.md"
 			},
 			{
-			  "name_3_name": "距离关节",
+			  "name_3_name": "物理(一)(距离关节)",
 				"name_3_url": "Chinese/LayaAir_AS3/IDE/Use_physics/joint/",
+				"name_3_file": "readme.md"
+			},
+			{
+			  "name_3_name": "物理(二)(平移，旋转，齿轮)",
+				"name_3_url": "Chinese/LayaAir_AS3/IDE/Use_physics/GearJoint/",
 				"name_3_file": "readme.md"
 			}]
 		}]
@@ -2513,8 +2523,13 @@
 				"name_3_file": "readme.md"
 			},
 			{
-			  "name_3_name": "距离关节",
+			  "name_3_name": "物理(一)(距离关节)",
 				"name_3_url": "Chinese/LayaAir_AS3/IDE/Use_physics/joint/",
+				"name_3_file": "readme.md"
+			},
+			{
+			  "name_3_name": "物理(二)(平移，旋转，齿轮)",
+				"name_3_url": "Chinese/LayaAir_AS3/IDE/Use_physics/GearJoint/",
 				"name_3_file": "readme.md"
 			}]
 		}]
