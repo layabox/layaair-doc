@@ -18,8 +18,8 @@ window.screenOrientation = "sensor_landscape";
 |:--:|:-----:|
 |landscape|横屏|
 |portrait |竖屏|
-|sensor_landscape|横屏(双方向)|
-|sensor_portrait|竖屏(双方向)|
+|sensor_landscape或者sensorLandscape|横屏(双方向)|
+|sensor_portrait或者sensorPortrait|竖屏(双方向)|
 
 * runtime.json
 
