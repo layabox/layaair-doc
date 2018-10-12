@@ -57,7 +57,7 @@ package {
 			//移动灯光位置
 			light.transform.translate(new Vector3(0,2,5));
 			//调整灯光方向
-			light.direction = new Vector3(0, -.5, 1);
+			light.transform.worldMatrix.setForward(new Vector3(0, -5, 1));
 			//设置灯光漫反射颜色
 			light.diffuseColor = new Vector3(0.3, 0.3, 0.3);
           

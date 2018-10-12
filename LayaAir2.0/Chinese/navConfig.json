@@ -594,6 +594,25 @@
 				"name_3_url": "Chinese/LayaAir_AS3/IDE/ScriptUse/runtime/",
 				"name_3_file": "readme.md"
 			}]
+		},
+		{
+			"name_2_name": "使用2d物理系统",
+			"name_2_data": [
+			{
+			  "name_3_name": "物理系统概述",
+				"name_3_url": "Chinese/LayaAir_AS3/IDE/Use_physics/physicsSystem/",
+				"name_3_file": "readme.md"
+			},
+			{
+			  "name_3_name": "物理(一)(距离关节)",
+				"name_3_url": "Chinese/LayaAir_AS3/IDE/Use_physics/joint/",
+				"name_3_file": "readme.md"
+			},
+			{
+			  "name_3_name": "物理(二)(平移，旋转，齿轮)",
+				"name_3_url": "Chinese/LayaAir_AS3/IDE/Use_physics/GearJoint/",
+				"name_3_file": "readme.md"
+			}]
 		}]
 	},
 	{
@@ -691,11 +710,6 @@
 			{
 				"name_3_name": "AS3与JS混合编码",
 				"name_3_url": "Chinese/LayaAir_AS3/2D/advanced/extension_modules/AS_JS_mixed_programming/",
-				"name_3_file": "readme.md"
-			},
-			{
-				"name_3_name": "自定义Shader",
-				"name_3_url": "Chinese/LayaAir_AS3/2D/advanced/extension_modules/Shader/",
 				"name_3_file": "readme.md"
 			}]
 		}]
@@ -1548,6 +1562,25 @@
 				"name_3_url": "Chinese/LayaAir_TS/IDE/ScriptUse/runtime/",
 				"name_3_file": "readme.md"
 			}]
+		},
+		{
+			"name_2_name": "使用2d物理系统",
+			"name_2_data": [
+			{
+			  "name_3_name": "物理系统概述",
+				"name_3_url": "Chinese/LayaAir_AS3/IDE/Use_physics/physicsSystem/",
+				"name_3_file": "readme.md"
+			},
+			{
+			  "name_3_name": "物理(一)(距离关节)",
+				"name_3_url": "Chinese/LayaAir_AS3/IDE/Use_physics/joint/",
+				"name_3_file": "readme.md"
+			},
+			{
+			  "name_3_name": "物理(二)(平移，旋转，齿轮)",
+				"name_3_url": "Chinese/LayaAir_AS3/IDE/Use_physics/GearJoint/",
+				"name_3_file": "readme.md"
+			}]
 		}]
 	},
 	{
@@ -1635,11 +1668,6 @@
 			{
 				"name_3_name": "LayaAir和原生DOM交互",
 				"name_3_url": "Chinese/LayaAir_TS/2D/advanced/extension_modules/DOM/",
-				"name_3_file": "readme.md"
-			},
-			{
-				"name_3_name": "自定义Shader",
-				"name_3_url": "Chinese/LayaAir_TS/2D/advanced/extension_modules/Shader/",
 				"name_3_file": "readme.md"
 			}]
 		}]
@@ -2485,6 +2513,25 @@
 				"name_3_url": "Chinese/LayaAir_JS/IDE/ScriptUse/runtime/",
 				"name_3_file": "readme.md"
 			}]
+		},
+		{
+			"name_2_name": "使用2d物理系统",
+			"name_2_data": [
+			{
+			  "name_3_name": "物理系统概述",
+				"name_3_url": "Chinese/LayaAir_AS3/IDE/Use_physics/physicsSystem/",
+				"name_3_file": "readme.md"
+			},
+			{
+			  "name_3_name": "物理(一)(距离关节)",
+				"name_3_url": "Chinese/LayaAir_AS3/IDE/Use_physics/joint/",
+				"name_3_file": "readme.md"
+			},
+			{
+			  "name_3_name": "物理(二)(平移，旋转，齿轮)",
+				"name_3_url": "Chinese/LayaAir_AS3/IDE/Use_physics/GearJoint/",
+				"name_3_file": "readme.md"
+			}]
 		}]
 	},
 	{
@@ -2572,12 +2619,6 @@
 			{
 				"name_3_name": "LayaAir和原生DOM交互",
 				"name_3_url": "Chinese/LayaAir_JS/2D/advanced/extension_modules/DOM/",
-				"name_3_file": "readme.md"
-			},
-		
-			{
-				"name_3_name": "自定义Shader",
-				"name_3_url": "Chinese/LayaAir_JS/2D/advanced/extension_modules/Shader/",
 				"name_3_file": "readme.md"
 			}]
 		}]

@@ -16,7 +16,7 @@
 
 ![1](img\ide1.png)
 
-两个UI页面中各拖入一张Image组件，设置runtime属性为game.ImageRunTime。如图1图2所示：
+两个UI页面中各拖入一张Image组件，设置runtime属性为game.ImageRunTime。(将脚本拖拽到runtime的script图标上)。如图1,2,3所示： （注意！导出类型为分离模式，会生成场景代码文件，默认不会生成)如图1图2所示：
 
 ![1](img\ide3.png)(图1)
 

@@ -18,7 +18,7 @@
 
 
 
-两个UI页面中各拖入一张Image组件，设置runtime属性为game.ImageRunTime。如图1图2所示：
+两个UI页面中各拖入一张Image组件，将脚本 imageRunTime拖入runtime属性框。如图1图2所示：
 
 ![1](img\ide2.png)(图1)
 
