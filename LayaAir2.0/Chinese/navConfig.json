@@ -612,6 +612,11 @@
 			  "name_3_name": "物理(二)(平移，旋转，齿轮)",
 				"name_3_url": "Chinese/LayaAir_AS3/IDE/Use_physics/GearJoint/",
 				"name_3_file": "readme.md"
+			},
+			{
+			  "name_3_name": "物理(三)(马达，轮子，滑轮)",
+				"name_3_url": "Chinese/LayaAir_AS3/IDE/Use_physics/motoJoint/",
+				"name_3_file": "readme.md"
 			}]
 		}]
 	},
@@ -1584,6 +1589,11 @@
 			  "name_3_name": "物理(二)(平移，旋转，齿轮)",
 				"name_3_url": "Chinese/LayaAir_AS3/IDE/Use_physics/GearJoint/",
 				"name_3_file": "readme.md"
+			},
+			{
+			  "name_3_name": "物理(三)(马达，轮子，滑轮)",
+				"name_3_url": "Chinese/LayaAir_AS3/IDE/Use_physics/motoJoint/",
+				"name_3_file": "readme.md"
 			}]
 		}]
 	},
@@ -2538,6 +2548,11 @@
 			{
 			  "name_3_name": "物理(二)(平移，旋转，齿轮)",
 				"name_3_url": "Chinese/LayaAir_AS3/IDE/Use_physics/GearJoint/",
+				"name_3_file": "readme.md"
+			},
+			{
+			  "name_3_name": "物理(三)(马达，轮子，滑轮)",
+				"name_3_url": "Chinese/LayaAir_AS3/IDE/Use_physics/motoJoint/",
 				"name_3_file": "readme.md"
 			}]
 		}]
