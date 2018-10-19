@@ -1,5 +1,15 @@
 [
   {
+    "name": "LayaAir 2.0.0 beta3",
+    "url": "2.0.0beta3.md",
+    "date":"2018-10-13",
+    "download": {
+      "js": "http://ldc.layabox.com/download/LayaAirJS_2.0.0_beta3.zip",
+      "ts": "http://ldc.layabox.com/download/LayaAirTS_2.0.0_beta3.zip",
+      "as": "http://ldc.layabox.com/download/LayaAirAS3_2.0.0_beta3.zip"
+    }
+  },
+  {
     "name": "LayaAir 2.0.0 beta2",
     "url": "2.0.0beta2.md",
     "date":"2018-9-21",
