@@ -8,7 +8,7 @@
 
 ### 下载LayaAir3D导出工具
 
-下载地址http://ldc.layabox.com/download/2.0.0beta1/unityplugin/LayaAirUnityPlugin_beta.unitypackage
+下载地址https://ldc2.layabox.com/layadownload/?type=layaairide-LayaAir%20IDE%202.0.0%20beta3
 
 或者在ide下 菜单-----工具----3D转换工具（图1）。
 
@@ -55,39 +55,9 @@ Ignore Vertices Color            忽略顶点颜色信息
 
 ![图片4](img/4.png)<br>（图4）
 
-
-
-#### Texture Setting
-
-贴图导出设置，勾选后出下如（图5）信息，在layaAir引擎中只支持png与jpg格式的图片，如果项目中使用了其它格式，游戏加载时会报错，因此需要转换。
-
-Original Texture Type　需要转换格式的原始纹理格式种类
-Non-PNG|JPG　　非png|jpg 现在支持 tga、psd、gif、tif、bmp、exr格式
-PNG、JPG　　　　原始场景中所用png格式资源及所用jpg格式资源
-LightMap　　　　光照贴图，（只有选择Scene类别导出才会有），建议手动ps处理
-
-Target Texture Type　 转换目标纹理类型
-PNG 　　　　　　 转换成png格式，带透明通道
-JPG　　　　　　　转换为jpg附带压缩功能，可选择压缩质量
-
-![图片5](img/5.png)<br>（图5）
-
-
-
-#### Animation Setting
-
-动画导出设置（图6）
-
-Optimize Bones   删除动画中无用骨骼，只删除不影响骨骼动画播放的无用骨骼，如果需要做骨骼挂点，请谨慎选择
-Compress Lsani   暂时无用，开发中，压缩骨骼动画数据，减小文件大小
-
-![图片6](img/6.png)<br>（图6）
-
-
-
 #### Terrain Setting
 
-unity地型导出设置（图7）
+unity地型导出设置（图5）
 
 Convert Terrain To Mesh  
 如果场景中有地型，转换地型成网格模型。
@@ -101,13 +71,13 @@ Medium	       优化后的面数中等
 Low		       优化后的面数低
 Very Low       优化后的面数最低     
 
-![图片7](img/7.png)<br>（图7）
+![图片7](img/7.png)<br>（图5）
 
 
 
 #### GameObject Setting
 
-游戏物品节点设置（图8）
+游戏物品节点设置（图6）
 
 Ignore Null Game Objects 
 导出时忽略空节点，LayaAir引擎不支持的节点也记作空节点，如灯光节点，可减少精灵数。
@@ -122,13 +92,13 @@ Optimize Game Objects
 Batch Make The First Level Game Objects 
 批量导出（必须选择sprite3d才会有）批量导出场景中所有一级节点。
 
- ![图片8](img/8.png)<br>（图8）
+ ![图片8](img/8.png)<br>（图6）
 
 
 
 #### Other Setting
 
-其他设置（图9）
+其他设置（图7）
 
 Cover Original Export Files 
 导出时覆盖原始导出文件
@@ -139,7 +109,7 @@ Customize Export Root Directory Name
 Automatically Save The Configuration 
 导出时自动保存当前配置
 
- ![图片9](img/9.png)<br>（图9）
+ ![图片9](img/9.png)<br>（图7）
 
 
 
@@ -155,7 +125,7 @@ LayaAir Run       点击可使用LayaAir引擎直接运行该场景。
 ​          	            2.场景中确保有一个照相机,自行调整其位置，角度，最终layaAir运行效果会与Unity运行结果保持一致。
 LayaAir Export  导出当前资源，点击后，将导出当前场景或模型的数据到指定路径上。
 
- ![图片10](img/10.png)<br>（图10）
+ ![图片10](img/10.png)<br>（图8）
 
 
 
@@ -165,7 +135,7 @@ LayaAir Export  导出当前资源，点击后，将导出当前场景或模型�
 
 当配置好输出场景设置后，点击Laya Export 按钮，导出后生成了默认的LayaScene_truck文件夹（图10）。
 
- ![图片11](img/11.png)<br>（图11）
+ ![图片11](img/11.png)<br>（图9）
 
 见上图文件资源，导出后生成了.ls、.lm、.lmat数据资源，及贴图png、tga资源。
 
@@ -177,7 +147,7 @@ LayaAir Export  导出当前资源，点击后，将导出当前场景或模型�
 
 .lmat为材质数据文件，是在unity中为模型设置的材质信息，加载.ls或.lh文件时会自动加载.lmat产生材质。.lmat还可手动修改其中某些属性。
 
-.lani为动画数据文件（图10中模型未有动画，因此导出时未生成），如果模型上有动画，导出后将生成动画配置文件，包含了骨骼或帧动画信息。
+.lani为动画数据文件（图9中模型未有动画，因此导出时未生成），如果模型上有动画，导出后将生成动画配置文件，包含了骨骼或帧动画信息。
 
 它们的具体用法，将在后续课程文档中详细介绍。
 
@@ -223,5 +193,5 @@ new LayaAir3D();
 
 编译运行上述简单代码，我们发现场景加载成功，场景中的模型也显示到了3D视图上（图10）。
 
- ![图片12](img/12.png)<br>（图12）
+ ![图片12](img/12.png)<br>（图10）
 
