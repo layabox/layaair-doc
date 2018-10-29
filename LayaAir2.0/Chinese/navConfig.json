@@ -617,6 +617,11 @@
 			  "name_3_name": "物理(三)(马达，轮子，滑轮)",
 				"name_3_url": "Chinese/LayaAir_AS3/IDE/Use_physics/motoJoint/",
 				"name_3_file": "readme.md"
+			},
+			{
+			  "name_3_name": "物理(四)(焊接，绳索，鼠标)",
+				"name_3_url": "Chinese/LayaAir_AS3/IDE/Use_physics/weld/",
+				"name_3_file": "readme.md"
 			}]
 		}]
 	},
@@ -1599,6 +1604,11 @@
 			  "name_3_name": "物理(三)(马达，轮子，滑轮)",
 				"name_3_url": "Chinese/LayaAir_AS3/IDE/Use_physics/motoJoint/",
 				"name_3_file": "readme.md"
+			},
+			{
+			  "name_3_name": "物理(四)(焊接，绳索，鼠标)",
+				"name_3_url": "Chinese/LayaAir_AS3/IDE/Use_physics/weld/",
+				"name_3_file": "readme.md"
 			}]
 		}]
 	},
@@ -2558,6 +2568,11 @@
 			{
 			  "name_3_name": "物理(三)(马达，轮子，滑轮)",
 				"name_3_url": "Chinese/LayaAir_AS3/IDE/Use_physics/motoJoint/",
+				"name_3_file": "readme.md"
+			},
+			{
+			  "name_3_name": "物理(四)(焊接，绳索，鼠标)",
+				"name_3_url": "Chinese/LayaAir_AS3/IDE/Use_physics/weld/",
 				"name_3_file": "readme.md"
 			}]
 		}]
