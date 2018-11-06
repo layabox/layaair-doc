@@ -822,7 +822,7 @@
 		}]
 	},
 	{
-		"nav_1_name": "微信小游戏与QQ玩一玩",
+		"nav_1_name": "微信小游戏与QQ轻游戏",
 		"nav_1_data": [
 		{
 			"name_2_name": "微信小游戏开发基础",
@@ -865,10 +865,10 @@
 			}]
 		},
 		{
-			"name_2_name": "QQ玩一玩开发基础",
+			"name_2_name": "QQ轻游戏开发基础",
 			"name_2_data": [
 			{
-				"name_3_name": "QQ玩一玩基础介绍与游戏发布",
+				"name_3_name": "QQ轻游戏基础介绍与游戏发布",
 				"name_3_url": "Chinese/qq/introduction/",
 				"name_3_file": "readme.md"
 			}]
@@ -1958,7 +1958,7 @@
 		}]
 	},
 	{
-		"nav_1_name": "微信小游戏与QQ玩一玩",
+		"nav_1_name": "微信小游戏与QQ轻游戏",
 		"nav_1_data": [
 		{
 			"name_2_name": "微信小游戏开发基础",
@@ -2001,10 +2001,10 @@
 			}]
 		},
 		{
-			"name_2_name": "QQ玩一玩开发基础",
+			"name_2_name": "QQ轻游戏开发基础",
 			"name_2_data": [
 			{
-				"name_3_name": "QQ玩一玩基础介绍与游戏发布",
+				"name_3_name": "QQ轻游戏基础介绍与游戏发布",
 				"name_3_url": "Chinese/qq/introduction/",
 				"name_3_file": "readme.md"
 			}]
@@ -3019,7 +3019,7 @@
 		}]
 	},
 	{
-		"nav_1_name": "微信小游戏与QQ玩一玩",
+		"nav_1_name": "微信小游戏与QQ轻游戏",
 		"nav_1_data": [
 		{
 			"name_2_name": "微信小游戏开发基础",
@@ -3062,10 +3062,10 @@
 			}]
 		},
 		{
-			"name_2_name": "QQ玩一玩开发基础",
+			"name_2_name": "QQ轻游戏开发基础",
 			"name_2_data": [
 			{
-				"name_3_name": "QQ玩一玩基础介绍与游戏发布",
+				"name_3_name": "QQ轻游戏基础介绍与游戏发布",
 				"name_3_url": "Chinese/qq/introduction/",
 				"name_3_file": "readme.md"
 			}]
