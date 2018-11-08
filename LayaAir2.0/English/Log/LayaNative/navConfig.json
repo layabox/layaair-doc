@@ -1,0 +1,26 @@
+[
+  {
+    "name": "LayaNative-SDK2.0.2",
+    "url": "2.0.2.md",
+    "date": "2018-10-13",
+    "download": {
+      "url": "http://www.layabox.com/layanative2.0/layanativeRes/v2.0.2.zip"
+    }
+  }, 
+  {
+    "name": "LayaNative-SDK2.0.1",
+    "url": "2.0.1.md",
+    "date": "2018-9-21",
+    "download": {
+      "url": "http://www.layabox.com/layanative2.0/layanativeRes/v2.0.1.zip"
+    }
+  },
+  {
+    "name": "LayaNative-SDK2.0",
+    "url": "2.0.md",
+    "date": "2018-9-15",
+    "download": {
+      "url": "http://www.layabox.com/layanative2.0/layanativeRes/v2.0.zip"
+    }
+  }
+]
