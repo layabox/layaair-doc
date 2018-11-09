@@ -2,15 +2,15 @@
 
 ### 1、启用DebugPanel调试面板
 
-DebugPanel调试面板是基于Div的调试窗口，启动调试面板的`DebugPanel.init()`方法位于`laya.debugtool.js`文件中，在index.html中引入该js文件后可以在初始化舞台方法`Laya.init()`后的任意代码中增加使用，index.html引入js文件代码如下所示：
+DebugPanel调试面板是基于Div的调试窗口，在编辑模式下按F9 打开设置面板，如图
 
-```javascript
-<script type="text/javascript" src="libs/laya.debugtool.js"></script>
-```
+![图1](img/debug.png)
 
-使用方式例如下面代码所示：
+只需勾选即可打开调试面板。(注意，强烈推荐用此方法！)
 
-（注意：在调用Laya.DebugPanel.init()时DebugPanel下会出现红色的波浪线，这个提示可以忽略。是可以正常运行的）
+使用代码方式：
+
+
 
 ```typescript
 // 程序入口
@@ -20,7 +20,7 @@ class GameMain{
         //初始化舞台
         Laya.init(1334,750);
         //调用DebugPanel调试面板
-        Laya.DebugPanel.init();
+        Laya.enableDebugPanel();
         //设置舞台背景色
         Laya.stage.bgColor = "#ffffff";
         var Img:Laya.Sprite = new Laya.Sprite();

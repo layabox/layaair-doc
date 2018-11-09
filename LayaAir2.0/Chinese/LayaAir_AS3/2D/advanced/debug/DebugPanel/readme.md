@@ -8,7 +8,7 @@ DebugPanel调试面板是基于Div的调试窗口，在编辑模式下按F9 打�
 
 只需勾选即可打开调试面板。(注意，强烈推荐用此方法！)
 
-在代码模式中启动调试面板的`DebugPanel.enable()`方法位于`laya.debug.DebugPanel`类中，可以在初始化舞台方法`Laya.enable()`后的任意代码中增加使用，例如下面代码所示：
+在代码模式中启动调试面板的`Laya.enableDebugPanel();`，可以在初始化舞台方法`Laya.enable()`后的任意代码中增加使用，例如下面代码所示：
 
 入口类Main.as
 
@@ -25,7 +25,7 @@ package
 			//初始化舞台
 			Laya.init(1334,750);    
 			//调用DebugPanel调试面板
-			DebugPanel.enable();
+			Laya.enableDebugPanel();
 			//设置舞台背景色
 			Laya.stage.bgColor  = "#ffffff";
 			
