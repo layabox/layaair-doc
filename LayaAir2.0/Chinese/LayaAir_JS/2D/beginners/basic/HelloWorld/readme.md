@@ -4,7 +4,7 @@
 
 
 
-步骤一：选中src右键单击，然后左键点击“新建文件”，在src目录下建立一个HelloLayabox.js的文件。
+步骤一：选中src右键单击，然后左键点击“新建文件”，在src目录下建立一个HelloLayabox.js的文件，并把Main.js的代码全部注释。
 
 ​	![图片](img/1.png)<br/>
 
