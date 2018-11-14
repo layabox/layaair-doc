@@ -95,7 +95,32 @@ AdvOTImage.navigateToMiniProgram();
 
 > **提示**：AdvOTImage.change方法是在开发者每次调用AdvOTImage.navigateToMiniProgram()方法时，会主动触发回调或在组件内部定时切换触发回调，用于切换显示对象的显示内容；
 
+### 3、在小游戏项目中加入跳转白名单
+
+从基础库 2.4.0 开始，需要设置跳转的AppID到白名单里，才可以跳转。设置方式为，在game.json里增加navigateToMiniProgramAppIdList配置项，最多可配置十个。如下面的示例中所示：
+
+```json
+{
+  "deviceOrientation": "portrait",
+  "networkTimeout": {
+    "request": 5000,
+    "connectSocket": 5000,
+    "uploadFile": 5000,
+    "downloadFile": 5000
+  },
+  "navigateToMiniProgramAppIdList": [
+    "wx24c7a0688503db70"
+  ]
+}
+```
+
+星星游戏精选是流量共享池，开发者游戏的闲散流量先汇集中到这个共享池中，再由池子中的流量二次分配流入到各个平台中的游戏。所以要设置跳转的白名单为星星游戏精选（AppID: `wx24c7a0688503db70`）
+
 开发者在接入过程中遇到技术问题，可以通过QQ联系技术支持 `QQ:3150564572`。
+
+
+
+
 
 ### 3、在平台的游戏列表栏目中提交小游戏
 
