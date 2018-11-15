@@ -32,9 +32,9 @@ spherePhy.colliderShape = sphereShape;
 //将碰撞盒添加到刚体上
 shpereRigid.colliderShape = sphereShape;
 ```
-不同的模型只是需要创建不同的Mesh和ColliderShape。**注意不要在同时在刚体与碰撞器上添加shape**，图1就是小球的效果了。
+不同的模型只是需要创建不同的Mesh和ColliderShape。**注意不要在同时在刚体与碰撞器上添加shape**，下图就是小球的效果了。
 
-![图](img/1.png)图1
+![图](img/1.png)
 
 ### 2.简单案例
 
@@ -195,9 +195,9 @@ package  script{
 }
 ```
 
-在本次案例中只是简单的使用了5种几何体，具体效果如图2:
+在本次案例中只是简单的使用了5种几何体，具体效果如图:
 
-##### ![图](img/1.gif)图2
+![图](img/1.gif)
 
 ### 3.导出的物体添加刚体或者碰撞器
 
