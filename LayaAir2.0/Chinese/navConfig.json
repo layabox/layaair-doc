@@ -1023,6 +1023,19 @@
 				"name_3_file": "readme.md"
 			}]
 		}]
+	},
+	{
+		"nav_1_name": "常见问题汇总(持续更新)",
+		"nav_1_data": [
+		{
+			"name_2_name": "2.0常见问题",
+			"name_2_data": [
+			{
+				"name_3_name": "2.0新特性常见问题",
+				"name_3_url": "Chinese/FAQ/",
+				"name_3_file": "readme.md"
+			}]
+		}]
 	}]
 },
 {
@@ -2010,6 +2023,19 @@
 				"name_3_file": "readme.md"
 			}]
 		}]
+	},
+	{
+		"nav_1_name": "常见问题汇总(持续更新)",
+		"nav_1_data": [
+		{
+			"name_2_name": "2.0常见问题",
+			"name_2_data": [
+			{
+				"name_3_name": "2.0新特性常见问题",
+				"name_3_url": "Chinese/FAQ/",
+				"name_3_file": "readme.md"
+			}]
+		}]
 	}]
 },
 {
@@ -2988,6 +3014,19 @@
 			{
 				"name_3_name": "使用IDE构建工程",
 				"name_3_url": "Chinese/LayaNative/build_Tool/",
+				"name_3_file": "readme.md"
+			}]
+		}]
+	},
+	{
+		"nav_1_name": "常见问题汇总(持续更新)",
+		"nav_1_data": [
+		{
+			"name_2_name": "2.0常见问题",
+			"name_2_data": [
+			{
+				"name_3_name": "2.0新特性常见问题",
+				"name_3_url": "Chinese/FAQ/",
 				"name_3_file": "readme.md"
 			}]
 		}]
