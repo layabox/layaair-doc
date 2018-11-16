@@ -26,3 +26,15 @@
 
 
 
+#### 3，代码使用预设
+
+```
+{Laya.loader.create("prefab/预设名字.json",Handler.create(this,onComplete));
+}
+private function onComplete(obj:Object):Void{
+  一个预设变量.json = ojb
+  一个sprite = Pool.getItemByCreateFun("自己起一个名字", this.一个预设变量.create, this.一个预设变量);
+}
+
+```
+
