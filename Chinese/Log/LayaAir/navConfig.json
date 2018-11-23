@@ -1,12 +1,22 @@
 [
   {
-    "name": "LayaAir 1.7.22 beta",
-    "url": "1.7.22beta.md",
-    "date":"2018-10-24",
+    "name": "LayaAir 1.8.0 beta",
+    "url": "1.8.0beta.md",
+    "date":"2018-11-22",
     "download": {
-      "js": "http://ldc.layabox.com/download/LayaAirJS_1.7.22_beta.zip",
-      "ts": "http://ldc.layabox.com/download/LayaAirTS_1.7.22_beta.zip",
-      "as": "http://ldc.layabox.com/download/LayaAirAS3_1.7.22_beta.zip"
+      "js": "http://ldc.layabox.com/download/LayaAirJS_1.8.0_beta.zip",
+      "ts": "http://ldc.layabox.com/download/LayaAirTS_1.8.0_beta.zip",
+      "as": "http://ldc.layabox.com/download/LayaAirAS3_1.8.0_beta.zip"
+    }
+  },
+  {
+    "name": "LayaAir 1.7.22",
+    "url": "1.7.22.md",
+    "date":"2018-11-22",
+    "download": {
+      "js": "http://ldc.layabox.com/download/LayaAirJS_1.7.22.zip",
+      "ts": "http://ldc.layabox.com/download/LayaAirTS_1.7.22.zip",
+      "as": "http://ldc.layabox.com/download/LayaAirAS3_1.7.22.zip"
     }
   },
   {
