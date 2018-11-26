@@ -31,7 +31,7 @@ package
 			
 			var img:Sprite = new Sprite();                  
 			//加载显示图片，坐标位于100,50
-			img.loadImage("res/img/monkey1.png",100,50); 
+			img.loadImage("res/img/monkey1.png"); 
 			//添加到舞台
 			Laya.stage.addChild(img);
 		}
@@ -93,7 +93,7 @@ package
 			var imgUrl:String = (flag = !flag)? monkey1:monkey2;
 			
 			//加载显示图片，坐标位于100,50
-			img.loadImage(imgUrl, 100, 50);
+			img.loadImage(imgUrl);
 			
 		}
 	}
