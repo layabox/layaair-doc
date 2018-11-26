@@ -4,7 +4,7 @@
 
 #### 1.1 引擎下载
 
-​     使用LayaAirIDE开发的话，下载LayaAirIDE会自带引擎包。若开发者使用第三方工具开发，那需要先下载引擎。在官网首页或者开发者中心菜单中，拥有引擎下载的链接入口，打开链接后会出现引擎各个版本的下载列表，每一个版本均提供AS3、TS、JS三种开发语言，选择对应的开发语言包，直接点击下载即可([http://new.ldc.layabox.com/download/?type=layaair-LayaAir](http://new.ldc.layabox.com/download/?type=layaair-LayaAir))。 
+​     使用LayaAirIDE开发的话，下载LayaAirIDE会自带引擎包。若开发者使用第三方工具开发，那需要先下载引擎。在官网首页或者开发者中心菜单中，拥有引擎下载的链接入口，打开链接后会出现引擎各个版本的下载列表，每一个版本均提供AS3、TS、JS三种开发语言，选择对应的开发语言包，去官网下载。
 
 ####  1.2 引擎包目录结构介绍 
 
