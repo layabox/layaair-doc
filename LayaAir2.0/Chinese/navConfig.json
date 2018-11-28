@@ -1032,12 +1032,12 @@
 			"name_2_data": [
 			{
 				"name_3_name": "2.0新特性常见问题",
-				"name_3_url": "Chinese/FAQ/2dFAQ",
+				"name_3_url": "Chinese/FAQ/2dFAQ/",
 				"name_3_file": "readme.md"
 			},
 			{
 				"name_3_name": "3d常见问题",
-				"name_3_url": "Chinese/FAQ/3dFAQ",
+				"name_3_url": "Chinese/FAQ/3dFAQ/",
 				"name_3_file": "readme.md"
 			}]
 		}]
@@ -2037,12 +2037,12 @@
 			"name_2_data": [
 			{
 				"name_3_name": "2.0新特性常见问题",
-				"name_3_url": "Chinese/FAQ/",
+				"name_3_url": "Chinese/FAQ/2dFAQ/",
 				"name_3_file": "readme.md"
 			},
 			{
 				"name_3_name": "3d常见问题",
-				"name_3_url": "Chinese/FAQ/3dFAQ",
+				"name_3_url": "Chinese/FAQ/3dFAQ/",
 				"name_3_file": "readme.md"
 			}]
 		}]
@@ -3036,12 +3036,12 @@
 			"name_2_data": [
 			{
 				"name_3_name": "2.0新特性常见问题",
-				"name_3_url": "Chinese/FAQ/",
+				"name_3_url": "Chinese/FAQ/2dFAQ/",
 				"name_3_file": "readme.md"
 			},
 			{
 				"name_3_name": "3d常见问题",
-				"name_3_url": "Chinese/FAQ/3dFAQ",
+				"name_3_url": "Chinese/FAQ/3dFAQ/",
 				"name_3_file": "readme.md"
 			}]
 		}]
