@@ -44,7 +44,7 @@ Laya.URL.basePath = "https://XXXX.com";//请把XXXX换成自己的真实网址�
 所以，引擎针对使用`URL.basePath`之后，如何再次使用本地加载，进行了**特殊目录和文件的处理**，也就是本地包白名单机制。如下例所示：
 
 ```json
-MiniAdpter.nativefiles =  [
+BMiniAdpter.nativefiles =  [
     "wxlocal",
     "res/atlas/houzi.atlas",
     "res/atlas/houzi.png",
@@ -55,7 +55,7 @@ MiniAdpter.nativefiles =  [
 ];
 ```
 
-**只要是MiniAdpter.nativefiles里存在的目录名或文件，引擎会自动将该目录视为本地目录**，即便使用了URL.basePath，对于包含在nativefiles白名单内的目录名或文件，都不会从网络动态加载，只会从本地加载。
+**只要是BMiniAdpter.nativefiles里存在的目录名或文件，引擎会自动将该目录视为本地目录**，即便使用了URL.basePath，对于包含在nativefiles白名单内的目录名或文件，都不会从网络动态加载，只会从本地加载。
 
 
 
