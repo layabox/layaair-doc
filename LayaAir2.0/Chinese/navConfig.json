@@ -914,15 +914,6 @@
 				"name_3_url": "Chinese/baidu/AS/50M/",
 				"name_3_file": "readme.md"
 			}]
-		},
-		{
-			"name_2_name": "QQ轻游戏开发基础",
-			"name_2_data": [
-			{
-				"name_3_name": "QQ轻游戏基础介绍与游戏发布",
-				"name_3_url": "Chinese/qq/introduction/",
-				"name_3_file": "readme.md"
-			}]
 		}]
 	},
 	{
@@ -1930,6 +1921,38 @@
 			}]
 		}]
 	},
+		{
+		"nav_1_name": "百度小游戏",
+		"nav_1_data": [
+		{
+			"name_2_name": "百度小游戏开发基础",
+			"name_2_data": [
+			{
+				"name_3_name": "百度小游戏入门介绍",
+				"name_3_url": "Chinese/baidu/AS/introduction/",
+				"name_3_file": "readme.md"
+			},
+			{
+				"name_3_name": "创建第一个百度小游戏",
+				"name_3_url": "Chinese/baidu/AS/novice/",
+				"name_3_file": "readme.md"
+			},
+			{
+				"name_3_name": "老项目适配百度小游戏详解",
+				"name_3_url": "Chinese/baidu/AS/old_adapter/",
+				"name_3_file": "readme.md"
+			},
+			{
+				"name_3_name": "百度小游戏的5M本地包与动态资源加载",
+				"name_3_url": "Chinese/baidu/AS/4M/",
+				"name_3_file": "readme.md"
+			},{
+				"name_3_name": "百度小游戏的50M物理缓存管理",
+				"name_3_url": "Chinese/baidu/AS/50M/",
+				"name_3_file": "readme.md"
+			}]
+		}]
+	},
 	{
 		"nav_1_name": "LayaNative原生服务",
 		"nav_1_data": [
@@ -2925,6 +2948,38 @@
 			{
 				"name_3_name": "QQ轻游戏基础介绍与游戏发布",
 				"name_3_url": "Chinese/qq/introduction/",
+				"name_3_file": "readme.md"
+			}]
+		}]
+	},
+		{
+		"nav_1_name": "百度小游戏",
+		"nav_1_data": [
+		{
+			"name_2_name": "百度小游戏开发基础",
+			"name_2_data": [
+			{
+				"name_3_name": "百度小游戏入门介绍",
+				"name_3_url": "Chinese/baidu/AS/introduction/",
+				"name_3_file": "readme.md"
+			},
+			{
+				"name_3_name": "创建第一个百度小游戏",
+				"name_3_url": "Chinese/baidu/AS/novice/",
+				"name_3_file": "readme.md"
+			},
+			{
+				"name_3_name": "老项目适配百度小游戏详解",
+				"name_3_url": "Chinese/baidu/AS/old_adapter/",
+				"name_3_file": "readme.md"
+			},
+			{
+				"name_3_name": "百度小游戏的5M本地包与动态资源加载",
+				"name_3_url": "Chinese/baidu/AS/4M/",
+				"name_3_file": "readme.md"
+			},{
+				"name_3_name": "百度小游戏的50M物理缓存管理",
+				"name_3_url": "Chinese/baidu/AS/50M/",
 				"name_3_file": "readme.md"
 			}]
 		}]
