@@ -213,7 +213,7 @@ package common{
     public function SceneScript() {
     }
     /**
-		 * 复写3D对象组件被激活后执行，此时所有节点和组件均已创建完毕，次方法只执行一次
+		 * 覆写3D对象组件被激活后执行，此时所有节点和组件均已创建完毕，此方法只执行一次
 		 */
     override public function onAwake():void{
       box = this.owner as MeshSprite3D;

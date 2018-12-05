@@ -116,7 +116,7 @@ package
 			//设置文本字体颜色
 			label.color = color;
 			
-			//如果有描颜色参数
+			//如果有描边颜色参数
 			if (strokeColor)
 			{
 				//文本描边宽度为4
