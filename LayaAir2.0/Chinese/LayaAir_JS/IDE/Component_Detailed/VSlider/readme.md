@@ -21,7 +21,7 @@
 
 ​	资源至少应当有两个，一个底图资源，一个滑块资源，否则无法实现滑动功能。缺少了进度条资源组件不会报错，只是不显示进度。
 
- 	tips：进度条资源`vslider$progress.png`可以与底图资源`vsliser.png`互换，互换后进度可以反向显示。
+ 	tips：进度条资源`vslider$progress.png`可以与底图资源`vslider.png`互换，互换后进度可以反向显示。
 
 ![图片0.png](img/1.png)<br/>
 ​    （图2）
@@ -54,9 +54,9 @@ VSlider的API介绍请参考 [http://layaair.ldc.layabox.com/api/index.html?cate
 ​        ![图片3.png](img/3.png)<br/>
 ​    （图3）
 
-**max：**HSlider滑块拖动到最右边时的最大值，默认数值为100；
+**max：**VSlider滑块拖动到最右边时的最大值，默认数值为100；
 
-**min：**Hslider滑块拖动到最左边时的最小值，默认为0；
+**min：**VSlider滑块拖动到最左边时的最小值，默认为0；
 
 **value：**滑块目前所处的数值，应当等于max或min，或是它们之间的值。
 
