@@ -32,7 +32,7 @@ if( window.conch )
 ```
 
 **Tips**
-*1、conch只能LayaNative环境下调用，在网页版本中是没有conch定义的，所有需要判断一下是否存在。*
+*1、conch只能LayaNative环境下调用，在网页版本中是没有conch定义的，所以需要判断一下是否存在。*
 *2、如果使用as语言开发的时候，可以通过 Browser.window['conch']这种方式获得conch对象。*
 
 ## 4.关于iOS对接微信
@@ -54,7 +54,7 @@ LayaNative支持iOS模拟器，但是由于模拟器运行效率比较低，建�
 | getUsedMem()         | 获得当前应用程序占用的内存      | 单位为KB                                    | 返回值不太准确，但是可以作为参考                 |
 | getAvalidMem()       | 获得可用的内存            | 单位为KB                                    | 返回值不太准确，但是可以作为参考                 |
 | getNetworkType()     | 获得网络状态             | 返回int值，NET_NO = 0;NET_WIFI = 1;NET_2G = 2;NET_3G = 3;NET_4G = 4;NET_UNKNOWN=5 |                                  |
-| getRuntimeVersion()  | 获得Runtime的版本    | 返回值是一个字符串，类似ios-conch5-0.9.2、android-conch5-0.9 |                                  |
+| getRuntimeVersion()  | 获得Runtime的版本       | 返回值是一个字符串，类似ios-conch5-0.9.2、android-conch5-0.9 |                                  |
 | getOS()              | 获得当前系统             | 返回值类似“Conch-ios” “Conch-android”字符串      |                                  |
 | getAppVersion()      | 获得iOS-App的版本号      | 返回字符串 1.1                                | iOS-app的版本号，通过这个版本号，可以做APP的更新提示。 |
 | getAppLocalVersion() | 获得iOS-App的Local版本号 | 返回字符串1.2                                 | iOS-app的版本号，通过这个版本号，可以做APP的更新提示。 |
@@ -69,7 +69,7 @@ if( window.conch )
 ```
 
 **Tips**
-*1、conch只能LayaNative环境下调用，在网页版本中是没有conch定义的，所有需要判断一下是否存在。*
+*1、conch只能LayaNative环境下调用，在网页版本中是没有conch定义的，所以需要判断一下是否存在。*
 *2、如果使用as语言开发的时候，可以通过 Browser.window['conch']这种方式获得conch对象。*
 
 ## 7. 屏蔽项目中报错弹框
