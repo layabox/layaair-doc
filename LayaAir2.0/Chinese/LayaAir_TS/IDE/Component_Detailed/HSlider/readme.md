@@ -17,11 +17,11 @@
 
 ### 1.2 HSlider组件的皮肤（skin）规范
 
-​	HSlider资源命名规以hsliser为前缀名，它的默认资源总共3个，分别为滑块资源`hslider$bar.png`、进度条资源`hslider$progress.png` 及底图资源`hsliser.png`。
+​	HSlider资源命名规以hsliser为前缀名，它的默认资源总共3个，分别为滑块资源`hslider$bar.png`、进度条资源`hslider$progress.png` 及底图资源`hslider.png`。
 
 ​	资源至少应当有两个，一个底图资源，一个滑块资源，否则无法实现滑动功能。缺少了进度条资源组件不会报错，只是不显示进度。
 
- 	tips：进度条资源`vslider$progress.png`可以与底图资源`vsliser.png`互换，互换后进度可以反向显示。
+ 	tips：进度条资源`hslider$progress.png`可以与底图资源`hslider.png`互换，互换后进度可以反向显示。
 
 ![图片0.png](img/1.png)<br/>
 ​    （图2）
@@ -54,7 +54,7 @@ HSlider的API介绍请参考 [http://layaair.ldc.layabox.com/api/index.html?cate
 
 **max：**HSlider滑块拖动到最右边时的最大值，默认数值为100；
 
-**min：**Hslider滑块拖动到最左边时的最小值，默认为0；
+**min：**HSlider滑块拖动到最左边时的最小值，默认为0；
 
 **value：**滑块目前所处的数值，应当等于max或min，或在它们之间的值。
 

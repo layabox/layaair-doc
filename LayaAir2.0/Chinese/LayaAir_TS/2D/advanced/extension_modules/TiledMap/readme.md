@@ -357,7 +357,7 @@ new GameMain();
 
 ### 3.1 销毁地图
 
-当Tiled Mapa不再使用的时候，需要使用destroy()方法进行销毁，回收被占用的内存。
+当Tiled Map不再使用的时候，需要使用destroy()方法进行销毁，回收被占用的内存。
 
 例如：
 

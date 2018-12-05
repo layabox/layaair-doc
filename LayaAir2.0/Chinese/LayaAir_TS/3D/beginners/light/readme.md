@@ -204,7 +204,7 @@ class LayaAir3D {
         var box:Laya.MeshSprite3D = scene.addChild(new Laya.MeshSprite3D(new Laya.BoxMesh(1.5,1.5,1.5))) as Laya.MeshSprite3D;
         //自身y座标旋转
         box.transform.rotate(new Laya.Vector3(0,45,0),true,false);
-        //接受阴影
+        //接收阴影
         box.meshRender.receiveShadow=true;
         //创建球体模型
         var sphere:Laya.MeshSprite3D = scene.addChild(new Laya.MeshSprite3D(new Laya.SphereMesh())) as Laya.MeshSprite3D;
