@@ -176,7 +176,7 @@ camera.clearFlag = Laya.BaseCamera.CLEARFLAG_SKY;
 //绑定天空盒对象到摄像机
 camera.SkyBoxMaterial = skyBox;
 //天空盒加载（测试资源会随时更新，与文档截图不一致，以实际为准）
-Laya.BaseMaterial.load("../../res/threeDimen/skyBox/DawnDusk/SkyBox.lmat", Laya.Handler.create(null, function(mat:Laya.SkyBoxMaterial):void {
+Laya.BaseMaterial.load("https://layaair.ldc.layabox.com/demo2/h5/res/threeDimen/skyBox/DawnDusk/SkyBox.lmat", Laya.Handler.create(null, function(mat:Laya.SkyBoxMaterial):void {
 			var skyRenderer = new Laya.SkyRenderer();
 		    skyRenderer.mesh = Laya.SkyBox.instance;
 		    skyRenderer.material = mat;
