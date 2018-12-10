@@ -152,6 +152,6 @@ function errorHandler(e){
 }
 ```
 
-以上的例子我们用的都是`HttpRequest`来加载，开发者也可以用`Laya.loader.load`方法来加载，关于`Laya.loader.load`详细使用请移步到相关教程文档。这里不在陈述。
+以上的例子我们用的都是`HttpRequest`来加载，开发者也可以用`Laya.loader.load`方法来加载，关于`Laya.loader.load`详细使用请移步到相关教程文档。这里不再陈述。
 
  上面的例子我们用的是`HttpRequest`和单线程的加载，在html5中其实还有多线程，为了防止页面的卡顿无响应，提高用户体验，我们可以启用worker来加载，相关教程我们会在worker章节讲解。

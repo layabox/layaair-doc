@@ -327,7 +327,7 @@ package
 
 
 
-　　`Main.as` 创建了一个动态服务器，端口为8989，服务器收到客户端的请求，返回一个Hell Laya。
+　　`Main.as` 创建了一个动态服务器，端口为8989，服务器收到客户端的请求，返回一个Hello Laya。
 
 　　`require.as`这个类用到了LayaCompiler编译器的宏编译，`/*[IF-FLASH-BEGIN]*/`和`/*[IF-FLASH-END]*/`这两个标签之间代码用于语法提示，并不参加编译（对此不了解的，请先去了解[宏编译教程文档](https://github.com/layabox/layaair-doc/blob/master/Chinese/LayaAir_AS3/LayaCompile_Macros.md)）。
 

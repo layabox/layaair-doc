@@ -30,7 +30,7 @@
 
 ### 如何加载
 
- 关于如何加载，这里我们先从原生开始，然后在过渡到Layaair引擎，这样开发者可以理解其中的含义。以二进制流的方式加载，这里我们采用XMLHttpRequest二进制流的方式来加载。关于XMLHttpRequest的操作我们这里不在陈述，会放到单独的一章节来讲解。我们先按照二进制的方式来加载试试。这里我们先用js脚本进行操作。代码如下：
+ 关于如何加载，这里我们先从原生开始，然后在过渡到Layaair引擎，这样开发者可以理解其中的含义。以二进制流的方式加载，这里我们采用XMLHttpRequest二进制流的方式来加载。关于XMLHttpRequest的操作我们这里不再陈述，会放到单独的一章节来讲解。我们先按照二进制的方式来加载试试。这里我们先用js脚本进行操作。代码如下：
 
 ```javascript
 var xhr = new XMLHttpRequest();
@@ -168,6 +168,6 @@ class GameMain{
 new GameMain();
 ```
 
-以上的例子我们用的都是`HttpRequest`来加载，开发者也可以用`Laya.loader.load`方法来加载，关于`Laya.loader.load`详细使用请移步到相关教程文档。这里不在陈述。
+以上的例子我们用的都是`HttpRequest`来加载，开发者也可以用`Laya.loader.load`方法来加载，关于`Laya.loader.load`详细使用请移步到相关教程文档。这里不再陈述。
 
  上面的例子我们用的是`HttpRequest`和单线程的加载，在html5中其实还有多线程，为了防止页面的卡顿无响应，提高用户体验，我们可以启用worker来加载，相关教程我们会在worker章节讲解。

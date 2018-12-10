@@ -82,11 +82,11 @@
 2. webview的实现依赖于系统，低版本的android可能无法显示。
 
 **Tips**  
-*1、conch只能LayaNative环境下调用，在网页版本中是没有conch定义的，所有需要判断一下是否存在。*  
+*1、conch只能LayaNative环境下调用，在网页版本中是没有conch定义的，所以需要判断一下是否存在。*  
 *2、如果使用as语言开发的时候，可以通过 `Browser.window['conch'] `这种方式获得conch对象。*
 
 
-## 三、如何在代码中动态关闭webview页面
+## 二、如何在代码中动态关闭webview页面
 
 调用下面的代码可以动态的关闭webview页面：
 

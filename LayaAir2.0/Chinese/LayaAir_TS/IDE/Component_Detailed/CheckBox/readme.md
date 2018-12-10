@@ -72,9 +72,7 @@ new GameMain();
 
 
 
-它的脚本接口请参考。
-
-**Tips:** CheckBox 组件的属性接口介绍请参考 [CheckBox API](http://layaair.ldc.layabox.com/api/index.html?category=UI&class=laya.ui.CheckBox)。
+**Tips:** CheckBox 组件的属性接口介绍请参考 [CheckBox API](https://layaair.ldc.layabox.com/api2/Chinese/index.html?category=Core&class=laya.ui.CheckBox)。
 
 
 

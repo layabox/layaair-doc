@@ -4,7 +4,7 @@
 
 ### LayaAir之SVG
 
-​	什么是svg？可能大部分开发者听说过这个名词，或者也知道它是w3c规定的矢量图像的描述格式，关于svg的一些定义和历史这里我们不在陈述，感兴趣的开发者可以参考[这里]()。但是在项目中真正的用到它的地方很少。但是svg的强大是不容忽视的，有些简单的图形，几行文本就可以描述出来，不必进行网络的加载。比如丰富的艺术字，比如奇形怪状的图形，比如文字的透视效果等等假如用程序实现，可能会困难很多。比如下面这个
+​	什么是svg？可能大部分开发者听说过这个名词，或者也知道它是w3c规定的矢量图像的描述格式，关于svg的一些定义和历史这里我们不再陈述，感兴趣的开发者可以参考[这里]()。但是在项目中真正的用到它的地方很少。但是svg的强大是不容忽视的，有些简单的图形，几行文本就可以描述出来，不必进行网络的加载。比如丰富的艺术字，比如奇形怪状的图形，比如文字的透视效果等等假如用程序实现，可能会困难很多。比如下面这个
 
 ![0](img/0.png)
 
@@ -306,7 +306,7 @@ package {
     public class Main {
         public function Main() {
             //初始化引擎
-            Laya.init(100,100);//初始化引擎
+            Laya.init(100,100);
             var file:Object = Browser.document.createElement("input");
             file.type ="file";
             file.style.position ="absolute";
@@ -355,7 +355,7 @@ package {
     public class Main {
         public function Main() {
             //初始化引擎
-            Laya.init(500,500);//初始化引擎
+            Laya.init(500,500);
             var skins:Array = [
                 "res/button-1.png"
             ];
@@ -424,7 +424,7 @@ package {
     public class Main {
         public function Main() {
             //初始化引擎
-            Laya.init(500,500);//初始化引擎
+            Laya.init(500,500);
             var script:Object = Browser.document.createElement("script");
             script.src = "demo1.js";
             script.onload = function():void
@@ -497,7 +497,7 @@ package {
     public class Main {
         public function Main() {
             //初始化引擎
-            Laya.init(500,500);//初始化引擎
+            Laya.init(500,500);
             var httpreq:HttpRequest = new HttpRequest();
             httpreq.on(Event.COMPLETE,this,this.completeHandler);
             httpreq.on(Event.ERROR,this,this.errorHandler);
@@ -754,4 +754,4 @@ package
 }
 ```
 
-​	这里面需要提醒开发者的就是定位和层级要记得设置。很多开发者不注意导致iframe跑到游戏层的下面儿看不见。
+​	这里面需要提醒开发者的就是定位和层级要记得设置。很多开发者不注意导致iframe跑到游戏层的下面而看不见。

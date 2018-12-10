@@ -167,19 +167,26 @@ camera.clearColor = new Laya.Vector4(0.5,0.5,0.6,1);
 
 天空盒是由一个立方体模型及6张可以无缝相接的材质贴图构成，有点类似于360全景地图，随着视角的旋转改变，我们可以观察到四面八方都有远景效果。
 
-下列代码中”skyCube.ltc“中用JSON格式存储了6张贴图的路径，在此不多做介绍，我们将在天空盒详解中介绍制作天空盒贴图的方法及"skyCube.ltc"配置。
+
 
 ```typescript
-//创建天空盒
-var skyBox:Laya.SkyBoxMaterial = new Laya.SkyBoxMaterial();
+
 //清除标记，使用天空（必须设置，否则无法显示天空）
 camera.clearFlag = Laya.BaseCamera.CLEARFLAG_SKY;
 //绑定天空盒对象到摄像机
 camera.SkyBoxMaterial = skyBox;
-//为天空盒加载贴图文件
-Laya.TextureCube.load("skyBox/skyCube.ltc",Laya.Handler.create(this,function(t:Laya.SkyBoxMaterial):void{
-  	 skyBox.skyboxMaterial = t;
-}))
+//天空盒加载（测试资源会随时更新，与文档截图不一致，以实际为准）
+Laya.BaseMaterial.load("https://layaair.ldc.layabox.com/demo2/h5/res/threeDimen/skyBox/DawnDusk/SkyBox.lmat", Laya.Handler.create(null, function(mat:Laya.SkyBoxMaterial):void {
+			var skyRenderer = new Laya.SkyRenderer();
+		    skyRenderer.mesh = Laya.SkyBox.instance;
+		    skyRenderer.material = mat;
+		    this.camera.skyRenderer = skyRenderer;
+		    Laya.timer.frameLoop(1, this, this.onFrameLoop);
+            Laya.timer.frameLoop(1, this, function():void {
+				this.camera.skyRenderer.material.exposure = Math.sin(this.exposureNumber += 0.01) + 1;
+		        this.camera.skyRenderer.material.rotation += 0.01;
+            });
+        }))
 
 ```
 
