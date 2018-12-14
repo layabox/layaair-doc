@@ -92,7 +92,7 @@ Laya.BMiniAdapter.init();
 
 ```java
 //百度小游戏适配
-BMiniAdpter.init();
+BMiniAdpter.init(); 
 ```
 
 
