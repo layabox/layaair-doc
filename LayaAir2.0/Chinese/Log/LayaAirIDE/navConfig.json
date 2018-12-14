@@ -1,5 +1,15 @@
 [
   {
+    "name": "LayaAir IDE 2.0.0 beta5.1",
+    "url": "2.0.0beta5.1.md",
+    "date": "2018-12-12",
+    "download": {
+      "Apple": "http://ldc.layabox.com/download/2.0.0beta5.1/darwin/LayaAirIDE_beta.zip",
+      "Windows": "http://ldc.layabox.com/download/2.0.0beta5.1/win/LayaAirIDE_beta.zip",
+      "UnityPlugin":"#"
+    }
+  },
+  {
     "name": "LayaAir IDE 2.0.0 beta5",
     "url": "2.0.0beta5.md",
     "date": "2018-11-22",
