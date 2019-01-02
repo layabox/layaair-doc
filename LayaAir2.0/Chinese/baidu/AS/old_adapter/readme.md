@@ -63,7 +63,7 @@ OK，继续。
 AS3项目，在使用1.8.0之后的新版本引擎库后，仅需要开发者在入口类中手动加入这段代码，即完成小游戏适配库的引入。
 
 ```java
-import laya.bd.mini.MiniAdpter;
+import laya.bd.mini.MiniAdapter;
 ```
 
 
@@ -81,7 +81,7 @@ import laya.bd.mini.MiniAdpter;
 
 ```typescript
 //初始化小游戏适配库
-Laya.BMiniAdpter.init();
+Laya.BMiniAdapter.init();
 ```
 
 ##### AS3项目项目适配方法如下图所示：
@@ -92,7 +92,7 @@ Laya.BMiniAdpter.init();
 
 ```java
 //百度小游戏适配
-BMiniAdpter.init();
+BMiniAdpter.init(); 
 ```
 
 

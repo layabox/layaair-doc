@@ -62,5 +62,5 @@
 
 链接如下：
 
-[https://smartprogram.baidu.com/docs/game/tutorials/tutorials/tutorials/](https://developers.weixin.qq.com/minigame/dev/index.html)
+[https://smartprogram.baidu.com/docs/game/tutorials/tutorials/tutorials/](https://smartprogram.baidu.com/docs/game/tutorials/tutorials/tutorials/)
 
