@@ -1074,20 +1074,11 @@
 				"name_3_name": "什么是HTML5？",
 				"name_3_url": "Chinese/Layabox_Intro/",
 				"name_3_file": "what_is_HTML5.md"
-			}]
-		},
-		{
-			"name_2_name": "拥抱HTML5游戏",
-			"name_2_data": [
-			{
-				"name_3_name": "HTML5游戏的就业机会",
-				"name_3_url": "Chinese/Layabox_Intro/",
-				"name_3_file": "HTML5_job_opportunities.md"
 			},
 			{
-				"name_3_name": "HTML5游戏的行业机会",
+				"name_3_name": "HTML5游戏的机会与前景",
 				"name_3_url": "Chinese/Layabox_Intro/",
-				"name_3_file": "HTML5_Game_Opportunities.md"
+				"name_3_file": "HTML5_Opportunities.md"
 			}]
 		},
 		{
@@ -1101,6 +1092,20 @@
 			{
 				"name_3_name": "Layabox创始人谢成鸿：程序员的激情与梦想",
 				"name_3_url": "Chinese/Layabox_Intro/Layabox_Founder/",
+				"name_3_file": "readme.md"
+			}]
+		},
+		{
+			"name_2_name": "Layabox案例",
+			"name_2_data": [
+			{
+				"name_3_name": "Layabox引擎的游戏案例",
+				"name_3_url": "Chinese/Layabox_Intro/Game_Case/",
+				"name_3_file": "readme.md"
+			},
+			{
+				"name_3_name": "Layabox的引擎非游戏案例",
+				"name_3_url": "Chinese/Layabox_Intro/Non-game_Case/",
 				"name_3_file": "readme.md"
 			}]
 		},
@@ -1120,20 +1125,6 @@
 			{
 				"name_3_name": "LayaAir引擎快速上手指南【新手必读】",
 				"name_3_url": "Chinese/",
-				"name_3_file": "readme.md"
-			}]
-		},
-		{
-			"name_2_name": "Layabox案例",
-			"name_2_data": [
-			{
-				"name_3_name": "Layabox引擎的游戏案例",
-				"name_3_url": "Chinese/Layabox_Intro/Game_Case/",
-				"name_3_file": "readme.md"
-			},
-			{
-				"name_3_name": "Layabox的引擎非游戏案例",
-				"name_3_url": "Chinese/Layabox_Intro/Non-game_Case/",
 				"name_3_file": "readme.md"
 			}]
 		}]
@@ -1851,7 +1842,7 @@
 		}]
 	},
 	{
-		"nav_1_name": "微信小游戏与QQ轻游戏",
+		"nav_1_name": "小游戏适配文档（微信、百度）",
 		"nav_1_data": [
 		{
 			"name_2_name": "微信小游戏开发基础",
@@ -1898,19 +1889,14 @@
 			}]
 		},
 		{
-			"name_2_name": "QQ轻游戏开发基础",
+			"name_2_name": "QQ轻游戏介绍",
 			"name_2_data": [
 			{
 				"name_3_name": "QQ轻游戏基础介绍与游戏发布",
 				"name_3_url": "Chinese/qq/introduction/",
 				"name_3_file": "readme.md"
 			}]
-		}]
-	},
-		{
-		"nav_1_name": "百度小游戏",
-		"nav_1_data": [
-		{
+		},{
 			"name_2_name": "百度小游戏开发基础",
 			"name_2_data": [
 			{
@@ -2111,20 +2097,11 @@
 				"name_3_name": "什么是HTML5？",
 				"name_3_url": "Chinese/Layabox_Intro/",
 				"name_3_file": "what_is_HTML5.md"
-			}]
-		},
-		{
-			"name_2_name": "拥抱HTML5游戏",
-			"name_2_data": [
-			{
-				"name_3_name": "HTML5游戏的就业机会",
-				"name_3_url": "Chinese/Layabox_Intro/",
-				"name_3_file": "HTML5_job_opportunities.md"
 			},
 			{
-				"name_3_name": "HTML5游戏的行业机会",
+				"name_3_name": "HTML5游戏的机会与前景",
 				"name_3_url": "Chinese/Layabox_Intro/",
-				"name_3_file": "HTML5_Game_Opportunities.md"
+				"name_3_file": "HTML5_Opportunities.md"
 			}]
 		},
 		{
@@ -2138,6 +2115,20 @@
 			{
 				"name_3_name": "Layabox创始人谢成鸿：程序员的激情与梦想",
 				"name_3_url": "Chinese/Layabox_Intro/Layabox_Founder/",
+				"name_3_file": "readme.md"
+			}]
+		},
+		{
+			"name_2_name": "Layabox案例",
+			"name_2_data": [
+			{
+				"name_3_name": "Layabox引擎的游戏案例",
+				"name_3_url": "Chinese/Layabox_Intro/Game_Case/",
+				"name_3_file": "readme.md"
+			},
+			{
+				"name_3_name": "Layabox的引擎非游戏案例",
+				"name_3_url": "Chinese/Layabox_Intro/Non-game_Case/",
 				"name_3_file": "readme.md"
 			}]
 		},
@@ -2157,20 +2148,6 @@
 			{
 				"name_3_name": "LayaAir引擎快速上手指南【新手必读】",
 				"name_3_url": "Chinese/",
-				"name_3_file": "readme.md"
-			}]
-		},
-		{
-			"name_2_name": "Layabox案例",
-			"name_2_data": [
-			{
-				"name_3_name": "Layabox引擎的游戏案例",
-				"name_3_url": "Chinese/Layabox_Intro/Game_Case/",
-				"name_3_file": "readme.md"
-			},
-			{
-				"name_3_name": "Layabox的引擎非游戏案例",
-				"name_3_url": "Chinese/Layabox_Intro/Non-game_Case/",
 				"name_3_file": "readme.md"
 			}]
 		}]
@@ -2881,7 +2858,7 @@
 		}]
 	},
 	{
-		"nav_1_name": "微信小游戏与QQ轻游戏",
+		"nav_1_name": "小游戏适配文档（微信、百度）",
 		"nav_1_data": [
 		{
 			"name_2_name": "微信小游戏开发基础",
@@ -2929,19 +2906,14 @@
 			}]
 		},
 		{
-			"name_2_name": "QQ轻游戏开发基础",
+			"name_2_name": "QQ轻游戏介绍",
 			"name_2_data": [
 			{
 				"name_3_name": "QQ轻游戏基础介绍与游戏发布",
 				"name_3_url": "Chinese/qq/introduction/",
 				"name_3_file": "readme.md"
 			}]
-		}]
-	},
-		{
-		"nav_1_name": "百度小游戏",
-		"nav_1_data": [
-		{
+		},{
 			"name_2_name": "百度小游戏开发基础",
 			"name_2_data": [
 			{
