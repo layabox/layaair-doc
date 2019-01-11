@@ -158,10 +158,11 @@ Laya.loader.load("./res/atlas/ui.atlas", Handler.create(this, onLoaded));
 
 ```javascript
 //json方式图集使用示例
-Laya.loader.load([{url: "res/atlas/ui.json", type: Loader.ATLAS}], Handler.create(this, onLoaded));
+Laya.loader.load([{url: "res/atlas/ui.json", type: Laya.Loader.ATLAS}], Laya.Handler.create(this, onLoaded));
 ```
 
-
+> Tips:建议使用atlas，最好不要用json的方式。
+>
 
 
 
