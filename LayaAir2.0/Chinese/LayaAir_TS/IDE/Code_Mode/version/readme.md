@@ -1,55 +1,19 @@
-##资源版本管理功能介绍
-
-从1.7.15beta开始，打开发布界面，最后一项是管理**是否启用版本管理**的功能。
+##版本管理的功能介绍
 
 ![publish](res/publish.png) 
 
-​	启用版本管理之后，将会生成带hash的文件名，并生成一个version.json的文件名映射文件，在项目中可以通过使用ResourceVersion类进行版本控制，使用版本控制之后就会在加载时自动去加载带hash的文件名。
+关于版本管理，最开始是采用链接后加随机数的方式来管理，但是微信等环境下，缓存问题很严重，随机数方式并不能有效解决缓存问题，还是会出现因更新版本导致页面混乱等现象出现。因此，LayaAirIDE在发布的时候增加了一种从根本上解决缓存问题的方案，那就是直接改名文件名，文件名都不一样了，缓存问题自然就不存在了。
 
-未打包的项目：
-![publish](res/old.png)
-打包后的项目：
-![publish](res/hashed.png)
+### 版本管理的机制
 
+当开发者启用版本管理之后，发布时将会自动生成带hash字符串的文件名，同时生成一个version.json的文件名映射文件。通过版本管理类ResourceVersion自动关联代码中的实际文件名和重命名后的版本管理控制的文件。开发者启用版本管理的文件只要发生改变，就会在发布时自动更新改变文件名中的hash字符串，这于运行环境而言，这相当于调用了新的文件，自然就不会存在缓存引起的问题。
 
+而开发者在开发的过程中，无需关注版本管理最终生成的文件名是什么。甚至，由于LayaAirIDE 2.0在创建项目的时候，已经自动在代码里集成了版本管理类ResourceVersion，开发者连怎么去使用ResourceVersion类都无须关注，只需要在打算启用版本管理时，在项目发布界面，勾选是否启用版本管理的选项即可。
 
-代码中通过ResourceVersion类加载管理资源版本
+### 启用版本管理的效果
 
-以下为具体的使用代码示例：
+在项目发布界面，勾选是否启用版本管理后，就会在发布时对文件名加上hash字符串，如下图所示。如果文件改变过，那就会针对改过的文件名更改新的hash字符串。
 
-```java
-package {
-	import laya.net.Loader;
-	import laya.net.ResourceVersion;
-	import laya.utils.Handler;
-	import view.TestView;
-	
-	public class LayaUISample {
-		
-		public function LayaUISample() {
-			//初始化引擎
-			Laya.init(600, 400);
-			
-			//设置版本控制类型为使用文件名映射的方式
-			ResourceVersion.type = ResourceVersion.FILENAME_VERSION;
-			//加载版本信息文件
-			ResourceVersion.enable("version.json", Handler.create(this, beginLoad));		
-		}
-		
-		private function beginLoad():void
-		{
-			//加载引擎需要的资源
-			Laya.loader.load([{url: "res/atlas/comp.atlas", type: Loader.ATLAS}], Handler.create(this, onLoaded));
-		}
-		
-		private function onLoaded():void {
-			//实例UI界面
-			var testView:TestView = new TestView();
-			Laya.stage.addChild(testView);
-		}
-	}
-}
-```
+![图3](../release3/img/3.png) 
 
-程序运行实际的加载图
-![publish](res/load.png)
+上图所示的效果，左边是开发环境下的bin目录，右边是启用版本管理后的发布目录，我们可以看到，js目录下的js文件与res目录下的png图片文件名，都被加入了hash字符串。 
