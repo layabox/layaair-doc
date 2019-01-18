@@ -8,5 +8,5 @@
 6、解决video的内存泄漏和析构的bug。
 7、解决极端情况下2D-UI动画刷新不及时的bug。
 8、解决了Sprite.width和height不生效的bug。
-9、解决了getImageData产生的内存泄漏。
-
+9、解决了getImageData产生的内存泄漏。 
+注意：此版本必须和LayaAir-2.0.0配套使用。
