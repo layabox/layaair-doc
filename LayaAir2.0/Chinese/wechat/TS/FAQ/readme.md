@@ -1,6 +1,6 @@
 # 微信小游戏常见问题汇总
 
-> author: charley
+> *author: charley      update: 2018-10-25*
 
 #### 1、为什么放到小游戏本地包里的,有一些资源无法正常加载使用。
 
@@ -56,9 +56,11 @@ public static var getUrlAndEncode:Function = function(url:String,type:String):St
 
 
 
-#### 5、Mater物理引擎在小游戏中报错，竖屏模式下鼠标无事件响应。
+#### 5、使用`"./xx"`路径为什么微信小游戏中出错
 
-由于小游戏window作用域的问题，会出现`Matter is not defined` 的报错。或者在竖屏模式下，鼠标无事件。这些问题都已经在引擎库1.7.20的版本里，对Matter.js进行了修复。请使用1.7.20及以后的版本，可解决以上问题。但是，需要注意的是，Layabox团队已对Matter.js进行了修改，以后只能使用引擎中提供的Matter.js，不可从第三方获得Matter.js进行替换，否则适配工作将由自己来实现。
+H5中常用的`“./xx/xx.png”`的写法在浏览器环境没问题，在微信小游戏中是不被支持的。可以写成`“xx/xx.png”`的路径方式。
+
+
 
 
 
