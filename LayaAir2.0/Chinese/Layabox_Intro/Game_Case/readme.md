@@ -6,7 +6,9 @@
 
 ## 部分LayaAir引擎游戏案例
 
-请前往Layabox官网的案例栏目扫码体验：http://www.layabox.com/html/game-list/
+请前往Layabox官网的案例栏目扫码体验：[https://www.layabox.com/gamelist/](https://www.layabox.com/gamelist/)
+
+该链接中有大量3D和2D的精选案例，大家可以用微信扫码体验。
 
 
 
