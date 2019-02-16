@@ -58,7 +58,7 @@ LayaAir引擎可免费使用，包括商用。但必须在游戏加载页或首�
 
  LayaAir引擎提供了强力的技术支持，包括官网文档、微信公众号、官网问答社区、在线视频教育的课堂等。
 
-LayaAir引擎开发者中心：[http://ldc.layabox.com/](http://ldc.layabox.com/)
+LayaAir引擎开发者中心：[http://ldc2.layabox.com/](http://ldc2.layabox.com/)
 
 LayaAir引擎微信公众号：Layabox
 
