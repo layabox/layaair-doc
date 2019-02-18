@@ -15,11 +15,11 @@ LayaAirIDE2.0 下载地址：https://ldc2.layabox.com/layadownload/?type=layaair
 
 ## 二、用LayaAirIDE创建TS项目
 
- 首次打开LayaAir IDE，或者在IDE的“文件”菜单里使用“新建项目”功能。可以创建一个空项目，IDE在创建时会自动生成结构清晰的目录结构，我们将在这介绍 LayaAir IDE创建项目的流程以及IDE生成的目录结构。
+ 首次打开LayaAir IDE，可以创建一个示例项目，IDE在创建时会自动生成结构清晰的目录结构，我们将在这介绍 LayaAir IDE创建项目的流程以及IDE生成的目录结构。
 
 #### 步骤一：
 
-打开LayaAirIDE，如果是首次打开，直接点击“新建项目”开始创建新项目。如图1所示
+打开LayaAirIDE，点击`新建`图标或文字，如图1所示，即可进入新建项目界面。
 
 ![图1](img/1.png) 
 
@@ -62,7 +62,7 @@ LayaAirIDE2.0 下载地址：https://ldc2.layabox.com/layadownload/?type=layaair
 
 接下来，将会结合上一节中创建的项目结构来介绍每个目录的作用。
 
-### 2.1 项目配置目录（.laya文件夹）
+### 3.1 项目配置目录（.laya文件夹）
 
  `.laya` 文件夹下存放的是项目在开发运行中的一些配置信息，如图4所示。
 
@@ -92,7 +92,7 @@ LayaAirIDE2.0 下载地址：https://ldc2.layabox.com/layadownload/?type=layaair
 
 
 
-### 2.2 项目的输出目录（bin）
+### 3.2 项目的输出目录（bin）
 
  `bin`目录存放的是当前项目的输出文件。如图5所示。
 
@@ -106,11 +106,11 @@ LayaAirIDE2.0 下载地址：https://ldc2.layabox.com/layadownload/?type=layaair
 
 
 
-### 2.3 UI项目目录（laya）
+### 3.3 UI项目目录（laya）
 
 `laya`目录用于存放LayaAirIDE当前的UI项目。
 
-![图6](../../../../../LayaAir_AS3/2D/beginners/basic/LayaAirIDECreateProjects_DirectoryStructure/img/6.png) 
+![图6](img/6.png) 
 
 (图6)
 
@@ -128,7 +128,7 @@ LayaAirIDE2.0 下载地址：https://ldc2.layabox.com/layadownload/?type=layaair
 
 
 
-### 2.4 项目库目录（libs）
+### 3.4 项目库目录（libs）
 
  “`libs`”目录内为项目的库目录，目录下是layaAir引擎LayaAir.d.ts文件和wx.d.ts。用来代码提示，开发者假如有三方的类库使用，相关的.d.ts文件请放到这个目录下。 例如wx.d.ts用于微信小游戏开发代码提示。如图7所示。
 
@@ -138,7 +138,7 @@ LayaAirIDE2.0 下载地址：https://ldc2.layabox.com/layadownload/?type=layaair
 
 
 
-### 2.5 项目的源代码目录（src）
+### 3.5 项目的源代码目录（src）
 
 项目中的用到的源代码文件（TS语言项目是.ts文件），默认都存放在 src 目录下。
 
@@ -152,7 +152,7 @@ LayaAirIDE2.0 下载地址：https://ldc2.layabox.com/layadownload/?type=layaair
 
 
 
-### 2.6 项目配置文件
+### 3.6 项目配置文件
 
 ![图9](img/9.png) 
 
@@ -173,7 +173,7 @@ LayaAirIDE2.0 下载地址：https://ldc2.layabox.com/layadownload/?type=layaair
 
 
 
-### 2.7 发布目录
+### 3.7 发布目录
 
 发布目录默认是不存在的，需要点击发布按钮，发布项目后才会生成对应的版本目录，如图10所示。（有专门的发布功能文档介绍，这里不细讲）
 
