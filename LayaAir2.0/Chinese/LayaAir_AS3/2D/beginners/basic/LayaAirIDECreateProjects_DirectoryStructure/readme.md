@@ -1,160 +1,199 @@
 # 用LayaAirIDE创建AS3项目并详解目录结构
 
-　　尽管当前推荐AS3开发者采用FlashDevelop和FlashBuilder环境开发LayaAir引擎的HTML5项目。但是我们建议先通过LayaAirIDE创建项目，再通过FlashDevelop或FlashBuilder打开编辑。通过LayaAirIDE创建项目会默认建立清晰的目录结构。下面我们就以LayaAirIDE工具创建AS3空项目作为开始，带领大家创建项目并介绍项目的结构。
+> *author: charley   version: LayaAirIDE 2.0.0*   update: 2019-02-18
+
+尽管当前推荐AS3开发者采用FlashDevelop和FlashBuilder环境开发LayaAir引擎的HTML5项目。但是我们建议先通过LayaAirIDE创建项目，再通过FlashDevelop或FlashBuilder打开编辑。通过LayaAirIDE创建项目会默认建立清晰的目录结构。下面我们就以LayaAirIDE工具创建AS3空项目作为开始，带领大家创建项目并介绍项目的结构。
 
 
 
-## 一、用LayaAirIDE创建AS3项目
+## 一、下载与安装LayaAirIDE
 
-步骤一：打开LayaAirIDE，点击新建项目，如图1
+使用LayaAirIDE与LayaAir引擎，需要在游戏中任意可见位置上加上引擎标识：Powered by LayaAir Engine
+，对于携带引擎标识的可以免费使用，否则需要联系下载条款中的微信二维码联系商务获得付费授权。
 
-![图片](img/1.png)   <br />（图1）
+接受条款后下载解压即可使用，IDE是绿色版，无需要安装。IDE中已包含了对应的引擎版本，无需额外下载。
 
-
-
-步骤二：选择“LayaAir空项目”在设置项目名称、路径、类型，以及选择完引擎版本后，点击“创建”建立一个新的空项目。如图2。
-
-![图片](img/2.png) <br /> （图2）
+LayaAirIDE2.0 下载地址：https://ldc2.layabox.com/layadownload/?type=layaairide
 
 
 
-步骤三：在点击“创建”后，可以看到项目的结构，项目文件夹结构如图3所示：
+## 二、用LayaAirIDE创建AS3项目
 
-![图片](img/3.png)  <br />（图3）
+#### 步骤一：
+
+打开LayaAirIDE，点击`新建`图标或文字，如图1所示，即可进入新建项目界面。
+
+![图片](img/1.png)  
+
+（图1）
 
 
 
-至此我们已成功的创建了一个AS3项目工程，推荐采用FlashDevelop或Flash Builder打开项目。
+#### 步骤二：
+
+选择 `LayaAir 2D示例项目` 在填写项目名称、项目路径、以及选择编程语言和引擎版本后，点击“`创建`”即可建立一个新的空项目。如图2所示。
+
+![图片](img/2.png) 
+
+ （图2）
+
+#### 额外讲一下可选项：
+
+以下两个选项可以勾选，也可不勾选，开发者理解作用之后自行选择。
+
+##### 1、微信/百度小游戏bin目录快速调试
+
+勾选这个选项后，在创建项目的时候，就会把微信和百度的小游戏工程文件也同时创建到项目调试目录（bin）下面，这样，微信或者百度小游戏开发工具调试项目时，就可以直接指定bin目录为本地调试目录。这样可以节省大量频繁调试的时间，因为调试正式版要发布只导出本地包，每次导出都需要一定的发布时间，会影响调试开发的效率。
+
+##### 2、增加FB/FD项目文件
+
+LayaAirIDE是必不可少的LayaAir引擎的集成开发环境。但是对于AS3的老程序员而言，IDE代码编写模式对于AS3的友好度远不如FlashBuildier(FB)和FlashDevelop（FD），所以AS3默认勾选了该项，勾选该项后，会在创建IDE工程文件的同时也会创建FB和FD工程，方便FB和FD开发环境的项目导入。
 
 
 
+#### 步骤三：
+
+在点击“创建”后，可以看到项目的结构，项目文件夹结构如图3所示：
+
+![图片](img/3.png) 
+（图3）
+
+至此我们已成功的创建了一个AS3项目工程。
+
+*Tips:*
+
+> 对于刚接触LayaAir引擎的开发者，我们推荐创建示例项目，通过示例项目来快速了解完整的项目结构。当然，开发始也可以尝试其它项目类型的创建。
 
 
-## 二、介绍AS3项目结构
 
-**接下来，将会结合上一节中创建的项目结构来介绍每个目录的作用。**
+## 三、介绍AS3项目结构
 
-​    
+接下来，将会结合上一节中创建的项目结构来介绍每个目录的作用。
 
 ### 2.1 项目配置目录（.laya文件夹）
 
-​    .laya 文件夹下存放的是项目在开发运行中的一些配置信息，如图4所示。
+​    `.laya` 文件夹下存放的是项目在开发运行中的一些配置信息，如图4所示。
 
-![4](img/4.png)<br />
+![4](img/4.png) 
+
 （图4）
 
+#### `compile.js` 文件介绍 
 
+`compile.js` 是gulp自定义编译流程的脚本文件，如果开发者对gulp比较熟悉的可以修改，否则不要动这里。
 
-#### 2.1.1  `.laya/launch.json`文件介绍 
+#### `launch.json`文件介绍 
 
- `.laya/launch.json` 文件保存了项目调试的一些配置信息,分别是LayaAirIDE的调试配置和chrome浏览器调试配置。不要轻易去改动，改错后会影响项目的调试。
+`launch.json` 文件保存了项目调试的一些配置信息,分别是LayaAirIDE的调试配置和chrome浏览器调试配置。不要轻易去改动，改错后会影响项目的调试。
 
-　　`configurations`： 这个属性下有`layaAir`和`chrome`两种调试的配置可用。
+#### `layajs`与`layajs.exe`文件介绍 
 
-　　`"name": "layaAir"` ： 表示用LayaAirIDE内置的调试方式。
+`layajs`与`layajs.exe` 都是AS3编译js的编译器，layajs用于mac环境，layajs.exe用于win环境。同时保留是出于多人开发配合的模式下的多环境混用适配。
 
-　　`"name": "chrome调试"`   ： 表示用本地chrome浏览器调试。
+#### `publish.js`文件介绍
 
-　　`"file": "${workspaceRoot}/bin/h5/index.html"` ： 表示项目运行启动的入口文件路径。
+`publish.js`是gulp针对项目发布的脚本文件，开发者不要动这里。
 
-　　`"runtimeExecutable": "C:/Program Files (x86)/Google/Chrome/Application/chrome.exe"`： 为本地chrome浏览器的路径，开发者根据自己的需要来设置这个路径。
+#### **其它说明 **
 
-　　`"userDataDir": "${tmpdir}"` 表示chrome调试缓存的临时目录，默认为用户的临时目录，开发者可以更改设置，例如将缓存设置为当前项目根目录下的cache目录： `"userDataDir": "${workspaceRoot}/cache"`。
+还有一些配置文件默认没有，但是发布的时候也会保存到.laya目录。比如web版、微信、百度等小游戏，发布后会对应每个不同的类型存生不同的json配置文件，比如wxgame.json是微信小游戏发布配置文件，bdgame.json是百度小游戏发布配置文件。
 
-​	
+老版本的发布配置文件名为pubset.json。
 
-#### 2.1.2 `tasks.json`文件介绍 
-
-`tasks.json` 是任务配置文件，打开后内容如下图所示：
-
-![图片](img/7.png)<br />（图7）
-
-**args参数说明：**
-
-　　`command`属性是代表启动哪个文件，AS项目启动的是LayaCompiler编译器工具。
-
-　　`args`属性代表传递的参数，默认的是传递的. actionScriptProperties这个文件。
-
-​	假如你是fd的配置文件可以修改成为：
-
-```
-"args": ["${workspaceRoot}/.actionScriptProperties;iflash=false;windowshow=false;chromerun=false;quickcompile=true"];
-```
-
-#### 2.1.3  `astool`目录
-
-​	`astool`是LayaCompiler编译器存放目录，`layajs`是MAC系统下的AS3编译器，`layajs.exe`是windows系统下的AS3编译器。
+以上这些大家有一些了解即可，通常情况下，开发者无需进行修改。所以，不必去深入理解。
 
 
 
 ### 2.2 项目的输出目录（bin/h5）
 
-​    `bin/h5`目录存放的是当前项目的输出文件。用于存放项目中的ActionScript3.0 文件编译生成的js 文件和HTML5页面。
+ `bin`目录存放的是当前项目的输出文件。如图5所示。
 
-​    *Tips: 如果开发者需要新建资源等运行目录或文件，需要放置于`bin/h5`的同级或子级目录中。*
+![图5](img/5.png) 
 
- 
+(图5)
+
+该目录用于存放项目中的ActionScript3.0 文件编译生成的js 、HTML、游戏资源等项目运行文件，以及小游戏项目文件（如果创建项目时勾选了小游戏快速调试选项时）。
+
+默认layaAir调试或者chrom调试的时候，就是运行的该目录下的文件。
+
+
 
 ### 2.3 UI项目目录（laya）
 
-​    “`laya`”目录用于存放LayaAirIDE当前的UI项目。
+   laya`目录用于存放LayaAirIDE当前的UI项目。
 
-​    “`laya/assets`” 目录用来存放UI页面、粒子等组件所需的图片资源。
+![图6](img/6.png) 
 
-​    “`laya/pages`”目录用来存放LayaAirIDE创建页面布局生成的文件。
+(图6)
 
-​    “`laya/.laya`”文件是LayaAirIDE的UI项目配置文件。
+####  “`assets`” 目录
 
- 
+用来存放UI场景中所需的组件图片、音频文件等资源。
+
+#### “`pages`”目录
+
+用来存放IDE中的场景、动画、预设等配置文件。
+
+#### ​ “`.laya`”文件
+
+注意这个.laya是文件而不是目录，.laya文件是LayaAirIDE的UI项目配置文件。
+
+
 
 ### 2.4 项目库目录（libs）
 
-​    “`libs`”目录内为项目的库目录，用于存放项目使用的库文件。
+ “`libs`”目录内为项目的库目录，用于存放项目使用的LayaAir库文件。
 
-​    “`libs/laya/src`”目录内存放LayaAir引擎库文件。
+AS语言的LayaAir引擎库文件具体的目录存在`libs/laya/src`下。如图7所示。
 
-
-
-### 2.5 项目的AS3代码目录（src）
-
-​    项目中的用到的AS3代码文件（.as文件）默认将存放在 src 目录。
+![图7](img/7.png) (图7)
 
 
 
+### 2.5 项目的源代码目录（src）
+
+项目中的用到的源代码文件（AS3语言项目是.as文件），默认都存放在 src 目录下。
+
+需要特别说一下的是`ui`目录，这里属于IDE自动生成的，开发者不要改动这里，改了也会被下次导出替换。所以该目录中不要存放自己的代码，也不要修改已有代码。
+
+其它的开发者依据实际需要自行规划目录结构即可。示例代码的源代码项目结构如图8所示。
+
+![图8](img/8.png) 
+
+（图8）
 
 
 
+### 2.6 项目配置文件
 
-## 三、项目配置文件介绍
+![图9](img/9.png)  
 
-### 3.1 LayaAirIDE项目配置文件（项目名.laya）
+（图9）
 
-​    `项目名.laya` 是LayaAirIDE项目的配置文件，文件内记录了当前项目的项目名称、使用的类库版本号和项目类型。
+####  `项目名.laya` 
+
+图9中的2D_DEMO_190218.laya是LayaAirIDE项目的工程配置文件，文件内记录了当前项目的项目名称、使用的类库版本号等。
 
 ​    例如：
 
 ```json
-{"proName":"myLaya","version":"1.5.4","proType":0}
+{"proName":"2D_DEMO_190218","engineType":1,"proType":0,"layaProType":1,"version":"2.0.0"}
 ```
 
+#### `项目名.as3proj`
+
+ 图9中的`2D_DEMO_190218.as3proj`文件是FlashDevelop项目的工程配置文件。使用 FlashDevelop 编辑器开发AS3项目时，FlashDevelop工具内，在菜单栏通过“文件”->“打开”找到项目名.as3proj所在的目录打开此项目。
+
+#### `.actionScriptProperties`文件和`.project`文件
+
+`.actionScriptProperties`文件和`.project`文件是Flash Builder 项目的配置文件。使用 Flash Builder时，通过菜单栏“文件”->“导入Flash Builder项目”来导入LayaAirIDE创建的AS3项目。
+
+#### `语言版本config.json`
+
+图9中的`asconfig.json`存放着IDE的编译配置信息，存放着源码目录和发布目录、入口类等信息。
 
 
-### 3.2 FlashDevelop项目配置文件（项目名.as3proj）
 
-​    `项目名.as3proj`文件是FlashDevelop项目的配置文件。使用 FlashDevelop 编辑器开发AS3项目时，可以通过打开资源管理器，然后在目录中双击此文件用FlashDevelop 打开此项目。
+### 本篇结束语
 
-![图片](img/8.png) <br /> （图8）
-
-或者先打开FlashDevelop工具，然后在菜单栏通过“文件”->“打开”找到项目名.as3proj所在的目录打开此项目。
-
-![图片](img/9.png)<br />（图9）
-
-
-
-### 3.3 Flash Builder 项目配置文件
-
-​    `.settings`文件夹、`.actionScriptProperties`文件和`.project`文件是Flash Builder 项目的配置文件。使用 Flash Builder时，可以通过菜单栏“文件”->“导入Flash Builder项目”来导入LayaAirIDE创建的AS3项目。导入Flash Builder项目如下图所示：
-
- ![图片](img/10.png)<br /> （图10）
-
- 
+至此，项目创建的基础内容已介绍完，如果如果想了解更多IDE的介绍或IDE的设计模式，可以查看IDE篇。
