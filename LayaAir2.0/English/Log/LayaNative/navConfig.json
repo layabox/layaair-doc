@@ -1,5 +1,21 @@
 [
   {
+    "name": "LayaNative-Release-2.0.1",
+    "url": "release-2.0.1.md",
+    "date": "2019-3-2",
+    "download": {
+      "url": "http://www.layabox.com/layanative2.0/layanativeRes/release-v2.0.1.zip"
+    }
+  },
+  {
+    "name": "LayaNative-Release-2.0.0",
+    "url": "release-2.0.0.md",
+    "date": "2019-1-18",
+    "download": {
+      "url": "http://www.layabox.com/layanative2.0/layanativeRes/release-v2.0.0.zip"
+    }
+  },
+  {
     "name": "LayaNative-SDK2.0-Beta4",
     "url": "2.0.3.md",
     "date": "2018-11-22",
