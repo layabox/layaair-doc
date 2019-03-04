@@ -861,7 +861,7 @@
 				"name_3_url": "Chinese/wechat/AS/subpackage/",
 				"name_3_file": "readme.md"
 			},{
-				"name_3_name": "微信小游戏开放域展示组件",
+				"name_3_name": "微信小游戏开放域",
 				"name_3_url": "Chinese/wechat/AS/openDomain/",
 				"name_3_file": "readme.md"
 			},{
@@ -1889,10 +1889,11 @@
 				"name_3_url": "Chinese/wechat/TS/subpackage/",
 				"name_3_file": "readme.md"
 			},{
-				"name_3_name": "微信小游戏开放域展示组件",
-				"name_3_url": "Chinese/wechat/AS/openDomain/",
+				"name_3_name": "微信开放数据域",
+				"name_3_url": "Chinese/wechat/TS/openDomain/",
 				"name_3_file": "readme.md"
-			},{
+			},
+			{
 				"name_3_name": "微信小游戏常见问题汇总（10.25更新）",
 				"name_3_url": "Chinese/wechat/AS/FAQ/",
 				"name_3_file": "readme.md"
@@ -2910,8 +2911,8 @@
 				"name_3_url": "Chinese/wechat/JS/subpackage/",
 				"name_3_file": "readme.md"
 			},{
-				"name_3_name": "微信小游戏开放域展示组件",
-				"name_3_url": "Chinese/wechat/AS/openDomain/",
+				"name_3_name": "微信小游戏开放域",
+				"name_3_url": "Chinese/wechat/JS/openDomain/",
 				"name_3_file": "readme.md"
 			},
 			{
