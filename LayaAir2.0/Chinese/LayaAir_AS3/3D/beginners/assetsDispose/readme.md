@@ -204,16 +204,14 @@ package {
 
 ![图4](img/4.png)<br>（图4）
 
-LayaAir2.0为了 方便开发者开发对3D资源释放添加了更方便的释放方式
+### 资源自动释放
 
-在加载3D资源时给资源指定相应的分组，然后依靠 Resource.destroyUnusedResources("组名字");
+LayaAir2.0为了 方便开发者开发对3D资源释放添加了更方便的释放方式。
 
-进行资源的整体释放
+在场景（或者精灵）销毁（destory 注意这里是指本体销毁而不是其克隆体销毁）后，调用`Resource.destroyUnusedResources()`会自动释放掉没有使用的资源。
 
-```
-//加载资源时指定资源的相应分组
-Laya.loader.load("h5/LayaScene_test/test.ls",Handler.create(this,this.onAssetOK),null,null,1,true,"Scene1");
-//销毁当前没有被使用的资源,该函数会忽略lock=true的资源。(指定分组)
-Resource.destroyUnusedResources("scene1");
+```typescript
+//自动释放没有被使用的资源
+Resource.destroyUnusedResources();
 ```
 
