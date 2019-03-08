@@ -13,8 +13,8 @@ LayaPlayer支持websocket。
 ios版本：在工程目录下的resource/ca/cacert.pem  
 Android版本：在工程目录下的 assets/cacert.pem   
 ### 限制  
-1. 暂不支持子协议,例如:  
-    ```javascript
-    var ws = new WebSocket('ws://echo.websocket.org','soap');
-    ```
-    第二个参数是没有用的,会被直接忽略掉。
+暂不支持子协议,例如:  
+```javascript
+var ws = new WebSocket('ws://echo.websocket.org','soap');
+```
+第二个参数是没有用的,会被直接忽略掉。
