@@ -11,7 +11,7 @@ LayaPlayer支持websocket。
  **TIPS:    
  CA文件读取路径  
 ios版本：在工程目录下的resource/ca/cacert.pem  
-Android版本：在工程目录下的 assets/cacert.pem 
+Android版本：在工程目录下的 assets/cacert.pem   
 ### 限制  
 1. 暂不支持子协议,例如:  
     ```javascript
