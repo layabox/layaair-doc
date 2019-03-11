@@ -4,7 +4,7 @@
 
 **向量**
 
-​	**Vector2**二维向量 ， **Vector3** 三维向量， **Vector4 **四维向量，这几个项链在LayaAir 3D引擎中使用非常频繁，从二维向量到四维向量到处都会看到它们的身影。最基础的用法就是示例中用于赋值使用。
+​	**Vector2**二维向量 ， **Vector3** 三维向量， **Vector4 **四维向量，这几个向量在LayaAir 3D引擎中使用非常频繁，从二维向量到四维向量到处都会看到它们的身影。最基础的用法就是示例中用于赋值使用。
 
 ​	代码中3D对象的移动、旋转、缩放等变换都是使用Vector3作为了它的x、y、z轴向坐标赋值。更详细的使用可以查看 [API](https://layaair.ldc.layabox.com/api/?category=3D&class=laya.d3.math.Vector3) 。
 
