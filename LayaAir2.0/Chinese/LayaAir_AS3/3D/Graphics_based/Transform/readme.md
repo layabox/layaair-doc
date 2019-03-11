@@ -15,7 +15,7 @@
 
 ![](img/1.png)<br>(图1)
 
-​	为了方便观察效果节选了官方示例（demo地址）代码，首先我们 **克隆** 两个猴子（克隆的知识点会在精灵Sprite3D的章节详细讲解），来看下效果，并且在克隆后为了方便观察我们2个猴子的位置。
+​	为了方便观察效果节选了官方示例（[demo地址](https://github.com/layabox/layaair-demo/blob/master/h5/3d/newDemo/newas/LayaAir3D_Graphics/TransformDemo.as)）代码，首先我们 **克隆** 两个猴子（克隆的知识点会在精灵Sprite3D的章节详细讲解），来看下效果，并且在克隆后为了方便观察我们2个猴子的位置。
 
 ```typescript
 //克隆sprite3d
