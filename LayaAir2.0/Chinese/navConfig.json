@@ -1050,6 +1050,11 @@
 				"name_3_name": "3d常见问题",
 				"name_3_url": "Chinese/FAQ/3dFAQ/",
 				"name_3_file": "readme.md"
+			},
+			{
+				"name_3_name": "LayaAirIDE常见问题",
+				"name_3_url": "Chinese/FAQ/IDE/",
+				"name_3_file": "readme.md"
 			}]
 		}]
 	}]
@@ -2067,6 +2072,11 @@
 				"name_3_name": "3d常见问题",
 				"name_3_url": "Chinese/FAQ/3dFAQ/",
 				"name_3_file": "readme.md"
+			},
+			{
+				"name_3_name": "LayaAirIDE常见问题",
+				"name_3_url": "Chinese/FAQ/IDE/",
+				"name_3_file": "readme.md"
 			}]
 		}]
 	}]
@@ -3076,6 +3086,11 @@
 			{
 				"name_3_name": "3d常见问题",
 				"name_3_url": "Chinese/FAQ/3dFAQ/",
+				"name_3_file": "readme.md"
+			},
+			{
+				"name_3_name": "LayaAirIDE常见问题",
+				"name_3_url": "Chinese/FAQ/IDE/",
 				"name_3_file": "readme.md"
 			}]
 		}]
