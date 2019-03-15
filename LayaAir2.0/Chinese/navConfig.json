@@ -66,6 +66,11 @@
 				"name_3_file": "readme.md"
 			},
 			{
+				"name_3_name": "LayaAir引擎VIP专属功能介绍",
+				"name_3_url": "Chinese/Layabox_Intro/vip/",
+				"name_3_file": "readme.md"
+			},
+			{
 				"name_3_name": "LayaAir引擎AS3与Flash原生AS3的开发差异",
 				"name_3_url": "Chinese/LayaAir_AS3/",
 				"name_3_file": "readme.md"
@@ -1186,6 +1191,11 @@
 				"name_3_name": "LayaAir引擎快速上手指南【新手必读】",
 				"name_3_url": "Chinese/",
 				"name_3_file": "readme.md"
+			},
+			{
+				"name_3_name": "LayaAir引擎VIP专属功能介绍",
+				"name_3_url": "Chinese/Layabox_Intro/vip/",
+				"name_3_file": "readme.md"
 			}]
 		}]
 	},
@@ -2269,6 +2279,11 @@
 			{
 				"name_3_name": "LayaAir引擎快速上手指南【新手必读】",
 				"name_3_url": "Chinese/",
+				"name_3_file": "readme.md"
+			},
+			{
+				"name_3_name": "LayaAir引擎VIP专属功能介绍",
+				"name_3_url": "Chinese/Layabox_Intro/vip/",
 				"name_3_file": "readme.md"
 			}]
 		}]
