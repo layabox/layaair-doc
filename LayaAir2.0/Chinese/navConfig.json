@@ -790,16 +790,6 @@
 			"name_2_name": "3D引擎基础",
 			"name_2_data": [
 			{
-				"name_3_name": "快速开启3D之旅",
-				"name_3_url": "Chinese/LayaAir_AS3/3D/beginners/quickStart/",
-				"name_3_file": "readme.md"
-			},
-			{
-				"name_3_name": "unity插件工具使用",
-				"name_3_url": "Chinese/LayaAir_AS3/3D/beginners/unity_plugin/",
-				"name_3_file": "readme.md"
-			},
-			{
 				"name_3_name": "LayaAir3D之场景Scene",
 				"name_3_url": "Chinese/LayaAir_AS3/3D/beginners/scene/",
 				"name_3_file": "readme.md"
@@ -1883,16 +1873,6 @@
 			"name_2_name": "3D引擎基础",
 			"name_2_data": [
 			{
-				"name_3_name": "快速开启3D之旅",
-				"name_3_url": "Chinese/LayaAir_TS/3D/beginners/quickStart/",
-				"name_3_file": "readme.md"
-			},
-			{
-				"name_3_name": "unity插件工具使用",
-				"name_3_url": "Chinese/LayaAir_TS/3D/beginners/unity_plugin/",
-				"name_3_file": "readme.md"
-			},
-			{
 				"name_3_name": "LayaAir3D之场景Scene",
 				"name_3_url": "Chinese/LayaAir_TS/3D/beginners/scene/",
 				"name_3_file": "readme.md"
@@ -2964,16 +2944,6 @@
 		{
 			"name_2_name": "3D引擎基础",
 			"name_2_data": [
-			{
-				"name_3_name": "快速开启3D之旅",
-				"name_3_url": "Chinese/LayaAir_JS/3D/beginners/quickStart/",
-				"name_3_file": "readme.md"
-			},
-			{
-				"name_3_name": "unity插件工具使用",
-				"name_3_url": "Chinese/LayaAir_JS/3D/beginners/unity_plugin/",
-				"name_3_file": "readme.md"
-			},
 			{
 				"name_3_name": "LayaAir3D之场景Scene",
 				"name_3_url": "Chinese/LayaAir_JS/3D/beginners/scene/",
