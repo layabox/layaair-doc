@@ -61,6 +61,76 @@ IDE默认提供了不少类型供脚本使用，主要参数类型如下：
 | ActionButton   | 显示一个按钮，点击后触发函数调用    | funName 点击后调用当前选中对象上的函数名                 |
 | Ease           | 缓动类型下拉框             |                                          |
 
+```
+		/** @prop {name:int1,tips:"11",type:Int}*/
+		public var int1:int;
+
+		/** @prop {name:number1,tips:"11.11",type:Number}*/
+		public var number1:Number;
+
+		/** @prop {name:String,tips:"abc",type:string}*/
+        public var string1:String;
+
+		/** @prop {name:bool,tips:"1,0",type:Bool}*/
+		public var bool1:Boolean;
+
+		/** @prop {name:Option,tips:"opt",type:Option,option:"aaa,bbb,ccc"}*/
+		// 返回字符串
+		public var opt:String;
+
+		/** @prop {name:editOption,tips:"editopt",type:EditOption,option:"aaa,bbb,ccc"}*/
+		// 返回字符串
+		public var editopt:String;
+
+				/** @prop {name:check,tips:"ch11eck",type:Check}*/
+		// 返回bool 
+		public var check:Boolean;
+
+		/** @prop {name:color1,tips:"opt",type:Color}*/
+		// 返回颜色值
+		public var  color1:Color;
+
+		/** @prop {name:sNumber1,type:sNumber,min:10,max:100}*/
+		
+		public var 	snumber1:int = 11;
+
+		 /** @prop {name:runtime,tips:"o11pt"s}*/
+
+	     public var runtime:Class;
+        
+		/**
+		 * 哈哈哈
+		 * @prop {name:runtime22,type:class,title:runtimeclass,tips:"222323wewe"}
+		 */
+		public var runtime22:String = "#ff0000";
+
+		/** @prop {name:node1,type:Node}*/
+
+		public var node1:Node;
+
+        /** @prop {name:sizegrid1,type:SizeGrid}*/
+		public var sizegrid1:*;
+
+		/** @prop {name:colorarray,type:ColorArray}*/
+		public var colorarray:*;
+
+		/** @prop {name:vec1,type:Vec}*/
+		public var vec1:*;
+
+		/** @prop {name:vector1,type:Vector,labes:abc,types:"Node,String,Number,Boolean",xCount:2,sType:Number}*/
+		public var vector1:*;
+
+        // /** @prop {name:nodes2,type:Nodes}*/
+		// public var nodes2:*;
+
+		/** @prop {name:actionbutton1,type:ActionButton,funName:creteBox}*/
+		public var actionbutton1:*;
+
+
+		/** @prop {name:ease1,type:Ease}*/
+		public var sase1:*;
+```
+
 部分显示效果如下：
 
-![script1](img/script4.jpg)
+![script1](img/111.png)
