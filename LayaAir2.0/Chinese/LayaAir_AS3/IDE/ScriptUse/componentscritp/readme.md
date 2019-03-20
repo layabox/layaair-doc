@@ -90,7 +90,7 @@ IDE默认提供了不少类型供脚本使用，主要参数类型如下：
 		// 返回颜色值
 		public var  color1:Color;
 
-		/** @prop {name:sNumber1,type:sNumber,min:10,max:100}*/
+		/** @prop {name:snumber1,type:sNumber,min:10,max:100}*/
 		
 		public var 	snumber1:int = 11;
 
