@@ -114,13 +114,13 @@ IDE默认提供了不少类型供脚本使用，主要参数类型如下：
 		/** @prop {name:colorarray,type:ColorArray}*/
 		public var colorarray:*;
 
-		/** @prop {name:vec1,type:Vec}*/
+		/** @prop {name:vec1,type:Vec}*/   
 		public var vec1:*;
 
 		/** @prop {name:vector1,type:Vector,labes:abc,types:"Node,String,Number,Boolean",xCount:2,sType:Number}*/
 		public var vector1:*;
 
-        // /** @prop {name:nodes2,type:Nodes}*/
+        // /** @prop {name:nodes2,type:Nodes}*/  这一条必须选中组件上赋值才有效，在场景选择会失效
 		// public var nodes2:*;
 
 		/** @prop {name:actionbutton1,type:ActionButton,funName:creteBox}*/
