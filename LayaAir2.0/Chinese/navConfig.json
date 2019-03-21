@@ -787,6 +787,118 @@
 			}]
 		},
 		{
+			"name_2_name": "LayaAir3D之资源加载",
+			"name_2_data": [
+			{
+				"name_3_name": "资源概述",
+				"name_3_url": "Chinese/LayaAir_AS3/3D/Resourceloading/Summary_of_resource/",
+				"name_3_file": "readme.md"
+			},
+			{
+				"name_3_name": "资源加载",
+				"name_3_url": "Chinese/LayaAir_AS3/3D/Resourceloading/Resource_to_load/",
+				"name_3_file": "readme.md"
+			}]
+		},
+		{
+			"name_2_name": "LayaAir3D之场景渲染配置",
+			"name_2_data": [
+			{
+				"name_3_name": "场景渲染配置",
+				"name_3_url": "Chinese/LayaAir_AS3/3D/Scene_render_Settings/Scene_render_Settings/",
+				"name_3_file": "readme.md"
+			},
+			{
+				"name_3_name": "场景雾化",
+				"name_3_url": "Chinese/LayaAir_AS3/3D/Scene_render_Settings/Scene_atomization/",
+				"name_3_file": "readme.md"
+			},
+			{
+				"name_3_name": "场景天空",
+				"name_3_url": "Chinese/LayaAir_AS3/3D/Scene_render_Settings/Env_Sky/",
+				"name_3_file": "readme.md"
+			},
+			{
+				"name_3_name": "场景环境光",
+				"name_3_url": "Chinese/LayaAir_AS3/3D/Scene_render_Settings/Ambient_Light/",
+				"name_3_file": "readme.md"
+			},
+			{
+				"name_3_name": "场景环境反射",
+				"name_3_url": "Chinese/LayaAir_AS3/3D/Scene_render_Settings/Env_Reflection/",
+				"name_3_file": "readme.md"
+			},
+			{
+				"name_3_name": "光照贴图",
+				"name_3_url": "Chinese/LayaAir_AS3/3D/Scene_render_Settings/LightMap/",
+				"name_3_file": "readme.md"
+			}]
+		},
+		{
+			"name_2_name": "LayaAir3D之Camera",
+			"name_2_data": [
+			{
+				"name_3_name": "摄像机概述",
+				"name_3_url": "Chinese/LayaAir_AS3/3D/Camera/Camera_Overview/",
+				"name_3_file": "readme.md"
+			},
+			{
+				"name_3_name": "从Unity中编辑并导出摄像机",
+				"name_3_url": "Chinese/LayaAir_AS3/3D/Camera/Export_the_camera_from_unity/",
+				"name_3_file": "readme.md"
+			},
+			{
+				"name_3_name": "摄像机的移动和旋转",
+				"name_3_url": "Chinese/LayaAir_AS3/3D/Camera/Camera_Transfrom/",
+				"name_3_file": "readme.md"
+			},
+			{
+				"name_3_name": "摄像机的正交投影和透视投影",
+				"name_3_url": "Chinese/LayaAir_AS3/3D/Camera/Orthographic_projection_and_Perspective projection/",
+				"name_3_file": "readme.md"
+			},
+			{
+				"name_3_name": "摄像机的裁剪和视野",
+				"name_3_url": "Chinese/LayaAir_AS3/3D/Camera/Camera_clipping_and_view/",
+				"name_3_file": "readme.md"
+			},
+			{
+				"name_3_name": "摄像机的横纵比",
+				"name_3_url": "Chinese/LayaAir_AS3/3D/Camera/Camera_AspectRatio/",
+				"name_3_file": "readme.md"
+			},
+			{
+				"name_3_name": "摄像机捕捉目标",
+				"name_3_url": "Chinese/LayaAir_AS3/3D/Camera/Camera_LookAt/",
+				"name_3_file": "readme.md"
+			},
+			{
+				"name_3_name": "摄像机的背景色和天空盒",
+				"name_3_url": "Chinese/LayaAir_AS3/3D/Camera/Background_color_with_Skybox/",
+				"name_3_file": "readme.md"
+			},
+			{
+				"name_3_name": "多摄像机窗口的使用",
+				"name_3_url": "Chinese/LayaAir_AS3/3D/Camera/MultiCamera/",
+				"name_3_file": "readme.md"
+			},
+			{
+				"name_3_name": "如何从摄像机创建一条射线",
+				"name_3_url": "Chinese/LayaAir_AS3/3D/Camera/Camera_Ray/",
+				"name_3_file": "readme.md"
+			},
+			{
+				"name_3_name": "可视遮罩层Layer",
+				"name_3_url": "Chinese/LayaAir_AS3/3D/Camera/Camera_Layer/",
+				"name_3_file": "readme.md"
+			},
+			{
+				"name_3_name": "目标纹理的使用",
+				"name_3_url": "Chinese/LayaAir_AS3/3D/Camera/RenderTarget/",
+				"name_3_file": "readme.md"
+			}]
+		},
+		{
 			"name_2_name": "3D引擎基础",
 			"name_2_data": [
 			{
@@ -1870,6 +1982,118 @@
 			}]
 		},
 		{
+			"name_2_name": "LayaAir3D之资源加载",
+			"name_2_data": [
+			{
+				"name_3_name": "资源概述",
+				"name_3_url": "Chinese/LayaAir_TS/3D/Resourceloading/Summary_of_resource/",
+				"name_3_file": "readme.md"
+			},
+			{
+				"name_3_name": "资源加载",
+				"name_3_url": "Chinese/LayaAir_TS/3D/Resourceloading/Resource_to_load/",
+				"name_3_file": "readme.md"
+			}]
+		},
+		{
+			"name_2_name": "LayaAir3D之场景渲染配置",
+			"name_2_data": [
+			{
+				"name_3_name": "场景渲染配置",
+				"name_3_url": "Chinese/LayaAir_TS/3D/Scene_render_Settings/Scene_render_Settings/",
+				"name_3_file": "readme.md"
+			},
+			{
+				"name_3_name": "场景雾化",
+				"name_3_url": "Chinese/LayaAir_TS/3D/Scene_render_Settings/Scene_atomization/",
+				"name_3_file": "readme.md"
+			},
+			{
+				"name_3_name": "场景天空",
+				"name_3_url": "Chinese/LayaAir_TS/3D/Scene_render_Settings/Env_Sky/",
+				"name_3_file": "readme.md"
+			},
+			{
+				"name_3_name": "场景环境光",
+				"name_3_url": "Chinese/LayaAir_TS/3D/Scene_render_Settings/Ambient_Light/",
+				"name_3_file": "readme.md"
+			},
+			{
+				"name_3_name": "场景环境反射",
+				"name_3_url": "Chinese/LayaAir_TS/3D/Scene_render_Settings/Env_Reflection/",
+				"name_3_file": "readme.md"
+			},
+			{
+				"name_3_name": "光照贴图",
+				"name_3_url": "Chinese/LayaAir_TS/3D/Scene_render_Settings/LightMap/",
+				"name_3_file": "readme.md"
+			}]
+		},
+		{
+			"name_2_name": "LayaAir3D之Camera",
+			"name_2_data": [
+			{
+				"name_3_name": "摄像机概述",
+				"name_3_url": "Chinese/LayaAir_TS/3D/Camera/Camera_Overview/",
+				"name_3_file": "readme.md"
+			},
+			{
+				"name_3_name": "从Unity中编辑并导出摄像机",
+				"name_3_url": "Chinese/LayaAir_TS/3D/Camera/Export_the_camera_from_unity/",
+				"name_3_file": "readme.md"
+			},
+			{
+				"name_3_name": "摄像机的移动和旋转",
+				"name_3_url": "Chinese/LayaAir_TS/3D/Camera/Camera_Transfrom/",
+				"name_3_file": "readme.md"
+			},
+			{
+				"name_3_name": "摄像机的正交投影和透视投影",
+				"name_3_url": "Chinese/LayaAir_TS/3D/Camera/Orthographic_projection_and_Perspective projection/",
+				"name_3_file": "readme.md"
+			},
+			{
+				"name_3_name": "摄像机的裁剪和视野",
+				"name_3_url": "Chinese/LayaAir_TS/3D/Camera/Camera_clipping_and_view/",
+				"name_3_file": "readme.md"
+			},
+			{
+				"name_3_name": "摄像机的横纵比",
+				"name_3_url": "Chinese/LayaAir_TS/3D/Camera/Camera_AspectRatio/",
+				"name_3_file": "readme.md"
+			},
+			{
+				"name_3_name": "摄像机捕捉目标",
+				"name_3_url": "Chinese/LayaAir_TS/3D/Camera/Camera_LookAt/",
+				"name_3_file": "readme.md"
+			},
+			{
+				"name_3_name": "摄像机的背景色和天空盒",
+				"name_3_url": "Chinese/LayaAir_TS/3D/Camera/Background_color_with_Skybox/",
+				"name_3_file": "readme.md"
+			},
+			{
+				"name_3_name": "多摄像机窗口的使用",
+				"name_3_url": "Chinese/LayaAir_TS/3D/Camera/MultiCamera/",
+				"name_3_file": "readme.md"
+			},
+			{
+				"name_3_name": "如何从摄像机创建一条射线",
+				"name_3_url": "Chinese/LayaAir_TS/3D/Camera/Camera_Ray/",
+				"name_3_file": "readme.md"
+			},
+			{
+				"name_3_name": "可视遮罩层Layer",
+				"name_3_url": "Chinese/LayaAir_TS/3D/Camera/Camera_Layer/",
+				"name_3_file": "readme.md"
+			},
+			{
+				"name_3_name": "目标纹理的使用",
+				"name_3_url": "Chinese/LayaAir_TS/3D/Camera/RenderTarget/",
+				"name_3_file": "readme.md"
+			}]
+		},
+		{
 			"name_2_name": "3D引擎基础",
 			"name_2_data": [
 			{
@@ -2938,6 +3162,118 @@
 			{
 				"name_3_name": "预设/场景的导出",
 				"name_3_url": "Chinese/LayaAir_JS/3D/Unity_plug-in/Sprite3D_or_Scene3D_export/",
+				"name_3_file": "readme.md"
+			}]
+		},
+		{
+			"name_2_name": "LayaAir3D之资源加载",
+			"name_2_data": [
+			{
+				"name_3_name": "资源概述",
+				"name_3_url": "Chinese/LayaAir_JS/3D/Resourceloading/Summary_of_resource/",
+				"name_3_file": "readme.md"
+			},
+			{
+				"name_3_name": "资源加载",
+				"name_3_url": "Chinese/LayaAir_JS/3D/Resourceloading/Resource_to_load/",
+				"name_3_file": "readme.md"
+			}]
+		},
+		{
+			"name_2_name": "LayaAir3D之场景渲染配置",
+			"name_2_data": [
+			{
+				"name_3_name": "场景渲染配置",
+				"name_3_url": "Chinese/LayaAir_JS/3D/Scene_render_Settings/Scene_render_Settings/",
+				"name_3_file": "readme.md"
+			},
+			{
+				"name_3_name": "场景雾化",
+				"name_3_url": "Chinese/LayaAir_JS/3D/Scene_render_Settings/Scene_atomization/",
+				"name_3_file": "readme.md"
+			},
+			{
+				"name_3_name": "场景天空",
+				"name_3_url": "Chinese/LayaAir_JS/3D/Scene_render_Settings/Env_Sky/",
+				"name_3_file": "readme.md"
+			},
+			{
+				"name_3_name": "场景环境光",
+				"name_3_url": "Chinese/LayaAir_JS/3D/Scene_render_Settings/Ambient_Light/",
+				"name_3_file": "readme.md"
+			},
+			{
+				"name_3_name": "场景环境反射",
+				"name_3_url": "Chinese/LayaAir_JS/3D/Scene_render_Settings/Env_Reflection/",
+				"name_3_file": "readme.md"
+			},
+			{
+				"name_3_name": "光照贴图",
+				"name_3_url": "Chinese/LayaAir_JS/3D/Scene_render_Settings/LightMap/",
+				"name_3_file": "readme.md"
+			}]
+		},
+		{
+			"name_2_name": "LayaAir3D之Camera",
+			"name_2_data": [
+			{
+				"name_3_name": "摄像机概述",
+				"name_3_url": "Chinese/LayaAir_JS/3D/Camera/Camera_Overview/",
+				"name_3_file": "readme.md"
+			},
+			{
+				"name_3_name": "从Unity中编辑并导出摄像机",
+				"name_3_url": "Chinese/LayaAir_JS/3D/Camera/Export_the_camera_from_unity/",
+				"name_3_file": "readme.md"
+			},
+			{
+				"name_3_name": "摄像机的移动和旋转",
+				"name_3_url": "Chinese/LayaAir_JS/3D/Camera/Camera_Transfrom/",
+				"name_3_file": "readme.md"
+			},
+			{
+				"name_3_name": "摄像机的正交投影和透视投影",
+				"name_3_url": "Chinese/LayaAir_JS/3D/Camera/Orthographic_projection_and_Perspective projection/",
+				"name_3_file": "readme.md"
+			},
+			{
+				"name_3_name": "摄像机的裁剪和视野",
+				"name_3_url": "Chinese/LayaAir_JS/3D/Camera/Camera_clipping_and_view/",
+				"name_3_file": "readme.md"
+			},
+			{
+				"name_3_name": "摄像机的横纵比",
+				"name_3_url": "Chinese/LayaAir_JS/3D/Camera/Camera_AspectRatio/",
+				"name_3_file": "readme.md"
+			},
+			{
+				"name_3_name": "摄像机捕捉目标",
+				"name_3_url": "Chinese/LayaAir_JS/3D/Camera/Camera_LookAt/",
+				"name_3_file": "readme.md"
+			},
+			{
+				"name_3_name": "摄像机的背景色和天空盒",
+				"name_3_url": "Chinese/LayaAir_JS/3D/Camera/Background_color_with_Skybox/",
+				"name_3_file": "readme.md"
+			},
+			{
+				"name_3_name": "多摄像机窗口的使用",
+				"name_3_url": "Chinese/LayaAir_JS/3D/Camera/MultiCamera/",
+				"name_3_file": "readme.md"
+			},
+			{
+				"name_3_name": "如何从摄像机创建一条射线",
+				"name_3_url": "Chinese/LayaAir_JS/3D/Camera/Camera_Ray/",
+				"name_3_file": "readme.md"
+			},
+			{
+				"name_3_name": "可视遮罩层Layer",
+				"name_3_url": "Chinese/LayaAir_JS/3D/Camera/Camera_Layer/",
+				"name_3_file": "readme.md"
+			},
+			{
+				"name_3_name": "目标纹理的使用",
+				"name_3_url": "Chinese/LayaAir_JS/3D/Camera/RenderTarget/",
 				"name_3_file": "readme.md"
 			}]
 		},
