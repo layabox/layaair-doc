@@ -477,6 +477,11 @@
 				"name_3_name": "场景管理",
 				"name_3_url": "Chinese/LayaAir_AS3/IDE/Use_IDE/Scene/",
 				"name_3_file": "readme.md"
+			},
+			{
+				"name_3_name": "Psd2UI",
+				"name_3_url": "Chinese/LayaAir_AS3/IDE/Use_IDE/PsdToUI/",
+				"name_3_file": "readme.md"
 			}]
 		},
 		{
@@ -1681,6 +1686,11 @@
 				"name_3_name": "场景管理",
 				"name_3_url": "Chinese/LayaAir_TS/IDE/Use_IDE/Scene/",
 				"name_3_file": "readme.md"
+			},
+			{
+				"name_3_name": "Psd2UI",
+				"name_3_url": "Chinese/LayaAir_AS3/IDE/Use_IDE/PsdToUI/",
+				"name_3_file": "readme.md"
 			}]
 		},
 		{
@@ -2865,6 +2875,11 @@
 			{
 				"name_3_name": "场景管理",
 				"name_3_url": "Chinese/LayaAir_JS/IDE/Use_IDE/Scene/",
+				"name_3_file": "readme.md"
+			},
+			{
+				"name_3_name": "Psd2UI",
+				"name_3_url": "Chinese/LayaAir_AS3/IDE/Use_IDE/PsdToUI/",
 				"name_3_file": "readme.md"
 			}]
 		},
