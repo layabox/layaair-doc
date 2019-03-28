@@ -1,6 +1,6 @@
 # 项目管理器
 
-> 本篇采用LayaAirIDE 1.7.3 bate 截图，如有不同，请下载最新的LayaAirIDE，以最新版本IDE为准。
+> 本篇采用LayaAirIDE 2.0.1 bate 截图，如有不同，请下载最新的LayaAirIDE，以最新版本IDE为准。
 
 ## 一、项目管理器面板介绍
 
