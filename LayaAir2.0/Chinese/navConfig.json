@@ -442,6 +442,11 @@
 				"name_3_name": "IDE组件详解",
 				"name_3_url": "Chinese/LayaAir_AS3/IDE/Design_Mode/Component_Detailed/",
 				"name_3_file": "readme.md"
+			},
+			{
+				"name_3_name": "F9!项目设置",
+				"name_3_url": "Chinese/ LayaAir_AS3/IDE/Design_Mode/F9/",
+				"name_3_file": "readme.md"
 			}]
 		},
 		{
@@ -1651,6 +1656,11 @@
 				"name_3_name": "IDE组件详解",
 				"name_3_url": "Chinese/LayaAir_TS/IDE/Design_Mode/Component_Detailed/",
 				"name_3_file": "readme.md"
+			},
+			{
+				"name_3_name": "F9!项目设置",
+				"name_3_url": "Chinese/ LayaAir_AS3/IDE/Design_Mode/F9/",
+				"name_3_file": "readme.md"
 			}]
 		},
 		{
@@ -2842,7 +2852,13 @@
 				"name_3_name": "IDE组件详解",
 				"name_3_url": "Chinese/LayaAir_JS/IDE/Design_Mode/Component_Detailed/",
 				"name_3_file": "readme.md"
-			}]
+			},
+			{
+				"name_3_name": "F9!项目设置",
+				"name_3_url": "Chinese/ LayaAir_AS3/IDE/Design_Mode/F9/",
+				"name_3_file": "readme.md"
+			}
+			]
 		},
 		{
 			"name_2_name": "使用IDE创作",
