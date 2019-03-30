@@ -1,4 +1,6 @@
-### DirectionLight介绍
+# DirectionLight介绍
+
+###### *version :2.0.1beta   Update:2019-3-30*
 
 ​	DirectionLight(平行光)与点光区别较大，它有固定的一个方向，可通过弧度值设定，并且也没有衰减和光照范围，会对全场景所有模型进行照亮。3D世界中经常用来模拟固定方向的太阳光。
 
