@@ -909,6 +909,35 @@
 			}]
 		},
 		{
+			"name_2_name": "LayaAir3D之灯光",
+			"name_2_data": [
+			{
+				"name_3_name": "灯光的简介",
+				"name_3_url": "Chinese/LayaAir_AS3/3D/light/Introduction_of_light/",
+				"name_3_file": "readme.md"
+			},
+			{
+				"name_3_name": "PointLight介绍",
+				"name_3_url": "Chinese/LayaAir_AS3/3D/light/PointLight/",
+				"name_3_file": "readme.md"
+			},
+			{
+				"name_3_name": "DirectionLight介绍",
+				"name_3_url": "Chinese/LayaAir_AS3/3D/light/DirectionLight/",
+				"name_3_file": "readme.md"
+			},
+			{
+				"name_3_name": "SpotLight介绍",
+				"name_3_url": "Chinese/LayaAir_AS3/3D/light/SpotLight/",
+				"name_3_file": "readme.md"
+			},
+			{
+				"name_3_name": "如何为灯光添加阴影",
+				"name_3_url": "Chinese/LayaAir_AS3/3D/light/Shadow/",
+				"name_3_file": "readme.md"
+			}]
+		},
+		{
 			"name_2_name": "3D引擎基础",
 			"name_2_data": [
 			{
@@ -2114,6 +2143,35 @@
 			}]
 		},
 		{
+			"name_2_name": "LayaAir3D之灯光",
+			"name_2_data": [
+			{
+				"name_3_name": "灯光的简介",
+				"name_3_url": "Chinese/LayaAir_TS/3D/light/Introduction_of_light/",
+				"name_3_file": "readme.md"
+			},
+			{
+				"name_3_name": "PointLight介绍",
+				"name_3_url": "Chinese/LayaAir_TS/3D/light/PointLight/",
+				"name_3_file": "readme.md"
+			},
+			{
+				"name_3_name": "DirectionLight介绍",
+				"name_3_url": "Chinese/LayaAir_TS/3D/light/DirectionLight/",
+				"name_3_file": "readme.md"
+			},
+			{
+				"name_3_name": "SpotLight介绍",
+				"name_3_url": "Chinese/LayaAir_TS/3D/light/SpotLight/",
+				"name_3_file": "readme.md"
+			},
+			{
+				"name_3_name": "如何为灯光添加阴影",
+				"name_3_url": "Chinese/LayaAir_TS/3D/light/Shadow/",
+				"name_3_file": "readme.md"
+			}]
+		},
+		{
 			"name_2_name": "3D引擎基础",
 			"name_2_data": [
 			{
@@ -3305,6 +3363,35 @@
 			{
 				"name_3_name": "目标纹理的使用",
 				"name_3_url": "Chinese/LayaAir_JS/3D/Camera/RenderTarget/",
+				"name_3_file": "readme.md"
+			}]
+		},
+		{
+			"name_2_name": "LayaAir3D之灯光",
+			"name_2_data": [
+			{
+				"name_3_name": "灯光的简介",
+				"name_3_url": "Chinese/LayaAir_JS/3D/light/Introduction_of_light/",
+				"name_3_file": "readme.md"
+			},
+			{
+				"name_3_name": "PointLight介绍",
+				"name_3_url": "Chinese/LayaAir_JS/3D/light/PointLight/",
+				"name_3_file": "readme.md"
+			},
+			{
+				"name_3_name": "DirectionLight介绍",
+				"name_3_url": "Chinese/LayaAir_JS/3D/light/DirectionLight/",
+				"name_3_file": "readme.md"
+			},
+			{
+				"name_3_name": "SpotLight介绍",
+				"name_3_url": "Chinese/LayaAir_JS/3D/light/SpotLight/",
+				"name_3_file": "readme.md"
+			},
+			{
+				"name_3_name": "如何为灯光添加阴影",
+				"name_3_url": "Chinese/LayaAir_JS/3D/light/Shadow/",
 				"name_3_file": "readme.md"
 			}]
 		},
