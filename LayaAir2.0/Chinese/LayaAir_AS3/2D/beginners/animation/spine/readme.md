@@ -1,6 +1,6 @@
 # LayaAir引擎播放Spine骨骼动画
 
-> 本篇采用LayaAirIDE 1.7.6版本截图说明，如有差异，请下载最新稳定版本的LayaAirIDE，并以最新版本为准。
+> 本篇采用LayaAirIDE 2.0.0版本截图说明，如有差异，请下载最新稳定版本的LayaAirIDE，并以最新版本为准。
 
 Spine骨骼动画，是游戏中经常使用的骨骼动画之一，通过LayaAirIDE自带的转换工具，可以将Spine骨骼动画格式转换为LayaAir引擎支持的骨骼动画格式。
 
