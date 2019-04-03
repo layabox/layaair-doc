@@ -62,6 +62,8 @@ IDE默认提供了不少类型供脚本使用，主要参数类型如下：
 | Ease           | 缓动类型下拉框             |                                          |
 
 ```
+		/** @prop {name:resType,tips:"abc",type:string,accept:res}*/
+		public var resType:String = "";
 		/** @prop {name:int1,tips:"11",type:Int}*/
 		public var int1:int;
 
