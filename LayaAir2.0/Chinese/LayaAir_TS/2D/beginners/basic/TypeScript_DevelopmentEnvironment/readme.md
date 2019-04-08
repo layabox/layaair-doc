@@ -67,7 +67,7 @@ npm install -g typescript
 
 这时候，可以使用缓存清理命令 `npm cache clean --force`，回车执行该命令，重新输入安装指令即可。
 
-```latex
+```
 npm cache clean --force
 ```
 
