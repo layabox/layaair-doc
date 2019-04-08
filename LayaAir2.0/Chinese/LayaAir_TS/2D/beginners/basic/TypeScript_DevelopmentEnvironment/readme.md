@@ -2,7 +2,7 @@
 
 # 搭建开发环境（TS代码编译器）
 
-> *author : charley        version: 2.0.1         update: 2019-4-18*
+> *author : charley        version: 2.0.1         update: 2019-4-8*
 
 由于LayaAirIDE的需要安装TypeScript编译环境，所以本篇用于编译环境的安装指导，当编译环境有问题的时候阅读参照，如果已经安装过的，不需要重复安装。
 
