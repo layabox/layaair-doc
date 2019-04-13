@@ -938,23 +938,37 @@
 			}]
 		},
 		{
-			"name_2_name": "3D引擎基础",
+			"name_2_name": "LayaAir3D之精灵",
 			"name_2_data": [
 			{
-				"name_3_name": "LayaAir3D之场景Scene",
-				"name_3_url": "Chinese/LayaAir_AS3/3D/beginners/scene/",
+				"name_3_name": "Sprite3D的概述",
+				"name_3_url": "Chinese/LayaAir_AS3/3D/Sprite3D/Sprite3D_Profile/",
 				"name_3_file": "readme.md"
 			},
 			{
-				"name_3_name": "LayaAir3D之摄像机Camera",
-				"name_3_url": "Chinese/LayaAir_AS3/3D/beginners/camera/",
+				"name_3_name": "Sprite3D的Layer",
+				"name_3_url": "Chinese/LayaAir_AS3/3D/Sprite3D/Sprite3D_Layer/",
 				"name_3_file": "readme.md"
 			},
 			{
-				"name_3_name": "LayaAir之灯光",
-				"name_3_url": "Chinese/LayaAir_AS3/3D/beginners/light/",
+				"name_3_name": "Sprite3D的克隆",
+				"name_3_url": "Chinese/LayaAir_AS3/3D/Sprite3D/Sprite3D_Clone/",
 				"name_3_file": "readme.md"
 			},
+			{
+				"name_3_name": "Sprite3D添加组件或脚本",
+				"name_3_url": "Chinese/LayaAir_AS3/3D/Sprite3D/Sprite3D_addComponent/",
+				"name_3_file": "readme.md"
+			},
+			{
+				"name_3_name": "各种渲染精灵简介",
+				"name_3_url": "Chinese/LayaAir_AS3/3D/Sprite3D/Rendering-Sprite3d_Profile/",
+				"name_3_file": "readme.md"
+			}]
+		},
+		{
+			"name_2_name": "3D引擎基础",
+			"name_2_data": [
 			{
 				"name_3_name": "LayaAir3D之模型",
 				"name_3_url": "Chinese/LayaAir_AS3/3D/beginners/model/",
@@ -2172,23 +2186,37 @@
 			}]
 		},
 		{
-			"name_2_name": "3D引擎基础",
+			"name_2_name": "LayaAir3D之精灵",
 			"name_2_data": [
 			{
-				"name_3_name": "LayaAir3D之场景Scene",
-				"name_3_url": "Chinese/LayaAir_TS/3D/beginners/scene/",
+				"name_3_name": "Sprite3D的概述",
+				"name_3_url": "Chinese/LayaAir_TS/3D/Sprite3D/Sprite3D_Profile/",
 				"name_3_file": "readme.md"
 			},
 			{
-				"name_3_name": "LayaAir3D之摄像机Camera",
-				"name_3_url": "Chinese/LayaAir_TS/3D/beginners/camera/",
+				"name_3_name": "Sprite3D的Layer",
+				"name_3_url": "Chinese/LayaAir_TS/3D/Sprite3D/Sprite3D_Layer/",
 				"name_3_file": "readme.md"
 			},
 			{
-				"name_3_name": "LayaAir之灯光",
-				"name_3_url": "Chinese/LayaAir_TS/3D/beginners/light/",
+				"name_3_name": "Sprite3D的克隆",
+				"name_3_url": "Chinese/LayaAir_TS/3D/Sprite3D/Sprite3D_Clone/",
 				"name_3_file": "readme.md"
 			},
+			{
+				"name_3_name": "Sprite3D添加组件或脚本",
+				"name_3_url": "Chinese/LayaAir_TS/3D/Sprite3D/Sprite3D_addComponent/",
+				"name_3_file": "readme.md"
+			},
+			{
+				"name_3_name": "各种渲染精灵简介",
+				"name_3_url": "Chinese/LayaAir_TS/3D/Sprite3D/Rendering-Sprite3d_Profile/",
+				"name_3_file": "readme.md"
+			}]
+		},
+		{
+			"name_2_name": "3D引擎基础",
+			"name_2_data": [
 			{
 				"name_3_name": "LayaAir3D之模型",
 				"name_3_url": "Chinese/LayaAir_TS/3D/beginners/model/",
@@ -3396,23 +3424,37 @@
 			}]
 		},
 		{
-			"name_2_name": "3D引擎基础",
+			"name_2_name": "LayaAir3D之精灵",
 			"name_2_data": [
 			{
-				"name_3_name": "LayaAir3D之场景Scene",
-				"name_3_url": "Chinese/LayaAir_JS/3D/beginners/scene/",
+				"name_3_name": "Sprite3D的概述",
+				"name_3_url": "Chinese/LayaAir_JS/3D/Sprite3D/Sprite3D_Profile/",
 				"name_3_file": "readme.md"
 			},
 			{
-				"name_3_name": "LayaAir3D之摄像机Camera",
-				"name_3_url": "Chinese/LayaAir_JS/3D/beginners/camera/",
+				"name_3_name": "Sprite3D的Layer",
+				"name_3_url": "Chinese/LayaAir_JS/3D/Sprite3D/Sprite3D_Layer/",
 				"name_3_file": "readme.md"
 			},
 			{
-				"name_3_name": "LayaAir之灯光",
-				"name_3_url": "Chinese/LayaAir_JS/3D/beginners/light/",
+				"name_3_name": "Sprite3D的克隆",
+				"name_3_url": "Chinese/LayaAir_JS/3D/Sprite3D/Sprite3D_Clone/",
 				"name_3_file": "readme.md"
 			},
+			{
+				"name_3_name": "Sprite3D添加组件或脚本",
+				"name_3_url": "Chinese/LayaAir_JS/3D/Sprite3D/Sprite3D_addComponent/",
+				"name_3_file": "readme.md"
+			},
+			{
+				"name_3_name": "各种渲染精灵简介",
+				"name_3_url": "Chinese/LayaAir_JS/3D/Sprite3D/Rendering-Sprite3d_Profile/",
+				"name_3_file": "readme.md"
+			}]
+		},
+		{
+			"name_2_name": "3D引擎基础",
+			"name_2_data": [
 			{
 				"name_3_name": "LayaAir3D之模型",
 				"name_3_url": "Chinese/LayaAir_JS/3D/beginners/model/",
