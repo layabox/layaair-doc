@@ -138,10 +138,6 @@ LayaAirIDE的发布功能默认集成了常用的排除与包含功能，也允�
 
 （图5） 
 
-
-
-
-
 小游戏的提取文件就`选择文件`和`目标目录`这两个核心功能，别看操作简单，却是非常实用的功能。
 
 最早的版本不能提取本地包，全包复制的提取比较麻烦。又或者复制时如果遗漏了小游戏项目文件，那还需要再手工复制。这些问题在这个版本统统得到了解决，不仅本地包目录可以自定义筛选。选择对应的小游戏平台后，该平台对应的项目文件即使不勾选到本地包文件列表，也会自动提取过去，保障小游戏项目的完整性。
@@ -222,18 +218,19 @@ LayaAirIDE的发布功能默认集成了常用的排除与包含功能，也允�
 
 签名内容建议写英文，帮大家翻译一下及示例如下：
 
-```javascript
-Country Name (2 letter code) [AU]:CN //国家简称，例如中国CN
-
-State or Province Name (full name) [Some-State]:BeiJing //省或直辖市名字，例如北京市BeiJing
-
-Locality Name (eg, city) []:HaiDian //区或市县的名称，例如海淀区HaiDian
-
-Organization Name (eg, company) [Internet Widgits Pty Ltd]:Layabox //公司或组织名,例如Layabox
-
-Organizational Unit Name (eg, section) []:Game //单位或者是部门名称，例如游戏部门Game
-
-Email Address []:bd@layabox.com //Email地址,例如：游戏对接合作 bd@layabox.com
+```
+//国家简称，例如中国CN
+Country Name (2 letter code) [AU]:CN 
+//省或直辖市名字，例如北京市BeiJing
+State or Province Name (full name) [Some-State]:BeiJing 
+//区或市县的名称，例如海淀区HaiDian
+Locality Name (eg, city) []:HaiDian 
+//公司或组织名,例如Layabox
+Organization Name (eg, company) [Internet Widgits Pty Ltd]:Layabox 
+//单位或者是部门名称，例如游戏部门Game
+Organizational Unit Name (eg, section) []:Game 
+//Email地址,例如：游戏对接合作 bd@layabox.com
+Email Address []:bd@layabox.com 
 ```
 
 ### 特别提醒
