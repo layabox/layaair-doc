@@ -37,6 +37,6 @@ Laya.Sprite3D.load("res/threeDimen/skinModel/LayaMonkey/LayaMonkey.lh", Laya.Han
 }))
 ```
 
-编译运行上述代码，运行效果如图6。开发者们同时也可以测试，在单摄像机下时，DrawCall与三角面数会少很多。（[demo地址](https://github.com/layabox/layaair-demo/blob/master/h5/3d/newDemo/newjs/cameraModule/MultiCamera.js)）
+编译运行上述代码，运行效果如图6。开发者们同时也可以测试，在单摄像机下时，DrawCall与三角面数会少很多。([demo地址](https://layaair.ldc.layabox.com/demo2/?language=ch&category=3d&group=Camera&name=MultiCamera))
 
 ![](img/1.png)<br>(图1)

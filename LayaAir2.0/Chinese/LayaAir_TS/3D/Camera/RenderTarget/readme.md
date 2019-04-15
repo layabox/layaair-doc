@@ -4,7 +4,7 @@
 
 ​	目标纹理就是指摄像机的**RenderTarget**属性。它将摄像机的视图放置在一个纹理上，该纹理可以被应用到另一个对象。这样就可以方便地创建镜子，监控摄像机等效果了。注意的是使用了该属性的摄像机将禁用渲染到屏幕的功能。
 
-​	这里我们使用的示例demo（[地址](https://github.com/layabox/layaair-demo/blob/master/h5/3d/newDemo/newts/cameraModule/RenderTargetCamera.ts)）的代码。camera为场景渲染摄像机，renderTargetCamera为开启RenderTarget属性的摄像机。
+​	这里我们使用的示例（[demo地址](https://layaair.ldc.layabox.com/demo2/?language=ch&category=3d&group=Camera&name=RenderTargetCamera)）的代码。camera为场景渲染摄像机，renderTargetCamera为开启RenderTarget属性的摄像机。
 
 ```typescript
 //设置目标纹理

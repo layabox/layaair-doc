@@ -28,7 +28,7 @@
 
 #### 使用代码设置环境反射
 
-该部分代码节选自官方示例（[demo地址](https://github.com/layabox/layaair-demo/blob/master/h5/3d/newDemo/newas/LayaAir3D_Scene3D/EnvironmentalReflection.as)）。
+该部分代码节选自官方示例（[demo地址](https://layaair.ldc.layabox.com/demo2/?language=ch&category=3d&group=Scene3D&name=EnvironmentalReflection)）。
 
 ```typescript
 //设置场景的反射模式(全局有效),场景的默认反射模式也是custom模式

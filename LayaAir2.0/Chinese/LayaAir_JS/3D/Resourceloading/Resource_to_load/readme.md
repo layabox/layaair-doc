@@ -2,7 +2,7 @@
 
 ###### *version :2.0.1beta   Update:2019-3-19*
 
-讲完了资源的各种类型，我们来实际操作进行加载这些资源。本次示例地址（[demo地址](https://github.com/layabox/layaair-demo/blob/master/h5/3d/newDemo/newjs/Resourceloading/LoadResourceDemo.js)）;
+讲完了资源的各种类型，我们来实际操作进行加载这些资源。本次示例地址（[demo地址](https://layaair.ldc.layabox.com/demo2/?language=ch&category=3d&group=Resource&name=LoadResourceDemo)）;
 
 ### 单个资源加载
 

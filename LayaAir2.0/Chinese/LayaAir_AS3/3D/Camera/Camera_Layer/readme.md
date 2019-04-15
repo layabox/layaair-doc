@@ -41,4 +41,4 @@ changeActionButton.on(Event.CLICK, this, function():void {
 
 ![](img/2.gif)<br>(图2)
 
-本次示例（[demo地址](https://github.com/layabox/layaair-demo/blob/master/h5/3d/newDemo/newas/LayaAir3D_Camera/CameraLayer.as)）；
+本次示例（[demo地址](https://layaair.ldc.layabox.com/demo2/?language=ch&category=3d&group=Camera&name=CameraLayer)）；

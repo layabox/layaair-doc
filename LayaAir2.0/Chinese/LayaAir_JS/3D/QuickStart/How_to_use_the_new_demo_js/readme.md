@@ -10,7 +10,7 @@
 
 **Tip:**建议开发者在运行下载的示例一直使用一个项目。那样就不用再多次修改资源地址。示例所使用的的资源地址根目录：[资源](https://github.com/layabox/layaair-demo/tree/master/h5/3d/newDemo/res/threeDimen)。
 
-这里我们使用**图形基础篇的Transform**示例来做例子([地址](https://github.com/layabox/layaair-demo/tree/master/h5/3d/newDemo/newas/LayaAir3D_Graphics/TransformDemo.as))。
+这里我们使用**图形基础篇的Transform**示例来做例子([地址](https://github.com/layabox/layaair-demo/blob/master/h5/3d/newDemo/newjs/LayaAir3D_Sprite3D/TransformDemo.js))。
 
 拿到代码后，打开ide创建的示例项目。我们将下载到的资源放到`bin/res`目录下。
 

@@ -18,5 +18,5 @@ point.y = Laya.stage.mouseY;
 camera.viewportPointToRay(point, ray);
 ```
 
-在示例demo([地址](https://github.com/layabox/layaair-demo/blob/master/h5/3d/newDemo/newjs/cameraModule/CameraRay.js))中，通过从摄影机创建的射线，在地板与射线碰撞点处创建正方体。
+在示例([demo地址](https://layaair.ldc.layabox.com/demo2/?language=ch&category=3d&group=Camera&name=CameraRay))中，通过从摄影机创建的射线，在地板与射线碰撞点处创建正方体。
 

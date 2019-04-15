@@ -26,7 +26,7 @@ var camera:Camera = scene.getChildByName("Main Camera") as Camera;
 camera.addComponent(CameraMoveScript);
 
 //加载相机天空盒材质
-BaseMaterial.load("../../../../res/threeDimen/skyBox/skyBox1/SkyBox.lmat", Handler.create(null, function(mat:BaseMaterial):void {
+BaseMaterial.load("res/threeDimen/skyBox/skyBox1/SkyBox.lmat", Handler.create(null, function(mat:BaseMaterial):void {
     var skyRenderer:SkyRenderer = camera.skyRenderer;
     skyRenderer.mesh = SkyBox.instance;
     skyRenderer.material = mat;
