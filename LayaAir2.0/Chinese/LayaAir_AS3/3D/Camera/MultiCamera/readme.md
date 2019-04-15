@@ -31,7 +31,7 @@ camera2.normalizedViewport = new Viewport(0.5, 0.0, 0.5, 0.5);
 var directionLight:DirectionLight = scene.addChild(new DirectionLight()) as DirectionLight;
 
 //加载模型
-Sprite3D.load("../../../../res/threeDimen/skinModel/LayaMonkey/LayaMonkey.lh", Handler.create(null, function(sp:Sprite3D):void {
+Sprite3D.load("res/threeDimen/skinModel/LayaMonkey/LayaMonkey.lh", Handler.create(null, function(sp:Sprite3D):void {
     //将模型加到场景上
     var layaMonkey:Sprite3D = scene.addChild(sp) as Sprite3D;
 }))
