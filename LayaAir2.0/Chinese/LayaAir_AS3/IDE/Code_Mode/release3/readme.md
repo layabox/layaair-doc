@@ -220,17 +220,23 @@ LayaAirIDE的发布功能默认集成了常用的排除与包含功能，也允�
 
 ```
 //国家简称，例如中国CN
-Country Name (2 letter code) [AU]:CN 
+Country Name (2 letter code) [AU]:
+CN 
 //省或直辖市名字，例如北京市BeiJing
-State or Province Name (full name) [Some-State]:BeiJing 
+State or Province Name (full name) [Some-State]:
+BeiJing 
 //区或市县的名称，例如海淀区HaiDian
-Locality Name (eg, city) []:HaiDian 
+Locality Name (eg, city) []:
+HaiDian 
 //公司或组织名,例如Layabox
-Organization Name (eg, company) [Internet Widgits Pty Ltd]:Layabox 
+Organization Name (eg, company) [Internet Widgits Pty Ltd]:
+Layabox 
 //单位或者是部门名称，例如游戏部门Game
-Organizational Unit Name (eg, section) []:Game 
+Organizational Unit Name (eg, section) []:
+Game 
 //Email地址,例如：游戏对接合作 bd@layabox.com
-Email Address []:bd@layabox.com 
+Email Address []:
+bd@layabox.com 
 ```
 
 ### 特别提醒
