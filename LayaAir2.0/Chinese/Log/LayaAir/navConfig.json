@@ -4,9 +4,9 @@
     "url": "2.0.2beta.md",
     "date":"2019-04-13",
     "download": {
-      "js": "http://ldc.layabox.com/download/LayaAirJS_2.0.2_beta.zip",
-      "ts": "http://ldc.layabox.com/download/LayaAirTS_2.0.2_beta.zip",
-      "as": "http://ldc.layabox.com/download/LayaAirAS3_2.0.2_beta.zip"
+      "js": "http://ldc.layabox.com/download/LayaAirJS_2.0.2_beta.zip?v=1.0.0",
+      "ts": "http://ldc.layabox.com/download/LayaAirTS_2.0.2_beta.zip?v=1.0.0",
+      "as": "http://ldc.layabox.com/download/LayaAirAS3_2.0.2_beta.zip?v=1.0.0"
     }
   },
   {

@@ -4,8 +4,8 @@
     "url": "2.0.2beta.md",
     "date": "2019-04-13",
     "download": {
-      "Apple": "http://ldc.layabox.com/download/2.0.2/darwin/LayaAirIDE_beta.zip",
-      "Windows": "http://ldc.layabox.com/download/2.0.2/win/LayaAirIDE_beta.zip",
+      "Apple": "http://ldc.layabox.com/download/2.0.2/darwin/LayaAirIDE_beta.zip?v=1.0.0",
+      "Windows": "http://ldc.layabox.com/download/2.0.2/win/LayaAirIDE_beta.zip?v=1.0.0",
       "UnityPlugin":"http://ldc.layabox.com/download/2.0.2/unityplugin/LayaAirUnityPlugin_beta.unitypackage"
     }
   },
