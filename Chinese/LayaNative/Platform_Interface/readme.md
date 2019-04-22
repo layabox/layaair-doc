@@ -93,9 +93,9 @@ LayaPlatformCallback.GetInstance().LP_LoginCallback(objCallBack.toString());
 | enterAccountMgr       | 进入账户管理     | `conchMarket.enterAccountMgr(JSON.stringify(sData),function(data));` |
 | authorize             | 授权         | `conchMarket.authorize(JSON.stringify(sData),function(data));` |
 | refreshToken          | 刷新token    | `conchMarket.refreshToken(JSON.stringify(sData),function(data));` |
-| recharge              | 充值         | `conchMarket.recharge(JSON.stringify(sData),function(data));` |
+| recharge (1.0.4改为cz)             | 充值         | `conchMarket.recharge(JSON.stringify(sData),function(data));` |
 | buyProps              | 购买道具       | `conchMarket.buyProps(JSON.stringify(sData),function(data));` |
-| setRechargeInfo       | 设置充值信息     | `conchMarket.setRechargeInfo(JSON.stringify(sData),function(data));` |
+| setRechargeInfo(1.0.4改为setCZInfo)       | 设置充值信息     | `conchMarket.setRechargeInfo(JSON.stringify(sData),function(data));` |
 | enterShareAndFeed     | 分享         | `conchMarket.enterShareAndFeed(JSON.stringify(sData),function(data));` |
 | enterInvite           | 邀请         | `conchMarket.enterInvite(JSON.stringify(sData),function(data));` |
 | getGameFriends        | 获得好友列表     | `conchMarket.getGameFriends(JSON.stringify(sData),function(data));` |
