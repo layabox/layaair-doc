@@ -1042,77 +1042,86 @@
 		}]
 	},
 	{
-		"nav_1_name": "小游戏适配文档（微信、百度）",
+		"nav_1_name": "小游戏适配文档（微信、百度、小米）",
 		"nav_1_data": [
 		{
-			"name_2_name": "微信小游戏开发基础",
+			"name_2_name": "微信小游戏",
 			"name_2_data": [
 			{
 				"name_3_name": "微信小游戏入门介绍",
-				"name_3_url": "Chinese/wechat/AS/introduction/",
+				"name_3_url": "Chinese/miniGame/wechat/AS/introduction/",
 				"name_3_file": "readme.md"
 			},
 			{
 				"name_3_name": "创建第一个微信小游戏",
-				"name_3_url": "Chinese/wechat/AS/novice/",
+				"name_3_url": "Chinese/miniGame/wechat/AS/novice/",
 				"name_3_file": "readme.md"
 			},
 			{
 				"name_3_name": "老项目适配微信小游戏详解",
-				"name_3_url": "Chinese/wechat/AS/old_adapter/",
+				"name_3_url": "Chinese/miniGame/wechat/AS/old_adapter/",
 				"name_3_file": "readme.md"
 			},
 			{
 				"name_3_name": "小游戏发布工具与小游戏目录介绍",
-				"name_3_url": "Chinese/wechat/AS/publishing_tools/",
+				"name_3_url": "Chinese/miniGame/wechat/AS/publishing_tools/",
 				"name_3_file": "readme.md"
 			},{
 				"name_3_name": "微信小游戏的4M本地包与动态资源加载",
-				"name_3_url": "Chinese/wechat/AS/4M/",
+				"name_3_url": "Chinese/miniGame/wechat/AS/4M/",
 				"name_3_file": "readme.md"
 			},{
 				"name_3_name": "微信小游戏的50M物理缓存管理",
-				"name_3_url": "Chinese/wechat/AS/50M/",
+				"name_3_url": "Chinese/miniGame/wechat/AS/50M/",
 				"name_3_file": "readme.md"
 			},{
 				"name_3_name": "微信小游戏分包实战",
-				"name_3_url": "Chinese/wechat/AS/subpackage/",
+				"name_3_url": "Chinese/miniGame/wechat/AS/subpackage/",
 				"name_3_file": "readme.md"
 			},{
 				"name_3_name": "微信小游戏开放域",
-				"name_3_url": "Chinese/wechat/AS/openDomain/",
+				"name_3_url": "Chinese/miniGame/wechat/AS/openDomain/",
 				"name_3_file": "readme.md"
 			},{
 				"name_3_name": "微信小游戏常见问题汇总（10.25更新）",
-				"name_3_url": "Chinese/wechat/AS/FAQ/",
+				"name_3_url": "Chinese/miniGame/wechat/AS/FAQ/",
 				"name_3_file": "readme.md"
 			}]
 		},
 		{
-			"name_2_name": "百度小游戏开发基础",
+			"name_2_name": "百度小游戏",
 			"name_2_data": [
 			{
 				"name_3_name": "百度小游戏入门介绍",
-				"name_3_url": "Chinese/baidu/AS/introduction/",
+				"name_3_url": "Chinese/miniGame/baidu/AS/introduction/",
 				"name_3_file": "readme.md"
 			},
 			{
 				"name_3_name": "创建第一个百度小游戏",
-				"name_3_url": "Chinese/baidu/AS/novice/",
+				"name_3_url": "Chinese/miniGame/baidu/AS/novice/",
 				"name_3_file": "readme.md"
 			},
 			{
 				"name_3_name": "老项目适配百度小游戏详解",
-				"name_3_url": "Chinese/baidu/AS/old_adapter/",
+				"name_3_url": "Chinese/miniGame/baidu/AS/old_adapter/",
 				"name_3_file": "readme.md"
 			},
 			{
 				"name_3_name": "百度小游戏的5M本地包与动态资源加载",
-				"name_3_url": "Chinese/baidu/AS/4M/",
+				"name_3_url": "Chinese/miniGame/baidu/AS/4M/",
 				"name_3_file": "readme.md"
 			},{
 				"name_3_name": "百度小游戏的50M物理缓存管理",
-				"name_3_url": "Chinese/baidu/AS/50M/",
+				"name_3_url": "Chinese/miniGame/baidu/AS/50M/",
+				"name_3_file": "readme.md"
+			}]
+		},
+		{
+			"name_2_name": "小米快游戏",
+			"name_2_data": [
+			{
+				"name_3_name": "小米快游戏发布与调试指南",
+				"name_3_url": "Chinese/miniGame/mi/rundebug/",
 				"name_3_file": "readme.md"
 			}]
 		}]
@@ -2280,78 +2289,87 @@
 		}]
 	},
 	{
-		"nav_1_name": "小游戏适配文档（微信、百度）",
+		"nav_1_name": "微信小游戏小游戏适配文档（微信、百度、小米）",
 		"nav_1_data": [
 		{
-			"name_2_name": "微信小游戏开发基础",
+			"name_2_name": "微信小游戏",
 			"name_2_data": [
 			{
 				"name_3_name": "微信小游戏入门介绍",
-				"name_3_url": "Chinese/wechat/AS/introduction/",
+				"name_3_url": "Chinese/miniGame/wechat/AS/introduction/",
 				"name_3_file": "readme.md"
 			},
 			{
 				"name_3_name": "创建第一个微信小游戏",
-				"name_3_url": "Chinese/wechat/AS/novice/",
+				"name_3_url": "Chinese/miniGame/wechat/AS/novice/",
 				"name_3_file": "readme.md"
 			},
 			{
 				"name_3_name": "老项目适配微信小游戏详解",
-				"name_3_url": "Chinese/wechat/AS/old_adapter/",
+				"name_3_url": "Chinese/miniGame/wechat/AS/old_adapter/",
 				"name_3_file": "readme.md"
 			},
 			{
 				"name_3_name": "小游戏发布工具与小游戏目录介绍",
-				"name_3_url": "Chinese/wechat/AS/publishing_tools/",
+				"name_3_url": "Chinese/miniGame/wechat/AS/publishing_tools/",
 				"name_3_file": "readme.md"
 			},{
 				"name_3_name": "微信小游戏的4M本地包与动态资源加载",
-				"name_3_url": "Chinese/wechat/AS/4M/",
+				"name_3_url": "Chinese/miniGame/wechat/AS/4M/",
 				"name_3_file": "readme.md"
 			},{
 				"name_3_name": "微信小游戏的50M物理缓存管理",
-				"name_3_url": "Chinese/wechat/AS/50M/",
+				"name_3_url": "Chinese/miniGame/wechat/AS/50M/",
 				"name_3_file": "readme.md"
 			},{
 				"name_3_name": "微信小游戏分包实战",
-				"name_3_url": "Chinese/wechat/TS/subpackage/",
+				"name_3_url": "Chinese/miniGame/wechat/TS/subpackage/",
 				"name_3_file": "readme.md"
 			},{
 				"name_3_name": "微信开放数据域",
-				"name_3_url": "Chinese/wechat/TS/openDomain/",
+				"name_3_url": "Chinese/miniGame/wechat/TS/openDomain/",
 				"name_3_file": "readme.md"
 			},
 			{
 				"name_3_name": "微信小游戏常见问题汇总（10.25更新）",
-				"name_3_url": "Chinese/wechat/AS/FAQ/",
+				"name_3_url": "Chinese/miniGame/wechat/AS/FAQ/",
 				"name_3_file": "readme.md"
 			}]
 		},
 		{
-			"name_2_name": "百度小游戏开发基础",
+			"name_2_name": "百度小游戏",
 			"name_2_data": [
 			{
 				"name_3_name": "百度小游戏入门介绍",
-				"name_3_url": "Chinese/baidu/AS/introduction/",
+				"name_3_url": "Chinese/miniGame/baidu/AS/introduction/",
 				"name_3_file": "readme.md"
 			},
 			{
 				"name_3_name": "创建第一个百度小游戏",
-				"name_3_url": "Chinese/baidu/AS/novice/",
+				"name_3_url": "Chinese/miniGame/baidu/AS/novice/",
 				"name_3_file": "readme.md"
 			},
 			{
 				"name_3_name": "老项目适配百度小游戏详解",
-				"name_3_url": "Chinese/baidu/AS/old_adapter/",
+				"name_3_url": "Chinese/miniGame/baidu/AS/old_adapter/",
 				"name_3_file": "readme.md"
 			},
 			{
 				"name_3_name": "百度小游戏的5M本地包与动态资源加载",
-				"name_3_url": "Chinese/baidu/AS/4M/",
+				"name_3_url": "Chinese/miniGame/baidu/AS/4M/",
 				"name_3_file": "readme.md"
 			},{
 				"name_3_name": "百度小游戏的50M物理缓存管理",
-				"name_3_url": "Chinese/baidu/AS/50M/",
+				"name_3_url": "Chinese/miniGame/baidu/AS/50M/",
+				"name_3_file": "readme.md"
+			}]
+		},
+		{
+			"name_2_name": "小米快游戏",
+			"name_2_data": [
+			{
+				"name_3_name": "小米快游戏发布与调试指南",
+				"name_3_url": "Chinese/miniGame/mi/rundebug/",
 				"name_3_file": "readme.md"
 			}]
 		}]
@@ -3513,78 +3531,87 @@
 		}]
 	},
 	{
-		"nav_1_name": "小游戏适配文档（微信、百度）",
+		"nav_1_name": "微信小游戏小游戏适配文档（微信、百度、小米）",
 		"nav_1_data": [
 		{
-			"name_2_name": "微信小游戏开发基础",
+			"name_2_name": "微信小游戏",
 			"name_2_data": [
 			{
 				"name_3_name": "微信小游戏入门介绍",
-				"name_3_url": "Chinese/wechat/AS/introduction/",
+				"name_3_url": "Chinese/miniGame/wechat/AS/introduction/",
 				"name_3_file": "readme.md"
 			},
 			{
 				"name_3_name": "创建第一个微信小游戏",
-				"name_3_url": "Chinese/wechat/AS/novice/",
+				"name_3_url": "Chinese/miniGame/wechat/AS/novice/",
 				"name_3_file": "readme.md"
 			},
 			{
 				"name_3_name": "老项目适配微信小游戏详解",
-				"name_3_url": "Chinese/wechat/AS/old_adapter/",
+				"name_3_url": "Chinese/miniGame/wechat/AS/old_adapter/",
 				"name_3_file": "readme.md"
 			},
 			{
 				"name_3_name": "小游戏发布工具与小游戏目录介绍",
-				"name_3_url": "Chinese/wechat/AS/publishing_tools/",
+				"name_3_url": "Chinese/miniGame/wechat/AS/publishing_tools/",
 				"name_3_file": "readme.md"
 			},{
 				"name_3_name": "微信小游戏的4M本地包与动态资源加载",
-				"name_3_url": "Chinese/wechat/AS/4M/",
+				"name_3_url": "Chinese/miniGame/wechat/AS/4M/",
 				"name_3_file": "readme.md"
 			},{
 				"name_3_name": "微信小游戏的50M物理缓存管理",
-				"name_3_url": "Chinese/wechat/AS/50M/",
+				"name_3_url": "Chinese/miniGame/wechat/AS/50M/",
 				"name_3_file": "readme.md"
 			},{
 				"name_3_name": "微信小游戏分包实战",
-				"name_3_url": "Chinese/wechat/JS/subpackage/",
+				"name_3_url": "Chinese/miniGame/wechat/JS/subpackage/",
 				"name_3_file": "readme.md"
 			},{
 				"name_3_name": "微信小游戏开放域",
-				"name_3_url": "Chinese/wechat/JS/openDomain/",
+				"name_3_url": "Chinese/miniGame/wechat/JS/openDomain/",
 				"name_3_file": "readme.md"
 			},
 			{
 				"name_3_name": "微信小游戏常见问题汇总（10.25更新）",
-				"name_3_url": "Chinese/wechat/AS/FAQ/",
+				"name_3_url": "Chinese/miniGame/wechat/AS/FAQ/",
 				"name_3_file": "readme.md"
 			}]
 		},
 		{
-			"name_2_name": "百度小游戏开发基础",
+			"name_2_name": "百度小游戏",
 			"name_2_data": [
 			{
 				"name_3_name": "百度小游戏入门介绍",
-				"name_3_url": "Chinese/baidu/AS/introduction/",
+				"name_3_url": "Chinese/miniGame/baidu/AS/introduction/",
 				"name_3_file": "readme.md"
 			},
 			{
 				"name_3_name": "创建第一个百度小游戏",
-				"name_3_url": "Chinese/baidu/AS/novice/",
+				"name_3_url": "Chinese/miniGame/baidu/AS/novice/",
 				"name_3_file": "readme.md"
 			},
 			{
 				"name_3_name": "老项目适配百度小游戏详解",
-				"name_3_url": "Chinese/baidu/AS/old_adapter/",
+				"name_3_url": "Chinese/miniGame/baidu/AS/old_adapter/",
 				"name_3_file": "readme.md"
 			},
 			{
 				"name_3_name": "百度小游戏的5M本地包与动态资源加载",
-				"name_3_url": "Chinese/baidu/AS/4M/",
+				"name_3_url": "Chinese/miniGame/baidu/AS/4M/",
 				"name_3_file": "readme.md"
 			},{
 				"name_3_name": "百度小游戏的50M物理缓存管理",
-				"name_3_url": "Chinese/baidu/AS/50M/",
+				"name_3_url": "Chinese/miniGame/baidu/AS/50M/",
+				"name_3_file": "readme.md"
+			}]
+		},
+		{
+			"name_2_name": "小米快游戏",
+			"name_2_data": [
+			{
+				"name_3_name": "小米快游戏发布与调试指南",
+				"name_3_url": "Chinese/miniGame/mi/rundebug/",
 				"name_3_file": "readme.md"
 			}]
 		}]
