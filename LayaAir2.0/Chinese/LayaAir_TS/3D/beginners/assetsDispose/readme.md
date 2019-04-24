@@ -1,5 +1,7 @@
 # LayaAir3D之资源释放
 
+###### 修改时间:2019-4-24,version:2.0.1
+
 ### 为什么要释放资源
 
 在LayaAir3D游戏开发中，资源释放非常重要。3D资源包括了模型、贴图、材质、动画等，为了达到好的画面效果，文件会比2D大很多，而3D引擎基本上所有资源都会放入GPU中进行计算渲染，因此占用很多的显存。当游戏关卡不断加载，游戏不断深入，放入显存中的资源越来越多，如果不释放资源，那么游戏最后终将崩溃。
@@ -159,10 +161,9 @@ class Main {
     for(var i:number=arr.length -1;i>-1;i--){
       //根据资源路径获取资源
       var resource:Laya.Resource = Laya.loader.getRes(arr[i].url) as Laya.Resource;
-      // resource.destroy();
-      if(resource&&resource.releaseResource)
+      if(resource)
         //资源释放
-        resource.releaseResource(false);
+        resource.destroy();
       else
         console.log(arr[i].url);
     }
@@ -171,7 +172,7 @@ class Main {
 new Main();
 ```
 
-观察上述代码assetsDispose(assetsUrl:String)方法，加载完配置表后，我们通过Laya.loader.getRes(arr[i].url)方法直接获取资源产生的对象（创建时会根据url后缀名产生不同的类型对象，getRes方法可直接读出来），它们都是Resource类的子类，因此对象调用dispose()方法后就可释放资源。
+观察上述代码assetsDispose(assetsUrl:String)方法，加载完配置表后，我们通过Laya.loader.getRes(arr[i].url)方法直接获取资源产生的对象（创建时会根据url后缀名产生不同的类型对象，getRes方法可直接读出来）。LayaAir2.0正式版之后已经统一为调用resource.destroy()方法后就可释放资源。
 
 释放完资源后，还可通过Loader.loadeMap属性查看现有缓存中的资源。
 

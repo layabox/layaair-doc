@@ -1,6 +1,6 @@
 ## LayaAir3D之资源释放
 
-
+###### 修改时间:2019-4-24,version:2.0.1
 
 ### 为什么要资源释放
 
@@ -172,8 +172,6 @@ package {
     }
     //加载资源释放表完成后
     private function onAssetOK():void{
-      
-      
       //获取加载的数据（Json数据转换成数组）
       var arr:Array = Laya.loader.getRes("loveScene.json");
       for(var i:Number = arr.length-1;i>-1;i--)
@@ -183,8 +181,8 @@ package {
         //非空
         if(resource)
         {
-          //销毁资源（非强制销毁）
-          resource.releaseResource(false);
+          //销毁资源
+          resource.destroy();
         }
         else
         {
@@ -196,7 +194,7 @@ package {
 }
 ```
 
-观察上述代码assetsDispose(assetsUrl:String)方法，加载完配置表后，我们通过Laya.loader.getRes(arr[i].url)方法直接获取资源产生的对象（创建时会根据url后缀名产生不同的类型对象，getRes方法可直接读出来），它们都是Resource类的子类，因此对象调用 releaseResource(false);方法后就可释放资源。
+观察上述代码assetsDispose(assetsUrl:String)方法，加载完配置表后，我们通过Laya.loader.getRes(arr[i].url)方法直接获取资源产生的对象（创建时会根据url后缀名产生不同的类型对象，getRes方法可直接读出来）。LayaAir2.0正式版之后已经统一为调用resource.destroy()方法后就可释放资源。
 
 释放完资源后，还可通过Loader.loadeMap属性查看现有缓存中的资源。
 
