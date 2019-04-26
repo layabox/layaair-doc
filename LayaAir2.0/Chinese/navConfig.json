@@ -967,6 +967,35 @@
 			}]
 		},
 		{
+			"name_2_name": "LayaAir3D之模型和网格",
+			"name_2_data": [
+			{
+				"name_3_name": "模型概述",
+				"name_3_url": "Chinese/LayaAir_AS3/3D/Model_and_Mesh/Overview_of_model/",
+				"name_3_file": "readme.md"
+			},
+			{
+				"name_3_name": "Mesh的概述",
+				"name_3_url": "Chinese/LayaAir_AS3/3D/Model_and_Mesh/Overview_of_model/",
+				"name_3_file": "readme.md"
+			},
+			{
+				"name_3_name": "从Unity中导出模型",
+				"name_3_url": "Chinese/LayaAir_AS3/3D/Model_and_Mesh/Overview_of_Mesh/",
+				"name_3_file": "readme.md"
+			},
+			{
+				"name_3_name": "通过PrimitiveMesh创建简单Mesh",
+				"name_3_url": "Chinese/LayaAir_AS3/3D/Model_and_Mesh/Create_Mesh_by_PrimitiveMesh/",
+				"name_3_file": "readme.md"
+			},
+			{
+				"name_3_name": "模型的功能介绍",
+				"name_3_url": "Chinese/LayaAir_AS3/3D/Model_and_Mesh/Use_of_model/",
+				"name_3_file": "readme.md"
+			}]
+		},
+		{
 			"name_2_name": "3D引擎基础",
 			"name_2_data": [
 			{
@@ -2219,6 +2248,35 @@
 			}]
 		},
 		{
+			"name_2_name": "LayaAir3D之模型和网格",
+			"name_2_data": [
+			{
+				"name_3_name": "模型概述",
+				"name_3_url": "Chinese/LayaAir_TS/3D/Model_and_Mesh/Overview_of_model/",
+				"name_3_file": "readme.md"
+			},
+			{
+				"name_3_name": "Mesh的概述",
+				"name_3_url": "Chinese/LayaAir_TS/3D/Model_and_Mesh/Overview_of_model/",
+				"name_3_file": "readme.md"
+			},
+			{
+				"name_3_name": "从Unity中导出模型",
+				"name_3_url": "Chinese/LayaAir_TS/3D/Model_and_Mesh/Overview_of_Mesh/",
+				"name_3_file": "readme.md"
+			},
+			{
+				"name_3_name": "通过PrimitiveMesh创建简单Mesh",
+				"name_3_url": "Chinese/LayaAir_TS/3D/Model_and_Mesh/Create_Mesh_by_PrimitiveMesh/",
+				"name_3_file": "readme.md"
+			},
+			{
+				"name_3_name": "模型的功能介绍",
+				"name_3_url": "Chinese/LayaAir_TS/3D/Model_and_Mesh/Use_of_model/",
+				"name_3_file": "readme.md"
+			}]
+		},
+		{
 			"name_2_name": "3D引擎基础",
 			"name_2_data": [
 			{
@@ -3457,6 +3515,35 @@
 			{
 				"name_3_name": "各种渲染精灵简介",
 				"name_3_url": "Chinese/LayaAir_JS/3D/Sprite3D/Rendering-Sprite3d_Profile/",
+				"name_3_file": "readme.md"
+			}]
+		},
+		{
+			"name_2_name": "LayaAir3D之模型和网格",
+			"name_2_data": [
+			{
+				"name_3_name": "模型概述",
+				"name_3_url": "Chinese/LayaAir_JS/3D/Model_and_Mesh/Overview_of_model/",
+				"name_3_file": "readme.md"
+			},
+			{
+				"name_3_name": "Mesh的概述",
+				"name_3_url": "Chinese/LayaAir_JS/3D/Model_and_Mesh/Overview_of_model/",
+				"name_3_file": "readme.md"
+			},
+			{
+				"name_3_name": "从Unity中导出模型",
+				"name_3_url": "Chinese/LayaAir_JS/3D/Model_and_Mesh/Overview_of_Mesh/",
+				"name_3_file": "readme.md"
+			},
+			{
+				"name_3_name": "通过PrimitiveMesh创建简单Mesh",
+				"name_3_url": "Chinese/LayaAir_JS/3D/Model_and_Mesh/Create_Mesh_by_PrimitiveMesh/",
+				"name_3_file": "readme.md"
+			},
+			{
+				"name_3_name": "模型的功能介绍",
+				"name_3_url": "Chinese/LayaAir_JS/3D/Model_and_Mesh/Use_of_model/",
 				"name_3_file": "readme.md"
 			}]
 		},
