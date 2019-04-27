@@ -3,16 +3,24 @@
     "25","8","2"
   ],
   "index_recommend": [
-    "28","31","30"
+    "28","32","30"
   ],
   "news": [
     {
-          "id": "31",
+          "id": "32",
           "title": "Layabox推出无编程3D制作工具LayaMaker，携手精锐教育集团进军新领域！",
           "date": "2019-04-26",
           "brief": "Layabox与教育领域领军企业精锐教育UUabc签署战略合作协议，携旗下产品LayaMaker宣布正式进军教育行业互动教学领域。LayaMaker使用者无需编程基础即可快速制作生产精美灵动的3D交互场景教学内容。",
           "jpgpath": "2019/04/26/img/0.jpg",
           "filepath": "2019/04/26/readme.md"
+        }, 
+    {
+          "id": "31",
+          "title": "Layabox推出无编程3D制作工具LayaMaker，携手精锐教育集团进军新领域！",
+          "date": "2019-04-15",
+          "brief": "Layabox与教育领域领军企业精锐教育UUabc签署战略合作协议，携旗下产品LayaMaker宣布正式进军教育行业互动教学领域。LayaMaker使用者无需编程基础即可快速制作生产精美灵动的3D交互场景教学内容。",
+          "jpgpath": "2019/04/15/img/qgame.png",
+          "filepath": "2019/04/15/readme.md"
         }, 
     {
           "id": "30",
