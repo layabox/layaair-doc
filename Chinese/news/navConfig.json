@@ -1,4 +1,4 @@
-﻿{
+{
   "recommend": [
     "25","8","2"
   ],
@@ -10,7 +10,7 @@
           "id": "33",
           "title": "LayaAir引擎放弃Canvas API，打造次世代3D引擎与云游戏引擎，提供AI赋能！",
           "date": "2019-04-28",
-          "brief": "LayaAir引擎放弃Canvas原生API，并不等于放弃2D，而是为更好的发展2D和3D！未来，LayaAir引擎保持对2D的优化与稳定，重点发展次世代3D引擎，对于技术上的极致追求，我们从未停下脚步",
+          "brief": "LayaAir引擎放弃Canvas原生API，并不等于放弃2D，而是为更好的发展2D和3D！未来，LayaAir引擎保持对2D的优化与稳定，重点发展次世代3D引擎，对于技术上的极致追求，我们从未停下脚步!",
           "jpgpath": "2019/04/28/layabox.png",
           "filepath": "2019/04/28/readme.md"
         }, 
