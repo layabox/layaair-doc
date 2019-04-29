@@ -52,7 +52,7 @@ LayaCloud是与LayaAir2.0引擎一起推出的一套无服务器游戏框架。�
 
 在可视化3D工具方面，我们未来会在很长一段时间都保持三条主线推进，一条线是当前基于Unity工具的插件方式。 开发者可在通过在Unity环境中使用LayaAir插件内置的材质来编辑3D场景，再通过插件免费导出使用。
 
-另一条线是4月26日公布消息的免编程3D场景开发工具LayaMaker，该工具支持特定行业（比如教育）3D交互式产品的可视化开发，使用者完全不需要编程基础即可轻松上手。关于LayaMaker的更多介绍，可点击链接了解： [Layabox推出无编程3D教育制作工具LayaMaker，携手精锐教育集团进军新领域！](https://mp.weixin.qq.com/s/k1tv3elJCxe5lJLO5_prOg)
+另一条线是4月26日公布消息的免编程3D场景开发工具LayaMaker，该工具支持特定行业（比如教育）3D交互式产品的可视化开发，使用者完全不需要编程基础即可轻松上手。关于LayaMaker的更多介绍，可点击链接了解： [Layabox推出无编程3D教育制作工具LayaMaker，携手精锐教育集团进军新领域！](http://mp.weixin.qq.com/s?__biz=MzAxMjI4NjA1OA==&mid=2650584620&idx=1&sn=fcf341b4b53e1c3d4f8e500c75893a06&chksm=83bc3729b4cbbe3f52fd830e15be04e808ba43103113abef2474322979feae941731589f7fd2&scene=21#wechat_redirect)
 
 第三条线是面向LayaAir开发者的可视化3D编辑工具，这个工具已有了雏形，原计划是2.0正式版推出。因未达到我们的预期目标，暂时屏蔽，重构满意后，未来会推出与更适合LayaAir引擎的可视化3D编辑工具。
 
