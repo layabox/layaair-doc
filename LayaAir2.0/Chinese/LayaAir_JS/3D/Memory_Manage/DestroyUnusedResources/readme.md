@@ -4,7 +4,7 @@
 
 ​		Scene3D、Sprite3D调用destroy()之后，引用的材质，纹理，网格并不会跟随一起销毁，需要使用`Laya.loader.getRes(url:String)`接口获取到需要销毁的资源，调用他的`destroy()`方法销毁。但是这种方法是非常麻烦的。LayaAir2.0为了方便开发者，提供了`Resource.destroyUnusedResources()`接口统一销毁。
 
-​	**Tip**：注意Scene3D，Sprite3D调用destroy()方法的，必须是所有对象，包括本体与克隆体。同时`destroyUnusedResources` 方法会自动释放掉所有没有使用且没有**上锁**的资源。
+​	**Tip**：注意Scene3D，Sprite3D调用destroy()方法的，必须是所有对象，包括本体与克隆体。此时`destroyUnusedResources` 方法会自动释放掉所有没有使用且没有**上锁**的资源。
 
 ![](img/1.png)<br>(图1)
 
