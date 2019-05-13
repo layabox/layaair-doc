@@ -1,5 +1,25 @@
 [
   {
+    "name": "LayaAir IDE 2.1.0beta",
+    "url": "2.1.0beta.md",
+    "date": "2019-05-13",
+    "download": {
+      "Apple": "http://ldc.layabox.com/download/2.1.0/darwin/LayaAirIDE_beta.zip?v=1.0.0",
+      "Windows": "http://ldc.layabox.com/download/2.1.0/win/LayaAirIDE_beta.zip?v=1.0.0",
+      "UnityPlugin":"http://ldc.layabox.com/download/2.1.0/unityplugin/LayaAirUnityPlugin_beta.unitypackage"
+    }
+  },
+  {
+    "name": "LayaAir IDE 2.0.2",
+    "url": "2.0.2.md",
+    "date": "2019-05-13",
+    "download": {
+      "Apple": "http://ldc.layabox.com/download/2.0.2/darwin/LayaAirIDE.zip",
+      "Windows": "http://ldc.layabox.com/download/2.0.2/win/LayaAirIDE.zip",
+      "UnityPlugin":"http://ldc.layabox.com/download/2.0.2/unityplugin/LayaAirUnityPlugin.unitypackage"
+    }
+  },
+  {
     "name": "LayaAir IDE 2.0.2beta",
     "url": "2.0.2beta.md",
     "date": "2019-04-13",
