@@ -1,1334 +1,5 @@
 [
 {
-	"name": "ActionScript",
-	"data": [
-	{
-		"nav_1_name": "简介篇（AS3）",
-		"nav_1_data": [
-		{
-			"name_2_name": "初识HTML5",
-			"name_2_data": [
-			{
-				"name_3_name": "什么是HTML5？",
-				"name_3_url": "Chinese/Layabox_Intro/",
-				"name_3_file": "what_is_HTML5.md"
-			},
-			{
-				"name_3_name": "HTML5游戏的机会与前景",
-				"name_3_url": "Chinese/Layabox_Intro/",
-				"name_3_file": "HTML5_Opportunities.md"
-			}]
-		},
-		{
-			"name_2_name": "Layabox简介",
-			"name_2_data": [
-			{
-				"name_3_name": "Layabox的前世今生",
-				"name_3_url": "Chinese/Layabox_Intro/",
-				"name_3_file": "readme.md"
-			},
-			{
-				"name_3_name": "Layabox创始人谢成鸿：程序员的激情与梦想",
-				"name_3_url": "Chinese/Layabox_Intro/Layabox_Founder/",
-				"name_3_file": "readme.md"
-			}]
-		},
-		{
-			"name_2_name": "Layabox案例",
-			"name_2_data": [
-			{
-				"name_3_name": "Layabox引擎的游戏案例",
-				"name_3_url": "Chinese/Layabox_Intro/Game_Case/",
-				"name_3_file": "readme.md"
-			},
-			{
-				"name_3_name": "Layabox的引擎非游戏案例",
-				"name_3_url": "Chinese/Layabox_Intro/Non-game_Case/",
-				"name_3_file": "readme.md"
-			}]
-		},
-		{
-			"name_2_name": "LayaAir引擎简介",
-			"name_2_data": [
-			{
-				"name_3_name": "LayaAir功能介绍",
-				"name_3_url": "Chinese/Layabox_Intro/",
-				"name_3_file": "LayaAir_introduction.md"
-			},
-			{
-				"name_3_name": "LayaAir引擎特性简介",
-				"name_3_url": "Chinese/Layabox_Intro/",
-				"name_3_file": "LayaAir_features.md"
-			},
-			{
-				"name_3_name": "LayaAir引擎快速上手指南【新手必读】",
-				"name_3_url": "Chinese/",
-				"name_3_file": "readme.md"
-			},
-			{
-				"name_3_name": "LayaAir引擎VIP专属功能介绍",
-				"name_3_url": "Chinese/Layabox_Intro/vip/",
-				"name_3_file": "readme.md"
-			},
-			{
-				"name_3_name": "LayaAir引擎AS3与Flash原生AS3的开发差异",
-				"name_3_url": "Chinese/LayaAir_AS3/",
-				"name_3_file": "readme.md"
-			}]
-		}]
-	},
-	{
-		"nav_1_name": "2D基础篇（AS3）",
-		"nav_1_data": [
-		{
-			"name_2_name": "快速上手",
-			"name_2_data": [
-			{
-				"name_3_name": "用LayaAirIDE创建AS3项目并详解目录结构",
-				"name_3_url": "Chinese/LayaAir_AS3/2D/beginners/basic/LayaAirIDECreateProjects_DirectoryStructure/",
-				"name_3_file": "readme.md"
-			},
-			{
-				"name_3_name": "Flash Builder开发环境配置",
-				"name_3_url": "Chinese/LayaAir_AS3/2D/beginners/basic/FlashBuilder_DevelopmentEnvironment/",
-				"name_3_file": "readme.md"
-			},
-			{
-				"name_3_name": "FlashDevelop开发环境配置",
-				"name_3_url": "Chinese/LayaAir_AS3/2D/beginners/basic/FlashDevelop_DevelopmentEnvironment/",
-				"name_3_file": "readme.md"
-			},
-			{
-				"name_3_name": "LayaAirIDE中第一个程序“Hello Layabox”",
-				"name_3_url": "Chinese/LayaAir_AS3/2D/beginners/basic/LayaAirIDE_HelloWorld/",
-				"name_3_file": "readme.md"
-			},
-			{
-				"name_3_name": "FlashBuilder中第一个程序“Hello Layabox”",
-				"name_3_url": "Chinese/LayaAir_AS3/2D/beginners/basic/FlashBuilder_HelloWorld/",
-				"name_3_file": "readme.md"
-			},
-			{
-				"name_3_name": "FlashDevelop中第一个程序“Hello Layabox”",
-				"name_3_url": "Chinese/LayaAir_AS3/2D/beginners/basic/FlashDevelop_HelloWorld/",
-				"name_3_file": "readme.md"
-			},
-			{
-				"name_3_name": "新手常见问题：配置环境之后点击运行报错、黑屏",
-				"name_3_url": "Chinese/LayaAir_AS3/2D/beginners/basic/Common_Problems/",
-				"name_3_file": "readme.md"
-			}]
-		},
-		{
-			"name_2_name": "基础概念",
-			"name_2_data": [
-			{
-				"name_3_name": "显示对象及相关概念",
-				"name_3_url": "Chinese/LayaAir_AS3/2D/beginners/basic/",
-				"name_3_file": "readme.md"
-			}]
-		},
-		{
-			"name_2_name": "文本",
-			"name_2_data": [
-			{
-				"name_3_name": "文本类API概述",
-				"name_3_url": "Chinese/LayaAir_AS3/2D/beginners/Text/API_List/",
-				"name_3_file": "readme.md"
-			},
-			{
-				"name_3_name": "文本基础样式",
-				"name_3_url": "Chinese/LayaAir_AS3/2D/beginners/Text/TextStyle/",
-				"name_3_file": "readme.md"
-			},
-			{
-				"name_3_name": "文本对齐与自动换行",
-				"name_3_url": "Chinese/LayaAir_AS3/2D/beginners/Text/TextAlign/",
-				"name_3_file": "readme.md"
-			},
-			{
-				"name_3_name": "超出文本区域的处理&滚动文本",
-				"name_3_url": "Chinese/LayaAir_AS3/2D/beginners/Text/overflow/",
-				"name_3_file": "readme.md"
-			},
-			{
-				"name_3_name": "textInput的单行输入&多行输入",
-				"name_3_url": "Chinese/LayaAir_AS3/2D/beginners/Text/textInput/",
-				"name_3_file": "readme.md"
-			},
-			{
-				"name_3_name": "位图字体的制作与使用",
-				"name_3_url": "Chinese/LayaAir_AS3/2D/beginners/Text/BitmapFont/",
-				"name_3_file": "readme.md"
-			}]
-		},
-		{
-			"name_2_name": "位图",
-			"name_2_data": [
-			{
-				"name_3_name": "显示与切换图片",
-				"name_3_url": "Chinese/LayaAir_AS3/2D/beginners/Bitmap/loadImage_drawTexture/",
-				"name_3_file": "readme.md"
-			},
-			{
-				"name_3_name": "设置遮罩",
-				"name_3_url": "Chinese/LayaAir_AS3/2D/beginners/Bitmap/Mask/",
-				"name_3_file": "readme.md"
-			},
-			{
-				"name_3_name": "设置滤镜",
-				"name_3_url": "Chinese/LayaAir_AS3/2D/beginners/Bitmap/filter/",
-				"name_3_file": "readme.md"
-			}]
-		},
-		{
-			"name_2_name": "矢量图",
-			"name_2_data": [
-			{
-				"name_3_name": "矢量绘图API概述",
-				"name_3_url": "Chinese/LayaAir_AS3/2D/beginners/Graphics/API_Overview/",
-				"name_3_file": "readme.md"
-			},
-			{
-				"name_3_name": "绘制直线与折线",
-				"name_3_url": "Chinese/LayaAir_AS3/2D/beginners/Graphics/line/",
-				"name_3_file": "readme.md"
-			},
-			{
-				"name_3_name": "绘制曲线",
-				"name_3_url": "Chinese/LayaAir_AS3/2D/beginners/Graphics/Curve/",
-				"name_3_file": "readme.md"
-			},
-			{
-				"name_3_name": "绘制三角形、多边形及根据数据绘制图案",
-				"name_3_url": "Chinese/LayaAir_AS3/2D/beginners/Graphics/poly/",
-				"name_3_file": "readme.md"
-			},
-			{
-				"name_3_name": "绘制圆形与扇形",
-				"name_3_url": "Chinese/LayaAir_AS3/2D/beginners/Graphics/Circle_pie/",
-				"name_3_file": "readme.md"
-			},
-			{
-				"name_3_name": "绘制矩形与圆角矩形",
-				"name_3_url": "Chinese/LayaAir_AS3/2D/beginners/Graphics/Rect/",
-				"name_3_file": "readme.md"
-			},
-			{
-				"name_3_name": "消除矢量图绘制锯齿",
-				"name_3_url": "Chinese/LayaAir_AS3/2D/beginners/Graphics/",
-				"name_3_file": "readme.md"
-			}]
-		},
-		{
-			"name_2_name": "动画基础",
-			"name_2_data": [
-			{
-				"name_3_name": "图集动画",
-				"name_3_url": "Chinese/LayaAir_AS3/2D/beginners/animation/atlas/",
-				"name_3_file": "readme.md"
-			},
-			{
-				"name_3_name": "缓动动画",
-				"name_3_url": "Chinese/LayaAir_AS3/2D/beginners/animation/Tween/",
-				"name_3_file": "readme.md"
-			},
-			{
-				"name_3_name": "时间轴动画",
-				"name_3_url": "Chinese/LayaAir_AS3/IDE/Use_IDE/TimelineAnimation/",
-				"name_3_file": "readme.md"
-			},
-			{
-				"name_3_name": "动效模板",
-				"name_3_url": "Chinese/LayaAir_AS3/IDE/Use_IDE/EffectAnimation/",
-				"name_3_file": "readme.md"
-			},
-			
-			{
-				"name_3_name": "Spine动画使用",
-				"name_3_url": "Chinese/LayaAir_AS3/2D/beginners/animation/spine/",
-				"name_3_file": "readme.md"
-			},
-			{
-				"name_3_name": "DragonBone动画使用",
-				"name_3_url": "Chinese/LayaAir_AS3/2D/beginners/animation/DragonBone/",
-				"name_3_file": "readme.md"
-			}]
-		},
-		{
-			"name_2_name": "数据与通信",
-			"name_2_data": [
-			{
-				"name_3_name": "HttpRequest详解",
-				"name_3_url": "Chinese/LayaAir_AS3/2D/beginners/Data_Communication/HttpRequest/",
-				"name_3_file": "readme.md"
-			},
-			{
-				"name_3_name": "WebSocket发送与接收数据",
-				"name_3_url": "Chinese/LayaAir_AS3/2D/beginners/Data_Communication/WebSocket/",
-				"name_3_file": "readme.md"
-			},
-			{
-				"name_3_name": "Byte二进制读写",
-				"name_3_url": "Chinese/LayaAir_AS3/2D/beginners/Data_Communication/Byte/",
-				"name_3_file": "readme.md"
-			},
-			{
-				"name_3_name": "JSON数据详解",
-				"name_3_url": "Chinese/LayaAir_AS3/2D/beginners/Data_Communication/json/",
-				"name_3_file": "readme.md"
-			},
-			{
-				"name_3_name": "JSONP跨域读取数据",
-				"name_3_url": "Chinese/LayaAir_AS3/2D/beginners/Data_Communication/jsonp/",
-				"name_3_file": "readme.md"
-			},
-			{
-				"name_3_name": "Web Storage数据存储",
-				"name_3_url": "Chinese/LayaAir_AS3/2D/beginners/Data_Communication/webStorage/",
-				"name_3_file": "readme.md"
-			}]
-		},
-		{
-			"name_2_name": "硬件设备相关",
-			"name_2_data": [
-			{
-				"name_3_name": "音乐与音效的播放与控制",
-				"name_3_url": "Chinese/LayaAir_AS3/2D/beginners/devices/SoundManager/",
-				"name_3_file": "readme.md"
-			},
-			{
-				"name_3_name": "陀螺仪与加速计",
-				"name_3_url": "Chinese/LayaAir_AS3/2D/beginners/devices/motion/",
-				"name_3_file": "readme.md"
-			},
-			{
-				"name_3_name": "用Geolocation获取地理位置信息",
-				"name_3_url": "Chinese/LayaAir_AS3/2D/beginners/devices/geolocation/",
-				"name_3_file": "readme.md"
-			},
-			{
-				"name_3_name": "使用百度地图显示当前位置",
-				"name_3_url": "Chinese/LayaAir_AS3/2D/beginners/devices/baiduMap/",
-				"name_3_file": "readme.md"
-			}]
-		},
-		{
-			"name_2_name": "屏幕适配",
-			"name_2_data": [
-			{
-				"name_3_name": "屏幕适配API概述",
-				"name_3_url": "Chinese/LayaAir_AS3/2D/beginners/Screen_Fit/API_Overview/",
-				"name_3_file": "readme.md"
-			},
-			{
-				"name_3_name": "对齐模式：水平对齐与垂直对齐",
-				"name_3_url": "Chinese/LayaAir_AS3/2D/beginners/Screen_Fit/Alignment/",
-				"name_3_file": "readme.md"
-			},
-			{
-				"name_3_name": "屏幕方向：自动横屏与自动竖屏的设置详解",
-				"name_3_url": "Chinese/LayaAir_AS3/2D/beginners/Screen_Fit/screenMode/",
-				"name_3_file": "readme.md"
-			},
-			{
-				"name_3_name": "屏幕适配的缩放模式详解",
-				"name_3_url": "Chinese/LayaAir_AS3/2D/beginners/Screen_Fit/Scale_Mode/",
-				"name_3_file": "readme.md"
-			}]
-		}]
-	},
-	{
-		"nav_1_name": "LayaAir IDE篇（AS3）",
-		"nav_1_data": [
-		{
-			"name_2_name": "代码模式基础",
-			"name_2_data": [
-			{
-				"name_3_name": "代码模式布局概述",
-				"name_3_url": "Chinese/LayaAir_AS3/IDE/Code_Mode/GUI_Layout/",
-				"name_3_file": "readme.md"
-			},
-			{
-				"name_3_name": "菜单栏详解",
-				"name_3_url": "Chinese/LayaAir_AS3/IDE/Code_Mode/MenuBar/",
-				"name_3_file": "readme.md"
-			},
-			{
-				"name_3_name": "工具栏介绍",
-				"name_3_url": "Chinese/LayaAir_AS3/IDE/Code_Mode/ToolBar/",
-				"name_3_file": "readme.md"
-			},
-			{
-				"name_3_name": "代码模式的快捷键设置",
-				"name_3_url": "Chinese/LayaAir_AS3/IDE/Code_Mode/shortcut_key/",
-				"name_3_file": "readme.md"
-			},
-			{
-				"name_3_name": "（旧版）项目发布详解",
-				"name_3_url": "Chinese/LayaAir_AS3/IDE/Code_Mode/release/",
-				"name_3_file": "readme.md"
-			},
-			{
-				"name_3_name": "版本管理功能介绍",
-				"name_3_url": "Chinese/LayaAir_AS3/IDE/Code_Mode/version/",
-				"name_3_file": "readme.md"
-			},
-			{
-				"name_3_name": "项目发布详解（含命令行发布）",
-				"name_3_url": "Chinese/LayaAir_AS3/IDE/Code_Mode/release3/",
-				"name_3_file": "readme.md"
-			}]
-		},
-		{
-			"name_2_name": "设计模式基础",
-			"name_2_data": [
-			{
-				"name_3_name": "设计模式界面概述",
-				"name_3_url": "Chinese/LayaAir_AS3/IDE/Design_Mode/GUI_Layout/",
-				"name_3_file": "readme.md"
-			},
-			{
-				"name_3_name": "自定义界面布局与恢复",
-				"name_3_url": "Chinese/LayaAir_AS3/IDE/Design_Mode/Custom_GUI/",
-				"name_3_file": "readme.md"
-			},
-			{
-				"name_3_name": "菜单栏介绍",
-				"name_3_url": "Chinese/LayaAir_AS3/IDE/Design_Mode/MenuBar/",
-				"name_3_file": "readme.md"
-			},
-			{
-				"name_3_name": "工具栏介绍",
-				"name_3_url": "Chinese/LayaAir_AS3/IDE/Design_Mode/ToolBar/",
-				"name_3_file": "readme.md"
-			},
-			{
-				"name_3_name": "项目管理器",
-				"name_3_url": "Chinese/LayaAir_AS3/IDE/Design_Mode/ProjectManager/",
-				"name_3_file": "readme.md"
-			},
-			{
-				"name_3_name": "资源管理器",
-				"name_3_url": "Chinese/LayaAir_AS3/IDE/Design_Mode/ResourceManager/",
-				"name_3_file": "readme.md"
-			},
-			{
-				"name_3_name": "组件库",
-				"name_3_url": "Chinese/LayaAir_AS3/IDE/Design_Mode/Component/",
-				"name_3_file": "readme.md"
-			},
-			{
-				"name_3_name": "场景编辑器",
-				"name_3_url": "Chinese/LayaAir_AS3/IDE/Design_Mode/Scene/",
-				"name_3_file": "readme.md"
-			},
-			{
-				"name_3_name": "属性设置器",
-				"name_3_url": "Chinese/LayaAir_AS3/IDE/Design_Mode/Attribute_Set/",
-				"name_3_file": "readme.md"
-			},
-			{
-				"name_3_name": "UI页面、粒子、动画、脚本新建面板详解",
-				"name_3_url": "Chinese/LayaAir_AS3/IDE/Design_Mode/NewPanel/",
-				"name_3_file": "readme.md"
-			},
-			{
-				"name_3_name": "层级管理器",
-				"name_3_url": "Chinese/LayaAir_AS3/IDE/Design_Mode/HierarchyManager/",
-				"name_3_file": "readme.md"
-			},
-			{
-				"name_3_name": "UI组件的分类与继承关系",
-				"name_3_url": "Chinese/LayaAir_AS3/IDE/Design_Mode/Component_Detailed/",
-				"name_3_file": "readme.md"
-			},
-			{
-				"name_3_name": "F9!项目设置",
-				"name_3_url": "Chinese/LayaAir_AS3/IDE/Design_Mode/F9/",
-				"name_3_file": "readme.md"
-			}]
-		},
-		{
-			"name_2_name": "使用IDE创作",
-			"name_2_data": [
-			
-			{
-				"name_3_name": "图集制作与使用详解",
-				"name_3_url": "Chinese/LayaAir_AS3/IDE/Use_IDE/Atlas/",
-				"name_3_file": "readme.md"
-			},
-			{
-				"name_3_name": "创建动画模板(EffectAnimation)",
-				"name_3_url": "Chinese/LayaAir_AS3/IDE/Use_IDE/EffectAnimation/",
-				"name_3_file": "readme.md"
-			},
-			{
-				"name_3_name": "时间轴动画编辑器详解(GraphicAnimation)",
-				"name_3_url": "Chinese/LayaAir_AS3/IDE/Use_IDE/TimelineAnimation/",
-				"name_3_file": "readme.md"
-			},
-			{
-				"name_3_name": "自定义组件的制作与使用",
-				"name_3_url": "Chinese/LayaAir_AS3/IDE/Use_IDE/customComponent/",
-				"name_3_file": "readme.md"
-			},
-			{
-				"name_3_name": "预设的使用",
-				"name_3_url": "Chinese/LayaAir_AS3/IDE/Use_IDE/PresetUse/",
-				"name_3_file": "readme.md"
-			},
-			{
-				"name_3_name": "场景管理",
-				"name_3_url": "Chinese/LayaAir_AS3/IDE/Use_IDE/Scene/",
-				"name_3_file": "readme.md"
-			},
-			{
-				"name_3_name": "Psd2UI",
-				"name_3_url": "Chinese/LayaAir_AS3/IDE/Use_IDE/PsdToUI/",
-				"name_3_file": "readme.md"
-			}]
-		},
-		{
-			"name_2_name": "IDE组件属性详解",
-			"name_2_data": [
-			{
-				"name_3_name": "组件命名规则",
-				"name_3_url": "Chinese/LayaAir_TS/IDE/Component_Detailed/NamingRules/",
-				"name_3_file": "readme.md"
-			},
-			{
-				"name_3_name": "Button属性详解",
-				"name_3_url": "Chinese/LayaAir_AS3/IDE/Component_Detailed/Button/",
-				"name_3_file": "readme.md"
-			},
-			{
-				"name_3_name": "CheckBox属性详解",
-				"name_3_url": "Chinese/LayaAir_AS3/IDE/Component_Detailed/CheckBox/",
-				"name_3_file": "readme.md"
-			},
-			{
-				"name_3_name": "Clip属性详解",
-				"name_3_url": "Chinese/LayaAir_AS3/IDE/Component_Detailed/Clip/",
-				"name_3_file": "readme.md"
-			},
-			{
-				"name_3_name": "ComboBox属性详解",
-				"name_3_url": "Chinese/LayaAir_AS3/IDE/Component_Detailed/ComboBox/",
-				"name_3_file": "readme.md"
-			},
-			{
-				"name_3_name": "Image属性详解",
-				"name_3_url": "Chinese/LayaAir_AS3/IDE/Component_Detailed/Image/",
-				"name_3_file": "readme.md"
-			},
-			{
-				"name_3_name": "Label属性详解",
-				"name_3_url": "Chinese/LayaAir_AS3/IDE/Component_Detailed/Label/",
-				"name_3_file": "readme.md"
-			},
-			{
-				"name_3_name": "List属性详解",
-				"name_3_url": "Chinese/LayaAir_AS3/IDE/Component_Detailed/List/",
-				"name_3_file": "readme.md"
-			},
-			{
-				"name_3_name": "HScrollBar属性详解",
-				"name_3_url": "Chinese/LayaAir_AS3/IDE/Component_Detailed/HScrollBar/",
-				"name_3_file": "readme.md"
-			},
-			{
-				"name_3_name": "VScrollBar属性详解",
-				"name_3_url": "Chinese/LayaAir_AS3/IDE/Component_Detailed/VScrollBar/",
-				"name_3_file": "readme.md"
-			},
-			{
-				"name_3_name": "HSlider属性详解",
-				"name_3_url": "Chinese/LayaAir_AS3/IDE/Component_Detailed/HSlider/",
-				"name_3_file": "readme.md"
-			},
-			{
-				"name_3_name": "VSlider属性详解",
-				"name_3_url": "Chinese/LayaAir_AS3/IDE/Component_Detailed/VSlider/",
-				"name_3_file": "readme.md"
-			},
-			{
-				"name_3_name": "ProgressBar属性详解",
-				"name_3_url": "Chinese/LayaAir_AS3/IDE/Component_Detailed/ProgressBar/",
-				"name_3_file": "readme.md"
-			},
-			{
-				"name_3_name": "RadioGroup属性详解",
-				"name_3_url": "Chinese/LayaAir_AS3/IDE/Component_Detailed/RadioGroup/",
-				"name_3_file": "readme.md"
-			},
-			{
-				"name_3_name": "Tab属性详解",
-				"name_3_url": "Chinese/LayaAir_AS3/IDE/Component_Detailed/Tab/",
-				"name_3_file": "readme.md"
-			},
-			{
-				"name_3_name": "Tree属性详解",
-				"name_3_url": "Chinese/LayaAir_AS3/IDE/Component_Detailed/Tree/",
-				"name_3_file": "readme.md"
-			},
-			{
-				"name_3_name": "ViewStack属性详解",
-				"name_3_url": "Chinese/LayaAir_AS3/IDE/Component_Detailed/ViewStack/",
-				"name_3_file": "readme.md"
-			},
-			{
-				"name_3_name": "Animation属性详解",
-				"name_3_url": "Chinese/LayaAir_AS3/IDE/Component_Detailed/Animation/",
-				"name_3_file": "readme.md"
-			},
-			{
-				"name_3_name": "Panel使用文档",
-				"name_3_url": "Chinese/LayaAir_AS3/IDE/Component_Detailed/Panel/",
-				"name_3_file": "readme.md"
-			}]
-		},
-		{
-			"name_2_name": "脚本使用",
-			"name_2_data": [
-			{
-			  "name_3_name": "脚本化",
-				"name_3_url": "Chinese/LayaAir_AS3/IDE/ScriptUse/componentscritp/",
-				"name_3_file": "readme.md"
-			},
-			{
-				"name_3_name": "runTime使用",
-				"name_3_url": "Chinese/LayaAir_AS3/IDE/ScriptUse/runtime/",
-				"name_3_file": "readme.md"
-			}]
-		},
-		{
-			"name_2_name": "使用2d物理系统",
-			"name_2_data": [
-			{
-			  "name_3_name": "物理系统概述",
-				"name_3_url": "Chinese/LayaAir_AS3/IDE/Use_physics/physicsSystem/",
-				"name_3_file": "readme.md"
-			},
-			{
-			  "name_3_name": "物理(一)(距离关节)",
-				"name_3_url": "Chinese/LayaAir_AS3/IDE/Use_physics/joint/",
-				"name_3_file": "readme.md"
-			},
-			{
-			  "name_3_name": "物理(二)(平移，旋转，齿轮)",
-				"name_3_url": "Chinese/LayaAir_AS3/IDE/Use_physics/GearJoint/",
-				"name_3_file": "readme.md"
-			},
-			{
-			  "name_3_name": "物理(三)(马达，轮子，滑轮)",
-				"name_3_url": "Chinese/LayaAir_AS3/IDE/Use_physics/motoJoint/",
-				"name_3_file": "readme.md"
-			},
-			{
-			  "name_3_name": "物理(四)(焊接，绳索，鼠标)",
-				"name_3_url": "Chinese/LayaAir_AS3/IDE/Use_physics/weld/",
-				"name_3_file": "readme.md"
-			}]
-		}]
-	},
-	{
-		"nav_1_name": "2D进阶篇（AS3）",
-		"nav_1_data": [
-		{
-			"name_2_name": "调试相关",
-			"name_2_data": [
-			{
-				"name_3_name": "LayaAir DebugPanel 调试工具",
-				"name_3_url": "Chinese/LayaAir_AS3/2D/advanced/debug/DebugPanel/",
-				"name_3_file": "readme.md"
-			}]
-		},
-		{
-			"name_2_name": "游戏加载策略",
-			"name_2_data": [
-			{
-				"name_3_name": "二进制图片",
-				"name_3_url": "Chinese/LayaAir_AS3/2D/advanced/loadStrategy/binary_Image/",
-				"name_3_file": "readme.md"
-			},
-			{
-				"name_3_name": "多线程worker",
-				"name_3_url": "Chinese/LayaAir_AS3/2D/advanced/loadStrategy/worker/",
-				"name_3_file": "readme.md"
-			}]
-		},
-		{
-			"name_2_name": "性能优化",
-			"name_2_data": [
-			{
-				"name_3_name": "性能统计面板介绍",
-				"name_3_url": "Chinese/LayaAir_AS3/2D/advanced/PerformanceOptimization/Stat_Panel/",
-				"name_3_file": "readme.md"
-			},
-			{
-				"name_3_name": "内存优化方式",
-				"name_3_url": "Chinese/LayaAir_AS3/2D/advanced/PerformanceOptimization/memory/",
-				"name_3_file": "readme.md"
-			},
-			{
-				"name_3_name": "渲染优化原则",
-				"name_3_url": "Chinese/LayaAir_AS3/2D/advanced/PerformanceOptimization/rendering/",
-				"name_3_file": "readme.md"
-			},
-			{
-				"name_3_name": "CacheAs静态缓存优化",
-				"name_3_url": "Chinese/LayaAir_AS3/2D/advanced/PerformanceOptimization/cacheAs/",
-				"name_3_file": "readme.md"
-			},
-			{
-				"name_3_name": "CPU优化方式",
-				"name_3_url": "Chinese/LayaAir_AS3/2D/advanced/PerformanceOptimization/CPU/",
-				"name_3_file": "readme.md"
-			},
-			{
-				"name_3_name": "其它优化策略",
-				"name_3_url": "Chinese/LayaAir_AS3/2D/advanced/PerformanceOptimization/other/",
-				"name_3_file": "readme.md"
-			},
-			{
-				"name_3_name": "使用chrome的性能分析器",
-				"name_3_url": "Chinese/LayaAir_AS3/2D/advanced/PerformanceOptimization/Chrome_Profiles/",
-				"name_3_file": "readme.md"
-			},
-			{
-				"name_3_name": "Texture内存回收",
-				"name_3_url": "Chinese/LayaAir_AS3/2D/advanced/PerformanceOptimization/clearTextureRes/",
-				"name_3_file": "readme.md"
-			}]
-		},
-		{
-			"name_2_name": "动画进阶",
-			"name_2_data": [
-			{
-				"name_3_name": "骨骼动画进阶",
-				"name_3_url": "Chinese/LayaAir_AS3/2D/advanced/animation/bone/",
-				"name_3_file": "readme.md"
-			}]
-		},
-		{
-			"name_2_name": "扩展模块",
-			"name_2_data": [
-			{
-				"name_3_name": "用LayaAir引擎解析Tiled Map地图",
-				"name_3_url": "Chinese/LayaAir_AS3/2D/advanced/extension_modules/TiledMap/",
-				"name_3_file": "readme.md"
-			},
-			{
-				"name_3_name": "LayaAir和原生DOM交互",
-				"name_3_url": "Chinese/LayaAir_AS3/2D/advanced/extension_modules/DOM/",
-				"name_3_file": "readme.md"
-			},
-			{
-				"name_3_name": "AS3与JS混合编码",
-				"name_3_url": "Chinese/LayaAir_AS3/2D/advanced/extension_modules/AS_JS_mixed_programming/",
-				"name_3_file": "readme.md"
-			}]
-		}]
-	},
-	{
-		"nav_1_name": "LayaAir 3D引擎（AS3）",
-		"nav_1_data": [
-		{
-			"name_2_name": "快速开始一个LayaAir3D项目",
-			"name_2_data": [
-			{
-				"name_3_name": "IDE创建3D示例项目",
-				"name_3_url": "Chinese/LayaAir_AS3/3D/QuickStart/QuickStart/",
-				"name_3_file": "readme.md"
-			},
-			{
-				"name_3_name": "Stat统计面板的介绍",
-				"name_3_url": "Chinese/LayaAir_AS3/3D/QuickStart/Stat_panel_introduction/",
-				"name_3_file": "readme.md"
-			},
-			{
-				"name_3_name": "LayaAir3D概述",
-				"name_3_url": "Chinese/LayaAir_AS3/3D/QuickStart/LayaAir3D_Introduction/",
-				"name_3_file": "readme.md"
-			},
-			{
-				"name_3_name": "如何使用下载的官方示例",
-				"name_3_url": "Chinese/LayaAir_AS3/3D/QuickStart/How_to_use_the_new_demo_as/",
-				"name_3_file": "readme.md"
-			}]
-		},
-		{
-			"name_2_name": "LayaAir3D图形系统基础概念",
-			"name_2_data": [
-			{
-				"name_3_name": "LayaAir3D坐标系统",
-				"name_3_url": "Chinese/LayaAir_AS3/3D/Graphics_based/Reference_frame/",
-				"name_3_file": "readme.md"
-			},
-			{
-				"name_3_name": "LayaAir3D基础数学工具",
-				"name_3_url": "Chinese/LayaAir_AS3/3D/Graphics_based/Basic_math_tools/",
-				"name_3_file": "readme.md"
-			},
-			{
-				"name_3_name": "LayaAir3D中的Transform变换",
-				"name_3_url": "Chinese/LayaAir_AS3/3D/Graphics_based/Transform/",
-				"name_3_file": "readme.md"
-			}]
-		},
-		{
-			"name_2_name": "LayaAir3D之Unity插件使用",
-			"name_2_data": [
-			{
-				"name_3_name": "Unity3D插件介绍",
-				"name_3_url": "Chinese/LayaAir_AS3/3D/Unity_plug-in/Introduction_to_the_Unity_plug-in/",
-				"name_3_file": "readme.md"
-			},
-			{
-				"name_3_name": "快速预览场景",
-				"name_3_url": "Chinese/LayaAir_AS3/3D/Unity_plug-in/Quick_Preview/",
-				"name_3_file": "readme.md"
-			},
-			{
-				"name_3_name": "预设/场景的导出",
-				"name_3_url": "Chinese/LayaAir_AS3/3D/Unity_plug-in/Sprite3D_or_Scene3D_export/",
-				"name_3_file": "readme.md"
-			}]
-		},
-		{
-			"name_2_name": "LayaAir3D之资源加载",
-			"name_2_data": [
-			{
-				"name_3_name": "资源概述",
-				"name_3_url": "Chinese/LayaAir_AS3/3D/Resourceloading/Summary_of_resource/",
-				"name_3_file": "readme.md"
-			},
-			{
-				"name_3_name": "资源加载",
-				"name_3_url": "Chinese/LayaAir_AS3/3D/Resourceloading/Resource_to_load/",
-				"name_3_file": "readme.md"
-			}]
-		},
-		{
-			"name_2_name": "LayaAir3D之场景渲染配置",
-			"name_2_data": [
-			{
-				"name_3_name": "场景渲染配置",
-				"name_3_url": "Chinese/LayaAir_AS3/3D/Scene_render_Settings/Scene_render_Settings/",
-				"name_3_file": "readme.md"
-			},
-			{
-				"name_3_name": "场景雾化",
-				"name_3_url": "Chinese/LayaAir_AS3/3D/Scene_render_Settings/Scene_atomization/",
-				"name_3_file": "readme.md"
-			},
-			{
-				"name_3_name": "场景天空",
-				"name_3_url": "Chinese/LayaAir_AS3/3D/Scene_render_Settings/Env_Sky/",
-				"name_3_file": "readme.md"
-			},
-			{
-				"name_3_name": "场景环境光",
-				"name_3_url": "Chinese/LayaAir_AS3/3D/Scene_render_Settings/Ambient_Light/",
-				"name_3_file": "readme.md"
-			},
-			{
-				"name_3_name": "场景环境反射",
-				"name_3_url": "Chinese/LayaAir_AS3/3D/Scene_render_Settings/Env_Reflection/",
-				"name_3_file": "readme.md"
-			},
-			{
-				"name_3_name": "光照贴图",
-				"name_3_url": "Chinese/LayaAir_AS3/3D/Scene_render_Settings/LightMap/",
-				"name_3_file": "readme.md"
-			}]
-		},
-		{
-			"name_2_name": "LayaAir3D之Camera",
-			"name_2_data": [
-			{
-				"name_3_name": "摄像机概述",
-				"name_3_url": "Chinese/LayaAir_AS3/3D/Camera/Camera_Overview/",
-				"name_3_file": "readme.md"
-			},
-			{
-				"name_3_name": "从Unity中编辑并导出摄像机",
-				"name_3_url": "Chinese/LayaAir_AS3/3D/Camera/Export_the_camera_from_unity/",
-				"name_3_file": "readme.md"
-			},
-			{
-				"name_3_name": "摄像机的移动和旋转",
-				"name_3_url": "Chinese/LayaAir_AS3/3D/Camera/Camera_Transfrom/",
-				"name_3_file": "readme.md"
-			},
-			{
-				"name_3_name": "摄像机的正交投影和透视投影",
-				"name_3_url": "Chinese/LayaAir_AS3/3D/Camera/Orthographic_projection_and_Perspective projection/",
-				"name_3_file": "readme.md"
-			},
-			{
-				"name_3_name": "摄像机的裁剪和视野",
-				"name_3_url": "Chinese/LayaAir_AS3/3D/Camera/Camera_clipping_and_view/",
-				"name_3_file": "readme.md"
-			},
-			{
-				"name_3_name": "摄像机的横纵比",
-				"name_3_url": "Chinese/LayaAir_AS3/3D/Camera/Camera_AspectRatio/",
-				"name_3_file": "readme.md"
-			},
-			{
-				"name_3_name": "摄像机捕捉目标",
-				"name_3_url": "Chinese/LayaAir_AS3/3D/Camera/Camera_LookAt/",
-				"name_3_file": "readme.md"
-			},
-			{
-				"name_3_name": "摄像机的背景色和天空盒",
-				"name_3_url": "Chinese/LayaAir_AS3/3D/Camera/Background_color_with_Skybox/",
-				"name_3_file": "readme.md"
-			},
-			{
-				"name_3_name": "多摄像机窗口的使用",
-				"name_3_url": "Chinese/LayaAir_AS3/3D/Camera/MultiCamera/",
-				"name_3_file": "readme.md"
-			},
-			{
-				"name_3_name": "如何从摄像机创建一条射线",
-				"name_3_url": "Chinese/LayaAir_AS3/3D/Camera/Camera_Ray/",
-				"name_3_file": "readme.md"
-			},
-			{
-				"name_3_name": "可视遮罩层Layer",
-				"name_3_url": "Chinese/LayaAir_AS3/3D/Camera/Camera_Layer/",
-				"name_3_file": "readme.md"
-			},
-			{
-				"name_3_name": "目标纹理的使用",
-				"name_3_url": "Chinese/LayaAir_AS3/3D/Camera/RenderTarget/",
-				"name_3_file": "readme.md"
-			}]
-		},
-		{
-			"name_2_name": "LayaAir3D之灯光",
-			"name_2_data": [
-			{
-				"name_3_name": "灯光的简介",
-				"name_3_url": "Chinese/LayaAir_AS3/3D/light/Introduction_of_light/",
-				"name_3_file": "readme.md"
-			},
-			{
-				"name_3_name": "PointLight介绍",
-				"name_3_url": "Chinese/LayaAir_AS3/3D/light/PointLight/",
-				"name_3_file": "readme.md"
-			},
-			{
-				"name_3_name": "DirectionLight介绍",
-				"name_3_url": "Chinese/LayaAir_AS3/3D/light/DirectionLight/",
-				"name_3_file": "readme.md"
-			},
-			{
-				"name_3_name": "SpotLight介绍",
-				"name_3_url": "Chinese/LayaAir_AS3/3D/light/SpotLight/",
-				"name_3_file": "readme.md"
-			},
-			{
-				"name_3_name": "如何为灯光添加阴影",
-				"name_3_url": "Chinese/LayaAir_AS3/3D/light/Shadow/",
-				"name_3_file": "readme.md"
-			}]
-		},
-		{
-			"name_2_name": "LayaAir3D之精灵",
-			"name_2_data": [
-			{
-				"name_3_name": "Sprite3D的概述",
-				"name_3_url": "Chinese/LayaAir_AS3/3D/Sprite3D/Sprite3D_Profile/",
-				"name_3_file": "readme.md"
-			},
-			{
-				"name_3_name": "Sprite3D的Layer",
-				"name_3_url": "Chinese/LayaAir_AS3/3D/Sprite3D/Sprite3D_Layer/",
-				"name_3_file": "readme.md"
-			},
-			{
-				"name_3_name": "Sprite3D的克隆",
-				"name_3_url": "Chinese/LayaAir_AS3/3D/Sprite3D/Sprite3D_Clone/",
-				"name_3_file": "readme.md"
-			},
-			{
-				"name_3_name": "Sprite3D添加组件或脚本",
-				"name_3_url": "Chinese/LayaAir_AS3/3D/Sprite3D/Sprite3D_addComponent/",
-				"name_3_file": "readme.md"
-			},
-			{
-				"name_3_name": "各种渲染精灵简介",
-				"name_3_url": "Chinese/LayaAir_AS3/3D/Sprite3D/Rendering-Sprite3d_Profile/",
-				"name_3_file": "readme.md"
-			}]
-		},
-		{
-			"name_2_name": "LayaAir3D之模型和网格",
-			"name_2_data": [
-			{
-				"name_3_name": "模型概述",
-				"name_3_url": "Chinese/LayaAir_AS3/3D/Model_and_Mesh/Overview_of_model/",
-				"name_3_file": "readme.md"
-			},
-			{
-				"name_3_name": "Mesh的概述",
-				"name_3_url": "Chinese/LayaAir_AS3/3D/Model_and_Mesh/Overview_of_Mesh/",
-				"name_3_file": "readme.md"
-			},
-			{
-				"name_3_name": "从Unity中导出模型",
-				"name_3_url": "Chinese/LayaAir_AS3/3D/Model_and_Mesh/Export_Sprite3D_from_Unity/",
-				"name_3_file": "readme.md"
-			},
-			{
-				"name_3_name": "通过PrimitiveMesh创建简单Mesh",
-				"name_3_url": "Chinese/LayaAir_AS3/3D/Model_and_Mesh/Create_Mesh_by_PrimitiveMesh/",
-				"name_3_file": "readme.md"
-			},
-			{
-				"name_3_name": "模型的功能介绍",
-				"name_3_url": "Chinese/LayaAir_AS3/3D/Model_and_Mesh/Use_of_model/",
-				"name_3_file": "readme.md"
-			}]
-		},
-		{
-			"name_2_name": "LayaAir3D的内存管理",
-			"name_2_data": [
-			{
-				"name_3_name": "销毁资源并释放内存",
-				"name_3_url": "Chinese/LayaAir_AS3/3D/Memory_Manage/Destroys_res_and_memory/",
-				"name_3_file": "readme.md"
-			},
-			{
-				"name_3_name": "批量销毁释放内存",
-				"name_3_url": "Chinese/LayaAir_AS3/3D/Memory_Manage/DestroyUnusedResources/",
-				"name_3_file": "readme.md"
-			}]
-		},
-		{
-			"name_2_name": "3D引擎基础",
-			"name_2_data": [
-			{
-				"name_3_name": "LayaAir3D之模型",
-				"name_3_url": "Chinese/LayaAir_AS3/3D/beginners/model/",
-				"name_3_file": "readme.md"
-			},
-			{
-				"name_3_name": "LayaAir3D之材质概述",
-				"name_3_url": "Chinese/LayaAir_AS3/3D/beginners/materials_overview/",
-				"name_3_file": "readme.md"
-			},
-			{
-				"name_3_name": "LayaAir3D之材质光色与贴图",
-				"name_3_url": "Chinese/LayaAir_AS3/3D/beginners/textures/",
-				"name_3_file": "readme.md"
-			},
-			{
-				"name_3_name": "LayaAir3D之BlinnPhong材质",
-				"name_3_url": "Chinese/LayaAir_AS3/3D/beginners/materials_blinnPhong/",
-				"name_3_file": "readme.md"
-			},
-			{
-				"name_3_name": "Laya2.0模型动画的使用",
-				"name_3_url": "Chinese/LayaAir_AS3/3D/beginners/Animator3D/",
-				"name_3_file": "readme.md"
-			},
-			{
-				"name_3_name": "LayaAir3D之动画一",
-				"name_3_url": "Chinese/LayaAir_AS3/3D/beginners/animation1/",
-				"name_3_file": "readme.md"
-			},
-			{
-				"name_3_name": "LayaAir3D之动画二",
-				"name_3_url": "Chinese/LayaAir_AS3/3D/beginners/animation2/",
-				"name_3_file": "readme.md"
-			},
-			{
-				"name_3_name": "LayaAir3D之脚本组件",
-				"name_3_url": "Chinese/LayaAir_AS3/3D/beginners/Script_component3D/",
-				"name_3_file": "readme.md"
-			},
-			{
-				"name_3_name": "LayaAir3D之骨骼挂点",
-				"name_3_url": "Chinese/LayaAir_AS3/3D/beginners/bonePoint/",
-				"name_3_file": "readme.md"
-			},
-			{
-				"name_3_name": "LayaAir3D之鼠标交互",
-				"name_3_url": "Chinese/LayaAir_AS3/3D/beginners/mouse/",
-				"name_3_file": "readme.md"
-			},
-			{
-				"name_3_name": "LayaAir3D之物理快速入门",
-				"name_3_url": "Chinese/LayaAir_AS3/3D/beginners/PhysicsBasic/",
-				"name_3_file": "readme.md"
-			},
-			{
-				"name_3_name": "LayaAir3D之碰撞器与刚体",
-				"name_3_url": "Chinese/LayaAir_AS3/3D/beginners/colliderAndRigidbody/",
-				"name_3_file": "readme.md"
-			},
-			{
-				"name_3_name": "LayaAir3D之触发器与碰撞过滤",
-				"name_3_url": "Chinese/LayaAir_AS3/3D/beginners/triggerAndCollidWith/",
-				"name_3_file": "readme.md"
-			},
-			{
-				"name_3_name": "LayaAir3D之资源释放",
-				"name_3_url": "Chinese/LayaAir_AS3/3D/beginners/assetsDispose/",
-				"name_3_file": "readme.md"
-			}]
-		}]
-	},
-	{
-		"nav_1_name": "小游戏适配文档（微信、百度、小米）",
-		"nav_1_data": [
-		{
-			"name_2_name": "微信小游戏",
-			"name_2_data": [
-			{
-				"name_3_name": "微信小游戏入门介绍",
-				"name_3_url": "Chinese/miniGame/wechat/AS/introduction/",
-				"name_3_file": "readme.md"
-			},
-			{
-				"name_3_name": "创建第一个微信小游戏",
-				"name_3_url": "Chinese/miniGame/wechat/AS/novice/",
-				"name_3_file": "readme.md"
-			},
-			{
-				"name_3_name": "老项目适配微信小游戏详解",
-				"name_3_url": "Chinese/miniGame/wechat/AS/old_adapter/",
-				"name_3_file": "readme.md"
-			},
-			{
-				"name_3_name": "小游戏发布工具与小游戏目录介绍",
-				"name_3_url": "Chinese/miniGame/wechat/AS/publishing_tools/",
-				"name_3_file": "readme.md"
-			},{
-				"name_3_name": "微信小游戏的4M本地包与动态资源加载",
-				"name_3_url": "Chinese/miniGame/wechat/AS/4M/",
-				"name_3_file": "readme.md"
-			},{
-				"name_3_name": "微信小游戏的50M物理缓存管理",
-				"name_3_url": "Chinese/miniGame/wechat/AS/50M/",
-				"name_3_file": "readme.md"
-			},{
-				"name_3_name": "微信小游戏分包实战",
-				"name_3_url": "Chinese/miniGame/wechat/AS/subpackage/",
-				"name_3_file": "readme.md"
-			},{
-				"name_3_name": "微信小游戏开放域",
-				"name_3_url": "Chinese/miniGame/wechat/AS/openDomain/",
-				"name_3_file": "readme.md"
-			},{
-				"name_3_name": "微信小游戏常见问题汇总（10.25更新）",
-				"name_3_url": "Chinese/miniGame/wechat/AS/FAQ/",
-				"name_3_file": "readme.md"
-			}]
-		},
-		{
-			"name_2_name": "百度小游戏",
-			"name_2_data": [
-			{
-				"name_3_name": "百度小游戏入门介绍",
-				"name_3_url": "Chinese/miniGame/baidu/AS/introduction/",
-				"name_3_file": "readme.md"
-			},
-			{
-				"name_3_name": "创建第一个百度小游戏",
-				"name_3_url": "Chinese/miniGame/baidu/AS/novice/",
-				"name_3_file": "readme.md"
-			},
-			{
-				"name_3_name": "老项目适配百度小游戏详解",
-				"name_3_url": "Chinese/miniGame/baidu/AS/old_adapter/",
-				"name_3_file": "readme.md"
-			},
-			{
-				"name_3_name": "百度小游戏的5M本地包与动态资源加载",
-				"name_3_url": "Chinese/miniGame/baidu/AS/4M/",
-				"name_3_file": "readme.md"
-			},{
-				"name_3_name": "百度小游戏的50M物理缓存管理",
-				"name_3_url": "Chinese/miniGame/baidu/AS/50M/",
-				"name_3_file": "readme.md"
-			}]
-		},
-		{
-			"name_2_name": "小米快游戏",
-			"name_2_data": [
-			{
-				"name_3_name": "小米快游戏发布与调试指南",
-				"name_3_url": "Chinese/miniGame/mi/rundebug/",
-				"name_3_file": "readme.md"
-			}]
-		}]
-	},
-	{
-		"nav_1_name": "LayaNative原生服务",
-		"nav_1_data": [
-		{
-			"name_2_name": "LayaNative一步一步",
-			"name_2_data": [
-			{
-				"name_3_name": "测试App安装",
-				"name_3_url": "Chinese/LayaNative/How_To_Use_Runtime/",
-				"name_3_file": "readme.md"
-			},
-			{
-				"name_3_name": "运行Hello LayaBox项目",
-				"name_3_url": "Chinese/LayaNative/run_HelloLayaBox/",
-				"name_3_file": "README.md"
-			},
-			{
-				"name_3_name": "LayaNative不是浏览器",
-				"name_3_url": "Chinese/LayaNative/native_index/",
-				"name_3_file": "README.md"
-			}]
-		},
-		{
-			"name_2_name": "LayaNative基础文档",
-			"name_2_data": [
-			{
-				"name_3_name": "LayaNative综述",
-				"name_3_url": "Chinese/LayaNative/LayaNative_Introduction/",
-				"name_3_file": "readme.md"
-			},
-			{
-				"name_3_name": "横竖屏设置",
-				"name_3_url": "Chinese/LayaNative/screen_orientation/",
-				"name_3_file": "README.md"
-			},
-			{
-				"name_3_name": "关于声音",
-				"name_3_url": "Chinese/LayaNative/sound/",
-				"name_3_file": "README.md"
-			},
-			{
-				"name_3_name": "启动画面LoadingView",
-				"name_3_url": "Chinese/LayaNative/loading_view_new/",
-				"name_3_file": "README.md"
-			},
-			{
-				"name_3_name": "关于网络监听",
-				"name_3_url": "Chinese/LayaNative/network/",
-				"name_3_file": "README.md"
-			},
-			{
-				"name_3_name": "关于iOS-IPV6",
-				"name_3_url": "Chinese/LayaNative/ipv6/",
-				"name_3_file": "README.md"
-			},
-			{
-				"name_3_name": "关于LocalStorage",
-				"name_3_url": "Chinese/LayaNative/LocalStrorage/",
-				"name_3_file": "README.md"
-			},
-			{
-				"name_3_name": "处理Android后退按钮",
-				"name_3_url": "Chinese/LayaNative/Android_BackPress/",
-				"name_3_file": "README.md"
-			},
-			{
-				"name_3_name": "Android真机调试JavaScript",
-				"name_3_url": "Chinese/LayaNative/real_device_debugging/",
-				"name_3_file": "README.md"
-			},
-			{
-				"name_3_name": "其他",
-				"name_3_url": "Chinese/LayaNative/Other_settings/",
-				"name_3_file": "README.md"
-			}]
-		},
-		{
-			"name_2_name": "LayaNative进阶",
-			"name_2_data": [
-			{
-				"name_3_name": "缓存工具-layadcc",
-				"name_3_url": "Chinese/LayaNative/LayaDcc_Tool/",
-				"name_3_file": "readme.md"
-			},
-			{
-				"name_3_name": "二次开发",
-				"name_3_url": "Chinese/LayaNative/Secondary_Development/",
-				"name_3_file": "readme.md"
-			},
-			{
-				"name_3_name": "iOS-App内购",
-				"name_3_url": "Chinese/LayaNative/In_APP_Purchase_IOS/",
-				"name_3_file": "readme.md"
-			},
-			{
-				"name_3_name": "webview",
-				"name_3_url": "Chinese/LayaNative/webview/",
-				"name_3_file": "README.md"
-			},
-			{
-				"name_3_name": "嵌入字体",
-				"name_3_url": "Chinese/LayaNative/built_in_font/",
-				"name_3_file": "README.md"
-			},
-			{
-				"name_3_name": "zip更新",
-				"name_3_url": "Chinese/LayaNative/zipUpdate/",
-				"name_3_file": "readme.md"
-			},
-			{
-				"name_3_name": "APK扩展机制",
-				"name_3_url": "Chinese/LayaNative/apk_expansion/",
-				"name_3_file": "README.md"
-			},
-			{
-				"name_3_name": "APK-update",
-				"name_3_url": "Chinese/LayaNative/apk-update/",
-				"name_3_file": "README.md"
-			}]
-		},
-		{
-			"name_2_name": "LayaNative工具使用",
-			"name_2_data": [
-			{
-				"name_3_name": "layanative 命令行工具使用",
-				"name_3_url": "Chinese/LayaNative/build_Cmd/",
-				"name_3_file": "README.md"
-			},
-			{
-				"name_3_name": "使用IDE构建工程",
-				"name_3_url": "Chinese/LayaNative/build_Tool/",
-				"name_3_file": "readme.md"
-			}]
-		}]
-	},
-	{
-		"nav_1_name": "常见问题汇总(持续更新)",
-		"nav_1_data": [
-		{
-			"name_2_name": "2.0常见问题",
-			"name_2_data": [
-			{
-				"name_3_name": "2.0新特性常见问题",
-				"name_3_url": "Chinese/FAQ/2dFAQ/",
-				"name_3_file": "readme.md"
-			},
-			{
-				"name_3_name": "3d常见问题",
-				"name_3_url": "Chinese/FAQ/3dFAQ/",
-				"name_3_file": "readme.md"
-			},
-			{
-				"name_3_name": "LayaAirIDE常见问题",
-				"name_3_url": "Chinese/FAQ/IDE/",
-				"name_3_file": "readme.md"
-			}]
-		}]
-	}]
-},
-{
 	"name": "TypeScript",
 	"data": [
 	{
@@ -2456,6 +1127,15 @@
 			{
 				"name_3_name": "小米快游戏发布与调试指南",
 				"name_3_url": "Chinese/miniGame/mi/rundebug/",
+				"name_3_file": "readme.md"
+			}]
+		},
+		{
+			"name_2_name": "OPPO小游戏",
+			"name_2_data": [
+			{
+				"name_3_name": "OPPO小游戏发布与调试指南",
+				"name_3_url": "Chinese/miniGame/oppo/rundebug/",
 				"name_3_file": "readme.md"
 			}]
 		}]
@@ -3660,7 +2340,7 @@
 		}]
 	},
 	{
-		"nav_1_name": "小游戏适配文档（微信、百度、小米）",
+		"nav_1_name": "小游戏适配文档",
 		"nav_1_data": [
 		{
 			"name_2_name": "微信小游戏",
@@ -3741,6 +2421,1353 @@
 			{
 				"name_3_name": "小米快游戏发布与调试指南",
 				"name_3_url": "Chinese/miniGame/mi/rundebug/",
+				"name_3_file": "readme.md"
+			}]
+		},
+		{
+			"name_2_name": "OPPO小游戏",
+			"name_2_data": [
+			{
+				"name_3_name": "OPPO小游戏发布与调试指南",
+				"name_3_url": "Chinese/miniGame/oppo/rundebug/",
+				"name_3_file": "readme.md"
+			}]
+		}]
+	},
+	{
+		"nav_1_name": "LayaNative原生服务",
+		"nav_1_data": [
+		{
+			"name_2_name": "LayaNative一步一步",
+			"name_2_data": [
+			{
+				"name_3_name": "测试App安装",
+				"name_3_url": "Chinese/LayaNative/How_To_Use_Runtime/",
+				"name_3_file": "readme.md"
+			},
+			{
+				"name_3_name": "运行Hello LayaBox项目",
+				"name_3_url": "Chinese/LayaNative/run_HelloLayaBox/",
+				"name_3_file": "README.md"
+			},
+			{
+				"name_3_name": "LayaNative不是浏览器",
+				"name_3_url": "Chinese/LayaNative/native_index/",
+				"name_3_file": "README.md"
+			}]
+		},
+		{
+			"name_2_name": "LayaNative基础文档",
+			"name_2_data": [
+			{
+				"name_3_name": "LayaNative综述",
+				"name_3_url": "Chinese/LayaNative/LayaNative_Introduction/",
+				"name_3_file": "readme.md"
+			},
+			{
+				"name_3_name": "横竖屏设置",
+				"name_3_url": "Chinese/LayaNative/screen_orientation/",
+				"name_3_file": "README.md"
+			},
+			{
+				"name_3_name": "关于声音",
+				"name_3_url": "Chinese/LayaNative/sound/",
+				"name_3_file": "README.md"
+			},
+			{
+				"name_3_name": "启动画面LoadingView",
+				"name_3_url": "Chinese/LayaNative/loading_view_new/",
+				"name_3_file": "README.md"
+			},
+			{
+				"name_3_name": "关于网络监听",
+				"name_3_url": "Chinese/LayaNative/network/",
+				"name_3_file": "README.md"
+			},
+			{
+				"name_3_name": "关于iOS-IPV6",
+				"name_3_url": "Chinese/LayaNative/ipv6/",
+				"name_3_file": "README.md"
+			},
+			{
+				"name_3_name": "关于LocalStorage",
+				"name_3_url": "Chinese/LayaNative/LocalStrorage/",
+				"name_3_file": "README.md"
+			},
+			{
+				"name_3_name": "处理Android后退按钮",
+				"name_3_url": "Chinese/LayaNative/Android_BackPress/",
+				"name_3_file": "README.md"
+			},
+			{
+				"name_3_name": "Android真机调试JavaScript",
+				"name_3_url": "Chinese/LayaNative/real_device_debugging/",
+				"name_3_file": "README.md"
+			},
+			{
+				"name_3_name": "其他",
+				"name_3_url": "Chinese/LayaNative/Other_settings/",
+				"name_3_file": "README.md"
+			}]
+		},
+		{
+			"name_2_name": "LayaNative进阶",
+			"name_2_data": [
+			{
+				"name_3_name": "缓存工具-layadcc",
+				"name_3_url": "Chinese/LayaNative/LayaDcc_Tool/",
+				"name_3_file": "readme.md"
+			},
+			{
+				"name_3_name": "二次开发",
+				"name_3_url": "Chinese/LayaNative/Secondary_Development/",
+				"name_3_file": "readme.md"
+			},
+			{
+				"name_3_name": "iOS-App内购",
+				"name_3_url": "Chinese/LayaNative/In_APP_Purchase_IOS/",
+				"name_3_file": "readme.md"
+			},
+			{
+				"name_3_name": "webview",
+				"name_3_url": "Chinese/LayaNative/webview/",
+				"name_3_file": "README.md"
+			},
+			{
+				"name_3_name": "嵌入字体",
+				"name_3_url": "Chinese/LayaNative/built_in_font/",
+				"name_3_file": "README.md"
+			},
+			{
+				"name_3_name": "zip更新",
+				"name_3_url": "Chinese/LayaNative/zipUpdate/",
+				"name_3_file": "readme.md"
+			},
+			{
+				"name_3_name": "APK扩展机制",
+				"name_3_url": "Chinese/LayaNative/apk_expansion/",
+				"name_3_file": "README.md"
+			},
+			{
+				"name_3_name": "APK-update",
+				"name_3_url": "Chinese/LayaNative/apk-update/",
+				"name_3_file": "README.md"
+			}]
+		},
+		{
+			"name_2_name": "LayaNative工具使用",
+			"name_2_data": [
+			{
+				"name_3_name": "layanative 命令行工具使用",
+				"name_3_url": "Chinese/LayaNative/build_Cmd/",
+				"name_3_file": "README.md"
+			},
+			{
+				"name_3_name": "使用IDE构建工程",
+				"name_3_url": "Chinese/LayaNative/build_Tool/",
+				"name_3_file": "readme.md"
+			}]
+		}]
+	},
+	{
+		"nav_1_name": "常见问题汇总(持续更新)",
+		"nav_1_data": [
+		{
+			"name_2_name": "2.0常见问题",
+			"name_2_data": [
+			{
+				"name_3_name": "2.0新特性常见问题",
+				"name_3_url": "Chinese/FAQ/2dFAQ/",
+				"name_3_file": "readme.md"
+			},
+			{
+				"name_3_name": "3d常见问题",
+				"name_3_url": "Chinese/FAQ/3dFAQ/",
+				"name_3_file": "readme.md"
+			},
+			{
+				"name_3_name": "LayaAirIDE常见问题",
+				"name_3_url": "Chinese/FAQ/IDE/",
+				"name_3_file": "readme.md"
+			}]
+		}]
+	}]
+},
+{
+	"name": "ActionScript",
+	"data": [
+	{
+		"nav_1_name": "简介篇（AS3）",
+		"nav_1_data": [
+		{
+			"name_2_name": "初识HTML5",
+			"name_2_data": [
+			{
+				"name_3_name": "什么是HTML5？",
+				"name_3_url": "Chinese/Layabox_Intro/",
+				"name_3_file": "what_is_HTML5.md"
+			},
+			{
+				"name_3_name": "HTML5游戏的机会与前景",
+				"name_3_url": "Chinese/Layabox_Intro/",
+				"name_3_file": "HTML5_Opportunities.md"
+			}]
+		},
+		{
+			"name_2_name": "Layabox简介",
+			"name_2_data": [
+			{
+				"name_3_name": "Layabox的前世今生",
+				"name_3_url": "Chinese/Layabox_Intro/",
+				"name_3_file": "readme.md"
+			},
+			{
+				"name_3_name": "Layabox创始人谢成鸿：程序员的激情与梦想",
+				"name_3_url": "Chinese/Layabox_Intro/Layabox_Founder/",
+				"name_3_file": "readme.md"
+			}]
+		},
+		{
+			"name_2_name": "Layabox案例",
+			"name_2_data": [
+			{
+				"name_3_name": "Layabox引擎的游戏案例",
+				"name_3_url": "Chinese/Layabox_Intro/Game_Case/",
+				"name_3_file": "readme.md"
+			},
+			{
+				"name_3_name": "Layabox的引擎非游戏案例",
+				"name_3_url": "Chinese/Layabox_Intro/Non-game_Case/",
+				"name_3_file": "readme.md"
+			}]
+		},
+		{
+			"name_2_name": "LayaAir引擎简介",
+			"name_2_data": [
+			{
+				"name_3_name": "LayaAir功能介绍",
+				"name_3_url": "Chinese/Layabox_Intro/",
+				"name_3_file": "LayaAir_introduction.md"
+			},
+			{
+				"name_3_name": "LayaAir引擎特性简介",
+				"name_3_url": "Chinese/Layabox_Intro/",
+				"name_3_file": "LayaAir_features.md"
+			},
+			{
+				"name_3_name": "LayaAir引擎快速上手指南【新手必读】",
+				"name_3_url": "Chinese/",
+				"name_3_file": "readme.md"
+			},
+			{
+				"name_3_name": "LayaAir引擎VIP专属功能介绍",
+				"name_3_url": "Chinese/Layabox_Intro/vip/",
+				"name_3_file": "readme.md"
+			},
+			{
+				"name_3_name": "LayaAir引擎AS3与Flash原生AS3的开发差异",
+				"name_3_url": "Chinese/LayaAir_AS3/",
+				"name_3_file": "readme.md"
+			}]
+		}]
+	},
+	{
+		"nav_1_name": "2D基础篇（AS3）",
+		"nav_1_data": [
+		{
+			"name_2_name": "快速上手",
+			"name_2_data": [
+			{
+				"name_3_name": "用LayaAirIDE创建AS3项目并详解目录结构",
+				"name_3_url": "Chinese/LayaAir_AS3/2D/beginners/basic/LayaAirIDECreateProjects_DirectoryStructure/",
+				"name_3_file": "readme.md"
+			},
+			{
+				"name_3_name": "Flash Builder开发环境配置",
+				"name_3_url": "Chinese/LayaAir_AS3/2D/beginners/basic/FlashBuilder_DevelopmentEnvironment/",
+				"name_3_file": "readme.md"
+			},
+			{
+				"name_3_name": "FlashDevelop开发环境配置",
+				"name_3_url": "Chinese/LayaAir_AS3/2D/beginners/basic/FlashDevelop_DevelopmentEnvironment/",
+				"name_3_file": "readme.md"
+			},
+			{
+				"name_3_name": "LayaAirIDE中第一个程序“Hello Layabox”",
+				"name_3_url": "Chinese/LayaAir_AS3/2D/beginners/basic/LayaAirIDE_HelloWorld/",
+				"name_3_file": "readme.md"
+			},
+			{
+				"name_3_name": "FlashBuilder中第一个程序“Hello Layabox”",
+				"name_3_url": "Chinese/LayaAir_AS3/2D/beginners/basic/FlashBuilder_HelloWorld/",
+				"name_3_file": "readme.md"
+			},
+			{
+				"name_3_name": "FlashDevelop中第一个程序“Hello Layabox”",
+				"name_3_url": "Chinese/LayaAir_AS3/2D/beginners/basic/FlashDevelop_HelloWorld/",
+				"name_3_file": "readme.md"
+			},
+			{
+				"name_3_name": "新手常见问题：配置环境之后点击运行报错、黑屏",
+				"name_3_url": "Chinese/LayaAir_AS3/2D/beginners/basic/Common_Problems/",
+				"name_3_file": "readme.md"
+			}]
+		},
+		{
+			"name_2_name": "基础概念",
+			"name_2_data": [
+			{
+				"name_3_name": "显示对象及相关概念",
+				"name_3_url": "Chinese/LayaAir_AS3/2D/beginners/basic/",
+				"name_3_file": "readme.md"
+			}]
+		},
+		{
+			"name_2_name": "文本",
+			"name_2_data": [
+			{
+				"name_3_name": "文本类API概述",
+				"name_3_url": "Chinese/LayaAir_AS3/2D/beginners/Text/API_List/",
+				"name_3_file": "readme.md"
+			},
+			{
+				"name_3_name": "文本基础样式",
+				"name_3_url": "Chinese/LayaAir_AS3/2D/beginners/Text/TextStyle/",
+				"name_3_file": "readme.md"
+			},
+			{
+				"name_3_name": "文本对齐与自动换行",
+				"name_3_url": "Chinese/LayaAir_AS3/2D/beginners/Text/TextAlign/",
+				"name_3_file": "readme.md"
+			},
+			{
+				"name_3_name": "超出文本区域的处理&滚动文本",
+				"name_3_url": "Chinese/LayaAir_AS3/2D/beginners/Text/overflow/",
+				"name_3_file": "readme.md"
+			},
+			{
+				"name_3_name": "textInput的单行输入&多行输入",
+				"name_3_url": "Chinese/LayaAir_AS3/2D/beginners/Text/textInput/",
+				"name_3_file": "readme.md"
+			},
+			{
+				"name_3_name": "位图字体的制作与使用",
+				"name_3_url": "Chinese/LayaAir_AS3/2D/beginners/Text/BitmapFont/",
+				"name_3_file": "readme.md"
+			}]
+		},
+		{
+			"name_2_name": "位图",
+			"name_2_data": [
+			{
+				"name_3_name": "显示与切换图片",
+				"name_3_url": "Chinese/LayaAir_AS3/2D/beginners/Bitmap/loadImage_drawTexture/",
+				"name_3_file": "readme.md"
+			},
+			{
+				"name_3_name": "设置遮罩",
+				"name_3_url": "Chinese/LayaAir_AS3/2D/beginners/Bitmap/Mask/",
+				"name_3_file": "readme.md"
+			},
+			{
+				"name_3_name": "设置滤镜",
+				"name_3_url": "Chinese/LayaAir_AS3/2D/beginners/Bitmap/filter/",
+				"name_3_file": "readme.md"
+			}]
+		},
+		{
+			"name_2_name": "矢量图",
+			"name_2_data": [
+			{
+				"name_3_name": "矢量绘图API概述",
+				"name_3_url": "Chinese/LayaAir_AS3/2D/beginners/Graphics/API_Overview/",
+				"name_3_file": "readme.md"
+			},
+			{
+				"name_3_name": "绘制直线与折线",
+				"name_3_url": "Chinese/LayaAir_AS3/2D/beginners/Graphics/line/",
+				"name_3_file": "readme.md"
+			},
+			{
+				"name_3_name": "绘制曲线",
+				"name_3_url": "Chinese/LayaAir_AS3/2D/beginners/Graphics/Curve/",
+				"name_3_file": "readme.md"
+			},
+			{
+				"name_3_name": "绘制三角形、多边形及根据数据绘制图案",
+				"name_3_url": "Chinese/LayaAir_AS3/2D/beginners/Graphics/poly/",
+				"name_3_file": "readme.md"
+			},
+			{
+				"name_3_name": "绘制圆形与扇形",
+				"name_3_url": "Chinese/LayaAir_AS3/2D/beginners/Graphics/Circle_pie/",
+				"name_3_file": "readme.md"
+			},
+			{
+				"name_3_name": "绘制矩形与圆角矩形",
+				"name_3_url": "Chinese/LayaAir_AS3/2D/beginners/Graphics/Rect/",
+				"name_3_file": "readme.md"
+			},
+			{
+				"name_3_name": "消除矢量图绘制锯齿",
+				"name_3_url": "Chinese/LayaAir_AS3/2D/beginners/Graphics/",
+				"name_3_file": "readme.md"
+			}]
+		},
+		{
+			"name_2_name": "动画基础",
+			"name_2_data": [
+			{
+				"name_3_name": "图集动画",
+				"name_3_url": "Chinese/LayaAir_AS3/2D/beginners/animation/atlas/",
+				"name_3_file": "readme.md"
+			},
+			{
+				"name_3_name": "缓动动画",
+				"name_3_url": "Chinese/LayaAir_AS3/2D/beginners/animation/Tween/",
+				"name_3_file": "readme.md"
+			},
+			{
+				"name_3_name": "时间轴动画",
+				"name_3_url": "Chinese/LayaAir_AS3/IDE/Use_IDE/TimelineAnimation/",
+				"name_3_file": "readme.md"
+			},
+			{
+				"name_3_name": "动效模板",
+				"name_3_url": "Chinese/LayaAir_AS3/IDE/Use_IDE/EffectAnimation/",
+				"name_3_file": "readme.md"
+			},
+			
+			{
+				"name_3_name": "Spine动画使用",
+				"name_3_url": "Chinese/LayaAir_AS3/2D/beginners/animation/spine/",
+				"name_3_file": "readme.md"
+			},
+			{
+				"name_3_name": "DragonBone动画使用",
+				"name_3_url": "Chinese/LayaAir_AS3/2D/beginners/animation/DragonBone/",
+				"name_3_file": "readme.md"
+			}]
+		},
+		{
+			"name_2_name": "数据与通信",
+			"name_2_data": [
+			{
+				"name_3_name": "HttpRequest详解",
+				"name_3_url": "Chinese/LayaAir_AS3/2D/beginners/Data_Communication/HttpRequest/",
+				"name_3_file": "readme.md"
+			},
+			{
+				"name_3_name": "WebSocket发送与接收数据",
+				"name_3_url": "Chinese/LayaAir_AS3/2D/beginners/Data_Communication/WebSocket/",
+				"name_3_file": "readme.md"
+			},
+			{
+				"name_3_name": "Byte二进制读写",
+				"name_3_url": "Chinese/LayaAir_AS3/2D/beginners/Data_Communication/Byte/",
+				"name_3_file": "readme.md"
+			},
+			{
+				"name_3_name": "JSON数据详解",
+				"name_3_url": "Chinese/LayaAir_AS3/2D/beginners/Data_Communication/json/",
+				"name_3_file": "readme.md"
+			},
+			{
+				"name_3_name": "JSONP跨域读取数据",
+				"name_3_url": "Chinese/LayaAir_AS3/2D/beginners/Data_Communication/jsonp/",
+				"name_3_file": "readme.md"
+			},
+			{
+				"name_3_name": "Web Storage数据存储",
+				"name_3_url": "Chinese/LayaAir_AS3/2D/beginners/Data_Communication/webStorage/",
+				"name_3_file": "readme.md"
+			}]
+		},
+		{
+			"name_2_name": "硬件设备相关",
+			"name_2_data": [
+			{
+				"name_3_name": "音乐与音效的播放与控制",
+				"name_3_url": "Chinese/LayaAir_AS3/2D/beginners/devices/SoundManager/",
+				"name_3_file": "readme.md"
+			},
+			{
+				"name_3_name": "陀螺仪与加速计",
+				"name_3_url": "Chinese/LayaAir_AS3/2D/beginners/devices/motion/",
+				"name_3_file": "readme.md"
+			},
+			{
+				"name_3_name": "用Geolocation获取地理位置信息",
+				"name_3_url": "Chinese/LayaAir_AS3/2D/beginners/devices/geolocation/",
+				"name_3_file": "readme.md"
+			},
+			{
+				"name_3_name": "使用百度地图显示当前位置",
+				"name_3_url": "Chinese/LayaAir_AS3/2D/beginners/devices/baiduMap/",
+				"name_3_file": "readme.md"
+			}]
+		},
+		{
+			"name_2_name": "屏幕适配",
+			"name_2_data": [
+			{
+				"name_3_name": "屏幕适配API概述",
+				"name_3_url": "Chinese/LayaAir_AS3/2D/beginners/Screen_Fit/API_Overview/",
+				"name_3_file": "readme.md"
+			},
+			{
+				"name_3_name": "对齐模式：水平对齐与垂直对齐",
+				"name_3_url": "Chinese/LayaAir_AS3/2D/beginners/Screen_Fit/Alignment/",
+				"name_3_file": "readme.md"
+			},
+			{
+				"name_3_name": "屏幕方向：自动横屏与自动竖屏的设置详解",
+				"name_3_url": "Chinese/LayaAir_AS3/2D/beginners/Screen_Fit/screenMode/",
+				"name_3_file": "readme.md"
+			},
+			{
+				"name_3_name": "屏幕适配的缩放模式详解",
+				"name_3_url": "Chinese/LayaAir_AS3/2D/beginners/Screen_Fit/Scale_Mode/",
+				"name_3_file": "readme.md"
+			}]
+		}]
+	},
+	{
+		"nav_1_name": "LayaAir IDE篇（AS3）",
+		"nav_1_data": [
+		{
+			"name_2_name": "代码模式基础",
+			"name_2_data": [
+			{
+				"name_3_name": "代码模式布局概述",
+				"name_3_url": "Chinese/LayaAir_AS3/IDE/Code_Mode/GUI_Layout/",
+				"name_3_file": "readme.md"
+			},
+			{
+				"name_3_name": "菜单栏详解",
+				"name_3_url": "Chinese/LayaAir_AS3/IDE/Code_Mode/MenuBar/",
+				"name_3_file": "readme.md"
+			},
+			{
+				"name_3_name": "工具栏介绍",
+				"name_3_url": "Chinese/LayaAir_AS3/IDE/Code_Mode/ToolBar/",
+				"name_3_file": "readme.md"
+			},
+			{
+				"name_3_name": "代码模式的快捷键设置",
+				"name_3_url": "Chinese/LayaAir_AS3/IDE/Code_Mode/shortcut_key/",
+				"name_3_file": "readme.md"
+			},
+			{
+				"name_3_name": "（旧版）项目发布详解",
+				"name_3_url": "Chinese/LayaAir_AS3/IDE/Code_Mode/release/",
+				"name_3_file": "readme.md"
+			},
+			{
+				"name_3_name": "版本管理功能介绍",
+				"name_3_url": "Chinese/LayaAir_AS3/IDE/Code_Mode/version/",
+				"name_3_file": "readme.md"
+			},
+			{
+				"name_3_name": "项目发布详解（含命令行发布）",
+				"name_3_url": "Chinese/LayaAir_AS3/IDE/Code_Mode/release3/",
+				"name_3_file": "readme.md"
+			}]
+		},
+		{
+			"name_2_name": "设计模式基础",
+			"name_2_data": [
+			{
+				"name_3_name": "设计模式界面概述",
+				"name_3_url": "Chinese/LayaAir_AS3/IDE/Design_Mode/GUI_Layout/",
+				"name_3_file": "readme.md"
+			},
+			{
+				"name_3_name": "自定义界面布局与恢复",
+				"name_3_url": "Chinese/LayaAir_AS3/IDE/Design_Mode/Custom_GUI/",
+				"name_3_file": "readme.md"
+			},
+			{
+				"name_3_name": "菜单栏介绍",
+				"name_3_url": "Chinese/LayaAir_AS3/IDE/Design_Mode/MenuBar/",
+				"name_3_file": "readme.md"
+			},
+			{
+				"name_3_name": "工具栏介绍",
+				"name_3_url": "Chinese/LayaAir_AS3/IDE/Design_Mode/ToolBar/",
+				"name_3_file": "readme.md"
+			},
+			{
+				"name_3_name": "项目管理器",
+				"name_3_url": "Chinese/LayaAir_AS3/IDE/Design_Mode/ProjectManager/",
+				"name_3_file": "readme.md"
+			},
+			{
+				"name_3_name": "资源管理器",
+				"name_3_url": "Chinese/LayaAir_AS3/IDE/Design_Mode/ResourceManager/",
+				"name_3_file": "readme.md"
+			},
+			{
+				"name_3_name": "组件库",
+				"name_3_url": "Chinese/LayaAir_AS3/IDE/Design_Mode/Component/",
+				"name_3_file": "readme.md"
+			},
+			{
+				"name_3_name": "场景编辑器",
+				"name_3_url": "Chinese/LayaAir_AS3/IDE/Design_Mode/Scene/",
+				"name_3_file": "readme.md"
+			},
+			{
+				"name_3_name": "属性设置器",
+				"name_3_url": "Chinese/LayaAir_AS3/IDE/Design_Mode/Attribute_Set/",
+				"name_3_file": "readme.md"
+			},
+			{
+				"name_3_name": "UI页面、粒子、动画、脚本新建面板详解",
+				"name_3_url": "Chinese/LayaAir_AS3/IDE/Design_Mode/NewPanel/",
+				"name_3_file": "readme.md"
+			},
+			{
+				"name_3_name": "层级管理器",
+				"name_3_url": "Chinese/LayaAir_AS3/IDE/Design_Mode/HierarchyManager/",
+				"name_3_file": "readme.md"
+			},
+			{
+				"name_3_name": "UI组件的分类与继承关系",
+				"name_3_url": "Chinese/LayaAir_AS3/IDE/Design_Mode/Component_Detailed/",
+				"name_3_file": "readme.md"
+			},
+			{
+				"name_3_name": "F9!项目设置",
+				"name_3_url": "Chinese/LayaAir_AS3/IDE/Design_Mode/F9/",
+				"name_3_file": "readme.md"
+			}]
+		},
+		{
+			"name_2_name": "使用IDE创作",
+			"name_2_data": [
+			
+			{
+				"name_3_name": "图集制作与使用详解",
+				"name_3_url": "Chinese/LayaAir_AS3/IDE/Use_IDE/Atlas/",
+				"name_3_file": "readme.md"
+			},
+			{
+				"name_3_name": "创建动画模板(EffectAnimation)",
+				"name_3_url": "Chinese/LayaAir_AS3/IDE/Use_IDE/EffectAnimation/",
+				"name_3_file": "readme.md"
+			},
+			{
+				"name_3_name": "时间轴动画编辑器详解(GraphicAnimation)",
+				"name_3_url": "Chinese/LayaAir_AS3/IDE/Use_IDE/TimelineAnimation/",
+				"name_3_file": "readme.md"
+			},
+			{
+				"name_3_name": "自定义组件的制作与使用",
+				"name_3_url": "Chinese/LayaAir_AS3/IDE/Use_IDE/customComponent/",
+				"name_3_file": "readme.md"
+			},
+			{
+				"name_3_name": "预设的使用",
+				"name_3_url": "Chinese/LayaAir_AS3/IDE/Use_IDE/PresetUse/",
+				"name_3_file": "readme.md"
+			},
+			{
+				"name_3_name": "场景管理",
+				"name_3_url": "Chinese/LayaAir_AS3/IDE/Use_IDE/Scene/",
+				"name_3_file": "readme.md"
+			},
+			{
+				"name_3_name": "Psd2UI",
+				"name_3_url": "Chinese/LayaAir_AS3/IDE/Use_IDE/PsdToUI/",
+				"name_3_file": "readme.md"
+			}]
+		},
+		{
+			"name_2_name": "IDE组件属性详解",
+			"name_2_data": [
+			{
+				"name_3_name": "组件命名规则",
+				"name_3_url": "Chinese/LayaAir_TS/IDE/Component_Detailed/NamingRules/",
+				"name_3_file": "readme.md"
+			},
+			{
+				"name_3_name": "Button属性详解",
+				"name_3_url": "Chinese/LayaAir_AS3/IDE/Component_Detailed/Button/",
+				"name_3_file": "readme.md"
+			},
+			{
+				"name_3_name": "CheckBox属性详解",
+				"name_3_url": "Chinese/LayaAir_AS3/IDE/Component_Detailed/CheckBox/",
+				"name_3_file": "readme.md"
+			},
+			{
+				"name_3_name": "Clip属性详解",
+				"name_3_url": "Chinese/LayaAir_AS3/IDE/Component_Detailed/Clip/",
+				"name_3_file": "readme.md"
+			},
+			{
+				"name_3_name": "ComboBox属性详解",
+				"name_3_url": "Chinese/LayaAir_AS3/IDE/Component_Detailed/ComboBox/",
+				"name_3_file": "readme.md"
+			},
+			{
+				"name_3_name": "Image属性详解",
+				"name_3_url": "Chinese/LayaAir_AS3/IDE/Component_Detailed/Image/",
+				"name_3_file": "readme.md"
+			},
+			{
+				"name_3_name": "Label属性详解",
+				"name_3_url": "Chinese/LayaAir_AS3/IDE/Component_Detailed/Label/",
+				"name_3_file": "readme.md"
+			},
+			{
+				"name_3_name": "List属性详解",
+				"name_3_url": "Chinese/LayaAir_AS3/IDE/Component_Detailed/List/",
+				"name_3_file": "readme.md"
+			},
+			{
+				"name_3_name": "HScrollBar属性详解",
+				"name_3_url": "Chinese/LayaAir_AS3/IDE/Component_Detailed/HScrollBar/",
+				"name_3_file": "readme.md"
+			},
+			{
+				"name_3_name": "VScrollBar属性详解",
+				"name_3_url": "Chinese/LayaAir_AS3/IDE/Component_Detailed/VScrollBar/",
+				"name_3_file": "readme.md"
+			},
+			{
+				"name_3_name": "HSlider属性详解",
+				"name_3_url": "Chinese/LayaAir_AS3/IDE/Component_Detailed/HSlider/",
+				"name_3_file": "readme.md"
+			},
+			{
+				"name_3_name": "VSlider属性详解",
+				"name_3_url": "Chinese/LayaAir_AS3/IDE/Component_Detailed/VSlider/",
+				"name_3_file": "readme.md"
+			},
+			{
+				"name_3_name": "ProgressBar属性详解",
+				"name_3_url": "Chinese/LayaAir_AS3/IDE/Component_Detailed/ProgressBar/",
+				"name_3_file": "readme.md"
+			},
+			{
+				"name_3_name": "RadioGroup属性详解",
+				"name_3_url": "Chinese/LayaAir_AS3/IDE/Component_Detailed/RadioGroup/",
+				"name_3_file": "readme.md"
+			},
+			{
+				"name_3_name": "Tab属性详解",
+				"name_3_url": "Chinese/LayaAir_AS3/IDE/Component_Detailed/Tab/",
+				"name_3_file": "readme.md"
+			},
+			{
+				"name_3_name": "Tree属性详解",
+				"name_3_url": "Chinese/LayaAir_AS3/IDE/Component_Detailed/Tree/",
+				"name_3_file": "readme.md"
+			},
+			{
+				"name_3_name": "ViewStack属性详解",
+				"name_3_url": "Chinese/LayaAir_AS3/IDE/Component_Detailed/ViewStack/",
+				"name_3_file": "readme.md"
+			},
+			{
+				"name_3_name": "Animation属性详解",
+				"name_3_url": "Chinese/LayaAir_AS3/IDE/Component_Detailed/Animation/",
+				"name_3_file": "readme.md"
+			},
+			{
+				"name_3_name": "Panel使用文档",
+				"name_3_url": "Chinese/LayaAir_AS3/IDE/Component_Detailed/Panel/",
+				"name_3_file": "readme.md"
+			}]
+		},
+		{
+			"name_2_name": "脚本使用",
+			"name_2_data": [
+			{
+			  "name_3_name": "脚本化",
+				"name_3_url": "Chinese/LayaAir_AS3/IDE/ScriptUse/componentscritp/",
+				"name_3_file": "readme.md"
+			},
+			{
+				"name_3_name": "runTime使用",
+				"name_3_url": "Chinese/LayaAir_AS3/IDE/ScriptUse/runtime/",
+				"name_3_file": "readme.md"
+			}]
+		},
+		{
+			"name_2_name": "使用2d物理系统",
+			"name_2_data": [
+			{
+			  "name_3_name": "物理系统概述",
+				"name_3_url": "Chinese/LayaAir_AS3/IDE/Use_physics/physicsSystem/",
+				"name_3_file": "readme.md"
+			},
+			{
+			  "name_3_name": "物理(一)(距离关节)",
+				"name_3_url": "Chinese/LayaAir_AS3/IDE/Use_physics/joint/",
+				"name_3_file": "readme.md"
+			},
+			{
+			  "name_3_name": "物理(二)(平移，旋转，齿轮)",
+				"name_3_url": "Chinese/LayaAir_AS3/IDE/Use_physics/GearJoint/",
+				"name_3_file": "readme.md"
+			},
+			{
+			  "name_3_name": "物理(三)(马达，轮子，滑轮)",
+				"name_3_url": "Chinese/LayaAir_AS3/IDE/Use_physics/motoJoint/",
+				"name_3_file": "readme.md"
+			},
+			{
+			  "name_3_name": "物理(四)(焊接，绳索，鼠标)",
+				"name_3_url": "Chinese/LayaAir_AS3/IDE/Use_physics/weld/",
+				"name_3_file": "readme.md"
+			}]
+		}]
+	},
+	{
+		"nav_1_name": "2D进阶篇（AS3）",
+		"nav_1_data": [
+		{
+			"name_2_name": "调试相关",
+			"name_2_data": [
+			{
+				"name_3_name": "LayaAir DebugPanel 调试工具",
+				"name_3_url": "Chinese/LayaAir_AS3/2D/advanced/debug/DebugPanel/",
+				"name_3_file": "readme.md"
+			}]
+		},
+		{
+			"name_2_name": "游戏加载策略",
+			"name_2_data": [
+			{
+				"name_3_name": "二进制图片",
+				"name_3_url": "Chinese/LayaAir_AS3/2D/advanced/loadStrategy/binary_Image/",
+				"name_3_file": "readme.md"
+			},
+			{
+				"name_3_name": "多线程worker",
+				"name_3_url": "Chinese/LayaAir_AS3/2D/advanced/loadStrategy/worker/",
+				"name_3_file": "readme.md"
+			}]
+		},
+		{
+			"name_2_name": "性能优化",
+			"name_2_data": [
+			{
+				"name_3_name": "性能统计面板介绍",
+				"name_3_url": "Chinese/LayaAir_AS3/2D/advanced/PerformanceOptimization/Stat_Panel/",
+				"name_3_file": "readme.md"
+			},
+			{
+				"name_3_name": "内存优化方式",
+				"name_3_url": "Chinese/LayaAir_AS3/2D/advanced/PerformanceOptimization/memory/",
+				"name_3_file": "readme.md"
+			},
+			{
+				"name_3_name": "渲染优化原则",
+				"name_3_url": "Chinese/LayaAir_AS3/2D/advanced/PerformanceOptimization/rendering/",
+				"name_3_file": "readme.md"
+			},
+			{
+				"name_3_name": "CacheAs静态缓存优化",
+				"name_3_url": "Chinese/LayaAir_AS3/2D/advanced/PerformanceOptimization/cacheAs/",
+				"name_3_file": "readme.md"
+			},
+			{
+				"name_3_name": "CPU优化方式",
+				"name_3_url": "Chinese/LayaAir_AS3/2D/advanced/PerformanceOptimization/CPU/",
+				"name_3_file": "readme.md"
+			},
+			{
+				"name_3_name": "其它优化策略",
+				"name_3_url": "Chinese/LayaAir_AS3/2D/advanced/PerformanceOptimization/other/",
+				"name_3_file": "readme.md"
+			},
+			{
+				"name_3_name": "使用chrome的性能分析器",
+				"name_3_url": "Chinese/LayaAir_AS3/2D/advanced/PerformanceOptimization/Chrome_Profiles/",
+				"name_3_file": "readme.md"
+			},
+			{
+				"name_3_name": "Texture内存回收",
+				"name_3_url": "Chinese/LayaAir_AS3/2D/advanced/PerformanceOptimization/clearTextureRes/",
+				"name_3_file": "readme.md"
+			}]
+		},
+		{
+			"name_2_name": "动画进阶",
+			"name_2_data": [
+			{
+				"name_3_name": "骨骼动画进阶",
+				"name_3_url": "Chinese/LayaAir_AS3/2D/advanced/animation/bone/",
+				"name_3_file": "readme.md"
+			}]
+		},
+		{
+			"name_2_name": "扩展模块",
+			"name_2_data": [
+			{
+				"name_3_name": "用LayaAir引擎解析Tiled Map地图",
+				"name_3_url": "Chinese/LayaAir_AS3/2D/advanced/extension_modules/TiledMap/",
+				"name_3_file": "readme.md"
+			},
+			{
+				"name_3_name": "LayaAir和原生DOM交互",
+				"name_3_url": "Chinese/LayaAir_AS3/2D/advanced/extension_modules/DOM/",
+				"name_3_file": "readme.md"
+			},
+			{
+				"name_3_name": "AS3与JS混合编码",
+				"name_3_url": "Chinese/LayaAir_AS3/2D/advanced/extension_modules/AS_JS_mixed_programming/",
+				"name_3_file": "readme.md"
+			}]
+		}]
+	},
+	{
+		"nav_1_name": "LayaAir 3D引擎（AS3）",
+		"nav_1_data": [
+		{
+			"name_2_name": "快速开始一个LayaAir3D项目",
+			"name_2_data": [
+			{
+				"name_3_name": "IDE创建3D示例项目",
+				"name_3_url": "Chinese/LayaAir_AS3/3D/QuickStart/QuickStart/",
+				"name_3_file": "readme.md"
+			},
+			{
+				"name_3_name": "Stat统计面板的介绍",
+				"name_3_url": "Chinese/LayaAir_AS3/3D/QuickStart/Stat_panel_introduction/",
+				"name_3_file": "readme.md"
+			},
+			{
+				"name_3_name": "LayaAir3D概述",
+				"name_3_url": "Chinese/LayaAir_AS3/3D/QuickStart/LayaAir3D_Introduction/",
+				"name_3_file": "readme.md"
+			},
+			{
+				"name_3_name": "如何使用下载的官方示例",
+				"name_3_url": "Chinese/LayaAir_AS3/3D/QuickStart/How_to_use_the_new_demo_as/",
+				"name_3_file": "readme.md"
+			}]
+		},
+		{
+			"name_2_name": "LayaAir3D图形系统基础概念",
+			"name_2_data": [
+			{
+				"name_3_name": "LayaAir3D坐标系统",
+				"name_3_url": "Chinese/LayaAir_AS3/3D/Graphics_based/Reference_frame/",
+				"name_3_file": "readme.md"
+			},
+			{
+				"name_3_name": "LayaAir3D基础数学工具",
+				"name_3_url": "Chinese/LayaAir_AS3/3D/Graphics_based/Basic_math_tools/",
+				"name_3_file": "readme.md"
+			},
+			{
+				"name_3_name": "LayaAir3D中的Transform变换",
+				"name_3_url": "Chinese/LayaAir_AS3/3D/Graphics_based/Transform/",
+				"name_3_file": "readme.md"
+			}]
+		},
+		{
+			"name_2_name": "LayaAir3D之Unity插件使用",
+			"name_2_data": [
+			{
+				"name_3_name": "Unity3D插件介绍",
+				"name_3_url": "Chinese/LayaAir_AS3/3D/Unity_plug-in/Introduction_to_the_Unity_plug-in/",
+				"name_3_file": "readme.md"
+			},
+			{
+				"name_3_name": "快速预览场景",
+				"name_3_url": "Chinese/LayaAir_AS3/3D/Unity_plug-in/Quick_Preview/",
+				"name_3_file": "readme.md"
+			},
+			{
+				"name_3_name": "预设/场景的导出",
+				"name_3_url": "Chinese/LayaAir_AS3/3D/Unity_plug-in/Sprite3D_or_Scene3D_export/",
+				"name_3_file": "readme.md"
+			}]
+		},
+		{
+			"name_2_name": "LayaAir3D之资源加载",
+			"name_2_data": [
+			{
+				"name_3_name": "资源概述",
+				"name_3_url": "Chinese/LayaAir_AS3/3D/Resourceloading/Summary_of_resource/",
+				"name_3_file": "readme.md"
+			},
+			{
+				"name_3_name": "资源加载",
+				"name_3_url": "Chinese/LayaAir_AS3/3D/Resourceloading/Resource_to_load/",
+				"name_3_file": "readme.md"
+			}]
+		},
+		{
+			"name_2_name": "LayaAir3D之场景渲染配置",
+			"name_2_data": [
+			{
+				"name_3_name": "场景渲染配置",
+				"name_3_url": "Chinese/LayaAir_AS3/3D/Scene_render_Settings/Scene_render_Settings/",
+				"name_3_file": "readme.md"
+			},
+			{
+				"name_3_name": "场景雾化",
+				"name_3_url": "Chinese/LayaAir_AS3/3D/Scene_render_Settings/Scene_atomization/",
+				"name_3_file": "readme.md"
+			},
+			{
+				"name_3_name": "场景天空",
+				"name_3_url": "Chinese/LayaAir_AS3/3D/Scene_render_Settings/Env_Sky/",
+				"name_3_file": "readme.md"
+			},
+			{
+				"name_3_name": "场景环境光",
+				"name_3_url": "Chinese/LayaAir_AS3/3D/Scene_render_Settings/Ambient_Light/",
+				"name_3_file": "readme.md"
+			},
+			{
+				"name_3_name": "场景环境反射",
+				"name_3_url": "Chinese/LayaAir_AS3/3D/Scene_render_Settings/Env_Reflection/",
+				"name_3_file": "readme.md"
+			},
+			{
+				"name_3_name": "光照贴图",
+				"name_3_url": "Chinese/LayaAir_AS3/3D/Scene_render_Settings/LightMap/",
+				"name_3_file": "readme.md"
+			}]
+		},
+		{
+			"name_2_name": "LayaAir3D之Camera",
+			"name_2_data": [
+			{
+				"name_3_name": "摄像机概述",
+				"name_3_url": "Chinese/LayaAir_AS3/3D/Camera/Camera_Overview/",
+				"name_3_file": "readme.md"
+			},
+			{
+				"name_3_name": "从Unity中编辑并导出摄像机",
+				"name_3_url": "Chinese/LayaAir_AS3/3D/Camera/Export_the_camera_from_unity/",
+				"name_3_file": "readme.md"
+			},
+			{
+				"name_3_name": "摄像机的移动和旋转",
+				"name_3_url": "Chinese/LayaAir_AS3/3D/Camera/Camera_Transfrom/",
+				"name_3_file": "readme.md"
+			},
+			{
+				"name_3_name": "摄像机的正交投影和透视投影",
+				"name_3_url": "Chinese/LayaAir_AS3/3D/Camera/Orthographic_projection_and_Perspective projection/",
+				"name_3_file": "readme.md"
+			},
+			{
+				"name_3_name": "摄像机的裁剪和视野",
+				"name_3_url": "Chinese/LayaAir_AS3/3D/Camera/Camera_clipping_and_view/",
+				"name_3_file": "readme.md"
+			},
+			{
+				"name_3_name": "摄像机的横纵比",
+				"name_3_url": "Chinese/LayaAir_AS3/3D/Camera/Camera_AspectRatio/",
+				"name_3_file": "readme.md"
+			},
+			{
+				"name_3_name": "摄像机捕捉目标",
+				"name_3_url": "Chinese/LayaAir_AS3/3D/Camera/Camera_LookAt/",
+				"name_3_file": "readme.md"
+			},
+			{
+				"name_3_name": "摄像机的背景色和天空盒",
+				"name_3_url": "Chinese/LayaAir_AS3/3D/Camera/Background_color_with_Skybox/",
+				"name_3_file": "readme.md"
+			},
+			{
+				"name_3_name": "多摄像机窗口的使用",
+				"name_3_url": "Chinese/LayaAir_AS3/3D/Camera/MultiCamera/",
+				"name_3_file": "readme.md"
+			},
+			{
+				"name_3_name": "如何从摄像机创建一条射线",
+				"name_3_url": "Chinese/LayaAir_AS3/3D/Camera/Camera_Ray/",
+				"name_3_file": "readme.md"
+			},
+			{
+				"name_3_name": "可视遮罩层Layer",
+				"name_3_url": "Chinese/LayaAir_AS3/3D/Camera/Camera_Layer/",
+				"name_3_file": "readme.md"
+			},
+			{
+				"name_3_name": "目标纹理的使用",
+				"name_3_url": "Chinese/LayaAir_AS3/3D/Camera/RenderTarget/",
+				"name_3_file": "readme.md"
+			}]
+		},
+		{
+			"name_2_name": "LayaAir3D之灯光",
+			"name_2_data": [
+			{
+				"name_3_name": "灯光的简介",
+				"name_3_url": "Chinese/LayaAir_AS3/3D/light/Introduction_of_light/",
+				"name_3_file": "readme.md"
+			},
+			{
+				"name_3_name": "PointLight介绍",
+				"name_3_url": "Chinese/LayaAir_AS3/3D/light/PointLight/",
+				"name_3_file": "readme.md"
+			},
+			{
+				"name_3_name": "DirectionLight介绍",
+				"name_3_url": "Chinese/LayaAir_AS3/3D/light/DirectionLight/",
+				"name_3_file": "readme.md"
+			},
+			{
+				"name_3_name": "SpotLight介绍",
+				"name_3_url": "Chinese/LayaAir_AS3/3D/light/SpotLight/",
+				"name_3_file": "readme.md"
+			},
+			{
+				"name_3_name": "如何为灯光添加阴影",
+				"name_3_url": "Chinese/LayaAir_AS3/3D/light/Shadow/",
+				"name_3_file": "readme.md"
+			}]
+		},
+		{
+			"name_2_name": "LayaAir3D之精灵",
+			"name_2_data": [
+			{
+				"name_3_name": "Sprite3D的概述",
+				"name_3_url": "Chinese/LayaAir_AS3/3D/Sprite3D/Sprite3D_Profile/",
+				"name_3_file": "readme.md"
+			},
+			{
+				"name_3_name": "Sprite3D的Layer",
+				"name_3_url": "Chinese/LayaAir_AS3/3D/Sprite3D/Sprite3D_Layer/",
+				"name_3_file": "readme.md"
+			},
+			{
+				"name_3_name": "Sprite3D的克隆",
+				"name_3_url": "Chinese/LayaAir_AS3/3D/Sprite3D/Sprite3D_Clone/",
+				"name_3_file": "readme.md"
+			},
+			{
+				"name_3_name": "Sprite3D添加组件或脚本",
+				"name_3_url": "Chinese/LayaAir_AS3/3D/Sprite3D/Sprite3D_addComponent/",
+				"name_3_file": "readme.md"
+			},
+			{
+				"name_3_name": "各种渲染精灵简介",
+				"name_3_url": "Chinese/LayaAir_AS3/3D/Sprite3D/Rendering-Sprite3d_Profile/",
+				"name_3_file": "readme.md"
+			}]
+		},
+		{
+			"name_2_name": "LayaAir3D之模型和网格",
+			"name_2_data": [
+			{
+				"name_3_name": "模型概述",
+				"name_3_url": "Chinese/LayaAir_AS3/3D/Model_and_Mesh/Overview_of_model/",
+				"name_3_file": "readme.md"
+			},
+			{
+				"name_3_name": "Mesh的概述",
+				"name_3_url": "Chinese/LayaAir_AS3/3D/Model_and_Mesh/Overview_of_Mesh/",
+				"name_3_file": "readme.md"
+			},
+			{
+				"name_3_name": "从Unity中导出模型",
+				"name_3_url": "Chinese/LayaAir_AS3/3D/Model_and_Mesh/Export_Sprite3D_from_Unity/",
+				"name_3_file": "readme.md"
+			},
+			{
+				"name_3_name": "通过PrimitiveMesh创建简单Mesh",
+				"name_3_url": "Chinese/LayaAir_AS3/3D/Model_and_Mesh/Create_Mesh_by_PrimitiveMesh/",
+				"name_3_file": "readme.md"
+			},
+			{
+				"name_3_name": "模型的功能介绍",
+				"name_3_url": "Chinese/LayaAir_AS3/3D/Model_and_Mesh/Use_of_model/",
+				"name_3_file": "readme.md"
+			}]
+		},
+		{
+			"name_2_name": "LayaAir3D的内存管理",
+			"name_2_data": [
+			{
+				"name_3_name": "销毁资源并释放内存",
+				"name_3_url": "Chinese/LayaAir_AS3/3D/Memory_Manage/Destroys_res_and_memory/",
+				"name_3_file": "readme.md"
+			},
+			{
+				"name_3_name": "批量销毁释放内存",
+				"name_3_url": "Chinese/LayaAir_AS3/3D/Memory_Manage/DestroyUnusedResources/",
+				"name_3_file": "readme.md"
+			}]
+		},
+		{
+			"name_2_name": "3D引擎基础",
+			"name_2_data": [
+			{
+				"name_3_name": "LayaAir3D之模型",
+				"name_3_url": "Chinese/LayaAir_AS3/3D/beginners/model/",
+				"name_3_file": "readme.md"
+			},
+			{
+				"name_3_name": "LayaAir3D之材质概述",
+				"name_3_url": "Chinese/LayaAir_AS3/3D/beginners/materials_overview/",
+				"name_3_file": "readme.md"
+			},
+			{
+				"name_3_name": "LayaAir3D之材质光色与贴图",
+				"name_3_url": "Chinese/LayaAir_AS3/3D/beginners/textures/",
+				"name_3_file": "readme.md"
+			},
+			{
+				"name_3_name": "LayaAir3D之BlinnPhong材质",
+				"name_3_url": "Chinese/LayaAir_AS3/3D/beginners/materials_blinnPhong/",
+				"name_3_file": "readme.md"
+			},
+			{
+				"name_3_name": "Laya2.0模型动画的使用",
+				"name_3_url": "Chinese/LayaAir_AS3/3D/beginners/Animator3D/",
+				"name_3_file": "readme.md"
+			},
+			{
+				"name_3_name": "LayaAir3D之动画一",
+				"name_3_url": "Chinese/LayaAir_AS3/3D/beginners/animation1/",
+				"name_3_file": "readme.md"
+			},
+			{
+				"name_3_name": "LayaAir3D之动画二",
+				"name_3_url": "Chinese/LayaAir_AS3/3D/beginners/animation2/",
+				"name_3_file": "readme.md"
+			},
+			{
+				"name_3_name": "LayaAir3D之脚本组件",
+				"name_3_url": "Chinese/LayaAir_AS3/3D/beginners/Script_component3D/",
+				"name_3_file": "readme.md"
+			},
+			{
+				"name_3_name": "LayaAir3D之骨骼挂点",
+				"name_3_url": "Chinese/LayaAir_AS3/3D/beginners/bonePoint/",
+				"name_3_file": "readme.md"
+			},
+			{
+				"name_3_name": "LayaAir3D之鼠标交互",
+				"name_3_url": "Chinese/LayaAir_AS3/3D/beginners/mouse/",
+				"name_3_file": "readme.md"
+			},
+			{
+				"name_3_name": "LayaAir3D之物理快速入门",
+				"name_3_url": "Chinese/LayaAir_AS3/3D/beginners/PhysicsBasic/",
+				"name_3_file": "readme.md"
+			},
+			{
+				"name_3_name": "LayaAir3D之碰撞器与刚体",
+				"name_3_url": "Chinese/LayaAir_AS3/3D/beginners/colliderAndRigidbody/",
+				"name_3_file": "readme.md"
+			},
+			{
+				"name_3_name": "LayaAir3D之触发器与碰撞过滤",
+				"name_3_url": "Chinese/LayaAir_AS3/3D/beginners/triggerAndCollidWith/",
+				"name_3_file": "readme.md"
+			},
+			{
+				"name_3_name": "LayaAir3D之资源释放",
+				"name_3_url": "Chinese/LayaAir_AS3/3D/beginners/assetsDispose/",
+				"name_3_file": "readme.md"
+			}]
+		}]
+	},
+	{
+		"nav_1_name": "小游戏适配文档（微信、百度、小米）",
+		"nav_1_data": [
+		{
+			"name_2_name": "微信小游戏",
+			"name_2_data": [
+			{
+				"name_3_name": "微信小游戏入门介绍",
+				"name_3_url": "Chinese/miniGame/wechat/AS/introduction/",
+				"name_3_file": "readme.md"
+			},
+			{
+				"name_3_name": "创建第一个微信小游戏",
+				"name_3_url": "Chinese/miniGame/wechat/AS/novice/",
+				"name_3_file": "readme.md"
+			},
+			{
+				"name_3_name": "老项目适配微信小游戏详解",
+				"name_3_url": "Chinese/miniGame/wechat/AS/old_adapter/",
+				"name_3_file": "readme.md"
+			},
+			{
+				"name_3_name": "小游戏发布工具与小游戏目录介绍",
+				"name_3_url": "Chinese/miniGame/wechat/AS/publishing_tools/",
+				"name_3_file": "readme.md"
+			},{
+				"name_3_name": "微信小游戏的4M本地包与动态资源加载",
+				"name_3_url": "Chinese/miniGame/wechat/AS/4M/",
+				"name_3_file": "readme.md"
+			},{
+				"name_3_name": "微信小游戏的50M物理缓存管理",
+				"name_3_url": "Chinese/miniGame/wechat/AS/50M/",
+				"name_3_file": "readme.md"
+			},{
+				"name_3_name": "微信小游戏分包实战",
+				"name_3_url": "Chinese/miniGame/wechat/AS/subpackage/",
+				"name_3_file": "readme.md"
+			},{
+				"name_3_name": "微信小游戏开放域",
+				"name_3_url": "Chinese/miniGame/wechat/AS/openDomain/",
+				"name_3_file": "readme.md"
+			},{
+				"name_3_name": "微信小游戏常见问题汇总（10.25更新）",
+				"name_3_url": "Chinese/miniGame/wechat/AS/FAQ/",
+				"name_3_file": "readme.md"
+			}]
+		},
+		{
+			"name_2_name": "百度小游戏",
+			"name_2_data": [
+			{
+				"name_3_name": "百度小游戏入门介绍",
+				"name_3_url": "Chinese/miniGame/baidu/AS/introduction/",
+				"name_3_file": "readme.md"
+			},
+			{
+				"name_3_name": "创建第一个百度小游戏",
+				"name_3_url": "Chinese/miniGame/baidu/AS/novice/",
+				"name_3_file": "readme.md"
+			},
+			{
+				"name_3_name": "老项目适配百度小游戏详解",
+				"name_3_url": "Chinese/miniGame/baidu/AS/old_adapter/",
+				"name_3_file": "readme.md"
+			},
+			{
+				"name_3_name": "百度小游戏的5M本地包与动态资源加载",
+				"name_3_url": "Chinese/miniGame/baidu/AS/4M/",
+				"name_3_file": "readme.md"
+			},{
+				"name_3_name": "百度小游戏的50M物理缓存管理",
+				"name_3_url": "Chinese/miniGame/baidu/AS/50M/",
+				"name_3_file": "readme.md"
+			}]
+		},
+		{
+			"name_2_name": "小米快游戏",
+			"name_2_data": [
+			{
+				"name_3_name": "小米快游戏发布与调试指南",
+				"name_3_url": "Chinese/miniGame/mi/rundebug/",
+				"name_3_file": "readme.md"
+			}]
+		},
+		{
+			"name_2_name": "OPPO小游戏",
+			"name_2_data": [
+			{
+				"name_3_name": "OPPO小游戏发布与调试指南",
+				"name_3_url": "Chinese/miniGame/oppo/rundebug/",
 				"name_3_file": "readme.md"
 			}]
 		}]
