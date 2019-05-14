@@ -996,6 +996,20 @@
 			}]
 		},
 		{
+			"name_2_name": "LayaAir3D的内存管理",
+			"name_2_data": [
+			{
+				"name_3_name": "销毁资源并释放内存",
+				"name_3_url": "Chinese/LayaAir_AS3/3D/Memory_Manage/Destroys_res_and_memory/",
+				"name_3_file": "readme.md"
+			},
+			{
+				"name_3_name": "批量销毁释放内存",
+				"name_3_url": "Chinese/LayaAir_AS3/3D/Memory_Manage/DestroyUnusedResources/",
+				"name_3_file": "readme.md"
+			}]
+		},
+		{
 			"name_2_name": "3D引擎基础",
 			"name_2_data": [
 			{
@@ -2277,6 +2291,20 @@
 			}]
 		},
 		{
+			"name_2_name": "LayaAir3D的内存管理",
+			"name_2_data": [
+			{
+				"name_3_name": "销毁资源并释放内存",
+				"name_3_url": "Chinese/LayaAir_TS/3D/Memory_Manage/Destroys_res_and_memory/",
+				"name_3_file": "readme.md"
+			},
+			{
+				"name_3_name": "批量销毁释放内存",
+				"name_3_url": "Chinese/LayaAir_TS/3D/Memory_Manage/DestroyUnusedResources/",
+				"name_3_file": "readme.md"
+			}]
+		},
+		{
 			"name_2_name": "3D引擎基础",
 			"name_2_data": [
 			{
@@ -3544,6 +3572,20 @@
 			{
 				"name_3_name": "模型的功能介绍",
 				"name_3_url": "Chinese/LayaAir_JS/3D/Model_and_Mesh/Use_of_model/",
+				"name_3_file": "readme.md"
+			}]
+		},
+		{
+			"name_2_name": "LayaAir3D的内存管理",
+			"name_2_data": [
+			{
+				"name_3_name": "销毁资源并释放内存",
+				"name_3_url": "Chinese/LayaAir_JS/3D/Memory_Manage/Destroys_res_and_memory/",
+				"name_3_file": "readme.md"
+			},
+			{
+				"name_3_name": "批量销毁释放内存",
+				"name_3_url": "Chinese/LayaAir_JS/3D/Memory_Manage/DestroyUnusedResources/",
 				"name_3_file": "readme.md"
 			}]
 		},
