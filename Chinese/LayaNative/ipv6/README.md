@@ -7,9 +7,6 @@
 [ipv6测试方法官方文档](https://developer.apple.com/library/mac/documentation/NetworkingInternetWeb/Conceptual/NetworkingOverview/UnderstandingandPreparingfortheIPv6Transition/UnderstandingandPreparingfortheIPv6Transition.html#//apple_ref/doc/uid/TP40010220-CH213-SW1)  
 
 
-附上好心人的中文文档
-[ipv6非官方中文文档](http://www.pchou.info/ios/2016/06/05/ios-supporting-ipv6.html?utm_source=tuicool&utm_medium=referral)
-
 **友情提示：**  
 1.有很多开发者反映，自己按照苹果官网测试ipv6是OK的，但是仍然被苹果因为ipv6无法访问无情拒绝。出现这种现象，开发者需要更换一台可以兼容ipv6的web服务器。  
 2.如果开发者的服务器架设在中国，苹果在审核的时候访问会非常慢，这个时候也有可能会影响审核。有两种方法可以尝试一下。  
