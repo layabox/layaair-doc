@@ -988,16 +988,16 @@
 				"name_3_name": "材质的功能介绍",
 				"name_3_url": "Chinese/LayaAir_TS/3D/Material/Function_of_material/",
 				"name_3_file": "readme.md"
+			},
+			{
+				"name_3_name": "BaseMaterial基础材质",
+				"name_3_url": "Chinese/LayaAir_TS/3D/Material/BaseMaterial/",
+				"name_3_file": "readme.md"
 			}]
 		},
 		{
 			"name_2_name": "模型材质详解",
 			"name_2_data": [
-			{
-				"name_3_name": "BaseMaterial基础材质",
-				"name_3_url": "Chinese/LayaAir_TS/3D/Mesh_Material/BaseMaterial/",
-				"name_3_file": "readme.md"
-			},
 			{
 				"name_3_name": "BlinnPhong材质详解",
 				"name_3_url": "Chinese/LayaAir_TS/3D/Mesh_Material/BlinnPhong/",
@@ -2382,16 +2382,16 @@
 				"name_3_name": "材质的功能介绍",
 				"name_3_url": "Chinese/LayaAir_JS/3D/Material/Function_of_material/",
 				"name_3_file": "readme.md"
+			},
+			{
+				"name_3_name": "BaseMaterial基础材质",
+				"name_3_url": "Chinese/LayaAir_JS/3D/Material/BaseMaterial/",
+				"name_3_file": "readme.md"
 			}]
 		},
 		{
 			"name_2_name": "模型材质详解",
 			"name_2_data": [
-			{
-				"name_3_name": "BaseMaterial基础材质",
-				"name_3_url": "Chinese/LayaAir_JS/3D/Mesh_Material/BaseMaterial/",
-				"name_3_file": "readme.md"
-			},
 			{
 				"name_3_name": "BlinnPhong材质详解",
 				"name_3_url": "Chinese/LayaAir_JS/3D/Mesh_Material/BlinnPhong/",
@@ -3816,16 +3816,16 @@
 				"name_3_name": "材质的功能介绍",
 				"name_3_url": "Chinese/LayaAir_AS3/3D/Material/Function_of_material/",
 				"name_3_file": "readme.md"
+			},
+			{
+				"name_3_name": "BaseMaterial基础材质",
+				"name_3_url": "Chinese/LayaAir_AS3/3D/Material/BaseMaterial/",
+				"name_3_file": "readme.md"
 			}]
 		},
 		{
 			"name_2_name": "模型材质详解",
 			"name_2_data": [
-			{
-				"name_3_name": "BaseMaterial基础材质",
-				"name_3_url": "Chinese/LayaAir_AS3/3D/Mesh_Material/BaseMaterial/",
-				"name_3_file": "readme.md"
-			},
 			{
 				"name_3_name": "BlinnPhong材质详解",
 				"name_3_url": "Chinese/LayaAir_AS3/3D/Mesh_Material/BlinnPhong/",
