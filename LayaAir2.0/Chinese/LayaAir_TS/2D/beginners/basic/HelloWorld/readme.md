@@ -8,9 +8,9 @@
 
 ​	![图片](img/1.png)<br/>
 
-然后修改.laya目录下的gulpfile.js 文件，修改启动类为HelloLayabox.ts
+然后修改.laya目录下的compile.js 文件，修改启动类为HelloLayabox.ts
 
-![图片](img/modi.png)
+![图片](img/111.png)
 
 
 ​         **步骤二**：点击打开src目录下的HelloLayabox.ts，开始编写如下代码：
