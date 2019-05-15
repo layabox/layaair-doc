@@ -1084,21 +1084,6 @@
 				"name_3_file": "readme.md"
 			},
 			{
-				"name_3_name": "LayaAir3D之材质概述",
-				"name_3_url": "Chinese/LayaAir_TS/3D/beginners/materials_overview/",
-				"name_3_file": "readme.md"
-			},
-			{
-				"name_3_name": "LayaAir3D之材质光色与贴图",
-				"name_3_url": "Chinese/LayaAir_TS/3D/beginners/textures/",
-				"name_3_file": "readme.md"
-			},
-			{
-				"name_3_name": "LayaAir3D之BlinnPhong材质",
-				"name_3_url": "Chinese/LayaAir_TS/3D/beginners/materials_blinnPhong/",
-				"name_3_file": "readme.md"
-			},
-			{
 				"name_3_name": "LayaAir3D之动画一",
 				"name_3_url": "Chinese/LayaAir_TS/3D/beginners/animation1/",
 				"name_3_file": "readme.md"
@@ -2475,21 +2460,6 @@
 			{
 				"name_3_name": "LayaAir3D之模型",
 				"name_3_url": "Chinese/LayaAir_JS/3D/beginners/model/",
-				"name_3_file": "readme.md"
-			},
-			{
-				"name_3_name": "LayaAir3D之材质概述",
-				"name_3_url": "Chinese/LayaAir_JS/3D/beginners/materials_overview/",
-				"name_3_file": "readme.md"
-			},
-			{
-				"name_3_name": "LayaAir3D之材质光色与贴图",
-				"name_3_url": "Chinese/LayaAir_JS/3D/beginners/textures/",
-				"name_3_file": "readme.md"
-			},
-			{
-				"name_3_name": "LayaAir3D之BlinnPhong材质",
-				"name_3_url": "Chinese/LayaAir_JS/3D/beginners/materials_blinnPhong/",
 				"name_3_file": "readme.md"
 			},
 			{
@@ -3909,21 +3879,6 @@
 			{
 				"name_3_name": "LayaAir3D之模型",
 				"name_3_url": "Chinese/LayaAir_AS3/3D/beginners/model/",
-				"name_3_file": "readme.md"
-			},
-			{
-				"name_3_name": "LayaAir3D之材质概述",
-				"name_3_url": "Chinese/LayaAir_AS3/3D/beginners/materials_overview/",
-				"name_3_file": "readme.md"
-			},
-			{
-				"name_3_name": "LayaAir3D之材质光色与贴图",
-				"name_3_url": "Chinese/LayaAir_AS3/3D/beginners/textures/",
-				"name_3_file": "readme.md"
-			},
-			{
-				"name_3_name": "LayaAir3D之BlinnPhong材质",
-				"name_3_url": "Chinese/LayaAir_AS3/3D/beginners/materials_blinnPhong/",
 				"name_3_file": "readme.md"
 			},
 			{
