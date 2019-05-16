@@ -962,6 +962,106 @@
 			}]
 		},
 		{
+			"name_2_name": "LayaAir3D之Material材质",
+			"name_2_data": [
+			{
+				"name_3_name": "材质概述",
+				"name_3_url": "Chinese/LayaAir_TS/3D/Material/Description_of_material/",
+				"name_3_file": "readme.md"
+			},
+			{
+				"name_3_name": "从Unity中导出材质",
+				"name_3_url": "Chinese/LayaAir_TS/3D/Material/Export_Material_from_Unity/",
+				"name_3_file": "readme.md"
+			},
+			{
+				"name_3_name": "创建材质",
+				"name_3_url": "Chinese/LayaAir_TS/3D/Material/Create_the_material/",
+				"name_3_file": "readme.md"
+			},
+			{
+				"name_3_name": "材质的加载",
+				"name_3_url": "Chinese/LayaAir_TS/3D/Material/Material_loading/",
+				"name_3_file": "readme.md"
+			},
+			{
+				"name_3_name": "材质的功能介绍",
+				"name_3_url": "Chinese/LayaAir_TS/3D/Material/Function_of_material/",
+				"name_3_file": "readme.md"
+			},
+			{
+				"name_3_name": "BaseMaterial基础材质",
+				"name_3_url": "Chinese/LayaAir_TS/3D/Material/BaseMaterial/",
+				"name_3_file": "readme.md"
+			}]
+		},
+		{
+			"name_2_name": "模型材质详解",
+			"name_2_data": [
+			{
+				"name_3_name": "BlinnPhong材质详解",
+				"name_3_url": "Chinese/LayaAir_TS/3D/Mesh_Material/BlinnPhong/",
+				"name_3_file": "readme.md"
+			},
+			{
+				"name_3_name": "Effect材质详解",
+				"name_3_url": "Chinese/LayaAir_TS/3D/Mesh_Material/Effect/",
+				"name_3_file": "readme.md"
+			},
+			{
+				"name_3_name": "Unlit材质详解",
+				"name_3_url": "Chinese/LayaAir_TS/3D/Mesh_Material/Unlit/",
+				"name_3_file": "readme.md"
+			},
+			{
+				"name_3_name": "PBRStandardMaterial材质详解",
+				"name_3_url": "Chinese/LayaAir_TS/3D/Mesh_Material/PBRStandardMaterial/",
+				"name_3_file": "readme.md"
+			},
+			{
+				"name_3_name": "PBRSpecularMaterial材质详解",
+				"name_3_url": "Chinese/LayaAir_TS/3D/Mesh_Material/PBRSpecularMaterial/",
+				"name_3_file": "readme.md"
+			},
+			{
+				"name_3_name": "WaterPrimaryMaterial材质详解",
+				"name_3_url": "Chinese/LayaAir_TS/3D/Mesh_Material/WaterPrimaryMaterial/",
+				"name_3_file": "readme.md"
+			}]
+		},
+		{
+			"name_2_name": "粒子材质详解",
+			"name_2_data": [
+			{
+				"name_3_name": "ShurikenParticleMaterial材质详解",
+				"name_3_url": "Chinese/LayaAir_TS/3D/Particle_Material/ShurikenParticleMaterial/",
+				"name_3_file": "readme.md"
+			}]
+		},
+		{
+			"name_2_name": "拖尾材质详解",
+			"name_2_data": [
+			{
+				"name_3_name": "TrailMaterial材质详解",
+				"name_3_url": "Chinese/LayaAir_TS/3D/Trail_Material/TrailMaterial/",
+				"name_3_file": "readme.md"
+			}]
+		},
+		{
+			"name_2_name": "天空材质详解",
+			"name_2_data": [
+			{
+				"name_3_name": "SkyProceduralMaterial材质详解",
+				"name_3_url": "Chinese/LayaAir_TS/3D/Sky_Material/SkyProceduralMaterial/",
+				"name_3_file": "readme.md"
+			},
+			{
+				"name_3_name": "SkyBoxMaterial材质详解",
+				"name_3_url": "Chinese/LayaAir_TS/3D/Sky_Material/SkyBoxMaterial/",
+				"name_3_file": "readme.md"
+			}]
+		},
+		{
 			"name_2_name": "LayaAir3D的内存管理",
 			"name_2_data": [
 			{
@@ -981,21 +1081,6 @@
 			{
 				"name_3_name": "LayaAir3D之模型",
 				"name_3_url": "Chinese/LayaAir_TS/3D/beginners/model/",
-				"name_3_file": "readme.md"
-			},
-			{
-				"name_3_name": "LayaAir3D之材质概述",
-				"name_3_url": "Chinese/LayaAir_TS/3D/beginners/materials_overview/",
-				"name_3_file": "readme.md"
-			},
-			{
-				"name_3_name": "LayaAir3D之材质光色与贴图",
-				"name_3_url": "Chinese/LayaAir_TS/3D/beginners/textures/",
-				"name_3_file": "readme.md"
-			},
-			{
-				"name_3_name": "LayaAir3D之BlinnPhong材质",
-				"name_3_url": "Chinese/LayaAir_TS/3D/beginners/materials_blinnPhong/",
 				"name_3_file": "readme.md"
 			},
 			{
@@ -2256,6 +2341,106 @@
 			}]
 		},
 		{
+			"name_2_name": "LayaAir3D之Material材质",
+			"name_2_data": [
+			{
+				"name_3_name": "材质概述",
+				"name_3_url": "Chinese/LayaAir_JS/3D/Material/Description_of_material/",
+				"name_3_file": "readme.md"
+			},
+			{
+				"name_3_name": "从Unity中导出材质",
+				"name_3_url": "Chinese/LayaAir_JS/3D/Material/Export_Material_from_Unity/",
+				"name_3_file": "readme.md"
+			},
+			{
+				"name_3_name": "创建材质",
+				"name_3_url": "Chinese/LayaAir_JS/3D/Material/Create_the_material/",
+				"name_3_file": "readme.md"
+			},
+			{
+				"name_3_name": "材质的加载",
+				"name_3_url": "Chinese/LayaAir_JS/3D/Material/Material_loading/",
+				"name_3_file": "readme.md"
+			},
+			{
+				"name_3_name": "材质的功能介绍",
+				"name_3_url": "Chinese/LayaAir_JS/3D/Material/Function_of_material/",
+				"name_3_file": "readme.md"
+			},
+			{
+				"name_3_name": "BaseMaterial基础材质",
+				"name_3_url": "Chinese/LayaAir_JS/3D/Material/BaseMaterial/",
+				"name_3_file": "readme.md"
+			}]
+		},
+		{
+			"name_2_name": "模型材质详解",
+			"name_2_data": [
+			{
+				"name_3_name": "BlinnPhong材质详解",
+				"name_3_url": "Chinese/LayaAir_JS/3D/Mesh_Material/BlinnPhong/",
+				"name_3_file": "readme.md"
+			},
+			{
+				"name_3_name": "Effect材质详解",
+				"name_3_url": "Chinese/LayaAir_JS/3D/Mesh_Material/Effect/",
+				"name_3_file": "readme.md"
+			},
+			{
+				"name_3_name": "Unlit材质详解",
+				"name_3_url": "Chinese/LayaAir_JS/3D/Mesh_Material/Unlit/",
+				"name_3_file": "readme.md"
+			},
+			{
+				"name_3_name": "PBRStandardMaterial材质详解",
+				"name_3_url": "Chinese/LayaAir_JS/3D/Mesh_Material/PBRStandardMaterial/",
+				"name_3_file": "readme.md"
+			},
+			{
+				"name_3_name": "PBRSpecularMaterial材质详解",
+				"name_3_url": "Chinese/LayaAir_JS/3D/Mesh_Material/PBRSpecularMaterial/",
+				"name_3_file": "readme.md"
+			},
+			{
+				"name_3_name": "WaterPrimaryMaterial材质详解",
+				"name_3_url": "Chinese/LayaAir_JS/3D/Mesh_Material/WaterPrimaryMaterial/",
+				"name_3_file": "readme.md"
+			}]
+		},
+		{
+			"name_2_name": "粒子材质详解",
+			"name_2_data": [
+			{
+				"name_3_name": "ShurikenParticleMaterial材质详解",
+				"name_3_url": "Chinese/LayaAir_JS/3D/Particle_Material/ShurikenParticleMaterial/",
+				"name_3_file": "readme.md"
+			}]
+		},
+		{
+			"name_2_name": "拖尾材质详解",
+			"name_2_data": [
+			{
+				"name_3_name": "TrailMaterial材质详解",
+				"name_3_url": "Chinese/LayaAir_JS/3D/Trail_Material/TrailMaterial/",
+				"name_3_file": "readme.md"
+			}]
+		},
+		{
+			"name_2_name": "天空材质详解",
+			"name_2_data": [
+			{
+				"name_3_name": "SkyProceduralMaterial材质详解",
+				"name_3_url": "Chinese/LayaAir_JS/3D/Sky_Material/SkyProceduralMaterial/",
+				"name_3_file": "readme.md"
+			},
+			{
+				"name_3_name": "SkyBoxMaterial材质详解",
+				"name_3_url": "Chinese/LayaAir_JS/3D/Sky_Material/SkyBoxMaterial/",
+				"name_3_file": "readme.md"
+			}]
+		},
+		{
 			"name_2_name": "LayaAir3D的内存管理",
 			"name_2_data": [
 			{
@@ -2275,21 +2460,6 @@
 			{
 				"name_3_name": "LayaAir3D之模型",
 				"name_3_url": "Chinese/LayaAir_JS/3D/beginners/model/",
-				"name_3_file": "readme.md"
-			},
-			{
-				"name_3_name": "LayaAir3D之材质概述",
-				"name_3_url": "Chinese/LayaAir_JS/3D/beginners/materials_overview/",
-				"name_3_file": "readme.md"
-			},
-			{
-				"name_3_name": "LayaAir3D之材质光色与贴图",
-				"name_3_url": "Chinese/LayaAir_JS/3D/beginners/textures/",
-				"name_3_file": "readme.md"
-			},
-			{
-				"name_3_name": "LayaAir3D之BlinnPhong材质",
-				"name_3_url": "Chinese/LayaAir_JS/3D/beginners/materials_blinnPhong/",
 				"name_3_file": "readme.md"
 			},
 			{
@@ -3590,6 +3760,106 @@
 			}]
 		},
 		{
+			"name_2_name": "LayaAir3D之Material材质",
+			"name_2_data": [
+			{
+				"name_3_name": "材质概述",
+				"name_3_url": "Chinese/LayaAir_AS3/3D/Material/Description_of_material/",
+				"name_3_file": "readme.md"
+			},
+			{
+				"name_3_name": "从Unity中导出材质",
+				"name_3_url": "Chinese/LayaAir_AS3/3D/Material/Export_Material_from_Unity/",
+				"name_3_file": "readme.md"
+			},
+			{
+				"name_3_name": "创建材质",
+				"name_3_url": "Chinese/LayaAir_AS3/3D/Material/Create_the_material/",
+				"name_3_file": "readme.md"
+			},
+			{
+				"name_3_name": "材质的加载",
+				"name_3_url": "Chinese/LayaAir_AS3/3D/Material/Material_loading/",
+				"name_3_file": "readme.md"
+			},
+			{
+				"name_3_name": "材质的功能介绍",
+				"name_3_url": "Chinese/LayaAir_AS3/3D/Material/Function_of_material/",
+				"name_3_file": "readme.md"
+			},
+			{
+				"name_3_name": "BaseMaterial基础材质",
+				"name_3_url": "Chinese/LayaAir_AS3/3D/Material/BaseMaterial/",
+				"name_3_file": "readme.md"
+			}]
+		},
+		{
+			"name_2_name": "模型材质详解",
+			"name_2_data": [
+			{
+				"name_3_name": "BlinnPhong材质详解",
+				"name_3_url": "Chinese/LayaAir_AS3/3D/Mesh_Material/BlinnPhong/",
+				"name_3_file": "readme.md"
+			},
+			{
+				"name_3_name": "Effect材质详解",
+				"name_3_url": "Chinese/LayaAir_AS3/3D/Mesh_Material/Effect/",
+				"name_3_file": "readme.md"
+			},
+			{
+				"name_3_name": "Unlit材质详解",
+				"name_3_url": "Chinese/LayaAir_AS3/3D/Mesh_Material/Unlit/",
+				"name_3_file": "readme.md"
+			},
+			{
+				"name_3_name": "PBRStandardMaterial材质详解",
+				"name_3_url": "Chinese/LayaAir_AS3/3D/Mesh_Material/PBRStandardMaterial/",
+				"name_3_file": "readme.md"
+			},
+			{
+				"name_3_name": "PBRSpecularMaterial材质详解",
+				"name_3_url": "Chinese/LayaAir_AS3/3D/Mesh_Material/PBRSpecularMaterial/",
+				"name_3_file": "readme.md"
+			},
+			{
+				"name_3_name": "WaterPrimaryMaterial材质详解",
+				"name_3_url": "Chinese/LayaAir_AS3/3D/Mesh_Material/WaterPrimaryMaterial/",
+				"name_3_file": "readme.md"
+			}]
+		},
+		{
+			"name_2_name": "粒子材质详解",
+			"name_2_data": [
+			{
+				"name_3_name": "ShurikenParticleMaterial材质详解",
+				"name_3_url": "Chinese/LayaAir_AS3/3D/Particle_Material/ShurikenParticleMaterial/",
+				"name_3_file": "readme.md"
+			}]
+		},
+		{
+			"name_2_name": "拖尾材质详解",
+			"name_2_data": [
+			{
+				"name_3_name": "TrailMaterial材质详解",
+				"name_3_url": "Chinese/LayaAir_AS3/3D/Trail_Material/TrailMaterial/",
+				"name_3_file": "readme.md"
+			}]
+		},
+		{
+			"name_2_name": "天空材质详解",
+			"name_2_data": [
+			{
+				"name_3_name": "SkyProceduralMaterial材质详解",
+				"name_3_url": "Chinese/LayaAir_AS3/3D/Sky_Material/SkyProceduralMaterial/",
+				"name_3_file": "readme.md"
+			},
+			{
+				"name_3_name": "SkyBoxMaterial材质详解",
+				"name_3_url": "Chinese/LayaAir_AS3/3D/Sky_Material/SkyBoxMaterial/",
+				"name_3_file": "readme.md"
+			}]
+		},
+		{
 			"name_2_name": "LayaAir3D的内存管理",
 			"name_2_data": [
 			{
@@ -3609,21 +3879,6 @@
 			{
 				"name_3_name": "LayaAir3D之模型",
 				"name_3_url": "Chinese/LayaAir_AS3/3D/beginners/model/",
-				"name_3_file": "readme.md"
-			},
-			{
-				"name_3_name": "LayaAir3D之材质概述",
-				"name_3_url": "Chinese/LayaAir_AS3/3D/beginners/materials_overview/",
-				"name_3_file": "readme.md"
-			},
-			{
-				"name_3_name": "LayaAir3D之材质光色与贴图",
-				"name_3_url": "Chinese/LayaAir_AS3/3D/beginners/textures/",
-				"name_3_file": "readme.md"
-			},
-			{
-				"name_3_name": "LayaAir3D之BlinnPhong材质",
-				"name_3_url": "Chinese/LayaAir_AS3/3D/beginners/materials_blinnPhong/",
 				"name_3_file": "readme.md"
 			},
 			{
