@@ -4,6 +4,27 @@
 
 ### 基础组件命名规则：
 
+| 基础组件名称 | 组件中文名称     | 资源前缀（全写，不区分大小写）   | 资源前缀(缩写，区分大小写) |
+| ------------ | ---------------- | -------------------------------- | -------------------------- |
+| Label        | 文本框           | label_                           | --                         |
+| TextInput    | 输入框           | textinput_                       | input_                     |
+| TextArea     | 带滚动条的文本域 | textarea_                        | area_                      |
+| Button       | 按钮             | button_                          | btn_                       |
+| CheckBox     | 多选框           | checkbox_                        | check_                     |
+| Radio        | 单选框           | radio_                           | --                         |
+| Tab          | 标签             | tab_                             | --                         |
+| RadioGroup   | 单选框按钮组     | radiogroup_                      | --                         |
+| VSlider      | 垂直滑动条       | vslider_                         | --                         |
+| HSlider      | 水平滑动条       | hslider_                         | --                         |
+| Clip         | 位图切片         | clip_                            | --                         |
+| fontclip     | 字体切片         | fontclip_                        | --                         |
+| ProgressBar  | 进度条           | progressbar_                     | progress_                  |
+| ComboBox     | 下拉框           | combobox_                        | combo_                     |
+| VScrollBar   | 垂直滚动条       | vscrollbar_                      | vscroll_                   |
+| HScrollBar   | 水平滚动条       | hscrollbar_                      | hscroll_                   |
+| Image        | 位图             | Image_                           | img_                       |
+| sprite       | 精灵             | 不按组件规则命名的都被视为sprite |                            |
+
 下面列举编辑器默认的组件资源对应规则（不区分大小写）：
 
 `Label`组件（文本框）：label_xxx；
