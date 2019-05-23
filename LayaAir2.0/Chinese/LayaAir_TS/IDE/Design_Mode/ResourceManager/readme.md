@@ -128,28 +128,30 @@
 
 ### 3.1 基础组件的命名规则
 
- 下面列举LayaAirIDE基础组件默认的资源命名规则： 
+ 下面列举LayaAirIDE基础组件默认的资源命名规则：
 
-| 基础组件名称      | 组件中文名称   | 资源前缀（全写，不区分大小写）     | 资源前缀(缩写，区分大小写) |
-| ----------- | -------- | ------------------- | -------------- |
-| Label       | 文本框      | label_              | --             |
-| TextInput   | 输入框      | textinput_          | input_         |
-| TextArea    | 带滚动条的文本域 | textarea_           | area_          |
-| Button      | 按钮       | button_             | btn_           |
-| CheckBox    | 多选框      | checkbox_           | check_         |
-| Radio       | 单选框      | radio_              | --             |
-| Tab         | 标签       | tab_                | --             |
-| RadioGroup  | 单选框按钮组   | radiogroup_         | --             |
-| VSlider     | 垂直滑动条    | vslider_            | --             |
-| HSlider     | 水平滑动条    | hslider_            | --             |
-| Clip        | 位图切片     | clip_               | --             |
-| ProgressBar | 进度条      | progressbar_        | progress_      |
-| ComboBox    | 下拉框      | combobox_           | combo_         |
-| VScrollBar  | 垂直滚动条    | vscrollbar_         | vscroll_       |
-| HScrollBar  | 水平滚动条    | hscrollbar_         | hscroll_       |
-| Image       | 位图       | 不被识别为其它组件的都被视为Image | --             |
+| 基础组件名称 | 组件中文名称     | 资源前缀（全写，不区分大小写）   | 资源前缀(缩写，区分大小写) |
+| ------------ | ---------------- | -------------------------------- | -------------------------- |
+| Label        | 文本框           | label_                           | --                         |
+| TextInput    | 输入框           | textinput_                       | input_                     |
+| TextArea     | 带滚动条的文本域 | textarea_                        | area_                      |
+| Button       | 按钮             | button_                          | btn_                       |
+| CheckBox     | 多选框           | checkbox_                        | check_                     |
+| Radio        | 单选框           | radio_                           | --                         |
+| Tab          | 标签             | tab_                             | --                         |
+| RadioGroup   | 单选框按钮组     | radiogroup_                      | --                         |
+| VSlider      | 垂直滑动条       | vslider_                         | --                         |
+| HSlider      | 水平滑动条       | hslider_                         | --                         |
+| Clip         | 位图切片         | clip_                            | --                         |
+| fontclip     | 字体切片         | fontclip_                        | --                         |
+| ProgressBar  | 进度条           | progressbar_                     | progress_                  |
+| ComboBox     | 下拉框           | combobox_                        | combo_                     |
+| VScrollBar   | 垂直滚动条       | vscrollbar_                      | vscroll_                   |
+| HScrollBar   | 水平滚动条       | hscrollbar_                      | hscroll_                   |
+| Image        | 位图             | Image_                           | img_                       |
+| sprite       | 精灵             | 不按组件规则命名的都被视为sprite |                            |
 
-**Tips**: 资源可以直接用前缀名的全写或缩写，而不加下划线。比如`textinput.png`和`input.png`。但是如果还跟随其它字符必须加下划线，比如`inputAAA.png`不会被识别为输入框组件，`input_AAA.png`会识别为输入框（TextInput）组件。
+**Tips**:  资源可以直接用前缀名的全写或缩写，而不加下划线。比如`textinput.png`和`input.png`。但是如果还跟随其它字符必须加下划线，比如`inputAAA.png`不会被识别为输入框组件，`input_AAA.png`会识别为输入框（TextInput）组件。
 
 
 
