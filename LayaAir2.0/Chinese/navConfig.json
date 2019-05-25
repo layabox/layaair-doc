@@ -1058,6 +1058,60 @@
 			}]
 		},
 		{
+			"name_2_name": "LayaAir3D之纹理",
+			"name_2_data": [
+			{
+				"name_3_name": "Texture2D概述",
+				"name_3_url": "Chinese/LayaAir_TS/3D/Texture2D/Texture2D_overview/",
+				"name_3_file": "readme.md"
+			},
+			{
+				"name_3_name": "RenderTexture概述",
+				"name_3_url": "Chinese/LayaAir_TS/3D/Texture2D/RenderTexture_overview/",
+				"name_3_file": "readme.md"
+			},
+			{
+				"name_3_name": "纹理的格式",
+				"name_3_url": "Chinese/LayaAir_TS/3D/Texture2D/Texture2D_format/",
+				"name_3_file": "readme.md"
+			},
+			{
+				"name_3_name": "纹理的循环模式",
+				"name_3_url": "Chinese/LayaAir_TS/3D/Texture2D/Texture2D_wrapMode/",
+				"name_3_file": "readme.md"
+			},
+			{
+				"name_3_name": "纹理的过滤器",
+				"name_3_url": "Chinese/LayaAir_TS/3D/Texture2D/Texture2D_Filter/",
+				"name_3_file": "readme.md"
+			},
+			{
+				"name_3_name": "纹理的各向异性过滤",
+				"name_3_url": "Chinese/LayaAir_TS/3D/Texture2D/Anisotropic_Filtering/",
+				"name_3_file": "readme.md"
+			},
+			{
+				"name_3_name": "纹理的mipmap",
+				"name_3_url": "Chinese/LayaAir_TS/3D/Texture2D/Texture2D_mipmap/",
+				"name_3_file": "readme.md"
+			},
+			{
+				"name_3_name": "Texture2D的GPU纹理压缩的使用",
+				"name_3_url": "Chinese/LayaAir_TS/3D/Texture2D/Use_of_Texture_Compression/",
+				"name_3_file": "readme.md"
+			},
+			{
+				"name_3_name": "RenderTexture的深度格式",
+				"name_3_url": "Chinese/LayaAir_TS/3D/Texture2D/RenderTexture_depthFormat/",
+				"name_3_file": "readme.md"
+			},
+			{
+				"name_3_name": "RenderTexture的像素读取",
+				"name_3_url": "Chinese/LayaAir_TS/3D/Texture2D/RenderTexture_pixels/",
+				"name_3_file": "readme.md"
+			}]
+		},
+		{
 			"name_2_name": "LayaAir3D的内存管理",
 			"name_2_data": [
 			{
@@ -2429,6 +2483,59 @@
 			{
 				"name_3_name": "SkyBoxMaterial材质详解",
 				"name_3_url": "Chinese/LayaAir_JS/3D/Sky_Material/SkyBoxMaterial/",
+				"name_3_file": "readme.md"
+			}]
+		},{
+			"name_2_name": "LayaAir3D之纹理",
+			"name_2_data": [
+			{
+				"name_3_name": "Texture2D概述",
+				"name_3_url": "Chinese/LayaAir_JS/3D/Texture2D/Texture2D_overview/",
+				"name_3_file": "readme.md"
+			},
+			{
+				"name_3_name": "RenderTexture概述",
+				"name_3_url": "Chinese/LayaAir_JS/3D/Texture2D/RenderTexture_overview/",
+				"name_3_file": "readme.md"
+			},
+			{
+				"name_3_name": "纹理的格式",
+				"name_3_url": "Chinese/LayaAir_JS/3D/Texture2D/Texture2D_format/",
+				"name_3_file": "readme.md"
+			},
+			{
+				"name_3_name": "纹理的循环模式",
+				"name_3_url": "Chinese/LayaAir_JS/3D/Texture2D/Texture2D_wrapMode/",
+				"name_3_file": "readme.md"
+			},
+			{
+				"name_3_name": "纹理的过滤器",
+				"name_3_url": "Chinese/LayaAir_JS/3D/Texture2D/Texture2D_Filter/",
+				"name_3_file": "readme.md"
+			},
+			{
+				"name_3_name": "纹理的各向异性过滤",
+				"name_3_url": "Chinese/LayaAir_JS/3D/Texture2D/Anisotropic_Filtering/",
+				"name_3_file": "readme.md"
+			},
+			{
+				"name_3_name": "纹理的mipmap",
+				"name_3_url": "Chinese/LayaAir_JS/3D/Texture2D/Texture2D_mipmap/",
+				"name_3_file": "readme.md"
+			},
+			{
+				"name_3_name": "Texture2D的GPU纹理压缩的使用",
+				"name_3_url": "Chinese/LayaAir_JS/3D/Texture2D/Use_of_Texture_Compression/",
+				"name_3_file": "readme.md"
+			},
+			{
+				"name_3_name": "RenderTexture的深度格式",
+				"name_3_url": "Chinese/LayaAir_JS/3D/Texture2D/RenderTexture_depthFormat/",
+				"name_3_file": "readme.md"
+			},
+			{
+				"name_3_name": "RenderTexture的像素读取",
+				"name_3_url": "Chinese/LayaAir_JS/3D/Texture2D/RenderTexture_pixels/",
 				"name_3_file": "readme.md"
 			}]
 		},
@@ -3844,6 +3951,60 @@
 			{
 				"name_3_name": "SkyBoxMaterial材质详解",
 				"name_3_url": "Chinese/LayaAir_AS3/3D/Sky_Material/SkyBoxMaterial/",
+				"name_3_file": "readme.md"
+			}]
+		},
+		{
+			"name_2_name": "LayaAir3D之纹理",
+			"name_2_data": [
+			{
+				"name_3_name": "Texture2D概述",
+				"name_3_url": "Chinese/LayaAir_AS3/3D/Texture2D/Texture2D_overview/",
+				"name_3_file": "readme.md"
+			},
+			{
+				"name_3_name": "RenderTexture概述",
+				"name_3_url": "Chinese/LayaAir_AS3/3D/Texture2D/RenderTexture_overview/",
+				"name_3_file": "readme.md"
+			},
+			{
+				"name_3_name": "纹理的格式",
+				"name_3_url": "Chinese/LayaAir_AS3/3D/Texture2D/Texture2D_format/",
+				"name_3_file": "readme.md"
+			},
+			{
+				"name_3_name": "纹理的循环模式",
+				"name_3_url": "Chinese/LayaAir_AS3/3D/Texture2D/Texture2D_wrapMode/",
+				"name_3_file": "readme.md"
+			},
+			{
+				"name_3_name": "纹理的过滤器",
+				"name_3_url": "Chinese/LayaAir_AS3/3D/Texture2D/Texture2D_Filter/",
+				"name_3_file": "readme.md"
+			},
+			{
+				"name_3_name": "纹理的各向异性过滤",
+				"name_3_url": "Chinese/LayaAir_AS3/3D/Texture2D/Anisotropic_Filtering/",
+				"name_3_file": "readme.md"
+			},
+			{
+				"name_3_name": "纹理的mipmap",
+				"name_3_url": "Chinese/LayaAir_AS3/3D/Texture2D/Texture2D_mipmap/",
+				"name_3_file": "readme.md"
+			},
+			{
+				"name_3_name": "Texture2D的GPU纹理压缩的使用",
+				"name_3_url": "Chinese/LayaAir_AS3/3D/Texture2D/Use_of_Texture_Compression/",
+				"name_3_file": "readme.md"
+			},
+			{
+				"name_3_name": "RenderTexture的深度格式",
+				"name_3_url": "Chinese/LayaAir_AS3/3D/Texture2D/RenderTexture_depthFormat/",
+				"name_3_file": "readme.md"
+			},
+			{
+				"name_3_name": "RenderTexture的像素读取",
+				"name_3_url": "Chinese/LayaAir_AS3/3D/Texture2D/RenderTexture_pixels/",
 				"name_3_file": "readme.md"
 			}]
 		},
