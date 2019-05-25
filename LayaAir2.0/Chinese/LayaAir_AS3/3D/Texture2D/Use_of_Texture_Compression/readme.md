@@ -16,3 +16,18 @@
 
 导出后分了3个不同的文件夹，对应的3个平台可以使用的资源。
 
+纹理压缩使用示例（[地址](https://layaair.ldc.layabox.com/demo2/?language=ch&category=3d&group=Texture&name=TextureGPUCompression)）
+
+在这里使用了 `URL.basePath` 方法，去设置加载路径，并且不同的平台加载不同的资源，来使用压缩纹理
+
+```typescript
+if (Browser.onAndroid)
+    URL.basePath = "res/threeDimen/scene/LayaScene_TextureGPUCompression/Android/";
+else if (Laya.Browser.onIOS)
+   	URL.basePath = "res/threeDimen/scene/LayaScene_TextureGPUCompression/IOS/";
+else
+    URL.basePath = "res/threeDimen/scene/LayaScene_TextureGPUCompression/Conventional/";
+
+Scene3D.load("scene.ls", Handler.create(.......));
+```
+
