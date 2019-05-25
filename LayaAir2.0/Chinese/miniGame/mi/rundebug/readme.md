@@ -20,9 +20,9 @@
 
 5、LayaAirIDE集中开发环境，LayaAir 2.0.2beta 或以上版本 [ 官网下载: [https://ldc2.layabox.com/layadownload/?type=layaairide](https://ldc2.layabox.com/layadownload/?type=layaairide) ]
 
-6、安装ADB Shell
+6、安装ADB
 
-建议安装ADB Shell，因为有些时候，因为授权或者别的莫名其怪的原因。会导致无法正常启动chrome联真机调试。所以安装ADB Shell可以验证和有助于手机与PC电脑的连接授权。如果确保无USB调试授权问题的，也可以不装。
+建议安装ADB，因为有些时候，因为授权或者别的莫名其怪的原因。会导致无法正常启动chrome联真机调试。所以安装ADB 可以验证和有助于手机与PC电脑的连接授权。如果确保无USB调试授权问题的，也可以不装。
 
  [ ADB官网下载:  [http://adbshell.com/downloads](http://adbshell.com/downloads) ]
 

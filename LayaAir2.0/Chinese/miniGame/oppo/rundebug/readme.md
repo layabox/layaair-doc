@@ -19,9 +19,9 @@
 
 5、LayaAirIDE集中开发环境，LayaAir 2.1.0 beta 或以上版本 [ 官网下载: [https://ldc2.layabox.com/layadownload/?type=layaairide](https://ldc2.layabox.com/layadownload/?type=layaairide) ]
 
-6、安装ADB Shell
+6、安装ADB
 
-OPPO发布需要通过ADB Shell把rpk包推到games目录上去，所以这个必须要装。
+OPPO发布时，是通过 ADB 把rpk包推到手机的games目录上去，所以这个必须要装。
 
  [ ADB官网下载:  [http://adbshell.com/downloads](http://adbshell.com/downloads) ]
 
@@ -34,7 +34,7 @@ OPPO发布需要通过ADB Shell把rpk包推到games目录上去，所以这个�
 
 为了让发布OPPO顺利一些，有一些检查工作我们要做。
 
-第一、PC里，node环境、ADB Shell、Chrome这些，都必须要安装好。
+第一、PC里，node环境、ADB、Chrome这些，都必须要安装好。
 
 第二、在OPPO的手机里，进入` 设置-> 其它设置-> 开发者选项` ，开发者选项与USB调试必须开启，如图1所示。
 
@@ -70,7 +70,7 @@ LayaAirIDE的发布功能，内置了OPPO小游戏的发布功能，需要先将
 
 OPPO的调试必须基于真机调试，PC的chrome只能输出信息，看不到画面。
 
-如果准备工作没问题的话，正常情况下，LayaAirIDE里成功发布OPPO小游戏之后，是rpk的包会自动出现在快游戏的OPPO小游戏列表中的（IDE通过调用ADB Shell推到指定的目录中），如图5所示。
+如果准备工作没问题的话，正常情况下，LayaAirIDE里成功发布OPPO小游戏之后，是rpk的包会自动出现在快游戏的OPPO小游戏列表中的（IDE通过调用ADB推到指定的目录中），如图5所示。
 
 ![图5](img/5.png) 
 
@@ -100,7 +100,7 @@ chrome-devtools://devtools/bundled/inspector.html?v8only=true&ws=10.10.82.111:12
 
 #### 调试列表中未见游戏，是什么情况
 
-如果我们发布的时候没能将rpk自动发到快游戏目录内，那图5的列表中，就没办法直接看到刚发布的小游戏。这时，需要检查adb shell是不是安装好了，图1的授权是不是开启了，大多数是adb shell或者授权有关。我们可以在PC的命令行下，输入adb shell，如图7-1所示。则是未获得USB调试模式授权。
+如果我们发布的时候没能将rpk自动发到快游戏目录内，那图5的列表中，就没办法直接看到刚发布的小游戏。这时，需要检查 adb 是不是安装好了，图1的授权是不是开启了，大多数是adb shell或者授权有关。我们可以在PC的命令行下，输入 adb ，如图7-1所示。则是未获得USB调试模式授权。
 
 ![图7-1](img/7-1.png)  
 
