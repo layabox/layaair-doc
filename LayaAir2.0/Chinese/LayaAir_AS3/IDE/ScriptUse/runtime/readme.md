@@ -62,7 +62,7 @@ package game
 			//设置组件的中心点
 			this.anchorX = this.anchorY = 0.5;
 			//添加鼠标按下事件侦听。按时时缩小按钮。
-			this.on(Event.MOUSE_DOWN,this,scaleSmal);
+			this.on(Event.MOUSE_DOWN,this,scaleSmall);
 			//添加鼠标抬起事件侦听。抬起时还原按钮。
 			this.on(Event.MOUSE_UP,this, scaleBig);
 			//添加鼠标离开事件侦听。离开时还原按钮。
@@ -73,7 +73,7 @@ package game
 			//变大还原的缓动效果
 			Tween.to(this, {scaleX:1,scaleY:1},scaleTime);
 		}
-		private function scaleSmal():void
+		private function scaleSmall():void
 		{
 			//缩小至0.8的缓动效果
 			Tween.to(this,{scaleX:0.8,scaleY:0.8},scaleTime);
