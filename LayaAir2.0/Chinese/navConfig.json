@@ -1112,6 +1112,80 @@
 			}]
 		},
 		{
+			"name_2_name": "LayaAir3D之Animator动画",
+			"name_2_data": [
+			{
+				"name_3_name": "动画系统概述",
+				"name_3_url": "Chinese/LayaAir_TS/3D/Animator/Overview_of_animation_system/",
+				"name_3_file": "readme.md"
+			},
+			{
+				"name_3_name": "从Unity中编辑并导出模型动画",
+				"name_3_url": "Chinese/LayaAir_TS/3D/Animator/Edit&export_the_model_animation/",
+				"name_3_file": "readme.md"
+			},
+			{
+				"name_3_name": "播放动画",
+				"name_3_url": "Chinese/LayaAir_TS/3D/Animator/Play_Animation/",
+				"name_3_file": "readme.md"
+			},
+			{
+				"name_3_name": "动画过渡融合",
+				"name_3_url": "Chinese/LayaAir_TS/3D/Animator/Animation_transition_fusion/",
+				"name_3_file": "readme.md"
+			},
+			{
+				"name_3_name": "动画多层混合",
+				"name_3_url": "Chinese/LayaAir_TS/3D/Animator/Multilayer_blending/",
+				"name_3_file": "readme.md"
+			},
+			{
+				"name_3_name": "暂停动画",
+				"name_3_url": "Chinese/LayaAir_TS/3D/Animator/Suspended_animation/",
+				"name_3_file": "readme.md"
+			},
+			{
+				"name_3_name": "动画播放状态获取",
+				"name_3_url": "Chinese/LayaAir_TS/3D/Animator/AnimatorPlayState/",
+				"name_3_file": "readme.md"
+			},
+			{
+				"name_3_name": "动画状态脚本",
+				"name_3_url": "Chinese/LayaAir_TS/3D/Animator/AnimatorStateScript/",
+				"name_3_file": "readme.md"
+			},
+			{
+				"name_3_name": "在Unity中设置动画事件",
+				"name_3_url": "Chinese/LayaAir_TS/3D/Animator/AnimationEventByUnity/",
+				"name_3_file": "readme.md"
+			},
+			{
+				"name_3_name": "动画挂点",
+				"name_3_url": "Chinese/LayaAir_TS/3D/Animator/BoneLink/",
+				"name_3_file": "readme.md"
+			},
+			{
+				"name_3_name": "材质动画的使用",
+				"name_3_url": "Chinese/LayaAir_TS/3D/Animator/Material_animation/",
+				"name_3_file": "readme.md"
+			},
+			{
+				"name_3_name": "刚体动画的使用",
+				"name_3_url": "Chinese/LayaAir_TS/3D/Animator/RigidbodyAnimation/",
+				"name_3_file": "readme.md"
+			},
+			{
+				"name_3_name": "骨骼动画的使用",
+				"name_3_url": "Chinese/LayaAir_TS/3D/Animator/SkinAnimation/",
+				"name_3_file": "readme.md"
+			},
+			{
+				"name_3_name": "摄像机动画的使用",
+				"name_3_url": "Chinese/LayaAir_TS/3D/Animator/CameraAnimation/",
+				"name_3_file": "readme.md"
+			}]
+		},
+		{
 			"name_2_name": "LayaAir3D的内存管理",
 			"name_2_data": [
 			{
@@ -2536,6 +2610,80 @@
 			{
 				"name_3_name": "RenderTexture的像素读取",
 				"name_3_url": "Chinese/LayaAir_JS/3D/Texture2D/RenderTexture_pixels/",
+				"name_3_file": "readme.md"
+			}]
+		},
+		{
+			"name_2_name": "LayaAir3D之Animator动画",
+			"name_2_data": [
+			{
+				"name_3_name": "动画系统概述",
+				"name_3_url": "Chinese/LayaAir_JS/3D/Animator/Overview_of_animation_system/",
+				"name_3_file": "readme.md"
+			},
+			{
+				"name_3_name": "从Unity中编辑并导出模型动画",
+				"name_3_url": "Chinese/LayaAir_JS/3D/Animator/Edit&export_the_model_animation/",
+				"name_3_file": "readme.md"
+			},
+			{
+				"name_3_name": "播放动画",
+				"name_3_url": "Chinese/LayaAir_JS/3D/Animator/Play_Animation/",
+				"name_3_file": "readme.md"
+			},
+			{
+				"name_3_name": "动画过渡融合",
+				"name_3_url": "Chinese/LayaAir_JS/3D/Animator/Animation_transition_fusion/",
+				"name_3_file": "readme.md"
+			},
+			{
+				"name_3_name": "动画多层混合",
+				"name_3_url": "Chinese/LayaAir_JS/3D/Animator/Multilayer_blending/",
+				"name_3_file": "readme.md"
+			},
+			{
+				"name_3_name": "暂停动画",
+				"name_3_url": "Chinese/LayaAir_JS/3D/Animator/Suspended_animation/",
+				"name_3_file": "readme.md"
+			},
+			{
+				"name_3_name": "动画播放状态获取",
+				"name_3_url": "Chinese/LayaAir_JS/3D/Animator/AnimatorPlayState/",
+				"name_3_file": "readme.md"
+			},
+			{
+				"name_3_name": "动画状态脚本",
+				"name_3_url": "Chinese/LayaAir_JS/3D/Animator/AnimatorStateScript/",
+				"name_3_file": "readme.md"
+			},
+			{
+				"name_3_name": "在Unity中设置动画事件",
+				"name_3_url": "Chinese/LayaAir_JS/3D/Animator/AnimationEventByUnity/",
+				"name_3_file": "readme.md"
+			},
+			{
+				"name_3_name": "动画挂点",
+				"name_3_url": "Chinese/LayaAir_JS/3D/Animator/BoneLink/",
+				"name_3_file": "readme.md"
+			},
+			{
+				"name_3_name": "材质动画的使用",
+				"name_3_url": "Chinese/LayaAir_JS/3D/Animator/Material_animation/",
+				"name_3_file": "readme.md"
+			},
+			{
+				"name_3_name": "刚体动画的使用",
+				"name_3_url": "Chinese/LayaAir_JS/3D/Animator/RigidbodyAnimation/",
+				"name_3_file": "readme.md"
+			},
+			{
+				"name_3_name": "骨骼动画的使用",
+				"name_3_url": "Chinese/LayaAir_JS/3D/Animator/SkinAnimation/",
+				"name_3_file": "readme.md"
+			},
+			{
+				"name_3_name": "摄像机动画的使用",
+				"name_3_url": "Chinese/LayaAir_JS/3D/Animator/CameraAnimation/",
 				"name_3_file": "readme.md"
 			}]
 		},
@@ -4005,6 +4153,80 @@
 			{
 				"name_3_name": "RenderTexture的像素读取",
 				"name_3_url": "Chinese/LayaAir_AS3/3D/Texture2D/RenderTexture_pixels/",
+				"name_3_file": "readme.md"
+			}]
+		},
+		{
+			"name_2_name": "LayaAir3D之Animator动画",
+			"name_2_data": [
+			{
+				"name_3_name": "动画系统概述",
+				"name_3_url": "Chinese/LayaAir_AS3/3D/Animator/Overview_of_animation_system/",
+				"name_3_file": "readme.md"
+			},
+			{
+				"name_3_name": "从Unity中编辑并导出模型动画",
+				"name_3_url": "Chinese/LayaAir_AS3/3D/Animator/Edit&export_the_model_animation/",
+				"name_3_file": "readme.md"
+			},
+			{
+				"name_3_name": "播放动画",
+				"name_3_url": "Chinese/LayaAir_AS3/3D/Animator/Play_Animation/",
+				"name_3_file": "readme.md"
+			},
+			{
+				"name_3_name": "动画过渡融合",
+				"name_3_url": "Chinese/LayaAir_AS3/3D/Animator/Animation_transition_fusion/",
+				"name_3_file": "readme.md"
+			},
+			{
+				"name_3_name": "动画多层混合",
+				"name_3_url": "Chinese/LayaAir_AS3/3D/Animator/Multilayer_blending/",
+				"name_3_file": "readme.md"
+			},
+			{
+				"name_3_name": "暂停动画",
+				"name_3_url": "Chinese/LayaAir_AS3/3D/Animator/Suspended_animation/",
+				"name_3_file": "readme.md"
+			},
+			{
+				"name_3_name": "动画播放状态获取",
+				"name_3_url": "Chinese/LayaAir_AS3/3D/Animator/AnimatorPlayState/",
+				"name_3_file": "readme.md"
+			},
+			{
+				"name_3_name": "动画状态脚本",
+				"name_3_url": "Chinese/LayaAir_AS3/3D/Animator/AnimatorStateScript/",
+				"name_3_file": "readme.md"
+			},
+			{
+				"name_3_name": "在Unity中设置动画事件",
+				"name_3_url": "Chinese/LayaAir_AS3/3D/Animator/AnimationEventByUnity/",
+				"name_3_file": "readme.md"
+			},
+			{
+				"name_3_name": "动画挂点",
+				"name_3_url": "Chinese/LayaAir_AS3/3D/Animator/BoneLink/",
+				"name_3_file": "readme.md"
+			},
+			{
+				"name_3_name": "材质动画的使用",
+				"name_3_url": "Chinese/LayaAir_AS3/3D/Animator/Material_animation/",
+				"name_3_file": "readme.md"
+			},
+			{
+				"name_3_name": "刚体动画的使用",
+				"name_3_url": "Chinese/LayaAir_AS3/3D/Animator/RigidbodyAnimation/",
+				"name_3_file": "readme.md"
+			},
+			{
+				"name_3_name": "骨骼动画的使用",
+				"name_3_url": "Chinese/LayaAir_AS3/3D/Animator/SkinAnimation/",
+				"name_3_file": "readme.md"
+			},
+			{
+				"name_3_name": "摄像机动画的使用",
+				"name_3_url": "Chinese/LayaAir_AS3/3D/Animator/CameraAnimation/",
 				"name_3_file": "readme.md"
 			}]
 		},
