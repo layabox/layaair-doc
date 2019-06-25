@@ -54,10 +54,6 @@ public static var getUrlAndEncode:Function = function(url:String,type:String):St
 
 
 
-#### 5、使用`"./xx"`路径为什么微信小游戏中出错
-
-H5中常用的`“./xx/xx.png”`的写法在浏览器环境没问题，在微信小游戏中是不被支持的。可以写成`“xx/xx.png”`的路径方式。
-
 
 
 
