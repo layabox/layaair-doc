@@ -25,32 +25,32 @@ public onStart():void {}
 /**
  * 开始触发时执行
  */
-public onTriggerEnter(other:PhysicsComponent):void {}
+public onTriggerEnter(other:Laya.PhysicsComponent):void {}
 
 /**
  * 持续触发时执行
  */
-public onTriggerStay(other:PhysicsComponent):void {}
+public onTriggerStay(other:Laya.PhysicsComponent):void {}
 
 /**
  * 结束触发时执行
  */
-public onTriggerExit(other:PhysicsComponent):void {}
+public onTriggerExit(other:Laya.PhysicsComponent):void {}
 
 /**
  * 开始碰撞时执行
  */
-public onCollisionEnter(collision:Collision):void {}
+public onCollisionEnter(collision:Laya.Collision):void {}
 
 /**
  * 持续碰撞时执行
  */
-public  onCollisionStay(collision:Collision):void {}
+public  onCollisionStay(collision:Laya.Collision):void {}
 
 /**
  * 结束碰撞时执行
  */
-public onCollisionExit(collision:Collision):void {}
+public onCollisionExit(collision:Laya.Collision):void {}
 
 /**
  * 鼠标按下时执行
@@ -92,17 +92,17 @@ public onMouseOut():void {}
 /**
  * 键盘按下时执行
  */
-public  onKeyDown(e:Event):void {}
+public  onKeyDown(e:Laya.Event):void {}
 
 /**
  * 键盘产生一个字符时执行
  */
-public  onKeyPress(e:Event):void {}
+public  onKeyPress(e:Laya.Event):void {}
 
 /**
  * 键盘抬起时执行
  */
-public  onKeyUp(e:Event):void {}
+public  onKeyUp(e:Laya.Event):void {}
 
 /**
  * 每帧更新时执行
