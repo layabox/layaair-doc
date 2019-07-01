@@ -68,3 +68,5 @@ Laya.stage.addChild(txt);
 ​	图（3）
 
 **至此，如果您能跟随本篇入门教程，完成上图的显示，恭喜您入门成功，我们已经完成了第一个采用TypeScript语言开发的LayaAir引擎HTML5程序。更多LayaAir引擎开发的API使用方法，请前往官网Layabox开发者中心查看在线API与引擎示例。**
+
+**TypeScript相关知识请访问[https://www.tslang.cn/docs/home.html](https://www.tslang.cn/docs/home.html) 中文网，此网址要保存，常用！很多问题都可以看这个来解决**

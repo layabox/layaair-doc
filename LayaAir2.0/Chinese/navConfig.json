@@ -1186,6 +1186,30 @@
 			}]
 		},
 		{
+			"name_2_name": "LayaAir3D的脚本使用",
+			"name_2_data": [
+			{
+				"name_3_name": "脚本的概述",
+				"name_3_url": "Chinese/LayaAir_TS/3D/Script3D/Overview_of_the_script/",
+				"name_3_file": "readme.md"
+			},
+			{
+				"name_3_name": "创建自定义脚本",
+				"name_3_url": "Chinese/LayaAir_TS/3D/Script3D/CustomScript/",
+				"name_3_file": "readme.md"
+			},
+			{
+				"name_3_name": "脚本的事件",
+				"name_3_url": "Chinese/LayaAir_TS/3D/Script3D/Scripted_events/",
+				"name_3_file": "readme.md"
+			},
+			{
+				"name_3_name": "脚本的生命周期",
+				"name_3_url": "Chinese/LayaAir_TS/3D/Script3D/Script_lifecycle/",
+				"name_3_file": "readme.md"
+			}]
+		},
+		{
 			"name_2_name": "LayaAir3D的内存管理",
 			"name_2_data": [
 			{
@@ -2684,6 +2708,30 @@
 			{
 				"name_3_name": "摄像机动画的使用",
 				"name_3_url": "Chinese/LayaAir_JS/3D/Animator/CameraAnimation/",
+				"name_3_file": "readme.md"
+			}]
+		},
+		{
+			"name_2_name": "LayaAir3D的脚本使用",
+			"name_2_data": [
+			{
+				"name_3_name": "脚本的概述",
+				"name_3_url": "Chinese/LayaAir_JS/3D/Script3D/Overview_of_the_script/",
+				"name_3_file": "readme.md"
+			},
+			{
+				"name_3_name": "创建自定义脚本",
+				"name_3_url": "Chinese/LayaAir_JS/3D/Script3D/CustomScript/",
+				"name_3_file": "readme.md"
+			},
+			{
+				"name_3_name": "脚本的事件",
+				"name_3_url": "Chinese/LayaAir_JS/3D/Script3D/Scripted_events/",
+				"name_3_file": "readme.md"
+			},
+			{
+				"name_3_name": "脚本的生命周期",
+				"name_3_url": "Chinese/LayaAir_JS/3D/Script3D/Script_lifecycle/",
 				"name_3_file": "readme.md"
 			}]
 		},
@@ -4227,6 +4275,30 @@
 			{
 				"name_3_name": "摄像机动画的使用",
 				"name_3_url": "Chinese/LayaAir_AS3/3D/Animator/CameraAnimation/",
+				"name_3_file": "readme.md"
+			}]
+		},
+		{
+			"name_2_name": "LayaAir3D的脚本使用",
+			"name_2_data": [
+			{
+				"name_3_name": "脚本的概述",
+				"name_3_url": "Chinese/LayaAir_AS3/3D/Script3D/Overview_of_the_script/",
+				"name_3_file": "readme.md"
+			},
+			{
+				"name_3_name": "创建自定义脚本",
+				"name_3_url": "Chinese/LayaAir_AS3/3D/Script3D/CustomScript/",
+				"name_3_file": "readme.md"
+			},
+			{
+				"name_3_name": "脚本的事件",
+				"name_3_url": "Chinese/LayaAir_AS3/3D/Script3D/Scripted_events/",
+				"name_3_file": "readme.md"
+			},
+			{
+				"name_3_name": "脚本的生命周期",
+				"name_3_url": "Chinese/LayaAir_AS3/3D/Script3D/Script_lifecycle/",
 				"name_3_file": "readme.md"
 			}]
 		},

@@ -57,7 +57,7 @@ changeMeshButton.on(Laya.Event.CLICK, this, function(){
         //切换mesh
         sphere.meshFilter.sharedMesh = cylinder;
     }
-    else if(index % 5 === 3){
+    else if(index % 5 === 4){
         //切换mesh
         sphere.meshFilter.sharedMesh = cone;
     }
