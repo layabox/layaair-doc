@@ -30,11 +30,11 @@ layaMonkey_clone3.transform.translate(new Laya.Vector3( 2.5, 0, 0.0));
 
 ![](img/2.png)<br>(图2)
 
-​	然后测试我们的旋转和 **缩放** 变换。我们对克隆体1 按Y轴旋转90度，克隆体设置他的缩放值为（0.5，0.5，0.5）。再看下效果。（本次缩放使用的是局部缩放，世界缩放与局部缩放的原点相同，缩放参考的坐标系不同，且世界缩放的倍数是基于全局）。
+​	然后测试我们的旋转和 **缩放** 变换。我们对克隆体1 按Y轴旋转60度，克隆体3设置他的缩放值为（0.1，0.1，0.1）。再看下效果。（本次缩放使用的是局部缩放，世界缩放与局部缩放的原点相同，缩放参考的坐标系不同，且世界缩放的倍数是基于全局）。
 
 ```typescript
 //旋转
-layaMonkey_clone2.transform.rotate(new Laya.Vector3(0, 60, 0), false, false);
+layaMonkey_clone1.transform.rotate(new Laya.Vector3(0, 60, 0), false, false);
 //缩放
 var scale:Laya.Vector3 = new Laya.Vector3(0.1, 0.1, 0.1);
 layaMonkey_clone3.transform.localScale = scale;
