@@ -1,39 +1,49 @@
-# VIVO小游戏发布与调试指南
+# vivo小游戏发布与调试指南
 
-> update : 2019-06-25
+> update : 2019-07-01
 >
-> VIVO小游戏的发布必须要使用LayaAirIDE，关于IDE的下载使用相关，请查看相关文档，不在本篇介绍范围内。
+> vivo小游戏的发布必须要使用LayaAirIDE，关于IDE的下载使用相关，请查看相关文档，不在本篇介绍范围内。
 
-## 1、VIVO小游戏发布、调试环境准备
+## 1、vivo小游戏发布、调试环境准备
 
-1、VIVO品牌的手机
+1、vivo品牌的手机
 
-2、下载安装VIVO的调试APP，下载页面：[https://minigame.vivo.com.cn/documents/#/download/debugger](https://minigame.vivo.com.cn/documents/#/download/debugger)
+2、下载安装vivo的调试APP，下载页面：[https://minigame.vivo.com.cn/documents/#/download/debugger](https://minigame.vivo.com.cn/documents/#/download/debugger)
 
-进入页面后，点击 立即下载 ，即可下载安装。至于如何安装VIVO调试APP，这里就不介绍了。
+进入页面后，点击 立即下载 ，即可下载安装。至于如何安装vivo调试APP，这里就不介绍了。
 
-3、PC电脑的chrome浏览器与手机数据连接线。
+3、下载vivo小游戏引擎
 
-4、安装nodejs 环境 [node官网：[https://nodejs.org/en/](https://nodejs.org/en/)]
+当前**调试APP**内置的vivo引擎版本是1034，这个版本存在已知BUG，我们必须要前往vivo小游戏官网下载最新版本的小游戏引擎apk。
+
+下载页面为：
+
+https://minigame.vivo.com.cn/documents/#/download/engine
+
+当前的推荐的版本是1041，下载安装后，我们可以看到vivo快应用调试器的平台版本号那里也是显示的1041。
+
+4、PC电脑的chrome浏览器与手机数据连接线。
+
+5、安装nodejs 环境 [node官网：[https://nodejs.org/en/](https://nodejs.org/en/)]
 
 就是下载安装，比较简单，也不细介绍。能在命令行里调起npm命令就算是成功了。
 
-5、LayaAirIDE集中开发环境，LayaAir IDE 2.1.1beta 或以上版本 [ 官网下载: [https://ldc2.layabox.com/layadownload/?type=layaairide](https://ldc2.layabox.com/layadownload/?type=layaairide) ]
+6、LayaAirIDE集中开发环境，LayaAir IDE 2.1.1beta 或以上版本 [ 官网下载: [https://ldc2.layabox.com/layadownload/?type=layaairide](https://ldc2.layabox.com/layadownload/?type=layaairide) ]
 
-6、安装ADB 
+7、安装ADB 
 
-vivo发布时，是通过 ADB 把rpk包推到手机的games目录上去，所以这个必须要装。
+ADB可以用于授权，以及发布推送等，可以前往ADB的官网下载并安装。
 
  [ ADB官网下载:  [http://adbshell.com/downloads](http://adbshell.com/downloads) ]
 
 > 简单提示一下，下载 ADB Kits，下载后的压缩包，建议解压放到一个路径简单一些的目录（如: `D:\adb`）。要记得添加环境变量（不知如何添加环境变量的可自行百度）。
 >
 
-## 2、VIVO小游戏发布与接入完整流程
+## 2、vivo小游戏发布与接入完整流程
 
-### 1、发布VIVO小游戏包(xx.rpk)
+### 1、发布vivo小游戏包(xx.rpk)
 
-LayaAirIDE的发布功能，内置了VIVO小游戏的发布功能，需要先将LayaAir引擎的项目，通过发布功能打成.rpk后缀的包。关于发布功能的使用。这里不重复介绍了。不会的可以前往官网文档查看。
+LayaAirIDE的发布功能，内置了vivo小游戏的发布功能，需要先将LayaAir引擎的项目，通过发布功能打成.rpk后缀的包。关于发布功能的使用。这里不重复介绍了。不会的可以前往官网文档查看。
 
 链接：[https://ldc2.layabox.com/doc/?nav=zh-ts-2-0-6](https://ldc2.layabox.com/doc/?nav=zh-ts-2-0-6)
 
@@ -49,17 +59,17 @@ LayaAirIDE的发布功能，内置了VIVO小游戏的发布功能，需要先将
 
 ####  3.1 安装并进入快应用调试器
 
-要启动电脑PC的chrome调试环境，我们要先安装好VIVO小游戏的调试APP（快应用调试器），如图3所示。然后点击进入。
+要启动电脑PC的chrome调试环境，我们要先安装好vivo小游戏的调试APP（快应用调试器），如图3所示。然后点击进入。
 
 ![图3](img/3.png) 
 
 （图3）
 
-#### 3.2 在快应用调试器界面扫码安装VIVO小游戏的rpk包
+#### 3.2 在快应用调试器界面扫码安装vivo小游戏的rpk包
 
 进入快应用调试器之后，我们可以看到如图4所示的APP操作界面。
 
-![图4](img/4.png) 
+![图4](img/4.png)  
 
 (图4)
 
@@ -105,13 +115,15 @@ LayaAirIDE的发布功能，内置了VIVO小游戏的发布功能，需要先将
 
 要启动调试，就要先退出来。
 
-然后，如图6所示，点击**开始调试**，进入VIVO小游戏的调试模式。
+然后，如图6所示，点击**开始调试**，进入vivo小游戏的调试模式。
 
 ![图6](img/6.png) 
 
+（图6）
+
 真机进入调试模式后，我们再到PC上打开chrome浏览器。
 
-这时候别忘了，要通地USB数据线，将手机设备与PC相联，权限的问题上面已经说过，不再重复。
+这时候别忘了，要联接USB数据线，将手机设备与PC相联，权限的问题上面已经说过，不再重复。
 
 我们要在手机端查找到手机的IP（不知道怎么查的自行百度）并记住他。一定要注意的是，手机网要和PC网始终保持在同一个局域网段。
 
@@ -127,9 +139,9 @@ chrome-devtools://devtools/bundled/inspector.html?v8only=true&ws={IP}:5086/00010
 
 
 
-至此，VIVO小游戏从发布到启动chrome调试的完整流程已介绍完。
+至此，vivo小游戏从发布到启动chrome调试的完整流程已介绍完。如果想了解关于更多vivo小游戏的接入流程与文档介绍，记住这个网址：
 
-最终具体的调试方式。就不在本篇中细讲了。
+https://minigame.vivo.com.cn
 
 
 
