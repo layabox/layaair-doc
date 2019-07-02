@@ -2,7 +2,7 @@
 
 在LayaAirIDE中资源面板下所有的组件均有runtime的属性，runtime是该组件运行时的逻辑类；相同组件可使用同一runtime类来实现相同的功能，比如不同页面上需要对相同的组件实现同一功能。**需要注意的是组件的runtime逻辑类如果不继承组件自身，并且继承的对象中没有该组件的属性时，这个属性则会失效。**
 
-**runTime脚本与script脚本类似，不同的是runtime脚本的方式实现，继承页面，场景或组件类，实现逻辑。在IDE里面设置场景的Runtime属性即可和场景或对象进行关联**
+**runTime脚本继承页面，场景或组件类，实现逻辑。在IDE里面设置场景的Runtime属性即可和场景或对象进行关联**
 
 - **相比script脚本方式，继承式页面类，可以直接使用页面定义的属性（通过IDE内var属性定义），比如this.tipLbll，this.scoreLbl，具有代码提示效果**
 - **建议：如果是页面级的逻辑，需要频繁访问页面内多个元素，使用runtime继承式写法，如果是独立小模块，功能单一，建议用script脚本方法 **
@@ -14,7 +14,7 @@
 
 ### 一、给页面中的组件设置runtime类
 
-在页面管理目录下创建两个scene场景，分别叫MonkeyPage和BGPage，接下来我们在src目录下创建一个game包，在game包中创建一个ImageRunTime类,然后两个scene中各拖入一张Image组件设置runtime属性为game.ImageRunTime(将脚本拖拽到runtime的script图标上)。如图1,2,3所示： （注意！导出类型为分离模式，会生成场景代码文件，默认不会生成)
+在页面管理目录下创建两个scene场景，分别叫MonkeyPage和BGPage，接下来我们在src目录下创建一个game包，在game包中创建一个ImageRunTime类,然后两个scene中各拖入一张Image组件设置runtime属性为game.ImageRunTime(将脚本拖拽到runtime的script图标上)。如图1,2,3所示： （注意！导出类型为分离模式，会生成场景代码文件，默认为文件模式，文件模式不会生成场景类)
 
 ![1](img\ide1.png)(图1)
 
