@@ -158,10 +158,10 @@ rpk包位于项目的release/oppogame/quickgame/dist 目录下，如图8所示�
 
 ```typescript
 //TS或JS初始化
-Laya['QGMiniAdapter'].init();
+Laya['QGMiniAdapter'].init();//需要引入aya.quickgamemini.js
 
 //as3初始化
-QGMiniAdapter.init();
+QGMiniAdapter.init();//需要 import laya.qg.mini.QGMiniAdapter;
 ```
 
 另外还有其它需要注意的地方，以及细节处理过程。欢迎大家前往观看OPPO接入的免费视频。
