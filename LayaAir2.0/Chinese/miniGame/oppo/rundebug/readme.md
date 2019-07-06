@@ -1,15 +1,17 @@
 # OPPO小游戏发布与调试指南
 
-> update : 2019-05-14
+> update : 2019-07-06
 >
 
 ## 1、OPPO小游戏发布、调试环境准备
 
 1、OPPO品牌的手机。
 
-2、下载安装OPPO真机测试APP "快应用"（[OPPO 小游戏调试器](http://cdofs.oppomobile.com/cdo-activity/static/quickgame/tools/f04dec4cd2d9c8613483672ef4d8d045.zip) ）
+2、下载安装OPPO真机测试APP "快应用"（OPPO 小游戏调试器 ）
 
-点击括号中的链接可以直接下载 OPPO小游戏调试器"快应用"，或者前往OPPO官网文档（[https://cdofs.oppomobile.com/cdo-activity/static/201810/26/quickgame/documentation/games/use.html](https://cdofs.oppomobile.com/cdo-activity/static/201810/26/quickgame/documentation/games/use.html)）进行下载。
+前往OPPO官网文档（[https://cdofs.oppomobile.com/cdo-activity/static/201810/26/quickgame/documentation/games/use.html](https://cdofs.oppomobile.com/cdo-activity/static/201810/26/quickgame/documentation/games/use.html)）我们找到`安装 runtime.apk 包到 OPPO 手机上`这个栏目，通常会选择新版本，进行下载。
+
+要注意的是，调试器的版本，文档中有注明最小平台版本号。LayaAirIDE发布的时候，要和这里最小平台版本号对应上。
 
 3、PC电脑的chrome浏览器与手机数据连接线。
 
@@ -147,6 +149,16 @@ rpk包位于项目的release/oppogame/quickgame/dist 目录下，如图8所示�
 在  `.rpk` 文件生成成功的情况下，实际上发布流程已经结束。
 
 如果打包流程出现问题，可以把问题反馈给Layabox官方团队，Layabox会与OPPO团队共同处理。
+
+最后提醒一下，本篇文档适用于LayaAir2.x引擎与IDE的发布流程。
+
+如果是1.x引擎，
+
+需要先手工引入适配库，这是和2.x不太一样的地方。
+
+另外还有其它需要注意的地方，欢迎大家前往观看OPPO接入的免费视频。
+
+视频地址：[https://ke.qq.com/course/409332](https://ke.qq.com/course/409332)
 
 ## 本文赞赏
 
