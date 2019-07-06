@@ -154,7 +154,15 @@ rpk包位于项目的release/oppogame/quickgame/dist 目录下，如图8所示�
 
 如果是1.x引擎，
 
-需要先手工引入适配库，并手工初始化（`QGMiniAdapter.init();`），这是和2.x不太一样的地方。
+需要先手工引入适配库，并手工初始化，这是和2.x不太一样的地方。
+
+```typescript
+//TS或JS初始化
+Laya['QGMiniAdapter'].init();
+
+//as3初始化
+QGMiniAdapter.init();
+```
 
 另外还有其它需要注意的地方，以及细节处理过程。欢迎大家前往观看OPPO接入的免费视频。
 
