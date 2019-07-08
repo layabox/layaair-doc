@@ -38,28 +38,26 @@ LayaAir2.0开始，支持自定义脚本到编辑器，方便扩展已有组件�
 IDE默认提供了不少类型供脚本使用，主要参数类型如下：
 
 
-| 类型             | 说明                  | 特殊参数                                     |
-| :------------- | :------------------ | :--------------------------------------- |
-| Int            | 整数输入框               |                                          |
-| Number         | 数字输入框               | min：最小值<br />max：最大值<br />tick：滑动最小刻度值   |
-| String         | 字符串类型输入框            |                                          |
-| Bool           | 布尔类型选择框             |                                          |
-| Option         | 下拉选择框               | option：可选择的列表，如 aaa,bbb,ccc              |
-| EditOption     | 可输入的下拉框             | option：可选择的列表，如 aaa,bbb,ccc              |
-| Check          | 单选框                 |                                          |
-| Color          | 颜色选择框               |                                          |
-| SNumber        | 数字类型滑条              | min：最小值<br />max：最大值<br />tick：滑动最小刻度值   |
-| Res            | 资源输入框，可拖动资源到输入框内    | acceptTypes：可接收的文件后缀列表<br />比如：ani,json,atlas |
-| Runtime\|Class | 脚本输入框，可拖动脚本到输入框内    |                                          |
-| Node           | 节点输入框，可拖动节点到输入框内    | acceptTypes：可接收的节点类型列表<br />比如：RevoluteJoint,PrismaticJoint |
-| Prefab         | 预设输入框，可拖入预设到输入框内    |                                          |
-| SizeGrid       | 九宫格输入框，可设置9宫格       |                                          |
-| ColorArray     | 返回颜色数组[r,g,b,a]     |                                          |
-| Vec            | 数字数组，返回数组类型，比如[1,0] |                                          |
-| Vector         | 数组类型输入              | labels：展示的属性名（可选）<br />如果有则根据labels确定长度<br />没有就显示长度输入框<br />types：每个元素的类型（可选）<br />xCount：水平方向显示多少个<br />sType：单个元素的类型 |
-| Nodes          | 节点数组，可用拖入多个节点       |                                          |
-| ActionButton   | 显示一个按钮，点击后触发函数调用    | funName 点击后调用当前选中对象上的函数名                 |
-| Ease           | 缓动类型下拉框             |                                          |
+| name（需与变量名完全一致） | tips（鼠标经过显示标签，本表格里写功能说明，实际开发自己写描述） |  type（类型）  |                   特殊参数                   |
+| :-------------- | :--------------------------------: | :--------: | :--------------------------------------: |
+| int1            |               整数输入框                |    Int     |                                          |
+| number1         |               数字输入框                |   Number   |  min：最小值<br />max：最大值<br />tick：滑动最小刻度值  |
+| string1         |              字符串类型输入框              |   String   |                                          |
+| bool1           |              布尔类型选择框               |    Bool    |                                          |
+| opt             |               下拉选择框                |   Option   |       option：可选择的列表，如 aaa,bbb,ccc        |
+| editopt         |              可输入的下拉框               | editOption |       option：可选择的列表，如 aaa,bbb,ccc        |
+| check           |                单选框                 |   Check    |                                          |
+| color1          |               颜色选择框                |   Color    |                                          |
+| snumber1        |              数字类型滑动条               |  sNumber   |      min：最小值   max：最大值 tick：滑动最小刻度值      |
+| resType         |          资源输入框，可拖动资源到输入框内          |   String   |                accept:res                |
+| node1           |          节点输入框，可拖动节点到输入框内          |    Node    | acceptTypes：可接收的节点类型列表 比如：RevoluteJoint,PrismaticJoint |
+| prefab1         |          预设输入框，可拖入预设到输入框内          |   Prefab   |                                          |
+| sizegrid1       |           九宫格输入框，可设置9宫格            |  SizeGrid  |                                          |
+| colorarray      |          返回颜色数组[r,g,b,a]           | ColorArray |                                          |
+| vec1            |        数字数组，返回数组类型，比如[1,0]         |    Vec     |                                          |
+| vector1         |               数组类型输入               |   Vector   | labels：展示的属性名（可选） 如果有则根据labels确定长度 没有就显示长度输入框 types：每个元素的类型（可选） xCount：水平方向显示多少个 sType：单个元素的类型 |
+| nodes1          |           节点数组，可用拖入多个节点            |   Nodes    |   必须选中脚本组件，在组件的属性页面 赋值才有效，在场景的属性选中会失效    |
+| ease1           |              缓动类型下拉框               |    Ease    |                                          |
 
 ```
 		/** @prop {name:resType,tips:"abc",type:string,accept:res}*/
