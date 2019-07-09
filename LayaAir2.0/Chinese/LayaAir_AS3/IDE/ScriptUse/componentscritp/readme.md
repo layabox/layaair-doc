@@ -38,26 +38,23 @@ LayaAir2.0开始，支持自定义脚本到编辑器，方便扩展已有组件�
 IDE默认提供了不少类型供脚本使用，主要参数类型如下：
 
 
-| name（需与变量名完全一致） | tips（鼠标经过显示标签，本表格里写功能说明，实际开发自己写描述） |  type（类型）  |                   特殊参数                   |
-| :-------------- | :--------------------------------: | :--------: | :--------------------------------------: |
-| int1            |               整数输入框                |    Int     |                                          |
-| number1         |               数字输入框                |   Number   |  min：最小值<br />max：最大值<br />tick：滑动最小刻度值  |
-| string1         |              字符串类型输入框              |   String   |                                          |
-| bool1           |              布尔类型选择框               |    Bool    |                                          |
-| opt             |               下拉选择框                |   Option   |       option：可选择的列表，如 aaa,bbb,ccc        |
-| editopt         |              可输入的下拉框               | editOption |       option：可选择的列表，如 aaa,bbb,ccc        |
-| check           |                单选框                 |   Check    |                                          |
-| color1          |               颜色选择框                |   Color    |                                          |
-| snumber1        |              数字类型滑动条               |  sNumber   |      min：最小值   max：最大值 tick：滑动最小刻度值      |
-| resType         |          资源输入框，可拖动资源到输入框内          |   String   |                accept:res                |
-| node1           |          节点输入框，可拖动节点到输入框内          |    Node    | acceptTypes：可接收的节点类型列表 比如：RevoluteJoint,PrismaticJoint |
-| prefab1         |          预设输入框，可拖入预设到输入框内          |   Prefab   |                                          |
-| sizegrid1       |           九宫格输入框，可设置9宫格            |  SizeGrid  |                                          |
-| colorarray      |          返回颜色数组[r,g,b,a]           | ColorArray |                                          |
-| vec1            |        数字数组，返回数组类型，比如[1,0]         |    Vec     |                                          |
-| vector1         |               数组类型输入               |   Vector   | labels：展示的属性名（可选） 如果有则根据labels确定长度 没有就显示长度输入框 types：每个元素的类型（可选） xCount：水平方向显示多少个 sType：单个元素的类型 |
-| nodes1          |           节点数组，可用拖入多个节点            |   Nodes    |   必须选中脚本组件，在组件的属性页面 赋值才有效，在场景的属性选中会失效    |
-| ease1           |              缓动类型下拉框               |    Ease    |                                          |
+
+| 属性名称        | 说明                                       |
+| :---------- | :--------------------------------------- |
+| name        | 属性显示名称，必须与变量名一致                          |
+| tips        | 鼠标经过显示标签                                 |
+| type        | 类型：Int,Number,sNumber,String,Bool,Option,editOption,Check,Color,ColorArray,Node,Nodes,Prefab,SizeGrid,Vec,Vector,Ease |
+| accept      | String的关联属性，accept:res 为接收资源地址           |
+| acceptTypes | Node和accept的关联属性， 接收的类型，比如和节点使用RevoluteJoint,PrismaticJoint,RigidBody;与accept:res使用jpg,png,txt限制后缀 |
+| option      | Option和editOption的关联属性 option:可选择列表,如aaa,bbb,ccc |
+| min         | Number和sNumber的最小值                       |
+| max         | Number和sNumber的最大值                       |
+| label       | Nodes的关联属性，展示的属性名(  可选) 如果有则根据labels确定长度 没有就显示长度输入框 |
+| types       | Nodes的关联属性,每个元素的类型（可选）                   |
+| xCount      | Nodes的关联属性,水平方向显示多少个                     |
+| sType       | Nodes的关联属性,单个元素的类型                       |
+| default     | 默认值                                      |
+
 
 ```
 		/** @prop {name:resType,tips:"abc",type:string,accept:res}*/
