@@ -89,16 +89,6 @@ IDE默认提供了不少类型供脚本使用，主要参数类型如下：
 		
 		snumber1:Number = 11;
 
-		 /** @prop {name:runtime,tips:"o11pt"s}*/
-
-	     runtime:any;
-        
-		/**
-		 * 哈哈哈
-		 * @prop {name:runtime22,type:class,title:runtimeclass,tips:"222323wewe"}
-		 */
-		runtime22:String = "#ff0000";
-
 		/** @prop {name:node1,type:Node}*/
 
 		node1:Node;
