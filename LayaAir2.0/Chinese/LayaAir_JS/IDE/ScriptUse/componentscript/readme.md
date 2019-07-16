@@ -73,10 +73,6 @@ IDE默认提供了不少类型供脚本使用，主要参数类型如下：
 	/** @prop {name:color1,tips:"opt",type:Color}*/
 	
 	/** @prop {name:snumber1,type:sNumber,min:10,max:100}*/
-		
-	/** @prop {name:runtime,tips:"o11pt"s}*/
-
-	/** @prop {name:runtime22,type:class,title:runtimeclass,tips:"222323wewe"} */
 	
 	/** @prop {name:node1,type:Node}*/
 
@@ -90,7 +86,6 @@ IDE默认提供了不少类型供脚本使用，主要参数类型如下：
     
     /** @prop {name:nodes2,type:Nodes}*/ // 这一条必须选中组件上赋值才有效，在场景选择会失效
     
-    /** @prop {name:actionbutton1,type:ActionButton,funName:creteBox}*/
 
 	/** @prop {name:ease1,type:Ease}*/
 	
