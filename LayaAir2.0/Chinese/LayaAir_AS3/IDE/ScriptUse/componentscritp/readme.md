@@ -90,17 +90,7 @@ IDE默认提供了不少类型供脚本使用，主要参数类型如下：
 		/** @prop {name:snumber1,type:sNumber,min:10,max:100}*/
 		
 		public var 	snumber1:int = 11;
-
-		 /** @prop {name:runtime,tips:"o11pt"s}*/
-
-	     public var runtime:Class;
         
-		/**
-		 * 哈哈哈
-		 * @prop {name:runtime22,type:class,title:runtimeclass,tips:"222323wewe"}
-		 */
-		public var runtime22:String = "#ff0000";
-
 		/** @prop {name:node1,type:Node}*/
 
 		public var node1:Node;
@@ -119,10 +109,6 @@ IDE默认提供了不少类型供脚本使用，主要参数类型如下：
 
         // /** @prop {name:nodes2,type:Nodes}*/  这一条必须选中组件上赋值才有效，在场景选择会失效
 		// public var nodes2:*;
-
-		/** @prop {name:actionbutton1,type:ActionButton,funName:creteBox}*/
-		public var actionbutton1:*;
-
 
 		/** @prop {name:ease1,type:Ease}*/
 		public var sase1:*;
