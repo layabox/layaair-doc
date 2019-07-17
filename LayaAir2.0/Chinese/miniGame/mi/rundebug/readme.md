@@ -10,7 +10,7 @@
 
 2、下载安装小米的测试APP，下载页面：[https://dev.mi.com/console/doc/detail?pId=1779](https://dev.mi.com/console/doc/detail?pId=1779)
 
-进入页面后，点击下载快游戏调试器。即可下载安装。至于如何安装测试APP，这里就不介绍了。
+进入页面后，下拉找到第3步，**调试自测**那一栏里，直接按提示下载即可。
 
 3、PC电脑的chrome浏览器与手机数据连接线。
 
