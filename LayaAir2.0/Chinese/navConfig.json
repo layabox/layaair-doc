@@ -710,6 +710,11 @@
 				"name_3_file": "readme.md"
 			},
 			{
+				"name_3_name": "Config3D的介绍",
+				"name_3_url": "Chinese/LayaAir_TS/3D/QuickStart/Config3D/",
+				"name_3_file": "readme.md"
+			},
+			{
 				"name_3_name": "LayaAir3D概述",
 				"name_3_url": "Chinese/LayaAir_TS/3D/QuickStart/LayaAir3D_Introduction/",
 				"name_3_file": "readme.md"
@@ -2307,6 +2312,11 @@
 			{
 				"name_3_name": "Stat统计面板的介绍",
 				"name_3_url": "Chinese/LayaAir_JS/3D/QuickStart/Stat_panel_introduction/",
+				"name_3_file": "readme.md"
+			},
+			{
+				"name_3_name": "Config3D的介绍",
+				"name_3_url": "Chinese/LayaAir_JS/3D/QuickStart/Config3D/",
 				"name_3_file": "readme.md"
 			},
 			{
@@ -3946,6 +3956,11 @@
 			{
 				"name_3_name": "Stat统计面板的介绍",
 				"name_3_url": "Chinese/LayaAir_AS3/3D/QuickStart/Stat_panel_introduction/",
+				"name_3_file": "readme.md"
+			},
+			{
+				"name_3_name": "Config3D的介绍",
+				"name_3_url": "Chinese/LayaAir_AS3/3D/QuickStart/Config3D/",
 				"name_3_file": "readme.md"
 			},
 			{
