@@ -1,5 +1,7 @@
 # 物理形状扫描检测
 
+###### *version :2.1.1   Update:2019-7-19*
+
 在场景中按照一个选择的形状投射出一个线段来检测碰撞，返回碰撞到的物体。这个检测有`shapeCastAll`和`shapeCast`两个接口，区别于前面的射线检测相同。常用于自定义形状的射线检测，形状弹道的碰撞。
 
 下面的代码来自于示例（[demo地址](https://layaair.ldc.layabox.com/demo2/?language=ch&category=3d&group=Physics3D&name=PhysicsWorld_RayShapeCast)），

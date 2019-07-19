@@ -1,6 +1,12 @@
-# 运动刚体
+# 运动学刚体
+
+###### *version :2.1.1   Update:2019-7-19*
 
 运动学刚体是 **isKinematic** 选项启用的刚体。运动学刚体不受力，重力或碰撞影响。它们通过设置变换或动画的位置和旋转显式驱动，它们仍然可以与其他非运动学刚体互动。
+
+可以在导出时勾选 is Kinematic 选项，或者代码修改 `rigidBody.isKinematic = true` 属性来设置运动学刚体。
+
+![](img/1.png)<br>(图1)
 
 下面的代码来自于官方示例（[demo地址](https://layaair.ldc.layabox.com/demo2/?language=ch&category=3d&group=Physics3D&name=PhysicsWorld_Kinematic)）：
 
@@ -23,5 +29,5 @@ private function onKeyDown():void {
 }
 ```
 
-![](img/1.gif)<br>(图1)
+![](img/2.gif)<br>(图2)
 

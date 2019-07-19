@@ -1,5 +1,7 @@
 # 物理射线检测
 
+###### *version :2.1.1   Update:2019-7-19*
+
 在前面的**图形系统概念**篇有讲到过射线这数学工具，在**摄像机**篇讲过如何从摄像机创建一条射线，在这里我们详细讲解下射线的使用。
 
 在LayaAir3D中实现射线检测的核心是使用Scene3D场景属性中的**PhysicsSimulation物理模拟器**。详情可以查看[Api地址](https://layaair.ldc.layabox.com/api2/Chinese/index.html?category=3D&class=laya.d3.physics.PhysicsSimulation)。射线检测使用的接口有4个，分为两类。`raycastFromTo`，`raycastAllFromTo`一类，`rayCast`，`rayCastAll`一类。我们将前面2个成为A类，后面为B类，我们来看下这两种方法的api：

@@ -1186,6 +1186,70 @@
 			}]
 		},
 		{
+			"name_2_name": "LayaAir3D之物理系统",
+			"name_2_data": [
+			{
+				"name_3_name": "物理系统的概述",
+				"name_3_url": "Chinese/LayaAir_TS/3D/Physics3D/Overview_of_Physical_Systems/",
+				"name_3_file": "readme.md"
+			},
+			{
+				"name_3_name": "在Unity插件中导出和使用物理组件",
+				"name_3_url": "Chinese/LayaAir_TS/3D/Physics3D/Export_and_Use_Physical_Components/",
+				"name_3_file": "readme.md"
+			},
+			{
+				"name_3_name": "物理刚体",
+				"name_3_url": "Chinese/LayaAir_TS/3D/Physics3D/RigidBody/",
+				"name_3_file": "readme.md"
+			},
+			{
+				"name_3_name": "物理碰撞器",
+				"name_3_url": "Chinese/LayaAir_TS/3D/Physics3D/PhysicsCollider/",
+				"name_3_file": "readme.md"
+			},
+			{
+				"name_3_name": "碰撞器过滤",
+				"name_3_url": "Chinese/LayaAir_TS/3D/Physics3D/CollisionFiflter/",
+				"name_3_file": "readme.md"
+			},
+			{
+				"name_3_name": "角色碰撞器",
+				"name_3_url": "Chinese/LayaAir_TS/3D/Physics3D/CharacterController/",
+				"name_3_file": "readme.md"
+			},
+			{
+				"name_3_name": "物理触发器",
+				"name_3_url": "Chinese/LayaAir_TS/3D/Physics3D/Trigger/",
+				"name_3_file": "readme.md"
+			},
+			{
+				"name_3_name": "多种碰撞器形状",
+				"name_3_url": "Chinese/LayaAir_TS/3D/Physics3D/ColliderShape/",
+				"name_3_file": "readme.md"
+			},
+			{
+				"name_3_name": "运动刚体",
+				"name_3_url": "Chinese/LayaAir_TS/3D/Physics3D/Kinematic_Rigidbody/",
+				"name_3_file": "readme.md"
+			},
+			{
+				"name_3_name": "物理射线检测",
+				"name_3_url": "Chinese/LayaAir_TS/3D/Physics3D/RayCast/",
+				"name_3_file": "readme.md"
+			},
+			{
+				"name_3_name": "物理形状扫描检测",
+				"name_3_url": "Chinese/LayaAir_TS/3D/Physics3D/RayShapeCast/",
+				"name_3_file": "readme.md"
+			},
+			{
+				"name_3_name": "物理碰撞脚本和触发器脚本",
+				"name_3_url": "Chinese/LayaAir_TS/3D/Physics3D/TriggerCollisionScript/",
+				"name_3_file": "readme.md"
+			}]
+		},
+		{
 			"name_2_name": "LayaAir3D的脚本使用",
 			"name_2_data": [
 			{
@@ -2717,6 +2781,70 @@
 			{
 				"name_3_name": "摄像机动画的使用",
 				"name_3_url": "Chinese/LayaAir_JS/3D/Animator/CameraAnimation/",
+				"name_3_file": "readme.md"
+			}]
+		},
+		{
+			"name_2_name": "LayaAir3D之物理系统",
+			"name_2_data": [
+			{
+				"name_3_name": "物理系统的概述",
+				"name_3_url": "Chinese/LayaAir_JS/3D/Physics3D/Overview_of_Physical_Systems/",
+				"name_3_file": "readme.md"
+			},
+			{
+				"name_3_name": "在Unity插件中导出和使用物理组件",
+				"name_3_url": "Chinese/LayaAir_JS/3D/Physics3D/Export_and_Use_Physical_Components/",
+				"name_3_file": "readme.md"
+			},
+			{
+				"name_3_name": "物理刚体",
+				"name_3_url": "Chinese/LayaAir_JS/3D/Physics3D/RigidBody/",
+				"name_3_file": "readme.md"
+			},
+			{
+				"name_3_name": "物理碰撞器",
+				"name_3_url": "Chinese/LayaAir_JS/3D/Physics3D/PhysicsCollider/",
+				"name_3_file": "readme.md"
+			},
+			{
+				"name_3_name": "碰撞器过滤",
+				"name_3_url": "Chinese/LayaAir_JS/3D/Physics3D/CollisionFiflter/",
+				"name_3_file": "readme.md"
+			},
+			{
+				"name_3_name": "角色碰撞器",
+				"name_3_url": "Chinese/LayaAir_JS/3D/Physics3D/CharacterController/",
+				"name_3_file": "readme.md"
+			},
+			{
+				"name_3_name": "物理触发器",
+				"name_3_url": "Chinese/LayaAir_JS/3D/Physics3D/Trigger/",
+				"name_3_file": "readme.md"
+			},
+			{
+				"name_3_name": "多种碰撞器形状",
+				"name_3_url": "Chinese/LayaAir_JS/3D/Physics3D/ColliderShape/",
+				"name_3_file": "readme.md"
+			},
+			{
+				"name_3_name": "运动刚体",
+				"name_3_url": "Chinese/LayaAir_JS/3D/Physics3D/Kinematic_Rigidbody/",
+				"name_3_file": "readme.md"
+			},
+			{
+				"name_3_name": "物理射线检测",
+				"name_3_url": "Chinese/LayaAir_JS/3D/Physics3D/RayCast/",
+				"name_3_file": "readme.md"
+			},
+			{
+				"name_3_name": "物理形状扫描检测",
+				"name_3_url": "Chinese/LayaAir_JS/3D/Physics3D/RayShapeCast/",
+				"name_3_file": "readme.md"
+			},
+			{
+				"name_3_name": "物理碰撞脚本和触发器脚本",
+				"name_3_url": "Chinese/LayaAir_JS/3D/Physics3D/TriggerCollisionScript/",
 				"name_3_file": "readme.md"
 			}]
 		},
@@ -4293,6 +4421,70 @@
 			{
 				"name_3_name": "摄像机动画的使用",
 				"name_3_url": "Chinese/LayaAir_AS3/3D/Animator/CameraAnimation/",
+				"name_3_file": "readme.md"
+			}]
+		},
+		{
+			"name_2_name": "LayaAir3D之物理系统",
+			"name_2_data": [
+			{
+				"name_3_name": "物理系统的概述",
+				"name_3_url": "Chinese/LayaAir_AS3/3D/Physics3D/Overview_of_Physical_Systems/",
+				"name_3_file": "readme.md"
+			},
+			{
+				"name_3_name": "在Unity插件中导出和使用物理组件",
+				"name_3_url": "Chinese/LayaAir_AS3/3D/Physics3D/Export_and_Use_Physical_Components/",
+				"name_3_file": "readme.md"
+			},
+			{
+				"name_3_name": "物理刚体",
+				"name_3_url": "Chinese/LayaAir_AS3/3D/Physics3D/RigidBody/",
+				"name_3_file": "readme.md"
+			},
+			{
+				"name_3_name": "物理碰撞器",
+				"name_3_url": "Chinese/LayaAir_AS3/3D/Physics3D/PhysicsCollider/",
+				"name_3_file": "readme.md"
+			},
+			{
+				"name_3_name": "碰撞器过滤",
+				"name_3_url": "Chinese/LayaAir_AS3/3D/Physics3D/CollisionFiflter/",
+				"name_3_file": "readme.md"
+			},
+			{
+				"name_3_name": "角色碰撞器",
+				"name_3_url": "Chinese/LayaAir_AS3/3D/Physics3D/CharacterController/",
+				"name_3_file": "readme.md"
+			},
+			{
+				"name_3_name": "物理触发器",
+				"name_3_url": "Chinese/LayaAir_AS3/3D/Physics3D/Trigger/",
+				"name_3_file": "readme.md"
+			},
+			{
+				"name_3_name": "多种碰撞器形状",
+				"name_3_url": "Chinese/LayaAir_AS3/3D/Physics3D/ColliderShape/",
+				"name_3_file": "readme.md"
+			},
+			{
+				"name_3_name": "运动刚体",
+				"name_3_url": "Chinese/LayaAir_AS3/3D/Physics3D/Kinematic_Rigidbody/",
+				"name_3_file": "readme.md"
+			},
+			{
+				"name_3_name": "物理射线检测",
+				"name_3_url": "Chinese/LayaAir_AS3/3D/Physics3D/RayCast/",
+				"name_3_file": "readme.md"
+			},
+			{
+				"name_3_name": "物理形状扫描检测",
+				"name_3_url": "Chinese/LayaAir_AS3/3D/Physics3D/RayShapeCast/",
+				"name_3_file": "readme.md"
+			},
+			{
+				"name_3_name": "物理碰撞脚本和触发器脚本",
+				"name_3_url": "Chinese/LayaAir_AS3/3D/Physics3D/TriggerCollisionScript/",
 				"name_3_file": "readme.md"
 			}]
 		},

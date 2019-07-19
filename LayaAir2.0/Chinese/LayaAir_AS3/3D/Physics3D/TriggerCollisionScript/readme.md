@@ -1,5 +1,7 @@
 # 物理碰撞脚本和触发器脚本
 
+###### *version :2.1.1   Update:2019-7-19*
+
 触发器发出的事件，开发者可以在触发器物体上添加的脚本（Script3D）监听。监听的方法如图1所示：
 
 ![](img/1.png)<br>(图1)
@@ -17,7 +19,7 @@
  * 注：如相对移动速度过快，可能直接越过
  */
 override public function onTriggerEnter(other:PhysicsComponent):void {
-	(((owner as MeshSprite3D).meshRenderer as MeshRenderer).sharedMaterial as BlinnPhongMaterial).albedoColor = new Vector4(0.0, 1.0, 0.0, 1.0);
+	((owner as MeshSprite3D).meshRenderer.sharedMaterial as BlinnPhongMaterial).albedoColor = new Vector4(0.0, 1.0, 0.0, 1.0);
 }
 
 /**
@@ -32,7 +34,7 @@ override public function onTriggerStay(other:PhysicsComponent):void {}
  * 注：如相对移动速度过快，可能直接越过
  */	
 override public function onTriggerExit(other:PhysicsComponent):void {
-	(((owner as MeshSprite3D).meshRenderer as MeshRenderer).sharedMaterial as BlinnPhongMaterial).albedoColor = new Vector4(1.0, 1.0, 1.0, 1.0);
+	((owner as MeshSprite3D).meshRenderer.sharedMaterial as BlinnPhongMaterial).albedoColor = new Vector4(1.0, 1.0, 1.0, 1.0);
 }
 
 /**
@@ -41,7 +43,7 @@ override public function onTriggerExit(other:PhysicsComponent):void {
  */
 override public function onCollisionEnter(collision:Collision):void {
 	if (collision.other.owner === kinematicSprite)
-		(((owner as MeshSprite3D).meshRenderer as MeshRenderer).sharedMaterial as BlinnPhongMaterial).albedoColor = new Vector4(0.0, 0.0, 0.0, 1.0);
+		((owner as MeshSprite3D).meshRenderer.sharedMaterial as BlinnPhongMaterial).albedoColor = new Vector4(0.0, 0.0, 0.0, 1.0);
 }
 	
 override public function onCollisionStay(collision:Collision):void {}

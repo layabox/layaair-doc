@@ -1,5 +1,7 @@
 # 物理刚体
 
+###### *version :2.1.1   Update:2019-7-19*
+
  **Rigidbody3D** 刚体就是动态碰撞器。任何物体想要受重力影响，受脚本施加的力的作用，或通过物理引擎来与其他物体交互，都必须包含一个刚体组件。更详细的使用情况可以查看刚体的文档：[地址](https://layaair.ldc.layabox.com/api2/Chinese/index.html?category=Core&class=laya.d3.physics.Rigidbody3D)；
 
 #### (1) 使用代码创建和添加刚体
@@ -10,7 +12,7 @@
 
 ```typescript
 //新建一个球体模型并添加到舞台上
-var sphere:MeshSprite3D = scene.addChild(new MeshSprite3D( 		PrimitiveMesh.createSphere(1))) as MeshSprite3D;
+var sphere:MeshSprite3D = scene.addChild(new MeshSprite3D(PrimitiveMesh.createSphere(1))) as MeshSprite3D;
 //新建一个球形的碰撞盒
 var sphereShape:SphereColliderShape = new SphereColliderShape(1);
 //给球添加刚体

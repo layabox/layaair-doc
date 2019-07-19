@@ -1,5 +1,7 @@
 # 多种碰撞器形状
 
+###### *version :2.1.1   Update:2019-7-19*
+
 `ColliderShape`碰撞器形状，是刚体与碰撞器上的属性，是模型在3D世界中进行物理运算与碰撞的形状盒。ColliderShape是所有碰撞盒的父类。([API地址](https://layaair.ldc.layabox.com/api2/Chinese/index.html?category=Core&class=laya.d3.physics.shape.ColliderShape))
 
 ![](img/1.png)<br>(图1)
