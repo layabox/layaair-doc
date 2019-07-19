@@ -718,11 +718,6 @@
 				"name_3_name": "LayaAir3D概述",
 				"name_3_url": "Chinese/LayaAir_TS/3D/QuickStart/LayaAir3D_Introduction/",
 				"name_3_file": "readme.md"
-			},
-			{
-				"name_3_name": "如何使用下载的官方示例",
-				"name_3_url": "Chinese/LayaAir_TS/3D/QuickStart/How_to_use_the_new_demo_ts/",
-				"name_3_file": "readme.md"
 			}]
 		},
 		{
@@ -2322,11 +2317,6 @@
 			{
 				"name_3_name": "LayaAir3D概述",
 				"name_3_url": "Chinese/LayaAir_JS/3D/QuickStart/LayaAir3D_Introduction/",
-				"name_3_file": "readme.md"
-			},
-			{
-				"name_3_name": "如何使用下载的官方示例",
-				"name_3_url": "Chinese/LayaAir_JS/3D/QuickStart/How_to_use_the_new_demo_js/",
 				"name_3_file": "readme.md"
 			}]
 		},
@@ -3966,11 +3956,6 @@
 			{
 				"name_3_name": "LayaAir3D概述",
 				"name_3_url": "Chinese/LayaAir_AS3/3D/QuickStart/LayaAir3D_Introduction/",
-				"name_3_file": "readme.md"
-			},
-			{
-				"name_3_name": "如何使用下载的官方示例",
-				"name_3_url": "Chinese/LayaAir_AS3/3D/QuickStart/How_to_use_the_new_demo_as/",
 				"name_3_file": "readme.md"
 			}]
 		},
