@@ -314,7 +314,96 @@
 		}]
 	},
 	{
-		"nav_1_name": "LayaAir IDE篇（TS）",
+		"nav_1_name": "2D进阶篇（TS）",
+		"nav_1_data": [
+		{
+			"name_2_name": "调试相关",
+			"name_2_data": [
+			{
+				"name_3_name": "LayaAir DebugPanel 调试工具",
+				"name_3_url": "Chinese/LayaAir_TS/2D/advanced/debug/DebugPanel/",
+				"name_3_file": "readme.md"
+			}]
+		},
+		{
+			"name_2_name": "游戏加载策略",
+			"name_2_data": [
+			{
+				"name_3_name": "二进制图片",
+				"name_3_url": "Chinese/LayaAir_TS/2D/advanced/loadStrategy/binary_Image/",
+				"name_3_file": "readme.md"
+			},
+			{
+				"name_3_name": "多线程worker",
+				"name_3_url": "Chinese/LayaAir_TS/2D/advanced/loadStrategy/worker/",
+				"name_3_file": "readme.md"
+			}]
+		},
+		{
+			"name_2_name": "性能优化",
+			"name_2_data": [
+			{
+				"name_3_name": "性能统计面板介绍",
+				"name_3_url": "Chinese/LayaAir_TS/2D/advanced/PerformanceOptimization/Stat_Panel/",
+				"name_3_file": "readme.md"
+			},
+			{
+				"name_3_name": "内存优化方式",
+				"name_3_url": "Chinese/LayaAir_TS/2D/advanced/PerformanceOptimization/memory/",
+				"name_3_file": "readme.md"
+			},
+			{
+				"name_3_name": "渲染优化原则",
+				"name_3_url": "Chinese/LayaAir_TS/2D/advanced/PerformanceOptimization/rendering/",
+				"name_3_file": "readme.md"
+			},
+			{
+				"name_3_name": "CacheAs静态缓存优化",
+				"name_3_url": "Chinese/LayaAir_TS/2D/advanced/PerformanceOptimization/cacheAs/",
+				"name_3_file": "readme.md"
+			},
+			{
+				"name_3_name": "CPU优化方式",
+				"name_3_url": "Chinese/LayaAir_TS/2D/advanced/PerformanceOptimization/CPU/",
+				"name_3_file": "readme.md"
+			},
+			{
+				"name_3_name": "其它优化策略",
+				"name_3_url": "Chinese/LayaAir_TS/2D/advanced/PerformanceOptimization/other/",
+				"name_3_file": "readme.md"
+			},
+			{
+				"name_3_name": "使用chrome的性能分析器",
+				"name_3_url": "Chinese/LayaAir_TS/2D/advanced/PerformanceOptimization/Chrome_Profiles/",
+				"name_3_file": "readme.md"
+			}]
+		},
+		{
+			"name_2_name": "动画进阶",
+			"name_2_data": [
+			{
+				"name_3_name": "骨骼动画进阶",
+				"name_3_url": "Chinese/LayaAir_TS/2D/advanced/animation/bone/",
+				"name_3_file": "readme.md"
+			}]
+		},
+		{
+			"name_2_name": "扩展模块",
+			"name_2_data": [
+			{
+				"name_3_name": "用LayaAir引擎解析Tiled Map地图",
+				"name_3_url": "Chinese/LayaAir_TS/2D/advanced/extension_modules/TiledMap/",
+				"name_3_file": "readme.md"
+			},
+			{
+				"name_3_name": "LayaAir和原生DOM交互",
+				"name_3_url": "Chinese/LayaAir_TS/2D/advanced/extension_modules/DOM/",
+				"name_3_file": "readme.md"
+			}]
+		}]
+	},
+	{
+		"nav_1_name": "IDE篇（TS）",
 		"nav_1_data": [
 		{
 			"name_2_name": "代码模式基础",
@@ -605,96 +694,7 @@
 		}]
 	},
 	{
-		"nav_1_name": "2D进阶篇（TS）",
-		"nav_1_data": [
-		{
-			"name_2_name": "调试相关",
-			"name_2_data": [
-			{
-				"name_3_name": "LayaAir DebugPanel 调试工具",
-				"name_3_url": "Chinese/LayaAir_TS/2D/advanced/debug/DebugPanel/",
-				"name_3_file": "readme.md"
-			}]
-		},
-		{
-			"name_2_name": "游戏加载策略",
-			"name_2_data": [
-			{
-				"name_3_name": "二进制图片",
-				"name_3_url": "Chinese/LayaAir_TS/2D/advanced/loadStrategy/binary_Image/",
-				"name_3_file": "readme.md"
-			},
-			{
-				"name_3_name": "多线程worker",
-				"name_3_url": "Chinese/LayaAir_TS/2D/advanced/loadStrategy/worker/",
-				"name_3_file": "readme.md"
-			}]
-		},
-		{
-			"name_2_name": "性能优化",
-			"name_2_data": [
-			{
-				"name_3_name": "性能统计面板介绍",
-				"name_3_url": "Chinese/LayaAir_TS/2D/advanced/PerformanceOptimization/Stat_Panel/",
-				"name_3_file": "readme.md"
-			},
-			{
-				"name_3_name": "内存优化方式",
-				"name_3_url": "Chinese/LayaAir_TS/2D/advanced/PerformanceOptimization/memory/",
-				"name_3_file": "readme.md"
-			},
-			{
-				"name_3_name": "渲染优化原则",
-				"name_3_url": "Chinese/LayaAir_TS/2D/advanced/PerformanceOptimization/rendering/",
-				"name_3_file": "readme.md"
-			},
-			{
-				"name_3_name": "CacheAs静态缓存优化",
-				"name_3_url": "Chinese/LayaAir_TS/2D/advanced/PerformanceOptimization/cacheAs/",
-				"name_3_file": "readme.md"
-			},
-			{
-				"name_3_name": "CPU优化方式",
-				"name_3_url": "Chinese/LayaAir_TS/2D/advanced/PerformanceOptimization/CPU/",
-				"name_3_file": "readme.md"
-			},
-			{
-				"name_3_name": "其它优化策略",
-				"name_3_url": "Chinese/LayaAir_TS/2D/advanced/PerformanceOptimization/other/",
-				"name_3_file": "readme.md"
-			},
-			{
-				"name_3_name": "使用chrome的性能分析器",
-				"name_3_url": "Chinese/LayaAir_TS/2D/advanced/PerformanceOptimization/Chrome_Profiles/",
-				"name_3_file": "readme.md"
-			}]
-		},
-		{
-			"name_2_name": "动画进阶",
-			"name_2_data": [
-			{
-				"name_3_name": "骨骼动画进阶",
-				"name_3_url": "Chinese/LayaAir_TS/2D/advanced/animation/bone/",
-				"name_3_file": "readme.md"
-			}]
-		},
-		{
-			"name_2_name": "扩展模块",
-			"name_2_data": [
-			{
-				"name_3_name": "用LayaAir引擎解析Tiled Map地图",
-				"name_3_url": "Chinese/LayaAir_TS/2D/advanced/extension_modules/TiledMap/",
-				"name_3_file": "readme.md"
-			},
-			{
-				"name_3_name": "LayaAir和原生DOM交互",
-				"name_3_url": "Chinese/LayaAir_TS/2D/advanced/extension_modules/DOM/",
-				"name_3_file": "readme.md"
-			}]
-		}]
-	},
-	{
-		"nav_1_name": "LayaAir 3D引擎（TS）",
+		"nav_1_name": "3D基础（TS）",
 		"nav_1_data": [
 		{
 			"name_2_name": "快速开始一个LayaAir3D项目",
@@ -1915,7 +1915,96 @@
 		}]
 	},
 	{
-		"nav_1_name": "LayaAir IDE篇（JS）",
+		"nav_1_name": "2D进阶篇（JS）",
+		"nav_1_data": [
+		{
+			"name_2_name": "调试相关",
+			"name_2_data": [
+			{
+				"name_3_name": "LayaAir DebugPanel 调试工具",
+				"name_3_url": "Chinese/LayaAir_JS/2D/advanced/debug/DebugPanel/",
+				"name_3_file": "readme.md"
+			}]
+		},
+		{
+			"name_2_name": "游戏加载策略",
+			"name_2_data": [
+			{
+				"name_3_name": "二进制图片",
+				"name_3_url": "Chinese/LayaAir_JS/2D/advanced/loadStrategy/binary_Image/",
+				"name_3_file": "readme.md"
+			},
+			{
+				"name_3_name": "多线程worker",
+				"name_3_url": "Chinese/LayaAir_JS/2D/advanced/loadStrategy/worker/",
+				"name_3_file": "readme.md"
+			}]
+		},
+		{
+			"name_2_name": "性能优化",
+			"name_2_data": [
+			{
+				"name_3_name": "性能统计面板介绍",
+				"name_3_url": "Chinese/LayaAir_JS/2D/advanced/PerformanceOptimization/Stat_Panel/",
+				"name_3_file": "readme.md"
+			},
+			{
+				"name_3_name": "内存优化方式",
+				"name_3_url": "Chinese/LayaAir_JS/2D/advanced/PerformanceOptimization/memory/",
+				"name_3_file": "readme.md"
+			},
+			{
+				"name_3_name": "渲染优化原则",
+				"name_3_url": "Chinese/LayaAir_JS/2D/advanced/PerformanceOptimization/rendering/",
+				"name_3_file": "readme.md"
+			},
+			{
+				"name_3_name": "CacheAs静态缓存优化",
+				"name_3_url": "Chinese/LayaAir_JS/2D/advanced/PerformanceOptimization/cacheAs/",
+				"name_3_file": "readme.md"
+			},
+			{
+				"name_3_name": "CPU优化方式",
+				"name_3_url": "Chinese/LayaAir_JS/2D/advanced/PerformanceOptimization/CPU/",
+				"name_3_file": "readme.md"
+			},
+			{
+				"name_3_name": "其它优化策略",
+				"name_3_url": "Chinese/LayaAir_JS/2D/advanced/PerformanceOptimization/other/",
+				"name_3_file": "readme.md"
+			},
+			{
+				"name_3_name": "使用chrome的性能分析器",
+				"name_3_url": "Chinese/LayaAir_JS/2D/advanced/PerformanceOptimization/Chrome_Profiles/",
+				"name_3_file": "readme.md"
+			}]
+		},
+		{
+			"name_2_name": "动画进阶",
+			"name_2_data": [
+			{
+				"name_3_name": "骨骼动画进阶",
+				"name_3_url": "Chinese/LayaAir_JS/2D/advanced/animation/bone/",
+				"name_3_file": "readme.md"
+			}]
+		},
+		{
+			"name_2_name": "扩展模块",
+			"name_2_data": [
+			{
+				"name_3_name": "用LayaAir引擎解析Tiled Map地图",
+				"name_3_url": "Chinese/LayaAir_JS/2D/advanced/extension_modules/TiledMap/",
+				"name_3_file": "readme.md"
+			},
+			{
+				"name_3_name": "LayaAir和原生DOM交互",
+				"name_3_url": "Chinese/LayaAir_JS/2D/advanced/extension_modules/DOM/",
+				"name_3_file": "readme.md"
+			}]
+		}]
+	},
+	{
+		"nav_1_name": "IDE篇（JS）",
 		"nav_1_data": [
 		{
 			"name_2_name": "代码模式基础",
@@ -2205,96 +2294,7 @@
 		}]
 	},
 	{
-		"nav_1_name": "2D进阶篇（JS）",
-		"nav_1_data": [
-		{
-			"name_2_name": "调试相关",
-			"name_2_data": [
-			{
-				"name_3_name": "LayaAir DebugPanel 调试工具",
-				"name_3_url": "Chinese/LayaAir_JS/2D/advanced/debug/DebugPanel/",
-				"name_3_file": "readme.md"
-			}]
-		},
-		{
-			"name_2_name": "游戏加载策略",
-			"name_2_data": [
-			{
-				"name_3_name": "二进制图片",
-				"name_3_url": "Chinese/LayaAir_JS/2D/advanced/loadStrategy/binary_Image/",
-				"name_3_file": "readme.md"
-			},
-			{
-				"name_3_name": "多线程worker",
-				"name_3_url": "Chinese/LayaAir_JS/2D/advanced/loadStrategy/worker/",
-				"name_3_file": "readme.md"
-			}]
-		},
-		{
-			"name_2_name": "性能优化",
-			"name_2_data": [
-			{
-				"name_3_name": "性能统计面板介绍",
-				"name_3_url": "Chinese/LayaAir_JS/2D/advanced/PerformanceOptimization/Stat_Panel/",
-				"name_3_file": "readme.md"
-			},
-			{
-				"name_3_name": "内存优化方式",
-				"name_3_url": "Chinese/LayaAir_JS/2D/advanced/PerformanceOptimization/memory/",
-				"name_3_file": "readme.md"
-			},
-			{
-				"name_3_name": "渲染优化原则",
-				"name_3_url": "Chinese/LayaAir_JS/2D/advanced/PerformanceOptimization/rendering/",
-				"name_3_file": "readme.md"
-			},
-			{
-				"name_3_name": "CacheAs静态缓存优化",
-				"name_3_url": "Chinese/LayaAir_JS/2D/advanced/PerformanceOptimization/cacheAs/",
-				"name_3_file": "readme.md"
-			},
-			{
-				"name_3_name": "CPU优化方式",
-				"name_3_url": "Chinese/LayaAir_JS/2D/advanced/PerformanceOptimization/CPU/",
-				"name_3_file": "readme.md"
-			},
-			{
-				"name_3_name": "其它优化策略",
-				"name_3_url": "Chinese/LayaAir_JS/2D/advanced/PerformanceOptimization/other/",
-				"name_3_file": "readme.md"
-			},
-			{
-				"name_3_name": "使用chrome的性能分析器",
-				"name_3_url": "Chinese/LayaAir_JS/2D/advanced/PerformanceOptimization/Chrome_Profiles/",
-				"name_3_file": "readme.md"
-			}]
-		},
-		{
-			"name_2_name": "动画进阶",
-			"name_2_data": [
-			{
-				"name_3_name": "骨骼动画进阶",
-				"name_3_url": "Chinese/LayaAir_JS/2D/advanced/animation/bone/",
-				"name_3_file": "readme.md"
-			}]
-		},
-		{
-			"name_2_name": "扩展模块",
-			"name_2_data": [
-			{
-				"name_3_name": "用LayaAir引擎解析Tiled Map地图",
-				"name_3_url": "Chinese/LayaAir_JS/2D/advanced/extension_modules/TiledMap/",
-				"name_3_file": "readme.md"
-			},
-			{
-				"name_3_name": "LayaAir和原生DOM交互",
-				"name_3_url": "Chinese/LayaAir_JS/2D/advanced/extension_modules/DOM/",
-				"name_3_file": "readme.md"
-			}]
-		}]
-	},
-	{
-		"nav_1_name": "LayaAir 3D引擎（JS）",
+		"nav_1_name": "3D基础（JS）",
 		"nav_1_data": [
 		{
 			"name_2_name": "快速开始一个LayaAir3D项目",
@@ -3544,7 +3544,106 @@
 		}]
 	},
 	{
-		"nav_1_name": "LayaAir IDE篇（AS3）",
+		"nav_1_name": "2D进阶篇（AS3）",
+		"nav_1_data": [
+		{
+			"name_2_name": "调试相关",
+			"name_2_data": [
+			{
+				"name_3_name": "LayaAir DebugPanel 调试工具",
+				"name_3_url": "Chinese/LayaAir_AS3/2D/advanced/debug/DebugPanel/",
+				"name_3_file": "readme.md"
+			}]
+		},
+		{
+			"name_2_name": "游戏加载策略",
+			"name_2_data": [
+			{
+				"name_3_name": "二进制图片",
+				"name_3_url": "Chinese/LayaAir_AS3/2D/advanced/loadStrategy/binary_Image/",
+				"name_3_file": "readme.md"
+			},
+			{
+				"name_3_name": "多线程worker",
+				"name_3_url": "Chinese/LayaAir_AS3/2D/advanced/loadStrategy/worker/",
+				"name_3_file": "readme.md"
+			}]
+		},
+		{
+			"name_2_name": "性能优化",
+			"name_2_data": [
+			{
+				"name_3_name": "性能统计面板介绍",
+				"name_3_url": "Chinese/LayaAir_AS3/2D/advanced/PerformanceOptimization/Stat_Panel/",
+				"name_3_file": "readme.md"
+			},
+			{
+				"name_3_name": "内存优化方式",
+				"name_3_url": "Chinese/LayaAir_AS3/2D/advanced/PerformanceOptimization/memory/",
+				"name_3_file": "readme.md"
+			},
+			{
+				"name_3_name": "渲染优化原则",
+				"name_3_url": "Chinese/LayaAir_AS3/2D/advanced/PerformanceOptimization/rendering/",
+				"name_3_file": "readme.md"
+			},
+			{
+				"name_3_name": "CacheAs静态缓存优化",
+				"name_3_url": "Chinese/LayaAir_AS3/2D/advanced/PerformanceOptimization/cacheAs/",
+				"name_3_file": "readme.md"
+			},
+			{
+				"name_3_name": "CPU优化方式",
+				"name_3_url": "Chinese/LayaAir_AS3/2D/advanced/PerformanceOptimization/CPU/",
+				"name_3_file": "readme.md"
+			},
+			{
+				"name_3_name": "其它优化策略",
+				"name_3_url": "Chinese/LayaAir_AS3/2D/advanced/PerformanceOptimization/other/",
+				"name_3_file": "readme.md"
+			},
+			{
+				"name_3_name": "使用chrome的性能分析器",
+				"name_3_url": "Chinese/LayaAir_AS3/2D/advanced/PerformanceOptimization/Chrome_Profiles/",
+				"name_3_file": "readme.md"
+			},
+			{
+				"name_3_name": "Texture内存回收",
+				"name_3_url": "Chinese/LayaAir_AS3/2D/advanced/PerformanceOptimization/clearTextureRes/",
+				"name_3_file": "readme.md"
+			}]
+		},
+		{
+			"name_2_name": "动画进阶",
+			"name_2_data": [
+			{
+				"name_3_name": "骨骼动画进阶",
+				"name_3_url": "Chinese/LayaAir_AS3/2D/advanced/animation/bone/",
+				"name_3_file": "readme.md"
+			}]
+		},
+		{
+			"name_2_name": "扩展模块",
+			"name_2_data": [
+			{
+				"name_3_name": "用LayaAir引擎解析Tiled Map地图",
+				"name_3_url": "Chinese/LayaAir_AS3/2D/advanced/extension_modules/TiledMap/",
+				"name_3_file": "readme.md"
+			},
+			{
+				"name_3_name": "LayaAir和原生DOM交互",
+				"name_3_url": "Chinese/LayaAir_AS3/2D/advanced/extension_modules/DOM/",
+				"name_3_file": "readme.md"
+			},
+			{
+				"name_3_name": "AS3与JS混合编码",
+				"name_3_url": "Chinese/LayaAir_AS3/2D/advanced/extension_modules/AS_JS_mixed_programming/",
+				"name_3_file": "readme.md"
+			}]
+		}]
+	},
+	{
+		"nav_1_name": "IDE篇（AS3）",
 		"nav_1_data": [
 		{
 			"name_2_name": "代码模式基础",
@@ -3834,106 +3933,7 @@
 		}]
 	},
 	{
-		"nav_1_name": "2D进阶篇（AS3）",
-		"nav_1_data": [
-		{
-			"name_2_name": "调试相关",
-			"name_2_data": [
-			{
-				"name_3_name": "LayaAir DebugPanel 调试工具",
-				"name_3_url": "Chinese/LayaAir_AS3/2D/advanced/debug/DebugPanel/",
-				"name_3_file": "readme.md"
-			}]
-		},
-		{
-			"name_2_name": "游戏加载策略",
-			"name_2_data": [
-			{
-				"name_3_name": "二进制图片",
-				"name_3_url": "Chinese/LayaAir_AS3/2D/advanced/loadStrategy/binary_Image/",
-				"name_3_file": "readme.md"
-			},
-			{
-				"name_3_name": "多线程worker",
-				"name_3_url": "Chinese/LayaAir_AS3/2D/advanced/loadStrategy/worker/",
-				"name_3_file": "readme.md"
-			}]
-		},
-		{
-			"name_2_name": "性能优化",
-			"name_2_data": [
-			{
-				"name_3_name": "性能统计面板介绍",
-				"name_3_url": "Chinese/LayaAir_AS3/2D/advanced/PerformanceOptimization/Stat_Panel/",
-				"name_3_file": "readme.md"
-			},
-			{
-				"name_3_name": "内存优化方式",
-				"name_3_url": "Chinese/LayaAir_AS3/2D/advanced/PerformanceOptimization/memory/",
-				"name_3_file": "readme.md"
-			},
-			{
-				"name_3_name": "渲染优化原则",
-				"name_3_url": "Chinese/LayaAir_AS3/2D/advanced/PerformanceOptimization/rendering/",
-				"name_3_file": "readme.md"
-			},
-			{
-				"name_3_name": "CacheAs静态缓存优化",
-				"name_3_url": "Chinese/LayaAir_AS3/2D/advanced/PerformanceOptimization/cacheAs/",
-				"name_3_file": "readme.md"
-			},
-			{
-				"name_3_name": "CPU优化方式",
-				"name_3_url": "Chinese/LayaAir_AS3/2D/advanced/PerformanceOptimization/CPU/",
-				"name_3_file": "readme.md"
-			},
-			{
-				"name_3_name": "其它优化策略",
-				"name_3_url": "Chinese/LayaAir_AS3/2D/advanced/PerformanceOptimization/other/",
-				"name_3_file": "readme.md"
-			},
-			{
-				"name_3_name": "使用chrome的性能分析器",
-				"name_3_url": "Chinese/LayaAir_AS3/2D/advanced/PerformanceOptimization/Chrome_Profiles/",
-				"name_3_file": "readme.md"
-			},
-			{
-				"name_3_name": "Texture内存回收",
-				"name_3_url": "Chinese/LayaAir_AS3/2D/advanced/PerformanceOptimization/clearTextureRes/",
-				"name_3_file": "readme.md"
-			}]
-		},
-		{
-			"name_2_name": "动画进阶",
-			"name_2_data": [
-			{
-				"name_3_name": "骨骼动画进阶",
-				"name_3_url": "Chinese/LayaAir_AS3/2D/advanced/animation/bone/",
-				"name_3_file": "readme.md"
-			}]
-		},
-		{
-			"name_2_name": "扩展模块",
-			"name_2_data": [
-			{
-				"name_3_name": "用LayaAir引擎解析Tiled Map地图",
-				"name_3_url": "Chinese/LayaAir_AS3/2D/advanced/extension_modules/TiledMap/",
-				"name_3_file": "readme.md"
-			},
-			{
-				"name_3_name": "LayaAir和原生DOM交互",
-				"name_3_url": "Chinese/LayaAir_AS3/2D/advanced/extension_modules/DOM/",
-				"name_3_file": "readme.md"
-			},
-			{
-				"name_3_name": "AS3与JS混合编码",
-				"name_3_url": "Chinese/LayaAir_AS3/2D/advanced/extension_modules/AS_JS_mixed_programming/",
-				"name_3_file": "readme.md"
-			}]
-		}]
-	},
-	{
-		"nav_1_name": "LayaAir 3D引擎（AS3）",
+		"nav_1_name": "3D基础（AS3）",
 		"nav_1_data": [
 		{
 			"name_2_name": "快速开始一个LayaAir3D项目",
