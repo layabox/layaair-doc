@@ -1,6 +1,6 @@
 # 从Unity中编辑并导出模型动画
 
-###### *version :2.1.0beta   Update:2019-6-13 插件版本：2.1.0*
+###### *version :2.1.1beta   Update:2019-7-27 插件版本：2.1.0*
 
 游戏角色蒙皮骨骼动画在3D游戏中有大量的运用，可将角色动画模型导入unity中编辑，然后导出到LayaAir中使用。
 
@@ -56,3 +56,8 @@
 
 ![](img/6.png)<br>(图6)
 
+##### 动画控制器类型
+
+不支持Animator override Controller动画控制器
+
+![](img/7.png)<br>
