@@ -1,5 +1,13 @@
 [
   {
+    "name": "LayaNative-Release-2.2.0",
+    "url": "release-2.2.0.md",
+    "date": "2019-07-29",
+    "download": {
+      "url": "http://www.layabox.com/layanative2.0/layanativeRes/release-v2.2.0.zip"
+    }
+  },
+  {
     "name": "LayaNative-Release-2.1.0",
     "url": "release-2.1.0.md",
     "date": "2019-05-13",
