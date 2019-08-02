@@ -1250,6 +1250,30 @@
 			}]
 		},
 		{
+			"name_2_name": "LayaAir3D之鼠标交互",
+			"name_2_data": [
+			{
+				"name_3_name": "鼠标交互概述",
+				"name_3_url": "Chinese/LayaAir_TS/3D/Mouse_Interaction/Overview_of_mouse_interaction/",
+				"name_3_file": "readme.md"
+			},
+			{
+				"name_3_name": "如何对3D精灵进行鼠标检测",
+				"name_3_url": "Chinese/LayaAir_TS/3D/Mouse_Interaction/Mouse_detection/",
+				"name_3_file": "readme.md"
+			},
+			{
+				"name_3_name": "鼠标脚本",
+				"name_3_url": "Chinese/LayaAir_TS/3D/Mouse_Interaction/TouchScript/",
+				"name_3_file": "readme.md"
+			},
+			{
+				"name_3_name": "多点触控的使用",
+				"name_3_url": "Chinese/LayaAir_TS/3D/Mouse_Interaction/MultiTouch/",
+				"name_3_file": "readme.md"
+			}]
+		},
+		{
 			"name_2_name": "LayaAir3D的脚本使用",
 			"name_2_data": [
 			{
@@ -2824,6 +2848,30 @@
 			{
 				"name_3_name": "物理碰撞脚本和触发器脚本",
 				"name_3_url": "Chinese/LayaAir_JS/3D/Physics3D/TriggerCollisionScript/",
+				"name_3_file": "readme.md"
+			}]
+		},
+		{
+			"name_2_name": "LayaAir3D之鼠标交互",
+			"name_2_data": [
+			{
+				"name_3_name": "鼠标交互概述",
+				"name_3_url": "Chinese/LayaAir_JS/3D/Mouse_Interaction/Overview_of_mouse_interaction/",
+				"name_3_file": "readme.md"
+			},
+			{
+				"name_3_name": "如何对3D精灵进行鼠标检测",
+				"name_3_url": "Chinese/LayaAir_JS/3D/Mouse_Interaction/Mouse_detection/",
+				"name_3_file": "readme.md"
+			},
+			{
+				"name_3_name": "鼠标脚本",
+				"name_3_url": "Chinese/LayaAir_JS/3D/Mouse_Interaction/TouchScript/",
+				"name_3_file": "readme.md"
+			},
+			{
+				"name_3_name": "多点触控的使用",
+				"name_3_url": "Chinese/LayaAir_JS/3D/Mouse_Interaction/MultiTouch/",
 				"name_3_file": "readme.md"
 			}]
 		},
@@ -4443,6 +4491,30 @@
 			{
 				"name_3_name": "物理碰撞脚本和触发器脚本",
 				"name_3_url": "Chinese/LayaAir_AS3/3D/Physics3D/TriggerCollisionScript/",
+				"name_3_file": "readme.md"
+			}]
+		},
+		{
+			"name_2_name": "LayaAir3D之鼠标交互",
+			"name_2_data": [
+			{
+				"name_3_name": "鼠标交互概述",
+				"name_3_url": "Chinese/LayaAir_AS3/3D/Mouse_Interaction/Overview_of_mouse_interaction/",
+				"name_3_file": "readme.md"
+			},
+			{
+				"name_3_name": "如何对3D精灵进行鼠标检测",
+				"name_3_url": "Chinese/LayaAir_AS3/3D/Mouse_Interaction/Mouse_detection/",
+				"name_3_file": "readme.md"
+			},
+			{
+				"name_3_name": "鼠标脚本",
+				"name_3_url": "Chinese/LayaAir_AS3/3D/Mouse_Interaction/TouchScript/",
+				"name_3_file": "readme.md"
+			},
+			{
+				"name_3_name": "多点触控的使用",
+				"name_3_url": "Chinese/LayaAir_AS3/3D/Mouse_Interaction/MultiTouch/",
 				"name_3_file": "readme.md"
 			}]
 		},
