@@ -1,6 +1,6 @@
 # 物理碰撞脚本和触发器脚本
 
-###### *version :2.1.1   Update:2019-7-19*
+###### *version :2.1.1   Update:2019-8-2*
 
 触发器发出的事件，开发者可以在触发器物体上添加的脚本（Script3D）监听。监听的方法如图1所示：
 
@@ -55,3 +55,36 @@ override public function onCollisionExit(collision:Collision):void {}
 运行效果图3所示：
 
 ![](img/3.png)<br>(图3)
+
+
+
+#### 触碰信息与触发信息规则
+
+对于碰撞规则可以查看下方表格。
+
+触发信息是指：`onTriggerStay`,`onTriggerStay`,`onTriggerExit`三个函数。
+
+碰撞信息是指：`onCollisionEnter`,`onCollisionStay`,`onCollisionExit`三个函数。
+
+> *碰撞后有碰撞检测并且有碰撞信息*
+
+|                             | PhysicsCollider | RigidBody | Kinematic RigidBody | PhysicsCollider Trigger | RigidBody Trigger | Kinematic RigidBody Trigger |
+| --------------------------- | --------------- | --------- | ------------------- | ----------------------- | ----------------- | --------------------------- |
+| PhysicsCollider             |                 | Y         |                     |                         |                   |                             |
+| RigidBody                   | Y               | Y         | Y                   |                         |                   |                             |
+| Kinematic RigidBody         |                 | Y         |                     |                         |                   |                             |
+| PhysicsCollider Trigger     |                 |           |                     |                         |                   |                             |
+| RigidBody Trigger           |                 |           |                     |                         |                   |                             |
+| Kinematic RigidBody Trigger |                 |           |                     |                         |                   |                             |
+
+> *碰撞后有触发信息*
+
+|                             | PhysicsCollider | RigidBody | Kinematic RigidBody | PhysicsCollider Trigger | RigidBody Trigger | Kinematic RigidBody Trigger |
+| --------------------------- | --------------- | --------- | ------------------- | ----------------------- | ----------------- | --------------------------- |
+| PhysicsCollider             |                 |           |                     |                         | Y                 | Y                           |
+| RigidBody                   |                 |           |                     | Y                       | Y                 | Y                           |
+| Kinematic RigidBody         |                 |           |                     | Y                       | Y                 | Y                           |
+| PhysicsCollider Trigger     |                 | Y         | Y                   |                         | Y                 | Y                           |
+| RigidBody Trigger           | Y               | Y         | Y                   | Y                       | Y                 | Y                           |
+| Kinematic RigidBody Trigger | Y               | Y         | Y                   | Y                       | Y                 | Y                           |
+
