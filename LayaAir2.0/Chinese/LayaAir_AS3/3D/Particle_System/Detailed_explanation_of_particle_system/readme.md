@@ -98,8 +98,9 @@
 **Velocity over Lifetime**  基于生命的速度变化
 
 1. 
+   
    1.   *Constant*  常数模式，速度是恒定的
-   2.  *Curve*  线模式，粒子速度随着lifetime动
+   2.   *Curve*  线模式，粒子速度随着 lifetime 动
    3.   *Random from two Constant*  随机速度模式
 2. `Space` 空间
    1.  *Local*  模型空间
@@ -173,6 +174,6 @@
    3.   *Horizontal Billboard*   粒子平面平行于XZ“底”平面
    4.   *Vertical Billboard*  粒子在Y轴上是直立的，但是面向相机
    5.   *Mesh*  粒子是从3D网格而不是纹理渲染的。
-      1. (支持) 但是如果有面数特别大的模型，会报错，报错原因是index超出65536
+      - (支持) 但是如果有面数特别大的模型，会报错，报错原因是index超出65536
 2. `Sorting Fudge` 数值越小渲染优先级越大
 
