@@ -13,100 +13,40 @@
 **基础面板**
 
 1. `Duration` 粒子持续时间
-
-   
-
 2. `Looping` 是否循环
-
-   
-
 3. `Startdelay` 粒子开始延迟
    1. *Constant*  常数
-
-   2. *Random Between two Constant*  最大最小常数
-
-      
-
+   2. *Random Between two Constant*  最大最小常数 
 4. `StartLifetime` 粒子生命
    1. *Constant*  常数
-
    2. *Random Between two Constant* 随机在最大最小数中取常数
-
-      
-
 5. `StartSpeed` 粒子速度
-   1. *Constant*  常数              
-
+   1. *Constant*  常数 
    2. *Random Between two Constant* 随机在最大最小数中取常数
-
-      
-
-6. `StartSize`
-   1. *Constant*  常数
-
-   2. *Random Between two Constant*  随机在最大最小数中取常数
-
-      
-
+6. `StartSize` 开始大小
+   1. *Constant* 常数
+   2. *Random Between two Constant* 随机在最大最小数中取常数 
 7. `3DStartSize` 3D开始大小
    1. *Constant*  常数
-
-   2. *Random Between two Constant*  随机在最大最小数中取常数
-
-      
-
-8. `StartRotation` 开始旋转
-
+   2. *Random Between two Constant* 随机在最大最小数中取常数
+8. `StartRotation` 开始旋转 
    1. *Constant*  常数
-
-      
-
 9. `3DRotaion` 3D 旋转参数
-   1. *Constant*  常数
-
+   1. *Constant*  常数 
    2. *Random Between two Constant*  随机在最大最小数中取常数
-
-      
-
 10. `RandomizeRotation` 随机旋转的概率 
-
-   
-
-11. `StartColor` 开始颜色
-
+11. `StartColor`开始颜色
     1. *Color*  常数颜色
-
     2. *random Between two Color*  随机在两个颜色中取值
-
-       
-
 12. `GravityModifier` 重力修正
-
-    
-
 13. `Simulation Space` 模拟空间
-
     1. *local*  模型
-
-    2. *Hierarchy*  世界
-
-       
-
+    2. *Hierarchy*  世界 
 14. `ScalingMode` 缩放模式
     1. *Hierarchy*  层级缩放
-
     2. *local*  自身缩放
-
-       
-
 15. `Play On Awake` 开始时播放
-
-    
-
 16. `Max Partticles` 最大粒子数
-
-    
-
 17. `AutoRandomSeed` 自由旋转速度
 
 ------
@@ -124,29 +64,29 @@
 该模块定义粒子发射器的体积和形状。
 
 1. `Sphere` 球
-1.  *Radius*  半径
-      2.  *Emit from shell*  根据壳发射
-3.  *Randomize Direction*  随机化方向
+      1. *Radius*  半径
+      2. *Emit from shell*  根据壳发射
+      3. *Randomize Direction*  随机化方向
 2. `Hemisphere` 半球形状
-      1.  *Radius* 半径  
+      1. *Radius* 半径 
       2. *Emit from shell* 根据壳发射
-      3.  *Randomize Direction* 随机化方向
+      3. *Randomize Direction* 随机化方向
 3. `cone` 锥形
-   1.   *Angle*  角度
-   2.  *Radius*  半径
-   3.  *Emit from*  发射
-      1. *Base*  基础   
-      2.  *Base Shell*  基于壳
-      3.  *Volume*  体积
-      4.  *Volume Shell*  体积壳 
-   4.  *Randomize Direction*  随机化方向 
+   1. *Angle*  角度
+   2. *Radius*  半径
+   3. *Emit from*  发射
+   4. *Base*  基础 
+         1. *Base Shell*  基于壳
+         2. *Volume*  体积
+         3. *Volume Shell*  体积壳 
+   5. *Randomize Direction*  随机化方向 
 4. `Box` 盒子形
-      1.   *BoxX*  盒子X 
-      2.  *BoxY*  盒子Y
-      3.   *BoxZ*  盒子Z	
-      4.   *Emitform*  发射
-            1.   *volume*
-      5.   *Randomize Direction*  随机化方向
+      1. *BoxX*  盒子X 
+      2. *BoxY*  盒子Y
+      3. *BoxZ*  盒子Z	
+      4. *Emitform*  发射
+            1. *volume*
+      5. *Randomize Direction*  随机化方向
 5. `circle` 环形
       1.   *Radius*  半径
       2.   *Arc*  角度
