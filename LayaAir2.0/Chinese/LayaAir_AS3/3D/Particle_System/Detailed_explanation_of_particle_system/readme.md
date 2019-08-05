@@ -17,66 +17,47 @@
 ​	2、`Looping` 是否循环
 
 ​	3、`Startdelay` 粒子开始延迟      	  
-
-​			(1) `Constant` 常数       	 
-
-​			(2) `Random Between two Constant` 最大最小常数
+​				(1) `Constant` 常数
+​				(2) `Random Between two Constant` 最大最小常数
 
 ​	4、`StartLifetime` 粒子生命
-
-​			(1) `Constant` 常数
-
-​			(2) `Random Between two Constant` 随机在最大最小数中取常数
+​				(1) `Constant` 常数
+​				(2) `Random Between two Constant` 随机在最大最小数中取常数
 
 ​	5、`StartSpeed` 粒子速度
-
-​			(1) `Constant`常数              
-
-​			(2) `Random Between two Constant` 随机在最大最小数中取常数
+				(1) `Constant`常数              
+				(2) `Random Between two Constant` 随机在最大最小数中取常数
 
 ​	6、`StartSize`
-
-​			(1) ` Constant` 常数
-
-​			(2) `Random Between two Constant` 随机在最大最小数中取常数
+				(1) ` Constant` 常数
+				(2) `Random Between two Constant` 随机在最大最小数中取常数
 
 ​	7、`3DStartSize` 3D开始大小
-
-​			(1) `Constant` 常数
-
-​			(2) `Random Between two Constant` 随机在最大最小数中取常数
+				(1) `Constant` 常数
+				(2) `Random Between two Constant` 随机在最大最小数中取常数
 
 ​	8、`StartRotation` 开始旋转
-
-​			(1)`Constant` 常数
+				(1)`Constant` 常数
 
    9、`3DRotaion` 3D 旋转参数
-
-​			(1) `Constant` 常数
-
-​			(2) `Random Between two Constant`  随机在最大最小数中取常数
+				(1) `Constant` 常数
+				(2) `Random Between two Constant`  随机在最大最小数中取常数
 
 ​	10、`RandomizeRotation` 随机旋转的概率 
 
 ​	11、`StartColor` 开始颜色
-
-​			(1) `Color` 常数颜色
-
-​			(2) `random Between two Color` 随机在两个颜色中取值
+				(1) `Color` 常数颜色
+				(2) `random Between two Color` 随机在两个颜色中取值
 
 ​	12、`GravityModifier` 重力修正
 
 ​	13、`Simulation Space` 模拟空间 
-
-​			(1) `local` 模型
-
-​			(2) `Hierarchy` 世界
+				(1) `local` 模型
+				(2) `Hierarchy` 世界
 
 ​	14、`ScalingMode` 缩放模式
-
-​			(1) `Hierarchy` 层级缩放
-
-​			(2) `local` 自身缩放
+				(1) `Hierarchy` 层级缩放
+				(2) `local` 自身缩放
 
 ​	15、`Play On Awake` 开始时播放
 

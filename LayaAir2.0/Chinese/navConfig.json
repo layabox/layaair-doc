@@ -1298,6 +1298,25 @@
 			}]
 		},
 		{
+			"name_2_name": "LayaAir3D之天空",
+			"name_2_data": [
+			{
+				"name_3_name": "天空概述",
+				"name_3_url": "Chinese/LayaAir_TS/3D/Sky/Overview_of_the_Sky/",
+				"name_3_file": "readme.md"
+			},
+			{
+				"name_3_name": "导出天空盒注意事项",
+				"name_3_url": "Chinese/LayaAir_TS/3D/Sky/Export_sky_box_notes/",
+				"name_3_file": "readme.md"
+			},
+			{
+				"name_3_name": "天空网格",
+				"name_3_url": "Chinese/LayaAir_TS/3D/Sky/Sky_Mesh/",
+				"name_3_file": "readme.md"
+			}]
+		},
+		{
 			"name_2_name": "LayaAir3D之粒子系统",
 			"name_2_data": [
 			{
@@ -2896,6 +2915,25 @@
 			{
 				"name_3_name": "脚本的生命周期",
 				"name_3_url": "Chinese/LayaAir_JS/3D/Script3D/Script_lifecycle/",
+				"name_3_file": "readme.md"
+			}]
+		},
+		{
+			"name_2_name": "LayaAir3D之天空",
+			"name_2_data": [
+			{
+				"name_3_name": "天空概述",
+				"name_3_url": "Chinese/LayaAir_JS/3D/Sky/Overview_of_the_Sky/",
+				"name_3_file": "readme.md"
+			},
+			{
+				"name_3_name": "导出天空盒注意事项",
+				"name_3_url": "Chinese/LayaAir_JS/3D/Sky/Export_sky_box_notes/",
+				"name_3_file": "readme.md"
+			},
+			{
+				"name_3_name": "天空网格",
+				"name_3_url": "Chinese/LayaAir_JS/3D/Sky/Sky_Mesh/",
 				"name_3_file": "readme.md"
 			}]
 		},
@@ -4539,6 +4577,25 @@
 			{
 				"name_3_name": "脚本的生命周期",
 				"name_3_url": "Chinese/LayaAir_AS3/3D/Script3D/Script_lifecycle/",
+				"name_3_file": "readme.md"
+			}]
+		},
+		{
+			"name_2_name": "LayaAir3D之天空",
+			"name_2_data": [
+			{
+				"name_3_name": "天空概述",
+				"name_3_url": "Chinese/LayaAir_AS3/3D/Sky/Overview_of_the_Sky/",
+				"name_3_file": "readme.md"
+			},
+			{
+				"name_3_name": "导出天空盒注意事项",
+				"name_3_url": "Chinese/LayaAir_AS3/3D/Sky/Export_sky_box_notes/",
+				"name_3_file": "readme.md"
+			},
+			{
+				"name_3_name": "天空网格",
+				"name_3_url": "Chinese/LayaAir_AS3/3D/Sky/Sky_Mesh/",
 				"name_3_file": "readme.md"
 			}]
 		},
