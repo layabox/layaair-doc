@@ -47,7 +47,7 @@ void main()
 
 #### 2.代码中组成Shader
 
-在代码中**"组装"** Shader，本段代码添加在 Main.ts 。
+在代码中**"组装"** Shader，本段代码添加在 Main.js 。
 
 ```typescript
 //初始化我们的自定义shader
