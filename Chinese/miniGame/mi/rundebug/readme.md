@@ -38,7 +38,7 @@ LayaAirIDE的发布功能，内置了小米快游戏的发布功能，需要先�
 
 ​												   as为KGMiniAdapter.init();
 
-链接：[https://ldc2.layabox.com/doc/?nav=zh-ts-2-0-6](https://ldc2.layabox.com/doc/?nav=zh-ts-2-0-6)
+链接：[[https://ldc.layabox.com/doc/?nav=zh-as-2-0-4](https://ldc.layabox.com/doc/?nav=zh-as-2-0-4)](https://ldc2.layabox.com/doc/?nav=zh-ts-2-0-6)
 
 ### 2、保留发布二维码界面。
 
