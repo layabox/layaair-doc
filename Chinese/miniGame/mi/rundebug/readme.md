@@ -8,7 +8,7 @@
 
 1、小米品牌的手机（注意必须是MIUI 8.5或以上版本）。
 
-2、下载安装小米的测试APP，下载页面：[https://dev.mi.com/console/doc/detail?pId=1704](https://dev.mi.com/console/doc/detail?pId=1704)
+2、下载安装小米的测试APP，下载页面：[[https://dev.mi.com/console/doc/detail?pId=1738](https://dev.mi.com/console/doc/detail?pId=1738)](https://dev.mi.com/console/doc/detail?pId=1704)
 
 进入页面后，点击下载快游戏调试器。即可下载安装。至于如何安装测试APP，这里就不介绍了。
 
