@@ -1,6 +1,6 @@
 # 小米快游戏发布与调试指南
 
-> update : 2019-07-17
+> update : 2019-05-15
 >
 > 小米快游戏的发布必须要使用LayaAirIDE，关于IDE的下载使用相关，请查看相关文档，不在本篇介绍范围内。
 
@@ -8,9 +8,9 @@
 
 1、小米品牌的手机（注意必须是MIUI 8.5或以上版本）。
 
-2、下载安装小米的测试APP，下载页面：[[https://dev.mi.com/console/doc/detail?pId=1738](https://dev.mi.com/console/doc/detail?pId=1738)](https://dev.mi.com/console/doc/detail?pId=1779)
+2、下载安装小米的测试APP，下载页面：[[https://dev.mi.com/console/doc/detail?pId=1738](https://dev.mi.com/console/doc/detail?pId=1738)](https://dev.mi.com/console/doc/detail?pId=1704)
 
-进入页面后，下拉找到第3步，**调试自测**那一栏里，直接按提示下载即可。
+进入页面后，点击下载快游戏调试器。即可下载安装。至于如何安装测试APP，这里就不介绍了。
 
 3、PC电脑的chrome浏览器与手机数据连接线。
 
@@ -18,7 +18,7 @@
 
 就是下载安装，比较简单，也不细介绍。能在命令行里调起npm命令就算是成功了。
 
-5、LayaAirIDE集中开发环境，LayaAir 2.0.2beta 或以上版本 [ 官网下载: [https://ldc2.layabox.com/layadownload/?type=layaairide](https://ldc2.layabox.com/layadownload/?type=layaairide) ]
+5、LayaAirIDE集中开发环境，LayaAir 1.8.2 或以上版本 [ 官网下载: [https://ldc.layabox.com/layadownload/?type=layaairide](https://ldc.layabox.com/layadownload/?type=layaairide)
 
 6、安装ADB
 
@@ -34,7 +34,11 @@
 
 LayaAirIDE的发布功能，内置了小米快游戏的发布功能，需要先将LayaAir引擎的项目，通过发布功能打成.rpk后缀的包。关于发布功能的使用。这里不重复介绍了。不会的可以前往官网文档查看。
 
-链接：[https://ldc2.layabox.com/doc/?nav=zh-ts-3-0-6](https://ldc2.layabox.com/doc/?nav=zh-ts-3-0-6)
+发布之前一定要确认引擎初始化之前需要加上适配代码：ts,js为Laya.KGMiniAdapter.init();  
+
+​												   as为KGMiniAdapter.init();
+
+链接：[[https://ldc.layabox.com/doc/?nav=zh-as-2-0-4](https://ldc.layabox.com/doc/?nav=zh-as-2-0-4)](https://ldc2.layabox.com/doc/?nav=zh-ts-2-0-6)
 
 ### 2、保留发布二维码界面。
 
