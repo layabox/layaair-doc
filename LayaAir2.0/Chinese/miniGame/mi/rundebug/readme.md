@@ -8,7 +8,7 @@
 
 1、小米品牌的手机（注意必须是MIUI 8.5或以上版本）。
 
-2、下载安装小米的测试APP，下载页面：[https://dev.mi.com/console/doc/detail?pId=1779](https://dev.mi.com/console/doc/detail?pId=1779)
+2、下载安装小米的测试APP，下载页面：[[https://dev.mi.com/console/doc/detail?pId=1738](https://dev.mi.com/console/doc/detail?pId=1738)](https://dev.mi.com/console/doc/detail?pId=1779)
 
 进入页面后，下拉找到第3步，**调试自测**那一栏里，直接按提示下载即可。
 
@@ -34,7 +34,7 @@
 
 LayaAirIDE的发布功能，内置了小米快游戏的发布功能，需要先将LayaAir引擎的项目，通过发布功能打成.rpk后缀的包。关于发布功能的使用。这里不重复介绍了。不会的可以前往官网文档查看。
 
-链接：[https://ldc2.layabox.com/doc/?nav=zh-ts-2-0-6](https://ldc2.layabox.com/doc/?nav=zh-ts-2-0-6)
+链接：[https://ldc2.layabox.com/doc/?nav=zh-ts-3-0-6](https://ldc2.layabox.com/doc/?nav=zh-ts-3-0-6)
 
 ### 2、保留发布二维码界面。
 

@@ -314,7 +314,96 @@
 		}]
 	},
 	{
-		"nav_1_name": "LayaAir IDE篇（TS）",
+		"nav_1_name": "2D进阶篇（TS）",
+		"nav_1_data": [
+		{
+			"name_2_name": "调试相关",
+			"name_2_data": [
+			{
+				"name_3_name": "LayaAir DebugPanel 调试工具",
+				"name_3_url": "Chinese/LayaAir_TS/2D/advanced/debug/DebugPanel/",
+				"name_3_file": "readme.md"
+			}]
+		},
+		{
+			"name_2_name": "游戏加载策略",
+			"name_2_data": [
+			{
+				"name_3_name": "二进制图片",
+				"name_3_url": "Chinese/LayaAir_TS/2D/advanced/loadStrategy/binary_Image/",
+				"name_3_file": "readme.md"
+			},
+			{
+				"name_3_name": "多线程worker",
+				"name_3_url": "Chinese/LayaAir_TS/2D/advanced/loadStrategy/worker/",
+				"name_3_file": "readme.md"
+			}]
+		},
+		{
+			"name_2_name": "性能优化",
+			"name_2_data": [
+			{
+				"name_3_name": "性能统计面板介绍",
+				"name_3_url": "Chinese/LayaAir_TS/2D/advanced/PerformanceOptimization/Stat_Panel/",
+				"name_3_file": "readme.md"
+			},
+			{
+				"name_3_name": "内存优化方式",
+				"name_3_url": "Chinese/LayaAir_TS/2D/advanced/PerformanceOptimization/memory/",
+				"name_3_file": "readme.md"
+			},
+			{
+				"name_3_name": "渲染优化原则",
+				"name_3_url": "Chinese/LayaAir_TS/2D/advanced/PerformanceOptimization/rendering/",
+				"name_3_file": "readme.md"
+			},
+			{
+				"name_3_name": "CacheAs静态缓存优化",
+				"name_3_url": "Chinese/LayaAir_TS/2D/advanced/PerformanceOptimization/cacheAs/",
+				"name_3_file": "readme.md"
+			},
+			{
+				"name_3_name": "CPU优化方式",
+				"name_3_url": "Chinese/LayaAir_TS/2D/advanced/PerformanceOptimization/CPU/",
+				"name_3_file": "readme.md"
+			},
+			{
+				"name_3_name": "其它优化策略",
+				"name_3_url": "Chinese/LayaAir_TS/2D/advanced/PerformanceOptimization/other/",
+				"name_3_file": "readme.md"
+			},
+			{
+				"name_3_name": "使用chrome的性能分析器",
+				"name_3_url": "Chinese/LayaAir_TS/2D/advanced/PerformanceOptimization/Chrome_Profiles/",
+				"name_3_file": "readme.md"
+			}]
+		},
+		{
+			"name_2_name": "动画进阶",
+			"name_2_data": [
+			{
+				"name_3_name": "骨骼动画进阶",
+				"name_3_url": "Chinese/LayaAir_TS/2D/advanced/animation/bone/",
+				"name_3_file": "readme.md"
+			}]
+		},
+		{
+			"name_2_name": "扩展模块",
+			"name_2_data": [
+			{
+				"name_3_name": "用LayaAir引擎解析Tiled Map地图",
+				"name_3_url": "Chinese/LayaAir_TS/2D/advanced/extension_modules/TiledMap/",
+				"name_3_file": "readme.md"
+			},
+			{
+				"name_3_name": "LayaAir和原生DOM交互",
+				"name_3_url": "Chinese/LayaAir_TS/2D/advanced/extension_modules/DOM/",
+				"name_3_file": "readme.md"
+			}]
+		}]
+	},
+	{
+		"nav_1_name": "IDE篇（TS）",
 		"nav_1_data": [
 		{
 			"name_2_name": "代码模式基础",
@@ -605,96 +694,7 @@
 		}]
 	},
 	{
-		"nav_1_name": "2D进阶篇（TS）",
-		"nav_1_data": [
-		{
-			"name_2_name": "调试相关",
-			"name_2_data": [
-			{
-				"name_3_name": "LayaAir DebugPanel 调试工具",
-				"name_3_url": "Chinese/LayaAir_TS/2D/advanced/debug/DebugPanel/",
-				"name_3_file": "readme.md"
-			}]
-		},
-		{
-			"name_2_name": "游戏加载策略",
-			"name_2_data": [
-			{
-				"name_3_name": "二进制图片",
-				"name_3_url": "Chinese/LayaAir_TS/2D/advanced/loadStrategy/binary_Image/",
-				"name_3_file": "readme.md"
-			},
-			{
-				"name_3_name": "多线程worker",
-				"name_3_url": "Chinese/LayaAir_TS/2D/advanced/loadStrategy/worker/",
-				"name_3_file": "readme.md"
-			}]
-		},
-		{
-			"name_2_name": "性能优化",
-			"name_2_data": [
-			{
-				"name_3_name": "性能统计面板介绍",
-				"name_3_url": "Chinese/LayaAir_TS/2D/advanced/PerformanceOptimization/Stat_Panel/",
-				"name_3_file": "readme.md"
-			},
-			{
-				"name_3_name": "内存优化方式",
-				"name_3_url": "Chinese/LayaAir_TS/2D/advanced/PerformanceOptimization/memory/",
-				"name_3_file": "readme.md"
-			},
-			{
-				"name_3_name": "渲染优化原则",
-				"name_3_url": "Chinese/LayaAir_TS/2D/advanced/PerformanceOptimization/rendering/",
-				"name_3_file": "readme.md"
-			},
-			{
-				"name_3_name": "CacheAs静态缓存优化",
-				"name_3_url": "Chinese/LayaAir_TS/2D/advanced/PerformanceOptimization/cacheAs/",
-				"name_3_file": "readme.md"
-			},
-			{
-				"name_3_name": "CPU优化方式",
-				"name_3_url": "Chinese/LayaAir_TS/2D/advanced/PerformanceOptimization/CPU/",
-				"name_3_file": "readme.md"
-			},
-			{
-				"name_3_name": "其它优化策略",
-				"name_3_url": "Chinese/LayaAir_TS/2D/advanced/PerformanceOptimization/other/",
-				"name_3_file": "readme.md"
-			},
-			{
-				"name_3_name": "使用chrome的性能分析器",
-				"name_3_url": "Chinese/LayaAir_TS/2D/advanced/PerformanceOptimization/Chrome_Profiles/",
-				"name_3_file": "readme.md"
-			}]
-		},
-		{
-			"name_2_name": "动画进阶",
-			"name_2_data": [
-			{
-				"name_3_name": "骨骼动画进阶",
-				"name_3_url": "Chinese/LayaAir_TS/2D/advanced/animation/bone/",
-				"name_3_file": "readme.md"
-			}]
-		},
-		{
-			"name_2_name": "扩展模块",
-			"name_2_data": [
-			{
-				"name_3_name": "用LayaAir引擎解析Tiled Map地图",
-				"name_3_url": "Chinese/LayaAir_TS/2D/advanced/extension_modules/TiledMap/",
-				"name_3_file": "readme.md"
-			},
-			{
-				"name_3_name": "LayaAir和原生DOM交互",
-				"name_3_url": "Chinese/LayaAir_TS/2D/advanced/extension_modules/DOM/",
-				"name_3_file": "readme.md"
-			}]
-		}]
-	},
-	{
-		"nav_1_name": "LayaAir 3D引擎（TS）",
+		"nav_1_name": "3D基础（TS）",
 		"nav_1_data": [
 		{
 			"name_2_name": "快速开始一个LayaAir3D项目",
@@ -710,13 +710,13 @@
 				"name_3_file": "readme.md"
 			},
 			{
-				"name_3_name": "LayaAir3D概述",
-				"name_3_url": "Chinese/LayaAir_TS/3D/QuickStart/LayaAir3D_Introduction/",
+				"name_3_name": "Config3D的介绍",
+				"name_3_url": "Chinese/LayaAir_TS/3D/QuickStart/Config3D/",
 				"name_3_file": "readme.md"
 			},
 			{
-				"name_3_name": "如何使用下载的官方示例",
-				"name_3_url": "Chinese/LayaAir_TS/3D/QuickStart/How_to_use_the_new_demo_ts/",
+				"name_3_name": "LayaAir3D概述",
+				"name_3_url": "Chinese/LayaAir_TS/3D/QuickStart/LayaAir3D_Introduction/",
 				"name_3_file": "readme.md"
 			}]
 		},
@@ -1186,6 +1186,94 @@
 			}]
 		},
 		{
+			"name_2_name": "LayaAir3D之物理系统",
+			"name_2_data": [
+			{
+				"name_3_name": "物理系统的概述",
+				"name_3_url": "Chinese/LayaAir_TS/3D/Physics3D/Overview_of_Physical_Systems/",
+				"name_3_file": "readme.md"
+			},
+			{
+				"name_3_name": "在Unity插件中导出和使用物理组件",
+				"name_3_url": "Chinese/LayaAir_TS/3D/Physics3D/Export_and_Use_Physical_Components/",
+				"name_3_file": "readme.md"
+			},
+			{
+				"name_3_name": "物理刚体",
+				"name_3_url": "Chinese/LayaAir_TS/3D/Physics3D/RigidBody/",
+				"name_3_file": "readme.md"
+			},
+			{
+				"name_3_name": "物理碰撞器",
+				"name_3_url": "Chinese/LayaAir_TS/3D/Physics3D/PhysicsCollider/",
+				"name_3_file": "readme.md"
+			},
+			{
+				"name_3_name": "碰撞器过滤",
+				"name_3_url": "Chinese/LayaAir_TS/3D/Physics3D/CollisionFiflter/",
+				"name_3_file": "readme.md"
+			},
+			{
+				"name_3_name": "角色碰撞器",
+				"name_3_url": "Chinese/LayaAir_TS/3D/Physics3D/CharacterController/",
+				"name_3_file": "readme.md"
+			},
+			{
+				"name_3_name": "物理触发器",
+				"name_3_url": "Chinese/LayaAir_TS/3D/Physics3D/Trigger/",
+				"name_3_file": "readme.md"
+			},
+			{
+				"name_3_name": "多种碰撞器形状",
+				"name_3_url": "Chinese/LayaAir_TS/3D/Physics3D/ColliderShape/",
+				"name_3_file": "readme.md"
+			},
+			{
+				"name_3_name": "运动刚体",
+				"name_3_url": "Chinese/LayaAir_TS/3D/Physics3D/Kinematic_Rigidbody/",
+				"name_3_file": "readme.md"
+			},
+			{
+				"name_3_name": "物理射线检测",
+				"name_3_url": "Chinese/LayaAir_TS/3D/Physics3D/RayCast/",
+				"name_3_file": "readme.md"
+			},
+			{
+				"name_3_name": "物理形状扫描检测",
+				"name_3_url": "Chinese/LayaAir_TS/3D/Physics3D/RayShapeCast/",
+				"name_3_file": "readme.md"
+			},
+			{
+				"name_3_name": "物理碰撞脚本和触发器脚本",
+				"name_3_url": "Chinese/LayaAir_TS/3D/Physics3D/TriggerCollisionScript/",
+				"name_3_file": "readme.md"
+			}]
+		},
+		{
+			"name_2_name": "LayaAir3D之鼠标交互",
+			"name_2_data": [
+			{
+				"name_3_name": "鼠标交互概述",
+				"name_3_url": "Chinese/LayaAir_TS/3D/Mouse_Interaction/Overview_of_mouse_interaction/",
+				"name_3_file": "readme.md"
+			},
+			{
+				"name_3_name": "如何对3D精灵进行鼠标检测",
+				"name_3_url": "Chinese/LayaAir_TS/3D/Mouse_Interaction/Mouse_detection/",
+				"name_3_file": "readme.md"
+			},
+			{
+				"name_3_name": "鼠标脚本",
+				"name_3_url": "Chinese/LayaAir_TS/3D/Mouse_Interaction/TouchScript/",
+				"name_3_file": "readme.md"
+			},
+			{
+				"name_3_name": "多点触控的使用",
+				"name_3_url": "Chinese/LayaAir_TS/3D/Mouse_Interaction/MultiTouch/",
+				"name_3_file": "readme.md"
+			}]
+		},
+		{
 			"name_2_name": "LayaAir3D的脚本使用",
 			"name_2_data": [
 			{
@@ -1210,6 +1298,58 @@
 			}]
 		},
 		{
+			"name_2_name": "LayaAir3D之天空",
+			"name_2_data": [
+			{
+				"name_3_name": "天空概述",
+				"name_3_url": "Chinese/LayaAir_TS/3D/Sky/Overview_of_the_Sky/",
+				"name_3_file": "readme.md"
+			},
+			{
+				"name_3_name": "导出天空盒注意事项",
+				"name_3_url": "Chinese/LayaAir_TS/3D/Sky/Export_sky_box_notes/",
+				"name_3_file": "readme.md"
+			},
+			{
+				"name_3_name": "天空网格",
+				"name_3_url": "Chinese/LayaAir_TS/3D/Sky/Sky_Mesh/",
+				"name_3_file": "readme.md"
+			}]
+		},
+		{
+			"name_2_name": "LayaAir3D之粒子系统",
+			"name_2_data": [
+			{
+				"name_3_name": "粒子系统概述",
+				"name_3_url": "Chinese/LayaAir_TS/3D/Particle_System/Overview_of_particle_system/",
+				"name_3_file": "readme.md"
+			},
+			{
+				"name_3_name": "粒子属性详解",
+				"name_3_url": "Chinese/LayaAir_TS/3D/Particle_System/Detailed_explanation_of_particle_system/",
+				"name_3_file": "readme.md"
+			}]
+		},
+		{
+			"name_2_name": "LayaAir3D之拖尾系统",
+			"name_2_data": [
+			{
+				"name_3_name": "拖尾系统的概述",
+				"name_3_url": "Chinese/LayaAir_TS/3D/Trailrender_System/Overview_of_Tail_system/",
+				"name_3_file": "readme.md"
+			},
+			{
+				"name_3_name": "在Unity中导出拖尾系统",
+				"name_3_url": "Chinese/LayaAir_TS/3D/Trailrender_System/Export_the_trail_system/",
+				"name_3_file": "readme.md"
+			},
+			{
+				"name_3_name": "拖尾系统的详解",
+				"name_3_url": "Chinese/LayaAir_TS/3D/Trailrender_System/Detailed_description_of_trail_system/",
+				"name_3_file": "readme.md"
+			}]
+		},
+		{
 			"name_2_name": "LayaAir3D的内存管理",
 			"name_2_data": [
 			{
@@ -1220,60 +1360,6 @@
 			{
 				"name_3_name": "批量销毁释放内存",
 				"name_3_url": "Chinese/LayaAir_TS/3D/Memory_Manage/DestroyUnusedResources/",
-				"name_3_file": "readme.md"
-			}]
-		},
-		{
-			"name_2_name": "3D引擎基础",
-			"name_2_data": [
-			{
-				"name_3_name": "LayaAir3D之模型",
-				"name_3_url": "Chinese/LayaAir_TS/3D/beginners/model/",
-				"name_3_file": "readme.md"
-			},
-			{
-				"name_3_name": "LayaAir3D之动画一",
-				"name_3_url": "Chinese/LayaAir_TS/3D/beginners/animation1/",
-				"name_3_file": "readme.md"
-			},
-			{
-				"name_3_name": "LayaAir3D之动画二",
-				"name_3_url": "Chinese/LayaAir_TS/3D/beginners/animation2/",
-				"name_3_file": "readme.md"
-			},
-			{
-				"name_3_name": "LayaAir3D之脚本组件",
-				"name_3_url": "Chinese/LayaAir_TS/3D/beginners/Script_component3D/",
-				"name_3_file": "readme.md"
-			},
-			{
-				"name_3_name": "LayaAir3D之骨骼挂点",
-				"name_3_url": "Chinese/LayaAir_TS/3D/beginners/bonePoint/",
-				"name_3_file": "readme.md"
-			},
-			{
-				"name_3_name": "LayaAir3D之鼠标交互",
-				"name_3_url": "Chinese/LayaAir_TS/3D/beginners/mouse/",
-				"name_3_file": "readme.md"
-			},
-			{
-				"name_3_name": "LayaAir3D之物理快速入门",
-				"name_3_url": "Chinese/LayaAir_TS/3D/beginners/PhysicsBasic/",
-				"name_3_file": "readme.md"
-			},
-			{
-				"name_3_name": "LayaAir3D之碰撞器与刚体",
-				"name_3_url": "Chinese/LayaAir_TS/3D/beginners/colliderAndRigidbody/",
-				"name_3_file": "readme.md"
-			},
-			{
-				"name_3_name": "LayaAir3D之触发器与碰撞过滤",
-				"name_3_url": "Chinese/LayaAir_TS/3D/beginners/triggerAndCollidWith/",
-				"name_3_file": "readme.md"
-			},
-			{
-				"name_3_name": "LayaAir3D之资源释放",
-				"name_3_url": "Chinese/LayaAir_TS/3D/beginners/assetsDispose/",
 				"name_3_file": "readme.md"
 			}]
 		}]
@@ -1851,7 +1937,96 @@
 		}]
 	},
 	{
-		"nav_1_name": "LayaAir IDE篇（JS）",
+		"nav_1_name": "2D进阶篇（JS）",
+		"nav_1_data": [
+		{
+			"name_2_name": "调试相关",
+			"name_2_data": [
+			{
+				"name_3_name": "LayaAir DebugPanel 调试工具",
+				"name_3_url": "Chinese/LayaAir_JS/2D/advanced/debug/DebugPanel/",
+				"name_3_file": "readme.md"
+			}]
+		},
+		{
+			"name_2_name": "游戏加载策略",
+			"name_2_data": [
+			{
+				"name_3_name": "二进制图片",
+				"name_3_url": "Chinese/LayaAir_JS/2D/advanced/loadStrategy/binary_Image/",
+				"name_3_file": "readme.md"
+			},
+			{
+				"name_3_name": "多线程worker",
+				"name_3_url": "Chinese/LayaAir_JS/2D/advanced/loadStrategy/worker/",
+				"name_3_file": "readme.md"
+			}]
+		},
+		{
+			"name_2_name": "性能优化",
+			"name_2_data": [
+			{
+				"name_3_name": "性能统计面板介绍",
+				"name_3_url": "Chinese/LayaAir_JS/2D/advanced/PerformanceOptimization/Stat_Panel/",
+				"name_3_file": "readme.md"
+			},
+			{
+				"name_3_name": "内存优化方式",
+				"name_3_url": "Chinese/LayaAir_JS/2D/advanced/PerformanceOptimization/memory/",
+				"name_3_file": "readme.md"
+			},
+			{
+				"name_3_name": "渲染优化原则",
+				"name_3_url": "Chinese/LayaAir_JS/2D/advanced/PerformanceOptimization/rendering/",
+				"name_3_file": "readme.md"
+			},
+			{
+				"name_3_name": "CacheAs静态缓存优化",
+				"name_3_url": "Chinese/LayaAir_JS/2D/advanced/PerformanceOptimization/cacheAs/",
+				"name_3_file": "readme.md"
+			},
+			{
+				"name_3_name": "CPU优化方式",
+				"name_3_url": "Chinese/LayaAir_JS/2D/advanced/PerformanceOptimization/CPU/",
+				"name_3_file": "readme.md"
+			},
+			{
+				"name_3_name": "其它优化策略",
+				"name_3_url": "Chinese/LayaAir_JS/2D/advanced/PerformanceOptimization/other/",
+				"name_3_file": "readme.md"
+			},
+			{
+				"name_3_name": "使用chrome的性能分析器",
+				"name_3_url": "Chinese/LayaAir_JS/2D/advanced/PerformanceOptimization/Chrome_Profiles/",
+				"name_3_file": "readme.md"
+			}]
+		},
+		{
+			"name_2_name": "动画进阶",
+			"name_2_data": [
+			{
+				"name_3_name": "骨骼动画进阶",
+				"name_3_url": "Chinese/LayaAir_JS/2D/advanced/animation/bone/",
+				"name_3_file": "readme.md"
+			}]
+		},
+		{
+			"name_2_name": "扩展模块",
+			"name_2_data": [
+			{
+				"name_3_name": "用LayaAir引擎解析Tiled Map地图",
+				"name_3_url": "Chinese/LayaAir_JS/2D/advanced/extension_modules/TiledMap/",
+				"name_3_file": "readme.md"
+			},
+			{
+				"name_3_name": "LayaAir和原生DOM交互",
+				"name_3_url": "Chinese/LayaAir_JS/2D/advanced/extension_modules/DOM/",
+				"name_3_file": "readme.md"
+			}]
+		}]
+	},
+	{
+		"nav_1_name": "IDE篇（JS）",
 		"nav_1_data": [
 		{
 			"name_2_name": "代码模式基础",
@@ -2141,96 +2316,7 @@
 		}]
 	},
 	{
-		"nav_1_name": "2D进阶篇（JS）",
-		"nav_1_data": [
-		{
-			"name_2_name": "调试相关",
-			"name_2_data": [
-			{
-				"name_3_name": "LayaAir DebugPanel 调试工具",
-				"name_3_url": "Chinese/LayaAir_JS/2D/advanced/debug/DebugPanel/",
-				"name_3_file": "readme.md"
-			}]
-		},
-		{
-			"name_2_name": "游戏加载策略",
-			"name_2_data": [
-			{
-				"name_3_name": "二进制图片",
-				"name_3_url": "Chinese/LayaAir_JS/2D/advanced/loadStrategy/binary_Image/",
-				"name_3_file": "readme.md"
-			},
-			{
-				"name_3_name": "多线程worker",
-				"name_3_url": "Chinese/LayaAir_JS/2D/advanced/loadStrategy/worker/",
-				"name_3_file": "readme.md"
-			}]
-		},
-		{
-			"name_2_name": "性能优化",
-			"name_2_data": [
-			{
-				"name_3_name": "性能统计面板介绍",
-				"name_3_url": "Chinese/LayaAir_JS/2D/advanced/PerformanceOptimization/Stat_Panel/",
-				"name_3_file": "readme.md"
-			},
-			{
-				"name_3_name": "内存优化方式",
-				"name_3_url": "Chinese/LayaAir_JS/2D/advanced/PerformanceOptimization/memory/",
-				"name_3_file": "readme.md"
-			},
-			{
-				"name_3_name": "渲染优化原则",
-				"name_3_url": "Chinese/LayaAir_JS/2D/advanced/PerformanceOptimization/rendering/",
-				"name_3_file": "readme.md"
-			},
-			{
-				"name_3_name": "CacheAs静态缓存优化",
-				"name_3_url": "Chinese/LayaAir_JS/2D/advanced/PerformanceOptimization/cacheAs/",
-				"name_3_file": "readme.md"
-			},
-			{
-				"name_3_name": "CPU优化方式",
-				"name_3_url": "Chinese/LayaAir_JS/2D/advanced/PerformanceOptimization/CPU/",
-				"name_3_file": "readme.md"
-			},
-			{
-				"name_3_name": "其它优化策略",
-				"name_3_url": "Chinese/LayaAir_JS/2D/advanced/PerformanceOptimization/other/",
-				"name_3_file": "readme.md"
-			},
-			{
-				"name_3_name": "使用chrome的性能分析器",
-				"name_3_url": "Chinese/LayaAir_JS/2D/advanced/PerformanceOptimization/Chrome_Profiles/",
-				"name_3_file": "readme.md"
-			}]
-		},
-		{
-			"name_2_name": "动画进阶",
-			"name_2_data": [
-			{
-				"name_3_name": "骨骼动画进阶",
-				"name_3_url": "Chinese/LayaAir_JS/2D/advanced/animation/bone/",
-				"name_3_file": "readme.md"
-			}]
-		},
-		{
-			"name_2_name": "扩展模块",
-			"name_2_data": [
-			{
-				"name_3_name": "用LayaAir引擎解析Tiled Map地图",
-				"name_3_url": "Chinese/LayaAir_JS/2D/advanced/extension_modules/TiledMap/",
-				"name_3_file": "readme.md"
-			},
-			{
-				"name_3_name": "LayaAir和原生DOM交互",
-				"name_3_url": "Chinese/LayaAir_JS/2D/advanced/extension_modules/DOM/",
-				"name_3_file": "readme.md"
-			}]
-		}]
-	},
-	{
-		"nav_1_name": "LayaAir 3D引擎（JS）",
+		"nav_1_name": "3D基础（JS）",
 		"nav_1_data": [
 		{
 			"name_2_name": "快速开始一个LayaAir3D项目",
@@ -2246,13 +2332,13 @@
 				"name_3_file": "readme.md"
 			},
 			{
-				"name_3_name": "LayaAir3D概述",
-				"name_3_url": "Chinese/LayaAir_JS/3D/QuickStart/LayaAir3D_Introduction/",
+				"name_3_name": "Config3D的介绍",
+				"name_3_url": "Chinese/LayaAir_JS/3D/QuickStart/Config3D/",
 				"name_3_file": "readme.md"
 			},
 			{
-				"name_3_name": "如何使用下载的官方示例",
-				"name_3_url": "Chinese/LayaAir_JS/3D/QuickStart/How_to_use_the_new_demo_js/",
+				"name_3_name": "LayaAir3D概述",
+				"name_3_url": "Chinese/LayaAir_JS/3D/QuickStart/LayaAir3D_Introduction/",
 				"name_3_file": "readme.md"
 			}]
 		},
@@ -2721,6 +2807,94 @@
 			}]
 		},
 		{
+			"name_2_name": "LayaAir3D之物理系统",
+			"name_2_data": [
+			{
+				"name_3_name": "物理系统的概述",
+				"name_3_url": "Chinese/LayaAir_JS/3D/Physics3D/Overview_of_Physical_Systems/",
+				"name_3_file": "readme.md"
+			},
+			{
+				"name_3_name": "在Unity插件中导出和使用物理组件",
+				"name_3_url": "Chinese/LayaAir_JS/3D/Physics3D/Export_and_Use_Physical_Components/",
+				"name_3_file": "readme.md"
+			},
+			{
+				"name_3_name": "物理刚体",
+				"name_3_url": "Chinese/LayaAir_JS/3D/Physics3D/RigidBody/",
+				"name_3_file": "readme.md"
+			},
+			{
+				"name_3_name": "物理碰撞器",
+				"name_3_url": "Chinese/LayaAir_JS/3D/Physics3D/PhysicsCollider/",
+				"name_3_file": "readme.md"
+			},
+			{
+				"name_3_name": "碰撞器过滤",
+				"name_3_url": "Chinese/LayaAir_JS/3D/Physics3D/CollisionFiflter/",
+				"name_3_file": "readme.md"
+			},
+			{
+				"name_3_name": "角色碰撞器",
+				"name_3_url": "Chinese/LayaAir_JS/3D/Physics3D/CharacterController/",
+				"name_3_file": "readme.md"
+			},
+			{
+				"name_3_name": "物理触发器",
+				"name_3_url": "Chinese/LayaAir_JS/3D/Physics3D/Trigger/",
+				"name_3_file": "readme.md"
+			},
+			{
+				"name_3_name": "多种碰撞器形状",
+				"name_3_url": "Chinese/LayaAir_JS/3D/Physics3D/ColliderShape/",
+				"name_3_file": "readme.md"
+			},
+			{
+				"name_3_name": "运动刚体",
+				"name_3_url": "Chinese/LayaAir_JS/3D/Physics3D/Kinematic_Rigidbody/",
+				"name_3_file": "readme.md"
+			},
+			{
+				"name_3_name": "物理射线检测",
+				"name_3_url": "Chinese/LayaAir_JS/3D/Physics3D/RayCast/",
+				"name_3_file": "readme.md"
+			},
+			{
+				"name_3_name": "物理形状扫描检测",
+				"name_3_url": "Chinese/LayaAir_JS/3D/Physics3D/RayShapeCast/",
+				"name_3_file": "readme.md"
+			},
+			{
+				"name_3_name": "物理碰撞脚本和触发器脚本",
+				"name_3_url": "Chinese/LayaAir_JS/3D/Physics3D/TriggerCollisionScript/",
+				"name_3_file": "readme.md"
+			}]
+		},
+		{
+			"name_2_name": "LayaAir3D之鼠标交互",
+			"name_2_data": [
+			{
+				"name_3_name": "鼠标交互概述",
+				"name_3_url": "Chinese/LayaAir_JS/3D/Mouse_Interaction/Overview_of_mouse_interaction/",
+				"name_3_file": "readme.md"
+			},
+			{
+				"name_3_name": "如何对3D精灵进行鼠标检测",
+				"name_3_url": "Chinese/LayaAir_JS/3D/Mouse_Interaction/Mouse_detection/",
+				"name_3_file": "readme.md"
+			},
+			{
+				"name_3_name": "鼠标脚本",
+				"name_3_url": "Chinese/LayaAir_JS/3D/Mouse_Interaction/TouchScript/",
+				"name_3_file": "readme.md"
+			},
+			{
+				"name_3_name": "多点触控的使用",
+				"name_3_url": "Chinese/LayaAir_JS/3D/Mouse_Interaction/MultiTouch/",
+				"name_3_file": "readme.md"
+			}]
+		},
+		{
 			"name_2_name": "LayaAir3D的脚本使用",
 			"name_2_data": [
 			{
@@ -2745,6 +2919,58 @@
 			}]
 		},
 		{
+			"name_2_name": "LayaAir3D之天空",
+			"name_2_data": [
+			{
+				"name_3_name": "天空概述",
+				"name_3_url": "Chinese/LayaAir_JS/3D/Sky/Overview_of_the_Sky/",
+				"name_3_file": "readme.md"
+			},
+			{
+				"name_3_name": "导出天空盒注意事项",
+				"name_3_url": "Chinese/LayaAir_JS/3D/Sky/Export_sky_box_notes/",
+				"name_3_file": "readme.md"
+			},
+			{
+				"name_3_name": "天空网格",
+				"name_3_url": "Chinese/LayaAir_JS/3D/Sky/Sky_Mesh/",
+				"name_3_file": "readme.md"
+			}]
+		},
+		{
+			"name_2_name": "LayaAir3D之粒子系统",
+			"name_2_data": [
+			{
+				"name_3_name": "粒子系统概述",
+				"name_3_url": "Chinese/LayaAir_JS/3D/Particle_System/Overview_of_particle_system/",
+				"name_3_file": "readme.md"
+			},
+			{
+				"name_3_name": "粒子属性详解",
+				"name_3_url": "Chinese/LayaAir_JS/3D/Particle_System/Detailed_explanation_of_particle_system/",
+				"name_3_file": "readme.md"
+			}]
+		},
+		{
+			"name_2_name": "LayaAir3D之拖尾系统",
+			"name_2_data": [
+			{
+				"name_3_name": "拖尾系统的概述",
+				"name_3_url": "Chinese/LayaAir_JS/3D/Trailrender_System/Overview_of_Tail_system/",
+				"name_3_file": "readme.md"
+			},
+			{
+				"name_3_name": "在Unity中导出拖尾系统",
+				"name_3_url": "Chinese/LayaAir_JS/3D/Trailrender_System/Export_the_trail_system/",
+				"name_3_file": "readme.md"
+			},
+			{
+				"name_3_name": "拖尾系统的详解",
+				"name_3_url": "Chinese/LayaAir_JS/3D/Trailrender_System/Detailed_description_of_trail_system/",
+				"name_3_file": "readme.md"
+			}]
+		},
+		{
 			"name_2_name": "LayaAir3D的内存管理",
 			"name_2_data": [
 			{
@@ -2755,60 +2981,6 @@
 			{
 				"name_3_name": "批量销毁释放内存",
 				"name_3_url": "Chinese/LayaAir_JS/3D/Memory_Manage/DestroyUnusedResources/",
-				"name_3_file": "readme.md"
-			}]
-		},
-		{
-			"name_2_name": "3D引擎基础",
-			"name_2_data": [
-			{
-				"name_3_name": "LayaAir3D之模型",
-				"name_3_url": "Chinese/LayaAir_JS/3D/beginners/model/",
-				"name_3_file": "readme.md"
-			},
-			{
-				"name_3_name": "LayaAir3D之动画一",
-				"name_3_url": "Chinese/LayaAir_JS/3D/beginners/animation1/",
-				"name_3_file": "readme.md"
-			},
-			{
-				"name_3_name": "LayaAir3D之动画二",
-				"name_3_url": "Chinese/LayaAir_JS/3D/beginners/animation2/",
-				"name_3_file": "readme.md"
-			},
-			{
-				"name_3_name": "LayaAir3D之脚本组件",
-				"name_3_url": "Chinese/LayaAir_JS/3D/beginners/Script_component3D/",
-				"name_3_file": "readme.md"
-			},
-			{
-				"name_3_name": "LayaAir3D之骨骼挂点",
-				"name_3_url": "Chinese/LayaAir_JS/3D/beginners/bonePoint/",
-				"name_3_file": "readme.md"
-			},
-			{
-				"name_3_name": "LayaAir3D之鼠标交互",
-				"name_3_url": "Chinese/LayaAir_JS/3D/beginners/mouse/",
-				"name_3_file": "readme.md"
-			},
-			{
-				"name_3_name": "LayaAir3D之物理快速入门",
-				"name_3_url": "Chinese/LayaAir_JS/3D/beginners/PhysicsBasic/",
-				"name_3_file": "readme.md"
-			},
-			{
-				"name_3_name": "LayaAir3D之碰撞器与刚体",
-				"name_3_url": "Chinese/LayaAir_JS/3D/beginners/colliderAndRigidbody/",
-				"name_3_file": "readme.md"
-			},
-			{
-				"name_3_name": "LayaAir3D之触发器与碰撞过滤",
-				"name_3_url": "Chinese/LayaAir_JS/3D/beginners/triggerAndCollidWith/",
-				"name_3_file": "readme.md"
-			},
-			{
-				"name_3_name": "LayaAir3D之资源释放",
-				"name_3_url": "Chinese/LayaAir_JS/3D/beginners/assetsDispose/",
 				"name_3_file": "readme.md"
 			}]
 		}]
@@ -3416,7 +3588,106 @@
 		}]
 	},
 	{
-		"nav_1_name": "LayaAir IDE篇（AS3）",
+		"nav_1_name": "2D进阶篇（AS3）",
+		"nav_1_data": [
+		{
+			"name_2_name": "调试相关",
+			"name_2_data": [
+			{
+				"name_3_name": "LayaAir DebugPanel 调试工具",
+				"name_3_url": "Chinese/LayaAir_AS3/2D/advanced/debug/DebugPanel/",
+				"name_3_file": "readme.md"
+			}]
+		},
+		{
+			"name_2_name": "游戏加载策略",
+			"name_2_data": [
+			{
+				"name_3_name": "二进制图片",
+				"name_3_url": "Chinese/LayaAir_AS3/2D/advanced/loadStrategy/binary_Image/",
+				"name_3_file": "readme.md"
+			},
+			{
+				"name_3_name": "多线程worker",
+				"name_3_url": "Chinese/LayaAir_AS3/2D/advanced/loadStrategy/worker/",
+				"name_3_file": "readme.md"
+			}]
+		},
+		{
+			"name_2_name": "性能优化",
+			"name_2_data": [
+			{
+				"name_3_name": "性能统计面板介绍",
+				"name_3_url": "Chinese/LayaAir_AS3/2D/advanced/PerformanceOptimization/Stat_Panel/",
+				"name_3_file": "readme.md"
+			},
+			{
+				"name_3_name": "内存优化方式",
+				"name_3_url": "Chinese/LayaAir_AS3/2D/advanced/PerformanceOptimization/memory/",
+				"name_3_file": "readme.md"
+			},
+			{
+				"name_3_name": "渲染优化原则",
+				"name_3_url": "Chinese/LayaAir_AS3/2D/advanced/PerformanceOptimization/rendering/",
+				"name_3_file": "readme.md"
+			},
+			{
+				"name_3_name": "CacheAs静态缓存优化",
+				"name_3_url": "Chinese/LayaAir_AS3/2D/advanced/PerformanceOptimization/cacheAs/",
+				"name_3_file": "readme.md"
+			},
+			{
+				"name_3_name": "CPU优化方式",
+				"name_3_url": "Chinese/LayaAir_AS3/2D/advanced/PerformanceOptimization/CPU/",
+				"name_3_file": "readme.md"
+			},
+			{
+				"name_3_name": "其它优化策略",
+				"name_3_url": "Chinese/LayaAir_AS3/2D/advanced/PerformanceOptimization/other/",
+				"name_3_file": "readme.md"
+			},
+			{
+				"name_3_name": "使用chrome的性能分析器",
+				"name_3_url": "Chinese/LayaAir_AS3/2D/advanced/PerformanceOptimization/Chrome_Profiles/",
+				"name_3_file": "readme.md"
+			},
+			{
+				"name_3_name": "Texture内存回收",
+				"name_3_url": "Chinese/LayaAir_AS3/2D/advanced/PerformanceOptimization/clearTextureRes/",
+				"name_3_file": "readme.md"
+			}]
+		},
+		{
+			"name_2_name": "动画进阶",
+			"name_2_data": [
+			{
+				"name_3_name": "骨骼动画进阶",
+				"name_3_url": "Chinese/LayaAir_AS3/2D/advanced/animation/bone/",
+				"name_3_file": "readme.md"
+			}]
+		},
+		{
+			"name_2_name": "扩展模块",
+			"name_2_data": [
+			{
+				"name_3_name": "用LayaAir引擎解析Tiled Map地图",
+				"name_3_url": "Chinese/LayaAir_AS3/2D/advanced/extension_modules/TiledMap/",
+				"name_3_file": "readme.md"
+			},
+			{
+				"name_3_name": "LayaAir和原生DOM交互",
+				"name_3_url": "Chinese/LayaAir_AS3/2D/advanced/extension_modules/DOM/",
+				"name_3_file": "readme.md"
+			},
+			{
+				"name_3_name": "AS3与JS混合编码",
+				"name_3_url": "Chinese/LayaAir_AS3/2D/advanced/extension_modules/AS_JS_mixed_programming/",
+				"name_3_file": "readme.md"
+			}]
+		}]
+	},
+	{
+		"nav_1_name": "IDE篇（AS3）",
 		"nav_1_data": [
 		{
 			"name_2_name": "代码模式基础",
@@ -3706,106 +3977,7 @@
 		}]
 	},
 	{
-		"nav_1_name": "2D进阶篇（AS3）",
-		"nav_1_data": [
-		{
-			"name_2_name": "调试相关",
-			"name_2_data": [
-			{
-				"name_3_name": "LayaAir DebugPanel 调试工具",
-				"name_3_url": "Chinese/LayaAir_AS3/2D/advanced/debug/DebugPanel/",
-				"name_3_file": "readme.md"
-			}]
-		},
-		{
-			"name_2_name": "游戏加载策略",
-			"name_2_data": [
-			{
-				"name_3_name": "二进制图片",
-				"name_3_url": "Chinese/LayaAir_AS3/2D/advanced/loadStrategy/binary_Image/",
-				"name_3_file": "readme.md"
-			},
-			{
-				"name_3_name": "多线程worker",
-				"name_3_url": "Chinese/LayaAir_AS3/2D/advanced/loadStrategy/worker/",
-				"name_3_file": "readme.md"
-			}]
-		},
-		{
-			"name_2_name": "性能优化",
-			"name_2_data": [
-			{
-				"name_3_name": "性能统计面板介绍",
-				"name_3_url": "Chinese/LayaAir_AS3/2D/advanced/PerformanceOptimization/Stat_Panel/",
-				"name_3_file": "readme.md"
-			},
-			{
-				"name_3_name": "内存优化方式",
-				"name_3_url": "Chinese/LayaAir_AS3/2D/advanced/PerformanceOptimization/memory/",
-				"name_3_file": "readme.md"
-			},
-			{
-				"name_3_name": "渲染优化原则",
-				"name_3_url": "Chinese/LayaAir_AS3/2D/advanced/PerformanceOptimization/rendering/",
-				"name_3_file": "readme.md"
-			},
-			{
-				"name_3_name": "CacheAs静态缓存优化",
-				"name_3_url": "Chinese/LayaAir_AS3/2D/advanced/PerformanceOptimization/cacheAs/",
-				"name_3_file": "readme.md"
-			},
-			{
-				"name_3_name": "CPU优化方式",
-				"name_3_url": "Chinese/LayaAir_AS3/2D/advanced/PerformanceOptimization/CPU/",
-				"name_3_file": "readme.md"
-			},
-			{
-				"name_3_name": "其它优化策略",
-				"name_3_url": "Chinese/LayaAir_AS3/2D/advanced/PerformanceOptimization/other/",
-				"name_3_file": "readme.md"
-			},
-			{
-				"name_3_name": "使用chrome的性能分析器",
-				"name_3_url": "Chinese/LayaAir_AS3/2D/advanced/PerformanceOptimization/Chrome_Profiles/",
-				"name_3_file": "readme.md"
-			},
-			{
-				"name_3_name": "Texture内存回收",
-				"name_3_url": "Chinese/LayaAir_AS3/2D/advanced/PerformanceOptimization/clearTextureRes/",
-				"name_3_file": "readme.md"
-			}]
-		},
-		{
-			"name_2_name": "动画进阶",
-			"name_2_data": [
-			{
-				"name_3_name": "骨骼动画进阶",
-				"name_3_url": "Chinese/LayaAir_AS3/2D/advanced/animation/bone/",
-				"name_3_file": "readme.md"
-			}]
-		},
-		{
-			"name_2_name": "扩展模块",
-			"name_2_data": [
-			{
-				"name_3_name": "用LayaAir引擎解析Tiled Map地图",
-				"name_3_url": "Chinese/LayaAir_AS3/2D/advanced/extension_modules/TiledMap/",
-				"name_3_file": "readme.md"
-			},
-			{
-				"name_3_name": "LayaAir和原生DOM交互",
-				"name_3_url": "Chinese/LayaAir_AS3/2D/advanced/extension_modules/DOM/",
-				"name_3_file": "readme.md"
-			},
-			{
-				"name_3_name": "AS3与JS混合编码",
-				"name_3_url": "Chinese/LayaAir_AS3/2D/advanced/extension_modules/AS_JS_mixed_programming/",
-				"name_3_file": "readme.md"
-			}]
-		}]
-	},
-	{
-		"nav_1_name": "LayaAir 3D引擎（AS3）",
+		"nav_1_name": "3D基础（AS3）",
 		"nav_1_data": [
 		{
 			"name_2_name": "快速开始一个LayaAir3D项目",
@@ -3821,13 +3993,13 @@
 				"name_3_file": "readme.md"
 			},
 			{
-				"name_3_name": "LayaAir3D概述",
-				"name_3_url": "Chinese/LayaAir_AS3/3D/QuickStart/LayaAir3D_Introduction/",
+				"name_3_name": "Config3D的介绍",
+				"name_3_url": "Chinese/LayaAir_AS3/3D/QuickStart/Config3D/",
 				"name_3_file": "readme.md"
 			},
 			{
-				"name_3_name": "如何使用下载的官方示例",
-				"name_3_url": "Chinese/LayaAir_AS3/3D/QuickStart/How_to_use_the_new_demo_as/",
+				"name_3_name": "LayaAir3D概述",
+				"name_3_url": "Chinese/LayaAir_AS3/3D/QuickStart/LayaAir3D_Introduction/",
 				"name_3_file": "readme.md"
 			}]
 		},
@@ -4297,6 +4469,94 @@
 			}]
 		},
 		{
+			"name_2_name": "LayaAir3D之物理系统",
+			"name_2_data": [
+			{
+				"name_3_name": "物理系统的概述",
+				"name_3_url": "Chinese/LayaAir_AS3/3D/Physics3D/Overview_of_Physical_Systems/",
+				"name_3_file": "readme.md"
+			},
+			{
+				"name_3_name": "在Unity插件中导出和使用物理组件",
+				"name_3_url": "Chinese/LayaAir_AS3/3D/Physics3D/Export_and_Use_Physical_Components/",
+				"name_3_file": "readme.md"
+			},
+			{
+				"name_3_name": "物理刚体",
+				"name_3_url": "Chinese/LayaAir_AS3/3D/Physics3D/RigidBody/",
+				"name_3_file": "readme.md"
+			},
+			{
+				"name_3_name": "物理碰撞器",
+				"name_3_url": "Chinese/LayaAir_AS3/3D/Physics3D/PhysicsCollider/",
+				"name_3_file": "readme.md"
+			},
+			{
+				"name_3_name": "碰撞器过滤",
+				"name_3_url": "Chinese/LayaAir_AS3/3D/Physics3D/CollisionFiflter/",
+				"name_3_file": "readme.md"
+			},
+			{
+				"name_3_name": "角色碰撞器",
+				"name_3_url": "Chinese/LayaAir_AS3/3D/Physics3D/CharacterController/",
+				"name_3_file": "readme.md"
+			},
+			{
+				"name_3_name": "物理触发器",
+				"name_3_url": "Chinese/LayaAir_AS3/3D/Physics3D/Trigger/",
+				"name_3_file": "readme.md"
+			},
+			{
+				"name_3_name": "多种碰撞器形状",
+				"name_3_url": "Chinese/LayaAir_AS3/3D/Physics3D/ColliderShape/",
+				"name_3_file": "readme.md"
+			},
+			{
+				"name_3_name": "运动刚体",
+				"name_3_url": "Chinese/LayaAir_AS3/3D/Physics3D/Kinematic_Rigidbody/",
+				"name_3_file": "readme.md"
+			},
+			{
+				"name_3_name": "物理射线检测",
+				"name_3_url": "Chinese/LayaAir_AS3/3D/Physics3D/RayCast/",
+				"name_3_file": "readme.md"
+			},
+			{
+				"name_3_name": "物理形状扫描检测",
+				"name_3_url": "Chinese/LayaAir_AS3/3D/Physics3D/RayShapeCast/",
+				"name_3_file": "readme.md"
+			},
+			{
+				"name_3_name": "物理碰撞脚本和触发器脚本",
+				"name_3_url": "Chinese/LayaAir_AS3/3D/Physics3D/TriggerCollisionScript/",
+				"name_3_file": "readme.md"
+			}]
+		},
+		{
+			"name_2_name": "LayaAir3D之鼠标交互",
+			"name_2_data": [
+			{
+				"name_3_name": "鼠标交互概述",
+				"name_3_url": "Chinese/LayaAir_AS3/3D/Mouse_Interaction/Overview_of_mouse_interaction/",
+				"name_3_file": "readme.md"
+			},
+			{
+				"name_3_name": "如何对3D精灵进行鼠标检测",
+				"name_3_url": "Chinese/LayaAir_AS3/3D/Mouse_Interaction/Mouse_detection/",
+				"name_3_file": "readme.md"
+			},
+			{
+				"name_3_name": "鼠标脚本",
+				"name_3_url": "Chinese/LayaAir_AS3/3D/Mouse_Interaction/TouchScript/",
+				"name_3_file": "readme.md"
+			},
+			{
+				"name_3_name": "多点触控的使用",
+				"name_3_url": "Chinese/LayaAir_AS3/3D/Mouse_Interaction/MultiTouch/",
+				"name_3_file": "readme.md"
+			}]
+		},
+		{
 			"name_2_name": "LayaAir3D的脚本使用",
 			"name_2_data": [
 			{
@@ -4321,6 +4581,58 @@
 			}]
 		},
 		{
+			"name_2_name": "LayaAir3D之天空",
+			"name_2_data": [
+			{
+				"name_3_name": "天空概述",
+				"name_3_url": "Chinese/LayaAir_AS3/3D/Sky/Overview_of_the_Sky/",
+				"name_3_file": "readme.md"
+			},
+			{
+				"name_3_name": "导出天空盒注意事项",
+				"name_3_url": "Chinese/LayaAir_AS3/3D/Sky/Export_sky_box_notes/",
+				"name_3_file": "readme.md"
+			},
+			{
+				"name_3_name": "天空网格",
+				"name_3_url": "Chinese/LayaAir_AS3/3D/Sky/Sky_Mesh/",
+				"name_3_file": "readme.md"
+			}]
+		},
+		{
+			"name_2_name": "LayaAir3D之粒子系统",
+			"name_2_data": [
+			{
+				"name_3_name": "粒子系统概述",
+				"name_3_url": "Chinese/LayaAir_AS3/3D/Particle_System/Overview_of_particle_system/",
+				"name_3_file": "readme.md"
+			},
+			{
+				"name_3_name": "粒子属性详解",
+				"name_3_url": "Chinese/LayaAir_AS3/3D/Particle_System/Detailed_explanation_of_particle_system/",
+				"name_3_file": "readme.md"
+			}]
+		},
+		{
+			"name_2_name": "LayaAir3D之拖尾系统",
+			"name_2_data": [
+			{
+				"name_3_name": "拖尾系统的概述",
+				"name_3_url": "Chinese/LayaAir_AS3/3D/Trailrender_System/Overview_of_Tail_system/",
+				"name_3_file": "readme.md"
+			},
+			{
+				"name_3_name": "在Unity中导出拖尾系统",
+				"name_3_url": "Chinese/LayaAir_AS3/3D/Trailrender_System/Export_the_trail_system/",
+				"name_3_file": "readme.md"
+			},
+			{
+				"name_3_name": "拖尾系统的详解",
+				"name_3_url": "Chinese/LayaAir_AS3/3D/Trailrender_System/Detailed_description_of_trail_system/",
+				"name_3_file": "readme.md"
+			}]
+		},
+		{
 			"name_2_name": "LayaAir3D的内存管理",
 			"name_2_data": [
 			{
@@ -4331,65 +4643,6 @@
 			{
 				"name_3_name": "批量销毁释放内存",
 				"name_3_url": "Chinese/LayaAir_AS3/3D/Memory_Manage/DestroyUnusedResources/",
-				"name_3_file": "readme.md"
-			}]
-		},
-		{
-			"name_2_name": "3D引擎基础",
-			"name_2_data": [
-			{
-				"name_3_name": "LayaAir3D之模型",
-				"name_3_url": "Chinese/LayaAir_AS3/3D/beginners/model/",
-				"name_3_file": "readme.md"
-			},
-			{
-				"name_3_name": "Laya2.0模型动画的使用",
-				"name_3_url": "Chinese/LayaAir_AS3/3D/beginners/Animator3D/",
-				"name_3_file": "readme.md"
-			},
-			{
-				"name_3_name": "LayaAir3D之动画一",
-				"name_3_url": "Chinese/LayaAir_AS3/3D/beginners/animation1/",
-				"name_3_file": "readme.md"
-			},
-			{
-				"name_3_name": "LayaAir3D之动画二",
-				"name_3_url": "Chinese/LayaAir_AS3/3D/beginners/animation2/",
-				"name_3_file": "readme.md"
-			},
-			{
-				"name_3_name": "LayaAir3D之脚本组件",
-				"name_3_url": "Chinese/LayaAir_AS3/3D/beginners/Script_component3D/",
-				"name_3_file": "readme.md"
-			},
-			{
-				"name_3_name": "LayaAir3D之骨骼挂点",
-				"name_3_url": "Chinese/LayaAir_AS3/3D/beginners/bonePoint/",
-				"name_3_file": "readme.md"
-			},
-			{
-				"name_3_name": "LayaAir3D之鼠标交互",
-				"name_3_url": "Chinese/LayaAir_AS3/3D/beginners/mouse/",
-				"name_3_file": "readme.md"
-			},
-			{
-				"name_3_name": "LayaAir3D之物理快速入门",
-				"name_3_url": "Chinese/LayaAir_AS3/3D/beginners/PhysicsBasic/",
-				"name_3_file": "readme.md"
-			},
-			{
-				"name_3_name": "LayaAir3D之碰撞器与刚体",
-				"name_3_url": "Chinese/LayaAir_AS3/3D/beginners/colliderAndRigidbody/",
-				"name_3_file": "readme.md"
-			},
-			{
-				"name_3_name": "LayaAir3D之触发器与碰撞过滤",
-				"name_3_url": "Chinese/LayaAir_AS3/3D/beginners/triggerAndCollidWith/",
-				"name_3_file": "readme.md"
-			},
-			{
-				"name_3_name": "LayaAir3D之资源释放",
-				"name_3_url": "Chinese/LayaAir_AS3/3D/beginners/assetsDispose/",
 				"name_3_file": "readme.md"
 			}]
 		}]
