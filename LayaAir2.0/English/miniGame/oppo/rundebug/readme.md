@@ -1,160 +1,160 @@
-# OPPO小游戏发布与调试指南
+# OPPO game release and debugging guide
 
 > update : 2019-07-06
 >
 
-## 1、OPPO小游戏发布、调试环境准备
+## 1、OPPO game release, setup debugging environment
 
-1、OPPO品牌的手机。
+1、OPPO brand mobile phone
 
-2、下载安装OPPO真机测试APP "快应用"（OPPO 小游戏调试器 ）
+2、Download and install OPPO real machine to test APP "Fast Application" (OPPO Game Debugger)
 
-前往OPPO官网文档（[https://cdofs.oppomobile.com/cdo-activity/static/201810/26/quickgame/documentation/games/use.html](https://cdofs.oppomobile.com/cdo-activity/static/201810/26/quickgame/documentation/games/use.html)）我们找到`安装 runtime.apk 包到 OPPO 手机上`这个栏目，通常会选择新版本，进行下载。
+Go to the OPPO official website document（[https://cdofs.oppomobile.com/cdo-activity/static/201810/26/quickgame/documentation/games/use.html](https://cdofs.oppomobile.com/cdo-activity/static/201810/26/quickgame/documentation/games/use.html)）我们找到`安装 runtime.apk 包到 OPPO 手机上`这个栏目，通常会选择新版本，进行下载。
 
-要注意的是，调试器的版本，文档中有注明最小平台版本号。LayaAirIDE发布的时候，要和这里最小平台版本号对应上。
+Note that the version of the debugger is documented with the minimum platform version number. When LayaAirIDE is released, it should correspond to the minimum platform version number here.
 
-3、PC电脑的chrome浏览器与手机数据连接线。
+3、PC Chrome browser and mobile phone data connection line.
 
-4、安装nodejs 环境，建议安装 8.x 稳定版本 [node官网：[https://nodejs.org/en/](https://nodejs.org/en/)]
+4、Install the nodejs environment, it is recommended to install the 8.x stable version [node official website：[https://nodejs.org/en/](https://nodejs.org/en/)]
 
-就是下载安装，比较简单，也不细介绍。能在命令行里调起npm命令就算是成功了。
+Despite  it is not detailed, download and install remain relatively simple. Being able to call the npm command on the command line is a success.
 
-5、LayaAirIDE集中开发环境，LayaAir 2.1.0 beta 或以上版本 [ 官网下载: [https://ldc2.layabox.com/layadownload/?type=layaairide](https://ldc2.layabox.com/layadownload/?type=layaairide) ]
+5、LayaAirIDE centralized development environment. LayaAir 2.1.0 beta or above [ Official website download : [https://ldc2.layabox.com/layadownload/?type=layaairide](https://ldc2.layabox.com/layadownload/?type=layaairide) ]
 
-6、安装ADB
+6、Install ADB
 
-OPPO发布时，是通过 ADB 把rpk包推到手机的games目录上去，所以这个必须要装。
+When the OPPO was released, the rpk package was pushed to the phone's games directory via ADB, so this must be installed.
 
- [ ADB官网下载:  [http://adbshell.com/downloads](http://adbshell.com/downloads) ]
+ [ ADB Official website download:  [http://adbshell.com/downloads](http://adbshell.com/downloads) ]
 
-> 提示一下，下载 ADB Kits，下载后的压缩包，建议解压放到一个路径简单一些的目录（如: `D:\adb`）。要记得添加环境变量（不知如何添加环境变量的可自行百度）。
+> Prompt, download ADB Kits, download the compressed package, it is recommended to extract to a directory with a simple path (such as: `D:\adb`). Remember to add environment variables
 >
 
-## 2、OPPO小游戏发布与接入完整流程	      
+## 2、OPPO Game Publishing and Accessing Complete Process      
 
-### 1、发布前的准备工作检查。
+### 1、Pre-release check before release.
 
-为了让发布OPPO顺利一些，有一些检查工作我们要做。
+In order to make the release of OPPO smoother, there are some inspections we have to do.
 
-第一、PC里，node环境、ADB、Chrome这些，都必须要安装好。
+First, in PC, node environment, ADB, Chrome and so on must be installed.
 
-第二、在OPPO的手机里，进入` 设置-> 其它设置-> 开发者选项` ，开发者选项与USB调试必须开启，如图1所示。
+Second, in OPPO's mobile phone, enter `Settings - > Other Settings - > Developer Options', the developer options and USB debugging must be turned on, as shown in Figure 1.
 
 ![图1](img/1.png) 
 
-(图1)
+(figure 1)
 
-另外要确保安装好OPPO小游戏调试环境“快应用”，如图2所示。
+In addition, make sure that the OPPO game debugging environment is installed "fast application", as shown in Figure 2.
 
 ![图2](img/2.png) 
 
-(图2)
+(figure 2)
 
-第三、将PC电脑与手机用USB数据线相连，电脑里，可以出现类似图3一样的界面。比如，点击图3左上角的OPPO R9m，就可以进入手机存储。
+Third, PC computer and mobile phone are connected by USB data line. In computer, the same interface as Figure 3 can appear. For example, click OPPO R9m in the upper left corner of Figure 3 to access the mobile storage.
 
 ![图3](img/3.png) 
 
-(图3)
+(figure 3)
 
-手机里要注意的是，屏幕保持点亮打开，在PC的IDE发布OPPO小游戏时，如果手机出现授权信息请求的时候，一定要点确定允许。如图4所示。
+In the mobile phone, it should be noted that the screen remains bright and open. When the PC's IDE releases OPPO games, if there is a request for authorization information on the mobile phone, it must be certain to allow it. As shown in Figure 4.
 
 ![图4](img/4.png) 
 
-（图4）
+（figure 4）
 
-### 2、发布OPPO小游戏包(xx.rpk)
+### 2、Publish OPPO Game Pack(xx.rpk)
 
-LayaAirIDE的发布功能，内置了OPPO小游戏的发布功能，需要先将LayaAir引擎的项目，通过发布功能打成.rpk后缀的包。关于发布功能的使用。这里不重复介绍了。不会的可以前往官网文档查看。
+LayaAirIDE publishing function, built-in OPPO game publishing function, need to first LayaAir engine project, through the publishing function into. RPK suffix package. About the use of publishing functions. This is not repeated here. No, you can check the official documents before.
 
-链接：[https://ldc2.layabox.com/doc/?nav=zh-ts-3-0-6](https://ldc2.layabox.com/doc/?nav=zh-ts-3-0-6)
+link：[https://ldc2.layabox.com/doc/?nav=zh-ts-3-0-6](https://ldc2.layabox.com/doc/?nav=zh-ts-3-0-6)
 
-### 3、真机调试与Chrome输出
+### 3、Real-time debugging and Chrome output
 
-OPPO的调试必须基于真机调试，PC的chrome只能输出信息，看不到画面。
+OPPO debugging must be based on real-time debugging, PC chrome can only output information, can not see the screen.
 
-如果准备工作没问题的话，正常情况下，LayaAirIDE里成功发布OPPO小游戏之后，是rpk的包会自动出现在快游戏的OPPO小游戏列表中的（IDE通过调用ADB推到指定的目录中），如图5所示。
+If there is no problem with preparation, normally after the successful release of OPPO games in Laya AirIDE, the package of RPK will automatically appear in the OPPO game list of fast games (IDE pushes it to the specified directory by calling ADB), as shown in Figure 5.
 
 ![图5](img/5.png) 
 
-（图5）
+（figure 5）
 
-图5中的`OPPO测试`就是我们在发布的时候填写的游戏名称。如果我们看到自己对应的游戏名称，说明是正常发布成功了。点击秒开，就可以打开我们发布的游戏。
+The `OPPO test'in Figure 5 is the name of the game we filled in when we released it. If we see the name of the game, it means that the normal release has been successful. Click on seconds to open the game we released.
 
-如果想看调试信息。这时就需要打开chrome浏览器。然后在输入栏里输入：
+If you want to see debugging information. Then you need to open the chrome browser. Then type in the input field:
 
 ```
 chrome-devtools://devtools/bundled/inspector.html?v8only=true&ws=10.10.82.111:12345/00010002-0003-4004-8005-000600070008
 ```
 
-上面示例的IP地址`10.10.82.111`替换成自己手机上的IP就行。IP地址不知道怎么查的，自行百度。这里重点提示的是，PC电脑必须要和手机处于同一个网段的局域网环境下。
+The IP address `10.10.82.111` of the above example is replaced with the IP on your mobile phone. IP address does not know how to check, Baidu. The key point here is that the PC must be in the LAN environment on the same network segment as the mobile phone.
 
-如果没问题，效果如图6所示。
+If there is no problem, the effect is shown in Figure 6.
 
 ![图6](img/6.png) 
 
-（图6）
+（figure 6）
 
-发布与调试，顺利的话至此就完成了。
+Release and debug, if it is successful, it will be completed.
 
-### 5、发布未成功的处理经验。
+### 5、Publish unsuccessful processing experience.
 
-发布文档中只讲功能使用，上面的文档是顺利情况下的流程。然而开发者可能不会那么顺利，那这里我们讲一讲经验。
+In the release document, only the function is used. The above document is a smooth process. However, developers may not be so smooth, so let's talk about experience here.
 
-#### 调试列表中未见游戏，是什么情况
+#### No game is seen in the debug list. What's the situation?
 
-如果我们发布的时候没能将rpk自动发到快游戏目录内，那图5的列表中，就没办法直接看到刚发布的小游戏。
+If we didn't automatically send rpk to the fast game directory when we released it, there is no way to directly see the newly released game in the list in Figure 5.
 
-这时候就可以使用adb来确认环境了。
+At this time you can use adb to confirm the environment.
 
-在ide的终端或者cmd中 输入 `adb devices` 指令。
+Enter the `adb devices` command in the ide terminal or cmd.
 
-##### 1.连接非正常情况：
+##### 1.Connection abnormal :
 
 ![图7-1](img/7-1.png)  
 
-（图7-1）
+（figure7-1）
 
-此时就开发者需要检查手机连接，和权限是否正确。
+At this point, the developer needs to check whether the mobile phone connection and privileges are correct.
 
-##### 2.在连接正常情况下：
+##### 2. normal process :
 
 ![图7-1](img/7-2.png)  
 
-（图7-2）
+（figure 7-2）
 
-这时说明手机已经连接成功，并且已经开起来了开发者模式与usb调试。此时可以尝试重启oppo的快应用apk，再查看列表信息。
+At this point, the phone has been successfully connected, and the developer mode and usb debugging have been started. At this point, you can try to restart the oppo quick application apk, and then view the list information.
 
-**在连接正常的情况下**，如果再出现问题。可能就和windows权限有关系，需要确保使用管理员权限启动LayaAirIDE。
+**In case of normal connection**，If problems occurd again. It may have something to do with Windows permissions, and you need to make sure that you start LayaAirIDE with administrator permissions.
 
-关于adb相关，或者手机权限相关的问题，开发者可以自行了解。
+Developers can learn about issues related to ADB or mobile phone rights by themselves.
 
 ------
 
-另一方案，使我们可以采用手工模式，把rpk包，复制到手机存储的games目录下，如果没有games目录则自己手工创建一下。
+Another solution, so that we can use the manual mode, copy the rpk package to the games directory stored in the phone, if you do not have the games directory, create it yourself.
 
-rpk包位于项目的release/oppogame/quickgame/dist 目录下，如图8所示。
+The rpk package is located in the project's release/oppogame/quickgame/dist directory, as shown in Figure 8.
 
 ![图8](img/8.png)  
 
 （图8）
 
-将发布生成的rpk文件，复制到手机存储的games目录下，如图9所示。
+Copy the generated rpk file to the games directory stored in the phone, as shown in Figure 9.
 
 ![图9](img/9.png)  
 
-（图9）
+（picture 9）
 
-这种方法稳定性更高。
+This method is more stable.
 
-在  `.rpk` 文件生成成功的情况下，实际上发布流程已经结束。
+In the case where the `.rpk` file is successfully generated, the actual publishing process has ended.
 
-如果打包流程出现问题，可以把问题反馈给Layabox官方团队，Layabox会与OPPO团队共同处理。
+If there is a problem with the packaging process, you can feed it back to the Layabox official team, which will work with the OPPO team.
 
-最后提醒一下，本篇文档适用于LayaAir2.x引擎与IDE的发布流程。
+Finally, let me remind you that this document is applicable to the LayaAir2.x engine and IDE release process.
 
-如果是1.x引擎，
+If it is a 1.x engine version,
 
-需要先手工引入适配库，并手工初始化，这是和2.x不太一样的地方。
+Need to manually introduce the adapter library, and manually initialize, this is not the same as 2.x.
 
 ```typescript
 //TS或JS初始化
@@ -164,13 +164,13 @@ Laya['QGMiniAdapter'].init();//需要引入aya.quickgamemini.js
 QGMiniAdapter.init();//需要 import laya.qg.mini.QGMiniAdapter;
 ```
 
-另外还有其它需要注意的地方，以及细节处理过程。欢迎大家前往观看OPPO接入的免费视频。
+There are other places to be aware of, as well as details. Welcome to the free video of OPPO access.
 
-视频地址：[https://ke.qq.com/course/409332](https://ke.qq.com/course/409332)
+Video Address：[https://ke.qq.com/course/409332](https://ke.qq.com/course/409332)
 
-## 本文赞赏
+## article feedback
 
-如果您觉得本文对您有帮助，欢迎扫码赞赏作者，您的激励是我们写出更多优质文档的动力。
+If you find this article helpful, please scan the code to appreciate the author, your feedback is also our motivation to write more quality documents.
 
 ![wechatPay](../../../wechatPay.jpg)
 
