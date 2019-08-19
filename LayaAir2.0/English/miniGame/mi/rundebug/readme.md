@@ -1,136 +1,136 @@
-# 小米快游戏发布与调试指南
+# Xiaomi fast game release and debugging guide
 
 > update : 2019-07-17
 >
-> 小米快游戏的发布必须要使用LayaAirIDE，关于IDE的下载使用相关，请查看相关文档，不在本篇介绍范围内。
+> The release of Xiaomi Express must use LayaAirIDE. For the download and use of IDE, please check the related documents, which is beyond the scope of this article.
 
-## 1、小米快游戏发布、调试环境准备
+## 1、Xiaomi fast game release, debugging environment preparation
 
-1、小米品牌的手机（注意必须是MIUI 8.5或以上版本）。
+1、Xiaomi brand mobile phone (note that it must be MIUI 8.5 or above).
 
-2、下载安装小米的测试APP，下载页面：[https://dev.mi.com/console/doc/detail?pId=1779](https://dev.mi.com/console/doc/detail?pId=1779)
+2、Download and install the test app for Xiaomi, download page : [https://dev.mi.com/console/doc/detail?pId=1779](https://dev.mi.com/console/doc/detail?pId=1779)
 
-进入页面后，下拉找到第3步，**调试自测**那一栏里，直接按提示下载即可。
+After entering the page, pull down to find the third step, ** debug self-test ** that column, directly press the prompt to download.
 
-3、PC电脑的chrome浏览器与手机数据连接线。
+3、PC computer chrome browser and mobile phone data cable.
 
-4、安装nodejs 环境 [node官网：[https://nodejs.org/en/](https://nodejs.org/en/)]
+4、Install the nodejs environment [node website：[https://nodejs.org/en/](https://nodejs.org/en/)]
 
-就是下载安装，比较简单，也不细介绍。能在命令行里调起npm命令就算是成功了。
+It is to download and install, it is relatively simple, and it is not detailed. It is a success to be able to call the npm command on the command line.
 
-5、LayaAirIDE集中开发环境，LayaAir 2.0.2beta 或以上版本 [ 官网下载: [https://ldc2.layabox.com/layadownload/?type=layaairide](https://ldc2.layabox.com/layadownload/?type=layaairide) ]
+5、LayaAirIDE centralized development environment, LayaAir 2.0.2beta or above [ Official website download: [https://ldc2.layabox.com/layadownload/?type=layaairide](https://ldc2.layabox.com/layadownload/?type=layaairide) ]
 
-6、安装ADB
+6、Install ADB
 
-建议安装ADB，因为有些时候，因为授权或者别的莫名其怪的原因。会导致无法正常启动chrome联真机调试。所以安装ADB 可以验证和有助于手机与PC电脑的连接授权。如果确保无USB调试授权问题的，也可以不装。
+It is recommended to install ADB, because sometimes, because of authorization or other unexplained reasons. Will cause the chrome machine to debug properly. So installing ADB can verify and facilitate the connection authorization between the phone and the PC. If you do not have USB debugging authorization issues, you can also do not install it.
 
- [ ADB官网下载:  [http://adbshell.com/downloads](http://adbshell.com/downloads) ]
+ [ ADB Official website download:  [http://adbshell.com/downloads](http://adbshell.com/downloads) ]
 
-简单提示一下，下载 ADB Kits，下载后的压缩包，建议解压放到一个路径简单一些的目录（如: `D:\adb`）。要记得添加环境变量（不知如何添加环境变量的可自行百度）。
+For a quick reminder, download ADB Kits, download the compressed package, and recommend unpacking it to a directory with a simple path (eg `D:\adb`). Remember to add environment variables (I don't know how to add environment variables to Baidu).
 
-## 2、小米快游戏发布与接入完整流程
+## 2、Xiaomi fast game release and access complete process
 
-### 1、发布小米快游戏包(xx.rpk)
+### 1、Release Xiaomi Fast Game Pack(xx.rpk)
 
-LayaAirIDE的发布功能，内置了小米快游戏的发布功能，需要先将LayaAir引擎的项目，通过发布功能打成.rpk后缀的包。关于发布功能的使用。这里不重复介绍了。不会的可以前往官网文档查看。
+LayaAirIDE's publishing function, built-in the release function of Xiaomi fast game, you need to first make the LayaAir engine project, through the publishing function into the .rpk suffix package. About the use of the publishing feature. This is not repeated here. No, you can go to the official website document to view.
 
-链接：[https://ldc2.layabox.com/doc/?nav=zh-ts-3-0-6](https://ldc2.layabox.com/doc/?nav=zh-ts-3-0-6)
+link：[https://ldc2.layabox.com/doc/?nav=zh-ts-3-0-6](https://ldc2.layabox.com/doc/?nav=zh-ts-3-0-6)
 
-### 2、保留发布二维码界面。
+### 2、Keep publishing the QR code interface.
 
-发布完成后会有一个二维码的界面，如图1所示。这个界面不要关，后面手机扫码需要用。
+After publishing, there will be a two-dimensional code interface, as shown in Figure 1. This interface should not be turned off. The back mobile phone scanner needs to be used.
 
 ![图1](img/1.png) 
 
-（图1）
+（figure 1）
 
-### 3、打开发布文件夹并启动命令行模式
+### 3、Open Publishing Folder and Start Command Line Mode
 
-点击图1中`打开发布文件夹`按钮，进入发布后的小米快游戏项目目录。然后按住`Shift + 右键` 可以在当前目录快速进入shell或者命令窗口模式，如图2-1或者2-2中标出部分所示。
+Click on the `Open Publishing Folder'button in Figure 1 to enter the post-release Millet Express Game Project Catalogue. Then press `Shift + right-click'to quickly enter shell or command window mode in the current directory, as shown in the markup section in Figure 2-1 or 2-2.
 
 ![图2-1](img/2-1.png) 
 
-（图2-1）
+（figure 2-1）
 
 ![图2-2](img/2-2.png) 
 
-（图2-2）
+（figure 2-2）
 
-当然，也可以通过Git进入命令行（Git Bash Here）或者其它方式进入命令行，然后进入小米快游戏项目目录即可完成本步骤。
+Of course, you can also use Git to enter the command line (Git Bash Here) or other ways to enter the command line, and then enter the Xiaomi fast game project directory to complete this step.
 
-这个环节主要是告诉开发者，怎么在命令行模式入快速进入当前的发布目录。因为启动chrome调试的debug命令必须要在小米快游戏的发布目录进行操作。这里先简单了解，并保持命令行是打开的。后面会用到。
+This link is mainly to tell developers how to enter the current release directory quickly in the command line mode. Because the debug command to start chrome debugging must be operated in the release directory of Xiaomi Express. Here is a brief understanding and keep the command line open. Will be used later.
 
-### 4、启动chrome调试环境
+### 4、Start the chrome debugging environment
 
-####  4.1 安装并进入快应用调试器
+####  4.1 Install and enter the fast application debugger
 
-要启动电脑PC的chrome调试环境，我们要先安装好小米快游戏的调试APP（快应用调试器），如图3所示。然后点击进入。
+To start the chrome debugging environment of the computer PC, we must first install the debugging app of the Xiaomi fast game (fast application debugger), as shown in Figure 3. Then click to enter.
 
 ![图3](img/3.png) 
 
-（图3）
+（figure 3）
 
-#### 4.2 在快应用调试器界面扫码安装小米快游戏的rpk包
+#### 4.2 In the fast application debugger interface scan code to install the rpk package of Xiaomi fast game
 
-进入快应用调试器之后，我们可以看到如图4所示的APP操作界面。
+After entering the fast application debugger, we can see the APP interface shown in Figure 4.
 
 ![图4](img/4.png) 
 
-(图4)
+(figure 4)
 
-这时候我们点击图4中的扫码安装，扫一下LayaAir IDE中发布界面上的那个二维码（之前不让关，关了的要重新发布让二维码显示出来）。手机中就可以在真机环境中运行了。
+At this point, we click on the scanner installation in Figure 4 to scan the two-dimensional code on the publishing interface in LayaAir IDE. Mobile phones can run in a real environment.
 
-> 这里要提示的是：手机网络要和PC在同一个局域网段里（用4G网扫局域网的码肯定是不行的）。
+> Here's a reminder: the mobile network and PC in the same LAN segment (with 4G network sweep LAN code is certainly not feasible).
 
-如果把发布目录下/dist目录内的rpk包传到手机里，通过点`本地安装`按钮来安装，也是可以的。但是建议扫码安装，因为扫码的步骤更方便快捷。
+If the RPK package in the publishing directory / dist directory is transferred to the mobile phone, it is also possible to install it by clicking the `Local Installation'button. But it is recommended to install scanner, because the steps of scanner are more convenient and fast.
 
-#### 4.3 保持物理线路连接以及授权
+#### 4.3 Maintaining physical connection and authorization
 
-对于比较有相关经验的开发者，确保USB手机连接线物理线路是已连接状态，并且USB调试授权也没问题的，可以跳过本步骤。
+For developers with relative experience, this step can be skipped to ensure that the physical line of the USB mobile phone connection line is connected and that the USB debugging authorization is okay.
 
-##### 相关操作如下：
+##### The relevant operations are as follows：
 
-1、先用手机连接线将手机与PC保持物理上的连接。打开手机的开发者模式，且打开Usb调试。
+1、First, keep the phone physically connected to the PC by using the mobile phone connection line. Turn on the developer mode of the mobile phone, and turn on Usb debugging.
 
-此时，我们要关注手机端，是否出现如图5-1所示的提示，如果有，则点 确定 允许调试。
+At this point, we need to pay attention to the mobile phone, whether there is a prompt as shown in Figure 5-1, and if so, point to determine whether debugging is allowed.
 
-![图5-1](img/5-1.png) 
+![figure 5-1](img/5-1.png) 
 
-（图5-1）
+（figure 5-1）
 
-2、验证授权。
+2、Verify authorization.
 
-当USB调试模式授权成功之后，我们输入adb devices，应该如图5-3所示。
+When the USB debugging mode is authorized successfully, we enter ADB devices, which should be shown in Figure 5-3.
 
 ![图5-2](img/5-2.png) 
 
-（图5-2）
+（figure 5-2）
 
-总之，在这个环节里，我们要保障PC是有权限调试这个手机设备的。
+In short, in this link, we need to ensure that the PC is authorized to debug this mobile device.
 
-#### 4.4 启动chrome调试环境
+#### 4.4 Start the chrome debugging environment
 
-小米快游戏在PC上没有工具的开发调试环境，是通过USB联接到手机设备，然后在PC命令行模式下，通过 `npm run debug` 命令调起Chrome调试器（前提要保障PC是已安装了chrome浏览器的）来联调手机真机环境的rpk包，如图6所示。
+The development and debugging environment of millet fast game without tools on PC is to connect mobile devices through USB, and then in PC command line mode, to debug Chrome debugger by `npm run debug'command (provided that PC is installed with chrome browser) to debug the RPK package of mobile phone real environment, as shown in Figure 6.
 
 ![图6](img/6.png) 
 
-(图6)
+(figure 6)
 
-当我们能看到`Debugger URL opened in Chrome.`这个提示的时候，说明chrome已被成功调起，并与真机中的画面保持一致。如图7所示。真机中的各种操作，会完全同步到PC这个chrome里，我们就按chrome的调试方式来调试小米快游戏项目即可。
+When we see the prompt `Debugger URL opened in Chrome.', it shows that chrome has been successfully invoked and is consistent with the screen in the real machine. As shown in Figure 7. The various operations in the real machine will be fully synchronized to the PC chrome, so we can debug the millet fast game project according to the chrome debugging method.
 
 ![图7](img/7.png) 
 
-(图7)
+(figure 7)
 
-至此，小米快游戏从发布到启动chrome调试的完整流程已介绍完。
+So far, the whole process from release to start chrome debugging has been introduced.
 
-最终具体的调试方式。就不在本篇中细讲了。
+Finally, the specific debugging method. I won't go into detail in this article.
 
 
 
-## 本文赞赏
+## article feedback
 
-如果您觉得本文对您有帮助，欢迎扫码赞赏作者，您的激励是我们写出更多优质文档的动力。
+If you find this article helpful, please scan the code to appreciate the author, your feedback is also our motivation to write more quality documents.
 
 ![wechatPay](../../../wechatPay.jpg)
 
