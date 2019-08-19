@@ -1,153 +1,153 @@
-# vivo小游戏发布与调试指南
+# Vivo game release and debugging guide
 
-> update : 2019-07-01
+> update : 2019-07-01境变量的可自行百度）
 >
-> vivo小游戏的发布必须要使用LayaAirIDE，关于IDE的下载使用相关，请查看相关文档，不在本篇介绍范围内。
+> The release of the vivo game must use LayaAirIDE. For the download and use of the IDE, please check the related documents, which is beyond the scope of this article.
 
-## 1、vivo小游戏发布、调试环境准备
+## 1、Vivo game release, debugging environment preparation
 
-1、vivo品牌的手机
+1、Vivo brand mobile phone
 
-2、下载安装vivo的调试APP，下载页面：[https://minigame.vivo.com.cn/documents/#/download/debugger](https://minigame.vivo.com.cn/documents/#/download/debugger)
+2、Download the installation debugger for vivo, download the page：[https://minigame.vivo.com.cn/documents/#/download/debugger](https://minigame.vivo.com.cn/documents/#/download/debugger)
 
-进入页面后，点击 立即下载 ，即可下载安装。至于如何安装vivo调试APP，这里就不介绍了。
+Once you have entered the page, click Download Now to download and install. As for how to install the vivo debug app, it will not be introduced here.
 
-3、下载vivo小游戏引擎
+3、Download vivo mini-game engine
 
-当前**调试APP**内置的vivo引擎版本是1034，这个版本存在已知BUG，我们必须要前往vivo小游戏官网下载最新版本的小游戏引擎apk。
+The current ** debugging APP** built-in vivo engine version is 1034, this version has a known bug, we must go to the vivo game official website to download the latest version of the small game engine apk.
 
-下载页面为：
+The download page is:
 
 https://minigame.vivo.com.cn/documents/#/download/engine
 
-当前的推荐的版本是1041，下载安装后，我们可以看到vivo快应用调试器的平台版本号那里也是显示的1041。
+The current recommended version is 1041. After downloading and installing, we can see that the platform version number of the vivo application debugger is also displayed as 1041.
 
-4、PC电脑的chrome浏览器与手机数据连接线。
+4、PC computer chrome browser and mobile phone data cable.
 
-5、安装nodejs 环境 [node官网：[https://nodejs.org/en/](https://nodejs.org/en/)]
+5、Install the nodejs environment [Node official website：[https://nodejs.org/en/](https://nodejs.org/en/)]
 
-就是下载安装，比较简单，也不细介绍。能在命令行里调起npm命令就算是成功了。
+It is to download and install, it is relatively simple, and it is not detailed. Being able to call the npm command on the command line is a success.
 
-6、LayaAirIDE集中开发环境，LayaAir IDE 2.1.1beta 或以上版本 [ 官网下载: [https://ldc2.layabox.com/layadownload/?type=layaairide](https://ldc2.layabox.com/layadownload/?type=layaairide) ]
+6、LayaAirIDE centralized development environment, LayaAir IDE 2.1.1beta or above [ Official website download: [https://ldc2.layabox.com/layadownload/?type=layaairide](https://ldc2.layabox.com/layadownload/?type=layaairide) ]
 
-7、安装ADB 
+7、Install ADB
 
-ADB可以用于授权，以及发布推送等，可以前往ADB的官网下载并安装。
+ADB can be used for authorization, as well as publishing push, etc. It can be downloaded and installed on ADB's official website.
 
- [ ADB官网下载:  [http://adbshell.com/downloads](http://adbshell.com/downloads) ]
+ [ ADB official website download:  [http://adbshell.com/downloads](http://adbshell.com/downloads) ]
 
-> 简单提示一下，下载 ADB Kits，下载后的压缩包，建议解压放到一个路径简单一些的目录（如: `D:\adb`）。要记得添加环境变量（不知如何添加环境变量的可自行百度）。
+> For a quick reminder, download ADB Kits, download the compressed package, and recommend unpacking it to a directory with a simple path (eg `D:\adb`). Remember to add environment variables (I don't know how to add environment variables, you can Baidu)
 >
 
-## 2、vivo小游戏发布与接入完整流程
+## 2、Vivo small game release and access complete process
 
-### 1、发布vivo小游戏包(xx.rpk)
+### 1、Release vivo game pack (xx.rpk)
 
-LayaAirIDE的发布功能，内置了vivo小游戏的发布功能，需要先将LayaAir引擎的项目，通过发布功能打成.rpk后缀的包。关于发布功能的使用。这里不重复介绍了。不会的可以前往官网文档查看。
+LayaAirIDE's publishing function, built-in the release function of vivo games, you need to first convert the LayaAir engine project into a .rpk suffix package through the publishing function. About the use of the publishing feature. This is not repeated here. No, you can go to the official website document to view.
 
-链接：[https://ldc2.layabox.com/doc/?nav=zh-ts-3-0-6](https://ldc2.layabox.com/doc/?nav=zh-ts-3-0-6)
+link：[https://ldc2.layabox.com/doc/?nav=zh-ts-3-0-6](https://ldc2.layabox.com/doc/?nav=zh-ts-3-0-6)
 
-### 2、保留发布二维码界面。
+### 2、Keep publishing the QR code interface.
 
-发布完成后会有一个二维码的界面，如图1所示。这个界面不要关，后面手机扫码需要用。
+After the release is completed, there will be a QR code interface, as shown in Figure 1. This interface does not need to be closed, the back of the phone scan code needs to be used.
 
 ![图1](img/1.png) 
 
-（图1）
+（figure 1）
 
-### 3、启动chrome调试环境
+### 3、Start the chrome debugging environment
 
-####  3.1 安装并进入快应用调试器
+####  3.1 Install and enter the fast application debugger
 
-要启动电脑PC的chrome调试环境，我们要先安装好vivo小游戏的调试APP（快应用调试器），如图3所示。然后点击进入。
+To start the chrome debugging environment of the computer PC, we must first install the debugging game (fast application debugger) of the vivo game, as shown in Figure 3. Then click to enter.
 
 ![图3](img/3.png) 
 
-（图3）
+（figure 3）
 
-#### 3.2 在快应用调试器界面扫码安装vivo小游戏的rpk包
+#### 3.2 In the fast application debugger interface scan code to install the rpk package of vivo games
 
-进入快应用调试器之后，我们可以看到如图4所示的APP操作界面。
+After entering the fast application debugger, we can see the APP operation interface as shown in Figure 4.
 
 ![图4](img/4.png)  
 
-(图4)
+(figure 4)
 
-这时候我们点击图4中的扫码安装，扫一下LayaAir IDE中发布界面上的那个二维码（之前不让关，关了的要重新发布让二维码显示出来）。手机中就可以在真机环境中运行了。
+At this time, we click on the scan code installation in Figure 4, and scan the QR code on the release interface of the LayaAir IDE (not to turn off before, and to re-release the QR code). The phone can be run in a real machine environment.
 
-> 这里要提示的是：手机网络要和PC在同一个局域网段里（用4G网扫局域网的码肯定是不行的）。
+> Here to be prompted: the mobile phone network and the PC in the same LAN segment (using the 4G network to scan the LAN code is definitely not acceptable).
 
-如果把发布目录下/dist目录内的rpk包传到手机里，通过点`本地安装`按钮来安装，也是可以的。但是建议扫码安装，因为扫码的步骤更方便快捷。
+If you transfer the rpk package in the /dist directory to the phone in the distribution directory, it is also possible to install it by clicking the `Local Install` button. However, it is recommended to scan the code installation, because the step of scanning the code is more convenient and quick.
 
-#### 3.3 保持物理线路连接以及授权
+#### 3.3 Keep physical line connections and authorization
 
-对于比较有相关经验的开发者，确保USB手机连接线物理线路是已连接状态，并且USB调试授权也没问题的，可以跳过本步骤。 
+For developers with relevant experience, make sure that the physical line of the USB mobile phone cable is connected, and the USB debugging authorization is no problem, you can skip this step.
 
-##### 相关操作如下：
+##### Related operations are as follows:
 
-1、先用手机连接线将手机与PC保持物理上的连接。
+1、First use the phone cable to physically connect your phone to your PC.
 
-2、在之前打开的命令行下，输入adb shell，如图5-1所示。则是未获得USB调试模式授权。
+2、In the previously opened command line, enter the adb shell, as shown in Figure 5-1. It is not authorized by the USB debug mode.
 
 ![图5-1](img/5-1.png) 
 
-（图5-1）
+（figure 5-1）
 
-此时，我们要关注手机端，是否出现如图5-2所示的提示，如果有，则点 确定 允许USB调试。
+At this point, we should pay attention to the mobile terminal, whether the prompt shown in Figure 5-2 appears, and if so, click OK to allow USB debugging.
 
 ![图5-2](img/5-2.png) 
 
-（图5-2）
+（figure 5-2）
 
-3、再次验证授权。
+3、Verify the authorization again.
 
-当USB调试模式授权成功之后，我们再次输入adb shell，应该如图5-3所示。
+After the USB debug mode authorization is successful, we enter the adb shell again, as shown in Figure 5-3.
 
 ![图5-3](img/5-3.png) 
 
-（图5-3）
+（figure 5-3）
 
-总之，在这个环节里，我们要保障PC是有权限调试这个手机设备的。
+In short, in this session, we must ensure that the PC has the authority to debug this mobile device.
 
-#### 3.4 启动chrome调试环境
+#### 3.4 Start the chrome debugging environment
 
-之前扫码安装后，会自动进入刚刚安装的游戏或者DEMO。
+After the scan code is installed, it will automatically enter the game or DEMO just installed.
 
-要启动调试，就要先退出来。
+To start debugging, you must first exit.
 
-然后，如图6所示，点击**开始调试**，进入vivo小游戏的调试模式。
+Then, as shown in Figure 6, click ** Start Debugging** to enter the debug mode of the vivo game.
 
 ![图6](img/6.png) 
 
-（图6）
+（figure 6）
 
-真机进入调试模式后，我们再到PC上打开chrome浏览器。
+After the real machine enters the debug mode, we then open the chrome browser on the PC.
 
-这时候别忘了，要联接USB数据线，将手机设备与PC相联，权限的问题上面已经说过，不再重复。
+Don't forget this time, you need to connect the USB data cable to connect the mobile device to the PC. The problem of permissions has been said above and will not be repeated.
 
-我们要在手机端查找到手机的IP（不知道怎么查的自行百度）并记住他。一定要注意的是，手机网要和PC网始终保持在同一个局域网段。
+We need to find the IP of the mobile phone (Baidu) and remember it. It is important to note that the mobile phone network and the PC network are always in the same LAN segment.
 
-在chrome浏览器的输入栏里输入：
+Enter in the input field of Chrome Browser:
 
 ```
 chrome-devtools://devtools/bundled/inspector.html?v8only=true&ws={IP}:5086/00010002-0003-4004-8005-000600070008
 ```
 
-将{IP}替换为手机IP地址即可，如图7所示。
+Replace {IP} with the mobile IP address, as shown in Figure 7.
 
-![图7](img/7.png)(图7)
+![图7](img/7.png)(figure 7)
 
 
 
-至此，vivo小游戏从发布到启动chrome调试的完整流程已介绍完。如果想了解关于更多vivo小游戏的接入流程与文档介绍，记住这个网址：
+So far, the complete process from release to start chrome debugging has been introduced. If you want to know more about the access process and documentation of vivo games, remember this website:
 
 https://minigame.vivo.com.cn
 
 
 
-## 本文赞赏
+## article feedback
 
-如果您觉得本文对您有帮助，欢迎扫码赞赏作者，您的激励是我们写出更多优质文档的动力。
+If you find this article helpful, please scan the code to appreciate the author, your feedback is also our motivation to write more quality documents.
 
 ![wechatPay](../../../wechatPay.jpg)
 

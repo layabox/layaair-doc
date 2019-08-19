@@ -1459,10 +1459,10 @@
 			}]
 		},
 		{
-			"name_2_name": "vivo小游戏",
+			"name_2_name": "vivo mini-game",
 			"name_2_data": [
 			{
-				"name_3_name": "vivo小游戏发布与调试指南",
+				"name_3_name": "Guidelines for release and debugging of vivo games",
 				"name_3_url": "English/miniGame/vivo/rundebug/",
 				"name_3_file": "readme.md"
 			}]
