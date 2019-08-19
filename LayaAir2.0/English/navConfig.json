@@ -3062,19 +3062,19 @@
 			}]
 		},
 		{
-			"name_2_name": "小米快游戏",
+			"name_2_name": "Xiaomi fast game",
 			"name_2_data": [
 			{
-				"name_3_name": "小米快游戏发布与调试指南",
+				"name_3_name": "Xiaomi fast game release and debugging guide",
 				"name_3_url": "English/miniGame/mi/rundebug/",
 				"name_3_file": "readme.md"
 			}]
 		},
 		{
-			"name_2_name": "OPPO小游戏",
+			"name_2_name": "OPPO mini-gane",
 			"name_2_data": [
 			{
-				"name_3_name": "OPPO小游戏发布与调试指南",
+				"name_3_name": "OPPO game release and debugging guide",
 				"name_3_url": "English/miniGame/oppo/rundebug/",
 				"name_3_file": "readme.md"
 			}]
