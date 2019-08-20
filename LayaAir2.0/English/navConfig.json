@@ -1413,25 +1413,25 @@
 			}]
 		},
 		{
-			"name_2_name": "百度小游戏",
+			"name_2_name": "Baidu small game(AS version only)",
 			"name_2_data": [
 			{
-				"name_3_name": "百度小游戏入门介绍",
+				"name_3_name": "Baidu small game introduction",
 				"name_3_url": "English/miniGame/baidu/AS/introduction/",
 				"name_3_file": "readme.md"
 			},
 			{
-				"name_3_name": "创建第一个百度小游戏",
+				"name_3_name": "Create the first Baidu game",
 				"name_3_url": "English/miniGame/baidu/AS/novice/",
 				"name_3_file": "readme.md"
 			},
 			{
-				"name_3_name": "老项目适配百度小游戏详解",
+				"name_3_name": "Old project adaptation Baidu game detailed",
 				"name_3_url": "English/miniGame/baidu/AS/old_adapter/",
 				"name_3_file": "readme.md"
 			},
 			{
-				"name_3_name": "百度小游戏的5M本地包与动态资源加载",
+				"name_3_name": "5M local package and dynamic resource loading of Baidu game",
 				"name_3_url": "English/miniGame/baidu/AS/4M/",
 				"name_3_file": "readme.md"
 			},{
@@ -3033,26 +3033,26 @@
 				"name_3_file": "readme.md"
 			}]
 		},
-		{
-			"name_2_name": "百度小游戏",
+				{
+			"name_2_name": "Baidu small game(AS version only)",
 			"name_2_data": [
 			{
-				"name_3_name": "百度小游戏入门介绍",
+				"name_3_name": "Baidu small game introduction",
 				"name_3_url": "English/miniGame/baidu/AS/introduction/",
 				"name_3_file": "readme.md"
 			},
 			{
-				"name_3_name": "创建第一个百度小游戏",
+				"name_3_name": "Create the first Baidu game",
 				"name_3_url": "English/miniGame/baidu/AS/novice/",
 				"name_3_file": "readme.md"
 			},
 			{
-				"name_3_name": "老项目适配百度小游戏详解",
+				"name_3_name": "Old project adaptation Baidu game detailed",
 				"name_3_url": "English/miniGame/baidu/AS/old_adapter/",
 				"name_3_file": "readme.md"
 			},
 			{
-				"name_3_name": "百度小游戏的5M本地包与动态资源加载",
+				"name_3_name": "5M local package and dynamic resource loading of Baidu game",
 				"name_3_url": "English/miniGame/baidu/AS/4M/",
 				"name_3_file": "readme.md"
 			},{
@@ -4695,25 +4695,25 @@
 			}]
 		},
 		{
-			"name_2_name": "百度小游戏",
+			"name_2_name": "Baidu small game(AS version only)",
 			"name_2_data": [
 			{
-				"name_3_name": "百度小游戏入门介绍",
+				"name_3_name": "Baidu small game introduction",
 				"name_3_url": "English/miniGame/baidu/AS/introduction/",
 				"name_3_file": "readme.md"
 			},
 			{
-				"name_3_name": "创建第一个百度小游戏",
+				"name_3_name": "Create the first Baidu game",
 				"name_3_url": "English/miniGame/baidu/AS/novice/",
 				"name_3_file": "readme.md"
 			},
 			{
-				"name_3_name": "老项目适配百度小游戏详解",
+				"name_3_name": "Old project adaptation Baidu game detailed",
 				"name_3_url": "English/miniGame/baidu/AS/old_adapter/",
 				"name_3_file": "readme.md"
 			},
 			{
-				"name_3_name": "百度小游戏的5M本地包与动态资源加载",
+				"name_3_name": "5M local package and dynamic resource loading of Baidu game",
 				"name_3_url": "English/miniGame/baidu/AS/4M/",
 				"name_3_file": "readme.md"
 			},{
