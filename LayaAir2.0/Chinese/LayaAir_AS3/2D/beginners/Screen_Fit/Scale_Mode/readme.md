@@ -521,9 +521,23 @@ package  {
 
 ​        showall和noborder是等比缩放模式，会保持画面不变形。showall按照屏幕与设计宽高最小比率缩放，保证画面能完全显示出来，但会导致有空屏黑边。noborder刚好相反，按照屏幕与设计宽高最大比率缩放，不会出现空屏黑边，但会导致宽或高的部分内容无法显示出来。
 
-​        fixedwidth与fixedheight更像showall和noborder的变种，同样也是等比缩放模式，但是指定了一边不动，另外一边进行缩放，是当前HTML5游戏中比较常用的主流适配模式。
-
-​        fixedauto能根据屏幕比自动选择适配性更好的fixedwidth或fixedheight模式，更好的为我们解决了HTML5游戏对于机型不同导致屏幕适配难以决择的问题。
+​        fixedwidth与fixedheight更像showall和noborder的变种，同样也是等比缩放模式，但是指定了一边不动，另外一边进行缩放，是当前HTML5游戏中比较常用的主流适配模式。fixedauto是根据比例自动切换fixedwidth和fixedheight模式。这几种模式也是我们推荐的全屏适配模式。
 
 ​        本篇中为了重点介绍缩放模式的不同参数区别。并未结合屏幕自动旋转等其它屏幕适配设置，开发者可以查看相关的其它技术文档。
+
+​	适配模式的核心就是对画布、stage进行缩放或者直接改变画布大小。下面把不同缩放模式的对哪些进行了缩放进行了对比，方便大家直观的理解。
+
+|              | noscale | exactifit | showall | noborder | full | fixed_width | fixed_height | fixed_auto |
+| ------------ | ------- | --------- | ------- | -------- | ---- | ----------- | ------------ | ---------- |
+| 缩放画布     |         | Yes       |         | Yes      |      | Yes         | Yes          | Yes        |
+| 缩放Stage    |         |           | Yes     |          |      |             |              |            |
+| 修改画布大小 |         |           | Yes     |          | Yes  | Yes         | Yes          | Yes        |
+
+**注意：**如果使用了物理像素分辨率模式，即 `useRetinalCanvas=true` 时，由于画布大小恒定为物理分辨率，所以原本对画布的缩放全都变为了对Stage的缩放。
+
+
+
+最后再附上一张各适配模式的详细对比说明图。大家可以右键在新页面里全屏打开原图查看。
+
+![图](../../../../../LayaAir_TS/2D/beginners/Screen_Fit/Scale_Mode/img/16.png) 
 
