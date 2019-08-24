@@ -53,13 +53,13 @@ Laya.Sprite3D.load("res/threeDimen/skinModel/LayaMonkey/LayaMonkey.lh", Laya.Han
 Laya.timer.once(3000,this,function ():void 
 {	
     //获取第一个摄影的视口
-    var viewport1:Viewport = camera1.normalizedViewport;
+    var viewport1:Laya.Viewport = camera1.normalizedViewport;
     //修改参数
     viewport1.width = 0.2;
     //重新赋值是视口
     camera1.normalizedViewport = viewport1;
 
-    var viewport2:Viewport = camera2.normalizedViewport;
+    var viewport2:Laya.Viewport = camera2.normalizedViewport;
     viewport2.width = 0.8;
     viewport2.x = 0.2;
     camera2.normalizedViewport = viewport2;
