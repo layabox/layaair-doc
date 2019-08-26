@@ -43,7 +43,7 @@ Sprite3D.load("res/threeDimen/skinModel/LayaMonkey/LayaMonkey.lh", Handler.creat
 
 #### 如何动态修改Camera的视口
 
-在上面的例子中我们设置了摄影机的视口。我们在上面的代码基础上进行动态修改摄影机是视口。
+在上面的例子中我们设置了摄影机的视口。我们在上面的代码基础上进行动态修改摄影机视口。
 
 **注意：** `Camera`的 `normalizedViewport` 裁剪空间的视口 与 `viewport` 屏幕像素坐标的视口 这两个都是 get/set方法。所以在修改摄影机视口参数时不能单纯的知识修改视口参数，还需要对视口重新赋值。
 
