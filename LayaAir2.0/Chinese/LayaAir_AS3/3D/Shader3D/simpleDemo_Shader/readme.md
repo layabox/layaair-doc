@@ -1,6 +1,6 @@
 # 如何自定义Shader
 
-###### *version :2.1.1   Update:2019-8-7*
+###### *version :2.2.0   Update:2019-8-28*
 
 在这里我们将简单的介绍下如何使用自定义shader。本次是在LayaAirIDE的3D示例项目基础上修改。
 
@@ -31,7 +31,7 @@ void main()
 }
 ```
 
-片元着色器 `simpleShader.ps` 代码如下:
+片元着色器 `simpleShader.fs` 代码如下:
 
 ```c++
 #ifdef FSHIGHPRECISION
@@ -70,7 +70,7 @@ public function initShader():void {
     
     //通过 __INCLUDESTR__ 方法引入顶点着色器程序和片元着色器程序。
     var vs:String = __INCLUDESTR__("customShader/simpleShader.vs");
-    var ps:String = __INCLUDESTR__("customShader/simpleShader.ps");
+    var fs:String = __INCLUDESTR__("customShader/simpleShader.fs");
     
     //注册CustomShader 
     var customShader:Shader3D = Shader3D.add("CustomShader");
@@ -82,7 +82,7 @@ public function initShader():void {
     customShader.addSubShader(subShader);
     
     //往新创建的subShader中添加shaderPass
-    subShader.addShaderPass(vs, ps);
+    subShader.addShaderPass(vs, fs);
 }
 ```
 

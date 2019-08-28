@@ -1355,6 +1355,30 @@
 			}]
 		},
 		{
+			"name_2_name": "LayaAir3D之shader",
+			"name_2_data": [
+			{
+				"name_3_name": "Shader概述",
+				"name_3_url": "Chinese/LayaAir_TS/3D/Shader3D/Shader_introduction/",
+				"name_3_file": "readme.md"
+			},
+			{
+				"name_3_name": "SubShader介绍",
+				"name_3_url": "Chinese/LayaAir_TS/3D/Shader3D/SubShader_introduction/",
+				"name_3_file": "readme.md"
+			},
+			{
+				"name_3_name": "ShaderPass介绍",
+				"name_3_url": "Chinese/LayaAir_TS/3D/Shader3D/ShaderPass_introduction/",
+				"name_3_file": "readme.md"
+			},
+			{
+				"name_3_name": "如何自定义Shader",
+				"name_3_url": "Chinese/LayaAir_TS/3D/Shader3D/simpleDemo_Shader/",
+				"name_3_file": "readme.md"
+			}]
+		},
+		{
 			"name_2_name": "LayaAir3D的内存管理",
 			"name_2_data": [
 			{
@@ -2986,6 +3010,30 @@
 			{
 				"name_3_name": "拖尾系统的详解",
 				"name_3_url": "Chinese/LayaAir_JS/3D/Trailrender_System/Detailed_description_of_trail_system/",
+				"name_3_file": "readme.md"
+			}]
+		},
+		{
+			"name_2_name": "LayaAir3D之shader",
+			"name_2_data": [
+			{
+				"name_3_name": "Shader概述",
+				"name_3_url": "Chinese/LayaAir_JS/3D/Shader3D/Shader_introduction/",
+				"name_3_file": "readme.md"
+			},
+			{
+				"name_3_name": "SubShader介绍",
+				"name_3_url": "Chinese/LayaAir_JS/3D/Shader3D/SubShader_introduction/",
+				"name_3_file": "readme.md"
+			},
+			{
+				"name_3_name": "ShaderPass介绍",
+				"name_3_url": "Chinese/LayaAir_JS/3D/Shader3D/ShaderPass_introduction/",
+				"name_3_file": "readme.md"
+			},
+			{
+				"name_3_name": "如何自定义Shader",
+				"name_3_url": "Chinese/LayaAir_JS/3D/Shader3D/simpleDemo_Shader/",
 				"name_3_file": "readme.md"
 			}]
 		},
@@ -4662,6 +4710,30 @@
 			{
 				"name_3_name": "拖尾系统的详解",
 				"name_3_url": "Chinese/LayaAir_AS3/3D/Trailrender_System/Detailed_description_of_trail_system/",
+				"name_3_file": "readme.md"
+			}]
+		},
+		{
+			"name_2_name": "LayaAir3D之shader",
+			"name_2_data": [
+			{
+				"name_3_name": "Shader概述",
+				"name_3_url": "Chinese/LayaAir_AS3/3D/Shader3D/Shader_introduction/",
+				"name_3_file": "readme.md"
+			},
+			{
+				"name_3_name": "SubShader介绍",
+				"name_3_url": "Chinese/LayaAir_AS3/3D/Shader3D/SubShader_introduction/",
+				"name_3_file": "readme.md"
+			},
+			{
+				"name_3_name": "ShaderPass介绍",
+				"name_3_url": "Chinese/LayaAir_AS3/3D/Shader3D/ShaderPass_introduction/",
+				"name_3_file": "readme.md"
+			},
+			{
+				"name_3_name": "如何自定义Shader",
+				"name_3_url": "Chinese/LayaAir_AS3/3D/Shader3D/simpleDemo_Shader/",
 				"name_3_file": "readme.md"
 			}]
 		},

@@ -1,6 +1,6 @@
 # 如何自定义Shader
 
-###### *version :2.1.1   Update:2019-8-7*
+###### *version :2.2.0   Update:2019-8-28*
 
 在这里我们将简单的介绍下如何使用自定义shader。本次是在LayaAirIDE的3D示例项目基础上修改。
 
@@ -28,7 +28,7 @@ void main()
 }
 ```
 
-片元着色器 `simpleShader.ps` 代码如下:
+片元着色器 `simpleShader.fs` 代码如下:
 
 ```c++
 #ifdef FSHIGHPRECISION
@@ -49,6 +49,16 @@ void main()
 
 在代码中**"组装"** Shader，本段代码添加在 Main.ts 。
 
+> 通过引用来获取着色器代码
+
+```typescript
+//编译会通过引用将相关变量转换为字符串
+import simpleShaderVS from "./simpleShader.vs";
+import simpleShaderFS from "./simpleShader.fs";
+```
+
+> 初始化shader
+
 ```typescript
 //初始化我们的自定义shader
 public initShader():void {
@@ -58,39 +68,6 @@ public initShader():void {
 
 	//所有的uniform属性
 	var uniformMap:Object = {'u_MvpMatrix': Laya.Shader3D.PERIOD_SPRITE, 'u_WorldMat': Laya.Shader3D.PERIOD_SPRITE};
-
-    //simpleShader.vs
-    var vs:string = `#include "Lighting.glsl";
-
-    attribute vec4 a_Position;
-
-    uniform mat4 u_MvpMatrix;
-    uniform mat4 u_WorldMat;
-
-    attribute vec3 a_Normal;
-    varying vec3 v_Normal;
-
-    void main()
-    {
-    gl_Position = u_MvpMatrix * a_Position;
-    mat3 worldMat=mat3(u_WorldMat);
-    v_Normal=worldMat*a_Normal;
-    gl_Position=remapGLPositionZ(gl_Position);
-    }`;
-
-    //simpleShader.ps
-    var ps:string = `#ifdef FSHIGHPRECISION
-    precision highp float;
-    #else
-    precision mediump float;
-    #endif
-
-    varying vec3 v_Normal;
-
-    void main()
-    {	
-    gl_FragColor=vec4(v_Normal,1.0);
-    }`;
 
 	//注册CustomShader 
 	var customShader:Laya.Shader3D = Laya.Shader3D.add("CustomShader");
@@ -102,7 +79,7 @@ public initShader():void {
 	customShader.addSubShader(subShader);
 
 	//往新创建的subShader中添加shaderPass
-	subShader.addShaderPass(vs, ps);
+	subShader.addShaderPass(simpleShaderVS, simpleShaderFS);
 }
 ```
 

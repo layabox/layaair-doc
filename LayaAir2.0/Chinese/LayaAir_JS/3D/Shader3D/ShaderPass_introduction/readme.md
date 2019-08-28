@@ -1,6 +1,6 @@
 # ShaderPass介绍
 
-###### *version :2.1.1   Update:2019-8-7*
+###### *version :2.2.0   Update:2019-8-28*
 
 ​		SubShader 中定义了一系列的 **Pass（通道）** 。每个Pass定义了一次完整的渲染流程。注意Pass数目过多会造成渲染性能的下降。
 

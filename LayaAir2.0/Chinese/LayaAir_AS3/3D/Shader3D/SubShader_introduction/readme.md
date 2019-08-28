@@ -1,6 +1,6 @@
 # SubShader介绍
 
-###### *version :2.1.1   Update:2019-8-7*
+###### *version :2.2.0   Update:2019-8-28*
 
 ​		**SubShader 子着色器**可以理解为Shader的渲染方案。每个Shader至少1个subShader，可以有多个subShader。
 
