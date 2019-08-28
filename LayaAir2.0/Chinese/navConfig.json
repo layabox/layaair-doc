@@ -1367,6 +1367,20 @@
 				"name_3_url": "Chinese/LayaAir_TS/3D/Memory_Manage/DestroyUnusedResources/",
 				"name_3_file": "readme.md"
 			}]
+		},
+		{
+			"name_2_name": "LayaAir3D之性能优化",
+			"name_2_data": [
+			{
+				"name_3_name": "静态合并",
+				"name_3_url": "Chinese/LayaAir_TS/3D/Performance_Optimization/Static_Batch/",
+				"name_3_file": "readme.md"
+			},
+			{
+				"name_3_name": "动态合并",
+				"name_3_url": "Chinese/LayaAir_TS/3D/Performance_Optimization/Dynamic_Batch/",
+				"name_3_file": "readme.md"
+			}]
 		}]
 	},
 	{
@@ -2986,6 +3000,20 @@
 			{
 				"name_3_name": "批量销毁释放内存",
 				"name_3_url": "Chinese/LayaAir_JS/3D/Memory_Manage/DestroyUnusedResources/",
+				"name_3_file": "readme.md"
+			}]
+		},
+		{
+			"name_2_name": "LayaAir3D之性能优化",
+			"name_2_data": [
+			{
+				"name_3_name": "静态合并",
+				"name_3_url": "Chinese/LayaAir_JS/3D/Performance_Optimization/Static_Batch/",
+				"name_3_file": "readme.md"
+			},
+			{
+				"name_3_name": "动态合并",
+				"name_3_url": "Chinese/LayaAir_JS/3D/Performance_Optimization/Dynamic_Batch/",
 				"name_3_file": "readme.md"
 			}]
 		}]
@@ -4648,6 +4676,20 @@
 			{
 				"name_3_name": "批量销毁释放内存",
 				"name_3_url": "Chinese/LayaAir_AS3/3D/Memory_Manage/DestroyUnusedResources/",
+				"name_3_file": "readme.md"
+			}]
+		},
+		{
+			"name_2_name": "LayaAir3D之性能优化",
+			"name_2_data": [
+			{
+				"name_3_name": "静态合并",
+				"name_3_url": "Chinese/LayaAir_AS3/3D/Performance_Optimization/Static_Batch/",
+				"name_3_file": "readme.md"
+			},
+			{
+				"name_3_name": "动态合并",
+				"name_3_url": "Chinese/LayaAir_AS3/3D/Performance_Optimization/Dynamic_Batch/",
 				"name_3_file": "readme.md"
 			}]
 		}]
