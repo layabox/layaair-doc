@@ -23,7 +23,7 @@ camera.clearColor = new Vector4(0.5,0.5,0.6,1);
 
 ```typescript
 //天空盒代码
-BaseMaterial.load("res/threeDimen/skyBox/skyBox1/skyBox.lmat", Handler.create(null, function(mat:BaseMaterial):void {
+BaseMaterial.load("res/threeDimen/skyBox/skyBox1/skyBox.lmat", Handler.create(this, function(mat:BaseMaterial):void {
     //设置相机的清除标识为天空盒
     camera.clearFlag = BaseCamera.CLEARFLAG_SKY;
     //获取相机的天空渲染器
