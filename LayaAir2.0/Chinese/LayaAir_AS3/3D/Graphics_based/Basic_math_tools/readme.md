@@ -6,7 +6,7 @@
 
 ​	**Vector2**二维向量 ， **Vector3** 三维向量， **Vector4 **四维向量，这几个向量在LayaAir 3D引擎中使用非常频繁，从二维向量到四维向量到处都会看到它们的身影。最基础的用法就是示例中用于赋值使用。
 
-​	代码中3D对象的移动、旋转、缩放等变换都是使用Vector3作为了它的x、y、z轴向坐标赋值。更详细的使用可以查看 [API](https://layaair.ldc.layabox.com/api/?category=3D&class=laya.d3.math.Vector3) 。
+​	代码中3D对象的移动、旋转、缩放等变换都是使用Vector3作为了它的x、y、z轴向坐标赋值。更详细的使用可以查看 [API](https://layaair2.ldc2.layabox.com/api2/Chinese/index.html?category=Core&class=laya.d3.math.Vector3) 。
 
 **颜色**
 
@@ -25,15 +25,15 @@
 
 ​	四元数在LayaAir中用于计算旋转。它们计算紧凑高效，不受万向节锁的困扰，并且可以很方便快速地进行球面插值。
 
-关于四元数的使用有需求的可以自行了解。这里仅提供 [API](https://layaair.ldc.layabox.com/api/?category=3D&class=laya.d3.math.Quaternion) 。
+关于四元数的使用有需求的可以自行了解。这里仅提供 [API](https://layaair2.ldc2.layabox.com/api2/Chinese/index.html?category=Core&class=laya.d3.math.Quaternion) 。
 
 **包围盒（BoundBox）**
 
-​	包围盒算法是一种求解离散点集最优包围空间的方法,基本思想是用体积稍大且特性简单的几何体（称为包围盒）来近似地代替复杂的几何对象。LayaAir3D支持3中包围盒,更详细的接口说明可以查看 [API](https://layaair.ldc.layabox.com/api/?category=3D&class=laya.d3.math.BoundBox) 。
+​	包围盒算法是一种求解离散点集最优包围空间的方法,基本思想是用体积稍大且特性简单的几何体（称为包围盒）来近似地代替复杂的几何对象。LayaAir3D支持3中包围盒,更详细的接口说明可以查看 [API](https://layaair2.ldc2.layabox.com/api2/Chinese/index.html?category=Core&class=laya.d3.math.BoundBox) 。
 
 **矩阵（Matrix）**
 
-​	矩阵是一个按照长方阵列排列的复数或实数集合。LayaAir3D中支持 **3X3矩阵（[API](https://layaair.ldc.layabox.com/api/?category=3D&class=laya.d3.math.Matrix3x3)）**和 **4X4矩阵（[API](https://layaair.ldc.layabox.com/api/?category=3D&class=laya.d3.math.Matrix4x4)）**的矩阵两种。
+​	矩阵是一个按照长方阵列排列的复数或实数集合。LayaAir3D中支持 **3X3矩阵（[API](https://layaair2.ldc2.layabox.com/api2/Chinese/index.html?category=Core&class=laya.d3.math.Matrix3x3)）**和 **4X4矩阵（[API](https://layaair2.ldc2.layabox.com/api2/Chinese/index.html?category=Core&class=laya.d3.math.Matrix4x4)）**的矩阵两种。
 
 **射线（Ray）**
 
