@@ -10,7 +10,7 @@
 
 ![](img/2.png)<br>(图2)
 
-下面我们来看下具体如何额使用这些接口，本次代码节选自官方示例，更详细情况可以查看：([demo地址](https://layaair.ldc.layabox.com/demo2/?language=ch&category=3d&group=Physics3D&name=PhysicsWorld_TriggerAndCollisionEvent))
+下面我们来看下具体如何使用这些接口，本次代码节选自官方示例，更详细情况可以查看：([demo地址](https://layaair.ldc.layabox.com/demo2/?language=ch&category=3d&group=Physics3D&name=PhysicsWorld_TriggerAndCollisionEvent))
 
 ```javascript
 /**
