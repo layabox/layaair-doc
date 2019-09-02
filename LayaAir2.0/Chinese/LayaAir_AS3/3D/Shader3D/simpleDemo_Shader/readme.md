@@ -106,7 +106,7 @@ package material {
 
 #### 4.使用自定义材质
 
-​	在使用自定义材质之前，一定要记得初始化自己的Shader。LayaAir中自带的材质会随着`Laya3D.init`初始化。这里我们需要调用我们写的 `initShader` 方法。这里我们直接在Main中初始化自己的Shader。
+​	在使用自定义材质之前，一定要记得初始化自己的Shader。LayaAir中自带的材质会随着`Laya3D.init`初始化。所以我们需要手动调用我们写的 `initShader` 方法。这里我们直接在Main中初始化自己的Shader。
 
 ```typescript
 ........	
