@@ -14,10 +14,6 @@
 
 
 
-##### 需要注意的是，在选择js 语言开发时， 分离模式和文件模式是没有区别的，都没有场景类。
-
-
-
 #### 2，脚本化和runtime的使用
 
 开发者如果不熟悉这两个概念，可以参照一下runtime和脚本化的文档，然后创建一个引擎自带的示例项目，会发现场景中拖入一个runtime脚本，可以在这个脚本里直接操作场景内的内容，非常的方便，这是区别于主流引擎增加脚本组件的属于LayaAir的独特的方式，喜欢1.0开发模式的开发者可以较多使用这种方式。
@@ -29,12 +25,13 @@
 #### 3，代码使用预设
 
 ```
+下面采用伪代码：
+先声明一个预设变量
 {Laya.loader.create("prefab/预设名字.json",Handler.create(this,onComplete));
 }
 private function onComplete(obj:Object):Void{
   一个预设变量.json = ojb
   一个sprite = Pool.getItemByCreateFun("自己起一个名字", this.一个预设变量.create, this.一个预设变量);
 }
-
 ```
 
