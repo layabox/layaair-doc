@@ -1405,6 +1405,25 @@
 				"name_3_url": "Chinese/LayaAir_TS/3D/Performance_Optimization/Dynamic_Batch/",
 				"name_3_file": "readme.md"
 			}]
+		},
+		{
+			"name_2_name": "LayaAir3D之高级应用",
+			"name_2_data": [
+			{
+				"name_3_name": "寻路系统",
+				"name_3_url": "Chinese/LayaAir_TS/3D/Advance/PathFind/",
+				"name_3_file": "readme.md"
+			},
+			{
+				"name_3_name": "使用2D地图3D人物混合进行游戏开发",
+				"name_3_url": "Chinese/LayaAir_TS/3D/Advance/2DSceneAnd3DPlayer/",
+				"name_3_file": "readme.md"
+			},
+			{
+				"name_3_name": "如何使用3D场景2D人物进行混合开发",
+				"name_3_url": "Chinese/LayaAir_TS/3D/Advance/3DSceneAnd2DPlayer/",
+				"name_3_file": "readme.md"
+			}]
 		}]
 	},
 	{
@@ -3062,6 +3081,25 @@
 			{
 				"name_3_name": "动态合并",
 				"name_3_url": "Chinese/LayaAir_JS/3D/Performance_Optimization/Dynamic_Batch/",
+				"name_3_file": "readme.md"
+			}]
+		},
+		{
+			"name_2_name": "LayaAir3D之高级应用",
+			"name_2_data": [
+			{
+				"name_3_name": "寻路系统",
+				"name_3_url": "Chinese/LayaAir_JS/3D/Advance/PathFind/",
+				"name_3_file": "readme.md"
+			},
+			{
+				"name_3_name": "使用2D地图3D人物混合进行游戏开发",
+				"name_3_url": "Chinese/LayaAir_JS/3D/Advance/2DSceneAnd3DPlayer/",
+				"name_3_file": "readme.md"
+			},
+			{
+				"name_3_name": "如何使用3D场景2D人物进行混合开发",
+				"name_3_url": "Chinese/LayaAir_JS/3D/Advance/3DSceneAnd2DPlayer/",
 				"name_3_file": "readme.md"
 			}]
 		}]
@@ -4762,6 +4800,25 @@
 			{
 				"name_3_name": "动态合并",
 				"name_3_url": "Chinese/LayaAir_AS3/3D/Performance_Optimization/Dynamic_Batch/",
+				"name_3_file": "readme.md"
+			}]
+		},
+		{
+			"name_2_name": "LayaAir3D之高级应用",
+			"name_2_data": [
+			{
+				"name_3_name": "寻路系统",
+				"name_3_url": "Chinese/LayaAir_AS3/3D/Advance/PathFind/",
+				"name_3_file": "readme.md"
+			},
+			{
+				"name_3_name": "使用2D地图3D人物混合进行游戏开发",
+				"name_3_url": "Chinese/LayaAir_AS3/3D/Advance/2DSceneAnd3DPlayer/",
+				"name_3_file": "readme.md"
+			},
+			{
+				"name_3_name": "如何使用3D场景2D人物进行混合开发",
+				"name_3_url": "Chinese/LayaAir_AS3/3D/Advance/3DSceneAnd2DPlayer/",
 				"name_3_file": "readme.md"
 			}]
 		}]
