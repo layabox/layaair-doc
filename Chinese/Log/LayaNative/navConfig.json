@@ -1,5 +1,13 @@
 [
   {
+    "name": "LayaAir Native SDK 1.0.5",
+    "url": "1.0.5.md",
+    "date": "2019-09-23",
+    "download": {
+      "url": "http://layabox.com/layaplayer/layanativeRes/v1.0.5.zip"
+    }
+  },
+  {
     "name": "LayaAir Native SDK 1.0.4",
     "url": "1.0.4.md",
     "date": "2019-04-18",
