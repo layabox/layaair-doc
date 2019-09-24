@@ -17,7 +17,8 @@
     "download": {
       "js": "http://ldc.layabox.com/download/LayaAirJS_2.2.0.zip",
       "ts": "http://ldc.layabox.com/download/LayaAirTS_2.2.0.zip",
-      "as": "http://ldc.layabox.com/download/LayaAirAS3_2.2.0.zip"
+      "as": "http://ldc.layabox.com/download/LayaAirAS3_2.2.0.zip",
+      "tsnew": "http://ldc.layabox.com/download/LayaAirTSNEW_2.2.0.zip"
     }
   },
   {
