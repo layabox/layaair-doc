@@ -6,7 +6,7 @@
 
 Unity3D是由Unity Technologies开发的一个让玩家轻松创建诸如三维视频游戏、建筑可视化、实时三维动画等类型互动内容的多平台的综合型游戏开发工具，是一个全面整合的专业游戏引擎,LayaAir为了减少美术人员的学习成本,让熟悉Unity的开发者能快速上手，LayaAir采用Unity插件作为美术资源编辑的首选工具。
 
-5.6.X 下载地址为：[https://unity3d.com/get-unity/download/archive](https://unity3d.com/get-unity/download/archive)
+Unity下载地址为：[https://unity3d.com/get-unity/download/archive](https://unity3d.com/get-unity/download/archive)
 
 ### 插件面板的基本介绍
 
