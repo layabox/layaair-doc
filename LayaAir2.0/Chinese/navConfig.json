@@ -902,6 +902,11 @@
 				"name_3_name": "如何为灯光添加阴影",
 				"name_3_url": "Chinese/LayaAir_TS/3D/light/Shadow/",
 				"name_3_file": "readme.md"
+			},
+			{
+				"name_3_name": "多光源渲染",
+				"name_3_url": "Chinese/LayaAir_TS/3D/light/MulitLight/",
+				"name_3_file": "readme.md"
 			}]
 		},
 		{
@@ -2580,6 +2585,11 @@
 			{
 				"name_3_name": "如何为灯光添加阴影",
 				"name_3_url": "Chinese/LayaAir_JS/3D/light/Shadow/",
+				"name_3_file": "readme.md"
+			},
+			{
+				"name_3_name": "多光源渲染",
+				"name_3_url": "Chinese/LayaAir_JS/3D/light/MulitLight/",
 				"name_3_file": "readme.md"
 			}]
 		},
@@ -4298,6 +4308,11 @@
 			{
 				"name_3_name": "如何为灯光添加阴影",
 				"name_3_url": "Chinese/LayaAir_AS3/3D/light/Shadow/",
+				"name_3_file": "readme.md"
+			},
+			{
+				"name_3_name": "多光源渲染",
+				"name_3_url": "Chinese/LayaAir_AS3/3D/light/MulitLight/",
 				"name_3_file": "readme.md"
 			}]
 		},
