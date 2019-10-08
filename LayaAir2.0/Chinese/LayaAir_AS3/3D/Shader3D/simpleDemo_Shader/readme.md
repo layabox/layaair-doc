@@ -1,6 +1,6 @@
 # 如何自定义Shader
 
-###### *version :2.2.0   Update:2019-8-28*
+###### *version :2.3.0   Update:2019-10-8*
 
 在这里我们将简单的介绍下如何使用自定义shader。本次是在LayaAirIDE的3D示例项目基础上修改。
 
@@ -31,7 +31,7 @@ void main()
 }
 ```
 
-片元着色器 `simpleShader.fs` 代码如下:
+片元着色器 `simpleShader.ps` 代码如下:
 
 ```c++
 #ifdef FSHIGHPRECISION
@@ -70,7 +70,7 @@ public function initShader():void {
     
     //通过 __INCLUDESTR__ 方法引入顶点着色器程序和片元着色器程序。
     var vs:String = __INCLUDESTR__("customShader/simpleShader.vs");
-    var fs:String = __INCLUDESTR__("customShader/simpleShader.fs");
+    var ps:String = __INCLUDESTR__("customShader/simpleShader.ps");
     
     //注册CustomShader 
     var customShader:Shader3D = Shader3D.add("CustomShader");
@@ -82,7 +82,7 @@ public function initShader():void {
     customShader.addSubShader(subShader);
     
     //往新创建的subShader中添加shaderPass
-    subShader.addShaderPass(vs, fs);
+    subShader.addShaderPass(vs, ps);
 }
 ```
 
@@ -106,7 +106,7 @@ package material {
 
 #### 4.使用自定义材质
 
-​	在使用自定义材质之前，一定要记得初始化自己的Shader。LayaAir中自带的材质会随着`Laya3D.init`初始化。所以我们需要手动调用我们写的 `initShader` 方法。这里我们直接在Main中初始化自己的Shader。
+​	在使用自定义材质之前，一定要记得初始化自己的Shader。LayaAir中自带的材质会随着`Laya3D.init`初始化。这里我们需要调用我们写的 `initShader` 方法。这里我们直接在Main中初始化自己的Shader。
 
 ```typescript
 ........	
