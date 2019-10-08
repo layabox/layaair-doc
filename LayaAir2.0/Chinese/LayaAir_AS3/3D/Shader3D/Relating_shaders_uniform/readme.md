@@ -2,7 +2,7 @@
 
 ###### *version :2.3.0   Update:2019-10-8*
 
-这里我们使用官网示例---**描边Shader（多Pass）** 中的shader作为案例来进行讲解。
+这里我们使用官网示例（[demo地址](http://layaair2.ldc2.layabox.com/demo2/?language=ch&category=3d&group=Shader&name=Shader_MultiplePassOutline)）---**描边Shader（多Pass）** 中的shader作为案例来进行讲解。
 
 我们首先来看下着色器代码：
 
@@ -98,7 +98,7 @@ void main()
 
 **BaseMaterail** 是所有的材质的基类。BaseMaterail 的 `_shaderValues:ShaderData` 就是材质的属性。
 
-在初始化Shader之后（该Shader的初始化在SubShader篇有详细讲解），如果在该Shader中有 PERIOD_MATERIAL（逐材质）的提交的uniform值，开发者就需要使用 `_shaderValues` 来绑定Shader属性。绑定Shader属性之后，修改材质的属性引擎会自动关联到相关的Shader属性。
+在初始化Shader之后（该Shader的初始化在**ShaderPass介绍篇**有详细讲解），如果在该Shader中有 PERIOD_MATERIAL（逐材质）的提交的uniform值，开发者就需要使用 `_shaderValues` 来绑定Shader属性。绑定Shader属性之后，修改材质的属性引擎会自动关联到相关的Shader属性。
 
 然后我们分析下前面的着色器代码与初始化Shader时的uniformMap：
 

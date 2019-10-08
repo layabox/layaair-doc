@@ -1381,6 +1381,36 @@
 				"name_3_name": "如何自定义Shader",
 				"name_3_url": "Chinese/LayaAir_TS/3D/Shader3D/simpleDemo_Shader/",
 				"name_3_file": "readme.md"
+			},
+			{
+				"name_3_name": "关联shader的uniform",
+				"name_3_url": "Chinese/LayaAir_TS/3D/Shader3D/Relating_shaders_uniform/",
+				"name_3_file": "readme.md"
+			},
+			{
+				"name_3_name": "注册宏定义与使用宏",
+				"name_3_url": "Chinese/LayaAir_TS/3D/Shader3D/Register_and_Use_define/",
+				"name_3_file": "readme.md"
+			},
+			{
+				"name_3_name": "添加Include",
+				"name_3_url": "Chinese/LayaAir_TS/3D/Shader3D/add_Include/",
+				"name_3_file": "readme.md"
+			},
+			{
+				"name_3_name": "Shader预编译",
+				"name_3_url": "Chinese/LayaAir_TS/3D/Shader3D/Shader_compile/",
+				"name_3_file": "readme.md"
+			},
+			{
+				"name_3_name": "attributeMap表格",
+				"name_3_url": "Chinese/LayaAir_TS/3D/Shader3D/attributeMapsForm/",
+				"name_3_file": "readme.md"
+			},
+			{
+				"name_3_name": "uniformMap表格",
+				"name_3_url": "Chinese/LayaAir_TS/3D/Shader3D/uniformMapsForm/",
+				"name_3_file": "readme.md"
 			}]
 		},
 		{
@@ -3063,6 +3093,36 @@
 			{
 				"name_3_name": "如何自定义Shader",
 				"name_3_url": "Chinese/LayaAir_JS/3D/Shader3D/simpleDemo_Shader/",
+				"name_3_file": "readme.md"
+			},
+			{
+				"name_3_name": "关联shader的uniform",
+				"name_3_url": "Chinese/LayaAir_JS/3D/Shader3D/Relating_shaders_uniform/",
+				"name_3_file": "readme.md"
+			},
+			{
+				"name_3_name": "注册宏定义与使用宏",
+				"name_3_url": "Chinese/LayaAir_JS/3D/Shader3D/Register_and_Use_define/",
+				"name_3_file": "readme.md"
+			},
+			{
+				"name_3_name": "添加Include",
+				"name_3_url": "Chinese/LayaAir_JS/3D/Shader3D/add_Include/",
+				"name_3_file": "readme.md"
+			},
+			{
+				"name_3_name": "Shader预编译",
+				"name_3_url": "Chinese/LayaAir_JS/3D/Shader3D/Shader_compile/",
+				"name_3_file": "readme.md"
+			},
+			{
+				"name_3_name": "attributeMap表格",
+				"name_3_url": "Chinese/LayaAir_JS/3D/Shader3D/attributeMapsForm/",
+				"name_3_file": "readme.md"
+			},
+			{
+				"name_3_name": "uniformMap表格",
+				"name_3_url": "Chinese/LayaAir_JS/3D/Shader3D/uniformMapsForm/",
 				"name_3_file": "readme.md"
 			}]
 		},
@@ -4787,6 +4847,36 @@
 			{
 				"name_3_name": "如何自定义Shader",
 				"name_3_url": "Chinese/LayaAir_AS3/3D/Shader3D/simpleDemo_Shader/",
+				"name_3_file": "readme.md"
+			},
+			{
+				"name_3_name": "关联shader的uniform",
+				"name_3_url": "Chinese/LayaAir_AS3/3D/Shader3D/Relating_shaders_uniform/",
+				"name_3_file": "readme.md"
+			},
+			{
+				"name_3_name": "注册宏定义与使用宏",
+				"name_3_url": "Chinese/LayaAir_AS3/3D/Shader3D/Register_and_Use_define/",
+				"name_3_file": "readme.md"
+			},
+			{
+				"name_3_name": "添加Include",
+				"name_3_url": "Chinese/LayaAir_AS3/3D/Shader3D/add_Include/",
+				"name_3_file": "readme.md"
+			},
+			{
+				"name_3_name": "Shader预编译",
+				"name_3_url": "Chinese/LayaAir_AS3/3D/Shader3D/Shader_compile/",
+				"name_3_file": "readme.md"
+			},
+			{
+				"name_3_name": "attributeMap表格",
+				"name_3_url": "Chinese/LayaAir_AS3/3D/Shader3D/attributeMapsForm/",
+				"name_3_file": "readme.md"
+			},
+			{
+				"name_3_name": "uniformMap表格",
+				"name_3_url": "Chinese/LayaAir_AS3/3D/Shader3D/uniformMapsForm/",
 				"name_3_file": "readme.md"
 			}]
 		},
