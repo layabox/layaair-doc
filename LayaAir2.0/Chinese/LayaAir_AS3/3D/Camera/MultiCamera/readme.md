@@ -1,6 +1,6 @@
 # 多摄像机窗口的使用
 
-###### *version :2.0.1beta   Update:2019-3-19*
+###### *version :2.2.0   Update:2019-8-24*
 
 ​	在同一个场景中，可以使用多个摄像机，当加载到场景中后，它们会产生各自的游戏视图画面。在我们以前遇到的游戏中，如双人3D游戏就使用了两个3D摄像机，左半屏幕显示一个玩家，右半屏幕显示另一个，极大的丰富了游戏性。
 
@@ -40,3 +40,30 @@ Sprite3D.load("res/threeDimen/skinModel/LayaMonkey/LayaMonkey.lh", Handler.creat
 编译运行上述代码，运行效果如图6。开发者们同时也可以测试，在单摄像机下时，DrawCall与三角面数会少很多。([demo地址](https://layaair.ldc.layabox.com/demo2/?language=ch&category=3d&group=Camera&name=MultiCamera))
 
 ![](img/1.png)<br>(图1)
+
+#### 如何动态修改Camera的视口
+
+在上面的例子中我们设置了摄影机的视口。我们在上面的代码基础上进行动态修改摄影机视口。
+
+**注意：** `Camera`的 `normalizedViewport` 裁剪空间的视口 与 `viewport` 屏幕像素坐标的视口 这两个都是 get/set方法。所以在修改摄影机视口参数时不能单纯的知识修改视口参数，还需要对视口重新赋值。
+
+> 动态修改摄影机视口
+
+```typescript
+Laya.timer.once(3000,this,function ():void 
+{	
+    //获取第一个摄影的视口
+    var viewport1:Viewport = camera1.normalizedViewport;
+    //修改参数
+    viewport1.width = 0.2;
+    //重新赋值是视口
+    camera1.normalizedViewport = viewport1;
+
+    var viewport2:Viewport = camera2.normalizedViewport;
+    viewport2.width = 0.8;
+    viewport2.x = 0.2;
+    camera2.normalizedViewport = viewport2;
+});
+```
+
+![](img/2.gif)<br>(图2)

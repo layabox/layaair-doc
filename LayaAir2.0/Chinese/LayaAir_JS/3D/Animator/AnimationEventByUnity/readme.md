@@ -52,8 +52,8 @@ Laya.Scene3D.load("res/threeDimen/scene/LayaScene_AnimationEvent/Conventional/la
 	//给脚本的加强表现用方法赋值
     _script.showMsgFunc = function () 
     {
-        text = "ShowMsg";
-        color = "red";
+        this.text = "ShowMsg";
+        this.color = "red";
     }.bind(_lab);
     
 }));

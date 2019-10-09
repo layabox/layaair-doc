@@ -902,6 +902,11 @@
 				"name_3_name": "如何为灯光添加阴影",
 				"name_3_url": "Chinese/LayaAir_TS/3D/light/Shadow/",
 				"name_3_file": "readme.md"
+			},
+			{
+				"name_3_name": "多光源渲染",
+				"name_3_url": "Chinese/LayaAir_TS/3D/light/MultiLight/",
+				"name_3_file": "readme.md"
 			}]
 		},
 		{
@@ -1355,6 +1360,60 @@
 			}]
 		},
 		{
+			"name_2_name": "LayaAir3D之shader",
+			"name_2_data": [
+			{
+				"name_3_name": "Shader概述",
+				"name_3_url": "Chinese/LayaAir_TS/3D/Shader3D/Shader_introduction/",
+				"name_3_file": "readme.md"
+			},
+			{
+				"name_3_name": "SubShader介绍",
+				"name_3_url": "Chinese/LayaAir_TS/3D/Shader3D/SubShader_introduction/",
+				"name_3_file": "readme.md"
+			},
+			{
+				"name_3_name": "ShaderPass介绍",
+				"name_3_url": "Chinese/LayaAir_TS/3D/Shader3D/ShaderPass_introduction/",
+				"name_3_file": "readme.md"
+			},
+			{
+				"name_3_name": "如何自定义Shader",
+				"name_3_url": "Chinese/LayaAir_TS/3D/Shader3D/simpleDemo_Shader/",
+				"name_3_file": "readme.md"
+			},
+			{
+				"name_3_name": "关联shader的uniform",
+				"name_3_url": "Chinese/LayaAir_TS/3D/Shader3D/Relating_shaders_uniform/",
+				"name_3_file": "readme.md"
+			},
+			{
+				"name_3_name": "注册宏定义与使用宏",
+				"name_3_url": "Chinese/LayaAir_TS/3D/Shader3D/Register_and_Use_define/",
+				"name_3_file": "readme.md"
+			},
+			{
+				"name_3_name": "添加Include",
+				"name_3_url": "Chinese/LayaAir_TS/3D/Shader3D/add_Include/",
+				"name_3_file": "readme.md"
+			},
+			{
+				"name_3_name": "Shader预编译",
+				"name_3_url": "Chinese/LayaAir_TS/3D/Shader3D/Shader_compile/",
+				"name_3_file": "readme.md"
+			},
+			{
+				"name_3_name": "attributeMap表格",
+				"name_3_url": "Chinese/LayaAir_TS/3D/Shader3D/attributeMapsForm/",
+				"name_3_file": "readme.md"
+			},
+			{
+				"name_3_name": "uniformMap表格",
+				"name_3_url": "Chinese/LayaAir_TS/3D/Shader3D/uniformMapsForm/",
+				"name_3_file": "readme.md"
+			}]
+		},
+		{
 			"name_2_name": "LayaAir3D的内存管理",
 			"name_2_data": [
 			{
@@ -1365,6 +1424,39 @@
 			{
 				"name_3_name": "批量销毁释放内存",
 				"name_3_url": "Chinese/LayaAir_TS/3D/Memory_Manage/DestroyUnusedResources/",
+				"name_3_file": "readme.md"
+			}]
+		},
+		{
+			"name_2_name": "LayaAir3D之性能优化",
+			"name_2_data": [
+			{
+				"name_3_name": "静态合并",
+				"name_3_url": "Chinese/LayaAir_TS/3D/Performance_Optimization/Static_Batch/",
+				"name_3_file": "readme.md"
+			},
+			{
+				"name_3_name": "动态合并",
+				"name_3_url": "Chinese/LayaAir_TS/3D/Performance_Optimization/Dynamic_Batch/",
+				"name_3_file": "readme.md"
+			}]
+		},
+		{
+			"name_2_name": "LayaAir3D之高级应用",
+			"name_2_data": [
+			{
+				"name_3_name": "寻路系统",
+				"name_3_url": "Chinese/LayaAir_TS/3D/Advance/PathFind/",
+				"name_3_file": "readme.md"
+			},
+			{
+				"name_3_name": "使用2D地图3D人物混合进行游戏开发",
+				"name_3_url": "Chinese/LayaAir_TS/3D/Advance/2DSceneAnd3DPlayer/",
+				"name_3_file": "readme.md"
+			},
+			{
+				"name_3_name": "如何使用3D场景2D人物进行混合开发",
+				"name_3_url": "Chinese/LayaAir_TS/3D/Advance/3DSceneAnd2DPlayer/",
 				"name_3_file": "readme.md"
 			}]
 		}]
@@ -2524,6 +2616,11 @@
 				"name_3_name": "如何为灯光添加阴影",
 				"name_3_url": "Chinese/LayaAir_JS/3D/light/Shadow/",
 				"name_3_file": "readme.md"
+			},
+			{
+				"name_3_name": "多光源渲染",
+				"name_3_url": "Chinese/LayaAir_JS/3D/light/MultiLight/",
+				"name_3_file": "readme.md"
 			}]
 		},
 		{
@@ -2976,6 +3073,60 @@
 			}]
 		},
 		{
+			"name_2_name": "LayaAir3D之shader",
+			"name_2_data": [
+			{
+				"name_3_name": "Shader概述",
+				"name_3_url": "Chinese/LayaAir_JS/3D/Shader3D/Shader_introduction/",
+				"name_3_file": "readme.md"
+			},
+			{
+				"name_3_name": "SubShader介绍",
+				"name_3_url": "Chinese/LayaAir_JS/3D/Shader3D/SubShader_introduction/",
+				"name_3_file": "readme.md"
+			},
+			{
+				"name_3_name": "ShaderPass介绍",
+				"name_3_url": "Chinese/LayaAir_JS/3D/Shader3D/ShaderPass_introduction/",
+				"name_3_file": "readme.md"
+			},
+			{
+				"name_3_name": "如何自定义Shader",
+				"name_3_url": "Chinese/LayaAir_JS/3D/Shader3D/simpleDemo_Shader/",
+				"name_3_file": "readme.md"
+			},
+			{
+				"name_3_name": "关联shader的uniform",
+				"name_3_url": "Chinese/LayaAir_JS/3D/Shader3D/Relating_shaders_uniform/",
+				"name_3_file": "readme.md"
+			},
+			{
+				"name_3_name": "注册宏定义与使用宏",
+				"name_3_url": "Chinese/LayaAir_JS/3D/Shader3D/Register_and_Use_define/",
+				"name_3_file": "readme.md"
+			},
+			{
+				"name_3_name": "添加Include",
+				"name_3_url": "Chinese/LayaAir_JS/3D/Shader3D/add_Include/",
+				"name_3_file": "readme.md"
+			},
+			{
+				"name_3_name": "Shader预编译",
+				"name_3_url": "Chinese/LayaAir_JS/3D/Shader3D/Shader_compile/",
+				"name_3_file": "readme.md"
+			},
+			{
+				"name_3_name": "attributeMap表格",
+				"name_3_url": "Chinese/LayaAir_JS/3D/Shader3D/attributeMapsForm/",
+				"name_3_file": "readme.md"
+			},
+			{
+				"name_3_name": "uniformMap表格",
+				"name_3_url": "Chinese/LayaAir_JS/3D/Shader3D/uniformMapsForm/",
+				"name_3_file": "readme.md"
+			}]
+		},
+		{
 			"name_2_name": "LayaAir3D的内存管理",
 			"name_2_data": [
 			{
@@ -2986,6 +3137,39 @@
 			{
 				"name_3_name": "批量销毁释放内存",
 				"name_3_url": "Chinese/LayaAir_JS/3D/Memory_Manage/DestroyUnusedResources/",
+				"name_3_file": "readme.md"
+			}]
+		},
+		{
+			"name_2_name": "LayaAir3D之性能优化",
+			"name_2_data": [
+			{
+				"name_3_name": "静态合并",
+				"name_3_url": "Chinese/LayaAir_JS/3D/Performance_Optimization/Static_Batch/",
+				"name_3_file": "readme.md"
+			},
+			{
+				"name_3_name": "动态合并",
+				"name_3_url": "Chinese/LayaAir_JS/3D/Performance_Optimization/Dynamic_Batch/",
+				"name_3_file": "readme.md"
+			}]
+		},
+		{
+			"name_2_name": "LayaAir3D之高级应用",
+			"name_2_data": [
+			{
+				"name_3_name": "寻路系统",
+				"name_3_url": "Chinese/LayaAir_JS/3D/Advance/PathFind/",
+				"name_3_file": "readme.md"
+			},
+			{
+				"name_3_name": "使用2D地图3D人物混合进行游戏开发",
+				"name_3_url": "Chinese/LayaAir_JS/3D/Advance/2DSceneAnd3DPlayer/",
+				"name_3_file": "readme.md"
+			},
+			{
+				"name_3_name": "如何使用3D场景2D人物进行混合开发",
+				"name_3_url": "Chinese/LayaAir_JS/3D/Advance/3DSceneAnd2DPlayer/",
 				"name_3_file": "readme.md"
 			}]
 		}]
@@ -4185,6 +4369,11 @@
 				"name_3_name": "如何为灯光添加阴影",
 				"name_3_url": "Chinese/LayaAir_AS3/3D/light/Shadow/",
 				"name_3_file": "readme.md"
+			},
+			{
+				"name_3_name": "多光源渲染",
+				"name_3_url": "Chinese/LayaAir_AS3/3D/light/MultiLight/",
+				"name_3_file": "readme.md"
 			}]
 		},
 		{
@@ -4638,6 +4827,60 @@
 			}]
 		},
 		{
+			"name_2_name": "LayaAir3D之shader",
+			"name_2_data": [
+			{
+				"name_3_name": "Shader概述",
+				"name_3_url": "Chinese/LayaAir_AS3/3D/Shader3D/Shader_introduction/",
+				"name_3_file": "readme.md"
+			},
+			{
+				"name_3_name": "SubShader介绍",
+				"name_3_url": "Chinese/LayaAir_AS3/3D/Shader3D/SubShader_introduction/",
+				"name_3_file": "readme.md"
+			},
+			{
+				"name_3_name": "ShaderPass介绍",
+				"name_3_url": "Chinese/LayaAir_AS3/3D/Shader3D/ShaderPass_introduction/",
+				"name_3_file": "readme.md"
+			},
+			{
+				"name_3_name": "如何自定义Shader",
+				"name_3_url": "Chinese/LayaAir_AS3/3D/Shader3D/simpleDemo_Shader/",
+				"name_3_file": "readme.md"
+			},
+			{
+				"name_3_name": "关联shader的uniform",
+				"name_3_url": "Chinese/LayaAir_AS3/3D/Shader3D/Relating_shaders_uniform/",
+				"name_3_file": "readme.md"
+			},
+			{
+				"name_3_name": "注册宏定义与使用宏",
+				"name_3_url": "Chinese/LayaAir_AS3/3D/Shader3D/Register_and_Use_define/",
+				"name_3_file": "readme.md"
+			},
+			{
+				"name_3_name": "添加Include",
+				"name_3_url": "Chinese/LayaAir_AS3/3D/Shader3D/add_Include/",
+				"name_3_file": "readme.md"
+			},
+			{
+				"name_3_name": "Shader预编译",
+				"name_3_url": "Chinese/LayaAir_AS3/3D/Shader3D/Shader_compile/",
+				"name_3_file": "readme.md"
+			},
+			{
+				"name_3_name": "attributeMap表格",
+				"name_3_url": "Chinese/LayaAir_AS3/3D/Shader3D/attributeMapsForm/",
+				"name_3_file": "readme.md"
+			},
+			{
+				"name_3_name": "uniformMap表格",
+				"name_3_url": "Chinese/LayaAir_AS3/3D/Shader3D/uniformMapsForm/",
+				"name_3_file": "readme.md"
+			}]
+		},
+		{
 			"name_2_name": "LayaAir3D的内存管理",
 			"name_2_data": [
 			{
@@ -4648,6 +4891,39 @@
 			{
 				"name_3_name": "批量销毁释放内存",
 				"name_3_url": "Chinese/LayaAir_AS3/3D/Memory_Manage/DestroyUnusedResources/",
+				"name_3_file": "readme.md"
+			}]
+		},
+		{
+			"name_2_name": "LayaAir3D之性能优化",
+			"name_2_data": [
+			{
+				"name_3_name": "静态合并",
+				"name_3_url": "Chinese/LayaAir_AS3/3D/Performance_Optimization/Static_Batch/",
+				"name_3_file": "readme.md"
+			},
+			{
+				"name_3_name": "动态合并",
+				"name_3_url": "Chinese/LayaAir_AS3/3D/Performance_Optimization/Dynamic_Batch/",
+				"name_3_file": "readme.md"
+			}]
+		},
+		{
+			"name_2_name": "LayaAir3D之高级应用",
+			"name_2_data": [
+			{
+				"name_3_name": "寻路系统",
+				"name_3_url": "Chinese/LayaAir_AS3/3D/Advance/PathFind/",
+				"name_3_file": "readme.md"
+			},
+			{
+				"name_3_name": "使用2D地图3D人物混合进行游戏开发",
+				"name_3_url": "Chinese/LayaAir_AS3/3D/Advance/2DSceneAnd3DPlayer/",
+				"name_3_file": "readme.md"
+			},
+			{
+				"name_3_name": "如何使用3D场景2D人物进行混合开发",
+				"name_3_url": "Chinese/LayaAir_AS3/3D/Advance/3DSceneAnd2DPlayer/",
 				"name_3_file": "readme.md"
 			}]
 		}]

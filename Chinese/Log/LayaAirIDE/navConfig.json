@@ -1,5 +1,23 @@
 [
   {
+    "name": "LayaAir IDE 1.8.5 beta",
+    "url": "1.8.5beta.md",
+    "date": "2019-09-24",
+    "download": {
+      "apple": "http://ldc.layabox.com/download/1.8.5/darwin/LayaAirIDE_beta.zip",
+      "windows": "http://ldc.layabox.com/download/1.8.5/win/LayaAirIDE_beta.zip"
+    }
+  },
+  {
+    "name": "LayaAir IDE 1.8.4",
+    "url": "1.8.4.md",
+    "date": "2019-09-24",
+    "download": {
+      "apple": "http://ldc.layabox.com/download/1.8.4/darwin/LayaAirIDE.zip",
+      "windows": "http://ldc.layabox.com/download/1.8.4/win/LayaAirIDE.zip"
+    }
+  },
+  {
     "name": "LayaAir IDE 1.8.4 beta1",
     "url": "1.8.4beta1.md",
     "date": "2019-08-05",

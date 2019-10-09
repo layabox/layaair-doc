@@ -23,7 +23,7 @@ camera.clearColor = new Laya.Vector4(0.5,0.5,0.6,1);
 
 ```typescript
 //天空盒代码
-Laya.BaseMaterial.load("res/threeDimen/skyBox/skyBox1/skyBox.lmat", Laya.Handler.create(null, function(mat) {
+Laya.BaseMaterial.load("res/threeDimen/skyBox/skyBox1/skyBox.lmat", Laya.Handler.create(this, function(mat) {
     //设置相机的清除标识为天空盒
     camera.clearFlag = Laya.BaseCamera.CLEARFLAG_SKY;
     //获取相机的天空渲染器

@@ -18,7 +18,7 @@ var sphereShape = new Laya.SphereColliderShape(1);
 //给球添加刚体
 var sphereRigid = sphere.addComponent(Laya.Rigidbody3D);
 //将碰撞盒添加到刚体上
-shpereRigid.colliderShape = sphereShape;
+sphereRigid.colliderShape = sphereShape;
 ```
 
 不同的模型只是需要创建不同的Mesh网格和ColliderShape碰撞盒。
