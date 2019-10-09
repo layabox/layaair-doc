@@ -1,12 +1,22 @@
 [
   {
-    "name": "LayaAir IDE 2.2.0beta2",
-    "url": "2.2.0beta2.md",
-    "date": "2019-08-05",
+    "name": "LayaAir IDE 2.3.0beta",
+    "url": "2.3.0beta.md",
+    "date": "2019-09-23",
     "download": {
-      "Apple": "http://ldc.layabox.com/download/2.2.0.2/darwin/LayaAirIDE_beta.zip",
-      "Windows": "http://ldc.layabox.com/download/2.2.0.2/win/LayaAirIDE_beta.zip",
-      "UnityPlugin":"http://ldc.layabox.com/download/2.2.0.2/unityplugin/LayaAirUnityPlugin_beta.unitypackage"
+      "Apple": "http://ldc.layabox.com/download/2.3.0/darwin/LayaAirIDE_beta.zip",
+      "Windows": "http://ldc.layabox.com/download/2.3.0/win/LayaAirIDE_beta.zip",
+      "UnityPlugin":"http://ldc.layabox.com/download/2.3.0/unityplugin/LayaAirUnityPlugin_beta.unitypackage"
+    }
+  },
+  {
+    "name": "LayaAir IDE 2.2.0",
+    "url": "2.2.0.md",
+    "date": "2019-09-23",
+    "download": {
+      "Apple": "http://ldc.layabox.com/download/2.2.0/darwin/LayaAirIDE.zip",
+      "Windows": "http://ldc.layabox.com/download/2.2.0/win/LayaAirIDE.zip",
+      "UnityPlugin":"http://ldc.layabox.com/download/2.2.0/unityplugin/LayaAirUnityPlugin.unitypackage"
     }
   },
   {
@@ -57,66 +67,6 @@
       "Apple": "http://ldc.layabox.com/download/2.0.0/darwin/LayaAirIDE.zip",
       "Windows": "http://ldc.layabox.com/download/2.0.0/win/LayaAirIDE.zip",
       "UnityPlugin":"http://ldc.layabox.com/download/2.0.0/unityplugin/LayaAirUnityPlugin.unitypackage"
-    }
-  },
-  {
-    "name": "LayaAir IDE 2.0.0 beta5.1",
-    "url": "2.0.0beta5.1.md",
-    "date": "2018-12-12",
-    "download": {
-      "Apple": "http://ldc.layabox.com/download/2.0.0beta5.1/darwin/LayaAirIDE_beta.zip",
-      "Windows": "http://ldc.layabox.com/download/2.0.0beta5.1/win/LayaAirIDE_beta.zip",
-      "UnityPlugin":"http://ldc.layabox.com/download/2.0.0beta5/unityplugin/LayaAirUnityPlugin_beta.unitypackage"
-    }
-  },
-  {
-    "name": "LayaAir IDE 2.0.0 beta5",
-    "url": "2.0.0beta5.md",
-    "date": "2018-11-22",
-    "download": {
-      "Apple": "http://ldc.layabox.com/download/2.0.0beta5/darwin/LayaAirIDE_beta.zip",
-      "Windows": "http://ldc.layabox.com/download/2.0.0beta5/win/LayaAirIDE_beta.zip",
-      "UnityPlugin":"http://ldc.layabox.com/download/2.0.0beta5/unityplugin/LayaAirUnityPlugin_beta.unitypackage"
-    }
-  },
-  {
-    "name": "LayaAir IDE 2.0.0 beta4",
-    "url": "2.0.0beta4.md",
-    "date": "2018-10-26",
-    "download": {
-      "Apple": "http://ldc.layabox.com/download/2.0.0beta4/darwin/LayaAirIDE_beta.zip",
-      "Windows": "http://ldc.layabox.com/download/2.0.0beta4/win/LayaAirIDE_beta.zip",
-      "UnityPlugin":"http://ldc.layabox.com/download/2.0.0beta4/unityplugin/LayaAirUnityPlugin_beta.unitypackage"
-    }
-  },
-  {
-    "name": "LayaAir IDE 2.0.0 beta3",
-    "url": "2.0.0beta3.md",
-    "date": "2018-10-13",
-    "download": {
-      "Apple": "http://ldc.layabox.com/download/2.0.0beta3/darwin/LayaAirIDE_beta.zip",
-      "Windows": "http://ldc.layabox.com/download/2.0.0beta3/win/LayaAirIDE_beta.zip",
-      "UnityPlugin":"http://ldc.layabox.com/download/2.0.0beta3/unityplugin/LayaAirUnityPlugin_beta.unitypackage"
-    }
-  },
-  {
-    "name": "LayaAir IDE 2.0.0 beta2",
-    "url": "2.0.0beta2.md",
-    "date": "2018-9-21",
-    "download": {
-      "Apple": "#",
-      "Windows": "http://ldc.layabox.com/download/2.0.0beta2/win/LayaAirIDE_beta.zip",
-      "UnityPlugin":"http://ldc.layabox.com/download/2.0.0beta2/unityplugin/LayaAirUnityPlugin_beta.unitypackage"
-    }
-  },
-  {
-    "name": "LayaAir IDE 2.0.0 beta1",
-    "url": "2.0.0beta1.md",
-    "date": "2018-9-15",
-    "download": {
-      "Apple": "#",
-      "Windows": "http://ldc.layabox.com/download/2.0.0beta1/win/LayaAirIDE_beta.zip",
-      "UnityPlugin":"http://ldc.layabox.com/download/2.0.0beta1/unityplugin/LayaAirUnityPlugin_beta.unitypackage"
     }
   }
  ]
