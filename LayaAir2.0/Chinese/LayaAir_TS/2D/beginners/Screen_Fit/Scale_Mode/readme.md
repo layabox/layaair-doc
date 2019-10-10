@@ -540,7 +540,7 @@ new laya.SmartScale_T();
 
 
 
-**结束总结：**
+#### 结束总结：
 
 ​        full模式完全按物理像素渲染，屏幕有多大，适配的画面就有多大，是高画质常用的适配模式，但是在不同尺寸的屏幕里，显示内容的大小会有所不同，同时对于HTML5游戏的性能压力要高于其它适配模式。
 
@@ -558,7 +558,15 @@ new laya.SmartScale_T();
 | 缩放Stage    |         |           | Yes     |          |      |             |              |            |
 | 修改画布大小 |         |           | Yes     |          | Yes  | Yes         | Yes          | Yes        |
 
-**注意：**如果使用了物理像素分辨率模式，即 `useRetinalCanvas=true` 时，由于画布大小恒定为物理分辨率，所以原本对画布的缩放全都变为了对Stage的缩放。
+> 物理像素模式下的适配模式
+
+使用了物理像素分辨率模式，即 `useRetinalCanvas=true` 时，画布大小恒定为物理分辨率。
+
+|              | noscale | exactifit | showall | noborder | full | fixed_width | fixed_height | fixed_auto |
+| ------------ | ------- | --------- | ------- | -------- | ---- | ----------- | ------------ | ---------- |
+| 缩放画布     |         | Yes       | Yes     | Yes      |      | Yes         | Yes          | Yes        |
+| 缩放Stage    |         |           | Yes     | Yes      |      |             |              |            |
+| 修改画布大小 |         |           |         |          |      |             |              |            |
 
 
 
