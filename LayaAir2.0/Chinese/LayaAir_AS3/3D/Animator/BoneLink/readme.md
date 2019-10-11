@@ -1,10 +1,77 @@
 # 动画挂点
 
-###### *version :2.1.0beta   Update:2019-6-13*
+###### *version :2.2.0beta   Update:2019-8-26*
 
 骨骼挂点技术在3D游戏中运用非常普遍，比如武器要随着角色的手的动作而变化，那么我们就可以把武器与手上骨骼进行挂点绑定，武器作为手骨骼的子节点，自然就可以跟随手的动作而变化。
 
 当然，绑定后的3D模型也可以通过代码来移除绑定或者更换另外的3D模型，通过这种方式可以实现武器或装备的换装功能，骑乘功能等。
+
+### 新骨骼挂点
+
+最新的2.2.0版插件导出时，会导出所有骨骼节点。开发者可以直接将精灵添加到目标节点下来实现骨骼挂点。同时老的骨骼挂点方案依旧可以使用。
+
+**注意：**只有2.2.0之后的插件才会导出骨骼节点。所以如果需要使用新的骨骼挂点方式，但是.ls,lh等文件是老版本插件导出的，那就需要重新导出。
+
+> 新版本骨骼挂点
+
+```typescript
+Scene3D.load("LayaScene_SceneMonkey/Conventional/SceneMonkey.ls",Handler.create(this,function(res:Scene3D):void{
+    Laya.stage.addChild(res);
+    //用于挂点的精灵
+    var box: MeshSprite3D = new MeshSprite3D(PrimitiveMesh.createBox(1,1,1));
+
+    var material: BlinnPhongMaterial = new BlinnPhongMaterial();
+    Texture2D.load("res/layabox.png", Handler.create(this, function(tex:Texture2D):void {
+    	material.albedoTexture = tex;
+    }));
+    box.meshRenderer.material = material;
+
+    var monkey:Sprite3D = res.getChildByName("LayaMonkey") as Sprite3D;
+    //查找节点
+    var bonePoint:Sprite3D = findChild(monkey,"bonepoint");
+    //将盒子精灵添加到找到的骨骼节点上
+    bonePoint&&bonePoint.addChild(box);
+}));
+```
+
+> 节点查找
+
+```typescript
+/**
+ * 查找节点
+ * @param sp 精灵
+ * @param name 需要查找的节点名
+ */
+private function findChild(sp:Sprite3D,name:String):Sprite3D{
+    if(sp.name==name)
+        return sp;
+    else
+        return _findChild(sp._children,name);
+}
+
+private function _findChild(spArr:Array,name:String):Sprite3D{
+    var arr:Array = [];
+    for(var i:int = 0;i < spArr.length ; i++ ){
+        var child:Sprite3D = spArr[i] as Sprite3D;
+        if(child.name==name){
+            return child;
+        }
+        else if(child.numChildren){
+            arr = arr.concat(child._children);
+        }
+    }
+
+    if(!arr.length)
+        return null;
+    return _findChild(arr,name);
+}
+```
+
+**注意：** 在后面的版本会推出查找节点的方法，这里只是临时的方案。
+
+![](img/new.png)<br>（图<font color="#FF0000"> new</font>）新版本骨骼挂点
+
+### 老版本骨骼挂点
 
 #### (1) 在Unity中设置骨骼挂点
 
