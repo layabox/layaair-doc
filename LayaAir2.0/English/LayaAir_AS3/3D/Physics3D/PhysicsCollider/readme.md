@@ -1,16 +1,18 @@
-# 物理碰撞器
+#Physical Collider
 
 ###### *version :2.1.1   Update:2019-7-19*
 
- LayaAir3D中的 **PhysicsCollider** 物理碰撞器就是静态碰撞器。它总是停留在一个地方，永远不会四处移动。刚体会与它发生碰撞，但是不会移动它。
+In LayaAir3D**Physics Collider**A physical collider is a static collider. It always stays in one place and never moves around. Rigid bodies collide with it, but they don't move it.
 
-在Unity导出时，如果只有`Collider`没有刚体，导出后就是`PhysicsCollider`组件。这个组件常用于制作场景中静止不动的物体，或者常用于设置为触发器。
+When Unity exports, if only`Collider`There's no rigid body. After derivation, there's a rigid body.`PhysicsCollider`Component. This component is often used to make stationary objects in the scene, or is often set as triggers.
 
-#### (1) 使用代码创建物理碰撞器
+####(1) Using code to create physical Colliders
 
-在这里我们简单的介绍下，使用代码添加物理碰撞器。下面的代码简单的创建了一个平面。如图1所示。
+Here we briefly introduce the use of code to add physical colliders. The following code simply creates a plane. As shown in Figure 1.
+
 
 ```typescript
+
 //平面
 var plane:MeshSprite3D = scene.addChild(new MeshSprite3D(PrimitiveMesh.createPlane(10, 10, 10, 10))) as MeshSprite3D;
 //新建材质
@@ -36,13 +38,16 @@ planeStaticCollider.friction = 2;
 planeStaticCollider.restitution = 0.3;
 ```
 
-![](img/1.png)<br>(图1)
 
-#### (2) 获取导出模型上的物理碰撞器
+![] (img/1.png)<br> (Figure 1)
 
-在导出后，可能需要调整物理碰撞器的一些属性。这时候就需要从导出的模型上获取物理碰撞器了。
+####(2) Obtaining the physical collider on the derived model
+
+After exporting, you may need to adjust some properties of the physical collider. At this point, physical colliders need to be obtained from the derived model.
+
 
 ```typescript
+
 //加载模型
 Sprite3D.load("Conventional/shoot.lh",Handler.create(this,function(sp:Sprite3D):void{
     var cube:MeshSprite3D = sp.getChildAt(0) as MeshSprite3D;
@@ -50,5 +55,6 @@ Sprite3D.load("Conventional/shoot.lh",Handler.create(this,function(sp:Sprite3D):
     var cubeCollider:PhysicsCollider = cube.getComponent(PhysicsCollider);
 }));
 ```
+
 
 

@@ -1,20 +1,22 @@
-# 物理射线检测
+#Physical Radiation Detection
 
 ###### *version :2.1.1   Update:2019-7-19*
 
-在前面的**图形系统概念**篇有讲到过射线这数学工具，在**摄像机**篇讲过如何从摄像机创建一条射线，在这里我们详细讲解下射线的使用。
+Ahead**Graphic System Concept**We have talked about the mathematical tool of ray, which is used in the following passage: X-ray, X-ray, X-ray, X-ray, X-ray, X-ray, X-ray, X-ray, X-ray and X-ray.**Video camera**This article describes how to create a ray from the camera. Here we will explain the use of ray in detail.
 
-在LayaAir3D中实现射线检测的核心是使用Scene3D场景属性中的**PhysicsSimulation物理模拟器**。详情可以查看[Api地址](https://layaair.ldc.layabox.com/api2/Chinese/index.html?category=3D&class=laya.d3.physics.PhysicsSimulation)。射线检测使用的接口有4个，分为两类。`raycastFromTo`，`raycastAllFromTo`一类，`rayCast`，`rayCastAll`一类。我们将前面2个成为A类，后面为B类，我们来看下这两种方法的api：
+The core of ray detection in LayaAir3D is using Scene3D scene attributes.**Physics Simulation Physical Simulator**。 Details can be viewed[Api地址](https://layaair.ldc.layabox.com/api2/Chinese/index.html?category=3D&class=laya.d3.physics.PhysicsSimulation)。 There are four interfaces for X-ray detection, which can be divided into two categories.`raycastFromTo`,`raycastAllFromTo`One type,`rayCast`,`rayCastAll`One category. Let's turn the first two into class A and the second into class B. let's look at the API of these two methods:
 
-![](img/1.png)<br>(图1) 
+![] (img/1.png)<br> (Figure 1)
 
-![](img/2.png)<br>(图2) 
+![] (img/2.png)<br> (Figure 2)
 
-A类使用的是一个两个点作为参数，B类里使用的已经创建好的射线，但是需要设置射线长度。而带`All`的方法只是是否检测所有物体，也就是是否穿透物体。这种方法的`out:Vector.<HitResult>` — 碰撞结果[数组元素会被回收]。
+Class A uses one or two points as parameters. Class B uses the created rays, but needs to set the length of the rays. While taking`All`The method is to detect all objects, that is, whether they penetrate the object. The method`out:Vector.<hitresult>`- collision result [array elements will be recycled].</hitresult>
 
-下面我们先来展示A类`raycastFromTo`，`raycastAllFromTo`的使用，这段代码源自于官方示例（[demo地址](https://layaair.ldc.layabox.com/demo2/?language=ch&category=3d&group=Physics3D&name=PhysicsWorld_RayShapeCast)）；
+Let's show a`raycastFromTo`,`raycastAllFromTo`Using this code, the code is derived from the official example（[demo地址](https://layaair.ldc.layabox.com/demo2/?language=ch&category=3d&group=Physics3D&name=PhysicsWorld_RayShapeCast));
+
 
 ```typescript
+
 var hitResult:HitResult = new HitResult();
 var hitResults:Vector.<HitResult> = new Vector.<HitResult>();
 //是否穿透
@@ -33,15 +35,18 @@ if (castAll) {
 }
 ```
 
-![](img/3.png)<br>(图3) 不穿透的射线
 
-![](img/4.png)<br>(图4) 穿透的射线
+![] (img/3.png)<br> (fig. 3) Non-penetrating rays
 
-B类`rayCast`，`rayCastAll`方法使用，这段代码来自于官方示例。（[demo地址](https://layaair.ldc.layabox.com/demo2/?language=ch&category=3d&group=Camera&name=CameraRay)）
+![] (img/4.png)<br> (fig. 4) Penetrating rays
 
-示例根据屏幕空间中一点（由鼠标按下的点），形成一条由近裁剪面到远裁剪面的射线，进行射线检测。效果如（图5）
+Class B`rayCast`,`rayCastAll`Method is used. This code is from the official example. ([demo地址](https://layaair.ldc.layabox.com/demo2/?language=ch&category=3d&group=Camera&name=CameraRay))
+
+According to a point in the screen space (the point pressed by the mouse), the example forms a ray from the near cutting surface to the far cutting surface for ray detection. The effect is as follows (Fig. 5)
+
 
 ```typescript
+
 point.x = MouseManager.instance.mouseX;
 point.y = MouseManager.instance.mouseY;
 //产生射线
@@ -60,4 +65,5 @@ if (outs.length != 0) {
 public function addBoxXYZ(x:int, y:int, z:int ):void {/**内容省略**/}
 ```
 
-![](img/5.gif)<br>(图5)
+
+![] (img/5.gif) <br> (Fig. 5)

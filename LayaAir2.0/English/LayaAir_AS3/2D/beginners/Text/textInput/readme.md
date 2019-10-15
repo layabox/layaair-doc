@@ -1,14 +1,16 @@
-# textInput的单行输入&多行输入
+#TextInput Single Line Input & Multi Line Input
 
-文本输入框是我们游戏中经常会用到的一个UI组件，任何时候我们需要输入的时候都要使用到textInput这个类，我们先看一下TextInput这个类的API。
+Text input box is a UI component that we often use in our games. Whenever we need input, we need to use textInput class. Let's first look at the API of TextInput class.
 
-Laya.ui.textInput中所有的API参数：
+All API parameters in Laya.ui.textInput:
 
 ![image.png](http://ldc.layabox.com/uploadfile/image/20170222/1487736122132869.png)
 
-这里我们设置文本的单行输入和多行输入，单行输入只能在一行内输入，多行可以通过回车在上一行未满的情况下在下一行输入。
+Here we set up one-line input and multi-line input of text. One-line input can only be entered in one line, and multi-line input can be entered in the next line if the previous line is not full by return.
+
 
 ```java
+
 package
  
 {
@@ -63,8 +65,9 @@ package
 }
 ```
 
-运行结果：
+
+Operation results:
 
 ![blob.png](http://ldc.layabox.com/uploadfile/image/20170308/1488957547692222.png)
 
-通过设置我们的multiline为true开启多行输入，实现我们上图的效果。其他的参数和设置Text文本基本相同，想设置不同大小的字体和样式和Text的设置方法一样，大家可以修改上述示例中的参数体验。
+By setting our multiline to open multi-line input for true, we can achieve the effect of our graph. Other parameters and text settings are basically the same. To set fonts and styles of different sizes as text settings, you can modify the parameter experience in the example above.

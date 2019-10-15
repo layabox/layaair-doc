@@ -1,24 +1,26 @@
-# 设置滤镜效果
+#Setting up filter effect
 
-> LayaAir引擎提供了颜色滤镜、发光（或阴影）滤镜、模糊滤镜三种效果。其中颜色滤镜支持Canvas与WebGL模式，而发光滤镜与模糊滤镜由于对性能的消耗较大，因此仅支持WebGL模式。
-
-
-
-## 1、设置颜色滤镜
-
-### 1.1 颜色滤镜 API 简述
-
-颜色滤镜类 ColorFilter位于laya.filters包中，通过指定矩阵（*排列成4 x 5 的矩阵*）改变各颜色通道。
-
-点击   [laya.filters.ColorFilter ](http://layaair.ldc.layabox.com/api/index.html?category=Filter&class=laya.filters.ColorFilter) 查看API说明。
+> LayaAir engine provides three effects: color filter, light (or shadow) filter and blur filter. Among them, color filters support Canvas and WebGL modes, while light filters and fuzzy filters only support WebGL modes because of their high performance consumption.
 
 
 
-### 1.2 设置颜色滤镜
+##1. Setting up color filters
 
-如果要给一个位图设置颜色滤镜，需要先设置一个颜色矩阵，然后用ColorFilter方法创建一个颜色滤镜实例，如下面的代码所示：
+###1.1 Color Filter API
+
+The color filter class, ColorFilter, is located in the laya. filters package and changes the color channels by specifying a matrix (* arranged into 4 x 5 matrices *).
+
+click[laya.filters.ColorFilter ](http://layaair.ldc.layabox.com/api/index.html?category=Filter&class=laya.filters.ColorFilter)View the API description.
+
+
+
+###1.2 Setting Color Filter
+
+If you want to set a color filter for a bitmap, you need to set a color matrix first, and then create an example of a color filter using the ColorFilter method, as shown in the following code:
+
 
 ```typescript
+
 //颜色滤镜矩阵，红色
 var colorMatrix:any = 
   [
@@ -32,9 +34,12 @@ var colorMatrix:any =
 var redFilter:Laya.ColorFilter = new Laya.ColorFilter(colorMatrix);
 ```
 
-最后通过Spriter的filters属性将颜色滤镜效果叠加到位图中。下面我们创建一个Main.ts类，编写代码如下：
+
+Finally, the color filter effect is superimposed on the bitmap through the filter attribute of Spriter. Let's create a Main. TS class and write the following code:
+
 
 ```typescript
+
 module laya {
     import Sprite = Laya.Sprite;
     import Stage = Laya.Stage;
@@ -127,33 +132,36 @@ module laya {
 new laya.Main();
 ```
 
-在上面的代码中，我们创建了一个原始位图、一个红色滤镜效果位图、一个灰色滤镜效果位图。运行效果如图1所示：
 
-![图1](img/1.png) <br /> (图1)
+In the code above, we create an original bitmap, a red filter effect bitmap, and a gray filter effect bitmap. The operation effect is shown in Figure 1.
 
-
-
-
-
-## 2、设置发光与阴影滤镜
-
-### 2.1 发光滤镜 API 简述
-
-发光滤镜类 GlowFilter位于laya.filters包中，通过调整发光的偏移角度也可以当成阴影滤使用，参数说明如图2所示。注意：该滤镜只支持WebGL模式下有效。
-
-![图2](img/2.png) <br /> (图2)
-
-点击   [laya.filters. GlowFilter](http://layaair.ldc.layabox.com/api/index.html?category=Filter&class=laya.filters.GlowFilter)  查看API说明。
+![图1](img/1.png)<br/> (Fig. 1)
 
 
 
-### 2.2 设置发光滤镜与阴影滤镜
 
-发光与阴影滤镜的设置比较简单，我们直接通过编码查看示例效果，
 
-先创建一个Main.ts类，编写代码如下：
+##2. Setting up Luminescent and Shadow Filters
+
+###2.1 Luminescent Filter API
+
+The GlowFilter class is located in the laya. filters package. It can also be used as a shadow filter by adjusting the light-emitting offset angle. The parameter description is shown in Figure 2. Note: This filter only supports WebGL mode.
+
+![图2](img/2.png)<br/> (Figure 2)
+
+click[laya.filters. GlowFilter](http://layaair.ldc.layabox.com/api/index.html?category=Filter&class=laya.filters.GlowFilter)Check the API instructions.
+
+
+
+###2.2 Setting up Luminescent Filter and Shadow Filter
+
+The settings of luminous and shadow filters are relatively simple. We can see the effect of the example directly by encoding.
+
+First create a Main. TS class and write the following code:
+
 
 ```typescript
+
 module laya {
     import Sprite = Laya.Sprite;
     import Stage = Laya.Stage;
@@ -217,31 +225,34 @@ module laya {
 new laya.Main();
 ```
 
-在上面的代码中，我们创建了一个原始位图、一个发光滤镜效果位图、一个阴影滤镜效果位图。运行效果如图3所示：
 
-![图3](img/3.png) <br /> (图3)
+In the code above, we create an original bitmap, a light-emitting filter effect bitmap, and a shadow filter effect bitmap. The operation effect is shown in Figure 3.
 
-
-
-## 3、设置模糊滤镜
-
-### 3.1 模糊滤镜 API 简述
-
-模糊滤镜类 BlurFilter位于laya.filters包中，通过调整strength参数设置模糊滤镜的强度，值越大，越糊滤。参数说明如图4所示。注意：该滤镜只支持WebGL模式下有效。
-
-![图4](img/4.png) <br /> (图4)
-
-点击   [laya.filters. BlurFilter](http://layaair.ldc.layabox.com/api/index.html?category=Filter&class=laya.filters.BlurFilter)  查看API说明。
+![图3](img/3.png)<br/> (Figure 3)
 
 
 
-### 3.2 设置模糊滤镜
+##3. Setting up a Fuzzy Filter
 
-模糊滤镜的设置比较简单，创建一个模糊滤镜实例，然后设置模糊强度，叠加给位图即可，我们直接通过编码查看示例效果。
+###3.1 Brief Introduction of Fuzzy Filter API
 
-先创建一个Main.ts类，编写代码如下：
+BlurFilter is located in laya. filters package. By adjusting the strength parameter to set the intensity of the blurred filter, the greater the value, the more blurred the filter. The parameter description is shown in Figure 4. Note: This filter only supports WebGL mode.
+
+![图4](img/4.png)<br/> (Figure 4)
+
+click[laya.filters. BlurFilter](http://layaair.ldc.layabox.com/api/index.html?category=Filter&class=laya.filters.BlurFilter)Check the API instructions.
+
+
+
+###3.2 Setting up Fuzzy Filter
+
+The setting of the blur filter is relatively simple. Create an example of the blur filter, then set the blur intensity and superimpose it on the bitmap. We can see the effect of the example directly by coding.
+
+First create a Main. TS class and write the following code:
+
 
 ```typescript
+
 module laya {
     import Sprite = Laya.Sprite;
     import Stage = Laya.Stage;
@@ -292,9 +303,10 @@ module laya {
 new laya.Main();
 ```
 
-在上面的代码中，我们创建了一个原始位图、一个模糊滤镜效果位图。运行效果如图5所示：
 
-![图5](img/5.png) <br /> (图5)
+In the code above, we created an original bitmap, a blurred filter effect bitmap. The operation effect is shown in Figure 5.
+
+![图5](img/5.png)<br/> (Fig. 5)
 
 
 

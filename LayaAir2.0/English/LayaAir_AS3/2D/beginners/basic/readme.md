@@ -1,19 +1,19 @@
-# 显示对象及相关概念
+#Display objects and related concepts
 
-### 舞台
+###Stage
 
-​        舞台是显示游戏元素的平台，在游戏视觉编程里，一切游戏的元素必须添加到舞台才能被显示。因此，舞台也是放置显示对象的最终容器。
+Stage is a platform to display game elements. In game visual programming, all game elements must be added to the stage to be displayed. Therefore, the stage is also the final container for the display object.
 
-​        同时，舞台也是一种可以显示的对象，从编程的角度讲，任何对象都具有属性和行为。如，舞台对象具有宽、高、帧频等属性，具有添加显示对象的行为。
-
-
-
-### 显示对象
-
-​        那什么是显示对象呢？一种入门级的理解，可以认为一切在舞台上可见的东西都能被称为显示对象。但实际上，显示对象既包括了可见的图形、文字、图片、视频等，也包括不可见的音频和显示对象容器等。
+At the same time, the stage is also a kind of object that can be displayed. From the programming point of view, any object has attributes and behavior. For example, the stage object has the properties of wide, high and frame frequency, and has the behavior of adding display objects.
 
 
 
-### 显示列表
+###Display objects
 
-​        显示对象在舞台上显示之前，还需要有一个过程，那就是先添加到显示列表中。显示列表的作用就是将显示对象进行数据索引，用于层级的显示顺序（后添加的在最上层显示），然后在舞台上显示。
+What is the display object? An entry-level understanding is that everything visible on the stage can be called a display object. But in fact, the display object includes not only visible graphics, text, pictures, videos, but also invisible audio and display object containers.
+
+
+
+###Display list
+
+Before the display object is displayed on the stage, there is a process that needs to be added to the display list first. The function of the display list is to index the display objects, use them for the display order of the hierarchy (which is added at the top), and then display them on the stage.

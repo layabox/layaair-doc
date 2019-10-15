@@ -1,137 +1,150 @@
-# 如何用LayaNative测试App运行项目
+#How to Test App Running Project with LayaNative
 
-### 一、测试App的下载与安装
+###I. download and install the test app
 
-#### 1.显示测试App的下载二维码
+####1. Display downloaded 2-D code of test App
 
-打开LayaAirIDE，点击左上角的![图标](img/1_1.png)菜单按钮，弹出菜单栏（如图1）。
+Open LayaAirIDE and click on the top left corner![图标](img/1_1.png)Menu button, pop-up menu bar (Figure 1).
 
-点击菜单栏中的“工具”->“运行器下载”，弹出测试App的二维码下载地址（如图2）。
-
-
-  ![图片](img/1.png)<br />
-  图1
-
-​  ![图片](img/2.png)<br />
-​  图2
-
-#### 2.Android版本的下载和安装
-
-直接用android手机进行扫码，点击apk进行安装即可。
-
-**Tips：如果使用微信扫码，由于微信的安全设置，扫码后需要复制链接地址到手机浏览器中进行下载。**    
-
-#### 3.iOS版本的下载和安装
-
-　　用微信扫码后，点击“在Safari中打开”，在Safari浏览器中打开后点击**Install**按钮，然后点击安装即可，如下图所示：
-
-**步骤1：**
-
-​ ![图片](img/3.png)<br />
-​ 图3
-
-**步骤2：**
-
-  ![图片](img/4.png)<br />
-  图4
-
-**步骤3：**
-
-  ![图片](img/5.png)<br />
-  图5
-
-**Tips：**
-
-点击安装后，这里没有自动跳转功能，需要手动去系统桌面上看一下，是否存在Layabox的应用正在安装，如果正在安装，就等待安装结束后进行下一步操作。
-
-**步骤4：**
-
-安装成功后，点击运行会弹出"未受信任的企业开发者"，这个时候需要开发者自己进行设置一下。
-
-点击"设置"-->"通用"-->"设备管理"-->"点击LayaBox Network Technology.."-->"点击信任"。
-
-之后再打开LayaBox测试App就可以正常使用了，具体步骤如下所示：
-
-**步骤5：**
-
-​ ![图片](img/6.png)<br/>
-​	图6
+Click Tools - > Runner Download in the menu bar to pop up the 2-D code download address of the test App (Figure 2).
 
 
-**步骤6：**
-
-​	![图片](img/7.png)<br/>
-​	图7
 
 
-**步骤7：**
 
-​	![图片](img/8.png)<br/>
-	图8
+  ![图片](img/1.png)<br / >
+Figure 1
 
+​![图片](img/2.png)<br / >
+Figure 2
 
-**步骤8：**
+####2. Download and Installation of Android Version
 
-​	![图片](img/9.png)<br/>
-​	图9
+Scan code directly with Android phone and click on APK to install it.
 
-**步骤9：**
+**Tips: If you use Wechat Scan Code, because of the security settings of Wechat, you need to copy the link address to download it in the mobile browser.**    
 
-​	![图片](img/10.png)<br/>
-​	图10
+####3. iOS version download and installation
 
-### 二、使用测试App进行项目的测试
+After scanning with Wechat, click "Open in Safari" and open in Safari Browser, then click "Open in Safari".**Install**Click Install, as shown in the following figure:
 
-**步骤1：**
-
-打开应用之后，会看见如图11的界面：
-
-![图片](img/11.png)<br />
-图11
-
-**步骤2：**
-
-使用LayaAirIDE打开案例项目，点击菜单栏最右侧的二维码图标 ![二维码菜单栏图标](img/12_0.png) ，显示项目的二维码界面(如图12)。
-
-  ![二维码](img/12.png)<br />
-  图12
-
-**步骤3：**
-
-点击测试APP内的蓝色二维码图标（图13），进入扫码的界面。扫描右侧的layanative的二维码（图14），即可开启测试。
-
-  ![二维码](img/13.png)<br />
-  图13
-
-  ![二维码](img/14.png)<br />
-  图14
+**Step 1:**
 
 
-扫码成功后，测试App会运行案例项目（图15）。
 
-<!-- TODO: 也许需要换个项目的图片    -->
+​ ![图片](img/3.png)<br / >
+Figure 3
 
-  ![图片](img/15.png)<br />
-  图15
-
-
-**Tips：LayaNative不是浏览器，输入地址的请输入全路径，即使默认启动的是index.html，也要输入/index.js。**
-
-* http://testgame.layabox.com/index.js 正确  
-* http://192.168.0.100:8899/index.js 正确  
-* http://testgame.layabox.com/ 错误    
-* http://testgame.layabox.com 错误  
-* http://192.168.0.100:8899/ 错误  
-* http://192.168.0.100:8899 错误  
-
-<!-- TODO:等待发完后更换连接地址 **Tips：输入地址后，如果发现屏幕上没有显示任何画面，有可能是因为项目没有正确设置横竖屏，请参考文档：https://github.com/layabox/layaair-doc/tree/master/Chinese/LayaNative/screen_orientation** -->
+**Step 2:**
 
 
-### 三、注意事项
 
-　　文本格式的文件（例如:ini、xml、html、json、js等）都必须是utf8编码格式，因为IOS设备现在尚不支持非utf8格式编码的文件。
+  ![图片](img/4.png)<br / >
+Figure 4
+
+**Step 3:**
 
 
-### 四、建议
 
-　　建议开发者学习一下android和ios开发的基本知识，使用过程中可以把移动设备连接到电脑上，随时查看log，log中有很多重要的信息，可以帮助开发者定位问题。比如：非utf8格式编码的文件名字、网络错误、下载错误等等。
+  ![图片](img/5.png)<br / >
+Figure 5
+
+**Tips:**
+
+Click Installation, there is no automatic jump function, you need to manually go to the system desktop to see if there are Layabox applications being installed, if it is being installed, wait for the next step after the installation.
+
+**Step 4:**
+
+When the installation is successful, clicking on the run will bring up "untrusted enterprise developers", which need to be set up by the developers themselves.
+
+Click Settings - > Universal - > Device Management - > LayaBox Network Technology. > Click Trust.
+
+Then open the LayaBox test App and you can use it properly. The specific steps are as follows:
+
+**Step 5:**
+
+​![图片](img/6.png)<br/>
+Figure 6
+
+
+**Step 6:**
+
+​![图片](img/7.png)<br/>
+Figure 7
+
+
+**Step 7:**
+
+​![图片](img/8.png)<br/>
+Figure 8
+
+
+**Step 8:**
+
+​![图片](img/9.png)<br/>
+Figure 9
+
+**Step 9:**
+
+​![图片](img/10.png)<br/>
+Figure 10
+
+###II. Testing the Project with Test App
+
+**Step 1:**
+
+When you open the application, you will see the interface shown in Figure 11:
+
+![图片](img/11.png)<br / >
+Figure 11
+
+**Step 2:**
+
+Use Laya air ide to open the case project, and click the QR code icon on the far right of the menu bar.![二维码菜单栏图标](img/12_0.png), display the QR code interface of the project (as shown in Figure 12).![二维码](img/12.png)<br / >
+Figure 12
+
+**Step 3:**
+
+Click on the blue two-dimensional code icon in the test APP (Figure 13) to enter the scanned interface. Scanning the layanative two-dimensional code on the right (Figure 14) opens the test.
+
+
+
+  ![二维码](img/13.png)<br / >
+Figure 13
+
+
+
+  ![二维码](img/14.png)<br / >
+Figure 14
+
+
+When the scan is successful, the test App runs the case project (Figure 15).
+
+<! - TODO: Maybe you need to change the picture of the project - >
+
+
+
+  ![图片](img/15.png)<br / >
+Figure 15
+
+
+**Tips: LayaNative is not a browser. Enter the full path for the address. Even if index. html is started by default, enter / index. js.**
+
+* http://testgame.layabox.com/index.js is correct
+* http://192.168.0.100:8899/index.js is correct
+* http://testgame.layabox.com/error
+* http://testgame.layabox.com error
+* http://192.168.0.100:8899/error
+* http://192.168.0.100:8899 error
+
+TODO: Wait to change the connection address ** Tips: After entering the address, if you find that there is no screen on the screen, it may be because the project has not set the horizontal and vertical screen correctly, please refer to the documentation: https://github.com/layabox/layaair-doc/tree/master/Chinese/LayaNative/screen_orientation** --> www.github.com/layabox/layaair-doc/tree/master/Chinese/LayaNative/screen_orientation**
+
+
+###Notes
+
+Text format files (such as ini, xml, html, json, js, etc.) must be utf8 encoding format, because IOS devices do not yet support non-UTF8 encoding files.
+
+
+###Four, suggestions
+
+It is suggested that developers learn the basic knowledge of Android and IOS development. Mobile devices can be connected to computers during the use process, and log can be viewed at any time. There are many important information in the log, which can help developers locate problems. For example: non-UTF8 format coded file names, network errors, download errors and so on.

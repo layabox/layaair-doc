@@ -2,20 +2,23 @@
 
 
 
-在PC电脑的浏览器上，我们经常发现LayaAir引擎绘制的矢量图会有一些锯齿，这是由于LayaAir引擎基于性能的考虑，做的优化处理，由于移动手机端的像素密度比较大，所以在PC上看起来明显的锯齿问题，其实在移动设备上基本上看不出来。
+In PC browsers, we often find that the vector graph drawn by LayaAir engine will have some sawtooth. This is because LayaAir engine optimizes the processing based on performance considerations. Because the pixel density of mobile phone is relatively high, the sawtooth problem on PC seems obvious, but in fact it can not be seen on mobile devices.
 
 
 
-### 开启锯齿消除设置
+###Open Sawtooth Elimination Settings
 
-如果有追求完美的开发者，也可以通过在`"Laya.init();"`初始化舞台的代码之前，加一行代码`“Laya.Config.isAntialias=true;”`开启锯齿消除设置，那么在手机端，就完全看不到锯齿了。当然，开启这个设置后是会增加性能的消耗。因此，建议游戏开发过程中尽可能少用矢量图形，即便使用后，基于性能考虑，尽可能不要开启锯齿消除设置。
+If there is a developer who pursues perfection, it can also be through`"Laya.init();"`Before initializing the stage code, add a line of code`“Laya.Config.isAntialias=true;”`Turn on the Sawtooth Elimination Settings, and you can't see the Sawtooth at the end of the phone at all. Of course, opening this setting will increase performance consumption. Therefore, it is suggested that vector graphics should be used as little as possible in the process of game development. Even after using vector graphics, the sawtooth elimination setting should not be turned on as much as possible based on performance considerations.
 
-**示例代码如下**：
+**The sample code is as follows**:
+
 
 ```javascript
+
     //消除矢量绘制的锯齿，但会增加性能消耗
         Laya.Config.isAntialias=true;
          
         //初始化舞台
         Laya.init(500, 300, WebGL);
 ```
+

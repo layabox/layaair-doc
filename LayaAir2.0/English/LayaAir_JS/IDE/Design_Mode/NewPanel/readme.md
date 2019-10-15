@@ -1,105 +1,109 @@
-# UI页面、粒子、动画、脚本新增面板详解
+#UI page, particle, animation, script add panel details
 
-　　 在项目管理器器中，右键可以新建UI页面、粒子、动画、脚本，如图1所示，本篇将针对这些功能的一些参数展开介绍。
+In the Project Manager, right-click can create new UI pages, particles, animations, scripts, as shown in Figure 1. This article will introduce some parameters of these functions.
 
-​        ![blob.png](img/1.png)<br/>
-​        	（图1）
+​![blob.png](img/1.png)<br/>
+(Fig. 1)
 
 
 
-### 一、新建UI页面
+###New UI Pages
 
-**在新建的面板中，`页面`栏里可以创建View与Dialog两种UI界面。如图2所示**：
+**In the newly built panel,`页面`In the column, you can create two UI interfaces, View and Dialog. As shown in Figure 2**:
+
+
 
 ​        ![blob.png](img/2.png)<br/>
-​        	（图2）
+(Figure 2)
 
-**【参数说明】**
+**[parameter description]**
 
-**页面类型**：
+**Page type**:
 
-　　 默认为View，该类型的页面，没有关闭功能，通常用于游戏背景与一直保持打开的层级页面。另一个选项类型为Dialog，Dialog继承自View，除View的所有功能外，还可以实现会话框的弹出、拖动，关闭窗口等功能，常用于游戏的弹出界面。
+The default is View, a type of page that has no shutdown function and is usually used for game background and hierarchical pages that remain open all the time. Another option type is Dialog, which inherits from View. In addition to all the functions of View, Dialog can also realize the functions of pop-up, drag, closing windows, etc. It is often used in the pop-up interface of games.
 
-**页面名称**：
+**page name**:
 
-　　 新建的页面文件名，该项必须填写。 
+File name of the new page, which must be filled in.
 
-**参考视图**：
+**Reference view**:
 
-　　 参考视图是通过在设计界面的背景加载一张美术设计原图，方便UI的制作拼接与原设计保持一致的参照图片。该项为可选，参考视图的背景图片并不会导出到项目中，仅用于UI制作的参照。
+Reference View is a reference picture which is easy to make and match the original design by loading an original picture of art design in the background of the design interface. This item is optional. The background image of the reference view is not exported to the project, but is only used as a reference for UI production.
 
-**页面宽度**：
+**Page width**:
 
-　　 页面的宽，设置后超过宽度不会被计算，勾选“仅作为参考宽度”后，需要实时计算宽度，对性能会产生额外的压力，不建议勾选。
+The width of the page will not be calculated if it exceeds the width after setting. Checking "only as reference width" requires real-time calculation of the width, which will cause additional pressure on performance. Checking is not recommended.
 
-**页面高度**：
+**Page height**:
 
-　　 页面的高，设置后超过高度不会被计算，勾选“仅作为参考宽度”后，需要实时计算高度，对性能会产生额外的压力，不建议勾选。
+The height of the page will not be calculated if it exceeds the height after setting. Checking "only as the reference width" requires real-time calculation of the height, which will cause additional pressure on performance. Checking is not recommended.
 
-**参考背景**：
+**Reference background**:
 
-　　 参考背景与参考视图类似，仅用于UI制作的对比参照，不会在项目中生效。是可选项。
-
-
-
-
-
-### **二、新建粒子**
-
-　　 在新建粒子里，可以创建重力模式与半径模式的2D例子动画，也可以创建3D粒子动画。如下图所示：
-
-​        ![blob.png](img/3.png)<br/>
-​        	（图3）
-
-**【参数说明】**
-
-**粒子类型**：
-
-　　粒子类型为重力模式、半径模式、粒子3D模式三种，默认为重力模式。
-
-　　重力模式的粒子是一个角度向另一个方向呈发射式的粒子效果。
-
-　　半径模式是围绕中心点为半径的旋转式粒子效果。半径模式与重力模式没有根本性区别，重力模式通过调整参数可以实现半径模式的效果，半径模式也可以调整为重力模式的效果，区别仅在于初始参数的配置不同。
-
-　　粒子3D模式是基于3维的粒子效果。
-
-**粒子名称**：
-
-　　 新建的粒子文件名，该项必须填写。
+The reference background is similar to the reference view. It is only used as a reference for UI production and will not work in the project. It is optional.
 
 
 
 
 
-### **三、新建动画**
+### **2. New Particles**
 
-　　  在新建动画里，可以创建一个帧动画。
+In the new particle, we can create 2D example animation of gravity mode and radius mode, and 3D particle animation. As shown in the following figure:
+
+​![blob.png](img/3.png)<br/>
+(Figure 3)
+
+**[Description of parameters]**
+
+**Particle type**:
+
+Particle types are gravity mode, radius mode and particle 3D mode, and gravity mode is defaulted.
+
+Gravity-mode particles are particles that emit at one angle in another direction.
+
+The radius mode is a rotating particle effect with radius around the center point. There is no fundamental difference between radius model and gravity model. The effect of radius model can be achieved by adjusting parameters of gravity model. The effect of radius model can also be adjusted to gravity model. The difference lies only in the different configuration of initial parameters.
+
+Particle 3D mode is based on three-dimensional particle effects.
+
+**Particle name**:
+
+The new particle file name must be filled in.
+
+
+
+
+
+### **3. New Animation**
+
+In the new animation, you can create a frame animation.
+
+
 
 ​        ![blob.png](img/4.png)<br/>
-​        	（图4）
+(Figure 4)
 
-**【参数说明】**
+**[Description of parameters]**
 
-**动画类型**：
+**Animation type**:
 
-　　 动画类型为GraphicAnimation与EffectAnimation两种。
+Animation types are Graphic Animation and Effect Animation.
 
-　　 GraphicAnimation是默认选项，该项可以创建一个包含多个动画效果的时间轴动画。
+Graphic Animation is the default option to create a timeline animation with multiple animation effects.
 
-　　 EffectAnimation为动画模板，只能创建一个动画效果的模板，将效果作用于某个组件，而不能独立显示动画效果。
+Effect Animation is an animation template. It can only create a template of animation effect, which acts on a component, but can not display the animation effect independently.
 
-**动画名称**：
+**Animation name**:
 
-　　 新建的帧动画文件名，该项必须填写。
+New frame animation file name, the item must be filled in.
 
-**动画宽度**：
+**Animation width**:
 
-　　动画宽度的设置仅作为设计时的背景宽度使用，在游戏运行中该设置无效。
+The setting of animation width is only used as the background width at design time, which is invalid during game operation.
 
-**动画高度**：
+**Animation height**:
 
-　　 动画高度的设置仅作为设计时的背景高度使用，在游戏运行中该设置无效。
+The setting of animation height is only used as the background height at the time of design, which is invalid in the game operation.
 
-**参考背景**：
+**Reference background**:
 
-　　 参考背景也仅用于动画制作的背景色对比参照，不会在项目中生效。是可选项。
+Reference background is only used for background color contrast in animation production, and will not work in the project. It is optional.

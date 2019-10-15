@@ -1,224 +1,226 @@
-# 2D物理系统
+#2D Physical System
 
-### 1. 2D物理系统概述
+###1. Overview of 2D Physical Systems
 
-​        在游戏开发中，物理系统虽说不是每款必用，但它是提升游戏用户体验的重要因素之一，一些经典的物理游戏如：愤怒的小鸟，小鳄鱼顽皮爱洗澡等，都是用物理系统制作的丰富关卡，风靡全球，伴随着广大游戏开发者的需求以及引擎的迭代，Laya2.0集成了Box2D物理系统，对Box2D进行封装之后，使得开发者可以免去接入Box2D物理系统需要面对的种种困难，和使用不便。
+In game development, physical system is not necessary for every game, but it is one of the important factors to enhance the user experience. Some classical physical games, such as Angry Birds, Little Crocodile Naughty and Bath-loving, are rich checkpoints made by physical system, which are popular all over the world. With the needs of game developers and the iteration of engine, Laya 2.0 integrates B. Ox2D physical system, after encapsulating Box2D, makes it possible for developers to avoid all kinds of difficulties and inconvenience in accessing Box2D physical system.
 
-​	 LayaAir引擎中集成的Box2D物理系统，首先要了解刚体`rigidbody` 和碰撞体`collider`，当物体包含刚体的时候就可以收到物理引擎的影响，当物体包含碰撞体的时候物体可以发生碰撞，当物体含有碰撞体不含有刚体的时候可以被碰撞但不发生物理运动学动力影响。
+Box2D physical systems integrated in LayaAir engines need to understand rigid bodies first`rigidbody`Collision body`collider`When an object contains a rigid body, it can receive the influence of the physical engine. When an object contains a collision body, it can collide. When an object contains a collision body and does not contain a rigid body, it can collide without physical kinematics and dynamics.
 
-刚体`rigidbody` ：刚体是指在运动中和受力作用后，形状和大小不变，而且内部各点的相对位置不变的物体。
+rigid body`rigidbody`Rigid body refers to an object whose shape and size remain unchanged and the relative position of each point remains unchanged in motion and after being acted upon by force.
 
-碰撞体`collider`：碰撞体是给物体加一个判定框，当碰撞框重叠的时候，两物体发生碰撞。
+Collision body`collider`The collision body is to add a judgment box to the object. When the collision frame overlaps, two objects collide.
 
-关节`joint`: 关节可以对两个或多个物体进行一种约束。
+joint`joint`Joints can constrain two or more objects.
 
-**Box2D支持的关节有**：
+**Box2D-supported joints include**:
 
-距离关节`DistanceJoint`：两个物体上面各自有一点，两点之间的距离固定不变。
+Distance joint`DistanceJoint`There is one point on each object, and the distance between the two points is fixed.
 
-齿轮关节`GearJoint`：用来模拟两个齿轮间的约束关系，齿轮旋转时，产生的动量有两种输出方式，一种是齿轮本身的角速度，另一种是齿轮表面的线速度。
+Gear joint`GearJoint`To simulate the constraint relationship between two gears, there are two ways to output the momentum generated when the gear rotates, one is the angular speed of the gear itself, the other is the linear speed of the gear surface.
 
-马达关节`MotorJoint`:用来限制两个刚体，使其相对位置和角度保持不变，马达关节永远向目标点移动，并且保持特定的角度。
+Motor joint`MotorJoint`It is used to restrict two rigid bodies so that their relative position and angle remain unchanged. The motor joints always move to the target point and maintain a specific angle.
 
-鼠标关节`MouseJoint`：用于鼠标操控物体。它试图将物体拖向当前鼠标光标的位置。而在旋转方面就没有限制。
+Mouse joint`MouseJoint`Used for mouse control object. It tries to drag the object to the current mouse cursor position. There are no restrictions on rotation.
 
-平移关节`PrismaticJoint` ：  移动关节允许两个物体沿指定轴相对移动，它会阻止相对旋转。
+prismatic joint`PrismaticJoint`: a moving joint allows two objects to move relative to each other along a specified axis, which prevents relative rotation.
 
-滑轮关节`PulleyJoint`：它将两个物体接地(ground)并彼此连接，当一个物体上升，另一个物体就会下降。
+Pulley joint`PulleyJoint`It ground two objects and connect them. When one object rises, the other object falls.
 
-旋转关节`RevoluteJiont`：强制两个物体共享一个锚点，两个物体相对旋转。
+Revolving joint`RevoluteJiont`Force two objects to share an anchor point and rotate relative to each other.
 
-绳索关节`RopeJoint` ：限制两个点之间的最大距离。即使在很大的负载下也阻止连接的物体之间的拉伸。
+Rope joint`RopeJoint`Limit the maximum distance between two points. Even under heavy loads, it prevents tension between connected objects.
 
-焊接关节`WeldJoint`：使两个物体不能相对运动，两个刚体的相对位置和角度都保持不变，像一个整体。
+Welded joint`WeldJoint`The relative position and angle of the two rigid bodies remain unchanged as a whole.
 
-轮子关节`WheelJoint`：围绕节点旋转，包含弹性属性，使得刚体在节点位置发生弹性偏移。
+Wheel joint`WheelJoint`Rotating around the node, including the elastic properties, makes the rigid body elastic offset at the node position.
 
-### 2.刚体组件介绍
+###2. Introduction of Rigid Body Components
 
-#### 2.1 刚体
+####2.1 rigid body
 
-RigidBody类继承自 Component，刚体支持三种类型:`static`，`dynamic`和`kinematic`，默认为`dynamic`。
+The RigidBody class inherits from Component, and rigid bodies support three types:`static`,`dynamic`and`kinematic`The default is`dynamic`。
 
-`static`为静态类型，静止不动，不受重力影响，质量无限大，可以通过节点移动，旋转，缩放进行控制;
+`static`Static type, static, not affected by gravity, infinite mass, can be controlled by node movement, rotation, zooming;
 
-在模拟环境下静态物体是不会移动的，就好像有无限大的质量。在Box2D的内部会将质量至反，存储为零。静态物体有零速度。静态物体不能和其它静态或运动学物体进行碰撞。
+Static objects do not move in simulated environments, as if they had infinite mass. Inside Box2D, the quality is reversed and stored to zero. Static objects have zero velocity. Static objects cannot collide with other static or kinematic objects.
 
-`dynamic`为动态类型，受重力影响;
+`dynamic`It is a dynamic type, influenced by gravity.
 
-动态物体可以进行全模拟。它们可以被用户手动移动，但是通常情况下会根据受力进行移动。动态物体可以和任何物体发生碰撞。动态物体总是拥有有限的非零质量。如果你尝试设置动态物体的质量为零，它会自动设置一个1千克质量的物体。
+Dynamic objects can be fully simulated. They can be moved manually by the user, but usually by force. Dynamic objects can collide with any object. Dynamic objects always have finite non-zero mass. If you try to set the mass of a dynamic object to zero, it will automatically set an object with a mass of 1 kilogram.
 
-`kinematic`为运动类型，不受重力影响，可以通过施加速度或者力的方式使其运动。
+`kinematic`For the type of motion, which is not affected by gravity, it can be made to move by applying speed or force.
 
-运动学物体在模拟环境中根据自身的速度进行移动。运动学物体自身不受力的作用。虽然用户可以手动移动它，但是通常情况下我们会设置它的速度来进行移动。运动学物体的行为就像是有无限大的质量，尽管如此，在Box2D内部还是会对运动学物体的质量至反设置为零。运动学物体不能和其它静态或运动学物体进行碰撞。
+Kinematic objects move at their own speed in a simulated environment. The kinematic object itself is not affected by force. Although users can move it manually, we usually set its speed to move. Kinematic objects behave as if they have infinite mass. Nevertheless, within Box2D, the mass of a kinematic object is set to zero. Kinematic objects cannot collide with other static or kinematic objects.
 
-刚体的类型是强制性的，刚体组件如下图：
+The type of rigid body is mandatory. The rigid body components are as follows:
 
 ![图1](img/1.png)<br/>
 
-#### 属性说明
 
-##### type 
 
-前文中提到三种类型:`static`，`dynamic`和`kinematic`，默认为`dynamic`。
+####Attribute specification
 
-##### gravityScale  
+#####Type
 
-重力缩放系数，默认为1，即正常重力，设置为0为没有重力。
+Three types are mentioned in the preceding article:`static`,`dynamic`and`kinematic`The default is`dynamic`。
 
-##### angularVelocity
+#####GravityScale
 
-角速度，设置会导致旋转,单位为弧度，实际使用中需要约束。
+Gravity scaling coefficient, default 1, that is, normal gravity, set to zero for no gravity.
 
-##### angularDampin
+#####Angular Velocity
 
-旋转速度阻尼系数，范围从0到无穷大，0表示没有阻尼，无穷大表示满阻尼，通常阻尼的值应该在0到0.1之间。
+Angular speed, set will lead to rotation, unit of radian, practical use needs to be constrained.
 
-##### linearVelocity
+#####Angular Dampin
 
-线性运动速度，需要输入向量，比如10,10，代表x轴向右速度10，y轴向下速度10。
+The damping coefficient of rotating speed ranges from 0 to infinity, 0 means no damping, infinity means full damping, and usually the value of damping should be between 0 and 0.1.
 
-##### linearDamping
+#####Linear Velocity
 
-线性速度阻尼系数，范围从0到无穷大，0表示没有阻尼，无穷大表示满阻尼，通常阻尼的值应该在0到0.1之间。
+Linear velocity requires input vectors, such as 10,10, representing the x-axis right velocity of 10 and the y-axis downward velocity of 10.
 
-##### bullet
+#####Linear Damping
 
-是否高速移动的物体，设置为true，可以防止高速穿透。
+Linear velocity damping coefficients range from 0 to infinity, 0 means no damping, infinity means full damping, usually the value of damping should be between 0 and 0.1.
 
-##### allowSleep
+#####Bullet
 
-是否允许休眠，允许休眠能提高性能,这个一般都要设置为true。
+Whether or not high-speed moving objects, set to true, can prevent high-speed penetration.
 
-##### allowRotation
+#####AllowSleep
 
-是否允许旋转，如果不希望刚体旋转，这设置为false。
+Whether dormancy is allowed or not, and whether dormancy is allowed can improve performance, this is usually set to true.
 
-##### group
+#####Allow Rotation
 
-指定了该主体所属的碰撞组，默认为0.
+Whether rotation is allowed or not, if you do not want the rigid body to rotate, this is set to false.
 
-碰撞规则如下：
+#####Group
 
- 1.如果两个对象group相等且
+Specifies the collision group to which the subject belongs, defaulting to 0.
 
-​      group值大于零，它们将始终发生碰撞
+The collision rules are as follows:
 
-​      group值小于零，它们将永远不会发生碰撞
+1. If two object groups are equal and
 
-​      group值等于0，则使用规则3
+Group values are greater than zero, and they will always collide
 
-  2.如果group值不相等，则使用规则3
+Group values are less than zero, and they will never collide
 
-  3.每个刚体都有一个category类别，此属性接收位字段，范围为[1,2^31]范围内的2的幂
+If the group value is equal to 0, rule 3 is used
 
-​     每个刚体也都有一个mask类别，指定与其碰撞的类别值之和（值是所有category按位AND的值）
+2. If the group values are not equal, rule 3 is used
 
-##### category
+3. Each rigid body has a category category, which receives bit fields ranging from the power of 2 in the [1,2^31] range.
 
-碰撞类别，使用2的幂次方值指定，有32种不同的碰撞类别可用。
+Each rigid body also has a mask class, specifying the sum of the class values that collide with it (the value is the value of all categories in bits AND)
 
-##### mask
+#####Category
 
-指定冲突位掩码碰撞的类别，category位操作的结果。
+The collision category is specified by the power of 2. There are 32 different collision categories available.
 
-##### label
+#####Mask
 
-自定义标签
+Specifies the category of collision between collision bitmasks and the result of category bit operations.
 
-#### 2.2 碰撞体 
+#####Label
 
-碰撞体是检测物理碰撞的框架，他永远跟随物体的刚体移动，不会产生偏差。
+Custom Label
 
-碰撞体有四种：
+####2.2 Collider
 
-矩形碰撞体，圆形碰撞体，线形碰撞体，多边形碰撞体。如图，每个碰撞体都是继承自碰撞体基类。
+The collision body is the frame for detecting physical collision. It always follows the rigid body of the object and does not produce deviation.
+
+There are four types of colliders:
+
+Rectangular collision body, circular collision body, linear collision body and polygon collision body. As shown in the figure, each collider inherits from the base class of the collider.
 
 ![图](img/collider.png)
 
-##### 碰撞体基类属性
+#####Base class attributes of collision bodies
 
-##### x,y 
+#####X, y
 
-相对节点x,y轴偏移。
+The relative node x, Y axis offset.
 
-##### friction
+#####Friction
 
-摩擦力，取值范围0-1，值越大，摩擦越大，默认值为0.2。
+Friction, the value range is 0-1, the larger the value, the greater the friction, the default value is 0.2.
 
-##### restitution
+#####Restitution
 
-弹性系数，取值范围0-1，值越大，弹性越大，默认值为0。
+Elasticity coefficient, range 0-1, the greater the value, the greater the elasticity, default value is 0.
 
-##### density
+#####Density
 
-密度值，值可以为零或者是正数，建议使用相似的密度，这样做可以改善堆叠稳定性，默认值为10。
+Density can be zero or positive. Similar density is recommended to improve stack stability. The default value is 10.
 
-##### isSensor
+#####IsSensor
 
-是否是传感器，传感器能够触发碰撞事件，但不会产生碰撞反应。可以理解为Trigger。
+Whether it is a sensor or not, the sensor can trigger collision events, but will not produce collision response. It can be understood as Trigger.
 
-##### label
+#####Label
 
-自定义标签
+Custom Label
 
-#### 矩形碰撞体
+####Rectangular Collider
 
 ![图1](img/boxcollider.png)
 
-##### 属性说明
+#####Attribute specification
 
-##### width,height
+#####Width, height
 
-矩形的宽度和高度。
+The width and height of the rectangle.
 
-##### fitsize按钮
+#####Fitsize button
 
-点一下这个按钮，碰撞体的大小就会自适应为节点宽高。
+Click on this button and the size of the collider will be adapted to the node width and height.
 
-#### 圆形碰撞体
+####Circular Collider
 
 ![图1](img/circle.png)
 
-##### 属性说明
+#####Attribute specification
 
-##### radius
+#####Radius
 
-圆的半径，必须为正数。
+The radius of a circle must be positive.
 
-#### 线形碰撞体
+####Linear impactor
 
 ![图1](img/chain.png)
 
-##### 属性说明
+#####Attribute specification
 
-##### points
+#####Points
 
-用逗号隔开的点的集合，格式：x,y,x,y ... 设置点之后，从第一个点依次连接到最后一个点的连线即为线形碰撞体。在编辑器中，在线上单击左键增加一个点，点可以拖拽，双击点会删除这个点。
+A set of points separated by commas, in the form of x, y, x, y... after setting points, the line connecting the first point to the last point in turn is a linear collider. In the editor, click the left key online to add a point, which can be dragged, and double-click will delete the point.
 
-#### 多边形碰撞体
+####Polygon Collider
 
 ![图1](img/poly.png)
 
 
 
-##### 属性说明
+#####Attribute specification
 
-##### points
+#####Points
 
-用逗号隔开的点的集合，格式：x,y,x,y .. 
+A set of points separated by commas in the form of x, y, x, y..
 
-2D多边形碰撞体，暂时不支持凹多边形，如果是凹多边形，先手动拆分为多个凸多边形
+2-D polygon collider, temporarily does not support concave polygon, if it is concave polygon, first manual split into several convex polygons
 
-节点个数最多是b2_maxPolygonVertices，这数值默认是8，所以点的数量不建议超过8个。
+The maximum number of nodes is B2 ﹣ maxpolygonvertices, which is 8 by default, so the number of points is not recommended to exceed 8.
 
 
 
-### 3. 物理演示
+###3. Physical demonstration
 
-#### 物理系统演示
+####Demonstration of Physical System
 
-新建一个2d示例项目，并且在编辑模式下创建一个场景,然后一系列操作，最终如效果如下，后续的章节会详细介绍这些效果如何制作。
+Create a new 2D sample project and create a scene in editing mode. Then a series of operations will be done. Finally, if the effect is as follows, subsequent chapters will explain in detail how to make these effects.
 
 ![图1](img/scene.gif)
 

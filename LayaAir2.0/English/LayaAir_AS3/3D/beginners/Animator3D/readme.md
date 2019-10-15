@@ -1,14 +1,16 @@
 #                   Laya2.0模型动画的使用
 
-laya2.0中对3D模型动画做了深度修改与优化，导致某些功能与1.0的使用方法不同或增加删除接口等！这里这篇文档主要针对最近开发者反馈较多的3D模型动画的播放问题暂停监听事件等问题的一个总结！
+In Laya 2.0, the 3D model animation has been deeply modified and optimized, resulting in some functions different from the use of 1.0 or adding deletion interfaces, etc. This document is a summary of the problems of suspension of monitoring events in the playback of 3D model animation, which has received more feedback from developers recently.
 
-### 一、动画的暂停
+###I. The pause of animation
 
-在1.0中我们的3D系统针对于动画播放的主动暂停是根据skinAni.player.stop();这个stop方法直接暂停动画，这个在2.0中我们进行了修改对3D动画的播放速度参数进行了优化！开发者可以直接使用动画的播放速度控制动画的暂停与播放，所以我们取消了1.0中stop方法，
+In 1.0, our 3D system's active pause for animation playback is based on skinani. Player. Stop (); this stop method directly pauses animation. In 2.0, we modified the playback speed parameters of 3D animation to optimize! Developers can use the playback speed of animation directly to control the pause and playback of animation, so we canceled the stop method in 1.0.
 
-2.0的3D动画暂停改为 Animator.speed=0;如图1
+2.0 3D animation pause changed to Animator. speed = 0; Figure 1
+
 
 ```javascript
+
 //添加蒙皮动画角色模型
 Sprite3D.load("h5/LayaScene_monkey/ACG_man.lh",Handler.create(this,function(sp:Sprite3D):void{
 //加载到场景
@@ -21,31 +23,35 @@ ani.speed = 0;//暂停动画播放
 }));
 ```
 
-（图1）
 
-### 二、动画的播放监听事件！
+(Fig. 1)
 
-在3D角色动画的使用中我们经常会对一个角色的动画播放状态进行监听来达到我们想要的攻击或者行走效果！，在2.0中我们给出了两种新的监听方式来进行动画监听。
+###Second, the broadcast of animation listening events!
 
-##### 1、当前动画播放的百分比
+In the use of 3D character animation, we often monitor the animation playing status of a character to achieve the desired attack or walking effect! In 2.0, we present two new ways to monitor animation.
+
+#####1. Percentage of current animation play
 
 ![1](img/1.png)  
 
-（图2）
 
-##### 当动画为非循环播放时
+(Fig. 2)
 
-如注释所写的相同当动画为**非循环**（非循环模式）播放的时候这个 normalizedTime会返回一个0.0~1的数1就是代表当前动画已经播放到百分之百也就是已经播放完成了，这个数就是可以理解为当前动画播放的百分比，0.1就是当前播放到百分之10了。
+#####When the animation is non-circular
 
-##### **当动画为循环播放时**
+If the comment is the same as the animation is**Non circulation**When playing, the normalized Time will return a number of 0.0-1, which means that the current animation has been played to 100% or has been played. This number can be understood as the percentage of the current animation playing, and 0.1 is the current 10%.
 
-这个值会在每遍播放完成后+1也就是说整数位为当前播放动画播放完成了多少次，而小数位为当前正在播放的动画的百分比。比如循环动画循环播放了3次了那这个数就应该是3.0当第四次播放到一半时这个数就应该为3.5.
+##### **When the animation is played in a loop**
 
-这样了解完返回值的意思我们就可以根据这个返回值进行动画的状态监听例：如图3
+This value will be + 1 after each playback, that is, how many times has the integer bit finished playing the current playback animation, and the decimal bit is the percentage of the current playback animation. For example, if the circular animation is played three times, the number should be 3.0. When the fourth time is played half, the number should be 3.5.
 
-我进行监听的动画是一个循环动画，当动画每次播放到百分之60到百分之50之间时我就让角色生成一个box，
+After understanding the meaning of the return value, we can animate the status monitoring example based on the return value: Figure 3
+
+The animation I monitor is a circular animation. When the animation reaches 60% to 50%, I make the character generate a box.
+
 
 ```javascript
+
 	public class LayaAir3D {
 		public var box :MeshSprite3D;
 		public var scene:Scene3D;
@@ -112,30 +118,34 @@ ani.speed = 0;//暂停动画播放
 	}
 ```
 
-（图3）
 
-### 三、unity中设置动画事件
+(Fig. 3)
 
-在unity的Animator中我们我们可以添加动画触发事件  AAA   如图4
+###3. Setting Animation Events in Unity
 
-这个事件就是说在动画播放到这个位置的时候，就会触发我们AAA这个名字的方法。
+In Unity's animator, we can add the animation trigger event AAA as shown in Figure 4.
 
-在unity中设置好事件然后Apply，最后导出动画模型。
+This event means that when the animation is played to this location, it will trigger the method of our AAA name.
+
+Set up the event in Unity, Apply it, and finally export the animation model.
 
 ![2](img/2.png) 
 
-（图4）
 
-在laya中我们就可以创建一个脚本来接收这个事件方法，
+(Fig. 4)
 
-首先我们在laya中创建一个脚本，脚本名不影响事件的触发所以是随意起名，在脚本中创建一个方法名字为”AAA“这个方法名要与unity中设置的事件名相同，如图5
+In laya, we can create a script to receive this event method.
+
+First, we create a script in laya. The script name does not affect the trigger of the event, so we name it randomly. In the script, we create a method named AAA. The method name should be the same as the event name set in unit, as shown in Figure 5.
 
 ![3](img/3.png) 
 
-（图5）
 
-然后我们只需要把这个脚本添加到动画节点上就可以了（*一定是动画节点就是你在unity中挂这个animator组件的那个物体节点上*）如图6
+(Fig. 5)
+
+Then we just need to add the script to the animation node (* must be the animation node, which is the object node where you hang the animator component in the unit *) as shown in Figure 6.
 
 ![4](img/4.png) 
 
-（图6）
+
+(Fig. 6)

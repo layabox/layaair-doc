@@ -1,26 +1,35 @@
-# Byte二进制读写
+#Byte Binary Reading and Writing
 
-在开发项目中，二进制的操作是不可或缺的。在html5时代，对二进制的支持已经有了很大的突破。但是api的繁琐，对开发者开发项目来说不太方便。在页游时代，ActionScript3.0的二进制数组ByteArray，功能完善，api操作简单易懂，因此Laya的Byte在参考ByteArray的同时承接了html5的TypedArray类型化数组的特点。下面看下主要的用法
+In the development project, binary operation is indispensable. In the era of HTML 5, there has been a great breakthrough in support of binary. But the complexity of API is not convenient for developers to develop projects. In the era of paging, the binary array ByteArray of ActionScript 3.0 has perfect functions and easy to understand. Therefore, Laya's Byte takes on the characteristics of HTML 5's TypedArray typed array while referring to ByteArray. Here's the main usage
 
-### 常用方法
+###common method
 
-- 构造方法
+- Construction method
 
-  #### 参数：
 
-  `length` :长度
 
-  当传入length参数时,一个内部数组缓冲区被创建,该缓存区的大小是传入的length大小。
+  ####Parameters:
 
-  `typedArray`:类型化数组
 
-  当传入一个包含任意类型元素的任意类型化数组对象(`typedArray)` (比如 **Int32Array)**作为参数时,typeArray被复制到一个新的类型数组。typeArray中的每个值会在复制到新的数组之前根据构造器进行转化.新的生成的类型化数组对象将会有跟传入的数组相同的length(译者注:比如原来的typeArray.length==2,那么新生成的数组的length也是2,只是数组中的每一项进行了转化)。
+  `length`Length
 
-  `ArrayBuffer`：二进制数据缓冲区。
+When the length parameter is passed in, an internal array buffer is created, and the size of the buffer is the length size of the passed in.
 
-  上面的三种方法都可以实例化一个Byte，根据参数的不同创建二进制数据。
 
-  ```typescript
+  `typedArray`Typed arrays
+
+When an arbitrarily typed array object containing arbitrarily typed elements is passed in（`typedArray)`(for example**Int32Array)**As a parameter, typeArray is copied to a new type array. Each value in typeArray is converted according to the constructor before it is copied to the new array. The newly generated typed array object will have the same length as the incoming array.
+
+
+  `ArrayBuffer`Binary data buffer.
+
+All three methods above can instantiate a Byte and create binary data according to the different parameters.
+
+
+
+  
+```typescript
+
   //实例化一个二进制数组Byte
   var byte:Byte = new Byte();
   //或者传入一个类型化数组
@@ -31,14 +40,19 @@
   var byte:Byte = new Byte(buffer);
   ```
 
-  ​
+
+​
 
 
-- **writeArrayBuffer**(arraybuffer:*, offset:uint = 0, length:uint = 0):void
+-**Write Array Buffer**(arraybuffer:*, offset: uint = 0, length: uint = 0): void
 
-  写入指定的二进制缓冲数据。指定数据的偏移量和长度，如下：
+Writes the specified binary buffer data. The offset and length of the specified data are as follows:
 
-  ```typescript
+
+
+  
+```typescript
+
   var byte:Byte = new Byte();
   var byte1:Byte = new Byte();
   byte1.writeFloat32(20.0);//写入一个四个字节的浮点数
@@ -49,119 +63,178 @@
   trace(byte.readUTFString())//从byte中读出字符串。
   ```
 
-- 读取数据
 
-  **getByte**():int在字节流中读一个字节。
-
-  **getInt16**():int在当前字节偏移量位置处读取 Int16 值。
-
-  **getInt32**():int在当前字节偏移量位置处读取 Int32 值
-
-  **getFloat32**():Number在指定字节偏移量位置处读取 Float32 值。
-
-  **getFloat32Array**(start:int, len:int):*从指定的位置读取指定长度的数据用于创建一个 Float32Array 对象并返回此对象。
-
-  **getFloat64**():Number在指定字节偏移量位置处读取 Float64 值。
-
-  **getInt16**():int 在当前字节偏移量位置处读取 Int16 值。
-
-  **getInt32**():int在当前字节偏移量位置处读取 Int32 值。
-
-  **getUint8**():uint在当前字节偏移量位置处读取 Uint8 值。
-
-  **getUint16**():uint在当前字节偏移量位置处读取 Uint16 值。
-
-  **getUint32**():uint在当前字节偏移量位置处读取 Uint32 值。
-
-  **getInt16Array**(start:int, len:int):*从指定的位置读取指定长度的数据用于创建一个 Int16Array 对象并返回此对象。
-
-  **getString**():String读取字符型值。
-
-  **getUTFBytes**(len:int = -1):String 读字符串，必须是 writeUTFBytes 方法写入的字符串。
-
-  **getUTFString**():String 读取 UTF-8 字符串。
+- Read data
 
 
+  **GetByte**(): int reads a byte in the byte stream.
 
-----------------------------------写入数据----------------------------------
 
-- **writeByte**(value:int):void在字节流中写入一个字节。
+  **GetInt16**(): int reads the Int16 value at the current byte offset position.
 
-  ```typescript
+
+  **GetInt32**(): int reads the Int32 value at the current byte offset position
+
+
+  **GetFloat32**(): Number reads Float32 at the specified byte offset position.
+
+
+  **GetFloat32 Array**(start: int, len: int): * Read the specified length of data from the specified location to create a Float32Array object and return it.
+
+
+  **GetFloat64**(): Number reads the Float64 value at the specified byte offset position.
+
+
+  **GetInt16**(): int reads the Int16 value at the current byte offset position.
+
+
+  **GetInt32**(): int reads the Int32 value at the current byte offset position.
+
+
+  **GetUint8**(): uint reads the Uint8 value at the current byte offset position.
+
+
+  **GetUint16**(): uint reads the Uint16 value at the current byte offset position.
+
+
+  **GetUint32**(): uint reads the Uint32 value at the current byte offset position.
+
+
+  **GetInt16 Array**(start: int, len: int): * Read the specified length of data from the specified location to create an Int16Array object and return it.
+
+
+  **GetString**(): String reads character values.
+
+
+  **GetUTFBytes**(len: int = 1): String reads a string, which must be written by the writeUTFBytes method.
+
+
+  **GetUTFString**(): String reads UTF-8 strings.
+
+
+
+----------------------------------Write data----------------------------------
+
+-**WriteByte**(value: int): Void writes a byte in the byte stream.
+
+
+
+  
+```typescript
+
    var byte:Byte = new Byte();
    byte.writeByte(10);//0-255之间
   ```
 
-- **writeFloat32**(value:Number):void在当前字节偏移量位置处写入 Float32 值。范围是$\left[-2^{128}, 2^{127}\right]$，约为-3.4E38—3.4E+38。
 
-  ```typescript
+-**WriteFloat32**(value: Number): Void writes the Float32 value at the current byte offset position. The range is $ left [- 2 ^{128}, 2 ^{127}  right]$, about - 3.4E38 - 3.4E + 38.
+
+
+
+  
+```typescript
+
   var byte:Byte = new Byte();
   byte.writeFloat32(10.021);
   ```
 
-- **writeFloat64**(value:Number):void写入float64位数值 其数值范围为-1.7E308～1.7E+308。
 
-- **writeInt16**(value:int):void在当前字节偏移量位置处写入 Int16 值。范围-32768 到 +32767之间。
+-**WriteFloat64**(value: Number): Void writes float64-digit values ranging from - 1.7E308 to 1.7E+308.
 
-  ```typescript
+-**WriteInt16**(value: int): Void writes the Int16 value at the current byte offset position. Range - 32768 to + 32767.
+
+
+
+  
+```typescript
+
   var byte:Byte = new Byte();
   byte.writeInt16(120);
   ```
 
 
-- **writeInt32**(value:int):void在当前字节偏移量位置处写入 Int32 值。-2,147,483,648 到 +2,147,483,647 之间的有符号整数。
 
-- **writeUint16**(value:int):void在当前字节偏移量位置处写入 Uint16 值。
+-**WriteInt32**(value: int): Void writes the Int32 value at the current byte offset position. - Signed integers between 2,147,483,648 and + 2,147,483,647.
 
-- **writeUint32**(value:int):void在当前字节偏移量位置处写入 Uint32 值。
+-**WriteUint16**(value: int): Void writes the Uint16 value at the current byte offset position.
 
-- **writeUint8**(value:int):void在当前字节偏移量位置处写入 Uint8 值。
+-**WriteUint32**(value: int): Void writes the Uint32 value at the current byte offset position.
 
-- **writeUTFBytes**(value:String):void写入字符串，该方法写的字符串要使用 readUTFBytes 方法读取。
+-**WriteUint8**(value: int): Void writes the Uint8 value at the current byte offset position.
 
-- **writeUTFString**(value:String):void将 UTF-8 字符串写入字节流。
+-**WritteUTFBytes**(value: String): Void writes a string, which is read by the readUTFBytes method.
 
-- **clear**():void清除数据。
+-**WritteUTFString**(value: String): void writes UTF-8 strings to the byte stream.
 
-  ```typescript
+-**Clear**(): void clears data.
+
+
+
+  
+```typescript
+
   var byte:Byte = new Byte();
   byte.clear();//清除所有数据归零。
   ```
 
-- **getSystemEndian()**:String[static] 获取系统的字节存储顺序。
 
-  ```typescript
+-**GetSystem Endian ()**String [static] gets the byte storage order of the system.
+
+
+
+  
+```typescript
+
   trace(Byte.getSystemEndian());//打印系统的字节顺序
   ```
 
 
-- ### 属性
 
-- **BIG_ENDIAN** : String= bigEndian[static] 表示多字节数字的最高有效字节位于字节序列的最前面。
 
-- **LITTLE_ENDIAN** : String= littleEndian[static] 表示多字节数字的最低有效字节位于字节序列的最前面。
 
-- **[pos]** : int当前读取到的位置。
 
-  ```typescript
+
+- ###attribute
+
+- ** BIG_ENDIAN**String = bigEndian [static] indicates that the most significant byte of a multibyte number is at the front of the byte sequence.****
+****
+-**LITTLE_ENDIAN**String = littleEndian [static] indicates that the lowest valid byte of a multibyte number is at the front of the byte sequence.****
+****
+-**[pos]**The current read position of int.****
+
+
+
+  
+```typescript
+
   var byte:Byte = new Byte();
   byte.writeInt16(120);
   byte.pos =0;//读取位置归零。
   ```
+****
 
 
-- **length**: int字节长度。
+-**Length**Int byte length.****
+****
+-**Endian**String byte order.****
 
-- **endian** : String字节顺序。
 
-  ```typescript
+
+  
+```typescript
+
   var byte:Byte = new Byte();
   byte.endian = Byte.BIG_ENDIAN;//设置为大端；
   ```
+****
 
-- **bytesAvailable** : int[read-only] 可从字节流的当前位置到末尾读取的数据的字节数。
+-**Bytes Available**: The number of bytes that int [read-only] can read from the current location of the byte stream to the end.
 
-  ```typescript
+
+
+  
+```typescript
+
   var byte:Byte = new Byte();
   byte.writeFloat32(20.0);
   byte.writeInt16(16);
@@ -170,9 +243,12 @@
   trace(byte.bytesAvailable)
   ```
 
-下面我们通过一个完整的代码来演示下这个类的应用，比如网络连接中，我们接收和发送网络消息。
+
+Next, we will demonstrate the application of this class through a complete code, such as network connection, we receive and send network messages.
+
 
 ```typescript
+
 var msg:Object ={name:"xxx",age:18,weight:65.5,height:175};
 var byte:Byte = new Byte();//实例化byte数组
 byte.endian = Byte.LITTLE_ENDIAN;//设置大小端
@@ -182,9 +258,12 @@ byte.writeFloat32(msg.weight);
 byte.writeInt16(msg.height);
 ```
 
-输出看下结果：
+
+The output is as follows:
+
 
 ```typescript
+
 //设置pos为0 开始从头开始按照写入的顺序读取读取
 byte.pos = 0;
 trace(byte.getUTFString());
@@ -193,16 +272,13 @@ trace(byte.getFloat32());
 trace(byte.getInt16());
 ```
 
-## h5 类型化数组
 
- Laya的byte封装的就是h5的类型化数组，开发者可以参考mdn的官方api说明。来扩展自己的项目的应用。
+##H5 typed array
 
-- [DataView](https://developer.mozilla.org/zh-CN/docs/Web/JavaScript/Reference/Global_Objects/DataView)视图提供了一个与平台中字节在内存中的排列顺序(字节序)无关的从[`ArrayBuffer`](https://developer.mozilla.org/zh-CN/docs/Web/JavaScript/Reference/Global_Objects/ArrayBuffer)读写多数字类型的底层接口.
-- [Uint8Array](https://developer.mozilla.org/zh_CN/docs/Web/JavaScript/Reference/Global_Objects/Uint8Array) 数组类型表示一个8位无符号整型数组，创建时内容被初始化为0。创建完后，可以以对象的方式或使用数组下标索引的方式引用数组中的元素。
-- **Int8Array** :类型数组表示二进制补码8位有符号整数的数组。内容初始化为0。 一旦建立，你可以使用对象的方法引用数组中的元素，或使用标准数组索引语法。
-- **Int16Array()**;类型数组表示二进制补码16位有符号的数组。
-- **Uint16Array()**;类型数组表示二进制补码16位无符号的数组
-- **Int32Array()**;类型数组表示二进制补码32位有符号的数组
-- **Uint32Array()**;类型数组表示二进制补码32位无符号的数组
-- **Float32Array()**;类型数组表示32位浮点数数组。
-- **Float64Array()**;类型数组表示64位浮点数数组。
+Laya's byte encapsulates a typed array of h5, and developers can refer to the official API instructions of mdn. To expand the application of their own projects.
+
+##-[DataView](https://developer.mozilla.org/zh-CN/docs/Web/JavaScript/Reference/Global_Objects/DataView)Views provide a sequence (byte order) independent of the order of bytes in memory in the platform.[`ArrayBuffer`] (https://developer.mozilla.org/zh-CN/docs/Web/JavaScript/Reference/Global_Objects/ArrayBuffer) Read and write the underlying interface of multi-character type. [Uint8Array](https://developer.mozilla.org/zh_CN/docs/Web/JavaScript/Reference/Global_Objects/Uint8Array)The array type represents an 8-bit unsigned integer array whose content is initialized to 0 at creation time. Once created, elements in an array can be referenced either as objects or as array subscript indexes.
+##-**Int8Array**: type array represents an array of 8-bit signed integers with binary complement. Content initialization is 0. Once established, you can use the object method to reference elements in an array, or use the standard array indexing syntax. **Int16Array ()**; type array represents a 16 bit signed array of binary complements.
+##-**Uint16Array ()**Type arrays represent 16-bit unsigned arrays of binary complements **Int32Array ()**; type array represents a 32-bit signed array of binary complements
+##-**Uint32Array ()**Type arrays represent 32-bit unsigned arrays of binary complements **Float32Array ()**Type arrays represent 32-bit floating-point arrays.
+-**Float64array()**Type arrays represent 64-bit floating-point arrays.

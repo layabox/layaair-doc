@@ -1,16 +1,19 @@
-# 资源加载
+#Resource loading
 
 ###### *version :2.0.1beta   Update:2019-3-19*
 
-讲完了资源的各种类型，我们来实际操作进行加载这些资源。本次示例地址（[demo地址](https://layaair.ldc.layabox.com/demo2/?language=ch&category=3d&group=Resource&name=LoadResourceDemo)）;
 
-### 单个资源加载
+讲完了资源的各种类型，我们来实际操作进行加载这些资源。本次示例地址（[demo地址](https://layaair.ldc.layabox.com/demo2/?language=ch&category=3d&group=Resource&name=LoadResourceDemo));
 
-#### 1. 场景加载
+###Single resource loading
 
-单个场景加载的时候，使用的Scene3D.load方法。
+####1. Scenario loading
+
+Scene3D. load method is used when loading a single scene.
+
 
 ```typescript
+
 //3d场景加载
 Laya.Scene3D.load("res/TerrainScene/XunLongShi.ls",Laya.Handler.create(null,function(scene){
     //加载完成获取到了Scene3d
@@ -27,15 +30,18 @@ Laya.Scene3D.load("res/TerrainScene/XunLongShi.ls",Laya.Handler.create(null,func
 }));
 ```
 
-查看加载后的效果（图1）。
 
-![](img/1.png)<br>(图片1)
+View the effect after loading (Figure 1).
 
-#### 2. 材质加载
+![] (img/1.png)<br> (picture 1)
 
-在单个材质进行加载的时候，我们使用的BaseMaterial.load方法。在这次示例里，我们加载了一个天空盒给上面的示例摄影机加上。
+####2. Material loading
+
+We use the BaseMaterial. load method when loading a single material. In this example, we loaded a sky box to add to the example camera above.
+
 
 ```typescript
+
 //材质加载		
 Laya.BaseMaterial.load("res/threeDimen/skyBox/skyBox2/skyBox2.lmat", Laya.Handler.create(null, function(mat){
     //获取相机的天空渲染器
@@ -47,15 +53,18 @@ Laya.BaseMaterial.load("res/threeDimen/skyBox/skyBox2/skyBox2.lmat", Laya.Handle
 }));
 ```
 
-来看下效果（图2）。
 
-![](img/2.png)<br>(图2)
+Take a look at the effect (Figure 2).
 
-#### 3. 纹理加载
+![] (img/2.png)<br> (Figure 2)
 
-​	加载单个纹理使用Texture2D.load方法。这里我们创建了一个正方体，并且将加载的纹理设置为他的纹理。这个操作实际上和3D简单示例的操作是相同的。
+####3. Texture loading
+
+The Texture2D.load method is used to load a single texture. Here we create a cube and set the loaded texture to its texture. This operation is actually the same as that of a simple 3D example.
+
 
 ```typescript
+
 //加载纹理
 Laya.Texture2D.load("res/threeDimen/texture/earth.png", Laya.Handler.create(null, function(tex) {
     //使用纹理
@@ -68,15 +77,18 @@ Laya.Texture2D.load("res/threeDimen/texture/earth.png", Laya.Handler.create(null
 }));
 ```
 
-效果如下（图3）:
 
-![](img/3.png)<br>(图3)
+The effect is as follows (Figure 3):
 
-#### 4. 网格加载
+![] (img/3.png) < br > (fig. 3)
 
-​	单个网格加载使用的 Mesh.load 方法。
+####4. Grid Loading
+
+Mesh.load method for single grid loading.
+
 
 ```typescript
+
 //加载Mesh
 Laya.Mesh.load("res/threeDimen/skinModel/LayaMonkey/Assets/LayaMonkey/LayaMonkey-LayaMonkey.lm", Laya.Handler.create(null,function(mesh) {
     var layaMonkey = sprite3D.addChild(new Laya.MeshSprite3D(mesh));
@@ -86,15 +98,18 @@ Laya.Mesh.load("res/threeDimen/skinModel/LayaMonkey/Assets/LayaMonkey/LayaMonkey
 }));
 ```
 
-加载完成后的效果（图4）：
 
-![](img/4.png)<br>(图4)
+The effect after loading (Figure 4):
 
-#### 5. 预设加载
+![] (img/4.png)<br> (Figure 4)
 
- 单个预设的加载，我们使用Sprite3D.load方法。
+####5. Preset Loading
+
+For a single default load, we use the Sprite3D. load method.
+
 
 ```typescript
+
 //加载精灵
 Laya.Sprite3D.load("res/threeDimen/skinModel/LayaMonkey/LayaMonkey.lh", Laya.Handler.create(null, function(sp){
     var layaMonkey2 = scene.addChild(sp);
@@ -103,15 +118,18 @@ Laya.Sprite3D.load("res/threeDimen/skinModel/LayaMonkey/LayaMonkey.lh", Laya.Han
 }));
 ```
 
-加载完成后的效果（图5）：
 
-![](img/5.png)<br>(图5)
+Effect after loading (Fig. 5):
 
-#### 6. 动画加载
+! [] (IMG / 5. PNG) < br > (Figure 5)
 
-单个动画加载，本次示例使用的角色导出时是有动画信息的，在导出后我们删除`.lh`文件中动画相关的信息，只是演示使用。在后期使用中替换骨骼动画可以使用这种方式。
+####6. Animation loading
+
+Single animation loading, the role used in this example is exported with animation information, after the export we delete`.lh`The information related to animation in the file is only used for demonstration. This can be used to replace skeletal animation in later use.
+
 
 ```typescript
+
 //加载胖子精灵
 Laya.Sprite3D.load("res/threeDimen/skinModel/BoneLinkScene/PangZiNoAni.lh", Laya.Handler.create(null, function(sp) {
     pangzi = scene.addChild(sp);
@@ -141,15 +159,18 @@ Laya.Sprite3D.load("res/threeDimen/skinModel/BoneLinkScene/PangZiNoAni.lh", Laya
 }));
 ```
 
-![](img/6.gif)<br>(图6)
 
-### 批量预加载资源
+![] (img/6.gif) < br > (fig. 6)
 
-​	上面的例子Scene.load()方法是资源的异步加载，有时候3D的资源比较大，需要预加载来来提升首屏的体验。这时候我们可以用加载器预加载。
+###Batch preloading resources
 
-​	2D游戏资源我们是用**Laya.loader.load()**方法预加载，而3D资源必须用Laya.loader.create()这个方法。在加载完成后，我们就可以直接使用**Laya.loader.getRes()**这个方法来获取加载完成的资源。请参考的相关的 [API描述](https://layaair.ldc.layabox.com/api2/Chinese/index.html?category=Core&class=laya.net.LoaderManager) 。
+Scene. load () is an example of asynchronous loading of resources. Sometimes 3D resources are large and need to be preloaded to improve the first screen experience. At this point, we can preload with a loader.
+
+2-D Game Resources We Use**Laya. loader. load ()**Method preloading, and 3D resources must use Laya. loader. create (). After loading, we can use it directly.**Laya. loader. getRes ()**This method captures the resources that have been loaded. Please refer to the related[API描述](https://layaair.ldc.layabox.com/api2/Chinese/index.html?category=Core&class=laya.net.LoaderManager)。
+
 
 ```typescript
+
 ......
 //批量预加载方式
 PreloadingRes(){
@@ -244,8 +265,9 @@ onPreLoadFinish() {
 ......
 ```
 
-显示效果：
 
-![](img/7.png)<br>(图7)
+Display effect:
 
-**Tips:** 在项目中，一般我们都会采用加载器的方式，可以对资源有很好的管理。
+![] (img/7.png)<br> (fig. 7)
+
+**Tips:**In the project, we usually use the loader, which can manage the resources well.

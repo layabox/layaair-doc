@@ -1,17 +1,19 @@
-# 绘制矩形与圆角矩形
+#Draw rectangle and fillet rectangle
 
 
 
-### 一、用drawRect方法绘制矩形
+###Draw rectangles with drawRect method
 
-在API中搜索`laya.display.Graphics`类可以查看到该API的各种矢量绘图方法。其中"drawRect();"方法用于绘制矢量矩形。该方法的详细说明如下图所示：
+Search in API`laya.display.Graphics`Class can see the various vector drawing methods of the API. The "drawRect ();" method is used to draw vector rectangle. A detailed description of the method is shown in the following figure:
 
-​	![图片](img/1.png)<br/>
-​	（图1）
+​![图片](img/1.png)<br/>
+(Fig. 1)
 
-下面我们用LayaAir引擎绘制矢量矩形，示例代码如下：
+Next, we use the LayaAir engine to draw the vector rectangle. The example code is as follows:
+
 
 ```java
+
 package
 {
     import laya.display.Sprite;
@@ -39,26 +41,30 @@ package
 }
 ```
 
-代码运行效果：
 
-​	![图片](img/2.png)<br/>
-​	（图2）
+Code performance:
 
-示例中的“20，20”是矩形起始点坐标，100是向右的宽度，如果是负数则是向左的宽度。50是向下的高度，如果是负数则是向上的高度。大家可以在编写代码中，自行调整参数进行体验。
+​![图片](img/2.png)<br/>
+(Figure 2)
+
+In the example, "20, 20" is the coordinate of the rectangular starting point, 100 is the width to the right, and if it is negative, the width to the left. 50 is the downward height, if it is negative, it is the upward height. You can write code, adjust parameters to experience.
 
 
 
-### 二、用drawPath绘制矩形
+###Drawing Rectangles with DraPath
 
-LayaAir引擎`laya.display.Graphics`类的绘制路径的方法"drawPath()"可以根据路径绘制矢量图形，当然也包括了矩形和圆角矩形，该方法的详细说明如下图所示：
+LayaAir Engine`laya.display.Graphics`DraPath () can draw vector graphics according to the path, including rectangle and rounded rectangle. The detailed description of this method is as follows:
+
 ​	![图片](img/3.png)<br/>
-​	（图3）
+(Figure 3)
 
-drawPath方法的参数相对复杂一些。为了方便大家理解，我们先用"drawPath()"绘制一个矩形，理解路径中的部分参数。
+The parameters of drawPath method are relatively complex. To facilitate your understanding, we first use "drawPath ()" to draw a rectangle and understand some parameters in the path.
 
-drawPath绘制矩形的示例代码如下：
+The example code for drawing a rectangle by drawPath is as follows:
+
 
 ```javascript
+
 package
 {
     import laya.display.Sprite;
@@ -93,52 +99,58 @@ package
 }
 ```
 
-代码运行效果：
 
-​	![图片](img/4.png)<br/>
-​	（图4）
+Code performance:
 
-drawPath第一和第二位的坐标点“20,20”是控制整体位置的起始位置，第三位是路径参数。描述信息“MoveTo”是将画笔移动初始位置，此时并没有开始画。"0,0"是相对于"20,20"这个起始位置的，所以A点还是在起始位置原点。描述信息“lineto”是绘制到路径点坐标，“100，0”这个就是绘制到B点位置的坐标。C点和D点以此类推，最后通过描述信息“closePath”与MoveTo的起点位置闭合，否则是不会被闭合的。
+​![图片](img/4.png)<br/>
+(Figure 4)
 
-从绘制矩形来看，drawPath方法肯定没有drawRect方法更加方便。但是大家可以通过这个示例理解相关的参数用法。至于其它非圆角的图形，大家可自行编码，通过调整参数体验。
+DraPath's first and second coordinate points "20,20" are the starting positions for controlling the whole position, and the third is the path parameters. The description information "MoveTo" is to move the brush to its initial position, but it does not start drawing at this time. "0,0" is relative to the starting position of "20,20", so point A is still at the origin of the starting position. Description information "lineto" is drawn to the coordinates of the path point, "100, 0" is drawn to the coordinates of point B. Point C and point D and so on. Finally, through the description information "closepath", it is closed with the starting position of moveto, otherwise it will not be closed.
+
+From the point of view of drawing rectangle, drawPath method is certainly more convenient than drawRect method. But you can use this example to understand the relevant parameter usage. As for other non-rounded graphics, you can code by yourself and experience by adjusting the parameters.
 
 
 
-### 三、用drawPath绘制圆角矩形
+###Drawing Rectangles with DraPath
 
-#### 3.1 用法说明
+####3.1 Usage Description
 
-LayaAir引擎中可以使用graphics的drwaPath方法绘制圆角或弧线，具体的操作需要三步，指定绘制路径的起始点`["moveTo", x, y]`、绘制一条水平直线`["lineTo", x, y]`、绘制弧线`["arcTo", p1.x, p1.y, p2.x, p2.y, r]`。
+The drwaPath method of graphics can be used to draw rounded corners or arcs in LayaAir engine. The specific operation requires three steps to specify the starting point of the drawing path.`["moveTo", x, y]`Draw a horizontal line`["lineTo", x, y]`Drawing arcs`["arcTo", p1.x, p1.y, p2.x, p2.y, r]`。
 
-**参数示例**：
+**Parameter example**:
+
 
 ```java
+
 ["moveTo", 50, 50],
 ["lineTo", 150, 50],
 ["arcTo", 200, 50, 200, 100, 50],
 ```
 
-上述参数运行效果图如5-1所示：
 
-![图5-1](img/5-1.png) <br /> （图5-1）
+The operation effect of the above parameters is shown in Figure 5-1.
 
-通过图5-1我们可以看出，`["moveTo", 50, 50]`将画笔的起始点定位于`"50,50"`这个位置。`["lineTo", 150, 50]`绘制了一条由于起始点到当前端点（"`150, 50`"）的直线。`["arcTo", 200, 50, 200, 100, 50]`绘制了一段`r`（半径）为`50`弧线。
+![图5-1](img/5-1.png)<br/> (Fig. 5-1)
 
-**弧线绘制原理**：
+From Fig. 5-1, we can see that,`["moveTo", 50, 50]`Position the starting point of the brush at`"50,50"`This position.`["lineTo", 150, 50]`Drawn a line from the starting point to the current endpoint（“`150, 50`").`["arcTo", 200, 50, 200, 100, 50]`Draw a paragraph.`r`(Radius)`50`Arc.
 
-在制作这段弧线时，这个弧其实是利用当前端点`"150, 50"`、端点1`"200, 50"`、端点2`"200, 100"`，这三个端点所形成的夹角，制作一条半径为50px并且与两边相切的圆上的一段弧线。
+**Principle of Arc Drawing**:
 
-
-
-如果我们已经理解了弧线的绘制原理，我们还会发现，构成弧线的核心要素为两条边和与两边形成夹角的顶点（上例中的端点1），图5-1中的端点2与端点1形成的x轴边比较好理解，那当前端点与端点1已经构成了y轴边，那与当前端点在同一个y轴的起始点是不是可以去掉呢，事实并不可以，画笔的起始点必须存在，但是绘制直线的lineTo可以去掉，如果`["lineTo", 150, 50],`被注释掉，那么arcTo绘制弧线的时候，会视起始点为当前端点，arcTo找不到lineTo绘制的直线时，会自动添加一条由起始点到弧线起点的直线，因此，绘制圆角矩形时，lineTo可以省略。
+When making this arc, it actually uses the current endpoint`"150, 50"`Endpoint 1`"200, 50"`Endpoint 2`"200, 100"`The angle formed by the three endpoints creates an arc on a circle with a radius of 50 PX and tangent to both sides.
 
 
 
-#### 3.2 绘制圆角矩形示例
+If we have understood the principle of drawing an arc, we will also find that the core element of forming an arc is the vertex (endpoint 1 in the example above), the x-axis edge formed by endpoint 2 and endpoint 1 in Figure 5-1 is better understood. The current endpoint and endpoint 1 already constitute the y-axis edge. Is it possible to go at the beginning of the same Y-axis as the current endpoint? No, the fact is not. The starting point of the brush must exist, but the line to draw a straight line can be removed if`["lineTo", 150, 50],`When arcTo is commented out, it will regard the starting point as the current endpoint when drawing an arc. When arcTo cannot find the line drawn by lineTo, it will automatically add a line from the starting point to the starting point of the arc. Therefore, when drawing a rounded rectangle, lineTo can be omitted.
 
-下面我们绘制一个圆角弧线半径为30的圆角矩形，示例代码如下：
+
+
+####3.2 example of drawing a rounded rectangle
+
+Next, we draw a rounded rectangle with a radius of 30 arcs. The example code is as follows:
+
 
 ```java
+
 package
 {
     import laya.display.Sprite;
@@ -177,25 +189,32 @@ package
 }
 ```
 
-代码运行效果：
 
-​	![图片](img/5-2.png)<br/>
-​	（图5-2）
+Code performance:
 
-在上面的代码里，看起来没有任何问题，其实moveTo的起始点，需要在圆弧之间的直线上，下面我们只需要在drawPath绘制时，增加一个边框线，就可以清楚的看出错误。绘制方法graphics.drawPath修改为：
+​![图片](img/5-2.png)<br/>
+(Fig. 5-2)
+
+In the above code, there seems to be no problem. In fact, the starting point of moveto needs to be on the straight line between the arcs. Next, we only need to add a border line when drawing the drawpath, so we can see the error clearly. The drawing method graphics.drawPath is modified to:
+
 
 ```java
+
 //绘制圆角矩形
 sp.graphics.drawPath(100, 100, path, {fillStyle: "#ff0000"},{"strokeStyle":"#ffffff","lineWidth":"10"});
 ```
 
-修改后运行效果如图5-3所示，由于画线的时候，从画笔的起始点`0,0`开始的，所以并不是我们想要的结果。
+
+The modified operation effect is shown in Fig. 5-3, because when drawing a line, it starts at the beginning of the brush.`0,0`It started, so it wasn't the result we wanted.
 
 ![图5-3](img/5-3.png) <br /> (图5-3)
 
-下面我们将示例修改为正确的代码：
+
+Next, we modify the example to the correct code:
+
 
 ```java
+
 package
 {
 	import laya.display.Sprite;
@@ -238,32 +257,33 @@ package
 }
 ```
 
-运行效果如图5-4所示：
 
-![图5-4](img/5-4.png) （图5-4）
+The operation effect is shown in Figure 5-4:
 
-
-
+![图5-4](img/5-4.png)(Fig. 5-4)
 
 
-### 四、用LayaAirIDE拖动控件绘制矩形
 
-​	**步骤一**：打开我们的LayaAirIDE，点击设计模式，新建一个View页面
 
-​	![6](img/6.png)<br/>
-​   	（图6）  
 
-**步骤二**：将组件中的曲线组件拖动到View页面上，就会自动生成默认的曲线
+###Drawing Rectangles with LayaAirIDE Drag Controls
 
-​	![7](img/7.png)<br/>
-​   	（图7）  
+​**Step one**: open our Laya air IDE, click design mode, and create a new view page
 
-**步骤三**：修改（添加/减少）Rect组件属性中的数值，改变矩形的大小、颜色、旋转角度等等。
+​![6](img/6.png)<br/>
+(Fig. 6)
 
-​   	![8](img/8.png)<br/>
-​   	（图8）  
+**Step two**Drag the curve component from the component onto the View page and automatically generate the default curve
 
-​   	![9](img/9.png)<br/>
-​   	（图9）  
+​![7](img/7.png)<br/>
+(Figure 7)
 
-到此我们通过LayaAirIDE中的组件来绘制矩形就完成了。
+**Step three**Modify (add/reduce) the values in Rect component properties, change the size, color, rotation angle of the rectangle, and so on.
+
+​![8](img/8.png)<br/>
+(Figure 8)
+
+​![9](img/9.png)<br/>
+(Figure 9)
+
+So far, we have finished drawing rectangles through components in LayaAirIDE.

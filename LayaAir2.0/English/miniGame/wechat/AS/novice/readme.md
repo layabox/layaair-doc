@@ -1,121 +1,136 @@
-# 创建第一个微信小游戏
+#Create the first Wechat game
 
-> *author: charley      version: LayaAir 2.0      update：2018-10-27*
+>*Author: Charley version: LayaAir 2.0 update: 2018-10-27*
 
-### 一、准备好开发环境
+###I. Prepare the Development Environment
 
-#### 1、下载并安装LayaAirIDE集成开发环境
+####1. Download and install LayaAirIDE integrated development environment
 
-LayaAirIDE是LayaAir引擎的集成开发环境，集成了LayaAir引擎与示例项目，UI、动画等可视化编辑，项目代码编写与管理等开发工具。**开发者可以直接采用LayaAirIDE创建和发布微信小游戏项目。**
+LayaAirIDE is an integrated development environment of LayaAir engine. It integrates LayaAir engine with sample projects, UI, animation and other visual editing tools, project code writing and management tools.**Developers can directly use LayaAirIDE to create and publish Wechat game projects.**
 
-**官网下载地址** ：[http://ldc2.layabox.com/layadownload/?type=layaairide](http://ldc2.layabox.com/layadownload/?type=layaairide)
+**Download Address on Official Website**:[http://ldc2.layabox.com/layadownload/?type=layaairide](http://ldc2.layabox.com/layadownload/?type=layaairide)
 
 
 
-#### 2、下载并安装微信开发者工具
+####2. Download and install Wechat Developer Tools
 
-微信开发者工具主要用于小游戏产品的预览与调试、真机测试、上传提交等。是小游戏开发的必备工具。
+Wechat developer tools are mainly used for preview and debugging of small game products, real machine testing, upload submission, etc. It is a necessary tool for the development of small games.
 
-**开发工具下载地址**：
+**Development Tool Download Address**:
 [https://developers.weixin.qq.com/minigame/dev/devtools/download.html](https://developers.weixin.qq.com/minigame/dev/devtools/download.html)
 
 ![3](img/3.png)  
 
 
 
-#### 3、创建一个小程序的企业开发者帐号，获得开发者ID(AppID)
 
-尽管没有AppID也可以开发调试，但是功能会受到限制。所以在开发之前，最好先去微信公众平台创建一个小程序的开发者帐号。
 
-##### 注册帐号前的相关注意事项
 
-1. **注册为个人开发者不需要版号，但也不能接入内购（支付）功能。**可以通过接入广告进行流量变现，广告接入时，可以填写个人信息也可以是公司信息。
-2. 如果游戏中**涉及支付功能，必须要使用企业开发者帐号**。并且要提交版号。
-3. 在注册微信公众平台帐号的时候，分类要记得是游戏分类，否则注册的帐号只能开发小程序，而不是小游戏。
-4. 小游戏内购目前仅安卓系统版本开通，广告变现安卓与iOS都可以接入。
 
-**注册地址**：[https://mp.weixin.qq.com/wxopen/waregister?action=step1](https://mp.weixin.qq.com/wxopen/waregister?action=step1)
+####3. Create an enterprise developer account for a small program and get the developer ID (AppID)
 
-注册完开发者帐号，登录后，在设置菜单的开发设置里可以查看到AppID，如下图所示，开发者需要记录好，创建小游戏项目的时候需要用到。
+Although you can develop and debug without an AppID, the functionality is limited. So before development, it's better to go to Wechat Public Platform to create a small program developer account.
+
+#####Relevant precautions before registering an account
+
+One**Registered as a personal developer does not need a version number, but it can not access the buy-in (payment) function.**The traffic can be realized by accessing advertisements. When accessing advertisements, personal information or company information can be filled in.
+2. If in the game**When it comes to payment functions, it is necessary to use enterprise developer accounts.**。 And submit the version number.
+3. When registering Weixin public platform account, the classification should remember the game classification, otherwise the registered account can only develop small programs, not small games.
+4. Small game in-house purchasing is currently only available in Android version, and both Android and iOS can be accessed in AD cash.
+
+**Registered address**:[https://mp.weixin.qq.com/wxopen/waregister?action=step1](https://mp.weixin.qq.com/wxopen/waregister?action=step1)
+
+After registering the developer account, you can see the AppID in the development settings of the settings menu. As shown in the figure below, the developer needs to record well and use it when creating a small game project.
 
 ![图2-2](img/2-2.png)
 
 ###
 
-### 二、用LayaAirIDE创建和发布微信小游戏项目
+###II. Creating and Publishing Wechat Game Project with LayaAirIDE
 
-#### 1、用LayaAirIDE创建小游戏示例项目
+####1. Create a small game sample project with LayaAirIDE
 
-打开LayaAirIDE，点击`新建`弹出新建项目的面板。在面板左侧项目类型列表中选择任意一种项目类型，面板右侧设置项目名称、项目路径、开发语言类型、引擎版本。就可以创建小游戏项目了，对于微信小游戏项目，不要忘了勾选`增加微信小游戏支持`，如下图所示。
+Open LayaAirIDE and click`新建`Pop up the panel for the new project. Select any project type in the list of project types on the left side of the panel, and set the project name, project path, development language type and engine version on the right side of the panel. You can create a small game project, for Weixin small game project, do not forget to check`增加微信小游戏支持`As shown in the figure below.
 
 ![img](img/4.png)
 
 
 
-#### 2、项目开发
+####2. Project Development
 
-项目开发本环节就不详细介绍了，相关引擎与 IDE的使用可以查看其它文档。由于我们选择创建的是示例项目，可以直接进入小游戏发布环节。
+This part of project development will not be described in detail, the use of related engines and IDE can see other documents. Since we chose to create a sample project, we could go directly into the release of the mini-game.
 
-#### 3、发布为微信小游戏
+####3. Published as Wechat Game
 
-点击项目发布按钮，在弹出的发布项目界面里，选择发布平台为微信小游戏。
+Click on the project release button, in the pop-up release project interface, choose the release platform for Wechat games.
 
-如果你没有在项目里编译过，可以勾选是否重新编译项目后，会在发布时重新编译。
+If you haven't compiled in the project, you can check whether to recompile the project and then recompile it at publication time.
 
-文件提取很关键，由于微信4M包体上传提交的限制。可以通过文件提取功能，只复制4M包内的文件到指定的微信小游戏项目目录。如下图所示。
+File extraction is critical because of the limitation of Weixin 4M package upload and submission. Through the file extraction function, only the files in 4M package can be copied to the designated Wechat game project directory. As shown in the figure below.
 
-> 包体限制，分包可达8M，相关内容其它文档中介绍。本篇仅针对新手快速熟悉了解小游戏发布流程。
+> Inclusion restriction, subcontracting up to 8M, related content is introduced in other documents. This article is only for novices to quickly familiarize themselves with the release process of small games.
 
 ![img](img/2-3.png) 
 
+
+
 ![图：文件提取](img/2-4.png) 
-(图：文件提取功能，点击浏览后，可筛选只复制勾选的4M包文件)
 
-**Tips** ：
+(Figure: File extraction function, click browse, you can filter only copy the checked 4M package files)
 
-> 点击发布平台右侧的问号图标，可以查看各选项的详细介绍说明。
+**Tips**:
 
-配置好发布需要的内容后。最终点击发布。即可生成微信小游戏项目。
+> Click on the question mark icon on the right side of the publishing platform to see the detailed description of each option.
+
+After configuring the content needed for publishing. Finally click Publish. It can generate the Wechat game project.
 
 
 
-### 三、用微信开发者工具创建小游戏项目
+###3. Creating Small Game Projects with Wechat Developer Tools
 
-#### 1、开发者帐号登录，选择项目类型
+####1. Developer account login, select project type
 
-打开”微信web开发者工具“，用开发者的微信扫码登录。然后选择**小程序项目**点击进入项目设置。
+Open the "Wechat Web Developer Tool" and log in with the developer's Wechat Sweep Code. Then choose**Small program project**Click to enter the project settings.
 
 ![img](img/8.png) 
 
-#### 2、创建小游戏项目
 
-点击小程序项目后，在弹出的面板里，点击右下角的加号，可以弹出小游戏项目创建的面板。如下图所示。
+
+####2. Create small game projects
+
+After clicking on the widget project, in the pop-up panel, click the plus sign in the lower right corner, you can pop up the panel created by the widget project. As shown in the figure below.
 
 ![img](img/8-1.png)  
 
-`项目目录`最好是选择刚刚通过提取功能复制的本地包目录。如果对这个功能还不是太熟悉。只是为了跑通流程，也可以临时选择LayaAirIDE刚刚发布小游戏的目录（通常在项目根目录下的release\wxgame）。
 
-`AppID`按之前从微信公众平台查看到的AppID输入即可，不输入也可以开发调试，不过功能会受到限制。所以最好还是输入AppID。
+`项目目录`It's better to select the local package directory that you just copied through the extract function. If you are not familiar with this function. Just for the sake of running the process, you can also temporarily select the directory of the game just released by LayaAirIDE (release wxgame, usually in the project root directory).
+
+`AppID`Just click on the AppID input you saw from the Wechat Public Platform before, and you can develop and debug without input, but the function will be limited. So it's better to enter AppID.
 
 
 
-#### 3、微信开发者工具的编译
+####3. Compilation of Wechat Developer Tools
 
-完成小游戏项目的创建后，即可在工具内预览效果和调试。
+After the creation of the small game project, you can preview the effect and debug in the tool.
 
 ![13](img/9.png) 
 
 
 
-#### 4、真机测试与调试
 
-由于LayaAirIDE里也可以调试项目效果，除非是适配相关的问题，基本上两边的效果不会有不一一致的情况。所以这里最重要的是点击**预览**功能，通过手机微信扫码，在微信内进行真机测试与调试。
+
+
+
+####4. Testing and debugging of real machine
+
+Because LayaAirIDE can also debug project effects, unless it is appropriate for related issues, basically there will be no inconsistency between the two sides of the effect. So the most important thing here is to click**preview**Function: scan code through mobile wechat, test and debug the real machine in wechat.
 
 ![img](img/14.png) 
 
+
 **Tips:**
 
-上传真机的时候，默认不能超过4M，配置分包不能超过8M，所以IDE发布目录下，示例项目的libs这个目录可以直接删掉。因为这个示例项目能用到的已经整合到code.js里了。否则可能会因为超过4M，导致上传不上去。这个问题，也会在新版本里优化好。
+When you go to the fax machine, by default, you can't exceed 4M and configure subcontracting can't exceed 8M. Therefore, under the IDE publishing directory, the LIBS directory of the sample project can be deleted directly. Because what this example project can use has been integrated into code. js. Otherwise, it may not upload because it exceeds 4M. This problem will also be optimized in the new version.
 
 
 
@@ -123,14 +138,15 @@ LayaAirIDE是LayaAir引擎的集成开发环境，集成了LayaAir引擎与示�
 
 
 
-用微信扫码后，就启动了小程序项目，点击右上角的浮窗按钮，可以打开调试和打开性能监控面板。
+After using Wechat to scan the code, we start the small program project. Click the floating window button in the upper right corner to open the debugging and performance monitoring panel.
 
 ![img](img/10.png)
 
-开启真机调试与性能监控面板后，如下图所示。
+After opening the debugging and performance monitoring panel of the real machine, the following figure is shown.
 
 ![img](img/11.png) 
 
 
 
-至此，一个完整的小游戏开发流程就结束了。是不是很简单。采用LayaAirIDE开发的小游戏项目，基本上是无缝用于微信小游戏项目。
+
+So far, a complete small game development process is over. Is it simple? The small game project developed by LayaAirIDE is basically seamless for the Weixin small game project.

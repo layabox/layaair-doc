@@ -1,3 +1,3 @@
-# 小游戏上线发布的服务端配置注意事项
+#Notes on Server Configuration for Online Publishing of Small Game
 
-近期更新
+Recent updates

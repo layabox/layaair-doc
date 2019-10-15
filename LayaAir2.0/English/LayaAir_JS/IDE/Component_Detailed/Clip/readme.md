@@ -1,70 +1,70 @@
-# Clip 组件参考
+#Clip Component Reference
 
 
 
-##  一、通过LayaAirIDE创建Clip组件
+##1. Creating Clip Components through LayaAirIDE
 
-###1.1 创建Clip
-​        Clip 组件可用于显示位图切片动画。Clip 可以将一张图片，按横向分隔数量 clipX、竖向分隔数量 clipY，或横向分割每个切片的宽度 clipWidth、竖向分割每个切片的高度 clipHeight，从左向右，从上到下，分割组合为一个切片动画。
+###1.1 Create Clip
+Clip components can be used to display bitmap slice animation. Clip can divide a picture by the number of clipX, clipY, clipWidth and clipH8, from left to right, from top to bottom, and combine the segmentation into a slice animation.
 
-​        Clip 组件可以用来播放切片动画，和显示切片动画的某一帧图片。
-​        点击资源面板里的 Clip 组件，拖放到页面编辑区，即可添加 Tab 组件到页面上。
-Clip 的脚本接口参考[Clip API](http://layaair.ldc.layabox.com/api/index.html?category=Core&class=laya.ui.Clip)
+Clip components can be used to play slice animation and display a frame of slice animation.
+Clip the Clip component in the resource panel and drag it into the page editing area to add the Tab component to the page.
+Clip script interface reference[Clip API](http://layaair.ldc.layabox.com/api/index.html?category=Core&class=laya.ui.Clip)
 
-​        Clip 组件的资源示例：
+Resource examples of Clip components:
 
-​        ![图片0.png](img/1.png)<br/>
-​    （图1）
+​![图片0.png](img/1.png)<br/>
+(Fig. 1)
 
- 
+Setting the value of clipX attribute to 10 will show the effect:
 
-​        设置 clipX 属性的值为10后的显示效果：
+​![图片0.png](img/2.png)<br/>
+(Figure 2)
 
-​        ![图片0.png](img/2.png)<br/>
-​    （图2）
+The display effect after setting the value of index attribute to 1:
 
-​        设置 index 属性的值为 1后的显示效果：
+​![图片0.png](img/3.png)<br/>
+(Figure 3)
 
-​        ![图片0.png](img/3.png)<br/>
-​    （图3）
+###1.2 Common attributes of Clip components
 
-###  1.2 Clip 组件的常用属性
+​![图片0.png](img/4.png)<br/>
+(Figure 4)
 
-​        ![图片0.png](img/4.png)<br/>
-​    （图4）
-
- 
-
-| **属性**     | **功能说明**            |
-| ---------- | ------------------- |
-| autoPlay   | 布尔值，表示是否自动播放当前切片动画。 |
-| clipWidth  | 横向分割图片资源时，每个切片的宽度。  |
-| clipHeight | 纵向分割图片资源时，每个切片的高度。  |
-| clipX      | 横向分割图片资源时，等宽切割的份数。  |
-| clipY      | 纵向分割图片资源时，等高切割的份数。  |
-| index      | 切片动画当前显示动画帧索引。      |
-| interval   | 切片动画的播放时间间隔。        |
-| sizeGrid   | 图像资源的有效网格数据（九宫格数据）。 |
-| skin       | 选项卡按钮图像资源。          |
+A kind of**attribute**A kind of**Function description**A kind of
+| -------------------------------------------------------------------------------------------------------------------------------------------|
+| The autoPlay | Boolean value indicates whether the current slice animation is automatically played. A kind of
+| ClipWidth | The width of each slice when the image resource is segmented horizontally. A kind of
+| clipH8 | Vertical segmentation of image resources, the height of each slice. A kind of
+| ClipX | Number of equal-width cuts for horizontal segmentation of image resources. A kind of
+| ClipY | The number of equal-cut portions in vertical segmentation of image resources. A kind of
+| Index | Slice animation currently displays animation frame index. A kind of
+| Interval | Slice animation playback interval. A kind of
+| sizeGrid | Effective grid data for image resources (nine-grid data). A kind of
+| Skin | tab button image resource. A kind of
 
 
 
-##  二、通过代码创建Clip组件
+##2. Creating Clip Components through Code
 
- 	在我们进行书写代码的时候，免不了通过代码控制UI，创建`UI_Clip`类，通过代码设定Clip相关的属性。
+When we write code, we inevitably control UI through code and create it.`UI_Clip`Class, which sets Clip-related properties through code.
 
-**运行示例效果:**
+**Run the example effect:**
+
 ​	![1](gif/1.gif)<br/>
-​	(图5)通过代码创建计数器
 
-​	![1](img/5.png)<br/>
-​	(图6)
+(Figure 5) Create counters by code
 
-​	Clip的其他属性也可以通过代码来设置，上述示例演示了如何通过计时器获取每一秒更新clip.clipX切片，通过每秒更新数字实现计时器的功能，有兴趣的读者可以自己通过代码设置Clip，创建出符合自己项目中需要的Clip。
+​![1](img/5.png)<br/>
+(Fig. 6)
 
-**示例代码：**
+Clip's other attributes can also be set by code. The above example demonstrates how to get clip. clipX slices updated every second through a timer and realize the function of a timer by updating numbers every second. Interested readers can set Clip by code themselves and create Clip that meets the needs of their projects.
+
+**Sample code:**
+
 
 ```typescript
+
 (function()
 {
 	var Stage   = Laya.Stage;
@@ -161,6 +161,11 @@ Clip 的脚本接口参考[Clip API](http://layaair.ldc.layabox.com/api/index.ht
 	}
 })();
 ```
+
+
+
+
+
 
 
 

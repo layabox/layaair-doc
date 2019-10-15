@@ -1,19 +1,20 @@
-# 资源概述
+#Resource overview
 
 ###### *version :2.0.1beta   Update:2019-3-19*
 
+
 ​	在LayaAir3D世界中，开发时所用到的主要资源类型：场景，预设，模型网格，材质球，材质贴图，动画文件。各种资源类型会在后面的对应课程中进行详细讲解，在这里就不再深入。本节文档，我们将介绍unity中LayaAir导出工具生成的各种文件详解，以及对应的加载方法。
 
-### 资源类型
+###Resource type
 
-`.ls`为场景文件，选择导出Scene类别时生成。其中包含了场景需要的各种数据、光照贴图、模型、位置等。需使用 **Scene3D** 类加载。
+`.ls`For scenario files, select when exporting Scene categories. It includes all kinds of data, illumination mapping, model, location and so on. Need to use**Scene3D**Class loading.
 
-`.lh`为预设文件，选择导出Sprite3D类别时生成。其中缺少场景信息，其他的特征与.ls文件相同，但是需要使用 **Sprite3D** 类加载。
+`.lh`To preset the file, select the Sprite3D category to be generated when it is exported. There is a lack of scenario information, and other features are the same as. LS files, but need to be used**Sprite3D**Class loading.
 
-`.lm`为模型数据文件，通常是FBX格式的转换而成。可以使用 **MeshSprite3D** 类加载。
+`.lm`For model data files, they are usually converted into FBX format. have access to**MeshSprite3D**Class loading.
 
-`.lmat`为材质数据文件，是在unity中为模型设置的材质信息。加载.ls或.lh文件时会自动加载.lmat文件来产生材质。可以使用 **BaseMaterial** 类来加载。
+`.lmat`Material data file is the material information set for the model in Unity. Loading. LS or. LH files automatically loads. lmat files to produce material. have access to**BaseMaterial**Class to load.
 
-`.lani`为动画数据文件。如果模型上有动画，导出后将生成的动画配置文件，其中包含了动画帧数据。加载可以使用 **AnimationClip** 类来加载。
+`.lani`For animation data files. If there is animation on the model, the animation configuration file will be generated after export, which contains the animation frame data. Loading can be used**Animation Clip**Class to load.
 
-`.jpg`,`.png`,`.ltc`,`.ktx`,`.pvr`等是贴图文件。如果有使用到贴图，unity导出后将会生成贴图文件。可以使用 **Texture2D** 类来加载。
+`.jpg`,`.png`,`.ltc`,`.ktx`,`.pvr`Wait for the map file. If a map is used, the unit will generate a map file after exporting. have access to**Texture2D**Class to load.

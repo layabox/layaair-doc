@@ -2,25 +2,27 @@
 
 ###### *version :2.0.1beta   Update:2019-3-19*
 
-天空盒是一种让场景看上去更广阔无垠的一种视觉技术，用无缝对接的封闭纹理将摄像机的视口360度无死角的包裹起来。在这里我们简单的展示下天空盒使用，天空盒会在后续的 **LayaAir3D之天空** 篇讲解。
+Skybox is a visual technology that makes the scene look broader and infinite. It uses seamless docking of closed texture to wrap up the camera's 360-degree view without dead angle. Here we will simply show the sky box, which will be used in the following**Laya Air3D Sky**Explain the article.
 
-#### 如何使用Unity设置环境天空
+####How to Use Unity to Set up Environment Sky
 
-​	在Lighting的 `Scene` 场景标签页，找到Environment环境中的`SkyBox Material`天空盒材质这一项。
+At Lighting`Scene`Scenario tab, find the environment`SkyBox Material`Sky box material.
 
-​	![](img/1.png)<br>(图1)
+[] (img/1.png)<br> (Figure 1)
 
-**注意** :使用的材质必须是LayaAir3D--Sky下的Shader；
+**Be careful**The material used must be Shader under LayaAir3D-Sky.
 
-将自己预先准备好的天空盒材质拖入到其中就可以了。（或者点下右边的设置按钮，选择自己预先准备好的天空盒材质）。
+Drag in the material of the sky box that you have prepared beforehand. (Or click the settings button on the right to select the material of the sky box you have prepared beforehand).
 
-![](img/2.gif)<br>(图2)
+![] (img/2.gif) <br> (Figure 2)
 
-设置好后就可以导出使用天空盒了。
+Once set up, you can export and use Skybox.
 
-#### 使用代码设置场景天空
+####Setting Scene Sky with Code
+
 
 ```typescript
+
 var camera:Camera = scene.getChildByName("Main Camera") as Camera;
 //加入摄像机移动控制脚本
 camera.addComponent(CameraMoveScript);
@@ -33,7 +35,8 @@ BaseMaterial.load("res/threeDimen/skyBox/skyBox1/SkyBox.lmat", Handler.create(nu
 }));
 ```
 
-效果如下（图3）：
 
-![](img/3.png)<br>（图3）
+The effect is as follows (Figure 3):
+
+![] (img/3.png) < br > (fig. 3)
 

@@ -1,24 +1,26 @@
-# 快速开始一个LayaAir3D项目
+#Quickly start a LayaAir3D project
 
-以下我们将用LayaAir引擎快速开始一个3D项目，并且以AS语言为教程，简单演示用引擎代码实现一个基本的3D应用。
+Below we will use the LayaAir engine to quickly start a 3D project, and use AS language as a tutorial, a simple demonstration using engine code to achieve a basic 3D application.
 
-## IDE创建3D示例项目
+##IDE Creates 3D Sample Projects
 
-下载LayaAirIDE，启动新建项目选择3d项目如图所示。
+Download Laya air IDE, start the new project and select 3D project as shown in the figure.
 
-![图](img/1.png)(图1)
+![图](img/1.png)(Fig. 1)
 
-这里我们选择**JavaScript**语言。创建完成我们发现ide为我们创建好了一个3d的模板。关于项目的结构介绍开发者可以参考2D的新手教程。这里不在赘述。
+Here we choose**JavaScript**Language. After creation, we found that ide created a 3D template for us. Developers can refer to 2D novice tutorials for project structure introduction. I'm not going to repeat it here.
 
-## 快速显示3D场景
+##Quick display of 3D scene
 
-我们直接F5（mac系统用户可能要cmd+F5）或者点击运行按钮，我们可以看到示例项目运行起来的3D场景了。
+If we go directly to F6 (mac system users may want CMD + F6) or click the run button, we can see the 3D scene of the sample project running.
 
-![图](img/2.png)(图2)
+![图](img/2.png)(Fig. 2)
 
-​	在GameUI.as这个开始页面的Runtime类里为我们构建了一个3D的世界，并且添加了一个简单的3D世界所必须要的几个要素（场景，摄像机，灯光，模型，材质）。以下的代码节选自GameUI.as。
+In the runtime class of gameui.as, a 3D world is built for us, and several elements (scene, camera, light, model, material) necessary for a simple 3D world are added. The following code excerpt is from GameUI. as.
+
 
 ```typescript
+
 //添加3D场景
 var scene:Scene3D = Laya.stage.addChild(new Scene3D()) as Scene3D;
 
@@ -41,5 +43,6 @@ Texture2D.load("res/layabox.png", Handler.create(null, function(tex:Texture2D):v
 }));
 box.meshRenderer.material = material;
 ```
+
 
 ##### 	

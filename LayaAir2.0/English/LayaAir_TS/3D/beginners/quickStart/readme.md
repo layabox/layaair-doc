@@ -1,24 +1,26 @@
-# 快速开始一个3D项目
+#Quickly start a 3D project
 
-以下我们将用LayaAir引擎快速开始一个3D项目，并且以TS语言为教程，简单演示用引擎代码实现一个基本的3D应用。
+Below we will use the LayaAir engine to quickly start a 3D project, and with TS language as a tutorial, a simple demonstration using engine code to achieve a basic 3D application.
 
-### IDE创建3D示例项目
+###IDE Creates 3D Sample Projects
 
-下载LayaAirIDE，启动新建项目选择3D项目。如下图所示：
+Download LayaAirIDE and start a new project to select a 3D project. As shown in the following figure:
 
-![1](img/1.png)</br>(图1)
+![1](img/1.png)</br> (Fig. 1)
 
-这里我们选择JavaScript语言。创建完成之后我们发现IDE为我们创建好了一个3D的模板。关于项目的结构介绍开发者可以参考2D的新手教程。这里不再赘述。
+Here we choose the JavaScript language. After the creation, we found that IDE created a 3D template for us. Developers can refer to 2D novice tutorials for project structure introduction. I will not repeat it here.
 
-然后按快捷键F5或者点击运行按钮，我们可以看到调试窗口显示出了一个方体。如下图所示：
+Then press F5 or click the Run button, and we can see that the debug window shows a cube. As shown in the following figure:
 
-![2](img/2.png)</br>(图2)
+![2](img/2.png)</br> (Fig. 2)
 
-Main.ts这个启动类为我们构建出了一个3D的世界。并且添加了一个简单的3D世界所必须的几个要素（场景、摄像机、光源、3D模型、材质）。关于这些概念支持后续教程我们会详细的介绍，逐步带领大家学习3D知识。
+Main. ts, the startup class, constructs a 3D world for us. In addition, several essential elements (scenes, cameras, light sources, 3D models, materials) are added to a simple 3D world. We will introduce these concepts in detail in the follow-up tutorial, and gradually lead you to learn 3D knowledge.
 
-对于这个简单点的Demo，我们发现这个方体是静态的，不能给我们带来3D那种所见即所得的立体视觉感，那么我们添加简单的几行代码让它转动起来。首先找到启动类Main.ts，修改成如下代码：
+For this simpler Demo, we find that the cube is static and does not give us the WYSIWYG stereo vision of 3D, so we add a few lines of code to make it rotate. First, find the startup class Main. ts and modify it to the following code:
+
 
 ```typescript
+
 // 程序入口
 class Main {
     constructor() {
@@ -81,11 +83,14 @@ class Main {
 new Main();
 ```
 
-![3](img/3.gif)</br>(动图3)
 
-这里我们用了一个计时器，每10ms驱动这个方体转动一下，具体的讲解请开发者阅读相关的教程和API，这里我们只是简单的演示，简单的代码如下所示：
+![3](img/3.gif)</br> (Motion 3)
+
+Here we use a timer, every 10ms to drive the cube to rotate, specific instructions for developers to read the relevant tutorials and APIs, here we are just a simple demonstration, simple code as follows:
+
 
 ```typescript
+
 var vect:Laya.Vector3 = new Laya.Vector3(1,1,0);
 //每10毫秒旋转一次
 Laya.timer.loop(10,null,function(){
@@ -93,68 +98,76 @@ Laya.timer.loop(10,null,function(){
 });
 ```
 
-到此我们已经能够跑通一个简单的例子了，并且驱动这个方体进行旋转（动图3）。
+
+So far we have been able to run through a simple example and drive the cube to rotate (Motion 3).
 
 
 
-### LayaAir3D世界的基本构成
+###Basic Composition of LayaAir3D World
 
-通过上面的代码示例我们可以看到一个基本的3D世界诞生了。当然，上面的代码还比较简单，要做出丰富多彩的游戏世界，我们还需要了解引擎更多的功能。
+From the above code example, we can see that a basic 3D world was born. Of course, the above code is relatively simple, to make a rich and colorful game world, we need to know more about the engine functions.
 
-图4位LayaAir3D世界可见要素视图。除了3D场景、摄像机、灯光和模型外，动画也是可显示要素之一。后期课程我们将逐步向大家介绍。
+Figure 4 LayaAir3D World Visible Elements View. In addition to 3D scenes, cameras, lights and models, animation is also one of the display elements. Later courses will be introduced to you step by step.
 
-![4](img/4.png)</br>(图4)
+![4](img/4.png)</br> (Fig. 4)
 
 
 
-### 3D世界变换与向量的简单运用
+###3D World Transform and Simple Use of Vectors
 
-在以上示例中，创建了有关显示的几大要素模块，但我们还看见在摄像机、灯光、模型上运用到了向量Vector3或Vector4等，用它们去为对象的位置、方向、色彩等赋值。
+In the above examples, we have created several key elements modules about display, but we also see that vector Vector 3 or Vector 4 are used in camera, lighting, model, etc. to assign position, direction, color and so on.
 
-#### 坐标系及位置、旋转修改
+####Modification of coordinate system, position and rotation
 
-在2D引擎中我们是直接调整x、y坐标来控制显示对象的位置与旋转方向，3D引擎中显示对象较为复杂，加入了z轴坐标，因此我们用到了Vector3三维向量，用它的值分别代表着x、y、z。
+In the 2D engine, we directly adjust the X and Y coordinates to control the position and rotation direction of the display object. In the 3D engine, the display object is more complex, and Z axis coordinates are added. So we use Vector 3 three-dimensional vector to represent x, y and Z respectively.
 
-但是，各种3D引擎和3D模型动画制作软件对坐标方向的定义会有所不同，因此需初学者们掌握它们的区别。
+However, the definitions of coordinate directions in various 3D engine and 3D model animation software will be different, so beginners need to master their differences.
 
-LayaAit3D引擎坐标用专业术语来说属于`右手坐标系`（图5），简单的来说，屏幕右侧为正X轴方向，上方为正Y轴方向，屏幕向观察者方向为正Z轴方向（屏幕后方向为负Z轴方向）。有的3D引擎属于左手坐标系，在此不做介绍，有兴趣的初学者可以百度了解。
+LayaAit3D engine coordinates belong in technical terms`右手坐标系`(Fig. 5). Simply put, the right side of the screen is in the positive X-axis direction, the top is in the positive Y-axis direction, and the screen is in the positive Z-axis direction to the viewer (the rear direction of the screen is in the negative Z-axis direction). Some 3D engines belong to the left-handed coordinate system, which is not introduced here. Interested beginners can learn from Baidu.
 
 ![5](img/5.png)</br>(图5)右手系坐标
 
-引擎中也分为世界坐标与局部坐标系，世界坐标系是3D场景的坐标，三轴方向永远不变（图5）。局部坐标为模型本身坐标，可以随着模型方向的旋转变化而改变，但我们可以通过右手坐标系手势去识别坐标方向（图6），下图中手的模型为沿Y轴旋转-90度后的3D模型右手坐标系局部坐标，大拇指永远为局部坐标的正X轴方向。
 
-![6](img/6.png)</br>(图6)
+The engine is also divided into the world coordinate system and the local coordinate system. The world coordinate system is the coordinate of the 3D scene, and the direction of the three axes will never change (Fig. 5). Local coordinates are the coordinates of the model itself, which can change with the rotation of the direction of the model, but we can recognize the coordinate direction by right-hand coordinate gesture (Fig. 6). The hand model in the figure below is the local coordinates of the right-hand coordinate system of the 3D model after rotating along the Y-axis to 90 degrees, and the thumb is always the positive X-axis direction of the local coordinates.
 
-了解了上述坐标系，那么就可以通过3D变换来改变它们了，在示例代码中，transform是一个3D变换对象（Transform3D），它在3D世界中非常重要，有关显示对象很多变化逻辑控制的代码都会用到它。
+![6](img/6.png)</br> (Fig. 6)
 
-代码中我们用到了3D变换中的translate移动及rotate旋转方法，并用三维向量代表x、y、z的值。同事，两种方法都可以在参数中设置是否是局部空间移动、旋转，初学者们可以在程序中设置，观察移动旋转有什么不同。
+Understanding the above coordinate systems, then you can change them through 3D transformation. In the sample code, transform is a 3D transformation object (Transform 3D), which is very important in the 3D world. It is used in many change logic control codes about display objects.
+
+In the code, we use the translate movement and rotate rotation methods in 3D transformation, and use 3D vectors to represent the values of X, y, Z. Colleagues, both methods can be set in the parameters whether the local space movement, rotation, beginners can be set in the program to observe the difference between mobile rotation.
+
 
 ```typescript
+
 //移动摄像机位置
 camera.transform.translate(new Laya.Vector3(0, 3, 3));
 //旋转摄像机方向（角度）
 camera.transform.rotate(new Laya.Vector3(-30, 0, 0), true, false);
 ```
 
-![7](img/7.png)</br>(图7)
 
-以上为Transform3D的API中移动、旋转方法描述。当然，变换对象还有很多属性与方法，我们在以后示例中逐步讲解。
+![7](img/7.png)</br> (Fig. 7)
 
-#### 向量的使用
+The above is the description of the moving and rotating methods in the API of Transform 3D. Of course, there are many attributes and methods for transforming objects, which we will explain step by step in future examples.
 
-向量在LayaAir3D引擎中使用非常频繁，从二维向量到四维向量导出都会看到他们的身影。最基础的用法就是本示例中用于赋值使用。
+####The Use of Vectors
 
-代码中3D对象的移动、旋转、缩放等变换用三维向量作为了它的x、y、z轴向坐标赋值。
+Vectors are frequently used in LayaAir3D engines. They can be seen from two-dimensional vectors to four-dimensional vectors. The most basic use is for assignment in this example.
 
-那么在灯光的各种颜色属性赋值长，三维向量中的值又分别代表了R、G、B三种颜色，分别为红、绿、蓝，LayaAir3D引擎中，三个颜色的最大值为1，是按百分比的方式设置的。整体值越大，颜色越亮，越小颜色越暗，如果值超过1将会产生曝光效果。
+The transformation of moving, rotating and scaling of 3D objects in the code uses three-dimensional vectors as its x, y and Z axis coordinates.
 
-至于红、绿、蓝能组合成什么样的颜色，初学者们可以向游戏美术设计师们咨询学习，比如红加绿为黄、红加蓝为紫等等。一般在项目开发过程中，程序员需要反复调整颜色值去实验好的效果。
+Then in the light of various color attributes assignment long, three-dimensional vector values represent R, G, B three colors, respectively, red, green, blue, LayaAir3D engine, the maximum value of three colors is 1, is set by percentage. The larger the overall value, the brighter the color, and the smaller the color, the darker the color. If the value exceeds 1, the exposure effect will be produced.
 
-示例中一下代码运用了向量作为颜色赋值：
+As for the color of red, green and blue, beginners can consult and learn from game art designers, such as red plus green for yellow, red plus blue for purple, and so on. Generally, in the process of project development, programmers need to adjust the color values repeatedly to experiment good results.
+
+In the example, the following code uses vectors as color assignments:
+
 
 ```javascript
+
 //灯光的漫反射颜色
 directionLight.diffuseColor = new Laya.Vector3(1.6, 1.6, 1.6);
 ```
 
-在项目中，还有许多比较复杂的用法，需要运用向量做一些数学运算，本课程作为入门课程，在此暂时不多做介绍。
+
+In the project, there are many more complex uses, need to use vectors to do some mathematical operations, this course as an introductory course, not to do more introduction here.

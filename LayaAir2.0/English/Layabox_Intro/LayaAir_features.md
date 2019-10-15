@@ -1,68 +1,68 @@
-# LayaAir引擎特性简介
+#Brief Introduction to LayaAir Engine Characteristics
 
-LayaAir是Layabox旗下的第二代HTML5引擎。是全球唯一支持ActionScript3、JavaScript、TypeScript三种开发语言，并且一次开发同时发布Native APP与HTML5的游戏引擎，也是全球首款基于HTML5协议的全能型引擎。除支持2D\3D\VR\AR的游戏开发外，引擎还可以用于应用软件、广告、营销、教育等众多领域。
+LayaAir is Layabox's second generation HTML5 engine. It is the only game engine that supports ActionScript 3, JavaScript and TypeScript in the world and publishes both Native APP and HTML5 at one time. It is also the first omnipotent engine based on HTML5 protocol in the world. In addition to supporting the game development of 2D \ 3D \ VR \ AR, the engine can also be used in applications, advertising, marketing, education and many other fields.
 
-LayaAir引擎是一套全新设计的精简API的游戏引擎，具有极致的性能、轻量易用、支持多语言开发、API功能齐全、工具链完善高效、免费、支持多版本发布等特点。
-
-
-
-### 极致性能
-
-LayaAir引擎同时支持WebGL与Canvas渲染。优先使用webgl渲染（当WebGL不可用时，自动无缝转换为canvas渲染）。引擎设计过程中以性能为优先原则进行极致优化，在chrome等优秀的浏览器环境下运行性能媲美Unity3D等APP原生引擎。LayaAir拥有多款APP级的已上线2D游戏精品和3D游戏精品，证明LayaAir引擎的流畅性能。
+LayaAir engine is a newly designed simplified API game engine. It has the characteristics of extreme performance, lightweight and easy to use, supporting multi-language development, complete API functions, perfect tool chain, high efficiency, free, and supporting multi-version release.
 
 
 
-### 轻量易用
+###Extreme performance
 
-LayaAir引擎 API设计上追求精简，简单易用，上手容易，引擎本身非常注意自身大小，是目前同等功能最小的HTML5引擎。
-
-
-
-### 支持多语言开发
-
-LayaAir引擎同时支持ActionScript3、TypeScript、JavaScript三种语言开发HTML使用任意一种自己喜欢的语言开发即可。
+The LayaAir engine supports both WebGL and Canvas rendering. Priority is given to webgl rendering (automatic seamless conversion to canvas rendering when WebGL is unavailable). In the process of engine design, performance-first principle is used to optimize the engine. It runs in excellent browser environments such as chrome with performance comparable to native APP engines such as Unity3D. LayaAir has a number of app-level online 2D game boutiques and 3D game boutiques, which prove the smooth performance of LayaAir engine.
 
 
 
-### 功能齐全
+###Lightweight and easy to use
 
-LayaAir引擎同时支持2D，3D，VR ，AR，时间轴动画，缓动、UI系统、粒子动画、骨骼动画、物理系统等。
-
-
-
-### 工具链完善高效
-
-LayaAir引擎除提供可视化的集成式开发环境LayaAirIDE编辑器外，还支持大量主流的第三方工具链，如：Unity3D、TiledMap、Spine、DragonBones等。建立了完善的工具链生态，可视化的编辑器，清晰的工作流，让美术，策划，程序紧密配合，大幅提升开发效率。
+LayaAir engine API design pursues simplicity, ease of use, easy to use, the engine itself pays great attention to its size, is the smallest HTML5 engine with the same functions.
 
 
 
-### 3D引擎最成熟
+###Support multi-language development
 
-LayaAir引擎自2016年推出3D引擎和游戏案例以来，是最早拥有成熟3D游戏商业化案例，和最多拥有成熟3D游戏商业化案例的HTML5与小游戏引擎。在HTML5和小游戏领域3D引擎占比超过93%。
-
-3D相关的案例介绍：
-
-https://www.layabox.com/news/read.php?id=28
-
-https://www.layabox.com/gamelist/
+The LayaAir engine also supports HTML development in ActionScript 3, TypeScript and JavaScript in any language you like.
 
 
 
-### 免费使用条款
+###Complete functions
 
-LayaAir引擎可免费使用，包括商用。但必须在游戏加载页或首页的任意可见位置注明：Powered by LayaAir Engine，否则须下架线上产品直到停止引擎的使用。
+LayaAir engine also supports 2D, 3D, VR, AR, time axis animation, slow motion, UI system, particle animation, skeleton animation, physical system and so on.
 
 
 
-### 强力的技术支持
+###Tool Chain Improvement and Efficiency
 
- LayaAir引擎提供了强力的技术支持，包括官网文档、微信公众号、官网问答社区、在线视频教育的课堂等。
+In addition to providing a visual integrated development environment, LayaAirIDE editor, LayaAir engine also supports a large number of mainstream third-party tool chains, such as Unity3D, Tiled Map, Spine, DragonBones, etc. Established a perfect tool chain ecology, visual editor, clear workflow, let art, planning, procedures closely cooperate, greatly improve the efficiency of development.
 
-LayaAir引擎开发者中心：[http://ldc2.layabox.com/](http://ldc2.layabox.com/)
 
-LayaAir引擎微信公众号：Layabox
 
-LayaAir引擎问答社区：[http://ask.layabox.com/](http://ask.layabox.com/)
+###The most mature 3D engine
 
-LayaAir引擎视频教学课堂：[http://layabox.ke.qq.com/](http://layabox.ke.qq.com/)
+LayaAir engine is the first commercial case of mature 3D games since it launched the 3D engine and game cases in 2016, and the most commercial case of mature 3D games is HTML5 and small game engine. More than 93% of 3D engines are in HTML5 and small games.
+
+Three-dimensional related case introduction:
+
+Https://www.layabox.com/news/read.php?Id=28
+
+Https://www.layabox.com/gamelist/
+
+
+
+###Free Terms of Use
+
+The LayaAir engine is free to use, including for commercial use. But it must be noted at any visible location on the game loading page or the home page: Powered by LayaAir Engine, or you must get off the line until you stop using the engine.
+
+
+
+###Strong technical support
+
+LayaAir engine provides strong technical support, including official documents, Wechat public numbers, official Q&A community, online video education classes and so on.
+
+LayaAir Engine Developer Center:[http://ldc2.layabox.com/](http://ldc2.layabox.com/)
+
+LayaAir Engine Wechat Public Number: Layabox
+
+LayaAir Engine Question and Answer Community:[http://ask.layabox.com/](http://ask.layabox.com/)
+
+LayaAir Engine Video Classroom:[http://layabox.ke.qq.com/](http://layabox.ke.qq.com/)
 

@@ -1,46 +1,49 @@
-# 骨骼动画的使用
+#The Use of Skeletal Animation
 
 ###### *version :2.1.0beta   Update:2019-6-13*
 
-​		骨骼动画又被叫做蒙皮动画，这种动画主要是以改变模型顶点的方式产生动画。骨骼动画也是我们使用的最多的一种动画了，像经常出现在示例中的猴子模型就是使用的骨骼动画。
+Skeletal animation is also called skin animation, which mainly produces animation by changing the vertex of the model. Skeletal animation is also the most commonly used animation, such as the monkey model which often appears in the examples is the use of skeletal animation.
 
-我们就使用猴子模型来举例子。
+Let's use the monkey model as an example.
 
-首先来看下事先准备好的猴子模型，如图1所示：
+First, look at the monkey model prepared beforehand, as shown in Figure 1.
 
-![](img/1.png)<br>(图1)
+![] (img/1.png)<br> (Figure 1)
 
-然后我们创建一个动画控制器（命名：LayaMonkeyController），并且将Take 001动画添加上去。
+Then we create an animation controller (named layamonkeycontroller) and add the take 001 animation.
 
-![](img/2.png)<br>(图2)
+! [] (IMG / 2. PNG) < br > (Figure 2)
 
-给猴子模型添加Animator组件，并且将我们事先准备的动画控制器与网格添加到Animator上。同图3所示
+Add the Animator component to the monkey model, and add our pre-prepared animation controller and grid to the Animator. As shown in Figure 3
 
-![](img/3.png)<br>(图3)
+![] (img/3.png) < br > (fig. 3)
 
-在上面的事情准备好后，我们可以选择预览动画，确认没有问题我们就可以导出动画了。在这里我们选择整个场景一起的导出方式。选择导出选项中的场景选项，点击导出按钮导出场景。
+After the above things are ready, we can choose to preview the animation, confirm that we can export the animation without any problems. Here we choose the way to export the whole scene together. Select the scenario option in the export option and click the Export button to export the scenario.
 
-![](img/4.png)<br>(图4)
+![] (img/4.png)<br> (Figure 4)
 
-关于导出面板更详细介绍，可以查看 **Unity插件使用** 篇。
+For a more detailed description of the export panel, you can see**Unity plug-in uses**Chapter.
 
-> **在导出前需要注意：**
+>**Note before exporting:**
 
-![](img/5.png)<br>(图4)
+![] (img/5.png) < br > (fig. 4)
 
-Animation Type 只支持 Generic 类型。
+Animation Type supports only Generic types.
 
-Optimize Game Objects 不能勾选
+Optimize Game Objects cannot be checked
 
-------
+---
 
-导出场景后我们加载来看下导出的动画效果。
+After exporting the scenario, we load it to see the animation effect of the export.
+
 
 ```typescript
+
 //加载我们导出的场景
 Laya.Scene3D.load("res/LayaScene_LayaMonkey/Conventional/LayaMonkey.ls",Laya.Handler.create(this,function(s){
 	Laya.stage.addChild(s);
 }));
 ```
 
-![](img/6.gif)<br>(图6)
+
+![] (img/6.gif) < br > (fig. 6)

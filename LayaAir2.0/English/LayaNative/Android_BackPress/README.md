@@ -1,19 +1,19 @@
+#Back button to take over Android
+These two functions, conch. setOnBackPressedFunction (onBack) and conch. exit (), can be used in LayaNative to take over the processing of pressing the Back Key. When the setOnBackPressedFunction is taken over, the function is executed when the user presses the Back key.
 
-
-# 接管android的后退按钮
-在LayaNative中可以使用这两个函数， conch.setOnBackPressedFunction(onBack) 和conch.exit(), 接管按下“后退键”的处理方式。接管setOnBackPressedFunction后，当用户按下后退键时便会执行此函数。
-
-一旦调用了这个函数，就屏蔽了引擎中默认按下两次退出的功能，这时候，如果想要退出应用的话，可以通过调用exit()函数来实现。
+Once this function is invoked, the default function of pressing exit twice in the engine is blocked. At this time, if you want to exit the application, you can call exit () function.
 
 
 **Tips**  
-*1、conch只能LayaNative环境下调用，在网页版本中是没有conch定义的，所以需要判断一下是否存在。*  
-*2、如果使用as语言开发的时候，可以通过 Browser.window['conch']这种方式获得conch对象。*  
-*3、LayaNative只有Android版有这两个函数。*  
+* 1. Conh can only be invoked in LayaNative environment. There is no conch definition in the web version, so we need to judge whether it exists or not. *
+* 2. When developing in as language, conch objects can be obtained through Browser. window ['conch']. *
+* 3. LayaNative only has these two functions in Android. *
 
 
-js示例如下：  
+The JS example is as follows:
+
 ```javascript
+
 var n=3;
 if(window.conch){
     window.conch.setOnBackPressedFunction(()=>{

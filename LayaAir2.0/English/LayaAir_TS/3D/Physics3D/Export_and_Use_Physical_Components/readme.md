@@ -1,16 +1,16 @@
-# 在Unity插件中导出和使用物理组件
+#Export and use physical components in Unity plug-ins
 
 ###### *version :2.1.1   Update:2019-7-19*
 
-在使用物理系统时，Collider和Rigidbody一般是在unity中添加好的，导出后使用。这里简单讲右下如何在Unity中简单的添加物理组件。在创建好对象之后，选择Add Component -- Physics 。
+When using the physical system, the collider and rigidbody are generally added in the unit and used after export. Here's how to add physical components in Unity. After creating the object, select Add Component -- Physics.
 
-![](img/1.png)<br>(图1)
+![] (img/1.png)<br> (Figure 1)
 
-可以在Physics选项面板中，选择添加Rigidbody和Collider
+In the Physics options panel, you can choose to add Rigidbody and Collider
 
-![](img/2.png)<br>(图2)
+![] (img/2.png)<br> (Figure 2)
 
-关于Rigidbody和Collider的参数设置这里不做过多介绍。在添加和设置完成就可以直接导出使用了。
+The parameter settings of Rigidbody and Collider are not introduced here. After adding and setting up, you can export and use it directly.
 
-**Tip：**创建Unity基础模型是自带Collider的，其它情况需要自己添加。
+**Tip:**Creating the Unity base model is self-contained Collider, and other situations need to be added by yourself.
 

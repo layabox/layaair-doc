@@ -1,16 +1,16 @@
-# 刚体动画的使用
+#The Use of Rigid Body Animation
 
 ###### *version :2.1.0beta   Update:2019-6-13*
 
-刚体动画又称为变换动画，是指不改变模型顶点、材质的基础上，只对模型进行旋转、缩放、位移的动画，这种动画在游戏中也经常使用，比如说脚底光环、刀光等。当然刚体动画与材质动画也经常结合使用。
+Rigid animation, also known as transformation animation, refers to the animation that only rotates, scales and displaces the model without changing the vertex and material of the model. This animation is often used in games, such as foot halo, knife light, etc. Of course, rigid animation and material animation are often used together.
 
-刚体动画与材质动画在制作上也有区别，材质动画必须在unity中制作，否则无法识别和播放动画，而刚体动画可以在3D软件中制作再导入unity中，它可以被识别。
+Rigid animation is different from material animation in production. Material animation must be made in unit, otherwise it can not recognize and play animation. Rigid animation can be produced in 3D software and then imported into unit, which can be recognized.
 
-建议在untiy中编辑动画，刚体动画与材质动画结合使用，配上粒子特效动画，效果更佳，三维软件只提供基本模型导入即可！
+It is suggested to edit the animation in untiy, use the rigid body animation and material animation together, with particle effect animation, the effect is better. The 3D software only provides basic model import!
 
-以下为制作的刚体动画效果（图1），下面的这段动画是对一个Cube进行了移动选择的操作。
+The following is the rigid animation effect (Figure 1). The following animation is a mobile selection operation for a Cube.
 
-> 注意刚体动画导出时，对应的Animator组件不能添加Avatar
+>Note that when exporting rigid body animation, the corresponding animator component cannot add Avatar
 
-![](img/1.gif)<br>(图1)
+![] (img/1.gif) <br> (Fig. 1)
 

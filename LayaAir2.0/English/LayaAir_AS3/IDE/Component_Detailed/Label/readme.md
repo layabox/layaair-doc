@@ -1,66 +1,74 @@
-# Label 组件参考
+#Label Component Reference
 
 
 
-## 一、通过LayaAirIDE创建Label组件
+##1. Creating Label Components through LayaAirIDE
 
-###     1.1 创建Label
+###1.1 Create Label
 
-​        Label 组件用来显示一段文字，文字可以是系统字体或者 BMFont 字体。
+The Label component is used to display a paragraph of text, which can be a system font or a BMFont font.
 
-​        点击资源面板里的 Label 组件，拖放到页面编辑区，即可添加 Label 组件到页面上。
-​        Label 组件的脚本接口请参考 [Label API](http://layaair.ldc.layabox.com/api/index.html?category=Core&class=laya.ui.Label)。
+Click on the Label component in the resource panel and drag it into the page editing area to add the Label component to the page.
+Refer to the script interface for the Label component[Label API](http://layaair.ldc.layabox.com/api/index.html?category=Core&class=laya.ui.Label)。
 
-​        Label 组件的资源示例：
+Resource examples of Label components:
 
-​        ![图片0.png](img/1.png)<br/>
-​    （图1）
+​![图片0.png](img/1.png)<br/>
+(Fig. 1)
 
-​        Label组件拖放到编辑区后，设置 text 属性的值为 LayaAir IDE 后的显示效果如下：
+After dragging and dropping the Label component into the editing area, setting the value of the text attribute to LayaAir IDE shows the following effect:
 
-​        ![图片0.png](img/2.png)<br/>
-​    （图2）
+​![图片0.png](img/2.png)<br/>
+(Figure 2)
+
+
 
  
 
  
 
-###  1.2 Label 属性
 
-​        ![图片0.png](img/3.png)<br/>
-​    （图）
+
+###1.2 label properties
+
+​![图片0.png](img/3.png)<br/>
+(Figure)
+
+A kind of**attribute**| Functional description|
+| ------------------------------------------------------------------------------------------------------------------------------------------------------|
+| Text | Text content string. A kind of
+| Color | The color value of the text. The default is black. A kind of
+| Whether the bold | text is shown in bold. A kind of
+| font | text font name. A kind of
+| fontSize | font size of text. A kind of
+| Horizontal alignment of align | text. Optional values are left, center, right. A kind of
+| Overflow||
+| runtime||
+| visible||
+
+
 
  
 
-| **属性**   | 功能说明                             |
-| -------- | -------------------------------- |
-| text     | 文本内容字符串。                         |
-| color    | 文本的颜色值。默认为黑色。                    |
-| bold     | 文本是否为粗体字显示。                      |
-| font     | 文本的字体名称。                         |
-| fontSize | 文本的字体大小。                         |
-| align    | 文本的水平对齐方式。可选值有left、center、right。 |
-| overflow |                                  |
-| runtime  |                                  |
-| visible  |                                  |
 
- 
 
-## 二、通过代码创建Label组件
+##2. Creating Label Components by Code
 
- 	在我们进行书写代码的时候，免不了通过代码控制UI，创建`UI_Label`类，在代码中导入`laya.ui.Label`的包，并通过代码设定Label相关的属性。
+When we write code, we inevitably control UI through code and create it.`UI_Label`Class, imported in code`laya.ui.Label`And set label related properties through code.
 
-**运行示例效果:**
-​	![5](img/4.png)<br/>
-​	(图5)通过代码创建Label
+**Run the example effect:**
+​![5](img/4.png)<br/>
+(Figure 5) Create Labels from code
 
-​	Label的其他属性也可以通过代码来设置，下述示例代码演示了如何通过代码创建不同皮肤（样式）的Label，有兴趣的读者可以自己通过代码设置Label，创建出符合自己需要的文字效果。
+Other attributes of Label can also be set by code. The following sample code demonstrates how to create different skin (style) Labels by code. Interested readers can set Label by code themselves to create text effects that meet their needs.
 
-​	更多的文字效果可以去查看2D基础篇中的文本部分。
+More text effects can be seen in the text section of the 2D Foundation.
 
-**示例代码：**
+**Sample code:**
+
 
 ```javascript
+
 package 
 {
 	import laya.display.Stage;
@@ -132,6 +140,11 @@ package
 	}
 }
 ```
+
+
+
+
+
 
 
 

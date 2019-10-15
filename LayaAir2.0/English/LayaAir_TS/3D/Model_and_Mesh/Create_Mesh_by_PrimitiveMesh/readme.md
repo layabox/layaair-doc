@@ -1,12 +1,14 @@
-# 通过PrimitiveMesh创建简单Mesh
+#Create a simple Mesh through Primitive Mesh
 
 ###### *version :2.0.2beta   Update:2019-4-26*
 
-​	在快速开启3D之旅的课程中，我们已用到了**PrimitiveMesh**的**createBox**方法创建一个盒子模型，本节课中介绍该类来创建其他的基础模型，并且使用transform来调整位置。更详细的使用情况可以[查看API](https://layaair.ldc.layabox.com/api2/Chinese/index.html?category=Core&class=laya.d3.resource.models.PrimitiveMesh)。
+We've used it in the course of Quick Open 3D Travel.**Primitive Mesh**Of**CreateBox**Method Create a box model, which is introduced in this lesson to create other basic models, and use transform to adjust the position. More detailed usage can be[查看API](https://layaair.ldc.layabox.com/api2/Chinese/index.html?category=Core&class=laya.d3.resource.models.PrimitiveMesh)。
 
-创建时需注意的是，加载到场景中的引擎自带模型，轴心点在模型正中心，因此我们是以模型中心点为参考进行移动、旋转、缩放。加载到场景中时，模型默认会放置到场景的世界座标原点上。
+It should be noted that the engine loaded into the scene has its own model, and the pivot point is in the center of the model, so we move, rotate and zoom with the reference of the center point of the model. When loaded into a scene, the model is placed at the origin of the world coordinate of the scene by default.
+
 
 ```typescript
+
 //创建一个空节点用来防止各模型
 sprite3D = scene.addChild(new Laya.Sprite3D());
 
@@ -35,7 +37,8 @@ cone.transform.position = new Laya.Vector3(-2.0, 0.375, 0.6);
 var plane = sprite3D.addChild(new Laya.MeshSprite3D(Laya.PrimitiveMesh.createPlane(6, 6, 10, 10)));
 ```
 
-效果如图1:
 
-![](img/1.png)<br>(图1)
+The effect is shown in Figure 1:
+
+![] (img/1.png)<br> (Figure 1)
 

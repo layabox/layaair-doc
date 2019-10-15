@@ -1,32 +1,34 @@
-# SkyProceduralMaterial材质详解
+#SkyProcedural Material Material Material Details
 
 ###### *version :2.1.0beta   Update:2019-5-14*
 
-SkyProceduralMaterial程序化天空，这种材质可以实现大气反射，模拟日光，这种材质使用的顶点着色渲染天空。
+SkyProcedural Material programmed sky, this material can achieve atmospheric reflection, simulate sunlight, this material uses vertex shading to render the sky.
 
-#### 主要属性与方法
+####Main attributes and methods
 
-> 属性
+> attribute
 
-`sunDisk:int`  设置太阳状态。
+`sunDisk:int`Set the state of the sun.
 
-`sunSize:Number` 太阳尺寸,范围是0到1。
+`sunSize:Number`The size of the sun ranges from 0 to 1.
 
-`sunSizeConvergence:Number` 太阳尺寸收缩,范围是0到20。
+`sunSizeConvergence:Number`The sun shrinks in size from 0 to 20.
 
-`atmosphereThickness:Number` 大气厚度,范围是0到5。
+`atmosphereThickness:Number`The atmospheric thickness ranges from 0 to 5.
 
-`skyTint:Vector4 ` 天空颜色。
+`skyTint:Vector4 `Sky color.
 
-`groundTint:Vector4` 地面颜色。
+`groundTint:Vector4`Ground color.
 
-`exposure:Number` 曝光强度,范围是0到8。
+`exposure:Number`Exposure intensity, ranging from 0 to 8.
 
-#### 创建和使用材质
+####Create and use materials
 
-下面的代码对官方示例（[demo地址](https://layaair.ldc.layabox.com/demo2/?language=ch&category=3d&group=Sky&name=Sky_Procedural)）中有所调整，设置好天空盒效果后更新灯光位置来表现日升日落的效果，`SkyDome.instance`是LayaAir3D中内置的一个圆形天空盒网格。
+The following code is for the official example（[demo地址](https://layaair.ldc.layabox.com/demo2/?language=ch&category=3d&group=Sky&name=Sky_Procedural)) After setting the Skybox effect, the lighting position is updated to show the effect of sunrise and sunset.`SkyDome.instance`It is a circular sky box grid built in LayaAir3D.
+
 
 ```typescript
+
 //初始化天空渲染器
 var skyRenderer:SkyRenderer = scene.skyRenderer;
 //创建天空盒mesh
@@ -50,4 +52,5 @@ camera.clearFlag = BaseCamera.CLEARFLAG_SKY;
 ......
 ```
 
-![](img/1.gif)<br>(图1)
+
+![] (img/1.gif) <br> (Fig. 1)

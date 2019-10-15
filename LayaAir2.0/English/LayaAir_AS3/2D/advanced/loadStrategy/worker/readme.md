@@ -1,56 +1,57 @@
-## 多线程worker
+##Multithreaded worker
 
-> 本文档中的worker仅限于浏览器模式中的HTML5模式运行支持，LayaNative打包APP方案中暂不支持worker
+> The worker in this document is limited to HTML5 mode operation support in browser mode, and worker is not supported in LayaNative Packaging APP scheme for the time being.
 
-​	从传统意义上来说，浏览器是单线程的，它们会强制应用程序中的所有脚本一起在单个 UI 线程中运行。虽然你可以通过使用文档对象模型 (DOM) 事件和 setTimeout等API 造成一种多个任务同时在运行的假象，但只需一个计算密集型任务就会使用户体验急转直下。在html5引入了worker的功能，通过使用Web Worker， 我们可以在浏览器后台运行JavaScript， 而不占用浏览器自身线程。Web Worker可以提高应用的总体性能，并且提升用户体验。线程可以执行任务而不干扰用户界面。
+Traditionally, browsers are single threaded, forcing all scripts in an application to run together in a single UI thread. Although you can create the illusion that multiple tasks are running at the same time by using APIs such as Document Object Model (DOM) events and setTimeout, only one compute-intensive task can dramatically reduce the user experience. The function of worker is introduced in HTML 5. By using Web Worker, we can run JavaScript in the browser background without taking up the browser's own thread. Web Worker can improve the overall performance of the application and enhance the user experience. Threads can perform tasks without interfering with the user interface.
 
-### 原生worker
+###Native worker
 
-​	web worker分为两种，专用线程dedicated web worker，以及共享线程shared web worker。 Dedicated web worker随当前页面的关闭而结束；这意味着Dedicated web worker只能被创建它的页面访问。与之相对应的Shared web worker可以被多个页面访问。但是web worker有些限制，并非所有的接口和方法都能使用。
+There are two kinds of web worker: dedicated web worker and shared web worker. Dedicated web worker ends with the closure of the current page; this means that Dedicated web worker can only be accessed by the page that created it. The corresponding Shared web worker can be accessed by multiple pages. But web worker has some limitations, not all interfaces and methods can be used.
 
-- Web Worker无法访问DOM节点；
-- Web Worker无法访问全局变量或是全局函数；
-- Web Worker无法调用alert()或者confirm之类的函数；
-- Web Worker无法访问window、document之类的浏览器全局变量；
+##- Web Worker cannot access DOM nodes;Web Worker cannot access global variables or functions.
+##- Web Worker cannot call functions such as alert () or confirm;Web Worker cannot access browser global variables such as window and document.
 
- [workder 支持的函数](https://developer.mozilla.org/En/DOM/Worker/Functions_available_to_workers) 页面提供了一个 worker 支持的全局函数列表。开发者可以自己看下相应的方法。
 
-####方法概述
+ [workder 支持的函数](https://developer.mozilla.org/En/DOM/Worker/Functions_available_to_workers)Page provides a list of global functions supported by worker. Developers can look at the corresponding methods for themselves.
 
-##### 构造函数Worker()
+####Method overview
 
-​	该构造函数创建一个 web worker，它能执行位于指定 URL 上的脚本。脚本必须遵循 [同源策略](https://developer.mozilla.org/en/Same_origin_policy_for_JavaScript)。
+#####Constructor Worker ()
 
-##### postMessage()：
+This constructor creates a web worker that executes scripts located on the specified URL. The script must follow[同源策略](https://developer.mozilla.org/en/Same_origin_policy_for_JavaScript)。
 
-​	向 worker 的内部作用域内传递消息。该方法接收一个单独的参数，即要传递给 worker 的数据。数据可以是任何值或者是经过[结构化拷贝](http://www.whatwg.org/specs/web-apps/current-work/multipage/common-dom-interfaces.html#transferable)算法处理过的 JavaScript 对象，换句话说，可以包含循环引用。
+#####PostMessage ():
 
-#######参数
+Messages are delivered to the worker's internal scope. This method receives a single parameter, which is the data to be passed to the worker. Data can be any value or passed through[结构化拷贝](http://www.whatwg.org/specs/web-apps/current-work/multipage/common-dom-interfaces.html%3Ch1%3Etransferable)Algorithmically processed JavaScript objects, in other words, can contain circular references.
+
+#######parameter
 
 - aMessage
 
-  传输给 worker 的对象；它将包含于传递给 onmessage 处理函数的事件对象中的 data 字段内。你可以传递任意值或是经过[结构化拷贝](http://www.whatwg.org/specs/web-apps/current-work/multipage/common-dom-interfaces.html#transferable)算法处理过的 JavaScript 对象，即可以包含循环引用。
+The object passed to the worker; it will be included in the data field of the event object passed to the onmessage handler. You can pass any value or pass through[结构化拷贝](http://www.whatwg.org/specs/web-apps/current-work/multipage/common-dom-interfaces.html%3Ch1%3Etransferable)The JavaScript object processed by the algorithm can contain circular references.
 
 - transferList
 
-  一个可选的对象数组，用于转让它们的所有权。如果一个对象的所有权被转让，那么它在原来的上下文内将不可使用，而只能在转让到的 worker 内可用。
+An optional array of objects to transfer their ownership. If the ownership of an object is transferred, it will not be available in the original context, but only in the transferred worker.
 
-#####terminate()
+#####Terminate ()
 
-  立即终止 worker。该方法不会给 worker 留下任何完成操作的机会；就是简单的立即停止
+Terminate worker immediately. This method does not leave any chance for the worker to complete the operation; it simply stops immediately.
 
-### 属性
+###attribute
 
-| Property    | Type                                     | Description                              |
-| ----------- | ---------------------------------------- | ---------------------------------------- |
-| `onmessage` | [`EventListener`](https://developer.mozilla.org/zh-CN/docs/Web/API/EventListener) | 一个事件监听函数，每当拥有 `message 属性的 ``MessageEvent` 从 worker 中冒泡出来时就会执行该函数。事件的 `data` 属性存有消息内容。 |
-| `onerror`   | [`EventListener`](https://developer.mozilla.org/zh-CN/docs/Web/API/EventListener) | 一个事件监听函数，每当类型为  `error `的  `ErrorEvent 从 worker 中冒泡出来时就会执行该函数。` |
+| Property | Type | Description|
+| --------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
+A kind of`onmessage`[`EventListener`](https://developer.mozilla.org/zh-cn/docs/web/api/eventlistener) | an event listener function, whenever the`message 属性的 ``MessageEvent`This function is executed when bubbles come out of the worker. Incident`data`Property holds message content. A kind of
+A kind of`onerror`[`EventListener`] (https://developer.mozilla.org/zh-CN/docs/Web/API/EventListener) | an event listener function whenever the type is`error `Of`ErrorEvent 从 worker 中冒泡出来时就会执行该函数。`A kind of
 
-​	下面我们用原生js看下如何使用。
+Let's see how to use native js.
 
-​	新建一个js文件 ，放到index.html中代码如下：
+Create a new JS file and put it in index.html with the following code:
+
 
 ```javascript
+
 var myWorker = new Worker("my_task.js");
 
 myWorker.onmessage = function (oEvent) {
@@ -59,9 +60,12 @@ myWorker.onmessage = function (oEvent) {
 myWorker.postMessage("start"); // start the worker.
 ```
 
-​	新建一个my_task.js文件，代码如下
+
+Create a new my_task.js file with the following code
+
 
 ```javascript
+
 self.addEventListener('message', function (e) {
     var xmlreq = new XMLHttpRequest();
     xmlreq.responseType = "text";
@@ -74,25 +78,28 @@ self.addEventListener('message', function (e) {
 }, false);
 ```
 
-​	这个例子是在worker中进行加载文件，加载完毕传给主进程，运行这个例子可以在浏览器控制台看到数据输出来。
 
-`var myWorker = new Worker("my_task.js")`;实例化一个worker，传进去一个js文件，通过`myWorker.postMessage("start")`;通知worker线程启动。
+This example is to load the file in the worker and pass it to the main process. Running this example, you can see the data output in the browser console.
 
-​	`self.addEventListener('message',xxx)`;监听主线程通知的消息。
+`var myWorker = new Worker("my_task.js")`; instantiate a worker, pass in a JS file, and pass`myWorker.postMessage("start")`Inform worker thread to start.
 
-​	`self.postMessage(data);`发送数据给主线程。
+​`self.addEventListener('message',xxx)`Listen for messages notified by the main thread.
 
-注意：web worker的不支持文件协议，所以直接打开是不能运行的，开发者可以配合IDE内置的服务器，通过网址来运行就可以看到效果.。打开控制台可以看到数据已经打印出来了。
+​`self.postMessage(data);`Send data to the main thread.
+
+Note: Web worker does not support file protocol, so it can't run directly. Developers can cooperate with IDE built-in server, and you can see the effect if you run it through the web address. __________. Open the console and you can see that the data has been printed out.
 
 
 
-## Laya中应用
+##Application of Laya
 
-​	在Laya中内部封装了worker，解决加载解码图片卡顿现象，开发者可以打开开关，也可以自定义worker，解决项目中耗费cpu的地方，下面我们分别来介绍下。
+In Laya, worker is encapsulated to solve the problem of loading and decoding picture carton. Developers can turn on the switch or customize the worker to solve the problem of CPU consumption in the project.
 
-​	新建一个项目，为了方便演示，我们新建一个ui项目。简单的调用接口如下：
+To facilitate demonstration, we have created a new UI project. The simple invocation interface is as follows:
+
 
 ```java
+
 package {
 	import laya.net.Loader;
 	import laya.utils.Handler;
@@ -121,13 +128,16 @@ package {
 }
 ```
 
-​	`WorkerLoader.workerPath = "libs/worker.js";`设置worker.js的路径，这个worker.js是Laya官方提供的，我们把他拷贝复制到我们自己设置的路径，这个js在Laya的引擎库当中。我这里设置的是libs下。
 
-`WorkerLoader.enable = true;`开启worker模式加载解码图片，大大解放了主线程解码的压力。
+​`WorkerLoader.workerPath = "libs/worker.js";`Set the path of worker.js, which is officially provided by LAYA. We copy it to the path we set. This JS is in Laya's engine library. I set it up here under libs.
 
-​	上面的方法是官方的解码的做法，我们也可以自定义worker来优化项目当中的耗费cpu的地方。下面通过简单的例子来演示下用法。我们可以把教程开头的js脚本移植过来。
+`WorkerLoader.enable = true;`Turn on the worker mode to load decoded pictures, which greatly liberates the decoding pressure of the main thread.
+
+The above approach is official decoding, and we can also customize worker to optimize where CPU is consumed in the project. Here is a simple example to illustrate the usage. We can migrate the JS script at the beginning of the tutorial.
+
 
 ```java
+
 package {
 	import laya.utils.Browser;
 	import laya.webgl.WebGL;
@@ -147,9 +157,12 @@ package {
 }
 ```
 
-​	my_task.js中的代码还是加载一个文件。代码如下：
+
+The code in my_task.js loads a file. The code is as follows:
+
 
 ```javascript
+
 self.addEventListener('message', function (e) {
     var xmlreq = new XMLHttpRequest();
     xmlreq.responseType = "text";
@@ -162,10 +175,10 @@ self.addEventListener('message', function (e) {
 }, false);
 ```
 
-编译运行代码，可以看到控制台输出了我们加载comp.json的数据。
 
-总结：web worker我们一般应用到解析加载大的文件，比如大的json文件，比较费时的计算，或者不需要即时加载的一些资源都可以放到后台线程来完成，这样用户基本感受不到主线程的卡顿。增强项目的流畅性。提高用户体验。
+Compile and run the code, and you can see that the console output the data we loaded comp. json.
 
-- 详细的`Web Workers`，请看 [W3C的xhr 标准](https://www.w3.org/TR/workers/);
-- 详细的api和介绍参考[这里](https://developer.mozilla.org/en-US/docs/Web/API/Worker/)
-- [workder 支持的函数](https://developer.mozilla.org/En/DOM/Worker/Functions_available_to_workers) 页面提供了一个 worker 支持的全局函数列表。
+Summary: Web worker is generally applied to parse large loaded files, such as large JSON files, time-consuming calculations, or some resources that do not need immediate loading can be put into background threads to complete, so users can not basically feel the main thread of the carton. Enhance project fluency. Improve user experience.
+
+##- detailed`Web Workers`Please look at it.[W3C的xhr 标准](https://www.w3.org/TR/workers/);Detailed APIs and introductory references[这里](https://developer.mozilla.org/en-US/docs/Web/API/Worker/)
+-[workder 支持的函数](https://developer.mozilla.org/En/DOM/Worker/Functions_available_to_workers)The page provides a list of global functions supported by worker.

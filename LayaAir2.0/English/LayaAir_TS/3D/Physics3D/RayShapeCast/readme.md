@@ -2,11 +2,13 @@
 
 ###### *version :2.1.1   Update:2019-7-19*
 
-在场景中按照一个选择的形状投射出一个线段来检测碰撞，返回碰撞到的物体。这个检测有`shapeCastAll`和`shapeCast`两个接口，区别于前面的射线检测相同。常用于自定义形状的射线检测，形状弹道的碰撞。
+Physical shape scanning detection is to detect collisions by projecting a line segment according to a selected shape in the scene. This test has`shapeCastAll`and`shapeCast`Two interfaces, the former returns all the objects collided, and the latter returns the first object collided. This scanning detection is often used for self-defined shape ray detection, shape trajectory collision.
 
-下面的代码来自于示例（[demo地址](https://layaair.ldc.layabox.com/demo2/?language=ch&category=3d&group=Physics3D&name=PhysicsWorld_RayShapeCast)），
+The following code comes from an example（[demo地址](https://layaair.ldc.layabox.com/demo2/?language=ch&category=3d&group=Physics3D&name=PhysicsWorld_RayShapeCast))
+
 
 ```typescript
+
 //创建球型碰撞器
 var sphereCollider:Laya.SphereColliderShape = new Laya.SphereColliderShape(0.5);
 //使用球型碰撞器进行形状检测
@@ -22,7 +24,9 @@ if (this.castAll) {
 }
 ```
 
-注意：该示例中射线摆放的模型是使用代码创建的，只是为了方便观察和理解形状扫描检测。
 
-![](img/1.png)<br>(图1)
+> The model of the ray placement in this example was created using code, just to facilitate observation and understanding of shape scanning detection.
+>
+
+![] (img/1.png)<br> (Figure 1)
 

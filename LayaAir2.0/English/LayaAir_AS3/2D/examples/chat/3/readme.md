@@ -1,12 +1,14 @@
-# 图文混排聊天室之客户端（下）
+#Client of Mixed-Arrangement Chat Room (Part 2)
 
-### 选择表情界面功能
+###Selection of facial function
 
-聊天室中表情的使用必不可少，加强了聊天内容的丰富性和趣味性。之前我们在IDE中使用List组件方式制作了表情选择界面，下面开始逻辑代码的编写，请同学们注意list组件的代码逻辑用法，List组件在游戏界面中很常用。
+The use of facial expressions in chat rooms is indispensable, which enhances the richness and interesting of chat content. Before, we used List component to make expression selection interface in IDE. Now we begin to write logic code. Please pay attention to the code logic usage of List component. List component is very common in game interface.
 
-新建ChatFaceView.as类，继承于ChatFaceUI。
+Create a new chattfaceview.as class, which inherits from chattfaceui.
+
 
 ```
+
 package view
 {
 	import laya.events.Event;
@@ -76,34 +78,43 @@ package view
 
 
 
-### 聊天对话条
 
-当收到对话消息后，我们需要在聊天框中显示对话条。聊天对话条并不是简单的文本，在我们的对话消息中，有头像、表情和文字组合。LayaAir引擎提供了HTMLDivElement组件来解决这种图文混排的问题，可以用html标签和样式直接转换成我们所需要的效果。
+###Chat Bar
 
-新建ChatLineView类，继承于Box类。
+When we receive the message, we need to display the dialog bar in the chat box. Chat bars are not simple texts. In our conversation messages, there are avatars, expressions and text combinations. The LayaAir engine provides HTML DivElement components to solve this problem of mixing graphics and text, which can be directly converted into the desired effects using HTML tags and styles.
 
-在代码中，我们实例了一个DIV标签对象。然后将消息三处文本进行了html标签格式转换
+Create a new ChatLineView class that inherits from the Box class.
 
-1.用户昵称html格式转换：定义了名字的颜色样式
+In the code, we exemplify a DIV tag object. Then the HTML tag format of the three texts of the message is transformed.
 
-`var clientName:String = "<span style='color:#ffcc00;'>"+msgObj.name+"：</span>";`
+1. User Nickname HTML Format Conversion: Defining the Color Style of Names
 
-2.用户头像html格式转换：使用了img显示图片标签
+`var clientName:String = "<span style="color:#ffcc00;">"+msgObj.name+"：</span>";`
+
+2. HTML format conversion of user's avatar: using img to display picture labels
+
 
 ```
+
 "<img src='icon_head/head"+msgObj.head+".png' style='width:45px;height:45px'></img>"
 ```
 
-3.表情标识html格式转换：我们用了字符串的replace()方法查找表情标识并替换成html显示图片标签
+
+3. Expression ID HTML format conversion: we use the replace () method of string to find expression ID and replace it with HTML to display image tag.
+
 
 ```
+
 //将表情文本替换为html图片样式
 newChatStr +=data.replace(/@0@/g,"<img src='face/face0.png' style='width:40px; height:40px'></img>")......
 ```
 
-全部代码如下：
+
+The code is as follows:
+
 
 ```
+
 package view
 {
 	import laya.html.dom.HTMLDivElement;
@@ -196,19 +207,22 @@ package view
 
 
 
-### 聊天界面功能
 
-准备好了表情界面和聊天对话条功能，我们新建ChatView.as继承于ChatUI。开始实现聊天界面主要逻辑。
+###Chat Interface Function
 
-1.点击发送按钮，如果输入框中不为空，那么向服务器发送“对话消息”数据，onSendMsg()方法中实现。
+With the facial expression interface and chat bars ready, we created a new ChatView. as inherited from ChatUI. Start to implement the main logic of the chat interface.
 
-2.接收网络对话消息，生成聊天对话条，加入聊天框中后再进行重新排版，msgReceive()、reChatLinePos()方法中实现。
+1. Click the Send button, if the input box is not empty, then send the "dialog message" data to the server, which is implemented in onSendMsg () method.
 
-3.点击选择表情按钮，显示或隐藏表情选择界面。点击选择表情后，界面隐藏，信息输入框中加入表情符。
+2. Receiving network conversation messages, generating chat bars, adding chat boxes and then rearranging them, which are implemented in msgReceive () and reChatLinePos () methods.
 
-全部代码如下
+3. Click on the Select Expressions button to display or hide the Expressions Selection Interface. After clicking on the selected expression, the interface is hidden and the emoticons are added to the information input box.
+
+The whole code is as follows
+
 
 ```
+
 package view
 {
 	import laya.events.Event;
@@ -343,11 +357,14 @@ package view
 ```
 
 
-修改主类ChatClient.as代码。添加功能：登录后，显示聊天界面，当收到对话消息时，聊天界面接收并显示
 
-全部代码如下
+Modify the main class ChatClient. as code. Add function: After login, display the chat interface. When receiving the message, the chat interface receives and displays it.
+
+The whole code is as follows
+
 
 ```
+
 package
 {
 	
@@ -496,6 +513,7 @@ package
 
 
 
-在此，聊天室逻辑代码全部完成。编译运行多个客户端，可以看到相互之前可以进行聊天了，图文混排的效果也不错。当然，还可以在此代码上进行扩展，修改客户端与服务器端增加私聊也不是很复杂的事！
 
-![img](img/7.png)<br/>（图1）
+Here, the chat room logic code is completed. Compiling and running multiple clients, you can see that you can chat with each other before, and the effect of image-text mixing is also good. Of course, you can also expand on this code, modifying the client and server side to increase private chat is not very complicated!
+
+![img](img/7.png)< br / > (Figure 1)

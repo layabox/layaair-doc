@@ -1,138 +1,143 @@
-# 新手常见问题：配置环境之后点击运行报错、黑屏
+#Novice FAQ: click Run error reporting and black screen after configuring the environment
 
 
 
-### 一、由于引用AS3原生导致的报错
+###I. Error Reporting Caused by Native Reference to AS3
 
-**现象：**
+**Phenomenon:**
 
-​        在FB中新建项目之后配置FB的编译环境，环境配置后点击应用-运行报错，如图1所示：
+Configure the compilation environment of FB after the new project is built in FB. Click Application-Run Error Report after the environment is configured, as shown in Figure 1.
 
-​        	![blob.png](img/1.png)<br/>
-​        （图1）
+​![blob.png](img/1.png)<br/>
+(Fig. 1)
 
-**原因：**
+**Reason:**
 
-​         报错是由于代码中引入原生Flash AS3的API和继承原生AS3的Sprite导致。LayaAir引擎支持Flash AS3语言的基础语法，但不支持原生AS3 API的引用与继承。
+Error reporting is due to the introduction of native Flash AS3 API in the code and Sprite inheriting native AS3. The LayaAir engine supports the basic grammar of Flash AS3 language, but does not support the reference and inheritance of native AS3 API.
 
-​           ![blob.png](img/2.png)<br/>
-​        （图2）
+​![blob.png](img/2.png)<br/>
+(Figure 2)
 
-**建议：**
+**Recommendation:**
 
-​        1、项目右键 -> 属性 -> 构建路径 -> 把flash原生的sdk删掉。确认已在库路径中引入Laya的swc文件、在源路径中引入Laya的引擎库文件。如图3，图4，图5所示。
+1. Right-click on the project - > Attribute - > Construction Path - > Delete the original flash sdk. Verify that Laya's SWC file has been introduced in the library path and Laya's engine library file in the source path. Figure 3, Figure 4, Figure 5.
 
-​        2、开发时需要熟知LayaAir引擎API，使用LayaAir引擎的API进行开发。
+2. We need to be familiar with the LayaAir engine API and develop it with the API of the LayaAir engine.
 
-​           ![blob.png](img/3.png)<br/>
-​        （图3）删除原有的sdk
+​![blob.png](img/3.png)<br/>
+(Figure 3) Delete the original SDK
 
-​        ![blob.png](img/4.png)<br/>
-​        （图4）引入LayaAir引擎库压缩包中带的playerglobal.swc，图中路径仅供参考
+​![blob.png](img/4.png)<br/>
+(Figure 4) Introduce playerglobal. SWC in the LayaAir engine library compression package. The path in the graph is for reference only.
 
-​        ![blob.png](img/5.png)<br/>
-​        （图5）引入引擎库，图中路径仅作参考
-
-
-
-
-
-### 二、文档类（默认程序）未设置导致的编译报错
-
-**现象：**
-
-​        ![blob.png](img/6.png)<br/>
-​        （图6）项目编译时出错
-
-**原因：**
-
-当编译时出现图6的错误时，可以肯定就是没有设置文档类（默认程序）导致的。
-
-**解决方案：**
-
-​        ![blob.png](img/7.png)<br/>
-​        （图7）在FlashBuilder里，需要将入口程序设置为默认应用程序
-
-​        ![blob.png](img/8.png)<br/>
-​        （图8）在FlashDevelop里，需要将入口程序设为文档类
-
-​            ![blob.png](img/9.png)<br/>
-​            （图9）在LayaAirIDE里，在asconfig.json工程文件内修改
+​![blob.png](img/5.png)<br/>
+(Fig. 5) Introduce the engine library. The path in the diagram is for reference only.
 
 
 
 
 
-### 三、多余字符导致的编译报错
+###2. Compilation error caused by document class (default program) not set
 
-**现象：**
+**Phenomenon:**
 
-​        ![blob.png](img/10.png)<br/>
-​        （图10）
+​![blob.png](img/6.png)<br/>
+(Figure 6) Project compilation error
 
-​        在出现图10的错误后，点击确定，浏览器控制台中报错如图11所示：
+**Reason:**
 
-​        ![blob.png](img/11.png)<br/>
-​        （图11）
+When the error in Figure 6 occurs during compilation, it is certain that it is caused by the absence of a document class (default program).
 
-**原因：**
+**Solution:**
 
-​        出现这种错误大多数情况都是多余字符等语法非法问题导致的。
+​![blob.png](img/7.png)<br/>
+(Figure 7) in Flash Builder, you need to set the entry program as the default application
 
-**建议：**
+​![blob.png](img/8.png)<br/>
+(Figure 8) In Flash Development, you need to set the entry program as a document class
 
-​        推荐使用FlashBuilder开发AS3语言版本的LayaAir引擎项目，FlashBuilder中自动语法检查功能比较成熟，会避免因一些不留意的小失误导致报错。
-
-
-
-
-
-### 四、未选中程序文件导致的编译报错
-
-**现象：**
-
-​        点击或使用快捷键编译时出现图12的报错。
-
-​        ![blob.png](img/12.png)<br/>
-​        （图12）
-
-**原因：**
-
-​            由于没有鼠标没有选中程序文件，直接运行编译，会导致图12的报错。
-
-**解决方案：**
-
-​            选中有效的程序文件或文件夹，重新编译即可。
+​![blob.png](img/9.png)<br/>
+(Figure 9) in Laya air IDE, modify it in the asconfig.json project file.
 
 
 
 
 
-### 五、跨域导致的黑屏问题
+###3. Compilation errors caused by redundant characters
 
-**现象：**
+**Phenomenon:**
 
-​            运行项目后，浏览器中显示黑屏，控制台中显示如图13所示：
+​![blob.png](img/10.png)<br/>
+(Figure 10)
 
-​        ![blob.png](img/13.png)<br/>
-​        （图13）   
+After the error in Figure 10 occurs, click OK and the error is reported in the browser console as shown in Figure 11.
+
+​![blob.png](img/11.png)<br/>
+(Fig. 11)
+
+**Reason:**
+
+Most of these errors are caused by grammatical illegalities such as redundant characters.
+
+**Recommendation:**
+
+Flash Builder is recommended to develop an AS3 version of the Laaya Air Engine project. The automatic grammar checking function in Flash Builder is mature, which can avoid errors caused by careless mistakes.
+
+
+
+
+
+###Compilation Errors Caused by Unselected Program Files
+
+**Phenomenon:**
+
+An error in Figure 12 occurs when you click or use shortcut keys to compile.
+
+​![blob.png](img/12.png)<br/>
+(Fig. 12)
+
+**Reason:**
+
+Because there is no mouse and no program file is selected, running compilation directly will result in the error report in Figure 12.
+
+**Solution:**
+
+Select a valid program file or folder and recompile it.
+
+
+
+
+
+###V. black screen caused by cross domain
+
+**Phenomenon:**
+
+After running the project, the browser displays a black screen and the console displays as shown in Figure 13.
+
+​![blob.png](img/13.png)<br/>
+(Figure 13)
+
 
  
 
-**原因：**
-​              浏览器默认是不允许文件跨文件读取的，会涉及到跨域的问题。
 
-**解决方案：**
 
-​                1、本地调试解决：
+**Reason:**
+By default, browsers do not allow files to be read across files, which involves cross-domain issues.
 
-​                在chrome浏览器快捷方式->右击打开属性->快捷方式一栏->目标末尾添加 `--allow-file-access-frome-files`
+**Solution:**
 
-​                  2、服务器webServer解决：
+1. Local debugging solution:
 
-​                   需要修改webServer(一般webserver大多数都是 apache、nginx、tomcat等)，在请求特定的域名下加上跨域标识，这里以nginx为例：
+In Chrome browser shortcut - > right click to open properties - > shortcut bar - > add at the end of target`--allow-file-access-frome-files`
+
+2. Server web server solution:
+
+It is necessary to modify the web server (most of the web servers are apache, nginx, tomcat, etc.) and add cross-domain identifiers under the specific domain name requested. Take nginx as an example:
+
 
 ```nginx
+
 http {
 
   ......
@@ -151,10 +156,11 @@ http {
 
 
 
-这样就可以实现GET,POST,OPTIONS的跨域请求的支持
 
-也可以 `add_header Access-Control-Allow-Origin http://www.layabox.com;` -- 指定允许的url;
+This enables cross domain request support for get, post, and options
 
-​                    3、如果是数据请求跨域，需要后端语言配合修改，在请求里加上header标识，这里以php语言为例：
+It's fine too`add_header Access-Control-Allow-Origin http://www.layabox.com;`- specify the allowable url;
 
-`header("Access-Control-Allow-Origin: *");`不一定用`*`，`*`是允许所有的主机跨域访问，你也可以写指定域名下的主机可以访问；
+3. If the data request is cross-domain, it needs the backend language to cooperate with the modification, and add the header identifier to the request. Here, take PHP language as an example:
+
+`header("Access-Control-Allow-Origin: *");`Not necessarily used`*`,`*`It allows all hosts to access across domains. You can also write hosts under the specified domain name to access.

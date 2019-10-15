@@ -1,41 +1,46 @@
-# LayaCompiler宏编译
+#LayaCompiler macro compilation
 
 
 
-### 1、什么是宏编译？
+###1. What is macro compilation?
 
-　　LayaCompiler支持将AS3编译成JS，并定义了一个代表特定内容的标识符，它们包括`“//[IF-SCRIPT] ”、//[IF- SCRIPT-BEGIN]”、“//[IF-SCRIPT-END] ”、“/*[IF-FLASH]*/ ”、“/*[IF-FLASH-BEGIN]*/”、“/*[IF-FLASH-END]*/”`。LayaCompiler编译器在编译时会把源代码中出现的宏标识符替换成编译器定义的代码。
-
-
-
-### 2、为什么要使用宏编译
-
-　　由于Flash AS3与JavaScript存在语言级的差异，通过宏的标识，LayaCompiler可以解决语言的差异，实现Flash与HTML5同时发布。
+LayaCompiler supports compiling AS3 into JS and defines an identifier for specific content, which includes`“//[IF-SCRIPT] ”、//[IF- SCRIPT-BEGIN]”、“//[IF-SCRIPT-END] ”、“/*[IF-FLASH]*/ ”、“/*[IF-FLASH-BEGIN]*/”、“/*[IF-FLASH-END]*/”`。 When compiled, the LayaCompiler compiler replaces the macro identifier appearing in the source code with the code defined by the compiler.
 
 
 
-### 3、宏编译用法说明
+###2. Why use macro compilation
 
-#### 3.1 单行宏编译写法
+Because of the language-level differences between Flash AS3 and JavaScript, LayaCompiler can solve the language differences by macro-tagging, and realize the simultaneous publication of Flash and HTML5.
+
+
+
+###3. Explanation of Macro Compiler Usage
+
+####3.1 Compiling and Writing of Single-Line Macro
+
 
 ```java
+
  /*[IF-FLASH]*/value = byteArray.readUnsignedInt();
  //[IF-SCRIPT]value = byteArray.readInt();
 ```
 
-**单行宏用法说明**
 
-　　1、`/*[IF-FLASH]*/`同行的内容，在发布Flash版本时会被执行，而发布HTML5版本时会被编译器注释掉，不被执行。如： `value = byteArray.readUnsignedInt();`在Flash版本被正常执行，编译成JS版本不被执行；
+**Single-line macro usage description**
 
-　　2、 `//[IF-SCRIPT]`同行的内容，在发布Flash版本时会被视为注释代码不被执行，编译成JS时会去掉注释，可以正常执行。如： `value = byteArray.readInt();` 在Flash版本不被执行，编译成JS版本被正常执行；
+1.`/*[IF-FLASH]*/`Peer content will be executed when the flash version is released, and will be commented out by the compiler when the HTML5 version is released, and will not be executed. Such as:`value = byteArray.readUnsignedInt();`The flash version is executed normally, and the JS version is not executed.
 
-　　3、如果是在AS3类文件的第一行添加`/*[IF-FLASH]*/`，那这个AS3类将不被编译到JS中。
+2.`//[IF-SCRIPT]`Peer content, when released Flash version, will be regarded as comment code not to be executed. When compiled into JS, the comment will be removed and can be executed normally. Such as:`value = byteArray.readInt();`Flash version is not executed, compiled into JS version is executed normally;
+
+3. If added in the first line of AS3 file`/*[IF-FLASH]*/`That AS3 class will not be compiled into JS.
 
 
 
-#### 3.2 多行宏的写法
+####3.2 Writing of multiline macros
+
 
 ```java
+
  /*[IF-FLASH-BEGIN]*/
     if (!flag)
     {
@@ -54,13 +59,14 @@
      [IF-SCRIPT-END]*/
 ```
 
-**多行宏写法说明**
 
-​    1、`/*[IF-FLASH-BEGIN]*/` 与`/*[IF-SCRIPT-BEGIN]` 代表多行宏的开始；
+**Multi-line macro description**
 
-​    2、`/*[IF-FLASH-END]*/` 与`[IF-SCRIPT-END]*/` 代表多行宏的结束；
+1.`/*[IF-FLASH-BEGIN]*/`And`/*[IF-SCRIPT-BEGIN]`Represents the beginning of a multiline macro;
 
-​    3、`/*[IF-FLASH-BEGIN]*/`与`/*[IF-FLASH-END]*/` 之间的代码在Flash版本中被正常运行，在编译JS版本时被注释，不被执行；
+2.`/*[IF-FLASH-END]*/`And`[IF-SCRIPT-END]*/`Represents the end of a multiline macro;
 
-​    4、`/*[IF-SCRIPT-BEGIN]` 与`[IF-SCRIPT-END]*/` 之间的代码在Flash版本中被视为注释代码，在编译JS文件时会去掉注释，JS中被正常执行；
+3.`/*[IF-FLASH-BEGIN]*/`And`/*[IF-FLASH-END]*/`The code between them is normally run in the Flash version, annotated when compiling the JS version, and not executed.
+
+4.`/*[IF-SCRIPT-BEGIN]`And`[IF-SCRIPT-END]*/`The code between them is regarded as annotation code in Flash version. When compiling JS files, the annotation will be removed and the JS will be executed normally.
 

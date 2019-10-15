@@ -1,28 +1,30 @@
-# CheckBox 组件详解
+#CheckBox Component Details
 
-> 由于很多组件属性是通用的，常用及通用的组件属性在`属性设置器`文档中已进行介绍。阅读本篇内容前请先阅读《属性设置器》文档。
+> Since many component attributes are generic, common and generic component attributes are`属性设置器`This is described in the document. Read the Property Setter document before reading this article.
 
-## 1、创建CheckBox组件
+##1. Creating CheckBox Components
 
-​       CheckBox （多选框）组件由两部分组成，选择状态框及内容说明标签label。其中选择状态框必须是图片资源，标签为文本。在使用 CheckBox组件的时候，可以只使用选择状态框，也可以只设置一个标签label。
+The CheckBox component consists of two parts, the selection status box and the content description label. The selection status box must be an image resource labeled as text. When using the CheckBox component, you can either use only the selection status box or set only one label.
 
-### 1.1 准备资源
+###1.1 Reserve resources
 
-CheckBox组件的选择框图片是CheckBox组件的皮肤（skin），图片资源命名通常是`check`、`checkbox`或以`check_`为前缀，如图1所示。CheckBox组件资源通常是由三态或两态的skin图片组件。
+The CheckBox component's selection box image is the skin of the CheckBox component, and the name of the image resource is usually used.`check`,`checkbox`Or to`check_`For prefix, as shown in Figure 1. CheckBox component resources are usually composed of three-state or two-state skin image components.
 
-![图片0.png](img/1.png)<br/> （图1）
+![图片0.png](img/1.png)< br / > (Figure 1)
 
-*Tips:关于组件皮肤skin以及多态切割stateNum相关请查看《属性设置器》文档。*
+*Tips: For component skin skins and polymorphic cutting stateNum, please see the Properties Setter document.*
 
-### 1.2 用引擎直接创建CheckBox组件
+###1.2 Create CheckBox components directly with engine
 
 
 
-使用LayaAir引擎创建一个CheckBox组件比较简单，通常只需要几个步骤，加载资源，创建一个CheckBox实例，将CheckBox添加到舞台，设置CheckBox组件的属性。具体实现参考下面的代码与注释。
+Using LayaAir engine to create a CheckBox component is relatively simple. Usually it only takes a few steps to load resources, create a CheckBox instance, add CheckBox to the stage, and set the properties of the CheckBox component. Specific implementation refers to the following code and comments.
 
-**创建一个入口类GameMain.js，编写如下代码：**
+**Create an entry class GameMain.js and write the following code:**
+
 
 ```javascript
+
 //初始化引擎，设置宽高并开启WebGL渲染模式
 Laya.init(600, 400,Laya.WebGL);
 //设置舞台背景颜色
@@ -59,87 +61,95 @@ function onLoaded(){
 }
 ```
 
-代码运行效果如动图2所示：
 
-![动图2](img/2.gif) <br /> (动图2)
+The code runs as shown in Figure 2.
 
-
-
-**Tips:** CheckBox 组件的属性接口介绍请参考 [CheckBox API](https://layaair.ldc.layabox.com/api2/Chinese/index.html?category=Core&class=laya.ui.CheckBox)。
+![动图2](img/2.gif)<br/> (Motion 2)
 
 
 
-## 二、通过LayaAirIDE创建CheckBox组件
+**Tips:**For an introduction to the property interface of CheckBox components, please refer to[CheckBox API](https://layaair.ldc.layabox.com/api2/Chinese/index.html?category=Core&class=laya.ui.CheckBox)。
 
-### 2.1 创建CheckBox
 
- 创建一个ui的DEMO页，点击选择`资源管理器`里的 CheckBox 组件资源，拖到场景编辑器，即成功添加 CheckBox 组件到页面上，如图3-1所示。   
+
+##2. Creating CheckBox Components through LayaAirIDE
+
+###2.1 Create CheckBox
+
+Create a UI DEMO page, click Select`资源管理器`Drag the checkbox component resource in the scene editor to add the checkbox component to the page, as shown in Figure 3-1.
 
 ![图3-1](img/3-1.png)<br/>     （图3-1）
 
 
 
-### 2.2 设置CheckBox常用属性
 
-创建完组件，可以通过属性设置器，为组件设置属性。例如，CheckBox组件的默认文本为“label”，我们将默认文本修改为“我的多选框”，并设置label标签的颜色、状态、字体、大小等。如图3-2、3-3所示。
+
+
+
+###2.2 Setting common properties of CheckBox
+
+After creating the component, you can set the properties for the component through the property setter. For example, the default text of the CheckBox component is "label". We change the default text to "My Multiple Choice Box" and set the label label's color, status, font, size, etc. As shown in Figures 3-2 and 3-3.
 
 ![图3-2](img/3-2.png)<br/>  （图3-2）
-![图3-1](img/3-3.png)<br/>（图3-3）
+
+![图3-1](img/3-3.png)<br/> (Figure 3-3)
 
 
 
-#### 2.2.1 label相关的其他属性
+####2.2.1 Other label-related attributes
 
-| **属性名**          | **功能说明**                                 |
-| ---------------- | ---------------------------------------- |
-| labelAlign       | 标签对齐模式，默认为居中对齐。注：在CheckBox中无效            |
-| labelColors      | 表示标签各个状态下的文本颜色。 格式: "upColor,overColor,downColor,disableColor"。默认为“蓝色，绿色”。 |
-| labelBold        | 表示标签文本标签是否为粗体字。                          |
-| labelFont        | 表示文本标签的字体名称，以字符串形式表示。IDE中可选择。            |
-| labelPadding     | 表示文本标签的边距。 格式："上边距,右边距,下边距,左边距"。         |
-| labelSize        | 表示文本标签的字体大小。                             |
-| labelStroke      | 文字描边宽度（以像素为单位）。 默认值0，表示不描边。              |
-| labelStrokeColor | 文字描边颜色，以字符串表示。 默认值为 "#000000"（黑色）;       |
-| strokeColor      | 表示各个状态下的描边颜色。 格式: "upColor,overColor,downColor,disableColor"。 |
-
-
-
-#### 2.2.2  关于多选框大小与九宫格
-
-需要特别说明的是九宫格（sizeGrid）在CheckBox组件中无效，**多选框**的大小需美术资源制作的时候去设置。
+A kind of**Attribute name**A kind of**Function description**A kind of
+| ----------------------------------------------------------------------------------------------------------------------------------------------------------------------|
+| label Align | Label alignment mode, default to center alignment. Note: Invalid in CheckBox|
+| label Colors | represents the text color in each state of the label. Format: "upColor, overColor, downColor, disableColor". The default is "blue, green". A kind of
+| labelBold | indicates whether the label text label is bold. A kind of
+| labelFont | represents the font name of the text label, expressed as a string. IDE is optional. A kind of
+| label Padding | represents the margin of a text label. Format: "upper margin, right margin, lower margin, left margin". A kind of
+| labelSize | indicates the font size of the text label. A kind of
+| label Stroke | Text stroke width (in pixels). The default value is 0, which means no edge strokes. A kind of
+| label StrokeColor | Text edge color, represented as a string. The default value is“#000 000 "(black);"|
+| StrkeColor | represents the edge color in each state. Format: "upColor, overColor, downColor, disableColor". A kind of
 
 
 
-#### 2.2.3  skin与stateNum配合换皮肤资源
+####2.2.2 On the Size of Multiple Choice Box and Nine Palaces
 
- **skin：**选择框的图像资源。与按钮类似，可两态或三态美术资源。IDE或程序中俱可修改。
+In particular, the sizeGrid is invalid in the CheckBox component.**Checkbox**The size needs to be set when making art resources.
 
-**stateNum：**表示选择框的状态，多选框组件默认为三个状态，如果多选框美术资源改为两态，如图4所示，需设置状态值为2，正常情况下多选框至少应当有2个状态。
+
+
+####2.2.3 Skin and stateNum cooperate to exchange skin resources
+
+
+ **Skin:**Select the image resources of the box. Similar to buttons, there are two or three-state art resources. IDE or program can be modified.
+
+**StateNum:**Represents the state of the selection box. The multi-selection box component defaults to three states. If the multi-selection box art resources are changed to two states, as shown in Figure 4, the state value should be set to 2, and under normal circumstances, the multi-selection box should have at least two states.
 
 ![图4](img/4.png)<br/>  （图4）两态美术资源图
-*Tips：特殊情况下，也可以使用单态。比如仅由label文本组成的CheckBox组件。*
 
-**两态CheckBox调整示例：**
+*Tips: In special cases, singletons can also be used. For example, a CheckBox component consisting of label text only.*
 
-下面我们上例的多选框换成另一个两态的“音乐开关”多选框。从资源管理器中拖拽一个两态资源到skin属性上，并把stateNum设置为2，修改label文本为音乐，并调整label标签的字体大小与边距。如图5-1、5-2所示。
+**Two-state CheckBox adjustment example:**
 
-
-
-![图5-1](img/5-1.png)<br/>  （图5-1）
-
-![图5-2](img/5-2.png)<br/>  （图5-2）
+Next, let's replace our previous multiple-checkbox with another two-state "Music Switch" multiple-checkbox. Drag a two-state resource from the resource manager to the skin attribute, set stateNum to 2, modify label text to music, and adjust the font size and margin of label label tags. Figs 5-1 and 5-2 are shown.
 
 
 
-#### 2.2.4 默认勾选 selected
+![图5-1](img/5-1.png)<br/> (Fig. 5-1)
 
-布尔值，表示多选框是否被选中，可通过程序调用或IDE设置，设置 CheckBox 的 selected 属性的值为 true 后，显示效果如图6所示：
+![图5-2](img/5-2.png)<br/> (Fig. 5-2)
 
-![图6](img/6.png)<br/>  （图6）
 
-#### 2.2.5 不能设置的属性toggle
 
-toggle决定按下时是否切换组件的显示状态。这里需要特别的注意的是，该属性在CheckBox组件时不要改成false，否则会变成按钮模式，永远都选不中。
+####2.2.4 Check selected by default
+
+Boolean value, which indicates whether the multi-check box is selected or not, can be set by program call or IDE. After setting the value of selected attribute of CheckBox to true, the display effect is shown in Figure 6.
+
+![图6](img/6.png)<br/> (Fig. 6)
+
+####2.2.5 Attribute toggle that cannot be set
+
+Toggle decides whether to switch the display status of the component when it is pressed. In particular, this property should not be changed to false in the CheckBox component, otherwise it will become a button mode and will never be selected.
 
 
 

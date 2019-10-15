@@ -1,19 +1,21 @@
-# Sprite3D添加组件或脚本 
+#Sprite3D add components or scripts
 
 ###### *version :2.0.1beta   Update:2019-4-13*
 
-**Component** 组件，是附加到所有3D对象的内容的基类。在给物体添加组件时，需要物体使用`addComponent`方法。
+**Component**Components are the base classes attached to the content of all 3D objects. When adding components to an object, the object needs to be used`addComponent`Method.
 
-![](img/1.png)<br>(图1)
+![] (img/1.png)<br> (Figure 1)
 
-**Script3D** 这是3D世界中的脚本，继承自组件，是组件的一种。该类被定义为 '抽象类' ,不允许实例。该类提供了一系列虚方法。详细使用可以去API中查看（[地址](https://layaair.ldc.layabox.com/api2/Chinese/index.html?category=3D&class=laya.d3.component.Script3D)），在3D世界的开发中脚本类会在很多地方被使用，该组件将会在后面的脚本篇中详细的讲解，在本篇只是简单的讲解如何给Sprite3D添加一个脚本。
+**Script3D**This is a script in the 3D world. It inherits self-assembly and is a component. This class is defined as an'abstract class', and instances are not allowed. This class provides a series of virtual methods. Detailed use can be viewed in the API（[地址](https://layaair.ldc.layabox.com/api2/Chinese/index.html?category=3D&class=laya.d3.component.Script3D)In the development of the 3D world, script classes will be used in many places. This component will be explained in detail in later script chapters. In this article, we will simply explain how to add a script to Sprite3D.
 
-以下代码来自于官方示例（[demo地址](https://layaair.ldc.layabox.com/demo2/?language=ch&category=3d&group=Sprite3D&name=ScriptSample)）。
+The following code is from the official example（[demo地址](https://layaair.ldc.layabox.com/demo2/?language=ch&category=3d&group=Sprite3D&name=ScriptSample))
 
-> 主类：
+> main class:
 >
 
+
 ```typescript
+
 class ScriptSample() {
     constructor(){
         //初始化引擎
@@ -50,10 +52,13 @@ class ScriptSample() {
 
 ```
 
-> 脚本类：(该脚本旋转了添加了这个脚本的物体)
+
+> script class: (the script rotates the object that added the script)
 >
 
+
 ```typescript
+
 
 class MonkeyScript extends Laya.Script3D {
 	constructor(){
@@ -79,6 +84,7 @@ class MonkeyScript extends Laya.Script3D {
 
 ```
 
-这样脚本就添加完成了，我们可以看下运行之后的效果：
 
-![](img/2.gif)<br>(图2)
+So the script is added, and we can see the effect after running:
+
+![] (img/2.gif) <br> (Figure 2)

@@ -1,39 +1,40 @@
-# PsDToUI与使用详解
+#PsDToUI and its usage
 
-> author: Laya        update: 2019.03.27  
+> author: Laya update: 2019.03.27
 
-*【注意】本篇教程采用LayaAirIDE 2.0.0正式版，文中如有不同请以最新LayaAirIDE版本为准。*
+*[Note] LayaAirIDE 2.0.0 is the official version of this tutorial. If there are any differences, please refer to the latest version of LayaAirIDE.*
 
-laya的集成工具里的Psd2UI 可以把ps按照一定规则制作的psd文件用工具转成laya可以使用的UI。
+Psd2UI in laya's integration tool can convert PSD files made by PS according to certain rules into UI that Laya can use.
 
 ![1](img/2.png)
 
-打开工具后会看到如下图的界面，把包含psd的文件夹拖入，点击确定即可转换。
+When you open the tool, you will see the following interface, drag in the folder containing psd, and click OK to convert.
 
 ![1](img/3.png)
 
-前面提到过，制作psd要按照一定的规则才可以转换成laya使用的UI，规则如下：
+As mentioned earlier, PSD can only be converted into the UI used by Laya according to certain rules. The rules are as follows:
 
-1，不能识别的类型统统为image，这一点和IDE的编辑器一致；
+1. All unrecognized types are image, which is consistent with IDE editors.
 
-2，除box和Label特殊一些，其他的都和IDE的ui命名规则一致，前缀或后缀；
+2. Except for box and Label, the others are consistent with the UI naming rules of IDE, prefix or suffix.
 
-3，控件都需要按照前缀，后缀规则命名，3态如下图，要建立子文件夹 normal，over，down
+3. Controls need to be named according to the prefix and suffix rules. The three states are as follows: normal, over, down.
 
-4，Container_前缀会识别为Box容器，Label不仅要用文本控件，还要以小写txt作为前缀，或大写Txt作为后缀
+4. Container_prefix is recognized as Box container. Label uses not only text control, but also lowercase TXT as prefix, or upper case Txt as suffix.
 
 
 
 ![1](img/1.png)   
 
-转换后会看到两个文件夹
+
+After transformation, you will see two folders
 
 ![1](img/4.png)
 
-我们需要把assets文件夹里面的内容 放到项目的assets文件夹中， pages文件夹里面的内容放到工程的pages文件夹中，也可以直接把两个文件夹粘贴到laya文件夹中选择合并两个文件夹。
+We need to put the contents of the assets folder in the assets folder of the project, the contents of the pages folder in the pages folder of the project, or paste the two folders directly into the Laya folder and choose to merge the two folders.
 
-然后打开项目的编辑模式，可以看到ui被制作出来，效果如下：
+Then open the editing mode of the project, and you can see that the UI has been made. The effect is as follows:
 
 ![1](img/5.png)
 
-更多问题请访问ask.layabox.com
+For more questions, visit ask.layabox.com

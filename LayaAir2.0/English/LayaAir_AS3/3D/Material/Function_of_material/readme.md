@@ -2,33 +2,35 @@
 
 ###### *version :2.1.0beta   Update:2019-5-14*
 
-### 1.从模型上获取材质
+###1. Obtaining materials from models
 
-​	使用导出的模型时，引擎会自动在模型上加载材质，并且很多时候一个模型上会有多个标准材质，自动的方式为我们省下了很多开发时间。但在这种情况下，如果我们需要改变、更换材质怎么呢？我们首先需要在模型上获取当前的材质。
+When using the derived model, the engine automatically loads the material on the model, and many times there are multiple standard materials on a model, which saves us a lot of development time. But in this case, what if we need to change and change the material? We first need to get the current material on the model.
 
-​	LayaAir 3D引擎为我们提供了网格渲染器MeshRenderer类和蒙皮动画网格渲染器SkinnedMeshRenderer，在可视模型上提供了它们的实例，我们可以通过它们来获取模型上的材质。
+The layaair 3D engine provides us with mesh renderer meshrenderer class and skin animation mesh renderer skinnedmeshrenderer, and provides their instances on the visual model, through which we can get the materials on the model.
 
-​	**Tips**：MeshSprite3D模型中为meshRenderer，SkinnedMeshSprite3D模型中为skinnedMeshRenderer。
+​**Tips**: meshrenderer in meshsprite3d model, skinnedmeshrenderer in skinnedmeshsprite3d model.
 
-###### 这两个类多是一些继承自'父类'的共有的接口，可以查看'父类' **BaseRenderer** 的API（[API地址](https://layaair.ldc.layabox.com/api2/Chinese/index.html?category=3D&class=laya.d3.core.render.BaseRender)）。
+######These two classes are mostly common interfaces inherited from the'parent class'. You can see the'parent class'.**BaseRenderer**API ([API地址](https://layaair.ldc.layabox.com/api2/Chinese/index.html?category=3D&class=laya.d3.core.render.BaseRender))
 
-​	获取的材质分为两种类型：
+Material acquired can be divided into two types:
 
-​	自身材质 **Material**，如果自身材质被修改了，只有自身模型显示进行变化；
+Self Material**Material**If the material is modified, only the model is displayed to change.
 
-​	共享材质 **SharedMaterial** ，因为材质相对独立，多个模型都可以用同一个材质，如果获取的是共享材质并修改了，自身模型显示会变化，其他模型用到这个材质的部分也会发生改变。
+Shared Material**Shared Material**Because the material is relatively independent, multiple models can use the same material. If you get a shared material and modify it, the display of your model will change, and the parts of other models that use this material will also change.
 
-![](img/1.png)<br>![](img/2.png)<br>
+! [] (img/1.png) < br >! [] (img/2.png) < br >
 
-如何使用，开发者们需要根据具体需求自行选择。
+How to use it, developers need to choose according to specific needs.
 
-以下是节选代码，具体代码可以查看demo（[demo地址](https://layaair.ldc.layabox.com/demo2/?language=ch&category=3d&group=Material&name=MaterialDemo)）。
+Here are the excerpts for demodemo（[demo地址](https://layaair.ldc.layabox.com/demo2/?language=ch&category=3d&group=Material&name=MaterialDemo))
 
-![](img/3.png)<br>(图3)
+![] (img/3.png) < br > (fig. 3)
 
-> 通过网格渲染器获取模型上的材质
+>Get the material on the model through the mesh renderer
+
 
 ```typescript
+
 //初始化3D场景
 var scene:Scene3D = Laya.stage.addChild(Loader.getRes("res/threeDimen/scene/ChangeMaterialDemo/Conventional/scene.ls")) as Scene3D;
 //从场景获取球型精灵
@@ -37,10 +39,13 @@ sphere = scene.getChildByName("Sphere") as MeshSprite3D;
 billinMaterial = sphere.meshRenderer.material;
 ```
 
-> 拿到材质之后，我们可以修改材质或者将这个材质给其他模型使用，这里我们就是将上面拿到的材质添加给新创建的球：
+
+> After we get the material, we can modify the material or use it for other models. Here we add the material above to the newly created ball:
 >
 
+
 ```typescript
+
 //代码创建一个球体
 var sphere2:MeshSprite3D = scene.addChild(new MeshSprite3D(PrimitiveMesh.createSphere(0.5))) as MeshSprite3D;
 //将创建的球放置在导出球的同一点
@@ -51,17 +56,20 @@ sphere2.transform.translate(new Vector3(0, 1.3, 0),false);
 sphere2.meshRenderer.material = billinMaterial;
 ```
 
-然后就可以看到效果了，如图4所示：
 
-![](img/4.png)<br>(图4)
+Then you can see the effect, as shown in Figure 4.
 
-### 	2. 修改模型上的材质
+![] (img/4.png)<br> (Figure 4)
 
-既然能拿到材质，自然也能够更换材质了。
+###2. Modify the material on the model
 
-同样的还是通过网格精灵的`meshRenderer`  网格渲染器 来修改。
+Since we can get the material, we can also change the material.
+
+The same goes for the grid wizard.`meshRenderer`The mesh renderer is modified.
+
 
 ```typescript
+
 ......
 //创建一个新的PBRStandard材质
 pbrStandardMaterial = new PBRStandardMaterial();
@@ -73,17 +81,20 @@ pbrStandardMaterial.albedoTexture = pbrTexture;
 sphere.meshRenderer.material = pbrStandardMaterial;
 ```
 
-![](img/5.png)<br>(图5)
 
-### 3.是否能接受阴影
+![] (img/5.png)<br> (Fig. 5)
 
-阴影在前面的 **灯光篇** 的 **如何为灯光添加阴影** 节有介绍（[地址](https://ldc2.layabox.com/doc/?nav=zh-as-4-6-4)）。这里只讲解在材质中需要设置的相对应的属性:
+###3. Can we accept shadows?
 
-渲染器类中的 `castShadow` 是否能产生阴影 与 `receiveShadow` 是否能接受阴影。
+Shadows in front**Lighting chapter**Of**How to add shadows to lights**Section has introduction（[地址](https://ldc2.layabox.com/doc/?nav=zh-as-4-6-4)) Only the corresponding properties that need to be set in the material are explained here.
 
-> 下面的代码来自于阴影的示例
+In the renderer class`castShadow`Whether it can produce shadow and`receiveShadow`Whether the shadow can be accepted.
+
+> The following code comes from an example of Shadows
+
 
 ```typescript
+
 //前面给灯光设置好阴影参数之后，获取猴子模型与地板模型并且分别设置产生阴影与接受阴影
 //地面接收阴影
 var grid:Sprite3D = scene.addChild(Loader.getRes("res/threeDimen/staticModel/grid/plane.lh")) as Sprite3D;
@@ -105,8 +116,9 @@ var layaMonkey:Sprite3D = scene.addChild(Loader.getRes("res/threeDimen/skinModel
 (layaMonkey.getChildAt(0).getChildAt(0) as SkinnedMeshSprite3D).skinnedMeshRenderer.castShadow = true;
 ```
 
-![](img/6.png)<br>(图6)
 
-### 4.关于材质优化
+![] (img/6.png)<br> (fig. 6)
 
-​		引擎在加载场景时会对物体进行合并处理，可大幅度提升场景性能。合并原则为同材质的模型，所以开发者在编辑场景模型时尽量使用相同材质，并且越少越好。这样就可以达到今后性能优化的最基本条件。更具体的会在今后的性能优化篇讲解。	
+###4. Material optimization
+
+The engine will merge the objects when loading the scene, which can greatly improve the scene performance. The merging principle is the same material model, so developers try to use the same material when editing the scene model, and the fewer the better. In this way, the most basic conditions for future performance optimization can be achieved. More specifically, it will be explained in the performance optimization section in the future.

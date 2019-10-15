@@ -2,11 +2,13 @@
 
 ###### *version :2.0.1beta   Update:2019-3-19*
 
-​	摄像机继承于Sprite3D，一样可以对它进行3D变换的操作，通过它transform属性在3D场景中移动旋转变化，多角度取景，使观众或游戏者获得更真实的空间体验。
+Camera is inherited from Sprite3D, which can also be transformed into 3D. Through its transformation attribute, it can move and rotate in the 3D scene and view from multiple angles, so that the audience or the player can get a more real space experience.
 
-​	移动摄像机：
+Mobile cameras:
+
 
 ```typescript
+
 //实例化一个相机，设置纵横比，0为自动匹配。0.1最近看到的距离，100最远看到的距离。
 var camera = new Laya.Camera(0, 0.1, 100)
 //移动相机，设置相机的向z轴移动3米。true代表是局部坐标，false是相对世界坐标。 
@@ -15,11 +17,15 @@ camera.transform.translate(new Laya.Vector3(0, 0, 3),false);
 scene.addChild(camera);
 ```
 
-​	旋转摄像机：
+
+Rotary camera:
+
 
 ```typescript
+
 //旋转相机。局部坐标，弧度制（false为角度制）。
 camera.transform.rotate(new Laya.Vector3(0, 0, 3), true, true);
 ```
+
 
 

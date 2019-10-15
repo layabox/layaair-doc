@@ -1,38 +1,42 @@
-# 图片与二进制
+#Pictures and Binary
 
-在页游时代，为了防止资源被盗取，通常的做法就是把图片等资源进行加密。所谓的加密就是打乱资源本来的存储字节，或者穿插一些东西。但是到了html5时代，发现基本都是直接加载的图片，为什么和页游时代做法不一样了呢？是不是html5不能加载解码二进制图片？当然不是。之所以不进行加密这层操作，主要是我们项目的源码完全暴露在浏览器端，根本没有什么秘密可言，即便加密了，写个脚本执行下就能拿到你的源码。但是为了满足开发者这方面的需求，我们来简单说下，html5是如何进行二进制图片操作的。
+In the era of page-browsing, in order to prevent resources from being stolen, the usual way is to encrypt pictures and other resources. The so-called encryption is to disrupt the resource's original memory bytes, or to interpolate something. But in the age of HTML 5, it was found that most of the images were loaded directly. Why is it different from the way in the age of page-surfing? Can't HTML 5 load and decode binary pictures? Of course not. The reason why we don't encrypt this layer of operation is that the source code of our project is completely exposed in the browser, there is no secret at all. Even if encrypted, you can get your source code by writing a script to execute. But in order to meet the needs of developers, let's briefly talk about how HTML 5 operates on binary images.
 
-### 不得不说的XMLHttpRequest
+###Have to say XMLHttpRequest
 
- 说起加载文件，不得不说的是`XMLHttpRequest`，这里我们简单介绍下，详细的教程请移步到`HttpRequest`章节。XMLHttpRequest是浏览器的一个接口，使得Javascript可以进行HTTP(S)通信。这个就是我们经常提起的Ajax的核心。XMLHttpRequest的标准分为Level1和Level2。这里我们讲的是html5范围，所以Level1对于我们意义不大，我们这里把他归结到Html4，Html5我们主要关注的是Level2。为了开发者便于理解我们队这两个标准进行对比下：
+When it comes to loading files, what I have to say is`XMLHttpRequest`Here's a brief introduction. Please move on to the detailed tutorial.`HttpRequest`Chapter. XMLHttpRequest is an interface of browser, which enables Javascript to communicate with HTTP (S). This is the core of Ajax that we often talk about. The standard of XMLHttpRequest is divided into Level 1 and Level 2. Here we are talking about the HTML 5 range, so Level 1 is not very meaningful to us. Let's put it down to Html 4, Html 5. Our main concern is Level 2. In order to make it easier for developers to understand our team's two criteria for comparison:
 
- **Level1的主要缺点：**
 
-- 受同源策略的限制，不能发送跨域请求；
+ **The main drawbacks of Level 1 are:**
 
-- 不能发送二进制文件（如图片、视频、音频等），只能发送纯文本数据；
+- Due to the limitation of the Same-Origin policy, cross-domain requests cannot be sent.
 
-- 在发送和获取数据的过程中，无法实时获取进度信息，只能判断是否完成；
+- Can not send binary files (such as pictures, videos, audio, etc.), can only send plain text data;
 
-  **Level2相对于Level1改进的地方：**
+- In the process of sending and acquiring data, it is impossible to obtain progress information in real time, and only can judge whether it is completed or not.
 
-- 可以发送跨域请求，在服务端允许的情况下；
 
-- 支持发送和接收二进制数据；
+  **The improvements of Level 2 relative to Level 1 are as follows:**
 
-- 新增formData对象，支持发送表单数据；
+- Trans-domain requests can be sent with the permission of the server.
 
-- 发送和获取数据时，可以获取进度信息；
+- Support for sending and receiving binary data;
 
-- 可以设置请求的超时时间；
+-Add formdata object to support sending form data;
 
-从上面对比中我们最关注的一点就是支持**发送和接收二进制**。这是一个重大的突破，这个就让我们远程加载二进制图片成为了可能。
+- When sending and acquiring data, progress information can be obtained.
 
-### 如何加载
+- The request timeout can be set.
 
- 关于如何加载，这里我们先从原生开始，然后在过渡到Layaair引擎，这样开发者可以理解其中的含义。以二进制流的方式加载，这里我们采用XMLHttpRequest二进制流的方式来加载。关于XMLHttpRequest的操作我们这里不再陈述，会放到单独的一章节来讲解。我们先按照二进制的方式来加载试试。这里我们先用js脚本进行操作。代码如下：
+One of our most important concerns from the above comparison is support.**Send and receive binary**。 This is a major breakthrough, which makes it possible for us to load binary images remotely.
+
+###How to load
+
+As for how to load, here we start from the original and then transit to the Layaair engine, so that developers can understand what it means. Loading in the form of binary stream, here we use the way of XMLHttpRequest binary stream to load. The operation of XMLHttpRequest is not stated here, but will be explained in a separate chapter. Let's try loading in binary mode first. Here we first use js script to operate. The code is as follows:
+
 
 ```javascript
+
 var xhr = new XMLHttpRequest();
 xhr.open("get", "res/atlas/comp.png", true);
 xhr.responseType = "arraybuffer";
@@ -50,17 +54,20 @@ xhr.onload = function () {
 xhr.send();
 ```
 
-上面这个方法是用了浏览器自身提供的方法来把二进制转换成图片，二进制转换成图片其实还有很多种方法，比如加载进来二进制，解码成base64，然后在赋值给你img，或者把二进制数据用canvas绘制出图片，然后toDataURL赋值给你img的src等等，方法很多，我们这里就用最简单有效的办法转换图片。
 
- 图片加载完成之后，实例化一个XMLHttpRequest对象xhr ，`responseType`属性设置成`arraybuffer`，实例化一个Blob对象`blob`，用来创建一个img标签，`window.URL.createObjectURL(blob)`创建一个指向该参数对象的URL，把创建的img对象我们添加到网页的body上进行显示。把这段代码嵌入到index.html文件中，运行可以看到网页已经正常的显示我们的图片。
+The above method uses the method provided by the browser itself to convert binary into pictures. There are many ways to convert binary into pictures, such as loading binary, decoding it into base64, then assigning it to you img, or drawing pictures with canvas, then assigning it to the SRC of img by data to URL, etc. There are many ways, we use here. The easiest and most effective way to convert pictures.
 
-### Laya中如何使用？
+After the image is loaded, an XMLHttpRequest object XHR is instantiated.`responseType`Property set to`arraybuffer`Instantiate a Blob object`blob`To create an img tag,`window.URL.createObjectURL(blob)`Create a URL pointing to the parameter object and add the created img object to the body of the Web page for display. Embedding this code in the index. HTML file, you can see that the web page has displayed our pictures properly.
 
- 上面的简单例子我们是用的js脚本书写，那么在项目中怎么使用，项目中怎么使用dom元素的img。下面我们用TS的项目进行说明。
+###How to use it in Laya?
 
- 新建一个Laya的TS项目，代码如下：
+The simple example above is written in JS script, then how to use it in the project and how to use img of DOM element in the project. Next we will use TS project to explain.
+
+Create a new TS project for Laya, code as follows:
+
 
 ```typescript
+
 // 程序入口
 class GameMain{
     constructor()
@@ -93,9 +100,12 @@ class GameMain{
 new GameMain();
 ```
 
-第二种我们可以绘制一个纹理来显示：
+
+Second, we can draw a texture to display:
+
 
 ```typescript
+
 private completeHandler(data:Object):void{
   //加载完成返回的data是arraybuffer；
   //......这里处理我们加密的图片数据，假设我们的图片加密数据是在图片的前面写入了四个字节的数据
@@ -116,9 +126,12 @@ private showImg(url:string):void{
 }
 ```
 
-第三种我们直接创建一个纹理来
+
+Third, we create a texture directly.
+
 
 ```typescript
+
 private completeHandler(data:Object):void{
   //加载完成返回的data是arraybuffer；
   //......这里处理我们加密的图片数据，假设我们的图片加密数据是在图片的前面写入了四个字节的数据
@@ -138,9 +151,12 @@ private completeHandler(data:Object):void{
 }
 ```
 
-以上方法就是二进制的处理方法，其实还有很多方法，比如远程的图片资源处理成base64+数据，前端加载完成，直接解密去掉掺杂的数据。下面我们用其中一种方法来加载显示到舞台上。
+
+The above method is the binary processing method, in fact, there are many other methods, such as remote image resources processing into Base64 + data, front-end loading, direct decryption to remove the doped data. Next we use one of these methods to load the display onto the stage.
+
 
 ```typescript
+
 // 程序入口
 class GameMain{
     constructor()
@@ -168,6 +184,7 @@ class GameMain{
 new GameMain();
 ```
 
-以上的例子我们用的都是`HttpRequest`来加载，开发者也可以用`Laya.loader.load`方法来加载，关于`Laya.loader.load`详细使用请移步到相关教程文档。这里不再陈述。
 
- 上面的例子我们用的是`HttpRequest`和单线程的加载，在html5中其实还有多线程，为了防止页面的卡顿无响应，提高用户体验，我们可以启用worker来加载，相关教程我们会在worker章节讲解。
+All the examples above are used by us.`HttpRequest`To load, developers can also use`Laya.loader.load`Method loading, about`Laya.loader.load`For detailed use, please move to the relevant tutorial documentation. This is not stated here.
+
+For the example above, we use the following`HttpRequest`With single-threaded loading, there are actually multi-threaded in HTML 5. In order to prevent the page from being unresponsive and improve the user experience, we can use worker to load. The related tutorials will be explained in the section of worker.

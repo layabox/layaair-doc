@@ -1,38 +1,40 @@
-# 微信小游戏的50M物理缓存管理
+#50M Physical Cache Management of Wechat Game
 
-> author: charley
+> author: Charley
 
-### 物理缓存的意义
+###The Significance of Physical Caching
 
-微信小游戏除了本地包之外，还允许开发者使用50M的物理缓存空间。也就是说首次加载后，在物理缓存中的资源，无需远程动态加载，直接使用本地的缓存资源即可。这样，不仅让玩家节省了大量的下载流量，还拥有了如同原生APP游戏一样的打开速度。
-
-
-
-### LayaAir引擎默认的缓存管理机制
-
-在LayaAir引擎里，引擎层已经自动帮开发者做好了缓存管理的机制，默认启动的是自动缓存管理机制。
-
-在自动缓存的管理模式下，**如果检测到资源没有在本地缓存，就将远程的资源自动缓存起来。需要注意的是，自动缓存模式下只缓存图片和声音文件**，如果有其它格式的文件需要缓存，那可以通过手动缓存的接口进行下载并缓存。
-
-缓存文件如果超过50M，将自动清理最早缓存的内容，每次清理5M的空间，如此循环写入，保障缓存里存的永远是最新下载的50M文件。
+In addition to local packages, Wechat games allow developers to use 50M of physical cache space. That is to say, after the first load, the resources in the physical cache need not be loaded dynamically remotely, but can use the local cache resources directly. In this way, not only can players save a lot of download traffic, but also have the same opening speed as native APP games.
 
 
 
-### LayaAir引擎手动管理缓存的接口
+###LayaAir engine default cache management mechanism
 
-#### 1、取消自动缓存
+In the LayaAir engine, the engine layer has automatically helped developers to do a good job of caching management mechanism, the default is to start the automatic caching management mechanism.
 
-如果游戏常用资源大于50M，采用自动管理缓存的文件未必能达到开发者的预期。尤其是早期加载的资源，如果是常用资源，那么后面加载的资源缓存超过50M后，会将早期缓存的资源清理，那么下次使用的时候又要重新加载一次。所以常用资源大于50M的时候，建议开发者自行权衡哪些资源缓存起来意义更大，对用户体验更好。这时候，就可以取消自动缓存模式。
+Under the management mode of automatic caching,**If it is detected that resources are not cached locally, remote resources are cached automatically. Note that only pictures and sound files are cached in automatic caching mode**If files in other formats need to be cached, they can be downloaded and cached through the interface of manual caching.
 
-如果不需要引擎自动管理缓存，可以将MiniAdpter.autoCacheFile设置为false。需要注意的是，自动缓存关闭后，由于不会自动清理，超过50M后将会导致写入缓存失败，所以一定要建立好缓存策略，决定哪些文件要缓存，哪些文件需要手动清理。
+If the cached file exceeds 50M, it will automatically clean up the earliest cached content, cleaning up 5M of space at a time, so that it can be written in a circular way to ensure that the cached file is always the latest downloaded 50M file.
 
 
 
-#### 2、手动下载文件并缓存本地
+###LayaAir Engine Manual Management Cache Interface
 
-当不打算使用自动缓存功能，或者在自动缓存模式下，缓存json等自动缓存并不缓存的文件内容时，可以使用downLoadFile方法，去下载目标文件并缓存到本地。
+####1. Cancel automatic caching
+
+If the common resources of the game are more than 50M, the files using automatic caching management may not meet the developer's expectations. Especially for the early loaded resources, if they are common resources, the later loaded resources will be cleaned up after the cache exceeds 50M, and then the next time they are used, they will be reloaded again. So when the common resources are more than 50M, developers are advised to weigh which resources are more meaningful to cache and have a better user experience. In this case, the auto cache mode can be cancelled.
+
+If you don't need the engine to automatically manage the cache, you can set MiniAdpter. autoCacheFile to false. It should be noted that after the automatic cache is closed, because it will not be automatically cleaned up, writing cache will fail after 50M, so it is necessary to establish a cache strategy to decide which files to cache and which files need to be cleaned manually.
+
+
+
+####2. Manually download files and cache local files
+
+When you do not intend to use automatic caching, or in automatic caching mode, you can use downLoadFile method to download the target file and cache it locally when caching the contents of files that are not cached automatically, such as json.
+
 
 ```javascript
+
 /**
 * 下载文件 
 * @param fileUrl 文件地址(全路径)
@@ -45,15 +47,18 @@ public static function downLoadFile(fileUrl:String, fileType:String = "",callBac
 
 
 
-#### 3、清除缓存文件
 
-由于微信小游戏的缓存上限是50M物理空间，所以无论自动管理缓存还是手动管理缓存，达到上限后都需要清理缓存。每次清理的缓存大小默认为5M，如果想改变每次缓存清理的默认值，通过修改
+####3. Clearing Cache Files
 
-MiniAdpter.minClearSize属性即可。
+Since the upper limit of the cache of Wechat games is 50M physical space, it is necessary to clean up the cache after reaching the upper limit whether it is automatically managed or manually managed. The default size of each cache cleanup is 5M. If you want to change the default size of each cache cleanup, you can change it by modifying it.
 
-如果要删除指定的缓存文件或全部缓存文件时，可以使用remove或removeAll方法。
+The MiniAdpter. minClearSize attribute is fine.
+
+If you want to delete a specified cached file or all cached files, you can use remote or removeAll methods.
+
 
 ```javascript
+
 /**
 * 删除指定缓存文件
 * @param fileUrl文件路径(绝对地址)
@@ -62,7 +67,10 @@ MiniAdpter.minClearSize属性即可。
 public static function remove(fileUrl:String,callBack:Handler):void {}
 ```
 
+
+
 ```javascript
+
 /**
 * 清空缓存空间全部文件内容 
 */  
@@ -71,14 +79,15 @@ public static function removeAll():void{}
 
 
 
-如果对本篇文档有疑问，请前往官网社区提问，也可以将社区中的链接发到官方QQ群中 @ 管理员 charley
 
-社区网址：https://ask.layabox.com/
+If you have any questions about this document, please go to the official QQ community and ask questions. You can also send links from the community to @administrator Charley in the official QQ group.
+
+Community Web site: https://ask.layabox.com/
 
 
 
-## 本文赞赏
+##This article appreciates
 
-如果您觉得本文对您有帮助，欢迎扫码赞赏作者，您的激励是我们写出更多优质文档的动力。
+If you think this article is helpful to you, you are welcome to sweep the code and appreciate the author. Your motivation is our motivation to write more high quality documents.
 
 ![wechatPay](../../../wechatPay.jpg)

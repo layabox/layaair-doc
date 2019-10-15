@@ -1,63 +1,80 @@
 @ -1,271 +0,0 @@
 
-# layaair-cmd
+#Layaair-cmd
 
 [TOC]
 
-**layaair-cmd**是**layaair**的命令行工具，可以使用**layaair-cmd**不打开**IDE**的情况下对**layaair**项目进行编译发布等操作。它包含以下功能，这些功能都对应一个子命令。
+**Layaair-cmd**yes**Layaair**The command line tool, which can be used**Layaair-cmd**Not open**IDE**In case of**Layaair**Compile and publish the project. It contains the following functions, which correspond to a subcommand.
 
-| 功能             | 子命令             |
-| -------------- | --------------- |
-| 编译             | compile         |
-| 发布             | publish         |
-| 导出UI           | ui              |
-| 资源版本控制         | resourceVersion |
-| 使用guetzli压缩jpg | guetzli         |
-| 打开静态文件服务器      | open            |
+| Function | Subcommand|
+| ------------------------------------------------------------------------------------------------------------------------------------ -|
+| Compile | compile|
+| Publish | publish|
+| Export UI | ui|
+| Resource Version Control|
+| Compressing jpg | guetzli with guetzli|
+| Open static file server | open|
 
 
 
-##  安装
+##install
+
 
 ```shell
+
 $ npm install layaair-cmd -g
 ```
 
 
 
-## CLI
 
-**layaair-cmd**的命令类似**git**命令，它的形式是：
+##CLI
+
+**Layaair-cmd**The commands are similar**Git**Commands, in the form of:
+
 
 ```shell
+
 $ layaair-cmd [command] [args]
 ```
 
-比如编译项目：
+
+For example, compile projects:
+
 
 ```shell
+
 $ layaair-cmd compile
 ```
 
-或者查看帮助信息：
+
+Or view help information:
+
 
 ```shell
+
 $ layaair-cmd --help
 ```
 
-不仅**layaair-cmd**本身，所有的子命令都有版本信息和帮助信息，查看子命令帮助信息：
+
+Not only**Layaair-cmd**In itself, all subcommands have version information and help information to view subcommand help information:
+
 
 ```shell
+
 $ layaair-cmd command -h
 ```
 
-**layaair-cmd**的大部分子命令都需要当前工作目录下包含**layaair**项目，少数命令可以手动指定输入目录，如`guetzl`，`atlas`命令则是即可以直接`$ layaair-cmd atlas`，也可以指定输入目录。
+
+**Layaair-cmd**Most subcommands need to be included in the current working directory**Layaair**Items, a few commands can specify input directories manually, such as`guetzl`,`atlas`Orders are direct.`$ layaair-cmd atlas`You can also specify the input directory.
 
 
 
-## 编译
+##Compile
+
 
 ```shell
+
 $ layaair-cmd compile -h
 
   Usage: layaair-cmd compile [options]
@@ -68,19 +85,25 @@ $ layaair-cmd compile -h
     -V, --version  output the version number
 ```
 
-如果当前目录有**layaair**项目，该命令会生成编译后的**JavaScript**文件。编译只有**ActionScript**和**TypeScript**项目需要，如果是**JavaScript**，则什么也不做。
 
-#### 使用
+If the current directory has**Layaair**Project, which generates compiled**JavaScript**Papers. Compile only**ActionScript**and**TypeScript**Project needs, if yes**JavaScript**Do nothing.
+
+####Use
+
 
 ```shell
+
 $ layaair-cmd compile
 ```
 
 
 
-##  发布
+
+##Release
+
 
 ```shell
+
 $ layaair-cmd publish -h
 
   Usage: layaair-cmd publish [options]
@@ -96,17 +119,23 @@ $ layaair-cmd publish -h
     -h, --help                      output usage information
 ```
 
-如果当前目录有**layaair**项目，该命令会生成发布后的**JavaScript**文件，发布的文件夹在*release*下面。
 
-#### 使用
+If the current directory has**Layaair**Project, which generates the post-release**JavaScript**File. The published folder is under * release *.
+
+####Use
+
 
 ```shell
+
 $ layaair-cmd publish -o cc # 指定了压缩选项为合并并压缩
 ```
 
-## 导出UI
+
+##Export UI
+
 
 ```shell
+
 $ layaair-cmd ui -h
 
   Usage: layaair-cmd ui [options]
@@ -121,11 +150,14 @@ $ layaair-cmd ui -h
     -h, --help        output usage information
 ```
 
-如果当前目录有**layaair**项目，该命令为UI页面导出与UI相关的文件。
 
-#### 使用
+If the current directory has**Layaair**Item, which exports UI-related files for UI pages.
+
+####Use
+
 
 ```shell
+
 $ layaair-cmd ui -c -m release # 导出前清理，并且把mode设置为release
 $ layaair-cmd ui -d # 导出UI代码文件
 $ layaair-cmd ui -a # 导出图集文件
@@ -133,15 +165,18 @@ $ layaair-cmd ui -a # 导出图集文件
 
 
 
-## 资源版本控制
 
-**资源版本控制**用于为资源生成版本。版本号默认从数字1000开始递增，如果传入`--versionName`参数，则使用用户指定的版本名称。下次建立建立版本时如果没有再次指定`--name`，版本号为1002，因为每次生成版本，**资源版本控制**内部版本计数器都会递增。
+##Resource Version Control
 
-在建立版本时，相对于上次版本建立，修改了的文件或者新增的文件会被记录在新版本中。如果没有新增文件或者没有修改文件，不会有新版本生成。
+**Resource Version Control**Used to generate versions for resources. The version number increases by default from the number 1000 if passed in`--versionName`The user-specified version name is used for the parameter. Next time you create a version, if you don't specify it again`--name`The version number is 1002, because each version is generated.**Resource Version Control**Internal version counters are incremented.
 
-> 在最终使用资源时，不允许使用上层相对路径，即路径中包含“..”。
+When building a version, the modified or added files will be recorded in the new version as opposed to the previous version. If there is no new file or no modification, no new version will be generated.
+
+> In the final use of resources, the upper relative path is not allowed, that is, the path contains "...".
+
 
 ```shell
+
 $ layaair-cmd resourceVersion -h
 
   Usage: layaair-cmd resourceVersion [options]
@@ -155,56 +190,62 @@ $ layaair-cmd resourceVersion -h
     -n --versionName <version name>  版本名称，默认是从1000开始递增的数字
 ```
 
-该命令不需要当前目录包含**layaair**项目，取而代之的是，你需要指定输入目录。
+
+This command does not require the current directory to contain**Layaair**Projects, instead, you need to specify the input directory.
 
 
 
-#### 使用
+####Use
+
 
 ```shell
+
 $ layaair-cmd resourceVersion -i input_dir -o output_dir -n 1.1.0
 # 指定了输入目录、输出目录和版本名称
 ```
 
 
 
-#### 生成的文件
+
+####Generated files
 
 > 1000
 >
-> > resources...
+>> Resources...
 >
 > 1001
 >
-> > resources...
+>> Resources...
 >
 > 1002
 >
-> > resources...
+>> Resources...
 >
-> .record
+>.Record
 >
-> manifest.json
+>Manifest.json
 
 
 
-#### 资源版本
+####Resource version
 
-名为*1000*、*1001*、*1002*的文件夹是默认资源版本名称，里面保存的是对应版本被修改了的资源。根据从*manifest.json*中得到的每个资源的最新版本号，从这些文件夹读取*manifest.json*对应的版本资源。
-
-
-
-#### .record记录文件
-
-*.record*在**Unix-like**系统中是隐藏文件。这个文件保存最近的版本建立信息，**资源版本控制**由此来判定建立新版本时哪些文件被修改。这个文件不能被删除，如果这个文件丢失，之前建立的版本就会丢失，相当于重新开始建立版本。
+A folder named * 1000 *, * 1001 *, * 1002 * is the default resource version name, which holds the resources whose corresponding version has been modified. According to the latest version number of each resource obtained from * manifest. JSON *, the corresponding version resource of * manifest. JSON * is read from these folders.
 
 
 
-#### manifest.json资源清单
+####Record record file
 
-用户根据*manifest.json*获取最新的资源。该文件包含资源键值对：
+*.record* in**Unix-like**The system is a hidden file. This file saves the latest version setup information.**Resource Version Control**To determine which files were modified when a new version was created. This file cannot be deleted. If this file is lost, the previous version will be lost, which is equivalent to restarting the version.
+
+
+
+####Manifest. JSON resource list
+
+Users get the latest resources according to * manifest. JSON *. This file contains resource key-value pairs:
+
 
 ```json
+
 {
     "res1": "1000",
     "res2": "1000",
@@ -214,24 +255,27 @@ $ layaair-cmd resourceVersion -i input_dir -o output_dir -n 1.1.0
 }
 ```
 
-用户从该映射中获取资源对应的版本号后，使用`资源根目录/版本号/相对文件路径`得到资源的url，加载并使用。
+
+After the user obtains the corresponding version number of the resource from the mapping, he uses the`资源根目录/版本号/相对文件路径`Get the URL of the resource, load and use it.
 
 
 
-#### 资源版本切换
+####Resource version switch
 
-由于*manifest.json*保存各版本的文件版本号。所以只需要保留历史*manifest.json*即可使用对应版本的资源。
+Because * manifest. JSON * saves the version number of each version of the file. So you only need to keep the history * manifest. JSON * to use the resources of the corresponding version.
 
 
-## guetzli
+##Guetzli
 
-**guetzli**是**google**的开源**jpeg**编码器。关于它的介绍、注意事项等参见官方https://github.com/google/guetzli。
+**Guetzli**yes**Google**Open source**JPEG**Encoder. For its introduction and precautions, please refer to the official https://github.com/google/guetzli.
 
-**guetzli**的压缩过程很慢，而且占用资源大，所以可能要等待些时间。
+**Guetzli**The compression process is slow and resource intensive, so it may take some time.
 
-最好在**资源版本控制**生成的文件夹中使用**guetzli**压缩，这可以保证不会重复压缩一张图。
+Best in**Resource Version Control**Use in the generated folder**Guetzli**Compression, which ensures that a graph is not compressed repeatedly.
+
 
 ```shell
+
 $ layaair-cmd guetzli -h
 
   Usage: layaair-cmd guetzli [options]
@@ -244,20 +288,26 @@ $ layaair-cmd guetzli -h
     -q --quality <quality>  quality, more than 84.
 ```
 
-该命令不需要当前目录包含**layaair**项目，取而代之的是，你需要指定输入目录。压缩成功后，源文件会被修改。压缩失败则源文件保持不变。
 
-#### 使用
+This command does not require the current directory to contain**Layaair**Projects, instead, you need to specify the input directory. After successful compression, the source file will be modified. If compression fails, the source file remains unchanged.
+
+####Use
+
 
 ```shell
+
 $ layaair-cmd guetzli -i input_dir -q 95
 # 指定了压缩率95
 ```
 
 
 
-## 打开静态文件服务器
+
+##Open static file server
+
 
 ```shell
+
 $ layaair-cmd open -h
 
   Usage: layaair-cmd open [port] [args]
@@ -270,4 +320,5 @@ $ layaair-cmd open -h
     -s             don't open browser
 ```
 
-该命令需要在与**layaair**项目拥有同样结构的目录中使用。对于**ActionScript**项目，它会在*./bin/h5*开启静态文件服务器；对于**JavaScript**和**TypeScript**项目，它会在**./bin**开启静态文件服务器；
+
+The command needs to be in the**Layaair**The project has the same structure used in the directory. about**ActionScript**Project, it will open the static file server at *. / bin / h5*; for**JavaScript**and**TypeScript**Project, it will be in**./bin**Open static file server;

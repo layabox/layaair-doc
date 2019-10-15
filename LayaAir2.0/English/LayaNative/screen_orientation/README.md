@@ -1,76 +1,91 @@
-#  横竖屏设置
+#Horizontal and Vertical Screen Settings
 
-## 一、项目构建前横竖屏的设置
+##I. Setting up the horizontal and vertical screen before the construction of the project
 
-### 1.在index.js或是runtime.json中设置
+###1. Set in index.js or runtime.json
 
 * index.js
 
-如果使用index.js设置屏幕方向，修改screenOrientation的值即可：
+If you use index.js to set the screen orientation, you can modify the value of screen Orientation:
+
 
 ```javascript
+
 window.screenOrientation = "sensor_landscape";
 ```
 
-可配置的参数如下所示：
 
-|取值|屏幕方向|
-|:--:|:-----:|
-|landscape|横屏|
-|portrait |竖屏|
-|sensor_landscape或者sensorLandscape|横屏(双方向)|
-|sensor_portrait或者sensorPortrait|竖屏(双方向)|
+The configurable parameters are as follows:
+
+| Value | Screen Direction|
+|:::: |: ---::|
+|Landscape|
+|Portrait|
+| sensor_landscape or sensor Landscape | horizontal screen (both directions)|
+| sensor_portrait or sensor portrait | vertical screen (both directions)|
 
 * runtime.json
 
-如果使用runtime.json设置屏幕方向，修改screenOrientation的值即可：
+If you use runtime.json to set the orientation of the screen, you can modify the value of screen Orientation:
+
 
 ```json
+
 "screenOrientation":"sensor_landscape"
 ```
 
-screenOrientation的取值和index.js里的window.screenOrientation取值相同。
 
-## 二、项目构建后横竖屏的设置
+ScreOrientation takes the same value as window. screenOrientation in index. js.
 
-### 1.iOS
+##2. Setting up of horizontal and vertical screen after project construction
 
-iOS项目构建成功后，打开resource/config.ini文件，修改`orientation=16`的值，如下图所示：
+###1.iOS
+
+After the iOS project is successfully built, open the resource/config.ini file and modify it`orientation=16`The values are shown in the following figure:
 
 ![图1](img/1.png)
 
-参数的意义如下：
+The significance of the parameters is as follows:
+
 ```
+
 orientation=2   //竖屏：IOS home键在下   
 orientation=4   //竖屏：IOS home键在上   
 orientation=8   //横屏：IOS home键在左   
 orientation=16  //横屏：IOS home键在右   
 ```
-orientation的值可以使用`按位或`的方式进行设置，例如:
-```   
+
+The orientation value can be used`按位或`For example:
+
+```
+
 orientation=6   //代表竖屏可以任意旋转  
 orientation=24  //代表横屏可以任意旋转  
 ```
 
-**注意：** iOS工程项目内的横竖屏设置最好和config.ini设置一致。如果设置的不一致可能会导致未知的情况发生。设置如下图： 
+
+**Be careful:**The horizontal and vertical screen settings in iOS project are best consistent with config.ini settings. If the settings are inconsistent, an unknown situation may occur. Set as follows:
 
 ![图](img/2.png)
 
-### 2.android
+###2.android
 
-android项目构建成功，打开AndroidManifest.xml文件，在activity标签内有一个screenOrientation参数，开发者可以根据自己需求进行修改，如下图所示：
+The Android project is successfully built. Open the Android Manifest. XML file and have a screenOrientation parameter in the activity tag. The developer can modify it according to his own needs, as shown in the following figure:
 ![图2](img/3.jpg)
 
-可配置的参数是android的标准，在这不做过多解释，如下所示：
+Configurable parameters are the Android standard, which is not explained too much here, as follows:
+
 
 ```
+
 "landscape","portrait","full_sensor","sensor_landscape","sensor_portrait","reverse_landscape","reverse_portrait"
 ```
 
-## 三、执行顺序
 
-应用程序在启动的时候会先读取iOS的config.ini中设置的屏幕方向或android的AndroidManifest.xml中设置的屏幕方向。当解析到index.js或runtime.json的时候再读取屏幕横竖屏设置的值，并重新设置屏幕方向。  
+##III. Order of execution
 
-例如：android的AndroidManifest.xml中设置为portrait，index.js中的标签设置为landscape，运行过程中就会发现在android设备上，屏幕会旋转一下，从竖屏旋转成了横屏。
+When the application starts, it reads the screen orientation set in iOS config. ini or Android Manifest. xml. When parsing to index. JS or runtime. json, read the values set by the screen's horizontal and vertical screen and reset the screen orientation.
 
-**Tips：建议开发者把两个值设定一致，这样避免程序在执行过程中出现屏幕旋转的现象。**
+For example: Android Android Manifest. XML is set to portrait, index. JS is set to landscape, running process will find in the Android device, the screen will rotate, from the vertical screen to the horizontal screen.
+
+**Tips: It is recommended that developers set the two values in the same order to avoid screen rotation during the execution of the program.**

@@ -1,32 +1,34 @@
-# 多点触控的使用
+#The Use of Multi-touch
 
 ###### *version :2.1.1   Update:2019-8-2*
 
-在LayaAir3D中也是支持多点触控的，甚至用起来要比2D中更为方便。2D中的多点触控是依托于`Event`事件中的`touches:Array`[read-only] 触摸点列表属性，这样操作起来是比较麻烦的。但是在3D中使用到的是scene场景中的`input:Input3D`3D输入属性，能在任何地方获取，使用起来是非常的方便的。
+It also supports multi-touch in LayaAir3D, and is even more convenient to use than in 2D. Multi-touch in 2D is based on`Event`Incident`touches:Array`[read-only] Touch Point List property, which is more cumbersome to operate. But what's used in 3D is scene scenes.`input:Input3D`3D input attributes can be obtained anywhere, and it is very convenient to use.
 
-> **注意事项：**在多点触控的情况下，只会发射一条射线用于检测，该点是多个触碰点的中心点。如果需要发射多个射线用于检测，需要开发者自己处理。
+>**Matters needing attention:**In the case of multi-touch, only one ray is emitted for detection, which is the center of multiple contact points. If more than one ray is needed for detection, the developer has to deal with it himself.
 
-**Input3D详解**
+**Input3D Details**
 
-> 属性
+> attribute
 
-![](img/1.png)<br>(图1)
+![] (img/1.png)<br> (Figure 1)
 
-> 方法
+> method
 
-![](img/2.png)<br>(图2)
+![] (img/2.png)<br> (Figure 2)
 
-**Touch属性**
+**Touch attribute**
 
-![](img/3.png)<br>(图3)
+![] (img/3.png) < br > (fig. 3)
 
-下面的示例代码节选自官方示例([demo地址](https://layaair2.ldc2.layabox.com/demo2/?language=ch&category=3d&group=MouseInteraction&name=MultiTouch))。
+The following sample code is excerpted from the official example（[demo地址](https://layaair2.ldc2.layabox.com/demo2/?language=ch&category=3d&group=MouseInteraction&name=MultiTouch))
 
-在主类中给猴子添加了脚本。同时在舞台上添加另一个方便显示输出的`Text`文本。
+Add script to monkey in main class. At the same time, add another easy to display output on the stage.`Text`Text.
 
-脚本类：
+Script class:
+
 
 ```typescript
+
 //重写脚本中的onUpdate方法
 onUpdate() {
     var touchCount = this._scene.input.touchCount();
@@ -89,4 +91,5 @@ onUpdate() {
 }
 ```
 
-![](img/4.gif)<br>(图4)
+
+![] (img/4.gif) < br > (fig. 4)

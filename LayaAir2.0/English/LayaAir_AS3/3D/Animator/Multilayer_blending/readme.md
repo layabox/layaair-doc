@@ -2,11 +2,13 @@
 
 ###### *version :2.1.0beta   Update:2019-6-13*
 
-​	在上面的效果图中，同时还使用到了动画多层混合。LayaAir3D使用“动画层”来管理身体不同部分的复杂状态机。比如：你可以使用下半身（动画）层来管理走动/跑动；使用上半身(动画)层来控制投掷/设计动作。
+Multilayer animation mixing is also used in the above rendering. LayaAir3D uses the "animation layer" to manage complex state machines in different parts of the body. For example, you can use the lower body (animation) layer to manage walking / running, and the upper body (animation) layer to control throwing / design actions.
 
-我们可以在这个demo（[demo地址](https://layaair.ldc.layabox.com/demo2/?language=ch&category=3d&group=Animation3D&name=AnimationLayerBlend)）中替换些操作来查看效果。
+We can demo here.（[demo地址](https://layaair.ldc.layabox.com/demo2/?language=ch&category=3d&group=Animation3D&name=AnimationLayerBlend)) Replace some operations to see the effect.
+
 
 ```typescript
+
 //在混合模式的按钮监听事件中改变播放层
 blendType++;
 
@@ -43,6 +45,7 @@ switch (blendType) {
 }
 ```
 
-![](img/1.gif)<br>(图1)
 
-动画多层混合更多的效果，还是希望开发者能自己去实际操作示例切换几个动作来亲自感受一下。
+![] (img/1.gif) <br> (Fig. 1)
+
+The animation multi-layer mixes more effect, or hope that the developer can go to the actual operation example to switch a few actions to feel for himself.

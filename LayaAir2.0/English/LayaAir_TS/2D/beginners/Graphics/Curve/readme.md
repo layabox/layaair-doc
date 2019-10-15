@@ -1,70 +1,75 @@
-# 绘制曲线
+#draw a curve
 
 
 
-​        相对于直线而言，曲线的绘制与坐标关系更难理解一些。由于LayaAir引擎绘制的是贝塞尔曲线，所以本文中先针对贝塞尔曲线的基础进行说明，然后再结合引擎的API进行讲解。
+It is more difficult to understand the relationship between the drawing of curves and coordinates than that of straight lines. Because LayaAir engine draws Bessel curve, this paper first explains the basis of Bessel curve, and then explains it with API of engine.
 
 
 
-### **一、贝塞尔曲线的基础**
+### **I. Basis of Bessel Curve**
 
-​        贝塞尔曲线在港澳台等地称为貝茲曲線，新加坡马来西亚等地称为贝济埃曲线。一般的矢量图形软件通过它来精确画出曲线，贝塞尔曲线由线段与节点组成，节点是可拖动的支点，线段像可伸缩的皮筋，我们在绘图工具上看到的钢笔工具就是来做这种矢量曲线的。
+Bessel Curve is called Bezier Curve in Hong Kong, Macao and Taiwan, and Bezier Curve in Singapore and Malaysia. General vector graphics software draws curves accurately through it. Bessel curve is composed of line segments and nodes. Nodes are pivots that can be dragged. Lines are like stretchable tendons. The pen tool we see on the drawing tool is used to make such vector curves.
 
-​        贝塞尔曲线是应用于二维图形应用程序的数学曲线。曲线的定义有四个点：起始点、终止点（也称锚点）以及两个相互分离的中间点。滑动两个中间点，贝塞尔曲线的形状会发生变化。
+Bessel curve is a mathematical curve applied to two-dimensional graphics applications. The definition of a curve has four points: the starting point, the ending point (also known as anchor point) and two separated intermediate points. The shape of Bessel curve will change when two intermediate points are slipped.
 
-​       基于线性、二次方、三次方等公式的不同，贝塞尔曲线也被称为一次、二次……五次贝塞尔曲线，有些文章也称为一阶、二阶……说的是一回事。下面通过动图让大家直观的理解一下：
+Based on the difference of linear, quadratic, cubic and other formulas, Bessel curve is also called primary, quadratic... The quintic Bessel curve is also called the first and second order in some articles. It's one thing. Now let's have an intuitive understanding through the motion picture.
 
-#### **1.1 一次贝塞尔曲线**
+#### **1.1 Primary Bessel Curve**
+
+
 
 ​        ![1.gif](gif/1.gif)<br/>
-​   	（图1）  
+(Fig. 1)
 
-​        说明：上图是由 P0 至 P1 的连续点， 描述的是一条线性的贝赛尔曲线。线性贝塞尔曲线函数中的 t 会经过由 P0 至 P1 的 B(t) 所描述的曲线。例如当 t=0.25 时，B(t) 即一条由点 P0 至 P1 路径的四分之一处。就像由 0 至 1 的连续 t，B(t) 描述一条由 P0 至 P1 的直线。
+Explanation: The figure above is a continuous point from P0 to P1, describing a linear Bessel curve. T in the linear Bessel curve function passes through the curve described by B (t) from P0 to P1. For example, when t = 0.25, B (t) is a quarter of the path from point P0 to P1. Like a continuous t from 0 to 1, B (t) describes a line from P0 to P1.
 
-#### **1.2 二次贝塞尔曲线**
+#### **1.2 Quadratic Bessel Curve**
 
-​        ![2.gif](gif/2.gif)<br/>
-​   	（图2）  
+​![2.gif](gif/2.gif)<br/>
+(Figure 2)
 
-​      ![blob.png](img/1.png)<br/>
-​   	（图3）  
+​![blob.png](img/1.png)<br/>
+(Figure 3)
 
-​        说明：为建构二次贝塞尔曲线，上图由 P0 至 P1 的连续点 Q0，描述一条线性贝塞尔曲线。由 P1 至 P2 的连续点 Q1，描述一条线性贝塞尔曲线。由 Q0 至 Q1 的连续点 B(t)，描述一条二次贝塞尔曲线。
+Explanation: To construct a quadratic Bessel curve, the continuous point Q0 from P0 to P1 in the figure above describes a linear Bessel curve. The continuous point Q1 from P1 to P2 describes a linear Bessel curve. The continuous point B (t) from Q0 to Q1 describes a quadratic Bessel curve.
 
-#### **1.3 三次贝塞尔曲线**
+#### **1.3 Cubic Bessel Curve**
 
-​        ![3.gif](gif/3.gif)<br/>
-​   	（图4）  
+​![3.gif](gif/3.gif)<br/>
+(Figure 4)
 
-​          ![blob.png](img/2.png)<br/>
-​   	（图5）  
+​![blob.png](img/2.png)<br/>
+(Fig. 5)
 
-​        说明：对于三次曲线，可由线性贝塞尔曲线描述的中介点 Q0、Q1、Q2，和由二次曲线描述的点 R0、R1 所建构。
+Explanation: For cubic curve, the intermediate points Q0, Q1, Q2 described by linear Bessel curve and points R0 and R1 described by quadratic curve can be constructed.
 
-#### **1.4 高阶贝塞尔曲线**
+#### **1.4 higher order Bessel curve**
 
-​        由于高阶贝塞尔曲线并不常见，本文将不再详细说明，想对贝塞尔曲线原理了解更多的可以查看其它相关文章。
+Since higher-order Bessel curves are not common, this article will not elaborate on them. If you want to know more about the principle of Bessel curves, you can see other related articles.
 
-​        ![4.gif](gif/4.gif)<br/>
-​   	（图6）  四次贝塞尔曲线
+​![4.gif](gif/4.gif)<br/>
+(Fig. 6) Fourth Bessel Curve
 
-​        ![5.gif](gif/5.gif)<br/>
-​   	（图7） 五次贝塞尔曲线
-
-
+​![5.gif](gif/5.gif)<br/>
+(fig. 7) quintic Bessel curve
 
 
 
-### **二、用LayaAir引擎API绘制二次贝塞尔曲线**
 
-​        LayaAir引擎的曲线绘制采用的是二次贝塞尔曲线，开发者可以在API文档中搜索laya.display.Graphics类可以查看到“drawCurves();”曲线绘制方法。该方法的详细说明如下图所示：
 
-​        ![blob.png](img/3.png)<br/>
-​   	（图8）  
+### **2. Drawing Quadratic Bessel Curve with LayaAir Engine API**
 
-下面我们用LayaAir引擎绘制矢量曲线，示例代码如下：
+LayaAir engine uses quadratic Bessel curve to draw curve. Developers can search the laya.display.Graphics class in API document to see the drawing Curves ();"curve drawing method. A detailed description of the method is shown in the following figure:
+
+​![blob.png](img/3.png)<br/>
+
+(Figure 8)
+
+Next, we use the LayaAir engine to draw vector curves. The sample code is as follows:
+
 
 ```typescript
+
 module laya {
     import Sprite = Laya.Sprite;
     import Stage = Laya.Stage;
@@ -90,49 +95,53 @@ module laya {
 new laya.Sprite_DrawShapes();
 ```
 
-发布后如下图所示，我们成功的绘制了一条简单的曲线。
 
-​        ![blob.png](img/4.png)<br/>
-​   	（图9）  
+After publication, as shown in the figure below, we succeeded in drawing a simple curve.
 
-通过增加drawCurves的第三位points点集合的参数，我们可以让曲线更复杂一些，修改的示例代码如下：
+​![blob.png](img/4.png)<br/>
+(Figure 9)
+
+By adding the parameters of the third point set of drawCurves, we can make the curve more complex. The modified example code is as follows:
+
 
 ```typescript
+
 //增加58, 100与78, 0坐标让曲线更复杂一些
   
 this.sp.graphics.drawCurves(10, 58, [0, 0, 19, -100, 39, 0, 58, 100, 78, 0], "#ff0000", 3) ;
 ```
 
-发布后如下图所示，
 
-​        ![blob.png](img/5.png)<br/>
-​   	（图10）  
-如果想绘制更复杂的曲线，可自行调整drawCurves中的参数，再结合二次贝赛尔曲线原理进行理解。
+After publication, as shown in the following figure,
 
-最后提醒一下，与绘制折线一样，第三位参数中所有的坐标都是相对坐标，都会受到第一位和第二位参数的“10，58”而影响。一旦“10，58”产生改变，整体曲线都会受到影响。
+​![blob.png](img/5.png)<br/>
+(Fig. 10)
+If you want to draw more complex curves, you can adjust the parameters in drawCurves by yourself, and then understand them with the principle of quadratic Bessel curve.
 
-
-
+Finally, it is reminded that, like drawing polygons, all coordinates in the third parameter are relative coordinates, which are affected by the "10,58" of the first and second parameters. Once the "10,58" changes, the overall curve will be affected.
 
 
-### 三、用LayaAirIDE拖动控件绘制二次贝塞尔曲线
 
-​	**步骤一**：打开我们的LayaAirIDE，点击设计模式，新建一个View页面
 
-​	![6](img/6.png)<br/>
-​   	（图11）  
 
-**步骤二**：将组件中的曲线组件拖动到View页面上，就会自动生成默认的曲线
+###3. Drawing quadratic Bessel curve with LayaAirIDE dragging control
 
-​	![7](img/7.png)<br/>
-​   	（图12）  
+​**Step one**Open our LayaAirIDE, click Design Patterns, and create a new View page
 
-**步骤三**：修改（添加/减少）组件属性中的point的数值，改变曲线的位置或弯曲程度
+​![6](img/6.png)<br/>
+(Fig. 11)
 
-​   	![8](img/8.png)<br/>
-​   	（图13）  
+**Step two**Drag the curve component from the component onto the View page and automatically generate the default curve
 
-​   	![9](img/9.png)<br/>
-​   	（图14）  
+​![7](img/7.png)<br/>
+(Fig. 12)
 
-到此我们通过LayaAirIDE的组件绘制曲线就完成了
+**Step three**Modify (add/reduce) the point value in component attributes to change the position or curvature of the curve
+
+​![8](img/8.png)<br/>
+(Fig. 13)
+
+​![9](img/9.png)<br/>
+(Fig. 14)
+
+So far, we have finished drawing curves through the components of LayaAirIDE.

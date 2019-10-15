@@ -1,21 +1,23 @@
-# IDE常见问题的解决方案
+#Solutions to common IDE problems
 
-> update:  2019-3-13
+> update: 2019-3-13
 
-### 缓存大法治百病
+###Cache the Great Rule of Law
 
-开发者在使用IDE的时候，有时候会报出一些错误，有的时候直接忽略即可。有的时候，需要重启IDE才可以解决。也有的时候重启也解决不了。这个时候。我们建议开发者先清理缓存来解决。因为大多数情况都是缓存的问题导致。
+When using IDE, developers sometimes report errors, sometimes ignore them directly. Sometimes, you need to restart the IDE to solve this problem. Sometimes restarting can't solve it. At this time. We recommend that developers clean up the cache first. Because most of the cases are caused by caching problems.
 
-#### 缓存文件在哪里？
+####Where is the cache file?
 
-在IDE导航的帮助菜单里有一个选项叫“`打开编辑器本地缓存`”，如图1所示。通过点击这里，可跳转到缓存的资源目录。
+In the help menu of IDE navigation, there is an option called“`打开编辑器本地缓存`As shown in Figure 1. By clicking here, you can jump to the cached resource directory.
 
 ![图1](img/1.png) 
 
-（图1）
 
-缓存目录打开后，如图2所示。如果是布局问题，可以直接删除layout目录。如果也不清楚什么问题。所有看到的目录和文件都删干净也没关系。
+(Fig. 1)
+
+When the cache directory is opened, it is shown in Figure 2. If it's a layout problem, you can delete the layout directory directly. If it's not clear what the problem is. It doesn't matter if all the directories and documents you see are deleted.
 
 ![图2](img/2.png) 
 
-删除缓存后，一般可以解决很多常见的问题。如果还没解决，可以联系QQ群管理员，远程协助处理。本文也会根据帮大家解决问题的经验，陆续总结一些经验到本篇文档中。
+
+After deleting the cache, many common problems can be solved. If not, you can contact QQ Group Administrator for remote assistance. This article will also sum up some experience to help you solve the problem in this document.

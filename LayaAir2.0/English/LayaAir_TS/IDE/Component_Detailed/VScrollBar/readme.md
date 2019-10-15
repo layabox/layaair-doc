@@ -2,94 +2,95 @@
 
 
 
-## 一、通过LayaAirIDE创建VScrollBar 组件
+##I. create vscrollbar component through layaairide
 
-### 1.1 创建VScrollBar 
+###1.1 Create VScrollBar
 
- 
+The VScrollBar component is a vertical scrollbar component.
+When there is too much data to accommodate the display area, the end user can use the VScrollBar component to control the data portion displayed.
+The scrollbar consists of four parts: a track map, a slider button and two arrow buttons.
+Click on the VScrollBar component in the Resource Panel and drag it into the page editing area to add the VScrollBar component to the page.
+Refer to the script interface for the VScrollBar component[VScrollBar API](http://layaair.ldc.layabox.com/api/index.html?category=Core&class=laya.ui.VScrollBar)。
+Examples of image resources for VScrollBar components:
 
-​        VScrollBar 组件是一个垂直方向滚动条组件。
-​        当数据太多以至于显示区域无法容纳时，最终用户可以使用 VScrollBar 组件控制所显示的数据部分。
-​        滚动条由四部分组成：一个轨道图、一个滑块按钮和两个箭头按钮。
-​        点击选择资源面板里的 VScrollBar 组件，拖放到页面编辑区，即可添加 VScrollBar 组件到页面上。
-​        VScrollBar 组件的脚本接口请参考 [VScrollBar API](http://layaair.ldc.layabox.com/api/index.html?category=Core&class=laya.ui.VScrollBar)。
-​        VScrollBar 组件的图像资源示例：
+​![图片0.png](img/1.png)<br/>
 
-​        ![图片0.png](img/1.png)<br/>
-​    （图1）
+(Fig. 1)
 
-​        ![图片0.png](img/2.png)<br/>
-​    （图2）
-​        ![图片0.png](img/3.png)<br/>
-​    （图3）
+​![图片0.png](img/2.png)<br/>
+(Figure 2)
+​![图片0.png](img/3.png)<br/>
+(Figure 3)
 
-​        ![图片0.png](img/4.png)<br/>
-​    （图4）
+​![图片0.png](img/4.png)<br/>
+(Figure 4)
 
- 
+Drag and drop VScrollBar into the editor area to display the effect:
 
-​        VScrollBar 拖放到编辑器区后，显示效果：
+​![图片0.png](img/5.png)<br/>
+(Fig. 5)
 
-​        ![图片0.png](img/5.png)<br/>
-​    （图5）
+After setting the value of attribute max of VScrollBar to 10, the value of attribute min to 0, and the value of attribute value to 3, the display effect is as follows:
 
-​        设置 VScrollBar 的属性 max 的值为 10、属性 min 的值为0、属性 value 的值为3后，显示效果如下：
+​![图片0.png](img/6.png)<br/>
+(Fig. 6)
 
-​        ![图片0.png](img/6.png)<br/>
-​    （图6）
+When running the program, you can drag the slider or click the arrow button to control the value of the progress bar:
 
-​        在程序中运行时，可以拖动滑块或点击箭头按钮控制进度条的值：
+​![图片0.gif](gif/1.gif)<br/>
+(Figure 7)
 
-​        ![图片0.gif](gif/1.gif)<br/>
-​    （图7）
+Set the value of showButtons of VScrollBar to false:
 
-​        设置 VScrollBar 的属性 showButtons 的值为 false时的显示效果：
+​![图片0.png](img/7.png)<br/>
+(Figure 8)
 
-​        ![图片0.png](img/7.png)<br/>
-​    （图8）
+The effect of running a program:
 
-​        在程序里运行时的效果：
+​![图片0.png](gif/1.gif)<br/>
+(Figure 9)
 
-​        ![图片0.png](gif/1.gif)<br/>
-​    （图9）
+###1.2 Common attributes of VScrollBar components
 
-### 1.2 VScrollBar 组件常用属性
+​![图片0.png](img/8.png)<br/>
+(Figure 10)
 
-​        ![图片0.png](img/8.png)<br/>
-​    （图10）
+A kind of**attribute**A kind of**Function description**A kind of
+| -----------------------------------------------------------------------------------------------------------------------------------------------------------------|
+| Skin | scrollbar image resource address. A kind of
+| SizeGrid | Scroll Bar Track Map Resource Scales Grid Data Effectively (Nine-Palace Data). A kind of
+| Value | Number indicating the current scrolling position. A kind of
+| min | A number representing the lowest scrolling position. A kind of
+| Max | A number representing the highest scrolling position. A kind of
+| scrollSize | represents the increment of page scroll when the scrollbar track is pressed. A kind of
+| mouseWheelEnable | A Boolean value that specifies whether the pulley is rolling or not, and the default value is true. A kind of
+| touchScrollEnable | A Boolean value that specifies whether to turn on the touch, with the default value of true. A kind of
+| AutoHide | A Boolean value that specifies whether the scrollbar is automatically hidden (without scrolling), and the default value is false. A kind of
+| ShowButton | A Boolean value that specifies whether the up and down buttons are displayed. The default value is true. A kind of
 
- 
 
-| **属性**            | **功能说明**                            |
-| ----------------- | ----------------------------------- |
-| skin              | 滚动条的图像资源地址。                         |
-| sizeGrid          | 滚动条轨道图资源的有效缩放网格数据（九宫格数据）。           |
-| value             | 表示当前滚动位置的数字。                        |
-| min               | 表示最低滚动位置的数字。                        |
-| max               | 表示最高滚动位置的数字。                        |
-| scrollSize        | 表示按下滚动条轨道时页面滚动的增量。                  |
-| mouseWheelEnable  | 一个布尔值，指定是否滑轮滚动，默认值为true。            |
-| touchScrollEnable | 一个布尔值，指定是否开启触摸，默认值为true。            |
-| autoHide          | 一个布尔值，指定是否自动隐藏滚动条(无需滚动时)，默认值为false。 |
-| showButton        | 一个布尔值，指定是否显示向上、向下按钮，默认值为true。       |
 
  
 
  
 
-##  二、通过代码创建VScrollBar组件 
 
-​	在我们进行书写代码的时候，免不了通过代码控制UI，创建`UI_ScrollBar` 类，并通过代码设定VScrollBar 相关的属性。
 
-**运行示例效果:**
-​	![5](gif/3.gif)<br/>
-​	(图11)通过代码创建VScrollBar 
+##2. Creating VScrollBar Components by Code
 
-​	VScrollBar 的其他属性也可以通过代码来设置，下述示例代码演示了如何通过代码创建的VScrollBar ，有兴趣的读者可以自己通过代码设置VScrollBar ，创建出符合自己需要的滚动条。
+When we write code, we inevitably control the UI through code and create it.`UI_ScrollBar`Class, and set VScrollBar-related properties through code.
 
-**示例代码：**
+**Run the example effect:**
+​![5](gif/3.gif)<br/>
+(Figure 11) Create VScrollBar from code
+
+Other attributes of VScrollBar can also be set by code. The following sample code demonstrates how to create VScrollBar by code. Interested readers can set VScrollBar by code and create scrollbars that meet their needs.
+
+**Sample code:**
+
 
 ```javascript
+
 module laya {
     import Stage = Laya.Stage;
     import Text = Laya.Text;
@@ -177,4 +178,5 @@ module laya {
 }
 new laya.UI_ScrollBar();
 ```
+
 

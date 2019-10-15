@@ -1,16 +1,18 @@
-# 用反射机制实现二次开发
+#Realization of Secondary Development by Reflection Mechanism
 
-    LayaNative通过提供反射机制来帮助开发者可以方便的进行二次开发, 下面通过示例来了解一下如何进行二次开发.
+Laya native provides reflection mechanism to help developers easily carry out secondary development. Here is an example to learn how to carry out secondary development.
 
-## 1. 调用静态函数
+##1. Calling static functions
 
-    使用LayaNative, 可以在JavaScript层调用移动端的原生开发语言(Android下Java, iOS下Objective-C)编写的静态函数。
+Using LayaNative, static functions written in native development languages (Java under Android and Objective-C under iOS) can be invoked at the JavaScript layer.
 
-####    1.1 JavaScript层:
+####1.1 JavaScript layer:
 
-    JavaScript层的调用方式:
+JavaScript layer calls:
+
 
 ```javascript
+
 
   var os = conchConfig.getOS();
   var bridge;
@@ -48,11 +50,14 @@
 ```
 
 
-####     1.2 Android/Java层
 
-    在类JSBridge中添加下列函数:
+####1.2 Android/Java Layer
+
+Add the following functions to the class JSBridge:
+
 
 ```javascript
+
     public static String testString(String value) {
         Log.d("JSBridge", "java: " + value);
         return "LayaBox";
@@ -89,11 +94,14 @@
     }
 ```
 
-####     2.1.4 iOS/OC层
 
-    在类JSBridge中添加下列函数:
+####2.1.4 iOS/OC layer
+
+Add the following functions to the class JSBridge:
+
 
 ```javascript
+
     +(NSString*)testString:(NSString*)value
     {
       NSLog(@"OC: %@",value);
@@ -127,25 +135,32 @@
   }
 
 ```
-注意：
-    函数参数只支持布尔、浮点、字符串等基本类型，支持返回值。原生函数运行在脚本线程，更新UI需要转到UI线程，支持异步回调函数。
-OC源文件后缀要改成.mm，OC的方法是静态的类方法要用+。
+
+Be careful:
+Function parameters only support Boolean, floating point, string and other basic types, and support return values. Native functions run in script threads. Updating UI needs to go to UI threads to support asynchronous callback functions.
+The suffix of OC source file should be changed to. mm. The method of OC is static class method with +.
 
 
-  通过上述方法可以很方便的进行原生代码相关的二次开发。
+Through the above method, it is very convenient to carry out secondary development of native code.
 
 
-##  3.平台代码（android/ios）主动执行js脚本
+##3. Platform Code (Android/ios) Actively Execute JS scripts
 
-###     3.1 IOS/OC执行JS脚本
+###3.1 IOS/OC executes JS scripts
+
 
 ```javascript
+
   [[conchRuntime GetIOSConchRuntime] runJS:@"alert('hello')"];
 ```
 
-###     3.2 Android/Java执行JS脚本
+
+###3.2 Android/Java executes JS scripts
+
 
 ```javascript
+
   ConchJNI.RunJS("alert('hello world')");
 ```
+
 

@@ -1,48 +1,50 @@
-# 材质动画的使用
+#Use of Material Animation
 
 ###### *version :2.1.0beta   Update:2019-6-13*
 
-材质动画则是以改变材质的颜色与贴图方式进行动画。
+Material animation is animated by changing the color and mapping of material.
 
-在三维软件中，例如3ds max中虽然可以制作材质相关动画，但导出成FBX格式时，unity并不能识别，也无法导出成LayaAir 3D引擎所识别的材质动画。因此游戏模型的材质动画必须在unity中制作，并进行某些设置导出后才能为LayaAir 3D引擎使用。
+In three-dimensional software, such as 3ds max, although material-related animation can be produced, when it is exported to FBX format, unit can not recognize, nor can it be derived to material-related animation recognized by LayaAir 3D engine. Therefore, the material animation of the game model must be made in Unity, and some settings must be exported before it can be used for the LayaAir 3D engine.
 
-下面我们就用霓虹灯材质动画（图1）效果来讲解在unity中创建动画并导出使用方法，步骤如下。
+Next we will use neon material animation (Figure 1) effect to explain how to create animation in Unity and derive the use method, the steps are as follows.
 
-![](img/1.gif)<br>(图1)
+![] (img/1.gif) <br> (Fig. 1)
 
-#### 修改材质类型
+####Change material type
 
-在Unity中拖入一个cube，然后修改材质。
+Drag in a cube in Unity and modify the material.
 
-![](img/2.png)<br>(图2)
+![] (img/2.png)<br> (Figure 2)
 
-#### 创建材质动画
+####Creating Material Animation
 
-1、修改好材质类型后，同样选择要制作动画的模型，点击菜单栏window下Animation打开动画编辑界面，快捷键Ctrl+6。
+1. After modifying the material type, choose the same model to make animation, click Animation under the menu bar window to open the animation editing interface, and the shortcut key Ctrl+6.
 
-2、点击create按钮创建动画并取名，本例中取名使用的默认名字New Animation，保存后在资源管理器中会生成动画文件New Animation。
+2. Click the Create button to create the animation and name it. In this case, the default name New Animation is used. After saving, the animation file New Animation will be generated in the resource manager.
 
-3、选择时间轴上时间，修改材质的漫反射颜色，重复操作多调整几个颜色。
+3. Choose the time on the time axis, modify the diffuse reflection color of the material, and adjust several colors in repeated operations.
 
-4、修改动画帧的曲线变化，默认为线形滑动动画，不符合我们的动画需求，修改为恒量变化，播放查看，材质动画按需求全部完成。当然，如果需要制作流水、浮云飘动动画可以用线形变化方式。
+4. Modify the curve change of the animation frame, default is linear sliding animation, which does not meet our animation needs. Modify it to constant change, play and view. Material animation is completed as required. Of course, if you need to make animations of running water and floating clouds, you can use the linear mode.
 
-![](img/3.png)<br>(图3)
+![] (img/3.png) < br > (fig. 3)
 
-#### 创建动画控制器
+####Create an Animation Controller
 
-与之前的创建动画控制器相同，在资源管理器中右键创建动画控制器，取名为Cube 1，双击打开后，将上一步创建的动画文件New Animation拖拽入动画控制器中。
+As before, create an animation controller by right-clicking in Explorer, named Cube 1. Double-click to open and drag the animation file New Animation created in the previous step into the animation controller.
 
-选择模型，将动画控制器拖拽入模型的动画组件中，点击unity运行，我们就可以看到动画按我们的需求播放了（图4）。
+Select the model, drag the animation controller into the animation component of the model, click Unity to run, we can see that the animation is playing according to our needs (Figure 4).
 
-![](img/4.gif)<br>(图4)
+![] (img/4.gif) < br > (fig. 4)
 
-#### 导出并使用动画资源
+####Export and use animation resources
 
-在unity中编辑好动画，用LayaAir插件导出场景类型.ls资源，如果导出时没有报错，将资源拷贝到项目的资源目录下，那么在项目中可以直接用 `Scene3D.load()` 方法加载或预加载。
+Edit the animation in unity, and use the layaair plug-in to export the scene type. LS resource. If there is no error in the export, copy the resource to the resource directory of the project, then it can be directly used in the project.`Scene3D.load()`Method loading or preloading.
 
-参考以下代码，因为变色太慢我们调整了速度，效果如（图1）。
+Refer to the following code, because the discoloration is too slow, we adjusted the speed, such as (Figure 1).
+
 
 ```typescript
+
 //加载场景
 Scene3D.load("res/threeDimen/scene/materialScene/Conventional/layaScene.ls", Handler.create(this, function(scene:Scene3D):void {
     Laya.stage.addChild(scene);
@@ -51,4 +53,5 @@ Scene3D.load("res/threeDimen/scene/materialScene/Conventional/layaScene.ls", Han
 }));
 
 ```
+
 

@@ -1,50 +1,58 @@
-# LayaAir3D之资源释放
+#Resource Release of LayaAir3D
 
 ###### 修改时间:2019-4-24,version:2.0.1
 
 ### 为什么要释放资源
 
-在LayaAir3D游戏开发中，资源释放非常重要。3D资源包括了模型、贴图、材质、动画等，为了达到好的画面效果，文件会比2D大很多，而3D引擎基本上所有资源都会放入GPU中进行计算渲染，因此占用很多的显存。当游戏关卡不断加载，游戏不断深入，放入显存中的资源越来越多，如果不释放资源，那么游戏最后终将崩溃。
+In the development of LayaAir3D games, resource release is very important. 3D resources include model, texture, material, animation, etc. In order to achieve good picture effect, the file will be much larger than 2D. And basically all resources of 3D engine will be put into GPU for computing and rendering, so it occupies a lot of memory. When the game level is constantly loaded, the game continues to deepen, and more and more resources are put into the display memory. If the resources are not released, the game will eventually collapse.
 
-显存不像内存，内存有垃圾回收机制，而显存不一样，必须手动释放，因此显存的资源释放必须受到重视！
+Unlike memory, there is a garbage collection mechanism in memory, but unlike display memory, it must be released manually, so the resource release of display memory must be taken seriously.
 
-观察图1、图2中统计工具中的显存大小
+Observe the display size in the statistical tools in Figures 1 and 2
 
-图1为游戏启动后加载的第一个场景，面数为30527，占用显存69.2M。
+Figure 1 shows the first scene loaded after the game starts. The area is 30527, occupying 69.2M of display memory.
 
 ![1](img/1.png)(图1)</br>
 
-图2为游戏加载的第二场景，面数只有7455，但加载后显存资源却有118.91M。这是什么原因呢？面熟少，场景小，贴图其实也比图1中场景少很多，光照贴图也小很多，但显存资源却更大了！
 
-这就是因为第一关场景资源并未被释放掉，它的资源还在显存中，因此显存占用变大了。如果不手动清除，游戏继续切换其他场景，当达到一定量后，手机显存将被耗光，游戏卡死、闪退、发热等现象就会频繁出现。
+Figure 2 shows the second scenario of game loading, with only 7455 faces, but 118.91M of display memory resources after loading. What is the reason for this? Facial familiar, small scene, mapping is actually much less than the scene in Figure 1, light mapping is much smaller, but the display and memory resources are much larger!
+
+This is because the resources of the first pass scenario have not been released, and its resources are still in the display memory, so the occupancy of the display memory becomes larger. If not manually cleared, the game continues to switch other scenes, when a certain amount of mobile phone memory will be exhausted, game card death, flashback, fever and other phenomena will occur frequently.
 
 ![2](img/2.png)(图2)</br>
 
 
 
-### 加载资源时处理原则
-
-通过上图的例子我们可以看到LayaAir3D引擎处理资源与显存的关系，为了达到游戏性能优化目的，在加载资源时也要注意一些原则。
-
-1、加载资源时不要一次性把所有资源全部加载，只加载需要的资源（分段加载模式）。3D资源加载完成后会根据资源后缀名称直接创建出3D显示对象，比如.ls会创建出Scene，.lh会创建Sprite3D对象等，创建好的对象资源哪怕是没有放到舞台上，也会直接放入显存当中，因此资源过多会占有大量显存。
-
-2、合理管理显存，经常反复使用的资源在显存中不需要释放，而不反复使用的资源在使用完成后立即释放以节省性能开销。比如主角资源，3D道具资源，玩家经常使用，可以一直存放在显存中，提取速度快；而一些大型场景，在切换时可以释放掉资源，场景关卡贴图、模型资源都较大，释放后能省几十上百兆大小的显存开销。
 
 
 
-### 释放显存资源方法
 
-释放显存资源有两种方法，一种是通过对象来释放显存资源，但遍历资源对象太麻烦，在此不做推荐。另外一种是通过资源地址来释放显存资源，从资源管理角度上来说，通过资源地址方法更加灵活，可以配置JSON数据表来管理。
+###Handling Principles When Loading Resources
 
-#### 切换场景和释放资源的过渡界面
+Through the example above, we can see that LayaAir3D engine deals with the relationship between resources and memory. In order to achieve the goal of game performance optimization, we should pay attention to some principles when loading resources.
 
-在加载资源和切换场景时，我们在IDE中制作一个进度显示界面用于过渡，如图3所示
+1. When loading resources, do not load all resources at one time, only the required resources (piecewise loading mode). After loading 3D resources, 3D display objects will be created directly according to the suffix names of resources. For example, Scene will be created by. ls and Sprite3D objects will be created by. lh. Even if the created object resources are not put on the stage, they will be directly put into the display memory. Therefore, too much resources will occupy a large amount of display memory.
+
+2. Reasonable management of memory, resources that are often reused need not be released in memory, but resources that are not reused need to be released immediately after use to save performance overhead. For example, protagonist resources, 3D props resources, which are often used by players, can be stored in video memory all the time, with fast extraction speed; while for some large-scale scenes, resources can be released when switching, scene level mapping and model resources are large, and after release, tens of megabytes of video memory cost can be saved.
+
+
+
+###Method of Releasing Display Storage Resources
+
+There are two ways to release the memory resources. One is to release the memory resources through objects, but traversing the resource objects is too cumbersome to recommend. The other is to release the memory resources through the resource address. From the resource management point of view, the resource address method is more flexible, and JSON data table can be configured to manage.
+
+####Transitional interface for switching scenarios and releasing resources
+
+When loading resources and switching scenarios, we create a progress display interface in IDE for transition, as shown in Figure 3.
 
 ![3](img/3.png)(图3)</br>
 
-IDE发布后，编写一个控制类，逻辑代码参考如下：
+
+After the issuance of IDE, write a control class, the logical code reference is as follows:
+
 
 ```typescript
+
 import {ui} from "../ui/layaMaxUI";
 export default class loading extends ui.LoadingUI{
     constructor(){
@@ -77,23 +85,26 @@ export default class loading extends ui.LoadingUI{
 
 
 
-#### 通过资源地址表释放显存资源
 
-在主类中，我们以鼠标双击舞台方式切换场景，使用资源地址释放显存资源的方法，并加载新场景。
+####Release explicit memory resources through resource address table
 
-通过资源路径列表方法灵活，可以通过配置表的方式，表里增加删除资源也很方便。比如美术在导出场景时，新建一个JSON表，将此场景中切换后不需要的资源路径都放到J表中，有用的资源不入表，资源就不释放，比如一些公用的NPC、道具、特效等游戏元素资源。
+In the main class, we switch scenarios by double-clicking the stage with the mouse, release the display resources by using the resource address, and load new scenarios.
 
-Tips：资源包括：场景光照贴图lightmap、材质.lmat、模型.lm、各种类型贴图.png或.jpg、动画.lani、骨骼.lav等资源。
+The method of resource path list is flexible, and it is convenient to add and delete resources in the table by configuring the table. For example, when art exports scenarios, create a new JSON table, put all the resource paths that are not needed after switching in this scenario into the J table. If the useful resources do not enter the table, the resources will not be released, such as some common NPC, props, special effects and other game element resources.
 
-下面我们来介绍一下资源表方法，首先在导出的资源文件目录中建立json文件并编辑需释放的路径资源，形成一个Json数组，名字与.ls文件一致，方使逻辑调用，本例中为 loveScene.json。如图5、6。
+Tips: Resources include: scene light map, material. lmat, model. lm, various types of mapping. png or. jpg, animation. lani, skeleton. LAV and other resources.
 
-![5](img/5.png)(图5)</br>
+Let's introduce the resource table method. Firstly, we set up JSON files in the directory of exported resource files and edit the path resources to be released to form a Json array with the same name as. LS files to make logical calls. In this case, loveScene. json. Figures 5 and 6.
 
-![6](img/6.png)(图6)</br>
+![5](img/5.png)(Fig. 5) </br>
 
-Json编辑完成后，可用检查工具检测格式是否正确。然后创建主类代码如下：
+![6](img/6.png)(Fig. 6) </br>
+
+After the Json edit is completed, you can use the checking tool to check whether the format is correct. Then create the main class code as follows:
+
 
 ```typescript
+
 // 程序入口
 import loading from "./view/loading";
 class Main {
@@ -172,22 +183,26 @@ class Main {
 new Main();
 ```
 
-观察上述代码assetsDispose(assetsUrl:String)方法，加载完配置表后，我们通过Laya.loader.getRes(arr[i].url)方法直接获取资源产生的对象（创建时会根据url后缀名产生不同的类型对象，getRes方法可直接读出来）。LayaAir2.0正式版之后已经统一为调用resource.destroy()方法后就可释放资源。
 
-释放完资源后，还可通过Loader.loadeMap属性查看现有缓存中的资源。
+Observe the code assetsDispose (assetsUrl: String) method mentioned above. After loading the configuration table, we get the object generated by the resource directly by Laya. loader. getRes (arr [i]. url) method (when created, different types of objects are generated according to the suffix name of the url, which can be read directly by getRes method). LayaAir 2.0 has been unified to call the resource. destroy () method to release resources.
 
-编译运行上述代码我们可以看到图4效果，释放完成并加载新场景时，显存占用比之前小很多了。之前未释放资源时为118.91M，释放后显存只占了59.68M。
+After releasing the resources, you can also view the resources in the existing cache through the Loader. loadeMap attribute.
+
+Compiling and running the above code, we can see the effect of Figure 4. When the release is completed and the new scene is loaded, the memory occupancy is much smaller than before. Previous unreleased resources were 118.91M, and only 59.68M was released.
 
 ![4](img/4.png)
 
-### 资源自动释放
+###Automatic release of resources
 
-LayaAir2.0为了 方便开发者开发对3D资源释放添加了更方便的释放方式。
+LayaAir2.0 adds a more convenient way for developers to release 3D resources.
 
-在场景（或者精灵）销毁（destory 注意这里是指本体销毁而不是其克隆体销毁）后，调用`Laya.Resource.destroyUnusedResources()`会自动释放掉没有使用的资源。
+After the scene (or wizard) is destroyed (destory notes here that ontology is destroyed rather than its clone destroyed), call`Laya.Resource.destroyUnusedResources()`Unused resources are automatically released.
+
 
 ```typescript
+
 //自动释放没有被使用的资源
 Laya.Resource.destroyUnusedResources();
 ```
+
 

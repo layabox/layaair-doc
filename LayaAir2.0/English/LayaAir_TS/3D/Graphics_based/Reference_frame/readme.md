@@ -1,18 +1,20 @@
-# LayaAir3D坐标系统
+#LayaAir3D coordinate system
 
-​	在2D引擎中我们是直接调整x、y坐标来控制显示对象的位置与旋转方向，3D引擎中显示对象较为复杂，加入了z轴坐标，因此我们用到了Vector3三维向量，用它的值分别代表着x、y、z。
+In the 2-D engine, we directly adjust the coordinates of X and y to control the position and rotation direction of the display object. In the 3-D engine, the display object is more complex, and z-axis coordinates are added. So we use Vector 3 three-dimensional vector, whose values represent x, y and Z respectively.
 
-但是，各种3D引擎和3D模型动画制作软件对坐标方向的定义会有所不同，因此需初学者们掌握它们的区别。
+However, the definitions of coordinate directions in various 3D engine and 3D model animation software will be different, so beginners need to master their differences.
 
-​	LayaAir 3D引擎坐标用专业术语来说属于 **右手坐标系**（图1），简单来说来，屏幕向观察者方向为正Z轴方向（屏幕后方向为负Z轴方向）,屏幕右侧为X轴正方向，上方为Y轴正方向。有的3D引擎属于左手坐标系，在此不作介绍，有兴趣的初学者可以百度了解。
+LayaAir 3D engine coordinates belong in technical terms**Right-handed coordinate system**(Fig. 1). Simply speaking, the screen is positively Z-axis to the viewer (negative Z-axis to the rear of the screen), positively X-axis to the right of the screen and positively Y-axis to the top. Some 3D engines belong to the left-hand coordinate system, which is not introduced here. Interested beginners can learn from Baidu.
 
-​	![图](img/1.png)<br>(图1)右手坐标系
 
-​	引擎中也分为世界坐标系与局部坐标系：
 
-​	**世界坐标系** 是3D场景的坐标，三轴方向永远不变（图1）。
+​	![图](img/1.png)<br> (Fig. 1) Right-handed coordinate system
 
-​	**局部坐标系** 是以物体的原点为坐标原点的坐标系，初始方向与世界坐标系相同。局部坐标系会随着物体的旋转变化而改变（相对于世界坐标），但是对物体本身而言自身的局部坐标系并没有改变。所以我们可以通过右手坐标系手势去识别局部坐标方向（图2）。
+The engine is also divided into the world coordinate system and the local coordinate system:
 
-![图](img/2.png)<br>(图2)
+​**World coordinate system**It's the coordinates of a 3D scene, and the direction of the three axes will never change (Fig. 1).
+
+​**Local coordinate system**It is a coordinate system in which the origin of the object is the coordinate origin, and the initial direction is the same as that of the world coordinate system. The local coordinate system changes with the rotation of the object (relative to the world coordinate), but the local coordinate system of the object itself does not change. So we can recognize the local coordinate direction by right-hand coordinate gesture (Figure 2).
+
+![图](img/2.png)<br> (Fig. 2)
 

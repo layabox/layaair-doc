@@ -1,24 +1,26 @@
-# 在Unity中导出拖尾系统
+#Exporting Tail System in Unity
 
 ###### *version :2.1.1beta   Update:2019-8-2*
 
-在LayaAir3D插件是支持 **TrailRenderer**组件导出的。
+The LayaAir3D plug-in is supported**Trail Renderer**Component export.
 
-我们首先在Unity3D中给一个Sphere添加上 `Trail Renderer`，并且简单的制作了一个拖尾效果。效果如图1所示。
+Let's first add a Sphere to Unity3D`Trail Renderer`And a simple tailing effect was made. The effect is shown in Figure 1.
 
-![](img/1.png)<br>(图1)
+![] (img/1.png)<br> (Figure 1)
 
-编辑好之后好之后我们选择导出预设。
+After editing, we choose to export the preset.
 
-**Tip**：拖尾所使用的的材质只能是`LayaAir3D/Trail Shader`，如果使用的是其他Shader在导出时会自动转成该Trail Shader。自动转换会导致实际效果与设计时的效果有较大偏差，所以在设计时就应当注意这一点。
+**Tip**The material used for tailing can only be`LayaAir3D/Trail Shader`If other Shaders are used, they are automatically converted to the Trail Shader when they are exported. Automatic conversion will lead to a large deviation between the actual effect and the design effect, so we should pay attention to this point in the design.
 
-![](img/2.png)<br>(图2)
+![] (img/2.png)<br> (Figure 2)
 
-**注意:**带拖尾的对象导出后就会是拖尾精灵，并不会携带模型，像在这里导出后就没有Sphere。所以导出后需要再添加到对象身上。
+**Be careful:**An object with a trailer will be a trailer wizard after it is exported, and it will not carry a model, as there will be no Sphere after it is exported here. So you need to add it to the object after exporting.
 
-这里我们使用IDE的3D示例项目，并且简单修改一下GameUI类代码。
+Here we use the IDE's 3D sample project and simply modify the GameUI class code.
+
 
 ```typescript
+
 //....上面为原本示例代码,去掉了示例代码的旋转摄像机
 //加载拖尾
 Laya.Sprite3D.load('LayaScene_tst/Conventional/Sphere.lh',Laya.Handler.create(this,function(sp){
@@ -33,5 +35,6 @@ Laya.Sprite3D.load('LayaScene_tst/Conventional/Sphere.lh',Laya.Handler.create(th
 }));
 ```
 
-![](img/3.gif)<br>(图3)
+
+![] (img/3.gif) < br > (fig. 3)
 

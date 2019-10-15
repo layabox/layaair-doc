@@ -1,72 +1,79 @@
 # LayaAir引擎播放DragonBones动画
 
-> 本篇采用LayaAirIDE 2.0.0版本截图说明，如有差异，请下载最新稳定版本的LayaAirIDE，并以最新版本为准。
+> This article uses screenshots of LayaAirIDE version 2.0.0 to illustrate. If there are any differences, please download the latest stable version of LayaAirIDE, whichever version is the latest.
 
-DragonBones（龙骨）骨骼动画，是游戏中经常使用的骨骼动画之一，通过LayaAirIDE自带的转换工具，可以将DragonBones骨骼动画格式转换为LayaAir引擎支持的骨骼动画格式。
+DragonBones (DragonBones) skeleton animation is one of the most frequently used skeleton animation in games. DragonBones skeleton animation format can be transformed into the skeleton animation format supported by LayaAir engine through the conversion tool provided by LayaAirIDE.
 
 
 
-### 1、原版DragonBones骨骼动画的导出
+###1. Introduction of Dragon Bones Skeletal Animation
 
-#### 1.1 导出时的纹理设置必须为纹理集
+####1.1 Texture settings for export must be texture sets
 
-LayaAirIDE的DragonBones转换工具只支持图集模式的DragonBones骨骼动画转换，因此，在使用DragonBones骨骼动画编辑工具导出时，必须在`纹理设置`的`纹理类型`选项里选择`纹理集`，如图1所示。
+Laya AirIDE's DragonBones conversion tool only supports DragonBones skeleton animation conversion in atlas mode, so when using DragonBones skeleton animation editing tool to export, you must`纹理设置`Of`纹理类型`Choose from Options`纹理集`As shown in Figure 1.
 
 ![图1](img/1.png) 
 
-(图1)
 
-#### 1.2 导出的DragonBones版本
+(Fig. 1)
 
-LayaAirIDE并非所有DragonBones版本都支持转换。支持的版本号在LayaAirIDE的`龙骨转换工具`面板中有显示，如图2所示。
+####1.2 Exported version of Dragon Bones
+
+Not all DragonBones versions of LayaAirIDE support conversion. The supported version number is in LayaAirIDE`龙骨转换工具`The panel is displayed, as shown in Figure 2.
 
 ![图2](img/2.png) 
 
-(图2)
 
-截止到本篇文档时，DragonBones从4.5版本开始，已支持到5.1版本。后续LayaAirIDE会不定期进行DragonBones版本支持的更新，开发者可关注转换工具面板上版本号支持状态的改变。
+(Fig. 2)
+
+By the time of this document, DragonBones has been supporting version 5.1 since version 4.5. Subsequent Laya AirIDE updates DragonBones version support from time to time, and developers can focus on changes in version number support status on the transformation tool panel.
 
 
 
-### 2、将DragonBones动画转换为LayaAir引擎识别的格式
+###2. Converting DragonBones Animation to LayaAir Engine Recognition Format
 
-#### 2.1 打开转换工具面板
+####2.1 Open the Conversion Tool Panel
 
-在LayaAirIDE的`设计模式`中，依次点击菜单栏的 `工具` —> `龙骨动画转换` ，如图3所示，即可打开`DragonBones格式转换`工具。
+At Laya AirIDE`设计模式`In turn, click on the menu bar`工具`>`龙骨动画转换`Open as shown in Figure 3`DragonBones格式转换`Tools.
 
 ![图3](img/3.png) 
 
-(图3)
+
+(Fig. 3)
 
 
 
-#### 2.2 生成.sk后缀的骨骼动画文件
+####2.2 Generate skeleton animation file with.Sk suffix
 
-打开`龙骨格式转换`工具面板后，将DragonBones导出的资源目录`拖入`到转换面板，或者点击`浏览`按钮选择DragonBones导出的资源目录。然后点击`确定` ，即可在原资源目录下生成`.png`和`.sk`后缀的两个同名文件。如图4所示。
+open`龙骨格式转换`After the toolbar, export the DragonBones resource directory`拖入`Go to the conversion panel, or click`浏览`Button to select the resource directory exported by DragonBones. Then click`确定`It can be generated under the original resource directory`.png`and`.sk`Two files of the same name with suffixes. As shown in Figure 4.
 
 ![图4](img/4.png) 
 
-(图4)
+
+(Fig. 4)
 
 
 
-### 3、DragonBones动画的加载显示
+###3. Loading and Displaying DragonBones Animation
 
-#### 3.1 将转换后的DragonBones动画资源复制到项目对应的目录。
+####3.1 Copy the converted DragonBones animation resources to the corresponding directory of the project.
 
-我们将龙骨转换工具生成的同名`.sk`与`.png`后缀的文件复制到项目的目录中，如图5所示。（*龙骨工具导出的原始文件不用管，仅供转换工具使用。*）
+We generated the same name for the keel conversion tool`.sk`And`.png`Files with suffixes are copied into the project directory, as shown in Figure 5. (* The original files exported by the keel tool are not managed and are only used by the conversion tool. *)
 
 ![图5](img/5.png) 
 
-(图5)
 
-#### 3.2 DragonBones动画播放示例
+(Fig. 5)
 
-下面的示例将用到`laya.ani.bone.Skeleton` 类，具体API说明可直接打开链接查看：[https://layaair.ldc.layabox.com/api/?category=Bone&class=laya.ani.bone.Skeleton](https://layaair.ldc.layabox.com/api/?category=Bone&class=laya.ani.bone.Skeleton)
+####3.2 example of dragonbones animation
 
-创建 DragonBonesDemo.js，代码编写如下：
+The following example will be used`laya.ani.bone.Skeleton`Class, specific API instructions can be directly opened to see the link:[https://layaair.ldc.layabox.com/api/?category=Bone&class=laya.ani.bone.Skeleton](https://layaair.ldc.layabox.com/api/?category=Bone&class=laya.ani.bone.Skeleton)
+
+Create DragonBonesDemo.js with the following code:
+
 
 ```java
+
 //初始化舞台
 Laya.init(1334,750);
 //创建一个Skeleton对象
@@ -79,8 +86,10 @@ skeleton.pos(600,350);
 //通过加载直接创建动画
 skeleton.load("res/DragonBones/rooster/Rooster_Ani.sk");
 ```
-运行效果如动图6所示
+
+The operation effect is shown in Figure 6.
 
 ![动图6](img/6.gif) 
 
-(动图6)
+
+(Fig. 6)

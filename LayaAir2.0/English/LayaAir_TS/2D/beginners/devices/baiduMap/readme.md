@@ -1,13 +1,15 @@
-# 使用百度地图显示当前位置
+#Use Baidu Map to Display Current Location
 
-> 本节一步步演示使用watchPosition()在百度地图上标注出当前所在位置。watchPosition方法来自于Geolocation API，**学习本节前请先阅读Geolocation基础文档或Geolocation API文档。**
+> This section demonstrates step by step the use of watchPosition () to mark the current location on the Baidu map. The watchPosition method is derived from the Geolocation API.**Read the Geolocation Foundation Document or the Geolocation API Document before you learn this section.**
 >
 
-在开始之前需要在index.html中引入百度地图的脚本文件，这个url在百度地图的官方网站可以免费获取到。演示中使用的url是[http://api.map.baidu.com/api?v=2.0&ak=LIhOlvWfdiPYMCsK5wsqlFQD8wW4Bfy6](http://api.map.baidu.com/api?v=2.0&ak=LIhOlvWfdiPYMCsK5wsqlFQD8wW4Bfy6)
+Before we start, we need to introduce the script file of Baidu Map in index. html, which is available free of charge on Baidu Map's official website. The URL used in the demonstration is[http://api.map.baidu.com/api?v=2.0&ak=LIhOlvWfdiPYMCsK5wsqlFQD8wW4Bfy6](http://api.map.baidu.com/api?v=2.0&ak=LIhOlvWfdiPYMCsK5wsqlFQD8wW4Bfy6)
 
-### **一、首先介绍成员变量：**
+### **First, introduce the member variables:**
+
 
 ```java
+
 // 百度地图的API
 private map;                              // 地图引用
 private marker;                           // 地图标注物
@@ -17,9 +19,12 @@ private convertor = new this.BMap.Convertor(); // 坐标转换接口
 private mapDiv; // 包含百度地图的div容器
 ```
 
-### 二、接着是构造函数：
+
+###Second, the constructor follows:
+
 
 ```typescript
+
 class WatchPosition {
     constructor() {
         Laya.init(1, 1);
@@ -37,11 +42,14 @@ class WatchPosition {
 new WatchPosition();
 ```
 
-​    由于本例不需要使用LayaAir的显示元素，因此舞台尺寸设置为1。百度地图界面的初始化放在init()中。然后是监听设备位置的变化。最后需要注意，函数convertToBaiduCoord()是将获取到的坐标转换至百度地图坐标，由于它是作为convertor.translate()的参数，所以触发时作用域会被改变，因此在这里绑定了该函数的作用域。
 
-##### 2.1 init函数：
+Since the LayaAir display element is not required in this example, the stage size is set to 1. The initialization of Baidu map interface is put in init (). Then it monitors the location of the device. Finally, it should be noted that the function convertToBaiduCoord () converts the obtained coordinates to Baidu map coordinates. Since it is a parameter of convertor. translate (), the trigger scope will be changed, so the scope of the function is bound here.
+
+#####2.1 init function:
+
 
 ```typescript
+
 private  init(): void {
   this.mapDiv = Laya.Browser.createElement("div");
   Laya.Browser.document.body.appendChild(this.mapDiv);
@@ -68,22 +76,28 @@ private  init(): void {
 }
 ```
 
- init()函数初始化百度地图。关闭了大部分交互功能，只留下拖动地图。地图初始地点位于北京，缩放系数15。并且添加了一个地图标注物。
 
-##### 2.2 refit函数：
+Init () function initializes Baidu map. Turn off most of the interaction, leaving only the drag map. The map was originally located in Beijing with a zoom factor of 15. And a map annotation was added.
+
+#####2.2 refit function:
+
 
 ```typescript
+
 private  refit(): void {
   this.mapDiv.style.width  =  Laya.Browser.width  / Laya. Browser.pixelRatio  +  "px";
   this.mapDiv.style.height  = Laya. Browser.height  / Laya. Browser.pixelRatio  +  "px";
 }
 ```
 
-refit()使百度地图充满整个窗口，由于侦听了resize事件，在窗口resize时也会重新填充窗口。
 
-#####    2.3 updatePosition函数：
+Refit () fills the whole window with Baidu Map. Because of listening to resize events, the window will be refilled when resize.
+
+#####2.3 updatePosition function:
+
 
 ```typescript
+
 // 更新设备位置
 private  updatePosition(p: Laya.GeolocationInfo): void {
   // 转换为百度地图坐标
@@ -93,13 +107,16 @@ private  updatePosition(p: Laya.GeolocationInfo): void {
 }
 ```
 
-  updatePosition()是Geolocation.watchPosition()的触发函数，在每次监测到位置改变后都需要把获取到的原始坐标转换到百度坐标，才能在百度地图上显示正确的位置。
 
-注意有的设备浏览器获取到的坐标可能是谷歌坐标，这时convertor.translate的第三个参数就不是5，而是3。
+UpdatePosition () is the trigger function of Geolocation. watchPosition (). After each change of position is monitored, the original coordinates acquired need to be converted to Baidu coordinates in order to display the correct position on Baidu map.
 
-##### 2.4 convertToBaiduCoord函数：
+Note that some device browsers may get Google coordinates, when convertor. translate's third parameter is not 5, but 3.
+
+#####2.4 ConvertToBaiduCoord function:
+
 
 ```typescript
+
 // 将原始坐标转换为百度坐标
 private  convertToBaiduCoord(data: any): void {
   if  (data.status  ==  0) {
@@ -112,11 +129,14 @@ private  convertToBaiduCoord(data: any): void {
 }
 ```
 
-在转换完成后设置标注物的位置，并且把视角平移到以标注物为中心的视口中。
 
-##### 2.5 onError函数：
+After the conversion is completed, the position of the tag is set, and the view angle is shifted to the tag-centered view.
+
+#####2.5 onError function:
+
 
 ```java
+
 private onError(e: any): void {
         var errType: string;
         if (e.code = Laya.Geolocation.PERMISSION_DENIED)
@@ -129,4 +149,5 @@ private onError(e: any): void {
     }
 ```
 
- 完成以上步骤之后就可以在设备上的浏览器查看效果。如果位置错误，把获取到的坐标当成谷歌坐标试试。注意浏览器本身的安全限制可能需要用户手动允许网页使用地理位置，或者Chrome需要https协议的地址才能够使用地理位置。
+
+After completing the above steps, you can view the effect in the browser on the device. If the position is wrong, try using the coordinates you get as Google coordinates. Note that browser security restrictions may require users to manually allow web pages to use geographic location, or Chrome needs the address of the HTTPS protocol to use geographic location.

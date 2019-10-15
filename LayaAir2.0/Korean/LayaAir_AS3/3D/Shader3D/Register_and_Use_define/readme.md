@@ -1,0 +1,130 @@
+# 注册宏定义与使用宏
+
+###### *version :2.3.0   Update:2019-10-8*
+
+개발자가 착색기 코드에 매크로 사용된다면 개발자는 Shader3D 를 사용해야 합니다`getDefineByName`인터페이스 등록 매크로 정의.
+
+>> 매크로 정의된 인터페이스는 Shader3D 중 2.3.3 버전 최적화된 것이다.이 이전 버전에서 개발자는 ShaderDefines 의 registerDefine 방법으로 매크로 지정해야 합니다.
+
+아래쪽 코드 는 공식 예제 () 에서 나온다[demo地址](http://layaair2.ldc2.layabox.com/demo2/?language=ch&category=3d&group=Shader&name=Shader_Terrain)）：
+
+> 새 버전 등록 매크로 정의
+
+
+```typescript
+
+/**
+ * @private
+ */
+public static function __init__(): void {
+    SHADERDEFINE_DETAIL_NUM1 = Shader3D.getDefineByName("CUSTOM_DETAIL_NUM1");
+    SHADERDEFINE_DETAIL_NUM2 = Shader3D.getDefineByName("CUSTOM_DETAIL_NUM2");
+    SHADERDEFINE_DETAIL_NUM3 = Shader3D.getDefineByName("CUSTOM_DETAIL_NUM3");
+    SHADERDEFINE_DETAIL_NUM4 = Shader3D.getDefineByName("CUSTOM_DETAIL_NUM4");
+    SHADERDEFINE_DETAIL_NUM5 = Shader3D.getDefineByName("CUSTOM_DETAIL_NUM5");
+}
+```
+
+
+> 오래된 버전 등록 매크로 정의
+
+
+```typescript
+
+/**示例一个ShaderDefines**/
+public static var shaderDefines:ShaderDefines 
+/**注册宏函数**/
+public static function __init__():void {
+    shaderDefines = new ShaderDefines(BaseMaterial.shaderDefines);
+    //注册宏定义
+    SHADERDEFINE_DETAIL_NUM1 = shaderDefines.registerDefine("CUSTOM_DETAIL_NUM1");
+    SHADERDEFINE_DETAIL_NUM2 = shaderDefines.registerDefine("CUSTOM_DETAIL_NUM2");
+    SHADERDEFINE_DETAIL_NUM3 = shaderDefines.registerDefine("CUSTOM_DETAIL_NUM3");
+    SHADERDEFINE_DETAIL_NUM4 = shaderDefines.registerDefine("CUSTOM_DETAIL_NUM4");
+    SHADERDEFINE_DETAIL_NUM5 = shaderDefines.registerDefine("CUSTOM_DETAIL_NUM5");
+}
+```
+
+
+매크로 등록이 끝나면 개발자는 통과할 수 있다**Basematerial**의`_shaderValues:ShaderData`속성`addDefine`과`removeDefine`매크로 정의를 추가합니다.
+
+주의: 매크로 정의된 조작 통합을 추가하여 ShaderData 는 2.2.0 버전의 최적화, 이 이전 버전 개발자는 'defineDatas: Definedatas 속성 있는 add 와 remove 방법으로 사용됩니다.새 버전도 호환 (# udefineDatas # 거창을 추가합니다.
+
+아래의 코드 는 공식 예례 () 에서 나온다[demo地址](http://layaair2.ldc2.layabox.com/demo2/?language=ch&category=3d&group=Shader&name=Shader_Terrain)）:
+
+> 새 버전 사용 매크로
+
+
+```typescript
+
+/**初始化材质**/
+private static function initShader(): void {
+    	....
+        /**注册宏**/
+		CustomTerrainMaterial.__init__();
+        ....
+}
+
+private function _setDetailNum(value: number): void {
+    switch (value) {
+		case 1:
+            _shaderValues.addDefine(CustomTerrainMaterial.SHADERDEFINE_DETAIL_NUM1);
+            _shaderValues.removeDefine(CustomTerrainMaterial.SHADERDEFINE_DETAIL_NUM2);
+            _shaderValues.removeDefine(CustomTerrainMaterial.SHADERDEFINE_DETAIL_NUM3);
+            _shaderValues.removeDefine(CustomTerrainMaterial.SHADERDEFINE_DETAIL_NUM4);
+            _shaderValues.removeDefine(CustomTerrainMaterial.SHADERDEFINE_DETAIL_NUM5);
+		break;
+        case 2:
+            ......
+    }
+}
+```
+
+
+> 오래된 버전 사용 매크로
+
+기존 버전에서 매크로 사용했으며, SubShader 초기화에 전입되기 전에 언급한 두 개의 인자가 필요하다.
+
+`spriteDefines`요정의 매크로 정의 집합.이 값은 엔진 중 기본 요정 매크로 정의 집합을 사용할 수 있다`RenderableSprite.shaderDefines`.
+
+`materialDefines`소재의 매크로 정의 집합.이 수치는 바로 앞에서 초기화된 것이다`shaderDefines`.
+
+
+```typescript
+
+/**
+ * 老版本如果需要使用宏，在初始化Shader的时候需要将 shaderDefines 传给队友的 subShader 
+ **/
+private static function initShader(): void {
+    	......
+    	//注册宏
+		CustomTerrainMaterial.__init__();
+		......
+		var customTerrianShader: Shader3D = Shader3D.add("CustomTerrainShader");
+		//将ShaderDefines传给 subShader
+		var subShader: SubShader = new SubShader(attributeMap, uniformMap, RenderableSprite3D.shaderDefines, CustomTerrainMaterial.shaderDefines);
+		......
+}
+
+/**
+* 在这个Shader中 需要根据宏来实现对不同 Textrue处理 ，所以在设置不同的贴图时，都会调用_setDetailNum来
+* 调整宏。
+*/
+ private function _setDetailNum(value:int):void {
+     switch (value) {
+         case 1: 
+             _defineDatas.add(CustomTerrainMaterial.SHADERDEFINE_DETAIL_NUM1);
+             _defineDatas.remove(CustomTerrainMaterial.SHADERDEFINE_DETAIL_NUM2);
+             _defineDatas.remove(CustomTerrainMaterial.SHADERDEFINE_DETAIL_NUM3);
+             _defineDatas.remove(CustomTerrainMaterial.SHADERDEFINE_DETAIL_NUM4);
+             _defineDatas.remove(CustomTerrainMaterial.SHADERDEFINE_DETAIL_NUM5);
+             break;
+         case 2:
+             ........
+}
+```
+
+
+####장단점:
+
+매크로 착색기의 코드를 더욱 간소화하고 실행 효율을 더욱 높게 할 수 있다.하지만 매회 매크로 변동은 색기 코드 (소모 시간이 필요합니다.

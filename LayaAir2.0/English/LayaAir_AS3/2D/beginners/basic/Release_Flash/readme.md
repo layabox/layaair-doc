@@ -1,74 +1,80 @@
-# LayaAir项目发布Flash版本
+#LayaAir project releases Flash version
 
 
 
-### 一、环境准备
+###I. environmental preparation
 
-1.下载LayaAirIDE最新的稳定版本。
+1. Download the latest stable version of LayaAirIDE.
 
-官网地址：[http://ldc.layabox.com/index.php?m=content&c=index&a=lists&catid=27](http://ldc.layabox.com/index.php?m=content&c=index&a=lists&catid=27) 
+Official address:[http://ldc.layabox.com/index.php?m=content&c=index&a=lists&catid=27](http://ldc.layabox.com/index.php?m=content&c=index&a=lists&catid=27) 
 
-2.下载最新的Adobe Flex Sdk。
+2. Download the latest Adobe Flex Sdk.
 
-下载地址：[https://www.adobe.com/devnet/flex/flex-sdk-download.html](https://www.adobe.com/devnet/flex/flex-sdk-download.html)
+Download address:[https://www.adobe.com/devnet/flex/flex-sdk-download.html](https://www.adobe.com/devnet/flex/flex-sdk-download.html)
 
-3.下载Debug调试所需的flash debug player。
+3. Download the flash debug player required for debugging.
 
-下载地址：[https://fpdownload.macromedia.com/pub/flashplayer/updaters/22/flashplayer_22_sa_debug.exe](https://fpdownload.macromedia.com/pub/flashplayer/updaters/22/flashplayer_22_sa_debug.exe)
+Download address:[https://fpdownload.macromedia.com/pub/flashplayer/updaters/22/flashplayer_22_sa_debug.exe](https://fpdownload.macromedia.com/pub/flashplayer/updaters/22/flashplayer_22_sa_debug.exe)
+
+
 
  
 
 
 
-### 二、编译发布设置
-
-#### 2.1 引入引擎包和Flash运行库源码
-
-　　**在项目中引入 LayaAir 的 ActionScript3.0 版本引擎包和Flash运行库源码。**
-
-　　LayaAir 的 AS3 版本引擎包源码地址：[http://ldc.layabox.com/index.php?m=content&c=index&a=lists&catid=28](https://github.com/layabox/layaair/tree/master/bin/as/libs/src)
-
-　　Flash 运行库源码地址：[https://github.com/layabox/layaair/tree/master/bin/as/LayaAirFlash/flash/src](https://github.com/layabox/layaair/tree/master/bin/as/LayaAirFlash/flash/src)
-
-　　*注意：此处引入包路径时，需要先引入 LayaAir 的 as 版本引擎包，再引入运行Flash版本的 flash源码包。*
-
-#### 2.2 添加glsl2agal.swc到项目
-
-　　找到flash引入包的目录，把目录下的的库glsl2agal.swc添加到项目。
-　　 地址：[https://github.com/layabox/layaair/blob/master/bin/as/LayaAirFlash/flash/glsl2agal.swc](https://github.com/layabox/layaair/blob/master/bin/as/LayaAirFlash/flash/glsl2agal.swc)
-
-#### 2.3 设置debug启动关联的flash debug player版本
-
-　　目前要求flash debug player版本为最低11.9以上。
-
-　　FlashDevelop设置，如图1所示：
-
-​        ![图片9.png](img/1.png)<br/>
-​    图（1）
-
-FlashBuilder设置，如图2所示：
-
-​        ![图片10.png](img/2.png)<br/>
-​    图（2）
-
-#### 2.4 添加playerglobal.swc文件（仅限FB环境）
-
-　　项目编译用到了很多 Stage3D 相关的类，需要用 11.9 以上的 `playerglobal.swc` 文件，此步骤仅 FlashBuilder 环境需要设置。找到 FlashBuilder 的安装目录下的 playerglobal.swc 路径，这里以“D:\Program Files\Adobe Flash Builder 4.7 (64 Bit)\sdks\4.6.0\frameworks\libs\player\12.0” 做参考，如果没有 11.9 对应的 playerglobal.swc ，可以复制 12.0 的目录为 11.9 目录，然后添加 playerglobal.swc ：
-
-​        ![图片11.png](img/3.png)<br/>
-​    图（3）
 
 
 
-### 三、发布Flash版本
 
- 
+###2. Compiling and publishing settings
 
-将LayaAir提供的 samples 例子复制到新建立的项目里，然后新建立一个文档启动类，我们这里以Main.as为例。
+####2.1 Introduce engine packages and Flash runtime source code
 
-Main.as示例源码：
+　　**In the project, the ActionScript version 3.0 engine package and flash runtime source code of layaair are introduced.**
+
+LayaAir's AS3 version engine package source address:[http://ldc.layabox.com/index.php?m=content&c=index&a=lists&catid=28](https://github.com/layabox/layaair/tree/master/bin/as/libs/src)
+
+Flash runtime source address:[https://github.com/layabox/layaair/tree/master/bin/as/LayaAirFlash/flash/src](https://github.com/layabox/layaair/tree/master/bin/as/LayaAirFlash/flash/src)
+
+　　*Note: When introducing package paths here, you need to first introduce LayaAir as version engine packages, and then introduce flash source packages running Flash version.*
+
+####2.2 add glsl2agal.swc to the project
+
+Find the directory of the flash import package and add the library glsl2agal. SWC under the directory to the project.
+Address:[https://github.com/layabox/layaair/blob/master/bin/as/LayaAirFlash/flash/glsl2agal.swc](https://github.com/layabox/layaair/blob/master/bin/as/LayaAirFlash/flash/glsl2agal.swc)
+
+####2.3 Set debug to start associated flash debug player version
+
+Flash debug player is currently required to be at least 11.9.
+
+FlashDevelop settings, as shown in Figure 1:
+
+​![图片9.png](img/1.png)<br/>
+Figure (1)
+
+Flash Builder settings, as shown in Figure 2:
+
+​![图片10.png](img/2.png)<br/>
+Figure (2)
+
+####2.4 Add playerglobal. SWC file (FB environment only)
+
+Many Stage3D-related classes are used in project compilation, which requires more than 11.9`playerglobal.swc`File, this step is only required for the Flash Builder environment. Find the player global. SWC path under the installation directory of FlashBuilder. For reference, use "D: Program Files Adobe Flash Builder 4.7 (64 Bit) sdks 4.6.0 frameworks libs player 12.0". If there is no 11.9 corresponding player. swc, copy the 12.0 directory to 11.9 directory, and add global.swyerc:
+
+​![图片11.png](img/3.png)<br/>
+Figure (3)
+
+
+
+###3. Publishing Flash Version
+
+Copy the sample example provided by LayaAir into the newly created project, and then create a new document startup class. Let's take Main. as for example.
+
+Main.as sample source code:
+
 
 ```java
+
 package
 {
  import flash.display.Sprite;
@@ -85,11 +91,14 @@ package
 
 
 
-**注意：**如果考虑将此项目发布为H5版本，需要在Main类顶部增加上`/*[IF-FLASH]*/`编译宏，用意就是在发布 H5 版本时忽略此类的编译。
 
-需要发布H5版本的时候，源码修改如下：
+**Be careful:**If you consider publishing this project to H5, you need to add the`/*[IF-FLASH]*/`Compiling macros is intended to ignore such compilation when releasing H5 versions.
+
+When the H5 version needs to be released, the source code is modified as follows:
+
 
 ```java
+
 /*[IF-FLASH]*/package
 {
  import flash.display.Sprite;
@@ -106,26 +115,32 @@ package
 
 
 
-### 四、注意事项与常见错误：
 
-4.1 如果项目内引入了JS库，则无法输出当前的项目到 Flash 版本。
+###Notes and common mistakes:
 
-4.2 发布的Flash 版本必须是11.9或更高版本。否则可能会出现`Error: Definition flash.display3D:Context3D could not be found.`等报错
+4.1 If a JS library is introduced into the project, the current project cannot be exported to Flash version.
 
-4.3 运行项目过程中偶尔会出现项目内函数调用参数数目与实际参数数目不一致的以情形。如：
+The Flash version released in 4.2 must be 11.9 or higher. Otherwise, it might happen.`Error: Definition flash.display3D:Context3D could not be found.`Equal reporting error
+
+4.3 Occasionally, the number of function call parameters in a project is not consistent with the actual number of parameters. Such as:
+
 
 ```javascript
+
 [Fault] exception, information=ArgumentError: Error #1063: Animation_Altas/createAnimation() 的参数数量不匹配。应该有 0 个，当前为 1 个。
 ```
 
-这是因为 Flash 对函数调用比 JS 有更加严格的限制，我们可以在多参数的地方加入类似于 e:*=null 这样的参数。
 
-在调用函数比函数原型参数少的地方，修改函数的原型参数为默认参数，比如p=null。
+This is because flash has more strict restrictions on function calls than JS. We can add parameters like e: * = null where there are multiple parameters.
 
-4.4  (高级功能) 项目内如果有自定义的 LayaAir GLSL Shader，需要把自定的 GSLS文件 Embed 到 FlashMain 文件内，并在 Window.start 之前初始化这些 Shader，类似于如下的代码：
+Where the calling function has fewer prototype parameters than the function, modify the prototype parameters of the function as default parameters, such as P = null.
+
+4.4 (Advanced Functions) If there is a custom Laaya Air GLSL Shader in the project, you need to embed the custom GSLS file into the FlashMain file and initialize these Shaders before Windows. Start, similar to the following code:
+
 
 
 ```javascript
+
 public class FlashMain extends Sprite {
  [Embed(source = "./display/MutiAni/shader/aniShader.vs", mimeType = "application/octet-stream")]
  public static var anishader_vs:Class;
@@ -143,17 +158,24 @@ public class FlashMain extends Sprite {
 }
 ```
 
-4.5 使用LayaAir的laya.net.Socket类来使用WebSocket时，相应消息处理回调函数内的参数类型必须设置为 * 号类型，如:
+
+4.5 When using LayaAir's laya.net.Socket class to use WebSocket, the parameter type in the corresponding message processing callback function must be set to * type, such as:
+
 
 ```javascript
+
 private function onMessage(e:Event=null):void {}
 ```
 
-必须修改为:
+
+It must be amended to read:
+
 
 ```javascript
+
 private function onMessage(e:*=null):void {}
 ```
 
-否则在运行时会提示类型转换错误!
+
+Otherwise, type conversion errors will be prompted at run time!
 

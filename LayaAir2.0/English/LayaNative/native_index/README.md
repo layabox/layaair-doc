@@ -1,47 +1,51 @@
+#LayaNative Home Page Description
 
-# LayaNative首页说明
+LayaNative is not a browser! <br / >
+LayaNative is not a browser! <br / >
+LayaNative is not a browser!
 
-LayaNative不是浏览器！<br />
-LayaNative不是浏览器！<br />
-LayaNative不是浏览器！
-
-现在LayaNative是通过加载index.js或者runtime.json来启动的，而不是通过项目里的index.html启动的。LayaNative**不是基于浏览器**的，不是通过封装浏览器或者webkit之类的控件来运行html的内容。
+Now LayaNative is started by loading index. JS or runtime. json, not by index. HTML in the project. LayaNative**Not browser-based**It does not run HTML content by encapsulating controls such as browsers or webkits.
 
 
-## 启动配置文件的说明
+##Description of the startup profile
 
-LayaNative可以选择通过index.js或是runtime.json启动。这两个文件主要提供以下的功能：
+LayaNative can choose to start through index. JS or runtime. json. These two documents mainly provide the following functions:
 
-* 确定项目运行时需要加载的js文件。
-* 对横竖屏进行设置。
+* Determine the JS files that need to be loaded when the project is running.
+* Set up the horizontal and vertical screen.
 
-具体的修改方式如下：
+The specific modification method is as follows:
 
-**1.使用index.js作为启动文件**
+**1. Use index. JS as the startup file**
 
-* 使用loadLib函数确定项目运行时需要加载的js文件。
-* 修改window.screenOrientation变量的值，对横竖屏设置。
+* Use the loadLib function to determine the JS files that need to be loaded when the project is running.
+* Modify the value of the window. screenOrientation variable to set the horizontal and vertical screens.
 
-例如：
+For example:
+
 
 ```javascript
+
 window.screenOrientation = "landscape"; // 设置屏幕为横屏
 loadLib("libs/matter.js");   // 启动时加载“libs/matter.js”文件
 ```
 
 
-**注意：** 请不要在index.js文件里编写任何逻辑代码，如果编写可能会发生未知的错误。
 
-**2.使用runtime.json作为启动文件**
+**Be careful:**Please don't write any logic code in the index. JS file, if you write it, you may have unknown errors.
 
-项目也可以选择使用runtime.json文件作为启动文件。json文件格式作为启动的配置文件比index.js更容易理解。
+**2. Use runtime.json as the startup file**
 
-* "scripts" : 用于确定项目运行时需要加载的js文件。
-* "screenOrientation" : 对横竖屏设置。
+The project can also choose to use the runtime. JSON file as the startup file. JSON file format is easier to understand as a boot configuration file than index. js.
 
-例如，以下设置为启动时加载"temp.js"文件，屏幕设置为横屏
+* "scripts": Used to determine the JS files that need to be loaded when the project is running.
+* "Screen Orientation": Settings for horizontal and vertical screens.
+
+For example, the following settings are set to load the "temp.js" file at startup, and the screen is set to a horizontal screen.
+
 
 ```json
+
 {
 	"scripts": ["temp.js"],
 	"screenOrientation": "landscape"

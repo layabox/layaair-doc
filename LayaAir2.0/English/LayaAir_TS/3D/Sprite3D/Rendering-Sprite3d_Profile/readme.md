@@ -1,33 +1,33 @@
-# 各种渲染精灵简介
+#Brief introduction of various rendering elves
 
 ###### *version :2.0.1beta   Update:2019-4-13*
 
-### MeshSprite3D精灵简介
+###Introduction to Mesh Sprite 3D Wizard
 
-​	MeshSprite3D是引擎中最常用的 **静态网格精灵** ,可根据于美术软件预制作或自定义的网格数据渲染模型。例如场景中的各种建筑模型、山体岩石一般均为MeshSprite3D。
+MeshSprite3D is the most commonly used engine**Static Grid Wizard**It can be based on the pre-made or customized grid data rendering model of art software. For example, the various building models and rocks in the scene are generally Mesh Sprite 3D.
 
-![](img/1.png)<br>(图1)
+![] (img/1.png)<br> (Figure 1)
 
-### SkinnedMeshSprite3D精灵简介
+###Skinned Mesh Sprite 3D Wizard Introduction
 
-​	SkinnedMeshSprite3D是引擎中的 **蒙皮动画网格精灵**,可根据美术软件预制作的网格数据和Animator组件的动画数据产生动作形变。常用于带蒙皮动画的角色、怪物等。和MeshSprite3D相比具产生网格形变的能力。
+Skinned Mesh Sprite 3D is in the engine**Skin animation grid Wizard**According to the pre-made grid data of the art software and the animation data of the Animator component, the motion deformation can be generated. Usually used for characters and monsters with skin animation. Compared with Mesh Sprite 3D, it has the ability to generate mesh deformation.
 
-![](img/2.png)<br>(图2)
+![] (img/2.png)<br> (Figure 2)
 
-### TrailSprite3D精灵简介
+###Introduction to Trail Sprite 3D Wizard
 
-​	TrailSprite3D是引擎中的 **拖尾精灵**,可根据精灵运动轨迹产生动态的拖尾特效。一般用于各种轨迹拖尾效果的展示。
+TrailSprite3D is in the engine**Tailing Wizard**It can produce dynamic tail effect according to the elf's trajectory. It is generally used to show the effect of various trajectory trailing.
 
-![](img/3.gif)<br>(图3)
+![] (img/3.gif) < br > (fig. 3)
 
-### ShuriKenParticle3D精灵简介
+###Introduction to Shuri KenParticle 3D Wizard
 
-​	ShuriKenParticle3D是引擎中的 **粒子精灵**,可根据美术人员编辑的粒子参数产生奇妙炫酷的粒子特效。一般用于各种角色技能特效或火焰、烟雾等场景特效。
+Shuri KenParticle3D is in the engine**Particle spirit**According to the particle parameters edited by artists, it can produce fantastic and cool particle effects. Usually used for various role skill effects or scene effects such as flame, smoke, etc.
 
-![](img/4.gif)<br>(图4)
+![] (img/4.gif) < br > (fig. 4)
 
-### PixelLineSprite3D精灵简介  
+###Pixel Line Sprite 3D Wizard Introduction
 
-​	PixelLineSprite3D是引擎中的 **像素线精灵**,可根据脚本的绘制数据产生任意颜色的像素线。一般用于场景中的引导效果或项目调试数据用途。
+PixelLineSprite3D is in the engine**Pixel Line Wizard**According to the drawing data of the script, any color pixel lines can be generated. Usually used for boot effects in scenarios or for project debugging data purposes.
 
-![](img/5.png)<br>(图5)
+![] (img/5.png)<br> (Fig. 5)

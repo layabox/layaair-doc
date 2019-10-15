@@ -1,81 +1,84 @@
-# HSlider 组件参考
+#HSlider Component Reference
 
 
 
-## 1、了解HSlider组件
+##1. Understanding HSlider components
 
-### 1.1 HSlider的作用与效果演示
+###1.1 Demonstration of the Role and Effect of HSlider
 
-​	HSlider与VSlider组件都是Slider组件的子类，它们分别表示横向滑动条与纵向滑动条。用户可以通过在滑块轨道之间移动滑块来选择值。常用于如播放器进度控制、音量大小控制，一些UI上的数值调整等。
+HSlider and VSlider components are subclasses of Slider components, which represent horizontal slider and vertical slider respectively. Users can select values by moving sliders between slider tracks. Usually used for player progress control, volume control, some UI value adjustment, etc.
 
-​      HSlider 组件采用水平方向。滑块轨道从左向右扩展，而显示滑动块位置数值的标签位于轨道的上部，可隐藏。
+HSlider components are horizontal. The slider track extends from left to right, and the label showing the position value of the slider is located at the upper part of the track and can be hidden.
 
-​      ![图片1.gif](img/1.gif)<br/>
-​    （图1）
+​![图片1.gif](img/1.gif)<br/>
+(Fig. 1)
 
 
 
-### 1.2 HSlider组件的皮肤（skin）规范
+###1.2 Skin Specification for HSlider Components
 
-​	HSlider资源命名规以hsliser为前缀名，它的默认资源总共3个，分别为滑块资源`hslider$bar.png`、进度条资源`hslider$progress.png` 及底图资源`hslider.png`。
+HSlider Resource Naming Rule is prefixed by hsliser. Its default resources are three, namely, slider resources.`hslider$bar.png`Progress bar resources`hslider$progress.png`And base map resources`hslider.png`。
 
-​	资源至少应当有两个，一个底图资源，一个滑块资源，否则无法实现滑动功能。缺少了进度条资源组件不会报错，只是不显示进度。
+There should be at least two resources, one base map resource and one slider resource, otherwise the sliding function can not be realized. Without the progress bar resource component, no error will be reported, just no progress will be displayed.
 
- 	tips：进度条资源`hslider$progress.png`可以与底图资源`hslider.png`互换，互换后进度可以反向显示。
+Tips: progress bar resources`hslider$progress.png`Can be used with base map resources`hslider.png`Exchange, the progress after interchange can be displayed in reverse.
 
 ![图片0.png](img/1.png)<br/>
-​    （图2）
+(Figure 2)
 
 
 
-### 1.3 HSlider组件的API介绍
+###1.3 Introduction to the API of HSlider Components
 
-HSlider的API介绍请参考 [http://layaair.ldc.layabox.com/api/index.html?category=Core&class=laya.ui.HSlider](http://layaair.ldc.layabox.com/api/index.html?category=Core&class=laya.ui.HSlider)。
+Refer to HSlider's API introduction[http://layaair.ldc.layabox.com/api/index.html?category=Core&class=laya.ui.HSlider](http://layaair.ldc.layabox.com/api/index.html?category=Core&class=laya.ui.HSlider)。
 
 
 
-## 2、通过LayaAirIDE创建HSlider组件
+##2. Creating HSlider Components through LayaAirIDE
 
-### 1.1 创建HSlider
+###1.1 create hslider
 
-​        点击选择资源面板里的 HSlider 组件资源，拖放到页面编辑区，即可添加 HSlider 组件到页面上。
+Click on the HSlider component resource in the Resource Panel and drag it into the page editing area to add the HSlider component to the page.
 
-​       HSlider 拖放到编辑器区后，设置sizeGrid九宫格属性，使之放大后不会拉伸，缩放后显示效果如下：
+After dragging and dropping HSlider into the editor area, set the nine-grid property of sizeGrid so that it will not stretch after zooming. The zooming effect is as follows:
+
+
 
 ​        ![图片2.png](img/2.png)<br/>
-​    （图2）
+(Figure 2)
 
-### 1.2 HSlider 组件常用属性
+###1.2 Common attributes of HSlider components
 
-​        设置 HSlider 的属性 max 的值为 20、属性 min 的值为0、属性 value 的值为5后，显示效果如下：
+After setting the value of attribute max of HSlider to 20, the value of attribute min to 0, and the value of attribute value to 5, the display effect is as follows:
 
-​        ![图片3.png](img/3.png)<br/>
-​    （图3）
+​![图片3.png](img/3.png)<br/>
+(Figure 3)
 
-**max：**HSlider滑块拖动到最右边时的最大值，默认数值为100；
+**Max:**The maximum value of the HSlider slider when dragged to the rightmost side is 100 by default.
 
-**min：**HSlider滑块拖动到最左边时的最小值，默认为0；
+**Min:**The minimum value of the HSlider slider when dragged to the leftmost side is 0 by default.
 
-**value：**滑块目前所处的数值，应当等于max或min，或在它们之间的值。
+**Value:**The current value of the slider should be equal to or between Max or min.
 
-​        ![图片4.png](img/4.png)<br/>
-​    （图4）
+​![图片4.png](img/4.png)<br/>
+(Figure 4)
 
-​        发布后编译运行，显示效果如下，可以拖动滑块来选择值：
+Compile and run after publication. The effect is as follows. You can drag the slider to select the value:
 
-​        ![图片5.gif](img/5.gif)<br/>
-​    （图5）
+​![图片5.gif](img/5.gif)<br/>
+(Fig. 5)
 
 
 
-### 1.3 HSlider 组件特殊其他属性
+###1.3 Special other attributes of HSlider components
 
- 通用其他属性在”属性设置器“中已有详细介绍，下列为关于HSlider组件相关的特殊属性。
+Other generic attributes are described in detail in the Property Setter. The following are special attributes related to HSlider components.
 
-| **属性**         | **功能说明**                          |
-| -------------- | --------------------------------- |
-| allowClickBack | 一个布尔值，指定是否允许通过点击滑动条改变 value 属性值。  |
-| showLabel      | 一个布尔值，指定是否隐藏在滑块上方显示value值的标签。     |
-| tick           | 滑动条的刻度值，是指滑块每次拖动的value值改变量。默认值为1。 |
+A kind of**attribute**A kind of**Function description**A kind of
+| -------------------------------------------------------------------------------------------------------------------------------------------------------------|
+| AllowClickBack | A Boolean value that specifies whether the value attribute value is allowed to be changed by clicking on the slider. A kind of
+| ShowLabel | A Boolean value that specifies whether a label that hides the value value above the slider is displayed. A kind of
+| The tick | slider's scale value refers to the value change of the slider each time it is dragged. The default value is 1. A kind of
+
 
  

@@ -1,77 +1,79 @@
-# 位图字体的制作与使用
+#The Making and Use of Bitmap Font
 
-用过Starling或者Cocos,甚至Unity的，大家对位图字体肯定不会陌生，简单的一张图片，放入自定义的文本，就可以在项目中做出好看的文本显示效果。在LayaAir 同样支持位图字体的使用与显示。下面是位图字体在LayaAir中的使用效果。
+Used Starling or Cocos, or even Unity, you will certainly not be unfamiliar with the bitmap font, a simple picture, put in a custom text, you can make a good text display effect in the project. The LayaAir also supports the use and display of bitmap fonts. Below is the use of bitmap fonts in LayaAir.
 
-### 制作位图字体
+###Making Bitmap Fonts
 
-1.将需要导出使用的文字写在一个txt文本内。
+1. Write the text you need to export in a TXT text.
 
 ![1](img/1.png)</br>
 
-2.选择文件->另存为Unicode编码的txt文件。
+2. Select the file - > save it as a Unicode coded TXT file.
 
 ![2](img/2.png)</br>
 
-3.下载安装 windows下免费的位图字体制作工具 Bitmap Font Generator。
- 下载地址：[http://www.angelcode.com/products/bmfont/](http://www.angelcode.com/products/bmfont/install_bmfont_1.13.exe)
+3. Download and install Bitmap Font Generator, a free bitmap font making tool under Windows.
+Download address:[http://www.angelcode.com/products/bmfont/](http://www.angelcode.com/products/bmfont/install_bmfont_1.13.exe)
 
- 4.打开软件，选择 Opotion->FontSetting，来设定需要导出的字体的常规设置，设置完毕后点击 OK 按钮保存。
+4. Open the software and select Opotion - > FontSetting to set the normal settings of fonts that need to be exported. After setting up, click OK button to save.
 
 ![3](img/3.png)</br>
 
-**重要参数说明：**
+**Important parameters:**
 
- Font：导出的位图字体使用的字体。
- Size：设置导出的位图字体使用的字体大小。建议在使用时需要多大的字就在此处设置相同大小的字号。
- Height：设置字体的拉伸高度，保持默认的100%就可以。
- *注意：Charset的值选择Unicode。*
+Font: The font used for the exported bitmap font.
+Size: Sets the font size used for the exported bitmap font. It is recommended to set the same size of fonts here when using them.
+Height: Set the stretch height of the font and keep it at 100% by default.
+ *Note: The value of Charset is Unicode.*
 
 ![4](img/4.png)</br>
 
-5.在选择菜单栏 Edit->Select chars from file，选中刚才创建的txt文件，如果有提示失败，请检查txt文件是不是unicode编码的文件以及字体是否包含文本内的字体。
+5. In the menu bar Edit - > Select chars from file, select the txt file you just created. If the prompt fails, check whether the txt file is unicode-coded and whether the font contains the font in the text.
 
 ![5](img/5.png)</br>
 
- 6.设置导出样式，选择菜单栏的 Options->Export Options ，打开Export Options 设置导出选项，设置完毕后点击OK按钮保存。
+6. Set export style, select Options - > Export Options in the menu bar, open Export Options to set export options, and click OK button to save after setting.
 
- Padding：文字的内边框，或者理解为文字的周边留空要多大。做后期样式时这个属性很重要，需要预留空间来给描边、发光等特效使用。比如预计要加一个2px的边框，然后加一个右下角2px的投影效果，所以设定了padding:2px 4px 4px 2px。
- Bit depth：必须32位，否则没有透明层。
- Presets：字体初始化预设的颜色通道设定，也就是说字体的初始颜色设定是什么样的，建议都用白色字，可以直接设定为White text with alpha，即白色字透明底。
- Font descriptor：字体描述文件，选择 xml。
- Textures：纹理图片格式，选择 png。
+Padding: How much space is left in the inner border of the text, or in the surrounding area of the text. This property is very important when making late style. It needs to reserve space for edge tracing, lighting and other special effects. For example, it is expected to add a 2px border and a 2px projection effect in the lower right corner, so padding: 2px 4PX 4PX 2px is set.
+Bit depth: Must be 32 bits, otherwise there is no transparent layer.
+Presets: Font initialization default color channel settings, that is, what the initial color settings of the font are, it is recommended to use white characters, can be directly set to white text with alpha, that is, white transparent bottom.
+Font descriptor: Font description file, select xml.
+Textures: Texture image format, select png.
 
 ![6](img/6.png)</br>
 
-7.导出位图字体。选择菜单栏的 Options->Save bitmap font as…，导出生成的是一个字体描述文件（.fnt格式）和一个字体纹理图文件（.png格式）。
+7. Export bitmap fonts. Select Options - > Save bitmap font as... The export generates a font description file (. fnt format) and a font texture map file (. png format).
 
 
 
-### 在LayaAir项目中使用位图字体
+###Use bitmap fonts in LayaAir projects
 
-1.把资源放在项目的输出目录下。
- 把制作导出的位图文件修改为同一名字（.fnt 文件和.png文件），然后放到LayaAir项目的bin/h5目录下。
+1. Put resources in the output directory of the project.
+Change the bitmap file to the same name (. FNT file and. PNG file) and put it in bin / H5 directory of layaair project.
 
 ![7](img/7.png)</br>
 
-如图：把test_0.png名字改为test.png,保证跟fnt文件同名。再把test.png和test.fnt文件放到H5目录下。
+Figure: Change the name of test_0.png to test.png to ensure the same name as the fnt file. Then put the test. PNG and test. FNT files in the H5 directory.
 
-**位图字体在 LayaAir项目中的常规使用方法：**
+**Bitmap fonts are commonly used in LayaAir projects:**
 
-1.创建位图字体对象。
+1. Create bitmap font objects.
 
-2.加载位图字体，并侦听是否完成。
+2. Load bitmap fonts and listen for completion.
 
-3.注册位图字体。
+3. Register bitmap fonts.
 
-4.使用字体。
+4. Use fonts.
 
-下面是一个完整的示例运行的效果。
+The following is a complete example of the effect of running.
 
 ![8](img/8.png)</br>
 
-完整代码如下所示：
+The complete code is as follows:
+
 
 ```typescript
+
 module laya {
     import BitmapFont = Laya.BitmapFont;
     import Stage = Laya.Stage;
@@ -123,79 +125,80 @@ new laya.Text_BitmapFont();
 
 
 
-### **Text 类中相关接口：**
 
-**registerBitmapFont () 方法**
+### **Related interfaces in the Text class:**
 
-public static function registerBitmapFont(name:String, bitmapFont:BitmapFont):void
+**RegisterBitmapFont () method**
 
-注册位图字体。
+Public static function register BitmapFont (name: String, bitmap Font: BitmapFont): void
 
-参数
+Register bitmap fonts.
 
- name:String — 位图字体的名称。
- bitmapFont:BitmapFont — 位图字体文件。
+parameter
 
-**unregisterBitmapFont () 方法**
+Name: String - The name of a bitmap font.
+BitmapFont: BitmapFont - BitmapFont font file.
 
-public static function unregisterBitmapFont(name:String, destory:Boolean = true):void
+**UnregisterBitmapFont () method**
 
-移除注册的位图字体文件。
+Public static function unregisterBitmapFont (name: String, destory: Boolean = true): void
 
-参数
+Remove the registered bitmap font file.
 
- name:String — 位图字体的名称。
- destory:Boolean (default = true) — 是否销毁当前字体文件。
+parameter
 
-### BitmapFont 类里的相关接口：
+Name: String - The name of a bitmap font.
+Destory: Boolean (default = true) - Whether to destroy the current font file.
 
-**loadFont () 方法**
+###Relevant interfaces in the BitmapFont class:
 
-public function loadFont(path:String, complete:Handler):void
+**LoadFont () method**
 
-通过指定位图字体文件路径，加载位图字体文件。
+Public function loadFont (path: String, complete: Handler): void
 
-参数
- path:String — 位图字体文件的路径。
- complete:Handler — 加载完成的回调，通知上层字体文件已经完成加载并解析。
+Load the bitmap font file by specifying the path of the bitmap font file.
 
-**parseFont () 方法**
+parameter
+Path: String - The path to a bitmap font file.
+Comple: Handler - Callback after loading, notifying the upper font file that loading and parsing have been completed.
 
-public function parseFont(xml:XmlDom, texture:Texture):void
+**ParseFont () method**
 
-解析字体文件。
+Public function parseFont (xml: XmlDom, texture: Texture): void
 
-参数
+Parse font files.
 
- xml:XmlDom — 字体文件XML。
- texture:Texture — 字体的纹理。
+parameter
 
-**destory () 方法**
+Xml: XmlDom - Font file XML.
+Texture: Texture - Texture of fonts.
 
-public function destory():void
+**Destory () method**
 
-销毁位图字体，调用Text.unregisterBitmapFont 时，默认会销毁。
+Public function destory (): void
 
-**setSpaceWidth () 方法**
+Destroy the bitmap font and call Text. unregisterBitmapFont by default.
 
-public function setSpaceWidth(spaceWidth:Number):void
+**SetSpaceWidth () method**
 
-设置空格的宽（如果字体库有空格，这里就可以不用设置了）。
+Public function setSpaceWidth (space Width: Number): void
 
-参数
+Set the width of the space (if there are spaces in the font library, you don't need to set them here).
 
- spaceWidth:Number — 宽度，单位为像素。
+parameter
+
+SpaceWidth: Number - Width, in pixels.
 
 
 
-### 在LayaAir IDE中使用位图字体
+###Use bitmap fonts in LayaAir IDE
 
-1.将字体文件放到 LayaAir IDE 项目的资源目录中（laya/assets/），要保证两个文件名相同，如 test.fnt、test.png，这样就自动注册了名为 test 的位图字体。
+1. Place the font file in the resource directory (laya/assets/) of the LayaAir IDE project to ensure that the two file names are identical, such as test.fnt and test.png, so that the bitmap font named test is automatically registered.
 
 ![9](img/9.png)</br>
 
-2.将要设置位图字体的文本组件的 font 属性值设置为已导入编辑器的位图字体的名称。
+2. The font attribute value of the text component that will set the bitmap font is set to the name of the bitmap font that has been imported into the editor.
 
 ![10](img/10.png)</br>
 
-3.在程序代码里实例化使用了位图字体的页面之前，需要先创建并注册页面内使用到的位图字体。
+3. Before instantiating a page that uses bitmap fonts in program code, it is necessary to create and register the bitmap fonts used in the page.

@@ -1,40 +1,42 @@
-# 动画挂点
+#Animation hanging point
 
 ###### *version :2.1.0beta   Update:2019-6-13*
 
-骨骼挂点技术在3D游戏中运用非常普遍，比如武器要随着角色的手的动作而变化，那么我们就可以把武器与手上骨骼进行挂点绑定，武器作为手骨骼的子节点，自然就可以跟随手的动作而变化。
+Skeletal hang-point technology is widely used in 3D games. For example, the weapon changes with the action of the character's hand. Then we can bind the weapon to the skeleton of the hand. As a sub-node of the skeleton of the hand, the weapon can naturally change with the action of the hand.
 
-当然，绑定后的3D模型也可以通过代码来移除绑定或者更换另外的3D模型，通过这种方式可以实现武器或装备的换装功能，骑乘功能等。
+Of course, the binded 3D model can also be removed by code or replaced by another 3D model, which can realize the replacement function of weapons or equipment, riding function and so on.
 
-#### (1) 在Unity中设置骨骼挂点
+####(1) set bone hanging point in unity
 
-骨骼挂点在Unity中设置非常方便，可以在场景的资源层级中直接操作。如下图（图1）
+Skeletal hangpoints are very convenient to set up in Unity and can be directly operated in the resource level of the scene. The following figure (Fig. 1)
 
-需要绑定的对象可以是一个3D容器，也可以只是一个3D模型，调整好它们的位置后，把它们拖入到指定骨骼下作为子层级就挂点绑定成功了，播放动画时，我们可以发现它跟随骨骼动画而变化了。
+The objects that need to be bound can be a 3D container or just a 3D model. After adjusting their positions, dragging them under the specified skeleton as a sub-level, they can be bound successfully. When playing the animation, we can find that it changes with the skeleton animation.
 
-有的时候，我们需要在刚开始的时候无武器，但又需要挂点，为以后换武器作准备，那么我们也可以在骨骼下放入一个空节点容器GameObject，需要的时候再往里添加不同的3D模型或是多个模型。
+Sometimes, we need to be weapon-free at the beginning, but also need a hang point to prepare for future weapons change. Then we can put an empty node container GameObject under the skeleton and add different 3D models or multiple models to it when needed.
 
-![](img/1.png)<br>(图1)
+![] (img/1.png)<br> (Figure 1)
 
-**Tips：当我们的骨骼挂点设置好后，骨骼与挂点对象会自动导出到.ls或.lh文件中，我们可以通过getChildByName()方法获取到它们。**
+**Tips: When our skeleton hangpoints are set up, skeleton and hangpoint objects are automatically exported to. LS or. LH files, which can be obtained by the getChildByName () method.**
 
-#### (2) 在代码中实现骨骼挂点
+####(2) implement bone hang point in code
 
-Animator动画组件类提供了两个实例方法 `linkSprite3DToAvatarNode()` 与 `unLinkSprite3DToAvatarNode()` 可以实现挂点的添加与移除（图2、图3）。
+Animator animation component class provides two example methods`linkSprite3DToAvatarNode()`And`unLinkSprite3DToAvatarNode()`You can add and remove hanging points (Figure 2, figure 3).
 
-Tips：代码添加骨骼动画之前，需要美术提供需要关联骨骼节点的名字。
+Tips: Before adding skeletal animation to the code, you need the art to provide the names of the skeletal nodes that need to be associated.
 
-![](img/2.png)<br>(图2)
+![] (img/2.png)<br> (Figure 2)
 
-![](img/3.png)<br>(图3)
+![] (img/3.png) < br > (fig. 3)
 
-具体使用的代码节选自官方示例，更详细的使用可以查看：（[demo地址](<https://layaair.ldc.layabox.com/demo2/?language=ch&category=3d&group=Animation3D&name=BoneLinkSprite3D>)）。
+The specific code used is excerpted from the official example. For more details, you can see:（[demo地址](http://localhost/LayaAir2_Auto/%3Chttps://layaair.ldc.layabox.com/demo2/?language=ch&category=3d&group=Animation3D&name=BoneLinkSprite3D%3E))
 
-**从场景中获取骨骼动画模型—获取模型的动画组件—创建挂点对象—在按钮点击后，通过动画组件绑定骨骼与挂点对象。**
+**Get the skeleton animation model from the scene - get the animation component of the model - create the hang-point object - after the button clicks, bind the skeleton and hang-point object through the animation component.**
 
-点击事件中的部分挂点的添加代码：
+Click on the add code for the part of the hangpoint in the event:
+
 
 ```typescript
+
 //往场景上添加龙
 scene.addChild(dragon1);
 //将角色节点添加到龙的节点上
@@ -51,9 +53,12 @@ pangzi.transform.localPosition = _position;
 pangzi.transform.localScale = _scale;
 ```
 
-点击事件中的部分挂点的移除代码：
+
+Click on the removal code of part of the hangpoint in the event:
+
 
 ```typescript
+
 //将role从龙2的节点上移除
 dragonAnimator2.unLinkSprite3DToAvatarNode(role);
 aniSprte3D2.removeChild(role);
@@ -64,5 +69,6 @@ scene.addChild(role);
 animator.play("hello");
 ```
 
-![](img/4.gif)<br>(图4)
+
+![] (img/4.gif) < br > (fig. 4)
 

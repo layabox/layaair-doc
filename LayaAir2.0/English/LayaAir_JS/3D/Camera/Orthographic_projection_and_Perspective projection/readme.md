@@ -1,14 +1,16 @@
-# 摄像机的正交投影和透视投影
+#Orthogonal Projection and Perspective Projection of Camera
 
 ###### *version :2.0.1beta   Update:2019-3-19*
 
-​	在我们观察世界的时候，看到的都是带有“近大远小”透视效果的世界，在3D引擎中，为了更好的模拟人眼所看到的世界，默认的摄像机带着“透视投影”的效果。
+When we look at the world, we see the world with "near big, far small" perspective effect. In the 3D engine, in order to better simulate the world seen by the human eye, the default camera has the effect of "perspective projection".
 
-![](img/1.png)<br>(图1)默认投影的效果图
+![] (img/1.png)<br> (Fig. 1) Effect map of default projection
 
-但有很大一部分游戏，特别是斜45度视角的2D、3D混合游戏，游戏画面是不能带透视效果的，那么这个时候，我们需要设置摄像机为“正交投影”，使它不产生近大远小的透视效果。
+But there are a large number of games, especially the mixed games of 2D and 3D with 45-degree angle of view. The game picture can not bring perspective effect. At this time, we need to set the camera as "orthogonal projection" so that it does not produce near-large-far perspective effect.
+
 
 ```typescript
+
 //正交投影属性设置
 camera.orthographicProjection = true;
 //正交垂直矩阵距离,控制3D物体远近与显示大小
@@ -19,5 +21,6 @@ camera.transform.translate(new Laya.Vector3(0, 26.5, 45));
 camera.transform.rotate(new Laya.Vector3( -30, 0, 0), true, false);
 ```
 
-![](img/2.png)<br>(图2)正交投影的效果图
+
+![] (img/2.png) < br > (fig. 2) Orthogonal projection effect map
 

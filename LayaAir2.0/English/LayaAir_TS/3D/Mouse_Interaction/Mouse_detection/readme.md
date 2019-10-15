@@ -2,15 +2,18 @@
 
 ###### *version :2.1.1   Update:2019-8-2*
 
-在LayaAir3D中想要能使用鼠标检测到物体，就必须在物体上添加物理碰撞器。这里就要用到在**物理系统**篇讲到过的 **射线检测** 和 **碰撞器** 两个知识点。
 
-下面的代码来自于官方示例（[demo地址](https://layaair2.ldc2.layabox.com/demo2/?language=ch&category=3d&group=MouseInteraction&name=MouseInteraction)）：
+在LayaAir3D中想要能使用鼠标检测到物体，就必须在物体上添加物理碰撞器。这里就要用到在**physical system**As mentioned in the passage**Radiographic testing**and**Collider**Two knowledge points.
 
-在主类中我们再场景上添加了4个猴，对猴子分别取名，并且调整了位置和缩放，并且添加了 `PhysicsCollider` 物理碰撞器，并且使用的网格型碰撞盒。
+The following code is from the official example（[demo地址](https://layaair2.ldc2.layabox.com/demo2/?language=ch&category=3d&group=MouseInteraction&name=MouseInteraction)):
 
-![](img/1.png)<br>(图1)
+In the main class, we added four monkeys to the scene, named the monkeys separately, adjusted the position and zoom, and added`PhysicsCollider`Physical Collider and grid collision box.
+
+![] (img/1.png)<br> (Figure 1)
+
 
 ```typescript
+
 {
     //在舞台上添加鼠标事件监听
     Laya.stage.on(Laya.Event.MOUSE_DOWN,this, this.onMouseDown);
@@ -35,5 +38,6 @@ onMouseDown() {
 }
 ```
 
-![](img/2.gif)<br>(图2)
+
+![] (img/2.gif) <br> (Figure 2)
 

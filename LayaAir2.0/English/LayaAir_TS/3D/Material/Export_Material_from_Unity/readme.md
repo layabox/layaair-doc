@@ -1,19 +1,19 @@
-# 从Unity中导出材质
+#Derivation of Material from Unity
 
 ###### *version :2.1.0beta   Update:2019-5-14*
 
-在导出场景和预设的会跟随一起导出材质。
+Material will be exported along with the export scenario and presupposition.
 
-如图1，这里是我们导出的一个场景：
+In Figure 1, here is a scenario we exported:
 
-![](img/1.png)<br>(图1)
+![] (img/1.png)<br> (Figure 1)
 
-***.lmat**文件就是材质文件： Json文件，包含光照，贴图，渲染模式等基本材质信息。
+***.lmat**Documents are material files: Json files, including basic material information such as lighting, mapping, rendering mode, etc.
 
-#### 关于材质导出支持的部分
+####About material export support
 
-​	支持Shader列表中LayaAir3D目录中的所有Shader。
+Supports all Shaders in the LayaAir3D directory in the Shader list.
 
-​	如果使用非LayaAir3D Shader会强制转换为LayaAir3D的默认Shader，之后可能会出现无法预知的错误。
+If you use a non-LayaAir3D Shader, it will be forced to convert to the default Shader of LayaAir3D, which may lead to unpredictable errors.
 
-![](img/2.jpg)<br>(图2)
+![] (img/2.jpg)<br> (Figure 2)

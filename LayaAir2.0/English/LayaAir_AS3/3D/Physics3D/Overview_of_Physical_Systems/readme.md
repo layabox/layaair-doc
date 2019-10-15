@@ -1,20 +1,20 @@
-# 物理系统的概述
+#An Overview of Physical Systems
 
 ###### *version :2.1.1   Update:2019-7-19*
 
-物理引擎通过为刚性物体赋予真实的物理属性的方式来计算运动、旋转和碰撞反映。开发者使用物理引擎高效，逼真地模拟**碰撞**，**重力**等物理效果。
+Physical engine calculates motion, rotation and collision responses by giving real physical properties to rigid objects. Developers use physical engines to simulate efficiently and realistically**collision**,**gravity**And so on.
 
-LayaAir3D物理世界物体发生碰撞的必要条件：
+Necessary conditions for collisions between objects in LayaAir3D physical world:
 
-　(1) 两个物体都有刚体。
+(1) Both objects have rigid bodies.
 
-​	(2) 两个物体其中一个物体带有Rigidbody刚体，另一个带有PhysicsCollider。
+(2) Two objects, one with Rigidbody rigid body and the other with Physics Collider.
 
-**Rigidbody3D** 刚体使物体能在物理控制下运动，是动态碰撞器。
+**Rigidbody3D**Rigid bodies enable objects to move under physical control. They are dynamic colliders.
 
-**PhysicsCollider ** 可以与刚体相互作用，但由于它们没有刚体，因此它们不会响应碰撞而移动，常用于制作地面，场景等，是静态碰撞器。
+**Physicscollider**They can interact with rigid bodies, but because they do not have rigid bodies, they do not move in response to collisions. They are often used to make ground, scenes, etc. They are static colliders.
 
-​	同时在LayaAir3D物理系统中，能检测碰撞发生的方式有两种，一是碰撞器，二是触发器。
+At the same time, in layaair3d physical system, there are two ways to detect collision, one is Collider, the other is trigger.
 
-在本章节将会详细的讲解LayaAir3D物理系统。
+LayaAir3D physical system will be explained in detail in this chapter.
 

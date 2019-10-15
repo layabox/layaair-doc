@@ -1,20 +1,21 @@
-## LayaNative的资源更新方法
-游戏发布之后必然会遇到更新的问题，这里的更新是指用LayaNative打包的游戏发布后，因为修改bug或者添加功能，想要修改客户端的部分代码和图片等数据。  
-目前LayaNative支持两种资源更新方式：  
+##LayaNative's Resource Renewal Method
+After the release of the game will inevitably encounter the problem of updating, where updates refer to the LayaNative packaged game after release, because modify bugs or add functions, want to modify some of the client code and pictures and other data.
+Currently, LayaNative supports two resource updates:
 
-### 1. 用户不可见的更新（推荐）。  
+###1. User invisible updates (recommendations).
 
-这是一种持续的，随时进行的更新。这种方式符合网页的更新思想：只有当需要使用某个资源的时候，才会触发资源的更新流程。这种化整为零的更新的机制，可以让用户立即进入游戏，在不知不觉间就完成了更新。  
-这种更新基于LayaNative的DCC机制,LayaDCC的介绍和使用方法见[这里](
-https://ldc.layabox.com/doc2/?nav=zh-as-6-2-0)。
+This is an ongoing, ongoing update. This approach is in line with the idea of web page updating: only when a resource needs to be used, will the process of resource updating be triggered. This whole-to-zero update mechanism allows users to enter the game immediately and complete the update unconsciously.
+This update is based on LayaNative's DCC mechanism. Introduction and usage of LayaDCC[这里](http://localhost/LayaAir2_Auto/%3C/p%3E%3Cp%3Ehttps://ldc.layabox.com/doc2/?nav=zh-as-6-2-0)。
 
-### 2. 用户可见的，进入游戏前的集中更新。  
+###2. Users can see the centralized updates before entering the game.
 
-大部分传统的app的更新方式，一上来就检查是否需要更新，如果需要更新就下载一个大的zip文件进行整体更新。这种更新的维护成本较高，用户需要较长时间的等待才能进入游戏，而且还明显违反Apple的禁止热更的政策。他的好处是用户可以在有wifi的地方更新，在没有wifi的地方玩，避免在没有wifi的时候浪费数据流量。
-LayaNative虽然没有直接支持这种更新，但是通过下面的几个接口（注意这些接口属于内部接口，以后有改变的可能性）也能实现这个功能：  
-* 支持断点续传的大文件下载函数downloadBigFile。(注意不要用XMLHttpRequest下载大文件，因为这种方式下LayaNative会把结果先保存在内存中，所以大文件可能会导致内存爆掉，而这个函数是随时存盘的。)   
+Most traditional app updates check to see if they need to be updated, and download a large zip file for overall updates if they need to be updated. The cost of updating is high, users need to wait longer to enter the game, and apparently violate Apple's policy of banning hot spots. Its advantage is that users can update where they have wifi, play where they don't have wifi, and avoid wasting data traffic when they don't have wifi.
+Although LayaNative does not directly support this update, it can also do so through the following interfaces (note that these interfaces belong to internal interfaces and there is a possibility of future changes):
+* Download BigFile, a large file download function that supports breakpoint continuation. (be careful not to use XMLHttpRequest to download large files, because Laya native will save the results in memory first in this way, so large files may cause memory explosion, and this function is stored on disk at any time. )
+
 
 ```javascript
+
     /**
     * @param url 远程地址
     * @param local 存到本地文件
@@ -30,9 +31,12 @@ LayaNative虽然没有直接支持这种更新，但是通过下面的几个接�
         opttimeout:number)=>void;
     
 ```
-* 处理zip文件的ZipFile类
+
+* ZipFile class for processing zip files
+
 
 ```javascript
+
     interface ZipFile{
         setSrc(src:string):boolean;
         /**
@@ -54,9 +58,12 @@ LayaNative虽然没有直接支持这种更新，但是通过下面的几个接�
     
     declare var ZipFile:ZipFile;    
 ```
-* 手动更新dcc缓存的功能。  
+
+* Manually update the function of DCC cache.
+
 
 ```javascript
+
     interface AppCache{
         ...
         /**
@@ -74,9 +81,14 @@ LayaNative虽然没有直接支持这种更新，但是通过下面的几个接�
     }
 ```
 
-通过这几个函数，就可以在layaDCC之上实现一个集中更新的功能。例如LayaNative提供的一个封装好了的更新函数updateByZip：
+
+Through these functions, we can implement a centralized update function on layaDCC. For example, LayaNative provides an encapsulated update function updateByZip:
+
     
+
+
 ```javascript
+
     /**
     * 用zip进行更新。
     * @param {string} url  zip下载地址
@@ -92,17 +104,26 @@ LayaNative虽然没有直接支持这种更新，但是通过下面的几个接�
     */
     function  updateByZip(url, onEvent, onEnd)
 ```
-这个函数的实现代码，在引擎的 index.js中。所以如果有特殊需求，也可以参考这个函数来实现自己的更新函数。
+
+The implementation code of this function is in the index. JS of the engine. So if you have special needs, you can also refer to this function to achieve their own update function.
+It's important to note that this function actually just downloads zip and updates every file in it to cache. In actual use, we also need to implement version management, interface, download progress hints and other functions. To implement these functions, you may need an interface for reading and writing files locally, using the following global functions (also internal interfaces, which may change):
+
     
-需要注意的是这个函数实际上只是做了下载zip，然后把里面的每个文件更新到cache中的事情。实际使用的时候，还要自己实现版本管理，界面，下载进度提示等功能。为了实现这些功能可能需要本地读写文件的接口，可以使用下面的全局函数（同样是内部接口，可能会改变）：
-    
+
+
 ```javascript
+
     declare var fs_readFileSync:(file:string)=>ArrayBuffer;    
     declare var fs_writeFileSync:(file:string,data:string|ArrayBuffer)=>boolean;
     declare var readFileSync:(file:string,encode:string)=>string;//这个直接返回字符串。
-```    
-如果需要获得缓存路径，需要LayaNative内部的appcache对象：
+```
+If you need to get the cache path, you need the appcache object inside LayaNative:
+
     
+
+
 ```javascript
+
      var cachepath = window.appcache.getCachePath()
 ```
+

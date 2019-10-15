@@ -1,49 +1,56 @@
-# 基准测试
+#Benchmark test
 
 
 
-LayaAir引擎内置的性能统计工具可用于基准测试，实时检测当前性能。开发者可以使用`laya.utils.Stat`类，通过Stat.show() 显示统计面板。具体编写代码如下例所示：
+LayaAir engine built-in performance statistics tools can be used for benchmarking, real-time detection of current performance. Developers can use`laya.utils.Stat`Class that displays the statistics panel through Stat. show (). Write the code as follows:
+
 
 
 
 ```javascript
+
    Stat.show(0,0);             //AS3的面板调用写法       
 
     Laya.Stat.show(0,0);        //TS与JS的面板调用写法
 ```
 
-Canvas渲染的统计信息：
 
-​	![1](img/1.png)<br/>
-​	（图1）
+Canvas rendering statistics:
 
-WebGL渲染的统计信息：
+​![1](img/1.png)<br/>
+(Figure 1)
 
-​	![图片1.png](img/2.png)<br/>
-​	（图1）
+Statistical information for WebGL rendering:
+
+​![图片1.png](img/2.png)<br/>
+(Fig. 1)
+
 
  
 
-**统计参数的意义**：
 
-· **FPS**：每秒呈现的帧数(数字越高越好)。
-使用Canvas渲染时，描述字段显示为FPS(Canvas)，使用WebGL渲染时，描述字段显示为FPS(WebGL)。
 
-· **Sprite**：渲染节点数量（数字越低越好）。
-Sprite统计所有渲染节点（包括容器），这个数字的大小会影响引擎节点遍历，数据组织和渲染的次数。
+**Significance of Statistical Parameters**:
 
-· **DrawCall**：DrawCall在Canvas和WebGL渲染下代表不同的意义（越少越好）：
+·**FPS**Number of frames per second (the higher the number, the better).
+When using Canvas to render, the description field is displayed as FPS (Canvas), and when using WebGL to render, the description field is displayed as FPS (WebGL).
 
- Canvas下表示每帧的绘制次数，包括图片、文字、矢量图。尽量限制在100之下。
+·**Sprite**: number of render nodes (the lower the number, the better).
+Sprite counts all rendering nodes (including containers), and the size of this number affects the number of times the engine nodes traverse, organize and render.
 
-WebGL下表示渲染提交批次，每次准备数据并通知GPU渲染绘制的过程称为1次DrawCall，在每1次DrawCall中除了在通知GPU的渲染上比较耗时之外，切换材质与shader也是非常耗时的操作。 DrawCall的次数是决定性能的重要指标，尽量限制在100之下。
+·**DrawCall**DrawCall represents different meanings in Canvas and WebGL rendering (less is better):
 
-· **Canvas**：三个数值 —— 每帧重绘的画布数量 / 缓存类型为“normal”类型的画布数量 / 缓存类型为“bitmap”类型的画布数量”。
+Under canvas, it indicates the drawing times of each frame, including picture, text and vector diagram. Limit it to less than 100.
 
-· **CurMem**：仅限WebGL渲染，表示内存与显存占用（越低越好）。
+The process of rendering submission batches under WebGL is called DrawCall, which prepares data and informs GPU of rendering batches. In addition to informing GPU of rendering time-consuming, switching material and shader is also a very time-consuming operation in each DrawCall. The number of DrawCalls is an important indicator of performance and should be limited to less than 100.
 
-· **Shader**：仅限WebGL渲染，表示每帧Shader提交次数。
+·**Canvas**Three values - the number of canvas redrawn per frame / the number of canvas cached with the "normal" type / the number of canvas cached with the "bitmap" type.
 
-***Tips：**无论是Canvas模式还是WebGL模式，我们都需要重点关注DrawCall，Sprite，Canvas这三个参数，然后针对性地进行优化。（参见“图形渲染性能”）*
+·**CurMem**WebGL rendering only, representing memory and memory usage (the lower the better).
+
+·**Shader**WebGL rendering only, indicating the number of Shader submissions per frame.
+
+***Tips:**Whether Canvas mode or WebGL mode, we need to focus on DrawCall, Sprite, Canvas three parameters, and then targeted optimization. (See "Graphic Rendering Performance")*
+
 
  

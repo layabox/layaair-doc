@@ -1,26 +1,26 @@
-# WaterPrimaryMaterial材质详解
+#WaterPrimary Material Material Material Details
 
 ###### *version :2.1.0beta   Update:2019-5-14*
 
-WaterPrimaryMaterial是水初级材质。靠法线贴图来实现波纹的效果。
+WaterPrimary Material is a primary water material. Normal mapping is used to achieve the ripple effect.
 
-##### 主要属性与方法
+#####Main attributes and methods
 
-> 属性
+> attribute
 
-`horizonColor:Vector4` 地平线颜色，水面反射颜色。
+`horizonColor:Vector4`Horizon color, water surface reflects color.
 
-`mainTexture:BaseTexture` 主贴图，水面颜色贴图。
+`mainTexture:BaseTexture`Main map, water color map.
 
-`normalTexture:BaseTexture` 法线贴图，水面波纹的法线贴图。
+`normalTexture:BaseTexture`Normal map, normal map of water surface ripple.
 
-`waveScale:Number` 波动缩放系数。
+`waveScale:Number`Volatility scaling coefficient.
 
-`waveSpeed:Vector4` 波动速率。
+`waveSpeed:Vector4`Fluctuation rate.
 
-##### 创建和使用材质
+#####Create and use materials
 
-水初级材质我们推荐的是从Unity中调好再导出使用。([demo地址](https://layaair.ldc.layabox.com/demo2/?language=ch&category=3d&group=Material&name=WaterPrimaryMaterialDemo))
+Water primary material we recommend is adjusted from Unity and exported. ([demo地址](https://layaair.ldc.layabox.com/demo2/?language=ch&category=3d&group=Material&name=WaterPrimaryMaterialDemo))
 
-![](img/1.gif)<br>(图1)
+![] (img/1.gif) <br> (Fig. 1)
 

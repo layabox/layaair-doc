@@ -1,16 +1,22 @@
-# 摄像机的横纵比
+#The aspect ratio of the camera
 
 ###### *version :2.0.1beta   Update:2019-3-19*
 
-​	我们一般不会手动设置屏幕的横纵比，在运行过程中会通过计算自动设置横纵比。但是在一些特殊的情况下需要对横纵比手动设置时，可以自己手动设置。如果需要重置横纵比，变回自动改变横纵比，只需要将这个值设置为0。
+In general, we do not manually set the aspect ratio of the screen, but automatically set the aspect ratio by calculating during operation. However, in some special cases, when it is necessary to set the aspect ratio manually, you can set it manually by yourself. If you need to reset the aspect ratio, change back to automatically change the aspect ratio, just set this value to 0.
+
 
 ```typescript
+
 //手动设置横纵比
 camera.aspectRatio = 2;
 ```
 
+
+
 ```typescript
+
 //重置
 camera.aspectRatio = 0;
 ```
+
 

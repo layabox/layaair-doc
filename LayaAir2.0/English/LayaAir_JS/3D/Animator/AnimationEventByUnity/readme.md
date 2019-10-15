@@ -1,20 +1,22 @@
-# 在Unity中设置动画事件
+#Setting Animation Events in Unity
 
 ###### *version :2.1.0beta   Update:2019-6-13*
 
-在unity的Animator中我们我们可以添加动画触发事件 **showMsg** 如图1。
+In Unity's animator, we can add animation trigger events**ShowMsg**As shown in Figure 1.
 
-![](img/1.png)<br>(图1)
+![] (img/1.png)<br> (Figure 1)
 
-这个事件就是说在动画播放到这个位置的时候，就会触发我们**ShowMsg**这个名字的事件。
+This event means that when the animation is played to this location, it will trigger us.**ShowMsg**The event of this name.
 
-在unity中设置好事件然后Apply，最后导出动画模型。
+Set up the event in Unity, Apply it, and finally export the animation model.
 
-在LayaAir3D中我们就可以创建一个脚本来接收这个事件。
+In LayaAir3D, we can create a script to receive this event.
 
-首先我们创建一个Script3D脚本，脚本名不影响事件的触发这里是随便取的名。
+First we create a script 3D script. The script name does not affect the trigger of the event. Here is the random name.
+
 
 ```typescript
+
 
 export default class SceneScript extends Laya.Script3D {
 	constructor(){
@@ -31,9 +33,12 @@ export default class SceneScript extends Laya.Script3D {
 }
 ```
 
-在加载好场景之后，我们将我们创建的这个脚本添加给cube。
+
+After loading the scenario, we add the script we created to cube.
+
 
 ```typescript
+
 //加载场景
 Laya.Scene3D.load("res/threeDimen/scene/LayaScene_AnimationEvent/Conventional/layaScene.ls", Laya.Handler.create(this, function(scene) {
     Laya.stage.addChild(scene);
@@ -52,14 +57,15 @@ Laya.Scene3D.load("res/threeDimen/scene/LayaScene_AnimationEvent/Conventional/la
 	//给脚本的加强表现用方法赋值
     _script.showMsgFunc = function () 
     {
-        text = "ShowMsg";
-        color = "red";
+        this.text = "ShowMsg";
+        this.color = "red";
     }.bind(_lab);
     
 }));
 ```
 
-最后了来看下效果，如图2。
 
-![](img/2.gif)<br>(图2)
+Finally, take a look at the effect, as shown in Figure 2.
+
+![] (img/2.gif) <br> (Figure 2)
 

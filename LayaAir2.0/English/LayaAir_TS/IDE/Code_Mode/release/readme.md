@@ -1,109 +1,110 @@
 # 项目发布2.0详解
 
-> author: charley      version: LayaAir IDE 2.0.0 正式版      update：2019-1-16
+> author: Charley version: LayaAir IDE 2.0.0 official update: 2019-1-16
 
-项目菜单的发布功能是非常核心的功能，通常是用于游戏的JS合并、JS压缩与混淆、图片压缩、版本管理、游戏不同平台的适配等。在项目完成开发，或阶段性完成开发，准备提交到生产环境中进行测试时，通常会用到项目发布的功能。
+The publishing function of Project menu is a very core function, which is usually used for JS merging, JS compression and confusion, picture compression, version management, adaptation of different game platforms, etc. The function of project publishing is usually used when the project is completed, or the development is completed in stages and ready for submission to the production environment for testing.
 
 ![1](img/1.png)   
 
-（图1）
+
+(Fig. 1)
 
 
 
-在项目菜单里，打开项目发布功能的界面如图1所示，下面将逐一进行介绍：
+In the project menu, the interface to open the project publishing function is shown in Figure 1, which will be introduced one by one below.
 
-### 1、发布平台
+###1. Publishing Platform
 
-发布平台中目前有四种选择选项，分别为web/Native，微信小游戏、QQ轻游戏、百度小游戏。如图1所示。
+There are currently four options in the publishing platform, namely web/Native, Wechat games, QQ games and Baidu games. As shown in Figure 1.
 
-`web/Native` 是指发布为HTML5版本，运行于浏览器环境或者是LayaNative的APP环境中。
+`web/Native`Published as HTML5, running in browser environment or LayaNative APP environment.
 
-`微信小游戏` 是指发布为已适配微信小游戏的项目，发布后的项目可以运行于微信开发者工具内（关于微信小游戏可阅读相关的文档）。
+`微信小游戏`It refers to the project published as an adapted Wechat game, which can run in the Wechat developer tool (related documents about the Wechat game can be read).
 
-`QQ轻游戏`是指发布为手机QQ的轻游戏项目（曾称为玩一玩），运行于手机QQ的轻游戏平台中。
+`QQ轻游戏`It refers to the light game project published as mobile QQ (once called play), which runs in the light game platform of mobile QQ.
 
-`百度小游戏` 是指发布为已适配百度小游戏的项目，发布后的项目可以运行于百度开发者工具内（关于百度小游戏可阅读相关的文档）。
+`百度小游戏`It refers to the project that has been released as an adaptation of Baidu mini-games, and the released project can run in Baidu developer tools (about Baidu mini-games can read relevant documents).
 
-### 2、源根目录
+###2. Source Catalogue
 
-源根目录是指发布的版本文件**来源目录**，默认在bin目录下，这个目录不要改。
+The source directory is the published version file.**Source directory**By default, the bin directory is unchanged.
 
-### 3、发布目录
+###3. Publishing Directory
 
-发布目录是指要发布到的**目标目录**，默认在release目录下，可以在项目所在的目标，也可以是与项目无关的目录。
+Publishing directory is to be published to**Target directory**By default, in the release directory, you can either target the project or a directory unrelated to the project.
 
-### 4、是否重新编译项目
+###4. Whether to recompile the project
 
-如果开发者担心因为遗忘了编译，导致发布的代码并非最近代码的话，可以勾选`是否重新编译项目`，勾选后会在每次发布时先编译项目再执行发布流程。可以避免因遗忘编译导致的项目发布后报错。
+Check if the developer is worried that the released code is not the latest code because he forgot to compile it.`是否重新编译项目`After checking, the project is compiled before the release process is executed at each release. Errors can be avoided after project release due to forgetting compilation.
 
-### 5、是否为微信/百度开放数据域项目
+###5. Wechat/Baidu Open Data Domain Project
 
-微信和百度等小游戏开放域项目默认的入口文件和主域的入口文件并不一样，所以勾选`是否为微信/百度开放数据域项目`后，会自动将入口的问题处理好，不用开发者每次在发布后，手工处理。极大的增加了开发者的小游戏发布易用性。
+The default entry files of small game open domain projects such as Weixin and Baidu are different from those of the main domain, so check`是否为微信/百度开放数据域项目`After that, the problem of entry will be handled automatically, without the need for developers to handle it manually after each release. Greatly increased the developer's ease of release of small games.
 
-#### 是否合并index.html内的所有js文件（web版）
+####Whether to merge all JS files in index. HTML (web version)
 
-勾选后，会分析index.html内的js，将所有index.html内的JS合并为一个JS。
+After checking, JS in index. HTML are analyzed and all JS in index. HTML are merged into one JS.
 
-> 基于微信小游戏的特殊机制，小游戏必须选择，所以该项不在小游戏发布中显示。
+> Based on the special mechanism of Weixin small game, the small game must be selected, so the item is not displayed in the release of the small game.
 >
 
-### 6、是否只复制index.html内引用的js文件
+###6. Copy only JS files referenced in index. HTML
 
-勾选后，只复制index.html内引用的js引擎库文件到release的libs目录。否则会将libs下用到的没用到的全都复制过去。
+After checking, copy only the JS engine library files referenced in index. HTML to the LIBS directory of release. Otherwise, all the unused things under LIBS will be copied.
 
-### 7、压缩资源
+###7. Compression of resources
 
-#### 排除压缩
+####Exclusion compression
 
-用于排除源根目录下的，一些目录或文件，有多个的话，用分号`;`隔开。
-注意：排除压缩这个功能只用于排除压缩相关的目录
+To exclude some directories or files from the source directory, if there are more than one, use semicolons.`;`Separate.
+Note: Compression exclusion is only used to exclude directories related to compression
 
-#### 是否压缩PNG
+####Compression of PNG
 
-勾选后，会压缩PNG资源，可以通过参数控制质量，发布时的默认值，如果开发者觉得效果未达到目标，可以自行调整尝试。
+After checking, PNG resources will be compressed, quality can be controlled by parameters, the default value at the time of publication, if developers feel that the effect has not reached the goal, they can adjust their own attempts.
 
-#### 是否压缩JPG
+####Compression of JPG
 
-勾选后，会压缩JPG资源，可以通过参数控制质量，发布时的默认值，如果开发者觉得效果未达到目标，可以自行调整尝试。
+After checking, JPG resources will be compressed, quality can be controlled by parameters, the default value at the time of publication, if developers feel that the effect has not reached the goal, they can adjust their own attempts.
 
-#### 是否压缩JSON
+####Compression of JSON
 
-勾选后，并不仅仅是JSON后缀的文件，默认列出了一些常用的可能需要压缩的json文件格式（例如：json、atlas、ls、lh、lmat、lav），如果符合这些范围的后缀就会开始压缩。如果有不需要压缩的后缀格式，直接去掉后缀就可以。
+After checking, it's not just JSON suffixes. By default, it lists some common JSON file formats that may need to be compressed (e.g. json, atlas, ls, lh, lmat, lav). If the suffixes meet these ranges, compression will begin. If there is no need to compress the suffix format, you can remove the suffix directly.
 
-#### 是否混淆压缩JS
+####Whether to confuse compressed JS
 
-勾选后，会对JS进行压缩和混淆。
+After checking, JS will be compressed and confused.
 
-### 8、版本管理
+###Version Management
 
-#### 是否启用版本管理
+####Whether version management is enabled
 
-勾选这个选项后，会启用版本管理。
+When this option is checked, version management is enabled.
 
-当开发者启用版本管理之后，发布时将会自动生成带hash字符串的文件名，同时生成一个version.json的文件名映射文件。通过版本管理类ResourceVersion自动关联代码中的实际文件名和重命名后的版本管理控制的文件。开发者启用版本管理的文件只要发生改变，就会在发布时自动更新改变文件名中的hash字符串，这于运行环境而言，这相当于调用了新的文件，自然就不会存在缓存引起的问题。
+When a developer has version management enabled, the file name with hash strings will be automatically generated at publication time, and a version. JSON file name mapping file will be generated at the same time. Automatically associate the actual file name in the code with the renamed version management controlled file through the version management class ResourceVersion. As long as the file with version management is changed, the hash string in the changed file name will be updated automatically when it is released. This is equivalent to calling a new file in the running environment, so there will be no caching problem.
 
-而开发者在开发的过程中，无需关注版本管理最终生成的文件名是什么。甚至，由于LayaAirIDE 2.0在创建项目的时候，已经自动在代码里集成了版本管理类ResourceVersion，开发者连怎么去使用ResourceVersion类都无须关注，只需要在打算启用版本管理时，在项目发布界面，勾选是否启用版本管理的选项即可。
+In the process of development, developers do not need to pay attention to what the final file name generated by version management is. Even since LayaAirIDE 2.0 automatically integrates version management class ResourceVersion into the code when creating a project, developers don't even need to pay attention to how to use the ResourceVersion class. They just need to check whether to enable version management in the project release interface when they plan to enable version management.
 
-#### 是否删除旧的资源文件
+####Whether to delete old resource files
 
-当启用版本管理后，即使某个文件产生了变化，生成了新版本文件，但默认会保留旧版本文件。
+When version management is enabled, even if a file changes and a new version file is generated, the old version file is retained by default.
 
-`勾选是否删除旧的资源文件`选项后，当某个文件产生了变动，在生成新的版本文件的同时，会将旧的版本文件删除。
+`勾选是否删除旧的资源文件`After the option, when a file changes, the old version file is deleted while the new version file is generated.
 
-### 9、文件提取
+###9. File Extraction
 
-文件提取功能主要是为了方便小游戏本地包的提取。
+The main purpose of the file extraction function is to facilitate the extraction of local packages in small games.
 
-#### 复制选择列表
+####Replication Selection List
 
-点击`复制选择列表`右则的浏览会弹出bin目录的结构树。开发者勾选本地包中要使用的代码或者资源。点击**确定**后，会保存已选择的目录和文件，以便于发布工具筛选和复制指定的本地包内容。
+click`复制选择列表`The right browse pops up the structure tree of the bin directory. The developer checks the code or resources to be used in the local package. click**Determine**After that, the selected directories and files are saved to facilitate the publishing tool to filter and copy the specified local package content.
 
-#### 复制文件到哪
+####Where to Copy Files
 
-点击`复制文件到哪`右则的浏览可以指定一个目录，作为小游戏的项目目录，刚刚`复制选择列表`中提取的本地包内容会复制到这里指定的目录中。
+click`复制文件到哪`Right browse can specify a directory, as a small game project directory, just`复制选择列表`The extracted local package content is copied to the directory specified here.
 
-#### 后续执行脚本
+####Follow-up execution script
 
-这里指定一个可以在命令行中直接执行的文件（例如，windows下的 exe或bat），那将在发布的时候调用这里指定的可执行文件。
+This specifies a file that can be executed directly from the command line (for example, exe or bat under windows), which will call the executable specified here at publication time.
 
-具体用于哪里呢？比如：有开发者认为IDE自带的压缩功能不好用。那可以自己写一个，或者从网上找一个命令行中可执行的程序。直接在发布的时候调用。而不用再勾选使用IDE自带的压缩功能。
+Where is it specifically used? For example, some developers think that the compression function of IDE is not working well. You can write a program by yourself or find an executable program from the command line on the Internet. Called directly at publication time. Instead of checking use IDE's own compression function.

@@ -1,153 +1,164 @@
-# Vivo game release and debugging guide
+#Guidelines for release and debugging of vivo games
 
-> update : 2019-07-01境变量的可自行百度）
+> update: 2019-07-01
 >
-> The release of the vivo game must use LayaAirIDE. For the download and use of the IDE, please check the related documents, which is beyond the scope of this article.
+> The release of vivo Games must use LayaAirIDE. For the download of IDE, please check the relevant documents, which are not covered in this article.
 
-## 1、Vivo game release, debugging environment preparation
+##1. Preparing for release and debugging environment of vivo games
 
-1、Vivo brand mobile phone
+1. Mobile phones of vivo brand
 
-2、Download the installation debugger for vivo, download the page：[https://minigame.vivo.com.cn/documents/#/download/debugger](https://minigame.vivo.com.cn/documents/#/download/debugger)
+2. Download and install vivo's debugging APP and download pages:[https://minigame.vivo.com.cn/documents/](https://minigame.vivo.com.cn/documents/#/download/debugger)#[/download/debugger](https://minigame.vivo.com.cn/documents/#/download/debugger)
 
-Once you have entered the page, click Download Now to download and install. As for how to install the vivo debug app, it will not be introduced here.
+Once you enter the page, you can download and install it by clicking on it immediately. As for how to install vivo to debug APP, this is not covered here.
 
-3、Download vivo mini-game engine
+3. Download vivo game engine
 
-The current ** debugging APP** built-in vivo engine version is 1034, this version has a known bug, we must go to the vivo game official website to download the latest version of the small game engine apk.
+current**Debug APP**The built-in version of the vivo engine is 1034. There is a known BUG in this version. We have to go to the official website of vivo games to download the latest version of the small game engine apk.
 
 The download page is:
 
-https://minigame.vivo.com.cn/documents/#/download/engine
+Https://minigame.vivo.com.cn/documents/#/ Download/engine
 
-The current recommended version is 1041. After downloading and installing, we can see that the platform version number of the vivo application debugger is also displayed as 1041.
+The current recommended version is 1041. After downloading and installing, we can see the platform version number of the vivo Fast Application Debugger, which is also shown in 1041.
 
-4、PC computer chrome browser and mobile phone data cable.
+4. Chrome browser of PC and data connection line of mobile phone.
 
-5、Install the nodejs environment [Node official website：[https://nodejs.org/en/](https://nodejs.org/en/)]
+5. Installing nodejs environment[node官网：[https://nodejs.org/en/](https://nodejs.org/en/)]
 
-It is to download and install, it is relatively simple, and it is not detailed. Being able to call the npm command on the command line is a success.
+It's easy to download and install, and it's not detailed. Calling NPM commands from the command line is a success.
 
-6、LayaAirIDE centralized development environment, LayaAir IDE 2.1.1beta or above [ Official website download: [https://ldc2.layabox.com/layadownload/?type=layaairide](https://ldc2.layabox.com/layadownload/?type=layaairide) ]
+6. LayaAir IDE Centralized Development Environment, LayaAir IDE 2.1.1 beta or above[ 官网下载: [https://ldc2.layabox.com/layadownload/?type=layaairide](https://ldc2.layabox.com/layadownload/?type=layaairide)]
 
-7、Install ADB
+7. Installation of ADB
 
-ADB can be used for authorization, as well as publishing push, etc. It can be downloaded and installed on ADB's official website.
+ADB can be used for authorization, publishing and pushing, etc. It can be downloaded and installed on ADB's official website.
 
- [ ADB official website download:  [http://adbshell.com/downloads](http://adbshell.com/downloads) ]
 
-> For a quick reminder, download ADB Kits, download the compressed package, and recommend unpacking it to a directory with a simple path (eg `D:\adb`). Remember to add environment variables (I don't know how to add environment variables, you can Baidu)
+ [ ADB官网下载:  [http://adbshell.com/downloads](http://adbshell.com/downloads)]
+
+> A simple hint, download ADB Kits, download the compressed package, it is recommended to decompress and put into a directory with a simpler path (such as:`D:\adb`) Remember to add environment variables (Baidu can add environment variables on its own if you don't know how to add them).
 >
 
-## 2、Vivo small game release and access complete process
+##2. The whole process of publishing and accessing vivo games
 
-### 1、Release vivo game pack (xx.rpk)
+###1. Publish the vivo game package (xx.rpk)
 
-LayaAirIDE's publishing function, built-in the release function of vivo games, you need to first convert the LayaAir engine project into a .rpk suffix package through the publishing function. About the use of the publishing feature. This is not repeated here. No, you can go to the official website document to view.
+LayaAirIDE release function, built-in vivo game release function, need to first LayaAir engine project, through the release function into. RPK suffix package. About the use of publishing functions. This is not repeated here. No, you can check the official documents before.
 
-link：[https://ldc2.layabox.com/doc/?nav=zh-ts-3-0-6](https://ldc2.layabox.com/doc/?nav=zh-ts-3-0-6)
+Links:[https://ldc2.layabox.com/doc/?nav=zh-ts-3-0-6](https://ldc2.layabox.com/doc/?nav=zh-ts-3-0-6)
 
-### 2、Keep publishing the QR code interface.
+###2. Retain the publishing two-dimensional code interface.
 
-After the release is completed, there will be a QR code interface, as shown in Figure 1. This interface does not need to be closed, the back of the phone scan code needs to be used.
+After publishing, there will be a QR code interface, as shown in Figure 1. This interface should not be turned off. The back mobile phone scanner needs to be used.
 
 ![图1](img/1.png) 
 
-（figure 1）
 
-### 3、Start the chrome debugging environment
+(Fig. 1)
 
-####  3.1 Install and enter the fast application debugger
+###3. Start the chrome debugging environment
 
-To start the chrome debugging environment of the computer PC, we must first install the debugging game (fast application debugger) of the vivo game, as shown in Figure 3. Then click to enter.
+####3.1 Install and enter Fast Application Debugger
+
+To start the chrome debugging environment of PC, we need to install the debugging APP (Fast Application Debugger) of vivo games, as shown in Figure 3. Then click Enter.
 
 ![图3](img/3.png) 
 
-（figure 3）
 
-#### 3.2 In the fast application debugger interface scan code to install the rpk package of vivo games
+(Fig. 3)
 
-After entering the fast application debugger, we can see the APP operation interface as shown in Figure 4.
+####3.2 scan code and install RPK package of vivo game in the interface of fast application debugger
+
+After entering the fast application debugger, we can see the APP interface shown in Figure 4.
 
 ![图4](img/4.png)  
 
-(figure 4)
 
-At this time, we click on the scan code installation in Figure 4, and scan the QR code on the release interface of the LayaAir IDE (not to turn off before, and to re-release the QR code). The phone can be run in a real machine environment.
+(Fig. 4)
 
-> Here to be prompted: the mobile phone network and the PC in the same LAN segment (using the 4G network to scan the LAN code is definitely not acceptable).
+At this point, we click on the scanner installation in Figure 4 to scan the two-dimensional code on the publishing interface in LayaAir IDE. Mobile phones can run in a real environment.
 
-If you transfer the rpk package in the /dist directory to the phone in the distribution directory, it is also possible to install it by clicking the `Local Install` button. However, it is recommended to scan the code installation, because the step of scanning the code is more convenient and quick.
+> Here's a reminder: the mobile network and PC in the same LAN segment (with 4G network sweep LAN code is certainly not feasible).
 
-#### 3.3 Keep physical line connections and authorization
+If you pass the RPK package in the publishing directory / dist directory to your mobile phone, you can click`本地安装`Button to install, is also possible. But it is recommended to install scanner, because the steps of scanner are more convenient and fast.
 
-For developers with relevant experience, make sure that the physical line of the USB mobile phone cable is connected, and the USB debugging authorization is no problem, you can skip this step.
+####3.3 Maintaining physical connection and authorization
 
-##### Related operations are as follows:
+For developers with relative experience, this step can be skipped to ensure that the physical line of the USB mobile phone connection line is connected and that the USB debugging authorization is okay.
 
-1、First use the phone cable to physically connect your phone to your PC.
+#####The relevant operations are as follows:
 
-2、In the previously opened command line, enter the adb shell, as shown in Figure 5-1. It is not authorized by the USB debug mode.
+1. Maintain the physical connection between the mobile phone and the PC by using the mobile phone connection line.
+
+2. On the previously opened command line, enter the ADB shell, as shown in Figure 5-1. It is not authorized by USB debugging mode.
 
 ![图5-1](img/5-1.png) 
 
-（figure 5-1）
 
-At this point, we should pay attention to the mobile terminal, whether the prompt shown in Figure 5-2 appears, and if so, click OK to allow USB debugging.
+(Fig. 5-1)
+
+At this point, we need to pay attention to the mobile phone, whether there is a prompt as shown in Figure 5-2, and if so, point to determine whether USB debugging is allowed.
 
 ![图5-2](img/5-2.png) 
 
-（figure 5-2）
 
-3、Verify the authorization again.
+(Fig. 5-2)
 
-After the USB debug mode authorization is successful, we enter the adb shell again, as shown in Figure 5-3.
+3. Verify the authorization again.
+
+When the USB debugging mode is authorized successfully, we enter the ADB shell again, as shown in Figure 5-3.
 
 ![图5-3](img/5-3.png) 
 
-（figure 5-3）
 
-In short, in this session, we must ensure that the PC has the authority to debug this mobile device.
+(Fig. 5-3)
 
-#### 3.4 Start the chrome debugging environment
+In short, in this link, we need to ensure that the PC is authorized to debug this mobile device.
 
-After the scan code is installed, it will automatically enter the game or DEMO just installed.
+####3.4 Start the chrome debugging environment
 
-To start debugging, you must first exit.
+After the previous scanner installation, it will automatically enter the newly installed game or DEMO.
 
-Then, as shown in Figure 6, click ** Start Debugging** to enter the debug mode of the vivo game.
+To start debugging, you need to exit first.
+
+Then, as shown in Figure 6, Click**Start debugging**Enter the debugging mode of vivo games.
 
 ![图6](img/6.png) 
 
-（figure 6）
 
-After the real machine enters the debug mode, we then open the chrome browser on the PC.
+(Fig. 6)
 
-Don't forget this time, you need to connect the USB data cable to connect the mobile device to the PC. The problem of permissions has been said above and will not be repeated.
+After the real machine enters the debugging mode, we go to the PC to open the chrome browser.
+
+At this time, don't forget, to connect USB data lines, mobile devices and PCs, the issue of authority has been said above, no longer repeat.
 
 We need to find the IP of the mobile phone (Baidu) and remember it. It is important to note that the mobile phone network and the PC network are always in the same LAN segment.
 
 Enter in the input field of Chrome Browser:
 
+
 ```
+
 chrome-devtools://devtools/bundled/inspector.html?v8only=true&ws={IP}:5086/00010002-0003-4004-8005-000600070008
 ```
 
+
 Replace {IP} with the mobile IP address, as shown in Figure 7.
 
-![图7](img/7.png)(figure 7)
+![图7](img/7.png)(Fig. 7)
 
 
 
 So far, the complete process from release to start chrome debugging has been introduced. If you want to know more about the access process and documentation of vivo games, remember this website:
 
-https://minigame.vivo.com.cn
+Https://minigame.vivo.com.cn
 
 
 
-## article feedback
+##This article appreciates
 
-If you find this article helpful, please scan the code to appreciate the author, your feedback is also our motivation to write more quality documents.
+If you think this article is helpful to you, you are welcome to sweep the code and appreciate the author. Your motivation is our motivation to write more high quality documents.
 
 ![wechatPay](../../../wechatPay.jpg)
 

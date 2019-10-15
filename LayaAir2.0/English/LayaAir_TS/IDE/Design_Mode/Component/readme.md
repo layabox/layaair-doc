@@ -1,56 +1,57 @@
-# LayaAir IDE组件库
+#LayaAir IDE Component Library
 
-### 1、组件列表概览
+###1. Overview of Component List
 
-LayaAirIDE的组件库里存放着IDE自带的常用组件。分别为2D基础组件、Graphics矢量组件、UI常用组件几大类。如图1、图2、图3所示。
+The component library of LayaAirIDE stores common components that come with IDE. They are 2D basic components, Graphics vector components and UI common components. Figures 1, 2 and 3 are shown.
 
 ![图1](img/1.png) <br />
 
-(图1)2D基础组件
 
-![图2](img/2.png) <br />
+(Figure 1) 2D Foundation Components
 
-(图2)Graphics矢量组件
+![图2](img/2.png)<br / >
 
-![图3](img/3.png) <br />
+(Figure 2) Graphics Vector Component
 
-(图3)UI常用组件
+![图3](img/3.png)<br / >
 
-
-
-### 2、组件库与资源管理器的区别
-
-#### 2.1 存储位置区别
-
-组件库中的所有组件存放于LayaAirIDE所在的目录中，属于所有项目的共用组件。
-
-资源管理器中的组件存放于项目的目录中，仅限当前项目使用。
-
-#### 2.2 皮肤区别
-
-组件库中存放的组件，默认不带皮肤（skin）。放入场景编辑器后根据需要手动设置皮肤。
-
-资源管理器中存放的是组件皮肤资源，放入场景编辑器后，通过资源的前缀来识别区分对应的组件，并以拖入的资源为组件皮肤资源。
-
-#### 2.3 组件类型区别
-
-组件库中包括UI组件、Graphics矢量组件、2D基础（显示对象）组件。
-
-资源管理器中仅存放UI组件。
+(Figure 3) Common UI components
 
 
 
-### 3、其它组件相关的文档参考
+###2. The Difference between Component Library and Resource Manager
 
-组件库中还可以存放和显示自定义组件，关于自定义组件可以参考`使用IDE创作`分类的`《自定义组件的制作与使用》`。
+####2.1 Storage Location Difference
+
+All components in the component library are stored in the directory of LayaAirIDE and belong to the common components of all projects.
+
+Components in Resource Manager are stored in the project directory and are only used by the current project.
+
+####2.2 Skin Differentiation
+
+Components stored in the component library are skin-free by default. Set the skin manually as needed after putting it into the scene editor.
+
+The component skin resource is stored in the resource manager. After being put into the scene editor, the corresponding component is identified and distinguished by the prefix of the resource, and the dragged resource is used as the component skin resource.
+
+####2.3 Component Type Difference
+
+Component library includes UI component, Graphics vector component and 2D basic (display object) component.
+
+Only UI components are stored in Resource Manager.
 
 
 
-关于组件库中每一个组件的介绍，在`设计模式基础`分类的`《属性设置器文档》`以及`IDE组件属性详解`分类中有详细的介绍。
+###3. Document references related to other components
+
+Custom components can also be stored and displayed in component libraries.`使用IDE创作`Classified`《自定义组件的制作与使用》`。
 
 
 
-`资源管理器`文档中也有着组件命名规则等与UI组件相关的介绍，在`设计模式基础`分类的`《资源管理器介绍》`。
+An introduction to each component in the component library is given in`设计模式基础`Classified`《属性设置器文档》`as well as`IDE组件属性详解`The classification is described in detail.
+
+
+
+`资源管理器`There are also introductions related to UI components, such as component naming rules, etc. in the document.`设计模式基础`Classified`《资源管理器介绍》`。
 
 
 

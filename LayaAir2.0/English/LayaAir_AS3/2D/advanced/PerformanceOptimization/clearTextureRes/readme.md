@@ -1,6 +1,8 @@
-# Texture资源销毁
+#Texture resource destruction
+
 
 ```java
+
 package {
 	import laya.display.Animation;
 	import laya.display.Sprite;
@@ -49,8 +51,9 @@ package {
 
 
 
-**clearTextureRes**
 
-销毁Texture使用的图片资源，保留texture壳，如果下次渲染的时候，发现texture使用的图片资源不存在，则会自动恢复
-相比clearRes，clearTextureRes只是清理texture里面使用的图片资源，并不销毁texture，再次使用到的时候会自动恢复图片资源
-而clearRes会彻底销毁texture，导致不能再使用；clearTextureRes能确保立即销毁图片资源，并且不用担心销毁错误，clearRes则采用引用计数方式销毁
+**ClearTextureRes**
+
+Destroy the image resources used by Texture and keep the texture shell. If the image resources used by Texture are not found in the next rendering, they will be automatically restored.
+Compared with clearRes, clearTextureRes only cleans up the image resources used in texture, does not destroy texture, and automatically restores the image resources when used again.
+CleaRes completely destroys texture, which makes it unusable; clearTextureRes ensures that image resources are destroyed immediately without fear of destruction errors, and clearRes destroys them by reference counting.

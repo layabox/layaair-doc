@@ -1,20 +1,22 @@
-# 碰撞器与刚体
+#Collider and Rigid Body
 
-在简单入门中有涉及到添加碰撞体与刚体的操作，在本篇中会讲解具体的操作。
+In the simple introduction, the operation of adding collision body and rigid body is involved, and the specific operation will be explained in this article.
 
-2.0中的3d碰撞器为PhysicsCollider。3D的刚体为Rigidbody3D。
+The 3D Collider in 2.0 is Physics Collider. The rigid body of 3D is Rigidbody 3D.
 
-要产生碰撞必须为游戏对象添加刚体（Rigidbody）和碰撞器，刚体可以让物体在物理影响下运动。碰撞体是物理组件的一类，它要与刚体一起添加到游戏对象上才能触发碰撞。如果两个刚体相互撞在一起，除非两个对象有碰撞体时物理引擎才会计算碰撞，在物理模拟中，没有碰撞体的刚体会彼此相互穿过。
+To produce a collision, a Rigidbody and a collider must be added to the game object. Rigidbody allows the object to move under physical influence. Colliders are a class of physical components that need to be added to the game object with rigid bodies to trigger collisions. If two rigid bodies collide with each other, the physical engine will calculate the collision unless two objects collide with each other. In physical simulation, rigid bodies without colliding bodies will pass through each other.
 
-物体发生碰撞的必要条件：两个物体都必须带有碰撞器(PhysicsCollider)，其中一个物体还必须带有Rigidbody3D刚体。
+Necessary conditions for collisions: Both objects must have a Physics Collider, and one must also have a Rigidbody 3D rigid body.
 
-碰撞盒:colliderShape，是模型在3D世界中进行物理运算与碰撞的形状盒。
+Collision box: Collider Shape is a shape box in which the model performs physical operations and collisions in the 3D world.
 
-### 1.添加碰撞器与刚体
+###1. Adding Colliders and Rigid Bodies
 
-​	我们首先创建一个简单的小球，并且给小球加上碰撞器与刚体。
+First, we create a simple ball and add colliders and rigid bodies to the ball.
+
 
 ```javascript
+
 //新建一个球体模型
 var sphere:Laya.MeshSprite3D = this.scene.addChild(new Laya.MeshSprite3D(new SphereMesh(1))) as Laya.MeshSprite3D;
 //给球体添加碰撞器
@@ -32,19 +34,22 @@ spherePhy.colliderShape = sphereShape;
 //将碰撞盒添加到刚体上
 shpereRigid.colliderShape = sphereShape;
 ```
-不同的模型只是需要创建不同的Mesh和ColliderShape。**注意不要在同时在刚体与碰撞器上添加shape**，下图就是小球的效果了。
+
+Different models just need to create different Mesh and Collider Shape.**Be careful not to add shapes to rigid bodies and colliders at the same time**Here is the effect of the ball.
 
 ![图](img/1.png)
 
-### 2.简单案例
+###2. Simple cases
 
-  	在知道如何添加碰撞器与刚体之后，可以大胆去制作一个简单的场景去测试这部分功能。
+After knowing how to add colliders and rigid bodies, you can boldly create a simple scene to test this part of the function.
 
-想要碰撞与显示同步，就需要模型与碰撞盒相同。
+To synchronize the collision and display, you need the same model as the collision box.
 
-##### 主类:
+#####Main class:
+
 
 ```javascript
+
 import GameConfig from "./GameConfig";
 import SceneScript from "./script/SceneScript"; 
 class Main {
@@ -69,9 +74,12 @@ class Main {
 new Main();
 ```
 
-##### 脚本类:
+
+#####Script class:
+
 
 ```javascript
+
 
 export default class SceneScript extends Laya.Script3D{
     private scene:Laya.Scene3D;
@@ -161,21 +169,24 @@ export default class SceneScript extends Laya.Script3D{
     }  
 ```
 
-在本次案例中只是简单的使用了5种几何体，具体效果如图:
+
+In this case, only five kinds of geometry are simply used. The concrete effect is shown as follows:
 
 ![图](img/1.gif)
 
-### 3.导出的物体添加刚体或者碰撞器
+###3. Exported objects add rigid bodies or Colliders
 
-**导出时如果需要带刚体，最好碰撞器**
+**If a rigid body is needed for derivation, the collider is preferred.**
 
-##### 	(1)如果导出的物体带刚体与碰撞器，可以直接使用
+#####(1) If the derived object has rigid body and collider, it can be used directly.
 
-##### 	(2)如果导出的物体不带碰撞器与刚体,需要添加物理组件
+#####(2) If the derived object does not have colliders and rigid bodies, physical components need to be added.
 
-​	在这里我们使用的网格碰撞盒
+The grid collision box we use here
+
 
 ```javascript
+
 //////读取导出的lh文件
 		Laya.Sprite3D.load("Conventional/shoot.lh",Laya.Handler.create(this,function(sp:Laya.Sprite3D):void{
 				//获取你需要素材
@@ -196,11 +207,14 @@ export default class SceneScript extends Laya.Script3D{
 		}));
 ```
 
-##### 	(3)如果导出的物体有碰撞器，但是有需求添加刚体
 
-​	有两种处理方法，一是使用网格碰撞盒，二是从碰撞器上获取碰撞盒，再加给刚体。但是这两种方法都需要将碰撞器上的碰撞盒清除。第二种方法时需要注意同一个碰撞盒不能同时加在碰撞器与刚体上。
+#####(3) If the derived object has a collider, but there is a need to add a rigid body
+
+There are two methods: one is to use the grid collision box, the other is to get the collision box from the collider and give it to the rigid body. But both methods need to clear the collision box on the collider. In the second method, it should be noted that the same collision box can not be added to the collider and rigid body at the same time.
+
 
 ```javascript
+
 	//方法一
       Laya.Sprite3D.load("Conventional/shoot.lh",Laya.Handler.create(this,function(sp:Laya.Sprite3D):void{
                 var cube:Laya.MeshSprite3D = sp.getChildAt(0) as Laya.MeshSprite3D;
@@ -230,7 +244,8 @@ export default class SceneScript extends Laya.Script3D{
             }));
 ```
 
-看下添加后的效果：
+
+Look at the added effect:
 
 ![图](img/2.gif)
 

@@ -1,34 +1,36 @@
-## LayaAir3D之模型
+##Model of LayaAir3D
 
-### 模型概述
+###Model overview
 
-3D模型是指通过三维软件按照物体的结构建模形成的3D立体对象。目前LayaAir 3D引擎中包括了两种模型显示类型，一为普通模型**MeshSprite3D**，二为蒙皮动画模型**SkinnedMeshSprite3D**。
+Three-dimensional model is a three-dimensional object which is modeled by three-dimensional software according to the structure of the object. At present, LayaAir 3D engine includes two types of model display, one is common model.**MeshSprite3D**2. Skin animation model**Skinned Mesh Sprite 3D**。
 
-区别是蒙皮动画模型是指在制作时加入了蒙皮与骨骼动画的模型，常用于有动画的角色。而普通模型是指未有动画的场景景观模型等。
+The difference is that the skinned animation model refers to the skinned and skeletal animation model added to the production, often used for animated characters. The common model refers to the scene landscape model without animation.
 
-它们都包括了模型网格与材质两部分。
+Both of them include model mesh and material.
 
-**模型网格(Mesh)：**
+**Model grid (Mesh):**
 
-模型网格是由点、线、面组成的三维数据，LayaAir引擎中有专门的Mesh网格数据类，将它赋予3D模型显示对象MeshSprite3D或SkinnedMeshSprite3D后就可以在场景中显示出来。
+Model grid is a three-dimensional data composed of points, lines and surfaces. LayaAir engine has a special class of Mesh grid data, which can be displayed in the scene by assigning it to the 3D model display object Mesh Sprite 3D or Skinned Mesh Sprite 3D.
 
-目前3D制作软件较多，最主流的是3d max与maya软件。3D模型的数据格式也较多，如FBX、3DS、OBJ等。
+At present, there are many 3D production software, the most mainstream is 3D Max and Maya software. There are many data formats of 3D model, such as FBX, 3ds, obj, etc.
 
-LayaAir引擎提供了模型导出工具FBXTools与unity3D导出插件，用于生成layaAir所需要的3D数据格式。建议使用unity导出插件，FBXTools工具以后将不会更新。
+The LayaAir engine provides model export tools FBXTools and unity3D export plug-ins for generating the 3D data format required by layaAir. It is recommended to use the unity export plug-in, and the fbxtools tool will not be updated later.
 
-**材质(Material)：**
+**Material:**
 
-材质说明我们将在独立的章节介绍，在本章节中暂不说明。
+Material description will be introduced in separate chapters, but not in this chapter.
 
 
 
-### 创建引擎自带的基础模型
+###Create the underlying model that comes with the engine
 
- 在快速开启3D之旅的课程中，我们已用到了BoxMesh盒子模型，本节课中介绍LayaAir引擎提供的其他SphereMesh、CylinderMesh基础模型数据，我们依次创建它们，并通过transform属性去移动它们的位置，具体代码如下：。
+In the course of Quickly Opening 3D Travel, we have used the BoxMesh box model. In this lesson, we introduce other Sphere Mesh and Cylinder Mesh basic model data provided by LayaAir engine. We create them in turn and move them through the transform attribute. The code is as follows:
 
-创建时，需注意的是，加载到场景中的引擎自带模型，轴心点在模型正中心，因此我们是以模型中心点为参考进行移动、旋转、缩放。加载到场景中时，模型默认会放置到场景的世界座标原点上，与2D类似。
+When creating, it should be noted that the engine loaded into the scene has its own model, and the pivot point is in the center of the model, so we move, rotate and zoom with the reference of the center point of the model. When loaded into a scene, the model is placed at the origin of the world coordinate of the scene by default, similar to 2D.
+
 
 ```java
+
 package {
 	import laya.d3.core.Camera;
 	import laya.d3.core.MeshSprite3D;
@@ -115,44 +117,48 @@ package {
 }
 ```
 
-上面的代码中，创建了摄像机与灯光，并添加了三种基本几何体模型，它们使用了最基本的默认材质。显示效果如图1。
 
-![图片1](img/1.png)<br>（图1）
+In the above code, the camera and light are created, and three basic geometric models are added, which use the most basic default material. The display effect is shown in Figure 1.
+
+![图片1](img/1.png)<br> (Fig. 1)
 
 
 
-### 创建三维软件生成的模型
+###Creating the Model of Three-dimensional Software Generation
 
-上述三种基本模型主要用于开发者学习测试。游戏中的模型大都是三维软件制作后，导入unity编辑器中编辑拼接，再用layaAir导出工具转化产生，然后通过3D场景或模型显示类加载使用。
+The three basic models mentioned above are mainly used for developer learning test. Most of the models in the game are created by three-dimensional software, then imported into the Unity editor to edit and stitch, then transformed by layaAir export tool, and then loaded by 3D scene or model display class.
 
-在此我们再次来说明一下导出的资源类别与文件使用方法。
+Here again, we will explain the resource categories and file usage of the export.
 
-导出的文件夹中，包括的资源较多（图2），有场景、3D模型容器、3D模型、3D材质等解析文件，还有光照贴图、材质贴图等数据文件。
+In the exported folder, there are many resources (Figure 2). There are parsing files such as scene, 3D model container, 3D model, 3D material, and data files such as illumination mapping and material mapping.
 
 ![图片2](img/2.png)<br>（图2）
 
-**loveScene文件夹**是在untiy中创建光照贴图后产生的文件夹，与在untiy中创建的场景名相同，光照贴图在场景Scene篇已有介绍。
 
-**Materials文件夹**是在unity中导入FBX模型时创建材质球的文件夹，导出后的资源为对应的LayaAir材质数据解析文件，文件中存储着材质的渲染模式、贴图资源路径、材质的各种光色属性等。
+**LoveScene folder**It is a folder created by creating illumination maps in untiy. It has the same name as the scene created in untiy. Illumination maps are introduced in Scene.
 
-**Texture文件夹**是在unity中创建的存放贴图的文件夹，其中资源为材质的贴图文件，是一系列的图片文件，在LayaAir引擎中我们使用jpg或png格式的图片，可使用导出工具把其他格式图片自动转化jpg或png，请开发者们一定注意。
+**Materials folder**When importing FBX model into Unity, the folder of material ball is created. The exported resource is the corresponding LayaAir material data parsing file, which stores the rendering mode of material, mapping resource path, various light and color attributes of material, etc.
 
-
-
-#### *.ls格式Scene数据文件
-
-导出的场景Scene类型数据文件，在之前的课程中我们已有讲解，在此不多作说明。
+**Texture folder**It is a folder that stores textures created in Unity. The resource is texture file, which is a series of picture files. In LayaAir engine, we use JPG or PNG format pictures. We can use export tools to automatically convert other format pictures into JPG or png. Developers should pay attention to it.
 
 
 
+####* Scene data file in. LS format
 
-#### *.lh格式Sprite3D数据文件
+Scene-type data files for the exported scenarios have been explained in previous courses, but not much here.
 
-导出的3D显示对象容器Spirte3D类型数据文件，JSON格式编码，是unity3D中layaAir导出插件选择导出”Sprite3D“类别生成，内部存储比*.ls格式少了光照贴图，其他全部相同。
 
-“*.lh” 格式加载与场景加载方法类似，由异步加载Sprite3D.load()或预加载Laya.loader.create()方法加载，参考代码：
+
+
+####* Sprite3D data file in.Lh format
+
+The exported 3D display object container Spirte3D type data file, coded in JSON format, is selected by layaAir export plug-in in Unity3D to export "Sprite3D" category generation. The internal storage is less light mapping than *. LS format, the other are all the same.
+
+"*.lh" format loading is similar to scene loading method, which is loaded by asynchronous loading Sprite3D. load () or preloading Laya. loader. create () method. Reference code:
+
 
 ```java
+
 ......
 //添加3D场景
 var scene:Scene3D = new Scene3D();
@@ -172,17 +178,20 @@ Laya.loader.create("res/room.lh",Handler.create(this,function():void{
 
 
 
-#### *.lm格式数据文件
 
-无论是导出”Scene“文件或”Sprite3D“文件类型，在导出的资源文件夹中都包含了系列*.lm格式文件，本项目中model文件夹为unity中开发者自建的存储FBX模型的文件夹，如图2，在导出时生成了对应的文件夹和.lm资源文件。
+####*. LM format data file
 
-![图片3](img/3.png)<br>（图3）
+Whether you export "Scene" file or "Sprite3D" file type, the exported resource folder contains a series of *. LM format files. In this project, the model folder is a folder built by the developer in Unity to store FBX model. As shown in Figure 2, the corresponding folder and. LM resource files are generated at the time of export.
 
-"*.lm"文件是模型数据文件，可以生成MeshSprite3D或SkinnedMeshSprite3D类型显示对象的网格数据Mesh，包含了模型网格的顶点位置、法线、顶点色、顶点UV等信息。
+![图片3](img/3.png)<br> (Figure 3)
 
-通过异步加载MeshSprite.load()或预加载Laya.loader.create()方法加载，参考代码如下：
+The *. LM file is a model data file, which can generate mesh data Mesh of Mesh Sprite 3D or Skinned Mesh Sprite 3D type display objects, including vertex location, normal, vertex color, vertex UV and other information of the model mesh.
+
+MeshSprite. load () is loaded asynchronously or Laya. loader. create () is preloaded. The reference code is as follows:
+
 
 ```java
+
 ......
 //添加3D场景
 var scene:Scene3D = new Scene3D();
@@ -201,27 +210,30 @@ Laya.loader.create("LayaScene_01/Assets/model/loveScene_jianzhu.lm",Handler.crea
 }));
 ```
 
-用上述的两种方法都可以在游戏画面中显示出模型，材质贴图引擎也会自动加载到模型上。在项目中我们可以根据情况使用上述两种方法，固定场景我们可以使用.ls格式加载，而活动的物品可以使用.ls或.lm方式加载。 
+
+Both of the above methods can display the model in the game screen, and the Material Mapping Engine will automatically load the model. In the project, we can use the above two methods according to the situation. Fixed scenarios can be loaded in. LS format, while active items can be loaded in. LS or. LM mode.
 
 
 
-### 获取子对象模型及网格
+###Getting Subobject Model and Grid
 
-3D模型在有时候会由多个子模型对象构成，例如场景模型.ls，基本都是由多个物体模型与材质构成，外层是Sprite3D容器，内部才是真正的模型MeshSprite3D或SkinnedMeshSprite3D。并且还可能会有多个层次嵌套。
+In some cases, 3D models are composed of multiple sub-model objects, such as scene model. ls, which are basically composed of multiple object models and materials. The outer layer is a Sprite 3D container, while the inner part is the real model Mesh Sprite 3D or Skinned Mesh Sprite 3D. There may also be multiple levels of nesting.
 
-#### 获取子对象模型
+####Get sub object model
 
-在编写游戏逻辑时，有的模型需要被修改，或者是切换与删除模型、或者是给模型加组件、或者是获取模型上的动画组件及修改模型的材质等。这都需要从加载的模型中去获取子对象，我们可以通过**getChildAt()、getChildByName()**方法去获取子对象，这与2D引擎获取子对象方法一样。
+When writing game logic, some models need to be modified, either to switch and delete models, or to add components to models, or to obtain animation components on models and modify the material of models. All of these need to get sub-objects from the loaded model, which we can use.**Getchildat(), getchildbyname()**Method to get sub-objects, which is the same as the method of getting sub-objects by the 2D engine.
 
-下面我们来加载一个卡车模型的.lh文件，然后获取它的子对象。在获取子对象之前，建议打开.lh文件查看模型的父子层级关系，因为在制作模型时，我们也不能确定模型是由多少个子对象模型构成，及它们的命名规则。
+Now let's load a truck model's. LH file and get its subobjects. Before acquiring child objects, it is recommended to open the. LH file to see the parent-child hierarchy of the model, because when making the model, we can not determine how many child object models the model consists of, and their naming rules.
 
-tips：在3ds max中建模时，建议对模型的子对象取名，并且制定项目的资源命名规则，不要用默认的模型名称。
+Tips: when modeling in 3ds max, it is recommended to name the sub-objects of the model and formulate the resource naming rules for the project, instead of using the default model name.
 
-下例加载从unity导出的卡车truck.lh，打开后通过JSON结构可以看到，外层是一个Sprite3D容器（相当于unity的场景），内部又是一个Sprtie3D容器（相当于unity场景中的卡车），卡车容器中是两个子对象模型MeshSprite3D（车头与车身模型）。因此我们需要两次getChildAt()方式才能获取到模型MeshSprite3D。
+The truck truck. LH is loaded from Unity. When opened, it can be seen through JSON structure that the outer layer is a Sprite3D container (equivalent to the scene of Unity) and the inner part is a Sprtie3D container (equivalent to the truck in the scene of Unity). In the truck container, there are two sub-object models, MeshSprite3D (head and body model). So we need two getChildAt () ways to get the model MeshSprite3D.
 
-获取子对象时还应注意一个问题，就是模型与材质未加载完成，是无法获取子对象的，因此需要资源预加载，或异步加载时进行完成事件监听。
+When acquiring sub-objects, we should also pay attention to the problem that the model and material are not loaded, so it is impossible to acquire sub-objects. Therefore, resource preloading or asynchronous loading are needed to complete event monitoring.
+
 
 ```java
+
 //加载导出的卡车模型
 Sprite3D.load("LayaScene_truck.lh",Handler.create(this,function(s:*):void{
 	var truck3D:Sprite3D = s as Sprite3D;
@@ -232,21 +244,24 @@ Sprite3D.load("LayaScene_truck.lh",Handler.create(this,function(s:*):void{
 }))
 ```
 
-编译上例代码，我们可以看到模型显示了（图4），在浏览器下按F12打开控制台，我们可以看到输出了模型的名字为“body”，说明模型获取成功。
 
-![图片4](img/4.png)<br>（图4） 
+Compiling the above example code, we can see that the model shows (Figure 4). Under the browser, press F12 to open the console. We can see that the name of the output model is "body", which indicates that the model succeeded.
+
+![图片4](img/4.png)<br> (Figure 4)
 
 
 
-#### 获取模型网格Mesh
+####Get model mesh
 
-在游戏中，我们经常打造角色换装系统，有时是换模型，有时是换贴图，有时候两者都换。因为材质贴图部分在后续章节中才讲解，因此本章节中我们只介绍更换模型网格的方法。
+In the game, we often build role changing systems, sometimes changing models, sometimes changing maps, sometimes changing both. Because the Material Mapping section will be explained in subsequent chapters, we will only introduce the method of replacing the model grid in this chapter.
 
-模型MeshSprite3D或SkinnedMeshSprite3D中有**meshFilter**属性，它是一个网格过滤器类实例，这个属性中的**sharedMesh**就是模型的网格，可以对它进行重新创建更换及销毁。
+Model Mesh Sprite 3D or Skinned Mesh Sprite 3D has**MeshFilter**Attribute, which is an instance of a grid filter class, in this attribute**SharedMesh**It is the grid of the model that can be recreated, replaced and destroyed.
 
-查看以下示例，当加载完卡车模型2秒后，我们创建新的汽车头网格对象更换原有的车身网格，效果如（图4）。
+Looking at the following example, after loading the truck model for 2 seconds, we create a new header grid object to replace the original body grid, as shown in Figure 4.
+
 
 ```java
+
 ......
 var truck3D:Sprite3D;
 var meshSprite3D:MeshSprite3D;
@@ -271,5 +286,6 @@ private function onTimerOnce():void
    }))
 }
 ```
+
 
 ![图片5](img/5.gif)<br>（图5） 

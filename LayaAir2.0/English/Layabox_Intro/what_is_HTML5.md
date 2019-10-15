@@ -1,30 +1,30 @@
-# 什么是HTML5？
+#What is HTML5?
 
-### 狭义的HTML5
+###Narrow sense HTML5
 
-在技术哥哥们的眼里，HTML5是超文本标记语言（HTML）第五次重大修改的新标准，该标准历经8年的艰苦努力，万维网联盟于2014年10月29日宣布HTML5标准规范终于最终制定完成。在此之前的几年时间里，已经有很多开发者陆续使用了HTML5的部分技术，Firefox、Google Chrome、Opera、Safari 4+、Internet Explorer 9+都已支持HTML5，而宣布后看到的才是“正式版”。
-
-
-
-### 广义的HTML5
-
-而在更多的人眼里，HTML5是指的一种基于浏览器的网页技术产品，是一种无需下载安装，点击即用（玩）的网页产品或游戏。通常HTML5被简称为H5，尽管也有很多人并不认为HTML5与H5是一回事，但事实上把HTML5简称为H5占据了媒体与HTML5从业者的主流。
+In the eyes of technology brothers, HTML5 is the fifth major revision of the new standard of Hypertext Markup Language (HTML). After eight years of hard work, the World Wide Web Alliance announced on October 29, 2014 that the HTML5 standard specification was finally developed. Over the past few years, many developers have used some of HTML5 technologies. Firefox, Google Chrome, Opera, Safari 4+, Internet Explorer 9+, all of which support HTML5. What they see after the announcement is the "official version".
 
 
 
-### 火热的小游戏
+###Generalized HTML5
 
-2018年，微信小游戏爆发了，这不仅仅是有了千万和亿级别的月流水产品的出现，更多的表现是开发者疯狂涌入与产品的高速增长。同时还带动了靠广告收费的流量变现游戏盈利模式的发展。
+In the eyes of more people, HTML5 refers to a browser-based web technology product, which is a kind of web product or game without downloading and installing. HTML5 is usually referred to as H5. Although many people do not think HTML5 is the same as H5, in fact, HTML5 is called H5, which occupies the mainstream of media and HTML5 practitioners.
 
-也让大多数不太会在游戏的内购上赚钱的开发者，可以有一个专心做出好玩游戏，获得广大玩家认可的同时就可以进行流量变现的机会。
 
-另外，还刺激了百度、手机QQ、小米、OPPO\ViVO等等其它主流平台加入到小游戏的阵营中来。可谓非常火热。
 
-但是，小游戏是H5吗？非也。
+###Hot little games
 
-虽然小游戏也有着即点即玩，与无需下载安装的特性，也兼容了兼容大部分Canvas和Webgl接口，但是，他并非是标准的HTML5。比如，微信小游戏的运行环境并不是浏览器，也不能在浏览器中运行，而是运行于微信APP中的Runtime。
+In 2018, wechat games broke out. This is not only the emergence of monthly flow products of tens of millions and billions, but also the crazy influx of developers and the rapid growth of products. At the same time, it has also led to the development of profit-making model of cashing in games by advertising fees.
 
-不过，LayaAir引擎可以适配这些小游戏平台，目前已拥有了微信小游戏的适配库、百度小游戏的适配库，QQ轻游戏的适配库。。。。所以，开发者使用LayaAir引擎，不仅可以开发HTML5游戏，还可以发布为APP游戏（LayaAir引擎），更可以适配各种小游戏平台。
+It also allows most developers who are less likely to make money on purchases within the game to have a chance to concentrate on making fun games and to cash in traffic while gaining the recognition of the vast number of players.
+
+In addition, it also stimulated Baidu, mobile QQ, millet, OPPO ViVO and other mainstream platforms to join the small game camp. It's very hot.
+
+But is the game H5? No, not too.
+
+Although the game also has a point-and-play feature, compatible with most Canvas and Webgl interfaces without downloading and installing, it is not standard HTML5. For example, the running environment of Wechat games is not browser, nor can it run in browser, but Runtime running in Wechat APP.
+
+However, LayaAir engine can be adapted to these small game platforms. At present, it has adapter libraries for Weixin small game, Baidu small game and QQ light game. So, using LayaAir engine, developers can not only develop HTML5 games, but also publish them as APP games (LayaAir engine), and also adapt to various small game platforms.
 
 
 

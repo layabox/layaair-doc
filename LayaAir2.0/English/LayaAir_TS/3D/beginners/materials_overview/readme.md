@@ -1,22 +1,24 @@
-# LayaAir3D之材质概述
+#Overview of LayaAir3D Material
 
-### 材质概述
+###Material overview
 
-材质就是物体的材料质感。例如木头、金属、玻璃、毛发、水等，他们的粗糙度、光泽度、反射、透明、颜色、纹理等材质属性都有所不同。
+Material quality is the material quality of an object. For example, wood, metal, glass, hair, water and so on, their roughness, gloss, reflection, transparency, color, texture and other material properties are different.
 
-大多数3D引擎中都有独立的材质类用于程序代码控制，三维制作软件中材质处理也是最重要的部分之一。游戏美术开发者们经常有一句话，在3D游戏场景制作中，三分看模型，七分靠材质。
+Most 3D engines have independent material classes for program code control. Material processing is also one of the most important parts of 3D production software. Game art developers often have a saying that in the production of 3D game scenes, three points look at the model, seven points depend on the material.
 
-材质的种类也有很多，在三维制作软件中有标准材质、多维材质、合成材质、双面材质、光线跟踪材质等。在LayaAir3D引擎中目前主要支持的是标准材质PBRStandardMatrial。
+There are many kinds of materials, including standard materials, multi-dimensional materials, synthetic materials, double-sided materials, ray tracing materials and so on. The standard material PBRStandard Matrial is currently supported in the LayaAir3D engine.
 
 
 
-### 创建标准材质
+###Creating Standard Materials
 
-如果在代码中的模型没有赋材质，在3D视图中无法显示模型的纹理、质感等，只默认为纯白色。
+If the model in the code is not endowed with material, the texture and texture of the model can not be displayed in the 3D view, only the default is pure white.
 
-在“快速开启3D之旅”课程的代码中，我们创建使用了标准材质，并在漫反射贴图上添加了一张纹理图片，并赋给了模型。
+In the code for Quick Open 3D Travel, we created a texture image using standard materials, added a texture image to the diffuse reflection map, and assigned it to the model.
+
 
 ```typescript
+
 //创建材质
 var material:Laya.PBRStandardMaterial = new Laya.PBRStandardMaterial();
 //加载漫反射贴图
@@ -28,19 +30,22 @@ Laya.Texture2D.load("../../../../res/threeDimen/texture/earth.png", Laya.Handler
 			}));
 ```
 
-当然，这只是简单的一种用法，我们暂时只运用了最重要的漫反射贴图，要达到更好的美术效果，开发者还需了解材质的光色与贴图属性。
+
+Of course, this is only a simple use. We only use the most important diffuse mapping for the time being. In order to achieve a better artistic effect, developers need to understand the light and color of the material and the properties of the mapping.
 
 
 
-### 材质的加载
+###Material loading
 
-在“LayaAir3D之模型”这篇文档中我们介绍了模型包括了模型网格与材质两部分，加载.ls、.lh数据时，会自动加载模型所对	应的材质。
+In the document "Model of LayaAir3D", we introduce that the model includes two parts: model grid and material. When loading. LS and. LH data, the material corresponding to the model will be automatically loaded.
 
-最新的引擎版本中，模型网格与材质进行了分离，unity导出插件工具不再将材质与导出的.lm模型文件进行绑定。因此如果加载.lm格式资源，则需要重新赋予其材质才能完整显示，否则只显示为白模。
+In the latest engine version, the model grid is separated from the material. Unity export plug-in tool no longer binds the material to the exported. LM model file. So if you load. LM format resources, you need to re-endow them with material to display them completely, otherwise they will only be displayed in white mode.
 
-这时可以使用导出后产生的.lmat材质文件，加载创建标准材质并赋给模型，方式与模型加载类似。
+At this time, you can use the. lmat material file generated after export to load and create standard material and assign it to the model in a way similar to model loading.
+
 
 ```typescript
+
 //异步加载材质文件创建标准材质（也可以预加载）
 Laya.BlinnPhongMaterial.load("truck/Assets/Materials/t0200.lmat",Laya.Handler.create(this,function(mat):void{
   	box.meshRenderer.material = mat;
@@ -49,23 +54,26 @@ Laya.BlinnPhongMaterial.load("truck/Assets/Materials/t0200.lmat",Laya.Handler.cr
 
 
 
-### 从加载的模型上获取材质
 
-在上面的例子中我们创建了标准材质，但在实际的项目运用中，我们很少用代码的方式给模型赋材质，而是直接在3D软件制作或在unity中创建材质，然后通过工具导出LayaAir格式后使用。
+###Getting material from the loaded model
 
-使用时引擎会自动在模型上加载材质，并且很多时候一个模型上会有多个标准材质，自动的方式为我们省下了很多开发时间。但在这种情况下，如果我们需要改变、更换材质怎么办呢？我们首先需要在模型上获取当前的材质。
+In the above example, we created the standard material, but in the actual project application, we seldom use code to give material to the model, but directly create material in the 3D software or unit, and then export the LayaAir format through the tool and use it.
 
-LayaAir3D引擎为我们提供了网格渲染器MeshRenderer类和蒙皮动画网格渲染器SkinnedMeshRenderer，在可视模型上提供了它们的实例，我们可以通过它们来获取模型上的材质。
+When used, the engine will automatically load materials on the model, and many times there will be more than one standard material on a model. The automatic way saves us a lot of development time. But in this case, what if we need to change and change the material? We first need to get the current material on the model.
 
-Tips：MeshSprite3D模型中为MeshRenderer，SkinnedMeshSprite3D模型中为SkinnedMeshRenderer。
+LayaAir3D engine provides us with mesh renderer MeshRenderer class and skinned animation mesh renderer Skinned MeshRenderer class, and provides examples of them on visual models through which we can obtain the material on the model.
 
-获取的材质跟为两种类型，一种是自身材质Material，如果自身材质被修改了，只有自身模型显示进行变化；一种是共享材质SharedMaterial，因为材质相对独立，多个模型都可以用同一个材质，如果获取的是共享材质并修改了，自身模型显示会变化，其他模型用到这个材质的部分也会发生改变。因此，开发者们需要根据情况进行选择。
+Tips: Mesh Sprite 3D model is Mesh Renderer, Skinned Mesh Sprite 3D model is Skinned Mesh Renderer.
+
+There are two types of materials obtained, one is Material of its own material, if its material is modified, only its own model display changes; the other is Shared Material of shared material, because the material is relatively independent, multiple models can use the same material. If the material is shared and modified, the display of its own model will change, and other models will use this material. The qualitative part will also change. Therefore, developers need to choose according to the situation.
 
 
 
-### 获取并修改自身材质
+###Obtain and modify material
+
 
 ```typescript
+
 ......
 //加载导出的卡车模型
 Laya.Sprite3D.load("LayaScene_truck/truck.lh",Laya.Handler.create(this,function(sp:Laya.Sprite3D):void{
@@ -79,15 +87,18 @@ Laya.Sprite3D.load("LayaScene_truck/truck.lh",Laya.Handler.create(this,function(
 }));
 ```
 
-编译运行后如下，虽然车身与车头模型都用了同一材质，但只修改了车身的自身材质为红色，不影响车头（图1）
 
-![1](img/1.png)(图1)</br>
+Compiled and run as follows, although the body and the front model are all made of the same material, only the body's own material is modified to be red, without affecting the front (Fig. 1).
+
+![1](img/1.png)(Fig. 1) </br>
 
 
 
-### 获取并修改共享材质
+###Get and modify shared materials
+
 
 ```typescript
+
 ......
 //加载导出的卡车模型
 Laya.Sprite3D.load("LayaScene_truck/truck.lh",Laya.Handler.create(this,function(sp:Laya.Sprite3D):void{
@@ -101,19 +112,26 @@ Laya.Sprite3D.load("LayaScene_truck/truck.lh",Laya.Handler.create(this,function(
 }));
 ```
 
-编译运行效果如下，修改了共享材质后，因为车头与车身模型都使用了该材质，他们的材质都被改变了（图2）
+
+The effect of compiling and running is as follows. After modifying the shared material, because the material is used in both the front and body models, their material is changed (Figure 2).
 
 ![2](img/2.png)(图2)</br>
 
 
 
-### 获取并修改材质列表
 
-在3D制作软件中，经常会有一个模型有多个材质的情况，我们称之为多维材质。不过经过工具导出数据加载后，引擎会自动创建成模型的材质列表数组materials或sharedMaterials，因此在修改材质时，可以用for循环或递归的方式进行。
 
-下列代码提供了对模型或模型容器子对象获取并修改材质的方法，我们直接对所有场景子对象进行了材质修改。
+
+
+###Get and modify the Material List
+
+In 3D production software, there is often a model with multiple materials, which we call multi-dimensional materials. However, after loading the data exported by the tool, the engine will automatically create the material list array or sharedMaterials of the model, so when modifying the material, it can be done in a for loop or recursive way.
+
+The following code provides a way to get and modify the material for the model or model container subobjects. We directly modify the material for all scene subobjects.
+
 
 ```typescript
+
 ......
 ......
 //加载场景
@@ -160,6 +178,7 @@ private setModelMaterial(model):void
 }
 ```
 
-编译运行后效果如下（图3），场景中所有的模型材质都加上了一层蓝色。
+
+After compiling and running, the effect is as follows (Figure 3). All the model materials in the scene are added a layer of blue.
 
 ![3](img/3.png)(图3)</br>

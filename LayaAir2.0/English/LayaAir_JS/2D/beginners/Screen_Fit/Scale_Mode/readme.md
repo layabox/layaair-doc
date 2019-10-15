@@ -1,57 +1,61 @@
-# 屏幕适配的缩放模式详解
+#Detailed explanation of zoom mode for screen adaptation
 
 
 
-​         缩放模式是屏幕适配的重点内容，本篇从基础概念到参数说明，并结合代码实例帮助大家理解LayaAir引擎的屏幕缩放模式。在 API文档中，我们搜索laya.display.Stage，可以看到关于缩放模式的方法scaleMode共有七种参数，用于实现各种屏幕适配的缩放需求，参数说明如图1所示：
+Scaling mode is the key content of screen adaptation. In this paper, from basic concepts to parameter descriptions, combined with code examples, we can help you understand the LayaAir engine's screen scaling mode. In the API document, we search laya. display. Stage. We can see that there are seven parameters for scaleMode, the method of scaleMode about scaling mode, to meet the scaling requirements of various screen adaptations. The parameters are illustrated in Figure 1.
 
-​        ![blob.png](img/1.png)<br/>
-​        （图1）LayaAir引擎关于缩放模式scaleMode的参数说明
-
-
-
-**简单概览一下参数说明，我们先了解一些本篇涉及的基础概念：**
-
-**1、设计宽高：** 
-
-​        在项目代码中项目代码中初始化舞台Laya.init()中定义的宽高即为设计宽高。
-
-**2、Stage宽高：**
-
-​        stage宽高为游戏舞台实际大小的宽高。
-
-**3、适配宽高：**
-
-​       通过引擎的适配模式对设计宽高进行缩放改变后的宽高，为了便于区分理解，我们称为适配宽高。
-
-**4、画布宽高：**
-
-​        画布宽高是指HTML5中canvas节点的宽高，游戏中所有可见的内容都在画布区域内。
-
-**5、屏幕宽高：**
-
-​        屏幕宽高是指手机浏览器屏幕的宽高，例如iphone6竖屏时的屏幕宽高为`375*667`。LayaAir引擎可以通过laya.utils.Browser.clientWidth和laya.utils.Browser.clientHeight来获取屏幕的宽与高。
-
-**6、物理宽高：**
-
-​        关于设备屏幕的物理宽高，我们需要先了解像素密度的概念。在PC电脑上，通常一个像素位置上就是一个物理像素。在移动设备高速发展的今天，手机的屏幕上通常是一个像素位置上拥有2个或3个像素。例iphone6竖屏时的物理宽高为750*1334。LayaAir引擎可以通过laya.utils.Browser.width和laya.utils.Browser.height来获取设备屏幕屏幕的物理宽高。
+​![blob.png](img/1.png)<br/>
+(Figure 1) Parametric description of the LayaAir engine for scaleMode
 
 
 
-### 一、exactfit模式
+**To give a brief overview of the parameter descriptions, let's first understand some of the basic concepts involved in this article:**
 
-​        exactfit模式是一种不考虑内容的原始比例，直接通过非等比缩放填满整个浏览器屏幕的模式。在这种模式下，画布宽高与stage宽高都等于设计宽高，且不会发生改变。但是当物理宽高与设计宽高不等时，这种非等比的缩放模式可能会导致原有设计明显变形。效果如图2、图3所示。
+**1. Design width and height:** 
 
-​        ![blob.png](img/2.png)<br/>
-​        （图2）设计宽高为`1136*640`，物理宽高为`1334*750`的exactfix模式运行效果
+In the project code, the width and height defined in the initialization stage Laya.init() is the design width and height.
 
-​        ![blob.png](img/3.png)<br/>
-​        （图3）设计宽高为`1136*640`，物理宽高为`750*1334`的exactfit模式运行效果
+**2. Stage width and height:**
+
+The width and height of stage is the actual size of the game stage.
+
+**3. Adaptation width and height:**
+
+In order to distinguish and understand the design width and height, we call the design width and height after the engine's adaptation mode is scaled to change the design width and height.
+
+**4. Width and height of canvas:**
+
+Canvas width refers to the width and height of canvas nodes in HTML5. All visible content in the game is in the canvas area.
+
+**5. Screen width and height:**
+
+Screen width and height refer to the width and height of the screen of mobile browser, such as the screen width and height of the iPhone 6 vertical screen.`375*667`。 LayaAir engine can obtain screen width and height through laya.utils.Browser.clientWidth and laya.utils.Browser.clientHeight.
+
+**6. Physical width and height:**
+
+With regard to the physical width and height of the device screen, we need to understand the concept of pixel density first. On a PC, a physical pixel is usually located at a single pixel. Today, with the rapid development of mobile devices, the screen of mobile phones usually has two or three pixels in one pixel position. For example, the physical width and height of the iPhone 6 vertical screen are 750*1334. The LayaAir engine can obtain the physical width and height of the device screen through laya. utils. Browser. width and laya. utils. Browser. height.
 
 
 
-**exactfit模式示例代码：**
+In this paper, the following figures are used:[loadingBg.jpg](http://ldc.layabox.com/uploadfile/file/20170223/1487816895380055.jpg)(Click Open or Save`1136×640`Pixel Background Map)
+
+###Exctfit Model
+
+Exctfit mode is a mode that fills the entire browser screen directly through unequal scaling without considering the original proportion of content. In this mode, the canvas width and stage width are equal to the design width and height, and will not change. However, when the physical width and design width are unequal, the unequal scaling mode may lead to obvious deformation of the original design. The effect is shown in Figures 2 and 3.
+
+​![blob.png](img/2.png)<br/>
+(Figure 2) the design width and height are`1136*640`The physical width and height are`1334*750`The effect of exactfix mode
+
+​![blob.png](img/3.png)<br/>
+(Figure 3) Design width and height`1136*640`The physical width and height are`750*1334`Operation effect of exactfit mode of
+
+
+
+**Example code of exactfit mode:**
+
 
 ```javascript
+
 (function()
 {
     var Stage  = Laya.Stage;
@@ -100,25 +104,28 @@
 
 
 
-### 二、fixedheight模式
 
-​        fixedheight 模式下，画布与stage的高保持设计高度不变，画布与stage的宽等于适配宽度（适配宽度=设计高度*屏幕宽高比），最后按屏幕宽高进行全屏缩放适配，该模式是主流的适配模式之一。
+###2. Fixed height model
 
-​        例如：iPhone6横屏时，屏幕宽高为`667*375`，设计高度为640，那么采用fixedheight模式后，`适配宽度=(667/375)*640`，适配宽度计算结果取整后的1138即为画布的宽度。示例拉伸适配全屏效果如图4所示：
+In fixedheight mode, the height of canvas and stage remains unchanged, and the width of canvas and stage equals the width of adaptation (adaptation width = design height * screen width-height ratio). Finally, the full-screen zoom and adaptation is made according to the screen width and height. This mode is one of the mainstream adaptation modes.
 
-​         ![blob.png](img/4.png)<br/>
-​        （图4）画布宽高为`1067*640`，物理宽高为`1334*750`的fixedheight模式运行效果
+For example, when the screen of the iPhone 6 is horizontal, the width and height of the screen are as follows`667*375`, the design height is 640, so after using fixedheight mode,`适配宽度=(667/375)*640`The width of the canvas is 1138 after the calculation result of the fit width is rectified. The example stretch fit full screen effect is shown in Figure 4.
 
-​        同理，iPhone6竖屏时`适配宽度=(375/667)*640`，适配宽度计算结果取整后的360即为画布的宽度。如果我们是按横屏设计的，那需要在使用该模式的时候，设置为自动横屏，否则画布之外的部分是不被显示的。fixedheight模式示例拉伸适配全屏效果如图5所示：
+​![blob.png](img/4.png)<br/>
+(Figure 4) the width and height of canvas are`1067*640`The physical width and height are`1334*750`The effect of fixedheight mode
 
-​        ![blob.png](img/5.png)<br/>
-​        （图5）画布宽高为`360*640`，物理宽高为`750*1334`的fixedheight模式运行效果
+Similarly, when the iPhone 6 screen is upright`适配宽度=(375/667)*640`The width of the canvas is 360 after the fitting width is calculated. If we are designed according to the horizontal screen, we need to set the automatic horizontal screen when using this mode, otherwise the part outside the canvas will not be displayed. Fixed height mode example stretches to fit the full screen effect as shown in Figure 5:
+
+​![blob.png](img/5.png)<br/>
+(Fig. 5) The width and height of the canvas are as follows`360*640`The physical width and height are`750*1334`The effect of fixedheight mode
 
 
 
-**fixedheight模式示例代码：**
+**Fixed height pattern sample code:**
+
 
 ```javascript
+
 (function()
 {
     var Stage  = Laya.Stage;
@@ -168,25 +175,30 @@
 
 
 
-### 三、fixedwidth模式
 
-​        fixedwidth模式下，画布与stage的宽保持设计宽度不变，画布与stage的高等于适配高度（`适配高度=设计宽度*屏幕高宽比`），最后按屏幕宽高进行全屏缩放适配，该模式是主流的适配模式之一。
+###3. Fixed width mode
 
-​        例如：iPhone6横屏时，屏幕宽高为`667*375`，设计宽度为1136，那么采用fixedwidth模式后，`适配高度=(375/667)*1136`，适配高度计算结果取整后的639即为画布的高度。示例拉伸适配全屏效果如图6所示：
+In Fixedwidth mode, the width of canvas and stage remains the same as the design width, and the height of canvas and stage equals the height of adaptation.（`适配高度=设计宽度*屏幕高宽比`At last, the full-screen zoom-in mode is adapted according to the screen width and height, which is one of the mainstream adaptation modes.
+
+For example, when the screen of the iPhone 6 is horizontal, the width and height of the screen are as follows`667*375`The design width is 1136, so after Fixedwidth mode is adopted,`适配高度=(375/667)*1136`The height of the canvas is 639 after the fitting height calculation is completed. The example stretch fit full screen effect is shown in Figure 6.
+
+
 
 ​        ![blob.png](img/6.png)<br/>
-​        （图6）画布宽高为`1136*639`，物理宽高为`1334*750`的fixedwidth模式运行效果
+(Fig. 6) The width and height of the canvas are`1136*639`The physical width and height are`1334*750`Running effect of Fixedwidth mode
 
-​        同理，iPhone6竖屏时适配高度=(667/375)*1136，适配高度计算结果取整后的2021即为画布的高度。如果我们是按横屏设计的，那需要在使用该模式的时候，设置为自动横屏，否则适配宽高超出屏幕宽高，再等比缩放至屏幕宽高进行全屏显示时，通常不是我们想要的效果。fixedwidth模式示例拉伸适配全屏效果如图6所示：
+Similarly, the height of the adaptation is equal to (667/375)*1136 for the vertical screen of the iPhone 6, and 2021 is the height of the canvas after the calculation of the height of the adaptation. If we are designed according to the horizontal screen, we need to set the automatic horizontal screen when using this mode. Otherwise, the width and height of the adapter are higher than the width and height of the screen. When we zoom to the width and height of the screen for full screen display, it is usually not the desired effect. A sample of Fixedwidth mode is stretched to fit the full screen effect as shown in Figure 6:
 
-​        ![blob.png](img/7.png)<br/>
-​        （图6）画布宽高为`1136*2021`，物理宽高为`1334*750`的fixedwidth模式运行效果
+​![blob.png](img/7.png)<br/>
+(Fig. 6) The width and height of the canvas are`1136*2021`The physical width and height are`1334*750`Running effect of Fixedwidth mode
 
 
 
-**fixedwidth模式示例代码：**
+**Fixed width pattern sample code:**
+
 
 ```javascript
+
 (function()
 {
     var Stage  = Laya.Stage;
@@ -237,20 +249,23 @@
 
 
 
-### 四、full模式
 
-​        full模式下，stage与画布的宽高会无视设计宽高，直接等于物理宽高，因此这也是游戏画质精度最高的主流缩放模式。在该模式下，设计内容不会被缩放，保持1：1原始比例的基础上，将舞台与浏览器屏幕左上角对齐，原设计内容超出屏幕的部分会被裁切。示例效果如图7、图8所示。
-​        ![blob.png](img/8.png)
-​     （图8）设计宽高与物理宽高同为`1136*640`的full模式横屏运行效果
+###IV. Full Model
 
-​        ![blob.png](img/9.png)
-​        （图9）设计宽高为`1136*640`，物理宽高为`960*640`的full模式横屏运行效果
+In full mode, the width and height of stage and canvas will ignore the design width and height, which is directly equal to the physical width and height, so this is also the mainstream zooming mode with the highest accuracy of game painting. In this mode, the design content will not be scaled, keeping the original proportion of 1:1, aligning the stage with the upper left corner of the browser screen, the original design content beyond the screen will be cut. The example effect is shown in Figures 7 and 8.
+​![blob.png](img/8.png)
+(Figure 8) Design width and physical width are the same`1136*640`Full mode horizontal screen operation effect
+
+​![blob.png](img/9.png)
+(Fig. 9) Design width and height are as follows`1136*640`The physical width and height are`960*640`Full mode horizontal screen operation effect of
 
 
 
-**ful模式示例代码：**
+**Full mode sample code:**
+
 
 ```javascript
+
 (function()
 {
     var Stage  = Laya.Stage;
@@ -297,31 +312,34 @@
 })();
 ```
 
-**Tips：**
 
-​        1、尽管该模式是一种高精度适配模式，但是对游戏性能的压力也比其它模式要高，是否选择该模式要结合游戏整体情考量。
+**Tips:**
 
-​        2、由于画布和stage的宽高是直接取自于屏幕的物理宽高，Laya.init()时的宽高值可以直接设为0。
+1. Although this mode is a high-precision adaptation mode, the pressure on game performance is also higher than other modes. Whether to choose this mode or not should consider the overall situation of the game.
 
-
-
-
-
-### 五、noscale模式
-
-​        noscale模式是不缩放模式，画布与stage的宽高等于设计宽高。保持1：1原始设计比例的基础上，将舞台与浏览器屏幕左上角对齐。当屏幕宽高小于内容时将进行裁切，当屏幕宽高大于内容时会出现黑边。该模式运行效果如图9、图10所示。
-
-​        ![blob.png](img/10.png)<br/>
-​        （图10）屏幕宽高都大于设计宽高时效果
-
-​        ![blob.png](img/11.png)<br/>
-​        （图11）设计内容超出屏幕宽度，屏幕高度大于设计高度的效果
+2. Since the width of the canvas and stage is directly derived from the physical width and height of the screen, the width and height of Laya.init() can be set to 0 directly.
 
 
 
-**noscale模式示例代码如下：**
+
+
+###V. noscale model
+
+The noscale mode is non-scaling mode, and the width of canvas and stage is higher than the design width. The stage is aligned with the upper left corner of the browser screen on the basis of keeping the original design proportion of 1:1. When the screen width is smaller than the content, it will be cut. When the screen width is larger than the content, black edges will appear. The operation effect of this mode is shown in Figures 9 and 10.
+
+​![blob.png](img/10.png)<br/>
+(Fig. 10) Screen width and height are larger than design width and height.
+
+​![blob.png](img/11.png)<br/>
+(Fig. 11) The effect that the design content exceeds the screen width and the screen height is greater than the design height
+
+
+
+**The noscale pattern sample code is as follows:**
+
 
 ```javascript
+
 (function()
 {
     var Stage  = Laya.Stage;
@@ -373,18 +391,21 @@
 
 
 
-### 六、noborder模式
 
-​        noborder模式下，画布宽高等于设计宽高。缩放时，按照屏幕宽高与设计宽高最大比率的一方进行缩放，比如设计尺寸为`1136*640`，屏幕的物理宽高为`750*1334`。计算得到宽的比率`（750/1136）`为0.66，高的比率`（1334/640）`为2.08。那么采用noborder模式缩放时，按最大的比率一方（高），将适配高度拉伸至物理高度的1334，适配宽度等比拉伸（`1334/640*1136`）为2368。当然，超过屏幕宽度的部分会被裁切掉。效果如图11所示。
+###6. noborder mode
 
-​        ![blob.png](img/12.png)<br/>
-​        （图12）画布宽高保持设计尺寸`1136*640`时，适配宽高以最大比率一方拉伸至全屏
+In noborder mode, canvas width is higher than design width. When zooming, zoom according to the maximum ratio of screen width to design width, such as design size`1136*640`The physical width and height of the screen are`750*1334`。 Calculate the Wide Ratio`（750/1136）`0.66, high ratio`（1334/640）`It is 2.08. Then, when zooming in noborder mode, the adaptation height is stretched to 1334 of physical height and the adaptation width is equal to that of stretching according to the maximum ratio (high).（`1334/640*1136`) 2368. Of course, more than the width of the screen will be cut off. The effect is shown in Figure 11.
+
+​![blob.png](img/12.png)<br/>
+(Figure 12) canvas width and height keep the design size`1136*640`When the adapter width reaches the maximum ratio, one side stretches to the full screen.
 
 
 
-**noborder模式示例代码如下：**
+**The noborder pattern sample code is as follows:**
+
 
 ```javascript
+
 (function()
 {
     var Stage  = Laya.Stage;
@@ -433,20 +454,23 @@
 
 
 
-### 七、showall模式
 
-​        showall模式下，stage与画布的宽高等于缩放后的适配宽高，而缩放按照屏幕宽高与设计宽高最小比率的一方进行等比缩放。
+###7. Showall mode
 
-​          比如设计尺寸为`1136*640`，屏幕的物理宽高为`750*1334`。计算得到宽的比率（`750/1136`）为0.66，高的比率（`1334/640`）为2.08。那么采用showall模式缩放时，按最小的比率一方（宽），画布宽度会被缩放为屏幕的物理宽度750，适配高度等比缩放（`750/1136*640`）为423。此时由于423远小于屏幕物理高度1334，因此会出现大量留黑的空屏。效果如图12所示。
+In showall mode, the width of stage and canvas is higher than that of the scaled canvas, and the scaling is done in the same ratio according to the minimum ratio of screen width to design width.
 
-​        ![blob.png](img/13.png)<br/>
-​        （图13）画布宽高被缩放至`750*423`，在物理宽高为`750*423`的屏幕上出现大量留黑空屏
+For example, the design size is`1136*640`The physical width and height of the screen are`750*1334`。 Calculate the Wide Ratio（`750/1136`) 0.66, high ratio（`1334/640`）2.08. When zooming in showall mode, the canvas width will be zoomed to 750 physical width of the screen at the smallest ratio (width), and the height of the canvas will be zoomed to equal ratio.（`750/1136*640`423. At this time, because 423 is far less than the screen physical height of 1334, there will be a large number of black blank screen. The effect is shown in Figure 12.
+
+​![blob.png](img/13.png)<br/>
+(Fig. 13) The canvas width and height are scaled to`750*423`In physics, width and height are`750*423`A large number of black blank screens appeared on the screen.
 
 
 
-**showall模式示例代码如下：**
+**The showall pattern sample code is as follows:**
+
 
 ```javascript
+
 (function()
 {
     var Stage  = Laya.Stage;
@@ -495,27 +519,32 @@
 
 
 
-### 八、fixedauto模式
 
-​        fixedauto模式下，stage与画布的宽高等于缩放后的适配宽高，而等比缩放按照全屏显示全部内容，根据屏幕长宽比，自动计算SCALE_FIXED_WIDTH和SCALE_FIXED_HEIGHT两种模式，选择屏幕宽高比更接近设计宽高比的模式。
+###8. Fixed auto mode
 
-​        例如：iPhone6横屏时，屏幕宽高为`667*375`，设计宽度为1136，那么采用fixedauto模式后，根据宽高比会自动选择SCALE_FIXED_WIDTH方式进行拉伸适配。`适配高度=(375/667)*1136`，适配高度计算结果取整后的639即为画布的高度。示例拉伸适配全屏效果如图6所示：
+In fixedauto mode, the width of stage and canvas is higher than the height of adaptation after zooming, while the equal-ratio zooming displays the whole content in full screen, automatically calculates SCALE_FIXED_WIDTH and SCALE_FIXED_HEIGHT according to the length-width ratio of the screen, and chooses the mode that the width-height ratio of the screen is closer to the design width-height ratio.
+
+For example, when the screen of the iPhone 6 is horizontal, the width and height of the screen are as follows`667*375`After fixedauto mode is adopted, SCALE_FIXED_WIDTH mode will be selected automatically according to the aspect ratio.`适配高度=(375/667)*1136`The height of the canvas is 639 after the fitting height calculation is completed. The example stretch fit full screen effect is shown in Figure 6.
+
+
 
 ​        ![14](img/14.png)<br/>
-​        （图14）画布宽高为`1136*639`，物理宽高为`1334*750`的fixedauto模式运行效果
+(Fig. 14) The width and height of the canvas are as follows`1136*639`The physical width and height are`1334*750`Running effect of fixedauto mode
 
-​        同理，iPhone6竖屏时适配高度=(667/375)*1136，配高度计算结果取整后的2021即为画布的高度。根据宽高比，自动选择了更接近屏幕宽高比的SCALE_FIXED_HEIGHT适配模式。
+In the same way, when the iPhone 6 is on the vertical screen, the adaptation height = (667 / 375) * 1136, and the adjusted 2021 is the height of the canvas. According to the aspect ratio, SCALE_FIXED_HEIGHT adaptation mode which is closer to the aspect ratio of screen is automatically selected.
 
-​	如果我们是按横屏设计的，那需要在使用该模式的时候，设置为自动横屏，否则适配宽高超出屏幕宽高，再以设计的高度为准，对横向进行裁剪，这通常不是我们想要的效果。fixedauto模式示例拉伸适配全屏效果如图15所示：
+If we are designed according to the horizontal screen, we need to set the automatic horizontal screen when using this mode, otherwise the width and height of the adapter are higher than the width and height of the screen, and then the horizontal cutting is based on the design height, which is usually not the desired effect. A sample of fixedauto mode is stretched to fit the full screen effect as shown in Figure 15:
 
-​        ![15](img/15.png)<br/>
-​        （图15）画布宽高为`1136*2021`，物理宽高为`1334*750`的fixedauto模式运行效果
+​![15](img/15.png)<br/>
+(Fig. 15) The width and height of the canvas are`1136*2021`The physical width and height are`1334*750`Running effect of fixedauto mode
 
 
 
-**fixedauto模式示例代码如下：**
+**The fixedauto pattern example code is as follows:**
+
 
 ```javascript
+
 (function()
 {
     var Stage  = Laya.Stage;
@@ -566,16 +595,32 @@
 
 
 
-**结束总结：**
 
-​        full模式完全按物理像素渲染，屏幕有多大，适配的画面就有多大，是高画质常用的适配模式，但是在不同尺寸的屏幕里，显示内容的大小会有所不同，同时对于HTML5游戏的性能压力要高于其它适配模式。
+###Conclusion:
 
-​        showall和noborder是等比缩放模式，会保持画面不变形。showall按照屏幕与设计宽高最小比率缩放，保证画面能完全显示出来，但会导致有空屏黑边。noborder刚好相反，按照屏幕与设计宽高最大比率缩放，不会出现空屏黑边，但会导致宽或高的部分内容无法显示出来。
+Full mode is rendered entirely according to physical pixels, the screen size, the size of the screen adapted to the screen is how big, high-quality commonly used adaptation mode, but in different sizes of the screen, the size of the display content will be different, at the same time for HTML5 game performance pressure is higher than other adaptation modes.
 
-​        fixedwidth与fixedheight更像showall和noborder的变种，同样也是等比缩放模式，但是指定了一边不动，另外一边进行缩放，是当前HTML5游戏中比较常用的主流适配模式。
+Showall and noborder are isometric scaling modes that keep the picture intact. Showall scales at the smallest ratio of screen width to design height to ensure that the screen is fully displayed, but it will result in blank screen with black edges. Nonoborder, on the contrary, scales at the maximum ratio of screen width to design height, without blank screen black edges, but results in wide or high parts of content that cannot be displayed.
 
-​        本篇中为了重点介绍缩放模式的不同参数区别。并未结合屏幕自动旋转等其它屏幕适配设置，开发者可以查看相关的其它技术文档。
+Fixed width and fixed height are more like the variants of showall and noborder. They are also equivalent scaling modes, but they specify one side to be fixed and the other side to be scaled. They are the main adapting modes commonly used in HTML5 games. Fixed auto automatically switches Fixedwidth and fixedheight modes according to proportions. These modes are also recommended for full screen adaptation.
 
-示例代码中所用的背景图片：
+In this paper, we focus on the different parameters of scaling mode. Without other screen adaptation settings such as screen autorotation, developers can view related technical documents.
 
-[loadingBg.jpg](http://ldc.layabox.com/uploadfile/file/20170223/1487816895380055.jpg)(点击打开或另存`1136×640`像素背景原图)
+The core of the adaptation mode is to zoom the canvas, stage or change the canvas size directly. The following compares the different scaling modes for which scaling has been done, which is convenient for you to understand intuitively.
+
+|| noscale | exactifit | showall | noborder | full | fixed_width | fixed_height | fixed_auto|
+| ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
+| Zoom Canvas | | Yes | | Yes | Yes | | Yes | Yes | Yes | Yes | Yes|
+| Scale Stage | | | Yes||||||
+| Modify Canvas Size | | | Yes | | Yes | Yes | Yes | Yes | Yes | Yes | Yes|
+
+**Be careful:**If the physical pixel resolution mode is used, that is`useRetinalCanvas=true`When the size of the canvas is constant to the physical resolution, the original scaling of the canvas is all changed to the scaling of the Stage.
+
+
+
+Finally, a detailed comparative illustration of each adaptation mode is attached. You can right-click in the new page to open the full screen original view.
+
+![图](../../../../../LayaAir_TS/2D/beginners/Screen_Fit/Scale_Mode/img/16.png) 
+
+
+

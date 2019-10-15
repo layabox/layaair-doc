@@ -1,22 +1,22 @@
-# 自定义界面布局与恢复
+#Custom Interface Layout and Recovery
 
->  本篇采用LayaAirIDE 2.0.1beta 截图，如有不同，请下载最新的LayaAirIDE，以最新版本IDE为准。
-
-
-
-编辑器布局是指LayaAirIDE里各个面板的位置、大小和层叠情况。 
+> This article uses LayaAirIDE 2.0.1 beta screenshots. If different, please download the latest LayaAirIDE, whichever version is the latest.
 
 
 
-## 预设与恢复布局
+Editor layout refers to the position, size and stacking of panels in LayaAirIDE.
 
-### 预设
 
-在LayaAir的设计模式下，可以对界面的各个功能版块进行位置拖动与大小调整，在界面布局修改结束后会自动保存，下次打开时，会按最后一次的布局打开。
 
-### 恢复
+##Presupposition and Restoration Layout
 
-如果界面模板被关闭或错位，可以在编辑模式下采用快捷键`F3`快速**恢复默认的界面布局**，或者在`菜单栏` 中点击-->【`视图`】 --> 【`重置面板`】。
+###Preset
+
+In LayaAir's design mode, you can drag and adjust the position and size of each functional section of the interface. After the modification of the interface layout, it will be automatically saved. The next time it opens, it will be opened according to the last layout.
+
+###recovery
+
+If the interface template is closed or dislocated, shortcut keys can be used in edit mode`F3`fast**Restore default interface layout**Or in`菜单栏`Mid-click - >.【`视图`> >`重置面板`]
 
 ![图片](img/0.png) 
 
@@ -26,12 +26,20 @@
 
 
 
-## 自定义界面
 
-### 一、调整面板大小：
 
-​        将鼠标悬浮到两个面板之间的边界线上，看到鼠标指针发生变化后，就可以按下鼠标来修改相邻两个面板的大小。如动图1所示。
 
-​	![图片](img/1.gif)<br/>
 
-​	（动图1）
+
+
+
+
+##Custom interface
+
+###First, adjust the panel size:
+
+Hover the mouse over the boundary line between the two panels, and when you see the mouse pointer changes, you can press the mouse to change the size of the two adjacent panels. As shown in Figure 1.
+
+​![图片](img/1.gif)<br/>
+
+(Fig. 1)

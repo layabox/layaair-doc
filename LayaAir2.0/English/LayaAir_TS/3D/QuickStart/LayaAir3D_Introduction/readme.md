@@ -1,31 +1,32 @@
-# LayaAir3D概述
+#Overview of LayaAir3D
+
 
 ​	通过3D示例我们可以看到一个基本的3D世界诞生了。当然，示例的代码还比较简单，要作出丰富多彩的游戏世界，我们还需要了解引擎更多的功能。
 
-​	下面将简单的介绍下LayaAir3D的主要元素，关于这些概念知识后续教程我们会详细的介绍，逐步带领大家学习3D知识。
+Following is a brief introduction to the main elements of LayaAir3D. We will introduce these conceptual knowledge in detail in the follow-up tutorial, and gradually lead you to learn 3D knowledge.
 
-### 	Scene3D场景:
+###Scene3D Scenes:
 
-​		场景即为LayaAir引擎的3D世界容器，用于呈现游戏的3D画面和加载各种3D元素，游戏中的摄像机，灯光，人物，物品等都需要放到场景中才能展示出画面，相当于一个游戏3D播放器或者3D视图。
+The scene is the 3D world container of the layaair engine, which is used to present the 3D picture of the game and load various 3D elements. The camera, lights, characters and objects in the game need to be placed in the scene to display the picture, which is equivalent to a 3D player or 3D view of the game.
 
-### Sprite3D精灵：
+###Sprite3d Sprite:
 
-​		Sprite3D是3D中基本的显示图形的显示列表节点。精灵的种类是非常的多，像`Sprite3D`空精灵，在3D世界中使物体产生立体光影变化，投影等效果的`Light`灯光精灵，用于渲染的`MeshSprite3D`网格精灵，`SkinnedMeshSprite3D`蒙皮网格精灵，`TrailSprite3D`拖尾精灵，`ShuriKenParticle`粒子特效精灵等等。
+Sprite3D is the basic display list node of graphics in 3D. There are many kinds of elves, like`Sprite3D`Space elf, in the 3D world, causes the object to produce three-dimensional light and shadow changes, projection and other effects.`Light`Lighting elves, used for rendering`MeshSprite3D`The Grid Wizard,`SkinnedMeshSprite3D`Skin mesh Sprite,`TrailSprite3D`The trailing elf,`ShuriKenParticle`Particle effects elves and so on.
 
-### Camera摄像机:
+###Camera camera:
 
-​		Camera摄影机也是精灵的一种。在3d游戏中，Camera相当于眼睛，通过他来看世界。一切景象都通过Camera来渲染。
+Camera cameras are also a genie. In 3D games, Camera is the equivalent of an eye, through which you can see the world. Everything is rendered through Camera.
 
-### 	Material材质:
+###Material material:
 
-​		材质就是物体的材料质感，例如木头、金属、玻璃、毛发、水等，它们的粗糙度、光泽度、反射、透明、颜色、纹理等材质属性都有所不同。
+Material quality is the material texture of objects, such as wood, metal, glass, hair, water, etc. Their roughness, glossiness, reflection, transparency, color, texture and other material properties are different.
 
-### Component组件:
+###Component components:
 
-​		`Component` 组件是附加到所有3D对象的内容的基类。组件的种类也是非常多的，比较常用的像`Animator`动画组件，`PhysicsCollider`物理碰撞器和`RigidBody3D`刚体这些物理组件等。
+​`Component`Components are the base classes attached to the content of all 3D objects. There are many kinds of components, such as`Animator`Animation components,`PhysicsCollider`Physical Collider and Physical Collider`RigidBody3D`Rigid bodies, these physical components, etc.
 
-### Script3D脚本：
+###Script 3D script:
 
-​		`Script3D`脚本在开发过程中使用的非常频繁的。脚本是的一种特殊的组件，为了方便开发者使用，他有自己的生命周期。脚本的功能也是非常大的，例如角色控制脚本，NPC控制脚本、场景物体控制脚本等，实现了控制与显示分离。
+​`Script3D`Scripts are used very frequently in the development process. A script is a special component that has its own life cycle for the convenience of developers. The function of script is also very large, such as role control script, NPC control script, scene object control script and so on, which achieves the separation of control and display.
 
 ##### 		

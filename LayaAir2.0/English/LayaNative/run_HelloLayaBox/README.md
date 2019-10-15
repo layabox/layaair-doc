@@ -1,42 +1,43 @@
-#  使用LayaNative运行LayaAir项目
+#Running the LayaAir project using LayaNative
 
-相信当你看这篇文档的时候，你已经熟练掌握了LayaAir或对LayaAir有一定的了解，在LayaAir的文档中详细介绍过如何使用LayaIDE创建第一个程序“Hello LayaBox”。
+I believe that when you look at this document, you have mastered LayaAir or have some knowledge of LayaAir. In LayaAir's document, you have described in detail how to use LayaIDE to create the first program "Hello LayaBox".
 
-<!-- TODO:更换链接地址 **Tips：输入项目地址后，如果发现屏幕上没有显示任何画面，有可能是因为项目没有正确设置横竖屏，请参考文档：https://github.com/layabox/layaair-doc/tree/master/Chinese/LayaNative/screen_orientation** -->
+TODO: Change Link Address ** Tips: If no screen is displayed on the screen after entering the project address, it may be because the project has not set the horizontal and vertical screen correctly, please refer to the documentation: https://github.com/layabox/layaair-doc/tree/master/Chinese/LayaNative/screen_orientation**->.
 
-步骤一：目前我已经创建好了一个Hello LayaBox的简单项目，如图1所示：  
+Step 1: Now I have created a simple project for Hello LayaBox, as shown in Figure 1:
 
-![图1](img/1.png)<br />
-运行效果如图2所示：
+![图1](img/1.png)<br / >
+The operation effect is shown in Figure 2.
 
-![图2](img/2.jpg)<br />
-图2
+![图2](img/2.jpg)<br / >
+Figure 2
 
-步骤二：点击LayaIDE右上角“二维码”菜单键，会显示二维码界面，界面左侧二维码下方显示一个http地址，实例中的地址为`http://10.10.20.50:8900/bin/h5/index.html`,如图3所示：
+Step 2: Click on the menu button of "two-dimensional code" in the upper right corner of LayaIDE to display the two-dimensional code interface. On the left side of the interface, an HTTP address is displayed below the two-dimensional code. The address in the example is`http://10.10.20.50:8900/bin/h5/index.html`As shown in Figure 3:
 
-![图3](img/3.png)<br />
-图3
+![图3](img/3.png)<br / >
+Figure 3
 
-步骤三：点击二维码界面中的，“浏览器打开”按钮，则会在浏览器中以`http://10.10.20.50:8900/bin/h5/index.html`方式打开，打开后画面如图4所示：  
+Step 3: Click on the "Browser Open" button in the two-dimensional code interface, and it will be used in the browser.`http://10.10.20.50:8900/bin/h5/index.html`The way to open, open the screen as shown in Figure 4:
 
-![图4](img/4.png)<br />
-图4
+![图4](img/4.png)<br / >
+Figure 4
 
-步骤四：打开已经安装到手机上的LayaBox测试App，打开后如图5所示：
+Step 4: Open the LayaBox test App that has been installed on the mobile phone, and then open it as shown in Figure 5.
 
-![图5](img/5.png)<br />
-图5
+![图5](img/5.png)<br / >
+Figure 5
 
-步骤五：点击App上面的蓝色二维码图标，扫描步骤二中右侧layaNative的二维码。
+Step 5: Click on the blue two-dimensional code icon on App and scan the two-dimensional code layaNative on the right side of Step 2.
 
 ![图](img/11.png)<br />
-图6
 
-![图](img/13.png)<br />
-图7
+Figure 6
+
+![图](img/13.png)<br / >
+Figure 7
 
 
-步骤六：扫码成功后，测试App会加载并运行Hello LayaBox的项目实例，如图7所示：
+Step 6: After the scan is successful, the test App loads and runs the Hello LayaBox project instance, as shown in Figure 7:
 
-![图7](img/8.png)<br />
-图8
+![图7](img/8.png)<br / >
+Figure 8

@@ -1,40 +1,48 @@
-# 使用谷歌浏览器的性能分析器
+#Using Google browser's performance analyzer
 
 ### 
 
-### **一、性能分析器（Profiles）**
+### **Profiles**
 
-​        性能分析器（Profiles）是 chrome 开发者工具的一部分，可以通过在页面右键选择审查元素或在谷歌浏览器页面按F12 打开 chrome 开发者工具。然后点击 Profiles 切换至性能分析器（Profiles）面板。
+Profiles is part of the Chrome Developer Tool. You can open the Chrome Developer Tool by right-clicking the review element on the page or pressing F12 on the Google Browser page. Then click Profiles to switch to the Profiles panel.
 
- 
 
-###  二、**CPU占用分析**
-
-​         选中 Collect JavaScript CPU Profile，点击 Start 按钮（也可以点击左边黑色实心圆圈），这个时候Chrome 就会开始记录当前网页的方法的执行。结束这个监控需要点击Stop按钮（或左侧的红色实心圆圈）。结束监控后，在左侧 Profiles 下会列出一个监控结果文件，单击可以打开此监控结果文件。
-​        监控结果是以数据表格形式展现的。在这个表格里记录了函数执行的时间、函数执行的顺序和包含关系以及CPU变化趋势。通过分析结果有针对性的优化函数。
-
-​    ![图片1.png](img/1.png)<br/>
-​    （图1）
-
-​     ![图片1.png](img/2.png)<br/>
-​    （图2）
-
-​    ![图片1.png](img/3.png)<br/>
-​    （图3）
 
  
 
-### **三、内存占用分析**
 
-​         选中 Take Heap Snapshot，点击 Take Snapshot 按钮（也可以点击左边黑色实心圆圈），此时会在左侧的 Profiles 栏目下生成一个当前网页的内存快照记录文件。
-​        生成的内存快照文件是以数据表格的形式记录了，当前网页对象的个数、所占的内存大小等。
-​        拍下一个内存快照后，操作页面，之后再拍下一个内存快照。单击选择第二个内存快照，可以选择 Comparison 模式对此第二个快照与第一个快照之间的变化。通过分析，对网页进行优化。
 
-​     ![图片1.png](img/4.png)<br/>
-​    （图4）
+###Two.**CPU Occupancy Analysis**
 
-​    ![图片1.png](img/5.png)<br/>
-​    （图5）
+Select Collect JavaScript CPU Profile and click the Start button (or the black solid circle on the left), at which point Chrome will start recording the execution of the method for the current page. To finish this monitoring, you need to click the Stop button (or the red solid circle on the left). After the monitoring is finished, a monitoring result file will be listed under the left Profiles. Click to open the monitoring result file.
+The monitoring results are presented in the form of data tables. In this table, the time of function execution, the sequence and inclusion relationship of function execution, and the CPU trend are recorded. The result of analysis is a pertinent optimization function.
 
-​    ![图片1.png](img/6.png)<br/>
-​    （图6）
+​![图片1.png](img/1.png)<br/>
+(Fig. 1)
+
+​![图片1.png](img/2.png)<br/>
+(Figure 2)
+
+​![图片1.png](img/3.png)<br/>
+(Figure 3)
+
+
+
+ 
+
+
+
+### **3. Memory occupancy analysis**
+
+Select Take Heap Snapshot, click the Take Snapshot button (or click on the black solid circle on the left), and a memory snapshot record file of the current web page will be generated under the Profiles column on the left.
+The generated memory snapshot files are recorded in the form of data tables, the number of current web page objects, the size of memory occupied, and so on.
+After taking a snapshot of memory, operate the page, and then take a snapshot of memory. Click to select the second memory snapshot, and you can select Comparison mode to change between the second snapshot and the first snapshot. Through analysis, the web page is optimized.
+
+​![图片1.png](img/4.png)<br/>
+(Figure 4)
+
+​![图片1.png](img/5.png)<br/>
+(Fig. 5)
+
+​![图片1.png](img/6.png)<br/>
+(Fig. 6)

@@ -1,117 +1,117 @@
-# 2D关节系统
+#2D Joint System
 
-### 1. 2D关节
+###1. 2D joint
 
-​        在物理游戏开发中，如果想要复杂的系统来提高可玩性，就需要对物体之间进行各种约束，Box2D提供了关节系统。 关节可以对两个或多个物体进行一种约束。
+In the development of physical games, if you want complex systems to improve playability, you need to impose various constraints on objects. Box2D provides joint systems. Joints can impose a constraint on two or more objects.
 
-**Box2D支持的关节有**：
+**Box2D-supported joints include**:
 
-距离关节`DistanceJoint`：两个物体上面各自有一点，两点之间的距离固定不变。
+Distance joint`DistanceJoint`There is one point on each object, and the distance between the two points is fixed.
 
-齿轮关节`GearJoint`：用来模拟两个齿轮间的约束关系，齿轮旋转时，产生的动量有两种输出方式，一种是齿轮本身的角速度，另一种是齿轮表面的线速度。
+Gear joint`GearJoint`To simulate the constraint relationship between two gears, there are two ways to output the momentum generated when the gear rotates, one is the angular speed of the gear itself, the other is the linear speed of the gear surface.
 
-发动机关节`MotorJoint`
+Motor joint`MotorJoint`
 
-鼠标关节`MouseJoint`：用于鼠标操控物体。它试图将物体拖向当前鼠标光标的位置。而在旋转方面就没有限制。
+Mouse joint`MouseJoint`Used for mouse control object. It tries to drag the object to the current mouse cursor position. There are no restrictions on rotation.
 
-平移关节`PrismaticJoint` ：  移动关节允许两个物体沿指定轴相对移动，它会阻止相对旋转。
+prismatic joint`PrismaticJoint`Moving joints allow two objects to move relative along a specified axis, which prevents relative rotation.
 
-滑轮关节`PulleyJoint`：它将两个物体接地(ground)并彼此连接，当一个物体上升，另一个物体就会下降。
+Pulley joint`PulleyJoint`It ground two objects and connect them. When one object rises, the other object falls.
 
-旋转关节`RevoluteJiont`：强制两个物体共享一个锚点，两个物体相对旋转。
+Revolving joint`RevoluteJiont`Force two objects to share an anchor point and rotate relative to each other.
 
-绳索关节`RopeJoint` ：限制两个点之间的最大距离。即使在很大的负载下也阻止连接的物体之间的拉伸。
+Rope joint`RopeJoint`Limit the maximum distance between two points. Even under heavy loads, it prevents tension between connected objects.
 
-焊接关节`WeldJoint`：使两个物体不能相对运动，两个刚体的相对位置和角度都保持不变，像一个整体。
+Welded joint`WeldJoint`The relative position and angle of the two rigid bodies remain unchanged as a whole.
 
-轮子关节`WheelJoint`：围绕节点旋转，包含弹性属性，使得刚体在节点位置发生弹性偏移。
+Wheel joint`WheelJoint`Rotating around the node, including the elastic properties, makes the rigid body elastic offset at the node position.
 
-所有的关节均继承自 Component。
+All joints are inherited from Component.
 
-### 2.关节组件介绍
+###2. Introduction of Joint Components
 
-#### 2.1 距离关节
+####2.1 Distance Joint
 
 ![图1](img/distance.png)<br/>
 
-距离关节约束两个节点的距离始终保持不变，用于木棍，骨骼，弹簧一样的约束关系。
+The distance between the joint constraints and the two nodes remains unchanged. It is used for the same constraints as the stick, the skeleton and the spring.
 
-##### 属性说明
+#####Attribute specification
 
-##### otherBody 
+#####OtherBody
 
-[首次设置有效]关节的连接刚体，可不设置，默认为左上角空刚体。
+The connection rigid body of the joint can not be set. The default is the empty rigid body in the upper left corner.
 
-##### otherAnchor  
+#####OtherAnchor
 
-[首次设置有效]链接刚体链接点，是相对于otherBody的左上角位置偏移。
+[First set valid] Link Rigid Link Point is offset from the upper left corner of the other Body.
 
-##### selfAnchor
+#####SelfAnchor
 
-[首次设置有效]自身刚体链接点，是相对于自身刚体的左上角位置偏移。
+For the first time, the link point of the rigid body is offset from the upper left corner of the rigid body.
 
-##### frequency
+#####Frequency
 
-弹簧系统的震动频率，可以视为弹簧的弹性系数
+Vibration frequency of spring system can be regarded as elastic coefficient of spring.
 
-##### damping
+#####Damping
 
-刚体在回归到节点过程中受到的阻尼，建议取值0~1。
+The damping of rigid body in the process of returning to joints is suggested to be 0-1.
 
-##### length
+#####Length
 
-约束的目标静止长度。
+Restricted target stationary length.
 
-##### collideConnect
+#####CollideConnect
 
-[首次设置有效]两个刚体是否可以发生碰撞，默认为false。（截图为true注意不要混淆）
+[First set valid] Whether two rigid bodies can collide by default is false. (The screenshot is true. Be careful not to confuse)
 
-##### 示例演练
+#####Example drill
 
-我们首先用距离关节`DistanceJoint`做一个单摆效果：
+We first use the distance joint.`DistanceJoint`Make a pendulum effect:
 
-新建一个2d示例项目，取名为test，展开Assets目录下的test文件夹，可以看到预留的图形，供测试物理引擎用，
+Create a new 2D sample project named test and expand the test folder in the Assets directory. You can see the reserved graphics for the test physics engine.
 
-在编辑模式下，按f9可以勾选显示或不显示物理辅助线。如图：
+In editing mode, press F9 to check the display or non-display of physical auxiliary lines. As shown in the picture:
 
 ![图1](img/test.png)
 
-点击确定后，在场景中拖入一个block.png,一个c1.png, 效果如图所示：
+After clicking OK, drag in a block. PNG and a c1. PNG in the scene. The effect is as follows:
 
 ![图1](img/1.png)
 
-然后我们要给这两个sprite添加组件，选中方块之后，点击右侧属性面板的添加组件按钮，添加`BoxCollider`组件，IDE会自动也添加刚体`RigidBody`，如下所示：
+Then we will add components to these two sprites. After selecting the box, click the Add Components button in the right property panel to add components.`BoxCollider`Components, IDEs automatically add rigid bodies as well`RigidBody`As follows:
 
 ![图1](img/add.gif)
 
-同理，给圆球添加`CircleCollider`和joint菜单里面的`DistanceJoint`IDE会自动添加`RigidBody`,最终效果如图：
+In the same way, add the ball`CircleCollider`And the join menu`DistanceJoint`IDE will be added automatically`RigidBody`The final effect is as follows:
 
 ![图1](img/2.png)
 
-按CTRL + S 保存后 ，运行，会看到如下效果：
+Press CTRL + S to save, run, and you will see the following effect:
 
 ![图1](img/1.gif)
 
-并没有出现单摆的效果，那是因为方块的刚体类型是`dynamic`动态的，我们要给他设置成`kinematic`运动类型，使其不受重力影响，固定在一点。选择方块物体，在type属性的下拉菜单中，选择`kinematic`如图：
+There is no pendulum effect, because the rigid body type of the square is`dynamic`Dynamic, we're going to set it up for him.`kinematic`The type of motion, so that it is not affected by gravity, fixed at a point. Select the box object, in the drop-down menu of the type attribute, select`kinematic`As shown in the picture:
 
 ![图1](img/3.png)
 
-保存后运行，我们可以看到，单摆的效果就做出来了：
+After saving and running, we can see that the effect of the pendulum is made:
 
 ![图1](img/2.gif)
 
-下面，我们要做一个稍微丰富一点的物理效果。
+Next, we want to make a slightly richer physical effect.
 
-在场景中，拖入两个圆形，并添加圆形碰撞器`CircleCollider`，给其中一个圆添加距离关节`DistanceJoint`,并绑定另一个圆的刚体，把两个锚点设置在圆的中心，在IDE左下方“层级”面板中中右键添加一个sprite，并添加线性碰撞器`ChainCollider` ，点击`ChainCollider` 把两个点距离拉长，然后单机“线“ 会在线上添加一个折点，反复上述步骤，做出一个折梯型的碰撞体,然后将折线的刚体`RigidBody`的`type`属性设置为`static`静态类型（我们不需要他进行物理运动），然后在碰撞体上方拖入一个方块，并添加矩形碰撞器`BoxCollider`，将他的`restitution` 摩擦力属性设置为0.5，使其拥有弹力。再给折梯的底部做一个小山坡，拖入一个三角形，添加多边形碰撞器`PolygonCollider` ，并将三角形的`RigidBody`刚体类型设置为`Kinematic` 运动类型，使其不受力的影响。最终效果和层级结构如图所示：
+In the scene, drag in two circles and add a circular Collider`CircleCollider`To add a distance joint to one of the circles`DistanceJoint`And bind the rigid body of another circle, set two anchors in the center of the circle, add a sprite and a linear collider by right-clicking in the "Hierarchy" panel at the bottom left of the IDE`ChainCollider`Click`ChainCollider`Lengthen the distance between the two points and add a break point to the line. Repeat the steps mentioned above to make a trapezoidal collision body, and then make the rigid body of the fold line.`RigidBody`Of`type`Property set to`static`Static type (we don't need him to move physically), then drag a box over the collider and add a rectangular Collider`BoxCollider`Take him.`restitution`The friction property is set to 0.5 to give it elasticity. Make a hillside at the bottom of the ladder, drag in a triangle, and add a polygon collider.`PolygonCollider`And the triangular`RigidBody`Rigid body type is set to`Kinematic`The type of movement, so that it is not affected by force. The final effect and hierarchical structure are shown as follows:
 
 ![图1](img/4.png)
 
-完成上述步骤后，保存运行，我们就会看到如下效果：
+After completing the above steps and saving the run, we will see the following effect:
 
 ![图1](img/3.gif)
 
-本篇示例完成后，将会理解和掌握，所有类型的碰撞体，三种刚体类型，弹力系数和距离关节的使用。
+When this example is completed, we will understand and master the use of all types of collisions, three types of rigid bodies, elastic coefficients and distance joints.
 
-后续的文档，会陆续介绍下图所展示的全部效果。
+Follow-up documentation will introduce all the effects shown in the following figure.
 
 ![图1](img/scene.gif)

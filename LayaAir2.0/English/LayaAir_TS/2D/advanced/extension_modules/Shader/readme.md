@@ -1,22 +1,24 @@
-# 使用自定义shader
+#Use custom shader
 
-在游戏或应用开发中，对图形的处理总是多种多样的。
+In game or application development, the processing of graphics is always diverse.
 
-本文将一步步说明如何在LayaAirIDE项目中使用自定义的Shader（着色器）。
+This article will step by step explain how to use a custom Shader in the LayaAirIDE project.
 
-Shader（着色器）有两种。一种是顶点着色器，用于控制几何体的顶点以便绘制出3D表面网格；另外一种是片元着色器，用于控制像素的颜色。这两种着色器可以同时使用。
+Shader has two kinds. One is the vertex shader, which controls the vertices of the geometry to draw the 3D surface mesh; the other is the chip shader, which controls the color of the pixels. These two shaders can be used at the same time.
 
-### 使用自定义shader
+###Use custom shader
 
-**1.新建一个LayaAirIDE的TypeScript空项目。并在项目输出目录下添加一个图片资源。**
+**1. Create a new TypeScript empty project for LayaAirIDE. And add a picture resource to the project output directory.**
 
-**2.编写着色器变量类。**
+**2. Write the shader variable class.**
 
-在src/shaser目录下新建一个类文件myShaderValue.ts，用于编写着色器程序的变量类。
+A new class file myShaderValue. TS is created in the src/shaser directory to write variable classes for shader programs.
 
-代码如下：
+The code is as follows:
+
 
 ```typescript
+
 class myShaderValue extends Laya.Value2D {
     public texcoord:any;
     constructor() {
@@ -30,13 +32,16 @@ class myShaderValue extends Laya.Value2D {
 }
 ```
 
-**3.编写着色器入口类。**
 
-在src/shader目录下新建一个类文件myShader.ts，用于编写着色器程序的入口类
+**3. Write shader entry class.**
 
-代码如下：
+Create a new class file myShader.ts under src/shader directory to write the entry class of the shader program
+
+The code is as follows:
+
 
 ```typescript
+
 /*
 自定义着色器
 */
@@ -54,17 +59,20 @@ public static shader: myShader = new myShader();
 }
 ```
 
-**4.在项目中使用刚编写的着色器。**
 
-在src目录下新建一个类文件myShaderSprite.ts继承自Sprite类，用于编写对自定义的着色器的使用代码
+**4. Use the newly written shader in the project.**
 
-在这个类中，定义了init函数，给此函数传入一个纹理（Texture）对象，在init函数内生成了一组顶点数据和一组由这些顶点的索引组成的三角形索引数据。
+Create a new class file myShaderSprite. ts in the SRC directory that inherits from the Sprite class to write code for the use of custom shaders
 
-注意：使用自定义着色器时，需要设置此显示对象类的渲染模式： this._renderType |= RenderSprite.CUSTOM;并且需要重写此类的渲染处理函数。
+In this class, the init function is defined, and a texture object is passed to the function. Within the init function, a set of vertex data and a set of triangular index data consisting of the indexes of these vertices are generated.
 
-代码如下：
+Note: When using custom shaders, you need to set the rendering mode of this display object class: this. _renderType |= RenderSprite. CUSTOM; and you need to override the rendering processing functions of this class.
+
+The code is as follows:
+
 
 ```typescript
+
 /*
 该类需继承自显示对象类
 在该类中使用了自定义的着色器程序
@@ -146,11 +154,14 @@ class myShaderSprite extends Laya.Sprite {
 }
 ```
 
-**5.在主文档类添加myShaderSprite显示对象**
 
-在Main.ts中加载一个图片，在加载完成回调函数内实例化myShaderSprite类并添加到舞台上显示，将加载好的图片纹理传递给myShaderSprite类的init方法。代码如下：
+**5. Add myshadersprite display object in the main document class**
+
+Load a picture in Main. ts, instantiate the myShaderSprite class in the load completion callback function and add it to the stage display, and pass the loaded image texture to the init method of the myShaderSprite class. The code is as follows:
+
 
 ```typescript
+
 /*
 * 初始化LayaAir 引擎。
 * 加载一个图片资源，加载完成后，创建一个使用了自定义着色器的显示对象类实例，将加载好的图片纹理对象传递给这个实例，然后将这个显示对象添加到舞台上进行显示。
@@ -174,10 +185,11 @@ class Main {
 new Main();
 ```
 
-**8.调试运行项目，查看效果。**
 
-在页面里显示了一个三角形图片
+**8. Debug and run the project to see the effect.**
 
-我们可以在myShaderSprite的init方法里修改顶点数据vbArray或给ibArray再添加一个三角形数据，来改变最终的显示效果。
+A triangle image is displayed on the page.
+
+We can modify the vertex data vbArray in myShaderSprite's init method or add another triangle data to ibArray to change the final display effect.
 
 ![1](img\1.png)</br>

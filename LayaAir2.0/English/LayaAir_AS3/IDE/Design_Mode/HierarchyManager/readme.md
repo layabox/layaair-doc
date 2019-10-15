@@ -1,134 +1,138 @@
-# 层级管理器
+#Level Manager
 
-层级管理器是设计模式中的核心组成部分之一，所有在`场景编辑器`中的组件都将在`层级管理器`中以层级结构进行展现。
+The hierarchy manager is one of the core components of the design pattern, all of which are`场景编辑器`The components in the`层级管理器`Hierarchical structure is used to show.
 
 
 
-### 1、层级结构
+###1. Hierarchical structure
 
-#### 1.1 根级
+####The 1.1 level
 
-除非在创建UI页面时选择Dialog，否则，无论是UI还是动画，根级都是View，ID为1。如图1所示。
+Unless you choose Dialog when creating UI pages, the root level is View and the ID is 1 for both UI and animation. As shown in Figure 1.
 
-![图1](img/1.png) <br />(图1)
+![图1](img/1.png)<br / > (Fig. 1)
 
-#### 1.2 多层嵌套
+####1.2 Multilayer Nesting
 
-层级管理器中允许多层嵌套，每一个父级层都会以灰色三角标开头，点击三角标可以展开层级，如图2所示。
+Hierarchy Manager allows multi-tier nesting. Each parent level begins with a gray triangle label. Clicking on the triangle label expands the hierarchy, as shown in Figure 2.
 
-![图2](img/2.png)<br />(图2)
+![图2](img/2.png)<br / > (Fig. 2)
 
-#### 1.3 层级结构优化
+####1.3 Hierarchical Structure Optimization
 
-在层级管理器中，组件图标前会有不同颜色的圆点。同样的颜色代表相同图集的节点，如果颜色值不同，如图3所示，则需要进行优化。
+In the hierarchical manager, there are dots of different colors in front of the component icon. The same color represents the same set of nodes. If the color values are different, as shown in Figure 3, then optimization is needed.
 
-![图3](img/3.png) <br />(图3) 不同颜色的圆点交叉排列时，需要优化
+![图3](img/3.png)< br /> (fig. 3) When the dots of different colors are crossed, they need to be optimized.
 
-优化的方式很简单，让同一层级下的相同颜色圆点排列在一起即可，这里有个小技巧需要注意一下，当拖到组件下，为一条直线时，是在同一层级改变顺序。如果在拖动组件的时候，显示是一个框，则会拖动到目标组件的子层级。另外，还可以通过快捷键来改变层级顺序，`ctrl + 方向键向上`为上移一个层级，`ctrl+方向键向下`为下移一个层级。
+The way to optimize is very simple, so that the same color dots in the same level can be arranged together, here is a little trick to note, when dragged to a component, for a straight line, it is at the same level to change the order. If the display is a box when dragging a component, it is dragged to the sublevel of the target component. In addition, the hierarchical order can be changed by shortcut keys.`ctrl + 方向键向上`To move up a level,`ctrl+方向键向下`Move to the next level.
 
-![图4](img/4.png) <br /> (图4)
+![图4](img/4.png)<br/> (Figure 4)
 
-改变层级显示顺序后，圆点颜色相同时，才算达到优化的目标。如图5所示。
+When the color of the dots is the same after changing the display order of the layers, the optimization goal can be achieved. As shown in Figure 5.
 
-![图5](img/5.png) <br /> （图5）
+![图5](img/5.png)<br/> (Fig. 5)
 
 
 
-### 2、层级管理器面板的功能
+###2. Functions of Hierarchical Manager Panel
 
-#### 2.1 显示与隐藏组件
+####2.1 Display and Hide Components
 
-当选中`层级管理器`中的某个组件，点击组件右侧的`眼睛图标`会**隐藏**`场景编辑器`中的**对应组件**，再次点击会解除隐藏。效果如动图6所示。
+When selected`层级管理器`Click on the right side of the component`眼睛图标`Meeting**hide**`场景编辑器`Medium**Corresponding components**Click again to unhide. The effect is shown in Figure 6.
 
-![动图6](img/6.gif) <br />(动图6)
+![动图6](img/6.gif)<br/> (Motion 6)
 
-#### 2.2 锁定组件与解锁
+####2.2 Locking Components and Unlocking
 
-选中`层级管理器`中的某个组件，点击组件右侧的`锁形图标`会**锁定**`场景编辑器`中的对应组件，再次点击会解除锁定。效果如动图7所示。
+Selection`层级管理器`Click on the right side of the component`锁形图标`Meeting**locking**`场景编辑器`The corresponding component in the lock will be unlocked by clicking again. The effect is shown in Figure 7.
 
-![动图7](img/7.gif) <br />(动图7)
+![动图7](img/7.gif)<br/> (Figure 7)
 
 
 
-#### 2.3 底部功能按钮
+####2.3 Bottom Function Button
 
-层级管理器的底部功能按钮，是针对整个层级列表进行操作。
+The bottom function button of the hierarchy manager is to operate on the whole hierarchy list.
 
-点击`刷新`按钮，将会刷新整个层级管理器列表；
+click`刷新`Button, will refresh the entire hierarchy manager list;
 
-点击`眼睛`按钮，会将整个层级管理器的组件全部隐藏或显示；
+click`眼睛`Buttons will hide or display all the components of the hierarchical manager.
 
-点击`锁形`按钮，会将整个层级管理器的组件全部锁定或解除锁定；
+click`锁形`The button will lock or unlock all the components of the hierarchical manager.
 
-具体效果如动图8所示。
+The specific effect is shown in Figure 8.
 
-![动图8](img/8.gif) <br >（动图8）
+![动图8](img/8.gif)<br> (Motion 8)
 
 
 
-#### 2.4 组件查找过滤
+####2.4 Component Finding and Filtering
 
-组件在层级管理器中查找，可以通过组件的原始名称的关键字过滤，也可以通过组件的别名进行过滤，效果如图9所示。
+Components can be found in the hierarchical manager. They can be filtered either by keywords of the original name of the component or by aliases of the component. The effect is shown in Figure 9.
 
-![图9](img/9.png) <br /> （图9）
+![图9](img/9.png)<br/> (Figure 9)
 
-**Tips：组件的别名，通过属性设置器的name属性进行设置。设置别名后方便组件的查找与定位。**
+**Tips: An alias for a component, set by the name attribute of the property setter. It is convenient to find and locate components after setting aliases.**
 
 
 
-### 3、层级管理器右键菜单操作
+###3. Right-click menu operation of hierarchical Manager
 
-#### 3.1 复制、粘贴、删除组件
+####3.1 Copy, Paste, Delete Components
 
-选中层级管理器中的组件后，右键可进行复制、剪贴、删除以及粘贴等常用操作。如图10所示。
+After selecting the components in the hierarchical manager, right-click can perform common operations such as copy, clip, delete and paste. As shown in Figure 10.
 
-![图10](img/10.png) <br />（图10）
+![图10](img/10.png)<br/> (Fig. 10)
 
-**Tips：**也可以使用快捷键`ctrl+c`进行复制、`ctrl+x`进行剪切、`ctrl+v`进行粘贴、`Delete`进行删除。
+**Tips:**You can also use shortcuts`ctrl+c`Reproduction,`ctrl+x`Shearing,`ctrl+v`Paste.`Delete`Delete.
 
-#### 3.2 转换与打散容器
+####3.2 Conversion and Dispersion Containers
 
-选择一个或多个组件后，右键可以`转换为容器`，如图11所示。
+After selecting one or more components, right-click can`转换为容器`As shown in Figure 11.
 
-![图11](img/11.png) <br/>（图11）
+![图11](img/11.png)<br/> (Fig. 11)
 
-**Tips：**也可以使用快捷键`ctrl+B`将组件`转换为容器`。
+**Tips:**You can also use shortcuts`ctrl+B`Components`转换为容器`。
 
-选中容器组件，右键选择`打散容器`可以将容器层级关系解除，如动图12所示。
+Select Container Component, Right-click Select`打散容器`The container hierarchy can be released as shown in Figure 12.
 
-![动图12](img/12.gif) <br /> (动图12)
+![动图12](img/12.gif)<br/> (Motion 12)
 
-**Tips：**也可以使用快捷键`ctrl+U`将容器打散。
+**Tips:**You can also use shortcuts`ctrl+U`Disintegrate the container.
 
-#### 3.3 全部收起和展开
+####3.3 Full collection and development
 
-点击图标前的三角标可以展开或收起当前容器下的组件，右键`全部收起`和`全部展开`可以展开或收起整个根级下的组件，效果如动图13所示。
+Click on the triangle before the icon to expand or retrieve the components under the current container. Right-click`全部收起`and`全部展开`Components at the entire root level can be expanded or retracted, as shown in Figure 13.
 
-![图13](img/13.gif) <br /> (动图13)
+![图13](img/13.gif)<br/> (Figure 13)
 
-#### 3.4 创建组件节点
+####3.4 Create Component Nodes
 
-选中组件后可以通过右键菜单快捷的创建常用组件，右键菜单中`创建2D`可以直接创建2D基础组件，`创建Graphics`可以创建矢量图形组件，`创建UI组件`可以创建UI常用组件，这些组件的创建对应组件库中的组件，如图14。
+After selecting components, you can quickly create common components by right-clicking menu, right-clicking menu`创建2D`You can directly create 2D infrastructure components.`创建Graphics`You can create vector graphics components.`创建UI组件`You can create common UI components that create components in the corresponding component library, as shown in Figure 14.
 
-![图14](img/14.png) <br />(图14)
+![图14](img/14.png)< br / > (Figure 14)
 
-**Tips**：*右键的组件创建与组件库完全对应，所以也可以通过组件库进行组件的创建。*
+**Tips**:*Right-click component creation corresponds to component libraries, so component creation can also be done through component libraries.*
 
 
 
-### 4、其它操作
+###4. Other operations
 
-#### 4.1多选操作
+####4.1 Multiple Operations
 
-按住Shift可以同时选择同一层级下的多个相邻组件；
+By holding down Shift, multiple adjacent components at the same level can be selected simultaneously.
 
-按住Ctrl可以同时选择同一层级下的多个相邻或相隔的组件； 
+Press Ctrl to select multiple adjacent or separated components at the same level at the same time.
 
-#### 4.2添加组件操作
+####4.2 Adding Component Operations
 
-除右键菜单中直接创建组件外，还可以从`组件库`以及`资源管理器`中以拖拽的方式创建组件，当场景编辑器中多个组件叠加的复杂场景设计时，直接通过`层级管理器`创建和管理组件是比较高效的开发方式。组件添加操作如动图15所示。
+In addition to creating components directly from the right-click menu, you can also create components from`组件库`as well as`资源管理器`Components are created in drag-and-drop mode. When multiple components are overlapped in the scene editor for complex scene design, they are directly created by drag-and-drop mode.`层级管理器`Creating and managing components is a more efficient way of development. Component addition operations are shown in Figure 15.
 
 ![动图15](img/15.gif) <br /> (动图15)
+
+
+
+
 
 
 

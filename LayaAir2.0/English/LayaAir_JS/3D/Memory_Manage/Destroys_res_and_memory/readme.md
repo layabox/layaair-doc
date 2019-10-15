@@ -2,19 +2,21 @@
 
 ###### *version :2.0.2beta   Update:2019-5-8*
 
-##### 关于为什么要资源释放:
+#####On why resources should be released:
 
-在LayaAir 3D游戏开发中，资源释放非常重要。3D资源包括了模型、贴图、材质、动画等，为了达到好的画面效果，文件会比2D大很多，而3D引擎基本所有资源都会放入GPU中进行计算渲染，因此占用很多的显存。当游戏关卡的不断加载，游戏不断深入，放入显存中的资源越来越多，如果不释放资源，那么游戏最后终将崩溃。
+In the development of LayaAir 3D games, resource release is very important. 3D resources include model, map, material, animation, etc. in order to achieve a good picture effect, the file will be much larger than 2D, and all the resources of 3D engine will be put into GPU for calculation and rendering, so it takes up a lot of display memory. When the game level is constantly loaded, the game continues to deepen, and more and more resources are put into the display memory. If the resources are not released, the game will eventually collapse.
 
-显存不像内存，内存有垃圾回收机制，而显存不一样，必须手动释放，因此显存的资源释放必须受到重视！
+Unlike memory, there is a garbage collection mechanism in memory, but unlike display memory, it must be released manually, so the resource release of display memory must be taken seriously.
 
-本次使用的示例为：在 **资源加载篇** 的 **资源加载** 的示例上简单修改得来。
+The examples used here are as follows:**Resource Loading Paper**Of**Resource loading**The example is simply modified.
 
-对单个的资源销毁释放内存，需要调用该资源对象的`destroy()`方法。
+To destroy a single resource and free memory, the resource object needs to be called`destroy()`Method.
 
-> 网格示例使用的网格与单独预设加载使用的是同一个网格，所以我们在写这个示例前，先复制了LayaMonkey文件夹，命名为LayaMonkey2方便与预设加载示例区分。如果对一个还在使用的网格进行销毁，会导致报错。
+> The grid example uses the same grid as the separate preset load, so before we write this example, we first copy the LayaMonkey folder, named LayaMonkey 2, to distinguish it from the preset load example. If a grid in use is destroyed, an error will be reported.
+
 
 ```typescript
+
 //加载Mesh
 Laya.Mesh.load("res/threeDimen/skinModel/LayaMonkey2/Assets/LayaMonkey/LayaMonkey-LayaMonkey.lm", Laya.Handler.create(this, function(mesh) {
   	........
@@ -29,18 +31,19 @@ Laya.Mesh.load("res/threeDimen/skinModel/LayaMonkey2/Assets/LayaMonkey/LayaMonke
 }));
 ```
 
-**加载完成**
 
-在资源全部加载完成之后，我们可以看到 67.26 M 的显存，10.13 M 的内存。
+**Load complete**
 
-如果单纯的销毁使用该网格的精灵，不对网格资源本身做处理，显存是不会有减少的，网格资源还是在显存中。（开发者可以自行注释掉对网格销毁那一行代码查看效果）
+After all the resources are loaded, we can see 67.26 M of memory and 10.13 M of memory.
 
-![](img/1.png)<br>(图1)
+If the wizard of the grid is simply destroyed and the grid resource itself is not processed, the display memory will not be reduced, and the grid resource is still in the display memory. (Developers can comment out the line of code that destroys the grid to see the effect on themselves)
 
-**执行销毁后**
+![] (img/1.png)<br> (Figure 1)
 
-![](img/2.png)<br>(图2)
+**After execution of destruction**
 
-​		在执行销毁代码后，可以明显的看到，还有 67.5 M 显存，10.04 M 内存。网格模型被移出且资源已被销毁。
+![] (img/2.png)<br> (Figure 2)
 
-​		对应其他的资源类型，像Mesh,Material,Texture2D等可以使用相同的方法销毁资源。
+After executing the destroyed code, it is obvious that there are still 67.5 M memory and 10.04 M memory. The grid model has been moved out and resources have been destroyed.
+
+For other resource types, such as Mesh, Material, Texture 2D, etc., the same method can be used to destroy resources.

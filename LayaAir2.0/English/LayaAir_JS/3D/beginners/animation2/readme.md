@@ -1,64 +1,70 @@
-# LayaAir3D之动画二
+#LayaAir3D Animation II
 
-在上一章节课程中我们了解了骨骼动画的unity处理与导出使用，在本节中，我们将继续介绍材质动画与刚体动画的制作与使用，它们在3D游戏的特效中运用非常广泛。
+In the last chapter of the course, we learned about the unit processing and export of skeletal animation. In this section, we will continue to introduce the production and use of material animation and rigid animation, which are widely used in the special effects of 3D games.
 
-### 材质动画
+###Material animation
 
-骨骼动画主要是以改变模型顶点的方式产生动画，而材质动画则是以改变材质的颜色与贴图方式进行动画。
+Skeletal animation mainly produces animation by changing the vertex of the model, while material animation produces animation by changing the color and mapping of the material.
 
-在三维软件中，例如3ds max中虽然可以制作材质相关动画，但导出成FBX格式时，unity并不能识别，也无法导出成LayaAir 3D引擎所识别的材质动画。因此游戏模型的材质动画必须在unity中制作，并进行某些设置导出后才能为LayaAir 3D引擎使用。
+In three-dimensional software, such as 3ds max, although material-related animation can be produced, when it is exported to FBX format, unit can not recognize, nor can it be derived to material-related animation recognized by LayaAir 3D engine. Therefore, the material animation of the game model must be made in Unity, and some settings must be exported before it can be used for the LayaAir 3D engine.
 
-下面我们就用霓虹灯材质动画（图1）效果来讲解在unity中创建动画并导出使用方法，步骤如下。
+Next we will use neon material animation (Figure 1) effect to explain how to create animation in Unity and derive the use method, the steps are as follows.
 
 ![1](img/1.gif)(图1)</br>
 
 
 
-### 导入模型，修改材质类型
-
-在3ds max中制作的空调机箱、霓虹灯带导出成FBX后，再导入untiy中（开发者们可以偿试在3ds max中制作材质动画并导出使用，可以发现在unity无法播放）。
-
-拖拽入场景中，选择需要制作的动画模型，在右侧界面中修改其材质，Shader类型为粒子加色类型Particles/Additive（目前暂时只支持此种材质类型的动画 ，其他的shader类型导出时会报错）。
-
-![2](img/2.png)(图2)</br>
 
 
 
-### 创建材质动画
 
-1、修改好材质类型后，同样选择要制作动画的模型，点击菜单栏window下Animation打开动画编辑界面，快捷键Ctrl+6。
+###Import model, modify material type
 
-2、点击create按钮创建动画并取名，本例中取名为uvAnimation，保存后在资源管理器中会生成动画文件uvAnimation。
+After exporting the air-conditioning chassis and neon bands made in 3ds Max to FBX, they are imported into unty (developers can try to make material animation in 3ds Max and export it to use, and it can be found that unit can not play).
 
-3、选择时间轴上时间，修改材质的UV属性Offset中的X方向，每0.05秒调整一次UV位置0.25（相当于贴图向左移动了25%宽度），可以看到霓虹灯模型材质变化了，按时间依次进行调整，形成一个动画循环。
+Drag and drop into the scene, select the animation model that needs to be made, modify its material in the right interface, Shader type is Particles/Additive (currently only supporting animation of this material type, other shader types will report errors when exported).
 
-4、修改动画帧的曲线变化，默认为线形滑动动画，不符合我们的动画需求，修改为恒量变化，播放查看，材质动画按需求全部完成。当然，如果需要制作流水、浮云飘动动画可以用线形变化方式。
-
-**tips：使用standard标准Shader类型制作材质动画也可，但注意如果动画编辑界面左框中出现了LayaAir不支持的属性，例如材质Emission属性，在资源导出时会报错，可以将它右键移除，即可正常导出。**
-
-此种制作动画方式与3ds max中制作流程基本相同，可以让美术设计师直接在unity中编辑（图3）。
-
-![3](img/3.gif)(图3)</br>
+![2](img/2.png)(Fig. 2) </br>
 
 
 
-### 创建动画控制器
+###Creating Material Animation
 
-与之前的创建动画控制器相同，在资源管理器中右键创建动画控制器，取名为uvAction，双击打开后，将上一步创建的动画文件uvAnimation拖拽入动画控制器中。
+1. After modifying the material type, choose the same model to make animation, click Animation under the menu bar window to open the animation editing interface, and the shortcut key Ctrl+6.
 
-选择模型，将动画控制器拖拽入模型的动画组件中，点击unity运行，我们就可以看到动画按我们的需求播放了（图4）。
+2. Click the Create button to create the animation and name it. In this case, it is named uvAnimation. After saving, the animation file uvAnimation will be generated in the resource manager.
 
-![4](img/4.gif)(图4)</br>
+3. Select the time on the time axis, modify the X direction in the UV attribute Offset of the material, adjust the position of the UV 0.25 every 0.05 seconds (equivalent to 25% width of the map moving to the left), you can see that the material of the neon model has changed, and adjust it in turn according to the time, forming an animation cycle.
+
+4. Modify the curve change of the animation frame, default is linear sliding animation, which does not meet our animation needs. Modify it to constant change, play and view. Material animation is completed as required. Of course, if you need to make animations of running water and floating clouds, you can use the linear mode.
+
+**Tips: Making material animation using standard Shader type is also possible, but note that if there are attributes that LayaAir does not support in the left box of the animation editing interface, such as material Emission attribute, when resources are exported, an error will be reported, and it can be removed by right-click to export normally.**
+
+This method of animation production is basically the same as that in 3ds max, which allows art designers to edit directly in unit (Figure 3).
+
+![3](img/3.gif)(Fig. 3) </br>
 
 
 
-### 导出并使用动画资源
+###Create an Animation Controller
 
-在unity中编辑好动画，用LayaAir插件导出Sprite3D类型.lh资源，如果导出时没有报错，将资源拷贝到项目的h5目录下，那么在项目中可以直接用Sprite3D.load()方法加载或预加载。
+Similar to previous animation controllers, right-click in Explorer to create an animation controller, named uvAction, double-click open, drag and drop the animation file uvAnimation created in the previous step into the animation controller.
 
-参考以下代码，加载完成动画2000毫秒后动画停止（图1）。
+Select the model, drag the animation controller into the animation component of the model, click Unity to run, we can see that the animation is playing according to our needs (Figure 4).
+
+![4](img/4.gif)(Fig. 4) </br>
+
+
+
+###Export and use animation resources
+
+Edit the animation in unity, and use the layaair plug-in to export sprite3d type. LH resources. If there is no error during export, copy the resources to the H5 directory of the project, then you can directly use sprite3d. Load() method to load or preload in the project.
+
+Referring to the following code, the animation stops after loading the animation for 2000 milliseconds (Figure 1).
+
 
 ```typescript
+
 //创建加载材质动画模型
 Laya.Sprite3D.load("LayaScene_CeShiDemo/Cube.lh",Laya.Handler.create(this,function(sp){
   var box = scene.addChild(sp);
@@ -77,22 +83,23 @@ _proto.onLoop = function(){
 
 
 
-### 刚体动画（变换动画）
 
-刚体动画又称为变换动画，是指不改变模型顶点、材质的基础上，只对模型进行旋转、缩放、位移的动画，这种动画在游戏中也经常使用，比如说脚底光环、刀光等。当然刚体动画与材质动画也经常结合使用。
+###Rigid Body Animation (Transform Animation)
 
-刚体动画与材质动画在制作上也有区别，材质动画必须在unity中制作，否则无法识别和播放动画，而刚体动画可以在3D软件中制作再导入unity中，它可以被识别。
+Rigid animation, also known as transformation animation, refers to the animation that only rotates, scales and displaces the model without changing the vertex and material of the model. This animation is often used in games, such as foot halo, knife light, etc. Of course, rigid animation and material animation are often used together.
 
-建议在untiy中编辑动画，刚体动画与材质动画结合使用，配上粒子特效动画，效果更佳，三维软件只提供基本模型导入即可！
+Rigid animation is different from material animation in production. Material animation must be made in unit, otherwise it can not recognize and play animation. Rigid animation can be produced in 3D software and then imported into unit, which can be recognized.
 
-以下为制作的刚体动画效果（图5），对四个模型片分别使用了不同的材质，然后对模型进行了旋转和缩放修改产生动画。
+It is suggested to edit animation in unty, combine rigid animation with material animation, and add particle special effect animation. The effect is better. Three-dimensional software only provides basic model import.
 
-![5](img/5.gif)(图5)</br>
+The following is the rigid animation effect (Fig. 5). Different materials are used for the four model films, and then the model is rotated and scaled to produce animation.
+
+![5](img/5.gif)(Fig. 5) </br>
 
 
 
-### 摄像机动画
+###Camera animation
 
-LayaAir摄像机目前还无法导出，在未来的版本中，摄像机可以导出到引擎中使用，因此，如果在unity中制作了摄像机动画，导出后在游戏中也能进行控制使用。
+LayaAir cameras can not be exported at present. In future versions, cameras can be exported to the engine for use. Therefore, if the camera animation is made in Unity, it can also be used in the game after export.
 
-它在unity中的动画制作方法与刚体动画一致，可对它的属性进行动画修改。使用加载方式也一致。
+Its animation method in Unity is consistent with rigid animation, and its attributes can be modified by animation. The same loading method is used.

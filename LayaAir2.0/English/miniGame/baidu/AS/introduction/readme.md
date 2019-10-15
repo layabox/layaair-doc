@@ -1,66 +1,67 @@
-# 百度小游戏入门介绍
+#Introduction to Baidu Small Game
 
-> Author: charley
+> Author: Charley
 
-##### 首先，我们要了解什么是百度小游戏？
+#####First of all, we need to understand what is Baidu games?
 
-小游戏官方的解释是：
+The official explanation for the game is:
 
-> 百度小游戏是百度小程序的一个类目，它即点即玩，无需下载安装，体验轻便，可以和百度内的好友一起玩，比如PK、围观等。
+>Baidu small game is a category of Baidu small program, which is click to play, no need to download and install, light experience, can play with friends in Baidu, such as PK, onlookers, etc.
 
-即点即玩，无需下载安装。这应该就是H5游戏了吧？
+Play on demand without downloading or installing. This should be the H5 game, right?
 
-怎么解释呢？这要先从H5的定义说起……
+How to explain it? Let's start with the definition of H5...
 
-通常大家都认为H5就是HTML5的简称，但是在开发者的眼里，HTML5只是一个WEB技术标准，符合这个标准的，并且能在浏览器里运行的游戏才是HTML5游戏。而更多的人，对技术了解不多。为了便于理解，把即点即玩，无需下载安装的游戏都称之为H5游戏，还有人叫手机页游。
+Usually people think that H5 is short for HTML5, but in the eyes of developers, HTML5 is only a WEB technical standard, which meets the standard, and the game that can run in the browser is HTML5 game. More people do not know much about technology. For ease of understanding, the game that can be played immediately without downloading and installing is called H5 game, and some people call it mobile page tour.
 
-百度小游戏的运行环境并不是浏览器，也不能在浏览器中运行，而是运行于百度APP中的Runtime。尽管百度小游戏的接口兼容大部分Canvas和Webgl，具有即点即玩，无需下载安装的HTML5特性。显然，从严格的定义来讲，百度小游戏不是标准的HTML5游戏。
+The running environment of Baidu small game is not browser, nor can it run in browser, but Runtime running in Baidu APP. Although the interface of Baidu games is compatible with most Canvas and Webgl, it has the feature of play-as-you-go without downloading and installing HTML5. Obviously, Baidu games are not standard HTML5 games by strict definition.
 
-**那么，**如何能做到开发的游戏还能在浏览器中也运行起来呢？
+**Well,**How can the game developed be run in browsers?
 
-#### 开发者只能使用百度小游戏的开放API开发吗？
+####Can developers only use the open API for Baidu games?
 
-带着这两个问题，我们继续介绍。
+With these two questions, let's continue.
 
-众所周知，LayaAir引擎是基于HTML5的全平台引擎，既然是全平台，那当然不能错过百度小游戏啦！
+As we all know, LayaAir engine is a full platform engine based on HTML5. Since it is a full platform, of course, Baidu games can not be missed!
 
-所以，在百度小游戏发布的当天，LayaAir引擎也为开发者推出百度小游戏的适配库。自LayaAir 1.8.0版开始，开发者下载最新版本引擎或IDE，只需要按照适配教程文档，初始化一下适配程序，即可将HTML5游戏项目无缝适配为百度小游戏项目。LayaAirIDE 2.0更是针对百度小游戏的开发与发布做了大量的优化。
+So, on the day Baidu games were released, LayaAir engine also launched an adapter library for Baidu games for developers. Since LayaAir 1.8.0, developers have downloaded the latest version of the engine or IDE. They can seamlessly adapt HTML5 game project to Baidu mini-game project by initializing the adapter according to the adaptation tutorial document. LayaAirIDE 2.0 has done a lot of optimization for the development and release of Baidu games.
 
-这样，通过LayaAir引擎开发出来的项目，不仅可以运行在浏览器中、或者打包成为APP（iOS与Android）、还可以运行在百度小游戏的平台中。
+In this way, the project developed by LayaAir engine can run not only in browser, or packaged into APP (iOS and Android), but also in Baidu small game platform.
 
-或许，开发者还想了解，既然百度小游戏不是HTML5，
+Maybe developers want to know that Baidu games are not HTML5.
 
-#### 那在开发的过程中需要注意哪些差异呢？
+####What differences should we pay attention to in the process of development?
 
-如果是采用百度官方API开发的话，还是要有一些要注意的，比如不支持DOM与BOM、小游戏只能有一个画布、不支持Eval、不支持XML等等……
+If it is developed with Baidu's official API, there are still some things to be noted, such as not supporting DOM and BOM, games can only have a canvas, not supporting Eval, not supporting XML, etc.
 
-但是，
+However,
 
-对于LayaAir引擎的开发者来讲，不用刻意去了解到底有哪些差异，照正常的LayaAir引擎开发规则去开发就可以了。
+For the developers of LayaAir engine, it is not necessary to understand the differences, just follow the normal LayaAir engine development rules.
 
-> 注意：百度小游戏虽然是小程序的类目，但不等同于小程序，API也不同，LayaAir引擎并不支持开发百度小程序。
+> Note: Baidu small game is a category of small programs, but it is not the same as small programs, APIs are different, LayaAir engine does not support the development of Baidu small programs.
 
-#### **开发小游戏需要有几个注意的地方：**
+#### **There are several points to note in developing small games:**
 
-##### 1、与LayaAir 1.X不同，LayaAir 2.X不再需要手动写小游戏适配库代码
+#####1. Unlike LayaAir 1.X, LayaAir 2.X no longer requires manual writing of game adapter library code.
 
-##### 2、开发完成后，直接点击项目发布按钮，可一键发布为百度小游戏项目。如图所示。
+#####2. After the completion of development, click the project release button directly, and can be released as Baidu small game project with one button. As shown in the figure.
 
 ![图1](img/3.png)  
 
-重点说一下，通过文件提取功能，可以把项目中5M或者10M百度本地包的文件直接在发布的时候提取到百度小游戏项目目录中。用于项目中本地包的剥离。
+
+Focus on that, through the file extraction function, you can extract the files of 5M or 10M Baidu local package directly into the Baidu small game project catalogue at the time of release. Used for peeling out local packages in projects.
 
 
 
-关于其它的小游戏开发注意事项与相关经验，请查看其它的LayaAir小游戏文档。
+For other small game development considerations and related experience, please see other Laaya Air small game documents.
 
 
 
-另外，强烈推荐要看一看百度小游戏官方的文档，LayaAir引擎的文档更多的是引擎相关的，当然也会混合了一些小游戏接口的应用介绍，但是仔细看看百度官方文档肯定没错。
+In addition, it is strongly recommended to look at the official documents of Baidu mini-games. The documents of LayaAir engine are more engine-related. Of course, there are also some application introductions of mini-games interface. But it is certainly right to look at Baidu official documents carefully.
 
 
 
-链接如下：
+The links are as follows:
 
 [https://smartprogram.baidu.com/docs/game/tutorials/tutorials/tutorials/](https://smartprogram.baidu.com/docs/game/tutorials/tutorials/tutorials/)
 

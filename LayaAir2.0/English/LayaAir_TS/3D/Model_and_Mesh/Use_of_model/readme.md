@@ -2,17 +2,19 @@
 
 ###### *version :2.0.2beta   Update:2019-4-26*
 
-3D模型在有时候会由多个子模型对象构成，例如场景模型.ls，基本都是由多个物体模型与材质构成，外层是Sprite3D容器，内部才是真正的模型MeshSprite3D或SkinnedMeshSprite3D。并且还可能会有多个层次嵌套。
+In some cases, 3D models are composed of multiple sub-model objects, such as scene model. ls, which are basically composed of multiple object models and materials. The outer layer is a Sprite 3D container, while the inner part is the real model Mesh Sprite 3D or Skinned Mesh Sprite 3D. There may also be multiple levels of nesting.
 
-#### 获取子对象模型网格
+####Getting Subobject Model Grid
 
-在编写游戏逻辑时，有的模型需要被修改，或者是切换与删除模型、或者是给模型加组件、或者是获取模型上的动画组件及修改模型的材质等。这都需要从加载的模型中去获取子对象，我们可以通过 **getChildAt()、getChildByName()** 方法去获取子对象，这与2D引擎获取子对象方法一样。
+When writing game logic, some models need to be modified, either to switch and delete models, or to add components to models, or to obtain animation components on models and modify the material of models. All of these need to get sub-objects from the loaded model, which we can use.**GetChildAt (), getChildByName ()**Method to get sub-objects, which is the same as the method of getting sub-objects by the 2D engine.
 
-下面我们来加载一个场景的.ls文件，然后获取它的子对象。在获取子对象之前，建议打开.ls文件查看模型的父子层级关系，因为在制作模型时，我们也不能确定模型是由多少个子对象模型构成，及它们的命名规则。
+Now let's load a scenario's. LS file and get its subobjects. Before obtaining child objects, it is recommended to open the. LS file to see the parent-child hierarchy of the model, because when making the model, we can not determine how many child object models the model consists of, and their naming rules.
 
-**Tips**：在3ds max中建模时，建议对模型的子对象取名，并且制定项目的资源命名规则，不要用默认的模型名称。
+**Tips**When modeling in 3ds max, it is recommended to name the sub-objects of the model and formulate the resource naming rules of the project, instead of using the default model name.
+
 
 ```typescript
+
 //初始化3D场景
 var scene = Laya.stage.addChild(Laya.Loader.getRes("res/threeDimen/scene/ChangeMaterialDemo/Conventional/scene.ls"));
 //获取球型精灵
@@ -24,17 +26,20 @@ var sphereMesh = sphere.meshFilter.sharedMesh;
 
 
 
-#### 修改子对象模型网格
 
-获取子对象时还应注意一个问题，就是模型与材质未加载完成，是无法获取子对象的，因此需要资源预加载，或异步加载时进行完成事件监听。在这个demo中事先使用了 `Laya.loader.create` 来预加载资源。
+####Modifying Subobject Model Grid
 
-在游戏中，我们经常打造角色换装系统，有时是换模型，有时是换贴图，有时候两者都换。因为材质贴图部分在后续章节中才讲解，因此本章节中我们只介绍更换模型网格的方法。
+When getting sub objects, you should also pay attention to the problem that the model and material are not loaded completely, so you cannot get sub objects. Therefore, you need to pre load resources, or listen for completion events when loading asynchronously. Pre-used in this demo`Laya.loader.create`To preload resources.
 
-模型MeshSprite3D或SkinnedMeshSprite3D中有 **meshFilter** 属性，它是一个网格过滤器类实例，这个属性中的**sharedMesh**  就是模型的网格，可以对它进行重新创建更换及销毁。
+In the game, we often build role changing systems, sometimes changing models, sometimes changing maps, sometimes changing both. Because the Material Mapping section will be explained in subsequent chapters, we will only introduce the method of replacing the model grid in this chapter.
 
-在下面示例中，我们给按钮加了添加了个点击事件。每次点击index值自加，然后根据index值修改从场景ls中获取到的模型网格。
+Model Mesh Sprite 3D or Skinned Mesh Sprite 3D has**MeshFilter**Attribute, which is an instance of a grid filter class, in this attribute**SharedMesh**It is the grid of the model that can be recreated, replaced and destroyed.
+
+In the following example, we add a click event to the button. Each time the index value is added, the model grid obtained from the scene LS is modified according to the index value.
+
 
 ```typescript
+
 //新建四个mesh
 var box = Laya.PrimitiveMesh.createBox(0.5, 0.5, 0.5);
 var capsule = Laya.PrimitiveMesh.createCapsule(0.25, 1, 10, 20);
@@ -68,6 +73,7 @@ changeMeshButton.on(Laya.Event.CLICK, this, function(){
 });
 ```
 
-效果如图1:
 
-![](img/1.gif)<br>(图1)
+The effect is shown in Figure 1:
+
+![] (img/1.gif) <br> (Fig. 1)

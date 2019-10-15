@@ -1,14 +1,14 @@
-# LayaAir的graphics矢量绘图API概述
+#Overview of Graphics Vector Drawing API of LayaAir
 
 
 
 
 
-​    LayaAir可以通过laya.display.Graphic类绘制各种矢量图形，关于Graphics绘图的相关方法如下：
+LayaAir can draw all kinds of vector graphics by laya. display. Graphic class. The related methods of Graphics drawing are as follows:
 
-​	![blob.png](img/1.png)<br/>
-​	（图1）laya.display.Graphic的方法
+​![blob.png](img/1.png)<br/>
+(fig. 1) laya. display. Graphic method
 
-更多Graphics API的详细用法，可以点击下面的API文档URL查看。
+For more detailed usage of the Graphics API, click on the API document URL below to view it.
 
 [http://layaair.ldc.layabox.com/api/index.html?category=Core&class=laya.display.Graphics](http://layaair.ldc.layabox.com/api/index.html?category=Core&class=laya.display.Graphics) 

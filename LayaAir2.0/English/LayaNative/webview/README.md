@@ -1,12 +1,13 @@
+#WebView
 
-# webview
+##I. Introduction
 
-## 一、介绍
+Because LayaNative does not support standard html, sometimes a project needs to display a complete HTML page, which can be achieved through an interface provided by LayaNative to display the WebView interface.
+###1. Interface definition
 
-由于LayaNative不支持标准的html，有时候项目需要显示一个完整的html页面，这时候可以通过LayaNative提供的一个显示webview界面的接口来实现。  
-### 1. 接口定义  
 
 ```typescript
+
     /**
      * 显示一个webview
      * @param url {string} 要显示的url地址。
@@ -19,14 +20,19 @@
     setExternalLinkEx(url:string,posx:number,posy:number,width:number,height:number,canclose:boolean):void;
 ```
 
-这个函数会在画布的最上层显示一个新的view，在其中显示url的内容。
 
-`canclose`参数用来控制这个webview是否能被关掉：  
-* 设置为`false`时:
+This function displays a new view at the top of the canvas, where the contents of the URL are displayed.
 
-    代码如下：
+`canclose`Parameters are used to control whether the WebView can be turned off:
+* set to`false`Time:
 
-    ```typescript
+The code is as follows:
+
+
+
+    
+```typescript
+
     document.addEventListener('touchstart',()=>{
         if(conch){
             var l = 50;
@@ -39,17 +45,24 @@
     });
     ```
 
-    webview显示出来后就无法关闭，效果如下：  
+
+When the WebView is displayed, it cannot be turned off. The effect is as follows:
+
+
 
     ![ios webview](img/1.png)
 
-    图1
+Figure 1
 
-* 设置为`true`时: 
+* set to`true`Time:
 
-    代码如下：
+The code is as follows:
 
-    ```typescript
+
+
+    
+```typescript
+
     document.addEventListener('touchstart',()=>{
         if(conch){
             var l = 50;
@@ -64,32 +77,40 @@
 
 
 
-    * 在ios下，会有一个小关闭按钮，点击这个按钮，就可以关闭webview。 效果如下：
+
+* Under ios, there will be a small closing button, click this button, you can close webview. The results are as follows:
+
+
 
         ![ios webview](img/2.png)
 
-        图2
+Figure 2
 
-    * 因为关闭按钮会覆盖部分页面内容，且Android设备上提供了后退键，因此Android设备上webview显示后没有关闭按钮，可以通过**后退键**关闭webview。如下图：
+* Because the closing button covers part of the page content, and the back button is provided on the Android device, there is no closing button after the WebView is displayed on the Android device.**Backspace**Close webview. The following picture:
+
+
+
 
 
         ![android webview](img/3.png)
 
-        图3  此时可以点击后退键关闭webview
+Figure 3 At this point, you can click the Back button to close WebView
 
-### 2. 限制
-1. 目前webview无法与app进行交互。
-2. webview的实现依赖于系统，低版本的android可能无法显示。
+###2. limitation
+1. At present, web view can not interact with app.
+2. The implementation of WebView depends on the system, and the low version of Android may not be displayed.
 
 **Tips**  
-*1、conch只能LayaNative环境下调用，在网页版本中是没有conch定义的，所以需要判断一下是否存在。*  
-*2、如果使用as语言开发的时候，可以通过 `Browser.window['conch'] `这种方式获得conch对象。*
+* 1. Conh can only be invoked in LayaNative environment. There is no conch definition in the web version, so we need to judge whether it exists or not. *
+*2. If you use as language to develop, you can`Browser.window['conch'] `This way you get conch objects.*
 
 
-## 二、如何在代码中动态关闭webview页面
+##2. How to dynamically close WebView page in code
 
-调用下面的代码可以动态的关闭webview页面：
+Calling the following code can dynamically close the WebView page:
+
 
 ```javascript
+
 conch.closeExternalLink();
 ```

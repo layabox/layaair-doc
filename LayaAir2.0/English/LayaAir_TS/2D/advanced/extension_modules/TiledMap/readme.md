@@ -1,104 +1,113 @@
-# 用LayaAir引擎解析Tiled Map地图（详解）
+#Parsing Tiled Map Map Map with LayaAir Engine (Detailed)
 
-> author：charley
+> author:charley
 
-Tiled Map Editor是一个免费的地图编辑器，可以用来编辑2D游戏地图，LayaAir引擎支持解析Tiled Map导出的地图。本文将介绍如何在LayaAir引擎开发中使用Tiled Map Editor导出的地图。
+Tiled Map Editor is a free map editor that can be used to edit 2D game maps. The LayaAir engine supports parsing maps exported from Tiled Map. This article describes how to use Tiled Map Editor-derived maps in LayaAir engine development.
 
-> 注意：本文仅面向熟悉和使用Tiled Map地图工具的开发者。在文中介绍Tiled Map Editor导出的地图在LayaAir引擎的项目中如何使用，关于Tiled Map Editor工具的自身内容请自行查找第三方教程文档。
+> Note: This article is only for developers familiar with and using Tiled Map Map Map tools. This article describes how Tiled Map Editor exported maps are used in LayaAir engine projects. For the content of Tiled Map Editor tools, please find third-party tutorial documents by yourself.
 >
-> 本篇文档中的部分内容是LayaAir引擎1.7.7版本中新增的，阅读本文前请将引擎更新至1.7.7版本或更高。
+> Part of this document is new to LayaAir engine version 1.7.7. Please update the engine to version 1.7.7 or higher before reading this article.
 
 
 
-## 1、导出引擎支持的Tiled Map地图
+##1. Tiled Map Map Map Supported by Export Engine
 
-### 1.1 Tiled Map Editor下载安装
+###1.1 Tiled Map Editor Download and Installation
 
-打开官方首页（[http://www.mapeditor.org/](http://www.mapeditor.org/)）后，直接点击`DownLoad at itch.io`按钮进入下载链接（[https://thorbjorn.itch.io/tiled](https://thorbjorn.itch.io/tiled)）。如果官网改版，也可以直接从下载页[http://www.mapeditor.org/download.html](http://www.mapeditor.org/download.html)找到下载链接。
+Open the official home page（[http://www.mapeditor.org/](http://www.mapeditor.org/)) After that, click directly`DownLoad at itch.io`Button to enter download link（[https://thorbjorn.itch.io/tiled](https://thorbjorn.itch.io/tiled)) If the official website is redesigned, you can also download it directly from the download page.[http://www.mapeditor.org/download.html](http://www.mapeditor.org/download.html)Find the download link.
 
-找到对应的系统版本链接，下载安装即可，(*本篇文档采用的版本为Tiled 1.1.5* )。
+Find the corresponding system version link, download and install it. (* The version used in this document is Tiled 1.1.5*).
 
-**Tips**：
+**Tips**:
 
-*打开下载会弹出赞助该软件的付费页面，如果不想付费，可以直接点击 No thanks, just take me to the downloads，会带你进入一个免费下载的链接。*
+*Open the download will pop up the payment page sponsoring the software. If you don't want to pay, you can click No thanks, just take me to the downloads, which will take you to a free download link.*
 
-*如果官网的版本有问题了，github`https://github.com/layabox/layaair-doc`里有一份64位windows版的Tiled 1.1.5* 。
+* If there is a problem with the version of the official website, GitHub`https://github.com/layabox/layaair-doc`There is a 64-bit version of Tiled 1.1.5*.
 
 
 
-### 1.2 	导出引擎支持的Tiled Map地图格式
+###1.2 Tiled Map Map Map Format Supported by Export Engine
 
-Tiled Map工具的具体使用方式，本文不多讲，可以自行在百度或谷歌中搜索相关教程文档。和引擎有莫大关系的是格式。需要开发者特别注意，一般出问题都是在这里没有注意。
+Tiled Map tools for specific use, this article does not talk about, you can search the relevant course documents in Baidu or Google. What matters a lot to the engine is the format. Developers need to pay special attention to the general problem is not noticed here.
 
-#### 1.2.1 创建地图时，对图块层格式的要求
+####1.2.1 Requirements for Block Layer Format in Map Creation
 
-点击新建地图，设置好地图大小和块大小等初始参数后，点击另存为，存在你指定的位置即完成了创建。
+Click on the new map, set the initial parameters such as map size and block size, click Save As, and the creation is completed when there is the location you specify.
 
-然而，图块层格式需要特别注意，由于**LayaAir引擎不支持Tiled Map地图为Base64的图块层格式。**所以在`创建`新地图时**必须**为`CSV格式`，如图1所示。
+However, the block layer format needs special attention because**The LayaAir engine does not support the Tiled Map map as a block layer format for Base64.**So in`创建`New map time**Must**by`CSV格式`As shown in Figure 1.
 
 ![图1](img/1.png) 
 
-（图1）
 
-**如果创建的时候选错了**，也可以在属性面板里，将`图块层格式`**改为CSV或者是XML**，如图2所示，**Base64相关的格式都不支持。**
+(Fig. 1)
+
+**If it was created incorrectly**Or, in the Properties Panel, you can use the ____________`图块层格式`**Change to CSV or XML**As shown in Figure 2,**Base64 related formats are not supported.**
 
 ![图2](img/2.png) 
 
-(图2)
 
-#### 1.2.2  导出为json格式
+(Fig. 2)
 
-本例中，我们直接打开Tiled Map的示例地图orthogonal-outside.tmx（*位于Tiled Map地图安装目录的 examples目录下*）
+####1.2.2 Export to JSON format
 
-##### 在导出的时候，我们要选择json的格式。
+In this case, we open the example map orthogonal-outside.tmx of Tiled Map directly (* under the examples directory of the Tiled Map map installation directory*)
 
-在Tiled工具的`文件`菜单里，点击`另存为`，将已完成的Tiled地图，另存为json文件类型，本例命名为orthogonal.json（文件名开发者随意，后面保持一致即可），点击`保存`，存到**项目目录内**（本例为`项目根目录\bin\h5\res\TiledMap\`），如图3所示。
+#####When exporting, we need to choose the JSON format.
+
+In Tiled Tools`文件`In the menu, Click`另存为`To save the completed Tiled map as a JSON file type, this example is named orthogonal. JSON (file name developer is optional, then keep consistent). Click`保存`Save to**Project catalogue**(this example is`项目根目录\bin\h5\res\TiledMap\`As shown in Figure 3.
 
 ![图3](img/3.png) 
 
-(图3)
 
-### 1.3 修改图集路径和复制Tiled资源
+(Fig. 3)
 
-##### 只是存为json文件还不够，我们还要更改image绝对路径为相对路径。
+###1.3 Modifying Atlas Path and Copying Tiled Resources
 
-我们通过IDE，打开刚刚保存的`orthogonal.json`，搜索关键字`"image"`我们会发现默认的image路径位于Tiled安装目录中。如图4所示。
+#####Just saving as a JSON file is not enough. We also need to change the image absolute path to a relative path.
+
+We use IDE to open what we just saved.`orthogonal.json`Search for keywords`"image"`We will find that the default image path is in the Tiled installation directory. As shown in Figure 4.
 
 ![图4](img/4.png) 
 
-(图4)
 
-##### 路径在Tiled安装目录中肯定是不行的，
+(Fig. 4)
 
-所以，我们需要先**将这个图片(*buch-outdoor.png*)复制到项目目录**，与之前保存的`orthogonal.json`同级，
+#####The path must not work in the Tiled installation directory.
 
-如图5所示。
+So, we need to ** copy this picture (* buch-outdoor. png*) to the project directory first.**In contrast to what was previously preserved`orthogonal.json`At the same level,****
+
+As shown in Figure 5.
 
 ![图5](img/5.png) 
 
-##### (图5)
-
-然后将orthogonal.json中的`image`**路径修改为相对路径**`"image":"buch-outdoor.png",`
-
-准备阶段结束，下面开始步入编码阶段……
 
 
+#####(Fig. 5)
+****
+Then, in orthogonal. JSON`image`**Change path to relative path**`"image":"buch-outdoor.png",`
 
-## 2、LayaAir引擎使用Tiled Map 地图
+The preparation phase is over, and the next step is to enter the coding phase...
 
-### 2.1 创建TiledMap地图
 
-#### 2.1.1 createMap API 说明
 
-laya.map.TiledMap类中的createMap方法可以创建一个TiledMap地图。基础的参数说明如图6所示。
+##2. LayaAir engine uses Tiled Map map
+
+###2.1 Create Tiled Map Map Map
+
+####2.1.1 CreateMap API Description
+
+The createMap method in the laya. map. TiledMap class can create a TiledMap map. The basic parameter description is shown in Figure 6.
 
 ![图6](img/6.png) 
 
-(图6)
 
-#### 2.1.2 创建地图示例
+(Fig. 6)
+
+####2.1.2 Example of Creating Maps
+
 
 ```java
+
 // 程序入口
 class GameMain{
     private tMap:Laya.TiledMap;
@@ -117,23 +126,27 @@ class GameMain{
 new GameMain();
 ```
 
-编译运行代码，效果如图7所示，说明地图已创建成功。
+
+Compile and run the code. The effect is shown in Figure 7, which shows that the map has been created successfully.
 
 ![图7](img/7.png) 
 
-(图7)
 
-### 2.2 控制地图
+(Fig. 7)
 
-控制地图必须要先加载地图的json，然后在回调方法里控制。下面将结合实例了解相关的用法。
+###2.2 Control Map
 
-#### 2.2.1 地图的缩放
+The control map must first load the JSON of the map, and then control in the callback method. Below is an example of how to use it.
 
-`laya.map.TiledMap`类中的`scale`属性可以控制地图的缩放比例。我们沿用之前的示例，在createMap方法内，增加回调，然后使用`scale`属性对地图进行缩放。
+####2.2.1 Map Scaling
 
-示例代码如下：
+`laya.map.TiledMap`Class`scale`Attributes can control the scale of the map. Following the previous example, in the createMap method, we add callbacks, and then use`scale`Attributes zoom the map.
+
+The sample code is as follows:
+
 
 ```typescript
+
 // 程序入口
 class GameMain{
     private tMap:Laya.TiledMap;
@@ -156,78 +169,92 @@ class GameMain{
 new GameMain();
 ```
 
-运行效果如图8所示。
+
+The operation effect is shown in Figure 8.
 
 ![图8](img/8.png) 
 
-(图8)
 
-#### 2.2.2  设置地图缩放的中心点
+(Fig. 8)
 
-很明显，图8中的效果并不是我们想要的。放大后。有一部分并没有显示出来。这是默认的缩放的中心点是在视口的中心区域造成的。
+####2.2.2 Setting the Center Point of Map Scaling
 
-#### 视口区域与默认的缩放中心点位置 
+Obviously, the effect in Figure 8 is not what we want. After enlargement. Some of them did not show up. This is caused by the default zoom center in the central area of the viewport.
 
-视口区域在创建地图方法(*createMap*)的第二个参数中所设置，
+####Viewport area and default zoom center location
+
+The viewport area is set in the second parameter of the creation map method (* createMap*).
+
 
 ```java
+
 //创建Rectangle实例，视口区域
 var viewRect:Laya.Rectangle = new Laya.Rectangle();
 //创建TiledMap地图，加载orthogonal.json后，执行回调方法onMapLoaded()
 this.tMap.createMap("res/TiledMap/orthogonal.json",viewRect,Laya.Handler.create(this,this.onMapLoaded));
 ```
 
-通过查看代码，我们发现视口被设置为浏览器的物理宽高（ `Laya.Browser.width, Laya.Browser.heigh`）。而控制缩放的方法setViewPortPivotByScale默认值为0.5。那么中心点位置如图9-1所图。
+
+By looking at the code, we found that the viewport was set to the browser's physical width and height.（`Laya.Browser.width, Laya.Browser.heigh`) The default value of setViewPortPivotByScale, which controls scaling, is 0.5. Then the position of the center point is shown in Figure 9-1.
 
 ![图9-1](img/9-1.png) 
 
-(图9-1)
 
-当地图放大两倍时（`this.tMap.scale = 2;`）由于是以视口区域的x与y轴的中心点进行的缩放，所以放大后，会产生图9-2的效果。
+(Fig. 9-1)
+
+When the map is doubled（`this.tMap.scale = 2;`) Since the zoom is performed at the center of the X and Y axes of the viewport area, the zoom-in will produce the effect of Figure 9-2.
 
 ![图9-2](img/9-2.png) 
 
-(图9-2)
 
-下面我们通过动图9-3，从原图比例的0.1到2倍的缩放变化效果，来进一步理解scale属性的中心点。
+(Fig. 9-2)
+
+Next, we further understand the central point of scale attributes by moving Figure 9-3 from 0.1 to 2 times the original scale.
 
 ![动图9-3](img/9-3.gif) 
 
-(动图9-3)
 
-#### 用setViewPortPivotByScale方法设置缩放中心点
+(Fig. 9-3)
 
-前文中介绍的是默认的缩放中心点效果。那如何设置和改变缩放中心点呢。在`laya.map.TiledMap`类中的`setViewPortPivotByScale()`方法可以设置视口的中心点。API基础说明如图10所示。
+####Setting the zoom center point with setViewPortPivotByScale method
+
+The default zoom center effect is described in the previous article. How to set and change the zoom center? stay`laya.map.TiledMap`Class`setViewPortPivotByScale()`Method can set the central point of the viewport. The API basics are shown in Figure 10.
 
 ![图10](img/10.png) 
 
-（图10）
 
-`setViewPortPivotByScale()`方法的第一个参数scaleX是X轴方向的缩放坐标比例，scaleY是Y轴方向的缩放坐标比例。
+(FIG. 10)
 
-例如：
+`setViewPortPivotByScale()`The first parameter of the method, scaleX, is the scaled coordinate ratio in the direction of X axis, and scaleY is the scaled coordinate ratio in the direction of Y axis.
+
+For example:
+
 
 ```java
+
 this.tMap.setViewPortPivotByScale(0.1,0.5);
 ```
 
-**代码说明**：
 
-假设视口大小为800*600
+**Code description**:
 
-- scaleX值`0.1` 表示x轴缩放中心点的坐标为80（800*0.1）
+Suppose the viewport size is 800*600
 
-- scaleY值 `0.5` 表示y轴缩放中心点的坐标为300 （600*0.5）
+- scaleX value`0.1`The coordinate representing the x-axis scaling center point is 80 (800 * 0.1)
 
-代码运行时以x轴80，y轴300为视口的中心点坐标进行缩放。
+- scaleY value`0.5`The coordinates representing the center point of the y-axis zoom are 300 (600*0.5)
+
+When the code is running, take X-axis 80 and y-axis 300 as the center coordinates of the viewport to zoom.
 
 
 
-#### 将缩放中心点设置为视口的左上角
+####Set the zoom center to the upper left corner of the viewport
 
-当setViewPortPivotByScale的缩放中心点设置为`0,0`时，为视口的左上角。继续 沿用前面的示例，编码如下：
+When setViewPortPivotByScale's zoom center is set to`0,0`The upper left corner of the viewport. Continue with the previous example, coded as follows:
+
 
 ```typescript
+
 // 程序入口
 class GameMain{
     private tMap:Laya.TiledMap;
@@ -252,32 +279,38 @@ class GameMain{
 new GameMain();
 ```
 
-将缩放中心点设置在视口的左上角，再放大2倍时，我们在iPhone6设备上可以铺排全屏，没有黑边。效果如图11所示。
+
+When the zoom center is set in the upper left corner of the viewport and zoomed in twice, we can lay out the full screen on the iPhone 6 device without black edges. The effect is shown in Figure 11.
 
 ![图11](img/11.png) 
 
-(图11)
+
+(FIG. 11)
 
 
 
-### 2.3 拖动地图
+###2.3 Drag Map
 
-当地图被放大后，无法全部显示。这时就需要拖动地图查看全部。
+When the map is enlarged, it can not be displayed all. At this point, you need to drag the map to see all.
 
-拖动地图除了前文中介绍的方法外，还需要用到`moveViewPort()`（移动视口）方法和`changeViewPort()`（改变视口大小）方法。 这两个API的基础说明如图12-1与12-2所示。
+In addition to the methods described in the previous article, dragging maps also need to be used.`moveViewPort()`(Moving Viewport) Method and Method`changeViewPort()`(changing the size of the viewport) method. The basic descriptions of these two APIs are shown in Figures 12-1 and 12-2.
 
 ![图12-1](img/12-1.png) 
 
-（图12-1）
+
+(Figure 12-1)
 
 
 ![图12-2](img/12-2.png) 
 
-（图12-2）
 
-下面直接查看代码，了解这两个方法的使用。
+(Figure 12-2)
+
+Let's look directly at the code to see how these two methods work.
+
 
 ```typescript
+
 // 程序入口
 class GameMain{
     private tMap:Laya.TiledMap;
@@ -345,35 +378,42 @@ class GameMain{
 new GameMain();
 ```
 
-代码运行效果如动图13所示。
+
+The code runs as shown in Figure 13.
 
 ![动图13](img/13.gif) 
 
-(动图13)
+
+(FIG. 13)
 
 
 
-## 3、Tiled Map 使用优化
+##3. Tiled Map Usage Optimization
 
-### 3.1 销毁地图
+###3.1 Destruction of maps
 
-当Tiled Map不再使用的时候，需要使用destroy()方法进行销毁，回收被占用的内存。
+When Tiled Map is no longer in use, destroy () is needed to recover the occupied memory.
 
-例如：
+For example:
+
 
 ```java
+
 this.tMap.destroy();
 ```
 
 
 
-### 3.2 缓存相关
 
-#### 3.2.1 开启和关闭自动缓存
+###3.2 cache correlation
 
-LayaAir引擎使用TiledMap时，默认会将没有动画的地块自动缓存起来，并且缓存类型默认为normal。
+####3.2.1 Turn on and off automatic caching
+
+When the LayaAir engine uses Tiled Map, it automatically caches non-animated blocks by default, and the caching type defaults to normal.
+
 
 ```java
+
 //自动缓存没有动画的地块
 this.tMap.autoCache = true;
 //自动缓存的类型,地图较大时建议使用normal
@@ -382,27 +422,30 @@ this.tMap.autoCacheType = "normal";
 this.tMap.antiCrack = true;
 ```
 
-以上的代码属性是引擎的默认值，在多数情况下，保持默认值即可，无需额外设置。
 
-那么为什么要再介绍一遍呢？
+The above code attributes are the default values of the engine. In most cases, the default values can be maintained without additional settings.
 
-因为有的时候，缓存后的Tiled地图会出现黑边（缝隙）。尽管在1.7.7版本新增了antiCrack属性，可以消除绝大多数因normal缓存导致的黑边。但如果偶现的黑边问题仍未得到解决时。可以通过关闭自动缓存来解决黑边（缝隙）问题。
+So why introduce it again?
 
-#### 3.2.2 设置缓存区块大小
+Because sometimes, the cached Tiled map will have black edges (cracks). Although antiCrack attributes are added in version 1.7.7, most of the black edges caused by normal caching can be eliminated. But if the occasional black edge problem is not solved. The black edge (gap) problem can be solved by closing the automatic cache.
 
-#### 缓存区块的设置推荐
+####3.2.2 Setting Buffer Block Size
 
-TiledMap地图都是由一个个单元区块拼接组成。如果缓存时保持原大小，当小图区块很多时会对性能产生影响。因此建议开启缓存区块设置，并将缓存区块的大小设置为512像素左右，必须保持原小图区块的整数倍。
+####Recommendation of Buffer Block Settings
 
-例如，本文示例中的单图区块大小为`16*16`，那么缓存区块可以设置 16的32倍，即为`512*512`。
+Tiled Map maps are made up of a single block mosaic. If the original size is maintained while caching, the performance of small graph blocks will be affected in many cases. Therefore, it is suggested to turn on the buffer block setting and set the size of the buffer block to 512 pixels, which must keep the integer multiple of the original small block.
 
-如果单图是`15*15`，缓存可区块可以设置为`510*510`（34倍），以此类推，尽量在原区块整数倍的前提下，设置在512左右。推荐`为512*512`。
+For example, the block size of a single graph in this example is`16*16`Then the cache block can be set to 32 times 16, that is`512*512`。
 
-#### 缓存区块的具体设置方法
+If the single graph is`15*15`Cacheable blocks can be set to`510*510`(34 times), and so on, as far as possible in the original block integer multiple premise, set at about 512. Recommend`为512*512`。
 
-缓存区块的设置需要在createMap（创建地图）的时候设置。设置第四个参数gridSize，示例如下：
+####Specific Setting Method of Buffer Block
+
+The settings of cache blocks need to be set when creating Maps. Set the fourth parameter gridSize, as follows:
+
 
 ```javascript
+
 //为第二个参数创建Rectangle实例，视口区域
 var viewRect:Laya.Rectangle = new Laya.Rectangle(0, 0, Laya.Browser.width, Laya.Browser.height);
 
@@ -417,95 +460,107 @@ this.tMap.createMap("res/TiledMap/orthogonal.json",viewRect, Laya.Handler.create
 
 
 
-### 3.3 合并图层
 
-#### 3.3.1 开启合并图层
+###3.3 Merge Layers
 
-当TiledMap里有多个图层时，开启合并图层的属性enableMergeLayer，可以将图层合并，会对性能有所提高。
+####3.3.1 Open Merge Layer
 
-开启的方式为：
+When there are multiple layers in Tiled Map, enableMerge Layer, the attribute of merged layer, can merge layers and improve performance.
+
+The way to open it is:
+
 
 ```java
+
 //开启图层合并
 this.tMap.enableMergeLayer = true;
 ```
 
+
 **Tips**:
 
-需要注意的是，如果需要对合并前的图层进行操作，那就不能直接合并。因为合并后会导致无法对合并前的图层进行操作。
+It's important to note that if you need to manipulate the layer before merging, you can't merge it directly. Because the merged layer will not be able to operate on the pre-merged layer.
 
-#### 3.3.2 图层合并分组
+####3.3.2 Layer Combination Grouping
 
-如果没有在TiledMap里将图层分组，那么图层合并时，会将所有图层合并到一起。因此，需要分为多个图层并分别操作时。可以在TiledMap里将图层分组。
+If no layers are grouped in Tiled Map, all layers are merged together when the layers are merged. Therefore, it needs to be divided into several layers and operated separately. Layers can be grouped in Tiled Map.
 
-#### TiledMap图层分组方式：
+####Tiled Map Layer Grouping Method:
 
-打开TiledMap地图编辑器，选中要分组的图层，在图层的自定义属性栏，添加一个名为`layer`的`string`类型属性。操作如图14-1所示。
+Open the Tiled Map Map Map Editor, select the layer to group, add a name in the layer's custom property bar`layer`Of`string`Type attributes. The operation is shown in Figure 14-1.
 
 ![图14-1](img/14-1.png) 
 
-（图14-1）
 
-点击OK，添加完成后，将所有添加了自定义属性layer的图层。设置分组名称。
+(Figure 14-1)
 
-例如，我们将块层2与块层3的分组名称设置为layaAir，那么名为layaAir的图层，开启enableMergeLayer后，会合并到同一个图层。操作如图14-2所示。
+Click OK and when the addition is complete, add all the layers with the custom attribute layer. Set the group name.
+
+For example, if we set the group names of Block Layer 2 and Block Layer 3 to layaAir, then the layer named layaAir will merge into the same layer when enableMerge Layer is opened. The operation is shown in Figure 14-2.
 
 ![图14-2](img/14-2.png) 
 
-(图14-2)
 
-开启合并图层时，图层属性内可添加layer属性，运行时将会将相邻的layer属性相同的图层进行合并以提高性能
+(Fig. 14-2)
 
-#### 3.4 移除被覆盖的格子
+When merging layer is opened, layer attributes can be added to layer attributes. At run time, layers with the same layer attributes will be merged to improve performance.
 
-如果下层的格子被遮挡，并且遮挡地块并不是透明的，那么被遮挡的部分直接移除而不被渲染，可以提高性能。
+####3.4 Remove the covered lattice
 
-移除被覆盖的开启方式为：
+If the lower grid is blocked and the block is not transparent, then the blocked part is removed directly without being rendered, which can improve performance.
+
+Removing the overwritten opening mode is as follows:
+
 
 ```java
+
 //移除被非透明地块覆盖的部分
 this.tMap.removeCoveredTile = true;
 ```
 
-**Tips**：
 
-如果开启后，需要对移除的部分进行操作，是不可能的。所以开启该功能前要确认，不再对移除部分进行操作。
+**Tips**:
 
-#### removeCoveredTile 开启的前提
+It is impossible to operate on the removed part when it is turned on. So before you turn on this function, make sure that you don't operate on the removal part any more.
 
-如果在Tiled Map中没有对`图块`设置`type`属性，那么即便开启了removeCoveredTile ，也是无效的。所以，开启之前，需要先在TiledMap编辑器中，为图块新增自定义属性type，并将设置为1。
+####Prerequisites for removeCovered Tile to open
 
-**Tiled Map中设置图块type的操作方式**
+If not in Tiled Map`图块`Set up`type`Property, then even if removeCoveredTile is turned on, it is invalid. Therefore, before opening, you need to add a custom attribute type to the block in the Tiled Map editor and set it to 1.
 
-在图块面板中，点击图块编辑，打开图块地形编辑面板。操作如图15-1所示。
+**How to Set Block Type in Tiled Map**
+
+In the Block Panel, click Block Editing to open the Block Terrain Editing Panel. The operation is shown in Figure 15-1.
 
 ![图15-1](img/15-1.png) 
 
-(图15-1)
 
-在图块地形编辑面板内，选中地形，在自定义属性栏，点击`+`号图标，添加`int`类型的`type`属性。然后点击OK，完成添加。操作如图15-2所示。
+(Fig. 15-1)
+
+In the block terrain editing panel, select the terrain, in the custom property bar, Click`+`Number icon, add`int`Type`type`Attribute. Then click OK to complete the addition. The operation is shown in Figure 15-2.
 
 
 ![图15-2](img/15-2.png) 
 
-(图15-2)
 
-完成添加后，设置type属性值为1。操作如图15-3所示。
+(Fig. 15-2)
+
+When you are finished adding, set the type attribute value to 1. The operation is shown in Figure 15-3.
 
 ![图15-3](img/15-3.png) 
 
-(图15-3)
 
-只要是自定义属性type设置为1的地形，当removeCoveredTile开启后。被遮挡不可见时都可以被移除，以提高性能。
+(Fig. 15-3)
 
-
-
+As long as the custom attribute type is set to 1, when removeCovered Tile opens. When occluded and invisible, it can be removed to improve performance.
 
 
 
 
-## 本文赞赏
 
-如果您觉得本文对您有帮助，欢迎扫码赞赏作者，您的激励是我们写出更多优质文档的动力。
+
+
+##This article appreciates
+
+If you think this article is helpful to you, you are welcome to sweep the code and appreciate the author. Your motivation is our motivation to write more high quality documents.
 
 ![wechatPay](../../../../../wechatPay.jpg)

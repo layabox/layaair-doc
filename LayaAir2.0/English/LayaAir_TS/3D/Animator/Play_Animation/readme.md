@@ -1,41 +1,46 @@
-# 播放动画
+#Play animation
 
 ###### *version :2.1.0beta   Update:2019-6-13*
 
 #### 获取动画组件
 
-导出后的资源拷贝到项目 `bin/res` 目录下，通过代码加载角色资源。如果直接加载到场景上你会发现动画会自动播放。我们要怎么控制动画的播放呢？
+Copy the exported resource to the project`bin/res`Under the directory, the role resources are loaded through code. If loaded directly into the scene, you will find that the animation will play automatically. How do we control the playback of animation?
 
-LayaAir 3D引擎的Sprite3D类提供了 `getComponent()` 方法来获取模型上的组件。带动画的模型在加载创建时引擎默认赋予了Animator动画组件，因此我们可以获取它，参考以下代码。
+The Prite3D class of LayaAir 3D engine provides`getComponent()`Method to get the components on the model. Animator animation component is given by default by the engine when the animated model is loaded and created, so we can get it, refer to the following code.
+
 
 ```typescript
+
 //获取角色动画组件
 var ani= role3D.getChildAt(0).getComponent(Laya.Animator);
 ```
 
-打开.lh文件查看，动画组件绑定在模型的子对象上，因此使用了 `getChildAt(0)`，通过它获取子对象模型。然后通过 `getComponent(Laya.Animator)` 方法获取动画组件。
 
-**Tips：有时候在.lh或.ls文件中，存在着多个父子层级关系，动画组件不可能都在第一层级上，可能是第二层，可能是第三层。关于动画组件所在的层级大多是与美术事先约定好的。确认层级后可以过getChildAt()、或getChildByName()等方法获取模型后，再获取动画组件。**
+Open the. LH file to view, and the animation component is bound to the sub-object of the model, so it uses`getChildAt(0)`Get the sub-object model through it. Then pass`getComponent(Laya.Animator)`Method Get the animation component.
 
-还有一种备选方案：在获取动画组件之前，可以打开.ls或.lh查看有动画组件模型的层级关系，再去获取模型与动画组件。
+**Tips: Sometimes in. LH or. LS files, there are multiple parent-child hierarchies. It's impossible for animation components to be on the first level, maybe on the second level, maybe on the third level. Most of the levels of animation components are agreed with art in advance. After confirming the hierarchy, we can get the model through getChildAt (), or getChildByName (), and then get the animation component.**
 
-#### 播放控制
+Another alternative is to open. LS or. LH to see the hierarchical relationship of the animated component model before acquiring the animated component, and then to get the model and the animated component.
 
-拿到了动画组件后，怎么只播放其中一个动作呢？有两种方法实现对动作的控制与切换。
+####Playback control
 
-而且这个例子中，在unity中并未对动画进行拆分，我们使用了模型的默认动画 **Take 001**，插件只导出了一个.lani格式的动画解析文件。
+How can you play only one action when you get the animation component? There are two ways to control and switch actions.
 
-因此控制播放其中某段动画，需要在代码中增加自定义动画剪辑，在动画剪辑中设置开始与结束帧率方式实现。
+And in this example, the animation is not split in Unity. We use the default animation of the model.**Take 001**The plug-in only exports an animation parsing file in. LaNi format.
 
-查看Animator动画组件中` play() `方法，具体方法参数如下：
+Therefore, in order to control the playback of one of the animations, we need to add custom animation clips in the code, and set the start and end frame rates in the animation clips.
 
-![](img/1.png)<br>(图1)
+View Animator Animation Components`play() `METHODS The specific parameters of the method are as follows:
 
-如需播放动画的某一帧到某一帧，可在原有动画的基础上创建增加动画状态（片断）`AnimatorState` ，最新Animator类提供了 `addState() `实例方法，可以允许开发者创建动画剪辑并定义名称，然后通过play(动画剪辑名称)方法播放。知道这些后，我们来播放动画。代码如下：
+![] (img/1.png)<br> (Figure 1)
 
-**动画是否循环可以在unity编辑器动画属性中进行勾选设置，导出后引擎将遵循其设置进行动画播放。见图5、6中loop Time选择框！或者创建AnimatorState动画状态设置 isliooping属性为true**
+If you need to play a frame of animation to a frame, you can create additional animation state (fragments) based on the original animation.`AnimatorState`The latest Animator class provides`addState() `Instance method, which allows developers to create animation clips and define names, and then play through the play (animation clip name) method. After that, let's play the animation. The code is as follows:
+
+**Whether the animation cycle can be checked in the animation properties of the Unity editor, and the engine will follow its settings for animation playback after export. See loop time selection boxes in Figures 5 and 6! Or create an AnimatorState animation status setting isliooping property to true**
+
 
 ```typescript
+
 //获取精灵
 var monkey = Laya.Loader.getRes("res/threeDimen/skinModel/LayaMonkey/LayaMonkey.lh") as Laya.Sprite3D;
 
@@ -60,35 +65,38 @@ this.ani.addState(state1);
 this.ani.play("hello");
 ```
 
-编译运行后效果如下，只循环播放了10-20帧的stand站立动画剪辑。
 
-![](img/2.gif)<br>(图2)
+After compiling and running, the effect is as follows: only 10-20 frames of Stand stand animation clips are played in a loop.
 
-#### Unity中定义动画剪辑播放
+![] (img/2.gif) <br> (Figure 2)
 
-unity中可以对动画进行分段，并对剪辑的片段取名。 导出的资源在控制时，可通过名称进行动画切换，方便开发者们使用。（这种方式在资源导出时增加了动画解析文件，以致增加Http访问次数，使用哪种方式开发者们可根据实际情况自行选择）
+####Define animation clip playback in Unity
 
-unity中动画片段分段方法如下：
+Unity can segment the animation and name the clip. When the exported resources are controlled, they can be animated by name, which is convenient for developers to use. (in this way, when exporting resources, animation parsing files are added to increase the number of HTTP accesses. Developers can choose which method to use according to the actual situation.)
 
-1)、在“资源管理器”中选择模型文件，在右侧 **inspector** 界面中选择 **Animations**，出现了默认的动画 **Take 001**，可点击编辑自定义名称，点击加号增加动画片段，及修改片段的起始与结束帧（图3）。
+The segmentation method of animation fragments in unit is as follows:
 
-Tips：如需在游戏中动画循环播放，请勾选下图中 **Loop Time** 选项。
+1) Select the model file in Resource Manager, on the right**Inspector**Selection in Interface**Animations**The default animation appears**Take 001**Click to edit the custom name, click the plus sign to add the animation fragment, and modify the start and end frames of the fragment (Figure 3).
 
-![](img/3.png)<br>(图3)
+Tips: If you want to play animation in the game, please check the figure below.**Loop Time**Options.
 
-在本示例中一共4个动作，根据美术提供的动画帧数，修改增加成4个动画片段（图4）。
+![] (img/3.png) < br > (fig. 3)
 
-![](img/4.png)<br>(图4)
+In this example, a total of four actions, according to the number of animation frames provided by the art, are modified and increased to four animation fragments (Figure 4).
 
-修改完成后在资源管理器模型中也会增加相应的动画文件，因此还需修改动画控制器，将新生成的动画片段加入动画控制器中，否则无法导出完整的动画资源解析文件（图5）。
+![] (img/4.png)<br> (Figure 4)
 
-![](img/5.png)<br>(图5)
+After the modification, the corresponding animation files will be added to the resource manager model, so the animation controller needs to be modified to add the newly generated animation fragments to the animation controller, otherwise the complete animation resource parsing file can not be exported (Fig. 5).
 
-完成上列步骤后，重新导出，导出的资源里也生成了4个.lani动画解析文件。
+![] (img/5.png)<br> (Fig. 5)
 
-修改示例代码，运用播放动画名方式，效果如（图6）。
+After completing the above steps, we re-export and generate 4. Lani animation parsing files in the exported resources.
+
+Modify the sample code and use the way of playing the animation name. The effect is as follows (Figure 6).
+
 
 ```typescript
+
 onComplete(){
 //.................
 		var monkey = Laya.Loader.getRes("res/threeDimen/skinModel/LayaMonkey/LayaMonkey.lh") as Laya.Sprite3D;
@@ -112,4 +120,5 @@ onComplete(){
 
 ```
 
-![](img/6.gif)<br>(图6)
+
+![] (img/6.gif) < br > (fig. 6)

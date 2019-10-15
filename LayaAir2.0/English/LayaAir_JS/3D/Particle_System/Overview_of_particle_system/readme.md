@@ -1,7 +1,7 @@
-# 粒子系统概述
+#Summary of Particle Systems
 
 ###### *version :2.1.1beta   Update:2019-8-2*
 
-粒子主要用于诸如烟、火、水滴等效果。一个粒子系统是由多个部分组成：粒子发射器、粒子动画器、和粒子渲染器等。如果你想要一个静态粒子系统，你可以用一个粒子发射器和渲染器来完成。粒子动画器将在不同的方向移动粒子和改变粒子的颜色。
+Particles are mainly used for effects such as smoke, fire and water droplets. A particle system consists of many parts: particle emitter, particle animator, and particle renderer. If you want a static particle system, you can use a particle emitter and a renderer. Particle animators will move particles in different directions and change the color of particles.
 
-![](img/1.gif)<br>(图1) 燃烧大地
+! [] (img / 1. gif) < br > (fig. 1) Burning the earth

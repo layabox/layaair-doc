@@ -1,11 +1,11 @@
-# 脚本的生命周期
+#Script life cycle
 
 ###### *version :2.1.0beta   Update:2019-6-26*
 
-​		脚本组件有一套完整的生命周期，脚本需要挂在任何游戏对象上，并且同一个对象可以挂不同的脚本，各自执行自己的生命周期，它们之间相互组合又互不干扰。脚本生命周期内的所有方法都是LayaAir3D系统自己调的，不需要手动调用，主要有初始化，物理事件，更新回调，渲染和销毁等。
+Script components have a complete life cycle, scripts need to be hung on any game object, and the same object can be hung different scripts, each executes its own life cycle, they are combined with each other and do not interfere with each other. All the methods in the script life cycle are self-tuned by LayaAir3D system. There is no need to call them manually. The main methods are initialization, physical events, update callbacks, rendering and destruction.
 
-​		在下面的生命周期函数图中，红色的生命周期函数是开发者可以自己接管的。
+In the life cycle function diagram below, the red life cycle function can be taken over by developers themselves.
 
-![](img/1.png)<br>
+![] (img/1.png)<br>
 
-(图1) 生命周期函数 
+(Figure 1) Life cycle function

@@ -2,13 +2,15 @@
 
 ###### *version :2.1.0beta   Update:2019-6-13*
 
-​		在前面的**播放动画**这一节中，我们简单的使用了AnimatorState 动画状态 。他能指定动画播放某一帧到某一帧，可在原有动画的基础上创建增加动画剪辑（片断）。这一小节我们详细讲解下动画状态。
+In the front**Play animation**In this section, we simply use AnimatorState animation status. He can specify the animation to play a frame to a frame, and can create additional animation clips (fragments) on the basis of the original animation. In this section, we explain the animation state in detail.
 
-![](img/1.png)<br>(图1)
+![] (img/1.png)<br> (Figure 1)
 
- 看过API 我们再来查看之前的代码就更好理解了。动画状态还可以添加脚本，这个会在后面的一节单独介绍。
+After looking at the API, we can look at the previous code to understand better. Animation status can also be added to scripts, which will be introduced separately in a later section.
+
 
 ```typescript
+
 //获取精灵
 var monkey = Laya.Loader.getRes("res/threeDimen/skinModel/LayaMonkey/LayaMonkey.lh") as Laya.Sprite3D;
 
@@ -32,4 +34,5 @@ this.ani.addState(state1);
 //播放动画
 this.ani.play("hello");
 ```
+
 

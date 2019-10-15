@@ -1,112 +1,116 @@
-# ViewStack 组件详解
+#ViewStack Component Details
 
-> 由于很多组件属性是通用的，常用及通用的组件属性在`属性设置器`文档中已进行介绍。阅读本篇内容前请先阅读《属性设置器》文档。另外，本篇中会涉及一些Tab组件知识，请先阅读Tab组件详解的文档。
+> Since many component attributes are generic, common and generic component attributes are`属性设置器`This is described in the document. Read the Property Setter document before reading this article. In addition, this article will cover some knowledge of Tab components, please read the detailed documentation of Tab components first.
 
-## 1、了解ViewStack组件
+##1. Understanding ViewStack components
 
-### 1.1 ViewStack组件的作用
+###1.1 Role of ViewStack Components
 
-ViewStack组件主要用于多页面视图切换。它包含多个子页面，但默认只显示一个，可以通过子页面索引进行显示切换。一般情况我们用它与Tab标签组合制作标签切换页面。如动图1所示。
+ViewStack components are mainly used for multi-page view switching. It contains multiple sub-pages, but only one is displayed by default, which can be switched by sub-page index. Generally, we use it to make tag switching pages with Tab tags. As shown in Figure 1.
 
-![动图1.gif](img/1.gif)<br/>（动图1） 
+![动图1.gif](img/1.gif)<br/> (Fig. 1)
 
-### 1.2 ViewStack组件的资源（skin）规范
+###1.2 ViewStack component resource (skin) specification
 
-ViewStack组件是通过`Ctrl+B`转换而来的容器类组件，没有独立的组件资源规范。本例中直接采用的是image组件资源，在实际的游戏开发中，可以根据实际开发需求使用各种UI组件。
+The ViewStack component is through`Ctrl+B`There is no independent component resource specification for the converted container class component. In this case, image component resources are used directly. In actual game development, various UI components can be used according to actual development requirements.
 
-### 1.3 ViewStack组件的API介绍
+###1.3 Introduction to API of ViewStack Component
 
-​	ViewStack 组件的API使用请参考 [http://layaair.ldc.layabox.com/api/index.html?category=Core&class=laya.ui.ViewStack](http://layaair.ldc.layabox.com/api/index.html?category=Core&class=laya.ui.ViewStack)。
-
-
-
-## 2、通过LayaAirIDE创建ViewStack组件
-
-### 2.1 创建ViewStack页面
-
-#### 2.1.1 准备美术资源
-
-准备好页面背景图以及需要切换的页面美术资源，放到LayaAirIDE资源管理器对应的项目目录中。
-
-#### 2.1.2 为页面背景图片设置九宫格
-
-弹出框的页面背景通常会采用九宫格，这里我们先将背景的九宫格属性设置好。如动图2-1所示。
-
-![(动图2-1](img/2-1.gif) <br />(动图2-1)
-
-#### 2.1.3 创建页面背景
-
-将刚刚设置过九宫格的背景图拖拽到场景编辑器中。如动图2-2所示。
-
-![(动图2-2](img/2-2.gif) <br />(动图2-2)
-
-#### 2.1.4 创建ViewStack页面
-
-将页面中涉及的UI基础组件拖拽到ui文件的`场景编辑器`，然后快捷键`Ctrl+B`转换成`ViewStack`容器组件。如动图3-1所示。
-
-![(动图3-1](img/3-1.gif) <br /> (动图3-1)
+Refer to the API for ViewStack components[http://layaair.ldc.layabox.com/api/index.html?category=Core&class=laya.ui.ViewStack](http://layaair.ldc.layabox.com/api/index.html?category=Core&class=laya.ui.ViewStack)。
 
 
 
-#### 2.1.5 设置ViewStack组件的子页面name属性
+##2. Creating ViewStack Components through LayaAirIDE
 
-ViewStack子页面name属性的命名规则为item0、item1、item2.....”如果有更多页面以此类推，如动图3-2所示，不按此规则增加name属性，生成的ViewStack组件为无效组件，不能正常运行。
+###2.1 Create ViewStack page
 
-![(动图3-2](img/3-2.gif) <br /> (动图3-2)
+####2.1.1 Preparation of Art Resources
 
-**Tips**：*name属性那里字符必须为item,不能改为其它。当修改完退出ViewStack子页面后，默认只显示item0时为正常，否则ViewStack组件没有生效。*
+Prepare the page background map and the page art resources that need to be switched, and put them into the project directory corresponding to the Laya air ide explorer.
 
+####2.1.2 Set up nine palaces for the background picture of the page
 
+The background of pop-up boxes is usually nine-palace. Here we set the Nine-palace attributes of the background first. As shown in Figure 2-1.
 
-#### 2.1.6 调整页面的UI布局
+![(动图2-1](img/2-1.gif)<br/> (Motion 2-1)
 
-​	设置好name属性后，可以双击进入veiwStack组件内，先把子页面的UI布局调整好。本例中，我们仅将不同页面用到的资源大小、位置调整好，并让三个子页面居中对齐。效果如图3-3所示。
+####2.1.3 Create Page Background
 
-​        ![图片3-3](img/3-3.png)<br/> （图3-3）
+Drag and drop the background image that has just been set up in the Nine Palaces into the Scene Editor. As shown in Figure 2-2.
 
+![(动图2-2](img/2-2.gif)<br/> (Motion 2-2)
 
+####2.1.4 Create ViewStack page
 
-### 2.2   设置ViewStack的页面索引selectedIndex
+Drag and drop the UI infrastructure component involved in the page to the UI file`场景编辑器`And then the shortcut key`Ctrl+B`convert to`ViewStack`Container components. As shown in Figure 3-1.
 
-​	ViewStack组件默认显示name属性为item0的图片，因为控制默认索引的属性selectedIndex默认值为0。我们可以通过调整selectedIndex属性值来改变ViewStack组件的默认显示页面。效果如动图4所示。
-
-![动图4](img/4.gif)<br/>（动图4）
-
-**Tips**：
-
-**ViewStack组件的Var值必须要设置，在编写代码时需要通过Var声名的全局变量来控制ViewStack组件，从而改变selectedIndex的属性，实现页面的切换。本例中采用的是viewStack，如动图4右上角所示，开发者也可以取别的名字。**
+![(动图3-1](img/3-1.gif)<br/> (Figure 3-1)
 
 
 
-### 2.3 创建控制用Tab标签
+####2.1.5 Setting the name attribute of the subpage of the ViewStack component
 
-​	 通常，ViewStack组件需要一个相应的控制标签，我们创建一个Tab标签来控制ViewStack的子页面切换显示。
+The naming rules of name attributes of ViewStack sub-pages are item0, item1, item2.... "If there are more pages like this, as shown in Figure 3-2, without adding name attributes according to this rule, the generated ViewStack component will be invalid and will not work properly.
 
-​	点击选择资源面板里的 Tab 组件，拖拽到UI页面的场景编辑器生成 Tab 组件。 Tab 组件的美术资源如图5所示，它与上图中的背景风格配套。
+![(动图3-2](img/3-2.gif)<br/> (Figure 3-2)
 
-​        ![图片5.png](img/5.png)<br/>
-​      （图5）
+**Tips**:*The character in the name attribute must be item, not something else. When you exit the ViewStack sub-page after modification, it is normal to display item0 by default, otherwise the ViewStack component will not take effect.*
 
-​        Tab 组件拖拽到编辑器后，调位置与背景图适配对齐。设置公用属性var为tab，用于程序调用控制。设置常用属性labels为“雪人,糖罐,绿树”， 选择的按钮索引selectedIndex 为0。再设置其他属性中的字体大小、粗体、字体状态颜色等。
 
-​	显示效果如图6所示：
+
+####2.1.6 Adjust the UI layout of the page
+
+After setting the name attribute, you can double-click into the veiwStack component and adjust the UI layout of the sub-pages. In this example, we only adjust the size and location of resources used by different pages, and align the three sub-pages in the middle. The effect is shown in Figure 3-3.
+
+​![图片3-3](img/3-3.png)< br / > (Figure 3-3)
+
+
+
+###2.2 Set the page index selectedIndex of ViewStack
+
+The ViewStack component defaults to a picture whose name attribute is item 0, because the default value of the property selectedIndex that controls the default index is 0. We can change the default display page of the ViewStack component by adjusting the value of the selectedIndex attribute. The effect is shown in Figure 4.
+
+![动图4](img/4.gif)<br/> (Motion 4)
+
+**Tips**:
+
+**The Var value of the ViewStack component must be set. When writing code, it is necessary to control the ViewStack component through the global variable of Var name, so as to change the properties of selectedIndex and realize page switching. In this case, viewStack is used. As shown in the upper right corner of Motion 4, the developer can also choose another name.**
+
+
+
+###2.3 Creating Tab Tags for Control
+
+Usually, the ViewStack component needs a corresponding control label, so we create a Tab label to control the switch display of the sub-pages of ViewStack.
+
+Click on the Tab component in the Resource Panel and drag the scene editor to the UI page to generate the Tab component. The art resources of the Tab component are shown in Figure 5, which matches the background style in the figure above.
+
+​![图片5.png](img/5.png)<br/>
+(Figure 5)
+
+After dragging the Tab component to the editor, adjust the position to match the background image. Set the common property VaR to tab for program call control. Set the commonly used properties labels to "Snowman, Sugar Cans, Green Tree", and select the button index selectedIndex of 0. Then set the font size, bold type, font state color and so on in other attributes.
+
+The display effect is shown in Figure 6.
+
+
 
 ​        ![图片6.png](img/6.png)<br/>
-​    （图6）
+(Fig. 6)
 
 
 
-## 3、通过代码控制ViewStack组件切换显示
+##3. Control ViewStack Component Switching Display by Code
 
-​	在上面几个制作步骤中，我们完成了在IDE里的组件创建与组合，下面我们通过程序代码把Tab标签和ViewStack的子页面切换显示关联起来。
+In the above steps, we have completed the component creation and combination in IDE. Next, we associate the Tab tag with the sub-page switching display of ViewStack through the program code.
 
-​	保存页面，按F12发布页面，发布后生成在layaUI.max.all.js文件中，我们直接使用它。
+Save the page, press F12 to publish the page, and then generate it in layaUI. max. all. JS file. We use it directly.
 
 
 
-创建ComponentDemo.js并设置默认程序，编写代码如下：
+Create ComponentDemo.js and set the default program. Write the following code:
+
 
 ```javascript
+
 Laya.init(1334, 750,Laya.WebGL);
 Laya.stage.scaleMode = "full";
 Laya.stage.bgColor = "#ffffff";
@@ -127,6 +131,7 @@ function onSelecte(index){
 }
 ```
 
-运行示例代码，效果如动图10所示。
 
-![动图10](img/1.gif)<br/>（动图10） 
+Run the sample code as shown in Figure 10.
+
+![动图10](img/1.gif)<br/> (Figure 10)

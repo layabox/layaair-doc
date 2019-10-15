@@ -1,21 +1,24 @@
-# 摄像机动画的使用
+#The Use of Camera Animation
 
 ###### *version :2.1.0beta   Update:2019-6-13*
 
-LayaAir3D插件支持摄影机动画导出。建议在unity中编辑好再导出使用。
+LayaAir3D plug-in supports camera animation export. It is recommended to edit in Unity before exporting.
 
-下面的示例我们现在unity中编辑一个简单的摄像机动画，该动画只是简单的移动摄像机。和材质动画一样给摄像机添加上Animator组件，并且添加上设置好动画。导出后使用。
+The following example we now edit a simple camera animation in Unity, which is just a simple mobile camera. Add the animator component to the camera just like the material animation, and set the animation on it. Use after export.
 
-在这个动画中我们只是在不断的改变摄影机的位置，注意Cube的位置是没有改变的。
+In this animation, we are just constantly changing the location of the camera. Note that the location of Cube is unchanged.
 
-![](img/1.png)<br>(图1)
+![] (img/1.png)<br> (Figure 1)
 
-在导出场景后，添加到场景上就能看到效果了。
+After exporting the scenario, you can see the effect by adding it to the scenario.
+
 
 ```typescript
+
 Scene3D.load('LayaScene_scene/Conventional/scene.ls',Handler.create(this,function(scene:Scene3D):void{
     Laya.stage.addChild(scene);
 }));
 ```
 
-![](img/2.gif)<br>(图2)
+
+![] (img/2.gif) <br> (Figure 2)
