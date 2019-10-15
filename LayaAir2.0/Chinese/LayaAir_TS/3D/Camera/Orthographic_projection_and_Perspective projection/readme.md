@@ -1,6 +1,6 @@
 # 摄像机的正交投影和透视投影
 
-###### *version :2.0.1beta   Update:2019-3-19*
+###### *version :2.2.0   Update:2019-10-14*
 
 ​	在我们观察世界的时候，看到的都是带有“近大远小”透视效果的世界，在3D引擎中，为了更好的模拟人眼所看到的世界，默认的摄像机带着“透视投影”的效果。
 
@@ -10,7 +10,7 @@
 
 ```typescript
 //正交投影属性设置
-camera.orthographicProjection = true;
+camera.orthographic = true;
 //正交垂直矩阵距离,控制3D物体远近与显示大小
 camera.orthographicVerticalSize = 7;
 //移动摄像机位置
