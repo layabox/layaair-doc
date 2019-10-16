@@ -1,0 +1,170 @@
+[
+  {
+    "name": "LayaAir Native SDK 1.0.5",
+    "url": "1.0.5.md",
+    "date": "2019-09-23",
+    "download": {
+      "url": "http://layabox.com/layaplayer/layanativeRes/v1.0.5.zip"
+    }
+  },
+  {
+    "name": "LayaAir Native SDK 1.0.4",
+    "url": "1.0.4.md",
+    "date": "2019-04-18",
+    "download": {
+      "url": "http://layabox.com/layaplayer/layanativeRes/v1.0.4.zip"
+    }
+  },
+  {
+    "name": "LayaAir Native SDK 1.0.3",
+    "url": "1.0.3.md",
+    "date": "2018-11-22",
+    "download": {
+      "url": "http://layabox.com/layaplayer/layanativeRes/v1.0.3.zip"
+    }
+  },
+  {
+    "name": "LayaAir Native SDK 1.0.2",
+    "url": "1.0.2.md",
+    "date": "2018-10-13",
+    "download": {
+      "url": "http://layabox.com/layaplayer/layanativeRes/v1.0.2.zip"
+    }
+  },
+  {
+    "name": "LayaAir Native SDK 1.0.1",
+    "url": "1.0.1.md",
+    "date": "2018-8-20",
+    "download": {
+      "url": "http://layabox.com/layaplayer/layanativeRes/v1.0.1.zip"
+    }
+  },
+  {
+    "name": "LayaAir Native SDK 1.0",
+    "url": "1.0.md",
+    "date": "2018-7-26",
+    "download": {
+      "url": "http://layabox.com/layaplayer/layanativeRes/v1.0.zip"
+    }
+  },
+  {
+    "name": "LayaAir Native SDK 0.9.16",
+    "url": "0.9.16.md",
+    "date": "2018-5-22",
+    "download": {
+      "url": "http://layabox.com/layaplayer/layanativeRes/v0.9.16.zip"
+    }
+  },
+  {
+    "name": "LayaAir Native SDK 0.9.15",
+    "url": "0.9.15.md",
+    "date": "2018-4-16",
+    "download": {
+      "url": "http://layabox.com/layaplayer/layanativeRes/v0.9.15.zip"
+    }
+  },
+  {
+    "name": "LayaAir Native SDK 0.9.14.2",
+    "url": "0.9.14.2.md",
+    "date": "2018-3-22",
+    "download": {
+      "url": "http://layabox.com/layaplayer/layanativeRes/v0.9.14.2.zip"
+    }
+  },
+  {
+    "name": "LayaAir Native SDK 0.9.14",
+    "url": "0.9.14.md",
+    "date": "2018-3-8",
+    "download": {
+      "url": "http://layabox.com/layaplayer/layanativeRes/v0.9.14.zip"
+    }
+  },
+  {
+    "name": "LayaAir Native SDK 0.9.13",
+    "url": "0.9.13.md",
+    "date": "2017-12-28",
+    "download": {
+      "url": "http://layabox.com/layaplayer/layanativeRes/v0.9.13.zip"
+    }
+  },
+  {
+    "name": "LayaAir Native SDK 0.9.12",
+    "url": "0.9.12.md",
+    "date": "2017-11-25",
+    "download": {
+      "url": "http://layabox.com/layaplayer/layanativeRes/v0.9.12.zip"
+    }
+  },
+  {
+    "name": "LayaAir Native SDK 0.9.11",
+    "url": "0.9.11.md",
+    "date": "2017-10-30",
+    "download": {
+      "url": "http://layabox.com/layaplayer/layanativeRes/v0.9.11.zip"
+    }
+  },
+  {
+    "name": "LayaAir Native SDK 0.9.10",
+    "url": "0.9.10.md",
+    "date": "2017-09-18",
+    "download": {
+      "url": "http://layabox.com/layaplayer/layanativeRes/v0.9.10.zip"
+    }
+  },
+  {
+    "name": "LayaAir Native SDK 0.9.9",
+    "url": "0.9.9.md",
+    "date": "2017-08-25",
+    "download": {
+      "url": "http://layabox.com/layaplayer/layanativeRes/v0.9.9.zip?v1"
+    }
+  },
+  {
+    "name": "LayaAir Native SDK 0.9.8",
+    "url": "0.9.8.md",
+    "date": "2017-08-05",
+    "download": {
+      "url": "http://layabox.com/layaplayer/layanativeRes/v0.9.8.zip"
+    }
+  },
+  {
+    "name": "LayaAir Native SDK 0.9.7",
+    "url": "0.9.7.md",
+    "date": "2017-07-15",
+    "download": {
+      "url": "http://layabox.com/layaplayer/layanativeRes/v0.9.7.zip"
+    }
+  },
+  {
+    "name": "LayaAir Native SDK 0.9.6",
+    "url": "0.9.6.md",
+    "date": "2017-06-03",
+    "download": {
+      "url": "http://layabox.com/layaplayer/layanativeRes/v0.9.6.zip"
+    }
+  },
+  {
+    "name": "LayaAir Native SDK 0.9.5",
+    "url": "0.9.5.md",
+    "date": "2017-05-13",
+    "download": {
+      "url": "http://ldc.layabox.com/download/LayaAir/runtime/layaplayer_0.9.5.zip"
+    }
+  },
+  {
+    "name": "LayaAir Native SDK 0.9.2",
+    "url": "0.9.2.md",
+    "date": "2017-02-18",
+    "download": {
+      "url": "http://ldc.layabox.com/download/LayaAir/runtime/layaplayer_0.9.2.zip"
+    }
+  },
+  {
+    "name": "LayaAir Native SDK 0.9.1",
+    "url": "0.9.1.md",
+    "date": "2017-01-17",
+    "download": {
+      "url": "http://ldc.layabox.com/download/LayaAir/runtime/layaplayer_0.9.1.zip"
+    }
+  }
+]
