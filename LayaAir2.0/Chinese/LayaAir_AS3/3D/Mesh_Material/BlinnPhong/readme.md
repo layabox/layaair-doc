@@ -8,11 +8,11 @@ BlinnPhong是在开发中最常用的模型材质。
 
 > 属性
 
-`albedoColor:Vector4`反照率颜色。
+`albedoColor:Vector4`漫反射颜色。
 
-`albedoIntensity:Number` 反照率强度。
+`albedoIntensity:Number` 漫反射强度。
 
-`albedoTexture:BaseTexture` 反照率贴图。
+`albedoTexture:BaseTexture` 漫反射贴图。
 
 `enableLighting:Boolean` 是否启用光照。
 
