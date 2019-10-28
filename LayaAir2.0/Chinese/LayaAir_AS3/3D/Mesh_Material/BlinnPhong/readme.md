@@ -2,19 +2,17 @@
 
 ###### *version :2.1.0beta   Update:2019-5-14*
 
-​	因为Unity中标准和其他材质与LayaAir标准材质有所差异，因此开发者使用导出的3D资源时，我们会发现美术效果与Unity中会有不同，需要在代码中修改各种材质属性参数或调节灯光后才能达到所需效果，为开发者们带来了不便。
-
-​	为了使LayaAir引擎中运行效果与Unity中调整的美术效果一致，LayaAir官方在Unity导出插件中和引擎中增加BlinnPhongMaterial材质，可以让开发者们所见即所得，减少代码修改美术效果的时间，提高工作效率。因此建议以后的开发中尽量都使用该材质。
+BlinnPhong是在开发中最常用的模型材质。
 
 #### 主要属性和方法详解：
 
 > 属性
 
-`albedoColor:Vector4`反照率颜色。
+`albedoColor:Vector4`漫反射颜色。
 
-`albedoIntensity:Number` 反照率强度。
+`albedoIntensity:Number` 漫反射强度。
 
-`albedoTexture:BaseTexture` 反照率贴图。
+`albedoTexture:BaseTexture` 漫反射贴图。
 
 `enableLighting:Boolean` 是否启用光照。
 
