@@ -1,53 +1,54 @@
 # HTML5行业首款3D ARPG游戏《无尽骑士》曝光，HTML5进入3D 时代？
 
+
 2016-12-09 
 
-　　在HTML5行业出现两款过2000万月流水的游戏之后，2016年底行业风起云涌，先是微信、手机QQ、支付宝等超级渠道被媒体传出即将开放HTML5游戏入口的消息，引起行业热议。其后又是国际巨头Facebook正式放出H5游戏入口，近日又传出苹果施压腾讯，将很多HTML5游戏公众号在IOS的链接强行跳至Safari。HTML5流量入口之争的大战或将开启。
+After the emergence of two games over 20 million months in HTML5 industry, the industry surged at the end of 2016. First, the news of the upcoming opening of HTML5 game entrance was spread by the media through the Super channels of Wechat, mobile QQ and Alipay, which caused a heated discussion in the industry. Later, international giant Facebook officially released the H5 game entrance. Recently, Tencent, under pressure from Apple, forced many HTML5 game public numbers to jump to Safari on IOS links. The battle over HTML5 traffic entry may open.
 
 ![img](http://www.layabox.com/uploadfile/image/20161209/1481272934120390.jpg)
 
-　　回归正题，渠道在一番洗牌之后，优质的HTML5游戏将迎来更多的爆发机会。而纵观APP游戏发展，3D游戏时代将会主宰未来。那HTML5的技术能否承载3D游戏呢？HTML5行业首款3D ARPG游戏《无尽骑士》或将为我们揭开答案。
+Back to the point, after a shuffle of channels, high-quality HTML5 games will usher in more opportunities to explode. Throughout the development of APP games, the era of 3D games will dominate the future. Can HTML5 technology support 3D games? HTML5 industry's first 3D ARPG game, "The Endless Knight" may open the answer for us.
 
 ![img](http://www.layabox.com/uploadfile/image/20161209/1481272934225885.jpg)
 
-　　《无尽骑士》是由Layabox发行，采用LayaAir 游戏引擎开发的3D地下城冒险类HTML5ARPG游戏。小编率先体验了一下，该游戏从玩法上采用的是HTML5行业当前主流的挂机 ARPG玩法。但是3D游戏的超炫酷表现，让小编眼前一亮，从视觉体验上甩开2D ARPG一大截。
+The Endless Knight is a 3D underground adventure HTML5ARPG game developed by Layabox using LayaAir game engine. Xiao Editor took the lead in experiencing this game. The game uses the current mainstream hang-up ARPG playing method in HTML5 industry. But the super cool performance of 3D Games makes Xiaobian look bright, leaving a large part of 2D ARPG out of the visual experience.
 
 ![img](http://www.layabox.com/uploadfile/image/20161209/1481272934827938.jpg)
 
-　　《无尽骑士》玩法上虽然是偏挂机类游戏，但是游戏的战斗氛围激烈，旋风、跳斩、影分身三个大招需要玩家手动触发，有很强的游戏带入感。无论是光影还是特效，其制作品质可媲美APP游戏。
+Although the game of "The Endless Knight" is a hang-up game, the fighting atmosphere of the game is intense, whirlwind, chop-off, shadow Identity three major tricks need to be triggered manually by players, which has a strong sense of game entry. Whether light, shadow or special effects, the quality of its production can be comparable to that of APP games.
 
-　　作为第一款3D HTML5ARPG游戏，《无尽骑士》炫酷的3D效果足以让玩家震撼。通过LayaAir引擎性能的助力及其对主流3D编辑软件的完美支持，《无尽骑士》不仅实现了精美的3D场景和炫酷的战斗动作表现，更是能够流畅的进行同屏多角色战斗，让玩家拥有身临其境般的游戏快感！
+As the first 3D HTML5ARPG game, the cool 3D effect of "The Endless Knight" is enough to shock players. Through the help of LayaAir engine performance and its perfect support for the mainstream 3D editing software, Infinite Knight not only achieves exquisite 3D scenes and dazzling combat action performance, but also can smoothly carry out multi-role battles on the same screen, allowing players to enjoy the immersive pleasure of the game!
 
 ![img](http://www.layabox.com/uploadfile/image/20161209/1481272934980596.jpg)
 
-　　《无尽骑士》的诞生，标志着HTML5游戏已经能够完美实现精品3D效果。而LayaAir引擎技术在3D方面的发力，也让HTML5游戏进入3D时代成为可能，助力2017年精品HTML5游戏产业的爆发！
+The birth of "Knight of the Endless" marks that HTML5 games have been able to achieve perfect 3D effects. And the power of LayaAir engine technology in 3D makes it possible for HTML5 games to enter the era of 3D, which helps the explosion of the high-quality HTML5 game industry in 2017!
 
 ![img](http://www.layabox.com/uploadfile/image/20161209/1481272934966611.jpg)
 
-　　目前，《无尽骑士》已经进入技术测试阶段，预计2017年1月正式上线推广。按下图的指引，用微信扫一扫下图二维码，关注Layabox公众号后，即可在“推荐案例”栏目中直接体验前所未有的精品HTML5 3D 游戏！
+At present, "The Endless Knight" has entered the stage of technical testing, and is expected to be officially launched in January 2017. Following the guidance of the figure below, you can directly experience the unprecedented high-quality HTML5 3D games in the "Recommendation Cases" column by scanning the two-dimensional code of the figure below with Wechat and paying attention to the Layabox public number.
 
 ![pr引导2-2016-12-8.jpg](http://www.layabox.com/uploadfile/image/20161209/1481275845561097.jpg)
 
-　　**LayaAir引擎**
+_______**LayaAir Engine**
 
-　　裸跑性能媲美APP的新一代HTML5引擎；
+Naked running is a new generation of HTML5 engine with comparable performance to APP.
 
-　　支持Canvas\WebGL模式自动切换；
+Support Canvas WebGL mode automatic switching;
 
-　　支持2D\3D\VR产品开发；
+Support the development of 2D3DVR products;
 
-　　支持使用ActionScript3\TypeScript\JavaScript三种语言开发；
+Support the development of ActionScript 3 TypeScript JavaScript;
 
-　　一次开发可同时发布：手游APP、HTML5、Flash页游多端版本。
+One development can be released at the same time: Hand Tour APP, HTML5, Flash Page Tour multi-end version.
 
-　　**LayaAir引擎开发者2D交流群**
+_______**Layaair engine developer 2D communication group**
 
-　　QQ群号：104144216
+QQ group number: 104144216
 
-　　**LayaAir引擎开发者3D&VR交流群**QQ群号：343966316
+_______**LayaAir Engine Developer 3D & VR Communication Group**QQ group number: 343966316
 
-　　**Layabox业务合作**
+_______**Layabox Business Cooperation**
 
-　　渠道合作微信\QQ：uubabi \ 1362382630
+Channel cooperation Weixin QQ: uubabi 2630
 
-　　发行合作微信\QQ：chenxiao730\395508799
+Issuing Cooperative Wechat QQ: Chenxiao 730

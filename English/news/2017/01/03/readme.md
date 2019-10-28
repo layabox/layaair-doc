@@ -1,15 +1,15 @@
 # LayaBox谢成鸿与李安、周杰伦、屠呦呦等荣膺最具创意人物100
 
-2017-01-03  
+2017-01-03
 
-2016年12月30日，国际知名商业杂志Fast Company中文版《快公司》为“2016中国商业最具创意人物100”举行了颁奖典礼。其中，HTML5游戏领域首次进入评选范围，LayaBox创始人谢成鸿荣获“2016中国商业最具创意人物100”。
+On December 30, 2016, Fast Company, a well-known international business magazine, held an award ceremony for "The Most Creative Person in Chinese Business 2016". Among them, HTML5 game field entered the selection for the first time. Xie Chenghong, founder of LayaBox, was awarded "The Most Creative Person in Chinese Business 2016".
 
-作为在中国地区的第一个创意人物榜单，它跨越了所有领域，把企业家、工程师、社会人士、设计师、科学家等等不同身份的人用“创新”连接在一起。此次入围者包括屠呦呦、李安、周杰伦、段永平等在科技、互联网、传媒、娱乐、游戏等领域的各色创新引流人物。
+As the first list of creative people in China, it spans all fields, linking entrepreneurs, engineers, social figures, designers, scientists and other people of different identities with "innovation". The finalists include Tu Youyou, Ang Lee, Jay Chou and Duan Yongping, innovative and leading figures in the fields of science and technology, Internet, media, entertainment and games.
 
 ![blob.png](http://www.layabox.com/uploadfile/image/20170103/1483446970966035.png)
 
-LayaBox创始人谢成鸿带领一支精干的技术团队，打造了领先的HTML5游戏引擎LayaAir，推出了行业首款APP级别的2D和3D游戏，极大的推动了中国HTML5游戏产业的技术发展。更难得的是LayaAir突破性的将2D、3D、AR、VR和页游、Native手游、HTML5游戏等诸多需求通过一个引擎得以完美统一。
+Xie Chenghong, founder of LayaBox, led a skilled technical team to build a leading HTML5 game engine, LayaAir, and launched the industry's first APP-level 2D and 3D games, which greatly promoted the technological development of China's HTML5 game industry. What's even more rare is that LayaAir's breakthrough unifies many requirements, such as 2D, 3D, AR, VR and page-surfing, Native hand-surfing, HTML5 games, through an engine.
 
-正是凭借在技术上的创新，谢成鸿成功荣膺“2016中国商业最具创意人物100”，目前LayaAir引擎已被腾讯、Forgame、胡莱、蝴蝶互动等众多知名厂商采用。
+Thanks to technological innovation, Xie Chenghong has successfully won the award of "China's Business Most Creative Person 100 in 2016". At present, LayaAir engine has been adopted by many well-known manufacturers such as Tencent, Forgame, Hulai, Butterfly Interaction and so on.
 
-《快公司》是全球三大财经商业媒体之一，长期聚焦于商业与科技的创新领域。旨在为中国广大菁英读者及领导者提供来自全球各地最酷、最先进、最具创意的商业视角、科技信息、设计及管理理念。
+Fast Company is one of the three major financial and business media in the world. It has long focused on business and technological innovation. It aims to provide Chinese elite readers and leaders with the coolest, most advanced and creative business perspectives, scientific and technological information, design and management concepts from all over the world.

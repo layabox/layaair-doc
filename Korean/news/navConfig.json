@@ -8,280 +8,280 @@
   "news": [
         {
           "id": "35",
-          "title": "LayaAir案例：网龙出品LOL(英雄联盟)IP的3D小游戏《决战巨神峰》！",
+          "title": "LayaAir Case: NetDragon produces LOL (League of Legends) IP 3D mini game -Decisive Battle of the Giants-!",
           "date": "2019-09-28",
-          "brief": "在这即将迎来十周年之际，网龙重磅推出这个寄托着一代人青春与信仰的英雄联盟IP的微信小游戏《决战巨神峰》,与传统的LOL玩法有所不同，在微信小游戏的版本里，《决战巨神峰》采用的是休闲爬塔式游戏玩法。",
+          "brief": "On the occasion of the tenth anniversary of the upcoming tenth anniversary, NetDragon has launched this WeChat game, the battle of the heroes of the League of Legends, which has a generation of youth and faith. It is different from the traditional LOL game. In the version, -Decisive Battle of the Giants- uses a casual climbing tower game.",
           "jpgpath": "2019/09/28/img/load.jpg",
           "filepath": "2019/09/28/readme.md"
         },     {
           "id": "34",
-          "title": "LayaAir引擎3D捏脸换装游戏案例《淘宝人生》与《心动练习生》",
+          "title": "LayaAir engine 3D pinch face dressup game case -Taobao Life- and -Heart Trainer-",
           "date": "2019-09-27",
-          "brief": "捏脸换装游戏，在APP游戏中就不乏知名爆款大作，该类型也一直是一个热门的游戏类型。在HTML5与小游戏领域，技术支撑方面，无论是自定义顶点和自定义shader还是PBR和3D骨骼的支持，LayaAir引擎足以保障游戏达到APP原生效果表现。",
+          "brief": "The pinch face dressup game, there is no shortage of well-known explosive masterpieces in the APP game, this type has always been a popular game type. In the field of HTML5 and small games, technical support, whether it is custom vertices and custom shaders or PBR and 3D bone support, LayaAir engine is enough to ensure that the game achieves APP native performance.",
           "jpgpath": "2019/04/28/layabox.png",
           "filepath": "2019/09/27/readme.md"
         }, 
     {
           "id": "33",
-          "title": "LayaAir引擎放弃Canvas API，打造次世代3D引擎与云游戏引擎，提供AI赋能！",
+          "title": "The LayaAir engine abandons the Canvas API, creating the next generation 3D engine and cloud game engine, providing AI empowerment!",
           "date": "2019-04-28",
-          "brief": "LayaAir引擎放弃Canvas原生API，并不等于放弃2D，而是为更好的发展2D和3D！未来，LayaAir引擎保持对2D的优化与稳定，重点发展次世代3D引擎，对于技术上的极致追求，我们从未停下脚步!",
+          "brief": "LayaAir engine gives up the Canvas native API, it does not mean giving up 2D, but for better development of 2D and 3D! In the future, the LayaAir engine will maintain the optimization and stability of 2D, focusing on the development of the next generation 3D engine. For the ultimate pursuit of technology, we have never stopped!",
           "jpgpath": "2019/09/27/img/4.png",
           "filepath": "2019/04/28/readme.md"
         }, 
     {
           "id": "32",
-          "title": "Layabox推出无编程3D制作工具LayaMaker，携手精锐教育集团进军新领域！",
+          "title": "Layabox launches LayaMaker, a programming-free 3D production tool, and joins the elite education group to enter new areas!",
           "date": "2019-04-26",
-          "brief": "Layabox与教育领域领军企业精锐教育UUabc签署战略合作协议，携旗下产品LayaMaker宣布正式进军教育行业互动教学领域。LayaMaker使用者无需编程基础即可快速制作生产精美灵动的3D交互场景教学内容。",
+          "brief": "Layabox signed a strategic cooperation agreement with UUabc, an elite education leader in education, and announced that it has officially entered the interactive teaching field of the education industry with its product, LayaMaker. LayaMaker users can quickly create beautifully crafted 3D interactive scenes without the need for a programming foundation.",
           "jpgpath": "2019/04/26/img/0.jpg",
           "filepath": "2019/04/26/readme.md"
         }, 
     {
           "id": "31",
-          "title": "Layabox率先支持小米快游戏，LayaAir 2.0.2版本大幅提升3D性能、spine性能和内存优化、新增屏幕适配设置！",
+          "title": "Layabox is the first to support Xiaomi fast game, LayaAir 2.0.2 version greatly enhances 3D performance, spine performance and memory optimization, new screen adaptation settings!",
           "date": "2019-04-15",
-          "brief": "在这段时间里，我们不仅在官网新增了大量的LayaAir 2.0 3D文档，优化了一些2D文档，全面更新了官网的3D示例。在LayaAir 2.0.2 beta版里还围绕着2.0引擎发展的主线“性能、易用性、3D”这几个核心点做了大量的更新，更是率先完成了小米快游戏的引擎适配以及在LayaAir IDE中集成了小米快游戏的发布。",
+          "brief": "During this time, we not only added a large number of LayaAir 2.0 3D documents on the official website, but also optimized some 2D documents and completely updated the 3D examples of the official website. In the LayaAir 2.0.2 beta version, we also made a lot of updates around the main points of the 2.0 engine development -performance, ease of use, 3D-, and it is the first to complete the engine adaptation of the Xiaomi fast game. The release of the Xiaomi Express game is integrated in the LayaAir IDE.",
           "jpgpath": "2019/04/15/img/qgame.png",
           "filepath": "2019/04/15/readme.md"
         }, 
     {
           "id": "30",
-          "title": "MOBA、SLG、ARPG、FPS类型3D HTML5游戏案例精品推荐",
+          "title": "MOBA, SLG, ARPG, FPS type 3D HTML5 game case boutique recommendation",
           "date": "2019-03-11",
-          "brief": "在微信小游戏和HTML5中采用LayaAir引擎的3D产品，据小编已知的已经300多款了，3D引擎(H5和小游戏)占比超过90%。今天就不再介绍休闲小游戏了，推荐几款不同类型的优质3D游戏案例代表作。",
+          "brief": "3D products using the LayaAir engine in WeChat games and HTML5, according to the small series known more than 300 models, 3D engine (H5 and small games) accounted for more than 90%. I will not introduce casual games today, and recommend several different types of high-quality 3D game case masterpieces.",
           "jpgpath": "2019/03/11/img/moba.jpg",
           "filepath": "2019/03/11/readme.md"
         }, 
     {
           "id": "29",
-          "title": "LayaAir 2.0 正式版发布了，重要特性全面介绍",
+          "title": "LayaAir 2.0 official version released, a comprehensive introduction to important features",
           "date": "2019-01-19",
-          "brief": "历时4个多月，推出4个2.0 beta版本，其中修复BUG若干，2D引擎与IDE优化与新增功能39项，3D引擎与插件优化与新增功能22项。在引擎组团队的不懈努力下，终于为开发者带来了2.0的稳定正式版。",
+          "brief": "It lasted for more than 4 months and launched 4 2.0 beta versions, including several bug fixes, 2D engine and IDE optimization and new features, and 3D engine and plug-in optimization and new features. Under the unremitting efforts of the engine team, the developer finally got a stable version of 2.0.",
           "jpgpath": "2019/01/19/img/3.png",
           "filepath": "2019/01/19/readme.md"
         }, 
 {
       "id": "28",
-      "title": "LayaAir引擎3D小游戏再曝光60款，小游戏引擎11月占比超93%",
+      "title": "LayaAir engine 3D games re-exposed 60 models, small game engine accounted for 93% in November",
       "date": "2018-12-11",
-      "brief": "虽然3D游戏的总量仍远低于2D游戏，但3D小游戏的增长速度却呈现出远超2D游戏的爆发式增长趋势。在这些3D小游戏里，绝大多数3D游戏均为LayaAir引擎产品，在小游戏的3D引擎占比中超过93%。",
+      "brief": "Although the total amount of 3D games is still much lower than that of 2D games, the growth rate of 3D games is far more than the explosive growth of 2D games. In these 3D games, the vast majority of 3D games are LayaAir engine products, accounting for more than 93% of the 3D engine in small games.",
       "jpgpath": "2018/12/11/img/2.png",
       "filepath": "2018/12/11/readme.md"
     }, 
 {
       "id": "27",
-      "title": "百度即将推出智能小游戏，Layabox率先完成引擎适配支持！",
+      "title": "Baidu is about to launch a smart game, Layabox is the first to complete engine adaptation support!",
       "date": "2018-11-26",
-      "brief": "百度小游戏首先覆盖拥有1.6亿用户流量的手机百度APP，正式向小游戏产业发力。Layabox作为技术领先的引擎厂商，已率先完成了引擎对百度小游戏的适配，并在LayaAirIDE里集成了百度小游戏的发布，为当前超50万的LayaAir引擎开发者率先提供了新的平台红利机会！",
+      "brief": "Baidu's small game first covered the mobile phone Baidu APP with 160 million user traffic, and officially launched its efforts in the small game industry. As the leading engine manufacturer, Layabox has taken the lead in adapting the engine to Baidu games, and integrated the release of Baidu games in LayaAirIDE, providing a new platform bonus for the current 500,000 LayaAir engine developers. opportunity!",
       "jpgpath": "2018/11/26/banner.jpg",
       "filepath": "2018/11/26/readme.md"
     }, 
 {
       "id": "26",
-      "title": "Layabox助力开发者快速接入QQ轻游戏，畅享流量红利！",
+      "title": "Layabox helps developers quickly access QQ light games and enjoy the traffic bonus!",
       "date": "2018-11-5",
-      "brief": "QQ轻游戏平台用户已突破2.5亿。Layabox基于在QQ轻游戏技术和商务上的优势，提出发行合作模式，帮助众多存在技术压力和困惑的开发者，快速解决技术与商务问题，畅享QQ轻游戏的流量机会。",
+      "brief": "QQ light gaming platform users have exceeded 250 million. Layabox is based on the advantages of QQ light game technology and business, and proposes a distribution cooperation model to help many developers with technical pressure and confusion, quickly solve technical and business problems, and enjoy the traffic opportunities of QQ light games.",
       "jpgpath": "2018/11/5/img/2.jpg",
       "filepath": "2018/11/5/readme.md"
     }, 
 {
       "id": "25",
-      "title": "Layabox推出小游戏流量共享平台，开发者可免费获得游戏流量！",
+      "title": "Layabox launches a small game traffic sharing platform, and developers can get game traffic for free!",
       "date": "2018-11-1",
-      "brief": "开发者仅仅是通过拖拽就实现了技术上的对接，简单提交一下游戏信息，就可以自助加入到小游戏流量共享平台，从而实现免费获得流量！Layabox作为流量共享平台的运营方与发起方，绝不收取参与流量共享平台的开发者任何费用与分成。旨在搭建一个“我为人人，人人为我”的免费共享生态。",
+      "brief": "The developer only realizes the technical docking by dragging and dropping. Simply submitting the game information, you can self-join the small game traffic sharing platform, thus achieving free access to traffic! As the operator and initiator of the traffic sharing platform, Layabox will never charge any fees and share of developers participating in the traffic sharing platform. It aims to build a free shared ecology of -I am for everyone, everyone is for me-.",
       "jpgpath": "2018/11/1/img/0.png",
       "filepath": "2018/11/1/readme.md"
     }, 
 {
       "id": "24",
-      "title": "《腾讯桌球》日活300万！盘点LayaAir引擎的3D小游戏！",
+      "title": "-Tencent Billiards- live 3 million daily! Count 3D games for the LayaAir engine!",
       "date": "2018-05-18",
-      "brief": "腾讯桌球是腾讯光子工作室研发的一款基于真实玩家在线匹配的竞技对战游戏，运用了LayaAir引擎的3D技术，真实还原了桌球的质感与运动中的球感，一经推出，深受广大玩家的喜爱。据了解，当前累计用户已超1500万，日活跃用户已超300万。",
+      "brief": "Tencent billiards is a competitive battle game based on real players online matching developed by Tencent Photon Studio. It uses the 3D technology of LayaAir engine to truly restore the texture of the billiards and the sense of movement in the sport. Once launched, it is well received by the majority of players. favorite. It is understood that the current cumulative number of users has exceeded 15 million, and daily active users have exceeded 3 million.",
       "jpgpath": "2018/05/18/1.png",
       "filepath": "2018/05/18/readme.md"
     }, 
 {
       "id": "23",
-      "title": "逆天了！3D网页展示居然可以这么屌！",
+      "title": "Against the sky! 3D webpage display can be so embarrassing!",
       "date": "2018-02-11",
-      "brief": "这是一个非游戏的HTML5网页，以三维的空间技术为基础，在不同的浮空小岛之间切换。通过点击GO，可以进入到每一个场景中，进行360度全角度观看小岛的风貌，还可以进行一些简单的互动操作。",
+      "brief": "This is a non-gaming HTML5 web page that is based on 3D space technology and switches between different floating islands. By clicking on the GO, you can enter each scene, view the island in 360 degrees, and perform some simple interactive operations.",
       "jpgpath": "2018/02/11/9.jpg",
       "filepath": "2018/02/11/readme.md"
     }, 
 {
       "id": "22",
-      "title": "科幻题材高清自由视角3D H5游戏《太空机甲》今日删档测试",
+      "title": "Science fiction theme HD free viewing angle 3D H5 game -Space Mech- today deleted file test",
       "date": "2018-01-26",
-      "brief": "该游戏的模型采用高分辨率3D渲染，高纹理高精细贴图，无论是2K屏还是4K屏，全部呈现出高清无损的角色品质。其新增360度的水平旋转自由视角功能，还原真3D立体画面，尚属H5行业的首次。",
+      "brief": "The game's model uses high-resolution 3D rendering, high-texture and high-definition textures, whether it is 2K screen or 4K screen, all exhibit high-definition character quality. Its new 360-degree horizontal rotation free-view function restores true 3D stereoscopic images, which is the first time in the H5 industry.",
       "jpgpath": "2018/01/26/2.jpg",
       "filepath": "2018/01/26/readme.md"
     }, 
 {
       "id": "21",
-      "title": "微信公开课：微信小游戏的全部精华内容汇总!",
+      "title": "WeChat Open Class: Summary of all the essence of WeChat games!",
       "date": "2018-01-15",
-      "brief": "在2018微信公开课上，微信小游戏无疑成为了最重要的热点之一。本篇汇总了上午的微信公开课和下午的小游戏分论坛上，嘉宾分享的微信小游戏相关内容要点。",
+      "brief": "In the 2018 WeChat open class, WeChat games have undoubtedly become one of the most important hot spots. This article summarizes the main content of the WeChat game related to the WeChat open class in the morning and the small game sub-forum in the afternoon.",
       "jpgpath": "2018/01/15/0.jpg",
       "filepath": "2018/01/15/readme.md"
     },
       {
       "id": "20",
-      "title": "“微信小游戏”平台正式发布，LayaAir引擎同步支持适配微信小游戏！",
+      "title": "The -WeChat Small Game- platform was officially released, and the LayaAir engine synchronized support for WeChat games!",
       "date": "2017-12-28",
-      "brief": "12月28日，微信小游戏在6.6.1的版本中上线发布。通过微信小程序入口的微信小游戏平台进入，可以看到首批推出的15款游戏产品，其中4款采用LayaAir引擎开发，通过Layabox提供的小程序适配库而发布的微信小游戏。",
+      "brief": "On December 28th, WeChat games were released online in version 6.6.1. Through the WeChat small game platform entered by WeChat applet, you can see the first 15 game products, 4 of which are developed by LayaAir engine and released by the small program adapter library provided by Layabox.",
       "jpgpath": "2017/12/28/img/1.jpg",
       "filepath": "2017/12/28/readme.md"
     },
     {
       "id": "19",
-      "title": "Layabox谢成鸿出席TFC，公布智能优化方案可提升性能2倍！",
+      "title": "Layabox Xie Chenghong attended the TFC and announced that the intelligent optimization solution can improve performance by 2 times!",
       "date": "2017-10-28",
-      "brief": "一直以来Layabox以性能的优势打动了一批批的研发团队。然而追求性能极致的LayaAir引擎团队并不满足于此，仍在不断的进行优化。例如针对UI与游戏场景方面，LayaAir引擎团队又将推出了全新的智能优化方案。",
+      "brief": "Layabox has always impressed a batch of R&D teams with performance advantages. However, the LayaAir engine team, which pursues the highest performance, is not satisfied with this and is still continually optimizing. For example, for the UI and game scenarios, the LayaAir engine team will launch a new intelligent optimization solution.",
       "jpgpath": "2017/10/28/1.png",
       "filepath": "2017/10/28/readme.md"
     },
     {
       "id": "18",
-      "title": "最赚钱H5游戏《大天使之剑H5》公测24天流水破亿！",
+      "title": "The most profitable H5 game -Angel's Sword H5- is open for 24 days.",
       "date": "2017-10-27",
-      "brief": " 10月22日，上线24天的《大天使之剑H5》宣告流水破亿。该游戏由上市公司三七互娱（002555.SZ）倾力打造，同时由三七互娱与指上缤纷联合发行，自此，H5游戏终于步入亿元月流水时代，这将让整个游戏行业为之一振。",
+      "brief": "On October 22nd, the -Dragon's Sword H5- on the line for 24 days announced that the water was broken. The game was created by the listed company Sanqi Mutual Entertainment (002555.SZ), and was jointly issued by Sanqi Mutual Entertainment and Fingers. Since then, H5 games have finally entered the era of billions of waters, which will make the whole game The industry is invigorated.",
       "jpgpath": "2017/10/27/1.png",
       "filepath": "2017/10/27/readme.md"
     },
     {
       "id": "17",
-      "title": "腾讯首款自研HTML5游戏《全民大乐斗》微信、手机QQ同步公测",
+      "title": "Tencent's first self-developed HTML5 game -All the big people- WeChat, mobile QQ synchronous beta",
       "date": "2017-08-05",
-      "brief": "8月3日，腾讯自研的格斗类HTML5游戏《全民大乐斗》在微信、手机QQ两大平台的安卓版本公测上线。该游戏采用LayaAir引擎，由腾讯魔镜工作室研发完成。作为腾讯旗下首款上线的自研HTML5回合制游戏，《全民大乐斗》的推出，标志着腾讯的自研团队已正式进入HTML5游戏领域。",
+      "brief": "On August 3, Tencent's self-developed fighting HTML5 game -All the Great People- was launched on the Android version of WeChat and mobile QQ. The game uses the LayaAir engine, developed by Tencent Mirror Studio. As the first online self-developed HTML5 turn-based game launched by Tencent, the launch of -All People's Big Game- marks that Tencent's self-research team has officially entered the HTML5 game field.",
       "jpgpath": "2017/08/05/1.jpg",
       "filepath": "2017/08/05/readme.md"
     },
     {
       "id": "16",
-      "title": "Layabox谢成鸿: 2017年是HTML5夯实基础的一年",
+      "title": "Layabox Xie Chenghong: 2017 is the year of HTML5 solid foundation",
       "date": "2017-07-29",
-      "brief": "2017年7月28日下午14:00，蝴蝶互动与Layabox等在上海Mook酒吧联合举办了主题为“精品时代，开放共赢”的HTML5行业大型聚会。超过500家H5游戏厂商、媒体、渠道参加了本次聚会。Layabox CEO谢成鸿出席并致辞。",
+      "brief": "At 14:00 on July 28th, 2017, Butterfly Interactive and Layabox jointly held a large-scale HTML5 industry gathering with the theme of “Boutique Age, Open and Win-win” at Shanghai Mook Bar. More than 500 H5 game makers, media and channels participated in the party. Layabox CEO Xie Chenghong attended and delivered a speech.",
       "jpgpath": "2017/07/29/1.png",
       "filepath": "2017/07/29/readme.md"
     },
     {
       "id": "15",
-      "title": "《雪鹰领主3D》昨日腾讯玩吧首发! HTML5进入3D游戏时代！",
+      "title": "-Snow Eagle Lord 3D- yesterday Tencent play it! HTML5 enters the era of 3D games!",
       "date": "2017-07-22",
-      "brief": "在LayaAir引擎的性能保障下，相信随着越来越多的3D研发厂商加入，3D爆款产品或许在不远的将来就会出现。至少在当下，《雪鹰领主3D》的推出，标志着3D HTML5游戏进入了一个新的里程碑，也在推动着HTML5进入了3D游戏时代。",
+      "brief": "Under the performance guarantee of the LayaAir engine, I believe that as more and more 3D R&D vendors join, 3D explosion products may appear in the near future. At least in the moment, the launch of -Snow Eagle Lord 3D- marks a new milestone in 3D HTML5 games, and is also driving HTML5 into the era of 3D games.",
       "jpgpath": "2017/07/22/1.jpg",
       "filepath": "2017/07/22/readme.md"
     },
     {
       "id": "14",
-      "title": "【干货】LayaBox谢成鸿对2017年HTML5行业的思考！",
+      "title": "LayaBox Xie Chenghong thinks about the 2017 HTML5 industry!",
       "date": "2017-01-17",
-      "brief": "2017年是HTML5游戏定格局的一年，然而对很多人来说，HTML5游戏是新领域，但不是新机会。精品的欠缺、渠道的急躁等因素会影响HTML5游戏发展的节奏，会使部分人达不到收益的预期。迟钝者、投机者、能力欠缺者将失去一次巨大的机会。",
+      "brief": "2017 is a year of HTML5 game design, but for many people, HTML5 games are new, but not new opportunities. Factors such as the lack of quality products and the rush of channels will affect the rhythm of the development of HTML5 games, and some people will not be able to achieve the expected revenue. Those who are slow, speculators, and those who lack capacity will lose a huge opportunity.",
       "jpgpath": "2017/01/17/0.png",
       "filepath": "2017/01/17/readme.md"
     },
     {
       "id": "13",
-      "title": "Burberry在微信朋友圈推出吴亦凡拜年广告，采用LayaAir引擎！",
+      "title": "Burberry launched Wu Yifan's New Year's advertisement in the WeChat circle of friends, using the LayaAir engine!",
       "date": "2017-01-11",
-      "brief": "近日，由上海彼邑采用LayaAir引擎开发的奢侈品牌Burberry新年广告出现在微信朋友圈，一时成为热点。LayaAir引擎虽然起源于游戏领域，但同时还支持软件开发、广告营销、生活服务等领域。",
+      "brief": "Recently, the Burberry New Year advertisement, a luxury brand developed by Shanghai Bianco using the LayaAir engine, appeared in the WeChat circle of friends and became a hot spot. Although the LayaAir engine originated in the game field, it also supports software development, advertising marketing, and life services.",
       "jpgpath": "2017/01/11/0.png",
       "filepath": "2017/01/11/readme.md"
     },
     {
       "id": "12",
-      "title": "LayaBox荣获2016年度最佳H5产业贡献奖",
+      "title": "LayaBox won the 2016 H5 Industry Contribution Award",
       "date": "2017-01-10",
-      "brief": "2017年1月10日，由炫彩互动和环球网联合主办、UCCVR协办的第六届“金鹏奖”中国原创游戏评选大赛颁奖典礼落幕，LayaBox凭借在HTML5游戏技术创新和精品产品两个方面的贡献，荣膺“年度最佳H5产业贡献奖”。",
+      "brief": "On January 10, 2017, the 6th “Jinpeng Award” China Original Game Selection Competition Awarding Ceremony, co-hosted by Colorful Interactive and Global Network, co-organized by UCCVR, LayaBox relies on two aspects of HTML5 game technology innovation and quality products. Contributed to the -H5 Industry Contribution Award of the Year-",
       "jpgpath": "2017/01/10/0.png",
       "filepath": "2017/01/10/readme.md"
     },
     {
       "id": "11",
-      "title": "微信IOS客户端全面升级至WKWebview内核，HTML5性能将提升4倍！",
+      "title": "The WeChat IOS client is fully upgraded to the WKWebview kernel, and HTML5 performance will be increased by 4 times!",
       "date": "2017-01-06",
-      "brief": "小编在技术哥给的性能测试链接经对比后发现，当前的微信内核UIWebView与Safari的WKWebview内核性能差距达到4倍左右。内存占用可减少于30%左右。性能提升与内存占用的减少这对于HTML5大型游戏的研发商而言是重大的利好消息，未来HTML5游戏可以轻松实现APP游戏的效果。",
+      "brief": "After comparing the performance test links of the technical brothers, the difference between the performance of the current WeChat kernel UIWebView and Safari's WKWebview kernel is about 4 times. Memory usage can be reduced by about 30%. Performance improvements and memory footprint reductions are a big plus for developers of HTML5 large games, and future HTML5 games can easily achieve the effects of APP games.",
       "jpgpath": "2017/01/06/0.jpg",
       "filepath": "2017/01/06/readme.md"
     },
     {
       "id": "10",
-      "title": "LayaBox谢成鸿与李安、周杰伦、屠呦呦等荣膺最具创意人物100",
+      "title": "LayaBox Xie Chenghong and Li An, Jay Chou, Tu Yu and other famous creative figures 100",
       "date": "2017-01-03",
-      "brief": "2016年12月30日，国际知名商业杂志Fast Company中文版《快公司》为“2016中国商业最具创意人物100”举行了颁奖典礼。其中，HTML5游戏领域首次进入评选范围，LayaBox创始人谢成鸿荣获“2016中国商业最具创意人物100”",
+      "brief": "On December 30th, 2016, the internationally renowned business magazine Fast Company Chinese version of -Fast Company- held an award ceremony for -2016 China's most creative business people-. Among them, the HTML5 game field entered the selection for the first time, and LayaBox founder Xie Chenghong won the -2016 China Business Most Creative Character 100-",
       "jpgpath": "2017/01/03/0.png",
       "filepath": "2017/01/03/readme.md"
     },
     {
       "id": "9",
-      "title": "HTML5行业首款3D ARPG游戏《无尽骑士》曝光，HTML5进入3D 时代？",
+      "title": "HTML5 industry's first 3D ARPG game -Endless Knight- exposure, HTML5 into the 3D era?",
       "date": "2016-12-09",
-      "brief": "渠道在一番洗牌之后，优质的HTML5游戏将迎来更多的爆发机会。而纵观APP游戏发展，3D游戏时代将会主宰未来。那HTML5的技术能否承载3D游戏呢？HTML5行业首款3D ARPG游戏《无尽骑士》或将为我们揭开答案。",
+      "brief": "After the channel is shuffled, quality HTML5 games will usher in more opportunities. Looking at the development of APP games, the 3D game era will dominate the future. Can HTML5 technology carry 3D games? The HTML5 industry's first 3D ARPG game, The Endless Knight, will open the answer for us.",
       "jpgpath": "2016/12/09/0.jpg",
       "filepath": "2016/12/09/readme.md"
     },
     {
       "id": "8",
-      "title": "【跨界TALK】程序员的激情与梦想 LayaBox CEO谢成鸿",
+      "title": "[cross-border TALK] programmer's passion and dream LayaBox CEO Xie Chenghong",
       "date": "2016-10-24",
-      "brief": "曾经卖网站赚千万，做端游亏损过亿，如今LayaBox A轮融资一亿。创业快二十年的谢成鸿要做全球顶级游戏引擎。LayaBox CEO谢成鸿：“作为一个程序员，我想通过程序的方式，创造一些属于自己的东西，改变一些，影响一些世界的东西。”",
+      "brief": "I used to sell websites to earn tens of millions, and I made a loss of over 100 million in end-games. Today, LayaBox A has raised 100 million yuan. Xie Chenghong, who has been in business for 20 years, is going to be the world's top game engine. Xie Chenghong, CEO of LayaBox: -As a programmer, I want to create something that belongs to me through the way of the program, change something that affects some worlds.-",
       "jpgpath": "2016/10/24/0.jpg",
       "filepath": "2016/10/24/readme.md"
     },
     {
       "id": "7",
-      "title": "谢成鸿出席TFC：跨界三端是游戏行业的机遇！",
+      "title": "Xie Chenghong attended the TFC: The cross-border three-end is an opportunity for the game industry!",
       "date": "2016-09-28",
-      "brief": "9月27日，第十三届TFC全球泛游戏大会暨智能娱乐展大会在广州南丰国际会展中心正式开幕，本次大会以“跨界·融合·突破”为主题，汇集百家思想与真知灼见。LayaBox CEO谢成鸿应邀出席了本次大会，并在主论坛上就游戏行业的现状与未来趋势作了《跨界三端，H5与未来》主题演讲。",
+      "brief": "On September 27th, the 13th TFC Global Pan Games Conference and Intelligent Entertainment Exhibition was officially opened at Guangzhou Nanfeng International Convention and Exhibition Center. The theme of this conference was “Transboundary, Integration and Breakthrough”, bringing together hundreds of ideas and insights. . LayaBox CEO Xie Chenghong was invited to attend the conference and gave a keynote speech on -The Cross-Bound Three Ends, H5 and the Future- on the status quo and future trends of the game industry in the main forum.",
       "jpgpath": "2016/9/28/0.jpg",
       "filepath": "2016/9/28/readme.md"
     },
     {
       "id": "6",
-      "title": "深度测试： LayaAir H5游戏引擎裸跑性能超越Unity3D",
+      "title": "Depth test: LayaAir H5 game engine bare running performance surpasses Unity3D",
       "date": "2016-08-18",
-      "brief": "本文通过对实际评测报告数据进行逐一分析，验证LayaAir H5游戏引擎的真实性能表现。每个评测DEMO都将提供H5直接体验的二维码，以及Unity3D引擎的APP源码和实录的高清视频网盘下载地址，供开发者实际测试体验和验证，以确保本次测试报告的真实有效性。",
+      "brief": "This article verifies the actual performance of the LayaAir H5 game engine by analyzing the actual evaluation report data one by one. Each evaluation DEMO will provide the H5 direct experience QR code, as well as the Unity3D engine's APP source code and the recorded HD video network disk download address for the developer's actual test experience and verification to ensure the true validity of this test report.",
       "jpgpath": "2016/8/18/0.jpg",
       "filepath": "2016/8/18/readme.md"
     },
     {
       "id": "5",
-      "title": "LayaAir1.0发布会：不仅仅是H5，更是一场游戏变革",
+      "title": "LayaAir1.0 conference: not only H5, but also a game change",
       "date": "2016-06-30",
-      "brief": "6月30日，知名引擎厂商LayaBox在北京国际会议中心举行了旗下第二代引擎LayaAir1.0版本发布会，正式面向全球发布了LayaAir游戏引擎1.0版本。现场20余位游戏圈大佬、50余家媒体、300余名业内人士共同见证了中国HTML5（以下简称H5）技术的一次突破。",
+      "brief": "On June 30th, well-known engine manufacturer LayaBox held its second-generation engine LayaAir 1.0 release conference at the Beijing International Convention Center, officially releasing the 1.0 version of the LayaAir game engine for the world. More than 20 game circles in the field, more than 50 media, and more than 300 industry insiders witnessed a breakthrough in China's HTML5 (hereafter referred to as H5) technology.",
       "jpgpath": "2016/6/30/0.jpg",
       "filepath": "2016/6/30/readme.md"
     },
     {
       "id": "4",
-      "title": "创业邦首次公开课，谢成鸿受邀演讲：手机游戏IP价值",
+      "title": "Entrepreneurship first public class, Xie Chenghong was invited to give a speech: mobile game IP value",
       "date": "2016-06-25",
-      "brief": "6月24日，由创业邦举办的“创新空间DEMO SPACE”首次公开课在上海举行，Layabox总裁谢成鸿、知名科幻作家季炜铭及《十万个冷笑话》电影导演卢恒宇受邀参加了本次公开课。共同探讨“如何给IP一套可延续的世界观”。",
+      "brief": "On June 24th, the first public class of “Innovation Space DEMO SPACE” held by Entrepreneurship was held in Shanghai. Layabox President Xie Chenghong, well-known science fiction writer Ji Yuming and “100,000 Jokes” film director Lu Hengyu were invited to participate in this open class. . Discuss together -how to give IP a set of sustainable world views.-",
       "jpgpath": "2016/5/26/0.jpg",
       "filepath": "2016/5/26/readme.md"
     },
     {
       "id": "3",
-      "title": "HTML5技术成校园新宠 Layabox引擎走进大学课堂",
+      "title": "HTML5 technology becomes the new favorite of campus Layabox engine enters the university classroom",
       "date": "2016-05-26",
-      "brief": "2016年5月25日，中国三大H5游戏引擎商之一Layabox受邀走进北京理工大学，为学子们带来了一场关于H5技术的科技盛宴。Layabox合伙人李明通过对H5行业现状以及未来发展的解读、H5就业前景的剖析、引擎技术的深入分析、学习方法的指引与建议，引发了学生极大的兴趣。",
+      "brief": "On May 25th, 2016, Layabox, one of the three major H5 game engine companies in China, was invited to enter the Beijing Institute of Technology to bring a technology feast for H5 technology to the students. Li Ming, a partner of Layabox, has aroused great interest among students through the interpretation of the current status and future development of the H5 industry, the analysis of H5 employment prospects, the in-depth analysis of engine technology, and the guidance and recommendations of learning methods.",
       "jpgpath": "2016/5/26/0.jpg",
       "filepath": "2016/5/26/readme.md"
     },
     {
       "id": "2",
-      "title": "专访Layabox创始人谢成鸿：让中国HTML5技术屹立世界之巅",
+      "title": "Interview with Xie Chenghong, founder of Layabox: Let Chinese HTML5 technology stand on the top of the world",
       "date": "2016-04-19",
-      "brief": "多次获得行业的《HTML5最佳引擎奖》、《HTML5产业贡献奖》等殊荣的Layabox引擎，其背后到底还有多少不为人知的秘密武器，TechWeb记者有幸专访了创业经历堪称传奇的Layabox创始人谢成鸿，他将揭开HTML5引擎技术背后的故事。",
+      "brief": "The Layabox engine, which has won many awards such as the HTML5 Best Engine Award and the HTML5 Industry Contribution Award, has many unknown secret weapons behind it. TechWeb reporters have the honor to interview Layabox, a legendary entrepreneurial experience. Founder Xie Chenghong, he will unveil the story behind the HTML5 engine technology.",
       "jpgpath": "2016/4/19/0.jpg",
       "filepath": "2016/4/19/readme.md"
     },
     {
       "id": "1",
-      "title": "H5引擎性能之王LayaAir 今日发布，HTML5将步入重度精品时代",
+      "title": "LayaAir, the king of H5 engine performance, is released today, and HTML5 will enter the era of heavy boutiques.",
       "date": "2016-04-15",
-      "brief": "在经过多款大型H5游戏与超百家H5研发商反复测试磨合后。4月15日，Layabox第二代H5引擎LayaAir正式开放下载。相对上一代引擎，LayaAir在性能、API、工具链等方面做了整体优化，更小、更快、更强！更是可脱离H5运行器插件（runtime）而性能媲美APP的超级H5引擎，全行业一时无两。",
+      "brief": "After repeated testing and running in a number of large H5 games and over 100 H5 developers. On April 15th, Layabox's second-generation H5 engine LayaAir was officially opened for download. Compared to the previous generation engine, LayaAir has made overall optimizations in terms of performance, API, toolchain, etc., smaller, faster, and stronger! It is also a super H5 engine that can be separated from the H5 runtime plug-in (runtime) and the performance is comparable to that of the APP.",
       "jpgpath": "2016/4/15/0.jpg",
       "filepath": "2016/4/15/readme.md"
     }

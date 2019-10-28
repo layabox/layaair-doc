@@ -1,127 +1,127 @@
-# 微信IOS客户端全面升级至WKWebview内核，HTML5性能将提升4倍！
+#Wechat IOS client is upgraded to the WK Webview kernel, HTML5 performance will be improved four times!
 
 2017-01-06
 
-自上次微信安卓升级至X5 Blink内核提升性能与解决了兼容性问题后，2017年1月6日晚，微信IOS也公布了重大利好消息“微信IOS客户端将升级为WKWebview内核，请网页开发者尽快适配”。对于非技术开发者而言这句话代表着什么呢？Layabox小编先抛出答案，再慢慢解读。
+Since the last Android upgrade to X5 Blink, Wechat IOS also announced the good news on the evening of January 6, 2017: "Wechat IOS client will be upgraded to WK Webview kernel, please web developers to adapt as soon as possible". What does this phrase mean for non-technical developers? The Layabox editor first throws out the answer, then slowly interprets it.
 
-自上次微信安卓升级至X5 Blink内核提升性能与解决了兼容性问题后，2017年1月6日晚，微信IOS也公布了重大利好消息“微信IOS客户端将升级为WKWebview内核，请网页开发者尽快适配”。对于非技术开发者而言这句话代表着什么呢？Layabox小编先抛出答案，再慢慢解读。
+Since the last Android upgrade to X5 Blink, Wechat IOS also announced the good news on the evening of January 6, 2017: "Wechat IOS client will be upgraded to WK Webview kernel, please web developers to adapt as soon as possible". What does this phrase mean for non-technical developers? The Layabox editor first throws out the answer, then slowly interprets it.
 
-**升级后的好处**
+**Upgraded benefits**
 
-> **一、HTML5渲染性能提升4倍。**
+>**First, HTML5 rendering performance improved by four times.**
 >
-> **二、内存占用将会减少至30%。**
+>**2. Memory usage will be reduced to 30%.**
 
-小编在技术哥给的性能测试链接经对比后发现，当前的微信内核UIWebView与Safari的WKWebview内核性能差距达到4倍左右。内存占用可减少于30%左右。而微信IOS客户端升级至WKWebview后使用的就是Safari当前的WKWebview内核。**性能提升与内存占用的减少这对于HTML5大型游戏的研发商而言是重大的利好消息，未来HTML5游戏可以轻松实现APP游戏的效果。**
+Comparing the performance test links given by Tech Brother, Xiaobian finds that the performance gap between the current UIWebView and Safari's WKWebview kernels is about four times. Memory usage can be reduced to about 30%. The current WK Webview kernel of Safari is used by Wechat IOS client after upgrading to WK Webview.**Performance improvements and memory footprint reductions are significant good news for developers of HTML5 games, which can easily achieve the effect of APP games in the future.**
 
-**更新时间周期**
+**Update time cycle**
 
-微信iOS客户端将于2017年3月1日前逐步升级为WKWebview内核。
+Wechat iOS client will be upgraded to WK Webview kernel by March 1, 2017.
 
-#### **背景**
+#### **background**
 
-WKWebView 是苹果在iOS 8中引入的新组件，目的是提供一个现代的支持最新Webkit功能的网页浏览控件，摆脱过去 UIWebView的老、旧、笨，特别是内存占用量巨大的问题。它使用与Safari中一样的Nitro JavaScript引擎，大大提高了页面js执行速度。
+WKWebView is a new component introduced by Apple in iOS 8. Its purpose is to provide a modern web browsing control that supports the latest Webkit functionality, and to get rid of the old, old and clumsy problems of UIWebView in the past, especially the huge memory footprint. It uses the same Nitro JavaScript engine as in Safari, greatly improving the page JS execution speed.
 
-#### 切换方法
+####Handover method
 
-iOS微信6.5.3版本开始支持开发者手动切换WKWebview和UIWebview，使开发者可提前对WKWebview进行适配。
+IOS Wechat version 6.5.3 began to support developers to manually switch between WK Web view and UI Web view, enabling developers to adapt WK Web view in advance.
 
-**手动切换入口：**
+**Manual switching entry:**
 
-在微信会话列表页点击右上角“加号按钮”，选择菜单中的”添加朋友”，在添加朋友界面的搜索框中输入字符串：“:switchweb”，再点击键盘右下角搜索按钮。切换成功后会提示当前使用的内核是UIWebview或是WKWebview。
+On the Wechat session list page, click the "plus button" in the upper right corner, select "Add Friends" in the menu, and enter a string in the search box of the Add Friends Interface: ": switch web", then click the search button in the lower right corner of the keyboard. When the switch is successful, it will be prompted that the currently used kernel is UIWebview or WKWebview.
 
-**校验切换方法：**
+**Check switching method:**
 
-通过命令成功切换到WKWebview后，可通过以下方法验证当前网页使用的是否是WKWebview内核。 
+After successfully switching to WK Webview by command, you can verify whether the current Web page is using the WK Webview kernel by the following methods.
 
-微信内任意入口进入任意网页，在网页加载成功后向下拉动页面（或点击网页右上角菜单按钮），使之显示出地址栏，当地址栏以 “此网页由” 开头即为当前使用WKWebview，若以“网页由”则是使用的UIWebview。
+Any entrance in Wechat enters any web page, pulls down the page (or clicks the menu button in the upper right corner of the page) after the page is loaded successfully, so that it displays the address bar. The address bar begins with "this web page is from" which is the current use of WKWebview, and UIWebview is used if "Web page is from".
 
-**页面如何判断当前使用的webview内核：**
+**How do pages determine the currently used WebView kernel:**
 
-在页面中可通过微信注入的window.__wxjs_is_wkwebview变量判断当前使用的webview内核。 iOS微信6.5.3及其之后的版本 window.__wxjs_is_wkwebview 为true时是使用WKWebview，为 false或者 “undefine”时是 UIWebview 。
+In the page, the currently used WebView kernel can be judged by the window. _wxjs_is_wkwebview variable injected by Wechat. IOS Wechat 6.5.3 and its subsequent version window. _wxjs_is_wkwebview is true when using WKWebview, false or "undefine" when UIWebview.
 
-**前端适配关注的要点**
+**Key points of front-end adaptation**
 
-适配的首要原则：若不能区分是WKWebview的新特性新行为还是微信内部逻辑导致原有页面出现问题时，可使用测试页面分别在Safari和微信中的WKWebview内核分别测试，用以快速定位问题产生的原因。
+The first principle of adaptation: If you can't distinguish between the new features and new behavior of WKWebview or the problems of the original page caused by the internal logic of Wechat, you can use the test page to test the WKWebview kernel in Safari and Weichat separately to quickly locate the causes of the problems.
 
-#### 适配指南
+####Adaptation Guidelines
 
-切换为WKWebview后，微信中的Webview行为和Safari中保持高度一致，唯一的区别是微信Webview中会注入微信JSBridge相关的脚本。所以适配的重点需要关注以下几个方面： 
+After switching to WKWebview, the behavior of Webview in Weichat is highly consistent with that in Safari. The only difference is that the script related to JSBridge will be injected into Weichat Webview. Therefore, the focus of adaptation needs to pay attention to the following aspects:
 
-> 一：页面功能是否正常 
+> First: Whether the page function is normal or not
 >
-> 二：页面屏幕适配是否正常 三：页面行为是否正常（例如用户在浏览页面时点击返回按钮返回上一个页面时的页面逻辑是否正常） 
+> Two: whether the page screen adaptation is normal or not. Three: whether the page behavior is normal (for example, whether the page logic is normal when the user clicks the return button to return to the previous page when browsing the page)
 >
-> 四：页面使用的语法是否兼容。 
+> Fourth: Is the grammar used on the page compatible?
 >
-> 五：JSSAPI是否正常完美的工作。 
+> Fifth: Is the JSSAPI working properly and perfectly?
 >
-> 六：重点关注Cookie和LocalStorage等相关的逻辑是否正常。 
+> Sixth: Focus on whether the relevant logic such as Cookie and Local Storage is normal.
 >
-> 七：若服务器有设置返回 Cache-Control缓存有效时间，则需要检查相关逻辑是否正常。
+> Seven: If the server has settings to return the Cache-Control cache validity time, it needs to check whether the relevant logic is normal.
 
-正常情况下，你的页面是不需要做特别的适配，但若你的页面有涉及到以下几个受影响的逻辑，则需要根据适配建议进行适配和确认。
+Normally, your page does not need to be adapted specifically, but if your page involves the following affected logic, it needs to be adapted and validated according to the adaptation recommendations.
 
-JSAPI相关适配
+JSAPI related adaptation
 
-一：将不再支持cache 
+One: Cache will no longer be supported
 
-变化：在WKWebview中将暂不支持cache jsapi。 
+Change: Cache jsapi will not be supported in WK Webview for the time being.
 
-适配建议：所有使用此api的开发者可去掉页面相关逻辑。
+Suggestions for adaptation: All developers using this API can remove page-related logic.
 
-二：页面通过LocalID预览图片 
+2: The page previews pictures through LocalID
 
-变化：不再支持通过使用chooseImage api返回的localld以如：”img src=wxLocalResource://50114659201332”的方式预览图片。 
+Change: It no longer supports previewing images by using the localld returned by the chooseImage api, such as "img SRC = wxLocalResource://50114659201332".
 
-适配建议：
+Suggestions for adaptation:
 
-\1. 在iOS微信6.5.3版本及之后的版本中，使用新增的jsapi：getLocalImgData 拿到LocalID对应的图片base64编码后再在前端页面中显示。
+\ 1. In version 6.5.3 and later of iOS Wechat, we use the new jsapi: getLocalImgData to get the image Base64 encoding corresponding to the LocalID and then display it on the front page.
 
-\2. 如果引入了页面有引入JSSDK，则直接将JSSDK升级为1.2.0最新版本即可帮助页面自动适配。（目前JSSDk线上版本是 1.0.0 和 1.1.0，更新版本为1.2.0 ，[https://res.wx.qq.com/open/js/jweixin-1.2.0.js]()  ）
+\ 2. If JSSDK is introduced into the page, updating JSSDK to the latest version of 1.2.0 will help the page to adapt automatically. (Currently JSSDk online version is 1.0.0 and 1.1.0, updated version is 1.2.0, [https://res.wx.qq.com/open/js/jweixin-1.2.0.js] ()
 
-三：有使用JSSDK，并且使用了wx.config进行权限授权需关注jsapi调用的失败问题 
+Third: When using JSSDK and using wx.config to authorize privileges, we need to pay attention to the failure of jsapi calls.
 
-变化：WKWebview的内部实现变更使我们对微信内的页面jsapi权限管理做了一定逻辑上的调整，有极小可能会发生以前授权正常的jsapi获取权限不正常，从而导致调用jsapi失败。 
+Change: The internal implementation changes of WKWebview make us make some logical adjustments to the page jsapi permission management in Wechat. There is very little possibility that the normal jsapi permission obtained by authorization before will be abnormal, which will lead to the failure of calling jsapi.
 
-适配建议：
+Suggestions for adaptation:
 
-1. iOS微信6.5.1，WKWebview在此版本中已知有以下问题：页面使用HTML5的History API pushState; popstate;      replaceState等控制页面导航（典型的如单应用页面），同时使用JSSDK的wx.config为jsapi授权，此时大几率会出现jsapi因为无权限而调用失败的问题。 在6.5.1中页面若可能的情况下，可使用Anchor hash技术替换History技术来解决此问题。
+1. iOS Wechat 6.5.1, WK Webview in this version has known the following problems: the page uses HTML 5 History API pushState; popstate; replaceState and other control page navigation (typical single application pages), while using JSSDK wx.config for jsapi authorization, at this time there is a high probability of jsapi invocation failure because of no permission. In 6.5.1, if possible, Anchor hash technology can be used to replace History technology to solve this problem.
 
-2. iOS微信6.5.2及其之后版本，将不会存在以上问题，但不能100%确认有使用到 history或hash技术更改页面导航地址的页面完全没有此类问题，依然需要开发者注意关注此类问题。
+2. iOS Wechat 6.5.2 and later versions will not have the above problems, but it can not be 100% confirmed that there are pages using history or hash technology to change the navigation address of pages without such problems, still need the attention of developers.
 
-Cookie和LocalStorage设置相关
+Cookie and LocalStorage settings are related
 
-一：退出微信账号后，将会清空所有Cookie和LocalStorage。
+One: After withdrawing from Weichat account, all Cookies and Local Storage will be cleared.
 
-二：页面功能依赖Cookie，或有涉及到Cookie的相关逻辑 
+Second: Page functionality depends on Cookie, or related logic involving Cookie
 
-变化：WKWebview内部实现变更，会影响目前页面Cookie相关的逻辑，例如跨域存取Cookie和页面的资源或图片存储服务器依赖校验Cookie来返回数据等情况。
+Change: Implementing changes within WKWebview will affect the current page Cookie-related logic, such as cross-domain access to Cookie and page resources or image storage servers relying on checking Cookies to return data.
 
-问题说明：在访问一个页面A时，如果页面A引用了另一个页面B的资源（页面A和B为不同的域名），这时页面B就认为是第三方页面。若在页面B中设置Cookie，就会命中WKWebview下阻止第三方跨域设置Cookie的安全策略，导致问题出现。
+Question Note: When visiting a page A, if page A refers to the resources of another page B (page A and B are different domain names), then page B is considered a third-party page. If you set Cookie in Page B, you will hit the security policy under WK Webview to prevent third parties from setting Cookie across domains, resulting in problems.
 
-适配建议：
+Suggestions for adaptation:
 
-在WKWebview中是默认阻止跨域的第三方设置Cookie。所有通过Cookie传递的信息，可通过业务后台存储需要传递的信息，然后给页面一个存储信息相对应的access_token加密码，然后通过Url中加入自己业务的access_token进行页面间信息传递。
+In WK Webview, the default is to prevent cross-domain third-party settings of cookies. All the information transmitted through Cookie can be stored in the business background, and then a corresponding access_token encryption code is given to the page to store the information. Then the information is transferred between pages by adding access_token of its own business into Url.
 
-如果页面的资源或图片存储的服务器依赖校验Cookie来返回数据的情况，在切换到WKWebview后，在微信内长按保存，或者点击预览大图时，将不会完整的带上所设置的Cookie，会导致图片保存失败或预览失败。除了此种情况，开发者不用担心其他情况下Cookie丢失的问题，所有请求都会带上完整的Cookie。
+If the resource of the page or the server of the picture storage relies on the checking Cookie to return the data, after switching to WK Web view, long press save in the Wechat or click on the preview image, the set Cookie will not be brought with it completely, which will lead to the failure of picture saving or preview. In addition to this, developers don't have to worry about losing cookies in other situations. All requests will bring complete cookies.
 
-页面视频小窗播放
+Page Video Window Play
 
-变化：iOS微信6.5.3及其之后的版本中，Webview默认支持小窗播放。 
+Change: In iOS Wechat 6.5.3 and later versions, Webview defaults to support small window playback.
 
-开发者需要特别注意小窗播放需要前端同时适配iOS10和iOS10以下的低版本 
+Developers need to pay special attention to small window playback, which requires the front end to adapt both iOS 10 and lower versions of iOS 10.
 
 
 
-WKWebview页面行为与Safari完全一致，会导致页面依赖UIWebview页面行为的逻辑失效或异常：（可根据业务自身逻辑，实现测试页面后分别在Safari和微信WKWebview中验证）
+WK Web view page behavior is exactly the same as Safari, which will lead to the logical failure or abnormality of the page dependent on UI Web view page behavior: (can be validated in Safari and Wechat WK Web view respectively after implementing the test page according to the logic of the business itself)
 
-一：Safari或微信WKWebview中 页面A跳转到页面B再返回页面A后不会重新执行Script和Ajax(也不会触发页面reload)。 
+One: Page A in Safari or Wechat WK Web View jumps to Page B and returns to Page A without re-executing Script and A Jax (nor triggering page reload).
 
-二：Safari或微信WKWebview中，在页面弹出输入键盘后，会触发JQuery的resize事件，而在UIWebView下不会。 
+Second: In Safari or Wechat WKWebview, the resize event of JQuery will be triggered when the page pops up and the keyboard is input, but not in UIWebView.
 
-三：Safari或微信WKWebview中， window unload 事件在只有刷新才能触发，退出页面或者跳转到其他页面都无法触发。 
+Third: In Safari or Wechat WK Web view, window unload events can only be triggered by refreshing, and neither exit page nor jump to other pages can be triggered.
 
-四：Safari或微信WKWebview中，极少数情况下某些特殊实现的页面点击事件会失效。
+Fourth: In Safari or Wechat WK Web View, in very few cases, page clicks with special implementations will fail.
 
-如果有涉及或者遇到以上问题，以兼容Safari行为为准。
+If any of the above problems are involved or encountered, the compatibility with Safari behavior shall prevail.

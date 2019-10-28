@@ -1,37 +1,37 @@
-# 谢成鸿出席TFC：跨界三端是游戏行业的机遇！
+#Xie Chenghong's attendance at TFC: Cross-border opportunities for the game industry!
 
-2016-09-28  
+2016-09-28
 
-9月27日，第十三届TFC全球泛游戏大会暨智能娱乐展大会在广州南丰国际会展中心正式开幕，本次大会以“跨界·融合·突破”为主题，汇集百家思想与真知灼见，引领业内人士切准市场脉搏，探讨行业先机。LayaBox CEO谢成鸿应邀出席了本次大会，并在主论坛上就游戏行业的现状与未来趋势作了《跨界三端，H5与未来》主题演讲。
+On September 27, the 13th TFC Global Pan-Game Conference and Intelligent Entertainment Exhibition was officially opened in Nanfeng International Convention and Exhibition Center, Guangzhou. The theme of this conference is "cross-border, integration and breakthrough", gathering a hundred ideas and insights, leading industry insiders to get the pulse of the market and explore industry opportunities. Xie Chenghong, CEO of LayaBox, was invited to attend the conference and gave a keynote speech on the current situation and future trend of the game industry at the main forum.
 
 ![WechatIMG66.jpeg](http://www.layabox.com/uploadfile/image/20160928/1475060454428666.jpeg)
 
 ###  
 
-### 游戏市场的红海与蓝海 
+###Red Sea and Blue Sea in Game Market
 
-据数据显示，2016年上半年，页游用户为2.79亿，同比下降8.7%，页游市场收入为100.6亿人民币，同比下降2.1%，市场萎缩趋势明显，不少页游厂商开始谋求转型。而手游市场虽然整体收入还在稳步增长，但2016年Q2，腾讯网易两家的市场份额占比已从2015年的56%提高到了63.5%，增幅达到7.5%，寡头垄断已成为手游所有从业必须面对的问题，中小CP的发展日益艰难。
+According to the data, in the first half of 2016, there were 279 million page users, down 8.7% from the same period last year. The revenue of the page market was 10.6 billion yuan, down 2.1% from the same period last year. The market contraction trend was obvious. Many page manufacturers began to seek transformation. Although the overall revenue of hand-games market is still growing steadily, in 2016 Q2, Tencent Netease and Tencent Netease have increased their market share from 56% in 2015 to 63.5%, an increase of 7.5%. Oligopoly has become a problem that all hand-games practitioners must face, and the development of small and medium-sized CPs is increasingly difficult.
 ![WechatIMG67.jpeg](http://www.layabox.com/uploadfile/image/20160928/1475060516593936.jpeg)
 
-不过，在新兴的H5游戏市场却有着另一番景象。2015年，H5游戏市场规模为2亿人民币，但业界普遍预计2016年将会达到8亿人民币，增幅高达400%。同时，现在市场上已经出现了《传奇世界H5》这样月流水超3000万的成功游戏，腾讯系《QQ农场》、《QQ花藤》等明星产品也纷纷H5游戏化，刺激了H5游戏行业整体的发展。可以说H5游戏即将扬帆起航，驶向一个崭新的时代，它所带来的绝不仅仅是市场份额的提升，更是游戏行业里的新机会。
+However, there is another picture in the emerging H5 game market. In 2015, the H5 game market will be 200 million yuan, but the industry is generally expected to reach 800 million yuan in 2016, an increase of up to 400%. At the same time, the market has now emerged "Legendary World H5" such a successful game of more than 30 million monthly streams, Tencent "QQ Farm" and "QQ Huateng" star products have also been H5 game, stimulating the overall development of the H5 game industry. It can be said that the H5 game is about to set sail for a new era, which brings not only market share, but also new opportunities in the game industry.
 
-###  游戏行业的未来：跨界三端 
+###The Future of Game Industry: Cross-border
 
-H5游戏所带来的机会，并不是说让页游、手游厂商彻底转型H5游戏，而是H5技术能够为页游、手游厂商带来全新的发展模式，正如谢成鸿在演讲中表示，基于H5技术的跨界三端才是游戏行业的机遇和未来。
+The opportunities brought by H5 games are not to let the manufacturers of page and hand games completely transform H5 games, but H5 technology can bring new development models for page and hand games manufacturers. As Xie Chenghong said in his speech, the cross-border three ends based on H5 technology are the opportunities and future of the game industry.
 ![图片 2.png](http://www.layabox.com/uploadfile/image/20160928/1475060748322635.png)
 
-谢成鸿认为，未来游戏将会是多端共存，数据互通的形态，而这一理念也贯彻到了LayaAir H5游戏引擎中，LayaAir H5游戏引擎能够实现一次开发H5、APP、页游三种版本同发，并打通了三端之间的数据壁垒，实现了三端数据互通。
+Xie Chenghong believes that the future game will be multi-terminal coexistence, data exchange form, and this concept has also been implemented into the LayaAir H5 game engine, LayaAir H5 game engine can achieve a development of H5, APP, page-surfing three versions of co-distribution, and through the data barriers between the three terminals, to achieve three-terminal data exchange.
 
-对页游厂商而言，在转型过程中能够轻松利用LayaAir引擎使用AS3开发出H5游戏，并能实现Flash和H5自由切换，解决了浏览器兼容性问题，降低了技术、运营风险。而对于手游厂商而言，无论是TS或JS都能够很好的在LayaAir引擎上开发出性能媲美原生游戏的APP和H5游戏，一方面能够获得H5增量市场，另一方面也能使用H5试玩版的方式获取流量，打开营销新思路。
+For the paging manufacturer, it is easy to develop H5 game by using LayaAir engine and AS3 in the process of transformation, and it can realize the free switching between Flash and H5. It solves the compatibility problem of browser and reduces the risk of technology and operation. For hand-swimming manufacturers, both TS and JS can develop app and H5 games on LayaAir engine, which are comparable to native games. On the one hand, they can gain the incremental market of H5, on the other hand, they can also use H5 trial version to get traffic and open up new marketing ideas.
 
-同时，为了更好地帮助开发者进行开发，LayaAir引擎建立了线上开发者中心、问答社区、即时交流服务和线下培训沙龙及企业定向培训体系，全方位服务开发者。
+At the same time, in order to help developers develop better, LayaAir engine has established online developer center, question and answer community, instant communication service and online training salon and enterprise orientation training system, which can serve developers in all directions.
 
-### LayaBox助力精品游戏时代到来
+###LayaBox Helps the Age of Quality Games Come
 
-据谢成鸿预计，2017年H5游戏行业将进入精品时代，大量精品H5游戏的出现将会带动整个行业的发展并促使市场整体规模向百亿规模迈进。为此，LayaBox除了引擎技术支持外，还积极进行游戏渠道、发行及投资服务，全方位推动H5游戏行业精品时代的到来。
+According to Xie Chenghong, in 2017, the H5 game industry will enter the era of high-quality products. The emergence of a large number of high-quality H5 games will drive the development of the whole industry and promote the overall market scale to 10 billion. For this reason, besides engine technology support, LayaBox also actively carries out game channels, distribution and investment services to promote the arrival of the high-quality era of the H5 game industry in an all-round way.
 
-同时，LayaBox成立了教育联盟，推动LayaAir引擎人才培养，首批成员单位包括触控未来、龙图教育、汇众教育，今后LayaBox教育联盟还将吸纳优秀教育机构和大学，培养更多的LayaAir开发人员。
+At the same time, LayaBox has set up an Education Alliance to promote the training of LayaAir Engine talents. The first batch of members include touch future, Longtu education and mass education. In the future, LayaBox Education Alliance will attract excellent educational institutions and universities to train more LayaAir developers.
 
-###  关于LayaAir引擎
+###About LayaAir Engine
 
-LayaAir引擎是LayaBox旗下第二代开源引擎，主要面向HTML5游戏开发者，同时也覆盖了教育、营销、应用等领域，以支持2D、3D、VR开发、性能卓越和IDE工具链成熟而闻名，目前包括腾讯等近百家游戏研发商采用了LayaAir引擎制作产品。 包括QQ农场、QQ花藤、醉西游等。
+LayaAir engine is LayaBox's second generation open source engine, mainly for HTML5 game developers. It also covers the fields of education, marketing and application. It is well known for supporting the development of 2D, 3D, VR, excellent performance and mature IDE tool chain. At present, nearly 100 game developers, including Tencent, adopt LayaAir engine to produce products. Including QQ farm, QQ flower rattan, drunken journey to the West and so on.
