@@ -1,6 +1,6 @@
 # uniformMap表格
 
-###### *version :2.3.0   Update:2019-10-8*
+###### *version :2.3.0   Update:2019-11-5*
 
 在这里我们会列出引擎内置的逐精灵，逐相机与逐场景提交的 uniform变量。
 
@@ -18,7 +18,7 @@
 
 | 变量名             | 描述              |
 | ------------------ | ----------------- |
-| u_CameraDirection  | 摄影机距离        |
+| u_CameraDirection  | 摄影机方向        |
 | u_CameraPos        | 摄影机位置        |
 | u_CameraUp         | 摄影机Up向量      |
 | u_Projection       | 投影矩阵          |
@@ -33,7 +33,7 @@
 
 | 变量名          | 描述     |
 | --------------- | -------- |
-| u_Time                     | 时间 |
+| u_Time                     | 系统时间 |
 
 > 反射相关
 
@@ -69,7 +69,7 @@
 | u_LightBuffer              | 灯光缓存                        |
 | u_AmbientColor  | 环境光   |
 | u_LightClusterBuffer       | 聚类纹理 |
-| u_lightShadowVP            | VP矩阵                          |
+| u_lightShadowVP            | 阴影VP矩阵                        |
 
 > 平行光相关
 
