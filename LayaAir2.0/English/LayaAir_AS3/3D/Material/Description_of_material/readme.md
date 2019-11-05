@@ -1,9 +1,9 @@
-# 材质概述
+#Material overview
 
 ###### *version :2.1.0beta   Update:2019-5-14*
 
-材质就是物体的材料质感，例如木头、金属、玻璃、毛发、水等，它们的粗糙度、光泽度、反射、透明、颜色、纹理等材质属性都有所不同。
+Material quality is the material texture of objects, such as wood, metal, glass, hair, water and so on. Their roughness, glossiness, reflection, transparency, color, texture and other material properties are different.
 
-大多数3D引擎中都有独立的材质类用于程序代码控制，三维制作软件中材质处理也是最重要的部分之一，游戏美术开发者们经常有一句话，在3D游戏场景制作中，三分看模型，七分靠材质。
+Most 3D engines have independent material classes for program code control. Material processing is also one of the most important parts of 3D production software. Game art developers often have a sentence that in the production of 3D game scenes, three-point view model, seven-point depend on material.
 
-材质的种类也有很多，在三维制作软件中有标准材质、多维材质、合成材质、双面材质、光线跟踪材质等。在LayaAir 3D引擎中目前主要支持的是标准材质 **BlinnPhongMaterial** ,**UnlitMaterail**,**PBRStandardMaterial** 等。
+There are many kinds of materials, including standard materials, multi-dimensional materials, synthetic materials, double-sided materials, ray tracing materials and so on. At present, standard materials are mainly supported in layaair 3D engine.**Blinn Phong Material**,**UnlitMaterail**,**PBRStandard Material**And so on.

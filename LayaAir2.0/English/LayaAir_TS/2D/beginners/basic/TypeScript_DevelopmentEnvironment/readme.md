@@ -1,99 +1,112 @@
+#Build a development environment (TS code compiler)
 
+>*Author: Charley version: 2.0.1 update: 2019-4-8*
 
-# 搭建开发环境（TS代码编译器）
+Because LayaAirIDE needs to install the TypeScript compilation environment, this article is used to guide the installation of the compilation environment. When there is a problem with the compilation environment, read the reference. If it has been installed, there is no need to repeat the installation.
 
-> *author : charley        version: 2.0.1         update: 2019-4-8*
+##1. Download and install Node environment
 
-由于LayaAirIDE的需要安装TypeScript编译环境，所以本篇用于编译环境的安装指导，当编译环境有问题的时候阅读参照，如果已经安装过的，不需要重复安装。
+####1.1 Check if node.js environment is installed
 
-## 1 、下载安装Node环境
+Developing with TypeScript requires a Node.js environment. If not installed, go to the official download (LTS version is recommended).
 
-#### 1.1 检查是否已安装node.js环境
+Before installation, if you are not sure whether there is an existing environment, you can first confirm whether the node environment has been installed, open the command line tool (windows is cmd), and enter instructions.`npm -h` 
 
-使用TypeScript开发需要Node.js环境，如果没有安装过的，请前往官方下载(建议LTS版本)。
-
-在安装前，如果不确定是否有现成的环境，可以先确认一下node环境是否已安装，打开命令行工具（windows是cmd），输入指令 `npm -h` 
 
 ```
+
 npm -h
 ```
 
-按回车键后，如果能看到npm的命令说明、版本号，以及安装路径等信息，如图1-1所示（类似信息即可），那说明已经安装过了，如果不影响使用，可以跳过下载和安装node环境的步骤。
+
+After pressing the Enter key, if you can see the NPM command description, version number, installation path and other information, as shown in Figure 1-1 (similar information can be), then the instructions have been installed, if not affecting the use, you can skip the steps of downloading and installing the node environment.
 
 ![图1-1](img/1-1.png) 
 
-(图1-1)
+
+(Fig. 1-1)
 
 
 
-#### 1.2 Node.js官网下载
+####1.2 Node.js Official Website Download
 
-如果没有安装环境，而直接前往node官网下载安装即可，推荐LTS版本，如图1-2所示，URL地址为：[https://nodejs.org/en/](https://nodejs.org/en/)
+If there is no installation environment, just go to the node official website to download and install. The recommended version of LTS is shown in Figure 1-2. The URL address is:[https://nodejs.org/en/](https://nodejs.org/en/)
 
-![图1-2](img/1-2.png)   （图1-2）上图仅作为参照使用，打开链接直接下载LTS版本即可。
+![图1-2](img/1-2.png)(Figure 1-2) The above figure is only for reference. Open the link and download the LTS version directly.
 
-> 注意：默认链接打开的是window(x64)，非64位的电脑，可以点击Other Downloads，下载对应的版本即可。
+> Note: The default link is window (x64), which is not a 64-bit computer. You can click Other Downloads to download the corresponding version.
 
-#### 1.3 、安装Node.js
+####1.3. Install Node.js
 
-找到刚刚下载的Node.js安装包，一步一步的安装即可，安装完全时界面如图1-3所示。
+Find the Node.js installation package you just downloaded and install it step by step. The interface when the installation is complete is shown in Figure 1-3.
 
-![图1-3](img/1-3.png)   <br/>（图1-3）
+![图1-3](img/1-3.png)<br/> (Fig. 1-3)
 
- 安装完成之后，可以按1.1小节介绍的方式，在命令行下输入 `npm -h` 检查一下安装状态。
+After the installation is complete, you can enter it from the command line in the way described in section 1.1.`npm -h`Check the installation status.
 
 
 
-## 2、用npm命令安装TypeScript环境
+##2. Install the TypeScript environment with the NPM command
 
-Node环境没问题后，就可以使用npm来安装TypeScript编译环境了，
+Now that the Node environment is okay, you can install the TypeScript compilation environment using npm.
 
-#### 2.1 下载安装
+####2.1 Download and Installation
 
-直接在命令行工具里输入指令“`npm install -g typescript`”，按回车键，如图2-1所示，即可开始下载并进行TypeScript环境的安装，此时一定要保持网络的畅通。
+Enter instructions directly into command line tools“`npm install -g typescript`Press the Enter key, as shown in Figure 2-1, to download and install the TypeScript environment. At this time, you must keep the network open.
+
 
 ```typescript
+
 npm install -g typescript
 ```
 
-![图2-1](img/2-1.png) <br/>
-（图2-1）
 
-开发者如果安装时遇到图2-2的情况，通常是缓存冲突导致。（没遇到的直接跳过本步骤。）
+![图2-1](img/2-1.png) <br/>
+
+(Fig. 2-1)
+
+If a developer encounters Figure 2-2 when installing, it is usually caused by a cache conflict. (skip this step directly if you don't encounter it.)
 
 ![图2-2](img/2-2.png)
 
-（图2-2） 
+(Fig. 2-2)
 
-这时候，可以使用缓存清理命令 `npm cache clean --force`，回车执行该命令，重新输入安装指令即可。
+At this point, you can use the cache cleanup command`npm cache clean --force`Enter to execute the command and re-enter the installation instructions.
+
 
 ```
+
 npm cache clean --force
 ```
 
 
 
-#### 2.2 安装完成
 
-当我们看到 “-- typescrip@ 版本号” 的时候，可以确认完成了 TypeScript 环境的安装，如图3-1所示，关闭命令行工具即可。 
+####2.2 Installation Completed
+
+When we see "-- typescrip@version number", we can confirm that the installation of the TypeScript environment has been completed, as shown in Figure 3-1, just close the command line tool.
 
 ![图3-1](img/3-1.png)
- （图3-1）
+(Fig. 3-1)
 
-图4中tsc目录中就是我们TypeScript编译环境的安装目录，有了这个，LayaAirIDE里就能通过这个Compiler将TypeScript编译成为JavaScript。
+The TSC directory in Figure 4 is the installation directory of our TypeScript compilation environment. With this, LayaAirIDE can compile TypeScript into JavaScript through this Compiler.
 
-####  2.3 检查TypeScript编译环境版本
+####2.3 Check the version of the TypeScript compilation environment
 
-在命令行输入“tsc -v” 命令可查看当前TypeScript编译的版本，如图3-2所示。
+Enter the "tsc-v" command on the command line to view the current version of TypeScript compilation, as shown in Figure 3-2.
+
 
 ```typescript
+
 tsc -v
 ```
 
+
 ![图3-2](img/3-2.png)  
 
-（图3-2）
 
-如果显示出版本号，也可以说明TypeScript Compiler（tsc）安装成功。
+(Fig. 3-2)
 
-> 图中实际的版本号是最新的截图，仅作参照，所以与之前安装时截图版本不一致。
+If the publication number is displayed, the TypeScript Compiler (tsc) installation is also successful.
+
+> The actual version number in the figure is the latest screenshot, only for reference, so it is inconsistent with the previous version of the screenshot installed.

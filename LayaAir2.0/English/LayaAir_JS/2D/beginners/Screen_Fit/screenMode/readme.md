@@ -3,73 +3,88 @@
 > author:charley
 >
 
-### 1、屏幕方向设置的API概述
+###1. Overview of API for screen orientation settings
 
-打开引擎的API文档，搜索laya.display.Stage，找到[screenMode属性](https://layaair.ldc.layabox.com/api/?category=Core&class=laya.display.Stage#screenMode)。如图1所示。![图1](img/1-1.png) 
+Open the API document of the engine, search laya. display. Stage, and find[screenMode属性](https://layaair.ldc.layabox.com/api/?category=Core&class=laya.display.Stage%3Ch1%3EscreenMode)。 As shown in Figure 1.![图1](img/1-1.png) 
 
-(图1)
 
-#### 1.1 默认值none或者不设置screenMode属性
+(Fig. 1)
 
-默认值none或者不设置screenMode属性时，无论屏幕方向如何旋转，游戏的水平方向都不会产生跟随屏幕旋转的变化。
+####1.1 default value none or screenMode property is not set
 
-例如图2-1和图2-2的效果：
+When the default value none or screen mode property is not set, no matter how the screen direction rotates, the horizontal direction of the game will not change with the screen rotation.
+
+For example, the effect of Figure 2-1 and figure 2-2:
 
 ![图2-1](img/2-2.png) 
 
-(图2-1)手机竖屏时，未设置screenMode的效果
+
+(Figure 2-1) The effect of screen mode not set when the mobile phone screen is vertical
 
 ![图2-2](img/2-1.png) 
 
-(图2-2)手机横屏时，未设置screenMode的效果
 
-#### 1.2 screenMode属性为horizontal时，自动横屏
+(Figure 2-2) The effect of screen mode not set when the mobile phone screen is horizontal
+
+####1.2 When screenMode attribute is horizontal, automatic horizontal screen
+
 
 ```java
+
 //自动横屏，游戏的水平方向始终与浏览器屏幕较短边保持垂直
 Laya.stage.screenMode = "horizontal";
 ```
 
-如果screenMode属性值设置为horizontal时，无论屏幕方向如何旋转，游戏的水平方向都会与屏幕最短的边始终保持垂直。如图3-1与图3-2所示。
+
+If the screenMode attribute value is set to horizontal, the horizontal direction of the game will always be perpendicular to the shortest side of the screen, regardless of how the screen is rotated. Figures 3-1 and 3-2 are shown.
 
 ![图3-1](img/3-2.png) 
 
-(图3-1)手机竖屏时，screenMode属性为horizontal的效果
+
+(Figure 3-1) The effect of screenMode attribute horizontal when the screen is vertical
 
 ![图3-2](img/3-1.png) 
 
-(图3-2)手机横屏时，screenMode属性为horizontal的效果
+
+(Figure 3-2) The effect of screenMode attribute horizontal on the horizontal screen of a mobile phone
 
 
 
-#### 1.3 screenMode属性为vertical时，自动竖屏
+####1.3 When screenMode attribute is vertical, automatic vertical screen
+
 
 ```java
+
 //自动竖屏，游戏的水平方向始终与浏览器屏幕较长边保持垂直
 Laya.stage.screenMode = "vertical";
 ```
 
-如果screenMode属性值设置为vertical时，无论屏幕方向如何旋转，游戏的水平方向都会与屏幕较长的边始终保持垂直。如图4-1与图4-2所示。
+
+If the screenMode attribute value is set to vertical, the horizontal direction of the game will always be perpendicular to the longer side of the screen, regardless of how the screen is rotated. Figures 4-1 and 4-2 are shown.
 
 ![img](img/4-1.png) 
 
-(图4-1)手机竖屏时，screenMode属性为vertical的效果
+
+(Figure 4-1) The effect of screenMode attribute vertical when the mobile phone screen is vertical
 
 ![img](img/4-2.png)  
 
-(图4-2)手机横屏时，screenMode属性为vertical的效果
+
+(Figure 4-2) The effect of screenMode attribute vertical when the screen of a mobile phone is horizontal
 
 
 
-## 2、自动横屏与竖屏的示例源码
+##2. Sample source code of automatic horizontal screen and vertical screen
 
-本节直接贴出来示例源码，开发者在本地可以体验更改Laya.stage.screenMode属性值带来的区别。
+The sample source code is posted directly in this section, and developers can experience the difference of changing the value of the Laya. stage. screenMode attribute locally.
 
-> 对于新手开发者，直接复制源码即可，无需关注与screenMode无关的代码。重点在于体验与理解screenMode属性不同值的差异。源码中涉及的图片资源可以用任意png资源替代，存放于`项目根目录/bin/res`目录下，注意要确保资源路径与资源名称正确。
+> For novice developers, just copy the source code directly without paying attention to screenMode-independent code. Emphasis is placed on experiencing and understanding the different values of screenMode attributes. The image resources involved in the source code can be replaced by any PNG resources and stored in the source code.`项目根目录/bin/res`In the directory, be careful to ensure that the resource path and name are correct.
 
-####   screenModeDemo.ts 示例代码如下： 
+####The screenModeDemo.ts sample code is as follows:
+
 
 ```javascript
+
 function showScreen()
 {
 //图片
@@ -103,19 +118,23 @@ showScreen();
 
 
 
-#### 关于常量的写法：
 
-如果开发者记不住screenMode的属性值，通过常量的方式，可以获得工具的代码提示。
+####On the writing of constants:
 
-screen常量值如图5所示：
+If the developer can't remember the attribute value of screenMode, the tool's code hints can be obtained by a constant way.
+
+The screen constant is shown in Figure 5.
 
 ![图5](img/5.png) 
 
-(图5) 
 
-示例写法：
+(Fig. 5)
+
+Example Writing:
+
 
 ```java
+
 //自动横屏，游戏的水平方向始终与浏览器屏幕较短边保持垂直
 Laya.stage.screenMode = Laya.Stage.SCREEN_HORIZONTAL;;
 //自动竖屏，游戏的水平方向始终与浏览器屏幕较长边保持垂直
@@ -124,9 +143,11 @@ Laya.stage.screenMode = Laya.Stage.SCREEN_HORIZONTAL;;
 
 
 
-示例中用到的图片资源 :
+
+Picture resources used in the example:
 
 ![monekey2](img/monkey2.png) 
 
-monkey2.png
+
+Monkey2.png
 

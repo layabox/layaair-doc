@@ -1,36 +1,38 @@
-# 鼠标脚本 
+#Mouse script
 
 ###### *version :2.1.1   Update:2019-8-2*
 
-  	在LayaAir2.0中为了方便开发者，提供了鼠标脚本---Script3D中的鼠标事件。如果想要使用鼠标脚本，在脚本owner上还是需要有物理碰撞器。
+In LayaAir 2.0, for the convenience of developers, the mouse script, mouse events in Script3D, is provided. If you want to use a mouse script, you still need a physical collider on the script owner.
 
-**Tips**：鼠标脚本依赖射线检测，只不过不用开放者自己手动创建射线了。
+**Tips**Mouse scripts rely on ray detection, but do not need the opener to create the ray manually.
 
-**鼠标脚本内容：**
+**Mouse script content:**
 
 > Method
 
-`onMouseClick():void` 鼠标点击时执行
+`onMouseClick():void`Mouse click execution
 
-`onMouseDown():void` 鼠标按下时执行 
+`onMouseDown():void`On mouse down
 
-`onMouseDrag():void` 鼠标拖拽时执行
+`onMouseDrag():void`Mouse dragging execution
 
-`onMouseEnter():void` 鼠标进入时执行
+`onMouseEnter():void`Mouse Entry Execution
 
-`onMouseOut():void` 鼠标离开时执行 
+`onMouseOut():void`Execute when the mouse leaves
 
-`onMouseOver():void` 鼠标经过时执行 
+`onMouseOver():void`Mouse Passing Time Execution
 
-`onMouseUp():void` 鼠标弹起时执行
+`onMouseUp():void`Execution when the mouse pops up
 
-上面的方法都为虚方法，使用时重写覆盖即可。
+The above methods are all virtual methods, which can be overridden when used.
 
-在上面示例基础上我们创建了个鼠标脚本，并且给4个猴都添加了脚本。
+Based on the above example, we created a mouse script and added scripts to all four monkeys.
 
-> **脚本类**：
+>**Script class**:
+
 
 ```typescript
+
 class MouseScript extends Script3D{
 		private var meshsp:MeshSprite3D;
 		public function MouseScript() {}
@@ -51,9 +53,12 @@ class MouseScript extends Script3D{
 	}
 ```
 
-> **主类**:
+
+>**Main class**:
+
 
 ```typescript
+
 //给四个猴子添加脚本
 staticLayaMonkey.addComponent(MouseScript);
 layaMonkey_clone1.addComponent(MouseScript);
@@ -61,6 +66,7 @@ layaMonkey_clone2.addComponent(MouseScript);
 layaMonkey_clone3.addComponent(MouseScript);
 ```
 
-鼠标脚本的效果如图1所示：
 
-![](img/1.gif)<br>(图1)
+The effect of the mouse script is shown in Figure 1.
+
+![] (img/1.gif) <br> (Fig. 1)

@@ -1,77 +1,92 @@
-# FlashDevelop开发环境配置
+#Configuration of Flash Develop Development Environment
 
-### 第一步： LayaAir Engine下载
+###Step 1: LayaAir Engine Download
 
-#### 1.1 引擎下载
+####1.1 Engine Download
 
-​     使用LayaAirIDE开发的话，下载LayaAirIDE会自带引擎包。若开发者使用第三方工具开发，那需要先下载引擎。在官网首页或者开发者中心菜单中，拥有引擎下载的链接入口，打开链接后会出现引擎各个版本的下载列表，每一个版本均提供AS3、TS、JS三种开发语言，选择对应的开发语言包，去官网下载。
+With LayaAirIDE development, downloading LayaAirIDE will bring its own engine package. If developers use third-party tools to develop, they need to download the engine first. In the home page of the official website or the developer center menu, there is a link entry for engine download. After opening the link, there will be a list of downloads for each version of the engine. Each version provides AS3, TS, JS three development languages. Select the corresponding development language packages and download them to the official website.
 
-####  1.2 引擎包目录结构介绍 
+####1.2 Engine Pack Directory Structure
 
-由于本篇介绍的是FlashDevelop开发环境，所以我们下载AS3版本的引擎包。当下载解压后，可以看到AS3版本的目录结构如下图所示：
+Since this article describes the Flash Development development environment, we download the AS3 version of the engine package. After downloading and decompressing, you can see the directory structure of AS3 version as follows:
 
-​    ![图片1.jpg](img/1.png)<br/>
-​  图(1)
+​![图片1.jpg](img/1.png)<br/>
 
-- "jslibs",“libs”为引擎代码目录，LayaAir引擎库代码处于该目录中。
+Map (1)
 
-- “laya.js.exe”为Windows系统下的AS3代码编译器，用于将AS3代码编译为JS代码。
+- "jslibs" and "libs" are engine code directories in which LayaAir engine library code is located.
 
-- “Layajs”为苹果MAC系统下的AS3代码编译器，用于将AS3代码编译为JS代码。
+- "laya.js.exe" is an AS3 code compiler under Windows system, which is used to compile AS3 code into JS code.
 
-  ​
+- "Layajs" is the AS3 code compiler under Apple's MAC system, which is used to compile AS3 code into JS code.
+
+​
 
 
 
 
-### 第二步 安装Google Chrome浏览器
+###Step 2 Install Google Chrome Browser
 
-​    当执行AS3代码编译后，默认调用Chrome浏览器打开运行项目，需要安装此浏览器进行项目调试。已安装的可跳过本步骤。
+When AS3 code compilation is executed, Chrome browser is called by default to open the running project, which needs to be installed for project debugging. This step can be skipped for installed.
+
+
 
  
 
-### 第三步 配置FlashDevelop中的AS3编译环境
 
-​    **步骤一**：打开FlashDevelop，在菜单栏里找到“宏”并打开“编辑宏”面板。
 
-​    ![blob.png](img/2.png)<br/>
-​  图(2)
+###The third step is to configure the AS3 compilation environment in Flash Development
 
-​    **步骤二**：首先点击“添加”增加一条宏命令，然后选中刚刚增加的宏命令，在“Label”栏修改宏命令的菜单名称为“LayaCompiler”，以及在“Shortcut”栏设置宏菜单快捷键为“Alt+F5”（快捷键设置仅作参考，不要和别的快捷键冲突）。
+​**Step one**: open flash development, find the macro in the menu bar and open the edit macro panel.
 
-​    ![blob.png](img/3.png)<br/>
-​  图(3)
+​![blob.png](img/2.png)<br/>
 
-​    **步骤三**：在“Entries”栏的右侧位置点击“...”操作区域，打开“字符串集合编辑器”窗口。
+Map (2)
 
-​    ![blob.png](img/4.png)<br/>
-​  图(4)
+​**Step two**First click "Add" to add a macro command, then select the macro command just added, change the menu name of the macro command to "LayaCompiler" in the "Label" column, and set the macro menu shortcut key to "Alt + F5" in the "Shortcut" column (shortcut key settings are for reference only, do not conflict with other shortcuts).
 
-​    **步骤四**：在字符串集合编辑器面板里，输入宏指令：
+​![blob.png](img/3.png)<br/>
+Map (3)
+
+​**Step three**On the right side of the Entries bar, click on the (...) operation area and open the String Collection Editor window.
+
+​![blob.png](img/4.png)<br/>
+Map (4)
+
+​**Step four**In the String Collection Editor panel, enter macro instructions:
+
 
 ```
+
 SaveAllModified
 RunProcessCaptured|D:\layaide2.0\layaairide\resources\app\out\vs\layaEditor\laya\libs\2.0.0beta1\as\layajs.exe;"$(ProjectPath)";iflash=false;quickcompile=true;out=bin/js/bundle.js;subpath=
 ```
 
-如果编译不启动谷歌浏览器，在上方加入chromerun=false; 即可
+
+If the compiler does not start Google Browser, add chromerun = false to it.
+
 
 ```
+
 SaveAllModified
 RunProcessCaptured|D:\layaide2.0\layaairide\resources\app\out\vs\layaEditor\laya\libs\2.0.0beta1\as\layajs.exe;"$(ProjectPath)";iflash=false;chromerun=false;quickcompile=true;out=bin/js/bundle.js;subpath=
 ```
 
-​    ![blob.png](img/5.png)<br/>
-​  图(5)
 
-**Tips：“D:\layaide2.0\layaairide\resources\app\out\vs\layaEditor\laya\libs\2.0.0beta1\as\laya.js.exe”应为laya.js.exe的实际所在路径。**
+​![blob.png](img/5.png)<br/>
+Map (5)
+
+**Tips: "D: layaide2.0 layaairide resources app out vs layaEditor laya libs 2.0.0beta1 as laya.js.exe" should be the actual path of laya.js.**
 
 
 
 
-​    **步骤五**：点击”确定“完成宏指令配置后，已经完成宏命令“LayaJsCompiler”全部配置，并即时生效，直接点击“关闭”按钮即可。
+​**Step five**Click to confirm that the macro command "LayaJsCompiler" has been fully configured after completing the macro command configuration. It will take effect immediately. Just click the "Close" button.
+
 
   
 
-**至此，建立项目前的LayaAir引擎下载，浏览器下载，FlashDevelop环境下的AS3编译器配置就结束了。欢迎开发者在其它章节里继续学习。**
+
+
+**So far, the LayaAir engine download, browser download and AS3 compiler configuration under Flash Development environment are over before the project is established. Developers are welcome to continue learning in other chapters.**
 

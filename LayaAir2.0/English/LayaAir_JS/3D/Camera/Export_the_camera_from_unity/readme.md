@@ -1,58 +1,60 @@
-# 从Unity中编辑并导出摄像机
+#Edit and export camera from Unity
 
 ###### *version :2.0.1beta   Update:2019-3-19*
 
-​	引擎1.7.10版与unity导出插件1.5.0版发布后，在unity中所创建的摄像机可以被导出了！并且导出文件保留了摄像机在3D空间中的位置、视角、背景颜色、载剪、视野等参数，当加载了导出后的场景，显示的画面效果与unity中完全一致，方便了开发者们对摄像机视角的控制。
+After the release of engine version 1.7.10 and unit export plug-in version 1.5.0, the camera created in unit can be exported! And the export file retains the position, perspective, background color, clipping, visual field and other parameters of the camera in the 3D space. When loading the exported scene, the display effect is exactly the same as that in Unity, which facilitates the developer's control of the camera's visual angle.
 
-​	同时，因为LayaAir 3D引擎支持多摄像机，因此也可以在unity中设置多个摄像机并导出，关于多摄像机的视口设置请查看本课最后的**“多摄像窗口机使用”**小节。
+At the same time, because the LayaAir 3D engine supports multiple cameras, you can also set up multiple cameras in Unity and export them. For multi-camera view settings, please see the last part of this lesson.**"Use of Multi-camera Window Machine"**Section.
 
-### 在Unity中编辑摄像机
+###Editing Camera in Unity
 
-在Unity中创建一个Camera摄像机。查看摄像机面板:
+Create a Camera camera in Unity. To view the camera panel:
 
-![](img/1.png)<br>(图1)
+![] (img/1.png)<br> (Figure 1)
 
-**支持导出的摄像机设置**：
+**Support Exported Camera Settings**:
 
-Transform选择组件。可以调整摄像机的**Position**位置，**Rotation**选择和**Scale**缩放。
+Transform selects components. Adjustable camera**Position**Location,**Rotation**Selection and**Scale**Zoom.
 
-Background背景，在没有天空盒的情况下，将选中的颜色应用到剩余屏幕。
+Background background, in the absence of sky boxes, applies the selected color to the remaining screen.
 
-Culling Mask 剔除遮罩，包含或者忽略对象的Layer。
+Culling Mask removes masks and contains or ignores Layers of objects.
 
-Projection 投射。Perspective 透视投影，Orthography正交投影。
+Project projection. Perspective perspective projection and Orthographic orthogonal projection.
 
-Size 大小。当设置了正交摄影机时的视口大小。
+Size size. The viewport size when the orthogonal camera is set.
 
-Field of View 视野范围。相机的视角宽度，以及纵向的角度尺寸。
+Field of View field of view. The width of the camera's angle of view, as well as the vertical angle size.
 
-Clipping Planes 裁剪平面。从摄影机到开始渲染和停止渲染的距离。
+Clipping Planes trim the plane. The distance from the camera to start and stop rendering.
 
-​	Near 近裁剪面。
+Near near the cutting surface.
 
-​	Far 远裁剪面。
+Far far cut surface.
 
-Viewport Rect 视口矩形。
+Viewport Rect viewport rectangle.
 
-​	x：相机视图将进行绘制的水平位置的起点。
+X: the starting point of the horizontal position where the camera view will be drawn.
 
-​	y：相机视图将进行绘制的垂直位置的起点。
+Y: The starting point of the vertical position where the camera view will be drawn.
 
-​	w：相机输出到屏幕的宽度。
+W: The width of the camera output to the screen.
 
-​	h：相机输出到屏幕的高度。
+H: The height of the camera output to the screen.
 
-Depth 深度。绘图顺序。
+Depth depth. Drawing sequence.
 
-Target Texture 目标纹理。
+Target Texture Target Texture Target Texture Target Texture Target Texture Target Texture Target Texture Target Texture Target Texture Target Texture Target Texture Target.
 
-### 使用代码获取导出的摄像机
+###Use code to get the exported camera
 
-​	那么，如果在unity中创建了摄像机并导出，在代码中加载导出文件后，我们怎么去获取摄像机呢？这可以通过场景的子节点索引或名称来获取，获取后我们还可以对它进行移动旋转、设置天空盒、添加脚本等操作。
+So, if a camera is created in Unity and exported, how do we get the camera after loading the exported file in the code? This can be obtained by the index or name of the sub-node of the scene. After acquisition, we can also move and rotate it, set the skybox, add scripts and other operations.
 
-​	代码如下：
+The code is as follows:
+
 
 ```js
+
 class LayaAir3D
 {
     constructor() 
@@ -80,5 +82,6 @@ class LayaAir3D
 }
 ```
 
-​	在Untiy中，摄像机默认名为“Main Camera”，因此在上述代码中，通过scene的getChildByName(“Main Camera”)方法得到了摄像机，以供后续逻辑操作。开发者们也可以在unity中自定义摄像机的名字。
+
+In Untiy, the camera defaults to "Main Camera", so in the above code, the camera is obtained through scene's getChildByName ("Main Camera") method for subsequent logical operation. Developers can also customize the name of the camera in Unity.
 

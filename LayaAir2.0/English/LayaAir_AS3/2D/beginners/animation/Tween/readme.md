@@ -1,68 +1,71 @@
-# 缓动动画
+#Slow motion animation
 
-### 1. 缓动动画概述
+###1. Overview of Slow-motion Animation
 
-游戏开发中缓动动画比较常见，它是提升游戏UI体验的重要因素之一，例如对话框弹出、关闭，按钮的动效出现与消失，道具飞入背包等，我们可以直接使用LayaAir引擎提供的Tween缓动类与Ease类来快捷实现。
+Slow motion animation is very common in game development. It is one of the important factors to enhance game UI experience. For example, dialog box pop-up and close, button action appears and disappears, props fly into knapsack, etc. We can use Tween Slow motion class and Ease class provided by LayaAir engine to realize it quickly.
 
-`Tween` 缓动类用以实现目标对象属性的缓动，例如目标对象的x或y轴的缓动距离等目标值设置，以及缓动开始、停止、清理等设置。更多Tween的API
+`Tween`Slow class is used to achieve the target object attributes, such as the target value settings such as the X or Y axis of the target object, as well as the slow start, stop, clean-up settings. More Tween APIs
 
-`Ease`类定义了大量的缓动函数，以便实现 `Tween` 动画的具体缓动效果。LayaAir引擎的Tween类与Ease类结合使用，能基本满足游戏开发的缓动效果需求。点击链接可直接查看API： [https://layaair.ldc.layabox.com/api/?category=Core&class=laya.utils.Tween](https://layaair.ldc.layabox.com/api/?category=Core&class=laya.utils.Tween)
+`Ease`Class defines a large number of retardation functions for implementation`Tween`The specific slowing effect of animation. The tween class of layaair engine is used in combination with the ease class, which can basically meet the demand of slow motion effect in game development. Click on the link to view the API directly:[https://layaair.ldc.layabox.com/api/?category=Core&class=laya.utils.Tween](https://layaair.ldc.layabox.com/api/?category=Core&class=laya.utils.Tween)
 
-`Ease`类的API中对缓动函数进行了基础的介绍，点击链接可直接查看API：[https://layaair.ldc.layabox.com/api/?category=Core&class=laya.utils.Ease](https://layaair.ldc.layabox.com/api/?category=Core&class=laya.utils.Ease)
+`Ease`Class API gives a basic introduction to the slowdown function. Click on the link to view the API directly:[https://layaair.ldc.layabox.com/api/?category=Core&class=laya.utils.Ease](https://layaair.ldc.layabox.com/api/?category=Core&class=laya.utils.Ease)
 
-`Ease`类的API中的各个缓动函数效果可以查看演示DEMO，链接：[https://layaair.ldc.layabox.com/demo/?Tween_EaseFunctionsDemo](https://layaair.ldc.layabox.com/demo/?Tween_EaseFunctionsDemo)
-
-
+`Ease`The effect of each slowdown function in the API of the class can be seen in the demo DEMO, link:[https://layaair.ldc.layabox.com/demo/?Tween_EaseFunctionsDemo](https://layaair.ldc.layabox.com/demo/?Tween_EaseFunctionsDemo)
 
 
 
-### 2.缓动类的常用API介绍
 
-#### 2.1 Tween缓动类的常用方法from()与to()
 
-缓动类Tween提供了较多的方法，而我们常用的是两种，分别为`from()`与`to()`方法，这两个方法的参数设置完全一样，但效果有所不同，from是从缓动目标点向初始位置产生运动（*从缓动目标位置来*），to是从初始位置向缓动目标的位置产生运动（`到缓动目标位置去`），后面会结合实例详细说明，开发者可以先了解一下这两个方法的基础说明，如图1所示。
+###2. Introduction to common API of slow motion
+
+####2.1 Common methods of Tween slow-moving classes from () and to ()
+
+Slow-moving Tweens provide a lot of methods, but we often use two kinds of methods, one is the slow-moving Tween, the other is the slow-moving Tween, and the other is the slow-moving Tween.`from()`And`to()`The parameters of the two methods are exactly the same, but the effect is different. From the slow moving target point to the initial position (* from the slow moving target position *), to is from the initial position to the slow moving target position.（`到缓动目标位置去`Later, it will be explained in detail with examples. Developers can first understand the basic instructions of these two methods, as shown in Figure 1.
 
 ![图1](img/1.png) 
 
-(图1)
 
-#### 2.2 常用参数说明
+(Fig. 1)
 
-`to()`和`from()`这两种方法都支持静态方法，因此我们不需要去实例化Tween类就可以使用。
+####2.2 Description of common parameters
 
-通过查看图1的API说明，`to()`和`from()`它们的参数理解起来都较简单，这里我们重点强调一下props、duration、ease、complete、delay参数。
+`to()`and`from()`Both methods support static methods, so we don't need to instantiate the Tween class to use them.
 
-##### props  
+By looking at the API description in Figure 1,`to()`and`from()`Their parameters are easy to understand. Here we emphasize the props, duration, ease, complete and delay parameters.
 
-props 是目标对象需要改变，从而产生缓动效果的属性。对象的公共属性都可以进行设置，比如最常用的x、y位置属性，及alpha透明属性，以及旋转、轴心、大小等其他属性。
+#####Props
 
-##### duration
+Props is an attribute that the target object needs to be changed to produce a slow motion effect. Common attributes of objects can be set, such as the most commonly used x, y location attributes, and alpha transparency attributes, as well as other attributes such as rotation, axis, size.
 
-duration是执行缓动效果花费的时间，单位是豪秒，时间越多，缓动效果越慢。
+#####Duration
 
-##### ease
+Duration is the time spent to perform the slowing effect in Haushi seconds. The more time, the slower the slowing effect.
 
-ease   为缓动类型，它可以使用Ease类下定义的各种函数来改变动画的变化过程，LayaAir引擎提供了非常多的缓动方法供开发者们选择使用。开发者可以查看API或者在官网的引擎示例中切换缓动函数并观察缓动效果，链接地址：[https://layaair.ldc.layabox.com/demo/?Tween_EaseFunctionsDemo](https://layaair.ldc.layabox.com/demo/?Tween_EaseFunctionsDemo)
+#####Ease
 
-##### complete
+Ease is a slowdown type, it can use various functions defined under the Ease class to change the process of animation change, LayaAir engine provides a lot of slowdown methods for developers to choose to use. Developers can view the API or switch the jog function in the engine example on the official website and observe the jog effect. Link address:[https://layaair.ldc.layabox.com/demo/?Tween_EaseFunctionsDemo](https://layaair.ldc.layabox.com/demo/?Tween_EaseFunctionsDemo)
 
-complete  为缓动完成后回调方法。比如按钮出现的缓动，在缓动过程中我们不能让用户点击，这时就可以用到缓动完成回调，在回调函数中再加入按钮监听。
+#####Complete
 
-##### delay
+Complete is the method of callback after slow completion. For example, the button appears slowly, in the process of slowing, we can not let the user click, then we can use the slowing to complete the callback, and add the button to the callback function to listen.
 
-delay是延迟执行的时间，稍后会通过实例中的延迟执行制作出文本缓动的波动效果。
+#####Delay
+
+Delay is the time of delayed execution. Later, we will make the fluctuation effect of text slow motion through the delayed execution in the instance.
 
 
 
-### 3. 缓动实例
+###3. Slow motion examples
 
-#### 3.1 Tween.from()的实例
+####3.1 Examples of Tween. from ()
 
-下列代码中，我们先通过Tween.from()方法，实现“LayaBox”字符的文本缓动动画。
+In the following code, we first use the Tween. from () method to realize the text slow animation of the "LayaBox" character.
 
-创建TweenDemo.as 文档类，代码编写如下：
+Create a TweenDemo. as document class with the following code:
+
 
 ```java
+
 package 
 {
 	import laya.display.Text;
@@ -131,80 +134,92 @@ package
 }
 ```
 
-运行效果如动图2所示
 
-![动图2.gif](img/2.gif)<br/>（动图2）
+The operation effect is shown in Figure 2.
 
-结合实例代码，然后通过图2的运动效果，我们可以看出，文本"Layabox"在初始位置（*y轴300*）出现之后，瞬间消失，然后从缓动方法Tween.from设置的目标`{ y : 100 }`（*y轴100*）向初始位置发生运动（从上到下的缓动效果）。
+![动图2.gif](img/2.gif)<br/> (Motion 2)
 
-由于这个方法是先在初始位置显示，再瞬间消失从缓动的目标位置向初始位置运动。会产生一个视觉差，感觉更像反弹效果。所以我们继续了解Tween.to的效果，开发者可以根据需要选择到底使用哪种缓动方法。
+Combined with the example code, and through the motion effect of Figure 2, we can see that the text "Layabox" disappears instantly after the initial position (* Y axis 300*) appears, and then from the target set by the slowdown method Tween. from.`{ y : 100 }`(* Y axis 100*) moves to the initial position (top-down slowing effect).
 
-#### 3.2 Tween.to()的实例
+Because this method first displays in the initial position, then disappears instantaneously from the slow moving target position to the initial position. It produces a poor vision and feels more like a rebound effect. So we continue to understand the effect of Tween. to, and developers can choose which slowdown method to use according to their needs.
 
-我们可以继续采用上面的实例，只是将Tween.from改变为Tween.to，先看一下运行效果。
+####3.2 example of Tween. To()
+
+We can continue with the example above, just change Tween. From to Tween. To see the effect first.
+
 
 ```java
+
 //文本的初始y属性
 letterText.y = 300;
 //Tween.from(letterText, { y : 100 }, 3000, Ease.elasticOut, null, i * 1000);//注释本行改为将Tween.from改变为Tween.to
 Tween.to(letterText, { y : 100 }, 3000, Ease.elasticOut, null, i * 1000);
 ```
 
-运行效果如动图3所示
 
-![动图3.gif](img/3.gif)<br/>（动图3）
+The operation effect is shown in Figure 3.
 
-结合代码，我们看动图3的效果， Tween.to()会更加的直观。初始属性y在300，缓动方法的属性中y在100（`{ y : 100 }`），所以动图3是从下向上产生缓动运动效果（说的直白一些就是弹起的缓动效果）。
+![动图3.gif](img/3.gif)<br/> (Motion 3)
 
-#### 3.3 理解Props参数
+Combined with the code, let's look at the effect of moving Figure 3. Tween. to () will be more intuitive. The initial attribute y is 300, and the attribute y of the jog method is 100.（`{ y : 100 }`So moving Figure 3 produces a slowing motion effect from the bottom up (that is to say, to be frank, the slowing effect of the bounce).
 
-无论Tween.from还是Tween.to，第二个参数Props（属性）可以影响缓动效果的运动轨迹等。
+####3.3 Understanding Props parameters
 
-由于Tween.from与Tween.to的缓动效果本来就是相反的，所以Tween.from有一种向下落的感觉，而图3的Tween.to有一种向上弹起的感觉。
+Whether Tween. from or Tween. to, the second parameter, Props (property), can affect the motion trajectory of the slowing effect, etc.
 
-如果我们将初始y的属性值 与缓动目标的y属性值对调一下，再来看看，用Tween.to实现的落下效果与Tween.from有什么不同。
+Because Tween. front and Tween. to have opposite slowing effects, Tween. front has a sense of falling, while Tween. to in Figure 3 has a sense of bouncing up.
 
-继续延续之前的示例，修改代码如下。
+If we compare the initial y attribute value with the Y attribute value of the slow moving target, let's see how the drop effect achieved by tween.to is different from that achieved by tween.from.
+
+Continue with the previous example and modify the code as follows.
+
 
 ```java
+
 //文本的初始y属性
 letterText.y = 100;
 //Tween.from(letterText, { y : 100 }, 3000, Ease.elasticOut, null, i * 1000);//注释本行改为将Tween.from改变为Tween.to
 Tween.to(letterText, { y : 300 }, 3000, Ease.elasticOut, null, i * 1000);
 ```
 
-运行效果如动图4所示
 
-![动图4.gif](img/4.gif)<br/>（动图4）
+The operation effect is shown in Figure 4.
 
-由于动图4中，是初始y属性在100，Tween.to的效果是从初始属性向缓动目标的属性进行运动。所以缓动目标的y属性在300时，就会产生出从初始y轴的100向y轴300进行运动，也就是落下的效果。与Tween.from实现落下效果会有明显的不同。所以开发者在运用时要注意两者的效果区别。
+![动图4.gif](img/4.gif)<br/> (Motion 4)
 
-#### 3.4 理解缓动持续时间（*duration*）与延迟执行（*delay*）参数
+Since the initial y attribute is 100 in Motion 4, the effect of Tween. to is to move from the initial attribute to the attributes of the slow moving target. So when the Y attribute of the slow moving target is 300, it will produce the effect of moving from the initial Y axis 100 to the Y axis 300, that is, falling. The drop effect will be significantly different from that of Tween. From. So developers should pay attention to the effect difference between the two.
 
-继续沿用前面的示例，我们将第三个参数duration修改为1000毫秒，将第六个参数delay修改为100毫秒，效果如动图5所示。无论是缓动的速度还是下落间隔的速度都会产生较明显的变化。因此可以看出，通过持续时间或延迟时间的调整也可以实现不同的动画效果目标。这里不再深入，开发者可以自行调节体验。
+####3.4 Understand Slow Duration (* duration *) and Delay Execution (* delay *) parameters
 
-![动图5.gif](img/5.gif)<br/>（动图5）
+Continuing with the previous example, we modify the third parameter duration to 1000 milliseconds and the sixth parameter delay to 100 milliseconds, as shown in Figure 5. Whether the speed of slow motion or the speed of the fall interval will have a more obvious change. Therefore, we can see that different animation effects can be achieved by adjusting the duration or delay time. This is no longer in-depth. Developers can adjust the experience themselves.
 
-动图5效果所修改代码如下：
+![动图5.gif](img/5.gif)<br/> (Fig. 5)
+
+Move Fig. 5 to modify the code as follows:
+
 
 ```java
+
 //文本的初始y属性
 letterText.y = 100;
 //Tween.from(letterText, { y : 100 }, 3000, Ease.elasticOut, null, i * 1000);//注释本行改为将Tween.from改变为Tween.to
 Tween.to(letterText, { y : 300 }, 1000, Ease.elasticOut, null, i * 100);
 ```
 
-#### 3.5 理解ease参数
 
-第四个参数ease对应`laya.utils.Ease`类的各个方法，在官网的引擎示例中，针对这些方法都有演示效果。开发者可以点击链接（[https://layaair.ldc.layabox.com/demo/?Tween_EaseFunctionsDemo](https://layaair.ldc.layabox.com/demo/?Tween_EaseFunctionsDemo)）可以逐个查看，然后替换本例中的效果进行体验。
+####3.5 Understanding ease parameters
 
-本节中我们改为`Ease.bounceIn`效果，如动图6所示。
+Ease correspondence of the fourth parameter`laya.utils.Ease`Each method of class, in the engine example of official website, has demonstration effect for these methods. Developers can click on links（[https://layaair.ldc.layabox.com/demo/?Tween_EaseFunctionsDemo](https://layaair.ldc.layabox.com/demo/?Tween_EaseFunctionsDemo)) You can view them one by one and then experience them instead of the effects in this example.
 
-![动图6.gif](img/6.gif)<br/>（动图6）
+In this section, we change it to`Ease.bounceIn`The effect is shown in Figure 6.
 
-动图6效果所修改代码如下：
+![动图6.gif](img/6.gif)< br / >
+
+Modified code for Moving 6 effect is as follows:
+
 
 ```java
+
 //文本的初始y属性
 letterText.y = 100;
 //Tween.from(letterText, { y : 100 }, 3000, Ease.elasticOut, null, i * 1000);//注释本行改为将Tween.from改变为Tween.to
@@ -214,21 +229,27 @@ Tween.to(letterText, { y : 300 }, 1000, Ease.bounceIn, null, i * 100);
 
 
 
-#### 3.6 理解完成回调（*complete*）参数
 
-第五个参数complete用于执行完缓动效果后的回调。我们继续沿用之前的示例，在缓动结束后，增加一个让字体颜色变红的回调方法。
+####3.6 Understanding the completion callback (* complete*) parameter
 
-使用示例：
+The fifth parameter complete is used to perform the callback after the slowdown effect is completed. Let's continue with the previous example and add a callback method to redden the font color after the slowdown.
+
+Use examples:
+
 
 ```java
+
 Tween.to(letterText, { y : 300 }, 1000, Ease.bounceIn, Handler.create(this,changeColor,[letterText]), i * 100);
 ```
 
-由于需要增加新的引用，这次贴出全部的示例代码。
 
-TweenDemo.as：
+Due to the need to add new references, all the sample codes are posted this time.
+
+TweenDemo.as:
+
 
 ```java
+
 package 
 {
 	import laya.display.Text;
@@ -317,21 +338,28 @@ package
 }
 ```
 
-代码运行效果如动图7所示
+
+The code runs as shown in Figure 7.
 
 ![动图7](img/7.gif) 
 
 
 
-#### 3.7 通过Props参数实现过程回调
 
-complete（*完成回调*）参数，不仅可以在第五个参数中实现，也可以在第二个参数Props中实现。但是，为了代码更加清晰易读，我们并不建议将完成回调放在Props中实现。
 
-这里我们只介绍一下在Props中实现update更新回调。也就是说如果我们想在缓动过程中就执行回调方法，那第五个参数中是不可能实现的，因为第五个参数一定是缓动结束后才执行。所以，我们继续沿用之前的示例，在Props参数里增加一个字体颜色的更新回调。
 
-使用示例：
+
+####3.7 Process callback through Props parameters
+
+The complete (* complete callback *) parameter can be implemented not only in the fifth parameter, but also in the second parameter, Props. However, in order to make the code clearer and easier to read, we do not recommend that the completion callback be implemented in Props.
+
+Here we will only introduce the implementation of update callback in props. That is to say, if we want to execute the callback method in the slowdown process, it is impossible to implement the fifth parameter, because the fifth parameter must be executed after the slowdown. So let's continue with the previous example by adding an update callback for font color in the Props parameter.
+
+Use examples:
+
 
 ```java
+
 
 /**
 * 对象letterText属性y从100缓动到300的位置，每一帧都通过回调方法更新颜色
@@ -344,9 +372,12 @@ complete（*完成回调*）参数，不仅可以在第五个参数中实现，�
 Tween.to(letterText, { y : 300, update: new Handler(this, updateColor,[letterText])}, 1000, Ease.bounceIn, Handler.create(this,changeColor,[letterText]), i * 100);
 ```
 
-全部的示例代码，TweenDemo.as：
+
+All the sample code, TweenDemo.as:
+
 
 ```java
+
 package 
 {
 	import laya.d3.math.Rand;
@@ -469,12 +500,14 @@ package
 }
 ```
 
-代码运行时，由于update回调是每一帧都在执行，所以在缓动的过程中，有一种闪光字的效果。如动图8所示。
+
+When the code runs, because the update callback is executed in every frame, there is a flash word effect in the process of slowing down. As shown in Figure 8.
 
 ![动图8](img/8.gif) 
 
-（动图8）
+
+(Motion 8)
 
 
 
-LayaAirIDE的时间轴动画编辑，也可以为对象属性设置缓动效果。如想了解IDE内的缓动效果设置方式，可以阅读《时间轴动画编辑器详解》中关于缓动的介绍。
+LayaAirIDE's timeline animation editing can also set the slowdown effect for object properties. If you want to know the settings of slowing effect in IDE, you can read the introduction of slowing in Time Axis Animation Editor Details.

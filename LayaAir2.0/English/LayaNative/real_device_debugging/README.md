@@ -1,202 +1,201 @@
-# 在android真机上调试JavaScript代码
+#Debugging JavaScript code on an Android real machine
 
 
-## 注意：
-由于最近chrome版本更新到了69，导致在LayaNative环境真机调试JS，无法手工设置断点调试，解决方案：
-1、开发者可以在代码中写debugger的方式，进行调试。
-2、安装一个Chrome68的版本进行调试。
-我公司引擎组会尽快解决这个问题，给大家造成不便，敬请谅解。
+##Be careful:
+Due to the recent update of the chrome version to 69, it is impossible to set breakpoint debugging manually in LayaNative environment due to debugging JS on the real machine.
+1. Developers can debug by writing debuggers in their code.
+2. Install a version of Chrome 68 for debugging.
+Our engine group will solve this problem as soon as possible, causing inconvenience to you, please understand.
 
 
-## 一、调试的原理
+##I. Principle of debugging
 
-JavaScript代码的调试，是使用调试机上的Chrome浏览器进行的。Android测试机上的LayaNative启动的时候，会同时启动一个WebSocket服务器。Chrome浏览器通过WebSocket与LayaNative连接通信，从而实现使用Chrome对项目的JavaScript的调试。
-
-
-在调试项目中的JavaScript的代码时，有以下两种调试模式可以选择：
-
-1. Debug/Normal模式
-
-    在该模式下，Android测试机上的项目可以直接启动并运行，Chrome浏览器可以在项目运行后连接调试。
-
-2. Debug/Wait模式
-
-    在该模式下，Android测试机上的项目启动后，会一直等待Chrome浏览器的连接。当Chrome连接成功后，才会继续执行JavaScript脚本。
-    
-    当需要对启动时加载的JavaScript脚本进行调试时，请优先选择该模式。
+JavaScript code debugging is done using Chrome browser on the debugger. When LayaNative starts up on the Android tester, it starts a WebSocket server at the same time. Chrome browser communicates with LayaNative via WebSocket to debug JavaScript for the project using Chrome.
 
 
-**注意：在调试的工程中请确保调试机与Android测试机在同一网络上。**
+When debugging JavaScript code in a project, there are two debugging modes to choose from:
 
-## 二、调试layaAirIDE构建的Android项目
+1. Debug/Normal mode
 
-### 步骤1: 
+In this mode, the project on Android tester can start and run directly, and Chrome browser can connect and debug after the project runs.
 
-使用LayaAirIDE对项目进行构建，生成Android的工程。
+2. Debug/Wait model
 
-<!-- TODO：添加链接地址。 具体可参考“使用IDE构建工程”。 -->
-
-### 步骤2：修改调试模式
-
-使用Android Studio打开构建后的工程。
-
-打开android_studio/app/src/main/assets/config.ini，修改JSDebugMode的值,设置需要的调试模式。如图1：
-
-![](img/android_debugmode.png)
-
-图1
-
-JSDebugMode的取值和含义如下：
-
-|取值|含义|
-|:--:|:--:|
-|0|关闭调试功能|
-|1|Debug/Normal模式|
-|2|Debug/Wait模式|
-
-**Tips：**
-
-当项目正式发布后，请将JSDebugMode的值设置为0，否者会对项目运行时的性能有影响。
-
-### 步骤3：编译并运行项目
-
-使用Android Studio编译工程。
-
-如果选择的是Debug/Normal模式，等待Android测试机成功**启动并运行**项目。
-
-![](img/android_app_run.png)
-
-图2 Android测试机成功启动并运行项目
-
-如果选择的是Debug/Wait模式，等待Android测试机成功**启动**项目。
-
-![](img/android_app_boot.png)
-
-图3 Android测试机成功启动
-
-### 步骤4：使用Chrome连接工程
-
-打开调试机上的Chrome浏览器，输入以下网址：
-
->chrome-devtools://devtools/bundled/inspector.html?experiments=true&v8only=true&ws=10.10.82.142:5959
-
-**注意：** ws=10.10.82.142:5959里的10.10.82.142是Android测试机的ip地址，5959是步骤2中config.ini文件里JSDebugPort设置的端口号值，请根据自己设备的实际情况和需求进行更改。
-
-### 步骤5：进行调试
-
-连接成功后，便可以使用Chrome对项目中JavaScript进行调试。如图2所示：
-
-![](img/debug_connected.png)
-
-图4
+In this mode, the project on the Android tester starts and waits for a connection to the Chrome browser. When the Chrome connection is successful, JavaScript scripts will continue to be executed.
+When you need to debug JavaScript scripts loaded at startup, choose this mode first.
 
 
-## 三、使用测试App进行调试
+**Note: Make sure that the debugger is on the same network as the Android tester in the debugging project.**
 
-### 步骤1：确认ip地址和端口号
+##2. Debugging Android Project Built by Lalaya AirIDE
 
-打开测试App, 可以在左上角看到Android设备的ip地址和调试时需要的端口号。
+###Step 1:
 
-如图1所示，设备的ip地址为10.10.82.142，端口号为：5959。
+Use LayaAirIDE to build the project and generate Android projects.
+
+<! - TODO: Add a link address. Specifically, you can refer to "Building Engineering with IDE". >
+
+###Step 2: Modify debugging mode
+
+Open the built project using Android Studio.
+
+Open android_studio/app/src/main/assets/config.ini, modify the value of JSDebugMode, and set the required debugging mode. As shown in Figure 1:
+
+![] (img/android_debugmode.png)
+
+Figure 1
+
+The value and meaning of jsdebugmode are as follows:
+
+| Value | Meaning|
+F: -:::
+| 0 | Turn off debugging|
+| 1 | Debug / Normal mode|
+| 2 | Debug / Wait mode|
+
+**Tips:**
+
+When the project is officially released, set the value of JSDebugMode to 0, which will affect the performance of the project at runtime.
+
+###Step 3: Compile and run the project
+
+Compile the project using Android Studio.
+
+If you choose Debug/Normal mode, wait for the Android tester to succeed**Start and run**Project.
+
+![] (img/android_app_run.png)
+
+Figure 2 Android tester successfully starts and runs the project
+
+If you choose Debug/Wait mode, wait for the Android tester to succeed**start-up**Project.
+
+![] (img/android_app_boot.png)
+
+Figure 3 Successful startup of Android tester
+
+###Step 4: Use Chrome Connection Engineering
+
+Open the Chrome browser on the debugger and enter the following address:
+
+> chrome-devtools://devtools/bundled/inspector.html? Experiments = true & v8only = true & WS = 10.10.82.142:5959
+
+**Be careful:**Ws = 10.10.82.142: 10.10.82.142 in 5959 is the IP address of Android tester, 5959 is the port number value set by JSDebugPort in the config.ini file in Step 2. Please change it according to the actual situation and requirements of your device.
+
+###Step 5: Debugging
+
+Once the connection is successful, you can use Chrome to debug JavaScript in your project. As shown in Figure 2:
+
+![] (img/debug_connected.png)
+
+Figure 4
+
+
+##3. Debugging with Test App
+
+###Step 1: Confirm the IP address and port number
+
+Open the test App to see the IP address of the Android device and the port number required for debugging in the upper left corner.
+
+As shown in Figure 1, the IP address of the device is 10.10.82.142 and the port number is 5959.
 
 ![图](img/app_ip_port.png)
 
-图5
+Figure 5
 
-### 步骤2：选择调试模式
+###Step 2: Select debugging mode
 
-点击屏幕下方中间的按钮，选择调试模式。
+Click on the middle button at the bottom of the screen to select the debug mode.
 
 ![图](img/debug_wait.png)
 
-图6
+Figure 6
 
 ![图](img/debug_normal.png)
 
-图7
+Figure 7
 
 
-### 步骤3：扫描项目的二维码
+###Step 3: Scan the 2-D code of the item
 
-点击测试App中间的蓝色二维码图标，扫描项目的layanative的二维码地址。
+Click on the blue two-dimensional code icon in the middle of App to scan the layanative two-dimensional code address of the project.
 
-如果选择的是Debug/Normal模式则等待项目成功**启动并运行**。
+If you choose Debug/Normal mode, wait for the project to succeed**Start and run**。
 
 ![图](img/app_run.png)
 
-图8 案例项目成功运行
+Figure 8 Case Project Running Successfully
 
 
-如果选择的是Debug/Wait模式则等待测试App弹出下面的界面：
+If you choose Debug/Wait mode, wait for the test App to pop up the following interface:
 
 ![图](img/chrome_connect.png)
 
-图9
+Figure 9
 
-### 步骤4：在Chrome浏览器中连接测试App
+###Step 4: Connect to Test App in Chrome Browser
 
-打开Chrome浏览器，输入以下网址：
+Open the Chrome browser and enter the following address:
 
->chrome-devtools://devtools/bundled/inspector.html?experiments=true&v8only=true&ws=10.10.82.142:5959
+> chrome-devtools://devtools/bundled/inspector.html? Experiments = true & v8only = true & WS = 10.10.82.142:5959
 
-**注意：** ws=10.10.82.142:5959是步骤1中查看的ip地址和端口号，请根据自己设备的实际情况进行更改。
+**Be careful:**Ws = 10.10.82.142:5959 is the IP address and port number in step 1. Please change it according to the actual situation of your device.
 
-### 步骤5：进行调试
+###Step 5: Debugging
 
-连接成功后，便可以使用Chrome对项目中JavaScript进行调试。如图7所示：
+Once the connection is successful, you can use Chrome to debug JavaScript in your project. As shown in Figure 7:
 
-![](img/debug_connected.png)
+![] (img/debug_connected.png)
 
-图10
+Figure 10
 
-**Tips：** 测试App中的快捷按钮
+**Tips:**Test the shortcut buttons in App
 
-测试App成功运行项目以后，会在屏幕上显示两个按钮。两个按钮的作用如下：
+After testing App successfully running the project, two buttons are displayed on the screen. The functions of the two buttons are as follows:
 
-**1.刷新按钮**
+**1. Refresh button**
 
 ![refresh](img/refresh.png)
 
-当更改项目的代码后，点击刷新按钮，即可重新载入更改后的工程，不需要重新扫码。
+When you change the code of the project, click the refresh button to reload the changed project without re-scanning the code.
 
-**注意：** Chrome连接情况下，测试App点击刷新按钮时会有崩溃的情况。该问题以后版本会解决，敬请谅解。
+**Be careful:**In the case of Chrome connection, the test App crashes when it clicks the refresh button. This problem will be solved in later versions. Please forgive me.
 
-**2.返回按钮**
+**2. Return button**
 
 ![return](img/return.png)
 
-点击返回按钮，可以返回到扫码的界面，重新进行扫码。
+Click on the return button to return to the scanner interface and re-scanner.
 
 
 
-## 四、目前版本存在的问题
+##IV. Problems in the Current Version
 
-**下面的问题会在以后的版本里解决，敬请谅解。**
+**The following problems will be solved in future versions, please forgive me.**
 
 
-在调试器调试的过程中，使用调试器手动添加的断点（非debugger断点)，有几率会出现调试混乱。
-如果遇到这种情况，请按以下步骤进行处理：
+In the debugging process of the debugger, there is a probability of debugging confusion when using the breakpoints added manually by the debugger (non-debugger breakpoints).
+If you encounter this situation, please follow the following steps to deal with it:
 
-步骤1：设置的断点如下
+Step 1: Set breakpoints as follows
 
-![](img/7.png)
+![] (img/7.png)
 
-图11
+Figure 11
 
-步骤2：取消所有的断点
+Step 2: Cancel all breakpoints
 
-![](img/8.png)
+![] (img/8.png)
 
-图12
+Figure 12
 
-步骤3：重启启动工程，再使用Chrome连接工程。
+Step 3: Restart the project and use Chrome to connect the project.
 
-![](img/9.png)
+![] (img/9.png)
 
-图13
+Figure 13
 
-步骤4：恢复需要的断点
+Step 4: Recovery the breakpoints needed
 
-![](img/7.png)
+![] (img/7.png)
 
-图14
+Figure 14

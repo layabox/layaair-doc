@@ -2,9 +2,11 @@
 
 ###### *version :2.0.1beta   Update:2019-3-30*
 
-聚光指的是从特定光源方向射出的光，比如手电筒，舞台筒灯等。光照区域根据距离因素逐渐放大，同时光照区域边缘也有衰减现象。
+Focusing light refers to light emitted from a specific light source direction, such as flashlight, stage lamp, etc. The illumination area is enlarged gradually according to the distance factor, and the edge of the illumination area is also attenuated.
+
 
 ```typescript
+
 //聚光灯
 this.spotLight = this.scene.addChild(new Laya.SpotLight());
 //设置聚光灯颜色
@@ -21,10 +23,11 @@ this.spotLight.range = 6.0;
 this.spotLight.spotAngle = 32;
 ```
 
-**range** 为聚光的照射范围，与点光类似，区别只是聚光有方向，而点光无方向。
 
-**spotAngle** 为聚光灯的锥形角度，设置的值越小，聚光光圈的越小，反之光圈越大。
+**Range**The range of illumination for focusing light is similar to that of point light, except that the focusing light has a direction, while the point light has no direction.
 
-![](img/1.png)<br>(图1)
+**SpotAngle**For the conical angle of the spotlight, the smaller the value set, the smaller the focusing aperture, and vice versa.
 
-​	
+![] (img/1.png)<br> (Figure 1)
+
+​

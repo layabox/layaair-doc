@@ -1,51 +1,51 @@
-# HTML5技术成校园新宠 Layabox引擎走进大学课堂
+#HTML5 technology becomes the new favorite Layabox engine on campus and enters the university classroom
 
-2016-05-26 
+2016-05-26
 
-　　HTML5(以下简称H5)技术凭借跨平台、易分享、开源生态发达等优势在近几年获万千宠爱，微软、苹果、谷歌等行业巨头公司纷纷示好。而在H5游戏领域，今年大批中小CP难以在APP手游的寡头红海中生存，转型H5游戏领域，这直接导致了游戏行业对H5研发人才需求的激增。
+HTML5 (hereinafter referred to as H5) technology has won thousands of favors in recent years by virtue of its advantages of cross-platform, easy-to-share, open-source ecology and so on. Microsoft, Apple, Google and other industry giants have shown good intentions. In the field of H5 games, this year a large number of small and medium-sized CPs are difficult to survive in the oligarchy Red Sea of APP, transforming the field of H5 games, which directly leads to the surge of demand for H5 R&D talents in the game industry.
 
-　　**Layabox引擎受邀走入北理工大**
+_______**Layabox Engine Invited to North Polytechnic University**
 
-　　2016年5月25日，中国三大H5游戏引擎商之一Layabox受邀走进北京理工大学，为学子们带来了一场关于H5技术的科技盛宴。在本次校园宣讲中，Layabox合伙人李明通过对H5行业现状以及未来发展的解读、H5就业前景的剖析、引擎技术的深入分析、学习方法的指引与建议，引发了学生极大的兴趣。除了认真做笔记，更有学生直接在课堂中打开百度百科进一步了解Layabox引擎。
+On May 25, 2016, Layabox, one of China's three major H5 game engine vendors, was invited to Beijing University of Technology, bringing students a technological feast on H5 technology. In this campus announcement, Li Ming, a partner of Layabox, has aroused great interest of students by interpreting the current situation and future development of H5 industry, analyzing the employment prospects of H5, in-depth analysis of engine technology, and guidance and suggestions on learning methods. In addition to taking notes carefully, more students directly open Baidu Encyclopedia in the classroom to further understand the Layabox engine.
 
 ![img](http://www.layabox.com/uploadfile/image/20160527/1464313835728525.jpg)
 
-　　当兴趣建立之后，面对学生们的求知渴望，Layabox的美女布道师赖圆圆从引擎入门学习到工具结合的实战指导，一步步向学生揭开了H5技术研发的神秘面纱，让学生们充分了解到引擎的非凡魅力。在课程结束后，还有同学围上讲台请教学习中的困惑，彰显出学生们对这一领域的热情。
+After the interest was established, Layabox's beautiful preacher Lai Yuanyuan opened the mysterious veil of H5 technology research and development step by step from the introduction of engine learning to the practical guidance of tool combination, so that students can fully understand the extraordinary charm of engine. At the end of the course, some students gathered around the platform to ask for puzzles in their study, which showed their enthusiasm in this field.
 
 ![img](http://www.layabox.com/uploadfile/image/20160527/1464313835730531.jpg)
 
-　　**H5走入大学校园 校企联手共赢**
+_______**H5 Enters the University Campus, Collegiates and Enterprises Work Together for Win-Win**
 
-　　对于学生而言，H5是当前的热门行业，尤其是对于3D与VR的支持，使其未来拥有极强的行业延续性。另外，H5应用领域非常广泛，无论是热门的H5游戏，还是教育、广告、营销、应用等等，都可以适用，因此具备非常良好的就业前景。
+For students, H5 is the current hot industry, especially for the support of 3D and VR, which makes it have strong industry continuity in the future. In addition, H5 has a very wide range of applications, whether it is popular H5 games, or education, advertising, marketing, applications, etc., can be applied, so it has a very good employment prospects.
 
 ![img](http://www.layabox.com/uploadfile/image/20160527/1464313835447662.jpg)
 
-　　校企联合取决于双向的共赢需求，校园学生就业压力日趋增涨，而热门的行业往往成为学校与学生追逐的目标。对于企业而言，H5行业高速发展，势必会带来人才的缺口。学生不仅是潜在的行业从业者，更是品牌与口碑建立的早期阵地，看好未来，布局未来，对于H5的未来之共识，想必是校企联手之基石。
+School-enterprise alliance depends on the two-way win-win demand, and the pressure of students'employment is increasing day by day. Hot industries often become the goal pursued by schools and students. For enterprises, the rapid development of H5 industry will inevitably bring about a shortage of talents. Students are not only potential industry practitioners, but also the early position of brand and word of mouth. Looking forward to the future and laying out the future, the consensus on the future of H5 must be the cornerstone of school-enterprise cooperation.
 
-　　**Layabox引擎布局校园 行业信心足**
+_______**Layabox Engine Layout Campus Industry Confidence**
 
-　　作为H5行业技术的引领者，Layabox引擎一直以性能之王深入人心，深耕于大型H5游戏精品领域，不仅推出了行业首款APP级别的重度动作游戏《猎刃2》，更推出了性能与数据并列于H5行业巅峰的MMORPG《醉西游H5》，用顶级精品证明引擎的实力。此次进入校园，布局未来的潜在开发者，彰显出Layabox对行业极大的信心。
+As the leader of H5 industry technology, Layabox engine has been deeply rooted in the field of large-scale H5 game products with the king of performance, not only launched the industry's first APP-level heavy action game "Hunting Blade 2", but also launched the performance and data parallel to the peak of H5 industry MMORPG "Drunken Journey to the West H5", proving the strength of the engine with top quality products. This entry into the campus, layout of potential developers in the future, demonstrates Layabox's great confidence in the industry.
 
 ![img](http://www.layabox.com/uploadfile/image/20160527/1464313835139696.png)
 
-　　**Layabox核心产品简介**
+_______**Introduction of Layabox Core Products**
 
-　　**LayaAir引擎**
+_______**LayaAir Engine**
 
-　　裸跑性能媲美APP的新一代HTML5引擎；
+Naked running is a new generation of HTML5 engine with comparable performance to APP.
 
-　　支持Canvas\WebGL模式自动切换；
+Support Canvas WebGL mode automatic switching;
 
-　　支持2D\3D\VR产品开发；
+Support the development of 2D3DVR products;
 
-　　支持使用Action3\Type\Java三种语言开发；
+Support the development of Action3 Type Java;
 
-　　一次开发可同时发布：手游APP、HTML5、Flash页游多端版本。
+One development can be released at the same time: Hand Tour APP, HTML5, Flash Page Tour multi-end version.
 
-　　**LayaFlash引擎**
+_______**LayaFlash Engine**
 
-　　兼容Flash原生API，支持将Flash页游\手游快速转换为HTML5游戏。
+Compatible with Flash native API, it supports the fast conversion of Flash page hand-surfing to HTML5 games.
 
-　　**LayaPlayer运行器**
+_______**LayaPlayer Runner**
 
-　　支持各种HTML5项目（含第三方引擎）加速，性能超越APP，运行器已嵌入主流渠道，提供HTML5打包成原生APP工具；
+Supporting various HTML5 projects (including third-party engines) to accelerate, performance beyond APP, the runner has been embedded in mainstream channels, providing HTML5 packaged into native APP tools;

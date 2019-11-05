@@ -1,17 +1,19 @@
-# 绘制圆形与扇形
+#Draw circles and sectors
 
 
 
-### 一、绘制圆形
+###1. Draw a circle
 
-圆形的绘制理解起来比较简单，通过圆形的中心点坐标与半径，即可方便的通过LayaAir引擎laya.display.Graphics这个API的“drawCircle();”方法实现。该方法的详细说明如下图所示：
+The drawing of a circle is relatively simple to understand. Through the coordinates and radius of the center point of the circle, it can be easily realized by the "drawCircle ();" method of the API LayaAir engine laya. display. Graphics. A detailed description of the method is shown in the following figure:
 
-​	![blob.png](img/1.png)<br/>
-​	（图1）
+​![blob.png](img/1.png)<br/>
+(Fig. 1)
 
-下面我们用LayaAir引擎绘制一个圆形，示例代码如下：
+Next, we use the LayaAir engine to draw a circle. The sample code is as follows:
+
 
 ```javascript
+
 (function()
 {
     var Sprite = Laya.Sprite;
@@ -34,25 +36,30 @@
 })();
 ```
 
-代码运行效果如下图所示：
+
+The code operation effect is shown in the following figure:
+
+
 
 ​	![blob.png](img/2.png)<br/>
-​	（图2）
+(Figure 2)
 
-​        圆形绘制比较简单，“80，80”是圆形中心点坐标。50是半径，"#ff0000"是圆形填充颜色值。
+Round drawing is relatively simple, and "80, 80" is the coordinate of the center point of a circle. 50 is the radius.#Ff0000 "is the color value of the circular filler.
 
 
 
-### 二、绘制扇形
+###2. Drawing sector
 
-​        下面继续延伸，介绍一下比圆形稍复杂一点的扇形绘制方法“drawPie();”该方法的详细说明如下图所示：
+Next, let's go on to introduce the sector drawing method "drawPie ()", which is slightly more complex than the circle.
 
-​	![blob.png](img/3.png)<br/>
-​	（图3）
+​![blob.png](img/3.png)<br/>
+(Figure 3)
 
-下面我们用LayaAir引擎绘制一个扇形，示例代码如下：
+Next, we use the layaair engine to draw a sector. The example code is as follows:
+
 
 ```javascript
+
 (function()
 {
     var Sprite = Laya.Sprite;
@@ -75,54 +82,59 @@
 })();
 ```
 
-代码运行效果如下图所示：
+
+The code runs as shown in the following figure:
+
+
 
 ​	![blob.png](img/4.png)<br/>
-​	（图4）
-绘制扇形与圆形类似，前三个参数的用法也是一样的，只是增加了绘制开始与结束的角度。为了让大家更好的理解，扇形的绘制代码与参数沿用圆形代码示例，除了方法名的改变，只增加了90与180两个角度参数。大家可在编码过程中通过调整参数，再深入理解。
+(Figure 4)
+Drawing a sector is similar to a circle, and the first three parameters are used the same way, except that the angle of beginning and ending of drawing is increased. In order to let you better understand, the sector drawing code and parameters follow the example of circular code, except for the change of method name, only 90 and 180 angle parameters are added. You can adjust the parameters in the coding process, and further understand.
 
 
 
-### 三、通过LayaAirIDE拖动控件绘制圆形
+###3. Drawing a circle by dragging the control of LayaAirIDE
 
-**步骤一：**打开我们的LayaAirIDE，点击设计模式，新建一个View页面
+**Step one:**Open our LayaAirIDE, click Design Patterns, and create a new View page
+
+
 
 ​	![6](img/5.png)<br/>
-​   	（图5）  
+(Fig. 5)
 
-**步骤二：**将组件中的曲线组件拖动到View页面上，就会自动生成默认的圆形
+**Step two:**Drag the curve component from the component onto the View page to automatically generate the default circle
 
-​	![7](img/6.png)<br/>
-​   	（图6）  
+​![7](img/6.png)<br/>
+(Fig. 6)
 
-**步骤三：**修改（添加/减少）Circle组件属性中的数值，改变圆形的大小、颜色、外框等等。
+**Step three:**Modify (add/reduce) the values in Circle component properties, change the size, color, outline, etc. of the circle.
 
-​   	![8](img/7.png)<br/>
-​   	（图7）  
+​![8](img/7.png)<br/>
+(Figure 7)
 
-​   	![9](img/8.png)<br/>
-​   	（图8）  
+​![9](img/8.png)<br/>
+(Figure 8)
 
 
 
-### 四、通过LayaAirIDE拖动控件绘制扇形
+###4. Drawing Sector by Dragging Control of LayaAirIDE
 
-**步骤一：**打开我们的LayaAirIDE，点击设计模式，新建一个View页面
+**Step one:**Open our LayaAirIDE, click Design Patterns, and create a new View page
 
-​	![6](img/5.png)<br/>
-​   	（图9）  
+​![6](img/5.png)<br/>
+(Figure 9)
 
-**步骤二：**将组件中的曲线组件拖动到View页面上，就会自动生成默认的扇形
+**Step two:**Drag the curve component from the component onto the View page and automatically generate the default sector
 
-​	![7](img/9.png)<br/>
-​   	（图10）  
+​![7](img/9.png)<br/>
+(Fig. 10)
 
-**步骤三：**修改（添加/减少）Pie组件属性中的数值，改变扇形的角度、大小、颜色等等。
+**Step three:**Modify (add/reduce) the values in Pie component properties, change the angle, size, color, etc. of the sector.
 
-​   	![8](img/10.png)<br/>
-​   	（图11）  
+​![8](img/10.png)<br/>
+(Fig. 11)
 
-​   	![9](img/11.png)<br/>
-​   	（图12）  
+​![9](img/11.png)<br/>
+(Fig. 12)
 
-到此我们通过LayaAirIDE的组件绘制圆形和扇形就完成了。
+So far, we have finished drawing circles and fans through the components of LayaAirIDE.

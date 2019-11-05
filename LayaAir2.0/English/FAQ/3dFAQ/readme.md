@@ -1,20 +1,20 @@
-# 引擎常见3D问题Frequently Asked Questions
+#Frequently Asked Questions
 
 
 
-### 3，引擎的3d资源用什么工具导出和注意事项有哪些？
+###3. What tools are used to export the 3D resources of the engine and what are the considerations?
 
-**答**： LayaAir 引擎的3d 使用的资源，比如模型，动画等，需要用3D制作软件，3Dmax ，maya等制作之后导出FBX格式文件，然后导入到Unity中，并在Unity中安装LayaAir提供的3d导出插件，目前最新版为beta5，下载地址为https://ldc.layabox.com/download/2.0.0beta5/unityplugin/LayaAirUnityPlugin_beta.unitypackage
+**answer**LayaAir Engine's 3D resources, such as model, animation, etc., need to export FBX format files using 3D production software, 3D max, Maya and so on, then import them into Unity, and install the 3D export plug-in provided by LayaAir in Unity. The latest version is beta5, and the download address is https://ldc.abox.com/load/2.0.0beta5/unityplugin/Layagin Plugin_Airbeta.un. Itypackage
 
-以后有更新可以去官网下载，或者修改连接版本号。
+Later updates can be downloaded from the official website, or the connection version number can be modified.
 
-插件的使用规则及注意事项的介绍，已经包含在插件里，
+A description of the rules and precautions for the use of plug-ins has been included in the plug-ins.
 
-![](img/1.gif)
+![] (img/1.gif)
 
- Animator 动画支持（可以制作骨骼动画，刚体动画，材质动画等复合动画）
-​             现支持的属性 
-​                    骨骼动画：*暂不支持unity中自己创建的Humanoid类型的骨骼动画*，**Animator组件中的Avatar不能为空。**
-​                    材质动画/刚体动画：只支持对物理的旋转平移缩放属性，材质的基本属性，不支持组件跟节点的开启/失效。如果开发者对新的属性有要求，请跟帖反馈，并提供资源文件，我们会根据情况添加**。Animator组件中的Avatar必须为空。**
+Animator animation support (can produce skeleton animation, rigid animation, material animation and other composite animation)
+Currently supported attributes
+Skeletal animation: * does not support the Humanoid type of skeletal animation created by oneself in Unity for the time being.**Avatar in the Animator component cannot be empty.**
+Material animation/rigid body animation: only support the physical rotation, translation and scaling attributes, the basic attributes of material, not support the opening/failure of components and nodes. If developers have requirements for new properties, please post feedback and provide resource files. We will add them according to the situation.**。 Avatar in the Animator component must be empty.**
 
-**         LayaAirRun使用须知：                1.必须安装Node环境，express拓展模块（工具内置了express，如果无法正常使用，请自行安装）；                2.场景中确保有一个照相机,自行调整照相机位置，角度，最终layaAir运行效果会与Unity运行结果保持一致。**
+**LayaAirRun instructions: 1. Node environment must be installed, express expansion module (tool built-in express, if not normal use, please install it); 2. Ensure that there is a camera in the scene, adjust the camera position, angle, and eventually layaAir will run in accordance with the results of Unity.**

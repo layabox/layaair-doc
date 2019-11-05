@@ -1,34 +1,31 @@
-# 用Geolocation获取地理位置信息
+#Geolocation for Geographic Location Information
 [TOC]
 
-## 地理位置
+##geographical position
 
- 如果设备支持Geolocation，并且所使用的浏览器支持，就可以使用Geolocation获取设备的当前地理位置。可以打开网页[http://caniuse.com/#search=geolocation](http://caniuse.com/#search=geolocation)查看有哪些浏览器版本支持Geolocation。显示Supported表示支持。
+If the device supports Geolocation and the browser supports it, you can use Geolocation to get the current location of the device. You can open a web page[http://caniuse.com/](http://caniuse.com/#search=geolocation)#[search=geolocation](http://caniuse.com/#search=geolocation)See which browser versions support Geolocation. Display Supported for support.
 
 ![1](img/1.png)
 
-​	Geolocation返回的GeolocationInfo，包含以下信息：
+The Geolocation Info returned by Geolocation contains the following information:
 
-- `latitude` —— 维度（度）。
-- `longitude` —— 经度（度）。
-- `altitude` —— 相对于海平面的海拔高度（米）。如果设备不提供海拔数据，`altitude` 的值为null。
-- `accuracy` —— 返回经纬度的精度，以米为单位。
-- `altitudeAccuracy` —— 返回海拔的精度，以米为单位。`altitudeAccuracy` 可能为`null`。
-- `heading` —— 返回设备的移动方向（角度），指示距离北方的角度。0度表示指向正北方，方向以顺时针旋转（这表示东方是90度，西方是270度）。如果`speed`是0，`heading`会是`NaN`。如果设备无法提供`heading`信息，值为`null`。
-- `speed` —— 返回设备每秒的移动速度（米）。`speed`可能为`null`。
-- `timestamp` —— 获取信息的时间戳。
+##-`latitude`—— Dimension (degree). `longitude`—— Longitude (degree).
+##-`altitude`——Altitude (m) relative to sea level. If the equipment does not provide elevation data,`altitude`The value is null. `accuracy`——Returns the precision of latitude and longitude in meters.
+##-`altitudeAccuracy`—— The accuracy of returning to elevation is measured in meters.`altitudeAccuracy`May be`null`。 `heading`—— Return the direction of movement (angle) of the device, indicating the angle from the north. 0 degrees means to point north and rotate clockwise (this means 90 degrees in the East and 270 degrees in the west). If`speed`It's 0.`heading`Would be`NaN`。 If the equipment is not available`heading`Information, value`null`。
+##-`speed`—— Returns the device's moving speed per second (m).`speed`May be`null`。 `timestamp`—— Timestamp for obtaining information.
 
-​	Geolocation静态属性值包含以下通用设置：
+Geolocation static attribute values contain the following general settings:
 
-- `enableHighAccuracy` —— 布尔值，如果设为true并且设备能够提供更精确地位置，则应用尽可能获取最佳结果。注意着可能导致更长的响应时间和更大的电量消耗（如开启了移动设备的GPS）。 
-- `timeout` —— 正整数，代表返回位置的最大时间（毫秒）限制。默认值是`Infinity`，意味着`getCurrentPosition()`直到位置可用时才会返回。
-- `maximumAge` —— 32位正整数，代表可返回的可用缓存位置的最大寿命。如果设置为0，意味着设备不使用缓存位置，始终尝试获取实时位置。如果设置为`Infinity`，设备必须返回缓存位置无论其寿命。默认值：0。
+##-`enableHighAccuracy`—— Boolean value, if set to true and the device can provide a more precise location, then the application can obtain the best results as far as possible. Note that it can lead to longer response times and greater power consumption (e.g., GPS on mobile devices). `timeout`—— Positive integer, representing the maximum time (milliseconds) limit for the return position. The default value is`Infinity`It means`getCurrentPosition()`It will not return until the location is available.
+-`maximumAge`——A 32-bit positive integer representing the maximum lifetime of available cache locations that can be returned. If set to 0, it means that the device does not use the cache location and always tries to get the real-time location. If set to`Infinity`The device must return to the cache location regardless of its lifetime. Default value: 0.
 
-### 1、获取当前定位
+###1. Acquiring Current Location
 
-使用静态方法`Geolocation.getCurrentPosition()`获取当前的位置，`getCurrentPosition()`只触发一次。
+Using static methods`Geolocation.getCurrentPosition()`Get the current location,`getCurrentPosition()`Trigger only once.
+
 
 ```java
+
 // 尝试获取当前位置
 Geolocation.getCurrentPosition(
 				Handler.create(this, onSuccess), 
@@ -64,13 +61,16 @@ function onError(err:Error):void
 }
 ```
 
-以上示例代码演示使用`getCurrentPosition()`获取当前的位置信息，成功时打印地理位置信息，失败时打印错误信息和错误原因。
 
-### 2、监视位置改变
+The above example code demonstrates the use of`getCurrentPosition()`Get the current location information, print the location information when successful, print the error information when failed and the cause of the error.
 
-​	除了获取当前位置之外，还可以监视位置的改变。使用`Geolocation.watchPosition()`监视位置改变，该函数返回一个监视器ID值，可以使用`Geolocation.clearWatch()`并传入该ID值来取消由`watchPosition()`注册的位置监听器。
+###2. Change of monitoring position
+
+In addition to obtaining the current location, you can also monitor the location change. Use`Geolocation.watchPosition()`Monitor location change, which returns a monitor ID value that can be used`Geolocation.clearWatch()`And pass in the ID value to cancel the`watchPosition()`Registered location listener.
+
 
 ```typescript
+
 // Geolocation.watchPosition函数签名
 Geolocation.watchPosition(
 	Handler.create(this, updatePosition),
@@ -79,4 +79,5 @@ function updatePosition(info:GeolocationInfo):void { }
 function onError(err:Error):void { }
 ```
 
-​	`watchPosition()`具有和`getCurrentPosition()`一样的函数签名。更多关于`watchPosition()`的应用，可以查看文档《使用百度地图显示当前位置》
+
+​`watchPosition()`Have and`getCurrentPosition()`The same function signature. More about`watchPosition()`Application, you can view the document "Use Baidu Map to Display the Current Location"

@@ -2,18 +2,22 @@
 
 ###### *version :2.1.0   Update:2019-5-25*
 
+
 ​	各向异性过滤 （Anisotropic Filtering ）是用来过滤、处理当视角变化导致3D物体表面倾斜时造成的纹理错误。
 
-这个属性越高效果越明显。还有就是不同的gpu可以接受的最高数值是不同的。下面两张截图是同个视角，不同的`anisoLevel`各向异性等级下的效果。
+The more efficient this attribute is, the more obvious it is. Also, the highest acceptable values for different GPUs are different. The following two screenshots are from the same perspective, different`anisoLevel`Effect under anisotropy level.
 
-![](img/1.png)<br>(图2) anisoLevel = 0
+! [] (IMG / 1. PNG) < br > (Figure 2) anisolevel = 0
 
-![](img/2.png)<br>(图2) anisoLevel =10
+![] (img/2.png) < br > (fig. 2) anisoLevel = 10
 
-设置代码：
+Setup code:
+
 
 ```typescript
+
 //设置各向异性等级
 texture.anisoLevel = 10;
 ```
+
 

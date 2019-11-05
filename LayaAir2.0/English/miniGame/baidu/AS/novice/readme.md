@@ -1,41 +1,45 @@
-# 创建第一个百度小游戏
+#Create the First Baidu Games
 
-> *author: charley      version: LayaAir 2.0      update：2018-10-27*
+>*Author: Charley version: LayaAir 2.0 update: 2018-10-27*
 
-### 一、准备好开发环境
+###I. Prepare the Development Environment
 
-#### 1、下载并安装LayaAirIDE集成开发环境
+####1. Download and install LayaAirIDE integrated development environment
 
-LayaAirIDE是LayaAir引擎的集成开发环境，集成了LayaAir引擎与示例项目，UI、动画等可视化编辑，项目代码编写与管理等开发工具。**在beta5以后的版本开发者可以直接采用LayaAirIDE创建和发布百度小游戏项目。**
+LayaAirIDE is an integrated development environment of LayaAir engine. It integrates LayaAir engine with sample projects, UI, animation and other visual editing tools, project code writing and management tools.**After beta 5, developers can directly use LayaAirIDE to create and publish Baidu mini-game projects.**
 
-**官网下载地址** ：[http://ldc2.layabox.com/layadownload/?type=layaairide](http://ldc2.layabox.com/layadownload/?type=layaairide)
+**Download Address on Official Website**:[http://ldc2.layabox.com/layadownload/?type=layaairide](http://ldc2.layabox.com/layadownload/?type=layaairide)
 
 
 
-#### 2、下载并安装百度开发者工具
+####2. Download and install Baidu developer tools
 
-百度开发者工具主要用于小游戏产品的预览与调试、真机测试、上传提交等。是小游戏开发的必备工具。
+Baidu developer tools are mainly used for small game products preview and debugging, real machine testing, upload submission and so on. It is a necessary tool for the development of small games.
 
-**开发工具下载地址**：
-[暂未开放，合作可以与我们商务联系获取]()
+**Development Tool Download Address**:
+[Not yet open, cooperation can be obtained with our business contacts] ()
 
 ![3](img/暂无截图.png)  
 
 
 
-#### 3、获得开发者ID(AppID)
 
-尽管没有AppID也可以开发调试，但是功能会受到限制。
 
-开发者ID暂未开放注册，如有需要联系我们商务合作。
+
+
+####3. Get the Developer ID (AppID)
+
+Although you can develop and debug without an AppID, the functionality is limited.
+
+Developer ID is not yet open for registration, if you need to contact us for business cooperation.
 
 ###
 
 ### 二、用LayaAirIDE创建和发布百度小游戏项目
 
-#### 1、用LayaAirIDE发布百度小游戏游戏示例
+####1. Publish Baidu Small Game Example with LayaAirIDE
 
-2.0已经不需要做适配操作，只需发布时候选择百度小游戏即可
+2.0 does not need to do adapting operation anymore, just choose Baidu mini-game when it is released.
 
 ![img](img/baidu.png)
 
@@ -43,42 +47,47 @@ LayaAirIDE是LayaAir引擎的集成开发环境，集成了LayaAir引擎与示�
 
 
 
-文件提取很关键，由于百度5M包体上传提交的限制。可以通过文件提取功能，只复制5M包内的文件到指定的百度小游戏项目目录此功能和微信小游戏一致。如下图所示。
+File extraction is critical because of the limitation of Baidu 5M package upload and submission. Through the file extraction function, only the files in 5m package can be copied to the designated Baidu game project directory. This function is consistent with wechat game. As shown in the figure below.
 
-> 包体限制，分包可达10M，相关内容其它文档中介绍。本篇仅针对新手快速熟悉了解小游戏发布流程。
+> Inclusion restriction, subcontracting up to 10M, related content is introduced in other documents. This article is only for novices to quickly familiarize themselves with the release process of small games.
 
 ![图：文件提取](img/2-4.png) 
-(图：文件提取功能，点击浏览后，可筛选只复制勾选的5M包文件)
 
-**Tips** ：
+(Figure: File extraction function, click browse, you can filter only copy the checked 5M package files)
 
-> 点击发布平台右侧的问号图标，可以查看各选项的详细介绍说明。
+**Tips**:
 
-配置好发布需要的内容后。最终点击发布。即可生成百度小游戏项目。
+> Click on the question mark icon on the right side of the publishing platform to see the detailed description of each option.
+
+After configuring the content needed for publishing. Finally click Publish. Can generate Baidu small game project.
 
 
 
-### 三、用百度开发者工具创建小游戏项目
+###3. Creating Small Game Project with Baidu Developer Tool
 
-#### 1、创建项目
+####1. Creating projects
 
-打开”百度开发者工具“，在弹出的面板里，点击左侧的加号创建，可以弹出小游戏项目创建的面板。
+Open the "Baidu Developer Tool" and click on the plus sign on the left side of the pop-up panel to create a small game project.
 
 ![img](img/baidu0.png) 
 
   ![img](img/baidu1.png)
 
-`项目目录`最好是选择刚刚通过提取功能复制的本地包目录。如果对这个功能还不是太熟悉。只是为了跑通流程，也可以临时选择LayaAirIDE刚刚发布小游戏的目录（通常在项目根目录下的release\bdgame）。
+`项目目录`It's better to select the local package directory that you just copied through the extract function. If you are not familiar with this function. Just to run through the process, you can also temporarily select the directory of the game that LayaAirIDE just released (release bdgame, usually in the project root directory).
 
-`AppID`输入百度开发ID即可（暂未开放注册，如有需要联系我们商务），不输入也可以开发调试点击小游戏体验，不过功能会受到限制。所以最好还是输入AppID。
+`AppID`You can enter Baidu Development ID (not yet open to registration, if you need to contact us for business), you can also develop and debug the click game experience without input, but the function will be limited. So it's better to enter AppID.
 
 
 
-#### 3、百度开发者工具的编译
+####3. Compilation of Baidu Developer Tools
 
-完成小游戏项目的创建后，即可在工具内预览效果和调试。
+After the creation of the small game project, you can preview the effect and debug in the tool.
 
 ![13](img/baidu2.png) 
+
+
+
+
 
 
 

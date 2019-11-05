@@ -1,79 +1,81 @@
 # F9！项目设置介绍
 
+
 > 本篇采用LayaAirIDE 2.0.1 bate 截图，如有不同，请下载最新的LayaAirIDE，以最新版本IDE为准。
 
-## 概述
+##Summary
 
-​    快捷键F9，是LayaIDE最常用，也最不可或缺的功能，熟悉Laya的开发者都知道F9的重要性，而这一点早在1.0就已经被开发者们所熟知，在2.0引擎中，想不使用F9是不可能的。然而很多刚接触Laya的开发者并不了解F9的功能，本篇就为大家介绍一下。（熟手可以忽略本篇）
-
-
+F9 is the most common and indispensable function of LayaIDE. Developers familiar with Laya know the importance of F9, which has been well known by developers since 1.0. It is impossible to use F9 in 2.0 engines. However, many developers who have just come into contact with Laya do not understand the functions of F9, so this article will introduce them to you. (You can ignore this passage if you are familiar with it.)
 
 
 
-### 一、预览设置
-
-​        项目设置的第一页为预览设置，这里主要设置起始场景（程序启动第一个加载的场景，选择当前场景就是在编辑器最后一次焦点所在的场景），以及其他设置，这个设置会影响IDE的自动生成类GameConfig,手动修改这个类无效，只能在IDE里设置。
-
-![](img/1.png)
 
 
+###Preview settings
 
-GameConfig如下图：
+The first page of the project settings is the preview settings, where the main settings are the start scenario (the program starts the first loading scenario, choosing the current scenario is where the editor's last focus is), and other settings. This settings will affect the automatic generation class GameConfig of IDE. Manual modification of this class is invalid and can only be set in IDE.
 
-![](img/7.png)
-
-对应的启动当前场景代码，在Main类中，开发者也可以根据自身需求不使用默认的启动设置。![](img/8.png)
+![] (img/1.png)
 
 
 
-### 二、类库设置
+GameConfig is shown below:
 
-​	 为了减小代码包体的大小，开发者可以只引入使用到的类库，没有用到的功能便不用再占用代码包的大小，
+![] (img/7.png)
 
-类库设置是非常常用的功能，在勾选Webgl库情况下，引擎初始化即为webgl模式，反之为canvas模式。
-
-其他的类库可根据实际需求自行取舍。如果没勾选类库却使用类库功能会报错。
+The corresponding start current scenario code. In the main class, developers can also not use the default start settings according to their own needs. ![] (img/8.png)
 
 
 
-![](img/2.png)
+###Class Library Settings
+
+In order to reduce the size of the code package, developers can only introduce the class libraries used, and the functions that are not used need not occupy the size of the code package.
+
+Class library setup is a very common function. In the case of checking Webgl library, engine initialization is webgl mode, and vice versa, canvas mode.
+
+Other class libraries can be chosen according to actual needs. If the class library is not checked but the class library function is used, an error will be reported.
 
 
 
-### 三、场景设置
-
-​     这里一般不需要动，主要就是发布模式，为了减少小游戏的代码包体大小，IDE统一默认是文件模式；
-
-四种模式的区别如下：
-
- **内嵌模式**：内嵌模式会把编辑器的UI内容生成一个场景类代码文件，代码脚本里包含IDE创建的UI场景的信息，在小游戏和轻游戏还没有问世的时候，不用考虑js 的大小，正常开发h5最常用的选择，而且不涉及异步加载打开页面速度也最快。
-
-**加载模式**： 加载模式也会生成场景类，其他的UI数据信息会放到一个ui.json内，使用时需要加载这个json，同样在没有小游戏的时代不常用，场景信息可以不在js中，可以节省js包体大小，给小游戏4m包节省更多空间。使用时可以作为资源加载。
-
-**分离模式**： 分离模式是在加载模式基础上，同样也会生成场景类，但他会把每个场景生成单独的场景数据文件，每次单独加载场景文件，区别于加载模式一次把所有场景都加载。在2.0以后，开发小游戏或轻游戏，为了减少主包大小和提升加载速度都是常用的模式。
-
-**文件模式**：文件模式是2.0特有的，为了开发小游戏而创建的，他不生成场景类，也就是能进一步减少js包的大小，使用的时候用Scene.load方式加载，区别于前三种最大的的不同就是，文件模式不能直接调用场景内的变量，需要getchild获取之后进行操作。前三种的场景类里声明了变量，有代码提示直接可以操作内部的变量。
+![] (img/2.png)
 
 
 
-##### 需要注意的是，在选择js 语言开发时， 分离模式和文件模式是没有区别的，都没有场景类。
+###3. Scene Settings
+
+In order to reduce the size of the code package of the game, the IDE uniformly defaults to file mode.
+
+The differences between the four models are as follows:
+
+
+ **Embedded Mode**: the embedded mode will generate a scene class code file from the UI content of the editor. The code script contains the UI scene information created by the IDE. When the mini game and light game have not come out yet, it is unnecessary to consider the size of JS. It is the most commonly used option for normal development of H5, and it does not involve the asynchronous loading and opening of the page.
+
+**Loading mode**Loading mode also generates scene classes, other UI data information will be placed in a ui.json, which needs to be loaded when using. Similarly, this JSON is not often used in the era of no small games. Scene information can not be in js, which can save the size of JS package and more space for 4m package of small games. When used, it can be loaded as a resource.
+
+**Separation mode**Separation mode is based on loading mode. It also generates scene class, but it generates a separate scene data file for each scene. It loads scene file individually each time, which is different from loading mode, which loads all scenarios at one time. After 2.0, the development of small games or light games, in order to reduce the size of the main package and improve the loading speed are commonly used mode.
+
+**File mode**File mode is unique to 2.0. It is created for the development of small games. It does not generate scene classes, that is to say, it can further reduce the size of JS packages. It is loaded in Scene. load mode. The biggest difference between the first three modes is that file mode can not directly call variables in the scene, and it needs getchild to get them and then operate. Variables are declared in the first three scenario classes, and code prompts allow you to manipulate internal variables directly.
 
 
 
-![](img/3.png)
+#####It should be noted that when choosing JS language development, there is no difference between separate mode and file mode, and there is no scene class.
 
 
 
-### 四、图集设置
-
-​    图集设置可以设置自动打包图集的各项规则，目录最好不要修改。
-
-![](img/4.png)
+! [] (IMG / 3. PNG)
 
 
 
-### 五、编辑设置
+###IV. Atlas Setting
 
-​       如图，这个不做过多介绍
+Atlas settings can set rules for automatically packaging atlases, and catalogues are best left unchanged.
 
-![](img/5.png)
+! [] (IMG / 4. PNG)
+
+
+
+###Editorial settings
+
+As shown in the figure, this is not introduced too much.
+
+![] (img/5.png)

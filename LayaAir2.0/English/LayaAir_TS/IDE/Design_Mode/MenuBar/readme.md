@@ -1,164 +1,154 @@
-# 菜单栏介绍
+#Introduction to menu bar
+
+The menu bar is located at the top of the interface, which contains the control information of the IDE. Friends who are not familiar with the interface can quickly find the functions that need to be operated in the menu bar. Next, we will introduce the menu bar in detail.
+
+​![blob.png](img/1.png)<br/>
+(Fig. 1)
+
+
 
  
 
-​        菜单栏 位于界面最上方，包含了整个IDE的控制信息，对界面不熟悉的朋友可以快速的在菜单栏中找到需要进行操作的功能。下面我们将对菜单栏的进行详细介绍。
-
-​   ![blob.png](img/1.png)<br/>
-​        	（图1）
-
- 
-
-### 一、文件      
-
-​   ![blob.png](img/2.png)<br/>
-​        	（图2）
-
-- 新建项目： 通过新建项目选项窗口来创建一个新的项目。
-
-- 新建文件： 通过新建页面窗口来创建一个新的编辑页面，快捷键 Ctrl+N。
-
-- 新建目录： 在项目中创建一个新的页面文件夹，快捷键 Ctrl+D。
-
-- 打开项目： 通过资源管理器来浏览并打开一个项目，快捷键 Ctrl+D。
-
-- 转换项目： 在转换项目窗口中，可以选择MornUI项目，将其转换为LayaAir项目。
-
-- 设置项目： 设置项目的配置文件，快捷键 F9。
-
-- 设置页面： 设置页面的默认属性，快捷键 Ctrl+P。
-
-- 刷新编辑器：可以刷新编辑器的状态，相当于复位或重启编辑器。 
-
-  ​
 
 
-### 二、编辑
+###I. documents
 
-​  ![图片1.png](img/3.png)<br/>
-​        	（图3）
+​![blob.png](img/2.png)<br/>
+(Figure 2)
 
-- 撤销： 撤销当前操作，返回上一步操作，快捷键 Ctrl+Z。
+- New project: Create a new project by creating a new project options window.
 
-- 重做： 当撤销过多时，可以恢复撤销的操作，快捷键 Ctrl+Y。 
+- New File: Create a new edit page by creating a new page window. Keyboard shortcut Ctrl + N.
 
-- 删除： 删除选中的资源或控件，快捷键 Delete。
+- New directory: Create a new page folder in the project, shortcut key Ctrl + D.
 
-- 复制： 复制当前选中的资源或控件，快捷键 Ctrl+C。
+- Open Project: Browse through Resource Manager and open a project, shortcut key Ctrl + D.
 
-- 粘贴： 对已经复制的资源或控件进行粘贴操作，快捷键 Ctrl+V。
+- Conversion project: In the conversion project window, you can select the MornUI project and convert it to the LayaAir project.
 
-- 原位粘贴：在控件原有位置复制粘贴选中控件，快捷键 Ctrl+Shift+V。
+- Set up the project: Set up the project configuration file, shortcut F9.
 
-- 剪切：剪切选中控件或资源，快捷键 Ctrl+X。
+- Setting Page: Set the default properties of the page, shortcut key Ctrl + P.
 
-- 全选：选中全部控件，快捷键 Ctrl+A。
+- Refresh Editor: The status of the editor can be refreshed, equivalent to resetting or restarting the editor.
 
-- 快速移动：将选中的控件快速向方向键位置移动10像素，快捷键 Shift+方向键。
+​
 
-- 转为容器：将选中的控件转为容器，可以在转换框中选择具体转的容器类型，快捷键 Ctrl+B。
 
-- 移除容器：将选中容器移除容器类型转为普通控件，快捷键 Ctrl+U。
+###Two, editors
 
-- 重复复制：在弹出的重复组件中设置要多次复制的行数列数以及间距，快捷键 Ctrl+R。
+​![图片1.png](img/3.png)<br/>
+(Figure 3)
 
-- 定位资源：快速定位资源在资源管理器中的位置，快捷键 Ctrl+K。
+- Undo: Undo the current operation, return to the previous step, shortcut key Ctrl + Z.
 
-- 查找替换：弹出替换窗口，可将查找到的位置替换成别的内容，快捷键 Ctrl+F。
+- Redo: When Undo is too much, you can resume the undo operation, shortcut key Ctrl + Y.
 
-- 保存文件：保存文件更改，快捷键 Ctrl+S。
+- Delete: Delete the selected resource or control with the shortcut key Delete.
 
-- 保存所有文件：保存所有文件更改，快捷键 Ctrl+Shift+S。
+- Copy: Copy the currently selected resource or control, shortcut key Ctrl + C.
 
-  ​
+- Paste: Paste the copied resources or controls. Keyboard Ctrl + V.
+
+- In-situ pasting: Copy and paste the selected control in the original position of the control, and the shortcut key Ctrl+Shift+V.
+
+- Cut: Cut the selected control or resource, and click Ctrl + X.
+
+- Selection: Select all controls, shortcut key Ctrl + A.
+
+- Fast Move: Move the selected control 10 pixels to the direction key position quickly, and the shortcut key Shift + direction key.
+
+- Convert to Container: Convert the selected control to Container, you can select the specific type of container in the Conversion Box, shortcut key Ctrl + B.
+
+- Remove Container: Change the selected container type to a normal control, and the shortcut key Ctrl + U.
+
+- Duplicate replication: Set the number and spacing of rows and columns to be replicated multiple times in the pop-up duplicate component, and the shortcut key Ctrl+R.
+
+- Locate resources: Quickly locate the location of resources in resource manager, shortcut key Ctrl + K.
+
+- Find Replacement: Pop up the Replacement Window to replace the location found with something else. Keyboard shortcut Ctrl + F.
+
+- Save files: Save file changes, shortcut key Ctrl + S.
+
+- Save all files: Save all file changes, shortcut key Ctrl + Shift + S.
+
+​
 
 
 
-### 三、视图
+###Three, view
 
-​   ![图片1.png](img/4.png)<br/>
-​             （图4）
-- 放大视图：放大场景编辑器，快捷键 Ctrl++。
+​![图片1.png](img/4.png)<br/>
+##(Figure 4)Zoom in view: zoom in scene editor, shortcut key Ctrl++.
 
-- 缩小视图：缩小场景编辑器，快捷键 Ctrl+-。
+- Narrow View: Narrow Scene Editor, shortcut key Ctrl+-.
 
-- 恢复视图：恢复场景编辑器至原始大小，快捷键 Ctrl+0 （或Ctrl+|）。
+- Restore View: Restore Scene Editor to original size, shortcut key Ctrl + 0 (or Ctrl + |).
 
-- 拖动视图：按住鼠标右键（或鼠标滚轮）拖动视图位置。
+- Drag View: Hold down the right mouse button (or mouse wheel) to drag the view position.
 
-- 显示/隐藏参考视图：设置在场景编辑器中显示/隐藏视图。
+-Show / hide reference view: set to show / hide the view in the scene editor.
 
-- 显示/隐藏标尺：设置在场景编辑器中显示/隐藏标尺，快捷键 Ctrl+Shift+R。
+- Display/Hide Scale: Set up Display/Hide Scale in Scene Editor, shortcut key Ctrl+Shift+R.
 
-- 节点向上：控制选中的控件在层级管理器中的层级位置向上移动一位，快捷键 Ctrl+↑。
+- Node Up: Controls the selected control to move one bit upward in the hierarchical position of the hierarchical manager, and the shortcut key Ctrl+.
 
-- 节点向下：控制选中的控件在层级管理器中的层级位置向下移动一位，快捷键 Ctrl+↓。
+- Node Down: Control the selected control to move one bit downward in the hierarchical position of the hierarchical manager, and the shortcut key Ctrl+.
 
-  ​
-
-
-### 四、工具
-
-​   ![blob.png](img/5.png)<br/>
-​        	（图5）
+​
 
 
+###Four. Tools
 
-- SWF转换：打开SWF资源转化工具窗口，以供用户进行SWF转换操作。
-- JS压缩：打开JS压缩工具窗口，以供用户将JS文件进行压缩和混淆。
-- 转换为TPG：只在QQ浏览器的少数情况下可以用，并且域名要和腾讯备案才可以。
-- 纹理图片转换：（vip专属功能）压缩纹理，安卓不能压缩png。
-- 文本文件打包：（vip专属功能）把多个内容为json格式的文件合并为一个文件。
-- 二进制文件打包：（vip专属功能）把多个二进制文件合并为一个。
-- 龙骨动画转换：打开龙骨动画转换窗口，以供用户将DragonBones骨骼动画转换为LayaAir识别的格式。
-- Spine动画转换：打开Spine动画转换窗口，以供用户将Spine骨骼动画转换为LayaAir识别的格式。
-- 图集打包：打开图集打包窗口，以供用户进行图集打包操作。
-- Psd2UI：把Ps按一定规则制作的psd文件转换成laya使用的ui文件。
-- 图集打包：把多个小图打包成一个大图集。
-- 运行器下载：打开运行器下载的二维码窗口，以供用户扫码下载LayaNative的运行器。
-- APP构建：打开构建功能窗口，以供用户将LayaAir引擎项目构建为Android-eclipse、Android-studio、XCode(IOS)三种移动端的APP项目工程。
-- 微信web开发工具：微信小游戏的IDE下载。
+​![blob.png](img/5.png)<br/>
+(Fig. 5)
+
+
+
+##- SWF Conversion: Open the SWF Resource Conversion Tool window for users to perform SWF conversion operations.JS Compression: Open the JS Compression Tool window for users to compress and confuse JS files.
+##- Convert to TPG: Only in a few cases of QQ browser can be used, and the domain name and Tencent can be filed.Texture image conversion: (vip exclusive function) compress texture, Android can not compress png.
+##- Text file packaging: (vip exclusive function) merge multiple files in JSON format into one file.Binary file packaging: (vip exclusive function) merge multiple binary files into one.
+##- Dragon Bones Animation Conversion: Open the Dragon Bones Animation Conversion Window for users to convert Dragon Bones skeleton animation into LayaAir recognition format.Spine Animation Conversion: Open the Spine Animation Conversion Window for users to convert Spine skeleton animation into LayaAir recognition format.
+##- Atlas Packaging: Open the Atlas Packaging Window for users to do Atlas Packaging.Psd2UI: Convert the PSD files made by Ps according to certain rules into UI files used by laya.
+##- Atlas Packing: Packing multiple small maps into a large atlas.Runner download: Open the two-dimensional code window downloaded by the runner for users to download LayaNative's runner.
+##- APP Construction: Open the building function window for users to build the LayaAir Engine project into three mobile-end APP project projects: Android-eclipse, Android-studio and XCode (IOS).Wechat Web Development Tool: IDE download of Wechat games.
 
 
 ​
 
-### 五、导出
+###Five. Export
 
-​  ![blob.png](img/7.png) <br/>
-​        	（图7）
+​![blob.png](img/7.png)<br/>
+(Figure 7)
 
-- 导出：将做好的界面打包导出，如果资源文件夹未产生变化则跳过该文件夹只对已变化文件夹进行打包并导出，快捷键 F12。
+- Export: Package and export the completed interface. If the resource folder does not change, skip the folder and only package and export the changed folder. Keyboard F12.
 
-- 清理并导出：强制清理之前已经打包过的资源文件，对所有文件进行重新打包并导出，快捷键 Ctrl+F12。
+- Clean up and export: Force clean up the resource files that have been packaged before, repackage and export all files, shortcut key Ctrl + F12.
 
-- 导出代码（不导出资源）：当资源没有产生变化，只是UI位置、属性等产生变化时，使用该功能，仅重新导出UI代码，不会重新导出资源，会加快UI项目的导出效率。
+- Export code (not resources): When resources do not change, but UI location, attributes and other changes, using this function, only re-export UI code, not re-export resources, will speed up the export efficiency of UI projects.
 
-- 发布（不打包未使用资源）：与F12功能相近，但是只会对已经使用的资源进行打包并导出，不对未使用的资源进行操作。使用该功能因为需要遍历全部资源的使用状态，会导致UI项目的导出速度减慢，所以不建议开发的时候使用，仅在发布项目线上版本的时候使用即可。
+- Publishing (not packaging unused resources): It's similar to F12, but it only packages and exports used resources, and does not operate on unused resources. Using this function will slow down the exporting speed of UI projects because it needs to traverse the usage status of all resources. Therefore, it is not recommended to use it when developing, but only when publishing online versions of projects.
 
-- 导出语言包：该功能可以提取当前LayaAirIDE所有的UI文本内容生成lang.lang文件，用以设置多语言版本。
+- Export Language Pack: This function can extract all UI text content of the current LayaAirIDE and generate lang. Lang files for setting up multilingual versions.
 
-- 刷新资源及页面：刷新并重新显示资源及页面，一般在产生资源变动的情况下用来刷新所有。
+- Refresh resources and pages: Refresh and re-display resources and pages, usually in the case of resource changes to refresh all.
 
-- 刷新页面：对页面进行刷新并重新显示页面。
+- Refresh Page: Refresh the page and re-display the page.
 
-- 刷新资源：刷新资源管理器，重新显示资源管理器对资源的引用。
+- Refresh Resources: Refresh Resource Manager, re-display resource manager's reference to resources.
 
-- 查找未被使用的资源：查找项目中未被使用的资源，并整理成列表，方便快速删除不用的资源，快捷键 F4。
+- Find unused resources: Find unused resources in the project and organize them into a list to facilitate the rapid deletion of unused resources, shortcut key F4.
 
-  ​
+​
 
 
-### 六、帮助
+###Six, help
 
-​  ![blob.png](img/8.png)<br/>
-​        	（图8）
+​![blob.png](img/8.png)<br/>
+(Figure 8)
 
-- 开发人员工具：用于打开编辑器的调试页面。
-- 官网： 打开Layabox官网链接。
-- 官网示例：打开官网的LayaAir引擎示例链接。
-- 开发者中心：打开Layabox开发者中心链接。
-- 打开编辑器本地缓存：打开编辑器的本地缓存文件所在目录。
-- 检查更新：打开LayaAirIDE的版本下载列表链接。
-- 更新日志：打开gitHub中的引擎与IDE版本更新日志链接。
-- 当前版本号：显示LayaAirIDE当前的版本号。
+##- Developer Tools: Used to open debugging pages of the editor.Official website: Open the Layabox official website link.
+##- Official Web Example: Open the LayaAir Engine Example Link for Official Web.Developer Center: Open the Layabox Developer Center link.
+##- Open Editor Local Cache: Open the directory where the editor's local cached files are located.Check for updates: Open the link to the LayaAirIDE version download list.
+##- Update Log: Open the link between the engine in gitHub and the IDE version update log.Current version number: Displays the current version number of LayaAirIDE.
 

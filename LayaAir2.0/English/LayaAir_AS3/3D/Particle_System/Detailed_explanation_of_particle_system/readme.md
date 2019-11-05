@@ -1,179 +1,178 @@
-# 粒子属性详解
+#Detailed explanation of particle properties
 
 ###### *version :2.1.1beta   Update:2019-8-2*
 
-![](img/1.png)<br>(图1)
+![] (img/1.png)<br> (Figure 1)
 
-关于粒子系统详细的使用方法可以去查看[Unity官方文档](https://docs.unity3d.com/Manual/PartSysReference.html)。这里只简单介绍LayaAir导出工具支持导出的部分。
+Detailed usage of particle system can be checked[Unity官方文档](https://docs.unity3d.com/Manual/PartSysReference.html)。 Here is a brief introduction to the part of the LayaAir export tool that supports exports.
 
-**注意:** 如果导出时有不支持的部分，导出后有可能会出现不可预知的错误。
+**Be careful:**If there are unsupported parts in the export, unpredictable errors may occur after the export.
 
-------
+---
 
-**基础面板**
+**Foundation panel**
 
-1. `Duration` 粒子持续时间
-2. `Looping` 是否循环
-3. `Startdelay` 粒子开始延迟
-   1. *Constant*  常数
-   2. *Random Between two Constant*  最大最小常数 
-4. `StartLifetime` 粒子生命
-   1. *Constant*  常数
-   2. *Random Between two Constant* 随机在最大最小数中取常数
-5. `StartSpeed` 粒子速度
-   1. *Constant*  常数 
-   2. *Random Between two Constant* 随机在最大最小数中取常数
-6. `StartSize` 开始大小
-   1. *Constant* 常数
-   2. *Random Between two Constant* 随机在最大最小数中取常数 
-7. `3DStartSize` 3D开始大小
-   1. *Constant*  常数
-   2. *Random Between two Constant* 随机在最大最小数中取常数
-8. `StartRotation` 开始旋转 
-   1. *Constant*  常数
-9. `3DRotaion` 3D 旋转参数
-   1. *Constant*  常数 
-   2. *Random Between two Constant*  随机在最大最小数中取常数
-10. `RandomizeRotation` 随机旋转的概率 
-11. `StartColor`开始颜色
-    1. *Color*  常数颜色
-    2. *random Between two Color*  随机在两个颜色中取值
-12. `GravityModifier` 重力修正
-13. `Simulation Space` 模拟空间
-    1. *local*  模型
-    2. *Hierarchy*  世界 
-14. `ScalingMode` 缩放模式
-    1. *Hierarchy*  层级缩放
-    2. *local*  自身缩放
-15. `Play On Awake` 开始时播放
-16. `Max Partticles` 最大粒子数
-17. `AutoRandomSeed` 自由旋转速度
+One`Duration`Particle duration
+Two`Looping`Whether to circulate
+Three`Startdelay`Particle start delay
+1. * Constant* constant
+2. Random between two constant
+Four`StartLifetime`Particle life
+1. Constant
+2. * Random Between Two Constants * Random from the Maximum to the Minimum
+Five`StartSpeed`Particle velocity
+1. * Constant* constant
+2. * random between two constant *
+Six`StartSize`Start size
+1. Constant
+2. * Random Between Two Constants * Random from the Maximum to the Minimum
+Seven`3DStartSize`3D Start Size
+1. * Constant* constant
+2. * Random Between Two Constants * Random from the Maximum to the Minimum
+Eight`StartRotation`Start spinning
+1. * Constant* constant
+Nine`3DRotaion`3D Rotation Parameters
+1. Constant
+2. * Random Between Two Constants * Random from the Maximum to the Minimum
+Ten`RandomizeRotation`Probability of Random Rotation
+Eleven`StartColor`Start color
+1. * Color* Constant Colors
+2. Random between two colors
+Twelve`GravityModifier`Gravity correction
+Thirteen`Simulation Space`Simulation space
+1. * local * model
+2. * Hierarchy * World
+Fourteen`ScalingMode`Zoom mode
+1. * Hierarchy * Hierarchy * hierarchical scaling
+2. * local * self-scaling
+Fifteen`Play On Awake`Play at start
+Sixteen`Max Partticles`Maximum number of particles
+Seventeen`AutoRandomSeed`Free rotation speed
 
-------
+---
 
-**Emission** 发射模块
+**Emission**Transmitting module
 
-`Rate over Time` 发射粒子数
+`Rate over Time`Number of emitted particles
 
-`Bursts` 发射粒子数
+`Bursts`Number of emitted particles
 
-------
+---
 
-**Shape** 形状模块
+**Shape**Shape module
 
-该模块定义粒子发射器的体积和形状。
+The module defines the size and shape of the particle launcher.
 
-1. `Sphere` 球
-      1. *Radius*  半径
-      2. *Emit from shell*  根据壳发射
-      3. *Randomize Direction*  随机化方向
-2. `Hemisphere` 半球形状
-      1. *Radius* 半径 
-      2. *Emit from shell* 根据壳发射
-      3. *Randomize Direction* 随机化方向
-3. `cone` 锥形
-   1. *Angle*  角度
-   2. *Radius*  半径
-   3. *Emit from*  发射
-   4. *Base*  基础 
-         1. *Base Shell*  基于壳
-         2. *Volume*  体积
-         3. *Volume Shell*  体积壳 
-   5. *Randomize Direction*  随机化方向 
-4. `Box` 盒子形
-      1. *BoxX*  盒子X 
-      2. *BoxY*  盒子Y
-      3. *BoxZ*  盒子Z	
-      4. *Emitform*  发射
-            1. *volume*
-      5. *Randomize Direction*  随机化方向
-5. `circle` 环形
-      1.   *Radius*  半径
-      2.   *Arc*  角度
-      3.   *Emit From Edge*  基于边缘发射
-      4.   *Randomize Direction*  随机化方向
+One`Sphere`The Ball
+1. * Radius* radius
+2. * Emit from shell * emitted from shell
+3. * Randomize Direction * Randomize Direction * Randomization Direction
+Two`Hemisphere`Hemispherical shape
+1. * Radius* radius
+2. * Emit from shell * emitted from shell
+3. * Randomize Direction * Randomize Direction * Randomization Direction
+Three`cone`cone
+1. * Angle*Angle*Angle
+2. * Radius* radius
+3. * Emit from * Launch
+4. * Base*Foundation
+1. * Base Shell* shell-based
+2. * Volume * Volume * Volume
+3. * Volume Shell * Volume Shell * Volume Shell
+5. * Randomize Direction * Randomize Direction * Randomization Direction
+Four`Box`Box shape
+1. * Box X * Box X
+2. * BoxY * Box Y
+3. * BoxZ * Box Z
+4. * Emitform * Launch
+One*Volume*
+5. * Randomize Direction * Randomize Direction * Randomization Direction
+Five`circle`Annular
+1. * Radius* radius
+2. * Arc* Angle
+3. * emit from edge *
+4. * Randomize Direction * Randomize Direction * Randomization Direction
 
-------
+---
 
-**Velocity over Lifetime**  基于生命的速度变化
+**Velocity over Lifetime**Speed change based on life
 
-1. 
-   
-   1.   *Constant*  常数模式，速度是恒定的
-   2.   *Curve*  线模式，粒子速度随着 lifetime 动
-   3.   *Random from two Constant*  随机速度模式
-2. `Space` 空间
-   1.  *Local*  模型空间
-   2.  *World*  世界空间
+One
+1. * Constant * Constant * Constant * Constant mode. Velocity is constant.
+2. * Curve * line mode, particle velocity moves with lifetime
+3. * Random from two Constant* Random velocity model
+Two`Space`space
+1. * Local* Model Space
+2. * World* World Space
 
-------
+---
 
-**Color over Lifetime** 基于生命的颜色变化
+**Color over lifetime**Life-based color change
 
-1. `Color` 颜色
-   1.  *Gradient*  梯度
-   2.  *Random between two Gradient*  在两个梯度中随机取值
+One`Color`colour
+1. * Gradient * Gradient * Gradient
+2. Random between two gradients
 
-------
+---
 
-**Size over Lifetime** 基于生命的大小变化
+**Size over Lifetime**Change in size based on life
 
-1.  `Separate Axes`按轴分离
-   1.  *size*  大小
-      1.  *Curve*  曲线
-      2.  *Random Between Two Contants*  在两个常数中随机取值
-2. `Separate Axes` 缩放轴选中
-   1.   *size*   大小
-      1.   *Curve*  曲线
-      2.   *Random Between Two Contants*  在两个常数中随机取值
+One`Separate Axes`Axis separation
+1. * size*size*
+1. Curve
+2. * Random Between Two Contants* Random values in two constants
+Two`Separate Axes`Scale axis selected
+1. * size*size*
+1. * Curve* curve
+2. * Random Between Two Contants* Random values in two constants
 
-------
+---
 
-**Texture Sheet Animation** 图片动画
+**Texture Sheet Animation**Picture animation
 
-1. `Tiles` 平铺
-2. `Animation` 动画
-   1.   *Single Row*  单行
-   2.   *whole Sheet*  整表
-3. `Random Row` 随机行
-4. `Frame over Time` 动画帧随时间变化
-   1.  *contants* 常数
-   2.  *curves*  曲线
-   3.  *Random Between Two Contants*  在两个常数中随机取值
-5. `Start Frame` 开始帧数
-   1.   *Contant*
-   2.   *Random Between Two Contants* 在两个常数中随机取值
-6. `Cycles` 周期
-7. `Flip U` 翻转U
-8. `Flip V` 翻转V
+One`Tiles`Tiling
+Two`Animation`animation
+1. * Single Row * single line
+2. * whole Sheet * whole table
+Three`Random Row`Random row
+Four`Frame over Time`Animation frame changes with time
+1. * contants * constant
+2. Curves
+3. * Random Between Two Contants* Random values in two constants
+Five`Start Frame`Starting frames
+One*Contant*
+2. * random between two contains * random values in two constants
+Six`Cycles`cycle
+Seven`Flip U`Flip U
+Eight`Flip V`Flip V
 
-------
+---
 
-**Rotation over Lifetime** 基于生命的旋转变化
+**Rotation over Lifetime**Rotating Change Based on Life
 
-1. `Separate Axes` 按轴分离未选中 
-   1. *Angular Velocity*  角速度 
-   2. *Constant*  常数 
-   3. *Curve*  曲线 
-   4. *Random Between Two Contants*  在两个常数中随机取值
-
+One`Separate Axes`Axis Separation Unselected
+1. * Angular Velocity*Angular Velocity*
+2. * Constant* constant
+3. * Curve* curve
+4. * Random Between Two Contants* Random values in two constants
 
 
-------
 
-**Render** 渲染模式
+---
 
-这个模式按渲染模式支持
+**Render**Render Mode
 
-1. `RenderMode` 渲染模式
-   1.  *Billboard*  粒子总是面向相机
-   2.  *Stretched Billboard*
-      1.   *Camera Scale*  相机比例
-      2.   *Velocity Scale*  速度比例
-      3.   *Length Scale*   长度比例
-   3.   *Horizontal Billboard*   粒子平面平行于XZ“底”平面
-   4.   *Vertical Billboard*  粒子在Y轴上是直立的，但是面向相机
-   5.   *Mesh*  粒子是从3D网格而不是纹理渲染的。
-      - (支持) 但是如果有面数特别大的模型，会报错，报错原因是index超出65536
-2. `Sorting Fudge` 数值越小渲染优先级越大
+This mode is supported by rendering mode
+
+One`RenderMode`Render Mode
+1. * Billboard * particles are always camera-oriented
+Two*Stretched Billboard*
+1. * Camera Scale* Camera Ratio
+2. * Velocity Scale * Speed Ratio
+3. * Length Scale* Length Ratio
+3. * Horizontal Billboard* particle plane parallel to the XZ "bottom" plane
+4. * Vertical Billboard* particles are upright on the Y axis, but facing the camera
+5. * Mesh* particles are rendered from 3D meshes rather than textures.
+- (Support) But if you have a model with a very large area, you will report an error because index exceeds 65536.
+Two`Sorting Fudge`The smaller the number, the higher the rendering priority.
 

@@ -1,58 +1,69 @@
-# List 组件参考
+#List Component Reference
 
 
 
-##  一、通过LayaAirIDE创建List组件
+##1. Creating List Components through LayaAirIDE
 
-​        List 组件可显示项目列表。默认为垂直方向列表。可通过UI编辑器自定义列表。List 列表的每一个列表通常是一样的，也可以使用编辑器自定义不同样式的列表内容项。
-​        List 通常由两个部分组成：列表渲染项（单元格）、滚动条。
-​        List 组件的脚本接口请参考 [List API](http://layaair.ldc.layabox.com/api/index.html?category=Core&class=laya.ui.List)。
+The List component displays a list of items. The default is a vertical list. You can customize the list through the UI editor. Each list in a List list is usually the same, or you can customize different types of list content items using an editor.
+Lists usually consist of two parts: list rendering items (cells) and scrollbars.
+Refer to the script interface for List components[List API](http://layaair.ldc.layabox.com/api/index.html?category=Core&class=laya.ui.List)。
+
+
 
  
 
-### 1.1 创建 List 组件
-
-#### 1.编辑列表项。
-
-​	列表项可以是 Box 对象或 View（页面） 或其它自定义页面对象。此处以Box 对象为例。
-​	**a.**从资源面板里选择拖入一个 Label 组件，到编辑区的界面里，设置 Label 属性 name 的值为 m_label。另外再设置一下 Label 的显示相关属性使它更好看一些。
-​	**b.**选中 Label 对象，使用快捷键 Ctrl +B 或选择 **菜单栏->编辑->转换为容器** 选项，打开转换为容器设置面板，选择容器类型为 Box ，点击确定按钮完成 Box 容器的添加。 
-
-​        ![图片0.png](img/1.png)<br/>
-​    （图1）
 
 
- ####2. 转化为 List 容器。
+###1.1 Create List Components
 
-   选择列表渲染项对象，使用快捷键 Ctrl +B 或选择 **菜单栏->编辑->转换为容器** 选项，打开转换为容器设置面板，选择容器类型为 List，点击确定按钮完成容器 List 的添加。 
+####1. Edit list items.
+
+List items can be Box objects or Views (pages) or other custom page objects. Take the Box object as an example.
+​**A.**Select and drag a Label component from the resource panel to the interface of the editing area. Set the value of the Label attribute name to m_label. In addition, set Label's display-related properties to make it look better.
+​**B.**Select the Label object, use the shortcut key Ctrl + B or select**Menu Bar - > Edit - > Convert to Container**Options, open the Conversion to Container Settings panel, select the container type as Box, and click the OK button to complete the addition of Box containers.
+
+​![图片0.png](img/1.png)<br/>
+(Fig. 1)
+
+
+
+
+
+ ####2. Convert to a List container.
+
+Select the list rendering item object, use the shortcut key Ctrl + B or select**Menu Bar - > Edit - > Convert to Container**Option, open the convert to container settings panel, select the container type as list, and click OK to finish adding the container list.
+
    ​        ![图片0.png](img/2.png)<br/>
-​       （图2）
-####3. 指定 List 的列表渲染项。
-  方法1： 双击List 对象，进入List 内部，设置List 列表渲染项的属性 name 的值为 render。 **注意：此处列表渲染项属性 name 的值必须为 render。**
+(Figure 2)
+####3. Specify the list rendering entry for the List.
+Method 1: Double-click the List object and enter the List. Set the value of the attribute name of the List rendering item to render.**Note: The value of the list render item attribute name here must be render.**
 
-  方法2：双击List 对象，进入List 内部，设置List 列表渲染项的属性 renderType的值为 render。
+Method 2: Double-click the List object and enter the List. Set the renderType value of the renderType attribute of the List rendering item to render.
 
 
-​           ![图片0.png](img/3.png)<br/>
-   ​    （图3）
+​![图片0.png](img/3.png)<br/>
+(Figure 3)
 
-####4. 为 List 添加滚动条组件。
-  方法1： 从资源面板里选择并拖拽一个 VScrollBar 组件到 List 组件的内部，并设置 VScrollBar 组件对象的属性 name 的值为 scrollBar。  ***注意：此处滚动条的属性 name 的值必须为 scrollBar。***
+####4. Add a scrollbar component to the List.
+Method 1: Select and drag a VScrollBar component from the resource panel to the inside of the List component, and set the value of the attribute name of the VScrollBar component object to scrollBar.***Note: the value of the property name of the scroll bar here must be scrollbar.***
 
-  方法2：选择list组件，右侧属性面板常用中会出现vScrollBarrSkin，从资源面板里选择并拖拽一个VScrollBarr组件到这个skin属性中，会立即生成滚动条
+Method 2: Select list component, vScrollBarrSkin will appear in the right attribute panel. Selecting and dragging a VScrollBarr component from the resource panel into the skin attribute will immediately generate a scrollbar.
 
-​        ![图片0.png](img/4.png)<br/>
-​    （图4）
+​![图片0.png](img/4.png)<br/>
+(Figure 4)
 
-####5. 拖动设置 List 的宽高
-​	设置属性 repeatX 的值为 1，设置 repeatY 的值为6。设置 List 对象的全局引用名，即设置属性 var 的值为 m_list。
+####5. Drag to set the width and height of the list
+Set the value of repeatX to 1 and repeatY to 6. Set the global reference name of the List object, that is, set the value of the property VaR to m_list.
+
    ​        ![图片0.png](img/5.png)<br/>
-   ​    （图5）
+(Fig. 5)
 
-####6. 在代码里给 List 对象赋值。
+####6. Apply values to List objects in the code.
+
 
 
 ```javascript
+
   var data: Array<string> = [];
 
    for(var m:number =0;m<20;m++){
@@ -63,62 +74,72 @@ m_list.array = data;
 ```
 
 
-####7. 在程序里运行查看效果。
-   ​        ![图片0.gif](gif/1.gif)<br/>
-​       （图6）
 
-####8. 在代码里添加脚本，隐藏滚动条，设置拖拽的橡皮筋效果。
+####7. Run the program to see the effect.
+
+   ​        ![图片0.gif](gif/1.gif)<br/>
+
+(Fig. 6)
+
+####8. Add scripts to the code, hide scrollbars, and set drag-and-drop rubber band effects.
+
 ```javascript
+
  m_list.scrollBar.hide = true;//隐藏列表的滚动条。
  m_list.scrollBar.elasticBackTime = 200;//设置橡皮筋回弹时间。单位为毫秒。
  m_list.scrollBar.elasticDistance = 50;//设置橡皮筋极限距离。
 ```
 
-####9. 在程序里运行查看效果。
-   ​        ![图片0.gif](gif/1.gif)<br/>
-   ​    （图7）
+
+####9. Run the program to see the effect.
+​![图片0.gif](gif/1.gif)<br/>
+(Figure 7)
 
 
-### 1.2 List 组件常用属性
+###1.2 Common attributes of List components
 
-​        ![图片0.png](img/6.png)<br/>
-​    （图8）
+​![图片0.png](img/6.png)<br/>
+(Figure 8)
+
+A kind of**attribute**A kind of**Function description**A kind of
+| ----------------------------------------------------------------------------------------------------------------------------------------------------|
+| repeatX | Number of cells displayed horizontally. A kind of
+| repeatY | Number of cells displayed vertically. A kind of
+| SpaceX | Spacing between cells displayed horizontally (in pixels). A kind of
+|Spacey | the space in pixels between cells displayed vertically. A kind of
+| vScrollBarSkin | Vertical scroll bar skin. A kind of
+| hScrollBarSkin | Horizontal scroll bar skin. A kind of
+
+
 
   
 
-| **属性**         | **功能说明**                 |
-| -------------- | ------------------------ |
-| repeatX        | 水平方向显示的单元格数量。            |
-| repeatY        | 垂直方向显示的单元格数量。            |
-| spaceX         | 水平方向显示的单元格之间的间距（以像素为单位）。 |
-| spaceY         | 垂直方向显示的单元格之间的间距（以像素为单位）。 |
-| vScrollBarSkin | 垂直方向滚动条皮肤。               |
-| hScrollBarSkin | 水平方向滚动条皮肤。               |
-
-  
-
-### 1.3 Tips:
-
-1. 给 List 添加滚动条有两种方式：一种是直接在List 内部拖放一个 滚动条，并设置滚动条的名字为 scrollBar，另一种方式是设置 List 的属性vScrollBarSkin、hScrollBarSkin 的值为滚动条的资源地址。
-
-2. List 的列表渲染项既可以是 Box 对象，也可以是页面对象。
-
-   ​
 
 
-## 二、通过代码创建List组件
+###1.3 Tips:
 
-​	在我们进行书写代码的时候，免不了通过代码控制UI，创建UI_List类，通过代码设定List相关的属性。
+1. There are two ways to add a scrollbar to a List: one is to drag and drop a scrollbar directly inside the List and set the name of the scrollbar to scrollBar, the other is to set the value of the attribute vScrollBarSkin and hScrollBarSkin to the resource address of the scrollbar.
 
-**运行示例效果:**
-​	![5](gif/3.gif)<br/>
-​	(图9)通过代码创建List
+2. List's list rendering item can be either a Box object or a page object.
 
-​	List的其他属性也可以通过代码来设置，下述示例代码演示了如何通过代码创建不同皮肤（样式）的List，有兴趣的读者可以自己通过代码设置List，创建出符合自己需要的列表。
+​
 
-**示例代码：**
+
+##2. Creating List Components through Code
+
+When we write code, we inevitably control UI through code, create UI_List class, and set List-related attributes through code.
+
+**Run the example effect:**
+​![5](gif/3.gif)<br/>
+(Figure 9) Create a List from code
+
+Other attributes of List can also be set by code. The following sample code demonstrates how to create lists with different skin (styles) through code. Interested readers can set lists themselves by code to create lists that meet their needs.
+
+**Sample code:**
+
 
 ```javascript
+
 module laya {
     import Stage = Laya.Stage;
     import List = Laya.List;
@@ -202,4 +223,5 @@ module laya {
 }
 new laya.UI_List();
 ```
+
 

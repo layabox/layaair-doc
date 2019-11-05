@@ -1,10 +1,12 @@
-# 暂停动画
+#Pause animation
 
 ###### *version :2.1.0beta   Update:2019-6-13*
 
-播放动画说完了，我们再来说一下暂停动画,开发者可以直接使用动画的播放速度控制动画的暂停与播放，直接设置需要暂停动画的播放速度为0即可，继续播放只需要重新设置速度为1。
+After playing animation, let's talk about pausing animation. Developers can directly control the pausing and playing of animation by using the playing speed of animation. They can directly set the playing speed of pausing animation to 0, and they only need to reset the playing speed to 1.
+
 
 ```typescript
+
 //暂停动画
 animator.speed = 0.0;
 
@@ -12,4 +14,5 @@ animator.speed = 0.0;
 animator.speed = 1.0;
 ```
 
-当速度大于1时，动画就处于加速的状态。
+
+When the speed is greater than 1, the animation is accelerated.

@@ -1,131 +1,131 @@
 # 焊接关节，绳索关节，鼠标关节
 
-### 1. 焊接关节
+###1. Welded joints
 
-​        焊接关节`WeldJoint`：使两个物体不能相对运动，两个刚体的相对位置和角度都保持不变，像一个整体。
+Welded joints`WeldJoint`The relative position and angle of the two rigid bodies remain unchanged as a whole.
 
-##### 属性说明
+#####Attribute specification
 
-##### otherBody
+#####OtherBody
 
-[首次设置有效]关节的连接刚体。
+The joint rigid body is set up for the first time.
 
-##### anchor
+#####Anchor
 
-[首次设置有效]关节的链接点，是相对于自身刚体的左上角位置偏移。
+For the first time, the link point of the joint is offset from the upper left corner of the rigid body.
 
-##### frequency
+#####Frequency
 
-弹簧系统的震动频率，可以视为弹簧的弹性系数。
+The vibration frequency of spring system can be regarded as the elastic coefficient of spring.
 
-##### damping
+#####Damping
 
-刚体在回归到节点过程中受到的阻尼，取值0~1
+Damping of a rigid body in the process of returning to a node is 0-1.
 
-##### collideConnect
+#####CollideConnect
 
-[首次设置有效]两个刚体是否可以发生碰撞，默认为false
+Whether two rigid bodies can collide or not, default is false
 
 
 
-#### 实例演练
+####Case drills
 
-​        焊接关节比较简单，就是把两个刚体在一个点固定起来，像焊接一样（注意，这个焊接也是有弹性的 ）
+Welding joint is relatively simple, that is to fix two rigid bodies at one point, just like welding (note, this welding is also flexible)
 
-我们新建一个场景，在场景中拖入一个box拉成长条作为地面，并添加boxcollider，将刚体类型设置为static静态类型。再拖入一个三角形和一个梯形并添加polycollider，并设置好碰撞尺寸（多边形需要自行设置形状），如图:
+We create a new scene, drag a box into the scene as the ground, add a box collider, and set the rigid body type to static static type. Then drag in a triangle and a trapezoid, add polycollider, and set the collision size (the polygon needs to set its own shape), as shown in the figure:
 
 ![图](img/1.png)
 
- 保存场景后运行，我们会看到受到重力及碰撞效果
+After saving the scene and running, we will see the effects of gravity and collision.
 
 ![图](img/1.gif)
 
-做好这一步之后，我们给三角形添加一个焊接关节：并将梯形拖入关节的otherbody中
+After doing this, we add a welded joint to the triangle: and drag the trapezoid into the other body of the joint.
 
 ![图](img/2.png)
 
-这样就把两个刚体焊接在一起了，保存运行，我们将看到效果：
+In this way, the two rigid bodies are welded together, saved and operated, and we will see the effect:
 
 ![图](img/2.gif)
 
 
 
-### 2.绳索关节
+###2. Rope Joint
 
-​     绳索关节`RopeJoint` ：限制两个点之间的最大距离。即使在很大的负载下也阻止连接的物体之间的拉伸。
+Rope joint`RopeJoint`Limit the maximum distance between two points. Even under heavy loads, it prevents tension between connected objects.
 
-##### 属性说明
+#####Attribute specification
 
-##### otherbody
+#####Otherbody
 
-[首次设置有效]关节的连接刚体。
+The joint rigid body is set up for the first time.
 
-##### anchor
+#####Anchor
 
-[首次设置有效]关节的链接点，是相对于自身刚体的左上角位置偏移。
+For the first time, the link point of the joint is offset from the upper left corner of the rigid body.
 
-##### frequency
+#####Frequency
 
-弹簧系统的震动频率，可以视为弹簧的弹性系数。
+The vibration frequency of spring system can be regarded as the elastic coefficient of spring.
 
-##### damping
+#####Damping
 
-刚体在回归到节点过程中受到的阻尼，取值0~1。
+The damping of the rigid body in the process of returning to the joint is 0-1.
 
-##### collideConnect
+#####CollideConnect
 
-[首次设置有效]两个刚体是否可以发生碰撞，默认为false。
+[First set valid] Whether two rigid bodies can collide by default is false.
 
-#### 示例演练
+####Example drill
 
-​              绳索关节的用法和距离关节类似，在场景中拖入一个方块和一个圆，添加相应的boxcollider 和circlecollider，给圆形添加一个绳索关节，并设置距离（设置的长度要大于两个物体的距离），我们会看到区别于距离关节的单摆效果，绳子是可以收缩，限制最大距离。
+The use of the rope joint is similar to that of the distance joint. Drag a box and a circle into the scene, add the corresponding box Collider and circle collider, add a rope joint to the circle, and set the distance (the length of the joint should be greater than the distance between the two objects). We will see the effect of a pendulum different from the distance joint. The rope can be contracted to the maximum limit. Distance.
 
 ![图](img/3.png)
 
 
 
-运行效果如下：  
+The operation results are as follows:
 
 ![图](img/3.gif)
 
-​	
+​
 
-### 鼠标关节
+###Mouse joint
 
-​        鼠标关节`MouseJoint`：用于鼠标操控物体。它试图将物体拖向当前鼠标光标的位置。而在旋转方面就没有限制。
+Mouse joint`MouseJoint`Used for mouse control object. It tries to drag the object to the current mouse cursor position. There are no restrictions on rotation.
 
-##### 属性说明
+#####Attribute specification
 
-##### anchor
+#####Anchor
 
-[首次设置有效]关节的链接点，相对于自身刚体的左上角位置偏移，如果不设置，则鼠标点击点作为连接点。
+For the first time, the link point of the joint is offset from the upper left corner of the rigid body. If not, the mouse click point is used as the link point.
 
-##### maxForce
+#####MaxForce
 
-鼠标关节在拖曳刚体bodyB时施加的最大作用力。
+The maximum force exerted by the mouse joint when dragging the rigid body body B.
 
-##### frequency
+#####Frequency
 
-弹簧系统的震动频率，可以视为弹簧的弹性系数。
+The vibration frequency of spring system can be regarded as the elastic coefficient of spring.
 
-##### damping
+#####Damping
 
-刚体在回归到节点过程中受到的阻尼，取值0~1。
+The damping of the rigid body in the process of returning to the joint is 0-1.
 
-#### 示例演练
+####Example drill
 
-​     继续用之前的场景，在梯形节点添加一个鼠标关节，也可以加给其他对象，如图：
+Continue with the previous scenario, add a mouse joint to the ladder node, or add it to other objects, as shown in the figure:
 
 ![图](img/4.png)
 
-只需添加就有效果，最简单的关节就是鼠标关节，下面我们来运行，看一下这些关节的效果：
+The simplest joint is the mouse joint. Let's run it and see the effect of these joints.
 
 ![图](img/4.gif)
 
-我们可以看到鼠标拖拽的作用下的效果，焊接关节，鼠标关节都是有弹力的。
+We can see the effect of mouse dragging, welding joints, mouse joints are elastic.
 
-附上组合效果图，更多组合请开发者自行完成.
+Attached is the combination effect map. More combinations are to be completed by the developer himself.
 
 ![图](img/5.gif)
 
-更多问题请访问社区http://ask.layabox.com
+For more questions, visit the community http://ask.layabox.com

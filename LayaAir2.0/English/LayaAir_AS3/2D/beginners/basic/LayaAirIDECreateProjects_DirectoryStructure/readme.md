@@ -1,211 +1,225 @@
-# 用LayaAirIDE创建AS3项目并详解目录结构
+#Creating AS3 Project with LayaAirIDE and Detailing Directory Structure
 
-> *author: charley   version: LayaAirIDE 2.0.0*   update: 2019-02-18
+>* author: Charley version: LayaAirIDE 2.0.0* update: 2019-02-18
 
-尽管当前推荐AS3开发者采用FlashDevelop和FlashBuilder环境开发LayaAir引擎的HTML5项目。但是我们建议先通过LayaAirIDE创建项目，再通过FlashDevelop或FlashBuilder打开编辑。通过LayaAirIDE创建项目会默认建立清晰的目录结构。下面我们就以LayaAirIDE工具创建AS3空项目作为开始，带领大家创建项目并介绍项目的结构。
-
-
-
-## 一、下载与安装LayaAirIDE
-
-使用LayaAirIDE与LayaAir引擎，需要在游戏中任意可见位置上加上引擎标识：Powered by LayaAir Engine
-，对于携带引擎标识的可以免费使用，否则需要联系下载条款中的微信二维码联系商务获得付费授权。
-
-接受条款后下载解压即可使用，IDE是绿色版，无需要安装。IDE中已包含了对应的引擎版本，无需额外下载。
-
-LayaAirIDE2.0 下载地址：https://ldc2.layabox.com/layadownload/?type=layaairide
+Although it is currently recommended that AS3 developers develop HTML5 projects for LayaAir engines in Flash Develop and Flash Builder environments. However, it is recommended to create a project through layaairide first, and then open editing through flash development or flashbuilder. Creating projects through LayaAirIDE creates a clear directory structure by default. Let's start with the Laya air ide tool to create the AS3 empty project, lead you to create the project and introduce the structure of the project.
 
 
 
-## 二、用LayaAirIDE创建AS3项目
+##I. Download and install LayaAirIDE
 
-#### 步骤一：
+Using LayaAir IDE and LayaAir engine, you need to add engine logo to any visible position in the game: Powered by LayaAir Engine.
+For those who carry the engine logo, they can use it free of charge. Otherwise, they need to contact Weichat 2-D code in the download terms to get payment authorization.
 
-打开LayaAirIDE，点击`新建`图标或文字，如图1所示，即可进入新建项目界面。
+After accepting the terms, you can download and decompress them. The IDE is a green version without installation. The IDE already contains the corresponding engine version without additional download.
+
+LayaAirIDE 2.0 Download Address: https://ldc2.layabox.com/layadownload/?Type=layaairide
+
+
+
+##II. Creating AS3 Project with LayaAirIDE
+
+####Step one:
+
+Open LayaAirIDE and click`新建`Icons or text, as shown in Figure 1, can enter the new project interface.
 
 ![图片](img/1.png)  
 
-（图1）
+
+(Fig. 1)
 
 
 
-#### 步骤二：
+####Step two:
 
-选择 `LayaAir 2D示例项目` 在填写项目名称、项目路径、以及选择编程语言和引擎版本后，点击“`创建`”即可建立一个新的空项目。如图2所示。
+Choice`LayaAir 2D示例项目`After filling in the project name, project path, and selecting the programming language and engine version, click“`创建`” A new empty project can be established. As shown in Figure 2.
 
 ![图片](img/2.png) 
 
- （图2）
 
-#### 额外讲一下可选项：
+(Fig. 2)
 
-以下两个选项可以勾选，也可不勾选，开发者理解作用之后自行选择。
+####Additionally, there are options:
 
-##### 1、微信/百度小游戏bin目录快速调试
+The following two options can be checked or unchecked, and developers can choose by themselves after understanding the function.
 
-勾选这个选项后，在创建项目的时候，就会把微信和百度的小游戏工程文件也同时创建到项目调试目录（bin）下面，这样，微信或者百度小游戏开发工具调试项目时，就可以直接指定bin目录为本地调试目录。这样可以节省大量频繁调试的时间，因为调试正式版要发布只导出本地包，每次导出都需要一定的发布时间，会影响调试开发的效率。
+#####1. Quick debugging of bin directory in Weixin/Baidu mini-games
 
-##### 2、增加FB/FD项目文件
+After checking this option, when creating the project, the project files of Weixin and Baidu will be created under the project debugging directory (bin), so that when Weixin or Baidu game development tools debug the project, the bin directory can be directly designated as the local debugging directory. This saves a lot of time for frequent debugging, because the official version of debugging will release only exported local packages, each export requires a certain release time, which will affect the efficiency of debugging and development.
 
-LayaAirIDE是必不可少的LayaAir引擎的集成开发环境。但是对于AS3的老程序员而言，IDE代码编写模式对于AS3的友好度远不如FlashBuildier(FB)和FlashDevelop（FD），所以AS3默认勾选了该项，勾选该项后，会在创建IDE工程文件的同时也会创建FB和FD工程，方便FB和FD开发环境的项目导入。
+#####2. Adding FB/FD Project Document
+
+LayaAirIDE is an indispensable integrated development environment for LayaAir engine. But for the old programmers of AS3, the IDE coding mode is far less friendly to AS3 than Flash Builder (FB) and Flash Develop (FD), so AS3 defaults to check this item, after checking this item, it will create both FB and FD projects while creating IDE project files, which will facilitate the project import of FB and FD development environment.
 
 
 
-#### 步骤三：
+####Step three:
 
-在点击“创建”后，可以看到项目的结构，项目文件夹结构如图3所示：
+After clicking "Create", you can see the structure of the project. The project folder structure is shown in Figure 3.
 
 ![图片](img/3.png) 
-（图3）
 
-至此我们已成功的创建了一个AS3项目工程。
+(Fig. 3)
+
+So far, we have successfully created an AS3 project project.
 
 *Tips:*
 
-> 对于刚接触LayaAir引擎的开发者，我们推荐创建示例项目，通过示例项目来快速了解完整的项目结构。当然，开发始也可以尝试其它项目类型的创建。
+> For developers new to the LayaAir engine, we recommend creating sample projects to quickly understand the complete project structure. Of course, you can try to create other project types at the beginning of development.
 
 
 
-## 三、介绍项目结构
+##3. Introducing the project structure
 
-接下来，将会结合上一节中创建的项目结构来介绍每个目录的作用。
+Next, we will introduce the role of each directory in conjunction with the project structure created in the previous section.
 
-### 3.1 项目配置目录（.laya文件夹）
+###3.1 Project Configuration Directory (.laya folder)
 
- `.laya` 文件夹下存放的是项目在开发运行中的一些配置信息，如图4所示。
+
+ `.laya`The folder contains some configuration information of the project in development and operation, as shown in Figure 4.
 
 ![4](img/4.png) 
 
-（图4）
 
-#### `compile.js` 文件介绍 
+(Fig. 4)
 
-`compile.js` 是gulp自定义编译流程的脚本文件，如果开发者对gulp比较熟悉的可以修改，否则不要动这里。
+#### `compile.js`Document introduction
 
-#### `launch.json`文件介绍 
+`compile.js`Gulp is a script file that customizes the compilation process of gulp. If the developer is familiar with gulp, he can modify it. Otherwise, don't move here.
 
-`launch.json` 文件保存了项目调试的一些配置信息,分别是LayaAirIDE的调试配置和chrome浏览器调试配置。不要轻易去改动，改错后会影响项目的调试。
+#### `launch.json`Document introduction
 
-#### `layajs`与`layajs.exe`文件介绍 
+`launch.json`The file saves some configuration information of project debugging, which are LayaAirIDE debugging configuration and Chrome browser debugging configuration. Don't change it easily, it will affect the debugging of the project.
 
-`layajs`与`layajs.exe` 都是AS3编译js的编译器，layajs用于mac环境，layajs.exe用于win环境。同时保留是出于多人开发配合的模式下的多环境混用适配。
+#### `layajs`And`layajs.exe`Document introduction
 
-#### `publish.js`文件介绍
+`layajs`And`layajs.exe`They are compilers for AS3 compiling js, layajs for Mac environment, layajs. exe for win environment. At the same time, the reservation is for multi-environment mixed adaptation in the mode of multi-person development cooperation.
 
-`publish.js`是gulp针对项目发布的脚本文件，开发者不要动这里。
+#### `publish.js`Document introduction
 
-#### **其它说明 **
+`publish.js`Gulp is a script file for a project. Developers don't move here.
 
-还有一些配置文件默认没有，但是发布的时候也会保存到.laya目录。比如web版、微信、百度等小游戏，发布后会对应每个不同的类型存生不同的json配置文件，比如wxgame.json是微信小游戏发布配置文件，bdgame.json是百度小游戏发布配置文件。
+#### **Other instructions**
 
-老版本的发布配置文件名为pubset.json。
+Some configuration files do not exist by default, but they are also saved to the. Laya directory when they are published. For example, the web version, Weixin, Baidu and other small games, will be released after each different type of survival of different JSON configuration files, such as wxgame. JSON is Weixin small game release configuration files, bdgame. JSON is Baidu small game release configuration files.
 
-以上这些大家有一些了解即可，通常情况下，开发者无需进行修改。所以，不必去深入理解。
+The old version of the release configuration file is called pubset. json.
+
+All of these people have some understanding, usually, developers do not need to modify. Therefore, there is no need to understand in depth.
 
 
 
-### 3.2 项目的输出目录（bin）
+###3.2 output directory of the project (bin)
 
- `bin`目录存放的是当前项目的输出文件。如图5所示。
+
+ `bin`The directory holds the output files of the current project. As shown in Figure 5.
 
 ![图5](img/5.png) 
 
-(图5)
 
-该目录用于存放项目中输出的js 、HTML、游戏资源等项目运行文件，以及小游戏项目文件（如果创建项目时勾选了小游戏快速调试选项时）。
+(Fig. 5)
 
-默认layaAir调试或者chrome调试的时候，就是运行的该目录下的文件。
+This directory is used to store the project running files such as js, HTML, game resources, etc. output from the project, as well as the game project files (if the quick debugging option of the game is checked when creating the project).
+
+The default layaAir debugging or chrome debugging is to run the files in that directory.
 
 
 
-### 3.3 UI项目目录（laya）
+###3.3 UI project directory (laya)
 
-` laya`目录用于存放LayaAirIDE当前的UI项目。
+`laya`The directory is used to store LayaAirIDE's current UI projects.
 
 ![图6](img/6.png) 
 
-(图6)
 
-####  “`assets`” 目录
+(Fig. 6)
 
-用来存放UI场景中所需的组件图片、音频文件等资源。
+####"`assets`Catalog
 
-#### “`pages`”目录
+Used to store the components pictures, audio files and other resources needed in UI scenarios.
 
-用来存放IDE中的场景、动画、预设等配置文件。
+####"`pages`Catalog
 
-#### ​ “`.laya`”文件
+Used to store IDE scenarios, animations, presets and other configuration files.
 
-注意这个.laya是文件而不是目录，.laya文件是LayaAirIDE的UI项目配置文件。
+####"`.laya`Document
 
-
-
-### 3.4 项目库目录（libs）
-
- “`libs`”目录内为项目的库目录，用于存放项目使用的LayaAir库文件。
-
-AS语言的LayaAir引擎库文件具体的目录存在`libs/laya/src`下。如图7所示。
-
-![图7](img/7.png) (图7)
+Note that this. Laya is a file, not a directory, and the. Laya file is the UI project configuration file of LayaAirIDE.
 
 
 
-### 3.5 项目的源代码目录（src）
+###3.4 Project Library Directory (libs)
 
-项目中的用到的源代码文件（AS3语言项目是.as文件），默认都存放在 src 目录下。
+"`libs`”The directory is the Library Directory of the project, which is used to store the layaair library files used by the project.
 
-需要特别说一下的是`ui`目录，这里属于IDE自动生成的，开发者不要改动这里，改了也会被下次导出替换。所以该目录中不要存放自己的代码，也不要修改已有代码。
+LayaAir Engine Library File Specific Directory Existing in AS Language`libs/laya/src`Next. As shown in Figure 7.
 
-其它的开发者依据实际需要自行规划目录结构即可。示例代码的源代码项目结构如图8所示。
+![图7](img/7.png)(Fig. 7)
+
+
+
+###3.5 Project Source Code Directory (src)
+
+The source code files used in the project (AS3 language project is. as file) are stored in the SRC directory by default.
+
+What needs to be said in particular is that`ui`Directory, which belongs to IDE automatic generation, developers do not change here, change will also be replaced by the next export. So don't store your own code in this directory, and don't modify the existing code.
+
+Other developers can plan their own directory structure according to their actual needs. The source code project structure of the sample code is shown in Figure 8.
 
 ![图8](img/8.png) 
 
-（图8）
+
+(Fig. 8)
 
 
 
-### 3.6 项目配置文件
+###3.6 Project Profile
 
 ![图9](img/9.png)  
 
-（图9）
+
+(Fig. 9)
 
 ####  `项目名.laya` 
 
-图9中的`2D_DEMO_190218.laya`是LayaAirIDE项目的工程配置文件，文件内记录了当前项目的项目名称、使用的类库版本号等。
+In Figure 9`2D_DEMO_190218.laya`Is the project configuration file of the layaairide project, which records the project name of the current project, the version number of the class library used, etc.
 
-​    例如：
+For example:
+
 
 ```json
+
 {"proName":"2D_DEMO_190218","engineType":1,"proType":0,"layaProType":1,"version":"2.0.0"}
 ```
 
+
 #### `项目名.as3proj`
 
- 图9中的`2D_DEMO_190218.as3proj`文件是FlashDevelop项目的工程配置文件。使用 FlashDevelop 编辑器开发AS3项目时，FlashDevelop工具内，在菜单栏通过“文件”->“打开”找到项目名.as3proj所在的目录打开此项目。
+In Figure 9`2D_DEMO_190218.as3proj`The file is the project configuration file for the Flash Development project. When developing AS3 project with Flash Develop editor, in Flash Develop tool, you can find the project name in the menu bar by "File" - > "Open". The directory where as3proj is located.
 
-#### `.actionScriptProperties`文件和`.project`文件
+#### `.actionScriptProperties`Document and`.project`file
 
-`.actionScriptProperties`文件和`.project`文件是Flash Builder 项目的配置文件。使用 Flash Builder时，通过菜单栏“文件”->“导入Flash Builder项目”来导入LayaAirIDE创建的AS3项目。
+`.actionScriptProperties`Document and`.project`The file is the configuration file for the Flash Builder project. When using Flash Builder, import the AS3 project created by LayaAirIDE through the menu bar "File" - > "Import Flash Builder Project".
 
 #### `语言版本config.json`
 
-图9中的`asconfig.json`存放着IDE的编译配置信息，勿删。
+In Figure 9`asconfig.json`Store the compilation configuration information of IDE, do not delete it.
 
 
 
-### 3.7 发布目录
+###3.7 Publishing Directory
 
-发布目录默认是不存在的，需要点击发布按钮，发布项目后才会生成对应的版本目录，如图10所示。（有专门的发布功能文档介绍，这里不细讲）
+The publishing directory does not exist by default. You need to click the publishing button to generate the corresponding version directory after publishing the project, as shown in Figure 10. (There is a special publishing function documentation, not detailed here)
 
 ![图10](img/10.png) 
 
-(图10)
 
-如图10所示的目录结构，就是对应的发布后版本目录。
+(FIG. 10)
+
+The directory structure shown in Figure 10 is the corresponding released version directory.
 
 
 
-### 本篇结束语
+###Concluding remarks
 
-至此，项目创建的基础内容已介绍完，如果如果想了解更多IDE的介绍或IDE的设计模式，可以查看IDE篇。
+So far, the basic content of project creation has been introduced, if you want to know more about the introduction of IDE or IDE design patterns, you can see the IDE chapter.

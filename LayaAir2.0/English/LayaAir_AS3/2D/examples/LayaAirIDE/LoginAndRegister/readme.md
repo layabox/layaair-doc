@@ -1,222 +1,225 @@
+#Use LayaAir IDE to create the login and registration interface of the game
 
-# 使用LayaAir IDE制作游戏的登陆注册界面
+As long as the game developers believe that you are familiar with the login and registration pages of the game. How to use LayaAirIDE to create a login registration page? Please read this tutorial patiently.
 
-只要是游戏开发者相信大家对游戏的登陆、注册页面不陌生。如何使用LayaAirIDE制作一个登陆注册页面呢？那么就请耐心的看完本篇教程吧~~（注：本篇文档只是一个显示效果，并没有实际数据）
-
-**先来看下最终实现的效果。如图1、图2、图3、图4所示**
+**Let's first look at the final results. As shown in Figure 1, figure 2, figure 3 and Figure 4**
 
 ![1](1.jpg)
-(图1)在IDE中拼好界面之后到代码中将登陆页面实例化并添加到舞台上，点击注册按钮弹出注册面板（图2所示）。
+(Figure 1) after the interface is spelled in the IDE, instantiate the login page in the code and add it to the stage. Click the registration button to pop up the registration panel (Figure 2).
 
 ![2](2.jpg)
-(图2)点击提交注册提示注册成功页面（图3所示），点击右上角关闭按钮则关闭注册页面。
+(Figure 2) Click the submit registration prompt registration success page (Figure 3) and click the close button in the upper right corner to close the registration page.
 
 ![3](3.jpg)
-(图3)点击确定或者右上角关闭按钮则关闭注册成功提示页面
+(Figure 3) Click on the OK or Close button in the upper right corner to close the registration success prompt page.
 
 ![4](4.jpg)
-(图4)点击登录面板上的登陆按钮则弹出登陆成功页面（注：登陆成功和注册成功面板用的是用一个面板，传入的数据不同）。
+(Figure 4) Click the login button on the login panel to pop up the login success page.
 
-## 1、新建项目
+##1. New projects
 
-打开已安装好的LayaAirIDE，创建一个空项目（本篇为AS版）。给项目命名、选择路径、选择项目类，最后点击创建。如图5所示
+Open the installed LayaAirIDE and create an empty project (this article is version AS). Name the project, select the path, select the project class, and finally click Create. As shown in Figure 5
 
 ![5](5.jpg)
 
 
-(图5)创建好的项目结构就不在此详细讲解了，请切换到相关的文档页面中查看
+(Figure 5) the created project structure will not be explained in detail here, please switch to the relevant document page to view
 
-## 2、创建登陆页面并完成登陆页面UI的拼接
+##2. Create landing pages and complete UI splicing of landing pages
 
-### 2.1添加资源
+###2.1 add resources
 
-如果当前所在的IDE页面不是编辑模式则需切换到编辑模式下。如图6所示
+If the current ide page is not in editing mode, you need to switch to editing mode. As shown in Figure 6
 
 ![6](6.jpg)
 
-(图6)
+(Fig. 6)
 
-使用LayaAirIDE创建出来的项目在编辑模式—资源目录下都会有一个名字为comp的资源文件，里边存放的是一些常用的UI组件资源。在此文档中使用不了那么多的资源，所以将资源删除一些，并添加一张新的资源。最终资源文件中所保留的资源如图7所示。
+The project created with LayaAirIDE will have a resource file named comp in the edit mode - resource directory, which stores some common UI component resources. You can't use so many resources in this document, so delete some resources and add a new one. The resources retained in the final resource file are shown in Figure 7.
 
 ![7](7.jpg)
-(图7)资源操作步骤：在资源面板中右键—打开所在目录（资源所在目录）—将多余的资源删除、添加一张资源—回到IDE资源面板中刷新资源。如图8所示
+(Figure 7) Resource operation steps: Right-click in the resource panel - open the directory where the resource is located - delete the redundant resource, add a resource - return to the IDE resource panel to refresh the resource. As shown in Figure 8
 
 ![8](8.jpg)
-(图8)
+(Fig. 8)
 
-### 2.2创建登陆页面
+###2.2 Create landing pages
 
-在编辑模式项目模块中右键—新建—页面创建一个登陆页面（如图9所示），接着会弹出创建页面的面板（如图10所示）
+In the edit mode project module, right-click - New - page to create a landing page (as shown in Figure 9), and then pop up the creation page panel (as shown in Figure 10).
 
 ![9](9.jpg)
-(图9)
+(Fig. 9)
 
 ![10](10.jpg)
-(图10)
+(FIG. 10)
 
-**页面类型：**
+**Page type:**
 
-分两种，View和Dialog。两者的区别是：Dialog继承自View，View有的功能Dialog都有，不同于View的是Dialog组件是一个弹出对话框，实现对话框的弹出，拖动，模式窗口功能。View在实际项目中可作为固定显示的面板，而Dialog在实际项目中可作为弹出框显示
+There are two kinds, View and Dialog. The difference between the two is that Dialog inherits from View, and some functions of View are available in Dialog. Unlike View, Dialog component is a pop-up dialog box, which implements pop-up, drag and mode window functions of dialog box. View can be used as a fixed display panel in a real project, while Dialog can be used as a pop-up box in a real project.
 
-**页面名称：**
+**Page Name:**
 
-此页面的名称
+Name of this page
 
-**参考视图：**
+**Reference View:**
 
-在实际项目中有一些界面上的资源可能会非常多，这时候就需要按照美术给的示意图去对这些位置。如果没有一个参照物就只是看着示意图去操作的话时间肯定会比较长。参考视图的作用就是可以将美术给的示意图添加进来照着做（参考视图最终不会用于实际项目中）
+In the actual project, there may be a lot of resources on the interface. In this case, you need to follow the schematic diagram given by the art to locate these locations. If there is no reference, it will take a long time just to look at the sketch to operate. The purpose of the reference view is to add art to the sketch and follow it. (The reference view will not eventually be used in the actual project.)
 
-**页面宽度、页面高度：**
+**Page width, page height:**
 
-页面的宽高，可以看到后边有个“仅作为参考”的勾选框。如果这个勾选框是勾选的状态，那么前边填的这个宽高在实际项目中就是无效的，会自动计算当前页面上元素的宽高，从而得出整个页面的宽高（此操作会比较消耗性能，请谨慎使用）。如果不勾选这个选项框，那么前边设置的宽高就是实际页面的宽高（如果资源超出了设置的宽高，那么超出的部分则不会被渲染，无法添加任何事件）
+The width and height of the page, you can see a "Reference Only" check box at the back. If this check box is checked, the width and height filled in the front is invalid in the actual project. The width and height of the elements on the current page will be calculated automatically, and the width and height of the whole page will be obtained (this operation will consume performance, please use it with caution). If this option box is not checked, the width set at the front is the width of the actual page (if the resource exceeds the width set, then the excess will not be rendered and no events can be added).
 
-**参考背景：**
+**Background:**
 
-编辑页面时背景的颜色（仅作为参考，实际项目中不会生效）
+The color of the background when editing the page (for reference only, the actual project will not take effect)
 
-最后点击确定按钮就会发现IDE中间有个可视区域
+Finally, by clicking the OK button, you will find a visual area in the middle of the IDE.
 
-### 2.3编辑登陆页面
+###2.3 Edit landing page
 
-**一个登陆页面中常见的就是游戏的Logo、标题、用户名、密码、记住密码选项框、自动登陆选项框、注册按钮、登陆按钮等元素，那么接下来咱们就制作一个这样的登陆页面（注：所有组件的属性都能在API中找到，如有不懂的请自行查找对应的API）。**
+**A common landing page is the game's logo, title, user name, password, remember password option box, automatic login option box, registration button, login button and other elements. Then we will make a landing page like this (Note: the properties of all components can be found in the API, if you do not understand, please find the corresponding API by yourself).**
 
-**2.3.1.添加背景**：
+**2.3.1. Add Background**:
 
-选中背景资源，将背景资源以拖拽的形式放到页面中。在右侧属性栏中找到sizeGrid属性（设置九宫格，设置为35,20,20,20），设置九宫格的目的是避免拉伸图片时图片模糊，然后将背景图的宽高设置成页面的宽高。如图11所示
+Select the background resources and drag them onto the page. Find the sizeGrid property in the right property bar (set the nine panes to 35, 20, 20, 20). The purpose of setting the nine panes is to avoid blurring when stretching the picture, and then set the width and height of the background image to the width of the page. As shown in Figure 11
 
 ![11](11.jpg)
-(图11)
+(FIG. 11)
 
-**2.3.2.添加logo资源：**
+**2.3.2. Add logo resource:**
 
-将LayaBox的Logo小猴子添加到页面中，放在靠左侧的位置（在此就先不截图看效果了，在图12中会看到）
+Add the logo monkey of layabox to the page and place it on the left side (I will not take a screenshot here to see the effect, as shown in Figure 12)
 
-**2.3.3.添加标题：**
+**2.3.3. Add a title:**
 
-将资源面板中的Label组件拖拽到页面中。在右侧属性面板—常用属性中设置text属性为“欢迎来到LayaAir世界”，设置color颜色为红色“#ff0400”，设置bold是否加粗为“true”，设置font字体为“幼圆”（注意，该字体必须是电脑中已有的字体。**此项目中所有的文字都会设置为幼圆，之后就不在提了**），设置fontSize文本字体大小为“35”，设置align水平对齐方式为居中对齐“center”。如图11所示
+
+
+将资源面板中的Label组件拖拽到页面中。在右侧属性面板—常用属性中设置text属性为“欢迎来到LayaAir世界”，设置color颜色为红色“#Ff0400 ", set bold to"true"and font font font to"young circle"(note that the font must be the font already in the computer.**All the words in this project will be set to Youyuan and will not be mentioned later.**Set fontSize text font size to "35" and align align horizontally to center alignment. As shown in Figure 11
 
 ![12](12.jpg)
-(图12)
+(Fig. 12)
 
-**2.3.4.添加用户名和密码：**
+**2.3.4. Add user name and password:**
 
-从资源列表中拖到页面上两个Label放在合适的位置，然后在右侧属性面板中设置text为“用户名：”和“密码：”，将字体都设置为“幼圆”，字体大小设置为“20”。
+Drag from the resource list to place the two labels on the page in the appropriate position, then set the text to "user name:" and "password:" in the right property panel, set the font to "small circle" and the font size to "20".
 
-从资源列表中拖到页面上两个输入框“TextInput”放在用户名和密码对应的位置，在右侧属性栏中给用户名输入框的var声明个变量“userName”（var和name的区别：var是全局唯一的变量，可直接通过此变量修改该组件下的所有属性。name可通过父节点.getChildByName("name")获取到该对象，从而修改它的属性），给用户名的prompt提示符设置为“请输入用户名”，字体同样是“幼圆”。密码输入框跟用户名输入框同理，设置var变量为"userPassword",设置prompt为“请输入密码”。如图13、图14所示
+Drag the two input boxes "TextInput" from the list of resources to the page and place them in the corresponding position of the user name and password. In the right property bar, declare the variable "userName" to the VaR of the user name input box (the difference between VaR and name: VaR is the only variable in the world, through which all attributes under this component can be modified directly. Name can obtain the object through the parent node. Getchildbyname ("name") to modify its properties). Set the prompt prompt of the user name to "please enter the user name", and the font is also "small circle". The password input box is the same as the username input box. Set the VaR variable to "userPassword" and the prompt to "Please enter your password". As shown in Figure 13 and Figure 14
 
 ![13](13.jpg)
-(图13)
+(FIG. 13)
 
 ![14](14.jpg)
-(图14)
+(FIG. 14)
 
-**2.3.5.添加勾选框:**
+**2.3.5. Add check box:**
 
-添加记住密码和自动登录勾选框，用于记录状态
+Add the Memory Password and Automatic Logon check box to record status
 
-从资源目录中拖出两个勾选框组件，在右侧属性面板中设置label为“记住密码”和“自动登录”，然后在其他选项中设置labelBold是否加粗为“true”，labelFont设置为“幼圆”。如图15、图16所示
+Drag two check box components from the resource directory, set the label to "remember password" and "auto login" in the right property panel, and then set whether the labelbold is bold to "true" and labelfont to "small circle" in other options. As shown in Figures 15 and 16
 
 ![15](15.jpg)
-(图15)
+(FIG. 15)
 
 ![16](16.jpg)
-(图16)
+(FIG. 16)
 
-**2.3.6.添加注册、登陆按钮：**
+**2.3.6. Add registration and login buttons:**
 
-注册按钮：点击之后弹出注册页面；登陆按钮：点击弹出登陆提示
+Registration button: After clicking, the registration page pops up; The landing button: Click the landing prompt.
 
-按钮属性设置如图17、图18所示
+The button property settings are shown in Figures 17 and 18.
 
 ![17](17.jpg)
-(图17)
+(FIG. 17)
 
 ![18](18.jpg)
-(图18)
+(Fig. 18)
 
-**到这里登陆界面就已经全部完成了，接下来继续拼注册窗口跟提示窗口。等UI界面全部完成之后再用代码实现对应的功能**
+**The login interface has been completed here. Next, continue to spell the registration window and the prompt window. After the UI interface is completed, the corresponding functions can be realized by code.**
 
-## 3、创建注册页面并完成注册页面UI的拼接
+##3. Create registration page and complete UI splicing of registration page
 
-**3.1创建注册页面**
+**3.1 Create a Registration Page**
 
-步骤跟2.2登陆页面一致。不同的是注册页面是Dialog类型的（在上边2.2创建登陆界面时已经详细说过Dialog和View的区别了，在此不再详细叙述了），点击确定按钮完成创建页面。如图19所示
+The steps are consistent with the 2.2 landing page. The difference is that the registration page is of Dialog type (the difference between Dialog and View has been discussed in detail when creating the login interface in 2.2 above, but not in detail here). Click the OK button to complete the creation of the page. As shown in Figure 19
 
 ![19](19.jpg)
-(图19)
+(Fig. 19)
 
-**3.2添加页面背景**
+**3.2 Add Page Background**
 
-参考步骤2.3.1，将背景资源拖入页面中，设置九宫格以及图片大小
+Refer to Step 2.3.1, drag the background resources into the page, set the nine palaces and the size of the picture.
 
-**3.3添加标题**
+**3.3 add title**
 
-参考步骤2.3.3，将Label组件拖入页面中，放在标题位置，设置对应的属性。如图20所示
+Refer to step 2.3.3, drag the Label component into the page, place it in the title position, and set the corresponding properties. As shown in Figure 20
 
 ![20](20.jpg)
-(图20)
+(FIG. 20)
 
-**3.4添加用户名、用户名输入框、输入密码等组件**
+**3.4 Add user name, user name input box, password and other components**
 
-从资源面板中拖出一个Label组件，设置字体为“幼圆”、fontSize字体大小为“16”、对齐方式algin为左对齐“left”以及显示文字text。选中Label按快捷键Ctrl+R复制出5个相同的组件。如图21所示
+Drag a Label component from the resource panel and set the font to Young Circle, font Size font size to 16, alignment algin to left, and display text. Select Label and press Ctrl + R to copy five identical components. As shown in Figure 21
 
 ![21](21.jpg)
-(图21)点击确定之后就能看到页面上有5个相同的Label，适当的调整下位置，修改每个Label的text文本内容。如图22所示
+(Figure 21) after clicking OK, you can see that there are five identical labels on the page. Adjust the lower position appropriately and modify the text content of each label. As shown in Figure 22
 
 ![22](22.jpg)
-(图22)
+(Fig. 22)
 
-显示文本除了text文本内容不一样，其它内容均一致。红框name那里的内容可以不用去管，是用快捷键复制组件时自动生成的，不影响任何内容。有了前边的文本显示内容，后边肯定是要有对应的输入框的。从资源面板中拖出一个文本输入框TextInput放到用户名后边，再次使用快捷键Ctrl+R复制出5个相同的文本输入框，微调位置，在输入提示符prompt输入提示内容、设置字体font为“幼圆”。如图23所示
+The display text is identical except the text text content. The content in the red box name can be created automatically when the component is copied by shortcut keys without affecting any content. With the front text display content, there must be a corresponding input box at the back. Drag a text input box from the resource panel and put it behind the username. Then use the shortcut key Ctrl+R to copy five identical text input boxes, fine-tune the position, prompt the content of the prompt at the input prompt, and set font to "baby circle". As shown in Figure 23
 
 ![23](23.jpg)
-(图23)
+(Fig. 23)
 
-**3.5添加提交注册按钮和关闭页面按钮**
+**3.5 Add submit registration button and close page button**
 
-从资源面板中拖出一个Button组件放到正下方位置，label显示文字设置为“提交注册”，var变量名为“btn_submit”（点击按钮时关闭注册页面）。然后再从资源面板中拖入一个关闭按钮放在右上角，给关闭按钮的name命名为“close”（Dialog页面中可以给页面上的组件name命名为close，点击该组件就会关闭Dialog页面），把关闭按钮默认显示的label文字删除。如图24、25所示
+Drag a button component from the resource panel and put it directly below. The label display text is set to "submit registration". The VaR variable is named "BTN? Submit" (close the registration page when clicking the button). Then drag a closing button from the resource panel and place it in the upper right corner. Name the closing button as "close" (you can name the component name on the page as close in the Dialog page. Clicking on the component will close the Dialog page), and delete the label text displayed by the closing button by default. As shown in Figures 24 and 25
 
 ![24](24.jpg)
-(图24)
+(Fig. 24)
 
 ![25](25.jpg)
-(图25)
+(Fig. 25)
 
-## 4、创建提示页面并完成提示页面UI的拼接
+##4. Create the prompt page and complete the UI splicing of the prompt page
 
-**4.1创建页面**
+**4.1 Create Pages**
 
-步骤跟3.1一致，页面名称改为NormalDig，点击确定
+Step 3.1: Change the page name to NormalDig and click OK
 
-**4.2添加显示组件**
+**4.2 Adding Display Components**
 
-从资源面板中拖入一个Label组件，给var变量定义为“txtContent”，设置常用属性如图26所示
+Drag a Label component from the resource panel, define the VaR variable as "txtContent", and set common properties as shown in Figure 26.
 
 ![26](26.jpg)
-(图26)
+(Fig. 26)
 
-**4.3添加确定按钮和关闭页面按钮**
+**4.3 Add confirm button and close page button**
 
-跟3.5步骤一致，给确定按钮定义var变量为“btn_sure”。如图27、28所示
+Consistent with step 3.5, define the VaR variable for the confirmation button as "btn_sure". As shown in Figures 27 and 28
 
 ![27](27.jpg)
-(图27)
+(Fig. 27)
 
 ![28](28.jpg)
-(图28)
+(Fig. 28)
 
-## 5、用代码实现图1、2、3、4效果
+##5. Realize the effect of Figure 1, 2, 3 and 4 with code
 
-写代码之前先在编辑模式下F12导出下资源，然后到代码模式下的bin/h5/res/atlas目录下看看是否生成了对应的图集文件，如果没有的话就回到编辑模式下按快捷键Ctrl+F12清理并导出资源。（AS项目建议开发者使用FB或者FD来编写，本篇文章中以FB为例。）
+Before writing the code, export the resources in edit mode F12, and then go to the bin/h5/res/atlas directory in code mode to see if the corresponding atlas files are generated. If not, go back to edit mode and clean up and export the resources by pressing the shortcut key Ctrl+F12. (The AS project suggests that developers use FB or FD to write, and this article takes FB as an example.)
 
-**5.1用FB导入项目**
+**5.1 Importing Projects with FB**
 
-导入项目步骤：打开FB—文件—导入FlashBuilder项目（弹出导入项目选择框）—选择项目文件夹将项目目录复制进来—完成。（不明白的请参考基础文档）
+Import project step: Open FB - File - Import Flash Builder project (pop-up import project selection box) - Select project folder to copy project directory in - Complete. (Refer to the Basic Documents if you don't understand)
 
-**5.2预加载资源并显示登陆页面**
+**5.2 Preload resources and display landing pages**
 
-预加载资源的目的是避免使用资源的时候加载时间过长（按钮资源必须要预加载！），预加载资源之后在资源加载完成回调中实例化登陆页面。代码如下：
+The purpose of preloading resources is to avoid overloading when using resources (button resources must be preloaded!). After preloading the resource, the landing page is instantiated in the callback after loading the resource. The code is as follows:
+
 
 ```typescript
+
 package {
 	import laya.net.Loader;
 	import laya.utils.Handler;
@@ -242,21 +245,24 @@ package {
 }
 ```
 
-编译效果如图29所示
+
+The compilation effect is shown in Figure 29.
 
 ![29](29.jpg)
-(图29)
+(Fig. 29)
 
-在实际项目中如果对UI页面上的元素有很多的操作，那么就不建议直接在入口类中实例化UI页面了，建议创建一个UI逻辑类继承UI页面，然后操作里边的元素。所以在此修改下代码，创建一个登陆页面继承对应的ui页面，在入口类中实例化登陆页面
+In practical projects, if there are many operations on the elements on the UI page, it is not recommended to instantiate the UI page directly in the entry class. It is suggested to create a UI logic class to inherit the UI page and then operate on the elements inside. So modify the code here, create a landing page to inherit the corresponding UI page, instantiate the landing page in the entry class
 
-新建登陆逻辑类如图30所示
+The new login logic class is shown in Figure 30.
 
 ![30](30.jpg)
-(图30)
+(Fig. 30)
 
-然后将入口类的代码修改为以下代码
+Then change the code of the entry class to the following code
+
 
 ```typescript
+
 package {
 	import laya.net.Loader;
 	import laya.utils.Handler;
@@ -283,19 +289,22 @@ package {
 }
 ```
 
-**5.3给登陆、注册按钮添加事件打开对应的页面**
 
-在给登陆、注册按钮添加点击事件之前先创建一个登陆页面的逻辑类和注册页面的逻辑类来继承各自的UI页面，从而操作对应的UI界面。如图31、32所示
+**5.3 Open the corresponding page by adding events to the login and registration buttons**
+
+Before adding click events to the login and registration buttons, create a logistic class of the login page and a logistic class of the registration page to inherit their respective UI pages, so as to operate the corresponding UI interface. As shown in Figures 31 and 32
 
 ![31](31.jpg)
-(图31)
+(Fig. 31)
 
 ![32](32.jpg)
-(图32)
+(Fig. 32)
 
-打开LoginView类，给注册按钮添加点击事件，点击注册按钮弹出注册页面。代码如下：
+Open the LoginView class, add a click event to the registration button, and click the registration button to pop up the registration page. The code is as follows:
+
 
 ```typescript
+
 package
 {
 	import laya.events.Event;
@@ -318,14 +327,17 @@ package
 }
 ```
 
-以上代码实现的效果如图33所示（效果与图2一致）
+
+The effect of the above code implementation is shown in Figure 33 (the effect is the same as Figure 2).
 
 ![33](33.jpg)
-(图33)点击关闭按钮即可关闭注册页面（因为在UI页面中给关闭按钮的name命名为“close”了）
+(Figure 33) Click the Close button to close the registration page (because the name of the Close button is named "close" in the UI page).
 
-给提交注册按钮添加点击事件，点击之后弹出提示面板。但是弹出的同时需要给提示面板中的提示内容赋值，所以先切换到提示页面NormalDig类中，添加一个公开的方法用来给文本赋值同时给确定按钮添加点击事件，点击关闭提示页面。代码如下：
+Add a click event to the submit registration button and pop up the prompt panel after clicking. However, the prompt content in the prompt panel needs to be assigned a value at the same time of pop-up, so first switch to the normal dig class of the prompt page, add a public method to assign a value to the text and add a click event to the OK button, and click to close the prompt page. The code is as follows:
+
 
 ```typescript
+
 package
 {
 	import laya.events.Event;
@@ -358,9 +370,12 @@ package
 }
 ```
 
-打开注册页面RegDlg类，给提示面板传入显示文字“注册成功！”，代码如下：
+
+Open the registration page RegDlg class, and pass in the text "Register Successfully!" to the prompt panel. The code is as follows:
+
 
 ```typescript
+
 package
 {
 	import laya.events.Event;
@@ -387,16 +402,19 @@ package
 }
 ```
 
-以上代码运行效果如图34所示（跟图三显示一致）
+
+The operation effect of the above code is shown in Figure 34 (consistent with figure 3)
 
 ![34](34.jpg)
-(图34)
+(Fig. 34)
 
-**到此处注册页面相关代码已全部完成，接下来继续完成登陆页面的逻辑代码**
+**The relevant code of the registration page has been completed here. Next, the logistic code of the landing page is completed.**
 
-打开登陆LoginView类，给登陆按钮注册点击事件，点击弹出提示页面并显示登陆成功字样。代码如下：
+Open the login LoginView class, register the click event for the login button, click the pop-up prompt page and display the successful login. The code is as follows:
+
 
 ```typescript
+
 package
 {
 	import laya.events.Event;
@@ -428,9 +446,10 @@ package
 }
 ```
 
-以上代码运行效果如图35所示（跟图4效果一致）
+
+The operation effect of the above code is shown in Figure 35 (consistent with figure 4)
 
 ![35](35.jpg)
-(图35)
+(Fig. 35)
 
-至此，本篇登陆、注册示例文档已全部完成，开发者可以在此基础上实现更完整的登陆、注册功能。如有问题请提交到论坛上[http://ask.layabox.com/](http://ask.layabox.com/)
+Up to now, the sample documents of login and registration have been completed, and developers can realize more complete login and registration functions on this basis. If you have any questions, please submit them to the forum.[http://ask.layabox.com/](http://ask.layabox.com/)

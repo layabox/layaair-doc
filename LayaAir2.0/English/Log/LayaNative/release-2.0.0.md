@@ -1,12 +1,12 @@
-# LayaNative-Release-2.0.0
+#LayaNative-Release-2.0.0
 
-1、解决了2D、3D混合产生错乱的bug。
-2、解决了2D多张图片拼接产生的接缝bug。
-3、解决了在一些特殊情况下Crash的bug。
-4、解决了由于Android-jni引起的内存泄漏。
-5、解决了音效的内存泄漏。
-6、解决video的内存泄漏和析构的bug。
-7、解决极端情况下2D-UI动画刷新不及时的bug。
-8、解决了Sprite.width和height不生效的bug。
-9、解决了getImageData产生的内存泄漏。 
-注意：此版本必须和LayaAir-2.0.0配套使用。
+1. Resolve the bug of confusion caused by the mixing of 2D and 3D.
+2. Solve the seam bug caused by 2D multi-picture mosaic.
+3. Solve the crash bug in some special cases.
+4. Solve the memory leak caused by Android-jni.
+5. Resolve the memory leak of sound effect.
+6. Solve the memory leak and destructive bug of videos.
+7. Solve the bug that 2D-UI animation refresh is not timely in extreme cases.
+8. Solve the bug that Sprite.width and height do not work.
+9. Resolve the memory leak caused by getImage Data.
+Note: This version must be used in conjunction with LayaAir-2.0.0.

@@ -1,20 +1,20 @@
-# AS3项目分包说明
+#AS3 Subcontracting Description
 
-> author: charley
+> author: Charley
 
-### 1、为什么要分包
+###1. Why Subcontract
 
-Layabox独有的编译器支持将AS3语言写的项目编译成js代码。但是默认情况下，所有代码会编译到一个js里，如果项目较大，那编译后的js也会变大，当js大到影响加载体验时，通过分包，将一些独立的后期功能js，放在需要的时候再加载使用。可以减少前期的加载压力。
-
-
-
-2、、、
+Layabox's unique compiler supports compiling projects written in AS3 into JS code. But by default, all the code will be compiled into a js. If the project is large, the compiled JS will also be larger. When the JS is large enough to affect the loading experience, some independent late function JS will be subcontracted and loaded when needed. It can reduce the preliminary loading pressure.
 
 
+
+2,,
 
 
 
 
 
-分包要独立，不要Import，要____JS()引
+
+
+Subcontracting should be independent, not Import, and __JS() quotation
 

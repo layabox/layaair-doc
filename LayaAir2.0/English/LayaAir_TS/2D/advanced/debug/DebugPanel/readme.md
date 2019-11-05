@@ -1,18 +1,20 @@
-# DebugPanel工具
+#DebugPanel Tool
 
-### 1、启用DebugPanel调试面板
+###1. Enable DebugPanel Debugging Panel
 
-DebugPanel调试面板是基于Div的调试窗口，在编辑模式下按F9 打开设置面板，如图
+The DebugPanel debugging panel is a Div-based debugging window. In editing mode, press F9 to open the settings panel, as shown in the figure.
 
 ![图1](img/debug.png)
 
-只需勾选即可打开调试面板。(注意，强烈推荐用此方法！)
+Just check to open the debugging panel. (Note that this method is strongly recommended! )
 
-使用代码方式：
+Using code:
+
 
 
 
 ```typescript
+
 // 程序入口
 class GameMain{
     constructor()
@@ -34,116 +36,124 @@ new GameMain();
 
 
 
-运行效果如图1所示
 
-![图1](img/1.png) <br /> (图1)
+The effect is shown in Figure 1.
 
+![图1](img/1.png)<br/> (Fig. 1)
 
 
-### 2、刷新显示对象节点树
 
-默认状态下，显示对象节点树中只有`DebugInfoLayer`节点，而这个节点开发者不用管（用于引擎开发者）。产品页面中的对象节点需要刷新才能显示出来，点击`调试面板`上的`刷新`按钮，会显示出页面上的全部节点树结构。如动图2所示。
+###2. Refresh Display Object Node Tree
 
-![动图2](img/2.gif) <br /> (动图2)
+By default, only the display object node tree has`DebugInfoLayer`Node, which the node developer does not care about (for engine developers). The object node in the product page needs to be refreshed before it can be displayed. Click`调试面板`Upper`刷新`The button displays all the node tree structures on the page. As shown in Figure 2.
 
+![动图2](img/2.gif)<br/> (Motion 2)
 
 
-### 3、查看节点对象的属性
 
-点击节点树上的节点，可以在右侧查看选中的节点对象属性，如图3所示。
+###3. Viewing the properties of node objects
 
-![图3](img/3.png) <br /> (图3)
+Click on the node in the node tree to view the selected node object properties on the right, as shown in Figure 3.
 
-**Tips**： 通过查看或修改调试面板中的节点对象属性值，可以加速问题的判断与调试。
+![图3](img/3.png)<br/> (Figure 3)
 
+**Tips**By viewing or modifying the attribute values of the node objects in the debugging panel, the judgment and debugging of the problem can be accelerated.
 
 
-### 4、审查页面元素
 
-除了从节点树中，点击节点对象来查看属性外。通过先点击`审查元素`按钮，然后点击页面中的目标内容，即可以在调试面板的右侧区域直接查看该节点的的对象属性。效果如动图4所示。
+###4. Review page elements
 
-![动图4](img/4.gif) <br /> (动图4)
+In addition to clicking on the node object from the node tree to view the properties. By clicking first`审查元素`Button, and then click the target content in the page, you can directly view the object properties of the node in the right area of the debug panel. The effect is shown in Figure 4.
 
+![动图4](img/4.gif)<br/> (Motion 4)
 
 
 
 
-### 5、修改调试面板中的节点对象属性
 
-为了避免每次调试都在代码中修改，再次编译运行的复杂调试流程。可以直接在DebugPanel调试面板中修改属性值。然后移出属性值输入框即可查看修改效果。操作与效果如动图5所示。
+###5. Modify node object properties in debugging panel
 
-![动图5](img/5.gif) <br /> (动图5)
+To avoid modifying the code every time you debug, compile and run the complex debugging process again. You can modify attribute values directly in the DebugPanel debugging panel. Then move out the property value input box to see the modification effect. The operation and effect are shown in Fig. 5.
 
+![动图5](img/5.gif)<br/> (Fig. 5)
 
 
-### 6、节点可见控制
 
-在调试面板中选中节点后，可以通过**取消**该节点的`可见勾选状态`，让该节点在**页面中不可见**。再次点击`勾选`可见，会重新显示出来，效果如动图6所示。
+###6. Node Visible Control
 
-![动图6](img/6.gif) <br /> (动图6)
+After selecting the node in the debug panel, you can use the**cancel**The node`可见勾选状态`Let the node in**Not visible on the page**。 Click again`勾选`Visible, will be re-displayed, the effect as shown in Figure 6.
 
+![动图6](img/6.gif)<br/> (Motion 6)
 
 
 
 
-### 7、节点红色边框显示控制
 
-在调试面板`可见`控制的右侧是`显示边框`控制， 当勾选后，该节点在页面中为**红色边框**的高亮显示。效果如图7所示。
+###7. Node Red Border Display Control
 
-![图7](img/7.png) <br /> (图7)
+In the debugging panel`可见`On the right side of the control is`显示边框`Control, when checked, the node in the page is**Red border**Highlight display. The effect is shown in Figure 7.
 
-**Tips**：*当节点的cacheAs属性设置生效后，显示边框勾选也不会显示红色边框。*
+![图7](img/7.png)< br / > (Figure 7)
 
+**Tips**:*When the cacheAs property setting of the node takes effect, the display border check will not show the red border.*
 
 
-### 8、将节点对象打印到控制台 
 
-点击DebugPanel调试面板的`打印到控制台`按钮，可以将选中的节点对象输出到浏览器的控制台(*Console*)，方便在控制台中进一步调试操作。效果如图8所示。
+###8. Print the node object to the console
 
-![图8](img/8.png) <br /> (图8)
+Click on the DebugPanel debug panel`打印到控制台`The button can output the selected node object to the browser's console (* Console *) to facilitate further debugging in the console. The effect is shown in Figure 8.
 
+![图8](img/8.png)<br/> (Figure 8)
 
 
-### 9、在控制台中查看enable链与size链
 
-通过enable链与size链按钮，可以将节点对象的enable相关的属性或size相关的属性输出到控制台中。如图9所示。
+###9. View enable and size chains in the console
 
-![图9](img/9.png) <br /> (图9)
+By enable chain and size chain button, enable-related attributes or size-related attributes of node objects can be output to the console. As shown in Figure 9.
 
+![图9](img/9.png)<br/> (Figure 9)
 
 
-### 10、显示与切换大图合集
 
-在webgl模式下，为优化性能，小于`512*512`的资源引擎都会自动合并到大图合集里（包括图片与文本信息）。LayaAir引擎默认的上限是6个大图合集，通过查看大图合集的数量和内容可以进行针对性的优化。
+###10. Display and Switch Large Graph Set
 
-勾选`显示大图合集`后，可以查看当前的大图合集，左上解会出现红色的`图集当前数/图集总数`，共两个数值。取消勾选再选中，可以`切换`到下一个大图合集。如动图10所示。
+In webgl mode, in order to optimize performance, less than`512*512`Resource engines are automatically merged into a large collection of images (including image and text information). The default upper limit of the LayaAir engine is six large image collections, which can be optimized by looking at the number and content of large image collections.
 
-![动图10](img/10.gif) <br /> (动图10)
+Checklist`显示大图合集`After that, you can view the current large atlas, and the upper left solution will appear red.`图集当前数/图集总数`There are two values. Cancel check and select again. Yes.`切换`Go to the next big picture collection. As shown in Figure 10.
 
-**Tips**：
+![动图10](img/10.gif)<br/> (Figure 10)
 
-显示大图合集功能仅限于webGL模式，Canvas模式下该功能按钮无作用。
+**Tips**:
 
-单个大图合集的总宽高为`2048*2048`。
+The function of displaying large image aggregation is limited to webGL mode, but the function button has no effect in Canvas mode.
 
+The total width and height of a single set of large graphs are`2048*2048`。
 
 
 
 
-### 11、显示当前cache重绘区域与所有cache区域
 
-设置cache可以优化性能，但是cache设置不合理也会降低性能。比如cache区域频繁重绘时，会降低性能。
+###11. Display the current cache redraw area and all cache areas
 
-通过`显示当前cache重绘`与`显示所有cache区域`可以统计查看cache的状态。
+Setting cache can optimize performance, but unreasonable cache settings can also reduce performance. For example, frequent redrawing of cache areas can degrade performance.
 
-**绿色为当前cache区**，区域色框会停留显示3秒。效果如动图11所示。
+adopt`显示当前cache重绘`And`显示所有cache区域`You can view the status of cache by statistics.
 
-![动图11](img/11.gif) <br /> (动图11)
+**Green is the current cache area**The area color box will stay on display for 3 seconds. The effect is shown in Figure 11.
 
+![动图11](img/11.gif)<br/> (Motion Fig. 11)
 
-**所有cache区域为紫色边框**，区域色框显示完立即消失，停留在最后一个cache区域。效果如动图12所示。
 
-![动图12](img/12.gif) <br /> (动图12)
+**All cache areas are purple borders**The area color box disappears immediately after the display and stays in the last cache area. The effect is shown in Figure 12.
+
+![动图12](img/12.gif)<br/> (Motion 12)
+
+
+
+
+
+
+
 
 
 

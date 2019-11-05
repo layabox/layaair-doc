@@ -1,25 +1,30 @@
-# 加载界面
-为了方便开发者，自定义LoadingView，LayaNative使用原生功能实现的新的LoadingView。
+#Loading interface
+To facilitate developers, customize Loading View, LayaNative uses native functionality to implement a new Loading View.
 
-应用程序在启动的时候，需要加载必要的html、js、图片，这个时候就需要通过加载界面显示进度，LayaNative在运行项目的时候，默认有一个LoadingView界面，一段时间后，即可进入游戏，如图1所示：  
+When the application starts, it needs to load the necessary html, JS and pictures. At this time, it needs to show the progress through the loading interface. When LayaNative runs the project, it defaults to have a Loading View interface. After a period of time, it can enter the game, as shown in Figure 1:
 
-​![图1](img/1.png) <br/>
+​![图1](img/1.png)<br/>
 
-图1
+Figure 1
 
-## 1.进度条控制
+##1. Progress bar control
 
-​开发者可以在config.js中，控制LoadingView的背景色、字体颜色、Tips等。  
+Developers can control the background color, font color, Tips and so on of LoadingView in config.js.
 
-config.js的位置：  
+Location of config.js:
+
 ```
+
 Android: 工程目录下的assets/scripts/config.js  
 IOS:工程目录下的resources/scripts/config.js  
 ```
 
-config.js中的内容如下所示，开发者可以根据自己的需求进行修改：
+
+The content in config.js is as follows. Developers can modify it according to their own needs:
+
 
 ```javascript
+
 window.loadingView = new loadingView();
 if(window.loadingView)
 {
@@ -30,20 +35,24 @@ if(window.loadingView)
 }
 ```
 
-## 2.进度条控制实例
 
-在实际开发过程中，通常想要精确控制LoadingView的隐藏和显示，那么开发者可以在config.js中这样设置loadingView.loadingAutoClose的值为false
-然后在项目中根据加载完成情况，设置进度条的显示进度，调用函数如下:  
+##2. Examples of progress bar control
+
+In the actual development process, usually want to accurately control the hiding and display of LoadingView, so developers can config. JS in this way to set the value of loadingView. loadingAutoClose false.
+Then in the project, according to the completion of loading, the display progress of the progress bar is set, and the calling function is as follows:
+
 
 ```javascript
+
 window.loadingView.loading(nPercent);//参数为0-100的整数值，当值为100的时候LoadingView自动关闭
-```  
+```
+The specific steps are as follows:
 
-具体的步骤如下：
+**Step 1:**stay`config.js`Set in`loadingView.loadingAutoClose`The value is`false`
 
-**步骤1：** 在`config.js`中设置`loadingView.loadingAutoClose`的值为`false`
 
 ```javascript
+
 window.loadingView = new loadingView();
 if(window.loadingView)
 {
@@ -53,11 +62,14 @@ if(window.loadingView)
 
 ```
 
-**步骤2：** 调用`loadingView.loading(nPercent)`更新进度条
 
-伪代码如下：
+**Step 2:**call`loadingView.loading(nPercent)`Update progress bar
+
+The pseudocode is as follows:
+
 
 ```javascript
+
 var nPercent=0;
 var image1 = document.createElement('img');
 image1.onload=function()
@@ -90,15 +102,18 @@ image3.onload=function()
 image3.src = "c.png";
 ```
 
-**Tips：**
 
-当`loadingView.loading(nPercent)`函数传入的值等于100时，加载界面会自动关闭。也可以通过调用`loadingView.hideLoadingView()`关闭加载界面。
+**Tips:**
 
-## 3.去掉所有文字显示
+When`loadingView.loading(nPercent)`When the value of the function is equal to 100, the loading interface will automatically close. It can also be invoked`loadingView.hideLoadingView()`Close the loading interface.
 
-可以去掉所有文字的显示，包括tips和加载百分比，修改config.js，把`showTextInfo`的值设置为`false`即可，代码如下：
+##3. Remove all text displays
+
+You can remove all text displays, including tips and load percentages, modify config. js, and`showTextInfo`The value is set to`false`The code is as follows:
+
 
 ```javascript
+
 window.loadingView = new loadingView();
 if(window.loadingView)
 {
@@ -110,12 +125,13 @@ if(window.loadingView)
 }
 ```
 
-## 4.自定义界面和功能
-所有代码公开，因此开发者可以根据需要修改代码实现任何所需自定义功能。
 
-## 5.特别说明
-启动画面，Android版本使用原生Java开发，iOS版本使用Object-C开发，代码都是开源的，开发者如果需要自定义界面，可自行修改，如果不会Android和iOS编写界面，那就去学一下吧。
+##4. Custom Interface and Functions
+All code is open, so developers can modify the code to implement any custom functions they need.
 
-后续LayaBox会有白名单机制，如果开发者购买了授权，便可以去掉LayaBox的Logo，如果没有购买，则需要强制增加LayaBox的logo，引擎内部会有检测机制，随机检测，如果检测不通过，会强制Crash应用程序。
+##5. Special description
+Start screen, Android version using native Java development, iOS version using Object-C development, code is open source, if developers need to customize the interface, they can modify themselves, if not Android and iOS interface, then go to learn.
 
-LayaNative不是开源引擎，但免费给开发者使用，如果想要去掉LayaBox的Logo需要付费。开发者可以通过LayaBox公众号、官网等联系LayaBox商务进行购买。
+Follow-up LayaBox will have a whitelist mechanism. If the developer purchases the authorization, he can remove LayaBox's logo. If he does not purchase it, he will need to force the increase of LayaBox's logo. Inside the engine, there will be a detection mechanism, random detection, and if the detection does not pass, Crash application will be forced.
+
+LayaNative is not an open source engine, but it's free for developers to use. If you want to remove LayaBox's Logo, you have to pay. Developers can contact LayaBox Business through LayaBox Public Number, Official Website, etc.

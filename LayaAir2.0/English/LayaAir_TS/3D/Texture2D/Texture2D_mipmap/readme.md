@@ -1,15 +1,16 @@
-# 纹理的mipmap
+#Texture mipmap
 
 ###### *version :2.1.0   Update:2019-5-25*
 
+
 ​	LayaAir3D是支持纹理的mipmap的。在我们对一个模型的贴图使用了MipMap技术之时，游戏运行中这个模型的贴图会根据摄像机距离模型的远近而调整不同质量的贴图显示。
 
-​	在LayaAir3D中是默认开启了纹理的mipmap的。
+In LayaAir3D, texture mipmap is turned on by default.
 
-下面两张动图中的Plane距离摄影机远近时的效果，都从与摄影机的距离都较远处开始拉近。
+The effect of Plane in the following two motion pictures when it is far from the camera begins to get closer from the distance with the camera.
 
-![](img/1.gif)<br> (图1)  使用了mipmap
+![] (img/1.gif) < br > (Figure 1) uses mipmap
 
-![](img/2.gif)<br>(图2) 没有使用mipmap
+![] (img/2.gif) < br > (Figure 2) No mipmap is used
 
-从这两个由远拉近的动图就能看出来mipmap的效果了。而且在距离摄影机较远时，未使用mipmap的纹理的效果是非常差的。
+The effect of mipmap can be seen from these two moving maps drawn far and near. And when the distance from the camera is long, the effect of texture without mipmap is very poor.

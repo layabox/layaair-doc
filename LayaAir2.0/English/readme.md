@@ -1,89 +1,105 @@
-# LayaAir引擎快速上手指南【新手必读】
+#LayaAir Engine Quickly Upper Finger Guide
 
 
 
-​     对于很多新手开发者而言最大的问题，就是学习思路。面对一项新的技术，如果不知道如何下手，这才是最头痛的。本文提供一些自学的思路，抛砖引玉以作借鉴，自学能力强的开发者可跳过本文，直接查看官网引擎示例与API。
+The biggest problem for many novice developers is learning ideas. Faced with a new technology, if you do not know how to start, this is the most headache. This article provides some ideas for self-learning, which can be used as a reference. Developers with strong self-learning ability can skip this article and view the official website engine examples and APIs directly.
+
+
 
  
 
-## 第一步：选择开发语言
 
-由于LayaAir引擎支持ActionScript3（AS3）、TypeScript（TS）、JavaScript（JS）三种语言开发，到底用哪种语言更好呢？常常困惑着刚接触引擎的新手们。其实开发者更熟悉哪种语言就采用哪种语言开发即可，引擎的API与性能都是完全一样的。
 
-需要大家注意的是JS语言虽然上手更为容易，但是作为一弱类型语言，开发与调试的难度，以及大型项目的管理与多人协作等方面，都不如TS与AS3这种可以在IDE中检测类型和语法语言。当代码越来越多的时候，JS一旦不小心写错，IDE中并不会有任何提示，只有在运行的时候才会发现问题，经常有开发者为了查一个小小的失误，花费大量的时间成本。所以虽然支持JS语言开发，但并不建议采用该语言作为中型或大型项目的开发。
+##Step 1: Choose the development language
 
-至于AS3语言，如果你本身就对AS3就非常熟悉，并且也用不上ES6的一些新特性，那可以继续采用AS3语言开发。AS3在FB和FD里超爽的开发体验就不多说了，AS3开发者应该都知道，不知道的也不需要了解了，可以采用TS。这里最后说一点AS3的好处，那就是LayaAir引擎也是AS3语言开发，TS和JS的引擎库是AS3语言编译而成，从引擎结构上看，AS3无论是最好的，当涉及到引擎级排查问题。那采用AS3的项目肯定是效率更高一些，主要的劣势就是无法对JS新特性进行支持。所以我们没有全力推荐该语言作为首选语言。
+Since the LayaAir engine supports ActionScript 3 (AS3), TypeScript (TS), JavaScript (JS), which language is better? Frequently confused newcomers who have just touched the engine. In fact, developers are more familiar with which language can be developed in which language, the API and performance of the engine are exactly the same.
 
-如果你不是AS3程序员，那我们还是推荐采用TS语言作为首选的开发语言。有两个主要原因，第一是TS支持JS包括ES6的新特性，第二是TS可以在LayaAirIDE中友好的开发，并且能实时语法和类型检查。而AS3在LayaAirIDE的友好度远完不如FB和FD。
+It should be noted that JS language is easier to use, but as a weak type language, it is not as difficult to develop and debug as TS and AS3, which can detect type and grammar language in IDE, as well as the management of large-scale projects and multi-person collaboration. When the code is more and more, once JS accidentally writes incorrectly, there will be no hint in the IDE. Only when running, problems will be found. Often, developers spend a lot of time and cost in order to find a small error. So although it supports the development of JS language, it is not recommended to use this language as the development of medium-sized or large-scale projects.
 
-最后想说的是，引擎API都是一样的，语言的差异并没有那么重要，核心还是引擎API的使用和研发的经验。大家不要对语言的选择有什么畏惧，因为只需要学一下语言的基本规则即可，语言的学习切换其实是很快的。所以，各位开发者可根据项目需要，去选择LayaAir引擎支持的任何一种语言开发。
+As for the AS3 language, if you are very familiar with AS3 and do not need some new features of ES6, you can continue to develop in AS3 language. AS3 in FB and FD super development experience is not much to say, AS3 developers should know, do not know and do not need to know, can use TS. Finally, the advantage of AS3 is that LayaAir engine is also developed in AS3 language. The engine libraries of TS and JS are compiled in AS3 language. From the engine structure, AS3 is the best, when it comes to engine-level search. Projects that adopt AS3 are definitely more efficient, and the main disadvantage is that they can't support new JS features. Therefore, we do not fully recommend this language as the preferred language.
+
+If you are not an AS3 programmer, we recommend TS as the preferred development language. There are two main reasons. The first is that TS supports new features of JS including ES6. The second is that TS can be developed friendly in LayaAirIDE, and can perform real-time syntax and type checking. The friendliness of AS3 in Laya AirIDE is far less than that of FB and FD.
+
+Finally, I want to say that engine APIs are the same, language differences are not so important, the core is the experience of using and developing engine APIs. Don't be afraid of the choice of language, because you only need to learn the basic rules of language, language learning switching is very fast. Therefore, you developers can choose any language development supported by LayaAir engine according to the needs of the project.
+
+
 
  
 
-## 第二步：准备好开发环境
-
-如果是TS和JS开发者，仅下载LayaAir IDE即可，因为LayaAir IDE集成了代码编写调试、UI编辑、动画编辑、粒子编辑等可视化游戏开发环境。如果是AS3开发者，在代码编写的工具方面，推荐采用更为成熟的FlashDevelop或者是Flash Builder。这两种工具是主流的AS3代码编辑器，从语法纠错等方面Flash Builder更加强大，支持MAC苹果系统，但是工具安装包非常大，且属于收费软件。FlashDevelop比较轻量，仅有几十兆，是免费软件，不过苹果系统下需要借助付费软件CrossOver才可以运行。
-
-由于采用TS或AS3语言开发都需要配置编译器环境，在发布产品的时候把项目代码编译为JS代码运行，所以这两种语言的开发者，还需要进行一些额外的准备工作。
 
 
+##Step 2: Get ready for the development environment
 
-## 第三步：写第1个LayaAir引擎程序“Hello Layabox”；
+If you are a TS and JS developer, just download LayaAir IDE, because LayaAir IDE integrates visual game development environments such as code debugging, UI editing, animation editing, particle editing and so on. If you are an AS3 developer, Flash Developer or Flash Builder is recommended as a more sophisticated tool for code writing. These two tools are the mainstream AS3 code editor, Flash Builder is more powerful from the aspects of grammar error correction, supporting Mac Apple system, but the tool installation package is very large, and belongs to the charging software. Flash Develop is lightweight, only tens of megabytes, and it's free software, but you need CrossOver to run on Apple.
 
-学程序写“Hello world”已成为国际惯例。LayaAir引擎学习也不例外。当看到第一个LayaAir引擎的程序“Hello Layabox”显示出来的时候，不仅会带来入门成功的成就感，同时也说明了你的开发环境配置是没有问题的。
+Because the compiler environment needs to be configured for the development of TS or AS3, and the project code is compiled into JS code to run when the product is released, the developers of these two languages need to do some extra preparations.
 
 
 
-## 第四步：体验全部的LayaAir示例
+##Step 3: Write the first LayaAir engine program "Hello Layabox";
 
-​    完成Hello Layabox的文本显示后，我们需要去了解其它的API，但是并不建议新手直接去看API。为什么呢？光靠看API文档去脑补使用方法，对新开发者而言会感觉内容多且枯燥。所以，在这里推荐大家先去官网开发者中心认真体验并研究LayaAir引擎的全部在线示例。在体验引擎示例的过程中，再针对示例中出现的API进行深入的了解，打开API文档进行学习。即便开发者时间有限，暂时不能全部深入研究每一个示例中的API，那也要先把示例看一遍，至少要做到知道有哪些引擎示例，都可以实现哪些功能。因为官网提供的引擎在线示例包含了游戏开发常用的引擎API。所以当体验完成全部示例后，会对LayaAir引擎的API有一个基本的认知，在开发游戏的时候就可以做到心中有数了。
+Learning to write "Hello world" has become an international practice. LayaAir engine learning is no exception. When you see the first LayaAir engine program "Hello Layabox" displayed, it will not only bring a sense of success, but also show that your development environment configuration is no problem.
 
-额外提示一下，在引擎示例的代码区，JavaScript版本提供在线编辑与执行功能。可以直接在浏览器中学习与体验，其它开发语言或者是想在本地开发环境中体验引擎示例的，也可以前往GitHub上去下载示例源码，
+
+
+##Step 4: Experience the full Laaya Air example
+
+After the text display of Hello Layabox is completed, we need to know about other APIs, but it is not recommended that novices go directly to APIs. Why? By simply looking at API documents to brain-fill the use of methods, new developers will feel more content and boring. Therefore, I recommend that you go to the official website developer center to experience and study all the online examples of LayaAir engine. In the process of experiencing the engine example, the API appearing in the example is deeply understood and the API document is opened for learning. Even if developers have limited time and can't fully delve into the APIs in each example for the time being, they need to look at the examples first, at least to know which engine examples are available and what functions can be implemented. Because the engine online example provided by the official website contains the engine API commonly used in game development. So when the experience completes all the examples, you will have a basic understanding of the API of the LayaAir engine, and you will have a good idea when you develop the game.
+
+Additionally, in the code area of the engine example, the JavaScript version provides online editing and execution functions. You can learn and experience directly in browsers, other development languages or you want to experience engine examples in your local development environment, or you can go to GitHub to download the sample source code.
+
+
 
  
 
-## 第五步：学习LayaAir引擎的工具链
-
-当体验和研究完引擎示例和API后后，其实已经可以用代码工具直接开发游戏的功能了。但是对于复杂一些的游戏，工欲善其事必先利其器，学习掌握一些可视化开发工具，是大幅提升开发效率的必经之路。LayaAirIDE作为可视化集成开发环境，除了代码编写还包括了UI编辑、动画编辑、粒子编辑、场景编辑等等功能，是首先给推荐大家的。
-
-其次是第三方对LayaAir引擎的支持，Layabox官网已罗列了一些主流的工具对LayaAir引擎的支持，这些第三方工具与LayaAirIDE形成了强大的工具链，让开发者在使用LayaAir引擎的时候无需对工具链产生担忧，可高效的开发各种类型的游戏。这里就不逐一介绍了，重点推荐几款第三方工具，第一是用于骨骼动画的编辑器Spine、第二是地图编辑器TiledMap、第三是3D编辑器Unity3D。
 
 
+##Step 5: Learn the Tool Chain of LayaAir Engine
 
-## 第六步：学习项目调试
+After experiencing and researching engine examples and APIs, you can actually use code tools to develop game functions directly. But for more complex games, if you want to be good at it, you must first use the right tools. Learning to master some visual development tools is the only way to greatly improve the efficiency of development. As a visual integrated development environment, LayaAirIDE includes UI editing, animation editing, particle editing, scene editing, etc. besides coding, which is recommended first.
 
-项目的调试本身并不是很难的要点，但是一些刚接触H5开发的开发者常会就项目调试提出各种问题，在LayaAir技术文档的”2D进阶篇“中会针对开发环境与发布环境下的调试方式，进行介绍说明。
+Secondly, third-party support for LayaAir engine. Layabox has listed some mainstream tools to support LayaAir engine. These third-party tools form a powerful tool chain with LayaAirIDE, which enables developers to develop various types of games efficiently without worrying about the tool chain when using LayaAir engine. Here we will not introduce one by one. We recommend several third-party tools. The first is Spine, the editor for skeletal animation, the second is Tiled Map, and the third is Unity3D.
 
 
 
-## 第七步：学习并熟记性能优化原则
+##Step 6: Debugging learning projects
 
-在当前，移动设备的硬件性能远不及PC硬件，尤其是中低端机型的市场占有率并不低。那么引擎的性能优化将成为很重要的选择因素。那是不是选择了性能高的引擎，项目就一定不会出现性能问题呢？并不是这样。因为引擎的优化仅仅是提供了一个项目性能的天花板。
+Project debugging itself is not a difficult point, but some developers who have just come into contact with H5 development often raise various questions about project debugging. In the "2D Advanced Chapter" of LayaAir Technical Document, the debugging methods in the development environment and release environment will be introduced and explained.
 
-如果引擎的性能不行，项目再如何优化，也无法突破这个天花板，导致项目开发完了。只能跑在性能特别好的机型上，那时候再去换引擎或者去改引擎，成本和代价就非常的高了。但是，引擎性能明明可以达到APP级的流畅度，如果在项目编写的过程中并不进行优化或错误的使用引擎。那仍然可能出现卡顿问题。因此大家学好引擎的基础之后，一定要认真阅读性能优化的文章，把性能优化的方法熟记于心，在项目编写的过程中熟练的运用。
+
+
+##Step 7: Learn and memorize performance optimization principles
+
+At present, the hardware performance of mobile devices is far inferior to PC hardware, especially the market share of low-end models is not low. Then engine performance optimization will become a very important choice factor. Does that mean that if you choose a high performance engine, the project will not have performance problems? That's not the case. Because engine optimization only provides a ceiling for project performance.
+
+If the performance of the engine is not good, how to optimize the project can not break through the ceiling, leading to the end of the project development. It can only run on the model with excellent performance. At that time, if we change the engine or change the engine, the cost and cost will be very high. However, the engine performance can clearly achieve the fluency of APP level, if the process of project writing is not optimized or the wrong use of the engine. That's still the possibility of Carlton's problem. Therefore, after we learn the foundation of engine, we must carefully read the article of performance optimization, memorize the methods of performance optimization, and skillfully use them in the process of project preparation.
+
+
 
  
 
-## 第八步：用小游戏或项目实战验证学习成果
-
-按以上步骤学习完全部的文档后，对于有游戏项目研发经验的开发者，已经可以用项目实战来验证学习的成果了。对于近期还没有游戏立项，或者是没有游戏研发经验的开发者，建议先用小游戏实战的方式，完整体验开发流程来验证学习成果。
-
-腾讯课堂教学内有小游戏实战开发的视频教学。
-
-腾讯课堂：[https://layabox.ke.qq.com/](https://layabox.ke.qq.com/)
 
 
+##Step 8: Validate learning outcomes with small games or projects
 
-## 第九步：如何获得官方的技术答疑与指导
+After learning all the documents in the above steps, developers with experience in game project development can use project practice to verify the results of learning. For developers who haven't recently established a game project or have no experience in game development, it is suggested that the learning results should be validated by fully experiencing the development process of a small game in a practical way.
 
-在开发实践的过程中，对引擎不是非常熟悉的开发者难免还会遇到各种引擎使用问题，此时如何能尽快获得解答呢？首先要注意的是，不要直接在QQ群中提问，因为QQ群中留言信息较多时，问题很容易被淹没，并且会造成类似的问题反复解答。我们对于QQ群的定位也是开发者自助交流，和BUG反馈提醒。
+Tencent classroom teaching has video teaching of small game development.
 
-我们建议开发者在问答社区（ask.layabox.com）中进行搜索，是否有类似问题已经提出或被解决。如果没有类似问题，可以在社区中创建提问并详细描述问题，把代码、截图、问题的现象等信息提供的越细致越好，尽可能减少沟通成本。
+Tencent Classroom:[https://layabox.ke.qq.com/](https://layabox.ke.qq.com/)
 
-我们对于社区的核心定位是BUG的反馈与处理，所以开发者存在可重现的BUG，可以将BUG的可重现DEMO项目打包上传到社区中，官方技术支持人员会优先处理社区中的BUG问题，并保障每一个BUG问题会得到解答，当然也可以在提问后，把社区中的问题链接粘贴到开发者群里并@管理员。
 
-对于已回复，但需要持续跟进的问题，由于社区问题较多时，容易遗漏。这时，需要开发者主动跟进，在社区中的原问题中再次跟帖询问，并检测提问是否描述清楚和上传了可重现DEMO，也可将社区中的提问链接粘贴到开发者群里并@管理员。
 
-在学习过程中，如果有高速网络条件的，建议大家查看视频教程，全程跟随式操作，会更加直观和易理解。
+##Step 9: How to Get Official Technical Answers and Guidance
 
-视频地址：[https://layabox.ke.qq.com/](https://layabox.ke.qq.com/)
+In the process of developing practice, developers who are not very familiar with engines will inevitably encounter various engine usage problems. How can they get answers as soon as possible? First of all, don't ask questions directly in the QQ group, because when there are more messages in the QQ group, the questions are easily submerged, and will cause similar questions to be answered repeatedly. Our positioning of QQ group is also a self-help communication between developers and BUG feedback reminder.
+
+We recommend that developers search in the Question and Answer Community (ask. layabox. com), and whether similar issues have been raised or resolved. If there are no similar questions, you can create questions in the community and describe them in detail. The more detailed information you provide, such as code, screenshots, phenomena of the problem, the better to minimize communication costs.
+
+Our core positioning for the community is BUG feedback and processing, so developers have a reproducible BUG, which can be packaged and uploaded to the community. Official technical support personnel will give priority to the BUG issues in the community, and ensure that every BUG question will be answered. Of course, after asking questions, they can also paste the questions in the community into the developer group. And @Administrator.
+
+Questions that have been answered but need to be followed up are easy to be missed due to the large number of community problems. At this time, the developers need to follow up actively, ask again in the original questions in the community, and check whether the questions are clearly described and uploaded with a reproducible DEMO, or paste the questions links in the community into the developer group and @administrator.
+
+In the process of learning, if there are high-speed network conditions, we recommend that you look at video tutorials, follow-up operation throughout the process, will be more intuitive and easy to understand.
+
+Video address:[https://layabox.ke.qq.com/](https://layabox.ke.qq.com/)

@@ -1,6 +1,6 @@
-# RenderTexture概述
+#Overview of RenderTexture
 
 ###### *version :2.1.0   Update:2019-5-25*
 
-渲染纹理是一种特殊纹理，他是将摄影机成像实时渲染转换为材质使用，常用于制作后视镜等相关实时反射的镜面效果，或者显示器，监视器效果。这种材质一种典型的用法在**摄影机篇** -- **目标纹理**（[地址](https://ldc2.layabox.com/doc/?nav=zh-js-4-5-11)）有讲解。
+Rendering texture is a special kind of texture. It converts the real-time rendering of camera imaging into material use. It is often used to produce mirror effects related to real-time reflection, such as rearview mirror, or display and monitor effects. A typical usage of this material**Camera chapter**--**Target texture**([地址](https://ldc2.layabox.com/doc/?nav=zh-js-4-5-11)) There are explanations.
 

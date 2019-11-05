@@ -1,16 +1,18 @@
-# 设置文本基础样式
+#Setting Text Foundation Styles
 
-在我们的一些项目中，文本是会被经常的使用，免不了为这个文本设置字体大小，字体颜色，文本内容等。
+In some of our projects, text is often used. It is unavoidable to set font size, font color, text content, etc. for this text.
 
-我们先做一个最基本的Demo创建一个文本，给这个文本添加文本内容、设置字体颜色（背景默认为黑色，不修改颜色没有效果）。
+Let's first make a basic Demo to create a text, add text content to the text, set font color (the default background is black, no color changes have no effect).
 
-laya.display.text中的关于文本样式的API参数：
+API parameters for text style in laya. display. text:
 
 ![1](img/1.png)</br>
 
 ![2](img/2.png)</br>
 
+
 ```typescript
+
 module laya {
     import Stage = Laya.Stage;
     import Text = Laya.Text;
@@ -40,15 +42,18 @@ export class HelloLayabox {
 new laya.HelloLayabox();
 ```
 
-这个时候我们就可以看到txt已经添加到舞台上了，显示了txt中白色的hello_world。
 
-接着我们给文本添加一些其他的字体样式，粗体、斜体、字体大小等。
+At this point we can see that TXT has been added to the stage, showing the white hello_world in txt.
+
+Then we add some other font styles to the text, such as bold, italic, font size, etc.
 
 ![3](img/3.png)<br/>
 
 ![4](img/4.png)<br/>
 
+
 ```typescript
+
 module laya {
     import Stage = Laya.Stage;
     import Text = Laya.Text;
@@ -89,6 +94,7 @@ module laya {
 new laya.HelloLayabox();
 ```
 
+
 ![5](img/5.png)</br>
 
-这里我们就可以看到字体样式、字体大小有明显的变化，文本框的最外围有一圈浅蓝色的边框，文本区的背景变为红色。有兴趣的话可以修改其中的数值，更深一步的理解这些属性的使用方法。
+Here we can see that the font style, font size has changed significantly. There is a circle of light blue border around the text box, and the background of the text area becomes red. If you are interested, you can modify the values and understand how these attributes are used.

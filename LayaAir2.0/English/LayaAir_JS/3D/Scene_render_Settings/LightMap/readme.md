@@ -1,19 +1,19 @@
-# 光照贴图
+#Illumination map
 
 ###### *version :2.0.1beta   Update:2019-3-19*
 
-光照贴图是场景中3D模型产生的投影、阴影过渡、灯光氛围、模型材质与材质之间的颜色影响等。
+Illumination mapping refers to the projection, shadow transition, lighting atmosphere, color influence between model material and material produced by 3D model in scene.
 
-很少有3D游戏场景是靠灯光与模型即时渲染产生投影及颜色影响，这是非常耗性能的方式，特别又是手机游戏，手机的显卡功能并不强大，全部用即时光影游戏会变得很卡顿。
+Few 3D game scenes rely on lighting and model real-time rendering to produce projection and color effects, which is a very performance-consuming way, especially mobile phone games, mobile phone graphics card function is not strong, all with real-time light and shadow games will become very cartoon.
 
-场景光照贴图就是为了解决这个问题，它是以贴图的方式模拟游戏场景的光影光色，减少大量的即时运算。
+Scene illumination mapping is to solve this problem. It simulates the light, shadow and color of game scenes in the way of mapping, and reduces a lot of real-time operations.
 
-光照贴图建议通过unity3D 编辑器渲染光照贴图并导出使用，加载场景时，引擎会自动加载光照贴图达到较好的效果。
+Illumination mapping is proposed to render and export the illumination mapping through the unity3D editor. When loading the scene, the engine will automatically load the illumination mapping to achieve better results.
 
-如果unity中并未渲染光照贴图，导出后引擎也不会加载报错，但游戏的效果会大打折扣。
+If the lighting map is not rendered in Unity, the engine will not load the error after exporting, but the effect of the game will be discounted.
 
-![](img/1.png)<br>(图1) 未使用光照贴图
+![] (img/1.png)<br> (Fig. 1) No light mapping was used
 
-![](img/2.png)<br>(图2) 使用了光照贴图
+![] (img/2.png)<br> (Figure 2) uses light mapping
 
-> #### 关于导出效果不一致可以对照 “场景渲染配置介绍章” 的相关支持部分。
+>####About the inconsistent export effect, we can refer to the related support part of "Introduction Chapter of Scene Rendering Configuration".

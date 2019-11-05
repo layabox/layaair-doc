@@ -1,6 +1,6 @@
 # attributeMap表格
 
-###### *version :2.3.0   Update:2019-10-8*
+###### *version :2.3.0   Update:2019-11-5*
 
 该表格会列出目前所有会有引擎传入的顶点数据的变量名与对应的顶点通道。
 
@@ -15,7 +15,7 @@
 | 第二个uv坐标               | VertexMesh.MESH_TEXTURECOORDINATE1 |
 | 骨骼权重                   | VertexMesh.MESH_BLENDWEIGHT0       |
 | 骨骼索引                   | VertexMesh.MESH_BLENDINDICES0      |
-| 投影矩阵                   | VertexMesh.MESH_MVPMATRIX_ROW0     |
+| MVP矩阵                    | VertexMesh.MESH_MVPMATRIX_ROW0     |
 | 世界矩阵                   | VertexMesh.MESH_WORLDMATRIX_ROW0   |
 | 定色点                     | VertexMesh.MESH_COLOR0             |
 

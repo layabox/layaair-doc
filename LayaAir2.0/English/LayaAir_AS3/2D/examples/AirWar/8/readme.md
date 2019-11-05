@@ -1,20 +1,22 @@
-# 八、关卡升级与音效播放
+#VIII. Gate Upgrade and Sound Playing
 
 
 
-​	通过上几节课的学习制作，《飞机大战》核心功能全部完成。为了达到更多的游戏趣味性和体验，这节课我们加入关卡升级功能，让游戏的难度逐步增加，玩家的成就感更强。然后加上音效播放，游戏体验感也会更好。
+Through the learning and production of the last few lessons, the core functions of "airplane war" are all completed. In order to achieve more interesting and experience of the game, we add the level upgrade function in this lesson, so that the difficulty of the game gradually increases, and the players'sense of achievement is stronger. Then add sound effects to play, and the game experience will be better.
 
 
 
-### 关卡升级，游戏难度增加
+###Upgraded levels make the game more difficult
 
-关卡升级由玩家获得的积分转换运算，关卡越高，说明玩家操控越好。随着关卡的升级，增强敌机的血量、创建敌机时间缩短、敌机飞行速度加快、数量也逐步增加，这样游戏难度就增加了。
+The higher the level, the better the player controls. With the upgrade of the level, the amount of blood of enemy planes will be increased, the time of creating enemy planes will be shortened, the flying speed of enemy planes will be accelerated, and the number of enemy planes will gradually increase, so that the difficulty of the game will increase.
 
-#### 增加关卡相关属性
+####Adding checkpoint-related attributes
 
-在Main类中增加关卡相关属性。createTime、speedUp、hpUp、numUp、levelUpScore。
+Add level-related attributes to the Main class. CreateTime, speedUp, hpUp, numUp, level UpScore.
+
 
 ```
+
 		//游戏关卡提升属性
 		/***敌人刷新加速****/
 		private var createTime:Number = 0;
@@ -30,11 +32,14 @@
 
 
 
-#### 创建关卡升级计算方法
 
-在主类Main中增加游戏升级方法levelUp()。
+####Calculating method of creating level upgrade
+
+Add the game upgrade method levelUp () to the main class.
+
 
 ```
+
 		/**
 		 游戏升级计算
 		 */
@@ -63,46 +68,49 @@
 
 
 
-#### 主循环中检测关卡升级
 
-如果角色未死亡，那么每帧检测是否关卡升级。
+####Detection level upgrade in main cycle
 
-			/**
-			 游戏主循环
-			 */
-			private function loop():void
-			{
-				//本局游戏数据更新
-				play.update(hero.hp,level,score)
-				//如果主角死亡
-				if(hero.hp<=0)
-				{
-					//玩家飞机死亡后延迟时间，100帧后弹出游戏结束界面
-					this.deathTime++
-					if (this.deathTime>=100)
-					{
-						this.deathTime=0;
-						//游戏结束
-						gameOver();
-						//本方法内后续逻辑不执行
-						return;
-					}
-				}else//主角未死亡
-				{
-					//主角射击
-					hero.shoot();
-					//游戏升级计算
-					this.levelUp();
-				}
-				......
+If the character is not dead, then each frame detects whether the level is upgraded.
+
+* *
+Game Main Cycle
+* /
+Private function loop (): void
+{
+// Game Data Update
+Play. Update (hero. HP, level, score)
+// If the protagonist dies
+If (hero.hp<=0)
+{
+// Delay time after the player's plane dies, after 100 frames pop up the end of the game interface
+This.deathTime++.
+If (this. deathTime > = 100)
+{
+This. deathTime = 0;
+// Game End
+GameOver ();
+// Follow-up logic is not executed in this method
+Return;
+}
+} Other//The protagonist is not dead
+{
+//Main character shooting
+Hero. shoot ();
+//Game upgrade calculation
+This. level Up ();
+}
+...
 
 
 
-#### 创建敌机时，加入升级数据
+####When creating enemy aircraft, add upgrade data
 
-当关卡升级时，创建的敌机参数会有所改变，我们需要在Main类主循环中修改创建敌机部分代码。
+When the level is upgraded, the parameters of the created enemy aircraft will change. We need to modify the code to create the enemy aircraft in the main loop of Main class.
+
 
 ```
+
 			//创建敌机，加入关卡升级数据，提高难度
 			//生成小飞机
 			if (Laya.timer.currFrame % (80 - createTime) ==0)
@@ -123,11 +131,14 @@
 
 
 
-#### 游戏初始化，重置关卡数据
 
-在Main类gameInit()方法中，一定要重置关卡数据。否则重新开始后，上局的关卡数据还留着，UI显示是从上一局数据开始增加，同时一大波超快、血量超厚的飞机会碾向你.....
+####Game initialization, reset level data
+
+In the GameInit () method of Main class, it is necessary to reset the level data. Otherwise, after restarting, the upper level data will remain, UI display will start to increase from the previous level data, while a wave of ultra-fast, super-thick aircraft will roll over to you...
+
 
 ```
+
 		/**
 		 游戏中，游戏初始化
 		 */
@@ -159,29 +170,32 @@
 			......
 ```
 
-修改完所有代码，编译运行可以看到随着积分score的增加，UI中的关卡数level也增加了，同时，敌机的速度、血量等也会越来越高，游戏的难度也变得更大（图1）。重新开始后数据也重新刷新，一切正常。
 
-当然，同学们也可以自己去调整一下升级数据，让你的游戏或更难，或更易。
+After modifying all the code, compiling and running can see that with the increase of integral score, the level of the UI level also increases. At the same time, the speed and blood of the enemy aircraft will become higher and higher, and the difficulty of the game will become greater (Figure 1). After restarting, the data was refreshed and everything was fine.
 
-
-
-![思维导图.png](img/1.png)<br />（图1）
+Of course, students can also adjust their upgrade data to make your game more difficult or easier.
 
 
 
-### 增加游戏音效
+![思维导图.png](img/1.png)<br/> (Fig. 1)
 
-游戏中增加了好的音乐音效，会让一款游戏增色不少。在开始页面GameStart.as中，我们已经加载了游戏音效资源，也把游戏音效sound目录拷贝到了发布目录h5中，因此本节课中我们可以直接使用。
 
-注：提前加载音效可以减少声音的延迟现象。
 
-LayaAir提供了SoundManager类方便管理声音（详情请看API）。其中playSound用来播放声音特效，比如游戏射击声音，击中声音，爆炸声音，UI按钮声音等。playMusic是用来播放背景音乐，两者都可以设置一个url参数和loops播放次数。
+###Increase game sound
 
-下面我们在角色Role类中增加音效播放
+The addition of good music and sound effects in the game will add a lot of color to a game. In GameStart. as, we have loaded the game audio resources and copied the game sound directory to the release directory h5, so we can use it directly in this lesson.
 
-吃道具音效，在eatProp()方法中加入代码
+Note: loading the sound effect in advance can reduce the sound delay.
+
+LayaAir provides the SoundManager class for easy voice management (see API for details). Among them, playsound is used to play sound effects, such as game shooting sound, hitting sound, explosion sound, UI button sound, etc. PlayMusic is used to play background music, both of which can set a URL parameter and loops playback times.
+
+Next, we add audio playback to the Role class
+
+Eat prop sound effect, add code in eatProp () method
+
 
 ```
+
 		/**
 		 * 角色吃到道具，加血或子弹级别
 		 */		
@@ -195,9 +209,12 @@ LayaAir提供了SoundManager类方便管理声音（详情请看API）。其中p
 			......
 ```
 
-发射子弹音效，在shoot()方法中增加代码
+
+Launch bullet sound effect, add code in shoot () method
+
 
 ```
+
 		/**
 		 角色射击，生成子弹
 		 */		
@@ -222,9 +239,12 @@ LayaAir提供了SoundManager类方便管理声音（详情请看API）。其中p
 		}
 ```
 
-角色死亡音效，在lostHp()方法中，播放角色死亡动画处增加死亡音效播放代码
+
+In the lostHp () method, a death sound playing code is added to the place where the character death animation is played.
+
 
 ```
+
 		/**
 		 * 角色失血
 		 */		
@@ -242,15 +262,18 @@ LayaAir提供了SoundManager类方便管理声音（详情请看API）。其中p
 		}
 ```
 
-保存并编译，我们发现，当我们开炮、角色死亡及吃道具时已有音效播放。同学们也可以去找更多更好的音效音乐，让你的游戏更加完美。
+
+Save and compile, we found that when we fired guns, character death and eating props, there were sound effects playing. Students can also find more and better sound effect music to make your game more perfect.
 
 
 
-下面我们把修改后的Main类与Role类代码全部代码全部展示出来。
+Next, we show all the code of the modified Main class and the Role class.
 
-### 主类Main.as全部代码
+###Main. as All Codes
+
 
 ```
+
 package {
 	
 	import laya.display.Sprite;
@@ -610,9 +633,12 @@ package {
 
 
 
-### Role类全部代码：
+
+###All the code of the Role class:
+
 
 ```
+
 package
 {
 	import laya.display.Animation;

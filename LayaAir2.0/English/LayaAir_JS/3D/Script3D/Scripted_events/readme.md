@@ -2,11 +2,13 @@
 
 ###### *version :2.1.0beta   Update:2019-6-26*
 
-前面介绍完了如何创建自定义脚本，然后让我们来看下脚本具体的那些事件。具体的描述可以查看API ([地址](https://layaair.ldc.layabox.com/api2/Chinese/index.html?category=Core&class=laya.d3.component.Script3D))。
+After describing how to create a custom script, let's look at the specific events of the script. Specific descriptions can be viewed in API（[地址](https://layaair.ldc.layabox.com/api2/Chinese/index.html?category=Core&class=laya.d3.component.Script3D))
 
-关于脚本的添加使用这里不做过的讲解，在以往的示例中都有或多或少的使用脚本。关于脚本的官方示例（[demo地址](https://layaair.ldc.layabox.com/demo2/?language=ch&category=3d&group=Script&name=ScriptDemo)）。该示例中对 `onAwake`，`onStart`，`onUpdate`，`onDisable`  进行了接管。在材质加载完成之后，给cube添加了脚本。并且在4秒后执行的移除脚本操作。
+There are more or less scripts used in the previous examples with the explanations not given here for adding scripts. Official examples of scripts（[demo地址](https://layaair.ldc.layabox.com/demo2/?language=ch&category=3d&group=Script&name=ScriptDemo)) In this example, the`onAwake`,`onStart`,`onUpdate`,`onDisable`Take over. After material loading is completed, a script is added to cube. The removal script operation is performed after 4 seconds.
+
 
 ```typescript
+
 /**
  * 创建后只执行,只会执行一次，此时所有节点和组件以及创建完毕
  */
@@ -134,6 +136,7 @@
  */
  onDestroy() {}
 ```
+
 
 
 

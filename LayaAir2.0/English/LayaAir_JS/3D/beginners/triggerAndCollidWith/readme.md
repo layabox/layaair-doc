@@ -1,14 +1,16 @@
-# 触发器与碰撞器过滤器
+#Trigger and Collider Filter
 
-### 1.触发器
+###1. trigger
 
-​       触发器的碰撞范围和碰撞器是一样的，但是它可以穿透，可以作为触发机关，当碰撞发生时，只会触发onTriggerEnter方法，并不会产生物理碰撞的效果。
+The collision range of the trigger is the same as that of the collider, but it can penetrate and act as a trigger mechanism. When the collision occurs, the onTrigger Enter method will only be triggered, and the physical collision effect will not be produced.
 
-​	添加碰撞或者触发器可以在脚本中监听到碰撞或者触发事件，用户需要重写Script3D中的方法。
+Adding collisions or triggers can monitor collisions or triggers in scripts, and users need to rewrite methods in Script3D.
 
-##### 触发器f写方法
+#####Flip-flop f Writing Method
+
 
 ```typescript
+
 		/**
          * 当其他碰撞器进入绑定物体碰撞器时触发（子弹进入物品时）
          * 注：如相对移动速度过快，可能直接越过
@@ -31,9 +33,12 @@
         }
 ```
 
-##### 碰撞器
+
+#####Collider
+
 
 ```typescript
+
 		/**
          * 与触发器相同
          */
@@ -45,17 +50,20 @@
         }
 ```
 
-​	碰撞器与触发器都是分为`Enter`，`stay`，`Exit`三个方法。
 
-​	但是在LayaAir2.0中，碰撞器与触发器所接收到的碰撞事件不同。触发器接收到的是与他碰撞的另一个碰撞组件信息。而碰撞器接收到的事件是一个物理碰撞信息。
+Collider and trigger are divided into`Enter`,`stay`,`Exit`Three methods.
 
-​	**本次使用的示例代码,在第一篇的基础上修改。**新增一个BallScript类，主类没有修改
+But in LayaAir 2.0, colliders and triggers receive different collision events. The trigger receives information about another collision component that collides with it. The event received by the collider is a physical collision information.
 
-##### SceneScript类
+​**The sample code used in this article is modified on the basis of the first one.**Add a ballscript class. The main class has not been modified.
 
-​	**对SceneScript类有部分修改。**
+#####SceneScript class
+
+​**Some modifications have been made to the SceneScript class.**
+
 
 ```typescript
+
 import { BallScript } from "./BallScript";
 export default  class SceneScript extends Laya.Script3D{
         constructor(){
@@ -140,9 +148,12 @@ export default  class SceneScript extends Laya.Script3D{
 
 ```
 
-##### BallScript类
+
+#####BallScript class
+
 
 ```typescript
+
 export class BallScript extends Laya.Script3D{
        constructor(){
            super();
@@ -191,19 +202,22 @@ export class BallScript extends Laya.Script3D{
     }   
 
 ```
-看下效果：
+
+Look at the effect:
 
 ![图](img/1.gif)
 
-同时在控制台确认输出
+Confirm the output at the console at the same time
 
 ![图](img/1.png)
 
-### 2.碰撞器过滤器
+###2. Collider filter
 
-​	在实际的开发中，不可能所有的物体都要和任何其他物体参与碰撞，比如主角自己发射的子弹和自己就不允许碰撞，或者子弹对于队友，这就需要用过滤器，来设置哪些组可以碰撞，哪些组不可以碰撞，下面看代码示例
+In actual development, it is impossible for all objects to collide with any other objects, such as bullets fired by the protagonist himself and not allowed to collide with themselves, or bullets for teammates, which groups can collide and which groups can not collide with filters, see the code example below.
+
 
 ```typescript
+
 ......
 //给球一个名字 方便识别
 sphere.name = "本体球";
@@ -222,13 +236,16 @@ rigid.collisionGroup = Laya.Physics3DUtils.COLLISIONFILTERGROUP_CUSTOMFILTER1;
 ......
 ```
 
+
 ![图](img/2.gif)
 
-​	在实际开发中，还有需求，如：可以与除一组外其他的组发生碰撞。这时就需要通过 **取反** 运算来设置可以碰撞的组。
+In practical development, there are also requirements, such as collision with other groups except one group. Then we need to pass it.**Take inverse**Operate to set collisible groups.
 
-下面给一段比较简单的代码段，还是基于上文的项目。
+Here is a relatively simple code snippet, or based on the project above.
+
 
 ```typescript
+
 ......
 //给球一个名字 方便识别
 sphere.name = "本体球";
@@ -248,12 +265,16 @@ cloneSphere.name = "克隆球";
 ......
 ```
 
+
 ![图](img/3.gif)
 
-​	**如果还需要在去掉一个碰撞组,需要继续取反**
+​**If you need to remove a collision group, you need to continue to reverse it.**
+
 
 ```typescript
+
 	rigid.canCollideWith = Laya.Physics3DUtils.COLLISIONFILTERGROUP_ALLFILTER ^  Laya.Physics3DUtils.COLLISIONFILTERGROUP_CUSTOMFILTER1 ^ Laya.Physics3DUtils.COLLISIONFILTERGROUP_CUSTOMFILTER2;
 ```
+
 
 ![图](img/4.gif)

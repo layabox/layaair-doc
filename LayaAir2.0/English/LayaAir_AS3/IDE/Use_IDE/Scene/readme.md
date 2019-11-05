@@ -1,41 +1,41 @@
 # 场景使用
 
-​      在2.0项目开发中，无论是创建场景Scene，页面View，对话框Dialog，3d场景scene3d，文件类型和后缀都是scene。LayaAir2.0开发思路为组件化，脚本化，场景管理开发，项目采用scene管理方式，来管理场景，LayaAir 已经对scene做了一系列方案，使得开发者无需考虑场景，关卡，页面的资源，内存管理，只需要单纯的调用接口，管理场景，其他的交给引擎去做，只需专注游戏逻辑开发即可。
+In 2.0 project development, whether it is Scene, View, Dialog, scene 3d, file type and suffix are scene. LayaAir 2.0 development ideas for component, scripting, scenario management development, the project uses scene management to manage scenarios, LayaAir has made a series of scenarios for scenes, so that developers do not need to consider scenarios, checkpoints, page resources, memory management, just a simple call interface, management scenarios, other delivery engines to do, just focus on the game logic open. Hair can be.
 
 
 
-新建一个2.0项目，打开编辑模式，在工程中创建两个场景，Start场景中放一个按钮如图所示
+Create a new 2.0 project, open the edit mode, create two scenes in the project, and put a button in the Start scene as shown in the figure.
 
 
 
-![1](img\1.png)(图1)
+![1](img\1.png)(Fig. 1)
 
 
 
-在test目录下创建第二个场景box2d
+Create the second scenario box2d in the test directory
 
-![1](img\2.png)(图1)
+![1](img\2.png)(Fig. 1)
 
-start场景和box2d场景都在laya目录下的pages文件夹内，打开场景只需简单的调用Scene.open("场景名")；
+Start scenario and box2d scenario are both in pages folder under the Laya directory. To open the scenario, simply call Scene. open ("scenario name").
 
-![1](img\3.png)(图1)
+![1](img\3.png)(Fig. 1)
 
-我们将Start脚本，挂载到button上， 在box2d场景中选中button，然后 在右侧 属性 面板中，点击添加组件，然后选择Start.as
+We mount the Start script on the button, select the button in the box 2 D scenario, click Add Component in the right property panel, and then select Start.as.
 
-Start.as代码如上图所示读者自行完成。
+The Start. as code is completed by the reader as shown in the figure above.
 
-然后编辑模式下按 F9 在预览窗口选择启动场景为 Start.scene,点击确定。
+Then in editing mode, press F9 in the preview window to select Start. scene as the startup scenario, and click OK.
 
 ![1](img\4.png)
 
 
 
-然后在编译运行项目，即可看到如下结果，在启动场景中点击start按钮，即可切换场景，
+Then, when you compile and run the project, you can see the following results. Click the start button in the startup scenario to switch the scenario.
 
-更多内容请参照API:
+For more information, please refer to API:
 
-https://layaair.ldc.layabox.com/api2/Chinese/index.html?category=Core&class=laya.display.Scene
+Https://layaair.ldc.layabox.com/api2/China/index.html?Category=Core&class=laya.display.Scene
 
-或者访问社区http://ask.layabox.com
+Or visit the community http://ask.layabox.com
 
 ![1](img\ide.gif)

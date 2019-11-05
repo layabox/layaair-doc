@@ -1,16 +1,19 @@
+#IPv6 on iOS
+Apple enforced the IPv6 standard on June 1, 2016, so when developers release projects, HTTP requests and sockets must use domain names instead of IP addresses.
+Developers need to test IPv6 before submitting appStore. For testing, please refer to Apple's official documents or the following documents:
 
-# 关于iOS的ipv6
-苹果公司在2016年6月1日起，强制执行ipv6标准，所以开发者发布项目的时候，http请求和socket都必须使用域名的方式，不能使用ip地址。  
-开发者在提交appStore前，需要测试ipv6是否正常，测试方法请参考苹果官方文档，或者以下文档：  
   
 
-[ipv6测试方法官方文档](https://developer.apple.com/library/mac/documentation/NetworkingInternetWeb/Conceptual/NetworkingOverview/UnderstandingandPreparingfortheIPv6Transition/UnderstandingandPreparingfortheIPv6Transition.html#//apple_ref/doc/uid/TP40010220-CH213-SW1)  
 
-**友情提示：**  
-1.有很多开发者反映，自己按照苹果官网测试ipv6是OK的，但是仍然被苹果因为ipv6无法访问无情拒绝。出现这种现象，开发者需要更换一台可以兼容ipv6的web服务器。  
-2.如果开发者的服务器架设在中国，苹果在审核的时候访问会非常慢，这个时候也有可能会影响审核。有两种方法可以尝试一下。  
-*    （1）、在国外架设一台服务器，等审核通过后，把域名再指向中国。
-*    （2）、把项目资源打包到本地app中，这样可以避免下载资源。
+
+[ipv6测试方法官方文档](https://developer.apple.com/library/mac/documentation/NetworkingInternetWeb/Conceptual/NetworkingOverview/UnderstandingandPreparingfortheIPv6Transition/UnderstandingandPreparingfortheIPv6Transition.html%3Ch1%3E//apple_ref/doc/uid/TP40010220-CH213-SW1)  
+
+
+**Friendship Tips:**  
+1. Many developers report that they test IPv6 according to Apple's official website is OK, but it is still rejected by Apple because IPv6 can not access relentlessly. In this case, developers need to replace a web server compatible with ipv6.
+2. If the developer's server is set up in China, Apple's access to the audit will be very slow, which may also affect the audit. There are two ways to try.
+* (1) Set up a server abroad and point the domain name to China after approval.
+* (2) Packing project resources into local apps can avoid downloading resources.
 
 
 

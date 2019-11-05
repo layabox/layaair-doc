@@ -1,36 +1,36 @@
-# ShurikenParticleMaterial材质详解
+#Shuriken Particle Material Material Material Details
 
 ###### *version :2.1.0beta   Update:2019-5-14*
 
-ShurikenParticleMaterial粒子材质，所有的粒子都是用使用的这个材质。在导出时，所有的粒子会强制修改。
+Shuriken Particle Material particle material, all particles are used in this material. When exported, all particles are forced to modify.
 
-#### 主要属性和方法详解：
+####Main attributes and methods are described in detail:
 
-> 属性
+> attribute
 
-`renderMode:int` [write-only] 设置渲染模式。
+`renderMode:int`[write-only] Sets the rendering mode.
 
-`color:Vector4` 颜色
+`color:Vector4`colour
 
-`tilingOffset:Vector4` 获取纹理平铺和偏移。
+`tilingOffset:Vector4`Get texture tiling and offset.
 
-`texture:BaseTexture` 漫反射贴图。
+`texture:BaseTexture`Diffuse reflection mapping.
 
-`depthWrite:Boolean` 是否写入深度。
+`depthWrite:Boolean`Write depth or not.
 
-`cull:int`  剔除方式。
+`cull:int`Elimination method.
 
-`blend:int` 混合方式。
+`blend:int`Mixed mode.
 
-`blendSrc:int` 混合源。
+`blendSrc:int`Mixed source.
 
-`blendDst:int` 混合目标。
+`blendDst:int`Mixed targets.
 
-`depthTest:int` 深度测试方式。
+`depthTest:int`Deep test mode.
 
-#### 效果预览:
+####Effect Preview:
 
-（[demo地址](https://layaair.ldc.layabox.com/demo2/?language=ch&category=3d&group=Particle3D&name=Particle_BurningGround)）
+([demo地址](https://layaair.ldc.layabox.com/demo2/?language=ch&category=3d&group=Particle3D&name=Particle_BurningGround))
 
-![](img/1.gif)<br>(图1)
+![] (img/1.gif) <br> (Fig. 1)
 

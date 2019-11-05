@@ -1,19 +1,22 @@
-# 第一个程序：显示文本“Hello Layabox”
-
- **【提示】阅读本文前，必须先阅读《创建JS项目并详解目录结构》。**
+#First program: display text "Hello Layabox"
 
 
-
-步骤一：选中src右键单击，然后左键点击“新建文件”，在src目录下建立一个HelloLayabox.js的文件，并把Main.js的代码全部注释。 .laya文件夹compile.js 里33行 entries: ['src/Main.js'], 修改为entries: ['src/HelloLayabox.js'],把HelloLayabox作为启动类，实际开发为脚本化开发，可以不用改这里，此例子是为了快速熟悉引擎。也可以不改入口，把代码直接写在Main.js里
-
-​	![图片](img/1.png)<br/>
+ **[Tips] Before reading this article, you must first read Create JS Projects and Detail the Directory Structure.**
 
 
 
+Step 1: Select the SRC right-click, then left-click "New File", create a HelloLayabox. JS file in the SRC directory, and annotate the main. JS code. In the compile.js folder of.laya, 33 lines of entries: ['src/Main.js'] are changed to entries: ['src/HelloLayabox.js']. Hello Layabox is used as a startup class and is actually developed as a scripted development without changing it here. This example is to familiarize itself with the engine quickly. You can also write the code directly in Main. JS without changing the entry.
 
-步骤二：点击打开src目录下的HelloLayabox.js，开始编写如下代码：
+​![图片](img/1.png)<br/>
+
+
+
+
+Step 2: Click HelloLayabox. JS in the SRC directory to start writing the following code:
+
 
 ```javascript
+
 //创建舞台，默认背景色是黑色的
 Laya.init(600, 300); 
 var txt = new Laya.Text(); 
@@ -27,15 +30,18 @@ Laya.stage.addChild(txt);
 
 
 
-步骤三：编码完成后保存，按F5编译，在弹出的页面里，我们可以看到代码的运行结果，如下图所示：
-​	![图片](img/2.png)<br/>
+
+Step 3: Save the code after completion, compile it according to F5. In the pop-up page, we can see the result of the code, as shown in the following figure:
+​![图片](img/2.png)<br/>
 
 
 
 
-步骤四：显示成功后，关闭显示窗口。我们继续编写代码，让文字显的美观一些。继续完善代码如下：
+Step 4: Close the display window after the display is successful. We continue to write code to make the text more beautiful. Continue to improve the code as follows:
+
 
 ```java
+
 //创建舞台，默认背景色是黑色的
 Laya.init(600, 300); 
 var txt = new Laya.Text(); 
@@ -60,8 +66,9 @@ Laya.stage.addChild(txt);
 
 
 
-步骤五： 编写完成后保存，再次按F5编译，美化后的运行结果如下图所示：
-​	![图片](img/3.png)<br/>
+
+Step 5: Save after compiling and compile again according to F5. The beautified results are shown as follows:
+​![图片](img/3.png)<br/>
 
 
-　　至此，如果您能跟随本篇入门教程，完成上图的显示，恭喜您入门成功，我们已经完成了第一个采用JavaScript语言开发的LayaAir引擎HTML5程序。更多LayaAir引擎开发的API使用方法，请前往官网Layabox开发者中心查看教程。
+At this point, if you can follow this introductory tutorial, complete the display above, congratulations on your successful introduction, we have completed the first LayaAir engine HTML5 program developed in JavaScript language. For more information on how to use the API for LayaAir engine development, please visit the Layabox Developer Center on the official website for a tutorial.

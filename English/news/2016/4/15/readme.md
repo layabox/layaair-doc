@@ -1,98 +1,97 @@
-# H5引擎性能之王LayaAir 今日发布，HTML5将步入重度精品时代
+#LayaAir, the King of H5 Engine Performance, announced today that HTML5 will enter a period of high-quality products.
 
-2016-04-15 
+2016-04-15
 
-据 DateEye发布的产业数据显示：去年HTML5（以下简称H5）游戏用户规模达到1.75亿、数量超过3000款，成为行业风口，潜力无限，然而H5游戏变现难是所有CP的软肋。参照端游到页游再到手游的发展历程，重度H5是行业壮大与成熟的必经之路。引擎作为游戏的心脏，一旦突破技术限制，实现大型H5流畅运行，无疑将引爆H5游戏产业，前景不可估量。
+According to industrial data released by DateEye, HTML5 (hereinafter referred to as H5) game users reached 175 million last year, with a number of more than 3,000, which has become an industry outlet with unlimited potential. However, the difficulty of realizing H5 games is the weakness of all CPs. Referring to the development process of end-to-page and hand-to-hand swimming, heavy H5 is the only way for the industry to grow and mature. As the heart of the game, the engine will undoubtedly explode the H5 game industry once it breaks through the technical constraints and realizes the smooth operation of the large H5. The future is immeasurable.
 
-​         H5游戏引擎商Layabox，在性能上不断突破，引领H5行业技术发展。并相继推出H5行业的首款大型动作游戏《猎刃2》、首款大型MMORPG《醉西游》、首款大型模拟经营游戏《梦幻家园》等多款媲美APP品质的大作，一次次刷新了游戏行业对H5品质与技术能力的认知。
+Layabox, the H5 game engine maker, has made breakthroughs in performance, leading the technological development of the H5 industry. And successively launched H5 industry's first large-scale action game "Hunting Blade 2", the first large-scale MMORPG "Drunken Journey to the West", the first large-scale simulation business game "Dream Home" and many other major works comparable to the quality of APP, refreshing the game industry's understanding of H5 quality and technical capabilities.
 
 ![图5.png](http://www.layabox.com/uploadfile/image/20160415/1460685931801454.png)
 
-Layabox引擎MMORPG大作《醉西游》H5版
+Layabox Engine MMORPG Masterpiece "Drunken Journey to the West" H5 Edition
 
-​         在经过多款大型H5游戏与超百家H5研发商反复测试磨合后。4月15日，Layabox第二代H5引擎LayaAir正式开放下载。相对上一代引擎，LayaAir在性能、API、工具链等方面做了整体优化，更小、更快、更强！更是可脱离H5运行器插件（runtime）而性能媲美APP的超级H5引擎，全行业一时无两。
+After many large H5 games and more than 100 H5 developers repeated testing run-in. On April 15, Layabox's second-generation H5 engine, LayaAir, was officially launched for download. Compared with previous generations of engines, LayaAir has made overall optimization in performance, API, toolchain, etc., smaller, faster and stronger! It is also a super H5 engine that can be separated from the H5 runtime and comparable to the performance of APP. It is unique in the whole industry.
 
-**四个“唯一” 打造H5游戏最强心脏**
+**Four "Only" to Build the Strongest Heart of H5 Game**
 
-​         不同于手游“渠道为王”，H5游戏正处于“技术为王”的时期。以往，H5游戏受canvas渲染性能的制约，大型游戏裸跑体验时会出现明显的卡顿。因此，各大引擎商纷纷推出runtime插件方案来为H5游戏加速，但仍存在诸多困扰：各家引擎的runtime标准与性能不一、已植入runtime的渠道不足H5总流量渠道的三分之一等……
+Unlike the hand-tour "channel is king", H5 game is in the "technology is king" period. In the past, H5 games were restricted by the rendering performance of canvas, and there were obvious kartons in the bare running experience of large-scale games. As a result, major engine manufacturers have launched runtime plug-in solutions to speed up H5 games, but there are still many problems: the runtime standards and performance of each engine are different, the channels implanted in runtime are less than one third of the total H5 traffic channels, etc.
 
-​         如今，一群疯狂的精英极客终于打造出H5裸跑性能比肩APP的引擎 --- LayaAir。
+Nowadays, a group of crazy elite geeks have finally built the H5 naked running engine, LayaAir, which can compete with APP.
 
 ![标题图.jpg](http://www.layabox.com/uploadfile/image/20160415/1460685807843482.jpg)
-LayaAir引擎4月15日发布
+LayaAir engine released on April 15
 
-   **我们可以用四个唯一概括LayaAir引擎的逆天优势：** 
 
-​        唯一实现H5重度游戏裸跑达到APP性能，并拥有线上案例的商业级开源引擎；
+   **We can use four unique generalizations of LayaAir engine's anti-heavenly advantages:** 
 
-​        唯一覆盖当前所有主流H5开发语言的引擎，支持ActionScript3、TypeScript、JavaScript三种语言以及ES6语言规范的开发；
+It is the only one that achieves the performance of APP by naked running of H5 heavy games and has a commercial open source engine for online cases.
 
-​        唯一使用自身引擎开发IDE工具，实现UI、粒子、骨骼、地图场景、动画等常用开发环境的可视化，极大提升开发者效率，优化工作流；
+The only engine that covers all the current mainstream H5 development languages supports the development of ActionScript 3, TypeScript, JavaScript and ES6 language specifications.
 
-​        唯一实现一次开发，同时发布Flash页游版、APP版（Android、IOS）、H5版的全平台引擎。
+The only IDE tool developed with its own engine can visualize common development environments such as UI, particle, skeleton, map scene and animation, which greatly improves developer's efficiency and optimizes workflow.
 
-​        除此之外，LayaAir还拥有更多亮点：支持2D、3D、VR的开发，并实现开发3D产品时同步发布VR产品，一次投入多处回报；其核心引擎库仅100K左右、运行内存仅占用2M左右，极轻；但是功能性并未打折，包括动画、UI、粒子、骨骼、物理、3D等系统，还具有支持引擎扩展与分包的独家优势，适用于广告、教育、营销等各领域，可以说，极强。LayaAir以巅峰实力吹响了H5游戏与APP游戏同台PK的号角，势必掀起H5引擎领域one is more的新浪潮。
+The only development is implemented once, and Flash Page Swimming Edition, APP Edition (Android, IOS) and H5 Edition of the full platform engine are released at the same time.
 
-**500个传奇动画同屏乱序奔跑**
+In addition, LayaAir has more highlights: supporting the development of 2D, 3D and VR, and synchronously releasing VR products when developing 3D products, with multiple returns at a time; its core engine library is only about 100K, running memory occupies only about 2M, very light; but its functionality is not discounted, including animation, UI, particles, skeleton, physics, 3D and other systems, but also has support citation. The exclusive advantages of expansion and subcontracting are applicable to advertising, education, marketing and other fields, which can be said to be very strong. LayaAir sounded the trumpet of PK in the same stage of H5 and APP games with its peak strength, which is bound to set off a new wave of one is more in the field of H5 engine.
 
-**↓**
+**500 legendary animations running in disorder on the same screen**
+
+**_**
 
 ![图片3.jpg](http://www.layabox.com/uploadfile/image/20160415/1460685819792627.jpg)
-长按识别二维码 体验LayaAir引擎DEMO性能
+Experiencing DEMO Performance of LayaAir Engine by Long Press Recognition Two-Dimensional Code
 
-**深耕重度H5游戏，提供整套生态服务**
+**Deep ploughing heavy H5 game, providing a complete set of ecological services**
 
-​        目前在国内H5的蓝海市场，引擎商已形成三足鼎立的格局。而在大型H5引擎领域，三大引擎商之一的Layabox，一直处于垄断地位，占据90%以上的市场份额，更是国内唯一具备多款大型游戏线上案例的顶级H5引擎，已累计上线超过十款大型H5产品，涵盖ACT、TCG、MMORPG、SLG等，还有大型MOBA类游戏正处于上线前的调优阶段。
+At present, in the domestic H5 blue sea market, engine manufacturers have formed a three-legged pattern. In the field of large H5 engine, Layabox, one of the three major engine manufacturers, has been in a monopoly position, occupying more than 90% of the market share. It is the only top H5 engine with many large game online cases in China. It has more than 10 large H5 products, including ACT, TCG, MMORPG, SLG, etc. and large MOBA games are in the pre-online tuning stage.
 
 ![图片4.jpg](http://www.layabox.com/uploadfile/image/20160415/1460685829397021.jpg)
-LayaAir引擎的大型H5线上游戏《梦幻家园》
+LayaAir Engine's Large H5 Online Game "Dream Home"
 
-​        Layabox第二代引擎LayaAir在正式开放前，就已推出了全球首款H5版大型模拟经营类游戏《梦幻家园》、3D格斗类游戏《武道》DEMO等，完美复刻了PC页游与APP手游华丽的视觉、炫酷的动作、以及非凡的流畅度，代表着H5游戏的最高水准，也代表着LayaAir的引擎成熟度。
+Layaair, the second generation engine of Layabox, has launched the world's first H5 version of the large-scale simulation business game "Dream Home" and the 3-D fighting game "Wudao" DEMO before it was officially opened. It perfectly reproduces the gorgeous vision, cool action and extraordinary fluency of PC page and APP hand swimming, representing the highest level of H5 games and the maturity of LayaAir's engine. Degree.
 
-**LayaAir引擎的大型模拟经营H5游戏《梦幻家园》**
+**LayaAir Engine's Large Simulated Operation H5 Game "Dream Home"**
 
-**↓**
+**_**
 
 ![图片5.jpg](http://www.layabox.com/uploadfile/image/20160415/1460685853999506.jpg)
 
-长按识别二维码  直接打开H5游戏《梦幻家园》体验
+Long Press Recognition Two-Dimensional Code to Open H5 Game "Dream Home" Experience
 
-​        相比手游，H5游戏的渠道更加多元，逐一对接近千家渠道对于cp来说需要耗损极大的时间人力成本。除了提供引擎，Layabox还提供一站式对接与发行服务，覆盖H5游戏研发、发行、运营的所有关键节点，使各大关键环节高效贯通，一次对接，全渠道上线。目前Layabox国内已覆盖超5亿的移动端H5渠道流量，海外覆盖超6亿的移动端渠道流量。 
+Compared with hand-to-hand games, H5 games have more diversified channels, one by one close to a thousand channels for CPs need to consume a lot of time and manpower costs. In addition to providing engines, Layabox also provides one-stop docking and distribution services, covering all the key nodes of H5 game development, distribution and operation, so that the major key links can be efficiently connected, one-time docking, and all channels online. At present, Layabox has covered more than 500 million mobile H5 channel traffic in China and more than 600 million mobile channel traffic overseas.
 
-**抢滩VR领域，布局千亿级市场**
+**VR Fields, Distribution of Billion-Class Markets**
 
-​        随着3D、VR、人工智能的热度渐增，尖端科技的风暴正在孵化中。在未来，单一引擎将逐步被取代。除了持续完善LayaAir 2D引擎，Layabox已抢先发力大型3D和VR的H5引擎和工具链，目前已经拥有H5裸跑的VR和3D游戏DEMO，蓄力备战H5 3D及VR游戏时代，免除研发者对所属领域生命周期的顾虑。 
+With the increasing popularity of 3D, VR and AI, the storm of cutting-edge technology is being hatched. In the future, a single engine will gradually be replaced. In addition to continuing to improve the LayaAir 2D engine, Layabox has taken the lead in large 3D and VR H5 engines and tool chains. Now it has H5 naked running VR and 3D game DEMO, and is ready for the era of H5 3D and VR games, so as to relieve developers of their concerns about the life cycle of their fields.
 
- 
+H5 games have entered the inflection point of big investment, big production and big income. The advent of LayaAir has brought a bursting impact to the game industry: is it no longer rare for multi-million-level H5 games? Will the dividend harvest date of the H5 game come earlier? All doubts need to be verified urgently. Layabox expects to cooperate with more excellent teams to promote the upgrading and development of the H5 industry and focus on the heavy H5 game field.
 
-​        H5游戏已经进入了大投入、大制作、大收入的拐点期，LayaAir的问世为游戏产业带来了炸裂式冲击：是否千万级H5游戏不再罕见？ H5游戏的红利收割期或将提前来袭？一切疑问亟待验证， Layabox期待与更多优秀团队强强联合，凝心推动H5产业升级与发展，聚力掘金重度H5游戏领域。
+**Access and Service of LayaAir Engine**
 
-**LayaAir引擎的获得与服务**
+**LayaAir Engine Download Home Page:**
 
-**LayaAir引擎的下载主页：**
+Http://ldc.layabox.com/
 
-​       http://ldc.layabox.com/
+**The API website of LayaAir Engine:**
 
-**LayaAir引擎的API网址：**
+Http://layaair.ldc.layabox.com/api/
 
-​       http://layaair.ldc.layabox.com/api/
+**Online DEMO for LayaAir Engine:**
 
-**LayaAir引擎的在线DEMO：**
+Http://layaair.ldc.layabox.com/demodemo/
 
-​       http://layaair.ldc.layabox.com/demo/
+**LayaAir Engine Question and Answer Community:**
 
-**LayaAir引擎的问答社区：**
+Http://ask.layabox.com/
 
-​       http://ask.layabox.com/
+**LayaAir Engine's official Wechat Public Number:**
 
-**LayaAir引擎的官方微信公众号：**
+Layabox
 
-​        Layabox
+**The official QQ communication group of LayaAir engine:**
 
-**LayaAir引擎的官方QQ交流群：**
-
-​       104144216
+104144216
 
 ![图片6.jpg](http://www.layabox.com/uploadfile/image/20160415/1460685865878761.jpg)
 
-长按识别二维码  关注Layabox引擎公众帐号
+Focus on Layabox Engine Public Account by Long Press Recognition Two-Dimensional Code

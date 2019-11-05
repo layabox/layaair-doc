@@ -1,51 +1,56 @@
-# 	关于官网下载的DEMO如何使用
+#How to Use DEMO Downloaded on Official Website
 
-​	在新的示例全部测试并且检测过之后才会发布新的官方示例。所以新文档所使用到的示例暂时无法直接在官网示例处查看。
+New official examples will not be released until all new examples have been tested and tested. So for the time being, the examples used in the new document cannot be viewed directly from the official website examples.
 
-​	为了暂时性解决该问题，官方将在使用新示例的处将源码的git地址附带上，需要开发者自行配置地址。
+To solve this problem temporarily, the government will attach the GIT address of the source code where the new example is used, requiring developers to configure the address themselves.
 
-​	在新示例正式发布后文档会同步再更新。
+Documents are updated synchronously after the new example is officially released.
 
-此处将讲解下载到的demo如何使用(如果知道如何使用可以直接跳过该文档)。
+Here's how to use the downloaded demo (skip the document if you know how to use it).
 
-**Tip:**建议开发者在运行下载的示例一直使用一个项目。那样就不用再多次修改资源地址。示例所使用的的资源地址根目录：[资源](<https://github.com/layabox/layaair-demo/tree/master/h5/res/threeDimen>)。
+**Tip:**It is recommended that developers always use a project when running the downloaded example. That way, you don't have to change the resource address many times. The resource address root directory used by the example:[资源](http://localhost/LayaAir2_Auto/%3Chttps://github.com/layabox/layaair-demo/tree/master/h5/res/threeDimen%3E)。
 
-这里我们使用**图形基础篇的Transform**示例来做例子([地址](<https://github.com/layabox/layaair-demo/blob/master/h5/3d/ts/LayaAir3D_Sprite3D/TransformDemo.ts>))。
+Here we use**Transform of Graphics Foundation**Examples（[地址](http://localhost/LayaAir2_Auto/%3Chttps://github.com/layabox/layaair-demo/blob/master/h5/3d/ts/LayaAir3D_Sprite3D/TransformDemo.ts%3E))
 
-拿到代码后，打开ide创建的示例项目。我们将下载到的资源放到`bin/res`目录下。
+When you get the code, open the sample project created by ide. We put the downloaded resources in`bin/res`Under the directory.
 
-![](img/1.png)<br>(图1)
+![] (img/1.png)<br> (Figure 1)
 
-然后在`src/script`文件夹下创建一个新文件。注意名字需要从**地址中复制**。(这里命名为TransformDemo.ts)
+Then in`src/script`Create a new file under the folder. Note that the name needs to be from**Replication in Address**。 (This is called TransformDemo. ts)
 
-![](img/2.png)<br>(图2)
+![] (img/2.png)<br> (Figure 2)
 
-将复制的代码复制进去，如果是使用`git`克隆获取的文件可以直接放到该文件夹下。当然这时候会有不少报错。
+Copy the copied code in, if used`git`Cloned files can be placed directly under the folder. Of course, there will be a lot of mistakes at this time.
 
-先给TransformDemo设置个默认导出。
+Set a default export for TransformDemo first.
+
 
 ```typescript
+
 export default class TransformDemo
     
     ///同时需要注释掉最顶层的
     // new TransformDemo();
 ```
 
-改完后我们发现还有个错误
 
-![](img/3.png)<br>(图3)
+After correcting, we found another mistake.
 
-简单的处理方案是直接注释掉这行和图4这一行，就可以直接运行了。这个脚本是摄影机移动脚本，是方便开放者从各种角度观察示例。（w前进移动，s后退移动，a向左移动，d向右移动，鼠标左键按下拖动可以调整视角）。
+![] (img/3.png) < br > (fig. 3)
 
-![](img/4.png)<br>(图4)
+The simple solution is to comment out this line and Figure 4 directly and run it directly. This script is a camera moving script, which is convenient for the opener to observe the examples from various angles. (w move forward, s move backward, a move left, d move right, the left mouse button can adjust the perspective.
 
-或者我们从common文件夹下找到`CameraMoveScript.ts`拷贝到`scrpit/common`文件夹下。
+![] (img/4.png)<br> (Figure 4)
 
-![](img/5.png)<br>(图)
+Or we can find it under the common folder`CameraMoveScript.ts`copy to`scrpit/common`Under the folder.
 
-在这最后，我们只需要重写`Main.ts`文件就能运行示例了。因为在demo是自带各种初始化的，所以可以直接不用管之前的Main逻辑。我们来看下修改后的Main。
+![] (img/5.png)<br> (figure)
+
+In the end, we just need to rewrite it.`Main.ts`The file will run the example. Because demo comes with all kinds of initialization, you can directly ignore the previous Maine logic. Let's look at the modified Main.
+
 
 ```typescript
+
 import TransformDemo from "./script/TransformDemo";
 class Main {
 	constructor() {
@@ -57,8 +62,9 @@ class Main {
 new Main();
 ```
 
-然后F5运行就能看到效果了。
 
-![](img/6.png)<br>(图6)
+Then F5 runs to see the effect.
 
-**新增新的示例只需要在script文件夹下继续新增示例代码，然后使用main去调起即可。**
+![] (img/6.png)<br> (fig. 6)
+
+**To add a new example, you just need to continue adding the sample code under the script folder, and then use main to call it up.**

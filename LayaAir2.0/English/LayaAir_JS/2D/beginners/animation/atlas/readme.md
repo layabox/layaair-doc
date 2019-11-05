@@ -1,47 +1,49 @@
-# 图集动画运用
+#Application of Atlas Animation
 
-### 1. 图集动画概述
+###1. Overview of Atlas Animation
 
-游戏开发中，动画的运用基本无处不在，LayaAir引擎提供了功能强大的的Animation动画类，它可以使用多种动画资源生成游戏动画。
+In game development, the use of animation is ubiquitous. LayaAir engine provides a powerful animation class, which can use a variety of animation resources to generate game animation.
 
-我们可以用LayaAir IDE创建时间轴动画的方式生成后缀名为“`.ani`”的动画资源，也可以用图集打包动画帧图片的方式，创建后缀名为“`.atlas`”的图集资源，然后赋给动画类去加载使用。
+We can use LayaAir IDE to create timeline animations to generate suffixes called“`.ani`” Animation resources can also be packaged in an atlas to create a suffix named“`.atlas`” Atlas resources are then assigned to the animation class to load and use.
 
-本篇将对图集动画的制作方式进行介绍，如图1所示，示例中实现了图集动画中常用的操作。
+This article will introduce the way of making Atlas animation. As shown in Figure 1, the common operation of atlas animation is realized in the example.
 
-![动图1.gif](img/1.gif)<br/>（图1）
+![动图1.gif](img/1.gif)<br/> (Fig. 1)
 
 
 
-### 2.播放图集动画
+###2. Playing Atlas Animation
 
-#### 2.1 图集资源准备
+####2.1 Atlas Resource Preparation
 
-动画图集资源需注意一些情况，像角色类动画因为帧数较多，一般是一套角色图一个资源，在命名上根据动作名称加帧序号命名（图2）。
+Animation atlas resources need to pay attention to some situations, such as role animation because of the number of frames, generally a set of role maps a resource, naming according to the action name plus frame number (Figure 2).
 
 ![图片2.png](img/2.png)<br/>（图2）
 
-**Tips**：
 
-- IDE中的图集打包工具，会将每一个目录打包为一个图集，详情参考文档《图集制作与使用详解》
-- 特效类动画因为每个特效帧数量不多可以多个特效组合成一张图集资源(放在一个目录内)。
+**Tips**:
 
-通过IDE打包后，会生成3个文件，分别为“.atlas”、“.json”、".png"文件（图3）。动画类Animation通过加载“.atlas”或“.json”文件获得图像资源。建议使用“.atlas”文件（*使用时不需要加入类型设置代码*）。
+##- The Atlas Packaging Tool in IDE will pack each catalog into one atlas. For details, refer to the document "Atlas Production and Use Details"Special effects animation can be combined into an atlas resource (placed in a directory) because of the small number of special effects per frame.
 
-![图片3.png](img/3.png)<br/>（图3）
+After packaging through IDE, three files are generated, namely ". atlas", "json", "png" (Figure 3). Animation obtains image resources by loading'.atlas'or'.json' files. It is recommended to use the ".atlas" file (* you do not need to add type setting code *).
+
+![图片3.png](img/3.png)<br/> (Figure 3)
 
 
 
-#### 2.2 加载动画图集资源
+####2.2 Loading Animation Atlas Resources
 
-通过`laya.display.Animation`类的`loadAtlas()`方法加载角色的图集动画资源，该方法的基础说明如图4所示。
+adopt`laya.display.Animation`Class`loadAtlas()`Method loads the character's cartoon resources. The basic description of this method is shown in Figure 4.
 
-![图4](img/4.png)<br/>（图4）
+![图4](img/4.png)<br/> (Figure 4)
 
-##### 示例代码：
+#####Sample code:
 
-创建入口类AtlasAniDemo.js，并编写代码如下：
+Create the entry class AtlasAniDemo.js and write the following code:
+
 
 ```javascript
+
 //初始化舞台
 Laya.init(1334, 750,Laya.WebGL);
 //创建动画实例
@@ -56,23 +58,27 @@ function onLoaded(){
 
 ```
 
-运行代码，如图5所示。动画已加载到舞台上，默认是未播放状态的。
+
+Run the code, as shown in Figure 5. The animation has been loaded onto the stage and is not played by default.
 
 ![图5](img/5.png) 
 
-(图5)
 
-#### 2.3 播放图集动画
+(Fig. 5)
 
-图集动画使用loadAtlas()方法加载后，需要使用play()方法才可以播放。play()方法的API参数说明如图6所示。
+####2.3 Play Atlas Animation
 
-![图片6.png](img/6.png)<br/>（图6）
+After loadAtlas () method is used to load the set animation, the play () method is needed to play it. The API parameters of the play () method are illustrated in Figure 6.
 
-我们继续沿用之前的示例，在onLoaded方法中添加play()。
+![图片6.png](img/6.png)<br/> (Fig. 6)
 
-onLoaded方法中的代码如下所示
+We continue with the previous example by adding play () to the onLoaded method.
+
+The code in the onLoaded method is as follows
+
 
 ```javascript
+
 function onLoaded(){
     //添加到舞台
     Laya.stage.addChild(this.roleAni);
@@ -81,27 +87,31 @@ function onLoaded(){
 }
 ```
 
-运行完整的代码如动图7所示
+
+Run the complete code as shown in Figure 7
 
 ![动图7](img/7.gif) 
 
-(动图7)
 
-#### 2.4 用createFrames创建动画模板来播放图集中指定的动画。
+(Fig. 7)
 
-如果图集中是独立的序列帧动画，直接使用play()方法就可以播放了。但是，将多个动画打包到一个图集里，如果要播放指定的动画，那就需要通过创建动画模板来实现。动画模板的方法是`Animation.createFrames()`， 如图8所示。
+####2.4 Create animation templates with createFrames to play the animations specified in the atlas.
 
-![图片8](img/8.png)<br/>（图8）
+If the image set is an independent sequential frame animation, you can play it directly using the play () method. However, to package multiple animations into one atlas, if you want to play the specified animation, you need to create an animation template. The method of animation template is`Animation.createFrames()`As shown in Figure 8.
 
-##### 创建动画模板的作用
+![图片8](img/8.png)<br/> (Figure 8)
 
-我们回顾一下`play()`方法的第三个参数`name`。当我们将图集中的某组动画资源创建为动画模版，并给予模板命名后，`play()`方法的name参数就可以使用动画模版的命名，然后通过指定动画模板的名称来实现指定动画的播放。
+#####The role of creating animation templates
 
-下面我们继续沿用之前的示例，通过创建动画模板来实现只播放图集中的眩晕效果。
+Let's look back.`play()`The third parameter of the method`name`。 When we create a group of animation resources in the graph set as an animation template and give the template a name,`play()`The name parameter of the method can use the name of the animation template, and then specify the name of the animation template to play the specified animation.
 
-代码编写如下：
+Now let's continue with the previous example by creating animation templates to achieve the Vertigo effect of playing only the atlas.
+
+The code is as follows:
+
 
 ```javascript
+
 //初始化舞台
 Laya.init(1334, 750,Laya.WebGL);
 //创建动画实例
@@ -131,27 +141,32 @@ function aniUrls(aniName,length){
 }
 ```
 
-代码运行效果如动图9所示，只播放了图集中设置了动画模板的动作。
+
+The effect of the code is shown in Figure 9. Only the action of setting the animation template in the atlas is played.
 
 ![动图9](img/9.gif) 
 
-(动图9)
 
-Tips：尽管把每一组动作单独打包成图集，也可以直接播放。但是对于动作较少的动画资源去单独打成图集，会增加资源加载量以及增加游戏性能的消耗。所以将帧数不多的多组动画打包到一个图集中，然后分别调用是推荐的方式。
+(Fig. 9)
+
+Tips: Although each set of actions is packaged separately into an atlas, they can also be played directly. However, for less action animation resources to make a separate atlas, it will increase the load of resources and increase the consumption of game performance. So it is recommended to pack a small number of animations into a single atlas and then call them separately.
 
 
 
-#### 2.5 用loadImages直接播放图集中指定的动画
+####2.5 Play animations specified in the atlas directly with loadImages
 
-除了用静态方法`createFrames()`创建动画模板外，还可以用loadImages()方法来实现播放图集中指定的眩晕动画效果。我们先看一下`loadImages()`的方法参数说明，如图10所示。
+In addition to using static methods`createFrames()`In addition to creating animation templates, loadImages () can also be used to achieve vertigo animation effects specified in the playback atlas. Let's take a look first.`loadImages()`Method parameters are described as shown in Figure 10.
 
 ![图10](img/10.png) 
 
-(图10)
 
-由于loadImages()创建动画模板，urls接收的是图片地址集合，所以我们需要先使用Laya.loader.load()将图集文件先加载进来。下面我们直接看示例代码及注释。
+(FIG. 10)
+
+Because loadImages () creates an animation template, URLs receive a collection of image addresses, so we need to load the atlas file first using Laya. loader. load (). Let's look directly at the sample code and comments.
+
 
 ```javascript
+
 //初始化舞台
 Laya.init(1334, 750,Laya.WebGL);
 //加载完动画的图集后执行回调方法onLoaded
@@ -179,35 +194,36 @@ function aniUrls(aniName,length){
 }
 ```
 
-代码运行效果如动图11所示
+
+The code runs as shown in Figure 11.
 
 ![动图11](img/11.gif) 
 
-(动图11)
 
-**Tips**：
+(FIG. 11)
 
-- loadImage方法也可以创建动画模板，例如将上面加载与播放改写为`roleAni.loadImages(aniUrls("move",6),"walk").play();`，第二个参数的值“walk”就是动画模板的名称（*key*）。
-- 当被多次使用的时候，使用动画模板可以节省CPU的开销，但是，如果只是偶尔或一次使用，那就不要使用动画模板，因为节省CPU开销是以牺牲一定的内存开销为代价。
+**Tips**:
+
+##- The loadImage method can also create animation templates, such as rewriting the load and play above to`roleAni.loadImages(aniUrls("move",6),"walk").play();`The value of the second parameter "walk" is the name of the animation template (* key*).When used many times, using animation templates can save CPU overhead, but if used only occasionally or once, do not use animation templates, because saving CPU overhead is at the expense of a certain amount of memory overhead.
 
 
 
-### 3、其它说明
+###3. Other Descriptions
 
-#### 3.1 API
+####3.1 API
 
-图集动画的常用API本篇就介绍到这里，关于其它的Animation动画属性介绍可以查看API文档：
+This article introduces the common API of Atlas Animation, and you can see the API documentation about other animation attributes:
 
-动画播放基类：
+Animation playback base class:
 
 [https://layaair.ldc.layabox.com/api/?category=Core&class=laya.display.AnimationPlayerBase](https://layaair.ldc.layabox.com/api/?category=Core&class=laya.display.AnimationPlayerBase)
 
-动画类：
+Animation class:
 
 [https://layaair.ldc.layabox.com/api/?category=Core&class=laya.display.Animation](https://layaair.ldc.layabox.com/api/?category=Core&class=laya.display.Animation)
 
 
 
-#### 3.2 IDE制作图集动画
+####3.2 IDE Making Atlas Animation
 
-关于图集动画可以在IDE设计UI的时候，直接使用Animation组件去制作。这样，可视化的部分会更加直观。关于图集动画的IDE制作部分，可以查看 `Animation组件属性详解`  以及  `用LayaAirIDE制作图集动画` 这两篇文档。
+With regard to atlas animation, you can use the Animation component directly when designing UI in IDE. In this way, the visual part will be more intuitive. About the IDE production part of the Atlas Animation, you can see`Animation组件属性详解`as well as`用LayaAirIDE制作图集动画`These two documents.

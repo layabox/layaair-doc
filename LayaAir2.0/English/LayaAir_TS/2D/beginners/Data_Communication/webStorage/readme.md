@@ -1,20 +1,22 @@
-# Web Storage数据存储
+#Web Storage Data Storage
 
-HTML5提供了两种在客户端存储数据的新方法：
+HTML5 provides two new ways to store data on the client side:
 
-**localStorage - 没有时间限制的数据存储**
+**Local Storage - Data Storage without Time Limits**
 
-**sessionStorage - 针对一个session的数据存储**
+**Session Storage - Data Storage for a Session**
 
-存储在sessionStorage里边的数据会在浏览器会话（browsing session）结束时被清除，即浏览器关闭时。
+The data stored in the session store is cleared at the end of the browsing session, when the browser is closed.
 
-之前，这些都是由cookie完成的。但是Cookie大小限制在4k，不适合大量数据的存储，而且它们由每个对服务器的请求来传递，这使得Cookie速度很慢而且效率也不高。Cookie的作用是与服务器进行交互，作为HTTP规范的一部分而存在，而Web Storage仅仅是为了在本地“存储”数据而生。
+Previously, these were done by cookies. But the size of cookies is limited to 4k, which is not suitable for storing large amounts of data, and they are transmitted by each request to the server, which makes cookies slow and inefficient. Cookie's role is to interact with the server as part of the HTTP specification, while Web Storage is only created to "store" data locally.
 
-在HTML5中，数据不是由每个服务器请求传递的，而是只有在请求时使用数据。它使在不影响网站性能的情况下存储大量数据成为可能。
+In HTML5, data is not passed by each server request, but only used when requested. It makes it possible to store large amounts of data without affecting the performance of the website.
 
-对于不同的网站，数据存储于不同的区域，并且一个网站只能访问其自身的数据。因此本地数据的存储我们完全可以用LocalStorage。LayaAir引擎对LocalStorage进行了简单的封装，对应的类是LocalStorage。下面通过简单的例子来看下它是如何使用的。
+For different websites, data is stored in different areas, and a website can only access its own data. So we can use Local Storage to store local data. The LayaAir engine simply encapsulates the Local Storage, and the corresponding class is Local Storage. Here's a simple example of how it works.
+
 
 ```java
+
 // 程序入口
 class LayaSample{
     constructor()
@@ -30,15 +32,18 @@ class LayaSample{
 new LayaSample();
 ```
 
-在chrome中运行之后按快捷键F12，结果如下图所示：
+
+After running in chrome, press the shortcut key F12, and the results are as follows:
 
 ![1](img/1.png)<br/>
 
-从图中我们可以看到刚才的数据都存储进去了
+From the figure, we can see that all the data we have just stored are in it.
 
-下面我们对这些数据进行清除，代码如下所示：
+Next, we clean up the data. The code is as follows:
+
 
 ```java
+
 Laya.LocalStorage.setItem("key","hello");
 var data:any = {"index":0,"index1":1};
 var str:string = JSON.stringify(data);
@@ -47,25 +52,32 @@ Laya.LocalStorage.setItem("item",str);
 Laya.LocalStorage.removeItem("data");//清除数据
 ```
 
-通过添加代码LocalStorage.removeItem("data");将键值为data的数据进行清空，编译运行之后发现data数据就没有了。如下图所示：
+
+By adding the code LocalStorage. removeItem ("data"); clearing the data whose key value is data, the data is lost after compiling and running. As shown in the following figure:
 
 ![2](img/2.png)<br/>
 
-如果我们需要把所有的数据都清理掉，在原有代码的最后添加一行代码即可：
+If we need to clean up all the data, we can add a line of code at the end of the original code.
+
 
 ```java
+
 Laya.LocalStorage.clear();
 ```
 
-编译之后就会发现之前域名下存储的所有数据都消失了，如下图所示：
+
+After compiling, you will find that all the data stored in the previous domain name has disappeared, as shown in the following figure:
 
 ![3](img/3.png)<br/>
 
-sessionStorage在LayaAir引擎中暂时没有封装，但完全可以直接使用。下面展示下在LayaAir中怎么用sessionStorage。下面这个例子就是一个页面计数器，对用户在当前session中访问页面的次数进行计数：
 
-打开LayaAirIDE创建一个空项目。具体代码如下所示：
+Session Storage is not encapsulated in LayaAir engine for the time being, but it can be used directly. Here's how to use session Storage in LayaAir. The following example is a page counter that counts the number of times a user visits a page in the current session:
+
+Open LayaAirIDE to create an empty project. The specific code is as follows:
+
 
 ```java
+
 // 程序入口
 class LayaSample{
     constructor()
@@ -85,8 +97,9 @@ class LayaSample{
 new LayaSample();
 ```
 
- var sessionStorage:any = Laya.Browser.window.sessionStorage;这句话的意思就是获取当前页面中的sessionStorage会话对象。
+
+Var session Storage: any = Laya. Browser. window. session Storage; this sentence means to get the session Storage session object in the current page.
 
 
 
-这里的逻辑就是判断当前会话对象是否存在pagecount属性，不存在就是第一次打开设置为1，存在的话就是已经打开，进行累加。并且输出累加次数。编译这个文件，然后用谷歌运行，F12打开控制台发现输出的是1，然后我们不断的刷新页面发现输出的次数在不断累加。然后我们关闭谷歌浏览器，重新打开这个页面发现此时输出的又是1，不断刷新页面次数又在累加。由此我们可以看出sessionStorage是会话级别的存储对象。关闭浏览器就会消失。
+The logic here is to determine whether the current session object has pagecount attribute. If it does not exist, it will be set to 1 for the first time. If it exists, it will be opened and accumulated. And output the cumulative number of times. Compile this file and run it on Google. F12 opens the console and finds that the output is 1. Then we constantly refresh the page and find that the output is accumulating. Then we shut down Google Browser and reopen the page to find that the output is 1, and the number of page refreshes is accumulating. From this we can see that session Storage is a session-level storage object. Close the browser and it will disappear.

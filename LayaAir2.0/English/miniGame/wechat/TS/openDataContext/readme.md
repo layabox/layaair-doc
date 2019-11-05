@@ -1,3 +1,3 @@
-# 微信开放数据域使用指南
+#Wechat Open Data Domain Usage Guide
 
-本篇文档正在撰写中，会尽快更新。尽请关注。
+This document is being written and will be updated as soon as possible. Please pay attention.

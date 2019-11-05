@@ -1,95 +1,114 @@
-# 设计模式界面概述
+#Overview of Design Pattern Interface
 
-​         LayaAirIDE分为设计模式，编码模式等多个模块组成。本章节中将介绍设计模式的常用布局及功能区，快速浏览各个面板组成的名称和作用。
+LayaAirIDE is composed of design mode, coding mode and other modules. In this chapter, we will introduce the common layout and functional areas of design patterns, and quickly browse the names and functions of each panel.
 
-​	 ![blob.png](img/1.png)<br/>
-​	（图1）
-
-
-
-### 一、模式导航栏：
-
-​        模式转换按钮功能可以便捷的在界面模式与代码编辑模式间切换
-
-​	 ![blob.png](img/2.png)<br/>
-​	（图2）
+​![blob.png](img/1.png)<br/>
+(Fig. 1)
 
 
 
-### 二、菜单栏:
+###1. Mode Navigation Bar:
 
-​        菜单栏上包括了程序操作集合、界面操作、控件操作命令以及工具集合等，详情请阅读菜单栏介绍一节。
+The mode conversion button function can be easily switched between the interface mode and the code editing mode.
 
-​	![blob.png](img/3.png)<br/>
-​	（图3）
+​![blob.png](img/2.png)<br/>
+
+(Figure 2)
+
+
+
+###2. Menu bar:
+
+The menu bar includes program operation set, interface operation, control operation command and tool set. For more information, please read the introduction section of the menu bar.
+
+​![blob.png](img/3.png)<br/>
+(Figure 3)
+
+
 
  
 
-### 三、工具栏：
-
-​        工具栏上包括了文件操作、控件操作和场景操作按钮，详情请阅读工具栏介绍一节。
-​	![blob.png](img/4.png)<br/>
-​	（图4）
 
 
+###3. Toolbar:
 
-### 四、项目管理器:
+The toolbar includes file manipulation, control manipulation and scene manipulation buttons. For more information, please read the toolbar introduction section.
+​![blob.png](img/4.png)<br/>
+(Figure 4)
 
-​        项目管理器中显示了项目中所有建立的页面(Page),这里会以树状结构来显示,您可以在项目管理器中通过双击来打开要编辑的页面，详情请阅读项目管理器一节.
 
-​	![blob.png](img/5.png)<br/>
-​	（图5）
 
- 
+###Project Manager:
 
-### 五、资源管理器：
+The project manager displays all the established pages (Pages) in the project, which are displayed in a tree structure. You can double-click in the project manager to open the page you want to edit. For more information, please read the Project Manager section.
 
-​        资源管理器里显示了项目资源文件夹（ assets ）中的所有资源。这里会以树状结构显示文件夹中的资源内容。您可以使用右键打开所在文件夹进行资源添加。详情请阅读资源管理器一节。
+​![blob.png](img/5.png)<br/>
+(Fig. 5)
 
-​	![blob.png](img/6.png)<br/>
-​	（图6）
+
 
  
 
-### 六、场景编辑器：
 
-​        场景编辑器是用来展示和编辑UI或动画场景中可视内容的工作区域。所见既所得的场景搭建工作都依靠场景编辑器的显示来完成。详情请阅读场景编辑器一节。
 
-​	![blob.png](img/7.png)<br/>
-​	（图7）
+###Resource Manager:
+
+All resources in the project resources folder (assets) are displayed in the resource manager. The resource content in the folder is displayed in a tree structure. You can use the right-click to open the folder where you are located to add resources. Read the Resources Manager section for details.
+
+​![blob.png](img/6.png)<br/>
+
+(Fig. 6)
+
+
+
+ 
+
+
+
+###6. Scene Editor:
+
+Scene Editor is a working area for displaying and editing visual content in UI or animated scenes. Scenario construction depends on the display of scene editor. Read the Scene Editor section for details.
+
+​![blob.png](img/7.png)<br/>
+(Figure 7)
+
+
 
   
 
-### 七、属性设置器：
-
-​        属性设置器是我们查看并编辑当前选中节点和组件属性的工作区域，这个面板会以最适合的形式展示和编辑选中控件的属性数据。详情请阅读属性设置器一节。
-
-​	![blob.png](img/8.png)<br/>
-​	（图8）
 
 
+###7. Attribute Setter:
 
-### 八、层级管理器：
+The property setter is the area where we view and edit the properties of the currently selected node and component. This panel will display and edit the property data of the selected control in the most appropriate form. Read the Property Setters section for details.
 
-​        层级管理器用树状列表的形式展示场景中的所有节点和他们的层级关系，所有在场景编辑器中看到的内容都可以在层级管理器中找到对应的节点条目，在编辑场景时这两个面板的内容会同步显示，一般我们也会同时使用这两个面板来搭建场景。详情请阅读层级管理器一节。
-
-​	![blob.png](img/9.png)<br/>
-​	（图9）
+​![blob.png](img/8.png)<br/>
+(Figure 8)
 
 
 
-### 九、时间轴动画编辑器：
+###8. Hierarchical Manager:
 
- 时间轴动画编辑器用来在页面里创建时间轴动画。帧属性面板用于显示设置时间轴上的帧详情。详细用法请阅读时间轴动画编辑器一节。
+Hierarchical Manager displays all nodes and their hierarchical relationships in the scene in the form of a tree list. All the content seen in the scene editor can find the corresponding node entries in the hierarchical manager. When editing the scene, the contents of the two panels will be displayed synchronously. Generally, we also use the two panels to build the scene at the same time. Read the Hierarchy Manager section for details.
 
-​	![1.png](img/10.png)<br/>
-​	（图10）
+​![blob.png](img/9.png)<br/>
+(Figure 9)
 
 
 
-### 十、粒子编辑器：
+###9. Time-axis Animation Editor:
 
-粒子编辑器用来在页面里创建粒子动画。粒子属性面板用于显示设置粒子的属性详情。详细用法请阅读粒子编辑器一节。
+The timeline animation editor is used to create timeline animation in the page. The frame attribute panel is used to display the frame details on the set timeline. Read the Timeline Animation Editor section for more details.
 
-​	![blob.png](img/11.gif)<br/>
-​	（图11）
+​![1.png](img/10.png)<br/>
+
+(Fig. 10)
+
+
+
+###X. Particle Editor:
+
+The particle editor is used to create particle animation on the page. The particle properties panel is used to display the details of setting the properties of the particle. Read the Particle Editor section for more details.
+
+​![blob.png](img/11.gif)<br/>
+(Fig. 11)

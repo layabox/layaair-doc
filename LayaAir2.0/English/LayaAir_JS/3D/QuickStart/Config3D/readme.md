@@ -1,53 +1,58 @@
 # 	Config3D介绍
 
-###### *version :2.1.1   Update:2019-7-19*
+###### *version :2.2.0  Update:2019-8-24*
 
-### Config3D相关介绍
+###Introduction to Config3D
 
-该类用于创建3D初始化设置
+This class is used to create 3D initialization settings
 
-| 属性                |                          | 数据类型 | 默认值  |
-| ------------------- | ------------------------ | -------- | ------- |
-| isAntialias         | 是否开启抗锯齿           | Boolean  | true    |
-| isAlpha             | 画布是否透明             | Boolean  | false   |
-| premultipliedAlpha  | 设置画布是否预乘         | Boolean  | true    |
-| isStencil           | 设置画布是否开启模板缓冲 | Boolean  | true    |
-| octreeCulling       | 是否开启八叉树裁剪       | Boolean  | false   |
-| octreeInitialSize   | 八叉树初始化尺寸         | Number   | 64.0    |
-| octreeInitialCenter | 八叉树初始化中心         | Vector3  | (0,0,0) |
-| octreeMinNodeSize   | 八叉树最小尺寸           | Number   | 2.0     |
-| octreeLooseness     | 八叉树松散值             | Number   | 1.25    |
-| debugFrustumCulling | 是否开启视锥裁剪调试     | Boolean  | false   |
+| Property | | Data Type | Default Value|
+| -----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
+| isAntialias | Whether to turn on anti-aliasing | Boolean | true|
+| isAlpha | Canvas Transparency | Boolean | false|
+| premultiplied Alpha | Sets whether the canvas is pre-multiplied | Boolean | true|
+| isStencil | Sets whether the canvas opens template buffer | Boolean | true|
+| octreeCulling | Open Octree Cutting | Boolean | false|
+| octree Initial Size | Octree Initial Size | Number | 64.0|
+| octree Initial Center | Octree Initial Center | Vector 3 | (0, 0, 0)|
+| octreeMinNodeSize | Octree Minimum Size | Number | 2.0|
+| octree Looseness | Octree Looseness | Number | 1.25|
+| debug Frustum Culling | Open Cone Cutting Debugging | Boolean | false|
 
-**注意：**
+**Attention should be paid to the tailoring and debugging of cones:**
 
-如果开启八叉树裁剪,使用红色绘制高层次八叉树节点包围盒,使用蓝色绘制低层次八叉节点包围盒,精灵包围盒和八叉树节点包围盒颜色一致,但Alpha为半透明。如果视锥完全包含八叉树节点,八叉树节点包围盒和精灵包围盒变为蓝色,同样精灵包围盒的Alpha为半透明。
+If octree clipping is turned on, high-level octree node bounding boxes will be drawn using red pixels. If the cone contains all octree nodes, the octree node bounding box and the spiritual bounding box become blue. Pixel lines of octree nodes that are not fully included will calculate a color based on the depth value. The color of the Elvish bounding box is the same as that of the octree node bounding box, but the pixel line of the octree node bounding box is translucent.
 
-如果不开启八叉树裁剪,使用绿色像素线绘制精灵包围盒。
+![] (img/1.png)<br> (Figure 1) uses octree pruning
 
+If the octree clipping is not turned on, the wizard bounding box will be drawn using green pixel lines.
 
+![] (img/2.png)<br> (Figure 2) No octree pruning was used.
 
 > Method Detail
 
- `defaultPhysicsMemory` 物理功能初始化内存，单位为M。
 
-注意：内存必须大于16M
+ `defaultPhysicsMemory`Physical function initializes memory in M.
 
-​		**Implementation**
+Note: Memory must be greater than 16M
 
-​		public  function  set  defaultPhysicsMemory( value : int ) : void
+​**Implementation**
 
-​		public  function  get  defaultPhysicsMemory() : int
+Public function set defaultPhysics Memory (value: int): void
+
+Public function get defaultPhysics Memory (): int
 
 
 
-### 如何设置Config3D
+###How to Set Config3D
 
-首先创建好一个config3D，设置好需要的参数后，在Laya3D初始化时使用。
+Firstly, a config3D is created. After setting the required parameters, it is used in Laya3D initialization.
+
 
 ```typescript
+
 //创建一个config3D
-var _config = new Config3D();
+var _config:Config3D = new Config3D();
 //设置不开启抗锯齿
 _config.isAntialias = false;
 //设置画布不透明
@@ -56,4 +61,5 @@ _config.isAlpha = false;
 Laya3D.init(0, 0, _config);
 ```
 
-**注意：Config一旦设置好后就不能再修改了。必须在一开始就设置好。**
+
+**Note: Config3D can't be modified once it's set up. It must be set up at the beginning.**

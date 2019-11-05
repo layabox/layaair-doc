@@ -1,3 +1,3 @@
-这就是一个全景图，类似地图那样把一个球上面的图片展平。  
-![](panorama.png)
+This is a panorama that flattens the picture on a ball like a map.
+! [] (panorama. png)
 

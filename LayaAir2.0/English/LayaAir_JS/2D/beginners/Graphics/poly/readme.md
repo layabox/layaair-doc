@@ -1,19 +1,21 @@
-# 绘制三角形、多边形及根据数据绘制图案
+#Drawing triangles, polygons and patterns based on data
 
 
 
-​        在绘制三角形、多边形以及根据指定的路径数据绘制出图案均可使用LayaAir引擎中laya.display.Graphics类的“drawpoly();”方法实现。该方法的详细说明如下图所示：
+Drawing triangles, polygons and patterns based on specified path data can be realized by using the "drawpoly ();" method of LayaAir engine laya.display.Graphics class. A detailed description of the method is shown in the following figure:
 
-​	![blob.png](img/1.png)<br/>
-​	（图1）
+​![blob.png](img/1.png)<br/>
+(Fig. 1)
 
 
 
-### 一、绘制三角形
+###I. drawing triangles
 
-下面我们用LayaAir引擎先绘制一个三角形，示例代码如下：
+Let's start by drawing a triangle with the LayaAir engine. The sample code is as follows:
+
 
 ```javascript
+
 (function()
 {
     var Sprite = Laya.Sprite;
@@ -38,40 +40,46 @@
 })();
 ```
 
-代码运行效果如下图所示：
 
-​	![blob.png](img/2.png)<br/>
-​	（图2）
+The code runs as shown in the following figure:
 
-​        通过代码，我们可以看出，drawPoly第三位参数的“0，100”是A点坐标。“50，0”是B点坐标。“100, 100”是C点坐标，将三个坐标点连接后填充第四位参数的颜色值，即绘制出上图的黄色三角形。但是这里需要大家理解和注意的是，第三位参数中所有的坐标都是相对坐标，都会受到第一位和第二位坐标参数“30，28”的影响。一旦“30，28”产生改变，整体形状位置都会受到影响。
+​![blob.png](img/2.png)<br/>
+(Figure 2)
 
-
-
+From the code, we can see that the "0,100" of the third parameter of drawPoly is the coordinate of point A. "50, 0" is the coordinate of point B. "100, 100" is the coordinate of C point. After connecting the three coordinate points, fill in the color value of the fourth parameter, that is to say, draw the yellow triangle of the picture above. But what we need to understand and pay attention to here is that all coordinates in the third parameter are relative coordinates, which will be affected by the first and second coordinate parameters "30,28". Once the "30, 28" changes, the overall shape and position will be affected.
 
 
-### **二、绘制多边形**
 
-​        我们继续用上面的代码示例，通过增加drawPoly第三位参数的坐标，来实现多边形的绘制，修改的代码如下：
+
+
+### **Drawing Polygons**
+
+We continue to use the above code example to draw polygons by adding coordinates of the third parameter of drawPoly. The modified code is as follows:
+
 
 ```javascript
+
 //画多边形
 sp.graphics.drawPoly(30, 28, [0, 100, 50, 0, 100, 100, 75, 150, 25, 150], "#ffff00");
 ```
 
-代码运行效果如下图所示：
 
-​	![blob.png](img/3.png)<br/>
-​	（图3）
+The code runs as shown in the following figure:
 
-​        在修改的代码中，新增了D点坐标”75，150“与E点坐标”25，150“。通过将各个坐标点连接填充颜色后，即绘制出我们想要的多边形。要绘制更多边的多边形，按上述方式增加坐标点即可。
+​![blob.png](img/3.png)<br/>
+(Figure 3)
+
+In the revised code, the D-point coordinates 75, 150 and E-point coordinates 25, 150 are added. By connecting the coordinate points and filling the color, we can draw the polygon we want. To draw polygons with more edges, add coordinate points in the above way.
 
 
 
-### **三、根据指定的路径数据绘制出图案**
+### **3. Drawing patterns according to specified path data**
 
-​        通过上面的三角形和多边形，我们已经掌握了drawPoly的绘图用法，下面再通过示例深入介绍一下，如何指定路径绘制一个五角星。示例代码如下：
+Through the triangles and polygons above, we have mastered the drawing usage of drawPoly. Next, we will show you how to draw a Pentagon by specifying a path through an example. The sample code is as follows:
+
 
 ```javascript
+
 (function()
 {
     var Sprite = Laya.Sprite;
@@ -111,40 +119,41 @@ sp.graphics.drawPoly(30, 28, [0, 100, 50, 0, 100, 100, 75, 150, 25, 1
 })();
 ```
 
-代码运行效果如下图所示：
 
-​	![blob.png](img/4.png)<br/>
-​	（图4）
+The code runs as shown in the following figure:
 
-​        通过上面的示例代码的写法，是不是感觉代码的可读性得到了增强，大家也可以将之前的三角形或多边形改成这种方式去体验一下，掌握了这些基础，可以衍生出很多灵活的用法，比如数据来自服务端等。
+​![blob.png](img/4.png)<br/>
+(Figure 4)
 
-
-
-### 四、用LayaAirIDE通过控件绘制不规则图形（包括三角形，多边形）
+Through the above example code writing, do you feel that the readability of the code has been enhanced, you can also change the previous triangle or polygon into this way to experience, grasp these foundations, can derive a lot of flexible usage, such as data from the server.
 
 
 
-**步骤一：**打开我们的LayaAirIDE，点击设计模式，新建一个View页面
-
-​	![6](img/5.png)<br/>
-​   	（图5）  
-
-**步骤二：**将组件中的曲线组件拖动到View页面上，就会自动生成默认的多边形
-
-​	![7](img/6.png)<br/>
-​   	（图6）  
-
-**步骤三：**修改（添加/减少）Poly组件属性中的数值，改变多边形的大小、颜色等等。
-
-​   	![8](img/7.png)<br/>
-​   	（图7）  
-
-​   	![9](img/8.png)<br/>
-​   	（图8） 三角形
-
-​   	![9](img/9.png)<br/>
-​   	（图9） 不规则多边形 
+###4. Drawing irregular graphics (including triangles and polygons) by using LayaAirIDE control
 
 
 
-到此我们通过LayaAirIDE的组件绘制多边形就完成了。
+**Step one:**Open our Laya air IDE, click design mode, and create a new view page.
+
+​![6](img/5.png)<br/>
+(Fig. 5)
+
+**Step two:**Drag the curve component from the component onto the View page and automatically generate the default polygon
+
+​![7](img/6.png)<br/>
+(Fig. 6)
+
+**Step three:**Modify (add/reduce) values in Poly component attributes, change the size, color, etc. of polygons.
+
+​![8](img/7.png)<br/>
+(Figure 7)
+
+​![9](img/8.png)<br/>
+(Figure 8) Triangle
+
+​![9](img/9.png)<br/>
+(Figure 9) Irregular polygon
+
+
+
+So far, we have finished drawing polygons through the components of LayaAirIDE.

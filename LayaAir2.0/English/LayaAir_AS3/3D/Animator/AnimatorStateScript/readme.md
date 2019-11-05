@@ -1,10 +1,12 @@
-# 动画状态脚本
+#Animation status script
 
 ###### *version :2.1.0beta   Update:2019-6-13*
 
-​	**AnimatorStateScript**动画状态脚本是一种特殊的脚本，是添加到 **AnimatorState** 动画状态上的脚本。这种脚本有一套自己的生命周期。跟随动画状态改变触发生命周期函数。
+​**Animator StateScript**Animation status script is a special script that is added to**Animator State**The script on the animation state. This script has its own life cycle. Following animation state changes trigger life cycle functions.
+
 
 ```typescript
+
 /**
 * 动画状态开始时执行。
 */
@@ -19,21 +21,24 @@ public function onStateUpdate():void {}
 public function onStateExit():void {}
 ```
 
-开发者可以通过重写这几个方法，来实现动画状态改变时执行自己的逻辑。
 
-例如：
+Developers can rewrite these methods to implement their own logic when the animation state changes.
 
-1.进入或者退出某个动画状态时播放声音。
+For example:
 
-2.在某个特定的状态下激活某系效果。
+1. Play sound when entering or exiting an animation state.
 
-动画状态脚本可以创建并添加给动画状态，其方式与Sprite3D对象添加脚本非常相似。使用的是动画状态的`addScript` 方法来添加动画状态脚本。
+2. Activate a system effect in a specific state.
 
-下方的代码来自于官方示例（[demo地址](https://layaair.ldc.layabox.com/demo2/?language=ch&category=3d&group=Animation3D&name=AnimatorStateScriptDemo)）。
+Animation state scripts can be created and added to the animation state in a very similar way to Sprite3D object addition scripts. Using animated state`addScript`Method to add animation status scripts.
 
-> 动画事件脚本
+The following code is from the official example（[demo地址](https://layaair.ldc.layabox.com/demo2/?language=ch&category=3d&group=Animation3D&name=AnimatorStateScriptDemo))
+
+> animation event script
+
 
 ```typescript
+
 import laya.d3.animation.AnimatorStateScript;
 import laya.display.Text;
 
@@ -75,9 +80,12 @@ class AnimatorStateScriptTest extends AnimatorStateScript {
 }
 ```
 
-> 添加动画状态脚本，并且绑定 _text 文本
+
+> Add animation status scripts and bind _text text text
+
 
 ```typescript
+
 //创建一个动画状态
 var state2:AnimatorState = new AnimatorState();
 state2.name = "ride";
@@ -93,6 +101,7 @@ asst2.text = text;
 animator.addState(state2);
 ```
 
-来看下效果：
 
-![](img/1.png)<br>(图1)
+See the effect:
+
+! [] (IMG / 1. PNG) < br > (Figure 1)

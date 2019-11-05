@@ -1,77 +1,84 @@
-# 微信小游戏入门介绍
+#Introduction to Wechat Games
 
-> Author: charley
+> Author: Charley
 
-##### 首先，我们要了解什么是微信小游戏？
+#####First of all, we need to understand what is Wechat games?
 
-小游戏官方的解释是：
+The official explanation for the game is:
 
-> 微信小游戏是微信小程序的一个类目，它即点即玩，无需下载安装，体验轻便，可以和微信内的好友一起玩，比如PK、围观等。
+> Wechat game is a category of Wechat widget programs. It can be played on demand without downloading and installing. It can be played with friends in Wechat, such as PK, onlookers, etc.
 
-即点即玩，无需下载安装。这应该就是H5游戏了吧？
+Play on demand without downloading or installing. This should be the H5 game, right?
 
-怎么解释呢？这要先从H5的定义说起……
+How to explain it? Let's start with the definition of H5...
 
-通常大家都认为H5就是HTML5的简称，但是在开发者的眼里，HTML5只是一个WEB技术标准，符合这个标准的，并且能在浏览器里运行的游戏才是HTML5游戏。而更多的人，对技术了解不多。为了便于理解，把即点即玩，无需下载安装的游戏都称之为H5游戏，还有人叫手机页游。
+Usually people think that H5 is short for HTML5, but in the eyes of developers, HTML5 is only a WEB technical standard, which meets the standard, and the game that can run in the browser is HTML5 game. More people do not know much about technology. For ease of understanding, the game that can be played immediately without downloading and installing is called H5 game, and some people call it mobile page tour.
 
-微信小游戏的运行环境并不是浏览器，也不能在浏览器中运行，而是运行于微信APP中的Runtime。尽管微信小游戏的接口兼容大部分Canvas和Webgl，具有即点即玩，无需下载安装的HTML5特性。显然，从严格的定义来讲，微信小游戏不是标准的HTML5游戏。
+The running environment of Weixin games is not browser, nor can it run in browser, but Runtime running in Weixin APP. Although the interface of Wechat games is compatible with most Canvas and Webgl, it has the ability to play on demand without downloading and installing HTML5 features. Obviously, by strict definition, Wechat games are not standard HTML5 games.
 
-**那么，**如何能做到开发的游戏还能在浏览器中也运行起来呢？
+**Well,**How can the game developed be run in browsers?
 
-#### 开发者只能使用微信小游戏的开放API开发吗？
+####Can developers only use the open API for Wechat games?
 
-带着这两个问题，我们继续介绍。
+With these two questions, we will continue to introduce.
 
-众所周知，LayaAir引擎是基于HTML5的全平台引擎，既然是全平台，那当然不能错过微信小游戏啦！
+As we all know, LayaAir engine is a full platform engine based on HTML5. Since it is a full platform, of course, we can't miss the Wechat game!
 
-所以，在微信小游戏发布的当天，LayaAir引擎也为开发者推出微信小游戏的适配库。自LayaAir 1.7.14版开始，开发者下载最新版本引擎或IDE，只需要按照适配教程文档，初始化一下适配程序，即可将HTML5游戏项目无缝适配为微信小游戏项目。
+So, on the day of the release of Wechat games, the LayaAir engine also launched an adapter library for developers of Wechat games. Since LayaAir 1.7.14, developers have downloaded the latest version of the engine or IDE. They can seamlessly adapt HTML5 game project to Wechat game project by initializing the adapter according to the adaptation tutorial document.
 
-这样，通过LayaAir引擎开发出来的项目，不仅可以运行在浏览器中、或者打包成为APP（iOS与Android）、还可以运行在微信小游戏的平台中。
+In this way, the project developed by LayaAir engine can run not only in browser, or packaged as APP (iOS and Android), but also in the platform of Wechat games.
 
-或许，开发者还想了解，既然微信小游戏不是HTML5，
+Maybe developers also want to understand that since Wechat is not HTML5,
 
-#### 那在开发的过程中需要注意哪些差异呢？
+####What differences should we pay attention to in the process of development?
 
-如果是采用微信官方API开发的话，还是要有一些要注意的，比如不支持DOM与BOM、小游戏只能有一个画布、不支持Eval、不支持XML等等……
+If we use the official API of Wechat, we should pay attention to some things, such as not supporting DOM and BOM, games can only have a canvas, not supporting Eval, not supporting XML and so on.
 
-但是，
+However,
 
-对于LayaAir引擎的开发者来讲，不用刻意去了解到底有哪些差异，按照正常的LayaAir引擎开发规则去开发就可以了。开发完成后，直接点击项目发布按钮，可一键发布为微信小游戏项目。如图1所示。
+For the developers of LayaAir engine, it's not necessary to know the difference, just follow the normal LayaAir engine development rules. After the completion of development, click the project release button directly, and can be published as a Wechat game project with one button. As shown in Figure 1.
 
 ![图1](img/7.png)  
 
-（图1）
 
-那么LayaAir引擎的项目，经过一键发布后全部都能在微信真机环境里跑起来吗？理论上是都可以支持的，除非是使用了小游戏不支持的第三方库，或者微信小游戏底层自身有BUG，比如遮罩与cacheAs最开始就不支持，后来经过与小游戏官方技术沟通后已经支持了，但是有的机器微信版本没有更新到修复后的版本，可能还会出问题，如果有花屏现象的，多数是因为使用了cacheAs，所以建议谨慎使用遮罩与cacheAs。
+(Fig. 1)
 
-另外由于微信小游戏不允许引擎来控制canvas的大小。小游戏的canvas大小是自动拉伸的。所以会导致LayaAir部分适配模式无效，推荐使用fixedauto、或者full适配模式。
+So will the LayaAir engine project all run in the Wechat environment after one key release? In theory, it can be supported unless a third-party library is used, which is not supported by the game, or the bottom of the game itself has BUG, such as masks and cacheAs, which were initially not supported, but after communication with the official technology of the game, it has been supported, but some versions of the machine Wechat have not been updated to the repaired version, which may cause problems, if there is a floral screen phenomenon. Most of them are due to the use of cacheAs, so it is recommended to use masks and cacheAs cautiously.
 
-对于已经采用LayaAir引擎开发完成的老项目，**替换最新版本引擎类库后**，在主程序入口的Laya.init()之前，调用MiniAdpter.init()这个方法，去初始化一下适配程序，即可完美支持微信小游戏。
+In addition, the engine is not allowed to control the size of canvas. The canvas size of the game is automatically stretched. As a result, the partial adaptation mode of LayaAir is invalid. Fixed auto or full adaptation mode is recommended.
 
-**AS3版本的适配初始化**
+For old projects that have been developed using the LayaAir engine,**After replacing the latest version of engine Libraries**Before Laya. init () of the main program entry, call MiniAdpter. init () to initialize the adapter, which can support the Wechat game perfectly.
+
+**Adaptation initialization for AS3 version**
+
 
 ```java
+
 //AS3版本初始化微信小游戏的适配
 MiniAdpter.init();
 //初始化引擎
 Laya.init(1136,640);
 ```
 
-**TypeScript或JavaScript版本适配初始化：**
+
+**TypeScript or JavaScript version adaptation initialization:**
+
 
 ```javascript
+
 //TS或JS版本初始化微信小游戏的适配
 Laya.MiniAdpter.init();
 //初始化引擎
 Laya.init(1136,640);
 ```
 
-> Tips: 老项目适配有专门的文档进行介绍，欢迎前往。
+
+> Tips: The old project adapter has special documentation for introduction. Welcome to visit.
 
 
 
-其它关于小游戏自身的介绍，请直接去小游戏官方文档查看。
+For other introductions about the game itself, please go directly to the official documents of the game.
 
 [https://developers.weixin.qq.com/minigame/dev/index.html](https://developers.weixin.qq.com/minigame/dev/index.html)
 
-强烈推荐要看一看小游戏官方文档，LayaAir引擎的文档更多的是引擎相关的，当然也会混合了一些小游戏接口的应用介绍，但是仔细看看官方文档肯定没错。
+It is strongly recommended that you look at the official documentation of the game. The documentation of LayaAir engine is more engine-related. Of course, it will also mix some application introductions of the game interface, but it is certainly right to look at the official documentation carefully.

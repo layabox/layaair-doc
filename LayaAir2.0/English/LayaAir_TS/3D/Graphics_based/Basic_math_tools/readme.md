@@ -1,42 +1,45 @@
 # LayaAir3D基础数学工具	
 
-说完了坐标系，下面在介绍下在3D中一些常用的数学工具。（本篇提到的示例为快速开始篇的示例项目）
+Having said the coordinate system, the following is an introduction to some commonly used mathematical tools in 3D. (The example mentioned in this article is a sample project for the Quick Start Chapter)
 
-**向量**
+**vector**
 
-​	**Vector2**二维向量 ， **Vector3** 三维向量， **Vector4 **四维向量，这几个向量在LayaAir 3D引擎中使用非常频繁，从二维向量到四维向量到处都会看到它们的身影。最基础的用法就是示例中用于赋值使用。
+​**Vector2**Two-dimensional vectors,**Vector3**Three-dimensional vector,**Vector4**Four-dimensional vectors, which are frequently used in LayaAir 3D engine, can be seen everywhere from two-dimensional vectors to four-dimensional vectors. The most basic use is for assignment in the example.
 
-​	代码中3D对象的移动、旋转、缩放等变换都是使用Vector3作为了它的x、y、z轴向坐标赋值。更详细的使用可以查看 [API](https://layaair.ldc.layabox.com/api/?category=3D&class=laya.d3.math.Vector3) 。
+Vector 3 is used to assign axially coordinates of x, y and Z in the transformation of moving, rotating and scaling of 3D objects in the code. More detailed usage can be seen[API](https://layaair2.ldc2.layabox.com/api2/Chinese/index.html?category=Core&class=laya.d3.math.Vector3)。
 
-**颜色**
+**colour**
 
-​	那么在各种颜色属性赋值上，三维向量中的值又分别代表了R、G、B三种颜色，分别为红、绿、蓝。还有些地方使用四维向量作为颜色参数，Vector4的w值代表的Alpha值。LayaAir 3D引擎中，三个颜色的最大值为1，是按百分比的方式设置，整体值越大，颜色越亮，越小颜色越暗，如果值超过1将会产生曝光效果。
+On the assignment of various color attributes, the values in the three-dimensional vector represent R, G and B respectively, which are red, green and blue. In some places, four-dimensional vectors are used as color parameters, and the W value of Vector 4 represents the Alpha value. In LayaAir 3D engine, the maximum value of three colors is 1, which is set by percentage. The larger the overall value, the brighter the color, the smaller the color, the darker the color. If the value exceeds 1, the exposure effect will be produced.
 
-​	至于红、绿、蓝能组合成什么样的颜色，初学者们可以向游戏美术设计师们咨询学习，比如红加绿为黄、红加蓝为紫等等，一般在项目开发过程中，程序员需要反复调整颜色值去试验好的效果。
+As for the color of red, green and blue, beginners can consult and learn from game art designers, such as red plus green for yellow, red plus blue for purple, etc. In the process of project development, programmers need to adjust the color values repeatedly to test the good results.
 
-​	示例中以下代码运用了向量作为颜色赋值：
+In the example, the following code uses vectors as color assignments:
+
 
 ```typescript
+
 	//设置方向光的颜色
 	directionLight.color = new Laya.Vector3(0.6, 0.6, 0.6);
 ```
 
-**四元数（Quaternion）**
 
-​	四元数在LayaAir中用于计算旋转。它们计算紧凑高效，不受万向节锁的困扰，并且可以很方便快速地进行球面插值。
+**Quaternion**
 
-关于四元数的使用有需求的可以自行了解。这里仅提供 [API](https://layaair.ldc.layabox.com/api/?category=3D&class=laya.d3.math.Quaternion) 。
+Quaternions are used to calculate rotation in LayaAir. They are compact and efficient, free from the trouble of universal joint lock, and can interpolate spherical surface conveniently and quickly.
 
-**包围盒（BoundBox）**
+The use of quaternions is self-explanatory. Here we only provide[API](https://layaair2.ldc2.layabox.com/api2/Chinese/index.html?category=Core&class=laya.d3.math.Quaternion)。
 
-​	包围盒算法是一种求解离散点集最优包围空间的方法,基本思想是用体积稍大且特性简单的几何体（称为包围盒）来近似地代替复杂的几何对象。LayaAir3D支持3中包围盒,更详细的接口说明可以查看 [API](https://layaair.ldc.layabox.com/api/?category=3D&class=laya.d3.math.BoundBox) 。
+**Bound Box**
 
-**矩阵（Matrix）**
+The bounding box algorithm is a method to solve the optimal bounding space of discrete point set. The basic idea is to replace the complex geometric object approximately by a geometric body with a slightly larger volume and simple characteristics (called bounding box). LayaAir3D supports bounding boxes in 3. More detailed interface instructions can be viewed[API](https://layaair2.ldc2.layabox.com/api2/Chinese/index.html?category=Core&class=laya.d3.math.BoundBox)。
 
-​	矩阵是一个按照长方阵列排列的复数或实数集合。LayaAir3D中支持 **3X3矩阵（[API](https://layaair.ldc.layabox.com/api/?category=3D&class=laya.d3.math.Matrix3x3)）**和 **4X4矩阵（[API](https://layaair.ldc.layabox.com/api/?category=3D&class=laya.d3.math.Matrix4x4)）**的矩阵两种。
+**Matrix**
 
-**射线（Ray）**
+A matrix is a set of complex or real numbers arranged in rectangular arrays. Support in LayaAir3D**3X3 matrix ([API](https://layaair2.ldc2.layabox.com/api2/Chinese/index.html?category=Core&class=laya.d3.math.Matrix3x3))**and**4X4 matrix ([API](https://layaair2.ldc2.layabox.com/api2/Chinese/index.html?category=Core&class=laya.d3.math.Matrix4x4))**There are two kinds of matrices.
 
-​	射线是一个数据类型，并不是显示对象，它有**原点origin** 与 **方向direction**两个属性 。
+**Ray**
 
-![图](img/1.png)<br>(图1)
+Radiation is a data type, not a display object. It has**Origin origin**And**Direction**Two attributes.
+
+![图](img/1.png)<br> (Fig. 1)

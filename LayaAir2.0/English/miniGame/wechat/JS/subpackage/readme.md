@@ -1,60 +1,63 @@
-# 微信小游戏分包实战
+#Weixin Small Game Subcontracting Practice
 
-> author: charley
+> author: Charley
 
-对于一些大型游戏而言，微信小游戏的4M初始包远远不够用，因为光JS就会超过4M，所以在2.1的小游戏基础库推出之前，只能是不断的砍功能，一直砍到JS小于4M。(如果有新手不了解这是为什么？那先去了解一些基础之后，再来看本文。)小游戏基础库从2.1版本开始支持通过分包的形式，将上传的包体扩大到8M，那如何进行分包呢？
+For some large-scale games, the 4M initial package of Weixin small game is far from enough, because JS alone will exceed 4M, so before the launch of the 2.1 small game base library, it can only continue to hack functions until JS is less than 4M. If a novice doesn't understand why? Let's look at some of the basics first and then at this article. ) Since version 2.1, the basic library of mini-games has supported the expansion of uploaded packages to 8M through subcontracting. How to subcontract?
 
-**本篇不仅会介绍分包的方式，还针对微信小游戏在分包过程中遇到常见问题，通过实例DEMO，进行相关的介绍，帮助开发者理解小游戏的分包方式与注意事项。**
+**This article will not only introduce the way of subcontracting, but also for the common problems encountered in the process of subcontracting, through the example of DEMO, to help developers understand the way of subcontracting small games and matters needing attention.**
 
 
 
-### 一、真的需要分包吗？
+###Do you really need subcontracting?
 
-如果对分包流程或者是window域不太熟悉的开发者，分包会面临一些问题。另外，我们在打算分包之前，一定要分析一下自己的项目是真的有分包需求吗？其实对于当前大多数的产品而言，可以不用分包就可以上线小游戏产品。
+If you are a developer who is not familiar with subcontracting processes or windows domains, subcontracting will face some problems. In addition, before we plan to subcontract, we must analyze whether our project really needs subcontracting. In fact, for most of the current products, you can go online without subcontracting.
 
-#### 1、是否使用过UI加载或者分离模式？
+####1. Have you used UI loading or splitting mode?
 
-LayaAir引擎的开发者，UI大多都是通过LayaAirIDE制作。
+LayaAir engine developers, UI is mostly produced through LayaAirIDE.
 
-在F9的UI模式选项，以及项目管理器，右击每一个UI页面设置默认属性时的导出类型选项，都可以看到内嵌模式、加载模式、分离模式，三个选项。
+In F9 UI mode options, as well as project manager, right-click on each UI page to set default properties when the export type options, you can see the embedded mode, load mode, split mode, three options.
 
 ![图1](img/1.png) 
 
-**默认是内嵌模式**，这种模式下，导出UI的页面时，会将配置信息等内容导出为项目的代码文件。最终发布成小游戏的时候就是js文件。从而占用了一些宝贵的小游戏本地包体积。所以**，减少小游戏的包体大小，可以将导出UI的模式改变为加载模式或者分离模式。**这两种模式都会将页面配置信息等导出为json文件，json文件可以通过URL远程动态加载使用，而不会占用本地包空间。
 
-> **Tips:**
+**The default is embedded mode**In this mode, when exporting UI pages, content such as configuration information is exported to the code file of the project. The JS file is the final release of the game. Thus occupied some valuable small game local package volume. therefore**To reduce the package size of the game, you can change the mode of exporting UI to load mode or separate mode.**Both modes export page configuration information to JSON files, which can be dynamically loaded remotely through the URL without taking up local package space.
+
+>**Tips:**
 >
-> 1、加载模式与分离模式的区别是，加载模式是将所有的UI页面导出为一个json文件，分离模式是每一个UI页面导出为一个独立的json。
+> 1. The difference between loading mode and detaching mode is that loading mode is to export all UI pages into a JSON file, and detaching mode is to export each UI page into a separate json.
 >
-> 2、需要注意的是，加载模式与分离模式因为导出的是json，需要写代码加载后才可以使用。内嵌模式不需要。
+> 2. It should be noted that the loading mode and the separating mode can be used only after the code is loaded because the JSON is exported. Embedded mode is not required.
 
-总之，加载模式与分离模式可以减少包体JS的大小。如果能通过这种方式解决的，也许不必用分包来解决。具体情况视项目而定。
+In conclusion, loading mode and separation mode can reduce the size of inclusion JS. If it can be solved in this way, subcontracting may not be necessary. The specific situation depends on the project.
 
-#### **2、删除不必要的JS代码**
+#### **2. Delete unnecessary JS code**
 
-在没有分包的情况下，在HTML页里引用的JS都会合并到一个js文件里（code.js），除非是在项目中对js另有引用。否则，不在HTML页内的其它js可以直接删除掉，比如一些没有用到的引擎库js。可以在项目目录下就直接删除，这样发布的时候也不会再出现了。
+In the absence of subcontracting, JS referenced in HTML pages are merged into a JS file (code. js), unless otherwise referenced in the project. Otherwise, other JS that are not in the HTML page can be deleted directly, such as some unused engine libraries js. It can be deleted directly from the project directory so that it will not appear again when it is published.
 
-#### 3、压缩与混淆
+####3. Compression and confusion
 
-通过压缩混淆后的js代码，包体会明显减少很多。如果JS没超4M，可以不用分。资源等内容，完全可以走URL动态加载使用，在首次加载后，会存在物理缓存内，不超过50M的常用缓存内容，下次打开无需加载。
+By compressing the obfuscated JS code, the package experience is significantly reduced. If the JS does not exceed 4M, you can avoid scoring. Resources and other content can be dynamically loaded using the URL. After the first load, there will be physical caches, not more than 50M of commonly used cached content. Next time you open it, there is no need to load.
 
 
 
-### 二、学习小游戏官方分包文档
+###2. Learning the Official Subcontracting Documents of Small Games
 
-在实战分包之前，官方的文档没看过的，一定要先仔细看一看。这非常有用，无论能理解到多少，先尽量看懂文档要点，才能更好的理解分包。链接如下，请先看过后再进行后面的步骤。
+Before subcontracting in actual combat, the official documents have not been read, we must first look carefully. This is very useful, no matter how much you can understand, first try to understand the main points of the document, in order to better understand subcontracting. The links are as follows. Please read them before proceeding to the next steps.
 
 [https://developers.weixin.qq.com/minigame/dev/tutorial/base/subpackages.html](https://developers.weixin.qq.com/minigame/dev/tutorial/base/subpackages.html)
 
 
 
-### 三、微信小游戏官方的分包方式
+###3. The Official Subcontracting Method of Wechat Games
 
-虽然很多开发者已经看过官方的分包文档，这里还是捡重点的再过一下。
+Although many developers have seen the official subcontracting documents, here's a quick look at the key points.
 
-#### 1、在game.json中配置分包名与分包路径的字段
+####1. Configure the fields of the subpackage name and path in game.json
+
 
 ```json
+
 {
   ...
   "subpackages": [
@@ -70,15 +73,18 @@ LayaAir引擎的开发者，UI大多都是通过LayaAirIDE制作。
 }
 ```
 
-subpackages里，可以有多个name与root，每一组代表一个分包，单个分包，不能超过4M，全部游戏的初始包体不超过8M即可。
 
-大家先看一下分包配置的结构与注释说明，初步理解一下。如果仍然不理解的，可以结合后面实战的配置再进行理解。
+In subpackages, there can be multiple names and roots, each group represents a subpackage, a single subpackage, not more than 4M, the initial package of all games can not exceed 8M.
 
-#### 2、小游戏官方的分包加载示例代码
+Let's take a look at the structure and annotations of the subcontracting configuration to get a preliminary understanding. If you still don't understand, you can combine the configuration of the actual combat to understand.
 
-小游戏官方提供了 [wx.loadSubpackage()](https://developers.weixin.qq.com/minigame/dev/document/subpackages/wx.loadSubpackage.html) API 来触发分包的下载，调用 wx.loadSubpackage 后，将触发分包的下载与加载，在加载完成后，通过 wx.loadSubpackage 的 success 回调来通知加载完成。示例代码如下：
+####2. Sample Code for Official Packet Loading of Small Game
+
+Game Officials Officially Provided[wx.loadSubpackage()](https://developers.weixin.qq.com/minigame/dev/document/subpackages/wx.loadSubpackage.html)API triggers the download of subpackages. After calling wx. loadSubpackage, it triggers the download and loading of subpackages. After loading is completed, the loading is notified by the success callback of wx. loadSubpackage. The sample code is as follows:
+
 
 ```javascript
+
 const loadTask = wx.loadSubpackage({
   name: 'stage1', // name 可以填 name 或者 root
   success: function(res) {
@@ -90,9 +96,12 @@ const loadTask = wx.loadSubpackage({
 })
 ```
 
-加载成功的同时，wx.loadSubpackage 会返回一个 [LoadSubpackageTask](https://developers.weixin.qq.com/minigame/dev/document/subpackages/LoadSubpackageTask.html)，可以通过 LoadSubpackageTask 获取当前下载进度。示例代码如下：
+
+When the load is successful, wx. loadSubpackage returns a[LoadSubpackageTask](https://developers.weixin.qq.com/minigame/dev/document/subpackages/LoadSubpackageTask.html), you can get the current download progress through loadsubpackagetask. The sample code is as follows:
+
 
 ```javascript
+
 loadTask.onProgressUpdate(res => {
   console.log('下载进度', res.progress)
   console.log('已经下载的数据长度', res.totalBytesWritten)
@@ -100,49 +109,53 @@ loadTask.onProgressUpdate(res => {
 })
 ```
 
-本篇文档主要是讲分包方法与开发者经常遇到的window域导致的分包问题。下载进度较为容易理解，且未碰到开发者反馈相关问题，所以未在实战代码中提及，如果有遇到这块问题的，可以在社区中提出。
+
+This document mainly talks about subcontracting methods and subcontracting problems caused by Windows domain which developers often encounter. The download schedule is easy to understand, and there are no feedback problems from developers, so it is not mentioned in the actual code. If you encounter this problem, it can be raised in the community.
 
 
 
-### 四、下载示例项目
+###IV. Download sample projects
 
-我为大家准备了两个比较简单的示例项目，下载解压后，defaultDemo目录下为分包之前的示例项目，subPackageDemo目录下为分包后的示例项目。开发者可以在阅读本文档的同时，用分包前和分包后项目对比差异，帮助理解小游戏分包。
+I have prepared two simple sample projects for you. After downloading and decompressing, the defaultDemo directory is the sample project before subcontracting, and the subPackageDemo directory is the sample project after subcontracting. While reading this document, developers can compare the differences between pre-subcontracting and post-subcontracting projects to help understand the subcontracting of small games.
 
-下载地址为：[https://github.com/layabox/layaair-doc/raw/master/project/JS/JS_subPackage_Demo.zip](https://github.com/layabox/layaair-doc/raw/master/project/JS/JS_subPackage_Demo.zip)
+The download address is:[https://github.com/layabox/layaair-doc/raw/master/project/JS/JS_subPackage_Demo.zip](https://github.com/layabox/layaair-doc/raw/master/project/JS/JS_subPackage_Demo.zip)
 
 
 
-### 五、实战分包要点
+###V. Key Points of Actual Subcontracting
 
-#### 1、微信开发者工具与发布项目注意
+####1. Wechat Developer Tools and Publishing Project Notes
 
-实战分包的第一步，务必是在微信开发者工具中创建好小游戏项目。因为一旦分包后，采用的是小游戏的加载机制，浏览器里就跑不通了，整个调试流程全在微信开发者工具里完成。所以，下载好为大家准备的示例项目，先打开defaultDemo目录下的示例，发布出一个小游戏版本。把基础调试流程跑通。
+The first step in actual subcontracting is to create a small game project in the Wechat Developer Tool. Because once subcontracted, using a small game loading mechanism, the browser will not work, the entire debugging process is completed in the Wechat developer tools. So, download the sample project ready for you, first open the example in the defaultDemo directory, and release a small version of the game. Run the basic debugging process through.
 
-> Tips: 这里需要注意的是，下载的项目，因为曾经发布过，默认记录的是曾经发布过的目录，所以发布的时候一定要改成本地实际目录。
+> Tips: It's important to note that the downloaded project, because it has been published, the default record is the published directory, so when publishing, we must change the actual directory cost.
 
-#### 2、基础库版本
+####2. Basic Library Version
 
-一定要检查一下微信开发者工具的调试基础库是什么版本的，否则跟着本文操作，使用的是不支持分包的版本，调试就会出问题。
+Be sure to check what version of the debugging base library of the Wechat Developer Tool is, otherwise, following this article, the version that does not support subcontracting will cause debugging problems.
 
-开发者工具使用 1.02.1806120 及以上版本。
+Developer tools use version 1.02.1806120 and above.
 
-基础库使用2.1.0 及以上版本。
+Basic libraries use versions 2.1.0 and above.
 
-本篇文档使用的是2.2.0。如图1所示：
+This document uses 2.2.0. As shown in Figure 1:
 
 ![图2](img/2.png) 
 
-（图2）
 
-#### 3、分包目录的相关操作
+(Fig. 2)
 
-##### 修改game.json
+####3. Relevant operation of subcontract directory
 
-在分包之前，我们需要做好分包目录的规划，并在game.json中进行体现。
+#####Modify game.json
 
-在这里，我们就简单的设置一个分包目录b。大家可以先将defaultDemo下的示例项目内的game.json改为以下代码：
+Before subcontracting, we need to plan the subcontracting directory and implement it in game. json.
+
+Here, we simply set up a subpackage directory B. You can first change the game.json in the sample project under defaultDemo to the following code:
+
 
 ```json
+
 {
   "deviceOrientation": "landscape",
   "showStatusBar": false,
@@ -161,53 +174,61 @@ loadTask.onProgressUpdate(res => {
 }
 ```
 
-规划和设置完小游戏的分包目录后。我们去创建分包目录与文件。
 
-##### 注意root路径
+After planning and setting up the sub-directory of the game. Let's create subcontracted directories and files.
 
-JS项目的`src`目录下代码在发布的时候，如果在`bin/index.html`里有引用。会与引擎库一起统一合并到code.js里。不在`bin/index.html`里引用则直接复制到js目录下。所以`root`的路径不要漏掉js。如图3所示。
+#####Note root path
+
+JS project`src`When the directory code is published, if`bin/index.html`There are quotations. It will be merged into code. JS together with the engine library. Be not in`bin/index.html`The references are copied directly to the JS directory. therefore`root`Don't miss js. As shown in Figure 3.
 
 ![图3](img/3.png) 
 
-(图3)
 
-##### 不要点编译功能
+(Fig. 3)
 
-JS项目不需要编译，直接点发布小游戏即可。如果不小心点了编译。需要打开index.html里看一下，分包的js是否被引用了。如果被引用了，一定要注释掉。如图4所示。
+#####Don't click on Compilation
+
+JS project does not need to be compiled, just click to release the game. If compiled carelessly. You need to open index. HTML to see if subcontracted JS are referenced. If quoted, be sure to comment it out. As shown in Figure 4.
 
 ![图4](img/4.png) 
 
-（图4）
 
-因为index.html里引用到的都会合并到code.js里，恰恰分包的代码，我们是不希望合到code.js里。所以点编译后要检查一下。
+(Fig. 4)
 
-##### 创建game.js
+Because all references in index. HTML are merged into code. js, just subcontracting the code, we don't want to merge into code. js. So check it after you click compile.
 
-尽管root中可以指定具体js文件为入口，但是考虑到分包内可能会有多个js，所以本文档示例中还是采用了目录的默认入口game.js。
+#####Create game.js
 
-由于js项目不需要编译，所以我们直接在小游戏项目目录内创建即可。本文中`game.js`位于`src/b`目录下与`b.js`同级，如上面的图3所示。
+Although a specific JS file can be specified as the entry in root, considering that there may be multiple JS in the subpackage, the default entry game.js for the directory is used in this document example.
 
-game.js里引入分包js路径，如下所示。
+Since the JS project does not need to be compiled, we can create it directly in the small game project directory. In this article`game.js`Be located`src/b`Directory and`b.js`At the same level, as shown in Figure 3 above.
+
+The subpackage JS path is introduced in game.js, as shown below.
+
 
 ```javascript
+
 require('b.js');
 ```
 
 
 
-#### 4、开始分包编码
 
-上一步创建完分包目录与分包文件，那么可以开始进行分包编码了。
+####4. Beginning subcontracting coding
 
-首先在原则上，既然要做分包，那么**主包与分包的逻辑关联性要尽可能越少越好**。
+After creating the subpackage directory and subpackage file in the previous step, you can start subpackage coding.
 
-当然，有的开发者也不可避免的会需要一些主包与分包相互调用的关联需求。所以我给大家准备的简单示例里，就是将原本在一个主包里的逻辑，拆出一部分放到分包里。
+First of all, in principle, since subcontracting is necessary, then**The logical relevance between the main package and the subpackage should be as little as possible.**。
 
-比如将defaultDemo目录下示例项目中的`showA`放到分包`b.js`里。这段代码，有两个较强的主包关联。一是负责销毁当前页面与添加aUI页面到舞台的逻辑shouUI在主包，二是监听鼠标事件的触发函数showB也在主包。
+Of course, some developers will inevitably need some related requirements for the calls between the main package and the subpackage. So I'm going to give you a simple example, which is to take a part of the logic originally in a main package and put it in a subpackage.
 
-分出的b.js代码如下所示：
+For example, in the sample project in the defaultDemo directory`showA`Subcontracting`b.js`Li. This code has two strong main package associations. One is responsible for destroying the current page and adding aUI pages to the stage logic shouUI in the main package, and the other is the trigger function showB listening for mouse events in the main package.
+
+The separated B.js code is as follows:
+
 
 ```javascript
+
 //显示A页
 function showA()
 {
@@ -218,9 +239,12 @@ function showA()
 }
 ```
 
-代码分出后，我们不要忘了在主包内调用微信小游戏官方提供的分包加载与回调通知方法。在示例项目中，我们直接在图集加载的回调里，加载分包。然后在加载成功后输出`success`的log，以及处理相关的游戏逻辑。当然也可以不处理，这块属于游戏逻辑，写法很多，就不深入下去。示例代码如下：
+
+After the code is separated, we should not forget to call the subpackage loading and callback notification method provided by the official Weixin game in the main package. In the sample project, we load the subpackage directly in the callback of the atlas loading. Then output after successful loading`success`Log, and processing related game logic. Of course, it can also not be dealt with. This piece belongs to the game logic. It is written in many ways, so it will not go deep. The sample code is as follows:
+
 
 ```javascript
+
 //图集加载后回调
 function onLoaded()
 {
@@ -243,19 +267,22 @@ function onLoaded()
 }
 ```
 
-这个时候，按小游戏官方的文档，理论上，分包的流程应该已经结束，我们可以发布小游戏代码，在微信开发者工具中看一看效果。
 
-不用意外，肯定会有报错，我们可以继续看文档。
+At this time, according to the official documentation of the game, in theory, the subcontracting process should be over. We can release the game code and see the effect in the Wechat developer tool.
 
-#### 5、window域
+Not surprisingly, there must be an error. We can continue to read the document.
 
-在浏览器里，默认就都在window域里。而小游戏并不是，所以小游戏多个js之间的调用就会出问题，所以为解决这个问题，IDE发布的时候，会将所有项目js与引擎一起整合到code.js里，如今分包的方案，又将会面临window域这个问题。所以，主包与分包有互相调用的需求，那必须要先将被调用的函数或者变量要先放到window域里。然后在使用的时候前面也要带上window这个关键字。下面我们就用示例项目进行实战体验。
+####5. Windows Domain
+
+In browsers, the default is in the Windows domain. The game is not, so the call between multiple JS will be a problem, so to solve this problem, when IDE is released, all project JS and engine will be integrated into code. js. Now the subcontracting scheme will face the problem of windows domain. Therefore, there is a need for the main package and the subpackage to call each other, so the function or variable to be called must be put in the window domain first. Then use the keyword "window" in front of it. Let's use the example project to experience the battle.
 
 
 
-首先，我们看到分包`b.js`里要用到主包的showUI， aUI， UI，showB这些。那么我们主包中，必须要先把他们放到window域里，如下所示。具体的实战中，开发者可以对比分包前与分包后的两个示例项目。
+First, we see subcontracting.`b.js`The main package showUI, aUI, UI, showB are used. So in our main package, we have to put them in the Windows domain first, as shown below. In the specific practice, developers can compare the two sample projects before and after subcontracting.
+
 
 ```javascript
+
 //把需要被分包中使用的放到window域里
 window.showB = showB;
 window.showUI = showUI;
@@ -263,9 +290,12 @@ window.aUI = aUI;
 window.UI = UI;
 ```
 
-   由于主包中也会使用分包中的函数，所以分包，也是一样。先把分包中被使用的方法加到window域中。然后使用主包中的那些。也全都加上window关键字。修改后如下面代码所示：
+
+Because functions in subcontracting are also used in the main package, so is subcontracting. Firstly, the method used in subcontracting is added to the window domain. Then use those in the main package. Also add the window keyword. The modification is shown in the following code:
+
 
 ```javascript
+
 // 显示A页
 function showA()
 {
@@ -281,18 +311,19 @@ function showA()
 window.showA = showA;
 ```
 
-当然，主包中使用showA的地方，也要加上window。具体的使用大概就是这么简单。通过对window域的了解。分包遇到的问题就可以得到解决。
 
-### 六、开发者实战建议
+Of course, where showA is used in the main package, windows should also be added. The specific use is probably so simple. Through the understanding of the window domain. The problems encountered in subcontracting can be solved.
 
-开发者可以先把我给的示例项目，进行分包尝试，如果遇到问题，可以看看本篇文档，以及对比我给的两个示例项目的区别。先在微信小游戏里跑通。真正的理解分包之后，再进行自由的实战小游戏分包。如果遇到问题请把问题发到社区，并在问题中上传示例DEMO项目，群里可以@ 管理员 charley提供链接。
+###6. Developer's Practical Suggestions
 
-后续如果有发现开发者在分包有面临新的问题，我会再完善更新本篇文档。
+Developers can subcontract the sample projects I gave them first. If they encounter problems, they can see this document and compare the differences between the two sample projects I gave them. Run through the Wechat game first. After the real understanding of subcontracting, we can subcontract the free practical games. If you encounter a problem, please send it to the community and upload a sample DEMO project in the problem, where @administrator Charley can provide a link.
+
+In the future, if there are new problems faced by developers in subcontracting, I will improve and update this document.
 
 
 
-## 本文赞赏
+##This article appreciates
 
-如果您觉得本文对您有帮助，欢迎扫码赞赏作者，您的激励是我们写出更多优质文档的动力。
+If you think this article is helpful to you, you are welcome to sweep the code and appreciate the author. Your motivation is our motivation to write more high quality documents.
 
 ![wechatPay](../../../wechatPay.jpg)

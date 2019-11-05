@@ -1,78 +1,86 @@
-## 3D角色切换与动画
+##3D Character Switching and Animation
 
-### 3D实例分析与资源准备
+###3D case analysis and resource preparation
 
-通过技术文档的学习，我们基本掌握了3D游戏开发的基础知识。下面我们将通过实例讲解3D技术的综合运用。
+Through the study of technical documents, we have mastered the basic knowledge of 3D game development. Next, we will explain the comprehensive application of 3D technology through examples.
 
-观察以下示例效果（图1），它类似于游戏中3D角色选择界面，首先我们来分析一下示例中的3D游戏世界组成部分。
-
- ![图1](img/1.gif)<br>（图1）
+To observe the following example effect (Figure 1), which is similar to the 3D role selection interface in the game, let's first analyze the components of the 3D game world in the example.
 
 
 
-#### 2D界面与3D结合
-
-3D场景与常与2D界面混合使用，在本示例中，界面UI部分为LayaAir IDE编辑而成，包括了资源加载进度页面与游戏中控制UI页面。它们的制作方法与2D游戏完全一致，如对IDE编辑界面不熟悉，可参考“技术文档—LayaAir IDE篇”。
+ ![图1](img/1.gif)<br> (Fig. 1)
 
 
 
-#### 3D场景
+####Combination of 2D Interface and 3D
 
-示例中场景模型为3ds max中制作导出成FBX，再导入至untiy中编辑，主要有两个工作：
-
-一为编辑创建场景光照贴图，光照贴图可产生模型之间的静态阴影、光照颜色及氛围的效果，因此非常重要，可增强游戏的美术品质。
-
-二为编辑广告移动的材质UV动画。需要注意是在3ds max中的材质UV动画在untiy中并不支持，因此需要在unity中制作。
-
-材质UV动画unity制作方法见“技术文档—LayaAir 3D引擎—LayaAir3D之动画二”
+In this example, the UI part of the interface is edited by LayaAir IDE, including the resource loading progress page and the control UI page in the game. They are made in exactly the same way as 2D games. If you are not familiar with the editing interface of IDE, you can refer to "Technical Documents - LayaAir IDE Chapter".
 
 
 
-#### 3D角色与骨骼动画
+####3D scene
 
-3D角色模型与骨骼动画都是在3ds max中编辑导出，然后导入unity中处理动画剪辑、增加动画组件等。
+In the example, the scenario model is produced and exported into FBX in 3ds max, and then imported into unty to edit. There are two main tasks:
 
-注意角色的骨骼动画在max中制作时，最好在时间轴上一次性编辑好多个动作，单独编辑动作再通过动画连接方式制作的动画，在导入unity后容易出现错误动作及抖动现象。
+One is to create a scene lighting map for editors, which can produce static shadows, lighting color and atmosphere between models. Therefore, it is very important to enhance the art quality of the game.
 
-本例中为多个动画连接方式制作，连接后的动画出现过很多问题，发生过抖动现象、模型相交现象，花费了较长时间才达到以上效果。
+Second, edit the material of mobile advertising UV animation. It should be noted that material UV animation in 3ds Max is not supported in unty, so it needs to be made in unity.
 
-骨骼动画unity中编辑方法见“技术文档—LayaAir 3D引擎—LayaAir3D之动画一”
-
-
-
-#### 3D特效
-
-光环特效为刚体动画（变换动画：旋转、位移、缩放），可以在3ds max中编辑导入到unity中，但建议只在3ds max中制作模型，动画在unity中制作，因为在untiy中可以制作材质与刚体结合的动画，效果更好。
-
-光环特效的unity动画制作方式与流程和材质动画方式类似。
+For the method of making material UV animation unit, see "Technical Document - LayaAir 3D Engine - Animation II of LayaAir3D"
 
 
 
-以上3D资源在unity中制作完成后，通过LayaAir导出工具分别导出成四个资源文件夹，分别为场景资源LayaScene_scene02、两个角色资源LayaScene_girl与LayaScene_boy、光环特效资源LayaScene_effect。并将资源拷贝至项目h5目录下以供使用。
+####3D Characters and Skeletal Animation
+
+Both 3D character model and skeleton animation are edited and exported in 3ds max, and then imported into unity to process animation clips, add animation components, etc.
+
+Note that when making skeletal animation in max, it is better to edit a number of actions at one time on the time axis, edit the actions separately and then make the animation by animation connection. After importing unit, erroneous actions and jitter will easily occur.
+
+In this example, several animation links are made. After linking, there are many problems in the animation, such as jitter and intersection of models. It takes a long time to achieve the above effect.
+
+For editing method of skeletal animation unit, see "Technical Document - LayaAir 3D Engine - Animation I of LayaAir3D"
 
 
 
-### 3D实例功能的代码实现
+####3D special effects
 
-#### UI界面功能实现
+The halo effect is rigid animation (transform animation: rotation, displacement, zoom). It can be edited and imported into Unity in 3ds max. However, it is recommended that only 3ds Max be used to make models and animation in Unity, because in unty, animation combining material with rigid body can be made, and the effect is better.
 
-在IDE中编辑好界面，并对界面中元素进行var及name属性设置，以供代码调用，如（图2）（图3）。
+The halo effect unit animation is similar to the process and material animation.
 
-注意界面分辨率大小与Laya.init()中设置的分辨率大小一致，屏幕适配才会正确。
 
-资源加载进度界面ProgressBar.ui解析
 
- ![图2](img/2.png)<br>（图2）
+After the above 3D resources are produced in Unity, they are exported into four resource folders through LayaAir export tool, namely, scene resource LayaScene_scene02, two role resources LayaScene_girl and LayaScene_boy, and halo special effect resource LayaScene_effect. Copy the resources to the project H5 directory for use.
 
-角色控制按钮界面Control.ui解析
 
- ![图3](img/3.png)<br>（图3）
 
-编辑好以上界面后，在IDE中导出资源，在项目文件夹中产生了相应的打包资源与UI类。我们建立两个UI显示控制类分别继承于它们，代码如下：
+###Code Implementation of 3D Instance Function
 
-进度UI显示控制类ProgressView，在类中我们使用了假进度条（否则初始资源如果较小，界面会一闪而过）
+####Implementation of UI Interface Function
+
+Edit the interface in IDE, and set the VaR and name attributes of the elements in the interface for code invocation, such as (Figure 2) (Figure 3).
+
+Notice that the interface resolution is the same as the resolution set in Laya. init (), and the screen adaptation will be correct.
+
+Resource loading progress interface ProgressBar.ui parsing
+
+
+
+ ![图2](img/2.png)<br> (Figure 2)
+
+Role Control Button Interface Control.ui Analysis
+
+
+
+ ![图3](img/3.png)<br> (Figure 3)
+
+After editing the above interface, resources are exported in IDE, and corresponding packaged resources and UI classes are generated in the project folder. We build two UI display control classes that inherit from them, respectively. The code is as follows:
+
+The progress UI displays the control class ProgressView, in which we use false progress bars (otherwise, if the initial resources are small, the interface will flash by)
+
 
 ```java
+
 package view
 {
 	import ui.ProgressUI;
@@ -115,9 +123,12 @@ package view
 
 
 
-角色控制UI显示控制类ControlView，我们通过事件方式向主类发送当前所点击的按钮名。
+
+The role control UI displays the control class ControlView, which sends the name of the button currently clicked to the main class by event.
+
 
 ```java
+
 package view
 {
 	import laya.events.Event;
@@ -142,12 +153,15 @@ package view
 
 
 
-#### 2D与3D结合实现
 
-3D场景Scene类是继承于2D的显示对象Sprite类，因此它可以像2D显示对象一样加载到舞台上，并通过setChildIndex()方法调整它的层级，处理它与背景、界面的上下层遮挡关系。
+####Realization of the Combination of 2D and 3D
 
-在本例中，资源加载进度界面与角色控制界面需要设置到3D场景的上层，我们可以使用上述方法实现，代码为Laya.stage.setChildIndex(scene,0)，主类中加载界面与场景的代码如下：
+The Scene class of 3D scene is inherited from the Sprite class of 2D display object, so it can be loaded onto the stage like a 2D display object, and its hierarchy is adjusted by setChildIndex () method to deal with its occlusion relationship with the upper and lower layers of background and interface.
+
+In this example, the resource loading progress interface and the role control interface need to be set to the upper level of the 3D scene. We can use the above method to achieve the code of Laya. stage. setChildIndex (scene, 0). The code of loading interface and scene in the main class is as follows:
+
 ```java
+
 	public class Example_roleChange
 	{
 		/*****3D场景******/
@@ -214,22 +228,25 @@ package view
 	}
 ```
 
-编译运行上述代码，我们可以看到资源界面结束后，才出现了3D场景，并且控制界面在3D场景之上了。  
 
-3D场景中有材质UV动画，在加载.ls后，动画会自动被加载并播放出来，如果需要对动画进行控制，可以按以下角色的动画控制方式，先获取动画组件，再通过动画组件进行控制。
+By compiling and running the above code, we can see that after the end of the resource interface, there is a 3D scene, and the control interface is above the 3D scene.
+
+There is material UV animation in 3D scene. After loading. ls, the animation will be loaded and played automatically. If you need to control the animation, you can control the animation according to the following character's animation control mode, first get the animation component, then control it through the animation component.
 
 
 
-#### 3D角色的创建与控制
+####Creation and Control of 3D Characters
 
-角色动画控制最重要的是需要获取动画组件，因为本例中运用了预加载，因此创建角色时可以从角色模型上直接获取。
-Tips：如果没有使用预加载方式，直接使用Sprite.load()异步加载，需要加入监听资源加载完成事件后才能获取动画组件，否则会报错。
+The most important thing for character animation control is to obtain animation components. Because preloading is used in this example, when creating a character, you can directly obtain it from the character model.
+Tips: If you don't use preloading, use Sprite. load () to load asynchronously directly. You need to add listening resources to load events before you can get the animation components, otherwise you will report an error.
 
-**创建角色**
+**Create roles**
 
-在主类中加入角色相关全局属性，包括当前角色资源、当前角色动画组件、当前角色动作名等，并添加创建角色方法，代码如下：
+In the main class, add the global attributes related to roles, including current role resources, current role animation components, current role action names, and add the method of creating roles. The code is as follows:
+
 
 ```java
+
 		/*****3D场景******/
 		private var scene:Scene;
 		/*****3D角色******/
@@ -291,19 +308,22 @@ Tips：如果没有使用预加载方式，直接使用Sprite.load()异步加载
 		......
 ```
 
-在上述代码中，我们还添加了动画播放完成的回调`roleAni.on(Event.COMPLETE,this,onAniComplete)`，它与2D动画基本一样，是指一个动画剪辑播放完成后的调度，可通过当前动画剪辑名字currentPlayClip.name判断完成了哪段动画，方便开发者们编辑游戏逻辑。
+
+In the above code, we also add callbacks after animation playback.`roleAni.on(Event.COMPLETE,this,onAniComplete)`It is basically the same as 2D animation. It refers to the scheduling of an animation clip after playback. It can judge which animation is completed by the name of current PlayClip. name of the current animation clip. It is convenient for developers to edit the game logic.
 
 
 
-**角色动画控制**
+**Character animation control**
 
-角色控制是通过UI中按钮点击进行控制的，我们在主类中添加控制界面的监听事件回调`control.on("btn_action",this,onBtnAction)`来控制角色。
+Role control is controlled by clicking on buttons in UI. We add monitor event callback of control interface in main class.`control.on("btn_action",this,onBtnAction)`Control roles.
 
-角色切换方法是更换角色资源并重新创建角色，不过在Laya.loader.create()加载资源时就已经根据类型创建了角色，放入了对象池中，因此切换角色反复调用创建角色方法createRole3D()时，不用担心性能问题，它会直接从对象池中创建。
+The role switching method is to change role resources and recreate roles, but when Laya. loader. create () loads resources, roles are created according to type and put into the object pool. Therefore, when the role switching method createRole3D () is called repeatedly, there is no need to worry about performance problems, it will be created directly from the object pool.
 
-动画切换上主要通过动画组件来播放、停止、切换动作。代码修改添加如下：
+Animation switching mainly through animation components to play, stop, switch action. The code modification was added as follows:
+
 
 ```java
+
 		/**
 		 * 界面资源加载完成后
 		 */		
@@ -366,11 +386,14 @@ Tips：如果没有使用预加载方式，直接使用Sprite.load()异步加载
 
 
 
-#### 特效动画创建
 
-特效动画调用相当简单，在此我们并不需要控制它，因此直接加载到角色脚底即可，代码如下：
+####Creation of special effects animation
+
+Special effects animation calls are fairly simple. We don't need to control it here, so we can load it directly into the foot of the character. The code is as follows:
+
 
 ```java
+
 		/**
 		 * 创建特效
 		 */		
@@ -386,13 +409,16 @@ Tips：如果没有使用预加载方式，直接使用Sprite.load()异步加载
 		}
 ```
 
-在场景加载完成的回调中加入创建特效方法，编译运行后，效果如（图1）所示。
+
+After compiling and running, the effect is shown in Figure 1.
 
 
 
-#### 主类最终全部代码
+####The final code of the main class
+
 
 ```java
+
 package 
 {
 	import laya.d3.component.Animator;
@@ -587,6 +613,7 @@ package
 	}
 }
 ```
+
 
 
 

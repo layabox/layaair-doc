@@ -1,43 +1,44 @@
-# 从Unity中导出模型
+#Derivation of models from Unity
 
 ###### *version :2.0.2beta   Update:2019-4-26 插件版本:2.0.2*
 
-在前面的[Unity插件篇](地址)有简单的使用插件导出精灵，在这里将会详细的讲解精灵的导出。
 
-*这里我们使用猴子模型作为示例*
+在前面的[Unity插件篇](http://localhost/LayaAir2_Auto/%E5%9C%B0%E5%9D%80)There is a simple use of plug-ins to export wizards, which will be explained in detail here.
 
-![](img/1.png)<br>(图1)
+*Here we use the monkey model as an example*
 
-来看下猴子模型的文件结构
+![] (img/1.png)<br> (Figure 1)
 
-![](img/2.png)<br>(图2)
+Look at the file structure of the monkey model
 
-选择`预设`，然后我们点击`导出`将猴子模型导出。
+![] (img/2.png)<br> (Figure 2)
 
-![](img/3.png)<br>(图3)
+Choice`预设`And then we click`导出`The monkey model is derived.
 
-在导出后文件目录如下图所示：
+![] (img/3.png) < br > (fig. 3)
 
-![](img/4.png)<br>(图4)
+After export, the file directory is shown as follows:
 
-#### *.lh格式数据文件
+![] (img/4.png)<br> (Figure 4)
 
-`*.lh`导出的3D显示对象容器Spirte3D类型数据文件，JSON格式编码，是unity3D中layaAir导出插件选择导出**预设**类别生成，内容比*.ls格式少了光照贴图，其他全部相同。
+####*.Lh format data file
 
-#### *.lm格式数据文件
+`*.lh`Exported 3D display object container Spirte3D type data file, JSON format encoding, layaAir export plug-in selection export in unity3D**Preset**Class generation, less light mapping than *. LS format, the rest are all the same.
 
-无论是导出 **场景文件** 或 **预设文件** 类型，在导出的资源文件夹中都包含了系列*.lm格式文件，本项目中`LayaMonkey`文件夹为unity中开发者自建的存储FBX模型的文件夹，如图4，在导出时生成了对应的文件夹和.lm资源文件。
+####*. LM format data file
 
-`*.lm`文件就是模型的网格数据文件。可以生成MeshSprite3D或SkinnedMeshSprite3D类型显示对象的Mesh（网格），文件中包含了模型网格的顶点位置、法线、顶点色、顶点UV等信息。
+Whether it is derived**Scene file**or**Preset file**Type, which contains series *. LM format files in the exported resource folder, in this project`LayaMonkey`Folders are folders built by developers in Unity to store FBX models, as shown in Figure 4. The corresponding folders and. LM resource files are generated at the time of export.
 
-#### *.lav格式数据文件
+`*.lm`The file is the grid data file of the model. Mesh (mesh) can be generated for Mesh Sprite 3D or Skinned Mesh Sprite 3D type display objects. The file contains vertex location, normal, vertex color, vertex UV and other information of the model mesh.
 
-`*.lav`文件是蒙皮骨骼动画数据文件。可以生成SkinnedMeshSprite3D蒙皮网格精灵的Avatar（骨骼）。
+####*. LAV format data file
 
-文件中包含了骨骼节点信息。
+`*.lav`The file is a skinned skeleton animation data file. Skinned Mesh Sprite 3D Skin Grid Elf Avatar (skeleton) can be generated.
 
-#### *.lmat格式数据文件
+The file contains skeletal node information.
 
-`*.lmat`文件是材质数据文件。可以生成模型可以使用的material（材质）。其中包含了材质贴图，材质球颜色信息，定点色信息，纹理偏移信息等材质相关的信息。
+####*. Lmat format data file
 
-> 更多的资源类型可以查看资源概述篇的资源类型讲解（[地址](https://ldc2.layabox.com/doc/?nav=zh-ts-4-3-0)）
+`*.lmat`The file is the material data file. Material (material) that can be used by the model can be generated. It contains material mapping, material ball color information, fixed-point color information, texture offset information and other material-related information.
+
+> More resource types can be found in the resource overview section.（[地址](https://ldc2.layabox.com/doc/?nav=zh-ts-4-3-0))

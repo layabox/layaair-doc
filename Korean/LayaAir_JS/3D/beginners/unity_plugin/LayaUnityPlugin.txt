@@ -1,0 +1,32 @@
+Mesh Setting   网格顶点数据--lm 此功能可起到压缩lm文件大小的作用
+	IgnoreVerticesTangent 忽略切线信息
+	IgnoreVerticesColor   忽略颜色信息
+
+Texture Setting   所有纹理导出设置
+        Original Texture Type  需要转换格式的原始纹理种类
+        	Non-PNG|JPG  非png|jpg 现在支持 tga，psd，gif，tif，bmp，exr格式
+                PNG 原始场景中所用png格式资源
+		JPG 原始场景中所用jpg格式资源
+		LightMap  光照贴图，（只有选择Scene才会有），建议手动ps处理
+	Target Texture Type  转换目标纹理类型
+		PNG
+		JPG  转换为jpg附带压缩功能，可选择压缩质量
+
+Animation Setting  动画导出设置
+         Optimize Bones  删除动画中无用骨骼，只删除不影响骨骼动画播放的无用骨骼，如果要做挂点，谨慎选择
+         CompressLsani   暂时无用，开发中，压缩骨骼动画数据，减小文件大小
+
+GameObject Setting 节点设置
+	 Ignore Null Game Objects 导出时忽略空节点，不支持的节点也记作空节点，如照相机节点，灯光节点，可减少精灵数
+	 Ignore Not Active Game Objects 导出时忽略在unity场景中未激活的节点
+	 Optimize Game Objects 导出时从unity场景中第一级节点开始拍平树形结构，删除所有无用节点，可最大程度减少精灵数
+	 Batch Make The First Level Game Objects 批量导出（必须选择sprite3d才会有）批量导出场景中所有一级节点
+
+Other Setting
+	 Cover Original Export Files 导出时覆盖原始导出文件
+	 Customize Export Root Directory Name 自定义导出文件夹
+	 Automatically Save The Configuration 导出时自动保存当前配置
+
+Clear  清空当前配置
+Revert 从配置表中读取已保存配置
+Save   保存当前配置

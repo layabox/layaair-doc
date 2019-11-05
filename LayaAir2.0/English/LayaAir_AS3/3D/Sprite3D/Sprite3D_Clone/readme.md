@@ -1,14 +1,16 @@
-# Sprite3D的克隆
+#Cloning of Sprite3D
 
 ###### *version :2.0.1beta   Update:2019-4-13*
 
-关于克隆，LayaAir3D中提供了几种接口。比较常用的`clone`和`cloneto`这两种通用的方法就不多做介绍了。这里详细讲解下Sprite3D中特有的克隆接口`instantiate`。
+With regard to cloning, several interfaces are provided in LayaAir3D. More commonly used`clone`and`cloneto`These two general methods are not introduced much. Here is a detailed explanation of the unique clone interface in sprite3d`instantiate`。
 
-![](img/1.png)<br>(图1)
+![] (img/1.png)<br> (Figure 1)
 
-该方法可以在克隆时携带父节点信息，世界位置信息和世界旋转信息。([demo地址](https://layaair.ldc.layabox.com/demo2/?language=ch&category=3d&group=Sprite3D&name=Sprite3DClone))
+This method can carry the parent node information, world position information and world rotation information when cloning. ([demo地址](https://layaair.ldc.layabox.com/demo2/?language=ch&category=3d&group=Sprite3D&name=Sprite3DClone))
+
 
 ```typescript
+
 {
     ......
     //加载模型
@@ -26,4 +28,5 @@ public function onComplete():void {
 }
 ```
 
-![](img/2.png)<br>(图2)
+
+![] (img/2.png)<br> (Figure 2)

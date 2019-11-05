@@ -1,0 +1,82 @@
+[
+  {
+    "name": "LayaNative-Release-2.3.0",
+    "url": "release-2.3.0.md",
+    "date": "2019-09-23",
+    "download": {
+      "url": "http://www.layabox.com/layanative2.0/layanativeRes/release-v2.3.0.zip"
+    }
+  },
+  {
+    "name": "LayaNative-Release-2.2.0",
+    "url": "release-2.2.0.md",
+    "date": "2019-07-29",
+    "download": {
+      "url": "http://www.layabox.com/layanative2.0/layanativeRes/release-v2.2.0.zip"
+    }
+  },
+  {
+    "name": "LayaNative-Release-2.1.0",
+    "url": "release-2.1.0.md",
+    "date": "2019-05-13",
+    "download": {
+      "url": "http://www.layabox.com/layanative2.0/layanativeRes/release-v2.1.0.zip"
+    }
+  },
+  {
+    "name": "LayaNative-Release-2.0.2",
+    "url": "release-2.0.2.md",
+    "date": "2019-04-13",
+    "download": {
+      "url": "http://www.layabox.com/layanative2.0/layanativeRes/release-v2.0.2.zip"
+    }
+  },
+  {
+    "name": "LayaNative-Release-2.0.1",
+    "url": "release-2.0.1.md",
+    "date": "2019-3-2",
+    "download": {
+      "url": "http://www.layabox.com/layanative2.0/layanativeRes/release-v2.0.1.zip"
+    }
+  },
+  {
+    "name": "LayaNative-Release-2.0.0",
+    "url": "release-2.0.0.md",
+    "date": "2019-1-18",
+    "download": {
+      "url": "http://www.layabox.com/layanative2.0/layanativeRes/release-v2.0.0.zip"
+    }
+  },
+  {
+    "name": "LayaNative-SDK2.0-Beta4",
+    "url": "2.0.3.md",
+    "date": "2018-11-22",
+    "download": {
+      "url": "http://www.layabox.com/layanative2.0/layanativeRes/v2.0.3.zip"
+    }
+  },
+  {
+    "name": "LayaNative-SDK2.0-Beta3",
+    "url": "2.0.2.md",
+    "date": "2018-10-13",
+    "download": {
+      "url": "http://www.layabox.com/layanative2.0/layanativeRes/v2.0.2.zip"
+    }
+  }, 
+  {
+    "name": "LayaNative-SDK2.0-Beta2",
+    "url": "2.0.1.md",
+    "date": "2018-9-21",
+    "download": {
+      "url": "http://www.layabox.com/layanative2.0/layanativeRes/v2.0.1.zip"
+    }
+  },
+  {
+    "name": "LayaNative-SDK2.0-Beta1",
+    "url": "2.0.md",
+    "date": "2018-9-15",
+    "download": {
+      "url": "http://www.layabox.com/layanative2.0/layanativeRes/v2.0.zip"
+    }
+  }
+]

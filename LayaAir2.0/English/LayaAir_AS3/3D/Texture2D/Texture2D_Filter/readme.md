@@ -1,25 +1,28 @@
-# 纹理的过滤器
+#Texture filter
 
 ###### *version :2.1.0   Update:2019-5-25*
 
-我们的纹理是要贴到三维图形表面的，而三维图形上的像素中心和纹理上的纹理元素中心并不一至，大小也不一定一至。当纹理大于三维图形表面时，导至一个像素被映射到许多纹理像素上;当维理小于三维图形表面时，许多个像素都映射到同一纹理。
+Our texture is to be affixed to the surface of the three-dimensional graphics, and the center of the pixel on the three-dimensional graphics and the center of the texture element on the texture are not the same, and the size is not necessarily the same. When the texture is larger than the surface of a three-dimensional graph, the leading pixel is mapped to many texture pixels; when the dimension is smaller than the surface of a three-dimensional graph, many pixels are mapped to the same texture.
 
-当这些情况发生时，贴图就会变得模糊或发生错位。要解决此类问题，必须通过技术平滑纹理元素和像素之间的对应。这种技术就是纹理过滤。
+When these situations occur, the maps become blurred or misaligned. To solve this problem, we must smooth the correspondence between texture elements and pixels through technology. This technology is texture filtering.
 
-LayaAir3D中支持目前三种常用的过滤模式：
+Three commonly used filtering modes are supported in LayaAir3D:
 
-`FILTERMODE_POINT`，**最近点采样**（比较少用的，但是如果需要做像素风格的游戏可以使用这种模式）
+`FILTERMODE_POINT`,**Nearest Point Sampling**(Less used, but you can use this mode if you need to play pixel-style games)
 
-`FILTERMODE_BILINEAR`，**双线性过滤** (最常用,性能挺好的)
+`FILTERMODE_BILINEAR`,**bilinear filtering**(Most commonly used, good performance)
 
-`FILTERMODE_TRILINEAR`，**三线性过滤** 效果是最理想的。
+`FILTERMODE_TRILINEAR`,**Trilinear filtration**The effect is ideal.
 
-#### 设置纹理过滤模式
+####Setting Texture Filtering Mode
 
-在LayaAir3D中纹理的过滤模式，需要对对应的材质设置过滤模式。
+In LayaAir3D, the texture filtering mode needs to be set for the corresponding material.
+
 
 ```typescript
+
 //设置过滤方式
 texture.filterMode = BaseTexture.FILTERMODE_BILINEAR;
 ```
+
 

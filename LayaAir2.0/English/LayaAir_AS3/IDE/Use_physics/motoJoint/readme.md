@@ -1,179 +1,179 @@
-# 马达关节，轮子关节，滑轮关节
+#Motor joint, wheel joint, pulley joint
 
-### 1. 马达关节
+###1. Motor Joints
 
-​        马达关节`MotorJoint` 用来限制两个刚体，使其相对位置和角度保持不变，
+Motor joint`MotorJoint`It is used to restrict two rigid bodies so that their relative positions and angles remain unchanged.
 
-马达关节永远向目标点移动，并且保持特定的角度。
+The motor joint always moves to the target point and keeps a specific angle.
 
-##### 属性说明
+#####Attribute specification
 
-##### otherBody
+#####OtherBody
 
-[首次设置有效]关节的连接刚体。
+The joint rigid body is set up for the first time.
 
-##### linearOffset
+#####LinearOffset
 
-基于otherBody坐标位置的偏移量，也是selfBody的目标位置。
+The offset based on the position of otherBody coordinate is also the target position of selfBody.
 
-##### angularOffset
+#####Angular Offset
 
-基于otherBody的角度偏移量，也是selfBody的目标角度。
+The angle offset based on otherBody is also the target angle of selfBody.
 
-##### maxForce
+#####MaxForce
 
-当selfBody偏离目标位置时，为使其恢复到目标位置，马达关节所施加的最大作用力。
+When selfbody deviates from the target position, the maximum force exerted by the motor joint is used to restore it to the target position.
 
-##### maxTorque
+#####MaxTorque
 
-当selfBody角度与目标角度不同时，为使其达到目标角度，马达关节施加的最大扭力。
+When the angle of selfbody is different from that of the target, the maximum torque exerted by the motor joint is used to achieve the target angle.
 
-##### correctionFacto
+#####CorrectionFacto
 
-selfBody向目标位置移动时的缓动因子，取值0~1，值越大速度越快
+When selfbody moves to the target position, the slowing factor is 0-1. The larger the value, the faster the speed.
 
-##### collideConnect
+#####CollideConnect
 
-两个物体是否可以发生碰撞，默认为false。
+Whether two objects can collide is false by default.
 
-#### 实例演练
+####Case drills
 
- 马达关节的介绍比较不好理解他的意思，我们来做一个简单的例子来更好理解马达关节，创建一个场景motor.scene，拖入一个方块拉伸成长条，并且在层级里鼠标右键创建一个sprite节点，并将节点的锚点（左上角）移动到长条的中心点（因为马达关节只作用于刚体上，刚体就在物体左上角，不能改，所以用这种套父节点的方式，图形sprite为渲染子节点）
+The introduction of motor joints is not easy to understand. Let's take a simple example to better understand motor joints, create a scene motor. scene, drag a square to stretch the strip, create a sprite node by right mouse button in the hierarchy, and move the anchor (upper left corner) of the node to the center of the strip (because the motor joints only act on the rigid body). The rigid body is in the upper left corner of the object and can't be changed, so in this way, the graph sprite is the rendering child node.
 
 ![图](img/1.png)
 
-然后将长条sprite拖入到空sprite节点上，使其成为空节点的子节点。如图:
+Then drag the long sprite onto the empty sprite node to make it a child of the empty node. As shown in the picture:
 
 ![图](img/2.png)
 
-给父节点添加一个矩形碰撞器 `BoxCollider` ，这时碰撞器大小并不是和长条图形一样大，而是和父节点sprite大小一致，我们需要把他调整好大小和位置，使其和长条图形大小和位置一致，如图:
+Add a rectangular Collider to the parent node`BoxCollider`At this point, the size of the collider is not the same as that of the strip, but is the same as that of the parent sprite. We need to adjust the size and position of the Collider to match the size and position of the strip, as shown in the figure:
 
 ![图](img/3.png)
 
- 然后给父节点sprite添加马达关节(默认属性)，鼠标关节（用于拖拽，鼠标关节不设置锚点即点哪添加在哪，如果设置锚点就为固定位置）。给父节点sprite添加一个graphic矩形，把大小设置和图形一样大，并且将其renderType设置为hit,使这个图形作为鼠标点击判定区域。再给场景拖入一个圆形添加圆形碰撞体作为马达关节的目标点。
+Then add the motor joint (default property) to the parent sprite, the mouse joint (for dragging and pulling, the mouse joint does not set the anchor point where to add, if set the anchor point is fixed position). Add a graphical rectangle to the parent sprite, set the size to the same size as the graph, and set its renderType to hit, so that the graph can be used as the mouse click decision area. Drag a circle into the scene and add a circular collider as the target point of the motor joint.
 
 ![图](img/4.png)
 
-做好这一步之后，将矩形位置使其与长条图形重叠，如图:
+After completing this step, overlap the rectangular position with the strip, as shown in the figure:
 
 ![图](img/1.gif)
 
-然后把圆形节点或者刚体rigidbody拖入马达关节的otherbody中，如图:
+Then drag the circular node or rigid body into the other body of the motor joint, as shown in the figure:
 
 ![图](img/5.png)
 
-到这步之后，就做好了，非常的简单，保存运行，就可以看到，马达关节的效果：
+At this point, it is done, very simple, save and run, you can see the effect of motor joint:
 
 ![图](img/2.gif)
 
 
 
-### 2.轮子关节
+###2. Wheel joint
 
-​     轮子关节`WheelJoint`：围绕节点旋转，包含弹性属性，使得刚体在节点位置发生弹性偏移。
+Wheel joint`WheelJoint`Rotating around the node, including the elastic properties, makes the rigid body elastic offset at the node position.
 
-用于制作物理车轮。
+Used for making physical wheels.
 
-##### 属性说明
+#####Attribute specification
 
-##### otherbody
+#####Otherbody
 
-[首次设置有效]关节的连接刚体。
+The joint rigid body is set up for the first time.
 
-##### anchor
+#####Anchor
 
-[首次设置有效]关节的链接点，是相对于自身刚体的左上角位置偏移。
+For the first time, the link point of the joint is offset from the upper left corner of the rigid body.
 
-##### axis
+#####Axis
 
-[首次设置有效]一个向量值，描述运动方向，比如1,0是沿X轴向右。
+[First set valid] A vector value that describes the direction of motion, such as 1,0 being right along the X-axis.
 
-##### enableMotor
+#####EnableMotor
 
-是否开启马达，开启马达可使目标刚体运动。
+Whether or not to turn on the motor, turn on the motor can make the target rigid body move.
 
-##### motorSpeed
+#####MotorSpeed
 
-启用马达后，可以达到的最大旋转速度。
+When the motor is activated, the maximum rotation speed can be achieved.
 
-##### maxMotorTorque
+#####MaxMotorTorque
 
-启用马达后，可以施加的最大扭距，如果最大扭矩太小，会导致不旋转。
+When the motor is activated, the maximum torque that can be applied will not rotate if the maximum torque is too small.
 
-##### frequency
+#####Frequency
 
-弹簧系统的震动频率，可以视为弹簧的弹性系数。
+The vibration frequency of spring system can be regarded as the elastic coefficient of spring.
 
-##### damping
+#####Damping
 
-刚体在回归到节点过程中受到的阻尼，取值0~1。
+The damping of the rigid body in the process of returning to the joint is 0-1.
 
-##### collideConnect
+#####CollideConnect
 
-[首次设置有效]两个刚体是否可以发生碰撞，默认为false。
+[First set valid] Whether two rigid bodies can collide by default is false.
 
-#### 示例演练
+####Example drill
 
-​    轮子节点顾名思义就是制作轮子，例子也非常的简单，不多赘述，按照下图摆出地面（刚体设置为静态类型）和一个小车的形状，把轮子关节的otherbody拖入要绑定的车身，按照下图设置好，并注意设置摩擦力防止打滑，然后运行，一个物理小车就做出来了。
+Wheel nodes, as the name implies, are used to make wheels. Examples are very simple and need not be elaborated. According to the figure below, the ground (rigid body is set to static type) and the shape of a car are laid out. The other body of the wheel joint is pulled into the body to be bound. Set up according to the figure below, and pay attention to setting friction to prevent skidding. Then run, a physical car is made.
 
-![图](img/6.png)运行效果如下：
+![图](img/6.png)The operation results are as follows:
 
 ![图](img/3.gif)
 
-​	我们看到，小车因为重力影响向下滚动，这是因为我们没有开启轮子的马达。
+We see that the car rolls down because of gravity, because we don't have a motor to turn on the wheel.
 
-下面我们分别给两个轮子关节的enableMotor属性设置为true，motorSpeed 设置为3：如图：
+Next, we set the enableMotor property of the two wheel joints to true and motorSpeed to 3, respectively: as shown in the figure:
 
 ![图](img/7.png)
 
-这样小车就靠轮子自身的马达提供动力,保存运行：
+In this way, the car is powered by the motor of the wheel itself to keep it running.
 
 ![图](img/4.gif)
 
-有马达动力的轮子带动的小车就做好了。
+A car driven by a motor-powered wheel is ready.
 
-### 滑轮关节
+###Pulley joint
 
-​        滑轮关节`PulleyJoint`：它将两个物体接地(ground)并彼此连接，当一个物体上升，另一个物体就会下降。就像超级玛丽中用绳子吊着的平台，踩下去另一个会上升。
+Pulley joint`PulleyJoint`It ground two objects and connect them. When one object rises, the other object falls. It's like a rope platform in Super Marie. If you step on another platform, it will go up.
 
-##### 属性说明
+#####Attribute specification
 
-##### otherBody
+#####OtherBody
 
-[首次设置有效]关节的连接刚体。
+The joint rigid body is set up for the first time.
 
-##### otherAnchor
+#####OtherAnchor
 
-[首次设置有效]链接刚体链接点，是相对于otherBody的左上角位置偏移。
+[First set valid] Link Rigid Link Point is offset from the upper left corner of the other Body.
 
-##### otherGroundPoint
+#####OtherGroundPoint
 
-[首次设置有效]滑轮上与节点otherAnchor相连接的节点，是相对于otherBody的左上角位置偏移。
+The node on the pulley connected to the other Anchor is offset from the upper left corner of the other Body.
 
-##### selfAnchor
+#####SelfAnchor
 
-[首次设置有效]自身刚体链接点，是相对于自身刚体的左上角位置偏移。
+For the first time, the link point of the rigid body is offset from the upper left corner of the rigid body.
 
-##### selfGroundPoint
+#####SelfGroundPoint
 
-[首次设置有效]滑轮上与节点selfAnchor相连接的节点，是相对于自身刚体的左上角位置偏移。
+[Effective setting for the first time] The node on the pulley connected with the node selfAnchor is offset from the upper left corner position of the rigid body itself.
 
-##### ratio
+#####Ratio
 
-[首次设置有效]两刚体移动距离比率。
+The ratio of moving distance between two rigid bodies is valid for the first time.
 
-##### collideConnect
+#####CollideConnect
 
-[首次设置有效]两个刚体是否可以发生碰撞，默认为false。
+[First set valid] Whether two rigid bodies can collide by default is false.
 
-#### 示例演练
+####Example drill
 
-​      新建一个场景，然后，拖入一个方块作为木板， 两个圆形作为球，并且添加相应的碰撞体，给ball1添加鼠标关节和滑轮关节，把ball2拖入到滑轮关节中的otherbody上，设置好关节的4个锚点，如图所示：
+Create a new scene, then drag a square as a board, two circles as a ball, and add corresponding collision bodies, add mouse joint and pulley joint to ball1, drag ball2 to the other body in the pulley joint, and set four anchor points of the joint, as shown in the figure:
 
 ![图](img/8.png)
 
-只需要将两个圆形连接，木板是作为背景参照的，运行一下就看起来木板上两端有两个滑轮，并且可以用鼠标拖拽ball1，观察效果：
+Only need to connect two circles, the wooden board is used as background reference. After running, it looks like there are two pulleys at both ends of the wooden board, and you can drag ball1 with the mouse to observe the effect:
 
 ![图](img/5.gif)
 
-更多问题请访问社区http://ask.layabox.com
+For more questions, visit the community http://ask.layabox.com

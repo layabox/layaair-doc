@@ -1,16 +1,18 @@
-# 多摄像机窗口的使用
+#Use of Multi-Camera Window
 
-###### *version :2.0.1beta   Update:2019-3-19*
+###### *version :2.2.0   Update:2019-8-24*
 
-​	在同一个场景中，可以使用多个摄像机，当加载到场景中后，它们会产生各自的游戏视图画面。在我们以前遇到的游戏中，如双人3D游戏就使用了两个3D摄像机，左半屏幕显示一个玩家，右半屏幕显示另一个，极大的丰富了游戏性。
+In the same scene, multiple cameras can be used, and when loaded into the scene, they will generate their own game view pictures. In the games we have encountered before, such as the two-person 3D game, two 3D cameras are used, one player is displayed on the left half of the screen and the other on the right half of the screen, which greatly enriches the gameplay.
 
-不过多摄像机的缺点是非常耗性能，模型三角面数与DrawCall数量会成倍上升，多几个摄像机就会多出几倍性能损耗，因此开发者们需酌情考虑。
+However, the disadvantage of multiple cameras is very performance-intensive. The number of triangles in the model and DrawCall will increase exponentially, and multiple cameras will cause several times more performance loss. Therefore, developers need to consider it as appropriate.
 
-3D场景的显示大小与位置与2D游戏不太一样，主要是靠摄像机的视口（ViewPort）来控制，通过它来进行屏幕的分割。
+The display size and position of 3D scene are different from that of 2D game. It is mainly controlled by the camera's viewport, through which the screen is divided.
 
-下例中我们创建一个场景，并且简单的加载一个模型，并通过ViewPort进行左右视口分离，代码如下：
+In the following example, we create a scenario and simply load a model and separate the left and right view ports through ViewPort. The code is as follows:
+
 
 ```typescript
+
 //创建场景
 var scene = Laya.stage.addChild(new Laya.Scene3D());
 //创建相机1
@@ -37,6 +39,38 @@ Laya.Sprite3D.load("res/threeDimen/skinModel/LayaMonkey/LayaMonkey.lh", Laya.Han
 }))
 ```
 
-编译运行上述代码，运行效果如图6。开发者们同时也可以测试，在单摄像机下时，DrawCall与三角面数会少很多。([demo地址](https://layaair.ldc.layabox.com/demo2/?language=ch&category=3d&group=Camera&name=MultiCamera))
 
-![](img/1.png)<br>(图1)
+Compile and run the above code, the effect is shown in Figure 6. Developers can also test that DrawCall and triangles are much less in a single camera. ([demo地址](https://layaair.ldc.layabox.com/demo2/?language=ch&category=3d&group=Camera&name=MultiCamera))
+
+![] (img/1.png)<br> (Figure 1)
+
+####How to dynamically modify Camera's view
+
+In the example above, we set the viewport of the camera. Based on the above code, we dynamically modify the camera viewport.
+
+**Be careful:** `Camera`Of`normalizedViewport`View Port and Clipping Space`viewport`The view of screen pixel coordinates are both get / set methods. Therefore, when modifying the parameters of the camera viewport, we can not simply modify the parameters of the viewport with knowledge, but also need to re-assign the parameters of the viewport.
+
+> Dynamic Modification of Camera Viewport
+
+
+```typescript
+
+Laya.timer.once(3000,this,function () 
+{	
+    //获取第一个摄影的视口
+    var viewport1 = camera1.normalizedViewport;
+    //修改参数
+    viewport1.width = 0.2;
+    //重新赋值是视口
+    camera1.normalizedViewport = viewport1;
+
+    var viewport2 = camera2.normalizedViewport;
+    viewport2.width = 0.8;
+    viewport2.x = 0.2;
+    camera2.normalizedViewport = viewport2;
+});
+```
+
+
+![] (img/2.gif) <br> (Figure 2)
+

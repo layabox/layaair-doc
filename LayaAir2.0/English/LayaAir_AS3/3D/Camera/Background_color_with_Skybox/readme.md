@@ -1,29 +1,34 @@
-# 摄像机的背景色和天空盒
+#Camera background color and sky box
 
 ###### *version :2.0.1beta   Update:2019-3-19*
 
-#### 背景色
+####Background color
 
-​	在3D场景中，背景颜色我们是用摄像机去控制的，通过设置摄像机clearColor属性来改变3D空间的背景色，颜色使用三维向量Vector3(红,绿,蓝)方式赋值调整，引擎默认设为纯黑色。
+In 3D scene, background color is controlled by camera, and the background color in 3D space is changed by setting clearColor attribute of camera. The color is assigned and adjusted by three-dimensional vector Vector 3 (red, green, blue), and the engine is set to pure black by default.
+
 
 ```typescript
+
 //相机设置清楚标记,使用固定颜色
 camera.clearFlag = BaseCamera.CLEARFLAG_SOLIDCOLOR;	
 //设置背景颜色
 camera.clearColor = new Vector4(0.5,0.5,0.6,1);
 ```
 
-#### 天空盒
 
-​	场景中大多时候需要表现天空远景，比如蓝天白云、黄昏、星空等，在LayaAir 3D引擎中，是通过在摄像机属性上添加天空盒（SkyBox）的方式创建。
+####Sky box
 
-不过如果摄像机使用了正交投影，天空盒将达不到所要效果，开发者们可以尝试。
+In most scenarios, sky visions, such as blue sky and white clouds, dusk and stars, are needed. In LayaAir 3D engine, sky box is created by adding SkyBox to camera attributes.
 
-天空盒是由一个立方体模型及6张可以无缝相接的材质贴图构成，有点类似于360全景地图，随着视角的旋转改变，我们可以观察到四面八方都有远景效果。
+But if the camera uses orthographic projection, sky box will not achieve the desired effect, developers can try.
+
+Skybox is made up of a cube model and six seamless texture maps, which is somewhat similar to 360 panoramic maps. With the rotation of the viewing angle, we can see that there are prospective effects in all directions.
+
 
 ```typescript
+
 //天空盒代码
-BaseMaterial.load("res/threeDimen/skyBox/skyBox1/skyBox.lmat", Handler.create(null, function(mat:BaseMaterial):void {
+BaseMaterial.load("res/threeDimen/skyBox/skyBox1/skyBox.lmat", Handler.create(this, function(mat:BaseMaterial):void {
     //设置相机的清除标识为天空盒
     camera.clearFlag = BaseCamera.CLEARFLAG_SKY;
     //获取相机的天空渲染器
@@ -35,6 +40,7 @@ BaseMaterial.load("res/threeDimen/skyBox/skyBox1/skyBox.lmat", Handler.create(nu
 }));
 ```
 
-![](img/1.png)<br>(图1) 天空盒	
 
-> **注意: **在使用背景色和天空盒时，一定要保证Camera（摄像机）的`clearFlag`清除标记属性，与自己需要的效果对应。
+![] (img/1.png)<br> (Fig. 1) Skybox
+
+>**Be careful:**When using background colors and sky boxes, be sure to ensure Camera's`clearFlag`Clear the tag attribute, corresponding to the effect you need.

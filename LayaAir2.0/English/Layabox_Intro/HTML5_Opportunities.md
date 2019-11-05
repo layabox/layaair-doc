@@ -1,20 +1,20 @@
-# HTML5游戏的机会与前景
+#Opportunities and Prospects of HTML5 Game
 
-### 1、行业前景
+###1. Industry Prospects
 
-PC上，Flash已经停止更新维护，HTML5已成为新的主流标准。
+On PC, Flash has stopped updating and maintenance, HTML5 has become the new mainstream standard.
 
-移动设备上，HTML5游戏或者说是小游戏，已经火的一塌糊涂，各平台的流量入口已纷纷打开，并作为新的战略目标。
+On mobile devices, HTML5 games or mini-games have become a mess, and the traffic portals of various platforms have been opened one after another, as a new strategic goal.
 
-尤其是，采用LayaAir引擎的HTML5游戏，还可以发布成为APP安卓APK包，或者是上架iOS的appStore。而且，5G时代的到来，网速的加快，会解决HTML5的加载弊端，却具有不跳出流量APP的优势。自然会受到更多流量平台的欢迎。
+In particular, HTML5 games using LayaAir engines can also be released as APK packages for App Android or appStore for iOS. Moreover, the advent of 5G era, the acceleration of network speed, will solve the shortcomings of HTML5 loading, but has the advantage of not jumping out of traffic APP. It will naturally be welcomed by more traffic platforms.
 
-总之，HTML5已经火了。未来会更火。
+In short, HTML5 is on fire. The future will be even hotter.
 
-### 2、HTML5技术的职业前景
+###2. Professional Prospects of HTML5 Technology
 
-HTML5一次开发，多平台发布的优势，是开发者从APP的游戏技术转型到HTML5技术的重要原因之一。
+One of the important reasons for developers to change from APP's game technology to HTML5 technology is the advantage of HTML5's one-time development and multi-platform publishing.
 
-小游戏市场的火热，各流量平台的进入也是另一个重要原因之一。
+The hot market of small games, the entry of various traffic platforms is another important reason.
 
-总之，种种原因让绝大多数游戏创业者与从业者，出现了大量的HTML5游戏人才的缺口，如果有企业招人，或者开发者需要求职的，可以将招聘信息与联系人信息，或者是求职简历，发到bd@layabox.com ，Layabox依托庞大的开发者资源，可以帮助大家招聘或者求职。
+In a word, for various reasons, the vast majority of game entrepreneurs and practitioners are facing a large shortage of HTML5 game talents. If enterprises recruit people or developers need to apply for jobs, they can send recruitment information and contact information, or resume, to bd@layabox.com. Layabox, relying on huge developer resources, can help you recruit or apply for jobs.
 

@@ -1,80 +1,85 @@
 # Layabox的引擎非游戏案例
 
-Layabox是搜游网络科技（北京）有限公司打造的中国游戏引擎提供商品牌，旗下第二代引擎LayaAir是基于HTML5协议的开源引擎，性能与3D是引擎的核心竞争力。同时支持ActionScript3、JavaScript、TypeScript三种开发语言，并且一次开发同时发布APP（安卓与iOS）、HTML5、微信小游戏、QQ轻游戏、百度小游戏等多个平台的游戏引擎。除支持2D\3D\VR\AR的游戏开发外，引擎还可以用于应用软件、广告、营销、教育等领域。性能媲美APP引擎。
+Layabox is a Chinese game engine provider brand created by soyou network technology (Beijing) Co., Ltd. its second generation engine, layaair, is an open-source engine based on HTML5 protocol. Performance and 3D are the core competitiveness of the engine. At the same time, it supports ActionScript 3, JavaScript and TypeScript, and develops and publishes the game engine of App (Android and iOS), HTML5, Wechat games, QQ games, Baidu games and other platforms at the same time. In addition to supporting the development of 2D3DVRAR games, the engine can also be used in applications, advertising, marketing, education and other fields. The performance is comparable to that of the APP engine.
 
 
 
-下面将在众多的非游戏案例中，选择几个知名的代表作品，展示给开发者朋友们：
+In the following non-game cases, several well-known representative works will be selected to show to developers'friends:
 
 
 
-## 一、LayaAir IDE
+##I. LayaAir IDE
 
-LayaAirIDE的1.0和2.0都是由LayaAir引擎开发，基于LayaAir UI系统，实现可视化UI编辑、动画编辑、代码编辑等等功能，看起来和原生桌面软件没有差别！
-![blob.png](img/1.png) <br/>
-图(1)可前往Layabox官网下载
-
-
-
-## 二、Burberry 微信H5广告
-
-上海彼邑采用LayaAir引擎开发的奢侈品牌Burberry新年广告出现在微信朋友圈，一时成为热点。整个H5融合了私人订制、产品展示、吴亦凡拜年等元素，将精美的画质、流畅的体验、出色的视频播放性能融为一体，展现出了Burberry的英式优雅。
-
-​	![blob.png](img/2.png) <br/>
-​	图(2)
-
-​	![blob.png](img/3.png)<br/>
-​	图(3)
+LayaAir IDE 1.0 and 2.0 are developed by LayaAir engine. Based on LayaAir UI system, visual UI editing, animation editing, code editing and other functions are realized. It seems that there is no difference between LayaAir IDE and native desktop software.
+![blob.png](img/1.png)<br/>
+Figure (1) can be downloaded from Layabox's official website
 
 
 
+##2. Burberry Wechat H5 Advertising
+
+The Luxury Brand Burberry New Year's Advertisement, which was developed by LayaAir engine in Piyi, Shanghai, appeared in the circle of Wechat friends and became a hot spot for a while. The whole H5 combines elements such as private customization, product display and Wu Yifan's New Year's greeting. It combines exquisite painting quality, smooth experience and excellent video playback performance to show Burberry's English elegance.
+
+​![blob.png](img/2.png)<br/>
+Map (2)
+
+​![blob.png](img/3.png)<br/>
+Map (3)
 
 
-## 三、深圳地铁线路图
-
-2016年，深圳地铁为了方便市民出行，使用LayaAir引擎制作了在线地铁运营网络路线图，方便市民实时查询各站之间的来往及换乘，让市民能够清晰的规划出行线路。
-
-​	![blob.png](img/5.png)<br/>
-​	图(5) 可前往深圳地铁官网体验
 
 
 
-## 四、美团营销广告
+##3. Shenzhen Metro Line Map
+
+In 2016, Shenzhen Metro used LayaAir engine to make a roadmap of the online metro operation network for the convenience of citizens'travel. It is convenient for citizens to inquire about the interchange and transfer between stations in real time, so that citizens can clearly plan their travel routes.
+
+​![blob.png](img/5.png)<br/>
+Figure (5) Experience on Shenzhen Metro Official Network
+
+
+
+##IV. MARKETING ADVERTICES OF THE UNITED PARTY
 
 ![6-1](img/6-1.png) 
 
-（图6-1）美团H5营销广告截图
+
+(Fig. 6-1) Picture of MYT H5 Marketing Advertising
 
 ![6-2](img/6-2.png) 
 
-（图6-2）美团H5营销广告体验二维码
+
+(Figure 6-2) Two-Dimensional Code of MYT H5 Marketing Advertising Experience
 
 
 
-## 五、乐视营销广告
+##V. Le Video Marketing Advertising
 
 ![7-1](img/7-1.png) 
 
-（图7-1）乐视营销广告截图
+
+(Figure 7-1) Screenshot of Le Video Marketing Advertisement
 
 ![7-2](img/7-2.png) 
 
-（图7-2）乐视营销广告体验二维码
+
+(Figure 7-2) Two-Dimensional Code of Lexus Marketing Advertising Experience
 
 
 
-## 六、3D交互网页展示
+##6. Display of 3D Interactive Web Pages
 
-《不可思议群岛》是运用了游戏元素的HTML5交互式3D网页。在不同的浮空小岛之间切换。进入到每一个场景中进行360度全角度观看小岛的风貌。
+The Incredible Islands is an interactive 3D HTML5 web page that uses game elements. Switch between different floating islands. Enter each scene and view the island 360 degrees from all angles.
 
 ![图8](img/8.png) 
 
-体验地址为：http://dmt.juzhen01.com/dmt3/
+
+Experience address: http://dmt.juzhen01.com/dmt3/
 
 
 
-## 七、教育小游戏
+##7. Educational games
 
-采用LayaAir教育的小游戏有挺多，只找到这个的小程序码，可以直接扫码体验。这是一个结合了加减乘除法，考验加减乘除的熟练度以及对数字反应能力的小游戏。
+There are many small games using LayaAir education. Only this small program code can be found, which can be directly scanned experience. This is a game that combines addition, subtraction, multiplication and division to test the proficiency of addition, subtraction, multiplication and division and the ability to respond to numbers.
 
 ![图9](img/9.png) 

@@ -1,9 +1,9 @@
-# LayaAir中文本类的API概述
+#An Overview of APIs for Text Classes in LayaAir
 
-LayaAir可以通过laya.display.Text类添加文本，给文本设置字体样式、颜色、大小等。关于Text类给文本设置样式的方法如下：
+LayaAir can add text through the laya. display. Text class to set font style, color, size, etc. for text. The methods for text class to style text are as follows:
 ![1](img/1.png)
 
-上图中的这些属性基本上就是我们Text比较常用的方法了，更多Text API的详细用法，可以点击下面的API文档URL查看
+These properties in the above figure are basically the common methods we use for text. For more detailed usage of the text API, click the API document URL below to view.
 
 [https://layaair.ldc.layabox.com/api/index.html?category=Core&class=laya.display.Text](https://layaair.ldc.layabox.com/api/index.html?category=Core&class=laya.display.Text)
 

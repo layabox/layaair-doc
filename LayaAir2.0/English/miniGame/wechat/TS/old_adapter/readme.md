@@ -1,129 +1,146 @@
-# 老项目适配微信小游戏详解
+#Detailed Explanation of the Old Project Adaptation Weixin Game
 
-> author: charley
+> author: Charley
 
-#### 由于有一些老项目存在小游戏适配的需求，本篇将详细介绍老项目的适配步骤与环节。
+####Because there are some old projects need small game adaptation, this article will introduce the steps and links of old project adaptation in detail.
 
-**Tips:** 文中以3D项目的创建为起始，并不代表本篇仅为3D项目的适配。文中适配方案对于2D与3D都是通用的，只是语言版本中稍有差异，已在文中进行了说明。
+**Tips:**Starting with the creation of a 3D project, this article does not mean that it is only an adaptation of a 3D project. The adaptation schemes in this paper are universal for both 2D and 3D, but there are slight differences in language versions, which have been explained in this paper.
 
-#### 必读提示：
+####Mandatory tips:
 
-> 1、在LayaAir IDE的1.7.15beta版本开始，将支持创建微信小游戏3D示例项目。
+> 1. Beginning with the 1.7.15 beta version of LayaAir IDE, we will support the creation of a 3-D sample project for Weixin mini-games.
 >
-> 2、阅读本文前，请先阅读《创建微信小游戏》，更多配置环境的基础内容本篇不再重复介绍。
+> 2. Before reading this article, please read "Creating Wechat Games" first. This article will not repeat the basic content of the configuration environment.
 >
-> 3、新的小游戏项目，建议直接创建小游戏的示例项目。如果立项的时候创建的是普通项目，可以通过学习本篇中的小游戏适配流程，进行适配。
+> 3. New small game project. It is suggested to create the sample project of small game directly. If you create a common project when setting up a project, you can adapt it by learning the small game adaptation process in this article.
 
 
 
-### 第一步：创建一个示例项目（已有旧项目可跳过本步骤）
+###Step 1: Create a sample project (old projects can skip this step)
 
-先打开LayaAirIDE，进入新建项目界面。选择LayaAir 3D示例项目。
+First, open LayaAirIDE and enter the new project interface. Select the LayaAir 3D sample project.
 
-> Tips:本步骤是为了演示旧项目适配流程，才故意创建一个普通的3D示例项目。
+> Tips: This step is to demonstrate the old project adaptation process, and deliberately create a common 3D sample project.
 >
-> 如果要创建一个3D小游戏的新项目。直接选择**微信小游戏3D示例**即可， 小游戏的示例项目中已适配好。
+> If you want to create a new project for a 3D game. Direct selection**3-D Example of Wechat Game**That's it. The sample project of the game has been adapted.
 
 ![图1](img/1.png) 
 
-输入项目名称，路径，选择好语言类型与引擎版本。
 
-> （由于流程上基本一致，本篇面向各语言的开发者，但以TS项目流程进行截图，如果是其它语言版本，除路径等无需介绍的地方外，存在差异的会额外说明）
+Enter the project name, path, and choose the language type and engine version.
 
-OK，继续。
+> Because the process is basically the same, this article is aimed at the developers of different languages, but the process of TS project is taken as a screenshot. If it is in other languages, the differences will be explained in addition to the paths and other places that need not be introduced.
 
-点击创建，即完成了一个3D项目的创建。
+OK, go on.
 
-
-
-### 第二步：适配微信小游戏
-
-#### 1、小游戏适配的前提准备
-
-引擎与IDE要使用当前最新beta版或稳定版，LayaAirIDE从1.7.15beta版本开始，才支持老项目一键发布，所以用旧版本IDE和引擎库没升级的，别忘了先升级。
+Click Create to complete the creation of a 3D project.
 
 
 
-#### 2、 引用小游戏适配库
+###Step 2: Adapt to Wechat Game
 
-##### TS与JS适配方法
+####1. Prerequisite preparation for small game adaptation
 
-从1.7.15beta开始，创建示例项目时，TS与JS项目会自动引入小游戏适配库JS`“libs/laya.wxmini.js”`，如下图所示。
+Engines and IDEs use the latest beta or stable version. LayaAirIDE only supports one-click release of old projects from 1.7.15 beta, so don't forget to upgrade with old IDE and engine libraries.
+
+
+
+####2. Reference to Game Adaptation Library
+
+#####Adaptation Method of TS and JS
+
+Beginning with 1.7.15 beta, TS and JS projects automatically introduce the mini-game adapter JS when creating the sample project.`“libs/laya.wxmini.js”`As shown in the figure below.
 
 ![图](img/17.png) 
 
-图中的代码:
+
+The code in the figure:
+
 
 ```html
+
 <!--提供了微信小游戏的适配-->
 <script type="text/javascript" src="libs/laya.wxmini.js"></script>
 ```
 
-如果是1.7.15之前的TS或JS老项目，需要开发者在`bin/index.html`中手动加入图中红框内的这段代码，另外还要确认一下当前使用的是不是1.7.15之后的新版本引擎库，如果不是，要切换为新引擎库，否则在运行的时候会因为找不到laya.wxmini.js而报错。
 
-##### AS3项目适配方法
+If it's an old TS or JS project before 1.7.15, you need a developer`bin/index.html`Manually add the code in the red box in the figure, and also make sure that the current version of the engine library after 1.7.15 is not used. If not, switch to the new engine library, otherwise it will be wrong because laya.wxmini.js can not be found at run time.
 
-AS3项目，在使用1.7.15之后的新版本引擎库后，仅需要开发者在入口类中手动加入这段代码，即完成小游戏适配库的引入。
+#####AS3 project adaptation method
+
+AS3 project, after using the new version of engine library after 1.7.15, only need the developer to add this code manually in the entry class, that is, to complete the introduction of game adapter library.
+
 
 ```java
+
 import laya.wx.mini.MiniAdpter;
 ```
 
 
-#### 3、初始化小游戏适配库
 
-老项目由于在建立的时候，并没有在项目入口对适配库进行初始化，所以，为了保障成功发布微信小游戏版本，我们必须要在游戏入口内进行适配库的初始化。
+####3. Initialization of game adapter Library
 
-**Tips**:*初始化微信小游戏适配，需要在初始化引擎前。*
+Since the old project did not initialize the adapter library at the project entrance when it was established, we must initialize the adapter library at the game entrance in order to ensure the successful release of the Weixin mini-game version.
 
-##### TS与JS项目适配方法如下图所示：
+**Tips**:*Initialize the Wechat game adapter before initializing the engine.*
+
+#####The method of adapting TS to JS project is as follows:
 
 ![图](img/18.png) 
 
-图中TS或JS项目的适配代码如下：
+
+The adaption code for TS or JS projects in the figure is as follows:
+
 
 ```typescript
+
 //初始化小游戏适配库
 Laya.MiniAdpter.init();
 ```
 
-##### AS3项目项目适配方法如下图所示：
+
+#####The AS3 project adaptation method is shown in the following figure:
 
 ![图](img/6.png) 
 
-图中AS3项目的适配代码如下：
+
+The adaption code for the AS3 project in the figure is as follows:
+
 
 ```java
+
 //微信小游戏适配
 MiniAdpter.init();
 ```
 
 
 
-#### 4、编译适配代码
 
-完成适配代码的添加，点击编译或运行调试按钮（F5），没有报错提示的话，可以看到一个三维的立方体。
+####4. Compile the adapter code
+
+Complete the addition of the adapter code, click on the compile or run debug button (F5), and you can see a three-dimensional cube without error warning.
 
 ![图2](img/2.png) 
 
-> Tips:适配完一定要点编译或调试，否则适配代码不会生效。
 
-关闭运行调试弹出的窗口后。就可以进入小游戏发布的环节了。
+> Tips: Make sure you compile or debug at the end of the adaptation, otherwise the adaptation code will not take effect.
 
-至此，小游戏的适配已经完成了。
+Close the window that pops up when running debugging. You can enter the release of the game.
 
-简单总结一下，就是在使用新版引擎后，引用适配库，初始化适配库，这两个核心步骤。还是比较简单的。
+So far, the adaptation of the game has been completed.
 
-其它的小游戏发布、调试等都是与新项目通用的。可以查看其它相关的文档。
+To summarize briefly, we refer to the adapter library and initialize the adapter library after using the new version of the engine, which are the two core steps. It's still relatively simple.
 
-如果对本篇文档有疑问，请前往官网社区提问，也可以将社区中的链接发到官方QQ群中 @ 管理员 charley
+Other small game release, debugging and so on are common with the new project. You can view other related documents.
 
-社区网址：https://ask.layabox.com/
+If you have any questions about this document, please go to the official QQ community and ask questions. You can also send links from the community to @administrator Charley in the official QQ group.
+
+Community Web site: https://ask.layabox.com/
 
 
 
-## 本文赞赏
+##This article appreciates
 
-如果您觉得本文对您有帮助，欢迎扫码赞赏作者，您的激励是我们写出更多优质文档的动力。
+If you think this article is helpful to you, you are welcome to sweep the code and appreciate the author. Your motivation is our motivation to write more high quality documents.
 
 ![wechatPay](../../../wechatPay.jpg)

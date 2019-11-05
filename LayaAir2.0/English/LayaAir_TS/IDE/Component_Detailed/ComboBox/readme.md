@@ -1,103 +1,112 @@
-# ComboBox 组件参考
+#ComboBox Component Reference
 
 
 
 ## 一、通过LayaAirIDE创建ComboBox组件
-###1.1 创建ComboBox
-​        ComboBox 是一个下拉列表选项框组件。
-​        点击选择资源面板里的 ComboBox 组件，拖放到页面编辑区，即可添加 ComboBox 组件到页面上。
-​        ComboBox 的脚本请接口参考 [ComboBox API](http://layaair.ldc.layabox.com/api/index.html?category=Core&class=laya.ui.ComboBox)。
+###1.1 Create ComboBox
+ComboBox is a drop-down list option box component.
+Click on the ComboBox component in the Resource Panel and drag it into the page editing area to add the ComboBox component to the page.
+ComboBox script for interface reference[ComboBox API](http://layaair.ldc.layabox.com/api/index.html?category=Core&class=laya.ui.ComboBox)。
 
-​        ComboBox 组件的图像资源示例：
+Examples of image resources for ComboBox components:
 
-​        ![图片0.png](img/1.png)<br/>
-​    （图1）
+​![图片0.png](img/1.png)<br/>
+(Fig. 1)
 
-​        设置 ComboBox 的属性 labels 的值为 “label1,label2” 后，显示效果如下：
-​        常态：
+After setting the labels value of ComboBox's attribute to "label 1, label 2", the display effect is as follows:
+Normal:
 
-​        ![图片0.png](img/2.png)<br/>
-​    （图2）
+​![图片0.png](img/2.png)<br/>
+(Figure 2)
 
-​        点击后显示下拉选项列表：
+Click to display a list of drop-down options:
 
-​        ![图片0.png](img/3.png)<br/>
-​    （图3）
+​![图片0.png](img/3.png)<br/>
+(Figure 3)
 
-​        在下拉选项中选择 item1 后：
+After selecting Item1 in the drop-down option:
 
-​        ![图片0.png](img/4.png)<br/>
-​    （图4）
+​![图片0.png](img/4.png)<br/>
+(Figure 4)
 
 
 
-### 1.2 ComboBox 组件的常用属性
+###1.2 Common attributes of ComboBox components
 
-​        ![图片0.png](img/5.png)<br/>
-​    （图5）
+​![图片0.png](img/5.png)<br/>
+(Fig. 5)
 
- 
+A kind of**attribute**A kind of**Function description**A kind of
+| ---------------------------------------------------------------------------------------------------------------------------------------------------|
+| The labels | drop-down box's label text content collection string, separated by commas. A kind of
+| VisibleNum | The maximum number of rows that can be displayed in the drop-down list. A kind of
+| scroll BarSkin | scroll bar image resource in drop-down list. A kind of
+| Selected Index | represents the index of the currently selected item. A kind of
+| sizeGrid | Effective scaling of grid data (nine-grid data) for image resources in drop-down lists. A kind of
+| Skin | Drop-down list of image resources. A kind of
 
-| **属性**        | **功能说明**                  |
-| ------------- | ------------------------- |
-| labels        | 下拉选框的标签文本内容集合字符串，以逗号分隔。   |
-| visibleNum    | 下拉列表中可显示的最大行数。            |
-| scrollBarSkin | 下拉列表的滚动条图像资源。             |
-| selectedIndex | 表示当前选择的项的索引。              |
-| sizeGrid      | 下拉列表图像资源的有效缩放网格数据（九宫格数据）。 |
-| skin          | 下拉列表图像资源。                 |
 
- 
-
-### 1.3 ComboBox 组件下拉选项相关属性
-​        ![图片0.png](img/6.png)<br/>
-​    （图6）
-
-​        ![图片0.png](img/7.png)<br/>
-​    （图7）
 
  
 
-| **属性**     | **功能说明**                      |
-| ---------- | ----------------------------- |
-| itemColors | 下拉列表项的各状态的标签文本颜色值集合。详细请参考API。 |
-| itemSize   | 下拉列表项的标签文本的字体大小。              |
+
+
+###1.3 ComboBox Component Dropdown Options Related Properties
+​![图片0.png](img/6.png)<br/>
+
+(Fig. 6)
+
+​![图片0.png](img/7.png)<br/>
+(Figure 7)
+
+A kind of**attribute**A kind of**Function description**A kind of
+| -----------------------------------------------------------------------------------------------------------------------------------------------------|
+| itemColors | Set of label text color values for each state of a drop-down list item. Refer to API for details. A kind of
+| itemSize | The font size of the label text of the drop-down list item. A kind of
+
+
 
  
 
  
 
-### 1.4 ComboBox 组件下拉按钮相关属性
 
-​        ![图片0.png](img/8.png)<br/>
-​    （图8）
 
-​        ![图片0.png](img/9.png)<br/>
-​    （图9）
+###1.4 ComboBox Component Dropdown Button Related Properties
+
+​![图片0.png](img/8.png)<br/>
+(Figure 8)
+
+​![图片0.png](img/9.png)<br/>
+(Figure 9)
+
+A kind of**attribute**A kind of**Function description**A kind of
+| -----------------------------------------------------------------------------------------------------------------------------------------------------|
+| The label text of the label Bold | drop-down button is shown in bold. A kind of
+| labelColor | Set of text color values in various states of the drop-down button. Refer to API for details. A kind of
+| LabelFont | Drop-down button text font. A kind of
+| label Padding | Text margin of drop-down button. Refer to API for details.|
+| The text font size of the labelSize | drop-down button. A kind of
+
+
 
  
 
-| **属性**       | **功能说明**                    |
-| ------------ | --------------------------- |
-| labelBold    | 下拉按钮的标签文本是粗体显示。             |
-| labelColor   | 下拉按钮的各状态下的文本颜色值集合。详细请参考API。 |
-| labelFont    | 下拉按钮的文本字体。                  |
-| labelPadding | 下拉按钮的文本边距。详细请参考API          |
-| labelSize    | 下拉按钮的文本字体大小。                |
 
- 
 
-## 二、通过代码创建ComboBox组件 
+##2. Creating ComboBox Components through Code
 
- 	在我们进行书写代码的时候，免不了通过代码控制UI，创建`UI_ComboBox`类，通过代码设定ComboBox相关的属性。
+When we write code, we inevitably control UI through code and create it.`UI_ComboBox`Class that sets ComboBox-related properties through code.
 
-**运行示例效果：**
-​	![1](gif/1.gif)<br/>
-​	（图10）
+**Effect of running example:**
+​![1](gif/1.gif)<br/>
+(Fig. 10)
 
-​	ComboBox的其他属性也可以通过代码来设置，下述示例演示了如何通过代码创建选中框中的下拉选项，并通过点击获取到自己的点击是哪一条选项。有兴趣的读者可以自己通过代码设置ComboBox，创建出符合自己需要的下拉框。
+Other attributes of ComboBox can also be set by code. The following example demonstrates how to create drop-down options in the check box by code and get which option you click on by clicking. Interested readers can set up ComboBox by their own code and create drop-down boxes that meet their needs.
+
 
 ```javascript
+
 module laya {
     import Stage = Laya.Stage;
     import ComboBox = Laya.ComboBox;
@@ -144,4 +153,5 @@ module laya {
 }
 new laya.UI_ComboBox();
 ```
+
 

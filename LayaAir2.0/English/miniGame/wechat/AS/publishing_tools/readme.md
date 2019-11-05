@@ -1,68 +1,70 @@
-# 小游戏发布工具与小游戏目录介绍
+#Introduction of Game Publishing Tools and Game Catalogue
 
-> Author: charley
+> Author: Charley
 >
-> 本文档基于LayaAirIDE 1.7.19.1beta版本撰写
+> This document is based on LayaAirIDE version 1.7.19.1 beta
 
-### 1、IDE发布功能介绍
+###1. Introduction of IDE Publishing Function
 
-点击发布按钮，并选择微信小游戏时，发布界面是这样子的，如图1所示。
+When you click the release button and select the Wechat game, the release interface looks like this, as shown in Figure 1.
 
 ![图1](img/1.png) 
 
-（图1）
 
-##### 关于发布目录
+(Fig. 1)
 
-源根目录与发布目录比较容易理解，通常用默认的就可以。如果是复制项目目录导致目录变化的，要检查一下目录是不是正确。另外，**目录路径内不允许有空格、中文、以及中文符号等，否则会导致发布失败。**
+#####About Publishing Directory
 
-##### 排除文件的作用
+The source directory and publishing directory are easy to understand, usually by default. If a copy of the project directory causes a change in the directory, check to see if the directory is correct. In addition,**Spaces, Chinese, and Chinese symbols are not allowed in directory paths, otherwise publishing will fail.**
 
-这里经常有开发者不太理解。这里选择好排除的目录后，排除的目录内文件并非是不发布，而是不压缩。在这里排除后，后面所有勾选了压缩的选项，都会跳过这些排除目录内的文件。
+#####Exclusion of the role of documents
 
-##### 压缩与版本管理
+There are often developers who don't understand. After selecting the excluded directory, the files in the excluded directory are not not published, but not compressed. When excluded here, all subsequent options that check compression will skip the files in the excluded directory.
 
-那些压缩的选项，勾选后即启用压缩，具体的使用，因为比较直观，可以自行体验尝试，不多介绍。需要说明的是，一旦启用后会比较耗时。整个发布时间都会延长。并且，在不勾选启用版本管理的选项情况下。每次发布，都会对所有没有排除的文件进行压缩。因此，如果只是部分进行了更新**，建议启用版本管理，这样，只会对更新的版本进行压缩处理。可以减少一定的发布耗时。**
+#####Compression and Version Management
 
-如果有开发者有更好用的第三方压缩工具，可以不勾选IDE自带的压缩工具，通过最下面的`后续执行脚本`功能，执行自定义的命令行工具或者是脚本，用自己喜欢的工具来压缩。（*也可以把特别好用的工具推荐给charley*）
+Those compression options, check to enable compression, specific use, because more intuitive, you can experience and try, not much introduction. It should be noted that once enabled, it will be time-consuming. The entire release time will be extended. And without checking the option to enable version management. Every time it is released, all files that are not excluded are compressed. Therefore, if only part of it is updated**It is recommended that version management be enabled so that only updated versions are compressed. Reduce release time.**
 
-##### 关于复制文件
+If a developer has a better third-party compression tool, you can uncheck the compression tool that comes with IDE, through the bottom`后续执行脚本`Functions, execute custom command line tools or scripts, and compress them with your favorite tools. (* You can also recommend particularly useful tools to charley*)
 
-比如，在项目中已经规划好了本地包目录，那么通过复制文件的两个选项功能，将本地包的目录直接复制到小游戏的项目目录内。当然，根目录中的文件还是要手工处理一下，针对这块，工具组同学还在优化中，后续版本可以解决。
+#####On Copying Documents
 
-### 2、发布后的小游戏目录介绍
+For example, the local package directory has been planned in the project, then the directory of the local package can be directly copied to the project directory of the small game through the two options of copying files. Of course, the files in the root directory still need to be handled manually. For this piece, the toolkit students are still optimizing, and subsequent versions can be solved.
+
+###2. Introduction of the small game catalogue after publication
 
 ![img](img/2.png)  
 
-（图2）
 
-#### `code.js`项目文件 与 `libs` 引擎库目录
+(Fig. 2)
 
-libs目录一般情况下，可以不用复制到小游戏目录内，因为，为了window域的问题，发小游戏的时候会把整个游戏项目以及引用到的库已经合到code.js里了。但是假如TS与JS项目没在index.html里引用，而是在项目中引用了，或者是AS项目里用require的方式引用了。那都不会合到code.js。这时候，还是要手动针对自己使用的库，尤其是第三方库，进行手工复制。
+#### `code.js`Project documents and`libs`Engine Library Directory
 
-#### `res`资源目录
+In general, LIBS directory can not be copied to the small game directory, because, for the problem of windows domain, when sending small games, the whole game project and the library referenced have been integrated into code. js. But if TS and JS projects are not referenced in index. html, they are referenced in projects, or in AS projects, they are referenced in require. That doesn't fit code. js. At this time, you still need to manually copy the library you use, especially the third-party library.
 
-res是默认的资源目录，小游戏由于初始包的限制，建议将初始包的内容在规划好，最好能放到统一的目录下，便于初始包的剥离。
+#### `res`Resource directory
 
-该文件会将js合并成一个JS
+Res is the default resource directory. Because of the limitation of the initial package, it is recommended that the content of the initial package be well planned. It is better to put it in a unified directory to facilitate the stripping of the initial package.
 
-#### `game.js`微信小游戏的入口文件
+This file merges JS into a JS
 
-游戏项目入口JS文件与适配库JS等都是在这里进行引入。IDE创建项目的时候已生成好，一般情况下，这里不需要动。
+#### `game.js`The Entry Document of Wechat Game
 
-#### `game.json` 小游戏的配置文件
+Game entry JS file and adapter library JS are introduced here. The IDE is generated when it creates the project, and in general, there is no need to move.
 
-开发者工具和客户端需要读取这个配置，完成相关界面渲染和属性设置。比如屏幕的横竖屏方向，状态栏的显示、小游戏分包等，都是在这里配置。具体如何配置，以及参数的使用，可以[查看微信小游戏的开发文档](https://mp.weixin.qq.com/debug/wxagame/dev/index.html?t=2018115)。
+#### `game.json`Configuration files for small games
 
-#### `project.config.json`小游戏的项目配置文件
+Developer tools and clients need to read this configuration to complete the relevant interface rendering and property settings. For example, the horizontal and vertical direction of the screen, the display of the status bar, small game subcontracting, etc., are all configured here. Specific how to configure and use parameters, you can[查看微信小游戏的开发文档](https://mp.weixin.qq.com/debug/wxagame/dev/index.html?t=2018115)。
 
-文件里包括了小游戏项目的一些信息，如果想修改appid等信息，可以直接在这里面编辑。
+#### `project.config.json`Game Project Profile
 
-> 项目参数libVersion的值一定要是game，这里一般不会出错。但是，万一出现了LayaAirIDE里发布正常，也引用了适配库，发布为小游戏后，在开发者工具里还是有报错的话，可以检查libVersion里的值是不是game。不是的话要改为game。
+The file contains some information about the game project. If you want to modify the appid and other information, you can edit it directly.
 
-#### `weapp-adapter.js` 微信小游戏适配库文件
+> The value of the project parameter libVersion must be game, which is generally error-free. However, in case there is a normal release in Laya AirIDE and an adapter library is also cited. If there is still an error in the developer's tool after the release of the game, you can check whether the value in libVersion is a game. If not, change to game.
 
-LayaAirIDE的发布工具在发布时会自动引用。
+#### `weapp-adapter.js`Wechat game adapter library file
+
+LayaAirIDE's publishing tools are automatically referenced when they are released.
 
 
 

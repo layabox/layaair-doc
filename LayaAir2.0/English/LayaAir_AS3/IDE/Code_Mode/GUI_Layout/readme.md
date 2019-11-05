@@ -1,59 +1,84 @@
-# 代码模式布局概述
+#Overview of Code Pattern Layout
+
+
 
  
 
-### 一、代码编译环境
 
-​        代码编辑环境由多个面板组成，面板可自由隐藏/显示，以适应不同项目和开发者的需要。在本章说明中将会以默认编辑环境布局为例，快速浏览各个面板及其功能作用：
+
+###I. Code Compiling Environment
+
+Code editing environment consists of multiple panels, which can be freely hidden/displayed to meet the needs of different projects and developers. In this chapter, we will take the default editing environment layout as an example to quickly browse the panels and their functions.
 
 ![blob.png](img/1.png)<br/>
-​	图（1）LayaAirIDE主页面
+Figure (1) LayaAirIDE Home Page
 
 
 
-### 二、项目管理器
+###II. Project Manager
 
-​        项目管理器窗口里以树状结构显示了项目文件夹中的所有代码与资源结构。文件夹自动同步在操作系统中对文件夹内容的修改。同时还可以进行新建，改名，删除等常用操作功能。
+The Project Manager window shows all the code and resource structures in the project folder in a tree structure. Folder automatically synchronizes changes to folder contents in the operating system. At the same time, it can also carry out new construction, renaming, deletion and other common operation functions.
 
 ![blob.png](img/2.png)<br/>
-​	图（2）创建文件的方法
+
+Figure (2) Method of creating files
+
+
 
  
 
-### 三、代码编辑器
 
-​        代码编辑窗口是用来展示和编辑项目管理器中点击选中的文档。
+
+###Code Editor
+
+The Code Editing Window is used to display and edit selected documents in the Project Manager by clicking on them.
 
 ![blob.png](img/3.png)<br/>
-​	图（3）代码编辑页面
+
+Figure (3) Code Editing Page
 
 
 
-### 四、工具栏
+###IV. Toolbar
 
-​        工具栏是用来对项目及代码文档快速操作的工具集合。在代码模式工具栏介绍一节中我们会对具体使用进行详细介绍。
+A toolbar is a collection of tools used to quickly manipulate projects and code documents. In the introduction section of the Code Patterns toolbar, we will give a detailed description of the specific use.
+
+
 
  ![blob.png](img/4.png)<br/>
-​	图（4）工具栏面板
+Figure (4) Toolbar Panel
+
+
 
  
 
 
 
-### 五、菜单栏
 
-​        菜单栏中包含了一系列编辑中需要的操作及功能集合。在代码模式菜单栏介绍一节中我们会对菜单栏进行详细介绍
+
+
+
+###V. menu bar
+
+The menu bar contains a set of operations and functions needed in editing. In the Introduction to the Code Mode Menu Bar section, we will give a detailed introduction to the Menu Bar.
 
 ![blob.png](img/5.png)<br/>
-图（5）菜单栏面板
+
+Figure (5) Menu Bar Panel
+
+
 
  
 
 
 
-### 六、模式切换按钮
 
-​        模式切换按钮可以在设计模式、代码模式、问答社区间进行快速切换编辑。 
+
+
+
+###Mode Switch Button
+
+The mode switching button can quickly switch between design mode, code mode and question-and-answer community.
 
 ![blob.png](img/6.png)<br/>
-​	图（6）模式面板
+Figure (6) Mode Panel

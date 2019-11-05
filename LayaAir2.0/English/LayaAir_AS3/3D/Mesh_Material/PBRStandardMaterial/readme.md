@@ -1,56 +1,58 @@
-# PBRStandardMaterial材质详解
+#PBRStandard Material Material Material Details
 
 ###### *version :2.1.0beta   Update:2019-5-14*
 
-基于物理普通反射材质，硬质表面（也就是建筑材质）而设计的，一般用于做粗糙质感的材质。
+Based on the physical common reflection material, hard surface (that is, building material) and designed, generally used to make rough texture material.
 
-##### 主要属性和方法
+#####Main attributes and methods
 
-> 属性
+> attribute
 
-`albedoColor:Vector4` 漫反射颜色。
+`albedoColor:Vector4`Diffuse reflection color.
 
-`albedoTexture:BaseTexture` 漫反射贴图。
+`albedoTexture:BaseTexture`Diffuse reflection mapping.
 
-`emissionColor:Vector4` 放射颜色。
+`emissionColor:Vector4`Radiation color.
 
-`emissionTexture:BaseTexture` 放射贴图。
+`emissionTexture:BaseTexture`Radiographic mapping.
 
-`enableEmission:Boolean` 是否激活放射属性。
+`enableEmission:Boolean`Whether to activate the radiation properties.
 
-`enableReflection:Boolean` 是否开启反射。
+`enableReflection:Boolean`Whether reflection is turned on.
 
-`metallic:Number` 金属度。
+`metallic:Number`Metal degree.
 
-`metallicGlossTexture:BaseTexture` 金属光滑度贴图。
+`metallicGlossTexture:BaseTexture`Metal smoothness mapping.
 
-`normalTexture:BaseTexture` 法线贴图。
+`normalTexture:BaseTexture`Normal mapping.
 
-`normalTextureScale:Number` 法线贴图缩放系数。
+`normalTextureScale:Number`Normal mapping scaling factor.
 
-`occlusionTexture:BaseTexture` 遮挡贴图。
+`occlusionTexture:BaseTexture`Occlusion maps.
 
-`occlusionTextureStrength:Number` 遮挡贴图强度。
+`occlusionTextureStrength:Number`Occlusion map strength.
 
-`parallaxTexture:BaseTexture` 视差贴图。
+`parallaxTexture:BaseTexture`Parallax mapping.
 
-`parallaxTextureScale:Number` 视差贴图缩放系数。
+`parallaxTextureScale:Number`Parallax map scaling coefficient.
 
-`renderMode:int`  [write-only]  设置渲染模式。
+`renderMode:int`[write-only] Sets the rendering mode.
 
-`smoothness:Number `光滑度。
+`smoothness:Number `Smoothness.
 
-`smoothnessSource:int` 光滑度数据源。
+`smoothnessSource:int`Smoothness data source.
 
-`smoothnessTextureScale:Number` 光滑度缩放系数。
+`smoothnessTextureScale:Number`Smoothness scaling coefficient.
 
-`tilingOffset:Vector4` 纹理平铺和偏移。
+`tilingOffset:Vector4`Texture tiling and migration.
 
-##### 创建和使用材质
+#####Create and use materials
 
-下面的代码来自于官方示例（[demo地址](https://layaair.ldc.layabox.com/demo2/?language=ch&category=3d&group=Material&name=PBRStandardMaterialDemo)）。
+The following code is from the official example（[demo地址](https://layaair.ldc.layabox.com/demo2/?language=ch&category=3d&group=Material&name=PBRStandardMaterialDemo))
+
 
 ```typescript
+
 //实例PBR材质
 var mat:PBRStandardMaterial = new PBRStandardMaterial();
 //反射贴图
@@ -95,5 +97,6 @@ barrel2.meshRenderer.sharedMaterial = mat;
 barrel3.meshRenderer.sharedMaterial = mat;
 ```
 
-![](img/1.png)<br>(图1)
+
+![] (img/1.png)<br> (Figure 1)
 

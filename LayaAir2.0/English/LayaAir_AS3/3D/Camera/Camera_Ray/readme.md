@@ -1,12 +1,14 @@
-# 如何从摄像机创建一条射线
+#How to create a ray from a camera
 
 ###### *version :2.0.1beta   Update:2019-3-19*
 
-​	在前面的 **图形系统基础概念** 有讲解过射线这个基础工具。 这里我们从摄像机创建一条射线，使用的是camera的**viewportPointToRay**方法。生成的这条射线是从摄像机的近裁剪面的一点出发，向远裁剪面的一点。这个射线的反向延长线经过射线机的原点。
+In the front**Basic Concept of Graphic System**There is a basic tool for explaining radiation. Here we create a ray from the camera using Camera's.**Viewportpointtoray**Method. This ray is generated from a point near the cutting surface of the camera and a point far from the cutting surface. The reverse extension of this ray passes through the origin of the ray machine.
 
-![](img/1.png)<br>(图1)
+![] (img/1.png)<br> (Figure 1)
+
 
 ```typescript
+
 //创建一个点
 var point:Vector2 = new Vector2();
 //创建一个射线
@@ -18,5 +20,6 @@ point.y = Laya.stage.mouseY;
 camera.viewportPointToRay(point, ray);
 ```
 
-在示例([demo地址](https://layaair.ldc.layabox.com/demo2/?language=ch&category=3d&group=Camera&name=CameraRay))中，通过从摄影机创建的射线，在地板与射线碰撞点处创建正方体。
+
+In the example ([demo地址](https://layaair.ldc.layabox.com/demo2/?language=ch&category=3d&group=Camera&name=CameraRay)) In this method, a cube is created at the collision point between the floor and the ray by the ray created from the camera.
 

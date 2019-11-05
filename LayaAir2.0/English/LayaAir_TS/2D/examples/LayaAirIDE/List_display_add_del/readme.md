@@ -1,110 +1,119 @@
-# List示例：显示、增加、删除
+#List example: display, add, delete
 
-​        List（列表）是比较常用的功能。本篇结合LayaAir引擎与IDE针对List显示、增加、删除等相关操作进行逐步讲解，供开发者学习引擎与IDE的实战参考。（创建项目等基础操作，请查看其它文档，本篇跳过）
+List (list) is a commonly used function. This article, combined with LayaAir engine and IDE, gives a step-by-step explanation of List display, addition, deletion and other related operations for developers to learn engine and IDE for practical reference. (For basic operations such as creating projects, see other documents, skip this article)
 
-### 一、用LayaAirIDE制作UI
+###I. Making UI with LayaAirIDE
 
-#####  1.1 创建一个View类型的UI页面 
+#####1.1 Create a View-type UI page
 
-​        ![1](img/1.png)
-​        （图1）创建一个名为ListPage的View类型UI页面
+​![1](img/1.png)
+(Figure 1) Create a View-type UI page called ListPage
 
-​        首先，我们在LayaAirIDE的项目管理器内，创建一个View类型的UI页面，宽高为640*1136。页面命名为ListPage。
+First, in the project manager of LayaAirIDE, we create a View-type UI page with a width of 640*1136. The page is named ListPage.
 
-##### 1.2 导入UI资源
+#####1.2 Importing UI Resources
 
-​      将美术制作好的UI页面资源导入到资源管理器中。（具体导入方式参考LayaAirIDE资源导入的文档。）
+Import the artistic UI page resources into the explorer. (Specific import method refers to documents imported from LayaAirIDE resources.)
 
-​        ![2](img/2.png)
-​        （图2）
+​![2](img/2.png)
+(Figure 2)
 
-##### 1.3 用九宫格制作List背景
+#####1.3 Make List Background with Nine Palaces
 
-**1.3.1 拖拽List背景到舞台**
+**1.3.1 Drag List Background to Stage**
 
-​      ![3](img/3.png)
-​      （图3）将图片背景bg_list.png拖拽到舞台
+​![3](img/3.png)
+(Figure 3) Drag the picture background bg_list.png onto the stage
 
-​	 **1.3.2  Image属性中通过sizeGrid属性设置九宫格。**
+​**1.3.2 In the Image attribute, nine palaces are set through the sizeGrid attribute.**
 
-​      ![4](img/4.png)
-​      （图4）点击sizeGrid属性右侧按钮打开九宫格设置面板
+​![4](img/4.png)
+(Figure 4) Click on the right button of the sizeGrid property to open the Nine Palaces Settings Panel
 
-​	    **1.3.3 在属性里设置width为640（全屏宽度）**
+​**1.3.3 Set width to 640 (full screen width) in attributes**
 
-​      ![5](img/5.png)
-​      （图5）
+​![5](img/5.png)
+(Fig. 5)
 
 
- ##### 1.4 制作List容器
 
-**1.4.1 拖拽checkbox.png到舞台，并设置属性name为check。**
 
-​    ![6](img/6.png)
-​        （图6）
 
-​**1.4.2 拖拽一个label.png到舞台，设置属性name为listNumber，其它属性参照图7。**
+ #####1.4 Making List Containers
 
-​      ![7](img/7.png)
-​      （图7）用于序号的label组件
+**1.4.1 Drag checkbox.png onto the stage and set the property name to check.**
 
-​	**1.4.3 再拖拽一个label.png到舞台，修改文本内容为“List示例文本”，属性设置参照图8所示：**
+​![6](img/6.png)
+(Fig. 6)
 
-​      ![8](img/8.png)
-​   （图8）用于List文本的label组件
+​**1.4.2 drag a label.png to the stage, set the attribute name to listnumber, and refer to figure 7 for other attributes.**
 
-​	**1.4.4 选中list背景图、序号label、文本label、checkbox，用Ctrl+B快捷键创建一个Box容器。然后选中Box容器，设置Box属性renderType为render。如图9，图10。**
+​![7](img/7.png)
+(Figure 7) The label component for serial numbers
 
-​      ![9](img/9.png)
-​     （图9）
+​**1.4.3 Drag another label.png onto the stage and modify the text content to "List sample text". Attribute settings are shown in Figure 8.**
 
-​     ![10](img/10.png)
-​      （图10）
+​![8](img/8.png)
+(Figure 8) The label component for List text
 
-​	**1.4.5 点击box容器再次通过Ctrl+B创建一个List容器，如图11。注意，所有的List容器，必须是基于Box容器的，我们看一下图12的层级关系，会更加清晰一些，list基于box循环产生。**
+​**1.4.4 Select list background map, serial number label, text label, checkbox, and create a Box container with Ctrl + B shortcut key. Then select the Box container and set the Box attribute renderType to render. Fig. 9 and 10.**
+
+​![9](img/9.png)
+(Figure 9)
+
+​![10](img/10.png)
+(Figure 10)
+
+​**1.4.5 Click on the box container to create a List container again through Ctrl + B, as shown in Figure 11. Note that all List containers must be based on Box containers. Let's look at the hierarchical relationship in Figure 12 to make it clearer that lists are generated based on box loops.**
+
+
 
 ​      ![11](img/11.png)
-​      （图11）
+(Fig. 11)
 
-​      ![12](img/12.png)
-​      （图12）
+​![12](img/12.png)
+(Fig. 12)
 
-#####  1.5 设置List属性
+#####1.5 Setting List Properties
 
-​	选取List容器，设置Lis属性 var为_list（通过此变量可以调用该组件下的所有属性），然后根据实际需要设置其它属性，repeatX是X轴的列表数量，repeatY是Y轴的列表数量，spaceX是X轴列表间距，spaceY是Y轴列表间距。如图13所示：
+Select the List container, set the Lis attribute VaR to _list (through which all the attributes under the component can be invoked), and then set other attributes according to actual needs. RepatX is the number of lists on the X axis, repeatY is the number of lists on the Y axis, spaceX is the distance between lists on the X axis, and spaceY is the distance between lists on the Y axis. As shown in Figure 13:
 
-​        ![13](img/13.png)
-​      （图13）
+​![13](img/13.png)
+(Figure 13)
 
-##### 1.6 添加操作按钮
+#####1.6 Add operation button
 
-​        这里，我们直接使用了模板的ButtonTab，拖拽到舞台中，然后点击进入子节点，设置var、label属性以及九宫格等。如图14，图15：
+Here, we directly use the Button Tab of the template, drag it onto the stage, then click on the sub-node, set var, label attributes, and the nine palaces. Fig. 14, Fig. 15:
 
-​        ![14](img/14.png)
-​      （图14）
+​![14](img/14.png)
+(Figure 14)
 
-​        ![15](img/15.png)
-​      （图15）
+​![15](img/15.png)
+(Fig. 15)
 
-​      调整好UI位置细节后，如图16。F12发布UI，就可以进入代码阶段
+After adjusting the location details of the UI, see Figure 16. When F12 releases UI, you can enter the code phase.
+
+
 
 ​       ![16](img/16.png)
-​      （图16）
+(Fig. 16)
 
-### 二、用TypeScript语言实现List代码逻辑
+###2. Implementing List Code Logic with TypeScript Language
 
-#####         2.1 显示制作的UI页面
+#####2.1 Display the UI Page Made
 
-​      2.1.1 创建一个ListDemo.ts程序文件，并把对应的js在index.html入口设置为启动类。
+2.1.1 Create a ListDemo.ts program file and set the corresponding JS as the startup class at the index.html entry.
 
-​      ![17](img/17.png)
-​     （图17）
+​![17](img/17.png)
+(Figure 17)
 
-​      2.1.2  编辑代码，显示UI。
+2.1.2 Edit the code and display the UI.
 
-我们先引入加载以及UI类，然后加载显示UI用到的图集资源，最后实例UI界面并添加到舞台。下面通过编码实现这三个环节：
+We first introduce the loading and UI classes, then load the atlas resources used to display the UI, and finally exemplify the UI interface and add it to the stage. The following three steps are realized by coding:
+
 
 ```typescript
+
 module demo{        
         import WebGL = Laya.WebGL;
         import Loader = laya.net.Loader;
@@ -139,31 +148,39 @@ module demo{
 new demo.list();
 ```
 
-​      *Tips：代码中的图集路径要根据自己的项目实际情况，灵活调整*
 
-​        2.1.3 编码完成后，按F5运行，如图18所示，页面显示和IDE制作的效果一致后，开始编辑逻辑代码。
+​*Tips: the path of the atlas in the code should be adjusted flexibly according to the actual situation of the project.*
+
+After 2.1.3 encoding is completed, it runs according to F5. As shown in Figure 18, when the effect of page display is consistent with that of IDE production, it begins to edit the logic code.
+
+
 
 ​        ![18](img/18.png)
-​        （图18）
+(Figure 18)
 
-#####     2.2 编写代码逻辑
+#####2.2 Writing Code Logic
 
-​**2.2.1 实现List序号逻辑**
+​**2.2.1 Implementing List Sequence Logic**
 
-​      要实现List序号的数据添加，需要用到“laya.ui.List” API中的list数据源赋值array，单元格渲染处理器renderHandler，以及“laya.display.Node ”API下通过子节点名字获取子节点对象的方法getChildByName。我们先看下API说明：如图19、图20、图21。
+In order to add the data of List serial number, we need to use list data source assignment array in the "laya.ui.List" API, renderHandler of cell rendering processor, and getChildByName, a method of obtaining child node object by child node name under the "laya.display.Node" API. Let's first look at the API description: Figure 19, Figure 20, and Figure 21.
 
-​        ![19](img/19.png)
-​      （图19）
+​![19](img/19.png)
+(Figure 19)
+
+
 
 ​      ![20](img/20.png)
-​      （图20）
+(Figure 20)
 
-​      ![21](img/21.png)
-​        （图21）
+​![21](img/21.png)
+(Figure 21)
 
- **List序号添加代码如下：**
+
+ **List serial number add code as follows:**
+
 
 ```typescript
+
 module demo{        
         import WebGL = Laya.WebGL;
         import Loader = laya.net.Loader;
@@ -237,39 +254,49 @@ module demo{
 new demo.list();
 ```
 
-​        代码运行结果如图22所示，成功实现了序号数据的带入。具体实现逻辑与代码说明直接查看代码和注释。
 
-​        ![22](img/22.png)
-​      （图22）
+The result of code running is shown in Figure 22, which successfully implements the introduction of serial data. Specific implementation logic and code description directly view code and comments.
 
-2.2.2 实现List序滚动
-​      30条模拟数据在上面的示例运行后，只能看到16条。所以我们需要增加一个滚动效果。laya.ui.List的API中vScrollBarSkin可以满足我们的需求，API说明如图23：
+​![22](img/22.png)
+(Figure 22)
 
-​        ![23](img/23.png)
-​        （图23）
-该功能增加只需一行代码，就不粘全部代码了，将下面代码放到赋值列表数据源之前。
+2.2.2 Implementing List Sequential Scrolling
+After running the above example, only 16 of the 30 simulated data can be seen. So we need to add a scrolling effect. VScrollBarSkin in the API of laya.ui.List can meet our needs. The API is illustrated in Figure 23:
+
+​![23](img/23.png)
+(Figure 23)
+It only needs one line of code to add this function, so it won't stick all the code. Put the following code before the assignment list data source.
+
 
 ```typescript
+
 //添加list滚动条功能
 this.listView._list.vScrollBarSkin='';
 ```
 
-​       再次运行效果如图24所示：
 
-​        ![24](img/24.png)
-​        （图24）
+Re operation effect is shown in Figure 24:
 
-2.2.3 实现List增加功能
+​![24](img/24.png)
+(Figure 24)
 
-​       实现List增加，需要用到LayaAir引擎laya.display.Sprite中的事件侦听on()方法对鼠标点击事件CLICK进行侦听，以及laya.ui.List API中添加单元格数据源的方法addItem()；
+2.2.3 add list function
+
+To increase List, we need to use the event listening on () method in LayaAir engine laya. display. Sprite to listen for mouse click event CLICK, and add Item () to add cell data source in laya. ui. List API.
+
+
 
 ​    ![25](img/25.png)
-​       （图25）
+(Fig. 25)
 
-​       ![26](img/26.png)
-​       （图26）
+​![26](img/26.png)
+(Figure 26)
 
- ```typescript
+
+
+ 
+```typescript
+
 module demo{        
         import WebGL = Laya.WebGL;
         import Loader = laya.net.Loader;
@@ -355,19 +382,24 @@ module demo{
 new demo.list();
  ```
 
-​       详情直接查看代码与注释：
+
+See the code and comments directly for details:
 
 
-​       代码运行效果如图27所示：
+The code runs as shown in Figure 27:
 
-​       ![27](img/27.png)
-​       （图27）实现列表增加效果
+​![27](img/27.png)
+(Figure 27) Implementing List Enhancement
 
-2.2.3 实现List增加功能删除功能
+2.2.3 Implementing List Added Function Delete Function
 
-​       实现List删除功能需要实现多选框checkbox功能、删除按钮的鼠标侦听，删除操作后的数据重新渲染。详情直接查看代码与注释：
+To realize List deletion function, it is necessary to implement checkbox function of multiple check boxes, mouse listening of deletion buttons, and data re-rendering after deletion operation. See the code and comments directly for details:
 
- ```typescript
+
+
+ 
+```typescript
+
 module demo{        
     import WebGL = Laya.WebGL;
     import Loader = laya.net.Loader;
@@ -521,13 +553,14 @@ module demo{
 new demo.list();
  ```
 
-​       运行效果如图28所示：
 
-​       ![28](img/28.png)
-​       （图28）删除2、3、4条后的效果
+The operation effect is shown in Figure 28.
+
+​![28](img/28.png)
+(Figure 28) Effect of deleting 2, 3 and 4 items
 ​
 
-​        至此，我们已经完成了列表的UI制作，以及显示，新增，删除的代码逻辑。如有疑问请前往社区提出：ask.layabox.com。
+At this point, we have completed the UI production of the list, as well as the code logic for display, addition and deletion. If you have any questions, please go to the community and ask. layabox. com.
 
 
 

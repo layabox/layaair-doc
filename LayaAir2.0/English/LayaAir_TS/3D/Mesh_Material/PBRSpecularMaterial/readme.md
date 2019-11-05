@@ -1,48 +1,48 @@
-# PBRSpecularMaterial材质详解
+#Detailed material description of PBR Specular Material
 
 ###### *version :2.1.0beta   Update:2019-5-14*
 
-这个材质与PBRStandardMaterial的材质一样是基于物理反射的材质，但是这种材质是基于高光的。常用语制作光滑金属感的材质。
+This material is based on physical reflection as PBRStandard Material, but this material is based on high light. Commonly used phrases are used to make smooth metallic materials.
 
-##### 主要属性和方法
+#####Main attributes and methods
 
-> 属性
+> attribute
 
-`albedoColor:Vector4 ` 反射率颜色。
+`albedoColor:Vector4 `Reflectivity color.
 
-`albedoTexture:BaseTexture` 漫反射贴图。
+`albedoTexture:BaseTexture`Diffuse reflection mapping.
 
-`emissionColor:Vector4` 放射颜色。
+`emissionColor:Vector4`Radiation color.
 
-`enableEmission:Boolean` 是否激活放射属性。
+`enableEmission:Boolean`Whether to activate the radiation properties.
 
-`enableReflection:Boolean` 是否开启反射。
+`enableReflection:Boolean`Whether to turn on reflex or not.
 
-`normalTexture:BaseTexture` 法线贴图。
+`normalTexture:BaseTexture`Normal mapping.
 
-`normalTextureScale:Number` 法线贴图缩放系数。
+`normalTextureScale:Number`Normal mapping scaling factor.
 
-`occlusionTexture:BaseTexture` 遮挡贴图。
+`occlusionTexture:BaseTexture`Occlusion maps.
 
-`occlusionTextureStrength:Number` 遮挡贴图强度。
+`occlusionTextureStrength:Number`Occlusion map strength.
 
-`parallaxTexture:BaseTexture` 视差贴图
+`parallaxTexture:BaseTexture`Parallax Mapping
 
-`parallaxTextureScale:Number` 视差贴图缩放系数。
+`parallaxTextureScale:Number`Parallax map scaling coefficient.
 
-`renderMode:int`  [write-only] 设置渲染模式。
+`renderMode:int`[write-only] Sets the rendering mode.
 
-`smoothness:Number` 光滑度。
+`smoothness:Number`Smoothness.
 
-`smoothnessSource:int` 光滑度数据源。
+`smoothnessSource:int`Smoothness data source.
 
 `smoothnessTextureScale:Number` 光滑度缩放系数。
 
-`specularColor:Vector4` 高光颜色。
+`specularColor:Vector4`High light color.
 
-`specularTexture:BaseTexture` 高光贴图。
+`specularTexture:BaseTexture`High-light mapping.
 
-`tilingOffset:Vector4` 纹理平铺和偏移。
+`tilingOffset:Vector4`Texture tiling and migration.
 
 
 

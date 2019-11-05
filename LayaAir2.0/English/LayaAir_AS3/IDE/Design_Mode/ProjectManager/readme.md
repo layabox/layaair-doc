@@ -1,73 +1,77 @@
-# 项目管理器
+#project manager
 
-> 本篇采用LayaAirIDE 2.0.1 bate 截图，如有不同，请下载最新的LayaAirIDE，以最新版本IDE为准。
+> This article uses LayaAirIDE 2.0.1 bate screenshots. If different, please download the latest LayaAirIDE, whichever version is the latest.
 
-## 一、项目管理器面板介绍
+##Introduction of Project Manager Panel
 
-​         项目管理器是我们用来访问和管理项目的工作区域。在我们使用过程中，项目管理器将“`项目文件夹\laya\pages`”的目录以及工程页面以树状结构展示出来。如图1所示：
+The Project Manager is the work area we use to access and manage projects. During our use, the project manager will“`项目文件夹\laya\pages`” The directories and engineering pages are displayed in a tree structure. As shown in Figure 1:
 
-​        ![blob.png](img/1.png)        
+​![blob.png](img/1.png)        
 
-​        （图1）
 
-**树状页面列表： **显示已创建或已导入的项目文件夹及页面。
+(Fig. 1)
 
-**打开所在目录：** 打开选中的页面的所在目录。
+**Tree page list:**Displays project folders and pages that have been created or imported.
 
-**设置属性： **在弹出的属性设置窗口中，您可以设置该页面的导出类型与默认属性，如默认大小，color等，该属性全局通用。
+**Open the directory where you are located:**Open the directory of the selected page.
 
-​        ![blob.png](img/2.png)
+**Set properties:**In the pop-up property settings window, you can set the page's export type and default properties, such as default size, color, etc., which are global.
 
-​        （图2）           
+​![blob.png](img/2.png)
 
-​       
+(Figure 2)
 
-## 二、项目管理器的右键功能介绍
+​
 
-**打开**
+##Introduction of Right-click Function of Project Manager
 
-​        右键`文件`，点击打开，**可以直接在场景编辑器中打开该文件。**
+**open**
 
-​        右键`目录`，点击打开，**可以直接打开当前目录的资源管理器**
+Right-click`文件`, click open,**This file can be opened directly in the scene editor.**
 
-**重命名**
+Right-click`目录`Click Open,**Resource Manager that can open the current directory directly**
 
-​        重新设定目录或文件的名字。
+**rename**
 
-**转为模板**
+Reset the name of the directory or file.
 
-　　只有UI文件才能使用该功能，将UI设置为模板，存放于模板库中被使用。可以设置为常用模板和自定义模板。
+**Conversion to template**
+
+Only UI files can use this function. The UI is set as a template and stored in the template library for use. It can be set to common templates and custom templates.
 
 **Clone**
 
-​        对于文件会复制一个完全一样的项目文件。
+For a file, an identical project file is copied.
 
-​        对于目录，会复制整个目录（含目录内的文件）。
+For directories, the entire directory (including the files in the directory) is copied.
 
-**设置默认属性**
+**Setting default properties**
 
-​        只能对`文件`设置页面的默认属性，以及导出类型。如图3所示。
+Only right`文件`Set the default properties of the page and the export type. As shown in Figure 3.
 
-　　![图3](img/3.png) <br /> (图3)
+　　![图3](img/3.png)<br/> (Figure 3)
 
-**删除**
+**delete**
 
-　　可以通过右键的`删除`功能，删除目录或文件。也可以选中页面后直接按Backspace或Delete键进行删除。如果选中目录文件夹进行删除，删除时会将目录下所有项目页面一并删除，请谨慎操作。
+Right-click`删除`Function to delete directories or files. You can also select the page and press the Backspace or Delete key to delete it. If the directory folder is selected for deletion, all project pages under the directory will be deleted when deleting. Please be careful.
 
-**新建**
+**Newly build**
 
-​        在项目管理器中，可以新建UI页面/场景、粒子、动画、脚本。鼠标右键单击弹出菜单栏后，我们选择相应的新建功能即可。如图4所示
+In Project Manager, you can create new UI pages/scenarios, particles, animations, scripts. After right-clicking the pop-up menu bar, we can select the corresponding new function. As shown in Figure 4
+
+
 
 ​        ![blob.png](img/4.png)
 
-​        （图4）
+(Figure 4)
 
- **新建目录**
 
-​        我们还可以在项目管理器中直接新建一个目录。
+ **new directory**
 
-**打开所在目录**
+We can also create a new directory directly in the project manager.
 
-​        选中文件或目录，点击该功能即可打开文件或目录所在的资源管理器目录。
+**Open the directory where you are located**
+
+Select a file or directory and click on this function to open the resource manager directory where the file or directory is located.
 
 

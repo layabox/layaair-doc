@@ -1,189 +1,208 @@
-# 图集制作与使用详解
+#Detailed Explanation of Atlas Making and Use
 
-> author: charley     Language: ActionScript3     update: 2019.01.11  
+> author: Charley Language: ActionScript 3 update: 2019.01.11
 
-*【注意】本篇教程采用LayaAirIDE 2.0.0正式版，文中如有不同请以最新LayaAirIDE版本为准。*
+*[Note] LayaAirIDE 2.0.0 is the official version of this tutorial. If there are any differences, please refer to the latest version of LayaAirIDE.*
 
 
 
-图集(Atlas)是游戏开发中常见的一种美术资源，通过工具将多张图片合并成一张大图，并通过atlas与json等格式的文件存放原始图片资源信息。图1就是采用LayaAirIDE打包好的一张png图集资源。
+Atlas is a common art resource in game development. It combines many pictures into one big picture through tools, and stores the original picture resource information through files in atlas and JSON formats. Figure 1 shows a PNG atlas resource packaged in LayaAirIDE.
 
 
 
 ![1](img/1.png)   
 
-(图1)
+
+(Fig. 1)
 
 
 
-## 1.为什么要使用图集资源
+##1. Why Use Atlas Resources
 
-**在游戏中使用多张图片合成的图集资源作为美术资源，有以下优势：**
+**In the game, the use of multi-picture composite atlas resources as art resources has the following advantages:**
 
-#### 1.1优化内存
+####1.1 Optimizing Memory
 
-　　合成图集时会去除每张图片周围的空白区域，加上可以在整体上实施各种优化算法，合成图集后可以大大减少游戏包体和内存占用。
+When synthesizing atlas, the blank area around each picture will be removed, and various optimization algorithms can be implemented as a whole. After synthesizing atlas, the game package and memory occupancy will be greatly reduced.
 
-#### 1.2 减少CPU运算
+####1.2 Reduce CPU operations
 
-　　多个`Sprite`如果渲染的是来自同一张图集的图片时，这些`Sprite`可以使用同一个渲染批次来处理，大大的减少CPU的运算时间，提高运行效率。
-
-
-
-## 2.支持图集打包的格式
-
-LayaAirIDE支持对PNG与JPG两种资源格式打包为图集。但是图集打包的原始资源，推荐使用PNG，因为JPG的体积会较大。
-
-*Tips：需要注意的是，PNG原始资源的位深度不能超过32，否则打包出来的图集会出现花屏。另外，PNG与JPG资源不能是其它格式的资源改名为PNG与JPG格式的。*
+Multiple`Sprite`If you render a picture from the same atlas, these`Sprite`The same rendering batch can be used for processing, greatly reducing the CPU operation time and improving the running efficiency.
 
 
 
-## 3.用LayaAirIDE制作图集的方式
+##2. Support the format of atlas packaging
 
-LayaAirIDE中打包图集的方式一共有两种。
+LayaAirIDE supports packaging PNG and JPG resource formats into atlases. However, PNG is recommended for the original resources packaged in the atlas because of the larger size of JPG.
 
-#### 3.1 使用IDE的图集打包工具
+*Tips: It's important to note that the bit depth of the original PNG resource should not exceed 32, otherwise the packaged atlas will show a flower screen. In addition, PNG and JPG resources can not be renamed as PNG and JPG resources in other formats.*
 
-在IDE导航的`工具`菜单中，点击`图集打包`打开图集打包工具面板，如图2、图3所示。
+
+
+##3. Making Atlas with LayaAirIDE
+
+There are two ways to package atlases in LayaAirIDE.
+
+####3.1 Atlas Packaging Tool Using IDE
+
+Navigated in IDE`工具`In the menu, Click`图集打包`Open the Atlas Packaging Tool Panel, as shown in Figures 2 and 3.
 
 ![图2](img/2.png)  
 
-(图2)
 
-　　![图3](img/3.png)   （图3）
-
+(Fig. 2)
 
 
-**图集打包工具面板说明**
+
+　　![图3](img/3.png)(Fig. 3)
+
+
+
+**Description of Atlas Packaging Tools Panel**
 
 **`资源根目录`**
 
-`资源根目录`是指图集打包前，原始资源目录的父级目录，该目录下，每一个目录对应一个图集文件，多个目录会生成多个图集文件。（打包后的图集文件以资源根目录下的子目录名命名，如图4、图5所示）
+`资源根目录`It refers to the parent directory of the original resource directory before the atlas is packaged. In this directory, each directory corresponds to a Atlas file, and multiple directories generate multiple Atlas files. (The packaged atlas file is named after the subdirectory name in the resource root directory, as shown in Figures 4 and 5)
 
 ![图4](img/4.png) 
 
- (图4)
+
+(Fig. 4)
 
 　![图5](img/5.png)  
 
-(图5)
+
+(Fig. 5)
 
 
 
-#### 操作提示：
+####Operational tips:
 
-直接拖拽目录到`资源根目录`输入框，或者点击`浏览`获得目录路径的同时，会在`输出目录`自动填写与`资源根目录`相当的路径。
+Drag directories directly to`资源根目录`Input box, or click`浏览`When the directory path is obtained, the`输出目录`Automatically fill in and`资源根目录`A considerable path.
 
 #### **`输出目录`**
 
-`输出目录`是指打包后的图集资源存放目录。
+`输出目录`It refers to the storage directory of packaged Atlas resources.
 
-默认与资源根目录相同，可以点击`浏览`或手动在`输出目录`输入框内更改路径。
+The default is the same as the resource root directory, you can click`浏览`Or manually.`输出目录`Change the path in the input box.
 
-*Tips：更改输出目录不能采用目录拖拽的方式，否则会影响到资源根目录的路径。*
+*Tips: Changing the output directory cannot be done by dragging and dropping the directory, otherwise it will affect the path of the resource root directory.*
 
 #### **`图集最大宽\高度`**
 
-默认值为`2048×2048`，该值决定单个图集的最大尺寸。如果原始图片过多，超过单个图集最大宽高时，则会在打包时生成新的图集文件（多个图集）。
+The default value is`2048×2048`This value determines the maximum size of a single atlas. If there are too many original images, which exceed the maximum width and height of a single atlas, new atlas files (multiple atlases) will be generated when packaged.
 
 #### **`单图最大宽\高度`**
 
-默认值为`512×512`，超过这个尺寸的单图将不会被打包到图集中。
+The default value is`512×512`A single graph beyond this size will not be packaged into the atlas.
 
-*Tips：超过512×512的单图不建议打包到图集中，可以单独预加载此图，但是，加载单图也不能超过1024×1024，否则会对性能有影响。*
+*Tips: Single graphs over 512 * 512 are not recommended to be packaged into the atlas. They can be preloaded separately. However, single graphs should not exceed 1024 * 1024, otherwise, their performance will be affected.*
 
 #### `缩放系数`
 
-这里可以通过缩放减少图集体积，比如改为0.5，工具会按原图宽高分别乘0.5生成到图集中，显示的时候会保持会通过拉伸保持原图大小，这样处理后，虽然图集的尺寸会变小，但是显示的效果也会有所影响，可以视为一种图集的另类压缩方案。如果要保持设计时的图片精度，尽量不要调整默认值。
+Here we can reduce the collective product of the graph by zooming, for example, to 0.5. The tool will multiply 0.5 by the width and height of the original image, and keep the size of the original image by stretching when displaying. After processing, although the size of the collection will be smaller, the effect of the display will also be affected, which can be regarded as an alternative compression scheme of the atlas. If you want to maintain the design accuracy of the picture, try not to adjust the default value.
 
 #### **`2的整次幂`**
 
-如果勾选，则生成的图集图片宽高将会是2的整次幂。这里，建议美术在设计的时候，就按2的整次幂来设计，通过图集工具强行保持2的整次幂，肯定会导致图集的体积变大。所以，除非是面临某些强制要求按2的整次幂优化的Runtime环境，常规情况下无需勾选，尽量提要求给美术设计人员，按32、64、128、256等2的整次幂来设计图片的宽高。
+If checked, the width and height of the generated atlas will be an integral power of 2. Here, it is suggested that when designing art, it should be designed according to the integral power of 2. By forcibly maintaining the integral power of 2 through the tool of atlas, the volume of the atlas will certainly be enlarged. Therefore, unless there are some compulsory Runtime environments requiring the optimization of the whole power of 2, there is no need to check in the normal circumstances, so as to ask the art designers to design the width of the picture according to the whole power of 32, 64, 128, 256 and so on.
 
 #### **`空白裁剪`**
 
-如果勾选，则生成的图集图片会自动把原始图片中空白区域裁剪掉。默认是是勾选状态，不要去掉。
+If checked, the resulting gallery image automatically cuts out the blank areas in the original image. The default is to check the status, do not remove it.
 
 #### `数据文件后缀`
 
-数据文件后缀默认是atlas，也可以选择json。但是我们建议开发者在使用LayaAir引擎的时候采用atlas作为图集的后缀。
+The data file suffix defaults to atlas or json. But we recommend that developers use atlas as the suffix of the atlas when using the LayaAir engine.
 
 
 
-### 3.2 资源管理器内自动打包图集
+###3.2 Automatic Packaging Atlas in Resource Manager
 
-#### 3.2.1 图集打包方式
+####3.2.1 Atlas Packing Method
 
-#### **LayaAirIDE导出时自动将Assets目录内的资源打包**
+#### **LayaAirIDE automatically packages resources in the Assets directory when exporting**
 
-在资源管理器目录（Assets）内的全部图片资源，如图6-1所示。当按`F12`或者`Ctrl+F12`导出时，会**自动按目录名打包为图集**，如图6-2所示。
+All image resources in the Assets directory are shown in Figure 6-1. When pressed`F12`perhaps`Ctrl+F12`When exported, the**Automatically packaged as atlas by directory name**As shown in Figure 6-2.
 
 ![图6-1](img/6-1.png) 
 
- (图6-1)
 
-#### 资源管理器中的图集导出路径
+(Fig. 6-1)
 
-将UI等导出到项目后，自动打包好的图集默认位于“`项目根目录/bin/res/atlas/`”目录下，图集命名与打包工具中的图集命名方式一样，以Assets内的子目录名为图集名称，如图6-2所示。
+####Atlas export path in resource manager
+
+After exporting UI, etc. to a project, the automatically packaged atlas defaults to be located at“`项目根目录/bin/res/atlas/`” Under the catalog, the name of the atlas is the same as the name of the atlas in the packaging tool, with the subdirectory in Assets as the name of the atlas, as shown in Figure 6-2.
+
+
 
   ![图6-2](img/6-2.png) 
 
-（图6-2）
 
-#### 改变默认的图集导出路径
+(Fig. 6-2)
 
-如果想要改变图集默认的导出目录，可以在设计模式下，通过快捷键F9，在`项目设置`面板的`图集设置`栏的 `资源发布目录` 中更改图集导出路径，如图6-3所示。也可以设置图集最大的宽高，以及不打包的单图宽高限制标准等。各参数的意义和上文中的图集工具介绍一样的。
+####Changing the default Atlas Export Path
+
+If you want to change the default export directory of the atlas, you can use the shortcut F9 in the design mode.`项目设置`Panel`图集设置`Hurdles`资源发布目录`Change the export path of the atlas as shown in Figure 6-3. You can also set the maximum width and height of the atlas, as well as the width and height limitation criteria for unpackaged single atlas, etc. The meanings of each parameter are the same as those described in the Atlas Tool above.
 
 ![图6-3](img/6-3.png)  
 
- (图6-3)
 
-#### **如何将未使用资源不打包到图集内**
+(Fig. 6-3)
 
-`资源管理器`中的资源如果没有在项目场景中被使用，通过菜单的 `导出`--> `发布（不打包未使用）` 功能，如图6-4。可以将未使用的资源不打包到图集内，减少图集的大小。但是，由于这种打包方式需要遍历所有资源的使用状态，导致打包速度较慢，因此该方式通常只在发布线上版本的时候才使用。
+#### **How to unpackage unused resources into Atlas**
+
+`资源管理器`If the resources in the menu are not used in the project scenario, the`导出`>`发布（不打包未使用）`Functions, as shown in Figure 6-4. You can reduce the size of the atlas by not packing unused resources into the atlas. However, because this packaging method needs to traverse the usage status of all resources, resulting in slower packaging speed, so it is usually used only when the release version is online.
 
 ![图6-4](img/6-4.png) 
 
-（图6-4）
 
-#### **如何对单张资源设置不打包到图集内**
+(Fig. 6-4)
 
-选中资源，左键双击，或者右键选择`设置默认属性`，如图6-5所示。打开资源属性设置的面板。
+#### **How to Set Single Resource without Packing into Atlas**
+
+Select resources, double-click left, or right-click`设置默认属性`As shown in Figure 6-5. Open the panel for resource property settings.
 
 ![图6-5](img/6-5.png)   
 
-（图6-5）
 
-在属性设置面板中，将`打包类型`选项中设置为`不打包`类型，如图6-6所示。该资源就不会被打包到图集中。
+(Fig. 6-5)
+
+In the Property Settings panel, the`打包类型`Options are set to _____________`不打包`Type, as shown in Figure 6-6. This resource will not be packaged into the atlas.
 
 ![图6-6](img/6-6.png) 
 
-（图6-6）
+
+(Fig. 6-6)
 
 
 
-## 4.打包生成的图集文件介绍
+##4. Introduction of Atlas Files Generated by Packaging
 
-#### 4.1 打包生成的图集文件
+####4.1 Packaged Atlas Files
 
-打包图集后，会生成图集专用资源（分别是同名的`.atlas`文件(或者`.json`文件)和`.png`文件），以及图集打包程序用的`rec`文件（*这个rec文件打包软件使用，开发者不用管*），如上文的图6-2所示。
+After wrapping the atlas, the atlas-specific resources (with the same name, respectively) are generated.`.atlas`Files (or`.json`Document and`.png`Documents) and for Atlas packers`rec`File (* this rec file is used as a package software, and developers do not need to worry *), as shown in Figure 6-2 above.
 
-#### 4.2 atlas与json的图集后缀区别
+####4.2 differences between atlas and JSON
 
-`.atlas`与`.json`文件都是png图集的配置信息文件。最早期LayaAir引擎默认使用json作为图集配置信息的格式，后来为了优化引擎的使用，默认改为了`.atlas`，但为了兼容旧的版本，所以生成图集的时候，很长一段时间的IDE版本两种格式都会存在，到如今的LayaAirIDE版本，默认只生成`.atlas`，如果想生成json要手动更改图集后缀的设置。
+`.atlas`And`.json`All files are configuration information files of PNG atlas. The original LayaAir engine used JSON as the default format for Atlas configuration information. Later, in order to optimize the use of the engine, the default was changed to`.atlas`However, in order to be compatible with the old version, both IDE versions will exist for a long time when generating the atlas. Today, the Laaya AirIDE version only generates by default.`.atlas`If you want to generate json, you need to manually change the settings for the suffix of the atlas.
 
-在使用的时候，这两种后缀的区别在于：
+When used, the difference between the two suffixes is that:
 
-`.atlas`是LayaAirIDE特有的图集格式，仅用于图集，所以在加载`.atlas`时不需要填写类型，和加载普通的单图方式一样，更加方便，是推荐的图集加载方式。atlas方式加载图集的示例代码为：
+`.atlas`LayaAirIDE is a unique atlas format, which is only used for atlases, so it is loaded`.atlas`It does not need to fill in the type. It is more convenient to load the ordinary single graph. It is the recommended way to load the atlas. The sample code of atlas loading atlas is as follows:
+
 
 ```typescript
+
 //atlas方式图集使用示例
 Laya.loader.load("./res/atlas/test.atlas", Handler.create(this, onLoaded));
 ```
 
-`.json`是一种兼容第三方的图集配置方式，由于`.json`文件应用广泛，不仅仅用于图集，所以为了识别是否为图集配置信息，在加载`.json`文件的图集时，需要填写类型进行区分。json方式加载图集的示例代码为：
+
+`.json`It is a third-party compatible atlas configuration mode, because`.json`Files are widely used, not just for atlases, so in order to identify whether to configure information for atlases, they are loaded.`.json`Fill in the type of atlas to distinguish. The sample code for loading the atlas in JSON mode is as follows:
+
 
 ```typescript
+
 //json方式图集使用示例
 Laya.loader.load([{url: "res/atlas/test.json", type: Laya.Loader.ATLAS}], Handler.create(this, onLoaded));
 ```
@@ -192,45 +211,53 @@ Laya.loader.load([{url: "res/atlas/test.json", type: Laya.Loader.ATLAS}], Handle
 
 
 
-## 5.打包图集常见的错误
 
-#### 删除图集文件后，无法重新导出的问题
+##5. Common Errors in Packaging Atlas
 
-当用户手动删除了图集文件，但并未删除rec文件时，如图7-1所示。在这种情况下，**如果原始资源没有发生改变，直接使用F12是无法重新导出图集文件的。**
+####Problems that cannot be re exported after deleting the atlas file
 
-此时，可以通过快捷键`Ctrl+F12`清理并导出。或者直接把rec文件也删除掉，再使用F12导出。即可正常导出图集。
+When the user manually deletes the atlas file, but does not delete the rec file, as shown in Figure 7-1. Under these circumstances,**If the original resources have not changed, it is impossible to re-export the atlas files directly using F12.**
+
+At this point, you can use the shortcut key`Ctrl+F12`Clean and export. Or delete rec files directly and export them using F12. The atlas can be derived normally.
 
 ![图7-1](img/7-1.png) 
 
- (图7-1)
+
+(Fig. 7-1)
 
 
 
-## 6. 如何在项目中使用图集中的小图
+##6. How to use small drawings in atlas in a project
 
-在项目中如果用到图集中的资源，则需先预加载图集资源，然后设置图片的皮肤（*skin*）属性值为“原小图目录名/原小图资源名.png”。
+In the project, if you use the resources in the atlas, you need to preload the atlas resources first, and then set the skin (* skin *) attribute value of the image as "original catalog name / original resource name. png".
+
+
 
  ![图6-1](img/6-1.png)
 
- (图6-1)
+(Fig. 6-1)
 
 ![1](img/1.png)   
 
-(图1)
 
-#### 资源管理器中的
+(Fig. 1)
 
-例如：上文中图6-1的资源打包后如图1所示，现在我们将图6-1中`test`目录下的小图`c1.png`在项目中通过图集的方式显示出来，示例代码如图8所示：
+####In Resource Manager
+
+For example, the resources in Figure 6-1 above are packaged as shown in Figure 1. Now let's look at Figure 6-1.`test`Small maps in the catalog`c1.png`The sample code is shown in Figure 8 as follows:
 
 ![图8](img/8.png) 
 
-（图8）
 
-因为LayaAir 2.0 IDE在创建项目时，已经初始化，图集加载等基础的代码写好，所以，我们直接写将图集中c1.png图片显示出来即可。
+(Fig. 8)
 
-核心代码如下：
+Because LayaAir 2.0 IDE has been initialized when creating the project, and the basic code such as the loading of the atlas has been written, so we can directly write c1.png pictures in the atlas and display them.
+
+The core code is as follows:
+
 
 ```javascript
+
     //创建Image实例
     var img = new Laya.Image();
     //设置皮肤（取图集中小图的方式就是 原小图目录名/原小图资源名.png）
@@ -239,18 +266,20 @@ Laya.loader.load([{url: "res/atlas/test.json", type: Laya.Loader.ATLAS}], Handle
     Laya.stage.addChild(img);
 ```
 
-代码运行效果如图9所示：
+
+The code runs as shown in Figure 9:
 
 ![图9](img/9.png)  （图9）
 
-如图9所示，我们成功的从图集中取出小图资源并应用到项目中，而代码中的`sink`值`test/c1.png`，其实就是图集打包前对应的目录与资源名称和路径。
 
-本篇至此结束，如有疑问请到社区提出：[https://ask.layabox.com](https://ask.layabox.com)
+As shown in Figure 9, we succeeded in extracting small map resources from the atlas and applying them to the project, while in the code.`sink`value`test/c1.png`In fact, it is the directory and resource name and path corresponding to the atlas before packaging.
+
+This is the end of this article. If you have any questions, please come to the community and ask:[https://ask.layabox.com](https://ask.layabox.com/)
 
 
 
-## 本文赞赏
+##This article appreciates
 
-如果您觉得本文对您有帮助，欢迎扫码赞赏作者，您的激励是我们写出更多优质文档的动力。
+If you think this article is helpful to you, you are welcome to sweep the code and appreciate the author. Your motivation is our motivation to write more high quality documents.
 
 ![wechatPay](../../../../wechatPay.jpg)

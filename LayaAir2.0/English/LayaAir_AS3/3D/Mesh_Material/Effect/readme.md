@@ -1,26 +1,28 @@
-# Effect材质详解
+#Explanation of Effect Material
 
 ###### *version :2.1.0beta   Update:2019-5-14*
 
-EffectMaterail特效材质，靠混合模式产生光效，这种材质常用特效制作。
+Effect Materail special effect material, which produces light effect by mixing mode, is commonly used for special effect production.
 
-#### 主要属性与方法
+####Main attributes and methods
 
-> 属性
+> attribute
 
-`color:Vector4` 颜色。
+`color:Vector4`Color.
 
-`renderMode:int` [write-only] 设置渲染模式。
+`renderMode:int`[write-only] Sets the rendering mode.
 
-`texture:BaseTexture` 贴图。
+`texture:BaseTexture`Map.
 
-`tilingOffset:Vector4` 纹理平铺和偏移。
+`tilingOffset:Vector4`Texture tiling and migration.
 
-#### 创建和使用Effect材质
+####Create and use Effect materials
 
-下面代码来自官方示例([demo地址](https://layaair.ldc.layabox.com/demo2/?language=ch&category=3d&group=Material&name=EffectMaterialDemo)):
+The following code is from the official example（[demo地址](https://layaair.ldc.layabox.com/demo2/?language=ch&category=3d&group=Material&name=EffectMaterialDemo)):
+
 
 ```typescript
+
 var earth:MeshSprite3D = scene.addChild(new MeshSprite3D(PrimitiveMesh.createSphere())) as MeshSprite3D;
 
 earth.transform.position = new Vector3(0, 0, 0);
@@ -35,4 +37,5 @@ material.texture = texture;
 earth.meshRenderer.material = material;
 ```
 
-![](img/1.gif)<br>(图12)
+
+![] (img/1.gif) < br > (fig. 12)

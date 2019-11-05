@@ -2,13 +2,15 @@
 
 ###### *version :2.1.0   Update:2019-5-25*
 
-​	在之前的RenderTexture的使用还是实时的渲染 “摄像机”。但是在很多的时候我需要像相机一样 “拍”一张照片，这样我们就可以使用RenderTexture的 `getData` 像素读取接口来实现 “拍照” 功能。
+In the past, Render Texture was used to render "cameras" in real time. But a lot of times I need to "take" a picture like a camera, so we can use RenderTexture.`getData`Pixel reading interface realizes the function of "photographing".
 
-![](img/1.png)<br>(图1)
+![] (img/1.png)<br> (Figure 1)
 
-​	下面的代码来自于官方示例（demo地址）:
+The following code comes from the official example (demo address):
+
 
 ```typescript
+
 //在按钮按下后执行的逻辑
 //将相机的渲染目标作为纹理传递给BlinnPhong材质的纹理
 renderTargetObj.meshRenderer.material.albedoTexture = renderTargetCamera.renderTarget;
@@ -22,6 +24,7 @@ renderTargetCamera.renderTarget.getData(0, 0, 2048, 2048, out);
 tex.setPixels(out);
 ```
 
-在开始渲染后，我们调整视角就可以看到拍照的效果了。
 
-![](img/2.gif)<br>(图2)
+After we start rendering, we can adjust the angle of view to see the effect of the photograph.
+
+![] (img/2.gif) <br> (Figure 2)

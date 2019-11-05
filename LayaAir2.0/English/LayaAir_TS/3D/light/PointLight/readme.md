@@ -2,9 +2,11 @@
 
 ###### *version :2.0.1beta   Update:2019-3-30*
 
-​	PointLight(点光)是向四面八方发射光线的光源，又称全向光或者球状光，现实中的点光源比如灯泡、蜡烛，可以感觉到点光源是有强度、颜色和衰减半径属性。
+Point Light is a source of light that emits light in all directions, also known as omnidirectional light or spherical light. Point light sources in reality, such as light bulbs and candles, can feel that point light sources have properties of intensity, color and attenuation radius.
+
 
 ```javascript
+
 //创建点光源
 var pointLight = scene.addChild(new Laya.PointLight()) as Laya.PointLight;
 //设置点光源位置
@@ -13,9 +15,10 @@ pointLight.transform.position = new Laya.Vector3(0.4, 0.4, 0.0);
 pointLight.range = 6.0;
 ```
 
-**range** 为设置点光源的范围，相当于点光的照射范围，数值越大，光照范围越大。
 
-图1中因光照范围设置不大，且点光源的位置问题，因此没被光照的地方为黑色。
+**Range**In order to set the range of point light source, which is equivalent to the irradiation range of point light, the larger the value, the larger the illumination range.
 
-![](img/1.png)<br>(图1)
+In Figure 1, because the illumination range is not large and the location of the point light source is problematic, the area not illuminated is black.
+
+![] (img/1.png)<br> (Figure 1)
 

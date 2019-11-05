@@ -1,22 +1,24 @@
-# LayaAir3D之摄像机Camera
+#Camera of LayaAir3D Camera
 
-LayaAir中的摄像机可以理解成拍摄电影或者电视剧时候的摄像机，用来捕捉三维世界画面，然后呈现到屏幕上。同时，LayaAir3D引擎中还增加了VR摄像机，开发者们可以用它开发VR立体应用或者游戏。
+The camera in LayaAir can be interpreted as a camera when shooting a movie or TV series, which captures a three-dimensional picture of the world and then presents it on the screen. At the same time, VR cameras have been added to the LayaAir3D engine, which can be used by developers to develop VR stereo applications or games.
 
-当然，摄像机还有其他比较重要的属性，下面将一一介绍它的功能。
+Of course, there are other important attributes of the camera. The functions of the camera are described below.
 
 
 
-### 从Unity中导出摄像机
+###Derivation of Camera from Unity
 
-引擎1.7.10版与unity导出插件1.5.0版发布后，在unity中所创建的摄像机可以被导出了！并且导出文件保留了摄像机在3D空间中的位置、视角、背景颜色、载剪、视野等参数，当加载了导出后的场景，显示的画面效果与unity中完全一致，方便了开发者们对摄像机视角的控制。
+After the release of engine version 1.7.10 and unit export plug-in version 1.5.0, the camera created in unit can be exported! And the export file retains the position, perspective, background color, clipping, visual field and other parameters of the camera in the 3D space. When loading the exported scene, the display effect is exactly the same as that in Unity, which facilitates the developer's control of the camera's visual angle.
 
-同时，因为LayaAir 3D引擎支持多摄像机，因此也可以在unity中设置多个摄像机并导出，关于多摄像机的视口设置请查看本课最后的“多摄像机使用”小节。
+At the same time, because the LayaAir 3D engine supports multiple cameras, you can also set up multiple cameras in Unity and export them. For the view settings of multiple cameras, please see the "Multi-Camera Usage" section at the end of this lesson.
 
-那么，如果在unity中创建了摄像机并导出，在代码中加载导出文件后，我们怎么去获取摄像机呢？这可以通过场景的子节点索引或名称来获取，获取后我们还可以对它进行移动旋转、设置天空盒、添加脚本等操作。
+So, if the camera is created in Unity and exported, how do we get the camera after loading the exported file in the code? This can be obtained by the index or name of the sub-node of the scene. After acquisition, we can also move and rotate it, set the skybox, add scripts and other operations.
 
-代码如下：
+The code is as follows:
+
 
 ```java
+
 var LayaAir3D = (function () {
     function LayaAir3D() 
     {
@@ -47,19 +49,22 @@ LayaAir3D();
 			
 ```
 
-  在Untiy中，摄像机默认名为“Main Camera"，因此在上述代码中，通过scene的getChildByName(“Main Camera")方法得到了摄像机，以供后续逻辑操作。开发者们也可以在unity中自定义摄像机的名字。
+
+In Untiy, the camera is called "Main Camera" by default, so in the above code, the camera is obtained through scene's getChildByName ("Main Camera") method for subsequent logical operation. Developers can also customize the name of the camera in Unity.
 
 
 
-**（tips：下列示例代码在`快速开启3D之旅`文档中的代码基础上修改）**
+**(tips: The following sample code is in the`快速开启3D之旅`Modify on the basis of the code in the document)**
 
-### 摄像机移动与旋转
+###Camera Movement and Rotation
 
-摄像机继承于Sprite3D，因此还可以对它进行3D变换的操作，通过transform属性在3D场景中移动旋转变化，多角度取景，使观众或游戏者获得更真实的空间体验。
+Camera is inherited from Sprite3D, so it can also be transformed into 3D. It can move and rotate in the 3D scene through the transformation attribute, and view from multiple angles, so that the audience or the game can get a more real space experience.
 
-设置相机的旋转：
+Set the rotation of the camera:
+
 
 ```typescript
+
  //实例化一个相机，设置纵横比，0为自动匹配。0.1是最近看到的距离，100是最远看到的距离
 var camera = new Laya.Camera();
 //移动相机，设置相机向z轴移动3米，true代表的是局部坐标，false是相对世界坐标
@@ -68,24 +73,30 @@ camera.transform.translate(new Laya.Vector3(0,0,3),false);
 scene.addChild(camera);
 ```
 
-设置相机的旋转：
+
+Set camera rotation:
+
 
 ```typescript
+
 //欧拉角旋转相机。局部坐标，弧度制（false为角度制）
 camera.transform.rotate(new Laya.Vector3(0,0,3),true,true);
 ```
 
 
 
-### 摄像机正交投影与透视投影
 
-在我们观察世界的时候，看到的都是带有“近大远小”透视效果的世界，在3D引擎中，为了更好的模拟人眼所看到的世界，默认的摄像机带着“透视投影”的效果。
+###Camera Orthogonal Projection and Perspective Projection
 
-![1](img/1.png)</br>(图1)默认透视投影
+When we look at the world, we see the world with "near big, far small" perspective effect. In the 3D engine, in order to better simulate the world seen by the human eye, the default camera has the effect of "perspective projection".
 
-但有很大一部分游戏，特别是斜45度视角的2D、3D混合游戏，游戏画面是不能带透视效果的，那么这个时候，我们需要设置摄像机为“正交投影”，使它不产生近大远小的透视效果。
+![1](img/1.png)</br> (Fig. 1) Default perspective projection
+
+But there are a large number of games, especially the mixed games of 2D and 3D with 45-degree angle of view. The game picture can not bring perspective effect. At this time, we need to set the camera as "orthogonal projection" so that it does not produce near-large-far perspective effect.
+
 
 ```typescript
+
 //正交投影属性设置
 camera.orthographicProjection = true;
 //正交垂直矩阵距离，控制3D物件远近与现实大小
@@ -96,21 +107,26 @@ camera.transform.translate(new Laya.Vector3(0,26.5,45));
 camera.transform.rotate(new Laya.Vector3(-30,0,0),true,false);
 ```
 
-![2](img/2.png)</br>(图2)正交投影
+
+![2](img/2.png)</br> (Figure 2) Orthogonal Projection
 
 
 
-### 摄像机裁剪与视野
+###Camera Cutting and Vision
 
-**远近距离的裁剪**
+**Close and far tailoring**
 
-摄像机还可以设置远近距离的裁剪，只显示远近距离之间的场景模型，之外的模型不进行渲染显示。它最大的优势在于提高游戏的性能。
+The camera can also set up the clipping of the remote and close range, only showing the scene model between the remote and close range, and the other models are not rendered and displayed. Its greatest advantage is to improve the performance of the game.
 
-创建摄像机时，摄像机构造函数会默认裁剪为近距0.3米，远距为1000米（图1）。开发者可以在构造函数中设置或通过摄像机属性进行设置。
+When a camera is created, the camera constructor is clipped by default to 0.3 m at close range and 1000 m at long range (Figure 1). Developers can set it in the constructor or through camera properties.
 
 ![3](img/3.png)</br>(图3)
 
+
+
+
 ```typescript
+
 //创建摄像机时初始化裁剪（纵横比，近距裁剪，远距裁剪）
 var camera = new Laya.Camera(0,0.1,100);
 //近距裁剪
@@ -119,28 +135,34 @@ camera.nearPlane = 0;
 camera.farPlane = 100;
 ```
 
-tips：一般在游戏中，我们会把雾效与摄像机剪切同时使用，雾效远距以外的地方基本都看不清楚，这时就可以设置远距离剪切，提高游戏渲染性能。
 
-**摄像机视野**
+Tips: generally in the game, we will use fog effect and camera cutting at the same time, fog effect beyond the distance is basically not clear, then you can set up long-distance cutting, improve the rendering performance of the game.
 
-摄像机视野类似于焦距，通过视野参数的调整，可以看到视图中的场景范围、透视的近大远小变化，它是通过角度值进行调整，角度越大，视野范围越大，开发者可以根据自己的需求进行设置。
+**Camera vision**
+
+Camera field of view is similar to focal length. By adjusting the parameters of field of view, we can see the changes of scene range and perspective. It is adjusted by the angle value. The larger the angle, the larger the field of view, the developers can set it according to their own needs.
+
 
 ```typescript
+
 //设置相机的视野范围90度
 camera.fieldOfView = 90;
 ```
 
 
 
-### 摄像机捕捉目标
 
-在创建摄像机时，我们经常需要调整摄像机的位置，用于对准显示某个三维物体，或显示某个区域。对于初学者说，空间思维还未形成习惯，调整位置所花的时间会很多。
+###Camera Captures Target
 
-LayaAir3D引擎中3D变换提供了一个lookAt()方法，用于捕捉目标，自动调整3D对象对准目标点。摄像机也可以使用它达到我们调整视角的目的。代码如下：
+When creating a camera, we often need to adjust the position of the camera to show a three-dimensional object or display an area. For beginners, spatial thinking has not yet formed a habit, adjusting the position will take a lot of time.
 
-lookAt(target观察目标向量，up向上向量，isLocal是否局部空间)
+The 3D transformation in LayaAir3D engine provides a lookAt () method for capturing targets and automatically adjusting 3D objects to target points. The camera can also be used to adjust our perspective. The code is as follows:
+
+Look At (target observes target vector, up vector, isLocal is local space)
+
 
 ```typescript
+
 //添加3D场景
 var scene = new Laya.Scene();
 Laya.stage.addChild(scene);
@@ -155,34 +177,40 @@ camera.transform.translate(new Laya.Vector3(0,1,5));
 camera.transform.lookAt(box.transform.position,new Laya.Vector3(0,-1,0));
 ```
 
-我们把相机的up设置为(0,-1,0)的方向，摄像机的y向为负数，会在Y轴上倒转，所以画面变成了倒置的方体（图4）。其他几个方向初学者们可以多做尝试。
 
-![4](img/4.png)</br>(图4)捕捉目标
+We set the up of the camera to the direction of (0, - 1,0). The Y direction of the camera is negative, and it will reverse on the Y axis, so the picture becomes an inverted square (Figure 4). Beginners in several other directions can try more.
+
+![4](img/4.png)</br> (Figure 4) Capturing the target
 
 
 
-### 摄像机背景色与天空盒
+###Camera Background Color and Sky Box
 
-**背景色**
+**Background color**
 
-在3D场景中，背景颜色我们是用摄像机去控制的，通过设置摄像机clearColor属性来改变3D空间的背景色，颜色使用三维向量Vector3（红，绿，蓝）方式赋值调整，引擎默认设置为纯黑色。
+In 3D scene, background color is controlled by camera. The background color in 3D space is changed by setting clearColor attribute of camera. The color is assigned and adjusted by three-dimensional vector Vector 3 (red, green, blue), and the engine is set to pure black by default.
+
 
 ```typescript
+
 //设置背景颜色
 camera.clearColor = new Laya.Vector3(0.5,0.5,0.6);
 ```
 
-**天空盒**
 
-场景中大多时需要表现天空远景，比如蓝天白云、黄昏、星空等，在LayaAir3D引擎中，是通过在摄像机属性上添加天空盒（SkyBox）的方式创建。
+**Sky box**
 
-不过如果摄像机使用了正交投影，天空盒将达不到所要效果，开发者们可以尝试。
+In most scenarios, sky vision is needed, such as blue sky, white clouds, dusk, stars, etc. In LayaAir3D engine, sky box is created by adding SkyBox to camera attributes.
 
-天空盒是由一个立方体模型及6张可以无缝相接的材质贴图构成，有点类似于360全景地图，随着视角的旋转改变，我们可以观察到四面八方都有远景效果。
+However, if the camera uses orthogonal projection, skybox will not achieve the desired effect, developers can try.
+
+Skybox is made up of a cube model and six seamless texture maps, which is somewhat similar to 360 panoramic maps. With the rotation of the viewing angle, we can see that there are prospective effects in all directions.
+
 
 
 
 ```typescript
+
 class Main{
     constructor(){
         Laya3D.init(0, 0);
@@ -214,21 +242,28 @@ loadMaterial(mat){
   new Main();
 ```
 
+
 ![5](img/5.png)</br>(图5)使用天空盒
 
 
 
-### 多摄像机的使用
 
-在同一个场景中，可以使用多个摄像机，当加载到场景中后，它们会产生各自的游戏视图画面。在我们以前遇到的游戏中，如双人3D游戏就使用了两个3D摄像机，左半屏幕显示一个玩家，右半屏幕显示另一个，极大的丰富了游戏性。
 
-不过多摄像机的缺点是非常耗性能，模型三角面数与DrawCall数量会成倍上升，多几个摄像机就会多出几倍性能损耗，因此开发者们需酌情考虑。
 
-3D场景的显示大小与位置与2D游戏不太一样，主要是靠摄像机的视口（ViewPort）来控制，通过它来进行屏幕的分割。
 
-下例中我们加载一个3D场景，并通过ViewPort进行左右视口分离，代码如下：
+###The Use of Multi-Camera
+
+In the same scene, multiple cameras can be used, and when loaded into the scene, they will generate their own game view pictures. In the games we have encountered before, such as the two-person 3D game, two 3D cameras are used, one player is displayed on the left half of the screen and the other on the right half of the screen, which greatly enriches the gameplay.
+
+However, the disadvantage of multiple cameras is very performance-intensive. The number of triangles in the model and DrawCall will increase exponentially, and multiple cameras will cause several times more performance loss. Therefore, developers need to consider it as appropriate.
+
+The display size and location of 3D scenes are different from those of 2D games. It is mainly controlled by the view ports of cameras, through which the screen is segmented.
+
+In the following example, we load a 3D scene and separate the left and right view ports through ViewPort. The code is as follows:
+
 
 ```java
+
 var Main = (function () {
     function Main() 
     {
@@ -276,6 +311,7 @@ var Main = (function () {
 new Main();
 ```
 
-编译运行上述代码，运行效果如图6。开发者们同时也可以测试，在单摄像机下时，DrawCall与三角面数会少一半。
 
-![图片6](img/6.png)<br>（图6）双摄像机分屏 
+Compile and run the above code, the effect is shown in Figure 6. Developers can also test that DrawCall and triangles can be reduced by half under a single camera.
+
+![图片6](img/6.png)<br> (Fig. 6) Dual Camera Screen Division

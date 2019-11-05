@@ -1,207 +1,209 @@
-# 平移，旋转，与齿轮关节
+#Translation, rotation, and gear joints
 
-## 内容概述
+##Content overview
 
-​	   在游戏开发中，关卡设计需要传送带，齿轮传动，移动平台等装置，使用以下关节组合，可以快速的制作出能产生约束关系的系统。
+In the game development, the design of checkpoint needs conveyor belt, gear transmission, mobile platform and other devices, using the following joint combinations, can quickly produce a system that can generate constraints.
 
-​           本篇内容需要用到三种关节：
+Three types of joints are needed in this article:
 
-​           平移关节`PrismaticJoint` ， 旋转关节`RevoluteJiont`，齿轮关节`GearJoint`。
+Joint translation`PrismaticJoint`Rotating joint`RevoluteJiont`Gear Joints`GearJoint`。
 
-​	 使用关节组合，可以做出一些机关装置，比如一个横向的平移平台带动齿轮旋转，并将小方块提起来。
+With joint combination, some mechanism devices can be made, such as a transverse translation platform to drive the gear to rotate and lift the small square.
 
-​         ![图1](img/1.gif)
+​![图1](img/1.gif)
 
-### 1.平移关节介绍
+###1. Introduction of translational joints
 
-平移关节`PrismaticJoint` ： 移动关节允许两个物体沿指定轴相对移动，它会阻止相对旋转。
+prismatic joint`PrismaticJoint`Moving joints allow two objects to move relative along a specified axis, which prevents relative rotation.
 
-#####       属性介绍
+#####Attribute introduction
 
-##### otherBody
+#####OtherBody
 
-[首次设置有效]关节的连接刚体，可不设置，默认为左上角空刚体,拖入刚体对象即可设置完成。
+The connection rigid body of the joint can not be set. It is empty rigid body in the upper left corner by default. It can be set by dragging into the rigid body object.
 
-##### anchor
+#####Anchor
 
-[首次设置有效]关节的控制点，是相对于自身刚体的左上角位置偏移。
+For the first time, the control point of the joint is offset from the upper left corner of the rigid body.
 
-##### axis
+#####Axis
 
-[首次设置有效]一个向量值，描述运动方向，比如1,0是沿X轴向右。
+[First set valid] A vector value that describes the direction of motion, such as 1,0 being right along the X-axis.
 
-##### enableMotor
+#####EnableMotor
 
-是否开启马达，开启马达可使目标刚体运动。
+Whether or not to turn on the motor, turn on the motor can make the target rigid body move.
 
-##### motorSpeed
+#####MotorSpeed
 
-启用马达后，在axis坐标轴上移动可以达到的最大速度。
+When the motor is enabled, the maximum speed that can be achieved by moving on axis coordinate axis.
 
-##### maxMotorForce
+#####MaxMotorForce
 
-启用马达后，可以施加的最大作用力。
+When the motor is activated, the maximum force can be exerted.
 
-##### enableLimit
+#####EnableLimit
 
-是否对刚体的移动范围加以约束。
+Whether to restrict the moving range of rigid body.
 
-##### lowerTranslation
+#####LowerTranslation
 
-启用约束后，刚体移动范围的下限，是距离anchor的偏移量（负值）。
+When constraints are enabled, the lower limit of the rigid body's moving range is the offset from anchor (negative value).
 
-##### upperTranslation
+#####UpperTranslation
 
-启用约束后，刚体移动范围的上限，是距离anchor的偏移量（正值）。
+When constraints are enabled, the upper limit of the rigid body's moving range is the offset (positive value) from anchor.
 
-##### collideConnected
+#####CollideConnected
 
-[首次设置有效]两个刚体是否可以发生碰撞，默认为false。
+[valid for the first time] whether the two rigid bodies can collide, the default is false.
 
-#### 实例演练
+####Case drills
 
-一个最基本的平移关节，单独使用是很简单的，拖入一个方块并添加`boxcollider`碰撞体，给他添加平移关节`PrismaticJoint`，在刚体`rigidbody`重力`gravityScale`设置为0，axis设置为（1,0）并设置马达开启，速度为1， 限制一下最大最小偏移量，效果如图所示
+A basic translation joint, which is easy to use alone, is dragged into a box and added.`boxcollider`Collider, add translation joints to him`PrismaticJoint`In rigid body`rigidbody`gravity`gravityScale`Set it to 0, axis to (1,0) and set the motor to open at a speed of 1. Limit the maximum and minimum offset. The effect is shown in the figure.
 
 ![图1](img/1.png)
 
-运行效果如下（下图是显示了物理辅助线的效果，上篇文档有介绍，按f9可以勾选。）
+The results are as follows. (The following figure shows the effect of the physical auxiliary line. The last document is introduced, and can be checked by f9.)
+
+
 
 ​      ![图](img/2.gif)
 
-为了使游戏更有乐趣，我们会需要使用到平台与平台的关联移动，再拖入一个方块，拉成长方形，然后添加碰撞体，刚体`rigidbody`重力`gravityScale`设置为0，并将刚体拖入第一个方块的平移关节`PrismaticJoint`的`otherbody`上，将马达开启，并设置速度为1，方向为1,0并进行大小偏移限制，如图所示
+In order to make the game more interesting, we need to use the platform to move with the platform, drag a box, pull a rectangle, and then add collisions, rigid bodies.`rigidbody`gravity`gravityScale`Set it to 0 and drag the rigid body into the translation joint of the first square`PrismaticJoint`Of`otherbody`On, turn on the motor, set the speed to 1, direction to 1,0 and limit the size offset, as shown in the figure
 
 ![图](img/2.png)
 
-运行效果会出问题，这是因为第二个方块也需要一个平移关节，给第二个方块添加一个平移关节，运行效果如下。
+The operation effect will be problematic, because the second square also needs a translation joint. Add a translation joint to the second square. The operation effect is as follows.
 
 ![图](img/3.gif)
 
-​        到这里，举一反三的开发者会注意到，这个平移只能是相向，或者背向平移，也就是说只能在一个轴上靠近或者远离，并不能同时向一个方向移动。平移关节只是相对移动，笔者查阅了国内外的文档，和官方手册，都没有详细介绍关节的细节，笔者经过实验用组合方法实现了功能，所以我们使用物理系统的时候，一定要按照物理思想去设计，去思考。
+At this point, developers will notice that the translation can only be opposite or backward, that is to say, it can only be near or far from an axis, and can not move in one direction at the same time. The translational joint is only relative movement. The author consulted the domestic and foreign documents and official manuals, but did not introduce the details of the joint in detail. The author realized the function by the combination method through experiments. So when we use the physical system, we must design and think according to the physical thought.
 
-​      我们继续上一个例子，把第上面方块的平移关节`PrismaticJoint`里的`otherBody`删除，如图
+Let's continue with the previous example by translating the joint of the top square.`PrismaticJoint`Li`otherBody`Delete, as shown in Figure
 
 ![图](img/4.png)
 
-然后给他添加一个距离关节`DistanceJoint`，并给下面方块添加一个平移关节`PrismaticJoint` 然后将此物体刚体`RigidBody`拖入到上面物体的距离关节的`otherBody` 中，如图
+Then add a distance joint to him.`DistanceJoint`And add a translation joint to the box below`PrismaticJoint`Then the object is rigid.`RigidBody`Distance Joint Dragged into the Upper Object`otherBody`As shown in Fig.
 
 ![图](img/5.png)
 
-设置好之后，运行效果如下（上面方块的马达牵动方块向右平移，再由距离关节牵动下面方块物体向右平移）：
+After setting up, the operation effect is as follows (the motor of the upper block moves the block to the right, and then the distant joint moves the object of the lower block to the right):
 
 ![图](img/4.gif)
 
 
 
-### 2. 旋转关节介绍
+###2. Introduction of Rotating Joints
 
- 旋转关节`RevoluteJiont`：强制两个物体共享一个锚点，两个物体相对旋转。
+Revolving joint`RevoluteJiont`Force two objects to share an anchor point and rotate relative to each other.
 
-##### 属性介绍
+#####Attribute introduction
 
-##### otherBody
+#####OtherBody
 
-[首次设置有效]关节的连接刚体，可不设置，默认为左上角空刚体,拖入刚体对象即可设置完成。
+The connection rigid body of the joint can not be set. It is empty rigid body in the upper left corner by default. It can be set by dragging into the rigid body object.
 
-##### anchor
+#####Anchor
 
-[首次设置有效]关节的控制点，是相对于自身刚体的左上角位置偏移。
+For the first time, the control point of the joint is offset from the upper left corner of the rigid body.
 
-##### enableMotor
+#####EnableMotor
 
-是否开启马达，开启马达可使目标刚体运动。
+Whether or not to turn on the motor, turn on the motor can make the target rigid body move.
 
-##### motorSpeed
+#####MotorSpeed
 
-启用马达后，可以达到的最大旋转速度。
+When the motor is activated, the maximum rotation speed can be achieved.
 
-##### maxMotorTorque
+#####MaxMotorTorque
 
-启用马达后，可以施加的最大扭距，如果最大扭矩太小，会导致不旋转。
+When the motor is activated, the maximum torque that can be applied will not rotate if the maximum torque is too small.
 
-##### enableLimit
+#####EnableLimit
 
-是否对刚体的旋转范围加以约束。
+Whether to restrict the rotation range of rigid body.
 
-##### lowerAngle
+#####LowerAngle
 
-启用约束后，刚体移动范围的下限，是距离anchor的偏移量（负值）。
+When constraints are enabled, the lower limit of the rigid body's moving range is the offset from anchor (negative value).
 
-##### upperAngle
+#####UpperAngle
 
-启用约束后，刚体移动范围的上限，是距离anchor的偏移量（正值）。
+When constraints are enabled, the upper limit of the rigid body's moving range is the offset (positive value) from anchor.
 
-##### collideConnected
+#####CollideConnected
 
-[首次设置有效]两个刚体是否可以发生碰撞，默认为false。
+[First set valid] Whether two rigid bodies can collide by default is false.
 
-#### 实例演练
+####Case drills
 
-新建一个场景，然后拖入一个圆形图片，给它添加圆形碰撞体 `CircleCollider`，IDE会自动添加刚体`RigidBody`, 然后再给它添加一个旋转关节`RevoluteJoint`,关节的锚点设在圆心，并且开启马达并设置旋转速度为1。如图：
+Create a new scene, then drag in a circular image and add a circular Collider to it`CircleCollider`IDE automatically adds rigid bodies`RigidBody`Then add a rotating joint to it.`RevoluteJoint`The anchor point of the joint is set at the center of the circle, and the motor is turned on and the rotation speed is set to 1. As shown in the picture:
 
 ![图](img/6.png)
 
-点击运行，我们可以看到旋转的圆形：
+Click to run and we can see the rotating circle:
 
 ![图](img/5.gif)
 
-单独使用非常的简单，接下来我们要使用一下组合：在此例基础上，添加一个带有方块碰撞体`BoxCollider`的长条矩形作为平台，如图![图](img/7.png)
+It's very simple to use it alone. Next, we'll use a combination of this: on the basis of this example, add a collider with a block.`BoxCollider`A rectangular strip serves as a platform, as shown in the figure.![图](img/7.png)
 
-然后平移关节`PrismaticJoint`，和一个添加了多边形碰撞体`PolygonCollider`的三角形作为底座，用来让圆形在三角形上绕点旋转，（注意三角形节点应当在圆形节点层级的上方，在下方的在最前显示），最终效果如下图，添加过程请开发者自行完成。
+Then move the joint.`PrismaticJoint`And a collider with a polygon added`PolygonCollider`The triangle is used as the base to rotate the circle around the point on the triangle. (Note that the triangle node should be above the level of the circle node and displayed at the front below). The final effect is as follows. The process of adding the triangle is to be completed by the developer himself.
 
 ![图](img/8.png)
 
-点击运行，效果如下:
+Click to run, the effect is as follows:
 
 ![图](img/6.gif)
 
-### 3.齿轮关节介绍
+###3. Introduction of Gear Joints
 
-  齿轮关节`GearJoint`：用来模拟两个齿轮间的约束关系，齿轮旋转时，产生的动量有两种输出方式，一种是齿轮本身的角速度，另一种是齿轮表面的线速度。
+Gear joint`GearJoint`To simulate the constraint relationship between two gears, there are two ways to output the momentum generated when the gear rotates, one is the angular speed of the gear itself, the other is the linear speed of the gear surface.
 
-##### 属性介绍
+#####Attribute introduction
 
-##### joint1
+#####Joint1
 
-[首次设置有效]要绑定的第1个关节，类型可以是RevoluteJoint或者PrismaticJoint。
+The first joint to be bound can be RevoluteJoint or Prismatic Joint.
 
-##### joint2
+#####Joint2
 
-[首次设置有效]要绑定的第2个关节，类型可以是RevoluteJoint或者PrismaticJoint。
+The second joint to be bound can be RevoluteJoint or Prismatic Joint.
 
-##### ratio
+#####Ratio
 
-两个齿轮角速度比例，默认1。
+Angular speed ratio of two gears, default 1.
 
-##### collideConnect
+#####CollideConnect
 
-两个刚体是否可以发生碰撞，默认为false。
+Whether two rigid bodies can collide is false by default.
 
 
 
-#### 实例演练
+####Case drills
 
-​       在掌握了平移关节，和旋转关节之后，就可以使用齿轮关节使两个关节关联起来，这样我们就可以依次对关节进行约束，可以完成一个整体的系统。下面我们来制作一个稍微复杂点的小组合。
+After mastering the translation and rotation joints, we can use the gear joints to connect the two joints, so that we can restrict the joints in turn and complete a whole system. Now let's make a slightly more complex group.
 
-​       新建一个空场景，取名为gear，在场景中拖入方块，圆形，并摆成下图效果：
+Create a new empty scene named gear. Drag a box, circle into the scene and put it in the following picture:
 
 ![图](img/9.png)
 
-从上到下的sprite命名依次为：box,circle1,yellow,circle2,sprite。命名是为了方便我们定位具体的物体。然后每个物体添加相应的碰撞体，IDE会自动为其添加刚体，（此步骤需要用前文中介绍的知识，如果不知道如何添加，请回到之前内容学习）。
+Sprite names from top to bottom are box, circle 1, yellow, circle 2, sprite. Naming is for the convenience of locating specific objects. The IDE will automatically add a rigid body to each object by adding the corresponding collision body. (This step needs to use the knowledge described earlier. If you don't know how to add it, please go back to the previous content to learn.)
 
-摆好位置之后给最上方的方块添加一个平移关节`PrismaticJoint`并且设置相应属性使其和下图一致
+Add a translation joint to the top box after setting up the position`PrismaticJoint`And set the corresponding attributes to make them consistent with the figure below.
 
 ![图](img/11.png)
 
-然后，给circle1物体添加相应的关节，添加旋转关节`RevoluteJoint` ，齿轮关节`GearJoint` ，并把平移关节和旋转关节拖到joint1，joint2的位置，使两个关节关联。
+Then, add the corresponding joints to the circle 1 object, and add the rotating joints.`RevoluteJoint`Gear Joints`GearJoint`And drag the translation joint and rotation joint to join 1 and join 2 to make the two joints related.
 
 ![图](img/12.png)
 
-同理，给余下的圆形添加旋转关节`RevoluteJoint` ，并且用齿轮关节`GearJoint` 依次连接两个物体，yellow连接circle1，circle2连接yellow，sprite连接circle2，sprite的平移关节`PrismaticJoint`  设置如下，注意他的y轴符号：
+Similarly, add rotating joints to the remaining circles`RevoluteJoint`And with gear joints`GearJoint`Connect two objects in turn, yellow connects circle 1, circle 2 connects yellow, sprite connects circle 2, sprite's translation joint`PrismaticJoint`Set it as follows. Notice his Y-axis symbol:
 
 ![图](img/13.png)
 
-需要注意，只有第一个方块box 马达开启，它将带动场景中所有物体的移动或者转动，最终运行效果如下：
+It should be noted that only the first box box motor is turned on, which will drive all objects in the scene to move or rotate, and the final effect is as follows:
 
 ![图1](img/1.gif)
 
-更多问题请访问社区 http://ask.layabox.com
+For more questions, visit the community http://ask.layabox.com

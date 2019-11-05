@@ -1,24 +1,24 @@
-
-
 # LayaAir3D之物理入门
 
-#### 快速开启3D物理之旅
+####Quickly Open the Journey of 3D Physics
 
-以下我们将用LayaAir引擎快速开始一个3D物理项目，并且以AS语言为教程，简单演示用引擎代码实现一个基本的3D物理应用。我们先预览一下效果:
+Below we will use the LayaAir engine to start a 3D physics project quickly, and use AS language as a tutorial, a simple demonstration of using engine code to achieve a basic 3D physics application. Let's preview the effect first.
 
 
 
 ![图](img/easyPhysics.gif)
 
-在Main的主类中，我们构建了一个3D的物理世界，并且添加了简单3D物理世界所必须的要素（刚体和碰撞器组件）关于这些概念知识后续教程我们会详细的介绍，逐步带领大家了解3D知识。
+In Maine's class, we build a 3D physical world, and add the elements necessary for a simple 3D physical world (rigid body and Collider components). We will introduce these conceptual knowledge in detail in the follow-up tutorial, and gradually lead you to understand the 3D knowledge.
 
 
 
-对于这个简单的Demo，我们只是创建了小球受重力自然下落与另一个小球发生碰撞的物理效果，我们可以手动敲一下代码体验一下效果，或者可以直接复制代码，后续的文档中详细的学习知识点。
+For this simple Demo, we just created the physical effect of a ball falling naturally by gravity and colliding with another ball. We can tap the code manually to experience the effect, or we can copy the code directly, and learn the knowledge points in detail in subsequent documents.
 
-主类代码如下:
+The main class code is as follows:
+
 
 ```typescript
+
 import GameConfig from "./GameConfig";
 import SceneScript from "./script/SceneScript"; 
 class Main {
@@ -42,8 +42,11 @@ class Main {
 //激活启动类
 new Main();
 ```
-场景脚本代码：
+
+Scenario script code:
+
 ```typescript
+
 
 export default class SceneScript extends Laya.Script3D{
         private scene:Laya.Scene3D
@@ -102,17 +105,22 @@ export default class SceneScript extends Laya.Script3D{
     }  
 ```
 
-​	关于物体复制的Sprite.instantiate方法可以从API去了解，这个方法要比clone方法要更方便一些。具体习惯可以根据个人习惯和场景去使用。
+
+The prite.instantiate method for object replication can be understood from the API, which is more convenient than clone method. Specific habits can be used according to personal habits and scenarios.
 
 ![图](img/图1.png)		
 
-​	
 
-  **[ tip:在本次案例中有涉及到使用代码给物体添加PhysicsCollider与RigidBody3D。在当物体有rigidbody时shape需要添加到rigidbody的collidershape上，没有的话需要将shape添加到PhysicsCollider的collidershape。]**
+​
 
-​	然后我们给球添加上弹力和滚动摩擦力
+
+  **[tip: In this case, it involves adding Physics Collider and Rigid Body3D to objects using code. When an object has a rigidbody, shapes need to be added to the collidershape of the rigidbody, and if not, shapes need to be added to the collidershape of the Physics Collider. ]**
+
+Then we add elasticity and rolling friction to the ball.
+
 
 ```java
+
 .......
   //添加一个重量
   rigid.mass = 10;
@@ -123,6 +131,7 @@ export default class SceneScript extends Laya.Script3D{
 .......
 ```
 
-看下修改后的效果:
+
+Look at the effect of the modification:
 
 ![图](img/easyPhysics2.gif)

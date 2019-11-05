@@ -1,101 +1,129 @@
-# 工具栏介绍
+#Introduction to toolbar
 
-> 本篇采用LayaAirIDE 2.0.1 bate 截图，如有不同，请下载最新的LayaAirIDE，以最新版本IDE为准。
+> This article uses LayaAirIDE 2.0.1 bate screenshots. If different, please download the latest LayaAirIDE, whichever version is the latest.
 
-​        工具栏位于编辑器主窗口的正上方，菜单栏下方，当打开项目时，可以看到八个控制按钮或信息，用来为特定面板提供编辑功能或方便我们实施工作流。
+The toolbar is located directly above the main window of the editor and below the menu bar. When you open the project, you can see eight control buttons or information to provide editing functions for specific panels or to facilitate the implementation of workflow.
 
-​        ![blob.png](img/1.png)<br/>
-​    	（图1）
+​![blob.png](img/1.png)<br/>
+(Figure 1)
+
+
 
  
 
-### 一、项目操作工具
-
-​    ![图片1.png](img/2.png)<br/>
-​    	（图2）
 
 
+###I. Project Operating Tools
 
-​	新建项目：在工具内新建一个项目。
+​![图片1.png](img/2.png)<br/>
+(Figure 2)
 
- 
 
-### 二、保存工具
 
-​  ![图片1.png](img/3.png)<br/>
-​    	（图3）
+New project: A new project in the tool.
+
+
 
  
 
-​	全部保存： 保存对该项目的所有更改，快捷键（Ctrl + S）。
+
+
+###II. Preservation tools
+
+​![图片1.png](img/3.png)<br/>
+(Figure 3)
+
+All Save: Save all changes to the project, shortcut key (Ctrl + S).
+
+
 
  
 
-### 三、编译工具
 
-​        ![图片1.png](img/4.png)<br/>
-​    	（图4）
 
- 
+###3. Compilation tools
 
-​	编译：开始编译不信打开游戏窗口(F8)。
+​![图片1.png](img/4.png)<br/>
+(Figure 4)
 
- 
+Compile: open the game window (F8) if you don't want to start compiling.
 
-### 四、调试工具
 
-​        ![图片1.png](img/5.png)<br/>
-​    	（图5）
-
-​	调试：运行 调试，使用IDE调试器调试(F5)。
 
  
 
-### 五、运行工具
 
-​        ![图片1.png](img/6.png)<br/>
-​    	（图6）
 
-​	 运行：不使用IDE调试器(F6)。
+###IV. Debugging Tools
+
+​![图片1.png](img/5.png)<br/>
+(Fig. 5)
+
+Debugging: Running debugging, using IDE debugger debugging (F5).
+
+
 
  
 
-### 六、选择调试工具
+
+
+###V. Operating Tools
+
+​![图片1.png](img/6.png)<br/>
+(Fig. 6)
+
+Run: No IDE debugger (F6) is used.
+
+
+
+ 
+
+
+
+###6. Selecting Debugging Tools
+
+
 
   ![图片1.png](img/7.png)<br/>
 
-​    	（图7）
+(Figure 7)
+
+Choose debugging: Choose tools for debugging projects and recommend chrome debugging.
+
+
 
  
 
-​	选择调试：选择调试项目的工具，推荐使用chrome调试。
 
- 
 
-### 七、发布
+###Seven, release
 
-​     ![图片1.png](img/8.png)<br/>
-​    	（图8）
+​![图片1.png](img/8.png)<br/>
+(Figure 8)
 
 
 
-​	发布：项目发布。
+Publication: Project release.
 
-###  八、发布3.0
+###8. Release 3.0
 
-​     ![图片1.png](img/10.png)<br/>
+​![图片1.png](img/10.png)<br/>
 
-（图10）
+(FIG. 10)
 
-​      新功能：3.0的发布！最新最好的发布，强烈推荐。
+New features: 3.0 release! The latest and best release is highly recommended.
 
-### 九、二维码
+###9. Two-Dimensional Code
+
+
+
+
 
 
 
   ![图片1.png](img/9.png)<br/>
-​    	（图10）
+(Fig. 10)
 
 
 
-二维码：开发者可用手机扫描二维码进行运行调试。
+Two-dimensional code: Developers can use mobile phones to scan two-dimensional code for debugging.

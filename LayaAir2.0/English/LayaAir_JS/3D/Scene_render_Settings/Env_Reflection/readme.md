@@ -1,36 +1,38 @@
-# 场景环境反射
+#Scene Environmental Reflection
 
 ###### *version :2.0.1beta   Update:2019-3-19*
 
-​	场景环境反射分两种，天空盒反射与自定义反射。想要有反射效果就必须Shader中如果没有反射材质也是没有效果的，默认的BlinnPhong不支持，PBR材质是支持环境反射。关于环境反射更多的是推荐在Unity中设置好后再导出使用。
+There are two kinds of scene environment reflection, sky box reflection and custom reflection. If you want to have reflective effect, you must have no reflective material in Shader. The default BlinnPhong does not support it. The PBR material supports environmental reflection. More about environmental reflection is recommended to be set up in Unity before exporting.
 
-天空盒反射:直接反射指的是材质直接反射当前天空球的环境反射。这个暂未实现，会在后续的版本支持。
+Skybox Reflections: Direct Reflections refer to material reflections directly from the current environment of the celestial sphere. This is not yet implemented and will be supported in subsequent versions.
 
-#### 如何使用Unity设置环境反射
+####How to use Unity to set up environmental reflection
 
-首先来看我们准备好的一个材质球。
+First, let's look at a material ball we have prepared.
 
-![](img/1.png)<br>(图1)
+![] (img/1.png)<br> (Figure 1)
 
-在这个材质球中，我们使用的是LayaAir3D提供的PBR标准材。在设置中我们勾选了 `Enable Reflection`是否开启环境反射选项，同时为了更好的观察环境反射效果，我们将材质的`MetallicGloss`金属度开到最高。在设置之后我们将材质球添加一个对象。
+In this material ball, we use PBR standard material provided by LayaAir3D. In the settings we checked`Enable Reflection`Whether to turn on the environmental reflection option, and in order to better observe the environmental reflection effect, we will material the`MetallicGloss`Maximum metallicity. After setting up, we add an object to the material ball.
 
-![](img/2.png)<br>(图2)
+![] (img/2.png)<br> (Figure 2)
 
-然后我们给场景添加上天空盒。打开 **Window** -- **Lighting** -- **Setting**  界面。
+Then we add sky boxes to the scene. open**Window**--**Lighting**--**Setting**Interface.
 
-![](img/3.png)<br>(图3)
+![] (img/3.png) < br > (fig. 3)
 
-设置好环境的天空球材质，然后在 `Environment Reflections` 环境反射中  Source 设置为Custom 自定义反射。Cubemap选择当前天空球的cubemap。
+Set up the Skyball Material of the Environment, and then`Environment Reflections`Source in environmental reflection is set to Custom custom reflection. Cubemap selects the cubemap of the current sky sphere.
 
-在设置好后，就可以在Unity中看到效果了，之后再导出使用。	
+Once set up, you can see the effect in Unity, and then export it for use.
 
-![](img/4.png)<br>(图4)
+![] (img/4.png)<br> (Figure 4)
 
-#### 使用代码设置环境反射
+####Setting up environmental reflection with code
 
-该部分代码节选自官方示例（[demo地址](https://layaair.ldc.layabox.com/demo2/?language=ch&category=3d&group=Scene3D&name=EnvironmentalReflection)）。
+This section of code is excerpted from the official example（[demo地址](https://layaair.ldc.layabox.com/demo2/?language=ch&category=3d&group=Scene3D&name=EnvironmentalReflection))
+
 
 ```js
+
 //设置场景的反射模式(全局有效),场景的默认反射模式也是custom模式
 scene.reflectionMode = Laya.Scene3D.REFLECTIONMODE_CUSTOM;
 
@@ -72,7 +74,8 @@ Laya.Texture2D.load("res/threeDimen/pbr/jinshu.jpg", Handler.create(null, functi
 }));
 ```
 
-![](img/5.png)<br>(图5)
+
+![] (img/5.png)<br> (Fig. 5)
 
 
 

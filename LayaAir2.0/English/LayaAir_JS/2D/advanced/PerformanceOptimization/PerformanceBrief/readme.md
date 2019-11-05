@@ -1,25 +1,30 @@
-# 性能简述
+#Performance Brief
 
 
 
-​        LayaAir 作为 HTML5 引擎，能够在各种平台上运行，包括个人计算机、移动设备和平板电脑。 在移动设备硬件性能弱于 PC 的背景下，我们对性能的需求显得更加重要。 LayaAir 引擎设计之初，就以性能为第一目标，在引擎内做了大量的性能优化。 本文档通过代码示例和使用案例，为部署应用程序的开发人员概括介绍了最佳做法。
+LayaAir, as an HTML5 engine, can run on a variety of platforms, including personal computers, mobile devices and tablets. Under the background that the hardware performance of mobile devices is weaker than that of PC, our requirement for performance becomes more important. At the beginning of LayaAir engine design, performance was the first goal, and a lot of performance optimization was done in the engine. This document outlines best practices for developers deploying applications through code examples and use cases.
+
 
  
 
-**主题包括： **
 
- **1、代码执行基本原理 **
 
-**2、基准测试 **
+**Topics include:**
 
-**3、内存优化 **
 
-**4、图形渲染性能 **
+ **1. Basic Principles of Code Execution**
 
-**5、减少CPU使用量 **
+**2. Benchmarking**
 
-**6、其他优化策略**
+**3. Memory optimization**
 
-​        如果开发者不能发挥好引擎的优势，游戏最终的性能体验或将无从谈起。因此，在制作游戏过程中，掌握游戏以及引擎的优化技巧还是非常有必要的。
+**4. Graphic Rendering Performance**
+
+**5. Reduce CPU usage**
+
+**6. Other optimization strategies**
+
+If the developer fails to take advantage of the engine, the final performance experience of the game will be out of the question. Therefore, in the process of making games, it is very necessary to master the skills of game and engine optimization.
+
 
  

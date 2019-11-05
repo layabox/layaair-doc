@@ -1,47 +1,50 @@
-# 音乐与音效的播放与控制
+#Playing and Control of Music and Sound Effect
 
-​        HTML5的音频播放，在当前有两种主流的方式，一种是Audio标签播放,另一种是WebAudio二进制播放。
+HTML5 audio playback has two main ways at present, one is Audio tag playback, the other is WebAudio binary playback.
 
-​        Audio属于dom元素，带有ui界面，在移动端Audio属于边下载边播放，适合声音文件比较大的文件，但是Audio在移动端会有手势的限制，gesture-requirement-for-media-playback属性表明必须有用户的手势操作才可以播放。
+Audio belongs to DOM element, with UI interface, while Audio belongs to download and play on mobile side. Audio is suitable for files with large sound files. But Audio has gesture restriction on mobile side. The gesture-requirement-for-media-playback attribute indicates that user's gesture operation is necessary to play.
 
-​        WebAudio是一种新的声音播放形式，可以加载多个声音进行合成，他是通过二进制文件解码成浏览器支持的格式进行播放。而且用这个接口甚至可以实现音频谱的动画效果，让声音有了合成的功能。
+WebAudio is a new audio playback form, which can load multiple sounds to synthesize. It is played by decoding binary files into browser-supported formats. Moreover, this interface can even achieve the animation effect of audio spectrum, so that the sound has the function of synthesis.
 
-​        音乐与音效作为游戏中常用的基础元素，LayaAir引擎封装了WebAudio与Audio，在支持WebAudio的浏览器上，优先使用WebAudio，在不支持WebAudio的浏览器上使用Audio，最大化兼容所有浏览器对音频格式的支持，让开发者可以更加方便的，通过调用laya.media.SoundManager API接口就可以直接播放音频。
+Music and sound effects are the common basic elements in games. LayaAir engine encapsulates WebAudio and Audio. In browsers supporting WebAudio, WebAudio is preferred. In browsers not supporting WebAudio, Audio is used to maximize compatibility with all browsers'support for audio format, which makes it more convenient for developers to connect by calling laya.media.Sound Manager API. The port can play audio directly.
 
-### 一、音乐与音效的应用区别
+###I. Differences in the Application of Music and Sound Effect
 
-​        音乐：是指游戏用的背景音乐。采用laya.media.SoundManager音频管理类中的playMusic方法进行播放，由于是背景音乐，playMusic方法只能同时播放一个音频文件。
+Music: Background music for games. PlayMusic method in laya. media. SoundManager audio management class is used to play, because it is background music, playMusic method can only play an audio file at the same time.
 
-​        音效：采用的是laya.media.SoundManager音频管理类中的playSound方法，允许同时播放多个音频文件。
+Sound effect: PlaySound method in laya.media.SoundManager audio management class is adopted, which allows multiple audio files to be played at the same time.
 
-### 二、音频的兼容性准备
+###II. Audio Compatibility Preparedness
 
-​        由于音频播放问题的各个浏览器兼容性不同，在开始应用前，我们要做好前期的兼容准备。
+Due to the different compatibility of browsers in audio playback problem, we should prepare for compatibility in the early stage before starting application.
 
-（1）使用“格式工厂”音频文件转换工具。选择 44100Hz，96kbps 进行转换。
+(1) Use the "Format Factory" audio file conversion tool. Select 44100Hz, 96kbps for conversion.
 
-（2）音频文件尽量小，不仅仅是带宽的限制，还有浏览器音频解码的效率问题。
+(2) Audio files are as small as possible, not only the bandwidth limitation, but also the efficiency of browser audio decoding.
 
-### 三、音频音量的控制
+###III. Control of Audio Volume
 
-​        声音音量的控制 可以通过laya.media.SoundManager音频管理类中的setSoundVolume方法来设置，
+The control of sound volume can be set through the setSoundVolume method in the laya.media.SoundManager audio management class.
 
 ![blob.png](http://old.ldc.layabox.com/uploadfile/image/20170110/1484019651349259.png)
 
-​        如上图所示，我们可以看到，通过设置volume参数，可以有效控制url所对应声音文件的音量大小。初始值为1。音量范围从 0（静音）至 1（最大音量）。
+As shown in the figure above, we can see that the volume parameter can effectively control the volume of the sound file corresponding to the url. The initial value is 1. Volume ranges from 0 (silence) to 1 (maximum volume).
 
 
 
-### 四、设备静音控制
+###IV. Equipment silence control
 
-如果通过设备静音键让音频自动跟随设备静音。需要将useAudioMusic设置为false。
+If the device silence keys let the audio automatically follow the device silence. You need to set useAudioMusic to false.
+
 
 ```javascript
+
 SoundManager.useAudioMusic=false；
 ```
 
 
 
-### 五、音乐与音效播放的完整示例
 
-该示例的完整代码地址为：[https://layaair.ldc.layabox.com/demo/?2d&Sound&SimpleDemo](https://layaair.ldc.layabox.com/demo/?2d&Sound&SimpleDemo)
+###5. Complete Examples of Music and Sound Playing
+
+The complete code address for this example is:[https://layaair.ldc.layabox.com/demo/?2d&Sound&SimpleDemo](https://layaair.ldc.layabox.com/demo/?2d&Sound&SimpleDemo)

@@ -1,18 +1,20 @@
-# 物理碰撞脚本和触发器脚本
+#Physical collision script and trigger script
 
 ###### *version :2.1.1   Update:2019-8-2*
 
-触发器发出的事件，开发者可以在触发器物体上添加的脚本（Script3D）监听。监听的方法如图1所示：
+Events emitted by triggers allow developers to listen to scripts (script3D) added to trigger objects. The method of monitoring is shown in Figure 1.
 
-![](img/1.png)<br>(图1)
+![] (img/1.png)<br> (Figure 1)
 
-碰撞器也是会派发事件的。监听方法如下图2：
+Colliders also dispatch events. The monitoring method is shown in Figure 2 below.
 
-![](img/2.png)<br>(图2)
+![] (img/2.png)<br> (Figure 2)
 
-下面我们来看下具体如何额使用这些接口，本次代码节选自官方示例，更详细情况可以查看：([demo地址](https://layaair.ldc.layabox.com/demo2/?language=ch&category=3d&group=Physics3D&name=PhysicsWorld_TriggerAndCollisionEvent))
+Now let's look at how to use these interfaces. This code excerpt is from the official example. More details can be seen:（[demo地址](https://layaair.ldc.layabox.com/demo2/?language=ch&category=3d&group=Physics3D&name=PhysicsWorld_TriggerAndCollisionEvent))
+
 
 ```typescript
+
 /**
  * 当其他碰撞器进入绑定物体碰撞器时触发（子弹进入物品时）
  * 此处当触发器进入时将脚本的owner（所属节点）第一个实例材质的漫反射颜色改为绿色
@@ -52,39 +54,40 @@ public onCollisionExit(collision:Laya.Collision):void {}
 
 ```
 
-运行效果图3所示：
 
-![](img/3.png)<br>(图3)
+The operation effect is shown in Figure 3.
+
+![] (img/3.png) < br > (fig. 3)
 
 
 
-#### 触碰信息与触发信息规则
+####Touch Information and Trigger Information Rules
 
-对于碰撞规则可以查看下方表格。
+For collision rules, you can see the table below.
 
-触发信息是指：`onTriggerStay`,`onTriggerStay`,`onTriggerExit`三个函数。
+Trigger information refers to:`onTriggerStay`,`onTriggerStay`,`onTriggerExit`Three functions.
 
-碰撞信息是指：`onCollisionEnter`,`onCollisionStay`,`onCollisionExit`三个函数。
+Collision information refers to:`onCollisionEnter`,`onCollisionStay`,`onCollisionExit`Three functions.
 
-> *碰撞后有碰撞检测并且有碰撞信息*
+>*Collision detection and collision information after collision*
 
-|                             | PhysicsCollider | RigidBody | Kinematic RigidBody | PhysicsCollider Trigger | RigidBody Trigger | Kinematic RigidBody Trigger |
-| --------------------------- | --------------- | --------- | ------------------- | ----------------------- | ----------------- | --------------------------- |
-| PhysicsCollider             |                 | Y         |                     |                         |                   |                             |
-| RigidBody                   | Y               | Y         | Y                   |                         |                   |                             |
-| Kinematic RigidBody         |                 | Y         |                     |                         |                   |                             |
-| PhysicsCollider Trigger     |                 |           |                     |                         |                   |                             |
-| RigidBody Trigger           |                 |           |                     |                         |                   |                             |
-| Kinematic RigidBody Trigger |                 |           |                     |                         |                   |                             |
+|| Physics Collider | RigidBody | Kinematic RigidBody | Physics Collider Trigger | RigidBody Trigger | Kinematic RigidBody Trigger|
+| -------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
+| Physics Collider | | Y|||||
+| RigidBody | Y | Y | Y | Y||||
+| Kinematic RigidBody | | Y|||||
+| Physics Collider Trigger|||||||
+| Rigid Body Trigger|||||||
+| Kinematic Rigid Body Trigger|||||||
 
-> *碰撞后有触发信息*
+>*There is trigger information after collision*
 
-|                             | PhysicsCollider | RigidBody | Kinematic RigidBody | PhysicsCollider Trigger | RigidBody Trigger | Kinematic RigidBody Trigger |
-| --------------------------- | --------------- | --------- | ------------------- | ----------------------- | ----------------- | --------------------------- |
-| PhysicsCollider             |                 |           |                     |                         | Y                 | Y                           |
-| RigidBody                   |                 |           |                     | Y                       | Y                 | Y                           |
-| Kinematic RigidBody         |                 |           |                     | Y                       | Y                 | Y                           |
-| PhysicsCollider Trigger     |                 | Y         | Y                   |                         | Y                 | Y                           |
-| RigidBody Trigger           | Y               | Y         | Y                   | Y                       | Y                 | Y                           |
-| Kinematic RigidBody Trigger | Y               | Y         | Y                   | Y                       | Y                 | Y                           |
+|| Physics Collider | RigidBody | Kinematic RigidBody | Physics Collider Trigger | RigidBody Trigger | Kinematic RigidBody Trigger|
+| -------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
+| Physics Collider | | | | | | | | | Y | Y|
+| RigidBody | | | | | | Y | Y | Y | Y|
+| Kinematic RigidBody | | | | | | Y | Y | Y | Y|
+| Physics Collider Trigger | | Y | Y | Y | | Y | Y | Y|
+| RigidBody Trigger | Y | Y | Y | Y | Y | Y | Y | Y | Y | Y|
+| Kinematic RigidBody Trigger | Y | Y | Y | Y | Y | Y | Y | Y | Y | Y|
 

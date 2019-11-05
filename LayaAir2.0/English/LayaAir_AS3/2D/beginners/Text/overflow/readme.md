@@ -1,18 +1,20 @@
-# 超出文本区域的处理&滚动文本
+#Processing beyond Text Area-Scrolling Text
 
-文本在添加内容的时候免不了超出我们所设置的文本区域，这时候我们要对文本进行处理，不处理的话内容有可能超出我们舞台。
+When adding content, the text can't help but go beyond the text area we set. At this time, we need to process the text. Otherwise, the content may go beyond our stage.
 
-Laya.display.text 中所使用的API 参数：
+API parameters used in Laya. display. text:
 
 ![1](img/1.png)</br>
 
-hidden:不显示超出文本域的字符。
+Hidden: Does not display characters beyond the text field.
 
-visible:不进行任何裁切。
+Visible: No cutting.
 
-scroll:不显示文本域外的字符像素，并且支持scroll接口。
+Scroll: Does not display character pixels outside the text domain, and supports scroll interfaces.
+
 
 ```typescript
+
 package
 {
 	import laya.display.Text;
@@ -59,15 +61,18 @@ package
 }
 ```
 
+
 ![2](img/2.png)</br>
 
-可以看到3种方法的对文本处理的不同，每种处理都有各自的优缺点，性能比最高的还是hidden。
+It can be seen that there are three different methods for text processing, each of which has its own advantages and disadvantages, and the highest performance ratio is hidden.
 
-除了通过对文本区域设置overflow ，还可以通过使用scrollX和scrollY滚动文本视口，通过滚动文本来显示全部的文本内容。
+In addition to setting overflow for text area, scrollX and scrollY can be used to scroll the text viewport and display the whole text content by scrolling the text.
 
-要是想要实现滚动文本需要使用 overflow = Text.SCROLL 使用 Text.HIDDEN的话即时你设置了滚动也没有效果。
+If you want to realize scrolling text, you need to use overflow = text.scrollto use text.hidden, even if you set scrolling, it has no effect.
+
 
 ```typescript
+
 package 
 {
 	import laya.display.Text;
@@ -133,8 +138,9 @@ package
 }
 ```
 
+
 ![3](img/3.png)</br>
 
 ![4](img/4.png)</br>
 
-这里我们就通过滚动文本显示更多的文本内容，在实际编码中根据项目需要使用overflow的3种处理方式，还有自动换行和滚动文本可以对文本进行处理。
+Here we show more text content by scrolling text. In actual coding, overflow is used in three ways according to the needs of the project. There are also automatic line breaking and scrolling text to process the text.

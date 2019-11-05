@@ -1,16 +1,16 @@
-# LayaAir IDE组件库
+#LayaAir IDE Component Library
 
-LayaAirIDE的组件库里存放着IDE自带的常用组件。分别为2D基础组件、Graphics矢量组件、UI常用组件几大类。如图1、图2、图3所示。
+The component library of LayaAirIDE stores common components that come with IDE. They are 2D basic components, Graphics vector components and UI common components. As shown in Figure 1, figure 2 and figure 3.
 
-![图1](img/1.png) <br />
+![图1](img/1.png)<br / >
 
-(图1)2D基础组件
+(Figure 1) 2D Foundation Components
 
-![图2](img/2.png) <br />
+![图2](img/2.png)<br / >
 
-(图2)Graphics矢量组件
+(Figure 2) Graphics Vector Component
 
-![图3](img/3.png) <br />
+![图3](img/3.png)<br / >
 
-(图3)UI常用组件
+(Figure 3) Common UI components
 

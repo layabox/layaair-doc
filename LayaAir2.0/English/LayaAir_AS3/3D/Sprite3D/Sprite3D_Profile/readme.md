@@ -2,12 +2,12 @@
 
 ###### *version :2.0.1beta   Update:2019-4-13*
 
-`Sprite3D` 是3D的基本节点对象，是LayaAir3D中所有节点类型的父类，包含很多3D精灵基本的功能属性,除此之外还是所有3D组件和脚本的容器。
+`Sprite3D`It is the basic node object of 3D and the parent of all node types in LayaAir3D. It contains many basic function attributes of 3D wizards. Besides, it is also the container of all 3D components and scripts.
 
-Sprite3D包含 `transform` 属性,该属性具备使Sprite3D在世界空间中变换的功能。同时和Node节点一样具备子父节点的关联关系，使变换操作更灵活。
+Sprite3D includes`transform`Attribute, which has the function of transforming Sprite3D in the world space. At the same time, like Node node, it has the relationship between the child and the parent node, which makes the transformation operation more flexible.
 
-#### Sprite3D的子父级关系
+####Son-parent relationship in Sprite3D
 
-Sprite3D继承自Node节点，是LayaAir3D中所有3D对象的父类。
+Sprite3D inherits from Node nodes and is the parent class of all 3D objects in LayaAir3D.
 
-关于子父级关系体现可以查看示例([demo地址](https://layaair.ldc.layabox.com/demo2/?language=ch&category=3d&group=Sprite3D&name=Sprite3DParent))
+Examples of child-parent relationship manifestations can be viewed（[demo地址](https://layaair.ldc.layabox.com/demo2/?language=ch&category=3d&group=Sprite3D&name=Sprite3DParent))

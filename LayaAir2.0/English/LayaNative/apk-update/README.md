@@ -1,18 +1,20 @@
+#Android-APK update
 
-# android-APK更新
+In LayaNative's Android template project, the code that APK updates automatically is opened. Developers can modify the code themselves according to the project requirements, or they can close or delete the code.
 
-LayaNative的Android模板工程中开放了apk自动更新的代码，开发者可以根据项目需求自行修改代码，也可以关闭或删除该代码。
+**TIPS: Understanding this document requires basic Android development knowledge**
 
-**TIPS：看懂这篇文档，需要具备android的基本开发知识**
+##1. Code Introduction
 
-## 1、代码介绍
-
-1、自动更新的代码路径在`src\main\java\layaair\autoupdateversion`,这个目录为apk自动更新的代码，如下图1所示:
+1. The code path for automatic updating is`src\main\java\layaair\autoupdateversion`This directory is APK auto-update code, as shown in Figure 1 below:
 ![图1](img/1.jpg)   
 
-2、在MainActivity.java中的onCreate函数，会先调用checkApkUpdate，如果没有更新或者更新完成后，再回调到initEngine函数,如果开发者不想要apkUpdate功能，可以删除该函数，直接调用initEngine即可。
+
+2. OnCreate function in MainActivity. Java calls checkApkUpdate first, and then calls back to initEngine function if no update or update is completed. If the developer does not want the apkUpdate function, he can delete the function and call initEngine directly.
+
 
 ```java
+
 protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         getWindow().requestFeature(Window.FEATURE_NO_TITLE);
@@ -25,32 +27,38 @@ protected void onCreate(Bundle savedInstanceState) {
     }
 ```
 
-## 2、apk更新流程
 
-更新代码流程如下：
-1、程序启动后先通过读取config.ini，读取`IsHandleUpdateAPK`这个变量，如果值为0，代表不自己处理更新流程，直接启动游戏。如果值为1，则继续checkUpdate流程。  
-2、继续读取config.ini，读取`ApkUpdateUrl`，这是一个xml文件，这个xml文件中记录了最新的版本号，以及最新版本的apk的地址。  
-3、如果本地apk版本号小于线上的版本号，则提示是否更新最新版本，用户可以选择是或者否。  
-4、如果选择“是”，程序会在外网下载最新的版本的apk，进行更新安装。  
-5、如果选择“否”，则直接进入游戏。
+##2. APK update process
 
-**TIPS：如果开发者想要强制更新，选择“否”直接退出游戏，请自行debug原代码，并根据自己需求修改**
+The update code flow is as follows:
+1. Read config.ini after program start`IsHandleUpdateAPK`This variable, if the value is 0, means that the update process is not handled by itself and the game is started directly. If the value is 1, continue the checkUpdate process.
+2. Continue reading config.ini and read`ApkUpdateUrl`This is an XML file, which records the latest version number and the address of the latest version of the apk.
+3. If the local APK version number is less than the online version number, the user can choose whether to update the latest version or not.
+4. If you choose "Yes", the program will download the latest version of the APK on the extranet for updating and installation.
+5. If you choose "No", you will enter the game directly.
 
-## 3、如何配置自动更新
+**TIPS: If developers want to force updates, choose "no" to exit the game directly, debug the original code and modify it according to their needs.**
 
-1、在assets目录下打开config.ini,内容如下所示：
+##3. How to configure automatic updates
+
+1. Open config.ini in the assets directory as follows:
+
 ```
+
 IsHandleUpdateAPK=0
 ApkUpdateUrl=http://www.layabox.com/LayaNative/apk/update/conch-layaair/version.xml
 UpdateDownloadPath=mnt/sdcard
 UpdateAPKFileName=autoupdate.apk
 CheckNetwork=1
 ```
-设置`IsHandleUpdateAPK=1`  
-将version.xml文件配置到自己的服务器上，并配置`ApkUpdateUrl`为正确路径。  
 
-2、配置version.xml文件，内容如下所示：
+Set up`IsHandleUpdateAPK=1`  
+Configure version. XML file to your own server and configure it`ApkUpdateUrl`For the right path.
+
+2. Configure version.xml file as follows:
+
 ```
+
 <update>
   <versionCode>13</versionCode>
   <name>LayaBox</name>
@@ -58,13 +66,16 @@ CheckNetwork=1
   <url>http://www.layabox.com/LayaNative/apk/update/conch-layaair/AutoUpdate_2.0.0.apk</url>
 </update>
 ```
-versionCode：是当前的版本号，类型为int类型  
-name：应用名称  
-version：版本号信息，类型为字符串  
-url:apk的下载地址 **【注意：此行代码不允许有空格或回车】**   
 
-3、正确设置你自己工程中的manifest.xml或者build.gradle中的versioncode,如下所示：
+VersionCode: The current version number, type int
+Name: application name
+Version: Version number information, type string
+Url: APK download address**[Note: This line of code does not allow spaces or carriage returns]**   
+
+3. Set up the version code in manifest. XML or build. gradle in your own project correctly, as follows:
+
 ```
+
 defaultConfig {
         applicationId "com.example.layaboxsdk_demo"
         minSdkVersion 9
@@ -74,7 +85,8 @@ defaultConfig {
     }
 ```
 
-## 4、注意事项
 
-1、更新下来的apk包，覆盖原有apk包，需要两个apk的包名和签名必须一致。  
-2、apk的update功能并不属于LayaNative引擎的核心功能，此部分代码也是开放的，开发者可以根据自己的需求自行修改，如出现bug，LayaBox公司不负责查找问题。
+##4. Notes
+
+1. Updated apk package, covering the original apk package, requires two APK package names and signatures must be consistent.
+2. The update function of APK is not the core function of LayaNative engine. This part of the code is also open. Developers can modify it according to their own needs. If there are bugs, LayaBox is not responsible for finding problems.

@@ -1,58 +1,66 @@
-# ProgressBar 组件参考
+#ProgressBar Component Reference
 
 
 
-##  一、通过LayaAirIDE创建ProgressBar组件
+##1. Creating ProgressBar Components through LayaAirIDE
 
-### 	1.1 创建ProgressBar
+###1.1 Create ProgressBar
 
-​        ProgressBar 经常被用于显示游戏中某个操作的进度，例如加载资源的进度、角色经验或血量的进度。
-​        点击选择资源面板里的 ProgressBar 组件，拖放到页面编辑区，即可添加 ProgressBar 组件到页面上。
-​        ProgressBar 的脚本接口参考 [ProgressBar API](http://layaair.ldc.layabox.com/api/index.html?category=Core&class=laya.ui.ProgressBar)。
+ProgressBar is often used to show the progress of an operation in a game, such as the progress of loading resources, role experience or blood volume.
+Click on the ProgressBar component in the Resource Panel and drag it into the page editing area to add the ProgressBar component to the page.
+Reference to the script interface of ProgressBar[ProgressBar API](http://layaair.ldc.layabox.com/api/index.html?category=Core&class=laya.ui.ProgressBar)。
 
-​        ProgressBar 组件的资源示例：
+Examples of resources for ProgressBar components:
 
-​        ![图片0.png](img/1.png)<br/>
-​    （图1）
+​![图片0.png](img/1.png)<br/>
+(Fig. 1)
 
-​        ![图片0.png](img/2.png)<br/>
-​    （图2）
+​![图片0.png](img/2.png)<br/>
+(Figure 2)
 
-​        设置 ProgressBar 组件的属性 value 的值为 0.3 后，显示效果如下所示：
+After setting the value of the property value of the ProgressBar component to 0.3, the display effect is as follows:
 
-​        ![图片0.png](img/3.png)<br/>
-​    （图3）
+​![图片0.png](img/3.png)<br/>
+(Figure 3)
+
+
 
   
 
-### 1.2 ProgressBar 组件的常用属性
 
-​        ![图片0.png](img/4.png)<br/>
-​    （图4）
+
+###1.2 common properties of ProgressBar component
+
+​![图片0.png](img/4.png)<br/>
+(Figure 4)
+
+A kind of**attribute**A kind of**Function description**A kind of
+| ----------------------------------------------------------------------------------------------------------------------------------------------------------|
+| Effective scaling of grid data for image resources of sizeGrid | progress bar. A kind of
+| Skin | progress bar image resource. A kind of
+| Value | Progress bar progress value, 0 to 1. A kind of
+
+
 
  
 
-| **属性** | **功能说明**                         |
-| -------- | ------------------------------------ |
-| sizeGrid | 进度条的图像资源的有效缩放网格数据。 |
-| skin     | 进度条的图像资源。                   |
-| value    | 进度条的进度值，0到1之间。           |
 
- 
 
-##  二、通过代码创建ProgressBar
+##2. Creating ProgressBar by Code
 
-​	在我们进行书写代码的时候，免不了通过代码控制UI，创建UI_ProgressBar类，在代码中导入`laya.ui.ProgressBar`的包，并通过代码设定ProgressBar相关的属性。
+When we write code, we inevitably control UI through code, create UI_ProgressBar class, and import it into code.`laya.ui.ProgressBar`The package of ProgressBar and the related properties of ProgressBar are set by code.
 
-**运行示例效果:**
-​	![5](gif/1.gif)<br/>
-​	(图5)通过代码创建ProgressBar
+**Run the example effect:**
+​![5](gif/1.gif)<br/>
+(Figure 5) Create ProgressBar from code
 
-​	ProgressBar的其他属性也可以通过代码来设置，上述示例演示了如何通过代码创建不同皮肤（样式）的ProgressBar，有兴趣的读者可以自己通过代码设置ProgressBar，创建出符合自己需要的进度条。
+Other attributes of ProgressBar can also be set by code. The above example demonstrates how to create different skin (style) ProgressBar by code. Interested readers can set ProgressBar by code themselves and create progress bars that meet their needs.
 
-**示例代码：**
+**Sample code:**
+
 
 ```javascript
+
 module laya {
     import Stage = Laya.Stage;
     import ProgressBar = Laya.ProgressBar;
@@ -104,4 +112,5 @@ module laya {
 }
 new laya.UI_ProgressBar();
 ```
+
 

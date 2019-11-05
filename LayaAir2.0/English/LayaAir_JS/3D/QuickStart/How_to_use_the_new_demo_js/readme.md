@@ -1,40 +1,45 @@
 # 	关于官网下载的DEMO如何使用
 
-​	在新的示例全部测试并且检测过之后才会发布新的官方示例。所以新文档所使用到的示例暂时无法直接在官网示例处查看。
+New official examples will not be released until all new examples have been tested and tested. So for the time being, the examples used in the new document cannot be viewed directly from the official website examples.
 
-​	为了暂时性解决该问题，官方将在使用新示例的处将源码的git地址附带上，需要开发者自行配置地址。
+To solve this problem temporarily, the government will attach the GIT address of the source code where the new example is used, requiring developers to configure the address themselves.
 
-​	在新示例正式发布后文档会同步再更新。
+Documents are updated synchronously after the new example is officially released.
 
-此处将讲解下载到的demo如何使用(如果知道如何使用可以直接跳过该文档)。
+Here's how to use the downloaded demo (skip the document if you know how to use it).
 
-**Tip:**建议开发者在运行下载的示例一直使用一个项目。那样就不用再多次修改资源地址。示例所使用的的资源地址根目录：[资源](<https://github.com/layabox/layaair-demo/tree/master/h5/res/threeDimen>)。
+**Tip:**It is recommended that developers always use a project when running the downloaded example. That way, you don't have to change the resource address many times. The resource address root directory used by the example:[资源](http://localhost/LayaAir2_Auto/%3Chttps://github.com/layabox/layaair-demo/tree/master/h5/res/threeDimen%3E)。
 
-这里我们使用**图形基础篇的Transform**示例来做例子([地址](<https://github.com/layabox/layaair-demo/blob/master/h5/3d/js/LayaAir3D_Sprite3D/TransformDemo.js>))。
+Here we use**Transform of Graphics Foundation**Examples（[地址](http://localhost/LayaAir2_Auto/%3Chttps://github.com/layabox/layaair-demo/blob/master/h5/3d/js/LayaAir3D_Sprite3D/TransformDemo.js%3E))
 
-拿到代码后，打开ide创建的示例项目。我们将下载到的资源放到`bin/res`目录下。
+When you get the code, open the sample project created by ide. We put the downloaded resources in`bin/res`Under the directory.
 
-![](img/1.png)<br>(图1)
+![] (img/1.png)<br> (Figure 1)
 
-然后在`src/script`文件夹下创建一个新文件。注意名字需要从`地址中复制`。(这里命名为TransformDemo.js)
+Then in`src/script`Create a new file under the folder. Note that the name needs to be from`地址中复制`。 (This is called TransformDemo. js)
 
-![](img/2.png)<br>(图2)
+![] (img/2.png)<br> (Figure 2)
 
-加上之后这时候我们要给`TransformDemo`添加一个默认导出类型，方便其它地方引用。
+And then we'll give it to you at this time.`TransformDemo`Add a default export type for easy reference elsewhere.
+
 
 ```javascript
+
 export default class TransformDemo
 //注意注释掉本js底端的这段代码
 //new TransformDemo();
 ```
 
-`CameraMoveScript`这个脚本是为了方便开发者观察示例准备的一个摄影机操作脚本。（w往前移动，s后退，a向左移动，d向右移动，按住左键拖动鼠标可以调整视角）,如果需要添加脚本可以查看使用**摄影机脚本**。否则直接注释即可。（本处直接注释的摄影机脚本）
 
-![](img/3.png)<br>(图3)
+`CameraMoveScript`This script is a camera operation script for developers to watch the example. (w moves forward, s moves backward, a moves left, D moves right, holding the left button and dragging the mouse can adjust the angle of view). If you need to add scripts, you can see how to use them.**Camera script**。 Otherwise, just comment directly. (Camera scripts directly annotated here)
 
-在这最后一步，我们只需要重写`Main.js`文件就能运行示例了。因为在demo是自带各种初始化的，所以可以直接不用管之前的Main逻辑。我们来看下修改后的Main。
+![] (img/3.png) < br > (fig. 3)
+
+In this last step, we just need to rewrite it.`Main.js`The file will run the example. Because demo comes with all kinds of initialization, you can directly ignore the previous Maine logic. Let's look at the modified Main.
+
 
 ```typescript
+
 import TransformDemo from "./script/TransformDemo"
 class Main {
 	constructor() {
@@ -45,29 +50,36 @@ class Main {
 new Main();
 ```
 
-然后F5运行就能看到效果了。
 
-![](img/4.png)<br>(图4)
+Then F5 runs to see the effect.
 
-## 使用摄像机脚本
+![] (img/4.png)<br> (Figure 4)
 
-使用摄影机脚本需要把common文件夹下的`CameraMoveScript.js`摄像机脚本拷贝到`script`目录下，同时给摄像机脚本设置默认导出类。
+##Using camera scripts
+
+To use camera scripts, you need to put the common folder under the`CameraMoveScript.js`The camera script is copied to`script`In the directory, the default export class is set for the camera script at the same time.
+
 
 ```typescript
+
 export default class CameraMoveScript extends Laya.Script3D
 ```
 
-![](img/5.png)<br>(图5)
 
-然后我们在`TransformDemo`里引入`CameraMoveScript`。
+![] (img/5.png)<br> (Fig. 5)
+
+And then we're in`TransformDemo`Introduce in`CameraMoveScript`。
+
 
 ```javascript
+
 import CameraMoveScript from "./CameraMoveScript"
 export default class TransformDemo{
     //....省略
 }
 ```
 
-添加完之后再把注释打开就能测试了。
 
-**新增新的示例只需要在script文件夹下继续新增示例代码，然后使用main去调起即可。**
+After adding, open the comment and you can test it.
+
+**To add a new example, you just need to continue adding the sample code under the script folder, and then use main to call it up.**

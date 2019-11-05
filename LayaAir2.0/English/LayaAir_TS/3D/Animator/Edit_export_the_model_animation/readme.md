@@ -1,63 +1,63 @@
-# 从Unity中编辑并导出模型动画
+#Edit and export model animation from Unity
 
 ######  *version :2.1.1beta   Update:2019-7-27 插件版本：2.1.0*
 
-游戏角色蒙皮骨骼动画在3D游戏中有大量的运用，可将角色动画模型导入unity中编辑，然后导出到LayaAir中使用。
+Skeletal animation of character skins is widely used in 3D games. The animation model of character can be imported into unit to edit, and then exported to LayaAir for use.
 
-> 这里我们使用的蒙皮骨骼动画猴子作为示例
+> Here we use the skinned skeleton animated monkey as an example
 
-#### 导入模型
+####Import model
 
-在unity资源管理器中，右键导入（Import New Assets）FBX格式模型资源、贴图资源，并将模型拖拽至场景中，调整好材质贴图并保存，本例中保存场景名为“monkey”。
+In Unity Explorer, right-click Import New Assets FBX format model resources, mapping resources, and drag the model to the scene, adjust the texture map and save it. In this case, save the scene named "monkey".
 
-![](img/1.png)<br>(图1)
+![] (img/1.png)<br> (Figure 1)
 
-#### 创建动画控制器
+####Create an Animation Controller
 
-在unity资源管理器中，右键点开菜单创建（Create）动画控制器（Animator Controller）,并根据动画取名，本例中取名为"LayaMonkeyController"。
+In Unity Explorer, right-click Create Animator Controller and name it according to the animation. In this case, it is called LayaMonkey Controller.
 
-![](img/2.png)<br>(图2)
+![] (img/2.png)<br> (Figure 2)
 
-#### 编辑动画控制器
+####Edit Animation Controller
 
-双击打开动画控制器，视图区会出现动画控制器编辑界面；点开导入的模型右侧“小三角”，其中“播放标志”文件为模型的动画文件，默认名为“Take 001”，拖拽它至动画控制器编辑界面（图3），保存完成。
+Double-click to open the animation controller, the view area will appear animation controller editing interface; click on the right side of the imported model "triangle", where the "playback flag" file is the animation file of the model, default name is "Take 001", drag it to the animation controller editing interface (Figure 3), save it.
 
-![](img/3.png)<br>
+![] (img/3.png)<br>
 
-（图3）
+(Fig. 3)
 
-#### 绑定动画控制器
+####Binding animation controller
 
-选择场景中的角色模型，将角色动画控制器赋予到选中模型的动画组件上（图4），如果没有动画组件，需要给角色绑定一个，否则导出的动画不能播放。
+Select the role model in the scene and assign the role animation controller to the animation component of the selected model (Figure 4). If there is no animation component, the role needs to be bound, otherwise the exported animation cannot be played.
 
-![](img/4.png)<br>（图4）
+![] (img/4.png)<br> (Figure 4)
 
-​	经过以上步骤，我们完成了角色动画在unity中的编辑，点击unity中运行按钮，这时我们就可以看到动画播放了。如果动画播放没有问题，就可以按之前“unity插件工具使用”教程方法导出LayaAir所需资源。
+After the above steps, we finished editing the character animation in Unity, click the button to run in Unity, then we can see the animation playing. If there is no problem with animation playback, you can export the resources required by LayaAir according to the previous "Unity Plug-in Tools Use" tutorial method.
 
-**Tips：其他的动画在unity中处理方式也一致，都需要以下步骤：场景模型上添加动画组件——创建动画控制器——将动画加入动画控制器中——动画控制器添加入模型的动画组件中。**
+**Tips: Other animations are processed in the same way in Unity. The following steps are needed: adding animation components to scene models - creating animation controllers - adding animation controllers to animation controllers - adding animation controllers to animation components of models.**
 
-### 动画导出时需要注意
+###Attention should be paid to animation export
 
-##### 动画文件相关
+#####Animation File Relevance
 
-​	多个动画文件不能有重名情况。
+Multiple animation files cannot be renamed.
 
-##### 刚体动画相关
+#####Rigid-body animation correlation
 
-​	使用刚体动画时，动画对象的Animator Controller不要加添加 Avatar
+When using rigid animation, the Animator Controller of the animated object does not add Avatar
 
-##### 蒙皮骨骼动画相关
+#####Skin Skeleton Animation Related
 
-​	1.骨骼节点相关一个对象的骨骼中不能有同名的节点。
+1. A bone node cannot have a node with the same name in the bone of an object.
 
-​	2.动画类型只支持Generic类型。
+2. Animation type only supports Generic type.
 
-​	3.不要勾选 Optimize Game Object 选项
+3. Do not check the Optimize Game Object option
 
-![](img/6.png)<br>(图6)
+![] (img/6.png)<br> (fig. 6)
 
-##### 动画控制器类型
+#####Animation Controller Type
 
-不支持Animator override Controller动画控制器
+Animator override Controller animation controller is not supported
 
-![](img/7.png)<br>
+![] (img/7.png)<br>

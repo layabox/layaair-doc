@@ -1,31 +1,33 @@
-# IOS应用内购买
+#IOS in-app purchases
 
 
 
-　　IOS 应用内购买 即In App Purchase, 以下简称IAP.
+In App Purchase is the in-app purchase of IOS, hereinafter referred to as IAP.
 
-　　由于App Store不支持类似支付宝和微信支付等第三方支付方式, 所以无论使用什么引擎或工具开发, 最终都需要通过Apple提供的IAP方式完成交易.
+Since App Store does not support the payment of the three party like Alipay and WeChat, so no matter what engine or tool development is used, it will eventually need to complete the transaction through the IAP provided by Apple.
 
-　　Layabox为了帮助开发者节省IAP相关接口的调试时间, 封装了这部分的相关接口, 并通过JavaScript语言提供给开发者直接调用或者进行扩展.
+In order to help developers save debugging time of IAP-related interfaces, Layabox encapsulates these interfaces and provides them with direct calls or extensions through JavaScript language.
 
-　　IAP的流程非常简单, 客户端直接和App Store通讯来完成交易, 如下图:
+The IAP process is very simple. The client communicates with the app store directly to complete the transaction, as shown in the following figure:
 
-​	![blob.png](1.png) <br/>
-​	图（1）
+​![blob.png](1.png)<br/>
+Figure (1)
 
 
-  对于单机游戏来说, 上图已经完成了一次IAP流程, 但是考虑到可能会出现作弊行为, 开发者还可以增加验证的步骤, 如下图:
+For stand-alone games, the above figure has completed an IAP process, but considering the possibility of cheating, developers can also add verification steps, as follows:
 
-​	![blob.png](2.png)<br/>
-​	图（2）
+​![blob.png](2.png)<br/>
+Figure (2)
 
-  经过上述方式可以很好的防止作弊行为, 所以, 建议开发者一定要增加验证的步骤!
+After the above way can be a good way to prevent cheating, so it is recommended that developers must increase the verification steps!
 
-## 参考代码
+##Reference code
 
-### 1.  应用层JavaScript中编码
+###1. Coding in application-level JavaScript
+
 
 ```javascript
+
 // JavaScript中 组装充值相关参数. (参数意义参见本文末尾处的附录1)
 var json= '{"order_id":"OriderID_20160824_9824","amount":1,"product_id":"Laya.joychina.test","callback_uri":"http://186.152.54.225:8800/Apple.pay"}';
  
@@ -40,11 +42,14 @@ conchMarket.recharge(json,function(jsonString) {
 });
 ```
 
-### 2.  IOS系统下Objective-C中编码 
 
-(注: LayaNative中提供了一个消耗性商品示例类IAPManager类作为参考)
+###2. Coding in Objective-C under IOS
+
+(Note: An example class IAPManager for consumable goods is provided in LayaNative for reference.)
+
 
 ```javascript
+
 // MarketAppStore.mm文件中的LP_CZ方法中添加内购相关代码, 然后在JavaScript中调用conchMarket.recharge就会执行此方法.
 //以前版本叫LP_Recharge，因为怕苹果扫描误伤，改成了不专业的拼音 充值
 -(void)LP_CZ:(NSString*) jsonParam
@@ -53,33 +58,35 @@ conchMarket.recharge(json,function(jsonString) {
 }
 ```
 
-通过上述步骤就可以轻松完成iOS中的IAP功能.
 
-### 3.  充值接口及参数说明:   
+Through the above steps, the IAP function in iOS can be easily completed.
+
+###3. Filling interface and parameter description:
+
 
   `conchMarket.recharge(jsonParam,callBack);`
 
-`jsonParam`参数是输入参数,为json字符串, json对象必须提供以下属性
+`jsonParam`A parameter is an input parameter. For a JSON string, the JSON object must provide the following properties
 
-| 名称           | 类型     | 描述                          |
-| ------------ | ------ | --------------------------- |
-| product_id   | string | 苹果的商品ID (在iTunesConnect中设置) |
-| amount       | number | 购买数量                        |
-| order_id     | string | 订单ID (单机版设置空字符串)            |
-| callback_uri | string | 服务器验证地址 (单机版设置空字符串)         |
+| Name | Type | Description|
+| -----------------------------------------------------------------------------------------------------------------------------------------------------------------|
+| Product_id | string | Apple's commodity ID (set in iTunes Connect)|
+| amount | number | purchase quantity|
+| Order_id | string | order ID (set empty string for stand-alone version)|
+| Callback_uri | string | Server Verification Address (single version set empty string)|
 
 
 
-`callBack`参数是购买回调函数，回传一个json字符串参数，json属性有以下：
+`callBack`The parameter is to buy the callback function and return a JSON string parameter. The JSON attribute has the following:
 
-| 名称         | 类型     | 描述                          |
-| ---------- | ------ | --------------------------- |
-| code       | number | 成功为0, 失败为-1                 |
-| product_id | string | 苹果的商品ID (在iTunesConnect中设置) |
-| amount     | number | 购买数量                        |
-| order_id   | string | 订单ID                        |
-| desc       | string | 成功"success",  失败"error"     |
+| Name | Type | Description|
+| ---------------------------------------------------------------------------------------------------------------------------------------------------------------|
+| Code | number | Success is 0, Failure is - 1|
+| Product_id | string | Apple's commodity ID (set in iTunes Connect)|
+| amount | number | purchase quantity|
+| order_id | string | order ID|
+| desc | string | succeed in "success" and fail in "error"|
 
-### 4.  注意事项:
+###4. Notes:
 
-iOS的IAP功能并不属于LayaNative引擎的核心功能，此部分代码也是开放的，开发者可以根据自己的需求自行修改，如出现充值问题，LayaBox公司不负责找bug，并不承担任何法律相关问题。
+The IAP function of iOS does not belong to the core function of LayaNative engine. This part of code is also open. Developers can modify it according to their own needs. If there is a recharge problem, LayaBox is not responsible for finding bugs, and does not undertake any legal issues.

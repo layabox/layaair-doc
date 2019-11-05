@@ -1,131 +1,133 @@
-# 专访Layabox创始人谢成鸿：让中国HTML5技术屹立世界之巅
+#Interview with Xie Chenghong, founder of Layabox: Let China's HTML5 technology stand at the top of the world
 
-2016-04-19 
+2016-04-19
 
 ![标题头像.jpg](http://www.layabox.com/uploadfile/image/20160420/1461161838788333.jpg)
 
-​       【TechWeb报道】
+[TechWeb Report]
 
-​        在游戏行业的快速发展过程中，端游失去了行业“老大哥”的地位，页游也从辉煌走向了没落，而手游则异军突起成为“朝阳产业”，但在这个过程中，还有一个特别的“群体”正在慢慢的生长，只待所有人的目光聚焦在它身上是，它已变成参天大树，这就是HTML5游戏。
+In the process of rapid development of the game industry, Duanyou lost its position as "Big Brother" of the industry, and page games also went from brilliance to decline, while hand games suddenly emerged as "sunrise industry", but in this process, there is a special "group" growing slowly, waiting for everyone's attention to focus on it, which has become a huge tree. It's HTML5.
 
-​        究竟何为HTML5游戏呢?用通俗点的话语来解释的话，就是在浏览器或微信里只需打开一个链接，便可以进行畅快的游戏体验，同时，你不需要下载和安装任何客户端，它是一种广泛应用于移动端场景的Web游戏。想必很多人都玩过朋友圈的《神经猫》，这就是应用HTML5技术开发的小游戏，在游戏行业震惊其三天过亿访问量的同时，也将HTML5游戏的概念定格于此，每当提及HTML5游戏，人们更多的会想到那些用简单代码和素材拼凑出来的游戏，画面很low，操作很low，体验也很low……
+What is an HTML5 game? To explain it in popular words, it means that a link can be opened in a browser or a wechat to have a pleasant game experience. At the same time, you don't need to download and install any client. It is a Web game widely used in mobile scenarios. Presumably, a lot of people have played "Neuro Cat" in the circle of friends. This is a small game developed by using HTML5 technology. While the game industry shocked its three days of over 100 million visits, it also fixed the concept of HTML5 game here. Whenever mentioning HTML5 game, people will think more of those games which were assembled with simple code and material. The picture is very low, the operation is very low, and the experience is also very low. ...
 
-​        HTML5游戏真的只属于小游戏的领域吗？作为2011年就开始致力于大型HTML5游戏引擎研发的Layabox，经过数年的积累与沉淀，终于在2015年破冰而出，不断推出APP品质的大型HTML5游戏，包括了行业唯一的重度动作游戏《猎刃2》、行业唯一的大型多人在线角色扮演游戏（MMORPG）《醉西游》、行业唯一的大型模拟经营农场类游戏《梦幻家园》等十余款基于Layabox引擎的大型HTML5游戏，一次次刷新了游戏行业对HTML5的认知。
+Does HTML5 really belong to the field of small games? As Layabox, which has been devoted to the research and development of large HTML5 game engine since 2011, after years of accumulation and precipitation, it finally broke the ice in 2015 and continuously launched large-scale HTML5 games of APP quality, including the only heavy action game in the industry, Hunting Blade 2, the only large-scale multiplayer online role playing game (MMORPG), Drunken Westward Journey and the only large-scale simulation in the industry. More than ten large HTML5 games based on Layabox engine, such as farm game "Dream Home", have refreshed the game industry's understanding of HTML5 time and again.
 
 ![图1.jpg](http://www.layabox.com/uploadfile/image/20160420/1461161817409210.jpg)
 
-2015年度HTML5产业贡献奖
+HTML5 Industry Contribution Award 2015
 
-​        多次获得行业的《HTML5最佳引擎奖》、《HTML5产业贡献奖》等殊荣的Layabox引擎，其背后到底还有多少不为人知的秘密武器，TechWeb记者有幸专访了创业经历堪称传奇的Layabox创始人谢成鸿，他将揭开HTML5引擎技术背后的故事。
+The Layabox engine, which has won many awards such as "HTML5 Best Engine Award" and "HTML5 Industry Contribution Award", has many unknown secret weapons behind it. TechWeb reporter has the privilege to interview Xie Chenghong, the legendary founder of Layabox, who will uncover the story behind HTML5 engine technology.
 
-**网页游戏的开山鼻祖 基于懒人需求的开发**
+**The Founder of Web Game Based on Lazy People's Demand**
 
-****
+********
 
-　　谢成鸿：此前参加了一个跨年座谈会，其中滴滴打车的程维表示中国是互联网的大国，但我们并不属于互联网强国。为何我们是中国互联网的大国呢?因为我们的技术人才多，互联网的整个盘子大，可这些并不能让我们成为互联网的强国，因为互联网是经营模式的创新和落地，但我们在互联网底层的核心这一块基本上没有什么贡献。我的追求，我不太愿意中国互联网发展中的内容都是拿来主义，这是低档层次的体现。底层技术上的发展决定了中国互联网未来能否成为强国的关键。
+Xie Chenghong: Previously, I attended a cross-year Symposium in which Cheng Wei, a taxi driver, said that China is a big Internet country, but we are not a strong Internet country. Why are we a big country of the Internet in China? Because we have many technicians and the whole dish of the Internet is big, but these can not make us a strong country of the Internet, because the Internet is the innovation and landing of the business model, but we have little contribution in the core of the bottom of the Internet. My pursuit, I am not willing to China's Internet development is the content of bringing doctrine, which is the embodiment of the low-end level. The development of underlying technology determines whether China's Internet will become a powerful country in the future.
 
-　　用一个比较具象例子来说明一下，美国本土的汽车消失殆尽，但美国人并没有因此而着急，为何呢?因为他们已经开始搞下一代汽车了，优势不在于体量的体现。在于未来技术的投入和投资，这让美国走在了科技强国的前沿。从这里能看出，原创技术在中国的互联网环境下还是需要提高和加入更多投入的，这也是我为什么要做这个企业的重点之一。
+To illustrate with a more concrete example, American automobiles have disappeared, but Americans are not worried about it. Why? Because they have started to build the next generation of cars, the advantage is not the embodiment of size. It lies in the investment and investment of future technology, which makes the United States at the forefront of the technological power. From here, we can see that the original technology in China's Internet environment still needs to improve and join more investment, which is why I want to do one of the focus of this enterprise.
 
-　　我是1999年进入游戏行业，而进入游戏行业的起因是在1996年我做了一个教育式游戏软件，可以说用游戏的方式做了一个教育软件。感觉做游戏是有意思的一个事情，于是在99年，我一个人花了三个月做了一个HTML的棋牌游戏大厅，这也是全球第一款具有商业模式的网页游戏，最终我卖给了联众的母公司海虹，300万人民币这算是我的第一桶金。
+I entered the game industry in 1999, and the reason why I entered the game industry was that in 1996 I made an educational game software, which can be said to be an educational software in the way of games. It's interesting to play games. So in 1999, I spent three months alone to make an HTML chess and card game hall. This is the first web game with business model in the world. Finally, I sold it to Haihong, the parent company of Lianzhong. 3 million RMB is my first bucket of gold.
 
-　　我是一个很懒、很怕麻烦的人，任何的下载和安装对于我来说，都是很反感的，因为这些过程太繁琐，违背了人性。我认为科技应该更加符合人性，也就是科技人性化。同时，这也是人性最基础的需求，可以称之为懒的需求。
+I am a lazy, troublesome person, any download and installation for me, is very disgusting, because these processes are too cumbersome, contrary to human nature. I think science and technology should be more in line with human nature, that is, human nature of science and technology. At the same time, it is also the most basic demand of human nature, which can be called lazy demand.
 
-　　在2000年，我做了一个全球最大的图形休闲游戏平台，也是最早的页游平台——可乐吧。当时创立可乐吧的时候，也是基于懒人思维，它是全球最早用插件做的页游平台，当时，我们利用网页技术和插件技术去还原端游的效果。后来，我们拥有了五六千万的全球用户。在我所有的创业历程中最核心的一点就是技术前瞻性和技术创新性。
+In 2000, I made a world's largest graphic leisure game platform, and also the earliest page game platform - Cola bar. When the Coke Bar was founded, it was also based on lazy thinking. It was the world's earliest page-surfing platform made of plug-ins. At that time, we used web page technology and plug-in technology to restore the effect of end-surfing. Later, we had 560 million users worldwide. The core of all my entrepreneurship is technological foresight and technological innovation.
 
 ![图2.jpg](http://www.layabox.com/uploadfile/image/20160420/1461161829564458.jpg)
 
-可乐吧经典游戏之一《打雪仗》
+Snow Battle, one of the classic games in Coke Bar
 
-　　如何才能成为大师级的人物呢?这取决于两个要素，第一个是实现，第二个才是回报。但如果你把回报放在第一位，你很难成为大师级的人物。人是要有梦想的，我的梦想即便没有成功，但对后人或者即将发生的事情造成了影响，我也是很开心的。对于我而言，创业的原动力其实就是我在享受创业过程中的一切，创造自身带给我了很大的乐趣，而坚持对于梦想的实现是最关键的。
-
-**十年端游弯路虽然苦 但它也是我的良药**
-
+How to become a master depends on two factors: the first is realization, the second is reward. But if you put rewards first, it's hard to be a master. People should have dreams. Even if my dreams are unsuccessful, they will have an impact on future generations or what is going to happen. I am also very happy. For me, the driving force of entrepreneurship is actually that I enjoy everything in the process of entrepreneurship, and creating myself brings me great pleasure, and persistence is the most critical to the realization of my dream.
 ****
+**Ten years of winding is a good medicine for me, though it's hard.******
+****
+********
+
 
 　　我是一个几起几落的人，早期的创业路我是一帆风顺的，我坐拥着金钱和名誉，基本没有受到过什么挫折。产业地位比较高，一些做游戏的都来找我，比如网易的丁磊。搜狐的张朝阳也曾为了一个短信支付业务，半夜打电话来谈合作。但后来，我违背了自己的特点，从2003年开始到2012年我开始走了一个弯路，也是我走向了人生中近10年的低谷。那是因为我放弃了平台，开始做起了端游研发。
 
-我为何走入了10年的弯路呢?客观的说，我不是一流的游戏制作人，我是一流的程序设计师。尽管研发了不少端游大作，比如《网球宝贝》、《乱武天下》、《猎刃》等，其中《乱武天下》甚至引起了盛大陈天桥的关注，他更是和李瑜亲自来找我进行产品的签约。但是游戏完成后不是被雪藏，就是叫好不叫座，这十年我走的很坎坷，也让我付出所没想到的一切。
+Why did I make a detour in 10 years? To be objective, I am not a first-class game producer, I am a first-class programmer. Despite the research and development of a number of top travel masterpieces, such as "Tennis Baby", "Chaotic World", "Hunting Edge", among which "Chaotic World" even attracted the attention of Shengda Chen Tianqiao. He and Li Yu came to me personally to sign products. But after the completion of the game, it was either hidden in the snow, or it was not a good place to call it. I went very rough in the past ten years, which also made me pay for everything I hadn't thought of.
 
 ![图3.jpg](http://www.layabox.com/uploadfile/image/20160420/1461161858627133.jpg)
 
-3D端游《猎刃》
+3D End Tour "Hunting Edge"
 
-最后研发的一款端游是《猎刃》，虽然影响力比较大，但是当年整体端游市场都在走下坡路，这其中最关键的在于端游的营销成本在不断的增加，虽然收入在持续飙高，营销成本也在水涨船高，高到我们研发商无法承受。我开始思考未来的路究竟如何走下去，当时摆在我面前有几个选择：页游或手游。当时网页游戏平台51wan的李雪梅对我说，你是网页游戏的开山鼻祖，只要你做页游，我立马投钱。后来，我认为这两个都不是我最擅长的领域。
+The last one is "Hunting Blade". Although it has a great influence, the whole end-tour market is on the decline. The most important thing is that the marketing cost of end-tour is increasing continuously. Although the revenue is soaring, the marketing cost is also soaring, which is too high for our developers to bear. I began to think about how to go on in the future. There were several choices before me at that time: paging or hand-surfing. Li Xuemei of 51wan said to me at that time that you were the originator of web games. As long as you do web games, I will invest money immediately. Later, I didn't think either of them were my best areas.
 
-在2011年的时候，我想到一个方向，那就是手游、PC页游和手机页游三者结合在一起的发展方向。究竟什么样的技术才能把所有的平台完美的融合在一起呢?只有HTML5技术才能实现，也正是因为这样一个前提，让我投身进入了HTML5行业中。一个在未来并没有形成行业的方向，我去做，这是我所擅长的。
+In 2011, I think of a direction, which is the development direction of hand-surfing, PC page-surfing and mobile page-surfing. What kind of technology can bring all platforms together perfectly? Only HTML5 technology can achieve it. It is precisely because of this premise that I join the HTML5 industry. One in the future does not form the direction of the industry, I do, this is what I am good at.
 
-　　当时由于公司发展与端游大环境的影响下，公司开始进行裁员，从300多人裁到只有几十人，我只能卖掉房产来给员工们发放遣散费。企业没做好并不是员工的责任，而是自己的责任，需要我背负起这样的担当。而我的员工，在我最困难的时候也把房产抵押掉给公司发工资。这是我们之间的信任，也是我们企业凝聚力的表现。
-
-**厚积薄发 让HTML5技术屹立世界之巅**
-
+At that time, due to the development of the company and the influence of Duanyou environment, the company began to lay off staff, from more than 300 people to only dozens of people, I had to sell the real estate to pay severance pay to employees. It is not the staff's responsibility, but their own responsibility that enterprises fail to do a good job. I need to shoulder such a responsibility. And my employees, in my most difficult time, also mortgaged the property to the company to pay wages. This is the trust between us, but also the performance of our corporate cohesion.
 ****
+**HTML5 technology stands at the top of the world through thick accumulation and thin distribution******
+****
+********
 
-当我在2011年介入到这个行业时，发现HTML5所面临的最大问题体现在技术层面上，HTML5的性能和兼容性是它最致命的，也是被诰病的东西。但我还是要挑战HTML5大型游戏，就这样，我们自研引擎(Laya)的一款大型多人在线休闲游戏《疯狂雪球》在2012年出炉了，这款游戏即便在今天仍被称为精品，最近腾讯还在追着我们要代理这款2012年就完成的大型HTML5游戏。
+When I stepped into the industry in 2011, I found that the biggest problem HTML5 faced was at the technical level. The performance and compatibility of HTML5 was the most lethal and malicious thing. But I still want to challenge the HTML5 games. In this way, a large-scale multiplayer online leisure game "Crazy Snowball" of our self-developed engine (Laya) came out in 2012. Even today, this game is still called a boutique, and recently Tencent is chasing us to represent this large HTML5 game which will be completed in 2012.
 
 ![图4.jpg](http://www.layabox.com/uploadfile/image/20160420/1461161872310629.jpg)
 
-HTML5多人在线休闲游戏《疯狂雪球》
+HTML5 Multiplayer Online Leisure Game "Crazy Snowball"
 
-　　在2012年和2013年我们持续的进行HTML5产品和引擎的研发,研发出了大型卡牌策略游戏《三国喵喵传》，现在改名叫《上吧主公》了，这个产品实现了三端融合的目标，有APP版本、H5版本，还在页游上赚到了钱，而且这款13年完成的大型H5游戏到今天还有百万级的月流水收入。我们的Laya引擎在2013年的时候已经十分完善，还获得了CSDN与工信部主办的开源大奖。当引擎完善后我首先想到的是开源，让更多的人获得这样好处。
+In 2012 and 2013, we continued to research and develop HTML5 products and engines, developed a large card strategy game "Three Kingdoms Meow" and now renamed "Shangba Master". This product achieves the goal of three-terminal integration. There are App version, H5 version, and also made money on the page, and this 13-year-old large H5 game still has a million-grade month to date. Running water income. Our Laya engine was perfected in 2013 and won the Open Source Award sponsored by CSDN and MIIT. When the engine is perfect, the first thing I think about is open source, so that more people can get such benefits.
 
-　　在2014年，我提出了一个目标，那就是要证明HTML5在技术层面、表现形式、性能方面都能与Native APP完全抗衡。《猎刃2》就是基于这样一个初衷产生的。由于当时的HTML5并不被看好，开发者以为只有Native APP才可以在手机中展现出高性能，HTML5技术只可以做出小游戏产品，，而我们正是要改变这一认知，让大家知道，我们Layabox引擎的HTML5是可以达到Native的性能与体验。想要HTML5形成产业，就要能做出与Native APP抗衡的HTML5游戏。
+In 2014, I proposed a goal to prove that HTML5 can compete with Native APP in terms of technology, presentation and performance. "Hunting Blade 2" is based on such an original intention. Because HTML5 was not popular at that time, developers thought that only Native APP could show high performance in mobile phones, HTML5 technology could only make small game products, and we just want to change this perception, let you know, our Layabox engine HTML5 can achieve the performance and experience of Native. If you want HTML5 to become an industry, you need to be able to compete with Native APP in HTML5 games.
 
 ![图5.jpg](http://www.layabox.com/uploadfile/image/20160420/1461161884333952.jpg)
 
-HTML5行业首款重度动作游戏《猎刃2》
+HTML5 Industry's First Heavy Action Game "Hunting Blade 2"
 
-　　为了媲美APP的品质，《猎刃2》在制作成本，研发周期上完全达到了APP的研发标准，处于HTML5行业最领先的水平，最终也成为了2015年HTML5行业的标杆性产品。在完成《猎刃2》这款大型动作游戏后，我们认为Layabox的HTML5引擎技术已经成熟了，可以用于制作APP品质的大型HTML5游戏了，才开始推广这个引擎，这也是我们引擎为什么2011年开始研发，2015年才开始面世的原因。
-
-**LayaAir引擎横空出世 用引擎性能来说话**
+In order to compete with the quality of APP, "Hunting Blade 2" in the production cost, research and development cycle has fully met the standard of APP research and development, is in the leading level of HTML5 industry, and eventually became the benchmark product of HTML5 industry in 2015. After completing the large-scale action game "Hunting Blade 2", we think that Layabox's HTML5 engine technology has matured and can be used to produce large-scale HTML5 games with APP quality, so we began to promote this engine. This is why our engine began to develop in 2011 and came out in 2015.
+****
+**LayaAir Engine Comes Out with Engine Performance******
 
 **![图6.jpg](http://www.layabox.com/uploadfile/image/20160420/1461161898360200.jpg)**
 
+
   MMORPG游戏《醉西游》H5版
+****
+**On April 15, this year, we released a new and blockbuster product under Layabox, the LayaAir engine.**This is the case. Before that, we launched an engine called LayaFlash. Apart from developing HTML5 games in Flash's AS3 language, the more important feature of this engine is that it can convert Flash pages into HTML5 games. MMORPG "Drunken Journey to the West" is a kind of Flash pages with over 600 million streams and over 100 million players activated to be converted into HTML5 games. But LayaFlash engine has a problem. In order to solve the problem of HTML5 performance, we used LayaPlayer plug-in technology in the early days. At present, dozens of mainstream channels including QQ browser, play bar, Baidu, Sina Weibo, Cheetah and so on have built-in LayaPlayer plug-in. However, compared with the total traffic channels of HTML5, the distribution volume of HTML5 in these channels is less than one third of the total industry traffic. Channel implantation speed is far from our expectations, which greatly restricts the development of HTML5 games and the scale of channel distribution. As a result, we need to build a plug-in without LayaPlayer runner, which can run HTML5 engine naked directly in App such as Wechat. LayaAir was born.****
 
-**　　今年的4月15日我们发布Layabox旗下的一款重磅新品，这就是LayaAir引擎**。在此之前，我们推出了一个引擎叫做LayaFlash，它除了可以用Flash的AS3语言开发HTML5游戏之外，更重要的特点是可以把Flash页游转换成HTML5游戏。MMORPG《醉西游》就是一款流水过6亿，激活玩家过亿的Flash页游转换为HTML5游戏的。但LayaFlash引擎存在一个问题，早期为了解决HTML5性能等的问题，我们使用了LayaPlayer插件技术，目前包括QQ浏览器、玩吧、百度、新浪微博、猎豹等等几十家主流渠道已经内置了LayaPlayer插件。但是，相对于HTML5的总流量渠道而言，这些渠道的HTML5分发量占比还不足全行业流量的三分之一。渠道的植入速度远没有达到我们的预期，这大大制约了HTML5大型游戏的发展和渠道发行的规模。由此，我们要打造一个不需要LayaPlayer运行器插件，可以在微信等APP中直接裸跑大型游戏HTML5引擎，LayaAir开始诞生了。
-
-　　Layabox每次推出引擎前，都会先用一款大型游戏产品来打磨引擎，说白了就是自己先填坑，如果自己不来填，那就有可能坑了开发者。第二代引擎LayaAir仍然如此，我们在引擎发布前就与APP手游《天天爱庄园》的研发商联合开发了HTML5版本《梦幻家园》，目前已经处于上线测试中，大家在Layabox的微信公众帐号上就可以体验到，这也是HTML5行业当前唯一不需插件就可以在微信和普通浏览器中流畅运行的APP级别大型游戏。
+Layabox uses a large game product to polish the engine before it launches the engine. In other words, it fills in the pit first. If it doesn't, it may pit the developer. LayaAir, the second generation engine, is still the same. We developed HTML5 version "Dreamland" with the developer of App Manor before the engine was released. Now it is on-line testing. You can experience it on Layabox's public account. This is the only HTML5 industry that can run smoothly in Wechat and ordinary browsers without plug-ins. PPP level games.
 
 ![图7.jpg](http://www.layabox.com/uploadfile/image/20160420/1461161912420978.jpg)
 
-Layabox微信公众号中的APP级别大型游戏《梦幻家园》
+App-level game "Dream Home" in Layabox Wechat Public
 
-　　另外，HTML5的3D时代即将来临，同时未来HTML5的VR会拥有很大的发展空间，我们的引擎技术都将支持，这也是研发LayaAir的驱动力。对于VR时代的到来，在内容上我们会通过投资的方式进行推动。借由我们的技术，以最低的成本提供给开发者，让开发者研发出更多更好的产品和内容。
+In addition, the 3D era of HTML5 is coming, and the VR of HTML5 will have a lot of room for development in the future. Our engine technology will support it, which is also the driving force for the development of LayaAir. For the advent of the VR era, we will promote it through investment in content. With our technology, we can provide developers with more and better products and content at the lowest cost.
 
-　　从我的角度来看，未来HTML5技术和内容上的融合，完全体现了LayaAir的优势，依靠我们的技术才能真正的实现大型HTML5游戏的畅快运行，提供给用户更好的体验。LayaAir引擎让创造空间变得更为宽广，表现形式变得更为多元化。
+From my point of view, the future integration of HTML5 technology and content fully reflects the advantages of LayaAir, relying on our technology can truly achieve the smooth operation of large HTML5 games, providing users with a better experience. The LayaAir engine makes the creative space wider and manifestations more diverse.
 
-　　谢谢TechWeb的采访，感谢每一位关注HTML5行业和Laybox引擎的朋友们，我们会保持不断的技术创新实力和产品案例，推动HTML5行业的发展。
+Thank you for your interview with TechWeb and everyone who cares about HTML5 industry and Laybox engine. We will continue to maintain our technological innovation strength and product case to promote the development of HTML5 industry.
 
 ![图片5.jpg](http://www.layabox.com/uploadfile/image/20160420/1461161956424253.jpg)
 
-扫一扫二维码  直接打开H5游戏《梦幻家园》体验超强性能
+Sweep two-dimensional code and open H5 game "Dream Home" to experience super performance
+****
+**Access and Service of LayaAir Engine**
 
-**LayaAir引擎的获得与服务**
+LayaAir Engine Download Home Page:
 
-LayaAir引擎的下载主页：
+Http://ldc.layabox.com/
 
-　　http://ldc.layabox.com/
+The API website of LayaAir Engine:
 
-LayaAir引擎的API网址：
+Http://layaair.ldc.layabox.com/api/
 
-　　http://layaair.ldc.layabox.com/api/
+Online DEMO for LayaAir Engine:
 
-LayaAir引擎的在线DEMO：
+Http://layaair.ldc.layabox.com/demodemo/
 
-　　http://layaair.ldc.layabox.com/demo/
+LayaAir Engine Question and Answer Community:
 
-LayaAir引擎的问答社区：
+Http://ask.layabox.com/
 
-　　http://ask.layabox.com/
+LayaAir Engine's official Wechat Public Number:
 
-LayaAir引擎的官方微信公众号：
+Layabox
 
-　　 Layabox
+The official QQ communication group of LayaAir engine:
 
-LayaAir引擎的官方QQ交流群：
-
-　　104144216
+104144216
 
 ![图片6.jpg](http://www.layabox.com/uploadfile/image/20160420/1461161975776871.jpg)
 
-扫一扫二维码，关注Layabox公众帐号
+Sweep the two-dimensional code and pay attention to Layabox public account

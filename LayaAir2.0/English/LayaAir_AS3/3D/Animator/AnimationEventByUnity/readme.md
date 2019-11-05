@@ -2,19 +2,22 @@
 
 ###### *version :2.1.0beta   Update:2019-6-13*
 
-在unity的Animator中我们我们可以添加动画触发事件 **showMsg** 如图1。
 
-![](img/1.png)<br>(图1)
+在unity的Animator中我们我们可以添加动画触发事件 **ShowMsg**As shown in Figure 1.
 
-这个事件就是说在动画播放到这个位置的时候，就会触发我们**ShowMsg**这个名字的事件。
+![] (img/1.png)<br> (Figure 1)
 
-在unity中设置好事件然后Apply，最后导出动画模型。
+This event means that when the animation is played to this location, it will trigger us.**ShowMsg**The name of the event.
 
-在LayaAir3D中我们就可以创建一个脚本来接收这个事件。
+Set up the event in Unity, Apply it, and finally export the animation model.
 
-首先我们创建一个Script3D脚本，脚本名不影响事件的触发这里是随便取的名。
+In LayaAir3D, we can create a script to receive this event.
+
+First we create a script 3D script. The script name does not affect the trigger of the event. Here is the random name.
+
 
 ```typescript
+
 import laya.d3.component.Script3D;
 
 class SceneScript extends Script3D {
@@ -32,9 +35,12 @@ class SceneScript extends Script3D {
 }
 ```
 
-在加载好场景之后，我们将我们创建的这个脚本添加给cube。
+
+After loading the scenario, we add the script we created to cube.
+
 
 ```typescript
+
 //加载场景
 Scene3D.load("res/threeDimen/scene/LayaScene_AnimationEvent/Conventional/layaScene.ls", Handler.create(this, function(scene:Scene3D):void {
     Laya.stage.addChild(scene) as Scene3D;
@@ -60,7 +66,8 @@ Scene3D.load("res/threeDimen/scene/LayaScene_AnimationEvent/Conventional/layaSce
 }));
 ```
 
-最后了来看下效果，如图2。
 
-![](img/2.gif)<br>(图2)
+Finally, the effect is shown in Figure 2.
+
+![] (img/2.gif) <br> (Figure 2)
 

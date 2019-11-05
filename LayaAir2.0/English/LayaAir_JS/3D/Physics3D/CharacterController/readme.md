@@ -1,30 +1,38 @@
-# 角色碰撞器
+#Role Collider
 
 ###### *version :2.1.1   Update:2019-7-19*
 
-如果想制作一个类似人的角色那就使用角色控制器。这可以是第三人称平台游戏、第一人称射击游戏的主要角色或任何敌对角色。
+If you want to create a human-like character, the role controller can be used in the collision. This collider is mainly used to control the role of the third person game and the first person game.
 
-在LayaAir3D中的角色碰撞器是具有刚体物理特性，同时还结合人物的特性。例如人物是无法摔倒，也就是有一个`upAxisUp` (Up向量)，而且人物在行走是会有个能跨过的`stepHeight` (最高高度)。所以通常来说所有类似人的角色都用角色控制器来执行。
+The role Collider in LayaAir3D has rigid physical properties, and also combines the characteristics of the character controller, such as:
 
-> 此处所说的不会摔倒是指人物的碰撞器不会倒。Up向量确定了这个控制器的旋转轴，规定控制器只能根据这个轴旋转。
+1. Characters can't fall, that is, there is one.`upAxisUp`(Up vector).
 
-**Tip**：角色碰撞器一般使用的碰撞盒是胶囊体碰撞盒。
+2. Characters have an ability to "cross" while walking.`stepHeight`(Maximum height).
 
-![](img/1.png)<br>(图1)
+So in general, all human-like roles can be controlled by role controllers.
 
-角色碰撞器还有一些非常好用的方法：像移动与跳跃。
+> The term "not falling" here refers to the fact that a person's collider does not fall. The up vector determines the rotation axis of this controller, and specifies that the controller can only rotate according to this axis.
 
-![](img/2.png)<br>(图2)
+**Tip**Character colliders usually use capsule collision boxes.
 
-还有更多角色碰撞器的使用方式可以从API查看（[地址](https://layaair.ldc.layabox.com/api2/Chinese/index.html?category=Core&class=laya.d3.physics.CharacterController)）。
+![] (img/1.png)<br> (Figure 1)
 
-#### (1) 使用代码创建角色碰撞器
+The role collider also has some very useful methods: like moving and jumping.
 
-**插件目前暂不支持角色碰撞器导出，使用时需要使用代码创建。**
+![] (img/2.png)<br> (Figure 2)
 
-下面这段代码来自官方示例（[demo地址](https://layaair.ldc.layabox.com/demo2/?language=ch&category=3d&group=Physics3D&name=PhysicsWorld_Character)）
+There are more ways to use role colliders that can be viewed from the API（[地址](https://layaair.ldc.layabox.com/api2/Chinese/index.html?category=Core&class=laya.d3.physics.CharacterController))
+
+####(1) Use code to create role Colliders
+
+**The plug-in currently does not support role collider export and needs to be created using code.**
+
+The following code is from the official example（[demo地址](https://layaair.ldc.layabox.com/demo2/?language=ch&category=3d&group=Physics3D&name=PhysicsWorld_Character))
+
 
 ```typescript
+
 //为精灵添加角色控制器
 var character = monkey.addComponent(Laya.CharacterController);
 //创建胶囊碰撞器
@@ -35,5 +43,6 @@ sphereShape.localOffset = new Laya.Vector3(0, 1.7, 0);
 character.colliderShape = sphereShape;
 ```
 
-![](img/3.png)<br>(图3)
+
+![] (img/3.png) < br > (fig. 3)
 

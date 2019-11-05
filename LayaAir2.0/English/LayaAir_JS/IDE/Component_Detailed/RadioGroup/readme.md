@@ -1,107 +1,105 @@
-# RadioGroup 组件详解
+#RadioGroup Component Details
 
-> 由于很多组件属性是通用的，常用及通用的组件属性在`属性设置器`文档中已进行介绍。阅读本篇内容前请先阅读《属性设置器》文档。
+> Since many component attributes are generic, common and generic component attributes are`属性设置器`This is described in the document. Read the Property Setter document before reading this article.
 
-## 1、了解RadioGroup组件
+##1. Understanding RadioGroup components
 
-### 1.1 RadioGroup组件的作用
+###1.1 Role of RadioGroup Components
 
-RadioGroup是单选框按钮组，按钮组之内的组件选项互相排斥，用户每次只能选择一个单选框（Radio）组件。如动图1所示。
-![图片4.png](img/1.gif)<br/> 	（动图1）
+RadioGroup is a radio box button group. The component options in the button group are mutually exclusive. Users can only select one radio box component at a time. As shown in Figure 1.
+![图片4.png](img/1.gif)<br/> (Motion 1)
 
-### 1.2 RadioGroup组件的皮肤（skin）规范
+###1.2 Skin Specification for RadioGroup Components
 
-RadioGroup组件的皮肤是以`RadioGroup`或以`RadioGroup_`为前缀进行命名，在皮肤设计规范方面，是竖向等分的两态图或三态图，如图2所示。
+The skin of the RadioGroup component is`RadioGroup`Or to`RadioGroup_`Name the prefix. For skin design specifications, it is a bimorph or trimorph graph with vertical equivalence, as shown in Figure 2.
 
-![图2](img/2.png) <br />(图2)三态RadioGroup皮肤
+![图2](img/2.png)<br/> (Figure 2) Trimorphic RadioGroup Skin
 
-*Tips：RadioGroup组件的皮肤无法使用九宫格属性，所以要在资源设计的时候就确定好实际应用时的大小。*
+*Tips: The skin of RadioGroup components can't use the Nine-palace property, so it's important to determine the size of the application when designing resources.*
 
-### 1.3 RadioGroup组件的API介绍
+###1.3 Introduction to the API of RadioGroup Components
 
-  RadioGroup 的API介绍请参考 [ http://layaair.ldc.layabox.com/api/index.html?category=Core&class=laya.ui.RadioGroup](http://layaair.ldc.layabox.com/api/index.html?category=Core&class=laya.ui.RadioGroup)。
-
-
-
-
-## 2、通过LayaAirIDE创建RadioGroup组件
-
-### 	2.1 创建RadioGroup
-
-​        点击选择资源管理器里的 RadioGroup 组件资源，拖拽到场景编辑器，即在页面中成功的创建了一个 RadioGroup  组件。如动图3所示。
-​      ![动图3](img/3.gif) <br /> （动图3）
+For an introduction to RadioGroup's API, please refer to[ http://layaair.ldc.layabox.com/api/index.html?category=Core&class=laya.ui.RadioGroup](http://layaair.ldc.layabox.com/api/index.html?category=Core&class=laya.ui.RadioGroup)。
 
 
 
-### 2.2 通过labels增加单选框 
 
-​       如动图3中所示，默认的单选框组中只有两个单选框。如想增加单选框，只需在labels属性中增加新的标签即可，修改标签内容也在该属性中设置，操作如动图4-1所示。
+##2. Creating RadioGroup Components through LayaAirIDE
 
-​       ![动图4-1](img/4-1.gif) <br /> （动图4-1）
+###2.1 Create RadioGroup
 
-
-
-### 2.3  改变单选框组RadioGroup的布局方向与间距 
-
- RadioGroup 默认是水平布局（*horizontal*），通过更改direction属性，实现垂直布局（*vertical*）。设置间距可以通过space属性实现。如动图4-2所示。
-![动图4-2](img/4-2.gif) <br /> （动图4-2）
+Click on the RadioGroup component resource in Resource Manager and drag it to the Scene Editor, which successfully creates a RadioGroup component on the page. As shown in Figure 3.
+​![动图3](img/3.gif)<br/> (Motion 3)
 
 
 
-### 2.4 设置单选框组RadioGroup的默认选项
+###2.2 Add radio boxes through labels
 
-selectedIndex属性是用于改变单选框组的索引值，默认不设置时，不勾选任何选项，如果要设置RadioGroup的默认勾选，可以设置selectedIndex的属性值，0为第1个单选框，1为第2个单选框……以此类推。
+As shown in Figure 3, there are only two radio boxes in the default radio box group. If you want to add a radio box, you just need to add a new label in the labels attribute, and modify the label content is also set in the attribute, as shown in Figure 4-1.
 
-假设我们将属性值设置为0时，运行效果如动图4-3所示。
-![动图4-3](img/4-3.gif) <br /> （动图4-3）
+​![动图4-1](img/4-1.gif)<br/> (Motion 4-1)
+
+
+
+###2.3 Change the layout direction and spacing of RadioGroup
+
+RadioGroup defaults to horizontal layout (* horizontal *), which implements vertical layout (* vertical *) by changing the direction attribute. Setting spacing can be achieved through the space attribute. As shown in Figure 4-2.
+![动图4-2](img/4-2.gif)<br/> (Motion 4-2)
+
+
+
+###2.4 Set the default options for RadioGroup
+
+The selectedIndex property is used to change the index value of the radio box group. When it is not set by default, no option is checked. If you want to set the default check of RadioGroup, you can set the attribute value of selectedIndex, 0 is the first radio box, 1 is the second radio box... And so on.
+
+Assuming that we set the attribute value to 0, the effect is shown in Figure 4-3.
+![动图4-3](img/4-3.gif)< br / >
 
 ### 
 
 
 
-## 3、创建自定义的RadioGroup组件
+##3. Create a custom Radio Group component
 
-​	在上例中，我们使用了同一种单选框资源通过设置labels生成了三个子项目的单选框组。然而在实际的游戏中，在同一个RadioGroup组件中对单选框样式有不同的需求，那么通过labels设置的方式是无法达到效果的，这个时候就需要使用自定义RadioGroup组件的方式。
-
-
-
-
-### 3.1 准备美术资源
-
-​	我们用两张不同的`radio单选框`美术资源来组成`自定义RadioGroup组件`，资源如 图5 所示。
-
-​        ![图片5.png](img/5.png)<br/>    （图5 ）
-
-**Tips**：
-
-这里要特别注意一下皮肤图片的命名规则，在自定义的RadioGroup组件中，我们不能使用`RadioGroup`或`RadioGroup_`为前缀命名。因为要使用Radio单选框组件来作为它的子项组件，所以本例中的图片资源命名使用`radio_`为前缀。
+In the previous example, we used the same radio box resource to generate three sub-item radio box groups by setting labels. However, in the actual game, there are different requirements for radio box style in the same RadioGroup component, so the way of labels setting can not achieve the effect. At this time, we need to use the way of custom RadioGroup component.
 
 
 
-### 3.2 在IDE中创建Radio组件
 
-将资源拷贝到项目的资源管理器文件夹，然后在IDE中，将制作的radio组件从资源管理器中逐个拖拽到场景编辑器，从左到右（或从上到下）将每个Radio组件的name属性，按先后顺序依次修改成“item0、item1、item2.....”，（不按此规则增加名字属性，生成的RadioGroup组件为无效组件，不能正常运行。）
+###3.1 Preparing Art Resources
 
-当设置完label属性的文本、label标签的字体颜色、大小、位置关系等，以及调整好位置后，效果如 图6、图7 所示。
+We use two different ones.`radio单选框`Composition of Art Resources`自定义RadioGroup组件`Resources are shown in Figure 5.
 
-​        ![图片6.png](img/6.png)<br/>    （图6）
+​![图片5.png](img/5.png)<br/> (Fig. 5)
 
-​        ![图片7.png](img/7.png)<br/>    （图7）
+**Tips**:
 
-​	**Tips：自定义的RadioGroup组件的name属性中，命名规则为英文字符+数字，英文字符后不能加下划线，数字要按先后顺序从0开始。**。
-
-
-
-### 3.3 转换成RadioGroup容器
-
-​	当修改好子项属性后，全选组件按快捷键Ctrl+B转换成容器，选择转换成RadioGroup容器类型并确定，如图8所示。
-
-​        ![图片8.png](img/8.png)<br/>    （图8）
+Here's a special note about the naming rules for skin images. In the custom RadioGroup component, we can't use them.`RadioGroup`or`RadioGroup_`Name the prefix. Because you want to use the Radio radio box component as its subitem component, the image resource naming in this example uses`radio_`Prefix.
 
 
 
-​	转换成功后，调整默认选择的索引selectedIndex为0（第一个Radio），如图9所示，单选框间距space、方向direction可以不调节，在场景编辑器中通过鼠标调整也可以。
+###3.2 Create Radio Components in IDE
 
-​        ![图片9.png](img/9.png)<br/>    （图9）
+Copy the resource to the resource manager folder of the project, then drag and drop the produced radio component from the resource manager to the scene editor one by one in the IDE, and change the name attribute of each Radio component from left to right (or from top to bottom) to item0, item1, Item2 in turn. (RadioGroup component generated without adding name attribute according to this rule) Invalid component, not working properly.)
 
-​	通过以上几个步骤可以看到自定义RadioGroup组件制作成功。默认选择了第一个选框并切换到它的第三帧选择状态，其他选框则是第一帧未选择状态。
+After setting the text of label attribute, font color, size, position relationship of label label label, and adjusting the position, the effect is shown in figs. 6 and 7.
+
+​![图片6.png](img/6.png)<br/> (Fig. 6)![图片7.png](img/7.png)<br/> (Figure 7)
+
+​**Tips: In the name attribute of the customized Radio Group component, the naming rule is English characters + numbers. English characters can not be underlined after them. Numbers should start from 0 in sequence.**。
+
+
+
+###3.3 converting to a radiogroup container
+
+After modifying the sub-item attributes, the selected components are converted to containers by pressing the shortcut key Ctrl+B, and the RadioGroup container type is selected and determined, as shown in Figure 8.
+
+​![图片8.png](img/8.png)<br/> (Figure 8)
+
+
+
+After successful conversion, adjust the default index selectedIndex to 0 (the first Radio). As shown in Figure 9, the space and direction between radio boxes can be unchanged, or can be adjusted by mouse in the scene editor.
+
+​![图片9.png](img/9.png)<br/> (Figure 9)
+
+From the above steps, you can see that the custom RadioGroup component has been successfully produced. By default, the first check box is selected and switched to its third frame selection state, while the other check boxes are the first frame unselected state.

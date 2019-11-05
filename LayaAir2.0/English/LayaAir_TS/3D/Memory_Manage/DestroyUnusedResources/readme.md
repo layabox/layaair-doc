@@ -1,18 +1,20 @@
-# 批量销毁释放内存
+#Batch Destruction Releases Memory
 
 ###### *version :2.0.2beta   Update:2019-5-8*
 
-​		Scene3D、Sprite3D调用destroy()之后，引用的材质，纹理，网格并不会跟随一起销毁，需要使用`Laya.loader.getRes(url:String)`接口获取到需要销毁的资源，调用他的`destroy()`方法销毁。但是这种方法是非常麻烦的。LayaAir2.0为了方便开发者，提供了`Resource.destroyUnusedResources()`接口统一销毁。
+Scene3D, Sprite3D are calling`destroy()`After that, the material, texture and mesh referenced by the wizard will not be destroyed together with the wizard's destruction. These remaining resources need to be used separately`Laya.loader.getRes(url:String)`After the interface obtains the resource object, it calls the resource object's`destroy()`Methods Destruction. But this method is very troublesome. LayaAir2.0 is available for developers`Resource.destroyUnusedResources()`Unified interface destruction.
 
-​	**Tip**：注意Scene3D，Sprite3D调用destroy()方法的，必须是所有对象，包括本体与克隆体。此时`destroyUnusedResources` 方法会自动释放掉所有没有使用且没有**上锁**的资源。
+​**Tip**Note that when it comes to cleaning up a Scene 3D or Sprite 3D related resource, it is not only his own genie that needs to be destroyed, but also the cloned genie that needs to be destroyed. here`destroyUnusedResources`Method automatically releases all unused and unused**Lock up**Resources.
 
-![](img/1.png)<br>(图1)
+![] (img/1.png)<br> (Figure 1)
 
-如图1所示，我们地图上添加了一个按钮。并且给按钮添加了以下事件。
+As shown in Figure 1, a button is added to our map. The following events are added to the button.
 
-> 以下代码节选自官方示例（[demo地址](https://layaair.ldc.layabox.com/demo2/?language=ch&category=3d&group=Resource&name=GarbageCollection)）
+> The following code excerpts are from the official example（[demo地址](https://layaair.ldc.layabox.com/demo2/?language=ch&category=3d&group=Resource&name=GarbageCollection))
+
 
 ```typescript
+
 function(e:Laya.Event):void {
     this._castType++;
     this._castType %= 2;
@@ -50,27 +52,30 @@ public loadScene():void {
  }
 ```
 
-我们点击加载场景，再来看状态。
 
-![](img/2.png)<br>(图2)
+Let's click on the loading scenario to see the status.
 
-在场景显示出来后，我们可以看到在 **Stat** 面板中 **GPUMemory** 有一个比较明显的涨幅。
+![] (img/2.png)<br> (Figure 2)
 
-然后我们来点击释放显存。
+After the scene is displayed, we can see that in the**Stat**Panel**GPUMemory**There is a more obvious increase.
 
-![](img/3.png)<br>(图3)
+Then we click to release the memory.
 
-#### 关于资源上锁
+![] (img/3.png) < br > (fig. 3)
 
-​		因为`destroyUnusedResources` 接口的释放机制。所以那些我们需要对没有被使用到的且不能被释放的资源**上锁**。目前上锁的方法因为2D，3D单资源加载与3D批量加载的区别，有几种不同的上锁方式。
+####About resource locking
 
-​		**注意：**上锁实际上是对父类为`Resource`的资源对象上锁。
+Because`destroyUnusedResources`Release mechanism of interface. So we need resources that are not used and cannot be released.**Lock up**。 At present, there are several different locking methods because of the difference between 2D, 3D single resource loading and 3D batch loading.
 
-##### 3D单资源加载时，资源上锁
+​**Be careful:**Locking is actually for the parent class`Resource`The resource object is locked.
 
-​		使用对应的资源加载方式加载资源时，通过对回调拿到的资源对象直接上锁实现。对应资源的加载方式可以查看 **资源加载篇** 的 **资源加载** 节，不包括场景与预设的加载。单个场景与预设的加载回调值类型分别是Scene3D与Sprite3D，并不是继承自Resource的资源对象。
+#####Resource Locking When 3D Single Resource Loading
+
+When loading resources with the corresponding resource loading mode, it is realized by directly locking the resource object obtained by the callback. The way the corresponding resources are loaded can be viewed**Resource Loading Paper**Of**Resource loading**Section, excluding scenarios and preset loads. The single scenario and the preset load callback value types are Scene3D and Sprite3D, respectively. They are not resource objects inherited from Resources.
+
 
 ```typescript
+
 //加载Mesh
 Laya.Mesh.load("res/threeDimen/skinModel/LayaMonkey2/Assets/LayaMonkey/LayaMonkey-LayaMonkey.lm", Laya.Handler.create(this, function(mesh:Laya.Mesh):void {
     //给该网格资源上锁
@@ -87,15 +92,18 @@ Laya.Mesh.load("res/threeDimen/skinModel/LayaMonkey2/Assets/LayaMonkey/LayaMonke
 }));
 ```
 
-![](img/4.png)<br>(图4) 调用自动释放前
 
-![](img/5.png)<br>(图5) 调用自动释放后
+![] (img/4.png)<br> (Figure 4) before calling automatic release
 
-​	可以看到，加锁后调用资源释放GPUMemory并没有减少。
+![] (img/5.png)<br> (Fig. 5) Called after automatic release
 
-​	加载`.lh` 与 `.ls` 文件实际上会自动加载其使用到的相关文件，如`.lmat`材质文件,`.lani`动画文件,`.lm`网格文件等。对于这种资源的资源加锁需要通过回调中的Scene3D与Sprite3D来获取对于的资源节点来加锁。
+As you can see, GPUMemory is not reduced after calling the resource after locking.
+
+Loading`.lh`And`.ls`The file actually loads the relevant files it uses automatically, such as`.lmat`Material documents,`.lani`Animation files,`.lm`Grid files, etc. Resource locking for such resources requires that the resource nodes be locked by Scene3D and Sprite3D in callbacks.
+
 
 ```typescript
+
 //加载精灵
 Laya.Sprite3D.load("res/threeDimen/skinModel/LayaMonkey/LayaMonkey.lh", Laya.Handler.create(this, function(sp:Laya.Sprite3D):void {
     //获取蒙皮网格精灵
@@ -109,11 +117,14 @@ Laya.Sprite3D.load("res/threeDimen/skinModel/LayaMonkey/LayaMonkey.lh", Laya.Han
 }));
 ```
 
-##### 3D批量加载时，资源上锁
 
-​	在批量加载资源的时候，无法拿到回调值。这时候就需要开发者通过 `Laya.loader.getRes(url)`来获取对应的资源来上锁。
+#####Resource Locking in 3D Batch Loading
+
+Callback values cannot be obtained when resources are loaded in batches. At this point developers need to pass`Laya.loader.getRes(url)`To get the corresponding resources to lock.
+
 
 ```typescript
+
 //批量预加载方式
 public PreloadingRes():void {
 //预加载所有资源
@@ -146,17 +157,20 @@ public onPreLoadFinish():void {
 }
 ```
 
-##### 2D资源加载，资源上锁
 
-​	在2D中，图片使用的是`Texture`纹理（注意不是3D中的`Texture2D`）。但是实质上Texture就是对Texture2D的再封装，Texture的`bitmap` 属性就是他所属的Texture2D ，Texture本身是记录了Texture2的uv属性，来实现图集中的单图片显示。
+#####2D Resource Loading, Resource Locking
 
-​	所以在2D中，同一个图集中的多个不同 Texture 是共用的一个 Bitmap。这样的机制，就可能让开发者在内存管理时产生误解："销毁了一个2D的 Texture ，那么他所占的显存也应该被释放"。
+In 2D, the picture uses`Texture`Texture (Note that it's not in 3D)`Texture2D`) But in essence, Texture is the re-encapsulation of Texture 2D, Texture's`bitmap`Attribute is the Texture2D to which he belongs. Texture itself records the UV attribute of Texture2 to realize the single picture display in the atlas.
 
-​	**这样想是不对的。由于多个Texture引用同一个bitmap ，而Texture并不是真正的显存,bitmap才是真正的显存对象。销毁Texture并不等于销毁bitmap， 所以在这个时候是释放不掉显存的。**
+So in 2D, multiple different textures in the same set are a common Bitmap. Such a mechanism may lead to a misunderstanding in memory management: "If a 2D Texture is destroyed, the memory it occupies should also be released".
 
-​	所以2D图集与图片资源加锁，实际上是对相对应的Texture的bitmap上锁。在加载图集之后，还是使用`Laya.loader.getRes(url)`拿到图集中的一个Texture纹理，然后通过Texture的bitmap属性上锁。
+​**It's wrong to think so. Since multiple Textures refer to the same bitmap, and Texture is not real memory, bitmap is the real object of memory. Destroying Texture is not equivalent to destroying bitmap, so it's time to release memory.**
+
+Therefore, the locking of 2D atlas and image resources is actually a bit map locking of the corresponding Texture. After loading the atlas, use the`Laya.loader.getRes(url)`Get a Texture texture in the atlas and lock it through the bitmap property of the Texture.
+
 
 ```typescript
+
 private init():void {
 	//加载场景
 	Laya.loader.load('res/atlas/comp.atlas',Laya.Handler.create(this,this.onComplete));
@@ -169,3 +183,4 @@ private onComplete():void{
 	a.bitmap.lock = true;
 }
 ```
+

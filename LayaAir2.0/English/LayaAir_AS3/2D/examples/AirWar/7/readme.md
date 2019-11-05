@@ -2,21 +2,23 @@
 
 
 
-​	《飞机大战》游戏已经完成大部分了。对于一款射击游戏来说，射击子弹击毁敌人，抢夺道具才是游戏的核心玩法。这节课我们主要实现这两个核心功能。
+Most of the Aircraft Warfare games have been completed. For a shooting game, shooting bullets to destroy the enemy, seizing props is the core of the game. In this lesson, we mainly realize these two core functions.
 
 
 
-### 主角射击，让主角狠起来
+###The protagonist shoots, making the protagonist fierce
 
-在以前的教程中我们是把射击放到了主类Main中，但主类中是主逻辑，代码较多，而且射击是角色的一个行为，因此本例中把射击方法放到角色Role类里。
+In the previous tutorial, we put shooting into the main class main, but the main class is the main logic, there are many codes, and shooting is a behavior of the character, so in this example, we put shooting methods into the role class.
 
-在Role类里新增射击间隔时间shootInterval与下次射击时间shootTime属性，及角色是否是子弹类型isBullet属性。然后新建方法shoot()。
+In the Role class, shoot Interval and shootTime attributes are added, and whether the character is a bullet type isBullet attribute. Then create a new method shoot ().
 
-在射击方法中按射击间隔创建子弹，子弹对象同样是角色对象，区别是它只有飞行状态，无受伤死亡状态。
+In the shooting method, bullets are created according to the shooting interval. The bullet object is also the role object. The difference is that it only has flight state and no injury and death state.
 
-#### 创建射击方法
+####Creating Shooting Method
+
 
 ```
+
 		......
 		/***射击间隔***/
 		public var shootInterval: Number= 300;
@@ -54,50 +56,53 @@
 
 
 
-#### 修改掉血方法
 
-因为子弹没有死亡动画，并且被子弹击毁敌机后，玩家积分应当增加。因此修改lostHp()方法中的代码。
+####Modify bleeding method
 
-			/**
-			 * 角色失血
-			 */		
-			public function lostHp(lostHp:Number):void 
-			{
-				//减血
-				this.hp -= lostHp;
-				//根据血量判断
-				if (this.hp > 0) 
-				{
-					//如果未死亡，则播放受击动画
-					this.playAction("hit");
-				}else 
-				{
-					//如果死亡，则播放爆炸动画
-					//子弹无死亡
-					if (this.isBullet) 
-					{
-						//update()方法中，隐藏后进行回收
-						this.visible=false;
-					}else 
-					{
-						//添加死亡动画
-						this.playAction("die");
-						//如果碰撞掉血死亡者不是角色和子弹
-						if(this.type!="hero"&&!this.isBullet)
-						{
-							//增加游戏积分
-							Main.score++;
-						}
-					}
-				}
-			}
-完成上述代码后，需特别注意一点，在角色类初始化init()方法中，一定要新增加入**isBullet=false**，否则从对象池中创建的对象可能不会播放死亡动画，它们的isBullet可能为true。
+Because there is no death animation for bullets, and players' points should be increased after being destroyed by bullets. So modify the code in the lostHp () method.
 
-#### 修改主类主循环
+* *
+*Character bleeding
+* /
+Public function lostHp (lostHp: Number): void
+{
+/ / blood reduction
+This. HP - = lostHp;
+// Judgment by blood volume
+If (this. HP > 0)
+{
+//If not dead, play the hit animation
+This. playAction ("hit");
+}else
+{
+// If dead, play explosion animation
+// Bullets do not die
+If (this. is Bullet)
+{
+// In the update () method, it is hidden and retrieved
+This. visible = false;
+}else
+{
+// Adding Death Animation
+This. playAction ("die");
+// If you hit a bloody victim, it's not a character or a bullet.
+If (this. type!= "hero" & & this. is Bullet)
+{
+// Increase game points
+Main. score ++;
+}
+}
+}
+}
+After completing the above code, we need to pay special attention to adding new init () method to the role class initialization.**Isbullet = false**Otherwise, objects created from the object pool may not play death animations, and their isBullets may be true.
 
-在Main类主循环loop()中加入主角射击方法，并修改代码，使角色死亡后不射击。
+####Modify the main loop of the main class
+
+The main character shooting method is added to Main loop () and the code is modified so that the character will not shoot after death.
+
 
 ```
+
 		/**
 		 游戏主循环
 		 */
@@ -126,21 +131,24 @@
 		    ......
 ```
 
-修改完所有代码，编译运行可以看到子弹创建并发射出来了！并且子弹与敌人碰撞后使敌人受伤或击毁。同时UI中积分数也会增加（图1）。
 
-![思维导图.png](img/1.png)<br />（图1）
+After modifying all the code, compiling and running can see the bullet created and launched! And the bullet collides with the enemy and injures or destroys the enemy. At the same time, the integrals in the UI will increase (Figure 1).
+
+![思维导图.png](img/1.png)<br/> (Fig. 1)
 
 #### 
 
-### 游戏道具掉落及吃道具
+###Game props drop and eat props
 
-当子弹击中飞机爆炸后，我们可以设置某些敌机会掉落道具。在我们的美术资源中一共有两种道具，设置一种为加子弹级别，当子弹级别够了后，同时发多颗子弹；一种设置为加血量。
+When the bullet hits the plane and explodes, we can set up some enemy chances to drop props. There are two kinds of props in our art resources, one is to add bullet level, when the bullet level is enough, multiple bullets are fired at the same time; the other is to add blood.
 
-#### 创建生成道具方法
+####Creating Projects Method
 
-在Role类中创建lostProp()方法，只有enemy3类型敌机才能掉落道具，道具也是一种角色类，生成道具与生成其它角色方法相同。
+LostProp () method is created in Role class. Only enemy 3 type enemy aircraft can drop props. Props are also a kind of role class. The method of generating props is the same as that of generating other roles.
+
 
 ```
+
 		
 		/**角色死亡掉落物品**/
 		private function lostProp():void
@@ -165,47 +173,54 @@
 		}
 ```
 
-#### 修改“动画完成”的回调方法
 
-当角色播放完死亡动画后，可调用lostProp()方法，因此我们修改Role类中onComplete()方法。
+####Modifying the Callback Method of "Animation Completion"
 
-		/***动画完成后回调方法***/
-			private function onComplete():void
-			{
-				//如果角色还未有宽，获得角色宽高	
-				if(roleAni.width==0)
-				{
-					//获得动画矩形边界
-					var bounds:Rectangle=roleAni.getBounds();
-					//角色 宽高赋值
-					roleAni.size(bounds.width,bounds.height)
-				}
-				//如果死亡动画播放完成
-				if(this.action=="die")
-				{
-					//update()方法中，隐藏后进行回收
-					this.visible=false;
-					//死亡后掉落道具
-					this.lostProp();
-				}
-			  ......
+When the character plays the death animation, the lostProp () method can be called, so we modify the onComplete () method in the Role class.
+
+/ ***Callback method after animation completion*** /
+Private function onComplete (): void
+{
+// If the role is not yet wide, get the role width
+If (role Ani. width==0)
+{
+// Obtaining animated rectangular boundaries
+Var bounds: Rectangle = roleAni. getBounds ();
+// Role Width and Height Assignment
+Role Ani. size (bounds. width, bounds. height)
+}
+// If the death animation is finished
+If (this. action== "die")
+{
+// In the update () method, it is hidden and retrieved
+This. Visible = false;
+// Dropping props after death
+This. lostProp ();
+}
+...
 
 
-编译运行，我们去击毁一艘boss敌机（enemy3），发现道具出现了！但是目前我们也发现了问题，因为道具是不同阵营的，因此会被子弹击毁；同时主角与道具发生碰撞后还会相互掉血。
+Compile and run, we went to destroy a Boss enemy 3, found props appeared! But at present we have also found problems, because props are different factions, so they will be destroyed by bullets; at the same time, the protagonists and props will fall blood after collision.
 
 ![思维导图.png](img/1.png)<br />（图1）
 
 
 
-#### 创建角色吃道具方法
 
-为了解决出现的问题，且吃到弹药后子弹能有升级功能。
 
-我们需在Role类中新增加道具类型、子弹级别、同时射击的子弹数、子弹的位置偏移属性。
 
-建立一个吃道具的方法eatProp()，然后在Main类主循环中去做飞机与道具的碰撞判断。
+
+####Creating role eating props
+
+In order to solve the problems, and after eating the ammunition, the bullet can be upgraded.
+
+We need to add prop type, bullet level, the number of bullets fired at the same time, the position offset property of bullets in the Role class.
+
+Establish a method of eating props eatProp (), and then do the collision judgment between aircraft and props in Main class main cycle.
+
 
 ```
+
 		/***道具类型 0:飞机或子弹，1:子弹箱，2:血瓶***/
 		public var propType:int=0;
 		/***子弹级别（吃子弹道具后升级）***/
@@ -251,9 +266,12 @@
 			......
 ```
 
-创建道具时，增加道具属性propType，修改lostProp()方法。
+
+When creating props, add propType property of props and modify lostProp () method.
+
 
 ```
+
 		/**角色死亡掉落物品**/
 		private function lostProp():void
 		{
@@ -272,9 +290,12 @@
 			......
 ```
 
-修改Role类init()方法，初始化时使用道具属性为0。
+
+Modify the Role class init () method and initialize it with the prop attribute of 0.
+
 
 ```
+
 		/**
 		 * 角色初始化
 		 * @param type  角色类型：“hero”:玩家飞机，“enemy1-3”：敌人飞机、“bulle:1-2”：子弹、"ufo1-2":道具
@@ -294,15 +315,18 @@
 			......
 ```
 
-修改完以上代码后，我们就可以到主类Main中去进行碰撞判断了。
+
+After modifying the above code, we can go to the main class Main for collision judgment.
 
 
 
-#### 角色与道具碰撞判断
+####Judgment of Collision between Roles and Projects
 
-在Main类主循环中修改碰撞代码，修改后运行，我们发现可以吃道具了。
+Modify the collision code in the main loop of Main class and run after the modification, we find that we can eat props.
+
 
 ```
+
 			//游戏碰撞逻辑
 			//遍历所有飞机，更改飞机状态
 			for (var i: int = roleLayer.numChildren - 1; i > -1; i--) 
@@ -344,11 +368,14 @@
 
 
 
-#### 吃道具后子弹升级
 
-在Role类中修改发射子弹方法shoot()，当吃完道具后子弹级别增加，发射子弹数也增加，代码如下
+####Bullet upgrade after eating props
+
+In the role class, modify the shot() method. When the item is finished, the level of the shot will increase and the number of shots will increase. The code is as follows
+
 
 ```
+
 		/**
 		 角色射击，生成子弹
 		 */		
@@ -382,33 +409,36 @@
 		}
 ```
 
-编译运行游戏，发现当吃完两三个子弹箱道具后，子弹级别上升了，也可同时发射多颗子弹（图2），攻击力变得超爆！
 
-![思维导图.png](img/2.png)<br />（图2）
+Compiler and run the game, found that after eating two or three bullet box props, the bullet level increased, but also can launch multiple bullets at the same time (Figure 2), the attack became overexplosive!
 
-
-
-### 对象池的使用注意事项
-
-用LayaAir开发游戏，对象池Pool创建和回收机制不可或缺，这样可以减少对象创建开销。特别是像《飞机大战》这样的射击游戏，快速创建大量子弹、飞机，又快速消毁就更需要运用对象池。
-
-对于初学者来说，有些问题认识不清的话容易造成程序bug，而且难于调试查找解决问题。在使用时，请注意以下几点：
-
-1.对象池存储的是回收对象的引用。如果你的一个全局实例被回收了后，比如《飞机大战》中的主角hero，它死亡回收到了对象池后，可能会被新对象使用，可能是一颗子弹，可能是一驾敌机。如果它的属性被改变了，那么主角hero也会被修改。这会让游戏出现一些莫名的bug，因此，建议全局对象不要回收到对象池。
-
-2.根据对象池创建的对象，属性一定要重新初始化。比如飞机大战中的敌机与子弹，死亡时，它们的visible为false，子弹的isBullet为true，但敌机角色的isBullet需要为false。当你新创建新对象时，需要把被修改了的属性再初始化，如果忘记修改，那么在一些使用到它们逻辑部分就会出现问题。
-
-例如在判断角色是否播放死亡动画时，用isBullet判断，如果是敌机，死亡动画需要播放。但如果它是使用子弹回收对象创建的敌机，那么这时的isBullet为true，isBullet没被初始化的话，就会被误认为是子弹，不会播放死亡动画。
-
-当然，还有一种方式就是创建回收时，进行标识分类，把子弹与飞机分类，多写几行代码，避免逻辑漏洞。
+![思维导图.png](img/2.png)<br/> (Figure 2)
 
 
 
-下面我们把修改后的Main类与Role类代码全部代码全部展示出来。
+###Notices for Use of Object Pool
 
-### 主类Main.as全部代码
+Using layaair to develop games, the creation and recycling mechanism of object pool pool is indispensable, which can reduce the cost of object creation. Especially shooting games like "Aircraft Battle" need to use object pools to quickly create a large number of bullets and planes and quickly destroy them.
+
+For beginners, some problems are easy to cause bugs, and it is difficult to debug and find solutions. When using, please pay attention to the following points:
+
+1. Object pools store references to recycled objects. If one of your global instances is recycled, such as hero, the hero in Aircraft Wars, it may be used by a new object, a bullet, or an enemy plane when it dies and is recycled into the object pool. If its attributes are changed, the hero will also be modified. This will cause some inexplicable bugs in the game, so it is recommended that global objects not be recycled into the object pool.
+
+2. Property must be reinitialized according to the object created by the object pool. For example, when enemy planes and bullets die, their visibles are false, and isBullets of bullets are true, but isBullets of enemy aircraft roles need to be false. When you create new objects, you need to reinitialize the modified attributes. If you forget to modify, you will have problems using some of their logical parts.
+
+For example, when judging whether a character plays a death animation, use isBullet to judge that if it is an enemy aircraft, the death animation needs to be played. But if it's an enemy plane created with a bullet recycling object, then isBullet is true and isBullet is not initialized, it will be mistaken for a bullet and will not play death animation.
+
+Of course, there is another way to create recycling, identify and classify bullets and aircraft, write a few more lines of code to avoid logical vulnerabilities.
+
+
+
+Next, we show all the code of the modified Main class and the Role class.
+
+###Main. as All Codes
+
 
 ```
+
  package {
 	
 	import laya.display.Sprite;
@@ -716,9 +746,12 @@
 
 
 
-### Role类全部代码：
+
+###All the code of the Role class:
+
 
 ```
+
 package
 {
 	import laya.display.Animation;

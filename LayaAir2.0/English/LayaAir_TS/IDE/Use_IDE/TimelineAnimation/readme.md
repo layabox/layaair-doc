@@ -1,450 +1,466 @@
+#Detailed Explanation of Time Axis Animation Editor
 
+*[Note] This tutorial is based on LayaAirIDE version 2.0.0. If there are any differences, please refer to the latest version of LayaAirIDE.*
 
-# 时间轴动画编辑器详解
-
-*【注意】本篇教程采用LayaAirIDE 2.0.0版本，文中如有不同请以最新LayaAirIDE版本为准。*
-
-> 时间轴动画编辑器最是LayaAirIDE中的核心模块，通过对时间轴上的关键帧制作，自动生成运动中的动画帧，可快捷的实现游戏中alpha透明度渐变、位移、旋转、缩放等动画效果。节省了制作人员的大部分时间，提高了开发效率。本篇从创建时间轴动画至编码运用，全面介绍时间轴动画编辑器的功能及使用。
+> Time-axis animation editor is the core module of Laya AirIDE. By making key frames on time-axis, animation frames in motion can be automatically generated, which can quickly realize the animation effects of alpha transparency gradient, displacement, rotation, scaling and so on. It saves most of the time of producers and improves the efficiency of development. From creating timeline animation to coding application, this article comprehensively introduces the function and use of timeline animation editor.
 >
 
 
 
-# 1. 创建时间轴动画
+#1. Create timeline animation
 
-　**时间轴动画有两种创建方式**。一种是创建`.ani`文件的时间轴动画，另一种是在UI页面（`.ui`文件）内创建时间轴动画。
+　**There are two ways to create timeline animation**。 One is to create`.ani`File timeline animation, the other is on the UI page（`.ui`File) Create timeline animation inside.
 
-　　两种文件制作时间轴动画的方式完全相同，**区别**仅在于`.ani`文件内创建的时间轴动画可被其它UI页面使用，而在UI页面内创建的时间轴动画，仅可在当前的UI页面内使用。
+The two methods of making timeline animation are exactly the same.**Difference**Only lie in`.ani`The timeline animation created in the file can be used by other UI pages, while the timeline animation created in the UI page can only be used in the current UI page.
 
-　　对于通用的时间轴动画，建议在`.ani`文件内创建。本篇以`.ani`文件方式为示例。
-
-**Tips**：
-
-- 如果在UI页面里创建时间轴动画 ，需要先在`场景编辑器`内选中要编辑的动画组件，然后点击勾选时间轴面板的`动画编辑模式`，再进行动画编辑制作操作。
-
-- 在UI页面中制作时间轴动画，`动画编辑模式`勾选状态时，不能直接将组件拖入`场景编辑器`，需要先退出`动画编辑模式`，将要使用的UI组件先拖入`场景编辑器`，然后再重新进入`动画编辑模式`编辑。
-
-  ​
-
-### 1.1 创建时间轴动画文件ani
-
-**步骤一**：在项目管理器中，`右键`菜单里， 选择 `新建` -> `动画`，如图1所示。
-
-![1](img/1.png)<br/>(图1)
-
-
-
-**步骤二**：左键点击`动画`后，将弹出时间轴动画创建面板。在面板内选择GraphicAnimation类型，输入`动画名称`，点击`确定`，如图2所示。
-
-![2](img/2.png)<br/>(图2)
-
-*Tips: 面板中的各栏目说明，请参考文档《UI页面、粒子、动画、脚本新增面板详解》*
-
-点击确定后，即完成了`TimeLine.ani`动画文件的创建，并自动打开，进入了动画编辑模式。如图3所示。
-
-![3](img/3.png)<br/>(图3)
+For general timeline animation, it is recommended that`.ani`Create in file. This article takes`.ani`The file format is an example.
 
 **Tips**:
 
-- 打开`.ani`或`.ui`文件，`时间轴`面板与`帧属性`面板默认位于IDE的下方，制作时间轴动画这两个面板需要配合使用，如果找不到或不小心关掉了，可以按快捷键`F3`恢复为默认面板布局。
+- If you create a timeline animation in the UI page, you need to start with`场景编辑器`Select the animation component you want to edit, and then click on the Check Timeline panel`动画编辑模式`Then animation editing and production operations.
 
-- 在`.ani`文件中，场景编辑区的起始坐标（`0,0`）点位于两条红线交叉的中心点。与UI文件的左上角有所不同，大家需要注意。
+- Make timeline animation on UI page.`动画编辑模式`When checking status, components cannot be dragged directly into`场景编辑器`We need to quit first.`动画编辑模式`The UI components to be used are dragged in first`场景编辑器`And then re-enter`动画编辑模式`Editor.
+
+​
+
+###1.1 Create timeline animation file ani
+
+**Step one**In the Project Manager,`右键`In the menu, select`新建`>`动画`As shown in Figure 1.
+
+![1](img/1.png)<br/> (Fig. 1)
+
+
+
+**Step two**Left Click`动画`After that, the timeline animation will pop up to create the panel. Select the Graphic Animation type in the panel and enter`动画名称`Click`确定`As shown in Figure 2.
+
+![2](img/2.png)<br/> (Fig. 2)
+
+*Tips: For the description of each column in the panel, please refer to the document "UI Pages, Particles, Animation, Additional Panel Details for Scripts"*
+
+Click OK and it's done.`TimeLine.ani`Animation file creation, and automatically open, into the animation editing mode. As shown in Figure 3.
+
+![3](img/3.png)<br/> (Fig. 3)
+
+**Tips**:
+
+- Open`.ani`or`.ui`Documents,`时间轴`Panel and`帧属性`By default, the panel is located below the IDE. The two panels need to be used in conjunction with the production of timeline animation. If you can't find them or turn them off carelessly, you can press the shortcut key.`F3`Restore to default panel layout.
+
+- in`.ani`In a file, the starting coordinates of the scene editing area（`0,0`) The point is at the center of the intersection of two red lines. Unlike the top left corner of the UI file, you need to pay attention to it.
 
 
 ###  
 
-### 1.2 创建一个位移的时间轴动画
+###1.2 Create a displacement timeline animation
 
-#### 1.2.1 修改时间轴动效名称
+####1.2.1 Modify the name of the time axis
 
-![4](img/4.png)<br/>(图4)
+![4](img/4.png)<br/> (Fig. 4)
 
-时间轴面板中可以管理多个动画效果，默认是以ani1、ani2……anix命名，为了便于记忆区分，我们需要修改动效名称，例如，我们要创建位移的动效，可以用move命名。修改后无需刷新，即时生效，如图5所示。
+Multiple animation effects can be managed in the timeline panel. By default, ani1, ani2... For anix naming, we need to modify the dynamic name in order to make it easier to remember and distinguish. For example, we need to create a displacement effect, which can be named by move. No refresh is required after modification, and it will take effect immediately, as shown in Figure 5.
 
-![5](img/5.png)<br/>(图5)
-
-
-
-#### 1.2.2  进入动画编辑模式
-
-只有勾选动画编辑模式后，才可以对当前的动画效果进行编辑。进入编辑模式后，默认在0帧上，如图6所示。（*时间轴动画从0帧开始播放*）
-
-![6](img/6.png)<br/>(图6)
+![5](img/5.png)<br/> (Fig. 5)
 
 
 
-#### 1.2.3 导入动画资源
+####1.2.2 Enter Animation Editing Mode
 
-在资源面板中，将位图资源（Image组件）拖拽到动画编辑面板中，会自动在0帧创建一个关键帧。如图7所示。
+Only when the animation editing mode is checked can the current animation effect be edited. After entering editing mode, it defaults to 0 frames, as shown in Figure 6. (* Time axis animation starts at 0 frames *)
 
-![7](img/7.png)<br/>(图7)
-
-图7中`GraphicNode:2`代表每一个动画节点，在选中`第0帧`可以看到`2`正是目标对象的值。
+![6](img/6.png)<br/> (Fig. 6)
 
 
 
-#### 1.2.4 创建关键帧
+####1.2.3 Import Animation Resources
 
-创建关键帧有三种方式。分别是在层级面板中右键创建、在场景编辑器中右键创建、改变组件的任意属性值后自动创建。
+In the resource panel, dragging bitmap resources (Image components) onto the animation editing panel automatically creates a key frame in frame 0. As shown in Figure 7.
 
-**第一种：在层级面板中创建**
+![7](img/7.png)<br/> (Fig. 7)
 
-选中某一帧后，再选中层级面板中的组件节点，`右键` --> `创建关键帧`，如图8-1所示。
-![8-1](img/8-1.png)<br/>(图8-1)
+Figure 7`GraphicNode:2`Represents each animation node, selected`第0帧`Can see`2`It is the value of the target object.
 
-**第二种：在场景编辑器中右键创建**
 
-在场景编辑器中，选中场景中的组件后  `右键`  --> `创建关键帧` 
 
-![8-2](img/8-2.png)<br/>(图8-2)
+####1.2.4 Create Key Frames
+
+There are three ways to create keyframes. They are right-click creation in the hierarchy panel, right-click creation in the scene editor, and automatic creation after changing any attribute value of the component.
+
+**First: Create a hierarchical panel**
+
+After selecting a frame, select the component node in the hierarchical panel.`右键`>`创建关键帧`As shown in Figure 8-1.
+![8-1](img/8-1.png)<br/> (Figure 8-1)
+
+**Second: right click to create in the scene editor**
+
+In the Scene Editor, after selecting the components in the scene`右键`>`创建关键帧` 
+
+![8-2](img/8-2.png)<br/> (Figure 8-2)
 
 
 
 **第三种：自动创建。**
 
-在场景编辑器中，选中组件，改变组件的任意属性值后会自动创建关键帧。
+In the Scene Editor, the key frame is automatically created by selecting the component and changing any attribute value of the component.
 
-在本例中，我们采用第三种方式创建。首先用鼠标选中`第20帧`，然后将x轴属性值改为`160`，此时会自动在第20帧生成关键帧，成功创建了一个x轴从`0`到`160`的时间轴位移动画。如图8-3所示。
+In this case, we create it in a third way. First select with the mouse`第20帧`Then change the x-axis attribute value to`160`At this point, the key frame is automatically generated in the 20th frame, and an X-axis slave is successfully created.`0`reach`160`Time axis displacement animation. As shown in Figure 8-3.
 
-![8-3](img/8-3.png)<br/>(图8-3)
+![8-3](img/8-3.png)<br/> (Fig. 8-3)
 
 
 
-#### 1.2.5 播放时间轴动画
+####1.2.5 Play Time Axis Animation
 
-播放动画的按钮从左至右依次为，`首帧`按钮、`上一帧`按钮、`播放/暂停`按钮、`下一帧`按钮、`尾帧`（*最后一个关键帧*）按钮、`循环播放`按钮。不同按钮播放动画的效果如动图9所示。
+The buttons to play the animation are in turn left to right.`首帧`Button,`上一帧`Button,`播放/暂停`Button,`下一帧`Button,`尾帧`(* Last Key Frame*) Button,`循环播放`Button. Different buttons play animation as shown in Figure 9.
 
-![9](img/9.gif)<br/>(动图9)
+![9](img/9.gif)<br/> (Fig. 9)
 
-**首帧按钮**：点击后播放指针移动到时间轴的首帧（*第0帧*）。
+**First button**After clicking, the playback pointer moves to the first frame of the time axis (* frame 0*).
 
-**上一帧按钮**：点击后播放指针移动到当前所在帧的上一帧。如果当前帧是首帧，则播放指针移动到关键帧的最后一帧。
+**Last frame button**: Click to move the playback pointer to the previous frame of the current frame. If the current frame is the first frame, the playback pointer moves to the last frame of the key frame.
 
-**播放\暂停按钮**：点击后，会从当前帧所在位置开始播放动画效果，在最后一个关键帧停止。在播放状态下点击会暂停播放动画，再次点击播放，会从暂停时所在的帧继续继续播放。
+**Play pause button**After clicking, the animation effect will be played from the location of the current frame and stopped at the last key frame. In playback mode, clicking will pause the animation, click playback again, and continue to play from the frame where the pause occurred.
 
-**下一帧按钮**：点击后，播放指针移动至当前所在帧的下一帧。如果当前帧是关键帧的最后一帧，则播放指针移动到首帧。
+**Next Frame Button**After clicking, the playback pointer moves to the next frame of the current frame. If the current frame is the last frame of the key frame, the playback pointer moves to the first frame.
 
-**尾帧按钮**：点击后播放指针移动到时间轴关键帧的最后一帧。 
+**Tail frame button**After clicking, the playback pointer moves to the last frame of the timeline key frame.
 
-**循环播放按钮**：点击选中后，当点击播放按钮时，动画将会循环播放，再次循环按钮点击会取消循环播放状态。
+**Loop Play Button**After clicking on the selected button, when clicking on the play button, the animation will be played in a loop, and clicking on the play button again will cancel the loop.
 
 
 
 　　
 
-### 1.3  通过属性面板制作动画效果
+###1.3 Make animation effect through attribute panel
 
-在组件的属性面板中，有一些辅助动画效果实现的属性，本节中分别进行举例介绍。
+In the attribute panel of the component, there are some attributes of assistant animation effect realization, which are illustrated separately in this section.
 
-#### 1.3.1 增加旋转动画效果
+####1.3.1 Increase the effect of rotating animation
 
-例如我们在上一个位移的动画基础上，通过对轴心点和旋转角度进行改变，制作一个移动旋转的动画效果。如动图10所示。
+For example, on the basis of the previous displacement animation, we make a moving and rotating animation effect by changing the pivot point and rotation angle. As shown in Figure 10.
 
 ![10](img/10.gif)<br/>(动图10)
 
-**操作步骤：**
 
-选中最后的关键帧（第20帧），选中组件，修改属性面板的值：`x`值为235，`y`值为100，`pivotX`值为50，`pivotY`值为100，`rotation`值为270。点击播放即可。
+**Operation steps:**
 
-**属性解释：**
+Select the last key frame (frame 20), select the component, and modify the value of the property panel:`x`The value is 235.`y`The value is 100.`pivotX`The value is 50.`pivotY`The value is 100.`rotation`The value is 270. Click Play.
 
-`x`与`y`是组件的位置坐标。
+**Attribute Interpretation:**
 
-`pivotX`与`pivotY`是组件的轴心点坐标x与y。
+`x`And`y`It is the position coordinates of components.
 
-`rotation`是组件的旋转角度。
+`pivotX`And`pivotY`It is the axis coordinates x and y of the component.
 
+`rotation`Is the rotation angle of the component.
 
 
-#### 1.3.2 增加缩放动画效果
 
-在上一个动画的基础上，通过更改缩放比例，可以看到时间轴动画的缩放效果，如动图11所示。
+####1.3.2 Increase zoom animation effect
 
-![11](img/11.gif)<br/>(动图11)
+On the basis of the previous animation, by changing the zoom ratio, we can see the zoom effect of the timeline animation, as shown in Motion 11.
 
-**操作步骤：**
+![11](img/11.gif)<br/> (Motion Fig. 11)
 
-选中最后的关键帧（第20帧），选中组件，修改属性面板的值：将`scaleX`与`scaleY`值均设为0.3。将`rotation`修改为360
+**Operation steps:**
 
-**属性解释：**
+Select the last key frame (frame 20), select the component, and modify the value of the property panel:`scaleX`And`scaleY`The values are set to 0.3. take`rotation`Modified to 360
 
-`scaleX`是组件的水平方向缩放，默认值为1，不缩放。
+**Attribute Interpretation:**
 
-`scaleY` 是组件的垂直方向缩放，默认值为1，不缩放。
+`scaleX`It is the horizontal scaling of components. The default value is 1. It does not scale.
 
+`scaleY`It is the component's vertical zoom, default value is 1, no zoom.
 
 
-#### 1.3.3 增加动画的透明渐变效果
 
-透明渐变效果也是常用的动画效果之一，通过修改alpha值可以轻松实现淡入淡出等透明渐变效果。我们继续在上一个动画的基础上进行延伸。效果如动图12所示。
+####1.3.3 Increase transparent gradient effect of animation
 
-![12](img/12.gif)<br/>(动图12)
+Transparent gradient effect is also one of the commonly used animation effects. By modifying alpha value, transparent gradient effect such as fading in and fading out can be easily achieved. We continue to build on the previous animation. The effect is shown in Figure 12.
 
-**操作步骤：**
+![12](img/12.gif)<br/> (Figure 12)
 
-选中最后的关键帧（第20帧），选中组件，修改属性面板的值：将`scaleX`与`scaleY`值均修改为0.2。将`rotation`修改为720。`alpha`设置为0。
+**Operation steps:**
 
-**属性解释：**
+Select the last key frame (frame 20), select the component, and modify the value of the property panel:`scaleX`And`scaleY`The values were revised to 0.2. take`rotation`Modified to 720.`alpha`Set to 0.
 
-`alpha`是透明度属性值，默认为1，不透明。0为完全透明，属性的取值范围是0~1。
+**Attribute interpretation:**
 
+`alpha`Is the transparency attribute value, default to 1, opaque. 0 is completely transparent, and the range of attributes is 0-1.
 
 
-#### 1.3.4  轴心点动画效果设置
 
-##### 创建一个新的时间轴动画
+####1.3.4 Axis Point Animation Effect Settings
 
-为了与刚才的位移效果区分，我们点击加号图标，再创建一个时间轴动画，如图13-1所示。
+#####Create a new timeline animation
 
-![13-1](img/13-1.png)<br/>(图13-1)
+To distinguish from the displacement effect, we click on the plus sign Icon and create a timeline animation, as shown in Figure 13-1.
 
-创建后，将动画名称改为pivot，我们可以从动画列表中看到新创建的`pivot`动画和原有的`move`动画，如图13-2所示，通过点击列表中的名称可以实现不同动画的切换。
+![13-1](img/13-1.png)<br/> (Fig. 13-1)
 
-![13-2](img/13-2.png)<br/>(图13-2)
+After creation, change the name of the animation to pivot, and we can see the newly created animation from the animation list.`pivot`Animation and the original`move`Animation, as shown in Figure 13-2, can switch between different animations by clicking on the name in the list.
 
+![13-2](img/13-2.png)<br/> (Fig. 13-2)
 
 
-##### 制作以中心点为轴心的动画
 
-不设置轴心点时，默认以组件左上角为轴心，此时我们进行旋转操作，如动图14-1所示。
+#####Make animation centered on the center point
 
-![14-1](img/14-1.gif)<br/>(动图14-1)
+When the axis point is not set, the default axis is the upper left corner of the component. At this time, we rotate, as shown in Figure 14-1.
 
-如果想实现图片的中心点旋转如何操作呢，这里可以采用两种方式来实现。
+![14-1](img/14-1.gif)<br/> (Figure 14-1)
 
-**第一种：通过锚点实现**
+If you want to achieve the center of the image rotation how to operate, here we can use two ways to achieve.
 
-锚点是按组件的X或Y轴的最大长度的比例进行设置，取值是`0-1`之间，例如，我们将`anchorX`与`anchorY`的属性值都取`0.5`，就是在X轴与Y轴长度的50%位置获得轴心点坐标。这样，在时间轴尾帧设置一个旋转角度值`rotation为360`，就实现了以中心点为轴心的旋转效果，效果如动图14-2所示。
+**The first is through anchors.**
 
-![14-2](img/14-2.gif)<br/>(动图14-2)
+The anchor point is set in proportion to the maximum length of the X or Y axis of the component, and the value is`0-1`Between, for example, we will`anchorX`And`anchorY`All attribute values are taken`0.5`The coordinates of the axis center are obtained at 50% of the length of the X axis and the Y axis. In this way, a rotation angle value is set in the tail frame of the time axis.`rotation为360`The rotation effect with the center point as the axis is realized, as shown in Figure 14-2.
 
-**Tips**：*通过锚点是一种非常方便快捷的设置轴心点方式。但是锚点方式只能对UI组件设置轴心点，对于Graphics组件以及Sprite等2D基础组件的轴心点只能通过第二种方式实现。*
+![14-2](img/14-2.gif)<br/> (Figure 14-2)
 
+**Tips**:*It is a very convenient and fast way to set the pivot point by anchoring. However, the anchor mode can only set the pivot point for UI components, and for Graphics components and Sprite and other 2D basic components, the pivot point can only be realized by the second way.*
 
 
-**第二种：通过轴心点属性实现**
 
-我们想以中心点为轴心旋转，还可以通过轴心点属性设置组件的中心为轴心点，例如图片的原大小是`110*145`，那么我们将原宽高除2就获得了中心点位置，设置`pivotX`属性值为`55`，`pivotY`属性值为`72.5`。然后播放动画，和第一种方法实现的效果一样。如动图14-3所示。
+**The second kind: through the axis point attribute realization**
 
-![14-3](img/14-3.gif)<br/>(动图14-3)
+We want to rotate with the center point as the axis. We can also set the center of the component as the axis point through the axis point property. For example, the original size of the picture is`110*145`Then we divide the original width and height by 2 to get the center position.`pivotX`Attribute value is`55`,`pivotY`Attribute value is`72.5`。 Then the animation is played, just like the effect of the first method. As shown in Figure 14-3.
 
-**Tips**：*相对于锚点直接设置0.5就可以获得中心点为轴心点，轴心点属性设置需要简单的计算，稍麻烦一点。但是轴心点方式应用更加广泛，不仅可以设置组件，还可以设置容器和Sprite。*
+![14-3](img/14-3.gif)<br/> (Figure 14-3)
 
+**Tips**:*Relative to the anchor point directly set 0.5 can get the center point as the axis point, axis point attribute setting needs simple calculation, a little trouble. But the axle-centered method is more widely used, not only components can be set up, but also containers and prites can be set up.*
 
 
-#### 1.3.5 倾斜角度的动画效果设置
 
-##### 倾斜属性的坐标系
+####1.3.5 tilt angle animation effect settings
 
-倾斜属性skewX与skewY的坐标系与常规的坐标系不同，**水平方向为y，垂直方向为x**。如图15所示。
+#####Coordinate system of inclined attributes
 
-![15](img/15.png)<br/>(图15)
+The coordinate systems of skewX and skewY are different from those of conventional coordinate systems.**The horizontal direction is y and the vertical direction is X.**。 As shown in Figure 15.
 
-为了便于了解skewX与skewY的倾斜角度变化。我们直接用时间轴动画来表达。
+![15](img/15.png)<br/> (FIG. 15)
 
-##### skewX的倾斜变化效果演示
+In order to understand the skewX and skewY tilt angle changes. We use timeline animation directly.
 
-操作：在`第0帧`不设置任何效果，`第20帧`将skewX设置为`30`，点击播放后，组件的skewX轴处于逆时针方向发生形变。如动图16-1所示。
+#####Demonstration of skewX's tilt effect
 
-![16-1](img/16-1.gif)<br/>(动图16-1)
+Operation: in`第0帧`No effect is set.`第20帧`Set skewX to`30`After clicking the playback, the skewX axis of the component changes counterclockwise. As shown in Figure 16-1.
 
-**Tips**:*如果skewX值为负数，组件X轴而会顺时针方向移动发生形变。*
+![16-1](img/16-1.gif)<br/> (Figure 16-1)
 
-##### skewY的倾斜变化效果演示
+**Tips**:*If the skewX value is negative, the component X axis will move clockwise and deform.*
 
-操作：在`第0帧`不设置任何效果，`第20帧`将skewY设置为`30`，点击播放后，组件的skewY轴处于顺时针方向发生形变。如动图16-2所示。
+#####Demonstration of SkewY's Tilt Change Effect
 
-![16-2](img/16-2.gif)<br/>(动图16-2)
+Operation: in`第0帧`No effect is set.`第20帧`Set skewY to`30`After clicking Play, the skewY axis of the component changes clockwise. As shown in Figure 16-2.
 
-**Tips**:*如果skewY值为负数，组件Y轴边会逆时针方向移动发生形变。*
+![16-2](img/16-2.gif)<br/> (Figure 16-2)
 
-##### skewY与skewY同时倾斜变化效果演示
+**Tips**:*If the skewY value is negative, the side of component Y axis will move counterclockwise and deform.*
 
-操作：在`第0帧`不设置任何效果，`第20帧`将skewX设置为`30`，skewY设置为`20`，点击播放后，组件的skewX逆时针移动，skewY轴顺时针移动，共同挤压组件发生形变。如动图16-3所示。
+#####Demonstration of the effect of skew and skew at the same time
+
+Operation: in`第0帧`No effect is set.`第20帧`Set skewX to`30`SkewY is set to`20`After clicking on the playback, the skewX of the component moves counterclockwise, and the skewY axis moves clockwise, and the component is deformed by co-extrusion. As shown in Figure 16-3.
 
 ![16-3](img/16-3.gif)<br/>(动图16-3)
 
-##### 不产生形变的倾斜动画效果
-
-之前的演示例子都是skew属性值为正数时，因倾斜角度变化而产生的形变效果，如果skew属性值为负数那形变的方向就是相反的方向。因此，当skewX与skewY采用同样的数值角度，一个属性为正数，另一个属性为负数。那么就会导致倾斜角度和方向相同，而不会产生形变了。下面我们通过一个简单的钟摆效果来演示没有形变的倾斜动画效果。
-
-操作：在`第0帧`设置`skewX`为`-50`，`skewY`为`50`。第15帧`skewX`为`10`，`skewY`为`-10`。第30帧`skewX`与`skewY`的值与第0帧保持一致。设置后点击播放效果如动图16-4所示。
-
-![16-4](img/16-4.gif)<br/>(动图16-4)
 
 
+#####Tilt animation without deformation
 
-## 2. 动画编辑器介绍
+Previous examples are skew attributes are positive, because of the tilt angle changes in the deformation effect, if skew attributes are negative, then the direction of deformation is the opposite direction. Therefore, when skewX and skewY adopt the same numerical angle, one attribute is positive and the other is negative. Then the tilt angle and direction will be the same, but there will be no deformation. Next we use a simple pendulum effect to demonstrate the tilt animation effect without deformation.
 
-在动画编辑器里有两个基本概念：显示节点层和节点属性层。如图17所示，`GraphicNode`为显示节点，后面的数字是目标对象的ID，动画场景中每增加一个动画组件，时间轴中就会增加一个对应的显示节点。点击节点层左侧的展开按钮（*三角*），可以看到所有属于该节点的动画属性，图中的`skewY`与`skewX`是时间轴动画中要实现的倾斜动画属性，每增加一种动画属性，显示节点层下就会增加一个对应的节点属性层。
+Operation: in`第0帧`Set up`skewX`by`-50`,`skewY`by`50`。 Fifteenth frames`skewX`by`10`,`skewY`by`-10`。 Thirtieth frames`skewX`And`skewY`The value is consistent with frame 0. After setting, click on the playback effect as shown in Figure 16-4.
 
-![17](img/17.png)<br/>(图17)
-
-### 2.1 新增动画与删除动画
-
-之前的示例已经通过`+号`按钮展示了新增空的时间轴动画操作，然而，我们还可以通过复制动画的按钮，新增一个与原动画一样的新动画，新动画可以基于原动画的基础上继续扩展和调整。从图18中的动画列表中可以看出，复制新增的动画命名方式为"`原动画名_0,原动画名_1,.....`"例如，图18中，`skew_0`与`skew_1`是复制于`skew`，`skew_0_0_0`复制于`skew_0_0`。大家也可以在帧属性面板中修改默认的动画命名。
-
-![18](img/18.png)<br/>(图18)
-
-点击删除按钮时，会提示是否删除，点击确定后将会删除当前动画，如图19-1所示。
-
-![19-1](img/19-1.png)<br/>(图19-1)
-
-**Tips**:**这里需要注意的是，删除时间轴动画只会删除时间轴上的动画效果及属性，而不会删除场景中的动画节点**。尤其是我们把最后一个动画也删除后，会更加明显看到节点未被删除的情况，如图19-2所示。
-
-![19-2](img/19-2.png)<br/>(图19-2)
+![16-4](img/16-4.gif)<br/> (Figure 16-4)
 
 
 
-### 2.2 多节点动画的增加与删除
+##2. Introduction of Animation Editor
 
-#### 2.2.1 新增节点层与节点命名
+There are two basic concepts in animation editor: display node layer and node attribute layer. As shown in Figure 17,`GraphicNode`In order to display the node, the following number is the ID of the target object. For each animation component added in the animation scene, a corresponding display node will be added in the time axis. Click on the expansion button on the left side of the node layer (* triangle *), and you can see all the animation attributes belonging to the node, as shown in the figure.`skewY`And`skewX`It is the tilt animation attribute to be realized in the timeline animation. Every time an animation attribute is added, a corresponding node attribute layer will be added under the display node layer.
 
-之前一直是以一个节点进行时间轴动画演示，现在我们复制新增一个skew动画，然后拖拽一个新的组件到场景。即会自动新增一个节点层。
+![17](img/17.png)<br/> (FIG. 17)
 
-由于多个节点并列出现时，不直观，很容易分不清操作的是场景中的哪一个节点。因此我们选中节点，在属性管理器中，设置name属性值，如图20所示。
+###2.1 New and Deleted Animations
+
+Previous examples have been passed`+号`Button shows the new empty timeline animation operation, however, we can also copy the animation button, add a new animation like the original animation, new animation can continue to expand and adjust based on the original animation. As you can see from the list of animations in Figure 18, the new animation naming method for copying is“`原动画名_0,原动画名_1,.....`"For example, in Figure 18,`skew_0`And`skew_1`Is copied on`skew`,`skew_0_0_0`Copy in`skew_0_0`。 You can also modify the default animation naming in the frame properties panel.
+
+![18](img/18.png)<br/> (Fig. 18)
+
+When you click the Delete button, you will be prompted whether to delete it or not, and when you click OK, you will delete the current animation, as shown in Figure 19-1.
+
+![19-1](img/19-1.png)<br/> (Fig. 19-1)
+
+**Tips**:**It should be noted here that deleting timeline animation will only delete the animation effects and attributes on the timeline, but will not delete the animation nodes in the scene.**。 Especially when we delete the last animation, it will be more obvious that the node has not been deleted, as shown in Figure 19-2.
+
+![19-2](img/19-2.png)<br/> (Fig. 19-2)
+
+
+
+###2.2 Addition and deletion of multi-node animation
+
+####2.2.1 new node layer and node naming
+
+It used to be a time-axis animation demonstration with a node. Now we copy a new skew animation and drag a new component to the scene. A new node layer will be added automatically.
+
+Because it is not intuitive to list multiple nodes together, it is easy to distinguish which node in the scene is being operated on. So we select the node and set the name attribute value in the property manager, as shown in Figure 20.
 
 ![20](img/20.png)<br/>(图20)
 
-#### 2.2.2 制作多节点动画
-
-在新增的节点层上，我们可以根据实际需要，设置与上一个节点层完全不同位置的关键帧，例如，我们这个节点层制作一个来回平移的动画，故意将第二个关键帧设置在第13帧的位置上。动画制作完成后，效果如动图21所示。（*前文已演示的基础操作将不再详细说明*）
-
-![21](img/21.gif)<br/>(动图21)
-
-**Tips**：由于本例中的平移动画位于负坐标区域内。这里需要特别说明一下。`时间轴动画的负坐标区域内，无法触发点击事件`，如果需要用到点击事件交互，则动画的X与Y必须位于正坐标区域，也就是十字红线交叉的右下区域。
-
-#### 2.2.3 删除节点
-
-![22-1](img/22-1.png)<br/>(图22-1)
-
-如果我们如图22-1中，选中节点，右键`删除`，并不能像删除节点属性那样，将当前节点删除，只能删除掉当前节点中制作的动画效果与节点属性。如图22-2所示。
-
-![22-2](img/22-2.png)<br/>(图22-2)
-
-那么如何删除节点呢？需要在`层级`面板中选中要删除的节点，然后右键`删除`，如图22-3所示。在弹出提示`是否删除`时，点击`确定`即可。但是，如果**动画列表内有多个动画时**，一定要注意你删除的节点是不是在其它动画里也用到了，因为组件的删除会影响到全部动画。**一旦删除，其它动画内的该节点和动画也会消失。**
-
-![22-3](img/22-3.png)<br/>(图22-3)
 
 
+####2.2.2 Making Multi-node Animation
 
+In the new node layer, we can set the key frames at different positions from the previous node layer according to the actual needs. For example, our node layer makes an animation to move back and forth, intentionally setting the second key frame at the position of the thirteenth frame. When the animation is finished, the effect is shown in Figure 21. (* The basic operations demonstrated earlier will not be explained in detail *)
 
+![21](img/21.gif)<br/> (Figure 21)
 
-### 2.3 节点属性与缓动效果设置
+**Tips**Because the translation drawing in this example is located in the negative coordinate region. It needs special explanation here.`时间轴动画的负坐标区域内，无法触发点击事件`If click event interaction is needed, then X and Y of the animation must be in the positive coordinate area, that is, the lower right area where the cross red line intersects.
 
-在节点层下是各个节点属性层，选中节点属性的帧，可以看到详细的帧属性，如图23所示。
+####2.2.3 Delete Nodes
 
-![23](img/23.png)<br/>(图23)
+![22-1](img/22-1.png)<br/> (Figure 22-1)
 
-#### 节点的帧属性介绍
+If we select the node as shown in Figure 22-1, right-click`删除`It can't delete the current node just like deleting the attribute of the node. It can only delete the animation effect and the attribute of the node produced in the current node. As shown in Figure 22-2.
 
-`x`：x为属性名，-260为当前帧的值。如果选中skin，就显示skin属性名和对应的值。该栏不能修改。
+![22-2](img/22-2.png)<br/> (Figure 22-2)
 
-`标签label`：该栏设置后，可以在项目中，通过标签名用代码对该帧进行操作。当设置标签后，设置标签的帧会出现红色圆点，如图24所示。
+So how to delete nodes? Need to`层级`Select the node to delete in the panel, and right-click`删除`As shown in Figure 22-3. In the pop-up prompt`是否删除`Click on`确定`Yes. But if**When there are multiple animations in the animation list**It's important to note that the nodes you delete are also used in other animations, because the deletion of components will affect all animations.**Once deleted, the node and animation in other animations will disappear.**
 
-![24](img/24.png)<br/>(图24)
-
-`是否缓动`：可以选择是否使用缓动效果，默认为勾选状态。
-
-`缓动类型`：默认为linearNone缓动效果，其它缓动效果开发者可自行体验使用。
-
-**Tips**:*缓动效果作用于当前动画的起始关键帧位置，如需改变缓动类型者要特别注意。*
-
-
-
-### 2.4 制作逐帧动画
-
-逐帧动画也是游戏中常用的动画之一。在时间轴中有两种逐帧动画的制作方式。
-
-##### 第一种方式，连续创建关键帧
-
-第一步：拖拽第一帧的组件到场景编辑器中。第二步：在时间轴中连续创建关键帧。如图25-1所示。
-
-![25-1](img/25-1.png)<br/>(图25-1)
-
-第三步：替换各帧skin（皮肤）属性，如动图25-2所示。然后点击播放即可看到动画效果。
-
-![25-2](img/25-2.gif)<br/>(动图25-2)
-
-**Tips**:*如果把组件分批拖到时间轴上，则会在场景中出现多个动画节点。而不是想要的逐帧动画效果。*
-
-##### 第二种方式：一次性创建
-
-批量选中组件拖拽到时间轴上，会直接创建完成逐帧动画，这种方式更为快捷。如动画25-3所示。
-
-![25-3](img/25-3.gif)<br/>(动图25-3)
-
-
-
-### 2.5 底部功能条
-
-![26](img/26.png)<br/>(图26)
-
-在时间轴动画编辑器的底部功能条中，具体说明如下：
-
-`帧率：`默认为24帧，可以通过改变帧率改变播放的帧速。
-
-`加载后：`选择不同的动作，在加载后会执行对应的操作。分别为不播放、播放一次、循环播放三种选项，默认为不播放。
-
-*Tips：该项设置仅在UI中的时间轴中动画编辑时有效，在ani文件的动画编辑时设置无效。*
-
-`帧：`默认显示当前帧，输入目标帧数后回车，会直接跳转到目标帧数。
-
-`圆形滑动条：`用于时间轴上帧与帧之间的显示间距调节。如动图27-1所示。
-
-![27-1](img/27-1.gif)<br/>(动图27-1)
-
-`矩形滑动条：`拖动滑块移动时间轴，用于滑动显示时间轴上的帧。如动图27-2所示。
-
-![27-2](img/27-2.gif)<br/>(动图27-2)
+![22-3](img/22-3.png)<br/> (Figure 22-3)
 
 
 
 
 
+###2.3 Node Attributes and Slowing Effect Settings
+
+Under the node layer is the attribute layer of each node. When the frame of the node attribute is selected, the detailed frame attribute can be seen, as shown in Figure 23.
+
+![23](img/23.png)<br/> (Fig. 23)
+
+####Introducing Frame Attributes of Nodes
+
+`x`X is the attribute name and - 260 is the value of the current frame. If skin is selected, the skin attribute name and its corresponding value are displayed. This column cannot be modified.
+
+`标签label`After the column is set up, the frame can be manipulated by code with label name in the project. When a label is set, a red dot appears in the frame of the label, as shown in Figure 24.
+
+![24](img/24.png)<br/> (Fig. 24)
+
+`是否缓动`You can choose whether to use the slowing effect or not, and the default is the check state.
+
+`缓动类型`The default is linearNone slowdown effect, which can be used by other slowdown effect developers themselves.
+
+**Tips**:*Slow effect acts on the position of the key frame at the beginning of the current animation. Those who need to change the type of slow motion should pay special attention to it.*
 
 
-## 3、使用时间轴动画
 
-### 3.1 导出时间轴动画
+###2.4 Make frame-by-frame animation
 
-在IDE内按快捷键F12或Ctrl+F12会导出时间轴动画，`.ani`文件会生成在`项目根目录/bin/`目录下。动画中用到的资源图集位于`项目根目录/bin/res/atlas/`目录下，如图28所示。
+Frame-by-frame animation is also one of the most commonly used animations in games. There are two ways to animate frame by frame in the timeline.
+
+#####The first way is to create keyframes in succession
+
+Step 1: Drag the component of the first frame into the scene editor. Step 2: Continuously create key frames in the time axis. As shown in Figure 25-1.
+
+![25-1](img/25-1.png)<br/> (Figure 25-1)
+
+Step 3: Replace the skin (skin) attributes of each frame, as shown in Figure 25-2. Then click Play to see the animation effect.
+
+![25-2](img/25-2.gif)<br/> (Figure 25-2)
+
+**Tips**:*If you drag components onto the timeline in batches, multiple animation nodes will appear in the scene. It's not the frame-by-frame animation you want.*
+
+#####The second way: one-time creation
+
+Dragging a batch of selected components onto the timeline will create a frame-by-frame animation directly, which is faster. As shown in Animation 25-3.
+
+![25-3](img/25-3.gif)<br/> (Figure 25-3)
+
+
+
+###2.5 Bottom Function Bar
+
+![26](img/26.png)<br/> (Fig. 26)
+
+In the bottom function bar of the timeline animation editor, it is specified as follows:
+
+`帧率：`The default is 24 frames, which can be changed by changing the frame rate.
+
+`加载后：`Select different actions, and the corresponding operations will be performed after loading. There are three options: no playback, once playback, and circular playback. The default is no playback.
+
+*Tips: This setting is valid only for animation editing in the timeline of the UI, but not for animation editing of ani files.*
+
+`帧：`By default, the current frame is displayed. Enter the number of target frames and return. It will jump directly to the number of target frames.
+
+`圆形滑动条：`It is used to adjust the display spacing between frames on the time axis. As shown in Figure 27-1.
+
+![27-1](img/27-1.gif)< br / >
+
+`矩形滑动条：`Drag the slider to move the time axis for sliding frames on the display time axis. As shown in Figure 27-2.
+
+![27-2](img/27-2.gif)< br / >
+
+
+
+
+
+
+
+##3. Using Time Axis Animation
+
+###3.1 Derived Time Axis Animation
+
+Pressing the shortcut key F12 or Ctrl+F12 in the IDE will generate the timeline animation.`.ani`The file will be generated in`项目根目录/bin/`Under the directory. The resource atlas used in animation is located in`项目根目录/bin/res/atlas/`Under the directory, as shown in Figure 28.
 
 ![28](img/28.png)<br/>(图28)
 
-### 3.2 在项目中使用时间轴动画
 
-在项目中使用时间轴动画主要分为三步。
 
-第一步：加载动画所需的图集。
+###3.2 Use timeline animation in projects
+
+There are three steps to use timeline animation in the project.
+
+Step 1: Load the atlas needed for animation.
+
 
 ```typescript
+
 //加载图集成功后，执行onLoaded回调方法
 Laya.loader.load("res/atlas/ui.atlas",Laya.Handler.create(this,this.onLoaded));
 ```
 
-第二步：创建Animation实例，加载动画文件
+
+Step 2: Create an Animation instance and load the animation file
+
 
 ```typescript
+
 //创建一个Animation实例
 var tl:Laya.Animation = new Laya.Animation();
 //加载动画文件
 tl.loadAnimation("TimeLine.ani");
 ```
 
-第三步：添加动画到舞台，播放动画
+
+Step 3: Add animation to the stage and play animation
+
 
 ```typescript
+
 //添加到舞台
 Laya.stage.addChild(tl);
 //播放Animation动画
 tl.play();
 ```
 
-完整的示例代码如下：
 
-**入口类GameMain.ts**
+The complete sample code is as follows:
+
+**Entry class gamemain.ts**
+
 
 ```typescript
+
 // 程序入口
 class GameMain{
     constructor()
@@ -470,21 +486,24 @@ class GameMain{
 new GameMain();
 ```
 
-代码运行效果如动图29所示：
 
-![29](img/29.gif)<br/>(动图29)
+The code runs as shown in Figure 29.
 
-### 3.3 使用多个时间轴动画
+![29](img/29.gif)<br/> (Figure 29)
 
-之前我们在TimeLine.ani中制作了多个动画，那如何加载使用其它的动画呢？这时候动画名称的价值就体现了。在默认使用播放方法`play()`的时候，缺省（默认）是播放第一个动画。如果要使用其它的动画，那么在第三个参数处设置动画名称即可。`play()`方法的api参数说明如图30所示。
+###3.3 Multi-timeline animation
 
-![图30](img/30.png) <br />（图30）
+We've made several animations in TimeLine. ani before, so how do we load and use other animations? At this time, the value of the animation name is reflected. Use playback by default`play()`The default (default) is to play the first animation. If you want to use other animations, you can set the animation name at the third parameter.`play()`The API parameters of the method are illustrated in Figure 30.
 
-修改为使用多个Animation动画的示例代码如下：
+![图30](img/30.png)<br/> (Figure 30)
 
-**入口类GameMain.ts** 
+The example code modified to use multiple Animation animations is as follows:
+
+**Entry class GameMain.ts** 
+
 
 ```typescript
+
 // 程序入口
 class GameMain{
     constructor()
@@ -521,35 +540,42 @@ class GameMain{
 new GameMain();
 ```
 
-示例代码运行效果如动图31所示：
 
-![31](img/31.gif)<br/>(动图31)
+The example code runs as shown in Figure 31.
 
-### 3.4 在UI中使用时间轴动画，然后在项目代码中调用。
+![31](img/31.gif)<br/> (Motion Figure 31)
 
-#### 3.4.1 创建UI页，添加Animation动画到场景中。
+###3.4 use timeline animation in UI and then invoke it in project code.
 
-我们先创建一个`TimeLine.ui`的UI页面，然后直接拖拽`planCrashed.ani`到场景中，如图32所示。
+####3.4.1 Create UI pages and add Animation animation to the scene.
+
+Let's create one first.`TimeLine.ui`UI page, then drag and drop directly`planCrashed.ani`To the scene, as shown in Figure 32.
 
 ![图32](img/32.png) <br /> (图32)
 
 
 
-#### 3.4.2 设置Animation动画属性值
-
-选中UI场景中的动画，有很多属性值可以设置。这里我们先设置一下`var`的值，这个值必须设置，否则无法调用动画。然后设置一下位置属性的x值为500，y为0（*相当于代码中设置pos值*），避免和之前的动画重叠。其它的属性值就不一一介绍了，鼠标移动到属性名上会有对应的介绍。如图33所示。
-
-![图33](img/33.png) <br /> (图33)
 
 
 
-#### 3.4.3 在项目中调用UI中的动画
 
-按F12导出之后，直接在之前的示例中添加代码即可。代码示例如下所示：
+####3.4.2 Setting Animation Animation Attribute Value
 
-**入口类GameMain.ts** 
+Select the animation in the UI scene, there are many attribute values to set. Let's set it up here first.`var`This value must be set, otherwise the animation cannot be invoked. Then set the x value of the location attribute to 500 and y to 0 (* is equivalent to setting POS value in the code *) to avoid overlapping with previous animations. Other attribute values will not be introduced one by one. Mouse to the attribute name will be introduced accordingly. As shown in Figure 33.
+
+![图33](img/33.png)<br/> (Figure 33)
+
+
+
+####3.4.3 invokes animation in UI in the project.
+
+After exporting by F12, add code directly to the previous example. The code example is as follows:
+
+**Entry class GameMain.ts** 
+
 
 ```typescript
+
 // 程序入口
 class GameMain{
     constructor()
@@ -593,18 +619,19 @@ class GameMain{
 new GameMain();
 ```
 
-运行效果如动图34所示：
 
-![动图34](img/34.gif) <br /> (动图34)
+The operation effect is shown in Figure 34.
 
-在UI中使用的动画，可以方便的直接在UI中的属性管理器中控制动画属性。比如，我们想让飞机的爆炸速度降下来。那么我们可以直接在UI里选中动画,然后设置interval的属性值就可以了。interval是控制动画播放间隔时间的（单位是毫秒），不设置时，默认为50毫秒。这里我们改为更多，就可以让飞机的爆炸速度降下来。如图35所示。
+![动图34](img/34.gif)<br/> (Motion Figure 34)
 
-![图35](img/35.png) <br /> (图35)
+The animation used in the UI can easily control the animation attributes directly in the property manager of the UI. For example, we want to slow down the speed of the plane's explosion. Then we can select the animation directly in the UI and set the property value of interval. Interval controls the interval between animations (in milliseconds). When not set, the default is 50 milliseconds. Here we can change it to more so that the explosion speed of the aircraft can be reduced. As shown in Figure 35.
 
-更改后按F12导出，然后无需更改项目代码，直接重新编译，即可以看运效果已改变，如动图36所示。
+![图35](img/35.png)<br/> (Fig. 35)
 
-![图36](img/36.gif) <br />(图36)
+After the change, export it according to F12, and then recompile directly without changing the project code, you can see that the shipping effect has changed, as shown in Figure 36.
+
+![图36](img/36.gif)<br/> (Figure 36)
 
 
 
-至此，关于时间轴动画Animation的制作与使用已介绍完。更多关于时间轴动画的API使用可以查看[Animation API文档](http://layaair.ldc.layabox.com/api/index.html?category=Core&class=laya.display.Animation)。
+So far, the production and use of timeline animation has been introduced. More API usage for timeline animation can be seen[Animation API文档](http://layaair.ldc.layabox.com/api/index.html?category=Core&class=laya.display.Animation)。

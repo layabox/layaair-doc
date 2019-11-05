@@ -2,23 +2,25 @@
 
 ###### *version :2.1.0beta   Update:2019-5-14*
 
-SkyBoxMaterial天空盒材质是一个6个面的立方体，包围整个场景，看起来像天空一样。
+SkyBox Material Sky Box is a six-sided cube that surrounds the whole scene and looks like the sky.
 
-#### 主要属性和方法
+####Main attributes and methods
 
-> 属性
+> attribute
 
-`tintColor：Vector4` 颜色。
+`tintColor：Vector4`Color.
 
-`exposure：Number` 曝光强度。
+`exposure：Number`Exposure intensity.
 
-`textureCube:TextureCube` 天空盒纹理。
+`textureCube:TextureCube`Sky box texture.
 
-#### 创建和使用材质
+####Create and use materials
 
-下面的代码来自于官方示例（[demo地址](https://layaair.ldc.layabox.com/demo2/?language=ch&category=3d&group=Sky&name=Sky_SkyBox)），`SkyBox.instance` 是LayaAir3D中内置的一个天空盒网格。
+The following code is from the official example（[demo地址](https://layaair.ldc.layabox.com/demo2/?language=ch&category=3d&group=Sky&name=Sky_SkyBox))`SkyBox.instance`It's a sky box grid built in LayaAir3D.
+
 
 ```typescript
+
 //设置相机的清除标识为天空盒(这个参数必须设置为CLEARFLAG_SKY，否则无法使用天空盒)
 camera.clearFlag = Laya.BaseCamera.CLEARFLAG_SKY;
 //天空盒
@@ -39,4 +41,5 @@ Laya.BaseMaterial.load("res/threeDimen/skyBox/DawnDusk/SkyBox.lmat", Laya.Handle
 }));
 ```
 
-![](img/1.gif)<br>(图1)
+
+![] (img/1.gif) <br> (Fig. 1)

@@ -1,41 +1,42 @@
-# runTime的使用
+#The Use of RunTime
 
-在LayaAirIDE中资源面板下所有的组件均有runtime的属性，runtime是该组件运行时的逻辑类；相同组件可使用同一runtime类来实现相同的功能，比如不同页面上需要对相同的组件实现同一功能。**需要注意的是组件的runtime逻辑类如果不继承组件自身，并且继承的对象中没有该组件的属性时，这个属性则会失效。**
+In LayaAirIDE, all components under the resource panel have runtime attributes, and runtime is the logical class of runtime when the component runs; the same component can use the same runtime class to achieve the same function, for example, the same component needs to achieve the same function on different pages.**It should be noted that if the runtime logic class of a component does not inherit the component itself and there are no attributes of the component in the inherited object, this attribute will fail.**
 
-**runTime脚本与script脚本类似，不同的是runtime脚本的方式实现，继承页面，场景或组件类，实现逻辑。在IDE里面设置场景的Runtime属性即可和场景或对象进行关联**
+**RunTime script is similar to script script, but different from runtime script, it inherits pages, scenarios or component classes and implements logic. Setting the Runtime property of the scene in the IDE can associate with the scene or object.**
 
-- **相比script脚本方式，继承式页面类，可以直接使用页面定义的属性（通过IDE内var属性定义），比如this.tipLbll，this.scoreLbl，具有代码提示效果。而script脚本获取只能通过this.owner.getChildByName("xxx") 等方式获取节点**
-- **建议：如果是页面级的逻辑，需要频繁访问页面内多个元素，使用runtime继承式写法，如果是独立小模块，功能单一，建议用script脚本方法，参见IDE新建2d示例项目 **
+##-**Compared with script mode, inherited page class can directly use page defined attributes (defined by VAR attribute in IDE), such as this.tiplbll, this.scorelbl, with code prompt effect. The script script can only get nodes by this. owner. getChildByName ("xxx") and so on.** **Suggestion: If it is page-level logic, it needs frequent access to multiple elements in the page, using runtime inheritance writing, and if it is a small independent module with single function, it is recommended to use script scripting method. See IDE for new 2D sample project.**
 
-**本篇文章将对两个不同页面中的Image组件设置同一个runtime逻辑类来实现相同的功能，运行效果如动图0所示：**
+**This article will set up the same runtime logic class for the image component in two different pages to achieve the same function. The effect is shown in Motion Figure 0.**
 
-![0](img\0.gif)(图0)
+![0](img\0.gif)(Fig. 0)
 
-### 一、给页面中的组件设置runtime类
+###Setting up runtime classes for components on the page
 
-在页面管理目录下创建两个UI页面，分别叫MonkeyPage和BGPage。如下图，
+Create two UI pages in the page management directory called MonkeyPage and BGPage. As follows,
 
-注意！！本例导出类型为分离模式，非文件模式可以生成UI类脚本，默认是文件模式，文件模式不会生成页面类。
+Be careful!! The export type of this example is split mode, non-file mode can generate UI class scripts, default is file mode, file mode will not generate page class.
 
 ![1](img\ide1.png)
 
-两个UI页面中各拖入一张Image组件，设置runtime属性为game.ImageRunTime。(将脚本拖拽到runtime的script图标上)。如图1,2,3所示： （注意！本例导出类型为分离模式，会生成场景代码文件，默认是文件模式，文件模式不会生成代码类，如果不是非文件模式，就没法new 这个页面类)如图1图2所示：
+Drag an Image component into each of the two UI pages and set the runtime attribute to game. ImageRunTime. Drag the script onto the script icon of runtime. Figure 1, 2, 3 shows: (Note! The export type of this example is split mode, which generates scenario code files. The default mode is file mode. File mode does not generate code classes. If it is not a non-file mode, it can not generate new page classes.) As shown in Figure 1 and Figure 2, this example shows that:
 
-![1](img\ide3.png)(图1)
+![1](img\ide3.png)(Fig. 1)
 
-![2](img\ide2.png)(图2)
+![2](img\ide2.png)(Fig. 2)
 
-设置完成之后按F12保存导出UI，开始编写逻辑代码。
+After setting up, save the exported UI according to F12 and start writing logic code.
 
 
 
-### 二、代码逻辑处理
+###2. Code Logic Processing
 
-切换到代码模式下，
+Switch to code mode.
 
-然后在ImageRunTime类中编写我们想要实现的效果，比如实现一个点击缩放（类似按钮）的功能，全部代码如下所示：
+Then we write the effect we want to achieve in the ImageRunTime class, such as a click-and-zoom (button-like) function. The whole code is as follows:
+
 
 ```typescript
+
 
     /*
     ImageRunTime逻辑类 
@@ -67,9 +68,12 @@
 
 ```
 
-在主运行类中实例化这两个UI界面，代码如下所示：
+
+Instantiate these two UI interfaces in the main runtime class with the following code:
+
 
 ```typescript
+
 import GameConfig from "./GameConfig";
 import { ui } from "./ui/layaMaxUI";
 class Main {
@@ -121,27 +125,30 @@ class Main {
 new Main();
 ```
 
-以上是兼容1.0的代码。
 
-2.0也可以用如下方式，创建一个mainscene，把两个页面拖入场景中，设置背景颜色，如下图
+The above code is compatible with 1.0.
 
-注意：设置页面场景背景颜色，只是设计场景时候的参照，实际运行并无效，需要在页面上绘制rect才会有效果
+2.0 can also create a mainscene, drag two pages into the scene, and set the background color, as shown below.
 
-此种方式可以用任意的4种导出模式。
+Note: Setting the background color of the page scene is only a reference when designing the scene. Actual operation is not effective, and rect drawing on the page is required to be effective.
+
+This method can be used in any four export modes.
 
 ![2](img\ide4.png)
 
-然后按照代码注释里介绍的方法，用场景管理的方法运行项目
+Then run the project using scenario management as described in the code comment
 
-最终运行效果如图0所示
+The final operation effect is shown in Figure 0.
 
 
 
-### 三、如果runtime逻辑类继承的对象非自身组件
+###3. If the object inherited by the runtime logic class is not its own component
 
-在以上代码中我们演示了继承自身组件Image所实现的效果，如果继承一个Button组件类会出现什么情况呢？我们来操作看下。代码以及实现效果如下所示：
+In the above code, we demonstrate the effect of inheriting our own component image. What happens if we inherit a Button component class? Let's see how it works. The code and implementation effect are as follows:
+
 
 ```typescript
+
 module game {
     /*
     ImageRunTime逻辑类 
@@ -159,7 +166,8 @@ module game {
 }
 ```
 
-![5](img\5.gif)(图5)
 
-这时我们会发现UI页面上的资源显示的很怪异，这时因为按钮的skin默认是三态的，当Image的runtime逻辑类继承自Button组件后，它就不再是一个Image组件了，而是一个Button组件。
+![5](img\5.gif)(Fig. 5)
+
+At this point, we will find that the resources on the UI page display very strange, because the skin of the button defaults to three-state, when the Runtime logic class of Image inherits from the Button component, it is no longer an Image component, but a Button component.
 

@@ -1,16 +1,18 @@
-# 物体触发器
+#Object Trigger
 
 ###### *version :2.1.1   Update:2019-7-19*
 
-碰撞器是触发器的载体，而触发器只是碰撞器身上的一个属性。
+The collider is the carrier of the trigger, and the trigger is only an attribute of the collider.
 
-触发器不受物理引擎控制，但是触发器在 发生碰撞时会发出三个独特的触发信息。需要注意的是两个触发器碰撞时发出碰撞事件，其中一个必须包含刚体。一个触发器和一个普通碰撞器碰撞，其中之一必须附加刚体。
+Flip-flops are not controlled by physical engines, but they emit three unique trigger messages when collisions occur. It should be noted that two triggers collide with each other, one of which must contain a rigid body. A trigger collides with an ordinary collider, one of which must be attached to a rigid body.
 
-还有就是设置了触发器的物体时在碰撞发生时，是没有物理反馈的。
+There is also no physical feedback when the object with trigger is collided.
 
-没有刚体的物体设置触发器的方法如下：
+The method of setting triggers for objects without rigid bodies is as follows:
+
 
 ```typescript
+
 //创建盒型MeshSprite3D
 var box:MeshSprite3D = scene.addChild(new MeshSprite3D(PrimitiveMesh.createBox(sX, sY, sZ))) as MeshSprite3D;
 //创建物理碰撞器
@@ -19,9 +21,12 @@ var staticCollider:PhysicsCollider = box.addComponent(PhysicsCollider);
 staticCollider.isTrigger = true;
 ```
 
-有刚体的物体设置触发器的方法如下：
+
+The method of setting trigger for objects with rigid body is as follows:
+
 
 ```typescript
+
 //创建一个球体
 var sphere:MeshSprite3D = scene.addChild(new MeshSprite3D(PrimitiveMesh.createSphere(radius))) as MeshSprite3D;
 //给球体添加刚体
@@ -30,5 +35,6 @@ var rigidBody:Rigidbody3D = sphere.addComponent(Rigidbody3D);
 rigidBody.isTrigger = true;
 ```
 
-**Tip：刚体 isTrigger = false 的情况下，与其他触发器发生碰撞也是会触发出自己的触发器方法的。**
+
+**Tip: when the rigid body istrigger = false, collision with other triggers will trigger their own trigger methods.**
 

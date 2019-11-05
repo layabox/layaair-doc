@@ -1,20 +1,22 @@
-# 多种碰撞器形状
+#Multiple collider shapes
 
 ###### *version :2.1.1   Update:2019-7-19*
 
-`ColliderShape`碰撞器形状，是刚体与碰撞器上的属性，是模型在3D世界中进行物理运算与碰撞的形状盒。ColliderShape是所有碰撞盒的父类。([API地址](https://layaair.ldc.layabox.com/api2/Chinese/index.html?category=Core&class=laya.d3.physics.shape.ColliderShape))
+`ColliderShape`Collider shape is the property of rigid body and collider. It is the shape box of the model for physical operation and collision in the 3D world. ColliderShape is the parent of all collision boxes. ([API地址](https://layaair.ldc.layabox.com/api2/Chinese/index.html?category=Core&class=laya.d3.physics.shape.ColliderShape))
 
-![](img/1.png)<br>(图1)
+![] (img/1.png)<br> (Figure 1)
 
-下面我们来介绍下目前LayaAir3D中所有支持的碰撞器形状。
+Let's take a look at all the collider shapes currently supported in layaair3d.
 
-#### (1) BoxColliderShape盒
+####(1) Box Collider Shape
 
-盒形是一个基本的方形碰撞原型。盒子可以被调节成不同大小的长方体，用于制作墙体，门等正正方方的碰撞个体，也能替代车辆等交通工具的外壳，来计算碰撞。如果只是用于盒子或者箱子上，那就更完美了。
+The box is a basic square collision prototype. The box can be adjusted into cuboids of different sizes, used to make square impact individuals such as walls, doors, etc., and can also replace the outer shells of vehicles and other vehicles to calculate collisions. If it's only for boxes or boxes, it's perfect.
 
-![](img/2.png)<br>(图2)
+![] (img/2.png)<br> (Figure 2)
+
 
 ```typescript
+
 //随机生成坐标值
 var sX:number = Math.random() * 0.75 + 0.25;
 var sY:number = Math.random() * 0.75 + 0.25;
@@ -31,13 +33,16 @@ rigidBody.colliderShape = boxShape;
 rigidBody.mass = 10;
 ```
 
-#### (2) SphereColliderShape球
 
-球体是一个基本的球体形状的圆形碰撞盒。可以通过设置半径来调整球体。常用于球形物体的碰撞检测。
+####(2) Sphere Collider Shape ball
 
-![](img/3.png)<br>(图3)
+A sphere is a circular collision box with a basic spherical shape. The sphere can be adjusted by setting the radius. It is often used for collision detection of spherical objects.
+
+![] (img/3.png) < br > (fig. 3)
+
 
 ```typescript
+
 //随机生成半径大小
 var radius:number = Math.random() * 0.2 + 0.2;
 //创建球型MeshSprite3D
@@ -52,17 +57,20 @@ rigidBody.colliderShape = sphereShape;
 rigidBody.mass = 10;
 ```
 
-#### (3) CapsuleColliderShape胶囊
 
-胶囊体由一个圆柱体连接两个半球体组成。常用于角色控制器，或者和其他的组合成不规则形状。
+####(3) Capsule Collider Shape Capsules
 
-玩家可以自己调整半径和高度调整胶囊体。
+The capsule body consists of a cylinder connecting two hemispheres. Usually used in role controllers or other combinations to form irregular shapes.
 
-![](img/4.jpg)<br>(图4)
+Players can adjust the radius and height of the capsule by themselves.
 
-![](img/5.png)<br>(图5)
+![] (img/4.jpg)<br> (Figure 4)
+
+![] (img/5.png)<br> (Fig. 5)
+
 
 ```typescript
+
 var raidius:number = Math.random() * 0.2 + 0.2;
 var height:number = Math.random() * 0.5 + 0.8;
 //创建胶囊MeshSprite3D
@@ -77,13 +85,16 @@ rigidBody.colliderShape = sphereShape;
 rigidBody.mass = 10;
 ```
 
-#### (4) CylinderColliderShape圆柱
 
-圆柱体常用于场景的柱子等圆柱体的物体碰撞。可以设置圆柱体的半径和高度来调整碰撞体。
+####(4) Cylinder Collider Shape Cylinder
 
-![](img/6.png)<br>(图6)
+Cylinders are often used for collision of cylindrical objects such as columns in scenes. The radius and height of the cylinder can be set to adjust the collision body.
+
+![] (img/6.png)<br> (fig. 6)
+
 
 ```typescript
+
 var raidius:number = Math.random() * 0.2 + 0.2;
 var height:number = Math.random() * 0.5 + 0.8;
 //创建圆锥MeshSprite3D
@@ -99,13 +110,16 @@ rigidBody.colliderShape = cylinderShape;
 rigidBody.mass = 10;
 ```
 
-#### (5) ConeColliderShape圆锥
 
-圆锥体可以同过设置圆锥的高和半径来调整碰撞体。
+####(5) Cone Collider Shape Cone
 
-![](img/7.png)<br>(图7)
+The cone can adjust the collision body by setting the height and radius of the cone.
+
+![] (img/7.png)<br> (fig. 7)
+
 
 ```typescript
+
 var raidius:number = Math.random() * 0.2 + 0.2;
 var height:number = Math.random() * 0.5 + 0.8;
 //创建圆锥MeshSprite3D
@@ -124,21 +138,25 @@ rigidBody.colliderShape = coneShape;
 rigidBody.mass = 10;	
 ```
 
-> **我们把前面这5种碰撞器形状一般称之为原型。在示例（[demo地址](https://layaair.ldc.layabox.com/demo2/?language=ch&category=3d&group=Physics3D&name=PhysicsWorld_BaseCollider)）可以看到效果。**
+
+> ** We generally refer to the five collider shapes in front of us as prototypes. In the example ([demo地址](https://layaair.ldc.layabox.com/demo2/?language=ch&category=3d&group=Physics3D&name=PhysicsWorld_BaseCollider)) You can see the effect.******
+
 
 ![](img/8.png)<br>(图8)
 
-#### (6) MeshColliderShape网格型
+####(6) Mesh Collider Shape mesh
 
-网格形利用一个网格资源并在其上构建的。对于复杂网状模型上的碰撞检测，它要比应用原型碰撞器精确的多。网格型与前面的原型最大的区别就是可以自定义网格来规定碰撞范围，这让网格型更为灵活。实际上前面的原型也可以说是特殊的网格型，是LayaAir3D内置的一些基础的碰撞形状。
+A grid is constructed from a grid resource. For collision detection on complex mesh model, it is more accurate than using prototype collider. The biggest difference between the grid and the previous prototype is that you can customize the grid to specify the collision range, which makes the grid more flexible. In fact, the front prototype can also be said to be a special mesh type, which is some of the basic collision shapes built into LayaAir3D.
 
-![](img/9.png)<br>(图9)
+![] (img/9.png)<br> (fig. 9)
+****
+**Convx attribute: 2.0.1 BATE does not support this attribute for the time being and will be supported in future versions. * *
 
-**convex属性：2.0.1 BATE暂不支持该属性，将在今后的版本支持。**
+The following code is derived from the official example（[demo地址](https://layaair.ldc.layabox.com/demo2/?language=ch&category=3d&group=Physics3D&name=PhysicsWorld_MeshCollider)In the example, two lizards are used as static colliders to display the effect of random falling rigid bodies.
 
-下面的代码源自于官方示例（[demo地址](https://layaair.ldc.layabox.com/demo2/?language=ch&category=3d&group=Physics3D&name=PhysicsWorld_MeshCollider)），示例中将两个蜥蜴作为了静态碰撞器，随机掉落刚体展示效果。
 
 ```typescript
+
 var lizard = scene.addChild(new Laya.MeshSprite3D(mesh)) as Laya.MeshSprite3D;
 //给对象添加物理碰撞器组件
 var lizardCollider:Laya.PhysicsCollider = lizard.addComponent(Laya.PhysicsCollider);
@@ -154,15 +172,18 @@ lizardCollider.friction = 2;
 lizardCollider.restitution = 0.3;
 ```
 
-![](img/10.png)<br>(图10)
 
-#### (7) CompoundColliderShape复合型
+![] (img/10.png)<br> (Fig. 10)
 
-复合型是多个原型组合而成的一个碰撞器形状。当你在碰撞器上使用了一组复杂的网格，且不使用网格碰撞器时，复合型这是很好的选择。创建复合碰撞器，只需给你的复合型碰撞器对象创建子对象，然后为每个子对象添加原型碰撞器。这就允许你简单地移动、旋转或者伸缩每个子碰撞器，他们是各自独立的。
+####(7) compoundcollidershape
 
-下面的代码来自于官方示例（[demo地址](https://layaair.ldc.layabox.com/demo2/?language=ch&category=3d&group=Physics3D&name=PhysicsWorld_CompoundCollider)），代码中使用使用了5个BoxColliderShape组成一张桌子。
+The composite type is a collider shape composed of several prototypes. When you use a complex set of grids on the collider and don't use grid colliders, composite is a good choice. To create a composite collider, you just need to create sub-objects for your composite Collider object, and then add prototype colliders for each sub-object. This allows you to simply move, rotate, or scale each sub-collider independently.
+
+The following code is from the official example（[demo地址](https://layaair.ldc.layabox.com/demo2/?language=ch&category=3d&group=Physics3D&name=PhysicsWorld_CompoundCollider)The code uses five BoxCollider Shapes to form a table.
+
 
 ```typescript
+
 Laya.Mesh.load("res/threeDimen/Physics/table.lm", Laya.Handler.create(this, function(mesh:Laya.Mesh) {
     //....省略中间
     //读取导出的桌子模型
@@ -212,5 +233,6 @@ Laya.Mesh.load("res/threeDimen/Physics/table.lm", Laya.Handler.create(this, func
 
 ```
 
-![](img/11.png)<br>(图11)
+
+![] (img/11.png)<br> (Fig. 11)
 

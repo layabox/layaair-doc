@@ -1,257 +1,271 @@
-# LayaAir引擎VIP专属功能介绍
+#Introduction to VIP-specific functions of LayaAir engine
 
-> 作者：charley    本文引擎与工具版本：LayaAir 2.0.2     本文更新时间 : 2019-04-15
+> Author: Charley Text Engine and Tool Version: LayaAir 2.0.2 Text Update Time: 2019-04-15
 
-点击以下目录可直接跳转： 
+Click on the following directory to jump directly:
 
 [TOC]
 
-## 一、LayaAir 2.0为什么要推VIP专属功能
+##1. Why LayaAir 2.0 Pushes VIP-specific Functions
 
-在LayaAir 1.0的时候，由于免费引擎没有盈利模式而导致引擎团队生存出现压力。为了减轻引擎团队的生存压力，只能对文档、社区等周边服务的人力投入进行收缩。然而这并非是引擎可持续发展之路，引擎全部业务如果永远免费只会让引擎陷入困境，假如引擎企业都无法生存的时候，那对于绝大多数没有研发和维护引擎能力的游戏企业一定是个坏消息。
+At LayaAir 1.0, there was no profit model for free engines, which put pressure on the survival of the engine team. In order to alleviate the pressure of the engine team, we can only shrink the human input of the surrounding services such as documents, communities and so on. However, this is not the way of engine sustainable development. If the engine business is free forever, it will only make the engine in trouble. If the engine companies can not survive, it will be bad news for most game companies that do not have the ability to develop and maintain the engine.
 
-所以在推出2.0之前，我们一直在思考一个平衡点，即要为开发者降低开发成本，免费使用引擎和低门槛高效率开发游戏，又找到让引擎可以生存的可持续发展之路。
+So before the launch of 2.0, we had been thinking about a balance point, that is, to reduce development costs for developers, free use of engines and low threshold efficient development of games, and to find a way to make the engine survivable and sustainable development.
 
-因此，我们在LayaAir 2.0 引擎基础功能继续免费的前提下，在免费的2.0引擎和工具上继续加强引擎的高性能，强化引擎的易用性，不断完善引擎功能，尤其是3D引擎的成熟度。但同时也决定在引擎周边的几个增值服务上进行尝试收费，让引擎得已可持续发展。
+Therefore, on the premise that the basic functions of LayaAir 2.0 engine continue to be free, we continue to enhance the high performance of the engine, enhance the ease of use of the engine, and constantly improve the engine functions, especially the maturity of the 3D engine on the free 2.0 engine and tools. But it also decided to try charging for several value-added services around the engine to make the engine sustainable.
 
-当前的VIP专属功能收费是其中的一个尝试，VIP功能的收费比较低，哪怕是个人也能承受。而且不使用VIP功能也不会影响游戏的上线。当然，在使用后肯定会让游戏的效果更好或者得到优化。
+The current charge for VIP exclusive functions is one of the attempts. The charge for VIP functions is relatively low, even for individuals. And the use of VIP functions will not affect the online game. Of course, the use of the game will certainly make the effect of better or optimized.
 
-最后，我们希望引擎周边的增值收费业务能得到开发者们的理解与支持，只有引擎企业解决了生存压力之后，才能更好的投入人力和精力到文档以及其它基础的免费服务上。让引擎可持续发展的生态更加繁荣。
+Finally, we hope that the value-added charging business around the engine can be understood and supported by developers. Only after the engine enterprise has solved the pressure of survival, can it better invest human and energy in the documentation and other basic free services. Make the ecology of engine sustainable development more prosperous.
 
 
 
-## 二、VIP专属功能包括了哪些服务
+##II. What services are included in the exclusive functions of VIP
 
-既然是专属功能，那么VIP会员自然是拥有着非VIP开发者的没有的独特功能。功能目前提供为以下几个方面：
+Since it is a proprietary function, VIP members naturally have unique functions that non-VIP developers do not have. Functions are currently available in the following areas:
 
-### 1、 3D模型文件压缩：
+###1. 3D model file compression:
 
-效果：降低模型文件尺寸约60%；
+Effect: Reduce the size of model file by about 60%.
 
-功能简介：3D游戏中模型是游戏资源体积的重要组成部分。所以减少模型文件的大小，可以缩短游戏的加载时长，加快玩家进入游戏的速度。在当前网速环境下，减少游戏体积还是比较重要的增值功能。
+Function Introduction: Models in 3D games are an important part of the volume of game resources. So reducing the size of the model file can shorten the loading time of the game and accelerate the speed of players entering the game. In the current network speed environment, reducing the size of the game is still an important value-added function.
 
-### 2、 纹理压缩（2D+3D）：
+###2. Texture Compression (2D+3D):
 
-效果：降低显存约75%，减少图片解码卡顿现象。
+Effect: Reduce the display memory by about 75%, reduce the image decoding cartoon phenomenon.
 
-在游戏中，不使用纹理压缩时，为了节省显存的占用。通常的做法是将原图按低分辨率的机型进行设计，然后在游戏中拉伸适配高分辨率的机型。这样就会导致游戏的马赛克现象（很多小游戏在安卓的某些高清分辨率机型上出现这种问题，一定是该问题导致），而纹理压缩的模式即使按高分辨率进行设计也占用较小的显存，所以在同等显存占用的情况下，在高分辨率的机型上，2D图片压缩效果和拉伸效果对比如图1所示。3D贴图在压缩后效果更好，压缩对于原图的损失在视觉效果上几乎可忽略不计。
+In order to save memory, texture compression is not used in the game. The usual approach is to design the original image as a low-resolution model, and then stretch it to fit the high-resolution model in the game. This will lead to the mosaic phenomenon of the game (many small games have this problem on some Android HD resolution models, which must be the result of this problem), and the texture compression mode even if designed according to high resolution occupies less memory, so in the case of the same memory occupancy, in the high resolution model, the compression effect and stretching effect of 2D images are right. As shown in Figure 1. The effect of 3D mapping is better after compression, and the loss of the original image by compression is almost negligible in visual effect.
 
 ![图1](img/1.jpg) 
 
-（图1）
 
-> 提醒：3D使用纹理压缩后，视觉上基本看不出来，所以推荐使用。但是2D 使用纹理压缩要慎重，静态图片（例如UI）尽量不要用纹理压缩功能，动态图片（2D角色动画等）则不会太明显，没有高清画质表现需求的可以使用。
+(Fig. 1)
 
-功能简介：
+> Reminder: 3D texture compression, the basic visual can not see, so it is recommended to use. However, the use of texture compression in 2D should be careful, static images (such as UI) should not use texture compression function as far as possible, while dynamic images (such as 2D character animation) will not be too obvious, there is no need to use high-definition image quality performance requirements.
 
-游戏中常见的图片文件格式通常 是PNG和JPG等，这些图片需要先经过CPU解码，然后传送到GPU进行使用。而纹理压缩后的格式，是无需解码即可直接被GPU读取并显示的格式，所以，一方面是节省了大量的显存，另一方面也可以减少图片解码带来的CPU压力。
+Functional Profile:
 
-需要开发者注意的是。纹理压缩因为要依托于显卡的硬件加速，所以，只能是webGL模式可用。另外，就是不同平台（操作系统）的格式也有所不同。例如，我们在Android平台是ktx格式，在iOS平台是pvr格式。
+The common formats of picture files in games are usually PNG and JPG. These pictures need to be decoded by CPU and then transmitted to GPU for use. Texture compression format is a format that can be read and displayed directly by GPU without decoding. Therefore, on the one hand, it saves a lot of memory, on the other hand, it can also reduce the CPU pressure brought by image decoding.
 
-> 由于不同平台的格式不同，所以跨平台的游戏，使用纹理压缩在降低显存的同时，代价是增加了文件的大小，所以最终是要依据项目的情况来找到一个平衡点。
+What needs the developer's attention is that. Texture compression is only available in webGL mode because it relies on hardware acceleration of graphics cards. In addition, even different platforms (operating systems) have different formats. For example, we have KTX format on Android platform and PVR format on iOS platform.
 
-### 3、3D动画文件压缩：
+> Because the formats of different platforms are different, cross-platform games use texture compression to reduce the memory, at the same time, the cost is to increase the size of the file, so ultimately it is necessary to find a balance point according to the situation of the project.
 
-效果：降低3D动画文件尺寸约40%；
+###3. Compression of 3D Animation Files:
 
-功能简介：3D动画文件压缩与模型模型压缩一样，作用是减少文件下载的大小，用于加快玩家进入游戏的速度。
+Effect: Reduce the size of 3D animation files by about 40%.
 
-### 4、文件合并（JSON + 二进制）：
+Function Description: 3D animation file compression and model compression, the same role is to reduce the size of file download, used to speed up players to enter the game.
 
-效果：可合并JSON类型的文本文件，大幅减少文件下载交互数量，提升游戏加载效率；
+###4. File merge (JSON + binary):
 
-功能简介：
+Effect: JSON type text files can be merged, greatly reducing the number of file download interaction, and improving the efficiency of game loading;
 
-当游戏的小文件比较多时，会大量增加HTTP请求，使得加载变慢，而合并文件功能可以将Json类型的文件进行合并，这将减少文件的HTTP请求数，从而提高加载效率。当然，如果盲目合并，也会在打包后增加文件的一次性下载时长。所以，开发者要依据项目的实际情况来使用，尤其是在小文件多的时候再用。
+Functional Profile:
 
-### 5、其它：
+When there are more small files in the game, HTTP requests will be increased greatly, which will slow down the loading. The merge file function can merge Json-type files, which will reduce the number of HTTP requests for files and improve the loading efficiency. Of course, if you merge blindly, you will also increase the one-time download time of files after packaging. Therefore, developers should use it according to the actual situation of the project, especially when there are many small files.
 
-未来将持续增加更多扩展模块（我们将持续收集会员急需功能，通过投票数量不断增加更多VIP模块）。
+###5. Other:
 
-### 特别说明
+More expansion modules will continue to be added in the future (we will continue to collect members'badly needed functions, and increase more VIP modules through the number of votes).
 
-#### 1、VIP功能不包括非VIP功能的技术服务
+###Special description
 
-经常有一些开发者会提出这样的问题，购买VIP后，能不能帮我们解答一些引擎的问题。这里非常抱歉的回复大家，购买VIP提供的权益主要是专属功能本身，其次也提供VIP专属功能使用相关的答疑，比如VIP专属功能不会使用，或者使用过程中疑似BUG，以及对于VIP专属功能的建议和意见等，可以直接加入到VIP引擎专属功能沟通QQ群进行交流，QQ群号为：`739490368`
+####1. The VIP function does not include the technical service of non-VIP function.
 
-如果有技术服务的需求，由于这个对于人力成本要求较高，并非当前VIP专属功能的价格所能承受的。如果存在技术服务采购的需求，可以通过微信搜索 `399050` ，联系技术服务的商业合作负责人进行沟通或者了解。
+Often some developers will ask such questions, after purchasing VIP, can you help us solve some engine problems? Here I am very sorry to reply that the rights and interests provided by purchasing VIP are mainly the exclusive functions themselves. Secondly, I also provide relevant answers to the questions about the use of the exclusive functions of VIP, such as the exclusive functions of VIP will not be used, or the suspected BUG in the process of use, and suggestions and opinions on the exclusive functions of VIP, which can be directly added to the exclusive functions of VIP engine to communicate with QQ group. The QQ group number is:`739490368`
 
-#### 2、个人VIP与企业VIP的服务区别
+If there is a demand for technical services, because of the high demand for human costs, it is not affordable for the current price of VIP exclusive functions. If there is a demand for technical service procurement, it can be searched by Wechat.`399050`Contact the person in charge of business cooperation of technical services for communication or understanding.
 
-企业VIP与个人VIP在功能的使用上是完全相同的，功能上并没有区别。
+####2. Service Difference between Personal VIP and Enterprise VIP
 
-唯一的区别的，个人VIP帐号最大只能绑定2个终端，同一时间，帐号只能登录其中一个终端。企业VIP同一个帐号可以绑定20个终端， 同时可登录10个终端。这样可以方便企业帐号的管理维护，避免员工离职交接产生的问题。
+Enterprise VIP and individual VIP are identical in the use of their functions, and there is no difference in their functions.
+
+The only difference is that a personal VIP account can only bind two terminals, and at the same time, the account can only log on to one terminal. Enterprise VIP can bind 20 terminals to the same account, and can log on to 10 terminals at the same time. This can facilitate the management and maintenance of enterprise accounts and avoid the problems arising from the turnover of employees.
 
 
 
-## 三、VIP功能的定价与购买方式及发票获得
+##Pricing and Purchasing Method of VIP Function and Invoice Acquisition
 
-### 1、VIP功能定价
+###1. VIP Function Pricing
 
-#### 个人VIP：
+####Personal VIP:
 
-1024元/年/最大绑定2终端/同时登录1终端
+1024 yuan/year/maximum binding 2 terminal/simultaneous login 1 terminal
 
-#### 企业VIP:
+####Enterprise VIP:
 
- 10240元/年/最大绑定20终端/同时登录10终端
+10240 yuan/year/maximum binding 20 terminals/simultaneous login 10 terminals
 
-### 2、购买方式
+###2. Purchasing Method
 
-#### 官网页面中购买
+####Official Web Page Surface Purchase
 
-链接地址为：[https://www.layabox.com/vip/](https://www.layabox.com/vip/)
+The link address is:[https://www.layabox.com/vip/](https://www.layabox.com/vip/)
 
-步骤一：在官网的VIP介绍页面中点击成为会员，如图1-1所示，可进入购买页面。
+Step 1: Click on the VIP introduction page of the official website to become a member. As shown in Figure 1-1, you can enter the purchase page.
 
 ![图1](img/1-1.png)
 
-（图1-1）
+(Fig. 1-1)
 
-步骤二：在购买页面中选择登录方式，帐号与社区中的帐号是共通的，点击如图1-2所示的`手机或用户名登录`，输入手机号或用户名和密码，确认登录后，即可购买。
+Step 2: Select the login mode on the purchase page. The account number is in common with the account number in the community. Click on the one shown in Figure 1-2.`手机或用户名登录`Enter the phone number or username and password, confirm the login, you can buy.
 
 ![图1-2](img/1-2.png)
 
-（图1-2）
+(Fig. 1-2)
 
-步骤三：登录后，先选择个人会员还是企业会员类型，然后选择支付方式（微信或支付宝），最后点击立即购买，如图1-3所示。最终完成支付后，那么之前登录的帐号，即成为VIP会员帐号。使用VIP功能之前登录该帐号即可享受VIP专属功能。
+Step three: after login, first select individual members or business member types, then choose the payment method (WeChat or Alipay), and click click to buy immediately, as shown in Figure 1-3. After the final payment is completed, the account previously logged in becomes the VIP member account. Before using the VIP function, you can log in to the account and enjoy the VIP exclusive function.
 
 ![图1-3](img/1-3.png) 
 
-(图1-3) 
 
-#### LayaAirIDE中购买
+(Fig. 1-3)
 
-步骤一：
+####Purchase in LayaAirIDE
 
-下载最新版本的LayaAirIDE，点击右下角广告图或者右上角的个人中心（小人图标）按钮。登录后（也是社区中的帐号和密码），即可看到购买会员的按钮，如图2-1所次。直接点击该按钮即可进入购买界面。
+Step one:
+
+Download the latest version of Laaya AirIDE and click on the lower right corner ad map or the personal center button in the upper right corner. After login (also the account number and password in the community), you can see the button for purchasing members, as shown in Figure 2-1. Click the button directly to enter the purchase interface.
 
 ![图2-1](img/2-1.png) 
 
-（图2-1）
 
-步骤二：
+(Fig. 2-1)
 
-在充值页面里，选择好VIP会员的类型，点击支付方式的按钮（支付宝或微信），会弹出对应的支付二维码，如图2-2所示，扫码支付即可成为VIP会员，使用VIP功能之前登录该帐号即可享受VIP专属功能。
+Step two:
+
+In the recharge page, select the type of VIP member, click the button of payment mode (Alipay or Wechat), and the corresponding payment two-dimensional code will pop up. As shown in Figure 2-2, sweep-code payment can become a VIP member. You can enjoy the exclusive function of VIP by logging in the account before using the VIP function.
 
 ![图2-2](img/2-2.png)
 
-(图2-2)
+(Fig. 2-2)
 
-#### LayaAir的Unity导出插件中购买
+####Purchase in LayaAir Unity Export Plug-in
 
-步骤一：
+Step one:
 
-检查是否是最新版本的Unity3D插件，如果不是则建议更新（至少是2.0.1）。并且要检查引擎是否和插件版本号一至，否则旧版本引擎是无法识别新版插件，会导致部分功能不可用。
+Check if it's the latest version of Unity3D plug-in, and if it's not, it's recommended to update (at least 2.0.1). And check whether the engine and plug-in version number one to one, otherwise the old version engine is unable to identify the new version of the plug-in, which will lead to some functions unavailable.
 
-下载最新版本的Unity导出插件（[点击进入插件下载地址](https://ldc2.layabox.com/layadownload/?type=layaairide)），如图3-1所示。
+Download the latest version of Unity export plug-in（[点击进入插件下载地址](https://ldc2.layabox.com/layadownload/?type=layaairide)As shown in Figure 3-1.
 
 ![图3-1](img/3-1.png)
 
-（图3-1） 
+(Fig. 3-1)
 
-步骤二：
+Step two:
 
-安装后，点击任何一下VIP功能都会需要登录帐号验证权限。如图3-2所示。
+After installation, clicking on any VIP function will require login account authentication rights. As shown in Figure 3-2.
 
 ![图3-2](img/3-2.png) 
 
-（图3-2）
 
-步骤三：
+(Fig. 3-2)
 
-如果已经登录并且是VIP，那直接使用VIP的功能就好了。
+Step three:
 
-假如还没有购买VIP的话，点击图3-2右侧的那些VIP功能，则会直接跳到VIP购买界面。或者通过点击插件`Account`(帐号)中的`Recharge`(充值)按钮来进入VIP购买界面。如图3-3所示。
+If you have logged in and are VIP, you can use the function of VIP directly.
+
+If you haven't purchased VIP yet, click on the VIP functions on the right side of Figure 3-2, and you will jump directly to the VIP purchasing interface. Or by clicking on the plug-in`Account`In (account number)`Recharge`(recharge) button to enter the VIP purchase interface. As shown in Figure 3-3.
 
 ![图3-3](img/3-3.png) 
 
-（图3-3）
 
-在VIP购买界面内，选择好VIP会员的类型，点击支付方式的按钮（支付宝或微信），右侧扫码支付后即可成为VIP会员，如图3-4所示。使用VIP功能之前登录该帐号即可享受VIP专属功能。
+(Fig. 3-3)
+
+In the VIP purchase interface, select the type of VIP member, click the payment button (Alipay or WeChat), the right scan code can be paid to become a VIP member, as shown in Figure 3-4. Before using the VIP function, you can log in to the account and enjoy the VIP exclusive function.
 
 ![图3-4](img/3-4.png) 
 
-（图3-4） 
 
-### 3、开发票相关
+(Fig. 3-4)
 
-#### 开发票的入口
+###3. Invoice-related
 
-开发票网址：[https://developers.masteropen.layabox.com/dist/recharge_succ_list.html](https://developers.masteropen.layabox.com/dist/recharge_succ_list.html)
+####Invoice Entrance
 
-#### 选择开发票的记录
+Invoice website:[https://developers.masteropen.layabox.com/dist/recharge_succ_list.html](https://developers.masteropen.layabox.com/dist/recharge_succ_list.html)
 
-在开发票的后台里，选择已支付的消费记录，勾选后，点击下一步。如图4-1所示。
+####Selection of Invoice Records
+
+In the background of the invoice, select the paid consumption record, check it, and click Next. As shown in Figure 4-1.
 
 ![4-1](img/4-1.png)
 
-（图4-1）
+(Fig. 4-1)
 
-#### 填写发票信息与快递收件信息
+####Fill in Invoice Information and Express Receiving Information
 
-选好开票的消费记录并点击`下一步`后，会进入发票信息填写的页面，按图4-2中的选项和输入框填写真实无误的信息并`提交`即可（请自行核对信息的准确性，因提供信息错误而导致的发票开错，由填写方负责）。
+Choose the consumption record for the invoice and click`下一步`After that, you will go to the invoice information filling page and fill in the true and correct information according to the options and input boxes in Figure 4-2.`提交`Please check the accuracy of the information by yourself. The filler is responsible for the invoice error caused by the error in providing the information.
+
+
 
  ![4-2](img/4-2.png) 
 
-（图4-2）
 
-#### 开票提醒：
+(Fig. 4-2)
 
-由于涉及到发票的税务周期性问题，
+####Invoice reminder:
 
-如果是每月20日之前提交开票申请的会在本月内（通常在提交申请一周左右）开具纸质发票并寄出。
+Due to the tax periodicity of invoices,
 
-如果是20日之后提交开票申请的需要在次月10日后（10日起一周左右）开具纸质发票并寄出。
+If the application for invoice is submitted before 20th of each month, the paper invoice will be issued and sent out within this month (usually about one week after the application is submitted).
 
-以上周期，如遇节假日会顺延。
+If the application for invoice is submitted after 20 days, the paper invoice should be issued and sent after 10 days of the next month (about a week from 10 days).
 
-最后，如果有特别紧急的，可以加入到VIP专属功能沟通QQ群（群号`739490368`）中联系管理员进行咨询。
+These cycles will be postponed in case of holidays.
+
+Finally, if there is a special emergency, you can join the VIP exclusive function to communicate QQ group (group number).`739490368`) Contact the administrator for consultation.
 
 
 
-## 四、VIP功能的使用方式
+##IV. Usage of VIP Function
 
-2D的VIP功能需要在LayaAirIDE里进行使用，3D的VIP功能，需要在LayaAir的Unity导出插件里用。我们先简单了解一下。
+The VIP function of 2D needs to be used in LayaAirIDE, and the VIP function of 3D needs to be used in LayaAir Unity export plug-in. Let's have a brief look first.
 
-如图5-1所示。2D的VIP功能通过导航菜单的工具栏可以找到并使用。
+As shown in Figure 5-1. The VIP function of 2D can be found and used through the toolbar of navigation menu.
 
 ![图5-1](img/5-1.png)  
 
-（图5-1）
 
-如图5-2所示，3D的VIP功能和普通的功能在一起的，可以直观的看到，只不过是需要登录验证VIP之后，才可以使用。
+(Fig. 5-1)
+
+As shown in Fig. 5-2, the 3D VIP function is intuitively visible, but only after login to verify the VIP can it be used.
 
 ![图5-2](img/5-2.png)
 
- （图5-2）
-在VIP功能的使用方面，3D功能大多数比较容易理解，除了贴图纹理压缩需要注意之外，当前的模型压缩和动画文件压缩只是文件大小的改变，勾选功能后直接使用即可，不需要特别讲解如何使用，而2D的VIP功则需要有一些使用的注意事项。下面，我们就针对需要注意的一些功能进行详细一些的介绍。
+(Fig. 5-2)
+In the use of VIP functions, most of the 3D functions are easy to understand. In addition to texture compression, the current model compression and animation file compression are only changes in file size. You can use them directly after checking out the functions, and you don't need to explain how to use them, while the 2D VIP functions need some attention. Next, we will give a detailed description of some functions that need to be noticed.
 
-### 1、纹理图片转换（纹理压缩）
+###1. Texture Image Conversion (Texture Compression)
 
-打开LayaAirIDE的`纹理图片转换`功能界面， 
+Open LayaAirIDE`纹理图片转换`Functional interface,
 
-点击`浏览`选择要转换的图片所在文件夹（如果是单图，不想选文件夹，只能是拖拽到该功能面板中），
+click`浏览`Select the folder where the image to be converted is located (if it is a single image, you don't want to select the folder, you can only drag and drop it into the function panel).
 
-然而指定输出的目录和选择压缩后使用的平台（安卓或iOS）,如图6-1所示。
+However, specify the output directory and choose the compressed platform (Android or iOS), as shown in Figure 6-1.
 
 ![图6-1](img/6-1.png) 
 
-(图6-1)
 
-#### jpg单图的纹理压缩
+(Fig. 6-1)
 
-这里需要注意的是，纹理压缩的使用会区分平台，压缩后的安卓与iOS的文件后缀也有所不同。所以按图6-1操作后，点击`确定`会看到`.ktx`和`.pvr`两个不同后缀的文件，如图6-2所示。
+####Texture compression of JPG single image
+
+It is important to note that the use of texture compression distinguishes platforms, and the file suffixes of compressed Android and iOS are different. So follow Figure 6-1 and click`确定`Will see`.ktx`and`.pvr`Two files with different suffixes are shown in Figure 6-2.
 
 ![图6-2](img/6-2.png) 
 
-（图6-2）
 
-这两个文件分别用于不同的系统平台，其中的ktx用于安卓（Android）平台。pvr用于苹果的iOS平台。
+(Fig. 6-2)
 
-我们可以把这两种不同后缀的文件放到`bin/res`目录下。 使用的方式和jpg及png资源没有区别，在使用的时候加个判断区分一下平台来调用不同的后缀即可。简单给个代码参照如下：
+The two files are used for different system platforms, among which KTX is used for Android platform. PVR is used on Apple's iOS platform.
+
+We can put these two different suffixes in the file.`bin/res`Under the catalogue. There is no difference between using JPG and PNG resources. When using JPG and PNG resources, add a judgment to distinguish the platform and call different suffixes. Simply refer to the code as follows:
+
 
 ```typescript
+
 //以下代码片段仅作参照
 .......
     if (Browser.onAndroid) {
@@ -266,72 +280,82 @@
 //以上代码片段仅作参照
 ```
 
-#### PNG纹理压缩
 
-由于Android平台不支持png格式转换为纹理压缩格式（在Android平台继续使用png格式即可），所以，png格式的图片只能在iOS平台使用纹理压缩。
+####PNG Texture Compression
 
-至于工具的使用流程方面和jpg单图没有太大区别。一方面是要注意一下，Android平台无法进行纹理压缩的转换，只能继续用png格式资源。另一方面是要注意，PNG图的宽高必须要是2的幂次方。
+Because the Android platform does not support the conversion of PNG format to texture compression format (png format can continue to be used in Android platform), so the image in PNG format can only use texture compression in iOS platform.
 
-##### 图集压缩
+As for the use process of the tool, it is not very different from the jpg chart. On the one hand, it should be noted that Android platform can not transform texture compression, but can only continue to use PNG format resources. On the other hand, it should be noted that the width and height of PNG graphs must be the power of 2.
 
-对于png后缀的图集压缩，用法也是和单图相同的，不过对于图集的处理，图片路径那一栏，拖入.png后缀图片或.atlas图集文件，都是可以被识别，然后压缩成功的。流程如图6-3所示。
+#####Atlas compression
+
+For the compression of PNG suffix, the usage is the same as that of single graph, but for the processing of atlas, the column of picture path, dragging in. PNG suffix picture or. atlas atlas atlas atlas atlas file can be recognized, and then compressed successfully. The flow chart is shown in Figure 6-3.
 
 ![图6-3](img/6-3.png) 
 
-（图6-3）
 
-### 2、文件打包（JSON文件 + 二进制文件）
+(Fig. 6-3)
 
-这个功能就是可以把多个零散的文件合并打包成为一个文件，支持json格式的文本文件合并和二进制文件合并，如图7所示。
+###2. File Packaging (JSON File + Binary File)
+
+This function is to merge multiple scattered files into one file, support JSON format text file merge and binary file merge, as shown in Figure 7.
 
 ![图7](img/7.png) 
 
-（图7）
 
-#### JSON格式文件合并的操作
+(Fig. 7)
 
-打开`文本文件打包`VIP功能界面，如图7-1所示，点击色块区域，可以选择bin目录下的json格式文件进行合并（图集atlas、scene场景、预制体prefab等皆为json格式）。
+####JSON format file merging operation
+
+open`文本文件打包`VIP functional interface, as shown in Figure 7-1, click on the color block area, you can select the JSON format file under bin directory to merge (atlas, scene scene, prefab, etc. are all JSON format).
 
 ![图7-1](img/7-1.png) 
 
-（图7-1） 
 
-合并规则可以设置多个，点击加`(+)`号在新的面板中可以新建一个合并规则，流程如图7-2所示。
+(Fig. 7-1)
+
+Merge rules can be set multiple, click and add`(+)`A merge rule can be created in the new panel. The flow chart is shown in Figure 7-2.
 ![图7-2](img/7-2.png)  
 
-（图7-2）
 
-需要注意的是，图7-2中的文件名那个`.plf`是个伪后缀，最开始是真后缀，但是考虑到微信小游戏本地包并不识别.plf这个文件后缀，为了和二进制类型有所区别，大家记住这个类型（plf）就行了。最终生成的如图7-3所示，会是一个以.json为后缀的文件。
+(Fig. 7-2)
 
-当所有的合并规则都设置好之后，点击确定。就可以看到图7-3的打包编译结果，点开`打开发布文件夹`按钮可以查看合并后的文件。
+Note that the file name in Figure 7-2`.plf`It's a pseudo suffix, at first it's a true suffix, but considering that the local package of wechat games doesn't recognize the. PLF file suffix, in order to be different from the binary type, just remember the type (PLF). The final generated file, as shown in Figure 7-3, will be a file suffixed with. json.
+
+When all merge rules are set, click OK. You can see the package compilation results of Figure 7-3, click Open`打开发布文件夹`Button to view the merged file.
 
 ![图7-3](img/7-3.png) 
 
-(图7-3) 
 
-#### 二进制文件合并的操作
+(Fig. 7-3)
 
-二进制文件合并和JSON格式文件合并的操作流程基本一样，无非就是json合并的是json格式文件，二进制合并的是二进制文件。另外就是json文件合并类型是plf，输出的是json后缀的文件。而二进制文件合并类型是plfb，输出的是.zip后缀的文件。所以，操作流程就不再详细讲了，通过两张图，大概描述一下使用流程与差异的地方。
+####Operation of binary file merging
+
+The operation flow of binary file merging is basically the same as that of JSON format file merging. Just JSON merges JSON format file and binary merges binary file. The other is that the JSON file merge type is plf, and the output is JSON suffix file. The binary file merge type is plfb, and the output is the file with. zip suffix. Therefore, the operation process will not be described in detail, through two diagrams, roughly describe the use process and differences.
 
 ![图7-4](img/7-4.png) 
 
-(图7-4)注意类型是plfb
+
+(Figure 7-4) The type of attention is plfb
 
 ![图7-5](img/7-5.png) 
 
-(图7-5)
 
-一个文件合并规则对应一个zip文件，如3Dscene.plfb规则，生成的文件为3Dscene.zip文件。
+(Fig. 7-5)
 
-这里提醒一下，这个zip后缀，并不是标准的zip格式，只是一个有着zip后缀的二进制文件，是为了应对微信小游戏不识别稀有后缀，所以只能在常用后缀里找了一个使用而已。大家不要尝试对合成输出后的zip文件进行解压，是无法解压成功的。
+A file merge rule corresponds to a zip file, such as the 3D scene. plfb rule, and the generated file is the 3D scene. zip file.
 
-#### 合并后文件的使用
+Here's a reminder that this zip suffix is not a standard zip format, but a binary file with zip suffix. It's to deal with Wechat games that don't recognize rare suffixes, so it can only be used in common suffixes. Don't try to decompress the zip file after synthesizing the output. It can't be decompressed successfully.
 
-无论是图集也好，场景也好，合并前与合并后的用法没有什么不同，包括原来的图集或场景名的打开方式，都是和原来一样。唯一要注意的是，要使用合并前的图集或者场景，必须要保证合并后的文件要先加载完，所以，之前的加载使用逻辑要放到合并后的文件加载回调里。
+####Use of merged files
 
-JSON示例参照代码如下：
+Whether it's a collection or a scene, the usage before and after merging is not different, including the opening of the original collection or scene name, which is the same as the original. The only thing to note is that in order to use the pre-merged atlas or scenarios, it is necessary to ensure that the merged files are loaded first, so the pre-merged loading logic should be placed in the merged file loading callback.
+
+The JSON example reference code is as follows:
+
 
 ```typescript
+
 //先加载plf类型的合并后文件Image.json
 Laya.loader.load([{url: "res/Image.plf", type: "plf"}], Handler.create(this, function():void {
 	
@@ -352,9 +376,12 @@ Laya.loader.load([{url: "res/Image.plf", type: "plf"}], Handler.create(this, fun
 }));
 ```
 
-二进制示例参照代码如下：
+
+The binary example reference code is as follows:
+
 
 ```typescript
+
 //先加载plfb类型的合并后二进制文件bone.zip
 Laya.loader.load([{url: "res/bone/bone.zip", type: "plfb"}], Laya.Handler.create(this, function() {
             // 模板
@@ -372,15 +399,16 @@ Laya.loader.load([{url: "res/bone/bone.zip", type: "plfb"}], Laya.Handler.create
 
 
 
-一定要注意的就是，文本文件打包后加载的类型是plf（ `type: "plf"`）、二进制打包加载的类型是plfb（`type: "plfb"`）。
+
+It's important to note that the type of text file loaded after packaging is plf（`type: "plf"`The type of binary package loading is plfb（`type: "plfb"`)
 
 
 
-### VIP功能问题沟通方式
+###VIP Functional Problem Communication
 
-最后，如果您是购买了VIP功能的开发者，遇到了VIP功能的问题，欢迎到VIP功能沟通群中交流。
+Finally, if you are a developer who has purchased the VIP function and encounters problems with the VIP function, you are welcome to communicate in the VIP function communication group.
 
-QQ群号为：739490368
+QQ group number: 739490368
 
-需要注意的是，引擎官方工作人员只在群中解答VIP功能使用的相关问题、建议、BUG。非VIP功能问题不提供答疑服务。
+It should be noted that the official engine staff only answers the questions, suggestions and BUG related to the use of VIP functions in the group. Non-VIP functional questions do not provide answering services.
 

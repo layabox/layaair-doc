@@ -2,29 +2,31 @@
 
 ###### *version :2.1.0beta   Update:2019-5-14*
 
-**Unlit不受光**材质。这种材质最大的特点就是不受光照影响，且最省性能。这种材质是直接显示原贴图的样式。
+**Unlit is not exposed to light**Texture of material. The greatest feature of this material is that it is not affected by light and saves most performance. This material is a direct display of the original texture style.
 
-#### 主要属性和方法
+####Main attributes and methods
 
-> 属性
+> attribute
 
-`albedoColor:Vector4` 反照率颜色。
+`albedoColor:Vector4`Albedo color.
 
-`albedoIntensity:Number` 反照率强度。
+`albedoIntensity:Number`Albedo intensity.
 
-`albedoTexture:BaseTexture` 反照率贴图。
+`albedoTexture:BaseTexture`Albedo mapping.
 
-`enableVertexColor:Boolean` 是否支持顶点色。
+`enableVertexColor:Boolean`Supports vertex color.
 
-`renderMode:int` [write-only] 设置渲染模式。
+`renderMode:int`[write-only] Sets the rendering mode.
 
-`tilingOffset:Vector4` 纹理平铺和偏移。
+`tilingOffset:Vector4`Texture tiling and migration.
 
-#### 创建和使用材质
+####Create and use materials
 
-图1中，左边使用的BlinnPhong材质，右边使用的就是Unlit材质。两个一对比就能更体现Unlit的特点了。详情可以查看:([demo地址](<https://layaair.ldc.layabox.com/demo2/?language=ch&category=3d&group=Material&name=UnlitMaterialDemo>))；
+In Figure 1, the BlinnPhong material is used on the left and the Unlit material is used on the right. Two one-to-one comparisons can more reflect the characteristics of Unlit. Details can be viewed as follows:（[demo地址](http://localhost/LayaAir2_Auto/%3Chttps://layaair.ldc.layabox.com/demo2/?language=ch&category=3d&group=Material&name=UnlitMaterialDemo%3E));
+
 
 ```typescript
+
 //创建Unlit材质
 var material2 = new Laya.UnlitMaterial();
 //加载纹理
@@ -35,5 +37,6 @@ Laya.Texture2D.load("res/threeDimen/texture/earth.png", Laya.Handler.create(this
 earth2.meshRenderer.material = material2;
 ```
 
-![](img/1.png)<br>(图1)
+
+![] (img/1.png)<br> (Figure 1)
 

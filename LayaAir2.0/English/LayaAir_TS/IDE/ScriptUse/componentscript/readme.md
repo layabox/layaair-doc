@@ -1,59 +1,61 @@
-# LayaAir脚本参数说明
+#LayaAir script parameter description
 
-LayaAir2.0开始，支持自定义脚本到编辑器，方便扩展已有组件功能
+Starting with LayaAir 2.0, it supports custom scripts to editors to facilitate the expansion of existing component functions.
 
 ![script1](img/5.jpg)
 
-如果想在编辑器内展示脚本定义的属性，可用通过特殊注释来实现
+If you want to display script-defined attributes in the editor, you can use special annotations to do so.
 
-比如下面的脚本类：
+For example, the following script class:
 
 ![script1](img/script1.jpg)
 
-在IDE内显示如下：
+The following is shown in the IDE:
 
 ![script1](img/script2.jpg)
 
-这样就可用在脚本里面设计显示参数，在IDE内输入参数，然后在脚本里面使用
+This allows you to design display parameters in scripts, enter parameters in IDE, and then use them in scripts.
 
-这种标记同时支持AS,JS,TS三种语言，甚至还可用只写标记，脚本本身没有具体实现（在继承属性时会用得到）
+This tag supports AS, JS, TS languages at the same time, and even can be written only tags. The script itself is not specifically implemented (used when inheriting attributes).
 
 ![script1](img/script3.jpg)
 
 
 
-一个完整的标签主要由下面几个部分：
+A complete label consists of the following parts:
 
-- type	IDE属性类型，此类型是指IDE属性类型，非真正的属性类型，不过大多情况下是一样的
+- Type IDE attribute type, which refers to the IDE attribute type, not the real attribute type, but mostly the same
 
-- name      IDE内显示的属性名称
+- Property names displayed in name IDE
 
-- tips          IDE内鼠标经过属性名称上后，显示的鼠标提示，如果没有则使用name（可选）
+- The mouse prompt in tips IDE is displayed after the mouse passes over the attribute name, and if not, the name is used (optional).
 
-- default    输入框显示的默认值（可选）
+- Default values displayed in the default input box (optional)
 
-  ​
+​
 
 
-IDE默认提供了不少类型供脚本使用，主要参数类型如下：
+By default, IDE provides many types for scripts to use. The main parameter types are as follows:
 
-| 属性名称        | 说明                                       |
-| :---------- | :--------------------------------------- |
-| name        | 属性显示名称，必须与变量名一致                          |
-| tips        | 鼠标经过显示标签                                 |
-| type        | 类型：Int,Number,sNumber,String,Bool,Option,editOption,Check,Color,ColorArray,Node,Nodes,Prefab,SizeGrid,Vec,Vector,Ease |
-| accept      | String的关联属性，accept:res 为接收资源地址           |
-| acceptTypes | Node和accept的关联属性， 接收的类型，比如和节点使用RevoluteJoint,PrismaticJoint,RigidBody;与accept:res使用jpg,png,txt限制后缀 |
-| option      | Option和editOption的关联属性 option:可选择列表,如aaa,bbb,ccc |
-| min         | Number和sNumber的最小值                       |
-| max         | Number和sNumber的最大值                       |
-| label       | Nodes的关联属性，展示的属性名(  可选) 如果有则根据labels确定长度 没有就显示长度输入框 |
-| types       | Nodes的关联属性,每个元素的类型（可选）                   |
-| xCount      | Nodes的关联属性,水平方向显示多少个                     |
-| sType       | Nodes的关联属性,单个元素的类型                       |
-| default     | 默认值                                      |
+| Property Name | Description|
+|:-----------------------------------------------------------------------------------------------------------------------------------------------------------------|
+| The name | attribute displays the name, which must be consistent with the variable name|
+| tips | Mouse past the display label|
+| Type | Type: Int, Number, sNumber, String, Bool, Option, editOption, Check, Color, ColorArray, Node, Nodes, Prefab, SizeGrid, Vec, Vector, Ease|
+| accept | String's Association property, accept: res is the address of the receiving resource|
+| AceptTypes | Node and accept's associated attributes, receiving types, such as using RevoluteJoint, Prismatic Joint, RigidBody with nodes, and accept: res using jpg, png, txt to restrict suffixes|
+| option | Option and editOption's associated attribute option: Optional lists such as aaa, bbb, ccc|
+| min | Number and sNumber minimum|
+| Maximum Max | Number and sNumber|
+| The label | Nodes associated attribute, the name of the displayed attribute (optional), if any, the length input box is displayed if the length is not determined according to labels|
+| Type | Nodes Association attribute, type of each element (optional)|
+| xCount | Nodes Association properties, how many are displayed horizontally|
+| sType | Nodes Association properties, types of individual elements|
+| default | default value|
+
 
 ```
+
 	    /** @prop {name: resType, tips:"abc",type:string,accept:res} */
     
         resType:String ="";
@@ -113,6 +115,7 @@ IDE默认提供了不少类型供脚本使用，主要参数类型如下：
    
 ```
 
-部分显示效果如下：
+
+Part of the display effect is as follows:
 
 ![script1](img/111.png)

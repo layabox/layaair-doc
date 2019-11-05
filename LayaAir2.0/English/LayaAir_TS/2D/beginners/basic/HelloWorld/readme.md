@@ -1,21 +1,24 @@
-# 第一个程序：显示文本“Hello Layabox”
-
- **【提示】阅读本文前，必须先阅读《搭建开发环境（TS代码编译器）》和《创建TS项目并详解目录结构》两篇。**
+#First program: display text "Hello Layabox"
 
 
+ **[Tips] Before reading this article, you must read two articles: Building Development Environment (TS Code Compiler) and Creating TS Project and Detailing Directory Structure.**
 
-​    **步骤一**：选中src右键单击，然后左键点击“新建文件”，在src目录下建立一个HelloLayabox.ts的文件。（Tips：HelloLayabox.ts必须创建在src目录下，才会被编译）
 
-​	![图片](img/1.png)<br/>
 
-然后修改.laya目录下的compile.js 文件，修改启动类为HelloLayabox.ts
+​**Step one**Select src, right-click, and left-click "New File" to create a HelloLayabox. TS file in the SRC directory. (Tips: HelloLayabox. TS must be created in the SRC directory before it can be compiled)
+
+​![图片](img/1.png)<br/>
+
+Then modify the compile. JS file in the. Laya directory and modify the startup class to HelloLayabox. TS
 
 ![图片](img/111.png)
 
 
-​         **步骤二**：点击打开src目录下的HelloLayabox.ts，开始编写如下代码：
+​**Step two**Click HelloLayabox. ts in the SRC directory to start writing the following code:
+
 
 ```typescript
+
 //创建舞台，默认背景色是黑色的
 Laya.init(600, 300); 
 var txt = new Laya.Text(); 
@@ -27,18 +30,21 @@ txt.color = "#ffffff";  
 Laya.stage.addChild(txt);
 ```
 
-​    
 
-​     **步骤三**：编码完成后，按F5编译，在弹出的页面里，我们可以看到代码的运行结果，如下图所示：
+​
 
-​	![图片](img/2.png)<br/>
-​	图（2）
+​**Step three**After encoding, compile according to F5. On the pop-up page, we can see the result of the code, as shown in the following figure:
+
+​![图片](img/2.png)<br/>
+Figure (2)
 
 
 
-​        **步骤四**：显示成功后，关闭显示窗口。我们继续编写代码，让文字显的美观一些。继续完善代码如下：
+​**Step four**Close the display window after the display is successful. We continue to write code to make the text more beautiful. Continue to improve the code as follows:
+
 
 ```typescript
+
 //创建舞台，默认背景色是黑色的
 Laya.init(600, 300); 
 var txt = new Laya.Text(); 
@@ -63,10 +69,12 @@ Laya.stage.addChild(txt);
 
 
 
-**步骤五**： 编写完成后，再次按F5编译，美化后的运行结果如下图所示：
+
+**Step five**After compiling, compile again according to F5, and the beautified results are shown as follows:
+
 ​	![图片](img/3.png)<br/>
-​	图（3）
+Figure (3)
 
-**至此，如果您能跟随本篇入门教程，完成上图的显示，恭喜您入门成功，我们已经完成了第一个采用TypeScript语言开发的LayaAir引擎HTML5程序。更多LayaAir引擎开发的API使用方法，请前往官网Layabox开发者中心查看在线API与引擎示例。**
+**So far, if you can follow this introductory tutorial, complete the display above, congratulations on your successful introduction, we have completed the first LayaAir engine HTML5 program developed in TypeScript language. For more information on how to use the API for LayaAir engine development, please visit the Layabox Developer Center for online API and engine examples.**
 
-**TypeScript相关知识请访问[https://www.tslang.cn/docs/home.html](https://www.tslang.cn/docs/home.html) 中文网，此网址要保存，常用！很多问题都可以看这个来解决**
+**For knowledge of TypeScript, please visit[https://www.tslang.cn/docs/home.html](https://www.tslang.cn/docs/home.html)Chinese website, this website should be saved, commonly used! Many problems can be solved by this method.**

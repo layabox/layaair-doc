@@ -1,6 +1,6 @@
-# 鼠标交互概述
+#Overview of Mouse Interaction
 
 ###### *version :2.1.1   Update:2019-8-2*
 
-​		在LayaAir2D引擎中，2D显示对象都有鼠标事件供我们使用，编写逻辑简单方便。在LayaAir 3D引擎中并未实现这种功能，3D空间更为复杂，显示对象在空间中有纵深远近、层叠、裁剪、父子等关系，并且空间还在不断变换。因此3D引擎采用了碰撞器、层与物理射线检测、碰撞信息的方式进行鼠标判断。
+In LayaAir 2D engine, the object of 2D display has mouse events for us to use, so it is simple and convenient to write logic. This function is not implemented in LayaAir 3D engine. 3D space is more complex. There are many relationships among objects in space, such as depth, distance, cascade, tailoring, father and son, and the space is changing constantly. Therefore, the 3D engine uses collider, layer and physical ray detection, collision information to judge the mouse.
 

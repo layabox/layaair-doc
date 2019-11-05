@@ -1,74 +1,81 @@
 # QQ轻游戏基础介绍与游戏发布
 
-### 什么是QQ轻游戏？
+###What is QQ light game?
 
-对于QQ轻游戏这个名词，有一些开发者或许觉得有些陌生，其实这并不是手机QQ的新业务，是由2017年推出的“厘米游戏开放平台”及“玩一玩平台”升级而来，并且打通了手机QQ及QQ空间。所以很多已接入或已了解该平台的开发者，也会称之为玩一玩游戏。
+For the term QQ light game, some developers may feel a little strange, in fact, this is not the new business of mobile QQ. It is upgraded from the "centimeter game open platform" and "play platform" launched in 2017, and has opened up the mobile QQ and QQ space. So many developers who have access to or know about the platform will also call it play a game.
 
 
 
-### QQ轻游戏的主要入口
+###The main entrance of QQ light game
 
-目前，QQ轻游戏的入口仅在安卓版本的手机QQ（简称手Q），平台用户已突破2.5亿。平台接入超过700款游戏，覆盖50个以上游戏类型。同时还覆盖到多个手Q流量场景，其中包括分享消息、聊天窗口、快捷发起、厘米秀、QQ空间小游戏、游戏中心、QQ钱包等。
+At present, the entry of QQ light games is only in Android version of mobile QQ (hand Q), which has exceeded 250 million users. Platform access to more than 700 games, covering more than 50 game types. At the same time, it covers a number of hand Q traffic scenarios, including sharing messages, chat windows, quick launches, centimeter shows, QQ space games, game centers, QQ wallets and so on.
 
 ![图2](img/1.jpg) 
 
-厘米秀与聊天窗口内的厘米游戏入口，需要开通厘米秀功能后才能看到。分享消息是一种裂变传播入口，这些是最初厘米游戏时代开始就一直存在的主要交互入口。游戏中心、QQ空间小游戏、QQ钱包中的入口是比较容易发现的开放入口。快捷发起，类似微信小游戏的顶部快捷导航入口，是玩过的QQ轻游戏列表，不过需要开发者在后台中进行设置。
+
+The centimeter game entrance in the centimeter show and chat window can only be seen after opening the centimeter show function. Sharing news is a fission communication gateway, which has been the main interaction gateway since the beginning of the centimeter game era. The entrance in game center, QQ space games and QQ wallet is easy to find. Quick launch, similar to the top quick navigation entrance of Wechat games, is a list of QQ light games that have been played, but need to be set up in the background by developers.
 
 
 
-### QQ轻游戏支持HTML5游戏吗？
+###QQ light games support HTML5 games?
 
-QQ轻游戏游戏平台是采用手机QQ自研的Runtime引擎Bricks来运行。通过提供引擎级API，在上层供JavaScript接口调用。虽然通过JS可以直接使用，但是由于这些接口目前并不兼容HTML5，所以无法在浏览器中运行。但是，Layabox早在2017年8月份率先完成了对Bricks引擎的全面支持，其后也一直在与Bricks引擎团队积极沟通，共同推进Bricks引擎的完善与优化。所以，LayaAir引擎的开发者，可以直接使用LayaAirIDE工具开发并发布为QQ轻游戏。
+QQ light game platform is run by Bricks, a Runtime engine developed by QQ mobile phone. By providing engine-level APIs, it can be invoked by JavaScript interfaces at the upper level. Although JS can be used directly, these interfaces are not compatible with HTML5 at present, so they can not run in browsers. However, Layabox took the lead in completing full support for the Bricks engine as early as August 2017, and has been actively communicating with the Bricks engine team to promote the improvement and optimization of the Bricks engine. Therefore, the developers of LayaAir engine can directly use LayaAirIDE tools to develop and publish QQ light games.
 
-> 目前QQ轻游戏已经有大量的LayaAir引擎线上产品，但技术接入过程中QQ玩一玩的门槛相对于其它平台要稍高一些，如果有问题可以按本文中的联系方式，联系Layabox官方进行商业合作解决。
+> At present, QQ light game has a large number of LayaAir engine online products, but in the process of technology access, the threshold for QQ to play is slightly higher than other platforms. If there are problems, we can contact Layabox official for business cooperation.
 
-### 未被充分挖掘的QQ轻游戏机会
+###Unfully exploited QQ Light Game Opportunities
 
-QQ轻游戏平台有两种商业变现模式：内购和广告。目前平台的广告流水已经超过了游戏内购的总流水，其中80%的活跃游戏均接入了广告SDK，据某些已接入QQ轻游戏的开发者介绍，在同等级别的DAU下，QQ轻游戏广告收入要明显高于其它游戏平台。这或许与QQ视频广告对游戏并没有限额，以及更优于其它平台的分成政策有关。
-
-
-
-另外，相对于微信小游戏的去中心化思路，手Q的轻游戏平台的走的是精品化平台思路，基于多样的手Q入口，游戏用户流量自然会更为集中和稳定一些。同时，QQ轻游戏也是非常鼓励和激励裂变的。例如：轻游戏平台实现了创新的红包广告形式：开发者可以通过B2C广告红包完成用户的吸引和积累。据悉，使用这种B2C红包功能的游戏中，有80%实现了ROI超过100%，有个别游戏的ROI超过300%(比如说红包广告投入1万，游戏收入可以达到3万)。
+QQ Light Game Platform has two business liquidity modes: buy-in and advertising. At present, the advertising flow of the platform has exceeded the total stream purchased in the game, 80% of the active games are connected to the advertising SDK. According to some developers who have access to the QQ light game, under the same level of DAU, the advertising revenue of QQ light game is significantly higher than that of other game platforms. This may be related to QQ video advertising's no limit to the game, and the sharing policy better than other platforms.
 
 
 
-目前，2.5亿的QQ轻游戏用户仅仅是安卓端，如果未来iOS版本的入口打开，那又会迎来一波爆发增长，所以早上架，早受益，QQ轻游戏仍是一个处于高速增长的渠道机会，等待着开发者的进一步挖掘。
+In addition, compared with the decentralization of Wechat games, the light game platform of Hand Q is based on the idea of high-quality platform. Based on various handQ entries, the traffic of game users will naturally be more centralized and stable. At the same time, QQ light games are also very encouraging and stimulating fission. For example, the light game platform implements an innovative form of red envelope advertising: developers can attract and accumulate users through B2C advertising red envelope. It is reported that 80% of the games using this B2C red envelope function have achieved ROI of more than 100%, and some individual games have ROI of more than 300%. (For example, when red envelope advertisements invest 10,000, game revenue can reach 30,000).
 
 
 
-### Layabox助力开发者接入QQ轻游戏平台
+At present, 250 million QQ light game users are only Android, if the entry of the future iOS version is opened, it will usher in a wave of explosive growth, so the morning shelf, early benefit, QQ light game is still a channel opportunity in high-speed growth, waiting for further excavation by developers.
 
-目前QQ轻游戏采用的是精品化平台路线，所以游戏提交需要通过商务审核。并且在接入过程中也有较高的门槛。所以，Layabox基于在QQ轻游戏技术和商务上的优势，提出发行合作模式，帮助众多存在技术压力和上架困惑的开发者，快速解决技术与商务问题，畅享QQ轻游戏的流量机会。
+
+
+###Layabox Helps Developers Access QQ Light Game Platform
+
+At present, QQ light game is a high-quality platform route, so game submission needs to pass business review. And there is a higher threshold in the access process. Therefore, based on the advantages of QQ light game technology and commerce, Layabox proposes a distribution cooperation model to help many developers with technical pressures and confusion on the shelf, quickly solve technical and business problems, and enjoy the flow opportunities of QQ light game.
 
 ![图](img/wechat.jpg) 
 
-(扫一扫，添加商务合作微信)
+
+(Sweep, add business cooperation Wechat)
 
 
 
-### 开发、发布工作流程
+###Developing and publishing workflow
 
-- #### 开发流程
+-####Development process
 
-在开发流程中，开发与日常调试，直接使用LayaAir引擎的开发工作流就可以了。
+In the development process, development and daily debugging, the development workflow of LayaAir engine can be used directly.
 
-- #### 发布流程
+-####Publishing process
 
-在项目发布方面，通过IDE内置了QQ轻游戏的发布功能，选择在发布平台的选项中选择QQ轻游戏，点发布，就可以发布出适配了QQ轻游戏的版本。
+In terms of project release, through the IDE built-in QQ light game release function, choose QQ light game in the options of the release platform, click release, you can release a version that adapts to QQ light game.
 
 ![发布项目图片](img/2-1.png) 
 
-#### 友情提醒：
 
-Layabox引擎开发团队会不定期对QQ轻游戏提供免费的引擎适配并跟随LayaAirIDE的版本进行同步更新。但由于QQ轻游戏的底层目前还不是特别稳定，存在少量功能尚未支持的情况，LayaAirIDE无法保障可以适配每一个QQ轻游戏的版本，且无义务免费解答或点对点处理轻游戏的适配问题。如果开发者在对接的过程中有遇到问题，没有获得即时的解决，欢迎用微信扫码添加Layabox引擎商业合作的负责人。获得VIP商业技术支持服务（一次性付费，或者按发行分成合作）。
+
+####Friendship reminder:
+
+The Layabox engine development team will provide free engine adapters for QQ light games from time to time and update them synchronously with the version of LayaAirIDE. However, because the bottom of QQ light game is not particularly stable, there are a small number of features not yet supported, LayaAirIDE can not guarantee that each version of QQ light game can be adapted, and there is no obligation to free answer or point-to-point processing of light game adaptation issues. If developers encounter problems in the docking process and fail to get an immediate solution, you are welcome to add a Layabox Engine Business Cooperative Director with Wechat Sweep Code. Obtain VIP business technical support services (one-time payment, or co-operation by issue).
+
+
 
  ![图](img/wechat.jpg) 
 
-(商务合作微信)
 
-- #### VSCode或Xcode工程内调试
+(Wechat on Business Cooperation)
 
-在LayaAirIDE内发布完QQ轻游戏的版本后，还需要在玩一玩的开发环境下调试，在window下是VScode,MAC下是Xcode，这些工作就属于QQ轻游戏的调试与对接流程了，具体的调试方法，可以查看QQ轻游戏的官方调试文档：
+-####Debugging in VSCode or Xcode Engineering
+
+After releasing the version of QQ light game in LayaAirIDE, we need to debug it in the development environment of play, VScode in windows and Xcode in MAC. These tasks belong to the debugging and docking process of QQ light game. Specific debugging methods can check the official debugging documents of QQ light game:
 
 [http://hudong.qq.com/docs/engine/debug/intro.html](http://hudong.qq.com/docs/engine/debug/intro.html)
 

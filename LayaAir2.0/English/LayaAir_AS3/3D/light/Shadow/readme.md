@@ -1,36 +1,38 @@
-# 如何为灯光添加阴影
+#How to add shadows to lights
 
 ###### *version :2.0.1beta   Update:2019-3-30*
 
-投影是灯光照射模型时产生的即时阴影，可随着灯光角度、灯光强度、模型位置等变化而变化。投影是3D世界最重要的因素之一，能产生更加强烈的立体感。
+Projection is the instant shadows produced when the model is illuminated by light, which can change with the change of light angle, light intensity and model position. Projection is one of the most important factors in the 3D world, which can produce a stronger stereo sense.
 
-即时阴影非常损耗性能，不能用得太多，特别是游戏场景，模型量较大，一般我们不使用即时投影，而使用静态的光照贴图。
+Immediate shadows are very performance-degrading and can not be used too much, especially in game scenes. There are a large number of models. Generally, we do not use instant projection, but use static light mapping.
 
-要让场景中产生投影，我们需了解灯光的以下属性：
+To generate projection in a scene, we need to understand the following attributes of light:
 
-**shadow：**是否开启投影，布尔值，设置为true后生效。
+**Shadow:**Whether to turn on the projection, Boolean value, set to true, will take effect.
 
-**shadowDistance：**产生投影的范围，范围是指摄像机到模型的距离，单位为米。大于这个范围模型将不会接受投影与产生投影，开发者可以根据场景大小进行设置。
+**Shadow Distance:**The range of projection is the distance from the camera to the model in meters. Models larger than this range will not accept projections and generate projections, and developers can set them according to the size of the scene.
 
-**shadowPCFType：**阴影模糊等级0-3，模糊值越大，阴影越柔和，效果越好，但更耗性能。
+**Shadow PCFType:**Shadow blur level 0-3, the greater the blur value, the softer the shadow, the better the effect, but the more performance consumption.
 
-**shadowPSSMCount：**产生阴影贴图的数量，数量越高，阴影越细腻，性能损耗越大。
+**ShadowPSSMCount:**The higher the number of shadow maps produced, the finer the shadows and the greater the performance loss.
 
-**shadowResolution：**投影的质量，投影范围中的阴影大小。通过数值设置质量，数值越大，投影质量越高，性能损耗也会随之加高。投影的质量值是以2的N次幂为单位设置，默认为512，可以设置成1024、2048…..等。
+**Shadow Resolution:**The quality of projection, the shadow size in the projection range. By setting the quality of the numerical value, the larger the numerical value, the higher the projection quality and the higher the performance loss. The projection quality value is set in units of N power of 2. By default, it is 512. It can be set to 1024, 2048. And so on.
 
-更详细使用的可以去 [查看API](https://layaair.ldc.layabox.com/api2/Chinese/index.html?category=3D&class=laya.d3.core.light.LightSprite)。
+More detailed usage is available[查看API](https://layaair.ldc.layabox.com/api2/Chinese/index.html?category=3D&class=laya.d3.core.light.LightSprite)。
 
-除此之外，还要需要在模型上设置投影属性。
+In addition, projection properties need to be set on the model.
 
-**receiveShadow：**是否接受投影，当模型此属性为true时，计算出的投影会在此模型上显示出来。在游戏中，我们可以把场景的地面，及场景中可走动区域中的模型castShadow属性设置为true。
+**Recive Shadow:**Whether to accept projection? When the attribute of the model is true, the calculated projection will be displayed on the model. In the game, we can set the ground of the scene and the castShadow attribute of the model in the movable area of the scene to true.
 
-**castShadow：**是否产生投影，当模型此属性为true时，灯光根据产生阴影的模型位置、模型网格形状大小、与灯光的角度等进行投影计算，然后在接受阴影的模型上产生投影。比如场景中的角色、NPC等活动游戏元素可以开启此属性。
+**CastShadow:**Whether projection occurs or not, when the model attribute is true, the light projection is calculated according to the position of the model, the shape and size of the model mesh, and the angle of the light, and then the projection is generated on the model receiving the shadow. Active game elements such as characters in the scene, NPC, etc. can open this property.
 
-此处展示效果的demo地址：
+The demo address for the effect shown here:
 
-灯光方面的设置:
+Lighting settings:
+
 
 ```typescript
+
 //灯光开启阴影
 directionLight.shadow = true;
 //可见阴影距离
@@ -43,9 +45,12 @@ directionLight.shadowPSSMCount = 1;
 directionLight.shadowPCFType = 3;
 ```
 
-开启地面接收阴影和模型产生阴影：
+
+Turn on the ground to receive shadows and model to generate shadows:
+
 
 ```typescript
+
 //地面加到场景上 并且获取地面
 var grid:Sprite3D = scene.addChild(Loader.getRes("res/threeDimen/staticModel/grid/plane.lh")) as Sprite3D;
 //地面接收阴影
@@ -56,7 +61,8 @@ var grid:Sprite3D = scene.addChild(Loader.getRes("res/threeDimen/staticModel/gri
 
 ```
 
-然后来看下效果。
 
-![](img/1.png)<br>(图1)
+Then look at the effect.
+
+![] (img/1.png)<br> (Figure 1)
 

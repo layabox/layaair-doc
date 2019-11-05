@@ -1,16 +1,18 @@
-# 可视遮罩层Layer
+#Visual mask Layer
 
 ###### *version :2.0.1beta   Update:2019-3-19*
 
-​	在我们制作游戏时，我们可能想要使某些在场景上的物体不可视，来达到‘ 隐身 ’的效果。这时候我们就可以用到 **Layer图层** 这个属性了。我们可以设置对象的图层和设置摄像机可视图层来达到想要的效果。
+When we make games, we may want to make some objects in the scene invisible to achieve the effect of "stealth". And then we can use it.**Layer layer**This property. We can set the layer of the object and the visual layer of the camera to achieve the desired effect.
 
-**Tip**:在LayaAir中，摄像机初始时可以看到所有图层的，所以在使用前需要调用**removeAllLayers**方法来移除所有图层。
+**Tip**In LayaAir, the camera can see all the layers at the beginning, so it needs to be called before it can be used.**RemoveAll Layers**Method to remove all layers.
 
-来看下我们摆出来的场景。
+Let's take a look at the scene we've set up.
 
-![](img/1.png)<br>（图1）
+![] (img/1.png)<br> (Figure 1)
+
 
 ```typescript
+
 ......
 //设置图层
 staticLayaMonkey.layer = 1;//本体猴
@@ -37,8 +39,9 @@ changeActionButton.on(Event.CLICK, this, function():void {
 });
 ```
 
-添加后的效果（图2）：
 
-![](img/2.gif)<br>(图2)
+The added effect (Figure 2):
 
-本次示例（[demo地址](https://layaair.ldc.layabox.com/demo2/?language=ch&category=3d&group=Camera&name=CameraLayer)）；
+! [] (IMG / 2. GIF) < br > (Figure 2)
+
+This example（[demo地址](https://layaair.ldc.layabox.com/demo2/?language=ch&category=3d&group=Camera&name=CameraLayer));

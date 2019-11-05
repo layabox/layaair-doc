@@ -1,89 +1,94 @@
-# 预设使用
+#Presupposition use
 
-在项目开发中，经常会出现这样的情况：
+In project development, such a situation often occurs:
 
-1.立项的时候，美术定义一系列标准的字体颜色，字号，在各个UI中应用，有一天美术突然说要更改默认的字体颜色，字号，苦逼的UI制作者就需要把所有界面都修改一次，这样会非常麻烦。**针对这种情况，使用默认属性设置或者预设就能轻松应付，只修改一个地方，就能影响全局。**
+1. When setting up the project, art defines a series of standard font colors, font sizes, which are used in various UIs. One day, art suddenly said that to change the default font colors, font sizes, the hard-pressed UI producer would need to modify all the interfaces once, which would be very troublesome.**In view of this situation, it is easy to deal with it by using default property settings or presuppositions, and modifying only one place can affect the overall situation.**
 
-2.不同的界面，局部会有相同的模块，并且逻辑代码也是一样的，这种情况，**使用页面嵌+runtime（页面逻辑类）就能轻松应对**
+2. Different interfaces will have the same module locally, and the same logic code.**Using Page Embedding + Runtime (Page Logic Class) is easy to deal with.**
 
-3.不同的界面，局部有相同的布局，希望修改一次，多个界面相同布局跟着一起变化。**针对这种情况使用页面嵌套和预设就能轻松应对**
+3. Different interfaces have the same layout locally. We want to modify them once, and the same layout of multiple interfaces changes with each other.**Page nesting and presupposition are easy to deal with in this case.**
 
-针对类似上面需求，LayaAirIDE提供了三种方案：
+LayaAirIDE offers three solutions for similar needs:
 
-**1.资源默认属性设置** (给单个组件设置默认值，修改全局生效)
+**1. Resource default property settings**(Set default values for individual components, modify global validity)
 
-**2.UI组件预设** （把局部UI布局保存为预设，拖入别的页面使用，修改预设属性，全局生效）
+**2. UI component preset**(Save the local UI layout as default, drag it into other pages, modify the default properties, and take effect globally)
 
-**3.页面嵌套** （把局部UI保存为页面，然后拖入别的页面复用，加上runtime，还能复用逻辑）
+**3. Page nesting**(Save the local UI as a page and drag it into other pages for reuse, plus runtime, and reuse logic)
 
-接下来本文将介绍这三种预设如何使用。
+Next, this article describes how these three presuppositions are used.
 
-### 一.资源默认属性设置
+###Default Property Settings for Resources
 
-1.在资源面板中选中一个资源，双击打开资源属性设置面板，如动图一所示：
+1. Select a resource in the Resource Panel and double-click to open the Resource Properties Settings Panel, as shown in Motion 1:
 
 ![1](img\1.gif)(图1)
 
-2.在默认全局中预设组件属性值，如示例所示，直接给属性设置值即可（**注意：等号“=”前后不能有空格**）。如图2所示：
 
-![2](img\2.png)(图2)
+2. Preset component property values in the default global, as shown in the example, just set values directly to the properties.（**Note: There should be no spaces around the equals sign "="**) As shown in Figure 2:
 
-显示效果如下：
+![2](img\2.png)(Fig. 2)
 
-![3](img\3.png)(图3)
+The results are as follows:
 
-如果某一个地方不想用预设信息的话可以直接将预设组件拖拽到UI页面上在属性栏中修改对应的属性值，来覆盖默认值。
+![3](img\3.png)(Fig. 3)
 
-**该模式特性：可以给组件设置九宫格以及图片类型，可以设置某个字体颜色，字号，然后拖入多个地方使用**
+If a place does not want to use default information, it can directly drag the default component onto the UI page and modify the corresponding property values in the property bar to override the default values.
 
-**与其它模式差异：只能对单个的组件进行预设，不能对自定义组合的元素预设属性值**
+**This mode feature: you can set nine palaces and picture types for components, you can set a font color, font size, and then drag it into multiple places to use.**
+
+**Unlike other modes: only individual components can be preset, not elements of custom combinations can be preset with attribute values**
 
 
 
-### 二.UI组件预设
+###II. UI Component Preset
 
-1、比如我们要制作一个自定义的Sprite预设组件，将页面中要制作成预设组件的元素设置好要用的属性值。如图4所示：
+1. For example, we need to create a custom Prite default component, which sets the attribute values of the elements to be made into the default component in the page. As shown in Figure 4:
 
 ![4](img\4.png) 
 
-(图4)
 
-2、点击右侧的保存预设按钮，将该Sprite节点下的全部组件保存为预设，修改名称后点击确定即可，如图5所示：
+(Fig. 4)
+
+2. Click on the Preserve Preset button on the right, save all components under the Sprite node as preset, change the name and click OK, as shown in Figure 5:
 
 ![图5](img/5.png) 
 
-(图5)
 
-点击`确定`保存后，在场景预设文件面板（prefab）中会生成一个.prefab为后缀的预设文件。同时场景界面中的组件颜色会发生改变（这个颜色代表该组件为自定义预设组件）。如图6所示。
+(Fig. 5)
 
-![6](img\6.png)(图6)
+click`确定`After saving, A. prefab prefab file is generated in the prefab. At the same time, the component color in the scene interface will change (this color represents that the component is a custom default component). As shown in Figure 6.
 
-.prefab的预设文件可以在不同页面中直接拖入使用，如果想在某个界面中修改预设组件的属性值，也可以直接在该UI界面上对每个预设组件分别进行修改。如图7所示。
+![6](img\6.png)(Fig. 6)
+
+. prefab preset files can be directly dragged into different pages. If you want to modify the attribute values of preset components in an interface, you can also directly modify each preset component in the UI interface. As shown in Figure 7.
 
 ![图7](img/7.png) 
 
-（图7）
 
-**该模式特性：只能对当前节点以及子节点树设置为预设**
+(Fig. 7)
 
-**与其它模式差异：可以在当前页面直接双击到子级修改属性。并且每个页面中对预设文件的组件属性修改，只会对自己有效，不会影响到其它预设组件**
+**This pattern feature: only the current node and the sub-node tree can be set as preset**
+
+**Unlike other modes: you can modify attributes directly by double-clicking on the current page to a sublevel. And the component attributes of the default file are modified in each page, which will only be valid for itself and will not affect other default components.**
 
 
 
-### 三.页面嵌套
+###3. Page nesting
 
-在项目开发中，有时会有一个UI页面在多处使用的功能（不使用代码添加的情况下）。在LayaAirIDE中可以直接一个UI页面拖拽到另外一个UI页面中去使用。如动图8所示：
+In project development, sometimes there is a UI page that can be used in many places (without adding code). In LayaAirIDE, you can drag and drop one UI page directly to another. As shown in Figure 8:
 
 ![8](img\8.gif) (动图8)
 
-在图8中，我们将制作好的UI页面直接以拖拽的形式放到了另外一个UI页面中，这就是UI页面嵌套
 
-**该模式特性：可以设置更加复杂的节点组件的组合**
+In Figure 8, we drag and drop the UI page directly into another UI page, which is called UI page nesting.
 
-**与其它模式差异：不能在某个页面上修改组件的属性,只能双击进入到UIView页面中去修改；一旦修改，所有用到的地方都会改变,**
+**This pattern feature allows you to set up more complex combinations of node components**
+
+**Unlike other modes: you can't modify the properties of components on a page, you can only double-click into the UIView page to modify; once you modify, everything you use will change.**
 
 
 
-**结束语：**
+**Concluding remarks:**
 
-三种预设共同优点是减少重复修改的操作。如果在不同界面使用了预设组件（或页面），直接修改预设组件（或页面）即可，用到的地方都会发生改变。不用一个个的去修改
+The common advantage of the three presuppositions is to reduce the operation of repeated modifications. If the default components (or pages) are used in different interfaces, the default components (or pages) can be modified directly, and the places used will change. Don't change it one by one.

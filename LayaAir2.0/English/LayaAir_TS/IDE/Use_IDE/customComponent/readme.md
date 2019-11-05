@@ -1,98 +1,103 @@
-# 自定义组件的制作与使用
-　　LayaAir IDE提供多种常用UI组件以满足基本的需求，然而实际开发中开发者往往需要自定义的UI组件以满足其特殊需求。LayaAir提供自定义组件的接口，开发者可以根据需要修改或添加组件，新的组件能够被LayaAirIDE识别、使用。本篇以缩放按钮为例，介绍如何添加一个新的组件，以及如何在LayaAirIDE中使用这个组件。
+#The Making and Use of Custom Components
+LayaAir IDE provides a variety of common UI components to meet basic needs, but in actual development, developers often need custom UI components to meet their special needs. LayaAir provides an interface for custom components. Developers can modify or add components as needed. New components can be identified and used by LayaAir IDE. This article takes the zoom button as an example to show how to add a new component and how to use it in LayaAirIDE.
 
-## 1、了解组件结构与规则
+##1. Understanding Component Structure and Rules
 
-### 1.1组件目录结构
+###1.1 Component Directory Structure
 
-组件目录位于LayaAirIDE根目录下的“\resources\app\out\vs\layaEditor\renders”目录内。如图1所示：
+The component directory is located in the  resources app out vs layaEditor renders directory under the LayaAirIDE root directory. As shown in Figure 1:
 
-![1](img/1.png) <br />
-（图1）
+![1](img/1.png)<br / >
+(Fig. 1)
 
-**组件目录结构介绍**：
+**Introduction to Component Directory Structure**:
 
-　　“custom”：该目录用于存放自定义组件的js与xml文件；
+Custom: This directory is used to store JS and XML files of custom components.
 
-　　“laya.editorUI.js”：LayaAirIDE自带组件的功能实现代码；
+"Laya. editorUI. js": LayaAirIDE's own component function implementation code;
 
-　　“laya.editorUI.xml”：LayaAirIDE自带组件的配置信息；
+"Laya. editorUI. xml": configuration information of LayaAirIDE's own components;
 
-### 1.2 组件的xml配置信息说明
+###Description of XML configuration information for 1.2 components
 
-　　一个完整的组件由js与xml两部分构成，其中js是组件的功能实现部分，xml是在IDE内的组件显示与调用部分，包括了组件图片资源名（区分大小写）、属性面板的选项与默认值等。
+A complete component consists of JS and xml. JS is the functional implementation part of the component. XML is the component display and invocation part in the IDE, including the component image resource name (case-sensitive), the option and default value of the attribute panel, etc.
 
-　　下面以laya.editorUI.xml中的TextArea组件为例进行介绍：
+The following is an example of the TextArea component in laya.editorUI.xml:
+
 
 ```xml
+
 <TextArea className="laya.editorUI.TextArea" inherit="TextInput" defaultValue="text='TextArea'" skinLabel="skin" resName="area" icon="TextArea" groups="公用,常用,宽高及位置,旋转及缩放" drag="3">
 	<prop name="vScrollBarSkin" tips="垂直滚动条皮肤" type="string" default="" accept="res" group="常用" />
 	<prop name="hScrollBarSkin" tips="水平滚动条皮肤" type="string" default="" accept="res" group="常用" />
 </TextArea>
 ```
-**组件XML说明**：
 
-"TextArea": TextArea标记作为组件的开始和结束。TextArea的命名可以与类别不同，但是要易于理解记忆，用于IDE中的组件名显示；
+**Component XML Description**:
 
-"classsName": 该组件的完整的类路径，如：laya.editorUI.TextArea；
+TextArea: TextArea tags serve as the beginning and end of components. TextArea can be named differently from categories, but it should be easy to understand and memorize for display of component names in IDE.
 
-"inherit": 继承的父类；
+"ClasssName": The complete class path of the component, such as laya. editorUI. TextArea;
 
-"defaultValue": 组件属性的默认值；
+"Inherit": the parent class of inheritance;
 
-"skinLabel": 用于属性面板中的skin相关设置。skinLabel的值对应prop的name字段及相关设置，如果prop中没有，则不进行设置，TextArea组件内就没有这个设置；
+"DefaultValue": the default value of component properties;
 
-"resName": 组件资源前缀（区分大小写），具有该前缀的资源才被识别为该组件；TextArea的配置area为TextArea的缩写模式，在IDE的组件面板会显示TextArea。关于组件命名方面，可以查看IDE组件基础的“组件资源命名规则”文档；
+Skin Label: For skin-related settings in the property panel. The value of skinLabel corresponds to the name field and related settings of prop. If there is no one in prop, it will not be set, and there will be no such settings in the TextArea component.
 
-"icon":  组件在IDE中显示的图标名（区分大小写），图标的目录位于LayaAirIDE根目录下的"resources\app\out\vs\layaEditor\laya\icons\components"目录内，这里我们可以创建新的icon图标，也可以多个组件共同使用一个图标。如: TextArea将对应component目录内的TextArea.png
+"ResName": Component resource prefix (case-sensitive), resources with the prefix are recognized as the component; TextArea is configured as an abbreviation for TextArea, and TextArea is displayed on the component panel of the IDE. In terms of component naming, you can view the IDE component-based "Component Resource Naming Rules" document.
 
-"groups": 用于属性面板的分组显示，以逗号分隔；
+"Icon": The icon name (case-sensitive) displayed by the component in the IDE. The icon directory is located in the "resources app out vs layaEditor laya icons components" directory under the LayaAirIDE root directory. Here we can create a new icon icon, or multiple components can use one icon together. For example: TextArea will correspond to TextArea. PNG in the component directory
 
-"drag": 拉伸取值参数：1：有两个点，只可以横向拉伸，如hscroll组件；2：有两个点，只可以竖向拉伸，如vscroll组件；3：有八个点，可以横向、竖向、放大、缩小拉伸；
+"Groups": Grouping display for attribute panels, separated by commas;
 
-"prop": prop内是属性面板中属性的设置，每一个prop标记对应一个组件属性；
+"Drag": drawing parameters: 1: there are two points, which can only be stretched horizontally, such as hscroll component; 2: there are two points, which can only be stretched vertically, such as vscroll component; 3: there are eight points, which can be stretched horizontally, vertically, enlarged and reduced;
 
-"name": 属性的名字，会显示在属性面板中；
+"Prop": In prop is the setting of attributes in the attribute panel, and each prop tag corresponds to a component attribute.
 
-"tips": 鼠标停留在属性名上显示的tips提示信息；
+"Name": The name of the property is displayed in the property panel.
 
-"type": 输入框内的属性值类型；
+"Tips": Tips prompt information displayed when mouse hovers over attribute name;
 
-"default": 该属性的默认值；
+"Type": the type of attribute value in the input box;
 
-"accept": 该属性接收res与files两个值。res代表该属性栏可以拖入单个资源；files代表该属性栏可以拖入多个资源；
+"Default": the default value of this property;
 
-"group": 该属性所在的分组；对应groups中的分组，不存在的归属于“其他”分组；
+"Accept": This property receives two values, res and files. Res represents that the property bar can be dragged into a single resource; files represent that the property bar can be dragged into multiple resources;
 
-
-
-### 2、导入LayaAirIDE组件库
-
-#### 2.1下载LayaAirIDE组件库（本篇为TS版）
-
-　　TS版下载地址：[https://layabox.github.io/layaair-doc/resources/2D/Component/layaeditor.d.zip](https://layabox.github.io/layaair-doc/resources/2D/Component/layaeditor.d.zip)
-
-#### 2.2创建项目并导入到项目的目录内
-
-　　先用LayaAirIDE创建一个TS项目（创建项目请查看相关教程，本篇不再详解）。然后将下载的zip包解压，把layaeditor.d.ts文件放在libs目录下。如图2所示：
-
-![2](img/2.png) <br />
-（图2）
+"Group": the group of this attribute; corresponds to the group in groups, and the nonexistent group belongs to "other" group;
 
 
 
-### 3、制作一个自定义组件
+###2. Import LayaAirIDE Component Library
 
-#### 3.1创建一个组件类
+####2.1 Download LayaAirIDE Component Library (TS version)
 
-　　 先创建一个组件目录(包)"component"，方便未来其它组件的分类，然后在component目录下创建一个缩放按钮类ScaleButton.ts，如图3所示：
+TS Edition Download Address:[https://layabox.github.io/layaair-doc/resources/2D/Component/layaeditor.d.zip](https://layabox.github.io/layaair-doc/resources/2D/Component/layaeditor.d.zip)
 
-![3](img/3.png)<br />
-（图3）
+####2.2 Create a project and import it into the project directory
 
-创建完成后，我们开始编写缩放组件的代码如下：
+First, create a TS project with LayaAirIDE (see the relevant tutorials for creating the project, this article will not elaborate). Then the zip package downloaded is decompressed and the layaeditor.d.ts file is placed in the LIBS directory. As shown in Figure 2:
+
+![2](img/2.png)<br / >
+(Fig. 2)
+
+
+
+###3. Making a custom component
+
+####3.1 Create a Component Class
+
+Create a component directory (package) "component" to facilitate the classification of other components in the future, and then create a scaleButton. TS class under the component directory, as shown in Figure 3:
+
+![3](img/3.png)<br / >
+(Fig. 3)
+
+After the creation is complete, we begin to write the following code for the scaling component:
+
 
 ```typescript
+
 import Button = laya.editorUI.Button;
 //缩放时间，单位为
 var scaleTime:number = 100;
@@ -129,11 +134,14 @@ module component{
 
 
 
-#### 3.2编写组件的xml配置文件
 
-　　按照上文中讲到的xml配置说明，我们完成这个缩放按钮的xml配置，那这个自定义组件就算是制作完成了。缩放按钮的xml配置信息编写如下：
+####3.2 Writing XML configuration files for components
+
+According to the XML configuration instructions mentioned above, we complete the XML configuration of the zoom button, and the custom component is even completed. The XML configuration information of the zoom button is written as follows:
+
 
 ```xml
+
 <?xml version="1.0" encoding="utf-8" ?>
 <uiComp>
 	<ScaleButton className="component.ScaleButton" runClass="component.ScaleButton"  inherit="Button" skinLabel="skin" 
@@ -143,111 +151,116 @@ module component{
 </uiComp>
 ```
 
-Tips：xml的配置信息内容解释参照上文的组件xml说明。
+
+Tips: XML Configuration Information Content Interpretation refers to the component XML description above.
 
 
 
-### 4、添加与使用自定义组件
+###4. Adding and Using Custom Components
 
-#### 4.1将组件添加到IDE的自定义组件目录
+####4.1 Adding components to the IDE's custom component directory
 
-　　xml配置文件编写完成后，直接保存在自定义组件的目录（LayaAirIDE根目录下的“resources\app\out\vs\layaEditor\renders\custom”内），组件xml的命名需要与组件js保持一致，这里我们命名为ScaleButton.xml。然后我们将分包编译生成的ScaleButton.js（"项目根目录/bin/js"目录下，参照图4）复制到自定义组件的目录。如图5所示：
+After compiling the XML configuration file, it is stored directly in the directory of the custom component (resources app out vs layaEditor renders custom) under the root directory of LayaAirIDE). The name of the component XML needs to be consistent with that of the component js. Here we call it ScaleButton. xml. Then we copy ScaleButton. JS generated by subcontracting compilation (under the "Project Root Directory / bin / js" directory, refer to Figure 4) to the directory of the custom component. As shown in Figure 5:
 
-![5](img/4.png)<br />
-（图5）
+![5](img/4.png)<br / >
+(Fig. 5)
 
-#### 4.2在IDE组件面板中显示
+####4.2 Displayed in IDE Component Panel
 
-　　打开IDE组件目录（LayaAirIDE根目录\resources\app\out\vs\layaEditor\laya\basics）新建一个自定义组件存放目录Custom，用于存放自义定的组件，如图6所示。
+Open the IDE component directory (LayaAirIDE root directory resources app out vs layaEditor laya basics) and create a custom component storage directory Custom to store self-defined components, as shown in Figure 6.
 
-![6](img/5.png)<br />
-(图6)
-
-
-
-　　然后在Custom目录内放一个以ScaleButton命名的png 图标（建议尺寸为16*16），如图7所示，完成该步骤即可在IDE的组件面板中找到我们自己创建的缩放按钮组件，如图8所示。
+![6](img/5.png)<br / >
+(Fig. 6)
 
 
 
-![7](img/6.png)<br />
-（图7）图标命名对应组件xml中resName属性的值
+Then place a PNG icon named ScaleButton in the Custom directory (the recommended size is 16*16), as shown in Figure 7. Once you complete this step, you can find the scaleButton component we created in the component panel of the IDE, as shown in Figure 8.
 
 
 
-![8](img/7.png)<br />
-（图8）IDE的组件名对应组件xml的标记名
-
-**Tips:** 额外提醒的是，组件的icon图标并非是"LayaAirIDE根目录\resources\app\out\vs\layaEditor\laya\basics\Custom"目录中的sButton.png。icon图标位于LayaAirIDE根目录下的"resources\app\out\vs\layaEditor\laya\icons\components"目录内，对应xml中icon属性的值，上文中的xml说明已进行介绍。如果创建自己的icon图标，参照components目录内的icon尺寸标识制作，放到components目录内，然后在xml中设置对应的文件名即可。
+![7](img/6.png)<br / >
+(Figure 7) Icon naming the value of resName attribute in the corresponding component XML
 
 
 
-#### 4.3在IDE资源面板中显示
+![8](img/7.png)<br / >
+(Figure 8) The component name of the IDE corresponds to the tag name of the component XML
 
-　　资源面板中，默认在comp文件中放置了常用UI组件的skin资源，通过组件命名规则方便的将skin资源识别为组件使用（资源必须存放于"项目根目录\laya\assets"下才会被识别为组件）。与组件面板的组件属性skin值为空不同，资源面板中的组件属性skin默认值是"\laya\assets"目录下的相对路径。
-
-　　为了方便项目使用带skin资源的组件，我们继续介绍如何在资源面板中显示组件。首先我们先准备一张skin资源，由于上文示例的自定义组件是缩放按钮，我们直接复制任意一张图片即可体验缩放按钮组件的缩放效果。图片资源复制到"项目根目录\laya\assets"目录下即可，图片资源命名为xml中resName的属性值sButton或以sButton为前缀，如图9所示。
-
-![9](img/9.png)<br />
-(图9)
+**Tips:**Additionally, the icon icon of the component is not sButton.png in the "LayaAirIDE root directory resources app out vs layaEditor laya basics Custom" directory. Icon icon is located in the "resources app out vs layaEditor laya laya icons components" directory under the root directory of LayaAirIDE, corresponding to the value of icon attribute in xml, which is described in the XML description above. If you create your own icon, refer to the icon size identification in the components directory, make it into the components directory, and then set the corresponding file name in xml.
 
 
 
-　　资源复制完成后，我们再次打开LayaAirIDE的资源管理面板，点击刷新资源树按钮即可看到刚刚复制的ScaleButton_monkey.png，点击该图片，我们可以看到图片的预览。说明我们带skin默认值的自定义组件成功的添加到项目的资源管理面板中，如图10所示。
+####4.3 Displayed in IDE Resource Panel
+
+In the resource panel, by default, skin resources of common UI components are placed in the comp file, and skin resources are easily identified as components by component naming rules (resources must be stored in the "project root directory laya assets" before they can be identified as components). Unlike the component attribute skin value of the component panel, the default value of the component attribute skin in the resource panel is the relative path in the " laya assets" directory.
+
+To facilitate project use of components with skin resources, we continue to describe how to display components in the resource panel. First, we prepare a skin resource. Since the custom component in the above example is the zoom button, we can directly copy any picture to experience the zoom effect of the zoom button component. Picture resources can be copied to the "project root directory laya assets" directory. Picture resources are named sButton or prefixed with sButton in xml, as shown in Figure 9.
+
+![9](img/9.png)<br / >
+(Fig. 9)
 
 
 
-![10](img/8.png)<br />
-(图10)
-
-　　Tips：资源面板中显示的组件仅用于当前项目，添加到组件面板中才是所有项目的通用组件。
+After the resource replication is completed, we open the resource management panel of LayaAirIDE again, click the refresh resource tree button to see the newly replicated ScaleButton_monkey.png, click the picture, and we can see the preview of the picture. This shows that our custom component with skin default value was successfully added to the project's resource management panel, as shown in Figure 10.
 
 
 
-#### 4.4使用自定义组件
+![10](img/8.png)<br / >
+(FIG. 10)
 
-　　在项目管理面板创建一个演示页面（该页仅用于组件的效果演示，不进行操作步骤的详细介绍），有两种方式使用我们自定义的缩放按钮组件。
+Tips: The components shown in the resource panel are only used for the current project, and adding them to the component panel is the common component for all projects.
 
-##### 4.4.1从资源面板中使用
 
-　　在资源管理面板中找到sButton为前缀的组件，直接拖拽到页面，点击可看到缩放效果，如图11。
+
+####4.4 Use custom components
+
+Create a demo page in the project management panel (this page is only for demonstrating the effects of components, without detailed description of the operation steps). There are two ways to use our custom zoom button component.
+
+#####4.4.1 Used from Resource Panel
+
+In the Resource Management Panel, find the component prefixed by sButton, drag it to the page directly, and click to see the zoom effect, as shown in Figure 11.
 
 ![11](img/ide11.gif)<br />
-（图11）
 
-##### 4.4.2从组件面板中使用
+(FIG. 11)
 
-　　在组件面板中找到ScaleButton组件，直接拖拽到页面，点击可看到缩放效果，如图12。
+#####4.4.2 Used from Component Panel
 
-![12](img/ide12.gif)<br />
-(图12)组件面板中不含图片资源，需要通过属性skin设置
+Find the scalebutton component in the component panel, drag it directly to the page, and click to see the zoom effect, as shown in Figure 12.
+
+![12](img/ide12.gif)<br / >
+(Figure 12) The component panel does not contain image resources and needs to be set through the property skin
 
 
 
-### 5、组件的调试
+###5. Debugging of Components
 
-　　根据上面的内容，我们已经完成了LayaAirIDE的组件制作与使用全部流程。但是，在正式的自定义组件的过程中，有一步非常重要的环节，为了简化流程，尽快实现自定义组件的目标而跳过了，这一步就是组件的调试。
+According to the above, we have completed the whole process of making and using LayaAirIDE components. However, in the formal process of customizing components, there is a very important step. In order to simplify the process and achieve the goal of customizing components as soon as possible, this step is the debugging of components.
 
-　　跟着文档操作一帆风顺，缺少调试环节固然没有什么问题，然而在实际开发过程中，大多数人无法保障编码无任何错误。而将带着错误的组件添加到IDE，就不会像本篇文档中那么顺利了，并且在IDE里组件很难调试。因此，在这一小节里，我们补充上遗失的步骤，编写完组件后，先进行调试，然后再分包编译。
+With the smooth operation of documents, the lack of debugging links is no problem, but in the actual development process, most people can not guarantee that there are no errors in coding. Adding components with errors to the IDE will not go as smoothly as in this document, and components are difficult to debug in the IDE. Therefore, in this section, we add the missing steps. After compiling the components, we debug them first, and then subcontract and compile them.
 
-#### 5.1复制图片到项目的资源路径
+####5.1 Resource Path to Copy Pictures to Projects
 
-　　复制一张图片到项目的资源路径"项目根目录/res/img"目录下，如图13所示。
+Copy a picture to the project's resource path under the project root directory / RES / img directory, as shown in Figure 13.
 
 ![13](img/12.png)<br />
-(图13)
 
-#### 5.2修改组件的类引用
+(FIG. 13)
 
-　　打开上文编写的缩放按钮代码ScaleButton.ts，将原来的组件库引入“import Button = laya.editorUI.Button;”改为引擎的UI库引入“import Button = laya.ui.Button;”，其它保持不变。因为 laya.editorUI是用于LayaAirIDE的，而项目运行必须引用引擎库laya.ui。如图14所示：
+####5.2 Modify class references for components
 
-![14](img/13.png)<br />
-(图14)
+Open the scaleButton.ts code written above, and introduce the original component library into "import Button = laya.editorUI.Button;" instead of "import Button = laya.ui.Button"; the engine's UI library into "import Button = laya.ui.Button;", and the rest remains unchanged. Because laya. editorUI is used for LayaAirIDE, the engine library laya. UI must be referenced for project running. As shown in Figure 14:
 
-#### 5.3创建一个入口类
+![14](img/13.png)<br / >
+(FIG. 14)
 
-　　在“项目根目录/src”下创建一个入口类Main.ts，编码如下：
+####5.3 Create an entry class
+
+Create an entry class Main.ts under Project Root Directory/src, coded as follows:
+
 
 ```typescript
+
 import GameConfig from "./GameConfig";
 import ScaleButton from"./component/ScaleButton";
 class Main {
@@ -292,23 +305,26 @@ new Main();
 
 ```
 
-　　将Main在.laya/gulpfile.js文件中设置为启动类，如图15所示。然后在浏览器中点击能够实现缩放效果时，如图16所示。说明这是有效的自定义组件，可以放心的添加到IDE中使用了。（注意：正常的步骤是调试在分包之前，而本篇先介绍的分包操作，如果直接调试会出现报错，所以在编译运行之前，需要先将分包配置文件module.def改名或删除）
 
-![15](img/14.png)<br />
-(图15)
+Main is set as the startup class in the. laya/gulpfile.js file, as shown in Figure 15. Then click in the browser to achieve the zoom effect, as shown in Figure 16. It shows that this is an effective custom component, which can be safely added to the IDE. (Note: The normal step is to debug before subcontracting, and the subcontracting operation introduced in this article will cause errors if debugging directly, so the subcontracting configuration file module. def needs to be renamed or deleted before compiling and running.)
 
-![16](img/16.gif)<br />
-（图16）Tips：调试成功，准备发布组件时，不要忘记把分包配置文件module.def恢复。另外，发布分包的JS代码时，调试时import的laya.ui也要恢复为 laya.editor。
+![15](img/14.png)<br / >
+(FIG. 15)
+
+![16](img/16.gif)<br / >
+(Figure 16) Tips: Successful debugging. When you are ready to release components, don't forget to restore the subpackage configuration file module. def. In addition, when issuing subcontracted JS code, laya. UI imported during debugging should also be restored to laya. editor.
 
 
 
-### 6、组件的注册
+###6. Registration of Components
 
-组件注册是把自定义的组件和某个类名关联起来，显示的时候按照注册映射进行实例。新增的自定义组件需要注册才能使用。
+Component registration is to associate a custom component with a class name, which is displayed as an instance according to the registration mapping. Additional custom components need to be registered for use.
 
-组件ScaleButton注册示例：
+The component ScaleButton registration example:
+
 
 ```typescript
+
 View.regComponent("ScaleButton",component.ScaleButton);//注册组件
 ```
 
@@ -316,16 +332,17 @@ View.regComponent("ScaleButton",component.ScaleButton);//注册组件
 
 
 
-### 7、其他说明
 
-如果自定义的组件是容器类组件，如果需要在项目中使用，则需要在LayaAir IDE 项目的编辑器模式下，按F9打开项目设置面板，在“容器列表”中添加自定义的容器组件类名（以逗号间隔），如图17所示。
+###7. Other Notes
 
-![17](img/16.png)<br />
-(图17)
+If the custom component is a container class component, and if it needs to be used in the project, you need to open the project settings panel by pressing F9 in the Editor Mode of the LayaAir IDE project and add a custom container component class name (in comma interval) to the Container List, as shown in Figure 17.
 
-如果自定义的组件是页面类组件，如果需要在项目中使用，则需要在此LayaAir IDE 项目的编辑器模式下，打开项目设置面板，在“页面列表”中添加自定义的页面组件类名（以逗号间隔），如图18所示。
+![17](img/16.png)<br / >
+(FIG. 17)
 
-![18](img/17.png)<br />
-（图18）
+If the custom component is a page class component, if you need to use it in the project, you need to open the project settings panel in the Editor Mode of the LayaAir IDE project and add a custom page component class name (in comma interval) to the Page List, as shown in Figure 18.
 
-本篇至此结束，如有疑问请到社区提出：http://ask.layabox.com
+![18](img/17.png)<br / >
+(Fig. 18)
+
+This is the end of this article. If you have any questions, please go to the community and ask: http://ask.layabox.com.

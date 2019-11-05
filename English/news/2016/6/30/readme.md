@@ -1,53 +1,58 @@
-# LayaAir1.0发布会：不仅仅是H5，更是一场游戏变革
+#LayaAir 1.0 Release: Not only H5, but also a game change
 
-2016-06-30 
+June 30, 2016
 
-6月30日，知名引擎厂商LayaBox在北京国际会议中心举行了旗下第二代引擎LayaAir1.0版本发布会，正式面向全球发布了LayaAir游戏引擎1.0版本。现场20余位游戏圈大佬、50余家媒体、300余名业内人士共同见证了中国HTML5（以下简称H5）技术的一次突破。
+On June 30, LayaBox, a well-known engine manufacturer, launched its second generation engine, LayaAir 1.0, at the Beijing International Conference Center, and officially launched the LayaAir game engine 1.0 worldwide. More than 20 big game players, more than 50 media and more than 300 professionals witnessed a breakthrough in China's HTML5 (hereinafter referred to as H5) technology.
 
-##  LayaAir1.0不仅仅是H5 
+##LayaAir 1.0 is not just H5
 
 
 
-发布会现场，谢成鸿详细介绍了LayaAir1.0版本的功能和性能。而LayaAir凭借其媲美APP的性能、多语言支持及对PC页游、APP手游、H5游戏三端支持等7大特点，引得现场参会人员的惊叹。
+On the scene of the conference, Xie Chenghong introduced the function and performance of LayaAir version 1.0 in detail. LayaAir attracted the amazement of the participants on the spot because of its seven features, which are comparable to APP's performance, multi-language support, and three-terminal support for PC page-surfing, APP hand-surfing and H5 game.
 
-LayaAir1.0的第一个特点是性能强悍。 LayaAir1.0其裸跑性能足以媲美APP。这一点已在《QQ农场》、《梦幻家园》等优质H5游戏中的到了验证。
+The first feature of LayaAir1.0 is its strong performance. LayaAir 1.0 has bare running performance comparable to APP. This has been verified in QQ Farm, Dream Home and other high-quality H5 games.
 
-LayaAir1.0的第二个特点则是支持ActionScript3、TypeScript、JavaScript三种开发语言。其中对于ActionScript3的支持让一批原本从事 Flash页游开发的程序员能够0成本进入到H5行业中来。
+The second feature of LayaAir 1.0 is its support for ActionScript 3, TypeScript and JavaScript. The support for ActionScript 3 enables a group of programmers who were originally engaged in Flash page development to enter the H5 industry at a cost of 0.
 
-LayaAir1.0的第三个特点是同时支持PC页游、APP手游、H5游戏的引擎，也是全球唯一一款同时支持三端发布的游戏引擎，这意味着开发商只需要一次开发就可以面向PC页游、手机APP、H5游戏三端市场发布，助力开发商获得更好的经营成绩。
+The third feature of LayaAir1.0 is that it supports PC page-surfing, APP hand-surfing and H5 game engine at the same time. It is also the only game engine in the world that supports three-terminal publishing at the same time. This means that developers can launch PC page-surfing, mobile app and H5 game in three-terminal market with only one development, so as to help developers achieve better business results.
 
-LayaAir1.0的第四个特点是全面支持2D、3D、VR游戏的开发，让LayaAir具备了良好的开发延续性。
+The fourth feature of LayaAir 1.0 is to fully support the development of 2D, 3D and VR games, so that LayaAir has a good continuity of development.
 
-LayaAir1.0的第五个特点是拥有采用LayaAir引擎研发的IDE和完整工具链，同时还大量支持第三方编辑器，其中包括了国际引擎巨头Unity3D编辑器的支持。
+The fifth feature of LayaAir 1.0 is its IDE and complete tool chain developed with LayaAir engine. It also supports a large number of third-party editors, including the support of Unity3D editor, an international engine giant.
 
-LayaAir1.0的第六个特点是运行库小巧，全部引擎库仅有0.4 M，极大的提高了H5的启动和运行速度。
+The sixth feature of LayaAir1.0 is its compact runtime, with only 0.4M engine libraries, which greatly improves the start-up and running speed of H5.
 
-LayaAir1.0的第七个特点是引擎学习成本低。LayaAir采用的是精简对象策略，通过归纳总结和精简的设计，一般程序员学习一天就能掌握LayaAir。
+The seventh feature of LayaAir1.0 is the low cost of engine learning. LayaAir uses a streamlined object strategy. By summarizing and simplifying the design, programmers can master LayaAir in one day.
 
-LayaAir1.0的发布标志着三端融合游戏时代的到来，这就是LayaAir“不仅仅是H5“的意义，也是游戏业发展过程中必将迎来的一次变革。
+The release of LayaAir 1.0 marks the arrival of the era of three-terminal convergence game, which is the meaning of LayaAir "not only H5", but also a change in the development process of the game industry.
 
- 
 
-##  布局教育产业，提前培养专业人才 
 
  
 
-作为新晋引擎，LayaAir拥有极强的易用性。但是对于没有接触过LayaAir引擎甚至没接触过开发的人来说依然是一个新的事物。因此LayaBox发起成立了“LayaBox教育联盟”，首批成员单位有龙图教育、汇众教育、触控未来。LayaBox产品相关学习资料将会进入到成员单位的教育计划中。未来，“LayaBox教育联盟”还将与各大高校展开合作，让LayaBox产品走进大学生群体。
 
-“LayaBox教育联盟”的成立意味着LayaBox在教育产业的布局，未来将有一批精通LayaBox产品的程序员进入到社会，为CP们带来充沛的研发能力。
+
+##Distribution of Education Industry and Training of Professional Talents in Advance
+
+As a new engine, LayaAir has great ease of use. But it's still a new thing for people who haven't touched the LayaAir engine or even the development. Therefore, LayaBox initiated the establishment of the "LayaBox Education Alliance", the first members of which are Longtu Education, Mass Education and Touch the Future. Learning materials related to LayaBox products will be included in the education plans of member units. In the future, the LayaBox Education Alliance will also cooperate with universities to bring LayaBox products into the college student community.
+
+The establishment of LayaBox Education Alliance means LayaBox's layout in the education industry. In the future, a group of programmers who are proficient in LayaBox products will enter the society, bringing abundant R&D capabilities to CPs.
+
+
 
  
 
-## 跨界合作，提升程序员幸福感
 
- 
 
-本次发布会上，LayaBox与饭爷联合启动了“解馋就酱，程序员加餐计划“，未来饭爷将会成为LayaBox全国巡讲的指定餐品，为每天辛勤劳作在代码世界的程序员们送上一份鲜辣美味的天然辣酱。
+##Cross-border cooperation to enhance programmer happiness
 
-此次与饭爷的合作也是LayaBox首次与食品品牌进行跨界合作，对于此次跨界合作，谢成鸿表示：LayaAir能够给程序员们提供好的游戏引擎，帮助程序员们更愉快的工作。同时，我们也希望能够在生活上给程序员带来更好的享受。所以我们选择和林依伦先生的饭爷辣酱合作，共同为程序员带去更有幸福感的生活。
+At this conference, LayaBox and Fanye jointly launched the "Sauce for Solution, Programmers Plus Meal Program". In the future, Fanye will become the designated meal of LayaBox's national tour, delivering a delicious spicy natural sauce to programmers who work hard in the code world every day.
+
+The collaboration with Fanye is also the first cross-border collaboration between LayaBox and food brands. For this cross-border collaboration, Xie Chenghong said: LayaAir can provide programmers with a good game engine to help programmers work happily. At the same time, we also hope to bring programmers better enjoyment in life. So we chose to cooperate with Mr. Lin Yilun's rice sauce to bring programmers a happier life.
 
 ![LOGO横版.png](http://www.layabox.com/uploadfile/image/20160702/1467426054315572.png)
 
-LayaBox是全球顶级的HTML5引擎提供商，拥有一群渴望用技术改变世界的狂人，以“世界因我而不同”为企业使命，推动HTML5产业发展，打造的LayaBox技术品牌，面向渠道以及开发者，推出LayaAir引擎等一系列优秀技术产品，拥有最优秀的大型HTML5支撑技术和众多成功案例。
+LayaBox is the world's top HTML5 engine provider, with a group of fanatics eager to change the world with technology. With the mission of "the world is different from me", LayaBox promotes the development of HTML5 industry, builds the technology brand of LayaBox, faces channels and developers, launches a series of excellent technical products such as LayaAir engine, which has the best large HTML5 support technology and many successful cases. This is the case.
+
 
  

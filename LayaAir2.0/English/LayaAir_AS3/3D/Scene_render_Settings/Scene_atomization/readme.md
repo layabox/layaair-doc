@@ -1,26 +1,28 @@
-# 场景雾化
+#Scene atomization
 
 ###### *version :2.0.1beta   Update:2019-3-19*
 
-雾化效果在项目中起着重要的作用，雾化效果就相当于开启大气的效果，看起来有种朦朦胧胧的感觉，让场景更真实。LayaAir 3D引擎可以设置场景的雾效可见距离（相当于浓度）及雾效的颜色。雾化使用的恰当不但可以提升游戏性能，还可以增加游戏的体验。
+The atomization effect plays an important role in the project. The atomization effect is equivalent to the effect of opening the atmosphere. It looks hazy and makes the scene more real. LayaAir 3D engine can set Fog Visibility Distance (equivalent to concentration) and fog color of the scene. Proper use of atomization can not only improve the performance of the game, but also increase the experience of the game.
 
-#### 使用Unity设置场景雾化
+####Setting Scene Atomization Using Unity
 
-​	在Lighting灯光渲染设置中找到 `Other Setting` 
+Find it in Lighting Light Rendering Settings`Other Setting` 
 
-​	![](img/1.png)<br>(图1)
+[] (IMG / 1. PNG) < br > (Figure 1)
 
-首先勾选雾化属性，然后调整雾化的颜色。
+First check the atomization properties, and then adjust the color of the atomization.
 
-![](img/2.gif)<br>(图2)
+![] (img/2.gif) <br> (Figure 2)
 
-设置完之后就可以拉近或者拉远摄像头查看效果了。如效果图3所示：
+After setting it up, you can pull the camera closer or farther to see the effect. As shown in Figure 3 of the effect:
 
-![](img/3.gif)<br>(图3)
+![] (img/3.gif) < br > (fig. 3)
 
-#### 使用代码设置环境雾化
+####Setting up environment atomization with code
+
 
 ```typescript
+
 //雾化代码
 scene.enableFog = true;
 //设置雾化的颜色
@@ -31,7 +33,8 @@ scene.fogStart = 10;
 scene.fogRange = 40;
 ```
 
-效果显示（图4）：
 
-![](img/4.png)<br>(图4)
+Effect display (Figure 4):
+
+![] (img/4.png)<br> (Figure 4)
 

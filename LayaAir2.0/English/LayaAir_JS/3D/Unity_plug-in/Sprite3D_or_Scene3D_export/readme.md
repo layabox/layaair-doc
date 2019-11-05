@@ -1,26 +1,28 @@
-# 预设/场景的导出
+#Presupposition/scenario export
 
-打开我们刚才预览的场景，当配置好输出场景设置后。
+Open the scenario we just previewed and configure the output scenario settings.
 
-点击Laya Export 按钮，导出一个Scene3D与Sprite3D各一个，合并的一个文件夹目录结构如下（图1）。
+Click the Laya Export button to export one scene3d and one sprite3d respectively. The structure of the merged folder directory is as follows (Figure 1).
 
-![](img/1.png)<br>(图1)
+![] (img/1.png)<br> (Figure 1)
 
-见上图文件资源，导出后生成了.ls、.lm、.lmat数据资源，及贴图jpg、png资源。
+See the file resources above. After export, the data resources of. ls,. Lm,. Lmat, and mapping jpg, PNG are generated.
 
-它们的具体用法，将在后续课程文档中详细介绍。
+Their specific usage will be described in detail in the subsequent course documentation.
 
-**Tips:同时导出时是必须使用LayaAir3D的材质球，否则在导出后显示会有较大差距，而且部分是不能使用的。关于场景模型支持Unity导出的，能在 菜单栏--LayaAir3D--Help--Tutorial中查看。**
+**Tips: It is necessary to use LayaAir3D material ball when exporting at the same time, otherwise there will be a big gap in display after exporting, and part of it can not be used. For scenario models that support Unity export, you can view them in the menu bar -- LayaAir3D -- Help -- Tutorial.**
 
-在菜单栏--LayaAir3D--Shortcuts--Switch to LayaAir3D shader，能将项目内所有材质改为LayaAir3D的默认材质（BlinnPhong）。
+In the menu bar -- LayaAir3D -- Shortcuts -- Switch to LayaAir3D shader, all materials in the project can be changed to the default material of LayaAir3D (BlinnPhong).
 
-在导出完成后，我们把文件复制到简单示例的bin文件夹下。
+After the export is complete, we copy the file to the bin folder of the simple example.
 
-Tips：本章节中只介绍简单加载应用，导出后会生成各种格式，它们的详细说明我们将在3D技术文档中“资源加载篇“介绍。
+Tips: This chapter only introduces simple loading applications, which will generate various formats after export. Their detailed description will be introduced in the "Resource Loading Chapter" in the 3D technical document.
 
-加载场景.ls示例代码如下(这里我们直接修改GameUI类)。
+The sample code for loading scenario. LS is as follows (here we modify the GameUI class directly).
+
 
 ```javascript
+
 export default class GameUI extends Laya.Scene {
     constructor(){
         super();
@@ -39,6 +41,7 @@ export default class GameUI extends Laya.Scene {
 }
 ```
 
-运行效果（图2）：
 
-![](img/2.png)<br>(图2)
+Operating effect (Figure 2):
+
+![] (img/2.png)<br> (Figure 2)

@@ -1,32 +1,34 @@
-# 关于声音
+#About voice
 
-在LayaNative中，声音分为背景音乐、音效两种模式。
+In Laya Native, sound is divided into two modes: background music and sound effect.
 
-## 1.背景音乐
+##1. Background music
 
-在LayaNative中背景音乐只支持mp3格式，同时只能播放一个背景音乐。
+In LayaNative, background music only supports MP3 format, while playing only one background music.
 
-## 2.音效
+##2. sound effects
 
-在项目中，音效都是高频发事件，为了确保运行效率，LayaNative使用openAL播放音效，因为mp3为流媒体格式，目前还无法解析。  
-**Tips：**  
-**1、LayaNative中的音效只支持wav和ogg格式。**  
-**2、wav和ogg只支持8位和16位，尚不支持32位。**
+In the project, sound effects are high-frequency events, in order to ensure operational efficiency, LayaNative uses openAL to play sound effects, because MP3 is streaming media format, it is still unable to parse.
+**Tips:**  
+**1. Sound effects in LayaNative only support wav and Ogg formats.**  
+**2. Wave and Ogg only support 8 bits and 16 bits, but not 32 bits.**
 
-**Tips:** wav和ogg建议使用22050采样率、16bit、单声道。
+**Tips:**Wave and Ogg recommend 22050 sampling rate, 16 bit, mono channel.
 
-## 3.提示信息
+##3. Tips
 
-如果调用`SoundManager.playSound()`，但是传入的文件格式是mp3，则会弹出提示信息，提示信息如下：  
+If called`SoundManager.playSound()`However, if the file format is mp3, a prompt message will pop up. The prompt message is as follows:
 `The sound only supports wav or ogg format,for optimal performance reason,please refer to the official website document.`  
-这个时候需要把mp3转换成wav或者ogg格式。
+At this point, MP3 needs to be converted into WAV or Ogg format.
 
 
-## 4.解决兼容性
+##4. Solving Compatibility
 
-如果你的项目在网页版本中音效使用mp3格式，但是LayaNative中又使用wav格式。建议项目使用配置文件的方式进行加载，这样只用在加载配置文件的地方，增加一次判断是否为LayaNative运行环境的，伪代码如下所示：  
+If your project uses MP3 format for sound effects in the web version, but Wave format is used in LayaNative. It is recommended that the project be loaded in the form of a configuration file, so that it can only be used in the place where the configuration file is loaded, adding one time to determine whether it is a LayaNative running environment. Pseudo-code is as follows:
+
 
 ```javascript
+
 if(window.conch)
 {
     ...加载 "soundConfig-LayaPlayer.json"
@@ -40,44 +42,45 @@ SoundManager.playSound(soundJson[0].url,1);
 SoundManager.playSound(soundJson[1].url,1);
 ```
 
-**Tips**  
-*1、conch只能LayaNative环境下调用，在网页版本中是没有conch定义的，所以需要判断一下是否存在。*  
-*2、如果使用as语言开发的时候，可以通过 `Browser.window['conch'] `这种方式获得conch对象。*
-*3、或者使用`if(Render.isConchApp )`进行判断都可以。*
 
-## 5.使用Cool Edit Pro工具进行声音格式转换
-现在有很多可以对MP3转换wav的工具，这里给大家简单介绍一款Cool Edit Pro工具，下面简单介绍下该工具在进行mp3转换wav的具体操作步骤：
-1、首先自行下载并先安装好Cool Edit Pro工具，然后打开Cool Edit Pro程序；
+**Tips**  
+* 1. Conh can only be invoked in LayaNative environment. There is no conch definition in the web version, so we need to judge whether it exists or not. *
+*2. If you use as language to develop, you can`Browser.window['conch'] `This way you get conch objects.*
+*3. or use`if(Render.isConchApp )`You can judge.*
+
+##5. Sound format conversion using Cool Edit Pro tools
+There are many tools for converting MP3 to wav. Here is a brief introduction of a Cool Edit Pro tool. Here is a brief introduction of the specific steps of the tool in converting MP3 to wav:
+1. First download and install the Cool Edit Pro tool, then open the Cool Edit Pro program.
 ![图1](img/1.png)
 
 
-2、点击左上角“文件”下的“批量转换”，进入“批量转换”子菜单  
+2. Click "Batch Conversion" under "File" in the upper left corner to enter the "Batch Conversion" submenu.
 
 ![图2](img/2.png)
 
 ![图3](img/3.png)
 
-**注意：建议按照批量文件转换下面的1、2、3、4步骤一步一步来进行操作**
+**Note: It is recommended that the batch file conversion should be done step by step in the following steps: 1, 2, 3 and 4.**
 
-3、选择文件来源：点击右侧增加文件。这里我们选择sound文件下的所有文件进行批处理，之后点击打开；  
+3. Select the source of the file: click on the right to add the file. Here we select all the files under sound file for batch processing, and then click Open.
 
 ![图4](img/4.png)
 ![图5](img/5.png)
 
-4、转换采样类型：在重采样目录下点击改变目标格式，在这里选择我们所需要的采样率22050Hz、单声道、16位bit，然后点击确定；  
+4. Convert the sampling type: Click to change the target format under the resampling directory, select the sampling rate of 22050 Hz, mono channel, 16 bit, and then click to confirm.
 ![图6](img/6.png)
 
-5、选择新的格式：输出格式选择我们需要的Windows PCM（*.wav），格式类型22050Hz，16位，单声道；
+5. Choose a new format: Output format chooses the Windows PCM (*. wav) we need, format type 22050Hz, 16 bits, mono channel;
 ![图7](img/7.png)
 
-8、选择目标文件夹及文件名：这里就是简单的选择下输出目录就好了，然后点击“运行批处理”进行输出所要的文件，当出现“文件批量转换完成”提示，表示你已成功完成MP3转换wav的批量转换  
+8. Choose the target folder and file name: Here is a simple choice of output directory, and then click "run batch processing" to output the desired files. When the "file batch conversion completed" prompt appears, it means that you have successfully completed the batch conversion of MP3 converted wav.
 ![图8](img/8.png)
 ![图9](img/9.png)
 
-9、若在运行Cool Edit Pro工具进行批处理时出现下面的弹窗，只需要重新替换下Resample.xfm文件，再重新运行一下Cool Edit Pro就好了。
+9. If the following pop-up window appears when running the Cool Edit Pro tool for batch processing, just replace the Resample.xfm file and run Cool Edit Pro again.
 
 ![图10](img/10.png)
 
-**出现这种情况，可以百度搜索一下 cool edit resample.xfm，或者购买正版cool edit，或者。。。(你懂的)**
+**In this case, Baidu can search cool edit resample. xfm, or buy the original cool edit, or... (you know)**
 
-**10、若网上下载的cool edit pro没有批量转换的话，可以先转一个就有批量转换了**
+**10. If the cool edit pro downloaded on the Internet does not have batch conversion, it can be transferred to one first and then to batch conversion.**

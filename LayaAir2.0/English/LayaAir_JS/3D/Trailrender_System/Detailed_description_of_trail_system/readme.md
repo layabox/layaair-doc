@@ -1,34 +1,34 @@
-# 拖尾系统详解
+#Detailed description of trailing system
 
 ###### *version :2.1.1beta   Update:2019-8-2*
 
-​	**在LayaAir3D 中，拖尾系统是由 TrailSprite3D 构成。且拖尾在这里只推荐从Unity中编辑并导出使用。**
+​**In Laya air3d, the tailing system is made up of trailsprite3d. And tailing here only recommends editing and exporting from Unity.**
 
-我们来看下拖尾界面
+Let's look at the trailing interface.
 
-![](img/1.png)<br>(图1)
+![] (img/1.png)<br> (Figure 1)
 
-目前已经支持导出的属性详解：
+Exported attribute details are now supported:
 
-------
+---
 
-`Time` 拖尾生存时长
+`Time`Long tail life
 
-`minVertexDistance` 最小拖尾片段距离
+`minVertexDistance`Minimum trailing fragment distance
 
-`width` 拖尾宽度设置（可以为宽度曲线）
+`width`Tail width settings (can be width curves)
 
-`Color` 采用 colorGradient 方式设置，有两个可选模式
+`Color`There are two optional modes to use the colorGradient settings
 
-1. *Fixed* 固定模式
-2. *Blend* 混合模式
+1. * Fixed * Fixed mode
+2. * Blend * Mixed mode
 
-`texture Mode`  纹理模式，与普通纹理模式相同。
+`texture Mode`Texture mode is the same as normal texture mode.
 
-1. *Stretch*  可沿着轨迹的整个长度应用纹理贴图
-2. *Tile*  使纹理沿着轨迹的长度平铺
+1. * Stretch * Texture maps can be applied along the entire length of the trajectory
+2. * Tile * Flattens the texture along the length of the trajectory
 
-`alignment` 轨迹准线
+`alignment`Trajectory alignment
 
-1. *ALIGNMENT_VIEW*  可以使轨迹面向摄像机
-2. *ALIGNMENT_TRANSFORM_Z*  根据轨迹的变换组件的方向对齐
+1. * ALIGNMENT_VIEW* enables the trajectory to be oriented towards the camera
+2. * ALIGNMENT_TRANSFORM_Z* Aligns according to the direction of the trajectory transformation component

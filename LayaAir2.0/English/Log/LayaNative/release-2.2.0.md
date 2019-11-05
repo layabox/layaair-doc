@@ -1,4 +1,4 @@
-# LayaNative-Release-2.2.0
+#Layanenative-release-2.2.0
 
-1. 解决了播放音效内存泄漏的问题。
-2. 解决了一些情况下后台切回会卡顿一段时间的问题。
+1. Solve the problem of memory leak of playing sound effect.
+2. Solve the problem of backstage cut back to Carton for a period of time under some circumstances.

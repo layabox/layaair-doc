@@ -1,57 +1,60 @@
-# 性能统计面板介绍     
+#Introduction to Performance Statistics Panel
 
-　　LayaAir 引擎设计之初，就以性能为第一目标，在引擎内做了大量的性能优化。合理运用好引擎，可以让游戏等引擎产品达到原生APP的体验。如果开发者不能发挥好引擎的优势，那么游戏最终的性能体验或将无从谈起。因此，在制作游戏过程中，掌握游戏以及引擎的优化技巧还是非常有必要的。
-
-
-
-> 要了解引擎的性能，首先要看懂性能统计面板，下面将针对性能统计面板进行详细介绍。
+At the beginning of LayaAir engine design, performance was the first goal, and a lot of performance optimization was done in the engine. Reasonable use of the engine can make the game and other engine products achieve the original APP experience. If the developer can't take advantage of the engine, the final performance experience of the game will be out of the question. Therefore, in the process of making games, it is necessary to master the optimization skills of games and engines.
 
 
 
-## 1、性能统计面板的调用
+> To understand the performance of the engine, we first need to understand the performance statistics panel, which will be described in detail below.
 
-LayaAir引擎内置的性能统计面板可实时检测当前性能。调用统计面板因开发语言的不同，会有所不同。
 
-TS语言直接在代码中输入 `Laya.Stat.show(0,0);` 即可调出性能统计面板。
 
-示例Demo.js编写代码如下：
+##1. Call of Performance Statistics Panel
+
+LayaAir engine built-in performance statistics panel can real-time detect the current performance. The call statistics panel varies with the development language.
+
+TS language input directly in code`Laya.Stat.show(0,0);`You can call out the performance statistics panel.
+
+The code of demo.js is as follows:
+
 
 ```typescript
+
 //初始化舞台
 Laya.init(1136, 640);
 //调用性能统计面板方法，(0,0)为面板位置坐标
 Laya.Stat.show(0,0);
 ```
 
-**Tips**:要注意大小写。
+
+**Tips**Pay attention to case.
 
 
 
-## 2、FPS相关的介绍
+##2. Introduction of FPS
 
-### 2.1  FPS概述
+###2.1 Overview of FPS
 
-FPS是每秒传输帧数(Frames Per Second)的缩写。假设游戏的帧速为60FPS，表明游戏运行时每个帧的执行时间为1/60 秒。帧速值越高，视觉上感觉越流畅。
+FPS is the abbreviation of Frames Per Second. Assuming the frame speed of the game is 60FPS, the execution time of each frame is 1/60 seconds when the game is running. The higher the frame rate, the smoother the visual feel.
 
-![图1](img/1.png)<br />	（图1）
+![图1](img/1.png)<br/> (Fig. 1)
 
-当前PC与手机等设备的满帧是60帧，如图1所示，但某些游戏对画面的流畅度要求并不高，也可以采用引擎的帧速限制方法`Stage.FRAME_SLOW`，将FPS帧速限制为最高30帧。
+At present, the full frame of PC and mobile devices is 60 frames, as shown in Figure 1. However, some games do not require high picture fluidity, and the frame speed limit method of engine can also be used.`Stage.FRAME_SLOW`The FPS frame rate is limited to a maximum of 30 frames.
 
-由于实际运行环境是在浏览器中，所以性能还取决于JavaScript解释器的效率，因此，同一款游戏的FPS值在不同的浏览器中可能会存在差异。这部分不是开发者能够决定的，开发者能作的是尽可能使用好引擎及优化项目，争取在低端设备或低性能浏览器中，提升FPS帧速。 
+Since the actual operating environment is in the browser, performance also depends on the efficiency of the JavaScript interpreter, so the FPS value of the same game may vary in different browsers. This part is not for developers to decide. What developers can do is to use engines and optimize projects as well as possible to improve FPS frame speed in low-end devices or low-performance browsers.
 
-#### 2.2 不同模式下的FPS
+####2.2 FPS in different modes
 
-LayaAir引擎支持Canvas与WebGL两种渲染模式。因此在看FPS帧速时要注意是在哪种模式下，`FPS(Canvas)`说明是Canvas模式下的帧速，如图1所示；`FPS(WebGL)`说明是WebGL模式下的帧速，如图2所示。
+LayaAir engine supports two rendering modes: Canvas and WebGL. So when looking at FPS frame speed, we should pay attention to which mode.`FPS(Canvas)`The description is the frame rate in Canvas mode, as shown in Figure 1.`FPS(WebGL)`The description is the frame rate in WebGL mode, as shown in Figure 2.
 
-![图片2.png](img/2.png)<br />	（图2）
+![图片2.png](img/2.png)< br / > (Figure 2)
 
-#### 2.3  FPS的数值说明
+####2.3 Numerical Explanation of FPS
 
-图1与图2中，FPS的第一个黄色值`60`为当前的**FPS帧速**，越高越好。
+In Figures 1 and 2, the first yellow value of FPS`60`For the current**FPS frame rate**The higher the better.
 
-第二个黄色值`16`为**每帧渲染所消耗的时间**，单位为毫秒，这个值越小越好。
+Second yellow value`16`by**Time consumed per frame rendering**In milliseconds, the smaller the value, the better.
 
-这两个值如果不能维持在满帧，会在产品操作过程中产生变化，如动图3所示。
+If these two values can not be maintained in full frame, they will change during product operation, as shown in Figure 3.
 
 ![动图3](img/3.gif) <br /> (动图3)
 
@@ -59,55 +62,67 @@ LayaAir引擎支持Canvas与WebGL两种渲染模式。因此在看FPS帧速时�
 
 
 
-##  3、Sprite介绍
-
-Sprite统计所有渲染节点（包括容器）数量，这个数字的大小会影响引擎节点遍历，数据组织和渲染的次数。数字越低越好。因此建议在项目设计的时候，尽可能的减少渲染节点。
 
 
 
 
 
-## 4、DrawCall介绍
 
- **DrawCall的次数是决定性能的重要指标**，位于统计面板的第三行，如图4所示。DrawCall在Canvas和WebGL渲染下代表不同的意义，但都是越少越好，**建议开发者尽量限制在100之下**。
+##3. Introduction to Sprite
 
-![图4](img/4.png) <br /> (图4)
-
-
-
-#### 4.1 Canvas下的DrawCall
-
- Canvas模式下DrawCall表示每帧的绘制次数，包括图片、文字、矢量图。
-
-#### 4.2 WebGL下的DrawCall
-
-WebGL模式下DrawCall表示渲染提交批次，每次准备数据并通知GPU渲染绘制的过程称为1次DrawCall，在每1次DrawCall中除了在通知GPU的渲染上比较耗时之外，切换材质与shader也是非常耗时的操作。
+Sprite counts the number of rendering nodes (including containers) that affect the number of times the engine nodes traverse, organize and render. The lower the number, the better. Therefore, it is suggested to reduce rendering nodes as much as possible in project design.
 
 
 
-## 5、CurMem介绍
-
-WebGL模式下，CurMem表示内存与显存的占用，值越低越好。
-
-在Canvas模式下，没有显存的概念，CurMem只表示内存的占用情况，值越低越好。
 
 
+##4. Introduction to DrawCall
 
-## 6、Shader介绍
 
-Shader是WebGL模式独有的性能指标，表示每帧Shader提交次数，值越低越好。
+ **The number of drawcalls is an important indicator of performance**In the third line of the statistics panel, as shown in Figure 4. DrawCall represents different meanings in Canvas and WebGL rendering, but the fewer, the better.**Developers are advised to limit themselves to less than 100**。
+
+![图4](img/4.png)<br/> (Figure 4)
 
 
 
-## 7、Canvas介绍
+####4.1 DrawCall under Canvas
 
-Canvas这里有三个数值，如图5所示，该处只有设置CacheAs后才会有值，默认为`0/0/0`。从左至右数值的意义分别为：`每帧重绘的画布数量` / `缓存类型为“normal”类型的画布数量` / `缓存类型为“bitmap”类型的画布数量`。
+DrawCall in Canvas mode represents the number of times each frame is drawn, including pictures, text, vector graphics.
+
+####4.2 DrawCall under WebGL
+
+DrawCall represents rendering submission batch in WebGL mode. The process of preparing data and notifying GPU to render is called DrawCall once. In addition to notifying GPU to render, switching material and shader is also a time-consuming operation in every DrawCall.
 
 
-![图5](img/5.png) <br /> (图5)
+
+##5. Introduction to CurMem
+
+In WebGL mode, CurMem represents the occupancy of memory and memory, and the lower the value, the better.
+
+In Canvas mode, there is no concept of memory. CurMem only represents the occupancy of memory. The lower the value, the better.
 
 
-**Tips**：关于CacheAs的更多优化介绍，可以查看文档《CacheAs静态缓存优化》
+
+##6. Introduction of Shader
+
+Shader is a unique performance indicator of WebGL mode, indicating the number of Shader submissions per frame, the lower the value, the better.
+
+
+
+##7. Introduction to Canvas
+
+There are three values in Canvas, as shown in Figure 5, where only CacheAs is set will have a value, which defaults to`0/0/0`。 The values from left to right are:`每帧重绘的画布数量`/`缓存类型为“normal”类型的画布数量`/`缓存类型为“bitmap”类型的画布数量`。
+
+
+![图5](img/5.png)<br/> (Fig. 5)
+
+
+**Tips**: for more information about cache as optimization, please refer to the document "cache as static cache optimization"
+
+
+
+
+
 
 
 

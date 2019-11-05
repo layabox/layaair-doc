@@ -1,12 +1,13 @@
-# 运行时代码执行基本原理
+#Runtime code execution Fundamentals
 
-​        
+​
 
-​        LayaAir引擎支持AS3、TypeScript、JavaScript三种语言开发，然而无论是采用哪种开发语言，最终执行的都是JavaScript代码。所有看到的画面都是通过引擎绘制出来的，更新频率取决于开发者指定的FPS，例如指定帧频率为60FPS，则运行时每个帧的执行时间为六十分之一秒，所以帧速越高，视觉上感觉越流畅，60帧是满帧。 
+LayaAir engine supports AS3, TypeScript, JavaScript development, but no matter which language is used, the final execution is JavaScript code. All the pictures we see are drawn by the engine. The update frequency depends on the FPS specified by the developer. For example, if the frame frequency is 60FPS, the execution time of each frame is one-sixtieth of a second. Therefore, the higher the frame speed, the more fluent the visual sense, and the 60 frames are full.
 
-​        由于实际运行环境是在浏览器中，因此性能还取决于JavaScript解释器的效率，指定的FPS帧速在低性能解释器中可能不会达到，所以这部分不是开发者能够决定的，开发者能作的是尽可能通过优化，在低端设备或低性能浏览器中，提升FPS帧速。 
+Since the actual operating environment is in the browser, the performance also depends on the efficiency of the JavaScript interpreter. The specified frame speed of FPS may not be achieved in the low performance interpreter, so this part is not decided by the developer. What the developer can do is to improve the frame speed of FPS in low-end devices or low performance browsers by optimizing as far as possible.
 
-​        LayaAir引擎在每帧都会重绘，在性能优化时，除了关注每帧执行逻辑代码带来的CPU消耗，还需要注意每帧调用绘图指令的数量以及GPU的纹理提交次数。
+LayaAir engine redraws every frame. In performance optimization, besides CPU consumption caused by logic code execution per frame, attention should also be paid to the number of drawing instructions invoked per frame and the number of texture submissions of GPU.
+
 
  
 

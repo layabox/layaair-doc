@@ -1,16 +1,18 @@
-# 内存优化
+#Memory optimization
 
-发布时间：2016-12-30
+Release time: 2016-12-30
 
-### **一、对象池**
+### **Object pool**
 
-对象池，涉及到不断重复使用对象。在初始化应用程序期间创建一定数量的对象并将其存储在一个池中。对一个对象完成操作后，将该对象放回到池中，在需要新对象时可以对其进行检索。
+Object pooling involves the continuous reuse of objects. Create a certain number of objects and store them in a pool during initialization of the application. Once an object has been manipulated, it is put back into the pool and retrieved when a new object is needed.
 
-由于实例化对象成本很高，使用对象池重用对象可减少实例化对象的需求。还可以减少垃圾回收器运行的机会，从而提高程序的运行速度。
+Because of the high cost of instantiating objects, reusing objects with object pools can reduce the need for instantiating objects. It can also reduce the opportunity of garbage collector to run, thereby improving the speed of the program.
 
-以下代码演示使用`Laya.utils.Pool：`
+The following code demonstrates the use of`Laya.utils.Pool：`
+
 
 ```javascript
+
 var SPRITE_SIGN = 'spriteSign';
 var sprites = [];
 function initialize()
@@ -25,11 +27,14 @@ function initialize()
 initialize();
 ```
 
-在initialize中创建大小为1000的对象池。
 
-以下代码在当单击鼠标时，将删除显示列表中的所有显示对象，并在以后的其他任务中重复使用这些对象：
+Create an object pool of size 1000 in initialize.
+
+When you click the mouse, the following code deletes all display objects in the display list and reuses them for other tasks later:
+
 
 ```javascript
+
 Laya.stage.on("click", this, function()
 {
     var sp;
@@ -42,55 +47,79 @@ Laya.stage.on("click", this, function()
 });
 ```
 
-调用Pool.recover后，指定的对象会被回收至池内。
+
+After calling Pool. recovery, the specified object is reclaimed into the pool.
+
+
 
  
 
-### **二、使用Handler.create**
 
-在开发过程中，会经常使用Handler来完成异步回调。Handler.create使用了内置对象池管理，因此在使用Handler对象时应使用Handler.create来创建回调处理器。以下代码使用Handler.create创建加载的回调处理器：
+
+### **2. Use Handler.create.**
+
+Handler is often used to complete asynchronous callbacks during development. Handler. create uses built-in object pool management, so you should use Handler. create to create a callback processor when using Handler objects. The following code uses Handler. create to create a loaded callback processor:
+
 
 ```javascript
+
 Laya.loader.load(urls, Handler.create(this, onAssetLoaded));
 ```
 
-在上面的代码中，回调被执行后Handler将会被对象池收回。此时，考虑如下代码会发生什么事：
+
+In the above code, after the callback is executed, the handler will be recalled by the object pool. At this point, consider what happens to the following code:
+
 
 ```javascript
+
 Laya.loader.load(urls, Handler.create(this, onAssetLoaded), Handler.create(this, onLoading));
 ```
 
-在上面的代码中，使用Handler.create返回的处理器处理progress事件。此时的回调执行一次之后就被对象池回收，于是progress事件只触发了一次，此时需要将四个名为once的参数设置为false：
+
+In the above code, the handler. create returned is used to process the progress events. At this point, the callback is reclaimed by the object pool after one execution, so the progress event only triggers once. At this point, four parameters named once need to be set to false:
+
 
 ```javascript
+
 Laya.loader.load(urls, Handler.create(this, onAssetLoaded), Handler.create(this, onLoading, null, false));
 ```
 
+
+
+
+
  
 
-### **三、释放内存**
 
-JavaScript运行时无法启动垃圾回收器。要确保一个对象能够被回收，请删除对该对象的所有引用。Sprite提供的destory会帮助设置内部引用为null。
 
-例如，以下代码确保对象能够被作为垃圾回收：
+### **3. Free memory**
+
+The garbage collector cannot be started at JavaScript runtime. To ensure that an object can be reclaimed, delete all references to that object. Sprite provides destory to help set the internal reference to null.
+
+For example, the following code ensures that objects can be garbage collected:
+
 
 ```javascript
+
 var sp = new Sprite();
 sp.destroy();
 ```
 
 
-当对象设置为null，不会立即将其从内存中删除。只有系统认为内存足够低时，垃圾回收器才会运行。内存分配（而不是对象删除）会触发垃圾回收。
 
-垃圾回收期间可能占用大量CPU并影响性能。通过重用对象，尝试限制使用垃圾回收。此外，尽可能将引用设置为null，以便垃圾回收器用较少时间来查找对象。有时（比如两个对象相互引用），无法同时设置两个引用为null，垃圾回收器将扫描无法被访问到的对象，并将其清除，这会比引用计数更消耗性能。
+When the object is set to null, it is not immediately removed from memory. The garbage collector will only run if the system considers that the memory is low enough. Memory allocation (rather than object deletion) triggers garbage collection.
 
-### **四、资源卸载**
+Garbage collection can take up a lot of CPUs and affect performance. By reusing objects, try to limit the use of garbage collection. In addition, set the reference to null as much as possible so that the garbage collector spends less time looking up objects. Sometimes (for example, when two objects refer to each other) it is impossible to set two references to null at the same time, and the garbage collector scans the unreachable objects and clears them, which consumes more performance than reference counting.
 
-游戏运行时总会加载许多资源，这些资源在使用完成后应及时卸载，否则一直残留在内存中。
+### **IV. Unloading of Resources**
 
-下例演示加载资源后对比资源卸载前和卸载后的资源状态：
+Many resources will always be loaded when the game is running. These resources should be unloaded in time after they are used. Otherwise, they will remain in memory.
+
+The following example demonstrates comparing resource status before and after unloading after loading resources:
+
 
 ```javascript
+
 var assets = [];
 assets.push("res/apes/monkey0.png");
 assets.push("res/apes/monkey1.png");
@@ -111,28 +140,27 @@ function onAssetsLoaded()
 }
 ```
 
-### **五、关于滤镜、遮罩**
+
+### **V. About filters and masks**
 
 
-尝试尽量减少使用滤镜效果。将滤镜（BlurFilter和GlowFilter）应用于显示对象时，运行时将在内存中创建两张位图。其中每个位图的大小与显示对象相同。将第一个位图创建为显示对象的栅格化版本，然后用于生成应用滤镜的另一个位图：
+Try to minimize the use of filters. When BlurFilter and GlowFilter are applied to display objects, two bitmaps are created in memory at run time. Each bitmap has the same size as the display object. Create the first bitmap as a rasterized version of the display object, and then use it to generate another bitmap of the application filter:
 
-​	   ![图片1.png](img/1.png)<br/>
-​	（图1）
+​![图片1.png](img/1.png)<br/>
+(Fig. 1)
 
-应用滤镜时内存中的两个位图
+Two bitmaps in memory when applying filters
 
-当修改滤镜的某个属性或者显示对象时，内存中的两个位图都将更新以创建生成的位图，这两个位图可能会占用大量内存。此外，此过程涉及CPU计算，动态更新时将会降低性能（参见“图形渲染性能 – 关于cacheAs）。
+When modifying an attribute of a filter or a display object, two bitmaps in memory will be updated to create the generated bitmaps, which may occupy a large amount of memory. In addition, this process involves CPU computing, which will degrade performance when dynamically updated (see "Graphic Rendering Performance - About CacheAs".
 
- 
+ColorFiter needs to compute every pixel in Canvas rendering, while GPU consumption in WebGL is negligible.
 
-ColorFiter在Canvas渲染下需要计算每个像素点，而在WebGL下的GPU消耗可以忽略不计。
+The best way to do this is to use bitmaps created by image authoring tools to simulate filters as much as possible. Avoiding creating dynamic bitmaps at runtime can help reduce CPU or GPU load. Especially an image with filters and no modification.
 
-最佳的做法是，尽可能使用图像创作工具创建的位图来模拟滤镜。避免在运行时中创建动态位图，可以帮助减少CPU或GPU负载。特别是一张应用了滤镜并且不会在修改的图像。
+###  **6. Other optimization strategies**
 
-###  **六、其它优化策略**
-
-1. 减少粒子使用数量，在移动平台Canvas模式下，尽量不用粒子；
-2. 在Canvas模式下，尽量减少旋转，缩放，alpha等属性的使用，这些属性会对性能产生消耗。（在WebGL模式可以使用）；
-3. 不要在timeloop里面创建对象及复杂计算；
-4. 尽量减少对容器的autoSize的使用，减少getBounds()的使用，因为这些调用会产生较多计算；
-5. 尽量少用try catch的使用，被try catch的函数执行会变得非常慢；
+1. Reduce the number of particles used, in the mobile platform Canvas mode, try not to use particles;
+2. In Canvas mode, reduce the use of rotation, scaling, alpha and other attributes, which will consume performance. (It can be used in WebGL mode);
+3. Do not create objects and complex calculations in timeloop;
+4. Minimize the use of autoSize for containers and getBounds () because these calls generate more computation;
+5. Use try catch as little as possible, and the function executed by try catch will become very slow.

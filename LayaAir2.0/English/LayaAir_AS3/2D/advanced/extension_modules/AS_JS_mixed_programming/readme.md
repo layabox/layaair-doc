@@ -1,16 +1,18 @@
 # AS3与JS混合编码
 
-　　AS3与JS交互是一种常见的需求，flash插件提供了一个简单的接口函数`ExternalInterface.call`和`ExternalInterface.addCallback`与JS交互。但是发布HTML5，这个flash的接口就不能用了。
+Interaction between AS3 and JS is a common requirement. Flash plug-in provides a simple interface function.`ExternalInterface.call`and`ExternalInterface.addCallback`Interact with JS. But by publishing HTML5, the flash interface will not work.
 
-　　作为支持AS3语言编写HTML5的引擎，LayaAir可以通过`Browser.windows`和`__JS__`方法来和JS交互，并且LayaAir引擎的AS编译器还支持特有的宏编译，帮助AS3开发者实现更加复杂的AS3与JS混合编码。
+As an engine for writing HTML5 in AS3, LayaAir can use it`Browser.windows`and`__JS__`Methods interact with JS, and the AS compiler of LayaAir engine also supports specific macro compilation to help AS3 developers implement more complex AS3 and JS hybrid coding.
 
-### 1. 初识AS3与浏览器交互
+###1. Initial knowledge of AS3 and browser interaction
 
-　　假设我们创建了一个名为JSDemo.as的启动类文件，在AS3代码中实现JS的原生alert弹窗效果。示例代码如下：
+Suppose we create a startup class file named JSDemo.as to implement the native alert window effect of JS in AS3 code. The sample code is as follows:
 
-**方式一：**
+**Method 1:**
+
 
 ```java
+
 package 
 {
 	import laya.utils.Browser;
@@ -27,9 +29,12 @@ package
 }
 ```
 
-**方式二：**
+
+**Mode two:**
+
 
 ```java
+
 package 
 {
 	public class JSDemo
@@ -45,26 +50,29 @@ package
 }
 ```
 
-　　以上两种方式从运行的结果上看，是完全一致的，如图1所示。
 
-![1](1.jpg) <br />
-（图1）
+The results of the above two modes are identical, as shown in Figure 1.
 
-　　那两种方式的区别在哪里呢？
+![1](1.jpg)<br / >
+(Fig. 1)
 
-　　`Browser.window`这是对浏览器window的引用，浏览器的全局函数都是挂载在`window`上，因此可以用Browser.window.alert唤起弹窗的函数。所有window上所有的函数和属性均可以通过这种方式进行。
+What's the difference between the two ways?
 
-　　`	__JS__`是LayaCompiler编译器提供的一个宏编译函数，　`	__JS__()`函数内的代码将不被编译，会直译成js代码。
+　　`Browser.window`This is a reference to the browser window. The global functions of the browser are all mounted on the`window`So you can use Browser. window. alert to call up the function of the pop-up window. All functions and attributes on all windows can be done in this way.
+
+　　`__JS__`It is a macro compiler provided by the LayaCompiler compiler.`__JS__()`The code in the function will not be compiled and will be translated directly into JS code.
 
 
 
-### 2. AS3与浏览器交互进阶
+###2. AS3 Interactive Advancement with Browsers
 
-　LayaAir引擎与浏览器的交互远不止于alert那么简单，下面通过示例代码进一步了解AS与浏览器的交互。
+The interaction between LayaAir engine and browser is much simpler than that of alert. Here's an example code to learn more about the interaction between AS and browser.
 
-**方式一：**
+**Method 1:**
+
 
 ```java
+
 package 
 {
 	import laya.utils.Browser;
@@ -84,9 +92,12 @@ package
 }
 ```
 
-**方式二：**
+
+**Mode two:**
+
 
 ```java
+
 package 
 {
 
@@ -104,26 +115,29 @@ package
 }
 ```
 
-　　以上两种方式从运行的结果上看，是完全一致的，如图2所示。
 
-![2](2.jpg) <br />
-（图2）
+The above two methods are completely consistent from the results of operation, as shown in Figure 2.
 
-　　以上两种方式相对而言，我们推荐采用`Browser.window`方式交互，`__JS__`方式由于是以字符串内写JS代码，如果不小心写错，也没有报错提示，会增加查错成本。
+![2](2.jpg)<br / >
+(Fig. 2)
+
+Relatively speaking, we recommend the above two approaches.`Browser.window`Mode interaction,`__JS__`Because JS code is written in the string, if you don't write the error carefully, and there is no error prompt, it will increase the cost of error checking.
 
 
 
-### 3.  AS3与JS混合编码
+###3. AS3 and JS hybrid coding
 
-　　在项目中我们难免会用到第三方的js类库来辅助开发。那么在AS项目中我们怎么处理呢？下面我们就拿最常用的jquery.js来进行讲解。
+In the project, we will inevitably use third-party JS class libraries to assist development. So how do we deal with the AS project? Now let's take the most commonly used jquery. JS to explain.
 
-​	首先在jquery的[官网下载](http://jquery.com/download/)jquery.js版本，示例中我们用`jquery-3.2.0.min.js`。在项目入口的index.html页面（通常位于“`bin\h5\`”目录下）添加`<script type="text/javascript" src="jquery-3.2.0.min.js"></script>`。
+First in jquery[官网下载](http://jquery.com/download/)Jquery.js version, for example, we use`jquery-3.2.0.min.js`。 On the index.html page of the project portal (usually located at“`bin\h5\`” Directory) Add`<script type="text/javascript" src="jquery-3.2.0.min.js"></script>`。
 
-​	*Tips: 第三方库引入必须添加在LayaAir引擎库引入之前。*
+​*Tips: The introduction of third-party libraries must be added before the introduction of LayaAir engine libraries.*
 
-​	在入口页面添加完库的引用后，我们在AS3入口库中编写如下代码：
+After adding a reference to the library on the entry page, we write the following code in the AS3 entry library:
+
 
 ```java
+
 package {
 	import laya.utils.Browser;
 	public class JSDemo {
@@ -143,17 +157,20 @@ package {
 }
 ```
 
-编译运行后，我们可以看到弹窗成功，表明已经调用成功。我们在AS3项目中成功的实现了混合编码。
+
+After compiling and running, we can see that the pop-up window is successful, indicating that the call has been successful. We successfully implemented hybrid coding in AS3 project.
 
 
 
-### 4. JS调用AS接口
+###4. JS calls AS interface
 
-　　有时候我们开发项目要和web开发者交叉调用，通过上面的方法我们可以调用web开发者的js方法，那么web开发者怎么调用我们写的逻辑呢？其实开发者可以进一步思考下：我们用as3开发H5，其实是通过编译器直接编译生成了js，因此，只需要把接口暴露出来，让web开发者直接调用我们的js代码就可以了。下面用一个简单的示例代码来说明一下用法。
+Sometimes we have to cross-call the development project with the web developer, through the above method we can call the JS method of the web developer, then how can the web developer call the logic we write? In fact, developers can think further: we use AS3 to develop H5, in fact, through compiler directly compiled to generate js, so only need to expose the interface, let Web developers directly call our JS code. Here's a simple example code to illustrate the usage.
 
-**JSDemo.as 代码如下:**
+**The JSDemo.as code is as follows:**
+
 
 ```java
+
 package {
 	import laya.webgl.WebGL;
 
@@ -174,18 +191,21 @@ package {
 }
 ```
 
-​	编译运行，然后我们打开浏览器控制台，然后输入`JSDemo.getGameName()` 发现输出了`"myGame"`，如图3所示。表明调用成功，由此实现了和web开发者交互。
 
-![图片](3.jpg)<br />
-（图3）
+Compile and run, then we open the browser console and enter`JSDemo.getGameName()`Find Output`"myGame"`As shown in Figure 3. It indicates that the call is successful, thus realizing the interaction with web developers.
+
+![图片](3.jpg)<br / >
+(Fig. 3)
 
 
 
-​	上面的示例只是定义了一个静态的方法，我们甚至可以开放内部的所有方法和属性，
+The above example just defines a static method, and we can even open up all the methods and attributes inside.
 
-JSDemo.as代码修改如下：
+The JSDemo.as code was modified as follows:
+
 
 ```java
+
 package {
 	import laya.utils.Browser;
 
@@ -212,22 +232,25 @@ package {
 }
 ```
 
-​	编译运行，打开浏览器控制台，先后输入`app`、`app.name`、`app.getVersion()`可以看到的效果如图4所示，已经达到了我们调用的效果。由此看出LayaAir引擎的AS开发和web开发者交互式无缝的。
 
-![图4](4.jpg) <br />
-（图4）
+Compile and run, open the browser console, and enter`app`,`app.name`,`app.getVersion()`You can see the effect as shown in Figure 4, which has achieved the effect of our call. From this we can see that the AS development of LayaAir engine and the interaction of web developers are seamless.
+
+![图4](4.jpg)<br / >
+(Fig. 4)
 
 
 
-### 5. 代码智能提示
+###5. Code Intelligent Tips
 
-​	在上面的示例里，我们调用JS原生方法很简单，但是原生的JS方法，在AS3项目中并没有代码提示。因此，我们结合宏编译方法进行手动添加函数声明，从而获得代码提示。
+In the example above, we call the JS native method is simple, but the native JS method has no code hints in the AS3 project. Therefore, we use macro compilation to add function declarations manually to get code hints.
 
-比如我们创建一个window类（*`window.as`*），把浏览器常用的函数封装起来。
+For example, let's create a window class（*`window.as`* To encapsulate functions commonly used by browsers.
 
-window.as代码如下：
+The window.as code is as follows:
+
 
 ```java
+
 /*[IF-FLASH]*/package
 {
 	public class window
@@ -242,17 +265,20 @@ window.as代码如下：
 }
 ```
 
-`/*[IF-FLASH]*/`是LayaCompiler的编译宏，其后的类不会被编译为JS，对此不了解的，请先去了解[宏编译教程文档](https://github.com/layabox/layaair-doc/blob/master/Chinese/LayaAir_AS3/LayaCompile_Macros.md)。
+
+`/*[IF-FLASH]*/`It's the compiler macro of LayaCompiler, and the subsequent classes will not be compiled into JS. If you don't know about this, please go ahead and learn about it.[宏编译教程文档](https://github.com/layabox/layaair-doc/blob/master/Chinese/LayaAir_AS3/LayaCompile_Macros.md)。
 
 
 
-有了这个类，我们就可以直接写window的方法，并且有提示了（*前提是要用到的函数，都要提前封装好*）
+With this class, we can write windows methods directly, and have prompts (* premise is to use functions, must be encapsulated in advance *)
 
-下面我们就直接用js方法写一个`alert()`，
+Now let's write one directly in the JS method`alert()`,
 
-JSDemo.as代码如下。
+The JSDemo. as code is as follows.
+
 
 ```java
+
 package {
 	public class JSDemo {
 		public function JSDemo() {
@@ -264,23 +290,26 @@ package {
 }
 ```
 
-编译运行效果如图5所示，alert被成功执行了。所以，我们可以把常用的Window的方法开发者都封装起来。这样以后与JS混合编码时，代码的智能提示就会有了。
 
-![图5](5.jpg) <br />
+The compilation runs as shown in Figure 5, and alert is successfully executed. So, we can encapsulate the common Windows method developers. In the future, when mixed with JS coding, the code will have an intelligent prompt.
 
-（图5）
+![图5](5.jpg)<br / >
 
-
-
+(Fig. 5)
 
 
-### 6. AS写Nodejs
 
-​	首先新建一个AS的工程，这个工程就是AS的原生的工程即可，LayaAir的类库暂时可以忽略，项目的启动类这里设置为Main.as ;然后新建一个`require.as`。
 
-require.as 代码如下：
+
+###6. AS Writes Nodejs
+
+First, a new AS project is built, which is the original project of AS. LayaAir's class library can be ignored for the time being. The startup class of the project is set as Main.as; then, a new AS project is built.`require.as`。
+
+Requ.as code is as follows:
+
 
 ```java
+
 package
 {
 	/*[IF-FLASH-BEGIN]*/
@@ -296,11 +325,14 @@ package
 }
 ```
 
-​	
 
-项目的启动类Main.as代码如下：
+​
+
+The startup class Main.as code for the project is as follows:
+
 
 ```java
+
 package
 {
 	public class Main
@@ -323,16 +355,17 @@ package
 }
 ```
 
-​	*Tips: 创建node的服务器的api可以移步到[https://nodejs.org/](https://nodejs.org/)*
+
+​*Tips: The API for creating a node server can be moved to[https://nodejs.org/](https://nodejs.org/)*
 
 
 
-　　`Main.as` 创建了一个动态服务器，端口为8989，服务器收到客户端的请求，返回一个Hello Laya。
+　　`Main.as`A dynamic server with port 8989 was created. The server received a request from the client and returned a Hello Laya.
 
-　　`require.as`这个类用到了LayaCompiler编译器的宏编译，`/*[IF-FLASH-BEGIN]*/`和`/*[IF-FLASH-END]*/`这两个标签之间代码用于语法提示，并不参加编译（对此不了解的，请先去了解[宏编译教程文档](https://github.com/layabox/layaair-doc/blob/master/Chinese/LayaAir_AS3/LayaCompile_Macros.md)）。
+　　`require.as`This class uses the macro compilation of the LayaCompiler compiler.`/*[IF-FLASH-BEGIN]*/`and`/*[IF-FLASH-END]*/`The code between the two tags is used for grammatical hints and does not participate in compilation (if you don't understand this, go ahead and learn about it first).[宏编译教程文档](https://github.com/layabox/layaair-doc/blob/master/Chinese/LayaAir_AS3/LayaCompile_Macros.md))
 
-​	**编译这个项目：**
+​**Compile this project:**
 
-​	用node启动该项目编译后的js文件。在当前目录下打开命令行输入`node Main.max.js`。然后在浏览器输入[http://localhost:8989/](http://localhost:8989/)可以看到页面上显示：Hello Laya。
+Start the compiled JS file of the project with node. Open command line input in the current directory`node Main.max.js`。 Then enter it in the browser[http://localhost:8989/](http://localhost:8989/)You can see it on the page: Hello LAYA.
 
-​	至此，表明我们用AS代码成功的写了一个动态服务器。
+So far, it shows that we have successfully written a dynamic server with AS code.

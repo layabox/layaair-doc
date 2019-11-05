@@ -1,158 +1,162 @@
-# 菜单栏详解
+#Menu Bar Details
 
- 
+The Code Mode menu bar contains a set of commonly used functions and options. In this chapter, we will give a detailed introduction to the code mode menu bar.
 
-​  代码模式菜单栏包含了一系列常用的功能及选项集合。在本章节中，我们会对代码模式菜单栏做详细的介绍。
  ![blob.png](img/1.png)<br/>
-​        （图1）菜单栏面板
+(Figure 1) Menu Bar Panel
+
+
 
  
 
-## 一、文件
-
-​        ![blob.png](img/2.png)<br/>
-​        （图2）文件列表
 
 
+##I. documents
 
-​        **新建项目**：弹出新建项目窗口以供用户选择新建项目名称、位置、项目类型，目前项目类型支持AS、JS、TS三种项目类型。
+​![blob.png](img/2.png)<br/>
+(Figure 2) List of files
 
-​        **新建文件**：新建文件会在编辑视图窗口中新建一个代码文档，文档位置您可以在 资源视图窗口中的工作文件 栏目中找到，新建的代码文档只有进行保存操作时才会真正生成。
 
-​        **新建窗口**：新建窗口会弹出一个新的代码编辑窗口以供您进行新项目创建或打开其他项目进行编辑。
 
-​        **打开项目**：打开项目会弹出一个WINDOWS资源管理器 样式的浏览窗口进行项目所在位置选择。确认后IDE会切换成您打开的新的项目。
+​**New project**New project window pops up for users to choose the name, location and type of new project. Currently, project types support AS, JS and TS.
 
-​        **打开文件夹**：打开文件夹会弹出一个 WINDOWS资源管理器 样式的浏览窗口进行文件夹所在位置选择，确认后资源视图窗口中自动添加您打开的文件夹。
+​**new file**New file will create a new code document in the edit view window. The location of the document can be found in the working file column in the resource view window. The new code document will be generated only when it is saved.
 
-​        **保存**：对当前操作的文件进行保存。
+​**New window**New window will pop up a new code editing window for you to create new projects or open other projects for editing.
 
-​        **另存**：将当前操作的文件另存为新文件。
+​**Open project**Opening the project will pop up a WINDOWS Explorer-style browsing window to select the location of the project. After confirmation, the IDE will switch to the new project you open.
 
-​        **保存所有**：对全部文件执行一次保存操作。
+​**open a folder**: when you open a folder, a Windows Explorer style browse window will pop up to select the location of the folder. After confirmation, the folder you open will be automatically added to the resource view window.
 
-​        **刷新编辑器**：刷新编辑器的实时状态。
+​**Preservation**Save the current file.
+
+​**Save another**Save the current file as a new file.
+
+​**Save all**Save all files once.
+
+​**Refresh Editor**Refresh the real-time status of the editor.
+
+
+
+
 
 
 
   
 
-## 二、编辑
 
-​        ![blob.png](img/3.png)<br/>
-​        （图3）编辑列表
+
+##Two, editors
+
+​![blob.png](img/3.png)<br/>
+(Figure 3) Edit List
+
+​**Revoke**Undo the current operation once.
+
+​**redo**: a recovery of an operation that has been undone.
+
+​**shear**Cut the selected paragraph or file.
+
+​**paste**Paste copied or cut paragraphs or files.
+
+​**copy**Copy the selected paragraph or file.
+
+​**All election**Full selection of current file content.
+
+​**lookup**The search function window pops up at the top right of the edit view window for keyword search.
+
+​![图片1.png](img/4.png)<br/>
+(Figure 4) Find Panel
+
+​**replace**Replacement function window pops up at the top right of edit view window for keyword replacement.
+
+​**global search**The resource view window is transformed into a global search window, and the keyword is searched by the whole project, listing all the file paths containing the keyword, as well as the rows and the number of keywords. The keyword is highlighted in the code editing window.
+
+
 
  
 
-​        **撤销**：对当前操作进行一次撤销。 
-
-​        **重做**：对已经撤销的操作进行一次恢复。 
-
-​        **剪切**：将选中的段落或文件进行剪切。 
-
-​        **粘贴**：将已复制或已剪切的段落或文件进行粘贴操作。 
-
-​        **复制**：对选中的段落或文件进行复制。 
-
-​        **全选**：对当前文件内容进行全选操作。 
-
-​        **查找**：在编辑视图窗口右上方弹出查找功能窗口，进行关键字查找。
-
-​        ![图片1.png](img/4.png)<br/>
-​        （图4）查找面板
-
-​        **替换**：在编辑视图窗口右上方弹出替换功能窗口，进行关键字替换。
-
-​        **全局搜索**：将资源视图窗口转换成全局搜索窗口，对关键字进行全项目搜索，列出所有包含该关键字的文件路径以及关键字所在行、关键字数量。并且在代码编辑窗口中对该关键字进行高亮显示。
-
- 
-
-
-
-## 三、视图
-
-​        ![blob.png](img/5.png)<br/>
-​        （图5）视图列表
-
-​        **文件**：如果资源管理视图被屏蔽，此选项会重现资源管理器窗口。 
-
-​        **搜索**：如果全局搜索窗口被屏蔽，此选项会重现全局搜索窗口。 
-
-​        **GIT**：如果GIT窗口被屏蔽，此选项会重现GIT窗口。 
-
-​        **调试**：如果调试窗口被屏蔽，此选项会重现调试窗口。 
-
-​        **命令面板**：此选项会在编辑视图窗口上方显示命令窗口。 
-
-​        ![图片1.png](img/6.png)<br/>
-​        （图6）命令面板
-
-​        **错误和警告**：此选项会在编辑视图窗口上方显示错误和警告窗口。 
-
-​        **输出面板**：此选项会在编辑视图窗口下方显示输出窗口。 
-
-​        **终端**：此选项目会启动系统命令行终端。
-
-​        **调试面板**：此选项会在编辑视图窗口下方显示调试控制台窗口。
-
-​        **全屏**：将IDE全屏最大化显示。 
-
-​        **拆分编辑器**：将编辑视图窗口进行多份分屏拆分。
-
-​        **切换侧边栏**：将侧边栏 显示/隐藏。 
-
-​        **移动侧边栏**：将侧边栏移动到 最左侧/最右侧。 
-
-​        **放大**：将LayaAirIDE的显示比例 整体放大。 
-
-​        **缩小**：将LayaAirIDE的显示比例整体缩小。
-
-​        **重置缩放**：将LayaAirIDE的显示比例重置为默认。
 
 
 
 
 
-## 四、工具
 
-​        ![blob.png](img/7.png)<br/>
-​        （图7）工具面板     
+##Three, view
 
-- **SWF转换**：打开SWF资源转化工具窗口，以供用户进行SWF转换操作。
-- **JS压缩工具**：打开JS压缩工具窗口，以供用户将JS文件进行压缩和混淆。
-- **龙骨动画转换**：打开龙骨动画转换窗口，以供用户将DragonBones骨骼动画转换为LayaAir识别的格式。
-- **Spine动画转换**：打开Spine动画转换窗口，以供用户将Spine骨骼动画转换为LayaAir识别的格式。
-- **Psd2UI**：将pad文件直接转为UI页面，资源命名规则可参考[这里](https://ask.layabox.com/question/7365)
-- **图集打包**：打开图集打包窗口，以供用户进行图集打包操作。
-- **运行器下载**：打开运行器下载的二维码窗口，以供用户扫码下载LayaNative的运行器。
-- **打包APP**：APP打包的环境配置与操作窗口，以供用户将LayaAir项目打包为安卓的APP（apk文件）
-- **app构建**：打开构建功能窗口，以供用户将LayaAir引擎项目构建为Android-eclipse、Android-studio、XCode(IOS)三种移动端的APP项目工程。
-- **3D转换工具**：打开3D转换工具的URL链接，压缩包内提供了3DMax与Unity3D编辑器的资源转换工具，让3DMax与Unity3D的资源成为LayaAir引擎支持的资源。
+​![blob.png](img/5.png)<br/>
+(Figure 5) View list
+
+​**file**If the Resource Management View is blocked, this option will reproduce the Resource Manager window.
+
+​**search**If the global search window is blocked, this option will reproduce the global search window.
+
+​**GIT**If the GIT window is blocked, this option will reproduce the GIT window.
+
+​**debugging**If the debug window is blocked, this option will reproduce the debug window.
+
+​**Command panel**This option displays the command window above the edit view window.
+
+​![图片1.png](img/6.png)<br/>
+(Figure 6) Command Panel
+
+​**Errors and Warnings**This option displays an error and warning window above the edit view window.
+
+​**Output panel**This option displays the output window below the edit view window.
+
+​**terminal**This option will start the system command line terminal.
+
+​**Debug panel**This option displays the debug console window below the edit view window.
+
+​**Full screen**Maximize the full-screen display of IDE.
+
+​**Split editor**Split the edit view window into multiple screens.
+
+​**Switch sidebar**Display/hide the sidebar.
+
+​**Moving sidebar**Move the sidebar to the leftmost/rightmost side.
+
+​**enlarge**The display scale of LayaAirIDE is enlarged as a whole.
+
+​**narrow**The display proportion of LayaAirIDE will be reduced as a whole.
+
+​**Reset zoom**Reset the display ratio of LayaAirIDE to the default.
 
 
 
 
 
-## 五、项目
+##Four. Tools
 
-​        ![blob.png](img/8.png)<br/>
-​        （图8）项目面板
+​![blob.png](img/7.png)<br/>
+(Figure 7) Tool Panel
 
-​        **类库管理**：用于设置当前项目使用的类库版本。
+##-**SWF conversion**: opens the SWF resource conversion tool window for users to perform SWF conversion operations. **JS Compression Tool**Open the JS Compression Tool window for users to compress and confuse JS files.
+##-**Dragon Bone Animation Conversion**Open the keel animation conversion window for users to convert Dragon Bones skeleton animation into LayaAir recognition format. **Spine Animation Conversion**Open the Spine animation conversion window for users to convert Spine skeleton animation into LayaAir recognition format.
+##-**Psd2UI**Pad files are directly converted to UI pages, and resource naming rules can be referred to.[这里](https://ask.layabox.com/question/7365) **Atlas package**Open the Atlas Packaging Window for users to do Atlas Packaging.
+##-**Runner Download**Open the two-dimensional code window downloaded by the runner for users to download LayaNative's runner. **Pack APP**: the environment configuration and operation window of APP packaging for users to package the layaair project as android app (APK file)
+##-**App construction**Open the build function window for users to build the LayaAir engine project into three mobile-side APP project projects: Android-eclipse, Android-studio and XCode (IOS). **3D Conversion Tool**: open the URL link of the 3D conversion tool. The resource conversion tool of 3DMAX and unity3d editor is provided in the compression package. Make the resources of 3DMAX and unity3d become the resources supported by the layaair engine.
 
 
 
 
 
-## 六、帮助
+##Five. Project
 
-​        ![blob.png](img/9.png)<br/>
-​        （图9）帮助面板
-- **开发人员工具**：用于打开编辑器的调试页面。
-- **官网**： 打开Layabox官网链接。
-- **官网示例**：打开官网的LayaAir引擎示例链接。
-- **开发者中心**：打开Layabox开发者中心链接。
-- **打开编辑器本地缓存目录**：打开编辑器的本地缓存文件所在目录。
-- **检查更新**：打开LayaAirIDE的版本下载列表链接。
-- **更新日志**：打开gitHub中的引擎与IDE版本更新日志链接。
-- **当前版本号**：显示LayaAirIDE当前的版本号。
+​![blob.png](img/8.png)<br/>
+(Figure 8) Project Panel
+
+​**Class library management**Used to set the version of the class library used by the current project.
+
+
+
+
+
+##Six, help
+
+​![blob.png](img/9.png)<br/>
+##(Figure 9) Help panel **Developer Tools**Used to open the debug page of the editor.
+##-**Official website**Open the Layabox official link. **Official website example**Open the LayaAir engine example link on the official website.
+##-**Developer Center**Open the Layabox Developer Center link. **Open the Editor Local Cache Directory**Open the directory where the local cache file of the editor is located.
+##-**Check update**Open the LayaAirIDE version download list link. **Update log**Open the link between the engine in gitHub and the IDE version update log.
+-**Current version number**Display the current version number of LayaAirIDE.

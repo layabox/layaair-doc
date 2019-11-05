@@ -2,7 +2,7 @@
 
 ###### *version :2.1.0   Update:2019-5-25*
 
-​		纹理是增强计算机生成三维图像的真实感的有力工具。在没有纹理时，你的三维图像往往是像发亮的塑料（图1）。使用纹理后，能使你的网格、粒子、和界面更生动如图2。纹理是你覆盖或环绕着对象的图片或影片文件。
+Texture is a powerful tool to enhance the reality of computer generated three-dimensional images. In the absence of texture, your three-dimensional image tends to look like shiny plastic (Figure 1). With texture, you can make your meshes, particles, and interfaces more vivid as shown in Figure 2. Texture is a picture or film file that you cover or surround an object.
 
-![](img/1.png)（图1）![](img/2.png)(图2)
+![] (img/1.png) (Fig. 1)![] (img/2.png) (Fig. 2)
 

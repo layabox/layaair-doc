@@ -1,65 +1,65 @@
-# 【跨界TALK】程序员的激情与梦想 LayaBox CEO谢成鸿
+#Transboundary TALK Programmer's Passion and Dream LayaBox CEO Xie Chenghong
 
-2016-10-24  
+2016-10-24
 
-> 曾经卖网站赚千万，做端游亏损过亿，如今LayaBox A轮融资一亿。创业快二十年的谢成鸿要做全球顶级游戏引擎。
+> In the past, it made tens of millions of dollars by selling websites and lost more than 100 million yuan by doing end-trip. Now, LayaBox A raises 100 million yuan. Xie Chenghong, who has been an entrepreneur for nearly 20 years, will become the world's top game engine.
 
-【推荐】视频地址：[http://v.qq.com/x/page/h03399zivax.html](http://v.ku6.com/show/yVJglaZaEZ5zuQEXGF39hw...html)
+[Recommendation] Video Address:[http://v.qq.com/x/page/h03399zivax.html](http://v.ku6.com/show/yVJglaZaEZ5zuQEXGF39hw...html)
 
 ![img](http://www.layabox.com/uploadfile/image/20161028/1477647382982964.jpg)
 
-致敬所有可爱的码农
+To all the lovely farmers
 
-文 /游戏陀螺  芮枫
+Literature/Game Gyroscope
 
-引言
+Introduction
 
-曾经卖网站赚千万，做端游亏损过亿，如今LayaBox A轮融资一亿。创业快二十年的谢成鸿要做全球顶级游戏引擎。
+In the past, it made tens of millions of dollars by selling websites and lost more than 100 million yuan by doing end-trip. Now, LayaBox A raises 100 million yuan. Xie Chenghong, who has been an entrepreneur for nearly 20 years, will become the world's top game engine.
 
-LayaBox CEO谢成鸿：“作为一个程序员，我想通过程序的方式，创造一些属于自己的东西，改变一些，影响一些世界的东西。”
+Xie Chenghong, CEO of LayaBox: "As a programmer, I want to create something of my own, change something, and influence something in the world through the way of programming."
 
-十年梦醒 谢成鸿和他的LayaBox
+Xie Chenghong and his Laya Box
 
-“我可能不是一个很好的游戏制作人，不过我是一个很好的技术人员”
+"I may not be a good game maker, but I'm a good technician."
 
-LayaBox是谢成鸿（以下简称老谢）在2014年创立的，集游戏引擎、游戏发行、游戏渠道等多领域为一体的公司。可以说LayaBox是老谢在“十年低谷”之后东山再起之作。
+LayaBox is a company founded by Xie Chenghong (hereinafter referred to as Lao Xie) in 2014, which integrates game engine, game distribution, game channel and other fields. It can be said that LayaBox is Lao Xie's rebirth after the "ten-year low".
 
 ![img](http://www.layabox.com/uploadfile/image/20161028/1477647382723242.jpg)
 
-2016年1月11号，微信公开课PRO版在广州举行，“微信之父”张小龙首次公开演讲，宣布微信公众号将推出“应用号”。微信这样一个举动，正式将H5推到了台前。而在这时候，谢成鸿和他的LayaBox所研发的H5引擎早已经过多次迭代，进军H5重度游戏开发的领域。
+On January 11, 2016, the PRO version of Wechat Open Course was held in Guangzhou. Zhang Xiaolong, the father of Wechat, made his first public speech, announcing that the Wechat Public Number will launch the "Application Number". Such a move by Wechat formally pushed H5 to the front of the stage. By this time, H5 engine developed by Xie Chenghong and his LayaBox had already entered the field of H5 heavy game development after many iterations.
 
-2014年老谢创立LayaBox的时候，凭借LayaFlash拿到了千万级的天使融资，2015年整个H5产业链，包括引擎、CP、渠道平台、数据服务等几十家企业纷纷获得融资，业内人围绕着H5什么时候爆发展开了热烈的讨论。但是直到2016年，爆发迟迟没有来临，资本对于H5产业的态度变得谨慎了许多，就在这样一个时候，2016年6月LayaBox在A轮又拿到了深创投、金慧丰、合力资本等基金的联合投资，共计一亿的资金。上亿的投资在任何一个领域都是不多见的，老谢又是靠什么打动了投资人呢？
+When LayaBox was founded by LayaFlash in 2014, LayaFlash received tens of millions of angel financing. In 2015, dozens of enterprises including engines, CP, channel platforms, data services and so on in the whole H5 industry chain received financing. There was a heated discussion around when H5 broke out. But until 2016, when the outbreak was delayed and capital attitudes towards the H5 industry became more cautious, LayaBox in June 2016 received a combined investment of Shenzhen Venture Capital, Jin Huifeng and Co-operative Capital in Round A, totaling 100 million yuan. Billions of investments are rare in any field. How did Lao Xie impress investors?
 
-LayaBox自2011年就已经开始研发，2015年第一代开源引擎LayaFlash开创性的引用了Flash AS3作为HTML5的开发语言。第二代开源引擎LayaAir更是支持Flash AS3、TypeScript、JavaScript三种开发语言，支持2D、3D、VR游戏开发。还可以一键发布APP手游、Flash页游、HTML5游戏。如果说有什么会制约H5的发展，那技术一定是其中的原因之一，老谢就是看到并解决了这一问题。
+LayaBox has been developing since 2011. In 2015, the first generation of open source engine LayaFlash pioneered the use of Flash AS3 as the development language of HTML5. LayaAir, the second generation open source engine, supports Flash AS3, TypeScript and JavaScript, and supports the development of 2D, 3D and VR games. You can also publish APP Hand Tour, Flash Page Tour, HTML5 Game with one click. If anything will restrict the development of H5, technology must be one of the reasons. Lao Xie saw and solved this problem.
 
-老谢对自己的团队和产品都很自信，他认为移动WEB一定是发展的趋势。而且大量的流量正在通过整合寻求变现，H5游戏是非常好的机会。LayaBox可以解决的一键多平台发布的问题，大大降低了成本同时提高了游戏性能。目前老谢计划把LayaBox打造成一个基于游戏引擎的开发者生态，LayaBox拥有自己的runtime，这将是发展H5游戏生态的基础。除孵化器和投资外，LayaBox还发起了“LayaBox教育联盟”LayaBox场频相关学习资料将进入到成员的教育计划中。“未来LayaBox教育联盟”还将于各大高校合作，让LayaBox走进大学生的群体。
+Lao Xie is confident of his team and products. He believes that mobile WEB must be the trend of development. And a lot of traffic is being realized through integration, H5 game is a very good opportunity. LayaBox can solve a key multi-platform publishing problem, greatly reducing costs and improving game performance. At present, Lao Xie plans to build LayaBox into a game Engine-based developer ecosystem. LayaBox has its own runtime, which will be the basis for the development of H5 game ecosystem. In addition to incubators and investments, LayaBox has launched the LayaBox Education Alliance, which will incorporate field frequency-related learning materials into its members'education programs. "Future LayaBox Education Alliance" will also cooperate with major universities to let LayaBox enter the group of College students.
 
-28年程序员 18年的创业路
+28 Years of Programmers'18 Years of Entrepreneurship
 
-“创业苦不苦？创业当然苦了，但是每个人对于苦难的看法是不一样的。”
+"Is entrepreneurship painful? It's hard to start a business, but everyone has different opinions about it."
 
-如今的老谢可以说是东山再起，“十年低谷”之后一鸣惊人，可又有多少人知道，他曾经经历过的心酸，成功背后的故事。
+Today, Lao Xie can be said to be an astonishing comeback after the "ten-year low", but how many people know that he has experienced the heartache, the story behind the success.
 
-1988年在国内大多数人对电脑并不了解的时候，老谢就已经开始自学编程，成为了中国第二代程序员，到今天老谢写代码已经写了整整28年。他说，他从之前的理想就是做一个技术总监，因为他太喜欢技术了。1998年老谢正式开始创业，相继创立了多家公司，从歌灯公司到可乐吧；从“十年低谷”的中娱在线到现在的LayaBox。每一次历经的成功与失败，困苦与磨难都成为了老谢创业路上的财富。创业最艰苦的时候，老谢从一个高楼的民宅搬到“贫民窟”。不但把投资人的资金投入了进去，自己也赔到倾家荡产。他开玩笑地说“创业这么多年，最后只剩下一个老婆和两个孩子”。笑声不能掩盖的是他对于那段时间的回忆，或许在老谢自己看来，那段日子并不是“苦难”只是他创业路上一段值得珍惜的记忆。
+In 1988, when most people in China did not know about computers, Lao Xie began to learn to program by himself and became the second generation programmer in China. Today, Lao Xie has written code for 28 years. He said that his previous ideal was to be a technology director because he liked technology so much. In 1998, Lao Xie officially started his own business, and successively founded many companies, from Song lamp company to Coke bar; from "ten-year low" entertainment online to now Laaya Box. Every success and failure, hardship and suffering have become Lao Xie's wealth on his way to start a business. At the most difficult time of starting a business, Lao Xie moved from a high-rise residence to a "slum". Not only invest the investor's money in it, but also lose it. He joked that "after all these years of entrepreneurship, there was only one wife and two children left." Laughter can not hide his memories of that period, perhaps in Lao Xie's own view, that period is not "suffering" but a cherished memory on his way to start a business.
 
 ![img](http://www.layabox.com/uploadfile/image/20161028/1477647382869156.jpg)
 
-记得有人说过这样一句话“创业最可怕的不是失败，而是失去信心。”失败和低谷对老谢信心的打击有多重，不是亲身去经历，我想很难感受的到。“当时觉得可能挺一挺就过来了，自己也没想到是十年”老谢就是这样秉持着对成功的渴望，对自己和团队的信心，对理想的坚持走过了十八年，走到了今天。
+I remember someone once said that the most terrible thing about starting a business is not failure, but loss of confidence. How much is the impact of failure and valley on Lao Xie's confidence? It's not personal experience. I think it's hard to feel it. "At that time, I thought it might be quite easy to come over, but I didn't think it would be ten years." That's how Lao Xie upheld his desire for success, his confidence in himself and his team, and his insistence on his ideal for 18 years has come to this day.
 
-一个没有成功过的人未必具备足够的能力；没有失败过的人很难真正了解自己。老谢成功时的努力，失败时的坚持注定他会再次成功。
+A person who has not succeeded may not have enough abilities; a person who has not failed can hardly really understand himself. Lao Xie's efforts when he succeeds and his persistence when he fails are doomed to succeed again.
 
-简简单单的一个程序员 一个“工匠”和一个“手艺人”
+A simple programmer, a craftsman and a craftsman
 
-“我是从88年开始写代码，到现在28年。”
+"I started writing code in 88, and now it's 28 years."
 
-18年的创业，可以说老谢创造了LayaBox，也可以说是LayaBox成就了老谢。作为一个可以说是成功的创业者，老谢对自己的定位却和大家想象中不太一样。他对自己的定位只是简简单单的一个程序员，一个“工匠”一个“手艺人”。
+Eighteen years of entrepreneurship, Lao Xie can be said to have created LayaBox, LayaBox can also be said to have achieved Lao Xie. As a successful entrepreneur, Lao Xie's position on himself is different from everyone's imagination. He positioned himself as a simple programmer, a craftsman and a craftsman.
 
-在LayaBox引擎研发的初期，老谢每天和公司里普通的程序员一样坐在电脑前写代码，每天平均的睡眠不超过5个小时。累了就在公司里休息，醒了继续工作。“累算什么，睡一觉不就好了”。老谢的坚持和拼劲，成为了引擎研发和整个公司动力最强的催化剂。
+In the early days of LayaBox engine development, Lao Xie sat in front of the computer every day and wrote code like ordinary programmers in the company. He slept for no more than five hours on average every day. When I am tired, I rest in the company and wake up to continue working. "What's cumulative, just don't sleep." Lao Xie's perseverance and hard work have become the most powerful catalyst for engine development and the company as a whole.
 
-“有的人喜欢爬山，有的人喜欢泡吧，而我觉得写代码就会让我感到快乐。”
+"Some people like to climb mountains, others like to soak, and I think writing code will make me happy."
 
 ![img](http://www.layabox.com/uploadfile/image/20161028/1477647382134747.jpg)
 
-引擎开发成功之初，老谢并没有想把它当作一个“商业化”的东西来做，只是想把引擎分享出去，让引擎可以服务更多的人，给他们带来一定的便利。 “我们作为技术公司最大的梦想就是，通过技术帮助大家创造财富”通过技术帮大家创造财富。这看起来简简单单的一句话，透露出的是作为一个程序员内心中真诚的情怀。当游戏陀螺问及LayaBox对自己引擎的追求的时候，老谢说“我们公司最大的追求就是，不挨骂。只要大家觉得我们这个引擎还不错，不要每天吐槽我们这个引擎有哪些问题，我们就满足了”。如果说一生中能够被自己主导的时间有50年，28年可以说是半个人生。老谢把他最好的一段时间都给了程序，给了代码，他的每一句话，都阐述着程序员的激情与梦想。
+At the beginning of successful engine development, Lao Xie did not want to regard it as a "commercial" thing to do, just want to share the engine, so that the engine can serve more people, bring them some convenience. "Our biggest dream as a technology company is to help everyone create wealth through technology." Through technology to help everyone create wealth. This seems to be a simple sentence, revealing the sincere feelings of being a programmer. When the Game Gyroscope asked LayaBox about his pursuit of his engine, Lao Xie said, "Our company's greatest pursuit is not to be scolded. As long as you think our engine is good, don't spit every day what problems our engine has, we will be satisfied. If there are 50 years in one's life that can be dominated by oneself, 28 years can be said to be half of one's life. Lao Xie gave his best time to the program and the code. Every word he said elaborated the programmer's passion and dream.
 
-原文链接：[http://www.youxituoluo.com/502075.html](http://www.youxituoluo.com/502075.html)
+Links to the original text:[http://www.youxituoluo.com/502075.html](http://www.youxituoluo.com/502075.html)

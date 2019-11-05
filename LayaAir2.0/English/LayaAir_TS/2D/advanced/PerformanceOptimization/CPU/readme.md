@@ -1,10 +1,12 @@
 # 减少CPU使用量
 
-### **一、减少动态属性查找**
+### **I. Reducing Dynamic Attribute Search**
 
-JavaScript中任何对象都是动态的，你可以任意地添加属性。然而，在大量的属性里查找某属性可能很耗时。如果需要频繁使用某个属性值，可以使用局部变量来保存它：
+Any object in JavaScript is dynamic and you can add attributes at will. However, finding an attribute in a large number of attributes can be time-consuming. If you need to use an attribute value frequently, you can use a local variable to save it:
+
 
 ```typescript
+
 foo()
 {
 var prop=this.target.prop;
@@ -15,16 +17,19 @@ this.process3(prop);
 }
 ```
 
-### 二、计时器
 
- LayaAir提供两种计时器循环来执行代码块。
+###II. Timer
 
-1. `Laya.timer.frameLoop`执行频率依赖于帧频率，可通过Stat.FPS查看当前帧频。
+LayaAir provides two timer loops to execute code blocks.
+
+One`Laya.timer.frameLoop`The execution frequency depends on the frame frequency, and the current frame frequency can be viewed through Stat. FPS.
 
 
-1. `Laya.timer.loop`执行频率依赖于参数指定时间。
+One`Laya.timer.loop`The execution frequency depends on the specified time of the parameter.
+
 
 ```typescript
+
 Laya.timer.frameLoop(1, this, this.animateFrameRateBased);
 Laya.stage.on("click", this, this.dispose);
 dispose() 
@@ -33,37 +38,46 @@ dispose()
 }
 ```
 
-当一个对象的生命周期结束时，记得清除其内部的Timer：
 
-### **三、获取显示对象边界的做法**
+When an object's life cycle ends, remember to clear its internal Timer:
 
-在相对布局中，很经常需要正确地获取显示对象的边界。获取显示对象的边界也有多种做法，而其间差异很有必要知道。
+### **3. The Method of Obtaining Display Object Boundary**
 
-1. 使用getBounds/ getGraphicBounds。
+In relative layout, it is often necessary to get the boundaries of display objects correctly. There are many ways to get the boundaries of display objects, and it is necessary to know the differences between them.
+
+1. Use getBounds / getGraphicBounds.
+
 
 ```typescript
+
 var sp=new Laya.Sprite();
 sp.graphics.drawRect(0,0,100,100,"#FF0000");
 var bounds:Laya.Rectangle=sp.getGraphicBounds();
 Laya.stage.addChild(sp);
 ```
 
- getBounds可以满足多数多数需求，但由于其需要计算边界，不适合频繁调用。
 
-1. 设置容器的autoSize为true。
+GetBounds can satisfy most of the requirements, but it is not suitable for frequent calls because it needs to compute boundaries.
+
+1. Set the autoSize of the container to true.
+
 
 ```typescript
+
 var sp=new Laya.Sprite();
 sp.autoSize=true;
 sp.graphics.drawRect(0,0,100,100,"#FF0000");
 Laya.stage.addChild(sp);
 ```
 
-上述代码可以在运行时正确获取宽高。autoSize在获取宽高并且显示列表的状态发生改变时会重新计算（autoSize通过getBoudns计算宽高）。所以对拥有大量子对象的容器应用autoSize是不可取的。如果设置了size，autoSize将不起效。
 
- 使用loadImage后获取宽高：
+The above code can get the width and height correctly at runtime. AutoSize is recalculated when it acquires width and changes the status of the display list (autoSize calculates width and height through getBoudns). So it is not advisable to apply autoSize to containers with a large number of sub-objects. If size is set, autoSize will not work.
+
+Get width and height by using loadImage:
+
 
 ```typescript
+
 var sp=new Laya.Sprite();
 sp.loadImage("res/apes/monkey2.png",0,0,0,0,Laya.Handler.create(this,function()
 {
@@ -72,11 +86,14 @@ sp.loadImage("res/apes/monkey2.png",0,0,0,0,Laya.Handler.create(this,function()
 Laya.stage.addChild(sp);
 ```
 
- loadImage在加载完成的回调函数触发之后才可以正确获取宽高。
 
-1. **直接调用size设置：**
+Load Image can acquire width and height correctly only after the callback function triggered after loading.
+
+One**Call the size setting directly:**
+
 
 ```typescript
+
 Laya.loader.load("res/apes/monkey2.png",Laya.Handler.create(this,function()
 {
   var texture=Laya.loader.getRes("res/apes/monkey2.png");
@@ -87,23 +104,25 @@ Laya.loader.load("res/apes/monkey2.png",Laya.Handler.create(this,function()
 }));
 ```
 
-使用Graphics.drawTexture并不会自动设置容器的宽高，但是可以使用Texture的宽高赋予容器。毋庸置疑，这是最高效的方式。
 
-**注：getGraphicsBounds用于获取矢量绘图宽高。**
+Using Graphics. drawTexture does not automatically set the width of the container, but it can be given to the container using the width of the text. There is no doubt that this is the most efficient way.
 
-### **四、根据活动状态改变帧频**
+**Note: getGraphics Bounds is used to obtain the width and height of vector drawing.**
 
- 帧频有三种模式，
+### **IV. Change the frame rate according to the active state**
 
-- Stage.FRAME_SLOW维持FPS在30；
-- Stage.FRAME_FAST维持FPS在60；
-- Stage.FRAME_MOUSE则选择性维持FPS在30或60帧。
+There are three modes of frame frequency.
 
- 有时并不需要让游戏以60FPS的速率执行，因为30FPS已经能够满足多数情况下人类视觉的响应，但是鼠标交互时，30FPS可能会造成画面的不连贯，于是Stage.FRAME_MOUSE应运而生。
+##- Stage. FRAME_SLOW maintains FPS at 30;Stage. FRAME_FAST maintained FPS at 60;
+- Stage. FRAME_MOUSE selectively maintains FPS at 30 or 60 frames.
 
- 下例展示以Stage.FRAME_SLOW的帧率，在画布上移动鼠标，使圆球跟随鼠标移动：
+Sometimes the game does not need to be executed at the rate of 60FPS, because 30FPS can satisfy the human visual response in most cases, but when the mouse interacts, 30FPS may cause incoherence in the picture, so Stage. FRAME_MOUSE came into being.
+
+The following example shows moving the mouse on the canvas at the frame rate of stage. Frame? Slow so that the ball follows the mouse:
+
 
 ```typescript
+
 Laya.init(this.Browser.width,this.Browser.height);
 Laya.Stat.show();
 Laya.stage.frameRate=Laya.Stage.FRAME_SLOW;
@@ -118,29 +137,35 @@ Laya.stage.on(Laya.Event.MOUSE_MOVE,this,function()
 });
 ```
 
+
 ![图片1.png](https://official.layabox.com/laya_data/Chinese/LayaAir_AS3/2D/advanced/PerformanceOptimization/CPU/img/1.png)
 
-（图1）
+(Fig. 1)
 
- 此时FPS显示30，并且在鼠标移动时，可以感觉到圆球位置的更新不连贯。设置Stage.frameRate为Stage.FRAME_MOUSE：
+At this time, the FPS displays 30, and when the mouse moves, it can feel that the update of the position of the sphere is incoherent. Set Stage. frameRate to Stage. FRAME_MOUSE:
+
 
 ```typescript
+
 Laya.stage.frameRate = Laya.Stage.FRAME_MOUSE;
 ```
 
+
 ![图片1.png](https://official.layabox.com/laya_data/Chinese/LayaAir_AS3/2D/advanced/PerformanceOptimization/CPU/img/2.png)
 
-（图2）
+(Fig. 2)
 
- 此时在鼠标移动后FPS会显示60，并且画面流畅度提升。在鼠标静止2秒不动后，FPS又会恢复到30帧。
+At this time, the FPS will display 60 after the mouse moves, and the picture fluency will be improved. When the mouse is still for 2 seconds, the FPS will be restored to 30 frames.
 
-### **五、使用callLater**
+### **5. Use callLater**
 
-callLater使代码块延迟至本帧渲染前执行。如果当前的操作频繁改变某对象的状态，此时可以考虑使用callLater，以减少重复计算。
+CallLater delays block execution until the frame is rendered. If the current operation frequently changes the state of an object, then callLater can be considered to reduce the duplication of computation.
 
- 考虑一个图形，对它设置任何改变外观的属性都将导致图形重绘：
+Consider a graph. Setting any attributes to it that change its appearance will result in the redrawing of the graph:
+
 
 ```typescript
+
 var rotation=0,
 scale=1,
 position=0;
@@ -167,34 +192,44 @@ public function update()
 }
 ```
 
- 调用以下代码更改状态：
+
+Call the following code to change the status:
+
 
 ```
+
 setRotation(90);
 setScale(2);
 setPosition(30);
 ```
 
- 控制台的打印结果是:
+
+The printing result of the console is:
+
 
 ```
+
 rotation: 90scale: 1position: 0
 rotation: 90scale: 2position: 0
 rotation: 90scale: 2position: 30
 ```
 
-update被调用了三次，并且最后的结果是正确的，但是前面两次调用都是不需要的。
 
- 尝试将三处update改为：
+Update is called three times and the final result is correct, but neither of the previous two calls is needed.
+
+Try to change three updates to:
+
 
 ```
+
 Laya.timer.callLater(this, update);
 ```
 
-此时，update只会调用一次，并且是我们想要的结果。
 
-### **六、图片/图集加载**
+At this point, update will only be called once, and it is the result we want.
 
-在完成图片/图集的加载之后，引擎就会开始处理图片资源。如果加载的是一张图集，会处理每张子图片。如果一次性处理大量的图片，这个过程可能会造成长时间的卡顿。
+### **VI. Picture/Atlas Loading**
 
-在游戏的资源加载中，可以将资源按照关卡、场景等分类加载。在同一时间处理的图片越好，当时的游戏响应速度也会更快。在资源使用完成后，也可以予以卸载，释放内存。
+After loading the image/atlas, the engine will start processing the image resources. If a collection is loaded, each sub-image is processed. If a large number of images are processed at one time, this process may result in a long time of carton.
+
+In the resource loading of games, resources can be loaded according to levels, scenarios and other categories. The better the picture is processed at the same time, the faster the game responds at that time. After the resource is used, it can also be unloaded to release memory.
