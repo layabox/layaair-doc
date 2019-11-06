@@ -333,7 +333,7 @@ JSON示例参照代码如下：
 
 ```typescript
 //先加载plf类型的合并后文件Image.json
-Laya.loader.load([{url: "res/Image.plf", type: "plf"}], Handler.create(this, function():void {
+Laya.loader.load([{url: "res/Image.json", type: "plf"}], Handler.create(this, function():void {
 	
     //在回调里，正常使用原来的图集
 	Laya.loader.load("res/atlas/comp.atlas", Handler.create(this, function():void {
