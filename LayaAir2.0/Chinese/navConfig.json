@@ -724,6 +724,11 @@
 			"name_2_name": "LayaAir3D图形系统基础概念",
 			"name_2_data": [
 			{
+				"name_3_name": "零基础了解3D游戏开发基础概念",
+				"name_3_url": "Chinese/LayaAir_TS/3D/basic/",
+				"name_3_file": "readme.md"
+			},
+			{
 				"name_3_name": "LayaAir3D坐标系统",
 				"name_3_url": "Chinese/LayaAir_TS/3D/Graphics_based/Reference_frame/",
 				"name_3_file": "readme.md"
@@ -2437,6 +2442,11 @@
 		{
 			"name_2_name": "LayaAir3D图形系统基础概念",
 			"name_2_data": [
+			{
+				"name_3_name": "零基础了解3D游戏开发基础概念",
+				"name_3_url": "Chinese/LayaAir_TS/3D/basic/",
+				"name_3_file": "readme.md"
+			},
 			{
 				"name_3_name": "LayaAir3D坐标系统",
 				"name_3_url": "Chinese/LayaAir_JS/3D/Graphics_based/Reference_frame/",
@@ -4192,12 +4202,7 @@
 			"name_2_data": [
 			{
 				"name_3_name": "零基础了解3D游戏开发基础概念",
-				"name_3_url": "Chinese/LayaAir_AS3/3D/basic/",
-				"name_3_file": "readme.md"
-			},
-			{
-				"name_3_name": "LayaAir3D坐标系统",
-				"name_3_url": "Chinese/LayaAir_AS3/3D/Graphics_based/Reference_frame/",
+				"name_3_url": "Chinese/LayaAir_TS/3D/basic/",
 				"name_3_file": "readme.md"
 			},
 			{
