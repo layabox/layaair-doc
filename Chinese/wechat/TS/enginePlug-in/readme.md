@@ -38,7 +38,7 @@ LayaAir引擎的插件库使用，只要是使用了1.8.6及以上版本的IDE�
 
 #### AS版旧项目适配
 
-需要用LayaAirIDE1.8.6或更高版本，打开`.laya/compile.js` ，搜一下`asconfig.json;`在其后增加配置参数`outlaya=true;`如下图所示。
+需要用LayaAirIDE1.8.6或更高版本，打开`.laya/tasks.json` ，找到 `"args"` 字段，在该字段的配置参数后增加新的配置参数`outlaya=true`，如下图所示。
 
 ![图](img/10.png) 
 
