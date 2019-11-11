@@ -862,6 +862,10 @@
 				"name_3_name": "微信小游戏常见问题汇总（7.25更新）",
 				"name_3_url": "Chinese/wechat/AS/FAQ/",
 				"name_3_file": "readme.md"
+			},{
+				"name_3_name": "引擎插件使用说明",
+				"name_3_url": "Chinese/wechat/TS/enginePlug-in/",
+				"name_3_file": "readme.md"
 			}]
 		},
 		{
@@ -2025,6 +2029,10 @@
 				"name_3_name": "微信小游戏常见问题汇总（7.25更新）",
 				"name_3_url": "Chinese/wechat/AS/FAQ/",
 				"name_3_file": "readme.md"
+			},{
+				"name_3_name": "引擎插件使用说明",
+				"name_3_url": "Chinese/wechat/TS/enginePlug-in/",
+				"name_3_file": "readme.md"
 			}]
 		},
 		{
@@ -3113,6 +3121,10 @@
 			},{
 				"name_3_name": "微信小游戏常见问题汇总（7.25更新）",
 				"name_3_url": "Chinese/wechat/AS/FAQ/",
+				"name_3_file": "readme.md"
+			},{
+				"name_3_name": "引擎插件使用说明",
+				"name_3_url": "Chinese/wechat/TS/enginePlug-in/",
 				"name_3_file": "readme.md"
 			}]
 		},
