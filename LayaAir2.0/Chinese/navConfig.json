@@ -1507,10 +1507,13 @@
 				"name_3_name": "微信开放数据域",
 				"name_3_url": "Chinese/miniGame/wechat/TS/openDomain/",
 				"name_3_file": "readme.md"
-			},
-			{
+			},{
 				"name_3_name": "微信小游戏常见问题汇总（10.25更新）",
 				"name_3_url": "Chinese/miniGame/wechat/AS/FAQ/",
+				"name_3_file": "readme.md"
+			},{
+				"name_3_name": "引擎插件使用说明",
+				"name_3_url": "Chinese/wechat/TS/enginePlug-in/",
 				"name_3_file": "readme.md"
 			}]
 		},
@@ -3225,10 +3228,13 @@
 				"name_3_name": "微信小游戏开放域",
 				"name_3_url": "Chinese/miniGame/wechat/JS/openDomain/",
 				"name_3_file": "readme.md"
-			},
-			{
+			},{
 				"name_3_name": "微信小游戏常见问题汇总（10.25更新）",
 				"name_3_url": "Chinese/miniGame/wechat/AS/FAQ/",
+				"name_3_file": "readme.md"
+			},{
+				"name_3_name": "引擎插件使用说明",
+				"name_3_url": "Chinese/wechat/TS/enginePlug-in/",
 				"name_3_file": "readme.md"
 			}]
 		},
@@ -4987,6 +4993,10 @@
 			},{
 				"name_3_name": "微信小游戏常见问题汇总（10.25更新）",
 				"name_3_url": "Chinese/miniGame/wechat/AS/FAQ/",
+				"name_3_file": "readme.md"
+			},{
+				"name_3_name": "引擎插件使用说明",
+				"name_3_url": "Chinese/wechat/TS/enginePlug-in/",
 				"name_3_file": "readme.md"
 			}]
 		},
