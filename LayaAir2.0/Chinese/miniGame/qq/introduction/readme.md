@@ -18,6 +18,8 @@
 
 LayaAirIDE的发布功能，内置了QQ小游戏的发布功能，需要先将LayaAir引擎的项目，通过发布功能生成手机QQ小游戏项目。关于发布功能的使用。这里不重复介绍了。不会的可以前往官网文档查看。
 
+**注意** ：在QQ小游戏中默认 `Config.useRetinalCanvas = true` （使用物理像素模式）。
+
 链接：[https://ldc2.layabox.com/doc/?nav=zh-ts-3-0-6](https://ldc2.layabox.com/doc/?nav=zh-ts-3-0-6)
 
 ### 2、打开在QQ的开发者工具中打开发布的项目
