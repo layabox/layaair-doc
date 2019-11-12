@@ -72,7 +72,7 @@ subShader.addShaderPass(vs, ps);
 
 **Shader3D.PERIOD_SPRITE **       :shader变量提交周期，逐精灵和相机，注：因为精灵包含MVP矩阵，为复合属性，所以摄像机发生变化时也应提交。
 
-逐场景，逐相机，逐精灵和相机，这三种周期的uniform是引擎自动传入的值。
+逐场景，逐相机，逐精灵和相机，这三种周期的uniform是引擎自动传入的值。即当场景，相机，精灵与相机随意一个有变化时，引擎会自动提交变动
 
 逐材质与自定义周期的uniform都是由开发者接管的传入。像官方示例 多Pass描边shader中（[demo地址](http://layaair2.ldc2.layabox.com/demo2/?language=ch&category=3d&group=Shader&name=Shader_MultiplePassOutline)），开发者自己处理的**描边颜色**，**描边线宽**等uniform值。（关于开发者如何自己处理uniform值会在 **关联shader的uniform** 篇中讲解）
 
