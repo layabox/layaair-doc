@@ -1,10 +1,96 @@
 # Shader预编译
 
-###### *version :2.3.0   Update:2019-10-8*
+###### *version :2.4.0   Update:2019-11-12*
 
 在使用Shader时，引擎才会去编译Shader。所以在Shader较为复杂时，就有可能会导致显示卡顿。为了避开这些卡顿问题，就需要去预编译Shader。
 
-### 1.获取编译的Shader列表
+> 新版本预编译Shader优化
+
+在2.4.0版本，我们提供了两个新的接口方便开发者预编译shader：
+
+**ShaderVariant** 着色器变种 
+
+![](img/new_1.png)<br>
+
+**ShaderVariantCollection** 着色器变种集合。
+
+![](img/new_2.png)<br>
+
+前者记录了一个着色器变种所有的相关信息，后者用于记录所有的着色器变种。
+
+开发者可以通过 **Shader3D.debugShaderVariantCollection** [readonly] 获取到目前已有的着色器变种集合。
+
+在跑一遍游戏之后，开发者可以将收集到的数据导出生成一个JSON。在下次进入游戏时解析JSON，构建相关的ShaderVariant。再将该ShaderVariant添加到 **Shader3D.debugShaderVariantCollection** 中，添加完成后，执行 **Shader3D.debugShaderVariantCollection.compile()** 即可完成相关shader预编译。
+
+> 当鼠标按下时，构建需要导出的Object。下方示例改自官方边缘光照(Shader_GlowingEdge)示例
+
+```typescript
+Laya.stage.on(Event.MOUSE_DOWN,this,function():void{
+    let arr;
+    for(let i = 0;i<Shader3D.debugShaderVariantCollection.variantCount;i++){
+        let shadervariant:ShaderVariant = Shader3D.debugShaderVariantCollection.getByIndex(i);
+        let shaderName:string = shadervariant.shader.name;
+        if(!shaderObj[shaderName])shaderObj[shaderName] = [];
+        arr = shaderObj[shaderName];
+        let obj:any = {};
+        obj.defineNames = shadervariant.defineNames;
+        obj.passIndex= shadervariant.passIndex;
+        obj.subShaderIndex= shadervariant.subShaderIndex;
+        arr.push(obj);
+    }
+});
+```
+
+> 生成的相关数据
+
+```typescript
+{
+    "GlowingEdgeMaterial":[
+        {
+            "defineNames":["DIRECTIONLIGHT"],
+            "passIndex":0,
+            "subShaderIndex":0
+        },
+        {
+            "defineNames":["DIRECTIONLIGHT","BONE"],
+            "passIndex":0,
+            "subShaderIndex":0
+        }
+    ],
+    "BLINNPHONG":[
+        {
+            "defineNames":["DIFFUSEMAP","DIRECTIONLIGHT","NORMALMAP","UV","UV1","BONE"],
+            "passIndex":0,
+			"subShaderIndex":0
+        }
+    ]
+};
+```
+
+> 解析JSON，并且预编译Shader。修改initShader方法
+
+```typescript
+//初始化shader
+private initShader(): void {
+    ......
+    //加载获取得到shaderObj
+    let arr :Array<any>= this.shaderObj["GlowingEdgeMaterial"];
+	for (let index = 0; index < arr.length; index++) {
+    	let obj = arr[index];
+    	let shadervariant = new ShaderVariant(glowingEdgeShader,obj.subShaderIndex,obj.passIndex,obj.defineNames);
+        //将构建的shadervariant添加到debugShaderVariantCollection中
+    	Shader3D.debugShaderVariantCollection.add(shadervariant);
+	}
+	//预编译shader
+	Shader3D.debugShaderVariantCollection.compile();
+}
+```
+
+
+
+------
+
+### 1.查看Shader编译信息
 
 设置 `Shader3D.debugMode = true ` 后跑一遍游戏，之后在控制台中，我们就可以看到用绿色字体输出的shader编译相关信息了。
 
@@ -59,7 +145,7 @@ Shader3D.compileShader('CustomTerrainShader',0,0,[]);
 Shader3D.compileShader('CustomTerrainShader',0,0,[0,0,262144]);
 ```
 
-
+ **ShaderVariantCollection.compile** 也是基于 **compileShaderByDefineNames** 接口实现的预编译。 
 
 两个接口的区别：
 
