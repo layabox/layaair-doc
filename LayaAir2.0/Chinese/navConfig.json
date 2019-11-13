@@ -1571,6 +1571,15 @@
 				"name_3_url": "Chinese/miniGame/vivo/rundebug/",
 				"name_3_file": "readme.md"
 			}]
+		},
+		{
+			"name_2_name": "QQ小游戏",
+			"name_2_data": [
+			{
+				"name_3_name": "QQ小游戏发布与调试指南",
+				"name_3_url": "Chinese/miniGame/qq/introduction/",
+				"name_3_file": "readme.md"
+			}]
 		}]
 	},
 	{
@@ -3290,6 +3299,15 @@
 			{
 				"name_3_name": "vivo小游戏发布与调试指南",
 				"name_3_url": "Chinese/miniGame/vivo/rundebug/",
+				"name_3_file": "readme.md"
+			}]
+		},
+		{
+			"name_2_name": "QQ小游戏",
+			"name_2_data": [
+			{
+				"name_3_name": "QQ小游戏发布与调试指南",
+				"name_3_url": "Chinese/miniGame/qq/introduction/",
 				"name_3_file": "readme.md"
 			}]
 		}]
@@ -5052,6 +5070,15 @@
 			{
 				"name_3_name": "vivo小游戏发布与调试指南",
 				"name_3_url": "Chinese/miniGame/vivo/rundebug/",
+				"name_3_file": "readme.md"
+			}]
+		},
+		{
+			"name_2_name": "QQ小游戏",
+			"name_2_data": [
+			{
+				"name_3_name": "QQ小游戏发布与调试指南",
+				"name_3_url": "Chinese/miniGame/qq/introduction/",
 				"name_3_file": "readme.md"
 			}]
 		}]
