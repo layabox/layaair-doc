@@ -1,6 +1,6 @@
 ## 学习VSCode开发工作流配置
 
-> *Author：charley        Date：2019-11-18*
+> *Author：charley                Date：2019-11-25*
 
 LayaAirIDE 2.4将VSCode剥离出去，其主要目的是让开发者编码工作流更加自由。比如 ，可以即时体验到新版本的升级，无需受限于LayaAirIDE。可以通过VSCode来灵活配置自己的开发工作流等。
 
@@ -58,9 +58,9 @@ chrome官网下载地址：
 
 #### 2.2 在LayaAirIDE中关联VSCode
 
-正常情况下，安装好VSCode，Windows版LayaAirIDE能自动找到安装目录进行关联。然而也会有无法自动关联的情况出现。尤其是MAC版本，因LayaAirIDE当前的底层机制原因，必定没办法自动关联。
+正常情况下，安装好VSCode，Windows版LayaAirIDE能自动找到安装目录进行关联。然而也会有无法自动关联的情况出现。
 
-> 注：未来会重构底层方案，改善产品体验
+> 注：MAC版本，当前的2.4.0beta版有个BUG，必定没办法自动关联。BUG已在2.4.0正式版中修复。
 
 当无法自动关联的情况出现后，点击LayaAirIDE中的编辑模式按钮时，如下图所示，会弹出来`工具路径配置`的页面。
 
