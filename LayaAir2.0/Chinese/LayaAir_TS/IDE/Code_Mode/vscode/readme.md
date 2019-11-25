@@ -12,7 +12,7 @@ LayaAirIDE 2.4将VSCode剥离出去，其主要目的是让开发者编码工作
 
 #### 1.1、下载安装LayaAirIDE
 
-哪怕是将VSCode剥离出去，LayaAirIDE仍然需要下载安装，这不仅是因为UI与场景的编辑以及项目创建需要用到LayaAirIDE。游戏发布的gulp配置js也必须是由LayaAirIDE生成的，哪怕是用命令行发布，对于不同平台的配置js，也是需要先在LayaAirIDE中生成一次，所以一定要下载LayaAirIDE。（本篇文档是基于2.4.0beta版IDE介绍）
+哪怕是将VSCode剥离出去，LayaAirIDE仍然需要下载安装，这不仅是因为UI与场景的编辑以及项目创建需要用到LayaAirIDE。游戏发布的gulp配置js以及平台配置json也必须是由LayaAirIDE生成的，哪怕是用命令行发布，对于不同平台的js发布脚本及json配置 ，也是需要先在LayaAirIDE中生成一次，所以一定要下载LayaAirIDE。（本篇文档是基于2.4.0beta版IDE介绍）
 
 LayaAirIDE 下载地址：
 
@@ -48,13 +48,15 @@ chrome官网下载地址：
 
 假如前置准备的工具我们都安装好，这时，我们只需要做一个IDE的关联，即可完成一个完整的开发工作流的配置。
 
-#### 2.1 LayaAir推荐的工作流
+#### 2.1 最基础的LayaAir的工作流（面向VSCode新手）
 
-关于创建项目、打开项目（管理项目）、编译项目（F8）、运行调试项目（F5）、发布项目等都可以在LayaAirIDE中完成。
+关于创建项目、打开项目（管理项目）、编译项目（F8）、运行调试项目（F6）、发布项目等都可以在LayaAirIDE中完成。
 
 我们只需要把VSCode当成一个基础的编码工具，编译与调试，不推荐在VSCode中进行（具体原因后面还会讲）。
 
 所以在开发的时候，需要打开两个软件，写代码在VSCode中进行，UI编辑与项目编译及运行调试在LayaAirIDE中进行，两个软件，快速切换一下，即可完成一个从编码到运行发布的完整工作流。
+
+对于没有VSCode使用经验的开发者，这种模式是最容易理解和操作的工作流。
 
 #### 2.2 在LayaAirIDE中关联VSCode
 
@@ -89,7 +91,7 @@ LayaAirIDE剥离VSCode后，不再支持IDE内断点调试，只能是Chrome调�
 
 如果开发者想在代码编辑器中断点调试。需要在VSCode中配置好调试环境。
 
-VSCode默认是没有配置调试环境的，如果开发者没有配置好，可根据本小节来安装chrome调试插件（扩展）和配置launch.json来配置好调试环境。
+VSCode默认是没有配置调试环境的，如果开发者没有配置好，可根据本小节的指引，来安装chrome调试插件（扩展）和配置launch.json来配置好调试环境。
 
 #### 3.1 安装Debugger for Chrome
 
@@ -101,6 +103,8 @@ VSCode默认是没有配置调试环境的，如果开发者没有配置好，�
 
 ![图](img/5-2.png) 
 
+> 注：本篇文档是基于已安装了中文插件的window版VSCode进行截图示例。
+
 总之，以后想安装什么插件，都可以在插件扩展商店中搜索查找及安装。
 
 #### 3.2 启动断点调试及运行项目的流程
@@ -109,7 +113,7 @@ VSCode默认是没有配置调试环境的，如果开发者没有配置好，�
 
 如果开发者采用的是LayaAirIDE 2.4.0beta 或更高版本创建的项目，LayaAirIDE在创建项目时会帮大家创建好VSCode调试配置文件 `.vscode/launch.json`  。
 
-此时，先到LayaAirIDE里按快捷键F8编译一下，然后回到VSCode再按快捷键F5，即可启动VSCode中的断点调试，以及调起Chrome，显示运行效果。
+此时，先到LayaAirIDE里按快捷键F8编译一下，然后回到VSCode再按快捷键F5，即可启动VSCode中的断点调试，以及调起Chrome，显示运行效果。 
 
 ##### 经验汇总：
 
@@ -155,19 +159,21 @@ launch.json 内容如下：
 }
 ```
 
-在VSCode中，鼠标悬停到launch.json的属性名称上，可以查看当前属性描述。
+如果不想创建项目复制`launch.json`的，直接在`.vscode`目录创建一个空文件`launch.json`，将上面的内容复制过去也是可以的。
+
+在VSCode中打开`launch.json`，鼠标悬停到`launch.json`的属性名称上，可以查看当前属性描述。
 
 
 
 ### 四、在VSCode中调LayaAir命令行工具
 
-在第三小节中，仅仅是实现了在VSCode中的断点调试，编译与发布，还是要切到LayaAirIDE中进行。
+在第三小节中，仅仅是实现了在VSCode中的断点调试，编译与发布还是要切到LayaAirIDE中进行。
 
 有一些开发者，提出不切换，直接在VSCode中实现完整的编译、调试、发布的需求。本小节将继续进行指引。
 
 #### 4.1 安装 layaair2-cmd 与 gulp
 
-Layabox提供了layaair2-cmd命令行工具，通过这个工具，可以不打开LayaAirIDE，直接在命令行下对LayaAir引擎项目进行编译，以及项目发布（HTML5、微信、百度等小游戏版本）。
+Layabox提供了layaair2-cmd命令行工具，通过这个工具，可以不打开LayaAirIDE，直接在VSCode终端命令行下对LayaAir引擎项目进行编译，以及项目发布（HTML5、微信、百度等小游戏版本）。
 
 #####  安装 layaair2-cmd
 
@@ -187,7 +193,7 @@ layaair2-cmd安装的方式比较简单，由于我们前置准备已安装好�
 
 #### 4.2 layaair2-cmd的使用
 
-layaair2-cmd的使用很简单，只有两个参数， compile 与  publish ，分别是编译和发布。
+layaair2-cmd的使用很简单，目前只有两个功能参数， compile 与  publish ，分别是编译和发布。
 
 ##### 编译命令
 
@@ -230,17 +236,17 @@ layaair2-cmd publish -c qqgame
 
 ##### 使用命令行发布的注意事项
 
-使用命令行发布之前，我们一定要先在LayaAirIDE里发布一次，因为命令行发布功能需要依托于`.laya`目录下的各个平台的发布模块js。比如排除，发布配置等信息，需要发布一次后，才会更新保存到对应的平台模块js中。如果对平台发布功能不熟悉的，可以看之前提供的官网文档链接。
+使用命令行发布之前，我们一定要先在LayaAirIDE里发布一次，因为命令行发布功能需要依托于`.laya`目录下的各个平台的js发布脚本和平台json配置信息。比如排除，发布配置等信息，需要发布一次后，才会更新保存到对应的平台json配置中。如果对平台发布功能不熟悉的，可以打开之前提供的官网文档链接。
 
-另外，layaAirIDE 2.4beta版创建的项目，TS与TS实验版编译配置有个BUG，所以会导致layaair2-cmd运行报错。layabox社区上给出了已修复的编译库，大家可以前往下载替换，或者等待layaAirIDE 2.4正式版。
+需要注意的是，layaAirIDE 2.4beta版创建的项目，TS与TS实验版编译配置有个BUG，所以会导致layaair2-cmd运行报错。layabox社区上给出了已修复的编译库，大家可以前往下载替换，或者等待layaAirIDE 2.4正式版。
 
 编译库的layabox社区下载地址为：
 
  [http://ask.layabox.com/article/8]( http://ask.layabox.com/article/8 ) 
 
-#### 4.3 工作流
+#### 4.3 不切工作流
 
-学到此处，我们不仅可以在VSCode中断点调试，也可以通过本小节学习到的命令行方式，直接通过VSCode终端模块来快捷调用layaair2-cmd来编译和发布项目。
+学到此处，我们不仅可以在VSCode中用快捷调F5断点调试，也可以通过本小节学习到的命令行方式，直接通过VSCode终端，使用layaair2-cmd来编译和发布项目。
 
 这样一来，对于日常的编码、编译、调试、发布，直接在VSCode中实现，不用在两个工具之间来回切换了。
 
@@ -250,11 +256,11 @@ layaair2-cmd publish -c qqgame
 
 尽管命令行模式的工作流可以在日常编码中脱离了来回切换IDE的繁琐，或许有一些开发者会觉得易用性不够，如何能实现LayaAirIDE那样，直接F8快捷键就编译，请继续看本小节的指引。
 
-直接给命令行设置快捷键是通过VSCode做不到的。但是，我们可以在任务里去执行命令行的相关指令。然后修改执行任务的快捷键，并指定默认运行的任务名称。其实就可以实现VSCode快捷键的绑定。
+直接给命令行设置快捷键是通过VSCode做不到的。但是，我们可以在任务里去执行命令行的相关指令。然后修改执行任务的快捷键，并指定默认运行的任务名称，就可以实现VSCode快捷键的绑定。
 
 #### 5.1 新建任务（task）
 
-如果我们还没有创建任务，可以在VSCode的`终端`菜单里，点击`配置任务`，如下图所示。
+如果我们还没有创建过任务，可以在VSCode的`终端`菜单里，点击`配置任务`，如下图所示。
 
  ![图 ](img/13.png)
 
@@ -291,11 +297,11 @@ layaair2-cmd publish -c qqgame
 
 ![图](img/16.png) 
 
-打开后先在顶部搜索task，找出任务相关的快捷方式，再找到 `运行任务（Run Task）`双击，设置快捷键 `Ctrl + F8`  ，回车即完成运行任务的快捷键绑定。效果如下图所示。
+打开键盘快捷方式后，先在顶部搜索task，找出任务相关的快捷方式，再找到 `运行任务（Run Task）`双击，设置快捷键 `Ctrl + F8`  （可按自己的习惯设置一个不冲突的快捷键即可），回车即完成运行任务的快捷键绑定。效果如下图所示。
 
 ![](img/16-2.png) 
 
-然后通过快捷键`Ctrl + Shift +P `调出命令面板，搜关键字 `open key`，找到 `打开键盘快捷方式（JSON）`的命令，如下图所示，点击打开。
+然后，通过快捷键`Ctrl + Shift +P `调出命令面板，搜关键字 `open key`，找到 `打开键盘快捷方式（JSON）`的命令，如下图所示，点击打开。
 ![图](img/15.png) 
 
 点击后，我们看到快捷盘配置的JSON里，有刚刚绑定了快捷键的配置信息。这里，我们增加一个参数args，此处的值就是默认启动的任务，我们将之前创建的任务名称compile设置到这里即可，效果如下图所示。
@@ -314,7 +320,7 @@ layaair2-cmd publish -c qqgame
 ]
 ```
 
-到这里，我们就完成了给编译命令绑定快捷方式的全部操作。以后，我们就可以使用Ctrl+F8编译，F5断点运行，这个快捷的编码工作流了。
+到这里，我们就完成了给编译命令绑定快捷方式的全部操作。以后，我们就可以在VSCode中直接使用Ctrl+F8编译，F5断点运行，这个快捷的编码工作流了。
 
 
 
@@ -332,11 +338,58 @@ layaair2-cmd publish -c qqgame
 
 ![图](img/20.png) 
 
+安装完成后，我们可以看到项目目录内多了一个`node_modules`目录，如下图所示。
+
+![图](img/20-2.png) 
+
 #### 6.2 编写gulp脚本
 
 我们在根目录创建一个gulpfile.js脚本文件，脚本内容参照如下：
 
-只在这个任务不关，那这个任务的watch监听会一直执行下去，达到了自动编译的目标。
+```json
+const {watch ,task } = require("gulp");
+const {exec} = require("child_process");
+
+function compile(cb) {
+    //执行编译命令 layaair2-cmd compile 
+    let process = exec("layaair2-cmd compile");
+
+    process.stdout.on("data",(data)=>{
+        console.log(data);
+    });
+
+    process.stderr.on("data",(data)=>{
+        console.log(data);
+    });
+
+    process.on("exit",(code,signal)=>{
+        console.log("success");
+        console.log(code,signal);
+
+        cb();
+    })
+}
+
+//创建一个名称为compile的gulp任务
+task("compile", function(){
+    /**
+     * @ 监听src目录下的所有子目录的所有文件，
+     * @ 延迟1000毫秒，才执行下次监听
+     * @ 监听生效后执行的函数
+     */
+    watch('src/**/*.*', {delay:1000}, compile);
+});
+```
+
+保存好`gulpfile.js`这个gulp任务脚本后，效果如下图所示。
+
+![图](img/21.png) 
+
+然后，我们直接在终端命令行下，直接输入`gulp compile`即可执行名称为compile的gulp任务。如下图所示。
+
+![图](img/22.png) 
+
+只要这个任务不关，那这个任务的watch监听会一直执行下去，从而达到了自动编译的目标。
 
 
 
@@ -344,7 +397,7 @@ layaair2-cmd publish -c qqgame
 
 至此，在VSCode中编码时，无论是编译、调试运行、还是发布，本篇都有涉及，以此为借鉴，开发者可以搭建一个流畅的开发工作流。
 
-当然VSCode的强大远不止于此，对于工作流的搭建，方式非常多。如果想更加深入了解的，可以不必局限于本篇。本篇仅仅为那些没有VSCode使用经验的开发者，提供一些基础的工作流搭建参照。
+当然，VSCode自定义工作流的强大远不止于此，对于工作流的搭建，方式非常多。如果想更加深入了解的，可以不必局限于本篇。本篇仅仅为那些没有VSCode使用经验的开发者，提供一些基础的工作流搭建参照。
 
 如果有什么问题或者不解，可以在开发者QQ群或者layabox官网社区进行交流。
 
