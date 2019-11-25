@@ -1,4 +1,4 @@
-## 学习VSCode开发工作流配置
+## VSCode高效开发工作流配置指南
 
 > *Author：charley                Date：2019-11-25*
 
