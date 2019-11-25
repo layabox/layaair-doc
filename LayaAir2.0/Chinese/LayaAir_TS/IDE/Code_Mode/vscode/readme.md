@@ -6,6 +6,8 @@ LayaAirIDE 2.4将VSCode剥离出去，其主要目的是让开发者编码工作
 
 本篇从最简单的LayaAirIDE与VScode工作流配置开始，由浅入深，逐步介绍一些开发工作流的常用配置方式。
 
+[TOC]
+
 ### 一、前置准备
 
 开发工作流，自然离不开工具的支撑，这里罗列出基础的必备环境准备。如果都已准备好，可以跳过本小节。
@@ -244,7 +246,7 @@ layaair2-cmd publish -c qqgame
 
  [http://ask.layabox.com/article/8]( http://ask.layabox.com/article/8 ) 
 
-#### 4.3 不切工作流
+#### 4.3 不切IDE的工作流
 
 学到此处，我们不仅可以在VSCode中用快捷调F5断点调试，也可以通过本小节学习到的命令行方式，直接通过VSCode终端，使用layaair2-cmd来编译和发布项目。
 
@@ -252,7 +254,7 @@ layaair2-cmd publish -c qqgame
 
 
 
-### 五、配置VSCode的快捷键
+### 五、配置VSCode的编译快捷键
 
 尽管命令行模式的工作流可以在日常编码中脱离了来回切换IDE的繁琐，或许有一些开发者会觉得易用性不够，如何能实现LayaAirIDE那样，直接F8快捷键就编译，请继续看本小节的指引。
 
@@ -342,7 +344,7 @@ layaair2-cmd publish -c qqgame
 
 ![图](img/20-2.png) 
 
-#### 6.2 编写gulp脚本
+#### 6.2 编写gulp任务脚本
 
 我们在根目录创建一个gulpfile.js脚本文件，脚本内容参照如下：
 
