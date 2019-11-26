@@ -123,7 +123,9 @@ VSCode默认是没有配置调试环境的，如果开发者没有配置好，�
 
 此时，先到LayaAirIDE里按快捷键F8编译一下，然后回到VSCode再按快捷键F5，即可启动VSCode中的断点调试，以及调起Chrome，显示运行效果。 
 
-##### 经验汇总：
+##### 问题解决经验汇总：
+
+##### 3.2.1 一定要先编译再调试
 
 这里重点强调一下开发者经常遇到的错误，那就是不编译，安装好`Debugger for Chrome`之后，直接F5调试，会出现如下图所示的报错。
 
@@ -133,7 +135,15 @@ VSCode默认是没有配置调试环境的，如果开发者没有配置好，�
 
 对于VSCode开发工作流不是特别熟悉的开发者，编译方面一定要使用LayaAirIDE提供的编译功能。不要使用VSCode中的tsc编译任务，因为VSCode中的tsc编译与LayaAirIDE的编译及发布流程不一致，所以会有很多地方都要修改，编译后才能运行成功，而且就算是在VSCode中运行成功了，如果修改的和LayaAirIDE流程不完全一致，也不能使用LayaAirIDE的项目发布功能。当使用LayaAirIDE提供的项目发布功能时，还是要用LayaAirIDE的编译再重新编译一次，才能发布成功。
 
-#### 3.2 配置launch.json
+##### 3.2.2 断点调试需要开启 sourceMap 
+
+有一些开发者，调试环境安装好之后，也不能断点。那是因为LayaAirIDE2.2开始，创建项目时，默认关闭了sourceMaps，如果需要使用断点，开启sourceMaps的相关设置即可。如果不会设置的，可以参照官方文档的断点调试开启说明。
+
+**sourceMaps开启文档** ：
+
+ [https://ldc2.layabox.com/doc/?nav=zh-ts-3-0-7]( https://ldc2.layabox.com/doc/?nav=zh-ts-3-0-7 ) 
+
+#### 3.3 配置launch.json
 
 如果是LayaAirIDE 2.4.0beta版之前创建的项目，是没有调试配置文件的。所以，当编译后，在VSCode使用F5编译时，会提示选择调试环境，建议选择`Chrome`作为调试环境，如下图所示。
 
