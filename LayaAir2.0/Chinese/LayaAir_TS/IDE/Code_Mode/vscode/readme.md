@@ -209,6 +209,10 @@ layaair2-cmd的使用很简单，目前只有两个功能参数， compile 与  
 
 ![图](img/11.png) 
 
+> 如果输入命令后，出现类似“……禁止运行脚本……about execution policies”类似的报错。可以参照下面这个链接来解决。
+>
+>  [https://docs.microsoft.com/zh-cn/previous-versions/windows/powershell-scripting/hh847748(v=wps.640)]( https://docs.microsoft.com/zh-cn/previous-versions/windows/powershell-scripting/hh847748(v=wps.640) ) 
+
 ##### 发布命令
 
 不仅是编译，发布也可以通过命令行搞定。目前的发布类型为HTML5（web）、微信小游戏（wxgame）、百度小游戏（bdgame）、小米快游戏（xmgame）、OPPO小游戏（oppogame）、vivo小游戏（vivogame）、QQ小游戏（qqgame）。
