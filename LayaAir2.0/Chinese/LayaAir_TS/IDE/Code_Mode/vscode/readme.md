@@ -24,11 +24,17 @@ LayaAirIDE 下载地址：
 
  Node.js 是一个基础环境，比如TypeScript编译、npm都需要依托于 Node.js。
 
- 如果没有安装，直接前往node官网下载安装即可，推荐LTS版本，
+ 如果没有安装，直接前往node官网下载安装即可，
 
  Node.js 官网下载地址：
 
 [https://nodejs.org/en/](https://nodejs.org/en/ ) 
+
+截止到本篇文档撰写时，当前的12.x版与Gulp环境冲突，会导致本文中的命令行编译无法执行，所以，如果开发者没下载安装nodejs的，请直接下10.x版本。如果已安装12.x的，请卸载本地版本。重新下载10.x版本进行安装。
+
+Node.js 10.x版本下载地址为：
+
+ https://nodejs.org/download/release/latest-v10.x/ 
 
 #### 1.3、下载安装VSCode
 
@@ -50,7 +56,7 @@ chrome官网下载地址：
 
 假如前置准备的工具我们都安装好，这时，我们只需要做一个IDE的关联，即可完成一个完整的开发工作流的配置。
 
-#### 2.1 最基础的LayaAir的工作流（面向VSCode新手）
+#### 2.1 最基础的LayaAir工作流（面向VSCode新手）
 
 关于创建项目、打开项目（管理项目）、编译项目（F8）、运行调试项目（F6）、发布项目等都可以在LayaAirIDE中完成。
 
@@ -62,7 +68,7 @@ chrome官网下载地址：
 
 #### 2.2 在LayaAirIDE中关联VSCode
 
-正常情况下，安装好VSCode，Windows版LayaAirIDE能自动找到安装目录进行关联。然而也会有无法自动关联的情况出现。
+正常情况下，安装好VSCode后，LayaAirIDE能自动找到安装目录进行关联。然而也会有无法自动关联的情况出现。
 
 > 注：MAC版本，当前的2.4.0beta版有个BUG，必定没办法自动关联。BUG已在2.4.0正式版中修复。
 
@@ -248,7 +254,7 @@ layaair2-cmd publish -c qqgame
 
 #### 4.3 不切IDE的工作流
 
-学到此处，我们不仅可以在VSCode中用快捷调F5断点调试，也可以通过本小节学习到的命令行方式，直接通过VSCode终端，使用layaair2-cmd来编译和发布项目。
+学到此处，我们不仅可以在VSCode中用快捷键F5断点调试，也可以通过本小节学习到的命令行方式，直接通过VSCode终端，使用layaair2-cmd来编译和发布项目。
 
 这样一来，对于日常的编码、编译、调试、发布，直接在VSCode中实现，不用在两个工具之间来回切换了。
 
@@ -256,7 +262,7 @@ layaair2-cmd publish -c qqgame
 
 ### 五、配置VSCode的编译快捷键
 
-尽管命令行模式的工作流可以在日常编码中脱离了来回切换IDE的繁琐，或许有一些开发者会觉得易用性不够，如何能实现LayaAirIDE那样，直接F8快捷键就编译，请继续看本小节的指引。
+尽管命令行模式的工作流可以在日常编码中脱离了来回切换IDE的繁琐，或许有一些开发者仍会觉得易用性不够，如何能实现LayaAirIDE那样，直接F8快捷键就编译，请继续看本小节的指引。
 
 直接给命令行设置快捷键是通过VSCode做不到的。但是，我们可以在任务里去执行命令行的相关指令。然后修改执行任务的快捷键，并指定默认运行的任务名称，就可以实现VSCode快捷键的绑定。
 
@@ -310,7 +316,7 @@ layaair2-cmd publish -c qqgame
 
 ![图](img/17.png) 
 
-有经验的开发者，其实也可以，不需要先在`键盘快捷方式`面板那里绑定，而是直接在keybindings.json中增加以下内容：
+有经验的开发者， 其实也可以跳过之前的步骤 ，不需要先在`键盘快捷方式`面板那里绑定，而是直接在keybindings.json中增加以下内容：
 
 ```json
 [
@@ -382,6 +388,10 @@ task("compile", function(){
     watch('src/**/*.*', {delay:1000}, compile);
 });
 ```
+
+> 了解更多gulp任务监听，可以查阅gulp官方文档：
+>
+> https://www.gulpjs.com.cn/docs/getting-started/watching-files/
 
 保存好`gulpfile.js`这个gulp任务脚本后，效果如下图所示。
 
