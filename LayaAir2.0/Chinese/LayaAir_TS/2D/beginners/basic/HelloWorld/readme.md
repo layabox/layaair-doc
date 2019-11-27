@@ -1,70 +1,44 @@
-# 第一个程序：显示文本“Hello Layabox”
+# 第一个程序：显示“Hello Layabox”
 
  **【提示】阅读本文前，必须先阅读《搭建开发环境（TS代码编译器）》和《创建TS项目并详解目录结构》两篇。**
 
 
 
-​    **步骤一**：选中src右键单击，然后左键点击“新建文件”，在src目录下建立一个HelloLayabox.ts的文件。（Tips：HelloLayabox.ts必须创建在src目录下，才会被编译）
+​    **步骤一**：打开LayaAirIDE2.0以上版本，点击''新建''，设置好路径和项目名称选择Ts语言，创建一个2D示例项目：
 
-​	![图片](img/1.png)<br/>
+​	![图片](img/01.png)<br/>
 
-然后修改.laya目录下的compile.js 文件，修改启动类为HelloLayabox.ts
+然后用VSCode打开文件夹，选择刚才创建的项目目录：
 
-![图片](img/111.png)
+![图片](img/02.png)
 
 
-​         **步骤二**：点击打开src目录下的HelloLayabox.ts，开始编写如下代码：
+​         **步骤二**：点击打开src目录下的Main.ts，开始编写如下代码：
 
 ```typescript
-//创建舞台，默认背景色是黑色的
-Laya.init(600, 300); 
-var txt = new Laya.Text(); 
-//设置文本内容
-txt.text = "Hello Layabox";  
-//设置文本颜色为白色，默认颜色为黑色
-txt.color = "#ffffff";  
-//将文本内容添加到舞台 
-Laya.stage.addChild(txt);
+onConfigLoaded(): void {
+		//加载IDE指定的场景
+		GameConfig.startScene && Laya.Scene.open(GameConfig.startScene);
+
+		console.log("Hello Layabox");//写这一行代码，在控制台打印Hello Layabox
+	}
 ```
 
 ​    
 
-​     **步骤三**：编码完成后，按F5编译，在弹出的页面里，我们可以看到代码的运行结果，如下图所示：
+​     **步骤三**：编码完成后按Ctrl+S 保存，Mac电脑按Command + S保存，切换到LayaIDE编辑器，按F6编译运行，在弹出的页面里其实是一个2D打球示例，我们要在Chrome浏览器按F12，在控制台里看到打印信息：
 
-​	![图片](img/2.png)<br/>
+​	![图片](img/03.png)<br/>
 ​	图（2）
 
 
 
-​        **步骤四**：显示成功后，关闭显示窗口。我们继续编写代码，让文字显的美观一些。继续完善代码如下：
+​        **步骤四**：我们可以看到打印出了HelloLayabox，显示成功后，关闭显示窗口。我们继续打开IDE编辑器，点开左上角工程栏目，Scene下的test文件夹，双击‘TestScene.scene’ （引擎会默认启动当前场景），在左下方层级栏目创建一个“Label”，如图中步骤，并设置好文本内容HelloLayabox，字体大小以及颜色，本例为白色：
 
-```typescript
-//创建舞台，默认背景色是黑色的
-Laya.init(600, 300); 
-var txt = new Laya.Text(); 
-//设置文本内容
-txt.text = "Hello Layabox";  
-//设置文本颜色
-txt.color = "#FF0000";
-//设置文本字体大小，单位是像素
-txt.fontSize    = 66;  
-//设置字体描边
-txt.stroke = 5;//描边为5像素
-txt.strokeColor = "#FFFFFF";  
-//设置为粗体
-txt.bold = true;  
-//设置文本的显示起点位置X,Y
-txt.pos(60,100);  
-//设置舞台背景色
-Laya.stage.bgColor  = '#23238E';  
-//将文本内容添加到舞台 
-Laya.stage.addChild(txt);
-```
+ ![图片](img/04.png)
 
-
-
-**步骤五**： 编写完成后，再次按F5编译，美化后的运行结果如下图所示：
-​	![图片](img/3.png)<br/>
+**步骤五**： 制作完成后，再次按F6编译运行，运行结果如下图所示：
+​	![图片](img/05.png)<br/>
 ​	图（3）
 
 **至此，如果您能跟随本篇入门教程，完成上图的显示，恭喜您入门成功，我们已经完成了第一个采用TypeScript语言开发的LayaAir引擎HTML5程序。更多LayaAir引擎开发的API使用方法，请前往官网Layabox开发者中心查看在线API与引擎示例。**
