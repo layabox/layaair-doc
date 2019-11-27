@@ -221,6 +221,30 @@ layaair2-cmd安装的方式比较简单，由于我们前置准备已安装好�
 
 ![图](img/26.png)
 
+##### 失败：compile.js未BUG
+
+如果使用了新版的`layaair2-cmd`，而本地IDE创建的compile.js未能与新版layaair2-cmd匹配好，则会报错。这个报错主要是体现在TS与TS实验版本上。目前哪怕是layaAirIDE 2.4beta，由于遗漏了更新也未解决，需要2.4正式版才可以解决。或者前往layabox社区。layabox社区上给出了已修复的编译库，大家可以前往下载替换。
+
+compile.js编译脚本的layabox社区下载地址为：
+
+ [http://ask.layabox.com/article/8]( http://ask.layabox.com/article/8 ) 
+
+下面提供几张关于compile.js报错的相关错误截图，以作为问题判断的参照。
+
+（layaAirIDE 2.4beta TS版）创建的项目报错信息如下图所示：
+
+![图](img/27.png) 
+
+（layaAirIDE 2.4beta TS实验版）创建的项目报错信息如下图所示：
+
+![图](img/27-3.png) 
+
+（2.4之前的旧版IDE）创建的项目报错信息如下图所示：
+
+![图](img/27-2.png) 
+
+
+
 #####  4.1.3 安装 gulp
 
 要使用layaair2-cmd命令，没有gulp环境，是跑不起来的，下图的报错，正是不支持gulp导致。
@@ -285,12 +309,6 @@ layaair2-cmd publish -c qqgame
 ##### 使用命令行发布的注意事项
 
 使用命令行发布之前，我们一定要先在LayaAirIDE里发布一次，因为命令行发布功能需要依托于`.laya`目录下的各个平台的js发布脚本和平台json配置信息。比如排除，发布配置等信息，需要发布一次后，才会更新保存到对应的平台json配置中。如果对平台发布功能不熟悉的，可以打开之前提供的官网文档链接。
-
-需要注意的是，layaAirIDE 2.4beta版创建的项目，TS与TS实验版编译配置有个BUG，所以会导致layaair2-cmd运行报错。layabox社区上给出了已修复的编译库，大家可以前往下载替换，或者等待layaAirIDE 2.4正式版。
-
-编译库的layabox社区下载地址为：
-
- [http://ask.layabox.com/article/8]( http://ask.layabox.com/article/8 ) 
 
 #### 4.3 不切IDE的工作流
 
