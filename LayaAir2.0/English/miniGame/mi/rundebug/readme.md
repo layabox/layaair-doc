@@ -1,4 +1,4 @@
-# 小米快游戏发布与调试指南
+# Xiaomi "quick game" release and debugging guide
 
 > update: 2019-07-17
 >
