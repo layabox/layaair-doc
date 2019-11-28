@@ -1,14 +1,14 @@
-# 小米快游戏发布与调试指南
+# Xiaomi "quick game" release and debugging guide
 
 > update: 2019-07-17
 >
-> The release of Millet Express Game must use LayaAirIDE. For the download of IDE, please refer to the relevant documents, not within the scope of this article.
+> The release of Xiaomi Express Game must use LayaAirIDE. For the download of IDE, please refer to the relevant documents, not within the scope of this article.
 
-##1. Preparing for release and debugging environment of millet fast game
+##1. Preparing for release and debugging environment of Xiaomi fast game
 
-1. Millet Brand Mobile Phone (Note must be MIUI version 8.5 or above).
+1. Xiaomi Brand Mobile Phone (Note must be MIUI version 8.5 or above).
 
-2. Download the test APP for installing millet and download the page:[[https://dev.mi.com/console/doc/detail?pId=1738](https://dev.mi.com/console/doc/detail?pId=1738)](https://dev.mi.com/console/doc/detail? PID = 1779)
+2. Download the test APP for installing Xiaomi and download the page:[[https://dev.mi.com/console/doc/detail?pId=1738](https://dev.mi.com/console/doc/detail?pId=1738)](https://dev.mi.com/console/doc/detail? PID = 1779)
 
 After entering the page, drop down to find Step 3.**Debug self test**In that column, just download it as prompted.
 
@@ -29,11 +29,11 @@ It is recommended to install ADB because sometimes it is authorized or for some 
 
 A simple hint, download ADB Kits, download the compressed package, it is recommended to decompress and put into a directory with a simpler path (such as:`D:\adb`) Remember to add environment variables (Baidu can add environment variables on its own if you don't know how to add them).
 
-##2. The whole process of releasing and accessing millet fast game
+##2. The whole process of releasing and accessing Xiaomi fast game
 
-###1. Publish the Millet Express Game Pack (xx.rpk)
+###1. Publish the Xiaomi Express Game Pack (xx.rpk)
 
-LayaAirIDE release function, built-in release function of millet fast game, need to first LayaAir engine project, through the release function into. RPK suffix package. About the use of publishing functions. This is not repeated here. No, you can check the official documents before.
+LayaAirIDE release function, built-in release function of Xiaomi fast game, need to first LayaAir engine project, through the release function into. RPK suffix package. About the use of publishing functions. This is not repeated here. No, you can check the official documents before.
 
 Links:[https://ldc2.layabox.com/doc/?nav=zh-ts-3-0-6](https://ldc2.layabox.com/doc/?nav=zh-ts-3-0-6)
 
@@ -48,7 +48,7 @@ After publishing, there will be a two-dimensional code interface, as shown in Fi
 
 ###3. Open the Publishing Folder and Start Command Line Mode
 
-Click on Figure 1`打开发布文件夹`Button to enter the post-release Millet Express Game Project Catalogue. Then hold down.`Shift + 右键`You can quickly enter shell or command window mode in the current directory, as shown in the markup section in Figure 2-1 or 2-2.
+Click on Figure 1`打开发布文件夹`Button to enter the post-release Xiaomi Express Game Project Catalogue. Then hold down.`Shift + 右键`You can quickly enter shell or command window mode in the current directory, as shown in the markup section in Figure 2-1 or 2-2.
 
 ![图2-1](img/2-1.png) 
 
@@ -60,22 +60,22 @@ Click on Figure 1`打开发布文件夹`Button to enter the post-release Millet 
 
 (Fig. 2-2)
 
-Of course, Git can also enter the command line (Git Bash Here) or other ways to enter the command line, and then enter the Millet Express Game Project Directory to complete this step.
+Of course, Git can also enter the command line (Git Bash Here) or other ways to enter the command line, and then enter the Xiaomi Express Game Project Directory to complete this step.
 
-This part mainly tells developers how to quickly enter the current release directory in command line mode. Because the debug command to start chrome debugging must operate in the release directory of the millet fast game. Here's a quick look, and keep the command line open. I'll use it later.
+This part mainly tells developers how to quickly enter the current release directory in command line mode. Because the debug command to start chrome debugging must operate in the release directory of the Xiaomi fast game. Here's a quick look, and keep the command line open. I'll use it later.
 
 ###4. Start the chrome debugging environment
 
 ####4.1 Install and enter Fast Application Debugger
 
-To start the chrome debugging environment of PC, we need to install the debugging APP (fast application debugger) of millet fast game, as shown in Figure 3. Then click Enter.
+To start the chrome debugging environment of PC, we need to install the debugging APP (fast application debugger) of Xiaomi fast game, as shown in Figure 3. Then click Enter.
 
 ![图3](img/3.png) 
 
 
 (Fig. 3)
 
-####4.2 Install RPK package of millet fast game in the interface of fast application debugger
+####4.2 Install RPK package of Xiaomi fast game in the interface of fast application debugger
 
 After entering the fast application debugger, we can see the app operation interface as shown in Figure 4.
 
@@ -118,14 +118,14 @@ In short, in this link, we need to ensure that the PC has the right to debug thi
 
 ####4.4 Start the chrome debugging environment
 
-The development and debugging environment of millet fast game without tools on PC is connected to mobile device through USB, and then in PC command line mode, through`npm run debug`The command calls up the Chrome debugger (provided that the PC is installed with the Chrome browser) to debug the RPK package of the mobile phone's real environment, as shown in Figure 6.
+The development and debugging environment of Xiaomi fast game without tools on PC is connected to mobile device through USB, and then in PC command line mode, through`npm run debug`The command calls up the Chrome debugger (provided that the PC is installed with the Chrome browser) to debug the RPK package of the mobile phone's real environment, as shown in Figure 6.
 
 ![图6](img/6.png) 
 
 
 (Fig. 6)
 
-When we can see`Debugger URL opened in Chrome.`At the time of this prompt, it indicates that chrome has been successfully tuned up and is consistent with the screen in the real machine. As shown in Figure 7. The various operations in the real machine will be fully synchronized to the PC chrome, so we can debug the millet fast game project according to the chrome debugging method.
+When we can see`Debugger URL opened in Chrome.`At the time of this prompt, it indicates that chrome has been successfully tuned up and is consistent with the screen in the real machine. As shown in Figure 7. The various operations in the real machine will be fully synchronized to the PC chrome, so we can debug the Xiaomi fast game project according to the chrome debugging method.
 
 ![图7](img/7.png) 
 
