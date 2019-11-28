@@ -231,7 +231,7 @@ layaair2-cmd安装的方式比较简单，由于我们前置准备已安装好�
 
 [https://docs.microsoft.com/zh-cn/previous-versions/windows/powershell-scripting/hh847748(v=wps.640)]( https://docs.microsoft.com/zh-cn/previous-versions/windows/powershell-scripting/hh847748(v=wps.640) ) 
 
-##### 失败：compile.js未BUG
+##### 失败：compile.js未匹配BUG
 
 如果使用了新版的`layaair2-cmd`，而本地IDE创建的compile.js未能与新版layaair2-cmd匹配好，则会报错。这个报错主要是体现在TS与TS实验版本上。目前哪怕是layaAirIDE 2.4beta，由于遗漏了更新也未解决，需要2.4正式版才可以解决。或者前往layabox社区。layabox社区上给出了已修复的编译库，大家可以前往下载替换。
 
