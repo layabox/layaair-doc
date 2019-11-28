@@ -221,6 +221,16 @@ layaair2-cmd安装的方式比较简单，由于我们前置准备已安装好�
 
 ![图](img/26.png)
 
+##### 失败：禁止运行脚本
+
+输入layaair2-cmd命令后，如果出现“……禁止运行脚本……about_ Execution_Policies”类似的报错。如下图所示。
+
+![图](img/28.png) 
+
+在系统管理员权限打开VScode的前提下，在shell终端命令行中，通过输入 `Set-ExecutionPolicy RemoteSigned` 来解决，如要了解具体机制与命令可以参照下面这个链接。
+
+[https://docs.microsoft.com/zh-cn/previous-versions/windows/powershell-scripting/hh847748(v=wps.640)]( https://docs.microsoft.com/zh-cn/previous-versions/windows/powershell-scripting/hh847748(v=wps.640) ) 
+
 ##### 失败：compile.js未BUG
 
 如果使用了新版的`layaair2-cmd`，而本地IDE创建的compile.js未能与新版layaair2-cmd匹配好，则会报错。这个报错主要是体现在TS与TS实验版本上。目前哪怕是layaAirIDE 2.4beta，由于遗漏了更新也未解决，需要2.4正式版才可以解决。或者前往layabox社区。layabox社区上给出了已修复的编译库，大家可以前往下载替换。
@@ -266,12 +276,6 @@ layaair2-cmd的使用很简单，目前只有两个功能参数， compile 与  
 当我们想编译项目时， 输入 `layaair2-cmd  compile` 回车即可。编译效果如下图所示。
 
 ![图](img/11.png) 
-
-> ##### 禁止运行脚本
->
-> 如果输入编译命令后，出现类似“……禁止运行脚本……about execution policies”类似的报错。可以在命令行下通过输入 `Set-ExecutionPolicy RemoteSigned` 来解决，具体机制与命令可以参照下面这个链接。
->
-> [https://docs.microsoft.com/zh-cn/previous-versions/windows/powershell-scripting/hh847748(v=wps.640)]( https://docs.microsoft.com/zh-cn/previous-versions/windows/powershell-scripting/hh847748(v=wps.640) ) 
 
 ##### 发布命令
 
