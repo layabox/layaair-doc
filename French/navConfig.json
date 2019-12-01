@@ -1,5 +1,3 @@
-﻿
-
 [
     {
         "name": "ActionScript",
@@ -21,12 +19,12 @@
                         "name_2_name": "Jeu HTML5",
                         "name_2_data": [
                             {
-                                "name_3_name": "Possibilités d'emploi dans le jeu HTML5",
+                                "name_3_name": "Possibilit\u00e9s d'emploi dans le jeu HTML5",
                                 "name_3_url": "French/Layabox_Intro/",
                                 "name_3_file": "HTML5_job_opportunities.md"
                             },
                             {
-                                "name_3_name": "Opportunités dans l 'industrie du jeu HTML5",
+                                "name_3_name": "Opportunit\u00e9s dans l 'industrie du jeu HTML5",
                                 "name_3_url": "French/Layabox_Intro/",
                                 "name_3_file": "HTML5_Game_Opportunities.md"
                             }
@@ -41,7 +39,7 @@
                                 "name_3_file": "readme.md"
                             },
                             {
-                                "name_3_name": "La passion et le rêve des programmeurs",
+                                "name_3_name": "La passion et le r\u00eave des programmeurs",
                                 "name_3_url": "French/Layabox_Intro/Layabox_Founder/",
                                 "name_3_file": "readme.md"
                             }
@@ -56,12 +54,12 @@
                                 "name_3_file": "LayaAir_introduction.md"
                             },
                             {
-                                "name_3_name": "Description des caractéristiques du moteur layaair",
+                                "name_3_name": "Description des caract\u00e9ristiques du moteur layaair",
                                 "name_3_url": "French/Layabox_Intro/",
                                 "name_3_file": "LayaAir_features.md"
                             },
                             {
-                                "name_3_name": "Guide de démarrage rapide du moteur layaair",
+                                "name_3_name": "Guide de d\u00e9marrage rapide du moteur layaair",
                                 "name_3_url": "French/",
                                 "name_3_file": "readme.md"
                             },
@@ -96,7 +94,7 @@
                         "name_2_name": "Rapide",
                         "name_2_data": [
                             {
-                                "name_3_name": "Création du projet AS3 avec layaairide et description de la structure du catalogue",
+                                "name_3_name": "Cr\u00e9ation du projet AS3 avec layaairide et description de la structure du catalogue",
                                 "name_3_url": "French/LayaAir_AS3/2D/beginners/basic/LayaAirIDECreateProjects_DirectoryStructure/",
                                 "name_3_file": "readme.md"
                             },
@@ -116,17 +114,17 @@
                                 "name_3_file": "readme.md"
                             },
                             {
-                                "name_3_name": "Première procédure de flashbuilder \"Hello layabox\"",
+                                "name_3_name": "Premi\u00e8re proc\u00e9dure de flashbuilder \"Hello layabox\"",
                                 "name_3_url": "French/LayaAir_AS3/2D/beginners/basic/FlashBuilder_HelloWorld/",
                                 "name_3_file": "readme.md"
                             },
                             {
-                                "name_3_name": "Première procédure de flashdevelop, \"Hello layabox\"",
+                                "name_3_name": "Premi\u00e8re proc\u00e9dure de flashdevelop, \"Hello layabox\"",
                                 "name_3_url": "French/LayaAir_AS3/2D/beginners/basic/FlashDevelop_HelloWorld/",
                                 "name_3_file": "readme.md"
                             },
                             {
-                                "name_3_name": "Cliquez sur l 'environnement de configuration et cliquez sur l' écran noir",
+                                "name_3_name": "Cliquez sur l 'environnement de configuration et cliquez sur l' \u00e9cran noir",
                                 "name_3_url": "French/LayaAir_AS3/2D/beginners/basic/Common_Problems/",
                                 "name_3_file": "readme.md"
                             }
@@ -136,7 +134,7 @@
                         "name_2_name": "Notions de base",
                         "name_2_data": [
                             {
-                                "name_3_name": "Objet d 'affichage et concepts associés",
+                                "name_3_name": "Objet d 'affichage et concepts associ\u00e9s",
                                 "name_3_url": "French/LayaAir_AS3/2D/beginners/basic/",
                                 "name_3_file": "readme.md"
                             }
@@ -146,7 +144,7 @@
                         "name_2_name": "Texte",
                         "name_2_data": [
                             {
-                                "name_3_name": "Généralités",
+                                "name_3_name": "G\u00e9n\u00e9ralit\u00e9s",
                                 "name_3_url": "French/LayaAir_AS3/2D/beginners/Text/API_List/",
                                 "name_3_file": "readme.md"
                             },
@@ -161,7 +159,7 @@
                                 "name_3_file": "readme.md"
                             },
                             {
-                                "name_3_name": "Traitement et texte défilant au - delà de la zone de texte",
+                                "name_3_name": "Traitement et texte d\u00e9filant au - del\u00e0 de la zone de texte",
                                 "name_3_url": "French/LayaAir_AS3/2D/beginners/Text/overflow/",
                                 "name_3_file": "readme.md"
                             },
@@ -171,7 +169,7 @@
                                 "name_3_file": "readme.md"
                             },
                             {
-                                "name_3_name": "Production et utilisation de caractères bitmap",
+                                "name_3_name": "Production et utilisation de caract\u00e8res bitmap",
                                 "name_3_url": "French/LayaAir_AS3/2D/beginners/Text/BitmapFont/",
                                 "name_3_file": "readme.md"
                             }
@@ -191,7 +189,7 @@
                                 "name_3_file": "readme.md"
                             },
                             {
-                                "name_3_name": "Filtre de réglage",
+                                "name_3_name": "Filtre de r\u00e9glage",
                                 "name_3_url": "French/LayaAir_AS3/2D/beginners/Bitmap/filter/",
                                 "name_3_file": "readme.md"
                             }
@@ -216,7 +214,7 @@
                                 "name_3_file": "readme.md"
                             },
                             {
-                                "name_3_name": "Dessin d 'un triangle, d' un polygone et d 'un motif de dessin basé sur des données",
+                                "name_3_name": "Dessin d 'un triangle, d' un polygone et d 'un motif de dessin bas\u00e9 sur des donn\u00e9es",
                                 "name_3_url": "French/LayaAir_AS3/2D/beginners/Graphics/poly/",
                                 "name_3_file": "readme.md"
                             },
@@ -231,7 +229,7 @@
                                 "name_3_file": "readme.md"
                             },
                             {
-                                "name_3_name": "Dent de sciage pour dessin vectoriel d 'élimination",
+                                "name_3_name": "Dent de sciage pour dessin vectoriel d '\u00e9limination",
                                 "name_3_url": "French/LayaAir_AS3/2D/beginners/Graphics/",
                                 "name_3_file": "readme.md"
                             }
@@ -256,7 +254,7 @@
                                 "name_3_file": "readme.md"
                             },
                             {
-                                "name_3_name": "Modèle dynamique",
+                                "name_3_name": "Mod\u00e8le dynamique",
                                 "name_3_url": "French/LayaAir_AS3/IDE/Use_IDE/EffectAnimation/",
                                 "name_3_file": "readme.md"
                             },
@@ -278,7 +276,7 @@
                         ]
                     },
                     {
-                        "name_2_name": "Données et communications",
+                        "name_2_name": "Donn\u00e9es et communications",
                         "name_2_data": [
                             {
                                 "name_3_name": "Httprequest",
@@ -286,12 +284,12 @@
                                 "name_3_file": "readme.md"
                             },
                             {
-                                "name_3_name": "Transmission et réception de données websocket",
+                                "name_3_name": "Transmission et r\u00e9ception de donn\u00e9es websocket",
                                 "name_3_url": "French/LayaAir_AS3/2D/beginners/Data_Communication/WebSocket/",
                                 "name_3_file": "readme.md"
                             },
                             {
-                                "name_3_name": "Byte binaire lire et écrire",
+                                "name_3_name": "Byte binaire lire et \u00e9crire",
                                 "name_3_url": "French/LayaAir_AS3/2D/beginners/Data_Communication/Byte/",
                                 "name_3_file": "readme.md"
                             },
@@ -301,19 +299,19 @@
                                 "name_3_file": "readme.md"
                             },
                             {
-                                "name_3_name": "Jsonp lecture de données par domaine",
+                                "name_3_name": "Jsonp lecture de donn\u00e9es par domaine",
                                 "name_3_url": "French/LayaAir_AS3/2D/beginners/Data_Communication/jsonp/",
                                 "name_3_file": "readme.md"
                             },
                             {
-                                "name_3_name": "Stockage de données Web",
+                                "name_3_name": "Stockage de donn\u00e9es Web",
                                 "name_3_url": "French/LayaAir_AS3/2D/beginners/Data_Communication/webStorage/",
                                 "name_3_file": "readme.md"
                             }
                         ]
                     },
                     {
-                        "name_2_name": "Matériel informatique",
+                        "name_2_name": "Mat\u00e9riel informatique",
                         "name_2_data": [
                             {
                                 "name_3_name": "Lecture et commande de musique et de son",
@@ -321,27 +319,27 @@
                                 "name_3_file": "readme.md"
                             },
                             {
-                                "name_3_name": "Gyroscope et accélérateur",
+                                "name_3_name": "Gyroscope et acc\u00e9l\u00e9rateur",
                                 "name_3_url": "French/LayaAir_AS3/2D/beginners/devices/motion/",
                                 "name_3_file": "readme.md"
                             },
                             {
-                                "name_3_name": "Accès à l 'information géographique par geologation",
+                                "name_3_name": "Acc\u00e8s \u00e0 l 'information g\u00e9ographique par geologation",
                                 "name_3_url": "French/LayaAir_AS3/2D/beginners/devices/geolocation/",
                                 "name_3_file": "readme.md"
                             },
                             {
-                                "name_3_name": "Afficher la position actuelle à l 'aide d' une carte de Baidu",
+                                "name_3_name": "Afficher la position actuelle \u00e0 l 'aide d' une carte de Baidu",
                                 "name_3_url": "French/LayaAir_AS3/2D/beginners/devices/baiduMap/",
                                 "name_3_file": "readme.md"
                             }
                         ]
                     },
                     {
-                        "name_2_name": "Adaptation d 'écran",
+                        "name_2_name": "Adaptation d '\u00e9cran",
                         "name_2_data": [
                             {
-                                "name_3_name": "Adaptation d 'écran",
+                                "name_3_name": "Adaptation d '\u00e9cran",
                                 "name_3_url": "French/LayaAir_AS3/2D/beginners/Screen_Fit/API_Overview/",
                                 "name_3_file": "readme.md"
                             },
@@ -351,7 +349,7 @@
                                 "name_3_file": "readme.md"
                             },
                             {
-                                "name_3_name": "Direction de l 'écran: Self - transverse Screen and Automatic VERTICAL SCREEN Settlement",
+                                "name_3_name": "Direction de l '\u00e9cran: Self - transverse Screen and Automatic VERTICAL SCREEN Settlement",
                                 "name_3_url": "French/LayaAir_AS3/2D/beginners/Screen_Fit/screenMode/",
                                 "name_3_file": "readme.md"
                             },
@@ -371,7 +369,7 @@
                         "name_2_name": "Base de mode de code",
                         "name_2_data": [
                             {
-                                "name_3_name": "Schéma de code",
+                                "name_3_name": "Sch\u00e9ma de code",
                                 "name_3_url": "French/LayaAir_AS3/IDE/Code_Mode/GUI_Layout/",
                                 "name_3_file": "readme.md"
                             },
@@ -381,7 +379,7 @@
                                 "name_3_file": "readme.md"
                             },
                             {
-                                "name_3_name": "Présentation de la barre d 'outils",
+                                "name_3_name": "Pr\u00e9sentation de la barre d 'outils",
                                 "name_3_url": "French/LayaAir_AS3/IDE/Code_Mode/ToolBar/",
                                 "name_3_file": "readme.md"
                             },
@@ -411,17 +409,17 @@
                                 "name_3_file": "readme.md"
                             },
                             {
-                                "name_3_name": "Configuration et récupération d 'interface personnalisée",
+                                "name_3_name": "Configuration et r\u00e9cup\u00e9ration d 'interface personnalis\u00e9e",
                                 "name_3_url": "French/LayaAir_AS3/IDE/Design_Mode/Custom_GUI/",
                                 "name_3_file": "readme.md"
                             },
                             {
-                                "name_3_name": "Présentation de la barre de menu",
+                                "name_3_name": "Pr\u00e9sentation de la barre de menu",
                                 "name_3_url": "French/LayaAir_AS3/IDE/Design_Mode/MenuBar/",
                                 "name_3_file": "readme.md"
                             },
                             {
-                                "name_3_name": "Présentation de la barre d 'outils",
+                                "name_3_name": "Pr\u00e9sentation de la barre d 'outils",
                                 "name_3_url": "French/LayaAir_AS3/IDE/Design_Mode/ToolBar/",
                                 "name_3_file": "readme.md"
                             },
@@ -436,7 +434,7 @@
                                 "name_3_file": "readme.md"
                             },
                             {
-                                "name_3_name": "Bibliothèque de composants",
+                                "name_3_name": "Biblioth\u00e8que de composants",
                                 "name_3_url": "French/LayaAir_AS3/IDE/Design_Mode/Component/",
                                 "name_3_file": "readme.md"
                             },
@@ -446,12 +444,12 @@
                                 "name_3_file": "readme.md"
                             },
                             {
-                                "name_3_name": "Éditeur de scène",
+                                "name_3_name": "\u00c9diteur de sc\u00e8ne",
                                 "name_3_url": "French/LayaAir_AS3/IDE/Design_Mode/Scene/",
                                 "name_3_file": "readme.md"
                             },
                             {
-                                "name_3_name": "Paramètres d 'attribut",
+                                "name_3_name": "Param\u00e8tres d 'attribut",
                                 "name_3_url": "French/LayaAir_AS3/IDE/Design_Mode/Attribute_Set/",
                                 "name_3_file": "readme.md"
                             },
@@ -473,7 +471,7 @@
                         ]
                     },
                     {
-                        "name_2_name": "Création à l 'aide de l' IDE",
+                        "name_2_name": "Cr\u00e9ation \u00e0 l 'aide de l' IDE",
                         "name_2_data": [
                             {
                                 "name_3_name": "Production et utilisation d 'Atlas",
@@ -481,7 +479,7 @@
                                 "name_3_file": "readme.md"
                             },
                             {
-                                "name_3_name": "Créer un modèle d 'animation",
+                                "name_3_name": "Cr\u00e9er un mod\u00e8le d 'animation",
                                 "name_3_url": "French/LayaAir_AS3/IDE/Use_IDE/EffectAnimation/",
                                 "name_3_file": "readme.md"
                             },
@@ -491,22 +489,22 @@
                                 "name_3_file": "readme.md"
                             },
                             {
-                                "name_3_name": "Fabrication et utilisation de composants personnalisés",
+                                "name_3_name": "Fabrication et utilisation de composants personnalis\u00e9s",
                                 "name_3_url": "French/LayaAir_AS3/IDE/Use_IDE/customComponent/",
                                 "name_3_file": "readme.md"
                             },
                             {
-                                "name_3_name": "Utilisation prévue",
+                                "name_3_name": "Utilisation pr\u00e9vue",
                                 "name_3_url": "French/LayaAir_AS3/IDE/Use_IDE/PresetUse/",
                                 "name_3_file": "readme.md"
                             }
                         ]
                     },
                     {
-                        "name_2_name": "Description détaillée des propriétés d 'un composant IDE",
+                        "name_2_name": "Description d\u00e9taill\u00e9e des propri\u00e9t\u00e9s d 'un composant IDE",
                         "name_2_data": [
                             {
-                                "name_3_name": "Règle de nom de composant",
+                                "name_3_name": "R\u00e8gle de nom de composant",
                                 "name_3_url": "French/LayaAir_TS/IDE/Component_Detailed/NamingRules/",
                                 "name_3_file": "readme.md"
                             },
@@ -516,12 +514,12 @@
                                 "name_3_file": "readme.md"
                             },
                             {
-                                "name_3_name": "Propriété checkbox",
+                                "name_3_name": "Propri\u00e9t\u00e9 checkbox",
                                 "name_3_url": "French/LayaAir_AS3/IDE/Component_Detailed/CheckBox/",
                                 "name_3_file": "readme.md"
                             },
                             {
-                                "name_3_name": "Propriété clip",
+                                "name_3_name": "Propri\u00e9t\u00e9 clip",
                                 "name_3_url": "French/LayaAir_AS3/IDE/Component_Detailed/Clip/",
                                 "name_3_file": "readme.md"
                             },
@@ -531,12 +529,12 @@
                                 "name_3_file": "readme.md"
                             },
                             {
-                                "name_3_name": "Propriété image",
+                                "name_3_name": "Propri\u00e9t\u00e9 image",
                                 "name_3_url": "French/LayaAir_AS3/IDE/Component_Detailed/Image/",
                                 "name_3_file": "readme.md"
                             },
                             {
-                                "name_3_name": "Propriété label",
+                                "name_3_name": "Propri\u00e9t\u00e9 label",
                                 "name_3_url": "French/LayaAir_AS3/IDE/Component_Detailed/Label/",
                                 "name_3_file": "readme.md"
                             },
@@ -546,32 +544,32 @@
                                 "name_3_file": "readme.md"
                             },
                             {
-                                "name_3_name": "Description détaillée des propriétés de hscrollbar",
+                                "name_3_name": "Description d\u00e9taill\u00e9e des propri\u00e9t\u00e9s de hscrollbar",
                                 "name_3_url": "French/LayaAir_AS3/IDE/Component_Detailed/HScrollBar/",
                                 "name_3_file": "readme.md"
                             },
                             {
-                                "name_3_name": "Description détaillée des propriétés vscrollbar",
+                                "name_3_name": "Description d\u00e9taill\u00e9e des propri\u00e9t\u00e9s vscrollbar",
                                 "name_3_url": "French/LayaAir_AS3/IDE/Component_Detailed/VScrollBar/",
                                 "name_3_file": "readme.md"
                             },
                             {
-                                "name_3_name": "Propriété hslider",
+                                "name_3_name": "Propri\u00e9t\u00e9 hslider",
                                 "name_3_url": "French/LayaAir_AS3/IDE/Component_Detailed/HSlider/",
                                 "name_3_file": "readme.md"
                             },
                             {
-                                "name_3_name": "Propriété vslider",
+                                "name_3_name": "Propri\u00e9t\u00e9 vslider",
                                 "name_3_url": "French/LayaAir_AS3/IDE/Component_Detailed/VSlider/",
                                 "name_3_file": "readme.md"
                             },
                             {
-                                "name_3_name": "Description détaillée des attributs de progressbar",
+                                "name_3_name": "Description d\u00e9taill\u00e9e des attributs de progressbar",
                                 "name_3_url": "French/LayaAir_AS3/IDE/Component_Detailed/ProgressBar/",
                                 "name_3_file": "readme.md"
                             },
                             {
-                                "name_3_name": "Description détaillée des propriétés du Groupe Radio",
+                                "name_3_name": "Description d\u00e9taill\u00e9e des propri\u00e9t\u00e9s du Groupe Radio",
                                 "name_3_url": "French/LayaAir_AS3/IDE/Component_Detailed/RadioGroup/",
                                 "name_3_file": "readme.md"
                             },
@@ -581,17 +579,17 @@
                                 "name_3_file": "readme.md"
                             },
                             {
-                                "name_3_name": "Description détaillée de la propriété Tree",
+                                "name_3_name": "Description d\u00e9taill\u00e9e de la propri\u00e9t\u00e9 Tree",
                                 "name_3_url": "French/LayaAir_AS3/IDE/Component_Detailed/Tree/",
                                 "name_3_file": "readme.md"
                             },
                             {
-                                "name_3_name": "Description détaillée des propriétés viewstack",
+                                "name_3_name": "Description d\u00e9taill\u00e9e des propri\u00e9t\u00e9s viewstack",
                                 "name_3_url": "French/LayaAir_AS3/IDE/Component_Detailed/ViewStack/",
                                 "name_3_file": "readme.md"
                             },
                             {
-                                "name_3_name": "Description détaillée des propriétés",
+                                "name_3_name": "Description d\u00e9taill\u00e9e des propri\u00e9t\u00e9s",
                                 "name_3_url": "French/LayaAir_AS3/IDE/Component_Detailed/Animation/",
                                 "name_3_file": "readme.md"
                             },
@@ -611,12 +609,12 @@
                                 "name_3_file": "readme.md"
                             },
                             {
-                                "name_3_name": "Utilisation de scripts étendus",
+                                "name_3_name": "Utilisation de scripts \u00e9tendus",
                                 "name_3_url": "French/LayaAir_AS3/IDE/ScriptUse/extendScript/",
                                 "name_3_file": "readme.md"
                             },
                             {
-                                "name_3_name": "Utilisation de scripts supplémentaires",
+                                "name_3_name": "Utilisation de scripts suppl\u00e9mentaires",
                                 "name_3_url": "French/LayaAir_AS3/IDE/ScriptUse/additionalScript/",
                                 "name_3_file": "readme.md"
                             }
@@ -643,7 +641,7 @@
                         ]
                     },
                     {
-                        "name_2_name": "Stratégie de chargement de jeu",
+                        "name_2_name": "Strat\u00e9gie de chargement de jeu",
                         "name_2_data": [
                             {
                                 "name_3_name": "Binary Image",
@@ -666,7 +664,7 @@
                                 "name_3_file": "readme.md"
                             },
                             {
-                                "name_3_name": "Procédé d 'optimisation de mémoire",
+                                "name_3_name": "Proc\u00e9d\u00e9 d 'optimisation de m\u00e9moire",
                                 "name_3_url": "French/LayaAir_AS3/2D/advanced/PerformanceOptimization/memory/",
                                 "name_3_file": "readme.md"
                             },
@@ -686,7 +684,7 @@
                                 "name_3_file": "readme.md"
                             },
                             {
-                                "name_3_name": "Autres stratégies d 'optimisation",
+                                "name_3_name": "Autres strat\u00e9gies d 'optimisation",
                                 "name_3_url": "French/LayaAir_AS3/2D/advanced/PerformanceOptimization/other/",
                                 "name_3_file": "readme.md"
                             },
@@ -696,7 +694,7 @@
                                 "name_3_file": "readme.md"
                             },
                             {
-                                "name_3_name": "Récupération de mémoire texture",
+                                "name_3_name": "R\u00e9cup\u00e9ration de m\u00e9moire texture",
                                 "name_3_url": "French/LayaAir_AS3/2D/advanced/PerformanceOptimization/clearTextureRes/",
                                 "name_3_file": "readme.md"
                             }
@@ -736,7 +734,7 @@
                                 "name_3_file": "readme.md"
                             },
                             {
-                                "name_3_name": "Shader personnalisé",
+                                "name_3_name": "Shader personnalis\u00e9",
                                 "name_3_url": "French/LayaAir_AS3/2D/advanced/extension_modules/Shader/",
                                 "name_3_file": "readme.md"
                             }
@@ -761,37 +759,37 @@
                                 "name_3_file": "readme.md"
                             },
                             {
-                                "name_3_name": "Scène layaair3d, scene.",
+                                "name_3_name": "Sc\u00e8ne layaair3d, scene.",
                                 "name_3_url": "French/LayaAir_AS3/3D/beginners/scene/",
                                 "name_3_file": "readme.md"
                             },
                             {
-                                "name_3_name": "Camera, la caméra layaair3d.",
+                                "name_3_name": "Camera, la cam\u00e9ra layaair3d.",
                                 "name_3_url": "French/LayaAir_AS3/3D/beginners/camera/",
                                 "name_3_file": "readme.md"
                             },
                             {
-                                "name_3_name": "Lumière de layaair",
+                                "name_3_name": "Lumi\u00e8re de layaair",
                                 "name_3_url": "French/LayaAir_AS3/3D/beginners/light/",
                                 "name_3_file": "readme.md"
                             },
                             {
-                                "name_3_name": "Modèle layaair3d",
+                                "name_3_name": "Mod\u00e8le layaair3d",
                                 "name_3_url": "French/LayaAir_AS3/3D/beginners/model/",
                                 "name_3_file": "readme.md"
                             },
                             {
-                                "name_3_name": "Description générale du matériel de layaair3d",
+                                "name_3_name": "Description g\u00e9n\u00e9rale du mat\u00e9riel de layaair3d",
                                 "name_3_url": "French/LayaAir_AS3/3D/beginners/materials_overview/",
                                 "name_3_file": "readme.md"
                             },
                             {
-                                "name_3_name": "Couleur et dessin de matériau layaair3d",
+                                "name_3_name": "Couleur et dessin de mat\u00e9riau layaair3d",
                                 "name_3_url": "French/LayaAir_AS3/3D/beginners/textures/",
                                 "name_3_file": "readme.md"
                             },
                             {
-                                "name_3_name": "Matériau blinnphong de layaair3d",
+                                "name_3_name": "Mat\u00e9riau blinnphong de layaair3d",
                                 "name_3_url": "French/LayaAir_AS3/3D/beginners/materials_blinnPhong/",
                                 "name_3_file": "readme.md"
                             },
@@ -821,7 +819,7 @@
                                 "name_3_file": "readme.md"
                             },
                             {
-                                "name_3_name": "Libération des ressources de layaair3d",
+                                "name_3_name": "Lib\u00e9ration des ressources de layaair3d",
                                 "name_3_url": "French/LayaAir_AS3/3D/beginners/assetsDispose/",
                                 "name_3_file": "readme.md"
                             }
@@ -831,22 +829,22 @@
                         "name_2_name": "Exemple simple",
                         "name_2_data": [
                             {
-                                "name_3_name": "Commande d 'animation de rôle 3D",
+                                "name_3_name": "Commande d 'animation de r\u00f4le 3D",
                                 "name_3_url": "French/LayaAir_AS3/3D/examples/roleAniControl/",
                                 "name_3_file": "readme.md"
                             },
                             {
-                                "name_3_name": "Commande de script de rôle 3D et détection de collision",
+                                "name_3_name": "Commande de script de r\u00f4le 3D et d\u00e9tection de collision",
                                 "name_3_url": "French/LayaAir_AS3/3D/examples/roleScriptControl/",
                                 "name_3_file": "readme.md"
                             },
                             {
-                                "name_3_name": "Exemples d 'application multiscène 3D",
+                                "name_3_name": "Exemples d 'application multisc\u00e8ne 3D",
                                 "name_3_url": "French/LayaAir_AS3/3D/examples/multiScene/",
                                 "name_3_file": "readme.md"
                             },
                             {
-                                "name_3_name": "Détection d 'impact de balles 3D",
+                                "name_3_name": "D\u00e9tection d 'impact de balles 3D",
                                 "name_3_url": "French/LayaAir_AS3/3D/examples/bulletShoot/",
                                 "name_3_file": "readme.md"
                             }
@@ -855,10 +853,10 @@
                 ]
             },
             {
-                "nav_1_name": "Jeu de micro - lettres et jeu léger QQ",
+                "nav_1_name": "Jeu de micro - lettres et jeu l\u00e9ger QQ",
                 "nav_1_data": [
                     {
-                        "name_2_name": "Base de développement de micro - jeux",
+                        "name_2_name": "Base de d\u00e9veloppement de micro - jeux",
                         "name_2_data": [
                             {
                                 "name_3_name": "Introduction au jeu de micro - lettres",
@@ -866,7 +864,7 @@
                                 "name_3_file": "readme.md"
                             },
                             {
-                                "name_3_name": "Créer un premier jeu de micro - lettres",
+                                "name_3_name": "Cr\u00e9er un premier jeu de micro - lettres",
                                 "name_3_url": "French/wechat/AS/novice/",
                                 "name_3_file": "readme.md"
                             },
@@ -876,7 +874,7 @@
                                 "name_3_file": "readme.md"
                             },
                             {
-                                "name_3_name": "Présentation de l 'outil de distribution de petit jeu et du Répertoire de petit jeu",
+                                "name_3_name": "Pr\u00e9sentation de l 'outil de distribution de petit jeu et du R\u00e9pertoire de petit jeu",
                                 "name_3_url": "French/wechat/AS/publishing_tools/",
                                 "name_3_file": "readme.md"
                             },
@@ -891,22 +889,22 @@
                                 "name_3_file": "readme.md"
                             },
                             {
-                                "name_3_name": "Wēi xìn xiǎo yóu xì sous - traitance",
+                                "name_3_name": "W\u0113i x\u00ecn xi\u01ceo y\u00f3u x\u00ec sous - traitance",
                                 "name_3_url": "French/wechat/AS/subpackage/",
                                 "name_3_file": "readme.md"
                             },
                             {
-                                "name_3_name": "Résumé des questions courantes dans les jeux de micro - lettres (mise à jour 7.25)",
+                                "name_3_name": "R\u00e9sum\u00e9 des questions courantes dans les jeux de micro - lettres (mise \u00e0 jour 7.25)",
                                 "name_3_url": "French/wechat/AS/FAQ/",
                                 "name_3_file": "readme.md"
                             }
                         ]
                     },
                     {
-                        "name_2_name": "Base de développement de jeu léger QQ",
+                        "name_2_name": "Base de d\u00e9veloppement de jeu l\u00e9ger QQ",
                         "name_2_data": [
                             {
-                                "name_3_name": "Présentation de base de jeu léger QQ et distribution de jeu",
+                                "name_3_name": "Pr\u00e9sentation de base de jeu l\u00e9ger QQ et distribution de jeu",
                                 "name_3_url": "French/qq/introduction/",
                                 "name_3_file": "readme.md"
                             }
@@ -923,7 +921,7 @@
                         ]
                     },
                     {
-                        "name_2_name": "Jeu vidéo oppo",
+                        "name_2_name": "Jeu vid\u00e9o oppo",
                         "name_2_data": [
                             {
                                 "name_3_name": "Oppo Guide pour la publication et la mise en page de petits jeux",
@@ -933,10 +931,10 @@
                         ]
                     },
                     {
-                        "name_2_name": "Jeu vidéo",
+                        "name_2_name": "Jeu vid\u00e9o",
                         "name_2_data": [
                             {
-                                "name_3_name": "Guide pour la publication et la mise en page des jeux vidéo",
+                                "name_3_name": "Guide pour la publication et la mise en page des jeux vid\u00e9o",
                                 "name_3_url": "French/miniGame/vivo/rundebug/",
                                 "name_3_file": "readme.md"
                             }
@@ -945,7 +943,7 @@
                 ]
             },
             {
-                "nav_1_name": "Développement d 'exemples (AS3)",
+                "nav_1_name": "D\u00e9veloppement d 'exemples (AS3)",
                 "nav_1_data": [
                     {
                         "name_2_name": "Exemples pratiques de layaair IDE",
@@ -978,10 +976,10 @@
                         ]
                     },
                     {
-                        "name_2_name": "Exploitation opérationnelle de l 'avion de microlettre",
+                        "name_2_name": "Exploitation op\u00e9rationnelle de l 'avion de microlettre",
                         "name_2_data": [
                             {
-                                "name_3_name": "Analyse des besoins et préparation des ressources",
+                                "name_3_name": "Analyse des besoins et pr\u00e9paration des ressources",
                                 "name_3_url": "French/LayaAir_AS3/2D/examples/AirWar/1/",
                                 "name_3_file": "readme.md"
                             },
@@ -1006,7 +1004,7 @@
                                 "name_3_file": "readme.md"
                             },
                             {
-                                "name_3_name": "Créer un collision entre l 'ennemi et le personnage",
+                                "name_3_name": "Cr\u00e9er un collision entre l 'ennemi et le personnage",
                                 "name_3_url": "French/LayaAir_AS3/2D/examples/AirWar/6/",
                                 "name_3_file": "readme.md"
                             },
@@ -1036,7 +1034,7 @@
                                 "name_3_file": "readme.md"
                             },
                             {
-                                "name_3_name": "Exécution du projet Hello layabox",
+                                "name_3_name": "Ex\u00e9cution du projet Hello layabox",
                                 "name_3_url": "French/LayaNative/run_HelloLayaBox/",
                                 "name_3_file": "README.md"
                             }
@@ -1046,7 +1044,7 @@
                         "name_2_name": "Document de base de layanative",
                         "name_2_data": [
                             {
-                                "name_3_name": "Résumé de layanative",
+                                "name_3_name": "R\u00e9sum\u00e9 de layanative",
                                 "name_3_url": "French/LayaNative/LayaNative_Introduction/",
                                 "name_3_file": "readme.md"
                             },
@@ -1066,12 +1064,12 @@
                                 "name_3_file": "README.md"
                             },
                             {
-                                "name_3_name": "Nouveau démarrage",
+                                "name_3_name": "Nouveau d\u00e9marrage",
                                 "name_3_url": "French/LayaNative/loading_view_new/",
                                 "name_3_file": "README.md"
                             },
                             {
-                                "name_3_name": "Démarre l'image.",
+                                "name_3_name": "D\u00e9marre l'image.",
                                 "name_3_url": "French/LayaNative/loading_view/",
                                 "name_3_file": "README.md"
                             },
@@ -1081,7 +1079,7 @@
                                 "name_3_file": "websocket.md"
                             },
                             {
-                                "name_3_name": "Surveillance d 'état réseau",
+                                "name_3_name": "Surveillance d '\u00e9tat r\u00e9seau",
                                 "name_3_url": "French/LayaNative/network/",
                                 "name_3_file": "README.md"
                             },
@@ -1111,12 +1109,12 @@
                                 "name_3_file": "readme.md"
                             },
                             {
-                                "name_3_name": "Gestion de mémoire",
+                                "name_3_name": "Gestion de m\u00e9moire",
                                 "name_3_url": "French/LayaNative/memory_manager/",
                                 "name_3_file": "README.md"
                             },
                             {
-                                "name_3_name": "Développement secondaire",
+                                "name_3_name": "D\u00e9veloppement secondaire",
                                 "name_3_url": "French/LayaNative/Secondary_Development/",
                                 "name_3_file": "readme.md"
                             },
@@ -1136,7 +1134,7 @@
                                 "name_3_file": "README.md"
                             },
                             {
-                                "name_3_name": "Traitement de l 'enlèvement",
+                                "name_3_name": "Traitement de l 'enl\u00e8vement",
                                 "name_3_url": "French/LayaNative/",
                                 "name_3_file": "anti-hijack.md"
                             },
@@ -1156,12 +1154,12 @@
                                 "name_3_file": "README.md"
                             },
                             {
-                                "name_3_name": "Mise à jour zip",
+                                "name_3_name": "Mise \u00e0 jour zip",
                                 "name_3_url": "French/LayaNative/resourceUpdate/",
                                 "name_3_file": "readme.md"
                             },
                             {
-                                "name_3_name": "Mécanisme d 'extension",
+                                "name_3_name": "M\u00e9canisme d 'extension",
                                 "name_3_url": "French/LayaNative/apk_expansion/",
                                 "name_3_file": "README.md"
                             },
@@ -1171,7 +1169,7 @@
                                 "name_3_file": "README.md"
                             },
                             {
-                                "name_3_name": "Système d 'Agrégation automatique d' images",
+                                "name_3_name": "Syst\u00e8me d 'Agr\u00e9gation automatique d' images",
                                 "name_3_url": "French/LayaNative/autoAltas/",
                                 "name_3_file": "README.md"
                             }
@@ -1186,17 +1184,17 @@
                                 "name_3_file": "README.md"
                             },
                             {
-                                "name_3_name": "Construction à l 'aide de l' IDE",
+                                "name_3_name": "Construction \u00e0 l 'aide de l' IDE",
                                 "name_3_url": "French/LayaNative/build_Tool/",
                                 "name_3_file": "readme.md"
                             }
                         ]
                     },
                     {
-                        "name_2_name": "Andoird et iOS développent les connaissances de base",
+                        "name_2_name": "Andoird et iOS d\u00e9veloppent les connaissances de base",
                         "name_2_data": [
                             {
-                                "name_3_name": "Environnement de développement Android",
+                                "name_3_name": "Environnement de d\u00e9veloppement Android",
                                 "name_3_url": "French/LayaNative/setUpAndroidEnvironment_Eclipse/",
                                 "name_3_file": "readme.md"
                             },
@@ -1215,13 +1213,13 @@
                 ]
             },
             {
-                "nav_1_name": "Résumé des questions courantes",
+                "nav_1_name": "R\u00e9sum\u00e9 des questions courantes",
                 "nav_1_data": [
                     {
                         "name_2_name": "2d questions courantes",
                         "name_2_data": [
                             {
-                                "name_3_name": "Problèmes liés à la création d 'un espace d' assemblage d 'images sous webgl",
+                                "name_3_name": "Probl\u00e8mes li\u00e9s \u00e0 la cr\u00e9ation d 'un espace d' assemblage d 'images sous webgl",
                                 "name_3_url": "French/CommonProblem/2D/GapProblem/",
                                 "name_3_file": "readme.md"
                             },
@@ -1231,7 +1229,7 @@
                                 "name_3_file": "readme.md"
                             },
                             {
-                                "name_3_name": "Comment définir le niveau de page au - dessus de dialog",
+                                "name_3_name": "Comment d\u00e9finir le niveau de page au - dessus de dialog",
                                 "name_3_url": "French/LayaAir_AS3/CommonProblem/2D/DialogzOrder/",
                                 "name_3_file": "readme.md"
                             },
@@ -1271,12 +1269,12 @@
                         "name_2_name": "Jeu HTML5",
                         "name_2_data": [
                             {
-                                "name_3_name": "Possibilités d'emploi dans le jeu HTML5",
+                                "name_3_name": "Possibilit\u00e9s d'emploi dans le jeu HTML5",
                                 "name_3_url": "French/Layabox_Intro/",
                                 "name_3_file": "HTML5_job_opportunities.md"
                             },
                             {
-                                "name_3_name": "Opportunités dans l 'industrie du jeu HTML5",
+                                "name_3_name": "Opportunit\u00e9s dans l 'industrie du jeu HTML5",
                                 "name_3_url": "French/Layabox_Intro/",
                                 "name_3_file": "HTML5_Game_Opportunities.md"
                             }
@@ -1291,7 +1289,7 @@
                                 "name_3_file": "readme.md"
                             },
                             {
-                                "name_3_name": "La passion et le rêve des programmeurs",
+                                "name_3_name": "La passion et le r\u00eave des programmeurs",
                                 "name_3_url": "French/Layabox_Intro/Layabox_Founder/",
                                 "name_3_file": "readme.md"
                             }
@@ -1306,12 +1304,12 @@
                                 "name_3_file": "LayaAir_introduction.md"
                             },
                             {
-                                "name_3_name": "Description des caractéristiques du moteur layaair",
+                                "name_3_name": "Description des caract\u00e9ristiques du moteur layaair",
                                 "name_3_url": "French/Layabox_Intro/",
                                 "name_3_file": "LayaAir_features.md"
                             },
                             {
-                                "name_3_name": "Guide de démarrage rapide du moteur layaair",
+                                "name_3_name": "Guide de d\u00e9marrage rapide du moteur layaair",
                                 "name_3_url": "French/",
                                 "name_3_file": "readme.md"
                             }
@@ -1341,12 +1339,12 @@
                         "name_2_name": "Rapide",
                         "name_2_data": [
                             {
-                                "name_3_name": "Créer un environnement de développement (compilateur de code ts)",
+                                "name_3_name": "Cr\u00e9er un environnement de d\u00e9veloppement (compilateur de code ts)",
                                 "name_3_url": "French/LayaAir_TS/2D/beginners/basic/TypeScript_DevelopmentEnvironment/",
                                 "name_3_file": "readme.md"
                             },
                             {
-                                "name_3_name": "Création d 'un article ts et description de la structure de répertoire",
+                                "name_3_name": "Cr\u00e9ation d 'un article ts et description de la structure de r\u00e9pertoire",
                                 "name_3_url": "French/LayaAir_TS/2D/beginners/basic/LayaAirIDECreateProjects_DirectoryStructure/",
                                 "name_3_file": "readme.md"
                             },
@@ -1361,7 +1359,7 @@
                         "name_2_name": "Notions de base",
                         "name_2_data": [
                             {
-                                "name_3_name": "Objet d 'affichage et concepts associés",
+                                "name_3_name": "Objet d 'affichage et concepts associ\u00e9s",
                                 "name_3_url": "French/LayaAir_TS/2D/beginners/basic/",
                                 "name_3_file": "readme.md"
                             }
@@ -1371,7 +1369,7 @@
                         "name_2_name": "Texte",
                         "name_2_data": [
                             {
-                                "name_3_name": "Généralités",
+                                "name_3_name": "G\u00e9n\u00e9ralit\u00e9s",
                                 "name_3_url": "French/LayaAir_TS/2D/beginners/Text/API_List/",
                                 "name_3_file": "readme.md"
                             },
@@ -1386,7 +1384,7 @@
                                 "name_3_file": "readme.md"
                             },
                             {
-                                "name_3_name": "Traitement et texte défilant au - delà de la zone de texte",
+                                "name_3_name": "Traitement et texte d\u00e9filant au - del\u00e0 de la zone de texte",
                                 "name_3_url": "French/LayaAir_TS/2D/beginners/Text/overflow/",
                                 "name_3_file": "readme.md"
                             },
@@ -1396,7 +1394,7 @@
                                 "name_3_file": "readme.md"
                             },
                             {
-                                "name_3_name": "Production et utilisation de caractères bitmap",
+                                "name_3_name": "Production et utilisation de caract\u00e8res bitmap",
                                 "name_3_url": "French/LayaAir_TS/2D/beginners/Text/BitmapFont/",
                                 "name_3_file": "readme.md"
                             }
@@ -1416,7 +1414,7 @@
                                 "name_3_file": "readme.md"
                             },
                             {
-                                "name_3_name": "Filtre de réglage",
+                                "name_3_name": "Filtre de r\u00e9glage",
                                 "name_3_url": "French/LayaAir_TS/2D/beginners/Bitmap/filter/",
                                 "name_3_file": "readme.md"
                             }
@@ -1441,7 +1439,7 @@
                                 "name_3_file": "readme.md"
                             },
                             {
-                                "name_3_name": "Dessin d 'un triangle, d' un polygone et d 'un motif de dessin basé sur des données",
+                                "name_3_name": "Dessin d 'un triangle, d' un polygone et d 'un motif de dessin bas\u00e9 sur des donn\u00e9es",
                                 "name_3_url": "French/LayaAir_TS/2D/beginners/Graphics/poly/",
                                 "name_3_file": "readme.md"
                             },
@@ -1456,7 +1454,7 @@
                                 "name_3_file": "readme.md"
                             },
                             {
-                                "name_3_name": "Dent de sciage pour dessin vectoriel d 'élimination",
+                                "name_3_name": "Dent de sciage pour dessin vectoriel d '\u00e9limination",
                                 "name_3_url": "French/LayaAir_TS/2D/beginners/Graphics/",
                                 "name_3_file": "readme.md"
                             }
@@ -1481,7 +1479,7 @@
                                 "name_3_file": "readme.md"
                             },
                             {
-                                "name_3_name": "Modèle dynamique",
+                                "name_3_name": "Mod\u00e8le dynamique",
                                 "name_3_url": "French/LayaAir_TS/IDE/Use_IDE/EffectAnimation/",
                                 "name_3_file": "readme.md"
                             },
@@ -1503,7 +1501,7 @@
                         ]
                     },
                     {
-                        "name_2_name": "Données et communications",
+                        "name_2_name": "Donn\u00e9es et communications",
                         "name_2_data": [
                             {
                                 "name_3_name": "Httprequest",
@@ -1511,12 +1509,12 @@
                                 "name_3_file": "readme.md"
                             },
                             {
-                                "name_3_name": "Transmission et réception de données websocket",
+                                "name_3_name": "Transmission et r\u00e9ception de donn\u00e9es websocket",
                                 "name_3_url": "French/LayaAir_TS/2D/beginners/Data_Communication/WebSocket/",
                                 "name_3_file": "readme.md"
                             },
                             {
-                                "name_3_name": "Byte binaire lire et écrire",
+                                "name_3_name": "Byte binaire lire et \u00e9crire",
                                 "name_3_url": "French/LayaAir_TS/2D/beginners/Data_Communication/Byte/",
                                 "name_3_file": "readme.md"
                             },
@@ -1526,19 +1524,19 @@
                                 "name_3_file": "readme.md"
                             },
                             {
-                                "name_3_name": "Jsonp lecture de données par domaine",
+                                "name_3_name": "Jsonp lecture de donn\u00e9es par domaine",
                                 "name_3_url": "French/LayaAir_TS/2D/beginners/Data_Communication/jsonp/",
                                 "name_3_file": "readme.md"
                             },
                             {
-                                "name_3_name": "Stockage de données Web",
+                                "name_3_name": "Stockage de donn\u00e9es Web",
                                 "name_3_url": "French/LayaAir_TS/2D/beginners/Data_Communication/webStorage/",
                                 "name_3_file": "readme.md"
                             }
                         ]
                     },
                     {
-                        "name_2_name": "Matériel informatique",
+                        "name_2_name": "Mat\u00e9riel informatique",
                         "name_2_data": [
                             {
                                 "name_3_name": "Lecture et commande de musique et de son",
@@ -1546,27 +1544,27 @@
                                 "name_3_file": "readme.md"
                             },
                             {
-                                "name_3_name": "Gyroscope et accélérateur",
+                                "name_3_name": "Gyroscope et acc\u00e9l\u00e9rateur",
                                 "name_3_url": "French/LayaAir_TS/2D/beginners/devices/motion/",
                                 "name_3_file": "readme.md"
                             },
                             {
-                                "name_3_name": "Accès à l 'information géographique par geologation",
+                                "name_3_name": "Acc\u00e8s \u00e0 l 'information g\u00e9ographique par geologation",
                                 "name_3_url": "French/LayaAir_TS/2D/beginners/devices/geolocation/",
                                 "name_3_file": "readme.md"
                             },
                             {
-                                "name_3_name": "Afficher la position actuelle à l 'aide d' une carte de Baidu",
+                                "name_3_name": "Afficher la position actuelle \u00e0 l 'aide d' une carte de Baidu",
                                 "name_3_url": "French/LayaAir_TS/2D/beginners/devices/baiduMap/",
                                 "name_3_file": "readme.md"
                             }
                         ]
                     },
                     {
-                        "name_2_name": "Adaptation d 'écran",
+                        "name_2_name": "Adaptation d '\u00e9cran",
                         "name_2_data": [
                             {
-                                "name_3_name": "Adaptation d 'écran",
+                                "name_3_name": "Adaptation d '\u00e9cran",
                                 "name_3_url": "French/LayaAir_TS/2D/beginners/Screen_Fit/API_Overview/",
                                 "name_3_file": "readme.md"
                             },
@@ -1576,7 +1574,7 @@
                                 "name_3_file": "readme.md"
                             },
                             {
-                                "name_3_name": "Direction de l 'écran: Self - transverse Screen and Automatic VERTICAL SCREEN Settlement",
+                                "name_3_name": "Direction de l '\u00e9cran: Self - transverse Screen and Automatic VERTICAL SCREEN Settlement",
                                 "name_3_url": "French/LayaAir_TS/2D/beginners/Screen_Fit/screenMode/",
                                 "name_3_file": "readme.md"
                             },
@@ -1596,7 +1594,7 @@
                         "name_2_name": "Base de mode de code",
                         "name_2_data": [
                             {
-                                "name_3_name": "Schéma de code",
+                                "name_3_name": "Sch\u00e9ma de code",
                                 "name_3_url": "French/LayaAir_TS/IDE/Code_Mode/GUI_Layout/",
                                 "name_3_file": "readme.md"
                             },
@@ -1606,7 +1604,7 @@
                                 "name_3_file": "readme.md"
                             },
                             {
-                                "name_3_name": "Présentation de la barre d 'outils",
+                                "name_3_name": "Pr\u00e9sentation de la barre d 'outils",
                                 "name_3_url": "French/LayaAir_TS/IDE/Code_Mode/ToolBar/",
                                 "name_3_file": "readme.md"
                             },
@@ -1636,17 +1634,17 @@
                                 "name_3_file": "readme.md"
                             },
                             {
-                                "name_3_name": "Configuration et récupération d 'interface personnalisée",
+                                "name_3_name": "Configuration et r\u00e9cup\u00e9ration d 'interface personnalis\u00e9e",
                                 "name_3_url": "French/LayaAir_TS/IDE/Design_Mode/Custom_GUI/",
                                 "name_3_file": "readme.md"
                             },
                             {
-                                "name_3_name": "Présentation de la barre de menu",
+                                "name_3_name": "Pr\u00e9sentation de la barre de menu",
                                 "name_3_url": "French/LayaAir_TS/IDE/Design_Mode/MenuBar/",
                                 "name_3_file": "readme.md"
                             },
                             {
-                                "name_3_name": "Présentation de la barre d 'outils",
+                                "name_3_name": "Pr\u00e9sentation de la barre d 'outils",
                                 "name_3_url": "French/LayaAir_TS/IDE/Design_Mode/ToolBar/",
                                 "name_3_file": "readme.md"
                             },
@@ -1661,7 +1659,7 @@
                                 "name_3_file": "readme.md"
                             },
                             {
-                                "name_3_name": "Bibliothèque de composants",
+                                "name_3_name": "Biblioth\u00e8que de composants",
                                 "name_3_url": "French/LayaAir_TS/IDE/Design_Mode/Component/",
                                 "name_3_file": "readme.md"
                             },
@@ -1671,12 +1669,12 @@
                                 "name_3_file": "readme.md"
                             },
                             {
-                                "name_3_name": "Éditeur de scène",
+                                "name_3_name": "\u00c9diteur de sc\u00e8ne",
                                 "name_3_url": "French/LayaAir_TS/IDE/Design_Mode/Scene/",
                                 "name_3_file": "readme.md"
                             },
                             {
-                                "name_3_name": "Paramètres d 'attribut",
+                                "name_3_name": "Param\u00e8tres d 'attribut",
                                 "name_3_url": "French/LayaAir_TS/IDE/Design_Mode/Attribute_Set/",
                                 "name_3_file": "readme.md"
                             },
@@ -1698,7 +1696,7 @@
                         ]
                     },
                     {
-                        "name_2_name": "Création à l 'aide de l' IDE",
+                        "name_2_name": "Cr\u00e9ation \u00e0 l 'aide de l' IDE",
                         "name_2_data": [
                             {
                                 "name_3_name": "Production et utilisation d 'Atlas",
@@ -1706,7 +1704,7 @@
                                 "name_3_file": "readme.md"
                             },
                             {
-                                "name_3_name": "Créer un modèle d 'animation",
+                                "name_3_name": "Cr\u00e9er un mod\u00e8le d 'animation",
                                 "name_3_url": "French/LayaAir_TS/IDE/Use_IDE/EffectAnimation/",
                                 "name_3_file": "readme.md"
                             },
@@ -1716,22 +1714,22 @@
                                 "name_3_file": "readme.md"
                             },
                             {
-                                "name_3_name": "Fabrication et utilisation de composants personnalisés",
+                                "name_3_name": "Fabrication et utilisation de composants personnalis\u00e9s",
                                 "name_3_url": "French/LayaAir_TS/IDE/Use_IDE/customComponent/",
                                 "name_3_file": "readme.md"
                             },
                             {
-                                "name_3_name": "Utilisation prévue",
+                                "name_3_name": "Utilisation pr\u00e9vue",
                                 "name_3_url": "French/LayaAir_TS/IDE/Use_IDE/PresetUse/",
                                 "name_3_file": "readme.md"
                             }
                         ]
                     },
                     {
-                        "name_2_name": "Description détaillée des propriétés d 'un composant IDE",
+                        "name_2_name": "Description d\u00e9taill\u00e9e des propri\u00e9t\u00e9s d 'un composant IDE",
                         "name_2_data": [
                             {
-                                "name_3_name": "Règle de nom de composant",
+                                "name_3_name": "R\u00e8gle de nom de composant",
                                 "name_3_url": "French/LayaAir_TS/IDE/Component_Detailed/NamingRules/",
                                 "name_3_file": "readme.md"
                             },
@@ -1741,12 +1739,12 @@
                                 "name_3_file": "readme.md"
                             },
                             {
-                                "name_3_name": "Propriété checkbox",
+                                "name_3_name": "Propri\u00e9t\u00e9 checkbox",
                                 "name_3_url": "French/LayaAir_TS/IDE/Component_Detailed/CheckBox/",
                                 "name_3_file": "readme.md"
                             },
                             {
-                                "name_3_name": "Propriété clip",
+                                "name_3_name": "Propri\u00e9t\u00e9 clip",
                                 "name_3_url": "French/LayaAir_TS/IDE/Component_Detailed/Clip/",
                                 "name_3_file": "readme.md"
                             },
@@ -1756,12 +1754,12 @@
                                 "name_3_file": "readme.md"
                             },
                             {
-                                "name_3_name": "Propriété image",
+                                "name_3_name": "Propri\u00e9t\u00e9 image",
                                 "name_3_url": "French/LayaAir_TS/IDE/Component_Detailed/Image/",
                                 "name_3_file": "readme.md"
                             },
                             {
-                                "name_3_name": "Propriété label",
+                                "name_3_name": "Propri\u00e9t\u00e9 label",
                                 "name_3_url": "French/LayaAir_TS/IDE/Component_Detailed/Label/",
                                 "name_3_file": "readme.md"
                             },
@@ -1771,32 +1769,32 @@
                                 "name_3_file": "readme.md"
                             },
                             {
-                                "name_3_name": "Description détaillée des propriétés de hscrollbar",
+                                "name_3_name": "Description d\u00e9taill\u00e9e des propri\u00e9t\u00e9s de hscrollbar",
                                 "name_3_url": "French/LayaAir_TS/IDE/Component_Detailed/HScrollBar/",
                                 "name_3_file": "readme.md"
                             },
                             {
-                                "name_3_name": "Description détaillée des propriétés vscrollbar",
+                                "name_3_name": "Description d\u00e9taill\u00e9e des propri\u00e9t\u00e9s vscrollbar",
                                 "name_3_url": "French/LayaAir_TS/IDE/Component_Detailed/VScrollBar/",
                                 "name_3_file": "readme.md"
                             },
                             {
-                                "name_3_name": "Propriété hslider",
+                                "name_3_name": "Propri\u00e9t\u00e9 hslider",
                                 "name_3_url": "French/LayaAir_TS/IDE/Component_Detailed/HSlider/",
                                 "name_3_file": "readme.md"
                             },
                             {
-                                "name_3_name": "Propriété vslider",
+                                "name_3_name": "Propri\u00e9t\u00e9 vslider",
                                 "name_3_url": "French/LayaAir_TS/IDE/Component_Detailed/VSlider/",
                                 "name_3_file": "readme.md"
                             },
                             {
-                                "name_3_name": "Description détaillée des attributs de progressbar",
+                                "name_3_name": "Description d\u00e9taill\u00e9e des attributs de progressbar",
                                 "name_3_url": "French/LayaAir_TS/IDE/Component_Detailed/ProgressBar/",
                                 "name_3_file": "readme.md"
                             },
                             {
-                                "name_3_name": "Description détaillée des propriétés du Groupe Radio",
+                                "name_3_name": "Description d\u00e9taill\u00e9e des propri\u00e9t\u00e9s du Groupe Radio",
                                 "name_3_url": "French/LayaAir_TS/IDE/Component_Detailed/RadioGroup/",
                                 "name_3_file": "readme.md"
                             },
@@ -1806,17 +1804,17 @@
                                 "name_3_file": "readme.md"
                             },
                             {
-                                "name_3_name": "Description détaillée de la propriété Tree",
+                                "name_3_name": "Description d\u00e9taill\u00e9e de la propri\u00e9t\u00e9 Tree",
                                 "name_3_url": "French/LayaAir_TS/IDE/Component_Detailed/Tree/",
                                 "name_3_file": "readme.md"
                             },
                             {
-                                "name_3_name": "Description détaillée des propriétés viewstack",
+                                "name_3_name": "Description d\u00e9taill\u00e9e des propri\u00e9t\u00e9s viewstack",
                                 "name_3_url": "French/LayaAir_TS/IDE/Component_Detailed/ViewStack/",
                                 "name_3_file": "readme.md"
                             },
                             {
-                                "name_3_name": "Description détaillée des propriétés",
+                                "name_3_name": "Description d\u00e9taill\u00e9e des propri\u00e9t\u00e9s",
                                 "name_3_url": "French/LayaAir_TS/IDE/Component_Detailed/Animation/",
                                 "name_3_file": "readme.md"
                             },
@@ -1836,12 +1834,12 @@
                                 "name_3_file": "readme.md"
                             },
                             {
-                                "name_3_name": "Utilisation de scripts étendus",
+                                "name_3_name": "Utilisation de scripts \u00e9tendus",
                                 "name_3_url": "French/LayaAir_TS/IDE/ScriptUse/extendScript/",
                                 "name_3_file": "readme.md"
                             },
                             {
-                                "name_3_name": "Utilisation de scripts supplémentaires",
+                                "name_3_name": "Utilisation de scripts suppl\u00e9mentaires",
                                 "name_3_url": "French/LayaAir_TS/IDE/ScriptUse/additionalScript/",
                                 "name_3_file": "readme.md"
                             }
@@ -1868,7 +1866,7 @@
                         ]
                     },
                     {
-                        "name_2_name": "Stratégie de chargement de jeu",
+                        "name_2_name": "Strat\u00e9gie de chargement de jeu",
                         "name_2_data": [
                             {
                                 "name_3_name": "Binary Image",
@@ -1891,7 +1889,7 @@
                                 "name_3_file": "readme.md"
                             },
                             {
-                                "name_3_name": "Procédé d 'optimisation de mémoire",
+                                "name_3_name": "Proc\u00e9d\u00e9 d 'optimisation de m\u00e9moire",
                                 "name_3_url": "French/LayaAir_TS/2D/advanced/PerformanceOptimization/memory/",
                                 "name_3_file": "readme.md"
                             },
@@ -1911,7 +1909,7 @@
                                 "name_3_file": "readme.md"
                             },
                             {
-                                "name_3_name": "Autres stratégies d 'optimisation",
+                                "name_3_name": "Autres strat\u00e9gies d 'optimisation",
                                 "name_3_url": "French/LayaAir_TS/2D/advanced/PerformanceOptimization/other/",
                                 "name_3_file": "readme.md"
                             },
@@ -1951,7 +1949,7 @@
                                 "name_3_file": "readme.md"
                             },
                             {
-                                "name_3_name": "Shader personnalisé",
+                                "name_3_name": "Shader personnalis\u00e9",
                                 "name_3_url": "French/LayaAir_TS/2D/advanced/extension_modules/Shader/",
                                 "name_3_file": "readme.md"
                             }
@@ -1976,37 +1974,37 @@
                                 "name_3_file": "readme.md"
                             },
                             {
-                                "name_3_name": "Scène layaair3d, scene.",
+                                "name_3_name": "Sc\u00e8ne layaair3d, scene.",
                                 "name_3_url": "French/LayaAir_TS/3D/beginners/scene/",
                                 "name_3_file": "readme.md"
                             },
                             {
-                                "name_3_name": "Camera, la caméra layaair3d.",
+                                "name_3_name": "Camera, la cam\u00e9ra layaair3d.",
                                 "name_3_url": "French/LayaAir_TS/3D/beginners/camera/",
                                 "name_3_file": "readme.md"
                             },
                             {
-                                "name_3_name": "Lumière de layaair",
+                                "name_3_name": "Lumi\u00e8re de layaair",
                                 "name_3_url": "French/LayaAir_TS/3D/beginners/light/",
                                 "name_3_file": "readme.md"
                             },
                             {
-                                "name_3_name": "Modèle layaair3d",
+                                "name_3_name": "Mod\u00e8le layaair3d",
                                 "name_3_url": "French/LayaAir_TS/3D/beginners/model/",
                                 "name_3_file": "readme.md"
                             },
                             {
-                                "name_3_name": "Description générale du matériel de layaair3d",
+                                "name_3_name": "Description g\u00e9n\u00e9rale du mat\u00e9riel de layaair3d",
                                 "name_3_url": "French/LayaAir_TS/3D/beginners/materials_overview/",
                                 "name_3_file": "readme.md"
                             },
                             {
-                                "name_3_name": "Couleur et dessin de matériau layaair3d",
+                                "name_3_name": "Couleur et dessin de mat\u00e9riau layaair3d",
                                 "name_3_url": "French/LayaAir_TS/3D/beginners/textures/",
                                 "name_3_file": "readme.md"
                             },
                             {
-                                "name_3_name": "Matériau blinnphong de layaair3d",
+                                "name_3_name": "Mat\u00e9riau blinnphong de layaair3d",
                                 "name_3_url": "French/LayaAir_TS/3D/beginners/materials_blinnPhong/",
                                 "name_3_file": "readme.md"
                             },
@@ -2036,7 +2034,7 @@
                                 "name_3_file": "readme.md"
                             },
                             {
-                                "name_3_name": "Libération des ressources de layaair3d",
+                                "name_3_name": "Lib\u00e9ration des ressources de layaair3d",
                                 "name_3_url": "French/LayaAir_TS/3D/beginners/assetsDispose/",
                                 "name_3_file": "readme.md"
                             }
@@ -2046,22 +2044,22 @@
                         "name_2_name": "Exemple simple",
                         "name_2_data": [
                             {
-                                "name_3_name": "Commande d 'animation de rôle 3D",
+                                "name_3_name": "Commande d 'animation de r\u00f4le 3D",
                                 "name_3_url": "French/LayaAir_TS/3D/examples/roleAniControl/",
                                 "name_3_file": "readme.md"
                             },
                             {
-                                "name_3_name": "Commande de script de rôle 3D et détection de collision",
+                                "name_3_name": "Commande de script de r\u00f4le 3D et d\u00e9tection de collision",
                                 "name_3_url": "French/LayaAir_TS/3D/examples/roleScriptControl/",
                                 "name_3_file": "readme.md"
                             },
                             {
-                                "name_3_name": "Exemples d 'application multiscène 3D",
+                                "name_3_name": "Exemples d 'application multisc\u00e8ne 3D",
                                 "name_3_url": "French/LayaAir_TS/3D/examples/multiScene/",
                                 "name_3_file": "readme.md"
                             },
                             {
-                                "name_3_name": "Détection d 'impact de balles 3D",
+                                "name_3_name": "D\u00e9tection d 'impact de balles 3D",
                                 "name_3_url": "French/LayaAir_TS/3D/examples/bulletShoot/",
                                 "name_3_file": "readme.md"
                             }
@@ -2070,10 +2068,10 @@
                 ]
             },
             {
-                "nav_1_name": "Jeu de micro - lettres et jeu léger QQ",
+                "nav_1_name": "Jeu de micro - lettres et jeu l\u00e9ger QQ",
                 "nav_1_data": [
                     {
-                        "name_2_name": "Base de développement de micro - jeux",
+                        "name_2_name": "Base de d\u00e9veloppement de micro - jeux",
                         "name_2_data": [
                             {
                                 "name_3_name": "Introduction au jeu de micro - lettres",
@@ -2081,7 +2079,7 @@
                                 "name_3_file": "readme.md"
                             },
                             {
-                                "name_3_name": "Créer un premier jeu de micro - lettres",
+                                "name_3_name": "Cr\u00e9er un premier jeu de micro - lettres",
                                 "name_3_url": "French/wechat/AS/novice/",
                                 "name_3_file": "readme.md"
                             },
@@ -2091,7 +2089,7 @@
                                 "name_3_file": "readme.md"
                             },
                             {
-                                "name_3_name": "Présentation de l 'outil de distribution de petit jeu et du Répertoire de petit jeu",
+                                "name_3_name": "Pr\u00e9sentation de l 'outil de distribution de petit jeu et du R\u00e9pertoire de petit jeu",
                                 "name_3_url": "French/wechat/AS/publishing_tools/",
                                 "name_3_file": "readme.md"
                             },
@@ -2106,22 +2104,22 @@
                                 "name_3_file": "readme.md"
                             },
                             {
-                                "name_3_name": "Wēi xìn xiǎo yóu xì sous - traitance",
+                                "name_3_name": "W\u0113i x\u00ecn xi\u01ceo y\u00f3u x\u00ec sous - traitance",
                                 "name_3_url": "French/wechat/TS/subpackage/",
                                 "name_3_file": "readme.md"
                             },
                             {
-                                "name_3_name": "Résumé des questions courantes dans les jeux de micro - lettres (mise à jour 7.25)",
+                                "name_3_name": "R\u00e9sum\u00e9 des questions courantes dans les jeux de micro - lettres (mise \u00e0 jour 7.25)",
                                 "name_3_url": "French/wechat/AS/FAQ/",
                                 "name_3_file": "readme.md"
                             }
                         ]
                     },
                     {
-                        "name_2_name": "Base de développement de jeu léger QQ",
+                        "name_2_name": "Base de d\u00e9veloppement de jeu l\u00e9ger QQ",
                         "name_2_data": [
                             {
-                                "name_3_name": "Présentation de base de jeu léger QQ et distribution de jeu",
+                                "name_3_name": "Pr\u00e9sentation de base de jeu l\u00e9ger QQ et distribution de jeu",
                                 "name_3_url": "French/qq/introduction/",
                                 "name_3_file": "readme.md"
                             }
@@ -2138,7 +2136,7 @@
                         ]
                     },
                     {
-                        "name_2_name": "Jeu vidéo oppo",
+                        "name_2_name": "Jeu vid\u00e9o oppo",
                         "name_2_data": [
                             {
                                 "name_3_name": "Oppo Guide pour la publication et la mise en page de petits jeux",
@@ -2148,10 +2146,10 @@
                         ]
                     },
                     {
-                        "name_2_name": "Jeu vidéo",
+                        "name_2_name": "Jeu vid\u00e9o",
                         "name_2_data": [
                             {
-                                "name_3_name": "Guide pour la publication et la mise en page des jeux vidéo",
+                                "name_3_name": "Guide pour la publication et la mise en page des jeux vid\u00e9o",
                                 "name_3_url": "French/miniGame/vivo/rundebug/",
                                 "name_3_file": "readme.md"
                             }
@@ -2160,7 +2158,7 @@
                 ]
             },
             {
-                "nav_1_name": "Développement d 'exemples (ts)",
+                "nav_1_name": "D\u00e9veloppement d 'exemples (ts)",
                 "nav_1_data": [
                     {
                         "name_2_name": "Exemples pratiques de layaair IDE",
@@ -2186,7 +2184,7 @@
                                 "name_3_file": "readme.md"
                             },
                             {
-                                "name_3_name": "Exécution du projet Hello layabox",
+                                "name_3_name": "Ex\u00e9cution du projet Hello layabox",
                                 "name_3_url": "French/LayaNative/run_HelloLayaBox/",
                                 "name_3_file": "README.md"
                             }
@@ -2196,7 +2194,7 @@
                         "name_2_name": "Document de base de layanative",
                         "name_2_data": [
                             {
-                                "name_3_name": "Résumé de layanative",
+                                "name_3_name": "R\u00e9sum\u00e9 de layanative",
                                 "name_3_url": "French/LayaNative/LayaNative_Introduction/",
                                 "name_3_file": "readme.md"
                             },
@@ -2216,12 +2214,12 @@
                                 "name_3_file": "README.md"
                             },
                             {
-                                "name_3_name": "Nouveau démarrage",
+                                "name_3_name": "Nouveau d\u00e9marrage",
                                 "name_3_url": "French/LayaNative/loading_view_new/",
                                 "name_3_file": "README.md"
                             },
                             {
-                                "name_3_name": "Démarre l'image.",
+                                "name_3_name": "D\u00e9marre l'image.",
                                 "name_3_url": "French/LayaNative/loading_view/",
                                 "name_3_file": "README.md"
                             },
@@ -2231,7 +2229,7 @@
                                 "name_3_file": "websocket.md"
                             },
                             {
-                                "name_3_name": "Surveillance d 'état réseau",
+                                "name_3_name": "Surveillance d '\u00e9tat r\u00e9seau",
                                 "name_3_url": "French/LayaNative/network/",
                                 "name_3_file": "README.md"
                             },
@@ -2256,12 +2254,12 @@
                                 "name_3_file": "readme.md"
                             },
                             {
-                                "name_3_name": "Gestion de mémoire",
+                                "name_3_name": "Gestion de m\u00e9moire",
                                 "name_3_url": "French/LayaNative/memory_manager/",
                                 "name_3_file": "README.md"
                             },
                             {
-                                "name_3_name": "Développement secondaire",
+                                "name_3_name": "D\u00e9veloppement secondaire",
                                 "name_3_url": "French/LayaNative/Secondary_Development/",
                                 "name_3_file": "readme.md"
                             },
@@ -2281,7 +2279,7 @@
                                 "name_3_file": "README.md"
                             },
                             {
-                                "name_3_name": "Traitement de l 'enlèvement",
+                                "name_3_name": "Traitement de l 'enl\u00e8vement",
                                 "name_3_url": "French/LayaNative/",
                                 "name_3_file": "anti-hijack.md"
                             },
@@ -2301,12 +2299,12 @@
                                 "name_3_file": "README.md"
                             },
                             {
-                                "name_3_name": "Mise à jour zip",
+                                "name_3_name": "Mise \u00e0 jour zip",
                                 "name_3_url": "French/LayaNative/resourceUpdate/",
                                 "name_3_file": "readme.md"
                             },
                             {
-                                "name_3_name": "Mécanisme d 'extension",
+                                "name_3_name": "M\u00e9canisme d 'extension",
                                 "name_3_url": "French/LayaNative/apk_expansion/",
                                 "name_3_file": "README.md"
                             },
@@ -2316,7 +2314,7 @@
                                 "name_3_file": "README.md"
                             },
                             {
-                                "name_3_name": "Système d 'Agrégation automatique d' images",
+                                "name_3_name": "Syst\u00e8me d 'Agr\u00e9gation automatique d' images",
                                 "name_3_url": "French/LayaNative/autoAltas/",
                                 "name_3_file": "README.md"
                             }
@@ -2331,17 +2329,17 @@
                                 "name_3_file": "README.md"
                             },
                             {
-                                "name_3_name": "Construction à l 'aide de l' IDE",
+                                "name_3_name": "Construction \u00e0 l 'aide de l' IDE",
                                 "name_3_url": "French/LayaNative/build_Tool/",
                                 "name_3_file": "readme.md"
                             }
                         ]
                     },
                     {
-                        "name_2_name": "Andoird et iOS développent les connaissances de base",
+                        "name_2_name": "Andoird et iOS d\u00e9veloppent les connaissances de base",
                         "name_2_data": [
                             {
-                                "name_3_name": "Environnement de développement Android",
+                                "name_3_name": "Environnement de d\u00e9veloppement Android",
                                 "name_3_url": "French/LayaNative/setUpAndroidEnvironment_Eclipse/",
                                 "name_3_file": "readme.md"
                             },
@@ -2360,13 +2358,13 @@
                 ]
             },
             {
-                "nav_1_name": "Résumé des questions courantes",
+                "nav_1_name": "R\u00e9sum\u00e9 des questions courantes",
                 "nav_1_data": [
                     {
                         "name_2_name": "2d questions courantes",
                         "name_2_data": [
                             {
-                                "name_3_name": "Problèmes liés à la création d 'un espace d' assemblage d 'images sous webgl",
+                                "name_3_name": "Probl\u00e8mes li\u00e9s \u00e0 la cr\u00e9ation d 'un espace d' assemblage d 'images sous webgl",
                                 "name_3_url": "French/CommonProblem/2D/GapProblem/",
                                 "name_3_file": "readme.md"
                             },
@@ -2376,7 +2374,7 @@
                                 "name_3_file": "readme.md"
                             },
                             {
-                                "name_3_name": "Comment définir le niveau de page au - dessus de dialog",
+                                "name_3_name": "Comment d\u00e9finir le niveau de page au - dessus de dialog",
                                 "name_3_url": "French/LayaAir_TS/CommonProblem/2D/DialogzOrder/",
                                 "name_3_file": "readme.md"
                             },
@@ -2416,12 +2414,12 @@
                         "name_2_name": "Jeu HTML5",
                         "name_2_data": [
                             {
-                                "name_3_name": "Possibilités d'emploi dans le jeu HTML5",
+                                "name_3_name": "Possibilit\u00e9s d'emploi dans le jeu HTML5",
                                 "name_3_url": "French/Layabox_Intro/",
                                 "name_3_file": "HTML5_job_opportunities.md"
                             },
                             {
-                                "name_3_name": "Opportunités dans l 'industrie du jeu HTML5",
+                                "name_3_name": "Opportunit\u00e9s dans l 'industrie du jeu HTML5",
                                 "name_3_url": "French/Layabox_Intro/",
                                 "name_3_file": "HTML5_Game_Opportunities.md"
                             }
@@ -2436,7 +2434,7 @@
                                 "name_3_file": "readme.md"
                             },
                             {
-                                "name_3_name": "La passion et le rêve des programmeurs",
+                                "name_3_name": "La passion et le r\u00eave des programmeurs",
                                 "name_3_url": "French/Layabox_Intro/Layabox_Founder/",
                                 "name_3_file": "readme.md"
                             }
@@ -2451,12 +2449,12 @@
                                 "name_3_file": "LayaAir_introduction.md"
                             },
                             {
-                                "name_3_name": "Description des caractéristiques du moteur layaair",
+                                "name_3_name": "Description des caract\u00e9ristiques du moteur layaair",
                                 "name_3_url": "French/Layabox_Intro/",
                                 "name_3_file": "LayaAir_features.md"
                             },
                             {
-                                "name_3_name": "Guide de démarrage rapide du moteur layaair",
+                                "name_3_name": "Guide de d\u00e9marrage rapide du moteur layaair",
                                 "name_3_url": "French/",
                                 "name_3_file": "readme.md"
                             }
@@ -2486,7 +2484,7 @@
                         "name_2_name": "Rapide",
                         "name_2_data": [
                             {
-                                "name_3_name": "Création d 'un projet JS et description détaillée de la structure du Répertoire",
+                                "name_3_name": "Cr\u00e9ation d 'un projet JS et description d\u00e9taill\u00e9e de la structure du R\u00e9pertoire",
                                 "name_3_url": "French/LayaAir_JS/2D/beginners/basic/LayaAirIDECreateProjects_DirectoryStructure/",
                                 "name_3_file": "readme.md"
                             },
@@ -2501,7 +2499,7 @@
                         "name_2_name": "Notions de base",
                         "name_2_data": [
                             {
-                                "name_3_name": "Objet d 'affichage et concepts associés",
+                                "name_3_name": "Objet d 'affichage et concepts associ\u00e9s",
                                 "name_3_url": "French/LayaAir_JS/2D/beginners/basic/",
                                 "name_3_file": "readme.md"
                             }
@@ -2511,7 +2509,7 @@
                         "name_2_name": "Texte",
                         "name_2_data": [
                             {
-                                "name_3_name": "Généralités",
+                                "name_3_name": "G\u00e9n\u00e9ralit\u00e9s",
                                 "name_3_url": "French/LayaAir_JS/2D/beginners/Text/API_List/",
                                 "name_3_file": "readme.md"
                             },
@@ -2526,7 +2524,7 @@
                                 "name_3_file": "readme.md"
                             },
                             {
-                                "name_3_name": "Traitement et texte défilant au - delà de la zone de texte",
+                                "name_3_name": "Traitement et texte d\u00e9filant au - del\u00e0 de la zone de texte",
                                 "name_3_url": "French/LayaAir_JS/2D/beginners/Text/overflow/",
                                 "name_3_file": "readme.md"
                             },
@@ -2536,7 +2534,7 @@
                                 "name_3_file": "readme.md"
                             },
                             {
-                                "name_3_name": "Production et utilisation de caractères bitmap",
+                                "name_3_name": "Production et utilisation de caract\u00e8res bitmap",
                                 "name_3_url": "French/LayaAir_JS/2D/beginners/Text/BitmapFont/",
                                 "name_3_file": "readme.md"
                             }
@@ -2556,7 +2554,7 @@
                                 "name_3_file": "readme.md"
                             },
                             {
-                                "name_3_name": "Filtre de réglage",
+                                "name_3_name": "Filtre de r\u00e9glage",
                                 "name_3_url": "French/LayaAir_JS/2D/beginners/Bitmap/filter/",
                                 "name_3_file": "readme.md"
                             }
@@ -2581,7 +2579,7 @@
                                 "name_3_file": "readme.md"
                             },
                             {
-                                "name_3_name": "Dessin d 'un triangle, d' un polygone et d 'un motif de dessin basé sur des données",
+                                "name_3_name": "Dessin d 'un triangle, d' un polygone et d 'un motif de dessin bas\u00e9 sur des donn\u00e9es",
                                 "name_3_url": "French/LayaAir_JS/2D/beginners/Graphics/poly/",
                                 "name_3_file": "readme.md"
                             },
@@ -2596,7 +2594,7 @@
                                 "name_3_file": "readme.md"
                             },
                             {
-                                "name_3_name": "Dent de sciage pour dessin vectoriel d 'élimination",
+                                "name_3_name": "Dent de sciage pour dessin vectoriel d '\u00e9limination",
                                 "name_3_url": "French/LayaAir_JS/2D/beginners/Graphics/",
                                 "name_3_file": "readme.md"
                             }
@@ -2621,7 +2619,7 @@
                                 "name_3_file": "readme.md"
                             },
                             {
-                                "name_3_name": "Modèle dynamique",
+                                "name_3_name": "Mod\u00e8le dynamique",
                                 "name_3_url": "French/LayaAir_JS/IDE/Use_IDE/EffectAnimation/",
                                 "name_3_file": "readme.md"
                             },
@@ -2643,7 +2641,7 @@
                         ]
                     },
                     {
-                        "name_2_name": "Données et communications",
+                        "name_2_name": "Donn\u00e9es et communications",
                         "name_2_data": [
                             {
                                 "name_3_name": "Httprequest",
@@ -2651,12 +2649,12 @@
                                 "name_3_file": "readme.md"
                             },
                             {
-                                "name_3_name": "Transmission et réception de données websocket",
+                                "name_3_name": "Transmission et r\u00e9ception de donn\u00e9es websocket",
                                 "name_3_url": "French/LayaAir_JS/2D/beginners/Data_Communication/WebSocket/",
                                 "name_3_file": "readme.md"
                             },
                             {
-                                "name_3_name": "Byte binaire lire et écrire",
+                                "name_3_name": "Byte binaire lire et \u00e9crire",
                                 "name_3_url": "French/LayaAir_JS/2D/beginners/Data_Communication/Byte/",
                                 "name_3_file": "readme.md"
                             },
@@ -2666,19 +2664,19 @@
                                 "name_3_file": "readme.md"
                             },
                             {
-                                "name_3_name": "Jsonp lecture de données par domaine",
+                                "name_3_name": "Jsonp lecture de donn\u00e9es par domaine",
                                 "name_3_url": "French/LayaAir_JS/2D/beginners/Data_Communication/jsonp/",
                                 "name_3_file": "readme.md"
                             },
                             {
-                                "name_3_name": "Stockage de données Web",
+                                "name_3_name": "Stockage de donn\u00e9es Web",
                                 "name_3_url": "French/LayaAir_JS/2D/beginners/Data_Communication/webStorage/",
                                 "name_3_file": "readme.md"
                             }
                         ]
                     },
                     {
-                        "name_2_name": "Matériel informatique",
+                        "name_2_name": "Mat\u00e9riel informatique",
                         "name_2_data": [
                             {
                                 "name_3_name": "Lecture et commande de musique et de son",
@@ -2686,27 +2684,27 @@
                                 "name_3_file": "readme.md"
                             },
                             {
-                                "name_3_name": "Gyroscope et accélérateur",
+                                "name_3_name": "Gyroscope et acc\u00e9l\u00e9rateur",
                                 "name_3_url": "French/LayaAir_JS/2D/beginners/devices/motion/",
                                 "name_3_file": "readme.md"
                             },
                             {
-                                "name_3_name": "Accès à l 'information géographique par geologation",
+                                "name_3_name": "Acc\u00e8s \u00e0 l 'information g\u00e9ographique par geologation",
                                 "name_3_url": "French/LayaAir_JS/2D/beginners/devices/geolocation/",
                                 "name_3_file": "readme.md"
                             },
                             {
-                                "name_3_name": "Afficher la position actuelle à l 'aide d' une carte de Baidu",
+                                "name_3_name": "Afficher la position actuelle \u00e0 l 'aide d' une carte de Baidu",
                                 "name_3_url": "French/LayaAir_JS/2D/beginners/devices/baiduMap/",
                                 "name_3_file": "readme.md"
                             }
                         ]
                     },
                     {
-                        "name_2_name": "Adaptation d 'écran",
+                        "name_2_name": "Adaptation d '\u00e9cran",
                         "name_2_data": [
                             {
-                                "name_3_name": "Adaptation d 'écran",
+                                "name_3_name": "Adaptation d '\u00e9cran",
                                 "name_3_url": "French/LayaAir_JS/2D/beginners/Screen_Fit/API_Overview/",
                                 "name_3_file": "readme.md"
                             },
@@ -2716,7 +2714,7 @@
                                 "name_3_file": "readme.md"
                             },
                             {
-                                "name_3_name": "Direction de l 'écran: Self - transverse Screen and Automatic VERTICAL SCREEN Settlement",
+                                "name_3_name": "Direction de l '\u00e9cran: Self - transverse Screen and Automatic VERTICAL SCREEN Settlement",
                                 "name_3_url": "French/LayaAir_JS/2D/beginners/Screen_Fit/screenMode/",
                                 "name_3_file": "readme.md"
                             },
@@ -2736,7 +2734,7 @@
                         "name_2_name": "Base de mode de code",
                         "name_2_data": [
                             {
-                                "name_3_name": "Schéma de code",
+                                "name_3_name": "Sch\u00e9ma de code",
                                 "name_3_url": "French/LayaAir_JS/IDE/Code_Mode/GUI_Layout/",
                                 "name_3_file": "readme.md"
                             },
@@ -2746,7 +2744,7 @@
                                 "name_3_file": "readme.md"
                             },
                             {
-                                "name_3_name": "Présentation de la barre d 'outils",
+                                "name_3_name": "Pr\u00e9sentation de la barre d 'outils",
                                 "name_3_url": "French/LayaAir_JS/IDE/Code_Mode/ToolBar/",
                                 "name_3_file": "readme.md"
                             },
@@ -2776,17 +2774,17 @@
                                 "name_3_file": "readme.md"
                             },
                             {
-                                "name_3_name": "Configuration et récupération d 'interface personnalisée",
+                                "name_3_name": "Configuration et r\u00e9cup\u00e9ration d 'interface personnalis\u00e9e",
                                 "name_3_url": "French/LayaAir_JS/IDE/Design_Mode/Custom_GUI/",
                                 "name_3_file": "readme.md"
                             },
                             {
-                                "name_3_name": "Présentation de la barre de menu",
+                                "name_3_name": "Pr\u00e9sentation de la barre de menu",
                                 "name_3_url": "French/LayaAir_JS/IDE/Design_Mode/MenuBar/",
                                 "name_3_file": "readme.md"
                             },
                             {
-                                "name_3_name": "Présentation de la barre d 'outils",
+                                "name_3_name": "Pr\u00e9sentation de la barre d 'outils",
                                 "name_3_url": "French/LayaAir_JS/IDE/Design_Mode/ToolBar/",
                                 "name_3_file": "readme.md"
                             },
@@ -2801,7 +2799,7 @@
                                 "name_3_file": "readme.md"
                             },
                             {
-                                "name_3_name": "Bibliothèque de composants",
+                                "name_3_name": "Biblioth\u00e8que de composants",
                                 "name_3_url": "French/LayaAir_JS/IDE/Design_Mode/Component/",
                                 "name_3_file": "readme.md"
                             },
@@ -2811,12 +2809,12 @@
                                 "name_3_file": "readme.md"
                             },
                             {
-                                "name_3_name": "Éditeur de scène",
+                                "name_3_name": "\u00c9diteur de sc\u00e8ne",
                                 "name_3_url": "French/LayaAir_JS/IDE/Design_Mode/Scene/",
                                 "name_3_file": "readme.md"
                             },
                             {
-                                "name_3_name": "Paramètres d 'attribut",
+                                "name_3_name": "Param\u00e8tres d 'attribut",
                                 "name_3_url": "French/LayaAir_JS/IDE/Design_Mode/Attribute_Set/",
                                 "name_3_file": "readme.md"
                             },
@@ -2838,7 +2836,7 @@
                         ]
                     },
                     {
-                        "name_2_name": "Création à l 'aide de l' IDE",
+                        "name_2_name": "Cr\u00e9ation \u00e0 l 'aide de l' IDE",
                         "name_2_data": [
                             {
                                 "name_3_name": "Production et utilisation d 'Atlas",
@@ -2846,7 +2844,7 @@
                                 "name_3_file": "readme.md"
                             },
                             {
-                                "name_3_name": "Créer un modèle d 'animation",
+                                "name_3_name": "Cr\u00e9er un mod\u00e8le d 'animation",
                                 "name_3_url": "French/LayaAir_JS/IDE/Use_IDE/EffectAnimation/",
                                 "name_3_file": "readme.md"
                             },
@@ -2856,22 +2854,22 @@
                                 "name_3_file": "readme.md"
                             },
                             {
-                                "name_3_name": "Fabrication et utilisation de composants personnalisés",
+                                "name_3_name": "Fabrication et utilisation de composants personnalis\u00e9s",
                                 "name_3_url": "French/LayaAir_JS/IDE/Use_IDE/customComponent/",
                                 "name_3_file": "readme.md"
                             },
                             {
-                                "name_3_name": "Utilisation prévue",
+                                "name_3_name": "Utilisation pr\u00e9vue",
                                 "name_3_url": "French/LayaAir_JS/IDE/Use_IDE/PresetUse/",
                                 "name_3_file": "readme.md"
                             }
                         ]
                     },
                     {
-                        "name_2_name": "Description détaillée des propriétés d 'un composant IDE",
+                        "name_2_name": "Description d\u00e9taill\u00e9e des propri\u00e9t\u00e9s d 'un composant IDE",
                         "name_2_data": [
                             {
-                                "name_3_name": "Règle de nom de composant",
+                                "name_3_name": "R\u00e8gle de nom de composant",
                                 "name_3_url": "French/LayaAir_TS/IDE/Component_Detailed/NamingRules/",
                                 "name_3_file": "readme.md"
                             },
@@ -2881,12 +2879,12 @@
                                 "name_3_file": "readme.md"
                             },
                             {
-                                "name_3_name": "Propriété checkbox",
+                                "name_3_name": "Propri\u00e9t\u00e9 checkbox",
                                 "name_3_url": "French/LayaAir_JS/IDE/Component_Detailed/CheckBox/",
                                 "name_3_file": "readme.md"
                             },
                             {
-                                "name_3_name": "Propriété clip",
+                                "name_3_name": "Propri\u00e9t\u00e9 clip",
                                 "name_3_url": "French/LayaAir_JS/IDE/Component_Detailed/Clip/",
                                 "name_3_file": "readme.md"
                             },
@@ -2896,12 +2894,12 @@
                                 "name_3_file": "readme.md"
                             },
                             {
-                                "name_3_name": "Propriété image",
+                                "name_3_name": "Propri\u00e9t\u00e9 image",
                                 "name_3_url": "French/LayaAir_JS/IDE/Component_Detailed/Image/",
                                 "name_3_file": "readme.md"
                             },
                             {
-                                "name_3_name": "Propriété label",
+                                "name_3_name": "Propri\u00e9t\u00e9 label",
                                 "name_3_url": "French/LayaAir_JS/IDE/Component_Detailed/Label/",
                                 "name_3_file": "readme.md"
                             },
@@ -2911,32 +2909,32 @@
                                 "name_3_file": "readme.md"
                             },
                             {
-                                "name_3_name": "Description détaillée des propriétés de hscrollbar",
+                                "name_3_name": "Description d\u00e9taill\u00e9e des propri\u00e9t\u00e9s de hscrollbar",
                                 "name_3_url": "French/LayaAir_JS/IDE/Component_Detailed/HScrollBar/",
                                 "name_3_file": "readme.md"
                             },
                             {
-                                "name_3_name": "Description détaillée des propriétés vscrollbar",
+                                "name_3_name": "Description d\u00e9taill\u00e9e des propri\u00e9t\u00e9s vscrollbar",
                                 "name_3_url": "French/LayaAir_JS/IDE/Component_Detailed/VScrollBar/",
                                 "name_3_file": "readme.md"
                             },
                             {
-                                "name_3_name": "Propriété hslider",
+                                "name_3_name": "Propri\u00e9t\u00e9 hslider",
                                 "name_3_url": "French/LayaAir_JS/IDE/Component_Detailed/HSlider/",
                                 "name_3_file": "readme.md"
                             },
                             {
-                                "name_3_name": "Propriété vslider",
+                                "name_3_name": "Propri\u00e9t\u00e9 vslider",
                                 "name_3_url": "French/LayaAir_JS/IDE/Component_Detailed/VSlider/",
                                 "name_3_file": "readme.md"
                             },
                             {
-                                "name_3_name": "Description détaillée des attributs de progressbar",
+                                "name_3_name": "Description d\u00e9taill\u00e9e des attributs de progressbar",
                                 "name_3_url": "French/LayaAir_JS/IDE/Component_Detailed/ProgressBar/",
                                 "name_3_file": "readme.md"
                             },
                             {
-                                "name_3_name": "Description détaillée des propriétés du Groupe Radio",
+                                "name_3_name": "Description d\u00e9taill\u00e9e des propri\u00e9t\u00e9s du Groupe Radio",
                                 "name_3_url": "French/LayaAir_JS/IDE/Component_Detailed/RadioGroup/",
                                 "name_3_file": "readme.md"
                             },
@@ -2946,17 +2944,17 @@
                                 "name_3_file": "readme.md"
                             },
                             {
-                                "name_3_name": "Description détaillée de la propriété Tree",
+                                "name_3_name": "Description d\u00e9taill\u00e9e de la propri\u00e9t\u00e9 Tree",
                                 "name_3_url": "French/LayaAir_JS/IDE/Component_Detailed/Tree/",
                                 "name_3_file": "readme.md"
                             },
                             {
-                                "name_3_name": "Description détaillée des propriétés viewstack",
+                                "name_3_name": "Description d\u00e9taill\u00e9e des propri\u00e9t\u00e9s viewstack",
                                 "name_3_url": "French/LayaAir_JS/IDE/Component_Detailed/ViewStack/",
                                 "name_3_file": "readme.md"
                             },
                             {
-                                "name_3_name": "Description détaillée des propriétés",
+                                "name_3_name": "Description d\u00e9taill\u00e9e des propri\u00e9t\u00e9s",
                                 "name_3_url": "French/LayaAir_JS/IDE/Component_Detailed/Animation/",
                                 "name_3_file": "readme.md"
                             },
@@ -2976,12 +2974,12 @@
                                 "name_3_file": "readme.md"
                             },
                             {
-                                "name_3_name": "Utilisation de scripts étendus",
+                                "name_3_name": "Utilisation de scripts \u00e9tendus",
                                 "name_3_url": "French/LayaAir_JS/IDE/ScriptUse/extendScript/",
                                 "name_3_file": "readme.md"
                             },
                             {
-                                "name_3_name": "Utilisation de scripts supplémentaires",
+                                "name_3_name": "Utilisation de scripts suppl\u00e9mentaires",
                                 "name_3_url": "French/LayaAir_JS/IDE/ScriptUse/additionalScript/",
                                 "name_3_file": "readme.md"
                             }
@@ -3008,7 +3006,7 @@
                         ]
                     },
                     {
-                        "name_2_name": "Stratégie de chargement de jeu",
+                        "name_2_name": "Strat\u00e9gie de chargement de jeu",
                         "name_2_data": [
                             {
                                 "name_3_name": "Binary Image",
@@ -3031,7 +3029,7 @@
                                 "name_3_file": "readme.md"
                             },
                             {
-                                "name_3_name": "Procédé d 'optimisation de mémoire",
+                                "name_3_name": "Proc\u00e9d\u00e9 d 'optimisation de m\u00e9moire",
                                 "name_3_url": "French/LayaAir_JS/2D/advanced/PerformanceOptimization/memory/",
                                 "name_3_file": "readme.md"
                             },
@@ -3051,7 +3049,7 @@
                                 "name_3_file": "readme.md"
                             },
                             {
-                                "name_3_name": "Autres stratégies d 'optimisation",
+                                "name_3_name": "Autres strat\u00e9gies d 'optimisation",
                                 "name_3_url": "French/LayaAir_JS/2D/advanced/PerformanceOptimization/other/",
                                 "name_3_file": "readme.md"
                             },
@@ -3091,7 +3089,7 @@
                                 "name_3_file": "readme.md"
                             },
                             {
-                                "name_3_name": "Shader personnalisé",
+                                "name_3_name": "Shader personnalis\u00e9",
                                 "name_3_url": "French/LayaAir_JS/2D/advanced/extension_modules/Shader/",
                                 "name_3_file": "readme.md"
                             }
@@ -3116,37 +3114,37 @@
                                 "name_3_file": "readme.md"
                             },
                             {
-                                "name_3_name": "Scène layaair3d, scene.",
+                                "name_3_name": "Sc\u00e8ne layaair3d, scene.",
                                 "name_3_url": "French/LayaAir_JS/3D/beginners/scene/",
                                 "name_3_file": "readme.md"
                             },
                             {
-                                "name_3_name": "Camera, la caméra layaair3d.",
+                                "name_3_name": "Camera, la cam\u00e9ra layaair3d.",
                                 "name_3_url": "French/LayaAir_JS/3D/beginners/camera/",
                                 "name_3_file": "readme.md"
                             },
                             {
-                                "name_3_name": "Lumière de layaair",
+                                "name_3_name": "Lumi\u00e8re de layaair",
                                 "name_3_url": "French/LayaAir_JS/3D/beginners/light/",
                                 "name_3_file": "readme.md"
                             },
                             {
-                                "name_3_name": "Modèle layaair3d",
+                                "name_3_name": "Mod\u00e8le layaair3d",
                                 "name_3_url": "French/LayaAir_JS/3D/beginners/model/",
                                 "name_3_file": "readme.md"
                             },
                             {
-                                "name_3_name": "Description générale du matériel de layaair3d",
+                                "name_3_name": "Description g\u00e9n\u00e9rale du mat\u00e9riel de layaair3d",
                                 "name_3_url": "French/LayaAir_JS/3D/beginners/materials_overview/",
                                 "name_3_file": "readme.md"
                             },
                             {
-                                "name_3_name": "Couleur et dessin de matériau layaair3d",
+                                "name_3_name": "Couleur et dessin de mat\u00e9riau layaair3d",
                                 "name_3_url": "French/LayaAir_JS/3D/beginners/textures/",
                                 "name_3_file": "readme.md"
                             },
                             {
-                                "name_3_name": "Matériau blinnphong de layaair3d",
+                                "name_3_name": "Mat\u00e9riau blinnphong de layaair3d",
                                 "name_3_url": "French/LayaAir_JS/3D/beginners/materials_blinnPhong/",
                                 "name_3_file": "readme.md"
                             },
@@ -3176,7 +3174,7 @@
                                 "name_3_file": "readme.md"
                             },
                             {
-                                "name_3_name": "Libération des ressources de layaair3d",
+                                "name_3_name": "Lib\u00e9ration des ressources de layaair3d",
                                 "name_3_url": "French/LayaAir_JS/3D/beginners/assetsDispose/",
                                 "name_3_file": "readme.md"
                             }
@@ -3186,22 +3184,22 @@
                         "name_2_name": "Exemple simple",
                         "name_2_data": [
                             {
-                                "name_3_name": "Commande d 'animation de rôle 3D",
+                                "name_3_name": "Commande d 'animation de r\u00f4le 3D",
                                 "name_3_url": "French/LayaAir_JS/3D/examples/roleAniControl/",
                                 "name_3_file": "readme.md"
                             },
                             {
-                                "name_3_name": "Commande de script de rôle 3D et détection de collision",
+                                "name_3_name": "Commande de script de r\u00f4le 3D et d\u00e9tection de collision",
                                 "name_3_url": "French/LayaAir_JS/3D/examples/roleScriptControl/",
                                 "name_3_file": "readme.md"
                             },
                             {
-                                "name_3_name": "Exemples d 'application multiscène 3D",
+                                "name_3_name": "Exemples d 'application multisc\u00e8ne 3D",
                                 "name_3_url": "French/LayaAir_JS/3D/examples/multiScene/",
                                 "name_3_file": "readme.md"
                             },
                             {
-                                "name_3_name": "Détection d 'impact de balles 3D",
+                                "name_3_name": "D\u00e9tection d 'impact de balles 3D",
                                 "name_3_url": "French/LayaAir_JS/3D/examples/bulletShoot/",
                                 "name_3_file": "readme.md"
                             }
@@ -3213,7 +3211,7 @@
                 "nav_1_name": "Petit jeu",
                 "nav_1_data": [
                     {
-                        "name_2_name": "Base de développement de micro - jeux",
+                        "name_2_name": "Base de d\u00e9veloppement de micro - jeux",
                         "name_2_data": [
                             {
                                 "name_3_name": "Introduction au jeu de micro - lettres",
@@ -3221,7 +3219,7 @@
                                 "name_3_file": "readme.md"
                             },
                             {
-                                "name_3_name": "Créer un premier jeu de micro - lettres",
+                                "name_3_name": "Cr\u00e9er un premier jeu de micro - lettres",
                                 "name_3_url": "French/wechat/AS/novice/",
                                 "name_3_file": "readme.md"
                             },
@@ -3231,7 +3229,7 @@
                                 "name_3_file": "readme.md"
                             },
                             {
-                                "name_3_name": "Présentation de l 'outil de distribution de petit jeu et du Répertoire de petit jeu",
+                                "name_3_name": "Pr\u00e9sentation de l 'outil de distribution de petit jeu et du R\u00e9pertoire de petit jeu",
                                 "name_3_url": "French/wechat/AS/publishing_tools/",
                                 "name_3_file": "readme.md"
                             },
@@ -3246,22 +3244,22 @@
                                 "name_3_file": "readme.md"
                             },
                             {
-                                "name_3_name": "Wēi xìn xiǎo yóu xì sous - traitance",
+                                "name_3_name": "W\u0113i x\u00ecn xi\u01ceo y\u00f3u x\u00ec sous - traitance",
                                 "name_3_url": "French/wechat/JS/subpackage/",
                                 "name_3_file": "readme.md"
                             },
                             {
-                                "name_3_name": "Résumé des questions courantes dans les jeux de micro - lettres (mise à jour 7.25)",
+                                "name_3_name": "R\u00e9sum\u00e9 des questions courantes dans les jeux de micro - lettres (mise \u00e0 jour 7.25)",
                                 "name_3_url": "French/wechat/AS/FAQ/",
                                 "name_3_file": "readme.md"
                             }
                         ]
                     },
                     {
-                        "name_2_name": "Base de développement de jeu léger QQ",
+                        "name_2_name": "Base de d\u00e9veloppement de jeu l\u00e9ger QQ",
                         "name_2_data": [
                             {
-                                "name_3_name": "Présentation de base de jeu léger QQ et distribution de jeu",
+                                "name_3_name": "Pr\u00e9sentation de base de jeu l\u00e9ger QQ et distribution de jeu",
                                 "name_3_url": "French/qq/introduction/",
                                 "name_3_file": "readme.md"
                             }
@@ -3278,7 +3276,7 @@
                         ]
                     },
                     {
-                        "name_2_name": "Jeu vidéo oppo",
+                        "name_2_name": "Jeu vid\u00e9o oppo",
                         "name_2_data": [
                             {
                                 "name_3_name": "Oppo Guide pour la publication et la mise en page de petits jeux",
@@ -3288,10 +3286,10 @@
                         ]
                     },
                     {
-                        "name_2_name": "Jeu vidéo",
+                        "name_2_name": "Jeu vid\u00e9o",
                         "name_2_data": [
                             {
-                                "name_3_name": "Guide pour la publication et la mise en page des jeux vidéo",
+                                "name_3_name": "Guide pour la publication et la mise en page des jeux vid\u00e9o",
                                 "name_3_url": "French/miniGame/vivo/rundebug/",
                                 "name_3_file": "readme.md"
                             }
@@ -3300,7 +3298,7 @@
                 ]
             },
             {
-                "nav_1_name": "Développement d 'exemples (JS)",
+                "nav_1_name": "D\u00e9veloppement d 'exemples (JS)",
                 "nav_1_data": [
                     {
                         "name_2_name": "Exemples pratiques de layaair IDE",
@@ -3326,7 +3324,7 @@
                                 "name_3_file": "readme.md"
                             },
                             {
-                                "name_3_name": "Exécution du projet Hello layabox",
+                                "name_3_name": "Ex\u00e9cution du projet Hello layabox",
                                 "name_3_url": "French/LayaNative/run_HelloLayaBox/",
                                 "name_3_file": "README.md"
                             }
@@ -3336,7 +3334,7 @@
                         "name_2_name": "Document de base de layanative",
                         "name_2_data": [
                             {
-                                "name_3_name": "Résumé de layanative",
+                                "name_3_name": "R\u00e9sum\u00e9 de layanative",
                                 "name_3_url": "French/LayaNative/LayaNative_Introduction/",
                                 "name_3_file": "readme.md"
                             },
@@ -3356,12 +3354,12 @@
                                 "name_3_file": "README.md"
                             },
                             {
-                                "name_3_name": "Nouveau démarrage",
+                                "name_3_name": "Nouveau d\u00e9marrage",
                                 "name_3_url": "French/LayaNative/loading_view_new/",
                                 "name_3_file": "README.md"
                             },
                             {
-                                "name_3_name": "Démarre l'image.",
+                                "name_3_name": "D\u00e9marre l'image.",
                                 "name_3_url": "French/LayaNative/loading_view/",
                                 "name_3_file": "README.md"
                             },
@@ -3371,7 +3369,7 @@
                                 "name_3_file": "websocket.md"
                             },
                             {
-                                "name_3_name": "Surveillance d 'état réseau",
+                                "name_3_name": "Surveillance d '\u00e9tat r\u00e9seau",
                                 "name_3_url": "French/LayaNative/network/",
                                 "name_3_file": "README.md"
                             },
@@ -3401,12 +3399,12 @@
                                 "name_3_file": "readme.md"
                             },
                             {
-                                "name_3_name": "Gestion de mémoire",
+                                "name_3_name": "Gestion de m\u00e9moire",
                                 "name_3_url": "French/LayaNative/memory_manager/",
                                 "name_3_file": "README.md"
                             },
                             {
-                                "name_3_name": "Développement secondaire",
+                                "name_3_name": "D\u00e9veloppement secondaire",
                                 "name_3_url": "French/LayaNative/Secondary_Development/",
                                 "name_3_file": "readme.md"
                             },
@@ -3426,7 +3424,7 @@
                                 "name_3_file": "README.md"
                             },
                             {
-                                "name_3_name": "Traitement de l 'enlèvement",
+                                "name_3_name": "Traitement de l 'enl\u00e8vement",
                                 "name_3_url": "French/LayaNative/",
                                 "name_3_file": "anti-hijack.md"
                             },
@@ -3446,12 +3444,12 @@
                                 "name_3_file": "README.md"
                             },
                             {
-                                "name_3_name": "Mise à jour zip",
+                                "name_3_name": "Mise \u00e0 jour zip",
                                 "name_3_url": "French/LayaNative/resourceUpdate/",
                                 "name_3_file": "readme.md"
                             },
                             {
-                                "name_3_name": "Mécanisme d 'extension",
+                                "name_3_name": "M\u00e9canisme d 'extension",
                                 "name_3_url": "French/LayaNative/apk_expansion/",
                                 "name_3_file": "README.md"
                             },
@@ -3461,7 +3459,7 @@
                                 "name_3_file": "README.md"
                             },
                             {
-                                "name_3_name": "Système d 'Agrégation automatique d' images",
+                                "name_3_name": "Syst\u00e8me d 'Agr\u00e9gation automatique d' images",
                                 "name_3_url": "French/LayaNative/autoAltas/",
                                 "name_3_file": "README.md"
                             }
@@ -3476,17 +3474,17 @@
                                 "name_3_file": "README.md"
                             },
                             {
-                                "name_3_name": "Construction à l 'aide de l' IDE",
+                                "name_3_name": "Construction \u00e0 l 'aide de l' IDE",
                                 "name_3_url": "French/LayaNative/build_Tool/",
                                 "name_3_file": "readme.md"
                             }
                         ]
                     },
                     {
-                        "name_2_name": "Andoird et iOS développent les connaissances de base",
+                        "name_2_name": "Andoird et iOS d\u00e9veloppent les connaissances de base",
                         "name_2_data": [
                             {
-                                "name_3_name": "Environnement de développement Android",
+                                "name_3_name": "Environnement de d\u00e9veloppement Android",
                                 "name_3_url": "French/LayaNative/setUpAndroidEnvironment_Eclipse/",
                                 "name_3_file": "readme.md"
                             },
@@ -3505,13 +3503,13 @@
                 ]
             },
             {
-                "nav_1_name": "Résumé des questions courantes",
+                "nav_1_name": "R\u00e9sum\u00e9 des questions courantes",
                 "nav_1_data": [
                     {
                         "name_2_name": "2d questions courantes",
                         "name_2_data": [
                             {
-                                "name_3_name": "Problèmes liés à la création d 'un espace d' assemblage d 'images sous webgl",
+                                "name_3_name": "Probl\u00e8mes li\u00e9s \u00e0 la cr\u00e9ation d 'un espace d' assemblage d 'images sous webgl",
                                 "name_3_url": "French/CommonProblem/2D/GapProblem/",
                                 "name_3_file": "readme.md"
                             },
@@ -3521,7 +3519,7 @@
                                 "name_3_file": "readme.md"
                             },
                             {
-                                "name_3_name": "Comment définir le niveau de page au - dessus de dialog",
+                                "name_3_name": "Comment d\u00e9finir le niveau de page au - dessus de dialog",
                                 "name_3_url": "French/LayaAir_JS/CommonProblem/2D/DialogzOrder/",
                                 "name_3_file": "readme.md"
                             },
