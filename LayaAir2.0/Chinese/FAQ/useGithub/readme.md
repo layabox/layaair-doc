@@ -12,7 +12,7 @@ LayaAir引擎从2.2.0 release版本开始，Layabox团队开始在Github中实�
 
 Layabox官方团队，对于参与维护Github，贡献度较多的开发者，会免费提供引擎技术答疑服务。对于突出贡献者会邀请加入LayaAir引擎开源小组，参与引擎技术决策。
 
-[TOC]
+
 
 ### 一、与LayaAir开源项目相关的GitHub功能
 
