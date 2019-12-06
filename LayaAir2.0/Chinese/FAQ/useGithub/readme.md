@@ -151,6 +151,8 @@ Fork之后，要在自己的仓库克隆LayaAir项目，而不是克隆LayaAir�
 尽管很多开发者已安装了TS的全局开发环境，但本篇，仍建议开发者在VSCode的shell命令行下，再次执行npm的本地环境安装命令 `npm install`，以保障引擎编译的正常运行。
 
 >  Gulp全局环境也需要安装，LayaAir开发者基本上都会安装，不会的可以查看Layabox官方文档，这里就不讲了。
+>
+> VSCode相关文档：《[VSCode高效开发工作流配置指南]( https://ldc2.layabox.com/doc/?nav=zh-ts-3-0-9 )》
 
 #### 3.3 LayaAir源码项目结构说明
 
