@@ -1,6 +1,6 @@
 ## 如何使用及参与维护LayaAir引擎Github开源项目
 
-> Author : charley         Date : 2019-12-5
+> *Author : charley         Date : 2019-12-5*
 
 引擎项目开源的核心价值，一方面是源代码的开放，可以让大家免费使用，避免重复造轮子。另一方面可以吸引有能力维护源码的开发者共同参与维护，让项目加速前进与成熟。
 
@@ -11,6 +11,8 @@ LayaAir引擎从2.2.0 release版本开始，Layabox团队开始在Github中实�
 本篇文档的推出，通过对引擎源码结构及使用的介绍以及开源项目维护流程的介绍，希望能帮助开发者更好的使用Github上实时维护的引擎源码，帮助有维护引擎源码能力但不熟悉github维护流程的开发者，顺利加入到LayaAir引擎公开版本的维护，比如，发现BUG与修复BUG。这是利已利他，让全体引擎使用者受益的善事。
 
 Layabox官方团队，对于参与维护Github，贡献度较多的开发者，会免费提供引擎技术答疑服务。对于突出贡献者会邀请加入LayaAir引擎开源小组，参与引擎技术决策。
+
+[TOC]
 
 ### 一、与LayaAir开源项目相关的GitHub功能
 
@@ -158,9 +160,9 @@ Fork之后，要在自己的仓库克隆LayaAir项目，而不是克隆LayaAir�
 
 ##### 3.3.1 `bin`目录
 
-bin目录是将TS引擎源码编译为JS库后的目标目录，用于引擎示例的快捷切换与调试，包括了两种编译方式的js库调试方式，tsc与rollUp。通过查看与调试这里的测试示例DEMO，验证引擎是否存在影响运行的BUG。
+bin目录是源码编译后的运行目录，用于引擎示例的快捷切换与调试，包括了两种编译方式的js库调试方式，tsc与rollUp。通过查看与调试这里的测试示例DEMO，验证引擎是否存在影响运行的BUG。
 
-通用的资源目录`res`与3D物理js这里就不详细说明了，大家需要了解tsc与rollup示例的入口。
+通用的资源目录`res`与3D物理js这里就不详细说明了，我们来重点了解一下tsc与rollup示例的入口文件。
 
 ##### tsc调试相关
 
@@ -228,7 +230,7 @@ LayaAir引擎源码目录。对于引擎的BUG修改，功能增加，都在这�
 
 ##### publishTool
 
-存放AS编译工具，以及生成引擎JS壳（用于代码提示的d.ts）的目录。
+存放AS编译工具，以及生成AS引擎壳文件和用于代码提示的d.ts文件目录。
 
 命令行下进入`publish.bat`同级目录，运行该目录下的`publish.bat` 即可发布生成。
 
@@ -280,7 +282,7 @@ npm的package.json配置，这里有LayaAir源码项目的描述信息，描述�
 
 ![图](img/9-1.png) 
 
-通过查看`gulpfile.js`中的`tsc`与`LayaAirShaderCopy`任务。我们可以看出，名称为`tsc`的gulp任务是通过调用`tsc.cmd`来编译引擎及示例。名称为`LayaAirShaderCopy`的gulp任务是用来复制shader相关文件的。
+通过查看`gulpfile.js`中的`tsc`与`LayaAirShaderCopy`任务。我们可以看出，名称为`tsc`的gulp任务是通过调用本地的`tsc.cmd`来编译引擎及示例。名称为`LayaAirShaderCopy`的gulp任务是用来复制shader相关文件的。
 
 除非是第一次编译，必须要执行`LayaAirBuild`这个gulp任务，也就是说`tsc`与`LayaAirShaderCopy`任务都要执行。在后续的日常编译中，shader没有改变的话，只执行示例及引擎的gulp编译任务(`tsc`)就行了。如果是rollup编译模式，则是在`src/samples`目录，执行shell命令 `rollup -c`，也可以编译示例及引擎。
 
