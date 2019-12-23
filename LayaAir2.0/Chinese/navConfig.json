@@ -1567,6 +1567,11 @@
 				"name_3_name": "小米快游戏发布与调试指南",
 				"name_3_url": "Chinese/miniGame/mi/rundebug/",
 				"name_3_file": "readme.md"
+			},
+			{
+				"name_3_name": "小米快游戏分包指南",
+				"name_3_url": "Chinese/miniGame/mi/subpack/",
+				"name_3_file": "readme.md"
 			}]
 		},
 		{
@@ -3316,6 +3321,11 @@
 			{
 				"name_3_name": "小米快游戏发布与调试指南",
 				"name_3_url": "Chinese/miniGame/mi/rundebug/",
+				"name_3_file": "readme.md"
+			},
+			{
+				"name_3_name": "小米快游戏分包指南",
+				"name_3_url": "Chinese/miniGame/mi/subpack/",
 				"name_3_file": "readme.md"
 			}]
 		},
@@ -5107,6 +5117,11 @@
 			{
 				"name_3_name": "小米快游戏发布与调试指南",
 				"name_3_url": "Chinese/miniGame/mi/rundebug/",
+				"name_3_file": "readme.md"
+			},
+			{
+				"name_3_name": "小米快游戏分包指南",
+				"name_3_url": "Chinese/miniGame/mi/subpack/",
 				"name_3_file": "readme.md"
 			}]
 		},
