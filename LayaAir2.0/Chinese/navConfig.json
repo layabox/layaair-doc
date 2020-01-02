@@ -1581,6 +1581,11 @@
 				"name_3_name": "OPPO小游戏发布与调试指南",
 				"name_3_url": "Chinese/miniGame/oppo/rundebug/",
 				"name_3_file": "readme.md"
+			},
+			{
+				"name_3_name": "OPPO小游戏分包指南",
+				"name_3_url": "Chinese/miniGame/o/subpack/",
+				"name_3_file": "readme.md"
 			}]
 		},
 		{
@@ -1589,6 +1594,11 @@
 			{
 				"name_3_name": "vivo小游戏发布与调试指南",
 				"name_3_url": "Chinese/miniGame/vivo/rundebug/",
+				"name_3_file": "readme.md"
+			},
+			{
+				"name_3_name": "vivo小游戏分包指南",
+				"name_3_url": "Chinese/miniGame/vivo/subpack/",
 				"name_3_file": "readme.md"
 			}]
 		},
@@ -3336,6 +3346,11 @@
 				"name_3_name": "OPPO小游戏发布与调试指南",
 				"name_3_url": "Chinese/miniGame/oppo/rundebug/",
 				"name_3_file": "readme.md"
+			},
+			{
+				"name_3_name": "OPPO小游戏分包指南",
+				"name_3_url": "Chinese/miniGame/o/subpack/",
+				"name_3_file": "readme.md"
 			}]
 		},
 		{
@@ -3344,6 +3359,11 @@
 			{
 				"name_3_name": "vivo小游戏发布与调试指南",
 				"name_3_url": "Chinese/miniGame/vivo/rundebug/",
+				"name_3_file": "readme.md"
+			},
+			{
+				"name_3_name": "vivo小游戏分包指南",
+				"name_3_url": "Chinese/miniGame/vivo/subpack/",
 				"name_3_file": "readme.md"
 			}]
 		},
@@ -5132,6 +5152,11 @@
 				"name_3_name": "OPPO小游戏发布与调试指南",
 				"name_3_url": "Chinese/miniGame/oppo/rundebug/",
 				"name_3_file": "readme.md"
+			},
+			{
+				"name_3_name": "OPPO小游戏分包指南",
+				"name_3_url": "Chinese/miniGame/o/subpack/",
+				"name_3_file": "readme.md"
 			}]
 		},
 		{
@@ -5140,6 +5165,11 @@
 			{
 				"name_3_name": "vivo小游戏发布与调试指南",
 				"name_3_url": "Chinese/miniGame/vivo/rundebug/",
+				"name_3_file": "readme.md"
+			},
+			{
+				"name_3_name": "vivo小游戏分包指南",
+				"name_3_url": "Chinese/miniGame/vivo/subpack/",
 				"name_3_file": "readme.md"
 			}]
 		},
