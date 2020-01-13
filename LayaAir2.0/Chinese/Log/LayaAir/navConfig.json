@@ -1,13 +1,24 @@
 [
   {
-    "name": "LayaAir 2.4.0beta2",
-    "url": "2.4.0beta2.md",
-    "date":"2019-11-15",
+    "name": "LayaAir 2.5.0beta",
+    "url": "2.5.0beta.md",
+    "date":"2020-01-13",
     "download": {
-      "js": "http://ldc.layabox.com/download/LayaAirJS_2.4.0_beta2.zip",
-      "ts": "http://ldc.layabox.com/download/LayaAirTS_2.4.0_beta2.zip",
-      "as": "http://ldc.layabox.com/download/LayaAirAS3_2.4.0_beta2.zip",
-      "tsnew": "http://ldc.layabox.com/download/LayaAirTSNEW_2.4.0_beta2.zip"
+      "js": "http://ldc.layabox.com/download/LayaAirJS_2.5.0_beta.zip",
+      "ts": "http://ldc.layabox.com/download/LayaAirTS_2.5.0_beta.zip",
+      "as": "http://ldc.layabox.com/download/LayaAirAS3_2.5.0_beta.zip",
+      "tsnew": "http://ldc.layabox.com/download/LayaAirTSNEW_2.5.0_beta.zip"
+    }
+  },
+  {
+    "name": "LayaAir 2.4.0",
+    "url": "2.4.0.md",
+    "date":"2020-01-13",
+    "download": {
+      "js": "http://ldc.layabox.com/download/LayaAirJS_2.4.0.zip",
+      "ts": "http://ldc.layabox.com/download/LayaAirTS_2.4.0.zip",
+      "as": "http://ldc.layabox.com/download/LayaAirAS3_2.4.0.zip",
+      "tsnew": "http://ldc.layabox.com/download/LayaAirTSNEW_2.4.0.zip"
     }
   },
   {
