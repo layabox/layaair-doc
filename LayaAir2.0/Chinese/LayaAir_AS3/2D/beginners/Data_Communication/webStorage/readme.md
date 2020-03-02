@@ -35,6 +35,51 @@ package
 }
 ```
 
+其中
+           var data:Object = {"index":0,"index1":1};
+			var str:String = JSON.stringify(data);
+			LocalStorage.setItem("item",str);
+
+存储Json格式可以用setJSON，我们来看一下接口实现：
+
+```javascript
+/**
+	 * 存储指定键名和它的 <code>Object</code> 类型值。
+	 * @param key 键名。
+	 * @param value 键值。是 <code>Object</code> 类型，此致会被转化为 JSON 字符串存储。
+	 */
+    static setJSON(key: string, value: any): void {
+        try {
+            Storage.support && Storage.items.setItem(key, JSON.stringify(value));
+        } catch (e) {
+            console.warn("set localStorage failed", e);
+        }
+    }
+```
+
+使用setJSON可以节省Stringfy步骤代码，以后出现的Json格式例子都可以用setJSON替换。
+
+```javascript
+package
+{
+	import laya.net.LocalStorage;
+	import laya.utils.Browser;
+
+	public class LayaSample
+	{
+		public function LayaSample()
+		{
+			Laya.init(100,100);
+			LocalStorage.setItem("key","hello");
+			var data:Object = {"index":0,"index1":1};
+			//var str:String = JSON.stringify(data); 省略此步骤
+			LocalStorage.setItem("data","hello");
+			LocalStorage.setJSON("item",data);//直接传入Object，接口内部转化为JSON格式字符串存储
+		}
+	}
+}
+```
+
 在chrome中运行之后按快捷键F12，结果如下图所示：
 
 ![1](img/1.png)<br/>
