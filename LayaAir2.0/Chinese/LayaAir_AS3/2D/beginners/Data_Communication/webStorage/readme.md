@@ -44,11 +44,6 @@ package
 下面我们对这些数据进行清除，代码如下所示：
 
 ```java
-LocalStorage.setItem("key","hello");
-var data:Object = {"index":0,"index1":1};
-var str:String = JSON.stringify(data);
-LocalStorage.setItem("data","hello");
-LocalStorage.setItem("item",str);
 LocalStorage.removeItem("data");//清除数据
 ```
 
