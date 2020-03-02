@@ -32,12 +32,7 @@ Laya.LocalStorage.setJSON("item",data);//直接传入Object 接口内部转化�
 下面我们对这些数据进行清除，代码如下所示：
 
 ```java
-Laya.LocalStorage.setItem("key","hello");
-var data:any = {"index":0,"index1":1};
-var str:string = JSON.stringify(data);
-Laya.LocalStorage.setItem("data","hello");
-Laya.LocalStorage.setItem("item",str);
-Laya.LocalStorage.removeItem("data");//清除数据
+Laya.LocalStorage.removeItem("data");//清除指定键值数据
 ```
 
 通过添加代码LocalStorage.removeItem("data");将键值为data的数据进行清空，编译运行之后发现data数据就没有了。如下图所示：
