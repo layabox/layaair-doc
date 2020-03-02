@@ -17,42 +17,9 @@ HTML5提供了两种在客户端存储数据的新方法：
 ```javascript
 Laya.init(100,100);
 Laya.LocalStorage.setItem("key","hello");
-var data = {"index":0,"index1":1};
-var str = JSON.stringify(data);
 Laya.LocalStorage.setItem("data","hello");
-Laya.LocalStorage.setItem("item",str);
-```
 
-其中
 var data = {"index":0,"index1":1};
-var str = JSON.stringify(data);
-Laya.LocalStorage.setItem("item",str);
-
-存储Json格式可以用setJSON，我们来看一下接口实现：
-
-```javascript
-/**
-	 * 存储指定键名和它的 <code>Object</code> 类型值。
-	 * @param key 键名。
-	 * @param value 键值。是 <code>Object</code> 类型，此致会被转化为 JSON 字符串存储。
-	 */
-    static setJSON(key: string, value: any): void {
-        try {
-            Storage.support && Storage.items.setItem(key, JSON.stringify(value));
-        } catch (e) {
-            console.warn("set localStorage failed", e);
-        }
-    }
-```
-
-使用setJSON可以节省Stringfy步骤代码，以后出现的Json格式例子都可以用setJSON替换。
-
-```javascript
-Laya.init(100,100);
-Laya.LocalStorage.setItem("key","hello");
-var data = {"index":0,"index1":1};
-//var str = JSON.stringify(data); 节省此步骤
-Laya.LocalStorage.setItem("data","hello");
 Laya.LocalStorage.setJSON("item",data);//直接传入Object 接口内部转化为JSON字符串存储
 ```
 
