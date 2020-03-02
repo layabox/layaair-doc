@@ -14,52 +14,12 @@ HTML5提供了两种在客户端存储数据的新方法：
 
 对于不同的网站，数据存储于不同的区域，并且一个网站只能访问其自身的数据。因此本地数据的存储我们完全可以用LocalStorage。LayaAir引擎对LocalStorage进行了简单的封装，对应的类是LocalStorage。下面通过简单的例子来看下它是如何使用的。
 
-```java
-// 程序入口
-class LayaSample{
-    constructor()
-    {
-        Laya.init(100,100);
-        Laya.LocalStorage.setItem("key","hello");
-        var data:any = {"index":0,"index1":1};
-        var str:string = JSON.stringify(data);
-        Laya.LocalStorage.setItem("data","hello");
-        Laya.LocalStorage.setItem("item",str);
-    }
-}
-new LayaSample();
-```
-
-其中
-var data = {"index":0,"index1":1};
-var str = JSON.stringify(data);
-Laya.LocalStorage.setItem("item",str);
-
-存储Json格式可以用setJSON，我们来看一下接口实现：
-
-```javascript
-/**
-	 * 存储指定键名和它的 <code>Object</code> 类型值。
-	 * @param key 键名。
-	 * @param value 键值。是 <code>Object</code> 类型，此致会被转化为 JSON 字符串存储。
-	 */
-    static setJSON(key: string, value: any): void {
-        try {
-            Storage.support && Storage.items.setItem(key, JSON.stringify(value));
-        } catch (e) {
-            console.warn("set localStorage failed", e);
-        }
-    }
-```
-
-使用setJSON可以节省Stringfy步骤代码，以后出现的Json格式例子都可以用setJSON替换。
-
 ```javascript
 Laya.init(100,100);
 Laya.LocalStorage.setItem("key","hello");
-var data = {"index":0,"index1":1};
-//var str = JSON.stringify(data); 节省此步骤
 Laya.LocalStorage.setItem("data","hello");
+
+var data = {"index":0,"index1":1};
 Laya.LocalStorage.setJSON("item",data);//直接传入Object 接口内部转化为JSON字符串存储
 ```
 
