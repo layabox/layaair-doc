@@ -297,8 +297,8 @@
 			"name_2_name": "屏幕适配",
 			"name_2_data": [
 			{
-				"name_3_name": "屏幕适配API概述",
-				"name_3_url": "Chinese/LayaAir_TS/2D/beginners/Screen_Fit/API_Overview/",
+				"name_3_name": "一篇了解LayaAir的屏幕适配，及有效抗锯齿",
+				"name_3_url": "Chinese/LayaAir_TS/2D/beginners/Screen_Fit/scaleMode/",
 				"name_3_file": "readme.md"
 			},
 			{
@@ -309,11 +309,6 @@
 			{
 				"name_3_name": "屏幕方向：自动横屏与自动竖屏的设置详解",
 				"name_3_url": "Chinese/LayaAir_TS/2D/beginners/Screen_Fit/screenMode/",
-				"name_3_file": "readme.md"
-			},
-			{
-				"name_3_name": "屏幕适配的缩放模式详解",
-				"name_3_url": "Chinese/LayaAir_TS/2D/beginners/Screen_Fit/Scale_Mode/",
 				"name_3_file": "readme.md"
 			}]
 		}]
@@ -2064,8 +2059,8 @@
 			"name_2_name": "屏幕适配",
 			"name_2_data": [
 			{
-				"name_3_name": "屏幕适配API概述",
-				"name_3_url": "Chinese/LayaAir_JS/2D/beginners/Screen_Fit/API_Overview/",
+				"name_3_name": "一篇了解LayaAir的屏幕适配，及有效抗锯齿",
+				"name_3_url": "Chinese/LayaAir_TS/2D/beginners/Screen_Fit/scaleMode/",
 				"name_3_file": "readme.md"
 			},
 			{
@@ -2076,11 +2071,6 @@
 			{
 				"name_3_name": "屏幕方向：自动横屏与自动竖屏的设置详解",
 				"name_3_url": "Chinese/LayaAir_JS/2D/beginners/Screen_Fit/screenMode/",
-				"name_3_file": "readme.md"
-			},
-			{
-				"name_3_name": "屏幕适配的缩放模式详解",
-				"name_3_url": "Chinese/LayaAir_JS/2D/beginners/Screen_Fit/Scale_Mode/",
 				"name_3_file": "readme.md"
 			}]
 		}]
@@ -3859,8 +3849,8 @@
 			"name_2_name": "屏幕适配",
 			"name_2_data": [
 			{
-				"name_3_name": "屏幕适配API概述",
-				"name_3_url": "Chinese/LayaAir_AS3/2D/beginners/Screen_Fit/API_Overview/",
+				"name_3_name": "一篇了解LayaAir的屏幕适配，及有效抗锯齿",
+				"name_3_url": "Chinese/LayaAir_TS/2D/beginners/Screen_Fit/scaleMode/",
 				"name_3_file": "readme.md"
 			},
 			{
@@ -3871,11 +3861,6 @@
 			{
 				"name_3_name": "屏幕方向：自动横屏与自动竖屏的设置详解",
 				"name_3_url": "Chinese/LayaAir_AS3/2D/beginners/Screen_Fit/screenMode/",
-				"name_3_file": "readme.md"
-			},
-			{
-				"name_3_name": "屏幕适配的缩放模式详解",
-				"name_3_url": "Chinese/LayaAir_AS3/2D/beginners/Screen_Fit/Scale_Mode/",
 				"name_3_file": "readme.md"
 			}]
 		}]
