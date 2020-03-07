@@ -14,20 +14,13 @@ HTML5提供了两种在客户端存储数据的新方法：
 
 对于不同的网站，数据存储于不同的区域，并且一个网站只能访问其自身的数据。因此本地数据的存储我们完全可以用LocalStorage。LayaAir引擎对LocalStorage进行了简单的封装，对应的类是LocalStorage。下面通过简单的例子来看下它是如何使用的。
 
-```java
-// 程序入口
-class LayaSample{
-    constructor()
-    {
-        Laya.init(100,100);
-        Laya.LocalStorage.setItem("key","hello");
-        var data:any = {"index":0,"index1":1};
-        var str:string = JSON.stringify(data);
-        Laya.LocalStorage.setItem("data","hello");
-        Laya.LocalStorage.setItem("item",str);
-    }
-}
-new LayaSample();
+```javascript
+Laya.init(100,100);
+Laya.LocalStorage.setItem("key","hello");
+Laya.LocalStorage.setItem("data","hello");
+
+var data = {"index":0,"index1":1};
+Laya.LocalStorage.setJSON("item",data);//直接传入Object 接口内部转化为JSON字符串存储
 ```
 
 在chrome中运行之后按快捷键F12，结果如下图所示：
@@ -39,12 +32,7 @@ new LayaSample();
 下面我们对这些数据进行清除，代码如下所示：
 
 ```java
-Laya.LocalStorage.setItem("key","hello");
-var data:any = {"index":0,"index1":1};
-var str:string = JSON.stringify(data);
-Laya.LocalStorage.setItem("data","hello");
-Laya.LocalStorage.setItem("item",str);
-Laya.LocalStorage.removeItem("data");//清除数据
+Laya.LocalStorage.removeItem("data");//清除指定键值数据
 ```
 
 通过添加代码LocalStorage.removeItem("data");将键值为data的数据进行清空，编译运行之后发现data数据就没有了。如下图所示：
