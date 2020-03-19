@@ -17,9 +17,8 @@ LayaAirIDE是LayaAir引擎的集成开发环境，集成了LayaAir引擎与示�
 百度开发者工具主要用于小游戏产品的预览与调试、真机测试、上传提交等。是小游戏开发的必备工具。
 
 **开发工具下载地址**：
-[暂未开放，合作可以与我们商务联系获取]()
 
-![3](img/暂无截图.png)  
+https://smartprogram.baidu.com/docs/game/introduction/prerare/before/
 
 
 
