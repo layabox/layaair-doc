@@ -2,7 +2,7 @@
 
 ###### *version :2.3.0beta   Update:2019-9-27*
 
-> ### 重要提示：在LayaAir 2.0最新版本2.3.0beta版本中，我们已经适配了Unity 2018.4.7版本。
+> ### 重要提示：从LayaAir引擎2.3开始只能使用Unity 2018.4.7，LayaAir引擎 2.3以前的版本，要使用Unity5.6.x
 
 **升级时需要注意：** Unity升级之后，将项目目录下的 LayaAir3D 与 StreamingAssets 文件夹删除。然后再安装新版本Unity插件。如果项目中没有老版本插件可以忽略这一步。
 
