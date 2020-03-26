@@ -1,5 +1,13 @@
 # LayaAir脚本参数说明
 
+推荐阅读视频教程，有关LayaAir脚本与Runtime开发的系统全面讲解与实战介绍
+
+脚本组件课链接： [https://ke.qq.com/course/427324](https://ke.qq.com/course/427324 ) 
+
+UI与场景编辑、组件化开发、屏幕适配与抗锯齿的合集课程链接：[https://ke.qq.com/course/417469](https://ke.qq.com/course/417469 ) 
+
+----------
+
 LayaAir2.0开始，支持自定义脚本到编辑器，方便扩展已有组件功能
 
 ![script1](img/5.jpg)
@@ -32,7 +40,7 @@ LayaAir2.0开始，支持自定义脚本到编辑器，方便扩展已有组件�
 
 - default    输入框显示的默认值（可选）
 
-  ​
+  
 
 
 IDE默认提供了不少类型供脚本使用，主要参数类型如下：
