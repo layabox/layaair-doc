@@ -1,5 +1,13 @@
 # runTime的使用
 
+推荐阅读视频教程，有关LayaAir脚本与Runtime开发的系统全面讲解与实战介绍
+
+脚本组件课链接： [https://ke.qq.com/course/427324](https://ke.qq.com/course/427324 ) 
+
+UI与场景编辑、组件化开发、屏幕适配与抗锯齿的合集课程链接：[https://ke.qq.com/course/417469](https://ke.qq.com/course/417469 ) 
+
+----------
+
 在LayaAirIDE中资源面板下所有的组件均有runtime的属性，runtime是该组件运行时的逻辑类；相同组件可使用同一runtime类来实现相同的功能，比如不同页面上需要对相同的组件实现同一功能。**需要注意的是组件的runtime逻辑类如果不继承组件自身，并且继承的对象中没有该组件的属性时，这个属性则会失效。**
 
 **runTime脚本继承页面，场景或组件类，实现逻辑。在IDE里面设置场景的Runtime属性即可和场景或对象进行关联**
