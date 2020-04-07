@@ -24,9 +24,11 @@ https://opendocs.alipay.com/mini/ide/download
 
 1.0引擎需要手动自己初始化支付宝适配库，
 
-在引擎初始化之前加上适配代码 ，as3:    ALIMiniAdapter.init();
+在引擎初始化之前加上适配代码 ：
 
-​                                                        js或ts：Laya['ALIMiniAdapter'].init();
+```typescript
+as3: ALIMiniAdapter.init();   js或ts：Laya['ALIMiniAdapter'].init();
+```
 
 2.0以上的引擎已经不需要做适配操作，只需将编译好的项目发布时候选择支付宝小游戏即可,如图点击红色小方块发布按钮，在发布平台栏目选择支付宝小游戏。
 
