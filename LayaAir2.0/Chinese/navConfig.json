@@ -1579,7 +1579,7 @@
 			},
 			{
 				"name_3_name": "OPPO小游戏分包指南",
-				"name_3_url": "Chinese/miniGame/o/subpack/",
+				"name_3_url": "Chinese/miniGame/oppo/subpack/",
 				"name_3_file": "readme.md"
 			}]
 		},
@@ -1605,7 +1605,15 @@
 				"name_3_url": "Chinese/miniGame/qq/introduction/",
 				"name_3_file": "readme.md"
 			}]
-		}]
+		},
+		{
+			"name_2_name": "支付宝小游戏",
+			"name_2_data": [
+			{
+				"name_3_name": "支付宝小游戏发布与调试指南",
+				"name_3_url": "Chinese/miniGame/alipay/release/",
+				"name_3_file": "readme.md"
+			}]
 	},
 	{
 		"nav_1_name": "LayaNative原生服务",
@@ -3339,7 +3347,7 @@
 			},
 			{
 				"name_3_name": "OPPO小游戏分包指南",
-				"name_3_url": "Chinese/miniGame/o/subpack/",
+				"name_3_url": "Chinese/miniGame/oppo/subpack/",
 				"name_3_file": "readme.md"
 			}]
 		},
@@ -3363,6 +3371,15 @@
 			{
 				"name_3_name": "QQ小游戏发布与调试指南",
 				"name_3_url": "Chinese/miniGame/qq/introduction/",
+				"name_3_file": "readme.md"
+			}]
+		},
+		{
+			"name_2_name": "支付宝小游戏",
+			"name_2_data": [
+			{
+				"name_3_name": "支付宝小游戏发布与调试指南",
+				"name_3_url": "Chinese/miniGame/alipay/release/",
 				"name_3_file": "readme.md"
 			}]
 		}]
@@ -5140,7 +5157,7 @@
 			},
 			{
 				"name_3_name": "OPPO小游戏分包指南",
-				"name_3_url": "Chinese/miniGame/o/subpack/",
+				"name_3_url": "Chinese/miniGame/oppo/subpack/",
 				"name_3_file": "readme.md"
 			}]
 		},
@@ -5166,7 +5183,15 @@
 				"name_3_url": "Chinese/miniGame/qq/introduction/",
 				"name_3_file": "readme.md"
 			}]
-		}]
+		},
+		{
+			"name_2_name": "支付宝小游戏",
+			"name_2_data": [
+			{
+				"name_3_name": "支付宝小游戏发布与调试指南",
+				"name_3_url": "Chinese/miniGame/alipay/release/",
+				"name_3_file": "readme.md"
+			}]
 	},
 	{
 		"nav_1_name": "LayaNative原生服务",
