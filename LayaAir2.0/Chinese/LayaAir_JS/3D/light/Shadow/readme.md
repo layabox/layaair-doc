@@ -32,7 +32,7 @@
 
 ```typescript
 //灯光开启阴影
-this.directionLight.shadow = true;
+this.directionLight.shadowMode = Laya.ShadowMode.SoftLow;
 //可见阴影距离
 this.directionLight.shadowDistance = 3;
 //生成阴影贴图尺寸
