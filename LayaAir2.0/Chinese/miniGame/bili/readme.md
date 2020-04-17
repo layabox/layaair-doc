@@ -13,7 +13,7 @@ LayaAirIDE是LayaAir引擎的集成开发环境，集成了LayaAir引擎与示�
 
 bilibili小游戏开发者工具主要用于小游戏产品的预览与调试、真机测试、上传提交等。是小游戏开发的必备工具。
 
-目前只有MAC版
+开发者工具，目前只有MAC版，还不支持window版，未来会支持，关注B站官方。
 
 **开发工具下载地址**：
 http://miniapp.bilibili.com/small-game-doc/open/ide-update/
