@@ -1595,6 +1595,11 @@
 				"name_3_name": "vivo小游戏分包指南",
 				"name_3_url": "Chinese/miniGame/vivo/subpack/",
 				"name_3_file": "readme.md"
+			},
+			{
+				"name_3_name": "vivo插件版引擎使用说明",
+				"name_3_url": "Chinese/miniGame/vivo/plug-in/",
+				"name_3_file": "readme.md"
 			}]
 		},
 		{
@@ -3373,6 +3378,11 @@
 			{
 				"name_3_name": "vivo小游戏分包指南",
 				"name_3_url": "Chinese/miniGame/vivo/subpack/",
+				"name_3_file": "readme.md"
+			},
+			{
+				"name_3_name": "vivo插件版引擎使用说明",
+				"name_3_url": "Chinese/miniGame/vivo/plug-in/",
 				"name_3_file": "readme.md"
 			}]
 		},
@@ -5192,6 +5202,11 @@
 			{
 				"name_3_name": "vivo小游戏分包指南",
 				"name_3_url": "Chinese/miniGame/vivo/subpack/",
+				"name_3_file": "readme.md"
+			},
+			{
+				"name_3_name": "vivo插件版引擎使用说明",
+				"name_3_url": "Chinese/miniGame/vivo/plug-in/",
 				"name_3_file": "readme.md"
 			}]
 		},
