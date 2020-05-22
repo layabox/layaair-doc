@@ -771,6 +771,21 @@
 				"name_3_name": "预设/场景的导出",
 				"name_3_url": "Chinese/LayaAir_TS/3D/Unity_plug-in/Sprite3D_or_Scene3D_export/",
 				"name_3_file": "readme.md"
+			},
+			{
+				"name_3_name": "Sprite3D支持的Unity导出列表",
+				"name_3_url": "Chinese/LayaAir_TS/3D/Unity_plug-in/plug-in_export_readme/",
+				"name_3_file": "GameObject.md"
+			},
+			{
+				"name_3_name": "Unity场景光导出支持的列表",
+				"name_3_url": "Chinese/LayaAir_TS/3D/Unity_plug-in/plug-in_export_readme/",
+				"name_3_file": "LightingSetting.md"
+			},
+			{
+				"name_3_name": "Unity粒子系统导出支持列表",
+				"name_3_url": "Chinese/LayaAir_TS/3D/Unity_plug-in/plug-in_export_readme/",
+				"name_3_file": "ParticleSystem.md"
 			}]
 		},
 		{
@@ -2556,6 +2571,21 @@
 				"name_3_name": "预设/场景的导出",
 				"name_3_url": "Chinese/LayaAir_JS/3D/Unity_plug-in/Sprite3D_or_Scene3D_export/",
 				"name_3_file": "readme.md"
+			},
+			{
+				"name_3_name": "Sprite3D支持的Unity导出列表",
+				"name_3_url": "Chinese/LayaAir_TS/3D/Unity_plug-in/plug-in_export_readme/",
+				"name_3_file": "GameObject.md"
+			},
+			{
+				"name_3_name": "Unity场景光导出支持的列表",
+				"name_3_url": "Chinese/LayaAir_TS/3D/Unity_plug-in/plug-in_export_readme/",
+				"name_3_file": "LightingSetting.md"
+			},
+			{
+				"name_3_name": "Unity粒子系统导出支持列表",
+				"name_3_url": "Chinese/LayaAir_TS/3D/Unity_plug-in/plug-in_export_readme/",
+				"name_3_file": "ParticleSystem.md"
 			}]
 		},
 		{
@@ -4379,6 +4409,21 @@
 				"name_3_name": "预设/场景的导出",
 				"name_3_url": "Chinese/LayaAir_AS3/3D/Unity_plug-in/Sprite3D_or_Scene3D_export/",
 				"name_3_file": "readme.md"
+			},
+			{
+				"name_3_name": "Sprite3D支持的Unity导出列表",
+				"name_3_url": "Chinese/LayaAir_TS/3D/Unity_plug-in/plug-in_export_readme/",
+				"name_3_file": "GameObject.md"
+			},
+			{
+				"name_3_name": "Unity场景光导出支持的列表",
+				"name_3_url": "Chinese/LayaAir_TS/3D/Unity_plug-in/plug-in_export_readme/",
+				"name_3_file": "LightingSetting.md"
+			},
+			{
+				"name_3_name": "Unity粒子系统导出支持列表",
+				"name_3_url": "Chinese/LayaAir_TS/3D/Unity_plug-in/plug-in_export_readme/",
+				"name_3_file": "ParticleSystem.md"
 			}]
 		},
 		{
