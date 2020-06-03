@@ -45,7 +45,7 @@ OK，继续。
 
 ##### TS与JS适配方法
 
-从1.8.0beta开始，创建示例项目时，TS与JS项目会自动引入小游戏适配库JS`“libs/laya.wxmini.js”`，如下图所示。
+从1.8.0beta开始，创建示例项目时，TS与JS项目会自动引入小游戏适配库JS`“libs/laya.bdmini.js”`，如下图所示。
 
 ![图](img/baidu4.png) 
 
