@@ -2304,14 +2304,11 @@
 						"name_2_name": "扩展模块",
 						"name_2_data": [
 							{
-<<<<<<< HEAD
 								"name_3_name": "脚本组件的使用",
 								"name_3_url": "Chinese/LayaAir_JS/IDE/ScriptUse/componentscript/",
 								"name_3_file": "readme.md"
 							},
 							{
-=======
->>>>>>> 4cfa729884b48c7d7ef5ecaaf1a3748426ee00a8
 								"name_3_name": "用LayaAir引擎解析Tiled Map地图",
 								"name_3_url": "Chinese/LayaAir_JS/2D/advanced/extension_modules/TiledMap/",
 								"name_3_file": "readme.md"
