@@ -115,3 +115,6 @@ ThreadMode=1;
 ```javascript
 ThreadMode=2;
 ```
+**TIPS:  
+ios版本：在工程目录下的resource\config.ini  
+android版本：在工程目录下的assets\config.ini
