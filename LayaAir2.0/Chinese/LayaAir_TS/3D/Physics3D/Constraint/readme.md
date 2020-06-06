@@ -78,4 +78,14 @@ set connectAnchor(value:Vector3)
 setOverrideNumSolverIterations(overideNumIterations:number)
 ```
 
+- 通过刚体对象可以获取到刚体对象作为一个约束的connectedBody时的ownBody
 
+```
+rigid.constaintRigidbodyA;
+```
+
+- 通过刚体对象可以获取到刚体对象作为一个约束的ownBody时的connectedBody
+
+```
+rigid.constaintRigidbodyB;
+```
