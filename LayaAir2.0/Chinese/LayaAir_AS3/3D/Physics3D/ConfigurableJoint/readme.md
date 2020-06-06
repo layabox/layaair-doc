@@ -53,7 +53,7 @@ boxARigid.overrideGravity = true;
 boxARigid.isKinematic = true;
 
 var boxB:MeshSprite3D = this.addRigidBodyBox(new Vector3(10, 0, 0),1);
-(<BlinnPhongMaterial>boxB.meshRenderer.material).albedoColor = new Vector4(1, 0, 0, 1);
+(boxB.meshRenderer.material as BlinnPhongMaterial).albedoColor = new Vector4(1, 0, 0, 1);
 var boxBRigid:Rigidbody3D = boxB.getComponent(Rigidbody3D);
 //创建约束
 var configurableConstraint:ConfigurableJoint = boxA.addComponent(ConfigurableConstraint); 
@@ -124,7 +124,7 @@ bounceTest(): void {
     var boxARigid:Rigidbody3D = boxA.getComponent(Rigidbody3D);
 
     var boxB:MeshSprite3D = this.addRigidBodyBox(new Vector3(7, 0, 3),1);
-    (<BlinnPhongMaterial>boxB.meshRenderer.material).albedoColor = new Vector4(1, 0, 0, 1);
+    (boxB.meshRenderer.material as BlinnPhongMaterial).albedoColor = new Vector4(1, 0, 0, 1);
     var boxBRigid:Rigidbody3D = boxB.getComponent(Rigidbody3D);
 
     var configurableConstraint:ConfigurableJoint = boxA.addComponent(ConfigurableConstraint); 
@@ -145,7 +145,6 @@ bounceTest(): void {
     boxBRigid.applyImpulse(new Vector3(100, 0, 0));
 
 }
-
 ```
 
 示例解析:

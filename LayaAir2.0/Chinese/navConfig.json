@@ -5157,6 +5157,21 @@
 								"name_3_name": "物理碰撞脚本和触发器脚本",
 								"name_3_url": "Chinese/LayaAir_AS3/3D/Physics3D/TriggerCollisionScript/",
 								"name_3_file": "readme.md"
+							},
+							{
+								"name_3_name": "物理系统之约束",
+								"name_3_url": "Chinese/LayaAir_AS3/3D/Physics3D/Constraint/",
+								"name_3_file": "readme.md"
+							},
+							{
+								"name_3_name": "物理系统之FixedConstraint",
+								"name_3_url": "Chinese/LayaAir_AS3/3D/Physics3D/FixedConstraint/",
+								"name_3_file": "readme.md"
+							},
+							{
+								"name_3_name": "物理系统之ConfigurableConstraint",
+								"name_3_url": "Chinese/LayaAir_AS3/3D/Physics3D/ConfigurableJoint/",
+								"name_3_file": "readme.md"
 							}
 						]
 					},

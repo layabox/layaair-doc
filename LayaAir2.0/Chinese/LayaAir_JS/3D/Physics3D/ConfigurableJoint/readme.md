@@ -13,26 +13,26 @@
 
 **ConfigurableConstraint相关属性和功能介绍**
 
-| 属性                                       | 对应Unity属性                      | 含义                                       |
-| ---------------------------------------- | ------------------------------ | ---------------------------------------- |
-| setAxis(axis:Vector3,secondaryAxis:Vector3) | Axis和Secondary Axis            | 设置对象自然旋转的局部轴主轴                           |
-| XMotion                                  | XMotion                        | 设置x轴线性轴上运动的模式                            |
-| YMotion                                  | YMotion                        | 设置y轴线性轴上运动的模式                            |
-| ZMotion                                  | ZMotion                        | 设置z轴线性轴上运动的模式                            |
-| angularXMotion                           | Angular X Motion               | 设置绕x轴旋转运动的模式                             |
-| angularYMotion                           | Angular Y Motion               | 设置绕y轴旋转运动的模式                             |
-| angularZMotion                           | Angular Z Motion               | 设置绕z轴旋转运动的模式                             |
-| linearLimitSpring                        | Linear Limit  Spring           | 设置线性轴上的弹簧弹力，Unity中三个线性轴是统一的值，Laya可以分别设置。Spring 为将对象移动回限制 (Limit) 而应用的力的强度任何非 0 数值都会隐式地软化边界。 |
-| linearDamp                               | Linear Limit  Damper           | 阻尼系数，弹簧力的减小与约束运动的速度成正比。设置一个大于零的值可以使约束“抑制”振荡，否则振荡将无限期地持续下去。 |
-| maxLinearLimit和 minLinearLimit           | Linear Limit  Limit            | 为约束的线性运动（即，沿距离而不是旋转的运动）设置一个极限，指定为距约束原点的距离。Unity中最小值为最大值取反。Laya可以分别设置不同的值。 |
-| linearBounce                             | Linear Limit  Bounciness       | 设置向对象施加反弹力，以在到达极限距离时将其推回。取值范围[0, 1.0]    |
-| 未实现                                      | Linear Limit  Contact Distance |                                          |
-| angularLimitSpring                       | Angular X Y Z Limit Spring     | 当物体超过约束的极限角度时，施加弹簧扭矩以使物体向后旋转。            |
-| angularDamp                              | Angular X  Y Z Limit Damper    | 阻尼系数，弹簧扭矩的减小与约束旋转速度成正比。设置一个大于零的值可以使约束“抑制”振荡，否则振荡将无限期地持续下去。 |
-| minAngularLimit/ maxAngularLimit         | Low/High Angular X Y Z Limit   | 约束绕x y z轴旋转的下限/上限，指定为与约束原始旋转的角度。         |
-| angularBounce                            | Angular X Bounciness           | 设置当对象旋转达到极限角度时要施加到对象的反弹扭矩。               |
-| 未实现                                      | Low Angular X Contact Distance |                                          |
-|                                          |                                |                                          |
+| 属性                               | 对应Unity属性                      | 含义                                       |
+| -------------------------------- | ------------------------------ | ---------------------------------------- |
+| setAxis(axis,secondaryAxis)      | Axis和Secondary Axis            | 设置对象自然旋转的局部轴主轴                           |
+| XMotion                          | XMotion                        | 设置x轴线性轴上运动的模式                            |
+| YMotion                          | YMotion                        | 设置y轴线性轴上运动的模式                            |
+| ZMotion                          | ZMotion                        | 设置z轴线性轴上运动的模式                            |
+| angularXMotion                   | Angular X Motion               | 设置绕x轴旋转运动的模式                             |
+| angularYMotion                   | Angular Y Motion               | 设置绕y轴旋转运动的模式                             |
+| angularZMotion                   | Angular Z Motion               | 设置绕z轴旋转运动的模式                             |
+| linearLimitSpring                | Linear Limit  Spring           | 设置线性轴上的弹簧弹力，Unity中三个线性轴是统一的值，Laya可以分别设置。Spring 为将对象移动回限制 (Limit) 而应用的力的强度任何非 0 数值都会隐式地软化边界。 |
+| linearDamp                       | Linear Limit  Damper           | 阻尼系数，弹簧力的减小与约束运动的速度成正比。设置一个大于零的值可以使约束“抑制”振荡，否则振荡将无限期地持续下去。 |
+| maxLinearLimit和 minLinearLimit   | Linear Limit  Limit            | 为约束的线性运动（即，沿距离而不是旋转的运动）设置一个极限，指定为距约束原点的距离。Unity中最小值为最大值取反。Laya可以分别设置不同的值。 |
+| linearBounce                     | Linear Limit  Bounciness       | 设置向对象施加反弹力，以在到达极限距离时将其推回。取值范围[0, 1.0]    |
+| 未实现                              | Linear Limit  Contact Distance |                                          |
+| angularLimitSpring               | Angular X Y Z Limit Spring     | 当物体超过约束的极限角度时，施加弹簧扭矩以使物体向后旋转。            |
+| angularDamp                      | Angular X  Y Z Limit Damper    | 阻尼系数，弹簧扭矩的减小与约束旋转速度成正比。设置一个大于零的值可以使约束“抑制”振荡，否则振荡将无限期地持续下去。 |
+| minAngularLimit/ maxAngularLimit | Low/High Angular X Y Z Limit   | 约束绕x y z轴旋转的下限/上限，指定为与约束原始旋转的角度。         |
+| angularBounce                    | Angular X Bounciness           | 设置当对象旋转达到极限角度时要施加到对象的反弹扭矩。               |
+| 未实现                              | Low Angular X Contact Distance |                                          |
+|                                  |                                |                                          |
 
 补充说明：
 
@@ -56,7 +56,7 @@ var boxB:MeshSprite3D = this.addRigidBodyBox(new Vector3(10, 0, 0),1);
 (<BlinnPhongMaterial>boxB.meshRenderer.material).albedoColor = new Vector4(1, 0, 0, 1);
 var boxBRigid:Rigidbody3D = boxB.getComponent(Rigidbody3D);
 //创建约束
-var configurableConstraint:ConfigurableJoint = boxA.addComponent(ConfigurableConstraint); 
+var configurableConstraint:ConfigurableConstraint = boxA.addComponent(ConfigurableConstraint); 
 //为约束设置两个连接刚体
 configurableConstraint.setConnectRigidBody(boxARigid,boxBRigid);
 ```
@@ -96,11 +96,13 @@ configurableConstraint.maxLinearLimit = new Vector3(3,0,0);
 - 4.设置六个自由度的模式(有Locked、Limited、Free)
 
    configurableConstraint.XMotion = ConfigurableConstraint.CONFIG_MOTION_TYPE_LIMITED;
+
    	configurableConstraint.YMotion = ConfigurableConstraint.CONFIG_MOTION_TYPE_LOCKED;
    	configurableConstraint.ZMotion = ConfigurableConstraint.CONFIG_MOTION_TYPE_LOCKED;
    	configurableConstraint.angularXMotion= ConfigurableConstraint.CONFIG_MOTION_TYPE_LOCKED;
    	configurableConstraint.angularYMotion= ConfigurableConstraint.CONFIG_MOTION_TYPE_LOCKED;
    	configurableConstraint.angularZMotion= ConfigurableConstraint.CONFIG_MOTION_TYPE_LOCKED;
+
 - 5.设置线性轴上的弹簧弹力和阻尼系数
 
 ```typescript
@@ -127,7 +129,7 @@ bounceTest(): void {
     (<BlinnPhongMaterial>boxB.meshRenderer.material).albedoColor = new Vector4(1, 0, 0, 1);
     var boxBRigid:Rigidbody3D = boxB.getComponent(Rigidbody3D);
 
-    var configurableConstraint:ConfigurableJoint = boxA.addComponent(ConfigurableConstraint); 
+    var configurableConstraint:ConfigurableConstraint = boxA.addComponent(ConfigurableConstraint); 
     configurableConstraint.setConnectRigidBody(boxARigid,boxBRigid);
     configurableConstraint.anchor = new Vector3(0, -3, 0);
     configurableConstraint.connectAnchor = new Vector3(0,0,0);
@@ -145,7 +147,6 @@ bounceTest(): void {
     boxBRigid.applyImpulse(new Vector3(100, 0, 0));
 
 }
-
 ```
 
 示例解析:
