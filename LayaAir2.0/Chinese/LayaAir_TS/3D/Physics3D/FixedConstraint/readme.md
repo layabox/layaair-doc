@@ -77,6 +77,10 @@ onUpdate()
   {
     var mass = this.fixedConstraint.connectedBody.mass;
     this.fixedConstraint.connectedBody.mass = mass+1;
+    //输出当前约束所受力
+	console.log(this.fixedConstraint.currentForce);
+	//输出当前约束所受的力矩
+	console.log(this.fixedConstraint.currentTorque);
   }	
 
 }
