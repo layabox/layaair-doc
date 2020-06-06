@@ -964,6 +964,11 @@
 								"name_3_file": "readme.md"
 							},
 							{
+								"name_3_name": "聚光灯实时阴影",
+								"name_3_url": "Chinese/LayaAir_TS/3D/light/SpotShadow/",
+								"name_3_file": "readme.md"
+							},
+							{
 								"name_3_name": "多光源渲染",
 								"name_3_url": "Chinese/LayaAir_TS/3D/light/MultiLight/",
 								"name_3_file": "readme.md"
@@ -1326,6 +1331,21 @@
 							{
 								"name_3_name": "物理碰撞脚本和触发器脚本",
 								"name_3_url": "Chinese/LayaAir_TS/3D/Physics3D/TriggerCollisionScript/",
+								"name_3_file": "readme.md"
+							},
+							{
+								"name_3_name": "物理系统之约束",
+								"name_3_url": "Chinese/LayaAir_TS/3D/Physics3D/Constraint/",
+								"name_3_file": "readme.md"
+							},
+							{
+								"name_3_name": "物理系统之FixedConstraint",
+								"name_3_url": "Chinese/LayaAir_TS/3D/Physics3D/FixedConstraint/",
+								"name_3_file": "readme.md"
+							},
+							{
+								"name_3_name": "物理系统之ConfigurableConstraint",
+								"name_3_url": "Chinese/LayaAir_TS/3D/Physics3D/ConfigurableJoint/",
 								"name_3_file": "readme.md"
 							}
 						]
@@ -2859,6 +2879,11 @@
 								"name_3_file": "readme.md"
 							},
 							{
+								"name_3_name": "聚光灯实时阴影",
+								"name_3_url": "Chinese/LayaAir_JS/3D/light/SpotShadow/",
+								"name_3_file": "readme.md"
+							},
+							{
 								"name_3_name": "多光源渲染",
 								"name_3_url": "Chinese/LayaAir_JS/3D/light/MultiLight/",
 								"name_3_file": "readme.md"
@@ -3221,6 +3246,21 @@
 							{
 								"name_3_name": "物理碰撞脚本和触发器脚本",
 								"name_3_url": "Chinese/LayaAir_JS/3D/Physics3D/TriggerCollisionScript/",
+								"name_3_file": "readme.md"
+							},
+							{
+								"name_3_name": "物理系统之约束",
+								"name_3_url": "Chinese/LayaAir_JS/3D/Physics3D/Constraint/",
+								"name_3_file": "readme.md"
+							},
+							{
+								"name_3_name": "物理系统之FixedConstraint",
+								"name_3_url": "Chinese/LayaAir_JS/3D/Physics3D/FixedConstraint/",
+								"name_3_file": "readme.md"
+							},
+							{
+								"name_3_name": "物理系统之ConfigurableConstraint",
+								"name_3_url": "Chinese/LayaAir_JS/3D/Physics3D/ConfigurableJoint/",
 								"name_3_file": "readme.md"
 							}
 						]
@@ -4791,6 +4831,11 @@
 							{
 								"name_3_name": "如何为灯光添加阴影",
 								"name_3_url": "Chinese/LayaAir_AS3/3D/light/Shadow/",
+								"name_3_file": "readme.md"
+							},
+							{
+								"name_3_name": "聚光灯实时阴影",
+								"name_3_url": "Chinese/LayaAir_AS3/3D/light/SpotShadow/",
 								"name_3_file": "readme.md"
 							},
 							{
