@@ -104,3 +104,17 @@ if( window.conch )
     }
 }
 ```
+
+## 10. 线程模式
+LayaNative2.0支持JavaScript脚本逻辑和渲染逻辑在同一个线程或者两个单独的线程，可以修改config.ini配置进行切换：  
+单线程
+```javascript
+ThreadMode=1;
+```
+双线程
+```javascript
+ThreadMode=2;
+```
+**TIPS:  
+ios版本：在工程目录下的resource\config.ini  
+android版本：在工程目录下的assets\config.ini
