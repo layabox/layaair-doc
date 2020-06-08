@@ -1347,6 +1347,11 @@
 								"name_3_name": "物理系统之ConfigurableConstraint",
 								"name_3_url": "Chinese/LayaAir_TS/3D/Physics3D/ConfigurableJoint/",
 								"name_3_file": "readme.md"
+							},
+							{
+								"name_3_name": "基于Cannon.js的物理系统",
+								"name_3_url": "Chinese/LayaAir_JS/3D/Physics3D/CannonPhysicsWorld_BaseCollider/",
+								"name_3_file": "readme.md"
 							}
 						]
 					},
@@ -1456,7 +1461,7 @@
 						]
 					},
 					{
-						"name_2_name": "LayaAir3D之shader",
+						"name_2_name": "LayaAir3D之Shader",
 						"name_2_data": [
 							{
 								"name_3_name": "Shader概述",
@@ -3261,6 +3266,11 @@
 							{
 								"name_3_name": "物理系统之ConfigurableConstraint",
 								"name_3_url": "Chinese/LayaAir_JS/3D/Physics3D/ConfigurableJoint/",
+								"name_3_file": "readme.md"
+							},
+							{
+								"name_3_name": "基于Cannon.js的物理系统",
+								"name_3_url": "Chinese/LayaAir_JS/3D/Physics3D/CannonPhysicsWorld_BaseCollider/",
 								"name_3_file": "readme.md"
 							}
 						]
@@ -5216,6 +5226,11 @@
 							{
 								"name_3_name": "物理系统之ConfigurableConstraint",
 								"name_3_url": "Chinese/LayaAir_AS3/3D/Physics3D/ConfigurableJoint/",
+								"name_3_file": "readme.md"
+							},
+							{
+								"name_3_name": "基于Cannon.js的物理系统",
+								"name_3_url": "Chinese/LayaAir_AS3/3D/Physics3D/CannonPhysicsWorld_BaseCollider/",
 								"name_3_file": "readme.md"
 							}
 						]
