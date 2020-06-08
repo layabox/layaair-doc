@@ -84,11 +84,11 @@ Sprite 类是 LayaAir 引擎中最基础的显示对象容器类，所有的UI�
 
 具体要了解各个组件的命名规则与组件的使用，请直接查看2.0的文档《IDE组件属性详解》
 
-TS版链接地址： [https://ldc2.layabox.com/doc/?nav=zh-ts-2-3-0](https://ldc2.layabox.com/doc/?nav=zh-ts-2-3-0)
+TS版链接地址： [https://ldc2.layabox.com/doc/?nav=zh-ts-3-3-0](https://ldc2.layabox.com/doc/?nav=zh-ts-3-3-0)
 
-AS版链接地地：[https://ldc2.layabox.com/doc/?nav=zh-as-2-3-1](https://ldc2.layabox.com/doc/?nav=zh-as-2-3-1)
+AS版链接地地：https://ldc2.layabox.com/doc/?nav=zh-as-3-3-0
 
-JS版链接地地：https://ldc2.layabox.com/doc/?nav=zh-js-2-3-1
+JS版链接地地：https://ldc2.layabox.com/doc/?nav=zh-js-3-3-0
 
 
 
