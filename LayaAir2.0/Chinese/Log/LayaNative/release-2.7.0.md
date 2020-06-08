@@ -2,4 +2,3 @@
 
 1. 解决了btCollisionWorld_convexSweepTest在Android崩溃的问题
 2. 支持LayaAir2.7.0新增的物理功能
-3. 视频增加canplay事件
