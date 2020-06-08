@@ -52,7 +52,7 @@ UI组件，又分成两个小类。分别是基础UI组件和容器UI组件。�
 
 基础UI组件包括：Button、CheckBox、Clip、ColorPicker、ComboBox、FontClip、HScrollBar、HSlider、Image、Label、TextArea、TextInput、Radio、ProgressBar、Slider、VSlider、ScrollBar、VScrollBar、WXOpenDataViewer。
 
-##### 容器类组件
+##### 容器UI组件
 
 容器类组件通常不需要以资源命名来识别组件，而是由一个或多个基础组件通过转化为容器的方式生成而来。在IDE里可以通过`Ctrl+B`快捷键将一个或多个基础组件转化为容器组件。如动图2所示。
 
@@ -60,7 +60,7 @@ UI组件，又分成两个小类。分别是基础UI组件和容器UI组件。�
 
  (动图2)
 
-容器类组件包括：Sprite、Box、List、Tab、RadioGroup、ViewStack、Panel、HBox、VBox、Tree。
+容器类组件包括：Box、List、Tab、RadioGroup、ViewStack、Panel、HBox、VBox、Tree。
 
 ### 1.3 视图组件
 
