@@ -1,6 +1,6 @@
 # 注册宏定义与使用宏
 
-###### *version :2.3.0   Update:2019-10-8*
+###### *version :2.7.0beta   Update:2020-6-9*
 
 开发者如果在着色器代码中有使用到宏的话，开发者需要使用 Shader3D 的 `getDefineByName` 接口注册宏定义。
 
@@ -10,37 +10,41 @@
 
 > 新版本注册宏定义
 
-```typescript
+```javascript
 /**
  * @private
  */
-public static function __init__(): void {
-    SHADERDEFINE_DETAIL_NUM1 = Shader3D.getDefineByName("CUSTOM_DETAIL_NUM1");
-    SHADERDEFINE_DETAIL_NUM2 = Shader3D.getDefineByName("CUSTOM_DETAIL_NUM2");
-    SHADERDEFINE_DETAIL_NUM3 = Shader3D.getDefineByName("CUSTOM_DETAIL_NUM3");
-    SHADERDEFINE_DETAIL_NUM4 = Shader3D.getDefineByName("CUSTOM_DETAIL_NUM4");
-    SHADERDEFINE_DETAIL_NUM5 = Shader3D.getDefineByName("CUSTOM_DETAIL_NUM5");
+public static function __init__() {
+    SHADERDEFINE_DETAIL_NUM1 = Laya.Shader3D.getDefineByName("CUSTOM_DETAIL_NUM1");
+    SHADERDEFINE_DETAIL_NUM2 = Laya.Shader3D.getDefineByName("CUSTOM_DETAIL_NUM2");
+    SHADERDEFINE_DETAIL_NUM3 = Laya.Shader3D.getDefineByName("CUSTOM_DETAIL_NUM3");
+    SHADERDEFINE_DETAIL_NUM4 = Laya.Shader3D.getDefineByName("CUSTOM_DETAIL_NUM4");
+    SHADERDEFINE_DETAIL_NUM5 = Laya.Shader3D.getDefineByName("CUSTOM_DETAIL_NUM5");
 }
 ```
 
 > 老版本注册宏定义
 
-```typescript
+```javascript
 /**示例一个ShaderDefines**/
-public static var shaderDefines:ShaderDefines 
+static shaderDefines 
 /**注册宏函数**/
-public static function __init__():void {
-    shaderDefines = new ShaderDefines(BaseMaterial.shaderDefines);
+public static function __init__(){
+    CustomTerrainMaterial.shaderDefines = new Laya.ShaderDefines(Laya.BaseMaterial.shaderDefines);
     //注册宏定义
-    SHADERDEFINE_DETAIL_NUM1 = shaderDefines.registerDefine("CUSTOM_DETAIL_NUM1");
-    SHADERDEFINE_DETAIL_NUM2 = shaderDefines.registerDefine("CUSTOM_DETAIL_NUM2");
-    SHADERDEFINE_DETAIL_NUM3 = shaderDefines.registerDefine("CUSTOM_DETAIL_NUM3");
-    SHADERDEFINE_DETAIL_NUM4 = shaderDefines.registerDefine("CUSTOM_DETAIL_NUM4");
-    SHADERDEFINE_DETAIL_NUM5 = shaderDefines.registerDefine("CUSTOM_DETAIL_NUM5");
+    CustomTerrainMaterial.SHADERDEFINE_DETAIL_NUM1 = CustomTerrainMaterial.shaderDefines.registerDefine("CUSTOM_DETAIL_NUM1");
+    
+    CustomTerrainMaterial.SHADERDEFINE_DETAIL_NUM2 = CustomTerrainMaterial.shaderDefines.registerDefine("CUSTOM_DETAIL_NUM2");
+    
+    CustomTerrainMaterial.SHADERDEFINE_DETAIL_NUM3 = CustomTerrainMaterial.shaderDefines.registerDefine("CUSTOM_DETAIL_NUM3");
+    
+    CustomTerrainMaterial.SHADERDEFINE_DETAIL_NUM4 = CustomTerrainMaterial.shaderDefines.registerDefine("CUSTOM_DETAIL_NUM4");
+    
+    CustomTerrainMaterial.SHADERDEFINE_DETAIL_NUM5 = CustomTerrainMaterial.shaderDefines.registerDefine("CUSTOM_DETAIL_NUM5");
 }
 ```
 
-宏在注册完成后，开发者可以通过 **BaseMaterial** 的 `_shaderValues:ShaderData` 属性中的 `addDefine`与 `removeDefine`  来添加与移除宏定义。
+宏在注册完成后，开发者可以通过 **Material** 的 `_shaderValues:ShaderData` 属性中的 `addDefine`与 `removeDefine`  来添加与移除宏定义。
 
 > 注意：添加与移除宏定义的操作整合进ShaderData是2.2.0版本的优化，在这之前的版本开发者需要使用         _defineDatas:DefineDatas 属性的 add 与 remove 方法。新版本也兼容使用 _defineDatas 添加移除宏。
 
@@ -50,21 +54,21 @@ public static function __init__():void {
 
 ```typescript
 /**初始化材质**/
-private static function initShader(): void {
+public static function initShader(){
     	....
         /**注册宏**/
 		CustomTerrainMaterial.__init__();
         ....
 }
 
-private function _setDetailNum(value: number): void {
+private function  _setDetailNum(value){
     switch (value) {
 		case 1:
-            _shaderValues.addDefine(CustomTerrainMaterial.SHADERDEFINE_DETAIL_NUM1);
-            _shaderValues.removeDefine(CustomTerrainMaterial.SHADERDEFINE_DETAIL_NUM2);
-            _shaderValues.removeDefine(CustomTerrainMaterial.SHADERDEFINE_DETAIL_NUM3);
-            _shaderValues.removeDefine(CustomTerrainMaterial.SHADERDEFINE_DETAIL_NUM4);
-            _shaderValues.removeDefine(CustomTerrainMaterial.SHADERDEFINE_DETAIL_NUM5);
+ 			this._shaderValues.addDefine(CustomTerrainMaterial.SHADERDEFINE_DETAIL_NUM1);
+            this._shaderValues.removeDefine(CustomTerrainMaterial.SHADERDEFINE_DETAIL_NUM2);
+            this._shaderValues.removeDefine(CustomTerrainMaterial.SHADERDEFINE_DETAIL_NUM3);
+            this._shaderValues.removeDefine(CustomTerrainMaterial.SHADERDEFINE_DETAIL_NUM4);
+            this._shaderValues.removeDefine(CustomTerrainMaterial.SHADERDEFINE_DETAIL_NUM5);
 		break;
         case 2:
             ......
@@ -84,14 +88,14 @@ private function _setDetailNum(value: number): void {
 /**
  * 老版本如果需要使用宏，在初始化Shader的时候需要将 shaderDefines 传给队友的 subShader 
  **/
-private static function initShader(): void {
+private static function  initShader() {
     	......
     	//注册宏
 		CustomTerrainMaterial.__init__();
 		......
-		var customTerrianShader: Shader3D = Shader3D.add("CustomTerrainShader");
+		var customTerrianShader = Laya.Shader3D.add("CustomTerrainShader");
 		//将ShaderDefines传给 subShader
-		var subShader: SubShader = new SubShader(attributeMap, uniformMap, RenderableSprite3D.shaderDefines, CustomTerrainMaterial.shaderDefines);
+		var subShader = new Laya.SubShader(attributeMap, uniformMap, Laya.RenderableSprite3D.shaderDefines, CustomTerrainMaterial.shaderDefines);
 		......
 }
 
@@ -99,14 +103,14 @@ private static function initShader(): void {
 * 在这个Shader中 需要根据宏来实现对不同 Textrue处理 ，所以在设置不同的贴图时，都会调用_setDetailNum来
 * 调整宏。
 */
- private function _setDetailNum(value:int):void {
+ private function _setDetailNum(value) {
      switch (value) {
          case 1: 
-             _defineDatas.add(CustomTerrainMaterial.SHADERDEFINE_DETAIL_NUM1);
-             _defineDatas.remove(CustomTerrainMaterial.SHADERDEFINE_DETAIL_NUM2);
-             _defineDatas.remove(CustomTerrainMaterial.SHADERDEFINE_DETAIL_NUM3);
-             _defineDatas.remove(CustomTerrainMaterial.SHADERDEFINE_DETAIL_NUM4);
-             _defineDatas.remove(CustomTerrainMaterial.SHADERDEFINE_DETAIL_NUM5);
+             CustomTerrainMaterial._defineDatas.add(CustomTerrainMaterial.SHADERDEFINE_DETAIL_NUM1);
+             CustomTerrainMaterial._defineDatas.remove(CustomTerrainMaterial.SHADERDEFINE_DETAIL_NUM2);
+             CustomTerrainMaterial._defineDatas.remove(CustomTerrainMaterial.SHADERDEFINE_DETAIL_NUM3);
+             CustomTerrainMaterial._defineDatas.remove(CustomTerrainMaterial.SHADERDEFINE_DETAIL_NUM4);
+             CustomTerrainMaterial._defineDatas.remove(CustomTerrainMaterial.SHADERDEFINE_DETAIL_NUM5);
              break;
          case 2:
              ........

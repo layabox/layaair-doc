@@ -1,63 +1,48 @@
 # 如何自定义Shader
 
-###### *version :2.3.0   Update:2019-10-8*
+###### *version :2.7.0beta   Update:2020-6-9*
 
-在这里我们将简单的介绍下如何使用自定义shader。本次是在LayaAirIDE的3D示例项目基础上修改。
+在这里我们将简单的介绍下如何使用自定义Shader。本次是在LayaAirIDE的3D示例项目基础上修改。
 
 #### 1.编写顶点着色器与片元着色器程序。
 
 放在项目代码同级的文件夹 `customMaterials`下
 
-顶点着色器 `simpleShader.vs` 代码如下：
+顶点着色器和片元着色器代码如下：
 
-```c++
-#include "Lighting.glsl";
-
-attribute vec4 a_Position;
-
-uniform mat4 u_MvpMatrix;
-uniform mat4 u_WorldMat;
-
-
-attribute vec3 a_Normal;
-varying vec3 v_Normal;
-
-void main()
-{
-	gl_Position = u_MvpMatrix * a_Position;
-	mat3 worldMat=mat3(u_WorldMat);
-	v_Normal=worldMat*a_Normal;
-	gl_Position=remapGLPositionZ(gl_Position);
-}
-```
-
-片元着色器 `simpleShader.fs` 代码如下:
-
-```c++
-#ifdef FSHIGHPRECISION
-precision highp float;
-#else
-precision mediump float;
-#endif
-
-varying vec3 v_Normal;
-
-void main()
-{	
+```javascript
+ let simpleShaderVS = `
+  attribute vec4 a_Position;
+  uniform mat4 u_MvpMatrix;
+  uniform mat4 u_WorldMat;
+  attribute vec3 a_Normal;
+  varying vec3 v_Normal;
+  void main()
+  {
+  gl_Position = u_MvpMatrix * a_Position;
+  mat3 worldMat=mat3(u_WorldMat);
+  v_Normal=worldMat*a_Normal;
+  }`;
+let simpleShaderFS = `
+  #ifdef FSHIGHPRECISION
+  precision highp float;
+  #else
+  precision mediump float;
+  #endif
+  varying vec3 v_Normal;
+  void main()
+  {
   gl_FragColor=vec4(v_Normal,1.0);
-}
+  }`;
 ```
+
+
+
+
 
 #### 2.代码中组成Shader
 
-在代码中**"组装"** Shader，本段代码添加在 Main.js 。
-
-> 通过引用来导入着色器代码
-
-```typescript
-import simpleShaderFS from "./simpleShader.fs";
-import simpleShaderVS from "./simpleShader.vs";
-```
+在代码中**"组装"** Shader，本段代码添加在 Main.ts 。
 
 > 初始化shader
 
@@ -66,10 +51,16 @@ import simpleShaderVS from "./simpleShader.vs";
 initShader() {
     
     //所有的attributeMap属性
-    var attributeMap = {'a_Position': Laya.VertexMesh.MESH_POSITION0, 'a_Normal': Laya.VertexMesh.MESH_NORMAL0};
+    var attributeMap = {
+      'a_Position': Laya.VertexMesh.MESH_POSITION0, 
+      'a_Normal': Laya.VertexMesh.MESH_NORMAL0
+    };
     
     //所有的uniform属性
-    var uniformMap = {'u_MvpMatrix': Laya.Shader3D.PERIOD_SPRITE, 'u_WorldMat': Laya.Shader3D.PERIOD_SPRITE};
+    var uniformMap = {
+      'u_MvpMatrix': Laya.Shader3D.PERIOD_SPRITE, 
+      'u_WorldMat': Laya.Shader3D.PERIOD_SPRITE
+    };
     
     //注册CustomShader 
     var customShader = Laya.Shader3D.add("CustomShader");
@@ -89,8 +80,10 @@ initShader() {
 
 我们自定义材质，并且设置该材质使用的Shader。
 
+注意：在最近几个版本中材质基类由BaseMaterial变更为Material。
+
 ```typescript
-export class CustomMaterial extends Laya.BaseMaterial {
+export class CustomMaterial extends Laya.Material {
     constructor() {
         super();
         //设置本材质使用的shader名字
@@ -123,12 +116,6 @@ var box = scene.addChild(new Laya.MeshSprite3D(PrimitiveMesh.createBox(1, 1, 1))
 
 //为了更好的表现该自定义shader我们去掉模型旋转,同时给摄影机添加了移动脚本
 camera.addComponent(CameraMoveScript);
-//box.transform.rotate(new Laya.Vector3(0, 45, 0), false, false);
-// var material:BlinnPhongMaterial = new Laya.BlinnPhongMaterial();
-// Texture2D.load("res/layabox.png", Laya.Handler.create(null, function(tex) {
-// 	material.albedoTexture = tex;
-// }));
-// box.meshRenderer.material = material;
 
 //创建一个自定义材质，并且添加给box
 var _material = new CustomMaterial();

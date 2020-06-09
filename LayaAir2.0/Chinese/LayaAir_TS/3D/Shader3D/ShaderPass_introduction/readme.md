@@ -1,16 +1,20 @@
 # ShaderPass介绍
 
-######  *version :2.3.0   Update:2019-10-8*
+######  *version :2.7.0beta   Update:2020-6-9*
 
-​		SubShader 中定义了一系列的 **Pass（通道）** 。每个Pass定义了一次完整的渲染流程。注意Pass数目过多会造成渲染性能的下降。
+​	SubShader 中定义了一系列的 **Pass（通道）** 。每个Pass定义了一次完整的渲染流程。注意Pass数目过多会造成渲染性能的下降。
 
-​		ShaderPass中比较重要的属性：
+​**ShaderPass中比较重要的属性：**
 
-​		`renderState` 获取渲染状态。获取后还能对此进行修改。
+获取渲染状态。获取后还能对此进行修改。
+
+```typescript
+renderState(): RenderState
+```
 
 ### 1.多ShaderPass简单示例
 
-下方示例来自于官方多pass描边示例（[demo示例](http://layaair2.ldc2.layabox.com/demo2/?language=ch&category=3d&group=Shader&name=Shader_MultiplePassOutline)）。
+下方示例来自于官方多Pass描边示例（[demo示例](http://layaair2.ldc2.layabox.com/demo2/?language=ch&category=3d&group=Shader&name=Shader_MultiplePassOutline)）。
 
 ##### 第一个Pass使用的着色器：
 
@@ -130,15 +134,15 @@ static initShader() {
         'u_OutlineColor': Laya.Shader3D.PERIOD_MATERIAL,
         'u_AlbedoTexture': Laya.Shader3D.PERIOD_MATERIAL
 	};
-	//注册多pass描边Shader
+	//注册多Pass描边Shader
     var customShader = Laya.Shader3D.add("MultiplePassOutlineShader");
     //创建一个subShader
-    var subShader = new Laya.SubShader(attributeMap, uniformMap,shaderDefines);
+    var subShader = new Laya.SubShader(attributeMap, uniformMap);
     customShader.addSubShader(subShader);
     
     //添加一个Pass
     var pass1 = subShader.addShaderPass(OutlineVS, OutlineFS);
-    //剔除正面
+    //设置渲染状态，剔除正面
     pass1.renderState.cull = Laya.RenderState.CULL_FRONT;
 
     //添加第二个Pass
@@ -181,7 +185,7 @@ Laya.Mesh.load("res/threeDimen/skinModel/LayaMonkey/Assets/LayaMonkey/LayaMonkey
 
 **注意：**
 
-**1.** 在没有stateMap时，该材质是逐Shader提交。即修改一个材质的渲染状态，所有使用这个shader的材质对应渲染状态都会修改。
+**1.** 在没有stateMap时，该材质是逐Shader提交。即修改一个材质的渲染状态，所有使用这个shader的材质对应渲染状态都会修改(这是默认状态)。
 
 **2.** 在设置 stateMap 之后该材质是逐材质实例提交。即修改了一个材质的渲染状态，仅对自己本身的渲染状态修改。
 
@@ -241,21 +245,21 @@ pass1.renderState.cull = Laya.RenderState.CULL_FRONT;
 
 在stateMap中key代表的是不同的渲染状态。key的值是对应的渲染通道。key名可以按照开发者习惯自行书写。
 
-| 属性名        | 通道                                       |
-| ------------- | ------------------------------------------ |
-| 剔除          | Shader3D.RENDER_STATE_CULL                 |
-| 深度测试      | Shader3D.RENDER_STATE_DEPTH_TEST           |
-| 深度写入      | Shader3D.RENDER_STATE_DEPTH_WRITE          |
-| 混合          | Shader3D.RENDER_STATE_BLEND                |
-| 混合源        | Shader3D.RENDER_STATE_BLEND_SRC            |
-| 混合目标      | Shader3D.RENDER_STATE_BLEND_DST            |
-| 混合源RGB     | Shader3D.RENDER_STATE_BLEND_SRC_RGB        |
-| 混合目标RGB   | Shader3D.RENDER_STATE_BLEND_DST_RGB        |
-| 混合源ALPHA   | Shader3D.RENDER_STATE_BLEND_SRC_ALPHA      |
-| 混合目标ALPHA | Shader3D.RENDER_STATE_BLEND_DST_ALPHA      |
-| 混合常量颜色  | Shader3D.RENDER_STATE_BLEND_CONST_COLOR    |
-| 混合方程      | Shader3D.RENDER_STATE_BLEND_EQUATION       |
-| RGB混合方程   | Shader3D.RENDER_STATE_BLEND_EQUATION_RGB   |
+| 属性名       | 通道                                       |
+| --------- | ---------------------------------------- |
+| 剔除        | Shader3D.RENDER_STATE_CULL               |
+| 深度测试      | Shader3D.RENDER_STATE_DEPTH_TEST         |
+| 深度写入      | Shader3D.RENDER_STATE_DEPTH_WRITE        |
+| 混合        | Shader3D.RENDER_STATE_BLEND              |
+| 混合源       | Shader3D.RENDER_STATE_BLEND_SRC          |
+| 混合目标      | Shader3D.RENDER_STATE_BLEND_DST          |
+| 混合源RGB    | Shader3D.RENDER_STATE_BLEND_SRC_RGB      |
+| 混合目标RGB   | Shader3D.RENDER_STATE_BLEND_DST_RGB      |
+| 混合源ALPHA  | Shader3D.RENDER_STATE_BLEND_SRC_ALPHA    |
+| 混合目标ALPHA | Shader3D.RENDER_STATE_BLEND_DST_ALPHA    |
+| 混合常量颜色    | Shader3D.RENDER_STATE_BLEND_CONST_COLOR  |
+| 混合方程      | Shader3D.RENDER_STATE_BLEND_EQUATION     |
+| RGB混合方程   | Shader3D.RENDER_STATE_BLEND_EQUATION_RGB |
 | ALPHA混合方程 | Shader3D.RENDER_STATE_BLEND_EQUATION_ALPHA |
 
 关于各渲染状态可选项，可以查看`RenderState`中的枚举（[地址](https://layaair2.ldc2.layabox.com/api2/Chinese/index.html?category=&class=_laya_d3_core_material_renderstate_.renderstate#srcblendrgb)）。

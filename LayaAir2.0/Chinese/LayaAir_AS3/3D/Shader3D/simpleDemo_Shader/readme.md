@@ -1,8 +1,8 @@
 # 如何自定义Shader
 
-###### *version :2.3.0   Update:2019-10-8*
+###### *version :2.7.0beta   Update:2020-6-9*
 
-在这里我们将简单的介绍下如何使用自定义shader。本次是在LayaAirIDE的3D示例项目基础上修改。
+在这里我们将简单的介绍下如何使用自定义Shader。本次是在LayaAirIDE的3D示例项目基础上修改。
 
 #### 1.编写顶点着色器与片元着色器程序。
 
@@ -31,7 +31,7 @@ void main()
 }
 ```
 
-片元着色器 `simpleShader.ps` 代码如下:
+片元着色器 `simpleShader.fs` 代码如下:
 
 ```c++
 #ifdef FSHIGHPRECISION
@@ -48,41 +48,46 @@ void main()
 }
 ```
 
-放置后得到的目录结构:
-
-![](img/1.png)<br>(图1)
-
 #### 2.代码中组成Shader
 
-​		在这段代码中我们使用一个LayaCompiler编译器提供的一个宏编译函数 `__INCLUDESTR__`， 该函数包含一个文本文件到程序代码里。识别一个文本，并转换为字符串。
+在代码中**"组装"** Shader，本段代码添加在 Main.ts 。
 
-在代码中**"组装"** Shader，本段代码添加在 Main.as 。
+> 通过引用来导入着色器代码
+
+```typescript
+var simpleShaderVS:String = __INCLUDESTR__("customShader/simpleShader.vs");
+var simpleShaderFS:String = __INCLUDESTR__("customShader/simpleShader.ps");
+```
+
+> 初始化shader
 
 ```typescript
 //初始化我们的自定义shader
-public function initShader():void {
+public static function initShader() {
     
     //所有的attributeMap属性
-    var attributeMap:Object = {'a_Position': VertexMesh.MESH_POSITION0, 'a_Normal': VertexMesh.MESH_NORMAL0};
+    var attributeMap = {
+      'a_Position': Laya.VertexMesh.MESH_POSITION0, 
+      'a_Normal': Laya.VertexMesh.MESH_NORMAL0
+    };
     
     //所有的uniform属性
-    var uniformMap:Object = {'u_MvpMatrix': Shader3D.PERIOD_SPRITE, 'u_WorldMat': Shader3D.PERIOD_SPRITE};
-    
-    //通过 __INCLUDESTR__ 方法引入顶点着色器程序和片元着色器程序。
-    var vs:String = __INCLUDESTR__("customShader/simpleShader.vs");
-    var ps:String = __INCLUDESTR__("customShader/simpleShader.ps");
+    var uniformMap = {
+      'u_MvpMatrix': Laya.Shader3D.PERIOD_SPRITE, 
+      'u_WorldMat': Laya.Shader3D.PERIOD_SPRITE
+    };
     
     //注册CustomShader 
-    var customShader:Shader3D = Shader3D.add("CustomShader");
+    var customShader = Laya.Shader3D.add("CustomShader");
     
     //创建一个SubShader
-    var subShader:SubShader = new SubShader(attributeMap, uniformMap);
+    var subShader = new Laya.SubShader(attributeMap, uniformMap);
     
     //我们的自定义shader customShader中添加我们新创建的subShader
     customShader.addSubShader(subShader);
     
     //往新创建的subShader中添加shaderPass
-    subShader.addShaderPass(vs, ps);
+    subShader.addShaderPass(simpleShaderVS, simpleShaderFS);
 }
 ```
 
@@ -90,17 +95,15 @@ public function initShader():void {
 
 我们自定义材质，并且设置该材质使用的Shader。
 
+注意：在最近几个版本中材质基类由BaseMaterial变更为Material。
+
 ```typescript
-package material {
-	import laya.d3.core.material.BaseMaterial;
-	
-	public class CustomMaterial extends BaseMaterial {
-		public function CustomMaterial() {
-			super();
-			//设置本材质使用的shader名字
-			setShaderName("CustomShader");
-		}
-	}
+export class CustomMaterial extends Laya.Material {
+    public function CustomMaterial() {
+        super();
+        //设置本材质使用的shader名字
+        this.setShaderName("CustomShader");
+    }
 }
 ```
 
@@ -113,10 +116,10 @@ package material {
 	Laya.alertGlobalError = true;
 
 	//初始化自定义Shader
-    initShader();
+    this.initShader();
 
     //激活资源版本控制，版本文件由发布功能生成
-    ResourceVersion.enable("version.json", Handler.create(this, this.onVersionLoaded), ResourceVersion.FILENAME_VERSION);
+    Laya.ResourceVersion.enable("version.json", Laya.Handler.create(this, this.onVersionLoaded), Laya.ResourceVersion.FILENAME_VERSION);
 .......
 ```
 
@@ -124,19 +127,13 @@ package material {
 
 ```typescript
 //添加自定义模型
-var box:MeshSprite3D = scene.addChild(new MeshSprite3D(PrimitiveMesh.createBox(1, 1, 1))) as MeshSprite3D;
+var box = scene.addChild(new Laya.MeshSprite3D(PrimitiveMesh.createBox(1, 1, 1)));
 
 //为了更好的表现该自定义shader我们去掉模型旋转,同时给摄影机添加了移动脚本
 camera.addComponent(CameraMoveScript);
-//box.transform.rotate(new Vector3(0, 45, 0), false, false);
-// var material:BlinnPhongMaterial = new BlinnPhongMaterial();
-// Texture2D.load("res/layabox.png", Handler.create(null, function(tex:Texture2D):void {
-// 	material.albedoTexture = tex;
-// }));
-// box.meshRenderer.material = material;
 
 //创建一个自定义材质，并且添加给box
-var _material : CustomMaterial = new CustomMaterial();
+var _material = new CustomMaterial();
 box.meshRenderer.material = _material;
 ```
 
