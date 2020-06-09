@@ -95,11 +95,17 @@ Laya.loader.load("res/apes/monkey2.png",Laya.Handler.create(this,function()
 
  帧频有三种模式，
 
-- Stage.FRAME_SLOW维持FPS在30；
-- Stage.FRAME_FAST维持FPS在60；
-- Stage.FRAME_MOUSE则选择性维持FPS在30或60帧。
+- Stage.FRAME_FAST
 
- 有时并不需要让游戏以60FPS的速率执行，因为30FPS已经能够满足多数情况下人类视觉的响应，但是鼠标交互时，30FPS可能会造成画面的不连贯，于是Stage.FRAME_MOUSE应运而生。
+  fast模式，最高FPS为显示器的最大帧率，如果显示器最大帧率是60，则最大FPS为60，显示器最大帧率是120，则最大FPS为120。
+
+- Stage.FRAME_SLOW
+
+  slow模式，最高FPS为显示器最大帧率的一半，在游戏运行的过程中，引擎会隔帧丢弃。如果实际可以达到40帧，那游戏最终帧率只是20，如果帧率能达到100，那最终帧只能是50。
+
+- Stage.FRAME_MOUSE
+
+  mouse模式则选择性在fast模式与slow模式之间切换，有时并不需要让游戏以满帧速率执行，比如60帧满帧的时候，30FPS已经能够满足多数情况下人类视觉的响应，但是鼠标交互时，30FPS可能会造成画面的不连贯，于是Stage.FRAME_MOUSE应运而生。
 
  下例展示以Stage.FRAME_SLOW的帧率，在画布上移动鼠标，使圆球跟随鼠标移动：
 
