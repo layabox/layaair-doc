@@ -26,11 +26,7 @@
 
 ​        声音音量的控制 可以通过laya.media.SoundManager音频管理类中的setSoundVolume方法来设置，
 
-![blob.png](http://old.ldc.layabox.com/uploadfile/image/20170110/1484019651349259.png)
-
 ​        如上图所示，我们可以看到，通过设置volume参数，可以有效控制url所对应声音文件的音量大小。初始值为1。音量范围从 0（静音）至 1（最大音量）。
-
-
 
 ### 四、设备静音控制
 
@@ -40,8 +36,30 @@
 SoundManager.useAudioMusic=false；
 ```
 
+### 五、失去焦点的处理
+
+如果不是手机全屏游戏，或者在浏览器里交互。有可能会导致切出游戏后，失去焦点，而失去焦点后，音频也会停止播放，这是浏览器机制导致，
+
+所以需要开发者要自行在失去焦点和恢复的时候，通过侦听失去stage焦点和获得stage焦点进行控制，（在小游戏平台，也要看各小游戏的平台切出规则），浏览器中恢复的参考代码如下：
+
+```typescript
+……
+//循环播放_sound
+_sound.play(0);
+
+//失去舞台焦点（切出游戏）的处理
+Laya.stage.on(Laya.Event.BLUR, this, () => {
+    _sound.stop();
+});
+//获得舞台焦点（切回游戏）的处理
+Laya.stage.on(Laya.Event.FOCUS, this, () => {
+    _sound.play(0);
+});
+……
+```
 
 
-### 五、音乐与音效播放的完整示例
+
+### 六、音乐与音效播放的完整示例
 
 该示例的完整代码地址为：[https://layaair.ldc.layabox.com/demo/?2d&Sound&SimpleDemo](https://layaair.ldc.layabox.com/demo/?2d&Sound&SimpleDemo)
