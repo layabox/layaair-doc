@@ -1,6 +1,6 @@
 # Shader预编译
 
-###### *version :2.4.0   Update:2019-11-12*
+###### *version :2.7.0beta   Update:2020-6-10*
 
 在使用Shader时，引擎才会去编译Shader。所以在Shader较为复杂时，就有可能会导致显示卡顿。为了避开这些卡顿问题，就需要去预编译Shader。
 
@@ -8,19 +8,87 @@
 
 在2.4.0版本，我们提供了两个新的接口方便开发者预编译shader：
 
-**ShaderVariant** 着色器变种 
+**ShaderVariant** 着色器变种属性介绍
 
-![](img/new_1.png)<br>
+1.当前ShaderVariant着色器变种对应的Shader3D
 
-**ShaderVariantCollection** 着色器变种集合。
+```typescript
+public get shader(): Shader3D;
+```
 
-![](img/new_2.png)<br>
+2.子着色器索引
 
-前者记录了一个着色器变种所有的相关信息，后者用于记录所有的着色器变种。
+```typescript
+public get subShaderIndex(): number;
+```
 
-开发者可以通过 **Shader3D.debugShaderVariantCollection** [readonly] 获取到目前已有的着色器变种集合。
+3.通道索引
 
-在跑一遍游戏之后，开发者可以将收集到的数据导出生成一个JSON。在下次进入游戏时解析JSON，构建相关的ShaderVariant。再将该ShaderVariant添加到 **Shader3D.debugShaderVariantCollection** 中，添加完成后，执行 **Shader3D.debugShaderVariantCollection.compile()** 即可完成相关shader预编译。
+```typescript
+public get passIndex(): number;
+```
+
+4.宏定义集合
+
+```typescript
+public get defineNames(): Readonly<string[]>
+```
+
+5.判断两个着色器变种是否相等
+
+```typescript
+equal(other: ShaderVariant): boolean;
+```
+
+着色器变种记录了一个着色器变种所有的相关信息，即通过这个着色器变种即可以为创建一个着色器程序提供完整的信息。考虑一个着色器程序的差异，一般在于着色器中传递给Pass的顶点着色器和片元着色器以及编译这个着色器程序使用的特定宏(即使使用相同的顶点着色器和片元着色器源码，使用不同的宏便对应生成不同的着色器程序)。
+
+
+
+**ShaderVariantCollection** 着色器变种集合属性介绍
+
+1.是否已经全部编译
+
+```typescript
+get allCompiled(): boolean;
+```
+
+2.包含的变种数量
+
+```typescript
+get variantCount(): number
+```
+
+3.添加着色器变种
+
+```typescript
+add(variant: ShaderVariant): boolean;
+```
+
+4.移除着色器变种
+
+```typescript
+remove(variant: ShaderVariant): boolean;
+```
+
+5.是否包含着色器变种
+
+```typescript
+contatins(variant: ShaderVariant): boolean;
+```
+
+6.执行编译(compile会遍历着色器变种集合中的所有着色器变种，依据每个着色器变种的信息，分别编译出一个Shader)
+
+```typescript
+compile(): void;
+```
+
+
+
+**预编译的基本原理：**
+
+ShaderVariantCollection记录了所有的ShaderVariant着色器变种，全局有一个Shader3D.debugShaderVariantCollection负责作为ShaderVariantCollection进行记录，只有通过Laya.Shader3D.debugMode = true;开启了Shader调试，Shader3D.debugShaderVariantCollection才会进行记录。在跑一遍游戏之后，开发者可以将收集到的数据(记录在Shader3D.debugShaderVariantCollection中的信息)导出生成一个JSON。在下次进入游戏时解析JSON，构建相关的ShaderVariant。再将该ShaderVariant添加到 Shader3D.debugShaderVariantCollection 中，添加完成后，执行 Shader3D.debugShaderVariantCollection.compile() 即可完成相关shader预编译。
+
+
 
 > 当鼠标按下时，构建需要导出的Object。下方示例改自官方边缘光照(Shader_GlowingEdge)示例
 

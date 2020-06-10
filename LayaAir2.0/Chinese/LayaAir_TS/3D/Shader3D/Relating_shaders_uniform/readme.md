@@ -1,6 +1,6 @@
 # 关联shader的uniform
 
-###### *version :2.3.0   Update:2019-10-8*
+###### *version :2.7.0bate   Update:2020-6-9*
 
 这里我们使用官网示例（[demo地址](http://layaair2.ldc2.layabox.com/demo2/?language=ch&category=3d&group=Shader&name=Shader_MultiplePassOutline)）---**描边Shader（多Pass）** 中的shader作为案例来进行讲解。
 
@@ -96,9 +96,11 @@ void main()
 
 ### 1.定义自定义属性
 
-**BaseMaterail** 是所有的材质的基类。BaseMaterail 的 `_shaderValues:ShaderData` 就是材质的属性。
+**Material** 是所有的材质的基类。Material的_shaderValues:ShaderData 就是材质的属性。ShaderData是着色器数据类，记录着有关着色器的各种属性的值，包括各种uniform值、渲染状态值以及宏定义。
 
-在初始化Shader之后（该Shader的初始化在**SubShader介绍篇**有详细讲解），如果在该Shader中有 PERIOD_MATERIAL（逐材质）的提交的uniform值，开发者就需要使用 `_shaderValues` 来绑定Shader属性。绑定Shader属性之后，修改材质的属性引擎会自动关联到相关的Shader属性。
+在初始化Shader之后（该Shader的初始化在**SubShader介绍篇**有详细讲解），如果在该Shader中有 PERIOD_MATERIAL（逐材质）的提交的uniform值，开发者就需要使用_shaderValues来绑定Shader属性。绑定Shader属性之后，修改材质的属性引擎会自动关联到相关的Shader属性。
+
+`注意：在最近几个版本中材质基类由BaseMaterial变更为Material。`
 
 然后我们分析下前面的着色器代码与初始化Shader时的uniformMap：
 
@@ -115,21 +117,21 @@ var uniformMap = {
 }
 ```
 
-在该着色器中我们使用了6个 `uniform`：
+在该着色器中我们使用了6个 uniform：
 
-`u_MvpMatrix` MVP矩阵
+`u_MvpMatrix` ：MVP矩阵
 
-`u_WorldMat` 世界矩阵 
+`u_WorldMat`： ：世界矩阵 
 
 这两个值都是逐精灵的uniform，会由引擎处理并进行传入。如果没有需求的话，可以不用在自己的自定义shader中对这两个属性进行绑定设置。
 
-`u_OutlineColor` 描边颜色
+`u_OutlineColor` ：描边颜色
 
-`u_OutlineLightness` 描边亮度 
+`u_OutlineLightness` ：描边亮度 
 
-`u_AlbedoTexture` 漫反射贴图
+`u_AlbedoTexture` ：漫反射贴图
 
-`u_OutlineWidth` 描边宽度
+`u_OutlineWidth` ：描边宽度
 
 以上四个参数是我们设置的逐材质的uniform，这就需要开发者自己通过 _shaderValues 提交 uniform。
 

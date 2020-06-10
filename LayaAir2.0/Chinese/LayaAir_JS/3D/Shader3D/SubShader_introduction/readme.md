@@ -1,77 +1,182 @@
 # SubShader介绍
 
-###### *version :2.3.0   Update:2019-10-8*
+###### *version :2.7.0beta   Update:2020-6-9*
 
-​		**SubShader 子着色器**可以理解为Shader的渲染方案。每个Shader至少1个subShader，可以有多个subShader。
+​	**SubShader 子着色器**可以理解为Shader的渲染方案。每个Shader至少1个subShader，可以有多个subShader。
 
-​		在LayaAir3D中的SubShader属性介绍：
+**在LayaAir3D中的SubShader属性介绍：**
 
-​		`setFlag` 添加标记。
+- 1.构造函数，需要两个参数，一个是attributeMap，一个是uniformMap，attributeMap定义了顶点的属性信息，对应的Shader中的attribute属性，attributeMap是一个映射，key是attribute属性的名称，value是一个索引值。uniformMap也是一个映射，key是uniform属性的名称，value是这个unifrom的提交周期。
 
-​		`getFlag` 获取标记。
+  提交周期的说明：提交周期表示当前的uniform更新的一种时机。
 
-​		`addShaderPass` 添加一个ShaderPass。
+  目前支持的周期类型：
 
-### 1. 创建一个SubShader
+  **Shader3D.PERIOD_CAMERA**     :shader变量提交周期，逐相机。
 
-在前面的简单自定义shader使用中我们已经简单的接触到了subshader，并且已经使用了最重要的 `addShaderPass` 增加一个ShaderPass接口。
+  **Shader3D.PERIOD_CUSTOM**     :shader变量提交周期，自定义。
+
+  **Shader3D.PERIOD_MATERIAL**  :shader变量提交周期，逐材质。
+
+  **Shader3D.PERIOD_SCENE**         :shader变量提交周期，逐场景。
+
+  **Shader3D.PERIOD_SPRITE **       :shader变量提交周期，逐精灵和相机，注：因为精灵包含MVP矩阵，为复合属性，所以摄像机发生变化时也应提交。
+
+  逐场景，逐相机，逐精灵和相机，这三种周期的uniform是引擎自动传入的值。即当场景，相机，精灵与相机任意一个的属性有变化时，引擎会自动提交相应的变动。
 
 ```typescript
- //所有的attributeMap属性
-var attributeMap = {
-    'a_Position': Laya.VertexMesh.MESH_POSITION0,
-    'a_Normal': Laya.VertexMesh.MESH_NORMAL0
-};
-
-//所有的uniform属性
-var uniformMap = {
-    'u_MvpMatrix': Laya.Shader3D.PERIOD_SPRITE, 
-    'u_WorldMat': Laya.Shader3D.PERIOD_SPRITE
-};
-
-//注册CustomShader 
-var customShader = Laya.Shader3D.add("CustomShader");
-
-//创建一个SubShader
-var subShader = new Laya.SubShader(attributeMap, uniformMap);
-
-//我们的自定义shader customShader中添加我们新创建的subShader
-customShader.addSubShader(subShader);
-
-//往新创建的subShader中添加shaderPass
-subShader.addShaderPass(simpleShaderVS, simpleShaderFS);
+constructor(attributeMap, uniformMap)
 ```
 
-### 2. attributeMap 与 uniformMap
+- 2.添加标记。
 
-这里我们着重讲解创建SubShader时需要的两个重要的参数：`attributeMap`，`uniformMap`。
+```typescript
+setFlag(key, value)
+```
 
-> 关于 `spriteDefines` 与 `materialDefines` 会在后面的 **Shader宏定义** 篇讲解。同时在2.3.*版本已经优化了SubShader创建，可以不用再传这两个属性。
+- 3.获取标记
 
-![](img/1.png)<br>
+```typescript
+getFlag(key)
+```
 
-这两个**Object**都是以自己Shader中的 attribute变量名 或者 uniform变量名 为 key，例如 a_Position ， u_MvpMatrix。
+- 4.添加着色器Pass：
 
-**attributeMap** 中key对应的value是该属性在渲染时所对应的顶点通道。
+  vs：该Pass使用的顶点着色器文件
 
-**uniformMap** 中key对应的value是该属性的提交周期。
+  ps：该Pass使用的片元着色器文件
 
-`uniformMap` 目前支持的周期类型：
+  stateMap:是一个映射，key为渲染状态的名称，value为其对应的索引，常用的渲染状态有Cull、Blend、BlendSrc、BlendDst、DepthTest、DepthWrite。
 
-**Shader3D.PERIOD_CAMERA**     :shader变量提交周期，逐相机。
+  pipelineMode：是最近几个版本引进的一个属性，它指的是当前使用的渲染管线，类似Unity中的渲染路径概念，目前截至到LayaAir 2.7.0beta，Laya支持"Forward"和"ShadowCaster"两种pipelineMode，
 
-**Shader3D.PERIOD_CUSTOM**     :shader变量提交周期，自定义。
+  "Forward"表示当前的渲染时前向渲染路径，"ShadowCaster"表示当前渲染是渲染阴影贴图的渲染路径(将物体的深度信息渲染到一张阴影贴图中或者深度纹理中)。后续版本或逐步增加Defered，延迟渲染路径。
 
-**Shader3D.PERIOD_MATERIAL**  :shader变量提交周期，逐材质。
+  当SubShader中含有多个Pass的时候，那么每一个Pass都会对精灵进行一次渲染。
 
-**Shader3D.PERIOD_SCENE**         :shader变量提交周期，逐场景。
+```typescript
+addShaderPass(vs, ps, stateMap = null, pipelineMode = "Forward")
+```
 
-**Shader3D.PERIOD_SPRITE **       :shader变量提交周期，逐精灵和相机，注：因为精灵包含MVP矩阵，为复合属性，所以摄像机发生变化时也应提交。
 
-逐场景，逐相机，逐精灵和相机，这三种周期的uniform是引擎自动传入的值。即当场景，相机，精灵与相机随意一个有变化时，引擎会自动提交变动
 
-逐材质与自定义周期的uniform都是由开发者接管的传入。像官方示例 多Pass描边shader中（[demo地址](http://layaair2.ldc2.layabox.com/demo2/?language=ch&category=3d&group=Shader&name=Shader_MultiplePassOutline)），开发者自己处理的**描边颜色**，**描边线宽**等uniform值。（关于开发者如何自己处理uniform值会在 **关联shader的uniform** 篇中讲解）
+**以引擎的BlinnPhongMaterial的Shader"BLINNPHONG"进行说明：**
 
-关于引擎支持的attribute，与由引擎处理的uniform可以查看对应表格。（attribute表格，uniform表格）
+```typescript
+//引入Shader需要使用的其他库文件
+Shader3D.addInclude("Lighting.glsl", LightingGLSL);
+Shader3D.addInclude("ShadowSampleTent.glsl", ShadowSampleTentGLSL);
+Shader3D.addInclude("GlobalIllumination.glsl", GlobalIllumination)
+Shader3D.addInclude("Shadow.glsl", ShadowGLSL);
+Shader3D.addInclude("ShadowCasterVS.glsl", ShadowCasterVSGLSL);
+Shader3D.addInclude("ShadowCasterFS.glsl", ShadowCasterFSGLSL);
+Shader3D.addInclude("Colors.glsl", ColorsGLSL);
+Shader3D.addInclude("Sampling.glsl", SamplingGLSL);
+Shader3D.addInclude("StdLib.glsl", StdLibGLSL);
+Shader3D.addInclude("PBRVSInput.glsl", PBRVSInput);
+Shader3D.addInclude("PBRFSInput.glsl", PBRFSInput);
+Shader3D.addInclude("LayaPBRBRDF.glsl", LayaPBRBRDF);
+Shader3D.addInclude("PBRCore.glsl", PBRCore);
+Shader3D.addInclude("PBRVertex.glsl", PBRVertex);
+
+//定义BLINNPHONG的attributeMap
+var attributeMap = {
+  'a_Position': VertexMesh.MESH_POSITION0,
+  'a_Color': VertexMesh.MESH_COLOR0,
+  'a_Normal': VertexMesh.MESH_NORMAL0,
+  'a_Texcoord0': VertexMesh.MESH_TEXTURECOORDINATE0,
+  'a_Texcoord1': VertexMesh.MESH_TEXTURECOORDINATE1,
+  'a_BoneWeights': VertexMesh.MESH_BLENDWEIGHT0,
+  'a_BoneIndices': VertexMesh.MESH_BLENDINDICES0,
+  'a_Tangent0': VertexMesh.MESH_TANGENT0,
+  'a_MvpMatrix': VertexMesh.MESH_MVPMATRIX_ROW0,
+  'a_WorldMat': VertexMesh.MESH_WORLDMATRIX_ROW0
+};
+//定义BLINNPHONG的uniformMap
+var uniformMap = {
+  'u_Bones': Shader3D.PERIOD_CUSTOM,
+  'u_DiffuseTexture': Shader3D.PERIOD_MATERIAL,
+  'u_SpecularTexture': Shader3D.PERIOD_MATERIAL,
+  'u_NormalTexture': Shader3D.PERIOD_MATERIAL,
+  'u_AlphaTestValue': Shader3D.PERIOD_MATERIAL,
+  'u_DiffuseColor': Shader3D.PERIOD_MATERIAL,
+  'u_MaterialSpecular': Shader3D.PERIOD_MATERIAL,
+  'u_Shininess': Shader3D.PERIOD_MATERIAL,
+  'u_TilingOffset': Shader3D.PERIOD_MATERIAL,
+
+  'u_WorldMat': Shader3D.PERIOD_SPRITE,
+  'u_MvpMatrix': Shader3D.PERIOD_SPRITE,
+  'u_LightmapScaleOffset': Shader3D.PERIOD_SPRITE,
+  'u_LightMap': Shader3D.PERIOD_SPRITE,
+  'u_LightMapDirection': Shader3D.PERIOD_SPRITE,
+
+  'u_CameraPos': Shader3D.PERIOD_CAMERA,
+  'u_Viewport': Shader3D.PERIOD_CAMERA,
+  'u_ProjectionParams': Shader3D.PERIOD_CAMERA,
+  'u_View': Shader3D.PERIOD_CAMERA,
+  'u_ViewProjection': Shader3D.PERIOD_CAMERA,
+
+  'u_ReflectTexture': Shader3D.PERIOD_SCENE,
+  'u_ReflectIntensity': Shader3D.PERIOD_SCENE,
+  'u_FogStart': Shader3D.PERIOD_SCENE,
+  'u_FogRange': Shader3D.PERIOD_SCENE,
+  'u_FogColor': Shader3D.PERIOD_SCENE,
+  'u_DirationLightCount': Shader3D.PERIOD_SCENE,
+  'u_LightBuffer': Shader3D.PERIOD_SCENE,
+  'u_LightClusterBuffer': Shader3D.PERIOD_SCENE,
+  'u_AmbientColor': Shader3D.PERIOD_SCENE,
+  'u_ShadowBias': Shader3D.PERIOD_SCENE,
+  'u_ShadowLightDirection': Shader3D.PERIOD_SCENE,
+  'u_ShadowMap': Shader3D.PERIOD_SCENE,
+  'u_ShadowParams': Shader3D.PERIOD_SCENE,
+  'u_ShadowSplitSpheres': Shader3D.PERIOD_SCENE,
+  'u_ShadowMatrices': Shader3D.PERIOD_SCENE,
+  'u_ShadowMapSize': Shader3D.PERIOD_SCENE,
+  'u_SpotShadowMap':Shader3D.PERIOD_SCENE,
+  'u_SpotViewProjectMatrix':Shader3D.PERIOD_SCENE,
+  'u_ShadowLightPosition':Shader3D.PERIOD_SCENE,
+
+  //GI
+  'u_AmbientSHAr': Shader3D.PERIOD_SCENE,
+  'u_AmbientSHAg': Shader3D.PERIOD_SCENE,
+  'u_AmbientSHAb': Shader3D.PERIOD_SCENE,
+  'u_AmbientSHBr': Shader3D.PERIOD_SCENE,
+  'u_AmbientSHBg': Shader3D.PERIOD_SCENE,
+  'u_AmbientSHBb': Shader3D.PERIOD_SCENE,
+  'u_AmbientSHC': Shader3D.PERIOD_SCENE,
+
+  //legacy lighting
+  'u_DirectionLight.color': Shader3D.PERIOD_SCENE,
+  'u_DirectionLight.direction': Shader3D.PERIOD_SCENE,
+  'u_PointLight.position': Shader3D.PERIOD_SCENE,
+  'u_PointLight.range': Shader3D.PERIOD_SCENE,
+  'u_PointLight.color': Shader3D.PERIOD_SCENE,
+  'u_SpotLight.position': Shader3D.PERIOD_SCENE,
+  'u_SpotLight.direction': Shader3D.PERIOD_SCENE,
+  'u_SpotLight.range': Shader3D.PERIOD_SCENE,
+  'u_SpotLight.spot': Shader3D.PERIOD_SCENE,
+  'u_SpotLight.color': Shader3D.PERIOD_SCENE
+};
+//定义BLINNPHONG的uniformMap
+var stateMap = {
+  's_Cull': Shader3D.RENDER_STATE_CULL,
+  's_Blend': Shader3D.RENDER_STATE_BLEND,
+  's_BlendSrc': Shader3D.RENDER_STATE_BLEND_SRC,
+  's_BlendDst': Shader3D.RENDER_STATE_BLEND_DST,
+  's_DepthTest': Shader3D.RENDER_STATE_DEPTH_TEST,
+  's_DepthWrite': Shader3D.RENDER_STATE_DEPTH_WRITE
+}
+//调用Shader3D的静态函数创建一个Shader3D
+var shader = Shader3D.add("BLINNPHONG", null, null, true);
+//创建一个SubShader
+var subShader = new SubShader(attributeMap, uniformMap);
+//为Shader3D添加一个SubShader
+shader.addSubShader(subShader);
+//为SubShader添加一个ShaderPass，其中MeshBlinnPhongVS为顶点着色器文件，MeshBlinnPhongPS为片元着色器文件，stateMap为渲染状态数组，"Forward"指定该Pass使用前向渲染路径
+subShader.addShaderPass(MeshBlinnPhongVS, MeshBlinnPhongPS, stateMap, "Forward");
+//再创建一个ShaderPass，作为渲染阴影贴图的使用，MeshBlinnPhongShadowCasterVS是阴影贴图的顶点着色器文件，MeshBlinnPhongShadowCasterPS是阴影贴图的片元着色器文件"ShadowCaster"指定该Pass使用阴影贴图渲染路径。
+var shaderPass = subShader.addShaderPass(MeshBlinnPhongShadowCasterVS, MeshBlinnPhongShadowCasterPS, stateMap, "ShadowCaster");
+```
+
 
 

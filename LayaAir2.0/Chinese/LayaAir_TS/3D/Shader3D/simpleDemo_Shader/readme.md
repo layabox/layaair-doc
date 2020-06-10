@@ -1,8 +1,8 @@
 # 如何自定义Shader
 
-###### *version :2.3.0   Update:2019-10-8*
+###### *version :2.7.0beta   Update:2020-6-9*
 
-在这里我们将简单的介绍下如何使用自定义shader。本次是在LayaAirIDE的3D示例项目基础上修改。
+在这里我们将简单的介绍下如何使用自定义Shader。本次是在LayaAirIDE的3D示例项目基础上修改。
 
 #### 1.编写顶点着色器与片元着色器程序。
 
@@ -66,10 +66,16 @@ import simpleShaderVS from "./simpleShader.vs";
 initShader() {
     
     //所有的attributeMap属性
-    var attributeMap = {'a_Position': Laya.VertexMesh.MESH_POSITION0, 'a_Normal': Laya.VertexMesh.MESH_NORMAL0};
+    var attributeMap = {
+      'a_Position': Laya.VertexMesh.MESH_POSITION0, 
+      'a_Normal': Laya.VertexMesh.MESH_NORMAL0
+    };
     
     //所有的uniform属性
-    var uniformMap = {'u_MvpMatrix': Laya.Shader3D.PERIOD_SPRITE, 'u_WorldMat': Laya.Shader3D.PERIOD_SPRITE};
+    var uniformMap = {
+      'u_MvpMatrix': Laya.Shader3D.PERIOD_SPRITE, 
+      'u_WorldMat': Laya.Shader3D.PERIOD_SPRITE
+    };
     
     //注册CustomShader 
     var customShader = Laya.Shader3D.add("CustomShader");
@@ -89,8 +95,10 @@ initShader() {
 
 我们自定义材质，并且设置该材质使用的Shader。
 
+注意：在最近几个版本中材质基类由BaseMaterial变更为Material。
+
 ```typescript
-export class CustomMaterial extends Laya.BaseMaterial {
+export class CustomMaterial extends Laya.Material {
     constructor() {
         super();
         //设置本材质使用的shader名字
@@ -123,12 +131,6 @@ var box = scene.addChild(new Laya.MeshSprite3D(PrimitiveMesh.createBox(1, 1, 1))
 
 //为了更好的表现该自定义shader我们去掉模型旋转,同时给摄影机添加了移动脚本
 camera.addComponent(CameraMoveScript);
-//box.transform.rotate(new Laya.Vector3(0, 45, 0), false, false);
-// var material:BlinnPhongMaterial = new Laya.BlinnPhongMaterial();
-// Laya.Texture2D.load("res/layabox.png", Laya.Handler.create(null, function(tex) {
-// 	material.albedoTexture = tex;
-// }));
-// box.meshRenderer.material = material;
 
 //创建一个自定义材质，并且添加给box
 var _material = new CustomMaterial();

@@ -1,6 +1,6 @@
 # 注册宏定义与使用宏
 
-###### *version :2.3.0   Update:2019-10-8*
+###### *version :2.7.0beta   Update:2020-6-9*
 
 开发者如果在着色器代码中有使用到宏的话，开发者需要使用 Shader3D 的 `getDefineByName` 接口注册宏定义。
 
@@ -44,7 +44,7 @@ static __init__(){
 }
 ```
 
-宏在注册完成后，开发者可以通过 **BaseMaterial** 的 `_shaderValues:ShaderData` 属性中的 `addDefine`与 `removeDefine`  来添加与移除宏定义。
+宏在注册完成后，开发者可以通过 **Material** 的 `_shaderValues:ShaderData` 属性中的 `addDefine`与 `removeDefine`  来添加与移除宏定义。
 
 > 注意：添加与移除宏定义的操作整合进ShaderData是2.2.0版本的优化，在这之前的版本开发者需要使用         _defineDatas:DefineDatas 属性的 add 与 remove 方法。新版本也兼容使用 _defineDatas 添加移除宏。
 

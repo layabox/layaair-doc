@@ -1,6 +1,6 @@
 # 关联shader的uniform
 
-###### *version :2.3.0   Update:2019-10-8*
+###### *version :2.7.0bate   Update:2020-6-9*
 
 这里我们使用官网示例（[demo地址](http://layaair2.ldc2.layabox.com/demo2/?language=ch&category=3d&group=Shader&name=Shader_MultiplePassOutline)）---**描边Shader（多Pass）** 中的shader作为案例来进行讲解。
 
@@ -96,40 +96,42 @@ void main()
 
 ### 1.定义自定义属性
 
-**BaseMaterail** 是所有的材质的基类。BaseMaterail 的 `_shaderValues:ShaderData` 就是材质的属性。
+**Material** 是所有的材质的基类。Material的_shaderValues:ShaderData 就是材质的属性。ShaderData是着色器数据类，记录着有关着色器的各种属性的值，包括各种uniform值、渲染状态值以及宏定义。
 
-在初始化Shader之后（该Shader的初始化在**ShaderPass介绍篇**有详细讲解），如果在该Shader中有 PERIOD_MATERIAL（逐材质）的提交的uniform值，开发者就需要使用 `_shaderValues` 来绑定Shader属性。绑定Shader属性之后，修改材质的属性引擎会自动关联到相关的Shader属性。
+在初始化Shader之后（该Shader的初始化在**SubShader介绍篇**有详细讲解），如果在该Shader中有 PERIOD_MATERIAL（逐材质）的提交的uniform值，开发者就需要使用_shaderValues来绑定Shader属性。绑定Shader属性之后，修改材质的属性引擎会自动关联到相关的Shader属性。
+
+`注意：在最近几个版本中材质基类由BaseMaterial变更为Material。`
 
 然后我们分析下前面的着色器代码与初始化Shader时的uniformMap：
 
 > 初始化时的uniformMap
 
 ```typescript
-var uniformMap:Object = {
-    'u_MvpMatrix': Shader3D.PERIOD_SPRITE,
-    'u_WorldMat': Shader3D.PERIOD_SPRITE,
-    'u_OutlineWidth': Shader3D.PERIOD_MATERIAL,
-    'u_OutlineLightness': Shader3D.PERIOD_MATERIAL,
-    'u_OutlineColor': Shader3D.PERIOD_MATERIAL,
-    'u_AlbedoTexture': Shader3D.PERIOD_MATERIAL
+var uniformMap = {
+    'u_MvpMatrix': Laya.Shader3D.PERIOD_SPRITE,
+    'u_WorldMat': Laya.Shader3D.PERIOD_SPRITE,
+    'u_OutlineWidth': Laya.Shader3D.PERIOD_MATERIAL,
+    'u_OutlineLightness': Laya.Shader3D.PERIOD_MATERIAL,
+    'u_OutlineColor': Laya.Shader3D.PERIOD_MATERIAL,
+    'u_AlbedoTexture': Laya.Shader3D.PERIOD_MATERIAL
 }
 ```
 
-在该着色器中我们使用了6个 `uniform`：
+在该着色器中我们使用了6个 uniform：
 
-`u_MvpMatrix` MVP矩阵
+`u_MvpMatrix` ：MVP矩阵
 
-`u_WorldMat` 世界矩阵 
+`u_WorldMat`： ：世界矩阵 
 
 这两个值都是逐精灵的uniform，会由引擎处理并进行传入。如果没有需求的话，可以不用在自己的自定义shader中对这两个属性进行绑定设置。
 
-`u_OutlineColor` 描边颜色
+`u_OutlineColor` ：描边颜色
 
-`u_OutlineLightness` 描边亮度 
+`u_OutlineLightness` ：描边亮度 
 
-`u_AlbedoTexture` 漫反射贴图
+`u_AlbedoTexture` ：漫反射贴图
 
-`u_OutlineWidth` 描边宽度
+`u_OutlineWidth` ：描边宽度
 
 以上四个参数是我们设置的逐材质的uniform，这就需要开发者自己通过 _shaderValues 提交 uniform。
 
@@ -137,15 +139,15 @@ var uniformMap:Object = {
 
 > 使用 **Shader3D** 中的 `propertyNameToID` 方法关联 材质的 _shaderValues 与 shader uniform。
 
-```typescript
+```javascript
 //绑定漫反射贴图
-public static const ALBEDOTEXTURE:int = Shader3D.propertyNameToID("u_AlbedoTexture");
+public static var ALBEDOTEXTURE = Laya.Shader3D.propertyNameToID("u_AlbedoTexture");
 //绑定描边颜色
-public static const OUTLINECOLOR:int = Shader3D.propertyNameToID("u_OutlineColor");
+public static var OUTLINECOLOR = Laya.Shader3D.propertyNameToID("u_OutlineColor");
 //绑定描边宽度
-public static const OUTLINEWIDTH:int = Shader3D.propertyNameToID("u_OutlineWidth");
+public static var OUTLINEWIDTH = Laya.Shader3D.propertyNameToID("u_OutlineWidth");
 //绑定描边亮度
-public static const OUTLINELIGHTNESS:int=Shader3D.propertyNameToID("u_OutlineLightness");
+public static var OUTLINELIGHTNESS = Laya.Shader3D.propertyNameToID("u_OutlineLightness");
 ```
 
 关联完成后，就可以通过获取到的ID就可以去修改对应的属性了。
@@ -159,64 +161,64 @@ public static const OUTLINELIGHTNESS:int=Shader3D.propertyNameToID("u_OutlineLig
  * 获取漫反射贴图。
  * @return 漫反射贴图。
  */
-public function get albedoTexture():BaseTexture {
-    return _shaderValues.getTexture(ALBEDOTEXTURE);
+public function get albedoTexture(){
+    return this._shaderValues.getTexture(MultiplePassOutlineMaterial.ALBEDOTEXTURE);
 }
 
 /**
  * 设置漫反射贴图。
  * @param value 漫反射贴图。
  */
-public function set albedoTexture(value:BaseTexture):void {
+public function set albedoTexture(value) {
     if (value)
-        _defineDatas.add(MultiplePassOutlineMaterial.SHADERDEFINE_ALBEDOTEXTURE);
+        this._defineDatas.add(MultiplePassOutlineMaterial.SHADERDEFINE_ALBEDOTEXTURE);
     else
-        _defineDatas.remove(MultiplePassOutlineMaterial.SHADERDEFINE_ALBEDOTEXTURE);
-    _shaderValues.setTexture(ALBEDOTEXTURE, value);
+        this._defineDatas.remove(MultiplePassOutlineMaterial.SHADERDEFINE_ALBEDOTEXTURE);
+    this._shaderValues.setTexture(MultiplePassOutlineMaterial.ALBEDOTEXTURE, value);
 }
 /**
  * 获取线条颜色
  * @return 线条颜色
  */
-public function get outlineColor():Color {
-    return _shaderValues.getVector(OUTLINECOLOR);
+public function get outlineColor() {
+    return this._shaderValues.getVector(MultiplePassOutlineMaterial.OUTLINECOLOR);
 }
 
-public function set outlineColor(value:Color):void {
-    _shaderValues.setVector(OUTLINECOLOR, value);
+public function set outlineColor(value) {
+    this._shaderValues.setVector(MultiplePassOutlineMaterial.OUTLINECOLOR, value);
 }
 /**
  * 获取轮廓宽度。
  * @return 轮廓宽度,范围为0到0.05。
  */
-public function get outlineWidth():Number {
-    return _shaderValues.getNumber(OUTLINEWIDTH);
+public function get outlineWidth(){
+    return this._shaderValues.getNumber(MultiplePassOutlineMaterial.OUTLINEWIDTH);
 }
 
 /**
  * 设置轮廓宽度。
  * @param value 轮廓宽度,范围为0到0.05。
  */
-public function set outlineWidth(value:Number):void {
+public function set outlineWidth(value){
     value = Math.max(0.0, Math.min(0.05, value));
-    _shaderValues.setNumber(OUTLINEWIDTH, value);
+    this._shaderValues.setNumber(MultiplePassOutlineMaterial.OUTLINEWIDTH, value);
 }
 
 /**
  * 获取轮廓亮度。
  * @return 轮廓亮度,范围为0到1。
  */
-public function get outlineLightness():Number {
-    return _shaderValues.getNumber(OUTLINELIGHTNESS);
+public function get outlineLightness() {
+    return this._shaderValues.getNumber(MultiplePassOutlineMaterial.OUTLINELIGHTNESS);
 }
 
 /**
  * 设置轮廓亮度。
  * @param value 轮廓亮度,范围为0到1。
  */
-public function set outlineLightness(value:Number):void {
+public function set outlineLightness(value){
     value = Math.max(0.0, Math.min(1.0, value));
-    _shaderValues.setNumber(OUTLINELIGHTNESS, value);
+    this._shaderValues.setNumber(MultiplePassOutlineMaterial.OUTLINELIGHTNESS, value);
 }
 ```
 
@@ -228,23 +230,23 @@ public function set outlineLightness(value:Number):void {
 
 ```typescript
 //加载网格
-Mesh.load("res/threeDimen/skinModel/LayaMonkey/Assets/LayaMonkey/LayaMonkey-LayaMonkey.lm", Handler.create(this, function(mesh:Mesh):void {
+Laya.Mesh.load("res/threeDimen/skinModel/LayaMonkey/Assets/LayaMonkey/LayaMonkey-LayaMonkey.lm", Laya.Handler.create(this, function(mesh) {
     //设置猴子
-    var layaMonkey:MeshSprite3D = scene.addChild(new MeshSprite3D(mesh)) as MeshSprite3D;
-    layaMonkey.transform.localScale = new Vector3(0.3, 0.3, 0.3);
-    layaMonkey.transform.rotation = new Quaternion(0.7071068, 0, 0, -0.7071067);
+    var layaMonkey = scene.addChild(new Laya.MeshSprite3D(mesh));
+    layaMonkey.transform.localScale = new Laya.Vector3(0.3, 0.3, 0.3);
+    layaMonkey.transform.rotation = new Laya.Quaternion(0.7071068, 0, 0, -0.7071067);
     //创建材质
-    var customMaterial:MultiplePassOutlineMaterial = new MultiplePassOutlineMaterial();
+    var customMaterial = new Laya.MultiplePassOutlineMaterial();
     //漫反射贴图
-    Texture2D.load("res/threeDimen/skinModel/LayaMonkey/Assets/LayaMonkey/diffuse.png", Handler.create(this, function(texture:Texture2D):void {
+  Laya.Texture2D.load("res/threeDimen/skinModel/LayaMonkey/Assets/LayaMonkey/diffuse.png", Laya.Handler.create(this, function(texture) {
         //设置多描边材质的贴图
         customMaterial.albedoTexture = texture;
     }));
     //设置材质
     layaMonkey.meshRenderer.sharedMaterial = customMaterial;
     //开启旋转
-    Laya.timer.frameLoop(1, this, function():void {
-        layaMonkey.transform.rotate(rotation, false);
+    Laya.timer.frameLoop(1, this, function() {
+        layaMonkey.transform.rotate(this.rotation, false);
     });
 }));
 ```
@@ -253,5 +255,5 @@ Mesh.load("res/threeDimen/skinModel/LayaMonkey/Assets/LayaMonkey/LayaMonkey-Laya
 
 
 
-#### 
+####  
 
