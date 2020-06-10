@@ -1,6 +1,6 @@
 # 资源加载
 
-###### *version :2.0.1beta   Update:2019-3-19*
+###### *version :2.7.0beta   Update:2020-6-10*
 
 讲完了资源的各种类型，我们来实际操作进行加载这些资源。本次示例地址（[demo地址](https://layaair.ldc.layabox.com/demo2/?language=ch&category=3d&group=Resource&name=LoadResourceDemo)）;
 
@@ -133,8 +133,8 @@ Laya.Sprite3D.load("res/threeDimen/skinModel/BoneLinkScene/PangZiNoAni.lh", Laya
         state1.clip = aniClip;
         //设置动作循环
         state1.clip.islooping = true;
-        //为动画组件添加一个动作状态
-        pangziAnimator.addState(state1);
+     	//为动画组件添加一个动作状态
+		pangziAnimator.getControllerLayer(0).addState(state1);
         //播放动作
         pangziAnimator.play("hello");
     }));
@@ -237,7 +237,7 @@ onPreLoadFinish() {
     //设置动作循环
     state1.clip.islooping = true;
     //为动画组件添加一个动作状态
-    pangziAnimator.addState(state1);
+	pangziAnimator.getControllerLayer(0).addState(state1);
     //播放动作
     pangziAnimator.play("hello");
 }
