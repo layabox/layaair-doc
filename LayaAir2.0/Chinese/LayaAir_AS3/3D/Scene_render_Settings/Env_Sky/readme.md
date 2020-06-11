@@ -37,3 +37,20 @@ BaseMaterial.load("res/threeDimen/skyBox/skyBox1/SkyBox.lmat", Handler.create(nu
 
 ![](img/3.png)<br>（图3）
 
+
+
+**使用Unity的全景天空盒**
+
+1.在Unity的Assets资源路径下创建一个Material，命名为LayaPanoramaSkyBoxMaterial。
+
+2.在Inspector面板选择Shader为LayaAir/Sky/Panoramic。选择Spherical(HDR)的纹理，选择一张HDR的天空盒图片panorama_512.hdr。
+
+![](img/LayaPanoramaSkyBoxMaterial.jpg)
+
+3.在场景配置中使用这个天空盒材质。打开Window->Rendering->Lighting Settings。
+
+Environment->Skybox Material选择要使用的天空盒材质。
+
+![](img/skySet.jpg)
+
+4.导出资源时，无需做其他额外的配置，全景天空盒即可导出，加载场景文件ls时，将一起加载全景天空盒。
