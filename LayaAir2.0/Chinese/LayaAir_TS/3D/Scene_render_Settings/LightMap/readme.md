@@ -1,6 +1,6 @@
 # 光照贴图
 
-###### *version :2.5.0beta Update:2019-1-13*
+###### *version :2.7.0beta Update:2020-6-11*
 
 ​	在3D游戏场景中，依赖灯光与模型即时渲染产生投影及颜色影响，是非常耗性能。特别是在移动平台上，手机的显卡功能并不强大，如果全部使用即时光影，性能开销是非常大的，游戏也会变得卡顿。
 
@@ -30,7 +30,7 @@
 
 
 
-**2.**场景设置中的灯光设置 **Directional Mode** 只支持 Non-Directional
+**2.**场景设置中的灯光设置 **Directional Mode** （在LayaAir2.6.0版本及其之后版本，Directional和 Non-Directional都支持， 在2.6.0之前的版本只支持Non-Directional）。
 
 ![](img/4.png)<br>（图4）
 

@@ -1,6 +1,6 @@
 # 场景环境反射
 
-###### *version :2.0.1beta   Update:2019-3-19*
+###### *version :2.7.0beta   Update:2020-6-11*
 
 ​	场景环境反射分两种，天空盒反射与自定义反射。想要有反射效果就必须Shader中如果没有反射材质也是没有效果的，默认的BlinnPhong不支持，PBR材质是支持环境反射。关于环境反射更多的是推荐在Unity中设置好后再导出使用。
 
@@ -8,23 +8,23 @@
 
 #### 如何使用Unity设置环境反射
 
-首先来看我们准备好的一个材质球。
+1.首先来看我们准备好的一个材质球。
 
-![](img/1.png)<br>(图1)
+![](img/1.jpg)<br>(图1)
 
-在这个材质球中，我们使用的是LayaAir3D提供的PBR标准材。在设置中我们勾选了 `Enable Reflection`是否开启环境反射选项，同时为了更好的观察环境反射效果，我们将材质的`MetallicGloss`金属度开到最高。在设置之后我们将材质球添加一个对象。
+在这个材质球中，我们使用的是LayaAir3D提供的PBR标准材质。该材质将自动开启环境反射选项，同时为了更好的观察环境反射效果，我们将材质的Metallic金属度和Smoothness光滑度调整到最高。在设置之后我们将材质球添加一个预制体对象茶壶（由3Dmax导出的）。
 
-![](img/2.png)<br>(图2)
 
-然后我们给场景添加上天空盒。打开 **Window** -- **Lighting** -- **Setting**  界面。
 
-![](img/3.png)<br>(图3)
+2.然后我们给场景添加上天空盒。打开 **Window** -- **Lighting** -- **Setting**  界面。
 
-设置好环境的天空球材质，然后在 `Environment Reflections` 环境反射中  Source 设置为Custom 自定义反射。Cubemap选择当前天空球的cubemap。
+![](img/skyBoxSet.jpg)<br>(图3)
+
+设置好环境的天空球材质，然后在 `Environment Reflections` 环境反射中  Source 设置为SkyBox。
 
 在设置好后，就可以在Unity中看到效果了，之后再导出使用。	
 
-![](img/4.png)<br>(图4)
+![](img/2.jpg)<br>(图4)
 
 #### 使用代码设置环境反射
 
@@ -35,7 +35,7 @@
 scene.reflectionMode = Laya.Scene3D.REFLECTIONMODE_CUSTOM;
 
 //天空盒
-Laya.BaseMaterial.load("res/threeDimen/skyBox/DawnDusk/SkyBox.lmat", Laya.Handler.create(null, function(mat){
+Laya.Material.load("res/threeDimen/skyBox/DawnDusk/SkyBox.lmat", Laya.Handler.create(null, function(mat){
     //获取相机的天空盒渲染体
     var skyRenderer = camera.skyRenderer;
     //设置天空盒mesh

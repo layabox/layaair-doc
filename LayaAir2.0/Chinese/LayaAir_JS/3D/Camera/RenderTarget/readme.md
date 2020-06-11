@@ -1,30 +1,34 @@
 # 目标纹理的使用
 
-###### *version :2.0.1beta   Update:2019-3-19*
+###### *version :2.7.0beta   Update:2020-6-11*
 
 ​	目标纹理就是指摄像机的**RenderTarget**属性。它将摄像机的视图放置在一个纹理上，该纹理可以被应用到另一个对象。这样就可以方便地创建镜子，监控摄像机等效果了。注意的是使用了该属性的摄像机将禁用渲染到屏幕的功能。
 
-​	这里我们使用的示例的代码（[demo地址](https://layaair.ldc.layabox.com/demo2/?language=ch&category=3d&group=Camera&name=RenderTargetCamera)）。camera为场景渲染摄像机，renderTargetCamera为开启RenderTarget属性的摄像机。
+​	这里我们使用的示例（[demo地址](https://layaair.ldc.layabox.com/demo2/?language=ch&category=3d&group=Camera&name=RenderTargetCamera)）的代码。camera为场景渲染摄像机，renderTargetCamera为开启RenderTarget属性的摄像机。
 
 ```typescript
-//设置目标纹理
-renderTargetCamera.renderTarget = new Laya.RenderTexture(2048, 2048);
-//设置顺序
+//渲染到纹理的相机
+var renderTargetCamera = scene.addChild(new Camera(0, 0.3, 1000));
+renderTargetCamera.transform.position = new Vector3(-28.8, 8, -60);
+renderTargetCamera.transform.rotate(new Vector3(0, 180, 0), true, false);
+//选择渲染目标为纹理
+renderTargetCamera.renderTarget = new RenderTexture(512, 512);
+//渲染顺序
 renderTargetCamera.renderingOrder = -1;
+//清除标记
+renderTargetCamera.clearFlag = BaseCamera.CLEARFLAG_SKY;
 ```
 
 在LayaAir引擎中渲染顺序是越小渲染优先度越高。
 
+
+
+将相机渲染的内容作为一张纹理赋予立方体的材质
+
 ```typescript
-//获取场景中预先放置的屏幕
-var renderTargetObj = scene.getChildAt(0).getChildByName("RenderTarget");
-//在按钮点击后  将目标纹理赋值给屏幕。
-this.changeActionButton.on(Laya.Event.CLICK, this,function() {
-    //设置网格精灵的纹理
-	renderTargetObj.meshRenderer.material.albedoTexture = renderTargetCamera.renderTarget;
- });
+//设置网格精灵的纹理
+mat.albedoTexture = renderTargetCamera.renderTarget;
 ```
 
-![](img/1.png)<br>(图1)  按钮点击前
+![](img/1.jpg)
 
-![](img/2.png)<br>(图2) 点击按钮后
