@@ -1,6 +1,6 @@
 # Sprite3D的Layer
 
-###### *version :2.0.1beta   Update:2019-4-13*
+###### *version :2.7.0beta   Update:2020-6-12*
 
 Sprite3D也有Layer蒙版（图层）属性。该属性设置可以在使用摄影机可视遮罩层，射线检测等情况下起作用。下面节选自的摄影机遮罩层示例（[demo地址](https://layaair.ldc.layabox.com/demo2/?language=ch&category=3d&group=Camera&name=CameraLayer)）：
 
