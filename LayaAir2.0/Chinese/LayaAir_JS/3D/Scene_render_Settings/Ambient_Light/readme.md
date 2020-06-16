@@ -1,6 +1,6 @@
 # 场景环境光
 
-###### *version :2.0.1beta   Update:2019-3-19*
+###### *version :2.7.0beta   Update:2020-6-11*
 
 #### 使用Unity导出设置环境光
 

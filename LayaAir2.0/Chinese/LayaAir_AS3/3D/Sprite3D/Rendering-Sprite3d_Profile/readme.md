@@ -1,6 +1,6 @@
 # 各种渲染精灵简介
 
-###### *version :2.0.1beta   Update:2019-4-13*
+###### **version :2.7.0beta   Update:2020-6-12**
 
 ### MeshSprite3D精灵简介
 

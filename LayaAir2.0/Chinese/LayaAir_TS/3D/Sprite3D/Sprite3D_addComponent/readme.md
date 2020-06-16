@@ -1,6 +1,6 @@
 # Sprite3D添加组件或脚本 
 
-###### *version :2.0.1beta   Update:2019-4-13*
+###### *version :2.7.0beta   Update:2020-6-12*
 
 **Component** 组件，是附加到所有3D对象的内容的基类。在给物体添加组件时，需要物体使用`addComponent`方法。
 

@@ -1,23 +1,24 @@
 # 	Config3D介绍
 
-###### *version :2.2.0  Update:2019-8-24*
+###### *version :2.7.0beta  Update:2020-6-10*
 
 ### Config3D相关介绍
 
 该类用于创建3D初始化设置
 
-| 属性                |                          | 数据类型 | 默认值  |
-| ------------------- | ------------------------ | -------- | ------- |
-| isAntialias         | 是否开启抗锯齿           | Boolean  | true    |
-| isAlpha             | 画布是否透明             | Boolean  | false   |
-| premultipliedAlpha  | 设置画布是否预乘         | Boolean  | true    |
-| isStencil           | 设置画布是否开启模板缓冲 | Boolean  | true    |
-| octreeCulling       | 是否开启八叉树裁剪       | Boolean  | false   |
-| octreeInitialSize   | 八叉树初始化尺寸         | Number   | 64.0    |
-| octreeInitialCenter | 八叉树初始化中心         | Vector3  | (0,0,0) |
-| octreeMinNodeSize   | 八叉树最小尺寸           | Number   | 2.0     |
-| octreeLooseness     | 八叉树松散值             | Number   | 1.25    |
-| debugFrustumCulling | 是否开启视锥裁剪调试     | Boolean  | false   |
+| 属性                  |                             | 数据类型    | 默认值     |
+| ------------------- | --------------------------- | ------- | ------- |
+| isAntialias         | 是否开启抗锯齿                     | Boolean | true    |
+| isAlpha             | 画布是否透明                      | Boolean | false   |
+| premultipliedAlpha  | 设置画布是否预乘                    | Boolean | true    |
+| isStencil           | 设置画布是否开启模板缓冲                | Boolean | true    |
+| octreeCulling       | 是否开启八叉树裁剪                   | Boolean | false   |
+| octreeInitialSize   | 八叉树初始化尺寸                    | Number  | 64.0    |
+| octreeInitialCenter | 八叉树初始化中心                    | Vector3 | (0,0,0) |
+| octreeMinNodeSize   | 八叉树最小尺寸                     | Number  | 2.0     |
+| octreeLooseness     | 八叉树松散值                      | Number  | 1.25    |
+| debugFrustumCulling | 是否开启视锥裁剪调试                  | Boolean | false   |
+| enableMultiLight    | 是否开启多光源,如果场景不需要多光源，关闭后可提升性能 | Boolean | false   |
 
 **视锥体裁剪调试时注意：**
 
