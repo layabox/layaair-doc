@@ -12,6 +12,10 @@ Unity3D是由Unity Technologies开发的一个让玩家轻松创建诸如三维�
 
 Unity下载地址为：[https://unity3d.com/get-unity/download/archive](https://unity3d.com/get-unity/download/archive)
 
+> 如果Unity官方打不开的话，我们在Github上也留了一份存档，可以前往下载
+>
+> https://github.com/layabox/layaair-doc/tree/master/tools
+
 ### 插件面板的基本介绍
 
 插件下载地址：[插件地址](https://ldc2.layabox.com/layadownload/?type=layaairide-LayaAir%20IDE%202.0.0) ，跳转到下载链接,如图1所示。
