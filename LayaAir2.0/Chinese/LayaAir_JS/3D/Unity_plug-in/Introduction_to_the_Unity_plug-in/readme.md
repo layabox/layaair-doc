@@ -2,7 +2,7 @@
 
 ###### *version :2.3.0beta   Update:2019-9-27*
 
-> ### 重要提示：从LayaAir引擎2.3开始只能使用Unity 2018.4.7，LayaAir引擎 2.3以前的版本，要使用Unity5.6.x。
+> ### 重要提示：从LayaAir引擎2.3开始只能使用Unity 2018.4.7，LayaAir引擎 2.3以前的版本，要使用Unity5.6.x
 
 **升级时需要注意：** Unity升级之后，将项目目录下的 LayaAir3D 与 StreamingAssets 文件夹删除。然后再安装新版本Unity插件。如果项目中没有老版本插件可以忽略这一步。
 
@@ -11,6 +11,10 @@
 Unity3D是由Unity Technologies开发的一个让玩家轻松创建诸如三维视频游戏、建筑可视化、实时三维动画等类型互动内容的多平台的综合型游戏开发工具，是一个全面整合的专业游戏引擎,LayaAir为了减少美术人员的学习成本,让熟悉Unity的开发者能快速上手，LayaAir采用Unity插件作为美术资源编辑的首选工具。
 
 Unity下载地址为：[https://unity3d.com/get-unity/download/archive](https://unity3d.com/get-unity/download/archive)
+
+> 如果Unity官方打不开的话，我们在Github上也留了一份存档，可以前往下载
+>
+> https://github.com/layabox/layaair-doc/tree/master/tools
 
 ### 插件面板的基本介绍
 
