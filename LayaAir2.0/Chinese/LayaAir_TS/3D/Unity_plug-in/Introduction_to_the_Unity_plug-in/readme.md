@@ -84,9 +84,7 @@ LayaAir Export是指导出资源的设置面板，也是插件工具最核心的
 
 ![](img/3.gif)(图3)
 
-##### shortcuts
 
-。。。。
 
 ##### help（帮助菜单）
 
