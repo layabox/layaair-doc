@@ -84,7 +84,9 @@ LayaAir Export是指导出资源的设置面板，也是插件工具最核心的
 
 ![](img/3.gif)(图3)
 
+##### shortcuts（快捷操作）
 
+在shortcuts中，有个`Switch to LayaAir3D Shader`功能菜单，这是材质转换的快捷操作。Unity的材质是不能直接导出使用的，否则就会有问题。需要手工替换成LayaAir引擎的材质。而这里，是将Unity里的材质自动都替换为LayaAir引擎的BlinnPhongMateria材质，如果开发者想要用PBR材质等其它材质，还是要手工替换一下。
 
 ##### help（帮助菜单）
 
