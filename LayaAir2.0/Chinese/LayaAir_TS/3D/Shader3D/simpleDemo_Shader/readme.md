@@ -95,7 +95,7 @@ initShader() {
 
 我们自定义材质，并且设置该材质使用的Shader。
 
-注意：在最近几个版本中材质基类由BaseMaterial变更为Material。
+注意：2.4.0之后材质基类由BaseMaterial变更为Material。
 
 ```typescript
 export class CustomMaterial extends Laya.Material {
