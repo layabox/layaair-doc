@@ -1,6 +1,6 @@
 # 华为快游戏接入与发布调试指南
 
-> Date:  2020-06-17   LayaAirIDE-Version >=  2.7.1
+> Date:  2020-07-20   LayaAirIDE-Version >=  2.7.2
 
 快应用是一种基于行业标准开发的新型免安装应用，其标准由主流手机厂商组成的快应用联盟联合制定。开发者开发一次即可将应用分发到所有支持行业标准的手机运行。
 
@@ -52,7 +52,7 @@
 
 3. 安装nodejs 环境，必须要安装 10.x 稳定版本 ，如果不是的需要重新安装[node官网：https://nodejs.org/download/release/latest-v10.x/]
 
-4. LayaAirIDE集中开发环境，LayaAir 2.7.1 或以上版本 [ 官网下载: https://ldc2.layabox.com/layadownload/?type=layaairide ]
+4. LayaAirIDE集中开发环境，LayaAir 2.7.2 或以上版本 [ 官网下载: https://ldc2.layabox.com/layadownload/?type=layaairide ]
 
 5. 安装ADB
 
@@ -72,15 +72,15 @@
 
 第一、PC里，node环境、ADB、LayaAirIDE这些，都必须要安装好。
 
-第二、手机里，要允许USB调试。如下图所示。
+第二、手机里，要打开“`开发者模式`”，允许USB调试。如下图所示。
 
-<img src="img/1.png" alt="img" style="zoom: 67%;" />  
+<img src="img/1.png" alt="img" style="zoom: 80%;" />  
 
-> 也可以在华为的手机里，进入`设置-> 系统-> 开发人员选项->USB调试` ，查看并确认。
+> 打开“`开发者模式`”的操作如有疑问，也可以参考华为官方指引文档：
+>
+> https://developer.huawei.com/consumer/cn/doc/quickapp-open-developer-option
 
-第三、将PC电脑与手机用USB数据线相连，电脑里，可以出现类似下图一样的界面。比如，点击下图 HUAWEI P10 Plus，就可以进入手机存储。
 
-![img](img/2.png) 
 
 ### 2、在LayaAirIDE里发布华为快游戏
 
@@ -112,9 +112,13 @@ LayaAirIDE的发布功能，内置了华为快游戏的发布功能，需要先�
 
 这里需要注意的是，日志等级，在测试和调试的时候，才需要打开，要发布上线包的时候，不要开启。开启日志后，可能会对游戏运行的性能产生影响。
 
-关于如何查看日志，我们推荐的方式是在PC的命令行中查看。
+关于如何查看日志，我们如果不关掉发布项目的界面，是可以直接查看输出的日志的，如下图所示：
 
-在命令行下输入
+<img src="img/2.png" alt="图" style="zoom:80%;" /> 
+
+其实，还可以在PC命令行下，另起一个界面查看，这样，就可以不用一直开着IDE调试了。
+
+操作方式是在PC的命令行下输入
 
 ```
 adb logcat -s jsLog
