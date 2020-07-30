@@ -1739,6 +1739,16 @@
 								"name_3_file": "readme.md"
 							}
 						]
+					},
+					{
+						"name_2_name": "字节跳动小游戏",
+						"name_2_data": [
+							{
+								"name_3_name": "字节跳动小游戏发布指南",
+								"name_3_url": "Chinese/miniGame/byte/",
+								"name_3_file": "readme.md"
+							}
+						]
 					}
 				]
 			},
@@ -3656,6 +3666,16 @@
 							{
 								"name_3_name": "bilibili小游戏发布与调试指南",
 								"name_3_url": "Chinese/miniGame/bili/",
+								"name_3_file": "readme.md"
+							}
+						]
+					},
+					{
+						"name_2_name": "字节跳动小游戏",
+						"name_2_data": [
+							{
+								"name_3_name": "字节跳动小游戏发布指南",
+								"name_3_url": "Chinese/miniGame/byte/",
 								"name_3_file": "readme.md"
 							}
 						]
@@ -5616,6 +5636,16 @@
 							{
 								"name_3_name": "bilibili小游戏发布与调试指南",
 								"name_3_url": "Chinese/miniGame/bili/",
+								"name_3_file": "readme.md"
+							}
+						]
+					},
+					{
+						"name_2_name": "字节跳动小游戏",
+						"name_2_data": [
+							{
+								"name_3_name": "字节跳动小游戏发布指南",
+								"name_3_url": "Chinese/miniGame/byte/",
 								"name_3_file": "readme.md"
 							}
 						]
