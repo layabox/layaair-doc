@@ -1,6 +1,6 @@
 # 华为快游戏接入与发布调试指南
 
-> Date:  2020-07-20   LayaAirIDE-Version >=  2.7.2
+> Date:  2020-08-18   LayaAirIDE-Version >=  2.8.1
 
 快应用是一种基于行业标准开发的新型免安装应用，其标准由主流手机厂商组成的快应用联盟联合制定。开发者开发一次即可将应用分发到所有支持行业标准的手机运行。
 
@@ -52,7 +52,7 @@
 
 3. 安装nodejs 环境，必须要安装 10.x 稳定版本 ，如果不是的需要重新安装[node官网：https://nodejs.org/download/release/latest-v10.x/]
 
-4. LayaAirIDE集中开发环境，LayaAir 2.7.2 或以上版本 [ 官网下载: https://ldc2.layabox.com/layadownload/?type=layaairide ]
+4. LayaAirIDE集中开发环境，LayaAir 2.8.1 或以上版本 [ 官网下载: https://ldc2.layabox.com/layadownload/?type=layaairide ]
 
 
 
