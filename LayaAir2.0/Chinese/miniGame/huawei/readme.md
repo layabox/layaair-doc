@@ -36,9 +36,7 @@
 - 精品快游戏专题
 - 月度精品推荐 
 
-**<img src="https://communityfile-drcn.op.hicloud.com/FileServer/getFile/cmtyPub/011/111/111/0000000000011111111.20200123111801.51744672777864138420075456728299:50510203102212:2800:68DE02C2C2DC6E7F71A2BFB3CCA078BC5F3D595E5917C61198EAFC7B6767BF1F.jpg" alt="img" style="zoom: 50%;" />** 
-
-
+![img](img/0.jpg) 
 
 
 
