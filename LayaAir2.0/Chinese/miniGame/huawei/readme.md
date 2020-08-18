@@ -134,3 +134,61 @@ adb logcat -s jsLog
 下载地址为：
 
 https://developer.huawei.com/consumer/cn/doc/development/quickApp-Guides/quickapp-pcassistant-user-guide
+
+### 6、分包
+
+华为快游戏的分包加载，目的是为了缩短下载时间和减少下载流量。通过使用分包策略，开发者可以指定下载和加载特定分包，而不必将所有整包内容一次性下载和加载。
+
+#### 6.1 LayaAirIDE的发布设置
+
+当我们打算分包的时候，需要在发布的时候先勾选分包相关的选项，如下图所示：
+![img](img/7.png) 
+
+然后，点击`分包选项＋` ，打开如下图所示面板。设置分包名和对应的分包文件夹即可。
+
+![img](img/8.png) 
+
+
+
+#### 6.2 分包配置代码
+
+除了发布的设置，在manifest.json文件中，也需要声明subpackages分包字段，声明格式如下：
+
+```json
+subpackages:[
+    {
+        “name”:”subpackageName1”,//对应分包名
+        “resource”:”subpackagePath1”//对应分包文件夹
+    },
+    {
+        “name”:”subpackageName2”, //对应分包名
+        “resource”:”subpackagePath2”//对应分包文件夹
+    }
+]
+```
+
+#### 6.3 分包使用的示例代码
+
+使用分包的示例代码如下：
+
+```
+var task = hbs.loadSubpackage({
+	subpackage:'subpackageName1',        
+	success : function () {
+   	 	console.log("loadSubpackage success" );
+    },        
+    fail:function(){
+    	console.log("loadSubpackage fail");
+   },        
+   complete:function() {
+   		console.log("loadSubpackage complete");
+   }
+});
+
+task.onprogress(
+   		callback(res) {
+        	console.log("onProgress" + JSON.stringify(res)); 
+   		}
+   );
+```
+
