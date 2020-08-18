@@ -63,11 +63,11 @@
 
 第一、PC里，node环境、LayaAirIDE这些，都必须要安装好（ADB以及OpenSSL无需单独安装，LayaAir引擎IDE已内置）。
 
-第二、手机里，要打开“`开发者模式`”，允许USB调试。如下图所示。
+第二、手机里，要打开"`开发者模式`"，允许USB调试。如下图所示。
 
 <img src="img/1.png" alt="img" style="zoom: 80%;" />  
 
-> 打开“`开发者模式`”的操作如有疑问，也可以参考华为官方指引文档：
+> 打开"`开发者模式`"的操作如有疑问，也可以参考华为官方指引文档：
 >
 > https://developer.huawei.com/consumer/cn/doc/quickapp-open-developer-option
 
@@ -155,12 +155,12 @@ https://developer.huawei.com/consumer/cn/doc/development/quickApp-Guides/quickap
 ```json
 subpackages:[
     {
-        “name”:”subpackageName1”,//对应分包名
-        “resource”:”subpackagePath1”//对应分包文件夹
+        "name":"subpackageName1",//对应分包名
+        "resource":"subpackagePath1"//对应分包文件夹
     },
     {
-        “name”:”subpackageName2”, //对应分包名
-        “resource”:”subpackagePath2”//对应分包文件夹
+        "name":"subpackageName2", //对应分包名
+        "resource":"subpackagePath2"//对应分包文件夹
     }
 ]
 ```
