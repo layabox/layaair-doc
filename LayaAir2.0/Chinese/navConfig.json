@@ -1754,8 +1754,18 @@
 						"name_2_name": "华为快游戏",
 						"name_2_data": [
 							{
-								"name_3_name": "华为快游戏发布指南",
-								"name_3_url": "Chinese/miniGame/huawei/",
+								"name_3_name": "华为快游戏入门介绍",
+								"name_3_url": "Chinese/miniGame/huawei/aboutHWGame/",
+								"name_3_file": "readme.md"
+							},
+							{
+								"name_3_name": "华为快游戏接入与发布调试指南",
+								"name_3_url": "Chinese/miniGame/huawei/publish/",
+								"name_3_file": "readme.md"
+							},
+							{
+								"name_3_name": "华为快游戏分包指南",
+								"name_3_url": "Chinese/miniGame/huawei/subpackages/",
 								"name_3_file": "readme.md"
 							}
 						]
@@ -3694,8 +3704,18 @@
 						"name_2_name": "华为快游戏",
 						"name_2_data": [
 							{
-								"name_3_name": "华为快游戏发布指南",
-								"name_3_url": "Chinese/miniGame/huawei/",
+								"name_3_name": "华为快游戏入门介绍",
+								"name_3_url": "Chinese/miniGame/huawei/aboutHWGame/",
+								"name_3_file": "readme.md"
+							},
+							{
+								"name_3_name": "华为快游戏接入与发布调试指南",
+								"name_3_url": "Chinese/miniGame/huawei/publish/",
+								"name_3_file": "readme.md"
+							},
+							{
+								"name_3_name": "华为快游戏分包指南",
+								"name_3_url": "Chinese/miniGame/huawei/subpackages/",
 								"name_3_file": "readme.md"
 							}
 						]
@@ -5674,8 +5694,18 @@
 						"name_2_name": "华为快游戏",
 						"name_2_data": [
 							{
-								"name_3_name": "华为快游戏发布指南",
-								"name_3_url": "Chinese/miniGame/huawei/",
+								"name_3_name": "华为快游戏入门介绍",
+								"name_3_url": "Chinese/miniGame/huawei/aboutHWGame/",
+								"name_3_file": "readme.md"
+							},
+							{
+								"name_3_name": "华为快游戏接入与发布调试指南",
+								"name_3_url": "Chinese/miniGame/huawei/publish/",
+								"name_3_file": "readme.md"
+							},
+							{
+								"name_3_name": "华为快游戏分包指南",
+								"name_3_url": "Chinese/miniGame/huawei/subpackages/",
 								"name_3_file": "readme.md"
 							}
 						]

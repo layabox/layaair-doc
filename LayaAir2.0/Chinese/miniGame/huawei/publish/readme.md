@@ -2,44 +2,6 @@
 
 > Date:  2020-08-18   LayaAirIDE-Version >=  2.8.1
 
-快应用是一种基于行业标准开发的新型免安装应用，其标准由主流手机厂商组成的快应用联盟联合制定。开发者开发一次即可将应用分发到所有支持行业标准的手机运行。
-
-华为快游戏支持将现有H5游戏通过LayaAirIDE，直接打包成快应用形式进行发布。在华为GPU Turbo手机运行时速度更快，更省电。
-
-[TOC]
-
-## 了解华为快游戏
-
-#### 优势与特点
-
-华为快游戏Runtime版本具有免安装、速度快、省电、省内存、省空间的特点，并提供以下能力：
-
-- **底层图形加速**
-
-使游戏画质更高、画面更流畅，给游戏玩家带来极速体验
-
-- **开放设备能力**
-
-开发者可以方便使用位置、传感器、蓝牙、网络、电量等设备能力
-
-- **网页跳转**
-
-使游戏网站流量转换为可留存桌面的快游戏
-
-#### **快游戏的资源**
-
-- 应用市场首页快应用中心推荐
-- 应用市场首页底部：即点即玩游戏
-- 应用市场游戏页面底部：即点即玩，无需下载
-- 游戏中心推荐页底部：即点即玩，无需下载
-- 游戏中心分类页灯笼位置
-- 精品快游戏专题
-- 月度精品推荐 
-
-![img](img/0.jpg) 
-
-
-
 ## 华为快游戏发布、调试环境准备
 
 1. 华为品牌的手机。
@@ -51,7 +13,6 @@
 3. 安装nodejs 环境，必须要安装 10.x 稳定版本 ，如果不是的需要重新安装[node官网：https://nodejs.org/download/release/latest-v10.x/]
 
 4. LayaAirIDE集中开发环境，LayaAir 2.8.1 或以上版本 [ 官网下载: https://ldc2.layabox.com/layadownload/?type=layaairide ]
-
 
 
 
@@ -127,66 +88,8 @@ adb logcat -s jsLog
 
 <img src="img/6.png" alt="img" style="zoom: 80%;" /> 
 
-通常情况下，日志在命令行中查看即可，如果开发者想把日志导出来，可以使用华为的快应用加载器PC助手，
+通常情况下，日志在命令行中查看即可，如果开发者想把日志导出来，可以使用华为的快应用加载器PC助手
 
-下载地址为：
+华为快应用PC助手使用指南参考官方地址：
 
 https://developer.huawei.com/consumer/cn/doc/development/quickApp-Guides/quickapp-pcassistant-user-guide
-
-### 6、分包
-
-华为快游戏的分包加载，目的是为了缩短下载时间和减少下载流量。通过使用分包策略，开发者可以指定下载和加载特定分包，而不必将所有整包内容一次性下载和加载。
-
-#### 6.1 LayaAirIDE的发布设置
-
-当我们打算分包的时候，需要在发布的时候先勾选分包相关的选项，如下图所示：
-![img](img/7.png) 
-
-然后，点击`分包选项＋` ，打开如下图所示面板。设置分包名和对应的分包文件夹即可。
-
-![img](img/8.png) 
-
-
-
-#### 6.2 分包配置代码
-
-除了发布的设置，在manifest.json文件中，也需要声明subpackages分包字段，声明格式如下：
-
-```json
-subpackages:[
-    {
-        "name":"subpackageName1",//对应分包名
-        "resource":"subpackagePath1"//对应分包文件夹
-    },
-    {
-        "name":"subpackageName2", //对应分包名
-        "resource":"subpackagePath2"//对应分包文件夹
-    }
-]
-```
-
-#### 6.3 分包使用的示例代码
-
-使用分包的示例代码如下：
-
-```
-var task = hbs.loadSubpackage({
-	subpackage:'subpackageName1',        
-	success : function () {
-   	 	console.log("loadSubpackage success" );
-    },        
-    fail:function(){
-    	console.log("loadSubpackage fail");
-   },        
-   complete:function() {
-   		console.log("loadSubpackage complete");
-   }
-});
-
-task.onprogress(
-   		callback(res) {
-        	console.log("onProgress" + JSON.stringify(res)); 
-   		}
-   );
-```
-
