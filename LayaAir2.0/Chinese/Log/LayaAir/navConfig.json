@@ -11,6 +11,17 @@
     }
   },
   {
+    "name": "LayaAir 2.7.2",
+    "url": "2.7.2.md",
+    "date":"2020-08-26",
+    "download": {
+      "js": "https://ldc-1251285021.cos.ap-shanghai.myqcloud.com/download/Libs/LayaAirJS_2.7.2.zip",
+      "ts": "https://ldc-1251285021.cos.ap-shanghai.myqcloud.com/download/Libs/LayaAirTS_2.7.2.zip",
+      "as": "https://ldc-1251285021.cos.ap-shanghai.myqcloud.com/download/Libs/LayaAirAS3_2.7.2.zip",
+      "tsnew": "https://ldc-1251285021.cos.ap-shanghai.myqcloud.com/download/Libs/LayaAirTSNEW_2.7.2.zip"
+    }
+  },
+  {
     "name": "LayaAir 2.7.1",
     "url": "2.7.1.md",
     "date":"2020-08-11",
