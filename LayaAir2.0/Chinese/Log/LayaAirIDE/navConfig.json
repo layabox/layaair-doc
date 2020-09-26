@@ -1,11 +1,11 @@
 [
   {
-    "name": "LayaAir IDE 2.8.0beta2",
-    "url": "2.8.0beta2.md",
-    "date": "2020-08-31",
+    "name": "LayaAir IDE 2.8.0beta4",
+    "url": "2.8.0beta4.md",
+    "date": "2020-09-26",
     "download": {
-      "Apple": "https://ldc-1251285021.cos.ap-shanghai.myqcloud.com/download/2.8.0beta2/darwin/LayaAirIDE_beta.zip",
-      "Windows": "https://ldc-1251285021.cos.ap-shanghai.myqcloud.com/download/2.8.0beta2/win/LayaAirIDE_beta.zip",
+      "Apple": "https://ldc-1251285021.cos.ap-shanghai.myqcloud.com/download/2.8.0beta4/darwin/LayaAirIDE_beta.zip",
+      "Windows": "https://ldc-1251285021.cos.ap-shanghai.myqcloud.com/download/2.8.0beta4/win/LayaAirIDE_beta.zip",
       "UnityPlugin":"https://ldc-1251285021.cos.ap-shanghai.myqcloud.com/download/2.8.0beta2/unityplugin/LayaAirUnityPlugin_beta2.unitypackage"
     }
   },
