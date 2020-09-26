@@ -1754,6 +1754,16 @@
 								"name_3_file": "readme.md"
 							}
 						]
+					},
+					{
+						"name_2_name": "淘宝创意互动",
+						"name_2_data": [
+							{
+								"name_3_name": "淘宝创意互动发布指南",
+								"name_3_url": "Chinese/miniGame/taobao/",
+								"name_3_file": "readme.md"
+							}
+						]
 					}
 				]
 			},
@@ -3686,6 +3696,16 @@
 							{
 								"name_3_name": "华为快游戏分包指南",
 								"name_3_url": "Chinese/miniGame/huawei/subpackages/",
+								"name_3_file": "readme.md"
+							}
+						]
+					},
+					{
+						"name_2_name": "淘宝创意互动",
+						"name_2_data": [
+							{
+								"name_3_name": "淘宝创意互动发布指南",
+								"name_3_url": "Chinese/miniGame/taobao/",
 								"name_3_file": "readme.md"
 							}
 						]
@@ -5661,6 +5681,16 @@
 							{
 								"name_3_name": "华为快游戏分包指南",
 								"name_3_url": "Chinese/miniGame/huawei/subpackages/",
+								"name_3_file": "readme.md"
+							}
+						]
+					},
+					{
+						"name_2_name": "淘宝创意互动",
+						"name_2_data": [
+							{
+								"name_3_name": "淘宝创意互动发布指南",
+								"name_3_url": "Chinese/miniGame/taobao/",
 								"name_3_file": "readme.md"
 							}
 						]
