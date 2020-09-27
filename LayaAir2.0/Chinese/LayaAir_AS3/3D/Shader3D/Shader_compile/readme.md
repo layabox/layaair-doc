@@ -217,4 +217,4 @@ Laya.Shader3D.compileShader('CustomTerrainShader',0,0,[0,0,262144]);
 
 `compileShader`使用的宏定义遮罩集合预编译，后者使用的宏定义名字集合预编译。前者的速度会更快一些，但是如果开发者调整了宏定义的顺序就需要同步修改预编译的参数。
 
-`compileShaderByDefineNames`使用的是宏定义名字集合实现预编译，所有不会受到宏定义顺序调整影响，所以我们更 **推荐** 开发者使用该方法预编译shader。
+`compileShaderByDefineNames`使用的是宏定义名字集合实现预编译，所以不会受到宏定义顺序调整影响，所以我们更 **推荐** 开发者使用该方法预编译shader。
