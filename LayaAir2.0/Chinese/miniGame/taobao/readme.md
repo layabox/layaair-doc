@@ -85,7 +85,7 @@ as3: TBMiniAdapter.init();   js或ts：Laya['TBMiniAdapter'].init();
 
 **TIPS:**
 
-> 在IDE内暂无预览效果，另外会有些报错信息，但是这些都没有影响。真机调试是可以正常运行的。s
+> 最终运行效果以真机为准。
 
 点击 **真机调试/预览** ，用淘宝App扫描弹出的二维码可以真机预览效果：
 
