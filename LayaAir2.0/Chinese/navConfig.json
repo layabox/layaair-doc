@@ -392,6 +392,11 @@
 								"name_3_name": "使用chrome的性能分析器",
 								"name_3_url": "Chinese/LayaAir_TS/2D/advanced/PerformanceOptimization/Chrome_Profiles/",
 								"name_3_file": "readme.md"
+							},
+							{
+								"name_3_name": "显存优化：纹理压缩的使用",
+								"name_3_url": "Chinese/LayaAir_TS/IDE/VIP_Texture/",
+								"name_3_file": "readme.md"
 							}
 						]
 					},
@@ -2336,6 +2341,11 @@
 							{
 								"name_3_name": "使用chrome的性能分析器",
 								"name_3_url": "Chinese/LayaAir_JS/2D/advanced/PerformanceOptimization/Chrome_Profiles/",
+								"name_3_file": "readme.md"
+							},
+							{
+								"name_3_name": "显存优化：纹理压缩的使用",
+								"name_3_url": "Chinese/LayaAir_TS/IDE/VIP_Texture/",
 								"name_3_file": "readme.md"
 							}
 						]
@@ -4311,6 +4321,11 @@
 							{
 								"name_3_name": "使用chrome的性能分析器",
 								"name_3_url": "Chinese/LayaAir_AS3/2D/advanced/PerformanceOptimization/Chrome_Profiles/",
+								"name_3_file": "readme.md"
+							},
+							{
+								"name_3_name": "显存优化：纹理压缩的使用",
+								"name_3_url": "Chinese/LayaAir_TS/IDE/VIP_Texture/",
 								"name_3_file": "readme.md"
 							},
 							{
