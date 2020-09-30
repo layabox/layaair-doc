@@ -34,7 +34,7 @@
 
 #### 2.2、LayaAirIDE与LayaAir Unity插件的差异
 
-LayaAirIDE中的纹理压缩工具是面向2D纹理，LayaAir Unity插件中的纹理压缩工具是面向3D纹理。所以在进行工具使用的时候，还有所区别。下面分别进行介绍。
+LayaAirIDE中的纹理压缩工具 与 LayaAir Unity插件中的纹理压缩工具在使用的时候，还是有所区别的，大家需要注意，下面分别进行介绍。
 
 ##### 2.2.1  LayaAir Unity插件纹理压缩功能
 
