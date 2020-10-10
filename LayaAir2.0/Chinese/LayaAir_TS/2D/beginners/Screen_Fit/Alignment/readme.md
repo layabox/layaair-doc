@@ -1,49 +1,35 @@
-# 对齐模式：水平对齐与垂直对齐
+# 画布对齐模式：水平对齐与垂直对齐
 
-> 关于对齐模式方面，主要是常规的水平对齐与垂直对齐。LayaAir引擎可以方便快捷的配置，下面我们先了解一下API的参数说明，再通过示例代码进行介绍。
+> Author: Charley
 
-参数说明如图1、图2所示：
+关于对齐模式，引擎中的提供的alignH（水平对齐）与alignV（垂直对齐）是对画布进行对齐。这个对齐，只有在画布非全屏适配的模式（showall和noscale）里才有价值，否则设置了也看不到效果，因为全屏适配的情况下，画布已经铺满全屏了，如何设置已经没有了意义。所以本文的画布对齐千万不要混淆成舞台内的UI对齐。
+
+> Tips: 舞台内的对齐，要使用UI的相对布局组件，具体使用请查看UI组件的相关文档与API
+
+下面我们先了解一下API的参数说明，再通过示例代码进行介绍。
+
+参数说明如图1所示：
 
 ​	![image.png](img/1.png)<br/>
 ​	图（1）屏幕适配的对齐模式
 
+通过API，我们了解到，水平对齐与垂直对齐都分别有三个属性值参数。
 
+当然，我们也可以通过常量值赋值给alignH与alignV。常量赋值的好处就是可以通过代码提示来编写。下面我们再看一下API中的画布对齐常量值，如图2所示。
 
 ​	![blob.png](img/2.png)<br/>
-​	图（2）对齐模式中的属性
+​	图（2）对齐模式中的常量属性
 
+在LayaAir 2.x的IDE中，其实在IDE也可以方便的去设置这个对齐。我们更建议在IDE里通过快捷键F9进入项目设置面板来设置。如图3所示。
 
+![图3](img/3.png) 
 
-我们用水平居中和垂直居中的Demo 进行演示：
+​	图（3）IDE中的画布对齐模式设置
 
-```typescript
-module laya {
-    import WebGL = Laya.WebGL;
-    import Stage = Laya.Stage;
- 
-    export class smartScale {
-        constructor()
-        {
-            //初始化舞台，不支持WebGL时会自动切换至Canvas
-            Laya.init(200, 300, WebGL);
-        
-            //垂直居中对齐，另一种写法：Laya.stage.alignV = Stage.ALIGN_MIDDLE
-            Laya.stage.alignV = "middle";
-              
-            //水平居中对齐，另一种写法：Laya.stage.alignH = Stage.ALIGN_CENTER;
-            Laya.stage.alignH = "center";
-  
-            Laya.stage.bgColor = "#FF0000";
-        }
- 
-    }
-}
-new laya.smartScale();
-```
+假如，开发者没有使用LayaAirIDE，也可以在代码中进行设置。
 
-运行效果如下图所示：
+在引擎的官网示例中，我们不仅可以查看效果，也可以去改变参数值去感受变化。
 
-​	![blob.png](img/3.png)<br/>
-​	图（3）示例的运行结果
+示例链接如下：
 
-其他的对齐模式可以去修改AlignH和AlignV之中的值，在实际编码的过程中体验不同的对齐模式。
+[https://layaair2.ldc2.layabox.com/demo2/?language=zh&category=2d&group=SmartScale&name=Align_Contral](https://layaair2.ldc2.layabox.com/demo2/?language=zh&category=2d&group=SmartScale&name=Align_Contral	)	图（3）示例的运行结果
