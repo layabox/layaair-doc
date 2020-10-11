@@ -62,20 +62,19 @@
     });
     ```
 
+ 在ios下，会有一个小关闭按钮，点击这个按钮，就可以关闭webview。 效果如下：
 
+![ios webview](img/2.png) 
+    
+图2
 
-    * 在ios下，会有一个小关闭按钮，点击这个按钮，就可以关闭webview。 效果如下：
+ 因为关闭按钮会覆盖部分页面内容，且Android设备上提供了后退键，因此Android设备上webview显示后没有关闭按钮，可以通过**后退键**关闭webview。如下图：
 
-        ![ios webview](img/2.png)
+![android webview](img/3.png)
+    
+图3  
 
-        图2
-
-    * 因为关闭按钮会覆盖部分页面内容，且Android设备上提供了后退键，因此Android设备上webview显示后没有关闭按钮，可以通过**后退键**关闭webview。如下图：
-
-
-        ![android webview](img/3.png)
-
-        图3  此时可以点击后退键关闭webview
+此时可以点击后退键关闭webview
 
 ### 2. 限制
 1. 目前webview无法与app进行交互。
