@@ -1,12 +1,12 @@
-# 3D场景编辑-unity插件使用说明
+3D场景编辑-unity插件使用说明
 
-> *version: 2.8.0    update: 2020-08-22       author: charley*
+> *version: 2.9.0beta    update: 2020-11-02       author: charley*
 
 [TOC]
 
 ### 一、3D场景编辑器的研发规划
 
-有开发者问过LayaAir引擎是否会有自己的3D场景编辑器，首先可以肯定的讲，一定会有。3D编辑器是LayaAir3.x引擎规划的基础组成部分（3.x正在研发中）。
+有开发者问过LayaAir引擎是否会有自己的3D场景编辑器，首先可以肯定的讲，一定会有。3D编辑器是LayaAir3.x引擎规划的基础组成部分（3.x正在研发中）。2.x阶段也会推出3D编辑器的测试版。
 
 采用Unity插件方案的主要原因，一是可以让有Unity经验的优质开发者可以更低学习成本进入HTML5和小游戏产业中来。二是1.x和2.x引擎还处于功能丰富的阶段，引擎功能与Unity还有差距，所以这个阶段以完善3D引擎功能为主，让小游戏产业的众多3D游戏开发者可以使用更多3D渲染能力，让3D产品的表现更自由、更丰富、更炫酷。因此我们把更多精力先放到引擎功能的研发上。工具方面保障不影响开发者的开发工作流即可。
 
@@ -404,7 +404,17 @@ Mesh Setting（模型设置）是指模型网格数据的导出设置，功能�
 
 经过测试，这里的纹理压缩功能，大概会减少显存约75%，但是可能会增加文件的体积，所以这也是一种牺牲资源文件加载体积换取显存占用减少和CPU对于资源解码性能消耗的有损压缩方式。开发者可根据项目需要来选择使用。`该功能属于VIP增值功能，需要购买授权才可以使用。`
 
-##### 3.3.5 多配置保存与重置
+##### 3.3.5 其它设置
+
+##### 批量导出场景
+
+从LayaAir 2.9.0开始，插件中增加了`批量导出场景`的会员权益功能，购买会员权益后，可以享受一次性导出多个场景的更佳易用性体验。
+
+![img](img/unity-scene.png)  
+
+需要提醒的是，批量导出的是Unity层级视图（Hierarchy）下的场景，如果需要导出，需要将场景添加到Hierarchy下。
+
+##### 3.3.6 多配置保存与重置
 
 以上介绍的导出配置项，默认是存到`config 1`中，其实插件一共提供了5个配置列表项，如下图所示。
 
@@ -465,7 +475,9 @@ Mesh Setting（模型设置）是指模型网格数据的导出设置，功能�
 | Viewport Rect（标准视图矩形）       | 支持（包括：X、Y、W、H）                                     |
 | Allow HDR（允许渲染高动态色彩画面） | 支持                                                         |
 
-#### 4.3 灯光的属性
+#### 4.3 光照相关的属性
+
+#####  4.3.1 灯光的属性Light
 
 ![img](img/4.1-5.png) 
 
@@ -479,6 +491,18 @@ Mesh Setting（模型设置）是指模型网格数据的导出设置，功能�
 | Intensity（灯光强度） | 支持                                                         |
 
 > Tips：灯光的阴影不支持从Unity中导出使用，但是LayaAir引擎中有灯光阴影的API，具体阴影的使用，可以查阅LayaAir引擎相应的官方文档与API。
+
+##### 4.3.2  反射探针的属性 Reflection Probe
+
+![img](img/4.11-3.png)   
+
+当Unity中添加Reflection Probe（反射探针）组件后，LayaAir导出支持情况如下：
+
+| Unity的反射探针相关配置属性                    | LayaAir是否支持导出的说明                                    |
+| ---------------------------------------------- | ------------------------------------------------------------ |
+| Type（类型）                                   | 部分支持（包括：Baked烘焙模式、Custom自定义模式）            |
+| Runtime settings （运行时设置）                | 部分支持（包括：Importance权重参数、Intensity亮度、Box projection盒式偏移反射、Box Size反射探针大小、Box Offset反射探针偏移） |
+| Cubemap capture settings（立方体贴图捕捉设置） | 支持                                                         |
 
 #### 4.4  模型相关的属性
 
@@ -835,22 +859,42 @@ Mesh Setting（模型设置）是指模型网格数据的导出设置，功能�
 
 | Unity粒子生命周期内的速度属性 | LayaAir是否支持导出的说明                                    |
 | ----------------------------- | ------------------------------------------------------------ |
-| linear（线性运动速度）        | 支持（X、Y、Z、Constant固定值、Curve 曲线、Random between Two Constants随机在两个常量之间、Random between Two Curves随机在两个曲线之间） |
+| linear（线性运动速度）        | 支持（Constant固定值、Curve 曲线、Random between Two Constants随机在两个常量之间、Random between Two Curves随机在两个曲线之间） |
 | Space（速度空间）             | 支持（Local本地、World世界）                                 |
 
-##### 4.10.5 生命周期内的颜色与大小 Color over Lifetime、Size over Lifetime
+##### 4.10.5 生命周期内的颜色  Color over Lifetime
 
-![img](img/4.10-5.png) 
+![img](img/4.10-5.png)  
 
-在上图中的Unity生命周期内的颜色与大小属性里，LayaAir导出支持情况如下：
+在上图中的Unity生命周期内的颜色属性里，LayaAir导出支持情况如下：
 
-| Unity的生命周期内的颜色与大小属性 | LayaAir是否支持导出的说明                                    |
-| --------------------------------- | ------------------------------------------------------------ |
-| Color（生命周期颜色 ）            | 支持（包括：Gradient渐变色、Random form Two Gradients随机在两个渐变色之间） |
-| Separate Axes（分离轴）           | 支持                                                         |
-| Size（大小）                      | 支持（包括：Curve曲线、Random between Two Constants随机在两个常量之间、Random between Two Curves随机在两个曲线之间）【注：默认是Size，勾选Separate Axes后Size项变为XYZ】 |
+| Unity的生命周期内的颜色属性 | LayaAir是否支持导出的说明                                    |      |
+| --------------------------- | ------------------------------------------------------------ | ---- |
+| Color（生命周期颜色 ）      | 支持（包括：Gradient渐变色、Random form Two Gradients随机在两个渐变色之间） |      |
 
-##### 4.10.6 纹理动画 Texture Sheet Animation
+##### 4.10.6 生命周期内的大小Size over Lifetime
+
+![](img/4.10-5-2.png) 
+
+在上图中的Unity生命周期内的大小属性里，LayaAir导出支持情况如下：
+
+| Unity的生命周期内的大小属性 | LayaAir是否支持导出的说明                                    |
+| --------------------------- | ------------------------------------------------------------ |
+| Separate Axes（分离轴）     | 支持（包括：Constant固定值、Curve 曲线、Random between Two Constants随机在两个常量之间、Random between Two Curves随机在两个曲线之间） |
+| Size（大小）                | 支持（包括：Curve曲线、Random between Two Constants随机在两个常量之间、Random between Two Curves随机在两个曲线之间）【注：默认是Size，勾选Separate Axes后Size项变为XYZ】 |
+
+##### 4.10.7 生命周期内的旋转 Rotation over Lifetime
+
+![](img/4.10-5-3.png)  
+
+在上图中的Unity生命周期内的旋转属性里，LayaAir导出支持情况如下：
+
+| Unity粒子生命周期内的速度属性 | LayaAir是否支持导出的说明                                    |
+| ----------------------------- | ------------------------------------------------------------ |
+| Separate Axes（分离轴）       | 支持（包括：Constant固定值、Curve 曲线、Random between Two Constants随机在两个常量之间、Random between Two Curves随机在两个曲线之间） |
+| Angular Velocity（角速度）    | 支持（包括：Constant固定值、Curve 曲线、Random between Two Constants随机在两个常量之间、Random between Two Curves随机在两个曲线之间） |
+
+##### 4.10.8 纹理动画 Texture Sheet Animation
 
 ![img](img/4.10-6.png) 
 
@@ -866,7 +910,7 @@ Mesh Setting（模型设置）是指模型网格数据的导出设置，功能�
 | Cycles（循环次数）                     | 支持                                                         |
 | Affected UV Channels（受影响的UV通道） | 部分支持（包括：Everything）【注：此处Everything只代表一种默认值状态，不代表UV0-3的选项勾选】 |
 
-##### 4.10.7 粒子渲染器 Renderer 
+##### 4.10.9 粒子渲染器 Renderer 
 
 ![img](img/4.10-7.png) 
 
@@ -875,7 +919,16 @@ Mesh Setting（模型设置）是指模型网格数据的导出设置，功能�
 | Unity的粒子渲染器属性     | LayaAir是否支持导出的说明                                    |
 | ------------------------- | ------------------------------------------------------------ |
 | Render Mode（渲染模式）   | 部分支持（包括：Billboard广告牌、Stretched Billboard拉伸广告牌（Speed Scale速度缩放、Length Scale长度缩放）、Horizontal Billboard水平广告牌、Vertical Billboard垂直广告牌、Mesh网格） |
+| Material（粒子材质）      | 支持                                                         |
 | Sorting Fudge（排序校正） | 支持                                                         |
+
+##### 4.10.10 LayaAir粒子面板特别说明
+
+购买插件功能企业版与服务版会员权益的开发者，可以选择使用LayaAir面板，LayaAir面板中仅显示LayaAir引擎中支持的配置参数。可以避免因美术或者技美在调粒子效果时，因不熟悉LayaAir插件的导出规则而导致运行效果不对，等等不必要的沟通成本。
+
+![img](img/4.10-10.png) 
+
+> Tips: 当前优先支持粒子系统的LayaAir专属面板，未来会支持更多专属面板，提升插件的易用性。
 
 #### 4.11 场景渲染配置的属性
 
@@ -916,6 +969,20 @@ Mesh Setting（模型设置）是指模型网格数据的导出设置，功能�
 > 如果用到了不在以上导出清单中的功能，可能会引起报错，或者效果无效，可以通过查看导出的报错信息，对照以上的功能清单进行修改。
 >
 > 以上清单仅代表着可以在Unity中进行编辑设置和导出使用的功能属性，并不代表引擎的全部功能，更多引擎的能力可以通过查看官网的文档和引擎API进行使用。
+
+##### 4.11.3 反射探针的属性 Reflection Probe
+
+![img](img/4.11-3.png)   
+
+当Unity中添加Reflection Probe（反射探针）组件后，LayaAir导出支持情况如下：
+
+| Unity的反射探针相关配置属性     | LayaAir是否支持导出的说明                                    |
+| ------------------------------- | ------------------------------------------------------------ |
+| Type（类型）                    | 部分支持（包括：Baked烘焙模式、Custom自定义模式）            |
+| Runtime settings （运行时设置） | 部分支持（包括：Importance权重参数、Intensity亮度、Box projection盒式偏移反射、Box Size反射探针大小、Box Offset反射探针偏移） |
+| Cubemap capture settings（）    |                                                              |
+
+
 
 ### 五、模型的导出文件与加载显示
 
