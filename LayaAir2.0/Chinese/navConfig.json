@@ -962,6 +962,11 @@
 								"name_3_name": "多光源渲染",
 								"name_3_url": "Chinese/LayaAir_TS/3D/light/MultiLight/",
 								"name_3_file": "readme.md"
+							},
+							{
+								"name_3_name": "反射探针的使用说明",
+								"name_3_url": "Chinese/LayaAir_TS/3D/light/reflection/",
+								"name_3_file": "readme.md"
 							}
 						]
 					},
@@ -2911,6 +2916,11 @@
 							{
 								"name_3_name": "多光源渲染",
 								"name_3_url": "Chinese/LayaAir_JS/3D/light/MultiLight/",
+								"name_3_file": "readme.md"
+							},
+							{
+								"name_3_name": "反射探针的使用说明",
+								"name_3_url": "Chinese/LayaAir_TS/3D/light/reflection/",
 								"name_3_file": "readme.md"
 							}
 						]
@@ -4901,6 +4911,11 @@
 							{
 								"name_3_name": "多光源渲染",
 								"name_3_url": "Chinese/LayaAir_AS3/3D/light/MultiLight/",
+								"name_3_file": "readme.md"
+							},
+							{
+								"name_3_name": "反射探针的使用说明",
+								"name_3_url": "Chinese/LayaAir_TS/3D/light/reflection/",
 								"name_3_file": "readme.md"
 							}
 						]
