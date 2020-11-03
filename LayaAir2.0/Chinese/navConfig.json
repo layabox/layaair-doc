@@ -1562,6 +1562,11 @@
 								"name_3_name": "如何使用3D场景2D人物进行混合开发",
 								"name_3_url": "Chinese/LayaAir_TS/3D/Advance/3DSceneAnd2DPlayer/",
 								"name_3_file": "readme.md"
+							},
+							{
+								"name_3_name": "CommandBuffer使用文档",
+								"name_3_url": "Chinese/LayaAir_TS/3D/Advance/CommandBuffer/",
+								"name_3_file": "readme.md"
 							}
 						]
 					}
@@ -3516,6 +3521,11 @@
 							{
 								"name_3_name": "如何使用3D场景2D人物进行混合开发",
 								"name_3_url": "Chinese/LayaAir_JS/3D/Advance/3DSceneAnd2DPlayer/",
+								"name_3_file": "readme.md"
+							},
+							{
+								"name_3_name": "CommandBuffer使用文档",
+								"name_3_url": "Chinese/LayaAir_TS/3D/Advance/CommandBuffer/",
 								"name_3_file": "readme.md"
 							}
 						]
@@ -5511,6 +5521,11 @@
 							{
 								"name_3_name": "如何使用3D场景2D人物进行混合开发",
 								"name_3_url": "Chinese/LayaAir_AS3/3D/Advance/3DSceneAnd2DPlayer/",
+								"name_3_file": "readme.md"
+							},
+							{
+								"name_3_name": "CommandBuffer使用文档",
+								"name_3_url": "Chinese/LayaAir_TS/3D/Advance/CommandBuffer/",
 								"name_3_file": "readme.md"
 							}
 						]
