@@ -143,7 +143,7 @@ HTML文本是用于图文混排的文本组件，组件名为HTMLDivElement。�
 | `letter-spacing:10px;`         | 字间距                      |
 | `font-family:宋体;`            | 字体                        |
 | `font-size:20px;`              | 字体大小                    |
-| `font-weight:bold:none;`       | 字体是否是粗体，功能同bold  |
+| `font-weight:bold;`            | 字体是否是粗体，功能同bold  |
 | `color:#ff0000;`               | 字体颜色                    |
 | `stroke:2px;`                  | 字体描边宽度                |
 | `strokeColor:#ff0000;`         | 字体描边颜色                |
@@ -225,7 +225,6 @@ this.text.changeText("替换的text文本");
 二是，LayaAir IDE中的组件中有一个drawCallOptimize属性，我们为所有文本的父级节点drawCallOptimize属性设置true值。当这样设置之后，引擎会自动启用文本合并优化，将所有的文本提取到最上层，而开发者无需再刻意调整图集资源和文本的排序，即可实现drawCall自动优化的目标，而且优化的更加干脆彻底。
 
 > 需要提醒的是，drawCallOptimize优化方案由于会自动将文本提升显示层级，不适用于必须要将文本半遮挡的特殊需求。当然，绝大多数情况下文本是要处于全文显示的，如果有全隐藏的情况，可以直接设置隐藏属性。所以，建议开发者开启该优化方案。
-
 
 
 
