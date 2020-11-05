@@ -155,7 +155,7 @@ HTML文本是用于图文混排的文本组件，组件名为HTMLDivElement。�
 | `width:100px;`                 | 宽度（仅div中使用）         |
 | `height:100px;`                | 高度（仅div中使用）         |
 
-`下面的代码是运用的示例代码，`
+下面的代码是运用的示例代码，
 
 ```html
 <div style='width:880px;height:600px;color:#ff0000;font-size:50px;font-family:SimSun;vertical-align:bottom;line-height:100px;border-color:#ff0000;'>
