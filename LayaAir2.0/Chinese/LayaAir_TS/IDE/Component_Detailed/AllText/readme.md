@@ -122,10 +122,10 @@ HTML文本是用于图文混排的文本组件，组件名为HTMLDivElement。�
 
 目前引擎支持的常见HTML标签如下：
 
-| `标签名` | `标签说明`                                                   |
+| 标签名   | 标签说明                                                     |
 | -------- | ------------------------------------------------------------ |
-| `div`    | `div容器标签，例如：<div> 文本的最外层，可以通过style设置HTML文本的宽高 </div>` |
-| `span`   | `行内元素标签，例如：<span> 多个span之间不会自动换行，除非是达到了宽度限制</span>` |
+| `div`    | div容器标签，例如：`<div> 文本的最外层，可以通过style设置HTML文本的宽高 </div>` |
+| `span`   | 行内元素标签，例如：`<span> 多个span之间不会自动换行，除非是达到了宽度限制</span>` |
 | `h`      | h1 到 h6是标题标签，例如：`<h1>h1最大</h1>` …… `<h6>h6最小</h6>` |
 | `p`      | 段落标签，例如：`<p>多个p标签之间会自动换行，每个完整的p标签是一个单独的段落</p>` |
 | `br`     | 换行标签，例如：`<span>要</span>换行<br />`                  |
@@ -134,36 +134,36 @@ HTML文本是用于图文混排的文本组件，组件名为HTMLDivElement。�
 | `img`    | 图片标签，例如：`<img src='res/laya.png' width='50' height='50'></img>` |
 | `color`  | 文本颜色标签，例如：`<span color='#e3d26a'>颜色</span>`      |
 
-`具体到style标签的属性支持如下：`
+具体到style标签的属性支持如下：
 
-| `style标签属性示例`            | `属性说明`                    |
-| ------------------------------ | ----------------------------- |
-| `italic:true|false;`           | `是否是斜体`                  |
-| `bold:true|false;`             | `是否是粗体`                  |
-| `letter-spacing:10px;`         | `字间距`                      |
-| `font-family:宋体;`            | `字体`                        |
-| `font-size:20px;`              | `字体大小`                    |
-| `font-weight:bold:none;`       | `字体是否是粗体，功能同bold`  |
-| `color:#ff0000;`               | `字体颜色`                    |
-| `stroke:2px;`                  | `字体描边宽度`                |
-| `strokeColor:#ff0000;`         | `字体描边颜色`                |
-| `padding:10px 10px 20px 20px;` | `边缘的距离(上右下左)`        |
-| `line-height:100px;`           | `行高（仅div中使用）`         |
-| `align:left|right|center`      | `水平对齐方式（仅div中使用）` |
-| `background-color:#ff0000;`    | `背景颜色（仅div中使用）`     |
-| `border-color:#ff0000;`        | `边框颜色（仅div中使用）`     |
-| `width:100px;`                 | `宽度（仅div中使用）`         |
-| `height:100px;`                | `高度（仅div中使用）`         |
+| style标签属性示例              | 属性说明                    |
+| ------------------------------ | --------------------------- |
+| `italic:true|false;`           | 是否是斜体                  |
+| `bold:true|false;`             | 是否是粗体                  |
+| `letter-spacing:10px;`         | 字间距                      |
+| `font-family:宋体;`            | 字体                        |
+| `font-size:20px;`              | 字体大小                    |
+| `font-weight:bold:none;`       | 字体是否是粗体，功能同bold  |
+| `color:#ff0000;`               | 字体颜色                    |
+| `stroke:2px;`                  | 字体描边宽度                |
+| `strokeColor:#ff0000;`         | 字体描边颜色                |
+| `padding:10px 10px 20px 20px;` | 边缘的距离(上右下左)        |
+| `line-height:100px;`           | 行高（仅div中使用）         |
+| `align:left|right|center`      | 水平对齐方式（仅div中使用） |
+| `background-color:#ff0000;`    | 背景颜色（仅div中使用）     |
+| `border-color:#ff0000;`        | 边框颜色（仅div中使用）     |
+| `width:100px;`                 | 宽度（仅div中使用）         |
+| `height:100px;`                | 高度（仅div中使用）         |
 
 `下面的代码是运用的示例代码，`
 
-```
+```html
 <div style='width:880px;height:600px;color:#ff0000;font-size:50px;font-family:SimSun;vertical-align:bottom;line-height:100px;border-color:#ff0000;'>
-<span color='#e3d26a' style='font-weight:bold;'>使</span>用<br/>
-<span style='color:#FFFFFF;font-size:70px;stroke:2px;italic:true;'>HTMLDivElement</span>&nbsp;&nbsp;组件
-<span color='#6ad2e3'>创建的</span><br/> 
-<img src='res/laya.png' width='50' height='50'></img><span color='#d26ae3'>HTML文本</span>
-<p style='height:350px; bold:true;letter-spacing:20px;'>P标签，不需要br也会自动换新一行</p>
+    <span color='#e3d26a' style='font-weight:bold;'>使</span>用<br/>
+    <span style='color:#FFFFFF;font-size:70px;stroke:2px;italic:true;'>HTMLDivElement</span>&nbsp;&nbsp;组件
+    <span color='#6ad2e3'>创建的</span><br/> 
+    <img src='res/laya.png' width='50' height='50'></img><span color='#d26ae3'>HTML文本</span>
+    <p style='height:350px; bold:true;letter-spacing:20px;'>P标签，不需要br也会自动换新一行</p>
 </div>
 ```
 
@@ -225,10 +225,6 @@ this.text.changeText("替换的text文本");
 二是，LayaAir IDE中的组件中有一个drawCallOptimize属性，我们为所有文本的父级节点drawCallOptimize属性设置true值。当这样设置之后，引擎会自动启用文本合并优化，将所有的文本提取到最上层，而开发者无需再刻意调整图集资源和文本的排序，即可实现drawCall自动优化的目标，而且优化的更加干脆彻底。
 
 > 需要提醒的是，drawCallOptimize优化方案由于会自动将文本提升显示层级，不适用于必须要将文本半遮挡的特殊需求。当然，绝大多数情况下文本是要处于全文显示的，如果有全隐藏的情况，可以直接设置隐藏属性。所以，建议开发者开启该优化方案。
-
-
-
-
 
 
 
