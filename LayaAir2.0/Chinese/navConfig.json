@@ -102,6 +102,11 @@
 								"name_3_name": "第一个程序：显示文本“Hello Layabox”",
 								"name_3_url": "Chinese/LayaAir_TS/2D/beginners/basic/HelloWorld/",
 								"name_3_file": "readme.md"
+							},
+							{
+								"name_3_name": "LayaAir示例项目源码编译运行指南",
+								"name_3_url": "Chinese/LayaAir_TS/2D/beginners/basic/UseGithubDemo/",
+								"name_3_file": "readme.md"
 							}
 						]
 					},
@@ -2066,6 +2071,11 @@
 							{
 								"name_3_name": "第一个程序：显示文本“Hello Layabox”",
 								"name_3_url": "Chinese/LayaAir_JS/2D/beginners/basic/HelloWorld/",
+								"name_3_file": "readme.md"
+							},
+							{
+								"name_3_name": "LayaAir示例项目源码编译运行指南",
+								"name_3_url": "Chinese/LayaAir_TS/2D/beginners/basic/UseGithubDemo/",
 								"name_3_file": "readme.md"
 							}
 						]
@@ -4061,6 +4071,11 @@
 							{
 								"name_3_name": "新手常见问题：配置环境之后点击运行报错、黑屏",
 								"name_3_url": "Chinese/LayaAir_AS3/2D/beginners/basic/Common_Problems/",
+								"name_3_file": "readme.md"
+							},
+							{
+								"name_3_name": "LayaAir示例项目源码编译运行指南",
+								"name_3_url": "Chinese/LayaAir_TS/2D/beginners/basic/UseGithubDemo/",
 								"name_3_file": "readme.md"
 							}
 						]
