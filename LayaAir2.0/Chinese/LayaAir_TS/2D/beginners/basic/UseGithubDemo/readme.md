@@ -18,13 +18,13 @@ git clone https://github.com/layabox/LayaAir.git
 
 ### 二、通过npm安装LayaAiri源码环境依赖包
 
+因为我们需要用到npm安装一些LayaAir引擎源码开发编译的依赖环境。
+
 基础的Node环境npm，需要提前安装好。没安装好的，要看一下官网文档，进行安装：
 
 https://ldc2.layabox.com/doc/?nav=zh-ts-1-0-0
 
-因为我们需要用到npm安装一些LayaAir引擎源码开发编译的依赖环境。
-
-当我们进入clone后的LayaAi源码本地根目录后，进入命令行环境，如下图所示：
+当我们进入clone后的LayaAi源码本地根目录后，需要通过命令行环境来安装依赖包，操作如下图所示：
 
 ![1](img/1.png)  
 
