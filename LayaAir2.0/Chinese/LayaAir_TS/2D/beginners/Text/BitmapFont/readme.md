@@ -8,6 +8,10 @@
 
 LayaAir引擎支持位图字体的使用与显示。本篇将引导开发者如何通过第三方工具 Bitmap Font Generator来制作位图字体并在LayaAir引擎中使用。
 
+
+
+[TOC]
+
 ### 一、下载并安装字体制作工具
 
 下载安装 windows下免费的位图字体制作工具 Bitmap Font Generator。
