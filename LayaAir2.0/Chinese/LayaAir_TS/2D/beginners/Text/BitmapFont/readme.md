@@ -257,6 +257,12 @@ export default class AllText extends ui.examples.text.BitmapFontUI {
 }
 ```
 
+上面的代码运行效果如下图的蓝色框内所示：
+
+![img](img/20.png) 
+
+> 上图非蓝色框的是FontClip组件的效果，如果只是简单的单行位图文本，FontClip也可以满足，使用更为简单。
+
 除了上面的代码和注释说明，如果想了解更多关于位图字体相关的API，可以通过官网API文档查询。
 
 #### **Text类中的相关接口：**
