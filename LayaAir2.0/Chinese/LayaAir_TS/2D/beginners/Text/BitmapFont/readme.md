@@ -2,11 +2,13 @@
 
 > update: 2020-11-13
 
-位图字体的本质是位图，就是以位图的形式去表现字体效果，这样，就可以解决到一些字体在不同平台由于用户没有安装而无法使用的问题，另外也有的字体，在不同浏览器或者平台也会有显示差异的问题，就是chrome浏览器，低版本与高版本也可能会存在像素级的显示偏移，这些全都属于字体的兼容性问题。而这些问题，当文本的复杂度要求不高时，都可以通过位图字体来解决。
+当我们常规使用文本时，字体都是采用系统的字体。而位图字体，可以理为是一种图片的字体。
+
+所以，位图字体的本质是位图，通过位图的形式去表现字体效果，这样，就可以解决到一些字体在不同平台由于用户没有安装而无法使用的问题，另外也有的字体，在不同浏览器或者平台也会有显示差异的问题，就是chrome浏览器，低版本与高版本也可能会存在像素级的显示偏移，这些全都属于字体的兼容性问题。而这些问题，当文本的复杂度要求不高时，都可以通过位图字体来解决。
 
 > 像聊天室这种无法固定好文本内容的场景就不能适用了。
 
-LayaAir引擎支持位图字体的使用与显示。本篇将引导开发者如何通过第三方工具 Bitmap Font Generator来制作位图字体并在LayaAir引擎中使用。
+LayaAir引擎支持位图字体的使用。本篇将引导开发者如何通过第三方工具 Bitmap Font Generator来制作位图字体并在LayaAir引擎中使用。
 
 
 
@@ -274,6 +276,117 @@ https://layaair2.ldc2.layabox.com/api2/Chinese/index.html?type=Core&category=dis
 https://layaair2.ldc2.layabox.com/api2/Chinese/index.html?type=Core&category=display&class=laya.display.BitmapFont
 
 
+
+### 五、在IDE里使用位图字体进行排版
+
+在代码里使用位图字体，或许不利于排版，为了方便的在场景中直接编辑使用位图字体，这个小节继续引导大家在IDE中使用以及运行起来。
+
+#### 第一步：在IDE里注册位图字体
+
+把导出的位图字体同名文件（.fnt和.png）拖拽到LayaAirIDE的Assets下（或者右键打开IDE的Assets所在目录，复制过去），如下图所示：
+
+![24](img/24.png) 
+
+> 可以放到Assets下的根目录或者子目录，没有限制，只要是fnt与png文件同名并在同一个目录下即可。
+
+然后刷新IDE，如下图操作所示。就可以完成IDE内的位图字体注册。
+
+![24-2](img/24-2.png) 
+
+> 本来就在IDE中的，会自动注册，IDE打开状态下的首次拖入需要手工刷新一下编辑器，未来我们会优化该操作，尽量不刷新就可以完成注册。
+
+#### 第二步：给文本组件设置位图字体
+
+我们分别在场景中创建Text、Label、TextInput，三个组件，
+
+这几个文本组件，正常情况下都是使用的是系统字体，由于我们已在IDE里注册了位图字体，所以就可以直接为这几个组件设置位图字体。
+
+分别点击场景中的这几个组件节点，在`font`属性栏里，手动输入位图字体的文件名（IDE里是按文件名注册的），并分别设置var名称，如下图所示：
+
+![img](img/25.png) 
+
+#### 第三步：在代码中进行注册
+
+IDE中的注册，只是为了IDE里显示出位图字体预览效果。如果不在项目代码中注册，那运行起来还是没有位图字体的效果。
+
+所以，我们回到代码中，进行注册，全部代码如下所示：
+
+```typescript
+import { ui } from "./ui/layaMaxUI";
+
+export default class AllText extends ui.Text.aaaaUI {
+    /** 用于注册系统字 位图字体 起名 */
+    private fontName: string = "ccc";
+    /** 用于注册图片字 位图字体 起名 */
+    private texturFontName: string = "ggg";
+    constructor() {
+        super();
+        //加载系统字位图字体
+        this.loadBFont("bitmapFont/ccc.fnt", this.fontName);
+        //加载图片位图字体
+        this.loadBFont("bitmapFont/ggg.fnt", this.texturFontName);
+    }
+
+    /**
+     * 加载位图字体，回调里进行注册
+     */
+    loadBFont(fntPath: string, fontName: string): void {
+        let _bitmapFont: Laya.BitmapFont = new Laya.BitmapFont();
+        _bitmapFont.loadFont(fntPath, new Laya.Handler(this, (bitmapFont: Laya.BitmapFont) => {
+
+            //按传入名称注册不同名称的位图字体
+            Laya.Text.registerBitmapFont(fontName, bitmapFont);
+
+        }, [_bitmapFont]));
+    }
+
+    onEnable(): void {
+
+        //加载字体和注册需要时间，延迟几帧渲染比较保险。也可以把使用位图字体的入口放到位图字体加载回调的注册之后。
+        Laya.timer.frameOnce(5, this, () => {
+            //使用注册完的位图字体来创建文本
+            this.createText(this.texturFontName);
+            
+            //把注册完的位图字体绑定给UI组件，否则显示不出来位图字体
+            this._text.font = this.texturFontName;
+            this._label.font = this.fontName;
+            this._input.font = this.texturFontName;
+
+        });
+    }
+
+    /**
+     * 创建一个Text文本
+     * @readme 当注册完成位图字体后，在这个方法里，使用位图字体和Text使用其它字体是一样的
+     */
+    createText(fontName: string): void {
+
+        var txt: Laya.Text = new Laya.Text();
+        //设置每行的显示宽度
+        txt.width = 260;
+        //开启自动换行
+        txt.wordWrap = true;
+        txt.text = "鼠牛虎兔龙蛇马羊猴鸡狗 猪年快乐";
+        //使用注册后的字体
+        txt.font = fontName;
+        txt.leading = 15;
+        //把文本添加到场景中的bf节点下
+        this.bf.addChild(txt);
+    }
+
+
+    onDisable(): void {
+    }
+}
+```
+
+上面的代码，运行效果如下图所示：
+
+![img](img/26.png) 
+
+通过运行效果图，我们可以看出，无论是代码创建的Text文本绑定位图字体，还是对IDE中场景的文本组件设置位图字体都是可行的。
+
+核心的原则就是加载位图字体资源，并对该位图制作的字体进行注册，然后就可以给文本类或者场景中的文本组件使用了。
 
 
 
