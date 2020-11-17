@@ -706,7 +706,7 @@
 						]
 					},
 					{
-						"name_2_name": "脚本使用",
+						"name_2_name": "组件化开发相关",
 						"name_2_data": [
 							{
 								"name_3_name": "脚本化",
@@ -716,6 +716,11 @@
 							{
 								"name_3_name": "runTime使用",
 								"name_3_url": "Chinese/LayaAir_TS/IDE/ScriptUse/runtime/",
+								"name_3_file": "readme.md"
+							},
+							{
+								"name_3_name": "LayaAir的组件化开发",
+								"name_3_url": "Chinese/LayaAir_TS/IDE/ScriptUse/componentDevelopment/",
 								"name_3_file": "readme.md"
 							}
 						]
@@ -2676,7 +2681,7 @@
 						]
 					},
 					{
-						"name_2_name": "脚本使用",
+						"name_2_name": "组件化开发相关",
 						"name_2_data": [
 							{
 								"name_3_name": "脚本化",
@@ -2686,6 +2691,11 @@
 							{
 								"name_3_name": "runTime使用",
 								"name_3_url": "Chinese/LayaAir_JS/IDE/ScriptUse/runtime/",
+								"name_3_file": "readme.md"
+							},
+							{
+								"name_3_name": "LayaAir的组件化开发",
+								"name_3_url": "Chinese/LayaAir_TS/IDE/ScriptUse/componentDevelopment/",
 								"name_3_file": "readme.md"
 							}
 						]
@@ -4686,7 +4696,7 @@
 						]
 					},
 					{
-						"name_2_name": "脚本使用",
+						"name_2_name": "组件化开发相关",
 						"name_2_data": [
 							{
 								"name_3_name": "脚本化",
@@ -4696,6 +4706,11 @@
 							{
 								"name_3_name": "runTime使用",
 								"name_3_url": "Chinese/LayaAir_AS3/IDE/ScriptUse/runtime/",
+								"name_3_file": "readme.md"
+							},
+							{
+								"name_3_name": "LayaAir的组件化开发",
+								"name_3_url": "Chinese/LayaAir_TS/IDE/ScriptUse/componentDevelopment/",
 								"name_3_file": "readme.md"
 							}
 						]
