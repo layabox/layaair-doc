@@ -19,7 +19,7 @@ LayaAir引擎支持位图字体的使用。本篇将引导开发者如何通过�
 下载安装 windows下免费的位图字体制作工具 Bitmap Font Generator。
  下载地址：[http://www.angelcode.com/products/bmfont/](http://www.angelcode.com/products/bmfont/install_bmfont_1.13.exe)
 
->  Bitmap Font Generator工具当前仅支持window系统
+>  Bitmap Font Generator工具当前仅支持windows系统
 
 
 
@@ -74,7 +74,7 @@ txt文本必须要存为Unicode编码格式才可以，如果我们不能确认�
 
 在这个步骤里，我们把之前保存为Unicode编码的txt文件，导入到位图字体制作的工具里。
 
-菜单栏的操作步骤为：`Edit` -> S`elect chars from file`，如下图所示，选中之前输入了文字或字符准备要转换的txt文本文件。
+菜单栏的操作步骤为：`Edit` -> `Select chars from file`，如下图所示，选中之前输入了文字或字符准备要转换的txt文本文件。
 
 ![5](img/5.png) 
 
