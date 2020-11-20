@@ -390,6 +390,12 @@ export default class AllText extends ui.Text.aaaaUI {
 
 核心的原则就是加载位图字体资源，并对该位图制作的字体进行注册，然后就可以给文本类或者场景中的文本组件使用了。
 
+### 六、小游戏中运行的注意事项
+
+由于位图字体涉及到XML文件（.fnt）的解析。在小游戏环境中，则必须要使用xml的解析库`domparserinone.js`。在LayaAirIDE中，我们要检查一下，项目设置（快捷键F9）的类库设置里，是否勾选了`domparserinone.js`，勾选后再编译，发布微信小游戏。就可以看到正确的效果了。
+
+![27](img/27.png) 
+
 
 
 ## 本文赞赏
