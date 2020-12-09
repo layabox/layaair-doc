@@ -5,5 +5,5 @@ LayaAir可以通过laya.display.Text类添加文本，给文本设置字体样�
 
 上图中的这些属性基本上就是我们Text比较常用的方法了，更多Text API的详细用法，可以点击下面的API文档URL查看
 
-[https://layaair.ldc.layabox.com/api/index.html?category=Core&class=laya.display.Text](https://layaair.ldc.layabox.com/api/index.html?category=Core&class=laya.display.Text)
+[https://layaair.ldc.layabox.com/api/index.html?category=Core&class=laya.display.Text](https://layaair2.ldc2.layabox.com/api2/Chinese/index.html?version=2.9.0beta&type=Core&category=display&class=laya.display.Text)
 

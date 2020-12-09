@@ -14,7 +14,7 @@
 
 #### 1.1 LayaAir引擎的对象池类
 
-LayaAir引擎提供了对象池类[laya.utils.Pool](http://layaair.ldc.layabox.com/api/index.html?category=Core&class=laya.utils.Pool)，用于对象的存贮、重复使用。比较常用的是`对象池创建`方法`getItemByClass()`与`回收到对象池`方法`recover()`。 如图1、图2所示。
+LayaAir引擎提供了对象池类[laya.utils.Pool](https://layaair2.ldc2.layabox.com/api2/Chinese/index.html?version=2.9.0beta&type=Core&category=Utils&class=laya.utils.Pool)，用于对象的存贮、重复使用。比较常用的是`对象池创建`方法`getItemByClass()`与`回收到对象池`方法`recover()`。 如图1-1、图1-2所示。
 
 ![1](img/1.png)</br>
 

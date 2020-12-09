@@ -5,7 +5,7 @@
 
 ### 1、屏幕方向设置的API概述
 
-打开引擎的API文档，搜索laya.display.Stage，找到[screenMode属性](https://layaair.ldc.layabox.com/api/?category=Core&class=laya.display.Stage#screenMode)。如图1所示。![图1](img/1-1.png) 
+打开引擎的API文档，搜索[laya.display.Stage](https://layaair2.ldc2.layabox.com/api2/Chinese/index.html?version=2.9.0beta&type=Core&category=display&class=laya.display.Stage)，找到screenMode属性。如图1所示。![图1](img/1-1.png) 
 
 (图1)
 
@@ -51,7 +51,9 @@ Laya.stage.screenMode = "vertical";
 
 如果screenMode属性值设置为vertical时，无论屏幕方向如何旋转，游戏的水平方向都会与屏幕较长的边始终保持垂直。如图4-1与图4-2所示。
 
-![img](img/4-1.png) 
+
+
+![img](img/4-1.png)  
 
 (图4-1)手机竖屏时，screenMode属性为vertical的效果
 

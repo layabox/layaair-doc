@@ -9,7 +9,7 @@
 ​        Label 组件用来显示一段文字，文字可以是系统字体或者 BMFont 字体。
 
 ​        点击资源面板里的 Label 组件，拖放到页面编辑区，即可添加 Label 组件到页面上。
-​        Label 组件的脚本接口请参考 [Label API](http://layaair.ldc.layabox.com/api/index.html?category=Core&class=laya.ui.Label)。
+​        Label 组件的脚本接口请参考 [Label API](https://layaair2.ldc2.layabox.com/api2/Chinese/index.html?version=2.9.0beta&type=2D&category=UI&class=laya.ui.Label)。
 
 ​        Label 组件的资源示例：
 

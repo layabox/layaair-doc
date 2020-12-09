@@ -10,7 +10,7 @@
 
 颜色滤镜类 ColorFilter位于laya.filters包中，通过指定矩阵（*排列成4 x 5 的矩阵*）改变各颜色通道。
 
-点击   [laya.filters.ColorFilter ](http://layaair.ldc.layabox.com/api/index.html?category=Filter&class=laya.filters.ColorFilter) 查看API说明。
+点击   [laya.filters.ColorFilter ](https://layaair2.ldc2.layabox.com/api2/Chinese/index.html?version=2.9.0beta&type=2D&category=Filter&class=laya.filters.ColorFilter) 查看API说明。
 
 
 
@@ -143,7 +143,7 @@ new laya.Main();
 
 ![图2](img/2.png) <br /> (图2)
 
-点击   [laya.filters. GlowFilter](http://layaair.ldc.layabox.com/api/index.html?category=Filter&class=laya.filters.GlowFilter)  查看API说明。
+点击   [laya.filters. GlowFilter](https://layaair2.ldc2.layabox.com/api2/Chinese/index.html?version=2.9.0beta&type=2D&category=Filter&class=laya.filters.GlowFilter)  查看API说明。
 
 
 
@@ -231,7 +231,7 @@ new laya.Main();
 
 ![图4](img/4.png) <br /> (图4)
 
-点击   [laya.filters. BlurFilter](http://layaair.ldc.layabox.com/api/index.html?category=Filter&class=laya.filters.BlurFilter)  查看API说明。
+点击   [laya.filters. BlurFilter](https://layaair2.ldc2.layabox.com/api2/Chinese/index.html?version=2.9.0beta&type=2D&category=Filter&class=laya.filters.BlurFilter)  查看API说明。
 
 
 

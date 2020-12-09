@@ -62,7 +62,7 @@ LayaAirIDE并非所有DragonBones版本都支持转换。支持的版本号在La
 
 #### 3.2 DragonBones动画播放示例
 
-下面的示例将用到`laya.ani.bone.Skeleton` 类，具体API说明可直接打开链接查看：[https://layaair.ldc.layabox.com/api/?category=Bone&class=laya.ani.bone.Skeleton](https://layaair.ldc.layabox.com/api/?category=Bone&class=laya.ani.bone.Skeleton)
+下面的示例将用到`laya.ani.bone.Skeleton` 类，具体API说明可直接打开链接查看：[https://layaair.ldc.layabox.com/api/?category=Bone&class=laya.ani.bone.Skeleton](https://layaair2.ldc2.layabox.com/api2/Chinese/index.html?version=2.9.0beta&type=2D&category=Animation&class=laya.ani.bone.Skeleton)
 
 创建文档类DragonBonesDemo.as，代码编写如下：
 

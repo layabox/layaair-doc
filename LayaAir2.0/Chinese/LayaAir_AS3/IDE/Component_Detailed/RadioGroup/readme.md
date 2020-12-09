@@ -19,7 +19,7 @@ RadioGroup组件的皮肤是以`RadioGroup`或以`RadioGroup_`为前缀进行命
 
 ### 1.3 RadioGroup组件的API介绍
 
-  RadioGroup 的API介绍请参考 [ http://layaair.ldc.layabox.com/api/index.html?category=Core&class=laya.ui.RadioGroup](http://layaair.ldc.layabox.com/api/index.html?category=Core&class=laya.ui.RadioGroup)。
+  RadioGroup 的API介绍请参考 [ http://layaair.ldc.layabox.com/api/index.html?category=Core&class=laya.ui.RadioGroup](https://layaair2.ldc2.layabox.com/api2/Chinese/index.html?version=2.9.0beta&type=2D&category=UI&class=laya.ui.RadioGroup)。
 
 
 

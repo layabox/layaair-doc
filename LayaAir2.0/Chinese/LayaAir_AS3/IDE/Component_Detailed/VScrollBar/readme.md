@@ -12,7 +12,7 @@
 ​        当数据太多以至于显示区域无法容纳时，最终用户可以使用 VScrollBar 组件控制所显示的数据部分。
 ​        滚动条由四部分组成：一个轨道图、一个滑块按钮和两个箭头按钮。
 ​        点击选择资源面板里的 VScrollBar 组件，拖放到页面编辑区，即可添加 VScrollBar 组件到页面上。
-​        VScrollBar 组件的脚本接口请参考 [VScrollBar API](http://layaair.ldc.layabox.com/api/index.html?category=Core&class=laya.ui.VScrollBar)。
+​        VScrollBar 组件的脚本接口请参考 [VScrollBar API](https://layaair2.ldc2.layabox.com/api2/Chinese/index.html?version=2.9.0beta&type=2D&category=UI&class=laya.ui.VScrollBar)。
 ​        VScrollBar 组件的图像资源示例：
 
 ​        ![图片0.png](img/1.png)<br/>

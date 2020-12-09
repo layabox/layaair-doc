@@ -12,7 +12,7 @@ Animation组件是动画组件，可以方便的创建图集动画或者使用La
 
 （动图1）
 
-Animation的API介绍请参考 [https://layaair.ldc.layabox.com/api/?category=Core&class=laya.display.Animation](https://layaair.ldc.layabox.com/api/?category=Core&class=laya.display.Animation)
+Animation的API介绍请参考 [https://layaair.ldc.layabox.com/api/?category=Core&class=laya.display.Animation](https://layaair2.ldc2.layabox.com/api2/Chinese/index.html?version=2.9.0beta&type=Core&category=display&class=laya.display.Animation)
 
 
 

@@ -20,7 +20,7 @@ Tab组件的皮肤是以`tab`或以`tab_`为前缀进行命名，在皮肤设计
 
 ### 1.3 Tab 组件的API介绍
 
-Tab 组件的API介绍请参考  [http://layaair.ldc.layabox.com/api/index.html?category=Core&class=laya.ui.Tab](http://layaair.ldc.layabox.com/api/index.html?category=Core&class=laya.ui.Tab)
+Tab 组件的API介绍请参考  [http://layaair.ldc.layabox.com/api/index.html?category=Core&class=laya.ui.Tab](https://layaair2.ldc2.layabox.com/api2/Chinese/index.html?version=2.9.0beta&type=2D&category=UI&class=laya.ui.Tab)
 
 
 

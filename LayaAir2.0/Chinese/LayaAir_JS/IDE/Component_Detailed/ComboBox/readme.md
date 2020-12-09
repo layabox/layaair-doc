@@ -6,7 +6,7 @@
 ###1.1 创建ComboBox
 ​        ComboBox 是一个下拉列表选项框组件。
 ​        点击选择资源面板里的 ComboBox 组件，拖放到页面编辑区，即可添加 ComboBox 组件到页面上。
-​        ComboBox 的脚本请接口参考 [ComboBox API](http://layaair.ldc.layabox.com/api/index.html?category=Core&class=laya.ui.ComboBox)。
+​        ComboBox 的脚本请接口参考 [ComboBox API](https://layaair2.ldc2.layabox.com/api2/Chinese/index.html?version=2.9.0beta&type=2D&category=UI&class=laya.ui.ComboBox)。
 
 ​        ComboBox 组件的图像资源示例：
 

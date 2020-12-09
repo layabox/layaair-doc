@@ -6,11 +6,11 @@
 
 `Tween` 缓动类用以实现目标对象属性的缓动，例如目标对象的x或y轴的缓动距离等目标值设置，以及缓动开始、停止、清理等设置。更多Tween的API
 
-`Ease`类定义了大量的缓动函数，以便实现 `Tween` 动画的具体缓动效果。LayaAir引擎的Tween类与Ease类结合使用，能基本满足游戏开发的缓动效果需求。点击链接可直接查看API： [https://layaair.ldc.layabox.com/api/?category=Core&class=laya.utils.Tween](https://layaair.ldc.layabox.com/api/?category=Core&class=laya.utils.Tween)
+`Ease`类定义了大量的缓动函数，以便实现 `Tween` 动画的具体缓动效果。LayaAir引擎的Tween类与Ease类结合使用，能基本满足游戏开发的缓动效果需求。点击链接可直接查看API： [https://layaair.ldc.layabox.com/api/?category=Core&class=laya.utils.Tween](https://layaair2.ldc2.layabox.com/api2/Chinese/index.html?version=2.9.0beta&type=Core&category=Utils&class=laya.utils.Tween)
 
-`Ease`类的API中对缓动函数进行了基础的介绍，点击链接可直接查看API：[https://layaair.ldc.layabox.com/api/?category=Core&class=laya.utils.Ease](https://layaair.ldc.layabox.com/api/?category=Core&class=laya.utils.Ease)
+`Ease`类的API中对缓动函数进行了基础的介绍，点击链接可直接查看API：[https://layaair.ldc.layabox.com/api/?category=Core&class=laya.utils.Ease](https://layaair2.ldc2.layabox.com/api2/Chinese/index.html?version=2.9.0beta&type=Core&category=Utils&class=laya.utils.Ease)
 
-`Ease`类的API中的各个缓动函数效果可以查看演示DEMO，链接：[https://layaair.ldc.layabox.com/demo/?Tween_EaseFunctionsDemo](https://layaair.ldc.layabox.com/demo/?Tween_EaseFunctionsDemo)
+`Ease`类的API中的各个缓动函数效果可以查看演示DEMO，链接：[https://layaair.ldc.layabox.com/demo/?Tween_EaseFunctionsDemo](https://layaair2.ldc2.layabox.com/demo2/?language=zh&category=2d&group=Tween&name=EaseFunctionsDemo)
 
 
 
@@ -42,7 +42,7 @@ duration是执行缓动效果花费的时间，单位是豪秒，时间越多，
 
 ##### ease
 
-ease   为缓动类型，它可以使用Ease类下定义的各种函数来改变动画的变化过程，LayaAir引擎提供了非常多的缓动方法供开发者们选择使用。开发者可以查看API或者在官网的引擎示例中切换缓动函数并观察缓动效果，链接地址：[https://layaair.ldc.layabox.com/demo/?Tween_EaseFunctionsDemo](https://layaair.ldc.layabox.com/demo/?Tween_EaseFunctionsDemo)
+ease   为缓动类型，它可以使用Ease类下定义的各种函数来改变动画的变化过程，LayaAir引擎提供了非常多的缓动方法供开发者们选择使用。开发者可以查看API或者在官网的引擎示例中切换缓动函数并观察缓动效果，链接地址：[https://layaair.ldc.layabox.com/demo/?Tween_EaseFunctionsDemo](https://layaair2.ldc2.layabox.com/demo2/?language=zh&category=2d&group=Tween&name=EaseFunctionsDemo)
 
 ##### complete
 
@@ -165,7 +165,7 @@ Laya.Tween.to(letterText, { y : 300 }, 1000, Laya.Ease.elasticOut, null, i * 100
 
 #### 3.5 理解ease参数
 
-第四个参数ease对应`laya.utils.Ease`类的各个方法，在官网的引擎示例中，针对这些方法都有演示效果。开发者可以点击链接（[https://layaair.ldc.layabox.com/demo/?Tween_EaseFunctionsDemo](https://layaair.ldc.layabox.com/demo/?Tween_EaseFunctionsDemo)）可以逐个查看，然后替换本例中的效果进行体验。
+第四个参数ease对应`laya.utils.Ease`类的各个方法，在官网的引擎示例中，针对这些方法都有演示效果。开发者可以点击链接（[https://layaair.ldc.layabox.com/demo/?Tween_EaseFunctionsDemo](https://layaair2.ldc2.layabox.com/demo2/?language=zh&category=2d&group=Tween&name=EaseFunctionsDemo)）可以逐个查看，然后替换本例中的效果进行体验。
 
 本节中我们改为`Ease.bounceIn`效果，如动图6所示。
 
