@@ -45,7 +45,7 @@ new GameMain();
 
 ![动图2](img/2.gif) <br/> (动图2)
 
-**Tips:** Button 组件的属性接口介绍请参考 [Button API](http://layaair.ldc.layabox.com/api/index.html?category=Core&class=laya.ui.Button)。
+**Tips:** Button 组件的属性接口介绍请参考 [Button API](https://layaair2.ldc2.layabox.com/api2/Chinese/index.html?version=2.9.0beta&type=2D&category=UI&class=laya.ui.Button)。
 
 
 
