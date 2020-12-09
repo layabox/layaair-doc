@@ -7,7 +7,7 @@
 
 ## 一、遮罩API介绍
 
-　　遮罩属性位于[laya.display.Sprite](http://layaair.ldc.layabox.com/api/index.html?category=Core&class=laya.display.Sprite#mask) API内，该属性的说明如图1所示：
+　　遮罩属性位于[laya.display.Sprite](https://layaair2.ldc2.layabox.com/api2/Chinese/index.html?version=2.9.0beta&type=Core&category=display&class=laya.display.Sprite) API内，该属性的说明如图1所示：
 
 ![1](img/1.jpg)<br />（图1）
 

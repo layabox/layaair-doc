@@ -22,7 +22,6 @@
 
 - 在UI页面中制作时间轴动画，`动画编辑模式`勾选状态时，不能直接将组件拖入`场景编辑器`，需要先退出`动画编辑模式`，将要使用的UI组件先拖入`场景编辑器`，然后再重新进入`动画编辑模式`编辑。
 
-  
 
 ### 1.1 创建时间轴动画文件ani
 
@@ -585,4 +584,4 @@ function onLoaded() {
 
 
 
-至此，关于时间轴动画Animation的制作与使用已介绍完。更多关于时间轴动画的API使用可以查看[Animation API文档](http://layaair.ldc.layabox.com/api/index.html?category=Core&class=laya.display.Animation)。
+至此，关于时间轴动画Animation的制作与使用已介绍完。更多关于时间轴动画的API使用可以查看[Animation API文档](https://layaair2.ldc2.layabox.com/api2/Chinese/index.html?version=2.9.0beta&type=Core&category=display&class=laya.display.Animation)。

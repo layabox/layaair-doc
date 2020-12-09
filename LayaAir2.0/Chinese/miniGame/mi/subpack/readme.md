@@ -111,7 +111,7 @@ console.info('加载分包 sub1Name 成功')
 )
 ```
 
-加载成功的同时，qg.loadSubpackage 会返回一个 [LoadSubpackageTask](https://developers.weixin.qq.com/minigame/dev/document/subpackages/LoadSubpackageTask.html)，可以通过 LoadSubpackageTask 获取获取分包加载状态。示例代码如下：
+加载成功的同时，qg.loadSubpackage 会返回一个 [LoadSubpackageTask](https://developers.weixin.qq.com/minigame/dev/api/base/subpackage/LoadSubpackageTask.html)，可以通过 LoadSubpackageTask 获取获取分包加载状态。示例代码如下：
 
 ```javascript
 loadTaskA.onProgressUpdate(res => {

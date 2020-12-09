@@ -8,7 +8,7 @@
 
 ​        ProgressBar 经常被用于显示游戏中某个操作的进度，例如加载资源的进度、角色经验或血量的进度。
 ​        点击选择资源面板里的 ProgressBar 组件，拖放到页面编辑区，即可添加 ProgressBar 组件到页面上。
-​        ProgressBar 的脚本接口参考 [ProgressBar API](http://layaair.ldc.layabox.com/api/index.html?category=Core&class=laya.ui.ProgressBar)。
+​        ProgressBar 的脚本接口参考 [ProgressBar API](https://layaair2.ldc2.layabox.com/api2/Chinese/index.html?version=2.9.0beta&type=2D&category=UI&class=laya.ui.VSlider)。
 
 ​        ProgressBar 组件的资源示例：
 

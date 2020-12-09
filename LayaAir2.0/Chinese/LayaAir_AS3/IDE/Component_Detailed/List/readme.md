@@ -6,7 +6,7 @@
 
 ​        List 组件可显示项目列表。默认为垂直方向列表。可通过UI编辑器自定义列表。List 列表的每一个列表通常是一样的，也可以使用编辑器自定义不同样式的列表内容项。
 ​        List 通常由两个部分组成：列表渲染项（单元格）、滚动条。
-​        List 组件的脚本接口请参考 [List API](http://layaair.ldc.layabox.com/api/index.html?category=Core&class=laya.ui.List)。
+​        List 组件的脚本接口请参考 [List API](https://layaair2.ldc2.layabox.com/api2/Chinese/index.html?version=2.9.0beta&type=2D&category=UI&class=laya.ui.List)。
 
  
 

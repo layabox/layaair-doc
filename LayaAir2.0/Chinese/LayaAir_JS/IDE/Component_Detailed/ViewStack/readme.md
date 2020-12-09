@@ -16,7 +16,7 @@ ViewStack组件是通过`Ctrl+B`转换而来的容器类组件，没有独立的
 
 ### 1.3 ViewStack组件的API介绍
 
-​	ViewStack 组件的API使用请参考 [http://layaair.ldc.layabox.com/api/index.html?category=Core&class=laya.ui.ViewStack](http://layaair.ldc.layabox.com/api/index.html?category=Core&class=laya.ui.ViewStack)。
+​	ViewStack 组件的API使用请参考 [http://layaair.ldc.layabox.com/api/index.html?category=Core&class=laya.ui.ViewStack](https://layaair2.ldc2.layabox.com/api2/Chinese/index.html?version=2.9.0beta&type=2D&category=UI&class=laya.ui.ViewStack)。
 
 
 

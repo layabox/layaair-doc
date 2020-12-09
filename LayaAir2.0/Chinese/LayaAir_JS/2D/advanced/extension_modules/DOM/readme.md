@@ -63,12 +63,6 @@ Laya.stage.addChild(sp);
 
 总结：上面的代码给我们很好的启示，在项目中我们的特殊艺术字可以用这种方法更加简单方便。开发者可以自行找一些更加绚丽的效果，比如3D的透视效果，图文混排，阴影，倒影等等。这种方法不仅仅减少了网络的宽带，更重要的是方便我们时时修改。设置好一种样式，项目中导出都可以应用。假如用上面的方法代替位图字体的做法是不是更加高效快捷呢。
 
-相关链接：
-
-[https://codepen.io/pen/；](https://codepen.io/pen/%EF%BC%9B)
-
-[https://developer.mozilla.org/en-US/docs/Web/API/Canvas_API/Drawing_DOM_objects_into_a_canvas；](https://developer.mozilla.org/en-US/docs/Web/API/Canvas_API/Drawing_DOM_objects_into_a_canvas%EF%BC%9B)
-
 
 
 ### LayaAir之Dom元素Image
@@ -182,7 +176,7 @@ plyr.setup(video);
 
 这个是个测试的连接，协议也是https的，开发者在调用摄像头的时候要注意这一点。自己的远端地址一定要https。
 
- 更多的资料可以参考这里:[https://github.com/mdn/webaudio-examples.。这里的链接是mdn给出的声音和视频的例子。](https://github.com/mdn/webaudio-examples.%E3%80%82%E8%BF%99%E9%87%8C%E7%9A%84%E9%93%BE%E6%8E%A5%E6%98%AFmdn%E7%BB%99%E5%87%BA%E7%9A%84%E5%A3%B0%E9%9F%B3%E5%92%8C%E8%A7%86%E9%A2%91%E7%9A%84%E4%BE%8B%E5%AD%90%E3%80%82)
+ 更多的资料可以参考这里:https://github.com/mdn/webaudio-examples 这里的链接是mdn给出的声音和视频的例子。
 
  LayaAir关于摄像头也有相应的封装，下面我们来看下用法。
 
@@ -236,7 +230,7 @@ function onStageClick() {
 
 编译运行上面的例子，发现打不开。这很正常，运行这个例子要自己搭建一个https的服务器。然后用手机打开这个地址对应的index.html。搭建一个简单的htpps服务器也很简单。这里我们借助Laya的命令行工具就可以。
 
-- 首先下载node。下载地址[https://nodejs.org/en/，进行安装。](https://nodejs.org/en/%EF%BC%8C%E8%BF%9B%E8%A1%8C%E5%AE%89%E8%A3%85%E3%80%82)
+- 首先下载node。下载地址https://nodejs.org/en/进行安装。
 - 安装完成之后 打开cmd 命令行，输入 npm install -g layacmd 等待安装完成。
 - 找到我们刚才编译的那个index.html。按住shift+右键 在此处打开cmd窗口 输入layacmd open ，然后就会启动一个http和htpps的静态服务器，根据命令行输出的地址，然后我们用手机谷歌浏览器或者微信访问这个地址 比如我们这里是[https://10.10.20.34:8001/index.html。](https://10.10.20.34:8001/index.html%E3%80%82)
 
@@ -431,7 +425,9 @@ function completeHandler(e){
 
 - eval的方法和script.innerHTML的方式基本差不多。加载的内容也是很随意。不过不推荐eval这种方式，eval是快被废弃的方法，无论在性能还是安全性方面都是不推荐使用的。具体的原因请看mdn的解释
 
-  [https://developer.mozilla.org/zh-CN/docs/Web/JavaScript/Reference/Global_Objects/eval。](https://developer.mozilla.org/zh-CN/docs/Web/JavaScript/Reference/Global_Objects/eval%E3%80%82)
+  [https://developer.mozilla.org/zh-CN/docs/Web/JavaScript/Reference/Global_Objects/eval。](https://developer.mozilla.org/zh-CN/docs/Web/JavaScript/Reference/Global_Objects/eval)
+
+- ​
 
   **其实加载的方式我们还可以放到worker中去，这样更加的减少了页面的渲染压力和卡顿现象。开发者可以阅读worker的教程进行发散。**
 

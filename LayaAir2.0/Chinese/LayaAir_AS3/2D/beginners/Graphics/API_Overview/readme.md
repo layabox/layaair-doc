@@ -11,4 +11,4 @@
 
 更多Graphics API的详细用法，可以点击下面的API文档URL查看。
 
-[http://layaair.ldc.layabox.com/api/index.html?category=Core&class=laya.display.Graphics](http://layaair.ldc.layabox.com/api/index.html?category=Core&class=laya.display.Graphics) 
+[http://layaair.ldc.layabox.com/api/index.html?category=Core&class=laya.display.Graphics](https://layaair2.ldc2.layabox.com/api2/Chinese/index.html?version=2.9.0beta&type=Core&category=display&class=laya.display.Graphics) 
