@@ -42,7 +42,7 @@ LayaAir引擎的开发者，UI大多都是通过LayaAirIDE制作。
 
 在实战分包之前，官方的文档没看过的，一定要先仔细看一看。这非常有用，无论能理解到多少，先尽量看懂文档要点，才能更好的理解分包。链接如下，请先看过后再进行后面的步骤。
 
-[https://cdofs.oppomobile.com/cdo-activity/static/201810/26/quickgame/documentation/subpackage/subpackage.html](https://cdofs.oppomobile.com/cdo-activity/static/201810/26/quickgame/documentation/subpackage/subpackage.html)
+[[https://cdofs.oppomobile.com/cdo-activity/static/201810/26/quickgame/documentation/#/subpackage/subpackage](https://cdofs.oppomobile.com/cdo-activity/static/201810/26/quickgame/documentation/#/subpackage/subpackage)]
 
 
 
@@ -123,6 +123,17 @@ loadTaskA.onProgressUpdate(res => {
 ```
 
 如果有遇到这块问题的，可以在社区中提出。
+
+
+
+## 四、oppo的分包调试
+
+分包成功后的小游戏 rpk 需拷贝到手机的 `sdcard/Android/data/com.nearme.instant.platform/files/subPkg` 中
+之后便可打开 OPPO 小游戏调试器在 `GAME分包` 标签页下打开对应小游戏 如图：
+
+![分包调试](img/6.png)
+
+
 
 
 
