@@ -10,7 +10,7 @@
 
 2. `canCollideWith:int` — 可产生碰撞的碰撞组，这两个属性。
 
-关于设置碰撞器分组可以查看：[Physics3DUtils类](https://layaair.ldc.layabox.com/api2/Chinese/index.html?category=3D&class=laya.d3.utils.Physics3DUtils)，一个物体同一时间所属碰撞分组是唯一的。
+关于设置碰撞器分组可以查看：[Physics3DUtils类](https://layaair.ldc.layabox.com/api2/Chinese/index.html?version=2.9.0beta&type=3D&category=Utils&class=laya.d3.utils.Physics3DUtils)，一个物体同一时间所属碰撞分组是唯一的。
 
 关于能产生碰撞的碰撞组这个属性，如果只能与单个组碰撞那么使用Physics3DUtils的分组赋值就行。
 
