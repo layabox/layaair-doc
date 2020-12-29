@@ -5,7 +5,11 @@
 
 ### 1、屏幕方向设置的API概述
 
-打开引擎的API文档，搜索[laya.display.Stage](https://layaair2.ldc2.layabox.com/api2/Chinese/index.html?version=2.9.0beta&type=Core&category=display&class=laya.display.Stage)，找到screenMode属性。如图1所示。![图1](img/1-1.png) 
+打开引擎的API文档，搜索[laya.display.Stage](https://layaair2.ldc2.layabox.com/api2/Chinese/index.html?version=2.9.0beta&type=Core&category=display&class=laya.display.Stage)，找到screenMode属性。如图1所示。
+
+
+
+![图1](img/1-1.png) 
 
 (图1)
 
