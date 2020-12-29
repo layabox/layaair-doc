@@ -128,9 +128,10 @@
             animator.addControllerLayer(layer);
             layer.defaultWeight = 1.0;
         }
+```
+        
 
-        ```
-
+        
     2. 应用装扮效果
         - 装扮应用可以在 onLoadCharacter 加载回调中进行， 也可以在 CmShowTool.loadGLTFDone 中回调返回前进行
         ```typescript
@@ -138,8 +139,8 @@
         var faceRenderableArray: Array<RenderableSprite3D> = renderableMap.get("face");
         // 添加装扮
         CmShowTool.applyFaceMakeUp(faceRenderableArray, struct);
-        ```
-
+    ```
+    
     3. 调整光照
         - CmShowPBRMatrial 可以调整附加光照强度， 适配不同光照效果
         ```typescript
