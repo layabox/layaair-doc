@@ -1,12 +1,22 @@
 [
   {
-    "name": "LayaAir IDE 2.9.0beta",
-    "url": "2.9.0beta.md",
-    "date": "2020-11-02",
+    "name": "LayaAir IDE 2.10.0beta",
+    "url": "2.10.0beta.md",
+    "date": "2020-12-28",
     "download": {
-      "Apple": "https://ldc-1251285021.cos.ap-shanghai.myqcloud.com/download/2.9.0/darwin/LayaAirIDE_beta.zip",
-      "Windows": "https://ldc-1251285021.cos.ap-shanghai.myqcloud.com/download/2.9.0/win/LayaAirIDE_beta.zip",
-      "UnityPlugin":"https://ldc-1251285021.cos.ap-shanghai.myqcloud.com/download/2.9.0/unityplugin/LayaAirUnityPlugin_beta.zip"
+      "Apple": "https://ldc-1251285021.cos.ap-shanghai.myqcloud.com/download/2.10.0/darwin/LayaAirIDE_beta.zip",
+      "Windows": "https://ldc-1251285021.cos.ap-shanghai.myqcloud.com/download/2.10.0/win/LayaAirIDE_beta.zip",
+      "UnityPlugin":"https://ldc-1251285021.cos.ap-shanghai.myqcloud.com/download/2.10.0/unityplugin/LayaAirUnityPlugin_beta.zip"
+    }
+  },
+  {
+    "name": "LayaAir IDE 2.9.0",
+    "url": "2.9.0.md",
+    "date": "2020-12-28",
+    "download": {
+      "Apple": "https://ldc-1251285021.cos.ap-shanghai.myqcloud.com/download/2.9.0/darwin/LayaAirIDE.zip",
+      "Windows": "https://ldc-1251285021.cos.ap-shanghai.myqcloud.com/download/2.9.0/win/LayaAirIDE.zip",
+      "UnityPlugin":"https://ldc-1251285021.cos.ap-shanghai.myqcloud.com/download/2.9.0/unityplugin/LayaAirUnityPlugin.zip"
     }
   },
   {
