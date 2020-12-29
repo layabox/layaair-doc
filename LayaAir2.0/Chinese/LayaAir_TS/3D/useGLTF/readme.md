@@ -94,7 +94,7 @@
         - 可自行添加，组织动画控制器与动画状态
         - 动画添加可以在 onLoadCharacter 加载回调中进行， 也可以在 CmShowTool.loadGLTFDone 中回调返回前进行
 
-        ```typescript
+    ```typescript
         // 此处 animatorRoot 节点应与 unity 中 Animator 组件所在节点相同
         var animatorRoot: Sprite3D = <Sprite3D>skeletonRoot.getChildByName("Group");
 
@@ -128,22 +128,23 @@
             animator.addControllerLayer(layer);
             layer.defaultWeight = 1.0;
         }
-```
-        
+    ```
+    
 
-        
+    ​    
     2. 应用装扮效果
         - 装扮应用可以在 onLoadCharacter 加载回调中进行， 也可以在 CmShowTool.loadGLTFDone 中回调返回前进行
-        ```typescript
+    ```typescript
         // 获取脸部模型渲染节点数组
         var faceRenderableArray: Array<RenderableSprite3D> = renderableMap.get("face");
         // 添加装扮
         CmShowTool.applyFaceMakeUp(faceRenderableArray, struct);
     ```
+
     
     3. 调整光照
         - CmShowPBRMatrial 可以调整附加光照强度， 适配不同光照效果
-        ```typescript
+    ```typescript
         var mat: CmShowPBRMatrial = new CmShowPBRMatrial();
         mat.lightInstensity = 2.0; // 附加光照强度， eg: 平行光照强度 0.5, CmShowPBRMatrial 附加光照强度 1.5， 材质实际光照强度 0.5 * 1.5 = 0.75
-        ```
+    ```
