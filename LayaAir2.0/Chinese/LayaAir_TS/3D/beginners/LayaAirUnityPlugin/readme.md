@@ -1,4 +1,4 @@
-3D场景编辑-unity插件使用说明
+## 3D场景编辑-unity插件使用说明
 
 > *version: 2.9.0beta    update: 2020-11-02       author: charley*
 
@@ -746,13 +746,13 @@ Mesh Setting（模型设置）是指模型网格数据的导出设置，功能�
 | Angular Y Motion（绕 Y 轴旋转的角运动）         | 支持（包括：Locked锁定、Limited受限、Free自由） |
 | Angular Z Motion（绕 Z 轴旋转的角运动）         | 支持（包括：Locked锁定、Limited受限、Free自由） |
 | Linear Limit Spring（弹簧线性限制）             | 支持（包括：Spring弹簧、Damper阻尼）            |
-| Linear Limit（线性限制）                        | 部分支持（包括：Limit限制、Bounciness弹力）     |
+| Linear Limit（线性限制）                        | 部分支持（包括：Limit限制、Bounciness反弹力）   |
 | Angular X Limit Spring（弹簧X轴旋转限制）       | 支持（包括：Spring弹簧、Damper阻尼）            |
-| Low Angular X Limit（X轴旋转的下限）            | 部分支持（包括：Limit限制、Bounciness弹力）     |
-| Hight Angular X Limit（X轴旋转的上限）          | 部分支持（包括：Limit限制、Bounciness弹力）     |
+| Low Angular X Limit（X轴旋转的下限）            | 部分支持（包括：Limit限制、Bounciness反弹力）   |
+| Hight Angular X Limit（X轴旋转的上限）          | 部分支持（包括：Limit限制、Bounciness反弹力）   |
 | Angular YZ Limit Spring（弹簧Y轴和Z轴旋转限制） | 支持（包括：Spring弹簧、Damper阻尼）            |
-| Angular Y Limit（Y轴旋转的限制）                | 部分支持（包括：Limit限制、Bounciness弹力）     |
-| Angular Z Limit（Z轴旋转的限制）                | 部分支持（包括：Limit限制、Bounciness弹力）     |
+| Angular Y Limit（Y轴旋转的限制）                | 部分支持（包括：Limit限制、Bounciness反弹力）   |
+| Angular Z Limit（Z轴旋转的限制）                | 部分支持（包括：Limit限制、Bounciness反弹力）   |
 | Target Position（目标角度）                     | 支持（包括：X、Y、Z）                           |
 | Target Velocity（目标速度）                     | 支持（包括：X、Y、Z）                           |
 | Break Force（断开力）                           | 支持                                            |
