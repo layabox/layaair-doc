@@ -728,7 +728,7 @@ Mesh Setting（模型设置）是指模型网格数据的导出设置，功能�
 
 ##### 4.9.7 可配置关节组件Configurable Joint
 
-![img](img/4.9-7.png) 
+![img](img/4.9-7.png)  
 
 在上图中的Unity可配置关节属性里，LayaAir导出支持情况如下：
 
@@ -753,8 +753,6 @@ Mesh Setting（模型设置）是指模型网格数据的导出设置，功能�
 | Angular YZ Limit Spring（弹簧Y轴和Z轴旋转限制） | 支持（包括：Spring弹簧、Damper阻尼）            |
 | Angular Y Limit（Y轴旋转的限制）                | 部分支持（包括：Limit限制、Bounciness反弹力）   |
 | Angular Z Limit（Z轴旋转的限制）                | 部分支持（包括：Limit限制、Bounciness反弹力）   |
-| Target Position（目标角度）                     | 支持（包括：X、Y、Z）                           |
-| Target Velocity（目标速度）                     | 支持（包括：X、Y、Z）                           |
 | Break Force（断开力）                           | 支持                                            |
 | Break Torque（断开扭矩）                        | 支持                                            |
 
