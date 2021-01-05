@@ -1289,8 +1289,8 @@
 						"name_2_name": "LayaAir3D之物理系统",
 						"name_2_data": [
 							{
-								"name_3_name": "物理系统的概述",
-								"name_3_url": "Chinese/LayaAir_TS/3D/Physics3D/Overview_of_Physical_Systems/",
+								"name_3_name": "一篇上手LayaAir的3D物理引擎",
+								"name_3_url": "Chinese/LayaAir_TS/3D/Physics3D/beginner/",
 								"name_3_file": "readme.md"
 							},
 							{
@@ -3274,8 +3274,8 @@
 						"name_2_name": "LayaAir3D之物理系统",
 						"name_2_data": [
 							{
-								"name_3_name": "物理系统的概述",
-								"name_3_url": "Chinese/LayaAir_JS/3D/Physics3D/Overview_of_Physical_Systems/",
+								"name_3_name": "一篇上手LayaAir的3D物理引擎",
+								"name_3_url": "Chinese/LayaAir_TS/3D/Physics3D/beginner/",
 								"name_3_file": "readme.md"
 							},
 							{
@@ -5299,8 +5299,8 @@
 						"name_2_name": "LayaAir3D之物理系统",
 						"name_2_data": [
 							{
-								"name_3_name": "物理系统的概述",
-								"name_3_url": "Chinese/LayaAir_AS3/3D/Physics3D/Overview_of_Physical_Systems/",
+								"name_3_name": "一篇上手LayaAir的3D物理引擎",
+								"name_3_url": "Chinese/LayaAir_TS/3D/Physics3D/beginner/",
 								"name_3_file": "readme.md"
 							},
 							{
