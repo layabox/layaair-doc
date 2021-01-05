@@ -1,6 +1,6 @@
 ## 一篇上手LayaAir的3D物理引擎
 
-> *Author: Charley    Date: 2020-12-28       Engine&IDE Version : 2.9.0*
+> *Author: Charley    Date: 2021-01-05       Engine&IDE Version : 2.9.0*
 
 LayaAir引擎集成了世界三大物理引擎之一的Bullet引擎，当在Unity中使用了物理组件，用LayaAir的Unity插件导出后，默认就是采用的Bullet引擎。当然，LayaAir引擎也支持使用比较轻量的Cannon物理引擎的基础功能。本篇针对LayaAir引擎的初学者，全面介绍了3D物理引擎使用的基础能力。方便开发者快速上手。
 
