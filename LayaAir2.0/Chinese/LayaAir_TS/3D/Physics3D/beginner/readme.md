@@ -6,6 +6,8 @@ LayaAir引擎集成了世界三大物理引擎之一的Bullet引擎，当在Unit
 
 > 阅读本篇时，除非是Cannon物理引擎的专属章节，或者注明是cannon物理引擎，默认介绍都是基于LayaAir封装的Bullet引擎。
 
+[TOC]
+
 ### 一、刚体
 
 #### 1.1 什么是刚体
