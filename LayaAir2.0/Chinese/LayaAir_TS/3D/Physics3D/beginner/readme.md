@@ -1048,7 +1048,7 @@ _scene3D.physicsSimulation.raycastFromTo(this.from, this.to, this.out);
 
 （图15）
 
-图15-1的示例，就采用球形射线来实现碰撞检测，具体代码如下所示：
+图15的示例，就采用球形射线来实现碰撞检测，具体代码如下所示：
 
 ```typescript
 //创建球型碰撞器
