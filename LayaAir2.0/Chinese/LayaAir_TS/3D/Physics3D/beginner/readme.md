@@ -670,11 +670,11 @@ export default class TSDemo extends Laya.Script3D {
 
 ##### 2.5.1 碰撞组 collisionGroup
 
-碰撞组的值，我们通常设置为2的幂次方值。如果应用场景比较复杂，需要用到的碰撞分组比较多，记不住太多2的幂次方值，也可以直接使用LayaAir引擎内置的碰撞组工具类。
+碰撞组的值，我们通常设置为2的N次幂值。如果应用场景比较复杂，需要用到的碰撞分组比较多，记不住太多2的N次幂值，也可以直接使用LayaAir引擎内置的碰撞组工具类。
 
 LayaAir引擎内置了17个碰撞组属性值，用于过滤不需要的碰撞。
 
-引擎内置的碰撞组工具类为`laya.d3.utils.Physics3DUtils`（简写`Laya.Physics3DUtils`）。
+引擎内置的碰撞组工具类为`Laya.Physics3DUtils`。
 
 ###### 全部可碰撞的组
 
@@ -690,7 +690,7 @@ xxx.collisionGroup = Laya.Physics3DUtils.COLLISIONFILTERGROUP_ALLFILTER;
 
 ###### 自定义碰撞分组
 
-LayaAir内置的碰撞组，不包括刚刚讲的-1（COLLISIONFILTERGROUP_ALLFILTER），我们可以用的还有10个，分别是`COLLISIONFILTERGROUP_CUSTOMFILTER1......10`。全都是2的幂次方，从64到32768。
+LayaAir内置的碰撞组，不包括刚刚讲的-1（COLLISIONFILTERGROUP_ALLFILTER），我们可以用的还有10个，分别是`COLLISIONFILTERGROUP_CUSTOMFILTER1......10`。全都是2的幂，从64到32768。
 
 为了方便记忆，我们可以不记实际值，记住CUSTOMFILTER后1到10的ID号区别即可。
 
@@ -746,11 +746,11 @@ xxx.canCollideWith = Laya.Physics3DUtils.COLLISIONFILTERGROUP_CUSTOMFILTER1 | La
 
 > 关于位运算用于碰撞的基础原理，如果不明白的可以参考[2D物理的碰撞分组详解：https://ldc2.layabox.com/doc/?nav=zh-ts-3-5-5](https://ldc2.layabox.com/doc/?nav=zh-ts-3-5-5)
 
-###### 排除碰撞组
+###### 指定不可碰撞的组
 
 如果存在多个碰撞分组的情况下，我们只想排除掉某个或者某几个碰撞组不与其发生碰撞，与其它所有的碰撞组发生碰撞如何处理呢？
 
-这时候可以通过异或运算符`^`来实现。用 `-1`去异或`^`任何2的幂次方值，那该值的碰撞组就不会被碰撞。
+这时候可以通过异或运算符`^`来实现。用 `-1`去异或`^`任何2的幂值，那该值的碰撞组就不会被碰撞。
 
 使用示例为：
 
