@@ -13,7 +13,7 @@
 
 ##### 厘米秀模型加载的DEMO包下载地址：
 
-[点击此处下载DEMO包](./CmShwoDemo.zip)
+[点击此处下载DEMO包](CmShwoDemo.zip)
 
 
 
