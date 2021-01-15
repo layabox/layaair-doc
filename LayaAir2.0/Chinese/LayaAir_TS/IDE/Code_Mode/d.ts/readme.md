@@ -6,7 +6,7 @@
 
 我们在使用TypeScript语言开发的时候，可能会产生使用JavaScript库或者第三方平台（例如小游戏）的API需求。
 
-无论是哪种需求，如果在本地没有定义静态类型。那在VSCode这种带语法检测的编辑器开发过程就会产生语法检测的警告。
+无论是哪种需求，如果在本地没有定义静态类型。那在VSCode这种带语法检测的编辑器开发过程就会产生语法检测的警告以及编译报错。
 
 此时，我们可以通过`d.ts`后缀的TypeScript语言声明文件来解决。
 
@@ -212,7 +212,61 @@ declare namespace wx {
 
 基于尽可能不用全局声明的原则，这些在最外层作用域的全局声明不是常用方式，简单了解一下即可。
 
-### 3、写在最后
+### 3、自动生成声名文件
+
+如果库的源码本身就是由TS 写的，那么在使用 `tsc` 脚本将 TS 编译为 js 的时候，添加 `declaration` 选项，就可以同时也生成 `.d.ts` 声明文件了。
+
+我们可以在命令行中添加 `--declaration`（简写 `-d`），
+
+或者在 `tsconfig.json` 中添加 `declaration` 选项。这里以 `tsconfig.json` 为例：
+
+```
+{
+    "compilerOptions": {
+        "module": "commonjs",
+        "outDir": "lib",
+        "declaration": true,
+    }
+}
+```
+
+上例中我们添加了 `outDir` 选项，将 ts 文件的编译结果输出到 `lib` 目录下，然后添加了 `declaration` 选项，设置为 `true`，表示将会由TS文件自动生成 `.d.ts` 声明文件，也会输出到 `lib` 目录下。
+
+这时候，可能会出现`export`关键字，甚至是在出现在声名前`declare`，
+
+例如下面的两个TS源码为：
+
+```typescript
+// src/index.ts
+export * from './bar';
+export default function foo() {
+    return 'foo';
+}
+
+
+// src/bar/index.ts
+export function bar() {
+    return 'bar';
+}
+```
+
+生成两个对应的d.ts声名文件为：
+
+```typescript
+// lib/index.d.ts
+export * from './bar';
+export default function foo(): string;
+
+
+// lib/bar/index.d.ts
+export declare function bar(): string;
+```
+
+对比上面源文件与声名文件的变化，自动生成的声明文件基本保持了源码的结构，而将具体实现去掉了，生成了对应的类型声明。
+
+使用 `tsc` 自动生成声明文件时，每个 ts 文件都会对应一个 `.d.ts` 声明文件。这样的好处是，使用方不仅可以在使用 `import foo from 'foo'` 导入默认的模块时获得类型提示，还可以在使用 `import bar from 'foo/lib/bar'` 导入一个子模块时，也获得对应的类型提示。
+
+### 4、写在最后
 
 本文仅介绍了项目中的声名文件的入门级使用方式，
 
