@@ -497,6 +497,11 @@
 								"name_3_name": "VSCode高效开发工作流配置指南",
 								"name_3_url": "Chinese/LayaAir_TS/IDE/Code_Mode/vscode/",
 								"name_3_file": "readme.md"
+							},
+							{
+								"name_3_name": "学会编写d.ts声明文件",
+								"name_3_url": "Chinese/LayaAir_TS/IDE/Code_Mode/d.ts/",
+								"name_3_file": "readme.md"
 							}
 						]
 					},
