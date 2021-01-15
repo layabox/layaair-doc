@@ -78,7 +78,8 @@ declare module laya.ani.bone {
 		constructor();
 	}
 }
-
+//LayaAir多级模块的写法，在引擎实际开发过程中不能使用，这里仅是为了兼容旧版本作的声名
+//正式使用的时候，应该使用Laya.XXX
 declare module laya.resource {    
     //在声名的模块里定义枚举类型
     enum FilterMode {
