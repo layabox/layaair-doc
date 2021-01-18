@@ -190,6 +190,9 @@ import Browser = Laya.Browser;
 export default class GameRecorderMgr {
     /**录屏实例**/
     private _recorder: any;
+    static _instance: GameRecorderMgr;
+    /**视频地址**/
+    private _videoPath: String = "";
 
 	constructor() {
         GameRecorderMgr.instance = this;
@@ -204,12 +207,20 @@ export default class GameRecorderMgr {
         }
     }   
 
-/**
- *  
- * @param data{ duration:10(默认10秒,最大值120(2分钟))}
- * 开始录屏
- */
-	public start(data: any): void {    
+    static get instance(): GameRecorderMgr {
+        if (!GameRecorderMgr._instance)
+            GameRecorderMgr._instance = new GameRecorderMgr();
+        return GameRecorderMgr._instance;
+    }
+    
+  /**
+     * 开始录屏
+     * 开发者可以在任意想录屏的点调用该方法。
+     * @param data{ duration:10} 
+     * 这里的10表示为最短10秒后才可以调stop录屏,
+     * 字节跳动API文档写的是最少3秒后，最大可设置300秒
+     */
+    public start(data: any = { duration: 10 }): void {
         //判断是否为字节小游戏环境
         if (Browser.onTTMiniGame && this._recorder) {
             //开始录屏，设置录屏的时间长度
@@ -218,29 +229,36 @@ export default class GameRecorderMgr {
             });
 
             //监听录屏开始事件
-            this._recorder.onStart(function (res): void {
+            this._recorder.onStart((res)=>{
                 console.log("录屏开始 res:" + JSON.stringify(res));
             });
 
             //监听录屏错误事件
-            this._recorder.onError(function (errMsg: String): void {
+            this._recorder.onError((errMsg)=>{
                 console.log("录屏错误 errMsg:" + errMsg);
             });
         }
 	}
     
-    /**停止录屏**/
-    public onStop(): void {
+
+    /**
+     * 停止录屏，
+     * 开发者根据需求，在不想录的时候主动调该方法。例如角色死亡或者关卡结束
+     */
+    public stop(): void {
         if (Browser.onTTMiniGame && this._recorder) {
-            //停止录屏
-            this._recorder.stop();
-			//监听录屏停止事件
-            this._recorder.onStop(function (res): void {
+            //监听录屏结束事件，停止后拿到生成的视频地址
+            this._recorder.onStop((res) => {
                 console.log("录屏结束 res.videoPath:" + res.videoPath);
+                //设置视频地址路径
                 this._videoPath = res.videoPath;
-            });
+            });            
+            
+            //主动调停止录屏
+            this._recorder.stop();
         }
     }
+
 }
 ```
 
