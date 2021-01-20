@@ -305,3 +305,12 @@ export default class GameRecorderMgr {
 
 （图7-2）
 
+
+
+
+
+## 本文赞赏
+
+如果您觉得本文对您有帮助，欢迎扫码赞赏作者，您的激励是我们写出更多优质文档的动力。
+
+![wechatPay](../wechatPay.jpg) 
