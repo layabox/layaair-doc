@@ -213,14 +213,14 @@ export default class GameRecorderMgr {
         return GameRecorderMgr._instance;
     }
     
-  /**
+    /**
      * 开始录屏
      * 开发者可以在任意想录屏的点调用该方法。
-     * @param data{ duration:10} 
-     * 这里的10表示为最短10秒后才可以调stop录屏,
-     * 字节跳动API文档写的是最少3秒后，最大可设置300秒
+     * @param data{ duration:60} 
+     * 这里的60表示为60秒后自动停止录屏，
+     * API里默认最大可设置300秒,如果不设置，默认是10秒。
      */
-    public start(data: any = { duration: 10 }): void {
+   start(data: any = { duration: 60 }): void {
         //判断是否为字节小游戏环境
         if (Browser.onTTMiniGame && this._recorder) {
             //开始录屏，设置录屏的时间长度
@@ -245,7 +245,7 @@ export default class GameRecorderMgr {
      * 停止录屏，
      * 开发者根据需求，在不想录的时候主动调该方法。例如角色死亡或者关卡结束
      */
-    public stop(): void {
+   stop(): void {
         if (Browser.onTTMiniGame && this._recorder) {
             //监听录屏结束事件，停止后拿到生成的视频地址
             this._recorder.onStop((res) => {
@@ -258,7 +258,26 @@ export default class GameRecorderMgr {
             this._recorder.stop();
         }
     }
-
+    
+    /**
+     * 分享视频
+     * 主动调分享视频，例如角色死亡或闯关结束时
+     * 一定要先停止录屏并拿到视频地址后，才可以调该方法
+     */
+    shareVideo(): void {
+        if (Browser.onTTMiniGame && this._videoPath) {
+            tt.shareVideo({
+                videoPath: this._videoPath,
+                title: "测试分享的标题",
+                success() {
+                    console.log("分享成功");
+                },
+                fail(e) {
+                    console.log("分享失败");
+                },
+            });
+        }
+    }
 }
 ```
 
