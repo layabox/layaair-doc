@@ -160,7 +160,7 @@ launch.json 内容如下：
 			"file": "${workspaceRoot}/bin/index.html",
 			"runtimeArgs": [
 				"--allow-file-access-from-files",
-				" --disable-web-security"
+				"--disable-web-security"
 			],
 			"sourceMaps": true,
 			"webRoot": "${workspaceRoot}",
@@ -172,6 +172,10 @@ launch.json 内容如下：
 	]
 }
 ```
+
+> 需要重点注意的是，
+>
+> 在runtimeArgs里，之前LayaAirIDE创建项目的时候，" --disable-web-security"这里，--前有个空格，在之前很多的版本都是不影响调试的，但是从某个版本开始，不允许带空格了，如果遇到无法成功通过F5调起浏览器调试环境时，可以检查一下是否在该处`--`前带有空格，如有可以去掉。
 
 如果不想创建项目复制`launch.json`的，直接在`.vscode`目录创建一个空文件`launch.json`，将上面的内容复制过去也是可以的。
 
