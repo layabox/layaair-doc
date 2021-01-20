@@ -14,25 +14,35 @@
 
 **支持导出的摄像机设置**：
 
+#### 通用的属性
+
 Transform选择组件。可以调整摄像机的**Position**位置，**Rotation**选择和**Scale**缩放。
 
-Background背景，在没有天空盒的情况下，将选中的颜色应用到剩余屏幕。
+#### 摄像机属性
 
-Culling Mask 剔除遮罩，包含或者忽略对象的Layer。
+##### Clear Flags 清除标志
 
-Projection 投射。Perspective 透视投影，Orthography正交投影。
+支持项包括Skybox天空盒、Solid Color纯色、Depth only仅深度、Don’t Clear不清除
 
-Size 大小。当设置了正交摄影机时的视口大小。
+##### Background背景，
 
-Field of View 视野范围。相机的视角宽度，以及纵向的角度尺寸。
+在没有天空盒的情况下，将选中的颜色应用到剩余屏幕。
 
-Clipping Planes 裁剪平面。从摄影机到开始渲染和停止渲染的距离。
+##### Projection 投射方式
 
-​	Near 近裁剪面。
+支持项包括Perspective 透视投影，Orthography正交投影，选择正交投影还包括Size，是指正交摄影机的视口大小。
 
-​	Far 远裁剪面。
+##### Field of View 视野范围
 
-Viewport Rect 视口矩形。
+相机的视角宽度，以及纵向的角度尺寸。
+
+##### Clipping Planes 裁剪平面
+
+从摄影机到开始渲染和停止渲染的距离。支持项包括Near 近裁剪面与Far 远裁剪面。
+
+##### Viewport Rect 视口矩形
+
+支持项包括X、Y、W、H。分别是指：
 
 ​	x：相机视图将进行绘制的水平位置的起点。
 
@@ -41,10 +51,6 @@ Viewport Rect 视口矩形。
 ​	w：相机输出到屏幕的宽度。
 
 ​	h：相机输出到屏幕的高度。
-
-Depth 深度。绘图顺序。
-
-Target Texture 目标纹理。
 
 ### 使用代码获取导出的摄像机
 
