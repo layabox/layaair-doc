@@ -485,6 +485,8 @@ Mesh Setting（模型设置）是指模型网格数据的导出设置，功能�
 | Viewport Rect（标准视图矩形）       | 支持（包括：X、Y、W、H）                                     |
 | Allow HDR（允许渲染高动态色彩画面） | 支持                                                         |
 
+> Culling Mask在layaAir引擎中是支持的，但是Unity中设置无效，需要通过引擎的cullingMask进行设置。
+
 #### 4.3 光照相关的属性
 
 #####  4.3.1 灯光的属性Light
