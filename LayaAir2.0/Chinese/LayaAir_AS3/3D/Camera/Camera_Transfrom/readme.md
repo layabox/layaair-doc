@@ -9,7 +9,7 @@
 ```typescript
 //实例化一个相机，设置纵横比，0为自动匹配。0.1最近看到的距离，100最远看到的距离。
 var camera:Camera = new Camera(0, 0.1, 100)
-//移动相机，设置相机的向z轴移动3米。true代表是局部坐标，false是相对世界坐标。 
+//移动相机，设置相机的向z轴移动 3。true代表是局部坐标，false是相对世界坐标。 
 camera.transform.translate(new Vector3(0, 0, 3),false);
 //加载到场景
 scene.addChild(camera);
