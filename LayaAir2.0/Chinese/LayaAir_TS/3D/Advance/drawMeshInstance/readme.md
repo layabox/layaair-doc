@@ -18,7 +18,7 @@ LayaAir2.11beta版本开始，新增了一个重磅功能。那就是在CommandB
 
 增加渲染指令drawMeshInstance后，开发者可以用来渲染自定义instance属性，进行instance渲染。这种渲染相比普通的渲染**会较大的提高渲染性能。**
 
-例如官网示例中的CommandBuffer_DrawCustomInstance就是自定义instance的优化示例，示例中自定义了小球的颜色，并且实现了用一个渲染批次画出900个小球的效果，体现了渲染优化的能力。
+例如官网示例中的CommandBuffer_DrawCustomInstance就是自定义instance的优化示例，示例中自定义了小球的颜色，并且实现了用一个渲染批次画出900个**颜色不同的**小球效果，体现了渲染优化的能力。
 
 ![img](img/1.png) 
 
@@ -110,7 +110,7 @@ this.materialBlock.setVectorArray("a_InstanceColor",this.currentColor,InstanceLo
 
 ##### 2.3 如何高性能的修改渲染个数drawNums、位置、自定义Instance属性
 
-通过drawMeshInstance的示例，我们看到，可以性能很高的修改900个小球的颜色以及位置，这就用到了这个功能另外的函数
+通过drawMeshInstance的示例，我们看到，可以性能很高的修改900个小球的颜色以及位置，这就用到了这个功能另外的方法。
 
 首先，我们要更新修改位置，就需要调用DrawMeshInstanceCMD类的`setWorldMatrix(worldMatrixArray:Matrix4x4[]))`方法，然后传入最新的矩阵数组。
 
