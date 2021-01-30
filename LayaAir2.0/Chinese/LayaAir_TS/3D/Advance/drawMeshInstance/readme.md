@@ -108,7 +108,7 @@ this.materialBlock.setVectorArray("a_InstanceColor",this.currentColor,InstanceLo
 
 至此，自定义的属性就应用在我们的shader中了。
 
-##### 2.3 如何高性能的修改渲染个数drawNums、位置
+##### 2.3 如何高性能的修改渲染个数drawNums、位置、自定义Instance属性
 
 通过drawMeshInstance的示例，我们看到，可以性能很高的修改900个小球的颜色以及位置，这就用到了这个功能另外的函数
 
@@ -121,3 +121,5 @@ maxInstanceCount默认值为1024，开发者可以动态的修改。官网示例
 ![img](img/7.png)  
 
 （图7）
+
+除了修改渲染个数与位置外，如果我们要动态修改自定义Instance属性，我们需要调用MaterialInstancePropertyBlock中的方法setVectorArray、setVector3Array、setVector2Array、setNumberArray来设置更新类型为Vector4，Vector3，Vector2，number的自定义属性的数据，但是name和attributeLocation必须和之前设置的自定义属性匹配。
