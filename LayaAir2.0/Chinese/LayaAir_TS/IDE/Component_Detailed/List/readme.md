@@ -53,7 +53,7 @@
 
 
 ```javascript
-  var data: Array<string> = [];
+  var data: Array<any> = [];
 
    for(var m:number =0;m<20;m++){
 
@@ -103,7 +103,7 @@ m_list.array = data;
 
 2. List 的列表渲染项既可以是 Box 对象，也可以是页面对象。
 
-   ​
+   
 
 
 ## 二、通过代码创建List组件
