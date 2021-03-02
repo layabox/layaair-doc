@@ -1,12 +1,22 @@
 [
   {
-    "name": "LayaAir 1.8.12 beta",
-    "url": "1.8.12beta.md",
-    "date":"2020-09-03",
+    "name": "LayaAir 1.8.13 beta",
+    "url": "1.8.13beta.md",
+    "date":"2021-02-01",
     "download": {
-      "js": "https://ldc-1251285021.cos.ap-shanghai.myqcloud.com/download/Libs/LayaAirJS_1.8.12_beta.zip",
-      "ts": "https://ldc-1251285021.cos.ap-shanghai.myqcloud.com/download/Libs/LayaAirTS_1.8.12_beta.zip",
-      "as": "https://ldc-1251285021.cos.ap-shanghai.myqcloud.com/download/Libs/LayaAirAS3_1.8.12_beta.zip"
+      "js": "https://ldc-1251285021.cos.ap-shanghai.myqcloud.com/download/Libs/LayaAirJS_1.8.13_beta.zip",
+      "ts": "https://ldc-1251285021.cos.ap-shanghai.myqcloud.com/download/Libs/LayaAirTS_1.8.13_beta.zip",
+      "as": "https://ldc-1251285021.cos.ap-shanghai.myqcloud.com/download/Libs/LayaAirAS3_1.8.13_beta.zip"
+    }
+  },
+  {
+    "name": "LayaAir 1.8.12",
+    "url": "1.8.12.md",
+    "date":"2021-02-01",
+    "download": {
+      "js": "https://ldc-1251285021.cos.ap-shanghai.myqcloud.com/download/Libs/LayaAirJS_1.8.12.zip",
+      "ts": "https://ldc-1251285021.cos.ap-shanghai.myqcloud.com/download/Libs/LayaAirTS_1.8.12.zip",
+      "as": "https://ldc-1251285021.cos.ap-shanghai.myqcloud.com/download/Libs/LayaAirAS3_1.8.12.zip"
     }
   },
   {

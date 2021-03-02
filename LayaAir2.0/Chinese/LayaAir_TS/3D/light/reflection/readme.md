@@ -26,7 +26,7 @@
 
 #### 第二步：设置好反射探针区域以及反射探针的属性
 
-按区域去设置需要使用反射探针的地方，直接在unity中创建一个空节点，在空节点的Imspector中增加一个Reflection Probe的组件，如下图所示：
+按区域去设置需要使用反射探针的地方，直接在unity中创建一个空节点，在空节点的Inspector中增加一个Reflection Probe的组件，如下图所示：
 
 ![img](img/3.png)  
 
@@ -34,7 +34,7 @@
 
 ![img](img/4.png)  
 
-在LayaAir引擎中，反射探针的Type只支持`Bake`模式与`Custom`模式。另外，由于图片槽数对于小游戏来说非常的紧张，LayaAir引擎也没有做反射探针的blend（混合模式）支持，只是简单的simple模式和off模式。除了这两点，其它的Unity反射探针属性，LayaAir引擎中都是支持的。如下图所示，红框内都是支持导出使用的属性。
+在LayaAir引擎中，反射探针的Type只支持`Baked`模式与`Custom`模式。另外，由于图片槽数对于小游戏来说非常的紧张，LayaAir引擎也没有做反射探针的blend（混合模式）支持，只是简单的simple模式和off模式。除了这两点，其它的Unity反射探针属性，LayaAir引擎中都是支持的。如下图所示，红框内都是支持导出使用的属性。
 
 ![img](img/5.png)   
 
