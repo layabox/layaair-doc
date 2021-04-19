@@ -1567,6 +1567,11 @@
 								"name_3_name": "动态合并",
 								"name_3_url": "Chinese/LayaAir_TS/3D/Performance_Optimization/Dynamic_Batch/",
 								"name_3_file": "readme.md"
+							},
+							{
+								"name_3_name": "LayaAir 3D性能分析工具",
+								"name_3_url": "Chinese/LayaAir_TS/3D/Performance_Optimization/useTools/",
+								"name_3_file": "readme.md"
 							}
 						]
 					},
@@ -3561,6 +3566,11 @@
 							{
 								"name_3_name": "动态合并",
 								"name_3_url": "Chinese/LayaAir_JS/3D/Performance_Optimization/Dynamic_Batch/",
+								"name_3_file": "readme.md"
+							},
+							{
+								"name_3_name": "LayaAir 3D性能分析工具",
+								"name_3_url": "Chinese/LayaAir_TS/3D/Performance_Optimization/useTools/",
 								"name_3_file": "readme.md"
 							}
 						]
@@ -5591,6 +5601,11 @@
 							{
 								"name_3_name": "动态合并",
 								"name_3_url": "Chinese/LayaAir_AS3/3D/Performance_Optimization/Dynamic_Batch/",
+								"name_3_file": "readme.md"
+							},
+							{
+								"name_3_name": "LayaAir 3D性能分析工具",
+								"name_3_url": "Chinese/LayaAir_TS/3D/Performance_Optimization/useTools/",
 								"name_3_file": "readme.md"
 							}
 						]
