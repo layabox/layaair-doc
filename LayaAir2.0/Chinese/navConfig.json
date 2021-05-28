@@ -1817,7 +1817,13 @@
 								"name_3_name": "淘宝创意互动发布指南",
 								"name_3_url": "Chinese/miniGame/taobao/",
 								"name_3_file": "readme.md"
+							},
+							{
+								"name_3_name": "淘宝创意互动分包指南",
+								"name_3_url": "Chinese/miniGame/taobao/subpack/",
+								"name_3_file": "fenbao.md"
 							}
+							
 						]
 					}
 				]
@@ -3807,6 +3813,11 @@
 								"name_3_name": "淘宝创意互动发布指南",
 								"name_3_url": "Chinese/miniGame/taobao/",
 								"name_3_file": "readme.md"
+							},
+							{
+								"name_3_name": "淘宝创意互动分包指南",
+								"name_3_url": "Chinese/miniGame/taobao/subpack/",
+								"name_3_file": "fenbao.md"
 							}
 						]
 					}
@@ -5832,6 +5843,11 @@
 								"name_3_name": "淘宝创意互动发布指南",
 								"name_3_url": "Chinese/miniGame/taobao/",
 								"name_3_file": "readme.md"
+							},
+							{
+								"name_3_name": "淘宝创意互动分包指南",
+								"name_3_url": "Chinese/miniGame/taobao/subpack/",
+								"name_3_file": "fenbao.md"
 							}
 						]
 					}
