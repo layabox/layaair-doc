@@ -60,7 +60,7 @@
 
 #### 实例演练
 
-一个最基本的平移关节，单独使用是很简单的，拖入一个方块并添加`boxcollider`碰撞体，给他添加平移关节`PrismaticJoint`，在刚体`rigidbody`重力`gravityScale`设置为0，axis设置为（1,0）并设置马达开启，速度为1， 限制一下最大最小偏移量，效果如图所示
+一个最基本的平移关节，单独使用是很简单的，拖入一个方块并添加`boxcollider`碰撞体，给他添加平移关节`PrismaticJoint`，在刚体`rigidbody`重力`gravityScale`设置为0，在`PrismaticJoint`中设置axis为（1,0）并设置马达开启，速度为1， 限制一下最大最小偏移量，效果如图所示
 
 ![图1](img/1.png)
 
@@ -136,7 +136,7 @@
 
 #### 实例演练
 
-新建一个场景，然后拖入一个圆形图片，给它添加圆形碰撞体 `CircleCollider`，IDE会自动添加刚体`RigidBody`, 然后再给它添加一个旋转关节`RevoluteJoint`,关节的锚点设在圆心，并且开启马达并设置旋转速度为1。如图：
+新建一个场景，然后拖入一个圆形图片，给它添加圆形碰撞体 `CircleCollider`，IDE会自动添加刚体`RigidBody`, 然后再给它添加一个旋转关节`RevoluteJoint`,关节的锚点`anchor`设在圆心(圆心可以通过碰撞器中的radius推得)，并且开启马达并设置旋转速度为1。如图：
 
 ![图](img/6.png)
 
