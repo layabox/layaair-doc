@@ -18,7 +18,7 @@
 
 - “LayaJSMac”为苹果MAC系统下的AS3代码编译器，用于将AS3代码编译为JS代码。
 
-  ​
+  
 
 
 ### 第二步 安装Google Chrome浏览器
@@ -29,13 +29,13 @@
 
 ### 第三步 配置Flash Builder中的AS3编译环境
 
-​**    步骤一**：打开Flash Builder，找到“外部工具 配置”并打开该配置窗口。
+**    步骤一**：打开Flash Builder，找到“外部工具 配置”并打开该配置窗口。
 
 ​    ![2.jpg](img/2.jpg)<br/>
 ​  图（2）  
 
 
-​**    步骤二**：在配置窗口内，右键选中“程序”，点击“新建”，打开新建配置窗口。
+**    步骤二**：在配置窗口内，右键选中“程序”，点击“新建”，打开新建配置窗口。
 
 ​    ![3.jpg](img/3.jpg)<br/>
 ​   图（3） 
@@ -48,17 +48,26 @@
 
 然后点击“浏览文件系统”找到“`laya.js.exe`”或者直接复制”`laya.js.exe`”的路径粘贴到“位置”输入栏。
 
-最后在“自变量”栏里输入`"${project_loc}\.actionScriptProperties;iflash=false;chromerun=true;quickcompile=true;out=bin/js/bundle.js;subpath="`，点击”应用“即可完成本次配置。
+最后在“自变量”栏里输入：
 
-如果我们不想每次编译都启动一个新的谷歌浏览器进程，按刚才的配置方式再次创建一个外部程序，仅需将自变量参数改为`"${project_loc}\.actionScriptProperties;iflash=false;chromerun=false;quickcompile=true;out=bin/js/bundle.js;subpath="`如图4、图5所示。
+`${project_loc}\.actionScriptProperties;;iflash=false;chromerun=true;quickcompile=true;out=bin/js/bundle.js;subpath=;script=ES6;outlaya=true;layaists=true`，点击”应用“即可完成本次配置。
+
+如果我们不想每次编译都启动一个新的谷歌浏览器进程，按刚才的配置方式再次创建一个外部程序，仅需将自变量参数的chromerun=true改为chromerun=false, 例如：
+
+`${project_loc}\.actionScriptProperties;;iflash=false;chromerun=false;quickcompile=true;out=bin/js/bundle.js;subpath=;script=ES6;outlaya=true;layaists=true`如图4、图5所示。
 
 ![4](img/4.png)<br />  （图4）
 
 ![图5](img/5.png) <br/> (图5)
 
- 
+>  上图4与图5仅作流程参照，具体参数以文档中的说明为准。
+>
 
-**Tips：“D:\layaide2.0\layaairide\resources\app\out\vs\layaEditor\laya\libs\2.0.0beta\as\laya.js.exe”应为laya.js.exe的实际所在路径。MAC系统下为“”userPath“\layaairide\resources\app\out\vs\layaEditor\laya\libs\2.0.0beta\as\LayaJSMac”**
+> **Tips：**
+>
+> “D:\layaide2.0\layaairide\resources\app\out\vs\layaEditor\laya\libs\2.0.0beta\as\laya.js.exe”应为laya.js.exe的实际所在路径。
+>
+> **MAC系统下为“”userPath“\layaairide\resources\app\out\vs\layaEditor\laya\libs\2.0.0beta\as\LayaJSMac”**
 
 
 

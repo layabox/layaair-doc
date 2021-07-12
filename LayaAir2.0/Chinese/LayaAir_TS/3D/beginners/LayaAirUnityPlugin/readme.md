@@ -478,14 +478,13 @@ Mesh Setting（模型设置）是指模型网格数据的导出设置，功能�
 
 | Unity的相机属性                     | LayaAir是否支持导出的说明                                    |
 | ----------------------------------- | ------------------------------------------------------------ |
-| Clear Flags（清除标志）             | 支持 （包括：Skybox天空盒、Solid Color纯色、Depth only仅深度、Don’t Clear不清除） |
-| Background（背景）                  | 支持                                                         |
-| Projection（投射方式）              | 支持（包括：Perspective透视（Field of View），Orthographic正交（size）） |
+| Clear Flags（清除标志）             | 支持 （包括：Skybox天空盒（Background背景色）、Solid Color纯色（Background背景色）、Depth only仅深度、Don’t Clear不清除） |
+| Projection（投射方式）              | 支持（包括：Perspective透视（Field of View视野范围），Orthographic正交（size视野大小）） |
 | Clipping Planes（剪裁平面）         | 支持（包括：Near近点、Far远点）                              |
 | Viewport Rect（标准视图矩形）       | 支持（包括：X、Y、W、H）                                     |
 | Allow HDR（允许渲染高动态色彩画面） | 支持                                                         |
 
-> Culling Mask在layaAir引擎中是支持的，但是Unity中设置无效，需要通过引擎的cullingMask进行设置。
+> Culling Mask在Unity中设置无效，但是layaAir引擎中是支持的，默认值相当于Unity中的Everything，也可以通过引擎的cullingMask进行设置层ID。
 
 #### 4.3 光照相关的属性
 
