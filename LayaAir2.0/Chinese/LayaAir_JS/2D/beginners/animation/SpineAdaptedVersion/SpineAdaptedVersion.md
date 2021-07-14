@@ -56,13 +56,25 @@ this.skeleton = this.templet.buildArmature();
 
 在新版本之后使用适配版spine的时候，开发者需要在IDE中的引擎库中按照自己的需求勾选需要的类库spine-core-3.7.js或者spine-core-3.8js，不管是用的是3.8以后还是3.7之前的spine，都需要勾选上laya.spine.js。
 
-![](img/1.png)
+![](../../../../../LayaAir_TS/2D/beginners/animation/SpineAdaptedVersion/img/1.png)
 
 
 
-在代码中使用时，我们在使用适配版Spine时需要引用指定的库`SpineTemplet`和`SpineSkeleton`，`SpineTempletBinary`是使用3.8版本特有的库，只适用3.8版本中.skel格式的资源。如图所示：
+在代码中使用时，我们在使用适配版Spine时需要引用指定的类有`Laya.SpineSkeleton`、`Laya.SpineTemplet`和`Laya.SpineTempletBinary`。
 
-![](img/2.png)
+其中，`Laya.SpineSkeleton`是spine骨骼动画必须要引用的类，这里封装了spine的runtime库。
+
+`Laya.SpineTemplet`和`Laya.SpineTempletBinary`是用于资源，它们的区别是：当使用资源为.json结尾的时候需要引用的是`Laya.SpineTemplet`，使用资源为.skel格式的时候需要引用的是`Laya.SpineTempletBinary`。
+
+如图所示因为用到的是.skel结尾的资源，所以我们引用的是`Laya.SpineTempletBinary`。
+
+
+
+![](../../../../../LayaAir_TS/2D/beginners/animation/SpineAdaptedVersion/img/2.png)
+
+
+
+
 
 ## 二、适配版Spine的使用
 
@@ -73,53 +85,44 @@ this.skeleton = this.templet.buildArmature();
 代码示例：
 
 ```typescript
-export class SpineBinary {
-	private aniPath = "res/bone/spineboy-pma.skel";
-	private templet:SpineTempletBinary;
-	private skeleton:SpineSkeleton;
-	private index: number = -1;
+class SpineBinary {
 	constructor() {
+		this.aniPath = "res/bone/spineboy-pma.skel";
+		this.index = -1;
 		Laya.init(Browser.width, Browser.height, WebGL);
 		Laya.stage.scaleMode = Stage.SCALE_NOSCALE;
 		Laya.stage.bgColor = "#232628";
 		Stat.show();
 		this.startFun();
 	}
-
-	private startFun(): void {
-		//创建动画模板
+	startFun() {
 		this.templet = new SpineTempletBinary();
 		this.templet.loadAni(this.aniPath);
 		this.templet.on(Event.COMPLETE, this, this.parseComplete);
-		this.templet.on(Event.ERROR, this, this.onError)
+		this.templet.on(Event.ERROR, this, this.onError);
 	}
-
-	private parseComplete(): void {
+	parseComplete() {
 		this.skeleton = this.templet.buildArmature();
 		Laya.stage.addChild(this.skeleton);
 		this.skeleton.pos(Browser.width / 2, Browser.height / 2 + 100);
 		this.skeleton.scale(0.5, 0.5);
-		this.skeleton.on(Event.STOPPED, this, this.play)
+		this.skeleton.on(Event.STOPPED, this, this.play);
 		this.play();
 	}
-
-	private onError(): void{
+	onError() {
 		console.log("parse error");
 	}
-
-	private play(): void {
+	play() {
 		console.log("1111111111");
-		if(++this.index >= this.skeleton.getAnimNum()) {
-			this.index = 0
+		if (++this.index >= this.skeleton.getAnimNum()) {
+			this.index = 0;
 		}
-		this.skeleton.play(this.index, false, true)
+		this.skeleton.play(this.index, false, true);
 	}
 }
-
-new SpineBinary;
 ```
 
-具体效果大家可以在官网引擎事例中查看。
+具体效果大家可以在官网引擎事例中查看。https://layaair2.ldc2.layabox.com/demo2/?language=zh&category=2d&group=Skeleton&name=SpineAdapted
 
 
 
