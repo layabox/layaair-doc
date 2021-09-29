@@ -58,6 +58,8 @@ subpackages:[
 ]
 ```
 
+华为快游戏有详细的manifest.json文件的介绍：https://developer.huawei.com/consumer/cn/doc/development/quickApp-Guides/quickgame-develop-runtime-game#h2-1579762192275
+
 
 
 #### 3.分包使用的示例代码
@@ -65,7 +67,7 @@ subpackages:[
 使用分包的示例代码如下：
 
 ```javascript
-var task = hbs.loadSubpackage({
+var task = qg.loadSubpackage({
 	subpackage:'subpackageName1',        
 	success : function () {
    	 	console.log("loadSubpackage success" );

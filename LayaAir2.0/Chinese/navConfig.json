@@ -252,6 +252,11 @@
 								"name_3_name": "DragonBone动画使用",
 								"name_3_url": "Chinese/LayaAir_TS/2D/beginners/animation/DragonBone/",
 								"name_3_file": "readme.md"
+							},
+							{
+								"name_3_name": "Spine适配版",
+								"name_3_url": "Chinese/LayaAir_TS/2D/beginners/animation/SpineAdaptedVersion/",
+								"name_3_file": "SpineAdaptedVersion.md"
 							}
 						]
 					},
@@ -1822,7 +1827,13 @@
 								"name_3_name": "淘宝创意互动发布指南",
 								"name_3_url": "Chinese/miniGame/taobao/",
 								"name_3_file": "readme.md"
+							},
+							{
+								"name_3_name": "淘宝创意互动分包指南",
+								"name_3_url": "Chinese/miniGame/taobao/subpack/",
+								"name_3_file": "fenbao.md"
 							}
+							
 						]
 					}
 				]
@@ -2257,6 +2268,11 @@
 								"name_3_name": "DragonBone动画使用",
 								"name_3_url": "Chinese/LayaAir_JS/2D/beginners/animation/DragonBone/",
 								"name_3_file": "readme.md"
+							},
+							{
+								"name_3_name": "Spine适配版",
+								"name_3_url": "Chinese/LayaAir_JS/2D/beginners/animation/SpineAdaptedVersion/",
+								"name_3_file": "SpineAdaptedVersion.md"
 							}
 						]
 					},
@@ -3817,6 +3833,11 @@
 								"name_3_name": "淘宝创意互动发布指南",
 								"name_3_url": "Chinese/miniGame/taobao/",
 								"name_3_file": "readme.md"
+							},
+							{
+								"name_3_name": "淘宝创意互动分包指南",
+								"name_3_url": "Chinese/miniGame/taobao/subpack/",
+								"name_3_file": "fenbao.md"
 							}
 						]
 					}
@@ -4282,6 +4303,11 @@
 								"name_3_name": "DragonBone动画使用",
 								"name_3_url": "Chinese/LayaAir_AS3/2D/beginners/animation/DragonBone/",
 								"name_3_file": "readme.md"
+							},
+							{
+								"name_3_name": "Spine适配版",
+								"name_3_url": "Chinese/LayaAir_AS3/2D/beginners/animation/SpineAdaptedVersion/",
+								"name_3_file": "SpineAdaptedVersion.md"
 							}
 						]
 					},
@@ -5847,6 +5873,11 @@
 								"name_3_name": "淘宝创意互动发布指南",
 								"name_3_url": "Chinese/miniGame/taobao/",
 								"name_3_file": "readme.md"
+							},
+							{
+								"name_3_name": "淘宝创意互动分包指南",
+								"name_3_url": "Chinese/miniGame/taobao/subpack/",
+								"name_3_file": "fenbao.md"
 							}
 						]
 					}

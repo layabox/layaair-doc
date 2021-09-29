@@ -176,8 +176,6 @@ LayaAirIDE的发布功能默认集成了常用的排除与包含功能，也允�
 
 之前有不少不太理解的开发者反馈发布时间过长，这个时间的长短取决于勾选的压缩内容及项目大小，所以只能建议开发者在不是最终发布的时候，调试阶段不要进行混淆和压缩。
 
-本次3.0版本优化的时候，考虑到开发者的需求，除了让开发者自由选择控制可压缩的文件，还增加了发布编译过程的实时打印显示。让开发者能大概了解到当前所处的产品编译发布进度，减少处于未知状态时的急迫情绪。
-
 > LayaAir引擎官方比较重视开发者的体验反馈，并持续不断的进行着优化。
 
 ![图7](img/7.png) 
@@ -405,15 +403,35 @@ Commands:
     -h, --help                     output usage information
 ```
 
-我们通过帮助可以看到，最关键的参数是 `-c` ，目前支持web、wxgame、qqwanyiwan、bdgame这四个参数。
+我们通过帮助可以看到，最关键的参数是 `-c` ，目前支持的参数有：
 
 `web`是发布HTML5的web版本。
 
 `wxgame`是发布微信小游戏平台。
 
-`qqwanyiwan`是发布QQ轻游戏平台（也叫QQ玩一玩）。
+`qqgame`是发布QQ轻游戏平台。
 
 `bdgame`是发布百度小游戏平台。
+
+`biligame`是哔哩哔哩小游戏平台。
+
+`bytedancegame`是字节跳动平台。
+
+`hwgame`是华为平台。
+
+`oppogame`是oppo平台。
+
+`taobaominiapp`是淘宝小游戏。
+
+`taobaowidget`是淘宝小部件。
+
+`vivogame`是vivo平台。
+
+`xmgame`是小米平台。
+
+`youkugame`是优酷平台。
+
+`aipaygame`是支付宝平台。
 
 ##### 使用示例如下：
 
@@ -424,8 +442,8 @@ layaair2-cmd publish -c wxgame
 #### 发布注意事项
 
 1. layaair2-cmd的项目编译（compile）与项目发布（publish）命令必须要在项目的根目录来执行使用。
-2. 在调用项目发布命令行前要检查一下，是否有发布平台对应的json，比如发布web版，项目文件夹`.laya`目录下，应该有web.json。发布微信小游戏要有wxgame.json。同理，QQ轻游戏要有qqwanyiwan.json，百度小游戏要有bdgame.json。
-   如果没有的，那先用LayaAirIDE的发布3.0工具选择对应的平台手工发布一次（特别提醒，一定要用3.0发布工具），发布工具会自动生成对应的json。json中保存的是发布工具中那些发布筛选规则与发布配置信息。
+2. 在调用项目发布命令行前要检查一下，是否有发布平台对应的json，比如发布web版，项目文件夹`.laya`目录下，应该有web.json。发布微信小游戏要有wxgame.json。同理，QQ小游戏要有qqgame.json，百度小游戏要有bdgame.json。
+   
 
 
 
