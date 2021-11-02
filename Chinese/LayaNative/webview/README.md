@@ -6,8 +6,8 @@
     /**
      * 显示一个webview
      * @param url {string} 要显示的url地址。
-     * @param posx {number} weview的左上角位置
-     * @param posy {number} webivew的左上角位置
+     * @param posx {number} webview的左上角位置
+     * @param posy {number} webview的左上角位置
      * @param width {number} webview的宽度
      * @param height {number} webview的高度
      * @param canclose {boolean} webview是否可以被关掉。
