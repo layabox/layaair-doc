@@ -141,6 +141,9 @@ JSDebugMode的取值和含义如下：
 
 **注意：** ws=10.10.82.142:5959是步骤1中查看的ip地址和端口号，请根据自己设备的实际情况进行更改。
 
+LayaNative-Release-2.12.2版本及其以后改为输入以下网址：
+>devtools://devtools/bundled/js_app.html?v8only=true&ws=10.10.82.142:5959/177987ab-1d16-4ea6-afcc-c11c0a1bb9e9
+
 ### 步骤5：进行调试
 
 连接成功后，便可以使用Chrome对项目中JavaScript进行调试。如图7所示：
