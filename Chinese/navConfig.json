@@ -1139,7 +1139,13 @@
 				"name_3_name": "使用IDE构建工程",
 				"name_3_url": "Chinese/LayaNative/build_Tool/",
 				"name_3_file": "readme.md"
-			}]
+			},
+			{
+				"name_3_name": "使用IDE构建鸿蒙NEXT工程",
+				"name_3_url": "Chinese/LayaNative/build_Harmony/",
+				"name_3_file": "readme.md"
+			}
+		]
 		},
 		{
 			"name_2_name": "Andoird、iOS开发基本知识",
@@ -2233,7 +2239,13 @@
 				"name_3_name": "使用IDE构建工程",
 				"name_3_url": "Chinese/LayaNative/build_Tool/",
 				"name_3_file": "readme.md"
-			}]
+			},
+			{
+				"name_3_name": "使用IDE构建鸿蒙NEXT工程",
+				"name_3_url": "Chinese/LayaNative/build_Harmony/",
+				"name_3_file": "readme.md"
+			}
+		]
 		},
 		{
 			"name_2_name": "Andoird、iOS开发基本知识",
@@ -3326,7 +3338,13 @@
 				"name_3_name": "使用IDE构建工程",
 				"name_3_url": "Chinese/LayaNative/build_Tool/",
 				"name_3_file": "readme.md"
-			}]
+			},
+			{
+				"name_3_name": "使用IDE构建鸿蒙NEXT工程",
+				"name_3_url": "Chinese/LayaNative/build_Harmony/",
+				"name_3_file": "readme.md"
+			}
+		]
 		},
 		{
 			"name_2_name": "Andoird、iOS开发基本知识",
