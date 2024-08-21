@@ -318,4 +318,52 @@ public class Test {
 ```javascript
 ConchJNI.RunJS("alert('hello world')");
 ```
+##  4.鸿蒙NEXT系统
 
+###     4.1 异步接口
+js注册回调，发起消息
+
+```javascript
+  conch.setGameJsOnMessage((key,value) => {
+    if (key == "login") {
+        alert("login result " + JSON.stringify(value));
+    }
+});
+
+var message = {
+    user_name: "John",
+    password: "123456"
+}
+conch.postMessage("login", JSON.stringify(message));
+```
+鸿蒙原生端处理消息，回调通知JS端  
+libSysCapabilities\src\main\ets\Event\HandleMessageUtils.ts
+```javascript
+  static handleMessage(eventName: string, data: string): string {
+      // 发送给游戏js在conch.setGameJsOnMessage((key,value)=>{});注册的函数中接受回调
+      // let worker = GlobalContext.loadGlobalThis(GlobalContextConstants.LAYA_WORKER);
+      // worker.postMessage({type:"注册的key",text:"返回的value"});
+
+      let worker = GlobalContext.loadGlobalThis(GlobalContextConstants.LAYA_WORKER);
+      worker.postMessage({type: "login",text: data});
+      return "true";
+  }
+```
+###     4.1 同步接口
+js端发起消息
+
+```javascript
+  var message = {
+    user_name: "John",
+    password: "123456"
+  }
+  var result = conch.postSyncMessage("login", JSON.stringify(message));
+  alert(result);  
+```
+鸿蒙原生端处理消息，回调通知JS端  
+libSysCapabilities\src\main\ets\Event\HandleMessageUtils.ts
+```javascript
+  static handleSyncMessage(eventName: string, data: string, cb: Function): void {
+    cb(data);
+  }
+```
